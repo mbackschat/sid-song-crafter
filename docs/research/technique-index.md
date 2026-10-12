@@ -30,6 +30,7 @@ Start here before selecting instruments, arranging voices, explaining a techniqu
 
 | Task | Existing route |
 | --- | --- |
+| Understand a master's sound; reverse-engineer an instrument; register timing; 6502/6510; VICE debugger | [Executed SID program experiments](tools/sid-program-analysis.md): connect writes to instructions and instrument data, then audition controlled changes before translating the mechanism |
 | Render editable instrument experiments | [Instrument trials](../instrument-trials.md) |
 | Change one instrument while preserving the score | [Native patch comparison](../../scripts/compare-native-patch.py), [worked attack comparison](../../songs/studies/fuer-elise-attack/README.md) |
 | Compare originals and matched audio | [Audio comparisons](../audio-comparisons.md); amplitude matching is not a musical verdict |

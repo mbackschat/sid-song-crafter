@@ -26,6 +26,7 @@ Start with the [technique lookup](technique-index.md) to connect a musical need 
 | Arrange for six voices | [Two SIDs](sid/dual-sid.md) |
 | Choose an editor, compiler, or player | [Tools](tools/overview.md) |
 | Learn from actual implementation code | [Source studies](tools/source-studies.md) |
+| Explain how a master's instrument is programmed | [Executed SID program experiments](tools/sid-program-analysis.md): trace instructions, table data and SID stores, then test the audible consequence |
 | Plan Für Elise or Hummelflug | [Classical arrangements](composition/classical-arrangements.md) |
 | Find songs and editable examples | [Study corpus and rights](composers/study-corpus.md) |
 | Verify a result and identify remaining gaps | [Validation](validation/verification.md) |

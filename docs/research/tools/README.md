@@ -10,6 +10,7 @@ Study both the editor and the exported driver: their relationship determines wha
 - [Local setup](../../local-setup.md): installed versions and dependency pins.
 - [Headless execution and audio](../../audio-workflow.md): reproducible rendering and VICE operation.
 - [Native PSID driver audit](../../psid-audit.md): bounded CPU execution and ordered register evidence without our score compiler's assumptions.
+- [Executed SID program experiments](sid-program-analysis.md): CPU instruction/data tracing, independent headless VICE store traces and controlled DRAX bass interventions.
 - [Audio comparisons](../../audio-comparisons.md): original-preserving A/B files with recorded gain and signal measurements.
 
 Keep author claims, source inspection, successful builds, and tested exports distinct. A desktop editor can be useful even when our automation and verification remain headless; do not assume it has a command-line exporter without checking.
