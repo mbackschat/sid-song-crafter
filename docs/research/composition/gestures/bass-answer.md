@@ -19,3 +19,5 @@ The existing [triangle kick-to-bass patch](../instruments/bass-02-kick-to-bass.m
 Percussion temporarily consumes the bass oscillator; verify recovery to the intended root. The shared filter affects every routed voice, and 6581/8580 cutoff responses need separate evaluation. Short gates do not imply short release tails.
 
 Accept when the root remains intelligible, the answer adds movement, and the next melodic entry stays clear. Retain a plain-bass version to detect masking or excessive attack. The [measured reference](../fuer-elise-reference.md) supplies mechanism evidence; phrase placement and the proposed root/fifth variation are original design decisions.
+
+The listener prefers the combined-chord interpretation but still finds its bass too simple or small. The [bass-presence study](../../../../songs/studies/elise-bass-presence/README.md) compares a stronger, longer-lived body with a more resonant contour while retaining the preferred lead/chord palette and all notes. These are timbral candidates awaiting review; they do not test a more elaborate bass line.
