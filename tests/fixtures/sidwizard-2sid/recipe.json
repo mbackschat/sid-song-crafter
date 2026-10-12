@@ -1,0 +1,16 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score.json",
+  "sidCount": 2,
+  "title": "Original 2SID fixture",
+  "author": "Test",
+  "released": "2026",
+  "timingPolicy": "retain-full-pitch",
+  "instruments": {
+    "left-filter": {"name": "LEFTFILT", "control": "0a", "hard_restart_adsr": "0f00", "adsr": "09a8", "frame1": "09", "wave": [["11", "00", "00"]], "pulse": [], "filter": [["93", "24", "00"]]},
+    "right-filter": {"name": "RGHTFILT", "control": "0a", "hard_restart_adsr": "0f00", "adsr": "09a8", "frame1": "09", "wave": [["11", "00", "00"]], "pulse": [], "filter": [["93", "78", "00"]]}
+  },
+  "sections": [
+    {"name": "Whole fixture", "startBeat": 0, "endBeat": 8, "voices": {"left-low": "left-filter", "left-mid": "left-filter", "left-high": "left-filter", "right-low": "right-filter", "right-mid": "right-filter", "right-high": "right-filter"}}
+  ]
+}

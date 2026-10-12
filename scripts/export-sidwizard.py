@@ -77,13 +77,16 @@ def native_pattern_start(data, cursor, unpacked_size):
 
 
 def inspect_module(data):
-    require(len(data) >= 68 and data[2:6] == b"SWM1", "Expected a native SWM1 module with its two-byte load address")
+    require(len(data) >= 68 and data[2:6] in (b"SWM1", b"SWMS"), "Expected a native SWM1 or SWMS module with its two-byte load address")
     header = data[2:66]
+    sid_count = 1 if header[:4] == b"SWM1" else 2
+    pattern_limit, instrument_limit = (100, 36) if sid_count == 1 else (105, 29)
     require(header[4] == 1, "Batch trial supports 1x frame speed only")
     require(header[19] == 3, "Batch trial requires the Extra player (native driver type 3)")
     require(header[20] == 0, "Batch trial supports standard PAL tuning only")
-    require(header[12] == 3, "Batch trial supports one subtune with three voice sequences")
-    require(1 <= header[13] <= 100 and 1 <= header[14] <= 36, "Unsupported native pattern or instrument count")
+    require(header[12] == sid_count * 3, f"Batch trial supports one subtune with {sid_count * 3} voice sequences")
+    require(1 <= header[13] <= pattern_limit and 1 <= header[14] <= instrument_limit, "Unsupported native pattern or instrument count")
+    require(sid_count == 1 or header[22] == 0, "Batch 2SID export requires the native SID2 address ID 0 ($D420)")
     cursor = len(data) - 2 - header[16] - header[15]
     instruments = []
     for _ in range(header[14]):
@@ -109,7 +112,7 @@ def inspect_module(data):
         validate_sequence(data[cursor - size - 1:cursor - 1], header[13])
         cursor -= size + 1
     require(cursor == 66, "Invalid native module structure or trailing data")
-    return {"patterns": header[13], "sequences": header[12], "instruments": list(reversed(instruments)), "chordBytes": header[15], "tempoBytes": header[16]}
+    return {"sidCount": sid_count, "patterns": header[13], "sequences": header[12], "instruments": list(reversed(instruments)), "chordBytes": header[15], "tempoBytes": header[16]}
 
 
 def cpu_type():
@@ -148,11 +151,14 @@ def write_text_field(memory, address, text):
 def export_module(source, output_dir, title=None, author=None, released="2026"):
     data = Path(source).read_bytes()
     summary = inspect_module(data)
-    build_path = TOOL_ROOT / "build.json"
-    require(build_path.is_file(), "Run python3 scripts/setup-sidwizard.py before batch export")
+    sid_count = summary["sidCount"]
+    tool_root = TOOL_ROOT if sid_count == 1 else ROOT / ".tools/sid-wizard-exporter-2sid"
+    build_path = tool_root / "build.json"
+    require(build_path.is_file(), f"Run python3 scripts/setup-sidwizard.py --sid-count {sid_count} before batch export")
     build = json.loads(build_path.read_text())
-    prg = (TOOL_ROOT / "exporter.prg").read_bytes()
-    label_data = (TOOL_ROOT / "exporter.labels").read_bytes()
+    require(build.get("sidCount", 1) == sid_count, "Prepared SID-Maker build has the wrong SID count; rerun setup")
+    prg = (tool_root / "exporter.prg").read_bytes()
+    label_data = (tool_root / "exporter.labels").read_bytes()
     require(sha256(prg) == build["exporterSha256"] and sha256(label_data) == build["labelsSha256"], "Prepared SID-Maker binary or labels have changed; rerun setup")
     labels = {name: int(value, 16) for value, name in re.findall(r"^al ([\da-fA-F]+) \.(.+)$", label_data.decode(), re.MULTILINE)}
     memory = [0] * 65536
@@ -167,7 +173,14 @@ def export_module(source, output_dir, title=None, author=None, released="2026"):
     memory[labels["TuningType"]] = 0
     cpu = cpu_type()(memory=memory)
     routine_cycles = {}
-    for name in ("setEXEdetails", "preparetunedata", "setplayer", "SetSIDply", "SetSIDt"):
+    for name in ("setEXEdetails", "preparetunedata"):
+        routine_cycles[name] = call(cpu, labels, name)
+    if sid_count == 2:
+        # Upstream's setexport2 UI normally resolves the saved ID before setplayer patches every SID2 operand.
+        name = "SID23set:CalcSID2addID"
+        routine_cycles[name] = call(cpu, labels, name)
+        require(bytes(memory[labels["SID2add"]:labels["SID2add"] + 2]) == b"\x20\xd4", "SID-Maker did not resolve the native SID2 address to $D420")
+    for name in ("setplayer", "SetSIDply", "SetSIDt"):
         routine_cycles[name] = call(cpu, labels, name)
     cpu.x = 1
     routine_cycles["dispMod"] = call(cpu, labels, "dispMod")
@@ -192,12 +205,17 @@ def export_module(source, output_dir, title=None, author=None, released="2026"):
         "source": str(Path(source)), "sourceSha256": sha256(data), "module": summary,
         "sid": str(sid_path), "sidSha256": sha256(sid), "prg": str(prg_path), "prgSha256": sha256(standalone),
         "sidWizardVersion": "1.97", "player": "Extra", "driverType": 3, "clock": "PAL", "sidModel": "MOS8580",
+        "sidCount": sid_count, "sids": [{"baseAddress": 0xd400 + index * 0x20, "model": "MOS8580"} for index in range(sid_count)], "psidVersion": 2 if sid_count == 1 else 3,
         "frameSpeed": 1, "loadAddress": 0x1000, "initAddress": 0x1000, "playAddress": 0x1003,
         "standaloneLoadAddress": 0x0801, "standaloneStartAddress": labels["start2"],
         "standalonePlayerInitAddress": 0x1000, "standalonePlayerPlayAddress": 0x1003,
         "exportEndAddress": end, "nativeSourceRetained": True, "exportLosses": ["Instrument names are omitted from playback payload by upstream SID-Maker; retained in SWM/SWI."],
         "nativeRoutineCycles": routine_cycles, "build": build,
     }
+    if sid_count == 2:
+        selector_return = labels["SID2keyExe:endplmi"]
+        require(standalone[selector_return - 0x0801 + 2] == 0x60, "Native address-selector return is not the expected RTS")
+        report["standaloneAddressSelector"] = {"entryAddress": labels["SetSID2address"], "returnAddress": selector_return, "baseAddress": 0xd420, "method": "At selector entry, VICE monitor sets PC to the existing RTS; native address application continues."}
     report_path = output / f"{stem}.export.json"
     payloads = [(sid_path, sid), (prg_path, standalone), (report_path, (json.dumps(report, indent=2) + "\n").encode())]
     for path, payload in payloads:

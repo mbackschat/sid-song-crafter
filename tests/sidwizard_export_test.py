@@ -51,7 +51,67 @@ def stopped_native_module():
     return bytes(header) + sequence * 3 + pattern + original[-32:-2] + b"\x81\x81"
 
 
+def six_voice_native_module():
+    header = bytearray(64)
+    header[:4] = b"SWMS"
+    header[4] = 1
+    header[11:15] = bytes((8, 6, 6, 2))
+    header[19] = 3
+    header[21] = 4
+    header[24:64] = b"TEST:ORIGINAL SIX VOICE FIXTURE".ljust(40, b" ")
+    sequences = b"".join(bytes((index + 1, 0xa0, 0xfe, 3)) for index in range(6))
+    patterns = b"".join(bytes((note | 0x80, 1 if index < 3 else 2, 0, 0, 0, 0x7e, 0, 0, 0x7e, 10, 8)) for index, note in enumerate((49, 53, 56, 61, 65, 68)))
+    instruments = []
+    for cutoff, name in ((0x24, b"LEFTFILT"), (0x78, b"RGHTFILT")):
+        parameters = bytes((0x0a, 0x0f, 0, 0x09, 0xa8, 0, 0, 0, 0, 0, 20, 21, 0, 0, 0, 0x09))
+        instruments.append(parameters + bytes((0x11, 0, 0, 0xff, 0xff, 0x93, cutoff, 0, 24)) + name)
+    return b"\x33\x33" + header + sequences + patterns + b"".join(instruments) + b"\x81\x81"
+
+
 class SIDWizardExportTest(unittest.TestCase):
+    def test_accepts_six_voice_native_stereo_module_and_rejects_other_addresses_or_counts(self):
+        data = six_voice_native_module()
+        summary = EXPORTER.inspect_module(data)
+        self.assertEqual((summary["sidCount"], summary["sequences"], summary["patterns"]), (2, 6, 6))
+        for offset, value, message in ((24, 1, "D420"), (14, 3, "one subtune"), (16, 30, "instrument count"), (15, 106, "pattern")):
+            bad = bytearray(data)
+            bad[offset] = value
+            with self.subTest(offset=offset), self.assertRaisesRegex(ValueError, message):
+                EXPORTER.inspect_module(bytes(bad))
+
+    def test_two_sid_extra_export_executes_six_distinct_pitches_and_independent_filters(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "six-voices.sws"
+            original = six_voice_native_module()
+            source.write_bytes(original)
+            report = EXPORTER.export_module(source, Path(directory) / "out")
+            sid = Path(report["sid"]).read_bytes()
+            self.assertEqual(sid[:8], b"PSID\x00\x03\x00\x7c")
+            self.assertEqual(sid[118:124], b"\x00\xa4\x00\x00\x42\x00")
+            self.assertEqual(report["sidCount"], 2)
+            self.assertEqual(report["sids"], [{"baseAddress": 0xd400, "model": "MOS8580"}, {"baseAddress": 0xd420, "model": "MOS8580"}])
+            self.assertEqual(report["build"]["sidCount"], 2)
+            _, writes = audit_psid(sid, 12)
+            values = {(row["tick"], row["address"]): row["value"] for row in writes if row["phase"] == "play"}
+            words = []
+            for voice in range(6):
+                base = (0xd400 if voice < 3 else 0xd420) + voice % 3 * 7
+                words.append(values[1, base] + 256 * values[1, base + 1])
+                self.assertEqual(values[1, base + 4], 0x11)
+                self.assertEqual(values[7, base + 4] & 1, 0)
+            self.assertEqual(len(set(words)), 6)
+            self.assertEqual(values[2, 0xd416], 0x24)
+            self.assertEqual(values[2, 0xd436], 0x78)
+            self.assertEqual(values[2, 0xd417] & 7, 7)
+            self.assertEqual(values[2, 0xd437] & 7, 7)
+            for tick in range(7, 12):
+                self.assertEqual(values[tick, 0xd418] & 15, 0)
+                self.assertEqual(values[tick, 0xd438] & 15, 0)
+            selector = report["standaloneAddressSelector"]
+            prg = Path(report["prg"]).read_bytes()
+            self.assertEqual(prg[selector["returnAddress"] - 0x0801 + 2], 0x60)
+            self.assertEqual(source.read_bytes(), original)
+
     def test_accepts_original_native_module_and_keeps_instrument_name(self):
         summary = EXPORTER.inspect_module(original_module())
         self.assertEqual(summary["instruments"], [{"name": "TESTSAW", "size": 22}])

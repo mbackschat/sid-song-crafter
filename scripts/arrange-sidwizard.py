@@ -1,4 +1,4 @@
-"""Project a retained three-voice score onto an editable SID-Wizard tick grid."""
+"""Project a retained three- or six-voice score onto an editable SID-Wizard tick grid."""
 
 import argparse
 import hashlib
@@ -128,12 +128,16 @@ def arrange(recipe_path, output_dir):
     recipe_bytes = recipe_path.read_bytes()
     recipe = json.loads(recipe_bytes)
     require(recipe["format"] == "sidwizard-arrangement-v1", "Unsupported native arrangement recipe format")
+    sid_count = recipe.get("sidCount", 1)
+    require(type(sid_count) is int and sid_count in (1, 2), "SID count must be 1 or 2")
+    voice_count = sid_count * 3
+    pattern_limit, instrument_limit = (100, 36) if sid_count == 1 else (105, 29)
     require(recipe.get("timingPolicy") == "retain-full-pitch", "Recipe must explicitly select the supported retain-full-pitch timing policy")
     require(all(re.fullmatch(r"[a-z][a-z0-9-]*", identity) for identity in recipe["instruments"]), "Native instrument id must be a simple lowercase alphanumeric/hyphen name")
     source = (recipe_path.parent / recipe["score"]).resolve()
     source_bytes = source.read_bytes()
     score = json.loads(source_bytes)
-    require(len(score["voices"]) == 3 and len({voice["name"] for voice in score["voices"]}) == 3, "Native arrangement requires three distinctly named source voices")
+    require(len(score["voices"]) == voice_count and len({voice["name"] for voice in score["voices"]}) == voice_count, f"Native arrangement requires {voice_count} distinctly named source voices")
     bpm, total_beats = score["quarterBpm"], score["totalBeats"]
     require(isinstance(bpm, (int, float)) and math.isfinite(bpm) and bpm > 0 and isinstance(total_beats, (int, float)) and math.isfinite(total_beats) and total_beats > 0, "Source tempo and duration must be positive and finite")
     require(score.get("volume", 15) == 15, "Native trial currently retains the full-volume source contract only")
@@ -145,7 +149,7 @@ def arrange(recipe_path, output_dir):
     row_count = total_ticks + 1
     sections = select_sections(recipe, score)
     encode_instrument = instrument_encoder()
-    require(1 <= len(recipe["instruments"]) <= 36, "Native recipe requires 1..36 instruments")
+    require(1 <= len(recipe["instruments"]) <= instrument_limit, f"Native recipe requires 1..{instrument_limit} instruments")
     identities = list(recipe["instruments"])
     instrument_numbers = {identity: index + 1 for index, identity in enumerate(identities)}
     instruments = {identity: encode_instrument(identity, recipe["instruments"][identity]) for identity in identities}
@@ -174,7 +178,7 @@ def arrange(recipe_path, output_dir):
             if event["midi"] is None:
                 continue
             midi = event["midi"]
-            require(type(midi) is int and 12 <= midi <= 106, "Source pitch lies outside SWM1's native note range")
+            require(type(midi) is int and 12 <= midi <= 106, "Source pitch lies outside SID-Wizard's native note range")
             section = next(section for section in sections if section["startBeat"] <= start_beat < section["endBeat"])
             identity = section["voices"][voice["name"]]
             duration = end - start
@@ -227,13 +231,14 @@ def arrange(recipe_path, output_dir):
         for note in notes:
             cell = next(cell for cell in cell_map if cell["voice"] == voice_index and cell["tick"] == note["startTick"])
             note.update({key: cell[key] for key in ("pattern", "row", "byteOffset")})
-        voices.append({"name": voice["name"], "notes": notes, "sequence": sequence, "expectedPatternEntries": entries, "expectedSequenceEnding": [{"tick": total_ticks, "entry": 0xa0}, {"tick": total_ticks, "entry": 0xfe}]})
-    require(len(patterns) <= 100, "Native arrangement exceeds SID-Wizard's 100-pattern limit")
+        voices.append({"name": voice["name"], "sidIndex": voice_index // 3, "sidVoice": voice_index % 3, "notes": notes, "sequence": sequence, "expectedPatternEntries": entries, "expectedSequenceEnding": [{"tick": total_ticks, "entry": 0xa0}, {"tick": total_ticks, "entry": 0xfe}]})
+    require(len(patterns) <= pattern_limit, f"Native arrangement exceeds SID-Wizard's {pattern_limit}-pattern limit")
     header = bytearray(64)
-    header[:4] = b"SWM1"
-    header[4:6] = bytes((1, 4))
-    header[8:11] = b"\xff\xff\xff"
-    header[11:15] = bytes((64, 3, len(patterns), len(instruments)))
+    header[:4] = b"SWM1" if sid_count == 1 else b"SWMS"
+    header[4] = 1
+    header[5 if sid_count == 1 else 21] = 4
+    header[8 if sid_count == 1 else 5:11] = b"\xff" * voice_count
+    header[11:15] = bytes((64, voice_count, len(patterns), len(instruments)))
     header[19] = 3
     authorinfo = recipe.get("authorinfo", f"{recipe['author']}:{recipe['title']}").upper().encode("ascii")
     require(len(authorinfo) <= 40, "Native author/title header must fit 40 ASCII characters")
@@ -241,7 +246,7 @@ def arrange(recipe_path, output_dir):
     sequences = b"".join(bytes(voice["sequence"] + [0xa0, 0xfe, len(voice["sequence"]) + 2]) for voice in voices)
     data = b"\x33\x33" + header + sequences + b"".join(pattern["bytes"] for pattern in patterns) + b"".join(instruments.values()) + b"\x81\x81"
     output.mkdir(parents=True)
-    native = output / f"{recipe_path.stem}.swm"
+    native = output / f"{recipe_path.stem}.{'swm' if sid_count == 1 else 'sws'}"
     native.write_bytes(data)
     for identity, instrument in instruments.items():
         path = output / "instruments" / f"{identity}.swi"
@@ -252,6 +257,7 @@ def arrange(recipe_path, output_dir):
         "format": "sidwizard-arrangement-manifest-v1", "sourcePath": str(source), "sourceSha256": digest(source_bytes), "recipePath": str(recipe_path), "recipeSha256": digest(recipe_bytes),
         "nativePath": str(native), "nativeSha256": digest(data), "title": recipe["title"], "author": recipe["author"], "released": recipe.get("released", "2026"),
         "timingPolicy": recipe["timingPolicy"], "nativeHeaderText": authorinfo.decode("ascii"),
+        "sidCount": sid_count, "sids": [{"baseAddress": 0xd400 + index * 0x20, "model": "MOS8580"} for index in range(sid_count)],
         "clockHz": PAL_CLOCK, "ticksPerSecond": TICKS_PER_SECOND, "frameSpeed": 1, "rowTicks": 1,
         "scoreTicks": score_ticks, "tailTicks": tail, "totalTicks": total_ticks, "rowCount": row_count, "stopTick": total_ticks, "stopVolumeClearTick": total_ticks,
         "renderSeconds": (total_ticks + 1) / TICKS_PER_SECOND + 1, "patterns": [{key: value for key, value in pattern.items() if key != "bytes"} for pattern in patterns],

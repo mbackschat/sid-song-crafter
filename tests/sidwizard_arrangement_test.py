@@ -37,12 +37,67 @@ def synthetic_score(events, beats=500):
 
 
 class SIDWizardArrangementTest(unittest.TestCase):
-    def create(self, directory, score):
+    def create(self, directory, score, sid_count=None):
         source = Path(directory) / "score.json"
         source.write_text(json.dumps(score))
         configuration = Path(directory) / "native.json"
-        configuration.write_text(json.dumps(recipe(source, score)))
+        settings = recipe(source, score)
+        if sid_count is not None:
+            settings["sidCount"] = sid_count
+        configuration.write_text(json.dumps(settings))
         return configuration, ARRANGER.arrange(configuration, Path(directory) / "out")
+
+    def test_two_sid_recipe_retains_six_ordered_voices_and_emits_native_stereo_header(self):
+        score = synthetic_score([], beats=8)
+        score["voices"] = [{"name": f"part-{index}", "events": [{"startBeat": index % 3, "durationBeats": 3, "midi": 60 + index}]} for index in range(6)]
+        with tempfile.TemporaryDirectory() as directory:
+            _, manifest = self.create(directory, score, sid_count=2)
+            native = Path(manifest["nativePath"])
+            data = native.read_bytes()
+            self.assertEqual(native.suffix, ".sws")
+            self.assertEqual(data[2:6], b"SWMS")
+            self.assertEqual(data[14], 6)
+            self.assertEqual(data[23:25], b"\x04\x00")
+            self.assertEqual(manifest["sidCount"], 2)
+            self.assertEqual(manifest["sids"], [{"baseAddress": 0xd400, "model": "MOS8580"}, {"baseAddress": 0xd420, "model": "MOS8580"}])
+            self.assertEqual([(voice["sidIndex"], voice["sidVoice"]) for voice in manifest["voices"]], [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2)])
+            self.assertEqual([voice["notes"][0]["midi"] for voice in manifest["voices"]], list(range(60, 66)))
+            self.assertEqual(manifest["nativeSha256"], hashlib.sha256(data).hexdigest())
+
+    def test_chip_count_requires_exactly_three_or_six_distinct_voices(self):
+        for sid_count, voices in ((2, 3), (1, 6), (3, 6), (True, 3), ("2", 6)):
+            with self.subTest(sid_count=sid_count, voices=voices), tempfile.TemporaryDirectory() as directory:
+                score = synthetic_score([], beats=4)
+                score["voices"] = [{"name": f"part-{index}", "events": []} for index in range(voices)]
+                with self.assertRaisesRegex(ValueError, "SID count|voices"):
+                    self.create(directory, score, sid_count=sid_count)
+                self.assertFalse((Path(directory) / "out").exists())
+
+    def test_two_sid_instrument_capacity_is_29_without_raising_native_limits(self):
+        score = synthetic_score([], beats=4)
+        score["voices"] = [{"name": f"part-{index}", "events": []} for index in range(6)]
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "score.json"
+            source.write_text(json.dumps(score))
+            settings = recipe(source, score)
+            settings["sidCount"] = 2
+            settings["instruments"].update({f"patch-{index}": INSTRUMENT for index in range(29)})
+            configuration = Path(directory) / "native.json"
+            configuration.write_text(json.dumps(settings))
+            with self.assertRaisesRegex(ValueError, "29 instruments"):
+                ARRANGER.arrange(configuration, Path(directory) / "out")
+            self.assertFalse((Path(directory) / "out").exists())
+
+    def test_retained_six_voice_fixture_keeps_both_original_filter_programs(self):
+        configuration = ROOT / "tests/fixtures/sidwizard-2sid/recipe.json"
+        with tempfile.TemporaryDirectory() as directory:
+            manifest = ARRANGER.arrange(configuration, Path(directory) / "out")
+            self.assertEqual(sum(len(voice["notes"]) for voice in manifest["voices"]), 12)
+            self.assertEqual(manifest["timingChanges"], [])
+            left = (Path(directory) / "out/instruments/left-filter.swi").read_bytes()[2:]
+            right = (Path(directory) / "out/instruments/right-filter.swi").read_bytes()[2:]
+            self.assertEqual(left[left[11]:left[11] + 3], b"\x93\x24\x00")
+            self.assertEqual(right[right[11]:right[11] + 3], b"\x93\x78\x00")
 
     def test_full_score_preserves_all_981_notes_and_absolute_pal_timing_within_native_limits(self):
         score = json.loads((ROOT / "songs/fuer-elise.json").read_text())

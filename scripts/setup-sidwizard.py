@@ -1,5 +1,6 @@
 """Build the pinned, unmodified SID-Wizard 1.97 native exporter for batch use."""
 
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -32,9 +33,12 @@ def acquire(path, url, digest):
         raise ValueError(f"Pinned archive checksum mismatch: {path}")
 
 
-def setup():
-    TOOL_ROOT.mkdir(parents=True, exist_ok=True)
-    (TOOL_ROOT / "build.json").unlink(missing_ok=True)
+def setup(sid_count=1):
+    if type(sid_count) is not int or sid_count not in (1, 2):
+        raise ValueError("SID count must be 1 or 2")
+    tool_root = TOOL_ROOT if sid_count == 1 else ROOT / ".tools/sid-wizard-exporter-2sid"
+    tool_root.mkdir(parents=True, exist_ok=True)
+    (tool_root / "build.json").unlink(missing_ok=True)
     acquire(SW_ARCHIVE, SW_URL, SW_SHA256)
     acquire(TASS_ARCHIVE, TASS_URL, TASS_SHA256)
     SW_ROOT.mkdir(parents=True, exist_ok=True)
@@ -67,28 +71,31 @@ def setup():
                 raise ValueError("Existing extraction path leaves the 64tass source directory") from error
         archive.extractall(TASS_ROOT)
     assembler_root = TASS_ROOT / "64tass-1.60.3243-src"
-    with (TOOL_ROOT / "build.log").open("w") as log:
+    with (tool_root / "build.log").open("w") as log:
         subprocess.run(["make", "-j2"], cwd=assembler_root, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=120)
         assembler = assembler_root / "64tass"
         subprocess.run([
             str(assembler), "-C", "-a", "-Wno-deprecated", "-DEMULATOR=0", "-DTUI_ONLY=0",
-            "-DSID_AMOUNT=1", '-DSWversion="1.9"', "--vice-labels-numeric",
-            "-l", str(TOOL_ROOT / "exporter.labels"), "-o", str(TOOL_ROOT / "exporter.prg"), "exporter.asm",
+            f"-DSID_AMOUNT={sid_count}", '-DSWversion="1.9"', "--vice-labels-numeric",
+            "-l", str(tool_root / "exporter.labels"), "-o", str(tool_root / "exporter.prg"), "exporter.asm",
         ], cwd=SW_ROOT / "native/sources", stdout=log, stderr=subprocess.STDOUT, check=True, timeout=60)
-    labels_path = TOOL_ROOT / "exporter.labels"
+    labels_path = tool_root / "exporter.labels"
     labels_path.write_text("\n".join(sorted(labels_path.read_text().splitlines())) + "\n")
     manifest = {
         "sidWizardVersion": "1.97", "sidWizardArchiveUrl": SW_URL, "sidWizardArchiveSha256": SW_SHA256,
         "assemblerVersion": "64tass 1.60.3243", "assemblerArchiveUrl": TASS_URL, "assemblerArchiveSha256": TASS_SHA256,
-        "exporterSha256": sha256(TOOL_ROOT / "exporter.prg"), "labelsSha256": sha256(TOOL_ROOT / "exporter.labels"),
-        "sourceModified": False,
+        "exporterSha256": sha256(tool_root / "exporter.prg"), "labelsSha256": sha256(tool_root / "exporter.labels"),
+        "sidCount": sid_count, "sourceModified": False,
     }
-    (TOOL_ROOT / "build.json").write_text(json.dumps(manifest, indent=2) + "\n")
+    (tool_root / "build.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return manifest
 
 
 if __name__ == "__main__":
     try:
-        print(json.dumps(setup(), indent=2))
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("--sid-count", type=int, choices=(1, 2), default=1)
+        args = parser.parse_args()
+        print(json.dumps(setup(args.sid_count), indent=2))
     except (OSError, ValueError, subprocess.SubprocessError) as error:
         raise SystemExit(str(error))

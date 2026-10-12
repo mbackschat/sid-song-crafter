@@ -1,6 +1,6 @@
 # SID-Wizard 1.97: native Extra export without a desktop
 
-The official SID-Maker exporter accepts this repository's original native SWM1 instrument studies, emits the Extra player, and produces callable PSID and standalone PRG files through a reproducible headless adapter. This establishes a usable native export path. Rendered signal and CPU checks remain separate from a listening judgment; no claim of musical superiority follows from successful export.
+The official SID-Maker exporter accepts this repository's original native SWM1 and SWMS workfiles, emits the Extra player, and produces callable PSID and standalone PRG files through a reproducible headless adapter. This establishes a usable native export path for one or two SIDs. Rendered signal and CPU checks remain separate from a listening judgment; no claim of musical superiority follows from successful export.
 
 ## Source and build identity
 
@@ -9,23 +9,30 @@ The official SID-Maker exporter accepts this repository's original native SWM1 i
 | SID-Wizard 1.97 source/examples | [Author's release](https://csdb.dk/release/?id=262561), [official archive](https://csdb.dk/getinternalfile.php/281063/SID-Wizard-1.97-sources-examples.tar.gz) | `aeb265f4a778b2acb5aad13e8e98af882888292f749f29f4d18cbf49850e57bc` |
 | 64tass 1.60.3243 source | [Maintainer's download and published checksum](https://sourceforge.net/projects/tass64/files/source/64tass-1.60.3243-src.zip/download) | `9d83be3d23a2c55e085b7c7a7856c2f96080447ea120a6a8c21a217ed76427f0` |
 
-The SID-Wizard hash identifies the acquired archive; upstream did not independently publish that checksum in the inspected material. The 64tass hash matches the maintainer's SourceForge download page. [setup-sidwizard.py](../../../scripts/setup-sidwizard.py) verifies both archives, extracts them under ignored `.tools/`, builds 64tass using `make` and a C compiler, and assembles the unmodified native `exporter.asm` with its original includes. The build uses `EMULATOR=0`, `TUI_ONLY=0`, `SID_AMOUNT=1`, and the upstream `SWversion="1.9"` driver signature within the 1.97 release. Symbol listing lines are sorted before hashing because 64tass does not emit them in a stable order. Setup records the assembler version, archive identities, assembled PRG hash, and symbol-file hash in `.tools/sid-wizard-exporter/build.json`; build output is retained in `build.log` there. External build commands have explicit deadlines, and a failed setup invalidates the previous build receipt.
+The SID-Wizard hash identifies the acquired archive; upstream did not independently publish that checksum in the inspected material. The 64tass hash matches the maintainer's SourceForge download page. [setup-sidwizard.py](../../../scripts/setup-sidwizard.py) verifies both archives, extracts them under ignored `.tools/`, builds 64tass using `make` and a C compiler, and assembles the unmodified native `exporter.asm` with its original includes. The build uses `EMULATOR=0`, `TUI_ONLY=0`, the selected `SID_AMOUNT=1` or `2`, and the upstream `SWversion="1.9"` driver signature within the 1.97 release. Symbol listing lines are sorted before hashing because 64tass does not emit them in a stable order. Setup records the chip count, assembler version, archive identities, assembled PRG hash, and symbol-file hash in a separate build receipt: `.tools/sid-wizard-exporter/build.json` for one SID or `.tools/sid-wizard-exporter-2sid/build.json` for two. External build commands have explicit deadlines, and a failed setup invalidates the selected build receipt.
 
 The archive's `native/README.txt` declares SID-Wizard a WTF-licensed tool. Preserve that notice and the author's attribution, Mihaly Horvath/Hermit Software. 64tass includes its GPL v2 license and additional component notices. The build uses the existing documented [py65 1.2.0 dependency](../../first-song.md); its license is BSD. The host editor's bundled SDL, ncurses, MIDI, and audio libraries are unnecessary for this export route and have separate upstream notices.
 
 ## Contract and original routines
 
-[export-sidwizard.py](../../../scripts/export-sidwizard.py) accepts a native SWM1 file including its two-byte KERNAL load address. The trial contract is one SID, one subtune with three sequences, Extra driver information value `3`, frame speed `1`, standard PAL tuning, and MOS8580 metadata. It rejects unsupported variants and timing rather than silently changing the native header. Module structure, pattern/instrument references, sequence endings, and saved row lengths are checked before bounded CPU execution. The adapter does not alter the input SWM.
+[export-sidwizard.py](../../../scripts/export-sidwizard.py) accepts a native workfile including its two-byte KERNAL load address and selects the matching exporter from its `SWM1` or `SWMS` identifier. Both targets require one subtune, Extra driver information value `3`, frame speed `1`, standard PAL tuning, and MOS8580 metadata. Module structure, pattern/instrument references, sequence endings, and saved row lengths are checked before bounded CPU execution. The adapter does not alter the input workfile.
+
+| Target | Native extension/identifier | Voice sequences | Pattern limit | Instrument limit | SID bases | PSID |
+| --- | --- | --- | --- | --- | --- | --- |
+| One SID | `.swm` / `SWM1` | 3 | 100 | 36 | `$D400` | v2, flags `$0024` |
+| Two SIDs | `.sws` / `SWMS` | 6 | 105 | 29 | `$D400`, `$D420` | v3, flags `$00A4`, second address byte `$42` |
+
+The two-SID limits and header positions come from [the pinned native settings](../../../.tools/sid-wizard-1.97/native/sources/settings.cfg): highlighting moves to byte21 and SID2's address ID is byte22. The adapter requires ID0, which the original `SID23setter` maps to `$D420`. The player uses six distinct voice states and independent filter programs for each SID; this target does not duplicate the first SID's audio. Native instrument and compressed-pattern encodings remain shared between the targets.
 
 The adapter loads the assembled SID-Maker into py65 and calls these upstream routines in their original order:
 
 1. `setEXEdetails` selects and copies the actual Extra player and its frequency table.
 2. `preparetunedata` invokes SID-Maker's native depackers, crops playback-only data, and constructs the sequence, pattern, instrument, chord, and tempo pointers.
-3. `setplayer` applies the original data-pointer patch tables.
+3. For two SIDs, `SID23set:CalcSID2addID` resolves the saved address ID as the upstream export dialog normally does. `setplayer` then applies the original data-pointer and SID-address patch tables.
 4. `SetSIDply` and `SetSIDt` prepare the PSID callable entry points and metadata; `dispMod` selects the 8580 declaration.
 5. `setsaveparam`, stopped before the `SaveExp` file-I/O routine, prepares the original standalone executable starter and its relocation-copy operands.
 
-These are direct routine calls with explicit memory inputs. No TUI session, key simulation, disk directory dialog, or screen-reading automation is involved. Each routine has a bounded instruction count; unsupported opcodes and failed return-stack checks stop export. The adapter serializes the upstream 1x SID saving layout: PSID v2 header, embedded `$1000` load address, and native player/data bytes. Its callable init and play addresses are `$1000` and `$1003`. The standalone PRG loads at `$0801`, enters via `SYS 2061` (`$080D`), and uses those same player addresses after the upstream starter copies the tune into place.
+These are direct routine calls with explicit memory inputs. No TUI session, key simulation, disk directory dialog, or screen-reading automation is involved. Each routine has a bounded instruction count; unsupported opcodes and failed return-stack checks stop export. The adapter serializes the upstream 1x SID saving layout: a 124-byte PSID header, embedded `$1000` load address, and native player/data bytes. Its callable init and play addresses are `$1000` and `$1003`. The standalone PRG loads at `$0801`, enters via `SYS 2061` (`$080D`), and uses those same player addresses after the upstream starter copies the tune into place.
 
 The source contract is defined by the archive's `native/sources/SWM-spec.src`, `include/packdepack.inc`, `include/player.asm`, `include/altplayers.inc`, and `exporter.asm`. An SWM instrument contains 16 parameter bytes, waveform/arpeggio, pulse and filter tables, the offset replacing its final filter delimiter, and an eight-byte name. That offset is one less than the table byte count. SID-Maker restores the delimiter and removes names from the playback payload. Names and all editable instrument parameters remain in the retained SWM/SWI files. The exporter reports this deliberate name omission; native table programs are not converted into a fixed waveform or flattened score.
 
@@ -35,6 +42,7 @@ Run from the repository root after the [Python dependency setup](../../first-son
 
 ```sh
 python3 scripts/setup-sidwizard.py
+python3 scripts/setup-sidwizard.py --sid-count 2
 python3 -m unittest discover -s tests -p sidwizard_export_test.py -v
 python3 scripts/export-sidwizard.py songs/studies/sidwizard-repertoire/native/pulse-candidate.swm --output-dir build/sidwizard/pulse-candidate --title 'Pulse candidate' --author 'Original study'
 python3 scripts/export-sidwizard.py songs/studies/sidwizard-repertoire/native/mix-candidate.swm --output-dir build/sidwizard/mix-candidate --title 'Mix candidate' --author 'Original study'
@@ -44,9 +52,20 @@ Each export writes `<stem>.sid`, `<stem>.prg`, and `<stem>.export.json`. The rep
 
 The [original repertoire source](../../../songs/studies/sidwizard-repertoire/repertoire.json), [native workfiles](../../../songs/studies/sidwizard-repertoire/native), and [generator](../../../scripts/generate-native-instruments.py) retain the musical phrases and instrument programs independently of the generated playback binaries. See the [repertoire guide](../../../songs/studies/sidwizard-repertoire/README.md) for each candidate/reference pair and the scope of its sound-design change.
 
+## Native two-SID fixture and unattended startup
+
+[arrange-sidwizard.py](../../../scripts/arrange-sidwizard.py) accepts recipe `sidCount: 1` or `2`, defaulting to one for existing recipes. The score must contain exactly three or six distinctly named, ordered monophonic voices. Voices0–2 use SID1 and voices3–5 use SID2; reports expose `sidCount`, ordered `sids` with base addresses and models, and each voice's `sidIndex`/`sidVoice`. The [original six-voice recipe](../../../tests/fixtures/sidwizard-2sid/recipe.json) and [score](../../../tests/fixtures/sidwizard-2sid/score.json) retain twelve test notes and two different filter programs. They are test material, not a song transcription.
+
+```sh
+python3 scripts/arrange-sidwizard.py tests/fixtures/sidwizard-2sid/recipe.json --output-dir build/sidwizard-2sid-fixture/conversion
+python3 scripts/export-sidwizard.py build/sidwizard-2sid-fixture/conversion/recipe.sws --output-dir build/sidwizard-2sid-fixture/export --title 'Original 2SID fixture' --author Test
+```
+
+The original two-SID PRG asks for its SID2 address before playback. Its selector polls the CIA keyboard matrix directly while interrupts are disabled, so the monitor's KERNAL `keybuf` command cannot answer it. The exported report identifies `standaloneAddressSelector.entryAddress` and `returnAddress`: at entry the default address has already been resolved; setting the monitor PC to the existing RTS returns normally and lets `ModifySID2addresses` continue. The adapter checks that return opcode and leaves all starter and player bytes unchanged. Keep interactive address selection when running the PRG manually. The [native workflow](../../native-song-workflow.md) owns independent VICE verification of this monitor route.
+
 ## Verification and material limits
 
-The adapter tests run an original minimal SWM through the actual native exporter, assert deterministic PSID/PRG bytes, native instrument table retention, metadata and callable addresses, and rejection of unsupported timing, bad references, truncated modules, source collisions, and changed output evidence. Setup is a test prerequisite because upstream source and compiled tools are intentionally ignored rather than vendored.
+The adapter tests run independently encoded original one-SID and six-voice two-SID fixtures through the actual native exporter. They verify deterministic PSID/PRG bytes, native table retention, six distinct sounding frequency words, separate filter cutoffs and routing, both ending volumes, metadata and callable addresses, and rejection of unsupported timing, bad references, truncated modules, source collisions, and changed output evidence. Prepare both chip-count builds before running export tests because upstream source and compiled tools are intentionally ignored rather than vendored.
 
 The original pulse candidate and three-voice mix each passed 501 calls through the separate [PSID CPU audit](../../../scripts/psid_audit.py). At that bound, the pulse reached 1,271 modeled cycles per play call and the mix 2,193, against a PAL frame budget of 19,656. Both used the native Extra ghost-register path, which produced 12,525 SID stores over 501 calls. This records functional CPU execution with an explicit environment; it does not measure hardware bus contention or establish the musical result.
 
@@ -60,4 +79,4 @@ SID-Maker walks patterns backward using that decoded count. A packed-length foot
 
 [Exporter regression tests](../../../tests/sidwizard_export_test.py) reject incorrect packed-length footers and run independently encoded 120- and 240-row sparse patterns through the original exporter and CPU playback. [Arrangement tests](../../../tests/sidwizard_arrangement_test.py) check adaptive chunking against the uncompressed size limit.
 
-The adapter covers native file acceptance and export, not interactive editor audition or reopening/editing through the editor UI. It currently excludes multispeed/CIA timing, alternative players, nonstandard tuning, extra SID chips, SWP, ROM players, SFX, and digi-echo export. Those are explicit limits of this trial adapter, not inferred limits of SID-Wizard. Normal table-driven SID expression remains in the native format; broader backend adoption still depends on rendered comparisons and recorded listening judgments described in the [composition-system assessment](composition-tools.md).
+The adapter covers native file acceptance and export, not interactive editor audition or reopening/editing through the editor UI. It currently excludes multispeed/CIA timing, alternative players, nonstandard tuning, three or more SID chips, other SID bases/models, SWP, ROM players, SFX, and digi-echo export. Those are explicit limits of this trial adapter, not inferred limits of SID-Wizard. Tick-grid arrangements must still fit the selected native pattern limit; NOP compression does not increase it. Normal table-driven SID expression remains in the native format; broader backend adoption still depends on rendered comparisons and recorded listening judgments described in the [composition-system assessment](composition-tools.md).
