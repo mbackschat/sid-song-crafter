@@ -4,7 +4,9 @@ Follow [Repository Guidelines](AGENTS.md) for musical priorities, knowledge retr
 
 ## Use MEDIUM sub-agents selectively
 
-Delegation is authorized for this project. Prefer MEDIUM for delegated work, resolving its model and effort from the user's global tier mappings; do not duplicate those mappings here. Optimize for useful progress per cost, including the coordinator's briefing, waiting and review overhead.
+**Model tiers are symbolic (HIGH, MEDIUM).** Resolve them through the tier table in your global instructions; the maintainer's table is [Model tier mappings](https://github.com/mbackschat/coding-setup/blob/main/CLAUDE.md#model-tier-mappings). Without such a table, run HIGH on your most capable model and MEDIUM on a faster, cheaper one, and say which models you used. Do not duplicate the mappings here or silently substitute an unsupported mapped configuration.
+
+Delegation is authorized for this project. Prefer MEDIUM for delegated work. Optimize for useful progress per cost, including the coordinator's briefing, waiting and review overhead.
 
 - **Delegate bounded work with a clear payoff:** independent source/code investigation, an implementation with isolated file ownership, or review of consequential parser, timing or evidence claims. Parallelize independent tasks that advance the current deliverable.
 - **Keep small or tightly dependent work local:** short explanations, routine commands, small documentation edits and changes that require continuous shared context usually cost less to finish directly. Do not spawn an agent merely because a slot is available.
