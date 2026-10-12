@@ -43,6 +43,101 @@ def fixture():
 
 
 class NativeSongTest(unittest.TestCase):
+    @unittest.skipUnless((ROOT / ".tools/sid-wizard-exporter-2sid/exporter.labels").is_file() and (ROOT / ".local/bin/render-sid").is_file(), "Pinned two-SID exporter and renderer required")
+    def test_original_six_voice_fixture_survives_the_complete_native_workflow(self):
+        with tempfile.TemporaryDirectory() as directory, patch("builtins.print"):
+            report = native_song.run_song(ROOT / "tests/fixtures/sidwizard-2sid/recipe.json", Path(directory) / "song", excerpt_start=0.5, excerpt_seconds=1)
+            self.assertEqual(report["schedule"]["noteCounts"], [2] * 6)
+            self.assertTrue(report["schedule"]["postStopGatesAndVolumeClear"])
+            self.assertEqual(report["audit"]["sidCount"], 2)
+            self.assertEqual(report["pcm"]["channels"], 2)
+            self.assertEqual(report["excerpt"]["sourceStartFrame"], 22050)
+            excerpt = native_song.read_pcm16(report["excerpt"]["path"])
+            original = native_song.read_pcm16(Path(directory) / "song/native-song.wav")
+            self.assertEqual(excerpt.frames, 44100)
+            self.assertEqual(excerpt.channels, 2)
+            self.assertEqual(excerpt.samples, original.samples[44100:132300])
+
+    def dual_fixture(self):
+        manifest, observer, frames = fixture()
+        manifest["sidCount"] = 2
+        manifest["sids"] = [{"baseAddress": base, "model": "MOS8580"} for base in (0xd400, 0xd420)]
+        manifest["voices"] += copy.deepcopy(manifest["voices"])
+        for collection in (manifest["cellMap"], observer.cells, observer.starts, observer.sequence_reads):
+            collection.extend([dict(entry, voice=entry["voice"] + 3) for entry in collection])
+        manifest["criticalNotes"].append(dict(manifest["criticalNotes"][0], voice=3))
+        return manifest, observer, [state + state for state in frames]
+
+    def test_dual_schedule_checks_all_six_voices_and_both_stopped_chips(self):
+        manifest, observer, frames = self.dual_fixture()
+        result = native_song.verify_driver_events(manifest, observer, frames)
+        self.assertEqual(result["noteCounts"], [2, 1, 0, 2, 1, 0])
+        self.assertEqual([note["voice"] for note in result["criticalNotes"]], [0, 3])
+        for register in (29, 36, 43, 49):
+            changed = copy.deepcopy(frames)
+            changed[5][register] = 1
+            with self.subTest(register=register), self.assertRaisesRegex(ValueError, "post-stop"):
+                native_song.verify_driver_events(manifest, observer, changed)
+        frames[1][25] ^= 32
+        with self.assertRaisesRegex(ValueError, "Voice 4 critical"):
+            native_song.verify_driver_events(manifest, observer, frames)
+
+    def test_rejects_inconsistent_chip_voice_and_frame_layouts(self):
+        for change in (
+            lambda manifest, frames: manifest.update(sidCount=3),
+            lambda manifest, frames: manifest["voices"].pop(),
+            lambda manifest, frames: manifest["sids"][1].update(baseAddress=0xd400),
+            lambda manifest, frames: manifest["sids"][1].update(model="MOS6581"),
+            lambda manifest, frames: manifest["voices"][3].update(sidIndex=0, sidVoice=0),
+            lambda manifest, frames: frames[0].pop(),
+        ):
+            manifest, observer, frames = self.dual_fixture()
+            change(manifest, frames)
+            with self.subTest(change=change), self.assertRaisesRegex(ValueError, "layout"):
+                native_song.verify_driver_events(manifest, observer, frames)
+
+    def test_dual_frame_reconstruction_keeps_register_banks_independent(self):
+        writes = [dict(phase="init", tick=None, address=0xd438, value=15), dict(phase="play", tick=0, address=0xd400, value=12), dict(phase="play", tick=1, address=0xd420, value=34)]
+        frames = native_song.frame_states(writes, 3, (0xd400, 0xd420))
+        self.assertEqual([(state[0], state[25], state[49]) for state in frames], [(12, 0, 15), (12, 34, 15), (12, 34, 15)])
+        with self.assertRaisesRegex(ValueError, "register"):
+            native_song.frame_states([dict(phase="init", tick=None, address=0xd419, value=1)], 1, (0xd400, 0xd420))
+
+    def test_observer_maps_second_sid_channels_without_aliasing_first_chip(self):
+        names = ("CHNOTEC", "CURPTN", "STRTSND", "DPITCH", "CURINS", "INIPTN", "SEQPOS", "SEQFXL2")
+        labels = {"extraPlayer:player:" + name: 0x2000 + index * 64 for index, name in enumerate(names)}
+        labels["PLAYERZP"] = 0xfe
+        memory = SimpleNamespace(phase="play", tick=1, data=bytearray(65536))
+        for voice in range(6):
+            memory.data[labels["extraPlayer:player:DPITCH"] + voice * 7] = 40 + voice
+            memory.data[labels["extraPlayer:player:CURINS"] + voice * 7] = voice + 1
+        observer = native_song.NativeObserver(labels, 2)
+        for voice in range(6):
+            observer(SimpleNamespace(pc=labels["extraPlayer:player:STRTSND"], x=voice * 7), memory)
+        self.assertEqual([entry["nativeNote"] for entry in observer.starts], list(range(40, 46)))
+        self.assertEqual([entry["voice"] for entry in observer.starts], list(range(6)))
+        with self.assertRaisesRegex(ValueError, "channel layout"):
+            native_song.NativeObserver(labels)(SimpleNamespace(pc=labels["extraPlayer:player:STRTSND"], x=21), memory)
+
+    def test_stereo_pcm_requires_energy_in_each_chip_channel_and_exact_frame_count(self):
+        pcm = {"sampleRate": 44100, "channels": 2, "frames": 88200, "clippedSamples": 0, "acRms": 100, "perChannel": [{"acRms": 50}, {"acRms": 100}]}
+        native_song.verify_render(pcm, 2, 2)
+        for change in (
+            lambda pcm: pcm["perChannel"][1].update(acRms=0),
+            lambda pcm: pcm.update(frames=176400),
+            lambda pcm: pcm.update(channels=1),
+            lambda pcm: pcm.update(clippedSamples=1),
+        ):
+            changed = copy.deepcopy(pcm)
+            change(changed)
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                native_song.verify_render(changed, 2, 2)
+
+    def test_dual_metadata_requires_explicit_ordered_chips(self):
+        with self.assertRaisesRegex(ValueError, "layout"):
+            native_song.sid_layout({"sidCount": 2})
+        self.assertEqual(native_song.sid_layout({}), [{"baseAddress": 0xd400, "model": "MOS8580"}])
+
     def test_checks_every_note_cell_note_start_pattern_and_terminal_stop(self):
         manifest, observer, frames = fixture()
         report = native_song.verify_driver_events(manifest, observer, frames)

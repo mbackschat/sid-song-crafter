@@ -31,24 +31,40 @@ def write_json(path, value):
         output.write(json.dumps(value, indent=2, allow_nan=False) + "\n")
 
 
-def frame_states(writes, ticks):
-    registers = [0] * 25
+def sid_layout(report):
+    count = report.get("sidCount", 1)
+    require(type(count) is int and count in (1, 2), "Native SID layout must contain one or two chips")
+    sids = [{"baseAddress": base, "model": "MOS8580"} for base in (0xd400, 0xd420)[:count]]
+    require(report.get("sids", sids if count == 1 else None) == sids, "Native SID layout requires ordered MOS8580 chips at $d400/$d420")
+    return sids
+
+
+def voice_offset(voice):
+    return (voice // 3) * 25 + (voice % 3) * 7
+
+
+def frame_states(writes, ticks, sid_bases=(0xd400,)):
+    offsets = {base + register: chip * 25 + register for chip, base in enumerate(sid_bases) for register in range(25)}
+    require(all(write["address"] in offsets for write in writes), "Unexpected SID register address")
+    registers = [0] * (25 * len(sid_bases))
     for write in writes:
         if write["phase"] == "init":
-            registers[write["address"] - 0xd400] = write["value"]
+            registers[offsets[write["address"]]] = write["value"]
     frames, cursor = [], 0
     playback = [write for write in writes if write["phase"] == "play"]
     for tick in range(ticks):
         while cursor < len(playback) and playback[cursor]["tick"] == tick:
             write = playback[cursor]
-            registers[write["address"] - 0xd400] = write["value"]
+            registers[offsets[write["address"]]] = write["value"]
             cursor += 1
         frames.append(registers.copy())
     return frames
 
 
 class NativeObserver:
-    def __init__(self, labels):
+    def __init__(self, labels, sid_count=1):
+        require(sid_count in (1, 2), "Unsupported native observer SID layout")
+        self.channels = range(0, 21 * sid_count, 7)
         self.labels = {name: labels[f"extraPlayer:player:{name}"] for name in ("CHNOTEC", "CURPTN", "STRTSND", "DPITCH", "CURINS", "INIPTN", "SEQPOS", "SEQFXL2")}
         self.pointer = labels["PLAYERZP"]
         self.cells, self.starts, self.sequence_reads = [], [], []
@@ -58,7 +74,7 @@ class NativeObserver:
         pc, labels = cpu.pc, self.labels
         if pc not in (labels["CHNOTEC"], labels["STRTSND"], labels["INIPTN"], labels["SEQFXL2"] + 3):
             return
-        require(cpu.x in (0, 7, 14), "Native observer encountered an unsupported channel layout")
+        require(cpu.x in self.channels, "Native observer encountered an unsupported channel layout")
         voice = cpu.x // 7
         if pc == labels["INIPTN"] and memory.phase == "init":
             self.sequence_reads.append({"voice": voice, "tick": None, "entry": cpu.a})
@@ -81,8 +97,12 @@ class NativeObserver:
 
 
 def verify_driver_events(manifest, observer, frames):
+    sid_count = len(sid_layout(manifest))
+    voice_count = sid_count * 3
+    require(len(manifest["voices"]) == voice_count and all(len(state) == 25 * sid_count for state in frames), "Native voice/register layout differs from the declared SID count")
     counts, last_notes, stop_ticks, off_reads, volume_reads = [], [], [], [], []
     for voice, part in enumerate(manifest["voices"]):
+        require((part.get("sidIndex", voice // 3), part.get("sidVoice", voice % 3)) == (voice // 3, voice % 3), "Native voice layout differs from the ordered chip mapping")
         expected_ending = [(entry["tick"], entry["entry"]) for entry in part["expectedSequenceEnding"]]
         require(expected_ending and expected_ending[-1] == (manifest["stopTick"], 254), "Invalid expected native sequence completion")
         expected_sequence = [(entry["tick"], entry["pattern"]) for entry in part["expectedPatternEntries"]] + expected_ending
@@ -109,12 +129,12 @@ def verify_driver_events(manifest, observer, frames):
     require(len(frames) > manifest["stopTick"] + 1, "Audit does not include post-stop calls")
     volume_clear_tick = manifest["stopVolumeClearTick"]
     require(volume_clear_tick == manifest["stopTick"], "Native volume clear tick must match the proven sequence stop call")
-    require(all(not state[voice * 7 + 4] & 1 for state in frames[manifest["stopTick"]:] for voice in range(3)) and all(state[24] & 15 == 0 for state in frames[volume_clear_tick:]), "Native driver retains an active gate or master volume in post-stop calls")
+    require(all(not state[voice_offset(voice) + 4] & 1 for state in frames[manifest["stopTick"]:] for voice in range(voice_count)) and all(state[chip * 25 + 24] & 15 == 0 for state in frames[volume_clear_tick:] for chip in range(sid_count)), "Native driver retains an active gate or master volume in post-stop calls")
     critical = []
     for note in manifest["criticalNotes"]:
         voice, tick = note["voice"], note["audibleCheckTick"]
-        require(0 <= voice < 3 and 0 <= tick < manifest["stopTick"], "Invalid critical short note check position")
-        state, base = frames[tick], voice * 7
+        require(0 <= voice < voice_count and 0 <= tick < manifest["stopTick"], "Invalid critical short note check position")
+        state, base = frames[tick], voice_offset(voice)
         control = state[base + 4]
         word = state[base] | state[base + 1] << 8
         expected_word = round(440 * 2 ** ((note["midi"] - 69) / 12) * 2**24 / manifest["clockHz"])
@@ -126,17 +146,21 @@ def verify_driver_events(manifest, observer, frames):
 def audit_native(manifest_path, export_path, prefix, ticks):
     manifest = json.loads(Path(manifest_path).read_text())
     exported = json.loads(Path(export_path).read_text())
+    sids = sid_layout(manifest)
+    require(sid_layout(exported) == sids, "Conversion and export SID layouts disagree")
     native = Path(manifest["nativePath"])
     require(hashlib.sha256(native.read_bytes()).hexdigest() == manifest["nativeSha256"] == exported["sourceSha256"], "Native source differs from the conversion/export evidence")
     sid = Path(exported["sid"]).read_bytes()
     require(hashlib.sha256(sid).hexdigest() == exported["sidSha256"], "Exported SID differs from its retained report")
     require((exported["player"], exported["loadAddress"], exported["initAddress"], exported["playAddress"]) == ("Extra", 0x1000, 0x1000, 0x1003), "Native observer supports the pinned Extra player at $1000 only")
-    label_bytes = (ROOT / ".tools/sid-wizard-exporter/exporter.labels").read_bytes()
+    exporter_directory = "sid-wizard-exporter-2sid" if len(sids) == 2 else "sid-wizard-exporter"
+    label_bytes = (ROOT / ".tools" / exporter_directory / "exporter.labels").read_bytes()
     require(hashlib.sha256(label_bytes).hexdigest() == exported["build"]["labelsSha256"], "Native observer labels differ from the exporter build")
     labels = {name: int(value, 16) for value, name in re.findall(r"^al ([\da-fA-F]+) \.(.+)$", label_bytes.decode(), re.MULTILINE)}
-    observer = NativeObserver(labels)
+    observer = NativeObserver(labels, len(sids))
     audited, writes = audit_psid(sid, ticks, observer=observer)
-    frames = frame_states(writes, ticks)
+    require(sid_layout(audited) == sids, "Audited PSID and conversion SID layouts disagree")
+    frames = frame_states(writes, ticks, tuple(sid["baseAddress"] for sid in sids))
     paths = {key: Path(str(prefix) + suffix) for key, suffix in (("audit", ".audit.json"), ("writes", ".writes.json"), ("frames", ".frames.json"), ("nativeEvents", ".native-events.json"), ("schedule", ".schedule.json"))}
     for key, value in (("audit", audited), ("writes", writes), ("frames", frames), ("nativeEvents", {"cells": observer.cells, "starts": observer.starts, "sequenceReads": observer.sequence_reads})):
         write_json(paths[key], value)
@@ -160,6 +184,12 @@ def write_excerpt(source, destination, start_seconds, seconds):
     return {"path": str(Path(destination).resolve()), "sourceStartFrame": start, "frames": count, "durationSeconds": count / audio.sample_rate, "sha256": hashlib.sha256(Path(destination).read_bytes()).hexdigest(), "gain": 1}
 
 
+def verify_render(pcm, seconds, sid_count):
+    layout = "mono" if sid_count == 1 else "stereo"
+    require(pcm["sampleRate"] == 44100 and pcm["channels"] == sid_count and pcm["frames"] == round(seconds * 44100), f"Renderer did not produce the complete {layout} PCM16 duration at 44100 Hz")
+    require(pcm["clippedSamples"] == 0 and len(pcm["perChannel"]) == sid_count and all(channel["acRms"] > 1 for channel in pcm["perChannel"]), "Full native render is clipped or contains a silent chip channel")
+
+
 def run_song(recipe, output, renderer=ROOT / ".local/bin/render-sid", excerpt_start=0, excerpt_seconds=20):
     require(math.isfinite(excerpt_start) and excerpt_start >= 0 and math.isfinite(excerpt_seconds) and excerpt_seconds > 0, "Excerpt position/duration must be finite, nonnegative and positive respectively")
     recipe, output, renderer = Path(recipe).resolve(), Path(output).resolve(), Path(renderer).resolve()
@@ -168,6 +198,7 @@ def run_song(recipe, output, renderer=ROOT / ".local/bin/render-sid", excerpt_st
     output.mkdir(parents=True)
     converter = load_script("arrange-sidwizard")
     manifest = converter.arrange(recipe, output / "conversion")
+    sid_count = len(sid_layout(manifest))
     manifest_path = output / "conversion.json"
     write_json(manifest_path, manifest)
     exporter = load_script("export-sidwizard")
@@ -196,13 +227,12 @@ def run_song(recipe, output, renderer=ROOT / ".local/bin/render-sid", excerpt_st
     if rendered.returncode != 0:
         raise subprocess.CalledProcessError(rendered.returncode, command, rendered.stdout, rendered.stderr)
     pcm = inspect_wav(wav)
-    require(pcm["sampleRate"] == 44100 and pcm["channels"] == 1 and pcm["frames"] == round(seconds * 44100), "Renderer did not produce the complete mono PCM16 duration at 44100 Hz")
-    require(pcm["clippedSamples"] == 0 and pcm["acRms"] > 1, "Full native render is clipped or silent")
+    verify_render(pcm, seconds, sid_count)
     audio = read_pcm16(wav)
     tail_frames = round(audio.sample_rate * 0.5)
     tail = Pcm16(audio.sample_rate, audio.channels, tail_frames, audio.samples[-tail_frames * audio.channels:], "")
     ending = measure_pcm(tail)
-    require(ending["acRms"] < 16, "Full native render does not have a quiet ending")
+    require(all(channel["acRms"] < 16 for channel in ending["perChannel"]), "Full native render does not have a quiet ending on every chip channel")
     excerpt = write_excerpt(wav, output / "native-song.excerpt.wav", excerpt_start, excerpt_seconds)
     report = {"schemaVersion": 1, "evidenceLevel": "rendered experiment", "listeningReview": None, "conversionManifest": str(manifest_path), "exportReport": str(export_path), "audit": json.loads(Path(str(prefix) + ".audit.json").read_text()), "schedule": json.loads(Path(str(prefix) + ".schedule.json").read_text()), "pcm": pcm, "endingAcRms": ending["acRms"], "excerpt": excerpt, "renderer": renderer_report, "evidenceFiles": {key: str(Path(str(prefix) + suffix)) for key, suffix in (("writes", ".writes.json"), ("frames", ".frames.json"), ("nativeEvents", ".native-events.json"))}, "limitations": "RAM-only CPU scheduling evidence and emulated PCM health; first-frame audible pitch and ADSR equivalence are limited by the native driver, no hardware or listening approval is claimed."}
     write_json(output / "verification.json", report)

@@ -1,7 +1,10 @@
+import copy
+import hashlib
 import importlib.util
 import sys
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('native_vice', ROOT / 'scripts/verify-native-vice.py')
@@ -17,6 +20,57 @@ def log_for(states, cycles):
 
 
 class NativeViceTest(unittest.TestCase):
+    def test_export_profile_binds_prg_and_selector_to_the_pinned_build(self):
+        prg = bytearray(1024)
+        prg[:2] = b'\x01\x08'
+        prg[0x0bd0 - 0x0801 + 2] = 0x60
+        labels = b'al b27 .SetSID2address\nal bd0 .SID2keyExe:endplmi\n'
+        report = {'prgSha256': hashlib.sha256(prg).hexdigest(), 'player': 'Extra', 'frameSpeed': 1, 'standalonePlayerPlayAddress': 0x1003, 'sidCount': 2, 'sids': [{'baseAddress': base, 'model': 'MOS8580'} for base in (0xd400, 0xd420)], 'build': {'labelsSha256': hashlib.sha256(labels).hexdigest()}, 'standaloneAddressSelector': {'entryAddress': 0x0b27, 'returnAddress': 0x0bd0, 'baseAddress': 0xd420}}
+        with patch.object(Path, 'read_bytes', return_value=labels):
+            self.assertEqual(native_vice.export_profile(prg, report)[0], (0xd400, 0xd420))
+            for change in (
+                lambda report: report.update(prgSha256='changed'),
+                lambda report: report['build'].update(labelsSha256='changed'),
+                lambda report: report['sids'][1].update(baseAddress=0xd440),
+                lambda report: report['standaloneAddressSelector'].update(returnAddress=0x0bcf),
+                lambda report: report.update(frameSpeed=2),
+            ):
+                changed = copy.deepcopy(report)
+                change(changed)
+                with self.subTest(change=change), self.assertRaises(ValueError):
+                    native_vice.export_profile(prg, changed)
+            prg[0x0bd0 - 0x0801 + 2] = 0xea
+            report['prgSha256'] = hashlib.sha256(prg).hexdigest()
+            with self.assertRaisesRegex(ValueError, 'original RTS'):
+                native_vice.export_profile(prg, report)
+
+    def test_dual_checkpoints_compare_each_bank_without_accepting_mirrors(self):
+        writes = [dict(phase='init', tick=None, address=0xd418, value=15), dict(phase='init', tick=None, address=0xd438, value=7), dict(phase='play', tick=0, address=0xd420, value=42)]
+        first, second = bytes(24) + bytes([15]), bytes(24) + bytes([7])
+        log = log_for([first, first], [100, 100 + 19656]).splitlines()
+        log.insert(2, '>C:d420  ' + second.hex(' '))
+        log.append('>C:d420  ' + (bytes([42]) + second[1:]).hex(' '))
+        log = '\n'.join(log)
+        result = native_vice.verify_log(log, writes, [0, 1], (0xd400, 0xd420))
+        self.assertEqual(result['checkpoints'][1]['sidRegisters'], (first + bytes([42]) + second[1:]).hex())
+        for bad in (log.replace('>C:d420  2a', '>C:d420  00'), log.rsplit('\n', 1)[0]):
+            with self.assertRaises(ValueError):
+                native_vice.verify_log(bad, writes, [0, 1], (0xd400, 0xd420))
+
+    def test_dual_monitor_dumps_both_banks_at_every_checkpoint(self):
+        text = native_vice.monitor_commands(Path('/tmp/song.prg'), [0, 20], (0xd400, 0xd420))
+        self.assertEqual(text.count('m $d400 $d418'), 2)
+        self.assertEqual(text.count('m $d420 $d438'), 2)
+
+    def test_headless_selector_returns_through_native_code_and_requires_saved_address(self):
+        selector = {'entryAddress': 0x0b27, 'returnAddress': 0x0bd0, 'baseAddress': 0xd420}
+        text = native_vice.monitor_commands(Path('/tmp/song.prg'), [0, 20], (0xd400, 0xd420), selector)
+        self.assertIn('keybuf run\\n\nuntil $0b27\nradix h\nbank ram\nm $03fe $03ff\nr pc=$0bd0\nx', text)
+        native_vice.verify_selector('>C:03fe  20 d4', selector)
+        for log in ('', '>C:03fe  00 d4', '>C:03fe  20 d4\n>C:03fe  20 d4'):
+            with self.assertRaisesRegex(ValueError, 'saved SID address'):
+                native_vice.verify_selector(log, selector)
+
     def test_checks_init_each_checkpoint_and_pal_cadence_with_poll_jitter(self):
         writes = [dict(phase='init', tick=None, address=0xd418, value=15), dict(phase='play', tick=1, address=0xd400, value=42)]
         initial = bytes(24) + bytes([15])
