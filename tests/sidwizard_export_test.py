@@ -1,5 +1,6 @@
 import importlib.util
 from pathlib import Path
+import re
 import sys
 import tempfile
 import unittest
@@ -69,6 +70,39 @@ def six_voice_native_module():
 
 
 class SIDWizardExportTest(unittest.TestCase):
+    def test_native_model_selection_sets_psid_flags_and_preserves_standalone_player_bytes(self):
+        for count, data, flags in ((1, original_module(), 0x14), (2, six_voice_native_module(), 0x54)):
+            with self.subTest(count=count), tempfile.TemporaryDirectory() as directory:
+                source = Path(directory) / "model.swm"
+                source.write_bytes(data)
+                old = EXPORTER.export_module(source, Path(directory) / "6581", sid_model="MOS6581")
+                new = EXPORTER.export_module(source, Path(directory) / "8580")
+                sid = Path(old["sid"]).read_bytes()
+                self.assertEqual(int.from_bytes(sid[118:120], "big"), flags)
+                self.assertEqual(old["sidModel"], "MOS6581")
+                self.assertEqual(old["sids"], [{"baseAddress": base, "model": "MOS6581"} for base in (0xd400, 0xd420)[:count]])
+                audited, old_writes = audit_psid(sid, 12)
+                _, new_writes = audit_psid(Path(new["sid"]).read_bytes(), 12)
+                self.assertEqual(audited["sids"], old["sids"])
+                self.assertEqual(old_writes, new_writes)
+                old_prg, new_prg = Path(old["prg"]).read_bytes(), Path(new["prg"]).read_bytes()
+                label_dir = "sid-wizard-exporter" if count == 1 else "sid-wizard-exporter-2sid"
+                labels = {name: int(value, 16) for value, name in re.findall(r"^al ([\da-fA-F]+) \.(.+)$", (ROOT / ".tools" / label_dir / "exporter.labels").read_text(), re.MULTILINE)}
+                flag_offset = labels["SIDflags"] + 1 - labels["EXEstarter"] + 2
+                self.assertEqual([index for index, pair in enumerate(zip(old_prg, new_prg)) if pair[0] != pair[1]], [flag_offset])
+                self.assertEqual(old_prg[flag_offset], flags)
+                self.assertEqual(len(old_prg), len(new_prg))
+                self.assertEqual(sid[:118] + sid[120:], Path(new["sid"]).read_bytes()[:118] + Path(new["sid"]).read_bytes()[120:])
+                self.assertEqual(source.read_bytes(), data)
+
+    def test_export_rejects_invalid_model_before_output(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source, output = Path(directory) / "model.swm", Path(directory) / "out"
+            source.write_bytes(original_module())
+            with self.assertRaisesRegex(ValueError, "SID model"):
+                EXPORTER.export_module(source, output, sid_model="unknown")
+            self.assertFalse(output.exists())
+
     def test_accepts_six_voice_native_stereo_module_and_rejects_other_addresses_or_counts(self):
         data = six_voice_native_module()
         summary = EXPORTER.inspect_module(data)

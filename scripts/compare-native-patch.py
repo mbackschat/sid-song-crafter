@@ -141,7 +141,7 @@ def run_comparison(recipe_path, patch_path, output, *, seconds=20, renderer=ROOT
     for label, manifest in manifests.items():
         print(f"Export, audit and render {label}: {seconds:g}-second excerpt, {ticks} calls", flush=True)
         directory = output / label.lower()
-        exported = exporter.export_module(manifest["nativePath"], directory / "export", title=manifest["title"], author=manifest["author"], released=manifest["released"])
+        exported = exporter.export_module(manifest["nativePath"], directory / "export", title=manifest["title"], author=manifest["author"], released=manifest["released"], sid_model=native_song.sid_layout(manifest)[0]["model"])
         native_song.write_json(directory / "export.json", exported)
         audited, schedule = audit_excerpt(manifest, exported, directory, ticks)
         wav = directory / "excerpt.wav"

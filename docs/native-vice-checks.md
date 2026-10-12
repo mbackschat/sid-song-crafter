@@ -1,6 +1,6 @@
 # Headless native-player checkpoints
 
-The [native VICE verifier](../scripts/verify-native-vice.py) boots a SID-Wizard Extra single-speed PAL standalone PRG through BASIC and compares all 25 writable sound-register shadows per SID with the independent CPU audit at selected completed play-call counts. It supports one SID or two MOS8580 chips at `$D400/$D420`. It requires the [headless VICE installation](local-setup.md); no GUI, socket or audio device is needed.
+The [native VICE verifier](../scripts/verify-native-vice.py) boots a SID-Wizard Extra single-speed PAL standalone PRG through BASIC and compares all 25 writable sound-register shadows per SID with the independent CPU audit at selected completed play-call counts. It supports one SID or two same-model MOS6581 or MOS8580 chips at `$D400/$D420`. Pass `--export-report PATH` to select the intended model; without a report it configures one MOS8580. The standalone PRG does not enforce a hardware model. It requires the [headless VICE installation](local-setup.md); no GUI, socket or audio device is needed.
 
 ```sh
 python3 scripts/verify-native-vice.py \
@@ -13,7 +13,7 @@ Use a fresh output directory. `--vice` and `--data` override the executable and 
 
 ## Two-chip address selection
 
-Pass `--export-report PATH` from the [native two-chip workflow](native-song-workflow.md). The verifier checks the PRG hash, Extra 1x profile, chip layout and pinned exporter label hash, then configures VICE with `-sidextra 1 -sid2address 0xd420 -sidenginemodel resid8580 -soundoutput 2`. Every checkpoint compares both banks; a correct first chip cannot mask a missing or mirrored second chip.
+Pass `--export-report PATH` from the [native two-chip workflow](native-song-workflow.md). The verifier checks the PRG hash, Extra 1x profile, chip layout and pinned exporter label hash, then configures VICE with `-sidextra 1 -sid2address 0xd420 -soundoutput 2` and `-sidenginemodel resid6581` or `resid8580` according to the report. Every checkpoint compares both banks; a correct first chip cannot mask a missing or mirrored second chip.
 
 The unmodified native two-chip starter asks for the second SID's address. It polls the CIA keyboard matrix with interrupts disabled, so KERNAL `keybuf` cannot answer this screen. The monitor stops at `SetSID2address`, records the already-resolved saved address in `$03FE/$03FF`, and moves PC to the selector's existing RTS. Normal startup then calls `ModifySID2addresses`. The verifier requires the saved address to be `$D420`, the return opcode to be RTS, and both addresses to match the pinned labels. No PRG or source bytes are patched; the report records the monitor intervention. This verifies unattended playback with the saved address, not the interactive keyboard selector. See the pinned [exporter source](../.tools/sid-wizard-1.97/native/sources/exporter.asm), `SetSID2address`, `SID2keyExe` and its startup call site.
 

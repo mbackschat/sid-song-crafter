@@ -42,7 +42,7 @@ static bool has_dual_sid_header(const char *path) {
     }
     if (header[122] != 0x42) throw std::runtime_error("Two-SID rendering requires SID bases $D400/$D420");
     const unsigned int flags = header[118] << 8 | header[119];
-    if (flags != 0xa4) throw std::runtime_error("Two-SID rendering requires explicit PAL and two MOS8580 chips without MUS/PlaySID flags");
+    if (flags != 0xa4 && flags != 0x54) throw std::runtime_error("Two-SID rendering requires explicit PAL and two same-model MOS6581 or MOS8580 chips without MUS/PlaySID flags");
     if (std::any_of(header.begin() + 18, header.begin() + 22, [](unsigned char value) { return value != 0; })) {
         throw std::runtime_error("Two-SID rendering requires VBI timing for every subtune");
     }
@@ -96,7 +96,8 @@ int main(int argc, char **argv) {
             case 2:
                 if (!declared_dual || tune_info->sidChipBase(0) != 0xd400 || tune_info->sidChipBase(1) != 0xd420
                     || tune_info->clockSpeed() != SidTuneInfo::CLOCK_PAL || tune_info->songSpeed() != SidTuneInfo::SPEED_VBI
-                    || tune_info->sidModel(0) != SidTuneInfo::SIDMODEL_8580 || tune_info->sidModel(1) != SidTuneInfo::SIDMODEL_8580) {
+                    || (tune_info->sidModel(0) != SidTuneInfo::SIDMODEL_6581 && tune_info->sidModel(0) != SidTuneInfo::SIDMODEL_8580)
+                    || tune_info->sidModel(0) != tune_info->sidModel(1)) {
                     throw std::runtime_error("Unsupported two-SID playback contract");
                 }
                 channels = 2;

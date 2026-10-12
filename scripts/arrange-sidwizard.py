@@ -128,6 +128,8 @@ def arrange(recipe_path, output_dir):
     recipe_bytes = recipe_path.read_bytes()
     recipe = json.loads(recipe_bytes)
     require(recipe["format"] == "sidwizard-arrangement-v1", "Unsupported native arrangement recipe format")
+    sid_model = recipe.get("sidModel", "MOS8580")
+    require(sid_model in ("MOS6581", "MOS8580"), "Native SID model must be MOS6581 or MOS8580")
     sid_count = recipe.get("sidCount", 1)
     require(type(sid_count) is int and sid_count in (1, 2), "SID count must be 1 or 2")
     voice_count = sid_count * 3
@@ -257,7 +259,7 @@ def arrange(recipe_path, output_dir):
         "format": "sidwizard-arrangement-manifest-v1", "sourcePath": str(source), "sourceSha256": digest(source_bytes), "recipePath": str(recipe_path), "recipeSha256": digest(recipe_bytes),
         "nativePath": str(native), "nativeSha256": digest(data), "title": recipe["title"], "author": recipe["author"], "released": recipe.get("released", "2026"),
         "timingPolicy": recipe["timingPolicy"], "nativeHeaderText": authorinfo.decode("ascii"),
-        "sidCount": sid_count, "sids": [{"baseAddress": 0xd400 + index * 0x20, "model": "MOS8580"} for index in range(sid_count)],
+        "sidModel": sid_model, "sidCount": sid_count, "sids": [{"baseAddress": 0xd400 + index * 0x20, "model": sid_model} for index in range(sid_count)],
         "clockHz": PAL_CLOCK, "ticksPerSecond": TICKS_PER_SECOND, "frameSpeed": 1, "rowTicks": 1,
         "scoreTicks": score_ticks, "tailTicks": tail, "totalTicks": total_ticks, "rowCount": row_count, "stopTick": total_ticks, "stopVolumeClearTick": total_ticks,
         "renderSeconds": (total_ticks + 1) / TICKS_PER_SECOND + 1, "patterns": [{key: value for key, value in pattern.items() if key != "bytes"} for pattern in patterns],

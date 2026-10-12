@@ -81,6 +81,27 @@ def write_three_voice_sid(path):
 
 
 class HeadlessRenderTest(unittest.TestCase):
+    def test_renderer_honors_6581_declarations_for_one_and_two_chips(self):
+        for count, fixture, flags in ((1, write_a4_sid, 0x14), (2, write_two_sid_fixture, 0x54)):
+            with self.subTest(count=count), tempfile.TemporaryDirectory() as directory:
+                sid = Path(directory) / "model.sid"
+                fixture(sid)
+                outputs = []
+                for model in ("8580", "6581"):
+                    if model == "6581":
+                        data = bytearray(sid.read_bytes())
+                        struct.pack_into(">H", data, 118, flags)
+                        sid.write_bytes(data)
+                    output = Path(directory) / f"{model}.wav"
+                    result = subprocess.run([str(RENDERER), str(sid), str(output), "0.5"], capture_output=True, text=True, timeout=20)
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    with wave.open(str(output), "rb") as source:
+                        self.assertEqual(source.getnchannels(), count)
+                        self.assertEqual(source.getnframes(), RATE // 2)
+                    outputs.append(output)
+                self.assertNotEqual(outputs[0].read_bytes(), outputs[1].read_bytes())
+                self.assertEqual(Path(str(outputs[0]) + ".registers.tsv").read_bytes(), Path(str(outputs[1]) + ".registers.tsv").read_bytes())
+
     def render(self, sid, seconds, directory):
         output = Path(directory) / "render.wav"
         subprocess.run([str(RENDERER), str(sid), str(output), str(seconds)], check=True, timeout=20, capture_output=True, text=True)
@@ -201,8 +222,8 @@ class HeadlessRenderTest(unittest.TestCase):
             ("NTSC", lambda data: struct.pack_into(">H", data, 0x76, 0xa8)),
             ("unknown clock", lambda data: struct.pack_into(">H", data, 0x76, 0xa0)),
             ("CIA timing", lambda data: data.__setitem__(21, 1)),
-            ("second 6581", lambda data: struct.pack_into(">H", data, 0x76, 0x64)),
-            ("first 6581", lambda data: struct.pack_into(">H", data, 0x76, 0x94)),
+            ("mixed models, second 6581", lambda data: struct.pack_into(">H", data, 0x76, 0x64)),
+            ("mixed models, first 6581", lambda data: struct.pack_into(">H", data, 0x76, 0x94)),
         )
         for name, mutate in mutations:
             with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:

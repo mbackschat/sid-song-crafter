@@ -34,8 +34,10 @@ def write_json(path, value):
 def sid_layout(report):
     count = report.get("sidCount", 1)
     require(type(count) is int and count in (1, 2), "Native SID layout must contain one or two chips")
-    sids = [{"baseAddress": base, "model": "MOS8580"} for base in (0xd400, 0xd420)[:count]]
-    require(report.get("sids", sids if count == 1 else None) == sids, "Native SID layout requires ordered MOS8580 chips at $d400/$d420")
+    model = report.get("sidModel", "MOS8580")
+    require(model in ("MOS6581", "MOS8580"), "Native SID layout requires a MOS6581 or MOS8580 model")
+    sids = [{"baseAddress": base, "model": model} for base in (0xd400, 0xd420)[:count]]
+    require(report.get("sids", sids if count == 1 else None) == sids, "Native SID layout requires ordered same-model chips at $d400/$d420")
     return sids
 
 
@@ -202,7 +204,7 @@ def run_song(recipe, output, renderer=ROOT / ".local/bin/render-sid", excerpt_st
     manifest_path = output / "conversion.json"
     write_json(manifest_path, manifest)
     exporter = load_script("export-sidwizard")
-    exported = exporter.export_module(manifest["nativePath"], output / "export", title=manifest["title"], author=manifest["author"], released=manifest["released"])
+    exported = exporter.export_module(manifest["nativePath"], output / "export", title=manifest["title"], author=manifest["author"], released=manifest["released"], sid_model=sid_layout(manifest)[0]["model"])
     export_path = output / "export.json"
     write_json(export_path, exported)
     prefix = output / "native-song"

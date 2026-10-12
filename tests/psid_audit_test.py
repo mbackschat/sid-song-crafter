@@ -23,6 +23,16 @@ def sid_file(play=bytes((0xee, 0x00, 0x20, 0xad, 0x00, 0x20, 0x8d, 0x02, 0xd4, 0
 
 
 class PsidAuditTest(unittest.TestCase):
+    def test_dual_6581_declaration_keeps_both_models_and_the_same_cpu_evidence(self):
+        data = sid_file(bytes((0xa9, 0x51, 0x8d, 0x24, 0xd4, 0x60)))
+        data[5], data[119], data[122] = 3, 0xa4, 0x42
+        _, expected_writes = audit.audit_psid(data, 2)
+        data[119] = 0x54
+        report, writes = audit.audit_psid(data, 2)
+        self.assertEqual(report["sids"], [{"baseAddress": base, "model": "MOS6581"} for base in (0xd400, 0xd420)])
+        self.assertEqual(report["sidModel"], "MOS6581")
+        self.assertEqual(writes, expected_writes)
+
     def test_dual_sid_audit_keeps_both_register_banks_and_one_shared_frame_budget(self):
         data = sid_file(bytes((0xa9, 0x27, 0x8d, 0x04, 0xd4, 0xa9, 0x51, 0x8d, 0x24, 0xd4, 0xa9, 0x1f, 0x8d, 0x38, 0xd4, 0x60)))
         data[5], data[119], data[122] = 3, 0xa4, 0x42

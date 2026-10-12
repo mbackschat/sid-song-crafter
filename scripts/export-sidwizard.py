@@ -148,7 +148,8 @@ def write_text_field(memory, address, text):
     memory[address:address + 32] = encoded.ljust(32, b"\x00")
 
 
-def export_module(source, output_dir, title=None, author=None, released="2026"):
+def export_module(source, output_dir, title=None, author=None, released="2026", *, sid_model="MOS8580"):
+    require(sid_model in ("MOS6581", "MOS8580"), "Native SID model must be MOS6581 or MOS8580")
     data = Path(source).read_bytes()
     summary = inspect_module(data)
     sid_count = summary["sidCount"]
@@ -182,7 +183,8 @@ def export_module(source, output_dir, title=None, author=None, released="2026"):
         require(bytes(memory[labels["SID2add"]:labels["SID2add"] + 2]) == b"\x20\xd4", "SID-Maker did not resolve the native SID2 address to $D420")
     for name in ("setplayer", "SetSIDply", "SetSIDt"):
         routine_cycles[name] = call(cpu, labels, name)
-    cpu.x = 1
+    # SID-Wizard 1.97 exporter.asm dispMod/ModelFlag declares the selected model for every configured SID.
+    cpu.x = 0 if sid_model == "MOS6581" else 1
     routine_cycles["dispMod"] = call(cpu, labels, "dispMod")
     if title is not None:
         write_text_field(memory, labels["SIDtitletx"], title)
@@ -204,8 +206,8 @@ def export_module(source, output_dir, title=None, author=None, released="2026"):
     report = {
         "source": str(Path(source)), "sourceSha256": sha256(data), "module": summary,
         "sid": str(sid_path), "sidSha256": sha256(sid), "prg": str(prg_path), "prgSha256": sha256(standalone),
-        "sidWizardVersion": "1.97", "player": "Extra", "driverType": 3, "clock": "PAL", "sidModel": "MOS8580",
-        "sidCount": sid_count, "sids": [{"baseAddress": 0xd400 + index * 0x20, "model": "MOS8580"} for index in range(sid_count)], "psidVersion": 2 if sid_count == 1 else 3,
+        "sidWizardVersion": "1.97", "player": "Extra", "driverType": 3, "clock": "PAL", "sidModel": sid_model,
+        "sidCount": sid_count, "sids": [{"baseAddress": 0xd400 + index * 0x20, "model": sid_model} for index in range(sid_count)], "psidVersion": 2 if sid_count == 1 else 3,
         "frameSpeed": 1, "loadAddress": 0x1000, "initAddress": 0x1000, "playAddress": 0x1003,
         "standaloneLoadAddress": 0x0801, "standaloneStartAddress": labels["start2"],
         "standalonePlayerInitAddress": 0x1000, "standalonePlayerPlayAddress": 0x1003,
@@ -233,8 +235,9 @@ def main():
     parser.add_argument("--title")
     parser.add_argument("--author")
     parser.add_argument("--released", default="2026")
+    parser.add_argument("--sid-model", choices=("MOS6581", "MOS8580"), default="MOS8580", help="PSID chip-model declaration; native SWM/SWS and standalone PRG do not declare a hardware model")
     args = parser.parse_args()
-    print(json.dumps(export_module(args.source, args.output_dir, args.title, args.author, args.released), indent=2))
+    print(json.dumps(export_module(args.source, args.output_dir, args.title, args.author, args.released, sid_model=args.sid_model), indent=2))
 
 
 if __name__ == "__main__":

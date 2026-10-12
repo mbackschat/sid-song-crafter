@@ -1,6 +1,6 @@
 # C64 SID music laboratory
 
-Research and reusable tools for composing expressive Commodore 64 music for one or two SIDs. Songs serve as case studies for learning sound design, preserving useful findings and improving the next arrangement. Sound quality is the priority: learn from the masters, study their editors and drivers, and build a tested instrument repertoire. The working targets are PAL with one 8580 or two 8580s at `$D400/$D420`. Original musical sources, common scores, and SID arrangements remain separate so conversion does not erase source information or define the chip's expressive limits.
+Research and reusable tools for composing expressive Commodore 64 music for one or two SIDs. Songs serve as case studies for learning sound design, preserving useful findings and improving the next arrangement. Sound quality is the priority: learn from the masters, study their editors and drivers, and build a tested instrument repertoire. The working targets are PAL with one MOS6581/MOS8580 or two matching chips at `$D400/$D420`; native recipes default to MOS8580 and can select `sidModel: "MOS6581"`. Original musical sources, common scores, and SID arrangements remain separate so conversion does not erase source information or define the chip's expressive limits.
 
 ## Start here
 

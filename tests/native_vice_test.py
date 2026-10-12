@@ -20,6 +20,19 @@ def log_for(states, cycles):
 
 
 class NativeViceTest(unittest.TestCase):
+    def test_6581_export_profile_selects_the_declared_model_for_vice(self):
+        prg = b'\x01\x08native'
+        report = {'prgSha256': hashlib.sha256(prg).hexdigest(), 'player': 'Extra', 'frameSpeed': 1, 'standalonePlayerPlayAddress': 0x1003, 'sidModel': 'MOS6581', 'sids': [{'baseAddress': 0xd400, 'model': 'MOS6581'}]}
+        self.assertEqual(native_vice.export_profile(prg, report), ((0xd400,), None, 'MOS6581'))
+        for change in (
+            lambda value: value.update(sidModel='unknown'),
+            lambda value: value['sids'][0].update(model='MOS8580'),
+        ):
+            changed = copy.deepcopy(report)
+            change(changed)
+            with self.subTest(change=change), self.assertRaisesRegex(ValueError, 'SID layout'):
+                native_vice.export_profile(prg, changed)
+
     def test_export_profile_binds_prg_and_selector_to_the_pinned_build(self):
         prg = bytearray(1024)
         prg[:2] = b'\x01\x08'
@@ -28,6 +41,11 @@ class NativeViceTest(unittest.TestCase):
         report = {'prgSha256': hashlib.sha256(prg).hexdigest(), 'player': 'Extra', 'frameSpeed': 1, 'standalonePlayerPlayAddress': 0x1003, 'sidCount': 2, 'sids': [{'baseAddress': base, 'model': 'MOS8580'} for base in (0xd400, 0xd420)], 'build': {'labelsSha256': hashlib.sha256(labels).hexdigest()}, 'standaloneAddressSelector': {'entryAddress': 0x0b27, 'returnAddress': 0x0bd0, 'baseAddress': 0xd420}}
         with patch.object(Path, 'read_bytes', return_value=labels):
             self.assertEqual(native_vice.export_profile(prg, report)[0], (0xd400, 0xd420))
+            old_model = copy.deepcopy(report)
+            old_model['sidModel'] = 'MOS6581'
+            for chip in old_model['sids']:
+                chip['model'] = 'MOS6581'
+            self.assertEqual(native_vice.export_profile(prg, old_model), ((0xd400, 0xd420), old_model['standaloneAddressSelector'], 'MOS6581'))
             for change in (
                 lambda report: report.update(prgSha256='changed'),
                 lambda report: report['build'].update(labelsSha256='changed'),

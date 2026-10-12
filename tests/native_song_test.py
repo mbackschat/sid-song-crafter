@@ -44,6 +44,32 @@ def fixture():
 
 class NativeSongTest(unittest.TestCase):
     @unittest.skipUnless((ROOT / ".tools/sid-wizard-exporter-2sid/exporter.labels").is_file() and (ROOT / ".local/bin/render-sid").is_file(), "Pinned two-SID exporter and renderer required")
+    def test_6581_recipe_survives_conversion_export_cpu_audit_and_stereo_render(self):
+        with tempfile.TemporaryDirectory() as directory, patch("builtins.print"):
+            recipe = json.loads((ROOT / "tests/fixtures/sidwizard-2sid/recipe.json").read_text())
+            recipe.update(sidModel="MOS6581", score=str(ROOT / "tests/fixtures/sidwizard-2sid/score.json"))
+            path = Path(directory) / "recipe.json"
+            path.write_text(json.dumps(recipe))
+            output = Path(directory) / "song"
+            report = native_song.run_song(path, output, excerpt_seconds=1)
+            self.assertEqual(report["audit"]["sidModel"], "MOS6581")
+            self.assertEqual(report["audit"]["sids"], [{"baseAddress": base, "model": "MOS6581"} for base in (0xd400, 0xd420)])
+            self.assertEqual(report["schedule"]["noteCounts"], [2] * 6)
+            self.assertEqual(report["pcm"]["channels"], 2)
+            for name in ("conversion.json", "export.json"):
+                self.assertEqual(json.loads((output / name).read_text())["sidModel"], "MOS6581")
+
+    def test_layout_rejects_invalid_model_and_disagreement_with_chip_metadata(self):
+        self.assertEqual(native_song.sid_layout({"sidModel": "MOS6581"}), [{"baseAddress": 0xd400, "model": "MOS6581"}])
+        for report in (
+            {"sidModel": "unknown"},
+            {"sidModel": "MOS6581", "sids": [{"baseAddress": 0xd400, "model": "MOS8580"}]},
+            {"sidCount": 2, "sidModel": "MOS6581", "sids": [{"baseAddress": base, "model": "MOS8580"} for base in (0xd400, 0xd420)]},
+        ):
+            with self.subTest(report=report), self.assertRaisesRegex(ValueError, "layout"):
+                native_song.sid_layout(report)
+
+    @unittest.skipUnless((ROOT / ".tools/sid-wizard-exporter-2sid/exporter.labels").is_file() and (ROOT / ".local/bin/render-sid").is_file(), "Pinned two-SID exporter and renderer required")
     def test_original_six_voice_fixture_survives_the_complete_native_workflow(self):
         with tempfile.TemporaryDirectory() as directory, patch("builtins.print"):
             report = native_song.run_song(ROOT / "tests/fixtures/sidwizard-2sid/recipe.json", Path(directory) / "song", excerpt_start=0.5, excerpt_seconds=1)

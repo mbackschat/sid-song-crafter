@@ -37,15 +37,37 @@ def synthetic_score(events, beats=500):
 
 
 class SIDWizardArrangementTest(unittest.TestCase):
-    def create(self, directory, score, sid_count=None):
+    def create(self, directory, score, sid_count=None, sid_model=None):
         source = Path(directory) / "score.json"
         source.write_text(json.dumps(score))
         configuration = Path(directory) / "native.json"
         settings = recipe(source, score)
         if sid_count is not None:
             settings["sidCount"] = sid_count
+        if sid_model is not None:
+            settings["sidModel"] = sid_model
         configuration.write_text(json.dumps(settings))
         return configuration, ARRANGER.arrange(configuration, Path(directory) / "out")
+
+    def test_sid_model_is_retained_for_each_chip_without_changing_native_bytes(self):
+        for count in (1, 2):
+            score = synthetic_score([], beats=8)
+            score["voices"] = [{"name": f"part-{index}", "events": []} for index in range(count * 3)]
+            native_bytes = []
+            for model in ("MOS6581", "MOS8580"):
+                with self.subTest(count=count, model=model), tempfile.TemporaryDirectory() as directory:
+                    _, manifest = self.create(directory, score, sid_count=count, sid_model=model)
+                    self.assertEqual(manifest["sidModel"], model)
+                    self.assertEqual(manifest["sids"], [{"baseAddress": base, "model": model} for base in (0xd400, 0xd420)[:count]])
+                    native_bytes.append(Path(manifest["nativePath"]).read_bytes())
+            self.assertEqual(native_bytes[0], native_bytes[1])
+
+    def test_invalid_sid_model_is_rejected_before_output(self):
+        for model in ("6581", "unknown", 6581, True):
+            with self.subTest(model=model), tempfile.TemporaryDirectory() as directory:
+                with self.assertRaisesRegex(ValueError, "SID model"):
+                    self.create(directory, synthetic_score([], beats=8), sid_model=model)
+                self.assertFalse((Path(directory) / "out").exists())
 
     def test_two_sid_recipe_retains_six_ordered_voices_and_emits_native_stereo_header(self):
         score = synthetic_score([], beats=8)

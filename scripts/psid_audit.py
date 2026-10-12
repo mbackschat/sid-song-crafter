@@ -57,8 +57,8 @@ def audit_psid(data, ticks, *, observer=None):
         require(data[122:124] == bytes(2), "PSID v2 requires zero additional-SID fields")
         sids = [{"baseAddress": 0xd400, "model": "MOS8580" if word(118) == 0x24 else "MOS6581"}]
     else:
-        require(word(4) == 3 and word(118) == 0xa4 and data[122:124] == b"\x42\x00", "Dual-SID audit requires PSID v3 PAL with two MOS8580s at $d400/$d420")
-        sids = [{"baseAddress": base, "model": "MOS8580"} for base in (0xd400, 0xd420)]
+        require(word(4) == 3 and word(118) in (0x54, 0xa4) and data[122:124] == b"\x42\x00", "Dual-SID audit requires PSID v3 PAL with two same-model MOS6581s or MOS8580s at $d400/$d420")
+        sids = [{"baseAddress": base, "model": "MOS6581" if word(118) == 0x54 else "MOS8580"} for base in (0xd400, 0xd420)]
     load = word(8)
     payload = data[0x7c:]
     if load == 0:
