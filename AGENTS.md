@@ -33,7 +33,7 @@ Use two-space TypeScript, four-space Python/C++, descriptive assembly labels, an
 
 ## Testing Guidelines
 
-Use red/green TDD. Verify register writes, timing, endings and binaries. Distinguish CPU, rendered audio, VICE and listening evidence. Preserve original sources and checksums; report conversion losses. Common scores must not constrain native SID expression. Label excerpts accurately.
+Apply the [project-specific testing policy](CLAUDE.md#choose-validation-that-answers-the-question): use red/green TDD where it adds meaningful protection, and experiment, trace or listen where those provide the relevant evidence. Verify register writes, timing, endings and binaries as appropriate. Distinguish CPU, rendered audio, VICE and listening evidence. Preserve original sources and checksums; report conversion losses. Common scores must not constrain native SID expression. Label excerpts accurately.
 
 Stock SID-Wizard Extra at tempo 1 initializes only the frequency high byte on a new note's first frame. Retain TEST silence there and verify the following full-pitch body; one-frame graces need an explicit timing adjustment. See [the reproduced constraint and policy](docs/fuer-elise-native.md).
 
