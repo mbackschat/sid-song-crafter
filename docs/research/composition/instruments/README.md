@@ -1,5 +1,7 @@
 # Original native instrument bank
 
+For decoded reference mechanisms, use the separate [DRAX trio mapping](drax-decoded-trio.md): bass, pulse lead, released chord and arrangement constraints, backed by an independent three-voice implementation. These are reconstructed reference techniques, distinct from the original designs below.
+
 Research and design date: 2026-10-12. This bank implements the first small group of experiments from [the repertoire brief](../sound-design-repertoire.md) using SID-Wizard 1.97 Extra. The [editable study source and workfiles](../../../../songs/studies/sidwizard-repertoire/README.md) retain the original patches, phrases and controlled comparisons.
 
 - [LEAD-02 — moving pulse lead](lead-02-moving-pulse.md): static versus moving width, with the same delayed vibrato and envelope.

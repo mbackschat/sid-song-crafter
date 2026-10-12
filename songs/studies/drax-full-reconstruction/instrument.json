@@ -1,0 +1,39 @@
+{
+  "format": "sid-three-voice-reconstruction-v1",
+  "bassRecipe": "../drax-bass-reconstruction/instrument.json",
+  "lead": {
+    "attackDecay": 3,
+    "sustainRelease": 59,
+    "waveform": 64,
+    "prehistoryPulseHighByte": 8,
+    "prehistoryBoundHighByte": 4,
+    "notes": [
+      {"initCall": 4, "frequency": 11222},
+      {"initCall": 16, "frequency": 10590},
+      {"initCall": 28, "frequency": 11222},
+      {"initCall": 40, "frequency": 10590},
+      {"initCall": 52, "frequency": 11222},
+      {"initCall": 64, "frequency": 8412},
+      {"initCall": 76, "frequency": 10000},
+      {"initCall": 88, "frequency": 8912},
+      {"initCall": 100, "frequency": 7494},
+      {"initCall": 136, "frequency": 4456},
+      {"initCall": 148, "frequency": 5611}
+    ],
+    "pulseInitial": 2048,
+    "pulseStep": 80,
+    "pulseLowerHighByte": 1,
+    "pulseUpperHighByte": 8,
+    "vibratoStartAge": 11,
+    "vibratoDeltas": [0, 128, 256, 128, 0, -128, -256, -128]
+  },
+  "chord": {
+    "initCall": 100,
+    "frequencies": [3747, 4456, 5611],
+    "attackDecay": 0,
+    "sustainRelease": 107,
+    "waveform": 80,
+    "pulseHighByte": 6
+  },
+  "scoreGateCloseAge": 10
+}
