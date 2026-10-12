@@ -2,7 +2,7 @@
 
 ## Musical Priority
 
-Prioritize expressive SID sound. Study composers, published accounts, editors and drivers; preserve findings in [research](docs/research/README.md). Build an evidence-backed instrument repertoire. Record reusable findings, source provenance and reproduction instructions; do not keep debugging diaries. Technical playback success does not establish musical quality; record listening judgments separately.
+Prioritize expressive SID sound. Treat songs as case studies for learning sound design and building reusable tools and methods. Study composers, published accounts, editors and drivers; preserve findings in [research](docs/research/README.md). Build an evidence-backed instrument repertoire. Record reusable findings, source provenance and reproduction instructions; do not keep debugging diaries. Technical playback success does not establish musical quality; record listening judgments separately.
 
 ## Project Structure & Module Organization
 
@@ -35,7 +35,7 @@ Stock SID-Wizard Extra at tempo 1 initializes only the frequency high byte on a 
 
 ## VICE Findings & Troubleshooting
 
-Record commands, versions, logs, workarounds, and outcomes in [local setup](docs/local-setup.md), [the VICE investigation](docs/vice-startup-investigation.md), and [the audio guide](docs/audio-workflow.md).
+Record reusable constraints, verified workarounds and reproduction commands in [local setup](docs/local-setup.md), [the VICE investigation](docs/vice-startup-investigation.md), and [the audio guide](docs/audio-workflow.md). Keep raw diagnostics in ignored output directories.
 
 GTK VICE 3.9 opens in the user's Terminal but fails agent-launched OpenGL initialization; log-colour/minimization changes do not fix it. Its `-headless` is unsupported and `-console` still invokes GTK. Use the genuine headless build and file-based monitor; this session denies socket binding. c64bridge's dummy audio can produce empty recordings; capture directly to WAV without warp.
 

@@ -1,6 +1,6 @@
 # C64 SID music laboratory
 
-Research and reusable tools for composing expressive Commodore 64 music for one SID, with a later path to two chips. Sound quality is the priority: learn from the masters, study their editors and drivers, and build a tested instrument repertoire. The working target is a PAL C64 with an 8580 SID. Original musical sources, common scores, and SID arrangements remain separate so conversion does not erase source information or define the chip's expressive limits.
+Research and reusable tools for composing expressive Commodore 64 music for one or two SIDs. Songs serve as case studies for learning sound design, preserving useful findings and improving the next arrangement. Sound quality is the priority: learn from the masters, study their editors and drivers, and build a tested instrument repertoire. The working targets are PAL with one 8580 or two 8580s at `$D400/$D420`. Original musical sources, common scores, and SID arrangements remain separate so conversion does not erase source information or define the chip's expressive limits.
 
 ## Start here
 
@@ -9,6 +9,7 @@ Research and reusable tools for composing expressive Commodore 64 music for one 
 - [Sound-design repertoire](docs/research/composition/sound-design-repertoire.md): proposed experiments and evidence required for reusable instruments.
 - [Native instrument trials and samples](docs/instrument-trials.md): seven original patches, nine rendered studies, and four level-matched A/B comparisons.
 - [Native Für Elise candidate](docs/fuer-elise-native.md): section-specific sound design, preserved source notes and explicit articulation changes.
+- [Existing Für Elise comparison](docs/research/composition/fuer-elise-reference.md) and [Flashdance reference study](docs/research/composition/flashdance-reference.md): learn from archived arrangements, their players and register programs.
 - [Native song workflow](docs/native-song-workflow.md): convert a retained score to editable SID-Wizard source, then export, audit and render it.
 - [Native VICE checkpoints](docs/native-vice-checks.md): reproduce standalone-player register and cadence checks without a GUI.
 - [Composition tools](docs/research/tools/composition-tools.md): established editors, their drivers, and a practical evaluation plan.
@@ -47,6 +48,8 @@ python3 scripts/native-song.py build songs/fuer-elise-sidwizard.json --output bu
 ```
 
 This retains an editable SWM and instrument files alongside the SID, PRG, complete WAV, 20-second audition excerpt and conversion/verification reports. The [native recipe and timing record](docs/fuer-elise-native.md) explain the section contrasts and a one-frame grace-note adjustment. The original source and baseline arrangement remain available for comparison; native editing need not pass back through the common score.
+
+For two SIDs, run `python3 scripts/setup-sidwizard.py --sid-count 2`, then use a recipe with `sidCount: 2` and six ordered voices. The [native workflow](docs/native-song-workflow.md) includes an original six-voice/two-filter fixture and commands that verify its PSID, separate stereo channels and standalone PRG in headless VICE. This is a reusable technical foundation; a complete dual-SID song and its listening assessment remain separate work.
 
 ## Prepare the assembler
 

@@ -10,5 +10,7 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Classical arrangements](classical-arrangements.md): preserving musical structure in Für Elise and Hummelflug.
 - [Source-to-SID workflow](../../song-workflow.md): original sources, intermediate scores, and independent SID expression.
 - [Für Elise source study](../../fuer-elise-score.md): complete source preservation and transparent reductions in the working baseline.
+- [Compare Für Elise with an existing SID](fuer-elise-reference.md): measured opening pitches, tempo/articulation differences, voice allocation and level-matched audition excerpts.
+- [Study Flashdance: What a Feeling](flashdance-reference.md): verified archive identities, synthesis lessons and a source-to-reference comparison contract.
 
 Study [the composers and their tools](../composers/README.md) before choosing a sound palette. A correct note sequence is a technical baseline; musical quality also requires phrasing, contrast, texture, and listening review.
