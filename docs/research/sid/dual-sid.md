@@ -14,15 +14,17 @@ PSID v3 encodes the second SID location in header byte `$7A`: `$42` means `$D420
 
 ## Tools and execution
 
-GoatTracker Stereo is the most direct tracker candidate in this research. ChiptuneSAK's GoatTracker module recognizes three- and six-voice song structures. c64bridge's inspected SIDWAVE compiler explicitly constructs only voices 1–3, so dual-SID output is not an established capability there. [S08](../sources.md#s08), [S12](../sources.md#s12), [S24](../sources.md#s24)
+The implemented route uses [SID-Wizard's native two-chip Extra player](../tools/sid-wizard-trial.md): six ordered voices, two independent filters, editable `.sws` source and PSID v3 export for two 8580s at `$D400/$D420`. Follow [the shared native workflow](../../native-song-workflow.md) to reproduce its original six-voice fixture, stereo render and headless VICE checks.
 
-The current online VICE manual documents `-sidextra 1` and `-sid2address 0xd420`. An illustrative launch is:
+GoatTracker Stereo remains an alternative tracker backend. ChiptuneSAK's GoatTracker module recognizes three- and six-voice song structures. c64bridge's inspected SIDWAVE compiler explicitly constructs only voices 1–3, so dual-SID output is not an established capability there. [S08](../sources.md#s08), [S12](../sources.md#s12), [S24](../sources.md#s24)
+
+VICE uses `-sidextra 1` and `-sid2address 0xd420` to select the additional chip. An illustrative interactive launch is:
 
 ```sh
 x64sc -pal -sidextra 1 -sid2address 0xd420 -autostart song.prg
 ```
 
-Check the installed version's help before relying on current online flags; the user's local installation is VICE 3.9. This command has not been verified locally. [S16](../sources.md#s16)
+The [headless verifier](../../native-vice-checks.md) uses these address flags with the local VICE 3.9 build, explicit 8580 selection and monitor-controlled startup. That tested route handles SID-Wizard's address selector without changing PRG bytes; the illustrative `-autostart` command above is not the tested unattended route. [S16](../sources.md#s16)
 
 ## Six-voice acceptance checks
 
@@ -32,4 +34,6 @@ Check the installed version's help before relying on current online flags; the u
 - Test the declared SID models, including a mixed-model setup if supported and intended.
 - Measure player CPU cost with all six voices and effects active.
 
-These are proposed tests. No dual-SID hardware or six-voice render has yet been validated in this workspace.
+Independent fixtures establish six distinct sounding frequency words, separate filter registers and simultaneous stops. Renderer tests use different pitches and either-chip-muted variants to verify independent stereo channels without crossfeed. The native fixture passes complete note scheduling, PCM health and sampled VICE register/cadence checks. Both chips share one PAL CPU-frame budget; adding a SID does not add CPU time.
+
+Physical hardware, mixed chip models, mono-downmix musical balance and a complete dual-SID song's listening quality remain unverified. The current converter's 105-pattern/29-instrument limit also bounds long tick-grid arrangements; successful short-fixture playback does not establish that an arbitrary six-voice score will fit.

@@ -44,7 +44,7 @@ The checks require complete mono PCM16 renders at 44.1 kHz, nonzero AC energy, n
 
 Ordered register guards verify moving versus fixed pulse width with identical pitch trajectories, saw attack followed by triangle, and a falling bass transient that returns to the reference pitch and gate. Bass recovery allows one frequency-register unit of rounding difference. Each report declares the checked tick windows; these checks are not complete native-score equivalence proofs.
 
-The phrases cover repeated notes, a hold, rest/re-entry, tied pitch changes, instrument changes and a three-voice mix. Native sources retain waveform, pulse, filter, restart and vibrato programs. The [cards](research/composition/instruments/README.md) hold instrument settings and focused evidence. Editor UI round-trip, editor-versus-export listening, physical chips, multispeed and two-SID behaviour remain unverified.
+The phrases cover repeated notes, a hold, rest/re-entry, tied pitch changes, instrument changes and a three-voice mix. Native sources retain waveform, pulse, filter, restart and vibrato programs. The [cards](research/composition/instruments/README.md) hold instrument settings and focused evidence. Editor UI round-trip, editor-versus-export listening, physical chips, multispeed and two-chip mixes of this palette remain unverified. A separate [six-voice fixture](native-song-workflow.md) establishes the two-chip export, scheduling, stereo and VICE foundation.
 
 ## Independent VICE checks
 
