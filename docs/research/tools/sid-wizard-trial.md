@@ -1,6 +1,6 @@
 # SID-Wizard 1.97: native Extra export without a desktop
 
-Research and execution date: 2026-10-12. The official SID-Maker exporter accepts this repository's original native SWM1 instrument studies, emits the Extra player, and produces callable PSID and standalone PRG files through a reproducible headless adapter. This establishes a usable native export path. Rendered signal and CPU checks remain separate from a listening judgment; no claim of musical superiority follows from successful export.
+The official SID-Maker exporter accepts this repository's original native SWM1 instrument studies, emits the Extra player, and produces callable PSID and standalone PRG files through a reproducible headless adapter. This establishes a usable native export path. Rendered signal and CPU checks remain separate from a listening judgment; no claim of musical superiority follows from successful export.
 
 ## Source and build identity
 
@@ -50,7 +50,7 @@ The adapter tests run an original minimal SWM through the actual native exporter
 
 The original pulse candidate and three-voice mix each passed 501 calls through the separate [PSID CPU audit](../../../scripts/psid_audit.py). At that bound, the pulse reached 1,271 modeled cycles per play call and the mix 2,193, against a PAL frame budget of 19,656. Both used the native Extra ghost-register path, which produced 12,525 SID stores over 501 calls. This records functional CPU execution with an explicit environment; it does not measure hardware bus contention or establish the musical result.
 
-The first independent audio render exposed a separate renderer bug: its default subtune had not been selected, so libsidplayfp passed `$FF` to an init routine whose accumulator selects the subtune. Native standalone VICE playback produced signal while that PSID render was silent. The [audio workflow](../../audio-workflow.md) records the renderer correction and independent regression guard. The corrected renderer allows the exported native driver to receive subtune `0`; no SID-Wizard player modification was needed.
+Select the default subtune explicitly before rendering through libsidplayfp. Otherwise it can pass `$FF` to the player's accumulator-based subtune selector, producing silence even when standalone playback works. The [audio workflow](../../audio-workflow.md) documents the API requirement and independent regression guard; the SID-Wizard driver needs no modification.
 
 ### Compressed-pattern format
 

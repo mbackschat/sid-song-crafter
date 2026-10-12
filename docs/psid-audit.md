@@ -6,7 +6,7 @@
 python3 scripts/psid_audit.py build/example.sid --ticks 250 --output build/example.audit.json
 ```
 
-The JSON report contains call counts, initialization and peak playback cycle costs, register value ranges, and the input SHA-256. Its `.writes.json` sibling retains every observed SID write in order. Choose a new output path for each run; exclusive creation protects existing evidence, including files created after the initial path check. If either write fails, the tool removes only the files it created so an incomplete pair does not remain as successful evidence. On 2026-10-12, the first 250 calls of the full Für Elise baseline produced 107 playback writes and a maximum 903 cycles per call. This short window is not the full-song maximum.
+The JSON report contains call counts, initialization and peak playback cycle costs, register value ranges, and the input SHA-256. Its `.writes.json` sibling retains every observed SID write in order. Choose a new output path for each run; exclusive creation protects existing evidence, including files created after the initial path check. If either write fails, the tool removes only the files it created so an incomplete pair does not remain as successful evidence.
 
 ## Supported execution contract
 

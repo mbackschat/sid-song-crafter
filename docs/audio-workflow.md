@@ -1,14 +1,12 @@
 # Headless SID audio workflow
 
-Verified on 2026-10-12: [the renderer](../scripts/render-sid.cpp) runs a SID file through libsidplayfp 3.1.1 and SIDLite without opening a window. It writes mono PCM16 audio at 44,100 Hz plus a `.registers.tsv` sidecar containing the emulated SID's last-written register values after each renderer iteration, timestamped by the emulation library. These snapshots are not one-to-one with PAL frames or individual register writes. [The integration tests](../tests/render_audio_test.py) independently verify A4, the nine Für Elise pitches, their onset timing, and the silent ending.
+[The renderer](../scripts/render-sid.cpp) uses pinned libsidplayfp 3.1.1/SIDLite to write mono PCM16 audio at 44100 Hz without a window. Its `.registers.tsv` sidecar records last-written SID register snapshots after each renderer iteration, timestamped by the emulation library. Snapshots are not individual bus writes or one-to-one PAL frames; use [the CPU audit](psid-audit.md) for ordered writes.
 
-The generated [Für Elise WAV](../build/fuer-elise-opening.wav) is 3.2 seconds long; [its register trace](../build/fuer-elise-opening.wav.registers.tsv) records the execution evidence. Generated files live in `build/` and are recreated locally. See [the song guide](first-song.md) for the editable score and PRG/SID exports.
+The [audio integration tests](../tests/render_audio_test.py) verify independent A4 fixtures, default-subtune selection, the opening Für Elise pitches/onsets and the ending. The [song guide](first-song.md) identifies the editable opening excerpt and its PRG/SID exports; [native instrument trials](instrument-trials.md) apply the same renderer to a different driver.
 
-## Local library setup
+## Pinned library setup
 
-The initial machine had `ffmpeg`/`ffprobe` 9.0.2 and `/usr/bin/afplay`, but no `sidplayfp` executable or libsidplayfp installation. [Homebrew's libsidplayfp formula](https://formulae.brew.sh/formula/libsidplayfp) supplies an Apple Silicon binary package. Its [formula JSON](https://formulae.brew.sh/api/formula/libsidplayfp.json) reported version 3.1.1 and no runtime package dependencies. The verified `arm64_tahoe` bottle is suitable for this arm64 machine running macOS 27.0.1; choose the matching Homebrew bottle when reproducing on another platform.
-
-Download and verify the exact package before extracting it into the project:
+The [Homebrew libsidplayfp package](https://formulae.brew.sh/formula/libsidplayfp) provides the pinned Apple Silicon bottle below. This `arm64_tahoe` package was verified for the local ARM64 macOS 27.0.1 host; other platforms need the matching package. Retain its GPL-2.0-or-later notice, authors and formula.
 
 ```sh
 curl --connect-timeout 4 --max-time 20 -fsSL -H 'Authorization: Bearer QQ==' 'https://ghcr.io/v2/homebrew/core/libsidplayfp/blobs/sha256:7e28827526f55a6b86db4ab3f6ec73d8444f0d0c70c1b2c1144928b19d8ce0dc' -o /private/tmp/c64-sid-libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz
@@ -16,22 +14,26 @@ python3 -c 'import hashlib; from pathlib import Path; assert hashlib.sha256(Path
 tar -tf /private/tmp/c64-sid-libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz
 mkdir -p .local/tools
 tar -xf /private/tmp/c64-sid-libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz -C .local/tools
-```
-
-The package remains under `.local/tools/libsidplayfp/3.1.1`, including its GPL-2.0-or-later `COPYING`, authors, and Homebrew formula. The bottle contains SIDLite rather than reSIDfp. This workflow therefore verifies libsidplayfp/SIDLite output; it is a separate emulator from VICE and its SID engines.
-
-The extracted dynamic library contains an unrelocated `@@HOMEBREW_PREFIX@@` installation ID. Linking the supplied static archive avoids modifying that library, changing system installation paths, or relying on Homebrew relocation. Build with the macOS command-line C++ compiler:
-
-```sh
 mkdir -p .local/bin
 c++ -std=c++17 -O2 -Wall -Wextra -Werror -I.local/tools/libsidplayfp/3.1.1/include scripts/render-sid.cpp .local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a -o .local/bin/render-sid
 ```
 
-This build completed in under one second in the verified session. The renderer accepts `INPUT.sid OUTPUT.wav SECONDS`, forces PAL timing, supports one SID chip, and bounds duration to more than zero and at most 600 seconds. The original 60-second limit was raised for complete songs; regression tests render 60.01 seconds and reject 600.01 seconds. It uses the SID file's model preference, defaulting to MOS8580 when unspecified. A fixed power-on delay removes the library's default startup randomization. Output contains exactly the requested number of samples rounded to the nearest sample, with a minimum of one.
+The extracted dynamic library retains an unrelocated `@@HOMEBREW_PREFIX@@` installation ID. Linking the supplied static archive avoids relying on Homebrew relocation. The bottle supplies SIDLite, not reSIDfp or a `sidplayfp` command-line executable. `QQ==` is the public GHCR anonymous-access header for these bottles.
 
-## Render and verification
+## Renderer contract and API findings
 
-After building the song as described in [the song guide](first-song.md):
+The renderer accepts `INPUT.sid OUTPUT.wav SECONDS`, forces PAL, supports one SID, and permits durations greater than zero through 600 seconds. It honours the SID's model preference, defaulting to MOS8580, and uses a fixed power-on delay for reproducibility. Output has exactly the requested sample count rounded to the nearest sample, with a minimum of one. Rebuild the executable after changing its source.
+
+Two libsidplayfp integration rules are required:
+
+- Call `tune.selectSong(0)` before `player.load()` to select the header's default subtune. [`SidTuneInfoImpl`](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/sidtune/SidTuneInfoImpl.h) starts `currentSong` at zero, and [`psiddrv`](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/psiddrv.cpp) passes `currentSong - 1` to init. Omitting selection passes `$FF`; a player that ignores A can hide the mistake. Independent fixtures for default songs 1 and 2 guard this contract.
+- Treat `getBufSize()` as a sample count in 3.1.1 despite its header's byte description. [The pinned implementation](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/player.cpp#L591) returns samples. Allocate that many `short` values and check capacity before mixing; dividing by `sizeof(short)` underallocates the buffer.
+
+Measure ending silence using AC energy after subtracting the mean. A constant SIDLite DC offset is not continuing oscillator sound. Host speaker playback is a separate check: the restricted host can reject `afplay` with `AudioQueueStart failed (-66680)` even when file rendering succeeds.
+
+## Render and validate
+
+After [building the opening excerpt](first-song.md):
 
 ```sh
 python3 tests/render_audio_test.py
@@ -39,37 +41,16 @@ python3 tests/render_audio_test.py
 ffprobe -v error -show_entries stream=codec_name,sample_rate,channels,bits_per_sample -show_entries format=duration -of json build/fuer-elise-opening.wav
 ```
 
-The tests first failed because the renderer did not exist, then passed with the implementation. Each renderer invocation has a 20-second subprocess deadline. The A4 test uses a separate hand-coded PSID fixture, so the pitch oracle is independent of the song compiler. The song test checks actual PCM pitch as well as the register trace; every onset is within one PAL frame of its expected position, and the final SID volume is zero.
-
-| Note | Expected Hz | SIDLite PCM Hz | VICE/reSID PCM Hz |
-| --- | ---: | ---: | ---: |
-| E5 | 659.255 | 658.51 | 659.66 |
-| D#5 | 622.254 | 621.37 | 622.51 |
-| E5 | 659.255 | 658.36 | 659.50 |
-| D#5 | 622.254 | 621.49 | 622.51 |
-| E5 | 659.255 | 658.51 | 659.66 |
-| B4 | 493.883 | 493.27 | 494.12 |
-| D5 | 587.330 | 586.67 | 587.15 |
-| C5 | 523.251 | 522.68 | 523.52 |
-| A4 | 440.000 | 439.41 | 440.08 |
-
-The PCM measurements use rising crossings around each note's mean, away from attack and release edges; the guard allows a 3 Hz difference. The SID register words correspond to the expected pitches within 0.1 Hz. The WAV contains 141,120 samples, and `ffprobe` independently reports `pcm_s16le`, one channel, 16 bits, 44,100 Hz, and 3.200000 seconds. The final 0.2 seconds have AC RMS zero. Their constant sample value is -157, a SIDLite DC offset rather than continuing oscillation; the silence check subtracts the mean.
-
-An initial renderer attempt exposed a libsidplayfp 3.1.1 documentation mismatch: the header describes `getBufSize()` in bytes, but [the pinned implementation returns a sample count](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/player.cpp#L591). Dividing that result by `sizeof(short)` underallocates the mixer output buffer and reproduced `SIGTRAP` with both the song and independent A4 fixture. The renderer allocates the returned count of `short` samples and checks capacity before mixing. The diagnostic report was `/Users/mbackschat/Library/Logs/DiagnosticReports/render-sid-2026-10-12-203830.ips`.
-
-The SID-Wizard trial on 2026-10-12 exposed a separate renderer integration error: constructing `SidTune` and calling `player.load()` does not select a subtune. [`SidTuneInfoImpl`](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/sidtune/SidTuneInfoImpl.h) initializes `currentSong` to zero; [`psiddrv`](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/psiddrv.cpp) passes `currentSong - 1` to the tune's init routine. Our renderer therefore passed `$ff` instead of the required zero-based song index. The baseline player ignored A and concealed the error; both SID-Wizard pulse and mix fixtures rendered only constant DC, although their CPU traces and standalone VICE playback worked. A debug CPU trace independently confirmed A=`$ff` at `$1000`.
-
-The renderer now calls `tune.selectSong(0)` before loading, selecting the header's declared default. Independent hand-coded fixtures that require the correct init index for default songs 1 and 2 reproduced the silence before the fix and produced A4 afterward. Rebuild the renderer after updating its source. The native pulse trial subsequently passed export, CPU audit, non-silent rendering, quiet-ending checks, and A/B preparation. Selecting a subtune is an API requirement, not an instrument workaround.
-
-Host audio remains a separate check. A single `/usr/bin/afplay build/fuer-elise-opening.wav` attempt in the restricted session exited with code 1 and `AudioQueueStart failed (-66680)`. File rendering and pitch checks succeeded, but this attempt did not establish audible host playback. The WAV is available for playback outside that execution context.
+The A4 oracle uses a hand-coded PSID independent of the song compiler. Opening-excerpt checks verify actual PCM pitches within 3 Hz, SID frequency words within 0.1 Hz, onsets within one PAL frame and a silent ending with zero final volume. The excerpt passes these checks through both SIDLite and headless VICE/reSID MOS8580. This validates playback and the tested pitches, not expressive instrument quality or physical SID behaviour.
 
 ## Full PRG execution in headless VICE
 
-The separately built official VICE 3.9 headless executable also ran the PRG successfully without a window, display environment, or TCP monitor. The final run exited with code 0 through a file-based monitor `quit` command. Its output used reSID MOS8580 and produced [the VICE WAV](../build/fuer-elise-vice.wav), independently confirming all nine PCM pitches within the 3 Hz guard shown above. The raw capture is 210,112 mono PCM16 samples at 44,100 Hz, or 4.764444 seconds, including approximately 2.19 seconds of machine bootstrap before the song; it includes an initial audio startup transient.
+Use the [genuine headless VICE build](vice-startup-investigation.md) and writable configuration/state directories. `loadbasic` updates BASIC pointers, and lowercase `keybuf run\n` supplies the BASIC keyword through [VICE's ASCII-to-PETSCII keyboard parser](../.tools/vice-headless-3.9/source/src/kbdbuf.c). Setting the program counter directly would bypass this boot check.
 
-The monitor file loads the actual BASIC-wrapped PRG through `loadbasic`, which updates BASIC pointers, then feeds `run` into the keyboard buffer. It waits for the standalone entry, the wrapper's final RTS, and the BASIC ROM's return path. No program-counter assignment bypasses BASIC. Reproduce the file from the project root:
+The following monitor file checks the opening PRG's entry, wrapper return, restored CPU ports, finished state, SID registers and return to BASIC:
 
 ```sh
+mkdir -p .local/vice-headless-3.9/config .local/vice-headless-3.9/state/vice
 cat > .local/vice-headless-3.9/fuer-elise-prg.mon <<'MONITOR'
 loadbasic "build/fuer-elise-opening.prg" 0
 keybuf run\n
@@ -86,45 +67,31 @@ until $a474
 r
 quit
 MONITOR
+env -u DISPLAY -u WAYLAND_DISPLAY XDG_CONFIG_HOME="$PWD/.local/vice-headless-3.9/config" XDG_STATE_HOME="$PWD/.local/vice-headless-3.9/state" .tools/vice-headless-3.9/build/src/x64sc -config /dev/null -directory /Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice -pal +warp -sounddev wav -soundarg "$PWD/build/fuer-elise-vice.wav" -sidenginemodel resid8580 -soundrate 44100 +logcolorize -limitcycles 10000000 -initbreak ready -monlogname "$PWD/.local/vice-headless-3.9/fuer-elise-prg-monitor.log" -monlog -moncommands "$PWD/.local/vice-headless-3.9/fuer-elise-prg.mon"
 ```
 
-These addresses correspond to the generated excerpt verified on 2026-10-12: `$0810` is its standalone entry, `$083c` its wrapper RTS, `$1078-$107a` its event index/ticks/finished state, and `$a474` a BASIC ROM return point. See [the song guide](first-song.md) and generated `build/fuer-elise-opening.asm` / `.events.json` when changing the player.
+These addresses belong to the current opening player: `$0810` is its entry, `$083C` its wrapper RTS, `$1078-$107A` its event/tick/finished state and `$A474` the BASIC return point. Consult generated `build/fuer-elise-opening.asm` and `.events.json` when changing the player. A successful monitor `quit` produces exit status zero. Use a subprocess deadline as well as the emulated-cycle limit.
 
-Run the exact verified capture command; the agent additionally imposed a 15-second subprocess cancellation deadline:
+The raw VICE WAV includes machine bootstrap and may contain a startup transient; align the musical portion before comparing it with a SID render. Runtime warnings about unused keymaps/printer assets or the `/dev/null` configuration version do not by themselves invalidate a completed CPU and PCM check.
 
-```sh
-env -u DISPLAY -u WAYLAND_DISPLAY XDG_CONFIG_HOME="$PWD/.local/vice-headless-3.9/config" XDG_STATE_HOME="$PWD/.local/vice-headless-3.9/state" .tools/vice-headless-3.9/build/src/x64sc -config /dev/null -directory /Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice -pal -sounddev wav -soundarg "$PWD/build/fuer-elise-vice.wav" -sidenginemodel resid8580 -soundrate 44100 +logcolorize -limitcycles 10000000 -initbreak ready -monlogname "$PWD/.local/vice-headless-3.9/fuer-elise-prg-monitor.log" -monlog -moncommands "$PWD/.local/vice-headless-3.9/fuer-elise-prg.mon" > .local/vice-headless-3.9/fuer-elise-prg-run.log 2>&1
-```
+## VICE audio and bridge rules
 
-The readable monitor log is `.local/vice-headless-3.9/fuer-elise-prg-monitor.log`; the complete process output is `fuer-elise-prg-run.log` in the same directory. CPU cycles were 2,157,474 at `$0810`, 4,694,349 at `$083c`, and 4,694,715 at `$a474`. The wrapper therefore ran for approximately 2.575 seconds. Its memory ports `$00/$01` were restored to `2f 37`; state bytes `$1078-$107a` were `0a 00 01`, including `finished=1`; the I/O-bank SID peek showed control `$D404=10`, ADSR `$D405/$D406=06 41`, and volume `$D418=00`. Assertions checked these states and all nine PCM pitches. The final 0.2 seconds have AC RMS approximately 2.50 PCM units, with samples between 7 and 12, below one percent of every active note's amplitude. This small residual is distinct from SIDLite's constant offset; its exact cause was not instrumented. Measurements are retained in `.local/vice-headless-3.9/fuer-elise-prg-audio-evidence.json`.
+- Select `-sounddev wav -soundarg /absolute/output.wav -soundrate 44100` for offline capture, and disable warp with `+warp`. [VICE 3.9's dummy sound driver](../.tools/vice-headless-3.9/source/src/arch/shared/sounddrv/sounddummy.c) has no initialization callback; [sound_open](../.tools/vice-headless-3.9/source/src/sound.c) sets channel count inside that callback. Dummy playback combined with WAV recording can therefore produce an empty zero-channel header. [The WAV driver](../.tools/vice-headless-3.9/source/src/arch/shared/sounddrv/soundwav.c) initializes output correctly.
+- A deliberately reached cycle limit returns status 1 and `cycle limit reached.` in VICE 3.9. Accept it only when the expected entry breakpoint, finalized nonempty WAV and capture duration also pass. It is different from a monitor-driven successful exit and does not prove a return to BASIC.
+- [c64bridge's process launcher](../.tools/c64bridge/src/vice/process.ts) inserts `-sounddev dummy` before user arguments. The pinned [VICE argument parser](../.tools/vice-headless-3.9/source/src/cmdline.c) applies options left to right, so later device options replace it. `VICE_ARGS` replaces configured `args`; `VICE_WARP=0` overrides configured warp.
+- For host playback on a compatible macOS build, the device fragment is `-pal +logcolorize -sound -sounddev coreaudio -soundvolume 100`, with warp disabled. Recording uses `-soundrecdev wav -soundrecarg /absolute/output.wav`; configure playback and the output filename before enabling recording so changing resources does not truncate an active file. See [the VICE sound manual](https://vice-emu.sourceforge.io/vice_6.html).
+- The pinned [offline VICE runner](../.tools/c64bridge/src/viceRunner.ts) supplies repeated `-soundarg` values; the later `bits=16` replaces the filename, while the WAV driver expects a filename directly. Use the direct capture command above. SID files require `vsid`; giving one to `x64sc` is not the verified native PRG path. The [sidplayfp runner](../.tools/c64bridge/src/sidplayRunner.ts) requires a separate executable that the local library package does not supply.
 
-Two unsuccessful capture details were resolved before this result:
-
-- `keybuf RUN\n` did not reach `$0810` and ended at the cycle limit. [VICE 3.9's keyboard parser](../.tools/vice-headless-3.9/source/src/kbdbuf.c) converts ASCII to PETSCII; using lowercase `run\n` supplies the BASIC keyword correctly. The unsuccessful output is `fuer-elise-prg-uppercase-keybuf.log` in the local diagnostic directory.
-- `-sounddev dummy -soundrecdev wav -soundrecarg filename` created a 44-byte WAV with zero channels and no samples, despite opening the recorder and completing the CPU run. In [VICE 3.9 sound_open](../.tools/vice-headless-3.9/source/src/sound.c), `sound_output_channels` is assigned only inside the playback device's initialization callback, while [the dummy driver](../.tools/vice-headless-3.9/source/src/arch/shared/sounddrv/sounddummy.c) has a null callback. [The WAV driver](../.tools/vice-headless-3.9/source/src/arch/shared/sounddrv/soundwav.c) supplies initialization; selecting it directly with `-sounddev wav -soundarg filename` generated the valid capture. Both the first and second dummy-driver recordings exhibited the same empty-header mechanism. The failed WAV and process output are retained as `fuer-elise-prg-dummy-invalid.wav` and `fuer-elise-prg-dummy-recording.log` under `.local/vice-headless-3.9`.
-
-The verified native run still reports missing headless keymaps, printer charset, unused drive ROMs, the `/dev/null` configuration version warning, and `SaveResourcesOnExit` during shutdown. These did not prevent BASIC execution, valid PCM output, or exit code 0. All agent-owned probe processes exited and were reaped.
-
-## c64bridge and VICE audio findings
-
-[c64bridge's process launcher](../.tools/c64bridge/src/vice/process.ts) inserts `-sounddev dummy` before user arguments. A no-emulator constructor probe verified that `VICE_ARGS` replaces configuration `args`, preserves quoted filenames, and that `VICE_WARP=0` overrides a configured `warp: true`. The [argument parser in the verified official VICE 3.9 release](../.tools/vice-headless-3.9/source/src/cmdline.c) applies resource options left to right, so a later `-sounddev coreaudio` replaces `dummy`. The release download and checksum are recorded in [the startup investigation](vice-startup-investigation.md). This precedence was established from source; runtime audio selection in the installed GTK build was not verified.
-
-For a compatible VICE build, the relevant argument fragment is `-pal +logcolorize -sound -sounddev coreaudio -soundvolume 100`, with `VICE_WARP=false`. The [VICE sound manual](https://vice-emu.sourceforge.io/vice_6.html) identifies `dummy` as silent playback and `coreaudio` as macOS output. WAV recording uses `-soundrecdev wav -soundrecarg /absolute/output.wav -soundrate 44100`; the filename is passed directly. Installed executable strings confirmed CoreAudio and RIFF/WAV recording support.
-
-[The upstream offline VICE runner](../.tools/c64bridge/src/viceRunner.ts) passes `-sounddev wav`, `-soundarg output=...`, `-soundarg bits=16`, and `-soundvol 100`, then gives a SID file to `x64sc`. The direct WAV device selection is supported by the verified 3.9 run above. Its driver expects a filename directly; the later `-soundarg bits=16` replaces the earlier argument, so the runner does not supply the requested output filename. This runner was not used as a verified render path. The dedicated VICE SID player is `vsid`. [The alternative sidplayfp runner](../.tools/c64bridge/src/sidplayRunner.ts) also needs a separately installed command-line executable; the local library package does not provide it.
-
-[The c64_vice tool](../.tools/c64bridge/src/tools/vice.ts) allows `Sound*` resources, so a running emulator can be configured through `SoundDeviceName`, `SoundVolume`, `SoundSampleRate`, `SoundRecordDeviceArg`, and `SoundRecordDeviceName`. Configure playback and the recording filename before enabling recording to avoid reopening and truncating an active output file. These capabilities were confirmed from source, not through a working live monitor in this investigation.
-
-The existing GTK3 installation rejects `-headless`; `-console` still reaches GTK initialization and is not a genuine headless substitute. The successful ordinary desktop launch establishes that its GUI can work in the user's Terminal. See [the VICE startup investigation](vice-startup-investigation.md) and [local setup](local-setup.md) for the separate headless VICE build and exact startup evidence.
+Live sound-resource operations are available in [the bridge tool](../.tools/c64bridge/src/tools/vice.ts), but require a reachable binary monitor. Runtime CoreAudio selection and live bridge recording have not been verified in the restricted runner. [Local setup](local-setup.md) explains the separate socket and GTK constraints.
 
 ## Verify live SID writes
 
-[c64bridge's memory reader](../.tools/c64bridge/src/vice/viceClient.ts) requests binary-monitor memory with side effects disabled and CPU bank zero. In the [SID implementation from the verified official VICE 3.9 release](../.tools/vice-headless-3.9/source/src/sid/sid.c), a monitor peek returns the cached last-written SID register values; [the C64 memory implementation](../.tools/vice-headless-3.9/source/src/c64/c64mem.c) exposes them through bank zero when the current CPU configuration maps I/O. Read `$0001` along with `$D400` through `$D418` to check that assumption. For code that banks out I/O, use [Banks available and Memory get](https://vice-emu.sourceforge.io/vice_13.html) to discover the `io` bank and peek it explicitly; the bridge's public memory operation does not expose a bank selector.
+[c64bridge's memory reader](../.tools/c64bridge/src/vice/viceClient.ts) requests side-effect-free binary-monitor memory in CPU bank zero. [VICE's SID peek](../.tools/vice-headless-3.9/source/src/sid/sid.c) returns cached last-written register values, while [CPU bank mapping](../.tools/vice-headless-3.9/source/src/c64/c64mem.c) exposes them only when `$0001` maps I/O. Read `$0001` with `$D400-$D418`. If the program banks out I/O, use [Banks available and Memory get](https://vice-emu.sourceforge.io/vice_13.html) to find and peek the `io` bank; the bridge's public memory operation does not expose a bank selector.
 
-To establish continuing CPU writes, create a non-stopping store checkpoint with `c64_debug`:
+For continuing CPU write activity, create a non-stopping store checkpoint with `c64_debug`:
 
 ```json
 {"op":"create_checkpoint","address":"$D400","endAddress":"$D418","stopOnHit":false,"operations":{"execute":false,"load":false,"store":true}}
 ```
 
-Read its `hitCount` using `get_checkpoint`, resume execution, then read again and remove the checkpoint using `delete_checkpoint`. An increasing count establishes SID-address write activity; the register values and captured PCM establish the resulting pitches and audio. Binary monitor commands pause the CPU briefly, so always resume through the monitor's Exit command after inspection. These live checks require a reachable monitor and were not claimed as completed merely because MCP tool discovery succeeded.
+Read `hitCount` using `get_checkpoint`, resume, read again, and remove the checkpoint using `delete_checkpoint`. An increasing count establishes address-write activity; register values and PCM establish its sound. Binary-monitor inspection pauses the CPU briefly, so resume through the monitor's Exit command. Tool discovery alone does not establish live emulator control.

@@ -57,7 +57,7 @@ The driver accepts at most 254 source notes/rests plus the final tail. Each quan
 
 ## Verification evidence
 
-The Bun tests first failed before the build implementation existed and subsequently passed. Independent fixtures verify the nine-note transcription, sixteenth/eighth timing, PAL pitch words, gate-off schedule, header flags and addresses, payload identity, longer source handling, rejection of invalid input, and deterministic output bytes.
+Independent fixtures verify the nine-note transcription, sixteenth/eighth timing, PAL pitch words, gate-off schedule, header flags and addresses, payload identity, longer source handling, rejection of invalid input, and deterministic output bytes.
 
 The py65 tests execute the assembled bytes and verify initialization from dirty state, note order, durations, release edges, a nonlooping silent end, restart, repeated-note retriggering, explicit rests, and events beyond 255 total ticks. They also execute the standalone wrapper with a CPU-cycle-derived raster input and verify exactly one play call per PAL frame, stack balance, and restored ports/flags. Callable play paths execute in fewer than 250 modeled CPU cycles in these tests. This functional 6502 check does not model VIC-II bus contention, SID envelopes, ROM execution, or hardware interrupts; it does not establish a measured real-C64 CPU budget.
 

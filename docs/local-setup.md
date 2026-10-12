@@ -1,24 +1,22 @@
 # Local SID skills and VICE setup
 
-## Components
+## Components and current capabilities
 
-The user supplied local checkouts under `.tools/` on 2026-10-12. The skill-installer's validation and copy helpers staged the requested skills under [skills](../skills/README.md); its network downloader could not resolve GitHub in this session. No global skill or configuration was changed.
-
-**Skills and server installed:** the user activated both project skill symlinks, copied the original GTK-based MCP configuration, and installed the locked dependencies. A real MCP stdio handshake succeeded with c64bridge 1.0.4, listing 17 tools (including `c64_sound`) and 28 resources. This verifies discovery, not an emulator connection. The versioned configuration example has since been changed to the genuine headless build; the protected `.codex/config.toml` still contains the user's earlier GTK configuration.
-
-**Current execution path:** the [opening excerpt](first-song.md) builds to PRG and SID and passes independent CPU checks. [Headless audio verification](audio-workflow.md) covers both a libsidplayfp/SIDLite render and a full PRG run through BASIC in genuine headless VICE 3.9 with reSID MOS8580 recording. Both captures contain the expected nine pitches; VICE returns to BASIC with the player finished and SID volume zero. The session separately denies binary-monitor socket binding. Detailed build commands, checksums, failures, and outcomes are in the [VICE investigation](vice-startup-investigation.md). No Computer Use is required by the file-based workflow.
+The project stages portable skill sources under [skills](../skills/README.md), third-party checkouts/builds under `.tools/`, runtime state under `.local/`, and a machine-specific MCP configuration under `.codex/`. Keep upstream revisions and notices intact.
 
 | Component | Local source | Revision |
 | --- | --- | --- |
 | `c64-sid` | `.tools/c64-skills/c64-sid` | `480b253b147655fa6ff6eb74577d1a2523d512d4` |
 | `sid-music` | `.tools/c64bridge/.github/skills/sid-music` | `0781a7b6cfe7b92bbb6d68e048ad396bd3edfb18` |
 | c64bridge server | `.tools/c64bridge` | Same revision; package version `1.0.4` |
-| VICE | `/Applications/vice-arm64-gtk3-3.9` | User's successful desktop launch reports VICE 3.9 |
+| Desktop VICE | `/Applications/vice-arm64-gtk3-3.9` | VICE 3.9 |
 | Headless VICE | `.tools/vice-headless-3.9/build/src/x64sc` | Official VICE 3.9 release; project-local build |
 
-## Activation from the user's Terminal
+Both project skills are active, and the c64bridge stdio handshake/tool discovery passes. That establishes server discovery, not emulator connectivity. Offline PRG/SID builds, independent CPU checks, SIDLite rendering and genuine headless VICE/reSID execution work. The restricted runner denies binary-monitor socket binding, so live bridge control remains unverified. See [audio rendering](audio-workflow.md), [native checkpoints](native-vice-checks.md) and [headless build findings](vice-startup-investigation.md).
 
-The session's filesystem policy makes `.agents` and `.codex` read-only. The user ran the commands below to complete installation outside that restricted session. They are retained for reproduction on another setup; do not rerun merely because they appear here. They preserve existing paths rather than overwrite them. If a destination exists, inspect it and merge deliberately.
+## Activate on another checkout
+
+From the user's Terminal, adapt the checkout path and inspect existing destinations before merging configuration:
 
 ```sh
 cd /Users/mbackschat/Projects/c64-sid-skill
@@ -30,54 +28,35 @@ cd .tools/c64bridge
 bun install --frozen-lockfile
 ```
 
-Use Bun here because this third-party project declares and supplies a Bun lockfile; it is already installed at `/opt/homebrew/bin/bun`. The configuration launches its TypeScript entry point directly, so a source build is not required. This avoids replacing its package-manager contract with a newly generated pnpm lockfile.
+Use Bun because the pinned bridge supplies its own Bun lockfile. Its TypeScript entry point runs directly; no source build or replacement Node lockfile is needed. The [configuration example](../config/codex.toml) contains this machine's executable/data paths and must be adapted elsewhere. Existing `.codex/config.toml` can differ from the example, and the restricted session cannot write that protected configuration.
 
-Codex discovers project skills through `.agents/skills`, including symlinks. The skills should be available on the next turn; restart if they do not appear. Project MCP configuration requires a trusted project and a server reload/new session. These are client behaviours documented by [OpenAI's skill guide](https://learn.chatgpt.com/docs/build-skills) and [MCP guide](https://learn.chatgpt.com/docs/extend/mcp?surface=cli).
+Codex discovers skills through `.agents/skills`, including symlinks. A trusted project and server reload/new session are required for MCP configuration changes; see the [skill guide](https://learn.chatgpt.com/docs/build-skills) and [MCP guide](https://learn.chatgpt.com/docs/extend/mcp?surface=cli).
 
-## VICE configuration
+## Headless bridge configuration
 
-The original activated configuration selected the installed GTK launcher, PAL, visible/minimized mode, normal speed, and disabled prewarming. The current [configuration example](../config/codex.toml) selects the project-built headless binary, retains PAL and normal speed, disables Xvfb, and uses ROM resources from the existing installation. Diagnostics, the VICE log, and task state stay under `.local/c64bridge`.
+The example selects the project-built headless executable, PAL and normal speed, with ROM resources from the installed desktop package. It disables Xvfb and keeps bridge state/diagnostics under `.local/c64bridge`.
 
-Disabled prewarming does not guarantee lazy emulator startup in this pinned bridge. Its [server startup](../.tools/c64bridge/src/mcp-server.ts) independently calls `logConnectivity()`, which reads `$0000` when VICE is selected and can launch the emulator. The headless probe's diagnostics show that process-start request before the explicit resource read. `VICE_PREWARM = "0"` controls the separate prewarm path, not this connectivity probe.
+- Keep `VICE_HEADLESS="0"` for this build: `--enable-headlessui` already selects its UI, whereas the bridge's `1` setting injects a runtime `-headless` flag that is unnecessary and unsupported by the GTK package.
+- `VICE_VISIBLE="false"` and `DISABLE_XVFB="1"` avoid virtual-display startup. `VICE_WARP="false"` is required for normal-speed audio capture.
+- `VICE_PREWARM="0"` disables only the dedicated prewarm path. The pinned [server startup](../.tools/c64bridge/src/mcp-server.ts) independently calls `logConnectivity()`, which reads `$0000` and can start VICE during server initialization.
+- The bridge defaults to dummy audio. Use [direct WAV output](audio-workflow.md) for reproducible capture; server discovery is not proof that sound is audible.
 
-`VICE_HEADLESS = "0"` is deliberate: the executable was compiled with `--enable-headlessui`, whereas setting the bridge variable to `1` injects a runtime `-headless` option that this workflow does not require. `VICE_VISIBLE = "false"` and `DISABLE_XVFB = "1"` prevent a virtual display launch. The bridge still defaults to dummy sound; use the [audio workflow](audio-workflow.md) for reproducible rendering.
+The genuine headless build avoids the restricted GTK/OpenGL startup crash. The separate socket-binding denial still blocks live monitor readiness, while offline monitor files remain usable. Build/source pins and workarounds belong in [the headless guide](vice-startup-investigation.md).
 
-The headless MCP probe used a separate port, `6512`, to avoid the user's desktop instance. It timed out; a direct bounded launch then exposed `vice_network_server(): bind() failed: Operation not permitted`. This is a socket permission failure, not a GTK failure or an absent headless build. Probe diagnostics are `.local/c64bridge/diagnostics/2026-10-12T18-43-24-649Z-28232-mcp-server.ndjson`; owned probe processes were stopped. MCP emulator control requires a runner that permits localhost sockets. Do not claim the new configuration is active: `.codex/` remains read-only to this session.
+## Desktop and connected checks
 
-### Earlier GTK investigation
-
-Initially, both the launcher and direct executable returned `failed to retrieve executable path` followed by `argv[0] is NULL` when probed with `-version` in the restricted session. The [subsequent investigation](vice-startup-investigation.md) traces this shortcut's initialization-order defect separately from the GTK startup crash. The later desktop launch and headless runtime banner establish version 3.9; reinstalling is unnecessary.
-
-An early MCP `c64_vice` / `resource_get` request for `SidEngine` exercised actual emulator startup. VICE exited with code 139 before its monitor became ready, with repeated GTK `GDK_IS_MONITOR` assertions and a segmentation fault. Later crash-report and disassembly analysis identified a call through a null OpenGL shader function pointer; see the [investigation](vice-startup-investigation.md). The original diagnostic log is `.local/c64bridge/diagnostics/2026-10-12T18-04-53-082Z-88443-mcp-server.ndjson`. That probe started no song and verified no audio.
-
-### Colour-log hypothesis
-
-The user suggested coloured logging as a possible cause. VICE supports `+logcolorize` to disable colour logging; the plus sign is intentional. [Upstream bug 2259](https://sourceforge.net/p/vice-emu/bugs/2259/) reports a crash when coloured output goes to a pipe/file and a log file cannot be opened: the logging implementation can pass uninitialized null text pointers to its output routine. That report describes a 3.10 build, so applicability to this 3.9 installation needs testing. c64bridge does pipe the child process's output, making the hypothesis relevant.
-
-An A/B MCP test on 2026-10-12 reproduced exit code 139 and GTK monitor assertions with both `-pal -minimized` and `-pal -minimized +logcolorize`. The colour-disabled run is recorded in `.local/c64bridge/diagnostics/2026-10-12T18-13-27-353Z-91203-mcp-server.ndjson`. Disabling colour did not resolve the observed startup failure; these tests do not establish its root cause. Configuration was not changed on the basis of an unsuccessful workaround.
-
-A third run with `-pal +logcolorize` also failed in the same way, so removing the minimized-window option did not resolve it either.
-
-### Desktop launch succeeds
-
-On 2026-10-12 the user confirmed that this command opens the emulator window from their normal macOS Terminal:
+The installed GTK3 package works from the user's desktop Terminal:
 
 ```sh
 /Applications/vice-arm64-gtk3-3.9/bin/x64sc -pal +logcolorize
 ```
 
-The supplied output identifies `VICE Version 3.9`. It still reports `failed to retrieve executable path, falling back to getcwd() + argv[0]`, a missing `PetMe1282Y.ttf`, and failure to register the CBM font. Those warnings are nonfatal in this successful desktop launch. This establishes that the installation can start in the desktop context; it does not isolate which process-environment or access difference causes the restricted launch failure. Do not reinstall VICE to address these observations. Audible playback and the binary-monitor connection remain separate checks.
+Its executable-path fallback and font warnings can be nonfatal. It rejects runtime `-headless`; `-console` still initializes GTK. The `-version` initialization-order problem is separate from graphics startup and is explained in [the headless findings](vice-startup-investigation.md).
 
-## First connected check
+When a live monitor is available, discover `c64_sound`, read `c64://platform/status` and the binary-monitor resource before issuing commands. Require an actual monitor Info response; an open window or installed skill is insufficient. The upstream preset call is `c64_sound` with `op: "play_preset"`, `preset: "fuer_elise"`. Read [compiler/preset limitations](research/tools/skills-and-integrations.md): that preset is not the verified complete transcription. Use file renders rather than microphone capture as deterministic evidence.
 
-Discover `c64_sound` and read `c64://platform/status` to confirm the VICE backend. Read the bridge's binary-monitor resource before monitor operations. A skill file alone does not supply these tools; the MCP server must start successfully. For a preset demonstration, the upstream skill specifies `c64_sound` with `op: "play_preset"` and `preset: "fuer_elise"`.
+## Reproducibility checks
 
-Treat successful launch separately from audio or score correctness. Read the [compiler limitations](research/tools/skills-and-integrations.md) first; the preset is not a verified full transcription. Do not use microphone capture as evidence of a clean deterministic render.
+The staged skills' frontmatter and MCP example parse successfully; local Markdown links, register anchors and recalculated note-frequency examples are checked, and archived SID references remain byte-identical to upstream. Full Python skill-creator validation requires PyYAML and was not part of the offline checks. Record adaptations in [the skill manifest](../skills/README.md), retain dependency locks and leave third-party/source reference formatting intact.
 
-## Reproducibility
-
-Keep upstream checkouts separate from the staged skills and record any local skill adaptations in [the skill manifest](../skills/README.md). Do not update upstream branches silently. Review licenses before publishing vendored documentation or music. The root [AGENTS.md](../AGENTS.md) contains contributor guidance and VICE findings, as subsequently requested by the user.
-
-The user initialized Git on 2026-10-12. The new `.gitignore` excludes downloaded tools, runtime files, generated outputs, and `.codex/`; those exclusions were checked. Initial compound shell commands that combined staging and read-only checks failed with `Unable to create .../.git/index.lock: Operation not permitted`. After the user explicitly renewed Git authorization, standalone `git add` commands succeeded; another compound attempt still failed. Run Git mutations separately from inspection commands in this environment. No third-party checkout modifications were included. Whitespace checks flag existing blank lines at EOF in four archived SID references; these files remain byte-identical to upstream rather than being reformatted.
-
-Validation completed: skill frontmatter parsed with Bun's YAML parser; MCP configuration parsed with Bun's TOML parser; local Markdown links and source-register anchors checked; note-frequency examples independently recalculated; bundled SID reference bytes compared with upstream. The skill-creator's Python validator could not run because PyYAML was unavailable in the offline environment, so its full check is not claimed.
+[AGENTS.md](../AGENTS.md) provides contributor guidance. Generated outputs, runtime state and machine configuration remain ignored; share useful findings and portable commands in tracked documentation.
