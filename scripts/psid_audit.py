@@ -115,11 +115,20 @@ def main():
     args = parser.parse_args()
     writes_path = args.output.with_suffix(".writes.json")
     require(args.output.resolve() != args.sid.resolve() and writes_path.resolve() != args.sid.resolve(), "Output must not overwrite the input")
-    require(not args.output.exists() and not writes_path.exists(), "Audit outputs already exist; choose a new output path")
+    require(not any(path.exists() or path.is_symlink() for path in (args.output, writes_path)), "Audit outputs already exist; choose a new output path")
     report, writes = audit_psid(args.sid.read_bytes(), args.ticks)
+    evidence = ((args.output, json.dumps(report, indent=2) + "\n"), (writes_path, json.dumps(writes, separators=(",", ":")) + "\n"))
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(report, indent=2) + "\n")
-    writes_path.write_text(json.dumps(writes, separators=(",", ":")) + "\n")
+    created = []
+    try:
+        for path, content in evidence:
+            with path.open("x", encoding="utf-8") as output:
+                created.append(path)
+                output.write(content)
+    except Exception:
+        for path in created:
+            path.unlink(missing_ok=True)
+        raise
     print(f"Audited {report['playCalls']} calls, {report['playWriteCount']} SID writes; peak {report['maximumPlayCycles']}/{CYCLES_PER_FRAME} cycles")
 
 

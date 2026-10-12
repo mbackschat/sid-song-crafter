@@ -1,7 +1,10 @@
 import importlib.util
+import json
 from pathlib import Path
 import sys
+import tempfile
 import unittest
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -58,6 +61,76 @@ class PsidAuditTest(unittest.TestCase):
             with self.subTest(program=program):
                 with self.assertRaisesRegex(ValueError, "I/O"):
                     audit.audit_psid(sid_file(program), 1)
+
+    def test_cpu_banking_keeps_sid_visible_and_mapping_bits_as_outputs(self):
+        for program, message in (
+            (bytes((0xa9, 0x34, 0x85, 0x01, 0x60)), "hide SID I/O"),
+            (bytes((0xa9, 0x28, 0x85, 0x00, 0x60)), "mapping bits as outputs"),
+        ):
+            with self.subTest(program=program), self.assertRaisesRegex(ValueError, message):
+                audit.audit_psid(sid_file(program), 1)
+
+    def test_disabling_roms_allows_underlying_ram_reads_while_sid_remains_visible(self):
+        program = bytes((0xa9, 0x35, 0x85, 0x01, 0xad, 0x00, 0xa0, 0x8d, 0x02, 0xd4, 0xad, 0x00, 0xe0, 0x8d, 0x03, 0xd4, 0x60))
+        report, writes = audit.audit_psid(sid_file(program), 1)
+        self.assertEqual(report["playWriteCount"], 2)
+        self.assertEqual([(row["address"], row["value"]) for row in writes if row["phase"] == "play"], [(0xd402, 0), (0xd403, 0)])
+
+    def test_mapped_rom_reads_are_rejected(self):
+        for address in (0xa000, 0xe000):
+            with self.subTest(address=address), self.assertRaisesRegex(ValueError, "ROM read"):
+                audit.audit_psid(sid_file(bytes((0xad, address & 255, address >> 8, 0x60))), 1)
+
+    def test_cli_writes_both_evidence_files_and_preserves_source(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            source, output = root / "fixture.sid", root / "fixture.audit.json"
+            original = sid_file()
+            source.write_bytes(original)
+            with patch.object(sys, "argv", ["psid_audit.py", str(source), "--ticks", "3", "--output", str(output)]), patch("builtins.print"):
+                audit.main()
+            self.assertEqual(source.read_bytes(), original)
+            self.assertEqual(json.loads(output.read_text())["playCalls"], 3)
+            self.assertEqual(len(json.loads(output.with_suffix(".writes.json").read_text())), 4)
+
+    def test_cli_preserves_evidence_created_after_the_output_preflight(self):
+        for concurrent_name in ("fixture.audit.json", "fixture.audit.writes.json"):
+            with self.subTest(concurrent_name=concurrent_name), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory).resolve()
+                source, output = root / "fixture.sid", root / "fixture.audit.json"
+                source.write_bytes(sid_file())
+                concurrent_path = root / concurrent_name
+                original_open = Path.open
+
+                def concurrent_open(path, mode="r", *args, **kwargs):
+                    if path == concurrent_path and mode in ("w", "x"):
+                        with original_open(path, "w") as concurrent:
+                            concurrent.write("keep concurrent evidence")
+                    return original_open(path, mode, *args, **kwargs)
+
+                with patch.object(sys, "argv", ["psid_audit.py", str(source), "--ticks", "1", "--output", str(output)]), patch.object(Path, "open", concurrent_open), patch("builtins.print"), self.assertRaises(FileExistsError):
+                    audit.main()
+                self.assertEqual(concurrent_path.read_text(), "keep concurrent evidence")
+                other = output.with_suffix(".writes.json") if concurrent_path == output else output
+                self.assertFalse(other.exists())
+
+    def test_cli_removes_its_incomplete_evidence_when_companion_write_fails(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            source, output = root / "fixture.sid", root / "fixture.audit.json"
+            writes = output.with_suffix(".writes.json")
+            source.write_bytes(sid_file())
+            original_open = Path.open
+
+            def failed_open(path, mode="r", *args, **kwargs):
+                if path == writes and mode in ("w", "x"):
+                    raise OSError("companion unavailable")
+                return original_open(path, mode, *args, **kwargs)
+
+            with patch.object(sys, "argv", ["psid_audit.py", str(source), "--ticks", "1", "--output", str(output)]), patch.object(Path, "open", failed_open), self.assertRaisesRegex(OSError, "companion unavailable"):
+                audit.main()
+            self.assertFalse(output.exists())
+            self.assertFalse(writes.exists())
 
     def test_rejects_unsupported_opcode_and_unbounded_driver(self):
         for program, message in ((b"\x02", "opcode"), (b"\x4c\x06\x10", "budget")):
