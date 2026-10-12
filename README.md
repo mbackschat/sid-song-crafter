@@ -7,6 +7,7 @@ Research and reusable tools for composing expressive Commodore 64 music for one 
 - [Research index](docs/research/README.md): hardware, composition, timing, formats, tools, and source provenance.
 - [Composer studies](docs/research/composers/README.md): seven masters, published accounts, custom tools, and a listening catalogue.
 - [Sound-design repertoire](docs/research/composition/sound-design-repertoire.md): proposed experiments and evidence required for reusable instruments.
+- [Native instrument trials and samples](docs/instrument-trials.md): seven original patches, nine rendered studies, and four level-matched A/B comparisons.
 - [Composition tools](docs/research/tools/composition-tools.md): established editors, their drivers, and a practical evaluation plan.
 - [Song workflow](docs/song-workflow.md): source preservation, conversion boundaries, and one-command build/render/verification.
 - [Full Für Elise source and arrangement](docs/fuer-elise-score.md): repeat expansion, musical landmarks, and explicit three-voice reductions.
@@ -24,6 +25,17 @@ Research and reusable tools for composing expressive Commodore 64 music for one 
 Project sources and research belong in Git. `.tools/` contains reproducible third-party checkouts; `.local/` contains diagnostics and runtime state; `build/` contains generated output. These directories and the machine-local `.codex/` configuration are ignored. The relative skill symlinks in `.agents/skills/` point to the versioned copies in `skills/`.
 
 The checked-in [configuration example](config/codex.toml) records this machine's installation paths. Adapt it before activating it on another computer. Follow [local setup](docs/local-setup.md) for exact upstream revisions and installation commands; use the upstream Bun lockfile for c64bridge.
+
+## Native sound-design trials
+
+After preparing the renderer and py65 dependency, build the pinned SID-Wizard exporter and run the original instrument bank:
+
+```sh
+python3 scripts/setup-sidwizard.py
+python3 scripts/run-instrument-trials.py --output build/instrument-trials
+```
+
+Use a fresh output directory for a revised trial. The pipeline retains native SWM/SWI files, exports the actual Extra driver, audits its register writes, renders the phrases, and prepares amplitude-matched A/B audio. Start with the [candidate mix](build/instrument-trials/mix-candidate/mix-candidate.wav), then review the [individual comparisons and listening record](docs/instrument-trials.md). The user accepted the short mix as sounding OK; broader listening and hardware checks remain open.
 
 ## Prepare the assembler
 
@@ -76,4 +88,4 @@ The resulting WAV can be played without an emulator window. Rendering and checki
 
 ## Verification status
 
-The full three-voice arrangement passes binary/header guards, independent 6502 register-write checks, rendered audio checks, and genuine headless VICE execution through BASIC and back. An independent native VICE/reSID recording also passes clipping and ending checks; see [full-song evidence](docs/fuer-elise-validation.md). This is a correctness baseline with simple instruments; the sound-design experiments still require implementation and listening comparison. Binary-monitor socket binding is denied in this session, and host audio playback failed; neither a live MCP emulator connection nor listening verification is claimed.
+The full three-voice arrangement passes binary/header guards, independent 6502 register-write checks, rendered audio checks, and genuine headless VICE execution through BASIC and back. An independent native VICE/reSID recording also passes clipping and ending checks; see [full-song evidence](docs/fuer-elise-validation.md). The separate native instrument trials now have reproducible renders and register evidence, with listening comparisons prepared. Binary-monitor socket binding is denied in this session, and host audio playback failed; neither a live MCP emulator connection nor listening verification is claimed.

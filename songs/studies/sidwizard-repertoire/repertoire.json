@@ -1,0 +1,171 @@
+{
+  "format": "original-sidwizard-repertoire-v1",
+  "authorinfo": "ORIGINAL SID PALETTE / MBACKSCHAT 2026",
+  "row_ticks": 6,
+  "renderSeconds": 10,
+  "playTicks": 501,
+  "phraseTicks": 384,
+  "loopBoundaryTicks": null,
+  "endPolicy": "stop",
+  "pairs": [
+    {"id": "pulse", "reference": "pulse-reference", "candidate": "pulse-candidate", "changedParameters": ["pulse table"]},
+    {"id": "pluck", "reference": "pluck-reference", "candidate": "pluck-candidate", "changedParameters": ["first waveform-table row: triangle to saw"]},
+    {"id": "bass", "reference": "bass-reference", "candidate": "bass-candidate", "changedParameters": ["three triangle pitch-fall frames before the pulse bass body"]},
+    {"id": "mix", "reference": "mix-reference", "candidate": "mix-candidate", "changedParameters": ["pulse table", "pluck attack waveform", "bass transient"]}
+  ],
+  "instruments": {
+    "pulse-static": {
+      "name": "PULSEFIX", "control": "1a", "hard_restart_adsr": "0f00", "adsr": "08a5", "vibrato": "24", "vibrato_delay": 12,
+      "wave": [["41", "00", "00"]],
+      "pulse": [["86", "00", "00"]],
+      "filter": []
+    },
+    "pulse-moving": {
+      "name": "PULSEMOV", "control": "1a", "hard_restart_adsr": "0f00", "adsr": "08a5", "vibrato": "24", "vibrato_delay": 12,
+      "wave": [["41", "00", "00"]],
+      "pulse": [["84", "00", "00"], ["20", "20", "00"], ["20", "e0", "00"], {"jump": 1}],
+      "filter": []
+    },
+    "pluck-soft": {
+      "name": "PLUCKSOF", "control": "0a", "hard_restart_adsr": "0f00", "adsr": "0734",
+      "wave": [["11", "00", "00"], ["11", "80", "ff"]],
+      "pulse": [],
+      "filter": []
+    },
+    "pluck-bright": {
+      "name": "PLUCKBRI", "control": "0a", "hard_restart_adsr": "0f00", "adsr": "0734",
+      "wave": [["21", "00", "00"], ["11", "80", "ff"]],
+      "pulse": [],
+      "filter": []
+    },
+    "bass-plain": {
+      "name": "BASSPLN", "control": "0a", "hard_restart_adsr": "0f00", "adsr": "06b3",
+      "wave": [["41", "00", "00"]],
+      "pulse": [["86", "00", "00"]],
+      "filter": [["94", "80", "00"], ["18", "f0", "00"]]
+    },
+    "bass-kick": {
+      "name": "BASSKICK", "control": "0a", "hard_restart_adsr": "0f00", "adsr": "06b3",
+      "wave": [["11", "18", "00"], ["11", "0c", "00"], ["11", "00", "00"], ["41", "00", "00"]],
+      "pulse": [["86", "00", "00"]],
+      "filter": [["94", "80", "00"], ["18", "f0", "00"]]
+    },
+    "kick-fall": {
+      "name": "KICKFALL", "control": "0a", "hard_restart_adsr": "0f00", "adsr": "0600",
+      "wave": [["11", "ac", "00"], ["11", "a5", "00"], ["11", "a0", "00"], ["11", "99", "00"], ["02", "8d", "00"], ["10", "80", "ff"]],
+      "pulse": [],
+      "filter": []
+    }
+  },
+  "phrases": {
+    "melody": {
+      "rows": 64,
+      "events": [
+        {"row": 0, "note": "A3", "instrument": "primary"},
+        {"row": 4, "note": "C4", "instrument": "primary"},
+        {"row": 8, "note": "E4", "instrument": "primary"},
+        {"row": 10, "note": "E4", "instrument": "primary"},
+        {"row": 12, "note": "E4", "instrument": "primary"},
+        {"row": 14, "note": "off"},
+        {"row": 16, "note": "E4", "instrument": "primary"},
+        {"row": 28, "note": "off"},
+        {"row": 32, "note": "C4", "instrument": "primary"},
+        {"row": 36, "note": "E4", "instrument": "primary"},
+        {"row": 40, "note": "G4", "instrument": "primary"},
+        {"row": 44, "note": "A4", "instrument": "tie"},
+        {"row": 48, "note": "E4", "instrument": "tie"},
+        {"row": 52, "note": "G4", "instrument": "change"},
+        {"row": 56, "note": "C5", "instrument": "primary"},
+        {"row": 60, "note": "off"}
+      ]
+    },
+    "bass": {
+      "rows": 64,
+      "events": [
+        {"row": 0, "note": "A1", "instrument": "primary"},
+        {"row": 4, "note": "A1", "instrument": "primary"},
+        {"row": 8, "note": "A1", "instrument": "primary"},
+        {"row": 10, "note": "A1", "instrument": "primary"},
+        {"row": 12, "note": "off"},
+        {"row": 16, "note": "F2", "instrument": "primary"},
+        {"row": 28, "note": "off"},
+        {"row": 32, "note": "C2", "instrument": "primary"},
+        {"row": 36, "note": "C2", "instrument": "primary"},
+        {"row": 40, "note": "E2", "instrument": "primary"},
+        {"row": 44, "note": "E2", "instrument": "primary"},
+        {"row": 48, "note": "A1", "instrument": "primary"},
+        {"row": 52, "note": "A1", "instrument": "change"},
+        {"row": 54, "note": "A1", "instrument": "primary"},
+        {"row": 56, "note": "E2", "instrument": "primary"},
+        {"row": 60, "note": "off"}
+      ]
+    },
+    "accompaniment": {
+      "rows": 64,
+      "events": [
+        {"row": 0, "note": "C4", "instrument": "accompaniment"},
+        {"row": 8, "note": "E4", "instrument": "accompaniment"},
+        {"row": 16, "note": "C4", "instrument": "accompaniment"},
+        {"row": 24, "note": "A3", "instrument": "accompaniment"},
+        {"row": 28, "note": "off"},
+        {"row": 32, "note": "C4", "instrument": "accompaniment"},
+        {"row": 40, "note": "G3", "instrument": "accompaniment"},
+        {"row": 48, "note": "A3", "instrument": "accompaniment"},
+        {"row": 52, "note": "C4", "instrument": "accompaniment"},
+        {"row": 56, "note": "E4", "instrument": "accompaniment"},
+        {"row": 60, "note": "off"}
+      ]
+    },
+    "mix-bass": {
+      "rows": 64,
+      "events": [
+        {"row": 0, "note": "A1", "instrument": "bass"},
+        {"row": 4, "note": "A1", "instrument": "bass"},
+        {"row": 8, "note": "A1", "instrument": "bass"},
+        {"row": 10, "note": "A1", "instrument": "bass"},
+        {"row": 12, "note": "off"},
+        {"row": 16, "note": "F2", "instrument": "bass"},
+        {"row": 28, "note": "off"},
+        {"row": 32, "note": "C2", "instrument": "bass"},
+        {"row": 36, "note": "C2", "instrument": "bass"},
+        {"row": 40, "note": "E2", "instrument": "bass"},
+        {"row": 44, "note": "E2", "instrument": "bass"},
+        {"row": 48, "note": "A1", "instrument": "bass"},
+        {"row": 52, "note": "A1", "instrument": "kick"},
+        {"row": 54, "note": "A1", "instrument": "bass"},
+        {"row": 56, "note": "E2", "instrument": "bass"},
+        {"row": 60, "note": "off"}
+      ]
+    },
+    "kick": {
+      "rows": 64,
+      "events": [
+        {"row": 0, "note": "A1", "instrument": "primary"},
+        {"row": 8, "note": "A1", "instrument": "primary"},
+        {"row": 16, "note": "A1", "instrument": "primary"},
+        {"row": 24, "note": "A1", "instrument": "primary"},
+        {"row": 28, "note": "off"},
+        {"row": 32, "note": "A1", "instrument": "primary"},
+        {"row": 36, "note": "A1", "instrument": "primary"},
+        {"row": 40, "note": "A1", "instrument": "primary"},
+        {"row": 44, "note": "A1", "instrument": "primary"},
+        {"row": 48, "note": "A1", "instrument": "primary"},
+        {"row": 52, "note": "A1", "instrument": "primary"},
+        {"row": 56, "note": "A1", "instrument": "primary"},
+        {"row": 60, "note": "off"}
+      ]
+    },
+    "idle": {"rows": 64, "events": [{"row": 0, "note": "off"}]}
+  },
+  "studies": {
+    "pulse-reference": {"tracks": ["melody", "idle", "idle"], "instruments": {"primary": "pulse-static", "change": "pluck-bright"}},
+    "pulse-candidate": {"tracks": ["melody", "idle", "idle"], "instruments": {"primary": "pulse-moving", "change": "pluck-bright"}},
+    "pluck-reference": {"tracks": ["melody", "idle", "idle"], "instruments": {"primary": "pluck-soft", "change": "pulse-static"}},
+    "pluck-candidate": {"tracks": ["melody", "idle", "idle"], "instruments": {"primary": "pluck-bright", "change": "pulse-static"}},
+    "bass-reference": {"tracks": ["idle", "idle", "bass"], "instruments": {"primary": "bass-plain", "change": "kick-fall"}},
+    "bass-candidate": {"tracks": ["idle", "idle", "bass"], "instruments": {"primary": "bass-kick", "change": "kick-fall"}},
+    "kick": {"tracks": ["idle", "idle", "kick"], "instruments": {"primary": "kick-fall"}},
+    "mix-reference": {"tracks": ["melody", "accompaniment", "mix-bass"], "instruments": {"primary": "pulse-static", "change": "pluck-soft", "accompaniment": "pluck-soft", "bass": "bass-plain", "kick": "kick-fall"}},
+    "mix-candidate": {"tracks": ["melody", "accompaniment", "mix-bass"], "instruments": {"primary": "pulse-moving", "change": "pluck-bright", "accompaniment": "pluck-bright", "bass": "bass-kick", "kick": "kick-fall"}}
+  }
+}

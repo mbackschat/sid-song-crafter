@@ -4,6 +4,8 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 
 - [Instruments and composition](instruments-and-composition.md): voice roles, evolving instruments, and shared controls.
 - [Sound-design repertoire](sound-design-repertoire.md): reusable experiment briefs, listening criteria, and admission rules for verified instruments.
+- [Original native instrument bank](instruments/README.md): implemented SID-Wizard patches with measured evidence and pending listening verdicts.
+- [Run and audition the trials](../../instrument-trials.md): one-command export, audit, rendering and controlled A/B comparisons.
 - [Instrument card template](instrument-card-template.md): preserve a sound's source, behaviour, target, demonstration, and listening verdict.
 - [Classical arrangements](classical-arrangements.md): preserving musical structure in Für Elise and Hummelflug.
 - [Source-to-SID workflow](../../song-workflow.md): original sources, intermediate scores, and independent SID expression.

@@ -2,6 +2,8 @@
 
 Research date: 2026-10-12. Recommendation: evaluate **SID-Wizard Normal/Extra as the sound-design reference**, **GoatTracker as the first interchange/automation candidate**, and **SID Factory II as a source-study and alternative authoring environment**. Keep the local simple player as a correctness baseline. This is a source-based assessment; none of these editors has yet passed a local import/edit/export acceptance trial.
 
+Execution update: [SID-Wizard Extra now has a verified headless native export adapter](sid-wizard-trial.md). Nine original workfiles pass native packing, CPU checks and rendering; [four A/B pairs](../../instrument-trials.md) are prepared. This supports using its native instrument model for the next sound-design work. Editor UI round-trip and editor-versus-export listening remain open, so this does not yet complete the full acceptance trial below.
+
 ## What the masters' tools teach us
 
 The [composer studies](../composers/README.md) show that an editor and a player form a musical system. Instrument programs, command languages, audition speed, and voice-sharing rules influence composition. Historical sophistication did not always mean a modern graphical tracker: custom assemblers, bytecode, helper programs, and a second machine could provide an effective working environment. Consequently, choosing a file format is not enough; we need the expressive authoring model and its actual C64 driver.
@@ -63,6 +65,6 @@ The current `verify_callable` CPU oracle validates this repository's particular 
 | GoatTracker manual and relocator mirror | `leafo/goattracker2` at `a78e7e5273bfbeb17c3777b1f5ceb63b8e6b4667` | Manual read online; relocator read as source; not built |
 | SID Factory II README, driver notes, license | `Chordian/sidfactory2` at `d6852faea2f8929df30e6f2ce008f93d974637d3` | Documentation/source inspected; not launched |
 | SID-Wizard Vessel fork native manual | `anarkiwi/sid-wizard` at `2bf1703dca907d59b587d7829989215ec855a009` | Native documentation inspected; not treated as the full host release |
-| Official SID-Wizard 1.97 source/examples | Archive SHA-256 `aeb265f4a778b2acb5aad13e8e98af882888292f749f29f4d18cbf49850e57bc` | Downloaded; host README/manual, argument parsing, and package structure inspected; not built |
+| Official SID-Wizard 1.97 source/examples | Archive SHA-256 `aeb265f4a778b2acb5aad13e8e98af882888292f749f29f4d18cbf49850e57bc` | Native exporter assembled unmodified and executed headlessly; host editor not built; [trial record](sid-wizard-trial.md) |
 
 The archive and selected reading copies are cached under ignored `.local/research/composition-tools/`. The archive hash records the acquired bytes; it is not claimed to be an independently published upstream checksum. Keep research summaries here and preserve upstream licenses if adopting code.
