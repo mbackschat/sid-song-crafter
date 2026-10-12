@@ -2,7 +2,7 @@
 
 ## Musical Priority
 
-Prioritize expressive SID sound. Treat songs as case studies for learning sound design and building reusable tools and methods. Study composers, published accounts, editors and drivers; preserve findings in [research](docs/research/README.md). Build an evidence-backed instrument repertoire. Record reusable findings, source provenance and reproduction instructions; do not keep debugging diaries. Technical playback success does not establish musical quality; record listening judgments separately.
+Prioritize expressive SID interpretations: capture a song's character through phrasing, groove, improvisation and native chip effects. Preserve source material separately from deliberate arrangement changes. Treat songs as case studies for learning sound design and building reusable tools and methods. Study composers, published accounts, editors and drivers; preserve findings in [research](docs/research/README.md). Extend the [sound repertoire](docs/research/composition/sound-design-repertoire.md) and [musical gesture library](docs/research/composition/gestures/README.md) with editable examples, useful contexts, limitations and listening evidence. Record reusable findings, source provenance and reproduction instructions; do not keep debugging diaries. Technical playback success does not establish musical quality; record listening judgments separately.
 
 ## Project Structure & Module Organization
 

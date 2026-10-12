@@ -33,6 +33,7 @@ Research updated: 2026-10-12. The priority is distinctive, expressive SID music:
 | Trace a statement to its evidence | [Source register](sources.md) |
 | Study a composer's sound and working methods | [Composer studies](composers/README.md), [listening catalogue](composers/listening-catalogue.md) |
 | Develop an expressive instrument | [Advanced techniques](sid/advanced-techniques.md), [sound-design repertoire](composition/sound-design-repertoire.md) |
+| Reinterpret a theme with groove and variation | [Musical gesture library](composition/gestures/README.md) |
 | Render and compare native instrument programs | [Original instrument bank](composition/instruments/README.md), [reproducible trials and samples](../instrument-trials.md) |
 | Choose a composition system | [Tool assessment](tools/composition-tools.md) |
 

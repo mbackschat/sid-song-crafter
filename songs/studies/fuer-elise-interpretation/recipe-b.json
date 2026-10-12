@@ -1,0 +1,318 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score.json",
+  "title": "Elise combined interpretation",
+  "author": "Original SID arrangement",
+  "authorinfo": "ORIGINAL:ELISE COMBINED",
+  "released": "2026",
+  "timingPolicy": "retain-full-pitch",
+  "instruments": {
+    "melody-pulse": {
+      "control": "1a",
+      "hard_restart_adsr": "0f00",
+      "frame1": "09",
+      "filter": [],
+      "name": "ELALTPL1",
+      "adsr": "0354",
+      "vibrato": "24",
+      "vibrato_delay": 12,
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "85",
+          "80",
+          "00"
+        ],
+        [
+          "0c",
+          "30",
+          "00"
+        ],
+        [
+          "0c",
+          "d0",
+          "00"
+        ],
+        {
+          "jump": 1
+        }
+      ]
+    },
+    "melody-pulse-wide": {
+      "control": "1a",
+      "hard_restart_adsr": "0f00",
+      "frame1": "09",
+      "filter": [],
+      "name": "ELALTPL2",
+      "adsr": "0354",
+      "vibrato": "24",
+      "vibrato_delay": 12,
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "86",
+          "80",
+          "00"
+        ],
+        [
+          "0c",
+          "30",
+          "00"
+        ],
+        [
+          "0c",
+          "d0",
+          "00"
+        ],
+        {
+          "jump": 1
+        }
+      ]
+    },
+    "bass-groove": {
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "frame1": "09",
+      "filter": [
+        [
+          "98",
+          "b0",
+          "00"
+        ],
+        [
+          "0c",
+          "c0",
+          "00"
+        ]
+      ],
+      "name": "ELGROOVE",
+      "adsr": "0385",
+      "wave": [
+        [
+          "81",
+          "cd",
+          "00"
+        ],
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "87",
+          "00",
+          "00"
+        ],
+        [
+          "08",
+          "20",
+          "00"
+        ],
+        [
+          "08",
+          "e0",
+          "00"
+        ],
+        {
+          "jump": 1
+        }
+      ]
+    },
+    "chord-minor": {
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "frame1": "09",
+      "filter": [],
+      "name": "ELACMIN",
+      "adsr": "0343",
+      "wave": [
+        [
+          "51",
+          "00",
+          "00"
+        ],
+        [
+          "01",
+          "03",
+          "00"
+        ],
+        [
+          "01",
+          "07",
+          "00"
+        ],
+        [
+          "01",
+          "00",
+          "00"
+        ],
+        {
+          "jump": 1
+        }
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ]
+    },
+    "chord-major": {
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "frame1": "09",
+      "filter": [],
+      "name": "ELACMAJ",
+      "adsr": "0343",
+      "wave": [
+        [
+          "51",
+          "00",
+          "00"
+        ],
+        [
+          "01",
+          "03",
+          "00"
+        ],
+        [
+          "01",
+          "08",
+          "00"
+        ],
+        [
+          "01",
+          "00",
+          "00"
+        ],
+        {
+          "jump": 1
+        }
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ]
+    }
+  },
+  "sections": [
+    {
+      "name": "First pass: A-minor theme",
+      "startBeat": 0,
+      "endBeat": 3.5,
+      "voices": {
+        "melody": "melody-pulse",
+        "bass": "bass-groove",
+        "harmony": "chord-minor"
+      }
+    },
+    {
+      "name": "First pass: E-major response",
+      "startBeat": 3.5,
+      "endBeat": 5,
+      "voices": {
+        "melody": "melody-pulse",
+        "bass": "bass-groove",
+        "harmony": "chord-major"
+      }
+    },
+    {
+      "name": "First pass: A-minor theme",
+      "startBeat": 5,
+      "endBeat": 9.5,
+      "voices": {
+        "melody": "melody-pulse",
+        "bass": "bass-groove",
+        "harmony": "chord-minor"
+      }
+    },
+    {
+      "name": "First pass: E-major response",
+      "startBeat": 9.5,
+      "endBeat": 11,
+      "voices": {
+        "melody": "melody-pulse",
+        "bass": "bass-groove",
+        "harmony": "chord-major"
+      }
+    },
+    {
+      "name": "First pass: A-minor theme",
+      "startBeat": 11,
+      "endBeat": 12,
+      "voices": {
+        "melody": "melody-pulse",
+        "bass": "bass-groove",
+        "harmony": "chord-minor"
+      }
+    },
+    {
+      "name": "Second pass: A-minor theme",
+      "startBeat": 12,
+      "endBeat": 15.5,
+      "voices": {
+        "melody": "melody-pulse-wide",
+        "bass": "bass-groove",
+        "harmony": "chord-minor"
+      }
+    },
+    {
+      "name": "Second pass: E-major response",
+      "startBeat": 15.5,
+      "endBeat": 17,
+      "voices": {
+        "melody": "melody-pulse-wide",
+        "bass": "bass-groove",
+        "harmony": "chord-major"
+      }
+    },
+    {
+      "name": "Second pass: A-minor theme",
+      "startBeat": 17,
+      "endBeat": 21.5,
+      "voices": {
+        "melody": "melody-pulse-wide",
+        "bass": "bass-groove",
+        "harmony": "chord-minor"
+      }
+    },
+    {
+      "name": "Second pass: E-major response",
+      "startBeat": 21.5,
+      "endBeat": 23,
+      "voices": {
+        "melody": "melody-pulse-wide",
+        "bass": "bass-groove",
+        "harmony": "chord-major"
+      }
+    },
+    {
+      "name": "Second pass: A-minor theme",
+      "startBeat": 23,
+      "endBeat": 23.5,
+      "voices": {
+        "melody": "melody-pulse-wide",
+        "bass": "bass-groove",
+        "harmony": "chord-minor"
+      }
+    }
+  ]
+}

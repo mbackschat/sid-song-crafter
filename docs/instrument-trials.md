@@ -2,7 +2,7 @@
 
 Seven original editable SID-Wizard instruments, nine short native workfiles and four controlled A/B comparisons pass export, bounded CPU execution, signal-health and ending checks. The exported driver is SID-Wizard 1.97 Extra at one update per PAL frame, targeting MOS8580. The [complete Für Elise baseline](fuer-elise-score.md) remains the source reference.
 
-Listening record, 2026-10-12: mbackschat reported **“mix sounds ok”**. This is initial acceptance of the short candidate mix and supports using its palette in a complete-song candidate. Playback equipment, individual A/B preferences and a complete-song verdict were not supplied. The isolated instruments remain rendered experiments; broader listening and hardware checks remain open.
+Listening evidence from mbackschat, 2026-10-12: the short candidate mix “sounds ok”; pulse motion is distinguishable without a stated preference; the tested bass transient makes little or no perceived difference. The [native Für Elise attack comparison](fuer-elise-native.md) supports a cleaner triangle onset in that passage, but its arrangement remains too clinical compared with DRAX. See [reusable listening findings and creative direction](research/composition/gestures/README.md). Playback equipment and a complete-song verdict were not supplied; broader listening and hardware checks remain open.
 
 ## Audition the palette
 

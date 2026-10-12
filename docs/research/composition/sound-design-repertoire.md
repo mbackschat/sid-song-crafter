@@ -12,7 +12,9 @@ Research date: 2026-10-12. The aim is a library of expressive, editable instrume
 | Listening-reviewed instrument | The rendered result has been judged in a phrase and in a mix, with the verdict recorded |
 | Hardware-checked instrument | The actual declared chip/machine setup was tested and recorded |
 
-The current [Für Elise baseline](../../fuer-elise-validation.md) establishes note scheduling, complete playback, and rendered audio. Its fixed triangle instruments are not promoted to a showcase repertoire merely because those tests pass. The [original native bank](instruments/README.md) now supplies rendered experiments for moving pulse with delayed vibrato, bright-attack pluck, kick-to-bass sharing and a falling kick, plus a three-voice mix. These have CPU and PCM evidence; the user's [initial mix acceptance](../../instrument-trials.md) is recorded separately, with isolated-instrument judgments still open. The remaining briefs below are proposed.
+The current [Für Elise baseline](../../fuer-elise-validation.md) establishes note scheduling, complete playback, and rendered audio. Its fixed triangle instruments are not promoted to a showcase repertoire merely because those tests pass. The [original native bank](instruments/README.md) supplies rendered experiments for moving pulse with delayed vibrato, bright-attack pluck, kick-to-bass sharing and a falling kick, plus a three-voice mix. These have CPU and PCM evidence; the [listening findings](gestures/README.md) distinguish a cleaner preferred attack, audible pulse motion without a preference, and a bass transient with little perceived effect. The remaining briefs below are proposed.
+
+Use the [musical gesture library](gestures/README.md) for groove, chord responses and phrase variation. A reusable repertoire includes how to improvise around a recognizable theme, not only how to synthesize its notes. Preserve the source separately and make intentional interpretation changes explicit.
 
 ## Reference material worth learning from
 
@@ -48,7 +50,7 @@ Start with LEAD-01, LEAD-02, PLUCK-01, BASS-02, and DRUM-01. Together they test 
 
 ## How to evaluate a candidate
 
-Use the same notes, tempo, register, and arrangement for an A/B comparison. Retain original-amplitude renders and document any gain adjustment used for level matching. A louder file should not win by default. Soloing helps diagnose a sound, but the full mix decides whether it belongs in the song.
+Use the same notes, tempo, register, and arrangement when isolating an effect in an A/B comparison. A creative arrangement comparison may deliberately change them: declare those differences and judge the resulting phrase as a whole. Retain original-amplitude renders and document any gain adjustment used for level matching. A louder file should not win by default. Soloing helps diagnose a sound, but the full mix decides whether it belongs in the song.
 
 When isolating a coupled instrument, preserve its ring/sync modulator's oscillator state and the intended shared-filter configuration. Muting a companion's output is different from stopping its oscillator or removing its register writes; the latter can change the sound being studied.
 
