@@ -69,6 +69,10 @@ class SIDWizardArrangementTest(unittest.TestCase):
             self.assertEqual(manifest["totalTicks"], 7857)
             self.assertEqual(manifest["rowCount"], 7858)
             self.assertEqual(manifest["stopTick"], 7857)
+            for voice in manifest["voices"]:
+                self.assertEqual(voice["expectedSequenceEnding"], [{"tick": 7857, "entry": 0xa0}, {"tick": 7857, "entry": 0xfe}])
+                terminal = [cell for cell in manifest["cellMap"] if cell["voice"] == manifest["voices"].index(voice) and cell["tick"] == 7857]
+                self.assertEqual([(cell["nativeByte"], cell["instrument"]) for cell in terminal], [(0x7e, None)])
 
     def test_one_frame_note_survives_and_colliding_release_is_reported(self):
         score = synthetic_score([{"startBeat": 0, "durationBeats": 1, "midi": 60}, {"startBeat": 1, "durationBeats": 3, "midi": 60}], beats=4)

@@ -42,6 +42,15 @@ def sparse_native_module(rows):
     return bytes(header) + original[66:75] + pattern + original[-32:-2] + b"\x81\x81"
 
 
+def stopped_native_module():
+    original = original_module()
+    header = bytearray(original[:66])
+    header[13] = 5
+    sequence = bytes((1, 0xa0, 0xfe, 3))
+    pattern = bytes((0x80 | 37, 1, 0, 0, 0x7e, 0x7e, 7, 5))
+    return bytes(header) + sequence * 3 + pattern + original[-32:-2] + b"\x81\x81"
+
+
 class SIDWizardExportTest(unittest.TestCase):
     def test_accepts_original_native_module_and_keeps_instrument_name(self):
         summary = EXPORTER.inspect_module(original_module())
@@ -102,6 +111,19 @@ class SIDWizardExportTest(unittest.TestCase):
         data[-34] = len(data[75:-32]) - 1
         with self.assertRaisesRegex(ValueError, "pattern|structure"):
             EXPORTER.inspect_module(bytes(data))
+
+    def test_plain_terminal_gate_off_and_sequence_volume_commands_stop_all_three_voices_on_the_same_call(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "stopped.swm"
+            source.write_bytes(stopped_native_module())
+            report = EXPORTER.export_module(source, Path(directory) / "out")
+            _, writes = audit_psid(Path(report["sid"]).read_bytes(), 10)
+            values = {(row["tick"], row["address"]): row["value"] for row in writes if row["phase"] == "play"}
+            self.assertEqual(values[3, 0xd418] & 15, 15)
+            for tick in range(4, 10):
+                self.assertEqual(values[tick, 0xd418] & 15, 0)
+                for register in (0xd404, 0xd40b, 0xd412):
+                    self.assertEqual(values[tick, register], 0x20)
 
     def test_exports_native_extra_bytes_and_standalone_starter_deterministically(self):
         with tempfile.TemporaryDirectory() as directory:

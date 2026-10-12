@@ -36,6 +36,7 @@ def instrument_encoder():
 
 
 def pack_pattern(cells):
+    # SID-Wizard 1.97 depkptseq needs the decoded size to walk backwards through compressed data.
     unpacked_size = sum(len(cell) for cell in cells) + 1
     require(unpacked_size <= 249, "Tick pattern exceeds SID-Wizard's native unpacked byte limit")
     body = bytearray()
@@ -205,7 +206,8 @@ def arrange(recipe_path, output_dir):
                 changes.append({"kind": "same-tick-release-replaced-by-note", "voice": voice_index, "eventIndex": note["eventIndex"], "tick": off})
             else:
                 cells[off] = b"\x7e"
-        cells[total_ticks] = bytes((0xfe, 0x80, 0xa0)) if voice_index == 0 else b"\x7e"
+        # The native PTN_SEQ/SEQFXL2 stop path can reread the terminal byte; an effect column would become a note.
+        cells[total_ticks] = b"\x7e"
         sequence = []
         entries = []
         for chunk_start, chunk in pattern_chunks(cells):
@@ -221,11 +223,11 @@ def arrange(recipe_path, output_dir):
                 note_code = value[0] & 0x7f
                 if 1 <= note_code <= 0x5f or note_code == 0x7e:
                     cell_map.append({"voice": voice_index, "tick": chunk_start + row, "pattern": number, "row": row, "byteOffset": offsets[row], "noteCode": note_code, "nativeByte": value[0], "instrument": value[1] & 0x7f if len(value) > 1 else None, "kind": "note" if note_code < 0x60 else "gate-off"})
-        require(len(sequence) + 1 <= 128, "Native orderlist exceeds the 128-byte sequence limit")
+        require(len(sequence) + 2 <= 128, "Native orderlist exceeds the 128-byte sequence limit")
         for note in notes:
             cell = next(cell for cell in cell_map if cell["voice"] == voice_index and cell["tick"] == note["startTick"])
             note.update({key: cell[key] for key in ("pattern", "row", "byteOffset")})
-        voices.append({"name": voice["name"], "notes": notes, "sequence": sequence, "expectedPatternEntries": entries})
+        voices.append({"name": voice["name"], "notes": notes, "sequence": sequence, "expectedPatternEntries": entries, "expectedSequenceEnding": [{"tick": total_ticks, "entry": 0xa0}, {"tick": total_ticks, "entry": 0xfe}]})
     require(len(patterns) <= 100, "Native arrangement exceeds SID-Wizard's 100-pattern limit")
     header = bytearray(64)
     header[:4] = b"SWM1"
@@ -236,7 +238,7 @@ def arrange(recipe_path, output_dir):
     authorinfo = recipe.get("authorinfo", f"{recipe['author']}:{recipe['title']}").upper().encode("ascii")
     require(len(authorinfo) <= 40, "Native author/title header must fit 40 ASCII characters")
     header[24:64] = authorinfo.ljust(40, b" ")
-    sequences = b"".join(bytes(voice["sequence"] + [0xfe, len(voice["sequence"]) + 1]) for voice in voices)
+    sequences = b"".join(bytes(voice["sequence"] + [0xa0, 0xfe, len(voice["sequence"]) + 2]) for voice in voices)
     data = b"\x33\x33" + header + sequences + b"".join(pattern["bytes"] for pattern in patterns) + b"".join(instruments.values()) + b"\x81\x81"
     output.mkdir(parents=True)
     native = output / f"{recipe_path.stem}.swm"
