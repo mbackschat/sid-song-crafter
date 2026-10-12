@@ -1,10 +1,13 @@
 import importlib.util
 from pathlib import Path
+import sys
 import tempfile
 import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+from psid_audit import audit_psid
 SPEC = importlib.util.spec_from_file_location("sidwizard_export", ROOT / "scripts/export-sidwizard.py")
 EXPORTER = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(EXPORTER)
@@ -22,6 +25,21 @@ def original_module():
     parameters = bytes([0x12, 0x0f, 0, 0x09, 0xa8, 0, 0, 0, 0, 0, 20, 21, 0, 0, 0, 0x09])
     instrument = parameters + bytes([0x21, 0, 0, 0xff, 0xff, 21]) + b"TESTSAW "
     return b"\x33\x33" + header + sequence * 3 + pattern + instrument + bytes([0x86, 0x83])
+
+
+def sparse_native_module(rows):
+    original = original_module()
+    header = bytearray(original[:66])
+    header[13] = rows
+    body = bytearray((0x80 | 37, 1, 0))
+    remaining = rows - 4
+    while remaining:
+        count = min(9, remaining)
+        body.append(0 if count == 1 else 0x70 + count - 2)
+        remaining -= count
+    body.extend((0x7e, 0))
+    pattern = body + bytes((rows + 2, rows))
+    return bytes(header) + original[66:75] + pattern + original[-32:-2] + b"\x81\x81"
 
 
 class SIDWizardExportTest(unittest.TestCase):
@@ -65,6 +83,25 @@ class SIDWizardExportTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "fresh output directory"):
                 EXPORTER.export_module(source, Path(directory) / "out", title="Changed")
             self.assertEqual(Path(report["sid"]).read_bytes(), saved)
+
+    def test_sparse_native_patterns_use_the_unpacked_footer_and_execute_without_corrupting_sequences(self):
+        for rows in (120, 240):
+            with self.subTest(rows=rows), tempfile.TemporaryDirectory() as directory:
+                source = Path(directory) / "sparse.swm"
+                source.write_bytes(sparse_native_module(rows))
+                report = EXPORTER.export_module(source, Path(directory) / "out")
+                audited, writes = audit_psid(Path(report["sid"]).read_bytes(), rows + 5)
+                self.assertEqual(audited["playCalls"], rows + 5)
+                waveforms = {row["tick"]: row["value"] for row in writes if row["phase"] == "play" and row["address"] == 0xd404}
+                self.assertEqual(waveforms[1], 0x21)
+                self.assertEqual(waveforms[rows - 3], 0x21)
+                self.assertEqual(waveforms[rows - 2], 0x20)
+
+    def test_rejects_a_compressed_pattern_footer_that_counts_packed_bytes(self):
+        data = bytearray(sparse_native_module(120))
+        data[-34] = len(data[75:-32]) - 1
+        with self.assertRaisesRegex(ValueError, "pattern|structure"):
+            EXPORTER.inspect_module(bytes(data))
 
     def test_exports_native_extra_bytes_and_standalone_starter_deterministically(self):
         with tempfile.TemporaryDirectory() as directory:

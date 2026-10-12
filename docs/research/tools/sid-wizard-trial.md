@@ -52,4 +52,12 @@ The original pulse candidate and three-voice mix each passed 501 calls through t
 
 The first independent audio render exposed a separate renderer bug: its default subtune had not been selected, so libsidplayfp passed `$FF` to an init routine whose accumulator selects the subtune. Native standalone VICE playback produced signal while that PSID render was silent. The [audio workflow](../../audio-workflow.md) records the renderer correction and independent regression guard. The corrected renderer allows the exported native driver to receive subtune `0`; no SID-Wizard player modification was needed.
 
+### Compressed-pattern format
+
+A pattern footer stores the **uncompressed** byte count, including its delimiter, after instrument/effect-column optimization. NOP-run compression reduces the file size but does not change that footer. Split generated patterns at either native limit: 248 rows or 249 uncompressed bytes including the delimiter. Keep packed and uncompressed sizes distinct in conversion reports.
+
+SID-Maker walks patterns backward using that decoded count. A packed-length footer can corrupt sequence pointers, causing ROM reads or silent exports. The validator must follow the upstream NOP-expansion rules rather than subtracting the footer from the file position. The defining code is [the pinned packer/depacker](../../../.tools/sid-wizard-1.97/native/sources/include/packdepack.inc), specifically the pattern-compression block and `depkptseq`.
+
+[Exporter regression tests](../../../tests/sidwizard_export_test.py) reject incorrect packed-length footers and run independently encoded 120- and 240-row sparse patterns through the original exporter and CPU playback. [Arrangement tests](../../../tests/sidwizard_arrangement_test.py) check adaptive chunking against the uncompressed size limit.
+
 The adapter covers native file acceptance and export, not interactive editor audition or reopening/editing through the editor UI. It currently excludes multispeed/CIA timing, alternative players, nonstandard tuning, extra SID chips, SWP, ROM players, SFX, and digi-echo export. Those are explicit limits of this trial adapter, not inferred limits of SID-Wizard. Normal table-driven SID expression remains in the native format; broader backend adoption still depends on rendered comparisons and recorded listening judgments described in the [composition-system assessment](composition-tools.md).

@@ -36,6 +36,8 @@ def instrument_encoder():
 
 
 def pack_pattern(cells):
+    unpacked_size = sum(len(cell) for cell in cells) + 1
+    require(unpacked_size <= 249, "Tick pattern exceeds SID-Wizard's native unpacked byte limit")
     body = bytearray()
     offsets = {}
     index = 0
@@ -56,8 +58,19 @@ def pack_pattern(cells):
             body.append(0 if count == 1 else 0x70 + count - 2)
             remaining -= count
         index = end
-    require(len(body) + 1 <= 249, "Tick pattern exceeds SID-Wizard's native byte limit")
-    return bytes(body + bytes((len(body) + 1, len(cells)))), offsets
+    return bytes(body + bytes((unpacked_size, len(cells)))), offsets
+
+
+def pattern_chunks(cells):
+    start = 0
+    while start < len(cells):
+        end, unpacked_bytes = start, 0
+        while end < len(cells) and end - start < PATTERN_ROWS and unpacked_bytes + len(cells[end]) <= 248:
+            unpacked_bytes += len(cells[end])
+            end += 1
+        require(end > start, "Native row exceeds the editable pattern byte limit")
+        yield start, cells[start:end]
+        start = end
 
 
 def select_sections(recipe, score):
@@ -195,13 +208,12 @@ def arrange(recipe_path, output_dir):
         cells[total_ticks] = bytes((0xfe, 0x80, 0xa0)) if voice_index == 0 else b"\x7e"
         sequence = []
         entries = []
-        for chunk_start in range(0, row_count, PATTERN_ROWS):
-            chunk = cells[chunk_start:chunk_start + PATTERN_ROWS]
+        for chunk_start, chunk in pattern_chunks(cells):
             packed, offsets = pack_pattern(chunk)
             if packed not in pattern_numbers:
                 number = len(patterns) + 1
                 pattern_numbers[packed] = number
-                patterns.append({"number": number, "rows": len(chunk), "encodedBytes": len(packed) - 1, "bytes": packed})
+                patterns.append({"number": number, "rows": len(chunk), "packedBytes": len(packed) - 1, "unpackedBytes": packed[-2], "bytes": packed})
             number = pattern_numbers[packed]
             sequence.append(number)
             entries.append({"pattern": number, "tick": None if chunk_start == 0 else chunk_start - 1})

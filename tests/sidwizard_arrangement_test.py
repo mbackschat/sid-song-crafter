@@ -50,7 +50,7 @@ class SIDWizardArrangementTest(unittest.TestCase):
             _, manifest = self.create(directory, score)
             self.assertEqual(sum(len(voice["notes"]) for voice in manifest["voices"]), 981)
             self.assertLessEqual(len(manifest["patterns"]), 100)
-            self.assertTrue(all(pattern["rows"] <= 248 and pattern["encodedBytes"] <= 249 for pattern in manifest["patterns"]))
+            self.assertTrue(all(pattern["rows"] <= 248 and pattern["unpackedBytes"] <= 249 for pattern in manifest["patterns"]))
             self.assertTrue(all(len(voice["sequence"]) < 128 for voice in manifest["voices"]))
             rate = (17734475 / 18) / (312 * 63) * 60 / 72
             for source_voice, native_voice in zip(score["voices"], manifest["voices"]):
@@ -85,8 +85,19 @@ class SIDWizardArrangementTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             _, manifest = self.create(directory, score)
             cells = [cell for cell in manifest["cellMap"] if cell["voice"] == 0 and cell["kind"] == "note"]
-            self.assertEqual([(cell["tick"], cell["row"]) for cell in cells], [(246, 246), (248, 0)])
-            self.assertEqual(manifest["voices"][0]["expectedPatternEntries"][1]["tick"], 247)
+            self.assertEqual([cell["tick"] for cell in cells], [246, 248])
+            self.assertEqual(cells[0]["row"], 246)
+            self.assertEqual(cells[1]["row"], 1)
+            self.assertEqual(manifest["voices"][0]["expectedPatternEntries"][1]["tick"], 246)
+
+    def test_rle_footer_counts_decoded_bytes_and_chunks_respect_editable_native_capacity(self):
+        score = synthetic_score([{"startBeat": 0, "durationBeats": 20, "midi": 60}], beats=500)
+        with tempfile.TemporaryDirectory() as directory:
+            _, manifest = self.create(directory, score)
+            pattern = manifest["patterns"][0]
+            self.assertEqual(pattern["unpackedBytes"], 249)
+            self.assertLess(pattern["packedBytes"], pattern["unpackedBytes"])
+            self.assertEqual(pattern["rows"], 247)
 
     def test_rejects_overlapping_sections_and_note_collisions(self):
         score = synthetic_score([{"startBeat": 0, "durationBeats": 2, "midi": 60}, {"startBeat": 0, "durationBeats": 2, "midi": 64}], beats=4)

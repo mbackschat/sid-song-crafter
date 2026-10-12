@@ -61,6 +61,20 @@ def validate_sequence(sequence, pattern_count):
     raise ValueError("Invalid native sequence structure: missing ending")
 
 
+def native_pattern_start(data, cursor, unpacked_size):
+    index = cursor - 2
+    remaining = unpacked_size - 1
+    while remaining:
+        index -= 1
+        require(index >= 66, "Invalid native pattern structure")
+        value = data[index]
+        previous = data[index - 1]
+        packed = 0x70 <= value <= 0x77 and (previous == 0 or 0x70 <= previous <= 0x77)
+        remaining -= value - 0x6e if packed else 1
+        require(remaining >= 0, "Native pattern structure disagrees with its unpacked byte size")
+    return index
+
+
 def inspect_module(data):
     require(len(data) >= 68 and data[2:6] == b"SWM1", "Expected a native SWM1 module with its two-byte load address")
     header = data[2:66]
@@ -83,9 +97,10 @@ def inspect_module(data):
     for _ in range(header[13]):
         require(cursor >= 69, "Invalid native pattern structure")
         size, rows = data[cursor - 2:cursor]
-        require(2 <= size <= 250 and 1 <= rows <= 249 and cursor - size - 1 >= 66, "Invalid native pattern structure")
-        validate_pattern(data[cursor - size - 1:cursor - 2], rows, header[14])
-        cursor -= size + 1
+        require(2 <= size <= 249 and 1 <= rows <= 248, "Invalid native pattern structure")
+        start = native_pattern_start(data, cursor, size)
+        validate_pattern(data[start:cursor - 2], rows, header[14])
+        cursor = start
     for _ in range(header[12]):
         require(cursor > 66, "Invalid native sequence structure")
         size = data[cursor - 1]
