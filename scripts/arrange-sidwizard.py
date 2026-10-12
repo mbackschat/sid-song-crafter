@@ -1,0 +1,265 @@
+"""Project a retained three-voice score onto an editable SID-Wizard tick grid."""
+
+import argparse
+import hashlib
+import importlib.util
+import json
+import math
+from pathlib import Path
+import re
+
+
+ROOT = Path(__file__).resolve().parents[1]
+PAL_CLOCK = 17734475 / 18
+TICKS_PER_SECOND = PAL_CLOCK / (312 * 63)
+PATTERN_ROWS = 248
+
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def rounded(value):
+    return math.floor(value + 0.5)
+
+
+def digest(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def instrument_encoder():
+    specification = importlib.util.spec_from_file_location("native_instrument_encoder", ROOT / "scripts/generate-native-instruments.py")
+    module = importlib.util.module_from_spec(specification)
+    specification.loader.exec_module(module)
+    return module.instrument_bytes
+
+
+def pack_pattern(cells):
+    body = bytearray()
+    offsets = {}
+    index = 0
+    while index < len(cells):
+        if cells[index] != b"\x00":
+            offsets[index] = len(body)
+            body.extend(cells[index])
+            index += 1
+            continue
+        end = index + 1
+        while end < len(cells) and cells[end] == b"\x00":
+            end += 1
+        # SID-Wizard's packdepack.inc recognizes packed NOPs after a literal zero or another packed NOP.
+        body.append(0)
+        remaining = end - index - 1
+        while remaining:
+            count = min(9, remaining)
+            body.append(0 if count == 1 else 0x70 + count - 2)
+            remaining -= count
+        index = end
+    require(len(body) + 1 <= 249, "Tick pattern exceeds SID-Wizard's native byte limit")
+    return bytes(body + bytes((len(body) + 1, len(cells)))), offsets
+
+
+def select_sections(recipe, score):
+    sections = recipe["sections"]
+    require(sections, "Recipe requires a complete section schedule")
+    names = {voice["name"] for voice in score["voices"]}
+    previous = 0
+    for section in sections:
+        start, end = section["startBeat"], section["endBeat"]
+        require(isinstance(start, (int, float)) and isinstance(end, (int, float)) and math.isfinite(start) and math.isfinite(end), "Section boundaries must be finite beats")
+        require(math.isclose(start, previous, abs_tol=1e-9) and end > start, "Sections must cover the score without overlap or gaps")
+        require(set(section["voices"]) == names, "Every section must select an instrument for each source voice")
+        require(all(identity in recipe["instruments"] for identity in section["voices"].values()), "Section references an unknown instrument")
+        previous = end
+    require(math.isclose(previous, score["totalBeats"], abs_tol=1e-9), "Sections must cover the full source score")
+    return sections
+
+
+def gate_off_tick(start, duration):
+    gap = 0 if duration == 1 else min(2, max(1, rounded(duration * 0.1)))
+    return start + duration - gap
+
+
+def retain_short_pitch(notes, voice, score_ticks):
+    changes = []
+    for index, note in enumerate(notes):
+        if note["sourceDurationTicks"] != 1:
+            continue
+        end = note["startTick"] + 1
+        following = notes[index + 1] if index + 1 < len(notes) else None
+        if following is not None and following["startTick"] == end:
+            require(following["durationTicks"] >= 3, "Cannot preserve the short note's full pitch without exceeding the following note's timing budget")
+            following["startTick"] += 1
+            following["durationTicks"] -= 1
+        else:
+            require(end + 1 <= (following["startTick"] if following else score_ticks), "Cannot preserve the short note's full pitch within the source phrase endpoint")
+        note["durationTicks"] = 2
+        adjusted = [note] + ([following] if following is not None and following["startTick"] == end + 1 and following["sourceStartTick"] == end else [])
+        for item in adjusted:
+            changes.append({
+                "voice": voice, "eventIndex": item["eventIndex"], "midi": item["midi"],
+                "sourceStartTick": item["sourceStartTick"], "startTick": item["startTick"],
+                "sourceDurationTicks": item["sourceDurationTicks"], "durationTicks": item["durationTicks"],
+                "startTickDelta": item["startTick"] - item["sourceStartTick"], "durationTicksDelta": item["durationTicks"] - item["sourceDurationTicks"],
+                "reason": "The stock Extra player reaches the full note frequency on the second frame; reserve that sounding frame while retaining the following endpoint.",
+            })
+    return changes
+
+
+def arrange(recipe_path, output_dir):
+    recipe_path = Path(recipe_path).resolve()
+    output = Path(output_dir).resolve()
+    require(not output.exists(), "Choose a fresh output directory; existing native workfiles are preserved")
+    recipe_bytes = recipe_path.read_bytes()
+    recipe = json.loads(recipe_bytes)
+    require(recipe["format"] == "sidwizard-arrangement-v1", "Unsupported native arrangement recipe format")
+    require(recipe.get("timingPolicy") == "retain-full-pitch", "Recipe must explicitly select the supported retain-full-pitch timing policy")
+    require(all(re.fullmatch(r"[a-z][a-z0-9-]*", identity) for identity in recipe["instruments"]), "Native instrument id must be a simple lowercase alphanumeric/hyphen name")
+    source = (recipe_path.parent / recipe["score"]).resolve()
+    source_bytes = source.read_bytes()
+    score = json.loads(source_bytes)
+    require(len(score["voices"]) == 3 and len({voice["name"] for voice in score["voices"]}) == 3, "Native arrangement requires three distinctly named source voices")
+    bpm, total_beats = score["quarterBpm"], score["totalBeats"]
+    require(isinstance(bpm, (int, float)) and math.isfinite(bpm) and bpm > 0 and isinstance(total_beats, (int, float)) and math.isfinite(total_beats) and total_beats > 0, "Source tempo and duration must be positive and finite")
+    require(score.get("volume", 15) == 15, "Native trial currently retains the full-volume source contract only")
+    tail = score.get("tailTicks", 25)
+    require(type(tail) is int and tail > 0, "Source must include a positive PAL release tail")
+    rate = 60 / bpm * TICKS_PER_SECOND
+    score_ticks = rounded(total_beats * rate)
+    total_ticks = score_ticks + tail
+    row_count = total_ticks + 1
+    sections = select_sections(recipe, score)
+    encode_instrument = instrument_encoder()
+    require(1 <= len(recipe["instruments"]) <= 36, "Native recipe requires 1..36 instruments")
+    identities = list(recipe["instruments"])
+    instrument_numbers = {identity: index + 1 for index, identity in enumerate(identities)}
+    instruments = {identity: encode_instrument(identity, recipe["instruments"][identity]) for identity in identities}
+    short_limit = recipe.get("shortNoteMaxTicks", 0)
+    require(type(short_limit) is int and short_limit >= 0, "shortNoteMaxTicks must be a nonnegative integer")
+    short_instruments = recipe.get("shortNoteInstruments", {})
+    require(all(identity in instruments for identity in short_instruments.values()), "Short-note mapping references an unknown instrument")
+    patterns = []
+    pattern_numbers = {}
+    cell_map = []
+    voices = []
+    changes = []
+    timing_changes = []
+    for voice_index, voice in enumerate(score["voices"]):
+        cells = [b"\x00"] * row_count
+        notes = []
+        events = voice["events"]
+        previous_end = 0
+        for event_index, event in enumerate(events):
+            start_beat, duration_beats = event["startBeat"], event["durationBeats"]
+            require(isinstance(start_beat, (int, float)) and isinstance(duration_beats, (int, float)) and math.isfinite(start_beat) and math.isfinite(duration_beats) and start_beat >= 0 and duration_beats > 0, "Source events require finite nonnegative onsets and positive durations")
+            start = rounded(start_beat * rate)
+            end = rounded((start_beat + duration_beats) * rate)
+            require(start >= previous_end and end <= score_ticks and end > start, "Source voice has a note overlap, collision, or unrepresentable duration")
+            previous_end = end
+            if event["midi"] is None:
+                continue
+            midi = event["midi"]
+            require(type(midi) is int and 12 <= midi <= 106, "Source pitch lies outside SWM1's native note range")
+            section = next(section for section in sections if section["startBeat"] <= start_beat < section["endBeat"])
+            identity = section["voices"][voice["name"]]
+            duration = end - start
+            number = instrument_numbers[identity]
+            native_note = midi - 11
+            off = gate_off_tick(start, duration)
+            notes.append({
+                "eventIndex": event_index, "startBeat": start_beat, "durationBeats": duration_beats,
+                "sourceStartTick": start, "sourceDurationTicks": duration, "sourceGateOffTick": off,
+                "startTick": start, "durationTicks": duration, "gateOffTick": off, "nativeGateOffTick": off,
+                "midi": midi, "nativeNote": native_note, "instrument": number, "instrumentId": identity, "section": section["name"],
+            })
+        timing_changes.extend(retain_short_pitch(notes, voice_index, score_ticks))
+        for note in notes:
+            start, duration = note["startTick"], note["durationTicks"]
+            if duration <= short_limit:
+                note["instrumentId"] = short_instruments.get(voice["name"], note["instrumentId"])
+                note["instrument"] = instrument_numbers[note["instrumentId"]]
+            require(cells[start] == b"\x00", "Source note collision on the native tick grid")
+            cells[start] = bytes((note["nativeNote"] | 0x80, note["instrument"]))
+            off = start + duration if duration <= 2 else gate_off_tick(start, duration)
+            note["gateOffTick"] = note["nativeGateOffTick"] = off
+            if off != note["sourceGateOffTick"]:
+                changes.append({"kind": "short-note-release-after-body", "voice": voice_index, "eventIndex": note["eventIndex"], "sourceTick": note["sourceGateOffTick"], "tick": off, "reason": "The second frame must remain gated to sound the native full-frequency body."})
+        for note in notes:
+            off = note["gateOffTick"]
+            if cells[off] != b"\x00":
+                note["nativeGateOffTick"] = None
+                changes.append({"kind": "same-tick-release-replaced-by-note", "voice": voice_index, "eventIndex": note["eventIndex"], "tick": off})
+            else:
+                cells[off] = b"\x7e"
+        cells[total_ticks] = bytes((0xfe, 0x80, 0xa0)) if voice_index == 0 else b"\x7e"
+        sequence = []
+        entries = []
+        for chunk_start in range(0, row_count, PATTERN_ROWS):
+            chunk = cells[chunk_start:chunk_start + PATTERN_ROWS]
+            packed, offsets = pack_pattern(chunk)
+            if packed not in pattern_numbers:
+                number = len(patterns) + 1
+                pattern_numbers[packed] = number
+                patterns.append({"number": number, "rows": len(chunk), "encodedBytes": len(packed) - 1, "bytes": packed})
+            number = pattern_numbers[packed]
+            sequence.append(number)
+            entries.append({"pattern": number, "tick": None if chunk_start == 0 else chunk_start - 1})
+            for row, value in enumerate(chunk):
+                note_code = value[0] & 0x7f
+                if 1 <= note_code <= 0x5f or note_code == 0x7e:
+                    cell_map.append({"voice": voice_index, "tick": chunk_start + row, "pattern": number, "row": row, "byteOffset": offsets[row], "noteCode": note_code, "nativeByte": value[0], "instrument": value[1] & 0x7f if len(value) > 1 else None, "kind": "note" if note_code < 0x60 else "gate-off"})
+        require(len(sequence) + 1 <= 128, "Native orderlist exceeds the 128-byte sequence limit")
+        for note in notes:
+            cell = next(cell for cell in cell_map if cell["voice"] == voice_index and cell["tick"] == note["startTick"])
+            note.update({key: cell[key] for key in ("pattern", "row", "byteOffset")})
+        voices.append({"name": voice["name"], "notes": notes, "sequence": sequence, "expectedPatternEntries": entries})
+    require(len(patterns) <= 100, "Native arrangement exceeds SID-Wizard's 100-pattern limit")
+    header = bytearray(64)
+    header[:4] = b"SWM1"
+    header[4:6] = bytes((1, 4))
+    header[8:11] = b"\xff\xff\xff"
+    header[11:15] = bytes((64, 3, len(patterns), len(instruments)))
+    header[19] = 3
+    authorinfo = recipe.get("authorinfo", f"{recipe['author']}:{recipe['title']}").upper().encode("ascii")
+    require(len(authorinfo) <= 40, "Native author/title header must fit 40 ASCII characters")
+    header[24:64] = authorinfo.ljust(40, b" ")
+    sequences = b"".join(bytes(voice["sequence"] + [0xfe, len(voice["sequence"]) + 1]) for voice in voices)
+    data = b"\x33\x33" + header + sequences + b"".join(pattern["bytes"] for pattern in patterns) + b"".join(instruments.values()) + b"\x81\x81"
+    output.mkdir(parents=True)
+    native = output / f"{recipe_path.stem}.swm"
+    native.write_bytes(data)
+    for identity, instrument in instruments.items():
+        path = output / "instruments" / f"{identity}.swi"
+        path.parent.mkdir(exist_ok=True)
+        path.write_bytes(b"\xa1\x04" + instrument)
+    changes.append({"kind": "native-first-frame-and-envelope", "scope": "Every native note selection", "basis": "SID-Wizard 1.97 player.asm STRTSND/SETWFR1 and tempo-1 FASTSPEEDBIND", "effect": "First frame initializes only frequency high byte and the chosen frame1 waveform; full frequency and table body follow on the next tick. Tempo 1 bypasses hard restart; adjacent notes without a gate-off cell do not retrigger the envelope."})
+    manifest = {
+        "format": "sidwizard-arrangement-manifest-v1", "sourcePath": str(source), "sourceSha256": digest(source_bytes), "recipePath": str(recipe_path), "recipeSha256": digest(recipe_bytes),
+        "nativePath": str(native), "nativeSha256": digest(data), "title": recipe["title"], "author": recipe["author"], "released": recipe.get("released", "2026"),
+        "timingPolicy": recipe["timingPolicy"], "nativeHeaderText": authorinfo.decode("ascii"),
+        "clockHz": PAL_CLOCK, "ticksPerSecond": TICKS_PER_SECOND, "frameSpeed": 1, "rowTicks": 1,
+        "scoreTicks": score_ticks, "tailTicks": tail, "totalTicks": total_ticks, "rowCount": row_count, "stopTick": total_ticks,
+        "renderSeconds": (total_ticks + 1) / TICKS_PER_SECOND + 1, "patterns": [{key: value for key, value in pattern.items() if key != "bytes"} for pattern in patterns],
+        "instruments": [{"id": identity, "number": instrument_numbers[identity], "name": recipe["instruments"][identity]["name"]} for identity in identities],
+        "voices": voices, "cellMap": cell_map, "timingChanges": timing_changes, "articulationChanges": changes, "endPolicy": "stop with gates closed and main volume zero",
+        "criticalNotes": [dict(note, voice=index, audibleCheckTick=note["startTick"] + 1) for index, voice in enumerate(voices) for note in voice["notes"] if note["sourceDurationTicks"] <= 2 or note["durationTicks"] <= 2],
+    }
+    (output / f"{recipe_path.stem}.native.json").write_text(json.dumps(manifest, indent=2) + "\n")
+    return manifest
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("recipe", type=Path)
+    parser.add_argument("--output-dir", type=Path, required=True)
+    args = parser.parse_args()
+    manifest = arrange(args.recipe, args.output_dir)
+    print(f"Wrote {manifest['nativePath']}; retained {sum(len(voice['notes']) for voice in manifest['voices'])} notes in {len(manifest['patterns'])} native patterns")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (OSError, ValueError, KeyError) as error:
+        raise SystemExit(str(error))

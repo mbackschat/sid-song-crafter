@@ -1,0 +1,287 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "fuer-elise.json",
+  "title": "Fur Elise native",
+  "author": "Original SID arrangement",
+  "authorinfo": "ORIGINAL:FUR ELISE NATIVE",
+  "released": "2026",
+  "timingPolicy": "retain-full-pitch",
+  "instruments": {
+    "melody-pluck": {
+      "name": "ELPLUCK",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0754",
+      "frame1": "09",
+      "wave": [
+        [
+          "21",
+          "00",
+          "00"
+        ],
+        [
+          "11",
+          "80",
+          "ff"
+        ]
+      ],
+      "pulse": [],
+      "filter": []
+    },
+    "melody-pulse": {
+      "name": "ELPULSE",
+      "control": "1a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0764",
+      "frame1": "09",
+      "vibrato": "24",
+      "vibrato_delay": 12,
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "84",
+          "00",
+          "00"
+        ],
+        [
+          "20",
+          "20",
+          "00"
+        ],
+        [
+          "20",
+          "e0",
+          "00"
+        ],
+        {
+          "jump": 1
+        }
+      ],
+      "filter": []
+    },
+    "melody-soft": {
+      "name": "ELSOFT",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0745",
+      "frame1": "09",
+      "wave": [
+        [
+          "11",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [],
+      "filter": []
+    },
+    "melody-grace": {
+      "name": "ELGRACE",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0352",
+      "frame1": "09",
+      "wave": [
+        [
+          "11",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [],
+      "filter": []
+    },
+    "bass-soft": {
+      "name": "ELBASS",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0423",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ],
+      "filter": [
+        [
+          "94",
+          "80",
+          "00"
+        ],
+        [
+          "18",
+          "f0",
+          "00"
+        ]
+      ]
+    },
+    "bass-pedal": {
+      "name": "ELPEDAL",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0312",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ],
+      "filter": [
+        [
+          "92",
+          "60",
+          "00"
+        ],
+        [
+          "08",
+          "f0",
+          "00"
+        ]
+      ]
+    },
+    "bass-short": {
+      "name": "ELBSHORT",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0322",
+      "frame1": "09",
+      "wave": [
+        [
+          "11",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [],
+      "filter": []
+    },
+    "harmony-soft": {
+      "name": "ELHARM",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0422",
+      "frame1": "09",
+      "wave": [
+        [
+          "11",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [],
+      "filter": []
+    }
+  },
+  "shortNoteMaxTicks": 2,
+  "shortNoteInstruments": {
+    "melody": "melody-grace",
+    "bass": "bass-short",
+    "harmony": "harmony-soft"
+  },
+  "sections": [
+    {
+      "name": "A: main theme, both printed repeats",
+      "startBeat": 0,
+      "endBeat": 66.5,
+      "voices": {
+        "melody": "melody-pluck",
+        "bass": "bass-soft",
+        "harmony": "harmony-soft"
+      }
+    },
+    {
+      "name": "B: F-major sustained opening",
+      "startBeat": 66.5,
+      "endBeat": 77,
+      "voices": {
+        "melody": "melody-pulse",
+        "bass": "bass-soft",
+        "harmony": "harmony-soft"
+      }
+    },
+    {
+      "name": "B: thirty-second-note passage",
+      "startBeat": 77,
+      "endBeat": 84.5,
+      "voices": {
+        "melody": "melody-pluck",
+        "bass": "bass-soft",
+        "harmony": "harmony-soft"
+      }
+    },
+    {
+      "name": "B: sustained transition back to the theme",
+      "startBeat": 84.5,
+      "endBeat": 89,
+      "voices": {
+        "melody": "melody-pulse",
+        "bass": "bass-soft",
+        "harmony": "harmony-soft"
+      }
+    },
+    {
+      "name": "A: return",
+      "startBeat": 89,
+      "endBeat": 120.5,
+      "voices": {
+        "melody": "melody-pluck",
+        "bass": "bass-soft",
+        "harmony": "harmony-soft"
+      }
+    },
+    {
+      "name": "C: repeated bass beneath held chords",
+      "startBeat": 120.5,
+      "endBeat": 147.5,
+      "voices": {
+        "melody": "melody-pulse",
+        "bass": "bass-pedal",
+        "harmony": "harmony-soft"
+      }
+    },
+    {
+      "name": "C: triplet cadenza",
+      "startBeat": 147.5,
+      "endBeat": 155,
+      "voices": {
+        "melody": "melody-pluck",
+        "bass": "bass-soft",
+        "harmony": "harmony-soft"
+      }
+    },
+    {
+      "name": "A: final return and written rest",
+      "startBeat": 155,
+      "endBeat": 187.5,
+      "voices": {
+        "melody": "melody-soft",
+        "bass": "bass-pedal",
+        "harmony": "harmony-soft"
+      }
+    }
+  ]
+}
