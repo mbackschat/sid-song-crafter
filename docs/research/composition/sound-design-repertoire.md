@@ -12,7 +12,7 @@ Research date: 2026-10-12. The aim is a library of expressive, editable instrume
 | Listening-reviewed instrument | The rendered result has been judged in a phrase and in a mix, with the verdict recorded |
 | Hardware-checked instrument | The actual declared chip/machine setup was tested and recorded |
 
-The current [Für Elise baseline](../../fuer-elise-validation.md) establishes note scheduling, complete playback, and rendered audio. Its fixed triangle instruments are not promoted to a showcase repertoire merely because those tests pass. The [original native bank](instruments/README.md) now supplies rendered experiments for moving pulse with delayed vibrato, bright-attack pluck, kick-to-bass sharing and a falling kick, plus a three-voice mix. These have CPU and PCM evidence but no recorded listening verdict; the remaining briefs below are proposed.
+The current [Für Elise baseline](../../fuer-elise-validation.md) establishes note scheduling, complete playback, and rendered audio. Its fixed triangle instruments are not promoted to a showcase repertoire merely because those tests pass. The [original native bank](instruments/README.md) now supplies rendered experiments for moving pulse with delayed vibrato, bright-attack pluck, kick-to-bass sharing and a falling kick, plus a three-voice mix. These have CPU and PCM evidence; the user's [initial mix acceptance](../../instrument-trials.md) is recorded separately, with isolated-instrument judgments still open. The remaining briefs below are proposed.
 
 ## Reference material worth learning from
 
