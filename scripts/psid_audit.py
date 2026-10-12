@@ -10,7 +10,8 @@ from verify_player import CYCLES_PER_FRAME, PAL_CLOCK, cpu_type, require
 
 
 class AuditMemory:
-    def __init__(self):
+    def __init__(self, sid_bases=(0xd400,)):
+        self.sid_bases = sid_bases
         self.data = [0] * 65536
         self.data[0:2] = [0x2f, 0x37]
         self.writes = []
@@ -32,7 +33,7 @@ class AuditMemory:
         if address == 1:
             require(value & 4 and value & 3, "CPU port change would hide SID I/O")
         if 0xd000 <= address <= 0xdfff:
-            require(0xd400 <= address <= 0xd418, f"Unsupported I/O write at ${address:04x}")
+            require(any(base <= address <= base + 24 for base in self.sid_bases), f"Unsupported I/O write at ${address:04x}")
             require(self.instruction not in ("ASL", "LSR", "ROL", "ROR", "INC", "DEC"), "SID read-modify-write requires a bus-cycle emulator")
             self.writes.append({"phase": self.phase, "tick": self.tick, "instructionStartCycle": self.instruction_cycle, "address": address, "value": value})
         self.data[address] = value
@@ -48,11 +49,16 @@ def audit_psid(data, ticks, *, observer=None):
     require(type(ticks) is int and 1 <= ticks <= 100000, "Play-call count must be an integer from 1 to 100000")
     require(len(data) >= 0x7c and data[:4] == b"PSID", "Audit requires a complete PSID header")
     word = lambda offset: int.from_bytes(data[offset:offset + 2], "big")
-    require(word(4) == 2 and word(6) == 0x7c, "Audit supports PSID v2NG only")
+    require(word(6) == 0x7c, "Audit requires a $7c-byte PSID header")
     require(word(14) == 1 and word(16) == 1, "Audit requires exactly one subtune")
     require(data[18:22] == bytes(4), "CIA timing is unsupported; use a full C64 emulator")
-    require(word(118) in (0x14, 0x24), "Audit requires explicit PAL and one declared SID model without MUS/PlaySID flags")
-    require(data[122:124] == bytes(2), "Multi-SID/reserved address fields are unsupported")
+    if word(4) == 2:
+        require(word(118) in (0x14, 0x24), "Audit requires explicit PAL and one declared SID model without MUS/PlaySID flags")
+        require(data[122:124] == bytes(2), "PSID v2 requires zero additional-SID fields")
+        sids = [{"baseAddress": 0xd400, "model": "MOS8580" if word(118) == 0x24 else "MOS6581"}]
+    else:
+        require(word(4) == 3 and word(118) == 0xa4 and data[122:124] == b"\x42\x00", "Dual-SID audit requires PSID v3 PAL with two MOS8580s at $d400/$d420")
+        sids = [{"baseAddress": base, "model": "MOS8580"} for base in (0xd400, 0xd420)]
     load = word(8)
     payload = data[0x7c:]
     if load == 0:
@@ -63,7 +69,7 @@ def audit_psid(data, ticks, *, observer=None):
     init, play = word(10) or load, word(12)
     require(0x0400 <= load < end <= 0xa000, "Audit supports payloads entirely in RAM $0400–$9fff")
     require(load <= init < end and load <= play < end, "Callable init/play must lie inside the payload; IRQ players are unsupported")
-    memory = AuditMemory()
+    memory = AuditMemory(tuple(sid["baseAddress"] for sid in sids))
     memory.data[load:end] = payload
     cpu = cpu_type()(memory=memory, pc=init)
     cpu.a = cpu.x = cpu.y = 0
@@ -101,7 +107,7 @@ def audit_psid(data, ticks, *, observer=None):
     report = {
         "schemaVersion": 1, "sourceSha256": hashlib.sha256(data).hexdigest(),
         "cpu": "py65 NMOS 6502", "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
-        "sidModel": "MOS8580" if word(118) == 0x24 else "MOS6581",
+        "sidModel": sids[0]["model"], "sidCount": len(sids), "sids": sids,
         "loadAddress": load, "initAddress": init, "playAddress": play,
         "clockHz": PAL_CLOCK, "playCalls": ticks, "callRateHz": PAL_CLOCK / CYCLES_PER_FRAME,
         "initCycles": init_cycles, "maximumPlayCycles": maximum, "meanPlayCycles": total / ticks,

@@ -10,9 +10,9 @@ The JSON report contains call counts, initialization and peak playback cycle cos
 
 ## Supported execution contract
 
-This is a bounded RAM-only audit: PSID v2NG, one subtune, explicit PAL and 6581/8580, a payload within `$0400–$9fff`, callable init/play, and one call per PAL frame. The parser accepts either header or embedded load addresses and resolves zero init to the load address. These conventions follow [the HVSC format specification](https://hvsc.c64.org/download/C64Music/DOCUMENTS/SID_file_format.txt).
+This is a bounded RAM-only audit: one subtune, a payload within `$0400–$9fff`, callable init/play, and one call per PAL frame. It supports PSID v2NG with one explicitly declared PAL 6581/8580, or PSID v3 with two PAL 8580s at `$D400` and `$D420` (flags `$00A4`, second-chip byte `$42`, no third chip). Other layouts are rejected. Reports list the declared chips and keep their register addresses distinct. The parser accepts either header or embedded load addresses and resolves zero init to the load address. These conventions follow [the HVSC format specification](https://hvsc.c64.org/download/C64Music/DOCUMENTS/SID_file_format.txt).
 
-Initialization starts with zero-filled RAM except CPU port `$2f/$37`, A/X/Y zero, and the normal py65 stack. Driver changes to RAM and registers persist across calls. The tool rejects unsupported opcodes, ROM/I/O reads, non-SID hardware writes, hidden I/O, missing returns, and excessive call budgets. Initialization has a separate million-cycle ceiling; playback must fit 19,656 cycles. Rejecting a driver means this restricted audit cannot model it; use full C64 emulation for broader contracts.
+Initialization starts with zero-filled RAM except CPU port `$2f/$37`, A/X/Y zero, and the normal py65 stack. Driver changes to RAM and registers persist across calls. The tool rejects unsupported opcodes, ROM/I/O reads, non-SID hardware writes, hidden I/O, missing returns, and excessive call budgets. Initialization has a separate million-cycle ceiling; playback across all declared chips must fit the same 19,656-cycle PAL frame; adding a chip does not double the CPU budget. Rejecting a driver means this restricted audit cannot model it; use full C64 emulation for broader contracts.
 
 ## Evidence limits
 

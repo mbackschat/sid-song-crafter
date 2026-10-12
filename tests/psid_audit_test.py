@@ -23,6 +23,35 @@ def sid_file(play=bytes((0xee, 0x00, 0x20, 0xad, 0x00, 0x20, 0x8d, 0x02, 0xd4, 0
 
 
 class PsidAuditTest(unittest.TestCase):
+    def test_dual_sid_audit_keeps_both_register_banks_and_one_shared_frame_budget(self):
+        data = sid_file(bytes((0xa9, 0x27, 0x8d, 0x04, 0xd4, 0xa9, 0x51, 0x8d, 0x24, 0xd4, 0xa9, 0x1f, 0x8d, 0x38, 0xd4, 0x60)))
+        data[5], data[119], data[122] = 3, 0xa4, 0x42
+        report, writes = audit.audit_psid(data, 2)
+        self.assertEqual(report['sidCount'], 2)
+        self.assertEqual(report['sids'], [{'baseAddress': 0xd400, 'model': 'MOS8580'}, {'baseAddress': 0xd420, 'model': 'MOS8580'}])
+        self.assertEqual(report['sidModel'], 'MOS8580')
+        self.assertEqual(report['frameCycleBudget'], 19656)
+        self.assertEqual(report['maximumPlayCycles'], 24)
+        self.assertEqual([(row['address'], row['value']) for row in writes if row['tick'] == 1], [(0xd404, 0x27), (0xd424, 0x51), (0xd438, 0x1f)])
+
+    def test_dual_sid_rejects_ambiguous_metadata_reads_and_unconfigured_registers(self):
+        original = sid_file()
+        original[5], original[119], original[122] = 3, 0xa4, 0x42
+        for offset, value in ((5, 4), (119, 0x64), (119, 0xa8), (122, 0x44), (123, 0x44), (21, 1)):
+            data = bytearray(original)
+            data[offset] = value
+            with self.subTest(offset=offset, value=value), self.assertRaises(ValueError):
+                audit.audit_psid(data, 1)
+        for address in (0xd419, 0xd41f, 0xd439, 0xd440):
+            data = sid_file(bytes((0xa9, 1, 0x8d, address & 255, address >> 8, 0x60)))
+            data[5], data[119], data[122] = 3, 0xa4, 0x42
+            with self.subTest(address=address), self.assertRaisesRegex(ValueError, 'I/O write'):
+                audit.audit_psid(data, 1)
+        data = sid_file(bytes((0xad, 0x3b, 0xd4, 0x60)))
+        data[5], data[119], data[122] = 3, 0xa4, 0x42
+        with self.assertRaisesRegex(ValueError, 'I/O read'):
+            audit.audit_psid(data, 1)
+
     def test_audits_a_driver_without_our_exporter_symbols_or_score(self):
         report, writes = audit.audit_psid(sid_file(), 3)
         self.assertEqual(report["playCalls"], 3)
