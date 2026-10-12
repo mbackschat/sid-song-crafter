@@ -1,6 +1,6 @@
 # CHORD-01 — combined-waveform chord with continuing release
 
-**Evidence:** rendered experiment with full-cycle register verification; listening approval pending. Target: SID-Wizard 1.97 Extra, one MOS8580, PAL, one call per frame. The original [layered-entrance study](../../../../songs/studies/elise-layered-entrance/README.md) retains editable recipes, musical examples, comparison audio and reproduction commands. Design and verification: 2026-10-13.
+**Evidence:** rendered experiment with full-cycle register verification; its two arrangement auditions were judged not close to the desired DRAX sound. Target: SID-Wizard 1.97 Extra, one MOS8580, PAL, one call per frame. The original [layered-entrance study](../../../../songs/studies/elise-layered-entrance/README.md) retains editable recipes, musical examples, comparison audio and reproduction commands. Design and verification: 2026-10-13.
 
 ## Musical role and native program
 

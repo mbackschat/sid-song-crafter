@@ -10,7 +10,7 @@ A reusable gesture describes a musical action: what to play, when to leave space
 
 The first [editable interpretation study](../../../../songs/studies/fuer-elise-interpretation/README.md) combines these gestures in two new Für Elise palettes. Its score preserves the opening melody and records original accompaniment; technical checks and listening acceptance remain separate.
 
-The listener prefers palette B's direction and the later Weight bass, while DRAX remains the reference for accompaniment richness. The first study records a finite-burst limitation in its native chord tables. The [layered-entrance study](../../../../songs/studies/elise-layered-entrance/README.md) corrects waveform preservation and compares sustained layering with playful replies; listening approval is pending.
+The listener prefers palette B's direction and the later Weight bass, while DRAX remains the reference for accompaniment richness. The first study records a finite-burst limitation in its native chord tables. The [layered-entrance study](../../../../songs/studies/elise-layered-entrance/README.md) corrects waveform preservation and compares sustained layering with playful replies, but both were judged not close to DRAX. Technical correctness and plausible arrangement mechanisms are insufficient evidence that the target sound has been captured.
 
 ## How to use and extend the library
 

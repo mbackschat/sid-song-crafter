@@ -22,7 +22,7 @@ The extracted dynamic library retains an unrelocated `@@HOMEBREW_PREFIX@@` insta
 
 ## Renderer contract and API findings
 
-The renderer accepts `INPUT.sid OUTPUT.wav SECONDS` and permits durations greater than zero through 600 seconds. One-SID output remains mono with PAL forced, the declared chip model honoured and MOS8580 as the fallback. Two-SID output requires PSID v3, explicit PAL, VBI timing for every subtune, two declared MOS8580 chips at `$D400/$D420`, and no MUS/PlaySID flags. Other second-chip addresses, malformed or duplicate address declarations, a third chip and other two-chip timing/model/version contracts are rejected before output creation. A fixed power-on delay keeps startup reproducible. Output contains exactly the requested number of sample frames rounded to the nearest frame, with a minimum of one; stereo frames contain two interleaved samples. Rebuild the executable after changing its source.
+The renderer accepts `INPUT.sid OUTPUT.wav SECONDS` and permits durations greater than zero through 600 seconds. One-SID output remains mono with PAL forced, the declared chip model honoured and MOS8580 as the fallback. An optional one-SID diagnostic selector, `--voices 1,3`, retains the named tone voices; its limits are described below. Two-SID output requires PSID v3, explicit PAL, VBI timing for every subtune, two declared MOS8580 chips at `$D400/$D420`, and no MUS/PlaySID flags. Other second-chip addresses, malformed or duplicate address declarations, a third chip and other two-chip timing/model/version contracts are rejected before output creation. A fixed power-on delay keeps startup reproducible. Output contains exactly the requested number of sample frames rounded to the nearest frame, with a minimum of one; stereo frames contain two interleaved samples. Rebuild the executable after changing its source.
 
 Two-SID stereo uses the documented per-chip `buffers()` API at unity gain: chip 0 is left and chip 1 is right, with no crossfeed or summing. The pinned library's [default stereo matrix](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/simpleMixer.h) mixes half of each chip into the opposite channel, so this renderer interleaves raw chip buffers instead. Independent 440/660 Hz fixtures and versions with either chip muted verify both channels and the absence of crossfeed; stereo output is not a duplicate of a mono render. The mono mixer path is unchanged.
 
@@ -36,6 +36,16 @@ Two libsidplayfp integration rules are required:
 Measure ending silence using AC energy after subtracting the mean. A constant SIDLite DC offset is not continuing oscillator sound. Host speaker playback is a separate check: the restricted host can reject `afplay` with `AudioQueueStart failed (-66680)` even when file rendering succeeds.
 
 ## Render and validate
+
+### Diagnostic voice selection
+
+For a single SID, append `--voices 1`, `--voices 3` or `--voices 1,3` to compare selected tone voices. `--voices 1,2,3` agrees with default playback; `--voices none` suppresses the three tone voices but does not mute the separate volume-digi channel. Invalid lists, duplicate voices and two-chip use are rejected before output files are created.
+
+This uses [libsidplayfp 3.1.1's actual mute implementation](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/sidemu.cpp): it masks unselected voices' control writes with `$0e`, clearing GATE and waveform bits before synthesis. It is not output-only muting: muted envelopes, waveform/noise state and the filter's input can change. The implementation uses `true` to mute despite the public header's opposite wording. The `.registers.tsv` snapshots retain the original register-write shadow, so identical snapshots do not prove identical internal state after muting.
+
+Use this as a bounded listening diagnostic after checking oscillator coupling, SID reads, shared-filter routing and volume/sample techniques. Do not assume isolated files add back to the original or use the option as a faithful solo for ring/sync-dependent instruments. The [DRAX fragment study](research/composition/fuer-elise-reference.md) checks its particular independence assumptions and keeps the full mix as the authority. Independent three-pitch fixtures verify actual voice selection, quiet tone-only `none`, unchanged default output and argument rejection.
+
+### Playback checks
 
 After [building the opening excerpt](first-song.md):
 

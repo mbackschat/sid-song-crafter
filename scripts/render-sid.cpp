@@ -49,9 +49,28 @@ static bool has_dual_sid_header(const char *path) {
     return true;
 }
 
+static std::array<bool, 3> selected_voices(const std::string &list) {
+    std::array<bool, 3> selected{};
+    if (list == "none") return selected;
+    size_t start = 0;
+    while (start < list.size()) {
+        const size_t end = list.find(',', start);
+        const std::string voice = list.substr(start, end == std::string::npos ? end : end - start);
+        if (voice.size() != 1 || voice[0] < '1' || voice[0] > '3' || selected[voice[0] - '1']) {
+            throw std::runtime_error("Voices must be distinct numbers 1,2,3 separated by commas, or none");
+        }
+        selected[voice[0] - '1'] = true;
+        if (end == std::string::npos) return selected;
+        start = end + 1;
+    }
+    throw std::runtime_error("Voices must not be empty or end with a comma");
+}
+
 int main(int argc, char **argv) {
     try {
-        if (argc != 4) throw std::runtime_error("Usage: render-sid INPUT.sid OUTPUT.wav SECONDS (PAL, one SID mono or PSID v3 two-SID stereo, 0 < seconds <= 600)");
+        if (argc != 4 && (argc != 6 || std::string(argv[4]) != "--voices")) throw std::runtime_error("Usage: render-sid INPUT.sid OUTPUT.wav SECONDS [--voices 1,2,3|none] (PAL, 0 < seconds <= 600; voices is a one-SID control-mask diagnostic)");
+        const bool voice_diagnostic = argc == 6;
+        const std::array<bool, 3> voices = voice_diagnostic ? selected_voices(argv[5]) : std::array<bool, 3>{true, true, true};
         size_t parsed = 0;
         const double seconds = std::stod(argv[3], &parsed);
         if (parsed != std::string(argv[3]).size() || !std::isfinite(seconds) || seconds <= 0 || seconds > 600) {
@@ -85,6 +104,7 @@ int main(int argc, char **argv) {
             default:
                 throw std::runtime_error("This renderer supports one or two SID chips");
         }
+        if (voice_diagnostic && sid_count != 1) throw std::runtime_error("Voice diagnostics require one SID chip");
         sidplayfp player;
         SidConfig config = player.config();
         config.frequency = rate;
@@ -96,6 +116,10 @@ int main(int argc, char **argv) {
         config.sidEmulation = &builder;
         if (!player.config(config) || !player.load(&tune)) throw std::runtime_error(player.error());
         if (player.installedSIDs() != sid_count) throw std::runtime_error("Installed SID count differs from the declared tune");
+        if (voice_diagnostic) {
+            // v3.1.1 sidemu masks GATE/waveform writes; true mutes despite the public header's enable wording: https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/sidemu.cpp.
+            for (unsigned int voice = 0; voice < voices.size(); ++voice) player.mute(0, voice, !voices[voice]);
+        }
         player.initMixer(channels == 2);
         // v3.1.1 returns samples despite the header saying bytes: https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/player.cpp#L591.
         const int buffer_size = player.getBufSize(cycles);

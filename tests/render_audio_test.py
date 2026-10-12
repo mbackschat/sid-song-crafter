@@ -65,11 +65,68 @@ def read_stereo_samples(path):
     return frames, samples[0::2], samples[1::2]
 
 
+def write_three_voice_sid(path):
+    init = bytearray()
+    for voice, hz in enumerate((330, 440, 660)):
+        word = round(hz * 2**24 / (17734475 / 18))
+        for offset, value in ((0, word & 255), (1, word >> 8), (5, 0), (6, 0xf0), (4, 0x11)):
+            address = 0xd400 + voice * 7 + offset
+            init.extend((0xa9, value, 0x8d, address & 255, address >> 8))
+    init.extend(bytes.fromhex("A9 0F 8D 18 D4 60"))
+    header = bytearray(0x7c)
+    header[:4] = b"PSID"
+    struct.pack_into(">7HI", header, 4, 2, 0x7c, 0x1000, 0x1000, 0x1000 + len(init), 1, 1, 0)
+    struct.pack_into(">H", header, 0x76, 0x24)
+    path.write_bytes(header + init + b"\x60")
+
+
 class HeadlessRenderTest(unittest.TestCase):
     def render(self, sid, seconds, directory):
         output = Path(directory) / "render.wav"
         subprocess.run([str(RENDERER), str(sid), str(output), str(seconds)], check=True, timeout=20, capture_output=True, text=True)
         return output, read_samples(output)
+
+    def test_diagnostic_voice_masks_select_actual_audio_keep_trace_and_leave_default_unchanged(self):
+        with tempfile.TemporaryDirectory() as directory:
+            sid = Path(directory) / "independent.sid"
+            write_three_voice_sid(sid)
+            rendered = {}
+            for voices in (None, "1,2,3", "1", "2", "3", "1,3", "none"):
+                output = Path(directory) / f"voices-{voices if voices is not None else 'default'}.wav"
+                command = [str(RENDERER), str(sid), str(output), "0.5"]
+                if voices is not None:
+                    command += ["--voices", voices]
+                result = subprocess.run(command, capture_output=True, text=True, timeout=20)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                rendered[voices] = output
+                self.assertEqual(len(read_samples(output)), RATE // 2)
+            original = rendered[None].read_bytes()
+            trace = Path(str(rendered[None]) + ".registers.tsv").read_bytes()
+            self.assertEqual(rendered["1,2,3"].read_bytes(), original)
+            for voices, output in rendered.items():
+                self.assertEqual(Path(str(output) + ".registers.tsv").read_bytes(), trace)
+                middle = read_samples(output)[RATE // 4:]
+                if voices == "none":
+                    self.assertLess(rms(middle), 1)
+                else:
+                    self.assertGreater(rms(middle), 100)
+                    self.assertFalse(any(value in (-32768, 32767) for value in middle))
+                    if voices in ("1", "2", "3"):
+                        self.assertAlmostEqual(frequency(middle), {"1": 330, "2": 440, "3": 660}[voices], delta=3)
+
+    def test_diagnostic_voice_masks_reject_bad_lists_and_two_sid_use_before_output(self):
+        with tempfile.TemporaryDirectory() as directory:
+            mono, dual = Path(directory) / "one.sid", Path(directory) / "two.sid"
+            write_three_voice_sid(mono)
+            write_two_sid_fixture(dual)
+            for sid, voices in [(mono, value) for value in ("", "0", "4", "1,1", "1,", ",1", "1 2", "all", "none,1")] + [(dual, "1"), (dual, "1,2,3")]:
+                with self.subTest(sid=sid, voices=voices):
+                    output = Path(directory) / "invalid.wav"
+                    result = subprocess.run([str(RENDERER), str(sid), str(output), "0.1", "--voices", voices], capture_output=True, text=True, timeout=20)
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertTrue(result.stderr.strip())
+                    self.assertFalse(output.exists())
+                    self.assertFalse(Path(str(output) + ".registers.tsv").exists())
 
     def test_independent_a4_fixture_has_expected_duration_and_pitch(self):
         with tempfile.TemporaryDirectory() as directory:

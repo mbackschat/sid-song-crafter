@@ -25,7 +25,7 @@ python3 scripts/compare-audio.py prepare build/elise-layered-entrance/native-son
 - [B: playful replies](../../../build/elise-layered-listen/versions.b.matched.wav)
 - [A then B](../../../build/elise-layered-listen/versions.ab.wav)
 
-Both samples last approximately 22 seconds, including release and ending. Matching attenuates B by 0.328 dB; original-amplitude WAVs remain in the build directories. Listening approval is pending: judge accompaniment body, movement and melodic clarity. Longer tails and more active registers alone do not establish an improvement.
+Both samples last approximately 22 seconds, including release and ending. Matching attenuates B by 0.328 dB; original-amplitude WAVs remain in the build directories. Listener verdict, mbackschat, 2026-10-13: **neither is close to the preferred DRAX fragment**, which sounds vibrant, like two things overlaid. These are not accepted matches. Correcting waveform continuity and changing accompaniment placement did not establish the desired timbral character. Use the precise [2.02–2.75-second reference](../../../docs/research/composition/fuer-elise-reference.md) to distinguish the bass's own evolving spectrum from the simultaneous chord contribution before another arrangement revision.
 
 ## Native behaviour and evidence
 

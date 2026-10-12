@@ -32,6 +32,31 @@ The user's precise audition target is approximately **2.02–2.75 seconds in `re
 
 In the corresponding CPU attack/release sequence, calls 110–137 have bass control `$40` and chord control `$50`: both keep their waveforms selected with gate clear. The bass stays on A1 while its pulse width continues moving, reaching `$f10` (3856); the chord keeps cycling its pitches. The useful study target is therefore the evolving release body as well as the transient. Register motion does not identify the perceptual contribution of either voice by itself; a separate controlled voice-isolation study is needed for that attribution.
 
+## Identify the preferred layer by listening
+
+The listener rejects both [layered/reply candidates](../../../songs/studies/elise-layered-entrance/README.md) as not close to DRAX and describes this exact fragment as vibrant, like two things overlaid. That description does not yet identify an oscillator or synthesis mechanism. Avoid another multi-parameter arrangement revision until a short diagnostic distinguishes the bass's own character from the chord contribution.
+
+The following 1.80–3.00-second extracts keep a little context around the marked fragment, with original gain and timing:
+
+- [Bass/percussion voice 1](../../../build/reference-studies/drax/voice-focus/bass.context.wav): start here to judge whether the preferred character already exists in the bass alone.
+- [Chord voice 3](../../../build/reference-studies/drax/voice-focus/chord.context.wav): compare the continuing combined-waveform arpeggio.
+- [Bass and chord together](../../../build/reference-studies/drax/voice-focus/bass-chord.context.wav): test the interaction without the melody.
+- [Full mix](../../../build/reference-studies/drax/voice-focus/mix.context.wav): the unchanged listening authority.
+
+The [manifest](../../../build/reference-studies/drax/voice-focus/study.json) retains input/renderer hashes, commands, exact 2.02–2.75-second cuts as well as context cuts, PCM health and diagnostic limitations. All clips are unclipped; the full mix is sample-identical to the corresponding original WAV segment. No listener attribution from these clips is claimed yet.
+
+Reproduce each three-second render with the [renderer diagnostic](../../audio-workflow.md), using unused output paths:
+
+```sh
+.local/bin/render-sid .local/research/fuer-elise/drax-fuer-elise.sid build/drax-bass.wav 3 --voices 1
+.local/bin/render-sid .local/research/fuer-elise/drax-fuer-elise.sid build/drax-chord.wav 3 --voices 3
+.local/bin/render-sid .local/research/fuer-elise/drax-fuer-elise.sid build/drax-bass-chord.wav 3 --voices 1,3
+```
+
+The selector masks unselected voices' gate/waveform writes internally; these are diagnostic solos, not output-only or additive stems. The pinned 6,000-call trace has no ring/sync control bits on any voice, and the first 151 calls route only voice 1 into the filter. The reference passes the RAM-only CPU audit without SID reads. Thus the targeted bass/chord oscillators have no observed coupling dependency, but muting the filtered bass still changes filter input/state. The register sidecar preserves original writes and does not show that internal mask. `none` has zero AC energy in this particular context window. Retain these limits when interpreting the solos.
+
+DRAX remains rendered with its declared MOS6581; the candidates declare MOS8580. Setting the renderer's fallback model to 8580 does not override a tune's explicit model. The different filter/combined-waveform responses remain a material comparison variable; changing numeric cutoff or resonance on an 8580 is not evidence of reproducing the reference's 6581 character.
+
 The reference pulse melody resets near width 2128 on attack and then moves through its body; it differs substantially from our brief bright attack and triangle continuation. The reference's bass voice combines a high-frequency noise transient with a low pulse body, routes only that voice into a resonant low-pass filter, and clears gate shortly after the body begins. Our current recipe has a restrained filtered bass without that percussion attack. These are explicit texture choices to audition, not missing melody notes.
 
 The reference's third voice combines triangle and pulse (`$51`) and cycles A3, C4 and E4 every two calls at the first accompaniment entry. Our harmony presents selected source notes individually. Combined waveforms and fast arpeggios are useful options for fuller harmony on one SID; their chip-dependent timbre and extra pitch motion should be evaluated in controlled original patches before adoption. They also show why static frequency comparisons and one snapshot per score event are insufficient for expressive SID instruments.
