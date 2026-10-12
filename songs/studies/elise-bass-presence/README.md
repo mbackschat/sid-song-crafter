@@ -1,6 +1,8 @@
 # Bass presence in the combined Elise interpretation
 
-These original proposed timbres change only `bass-groove` in [creative B](../fuer-elise-interpretation/recipe-b.json). The lead, chord instruments, notes and timing stay intact, including the existing bass attack waveform. They explore bass presence; neither is an established improvement or a DRAX transcription.
+These original timbres change only `bass-groove` in [creative B](../fuer-elise-interpretation/recipe-b.json). The lead, chord instruments, notes and timing stay intact, including the existing bass attack waveform. They explore bass presence and are not DRAX transcriptions.
+
+Listener finding, mbackschat, 2026-10-12: **A (Weight) is nice; B (Resonant) sounds odd, described as brass-like.** Keep Weight as the preferred bass direction and reject this resonant variant for the current arrangement. DRAX remains the preferred reference, especially the entrance around two seconds. Bass and chord arpeggiation enter together there; [the reference study](../../../docs/research/composition/fuer-elise-reference.md) distinguishes their roles. This verdict supports a direction, not equivalence to DRAX or complete-song acceptance; playback equipment was unspecified.
 
 - [Weight](weight.json): sustain `$8→$b`, release `$5→$9`, initial low-pass resonance `$8→$a`, cutoff `$580→$600`, initial pulse width `$700→$600`; remaining tables unchanged.
 - [Resonant](resonant.json): sustain `$8→$c`, release `$5→$8`, low-pass resonance `$c` with initial cutoff `$680` then direct cutoff `$0c0`, initial pulse width `$580` and motion steps `$30/$d0` (±48).
