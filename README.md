@@ -1,10 +1,17 @@
 # C64 SID music laboratory
 
-Research and practical tools for composing Commodore 64 music for one SID, with a later path to two chips. The initial target is a short Für Elise opening excerpt on a PAL C64 with an 8580 SID.
+Research and reusable tools for composing expressive Commodore 64 music for one SID, with a later path to two chips. Sound quality is the priority: learn from the masters, study their editors and drivers, and build a tested instrument repertoire. The working target is a PAL C64 with an 8580 SID. Original musical sources, common scores, and SID arrangements remain separate so conversion does not erase source information or define the chip's expressive limits.
 
 ## Start here
 
 - [Research index](docs/research/README.md): hardware, composition, timing, formats, tools, and source provenance.
+- [Composer studies](docs/research/composers/README.md): seven masters, published accounts, custom tools, and a listening catalogue.
+- [Sound-design repertoire](docs/research/composition/sound-design-repertoire.md): proposed experiments and evidence required for reusable instruments.
+- [Composition tools](docs/research/tools/composition-tools.md): established editors, their drivers, and a practical evaluation plan.
+- [Song workflow](docs/song-workflow.md): source preservation, conversion boundaries, and one-command build/render/verification.
+- [Full Für Elise source and arrangement](docs/fuer-elise-score.md): repeat expansion, musical landmarks, and explicit three-voice reductions.
+- [Three-voice player](docs/three-voice-player.md): arrangement contract, capabilities, timing, and exported binaries.
+- [Full-song validation](docs/fuer-elise-validation.md): rendering, native execution, and reproducible evidence.
 - [Local setup](docs/local-setup.md): installed skills, pinned dependencies, c64bridge configuration, and VICE findings.
 - [First song](docs/first-song.md): editable score, assembler, PRG/SID exports, and independent CPU verification.
 - [Headless audio](docs/audio-workflow.md): SID-to-WAV rendering and pitch, timing, and ending checks.
@@ -18,7 +25,7 @@ Project sources and research belong in Git. `.tools/` contains reproducible thir
 
 The checked-in [configuration example](config/codex.toml) records this machine's installation paths. Adapt it before activating it on another computer. Follow [local setup](docs/local-setup.md) for exact upstream revisions and installation commands; use the upstream Bun lockfile for c64bridge.
 
-## Build the opening excerpt
+## Prepare the assembler
 
 The song build uses Bun and only the assembler from the pinned c64bridge checkout. On a fresh checkout, prepare that dependency:
 
@@ -28,11 +35,32 @@ git -C .tools/c64bridge checkout 0781a7b6cfe7b92bbb6d68e048ad396bd3edfb18
 (cd .tools/c64bridge && bun install --frozen-lockfile)
 ```
 
-With the existing dependency already installed, run:
+## Build and verify Für Elise
+
+With the assembler, renderer, and headless VICE installed as described in [local setup](docs/local-setup.md) and [the audio guide](docs/audio-workflow.md):
+
+```sh
+python3 scripts/song.py songs/fuer-elise.json
+```
+
+This produces `build/fuer-elise.{sid,prg,wav}` plus assembly, register traces, and verification evidence. The arrangement covers the complete source with both printed repeats, reduced explicitly to three SID voices. It lasts approximately 157 seconds including the release and verification tails. Add `--vice-audio` for an independent VICE/reSID recording at normal emulation speed.
+
+The checked-in arrangement can be built without MIDI dependencies. To regenerate it from the preserved original after installing Mido as documented in [the score guide](docs/fuer-elise-score.md):
+
+```sh
+PYTHONPATH=.tools/arrangement-deps python3 scripts/import-midi.py songs/sources/fuer-elise.mid songs/fuer-elise-import.json songs/sources/fuer-elise.score.json
+python3 scripts/arrange-score.py songs/sources/fuer-elise.score.json songs/fuer-elise-arrangement.json songs/fuer-elise.json
+```
+
+The importer prints its information-loss report; the arranger prints its reduction report. Original MIDI and LilyPond sources remain unchanged. See [the workflow](docs/song-workflow.md) for the design boundaries and adapting the tools to another song; see [the player contract](docs/three-voice-player.md) for the currently supported SID subset.
+
+## Opening excerpt and tests
+
+The smaller original example remains useful for learning and independent pitch checks:
 
 ```sh
 bun scripts/build-song.ts
-bun test tests/music.test.ts
+bun test tests/music.test.ts tests/fuer-elise.test.ts
 ```
 
 Edit [the score](songs/fuer-elise-opening.json) for pitches, durations, and instrument settings. The [assembly player](songs/player.asm) supplies callable SID initialization/play routines and the standalone C64 entry point. Output goes to `build/fuer-elise-opening.{prg,sid,asm,events.json}`. The excerpt contains the right-hand opening only; accompaniment and a second SID are outside this first example.
@@ -40,7 +68,7 @@ Edit [the score](songs/fuer-elise-opening.json) for pitches, durations, and inst
 For independent CPU and audio checks, first follow dependency setup in [the song guide](docs/first-song.md) and [the audio guide](docs/audio-workflow.md), then run:
 
 ```sh
-PYTHONPATH=.tools/test-deps python3 -m unittest discover -s tests -p '*_test.py' -v
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 -m unittest discover -s tests -p '*_test.py' -v
 .local/bin/render-sid build/fuer-elise-opening.sid build/fuer-elise-opening.wav 3.2
 ```
 
@@ -48,4 +76,4 @@ The resulting WAV can be played without an emulator window. Rendering and checki
 
 ## Verification status
 
-The binary/header guards, independent 6502 execution tests, and SID-to-WAV pitch/timing checks pass. Genuine headless VICE also executes the standalone PRG through BASIC and returns after the excerpt. Binary-monitor socket binding is denied in this session, and host audio playback failed; neither a live MCP emulator connection nor listening verification is claimed. See the dated evidence in [local setup](docs/local-setup.md) and the [validation guide](docs/research/10-validation.md).
+The full three-voice arrangement passes binary/header guards, independent 6502 register-write checks, rendered audio checks, and genuine headless VICE execution through BASIC and back. An independent native VICE/reSID recording also passes clipping and ending checks; see [full-song evidence](docs/fuer-elise-validation.md). This is a correctness baseline with simple instruments; the sound-design experiments still require implementation and listening comparison. Binary-monitor socket binding is denied in this session, and host audio playback failed; neither a live MCP emulator connection nor listening verification is claimed.

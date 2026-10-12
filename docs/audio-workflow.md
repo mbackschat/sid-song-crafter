@@ -1,6 +1,6 @@
 # Headless SID audio workflow
 
-Verified on 2026-10-12: [the renderer](../scripts/render-sid.cpp) runs a SID file through libsidplayfp 3.1.1 and SIDLite without opening a window. It writes mono PCM16 audio at 44,100 Hz plus a `.registers.tsv` sidecar containing the emulated SID's last-written register values after each PAL frame. [The integration tests](../tests/render_audio_test.py) independently verify A4, the nine Für Elise pitches, their onset timing, and the silent ending.
+Verified on 2026-10-12: [the renderer](../scripts/render-sid.cpp) runs a SID file through libsidplayfp 3.1.1 and SIDLite without opening a window. It writes mono PCM16 audio at 44,100 Hz plus a `.registers.tsv` sidecar containing the emulated SID's last-written register values after each renderer iteration, timestamped by the emulation library. These snapshots are not one-to-one with PAL frames or individual register writes. [The integration tests](../tests/render_audio_test.py) independently verify A4, the nine Für Elise pitches, their onset timing, and the silent ending.
 
 The generated [Für Elise WAV](../build/fuer-elise-opening.wav) is 3.2 seconds long; [its register trace](../build/fuer-elise-opening.wav.registers.tsv) records the execution evidence. Generated files live in `build/` and are recreated locally. See [the song guide](first-song.md) for the editable score and PRG/SID exports.
 
@@ -27,7 +27,7 @@ mkdir -p .local/bin
 c++ -std=c++17 -O2 -Wall -Wextra -Werror -I.local/tools/libsidplayfp/3.1.1/include scripts/render-sid.cpp .local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a -o .local/bin/render-sid
 ```
 
-This build completed in under one second in the verified session. The renderer accepts `INPUT.sid OUTPUT.wav SECONDS`, forces PAL timing, supports one SID chip, and bounds duration to more than zero and at most 60 seconds. It uses the SID file's model preference, defaulting to MOS8580 when unspecified. A fixed power-on delay removes the library's default startup randomization. Output contains exactly the requested number of samples rounded to the nearest sample, with a minimum of one.
+This build completed in under one second in the verified session. The renderer accepts `INPUT.sid OUTPUT.wav SECONDS`, forces PAL timing, supports one SID chip, and bounds duration to more than zero and at most 600 seconds. The original 60-second limit was raised for complete songs; regression tests render 60.01 seconds and reject 600.01 seconds. It uses the SID file's model preference, defaulting to MOS8580 when unspecified. A fixed power-on delay removes the library's default startup randomization. Output contains exactly the requested number of samples rounded to the nearest sample, with a minimum of one.
 
 ## Render and verification
 

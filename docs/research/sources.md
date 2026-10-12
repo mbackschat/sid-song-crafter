@@ -72,7 +72,7 @@ Access date for all entries: **2026-10-12**, unless a source's publication date 
 
 ## S18
 
-**Chordian and contributors, SID Factory II.** [Repository](https://github.com/Chordian/sidfactory2), [maintainer download page](https://blog.chordian.net/sf2/). README and example-source listings inspected; driver support and editable tune collections are maintainer claims. No unambiguous top-level reuse license established in this pass. Do not treat public source or example availability as an automatic permission grant.
+**Chordian and contributors, SID Factory II.** [Repository](https://github.com/Chordian/sidfactory2), [maintainer download page](https://blog.chordian.net/sf2/). README, example-source listings, and Driver 11 notes inspected. The later [composition-tool assessment](tools/composition-tools.md) pins revision `d6852faea2f8929df30e6f2ce008f93d974637d3` and locates GPL v2 text in `SIDFactoryII/COPYING`; the initial top-level inspection had missed it. Individual driver/tune notices remain relevant. No local editor or export acceptance trial completed.
 
 ## S19
 
@@ -124,7 +124,7 @@ Access date for all entries: **2026-10-12**, unless a source's publication date 
 
 ## S31
 
-**Mutopia Project, Für Elise typesetting.** [Catalogue](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=931), [published LilyPond source](https://www.mutopiaproject.org/ftp/BeethovenLv/WoO59/fur_Elise_WoO59/fur_Elise_WoO59.ly). The opening pitches and durations were checked against the typesetter's source for the project's nine-note monophonic excerpt. The edition is identified as Breitkopf & Härtel, 1888, and the typesetting as public domain. The editable [project score](../../songs/fuer-elise-opening.json) records the transcription scope and provenance; it is not a complete piano arrangement.
+**Mutopia Project, Für Elise typesetting.** [Catalogue](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=931), [published LilyPond source](https://www.mutopiaproject.org/ftp/BeethovenLv/WoO59/fur_Elise_WoO59/fur_Elise_WoO59.ly). Edition: Breitkopf & Härtel, 1888; typesetting identified as public domain. The initial nine-note excerpt was followed by a [complete source/import study](../fuer-elise-score.md). Unchanged MIDI/LilyPond files, checksums, explicit repeat expansion, import omissions, and three-voice reduction evidence are retained. Complete execution and rendered audio are recorded in [full-song validation](../fuer-elise-validation.md); listening quality remains separate.
 
 ## S32
 
@@ -141,3 +141,20 @@ Access date for all entries: **2026-10-12**, unless a source's publication date 
 ## S35
 
 **py65 maintainers, independent 6502 interpreter 1.2.0.** [PyPI release](https://pypi.org/project/py65/1.2.0/), [release metadata](https://pypi.org/pypi/py65/1.2.0/json). The wheel was verified against its published SHA-256 and installed into the ignored project test-dependency directory. BSD-licensed CPU execution supplies an independent oracle for the assembled song; the [song guide](../first-song.md) specifies its modeled raster input and limits, rather than treating a CPU interpreter as full C64 hardware emulation.
+
+## S36
+
+**Hermit, SID-Wizard 1.97 full source and host manual.** [Author release](https://csdb.dk/release/?id=262561), [source/examples archive](https://csdb.dk/getinternalfile.php/281063/SID-Wizard-1.97-sources-examples.tar.gz). Downloaded archive SHA-256 `aeb265f4a778b2acb5aad13e8e98af882888292f749f29f4d18cbf49850e57bc`; host README/manual, package structure, and command-line parsing inspected. TUI/CLI arguments select an interactive terminal interface, not a verified unattended exporter. The [tool assessment](tools/composition-tools.md) records the distinctions from the native-only Vessel fork and the unperformed acceptance trial.
+
+## S37
+
+**Linus Åkesson, published composition and implementation explanations.** [A Mind Is Born](https://linusakesson.net/scene/a-mind-is-born/), [Platform Hopping](https://linusakesson.net/music/platform-hopping/index.php), [Machine Yearning](https://linusakesson.net/scene/machine-yearning/index.php). First-person technical accounts inspected for sound programs, form, sample timing, and dual-chip design. Release pages link executable/audio references. Original summaries and proposed applications are in [the composer study](composers/linus-akesson.md); no new listening or hardware execution claimed.
+
+## Composer-source collections
+
+The expanded studies use inline citations to identify each interview, historical manual, academic analysis, recovered listing, original source release, and archive record. Their evidence is deliberately attributed per claim:
+
+- [Hülsbeck and Tel](composers/huelsbeck-tel.md): Soundmonitor documentation, composer accounts, Maniacs of Noise code, and archival version notes.
+- [Hubbard and Galway](composers/hubbard-galway.md): contemporary interviews, Newman's published study, attributed disassembly, original Galway sources, and the Ocean development workflow.
+- [Follin and Daglish](composers/follin-daglish.md): composer/programmer interviews, published retrospective analysis, tool collaboration, and shared soundtrack credits.
+- [Listening catalogue](composers/listening-catalogue.md): concrete works and subtunes with evidence status and questions for subsequent study.

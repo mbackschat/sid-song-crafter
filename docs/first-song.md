@@ -20,7 +20,7 @@ The note list was entered manually and checked on 2026-10-12 against the [Mutopi
 
 ## Build and verify
 
-The build requires Bun and the existing c64bridge checkout at the [recorded revision](research/11-skills-and-integrations.md). It imports only that checkout's assembler, not its SID score compiler or MCP server. No standalone assembler was installed. Bun 1.4.3 was used for the local build and tests; Python 3.9 or newer and uv are needed only for the CPU tests. Python test code uses the standard library's `unittest` with [py65 1.2.0](https://pypi.org/project/py65/1.2.0/), a BSD-licensed 6502 interpreter.
+The build requires Bun and the existing c64bridge checkout at the [recorded revision](research/tools/skills-and-integrations.md). It imports only that checkout's assembler, not its SID score compiler or MCP server. No standalone assembler was installed. Bun 1.4.3 was used for the local build and tests; Python 3.9 or newer and uv are needed only for the CPU tests. Python test code uses the standard library's `unittest` with [py65 1.2.0](https://pypi.org/project/py65/1.2.0/), a BSD-licensed 6502 interpreter.
 
 From the repository root:
 
@@ -45,7 +45,7 @@ The build writes `build/fuer-elise-opening.prg`, `build/fuer-elise-opening.sid`,
 
 ## Playback contract
 
-Target: PAL 6569 timing, one MOS8580 at `$D400`, A4 = 440 Hz. Frequency words use 985248.611111 Hz and scheduling uses 312 × 63 CPU cycles per frame, following [libsidplayfp's PAL clock constants](https://github.com/libsidplayfp/libsidplayfp/blob/master/src/c64/c64.cpp) and the [timing guide](research/02-playback-and-timing.md). This is approximately 50.124573 calls per second. Independently rounding each duration would introduce drift, so the build rounds cumulative absolute boundaries instead.
+Target: PAL 6569 timing, one MOS8580 at `$D400`, A4 = 440 Hz. Frequency words use 985248.611111 Hz and scheduling uses 312 × 63 CPU cycles per frame, following [libsidplayfp's PAL clock constants](https://github.com/libsidplayfp/libsidplayfp/blob/master/src/c64/c64.cpp) and the [timing guide](research/sid/playback-and-timing.md). This is approximately 50.124573 calls per second. Independently rounding each duration would introduce drift, so the build rounds cumulative absolute boundaries instead.
 
 The chosen sound is triangle, attack/decay `$06`, sustain/release `$41`, master volume 15, with no filter. GATE drops two ticks before each note ends, leaving approximately 39.9 ms before the next onset. After the final A, a 25-frame silent tail precedes master volume zero. Total scheduling length is 129 PAL frames, approximately 2.574 seconds from the first play call.
 

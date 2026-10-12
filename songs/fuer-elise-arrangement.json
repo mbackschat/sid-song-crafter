@@ -1,0 +1,23 @@
+{
+  "recipeFile": "fuer-elise-arrangement.json",
+  "title": "Fur Elise",
+  "composer": "Ludwig van Beethoven",
+  "melodyPart": "right-hand",
+  "accompanimentPart": "left-hand",
+  "bass": { "belowMidi": 48, "onMeasureStart": true, "measureBeats": [3, 2], "firstMeasureBeat": [1, 2] },
+  "harmonyPriority": ["accompaniment", "melody"],
+  "instruments": [
+    { "waveform": 16, "attackDecay": 2, "sustainRelease": 144 },
+    { "waveform": 16, "attackDecay": 3, "sustainRelease": 96 },
+    { "waveform": 16, "attackDecay": 3, "sustainRelease": 96 }
+  ],
+  "volume": 15,
+  "tailTicks": 25,
+  "sections": [
+    { "name": "A: main theme, both printed repeats", "startBeat": 0, "endBeat": 66.5 },
+    { "name": "B: F-major episode", "startBeat": 66.5, "endBeat": 89 },
+    { "name": "A: return", "startBeat": 89, "endBeat": 120.5 },
+    { "name": "C: repeated bass and triplet cadenza", "startBeat": 120.5, "endBeat": 155 },
+    { "name": "A: final return and written rest", "startBeat": 155, "endBeat": 187.5 }
+  ]
+}

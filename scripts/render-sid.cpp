@@ -25,11 +25,11 @@ static void write_u32(std::ostream &output, uint32_t value) {
 
 int main(int argc, char **argv) {
     try {
-        if (argc != 4) throw std::runtime_error("Usage: render-sid INPUT.sid OUTPUT.wav SECONDS (PAL, one SID, 0 < seconds <= 60)");
+        if (argc != 4) throw std::runtime_error("Usage: render-sid INPUT.sid OUTPUT.wav SECONDS (PAL, one SID, 0 < seconds <= 600)");
         size_t parsed = 0;
         const double seconds = std::stod(argv[3], &parsed);
-        if (parsed != std::string(argv[3]).size() || !std::isfinite(seconds) || seconds <= 0 || seconds > 60) {
-            throw std::runtime_error("Seconds must be greater than zero and at most 60");
+        if (parsed != std::string(argv[3]).size() || !std::isfinite(seconds) || seconds <= 0 || seconds > 600) {
+            throw std::runtime_error("Seconds must be greater than zero and at most 600");
         }
         constexpr uint32_t rate = 44100;
         constexpr unsigned int cycles = 312 * 63;

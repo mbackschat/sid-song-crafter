@@ -14,7 +14,7 @@ description: >-
 
 # SID 6581 — sound and music
 
-For this project, pair hardware knowledge with [sid-music](../sid-music/SKILL.md) when connected c64bridge tools are needed. Read [project limitations](../../docs/research/11-skills-and-integrations.md) before choosing a compiler. Other C64 companion skills mentioned below remain available in the upstream checkout but are not installed here.
+For this project, pair hardware knowledge with [sid-music](../sid-music/SKILL.md) when connected c64bridge tools are needed. Read [project limitations](../../docs/research/tools/skills-and-integrations.md) before choosing a compiler. Other C64 companion skills mentioned below remain available in the upstream checkout but are not installed here.
 
 The SID sits at **$D400** (54272). It has 3 independent voices, each with a tone oscillator (4 selectable waveforms), an ADSR envelope, and a route into one shared multimode analog filter, plus a master volume. Most registers are **write-only** — you cannot read back what you POKEd; only $D419-$D41C are readable. Getting sound out is mostly: set volume, set an envelope, set a frequency, then **gate** the voice on.
 

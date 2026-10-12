@@ -2,9 +2,9 @@
 
 ## Establish the musical source
 
-Record the work, movement, edition/transcription, source URL, and intended excerpt before entering notes. Beethoven's Für Elise is the A-minor bagatelle WoO 59; Beethoven-Haus provides work information and the surviving sketch. Flight of the Bumblebee belongs to Rimsky-Korsakov's opera The Tale of Tsar Saltan; piano and instrumental arrangements may differ. [S22](sources.md#s22), [S23](sources.md#s23)
+Record the work, movement, edition/transcription, source URL, and intended excerpt before entering notes. Beethoven's Für Elise is the A-minor bagatelle WoO 59; Beethoven-Haus provides work information and the surviving sketch. Flight of the Bumblebee belongs to Rimsky-Korsakov's opera The Tale of Tsar Saltan; piano and instrumental arrangements may differ. [S22](../sources.md#s22), [S23](../sources.md#s23)
 
-An old underlying composition does not settle rights to a modern recording, MIDI transcription, or edited score. For example, the inspected IMSLP page labels a 2023 MIDI contribution CC BY 4.0; that label applies to that contribution, not every download on the page. Neither that MIDI nor a complete score has been transcribed or audibly verified here.
+An old underlying composition does not settle rights to a modern recording, MIDI transcription, or edited score. For example, the inspected IMSLP page labels a 2023 MIDI contribution CC BY 4.0; that label applies to that contribution, not every download on the page. That MIDI has not been adopted here. The later [complete Für Elise baseline](../../fuer-elise-score.md) uses separately identified Mutopia sources.
 
 ## Proposed Für Elise arrangement
 
@@ -18,7 +18,7 @@ Begin with the recognizable opening phrase, then expand only after pitch, rhythm
 
 Use piano-like envelopes as an arrangement choice, without promising acoustic-piano realism. Avoid aggressive filter movement until the phrase is recognizable without it. Explicitly decide where pedal-induced overlap will be reduced, revoiced, or preserved by an additional voice.
 
-The following PAL words are locally calculated using the clock in [the timing guide](02-playback-and-timing.md):
+The following PAL words are locally calculated using the clock in [the timing guide](../sid/playback-and-timing.md):
 
 | Note | Word |
 | --- | --- |
@@ -37,4 +37,4 @@ At 180 BPM, sixteenths are approximately 83.3 ms. Long restart gaps can dominate
 
 ## Deliverable definition
 
-For an actual song implementation, retain the source/edition record, editable arrangement, instrument definitions, native export, exact target settings, and comparison evidence. Verify note order and duration independently of timbre. The subsequent [first-song implementation](../first-song.md) supplies a nine-note Für Elise opening excerpt with PRG/SID exports, CPU checks, and [audio verification](../audio-workflow.md). It is not a complete Für Elise arrangement; Hummelflug remains unimplemented.
+For an actual song implementation, retain the source/edition record, editable arrangement, instrument definitions, native export, exact target settings, and comparison evidence. Verify note order and duration independently of timbre. The [opening example](../../first-song.md) remains a small learning fixture; the [complete Für Elise baseline](../../fuer-elise-score.md) now includes both repeats and all episodes with [execution/audio evidence](../../fuer-elise-validation.md). Its fixed instruments establish a reference for the [sound-design repertoire](sound-design-repertoire.md), not a finished showcase sound. Hummelflug remains unimplemented.

@@ -1,0 +1,36 @@
+{
+  "title": "Für Elise",
+  "composer": "Ludwig van Beethoven",
+  "work": "Bagatelle in A minor, WoO 59",
+  "quarterBpm": 72,
+  "sourceFile": "fuer-elise.mid",
+  "sourceSha256": "1c12c21c7bbf4cf163896732672648a69d497636059837abd153c71abe50215a",
+  "parts": [
+    { "track": 1, "id": "right-hand" },
+    { "track": 2, "id": "left-hand" }
+  ],
+  "performance": {
+    "sourceTotalBeats": [157, 1],
+    "spans": [
+      { "startBeat": 0, "endBeat": 12, "name": "First repeat: body and first ending" },
+      { "startBeat": 0, "endBeat": 11, "name": "First repeat: repeated body" },
+      { "startBeat": 12, "endBeat": [69, 2], "name": "First repeat: second ending; second repeat: body and first ending" },
+      { "startBeat": [27, 2], "endBeat": 33, "name": "Second repeat: repeated body" },
+      { "startBeat": [69, 2], "endBeat": 157, "name": "Second repeat: second ending; complete remaining score and final written rest" }
+    ]
+  },
+  "provenance": {
+    "sourceDirectory": "songs/sources",
+    "edition": "Breitkopf & Härtel, 1888, as identified by Mutopia-2015/08/18-931",
+    "typesetter": "Stelios Samelis",
+    "catalogue": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=931",
+    "sourceUrl": "https://www.mutopiaproject.org/ftp/BeethovenLv/WoO59/fur_Elise_WoO59/fur_Elise_WoO59.mid",
+    "notationFile": "fuer-elise.ly",
+    "notationUrl": "https://raw.githubusercontent.com/MutopiaProject/MutopiaProject/master/ftp/BeethovenLv/WoO59/fur_Elise_WoO59/fur_Elise_WoO59.ly",
+    "notationSha256": "828a7bd1b42e441fe1b0eb0389ba46f1502dab28bbe488389e635fb446ba7a67",
+    "rights": "The underlying composition and Mutopia typesetting are Public Domain; original MIDI and LilyPond source are retained unchanged.",
+    "checked": "2026-10-12",
+    "tempoChoice": "Quarter note = 72 follows the LilyPond source; its MIDI encodes 833333 microseconds per quarter, rounded to an integer microsecond.",
+    "performanceChoice": "Unfold both printed volta repeats with their first and second endings. Retain MIDI grace-note timing and restore the final eighth rest from LilyPond."
+  }
+}

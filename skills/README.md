@@ -11,4 +11,4 @@ Installed from user-downloaded checkouts on 2026-10-12. Bundled reference files 
 
 c64bridge includes a GPL-2.0 license file; its package metadata says GPL-2.0-only while some source headers say “or later.” The staged `sid-music` directory retains a copy of the upstream license. No explicit top-level license was found for c64-skills; its historical manual excerpts and the skill author's prose need separate rights review before redistribution. Local installation is not a claim that those materials are public domain.
 
-The two skills can cooperate: `c64-sid` explains hardware semantics; `sid-music` selects bridge operations once its MCP tools are connected. Neither establishes that the bridge's compiler faithfully implements a complete score or dual-SID playback. See [the assessment](../docs/research/11-skills-and-integrations.md).
+The two skills can cooperate: `c64-sid` explains hardware semantics; `sid-music` selects bridge operations once its MCP tools are connected. Neither establishes that the bridge's compiler faithfully implements a complete score or dual-SID playback. See [the assessment](../docs/research/tools/skills-and-integrations.md).

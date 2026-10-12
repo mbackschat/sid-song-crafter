@@ -56,6 +56,30 @@ class HeadlessRenderTest(unittest.TestCase):
             self.assertGreater(rms(middle), 100)
             self.assertAlmostEqual(frequency(middle), 440, delta=3)
 
+    def test_render_longer_than_one_minute_keeps_exact_length_and_final_audio(self):
+        with tempfile.TemporaryDirectory() as directory:
+            sid = Path(directory) / "a4.sid"
+            output = Path(directory) / "long.wav"
+            write_a4_sid(sid)
+            subprocess.run([str(RENDERER), str(sid), str(output), "60.01"], check=True, timeout=20, capture_output=True, text=True)
+            with wave.open(str(output), "rb") as wav:
+                self.assertEqual(wav.getnframes(), round(60.01 * RATE))
+                wav.setpos(59 * RATE)
+                tail = wav.readframes(RATE)
+            samples = struct.unpack("<" + "h" * (len(tail) // 2), tail)
+            self.assertGreater(rms(samples), 100)
+            self.assertAlmostEqual(frequency(samples), 440, delta=3)
+
+    def test_render_rejects_duration_above_ten_minutes_without_creating_output(self):
+        with tempfile.TemporaryDirectory() as directory:
+            sid = Path(directory) / "a4.sid"
+            output = Path(directory) / "oversized.wav"
+            write_a4_sid(sid)
+            result = subprocess.run([str(RENDERER), str(sid), str(output), "600.01"], timeout=20, capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("at most 600", result.stderr)
+            self.assertFalse(output.exists())
+
     def test_fuer_elise_has_nine_pitches_and_a_silent_ending(self):
         with tempfile.TemporaryDirectory() as directory:
             output, samples = self.render(ROOT / "build/fuer-elise-opening.sid", 3.2, directory)

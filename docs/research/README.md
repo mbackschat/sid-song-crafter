@@ -1,34 +1,50 @@
 # C64 SID research
 
-Research baseline: 2026-10-12. The project aims to turn scores into playable Commodore 64 music for one SID, with a deliberate path to two SIDs. This library connects hardware behaviour, composition, player implementation, export formats, and reproducible verification. It is a researched starting point, not an exhaustive archive or a claim that every listed tool has been run.
+Research updated: 2026-10-12. The priority is distinctive, expressive SID music: study the masters, understand their tools, develop reusable instruments, and verify the results. Source conversion and correct playback support that goal. This is an evidence-based working library, not a claim of exhaustive knowledge or completed listening tests.
+
+## Browse the library
+
+| Area | Contents |
+| --- | --- |
+| [SID hardware and techniques](sid/README.md) | Chip behaviour, timing, advanced synthesis, export, and two-chip targets |
+| [Composition and sound design](composition/README.md) | Arrangement, instrument repertoire, and musical quality criteria |
+| [Composers and their methods](composers/README.md) | Hülsbeck, Tel, Hubbard, Galway, Follin, Daglish, and Åkesson; interviews, studies, and tools |
+| [Tools and source code](tools/README.md) | Composition-tool assessment, player implementations, and automation |
+| [Validation](validation/README.md) | Musical, execution, audio, and hardware evidence |
+| [Source register](sources.md) | Shared provenance, evidence types, versions, and rights notes |
 
 ## Read by task
 
 | Task | Guide |
 | --- | --- |
-| Understand registers and synthesis | [SID hardware](01-sid-hardware.md) |
-| Schedule notes accurately on a C64 | [Playback and timing](02-playback-and-timing.md) |
-| Design instruments and allocate voices | [Instruments and composition](03-instruments-and-composition.md) |
-| Export a runnable song | [Formats and export](04-formats-and-export.md) |
-| Arrange for six voices | [Two SIDs](05-dual-sid.md) |
-| Choose an editor, compiler, or player | [Tools](06-tools.md) |
-| Learn from actual implementation code | [Source studies](07-source-studies.md) |
-| Plan Für Elise or Hummelflug | [Classical arrangements](08-classical-arrangements.md) |
-| Find songs and editable examples | [Study corpus and rights](09-study-corpus.md) |
-| Verify a result and identify remaining gaps | [Validation](10-validation.md) |
-| Combine existing agent skills with VICE | [Skills and integrations](11-skills-and-integrations.md) |
+| Understand registers and synthesis | [SID hardware](sid/hardware.md) |
+| Schedule notes accurately on a C64 | [Playback and timing](sid/playback-and-timing.md) |
+| Design instruments and allocate voices | [Instruments and composition](composition/instruments-and-composition.md) |
+| Export a runnable song | [Formats and export](sid/formats-and-export.md) |
+| Arrange for six voices | [Two SIDs](sid/dual-sid.md) |
+| Choose an editor, compiler, or player | [Tools](tools/overview.md) |
+| Learn from actual implementation code | [Source studies](tools/source-studies.md) |
+| Plan Für Elise or Hummelflug | [Classical arrangements](composition/classical-arrangements.md) |
+| Find songs and editable examples | [Study corpus and rights](composers/study-corpus.md) |
+| Verify a result and identify remaining gaps | [Validation](validation/verification.md) |
+| Combine existing agent skills with VICE | [Skills and integrations](tools/skills-and-integrations.md) |
 | Build and verify the first opening excerpt | [First song](../first-song.md), [headless audio](../audio-workflow.md) |
 | Diagnose emulator startup and headless builds | [VICE investigation](../vice-startup-investigation.md) |
 | Trace a statement to its evidence | [Source register](sources.md) |
+| Study a composer's sound and working methods | [Composer studies](composers/README.md), [listening catalogue](composers/listening-catalogue.md) |
+| Develop an expressive instrument | [Advanced techniques](sid/advanced-techniques.md), [sound-design repertoire](composition/sound-design-repertoire.md) |
+| Choose a composition system | [Tool assessment](tools/composition-tools.md) |
 
 ## Recommended starting path
 
-Use the `c64-sid` knowledge skill together with c64bridge's `sid-music` execution skill for guided experiments. For a complete, editable native tune, use GoatTracker; use its stereo variant when the arrangement genuinely needs a second chip. Study MiniPlayer2 to understand the runtime and tradeoffs before writing a new player. These are project recommendations, not claims that the tools are interchangeable.
+Start with a [composer study](composers/README.md), identify a specific sound or arrangement question, and choose an experiment from the [repertoire](composition/sound-design-repertoire.md). Compare established editors and their exported drivers in the [tool assessment](tools/composition-tools.md) before expanding the local player. Use the `c64-sid` knowledge skill for hardware semantics and `sid-music` where a working c64bridge connection is appropriate; local verification remains headless.
 
-Keep the editable score or tracker song, exported PRG/SID, target clock/model, compiler/player revision, and verification evidence together. A recording alone cannot reproduce a C64 song. c64bridge's inspected compiler has material limitations; see the [integration assessment](11-skills-and-integrations.md) before relying on it for complete classical arrangements.
+Keep the editable score or tracker song, exported PRG/SID, target clock/model, compiler/player revision, and verification evidence together. A recording alone cannot reproduce a C64 song. c64bridge's inspected compiler has material limitations; see the [integration assessment](tools/skills-and-integrations.md) before relying on it for complete classical arrangements.
 
 ## Evidence and acquisition
 
 Each guide cites stable source IDs in the [register](sources.md). Entries distinguish original documentation, archival transcription, implementation evidence, maintainer claims, and discovery-only leads. Links to moving branches are observations on the access date, not pinned snapshots. The two locally cloned skill repositories have recorded commit IDs.
 
-Prefer searchable HTML, plain text specifications, and source code. For PDF-only material, extract digital text to Markdown first; use OCR only for scanned pages, retain page references, and visually verify register tables, hexadecimal digits, accidentals, and timing diagrams. The available `pdf-to-markdown` skill supports this workflow. Do not mistake OCR text for corrected technical documentation. No PDF corpus was downloaded or converted during this research.
+Prefer searchable HTML, plain text specifications, and source code. For PDF-only studies, extract digital text and retain page references; use OCR only for scanned pages and visually verify critical tables or notation. The composer studies cite published scholarship as well as interviews and code. Source documents may be cached locally for reading; repository notes retain original summaries and provenance rather than mirroring entire publications.
+
+Keep new research in the appropriate subfolder and link it from that folder's README. Mark findings as author statements, published analysis, source inspection, local measurement, or proposed experiment. Promote a proposed sound into the verified repertoire only after its editable source and audio evidence exist.

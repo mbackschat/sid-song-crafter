@@ -72,7 +72,7 @@ The supplied output identifies `VICE Version 3.9`. It still reports `failed to r
 
 Discover `c64_sound` and read `c64://platform/status` to confirm the VICE backend. Read the bridge's binary-monitor resource before monitor operations. A skill file alone does not supply these tools; the MCP server must start successfully. For a preset demonstration, the upstream skill specifies `c64_sound` with `op: "play_preset"` and `preset: "fuer_elise"`.
 
-Treat successful launch separately from audio or score correctness. Read the [compiler limitations](research/11-skills-and-integrations.md) first; the preset is not a verified full transcription. Do not use microphone capture as evidence of a clean deterministic render.
+Treat successful launch separately from audio or score correctness. Read the [compiler limitations](research/tools/skills-and-integrations.md) first; the preset is not a verified full transcription. Do not use microphone capture as evidence of a clean deterministic render.
 
 ## Reproducibility
 

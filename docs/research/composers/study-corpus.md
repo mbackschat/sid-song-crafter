@@ -10,7 +10,7 @@
 | MiniPlayer2 repository | A small source example and converter/player relationship | A feature-complete tracker replacement |
 | CGSC | Compute!'s Gazette music corpus, a distinct format tradition | Interchangeability with every PSID workflow |
 
-HVSC's own information and FAQ explain tune rights, metadata, format distinctions, and the relationship to CGSC. The CGSC site itself was a discovery lead rather than an inspected archive in this pass. [S25](sources.md#s25), [S18](sources.md#s18), [S08](sources.md#s08), [S17](sources.md#s17), [S11](sources.md#s11)
+HVSC's own information and FAQ explain tune rights, metadata, format distinctions, and the relationship to CGSC. The CGSC site itself was a discovery lead rather than an inspected archive in this pass. [S25](../sources.md#s25), [S18](../sources.md#s18), [S08](../sources.md#s08), [S17](../sources.md#s17), [S11](../sources.md#s11)
 
 ## Small corpus before mass downloads
 
@@ -25,7 +25,7 @@ Proposed study set:
 
 Select exact files through archive metadata; do not infer subtunes, composers, or original game versions from filenames alone. No six-file corpus has yet been downloaded and listened to here.
 
-MIDIbox's wavetable tutorial includes an author-analysed bass-drum example from Auf Wiedersehen Monty. It is a useful starting point for tracing register sequences, with the distinction that the demonstrated analysis is the author's, not a local reproduction. [S09](sources.md#s09)
+MIDIbox's wavetable tutorial includes an author-analysed bass-drum example from Auf Wiedersehen Monty. It is a useful starting point for tracing register sequences, with the distinction that the demonstrated analysis is the author's, not a local reproduction. [S09](../sources.md#s09)
 
 ## Record per item
 

@@ -7,7 +7,7 @@ description: Execute built-in and custom SID playback workflows through c64bridg
 
 Use this skill for preset music demos, SIDWAVE composition, direct voice control, and audio verification.
 
-Before playback, check [local setup](../../docs/local-setup.md) and [the inspected compiler limitations](../../docs/research/11-skills-and-integrations.md). Use [c64-sid](../c64-sid/SKILL.md) for hardware semantics. Successful launch alone does not verify the notes, rhythm, or complete score.
+Before playback, check [local setup](../../docs/local-setup.md) and [the inspected compiler limitations](../../docs/research/tools/skills-and-integrations.md). Use [c64-sid](../c64-sid/SKILL.md) for hardware semantics. Successful launch alone does not verify the notes, rhythm, or complete score.
 
 ## Inputs
 

@@ -1,28 +1,33 @@
 # Repository Guidelines
 
+## Musical Priority
+
+Prioritize expressive, excellent SID sound. Study composers' music, interviews, analyses, editors, and drivers; preserve findings in [research](docs/research/README.md). Build a reusable, evidence-backed instrument repertoire. Technical playback success does not establish musical quality; record listening judgments separately.
+
 ## Project Structure & Module Organization
 
 Research and provenance live in [docs/research](docs/research/README.md). Editable scores and the assembly player live in `songs/`, build/render tools in `scripts/`, tests in `tests/`, and installed skill sources in [skills](skills/README.md). Generated PRG, SID, WAV, and trace files go in ignored `build/`.
 
-Third-party checkouts belong in ignored `.tools/`; local binaries, caches, and diagnostics belong in `.local/`. Track the relative skill symlinks in `.agents/skills/`. Keep machine-specific `.codex/` configuration untracked; [config/codex.toml](config/codex.toml) is the documented example.
+Keep third-party checkouts in ignored `.tools/`, runtime state in `.local/`, and machine configuration in `.codex/`; track portable examples in `config/`.
 
 ## Build, Test, and Development Commands
 
 From the repository root, after dependency setup in [README.md](README.md):
 
 - `bun scripts/build-song.ts`: assemble the opening excerpt and export PRG, PSID, and event manifest.
-- `bun test tests/music.test.ts`: check score, timing, pitch, binary headers, and deterministic builds.
-- `PYTHONPATH=.tools/test-deps python3 -m unittest discover -s tests -p '*_test.py' -v`: run independent CPU and audio tests after installing their documented dependencies.
+- `python3 scripts/song.py songs/fuer-elise.json`: build, render, and verify the full arrangement in headless VICE; see [the reusable workflow](docs/song-workflow.md).
+- `bun test tests/music.test.ts tests/fuer-elise.test.ts`: check timing, binaries, and deterministic builds.
+- `PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 -m unittest discover -s tests -p '*_test.py' -v`: run importer, CPU, audio, and workflow tests.
 
-Use the pinned upstream Bun lockfile for c64bridge. Prefer `uv` for Python dependencies and `pnpm` for any future independent Node project. See [the audio guide](docs/audio-workflow.md) for renderer setup and commands.
+Use c64bridge's pinned Bun lockfile. Prefer `uv` for Python and `pnpm` for independent Node projects. Renderer setup is in [the audio guide](docs/audio-workflow.md).
 
 ## Coding Style & Naming Conventions
 
-Use two-space TypeScript, four-space Python/C++, and descriptive `test_*` Python test methods. No formatter is configured. Keep assembly labels descriptive. Prefer enum-based switches where appropriate. Comments explain constraints and cite their basis. Write Markdown paragraphs on single physical lines and use regular links to other documentation.
+Use two-space TypeScript, four-space Python/C++, descriptive assembly labels, and `test_*` Python methods. No formatter is configured. Comments explain constraints. Keep Markdown paragraphs on single lines and link related documents. Organize research by topic with folder READMEs.
 
 ## Testing Guidelines
 
-Use red/green TDD. Verify observable register writes, timing, rests, endings, and exported binaries. Keep CPU execution, SID audio rendering, VICE execution, and physical playback evidence distinct; no coverage percentage is mandated. Preserve musical-source provenance and label excerpts accurately.
+Use red/green TDD. Verify register writes, timing, rests, endings, and binaries. Distinguish CPU, rendered audio, VICE, and listening evidence; no coverage percentage is mandated. Preserve original sources, checksums, and provenance; report import losses and arrangement reductions. Common scores must not constrain SID-native expression. Label excerpts accurately.
 
 ## VICE Findings & Troubleshooting
 
