@@ -48,6 +48,14 @@ These briefs are our proposed designs, not claims of recovered historical preset
 
 Start with LEAD-01, LEAD-02, PLUCK-01, BASS-02, and DRUM-01. Together they test the expressive features missing from the baseline while remaining small enough to compare carefully. Do not add every effect to Für Elise at once: select a coherent palette and give different sections intentional roles.
 
+## Multiplex instrument roles within three voices
+
+The arrangement target is additional instrument roles through time-sharing of the existing voices. For example, keep melody on voice 1 and harmony on voice 2 while voice 3 alternates short percussion attacks with pitched bass bodies. Four perceptual roles do not require four simultaneous oscillators. This is distinct from adding a sample-based fourth channel.
+
+[Linus Åkesson's Platform Hopping explanation](https://linusakesson.net/music/platform-hopping/index.php) documents replacing the first few milliseconds of pulse notes with noise for hi-hat attacks and reserving free voice time for longer cymbals. The useful principle is to place interruptions where their rhythmic benefit outweighs the missing pitched sound. A driver must coordinate waveform, pitch, pulse width, gate/envelope and filter routing at each handoff; two roles share one physical envelope and cannot retain independent audible tails.
+
+For BASS-02, judge whether percussion reads as a distinct rhythmic part and whether the bass remains convincing after each handoff. A noise-to-pulse instrument is a building block, not proof of an independently perceived drum part. The [DRAX listening finding](fuer-elise-reference.md#identify-the-preferred-layer-by-listening) also establishes that its preferred vibrancy is already present in the bass solo; do not assume adding another musical role will reproduce that timbre.
+
 ## How to evaluate a candidate
 
 Use the same notes, tempo, register, and arrangement when isolating an effect in an A/B comparison. A creative arrangement comparison may deliberately change them: declare those differences and judge the resulting phrase as a whole. Retain original-amplitude renders and document any gain adjustment used for level matching. A louder file should not win by default. Soloing helps diagnose a sound, but the full mix decides whether it belongs in the song.

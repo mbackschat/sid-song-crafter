@@ -34,7 +34,7 @@ In the corresponding CPU attack/release sequence, calls 110–137 have bass cont
 
 ## Identify the preferred layer by listening
 
-The listener rejects both [layered/reply candidates](../../../songs/studies/elise-layered-entrance/README.md) as not close to DRAX and describes this exact fragment as vibrant, like two things overlaid. That description does not yet identify an oscillator or synthesis mechanism. Avoid another multi-parameter arrangement revision until a short diagnostic distinguishes the bass's own character from the chord contribution.
+The listener rejects both [layered/reply candidates](../../../songs/studies/elise-layered-entrance/README.md) as not close to DRAX and describes this exact fragment as vibrant, like two things overlaid. In the diagnostic clips below, the listener confirms that bass alone already has this vibrancy and judges bass plus chord “quite good.” The preferred character therefore does not require the chord voice, although the combination is also liked. Study the bass's own evolving sound before adding accompaniment to compensate; this feedback does not establish which bass synthesis parameter causes the effect.
 
 The following 1.80–3.00-second extracts keep a little context around the marked fragment, with original gain and timing:
 
@@ -43,7 +43,7 @@ The following 1.80–3.00-second extracts keep a little context around the marke
 - [Bass and chord together](../../../build/reference-studies/drax/voice-focus/bass-chord.context.wav): test the interaction without the melody.
 - [Full mix](../../../build/reference-studies/drax/voice-focus/mix.context.wav): the unchanged listening authority.
 
-The [manifest](../../../build/reference-studies/drax/voice-focus/study.json) retains input/renderer hashes, commands, exact 2.02–2.75-second cuts as well as context cuts, PCM health and diagnostic limitations. All clips are unclipped; the full mix is sample-identical to the corresponding original WAV segment. No listener attribution from these clips is claimed yet.
+The [manifest](../../../build/reference-studies/drax/voice-focus/study.json) retains input/renderer hashes, commands, exact 2.02–2.75-second cuts as well as context cuts, PCM health and diagnostic limitations. All clips are unclipped; the full mix is sample-identical to the corresponding original WAV segment. The listening attribution above applies to these diagnostic renders, subject to the muting limitations below.
 
 Reproduce each three-second render with the [renderer diagnostic](../../audio-workflow.md), using unused output paths:
 
