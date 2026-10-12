@@ -13,6 +13,48 @@ spec.loader.exec_module(transfer)
 
 
 class BassTransferTests(unittest.TestCase):
+    def test_phrase_selection_preserves_roots_and_rejects_interrupted_evolution(self):
+        recipe = transfer.reconstruction.read_recipe(transfer.reconstruction.STUDY / "instrument.json")
+        recipe["playCalls"] = 226
+        recipe["notes"] = [{"initCall": tick, "frequency": pitch} for tick, pitch in [(84, 936), (115, 1403), (136, 936), (146, 1403), (178, 1051), (198, 1403), (209, 936)]]
+        beats = [2, 2.75, 3.25, 3.5, 4.25, 4.75, 5]
+        manifest = {"voices": [{}, {"notes": [dict(startBeat=beat, startTick=note["initCall"]) for beat, note in zip(beats, recipe["notes"])]}]}
+        policy = {"format": "sid-bass-phrasing-v1", "retainStartBeats": [2, 3.5, 5], "minimumEvolutionCalls": 36}
+        adapted = transfer.apply_phrasing(recipe, manifest, policy)
+        self.assertEqual([n["initCall"] for n in adapted["notes"]], [84, 146, 209])
+        self.assertEqual(adapted["instrument"], recipe["instrument"])
+        self.assertEqual(len(recipe["notes"]), 7)
+        with self.assertRaisesRegex(ValueError, "interrupt"):
+            transfer.apply_phrasing(recipe, manifest, dict(policy, retainStartBeats=[2, 2.75, 5]))
+        with self.assertRaisesRegex(ValueError, "existing"):
+            transfer.apply_phrasing(recipe, manifest, dict(policy, retainStartBeats=[2, 3, 5]))
+
+    def test_evolution_guard_observes_turnaround_and_rejects_changed_release(self):
+        recipe = transfer.reconstruction.read_recipe(transfer.reconstruction.STUDY / "instrument.json")
+        recipe["playCalls"] = 226
+        recipe["notes"] = [{"initCall": 84, "frequency": 936}, {"initCall": 146, "frequency": 1403}, {"initCall": 209, "frequency": 936}]
+        sid, _ = transfer.build_bass(recipe)
+        _, writes = transfer.context.observed_audit(sid, 226)
+        guard = transfer.verify_evolution(recipe, writes, 36)
+        self.assertEqual([r["complete"] for r in guard], [True, True, False])
+        self.assertEqual([r["observedAges"] for r in guard], [36, 36, 16])
+        self.assertEqual([r["upperTurnaroundAge"] for r in guard], [29, 29, None])
+        self.assertEqual([r["maximumPulseWidth"] for r in guard[:2]], [0xf10, 0xf10])
+        self.assertEqual([r["lastPulseWidth"] for r in guard[:2]], [0xce0, 0xce0])
+        altered = copy.deepcopy(writes)
+        next(r for r in altered if r["phase"] == "play" and r["tick"] == 114 and r["address"] == 0xd40b)["value"] = 0x08
+        with self.assertRaisesRegex(ValueError, "evolution"):
+            transfer.verify_evolution(recipe, altered, 36)
+        missing = [r for r in writes if not (r["phase"] == "play" and r["tick"] == 114 and r["address"] == 0xd40c)]
+        with self.assertRaisesRegex(ValueError, "evolution"):
+            transfer.verify_evolution(recipe, missing, 36)
+        interrupted = copy.deepcopy(recipe)
+        interrupted["notes"].insert(1, {"initCall": 115, "frequency": 1403})
+        sid, _ = transfer.build_bass(interrupted)
+        _, interrupted_writes = transfer.context.observed_audit(sid, 226)
+        with self.assertRaisesRegex(ValueError, "evolution"):
+            transfer.verify_evolution(interrupted, interrupted_writes, 36)
+
     def test_channel_interception_preserves_flags_registers_and_other_voices(self):
         from py65.devices.mpu6502 import MPU
 

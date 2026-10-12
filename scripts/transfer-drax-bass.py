@@ -75,6 +75,69 @@ def transfer_recipe(manifest, frames, calls):
     return recipe
 
 
+def apply_phrasing(recipe, manifest, policy):
+    require(isinstance(policy, dict) and set(policy) == {"format", "retainStartBeats", "minimumEvolutionCalls"}
+            and policy["format"] == "sid-bass-phrasing-v1", "Unsupported bass phrasing policy")
+    beats, through_age = policy["retainStartBeats"], policy["minimumEvolutionCalls"]
+    require(isinstance(beats, list) and beats and all(type(beat) in (int, float) and math.isfinite(beat) for beat in beats)
+            and len(set(beats)) == len(beats), "Select distinct existing bass start beats")
+    require(type(through_age) is int and 1 <= through_age <= 252, "Select 1..252 evolution calls")
+    available = {note["initCall"] for note in recipe["notes"]}
+    selected = set()
+    for beat in beats:
+        matches = [note["startTick"] for note in manifest["voices"][1]["notes"]
+                   if note["startBeat"] == beat and note["startTick"] in available]
+        require(len(matches) == 1, f"Beat {beat} must select one existing bass start in the excerpt")
+        selected.add(matches[0])
+    adapted = copy.deepcopy(recipe)
+    adapted["notes"] = [note for note in adapted["notes"] if note["initCall"] in selected]
+    for current, following in zip(adapted["notes"], adapted["notes"][1:]):
+        require(following["initCall"] - 2 > current["initCall"] + through_age,
+                "The following hard restart would interrupt the requested bass evolution")
+    return adapted
+
+
+def verify_evolution(recipe, writes, through_age):
+    require(type(through_age) is int and 1 <= through_age <= 252, "Select 1..252 evolution calls")
+    frames = native.frame_states(writes, recipe["playCalls"])
+    owned = sorted(BASS_REGISTERS | GLOBAL_REGISTERS)
+    actual_by_tick = {}
+    for row in writes:
+        if row["phase"] == "play" and row["address"] in owned:
+            actual_by_tick.setdefault(row["tick"], []).append((row["address"], row["value"]))
+    report = []
+    for note in recipe["notes"]:
+        # The decoded instrument contract requires uninterrupted release/PWM
+        # (drax-bass-reconstruction/README.md); the target cannot be its own oracle.
+        oracle = copy.deepcopy(recipe)
+        oracle.update(playCalls=through_age + 3, notes=[dict(note, initCall=2)])
+        sid, _ = build_bass(oracle)
+        _, expected_writes = context.observed_audit(sid, oracle["playCalls"])
+        expected_frames = native.frame_states(expected_writes, oracle["playCalls"])
+        expected_by_tick = {}
+        for row in expected_writes:
+            if row["phase"] == "play":
+                expected_by_tick.setdefault(row["tick"], []).append((row["address"], row["value"]))
+        observed_ages = min(through_age, recipe["playCalls"] - note["initCall"] - 1)
+        require(observed_ages > 0, "Bass evolution has no observed body calls")
+        pulse_widths = []
+        for age in range(1, observed_ages + 1):
+            tick, oracle_tick = note["initCall"] + age, 2 + age
+            require(actual_by_tick.get(tick, []) == expected_by_tick.get(oracle_tick, [])
+                    and [frames[tick][register - 0xd400] for register in owned]
+                    == [expected_frames[oracle_tick][register - 0xd400] for register in owned],
+                    f"Bass evolution differs at init call {note['initCall']}, age {age}")
+            pulse_widths.append(frames[tick][9] | frames[tick][10] << 8)
+        turnaround = next((index + 1 for index in range(1, len(pulse_widths) - 1)
+                           if pulse_widths[index - 1] < pulse_widths[index] > pulse_widths[index + 1]), None)
+        complete = observed_ages == through_age
+        report.append({**note, "complete": complete, "observedAges": observed_ages,
+                       "truncation": None if complete else "excerpt stop",
+                       "upperTurnaroundAge": turnaround, "maximumPulseWidth": max(pulse_widths),
+                       "lastPulseWidth": pulse_widths[-1]})
+    return report
+
+
 def verify_independence(frames):
     require(all(frame[23] & 0x0f in (0, 2) and not frame[24] & 0x80 for frame in frames), "Companion voices depend on shared filter or voice-three disconnect")
     require(all(not frame[control] & 6 for frame in frames for control in (4, 18)), "Companion oscillator coupling prevents isolated bass substitution")
@@ -144,7 +207,7 @@ def verify_transfer(original, independent, combined):
             "exactCycleEquality": False}
 
 
-def prepare_audio(output):
+def prepare_audio(output, labels=None):
     clips = []
     for label in ("a", "b"):
         reconstruction.excerpt(output / f"{label}.full.wav", output / f"{label}.raw.wav", 0, 4.5)
@@ -157,16 +220,21 @@ def prepare_audio(output):
         context.write_wav(output / f"{label}.wav", clip, samples)
     gap = array("h", [0]) * round(clips[0].sample_rate * 0.5)
     context.write_wav(output / "bass.ab.wav", clips[0], scaled[0] + gap + scaled[1])
+    labels = labels or {"a": "Previous bass, preferred own B arrangement rerendered on 6581",
+                        "b": "Same arrangement with independently computed bass"}
     return {"gain": gain, "gainDb": 20 * math.log10(gain), "policy": "One common scalar; no independent normalization",
-            "a": "Previous bass, preferred own B arrangement rerendered on 6581", "b": "Same arrangement with independently computed bass",
+            **labels,
             "segmentSeconds": 4.5, "gapSeconds": 0.5, "metrics": metrics}
 
 
-def run_transfer(recipe_path, output, vice=False):
+def run_transfer(recipe_path, output, vice=False, phrasing=None):
     recipe_path, output = Path(recipe_path).resolve(), Path(output).resolve()
     require(not output.exists() and not output.is_symlink(), "Choose a fresh output directory")
     recipe_bytes = recipe_path.read_bytes()
     recipe = json.loads(recipe_bytes)
+    phrasing_path = Path(phrasing).resolve() if phrasing is not None else None
+    phrasing_bytes = phrasing_path.read_bytes() if phrasing_path else None
+    policy = json.loads(phrasing_bytes) if phrasing_bytes is not None else None
     score_path = (recipe_path.parent / recipe["score"]).resolve()
     score_bytes = score_path.read_bytes()
     require(recipe.get("sidCount", 1) == 1, "Transfer supports one SID")
@@ -188,17 +256,31 @@ def run_transfer(recipe_path, output, vice=False):
     _, original_writes = context.observed_audit(original, CALLS)
     frames = native.frame_states(original_writes, CALLS)
     verify_independence(frames)
-    bass_recipe = transfer_recipe(manifest, frames, CALLS)
+    original_bass_recipe = transfer_recipe(manifest, frames, CALLS)
+    bass_recipe = apply_phrasing(original_bass_recipe, manifest, policy) if policy is not None else original_bass_recipe
+    if phrasing_path:
+        (output / "phrasing.json").write_bytes(phrasing_bytes)
+        write_json(output / "baseline.bass.recipe.json", original_bass_recipe)
     write_json(output / "bass.recipe.json", bass_recipe)
     bass_recipe = reconstruction.read_recipe(output / "bass.recipe.json")
-    baseline, _ = build_mix(original, original_writes)
+    baseline, baseline_built = build_mix(original, original_writes, original_bass_recipe if policy is not None else None)
     candidate, built = build_mix(original, original_writes, bass_recipe)
     _, independent_writes = context.observed_audit(built["independent"], CALLS)
-    baseline_audit, baseline_writes = context.observed_audit(baseline, CALLS + 3)
+    baseline_audit, baseline_writes = context.observed_audit(baseline, CALLS + 3, baseline_built["origins"])
     candidate_audit, candidate_writes = context.observed_audit(candidate, CALLS + 3, built["origins"])
     guard = verify_transfer(original_writes, independent_writes, candidate_writes)
-    identity = lambda rows: [(r["phase"], r["tick"], r["address"], r["value"], r["instructionPc"]) for r in rows if r["phase"] == "init" or r["tick"] < CALLS]
-    require(identity(baseline_writes) == identity(original_writes), "Bounded baseline changes original writes")
+    evolution = None
+    if policy is not None:
+        _, baseline_independent = context.observed_audit(baseline_built["independent"], CALLS)
+        guard["baselineExecution"] = verify_transfer(original_writes, baseline_independent, baseline_writes)
+        evolution = {"oracleInitCall": 2, "throughAge": policy["minimumEvolutionCalls"],
+                     "comparison": "Ordered owned writes and frame state against uninterrupted single-note execution",
+                     "scope": "Reference-window evolution; the final note is truncated by the excerpt stop",
+                     "notes": verify_evolution(bass_recipe, candidate_writes, policy["minimumEvolutionCalls"])}
+        write_json(output / "evolution.json", evolution)
+    else:
+        identity = lambda rows: [(r["phase"], r["tick"], r["address"], r["value"], r["instructionPc"]) for r in rows if r["phase"] == "init" or r["tick"] < CALLS]
+        require(identity(baseline_writes) == identity(original_writes), "Bounded baseline changes original writes")
     for writes in (baseline_writes, candidate_writes):
         stopped = native.frame_states(writes, CALLS + 3)[CALLS:]
         require(all(frame[24] == 0 and all(frame[r] & 1 == 0 for r in (4, 11, 18)) for frame in stopped), "Bounded player does not stop")
@@ -221,11 +303,15 @@ def run_transfer(recipe_path, output, vice=False):
         tail = Pcm16(full.sample_rate, full.channels, tail_frames, full.samples[-tail_frames:], "")
         endings[label] = measure_pcm(tail)["acRms"]
         require(endings[label] < 16, "Full render lacks a quiet ending")
-    audio = prepare_audio(output)
+    labels = {"a": f"Decoded bass on {len(original_bass_recipe['notes'])} original bass starts",
+              "b": f"Same decoded instrument on {len(bass_recipe['notes'])} selected bass starts"} if policy is not None else None
+    audio = prepare_audio(output, labels)
     if vice:
         reconstruction.run_process([sys.executable, str(ROOT / "scripts/trace-sid-vice.py"), str(output / "b.sid"), "--oracle", str(output / "b.writes.json"), "--first-call", "0", "--last-call", str(CALLS + 2), "--output", str(output / "vice")], output / "vice-command.json")
     require(renderer_sha == reconstruction.digest(renderer.read_bytes()), "Renderer changed")
     require(recipe_path.read_bytes() == recipe_bytes and score_path.read_bytes() == score_bytes, "Retained inputs changed")
+    if phrasing_path:
+        require(phrasing_path.read_bytes() == phrasing_bytes, "Phrasing input changed")
     report = {"sourceRecipe": str(recipe_path), "recipeSha256": reconstruction.digest(recipe_bytes), "scoreSha256": reconstruction.digest(score_bytes),
               "instrumentSource": "songs/studies/drax-bass-reconstruction/instrument.json", "rendererSha256": renderer_sha,
               "instrumentSha256": reconstruction.digest((reconstruction.STUDY / "instrument.json").read_bytes()),
@@ -236,6 +322,10 @@ def run_transfer(recipe_path, output, vice=False):
               "bassNotes": bass_recipe["notes"], "audio": audio, "execution": guard, "viceChecked": vice,
               "listeningReview": None,
               "limitations": "Short transfer only. Both sides rerender the previously preferred MOS8580 palette on MOS6581. Native melody/chord writes are preserved, with added within-frame latency. Bass starts and executed pitches transfer; early GATE closure and longer release intentionally replace score gate lengths. Shared filter belongs to bass. No DRAX player, accompaniment or captured-event replay is included. Callable PSIDs, not standalone PRGs. No hardware or listening approval is claimed."}
+    if phrasing_path:
+        report.update(phrasing={"source": str(phrasing_path), "sha256": reconstruction.digest(phrasing_bytes), "policy": policy},
+                      baselineBassNotes=original_bass_recipe["notes"], referenceWindowEvolution=evolution)
+        report["limitations"] += " Phrasing deliberately omits intervening bass answers; the final selected note ends before the complete reference window."
     write_json(output / "study.json", report)
     print(f"Prepared {len(bass_recipe['notes'])}-note bass transfer: {output / 'bass.ab.wav'}", flush=True)
     return report
@@ -246,8 +336,9 @@ def main():
     parser.add_argument("recipe", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--vice", action="store_true")
+    parser.add_argument("--phrasing", type=Path, help="Retain explicit bass start beats and guard uninterrupted note evolution")
     args = parser.parse_args()
-    run_transfer(args.recipe, args.output, args.vice)
+    run_transfer(args.recipe, args.output, args.vice, args.phrasing)
 
 
 if __name__ == "__main__":
