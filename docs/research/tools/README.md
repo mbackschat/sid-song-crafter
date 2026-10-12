@@ -8,5 +8,6 @@ Study both the editor and the exported driver: their relationship determines wha
 - [Skills and integrations](skills-and-integrations.md): installed skills, c64bridge capabilities, and inspected compiler limitations.
 - [Local setup](../../local-setup.md): installed versions and dependency pins.
 - [Headless execution and audio](../../audio-workflow.md): reproducible rendering and VICE operation.
+- [Native PSID driver audit](../../psid-audit.md): bounded CPU execution and ordered register evidence without our score compiler's assumptions.
 
 Keep author claims, source inspection, successful builds, and tested exports distinct. A desktop editor can be useful even when our automation and verification remain headless; do not assume it has a command-line exporter without checking.
