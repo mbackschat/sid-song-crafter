@@ -37,6 +37,8 @@ int main(int argc, char **argv) {
         SIDLiteBuilder builder("SIDLite");
         SidTune tune(argv[1]);
         if (!tune.getStatus()) throw std::runtime_error(tune.statusString());
+        // SidTune starts unselected; psiddrv passes currentSong()-1 to init (libsidplayfp v3.1.1 src/psiddrv.cpp).
+        if (tune.selectSong(0) == 0) throw std::runtime_error("Unable to select the SID's default subtune");
         sidplayfp player;
         SidConfig config = player.config();
         config.frequency = rate;

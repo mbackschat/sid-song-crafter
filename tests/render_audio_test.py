@@ -56,6 +56,21 @@ class HeadlessRenderTest(unittest.TestCase):
             self.assertGreater(rms(middle), 100)
             self.assertAlmostEqual(frequency(middle), 440, delta=3)
 
+    def test_renderer_selects_the_declared_default_subtune_before_initialization(self):
+        for default_song in (1, 2):
+            with self.subTest(default_song=default_song), tempfile.TemporaryDirectory() as directory:
+                sid = Path(directory) / "selected-subtune.sid"
+                write_a4_sid(sid)
+                data = bytearray(sid.read_bytes())
+                guard = bytes((0xc9, default_song - 1, 0xf0, 1, 0x60))
+                data[0x7c:0x7c] = guard
+                struct.pack_into(">H", data, 12, int.from_bytes(data[12:14], "big") + len(guard))
+                struct.pack_into(">2H", data, 14, 2, default_song)
+                sid.write_bytes(data)
+                _, samples = self.render(sid, 0.5, directory)
+                self.assertGreater(rms(samples[RATE // 4:]), 100)
+                self.assertAlmostEqual(frequency(samples[RATE // 4:]), 440, delta=3)
+
     def test_render_longer_than_one_minute_keeps_exact_length_and_final_audio(self):
         with tempfile.TemporaryDirectory() as directory:
             sid = Path(directory) / "a4.sid"
