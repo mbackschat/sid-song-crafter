@@ -10,7 +10,9 @@ The existing renderer produced a non-silent, unclipped reference render, and the
 
 ## Actual opening comparison
 
-Reference melody events are recovered from voice 2's transition from TEST to a gate-open pitched waveform. Our melody is checked at voice 1's full-pitch body frame, one PAL call after its scheduled onset, against the actual rendered candidate's CPU frames and its source manifest. Pitch is decoded using the PAL clock and rounded to MIDI identity; driver-specific frequency-table bytes are not expected to match exactly. This method establishes the opening pitch comparison, not a universal SID-to-score transcription.
+The tracked [DRAX study script](../../../scripts/study-drax-references.py) reconstructs final register states using the native workflow's frame helper. Reference melody events are recovered from voice 2's transition from TEST to a gate-open pulse waveform. The candidate is independently re-audited and checked against its source manifest. Reference pitch is decoded using the PAL clock and rounded to MIDI identity; driver-specific reference frequency-table bytes are not expected to match exactly. This method establishes the opening pitch comparison, not a universal SID-to-score transcription.
+
+The explicit candidate profile is our current Für Elise Extra recipe: one PAL SID, tempo-1 rows, melody on voice 1, TEST onset followed by a gate-open full-pitch body at `startTick + 1`, with tempered frequency-word tolerance of one. The script checks all candidate melody bodies within its 6,000-call window and reports coverage. Intentional longer pitch transients, attack arpeggios or other onset behaviour need another study profile; rejection by this profile does not establish musical corruption and must not constrain native expression.
 
 | Aspect | Reference versus our native candidate | Consequence |
 |---|---|---|
@@ -36,10 +38,25 @@ Use an unused output filename; [renderer setup](../../audio-workflow.md) provide
 mkdir -p .local/research/fuer-elise
 curl -fL https://www.hvsc.de/download/C64Music/MUSICIANS/D/DRAX/Worktunes/Fuer_Elise.sid -o .local/research/fuer-elise/drax-fuer-elise.sid
 shasum -a 256 .local/research/fuer-elise/drax-fuer-elise.sid
-PYTHONPATH=.tools/test-deps python3 scripts/psid_audit.py .local/research/fuer-elise/drax-fuer-elise.sid --ticks 1000 --output .local/research/fuer-elise/drax.audit.json
 .local/bin/render-sid .local/research/fuer-elise/drax-fuer-elise.sid .local/research/fuer-elise/drax.preview.wav 20
 ```
 
-The prepared [opening A/B WAV](../../../.local/research/fuer-elise/opening.ab.wav) contains A = DRAX's 6581 reference, a half-second separator, then B = our 8580 native candidate. Each excerpt is 20 seconds from renderer time zero, at the original tempo and declared SID model; startup timing and the resulting phrase-position difference remain audible. [The comparison manifest](../../../.local/research/fuer-elise/opening.comparison.json) records source WAV hashes and attenuation, and [the register analysis](../../../.local/research/fuer-elise/opening.analysis.json) records the matching notes and discrepancy. Both inputs are unclipped and matched by AC RMS with peak headroom; this is not a guarantee of equal perceived loudness.
+Download the other [pinned reference](flashdance-reference.md), build the [native candidate](../../native-song-workflow.md), then run the study from the repository root with a fresh output directory:
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/study-drax-references.py --fuer-elise .local/research/fuer-elise/drax-fuer-elise.sid --flashdance .local/research/flashdance/drax-flashdance-conversion.sid --candidate-sid build/fuer-elise-native/export/fuer-elise-sidwizard.sid --candidate-manifest build/fuer-elise-native/conversion/fuer-elise-sidwizard.native.json --source-score songs/fuer-elise.json --play-calls 6000 --output build/reference-studies/drax
+```
+
+The script requires both reference SHA-256 pins and the current source-score pin; the candidate manifest must identify that same source. Candidate SID bytes may change for sound-design trials. It records every input identity and the tracked analysis-tool hashes, writes fresh audit/write/frame evidence, derives opening pitch matches, tempo, repeated melody cycles and episode-landmark results, and labels the Flashdance exception separately. See [the generated study report](../../../build/reference-studies/drax/study.json). Its explicit 6,000-call coverage does not verify the candidate's ending; use the full native workflow for that.
+
+The prepared [opening A/B WAV](../../../build/reference-studies/drax/opening.ab.wav) contains A = DRAX's 6581 reference, a half-second separator, then B = our 8580 native candidate. Each excerpt is 20 seconds from renderer time zero, at the original tempo and declared SID model; startup timing and the resulting phrase-position difference remain audible. [The comparison manifest](../../../build/reference-studies/drax/opening.comparison.json) records source WAV hashes and attenuation, and [the register analysis](../../../build/reference-studies/drax/study.json) records the matching notes and discrepancy. Both inputs are unclipped and matched by AC RMS with peak headroom; this is not a guarantee of equal perceived loudness.
+
+Recreate the audition with tracked tools and unused output names; the study itself does not synthesize audio:
+
+```sh
+.local/bin/render-sid .local/research/fuer-elise/drax-fuer-elise.sid build/reference-studies/drax/reference.opening.wav 20
+.local/bin/render-sid build/fuer-elise-native/export/fuer-elise-sidwizard.sid build/reference-studies/drax/candidate.opening.wav 20
+python3 scripts/compare-audio.py prepare build/reference-studies/drax/reference.opening.wav build/reference-studies/drax/candidate.opening.wav build/reference-studies/drax/opening --individual-copies
+```
 
 For a new candidate, regenerate the [native song](../../native-song-workflow.md), retain its source manifest and actual frame/write trace, and prepare fresh excerpts with [the level-matching workflow](../../instrument-trials.md). Keep preservation checks against our source, arrangement comparison against the identified reference, and user listening judgments separate. Full-form reference alignment, the reference's notation/source reconstruction and comparative listening remain unestablished; exact PCM equality between these different players and chip targets is not a success criterion.
