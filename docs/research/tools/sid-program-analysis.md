@@ -79,3 +79,9 @@ The generated controls preserve write order/counts, pitch, gate, ADSR and compan
 Each side lasts 1.2 seconds and includes the bass entrance. Listening verdicts are pending; these files test the proposed explanation rather than certify it.
 
 Chip model is another independent variable. The preferred render honors the declared 6581, whereas earlier original candidates used 8580. The pinned SIDLite implementation applies input-dependent cutoff modulation on its 6581 path and uses a different cutoff and resonance curve on 8580. Equal numeric settings therefore do not produce equivalent filtering. A model comparison should be explicit and separate from the PWM or routing intervention; a stronger 8580 cutoff sweep is not execution evidence for the static-cutoff 6581 release. Keep final acceptance grounded in the listener's judgments and retain useful original instrument decisions in their owning recipe/card.
+
+## Recreate and reuse the decoded instrument
+
+The [independent DRAX bass reconstruction](../../../songs/studies/drax-bass-reconstruction/README.md) supplies our own editable 6502 player, instrument parameters and A1/E2 reuse phrase. It computes pulse motion and sequences preparation, noise attack, pulse body and instrument-owned release. It neither embeds the reference player nor replays a register dump.
+
+The reference comparison checks the ordered bass/global writes and frame states through the excerpt. It deliberately projects out companion-voice writes and retains only the last cutoff-high write per call; the original's intermediate cutoff writes and exact within-frame timing are not reproduced. A separate VICE run checks the new program against its own CPU audit. These checks establish the implemented mechanism under the declared profile; the linked matched listening comparison determines whether its sound retains the preferred character. This is a bass-fragment reconstruction, not a recreation of DRAX's complete arrangement.
