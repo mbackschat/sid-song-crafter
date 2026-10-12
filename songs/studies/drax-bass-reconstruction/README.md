@@ -75,6 +75,8 @@ This verifies an in-context substitution through this short passage. Interceptio
 
 ## Listening verdict
 
+The next reuse experiment is [the transfer to our own Für Elise arrangement](../elise-decoded-bass/README.md): seven native bass pitches/start calls with this independently computed instrument, retaining our melody and chords. Its musical verdict remains separate from the reconstruction comparison below.
+
 On 2026-10-13, mbackschat listened to [full.ab.wav](../../../build/drax-bass-context/full.ab.wav) and reported: “a and b sound the same. Nice”. The listener heard no difference between the original three-second opening and the same accompaniment with the independently reconstructed bass. This accepts the sound of that bounded in-context substitution on the listener's playback setup; playback equipment was not specified.
 
 This subjective match does not establish exact PCM equality or hardware fidelity, and does not approve a whole arrangement. The diagnostic solo and A1/E2 transfer still have no explicit listening verdict. Generated technical reports retain their original `listeningReview: null` because they preceded this feedback; this tracked study owns the subsequent verdict.
