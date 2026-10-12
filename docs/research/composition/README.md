@@ -6,6 +6,7 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Sound-design repertoire](sound-design-repertoire.md): reusable experiment briefs, listening criteria, and admission rules for verified instruments.
 - [Original native instrument bank](instruments/README.md): implemented SID-Wizard patches with measured evidence and pending listening verdicts.
 - [Musical gesture library](gestures/README.md): bass answers, chord bursts and phrase variations; where to use them, native dependencies and evidence status.
+- [Layered entrance and playful replies](../../../songs/studies/elise-layered-entrance/README.md): original Für Elise auditions combining the preferred bass with continuing chord texture.
 - [Run and audition the trials](../../instrument-trials.md): one-command export, audit, rendering and controlled A/B comparisons.
 - [Instrument card template](instrument-card-template.md): preserve a sound's source, behaviour, target, demonstration, and listening verdict.
 - [Classical arrangements](classical-arrangements.md): preserving musical structure in Für Elise and Hummelflug.

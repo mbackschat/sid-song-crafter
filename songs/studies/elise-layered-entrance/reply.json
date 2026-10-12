@@ -1,0 +1,338 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "reply-score.json",
+  "title": "Elise: playful answers",
+  "author": "Original SID arrangement",
+  "authorinfo": "ORIGINAL ELISE REPLY",
+  "released": "2026",
+  "timingPolicy": "retain-full-pitch",
+  "instruments": {
+    "melody-pulse": {
+      "control": "1a",
+      "hard_restart_adsr": "0f00",
+      "frame1": "09",
+      "filter": [],
+      "name": "ELALTPL1",
+      "adsr": "0354",
+      "vibrato": "24",
+      "vibrato_delay": 12,
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "85",
+          "80",
+          "00"
+        ],
+        [
+          "0c",
+          "30",
+          "00"
+        ],
+        [
+          "0c",
+          "d0",
+          "00"
+        ],
+        {
+          "jump": 1
+        }
+      ]
+    },
+    "melody-pulse-wide": {
+      "control": "1a",
+      "hard_restart_adsr": "0f00",
+      "frame1": "09",
+      "filter": [],
+      "name": "ELALTPL2",
+      "adsr": "0354",
+      "vibrato": "24",
+      "vibrato_delay": 12,
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "86",
+          "80",
+          "00"
+        ],
+        [
+          "0c",
+          "30",
+          "00"
+        ],
+        [
+          "0c",
+          "d0",
+          "00"
+        ],
+        {
+          "jump": 1
+        }
+      ]
+    },
+    "bass-groove": {
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "frame1": "09",
+      "filter": [
+        [
+          "9a",
+          "c0",
+          "00"
+        ],
+        [
+          "0c",
+          "c0",
+          "00"
+        ]
+      ],
+      "name": "ELGROOVE",
+      "adsr": "03b9",
+      "wave": [
+        [
+          "81",
+          "cd",
+          "00"
+        ],
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ],
+        [
+          "08",
+          "20",
+          "00"
+        ],
+        [
+          "08",
+          "e0",
+          "00"
+        ],
+        {
+          "jump": 1
+        }
+      ]
+    },
+    "chord-minor": {
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "frame1": "09",
+      "filter": [],
+      "name": "ELACMIN",
+      "adsr": "0348",
+      "wave": [
+        [
+          "51",
+          "00",
+          "00"
+        ],
+        [
+          "51",
+          "00",
+          "00"
+        ],
+        [
+          "51",
+          "03",
+          "00"
+        ],
+        [
+          "51",
+          "03",
+          "00"
+        ],
+        [
+          "51",
+          "07",
+          "00"
+        ],
+        [
+          "51",
+          "07",
+          "00"
+        ],
+        {
+          "jump": 0
+        }
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ]
+    },
+    "chord-major": {
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "frame1": "09",
+      "filter": [],
+      "name": "ELACMAJ",
+      "adsr": "0348",
+      "wave": [
+        [
+          "51",
+          "00",
+          "00"
+        ],
+        [
+          "51",
+          "00",
+          "00"
+        ],
+        [
+          "51",
+          "03",
+          "00"
+        ],
+        [
+          "51",
+          "03",
+          "00"
+        ],
+        [
+          "51",
+          "08",
+          "00"
+        ],
+        [
+          "51",
+          "08",
+          "00"
+        ],
+        {
+          "jump": 0
+        }
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ]
+    }
+  },
+  "sections": [
+    {
+      "name": "Reply: first pass: A-minor theme",
+      "startBeat": 0,
+      "endBeat": 3.5,
+      "voices": {
+        "melody": "melody-pulse",
+        "bass": "bass-groove",
+        "harmony": "chord-minor"
+      }
+    },
+    {
+      "name": "Reply: first pass: E-major response",
+      "startBeat": 3.5,
+      "endBeat": 5,
+      "voices": {
+        "melody": "melody-pulse",
+        "bass": "bass-groove",
+        "harmony": "chord-major"
+      }
+    },
+    {
+      "name": "Reply: first pass: A-minor theme",
+      "startBeat": 5,
+      "endBeat": 9.5,
+      "voices": {
+        "melody": "melody-pulse",
+        "bass": "bass-groove",
+        "harmony": "chord-minor"
+      }
+    },
+    {
+      "name": "Reply: first pass: E-major response",
+      "startBeat": 9.5,
+      "endBeat": 11,
+      "voices": {
+        "melody": "melody-pulse",
+        "bass": "bass-groove",
+        "harmony": "chord-major"
+      }
+    },
+    {
+      "name": "Reply: first pass: A-minor theme",
+      "startBeat": 11,
+      "endBeat": 12,
+      "voices": {
+        "melody": "melody-pulse",
+        "bass": "bass-groove",
+        "harmony": "chord-minor"
+      }
+    },
+    {
+      "name": "Reply: second pass: A-minor theme",
+      "startBeat": 12,
+      "endBeat": 15.5,
+      "voices": {
+        "melody": "melody-pulse-wide",
+        "bass": "bass-groove",
+        "harmony": "chord-minor"
+      }
+    },
+    {
+      "name": "Reply: second pass: E-major response",
+      "startBeat": 15.5,
+      "endBeat": 17,
+      "voices": {
+        "melody": "melody-pulse-wide",
+        "bass": "bass-groove",
+        "harmony": "chord-major"
+      }
+    },
+    {
+      "name": "Reply: second pass: A-minor theme",
+      "startBeat": 17,
+      "endBeat": 21.5,
+      "voices": {
+        "melody": "melody-pulse-wide",
+        "bass": "bass-groove",
+        "harmony": "chord-minor"
+      }
+    },
+    {
+      "name": "Reply: second pass: E-major response",
+      "startBeat": 21.5,
+      "endBeat": 23,
+      "voices": {
+        "melody": "melody-pulse-wide",
+        "bass": "bass-groove",
+        "harmony": "chord-major"
+      }
+    },
+    {
+      "name": "Reply: second pass: A-minor theme",
+      "startBeat": 23,
+      "endBeat": 23.5,
+      "voices": {
+        "melody": "melody-pulse-wide",
+        "bass": "bass-groove",
+        "harmony": "chord-minor"
+      }
+    }
+  ]
+}
