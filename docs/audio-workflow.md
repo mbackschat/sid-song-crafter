@@ -1,8 +1,8 @@
 # Headless SID audio workflow
 
-[The renderer](../scripts/render-sid.cpp) uses pinned libsidplayfp 3.1.1/SIDLite to write mono PCM16 audio at 44100 Hz without a window. Its `.registers.tsv` sidecar records last-written SID register snapshots after each renderer iteration, timestamped by the emulation library. Snapshots are not individual bus writes or one-to-one PAL frames; use [the CPU audit](psid-audit.md) for ordered writes.
+[The renderer](../scripts/render-sid.cpp) uses pinned libsidplayfp 3.1.1/SIDLite to write PCM16 audio at 44100 Hz without a window: mono for one SID, or stereo with one chip per channel for the supported two-SID profile. Its `.registers.tsv` sidecar records last-written SID register snapshots after each renderer iteration, timestamped by the emulation library. Snapshots are not individual bus writes or one-to-one PAL frames; use [the CPU audit](psid-audit.md) for ordered writes.
 
-The [audio integration tests](../tests/render_audio_test.py) verify independent A4 fixtures, default-subtune selection, the opening Für Elise pitches/onsets and the ending. The [song guide](first-song.md) identifies the editable opening excerpt and its PRG/SID exports; [native instrument trials](instrument-trials.md) apply the same renderer to a different driver.
+The [audio integration tests](../tests/render_audio_test.py) verify independent A4 and two-chip fixtures, default-subtune selection, separate chip audibility/routing, the opening Für Elise pitches/onsets and the ending. The [song guide](first-song.md) identifies the editable opening excerpt and its PRG/SID exports; [native instrument trials](instrument-trials.md) apply the same renderer to a different driver.
 
 ## Pinned library setup
 
@@ -22,7 +22,11 @@ The extracted dynamic library retains an unrelocated `@@HOMEBREW_PREFIX@@` insta
 
 ## Renderer contract and API findings
 
-The renderer accepts `INPUT.sid OUTPUT.wav SECONDS`, forces PAL, supports one SID, and permits durations greater than zero through 600 seconds. It honours the SID's model preference, defaulting to MOS8580, and uses a fixed power-on delay for reproducibility. Output has exactly the requested sample count rounded to the nearest sample, with a minimum of one. Rebuild the executable after changing its source.
+The renderer accepts `INPUT.sid OUTPUT.wav SECONDS` and permits durations greater than zero through 600 seconds. One-SID output remains mono with PAL forced, the declared chip model honoured and MOS8580 as the fallback. Two-SID output requires PSID v3, explicit PAL, VBI timing for every subtune, two declared MOS8580 chips at `$D400/$D420`, and no MUS/PlaySID flags. Other second-chip addresses, malformed or duplicate address declarations, a third chip and other two-chip timing/model/version contracts are rejected before output creation. A fixed power-on delay keeps startup reproducible. Output contains exactly the requested number of sample frames rounded to the nearest frame, with a minimum of one; stereo frames contain two interleaved samples. Rebuild the executable after changing its source.
+
+Two-SID stereo uses the documented per-chip `buffers()` API at unity gain: chip 0 is left and chip 1 is right, with no crossfeed or summing. The pinned library's [default stereo matrix](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/simpleMixer.h) mixes half of each chip into the opposite channel, so this renderer interleaves raw chip buffers instead. Independent 440/660 Hz fixtures and versions with either chip muted verify both channels and the absence of crossfeed; stereo output is not a duplicate of a mono render. The mono mixer path is unchanged.
+
+The mono snapshot header remains `time_ms\tregisters_hex`. Two-SID snapshots append `registers_sid2_hex`; each chip column contains its own 32 register bytes as hexadecimal. Readers that need two-chip state must use both columns rather than treating the first chip as the whole tune.
 
 Two libsidplayfp integration rules are required:
 

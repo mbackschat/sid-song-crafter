@@ -40,6 +40,31 @@ def write_a4_sid(path):
     path.write_bytes(header + init + b"\x60")
 
 
+def write_two_sid_fixture(path, default_song=1, left=True, right=True):
+    # Hand-coded independent oscillators distinguish stereo routing from duplicated mono.
+    init = bytearray((0xc9, default_song - 1, 0xf0, 1, 0x60))
+    for base, hz, enabled in ((0xd400, 440, left), (0xd420, 660, right)):
+        word = round(hz * 2**24 / (17734475 / 18))
+        for offset, value in ((24, 15 if enabled else 0), (0, word & 255), (1, word >> 8), (5, 0), (6, 0xf0), (4, 0x11)):
+            address = base + offset
+            init.extend((0xa9, value, 0x8d, address & 255, address >> 8))
+    init.append(0x60)
+    header = bytearray(0x7c)
+    header[:4] = b"PSID"
+    struct.pack_into(">7HI", header, 4, 3, 0x7c, 0x1000, 0x1000, 0x1000 + len(init), 2, default_song, 0)
+    struct.pack_into(">H", header, 0x76, 0xa4)
+    header[0x7a] = 0x42
+    path.write_bytes(header + init + b"\x60")
+
+
+def read_stereo_samples(path):
+    with wave.open(str(path), "rb") as source:
+        assert (source.getnchannels(), source.getsampwidth(), source.getframerate()) == (2, 2, RATE)
+        frames = source.getnframes()
+        samples = struct.unpack("<" + "h" * (frames * 2), source.readframes(frames))
+    return frames, samples[0::2], samples[1::2]
+
+
 class HeadlessRenderTest(unittest.TestCase):
     def render(self, sid, seconds, directory):
         output = Path(directory) / "render.wav"
@@ -70,6 +95,70 @@ class HeadlessRenderTest(unittest.TestCase):
                 _, samples = self.render(sid, 0.5, directory)
                 self.assertGreater(rms(samples[RATE // 4:]), 100)
                 self.assertAlmostEqual(frequency(samples[RATE // 4:]), 440, delta=3)
+
+    def test_two_sid_fixture_has_distinct_stereo_pitches_and_exact_duration(self):
+        for default_song in (1, 2):
+            with self.subTest(default_song=default_song), tempfile.TemporaryDirectory() as directory:
+                sid, output = Path(directory) / "two.sid", Path(directory) / "stereo.wav"
+                write_two_sid_fixture(sid, default_song)
+                result = subprocess.run([str(RENDERER), str(sid), str(output), "1.00001"], capture_output=True, text=True, timeout=20)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                frames, left, right = read_stereo_samples(output)
+                self.assertEqual(frames, round(1.00001 * RATE))
+                for samples, expected in ((left, 440), (right, 660)):
+                    middle = samples[RATE // 4:3 * RATE // 4]
+                    self.assertGreater(rms(middle), 100)
+                    self.assertAlmostEqual(frequency(middle), expected, delta=3)
+                    self.assertFalse(any(value in (-32768, 32767) for value in samples))
+                rows = [line.split("\t") for line in Path(str(output) + ".registers.tsv").read_text().splitlines()]
+                self.assertEqual(rows[0], ["time_ms", "registers_hex", "registers_sid2_hex"])
+                first, second = bytes.fromhex(rows[-1][1]), bytes.fromhex(rows[-1][2])
+                self.assertEqual(len(first), 32)
+                self.assertEqual(len(second), 32)
+                self.assertNotEqual(first[0:2], second[0:2])
+
+    def test_two_sid_muted_variants_prove_each_chip_contributes_only_to_its_channel(self):
+        for enabled_left, enabled_right in ((True, False), (False, True)):
+            with self.subTest(left=enabled_left, right=enabled_right), tempfile.TemporaryDirectory() as directory:
+                sid, output = Path(directory) / "isolated.sid", Path(directory) / "isolated.wav"
+                write_two_sid_fixture(sid, left=enabled_left, right=enabled_right)
+                result = subprocess.run([str(RENDERER), str(sid), str(output), "0.5"], capture_output=True, text=True, timeout=20)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                _, left, right = read_stereo_samples(output)
+                for samples, enabled, expected in ((left, enabled_left, 440), (right, enabled_right, 660)):
+                    middle = samples[RATE // 4:]
+                    if enabled:
+                        self.assertGreater(rms(middle), 100)
+                        self.assertAlmostEqual(frequency(middle), expected, delta=3)
+                    else:
+                        self.assertLess(rms(middle), 1)
+
+    def test_two_sid_rejects_unsupported_chip_addresses_models_versions_and_timing_before_output(self):
+        mutations = (
+            ("third chip", lambda data: data.__setitem__(0x7b, 0x44)),
+            ("second address", lambda data: data.__setitem__(0x7a, 0x44)),
+            ("invalid address", lambda data: data.__setitem__(0x7a, 0x41)),
+            ("duplicate address", lambda data: data.__setitem__(0x7a, 0x40)),
+            ("PSID version", lambda data: struct.pack_into(">H", data, 4, 4)),
+            ("v2 extra SID", lambda data: struct.pack_into(">H", data, 4, 2)),
+            ("NTSC", lambda data: struct.pack_into(">H", data, 0x76, 0xa8)),
+            ("unknown clock", lambda data: struct.pack_into(">H", data, 0x76, 0xa0)),
+            ("CIA timing", lambda data: data.__setitem__(21, 1)),
+            ("second 6581", lambda data: struct.pack_into(">H", data, 0x76, 0x64)),
+            ("first 6581", lambda data: struct.pack_into(">H", data, 0x76, 0x94)),
+        )
+        for name, mutate in mutations:
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:
+                sid, output = Path(directory) / "unsupported.sid", Path(directory) / "unsupported.wav"
+                write_two_sid_fixture(sid)
+                data = bytearray(sid.read_bytes())
+                mutate(data)
+                sid.write_bytes(data)
+                result = subprocess.run([str(RENDERER), str(sid), str(output), "0.1"], capture_output=True, text=True, timeout=20)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertTrue(result.stderr.strip())
+                self.assertFalse(output.exists())
+                self.assertFalse(Path(str(output) + ".registers.tsv").exists())
 
     def test_render_longer_than_one_minute_keeps_exact_length_and_final_audio(self):
         with tempfile.TemporaryDirectory() as directory:
