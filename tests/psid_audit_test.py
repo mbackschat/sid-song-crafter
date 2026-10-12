@@ -42,6 +42,20 @@ class PsidAuditTest(unittest.TestCase):
         self.assertEqual(report["loadAddress"], 0x1000)
         self.assertEqual(report["initAddress"], 0x1000)
 
+    def test_read_only_instruction_observer_sees_init_and_each_play_call_without_changing_the_audit(self):
+        observed = []
+
+        def observer(cpu, memory):
+            observed.append((memory.phase, memory.tick, cpu.pc, memory.data[0x2000], memory.instruction_cycle))
+
+        expected_report, expected_writes = audit.audit_psid(sid_file(), 3)
+        report, writes = audit.audit_psid(sid_file(), 3, observer=observer)
+        self.assertEqual(report, expected_report)
+        self.assertEqual(writes, expected_writes)
+        self.assertEqual(observed[0], ("init", None, 0x1000, 0, 0))
+        self.assertEqual([row for row in observed if row[2] == 0x1006], [("play", 0, 0x1006, 0, 0), ("play", 1, 0x1006, 1, 0), ("play", 2, 0x1006, 2, 0)])
+        self.assertIn(("play", 0, 0x1009, 1, 6), observed)
+
     def test_rejects_other_timing_machine_and_format_contracts(self):
         for name, mutate in [
             ("RSID", lambda data: data.__setitem__(slice(0, 4), b"RSID")),

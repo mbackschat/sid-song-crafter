@@ -38,8 +38,13 @@ class AuditMemory:
         self.data[address] = value
 
 
-def audit_psid(data, ticks):
-    """Run init and bounded VBI calls; report execution evidence, not musical correctness."""
+def audit_psid(data, ticks, *, observer=None):
+    """Run init and bounded VBI calls; report execution evidence, not musical correctness.
+
+    An optional read-only observer receives the CPU and memory immediately before
+    each instruction. It can inspect phase, tick and instruction-start cycle to
+    record driver-specific consumption without changing the execution model.
+    """
     require(type(ticks) is int and 1 <= ticks <= 100000, "Play-call count must be an integer from 1 to 100000")
     require(len(data) >= 0x7c and data[:4] == b"PSID", "Audit requires a complete PSID header")
     word = lambda offset: int.from_bytes(data[offset:offset + 2], "big")
@@ -72,6 +77,8 @@ def audit_psid(data, ticks):
             memory.instruction = cpu.disassemble[memory[cpu.pc]][0]
             require(memory.instruction not in ("???", "BRK", "RTI"), f"Unsupported opcode at ${cpu.pc:04x}: {memory.instruction}")
             memory.instruction_cycle = cpu.processorCycles - start
+            if observer is not None:
+                observer(cpu, memory)
             cpu.step()
         require(cpu.sp == 0xff, "Driver did not restore the call stack")
         cycles = cpu.processorCycles - start

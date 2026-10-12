@@ -1,8 +1,16 @@
 # Native Für Elise sound-design candidate
 
-Design date: 2026-10-12. This candidate applies original SID-Wizard instrument programs to the complete, verified [three-voice Für Elise score](fuer-elise-score.md). The [native recipe](../songs/fuer-elise-sidwizard.json) chooses a coherent palette and section contrasts; the unchanged [baseline arrangement](../songs/fuer-elise.json) remains the source of all 981 selected note events. The recipe adds no source note events and edits neither the source pitches nor source JSON durations. Native quantization and the explicit short-note timing adjustment are recorded separately below. The finished native arrangement is not passed through MIDI again. Source preservation and native audio fidelity require separate converter/playback verification.
+This candidate applies original SID-Wizard instrument programs to the complete, verified [three-voice Für Elise score](fuer-elise-score.md). The [native recipe](../songs/fuer-elise-sidwizard.json) chooses a coherent palette and section contrasts; the unchanged [baseline arrangement](../songs/fuer-elise.json) remains the source of all 981 selected note events. The recipe adds no source note events and edits neither the source pitches nor source JSON durations. Native quantization and the explicit short-note timing adjustment are recorded separately below. The finished native arrangement is not passed through MIDI again. Source preservation and native audio fidelity require separate converter/playback verification.
 
-The user listened to the original short [candidate mix](research/composition/instruments/README.md) and judged it “sounds ok.” That is an initial acceptance of that phrase/palette, not a verdict on this complete arrangement or the adapted envelopes below. This full-song candidate remains a proposed experiment until its native export and rendered evidence are recorded, and it remains unreviewed by a listener until the user hears it.
+The user listened to the original short [candidate mix](research/composition/instruments/README.md) and judged it “sounds ok.” That is an initial acceptance of that phrase/palette, not a verdict on this complete arrangement or the adapted envelopes below. The complete candidate passes automated verification and remains unreviewed by a listener.
+
+## Listen and verify
+
+- [20-second preview](../build/fuer-elise-native/native-song.excerpt.wav)
+- [Complete native arrangement](../build/fuer-elise-native/native-song.wav)
+- [Build and verification instructions](native-song-workflow.md)
+
+All 981 selected notes fit in 100 native patterns. The complete driver audit verifies both short-note pitches, every pattern transition, and a silent stop with no pitched restart. The full render has no PCM clipping and a quiet ending. Independent headless VICE checkpoints match the audited SID registers and PAL cadence at both grace notes, later material and the ending. These checks establish playback correctness within the [stated validation limits](native-song-workflow.md); sound quality still requires listening.
 
 ## Musical form and palette
 

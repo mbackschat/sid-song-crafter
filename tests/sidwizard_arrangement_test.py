@@ -69,6 +69,7 @@ class SIDWizardArrangementTest(unittest.TestCase):
             self.assertEqual(manifest["totalTicks"], 7857)
             self.assertEqual(manifest["rowCount"], 7858)
             self.assertEqual(manifest["stopTick"], 7857)
+            self.assertEqual(manifest["stopVolumeClearTick"], 7857)
             for voice in manifest["voices"]:
                 self.assertEqual(voice["expectedSequenceEnding"], [{"tick": 7857, "entry": 0xa0}, {"tick": 7857, "entry": 0xfe}])
                 terminal = [cell for cell in manifest["cellMap"] if cell["voice"] == manifest["voices"].index(voice) and cell["tick"] == 7857]

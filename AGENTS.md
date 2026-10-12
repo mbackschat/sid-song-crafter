@@ -2,7 +2,7 @@
 
 ## Musical Priority
 
-Prioritize expressive SID sound. Study composers, published accounts, editors and drivers; preserve findings in [research](docs/research/README.md). Build an evidence-backed instrument repertoire. Technical playback success does not establish musical quality; record listening judgments separately.
+Prioritize expressive SID sound. Study composers, published accounts, editors and drivers; preserve findings in [research](docs/research/README.md). Build an evidence-backed instrument repertoire. Record reusable findings, source provenance and reproduction instructions; do not keep debugging diaries. Technical playback success does not establish musical quality; record listening judgments separately.
 
 ## Project Structure & Module Organization
 
@@ -17,6 +17,7 @@ From the repository root, after dependency setup in [README.md](README.md):
 - `bun scripts/build-song.ts`: assemble the opening excerpt and export PRG, PSID, and event manifest.
 - `python3 scripts/song.py songs/fuer-elise.json`: build, render, and verify the full arrangement in headless VICE; see [the reusable workflow](docs/song-workflow.md).
 - `python3 scripts/setup-sidwizard.py`, then `python3 scripts/run-instrument-trials.py --output build/instrument-trials`: prepare native Extra exports and [A/B trials](docs/instrument-trials.md). Use a fresh output directory.
+- `python3 scripts/native-song.py build songs/fuer-elise-sidwizard.json --output build/fuer-elise-native`: build and audit the [native sound-design candidate](docs/native-song-workflow.md); [VICE checkpoints](docs/native-vice-checks.md) independently check its standalone PRG.
 - `bun test tests/music.test.ts tests/fuer-elise.test.ts`: check timing, binaries, and deterministic builds.
 - `PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 -m unittest discover -s tests -p '*_test.py' -v`: run importer, CPU, audio, and workflow tests.
 
@@ -29,6 +30,8 @@ Use two-space TypeScript, four-space Python/C++, descriptive assembly labels, an
 ## Testing Guidelines
 
 Use red/green TDD. Verify register writes, timing, endings and binaries. Distinguish CPU, rendered audio, VICE and listening evidence. Preserve original sources and checksums; report conversion losses. Common scores must not constrain native SID expression. Label excerpts accurately.
+
+Stock SID-Wizard Extra at tempo 1 initializes only the frequency high byte on a new note's first frame. Retain TEST silence there and verify the following full-pitch body; one-frame graces need an explicit timing adjustment. See [the reproduced constraint and policy](docs/fuer-elise-native.md).
 
 ## VICE Findings & Troubleshooting
 

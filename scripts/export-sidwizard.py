@@ -62,6 +62,7 @@ def validate_sequence(sequence, pattern_count):
 
 
 def native_pattern_start(data, cursor, unpacked_size):
+    """Follow SID-Maker depkptseq's decoded-size footer and packed-NOP discriminator."""
     index = cursor - 2
     remaining = unpacked_size - 1
     while remaining:

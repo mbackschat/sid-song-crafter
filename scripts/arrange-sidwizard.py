@@ -253,7 +253,7 @@ def arrange(recipe_path, output_dir):
         "nativePath": str(native), "nativeSha256": digest(data), "title": recipe["title"], "author": recipe["author"], "released": recipe.get("released", "2026"),
         "timingPolicy": recipe["timingPolicy"], "nativeHeaderText": authorinfo.decode("ascii"),
         "clockHz": PAL_CLOCK, "ticksPerSecond": TICKS_PER_SECOND, "frameSpeed": 1, "rowTicks": 1,
-        "scoreTicks": score_ticks, "tailTicks": tail, "totalTicks": total_ticks, "rowCount": row_count, "stopTick": total_ticks,
+        "scoreTicks": score_ticks, "tailTicks": tail, "totalTicks": total_ticks, "rowCount": row_count, "stopTick": total_ticks, "stopVolumeClearTick": total_ticks,
         "renderSeconds": (total_ticks + 1) / TICKS_PER_SECOND + 1, "patterns": [{key: value for key, value in pattern.items() if key != "bytes"} for pattern in patterns],
         "instruments": [{"id": identity, "number": instrument_numbers[identity], "name": recipe["instruments"][identity]["name"]} for identity in identities],
         "voices": voices, "cellMap": cell_map, "timingChanges": timing_changes, "articulationChanges": changes, "endPolicy": "stop with gates closed and main volume zero",

@@ -8,6 +8,8 @@ Research and reusable tools for composing expressive Commodore 64 music for one 
 - [Composer studies](docs/research/composers/README.md): seven masters, published accounts, custom tools, and a listening catalogue.
 - [Sound-design repertoire](docs/research/composition/sound-design-repertoire.md): proposed experiments and evidence required for reusable instruments.
 - [Native instrument trials and samples](docs/instrument-trials.md): seven original patches, nine rendered studies, and four level-matched A/B comparisons.
+- [Native Für Elise candidate](docs/fuer-elise-native.md): section-specific sound design, preserved source notes and explicit articulation changes.
+- [Native song workflow](docs/native-song-workflow.md): convert a retained score to editable SID-Wizard source, then export, audit and render it.
 - [Native VICE checkpoints](docs/native-vice-checks.md): reproduce standalone-player register and cadence checks without a GUI.
 - [Composition tools](docs/research/tools/composition-tools.md): established editors, their drivers, and a practical evaluation plan.
 - [Song workflow](docs/song-workflow.md): source preservation, conversion boundaries, and one-command build/render/verification.
@@ -37,6 +39,14 @@ python3 scripts/run-instrument-trials.py --output build/instrument-trials
 ```
 
 Use a fresh output directory for a revised trial. The pipeline retains native SWM/SWI files, exports the actual Extra driver, audits its register writes, renders the phrases, and prepares amplitude-matched A/B audio. Start with the [candidate mix](build/instrument-trials/mix-candidate/mix-candidate.wav), then review the [individual comparisons and listening record](docs/instrument-trials.md). The user accepted the short mix as sounding OK; broader listening and hardware checks remain open.
+
+To apply the palette to the complete Für Elise arrangement through the unmodified native Extra driver:
+
+```sh
+python3 scripts/native-song.py build songs/fuer-elise-sidwizard.json --output build/fuer-elise-native
+```
+
+This retains an editable SWM and instrument files alongside the SID, PRG, complete WAV, 20-second audition excerpt and conversion/verification reports. The [native recipe and timing record](docs/fuer-elise-native.md) explain the section contrasts and a one-frame grace-note adjustment. The original source and baseline arrangement remain available for comparison; native editing need not pass back through the common score.
 
 ## Prepare the assembler
 
@@ -89,4 +99,4 @@ The resulting WAV can be played without an emulator window. Rendering and checki
 
 ## Verification status
 
-The full three-voice arrangement passes binary/header guards, independent 6502 register-write checks, rendered audio checks, and genuine headless VICE execution through BASIC and back. An independent native VICE/reSID recording also passes clipping and ending checks; see [full-song evidence](docs/fuer-elise-validation.md). The separate native instrument trials have reproducible renders and register evidence, with the user's initial short-mix feedback recorded separately. Binary-monitor socket binding is denied in this session, and host audio playback failed; no live MCP emulator connection or assistant listening is claimed.
+The full three-voice arrangement passes binary/header guards, independent 6502 register-write checks, rendered audio checks, and genuine headless VICE execution through BASIC and back. An independent native VICE/reSID recording also passes clipping and ending checks; see [full-song evidence](docs/fuer-elise-validation.md). The complete [native SID-Wizard candidate](docs/fuer-elise-native.md) also passes source-note, grace-pitch, ending, rendered-audio and headless VICE checkpoint checks. Its listening verdict remains open; the user's initial short-mix feedback is recorded separately. Binary-monitor socket binding is denied in this session, and host audio playback failed; no live MCP emulator connection or assistant listening is claimed.
