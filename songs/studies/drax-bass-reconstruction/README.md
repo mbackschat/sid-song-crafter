@@ -49,7 +49,7 @@ On 2026-10-13, the independent 546-byte 6502 payload matched 1,209 projected wri
 
 The PCM is not sample-identical. [pcm-comparison.json](../../../build/drax-bass-reconstruction/pcm-comparison.json) retains measurements of the unshifted raw renders before amplitude matching; there is no offset search or phase correction. The new scheduler writes earlier within each call, and companion oscillator history, exact noise phase and analog state are not reproduced. Same register values do not establish sample equality. The diagnostic reference masks the other voices' waveform/GATE controls and is not an additive audio stem.
 
-The listening question is whether the independently generated bass preserves the character heard in the reference. The A/B and transfer files are ready for that judgment; no listening acceptance, exact analog reconstruction or hardware fidelity is claimed.
+The diagnostic solo A/B and editable A1/E2 transfer remain available for separate listening; neither has an explicit listening verdict. The accepted in-context comparison is recorded in the [listening verdict](#listening-verdict) below.
 
 ## Hear the reconstruction in the original accompaniment
 
@@ -71,4 +71,10 @@ Use a fresh output directory inside `build/drax-bass-context`. The hybrid contai
 
 On 2026-10-13, the 151-call guard verified all 2,020 original companion writes, including initialization, with their original writer identities, call numbers, addresses, values and order. All 1,198 independent runtime bass/global writes matched the separately executed independent player. The wrapper stops calling the original driver at the bound and uses the independent player's explicit volume-zero ending. The complete mixes receive one common scalar gain for peak headroom; each side retains its relative mix level. Separate source normalization would change the accompaniment's amplitude and obscure the replacement's effect.
 
-This verifies an in-context substitution through this short passage. Interception routines add cycles, and the independent bass executes after the accompaniment, so instruction timing within each frame, oscillator/noise phase and analog state can differ. Original intermediate shared-cutoff writes are suppressed. This is not a whole-song replacement, sample equality, hardware fidelity or a listening verdict; the full A/B supplies the musical acceptance question.
+This verifies an in-context substitution through this short passage. Interception routines add cycles, and the independent bass executes after the accompaniment, so instruction timing within each frame, oscillator/noise phase and analog state can differ. Original intermediate shared-cutoff writes are suppressed. The execution evidence does not establish a whole-song replacement, sample equality or hardware fidelity.
+
+## Listening verdict
+
+On 2026-10-13, mbackschat listened to [full.ab.wav](../../../build/drax-bass-context/full.ab.wav) and reported: “a and b sound the same. Nice”. The listener heard no difference between the original three-second opening and the same accompaniment with the independently reconstructed bass. This accepts the sound of that bounded in-context substitution on the listener's playback setup; playback equipment was not specified.
+
+This subjective match does not establish exact PCM equality or hardware fidelity, and does not approve a whole arrangement. The diagnostic solo and A1/E2 transfer still have no explicit listening verdict. Generated technical reports retain their original `listeningReview: null` because they preceded this feedback; this tracked study owns the subsequent verdict.
