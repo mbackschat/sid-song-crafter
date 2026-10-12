@@ -2,6 +2,16 @@
 
 Follow [Repository Guidelines](AGENTS.md) for musical priorities, knowledge retrieval, project layout and workflows. The testing policy below is the project-specific exception to the global requirement to use red/green TDD for every feature or fix.
 
+## Use MEDIUM sub-agents selectively
+
+Delegation is authorized for this project. Prefer MEDIUM for delegated work, resolving its model and effort from the user's global tier mappings; do not duplicate those mappings here. Optimize for useful progress per cost, including the coordinator's briefing, waiting and review overhead.
+
+- **Delegate bounded work with a clear payoff:** independent source/code investigation, an implementation with isolated file ownership, or review of consequential parser, timing or evidence claims. Parallelize independent tasks that advance the current deliverable.
+- **Keep small or tightly dependent work local:** short explanations, routine commands, small documentation edits and changes that require continuous shared context usually cost less to finish directly. Do not spawn an agent merely because a slot is available.
+- **Brief once, precisely:** give the question or outcome, relevant paths and evidence, constraints, file ownership and acceptance criteria. Pass the smallest sufficient context. Reuse an existing agent when it already knows the topic; batch related small tasks instead of creating one agent per search or file.
+- **Avoid duplicate effort:** consult the research index first, assign different questions/files, share findings, and reuse adequate test results. Repeat checks when changes, failures or unresolved concerns justify them. Independent review should target a material risk, not automatically repeat every investigation.
+- **Keep coordination economical:** the primary agent owns scope, integration and final claims. Limit concurrent work to what can be usefully reviewed; stop obsolete branches when the task changes. Escalate beyond MEDIUM only for demonstrated difficulty that the current agent cannot resolve, respecting the global tier mappings.
+
 ## Choose validation that answers the question
 
 Use judgment: red/green TDD is a tool, not a required ceremony for every change. Define the intended outcome and the evidence that can establish it before substantial implementation.
