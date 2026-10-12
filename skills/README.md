@@ -1,6 +1,6 @@
 # Project-local SID skills
 
-These skills are installed through verified project-local symlinks under `.agents/skills`. See [local setup](../docs/local-setup.md) for activation history, server configuration, and the unresolved VICE launch issue.
+These skills are installed through verified project-local symlinks under `.agents/skills`. See [local setup](../docs/local-setup.md) for activation history and server configuration, and the [verified headless VICE capabilities](../docs/research/tools/skills-and-integrations.md#select-tools-for-an-executed-program-study) for the working file-monitor route.
 
 | Skill | Role | Upstream |
 | --- | --- | --- |

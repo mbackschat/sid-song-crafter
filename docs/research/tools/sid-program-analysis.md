@@ -16,6 +16,8 @@ Executed code and ordered SID writes are the primary evidence for how a sound is
 
 Each retained study needs source identity and source status, the audible target, the decoded mechanism with evidence locations, an executable reproduction command, editable implementation and comparison criteria. Keep generated traces and PCM in ignored build output. Separate **observed execution**, **causal listening result**, and **successful reuse**; do not silently promote one to another.
 
+Use the [local capability assessment](skills-and-integrations.md) to select the tools for each step. Skills supply hardware and debugger guidance; the VICE monitor supplies executed machine evidence; the bounded Python tracer supplies searchable instruction/data records; the renderer supplies repeatable listening files. Inspect a driver's update schedule and hardware dependencies before choosing a RAM-only or controlled-harness experiment.
+
 ## Bounded DRAX bass experiment
 
 This study concerns the bass entrance and release in the preferred 2.02–2.75-second Für Elise fragment. The exact input is the archived DRAX PSID, SHA-256 `ea6b7eba46844d399e415368eae86c3ddf03bd9041ecba93e7bb53b384daa2a1`: one declared MOS6581, PAL VBI, init `$1000`, play `$1003`. The recorded program window is zero-based play calls 99–150, reached by executing init and all preceding calls. Audio time and call number have a startup offset; use the identified attack sequence to align the fragment, rather than treating `call / PAL rate` as an exact WAV timestamp. The listener confirms vibrancy in the diagnostic bass alone and likes bass with chord; neither finding identifies a synthesis parameter by itself.

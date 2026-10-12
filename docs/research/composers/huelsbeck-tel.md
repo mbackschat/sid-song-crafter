@@ -16,7 +16,7 @@ In the [2025 Amazona interview](https://www.amazona.de/interview-chris-huelsbeck
 
 An especially practical correction appears in [HVSC STIL v85](https://hvsc.c64.org/download/C64Music/DOCUMENTS/STIL.txt): Hülsbeck explains that his original *Shades* development machine had an unusual filter, making the widely played version more filtered than intended. The archive identifies `Shades_filter_corrected.sid` as closer to his intention. A beloved reference recording is therefore not an unquestionable timbre target: retain the exact file variant, chip model, and rendering settings before comparing filters.
 
-My working interpretation is a melody-first, synthesizer-oriented workflow whose editor makes repeated musical and timbral experiments affordable. That interpretation follows the described process; it is not a completed spectral analysis of *Shades*. For our Beethoven arrangement, the useful transfer is controlled timbral movement around preserved musical phrases, not importing Hülsbeck's samples or changing Beethoven's harmony.
+My working interpretation is a melody-first, synthesizer-oriented workflow whose editor makes repeated musical and timbral experiments affordable. That interpretation follows the described process; it is not an executed-program study of *Shades*. For our Beethoven arrangement, the useful transfer is controlled timbral movement around preserved musical phrases, not importing Hülsbeck's samples or changing Beethoven's harmony.
 
 ## Jeroen Tel: arrangement and driver collaboration
 
@@ -48,7 +48,7 @@ STIL identifies *Cybernoid II* subtune 1 as the title and subtune 2 as game over
 
 ## Experiments for an expressive reusable instrument system
 
-These are proposed original patches and tests. Start with isolated notes and short Beethoven phrases, then compare full sections at equal listening level. Keep waveform/frequency/envelope traces beside renders; spectra and envelopes can explain a change, but musical listening chooses the result.
+These are proposed original patches and tests. Start with isolated notes and short Beethoven phrases, then compare full sections at equal listening level. Use the [executed-program procedure](../tools/sid-program-analysis.md) to connect waveform, frequency, envelope and filter writes to the responsible code and instrument data. Controlled changes test an explanation; listening chooses the musical result.
 
 | Experiment | Small controlled change | Proof criterion |
 | --- | --- | --- |
