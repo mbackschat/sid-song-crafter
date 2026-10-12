@@ -103,7 +103,7 @@ def prepare_comparison(a_path, b_path, prefix, *, target_ac_rms_dbfs=None, peak_
     _require(math.isfinite(gap_seconds) and 0 <= gap_seconds <= 60, "Gap must be finite and between zero and 60 seconds")
     if target_ac_rms_dbfs is not None:
         _require(math.isfinite(target_ac_rms_dbfs) and target_ac_rms_dbfs <= 0, "AC RMS target must be a finite dBFS value no greater than zero")
-    peak_limit = math.floor(32767 * 10 ** (-peak_headroom_db / 20))
+    peak_limit = min(32766, math.floor(32767 * 10 ** (-peak_headroom_db / 20)))
     _require(peak_limit > 0, "Peak headroom leaves no usable PCM16 range")
 
     sources = [Path(path).resolve() for path in (a_path, b_path)]

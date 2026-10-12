@@ -112,6 +112,15 @@ class AudioComparisonTest(unittest.TestCase):
             self.assertEqual(source["matched"]["clippedSamples"], 0)
         self.assertAlmostEqual(report["inputs"][0]["matched"]["acRms"], report["inputs"][1]["matched"]["acRms"])
 
+    def test_zero_headroom_still_reserves_one_lsb_from_both_pcm_rails(self):
+        write_wav(self.a, [-1000, 1000])
+        write_wav(self.b, [-1000, 1000])
+        target = 20 * math.log10(32766 / 32768)
+        report = prepare_comparison(self.a, self.b, self.prefix, target_ac_rms_dbfs=target, peak_headroom_db=0)
+        self.assertEqual(report["peakLimit"], 32766)
+        self.assertEqual(report["inputs"][0]["matched"]["peak"], 32766)
+        self.assertEqual(report["inputs"][0]["matched"]["clippedSamples"], 0)
+
     def test_explicit_ac_rms_target_can_boost_without_removing_dc(self):
         write_wav(self.a, [500, 1500, 500, 1500])
         write_wav(self.b, [-1000, 1000, -1000, 1000])
