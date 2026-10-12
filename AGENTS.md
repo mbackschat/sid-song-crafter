@@ -4,6 +4,10 @@
 
 Prioritize expressive SID interpretations: capture a song's character through phrasing, groove, improvisation and native chip effects. Preserve source material separately from deliberate arrangement changes. Treat songs as case studies for learning sound design and building reusable tools and methods. Study composers, published accounts, editors and drivers; preserve findings in [research](docs/research/README.md). Extend the [sound repertoire](docs/research/composition/sound-design-repertoire.md) and [musical gesture library](docs/research/composition/gestures/README.md) with editable examples, useful contexts, limitations and listening evidence. Record reusable findings, source provenance and reproduction instructions; do not keep debugging diaries. Technical playback success does not establish musical quality; record listening judgments separately.
 
+## Retrieve and Apply Knowledge
+
+Before SID technique explanations, arrangement, sound design or listening-feedback changes, consult the [technique lookup](docs/research/technique-index.md), then read the relevant evidence and any reusable example. Search existing knowledge before new research. Choose methods by musical purpose and voice/filter/model constraints; check the owning card's listening verdict before reuse. Retain useful decisions in the existing study/recipe documentation, not a diary. When retrieval fails, improve the index's route or aliases.
+
 ## Project Structure & Module Organization
 
 Research and provenance live in [docs/research](docs/research/README.md), scores/native instruments in `songs/`, tools in `scripts/`, tests in `tests/`, and installed skill sources in [skills](skills/README.md). Generated binaries, audio and traces go in ignored `build/`.

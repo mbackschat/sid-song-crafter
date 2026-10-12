@@ -15,6 +15,8 @@ Research updated: 2026-10-12. The priority is distinctive, expressive SID music:
 
 ## Read by task
 
+Start with the [technique lookup](technique-index.md) to connect a musical need or listening comment to documented methods, reusable patches and assessment tools. Read the linked evidence before selecting a method.
+
 | Task | Guide |
 | --- | --- |
 | Understand registers and synthesis | [SID hardware](sid/hardware.md) |
@@ -39,7 +41,7 @@ Research updated: 2026-10-12. The priority is distinctive, expressive SID music:
 
 ## Recommended starting path
 
-Start with a [composer study](composers/README.md), identify a specific sound or arrangement question, and choose an experiment from the [repertoire](composition/sound-design-repertoire.md). Compare established editors and their exported drivers in the [tool assessment](tools/composition-tools.md) before expanding the local player. Use the `c64-sid` knowledge skill for hardware semantics and `sid-music` where a working c64bridge connection is appropriate; local verification remains headless.
+Use the [technique lookup](technique-index.md) to identify relevant composer evidence and an existing patch for the musical question. Consult the [repertoire](composition/sound-design-repertoire.md) for experiment briefs and acceptance criteria. Compare established editors and their exported drivers in the [tool assessment](tools/composition-tools.md) before expanding the local player. Use the `c64-sid` knowledge skill for hardware semantics and `sid-music` where a working c64bridge connection is appropriate; local verification remains headless.
 
 Keep the editable score or tracker song, exported PRG/SID, target clock/model, compiler/player revision, and verification evidence together. A recording alone cannot reproduce a C64 song. c64bridge's inspected compiler has material limitations; see the [integration assessment](tools/skills-and-integrations.md) before relying on it for complete classical arrangements.
 

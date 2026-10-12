@@ -2,6 +2,7 @@
 
 Turn musical material into deliberate SID arrangements. Return to the [research index](../README.md).
 
+- [Technique lookup](../technique-index.md): start with a musical need, retrieve evidence and an existing implementation, then choose an audible check.
 - [Instruments and composition](instruments-and-composition.md): voice roles, evolving instruments, and shared controls.
 - [Sound-design repertoire](sound-design-repertoire.md): reusable experiment briefs, listening criteria, and admission rules for verified instruments.
 - [Original native instrument bank](instruments/README.md): implemented SID-Wizard patches with measured evidence and pending listening verdicts.
