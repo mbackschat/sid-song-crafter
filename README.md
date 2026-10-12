@@ -8,6 +8,7 @@ Research and reusable tools for composing expressive Commodore 64 music for one 
 - [Composer studies](docs/research/composers/README.md): seven masters, published accounts, custom tools, and a listening catalogue.
 - [Sound-design repertoire](docs/research/composition/sound-design-repertoire.md): proposed experiments and evidence required for reusable instruments.
 - [Native instrument trials and samples](docs/instrument-trials.md): seven original patches, nine rendered studies, and four level-matched A/B comparisons.
+- [Native VICE checkpoints](docs/native-vice-checks.md): reproduce standalone-player register and cadence checks without a GUI.
 - [Composition tools](docs/research/tools/composition-tools.md): established editors, their drivers, and a practical evaluation plan.
 - [Song workflow](docs/song-workflow.md): source preservation, conversion boundaries, and one-command build/render/verification.
 - [Full Für Elise source and arrangement](docs/fuer-elise-score.md): repeat expansion, musical landmarks, and explicit three-voice reductions.
