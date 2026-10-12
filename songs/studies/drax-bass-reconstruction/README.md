@@ -50,3 +50,25 @@ On 2026-10-13, the independent 546-byte 6502 payload matched 1,209 projected wri
 The PCM is not sample-identical. [pcm-comparison.json](../../../build/drax-bass-reconstruction/pcm-comparison.json) retains measurements of the unshifted raw renders before amplitude matching; there is no offset search or phase correction. The new scheduler writes earlier within each call, and companion oscillator history, exact noise phase and analog state are not reproduced. Same register values do not establish sample equality. The diagnostic reference masks the other voices' waveform/GATE controls and is not an additive audio stem.
 
 The listening question is whether the independently generated bass preserves the character heard in the reference. The A/B and transfer files are ready for that judgment; no listening acceptance, exact analog reconstruction or hardware fidelity is claimed.
+
+## Hear the reconstruction in the original accompaniment
+
+The diagnostic bass comparison above mutes the other voices during rendering; it is not a separate stem extracted from the original mix. For a direct musical comparison, [context-drax-bass.py](../../../scripts/context-drax-bass.py) makes a bounded local hybrid: DRAX's original accompaniment and the independently computed bass execute on one emulated PAL MOS6581. The original voice-one stores are suppressed only during play; voices two and three retain their original driver calculations, ordered writes and values. The independent bass owns runtime filter/volume writes, including the original recipe's bass-only routing. Independent initialization runs before the unchanged original init, so initialization cannot erase accompaniment after it starts.
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/context-drax-bass.py .local/research/fuer-elise/drax-fuer-elise.sid --output build/drax-bass-context/new
+PYTHONPATH=.tools/test-deps python3 -m unittest discover -s tests -p drax_bass_context_test.py -v
+```
+
+Use a fresh output directory inside `build/drax-bass-context`. The hybrid contains the archived driver and therefore stays in ignored local build output; the tracked tool contains only instruction preconditions and our own replacement logic. The source hash and each patched opcode are checked before building. The independent callable payload is relocated to `$8000`; wrappers and flag-preserving interception routines occupy `$9000` onward. No separately rendered audio stems are summed.
+
+| Comparison | Content |
+| --- | --- |
+| [full.ab.wav](../../../build/drax-bass-context/full.ab.wav) | Original three-second opening, half-second gap, same accompaniment with reconstructed bass; the bass enters after the familiar opening. |
+| [original.wav](../../../build/drax-bass-context/original.wav), [reconstructed-in-context.wav](../../../build/drax-bass-context/reconstructed-in-context.wav) | Separate full comparison clips. |
+| [context.ab.wav](../../../build/drax-bass-context/context.ab.wav), [exact.ab.wav](../../../build/drax-bass-context/exact.ab.wav) | The same A/B order for 1.8–3.0 seconds and the selected 2.02–2.75-second fragment. |
+| [execution-guard.json](../../../build/drax-bass-context/execution-guard.json), [study.json](../../../build/drax-bass-context/study.json) | Executed write identities, timing limits, common gain, original PCM identities and renderer identity. |
+
+On 2026-10-13, the 151-call guard verified all 2,020 original companion writes, including initialization, with their original writer identities, call numbers, addresses, values and order. All 1,198 independent runtime bass/global writes matched the separately executed independent player. The wrapper stops calling the original driver at the bound and uses the independent player's explicit volume-zero ending. The complete mixes receive one common scalar gain for peak headroom; each side retains its relative mix level. Separate source normalization would change the accompaniment's amplitude and obscure the replacement's effect.
+
+This verifies an in-context substitution through this short passage. Interception routines add cycles, and the independent bass executes after the accompaniment, so instruction timing within each frame, oscillator/noise phase and analog state can differ. Original intermediate shared-cutoff writes are suppressed. This is not a whole-song replacement, sample equality, hardware fidelity or a listening verdict; the full A/B supplies the musical acceptance question.
