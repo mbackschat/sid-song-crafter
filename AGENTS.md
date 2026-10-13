@@ -31,6 +31,8 @@ From the repository root, install pinned assets with `python3 scripts/setup-proj
 
 Use c64bridge's pinned Bun lockfile. Native integration tests require SID-Wizard setup. Renderer setup is in [the audio guide](docs/workflows/audio-workflow.md).
 
+Apply the standing [automation rule](CLAUDE.md#automate-routine-execution): routine work with many tool calls or repeated agent coordination must become a reusable script, module or recipe. Preserve checks, diagnostics and concrete outputs; use agents for investigation and decisions rather than repeatedly scheduling established steps.
+
 ## Coding Style & Naming Conventions
 
 Use two-space TypeScript, four-space Python/C++, descriptive assembly labels, and `test_*` Python methods. No formatter is configured. Comments explain constraints. Keep Markdown paragraphs on single lines, link related documents, and organize research with folder READMEs.
