@@ -98,6 +98,22 @@ def _write_wav(path, audio, chunks, created):
                 output.writeframesraw(_pcm_bytes(chunk))
 
 
+def _write_comparison_receipt(prefix, comparison_path, manifest_path, audio, chunks, report):
+    prefix.parent.mkdir(parents=True, exist_ok=True)
+    created = []
+    try:
+        _write_wav(comparison_path, audio, chunks, created)
+        report["comparison"]["sha256"] = hashlib.sha256(comparison_path.read_bytes()).hexdigest()
+        with manifest_path.open("x") as output:
+            created.append(manifest_path)
+            output.write(json.dumps(report, indent=2, allow_nan=False) + "\n")
+    except Exception:
+        for path in created:
+            path.unlink(missing_ok=True)
+        raise
+    return report
+
+
 def prepare_comparison(a_path, b_path, prefix, *, target_ac_rms_dbfs=None, peak_headroom_db=1.0, gap_seconds=0.5, individual_copies=False):
     _require(math.isfinite(peak_headroom_db) and peak_headroom_db >= 0, "Peak headroom must be a finite nonnegative dB value")
     _require(math.isfinite(gap_seconds) and 0 <= gap_seconds <= 60, "Gap must be finite and between zero and 60 seconds")
@@ -252,16 +268,53 @@ def prepare_window_comparison(a_path, b_path, prefix, *, start_seconds, end_seco
                    for label, path, original, window in zip(("A", "B"), sources, audio, windows)],
         "listeningReview": None,
     }
-    prefix.parent.mkdir(parents=True, exist_ok=True)
-    created = []
-    try:
-        _write_wav(comparison_path, audio[0], [windows[0].samples, silence, windows[1].samples], created)
-        report["comparison"]["sha256"] = hashlib.sha256(comparison_path.read_bytes()).hexdigest()
-        with manifest_path.open("x") as output:
-            created.append(manifest_path)
-            output.write(json.dumps(report, indent=2, allow_nan=False) + "\n")
-    except Exception:
-        for path in created:
-            path.unlink(missing_ok=True)
-        raise
-    return report
+    return _write_comparison_receipt(prefix, comparison_path, manifest_path, audio[0],
+                                     [windows[0].samples, silence, windows[1].samples], report)
+
+
+def prepare_sequence_comparison(a_path, b_path, prefix, *, gap_seconds=0.5):
+    """Copy both complete inputs at unity gain, separated by the requested gap.
+
+    Durations may differ; sample rate and channel count must match. Rail samples,
+    DC and silence remain intact, including all leading and trailing source frames.
+    """
+    _require(math.isfinite(gap_seconds) and 0 <= gap_seconds <= 60,
+             "Gap must be finite and between zero and 60 seconds")
+    sources = [Path(path).resolve() for path in (a_path, b_path)]
+    prefix = Path(prefix).resolve()
+    comparison_path = Path(str(prefix) + ".ab.wav")
+    manifest_path = Path(str(prefix) + ".comparison.json")
+    for path in (comparison_path, manifest_path):
+        _require(path.resolve() not in sources, f"Output would overwrite a source WAV: {path}")
+        _require(not path.exists() and not path.is_symlink(), f"Output already exists: {path}")
+    audio = [read_pcm16(path) for path in sources]
+    rate, channels = audio[0].sample_rate, audio[0].channels
+    _require((rate, channels) == (audio[1].sample_rate, audio[1].channels),
+             "A and B must have the same sample rate and channels")
+    a_frames, b_frames = (value.frames for value in audio)
+    gap_frames = round(gap_seconds * rate)
+    total_frames = a_frames + gap_frames + b_frames
+    silence = array("h", [0]) * (gap_frames * channels)
+    report = {
+        "schemaVersion": 1,
+        "method": "complete inputs in sequence; original PCM preserved at unity gain",
+        "matching": "none",
+        "normalization": False,
+        "sampleRate": rate,
+        "channels": channels,
+        "gapFrames": gap_frames,
+        "gapSeconds": gap_frames / rate,
+        "comparison": {"path": str(comparison_path), "frames": total_frames,
+                       "durationSeconds": total_frames / rate},
+        "segments": [
+            {"label": "A", "startFrame": 0, "endFrame": a_frames},
+            {"label": "silence", "startFrame": a_frames, "endFrame": a_frames + gap_frames},
+            {"label": "B", "startFrame": a_frames + gap_frames, "endFrame": total_frames},
+        ],
+        "inputs": [{"label": label, "path": str(path), "sha256": value.sha256,
+                    "original": measure_pcm(value), "gain": 1, "gainDb": 0}
+                   for label, path, value in zip(("A", "B"), sources, audio)],
+        "listeningReview": None,
+    }
+    return _write_comparison_receipt(prefix, comparison_path, manifest_path, audio[0],
+                                     [audio[0].samples, silence, audio[1].samples], report)

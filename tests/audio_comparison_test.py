@@ -13,7 +13,7 @@ import wave
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from audio_comparison import inspect_wav, prepare_comparison, prepare_window_comparison
+from audio_comparison import inspect_wav, prepare_comparison, prepare_sequence_comparison, prepare_window_comparison
 
 
 def write_wav(path, samples, rate=8000, channels=1, width=2):
@@ -332,6 +332,121 @@ class AudioComparisonTest(unittest.TestCase):
         result = subprocess.run([sys.executable, str(ROOT / "scripts/compare-audio.py"), "window", str(self.a), str(self.b), str(self.prefix), "--start-seconds", "0.125", "--end-seconds", "0.375", "--gap-seconds", "0"], capture_output=True, text=True, timeout=10)
         self.assertEqual(0, result.returncode, result.stderr)
         self.assertEqual(((1, 8, 4), [1, 2, 10, 20]), read_samples(self.root / "trial.ab.wav"))
+
+    def test_sequence_copies_complete_unequal_stereo_inputs_at_unity_gain(self):
+        a_samples = [0, 0, -32768, 32767, 100, -100]
+        b_samples = [200, -200, 300, -300, 0, 0, 0, 0]
+        write_wav(self.a, a_samples, rate=8, channels=2)
+        write_wav(self.b, b_samples, rate=8, channels=2)
+        originals = [path.read_bytes() for path in (self.a, self.b)]
+        measurements = [inspect_wav(path) for path in (self.a, self.b)]
+        report = prepare_sequence_comparison(self.a, self.b, self.prefix)
+        output = self.root / "trial.ab.wav"
+        self.assertEqual(((2, 8, 11), a_samples + [0] * 8 + b_samples), read_samples(output))
+        self.assertEqual([3, 4], [source["original"]["frames"] for source in report["inputs"]])
+        self.assertEqual([1, 1], [source["gain"] for source in report["inputs"]])
+        self.assertEqual([0, 0], [source["gainDb"] for source in report["inputs"]])
+        self.assertEqual("none", report["matching"])
+        self.assertFalse(report["normalization"])
+        self.assertEqual((4, 0.5), (report["gapFrames"], report["gapSeconds"]))
+        self.assertEqual(11 / 8, report["comparison"]["durationSeconds"])
+        self.assertEqual(report["segments"], [
+            {"label": "A", "startFrame": 0, "endFrame": 3},
+            {"label": "silence", "startFrame": 3, "endFrame": 7},
+            {"label": "B", "startFrame": 7, "endFrame": 11},
+        ])
+        for index, source in enumerate((self.a, self.b)):
+            self.assertEqual(originals[index], source.read_bytes())
+            self.assertEqual(hashlib.sha256(originals[index]).hexdigest(), report["inputs"][index]["sha256"])
+            self.assertEqual({key: value for key, value in measurements[index].items() if key not in ("path", "sha256")}, report["inputs"][index]["original"])
+        self.assertEqual(hashlib.sha256(output.read_bytes()).hexdigest(), report["comparison"]["sha256"])
+        self.assertEqual(report, json.loads((self.root / "trial.comparison.json").read_text()))
+        self.assertIsNone(report["listeningReview"])
+
+    def test_sequence_accepts_silence_and_dc_without_padding_or_fades(self):
+        write_wav(self.a, [0], rate=8)
+        write_wav(self.b, [500, 500, 500], rate=8)
+        report = prepare_sequence_comparison(self.a, self.b, self.prefix, gap_seconds=0)
+        self.assertEqual(((1, 8, 4), [0, 500, 500, 500]), read_samples(self.root / "trial.ab.wav"))
+        self.assertEqual([0, 0], [source["original"]["acRms"] for source in report["inputs"]])
+
+    def test_sequence_rejects_mismatched_and_unsupported_or_empty_formats_before_writing(self):
+        write_wav(self.a, [1, 2], rate=8)
+        fixtures = (([1, 2], 16, 1, 2, "sample rate and channels"),
+                    ([1, 2, 3, 4], 8, 2, 2, "sample rate and channels"),
+                    ([128, 129], 8, 1, 1, "PCM16"),
+                    ([1, 2, 3], 8, 3, 2, "PCM16"),
+                    ([], 8, 1, 2, "empty"))
+        for samples, rate, channels, width, message in fixtures:
+            with self.subTest(rate=rate, channels=channels, width=width, samples=samples):
+                write_wav(self.b, samples, rate=rate, channels=channels, width=width)
+                with self.assertRaisesRegex(ValueError, message):
+                    prepare_sequence_comparison(self.a, self.b, self.prefix)
+                self.assertFalse((self.root / "trial.ab.wav").exists())
+                self.assertFalse((self.root / "trial.comparison.json").exists())
+        write_wav(self.b, [1, 2, 3], rate=8)
+        self.b.write_bytes(self.b.read_bytes()[:-2])
+        with self.assertRaisesRegex(ValueError, "truncated"):
+            prepare_sequence_comparison(self.a, self.b, self.prefix)
+        self.assertFalse((self.root / "trial.ab.wav").exists())
+
+    def test_sequence_rejects_invalid_gaps_before_writing(self):
+        write_wav(self.a, [1], rate=8)
+        write_wav(self.b, [2, 3], rate=8)
+        for gap in (-1, math.nan, math.inf, 61):
+            with self.subTest(gap=gap), self.assertRaises(ValueError):
+                prepare_sequence_comparison(self.a, self.b, self.prefix, gap_seconds=gap)
+        self.assertFalse((self.root / "trial.ab.wav").exists())
+        self.assertFalse((self.root / "trial.comparison.json").exists())
+
+    def test_sequence_refuses_existing_outputs_and_source_collisions(self):
+        write_wav(self.a, [1], rate=8)
+        write_wav(self.b, [2, 3], rate=8)
+        for suffix in (".ab.wav", ".comparison.json"):
+            output = Path(str(self.prefix) + suffix)
+            output.write_bytes(b"keep previous evidence")
+            with self.subTest(suffix=suffix), self.assertRaisesRegex(ValueError, "exists"):
+                prepare_sequence_comparison(self.a, self.b, self.prefix)
+            self.assertEqual(b"keep previous evidence", output.read_bytes())
+            output.unlink()
+        collision = self.root / "collision.ab.wav"
+        write_wav(collision, [5, 6], rate=8)
+        before = collision.read_bytes()
+        with self.assertRaisesRegex(ValueError, "source"):
+            prepare_sequence_comparison(collision, self.b, self.root / "collision")
+        self.assertEqual(before, collision.read_bytes())
+
+    def test_sequence_rolls_back_owned_files_and_preserves_concurrent_outputs(self):
+        write_wav(self.a, [1], rate=8)
+        write_wav(self.b, [2, 3], rate=8)
+        original_open = Path.open
+        for suffix, exclusive_mode in ((".ab.wav", "xb"), (".comparison.json", "x")):
+            output = Path(str(self.prefix) + suffix)
+
+            def concurrent_open(path, mode="r", *args, **kwargs):
+                if path == output and mode == exclusive_mode:
+                    with original_open(path, "wb") as concurrent:
+                        concurrent.write(b"keep concurrent evidence")
+                return original_open(path, mode, *args, **kwargs)
+
+            with self.subTest(suffix=suffix), patch.object(Path, "open", concurrent_open), self.assertRaises(FileExistsError):
+                prepare_sequence_comparison(self.a, self.b, self.prefix)
+            self.assertEqual(b"keep concurrent evidence", output.read_bytes())
+            other_suffix = ".comparison.json" if suffix == ".ab.wav" else ".ab.wav"
+            self.assertFalse(Path(str(self.prefix) + other_suffix).exists())
+            output.unlink()
+        with patch("audio_comparison.json.dumps", side_effect=OSError("receipt failure")), self.assertRaises(OSError):
+            prepare_sequence_comparison(self.a, self.b, self.prefix)
+        self.assertFalse((self.root / "trial.ab.wav").exists())
+        self.assertFalse((self.root / "trial.comparison.json").exists())
+
+    def test_cli_sequence_preserves_full_unequal_inputs(self):
+        write_wav(self.a, [9, 1], rate=8)
+        write_wav(self.b, [7, 10, 20], rate=8)
+        result = subprocess.run([sys.executable, str(ROOT / "scripts/compare-audio.py"), "sequence", str(self.a), str(self.b), str(self.prefix), "--gap-seconds", "0.25"], capture_output=True, text=True, timeout=10)
+        self.assertEqual(0, result.returncode, result.stderr)
+        self.assertEqual(((1, 8, 7), [9, 1, 0, 0, 7, 10, 20]), read_samples(self.root / "trial.ab.wav"))
+        self.assertIn("Gain: A +0.000 dB, B +0.000 dB", result.stdout)
 
 
 if __name__ == "__main__":

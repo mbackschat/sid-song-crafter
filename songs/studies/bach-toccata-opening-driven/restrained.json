@@ -1,0 +1,97 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score.json",
+  "author": "Original SID arrangement",
+  "released": "2026",
+  "sidCount": 1,
+  "sidModel": "MOS8580",
+  "timingPolicy": "retain-full-pitch",
+  "title": "Bach opening: sustained",
+  "authorinfo": "ORIGINAL:BACH SUSTAINED OPENING",
+  "instruments": {
+    "lead": {
+      "name": "BCHLEAD",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0288",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "87",
+          "80",
+          "00"
+        ]
+      ],
+      "filter": []
+    },
+    "bass": {
+      "name": "BCHBASS",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "02a9",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ],
+      "filter": [
+        [
+          "92",
+          "a0",
+          "00"
+        ]
+      ]
+    },
+    "harmony": {
+      "name": "BCHHARM",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0258",
+      "frame1": "09",
+      "wave": [
+        [
+          "51",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ],
+      "filter": []
+    }
+  },
+  "sections": [
+    {
+      "name": "Sustained reduced opening",
+      "startBeat": 0,
+      "endBeat": 12,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    }
+  ]
+}

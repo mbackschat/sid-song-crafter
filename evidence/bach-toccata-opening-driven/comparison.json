@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "method": "complete inputs in sequence; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-driven-v1/cache/comparison/c200097ad2da8479c82d5f9227f78811de2d038732f0f5426d56165728882772/attempt-6583c738835545c7a9311a3f3f8286fb/previous-then-driven.ab.wav",
+    "frames": 1919135,
+    "durationSeconds": 43.51780045351474,
+    "sha256": "c6e55abe52b01f61fe3624d26c2daa9e7c33495e5a6f344155169cc5ff9d4564"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 1213365
+    },
+    {
+      "label": "silence",
+      "startFrame": 1213365,
+      "endFrame": 1235415
+    },
+    {
+      "label": "B",
+      "startFrame": 1235415,
+      "endFrame": 1919135
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-driven-v1/cache/previous/70cd01e19ffc9623d43bc8c2d2d2f4f195e71eab162c9688c7565a58d538b685/attempt-fb20af0cb9a1489ab6695907f1222dd9/song/native-song.wav",
+      "sha256": "b1a905e379eedecea1df1e405233165850a319d3a14631a2479d6f3ce6102318",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 1213365,
+        "durationSeconds": 27.513945578231294,
+        "peak": 11540,
+        "peakDbfs": -9.064882522800106,
+        "clippedSamples": 0,
+        "rms": 2772.1798929344054,
+        "acRms": 2740.8897653299523,
+        "acRmsDbfs": -21.55116731545015,
+        "perChannel": [
+          {
+            "dc": -415.3367947814549,
+            "rms": 2772.1798929344054,
+            "acRms": 2740.8897653299523
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-driven-v1/cache/driven/14ce013ad5fd74d18bb6a7b00717f40d31bd6c5e0d3fe7694d1cb27c44227533/attempt-1a7d7563189b44138c4beca75fb3c5c7/song/native-song.wav",
+      "sha256": "62ebf90fc8fa531f016bbcdad4236c01958a5e83d827e0a56efdab330e991b04",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 683720,
+        "durationSeconds": 15.503854875283446,
+        "peak": 11557,
+        "peakDbfs": -9.05209643365335,
+        "clippedSamples": 0,
+        "rms": 2914.039310188461,
+        "acRms": 2881.82207825156,
+        "acRmsDbfs": -21.11565541404037,
+        "perChannel": [
+          {
+            "dc": -432.1187459778857,
+            "rms": 2914.039310188461,
+            "acRms": 2881.82207825156
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}
