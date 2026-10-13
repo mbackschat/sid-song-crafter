@@ -1,13 +1,15 @@
 import json
 from pathlib import Path
 import subprocess
+import sys
 import tempfile
 import unittest
 
-from py65.devices.mpu6502 import MPU
-
-
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
+from verify_player import cpu_type
+
+
 CYCLES_PER_FRAME = 312 * 63
 PAL_CLOCK = 17734475 / 18
 TICKS_PER_SECOND = PAL_CLOCK / CYCLES_PER_FRAME
@@ -42,7 +44,7 @@ class Machine:
         self.manifest = json.loads((directory / f"{name}.events.json").read_text())
         self.symbols = self.manifest["symbols"]
         self.memory = Memory()
-        self.cpu = MPU(memory=self.memory)
+        self.cpu = cpu_type()(memory=self.memory)
         self.memory.cpu = self.cpu
         prg = (directory / f"{name}.prg").read_bytes()
         load = int.from_bytes(prg[:2], "little")

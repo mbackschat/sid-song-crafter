@@ -24,7 +24,14 @@ def cpu_type():
         require((dependencies / "py65").is_dir(), "Exact CPU verification requires py65; install the documented dependencies in .tools/test-deps")
         sys.path.insert(0, str(dependencies))
         from py65.devices.mpu6502 import MPU
-    return MPU
+
+    class VerifiedMPU(MPU):
+        # py65 1.2.0 declares $CE as 3 cycles; the VICE DEC fixture in
+        # tests/shades_vice_trace_test.py independently measures 6.
+        cycletime = MPU.cycletime.copy()
+        cycletime[0xce] = 6
+
+    return VerifiedMPU
 
 
 def rounded(value):

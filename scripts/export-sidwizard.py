@@ -5,7 +5,8 @@ import hashlib
 import json
 from pathlib import Path
 import re
-import sys
+
+from verify_player import cpu_type
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -113,17 +114,6 @@ def inspect_module(data):
         cursor -= size + 1
     require(cursor == 66, "Invalid native module structure or trailing data")
     return {"sidCount": sid_count, "patterns": header[13], "sequences": header[12], "instruments": list(reversed(instruments)), "chordBytes": header[15], "tempoBytes": header[16]}
-
-
-def cpu_type():
-    try:
-        from py65.devices.mpu6502 import MPU
-    except ModuleNotFoundError:
-        dependencies = ROOT / ".tools/test-deps"
-        require((dependencies / "py65").is_dir(), "Install py65 1.2.0 using the documented repository setup")
-        sys.path.insert(0, str(dependencies))
-        from py65.devices.mpu6502 import MPU
-    return MPU
 
 
 def call(cpu, labels, name, stop=None):

@@ -1,13 +1,15 @@
 import json
 from pathlib import Path
 import subprocess
+import sys
 import tempfile
 import unittest
 
-from py65.devices.mpu6502 import MPU
-
-
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
+from verify_player import cpu_type
+
+
 CYCLES_PER_FRAME = 312 * 63
 
 
@@ -39,7 +41,7 @@ class Memory:
 class Machine:
     def __init__(self, prg, symbols):
         self.memory = Memory()
-        self.cpu = MPU(memory=self.memory)
+        self.cpu = cpu_type()(memory=self.memory)
         self.memory.cpu = self.cpu
         load = int.from_bytes(prg[:2], "little")
         self.memory.data[load:load + len(prg) - 2] = prg[2:]
