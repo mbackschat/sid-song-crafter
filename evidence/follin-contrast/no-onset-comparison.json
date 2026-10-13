@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    6.4,
+    7.7
+  ],
+  "window": {
+    "startFrame": 282240,
+    "endFrame": 339570,
+    "frames": 57330,
+    "startSeconds": 6.4,
+    "endSeconds": 7.7,
+    "durationSeconds": 1.3
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/follin-contrast/listening/cache/no-onset-comparison/841fc35cfaff9008e5e2730c73ef997dcc4f6da870caed26c598627162befcc5/attempt-bf3105b07b6448fd819f9c327dde0d11/gauntlet-original-then-no-onset.ab.wav",
+    "frames": 136710,
+    "durationSeconds": 3.1,
+    "sha256": "8fb805f41fd46608918800ee713a46d08d24393b77517097374bf49d5dcf0717"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 57330
+    },
+    {
+      "label": "silence",
+      "startFrame": 57330,
+      "endFrame": 79380
+    },
+    {
+      "label": "B",
+      "startFrame": 79380,
+      "endFrame": 136710
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/follin-contrast/listening/cache/original-render/3b9111025ccbeed90102d4033fbd3fc5f4bb9bfbf7ab6811f466d5f1dc0c7e3c/attempt-56fac679744543b989ce7c9fe2016911/render.wav",
+      "sha256": "96000bb434c2fa7e17a2264f2c13c7b78de1e2e83edbec1305870500a7378112",
+      "originalFrames": 1411200,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 57330,
+        "durationSeconds": 1.3,
+        "peak": 12522,
+        "peakDbfs": -8.355524710212405,
+        "clippedSamples": 0,
+        "rms": 3791.7015092090355,
+        "acRms": 3173.1710159071604,
+        "acRmsDbfs": -20.27912912441989,
+        "perChannel": [
+          {
+            "dc": -2075.5688470259897,
+            "rms": 3791.7015092090355,
+            "acRms": 3173.1710159071604
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/follin-contrast/listening/cache/no-onset-render/13e6a580edb49d8c76040a812ac613706bd569fad585bb317c1b3ac202dab07c/attempt-6aa119bd4ade469c81308565beae9b32/render.wav",
+      "sha256": "7cc6200ff242fac527fe0e10b47483748b7b3d478d28104d03580623950f5db1",
+      "originalFrames": 1411200,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 57330,
+        "durationSeconds": 1.3,
+        "peak": 12814,
+        "peakDbfs": -8.155304306077523,
+        "clippedSamples": 0,
+        "rms": 3812.8941626636015,
+        "acRms": 3194.038812738024,
+        "acRmsDbfs": -20.22219491489501,
+        "perChannel": [
+          {
+            "dc": -2082.3731554160127,
+            "rms": 3812.8941626636015,
+            "acRms": 3194.038812738024
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

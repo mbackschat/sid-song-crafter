@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "executed-proof",
+      "command": [
+        "{python}",
+        "scripts/studies/gauntlet/probe-contrast.py",
+        "--output",
+        "{out}/evidence"
+      ],
+      "inputs": [
+        "scripts/studies/gauntlet/probe-contrast.py",
+        "scripts/ghouls_programs.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_intake.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".local/research/gauntlet-iii/Gauntlet_III.sid"
+      ],
+      "outputs": [
+        "evidence/receipt.json",
+        "evidence/findings.json",
+        "evidence/original.json.gz",
+        "evidence/no-onset.json.gz",
+        "evidence/stationary-pwm.json.gz",
+        "evidence/rest-control.json.gz",
+        "evidence/no-onset.sid",
+        "evidence/stationary-pwm.sid",
+        "evidence/rest-control.sid"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "original-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/gauntlet-iii/Gauntlet_III.sid",
+        "{out}/render.wav",
+        "32",
+        "--subtune",
+        "2"
+      ],
+      "inputs": [
+        ".local/research/gauntlet-iii/Gauntlet_III.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "no-onset-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:executed-proof}/evidence/no-onset.sid",
+        "{out}/render.wav",
+        "32",
+        "--subtune",
+        "2"
+      ],
+      "inputs": [
+        "{stage:executed-proof}/evidence/no-onset.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "stationary-pwm-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:executed-proof}/evidence/stationary-pwm.sid",
+        "{out}/render.wav",
+        "32",
+        "--subtune",
+        "2"
+      ],
+      "inputs": [
+        "{stage:executed-proof}/evidence/stationary-pwm.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "no-onset-signal",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:original-render}/render.wav",
+        "{stage:no-onset-render}/render.wav",
+        "--seconds",
+        "32",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:no-onset-render}/render.wav"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "stationary-pwm-signal",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:original-render}/render.wav",
+        "{stage:stationary-pwm-render}/render.wav",
+        "--seconds",
+        "32",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:stationary-pwm-render}/render.wav"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "no-onset-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:original-render}/render.wav",
+        "{stage:no-onset-render}/render.wav",
+        "{out}/gauntlet-original-then-no-onset",
+        "--start-seconds",
+        "6.4",
+        "--end-seconds",
+        "7.7",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:no-onset-render}/render.wav"
+      ],
+      "outputs": [
+        "gauntlet-original-then-no-onset.ab.wav",
+        "gauntlet-original-then-no-onset.comparison.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "stationary-pwm-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:original-render}/render.wav",
+        "{stage:stationary-pwm-render}/render.wav",
+        "{out}/gauntlet-original-then-stationary-pwm",
+        "--start-seconds",
+        "16",
+        "--end-seconds",
+        "24",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:stationary-pwm-render}/render.wav"
+      ],
+      "outputs": [
+        "gauntlet-original-then-stationary-pwm.ab.wav",
+        "gauntlet-original-then-stationary-pwm.comparison.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "executedReceipt": "{stage:executed-proof}/evidence/receipt.json",
+    "classifiedFindings": "{stage:executed-proof}/evidence/findings.json",
+    "originalGauntletSubtune2Initialized32Seconds": "{stage:original-render}/render.wav",
+    "sameMaterialNoOnset32Seconds": "{stage:no-onset-render}/render.wav",
+    "sameMaterialStationaryPwmStep0Fallback0800_32Seconds": "{stage:stationary-pwm-render}/render.wav",
+    "originalThenNoOnset6p4to7p7Seconds": "{stage:no-onset-comparison}/gauntlet-original-then-no-onset.ab.wav",
+    "originalThenStationaryPwm16to24Seconds": "{stage:stationary-pwm-comparison}/gauntlet-original-then-stationary-pwm.ab.wav"
+  }
+}

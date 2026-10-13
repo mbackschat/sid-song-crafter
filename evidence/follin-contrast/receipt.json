@@ -1,0 +1,160 @@
+{
+  "passed": true,
+  "source": {
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/F/Follin_Tim/Gauntlet_III.sid",
+    "sha256": "caec9549f437f6c1a1ee77edc9a034436fb66b2c8ba939adf45b889656c99328",
+    "selectedSubtune": 2,
+    "header": {
+      "schemaVersion": 1,
+      "bytes": 6642,
+      "sha256": "caec9549f437f6c1a1ee77edc9a034436fb66b2c8ba939adf45b889656c99328",
+      "format": "PSID",
+      "version": 2,
+      "dataOffset": 124,
+      "headerLoadAddress": 0,
+      "loadAddress": 43776,
+      "payloadBytes": 6516,
+      "endAddressExclusive": 50292,
+      "initAddress": 50272,
+      "playAddress": 43952,
+      "subtunes": 2,
+      "defaultSubtune": 1,
+      "selectedSubtune": 2,
+      "speedWord": 0,
+      "flags": 20,
+      "clockDeclaration": "PAL",
+      "sidModelDeclaration": "MOS6581",
+      "selectedTimingDeclaration": "VBI",
+      "title": "Gauntlet III",
+      "author": "Tim & Geoff Follin",
+      "released": "1992 US Gold",
+      "callableProfile": {
+        "profile": "pal-banked",
+        "accepted": true,
+        "reason": null,
+        "hostBase": 32768,
+        "requestedHostBase": 32768
+      },
+      "limits": "Header declarations and current profile admission only; no driver execution, measured cadence, subtune-role identification or listening verdict."
+    }
+  },
+  "method": {
+    "clock": "PAL",
+    "sidModel": "MOS6581",
+    "hostBase": 32768,
+    "calls": 1604,
+    "registerEvidence": "Ordered pre-instruction CPU stores and named state; no renderer snapshots used as a write ledger",
+    "reference": [
+      "scripts/ghouls_programs.py",
+      "evidence/ghouls-numeric/sound/receipt.json"
+    ]
+  },
+  "initializedOriginal": {
+    "matchedContexts": 10071,
+    "stores": 17747,
+    "paths": {
+      "onset/idle": 4662,
+      "pulse/up": 3529,
+      "setup/positive-note": 447,
+      "pulse/disabled": 1094,
+      "onset/restore": 150,
+      "pulse/up-upper-reverse": 2,
+      "pulse/down": 186,
+      "pulse/lower-reverse": 1
+    }
+  },
+  "interventions": {
+    "no-onset": {
+      "changes": [
+        {
+          "address": 49807,
+          "original": 1,
+          "candidate": 0,
+          "parameter": "voice3 onset delay"
+        }
+      ],
+      "candidateSha256": "4b6890a4c61b584477297f3c23d7644c2c936675583bd3fa2d70d57659d5afbc",
+      "matchedContexts": 10071
+    },
+    "stationary-pwm": {
+      "changes": [
+        {
+          "address": 49453,
+          "original": 40,
+          "candidate": 0,
+          "parameter": "voice1 pulse step"
+        },
+        {
+          "address": 45954,
+          "original": 0,
+          "candidate": 8,
+          "parameter": "voice1 zero-default fallback high byte"
+        }
+      ],
+      "candidateSha256": "4f29a500230230575384533016286b3952a39c5fbda8a99cd60e0da3e237f916",
+      "matchedContexts": 10071
+    },
+    "rest-control": {
+      "changes": [
+        {
+          "address": 49477,
+          "original": 48,
+          "candidate": 0,
+          "parameter": "voice1 selected score note becomes rest"
+        }
+      ],
+      "candidateSha256": "de088895507d019b8100d88e4fdb500fc1484b949d11e22c6cb98482287cc27d",
+      "matchedContexts": 10069
+    }
+  },
+  "findings": {
+    "attack": "supported across both",
+    "pulseAcrossNotes": "supported across both",
+    "pulseAcrossRests": "supported across both \u2014 controlled evidence",
+    "universality": "tune-driver specific"
+  },
+  "outputHashes": {
+    "rest-control.json.gz": {
+      "bytes": 318019,
+      "sha256": "12f815bf215fde6000e89be722de99491ae97e0e7dce57f84a649cc21ff3b3c0"
+    },
+    "rest-control.sid": {
+      "bytes": 6642,
+      "sha256": "de088895507d019b8100d88e4fdb500fc1484b949d11e22c6cb98482287cc27d"
+    },
+    "stationary-pwm.json.gz": {
+      "bytes": 313470,
+      "sha256": "1423e7bba9520f4e1a587aa8db17b3a27affacdb41ae5430e5e5fe3076811d7b"
+    },
+    "no-onset.json.gz": {
+      "bytes": 317658,
+      "sha256": "546ddee70399fe381bec3a3432026fe086b64a343b364a3ab6b7c296630fcc0e"
+    },
+    "stationary-pwm.sid": {
+      "bytes": 6642,
+      "sha256": "4f29a500230230575384533016286b3952a39c5fbda8a99cd60e0da3e237f916"
+    },
+    "findings.json": {
+      "bytes": 71184,
+      "sha256": "c9876190b2caba4a7dcf9ec03cfcf95479e1ae1a0f91065225b05697e5737187"
+    },
+    "no-onset.sid": {
+      "bytes": 6642,
+      "sha256": "4b6890a4c61b584477297f3c23d7644c2c936675583bd3fa2d70d57659d5afbc"
+    },
+    "original.json.gz": {
+      "bytes": 317908,
+      "sha256": "d83423a0a6558e778458b0549855d5f2b41978fc2416c505fcf80aff1259cb8e"
+    }
+  },
+  "tools": {
+    "scripts/studies/gauntlet/probe-contrast.py": "f49cfe4cac3b384c724740fa4d7cc35428bdecda14a96f74aa8cc2d0422b6167",
+    "scripts/ghouls_programs.py": "5693148d091ab107ea601aa244ae1673b1ac148375e7f935448842357f5a0342",
+    "scripts/psid_audit.py": "eeea11cdbb5159745f36802526ee2f2986d12fe19ce47b3609fedcf15f47e1bd",
+    "scripts/psid_profile.py": "c2c696db133ed024840cfa5edbc76e3a07ef1f30345cc1820c978a51a73c816d",
+    "scripts/sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "scripts/sid_intake.py": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0",
+    "scripts/verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "limits": "Bounded initialized CPU corroboration and causal data interventions, not whole Gauntlet reconstruction, hardware/VICE/audio identity or musical acceptance."
+}

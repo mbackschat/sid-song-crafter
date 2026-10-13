@@ -21,7 +21,8 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Monty on the Run reconstruction](monty-preparation.md): complete independent first-cycle export, finite ending and familiar transfer with full CPU/VICE/audio evidence; opening, corrected source continuation and familiar transfer accepted; authored fade retained separately.
 - [Rambo: First Blood Part II](rambo-preparation.md): independent compiled loader, complete CPU/VICE proof, matched listening package and accepted familiar-material transfer of its lifetime/PWM/pitch programs.
 - [Galway contrast: Rambo and Arkanoid](galway-contrast.md): executed modulation through rests, score hooks and incompatible fast volume-path drum synthesis, with a bounded same-material listening diagnostic.
-- [Prepare Ghouls ’n Ghosts](ghouls-preparation.md): archive/subtune boundaries, finite stream form and CPU/VICE terminal verification with continuing filter writes.
+- [Ghouls ’n Ghosts](ghouls-preparation.md): complete independent compiled player, full CPU/VICE proof and accepted phrase/ending comparisons; familiar transfer listening pending.
+- [Follin contrast: Ghouls and Gauntlet III](follin-contrast.md): staged onset, phase-retaining pulse motion and controlled rest behavior, with joint Tim/Geoff credit and bounded listening diagnostic.
 - [Prepare Deflektor](deflektor-preparation.md): complete finite numeric player, ordered score operations, editable sound components and full-register proof with bounded source edits.
 - [Prepare Billie Jean](billie-jean-preparation.md): independent score expansion across two cycles, retained sound-state differences, duration intervention and VICE wrap verification.
 - [Prepare the pop songs and themes](pop-theme-preparation.md): pinned Take On Me, Billie Jean, Airwolf and Ghostbusters; Airwolf’s independent full-cycle model, bounded callable comparisons, unspecified-model and RSID boundaries.

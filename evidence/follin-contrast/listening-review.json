@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-13",
+  "status": "awaiting-listening",
+  "question": "Does the original moving pulse sound more animated than the stationary pulse diagnostic, or is there little audible difference?",
+  "scope": "Gauntlet III subtune 2, 16\u201324 seconds, original first and diagnostic second; pulse step zero plus safe stationary width. No onset-diagnostic listening verdict requested.",
+  "publication": {
+    "schemaVersion": 1,
+    "run": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/follin-contrast/listening/run.json",
+      "sha256": "5e9bd7e8ab5bfdb626e9201b0df0e03e1bd7ec93bdb17efdc3284e95731f2ccf",
+      "bytes": 28100
+    },
+    "selection": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/scripts/studies/gauntlet/audition.json",
+      "sha256": "f4072d10eb314a5cc08341337a15878432c2c2902acff75e0eddfe5eb1727c09",
+      "bytes": 237
+    },
+    "files": [
+      {
+        "label": "originalGauntletSubtune2Initialized32Seconds",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/follin-contrast/listening/cache/original-render/3b9111025ccbeed90102d4033fbd3fc5f4bb9bfbf7ab6811f466d5f1dc0c7e3c/attempt-56fac679744543b989ce7c9fe2016911/render.wav",
+        "filename": "reference.wav",
+        "sha256": "96000bb434c2fa7e17a2264f2c13c7b78de1e2e83edbec1305870500a7378112",
+        "bytes": 2822444,
+        "stageId": "original-render"
+      },
+      {
+        "label": "sameMaterialStationaryPwmStep0Fallback0800_32Seconds",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/follin-contrast/listening/cache/stationary-pwm-render/67ec93acd577f8de7366cd3da1ff6f0276355364b856a05ee904941d1985c4e2/attempt-535f312c52744f9d9edadf3b3022ed45/render.wav",
+        "filename": "stationary-pulse.wav",
+        "sha256": "18079bcbbe3e5ef27fa354eddf6f46d117d730ba6f344c9f2fe731995f854fce",
+        "bytes": 2822444,
+        "stageId": "stationary-pwm-render"
+      },
+      {
+        "label": "originalThenStationaryPwm16to24Seconds",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/follin-contrast/listening/cache/stationary-pwm-comparison/fa1a62e9fe1a94a23bd5b438253b280d0b8ef9c927d8ab3647b637a69a9ddfe9/attempt-13b4c48f770849ffbcbfb8067fc8bcf9/gauntlet-original-then-stationary-pwm.ab.wav",
+        "filename": "original-then-stationary-pulse.ab.wav",
+        "sha256": "7513f4133a21fae7ba72c11d58b761e34c6bef36015be9dfa437d9cc86aee299",
+        "bytes": 1455344,
+        "stageId": "stationary-pwm-comparison"
+      }
+    ]
+  }
+}

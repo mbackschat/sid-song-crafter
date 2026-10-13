@@ -10,7 +10,7 @@ The [Ghouls study](../ghouls-preparation.md) owns source attribution and the com
 | Bass / 2 | Voice 1, call 1413 | Triangle body preceded by one PAL call of noise; body pitch is restored by the delayed-onset program |
 | Harmony / 3 | Voice 2, call 1413 | The same moving pulse body on the preserved accompaniment notes |
 
-The selected source patches have no filter routing, pitch sweeps, alternating-note replacement, glide, ring modulation or oscillator synchronization. This keeps the familiar notes identifiable while testing pulse motion and a staged attack. It does not establish that every Ghouls program is transferable to an arbitrary melody, or a general Follin sound. The [required Gauntlet III comparison](../../study-plan.md#required-contrasting-references-for-the-six-composers) remains a separate corroboration task with joint Tim and Geoff Follin credit.
+The selected source patches have no filter routing, pitch sweeps, alternating-note replacement, glide, ring modulation or oscillator synchronization. This keeps the familiar notes identifiable while testing pulse motion and a staged attack. It does not establish that every Ghouls program is transferable to an arbitrary melody, or a general Follin sound. The [Gauntlet III comparison](../follin-contrast.md) corroborates the selected staged-onset and zero-default phase-retention contracts. Nonzero pulse defaults reset phase in that same reference; preservation is a patch choice, not a universal behavior. Natural rests are absent from its selected passage, so rest continuation is supported by a controlled score edit. Joint Tim and Geoff Follin credit remains explicit; diagnostic listening is pending.
 
 ## Editable source and reproduction
 

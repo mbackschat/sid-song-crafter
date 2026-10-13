@@ -1,6 +1,6 @@
 # Ghouls 'n' Ghosts: reference intake
 
-This preparation pins the C64 reference, preserves supported subtune attribution and establishes finite stream consumption for provisional selection **1**, followed by continued filter refresh. CPU execution covers 40,000 calls, with independent VICE comparisons at the opening and final stream stop. A 265-second initialized source render and contrasting Gauntlet III subtune intake are available. The complete editable numeric player, compiled export and full callable VICE comparison match the original ordered stores. Reconstruction and familiar-transfer listening, selection 1's musical role and Gauntlet III corroboration remain open. Read the [Follin composer study](../composers/follin-daglish.md), [technique lookup](../technique-index.md) and [execution procedure](../tools/sid-program-analysis.md) before choosing a passage or implementing an instrument.
+This preparation pins the C64 reference, preserves supported subtune attribution and establishes finite stream consumption for provisional selection **1**, followed by continued filter refresh. CPU execution covers 40,000 calls, with independent VICE comparisons at the opening and final stream stop. A 265-second initialized source render and contrasting Gauntlet III subtune intake are available. The complete editable numeric player, compiled export and full callable VICE comparison match the original ordered stores. The reconstruction's characteristic phrase and complete ending are accepted; familiar-transfer listening, selection 1's musical role and Gauntlet III corroboration remain open. Read the [Follin composer study](../composers/follin-daglish.md), [technique lookup](../technique-index.md) and [execution procedure](../tools/sid-program-analysis.md) before choosing a passage or implementing an instrument.
 
 ## Reference identity
 
@@ -57,7 +57,7 @@ python3 scripts/setup-project.py --only references --include gauntlet-iii
 python3 scripts/reference-intake.py run config/reference-intake/follin-subtunes.json --output build/reference-intake/follin-subtunes
 ```
 
-The generated `build/reference-intake/follin-subtunes/listening.md` links both sources and an opening comparison: subtune 1 for 16 seconds, half a second of silence, then subtune 2 for 16 seconds. It compares two source selections, not a recreation. Choose the passage for the required mechanism corroboration after the primary Ghouls sound contracts are established; this intake alone does not complete the [contrasting-reference requirement](../study-plan.md#required-contrasting-references-for-the-six-composers).
+The generated `build/reference-intake/follin-subtunes/listening.md` links both sources and an opening comparison: subtune 1 for 16 seconds, half a second of silence, then subtune 2 for 16 seconds. It compares two source selections, not a recreation. The [bounded mechanism contrast](follin-contrast.md) selects subtune 2 and verifies its first 1,604 calls; the onset and pulse diagnostics use passages around 6.4–7.7 and 16–24 seconds. Intake alone does not complete the [contrasting-reference requirement](../study-plan.md#required-contrasting-references-for-the-six-composers); the pulse diagnostic still awaits listening.
 
 ## Callable admission and execution boundary
 
@@ -134,7 +134,7 @@ PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 scripts/studies/ghou
 PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 scripts/studies/ghouls/sound-probe.py --output build/ghouls-sound-new
 ```
 
-These source-specific research commands require fresh output directories and the pinned private source. They automate capture, independent calculations, retained-oracle comparisons and controlled checks. They do not export a production song. The complete numeric integration below now advances those components together; compilation, matched full renders and familiar-material transfer follow. No reconstruction or instrument-reuse listening verdict follows from these component proofs.
+These source-specific research commands require fresh output directories and the pinned private source. They automate capture, independent calculations, retained-oracle comparisons and controlled checks. They do not export a production song. The complete numeric integration and [compiled delivery below](#compiled-export-and-complete-listening-package) advance those components together, with matched full renders and a familiar-material transfer. No reconstruction or instrument-reuse listening verdict follows from these component proofs.
 
 ## Independently advancing editable player
 
@@ -157,7 +157,7 @@ python3 scripts/studies/ghouls/check-ghouls-player.py --output build/ghouls-nume
 python3 -m unittest discover -s tests -p ghouls_player_test.py -v
 ```
 
-Extraction requires the pinned private SID and a fresh output path. Numeric verification requires only the editable description and canonical original ledger; it does not recapture or execute the original. The extractor stays under [study tools](../../../scripts/studies/README.md), while the source-free runtime serves editable compositions. Full export, listening and a familiar-material transfer must still establish the useful musical scope of this implementation family.
+Extraction requires the pinned private SID and a fresh output path. Numeric verification requires only the editable description and canonical original ledger; it does not recapture or execute the original. The extractor stays under [study tools](../../../scripts/studies/README.md), while the source-free runtime serves editable compositions. The [full export and listening delivery](#compiled-export-and-complete-listening-package) establish the declared reconstruction scope; the familiar transfer separately tests musical reuse.
 
 ## Compiled export and complete listening package
 
@@ -187,9 +187,9 @@ The [five controlled edits](../../../evidence/ghouls-numeric/edits/receipt.json)
 PYTHONPATH=.tools/test-deps python3 scripts/studies/ghouls/check-ghouls-edits.py --output build/ghouls-edits-new
 ```
 
-The submitted local audition lives in `build/ghouls-listening/`: `reference.wav`, `reconstructed.wav`, `opening-reference-then-ours.ab.wav`, `phrase-reference-then-ours.ab.wav` and `ending-reference-then-ours.ab.wav`. The [pending listening record](../../../evidence/ghouls-independent-full/listening-review.json) pins those exact files. Recreate a fresh stable folder with the [audition publisher](../../workflows/listening-package.md#preserve-stable-audition-filenames) and [selection](../../../config/listening/ghouls-full.audition.json).
+The submitted local audition lives in `build/ghouls-listening/`: `reference.wav`, `reconstructed.wav`, `opening-reference-then-ours.ab.wav`, `phrase-reference-then-ours.ab.wav` and `ending-reference-then-ours.ab.wav`. The [submission record](../../../evidence/ghouls-independent-full/listening-review.json) pins those exact files. Recreate a fresh stable folder with the [audition publisher](../../workflows/listening-package.md#preserve-stable-audition-filenames) and [selection](../../../config/listening/ghouls-full.audition.json).
 
-The [familiar transfer card](instruments/ghouls-decoded-programs.md) supplies a separate same-score comparison using selected pulse and staged-onset programs. Its final-release adaptation belongs only to that new arrangement; it does not change the primary reconstruction. The listener accepted the characteristic phrase on 2026-10-13: “I can't hear a difference, nice”; the [scoped verdict](../../../evidence/ghouls-independent-full/phrase-review.json) pins its audio. Ending and familiar-transfer acceptance remain pending.
+The [familiar transfer card](instruments/ghouls-decoded-programs.md) supplies a separate same-score comparison using selected pulse and staged-onset programs. Its final-release adaptation belongs only to that new arrangement; it does not change the primary reconstruction. The listener accepted the characteristic phrase on 2026-10-13: “I can't hear a difference, nice”; the [scoped verdict](../../../evidence/ghouls-independent-full/phrase-review.json) pins its audio. The complete ending was also accepted: “ref and ours are the same, nice”; its [separate verdict](../../../evidence/ghouls-independent-full/ending-review.json) pins the ending comparison. Familiar-transfer acceptance remains pending.
 
 ## Reproduce the form investigation
 
