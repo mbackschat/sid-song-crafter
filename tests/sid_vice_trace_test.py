@@ -28,6 +28,52 @@ def store(cycle, value=1, opcode='8D 02 D4', mnemonic='STA $D402'):
 
 
 class SidViceTraceTest(unittest.TestCase):
+    def test_dual_pal_profile_declares_both_chips_and_traces_only_their_sound_registers(self):
+        data = sid_fixture()
+        data[5], data[119], data[122] = 3, 0x54, 0x42
+        profile = trace.psid_profile(data)
+        self.assertEqual([0xd400, 0xd420], profile['sidBases'])
+        _, labels = trace.harness(profile, 3)
+        commands = trace.monitor_commands(Path('/tmp/payload.prg'), Path('/tmp/harness.prg'), profile, labels, 0, 2)
+        self.assertIn('trace store $d400 $d418 if', commands)
+        self.assertIn('trace store $d420 $d438 if', commands)
+        second = store(120, 9, '8D 22 D4', 'STA $D422').replace('store d402', 'store d422')
+        parsed = trace.parse_trace(entry(100) + store(116) + second, 0x1006, profile['sidBases'])
+        self.assertEqual([0xd402, 0xd422], [row['address'] for row in parsed['writes']])
+        with self.assertRaisesRegex(ValueError, 'address'):
+            trace.parse_trace(entry(100) + second, 0x1006)
+        for offset, value in ((119, 0x94), (122, 0x50), (123, 0x44)):
+            invalid = bytearray(data)
+            invalid[offset] = value
+            with self.subTest(offset=offset), self.assertRaises(ValueError):
+                trace.psid_profile(invalid)
+
+    def test_headless_vice_dual_fixture_preserves_chip_filters_and_six_voice_writes(self):
+        vice = ROOT / '.tools/vice-headless-3.9/build/src/x64sc'
+        data_directory = Path('/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice')
+        if not vice.is_file() or not data_directory.is_dir():
+            self.skipTest('Local headless VICE and ROM data are required for the executed fixture')
+        data = sid_fixture()[:130]
+        data[5], data[119], data[122] = 3, 0x54, 0x42
+        pairs = [(base + voice * 7, value) for base, start in ((0xd400, 0x11), (0xd420, 0x51))
+                 for voice, value in enumerate(range(start, start + 3))]
+        pairs += [(0xd416, 0x20), (0xd436, 0xb0), (0xd418, 0x1f), (0xd438, 0x1a)]
+        for address, value in pairs:
+            data.extend((0xa9, value, 0x8d, address & 255, address >> 8))
+        data.append(0x60)
+        oracle = [dict(phase='play', tick=tick, address=address, value=value)
+                  for tick in range(3) for address, value in pairs]
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            sid, expected = root / 'dual.sid', root / 'oracle.json'
+            sid.write_bytes(data)
+            expected.write_text(json.dumps(oracle))
+            result = trace.run_trace(sid, expected, root / 'trace', 0, 2, vice, data_directory)
+            self.assertEqual(30, result['verification']['matchedWrites'])
+            command = json.loads((root / 'trace/command.json').read_text())
+            self.assertIn('-sidextra', command)
+            self.assertIn('0xd420', command)
+
     def test_accepts_explicit_single_pal_callable_ram_fixture_and_rejects_other_contracts(self):
         profile = trace.psid_profile(sid_fixture())
         self.assertEqual((profile['loadAddress'], profile['initAddress'], profile['playAddress'], profile['sidModel']), (0x1000, 0x1000, 0x1006, 'MOS6581'))

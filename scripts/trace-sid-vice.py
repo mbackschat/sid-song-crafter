@@ -23,9 +23,12 @@ def require(condition, message):
 def psid_profile(data):
     require(len(data) >= 124 and data[:4] == b'PSID', 'Expected a complete PSID header')
     word = lambda offset: int.from_bytes(data[offset:offset + 2], 'big')
-    require(word(4) == 2 and word(6) == 124, 'Trace supports PSID v2 with a $7c-byte header')
+    require(word(6) == 124, 'Trace requires a $7c-byte header')
     require(word(14) == 1 and word(16) == 1, 'Trace requires exactly one subtune, initialized with A=0')
-    require(data[18:22] == bytes(4) and word(118) in (0x14, 0x24) and data[122:124] == bytes(2), 'Trace requires one declared SID model, explicit PAL VBI and no additional SID or MUS/PlaySID flags')
+    single = word(4) == 2 and word(118) in (0x14, 0x24) and data[122:124] == bytes(2)
+    dual = word(4) == 3 and word(118) in (0x54, 0xa4) and data[122:124] == bytes((0x42, 0))
+    require(data[18:22] == bytes(4) and (single or dual),
+            'Trace requires explicit PAL VBI with one SID or two same-model SIDs at $D400/$D420')
     load = word(8)
     payload = data[124:]
     if load == 0:
@@ -36,7 +39,9 @@ def psid_profile(data):
     init, play = word(10) or load, word(12)
     require(0x0400 <= load < end <= 0xa000, 'Payload must lie entirely in RAM $0400–$9fff')
     require(load <= init < end and load <= play < end, 'Init and play must be callable addresses inside the payload')
-    return dict(loadAddress=load, endAddress=end, initAddress=init, playAddress=play, sidModel='MOS6581' if word(118) == 0x14 else 'MOS8580', payload=payload)
+    return dict(loadAddress=load, endAddress=end, initAddress=init, playAddress=play,
+                sidModel='MOS6581' if word(118) in (0x14, 0x54) else 'MOS8580',
+                sidBases=[0xd400, 0xd420] if dual else [0xd400], payload=payload)
 
 
 def harness(profile, calls):
@@ -107,7 +112,8 @@ def monitor_commands(payload, program, profile, labels, first, last):
     # VICE 3.9 condition expressions evaluate left to right (vice.texi CONDITION); group each comparison.
     counter = f'((@ram:${COUNTER + 1:04x} * $0100) + @ram:${COUNTER:04x})'
     condition = f'({counter} >= ${first:04x}) && ({counter} <= ${last:04x})'
-    lines = ['radix h', 'sidefx off', 'dummy off', 'bank ram', 'fill $0002 $bfff $00', f'load "{payload}" 0', f'load "{program}" 0', 'r a=$00,x=$00,y=$00,sp=$ff,fl=$24', f'r pc=${HARNESS_BASE:04x}', f'until ${labels["wait"]:04x}', f'trace exec ${profile["playAddress"]:04x}', f'trace store $d400 $d418 if {condition}', f'until ${labels["done"]:04x}', 'r', 'bank ram', f'd ${profile["initAddress"]:04x} ${min(profile["endAddress"] - 1, profile["initAddress"] + 0x1000):04x}', f'm ${profile["loadAddress"]:04x} ${profile["endAddress"] - 1:04x}', 'quit', '']
+    traces = [f'trace store ${base:04x} ${base + 24:04x} if {condition}' for base in profile['sidBases']]
+    lines = ['radix h', 'sidefx off', 'dummy off', 'bank ram', 'fill $0002 $bfff $00', f'load "{payload}" 0', f'load "{program}" 0', 'r a=$00,x=$00,y=$00,sp=$ff,fl=$24', f'r pc=${HARNESS_BASE:04x}', f'until ${labels["wait"]:04x}', f'trace exec ${profile["playAddress"]:04x}', *traces, f'until ${labels["done"]:04x}', 'r', 'bank ram', f'd ${profile["initAddress"]:04x} ${min(profile["endAddress"] - 1, profile["initAddress"] + 0x1000):04x}', f'm ${profile["loadAddress"]:04x} ${profile["endAddress"] - 1:04x}', 'quit', '']
     return '\n'.join(lines)
 
 
@@ -115,7 +121,7 @@ TRACE_HEADER = re.compile(r'^#\d+ \(Trace\s+(exec|store)\s+([0-9a-f]{4})\)\s+(\d
 INSTRUCTION = re.compile(r'^\.C:([0-9a-f]{4})\s+((?:[0-9a-f]{2}\s+){1,3})(.*?)\s+-\s+A:([0-9a-f]{2}) X:([0-9a-f]{2}) Y:([0-9a-f]{2}) SP:([0-9a-f]{2}) (\S{8})\s+(\d+)\s*$', re.IGNORECASE)
 
 
-def parse_trace(log, play_address):
+def parse_trace(log, play_address, sid_bases=(0xd400,)):
     entries, writes = [], []
     lines = log.splitlines()
     for index, line in enumerate(lines):
@@ -151,7 +157,7 @@ def parse_trace(log, play_address):
             effective = (effective + registers['x']) & 65535
         elif opcode[0] == 0x99:
             effective = (effective + registers['y']) & 65535
-        require(effective == address and 0xd400 <= address <= 0xd418, 'Store opcode and traced SID address disagree')
+        require(effective == address and any(base <= address <= base + 24 for base in sid_bases), 'Store opcode and traced SID address disagree')
         register = 'x' if opcode[0] == 0x8e else 'y' if opcode[0] == 0x8c else 'a'
         record.update(tick=entries[-1]['tick'], address=address, value=registers[register])
         writes.append(record)
@@ -182,6 +188,8 @@ def run_trace(sid, oracle_path, output, first, last, vice, data_directory):
     monitor = output / 'commands.mon'
     monitor.write_text(monitor_commands(payload_path, program_path, profile, labels, first, last))
     command = [str(vice), '-config', '/dev/null', '-directory', str(data_directory), '-pal', '+logcolorize', '-initbreak', 'ready', '-moncommands', str(monitor), '-monlog', '-monlogname', str(output / 'monitor.log'), '-limitcycles', str(4_000_000 + (last + 1) * FRAME_CYCLES), '-warp', '+sound', '-sidenginemodel', 'resid6581' if profile['sidModel'] == 'MOS6581' else 'resid8580']
+    if len(profile['sidBases']) == 2:
+        command.extend(['-sidextra', '1', '-sid2address', '0xd420'])
     env = os.environ.copy()
     for key in ('DISPLAY', 'WAYLAND_DISPLAY'):
         env.pop(key, None)
@@ -192,7 +200,7 @@ def run_trace(sid, oracle_path, output, first, last, vice, data_directory):
     with (output / 'process.log').open('w') as process_log:
         subprocess.run(command, env=env, stdout=process_log, stderr=subprocess.STDOUT, timeout=60, check=True)
     log = (output / 'monitor.log').read_text(errors='replace')
-    parsed = parse_trace(log, profile['playAddress'])
+    parsed = parse_trace(log, profile['playAddress'], profile['sidBases'])
     verification = verify_trace(parsed, json.loads(oracle_bytes), first, last)
     writers = {}
     for row in parsed['writes']:

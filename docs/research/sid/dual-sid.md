@@ -26,6 +26,8 @@ x64sc -pal -sidextra 1 -sid2address 0xd420 -autostart song.prg
 
 The [headless verifier](../../validation/native-vice-checks.md) uses these address flags with the local VICE 3.9 build, explicit 8580 selection and monitor-controlled startup. That tested route handles SID-Wizard's address selector without changing PRG bytes; the illustrative `-autostart` command above is not the tested unattended route. [S16](../sources.md#s16)
 
+The [ordered-store VICE tracer](../tools/sid-program-analysis.md#reproduce-the-execution-evidence) also accepts callable PAL PSID v3 with two matching 6581s or 8580s at `$D400/$D420`. It compares both sound-register banks against the CPU oracle in a controlled harness, including independent filter values. Its [executed fixture](../../../tests/sid_vice_trace_test.py) validates this mechanism; full arrangement, audio and listening checks remain separate.
+
 ## Six-voice acceptance checks
 
 - Play one test note on each voice independently and confirm both chip addresses respond.
