@@ -24,6 +24,7 @@ Use the [musical gesture library](gestures/README.md) for groove, chord response
 | [Flashdance decoded programs](instruments/flashdance-decoded-programs.md) | Staged lead, broad moving bass and four-tone pulse chords; the original C–F–D minor–G–C transfer has execution/audio evidence and was judged to work; its melody intentionally differs from Flashdance. |
 | [Shades pulse and pitch programs](instruments/shades-decoded-programs.md) | Moving pulse, delayed vibrato and target portamento with shared-filter ownership; independent reconstruction and fade accepted; familiar Für Elise transfer and ending accepted; the invented transfer retains an unsuccessful ending as a limitation. |
 | [Cybernoid pulse programs](instruments/cybernoid-decoded-programs.md) | Short noise-onset bass, shared-filter harmony and steady-pitch PWM lead; accepted 53-note familiar transfer with a matched plain reference and explicit native gate/tuning limits. |
+| [Monty tonal programs](instruments/monty-decoded-programs.md) | Narrow pulse bass, harmonic replies and shared moving-pulse melody; accepted 53-note familiar transfer with native articulation, retained pulse phase and explicit rest/ending limits. |
 
 ## Reference material worth learning from
 

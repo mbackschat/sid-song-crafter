@@ -2,7 +2,7 @@
 
 Use this example for a narrow pulse bass, short pulse replies and a moving-pulse melody. The [owning Monty study](../monty-preparation.md) retains Rob Hubbard's SID credit, the separate Charles Williams inspiration attribution, source pins and executed program evidence. The [editable title source](../../../../songs/monty-title-source.json) supplies twenty named numeric records and 96 frequency words; the [independent player](../../../../scripts/monty_title_player.py) computes score and sound state without the original driver or captured-write replay.
 
-**Status, 2026-10-13:** the [bounded adapter](../../../../scripts/prepare-monty-elise.py) and [transfer guards](../../../../tests/monty_elise_test.py) verify every source-note onset, initial frequency and scheduled gate release, the matched plain pair and complete finite numeric execution. Both compiled exports match all 630 calls and eleven named-state/shared-bank checkpoints against the pure model: 1,396 ordered stores for the plain reference and 2,832 for the Monty candidate, including initialization. VICE matches all 632 play calls, including two stopped calls with no SID stores; maximum cadence error is seven cycles. Both fifteen-second renders have no PCM rail samples and zero AC energy in their final second. The [audio recipe](../monty-elise-audio.json) retains hashes, CPU/VICE receipts, renderer settings and measured PCM. Listening remains pending; these checks do not establish musical suitability or hardware equivalence.
+**Status, 2026-10-13: listening accepted.** The listener reports “music is spot on” for this familiar Für Elise pair, in response to the musical-use question including its ending. The [bounded adapter](../../../../scripts/prepare-monty-elise.py) and [transfer guards](../../../../tests/monty_elise_test.py) independently verify every source-note onset, initial frequency and scheduled gate release, the matched plain pair and complete finite numeric execution. Both compiled exports match all 630 calls and eleven named-state/shared-bank checkpoints against the pure model: 1,396 ordered stores for the plain reference and 2,832 for the Monty candidate, including initialization. VICE matches all 632 play calls, including two stopped calls with no SID stores; maximum cadence error is seven cycles. Both fifteen-second renders have no PCM rail samples and zero AC energy in their final second. The [audio recipe](../monty-elise-audio.json) retains the scoped verdict, hashes, CPU/VICE receipts, renderer settings and measured PCM. This acceptance applies to the presented phrase and mix, not arbitrary material or hardware equivalence.
 
 
 ## Listen
@@ -40,6 +40,17 @@ A duration field counts remaining score ticks after initialization. With the nat
 The adapter chooses the nearest PAL sounding pitch among the exact 96 source words and retains them in both descriptions. For these notes, the selected index equals `MIDI - 12`; measured base-pitch errors span approximately **−0.980 to +0.402 cents**, with per-pitch words and errors in each fixture's `sourceEvidence.pitchMapping`. Native vibrato adds its own displacement when enabled; this base-pitch measurement does not describe the entire sounding note. Do not extrapolate the title's live-state aliases into a chromatic extension.
 
 Beat 12 rounds to call **502**. The added finite ending freezes score scheduling, clears actual gates while retaining saved controls, continues sound programs for 64 release calls, then applies sixteen four-call fade levels. Volume reaches zero at call **626**, and the complete description ends after **630 calls**, approximately **12.569 seconds** including the tail. No ending notes are invented. This arrangement ending is separate from the original title's order restart; oscillator, envelope, rendered silence and perceptual results require their respective evidence.
+
+## Reuse outcome
+
+| Item | Recorded result |
+| --- | --- |
+| Material | All 53 events from preserved Für Elise beats `[0,12)`, with the same-material generated plain reference |
+| Reused unchanged | Native records 2/6/15, frequency words, independent scheduler, sound programs and finite-ending engine |
+| Adapted | New packed score and zeroed starting voice phases; added silent rest record 20 |
+| New work | Source-backed phrase adapter, plain-reference bank and paired verification/listening package |
+| Listening-driven revisions | None requested for this pair; first presented version accepted as “music is spot on” |
+| Effort | Active time and parallel-agent effort not recorded; no measured productivity claim |
 
 ## Reproduce and reuse
 

@@ -335,7 +335,12 @@
           "gainDb": 0
         }
       ],
-      "listeningReview": null
+      "listeningReview": {
+        "date": "2026-10-13",
+        "verdict": "accepted",
+        "listenerQuote": "I don't hear a difference",
+        "scope": "Opening reference-first A/B; perceptual report, not PCM identity."
+      }
     },
     "ending": {
       "receipt": {
@@ -444,7 +449,12 @@
           "gainDb": 0
         }
       ],
-      "listeningReview": null
+      "listeningReview": {
+        "date": "2026-10-13",
+        "verdict": "reviewed-with-deliberate-ending-difference",
+        "listenerQuote": "Identical, although the original played from 10:30s to 15:00s, while there is basically silence in ours from 25:80s onward (till end)",
+        "scope": "Ending comparison; listener reports matching music and notes silence where the original continues. The original restarts while the candidate releases/fades; approval of this deliberate finite-ending choice remains pending."
+      }
     }
   },
   "timing": {
@@ -468,7 +478,21 @@
     "sha256": "2abba2aa6f180aa2c2268b76e2935d90c238f50c27b225b4af0305233536d89e",
     "bytes": 14932
   },
-  "listeningReview": null,
+  "listeningReview": {
+    "date": "2026-10-13",
+    "verdict": "opening-accepted-ending-choice-pending",
+    "scope": "Presented opening and ending comparisons; no claim of an additional uninterrupted full-title audition.",
+    "opening": {
+      "verdict": "accepted",
+      "listenerQuote": "I don't hear a difference",
+      "scope": "Opening reference-first A/B; perceptual report, not PCM identity."
+    },
+    "ending": {
+      "verdict": "reviewed-with-deliberate-ending-difference",
+      "listenerQuote": "Identical, although the original played from 10:30s to 15:00s, while there is basically silence in ours from 25:80s onward (till end)",
+      "scope": "Ending comparison; listener reports matching music and notes silence where the original continues. The original restarts while the candidate releases/fades; approval of this deliberate finite-ending choice remains pending."
+    }
+  },
   "reproduction": {
     "workingDirectory": "repository root",
     "freshOutputRequired": true,
