@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "method": "full-file AC RMS, pooled channel power after subtracting each channel mean; silence and tails included",
+  "matching": "attenuation only",
+  "requestedAcRmsDbfs": null,
+  "targetAcRms": 1427.8427440323655,
+  "targetAcRmsDbfs": -27.21539112125569,
+  "peakHeadroomDb": 1.0,
+  "peakLimit": 29203,
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-elise-transfer/listening/plain-then-shades.ab.wav",
+    "frames": 1168650,
+    "durationSeconds": 26.5,
+    "sha256": "975c0e7853d71e1dce08f2dad4a7c76022edcbed605cd0f6c0817914be2f1c2a"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 573300
+    },
+    {
+      "label": "silence",
+      "startFrame": 573300,
+      "endFrame": 595350
+    },
+    {
+      "label": "B",
+      "startFrame": 595350,
+      "endFrame": 1168650
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-elise-transfer/reference/reference.wav",
+      "sha256": "2e5bc65df477db4eefb95a2f0471637318c6238455bc56759adcc64343ee65c1",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 573300,
+        "durationSeconds": 13.0,
+        "peak": 8050,
+        "peakDbfs": -12.193081091836987,
+        "clippedSamples": 0,
+        "rms": 1429.8458128529294,
+        "acRms": 1427.8427440323655,
+        "acRmsDbfs": -27.21539112125569,
+        "perChannel": [
+          {
+            "dc": 75.65809174952032,
+            "rms": 1429.8458128529294,
+            "acRms": 1427.8427440323655
+          }
+        ]
+      },
+      "gain": 1.0,
+      "gainDb": 0.0,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 573300,
+        "durationSeconds": 13.0,
+        "peak": 8050,
+        "peakDbfs": -12.193081091836987,
+        "clippedSamples": 0,
+        "rms": 1429.8458128529294,
+        "acRms": 1427.8427440323655,
+        "acRmsDbfs": -27.21539112125569,
+        "perChannel": [
+          {
+            "dc": 75.65809174952032,
+            "rms": 1429.8458128529294,
+            "acRms": 1427.8427440323655
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-elise-transfer/listening/plain-then-shades.a.matched.wav"
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-elise-transfer/candidate/reconstructed.wav",
+      "sha256": "5a736d0256220944200bad90350282e407e4210d760272f98b054326a6f7d1d8",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 573300,
+        "durationSeconds": 13.0,
+        "peak": 12423,
+        "peakDbfs": -8.42446899475355,
+        "clippedSamples": 0,
+        "rms": 2668.445558720185,
+        "acRms": 2645.3724604683553,
+        "acRmsDbfs": -21.859262138589827,
+        "perChannel": [
+          {
+            "dc": 350.15174603174603,
+            "rms": 2668.445558720185,
+            "acRms": 2645.3724604683553
+          }
+        ]
+      },
+      "gain": 0.5397511183659824,
+      "gainDb": -5.35612898266586,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 573300,
+        "durationSeconds": 13.0,
+        "peak": 6705,
+        "peakDbfs": -13.781023055442002,
+        "clippedSamples": 0,
+        "rms": 1440.299374634117,
+        "acRms": 1427.8490627799943,
+        "acRmsDbfs": -27.21535268297294,
+        "perChannel": [
+          {
+            "dc": 188.9691575091575,
+            "rms": 1440.299374634117,
+            "acRms": 1427.8490627799943
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-elise-transfer/listening/plain-then-shades.b.matched.wav"
+    }
+  ],
+  "listeningReview": null
+}

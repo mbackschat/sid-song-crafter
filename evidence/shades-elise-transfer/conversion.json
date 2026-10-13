@@ -1,0 +1,42 @@
+{
+  "evidenceLevel": "Deterministic score conversion; no compiled CPU, CIA execution, audio or listening claim",
+  "sourceDescriptionSha256": "a58bdad5e72a10c12b20913cf242e917b98bb010949ba3ea38f33cfe15b6368e",
+  "transferProgramsDescriptionSha256": "af316f792ec1c166c870dd1941ebc2de672bad0d9feab1a7da00bbf4d9c1f346",
+  "generatedScoreSha256": "45c8382e7a7c0a91a2916245ddbaab024f91a4a6c97bf193cac5a5564267b9e4",
+  "generatedReferenceProgramsSha256": "befc386bb0e401b3fb69364bb6cc036cf4bef068dee8e6eaea87ea50d72b2f75",
+  "excerptBeats": [
+    0,
+    12
+  ],
+  "retainedEvents": {
+    "melody": 35,
+    "bass": 6,
+    "harmony": 12
+  },
+  "totalRetainedEvents": 53,
+  "omittedExcerptEvents": 0,
+  "timing": {
+    "clockHz": 985248,
+    "timerLatch": 12325,
+    "periodCycles": 12326,
+    "sourceQuarterBpm": 72,
+    "boundaryRounding": "Nearest CIA call, half up, from each absolute source beat; add 1 for score call-zero selection.",
+    "beatZeroCall": 1,
+    "lastNoteOffCall": 800,
+    "finiteStopCall": 960,
+    "maximumBoundaryErrorSeconds": 0.006255277858975609,
+    "finiteStopSecondsFromCallZero": 12.010133489233167,
+    "releaseFade": "All voices rest at beat 12; 32 five-call rows fade every two rows, reaching zero before the terminal silence stores."
+  },
+  "orders": 49,
+  "patterns": 17,
+  "limits": [
+    "Only the first 12 beats of the preserved three-role arrangement.",
+    "Monophonic quarter-beat event boundaries, without clipping or note edits.",
+    "MIDI 13..107 maps to native note indices 1..95; index zero is the native rest token.",
+    "Driver retriggers adjacent notes within one call; this preserves score gate timing, not source bus timing.",
+    "Plain reference is generated through the Shades driver, not an original performance."
+  ],
+  "sourceFileSha256": "a58bdad5e72a10c12b20913cf242e917b98bb010949ba3ea38f33cfe15b6368e",
+  "transferProgramsFileSha256": "af316f792ec1c166c870dd1941ebc2de672bad0d9feab1a7da00bbf4d9c1f346"
+}

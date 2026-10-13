@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    8.0,
+    13.0
+  ],
+  "window": {
+    "startFrame": 352800,
+    "endFrame": 573300,
+    "frames": 220500,
+    "startSeconds": 8.0,
+    "endSeconds": 13.0,
+    "durationSeconds": 5.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-elise-transfer/listening/ending-plain-then-shades.ab.wav",
+    "frames": 463050,
+    "durationSeconds": 10.5,
+    "sha256": "3fefd29cf808e8e53054fd1462cd48d403e258e98d619589611a430b944b80fe"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 220500
+    },
+    {
+      "label": "silence",
+      "startFrame": 220500,
+      "endFrame": 242550
+    },
+    {
+      "label": "B",
+      "startFrame": 242550,
+      "endFrame": 463050
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-elise-transfer/listening/plain-then-shades.a.matched.wav",
+      "sha256": "2e5bc65df477db4eefb95a2f0471637318c6238455bc56759adcc64343ee65c1",
+      "originalFrames": 573300,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 220500,
+        "durationSeconds": 5.0,
+        "peak": 6438,
+        "peakDbfs": -14.133979252202465,
+        "clippedSamples": 0,
+        "rms": 1115.337181981397,
+        "acRms": 1114.0669995301755,
+        "acRmsDbfs": -29.370772500909258,
+        "perChannel": [
+          {
+            "dc": -53.214190476190474,
+            "rms": 1115.337181981397,
+            "acRms": 1114.0669995301755
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-elise-transfer/listening/plain-then-shades.b.matched.wav",
+      "sha256": "b03052614f9c6176703de62ecd5297ae3b289c4fd7ddc863a0c166fdf7ffe23f",
+      "originalFrames": 573300,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 220500,
+        "durationSeconds": 5.0,
+        "peak": 6617,
+        "peakDbfs": -13.89577600632245,
+        "clippedSamples": 0,
+        "rms": 1038.0169323677173,
+        "acRms": 1037.9332316358689,
+        "acRmsDbfs": -29.985610358516954,
+        "perChannel": [
+          {
+            "dc": -13.181750566893424,
+            "rms": 1038.0169323677173,
+            "acRms": 1037.9332316358689
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

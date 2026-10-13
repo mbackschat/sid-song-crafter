@@ -1,0 +1,105 @@
+{
+  "kind": "bounded-shades-transfer-ending-diagnosis",
+  "evidenceLevel": "Computed semantic states and ordered stores; no new compiled/audio/listening claim",
+  "reproduce": "python3 build/shades-ending-diagnosis/reproduce.py",
+  "inputSha256": {
+    "songs/shades-transfer.json": "358649eb09183f018b27fad9d675367aa5e72d4507381b5878386fd344b91906",
+    "songs/shades-transfer-programs.json": "af316f792ec1c166c870dd1941ebc2de672bad0d9feab1a7da00bbf4d9c1f346",
+    "scripts/shades_player.py": "a25373737ca6e4a3a4ad0ee05d6615a8880a1d7a41c73584cfcabfc39e0fd1e0",
+    "scripts/shades_programs.py": "48e3c96ff717534f9ab7b6a31749032fd9c8a07f50d2d15908f4352640bf592b",
+    "scripts/describe-shades-score.py": "1108bc1d5388a2af76491ad505ca5747345cf8da7eebcb67fbe884fb0fe385d0",
+    "scripts/verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "reproducerSha256": "407381adae2920f62853145b02a845bfedb09066b684b85e61264768db6dc461",
+  "states": {
+    "path": "states.json",
+    "sha256": "02a80c69b83a39a59405bb7c527c0b05db282492c4438dd527b7086348060134",
+    "bytes": 7778726,
+    "callsPerVariant": 1522,
+    "contents": "Full named state, fade state, commands and ordered stores after every call"
+  },
+  "interventions": {
+    "final-bar-and-release-pulse": {
+      "orders": [
+        7,
+        8
+      ],
+      "instrument": "pulse-trio"
+    },
+    "release-pulse": {
+      "orders": [
+        8
+      ],
+      "instrument": "pulse-trio"
+    }
+  },
+  "glides": [
+    {
+      "gesture": "F4 to E4",
+      "onsetCall": 1121,
+      "sourceNote": 52,
+      "onsetWord": 5957,
+      "targetWord": 5623,
+      "firstTargetCall": 1123,
+      "callsToTarget": 2,
+      "nominalMilliseconds": 25.021111435902434
+    },
+    {
+      "gesture": "E4 to G4",
+      "onsetCall": 1161,
+      "sourceNote": 55,
+      "onsetWord": 5671,
+      "targetWord": 6686,
+      "firstTargetCall": 1172,
+      "callsToTarget": 11,
+      "nominalMilliseconds": 137.61611289746335
+    },
+    {
+      "gesture": "G4 to E4",
+      "onsetCall": 1201,
+      "sourceNote": 52,
+      "onsetWord": 6702,
+      "targetWord": 5623,
+      "firstTargetCall": 1211,
+      "callsToTarget": 10,
+      "nominalMilliseconds": 125.10555717951216
+    },
+    {
+      "gesture": "E4 to D4",
+      "onsetCall": 1221,
+      "sourceNote": 50,
+      "onsetWord": 5623,
+      "targetWord": 5011,
+      "firstTargetCall": 1226,
+      "callsToTarget": 5,
+      "nominalMilliseconds": 62.55277858975608
+    },
+    {
+      "gesture": "D4 to C4",
+      "onsetCall": 1241,
+      "sourceNote": 48,
+      "onsetWord": 4979,
+      "targetWord": 4465,
+      "firstTargetCall": 1245,
+      "callsToTarget": 4,
+      "nominalMilliseconds": 50.04222287180487
+    }
+  ],
+  "ending": {
+    "finalTargetWord": 4465,
+    "finalTargetReachedCall": 1245,
+    "releaseCall": 1281,
+    "releaseControl": 64,
+    "audibleFadePitchMinimum": 4433,
+    "audibleFadePitchMaximum": 4561,
+    "firstZeroVolumeCall": 1431,
+    "terminalSilenceCall": 1521
+  },
+  "verified": {
+    "releaseOnlyPitchStoresUnchanged": true,
+    "releaseOnlyPitchStatesUnchanged": true,
+    "finalBarPulseAttacksWrittenTargets": true
+  },
+  "finding": "The last bar deliberately attacks at the preceding pitch and slides to each target; no corrupt or runaway fade pitch was observed.",
+  "interpretationLimit": "The glide is a plausible contributor to the wrong-note impression; these checks do not establish subjective causation."
+}

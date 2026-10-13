@@ -11,7 +11,7 @@ Use the [project overview](../README.md) for SID Song Crafter's purpose and curr
 
 ## Compose and listen
 
-- [Compose from decoded instruments](workflows/decoded-song-workflow.md): deliver one musical case through export, listening and original transfer; record reuse and effort alongside evidence.
+- [Compose from decoded instruments](workflows/decoded-song-workflow.md): deliver one musical case through export, listening and familiar-material transfer; record reuse and effort alongside evidence.
 - [Arrange preserved source music](workflows/song-workflow.md): source provenance, conversion boundaries and baseline builds.
 - [Build a native SID-Wizard song](workflows/native-song-workflow.md): editable three- or six-voice arrangements, export, audit and rendering.
 - [Try native instruments](workflows/instrument-trials.md): reproducible sound-design phrases and A/B trials.

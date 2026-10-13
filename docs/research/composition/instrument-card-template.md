@@ -34,7 +34,7 @@ Copy this structure when an experiment from the [repertoire](sound-design-repert
 
 Use one record per completed or pending transfer; link the [measurement rules](../../workflows/decoded-song-workflow.md#record-reuse-and-effort). Unknown historical values are `not recorded`.
 
-- Original phrase, editable inputs and listening file:
+- Transfer phrase and source, editable inputs, reference and candidate listening files:
 - Components reused unchanged, with links:
 - Components adapted and new work required, with links:
 - Listening-driven revisions and reasons:

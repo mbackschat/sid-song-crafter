@@ -61,7 +61,14 @@
       "wavSha256": "e8cb6b059adbe701c949ebe263f6b3d6e4c3613317826de1cac9c2f37af9ff54",
       "seconds": 22,
       "frames": 970200,
-      "audioReceipt": "evidence/shades-transfer/audio-evidence.json"
+      "audioReceipt": "evidence/shades-transfer/audio-evidence.json",
+      "listeningReview": {
+        "date": "2026-10-13",
+        "scope": "Original 22-second invented transfer: instrument sound and final 2\u20134 seconds",
+        "verdict": "instruments accepted; ending needs changes",
+        "listenerQuote": "the last 2-4 s sound odd like wrong musical notes. The instruments are ok, though",
+        "followup": "Listener finds an invented fragment difficult to judge; replace the listening test with familiar source-backed material and a same-material reference."
+      }
     }
   ],
   "comparison": {
@@ -162,5 +169,5 @@
     ]
   },
   "publication": "Reference SID binaries, reference WAVs and A/B audio containing reference material remain local in ignored .local/ or build/, never in Git or LFS. This recipe retains hashes and commands.",
-  "limits": "Pinned renderer/settings support exact reproduction; another renderer build may differ. CPU/store and VICE verification are separate evidence. Reconstruction sound/phrasing and fade ending are listening-approved; the original transfer phrase remains pending."
+  "limits": "Pinned renderer/settings support exact reproduction; another renderer build may differ. CPU/store and VICE verification are separate evidence. Reconstruction sound/phrasing and fade ending are listening-approved; original transfer instruments accepted but ending rejected. Retained as historical evidence; familiar-material transfer review remains separate."
 }

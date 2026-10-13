@@ -7,7 +7,7 @@ Songs serve as case studies for learning sound design, preserving useful finding
 ## Start here
 
 - [Documentation](docs/README.md): setup, composition, audio, validation and architecture guides.
-- [Study plan](docs/research/study-plan.md#delivery-order-and-work-in-progress): finish one musical case through listening and original-phrase reuse before deepening the next; retained preparation covers Flashdance, six master-composer studies and four later pop/theme studies.
+- [Study plan](docs/research/study-plan.md#delivery-order-and-work-in-progress): finish one musical case through listening and reuse on different musical material before deepening the next; retained preparation covers Flashdance, six master-composer studies and four later pop/theme studies.
 - [Technique lookup](docs/research/technique-index.md): reusable SID mechanisms, executable examples and structured evidence.
 - [CPU timing lookup](docs/validation/cpu-timing.md) and [CIA tracing](docs/validation/cia-tracing.md): verified timing constraints and reusable validation tools.
 - [Independent DRAX Für Elise comparison](songs/studies/drax-full-reconstruction/README.md): reconstructed recurring theme and its scope.

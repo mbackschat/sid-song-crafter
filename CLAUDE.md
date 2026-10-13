@@ -8,9 +8,11 @@ Use the [study plan](docs/research/study-plan.md) for the active case and next m
 
 ## Finish musical deliverables
 
-Keep one musical case active, in the [plan's delivery order](docs/research/study-plan.md#delivery-order-and-work-in-progress). Finish its export, ending, listening review and original transfer before deepening another study. Numeric agreement is preparation; successful reuse in a listening-reviewed original phrase is the decisive test of the workbench's value. While feedback is pending, finish that case's reproducibility and reuse documentation; spare agent capacity is not a reason to open another investigation. Preserve deferred work.
+Keep one musical case active, in the [plan's delivery order](docs/research/study-plan.md#delivery-order-and-work-in-progress). Finish its export, ending, listening review and transfer to different musical material before deepening another study. Numeric agreement is preparation; successful reuse in a listening-reviewed phrase from different musical material is the decisive test of the workbench's value. While feedback is pending, finish that case's reproducibility and reuse documentation; spare agent capacity is not a reason to open another investigation. Preserve deferred work.
 
 Before additional analysis, name the unresolved question, the deliverable or decision it blocks, and the evidence that will settle it. Once that evidence passes, advance to the next delivery stage. Reopen only for changed inputs, a demonstrated mismatch or an explicit expansion of the supported contract. Follow the [delivery and reuse workflow](docs/workflows/decoded-song-workflow.md#deliver-one-musical-case) without weakening required execution or full-form checks.
+
+Use a familiar, source-backed phrase as the default transfer test, with a same-material reference. This separates instrument usefulness from the quality of a newly invented composition. Original composition remains valuable but is a separate musical judgment, not a prerequisite for every instrument study.
 
 ## Checkpoints and documentation
 

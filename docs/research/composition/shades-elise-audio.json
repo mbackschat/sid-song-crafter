@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "kind": "shades-familiar-material-transfer-audio",
+  "checkedOn": "2026-10-13",
+  "source": {
+    "score": "songs/fuer-elise.json",
+    "scoreSha256": "a58bdad5e72a10c12b20913cf242e917b98bb010949ba3ea38f33cfe15b6368e",
+    "provenance": "docs/songs/fuer-elise-score.md",
+    "excerptBeats": [
+      0,
+      12
+    ],
+    "retainedEvents": 53
+  },
+  "inputs": {
+    "scripts/prepare-shades-elise.py": "49051dbf869a7f2993bf0fb6efcf63b947c00baed1272e1f484f6b4aaf6e01b1",
+    "songs/shades-elise-transfer.json": "45c8382e7a7c0a91a2916245ddbaab024f91a4a6c97bf193cac5a5564267b9e4",
+    "songs/shades-transfer-programs.json": "af316f792ec1c166c870dd1941ebc2de672bad0d9feab1a7da00bbf4d9c1f346",
+    "songs/shades-elise-reference-programs.json": "befc386bb0e401b3fb69364bb6cc036cf4bef068dee8e6eaea87ea50d72b2f75"
+  },
+  "rendering": {
+    "executable": ".local/bin/render-sid",
+    "executableSha256": "80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe",
+    "library": "libsidplayfp 3.1.1",
+    "builder": "SIDLite",
+    "clock": "PAL",
+    "chip": "MOS6581",
+    "defaultSubtune": 1,
+    "powerOnDelay": 0,
+    "sampleRate": 44100,
+    "channels": 1,
+    "format": "PCM16",
+    "seconds": 13,
+    "gain": 1,
+    "normalization": false
+  },
+  "roles": {
+    "reference": {
+      "path": "build/shades-elise-transfer/reference/reference.wav",
+      "sha256": "2e5bc65df477db4eefb95a2f0471637318c6238455bc56759adcc64343ee65c1",
+      "sidSha256": "b65a6477961baa9c0654f850758991eacedb6fbb93b73f9302b9c0aaeb36adb8",
+      "description": "Generated plain triangle score reference",
+      "audioReceipt": "evidence/shades-elise-transfer/reference/audio-evidence.json",
+      "viceReceipt": "evidence/shades-elise-transfer/reference/vice/study.json.gz"
+    },
+    "candidate": {
+      "path": "build/shades-elise-transfer/candidate/reconstructed.wav",
+      "sha256": "5a736d0256220944200bad90350282e407e4210d760272f98b054326a6f7d1d8",
+      "sidSha256": "71c006d30ba84b1e587b2eca1a4fc562a4e00a4cfa5bd7be752f7c453592d1a9",
+      "description": "Same score with unchanged Shades pulse-trio instruments",
+      "audioReceipt": "evidence/shades-elise-transfer/candidate/audio-evidence.json",
+      "viceReceipt": "evidence/shades-elise-transfer/candidate/vice/study.json.gz"
+    }
+  },
+  "listeningReview": {
+    "date": "2026-10-13",
+    "scope": "Same-material F\u00fcr Elise plain-reference/Shades comparison, musical usefulness including final notes and ending",
+    "verdict": "accepted",
+    "listenerQuote": "Works musically, including the ending"
+  },
+  "limits": "Generated plain score reference, not an original recording. Identical score and cadence; different instruments, modulation, filter and fine tuning. Source event boundaries quantized to CIA calls; does not claim source-driver bus or retrigger timing. This short transfer does not complete the deferred full Beethoven interpretation.",
+  "publication": "All WAVs and SID exports stay in ignored build/. Git retains editable scores, code, provenance, hashes, reproduction commands and analysis evidence.",
+  "comparison": {
+    "path": "build/shades-elise-transfer/listening/plain-then-shades.ab.wav",
+    "sha256": "975c0e7853d71e1dce08f2dad4a7c76022edcbed605cd0f6c0817914be2f1c2a",
+    "seconds": 26.5,
+    "order": [
+      "plain score reference",
+      "Shades instruments"
+    ],
+    "gainDb": [
+      0.0,
+      -5.35612898266586
+    ],
+    "gapSeconds": 0.5,
+    "receipt": "evidence/shades-elise-transfer/listening/plain-then-shades.comparison.json",
+    "endingPath": "build/shades-elise-transfer/listening/ending-plain-then-shades.ab.wav",
+    "endingSha256": "3fefd29cf808e8e53054fd1462cd48d403e258e98d619589611a430b944b80fe",
+    "endingWindowSeconds": [
+      8,
+      13
+    ],
+    "endingReceipt": "evidence/shades-elise-transfer/listening/ending-plain-then-shades.comparison.json"
+  },
+  "reproduction": {
+    "workingDirectory": "repository root",
+    "freshOutputRequired": true,
+    "setup": "docs/setup/local-setup.md",
+    "commands": [
+      [
+        "python3",
+        "scripts/prepare-shades-elise.py",
+        "--check"
+      ],
+      [
+        "python3",
+        "scripts/compose-shades.py",
+        "songs/shades-elise-transfer.json",
+        "--programs",
+        "songs/shades-elise-reference-programs.json",
+        "--output",
+        "build/shades-elise-reproduce/reference"
+      ],
+      [
+        ".local/bin/render-sid",
+        "build/shades-elise-reproduce/reference/reconstructed.sid",
+        "build/shades-elise-reproduce/reference/reference.wav",
+        "13"
+      ],
+      [
+        "env",
+        "PYTHONPATH=.tools/test-deps",
+        "python3",
+        "scripts/trace-shades-vice.py",
+        "build/shades-elise-reproduce/reference/reconstructed.sid",
+        "--candidate",
+        "--calls",
+        "961",
+        "--output",
+        "build/shades-elise-reproduce/reference/vice"
+      ],
+      [
+        "python3",
+        "scripts/compose-shades.py",
+        "songs/shades-elise-transfer.json",
+        "--programs",
+        "songs/shades-transfer-programs.json",
+        "--output",
+        "build/shades-elise-reproduce/candidate"
+      ],
+      [
+        ".local/bin/render-sid",
+        "build/shades-elise-reproduce/candidate/reconstructed.sid",
+        "build/shades-elise-reproduce/candidate/reconstructed.wav",
+        "13"
+      ],
+      [
+        "env",
+        "PYTHONPATH=.tools/test-deps",
+        "python3",
+        "scripts/trace-shades-vice.py",
+        "build/shades-elise-reproduce/candidate/reconstructed.sid",
+        "--candidate",
+        "--calls",
+        "961",
+        "--output",
+        "build/shades-elise-reproduce/candidate/vice"
+      ],
+      [
+        "python3",
+        "scripts/compare-audio.py",
+        "prepare",
+        "build/shades-elise-reproduce/reference/reference.wav",
+        "build/shades-elise-reproduce/candidate/reconstructed.wav",
+        "build/shades-elise-reproduce/listening/plain-then-shades",
+        "--individual-copies"
+      ],
+      [
+        "python3",
+        "scripts/compare-audio.py",
+        "window",
+        "build/shades-elise-reproduce/listening/plain-then-shades.a.matched.wav",
+        "build/shades-elise-reproduce/listening/plain-then-shades.b.matched.wav",
+        "build/shades-elise-reproduce/listening/ending-plain-then-shades",
+        "--start-seconds",
+        "8",
+        "--end-seconds",
+        "13"
+      ]
+    ]
+  }
+}

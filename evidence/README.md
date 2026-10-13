@@ -8,7 +8,7 @@ Use [the archive and cache workflow](../docs/workflows/build-cache.md) to instal
 
 | Evidence | Interpretation and reproduction |
 | --- | --- |
-| Shades CIA timing, form, modulation and semantic model | [Shades study](../docs/research/composition/shades-preparation.md), [CIA validation](../docs/validation/cia-tracing.md) |
+| Shades reconstruction, familiar transfer, CIA timing, form and modulation | [Shades study](../docs/research/composition/shades-preparation.md), [CIA validation](../docs/validation/cia-tracing.md) |
 | Flashdance reconstruction, transfer and accepted stereo arrangement | [Flashdance study](../docs/research/composition/flashdance-preparation.md) |
 | Cybernoid II intake, execution, order traversals and opening mechanisms | [Cybernoid II preparation](../docs/research/composition/cybernoid-ii-preparation.md) |
 | Cybernoid II full-title mechanism census and reusable arithmetic | [Executed coverage](../docs/research/composition/cybernoid-ii-preparation.md#full-title-mechanism-coverage), [PWM/filter components](../docs/research/composition/cybernoid-ii-preparation.md#reusable-pwm-and-filter-arithmetic) |
