@@ -21,10 +21,10 @@ These are recognizable signature candidates, not an asserted “number one” ra
 | 5 / M4 | [Rambo: First Blood Part II — Martin Galway](composition/rambo-preparation.md), loader #1 | Sustained timbre evolution, introductory effects and original source-code hooks | Preparation: loader attribution and source hooks pinned; 64-call audit passes; complete form and mechanisms remain |
 | 6 / M5 | [Ghouls ’n Ghosts — Tim Follin](composition/ghouls-preparation.md), provisional #1 | Contrasting sections, changing orchestration and instrument transformations | Preparation: source pinned; init plus 64 calls verified in CPU/VICE with full SID port writes; #1 musical label still needs audition |
 | 7 / M6 | [Deflektor — Ben Daglish](composition/deflektor-preparation.md), #1 | Cowbell-driven rhythmic identity and independent supporting parts | Preparation: unchanged high-RAM source passes init plus 64-call CPU/VICE comparison with an explicit low-RAM host; complete form and mechanisms remain |
-| 8 / P1 | Take On Me — a-ha; PVL SID candidate | Fast recognizable hook, agile lead, accompaniment and section coverage | Queued |
-| 9 / P2 | Billie Jean — Michael Jackson; Johannes Bjerregaard SID candidate | Bass/drum groove, articulation and a restrained but animated arrangement | Queued |
-| 10 / T1 | Airwolf — Sylvester Levay; Mark Cooksey C64 arrangement | Repeating synth figures, sustained layers and tension; this is a TV theme | Queued |
-| 11 / T2 | Ghostbusters — Ray Parker Jr.; Russell Lieblich C64 arrangement, #1 | Bass/hook interaction, voice allocation, speech integration and full-machine timing | Queued |
+| 8 / P1 | [Take On Me — a-ha; PVL SID](composition/pop-theme-preparation.md#take-on-me), #1 | Fast recognizable hook, agile lead, accompaniment and section coverage | Preparation: source pinned; PAL declared but SID model unspecified; explicit model contract remains |
+| 9 / P2 | [Billie Jean — Michael Jackson; Johannes Bjerregaard SID](composition/pop-theme-preparation.md#billie-jean-and-airwolf), #1 | Bass/drum groove, articulation and a restrained but animated arrangement | Preparation: source pinned; init plus 64 calls verified in CPU/VICE; form and mechanisms remain |
+| 10 / T1 | [Airwolf — Sylvester Levay; Mark Cooksey C64 arrangement](composition/pop-theme-preparation.md#billie-jean-and-airwolf), #1 | Repeating synth figures, sustained layers and tension; this is a TV theme | Preparation: source pinned; init plus 64 calls verified in CPU/VICE; form and mechanisms remain |
+| 11 / T2 | [Ghostbusters — Ray Parker Jr.; Russell Lieblich C64 arrangement](composition/pop-theme-preparation.md#ghostbusters), #1 | Bass/hook interaction, voice allocation, speech integration and full-machine timing | Preparation: source pinned as NTSC/6581 RSID; full-machine execution remains |
 
 The six composer rows have archive and published-account routes in the [listening catalogue](composers/listening-catalogue.md). *Shades* is selected for its documented breakthrough and editor connection; *The Great Giana Sisters* is the alternate if intake favors a more familiar game theme. Preserve collaborators and source-composition credits at subtune level.
 
@@ -65,14 +65,14 @@ Mark a case **done** only when all five stages have linked evidence and its decl
 
 ## Reference acquisition and feasibility
 
-| Later study | Archive candidate / evidence route | Pinning still required |
+| Later study | Pinned archive / evidence route | Remaining execution/form work |
 | --- | --- | --- |
-| Take On Me | [PVL SID](https://www.hvsc.de/download/C64Music/MUSICIANS/P/PVL/Take_on_Me.sid); [release listing](https://csdb.dk/release/?id=3031) | Hash, header, subtune, quality and form |
-| Billie Jean | [Bjerregaard SID](https://www.hvsc.de/download/C64Music/MUSICIANS/B/Bjerregaard_Johannes/Billie_Jean.sid); [HVSC STIL](https://www.hvsc.de/download/C64Music/DOCUMENTS/STIL.txt) identifies the original song | Hash, header, subtune, quality and form |
-| Airwolf | [Cooksey SID](https://www.hvsc.de/download/C64Music/MUSICIANS/C/Cooksey_Mark/Airwolf.sid); [composer interview](https://remix64.com/interviews/interview-mark-cooksey.html) | Hash, header, musical subtune and form |
-| Ghostbusters | [Lieblich SID](https://www.hvsc.de/download/C64Music/MUSICIANS/L/Lieblich_Russell/Ghostbusters.sid); [archive profile](https://csdb.dk/sid/?id=17398) | Hash and executable confirmation of archived NTSC/6581, default #1 of 5 and zero play address |
+| Take On Me | [PVL SID](https://www.hvsc.de/download/C64Music/MUSICIANS/P/PVL/Take_on_Me.sid); [pinned intake](composition/pop-theme-preparation.md#take-on-me) | Explicit chip-model assumption, execution, quality and form |
+| Billie Jean | [Bjerregaard SID](https://www.hvsc.de/download/C64Music/MUSICIANS/B/Bjerregaard_Johannes/Billie_Jean.sid); [bounded CPU/VICE proof](composition/pop-theme-preparation.md#billie-jean-and-airwolf) | Complete form, mechanisms and quality |
+| Airwolf | [Cooksey SID](https://www.hvsc.de/download/C64Music/MUSICIANS/C/Cooksey_Mark/Airwolf.sid); [bounded CPU/VICE proof](composition/pop-theme-preparation.md#billie-jean-and-airwolf) | Complete form, mechanisms and quality |
+| Ghostbusters | [Lieblich SID](https://www.hvsc.de/download/C64Music/MUSICIANS/L/Lieblich_Russell/Ghostbusters.sid); [RSID intake](composition/pop-theme-preparation.md#ghostbusters) | Execute actual NTSC machine-controlled cadence, identify music/speech and complete form |
 
-Cached HVSC STIL v85 confirms the pop/theme identities; the [Flashdance reference record](composition/flashdance-reference.md) owns that cache's checksum. Listed candidates are not all locally downloaded or auditioned. Fresh binary acquisition remains an intake task. *Ghostbusters* needs the full-machine path, not an assumed callable PAL routine; distinguish its Electronic Speech Systems speech from oscillator instruments. CIA/RSID, multispeed or sample techniques must receive suitable tracing support before making fidelity claims.
+Cached HVSC STIL v85 confirms the pop/theme identities; the [intake receipt](../../evidence/pop-theme-intake/provenance.json) retains that cache's fingerprint and exact entry boundaries. All four references are downloaded privately and registered by URL/hash, but remain unauditioned here. *Ghostbusters* needs the full-machine path, not an assumed callable PAL routine; distinguish its Electronic Speech Systems speech from oscillator instruments. CIA/RSID, multispeed or sample techniques must receive suitable tracing support before making fidelity claims.
 
 ## Working rules and retained gap
 

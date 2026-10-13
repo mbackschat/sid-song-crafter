@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "bytes": 6310,
+  "sha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde",
+  "format": "RSID",
+  "version": 2,
+  "dataOffset": 124,
+  "headerLoadAddress": 0,
+  "loadAddress": 36877,
+  "payloadBytes": 6184,
+  "endAddressExclusive": 43061,
+  "initAddress": 36877,
+  "playAddress": 0,
+  "subtunes": 5,
+  "defaultSubtune": 1,
+  "selectedSubtune": 1,
+  "speedWord": 0,
+  "flags": 24,
+  "clockDeclaration": "NTSC",
+  "sidModelDeclaration": "MOS6581",
+  "selectedTimingDeclaration": "machine-controlled",
+  "title": "Ghostbusters",
+  "author": "Russell Lieblich",
+  "released": "1984 Activision",
+  "callableProfile": {
+    "profile": "pal-banked",
+    "accepted": false,
+    "reason": "Audit requires a complete PSID header"
+  },
+  "limits": "Header declarations and current profile admission only; no driver execution, measured cadence, subtune-role identification or listening verdict.",
+  "sourceUrl": "https://www.hvsc.de/download/C64Music/MUSICIANS/L/Lieblich_Russell/Ghostbusters.sid",
+  "sourcePath": ".local/research/ghostbusters/Ghostbusters.sid",
+  "tools": {
+    "sid_intake.py": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0",
+    "psid_profile.py": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+  }
+}

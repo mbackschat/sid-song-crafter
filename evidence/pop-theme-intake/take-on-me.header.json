@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "bytes": 2948,
+  "sha256": "c7e45037d20c3b85d18fc955a1cdfb70041f08dfc171e9b12d1c3327300101e6",
+  "format": "PSID",
+  "version": 2,
+  "dataOffset": 124,
+  "headerLoadAddress": 0,
+  "loadAddress": 4096,
+  "payloadBytes": 2822,
+  "endAddressExclusive": 6918,
+  "initAddress": 6912,
+  "playAddress": 4099,
+  "subtunes": 1,
+  "defaultSubtune": 1,
+  "selectedSubtune": 1,
+  "speedWord": 0,
+  "flags": 4,
+  "clockDeclaration": "PAL",
+  "sidModelDeclaration": "unknown",
+  "selectedTimingDeclaration": "VBI",
+  "title": "Take on Me",
+  "author": "Pascal van Loosbroek (PVL)",
+  "released": "1993 Slash Design",
+  "callableProfile": {
+    "profile": "pal-banked",
+    "accepted": false,
+    "reason": "Audit requires explicit PAL and one declared SID model without MUS/PlaySID flags"
+  },
+  "limits": "Header declarations and current profile admission only; no driver execution, measured cadence, subtune-role identification or listening verdict.",
+  "sourceUrl": "https://www.hvsc.de/download/C64Music/MUSICIANS/P/PVL/Take_on_Me.sid",
+  "sourcePath": ".local/research/take-on-me/Take_on_Me.sid",
+  "tools": {
+    "sid_intake.py": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0",
+    "psid_profile.py": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+  }
+}

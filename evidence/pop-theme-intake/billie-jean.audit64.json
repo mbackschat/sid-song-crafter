@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "16d8eae4d22f368520589c44e9db399b64092664bee6e1e70ca4b21c60bf0c54",
+  "cpu": "py65 NMOS 6502",
+  "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+  "sidModel": "MOS6581",
+  "sidCount": 1,
+  "sids": [
+    {
+      "baseAddress": 54272,
+      "model": "MOS6581"
+    }
+  ],
+  "loadAddress": 4096,
+  "initAddress": 5280,
+  "playAddress": 4096,
+  "clockHz": 985248.6111111111,
+  "playCalls": 64,
+  "callRateHz": 50.12457321485099,
+  "initCycles": 203,
+  "maximumPlayCycles": 1241,
+  "meanPlayCycles": 880.625,
+  "frameCycleBudget": 19656,
+  "initWriteCount": 3,
+  "playWriteCount": 1268,
+  "registers": {
+    "d400": {
+      "writes": 58,
+      "distinctValues": 9,
+      "minimum": 8,
+      "maximum": 193
+    },
+    "d401": {
+      "writes": 58,
+      "distinctValues": 9,
+      "minimum": 7,
+      "maximum": 147
+    },
+    "d402": {
+      "writes": 58,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 8
+    },
+    "d403": {
+      "writes": 58,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 8
+    },
+    "d404": {
+      "writes": 70,
+      "distinctValues": 9,
+      "minimum": 0,
+      "maximum": 241
+    },
+    "d405": {
+      "writes": 6,
+      "distinctValues": 1,
+      "minimum": 3,
+      "maximum": 3
+    },
+    "d406": {
+      "writes": 6,
+      "distinctValues": 2,
+      "minimum": 88,
+      "maximum": 118
+    },
+    "d407": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 155,
+      "maximum": 155
+    },
+    "d408": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 4,
+      "maximum": 4
+    },
+    "d409": {
+      "writes": 64,
+      "distinctValues": 16,
+      "minimum": 8,
+      "maximum": 248
+    },
+    "d40a": {
+      "writes": 64,
+      "distinctValues": 5,
+      "minimum": 8,
+      "maximum": 12
+    },
+    "d40b": {
+      "writes": 64,
+      "distinctValues": 2,
+      "minimum": 64,
+      "maximum": 65
+    },
+    "d40e": {
+      "writes": 64,
+      "distinctValues": 3,
+      "minimum": 110,
+      "maximum": 163
+    },
+    "d40f": {
+      "writes": 64,
+      "distinctValues": 3,
+      "minimum": 14,
+      "maximum": 24
+    },
+    "d410": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 8,
+      "maximum": 8
+    },
+    "d411": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 8,
+      "maximum": 8
+    },
+    "d412": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 32,
+      "maximum": 32
+    },
+    "d416": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 32,
+      "maximum": 32
+    },
+    "d417": {
+      "writes": 186,
+      "distinctValues": 1,
+      "minimum": 242,
+      "maximum": 242
+    },
+    "d418": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 59,
+      "maximum": 59
+    }
+  },
+  "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment.",
+  "executionProfile": "pal-banked",
+  "subtunes": 1,
+  "defaultSubtune": 1,
+  "selectedSubtune": 1,
+  "entryBank": 54,
+  "hostBase": 49152,
+  "initReturnAddress": 49210,
+  "playReturnAddress": 49229,
+  "entryStateBasis": "Controlled PAL raster host: init A=selection-1, X/Y=0, P=$26; play A=$FA, retained X/Y, CMP-equal C/Z set and N clear; bank $36 before each call; callable return words derive from the shared harness JSR labels"
+}

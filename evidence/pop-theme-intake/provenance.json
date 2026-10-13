@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-13",
+  "candidates": [
+    {
+      "id": "take-on-me",
+      "source": {
+        "id": "take-on-me",
+        "hvscPath": "MUSICIANS/P/PVL/Take_on_Me.sid",
+        "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/P/PVL/Take_on_Me.sid",
+        "sha256": "c7e45037d20c3b85d18fc955a1cdfb70041f08dfc171e9b12d1c3327300101e6",
+        "path": ".local/research/take-on-me/Take_on_Me.sid",
+        "title": "Take on Me",
+        "credit": "Pascal van Loosbroek (PVL)",
+        "default": false
+      },
+      "header": {
+        "sha256": "50d2e4efd19abfdc8a66771e01af6d61cdf50f9af39e08986aa4a9c6994d296d",
+        "bytes": 1405
+      },
+      "stil": {
+        "entryPath": "/MUSICIANS/P/PVL/Take_on_Me.sid",
+        "firstLine": 77886,
+        "lastLine": 77889,
+        "entrySha256": "6c1e7088bbb9c11c3a2a60c434e49286c826b3d997a97153e086fcf6d080e974",
+        "fields": [
+          "TITLE: Take On Me [from Hunting High and Low]",
+          "ARTIST: A-Ha"
+        ],
+        "hashRecipe": "Original CRLF bytes from the path line through blank lines before the next path"
+      },
+      "execution": {
+        "attempted": false,
+        "admission": {
+          "profile": "pal-banked",
+          "accepted": false,
+          "reason": "Audit requires explicit PAL and one declared SID model without MUS/PlaySID flags"
+        }
+      }
+    },
+    {
+      "id": "billie-jean",
+      "source": {
+        "id": "billie-jean",
+        "hvscPath": "MUSICIANS/B/Bjerregaard_Johannes/Billie_Jean.sid",
+        "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/B/Bjerregaard_Johannes/Billie_Jean.sid",
+        "sha256": "16d8eae4d22f368520589c44e9db399b64092664bee6e1e70ca4b21c60bf0c54",
+        "path": ".local/research/billie-jean/Billie_Jean.sid",
+        "title": "Billie Jean",
+        "credit": "Johannes Bjerregaard",
+        "default": false
+      },
+      "header": {
+        "sha256": "50251b0f6996952a112c1bd504f65175d5f44ec783479926ef99a4774d871b0b",
+        "bytes": 1373
+      },
+      "stil": {
+        "entryPath": "/MUSICIANS/B/Bjerregaard_Johannes/Billie_Jean.sid",
+        "firstLine": 21282,
+        "lastLine": 21285,
+        "entrySha256": "c91c802dc71e6c3dac36bbe81490a36be38cc3680ab132693d39cd0312dea391",
+        "fields": [
+          "TITLE: Billie Jean [from Thriller]",
+          "ARTIST: Michael Jackson"
+        ],
+        "hashRecipe": "Original CRLF bytes from the path line through blank lines before the next path"
+      },
+      "execution": {
+        "attempted": true,
+        "profile": "pal-banked",
+        "selectedSubtune": 1,
+        "hostBase": 49152,
+        "playCalls": 64,
+        "verification": {
+          "matchedWrites": 1271,
+          "playCalls": 64,
+          "firstCall": 0,
+          "lastCall": 63,
+          "frameCycles": 19656,
+          "maximumCadenceError": 8,
+          "cadenceTolerance": 9,
+          "matchedInitWrites": 3,
+          "matchedPlayWrites": 1268
+        },
+        "files": {
+          "billie-jean.audit64.json": {
+            "sha256": "23e34cdc1d0b92bd542ae04e583057bb4e61976fef601ee6f4616181d5f4ce6b",
+            "bytes": 3585
+          },
+          "billie-jean.audit64.writes.json": {
+            "sha256": "9fa5c718f36b636baa842c0471bbb3d3980eda123376be13c2d05f6c342cfb34",
+            "bytes": 104090
+          },
+          "billie-jean.vice64/study.json": {
+            "sha256": "caad4ebaa6adc1c08131a5605f4ab2523af3a071d5964d0938076e241c083e9b",
+            "bytes": 4215
+          },
+          "billie-jean.vice64/trace.json": {
+            "sha256": "eba64047b0bd40815b415d3a2366559a464c0f783a31d34b4572d753f86b17db",
+            "bytes": 521382
+          }
+        },
+        "sourcePreservation": "Original still matches the download/registry pin; VICE export equals the intact source payload with its load prefix."
+      }
+    },
+    {
+      "id": "airwolf",
+      "source": {
+        "id": "airwolf",
+        "hvscPath": "MUSICIANS/C/Cooksey_Mark/Airwolf.sid",
+        "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/C/Cooksey_Mark/Airwolf.sid",
+        "sha256": "03c602da9182759c78ca4d90ad3bd5b223b3eb61f34ea31c2205fffc589bf89f",
+        "path": ".local/research/airwolf/Airwolf.sid",
+        "title": "Airwolf",
+        "credit": "Mark Cooksey",
+        "default": false
+      },
+      "header": {
+        "sha256": "9b4f4cc6aa8b1eb1a50cd9878ebe076c9da52046883975d64cc73a6ad29c9f57",
+        "bytes": 1330
+      },
+      "stil": {
+        "entryPath": "/MUSICIANS/C/Cooksey_Mark/Airwolf.sid",
+        "firstLine": 28805,
+        "lastLine": 28817,
+        "entrySha256": "25fc22178388bd419be00f01ca081912429d3f179c4e74a8290d02b84551cab7",
+        "fields": [
+          "TITLE: Airwolf Theme [from the TV series]",
+          "ARTIST: Sylvester Levay"
+        ],
+        "hashRecipe": "Original CRLF bytes from the path line through blank lines before the next path"
+      },
+      "execution": {
+        "attempted": true,
+        "profile": "pal-banked",
+        "selectedSubtune": 1,
+        "hostBase": 49152,
+        "playCalls": 64,
+        "verification": {
+          "matchedWrites": 303,
+          "playCalls": 64,
+          "firstCall": 0,
+          "lastCall": 63,
+          "frameCycles": 19656,
+          "maximumCadenceError": 7,
+          "cadenceTolerance": 9,
+          "matchedInitWrites": 21,
+          "matchedPlayWrites": 282
+        },
+        "files": {
+          "airwolf.audit64.json": {
+            "sha256": "02b2a621c5a4a2a4622454ca856489f8ba39905eeb2eb365486d8eeea99897b4",
+            "bytes": 3356
+          },
+          "airwolf.audit64.writes.json": {
+            "sha256": "7b1c77f5f52b01e337ada2abeea31479c6bb8c98d12b32fb57152c987ee374f7",
+            "bytes": 24562
+          },
+          "airwolf.vice64/study.json": {
+            "sha256": "79a219c2e3772ec004c1c099c4aca4fdee465e530049f9a0629e32c20112ca29",
+            "bytes": 4911
+          },
+          "airwolf.vice64/trace.json": {
+            "sha256": "aec3c49013369c8733f5ca2531deaa2d21cf793fab29ed7660a4fef7189610eb",
+            "bytes": 142207
+          }
+        },
+        "sourcePreservation": "Original still matches the download/registry pin; VICE export equals the intact source payload with its load prefix."
+      }
+    },
+    {
+      "id": "ghostbusters",
+      "source": {
+        "id": "ghostbusters",
+        "hvscPath": "MUSICIANS/L/Lieblich_Russell/Ghostbusters.sid",
+        "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/L/Lieblich_Russell/Ghostbusters.sid",
+        "sha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde",
+        "path": ".local/research/ghostbusters/Ghostbusters.sid",
+        "title": "Ghostbusters",
+        "credit": "Russell Lieblich",
+        "default": false
+      },
+      "header": {
+        "sha256": "61c56fcaa9d1829e908acfb9826da3eae1e447f8f0dcd31c3fb253c68a6b68d5",
+        "bytes": 1388
+      },
+      "stil": {
+        "entryPath": "/MUSICIANS/L/Lieblich_Russell/Ghostbusters.sid",
+        "firstLine": 59047,
+        "lastLine": 59052,
+        "entrySha256": "b2abe7e2b8e588e5ee1914d258b18e27aa8d450486ad14f74717b9bf01b737c0",
+        "fields": [
+          "(#1)",
+          "TITLE: Ghostbusters [from the movie]",
+          "ARTIST: Ray Parker, Jr."
+        ],
+        "hashRecipe": "Original CRLF bytes from the path line through blank lines before the next path"
+      },
+      "execution": {
+        "attempted": false,
+        "admission": {
+          "profile": "pal-banked",
+          "accepted": false,
+          "reason": "Audit requires a complete PSID header"
+        }
+      }
+    }
+  ],
+  "registry": {
+    "sha256": "6118a18e94d645ba73ffa290d00c6334725aa775717a2f1266afeb6714be520c",
+    "bytes": 10028
+  },
+  "downloads": {
+    "sha256": "0a84431183f4fa8f0c2d54fe7c7f93bd7b585bde5545f64a23fd94ecdb6c3e91",
+    "bytes": 1373
+  },
+  "stil": {
+    "url": "https://hvsc.c64.org/download/C64Music/DOCUMENTS/STIL.txt",
+    "version": "85, June 28, 2026",
+    "sha256": "b1ef3584a5b3501e2bbd2ef056d6539a1bbee7933a7828537c3946c1b16cde43",
+    "bytes": 3750199
+  },
+  "tools": {
+    "sid_intake.py": {
+      "sha256": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0",
+      "bytes": 4733
+    },
+    "psid_profile.py": {
+      "sha256": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+      "bytes": 4337
+    },
+    "sid_audit_host.py": {
+      "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+      "bytes": 3146
+    },
+    "psid_audit.py": {
+      "sha256": "4446a19a325e625e59f100aac0b186478fb1633f65886b260db2ad3da11419a5",
+      "bytes": 10095
+    },
+    "verify_player.py": {
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+      "bytes": 9535
+    },
+    "trace-sid-vice.py": {
+      "sha256": "a00830a610baf13b0d355b65baf818cd8579fce27743e9015563a9c37138da0f",
+      "bytes": 16182
+    }
+  },
+  "collector": {
+    "sha256": "91b3065e1ece99d6251f66cbeb61666373e585be699aded07dce263492871fcb",
+    "bytes": 4801
+  },
+  "limitations": [
+    "STIL and header credits distinguish original composition/performance from the SID arranger; unspecified subtune labels remain unknown.",
+    "Take On Me has no declared SID model; Ghostbusters is NTSC RSID with zero play address. Neither was executed by the callable PAL tools.",
+    "Billie Jean and Airwolf results cover init plus 64 controlled calls only; no full form, decoded synthesis, render, ending or listening verdict.",
+    "Original SID files, full executable payloads, reference audio and raw VICE logs remain private and excluded from the archive."
+  ]
+}

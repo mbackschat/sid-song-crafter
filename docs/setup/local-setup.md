@@ -46,6 +46,10 @@ Keep the original SID's source URL and SHA-256 in the [asset manifest](../../con
 | `arkanoid` | `.local/arkanoid-source.sid` | `--include arkanoid` |
 | `ghouls-n-ghosts` | `.local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid` | `--include ghouls-n-ghosts` |
 | `deflektor` | `.local/research/deflektor/Deflektor.sid` | `--include deflektor` |
+| `take-on-me` | `.local/research/take-on-me/Take_on_Me.sid` | `--include take-on-me` |
+| `billie-jean` | `.local/research/billie-jean/Billie_Jean.sid` | `--include billie-jean` |
+| `airwolf` | `.local/research/airwolf/Airwolf.sid` | `--include airwolf` |
+| `ghostbusters` | `.local/research/ghostbusters/Ghostbusters.sid` | `--include ghostbusters` |
 
 The older composer caches keep their existing `.local/` paths. `--include` adds the requested optional entries to the default selection and can be repeated. Fetch both Shades variants, or verify their existing copies without network access:
 
