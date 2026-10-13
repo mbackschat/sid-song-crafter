@@ -23,7 +23,7 @@ python3 scripts/listening-package.py config/listening/rambo-loader-verification.
 python3 scripts/listening-package.py config/listening/rambo-loader-retained-verification.json --output build/rambo-retained-verification
 ```
 
-The [fresh-capture recipe](../../config/listening/rambo-loader-verification.json) checks extraction, runs focused guards, compares the independent numeric loader with the complete canonical store ledger, and executes the original to capture and verify every SOUND invocation. The [retained-evidence recipe](../../config/listening/rambo-loader-retained-verification.json) instead rechecks the archived SOUND capture against the current component; isolated original-routine checks still execute. Its proof records `captureReused: true`. Both modes retain exact inputs, state/completion checks and evidence paths. Neither produces a compiled player or establishes musical acceptance; the [Rambo study](../research/composition/rambo-preparation.md) owns that pending work.
+The [fresh-capture recipe](../../config/listening/rambo-loader-verification.json) checks extraction, runs focused guards, compares the independent numeric loader with the complete canonical store ledger, and executes the original to capture and verify every SOUND invocation. The [retained-evidence recipe](../../config/listening/rambo-loader-retained-verification.json) instead rechecks the archived SOUND capture against the current component; isolated original-routine checks still execute. Its proof records `captureReused: true`. Both modes retain exact inputs, state/completion checks and evidence paths. Neither produces a compiled player or establishes musical acceptance; the [Rambo study](../research/composition/rambo-preparation.md) owns its subsequently completed compiled delivery and listening verdicts.
 
 An unchanged repeated invocation reuses verified stages in either mode. A cache hit for the fresh-capture recipe means reuse of its earlier fresh capture, not a new execution of the original. Read stage reuse in `run.json`; choose a new output directory when a genuinely new capture is required. The numeric check covers all 87,534 ordered stores, the declared 11,000 model calls and 185 quiet confirmation calls, while pinned canonical audit/form records establish the original's 40,000-call coverage.
 
@@ -45,6 +45,18 @@ Each stage has an immutable attempt directory under the selected output's `cache
 Before saving a new success receipt, the runner verifies that the stage’s declared inputs, executable and runner/Python fingerprints still match. Before publishing listening links, it rechecks every stage's declared inputs and executable, including reused stages, and the runner/Python fingerprints. This catches an edit to an early dependency while a later stage is running. A changed dependency fails the package and suppresses its listening links; retained attempts remain available for inspection. These content checks do not lock the filesystem against concurrent edits or detect a change that is reverted between checks.
 
 `run.json` describes the latest invocation, including status, stage timings, reuse and delivered paths. `listening.md` is its human-readable index; these two index files may change, while historical audio and stage outputs remain intact. Do not compress or modify files inside a live package cache: that invalidates its output fingerprints. Historical standalone receipts remain valid evidence but are not automatically imported as cache entries. A first run establishes the runner's own records.
+
+## Preserve stable audition filenames
+
+After a completed run, use [publish-listening.py](../../scripts/publish-listening.py) to copy an explicitly selected set of verified WAVs into a fresh local folder. This keeps submitted sound samples stable while later recipe invocations update their indexes. It does not upload files or add audio to Git. For the complete Ghouls package:
+
+```sh
+python3 scripts/publish-listening.py build/ghouls-independent-full/run.json --selection config/listening/ghouls-full.audition.json --output build/ghouls-listening
+```
+
+The [selection](../../config/listening/ghouls-full.audition.json) maps existing deliverable labels to flat `.wav` filenames. Choose only the full reference, candidate and comparisons needed for feedback. The destination must be new and below ignored `build/`; use a new folder for a revised submission. Independent copies consume additional local space but preserve the submitted audio even when a cache is later cleaned.
+
+The publisher requires a completed run with successful stages and matching file hashes in both the run and owning stage. It rejects missing or changed files, unknown labels, duplicate names, traversal, symlinks and existing destinations. It checks source, copied audio, run and selection hashes again before making the prepared folder available. `sources.json` records the original paths, fingerprints and chosen filenames. These content checks are not filesystem locks. Original reference audio and comparisons containing it remain local, outside Git and LFS.
 
 ## Write a recipe
 
