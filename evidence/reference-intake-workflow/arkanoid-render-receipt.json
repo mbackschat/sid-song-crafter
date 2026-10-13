@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "kind": "selected-original-source",
+  "selection": {
+    "assetId": "arkanoid",
+    "renderSeconds": 6,
+    "role": "Arkanoid title, shipped archive; contrasting work source excerpt",
+    "route": "full-machine-render",
+    "subtune": 1
+  },
+  "source": {
+    "id": "arkanoid",
+    "title": "Arkanoid",
+    "credit": "Martin Galway",
+    "hvscPath": "MUSICIANS/G/Galway_Martin/Arkanoid.sid",
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/G/Galway_Martin/Arkanoid.sid",
+    "sha256": "9a576463b6d9e46f35cf2c8fbf40b6b3915424b2207d7c44c73b36e6ce9bc1cd",
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/.local/arkanoid-source.sid",
+    "default": false,
+    "bytes": 9834
+  },
+  "registry": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/config/local-assets.json",
+    "bytes": 10028,
+    "sha256": "6118a18e94d645ba73ffa290d00c6334725aa775717a2f1266afeb6714be520c"
+  },
+  "header": {
+    "schemaVersion": 1,
+    "bytes": 9834,
+    "sha256": "9a576463b6d9e46f35cf2c8fbf40b6b3915424b2207d7c44c73b36e6ce9bc1cd",
+    "format": "RSID",
+    "version": 2,
+    "dataOffset": 124,
+    "headerLoadAddress": 0,
+    "loadAddress": 8192,
+    "payloadBytes": 9708,
+    "endAddressExclusive": 17900,
+    "initAddress": 16384,
+    "playAddress": 0,
+    "subtunes": 20,
+    "defaultSubtune": 1,
+    "selectedSubtune": 1,
+    "speedWord": 0,
+    "flags": 20,
+    "clockDeclaration": "PAL",
+    "sidModelDeclaration": "MOS6581",
+    "selectedTimingDeclaration": "machine-controlled",
+    "title": "Arkanoid",
+    "author": "Martin Galway",
+    "released": "1987 Imagine",
+    "callableProfile": {
+      "profile": "pal-banked",
+      "accepted": false,
+      "reason": "Audit requires a complete PSID header"
+    },
+    "limits": "Header declarations and current profile admission only; no driver execution, measured cadence, subtune-role identification or listening verdict."
+  },
+  "rendering": {
+    "renderer": ".local/bin/render-sid",
+    "library": "libsidplayfp 3.1.1 / SIDLite",
+    "clock": "PAL",
+    "clockForced": true,
+    "sidModel": "MOS6581",
+    "subtune": 1,
+    "powerOnDelay": 0,
+    "sampleRate": 44100,
+    "channels": 1,
+    "format": "PCM16",
+    "seconds": 6,
+    "gain": 1,
+    "normalization": false,
+    "initialized": true
+  },
+  "evidence": {
+    "route": "full-machine-render",
+    "cpuOrderedStoresRequested": false,
+    "cpuCausalProof": false,
+    "registerObservation": "renderer-iteration register snapshots, not a bus-write trace",
+    "limitations": "Header admission, optional controlled callable CPU stores and modeled source audio; no original-host equivalence, causal corroboration or listening verdict."
+  },
+  "listeningReview": null,
+  "render": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/galway-contrast/cache/sourceB-render/3caedadc86e83f950225a85666aed6546b691756f57c4b66c60f408603809c31/attempt-d537436836324badb01bea179873b1d9/source.wav",
+    "sha256": "6bc43e122480029461f67a7326e32d5c57f969b0b0fd176d60007cab079b76b5",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 264600,
+    "durationSeconds": 6.0,
+    "peak": 19350,
+    "peakDbfs": -4.575379312095754,
+    "clippedSamples": 0,
+    "rms": 4115.3543729991,
+    "acRms": 4074.588917639198,
+    "acRmsDbfs": -18.107322706663524,
+    "perChannel": [
+      {
+        "dc": -577.812052154195,
+        "rms": 4115.3543729991,
+        "acRms": 4074.588917639198
+      }
+    ]
+  },
+  "registerSnapshots": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/galway-contrast/cache/sourceB-render/3caedadc86e83f950225a85666aed6546b691756f57c4b66c60f408603809c31/attempt-d537436836324badb01bea179873b1d9/source.wav.registers.tsv",
+    "bytes": 24669,
+    "sha256": "b11a22af483ac45b7ad3a7909e89dfc0ccedb3c76d41fad45509046ea97ec144"
+  }
+}

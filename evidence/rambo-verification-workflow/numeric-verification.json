@@ -1,0 +1,865 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "88a2b538ee3d3d1d8b0b754bef77a63d9750812694786977ae8c539f6ecd000e",
+  "originalObservedCalls": 40000,
+  "numericComputedCalls": 11000,
+  "matchedOrderedStores": 87534,
+  "initStores": 25,
+  "playStores": 87509,
+  "orderedStoreProjection": [
+    "phase",
+    "tick",
+    "address",
+    "value"
+  ],
+  "allOrderedStoresMatched": true,
+  "allCompletionBoundariesMatched": true,
+  "quietConfirmationCalls": 185,
+  "originalQuietConfirmationCalls": 29185,
+  "lastPlayStoreCall": 10814,
+  "declaredCallRateHz": 50.12457321485099,
+  "nominalMusicSeconds": 215.76243559507682,
+  "measurements": {
+    "firstZeroMusicTestCall": 10815,
+    "morseDispatchReturnCalls": [
+      1557
+    ],
+    "topLevelReturns": [
+      {
+        "call": 10544,
+        "voice": 1,
+        "newActiveMask": 5
+      },
+      {
+        "call": 10559,
+        "voice": 2,
+        "newActiveMask": 1
+      },
+      {
+        "call": 10560,
+        "voice": 0,
+        "newActiveMask": 0
+      }
+    ],
+    "lastVoiceStoreCalls": [
+      10660,
+      10799,
+      10814
+    ],
+    "initializedState": {
+      "activeMask": 7,
+      "morseActive": false,
+      "morsePhase": "read",
+      "score": [
+        {
+          "cursor": "voice-1-row-0000",
+          "remaining": 1,
+          "transpose": 0,
+          "stackIndex": 7,
+          "stack": [
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            }
+          ]
+        },
+        {
+          "cursor": "voice-2-row-0002",
+          "remaining": 1,
+          "transpose": 0,
+          "stackIndex": 7,
+          "stack": [
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            }
+          ]
+        },
+        {
+          "cursor": "voice-3-row-0004",
+          "remaining": 1,
+          "transpose": 0,
+          "stackIndex": 7,
+          "stack": [
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            }
+          ]
+        }
+      ],
+      "sounds": [
+        {
+          "frequencyDelay": 0,
+          "frequencyFlags": 0,
+          "pulseDelay": 0,
+          "pulseFlags": 0,
+          "control": 0,
+          "releaseCountdown": 0,
+          "life": 0,
+          "pulseInitial": 0,
+          "frequency": 0,
+          "pulse": 0,
+          "frequencySteps": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "frequencyDurations": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pulseDurations": [
+            0,
+            0
+          ],
+          "pulseSteps": [
+            0,
+            0
+          ],
+          "frequencyRemaining": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pulseRemaining": [
+            0,
+            0
+          ]
+        },
+        {
+          "frequencyDelay": 0,
+          "frequencyFlags": 0,
+          "pulseDelay": 0,
+          "pulseFlags": 0,
+          "control": 0,
+          "releaseCountdown": 0,
+          "life": 0,
+          "pulseInitial": 0,
+          "frequency": 0,
+          "pulse": 0,
+          "frequencySteps": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "frequencyDurations": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pulseDurations": [
+            0,
+            0
+          ],
+          "pulseSteps": [
+            0,
+            0
+          ],
+          "frequencyRemaining": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pulseRemaining": [
+            0,
+            0
+          ]
+        },
+        {
+          "frequencyDelay": 0,
+          "frequencyFlags": 0,
+          "pulseDelay": 0,
+          "pulseFlags": 0,
+          "control": 0,
+          "releaseCountdown": 0,
+          "life": 0,
+          "pulseInitial": 0,
+          "frequency": 0,
+          "pulse": 0,
+          "frequencySteps": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "frequencyDurations": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pulseDurations": [
+            0,
+            0
+          ],
+          "pulseSteps": [
+            0,
+            0
+          ],
+          "frequencyRemaining": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pulseRemaining": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "stoppedEntryState": {
+      "activeMask": 0,
+      "morseActive": false,
+      "morsePhase": "gap",
+      "score": [
+        {
+          "cursor": "voice-1-row-0456",
+          "remaining": 0,
+          "transpose": 0,
+          "stackIndex": 8,
+          "stack": [
+            {
+              "returnNode": null,
+              "repeatRemaining": 54
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 16
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 255
+            },
+            {
+              "returnNode": "voice-1-row-0392",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-1-row-0392",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-1-row-0380",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-1-row-0429",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-1-row-0413",
+              "repeatRemaining": 0
+            }
+          ]
+        },
+        {
+          "cursor": "voice-2-row-0299",
+          "remaining": 0,
+          "transpose": 34,
+          "stackIndex": 8,
+          "stack": [
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-2-row-0166",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-2-row-0166",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-2-row-0233",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-2-row-0263",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-2-row-0284",
+              "repeatRemaining": 0
+            }
+          ]
+        },
+        {
+          "cursor": "voice-3-row-0356",
+          "remaining": 0,
+          "transpose": 0,
+          "stackIndex": 8,
+          "stack": [
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-3-row-0094",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-3-row-0094",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-3-row-0094",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-3-row-0094",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-3-row-0261",
+              "repeatRemaining": 0
+            }
+          ]
+        }
+      ],
+      "sounds": [
+        {
+          "frequencyDelay": 0,
+          "frequencyFlags": 5,
+          "pulseDelay": 0,
+          "pulseFlags": 255,
+          "control": 21,
+          "releaseCountdown": 0,
+          "life": 0,
+          "pulseInitial": 38557,
+          "frequency": 930,
+          "pulse": 54941,
+          "frequencySteps": [
+            65509,
+            65535,
+            65532,
+            65533
+          ],
+          "frequencyDurations": [
+            100,
+            150,
+            100,
+            255
+          ],
+          "pulseDurations": [
+            10,
+            0
+          ],
+          "pulseSteps": [
+            2048,
+            52289
+          ],
+          "frequencyRemaining": [
+            0,
+            0,
+            0,
+            6
+          ],
+          "pulseRemaining": [
+            2,
+            0
+          ]
+        },
+        {
+          "frequencyDelay": 0,
+          "frequencyFlags": 5,
+          "pulseDelay": 0,
+          "pulseFlags": 0,
+          "control": 33,
+          "releaseCountdown": 0,
+          "life": 0,
+          "pulseInitial": 1024,
+          "frequency": 2179,
+          "pulse": 2904,
+          "frequencySteps": [
+            8,
+            65528,
+            8,
+            0
+          ],
+          "frequencyDurations": [
+            3,
+            6,
+            3,
+            0
+          ],
+          "pulseDurations": [
+            10,
+            255
+          ],
+          "pulseSteps": [
+            200,
+            65516
+          ],
+          "frequencyRemaining": [
+            0,
+            0,
+            2,
+            0
+          ],
+          "pulseRemaining": [
+            0,
+            249
+          ]
+        },
+        {
+          "frequencyDelay": 0,
+          "frequencyFlags": 7,
+          "pulseDelay": 0,
+          "pulseFlags": 5,
+          "control": 65,
+          "releaseCountdown": 0,
+          "life": 0,
+          "pulseInitial": 2048,
+          "frequency": 533,
+          "pulse": 2258,
+          "frequencySteps": [
+            0,
+            65533,
+            65533,
+            65514
+          ],
+          "frequencyDurations": [
+            50,
+            255,
+            255,
+            0
+          ],
+          "pulseDurations": [
+            25,
+            25
+          ],
+          "pulseSteps": [
+            10,
+            65526
+          ],
+          "frequencyRemaining": [
+            0,
+            211,
+            255,
+            0
+          ],
+          "pulseRemaining": [
+            0,
+            21
+          ]
+        }
+      ]
+    },
+    "finalState": {
+      "activeMask": 0,
+      "morseActive": false,
+      "morsePhase": "gap",
+      "score": [
+        {
+          "cursor": "voice-1-row-0456",
+          "remaining": 0,
+          "transpose": 0,
+          "stackIndex": 8,
+          "stack": [
+            {
+              "returnNode": null,
+              "repeatRemaining": 54
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 16
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 255
+            },
+            {
+              "returnNode": "voice-1-row-0392",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-1-row-0392",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-1-row-0380",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-1-row-0429",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-1-row-0413",
+              "repeatRemaining": 0
+            }
+          ]
+        },
+        {
+          "cursor": "voice-2-row-0299",
+          "remaining": 0,
+          "transpose": 34,
+          "stackIndex": 8,
+          "stack": [
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-2-row-0166",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-2-row-0166",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-2-row-0233",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-2-row-0263",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-2-row-0284",
+              "repeatRemaining": 0
+            }
+          ]
+        },
+        {
+          "cursor": "voice-3-row-0356",
+          "remaining": 0,
+          "transpose": 0,
+          "stackIndex": 8,
+          "stack": [
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": null,
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-3-row-0094",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-3-row-0094",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-3-row-0094",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-3-row-0094",
+              "repeatRemaining": 0
+            },
+            {
+              "returnNode": "voice-3-row-0261",
+              "repeatRemaining": 0
+            }
+          ]
+        }
+      ],
+      "sounds": [
+        {
+          "frequencyDelay": 0,
+          "frequencyFlags": 5,
+          "pulseDelay": 0,
+          "pulseFlags": 255,
+          "control": 21,
+          "releaseCountdown": 0,
+          "life": 0,
+          "pulseInitial": 38557,
+          "frequency": 930,
+          "pulse": 54941,
+          "frequencySteps": [
+            65509,
+            65535,
+            65532,
+            65533
+          ],
+          "frequencyDurations": [
+            100,
+            150,
+            100,
+            255
+          ],
+          "pulseDurations": [
+            10,
+            0
+          ],
+          "pulseSteps": [
+            2048,
+            52289
+          ],
+          "frequencyRemaining": [
+            0,
+            0,
+            0,
+            6
+          ],
+          "pulseRemaining": [
+            2,
+            0
+          ]
+        },
+        {
+          "frequencyDelay": 0,
+          "frequencyFlags": 5,
+          "pulseDelay": 0,
+          "pulseFlags": 0,
+          "control": 33,
+          "releaseCountdown": 0,
+          "life": 0,
+          "pulseInitial": 1024,
+          "frequency": 2179,
+          "pulse": 2904,
+          "frequencySteps": [
+            8,
+            65528,
+            8,
+            0
+          ],
+          "frequencyDurations": [
+            3,
+            6,
+            3,
+            0
+          ],
+          "pulseDurations": [
+            10,
+            255
+          ],
+          "pulseSteps": [
+            200,
+            65516
+          ],
+          "frequencyRemaining": [
+            0,
+            0,
+            2,
+            0
+          ],
+          "pulseRemaining": [
+            0,
+            249
+          ]
+        },
+        {
+          "frequencyDelay": 0,
+          "frequencyFlags": 7,
+          "pulseDelay": 0,
+          "pulseFlags": 5,
+          "control": 65,
+          "releaseCountdown": 0,
+          "life": 0,
+          "pulseInitial": 2048,
+          "frequency": 533,
+          "pulse": 2258,
+          "frequencySteps": [
+            0,
+            65533,
+            65533,
+            65514
+          ],
+          "frequencyDurations": [
+            50,
+            255,
+            255,
+            0
+          ],
+          "pulseDurations": [
+            25,
+            25
+          ],
+          "pulseSteps": [
+            10,
+            65526
+          ],
+          "frequencyRemaining": [
+            0,
+            211,
+            255,
+            0
+          ],
+          "pulseRemaining": [
+            0,
+            21
+          ]
+        }
+      ]
+    },
+    "stoppedStatePreserved": true
+  },
+  "scope": "One independent numeric traversal from editable initialization through the finite stop; all canonical original stores and Morse/score/lifetime boundaries match. Canonical hashes and audit establish the original 40000-call range, including calls without stores.",
+  "excluded": "No original driver execution in numeric runtime, instruction-start cycle comparison, compiled callable export, audio rendering, analogue tail, actual loader host cadence or listening judgment. Named SOUND state/store agreement is checked by the separate SOUND stage.",
+  "inputs": {
+    "description": {
+      "path": "songs/rambo-loader.json",
+      "bytes": 96091,
+      "sha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b"
+    },
+    "sourceWrites": {
+      "path": "evidence/rambo-form/complete40000/writes.json.gz",
+      "bytes": 385568,
+      "sha256": "f9ef28f1a5a2b274236a3bc5513be1bfafdd897fbd6b600e0c705b12461a2c64"
+    },
+    "sourceAudit": {
+      "path": "evidence/rambo-form/complete40000/audit.json",
+      "bytes": 2706,
+      "sha256": "d5787144b4502df6b4a994ad38e919575b4bf85b589f84ba770e35d32dd8818b"
+    },
+    "sourceForm": {
+      "path": "evidence/rambo-form/complete40000/form.json",
+      "bytes": 3104,
+      "sha256": "3216e2cc5d7a61b0b73aaf9079eb8b4985f227757e27efe716078b5236c7125c"
+    },
+    "checker": {
+      "path": "scripts/studies/rambo/check-rambo-player.py",
+      "bytes": 11543,
+      "sha256": "41c3e3b45f698569eb0cef727c4fcb01f33f41aa5ca01f10cfd041a42631be44"
+    },
+    "rambo_player.py": {
+      "path": "scripts/rambo_player.py",
+      "bytes": 12446,
+      "sha256": "c65ab14faaa21781258b1604862c3f47647c958f1489150683b6c9d9c0d53961"
+    },
+    "rambo_score.py": {
+      "path": "scripts/rambo_score.py",
+      "bytes": 13622,
+      "sha256": "dcb443bd596ba3241642d2c49120174b75e1b17fcfb6e6013841265028f3ecbb"
+    },
+    "rambo_programs.py": {
+      "path": "scripts/rambo_programs.py",
+      "bytes": 7202,
+      "sha256": "1545db906a34416b34eca426cb67f5783454c1f0427f4233f4da0a502c68b96c"
+    }
+  },
+  "modelWrites": {
+    "path": "build/rambo-verification-fresh-20261013/cache/whole-player/883f3dd7a3ffe84646d8336bc5a95990087baf25e5e358fa164840026188cb46/attempt-ba092c87aadf420383abefbd4b2540c6/numeric/model-writes.json.gz",
+    "bytes": 277006,
+    "sha256": "ac0f72f1e69949a246659d1ef4245793893af3b9ce42b911f2dc9c6fe29276dd"
+  }
+}

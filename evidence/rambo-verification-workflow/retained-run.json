@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/rambo-loader-retained-verification.json",
+  "recipeSha256": "fde35d7f6b5e46c48824b46c0acb2d34e37515288c243cce5ee238c8824d7f4c",
+  "startedAt": "2026-10-13T18:23:08.275164+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "source-intake",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [],
+      "cacheKey": "77fb09bf9c770a2125633877ee453053555cac89ddfd190507e570b4f32a95e6",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/source-intake/77fb09bf9c770a2125633877ee453053555cac89ddfd190507e570b4f32a95e6/attempt-9b45050206174461a28ebdeeead33d88",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/source-intake/77fb09bf9c770a2125633877ee453053555cac89ddfd190507e570b4f32a95e6/attempt-9b45050206174461a28ebdeeead33d88/stage.log",
+      "wallSeconds": 0.0036553330000000037
+    },
+    {
+      "id": "focused-guards",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [],
+      "cacheKey": "83cc20493ab1c4d1c4b16da6a59c9a758b675753813927faf5da61061a51bce7",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/focused-guards/83cc20493ab1c4d1c4b16da6a59c9a758b675753813927faf5da61061a51bce7/attempt-2f806fcb3cba4dcbb37595e7f52434a1",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/focused-guards/83cc20493ab1c4d1c4b16da6a59c9a758b675753813927faf5da61061a51bce7/attempt-2f806fcb3cba4dcbb37595e7f52434a1/stage.log",
+      "wallSeconds": 0.003925332999999996
+    },
+    {
+      "id": "whole-player",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "whole-player",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/whole-player/883f3dd7a3ffe84646d8336bc5a95990087baf25e5e358fa164840026188cb46/attempt-ba092c87aadf420383abefbd4b2540c6/numeric/preflight.json",
+          "relativePath": "numeric/preflight.json",
+          "type": "file",
+          "sha256": "55bfa192f5150565df2edf0e183b85173c5252569d76ccb8bdd9aa27457e8041"
+        },
+        {
+          "stageId": "whole-player",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/whole-player/883f3dd7a3ffe84646d8336bc5a95990087baf25e5e358fa164840026188cb46/attempt-ba092c87aadf420383abefbd4b2540c6/numeric/model-writes.json.gz",
+          "relativePath": "numeric/model-writes.json.gz",
+          "type": "file",
+          "sha256": "ac0f72f1e69949a246659d1ef4245793893af3b9ce42b911f2dc9c6fe29276dd"
+        },
+        {
+          "stageId": "whole-player",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/whole-player/883f3dd7a3ffe84646d8336bc5a95990087baf25e5e358fa164840026188cb46/attempt-ba092c87aadf420383abefbd4b2540c6/numeric/verification.json",
+          "relativePath": "numeric/verification.json",
+          "type": "file",
+          "sha256": "691427eb34fe6db37338c4132223d5c3b7e942a98e05eb771f2b832eacfd79ee"
+        }
+      ],
+      "cacheKey": "883f3dd7a3ffe84646d8336bc5a95990087baf25e5e358fa164840026188cb46",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/whole-player/883f3dd7a3ffe84646d8336bc5a95990087baf25e5e358fa164840026188cb46/attempt-ba092c87aadf420383abefbd4b2540c6",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/whole-player/883f3dd7a3ffe84646d8336bc5a95990087baf25e5e358fa164840026188cb46/attempt-ba092c87aadf420383abefbd4b2540c6/stage.log",
+      "wallSeconds": 0.0016235419999999987
+    },
+    {
+      "id": "sound-retained-recheck",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 2.149652041,
+      "artifacts": [
+        {
+          "stageId": "sound-retained-recheck",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/sound-retained-recheck/f685fa476cf9c3bc00eae01462b6086cea2ad020d7d4a5448221a31de91eda9f/attempt-a07719d1afe54693ab6d140d8a9a0764/proof",
+          "relativePath": "proof",
+          "type": "directory",
+          "sha256": "83ee624723e4456a43f316d29729c116ba2775631e92697fc587c3d6ff0f6076",
+          "files": [
+            {
+              "path": "checker-executed.py",
+              "sha256": "4f9d754a2cb94eaa5b415de73dd9d10523ba5bcafba3b244031a7b2f9f89de28"
+            },
+            {
+              "path": "component.py",
+              "sha256": "1545db906a34416b34eca426cb67f5783454c1f0427f4233f4da0a502c68b96c"
+            },
+            {
+              "path": "isolated.json.gz",
+              "sha256": "5670e7c20fcbbe7fcda46f7fb9f726d89ba7a30e049067e785327be1a543a967"
+            },
+            {
+              "path": "preflight.json",
+              "sha256": "2f80a51e4eeee3aa73ff01f103fac6b6f5c2feb57f534eeea1a3194e135fc72b"
+            },
+            {
+              "path": "verification.json",
+              "sha256": "757bf4bd7802d4b3d50500acfe5dc044a875cd234325d42005bc5b853cfe9a54"
+            }
+          ]
+        },
+        {
+          "stageId": "sound-retained-recheck",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/sound-retained-recheck/f685fa476cf9c3bc00eae01462b6086cea2ad020d7d4a5448221a31de91eda9f/attempt-a07719d1afe54693ab6d140d8a9a0764/proof/verification.json",
+          "relativePath": "proof/verification.json",
+          "type": "file",
+          "sha256": "757bf4bd7802d4b3d50500acfe5dc044a875cd234325d42005bc5b853cfe9a54"
+        }
+      ],
+      "cacheKey": "f685fa476cf9c3bc00eae01462b6086cea2ad020d7d4a5448221a31de91eda9f",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/sound-retained-recheck/f685fa476cf9c3bc00eae01462b6086cea2ad020d7d4a5448221a31de91eda9f/attempt-a07719d1afe54693ab6d140d8a9a0764",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/sound-retained-recheck/f685fa476cf9c3bc00eae01462b6086cea2ad020d7d4a5448221a31de91eda9f/attempt-a07719d1afe54693ab6d140d8a9a0764/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 2.1614065
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "whole-player",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/whole-player/883f3dd7a3ffe84646d8336bc5a95990087baf25e5e358fa164840026188cb46/attempt-ba092c87aadf420383abefbd4b2540c6/numeric/preflight.json",
+      "relativePath": "numeric/preflight.json",
+      "type": "file",
+      "sha256": "55bfa192f5150565df2edf0e183b85173c5252569d76ccb8bdd9aa27457e8041"
+    },
+    {
+      "stageId": "whole-player",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/whole-player/883f3dd7a3ffe84646d8336bc5a95990087baf25e5e358fa164840026188cb46/attempt-ba092c87aadf420383abefbd4b2540c6/numeric/model-writes.json.gz",
+      "relativePath": "numeric/model-writes.json.gz",
+      "type": "file",
+      "sha256": "ac0f72f1e69949a246659d1ef4245793893af3b9ce42b911f2dc9c6fe29276dd"
+    },
+    {
+      "stageId": "whole-player",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/whole-player/883f3dd7a3ffe84646d8336bc5a95990087baf25e5e358fa164840026188cb46/attempt-ba092c87aadf420383abefbd4b2540c6/numeric/verification.json",
+      "relativePath": "numeric/verification.json",
+      "type": "file",
+      "sha256": "691427eb34fe6db37338c4132223d5c3b7e942a98e05eb771f2b832eacfd79ee"
+    },
+    {
+      "stageId": "sound-retained-recheck",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/sound-retained-recheck/f685fa476cf9c3bc00eae01462b6086cea2ad020d7d4a5448221a31de91eda9f/attempt-a07719d1afe54693ab6d140d8a9a0764/proof",
+      "relativePath": "proof",
+      "type": "directory",
+      "sha256": "83ee624723e4456a43f316d29729c116ba2775631e92697fc587c3d6ff0f6076",
+      "files": [
+        {
+          "path": "checker-executed.py",
+          "sha256": "4f9d754a2cb94eaa5b415de73dd9d10523ba5bcafba3b244031a7b2f9f89de28"
+        },
+        {
+          "path": "component.py",
+          "sha256": "1545db906a34416b34eca426cb67f5783454c1f0427f4233f4da0a502c68b96c"
+        },
+        {
+          "path": "isolated.json.gz",
+          "sha256": "5670e7c20fcbbe7fcda46f7fb9f726d89ba7a30e049067e785327be1a543a967"
+        },
+        {
+          "path": "preflight.json",
+          "sha256": "2f80a51e4eeee3aa73ff01f103fac6b6f5c2feb57f534eeea1a3194e135fc72b"
+        },
+        {
+          "path": "verification.json",
+          "sha256": "757bf4bd7802d4b3d50500acfe5dc044a875cd234325d42005bc5b853cfe9a54"
+        }
+      ]
+    },
+    {
+      "stageId": "sound-retained-recheck",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/sound-retained-recheck/f685fa476cf9c3bc00eae01462b6086cea2ad020d7d4a5448221a31de91eda9f/attempt-a07719d1afe54693ab6d140d8a9a0764/proof/verification.json",
+      "relativePath": "proof/verification.json",
+      "type": "file",
+      "sha256": "757bf4bd7802d4b3d50500acfe5dc044a875cd234325d42005bc5b853cfe9a54"
+    }
+  ],
+  "deliverables": {
+    "numericVerification": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/whole-player/883f3dd7a3ffe84646d8336bc5a95990087baf25e5e358fa164840026188cb46/attempt-ba092c87aadf420383abefbd4b2540c6/numeric/verification.json",
+    "numericStores": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/whole-player/883f3dd7a3ffe84646d8336bc5a95990087baf25e5e358fa164840026188cb46/attempt-ba092c87aadf420383abefbd4b2540c6/numeric/model-writes.json.gz",
+    "retainedSoundRecheck": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/sound-retained-recheck/f685fa476cf9c3bc00eae01462b6086cea2ad020d7d4a5448221a31de91eda9f/attempt-a07719d1afe54693ab6d140d8a9a0764/proof/verification.json"
+  },
+  "finishedAt": "2026-10-13T18:23:10.458757+00:00",
+  "wallSeconds": 2.183631958
+}

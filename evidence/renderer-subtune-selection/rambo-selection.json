@@ -1,0 +1,60 @@
+{
+  "sourceSha256": "88a2b538ee3d3d1d8b0b754bef77a63d9750812694786977ae8c539f6ecd000e",
+  "rendererSha256": "1c489b5b032977bdcc16c797e15273b5f657809fe2464f30cc60c885fa0a9a64",
+  "runs": [
+    {
+      "name": "default",
+      "command": [
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/rambo-source.sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/renderer-subtune-20261013/rambo/rambo-default.wav",
+        "6"
+      ],
+      "elapsedSeconds": 0.10795225000000001,
+      "stdout": "libsidplayfp 3.1.1 / SIDLite: 264600 mono PCM16 samples at 44100 Hz, subtune 1 of 24",
+      "sampleFrames": 264600,
+      "wavSha256": "7815a1a336c392c014086c11ad9e90949355c63dd8b826661a3895bb076781b0",
+      "pcmSha256": "b2766a9af369972d8e12b78ade75175adb3a732eac57dbc424a1e0d843820cc3",
+      "traceSha256": "0c03d502b2cc66e84c9cc5383f328a3ff86a93156eefa185ec81b30fa2031430"
+    },
+    {
+      "name": "one",
+      "command": [
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/rambo-source.sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/renderer-subtune-20261013/rambo/rambo-one.wav",
+        "6",
+        "--subtune",
+        "1"
+      ],
+      "elapsedSeconds": 0.077800542,
+      "stdout": "libsidplayfp 3.1.1 / SIDLite: 264600 mono PCM16 samples at 44100 Hz, subtune 1 of 24",
+      "sampleFrames": 264600,
+      "wavSha256": "7815a1a336c392c014086c11ad9e90949355c63dd8b826661a3895bb076781b0",
+      "pcmSha256": "b2766a9af369972d8e12b78ade75175adb3a732eac57dbc424a1e0d843820cc3",
+      "traceSha256": "0c03d502b2cc66e84c9cc5383f328a3ff86a93156eefa185ec81b30fa2031430"
+    },
+    {
+      "name": "two",
+      "command": [
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/rambo-source.sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/renderer-subtune-20261013/rambo/rambo-two.wav",
+        "6",
+        "--subtune",
+        "2"
+      ],
+      "elapsedSeconds": 0.08256558400000003,
+      "stdout": "libsidplayfp 3.1.1 / SIDLite: 264600 mono PCM16 samples at 44100 Hz, subtune 2 of 24",
+      "sampleFrames": 264600,
+      "wavSha256": "795cb7e003173110a60aa9dc52b27a8c19958bd84c14293e621165bad14bc835",
+      "pcmSha256": "1d80f4054c1ca716cbee5025f2d925017aac679b4c327e02956a3a262f9cb835",
+      "traceSha256": "085eb23f93625ca541465fc2767d3855ded6f1aaa1a2e50476c48ec436489ac0"
+    }
+  ],
+  "defaultAndExplicitOneIdentical": true,
+  "explicitTwoDiffers": true,
+  "firstDifferentSample": 85868,
+  "firstDifferentSeconds": 1.9471201814058956,
+  "scope": "Six-second original Rambo subtune1/default versus corrected-Morse subtune2; PCM/selection regression only, no independent reconstruction or listening verdict."
+}

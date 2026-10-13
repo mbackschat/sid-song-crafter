@@ -1,0 +1,63 @@
+{
+  "sourceSha256": "88a2b538ee3d3d1d8b0b754bef77a63d9750812694786977ae8c539f6ecd000e",
+  "componentSha256": "1545db906a34416b34eca426cb67f5783454c1f0427f4233f4da0a502c68b96c",
+  "checkerSha256": "4f9d754a2cb94eaa5b415de73dd9d10523ba5bcafba3b244031a7b2f9f89de28",
+  "captureSha256": "709de4a560481f35dd018389f9c08341cfade1a368d7d60710a14c5ca256dbb2",
+  "contextBodies": 32448,
+  "contextOrderedStores": 57498,
+  "arpeggioBodies": 5728,
+  "perVoiceBranches": [
+    {
+      "voice": 0,
+      "branch": "arpeggio",
+      "bodies": 568
+    },
+    {
+      "voice": 0,
+      "branch": "other",
+      "bodies": 10248
+    },
+    {
+      "voice": 1,
+      "branch": "other",
+      "bodies": 10816
+    },
+    {
+      "voice": 2,
+      "branch": "arpeggio",
+      "bodies": 5160
+    },
+    {
+      "voice": 2,
+      "branch": "other",
+      "bodies": 5656
+    }
+  ],
+  "isolatedCases": 102,
+  "isolatedSha256": "5670e7c20fcbbe7fcda46f7fb9f726d89ba7a30e049067e785327be1a543a967",
+  "allNamedStatesAndOrderedStoresMatched": true,
+  "negativeControl": {
+    "physicalVoice": 3,
+    "label": "incorrect fourth sequential phase",
+    "detected": true,
+    "legacyFrequency": 1241,
+    "actualFrequency": 1143
+  },
+  "contract": "Binary SOUND input; physical voice0..2, row remaining byte; numeric ten-byte chord overlay and resolved frequency words; lifetime, release, 16-bit PWM, sequential4/3/3 pitch and delayed fourth step, descending arpeggios.",
+  "excluded": "Score/note initialization, shared filter, scheduler, CPU registers/flags, original code runtime, audio or listening proof.",
+  "inputs": {
+    "sourceSha256": "88a2b538ee3d3d1d8b0b754bef77a63d9750812694786977ae8c539f6ecd000e",
+    "primarySourceSha256": "78e7927e6c2e8f7d42c18d2e02bec764a2911d2d8180cec789020bdd60cdbb75",
+    "componentSha256": "1545db906a34416b34eca426cb67f5783454c1f0427f4233f4da0a502c68b96c",
+    "checkerSha256": "4f9d754a2cb94eaa5b415de73dd9d10523ba5bcafba3b244031a7b2f9f89de28",
+    "capturePath": "build/rambo-verification-fresh-20261013/cache/sound-fresh-capture/ca2a9b7967e466991881d13315902f446116f3794a396b66d84f4a7d89276f23/attempt-344eddd62b5643d786172f2fc4522e30/proof",
+    "captureReused": false,
+    "tools": {
+      "psid_audit.py": "eeea11cdbb5159745f36802526ee2f2986d12fe19ce47b3609fedcf15f47e1bd",
+      "psid_profile.py": "c2c696db133ed024840cfa5edbc76e3a07ef1f30345cc1820c978a51a73c816d",
+      "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+      "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    },
+    "legacyComponentSha256": "2aa0777176d66969e74b956008fbe9d07695a0e1ac8c72c015ad96145edbd7ca"
+  }
+}

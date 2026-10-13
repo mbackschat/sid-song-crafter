@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "runs": {
+    "cold-run.json": {
+      "wallSeconds": 30.872871999999997,
+      "status": "completed",
+      "stages": [
+        {
+          "id": "source-intake",
+          "status": "completed",
+          "executionSeconds": 0.41043441599999997,
+          "cacheHit": false
+        },
+        {
+          "id": "focused-guards",
+          "status": "completed",
+          "executionSeconds": 3.6473644590000003,
+          "cacheHit": false
+        },
+        {
+          "id": "whole-player",
+          "status": "completed",
+          "executionSeconds": 2.939577709,
+          "cacheHit": false
+        },
+        {
+          "id": "sound-fresh-capture",
+          "status": "completed",
+          "executionSeconds": 23.717370833,
+          "cacheHit": false
+        }
+      ]
+    },
+    "guard-update-run.json": {
+      "wallSeconds": 4.958201916999999,
+      "status": "completed",
+      "stages": [
+        {
+          "id": "source-intake",
+          "status": "reused",
+          "executionSeconds": 0,
+          "cacheHit": true
+        },
+        {
+          "id": "focused-guards",
+          "status": "completed",
+          "executionSeconds": 2.669202209,
+          "cacheHit": false
+        },
+        {
+          "id": "whole-player",
+          "status": "completed",
+          "executionSeconds": 2.239860708,
+          "cacheHit": false
+        },
+        {
+          "id": "sound-fresh-capture",
+          "status": "reused",
+          "executionSeconds": 0,
+          "cacheHit": true
+        }
+      ]
+    },
+    "fresh-hot-run.json": {
+      "wallSeconds": 0.03880020900000001,
+      "status": "completed",
+      "stages": [
+        {
+          "id": "source-intake",
+          "status": "reused",
+          "executionSeconds": 0,
+          "cacheHit": true
+        },
+        {
+          "id": "focused-guards",
+          "status": "reused",
+          "executionSeconds": 0,
+          "cacheHit": true
+        },
+        {
+          "id": "whole-player",
+          "status": "reused",
+          "executionSeconds": 0,
+          "cacheHit": true
+        },
+        {
+          "id": "sound-fresh-capture",
+          "status": "reused",
+          "executionSeconds": 0,
+          "cacheHit": true
+        }
+      ]
+    },
+    "retained-run.json": {
+      "wallSeconds": 2.183631958,
+      "status": "completed",
+      "stages": [
+        {
+          "id": "source-intake",
+          "status": "reused",
+          "executionSeconds": 0,
+          "cacheHit": true
+        },
+        {
+          "id": "focused-guards",
+          "status": "reused",
+          "executionSeconds": 0,
+          "cacheHit": true
+        },
+        {
+          "id": "whole-player",
+          "status": "reused",
+          "executionSeconds": 0,
+          "cacheHit": true
+        },
+        {
+          "id": "sound-retained-recheck",
+          "status": "completed",
+          "executionSeconds": 2.149652041,
+          "cacheHit": false
+        }
+      ]
+    },
+    "retained-hot-run.json": {
+      "wallSeconds": 0.039269292,
+      "status": "completed",
+      "stages": [
+        {
+          "id": "source-intake",
+          "status": "reused",
+          "executionSeconds": 0,
+          "cacheHit": true
+        },
+        {
+          "id": "focused-guards",
+          "status": "reused",
+          "executionSeconds": 0,
+          "cacheHit": true
+        },
+        {
+          "id": "whole-player",
+          "status": "reused",
+          "executionSeconds": 0,
+          "cacheHit": true
+        },
+        {
+          "id": "sound-retained-recheck",
+          "status": "reused",
+          "executionSeconds": 0,
+          "cacheHit": true
+        }
+      ]
+    }
+  },
+  "numericVerification": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/whole-player/883f3dd7a3ffe84646d8336bc5a95990087baf25e5e358fa164840026188cb46/attempt-ba092c87aadf420383abefbd4b2540c6/numeric/verification.json",
+  "freshSoundVerification": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/sound-fresh-capture/ca2a9b7967e466991881d13315902f446116f3794a396b66d84f4a7d89276f23/attempt-344eddd62b5643d786172f2fc4522e30/proof/verification.json",
+  "retainedSoundVerification": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-verification-fresh-20261013/cache/sound-retained-recheck/f685fa476cf9c3bc00eae01462b6086cea2ad020d7d4a5448221a31de91eda9f/attempt-a07719d1afe54693ab6d140d8a9a0764/proof/verification.json"
+}

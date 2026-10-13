@@ -15,9 +15,53 @@ python3 scripts/evidence.py restore evidence/shades-form-intake/rows.json.gz
 
 Verification checks the compressed and uncompressed hashes and sizes recorded in [the manifest](../../evidence/manifest.json). Restoration writes exact original bytes to their historical `build/` paths without removing the archive. Matching existing files are accepted; different files are preserved and reported as conflicts. Select particular archive paths after `restore` to avoid expanding the complete collection; omitting paths restores everything. Small receipts can be restored too, so their historical relative paths remain meaningful. Missing LFS objects require `git lfs pull` before verification or restoration can succeed.
 
+Select one or more indexed groups with `--group NAME` on `verify` or `restore`. Group selection and explicit archive paths are mutually exclusive; an unknown group fails before verification or restoration starts.
+
+```sh
+python3 scripts/evidence.py verify --group rambo-verification-workflow
+python3 scripts/evidence.py restore --group rambo-verification-workflow
+```
+
 Frozen research checkers can deliberately reject newer tool hashes even when default behavior remains compatible. Reproduce them with their pinned implementation, rather than deleting the guards or rewriting historical receipts. Commit `8e45dbc` retains the CPU/profile tool versions used by the Airwolf form and Monty/Rambo/Deflektor component checkpoints; the later explicit-model option changes those files. Their source snapshots and receipts remain valid evidence of the original runs. Run historical code in an isolated ordinary directory with the same private assets and restored evidence; do not switch the active checkout or create a worktree for this.
 
 Git LFS keeps pointers in ordinary Git and file contents in its object store. A Git-only backup or bundle does not preserve those contents. Keep an off-machine backup of the LFS objects as well, or upload them to an LFS-capable remote and verify a fresh checkout. Remote upload is separate from local retention; an unpushed local LFS archive is still only a local copy. [Git LFS documentation](https://git-lfs.com/)
+
+## Promote reviewed working evidence
+
+Use [the evidence tool](../../scripts/evidence.py) to retain an explicit reviewed selection of uncompressed working files. Save a version 1 selection JSON under `build/`; each entry names one source, a fresh archive path, its study group and the reason to retain it. For example, `build/evidence-promotion/selection.json` can contain:
+
+```json
+{
+  "version": 1,
+  "files": [
+    {
+      "source": "build/accepted-study/verification.json",
+      "path": "evidence/accepted-study/verification.json",
+      "group": "accepted-study",
+      "reason": "Retain the complete numeric verification and source fingerprints."
+    },
+    {
+      "source": "build/accepted-study/guards.log",
+      "path": "evidence/accepted-study/guards.log.gz",
+      "group": "accepted-study",
+      "reason": "Retain the guard results supporting the verified contract."
+    }
+  ]
+}
+```
+
+```sh
+python3 scripts/evidence.py promote build/evidence-promotion/selection.json
+python3 scripts/evidence.py verify --group accepted-study
+```
+
+Promotion validates the complete selection and existing manifest before staging output. Sources must be regular files under `build/`, and destinations must be fresh paths under `evidence/`. Duplicate source/archive paths, already indexed restore destinations, existing destinations, path traversal, symlinks and the manifest as an archive target are rejected. Every entry requires nonempty group and reason text. Original reference SID/WAV files are excluded by suffix and obvious PSID/RSID or RIFF/WAVE headers even when renamed. Already compressed sources are rejected by common suffixes and signatures; supply the uncompressed original so `originalPath` retains exact restoration semantics.
+
+A destination ending in `.gz` receives deterministic gzip with timestamp zero and no stored filename; other destinations receive an exact byte copy. The tool checks stored and original SHA-256 fingerprints and byte sizes before publishing, checks the resulting archives again, and appends their records to [the manifest](../../evidence/manifest.json). Existing manifest fields and file records are preserved. Source bytes remain in place. Promotion never overwrites an archive, including one whose contents already match.
+
+Stop independent source and manifest writers before promotion. A persistent ignored `build/.evidence-promotion-*.lock` serializes cooperating promotions for the same manifest; its operating-system lock is released when the process exits, so the lock file itself is not a stale-lock error. Sources are checked during copying and again before commitment. The manifest must still match its original bytes and file identity before atomic replacement; this check is optimistic and does not provide a filesystem compare-and-swap against independent editors.
+
+An ordinary failure before manifest replacement rolls back unchanged archive files created by that invocation. Concurrent replacements or edits detected by the ownership/content checks are preserved, and empty created directories remain. Interruptions preserve published archives, including an interruption immediately after a successful manifest replacement. An interruption or process/power loss may leave unindexed archives; a hard exit may also leave staging files. Verify the manifest and inspect such files against the reviewed selection before retrying or removing them. The tool does not automatically delete uncertain files or working sources.
 
 ## Local cache compression
 

@@ -9,7 +9,7 @@ Choose tools by their supported contract. A song or composer name does not itsel
 - [Song workflow](../docs/workflows/song-workflow.md) and [native SID-Wizard workflow](../docs/workflows/native-song-workflow.md): editable arrangement, export and verification.
 - [Audio comparisons](../docs/workflows/audio-comparisons.md): PCM inspection and original-preserving A/B windows.
 - [CPU auditing](../docs/validation/psid-audit.md), [CIA tracing](../docs/validation/cia-tracing.md) and [assembler](sid_assembler.py): execution and timing infrastructure.
-- [Setup](../docs/setup/local-setup.md) and [evidence/cache management](../docs/workflows/build-cache.md): pinned assets, local tools and preserved verification records.
+- [Setup](../docs/setup/local-setup.md) and [evidence/cache management](../docs/workflows/build-cache.md): pinned assets, local tools, explicit archive promotion and verified restoration by path or group.
 
 ## Specialized composition backends
 
