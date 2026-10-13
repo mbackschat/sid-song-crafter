@@ -1,34 +1,27 @@
-# Independent three-voice DRAX reconstruction
+# Independent DRAX Für Elise reconstruction
 
-This study follows **executed program → musical description → reusable mechanism → new 6502 implementation** for the preferred 2.02–2.75-second passage of DRAX's Für Elise. It reconstructs the opening from initialization, including silent preparation. It contains neither the original driver nor captured-register playback. The [earlier contextual bass test](../drax-bass-reconstruction/README.md) retained DRAX's accompaniment; this version independently programs all three voices.
+Our own 6502 code reconstructs all three voices of DRAX's complete recurring thematic arrangement: roughly **40.26 seconds**, with 123 lead notes, 26 bass entries and 26 chords. This is the complete DRAX theme cycle, **not every section of Beethoven's Für Elise**. Attribution and the pinned original belong to [the reference study](../../../docs/research/composition/fuer-elise-reference.md).
 
-## Listen
+## Listen in full
 
-- [Exact passage, original then reconstruction](../../../build/drax-independent-trio/exact.ab.wav): 0.73 seconds each, separated by half a second.
-- [Three-second opening, original then reconstruction](../../../build/drax-independent-trio/full.ab.wav): includes the entrance and musical context.
-- [Our independent opening alone](../../../build/drax-independent-trio/reconstructed.wav).
+- [DRAX original](../../../build/drax-full-listen/reference.wav).
+- [Our independent reconstruction](../../../build/drax-full-listen/reconstructed.wav).
+- [Our playable SID](../../../build/drax-full-listen/reconstructed.sid).
 
-The reference is the pinned DRAX SID documented in [the reference study](../../../docs/research/composition/fuer-elise-reference.md). Both renders use the same PAL MOS6581 renderer and common unity gain. The reference audio is checked against the existing `build/reference-studies/drax/reference.opening.wav`. Listener verdict: “Nice” — positive feedback on the independent reconstruction. The listener has not explicitly judged it indistinguishable from DRAX.
+Both WAVs are 42 seconds, rendered with identical PAL MOS6581 settings and unity gain. The original starts looping around 40.3 seconds; ours ends and retains a quiet verification tail. The full comparison awaits listening feedback. The earlier [independent opening A/B](../../../build/drax-independent-trio/full.ab.wav) received “Nice”; that does not establish full-song indistinguishability.
 
-## Description and library mapping
+## Description, library and build
 
-[The editable description](instrument.json) retains exact native pitch words, note initializer calls, lead PWM/vibrato, chord pitches, envelopes and score gate-off age. It references the already independently implemented [bass recipe](../drax-bass-reconstruction/instrument.json). [The musical mapping card](../../../docs/research/composition/instruments/drax-decoded-trio.md) connects these programs to bass, lead, chord texture and coordinated arrangement, in both directions.
+[full-composition.json](full-composition.json) describes notes, preparation pitches, releases and six patches. [The musical mapping](../../../docs/research/composition/instruments/drax-decoded-trio.md) explains their roles and effects. [Our player](../../players/decoded-trio.asm) computes their behavior; no original driver or register recording is embedded. Editable runtime parameters are separate from `sourceEvidence`.
 
-[companions.asm](companions.asm) computes pulse movement, delayed vibrato and two-call chord cycling; [the builder](../../../scripts/reconstruct-drax-full.py) assembles it with our bass state machine. Small note and modulation tables describe the music and effects, not a stream of recorded register writes. A test changes the description's lead and chord pitches and verifies the resulting new execution without changing the engine.
+Follow [the reusable workflow](../../../docs/decoded-song-workflow.md) for the build command, supported edits, limits and output contract. [The transcriber](../../../scripts/describe-drax-score.py) recovers this score from executed note/instrument readers, preserving provenance. Building the independent SID does not need the original.
 
-Nuances retained include silent oscillator preparation, two-stage hard restart/TEST, deferred pulse-width writes at initialization, different prehistory and active PWM bounds, gate ownership, modulation during release, voice order, and repeated shared-cutoff writes before bass updates it. Companion gate-off comes from the score; bass gate-off comes from its instrument. These must not be conflated in the library.
+## Useful findings and verification
 
-## Reproduce and verify
+The full arrangement requires three- and four-tone chord programs, patch-dependent pulse widths, and score releases at age 4 or 10. A chord's TEST preparation pitch can inherit the previous program's offset rather than equal its first audible tone. Preserve this distinction when describing articulation and oscillator history. Silent preparation must use the full call counter; a byte rollover is not initialization.
 
-After [renderer setup](../../../docs/audio-workflow.md), choose a fresh output directory:
+[The comparison receipt](../../../build/drax-full-listen/register-comparison.json) checks every initialization/music write through calls 0–2017, including repeated cutoff writes and release evolution. [Headless VICE](../../../build/drax-full-listen/vice/study.json) independently verifies the generated program through its ending. [The build receipt](../../../build/drax-full-listen/study.json) retains hashes, audio checks and limitations. Within-frame instruction timing and oscillator/noise phase differ; PCM identity and physical-chip equivalence are not claimed.
 
-```sh
-PYTHONPATH=.tools/test-deps python3 scripts/reconstruct-drax-full.py --reference .local/research/fuer-elise/drax-fuer-elise.sid --output build/drax-independent-trio/new --vice
-PYTHONPATH=.tools/test-deps python3 -m unittest discover -s tests -p drax_full_reconstruction_test.py -v
-```
+## Earlier bounded proof
 
-Omit `--reference` to build/render without reading the original SID. Original bytes enter only the optional comparison stage, after the independent build.
-
-All **3,507 initialization and playback writes** match the reference by call, address, value and order through calls 0–150, including every intermediate cutoff write. VICE independently matches 3,485 runtime writes through call 153, including three terminal volume-zero writes. The reconstruction uses at most 793 cycles per call against the 19,656-cycle PAL budget.
-
-Within-frame instruction starts differ by −1,061 to +93 cycles. The new implementation has not reproduced exact bus timing, oscillator/noise phase or physical chip variation; PCM is not identical. The [comparison report](../../../build/drax-independent-trio/study.json) retains these boundaries. This is a bounded executable musical description, not a complete-song driver or a universal reverse-engineering tool.
+[instrument.json](instrument.json), [companions.asm](companions.asm) and [reconstruct-drax-full.py](../../../scripts/reconstruct-drax-full.py) retain the separately verified 151-call opening experiment. Its 3,507 ordered writes matched the source. Use the complete workflow above for new score edits; the opening experiment remains the reproduction path for the already reviewed short sample.

@@ -30,7 +30,7 @@ Start here before selecting instruments, arranging voices, explaining a techniqu
 
 | Task | Existing route |
 | --- | --- |
-| Map musical roles to executed SID programs and reconstruct a complete texture | [Bidirectional DRAX trio mapping](composition/instruments/drax-decoded-trio.md), [independent three-voice implementation](../../songs/studies/drax-full-reconstruction/README.md): editable description to our own code; full ordered-write comparison |
+| Map musical roles to executed SID programs and reconstruct a complete texture | [Bidirectional DRAX trio mapping](composition/instruments/drax-decoded-trio.md), [independent three-voice implementation](../../songs/studies/drax-full-reconstruction/README.md): [complete-theme workflow](../decoded-song-workflow.md): editable description to our own code; full ordered-write comparison |
 | Understand a master's sound; reverse-engineer an instrument; register timing; 6502/6510; VICE debugger | [Executed SID program experiments](tools/sid-program-analysis.md): connect writes to instructions and instrument data, then audition controlled changes before translating the mechanism |
 | Render editable instrument experiments | [Instrument trials](../instrument-trials.md) |
 | Change one instrument while preserving the score | [Native patch comparison](../../scripts/compare-native-patch.py), [worked attack comparison](../../songs/studies/fuer-elise-attack/README.md) |

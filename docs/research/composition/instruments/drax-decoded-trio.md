@@ -11,6 +11,19 @@ Use this mapping in both directions: choose a program for a musical purpose, or 
 | Chord: suggest A minor beneath the lead with one voice | Combined triangle/pulse `$51`, AD/SR `$00/$6B`, fixed width `$600`; A3/C4/E4 words `$0EA3/$1168/$15EB`, two calls per tone; no ring/sync | Three time-shared pitches imply harmony, without three independent envelopes. The score closes GATE at call 110; `$50` and the pitch cycle continue. Keep its two-call dwell and MOS6581 target when comparing this texture. |
 | Style: coordinated entrance with distinct kinds of motion | Initialize all three at call 100; body entrance at 101; bass releases at 103, companions at 110 | A stable low pitch, moving lead and repeating chord create different concurrent trajectories. Treat richness as a listening question; adding these mechanisms does not certify the style. |
 
+## Full-theme chord variants
+
+The [complete description](../../../../songs/studies/drax-full-reconstruction/full-composition.json) extends the same three families through the recurring theme. Its static combined-waveform chord patches all use AD/SR `$00/$6B` and two-call tone dwell:
+
+| Harmonic role | Semitone program above the root | Initial pulse width |
+| --- | --- | --- |
+| A minor | 0, 3, 7 | `$600` |
+| E7/G-sharp | 0, 3, 6, 8 | `$000` |
+| C major | 0, 4, 7 | `$000` |
+| G7 | 0, 4, 7, 10 | `$000` |
+
+Exact tone words belong to each score entry; semitone labels remain analysis. Combined-waveform behavior with width zero is retained deliberately, not replaced with a presumed equivalent sound. Chord entries initialized at calls 388 and 1612 close GATE after four calls; other entries use ten. TEST preparation can inherit the previous pitch-program offset: at call 171 it is `$106E`, whereas the new chord body begins at `$0DD0`. Keep preparation and audible roots separate. The [full workflow](../../../decoded-song-workflow.md) computes these variants and verifies every ordered write through the cycle; full-song listening remains pending.
+
 ## Proof and implementation
 
 Bass readers `$126B/$1271` consume PWM data `$1AA5/$1AA6`; `$1340/$1372` consume its pitch/wave program. Lead initialization reads `$1AB2–$1AB9`: envelope, bounds, step, width and modulation pointer. `$19A6–$19A8=$0A,$03,$20` define delay, direction counter and shifted vibrato increment; PCs `$13C4–$1413` execute it. Chord pitch offsets `$16A6–$16AB=[0,0,3,3,7,7]` and waveforms `$17A6–$17AB=$51` loop through `$1340/$1349/$1372`. Score zeros `$2CCB/$2DCB`, interpreted at `$1176–$117B`, explain companion gate closure; it is not their instrument program's release command.

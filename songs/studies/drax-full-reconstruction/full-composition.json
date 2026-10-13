@@ -1,0 +1,1354 @@
+{
+  "format": "sid-decoded-composition-v1",
+  "source": {
+    "path": ".local/research/fuer-elise/drax-fuer-elise.sid",
+    "sha256": "ea6b7eba46844d399e415368eae86c3ddf03bd9041ecba93e7bb53b384daa2a1",
+    "initAddress": 4096,
+    "playAddress": 4099
+  },
+  "profile": {
+    "clock": "PAL",
+    "chip": "MOS6581",
+    "callCycles": 19656
+  },
+  "range": {
+    "firstCall": 0,
+    "lastCallInclusive": 2017,
+    "stopCall": 2018,
+    "firstLeadInitCall": 4,
+    "cycleCalls": 2016,
+    "nextCycleFirstLeadInitCall": 2020,
+    "nextCyclePreparationFirstCall": 2018
+  },
+  "bassRecipe": "../drax-bass-reconstruction/instrument.json",
+  "roles": {
+    "bass": {
+      "voice": 1,
+      "notes": [
+        {
+          "initCall": 100,
+          "frequency": 937,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 172,
+          "frequency": 1403,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 244,
+          "frequency": 937,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 316,
+          "frequency": 701,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 388,
+          "frequency": 937,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 460,
+          "frequency": 1403,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 532,
+          "frequency": 937,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 604,
+          "frequency": 1403,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 676,
+          "frequency": 937,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 748,
+          "frequency": 1403,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 820,
+          "frequency": 937,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 892,
+          "frequency": 1403,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 964,
+          "frequency": 937,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 1036,
+          "frequency": 1403,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 1108,
+          "frequency": 937,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 1180,
+          "frequency": 1114,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 1252,
+          "frequency": 834,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 1324,
+          "frequency": 937,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 1396,
+          "frequency": 1403,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 1540,
+          "frequency": 937,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 1612,
+          "frequency": 1403,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 1684,
+          "frequency": 937,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 1756,
+          "frequency": 1403,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 1828,
+          "frequency": 937,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 1900,
+          "frequency": 1403,
+          "patch": "bass-noise-pulse"
+        },
+        {
+          "initCall": 1972,
+          "frequency": 937,
+          "patch": "bass-noise-pulse"
+        }
+      ]
+    },
+    "lead": {
+      "voice": 2,
+      "notes": [
+        {
+          "initCall": 4,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 16,
+          "frequency": 10590,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 28,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 40,
+          "frequency": 10590,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 52,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 64,
+          "frequency": 8412,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 76,
+          "frequency": 10000,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 88,
+          "frequency": 8912,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 100,
+          "frequency": 7494,
+          "patch": "lead-pulse",
+          "gateOffCall": 110
+        },
+        {
+          "initCall": 136,
+          "frequency": 4456,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 148,
+          "frequency": 5611,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 160,
+          "frequency": 7494,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 172,
+          "frequency": 8412,
+          "patch": "lead-pulse",
+          "gateOffCall": 182
+        },
+        {
+          "initCall": 208,
+          "frequency": 5611,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 220,
+          "frequency": 7073,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 232,
+          "frequency": 8412,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 244,
+          "frequency": 8912,
+          "patch": "lead-pulse",
+          "gateOffCall": 254
+        },
+        {
+          "initCall": 280,
+          "frequency": 5611,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 292,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 304,
+          "frequency": 10590,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 316,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 328,
+          "frequency": 10590,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 340,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 352,
+          "frequency": 8412,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 364,
+          "frequency": 10000,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 376,
+          "frequency": 8912,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 388,
+          "frequency": 7494,
+          "patch": "lead-pulse",
+          "gateOffCall": 398
+        },
+        {
+          "initCall": 424,
+          "frequency": 4456,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 436,
+          "frequency": 5611,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 448,
+          "frequency": 7494,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 460,
+          "frequency": 8412,
+          "patch": "lead-pulse",
+          "gateOffCall": 470
+        },
+        {
+          "initCall": 496,
+          "frequency": 5000,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 508,
+          "frequency": 8912,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 520,
+          "frequency": 8412,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 532,
+          "frequency": 7494,
+          "patch": "lead-pulse",
+          "gateOffCall": 542
+        },
+        {
+          "initCall": 568,
+          "frequency": 5611,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 580,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 592,
+          "frequency": 10590,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 604,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 616,
+          "frequency": 10590,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 628,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 640,
+          "frequency": 8412,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 652,
+          "frequency": 10000,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 664,
+          "frequency": 8912,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 676,
+          "frequency": 7494,
+          "patch": "lead-pulse",
+          "gateOffCall": 686
+        },
+        {
+          "initCall": 712,
+          "frequency": 4456,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 724,
+          "frequency": 5611,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 736,
+          "frequency": 7494,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 748,
+          "frequency": 8412,
+          "patch": "lead-pulse",
+          "gateOffCall": 758
+        },
+        {
+          "initCall": 784,
+          "frequency": 5611,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 796,
+          "frequency": 7073,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 808,
+          "frequency": 8412,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 820,
+          "frequency": 8912,
+          "patch": "lead-pulse",
+          "gateOffCall": 830
+        },
+        {
+          "initCall": 856,
+          "frequency": 5611,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 868,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 880,
+          "frequency": 10590,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 892,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 904,
+          "frequency": 10590,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 916,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 928,
+          "frequency": 8412,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 940,
+          "frequency": 10000,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 952,
+          "frequency": 8912,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 964,
+          "frequency": 7494,
+          "patch": "lead-pulse",
+          "gateOffCall": 974
+        },
+        {
+          "initCall": 1000,
+          "frequency": 4456,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1012,
+          "frequency": 5611,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1024,
+          "frequency": 7494,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1036,
+          "frequency": 8412,
+          "patch": "lead-pulse",
+          "gateOffCall": 1046
+        },
+        {
+          "initCall": 1072,
+          "frequency": 5000,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1084,
+          "frequency": 8912,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1096,
+          "frequency": 8412,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1108,
+          "frequency": 7494,
+          "patch": "lead-pulse",
+          "gateOffCall": 1118
+        },
+        {
+          "initCall": 1144,
+          "frequency": 8412,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1156,
+          "frequency": 8912,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1168,
+          "frequency": 10000,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1180,
+          "frequency": 11222,
+          "patch": "lead-pulse",
+          "gateOffCall": 1190
+        },
+        {
+          "initCall": 1216,
+          "frequency": 6675,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1228,
+          "frequency": 11890,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1240,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1252,
+          "frequency": 10000,
+          "patch": "lead-pulse",
+          "gateOffCall": 1262
+        },
+        {
+          "initCall": 1288,
+          "frequency": 5945,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1300,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1312,
+          "frequency": 10000,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1324,
+          "frequency": 8912,
+          "patch": "lead-pulse",
+          "gateOffCall": 1334
+        },
+        {
+          "initCall": 1360,
+          "frequency": 5611,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1372,
+          "frequency": 10000,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1384,
+          "frequency": 8912,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1396,
+          "frequency": 8412,
+          "patch": "lead-pulse",
+          "gateOffCall": 1406
+        },
+        {
+          "initCall": 1432,
+          "frequency": 10590,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1444,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1456,
+          "frequency": 10000,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1468,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1480,
+          "frequency": 10590,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1492,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1504,
+          "frequency": 8412,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1516,
+          "frequency": 10000,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1528,
+          "frequency": 8912,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1540,
+          "frequency": 7494,
+          "patch": "lead-pulse",
+          "gateOffCall": 1550
+        },
+        {
+          "initCall": 1576,
+          "frequency": 4456,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1588,
+          "frequency": 5611,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1600,
+          "frequency": 7494,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1612,
+          "frequency": 8412,
+          "patch": "lead-pulse",
+          "gateOffCall": 1622
+        },
+        {
+          "initCall": 1648,
+          "frequency": 5611,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1660,
+          "frequency": 7073,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1672,
+          "frequency": 8412,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1684,
+          "frequency": 8912,
+          "patch": "lead-pulse",
+          "gateOffCall": 1694
+        },
+        {
+          "initCall": 1720,
+          "frequency": 5611,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1732,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1744,
+          "frequency": 10590,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1756,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1768,
+          "frequency": 10590,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1780,
+          "frequency": 11222,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1792,
+          "frequency": 8412,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1804,
+          "frequency": 10000,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1816,
+          "frequency": 8912,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1828,
+          "frequency": 7494,
+          "patch": "lead-pulse",
+          "gateOffCall": 1838
+        },
+        {
+          "initCall": 1864,
+          "frequency": 4456,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1876,
+          "frequency": 5611,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1888,
+          "frequency": 7494,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1900,
+          "frequency": 8412,
+          "patch": "lead-pulse",
+          "gateOffCall": 1910
+        },
+        {
+          "initCall": 1936,
+          "frequency": 5000,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1948,
+          "frequency": 8912,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1960,
+          "frequency": 8412,
+          "patch": "lead-pulse"
+        },
+        {
+          "initCall": 1972,
+          "frequency": 7494,
+          "patch": "lead-pulse",
+          "gateOffCall": 1982
+        }
+      ],
+      "boundaryNote": {
+        "initCall": 2020,
+        "frequency": 11222,
+        "patch": "lead-pulse",
+        "purpose": "Next cycle metadata only; excluded before stopCall 2018"
+      }
+    },
+    "chord": {
+      "voice": 3,
+      "notes": [
+        {
+          "initCall": 100,
+          "frequency": 3747,
+          "patch": "chord-minor",
+          "frequencies": [
+            3747,
+            4456,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3747
+          },
+          "gateOffCall": 110
+        },
+        {
+          "initCall": 172,
+          "frequency": 4206,
+          "patch": "chord-dominant-inversion",
+          "frequencies": [
+            3536,
+            4206,
+            5000,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3536
+          },
+          "gateOffCall": 182
+        },
+        {
+          "initCall": 244,
+          "frequency": 5295,
+          "patch": "chord-minor",
+          "frequencies": [
+            3747,
+            4456,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3747
+          },
+          "gateOffCall": 254
+        },
+        {
+          "initCall": 316,
+          "frequency": 4206,
+          "patch": "chord-dominant-inversion",
+          "frequencies": [
+            3536,
+            4206,
+            5000,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3536
+          },
+          "gateOffCall": 326
+        },
+        {
+          "initCall": 388,
+          "frequency": 5295,
+          "patch": "chord-minor",
+          "frequencies": [
+            3747,
+            4456,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3747
+          },
+          "gateOffCall": 392
+        },
+        {
+          "initCall": 460,
+          "frequency": 4206,
+          "patch": "chord-dominant-inversion",
+          "frequencies": [
+            3536,
+            4206,
+            5000,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3536
+          },
+          "gateOffCall": 470
+        },
+        {
+          "initCall": 532,
+          "frequency": 5295,
+          "patch": "chord-minor",
+          "frequencies": [
+            3747,
+            4456,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3747
+          },
+          "gateOffCall": 542
+        },
+        {
+          "initCall": 604,
+          "frequency": 4206,
+          "patch": "chord-dominant-inversion",
+          "frequencies": [
+            3536,
+            4206,
+            5000,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3536
+          },
+          "gateOffCall": 614
+        },
+        {
+          "initCall": 676,
+          "frequency": 5295,
+          "patch": "chord-minor",
+          "frequencies": [
+            3747,
+            4456,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3747
+          },
+          "gateOffCall": 686
+        },
+        {
+          "initCall": 748,
+          "frequency": 4206,
+          "patch": "chord-dominant-inversion",
+          "frequencies": [
+            3536,
+            4206,
+            5000,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3536
+          },
+          "gateOffCall": 758
+        },
+        {
+          "initCall": 820,
+          "frequency": 5295,
+          "patch": "chord-minor",
+          "frequencies": [
+            3747,
+            4456,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3747
+          },
+          "gateOffCall": 830
+        },
+        {
+          "initCall": 892,
+          "frequency": 4206,
+          "patch": "chord-dominant-inversion",
+          "frequencies": [
+            3536,
+            4206,
+            5000,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3536
+          },
+          "gateOffCall": 902
+        },
+        {
+          "initCall": 964,
+          "frequency": 5295,
+          "patch": "chord-minor",
+          "frequencies": [
+            3747,
+            4456,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3747
+          },
+          "gateOffCall": 974
+        },
+        {
+          "initCall": 1036,
+          "frequency": 4206,
+          "patch": "chord-dominant-inversion",
+          "frequencies": [
+            3536,
+            4206,
+            5000,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3536
+          },
+          "gateOffCall": 1046
+        },
+        {
+          "initCall": 1108,
+          "frequency": 5295,
+          "patch": "chord-minor",
+          "frequencies": [
+            3747,
+            4456,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3747
+          },
+          "gateOffCall": 1118
+        },
+        {
+          "initCall": 1180,
+          "frequency": 5295,
+          "patch": "chord-major",
+          "frequencies": [
+            4456,
+            5611,
+            6675
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 4456
+          },
+          "gateOffCall": 1190
+        },
+        {
+          "initCall": 1252,
+          "frequency": 4206,
+          "patch": "chord-dominant",
+          "frequencies": [
+            3337,
+            4206,
+            5000,
+            5945
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3337
+          },
+          "gateOffCall": 1262
+        },
+        {
+          "initCall": 1324,
+          "frequency": 5611,
+          "patch": "chord-minor",
+          "frequencies": [
+            3747,
+            4456,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3747
+          },
+          "gateOffCall": 1334
+        },
+        {
+          "initCall": 1396,
+          "frequency": 4206,
+          "patch": "chord-dominant-inversion",
+          "frequencies": [
+            3536,
+            4206,
+            5000,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3536
+          },
+          "gateOffCall": 1406
+        },
+        {
+          "initCall": 1540,
+          "frequency": 5295,
+          "patch": "chord-minor",
+          "frequencies": [
+            3747,
+            4456,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3747
+          },
+          "gateOffCall": 1550
+        },
+        {
+          "initCall": 1612,
+          "frequency": 4206,
+          "patch": "chord-dominant-inversion",
+          "frequencies": [
+            3536,
+            4206,
+            5000,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3536
+          },
+          "gateOffCall": 1616
+        },
+        {
+          "initCall": 1684,
+          "frequency": 5295,
+          "patch": "chord-minor",
+          "frequencies": [
+            3747,
+            4456,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3747
+          },
+          "gateOffCall": 1694
+        },
+        {
+          "initCall": 1756,
+          "frequency": 4206,
+          "patch": "chord-dominant-inversion",
+          "frequencies": [
+            3536,
+            4206,
+            5000,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3536
+          },
+          "gateOffCall": 1766
+        },
+        {
+          "initCall": 1828,
+          "frequency": 5295,
+          "patch": "chord-minor",
+          "frequencies": [
+            3747,
+            4456,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3747
+          },
+          "gateOffCall": 1838
+        },
+        {
+          "initCall": 1900,
+          "frequency": 4206,
+          "patch": "chord-dominant-inversion",
+          "frequencies": [
+            3536,
+            4206,
+            5000,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3536
+          },
+          "gateOffCall": 1910
+        },
+        {
+          "initCall": 1972,
+          "frequency": 5295,
+          "patch": "chord-minor",
+          "frequencies": [
+            3747,
+            4456,
+            5611
+          ],
+          "sourceEvidence": {
+            "baseFrequency": 3747
+          },
+          "gateOffCall": 1982
+        }
+      ]
+    }
+  },
+  "patches": {
+    "lead-pulse": {
+      "attackDecay": 3,
+      "sustainRelease": 59,
+      "pulseInitial": 2048,
+      "pulseStep": 80,
+      "pulseLowerHighByte": 1,
+      "pulseUpperHighByte": 8,
+      "sourceEvidence": {
+        "sourceInstrumentOffset": 16,
+        "waveProgramStartIndex": 11,
+        "vibratoDelayCalls": 10,
+        "vibratoCounter": 3,
+        "vibratoIncrement": 128
+      },
+      "waveform": 64,
+      "vibratoStartAge": 11,
+      "vibratoDeltas": [
+        0,
+        128,
+        256,
+        128,
+        0,
+        -128,
+        -256,
+        -128
+      ]
+    },
+    "chord-minor": {
+      "attackDecay": 0,
+      "sustainRelease": 107,
+      "pulseInitial": 1536,
+      "pulseStep": 0,
+      "sourceEvidence": {
+        "sourceInstrumentOffset": 8,
+        "waveProgramStartIndex": 4,
+        "vibratoDelayCalls": 128,
+        "vibratoCounter": 0,
+        "vibratoIncrement": 0,
+        "toneSemitones": [
+          0,
+          3,
+          7
+        ],
+        "pulseLowerHighByte": 0,
+        "pulseUpperHighByte": 0
+      },
+      "waveform": 80,
+      "toneDwellCalls": 2
+    },
+    "bass-noise-pulse": {
+      "attackDecay": 2,
+      "sustainRelease": 202,
+      "pulseInitial": 1536,
+      "pulseStep": 80,
+      "pulseLowerHighByte": 1,
+      "pulseUpperHighByte": 15,
+      "sourceEvidence": {
+        "sourceInstrumentOffset": 0,
+        "waveProgramStartIndex": 0,
+        "vibratoDelayCalls": 128,
+        "vibratoCounter": 0,
+        "vibratoIncrement": 0
+      },
+      "instrumentGateCloseAge": 3,
+      "noiseControl": 129,
+      "pulseControl": 65,
+      "releaseControl": 64,
+      "noiseFrequency": 50400,
+      "attackCutoffHigh": 240,
+      "bodyCutoffHigh": 8,
+      "filterRoutingResonance": 241,
+      "filterModeVolume": 31
+    },
+    "chord-dominant-inversion": {
+      "attackDecay": 0,
+      "sustainRelease": 107,
+      "pulseInitial": 0,
+      "pulseStep": 0,
+      "sourceEvidence": {
+        "sourceInstrumentOffset": 40,
+        "waveProgramStartIndex": 23,
+        "vibratoDelayCalls": 128,
+        "vibratoCounter": 0,
+        "vibratoIncrement": 0,
+        "toneSemitones": [
+          0,
+          3,
+          6,
+          8
+        ],
+        "pulseLowerHighByte": 0,
+        "pulseUpperHighByte": 0
+      },
+      "waveform": 80,
+      "toneDwellCalls": 2
+    },
+    "chord-major": {
+      "attackDecay": 0,
+      "sustainRelease": 107,
+      "pulseInitial": 0,
+      "pulseStep": 0,
+      "sourceEvidence": {
+        "sourceInstrumentOffset": 48,
+        "waveProgramStartIndex": 32,
+        "vibratoDelayCalls": 128,
+        "vibratoCounter": 0,
+        "vibratoIncrement": 0,
+        "toneSemitones": [
+          0,
+          4,
+          7
+        ],
+        "pulseLowerHighByte": 0,
+        "pulseUpperHighByte": 0
+      },
+      "waveform": 80,
+      "toneDwellCalls": 2
+    },
+    "chord-dominant": {
+      "attackDecay": 0,
+      "sustainRelease": 107,
+      "pulseInitial": 0,
+      "pulseStep": 0,
+      "sourceEvidence": {
+        "sourceInstrumentOffset": 56,
+        "waveProgramStartIndex": 39,
+        "vibratoDelayCalls": 128,
+        "vibratoCounter": 0,
+        "vibratoIncrement": 0,
+        "toneSemitones": [
+          0,
+          4,
+          7,
+          10
+        ],
+        "pulseLowerHighByte": 0,
+        "pulseUpperHighByte": 0
+      },
+      "waveform": 80,
+      "toneDwellCalls": 2
+    }
+  },
+  "evidence": {
+    "method": "Executed score consumption at PCs $1138/$1176 and instrument initialization at $12B2; base pitch derives from consumed note/transpose at table $1468, while frequency preserves the preceding preparation pitch state. No per-frame register events are stored.",
+    "gateClosure": "Lead/chord gateOffCall is score-owned; bass instrumentGateCloseAge is patch-owned.",
+    "sourcePCs": {
+      "scoreNote": 4408,
+      "scoreGateOff": 4470,
+      "instrumentInit": 4786,
+      "pitchProgram": 4928,
+      "waveProgram": 4978,
+      "pulseUpdate": 4821,
+      "vibrato": 5060
+    },
+    "noteCounts": {
+      "bass": 26,
+      "lead": 123,
+      "chord": 26
+    },
+    "originalDriverIncluded": false,
+    "registerDumpPlayback": false
+  },
+  "limits": "One complete recurring DRAX thematic cycle from initialization, stopping before next-cycle setup. Not Beethoven full-form score coverage or listening acceptance."
+}
