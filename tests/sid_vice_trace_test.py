@@ -49,9 +49,8 @@ class SidViceTraceTest(unittest.TestCase):
         self.assertGreater(labels['done'], 0xc000)
         commands = trace.monitor_commands(Path('/tmp/payload.prg'), Path('/tmp/harness.prg'), profile, labels, 1, 3)
         self.assertIn('trace store $d400 $d418 if', commands)
-        self.assertIn('@ram:$c100 >= $01', commands)
-        self.assertIn('@ram:$c100 <= $03', commands)
-        self.assertIn('(@ram:$c100 >= $01) && (@ram:$c100 <= $03)', commands)
+        counter = '((@ram:$c101 * $0100) + @ram:$c100)'
+        self.assertIn(f'({counter} >= $0001) && ({counter} <= $0003)', commands)
         self.assertIn('dummy off', commands)
         self.assertIn('sidefx off', commands)
         for count in (0, True, 65536):
@@ -59,6 +58,18 @@ class SidViceTraceTest(unittest.TestCase):
                 trace.harness(profile, count)
         with self.assertRaisesRegex(ValueError, 'path'):
             trace.monitor_commands(Path('/tmp/bad"path'), Path('/tmp/harness.prg'), profile, labels, 1, 3)
+
+    def test_monitor_window_and_harness_support_a_full_2018_call_trace(self):
+        profile = trace.psid_profile(sid_fixture())
+        program, labels = trace.harness(profile, 2018)
+        self.assertIn(bytes.fromhex('ee00c1'), program)
+        self.assertIn(bytes.fromhex('ee01c1'), program)
+        commands = trace.monitor_commands(Path('/tmp/payload.prg'), Path('/tmp/harness.prg'), profile, labels, 254, 2017)
+        counter = '((@ram:$c101 * $0100) + @ram:$c100)'
+        self.assertIn(f'({counter} >= $00fe) && ({counter} <= $07e1)', commands)
+        for first, last in ((-1, 3), (3, 2), (0, 65535), (True, 3)):
+            with self.subTest(first=first, last=last), self.assertRaises(ValueError):
+                trace.monitor_commands(Path('/tmp/payload.prg'), Path('/tmp/harness.prg'), profile, labels, first, last)
 
     def test_parser_associates_writes_with_calls_and_preserves_instruction_context(self):
         parsed = trace.parse_trace(entry(100) + store(116) + entry(19757, 13) + store(19773, 2), 0x1006)
@@ -101,6 +112,25 @@ class SidViceTraceTest(unittest.TestCase):
             self.assertEqual(result['verification']['matchedWrites'], 6)
             self.assertEqual([(row['writerPc'], row['registers']['a']) for row in parsed['writes']], [(0x100c, 1), (0x1011, 0xe7), (0x100c, 2), (0x1011, 0xe7), (0x100c, 3), (0x1011, 0xe7)])
             self.assertEqual({row['monitorCycle'] - parsed['entries'][row['tick']]['monitorCycle'] for row in parsed['writes'] if row['writerPc'] == 0x100c}, {14})
+
+    def test_headless_vice_full_cycle_preserves_call_numbers_and_window_across_byte_rollovers(self):
+        vice = ROOT / '.tools/vice-headless-3.9/build/src/x64sc'
+        data_directory = Path('/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice')
+        if not vice.is_file() or not data_directory.is_dir():
+            self.skipTest('Local headless VICE and ROM data are required for the executed fixture')
+        data = sid_fixture()
+        oracle = [dict(phase='play', tick=tick, address=0xd402, value=(tick + 1) & 255) for tick in range(2018)]
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            sid, expected = root / 'fixture.sid', root / 'oracle.json'
+            sid.write_bytes(data)
+            expected.write_text(json.dumps(oracle))
+            result = trace.run_trace(sid, expected, root / 'trace', 254, 2017, vice, data_directory)
+            parsed = json.loads((root / 'trace/trace.json').read_text())
+            self.assertEqual(result['verification']['playCalls'], 2018)
+            self.assertEqual(result['verification']['matchedWrites'], 2018 - 254)
+            self.assertEqual([row['tick'] for row in parsed['writes']], list(range(254, 2018)))
+            self.assertEqual([row['value'] for row in parsed['writes'][:4]], [255, 0, 1, 2])
 
 
 if __name__ == '__main__':

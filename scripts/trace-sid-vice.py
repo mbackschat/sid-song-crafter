@@ -40,7 +40,7 @@ def psid_profile(data):
 
 
 def harness(profile, calls):
-    require(type(calls) is int and 1 <= calls <= 255, 'Harness supports 1..255 play calls')
+    require(type(calls) is int and 1 <= calls <= 65535, 'Harness supports 1..65535 play calls')
     code = bytearray()
     labels, branches = {}, []
 
@@ -65,7 +65,7 @@ def harness(profile, calls):
     absolute(0xad, 0xdc0d)
     absolute(0xad, 0xdd0d)
     emit(0xa9, 0)
-    for address in (0xd01a, 0xd011, 0xd015, COUNTER):
+    for address in (0xd01a, 0xd011, 0xd015, COUNTER, COUNTER + 1):
         absolute(0x8d, address)
     emit(0xa9, 0x2f, 0x85, 0, 0xa9, 0x37, 0x85, 1, 0xa9, 0, 0xa2, 0, 0xa0, 0)
     absolute(0x20, profile['initAddress'])
@@ -76,8 +76,14 @@ def harness(profile, calls):
     label('call')
     absolute(0x20, profile['playAddress'])
     absolute(0xee, COUNTER)
+    branch(0xd0, 'check_count')
+    absolute(0xee, COUNTER + 1)
+    label('check_count')
     absolute(0xad, COUNTER)
-    emit(0xc9, calls)
+    emit(0xc9, calls & 255)
+    branch(0xd0, 'leave')
+    absolute(0xad, COUNTER + 1)
+    emit(0xc9, calls >> 8)
     branch(0xf0, 'done')
     label('leave')
     emit(0xa9, 250)
@@ -95,11 +101,12 @@ def harness(profile, calls):
 
 
 def monitor_commands(payload, program, profile, labels, first, last):
-    require(type(first) is int and type(last) is int and 0 <= first <= last <= 254, 'Trace window must lie within calls 0..254')
+    require(type(first) is int and type(last) is int and 0 <= first <= last <= 65534, 'Trace window must lie within calls 0..65534')
     for path in (payload, program):
         require(not any(char in str(path) for char in ('"', '\n', '\r')), 'Unsafe monitor path')
     # VICE 3.9 condition expressions evaluate left to right (vice.texi CONDITION); group each comparison.
-    condition = f'(@ram:${COUNTER:04x} >= ${first:02x}) && (@ram:${COUNTER:04x} <= ${last:02x})'
+    counter = f'((@ram:${COUNTER + 1:04x} * $0100) + @ram:${COUNTER:04x})'
+    condition = f'({counter} >= ${first:04x}) && ({counter} <= ${last:04x})'
     lines = ['radix h', 'sidefx off', 'dummy off', 'bank ram', 'fill $0002 $bfff $00', f'load "{payload}" 0', f'load "{program}" 0', 'r a=$00,x=$00,y=$00,sp=$ff,fl=$24', f'r pc=${HARNESS_BASE:04x}', f'until ${labels["wait"]:04x}', f'trace exec ${profile["playAddress"]:04x}', f'trace store $d400 $d418 if {condition}', f'until ${labels["done"]:04x}', 'r', 'bank ram', f'd ${profile["initAddress"]:04x} ${min(profile["endAddress"] - 1, profile["initAddress"] + 0x1000):04x}', f'm ${profile["loadAddress"]:04x} ${profile["endAddress"] - 1:04x}', 'quit', '']
     return '\n'.join(lines)
 
