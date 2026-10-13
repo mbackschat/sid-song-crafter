@@ -370,6 +370,106 @@ class PsidAuditTest(unittest.TestCase):
             self.assertEqual(data,source.read_bytes())
             self.assertEqual(2,json.loads(output.read_text())['selectedSubtune'])
 
+    def test_shared_default_harness_bytes_preserve_both_legacy_profiles(self):
+        import hashlib
+        from psid_profile import psid_profile
+        from sid_audit_host import harness
+        for profile, expected in (('strict', '48b3e63e958a39ebb6681cfb5ff6076e0b450ed61988c53be4df73327dd42e4e'),
+                                  ('pal-banked', 'e368514fc8b972af59d1e6ce5f4b03893aecd6e27297b7d872b595a44e47492a')):
+            with self.subTest(profile=profile):
+                parsed = psid_profile(selected_fixture(load=0x1000, songs=1), profile=profile, subtune=1)
+                program, labels = harness(parsed, 1)
+                self.assertEqual(expected, hashlib.sha256(program).hexdigest())
+                for label in ('init_return', 'play_return'):
+                    offset = labels[label] - 0xc000 + 2
+                    self.assertEqual(0x20, program[offset - 3])
+
+    def test_banked_init_and_play_stack_returns_match_the_shared_host_at_each_placement(self):
+        from psid_profile import psid_profile
+        from sid_audit_host import harness
+        init = 'TSX\nLDA $0101,X\nSTA $D400\nLDA $0102,X\nSTA $D401\nRTS'
+        play = 'TSX\nLDA $0101,X\nSTA $D407\nLDA $0102,X\nSTA $D408\nRTS'
+        for host_base in (None, 0x0400, 0x9e00):
+            with self.subTest(host_base=host_base):
+                data = selected_fixture(init, play, load=0x1000 if host_base is None else 0xc000, songs=1)
+                parsed = psid_profile(data, profile='pal-banked', subtune=1, host_base=host_base)
+                _, labels = harness(parsed, 1)
+                report, writes = audit.audit_psid(data, 2, profile='pal-banked', subtune=1, host_base=host_base)
+                init_word, play_word = labels['init_return'] - 1, labels['play_return'] - 1
+                expected = [('init', None, 0xd400, init_word & 255), ('init', None, 0xd401, init_word >> 8)]
+                expected += [('play', tick, address, value) for tick in range(2) for address, value in
+                             ((0xd407, play_word & 255), (0xd408, play_word >> 8))]
+                self.assertEqual(expected, [(row['phase'], row['tick'], row['address'], row['value']) for row in writes])
+                self.assertEqual(0xc000 if host_base is None else host_base, report['hostBase'])
+                self.assertEqual((labels['init_return'], labels['play_return']),
+                                 (report['initReturnAddress'], report['playReturnAddress']))
+                self.assertIn('shared', report['entryStateBasis'])
+
+    def test_banked_host_placement_rejects_invalid_explicit_values_and_strict_overrides(self):
+        data = selected_fixture(load=0xc000, songs=1)
+        with self.assertRaisesRegex(ValueError, 'host RAM'):
+            audit.audit_psid(data, 1, profile='pal-banked', subtune=1)
+        for base in (True, False, 0x0400 + 1, 0x0300, 0x9f00, 0xc000, -256, '0x0400', 1024.0):
+            with self.subTest(host_base=base), self.assertRaises(ValueError):
+                audit.audit_psid(data, 1, profile='pal-banked', subtune=1, host_base=base)
+        for base in (0x0400, 0xc000, True):
+            with self.subTest(strict_host_base=base), self.assertRaisesRegex(ValueError, 'host'):
+                audit.audit_psid(sid_file(), 1, host_base=base)
+
+    def test_strict_return_stack_retains_the_legacy_sentinel(self):
+        code = 'TSX\nLDA $0101,X\nSTA $D400\nLDA $0102,X\nSTA $D401\nRTS'
+        report, writes = audit.audit_psid(selected_fixture(code, code, load=0x1000, songs=1), 2)
+        self.assertEqual([0xff, 0x01] * 3, [row['value'] for row in writes])
+        self.assertNotIn('hostBase', report)
+        self.assertNotIn('initReturnAddress', report)
+        self.assertNotIn('playReturnAddress', report)
+
+    def test_banked_payloads_touch_host_boundaries_without_overlapping_and_stop_before_io(self):
+        from psid_profile import psid_profile
+        before = bytearray(selected_fixture(load=0x0400, songs=1))
+        before.extend(bytes(0x0600 - (0x0400 + len(before) - 124)))
+        self.assertEqual(0x0600, psid_profile(before, profile='pal-banked', subtune=1, host_base=0x0600)['endAddress'])
+        with self.assertRaisesRegex(ValueError, 'host RAM'):
+            psid_profile(before + b'\0', profile='pal-banked', subtune=1, host_base=0x0600)
+        after = selected_fixture(load=0x0600, songs=1)
+        self.assertEqual(0x0600, psid_profile(after, profile='pal-banked', subtune=1, host_base=0x0400)['loadAddress'])
+        with self.assertRaisesRegex(ValueError, 'host RAM'):
+            psid_profile(selected_fixture(load=0x0500, songs=1), profile='pal-banked', subtune=1, host_base=0x0400)
+        high = bytearray(selected_fixture(load=0xc000, songs=1))
+        high.extend(bytes(0xd000 - (0xc000 + len(high) - 124)))
+        self.assertEqual(0xd000, psid_profile(high, profile='pal-banked', subtune=1, host_base=0x0400)['endAddress'])
+        with self.assertRaisesRegex(ValueError, 'RAM'):
+            psid_profile(high + b'\0', profile='pal-banked', subtune=1, host_base=0x0400)
+
+    def test_selected_host_workspace_guards_fetch_reads_writes_and_keeps_vectors_protected(self):
+        for base in (0x0400, 0x9e00):
+            for address in (base, base + 511):
+                for instruction in ('LDA', 'STA', 'JMP'):
+                    with self.subTest(host_base=base, address=address, instruction=instruction), self.assertRaisesRegex(ValueError, 'host RAM'):
+                        data = selected_fixture(play=f'{instruction} ${address:04X}\nRTS', load=0xc000, songs=1)
+                        audit.audit_psid(data, 1, profile='pal-banked', subtune=1, host_base=base)
+            for address in (0x0314, 0x0319):
+                with self.subTest(host_base=base, vector=address), self.assertRaisesRegex(ValueError, 'vector'):
+                    data = selected_fixture(play=f'STA ${address:04X}\nRTS', load=0xc000, songs=1)
+                    audit.audit_psid(data, 1, profile='pal-banked', subtune=1, host_base=base)
+        init = 'LDA #$11\nSTA $C000\nLDA #$22\nSTA $C1FF\nRTS'
+        play = 'LDA $C000\nSTA $D400\nLDA $C1FF\nSTA $D401\nSTA $03FF\nSTA $0600\nRTS'
+        _, writes = audit.audit_psid(selected_fixture(init, play, load=0xc800, songs=1), 1,
+                                     profile='pal-banked', subtune=1, host_base=0x0400)
+        self.assertEqual([(0xd400, 0x11), (0xd401, 0x22)], [(row['address'], row['value']) for row in writes])
+
+    def test_host_placement_cli_preserves_the_high_ram_source(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source, output = Path(directory) / 'high.sid', Path(directory) / 'audit.json'
+            data = selected_fixture(load=0xc000, songs=1)
+            source.write_bytes(data)
+            argv = ['psid_audit.py', str(source), '--ticks', '2', '--profile', 'pal-banked', '--subtune', '1',
+                    '--host-base', '0x0400', '--output', str(output)]
+            with patch.object(sys, 'argv', argv), patch('builtins.print'):
+                audit.main()
+            self.assertEqual(data, source.read_bytes())
+            self.assertEqual(0x0400, json.loads(output.read_text())['hostBase'])
+
     def test_real_cybernoid_archive_remains_unchanged_and_both_subtunes_are_callable(self):
         path = ROOT/'.local/research/cybernoid-ii/Cybernoid_II.sid'
         if not path.exists():

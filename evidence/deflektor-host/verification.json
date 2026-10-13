@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-13",
+  "sourceUrl": "https://www.hvsc.de/download/C64Music/MUSICIANS/D/Daglish_Ben/Deflektor.sid",
+  "source": {
+    "sha256": "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d",
+    "bytes": 4081
+  },
+  "sourceHeaderSha256": "f7475634ca6abbd6225ac75fb7fc75f581ab6cab8ea2310eb402084282467ae9",
+  "sourcePayloadSha256": "72a2526d8f169861bdca48c805fd0066770b6613b7d0594dde4cfa38c750557f",
+  "exportedLoadPrefixedPayload": {
+    "sha256": "684e0fce2458dbd1c3f46913c3eb57592dff25633f4fce9c39f5db028ab0f679",
+    "bytes": 3957
+  },
+  "sourcePreservation": "Pre-execution intake and both execution receipts match the canonical source hash; the current original still matches, and VICE payload.prg equals the original embedded load word plus every payload byte.",
+  "selection": 1,
+  "hostBase": 1024,
+  "hostEndExclusive": 1536,
+  "initReturnAddress": 1082,
+  "playReturnAddress": 1101,
+  "hostProgram": {
+    "sha256": "3cc5eff0df8b789051b4d9e9f9a71c30e581f655d7015c45214a58ac087c182a",
+    "bytes": 114
+  },
+  "verification": {
+    "matchedWrites": 502,
+    "playCalls": 64,
+    "firstCall": 0,
+    "lastCall": 63,
+    "frameCycles": 19656,
+    "maximumCadenceError": 7,
+    "cadenceTolerance": 9,
+    "matchedInitWrites": 0,
+    "matchedPlayWrites": 502
+  },
+  "files": {
+    "header.json": {
+      "sha256": "b9a76b93f66c8c2309f23801cae5beed4d372ee4c2b4f4afe8c8575369567779",
+      "bytes": 1169
+    },
+    "audit64.json": {
+      "sha256": "97d72ddf0548d8a7c4ad0e38bfffb95fd36ddd6c9d9ed1c10ee95970270c2c1f",
+      "bytes": 2819
+    },
+    "audit64.writes.json": {
+      "sha256": "1b2df5829a837cc493613aad196d18a38e0ae841aaf16cd5931f02793481de02",
+      "bytes": 40903
+    },
+    "vice64/study.json": {
+      "sha256": "12a25e2daa288103614ee9de5342448a4c833aa9d02681c187e85c9a2945b118",
+      "bytes": 3620
+    },
+    "vice64/trace.json": {
+      "sha256": "847e7ef0844c7736d28536fc402240cb7105f7601d8a846b69a476da50018521",
+      "bytes": 219139
+    },
+    "regressions.json": {
+      "sha256": "cc29590ff3106d2a7fdac057841632d0cad0a76999ea13a0df42f4bca422ee29",
+      "bytes": 2436
+    },
+    "check-regressions.py": {
+      "sha256": "3c656953011bb24d0a07eaf44c54a8b2d07d93da0d3e04b4f417e0b06c1fd93c",
+      "bytes": 2001
+    },
+    "verify-source.py": {
+      "sha256": "dcea6cdb956fe7c2a7531c2e79e40fbd0c392177f17c442b4d7b2b271f33fdc4",
+      "bytes": 3117
+    }
+  },
+  "tools": {
+    "psid_profile.py": {
+      "sha256": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+      "bytes": 4337
+    },
+    "psid_audit.py": {
+      "sha256": "4446a19a325e625e59f100aac0b186478fb1633f65886b260db2ad3da11419a5",
+      "bytes": 10095
+    },
+    "sid_audit_host.py": {
+      "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+      "bytes": 3146
+    },
+    "verify_player.py": {
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+      "bytes": 9535
+    },
+    "trace-sid-vice.py": {
+      "sha256": "a00830a610baf13b0d355b65baf818cd8579fce27743e9015563a9c37138da0f",
+      "bytes": 16182
+    },
+    "trace-sid-program.py": {
+      "sha256": "c12d79938e4db8ba65959443fd8e42b768160c53728d280bfd0fcf2a8f9d7569",
+      "bytes": 8466
+    },
+    "sid_intake.py": {
+      "sha256": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0",
+      "bytes": 4733
+    }
+  },
+  "limitations": [
+    "Bounded controlled-host init plus calls 0..63; no form, instrument, audio or listening verdict.",
+    "Source and private executable export fingerprints are retained; source bytes, payload, raw process/monitor logs and audio are excluded.",
+    "CPU cycles are instruction-start/call costs; VICE timestamps are monitor checkpoints, not exact SID bus-write cycles."
+  ]
+}

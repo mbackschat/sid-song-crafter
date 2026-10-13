@@ -8,7 +8,7 @@ from pathlib import Path
 from psid_profile import psid_profile
 
 
-def inspect_sid(data, *, subtune):
+def inspect_sid(data, *, subtune, host_base=None):
     """Read structural metadata and separately assess the existing callable profile.
 
     Field layout follows libsidplayfp 3.1.1 src/sidtune/PSID.cpp. Timing is a
@@ -50,10 +50,12 @@ def inspect_sid(data, *, subtune):
         bit = (subtune - 1) & 31 if flags & 2 else min(subtune - 1, 31)
         timing = 'CIA1 Timer A' if speed & (1 << bit) else 'VBI'
     try:
-        psid_profile(data, subtune=subtune, profile='pal-banked')
-        support = dict(profile='pal-banked', accepted=True, reason=None)
+        profile = psid_profile(data, subtune=subtune, profile='pal-banked', host_base=host_base)
+        support = dict(profile='pal-banked', accepted=True, reason=None, hostBase=profile['hostBase'])
     except ValueError as error:
         support = dict(profile='pal-banked', accepted=False, reason=str(error))
+    if host_base is not None:
+        support['requestedHostBase'] = host_base
     text = lambda start: data[start:start + 32].split(b'\0', 1)[0].decode('latin-1')
     return dict(schemaVersion=1, bytes=len(data), sha256=hashlib.sha256(data).hexdigest(),
         format=magic, version=2, dataOffset=offset, headerLoadAddress=word(8),
@@ -71,9 +73,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('sid', type=Path)
     parser.add_argument('--subtune', type=int, required=True)
+    parser.add_argument('--host-base', type=lambda value: int(value, 0), help='Assess an explicit pal-banked host address; decimal or 0x-prefixed')
     parser.add_argument('--output', type=Path, help='Exclusive-create JSON report; omit for stdout')
     args = parser.parse_args()
-    report = inspect_sid(args.sid.read_bytes(), subtune=args.subtune)
+    report = inspect_sid(args.sid.read_bytes(), subtune=args.subtune, host_base=args.host_base)
     report['sourcePath'] = str(args.sid)
     report['inspectorSha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     report['profileSha256'] = hashlib.sha256(Path(__file__).with_name('psid_profile.py').read_bytes()).hexdigest()

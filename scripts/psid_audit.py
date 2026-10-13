@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from psid_profile import ExecutionProfile, psid_profile
+from sid_audit_host import DEFAULT_HOST_BASE, HOST_SIZE, harness
 from verify_player import CYCLES_PER_FRAME, PAL_CLOCK, cpu_type, require
 
 
@@ -43,47 +44,55 @@ class AuditMemory:
 
 
 class BankedAuditMemory(AuditMemory):
-    def __init__(self, sid_bases):
+    def __init__(self, sid_bases, host_base=DEFAULT_HOST_BASE):
         super().__init__(sid_bases)
         self.data[1] = 0x36
+        self.host_base = host_base
 
     def __getitem__(self, address):
-        require(not 0xc000 <= address <= 0xc1ff, f'Unsupported fixed host RAM read at ${address:04x}')
+        require(not self.host_base <= address < self.host_base + HOST_SIZE, f'Unsupported fixed host RAM read at ${address:04x}')
         return super().__getitem__(address)
 
     def __setitem__(self, address, value):
-        require(not (0xc000 <= address <= 0xc1ff or 0x0314 <= address <= 0x0319),
+        require(not (self.host_base <= address < self.host_base + HOST_SIZE or 0x0314 <= address <= 0x0319),
                 f'Unsupported fixed host RAM or interrupt vector write at ${address:04x}')
         super().__setitem__(address, value)
 
 
-def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict'):
+def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict', host_base=None):
     """Run init and bounded VBI calls; report execution evidence, not musical correctness.
 
     An optional read-only observer receives the CPU and memory immediately before
     each instruction. It can inspect phase, tick and instruction-start cycle to
     record driver-specific consumption without changing the execution model.
     PAL banked requires an explicit subtune and mirrors the controlled raster
-    host's bank/register/flag entry state; it is not libsidplayfp IRQ execution.
+    host's bank/register/flag and callable-return stack state; host_base selects
+    its protected workspace. It is not libsidplayfp IRQ execution.
     """
     require(type(ticks) is int and 1 <= ticks <= 100000, "Play-call count must be an integer from 1 to 100000")
-    parsed = psid_profile(data, subtune=subtune, profile=profile)
+    parsed = psid_profile(data, subtune=subtune, profile=profile, host_base=host_base)
     banked = parsed['profile'] == ExecutionProfile.PAL_BANKED.value
     load, init, play = (parsed[key] for key in ('loadAddress', 'initAddress', 'playAddress'))
     sids = parsed['sids']
-    memory = (BankedAuditMemory if banked else AuditMemory)(tuple(parsed['sidBases']))
+    memory = BankedAuditMemory(tuple(parsed['sidBases']), parsed['hostBase']) if banked else AuditMemory(tuple(parsed['sidBases']))
     memory.data[load:parsed['endAddress']] = parsed['payload']
     cpu = cpu_type()(memory=memory, pc=init)
     cpu.a, cpu.x, cpu.y = parsed['initAccumulator'], 0, 0
     if banked:
         # trace-sid-vice's banked monitor starts FL=$24; SEI/CLD and final LDX/LDY #0 leave P=$26.
         cpu.p = cpu.UNUSED | cpu.INTERRUPT | cpu.ZERO
+        _, host_labels = harness(parsed, 1)
+        init_return, play_return = host_labels['init_return'], host_labels['play_return']
+    else:
+        init_return = play_return = 0x0200
 
-    def call(address, budget):
-        cpu.stPushWord(0x01ff)
+    def call(address, budget, return_address):
+        # The shared host's JSR saves return-1; matching that word permits stack
+        # introspection while stopping before protected caller RAM is fetched.
+        cpu.stPushWord(return_address - 1)
         cpu.pc = address
         start = cpu.processorCycles
-        while cpu.pc != 0x0200:
+        while cpu.pc != return_address:
             require(cpu.processorCycles - start < budget, f"Driver exceeds {budget}-cycle call budget")
             memory.instruction = cpu.disassemble[memory[cpu.pc]][0]
             require(memory.instruction not in ("???", "BRK", "RTI"), f"Unsupported opcode at ${cpu.pc:04x}: {memory.instruction}")
@@ -96,7 +105,7 @@ def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict'):
         require(cycles <= budget, f"Driver exceeds {budget}-cycle call budget")
         return cycles
 
-    init_cycles = call(init, 1000000)
+    init_cycles = call(init, 1000000, init_return)
     memory.phase = "play"
     maximum = 0
     total = 0
@@ -107,7 +116,7 @@ def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict'):
             memory.data[1] = parsed['entryBank']
             cpu.a = 0xfa
             cpu.p = (cpu.p | cpu.CARRY | cpu.ZERO) & ~cpu.NEGATIVE
-        cycles = call(play, CYCLES_PER_FRAME)
+        cycles = call(play, CYCLES_PER_FRAME, play_return)
         maximum = max(maximum, cycles)
         total += cycles
     values = defaultdict(list)
@@ -130,8 +139,9 @@ def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict'):
     if banked:
         report.update(executionProfile=parsed['profile'], subtunes=parsed['subtunes'],
                       defaultSubtune=parsed['defaultSubtune'], selectedSubtune=parsed['selectedSubtune'],
-                      entryBank=parsed['entryBank'],
-                      entryStateBasis='Controlled PAL raster host: init A=selection-1, X/Y=0, P=$26; play A=$FA, retained X/Y, CMP-equal C/Z set and N clear; bank $36 before each call')
+                      entryBank=parsed['entryBank'], hostBase=parsed['hostBase'],
+                      initReturnAddress=init_return, playReturnAddress=play_return,
+                      entryStateBasis='Controlled PAL raster host: init A=selection-1, X/Y=0, P=$26; play A=$FA, retained X/Y, CMP-equal C/Z set and N clear; bank $36 before each call; callable return words derive from the shared harness JSR labels')
     return report, memory.writes
 
 
@@ -141,12 +151,13 @@ def main():
     parser.add_argument("--ticks", type=int, required=True)
     parser.add_argument('--profile', choices=[profile.value for profile in ExecutionProfile], default='strict')
     parser.add_argument('--subtune', type=int, help='Explicit one-based selection; required for pal-banked')
+    parser.add_argument('--host-base', type=lambda value: int(value, 0), help='Explicit page-aligned lower-RAM caller placement; pal-banked only')
     parser.add_argument("--output", type=Path, required=True, help="JSON report path; writes go in a sibling .writes.json file")
     args = parser.parse_args()
     writes_path = args.output.with_suffix(".writes.json")
     require(args.output.resolve() != args.sid.resolve() and writes_path.resolve() != args.sid.resolve(), "Output must not overwrite the input")
     require(not any(path.exists() or path.is_symlink() for path in (args.output, writes_path)), "Audit outputs already exist; choose a new output path")
-    report, writes = audit_psid(args.sid.read_bytes(), args.ticks, profile=args.profile, subtune=args.subtune)
+    report, writes = audit_psid(args.sid.read_bytes(), args.ticks, profile=args.profile, subtune=args.subtune, host_base=args.host_base)
     evidence = ((args.output, json.dumps(report, indent=2) + "\n"), (writes_path, json.dumps(writes, separators=(",", ":")) + "\n"))
     args.output.parent.mkdir(parents=True, exist_ok=True)
     created = []

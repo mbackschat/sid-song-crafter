@@ -47,6 +47,34 @@ def pinned_fixture(data):
 
 
 class SidProgramTraceTest(unittest.TestCase):
+    def test_high_ram_program_uses_explicit_host_without_relocating_source(self):
+        data = bytearray(fixture())
+        for offset, value in ((8, 0xc000), (10, 0xc000), (12, 0xc006)):
+            data[offset:offset + 2] = value.to_bytes(2, 'big')
+        original = bytes(data)
+        result = trace.trace_program(data, first_call=0, last_call=1, profile='pal-banked',
+                                     subtune=1, host_base=0x0400)
+        self.assertEqual(original, bytes(data))
+        self.assertEqual(hashlib.sha256(original).hexdigest(), result['sourceSha256'])
+        self.assertEqual(0x0400, result['audit']['hostBase'])
+        self.assertEqual([0xc011, 0xc011], [row['instructionPc'] for row in result['sidWrites']])
+        self.assertEqual([0x51, 0x52], [row['value'] for row in result['sidWrites']])
+        with tempfile.TemporaryDirectory() as directory:
+            source, output = Path(directory) / 'source.sid', Path(directory) / 'trace.json'
+            source.write_bytes(data)
+            argv = ['trace-sid-program.py', str(source), '--first-call', '0', '--last-call', '1',
+                    '--profile', 'pal-banked', '--subtune', '1', '--host-base', '0x0400', '--output', str(output)]
+            with patch.object(sys, 'argv', argv), patch('builtins.print'):
+                trace.main()
+            self.assertEqual(original, source.read_bytes())
+            self.assertEqual(result['sidWrites'], json.loads(output.read_text())['sidWrites'])
+
+    def test_explicit_host_is_not_silently_ignored_by_legacy_profiles(self):
+        for profile in ('strict', 'flashdance-diagnostic'):
+            with self.subTest(profile=profile), self.assertRaisesRegex(ValueError, '[Hh]ost'):
+                trace.trace_program(fixture(), first_call=0, last_call=0,
+                                    profile=profile, host_base=0x0400)
+
     def test_selected_banked_trace_links_stores_and_retains_init_argument(self):
         header = bytearray(fixture()[:124])
         init = bytes.fromhex('8d 18 d4 8d 00 20 60')

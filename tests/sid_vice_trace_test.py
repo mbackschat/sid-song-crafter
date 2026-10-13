@@ -1,4 +1,5 @@
 import importlib.util
+import hashlib
 import io
 import json
 from pathlib import Path
@@ -73,7 +74,139 @@ RTS
     return bytes(header) + payload
 
 
+def high_ram_fixture():
+    from verify_player import cpu_type
+    cpu_type()
+    from sid_assembler import assemble
+    source = '''
+init:
+TSX
+LDA $0101,X
+STA $D400
+LDA $0102,X
+STA $D401
+LDA #$35
+STA $01
+LDA $E000
+STA $D405
+LDA $FFFF
+STA $D406
+LDA $CFF0
+STA $D407
+LDA #$37
+STA $01
+RTS
+play:
+TSX
+LDA $0101,X
+STA $D402
+LDA $0102,X
+STA $D403
+LDA $CFF0
+STA $D408
+LDA #$35
+STA $01
+LDA $E000
+STA $D409
+LDA $FFFF
+STA $D40A
+LDA #$37
+STA $01
+RTS
+'''
+    payload, labels, _ = assemble(source)
+    header = sid_fixture()[:124]
+    for offset, address in ((8, 0xc000), (10, 0xc000), (12, labels['play'] - 0x1000 + 0xc000)):
+        header[offset:offset + 2] = address.to_bytes(2, 'big')
+    return bytes(header) + payload
+
+
 class SidViceTraceTest(unittest.TestCase):
+    def test_strict_default_retains_profile_shape_harness_bytes_and_monitor_commands(self):
+        profile = trace.psid_profile(sid_fixture())
+        program, labels = trace.harness(profile, 2)
+        commands = trace.monitor_commands(Path('/tmp/payload.prg'), Path('/tmp/harness.prg'), profile, labels, 0, 1)
+        self.assertEqual({'endAddress', 'initAddress', 'loadAddress', 'payload', 'playAddress', 'sidBases', 'sidModel'},
+                         set(profile))
+        self.assertEqual('d8a5ee245b95aa058154b37496dc67fd569a3b10c7a85b0dfb38565f988bff0f',
+                         hashlib.sha256(program).hexdigest())
+        self.assertEqual('96073ed0d39045f844821442796f4587f27884043ad7401043af14e62898e10c',
+                         hashlib.sha256(commands.encode()).hexdigest())
+
+    def test_banked_host_placement_moves_code_counters_and_zeroes_reachable_ram(self):
+        data = high_ram_fixture()
+        for host_base in (0x0400, 0x9e00):
+            with self.subTest(host_base=host_base):
+                profile = trace.psid_profile(data, subtune=1, profile='pal-banked', host_base=host_base)
+                self.assertEqual(host_base, profile['hostBase'])
+                program, labels = trace.harness(profile, 2)
+                self.assertEqual(host_base.to_bytes(2, 'little'), program[:2])
+                self.assertTrue(all(host_base <= address < host_base + 0x100 for address in labels.values()))
+                self.assertIn((host_base + 0x100).to_bytes(2, 'little'), program)
+                commands = trace.monitor_commands(Path('/tmp/payload.prg'), Path('/tmp/harness.prg'), profile, labels, 0, 1)
+                self.assertIn(f'r pc=${host_base:04x}', commands)
+                self.assertIn(f'@ram:${host_base + 0x100:04x}', commands)
+                self.assertIn(f'@ram:${host_base + 0x101:04x}', commands)
+                self.assertIn(f'@ram:${host_base + 0x102:04x}', commands)
+                self.assertLess(commands.index('fill $0002 $cfff $00'), commands.index('load "/tmp/payload.prg"'))
+                self.assertLess(commands.index('fill $e000 $ffff $00'), commands.index('load "/tmp/payload.prg"'))
+    def test_host_placement_rejects_default_collision_invalid_bases_and_strict_override(self):
+        with self.assertRaisesRegex(ValueError, 'host'):
+            trace.psid_profile(high_ram_fixture(), subtune=1, profile='pal-banked')
+        with self.assertRaises(ValueError):
+            trace.psid_profile(sid_fixture(), host_base=0x0400)
+        for host_base in (True, 0x0300, 0x0401, 0x9f00, 0xa000, 0xc000, 1.0, '0x400'):
+            with self.subTest(host_base=host_base), self.assertRaises(ValueError):
+                trace.psid_profile(high_ram_fixture(), subtune=1, profile='pal-banked', host_base=host_base)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            sid, oracle = root / 'fixture.sid', root / 'oracle.json'
+            sid.write_bytes(high_ram_fixture())
+            oracle.write_text('[]')
+            output = root / 'trace'
+            with patch.object(trace.subprocess, 'run') as runner, self.assertRaisesRegex(ValueError, 'host'):
+                trace.run_trace(sid, oracle, output, 0, 1, Path('/tmp/vice'), Path('/tmp/data'),
+                                subtune=1, profile='pal-banked')
+            runner.assert_not_called()
+            self.assertFalse(output.exists())
+
+    def test_cli_host_base_accepts_base_zero_integer_and_forwards_it(self):
+        arguments = ['trace-sid-vice.py', 'fixture.sid', '--oracle', 'oracle.json', '--output', 'fresh',
+                     '--profile', 'pal-banked', '--subtune', '1', '--host-base', '0x0400']
+        with patch.object(sys, 'argv', arguments), patch.object(trace, 'run_trace', return_value={}) as runner:
+            with patch('sys.stdout', new_callable=io.StringIO):
+                trace.main()
+        self.assertEqual(0x0400, runner.call_args.kwargs['host_base'])
+
+    def test_headless_high_ram_fixture_matches_host_return_bytes_and_hidden_ram_zeros(self):
+        vice = ROOT / '.tools/vice-headless-3.9/build/src/x64sc'
+        data_directory = Path('/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice')
+        if not vice.is_file() or not data_directory.is_dir():
+            self.skipTest('Local headless VICE and ROM data are required for the executed fixture')
+        from psid_audit import audit_psid
+        data = high_ram_fixture()
+        for host_base in (0x0400, 0x9e00):
+            with self.subTest(host_base=host_base), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                sid, expected = root / 'fixture.sid', root / 'oracle.json'
+                sid.write_bytes(data)
+                _, oracle = audit_psid(data, 2, subtune=1, profile='pal-banked', host_base=host_base)
+                expected.write_text(json.dumps(oracle))
+                result = trace.run_trace(sid, expected, root / 'trace', 0, 1, vice, data_directory,
+                                         subtune=1, profile='pal-banked', host_base=host_base)
+                self.assertEqual(15, result['verification']['matchedWrites'])
+                self.assertEqual(host_base, result['profile']['hostBase'])
+                labels = result['harnessLabels']
+                init_return, play_return = labels['init_return'] - 1, labels['play_return'] - 1
+                self.assertEqual([('init', None, 0xd400, init_return & 255),
+                                  ('init', None, 0xd401, init_return >> 8)] +
+                                 [('init', None, address, 0) for address in (0xd405, 0xd406, 0xd407)] +
+                                 [('play', tick, address, value) for tick in range(2) for address, value in
+                                  ((0xd402, play_return & 255), (0xd403, play_return >> 8),
+                                   (0xd408, 0), (0xd409, 0), (0xd40a, 0))],
+                                 [(row['phase'], row['tick'], row['address'], row['value']) for row in oracle])
+                self.assertEqual(data, sid.read_bytes())
+
     def test_process_timeout_keeps_default_and_forwards_positive_override(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

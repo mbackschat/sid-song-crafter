@@ -22,23 +22,32 @@ Both `strict` and `pal-banked` retain every ordered store within each declared S
 
 ## Select a subtune and expose RAM beneath BASIC
 
-The explicit `pal-banked` profile supports intact PSID headers with a one-based `--subtune` selection and payloads within `$0400–$BFFF`. It uses the shared [header/profile parser](../../scripts/psid_profile.py); the header's declared subtunes/default, chip layout and VBI speed remain validated. The source bytes and hash do not change. An omitted selection is rejected in this profile; the default strict profile retains its original single-subtune and lower-RAM boundaries.
+The explicit `pal-banked` profile supports intact PSID headers with a one-based `--subtune` selection and payloads within `$0400–$CFFF` that do not overlap its selected host workspace. It uses the shared [header/profile parser](../../scripts/psid_profile.py); the header's declared subtunes/default, chip layout and VBI speed remain validated. The source bytes and hash do not change. An omitted selection is rejected in this profile; the default strict profile retains its original single-subtune and lower-RAM boundaries.
 
 ```sh
 python3 scripts/psid_audit.py .local/research/cybernoid-ii/Cybernoid_II.sid --profile pal-banked --subtune 1 --ticks 600 --output build/cybernoid-title-new/audit.json
 ```
 
-The API is `audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict')`. The profile describes a controlled raster-polling host, with explicit entry state shared by the [VICE tracer](../../scripts/trace-sid-vice.py):
+The API is `audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict', host_base=None)`. The profile describes a controlled raster-polling host, with explicit entry state shared by the [VICE tracer](../../scripts/trace-sid-vice.py):
 
 | Boundary | `pal-banked` contract |
 | --- | --- |
 | Mapping | Set CPU port `$01=$36` before init and each play call: BASIC hidden, KERNAL and SID I/O visible. Driver bank changes remain subject to guarded accesses. |
 | Init entry | A=`subtune−1`, X=Y=0, status `$26`, SP=`$FF` before the callable return address is pushed. |
 | Play entry | A=`$FA`; X/Y retain the preceding call's results. Set C/Z and clear N, retaining other status bits, matching the raster host's successful `CMP $D012` at line 250. |
-| Memory isolation | The raster host's `$C000–$C1FF` workspace rejects reads and writes; interrupt vectors reject writes. Existing mapped-ROM, I/O-read, SID visibility and unsupported-store guards remain. |
+| Memory isolation | The selected 512-byte host workspace rejects driver fetches, reads and writes; interrupt vectors `$0314–$0319` reject writes. Existing mapped-ROM, I/O-read, SID visibility and unsupported-store guards remain. |
+| Call stack | Banked CPU execution pushes the actual host JSR return word from the [shared harness generator](../../scripts/sid_audit_host.py), including the selected host address. Stack-reading routines therefore see the same immediate return word as VICE. Strict retains its historical synthetic `$0200` return boundary. |
 | Timing | Play-body costs retain the 19,656-cycle bound; actual call cadence is checked separately in VICE. The CPU oracle does not emulate the raster poll or SID bus timing. |
 
 This entry contract is not libsidplayfp's IRQ entry: its inspected `psiddrv.a65` supplies A=0. Do not infer PCM or original-host identity from equality under the controlled raster host. [Cybernoid II's owning study](../research/composition/cybernoid-ii-preparation.md) retains the exact input, bank-selection basis and bounded execution evidence.
+
+## Place the host around a high-RAM reference
+
+The default banked host remains `$C000–$C1FF`. A payload overlapping that workspace is rejected before execution. An explicit `--host-base 0x0400` moves our host to `$0400–$05FF`; it does not relocate or patch the SID. Other explicit bases must be integer, page-aligned addresses from `$0400` through `$9E00`, keeping the entire workspace in RAM visible across permitted BASIC/KERNAL bank changes. The parser checks the complete source extent against the complete workspace; touching endpoints are allowed, overlapping bytes are not. Strict and Flashdance diagnostic profiles reject explicit host placement.
+
+The shared generator derives code, return sites, the 16-bit counter at `hostBase+$100` and the init marker at `hostBase+$102` from one selected base. CPU reports and VICE profiles record `hostBase`. The banked VICE monitor clears RAM `$0002–$CFFF` and `$E000–$FFFF` before loading the unchanged payload and our host; the latter range matters when a driver banks out KERNAL and reads the underlying RAM. No I/O read model or original game environment follows from this controlled initialization.
+
+The [Deflektor preparation](../research/composition/deflektor-preparation.md) owns the high-RAM reference and bounded comparison. Use the same `--host-base` for metadata admission, CPU audit, instruction tracing and VICE tracing; there is no automatic placement search. CPU auditing still accepts up to 100,000 calls, whereas the VICE counter supports at most 65,535 calls; shared return labels are derived from a representative valid host and do not extend the VICE counter's range.
 
 ## Evidence limits
 

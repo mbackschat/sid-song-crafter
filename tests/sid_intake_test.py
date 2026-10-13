@@ -20,6 +20,27 @@ def fixture(*, magic=b'PSID', songs=3, speed=0, load=0, play=0x1003, flags=0x14)
 
 
 class SidIntakeTests(unittest.TestCase):
+    def test_host_admission_is_explicit_and_never_changes_reference_bytes(self):
+        raw = bytearray(fixture(load=0xc000, play=0xc003))
+        raw[10:12] = (0xc000).to_bytes(2, 'big')
+        original = bytes(raw)
+        default = inspect_sid(raw, subtune=1)
+        self.assertFalse(default['callableProfile']['accepted'])
+        selected = inspect_sid(raw, subtune=1, host_base=0x0400)
+        self.assertTrue(selected['callableProfile']['accepted'])
+        self.assertEqual(0x0400, selected['callableProfile']['hostBase'])
+        self.assertEqual(default['sha256'], selected['sha256'])
+        self.assertEqual(0xc000, selected['loadAddress'])
+        self.assertEqual(original, bytes(raw))
+
+    def test_invalid_host_is_an_admission_failure_not_a_header_mutation(self):
+        for host in (0x0300, 0x0401, 0x9f00, True):
+            with self.subTest(host=host):
+                report = inspect_sid(fixture(), subtune=1, host_base=host)
+                self.assertFalse(report['callableProfile']['accepted'])
+                self.assertEqual(host, report['callableProfile']['requestedHostBase'])
+                self.assertEqual(0x1000, report['loadAddress'])
+
     def test_embedded_load_is_not_payload_and_report_excludes_original_bytes(self):
         raw = fixture()
         report = inspect_sid(raw, subtune=1)

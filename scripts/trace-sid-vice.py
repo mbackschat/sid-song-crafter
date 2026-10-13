@@ -9,12 +9,11 @@ from pathlib import Path
 import re
 import subprocess
 
+from sid_audit_host import COUNTER, HARNESS_BASE, INIT_ACTIVE, harness
+
 
 ROOT = Path(__file__).resolve().parents[1]
 FRAME_CYCLES = 19656
-HARNESS_BASE = 0xc000
-COUNTER = 0xc100
-INIT_ACTIVE = COUNTER + 2
 
 
 def require(condition, message):
@@ -22,9 +21,9 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def psid_profile(data, *, subtune=None, profile='strict'):
+def psid_profile(data, *, subtune=None, profile='strict', host_base=None):
     from psid_profile import psid_profile as validated_profile
-    result = validated_profile(data, subtune=subtune, profile=profile)
+    result = validated_profile(data, subtune=subtune, profile=profile, host_base=host_base)
     if result['profile'] == 'strict':
         # Existing callers serialize this shape; the explicit profile owns the
         # extra host fields without rewriting earlier strict-profile receipts.
@@ -33,91 +32,25 @@ def psid_profile(data, *, subtune=None, profile='strict'):
     return result
 
 
-def harness(profile, calls):
-    require(type(calls) is int and 1 <= calls <= 65535, 'Harness supports 1..65535 play calls')
-    code = bytearray()
-    labels, branches = {}, []
-
-    def emit(*values):
-        code.extend(values)
-
-    def absolute(opcode, address):
-        emit(opcode, address & 255, address >> 8)
-
-    def label(name):
-        labels[name] = HARNESS_BASE + len(code)
-
-    def branch(opcode, name):
-        emit(opcode, 0)
-        branches.append((len(code) - 1, name))
-
-    banked = profile.get('profile') == 'pal-banked'
-    # The strict oracle's established init assumptions remain byte-identical;
-    # pal-banked additionally matches the selected raster-host entry contract.
-    emit(0x78, 0xd8, 0xa2, 0xff, 0x9a)
-    emit(0xa9, 0x7f)
-    absolute(0x8d, 0xdc0d)
-    absolute(0x8d, 0xdd0d)
-    absolute(0xad, 0xdc0d)
-    absolute(0xad, 0xdd0d)
-    emit(0xa9, 0)
-    for address in (0xd01a, 0xd011, 0xd015, COUNTER, COUNTER + 1):
-        absolute(0x8d, address)
-    if banked:
-        emit(0xa9, 1)
-        absolute(0x8d, INIT_ACTIVE)
-    emit(0xa9, 0x2f, 0x85, 0, 0xa9, profile.get('entryBank', 0x37), 0x85, 1,
-         0xa9, profile.get('initAccumulator', 0), 0xa2, 0, 0xa0, 0)
-    absolute(0x20, profile['initAddress'])
-    if banked:
-        label('init_return')
-        emit(0xa9, 0)
-        absolute(0x8d, INIT_ACTIVE)
-        label('restore_bank')
-        emit(0xa9, 0x36, 0x85, 1)
-    label('wait')
-    emit(0xa9, 250)
-    absolute(0xcd, 0xd012)
-    branch(0xd0, 'wait')
-    label('call')
-    absolute(0x20, profile['playAddress'])
-    absolute(0xee, COUNTER)
-    branch(0xd0, 'check_count')
-    absolute(0xee, COUNTER + 1)
-    label('check_count')
-    absolute(0xad, COUNTER)
-    emit(0xc9, calls & 255)
-    branch(0xd0, 'leave')
-    absolute(0xad, COUNTER + 1)
-    emit(0xc9, calls >> 8)
-    branch(0xf0, 'done')
-    label('leave')
-    emit(0xa9, 250)
-    absolute(0xcd, 0xd012)
-    branch(0xf0, 'leave')
-    absolute(0x4c, labels['restore_bank'] if banked else labels['wait'])
-    label('done')
-    absolute(0x4c, labels['done'])
-    for offset, target in branches:
-        distance = labels[target] - (HARNESS_BASE + offset + 1)
-        require(-128 <= distance <= 127, 'Harness branch exceeds the relative range')
-        code[offset] = distance & 255
-    require(HARNESS_BASE + len(code) < COUNTER, 'Harness overlaps its call counter')
-    return HARNESS_BASE.to_bytes(2, 'little') + code, labels
-
-
 def monitor_commands(payload, program, profile, labels, first, last):
     require(type(first) is int and type(last) is int and 0 <= first <= last <= 65534, 'Trace window must lie within calls 0..65534')
     for path in (payload, program):
         require(not any(char in str(path) for char in ('"', '\n', '\r')), 'Unsafe monitor path')
     # VICE 3.9 condition expressions evaluate left to right (vice.texi CONDITION); group each comparison.
-    counter = f'((@ram:${COUNTER + 1:04x} * $0100) + @ram:${COUNTER:04x})'
+    host_base = profile.get('hostBase', HARNESS_BASE)
+    counter_address = host_base + 0x100
+    init_active = counter_address + 2
+    counter = f'((@ram:${counter_address + 1:04x} * $0100) + @ram:${counter_address:04x})'
     condition = f'({counter} >= ${first:04x}) && ({counter} <= ${last:04x})'
     banked = profile.get('profile') == 'pal-banked'
     if banked:
-        condition = f'(@ram:${INIT_ACTIVE:04x} != $00) || ({condition})'
+        condition = f'(@ram:${init_active:04x} != $00) || ({condition})'
     traces = [f'trace store ${base:04x} ${base + 31:04x} if {condition}' for base in profile['sidBases']]
-    lines = ['radix h', 'sidefx off', 'dummy off', 'bank ram', 'fill $0002 $bfff $00', f'load "{payload}" 0', f'load "{program}" 0', 'r a=$00,x=$00,y=$00,sp=$ff,fl=$24', f'r pc=${HARNESS_BASE:04x}']
+    lines = ['radix h', 'sidefx off', 'dummy off', 'bank ram']
+    # audit_psid starts backing RAM at zero, including reachable scratch above
+    # the payload and beneath hidden KERNAL (sid_vice_trace_test's high-RAM fixture).
+    lines.extend(['fill $0002 $cfff $00', 'fill $e000 $ffff $00'] if banked else ['fill $0002 $bfff $00'])
+    lines.extend([f'load "{payload}" 0', f'load "{program}" 0', 'r a=$00,x=$00,y=$00,sp=$ff,fl=$24', f'r pc=${host_base:04x}'])
     if banked:
         lines.extend([f'trace exec ${profile["initAddress"]:04x}', f'trace exec ${labels["init_return"]:04x}'])
     else:
@@ -239,7 +172,7 @@ def verify_trace(parsed, oracle, first, last):
     return result
 
 
-def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, subtune=None, profile='strict', timeout=60):
+def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, subtune=None, profile='strict', host_base=None, timeout=60):
     require(type(timeout) in (int, float) and timeout > 0, 'Timeout must be positive finite seconds')
     try:
         finite_timeout = math.isfinite(timeout)
@@ -247,7 +180,7 @@ def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, su
         finite_timeout = False
     require(finite_timeout, 'Timeout must be positive finite seconds')
     sid_bytes, oracle_bytes = sid.read_bytes(), oracle_path.read_bytes()
-    profile = psid_profile(sid_bytes, subtune=subtune, profile=profile)
+    profile = psid_profile(sid_bytes, subtune=subtune, profile=profile, host_base=host_base)
     program, labels = harness(profile, last + 1)
     require(not output.exists() and not output.is_symlink(), 'Choose a fresh trace output directory')
     output.mkdir(parents=True)
@@ -297,9 +230,10 @@ def main():
     parser.add_argument('--data', type=Path, default=Path('/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice'))
     parser.add_argument('--subtune', type=int, help='Explicit 1-based subtune selection')
     parser.add_argument('--profile', choices=('strict', 'pal-banked'), default='strict')
+    parser.add_argument('--host-base', type=lambda value: int(value, 0), help='PAL banked host address; explicit low-RAM page, e.g. 0x0400')
     parser.add_argument('--timeout', type=float, default=60, help='Positive VICE wall-clock timeout in seconds (default: 60)')
     args = parser.parse_args()
-    result = run_trace(args.sid.resolve(), args.oracle.resolve(), args.output.resolve(), args.first_call, args.last_call, args.vice.resolve(), args.data.resolve(), subtune=args.subtune, profile=args.profile, timeout=args.timeout)
+    result = run_trace(args.sid.resolve(), args.oracle.resolve(), args.output.resolve(), args.first_call, args.last_call, args.vice.resolve(), args.data.resolve(), subtune=args.subtune, profile=args.profile, host_base=args.host_base, timeout=args.timeout)
     print(json.dumps(result, indent=2))
 
 

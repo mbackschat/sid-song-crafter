@@ -24,12 +24,13 @@ def load_reference():
     return reference
 
 
-def audit_trace(data, calls, profile, observer, subtune=None):
+def audit_trace(data, calls, profile, observer, subtune=None, host_base=None):
     if profile in (TraceProfile.STRICT, TraceProfile.PAL_BANKED):
-        report, writes = audit_psid(data, calls, observer=observer, profile=profile.value, subtune=subtune)
+        report, writes = audit_psid(data, calls, observer=observer, profile=profile.value, subtune=subtune, host_base=host_base)
         return report, writes, None
     require(profile is TraceProfile.FLASHDANCE_DIAGNOSTIC, 'Unknown trace profile')
     require(subtune is None, 'The pinned Flashdance diagnostic does not accept subtune selection')
+    require(host_base is None, 'The pinned Flashdance diagnostic does not accept host placement')
     reference = load_reference()
     reference.verify_reference('flashdance', data)
     diagnostic = reference.load_script('psid_audit.py', 'sid_trace_flashdance_audit')
@@ -70,17 +71,18 @@ def operand_address(mode, operands, cpu, memory):
     return None
 
 
-def trace_program(data, *, first_call, last_call, profile='strict', subtune=None):
+def trace_program(data, *, first_call, last_call, profile='strict', subtune=None, host_base=None):
     """Observe instructions without altering execution under the RAM-only audit contract.
 
     Operand values are pre-instruction RAM snapshots, not a bus-access trace.
     The py65 observer runs before each instruction; its cycle is consequently
     an instruction-start cycle relative to the play call, not a SID bus cycle.
-    Initialization sound-register writes are retained separately. The optional
+    Initialization SID-port writes are retained separately. The optional
     Flashdance diagnostic profile requires the canonical reference hash and
     excludes only its recorded two zero initialization paddle writes. The
     pal-banked profile requires an explicit one-based subtune and uses the
-    CPU auditor's declared raster-host entry state with BASIC RAM exposed.
+    CPU auditor's declared raster-host entry state with BASIC RAM exposed;
+    host_base selects its protected workspace without moving the source.
     """
     require(type(first_call) is int and type(last_call) is int and 0 <= first_call <= last_call < 100000 and last_call - first_call < 512, 'Select an inclusive window of 1..512 calls within 0..99999')
     require(profile in tuple(TraceProfile), 'Unknown trace profile')
@@ -110,7 +112,7 @@ def trace_program(data, *, first_call, last_call, profile='strict', subtune=None
                     stores[(memory.tick, memory.instruction_cycle, address)] = pc
         instructions.append(row)
 
-    audited, writes, diagnostic = audit_trace(data, last_call + 1, profile, observe, subtune)
+    audited, writes, diagnostic = audit_trace(data, last_call + 1, profile, observe, subtune, host_base)
     selected = []
     for write in writes:
         if write['phase'] != 'play' or not first_call <= write['tick'] <= last_call:
@@ -132,10 +134,11 @@ def main():
     parser.add_argument('--profile', choices=[profile.value for profile in TraceProfile], default=TraceProfile.STRICT.value,
                         help='Strict audit by default; pal-banked exposes BASIC RAM with explicit subtune selection; Flashdance diagnostic requires pinned bytes')
     parser.add_argument('--subtune', type=int, help='One-based selection required by pal-banked')
+    parser.add_argument('--host-base', type=lambda value: int(value, 0), help='Explicit pal-banked host address; decimal or 0x-prefixed')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     require(not args.output.exists() and not args.output.is_symlink(), 'Choose a new output file')
-    result = trace_program(args.sid.read_bytes(), first_call=args.first_call, last_call=args.last_call, profile=args.profile, subtune=args.subtune)
+    result = trace_program(args.sid.read_bytes(), first_call=args.first_call, last_call=args.last_call, profile=args.profile, subtune=args.subtune, host_base=args.host_base)
     result['sourcePath'] = str(args.sid.resolve())
     result['toolSha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     args.output.parent.mkdir(parents=True, exist_ok=True)

@@ -21,6 +21,6 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Prepare Monty on the Run](monty-preparation.md): pinned subtune, source-composition credit and bounded callable execution.
 - [Prepare Rambo: First Blood Part II](rambo-preparation.md): loader-specific attribution, original-source hooks and execution requirements.
 - [Prepare Ghouls ’n Ghosts](ghouls-preparation.md): archive/subtune boundaries, canonical SID port writes and bounded CPU/VICE execution.
-- [Prepare Deflektor](deflektor-preparation.md): source identity, cowbell study context and required host-memory separation.
+- [Prepare Deflektor](deflektor-preparation.md): source identity, cowbell study context and unchanged high-RAM CPU/VICE execution with explicit host placement.
 
 Study [the composers and their tools](../composers/README.md) before choosing a sound palette. A correct note sequence is a technical baseline; musical quality also requires phrasing, contrast, texture, and listening review.
