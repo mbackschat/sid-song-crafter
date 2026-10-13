@@ -4,6 +4,9 @@ Research and reusable tools for composing expressive Commodore 64 music for one 
 
 ## Start here
 
+- [Full independent DRAX Für Elise comparison](songs/studies/drax-full-reconstruction/README.md): complete thematic cycle, original and our own computed player.
+- [Decoded-instrument composition workflow](docs/decoded-song-workflow.md): editable descriptions, independent code, full register and VICE verification; [Flashdance preparation](docs/research/composition/flashdance-preparation.md).
+
 - [Research index](docs/research/README.md): hardware, composition, timing, formats, tools, and source provenance.
 - [Composer studies](docs/research/composers/README.md): seven masters, published accounts, custom tools, and a listening catalogue.
 - [Sound-design repertoire](docs/research/composition/sound-design-repertoire.md): proposed experiments and evidence required for reusable instruments.

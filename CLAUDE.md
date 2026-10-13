@@ -12,6 +12,7 @@ Start with the [technique lookup](docs/research/technique-index.md), then read o
 | Study masters and their tools | [Composers](docs/research/composers/README.md), [commented sources and manuals](docs/research/tools/source-studies.md) |
 | Reverse-engineer an instrument | [Execution-based procedure](docs/research/tools/sid-program-analysis.md), [DRAX reconstruction](songs/studies/drax-bass-reconstruction/README.md) |
 | Choose expressive material | [Sound repertoire](docs/research/composition/sound-design-repertoire.md), [instruments](docs/research/composition/instruments/README.md), [gestures](docs/research/composition/gestures/README.md) |
+| Compose from decoded mechanisms | [Computed-player workflow](docs/decoded-song-workflow.md), [complete DRAX theme](songs/studies/drax-full-reconstruction/README.md), [Flashdance and dual-SID preparation](docs/research/composition/flashdance-preparation.md) |
 | Arrange and export | [Source preservation](docs/song-workflow.md), [native workflow](docs/native-song-workflow.md), [dual SID](docs/research/sid/dual-sid.md), [editor assessment](docs/research/tools/composition-tools.md) |
 | Run and inspect headlessly | [Setup](docs/local-setup.md), [audio](docs/audio-workflow.md), [VICE checks](docs/native-vice-checks.md), [verified capabilities](docs/research/tools/skills-and-integrations.md) |
 | Prepare listening comparisons | [Comparison workflow](docs/audio-comparisons.md), [DRAX reference and feedback](docs/research/composition/fuer-elise-reference.md) |
