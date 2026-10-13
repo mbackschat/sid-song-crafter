@@ -1,6 +1,6 @@
 # Flashdance preparation
 
-Use DRAX's **Flashdance (conversion)** as the active reference for **What a Feeling**. Its staged lead, evolving bass and moving chord extend the mechanisms learned from the positively received [independent Elise trio](../../../songs/studies/drax-full-reconstruction/README.md). The first reconstruction target is calls 0–513; musical preference is still pending. The existing [20-second preview](../../../.local/research/flashdance/drax.preview.wav) provides listening context.
+Use DRAX's **Flashdance (conversion)** as the active reference for **What a Feeling**. Its staged lead, evolving bass and moving chord extend the mechanisms learned from the positively received [independent Elise trio](../../../songs/studies/drax-full-reconstruction/README.md). The accepted reconstruction covers calls 0–1537 plus an authored ending; the original transfer phrase was judged to work, while the dual-SID additions are being revised for audibility. The existing [20-second preview](../../../.local/research/flashdance/drax.preview.wav) provides reference context.
 
 ## Pinned evidence
 
@@ -42,9 +42,9 @@ PC `$128F` restores all three track pointers at call 1534; PC `$1134` selects th
 
 The [comparison receipt](../../../build/flashdance-original-form/source-form-comparison.json) retains 13 executed chord witnesses, six melody anchors and source/download hashes. Landmarks include D4 at 514, G4 at 1034, F4 at 1154 and E-flat4→D4→C4 at 1282/1306/1314. DRAX adds chromatic approaches and changes voicing, phrasing and the published final E-flat/F→F harmony to Fsus4→F.
 
-**Omissions and limits:** the loop returns before Verse 1's remaining eight bars; later verses, choruses and instrumental/outro development have no separate passages. Bar labels belong to Seiler's edition. Original-recording timestamps, exact introduction identity and version-specific ending remain unverified. No selected SID block is omitted; this deliverable remains an abbreviated DRAX arrangement. Listening acceptance is open.
+**Omissions and limits:** the loop returns before Verse 1's remaining eight bars; later verses, choruses and instrumental/outro development have no separate passages. Bar labels belong to Seiler's edition. Original-recording timestamps, exact introduction identity and version-specific ending remain unverified. No selected SID block is omitted; this deliverable remains an abbreviated DRAX arrangement. Its [listening verdict](#independent-export-and-listening) applies to that selected scope.
 
-**Authored ending:** preserve the reference through call 1537 and suppress the next score cycle. The editable model clears gate from call 1538 while continuing modulation, retains 64 release calls, then lowers volume every four calls. Volume reaches zero at call 1658; from call 1666 it repeatedly clears control and volume. This is an arrangement change after the comparison span, not an ending found in the source. Export execution, settled audio and listening must verify it before F4 closes.
+**Authored ending:** preserve the reference through call 1537 and suppress the next score cycle. The editable model clears gate from call 1538 while continuing modulation, retains 64 release calls, then lowers volume every four calls. Volume reaches zero at call 1658; from call 1666 it repeatedly clears control and volume. This is an arrangement change after the comparison span, not an ending found in the source. Export execution, settled audio and the listener's acceptance verify this ending for F4.
 
 The local form-analysis entry point and its tests remain deferred, untracked work. The retained evidence pins tool SHA-256 `6e0bbd4e08056c5b04426cedad194e1d5d62accb0e53b08d47d2efd94822fd55`; reproducing that form receipt still requires the local tool. Its six tests passed on 2026-10-13. Portable instruction tracing is separately supported by [trace-sid-program.py](../../../scripts/trace-sid-program.py) with its explicit pinned `flashdance-diagnostic` profile; it does not depend on the deferred tool. The retained opening traces match all 9,345 initialization and calls 0–513 sound-register writes in the cached reference oracle. These checks establish analysis evidence, not listening acceptance.
 
@@ -84,7 +84,7 @@ Both 35-second renders use the same PAL MOS6581, default subtune, libsidplayfp 3
 - [Complete selected reconstruction with authored ending](../../../build/flashdance-full-listening/reconstructed.wav).
 - [Reference at the same gain and duration](../../../build/flashdance-full-listening/reference.wav).
 
-**Listening verdict: pending.** The listener has been asked whether the opening retains the sound/phrasing and whether the authored ending feels natural. Execution and PCM checks do not close F3/F4 without that judgment.
+**Listening verdict, 2026-10-13:** when asked whether the reconstruction preserves the sound/phrasing and whether its ending feels natural, the listener replied **“yes, quite good.”** This accepts the delivered opening comparison and complete selected reconstruction with its ending, closing F3/F4. It does not assert perceptual indistinguishability, physical-hardware equivalence or acceptance of the separate transfer and dual-SID arrangements.
 
 ### Score changes, restarts and gate ownership
 
@@ -104,7 +104,7 @@ Two pitch controls are present. `$C1` selects `$60/$42`, initializing pitch-rela
 
 The independent [pitch-effect model](../../../scripts/flashdance_pitch.py) computes slide and vibrato from editable state. Vibrato uses the adjacent frequency-table difference at the untransposed score note, adds its evolving depth to the difference's high byte, then shifts it. Counter decrement precedes the sign-bit check: the opening interval 4 starts with counter 3, giving three ascending updates before the first reversal and five updates between subsequent reversals. Slide has priority; it continues accumulating on an absolute-pitch waveform step even though its offset is not added to that step. A note decrements enabled effects without clearing their phase or accumulated offset.
 
-The [pitch guards](../../../tests/flashdance_pitch_test.py) cover cancellation, priority, absolute pitch, byte/word wrap and the asymmetric first vibrato half-cycle. On 2026-10-13, the model matched all 1,515 original pitch-effect body transitions in calls 0–513, including output pitch and retained state. Each comparison starts from the original routine's entry state; independently scheduling the full player remains a separate requirement.
+The [pitch guards](../../../tests/flashdance_pitch_test.py) cover cancellation, priority, absolute pitch, byte/word wrap and the asymmetric first vibrato half-cycle. On 2026-10-13, the model matched all 1,515 original pitch-effect body transitions in calls 0–513, including output pitch and retained state. Each comparison starts from the original routine's entry state; the [full-player comparison](#independent-export-and-listening) separately verifies independent scheduling.
 
 ### PWM state and row transitions
 
@@ -137,9 +137,24 @@ Decode one chosen phrase from initialization, including silent preparation. Reta
 
 ## Deliberate dual-SID interpretation
 
-Target two PAL MOS6581s at `$D400/$D420`, following [the address and validation contract](../sid/dual-sid.md).
+The [dual compiler](../../../scripts/compose-flashdance-dual.py) combines two independently assembled players for PAL MOS6581s at `$D400/$D420`, following [the address and validation contract](../sid/dual-sid.md). Chip A retains the accepted reconstruction; the [secondary description](../../../songs/flashdance-secondary.json) authors complementary parts. These choices are new interpretation, not recovered DRAX instructions.
 
-- Chip A retains the reference roles: bass/percussion, lead and chord cycle. Bass alone owns its filter; companions remain unfiltered.
-- Chip B adds separately authored drum accents, sustained harmonic support and selective answering phrases. Harmonic support alone owns its filter; added notes and timing are explicit arrangement decisions.
+| Chip B voice | Authored role and controls | Placement |
+| --- | --- | --- |
+| B1 | Quiet sustained pulse chord tone, static width `$600`, AD/SR `$48/$57`, constant low-pass cutoff high `$60`, resonance/routing `$21`. Sole owner of chip B's filter. | Twelve chord-tone notes enter eight calls after the 128-call bar boundaries; only the first restarts, preserving the sustained body afterward. |
+| B2 | Unfiltered noise backbeat, AD/SR `$04/$04`, four gated body calls at absolute `$C4E0`, then instrument-owned release. | Sixteen attacks on beats 2 and 4 of the eight-bar verse fragment. |
+| B3 | Unfiltered triangle reply, AD/SR `$03/$62`, eight gated body calls then instrument-owned release. | G4/B-flat4/D5 in the opening lead gap, then F4/A4/C5 near the final F-major resolution. |
 
-Validate six-voice addressing, independent filters, CPU budget, stereo/mono balance and both chips' ending. Compare the verified three-voice reconstruction with the expanded interpretation using common gain; record listening separately from execution. A source MIDI/MusicXML is required only if preserving the original song's form beyond DRAX's arrangement is requested.
+Chip B starts at volume 12, while chip A retains volume 15. Both suppress new notes at call 1538 and use the same release/fade schedule; both control banks and master volumes are explicitly zero from call 1666. Each engine owns separate RAM state and tables; a wrapper calls A then B under one frame budget. The [secondary guards](../../../tests/flashdance_secondary_test.py) check harmony membership, entry timing, articulation, initial silence and filter routing; [dual compiler guards](../../../tests/flashdance_dual_compiler_test.py) check state/address isolation and endings.
+
+On 2026-10-13, the [dual CPU audit](../../../build/flashdance-dual-audible/audit.json) verified 1,667 calls with a maximum 3,510 of 19,656 PAL cycles. Every chip A initialization/music/ending write retains its single-SID value and order. The [full VICE trace](../../../build/flashdance-dual-audible/vice/study.json) matches all 60,235 playback writes on both banks, with at most seven cycles of polling jitter. The [PSID v3 export](../../../build/flashdance-dual-audible/reconstructed.sid) declares both 6581 chips explicitly.
+
+The [audio receipt](../../../build/flashdance-dual-audible/listening/listening.json) retains the raw chip-separated stereo render and listening matrices. The listening mix centers chip A at gain 0.5 in both channels and places chip B at 0.35 left/0.65 right. Mono is `0.5 A + 0.5 B`. All renders are unclipped and the final half-second has zero AC RMS; measured left/right listening AC RMS is approximately 904/1,105 PCM units. This is a level check, not a musical judgment.
+
+- [Three voices, then six voices](../../../build/flashdance-dual-audible/listening/three-then-six-voices.wav): seconds 8–16 from the same dual render, chip A alone at gain 0.5, half-second gap, then mono A+B at gain 0.5 each. The primary arrangement has the same gain on both sides.
+- [Complete stereo listening mix](../../../build/flashdance-dual-audible/listening/dual-listening-stereo.wav).
+- [Complete mono mix](../../../build/flashdance-dual-audible/listening/dual-mono.wav).
+- [Second-chip-only diagnostic](../../../build/flashdance-dual-audible/listening/second-chip-only.wav): raw chip B at gain 1.0; its contribution in the comparison uses gain 0.5.
+- [Raw separate chip channels](../../../build/flashdance-dual-audible/raw-stereo.wav): A left, B right, for diagnosis.
+
+**Initial dual-SID listening verdict, 2026-10-13: “I don't hear a difference.”** Chip B measures about 13.4 dB below chip A in the raw render, so masking is a plausible explanation. The [audibility check](../../../build/flashdance-dual/audibility-review.json) confirms the additions were present in both the comparison window and full render. The current revision raises master volume from 8 to 12, pad sustain from 2 to 5, noise body length from two to four calls and triangle replies from four to eight calls with stronger sustain. Chip B now measures about 2.9 dB below chip A; the [new receipt](../../../build/flashdance-dual-audible/verification.json) records unchanged primary writes and successful verification. Revised listening is pending. This verdict does not accept the expansion, and remains separate from the accepted three-voice reconstruction. A source MIDI/MusicXML is required only if preserving the original song's form beyond DRAX's arrangement is requested.

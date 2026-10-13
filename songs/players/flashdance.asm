@@ -22,12 +22,12 @@ fd_restore_score:
   LDY #$00
   LDA #$00
 fd_clear_sid:
-  STA $D400,Y
+  STA FD_SID_FREQ_LO,Y
   INY
   CPY #$19
   BNE fd_clear_sid
   LDA fd_volume
-  STA $D418
+  STA FD_SID_MODE_VOLUME
   RTS
 
 entry_play:
@@ -86,7 +86,7 @@ fd_phase_release:
 fd_fade_write:
   LDA fd_filter_mode
   ORA fd_volume
-  STA $D418
+  STA FD_SID_MODE_VOLUME
   CLC
   LDA fd_fade_tick_lo
   ADC #FD_FADE_STEP
@@ -121,17 +121,17 @@ fd_voice_program:
   JSR fd_step_pitch
   LDY fd_voice_offsets,X
   LDA pulse_lo,X
-  STA $D402,Y
+  STA FD_SID_PULSE_LO,Y
   LDA pulse_hi,X
-  STA $D403,Y
+  STA FD_SID_PULSE_HI,Y
   LDA filter_cutoff
-  STA $D416
+  STA FD_SID_CUTOFF
   LDA frequency_lo,X
-  STA $D400,Y
+  STA FD_SID_FREQ_LO,Y
   LDA frequency_hi,X
-  STA $D401,Y
+  STA FD_SID_FREQ_HI,Y
   LDA wave_control,X
-  STA $D404,Y
+  STA FD_SID_CONTROL,Y
 fd_next_voice:
   DEX
   BPL fd_play_voice
@@ -143,10 +143,10 @@ fd_frame_done:
 
 fd_mute:
   LDA #$00
-  STA $D404
-  STA $D40B
-  STA $D412
-  STA $D418
+  STA FD_SID_CONTROL
+  STA FD_SID_CONTROL_1
+  STA FD_SID_CONTROL_2
+  STA FD_SID_MODE_VOLUME
   RTS
 
 fd_delayed_sr:
@@ -162,7 +162,7 @@ fd_delayed_sr:
   STA fd_pending_sr,X
   LDY fd_voice_offsets,X
   LDA fd_sr_value,X
-  STA $D406,Y
+  STA FD_SID_SR,Y
 fd_delayed_done:
   RTS
 
@@ -302,11 +302,11 @@ fd_command_sr:
 fd_start_voice:
   LDY fd_voice_offsets,X
   LDA #$00
-  STA $D405,Y
+  STA FD_SID_AD,Y
   LDA #$0F
-  STA $D406,Y
+  STA FD_SID_SR,Y
   LDA #$08
-  STA $D404,Y
+  STA FD_SID_CONTROL,Y
   JSR fd_init_voice
   LDY instrument,X
   LDA instrument_filter_command,Y
@@ -319,7 +319,7 @@ fd_start_voice:
   ASL A
   STA fd_filter_mode
   ORA fd_volume
-  STA $D418
+  STA FD_SID_MODE_VOLUME
   LDA fd_routing
   AND #$0F
   ORA fd_voice_filter_bits,X
@@ -335,16 +335,16 @@ fd_filter_unroute:
   STA fd_routing
 fd_filter_route_write:
   LDA fd_routing
-  STA $D417
+  STA FD_SID_ROUTING
   JSR fd_init_filter
   LDY instrument,X
   LDA instrument_ad,Y
   LDY fd_voice_offsets,X
-  STA $D405,Y
+  STA FD_SID_AD,Y
   LDY instrument,X
   LDA instrument_sr,Y
   LDY fd_voice_offsets,X
-  STA $D406,Y
+  STA FD_SID_SR,Y
   LDA #$09
-  STA $D404,Y
+  STA FD_SID_CONTROL,Y
   RTS

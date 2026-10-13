@@ -14,7 +14,10 @@ PSID v3 encodes the second SID location in header byte `$7A`: `$42` means `$D420
 
 ## Tools and execution
 
-The implemented route uses [SID-Wizard's native two-chip Extra player](../tools/sid-wizard-trial.md): six ordered voices, two independent filters, editable `.sws` source and PSID v3 export for two 8580s at `$D400/$D420`. Follow [the shared native workflow](../../workflows/native-song-workflow.md) to reproduce its original six-voice fixture, stereo render and headless VICE checks.
+Two implemented routes retain separate authoring contracts:
+
+- [SID-Wizard's native two-chip Extra player](../tools/sid-wizard-trial.md): six ordered voices, two independent filters, editable `.sws` source and PSID v3 export for two 8580s at `$D400/$D420`. Follow [the shared native workflow](../../workflows/native-song-workflow.md) for its original six-voice fixture, stereo render and headless VICE checks.
+- [Independently computed Flashdance programs](../../workflows/decoded-song-workflow.md#add-an-independently-authored-second-chip): two semantic descriptions compile to separate engines and a shared PAL wrapper, exporting PSID v3 for two 6581s at `$D400/$D420`. The [authored arrangement](../composition/flashdance-preparation.md#deliberate-dual-sid-interpretation) has full two-bank CPU/VICE, stereo/mono and ending evidence; its owning study retains listening feedback and limits.
 
 GoatTracker Stereo remains an alternative tracker backend. ChiptuneSAK's GoatTracker module recognizes three- and six-voice song structures. c64bridge's inspected SIDWAVE compiler explicitly constructs only voices 1–3, so dual-SID output is not an established capability there. [S08](../sources.md#s08), [S12](../sources.md#s12), [S24](../sources.md#s24)
 
@@ -38,4 +41,4 @@ The [ordered-store VICE tracer](../tools/sid-program-analysis.md#reproduce-the-e
 
 Independent fixtures establish six distinct sounding frequency words, separate filter registers and simultaneous stops. Renderer tests use different pitches and either-chip-muted variants to verify independent stereo channels without crossfeed. The native fixture passes complete note scheduling, PCM health and sampled VICE register/cadence checks. Both chips share one PAL CPU-frame budget; adding a SID does not add CPU time.
 
-Physical hardware, mixed chip models, mono-downmix musical balance and a complete dual-SID song's listening quality remain unverified. The current converter's 105-pattern/29-instrument limit also bounds long tick-grid arrangements; successful short-fixture playback does not establish that an arbitrary six-voice score will fit.
+Physical hardware and mixed chip models remain unverified. Full-arrangement stereo/mono balance and listening quality belong to each study's verdict, rather than following from short fixtures. The native converter's 105-pattern/29-instrument limit bounds long tick-grid arrangements; the computed two-engine route must instead fit callable RAM and one shared PAL frame budget. Successful short-fixture playback does not establish that an arbitrary six-voice score will fit.

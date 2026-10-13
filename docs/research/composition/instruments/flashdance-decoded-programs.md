@@ -2,7 +2,7 @@
 
 These independently computed programs reconstruct DRAX's **Flashdance (conversion)** (`1990 Vibrants`) and transfer its mechanisms to an original phrase. The [reference study](../flashdance-reference.md) owns attribution and archive identity; [the preparation study](../flashdance-preparation.md) owns executed evidence. Program names describe behavior rather than recovered composer symbols.
 
-**Status:** rendered experiment on one PAL MOS6581 at `$D400`, updated once per 19,656 cycles. Execution and audio checks are complete for the linked examples; listening acceptance and physical-hardware equivalence are pending.
+**Status:** reconstruction accepted in context and original transfer judged to work on one PAL MOS6581 at `$D400`, updated once per 19,656 cycles. Execution and audio checks are complete for the linked examples; physical-hardware equivalence remains unverified.
 
 ## Choose a program for the phrase
 
@@ -45,10 +45,12 @@ python3 scripts/trace-sid-vice.py build/flashdance-transfer-new/reconstructed.si
 
 On 2026-10-13, the complete reconstruction matched all **27,905 initialization/music writes** through call 1537 by call, address, value and order ([comparison](../../../../build/flashdance-independent-full/reference-comparison.json)). Its independently authored ending is additional behavior. Headless VICE matched **30,203 play writes across 1,667 calls**, through the first stopped call ([receipt](../../../../build/flashdance-independent-full/vice/study.json)). Original and reconstruction instruction timing differ; neither ordered equality nor VICE proves identical PCM.
 
-The transfer matched **12,761 play writes across 707 VICE calls**, including stopped call 706 ([receipt](../../../../build/flashdance-transfer/vice/study.json)). Its [16-second mono PCM16 render](../../../../build/flashdance-transfer/reconstructed.wav) is unclipped with zero final-half-second AC RMS ([evidence](../../../../build/flashdance-transfer/audio-evidence.json)). [Aligned duration annotations preserved the verified binary](../../../../build/flashdance-transfer/description-update.json). These checks establish executable reuse and a quiet ending; listening remains pending.
+The transfer matched **12,761 play writes across 707 VICE calls**, including stopped call 706 ([receipt](../../../../build/flashdance-transfer/vice/study.json)). Its [16-second mono PCM16 render](../../../../build/flashdance-transfer/reconstructed.wav) is unclipped with zero final-half-second AC RMS ([evidence](../../../../build/flashdance-transfer/audio-evidence.json)). [Aligned duration annotations preserved the verified binary](../../../../build/flashdance-transfer/description-update.json). These checks establish executable reuse and a quiet ending; the separate listening judgment follows below.
 
 ## Constraints and listening status
 
 The demonstrated programs target PAL MOS6581 and one shared filter owned by bass; the lead and chord remain unfiltered and use no ring/sync coupling. Chip-model changes, new oscillator dependencies, different filter ownership and other update cadences require separate evidence. The transfer is a short phrase, and the reconstruction covers the selected recurring SID arrangement rather than the complete original song.
 
-Listening is pending for both the complete reconstruction and transfer. Audition the transfer in its full mix for attack clarity, connected-note phrasing, bass-tail development and the chord cycle's harmonic clarity. Retain that verdict here before promoting these programs to listening-reviewed instruments.
+On 2026-10-13, the listener answered **“yes, quite good”** when asked whether the reconstruction preserves the sound/phrasing and whether its ending feels natural ([owning verdict](../flashdance-preparation.md#independent-export-and-listening)). This accepts those programs in the selected reference arrangement, without asserting perceptual indistinguishability.
+
+For the separate original transfer phrase, the listener said **“Works, but the tune doesn't resemble Flashdance, but maybe it's just out of context.”** This supports the instruments and connected-note phrasing in a new musical setting, while explicitly withholding Flashdance resemblance. The transfer intentionally uses new C-major harmony and melody; recognition is assessed on the separate reconstruction. This verdict closes the bounded reuse test, not every possible instrument application.

@@ -164,8 +164,9 @@ def parameters(description, programs, initial):
     return source, len(defaults)
 
 
-def build(description):
-    """Build from semantic data only; source annotations cannot affect output."""
+def assemble_player(description, *, load_address=LOAD_ADDRESS, sid_base=0xd400):
+    """Assemble one independent engine using explicit RAM and SID addresses."""
+    require(type(sid_base) is int and sid_base in (0xd400, 0xd420), 'Unsupported SID base address')
     try:
         compute_writes(description, calls=1)
         stop = description['score']['range']['stopCall']
@@ -180,9 +181,27 @@ def build(description):
     constants.update(FD_STATE_BYTES=state_bytes, FD_FILTER_OWNER=programs.filter_owner,
                      FD_STOP_LO=stop & 255, FD_STOP_HI=stop >> 8, FD_END_LO=end & 255, FD_END_HI=end >> 8,
                      FD_FADE_STEP=description['ending']['fadeStepCalls'])
+    for name, offset in (
+        ('FREQ_LO', 0), ('FREQ_HI', 1), ('PULSE_LO', 2), ('PULSE_HI', 3), ('CONTROL', 4),
+        ('AD', 5), ('SR', 6), ('CONTROL_1', 11), ('CONTROL_2', 18), ('CUTOFF', 22),
+        ('ROUTING', 23), ('MODE_VOLUME', 24),
+    ):
+        constants['FD_SID_' + name] = sid_base + offset
     source = '\n'.join((PLAYER / name).read_text() for name in
                        ('flashdance.asm', 'flashdance-programs.asm', 'flashdance-pitch.asm')) + '\n' + generated
-    payload, symbols, listing = assemble(source, constants, load=LOAD_ADDRESS)
+    payload, symbols, listing = assemble(source, constants, load=load_address)
+    return payload, {
+        'symbols': symbols, 'payloadBytes': len(payload), 'source': source, 'listing': listing,
+        'stopCall': stop, 'endCall': end, 'scoreRecordBytes': 8,
+        'loadAddress': load_address, 'sidBase': sid_base,
+        'originalDriverIncluded': False, 'registerDumpPlayback': False,
+    }
+
+
+def build(description):
+    """Build from semantic data only; source annotations cannot affect output."""
+    payload, built = assemble_player(description)
+    symbols = built['symbols']
     header = bytearray(124)
     header[:4] = b'PSID'
     for offset, value in ((4, 2), (6, 124), (8, LOAD_ADDRESS), (10, symbols['entry_init']),
@@ -191,11 +210,7 @@ def build(description):
     for offset, value in ((22, 'Flashdance independent SID study'), (54, 'SID Song Crafter'),
                           (86, '2026 independent reconstruction')):
         header[offset:offset + 31] = value.encode('ascii')[:31].ljust(31, b'\0')
-    return bytes(header) + payload, {
-        'symbols': symbols, 'payloadBytes': len(payload), 'source': source, 'listing': listing,
-        'stopCall': stop, 'endCall': end, 'scoreRecordBytes': 8,
-        'originalDriverIncluded': False, 'registerDumpPlayback': False,
-    }
+    return bytes(header) + payload, built
 
 
 def run(composition, output, calls=None):

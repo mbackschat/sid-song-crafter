@@ -60,6 +60,19 @@ python3 scripts/trace-sid-vice.py build/flashdance-new/reconstructed.sid --oracl
 
 The compiler emits SID, assembly/listing, build metadata, CPU audit and ordered writes. By default it audits the score, complete ending and first silent call against the model. `--calls` selects a bounded diagnostic override. The shown VICE window and render duration apply to the unchanged retained composition; edits to its score or ending require corresponding coverage. The compiler itself requires no reference file. See [measured differences and listening status](../research/composition/flashdance-preparation.md#independent-export-and-listening) before reusing its instruments as an accepted sound.
 
+### Add an independently authored second chip
+
+The [secondary description](../../songs/flashdance-secondary.json) supplies harmonic support, backbeats and replies while the primary retains its accepted score and programs. The dual compiler assembles each engine at a separate RAM address, then calls A followed by B once per PAL frame. Profiles, score stops and ending parameters must agree. The output is PSID v3 for two MOS6581 chips at `$D400/$D420`; source annotations cannot supply executable playback.
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/compose-flashdance-dual.py songs/flashdance-decoded.json songs/flashdance-secondary.json --output build/flashdance-dual-new
+python3 scripts/trace-sid-vice.py build/flashdance-dual-new/reconstructed.sid --oracle build/flashdance-dual-new/writes.json --first-call 0 --last-call 1666 --output build/flashdance-dual-new/vice
+.local/bin/render-sid build/flashdance-dual-new/reconstructed.sid build/flashdance-dual-new/raw-stereo.wav 35
+python3 scripts/prepare-dual-listening.py build/flashdance-dual-new/raw-stereo.wav --output build/flashdance-dual-new/listening --start 8 --stop 16
+```
+
+The raw renderer output places chip A left and chip B right. The listening tool makes a centered-primary stereo mix, mono downmix and three/six-voice comparison using explicit common gains, recording matrices and PCM measurements. It expects independent chip channels, not an arbitrary stereo master, and does not normalize each side separately. The [owning study](../research/composition/flashdance-preparation.md#deliberate-dual-sid-interpretation) records musical choices, execution limits and the separate listening verdict.
+
 ### Other drivers
 
 [describe-drax-score.py](../../scripts/describe-drax-score.py) is a pinned, driver-specific transcriber, not a universal SID importer. It observes executed note consumption, instrument initialization and score gate-off, then verifies preparation and repeat behavior. Use `--check` to compare its output with the retained fixture. For another player, recover its corresponding readers and state transitions before adapting the decoder. [Flashdance preparation](../research/composition/flashdance-preparation.md) identifies the next mechanisms and the separate dual-SID arrangement plan.
