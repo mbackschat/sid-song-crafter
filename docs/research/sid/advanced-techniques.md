@@ -18,7 +18,7 @@ The GATE bit changes envelope state; it does not clear the envelope level or rat
 
 Hard restart is a deliberate sequence before a note, usually involving gate and ADSR changes. GoatTracker documents configurable restart settings, buffered versus unbuffered writes, and cases where register order or badlines affect ADSR behaviour. Its workarounds are player-specific, not universal magic bytes. Preserve the instrument's update rate and write order when moving it between players. [GoatTracker manual, compatibility notes and instrument timing](https://github.com/leafo/goattracker2/blob/master/readme.txt)
 
-**Project experiment:** repeat the same pitch after silence, after a sustained note, and after a short grace note. Capture exact ordered stores and compare attack timing in audio across both SID models. Test the exported driver, including its intended screen/IRQ conditions. A per-frame snapshot can miss an intervening gate-off/on pair; our [full-song verification](../../fuer-elise-validation.md) now uses a separate exact CPU-write oracle for the simple player.
+**Project experiment:** repeat the same pitch after silence, after a sustained note, and after a short grace note. Capture exact ordered stores and compare attack timing in audio across both SID models. Test the exported driver, including its intended screen/IRQ conditions. A per-frame snapshot can miss an intervening gate-off/on pair; our [full-song verification](../../validation/fuer-elise-validation.md) now uses a separate exact CPU-write oracle for the simple player.
 
 ## Coupled oscillators and combined waveforms
 
@@ -50,4 +50,4 @@ The research library distinguishes sampled audio, algorithmically generated samp
 
 For every accepted instrument, retain its editable program, provenance, intended model/clock, update cadence, voice/filter dependencies, register-write order, CPU/memory cost, phrase demo, and known failure cases. Store dry and arranged examples with an explicit listening verdict. A demo that impresses once becomes a useful tool only when its behaviour can be reproduced and adapted.
 
-The current [three-voice baseline](../../three-voice-player.md) does not implement most of these capabilities. Its successful execution validates the source pipeline, not a claim of master-level sound design. Prefer a suitable established editor/driver before extending it into another full music system.
+The current [three-voice baseline](../../architecture/three-voice-player.md) does not implement most of these capabilities. Its successful execution validates the source pipeline, not a claim of master-level sound design. Prefer a suitable established editor/driver before extending it into another full music system.

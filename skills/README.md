@@ -1,14 +1,18 @@
 # Project-local SID skills
 
-These skills are installed through verified project-local symlinks under `.agents/skills`. See [local setup](../docs/local-setup.md) for activation history and server configuration, and the [verified headless VICE capabilities](../docs/research/tools/skills-and-integrations.md#select-tools-for-an-executed-program-study) for the working file-monitor route.
+Install only the instruction sets needed for the work. Downloaded skill bodies and references belong in ignored local directories; the [asset manifest](../config/local-assets.json) records upstream commits and individual file hashes.
 
-| Skill | Role | Upstream |
+| Skill | Selection | Purpose and upstream |
 | --- | --- | --- |
-| [c64-sid](c64-sid/SKILL.md) | SID register and sound-programming knowledge | [sunsided/c64-skills at 480b253](https://github.com/sunsided/c64-skills/tree/480b253b147655fa6ff6eb74577d1a2523d512d4/c64-sid) |
-| [sid-music](sid-music/SKILL.md) | c64bridge playback/composition workflow | [chrisgleissner/c64bridge at 0781a7b](https://github.com/chrisgleissner/c64bridge/tree/0781a7b6cfe7b92bbb6d68e048ad396bd3edfb18/.github/skills/sid-music) |
+| `c64-sid` | Default | Register and sound-programming reference; [sunsided/c64-skills](https://github.com/sunsided/c64-skills/tree/480b253b147655fa6ff6eb74577d1a2523d512d4/c64-sid) |
+| `sid-music` | Optional: `--include sid-music` | Playback instructions when c64bridge is actually connected; [chrisgleissner/c64bridge](https://github.com/chrisgleissner/c64bridge/tree/0781a7b6cfe7b92bbb6d68e048ad396bd3edfb18/.github/skills/sid-music) |
 
-Installed from user-downloaded checkouts on 2026-10-12. Bundled reference files remain unchanged archival copies. Local skill adaptations correct envelope/voice-3 wording, link the project assessment, and resolve the bridge's optional BASIC workflow to its retained checkout. Entry-point prose was unwrapped and embedded table separators made renderable; reference links use Markdown. Upstream originals remain available in `.tools/` for comparison.
+```sh
+python3 scripts/setup-project.py
+python3 scripts/setup-project.py --only skills --include sid-music
+python3 scripts/doctor.py
+```
 
-c64bridge includes a GPL-2.0 license file; its package metadata says GPL-2.0-only while some source headers say “or later.” The staged `sid-music` directory retains a copy of the upstream license. No explicit top-level license was found for c64-skills; its historical manual excerpts and the skill author's prose need separate rights review before redistribution. Local installation is not a claim that those materials are public domain.
+Setup retains upstream bytes under `skills/<name>/` and activates relative links under `.agents/skills/`. It checks existing files before reuse and refuses changed files. `--offline` can recover skills from pinned Git objects already in `.tools/`. Restart the agent session if a newly installed skill is not discovered. Installing instructions does not install or connect the c64bridge server; follow [local setup](../docs/setup/local-setup.md) when that integration is needed.
 
-The two skills can cooperate: `c64-sid` explains hardware semantics; `sid-music` selects bridge operations once its MCP tools are connected. Neither establishes that the bridge's compiler faithfully implements a complete score or dual-SID playback. See [the assessment](../docs/research/tools/skills-and-integrations.md).
+Read [project-specific corrections](../docs/setup/skill-guidance.md) before applying these upstream instructions. Keep corrections there rather than editing checksum-pinned downloads. The bridge's upstream license is installed alongside its skill; local availability does not imply redistribution rights for either skill or its historical manual excerpts.

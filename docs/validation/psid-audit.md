@@ -1,6 +1,6 @@
 # Auditing a native PSID driver
 
-[The audit tool](../scripts/psid_audit.py) executes a driver with the independent py65 NMOS 6502 core and records SID register writes without requiring our score compiler's symbols or articulation rules. Install py65 as documented in [the first-song guide](first-song.md).
+[The audit tool](../../scripts/psid_audit.py) executes a driver with the independent py65 NMOS 6502 core and records SID register writes without requiring our score compiler's symbols or articulation rules. Install py65 as documented in [the first-song guide](../songs/first-song.md).
 
 ```sh
 python3 scripts/psid_audit.py build/example.sid --ticks 250 --output build/example.audit.json
@@ -18,4 +18,4 @@ Initialization starts with zero-filled RAM except CPU port `$2f/$37`, A/X/Y zero
 
 `instructionStartCycle` identifies the start of the instruction performing a write, relative to its call. It is not a bus-cycle timestamp. Read-modify-write instructions targeting SID are unsupported because py65 does not reproduce their NMOS dummy writes. The tool does not emulate sound, badlines, interrupts, timer changes, or analogue chip behaviour.
 
-A completed audit establishes bounded execution and observed register trajectories in this declared environment. It does not establish note correctness, waveform quality, the song's ending, or listening approval. Compare the exported driver with its native source and render it through [the audio workflow](audio-workflow.md); use a driver-specific expectation for the particular technique being tested.
+A completed audit establishes bounded execution and observed register trajectories in this declared environment. It does not establish note correctness, waveform quality, the song's ending, or listening approval. Compare the exported driver with its native source and render it through [the audio workflow](../workflows/audio-workflow.md); use a driver-specific expectation for the particular technique being tested.

@@ -22,7 +22,7 @@ The [complete description](../../../../songs/studies/drax-full-reconstruction/fu
 | C major | 0, 4, 7 | `$000` |
 | G7 | 0, 4, 7, 10 | `$000` |
 
-Exact tone words belong to each score entry; semitone labels remain analysis. Combined-waveform behavior with width zero is retained deliberately, not replaced with a presumed equivalent sound. Chord entries initialized at calls 388 and 1612 close GATE after four calls; other entries use ten. TEST preparation can inherit the previous pitch-program offset: at call 171 it is `$106E`, whereas the new chord body begins at `$0DD0`. Keep preparation and audible roots separate. The [full workflow](../../../decoded-song-workflow.md) computes these variants and verifies every ordered write through the cycle; full-song listening remains pending.
+Exact tone words belong to each score entry; semitone labels remain analysis. Combined-waveform behavior with width zero is retained deliberately, not replaced with a presumed equivalent sound. Chord entries initialized at calls 388 and 1612 close GATE after four calls; other entries use ten. TEST preparation can inherit the previous pitch-program offset: at call 171 it is `$106E`, whereas the new chord body begins at `$0DD0`. Keep preparation and audible roots separate. The [full workflow](../../../workflows/decoded-song-workflow.md) computes these variants and verifies every ordered write through the cycle; full-song listening remains pending.
 
 ## Proof and implementation
 

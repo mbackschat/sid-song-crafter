@@ -32,7 +32,7 @@ Prepared listening files play reference A for ten seconds, a half-second gap, th
 - [Full mix A/B](../../../build/instrument-trials/comparisons/mix.ab.wav): A gain 1, B gain 0.996052 (-0.034360 dB); [matching report](../../../build/instrument-trials/comparisons/mix.comparison.json).
 - [Dedicated kick, original amplitude](../../../build/instrument-trials/kick/kick.wav).
 
-The source renders remain beside their SID/PRG exports at original amplitude. On 2026-10-12, mbackschat reported **“mix sounds ok”** after receiving the candidate mix sample. This is an initial mix-level acceptance. The [later listening findings](../../../docs/research/composition/gestures/README.md) record audible pulse motion without a preference and little perceived bass-transient difference. Playback equipment, editor/export comparison and hardware checks remain unreported. The [listening record](../../../docs/instrument-trials.md) preserves that scope.
+The source renders remain beside their SID/PRG exports at original amplitude. On 2026-10-12, mbackschat reported **“mix sounds ok”** after receiving the candidate mix sample. This is an initial mix-level acceptance. The [later listening findings](../../../docs/research/composition/gestures/README.md) record audible pulse motion without a preference and little perceived bass-transient difference. Playback equipment, editor/export comparison and hardware checks remain unreported. The [listening record](../../../docs/workflows/instrument-trials.md) preserves that scope.
 
 Native editable instruments:
 
@@ -48,7 +48,7 @@ python3 scripts/generate-native-instruments.py songs/studies/sidwizard-repertoir
 python3 -m unittest discover -s tests -p native_instruments_test.py -v
 ```
 
-After [setting up the pinned native exporter](../../../docs/research/tools/sid-wizard-trial.md) and [audio renderer](../../../docs/audio-workflow.md), reproduce the complete export/audit/render/comparison run:
+After [setting up the pinned native exporter](../../../docs/research/tools/sid-wizard-trial.md) and [audio renderer](../../../docs/workflows/audio-workflow.md), reproduce the complete export/audit/render/comparison run:
 
 ```sh
 python3 scripts/run-instrument-trials.py --output build/instrument-trials

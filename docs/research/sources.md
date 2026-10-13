@@ -76,7 +76,7 @@ Access date for all entries: **2026-10-12**, unless a source's publication date 
 
 ## S19
 
-**libsidplayfp maintainers, library and command-line player.** [Library README](https://github.com/libsidplayfp/libsidplayfp), [sidplayfp manual](https://github.com/libsidplayfp/sidplayfp/wiki/sidplayfp). Primary docs inspected for emulator/player roles, build requirements, and WAV output. GPL-family project; use the chosen release's build/license files. The initial research was documentary; subsequent execution evidence is recorded separately in [local setup](../local-setup.md).
+**libsidplayfp maintainers, library and command-line player.** [Library README](https://github.com/libsidplayfp/libsidplayfp), [sidplayfp manual](https://github.com/libsidplayfp/sidplayfp/wiki/sidplayfp). Primary docs inspected for emulator/player roles, build requirements, and WAV output. GPL-family project; use the chosen release's build/license files. The initial research was documentary; subsequent execution evidence is recorded separately in [local setup](../setup/local-setup.md).
 
 ## S20
 
@@ -96,7 +96,7 @@ Access date for all entries: **2026-10-12**, unless a source's publication date 
 
 ## S24
 
-**Christian Gleissner, c64bridge.** [Repository at pinned revision](https://github.com/chrisgleissner/c64bridge/tree/0781a7b6cfe7b92bbb6d68e048ad396bd3edfb18), [SID compiler](https://github.com/chrisgleissner/c64bridge/blob/0781a7b6cfe7b92bbb6d68e048ad396bd3edfb18/src/sidwaveCompiler.ts), [preset implementation](https://github.com/chrisgleissner/c64bridge/blob/0781a7b6cfe7b92bbb6d68e048ad396bd3edfb18/src/tools/meta/audio.ts). User cloned repository; README, skill, package/runtime configuration, and relevant compiler paths inspected locally. Package 1.0.4. Package metadata GPL-2.0-only; some source headers say or later. Preserve notices and resolve component licensing before redistribution. Runtime installation status is tracked in [local setup](../local-setup.md).
+**Christian Gleissner, c64bridge.** [Repository at pinned revision](https://github.com/chrisgleissner/c64bridge/tree/0781a7b6cfe7b92bbb6d68e048ad396bd3edfb18), [SID compiler](https://github.com/chrisgleissner/c64bridge/blob/0781a7b6cfe7b92bbb6d68e048ad396bd3edfb18/src/sidwaveCompiler.ts), [preset implementation](https://github.com/chrisgleissner/c64bridge/blob/0781a7b6cfe7b92bbb6d68e048ad396bd3edfb18/src/tools/meta/audio.ts). User cloned repository; README, skill, package/runtime configuration, and relevant compiler paths inspected locally. Package 1.0.4. Package metadata GPL-2.0-only; some source headers say or later. Preserve notices and resolve component licensing before redistribution. Runtime installation status is tracked in [local setup](../setup/local-setup.md).
 
 ## S25
 
@@ -124,23 +124,23 @@ Access date for all entries: **2026-10-12**, unless a source's publication date 
 
 ## S31
 
-**Mutopia Project, Für Elise typesetting.** [Catalogue](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=931), [published LilyPond source](https://www.mutopiaproject.org/ftp/BeethovenLv/WoO59/fur_Elise_WoO59/fur_Elise_WoO59.ly). Edition: Breitkopf & Härtel, 1888; typesetting identified as public domain. The initial nine-note excerpt was followed by a [complete source/import study](../fuer-elise-score.md). Unchanged MIDI/LilyPond files, checksums, explicit repeat expansion, import omissions, and three-voice reduction evidence are retained. Complete execution and rendered audio are recorded in [full-song validation](../fuer-elise-validation.md); listening quality remains separate.
+**Mutopia Project, Für Elise typesetting.** [Catalogue](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=931), [published LilyPond source](https://www.mutopiaproject.org/ftp/BeethovenLv/WoO59/fur_Elise_WoO59/fur_Elise_WoO59.ly). Edition: Breitkopf & Härtel, 1888; typesetting identified as public domain. The initial nine-note excerpt was followed by a [complete source/import study](../songs/fuer-elise-score.md). Unchanged MIDI/LilyPond files, checksums, explicit repeat expansion, import omissions, and three-voice reduction evidence are retained. Complete execution and rendered audio are recorded in [full-song validation](../validation/fuer-elise-validation.md); listening quality remains separate.
 
 ## S32
 
-**Homebrew, VICE formula.** [Formula source](https://github.com/Homebrew/homebrew-core/blob/master/Formula/v/vice.rb), [formula API](https://formulae.brew.sh/api/formula/vice.json). Inspected version 3.10, with `--enable-gtk3ui` hardcoded and no exposed build options. Its test invokes `-console`, which does not make the bottle a separate headless build. The formula provides a source for build-dependency names; project-local headless build evidence belongs in the [VICE investigation](../vice-startup-investigation.md).
+**Homebrew, VICE formula.** [Formula source](https://github.com/Homebrew/homebrew-core/blob/master/Formula/v/vice.rb), [formula API](https://formulae.brew.sh/api/formula/vice.json). Inspected version 3.10, with `--enable-gtk3ui` hardcoded and no exposed build options. Its test invokes `-console`, which does not make the bottle a separate headless build. The formula provides a source for build-dependency names; project-local headless build evidence belongs in the [VICE investigation](../setup/vice-startup-investigation.md).
 
 ## S33
 
-**VICE team, official 3.9 source release.** [Source archive](https://sourceforge.net/projects/vice-emu/files/releases/vice-3.9.tar.gz/download). Archive SHA-256 verified against the release listing; configure, headless startup, macOS path lookup, and build rules inspected locally. A genuine headless ARM64 `x64sc` was built and exercised to a CPU-cycle limit. The [investigation](../vice-startup-investigation.md) retains exact source/tool checksums, commands, warnings, workaround mechanisms, and the separate socket-binding restriction. GPL-family source; no system VICE installation was changed.
+**VICE team, official 3.9 source release.** [Source archive](https://sourceforge.net/projects/vice-emu/files/releases/vice-3.9.tar.gz/download). Archive SHA-256 verified against the release listing; configure, headless startup, macOS path lookup, and build rules inspected locally. A genuine headless ARM64 `x64sc` was built and exercised to a CPU-cycle limit. The [investigation](../setup/vice-startup-investigation.md) retains exact source/tool checksums, commands, warnings, workaround mechanisms, and the separate socket-binding restriction. GPL-family source; no system VICE installation was changed.
 
 ## S34
 
-**Homebrew and libsidplayfp maintainers, libsidplayfp 3.1.1 binary package.** [Formula](https://formulae.brew.sh/formula/libsidplayfp), [package metadata](https://formulae.brew.sh/api/formula/libsidplayfp.json), [pinned player implementation](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/player.cpp). The Apple Silicon bottle was checksum-verified and extracted locally with its GPL-2.0-or-later notice. A small static-linked renderer executes its SIDLite engine; [audio evidence](../audio-workflow.md) records PCM and register verification, the mixer-buffer documentation mismatch, and the host playback failure. This is not a claim of reSIDfp or physical-SID output.
+**Homebrew and libsidplayfp maintainers, libsidplayfp 3.1.1 binary package.** [Formula](https://formulae.brew.sh/formula/libsidplayfp), [package metadata](https://formulae.brew.sh/api/formula/libsidplayfp.json), [pinned player implementation](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/player.cpp). The Apple Silicon bottle was checksum-verified and extracted locally with its GPL-2.0-or-later notice. A small static-linked renderer executes its SIDLite engine; [audio evidence](../workflows/audio-workflow.md) records PCM and register verification, the mixer-buffer documentation mismatch, and the host playback failure. This is not a claim of reSIDfp or physical-SID output.
 
 ## S35
 
-**py65 maintainers, independent 6502 interpreter 1.2.0.** [PyPI release](https://pypi.org/project/py65/1.2.0/), [release metadata](https://pypi.org/pypi/py65/1.2.0/json). The wheel was verified against its published SHA-256 and installed into the ignored project test-dependency directory. BSD-licensed CPU execution supplies an independent oracle for the assembled song; the [song guide](../first-song.md) specifies its modeled raster input and limits, rather than treating a CPU interpreter as full C64 hardware emulation.
+**py65 maintainers, independent 6502 interpreter 1.2.0.** [PyPI release](https://pypi.org/project/py65/1.2.0/), [release metadata](https://pypi.org/pypi/py65/1.2.0/json). The wheel was verified against its published SHA-256 and installed into the ignored project test-dependency directory. BSD-licensed CPU execution supplies an independent oracle for the assembled song; the [song guide](../songs/first-song.md) specifies its modeled raster input and limits, rather than treating a CPU interpreter as full C64 hardware emulation.
 
 ## S36
 

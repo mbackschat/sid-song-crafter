@@ -2,7 +2,7 @@
 
 Research accessed **2026-10-12**. This study separates composer testimony, published analysis, inspected source code, archive metadata, and proposed experiments. It reads historical and current sources; it does not claim that these reference pieces were newly listened to, rendered, or traced here. The five archive files below were downloaded only to verify their headers. The proposed listening and trace exercises remain explicit next experiments.
 
-The practical recommendation is to adopt an established SID composition editor for sound design and retain this repository's import, export, and independent verification tools. Hubbard and Galway demonstrate why faithful note timing is only the foundation: a SID instrument is often a program that changes while a note sounds, and the arrangement exploits that program. An upstream piano score should not constrain a downstream SID-native composition. The present [three-voice exporter](../../three-voice-player.md) is a verified piano-arrangement subset, not an equivalent of their composition systems.
+The practical recommendation is to adopt an established SID composition editor for sound design and retain this repository's import, export, and independent verification tools. Hubbard and Galway demonstrate why faithful note timing is only the foundation: a SID instrument is often a program that changes while a note sounds, and the arrangement exploits that program. An upstream piano score should not constrain a downstream SID-native composition. The present [three-voice exporter](../../architecture/three-voice-player.md) is a verified piano-arrangement subset, not an equivalent of their composition systems.
 
 ## Hubbard: composing with a changing synthesis engine
 

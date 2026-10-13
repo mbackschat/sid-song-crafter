@@ -35,13 +35,13 @@ Start with the [technique lookup](technique-index.md) to connect a musical need 
 | Find songs and editable examples | [Study corpus and rights](composers/study-corpus.md) |
 | Verify a result and identify remaining gaps | [Validation](validation/verification.md) |
 | Combine existing agent skills with VICE | [Skills and integrations](tools/skills-and-integrations.md) |
-| Build and verify the first opening excerpt | [First song](../first-song.md), [headless audio](../audio-workflow.md) |
-| Diagnose emulator startup and headless builds | [VICE investigation](../vice-startup-investigation.md) |
+| Build and verify the first opening excerpt | [First song](../songs/first-song.md), [headless audio](../workflows/audio-workflow.md) |
+| Diagnose emulator startup and headless builds | [VICE investigation](../setup/vice-startup-investigation.md) |
 | Trace a statement to its evidence | [Source register](sources.md) |
 | Study a composer's sound and working methods | [Composer studies](composers/README.md), [listening catalogue](composers/listening-catalogue.md) |
 | Develop an expressive instrument | [Advanced techniques](sid/advanced-techniques.md), [sound-design repertoire](composition/sound-design-repertoire.md) |
 | Reinterpret a theme with groove and variation | [Musical gesture library](composition/gestures/README.md) |
-| Render and compare native instrument programs | [Original instrument bank](composition/instruments/README.md), [reproducible trials and samples](../instrument-trials.md) |
+| Render and compare native instrument programs | [Original instrument bank](composition/instruments/README.md), [reproducible trials and samples](../workflows/instrument-trials.md) |
 | Choose a composition system | [Tool assessment](tools/composition-tools.md) |
 
 ## Recommended starting path

@@ -6,6 +6,12 @@ Read with [AGENTS.md](AGENTS.md), which owns contributor conventions, commands a
 
 Use the [study plan](docs/research/study-plan.md) for the active case and next milestone. SID Song Crafter is a composition and sound-design workbench for the Commodore 64 SID chip, supporting single- and dual-SID music; reusable playback code serves expressive music and an executable repertoire. A verified loop or pleasing excerpt does not complete a whole-song deliverable.
 
+## Checkpoints and documentation
+
+Commit autonomously after a coherent feature set or meaningful verified checkpoint. Batch related implementation, tests and findings into reviewable commits; avoid a commit for every small edit. Never push without authorization.
+
+Keep guides in task-oriented subfolders under [docs](docs/README.md), with navigation from its README. Keep research in its existing indexed folders. Use [local setup](docs/setup/local-setup.md) and `python3 scripts/doctor.py` for readiness; read [skill corrections](docs/setup/skill-guidance.md) before applying downloaded instructions.
+
 ## Retrieve before researching
 
 Start with the [technique lookup](docs/research/technique-index.md), then read only the relevant owning study. Search locally before new research. Reuse demonstrated methods after checking their model, timing, voice dependencies and listening verdict. Repair missing index routes.
@@ -16,10 +22,10 @@ Start with the [technique lookup](docs/research/technique-index.md), then read o
 | Study masters and their tools | [Composers](docs/research/composers/README.md), [commented sources and manuals](docs/research/tools/source-studies.md) |
 | Reverse-engineer an instrument | [Execution-based procedure](docs/research/tools/sid-program-analysis.md), [DRAX reconstruction](songs/studies/drax-bass-reconstruction/README.md) |
 | Choose expressive material | [Sound repertoire](docs/research/composition/sound-design-repertoire.md), [instruments](docs/research/composition/instruments/README.md), [gestures](docs/research/composition/gestures/README.md) |
-| Compose from decoded mechanisms | [Computed-player workflow](docs/decoded-song-workflow.md), [complete DRAX theme](songs/studies/drax-full-reconstruction/README.md), [Flashdance and dual-SID preparation](docs/research/composition/flashdance-preparation.md) |
-| Arrange and export | [Source preservation](docs/song-workflow.md), [native workflow](docs/native-song-workflow.md), [dual SID](docs/research/sid/dual-sid.md), [editor assessment](docs/research/tools/composition-tools.md) |
-| Run and inspect headlessly | [Setup](docs/local-setup.md), [audio](docs/audio-workflow.md), [VICE checks](docs/native-vice-checks.md), [verified capabilities](docs/research/tools/skills-and-integrations.md) |
-| Prepare listening comparisons | [Comparison workflow](docs/audio-comparisons.md), [DRAX reference and feedback](docs/research/composition/fuer-elise-reference.md) |
+| Compose from decoded mechanisms | [Computed-player workflow](docs/workflows/decoded-song-workflow.md), [complete DRAX theme](songs/studies/drax-full-reconstruction/README.md), [Flashdance and dual-SID preparation](docs/research/composition/flashdance-preparation.md) |
+| Arrange and export | [Source preservation](docs/workflows/song-workflow.md), [native workflow](docs/workflows/native-song-workflow.md), [dual SID](docs/research/sid/dual-sid.md), [editor assessment](docs/research/tools/composition-tools.md) |
+| Run and inspect headlessly | [Setup](docs/setup/local-setup.md), [audio](docs/workflows/audio-workflow.md), [VICE checks](docs/validation/native-vice-checks.md), [verified capabilities](docs/research/tools/skills-and-integrations.md) |
+| Prepare listening comparisons | [Comparison workflow](docs/workflows/audio-comparisons.md), [DRAX reference and feedback](docs/research/composition/fuer-elise-reference.md) |
 | Find sources or skills | [Research index](docs/research/README.md), [provenance](docs/research/sources.md), [installed skills](skills/README.md) |
 
 ## Preserve sources and SID expression

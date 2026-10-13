@@ -2,7 +2,7 @@
 
 ## Recommended combination
 
-Use `sunsided/c64-skills`'s `c64-sid` for hardware reference and `chrisgleissner/c64bridge`'s `sid-music` for selecting MCP playback operations. A skill supplies instructions; the c64bridge server supplies executable tools. Installing one does not implicitly install or connect the other. Local activation and VICE configuration are documented in [local setup](../../local-setup.md).
+Use `sunsided/c64-skills`'s `c64-sid` for hardware reference and `chrisgleissner/c64bridge`'s `sid-music` for selecting MCP playback operations. A skill supplies instructions; the c64bridge server supplies executable tools. Installing one does not implicitly install or connect the other. Local activation and VICE configuration are documented in [local setup](../../setup/local-setup.md).
 
 Both repositories were inspected locally after the user cloned them on 2026-10-12:
 
@@ -15,7 +15,7 @@ Both repositories were inspected locally after the user cloned them on 2026-10-1
 
 `c64-sid` bundles register explanations, basic sound examples, and reference extracts from Commodore manuals. It is a useful source of targeted context. It also points to related memory-map, CIA, VIC-II, assembly, and other C64 skills. Only the SID skill from that collection is installed here; the rest remain in the source checkout. [S26](../sources.md#s26)
 
-Two upstream descriptions needed correction: release continues after GATE becomes zero, and voice-3 mute excludes only the direct path, not its filtered signal. The staged copy corrects these using its bundled specification and the independently inspected hardware/emulator sources. Original upstream files remain unchanged. Note tables also need the intended PAL/NTSC clock; do not copy a table into a different target without checking it. [S01](../sources.md#s01), [S03](../sources.md#s03)
+Two upstream descriptions needed correction: release continues after GATE becomes zero, and voice-3 mute excludes only the direct path, not its filtered signal. The [project skill guidance](../../setup/skill-guidance.md) records these corrections with evidence; installed upstream files remain unchanged. Note tables also need the intended PAL/NTSC clock; do not copy a table into a different target without checking it. [S01](../sources.md#s01), [S03](../sources.md#s03)
 
 ## c64bridge: capabilities and limits
 

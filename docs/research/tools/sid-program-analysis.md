@@ -51,7 +51,7 @@ The programming lesson is a sustained transformation of one releasing oscillator
 
 ## Reproduce the execution evidence
 
-After the [local dependency setup](../../local-setup.md), regenerate into unused paths. The CPU command uses the existing py65 dependencies; the VICE command uses the genuine headless executable and file monitor described in [the audio workflow](../../audio-workflow.md).
+After the [local dependency setup](../../setup/local-setup.md), regenerate into unused paths. The CPU command uses the existing py65 dependencies; the VICE command uses the genuine headless executable and file monitor described in [the audio workflow](../../workflows/audio-workflow.md).
 
 ```sh
 PYTHONPATH=.tools/test-deps python3 scripts/trace-sid-program.py .local/research/fuer-elise/drax-fuer-elise.sid --first-call 99 --last-call 150 --output build/reference-studies/drax/program-cpu-new/trace.json

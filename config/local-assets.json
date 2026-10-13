@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "references": [
+    {
+      "id": "fuer-elise",
+      "title": "DRAX arrangement of Beethoven: Für Elise",
+      "credit": "Thomas Mogensen (DRAX)",
+      "hvscPath": "MUSICIANS/D/DRAX/Worktunes/Fuer_Elise.sid",
+      "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/D/DRAX/Worktunes/Fuer_Elise.sid",
+      "sha256": "ea6b7eba46844d399e415368eae86c3ddf03bd9041ecba93e7bb53b384daa2a1",
+      "path": ".local/research/fuer-elise/drax-fuer-elise.sid",
+      "default": true
+    },
+    {
+      "id": "flashdance",
+      "title": "DRAX arrangement of Flashdance: What a Feeling",
+      "credit": "Thomas Mogensen (DRAX)",
+      "hvscPath": "MUSICIANS/D/DRAX/Worktunes/Flashdance_conversion.sid",
+      "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/D/DRAX/Worktunes/Flashdance_conversion.sid",
+      "sha256": "2f5216ab8f4438d8ef20c0153ce4671afbc5bc6e66d3b0984bb112fdbf46794c",
+      "path": ".local/research/flashdance/drax-flashdance-conversion.sid",
+      "default": true
+    },
+    {
+      "id": "flashdance-historical",
+      "title": "Flashdance historical alternative",
+      "credit": "Paul Kleimeyer <?>",
+      "hvscPath": "MUSICIANS/K/Kleimeyer_Paul/Flashdance.sid",
+      "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/K/Kleimeyer_Paul/Flashdance.sid",
+      "sha256": "46c13ffda2741ad60448f43844bf90c56838a916b3b7802cb7ca34abc7211972",
+      "path": ".local/research/flashdance/kleimeyer-flashdance.sid",
+      "default": false
+    }
+  ],
+  "skills": [
+    {
+      "id": "c64-sid",
+      "repository": "https://github.com/sunsided/c64-skills",
+      "revision": "480b253b147655fa6ff6eb74577d1a2523d512d4",
+      "checkout": ".tools/c64-skills",
+      "path": "skills/c64-sid",
+      "activation": ".agents/skills/c64-sid",
+      "default": true,
+      "files": [
+        {
+          "source": "c64-sid/SKILL.md",
+          "path": "SKILL.md",
+          "sha256": "bd673cdd8b5ecf5a6ff1cb953dd0096cc9e0de88539b8f26b8a48290c7cbfc63"
+        },
+        {
+          "source": "c64-sid/references/music-note-values.md",
+          "path": "references/music-note-values.md",
+          "sha256": "053649fcd3c21eca7e7801cd674dead7ce8702f4c449b073cddb5d13579fc705"
+        },
+        {
+          "source": "c64-sid/references/sid-chip-spec.md",
+          "path": "references/sid-chip-spec.md",
+          "sha256": "44e3e028c9bc11b66292f1329c30969c7452d982d96640b5da830337fc6359a1"
+        },
+        {
+          "source": "c64-sid/references/sound-control-settings.md",
+          "path": "references/sound-control-settings.md",
+          "sha256": "871af20f2cfd9469d31fd12db70d3a161c6b5ea0a39919faf8a6611f2219d09c"
+        },
+        {
+          "source": "c64-sid/references/sound-programming.md",
+          "path": "references/sound-programming.md",
+          "sha256": "d9d7da42409bf1a42c37672afc57e2f10a36995e00ff7af5b70991c824020401"
+        },
+        {
+          "source": "c64-sid/references/sound-tutorial.md",
+          "path": "references/sound-tutorial.md",
+          "sha256": "fc794da27b915ced837e1cb6ccc52785b2ee08da4759713b39767b6f8383398a"
+        }
+      ]
+    },
+    {
+      "id": "sid-music",
+      "repository": "https://github.com/chrisgleissner/c64bridge",
+      "revision": "0781a7b6cfe7b92bbb6d68e048ad396bd3edfb18",
+      "checkout": ".tools/c64bridge",
+      "path": "skills/sid-music",
+      "activation": ".agents/skills/sid-music",
+      "default": false,
+      "files": [
+        {
+          "source": ".github/skills/sid-music/SKILL.md",
+          "path": "SKILL.md",
+          "sha256": "72cb0afa76eaa7878b217ca4b0ee73ab971de40c009fa7aeb716a1c14d83d677"
+        },
+        {
+          "source": "LICENSE",
+          "path": "LICENSE",
+          "sha256": "90b664a6fbc82b38595cbb39606268bef0b2eb9b76b0e9e03826befe204190bb"
+        }
+      ]
+    }
+  ]
+}

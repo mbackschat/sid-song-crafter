@@ -13,7 +13,7 @@ These original programs draw on [measured DRAX mechanisms](../../../docs/researc
 
 ## Reproduce and listen
 
-Use fresh output directories with the [native toolchain](../../../docs/native-song-workflow.md):
+Use fresh output directories with the [native toolchain](../../../docs/workflows/native-song-workflow.md):
 
 ```sh
 python3 scripts/native-song.py build songs/studies/fuer-elise-interpretation/recipe.json --output build/elise-interpretation-v1

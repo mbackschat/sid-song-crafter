@@ -18,7 +18,7 @@ Pass `--phrasing songs/studies/elise-decoded-bass/phrasing.json` to the transfer
 
 ## Reuse and reproduce
 
-After [native setup](../../../docs/native-song-workflow.md), run into a fresh directory:
+After [native setup](../../../docs/workflows/native-song-workflow.md), run into a fresh directory:
 
 ```sh
 PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 scripts/transfer-drax-bass.py songs/studies/fuer-elise-interpretation/recipe-b.json --output build/elise-decoded-bass-listen/new --vice

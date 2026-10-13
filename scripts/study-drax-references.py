@@ -14,16 +14,15 @@ from verify_player import CYCLES_PER_FRAME, PAL_CLOCK, require
 ROOT = Path(__file__).resolve().parents[1]
 PLAY_CALLS = 6000
 SOURCE_SCORE_SHA256 = "a58bdad5e72a10c12b20913cf242e917b98bb010949ba3ea38f33cfe15b6368e"
+ASSETS = {entry["id"]: entry for entry in json.loads((ROOT / "config/local-assets.json").read_text())["references"]}
 REFERENCES = {
     "fuer-elise": {
-        "sha256": "ea6b7eba46844d399e415368eae86c3ddf03bd9041ecba93e7bb53b384daa2a1",
-        "hvscPath": "MUSICIANS/D/DRAX/Worktunes/Fuer_Elise.sid",
+        **{key: ASSETS["fuer-elise"][key] for key in ("sha256", "hvscPath")},
         "roles": ("percussion/bass", "melody", "chord arpeggiation"),
         "attackFrames": (12, 12, 12),
     },
     "flashdance": {
-        "sha256": "2f5216ab8f4438d8ef20c0153ce4671afbc5bc6e66d3b0984bb112fdbf46794c",
-        "hvscPath": "MUSICIANS/D/DRAX/Worktunes/Flashdance_conversion.sid",
+        **{key: ASSETS["flashdance"][key] for key in ("sha256", "hvscPath")},
         "roles": ("percussion/bass", "melody", "chord arpeggiation"),
         "attackFrames": (12, 40, 20),
     },
@@ -121,7 +120,7 @@ def episode_landmarks(events, score):
     source = score["voices"][0]["events"]
     result = {}
     # These boundaries belong to the pinned source form, documented in
-    # docs/fuer-elise-score.md; another score must not inherit them by default.
+    # docs/songs/fuer-elise-score.md; another score must not inherit them by default.
     for name, beat in (("F-major", 66.5), ("repeated-bass", 120.5)):
         indices = [index for index, note in enumerate(source) if note["startBeat"] >= beat]
         require(indices and len(source) - indices[0] >= 10, f"Source lacks the {name} landmark")

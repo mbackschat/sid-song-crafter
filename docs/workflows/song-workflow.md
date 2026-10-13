@@ -15,13 +15,13 @@ Importing and arranging are different operations. A three-voice chord reduction 
 
 ## SID expression
 
-The chip-specific layer must remain independent of the common score. SID compositions can be authored directly and need not pass through MIDI or a note-only representation. Evolving waveforms, pulse-width modulation, frequency slides, vibrato, fast arpeggios, envelope changes, shared-filter automation, sync, and ring modulation belong at this layer; their timing and voice dependencies are musical data too. See [the hardware research](research/sid/hardware.md) for chip semantics.
+The chip-specific layer must remain independent of the common score. SID compositions can be authored directly and need not pass through MIDI or a note-only representation. Evolving waveforms, pulse-width modulation, frequency slides, vibrato, fast arpeggios, envelope changes, shared-filter automation, sync, and ring modulation belong at this layer; their timing and voice dependencies are musical data too. See [the hardware research](../research/sid/hardware.md) for chip semantics.
 
-The current [three-voice exporter](three-voice-player.md) implements a deliberately smaller subset: fixed instruments and frame-scheduled pitched notes on one PAL/8580 SID. Its assembly player consumes register writes, but the public score compiler does not yet expose arbitrary register automation. Neither this format nor its frame scheduler claims support for all SID techniques, cycle-timed sample playback, or two chips. Adding an effect requires an explicit player/compiler capability and verification, not silently flattening it into notes.
+The current [three-voice exporter](../architecture/three-voice-player.md) implements a deliberately smaller subset: fixed instruments and frame-scheduled pitched notes on one PAL/8580 SID. Its assembly player consumes register writes, but the public score compiler does not yet expose arbitrary register automation. Neither this format nor its frame scheduler claims support for all SID techniques, cycle-timed sample playback, or two chips. Adding an effect requires an explicit player/compiler capability and verification, not silently flattening it into notes.
 
 ## Build an arranged song
 
-After the dependency setup in [README](../README.md), [the audio guide](audio-workflow.md), and [the VICE setup](vice-startup-investigation.md):
+After the dependency setup in [README](../../README.md), [the audio guide](audio-workflow.md), and [the VICE setup](../setup/vice-startup-investigation.md):
 
 ```sh
 python3 scripts/song.py path/to/arrangement.json --name my-song

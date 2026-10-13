@@ -1,6 +1,6 @@
 # Für Elise: existing SID comparison
 
-DRAX's archived arrangement provides an independent comparison for [our native candidate](../../fuer-elise-native.md). The comparison checks actual pitches, timing and synthesis behaviour; the existing SID is not the authority for Beethoven's notation or our source-preservation contract. That authority remains [the original source and documented reduction](../../fuer-elise-score.md).
+DRAX's archived arrangement provides an independent comparison for [our native candidate](../../songs/fuer-elise-native.md). The comparison checks actual pitches, timing and synthesis behaviour; the existing SID is not the authority for Beethoven's notation or our source-preservation contract. That authority remains [the original source and documented reduction](../../songs/fuer-elise-score.md).
 
 ## Provenance and playback
 
@@ -49,7 +49,7 @@ The following 1.80–3.00-second extracts keep a little context around the marke
 
 The [manifest](../../../build/reference-studies/drax/voice-focus/study.json) retains input/renderer hashes, commands, exact 2.02–2.75-second cuts as well as context cuts, PCM health and diagnostic limitations. All clips are unclipped; the full mix is sample-identical to the corresponding original WAV segment. The listening attribution above applies to these diagnostic renders, subject to the muting limitations below.
 
-Reproduce each three-second render with the [renderer diagnostic](../../audio-workflow.md), using unused output paths:
+Reproduce each three-second render with the [renderer diagnostic](../../workflows/audio-workflow.md), using unused output paths:
 
 ```sh
 .local/bin/render-sid .local/research/fuer-elise/drax-fuer-elise.sid build/drax-bass.wav 3 --voices 1
@@ -63,7 +63,7 @@ DRAX remains rendered with its declared MOS6581; the candidates declare MOS8580.
 
 ## Reproduce and audition
 
-Use an unused output filename; [renderer setup](../../audio-workflow.md) provides the required tool:
+Use an unused output filename; [renderer setup](../../workflows/audio-workflow.md) provides the required tool:
 
 ```sh
 mkdir -p .local/research/fuer-elise
@@ -72,7 +72,7 @@ shasum -a 256 .local/research/fuer-elise/drax-fuer-elise.sid
 .local/bin/render-sid .local/research/fuer-elise/drax-fuer-elise.sid .local/research/fuer-elise/drax.preview.wav 20
 ```
 
-Download the other [pinned reference](flashdance-reference.md), build the [native candidate](../../native-song-workflow.md), then run the study from the repository root with a fresh output directory:
+Download the other [pinned reference](flashdance-reference.md), build the [native candidate](../../workflows/native-song-workflow.md), then run the study from the repository root with a fresh output directory:
 
 ```sh
 PYTHONPATH=.tools/test-deps python3 scripts/study-drax-references.py --fuer-elise .local/research/fuer-elise/drax-fuer-elise.sid --flashdance .local/research/flashdance/drax-flashdance-conversion.sid --candidate-sid build/fuer-elise-native/export/fuer-elise-sidwizard.sid --candidate-manifest build/fuer-elise-native/conversion/fuer-elise-sidwizard.native.json --source-score songs/fuer-elise.json --play-calls 6000 --output build/reference-studies/drax
@@ -90,4 +90,4 @@ Recreate the audition with tracked tools and unused output names; the study itse
 python3 scripts/compare-audio.py prepare build/reference-studies/drax/reference.opening.wav build/reference-studies/drax/candidate.opening.wav build/reference-studies/drax/opening --individual-copies
 ```
 
-For a new candidate, regenerate the [native song](../../native-song-workflow.md), retain its source manifest and actual frame/write trace, and prepare fresh excerpts with [the level-matching workflow](../../instrument-trials.md). Keep preservation checks against our source, arrangement comparison against the identified reference, and user listening judgments separate. The [listening findings](gestures/README.md) record a strong preference for the reference's richness and playfulness. Full-form reference alignment and the reference's notation/source reconstruction remain unestablished; exact PCM equality between these different players and chip targets is not a success criterion.
+For a new candidate, regenerate the [native song](../../workflows/native-song-workflow.md), retain its source manifest and actual frame/write trace, and prepare fresh excerpts with [the level-matching workflow](../../workflows/instrument-trials.md). Keep preservation checks against our source, arrangement comparison against the identified reference, and user listening judgments separate. The [listening findings](gestures/README.md) record a strong preference for the reference's richness and playfulness. Full-form reference alignment and the reference's notation/source reconstruction remain unestablished; exact PCM equality between these different players and chip targets is not a success criterion.

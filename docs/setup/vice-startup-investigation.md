@@ -12,7 +12,7 @@ Executable-path fallback and bundled-font warnings can be nonfatal. Desktop star
 
 ## Choose the headless build correctly
 
-`--enable-headlessui` selects VICE's separate `src/arch/headless` implementation. It is a build option, not a runtime substitute for GTK. The installed GTK3 binary rejects `-headless`, and `-console` still requires GTK initialization. The pinned [VICE 3.9 macOS guide](../.tools/vice-headless-3.9/source/doc/building/macOS-Howto.txt) states that the headless port needs neither GTK3 nor SDL2; CoreAudio can remain enabled independently.
+`--enable-headlessui` selects VICE's separate `src/arch/headless` implementation. It is a build option, not a runtime substitute for GTK. The installed GTK3 binary rejects `-headless`, and `-console` still requires GTK initialization. The pinned [VICE 3.9 macOS guide](../../.tools/vice-headless-3.9/source/doc/building/macOS-Howto.txt) states that the headless port needs neither GTK3 nor SDL2; CoreAudio can remain enabled independently.
 
 The [Homebrew VICE formula](https://github.com/Homebrew/homebrew-core/blob/master/Formula/v/vice.rb) selects GTK3, so the project uses the [official VICE 3.9 release](https://sourceforge.net/projects/vice-emu/files/releases/vice-3.9.tar.gz/download). Source archive SHA-256: `40202b63455e26b87ecc63eb5a52322c6fa3f57cab12acf0c227cf9f4daec370`, matching the SourceForge release listing. Preserve upstream notices and keep source and build output separate under `.tools/vice-headless-3.9/`.
 
@@ -78,7 +78,7 @@ A headless runtime banner, ROM initialization and deliberate `cycle limit reache
 
 The `-version` shortcut calls `archdep_program_name()` in `src/main.c` before `archdep_init()` initializes the fallback `argv[0]`. If macOS `proc_pidpath()` fails, the shortcut lacks that fallback and can fail with `argv[0] is NULL`. Ordinary startup initializes it in time. This affects both GTK and headless binaries; use their runtime banner for version/readiness when the shortcut fails.
 
-Localhost monitor binding is independently denied in the restricted runner (`bind() failed: Operation not permitted`). A genuine headless executable therefore supports offline file-based verification here but does not establish a live c64bridge monitor connection. Use [the PRG/audio workflow](audio-workflow.md#full-prg-execution-in-headless-vice) and [native checkpoints](native-vice-checks.md); a live monitor requires a runner that permits localhost sockets.
+Localhost monitor binding is independently denied in the restricted runner (`bind() failed: Operation not permitted`). A genuine headless executable therefore supports offline file-based verification here but does not establish a live c64bridge monitor connection. Use [the PRG/audio workflow](../workflows/audio-workflow.md#full-prg-execution-in-headless-vice) and [native checkpoints](../validation/native-vice-checks.md); a live monitor requires a runner that permits localhost sockets.
 
 ## External monitor attachment
 

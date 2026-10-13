@@ -23,7 +23,7 @@ The player explicitly silences master volume when `playCalls` is reached, so a h
 
 ## Reproduce and edit
 
-After the repository's [dependency and renderer setup](../../../docs/audio-workflow.md), run from the repository root into fresh output directories:
+After the repository's [dependency and renderer setup](../../../docs/workflows/audio-workflow.md), run from the repository root into fresh output directories:
 
 ```sh
 PYTHONPATH=.tools/test-deps python3 scripts/reconstruct-drax-bass.py songs/studies/drax-bass-reconstruction/instrument.json --reference .local/research/fuer-elise/drax-fuer-elise.sid --output build/drax-bass-reconstruction --vice

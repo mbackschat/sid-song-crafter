@@ -13,7 +13,7 @@ Both use the exact Weight bass program, the preferred interpretation B's pulse l
 
 ## Reproduce and audition
 
-With the [native toolchain](../../../docs/native-song-workflow.md) installed, use fresh output directories:
+With the [native toolchain](../../../docs/workflows/native-song-workflow.md) installed, use fresh output directories:
 
 ```sh
 python3 scripts/native-song.py build songs/studies/elise-layered-entrance/layered.json --output build/elise-layered-entrance

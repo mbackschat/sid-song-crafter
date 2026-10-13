@@ -28,7 +28,7 @@ The strict [RAM-only auditor](../../../scripts/psid_audit.py) rejects the DRAX i
 
 ## Reproduce and compare
 
-Use the [renderer setup](../../audio-workflow.md) and an unused output filename:
+Use the [renderer setup](../../workflows/audio-workflow.md) and an unused output filename:
 
 ```sh
 mkdir -p .local/research/flashdance
@@ -43,4 +43,4 @@ Use the [shared study command](fuer-elise-reference.md#reproduce-and-audition) t
 
 For our own arrangement, first preserve the supplied MIDI/MusicXML identity, repeat form, notes and timing, and list any deliberate voice reduction. That source is still pending. Then align named musical phrases with the reference and compare melody intervals, rhythmic proportions, register/octave placement, articulation, voice allocation and macro trajectories. Differences in key, tempo, form or accompaniment may be arrangement choices; inspect them before calling them losses. Compare static and moving variants of our original patches with the same note/envelope inputs, retaining the reference as a design example rather than copying its instrument bytes.
 
-For audition, render fixed-duration excerpts at their declared chip models, keep original tempo and startup behaviour, and level-match with the [A/B workflow](../../instrument-trials.md). Record model differences explicitly: this reference targets 6581, while our current native bank targets 8580. Exact PCM equality is meaningful only for the same binary, subtune, emulator/version, chip/filter configuration and render origin. Different arrangements and players require musical/register comparison and a separate user listening judgment.
+For audition, render fixed-duration excerpts at their declared chip models, keep original tempo and startup behaviour, and level-match with the [A/B workflow](../../workflows/instrument-trials.md). Record model differences explicitly: this reference targets 6581, while our current native bank targets 8580. Exact PCM equality is meaningful only for the same binary, subtune, emulator/version, chip/filter configuration and render origin. Different arrangements and players require musical/register comparison and a separate user listening judgment.

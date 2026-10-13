@@ -1,13 +1,13 @@
 # Preparing level-matched audio comparisons
 
-Use [compare-audio.py](../scripts/compare-audio.py) to inspect original PCM16 WAV renders and prepare an A/B audition with documented gain. It uses only the Python standard library and needs no player/event manifest, so native SID-Wizard instrument phrases and the repository player can share this measurement step. Retain the original-amplitude renders and their native workfiles as evidence. See [the sound-design repertoire](research/composition/sound-design-repertoire.md) for musical acceptance questions and [the audio workflow](audio-workflow.md) for rendering.
+Use [compare-audio.py](../../scripts/compare-audio.py) to inspect original PCM16 WAV renders and prepare an A/B audition with documented gain. It uses only the Python standard library and needs no player/event manifest, so native SID-Wizard instrument phrases and the repository player can share this measurement step. Retain the original-amplitude renders and their native workfiles as evidence. See [the sound-design repertoire](../research/composition/sound-design-repertoire.md) for musical acceptance questions and [the audio workflow](audio-workflow.md) for rendering.
 
 ```sh
 python3 scripts/compare-audio.py inspect build/baseline-phrase.wav
 python3 scripts/compare-audio.py prepare build/baseline-phrase.wav build/native-instrument-phrase.wav build/lead-01-ab --individual-copies
 ```
 
-The filenames above are example inputs, not a claim that these renders already exist. Render the same complete phrase, including the same rests and tail duration, at the same rate and channel count. The tool requires identical frame counts; it does not establish that notes, tempo, update cadence, SID model, alignment, or renderer settings agree. Record those source assumptions in the trial or [instrument card](research/composition/instrument-card-template.md).
+The filenames above are example inputs, not a claim that these renders already exist. Render the same complete phrase, including the same rests and tail duration, at the same rate and channel count. The tool requires identical frame counts; it does not establish that notes, tempo, update cadence, SID model, alignment, or renderer settings agree. Record those source assumptions in the trial or [instrument card](../research/composition/instrument-card-template.md).
 
 ## Measurement and matching contract
 

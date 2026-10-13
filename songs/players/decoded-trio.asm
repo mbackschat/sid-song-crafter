@@ -1,5 +1,5 @@
 ; Computed bass, lead and chord families with absolute 16-bit note scheduling.
-; See docs/decoded-song-workflow.md for timing, ownership and supported limits.
+; See docs/workflows/decoded-song-workflow.md for timing, ownership and supported limits.
 init:
   LDX #$00
   LDA #$00

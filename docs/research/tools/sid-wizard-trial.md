@@ -11,7 +11,7 @@ The official SID-Maker exporter accepts this repository's original native SWM1 a
 
 The SID-Wizard hash identifies the acquired archive; upstream did not independently publish that checksum in the inspected material. The 64tass hash matches the maintainer's SourceForge download page. [setup-sidwizard.py](../../../scripts/setup-sidwizard.py) verifies both archives, extracts them under ignored `.tools/`, builds 64tass using `make` and a C compiler, and assembles the unmodified native `exporter.asm` with its original includes. The build uses `EMULATOR=0`, `TUI_ONLY=0`, the selected `SID_AMOUNT=1` or `2`, and the upstream `SWversion="1.9"` driver signature within the 1.97 release. Symbol listing lines are sorted before hashing because 64tass does not emit them in a stable order. Setup records the chip count, assembler version, archive identities, assembled PRG hash, and symbol-file hash in a separate build receipt: `.tools/sid-wizard-exporter/build.json` for one SID or `.tools/sid-wizard-exporter-2sid/build.json` for two. External build commands have explicit deadlines, and a failed setup invalidates the selected build receipt.
 
-The archive's `native/README.txt` declares SID-Wizard a WTF-licensed tool. Preserve that notice and the author's attribution, Mihaly Horvath/Hermit Software. 64tass includes its GPL v2 license and additional component notices. The build uses the existing documented [py65 1.2.0 dependency](../../first-song.md); its license is BSD. The host editor's bundled SDL, ncurses, MIDI, and audio libraries are unnecessary for this export route and have separate upstream notices.
+The archive's `native/README.txt` declares SID-Wizard a WTF-licensed tool. Preserve that notice and the author's attribution, Mihaly Horvath/Hermit Software. 64tass includes its GPL v2 license and additional component notices. The build uses the existing documented [py65 1.2.0 dependency](../../songs/first-song.md); its license is BSD. The host editor's bundled SDL, ncurses, MIDI, and audio libraries are unnecessary for this export route and have separate upstream notices.
 
 ## Contract and original routines
 
@@ -38,7 +38,7 @@ The source contract is defined by the archive's `native/sources/SWM-spec.src`, `
 
 ## Reproduce the original study export
 
-Run from the repository root after the [Python dependency setup](../../first-song.md). Setup downloads the pinned archives only when their cached copies are missing; subsequent setup and export can use the local cache. It needs Python 3.9 or later, `curl`, `make`, a C compiler, and py65 1.2.0. It does not require a host editor build or a display server.
+Run from the repository root after the [Python dependency setup](../../songs/first-song.md). Setup downloads the pinned archives only when their cached copies are missing; subsequent setup and export can use the local cache. It needs Python 3.9 or later, `curl`, `make`, a C compiler, and py65 1.2.0. It does not require a host editor build or a display server.
 
 ```sh
 python3 scripts/setup-sidwizard.py
@@ -61,7 +61,7 @@ python3 scripts/arrange-sidwizard.py tests/fixtures/sidwizard-2sid/recipe.json -
 python3 scripts/export-sidwizard.py build/sidwizard-2sid-fixture/conversion/recipe.sws --output-dir build/sidwizard-2sid-fixture/export --title 'Original 2SID fixture' --author Test
 ```
 
-The original two-SID PRG asks for its SID2 address before playback. Its selector polls the CIA keyboard matrix directly while interrupts are disabled, so the monitor's KERNAL `keybuf` command cannot answer it. The exported report identifies `standaloneAddressSelector.entryAddress` and `returnAddress`: at entry the default address has already been resolved; setting the monitor PC to the existing RTS returns normally and lets `ModifySID2addresses` continue. The adapter checks that return opcode and leaves all starter and player bytes unchanged. Keep interactive address selection when running the PRG manually. The [native workflow](../../native-song-workflow.md) owns independent VICE verification of this monitor route.
+The original two-SID PRG asks for its SID2 address before playback. Its selector polls the CIA keyboard matrix directly while interrupts are disabled, so the monitor's KERNAL `keybuf` command cannot answer it. The exported report identifies `standaloneAddressSelector.entryAddress` and `returnAddress`: at entry the default address has already been resolved; setting the monitor PC to the existing RTS returns normally and lets `ModifySID2addresses` continue. The adapter checks that return opcode and leaves all starter and player bytes unchanged. Keep interactive address selection when running the PRG manually. The [native workflow](../../workflows/native-song-workflow.md) owns independent VICE verification of this monitor route.
 
 ## Verification and material limits
 
@@ -69,7 +69,7 @@ The adapter tests run independently encoded original one-SID and six-voice two-S
 
 The original pulse candidate and three-voice mix each passed 501 calls through the separate [PSID CPU audit](../../../scripts/psid_audit.py). At that bound, the pulse reached 1,271 modeled cycles per play call and the mix 2,193, against a PAL frame budget of 19,656. Both used the native Extra ghost-register path, which produced 12,525 SID stores over 501 calls. This records functional CPU execution with an explicit environment; it does not measure hardware bus contention or establish the musical result.
 
-Select the default subtune explicitly before rendering through libsidplayfp. Otherwise it can pass `$FF` to the player's accumulator-based subtune selector, producing silence even when standalone playback works. The [audio workflow](../../audio-workflow.md) documents the API requirement and independent regression guard; the SID-Wizard driver needs no modification.
+Select the default subtune explicitly before rendering through libsidplayfp. Otherwise it can pass `$FF` to the player's accumulator-based subtune selector, producing silence even when standalone playback works. The [audio workflow](../../workflows/audio-workflow.md) documents the API requirement and independent regression guard; the SID-Wizard driver needs no modification.
 
 ### Compressed-pattern format
 

@@ -2,7 +2,7 @@
 
 Research date: 2026-10-12. Recommendation: evaluate **SID-Wizard Normal/Extra as the sound-design reference**, **GoatTracker as the first interchange/automation candidate**, and **SID Factory II as a source-study and alternative authoring environment**. Keep the local simple player as a correctness baseline. This is a source-based assessment; none of these editors has yet passed a local import/edit/export acceptance trial.
 
-Execution update: [SID-Wizard Extra now has a verified headless native export adapter](sid-wizard-trial.md). Nine original workfiles pass native packing, CPU checks and rendering; [four A/B pairs](../../instrument-trials.md) are prepared. This supports using its native instrument model for the next sound-design work. Editor UI round-trip and editor-versus-export listening remain open, so this does not yet complete the full acceptance trial below.
+Execution update: [SID-Wizard Extra now has a verified headless native export adapter](sid-wizard-trial.md). Nine original workfiles pass native packing, CPU checks and rendering; [four A/B pairs](../../workflows/instrument-trials.md) are prepared. This supports using its native instrument model for the next sound-design work. Editor UI round-trip and editor-versus-export listening remain open, so this does not yet complete the full acceptance trial below.
 
 ## What the masters' tools teach us
 

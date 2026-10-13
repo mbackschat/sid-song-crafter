@@ -1,8 +1,8 @@
 # Headless SID audio workflow
 
-[The renderer](../scripts/render-sid.cpp) uses pinned libsidplayfp 3.1.1/SIDLite to write PCM16 audio at 44100 Hz without a window: mono for one SID, or stereo with one chip per channel for the supported two-SID profile. Its `.registers.tsv` sidecar records last-written SID register snapshots after each renderer iteration, timestamped by the emulation library. Snapshots are not individual bus writes or one-to-one PAL frames; use [the CPU audit](psid-audit.md) for ordered writes.
+[The renderer](../../scripts/render-sid.cpp) uses pinned libsidplayfp 3.1.1/SIDLite to write PCM16 audio at 44100 Hz without a window: mono for one SID, or stereo with one chip per channel for the supported two-SID profile. Its `.registers.tsv` sidecar records last-written SID register snapshots after each renderer iteration, timestamped by the emulation library. Snapshots are not individual bus writes or one-to-one PAL frames; use [the CPU audit](../validation/psid-audit.md) for ordered writes.
 
-The [audio integration tests](../tests/render_audio_test.py) verify independent A4 and two-chip fixtures, default-subtune selection, separate chip audibility/routing, the opening Für Elise pitches/onsets and the ending. The [song guide](first-song.md) identifies the editable opening excerpt and its PRG/SID exports; [native instrument trials](instrument-trials.md) apply the same renderer to a different driver.
+The [audio integration tests](../../tests/render_audio_test.py) verify independent A4 and two-chip fixtures, default-subtune selection, separate chip audibility/routing, the opening Für Elise pitches/onsets and the ending. The [song guide](../songs/first-song.md) identifies the editable opening excerpt and its PRG/SID exports; [native instrument trials](instrument-trials.md) apply the same renderer to a different driver.
 
 ## Pinned library setup
 
@@ -43,11 +43,11 @@ For a single SID, append `--voices 1`, `--voices 3` or `--voices 1,3` to compare
 
 This uses [libsidplayfp 3.1.1's actual mute implementation](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/sidemu.cpp): it masks unselected voices' control writes with `$0e`, clearing GATE and waveform bits before synthesis. It is not output-only muting: muted envelopes, waveform/noise state and the filter's input can change. The implementation uses `true` to mute despite the public header's opposite wording. The `.registers.tsv` snapshots retain the original register-write shadow, so identical snapshots do not prove identical internal state after muting.
 
-Use this as a bounded listening diagnostic after checking oscillator coupling, SID reads, shared-filter routing and volume/sample techniques. Do not assume isolated files add back to the original or use the option as a faithful solo for ring/sync-dependent instruments. The [DRAX fragment study](research/composition/fuer-elise-reference.md) checks its particular independence assumptions and keeps the full mix as the authority. Independent three-pitch fixtures verify actual voice selection, quiet tone-only `none`, unchanged default output and argument rejection.
+Use this as a bounded listening diagnostic after checking oscillator coupling, SID reads, shared-filter routing and volume/sample techniques. Do not assume isolated files add back to the original or use the option as a faithful solo for ring/sync-dependent instruments. The [DRAX fragment study](../research/composition/fuer-elise-reference.md) checks its particular independence assumptions and keeps the full mix as the authority. Independent three-pitch fixtures verify actual voice selection, quiet tone-only `none`, unchanged default output and argument rejection.
 
 ### Playback checks
 
-After [building the opening excerpt](first-song.md):
+After [building the opening excerpt](../songs/first-song.md):
 
 ```sh
 python3 tests/render_audio_test.py
@@ -59,7 +59,7 @@ The A4 oracle uses a hand-coded PSID independent of the song compiler. Opening-e
 
 ## Full PRG execution in headless VICE
 
-Use the [genuine headless VICE build](vice-startup-investigation.md) and writable configuration/state directories. `loadbasic` updates BASIC pointers, and lowercase `keybuf run\n` supplies the BASIC keyword through [VICE's ASCII-to-PETSCII keyboard parser](../.tools/vice-headless-3.9/source/src/kbdbuf.c). Setting the program counter directly would bypass this boot check.
+Use the [genuine headless VICE build](../setup/vice-startup-investigation.md) and writable configuration/state directories. `loadbasic` updates BASIC pointers, and lowercase `keybuf run\n` supplies the BASIC keyword through [VICE's ASCII-to-PETSCII keyboard parser](../../.tools/vice-headless-3.9/source/src/kbdbuf.c). Setting the program counter directly would bypass this boot check.
 
 The following monitor file checks the opening PRG's entry, wrapper return, restored CPU ports, finished state, SID registers and return to BASIC:
 
@@ -90,17 +90,17 @@ The raw VICE WAV includes machine bootstrap and may contain a startup transient;
 
 ## VICE audio and bridge rules
 
-- Select `-sounddev wav -soundarg /absolute/output.wav -soundrate 44100` for offline capture, and disable warp with `+warp`. [VICE 3.9's dummy sound driver](../.tools/vice-headless-3.9/source/src/arch/shared/sounddrv/sounddummy.c) has no initialization callback; [sound_open](../.tools/vice-headless-3.9/source/src/sound.c) sets channel count inside that callback. Dummy playback combined with WAV recording can therefore produce an empty zero-channel header. [The WAV driver](../.tools/vice-headless-3.9/source/src/arch/shared/sounddrv/soundwav.c) initializes output correctly.
+- Select `-sounddev wav -soundarg /absolute/output.wav -soundrate 44100` for offline capture, and disable warp with `+warp`. [VICE 3.9's dummy sound driver](../../.tools/vice-headless-3.9/source/src/arch/shared/sounddrv/sounddummy.c) has no initialization callback; [sound_open](../../.tools/vice-headless-3.9/source/src/sound.c) sets channel count inside that callback. Dummy playback combined with WAV recording can therefore produce an empty zero-channel header. [The WAV driver](../../.tools/vice-headless-3.9/source/src/arch/shared/sounddrv/soundwav.c) initializes output correctly.
 - A deliberately reached cycle limit returns status 1 and `cycle limit reached.` in VICE 3.9. Accept it only when the expected entry breakpoint, finalized nonempty WAV and capture duration also pass. It is different from a monitor-driven successful exit and does not prove a return to BASIC.
-- [c64bridge's process launcher](../.tools/c64bridge/src/vice/process.ts) inserts `-sounddev dummy` before user arguments. The pinned [VICE argument parser](../.tools/vice-headless-3.9/source/src/cmdline.c) applies options left to right, so later device options replace it. `VICE_ARGS` replaces configured `args`; `VICE_WARP=0` overrides configured warp.
+- [c64bridge's process launcher](../../.tools/c64bridge/src/vice/process.ts) inserts `-sounddev dummy` before user arguments. The pinned [VICE argument parser](../../.tools/vice-headless-3.9/source/src/cmdline.c) applies options left to right, so later device options replace it. `VICE_ARGS` replaces configured `args`; `VICE_WARP=0` overrides configured warp.
 - For host playback on a compatible macOS build, the device fragment is `-pal +logcolorize -sound -sounddev coreaudio -soundvolume 100`, with warp disabled. Recording uses `-soundrecdev wav -soundrecarg /absolute/output.wav`; configure playback and the output filename before enabling recording so changing resources does not truncate an active file. See [the VICE sound manual](https://vice-emu.sourceforge.io/vice_6.html).
-- The pinned [offline VICE runner](../.tools/c64bridge/src/viceRunner.ts) supplies repeated `-soundarg` values; the later `bits=16` replaces the filename, while the WAV driver expects a filename directly. Use the direct capture command above. SID files require `vsid`; giving one to `x64sc` is not the verified native PRG path. The [sidplayfp runner](../.tools/c64bridge/src/sidplayRunner.ts) requires a separate executable that the local library package does not supply.
+- The pinned [offline VICE runner](../../.tools/c64bridge/src/viceRunner.ts) supplies repeated `-soundarg` values; the later `bits=16` replaces the filename, while the WAV driver expects a filename directly. Use the direct capture command above. SID files require `vsid`; giving one to `x64sc` is not the verified native PRG path. The [sidplayfp runner](../../.tools/c64bridge/src/sidplayRunner.ts) requires a separate executable that the local library package does not supply.
 
-Live sound-resource operations are available in [the bridge tool](../.tools/c64bridge/src/tools/vice.ts), but require a reachable binary monitor. Runtime CoreAudio selection and live bridge recording have not been verified in the restricted runner. [Local setup](local-setup.md) explains the separate socket and GTK constraints.
+Live sound-resource operations are available in [the bridge tool](../../.tools/c64bridge/src/tools/vice.ts), but require a reachable binary monitor. Runtime CoreAudio selection and live bridge recording have not been verified in the restricted runner. [Local setup](../setup/local-setup.md) explains the separate socket and GTK constraints.
 
 ## Verify live SID writes
 
-[c64bridge's memory reader](../.tools/c64bridge/src/vice/viceClient.ts) requests side-effect-free binary-monitor memory in CPU bank zero. [VICE's SID peek](../.tools/vice-headless-3.9/source/src/sid/sid.c) returns cached last-written register values, while [CPU bank mapping](../.tools/vice-headless-3.9/source/src/c64/c64mem.c) exposes them only when `$0001` maps I/O. Read `$0001` with `$D400-$D418`. If the program banks out I/O, use [Banks available and Memory get](https://vice-emu.sourceforge.io/vice_13.html) to find and peek the `io` bank; the bridge's public memory operation does not expose a bank selector.
+[c64bridge's memory reader](../../.tools/c64bridge/src/vice/viceClient.ts) requests side-effect-free binary-monitor memory in CPU bank zero. [VICE's SID peek](../../.tools/vice-headless-3.9/source/src/sid/sid.c) returns cached last-written register values, while [CPU bank mapping](../../.tools/vice-headless-3.9/source/src/c64/c64mem.c) exposes them only when `$0001` maps I/O. Read `$0001` with `$D400-$D418`. If the program banks out I/O, use [Banks available and Memory get](https://vice-emu.sourceforge.io/vice_13.html) to find and peek the `io` bank; the bridge's public memory operation does not expose a bank selector.
 
 For continuing CPU write activity, create a non-stopping store checkpoint with `c64_debug`:
 

@@ -23,20 +23,20 @@ Start here before selecting instruments, arranging voices, explaining a techniqu
 | Clinical arrangement; playful; groove; improvisation | Use rhythmic answers, selective accompaniment and phrase variation; preserve the original score separately. | [Gesture selection and verdicts](composition/gestures/README.md), [editable interpretation](../../songs/studies/fuer-elise-interpretation/README.md) |
 | Metallic; bell; ring modulation; hard sync | Allocate carrier and modulator together; voice dependencies can consume accompaniment capacity. | [Coupled oscillators](sid/advanced-techniques.md#coupled-oscillators-and-combined-waveforms), [hardware semantics](sid/hardware.md) |
 | Filter movement; conflicting instruments; 6581 vs 8580 | Assign shared-filter ownership. Numeric settings do not guarantee the same sound across models. | [Filter design](sid/advanced-techniques.md#filter-and-mix-design), [BASS-02 routing example](composition/instruments/bass-02-kick-to-bass.md) |
-| Inconsistent attack; missing grace note; hard restart; ADSR | Check ordered writes and the player's onset contract before changing notation. | [Envelope constraints](sid/advanced-techniques.md#envelope-timing-is-part-of-the-instrument), [native onset findings](../fuer-elise-native.md) |
-| Dual SID; six voices; separate filters | Arrange two intentional mix groups with an explicit address/model profile. | [Two-chip design](sid/dual-sid.md), [native build and fixture](../native-song-workflow.md) |
+| Inconsistent attack; missing grace note; hard restart; ADSR | Check ordered writes and the player's onset contract before changing notation. | [Envelope constraints](sid/advanced-techniques.md#envelope-timing-is-part-of-the-instrument), [native onset findings](../songs/fuer-elise-native.md) |
+| Dual SID; six voices; separate filters | Arrange two intentional mix groups with an explicit address/model profile. | [Two-chip design](sid/dual-sid.md), [native build and fixture](../workflows/native-song-workflow.md) |
 
 ## Execute or assess the choice
 
 | Task | Existing route |
 | --- | --- |
-| Map musical roles to executed SID programs and reconstruct a complete texture | [Bidirectional DRAX trio mapping](composition/instruments/drax-decoded-trio.md), [independent three-voice implementation](../../songs/studies/drax-full-reconstruction/README.md): [complete-theme workflow](../decoded-song-workflow.md): editable description to our own code; full ordered-write comparison |
+| Map musical roles to executed SID programs and reconstruct a complete texture | [Bidirectional DRAX trio mapping](composition/instruments/drax-decoded-trio.md), [independent three-voice implementation](../../songs/studies/drax-full-reconstruction/README.md): [complete-theme workflow](../workflows/decoded-song-workflow.md): editable description to our own code; full ordered-write comparison |
 | Understand a master's sound; reverse-engineer an instrument; register timing; 6502/6510; VICE debugger | [Executed SID program experiments](tools/sid-program-analysis.md): connect writes to instructions and instrument data, then audition controlled changes before translating the mechanism |
-| Render editable instrument experiments | [Instrument trials](../instrument-trials.md) |
+| Render editable instrument experiments | [Instrument trials](../workflows/instrument-trials.md) |
 | Change one instrument while preserving the score | [Native patch comparison](../../scripts/compare-native-patch.py), [worked attack comparison](../../songs/studies/fuer-elise-attack/README.md) |
-| Compare originals and matched audio | [Audio comparisons](../audio-comparisons.md); amplitude matching is not a musical verdict |
-| Locate a reference's audible component | [Diagnostic voice selection and coupling limits](../audio-workflow.md#diagnostic-voice-selection) |
-| Export and verify a whole arrangement | [Native song workflow](../native-song-workflow.md), [independent VICE checks](../native-vice-checks.md) |
+| Compare originals and matched audio | [Audio comparisons](../workflows/audio-comparisons.md); amplitude matching is not a musical verdict |
+| Locate a reference's audible component | [Diagnostic voice selection and coupling limits](../workflows/audio-workflow.md#diagnostic-voice-selection) |
+| Export and verify a whole arrangement | [Native song workflow](../workflows/native-song-workflow.md), [independent VICE checks](../validation/native-vice-checks.md) |
 
 ## Keep the index useful
 

@@ -14,7 +14,7 @@ Both WAVs are 42 seconds, rendered with identical PAL MOS6581 settings and unity
 
 [full-composition.json](full-composition.json) describes notes, preparation pitches, releases and six patches. [The musical mapping](../../../docs/research/composition/instruments/drax-decoded-trio.md) explains their roles and effects. [Our player](../../players/decoded-trio.asm) computes their behavior; no original driver or register recording is embedded. Editable runtime parameters are separate from `sourceEvidence`.
 
-Follow [the reusable workflow](../../../docs/decoded-song-workflow.md) for the build command, supported edits, limits and output contract. [The transcriber](../../../scripts/describe-drax-score.py) recovers this score from executed note/instrument readers, preserving provenance. Building the independent SID does not need the original.
+Follow [the reusable workflow](../../../docs/workflows/decoded-song-workflow.md) for the build command, supported edits, limits and output contract. [The transcriber](../../../scripts/describe-drax-score.py) recovers this score from executed note/instrument readers, preserving provenance. Building the independent SID does not need the original.
 
 ## Useful findings and verification
 

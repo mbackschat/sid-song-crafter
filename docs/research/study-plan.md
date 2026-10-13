@@ -4,7 +4,7 @@
 
 **SID Song Crafter — a composition and sound-design workbench for the Commodore 64 SID chip, supporting single- and dual-SID music.** Turn musical ideas and existing songs into expressive single- and dual-SID arrangements. Its value is making the **next great-sounding song easier to create** through a growing, executable repertoire. The playback engine is one component alongside source preservation, SID-native authoring, program analysis, musical knowledge and listening comparisons.
 
-Each study must leave reusable instruments, effects or arrangement methods, with evidence connecting **musical intention → editable description → SID programming** and back. Follow the [analysis procedure](tools/sid-program-analysis.md), [composition workflow](../decoded-song-workflow.md) and [technique index](technique-index.md). This plan owns priorities and completion state; owning studies retain findings and provenance.
+Each study must leave reusable instruments, effects or arrangement methods, with evidence connecting **musical intention → editable description → SID programming** and back. Follow the [analysis procedure](tools/sid-program-analysis.md), [composition workflow](../workflows/decoded-song-workflow.md) and [technique index](technique-index.md). This plan owns priorities and completion state; owning studies retain findings and provenance.
 
 ## Scope and order
 

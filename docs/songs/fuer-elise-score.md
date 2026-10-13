@@ -8,12 +8,12 @@ The [Mutopia catalogue entry](https://www.mutopiaproject.org/cgibin/piece-info.c
 
 | Original | Published source | SHA-256 |
 | --- | --- | --- |
-| [fuer-elise.ly](../songs/sources/fuer-elise.ly) | [Typesetter's LilyPond source](https://raw.githubusercontent.com/MutopiaProject/MutopiaProject/master/ftp/BeethovenLv/WoO59/fur_Elise_WoO59/fur_Elise_WoO59.ly) | `828a7bd1b42e441fe1b0eb0389ba46f1502dab28bbe488389e635fb446ba7a67` |
-| [fuer-elise.mid](../songs/sources/fuer-elise.mid) | [Mutopia's published MIDI](https://www.mutopiaproject.org/ftp/BeethovenLv/WoO59/fur_Elise_WoO59/fur_Elise_WoO59.mid) | `1c12c21c7bbf4cf163896732672648a69d497636059837abd153c71abe50215a` |
+| [fuer-elise.ly](../../songs/sources/fuer-elise.ly) | [Typesetter's LilyPond source](https://raw.githubusercontent.com/MutopiaProject/MutopiaProject/master/ftp/BeethovenLv/WoO59/fur_Elise_WoO59/fur_Elise_WoO59.ly) | `828a7bd1b42e441fe1b0eb0389ba46f1502dab28bbe488389e635fb446ba7a67` |
+| [fuer-elise.mid](../../songs/sources/fuer-elise.mid) | [Mutopia's published MIDI](https://www.mutopiaproject.org/ftp/BeethovenLv/WoO59/fur_Elise_WoO59/fur_Elise_WoO59.mid) | `1c12c21c7bbf4cf163896732672648a69d497636059837abd153c71abe50215a` |
 
 Direct HTTPS downloading from the Mutopia host timed out in this environment. Fetching its HTTP MIDI URL followed the site's redirect and returned the 7,590-byte Standard MIDI File. GitHub's published LilyPond source supplied the 8,800-byte notation file. The MIDI identifies GNU LilyPond 2.18.2, has 384 ticks per quarter, and contains `up:` and `down:` note tracks plus a control track.
 
-The LilyPond source hides its metronome marking but specifies quarter note = 72. Its MIDI encodes 833,333 microseconds per quarter, the integer-microsecond approximation of that tempo. The [import recipe](../songs/fuer-elise-import.json) explicitly chooses 72 rather than presenting the MIDI's rounded value as a different musical tempo. The imported meter is 3/8 throughout.
+The LilyPond source hides its metronome marking but specifies quarter note = 72. Its MIDI encodes 833,333 microseconds per quarter, the integer-microsecond approximation of that tempo. The [import recipe](../../songs/fuer-elise-import.json) explicitly chooses 72 rather than presenting the MIDI's rounded value as a different musical tempo. The imported meter is 3/8 throughout.
 
 ## Repeat and ending verification
 
@@ -31,11 +31,11 @@ The published MIDI does not unfold the two `repeat volta 2` passages. It plays e
 
 The explicit performance spans concatenate `[0,12)`, `[0,11)`, `[12,34½)`, `[13½,33)`, and `[34½,157)`. This adds exactly 11 + 19½ beats to the source timeline. The first repeated body starts at beat 12; the second repeat's first and repeated passes start at 24½ and 45½. The F-major episode starts at 66½, the repeated-bass episode at 120½, and the final thematic return at 155. Grace notes borrowing time before the F-major episode remain at the MIDI's exact tick positions; the shortest appoggiatura is 10/384 of a quarter beat.
 
-The source MIDI contains 517 upper-staff and 388 lower-staff notes. Unfolding the first body adds 34 upper and 15 lower notes; unfolding the second adds 54 upper and 33 lower notes. The [normalized complete performance](../songs/sources/fuer-elise.score.json) therefore contains 605 upper and 436 lower notes, totaling 1,041. These counts and independent pitch/rhythm landmarks are guarded by [arrangement tests](../tests/arrangement_test.py).
+The source MIDI contains 517 upper-staff and 388 lower-staff notes. Unfolding the first body adds 34 upper and 15 lower notes; unfolding the second adds 54 upper and 33 lower notes. The [normalized complete performance](../../songs/sources/fuer-elise.score.json) therefore contains 605 upper and 436 lower notes, totaling 1,041. These counts and independent pitch/rhythm landmarks are guarded by [arrangement tests](../../tests/arrangement_test.py).
 
 ## Common score boundary and import losses
 
-[import-midi.py](../scripts/import-midi.py) produces common score schema version 1 through the small shared [score module](../scripts/score_tools.py). Quarter-note beat positions, durations, and total length use exact reduced `[numerator, denominator]` integer pairs. Each part retains its ID, MIDI track name, all sounding pitches as MIDI integers, simultaneous notes, note-on velocity, and note-off timing. Gaps represent rests. The common score has no SID instruments or three-voice constraint. The [song workflow](song-workflow.md) describes the reusable conversion boundary.
+[import-midi.py](../../scripts/import-midi.py) produces common score schema version 1 through the small shared [score module](../../scripts/score_tools.py). Quarter-note beat positions, durations, and total length use exact reduced `[numerator, denominator]` integer pairs. Each part retains its ID, MIDI track name, all sounding pitches as MIDI integers, simultaneous notes, note-on velocity, and note-off timing. Gaps represent rests. The common score has no SID instruments or three-voice constraint. The [song workflow](../workflows/song-workflow.md) describes the reusable conversion boundary.
 
 This view is deliberately narrower than either the notation or original MIDI. Its import report lists unmapped event categories and fields. For this source, three CC7 volume messages, two key-signature messages, and two text messages remain only in the original MIDI. Note channels, note-off velocity, and the time-signature click/32nd-note fields are not mapped into common events. MIDI does not encode the notation's enharmonic spelling, printed repeat structure, slurs, articulation marks, engraved dynamics, or pedal notation; the preserved LilyPond file supplies those details. The recipe supplies the verified performance order, rather than trying to recover repeat signs from MIDI. Both output layers carry `sourceDirectory: "songs/sources"`, relative to the repository root; resolve `sourceFile` and `notationFile` against that directory and verify their recorded SHA-256 values.
 
@@ -43,7 +43,7 @@ The published MIDI has no CC64 sustain-pedal messages. The typesetter's LilyPond
 
 ## Three-voice arrangement policy
 
-[arrange-score.py](../scripts/arrange-score.py) accepts the common score and [SID arrangement recipe](../songs/fuer-elise-arrangement.json), then writes the editable [three-voice score](../songs/fuer-elise.json). This policy requires exactly the two named parts; another input can name its own melody and accompaniment parts and choose its own meter, pickup, bass threshold, harmony preference, instruments, and optional tempo override. It is a small deterministic arranger, not a universal orchestration engine.
+[arrange-score.py](../../scripts/arrange-score.py) accepts the common score and [SID arrangement recipe](../../songs/fuer-elise-arrangement.json), then writes the editable [three-voice score](../../songs/fuer-elise.json). This policy requires exactly the two named parts; another input can name its own melody and accompaniment parts and choose its own meter, pickup, bass threshold, harmony preference, instruments, and optional tempo override. It is a small deterministic arranger, not a universal orchestration engine.
 
 - Melody selects the highest active upper-staff note.
 - Bass selects the lowest lower-staff note at a measure start or below MIDI 48/C3. The first complete measure begins half a quarter beat after the initial pickup. Source durations are preserved when selected and are never extended.

@@ -14,7 +14,7 @@ PSID v3 encodes the second SID location in header byte `$7A`: `$42` means `$D420
 
 ## Tools and execution
 
-The implemented route uses [SID-Wizard's native two-chip Extra player](../tools/sid-wizard-trial.md): six ordered voices, two independent filters, editable `.sws` source and PSID v3 export for two 8580s at `$D400/$D420`. Follow [the shared native workflow](../../native-song-workflow.md) to reproduce its original six-voice fixture, stereo render and headless VICE checks.
+The implemented route uses [SID-Wizard's native two-chip Extra player](../tools/sid-wizard-trial.md): six ordered voices, two independent filters, editable `.sws` source and PSID v3 export for two 8580s at `$D400/$D420`. Follow [the shared native workflow](../../workflows/native-song-workflow.md) to reproduce its original six-voice fixture, stereo render and headless VICE checks.
 
 GoatTracker Stereo remains an alternative tracker backend. ChiptuneSAK's GoatTracker module recognizes three- and six-voice song structures. c64bridge's inspected SIDWAVE compiler explicitly constructs only voices 1–3, so dual-SID output is not an established capability there. [S08](../sources.md#s08), [S12](../sources.md#s12), [S24](../sources.md#s24)
 
@@ -24,7 +24,7 @@ VICE uses `-sidextra 1` and `-sid2address 0xd420` to select the additional chip.
 x64sc -pal -sidextra 1 -sid2address 0xd420 -autostart song.prg
 ```
 
-The [headless verifier](../../native-vice-checks.md) uses these address flags with the local VICE 3.9 build, explicit 8580 selection and monitor-controlled startup. That tested route handles SID-Wizard's address selector without changing PRG bytes; the illustrative `-autostart` command above is not the tested unattended route. [S16](../sources.md#s16)
+The [headless verifier](../../validation/native-vice-checks.md) uses these address flags with the local VICE 3.9 build, explicit 8580 selection and monitor-controlled startup. That tested route handles SID-Wizard's address selector without changing PRG bytes; the illustrative `-autostart` command above is not the tested unattended route. [S16](../sources.md#s16)
 
 ## Six-voice acceptance checks
 

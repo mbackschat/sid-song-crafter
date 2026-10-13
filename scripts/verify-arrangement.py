@@ -102,7 +102,7 @@ def verify_register_trace(manifest, path):
             prefixes[-1].append(bytes(state))
     for timestamp, actual in rows:
         tick = round((timestamp - offset) * manifest["ticksPerSecond"])
-        # A cycle-bounded libsidplayfp call can stop between stores; docs/fuer-elise-validation.md records the observed tick-783 example.
+        # A cycle-bounded libsidplayfp call can stop between stores; docs/validation/fuer-elise-validation.md records the observed tick-783 example.
         candidates = []
         for candidate in (tick - 1, tick, tick + 1):
             index = max(0, bisect.bisect_right(ticks, candidate) - 1)

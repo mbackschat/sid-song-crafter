@@ -142,7 +142,7 @@ read_delay:
     rts
 
 ; The absolute operand is the 16-bit stream cursor; using RAM code preserves
-; the caller's entire zero page (calling contract in docs/three-voice-player.md).
+; the caller's entire zero page (calling contract in docs/architecture/three-voice-player.md).
 read_byte:
 stream_read:
     lda event_stream
