@@ -52,12 +52,23 @@ class SongBenchLocalTest(unittest.TestCase):
                         self.module.audio_info(audio)
 
     def test_decoded_count_rejects_cropping_and_padding_when_resampled_duration_is_integral(self):
-        original = {"frames": 352800, "sample_rate": 44100}
+        original = {"frames": 384000, "sample_rate": 48000}
         self.module.verify_decoded_frames(192000, 24000, original)
         for frames in (96000, 191999, 192001):
             with self.subTest(frames=frames):
                 with self.assertRaisesRegex(ValueError, "decoded frame count"):
                     self.module.verify_decoded_frames(frames, 24000, original)
+
+    def test_decoded_count_accepts_librosa_float_ceiling_without_allowing_arbitrary_padding(self):
+        for original_frames, nominal_frames in ((352800, 192000), (44100, 24000)):
+            original = {"frames": original_frames, "sample_rate": 44100}
+            with self.subTest(original_frames=original_frames):
+                self.module.verify_decoded_frames(nominal_frames, 24000, original)
+                self.module.verify_decoded_frames(nominal_frames + 1, 24000, original)
+                for frames in (0, nominal_frames // 2, nominal_frames - 1, nominal_frames + 2):
+                    with self.subTest(decoded_frames=frames):
+                        with self.assertRaisesRegex(ValueError, "decoded frame count"):
+                            self.module.verify_decoded_frames(frames, 24000, original)
 
     def test_decoded_count_allows_only_adjacent_integer_rounding_for_fractional_duration(self):
         original = {"frames": 101, "sample_rate": 44100}

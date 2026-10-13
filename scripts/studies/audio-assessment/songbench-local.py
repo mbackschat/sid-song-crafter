@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -45,6 +46,10 @@ def verify_decoded_frames(frames, sample_rate, input_info):
     denominator = input_info["sample_rate"]
     minimum = numerator // denominator
     maximum = (numerator + denominator - 1) // denominator
+    # Librosa 0.11.0 core/audio.py:633–635,681 applies fix_length to the
+    # floating ratio's ceiling, which can exceed the rational ceiling by one.
+    librosa_frames = math.ceil(input_info["frames"] * (float(sample_rate) / denominator))
+    maximum = max(maximum, librosa_frames)
     if frames <= 0 or not minimum <= frames <= maximum:
         raise ValueError("Unexpected decoded frame count after resampling")
 
