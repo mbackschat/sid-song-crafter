@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "source-intake",
+      "command": [
+        "{python}",
+        "scripts/studies/rambo/prepare-rambo-loader.py",
+        "--source",
+        ".local/rambo-source.sid",
+        "--output",
+        "songs/rambo-loader.json",
+        "--check"
+      ],
+      "inputs": [
+        ".local/rambo-source.sid",
+        "songs/rambo-loader.json",
+        "scripts/studies/rambo/prepare-rambo-loader.py",
+        "scripts/rambo_score.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "focused-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "rambo_*test.py",
+        "-v"
+      ],
+      "inputs": [
+        "tests/rambo_score_test.py",
+        "tests/rambo_player_test.py",
+        "tests/rambo_programs_test.py",
+        "songs/rambo-loader.json",
+        ".local/rambo-source.sid",
+        "scripts/rambo_player.py",
+        "scripts/rambo_score.py",
+        "scripts/rambo_programs.py",
+        "scripts/studies/rambo/check-rambo-player.py",
+        "evidence/rambo-form/complete40000/writes.json.gz",
+        "evidence/rambo-form/complete40000/audit.json",
+        "evidence/rambo-form/complete40000/form.json",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "whole-player",
+      "command": [
+        "{python}",
+        "scripts/studies/rambo/check-rambo-player.py",
+        "songs/rambo-loader.json",
+        "--output",
+        "{out}/numeric"
+      ],
+      "inputs": [
+        "songs/rambo-loader.json",
+        "scripts/studies/rambo/check-rambo-player.py",
+        "scripts/rambo_player.py",
+        "scripts/rambo_score.py",
+        "scripts/rambo_programs.py",
+        "evidence/rambo-form/complete40000/writes.json.gz",
+        "evidence/rambo-form/complete40000/audit.json",
+        "evidence/rambo-form/complete40000/form.json"
+      ],
+      "outputs": [
+        "numeric/preflight.json",
+        "numeric/model-writes.json.gz",
+        "numeric/verification.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "sound-fresh-capture",
+      "command": [
+        "{python}",
+        "scripts/studies/rambo/check-rambo-programs.py",
+        "--output",
+        "{out}/proof"
+      ],
+      "inputs": [
+        ".local/rambo-source.sid",
+        ".tools/martin-galway-c64/rambload.asm",
+        "scripts/studies/rambo/check-rambo-programs.py",
+        "scripts/rambo_programs.py",
+        "evidence/rambo-programs/model.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        "evidence/rambo-form/complete40000/writes.json.gz"
+      ],
+      "outputs": [
+        "proof",
+        "proof/verification.json"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "numericVerification": "{stage:whole-player}/numeric/verification.json",
+    "numericStores": "{stage:whole-player}/numeric/model-writes.json.gz",
+    "freshSourceSoundProof": "{stage:sound-fresh-capture}/proof/verification.json"
+  }
+}

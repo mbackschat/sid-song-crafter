@@ -14,6 +14,19 @@ Run the same command again to reuse verified stages. Open `build/monty-listening
 
 The command verifies the source SID fingerprint, compiles and audits all 40,000 declared calls, compares the entire ordered store stream against the retained original ledger, checks the restart in headless VICE, renders both versions from initialization, checks WAV format/duration/clipping and prepares the two comparisons. VICE uses the local source checkout's data directory; no GUI application path is required. The example fingerprints the documented Apple Silicon Homebrew `libintl` dependency by its stable `/opt/homebrew/opt/gettext/lib/libintl.8.dylib` path; adapt that declared input when using a different VICE installation. Failed stages stop the package and retain their logs. The command never infers musical acceptance from a successful run.
 
+## Verify a study before compiled playback
+
+Recipes also automate preparation and numeric evidence. For Rambo, use one of these explicitly different modes after installing its pinned local source assets:
+
+```sh
+python3 scripts/listening-package.py config/listening/rambo-loader-verification.json --output build/rambo-verification
+python3 scripts/listening-package.py config/listening/rambo-loader-retained-verification.json --output build/rambo-retained-verification
+```
+
+The [fresh-capture recipe](../../config/listening/rambo-loader-verification.json) checks extraction, runs focused guards, compares the independent numeric loader with the complete canonical store ledger, and executes the original to capture and verify every SOUND invocation. The [retained-evidence recipe](../../config/listening/rambo-loader-retained-verification.json) instead rechecks the archived SOUND capture against the current component; isolated original-routine checks still execute. Its proof records `captureReused: true`. Both modes retain exact inputs, state/completion checks and evidence paths. Neither produces a compiled player or establishes musical acceptance; the [Rambo study](../research/composition/rambo-preparation.md) owns that pending work.
+
+An unchanged repeated invocation reuses verified stages in either mode. A cache hit for the fresh-capture recipe means reuse of its earlier fresh capture, not a new execution of the original. Read stage reuse in `run.json`; choose a new output directory when a genuinely new capture is required. The numeric check covers all 87,534 ordered stores, the declared 11,000 model calls and 185 quiet confirmation calls, while pinned canonical audit/form records establish the original's 40,000-call coverage.
+
 ## Reuse and invalidation
 
 | Change | Required work |

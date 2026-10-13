@@ -21,6 +21,7 @@ These remain in the shared scripts directory because supported workflows and tes
 | Shades | [compose-shades.py](compose-shades.py), `shades_*` runtime/CIA modules, [accepted familiar transfer](../docs/research/composition/instruments/shades-decoded-programs.md) |
 | Cybernoid | [compose-cybernoid.py](compose-cybernoid.py), `cybernoid_*` runtime modules, [accepted familiar transfer](../docs/research/composition/instruments/cybernoid-decoded-programs.md) |
 | Monty | [compose-monty.py](compose-monty.py), `monty_title_*` runtime modules, [accepted familiar transfer](../docs/research/composition/instruments/monty-decoded-programs.md) |
+| Rambo | [rambo_player.py](rambo_player.py), symbolic score and named sound programs; [complete numeric proof](../docs/research/composition/rambo-preparation.md#independent-numeric-loader), compiled/listening-reviewed export pending |
 | Deflektor | [deflektor_player.py](deflektor_player.py), numeric score/program modules; [preparation evidence](../docs/research/composition/deflektor-preparation.md), not yet a completed compiled/listening-reviewed backend |
 
 ## Source-specific work

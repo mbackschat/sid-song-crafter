@@ -1,0 +1,48 @@
+{
+  "sourceSha256": "88a2b538ee3d3d1d8b0b754bef77a63d9750812694786977ae8c539f6ecd000e",
+  "componentSha256": "1545db906a34416b34eca426cb67f5783454c1f0427f4233f4da0a502c68b96c",
+  "checkerSha256": "46c6d7e880e91c94916be8e744c42f9c4a56bdc699d8bc6c7b72544e8c1a30e0",
+  "captureSha256": "71205652f2bb47d8110b7f69c56b02452146172c3a7b0a60948c81fc29ff8816",
+  "contextBodies": 32448,
+  "contextOrderedStores": 57498,
+  "arpeggioBodies": 5728,
+  "perVoiceBranches": [
+    {
+      "voice": 0,
+      "branch": "arpeggio",
+      "bodies": 568
+    },
+    {
+      "voice": 0,
+      "branch": "other",
+      "bodies": 10248
+    },
+    {
+      "voice": 1,
+      "branch": "other",
+      "bodies": 10816
+    },
+    {
+      "voice": 2,
+      "branch": "arpeggio",
+      "bodies": 5160
+    },
+    {
+      "voice": 2,
+      "branch": "other",
+      "bodies": 5656
+    }
+  ],
+  "isolatedCases": 102,
+  "isolatedSha256": "5670e7c20fcbbe7fcda46f7fb9f726d89ba7a30e049067e785327be1a543a967",
+  "allNamedStatesAndOrderedStoresMatched": true,
+  "negativeControl": {
+    "physicalVoice": 3,
+    "label": "incorrect fourth sequential phase",
+    "detected": true,
+    "legacyFrequency": 1241,
+    "actualFrequency": 1143
+  },
+  "contract": "Binary SOUND input; physical voice0..2, row remaining byte; numeric ten-byte chord overlay and resolved frequency words; lifetime, release, 16-bit PWM, sequential4/3/3 pitch and delayed fourth step, descending arpeggios.",
+  "excluded": "Score/note initialization, shared filter, scheduler, CPU registers/flags, original code runtime, audio or listening proof."
+}
