@@ -1,0 +1,4523 @@
+{
+  "schemaVersion": 1,
+  "check": "compiled-transfer-pitch-against-source-score",
+  "passed": true,
+  "scope": "Submitted compiled candidate and generated plain reference, source beats [0,12); no new capture/render or listening judgment.",
+  "method": {
+    "palClockHz": {
+      "numerator": 17734475,
+      "denominator": 18
+    },
+    "frameCycles": 19656,
+    "frequencyFormula": "Hz = observed complete SID frequency word * PAL clock / 2^24",
+    "pitchIdentity": "Nearest equal-tempered MIDI with A4=440Hz; signed cents are retained separately.",
+    "timingFormula": "Source absolute beat boundary * 60 / quarterBpm, quantized to nearest PAL call with exact rational arithmetic.",
+    "independence": "Does not import the transfer preparer, MIDI-to-native-note mapping, player or frequency lookup; decodes complete ordered compiled SID writes directly.",
+    "stableBody": "Every gated tonal end-of-call state from first tonal call to source note end has one frequency word; low/high intermediate bus words are not treated as notes.",
+    "timingLimit": "Calls verify schedule. instructionStartCycle reports offsets within each call, not measured perceived acoustic onset."
+  },
+  "summary": {
+    "sourceNoteCount": 53,
+    "byRole": {
+      "melody": 35,
+      "bass": 6,
+      "harmony": 12
+    },
+    "pitchMismatches": 0,
+    "scheduledOnsetMismatches": 0,
+    "scheduledGateOffMismatches": 0,
+    "bodyPitchChanges": 0,
+    "unassignedFrequencyPairs": 0,
+    "unexpectedGateOnsInGaps": 0,
+    "frequencyPairs": {
+      "candidate": 65,
+      "reference": 53
+    },
+    "intentionalBassNoiseAttacks": 6,
+    "nativeSignedCentsFromA440": {
+      "minimum": 34.656761412594506,
+      "maximum": 35.361432333094456
+    },
+    "maximumAbsoluteIntervalCentsError": 0.44445714415979864,
+    "maximumAbsoluteBoundaryQuantizationErrorSeconds": 0.009813451859537239,
+    "candidateMinusReferenceGateOnStoreOffsetSeconds": {
+      "minimum": 2.029944500753476e-06,
+      "maximum": 0.00015326080980688743
+    },
+    "melodySourceNotes": [
+      "E5",
+      "D#5",
+      "E5",
+      "D#5",
+      "E5",
+      "B4",
+      "D5",
+      "C5",
+      "A4",
+      "C4",
+      "E4",
+      "A4",
+      "B4",
+      "E4",
+      "G#4",
+      "B4",
+      "C5",
+      "E4",
+      "E5",
+      "D#5",
+      "E5",
+      "D#5",
+      "E5",
+      "B4",
+      "D5",
+      "C5",
+      "A4",
+      "C4",
+      "E4",
+      "A4",
+      "B4",
+      "E4",
+      "C5",
+      "B4",
+      "A4"
+    ]
+  },
+  "audioPins": {
+    "candidate": {
+      "compiledSidSha256": "c801ca9b5fc6e51fb8d87013952c37a2f770290bd63b383eaf67e73cd176928f",
+      "ledgerRawSha256": "347c87d74a972dd467d5f03d2a1c7348e8a7f4199e457755df89053b84998043",
+      "submittedWavSha256": "772edcbf89c4d9fdf779619c75ec9c102da4c5d7913e681453f6726aa99c4e82",
+      "filename": "ghouls-transfer.wav"
+    },
+    "reference": {
+      "compiledSidSha256": "628e6c894c468cf78ba0894b2dba9da8959c5a49b824c46a5e021c14218520cb",
+      "ledgerRawSha256": "05e5be3ebdab38d1a54b01d037a28fd28c4ad3c4b0609b105142a1d294d3840a",
+      "submittedWavSha256": "d4b0db39efae08b3a88f1442ff1b91efb31b02ed8298954f123652179b213d2d",
+      "filename": "plain-reference.wav"
+    }
+  },
+  "notes": [
+    {
+      "role": "melody",
+      "index": 0,
+      "sourceMidi": 76,
+      "sourceNote": "E5",
+      "startBeat": 0.0,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 0,
+      "scheduledEndCall": 10,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 11457,
+        "hz": 672.8168331086636,
+        "nearestMidi": 76,
+        "signedCentsFromSource": 35.25233225205113,
+        "rawGraphNote": 65,
+        "tonalStartCall": 0,
+        "onsetControl": {
+          "voice": 0,
+          "call": 0,
+          "value": 65,
+          "instructionStartCycle": 1170
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 10,
+          "value": 64,
+          "instructionStartCycle": 393
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 0,
+            "word": 11457,
+            "instructionStartCycle": 1084
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 11457,
+        "hz": 672.8168331086636,
+        "nearestMidi": 76,
+        "signedCentsFromSource": 35.25233225205113,
+        "rawGraphNote": 65,
+        "tonalStartCall": 0,
+        "onsetControl": {
+          "voice": 0,
+          "call": 0,
+          "value": 17,
+          "instructionStartCycle": 1168
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 10,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 0,
+            "word": 11457,
+            "instructionStartCycle": 1082
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 1,
+      "sourceMidi": 75,
+      "sourceNote": "D#5",
+      "startBeat": 0.25,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 10,
+      "scheduledEndCall": 21,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 10814,
+        "hz": 635.0564051005575,
+        "nearestMidi": 75,
+        "signedCentsFromSource": 35.25745513804566,
+        "rawGraphNote": 64,
+        "tonalStartCall": 10,
+        "onsetControl": {
+          "voice": 0,
+          "call": 10,
+          "value": 65,
+          "instructionStartCycle": 789
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 21,
+          "value": 64,
+          "instructionStartCycle": 393
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 10,
+            "word": 10814,
+            "instructionStartCycle": 703
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 10814,
+        "hz": 635.0564051005575,
+        "nearestMidi": 75,
+        "signedCentsFromSource": 35.25745513804566,
+        "rawGraphNote": 64,
+        "tonalStartCall": 10,
+        "onsetControl": {
+          "voice": 0,
+          "call": 10,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 21,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 10,
+            "word": 10814,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 2,
+      "sourceMidi": 76,
+      "sourceNote": "E5",
+      "startBeat": 0.5,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 21,
+      "scheduledEndCall": 31,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 11457,
+        "hz": 672.8168331086636,
+        "nearestMidi": 76,
+        "signedCentsFromSource": 35.25233225205113,
+        "rawGraphNote": 65,
+        "tonalStartCall": 21,
+        "onsetControl": {
+          "voice": 0,
+          "call": 21,
+          "value": 65,
+          "instructionStartCycle": 789
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 31,
+          "value": 64,
+          "instructionStartCycle": 393
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 21,
+            "word": 11457,
+            "instructionStartCycle": 703
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 11457,
+        "hz": 672.8168331086636,
+        "nearestMidi": 76,
+        "signedCentsFromSource": 35.25233225205113,
+        "rawGraphNote": 65,
+        "tonalStartCall": 21,
+        "onsetControl": {
+          "voice": 0,
+          "call": 21,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 31,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 21,
+            "word": 11457,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 3,
+      "sourceMidi": 75,
+      "sourceNote": "D#5",
+      "startBeat": 0.75,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 31,
+      "scheduledEndCall": 42,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 10814,
+        "hz": 635.0564051005575,
+        "nearestMidi": 75,
+        "signedCentsFromSource": 35.25745513804566,
+        "rawGraphNote": 64,
+        "tonalStartCall": 31,
+        "onsetControl": {
+          "voice": 0,
+          "call": 31,
+          "value": 65,
+          "instructionStartCycle": 789
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 42,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 31,
+            "word": 10814,
+            "instructionStartCycle": 703
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 10814,
+        "hz": 635.0564051005575,
+        "nearestMidi": 75,
+        "signedCentsFromSource": 35.25745513804566,
+        "rawGraphNote": 64,
+        "tonalStartCall": 31,
+        "onsetControl": {
+          "voice": 0,
+          "call": 31,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 42,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 31,
+            "word": 10814,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 4,
+      "sourceMidi": 76,
+      "sourceNote": "E5",
+      "startBeat": 1.0,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 42,
+      "scheduledEndCall": 52,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 11457,
+        "hz": 672.8168331086636,
+        "nearestMidi": 76,
+        "signedCentsFromSource": 35.25233225205113,
+        "rawGraphNote": 65,
+        "tonalStartCall": 42,
+        "onsetControl": {
+          "voice": 0,
+          "call": 42,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 52,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 42,
+            "word": 11457,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 11457,
+        "hz": 672.8168331086636,
+        "nearestMidi": 76,
+        "signedCentsFromSource": 35.25233225205113,
+        "rawGraphNote": 65,
+        "tonalStartCall": 42,
+        "onsetControl": {
+          "voice": 0,
+          "call": 42,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 52,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 42,
+            "word": 11457,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 5,
+      "sourceMidi": 71,
+      "sourceNote": "B4",
+      "startBeat": 1.25,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 52,
+      "scheduledEndCall": 63,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 8583,
+        "hz": 504.0400522450606,
+        "nearestMidi": 71,
+        "signedCentsFromSource": 35.24182549285371,
+        "rawGraphNote": 60,
+        "tonalStartCall": 52,
+        "onsetControl": {
+          "voice": 0,
+          "call": 52,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 63,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 52,
+            "word": 8583,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 8583,
+        "hz": 504.0400522450606,
+        "nearestMidi": 71,
+        "signedCentsFromSource": 35.24182549285371,
+        "rawGraphNote": 60,
+        "tonalStartCall": 52,
+        "onsetControl": {
+          "voice": 0,
+          "call": 52,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 63,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 52,
+            "word": 8583,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 6,
+      "sourceMidi": 74,
+      "sourceNote": "D5",
+      "startBeat": 1.5,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 63,
+      "scheduledEndCall": 73,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 10207,
+        "hz": 599.4100912577576,
+        "nearestMidi": 74,
+        "signedCentsFromSource": 35.2478182379258,
+        "rawGraphNote": 63,
+        "tonalStartCall": 63,
+        "onsetControl": {
+          "voice": 0,
+          "call": 63,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 73,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 63,
+            "word": 10207,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 10207,
+        "hz": 599.4100912577576,
+        "nearestMidi": 74,
+        "signedCentsFromSource": 35.2478182379258,
+        "rawGraphNote": 63,
+        "tonalStartCall": 63,
+        "onsetControl": {
+          "voice": 0,
+          "call": 63,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 73,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 63,
+            "word": 10207,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 7,
+      "sourceMidi": 72,
+      "sourceNote": "C5",
+      "startBeat": 1.75,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 73,
+      "scheduledEndCall": 84,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 9094,
+        "hz": 534.048728313711,
+        "nearestMidi": 72,
+        "signedCentsFromSource": 35.361432333094456,
+        "rawGraphNote": 61,
+        "tonalStartCall": 73,
+        "onsetControl": {
+          "voice": 0,
+          "call": 73,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 84,
+          "value": 64,
+          "instructionStartCycle": 393
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 73,
+            "word": 9094,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 9094,
+        "hz": 534.048728313711,
+        "nearestMidi": 72,
+        "signedCentsFromSource": 35.361432333094456,
+        "rawGraphNote": 61,
+        "tonalStartCall": 73,
+        "onsetControl": {
+          "voice": 0,
+          "call": 73,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 84,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 73,
+            "word": 9094,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 8,
+      "sourceMidi": 69,
+      "sourceNote": "A4",
+      "startBeat": 2.0,
+      "durationBeats": 0.5,
+      "scheduledStartCall": 84,
+      "scheduledEndCall": 104,
+      "quantizedDurationCalls": 20,
+      "candidate": {
+        "word": 7647,
+        "hz": 449.07308394710225,
+        "nearestMidi": 69,
+        "signedCentsFromSource": 35.33607633167577,
+        "rawGraphNote": 58,
+        "tonalStartCall": 84,
+        "onsetControl": {
+          "voice": 0,
+          "call": 84,
+          "value": 65,
+          "instructionStartCycle": 789
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 104,
+          "value": 64,
+          "instructionStartCycle": 393
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 84,
+            "word": 7647,
+            "instructionStartCycle": 703
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 7647,
+        "hz": 449.07308394710225,
+        "nearestMidi": 69,
+        "signedCentsFromSource": 35.33607633167577,
+        "rawGraphNote": 58,
+        "tonalStartCall": 84,
+        "onsetControl": {
+          "voice": 0,
+          "call": 84,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 104,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 84,
+            "word": 7647,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 9,
+      "sourceMidi": 60,
+      "sourceNote": "C4",
+      "startBeat": 2.75,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 115,
+      "scheduledEndCall": 125,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 4547,
+        "hz": 267.0243641568555,
+        "nearestMidi": 60,
+        "signedCentsFromSource": 35.361432333094456,
+        "rawGraphNote": 49,
+        "tonalStartCall": 115,
+        "onsetControl": {
+          "voice": 0,
+          "call": 115,
+          "value": 65,
+          "instructionStartCycle": 556
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 125,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 115,
+            "word": 4547,
+            "instructionStartCycle": 470
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 4547,
+        "hz": 267.0243641568555,
+        "nearestMidi": 60,
+        "signedCentsFromSource": 35.361432333094456,
+        "rawGraphNote": 49,
+        "tonalStartCall": 115,
+        "onsetControl": {
+          "voice": 0,
+          "call": 115,
+          "value": 17,
+          "instructionStartCycle": 502
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 125,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 115,
+            "word": 4547,
+            "instructionStartCycle": 416
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 10,
+      "sourceMidi": 64,
+      "sourceNote": "E4",
+      "startBeat": 3.0,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 125,
+      "scheduledEndCall": 136,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 5728,
+        "hz": 336.37905385759143,
+        "nearestMidi": 64,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 53,
+        "tonalStartCall": 125,
+        "onsetControl": {
+          "voice": 0,
+          "call": 125,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 136,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 125,
+            "word": 5728,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 5728,
+        "hz": 336.37905385759143,
+        "nearestMidi": 64,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 53,
+        "tonalStartCall": 125,
+        "onsetControl": {
+          "voice": 0,
+          "call": 125,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 136,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 125,
+            "word": 5728,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 11,
+      "sourceMidi": 69,
+      "sourceNote": "A4",
+      "startBeat": 3.25,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 136,
+      "scheduledEndCall": 146,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 7647,
+        "hz": 449.07308394710225,
+        "nearestMidi": 69,
+        "signedCentsFromSource": 35.33607633167577,
+        "rawGraphNote": 58,
+        "tonalStartCall": 136,
+        "onsetControl": {
+          "voice": 0,
+          "call": 136,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 146,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 136,
+            "word": 7647,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 7647,
+        "hz": 449.07308394710225,
+        "nearestMidi": 69,
+        "signedCentsFromSource": 35.33607633167577,
+        "rawGraphNote": 58,
+        "tonalStartCall": 136,
+        "onsetControl": {
+          "voice": 0,
+          "call": 136,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 146,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 136,
+            "word": 7647,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 12,
+      "sourceMidi": 71,
+      "sourceNote": "B4",
+      "startBeat": 3.5,
+      "durationBeats": 0.5,
+      "scheduledStartCall": 146,
+      "scheduledEndCall": 167,
+      "quantizedDurationCalls": 21,
+      "candidate": {
+        "word": 8583,
+        "hz": 504.0400522450606,
+        "nearestMidi": 71,
+        "signedCentsFromSource": 35.24182549285371,
+        "rawGraphNote": 60,
+        "tonalStartCall": 146,
+        "onsetControl": {
+          "voice": 0,
+          "call": 146,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 167,
+          "value": 64,
+          "instructionStartCycle": 393
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 146,
+            "word": 8583,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 8583,
+        "hz": 504.0400522450606,
+        "nearestMidi": 71,
+        "signedCentsFromSource": 35.24182549285371,
+        "rawGraphNote": 60,
+        "tonalStartCall": 146,
+        "onsetControl": {
+          "voice": 0,
+          "call": 146,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 167,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 146,
+            "word": 8583,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 13,
+      "sourceMidi": 64,
+      "sourceNote": "E4",
+      "startBeat": 4.25,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 178,
+      "scheduledEndCall": 188,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 5728,
+        "hz": 336.37905385759143,
+        "nearestMidi": 64,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 53,
+        "tonalStartCall": 178,
+        "onsetControl": {
+          "voice": 0,
+          "call": 178,
+          "value": 65,
+          "instructionStartCycle": 556
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 188,
+          "value": 64,
+          "instructionStartCycle": 393
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 178,
+            "word": 5728,
+            "instructionStartCycle": 470
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 5728,
+        "hz": 336.37905385759143,
+        "nearestMidi": 64,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 53,
+        "tonalStartCall": 178,
+        "onsetControl": {
+          "voice": 0,
+          "call": 178,
+          "value": 17,
+          "instructionStartCycle": 502
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 188,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 178,
+            "word": 5728,
+            "instructionStartCycle": 416
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 14,
+      "sourceMidi": 68,
+      "sourceNote": "G#4",
+      "startBeat": 4.5,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 188,
+      "scheduledEndCall": 198,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 7217,
+        "hz": 423.8211647503906,
+        "nearestMidi": 68,
+        "signedCentsFromSource": 35.142533150501265,
+        "rawGraphNote": 57,
+        "tonalStartCall": 188,
+        "onsetControl": {
+          "voice": 0,
+          "call": 188,
+          "value": 65,
+          "instructionStartCycle": 789
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 198,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 188,
+            "word": 7217,
+            "instructionStartCycle": 703
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 7217,
+        "hz": 423.8211647503906,
+        "nearestMidi": 68,
+        "signedCentsFromSource": 35.142533150501265,
+        "rawGraphNote": 57,
+        "tonalStartCall": 188,
+        "onsetControl": {
+          "voice": 0,
+          "call": 188,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 198,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 188,
+            "word": 7217,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 15,
+      "sourceMidi": 71,
+      "sourceNote": "B4",
+      "startBeat": 4.75,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 198,
+      "scheduledEndCall": 209,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 8583,
+        "hz": 504.0400522450606,
+        "nearestMidi": 71,
+        "signedCentsFromSource": 35.24182549285371,
+        "rawGraphNote": 60,
+        "tonalStartCall": 198,
+        "onsetControl": {
+          "voice": 0,
+          "call": 198,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 209,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 198,
+            "word": 8583,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 8583,
+        "hz": 504.0400522450606,
+        "nearestMidi": 71,
+        "signedCentsFromSource": 35.24182549285371,
+        "rawGraphNote": 60,
+        "tonalStartCall": 198,
+        "onsetControl": {
+          "voice": 0,
+          "call": 198,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 209,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 198,
+            "word": 8583,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 16,
+      "sourceMidi": 72,
+      "sourceNote": "C5",
+      "startBeat": 5.0,
+      "durationBeats": 0.5,
+      "scheduledStartCall": 209,
+      "scheduledEndCall": 230,
+      "quantizedDurationCalls": 21,
+      "candidate": {
+        "word": 9094,
+        "hz": 534.048728313711,
+        "nearestMidi": 72,
+        "signedCentsFromSource": 35.361432333094456,
+        "rawGraphNote": 61,
+        "tonalStartCall": 209,
+        "onsetControl": {
+          "voice": 0,
+          "call": 209,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 230,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 209,
+            "word": 9094,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 9094,
+        "hz": 534.048728313711,
+        "nearestMidi": 72,
+        "signedCentsFromSource": 35.361432333094456,
+        "rawGraphNote": 61,
+        "tonalStartCall": 209,
+        "onsetControl": {
+          "voice": 0,
+          "call": 209,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 230,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 209,
+            "word": 9094,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 17,
+      "sourceMidi": 64,
+      "sourceNote": "E4",
+      "startBeat": 5.75,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 240,
+      "scheduledEndCall": 251,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 5728,
+        "hz": 336.37905385759143,
+        "nearestMidi": 64,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 53,
+        "tonalStartCall": 240,
+        "onsetControl": {
+          "voice": 0,
+          "call": 240,
+          "value": 65,
+          "instructionStartCycle": 556
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 251,
+          "value": 64,
+          "instructionStartCycle": 393
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 240,
+            "word": 5728,
+            "instructionStartCycle": 470
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 5728,
+        "hz": 336.37905385759143,
+        "nearestMidi": 64,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 53,
+        "tonalStartCall": 240,
+        "onsetControl": {
+          "voice": 0,
+          "call": 240,
+          "value": 17,
+          "instructionStartCycle": 502
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 251,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 240,
+            "word": 5728,
+            "instructionStartCycle": 416
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 18,
+      "sourceMidi": 76,
+      "sourceNote": "E5",
+      "startBeat": 6.0,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 251,
+      "scheduledEndCall": 261,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 11457,
+        "hz": 672.8168331086636,
+        "nearestMidi": 76,
+        "signedCentsFromSource": 35.25233225205113,
+        "rawGraphNote": 65,
+        "tonalStartCall": 251,
+        "onsetControl": {
+          "voice": 0,
+          "call": 251,
+          "value": 65,
+          "instructionStartCycle": 789
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 261,
+          "value": 64,
+          "instructionStartCycle": 393
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 251,
+            "word": 11457,
+            "instructionStartCycle": 703
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 11457,
+        "hz": 672.8168331086636,
+        "nearestMidi": 76,
+        "signedCentsFromSource": 35.25233225205113,
+        "rawGraphNote": 65,
+        "tonalStartCall": 251,
+        "onsetControl": {
+          "voice": 0,
+          "call": 251,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 261,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 251,
+            "word": 11457,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 19,
+      "sourceMidi": 75,
+      "sourceNote": "D#5",
+      "startBeat": 6.25,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 261,
+      "scheduledEndCall": 272,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 10814,
+        "hz": 635.0564051005575,
+        "nearestMidi": 75,
+        "signedCentsFromSource": 35.25745513804566,
+        "rawGraphNote": 64,
+        "tonalStartCall": 261,
+        "onsetControl": {
+          "voice": 0,
+          "call": 261,
+          "value": 65,
+          "instructionStartCycle": 789
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 272,
+          "value": 64,
+          "instructionStartCycle": 393
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 261,
+            "word": 10814,
+            "instructionStartCycle": 703
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 10814,
+        "hz": 635.0564051005575,
+        "nearestMidi": 75,
+        "signedCentsFromSource": 35.25745513804566,
+        "rawGraphNote": 64,
+        "tonalStartCall": 261,
+        "onsetControl": {
+          "voice": 0,
+          "call": 261,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 272,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 261,
+            "word": 10814,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 20,
+      "sourceMidi": 76,
+      "sourceNote": "E5",
+      "startBeat": 6.5,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 272,
+      "scheduledEndCall": 282,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 11457,
+        "hz": 672.8168331086636,
+        "nearestMidi": 76,
+        "signedCentsFromSource": 35.25233225205113,
+        "rawGraphNote": 65,
+        "tonalStartCall": 272,
+        "onsetControl": {
+          "voice": 0,
+          "call": 272,
+          "value": 65,
+          "instructionStartCycle": 789
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 282,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 272,
+            "word": 11457,
+            "instructionStartCycle": 703
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 11457,
+        "hz": 672.8168331086636,
+        "nearestMidi": 76,
+        "signedCentsFromSource": 35.25233225205113,
+        "rawGraphNote": 65,
+        "tonalStartCall": 272,
+        "onsetControl": {
+          "voice": 0,
+          "call": 272,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 282,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 272,
+            "word": 11457,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 21,
+      "sourceMidi": 75,
+      "sourceNote": "D#5",
+      "startBeat": 6.75,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 282,
+      "scheduledEndCall": 292,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 10814,
+        "hz": 635.0564051005575,
+        "nearestMidi": 75,
+        "signedCentsFromSource": 35.25745513804566,
+        "rawGraphNote": 64,
+        "tonalStartCall": 282,
+        "onsetControl": {
+          "voice": 0,
+          "call": 282,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 292,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 282,
+            "word": 10814,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 10814,
+        "hz": 635.0564051005575,
+        "nearestMidi": 75,
+        "signedCentsFromSource": 35.25745513804566,
+        "rawGraphNote": 64,
+        "tonalStartCall": 282,
+        "onsetControl": {
+          "voice": 0,
+          "call": 282,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 292,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 282,
+            "word": 10814,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 22,
+      "sourceMidi": 76,
+      "sourceNote": "E5",
+      "startBeat": 7.0,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 292,
+      "scheduledEndCall": 303,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 11457,
+        "hz": 672.8168331086636,
+        "nearestMidi": 76,
+        "signedCentsFromSource": 35.25233225205113,
+        "rawGraphNote": 65,
+        "tonalStartCall": 292,
+        "onsetControl": {
+          "voice": 0,
+          "call": 292,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 303,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 292,
+            "word": 11457,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 11457,
+        "hz": 672.8168331086636,
+        "nearestMidi": 76,
+        "signedCentsFromSource": 35.25233225205113,
+        "rawGraphNote": 65,
+        "tonalStartCall": 292,
+        "onsetControl": {
+          "voice": 0,
+          "call": 292,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 303,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 292,
+            "word": 11457,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 23,
+      "sourceMidi": 71,
+      "sourceNote": "B4",
+      "startBeat": 7.25,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 303,
+      "scheduledEndCall": 313,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 8583,
+        "hz": 504.0400522450606,
+        "nearestMidi": 71,
+        "signedCentsFromSource": 35.24182549285371,
+        "rawGraphNote": 60,
+        "tonalStartCall": 303,
+        "onsetControl": {
+          "voice": 0,
+          "call": 303,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 313,
+          "value": 64,
+          "instructionStartCycle": 434
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 303,
+            "word": 8583,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 8583,
+        "hz": 504.0400522450606,
+        "nearestMidi": 71,
+        "signedCentsFromSource": 35.24182549285371,
+        "rawGraphNote": 60,
+        "tonalStartCall": 303,
+        "onsetControl": {
+          "voice": 0,
+          "call": 303,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 313,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 303,
+            "word": 8583,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 24,
+      "sourceMidi": 74,
+      "sourceNote": "D5",
+      "startBeat": 7.5,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 313,
+      "scheduledEndCall": 324,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 10207,
+        "hz": 599.4100912577576,
+        "nearestMidi": 74,
+        "signedCentsFromSource": 35.2478182379258,
+        "rawGraphNote": 63,
+        "tonalStartCall": 313,
+        "onsetControl": {
+          "voice": 0,
+          "call": 313,
+          "value": 65,
+          "instructionStartCycle": 830
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 324,
+          "value": 64,
+          "instructionStartCycle": 393
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 313,
+            "word": 10207,
+            "instructionStartCycle": 744
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 10207,
+        "hz": 599.4100912577576,
+        "nearestMidi": 74,
+        "signedCentsFromSource": 35.2478182379258,
+        "rawGraphNote": 63,
+        "tonalStartCall": 313,
+        "onsetControl": {
+          "voice": 0,
+          "call": 313,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 324,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 313,
+            "word": 10207,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 25,
+      "sourceMidi": 72,
+      "sourceNote": "C5",
+      "startBeat": 7.75,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 324,
+      "scheduledEndCall": 334,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 9094,
+        "hz": 534.048728313711,
+        "nearestMidi": 72,
+        "signedCentsFromSource": 35.361432333094456,
+        "rawGraphNote": 61,
+        "tonalStartCall": 324,
+        "onsetControl": {
+          "voice": 0,
+          "call": 324,
+          "value": 65,
+          "instructionStartCycle": 792
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 334,
+          "value": 64,
+          "instructionStartCycle": 393
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 324,
+            "word": 9094,
+            "instructionStartCycle": 706
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 9094,
+        "hz": 534.048728313711,
+        "nearestMidi": 72,
+        "signedCentsFromSource": 35.361432333094456,
+        "rawGraphNote": 61,
+        "tonalStartCall": 324,
+        "onsetControl": {
+          "voice": 0,
+          "call": 324,
+          "value": 17,
+          "instructionStartCycle": 738
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 334,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 324,
+            "word": 9094,
+            "instructionStartCycle": 652
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 26,
+      "sourceMidi": 69,
+      "sourceNote": "A4",
+      "startBeat": 8.0,
+      "durationBeats": 0.5,
+      "scheduledStartCall": 334,
+      "scheduledEndCall": 355,
+      "quantizedDurationCalls": 21,
+      "candidate": {
+        "word": 7647,
+        "hz": 449.07308394710225,
+        "nearestMidi": 69,
+        "signedCentsFromSource": 35.33607633167577,
+        "rawGraphNote": 58,
+        "tonalStartCall": 334,
+        "onsetControl": {
+          "voice": 0,
+          "call": 334,
+          "value": 65,
+          "instructionStartCycle": 789
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 355,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 334,
+            "word": 7647,
+            "instructionStartCycle": 703
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 7647,
+        "hz": 449.07308394710225,
+        "nearestMidi": 69,
+        "signedCentsFromSource": 35.33607633167577,
+        "rawGraphNote": 58,
+        "tonalStartCall": 334,
+        "onsetControl": {
+          "voice": 0,
+          "call": 334,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 355,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 334,
+            "word": 7647,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 27,
+      "sourceMidi": 60,
+      "sourceNote": "C4",
+      "startBeat": 8.75,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 365,
+      "scheduledEndCall": 376,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 4547,
+        "hz": 267.0243641568555,
+        "nearestMidi": 60,
+        "signedCentsFromSource": 35.361432333094456,
+        "rawGraphNote": 49,
+        "tonalStartCall": 365,
+        "onsetControl": {
+          "voice": 0,
+          "call": 365,
+          "value": 65,
+          "instructionStartCycle": 552
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 376,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 365,
+            "word": 4547,
+            "instructionStartCycle": 466
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 4547,
+        "hz": 267.0243641568555,
+        "nearestMidi": 60,
+        "signedCentsFromSource": 35.361432333094456,
+        "rawGraphNote": 49,
+        "tonalStartCall": 365,
+        "onsetControl": {
+          "voice": 0,
+          "call": 365,
+          "value": 17,
+          "instructionStartCycle": 502
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 376,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 365,
+            "word": 4547,
+            "instructionStartCycle": 416
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 28,
+      "sourceMidi": 64,
+      "sourceNote": "E4",
+      "startBeat": 9.0,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 376,
+      "scheduledEndCall": 386,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 5728,
+        "hz": 336.37905385759143,
+        "nearestMidi": 64,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 53,
+        "tonalStartCall": 376,
+        "onsetControl": {
+          "voice": 0,
+          "call": 376,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 386,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 376,
+            "word": 5728,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 5728,
+        "hz": 336.37905385759143,
+        "nearestMidi": 64,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 53,
+        "tonalStartCall": 376,
+        "onsetControl": {
+          "voice": 0,
+          "call": 376,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 386,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 376,
+            "word": 5728,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 29,
+      "sourceMidi": 69,
+      "sourceNote": "A4",
+      "startBeat": 9.25,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 386,
+      "scheduledEndCall": 397,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 7647,
+        "hz": 449.07308394710225,
+        "nearestMidi": 69,
+        "signedCentsFromSource": 35.33607633167577,
+        "rawGraphNote": 58,
+        "tonalStartCall": 386,
+        "onsetControl": {
+          "voice": 0,
+          "call": 386,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 397,
+          "value": 64,
+          "instructionStartCycle": 393
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 386,
+            "word": 7647,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 7647,
+        "hz": 449.07308394710225,
+        "nearestMidi": 69,
+        "signedCentsFromSource": 35.33607633167577,
+        "rawGraphNote": 58,
+        "tonalStartCall": 386,
+        "onsetControl": {
+          "voice": 0,
+          "call": 386,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 397,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 386,
+            "word": 7647,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 30,
+      "sourceMidi": 71,
+      "sourceNote": "B4",
+      "startBeat": 9.5,
+      "durationBeats": 0.5,
+      "scheduledStartCall": 397,
+      "scheduledEndCall": 418,
+      "quantizedDurationCalls": 21,
+      "candidate": {
+        "word": 8583,
+        "hz": 504.0400522450606,
+        "nearestMidi": 71,
+        "signedCentsFromSource": 35.24182549285371,
+        "rawGraphNote": 60,
+        "tonalStartCall": 397,
+        "onsetControl": {
+          "voice": 0,
+          "call": 397,
+          "value": 65,
+          "instructionStartCycle": 789
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 418,
+          "value": 64,
+          "instructionStartCycle": 393
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 397,
+            "word": 8583,
+            "instructionStartCycle": 703
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 8583,
+        "hz": 504.0400522450606,
+        "nearestMidi": 71,
+        "signedCentsFromSource": 35.24182549285371,
+        "rawGraphNote": 60,
+        "tonalStartCall": 397,
+        "onsetControl": {
+          "voice": 0,
+          "call": 397,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 418,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 397,
+            "word": 8583,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 31,
+      "sourceMidi": 64,
+      "sourceNote": "E4",
+      "startBeat": 10.25,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 428,
+      "scheduledEndCall": 439,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 5728,
+        "hz": 336.37905385759143,
+        "nearestMidi": 64,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 53,
+        "tonalStartCall": 428,
+        "onsetControl": {
+          "voice": 0,
+          "call": 428,
+          "value": 65,
+          "instructionStartCycle": 556
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 439,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 428,
+            "word": 5728,
+            "instructionStartCycle": 470
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 5728,
+        "hz": 336.37905385759143,
+        "nearestMidi": 64,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 53,
+        "tonalStartCall": 428,
+        "onsetControl": {
+          "voice": 0,
+          "call": 428,
+          "value": 17,
+          "instructionStartCycle": 502
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 439,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 428,
+            "word": 5728,
+            "instructionStartCycle": 416
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 32,
+      "sourceMidi": 72,
+      "sourceNote": "C5",
+      "startBeat": 10.5,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 439,
+      "scheduledEndCall": 449,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 9094,
+        "hz": 534.048728313711,
+        "nearestMidi": 72,
+        "signedCentsFromSource": 35.361432333094456,
+        "rawGraphNote": 61,
+        "tonalStartCall": 439,
+        "onsetControl": {
+          "voice": 0,
+          "call": 439,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 449,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 439,
+            "word": 9094,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 9094,
+        "hz": 534.048728313711,
+        "nearestMidi": 72,
+        "signedCentsFromSource": 35.361432333094456,
+        "rawGraphNote": 61,
+        "tonalStartCall": 439,
+        "onsetControl": {
+          "voice": 0,
+          "call": 439,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 449,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 439,
+            "word": 9094,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 33,
+      "sourceMidi": 71,
+      "sourceNote": "B4",
+      "startBeat": 10.75,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 449,
+      "scheduledEndCall": 459,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 8583,
+        "hz": 504.0400522450606,
+        "nearestMidi": 71,
+        "signedCentsFromSource": 35.24182549285371,
+        "rawGraphNote": 60,
+        "tonalStartCall": 449,
+        "onsetControl": {
+          "voice": 0,
+          "call": 449,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 459,
+          "value": 64,
+          "instructionStartCycle": 389
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 449,
+            "word": 8583,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 8583,
+        "hz": 504.0400522450606,
+        "nearestMidi": 71,
+        "signedCentsFromSource": 35.24182549285371,
+        "rawGraphNote": 60,
+        "tonalStartCall": 449,
+        "onsetControl": {
+          "voice": 0,
+          "call": 449,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 459,
+          "value": 16,
+          "instructionStartCycle": 339
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 449,
+            "word": 8583,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "melody",
+      "index": 34,
+      "sourceMidi": 69,
+      "sourceNote": "A4",
+      "startBeat": 11.0,
+      "durationBeats": 1.0,
+      "scheduledStartCall": 459,
+      "scheduledEndCall": 501,
+      "quantizedDurationCalls": 42,
+      "candidate": {
+        "word": 7647,
+        "hz": 449.07308394710225,
+        "nearestMidi": 69,
+        "signedCentsFromSource": 35.33607633167577,
+        "rawGraphNote": 58,
+        "tonalStartCall": 459,
+        "onsetControl": {
+          "voice": 0,
+          "call": 459,
+          "value": 65,
+          "instructionStartCycle": 785
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 501,
+          "value": 64,
+          "instructionStartCycle": 627
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 459,
+            "word": 7647,
+            "instructionStartCycle": 699
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 7647,
+        "hz": 449.07308394710225,
+        "nearestMidi": 69,
+        "signedCentsFromSource": 35.33607633167577,
+        "rawGraphNote": 58,
+        "tonalStartCall": 459,
+        "onsetControl": {
+          "voice": 0,
+          "call": 459,
+          "value": 17,
+          "instructionStartCycle": 735
+        },
+        "endGateOff": {
+          "voice": 0,
+          "call": 501,
+          "value": 16,
+          "instructionStartCycle": 573
+        },
+        "frequencyPairs": [
+          {
+            "voice": 0,
+            "call": 459,
+            "word": 7647,
+            "instructionStartCycle": 649
+          }
+        ],
+        "bodyAd": 2,
+        "bodySr": 144
+      }
+    },
+    {
+      "role": "bass",
+      "index": 0,
+      "sourceMidi": 45,
+      "sourceNote": "A2",
+      "startBeat": 2.0,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 84,
+      "scheduledEndCall": 94,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 1911,
+        "hz": 112.22422694166501,
+        "nearestMidi": 45,
+        "signedCentsFromSource": 34.656761412594506,
+        "rawGraphNote": 34,
+        "tonalStartCall": 85,
+        "onsetControl": {
+          "voice": 1,
+          "call": 84,
+          "value": 129,
+          "instructionStartCycle": 1964
+        },
+        "endGateOff": {
+          "voice": 1,
+          "call": 94,
+          "value": 16,
+          "instructionStartCycle": 556
+        },
+        "frequencyPairs": [
+          {
+            "voice": 1,
+            "call": 84,
+            "word": 1911,
+            "instructionStartCycle": 1839
+          },
+          {
+            "voice": 1,
+            "call": 84,
+            "word": 10240,
+            "instructionStartCycle": 1946
+          },
+          {
+            "voice": 1,
+            "call": 85,
+            "word": 1911,
+            "instructionStartCycle": 288
+          }
+        ],
+        "bodyAd": 5,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 1911,
+        "hz": 112.22422694166501,
+        "nearestMidi": 45,
+        "signedCentsFromSource": 34.656761412594506,
+        "rawGraphNote": 34,
+        "tonalStartCall": 84,
+        "onsetControl": {
+          "voice": 1,
+          "call": 84,
+          "value": 17,
+          "instructionStartCycle": 1881
+        },
+        "endGateOff": {
+          "voice": 1,
+          "call": 94,
+          "value": 16,
+          "instructionStartCycle": 502
+        },
+        "frequencyPairs": [
+          {
+            "voice": 1,
+            "call": 84,
+            "word": 1911,
+            "instructionStartCycle": 1785
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "bass",
+      "index": 1,
+      "sourceMidi": 40,
+      "sourceNote": "E2",
+      "startBeat": 3.5,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 146,
+      "scheduledEndCall": 157,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 1432,
+        "hz": 84.09476346439786,
+        "nearestMidi": 40,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 29,
+        "tonalStartCall": 147,
+        "onsetControl": {
+          "voice": 1,
+          "call": 146,
+          "value": 129,
+          "instructionStartCycle": 1386
+        },
+        "endGateOff": {
+          "voice": 1,
+          "call": 157,
+          "value": 16,
+          "instructionStartCycle": 597
+        },
+        "frequencyPairs": [
+          {
+            "voice": 1,
+            "call": 146,
+            "word": 1432,
+            "instructionStartCycle": 1261
+          },
+          {
+            "voice": 1,
+            "call": 146,
+            "word": 10240,
+            "instructionStartCycle": 1368
+          },
+          {
+            "voice": 1,
+            "call": 147,
+            "word": 1432,
+            "instructionStartCycle": 284
+          }
+        ],
+        "bodyAd": 5,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 1432,
+        "hz": 84.09476346439786,
+        "nearestMidi": 40,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 29,
+        "tonalStartCall": 146,
+        "onsetControl": {
+          "voice": 1,
+          "call": 146,
+          "value": 17,
+          "instructionStartCycle": 1307
+        },
+        "endGateOff": {
+          "voice": 1,
+          "call": 157,
+          "value": 16,
+          "instructionStartCycle": 502
+        },
+        "frequencyPairs": [
+          {
+            "voice": 1,
+            "call": 146,
+            "word": 1432,
+            "instructionStartCycle": 1211
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "bass",
+      "index": 2,
+      "sourceMidi": 45,
+      "sourceNote": "A2",
+      "startBeat": 5.0,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 209,
+      "scheduledEndCall": 219,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 1911,
+        "hz": 112.22422694166501,
+        "nearestMidi": 45,
+        "signedCentsFromSource": 34.656761412594506,
+        "rawGraphNote": 34,
+        "tonalStartCall": 210,
+        "onsetControl": {
+          "voice": 1,
+          "call": 209,
+          "value": 129,
+          "instructionStartCycle": 1386
+        },
+        "endGateOff": {
+          "voice": 1,
+          "call": 219,
+          "value": 16,
+          "instructionStartCycle": 552
+        },
+        "frequencyPairs": [
+          {
+            "voice": 1,
+            "call": 209,
+            "word": 1911,
+            "instructionStartCycle": 1261
+          },
+          {
+            "voice": 1,
+            "call": 209,
+            "word": 10240,
+            "instructionStartCycle": 1368
+          },
+          {
+            "voice": 1,
+            "call": 210,
+            "word": 1911,
+            "instructionStartCycle": 284
+          }
+        ],
+        "bodyAd": 5,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 1911,
+        "hz": 112.22422694166501,
+        "nearestMidi": 45,
+        "signedCentsFromSource": 34.656761412594506,
+        "rawGraphNote": 34,
+        "tonalStartCall": 209,
+        "onsetControl": {
+          "voice": 1,
+          "call": 209,
+          "value": 17,
+          "instructionStartCycle": 1307
+        },
+        "endGateOff": {
+          "voice": 1,
+          "call": 219,
+          "value": 16,
+          "instructionStartCycle": 502
+        },
+        "frequencyPairs": [
+          {
+            "voice": 1,
+            "call": 209,
+            "word": 1911,
+            "instructionStartCycle": 1211
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "bass",
+      "index": 3,
+      "sourceMidi": 45,
+      "sourceNote": "A2",
+      "startBeat": 8.0,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 334,
+      "scheduledEndCall": 345,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 1911,
+        "hz": 112.22422694166501,
+        "nearestMidi": 45,
+        "signedCentsFromSource": 34.656761412594506,
+        "rawGraphNote": 34,
+        "tonalStartCall": 335,
+        "onsetControl": {
+          "voice": 1,
+          "call": 334,
+          "value": 129,
+          "instructionStartCycle": 1390
+        },
+        "endGateOff": {
+          "voice": 1,
+          "call": 345,
+          "value": 16,
+          "instructionStartCycle": 556
+        },
+        "frequencyPairs": [
+          {
+            "voice": 1,
+            "call": 334,
+            "word": 1911,
+            "instructionStartCycle": 1265
+          },
+          {
+            "voice": 1,
+            "call": 334,
+            "word": 10240,
+            "instructionStartCycle": 1372
+          },
+          {
+            "voice": 1,
+            "call": 335,
+            "word": 1911,
+            "instructionStartCycle": 288
+          }
+        ],
+        "bodyAd": 5,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 1911,
+        "hz": 112.22422694166501,
+        "nearestMidi": 45,
+        "signedCentsFromSource": 34.656761412594506,
+        "rawGraphNote": 34,
+        "tonalStartCall": 334,
+        "onsetControl": {
+          "voice": 1,
+          "call": 334,
+          "value": 17,
+          "instructionStartCycle": 1307
+        },
+        "endGateOff": {
+          "voice": 1,
+          "call": 345,
+          "value": 16,
+          "instructionStartCycle": 502
+        },
+        "frequencyPairs": [
+          {
+            "voice": 1,
+            "call": 334,
+            "word": 1911,
+            "instructionStartCycle": 1211
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "bass",
+      "index": 4,
+      "sourceMidi": 40,
+      "sourceNote": "E2",
+      "startBeat": 9.5,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 397,
+      "scheduledEndCall": 407,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 1432,
+        "hz": 84.09476346439786,
+        "nearestMidi": 40,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 29,
+        "tonalStartCall": 398,
+        "onsetControl": {
+          "voice": 1,
+          "call": 397,
+          "value": 129,
+          "instructionStartCycle": 1390
+        },
+        "endGateOff": {
+          "voice": 1,
+          "call": 407,
+          "value": 16,
+          "instructionStartCycle": 556
+        },
+        "frequencyPairs": [
+          {
+            "voice": 1,
+            "call": 397,
+            "word": 1432,
+            "instructionStartCycle": 1265
+          },
+          {
+            "voice": 1,
+            "call": 397,
+            "word": 10240,
+            "instructionStartCycle": 1372
+          },
+          {
+            "voice": 1,
+            "call": 398,
+            "word": 1432,
+            "instructionStartCycle": 288
+          }
+        ],
+        "bodyAd": 5,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 1432,
+        "hz": 84.09476346439786,
+        "nearestMidi": 40,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 29,
+        "tonalStartCall": 397,
+        "onsetControl": {
+          "voice": 1,
+          "call": 397,
+          "value": 17,
+          "instructionStartCycle": 1307
+        },
+        "endGateOff": {
+          "voice": 1,
+          "call": 407,
+          "value": 16,
+          "instructionStartCycle": 502
+        },
+        "frequencyPairs": [
+          {
+            "voice": 1,
+            "call": 397,
+            "word": 1432,
+            "instructionStartCycle": 1211
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "bass",
+      "index": 5,
+      "sourceMidi": 45,
+      "sourceNote": "A2",
+      "startBeat": 11.0,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 459,
+      "scheduledEndCall": 470,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 1911,
+        "hz": 112.22422694166501,
+        "nearestMidi": 45,
+        "signedCentsFromSource": 34.656761412594506,
+        "rawGraphNote": 34,
+        "tonalStartCall": 460,
+        "onsetControl": {
+          "voice": 1,
+          "call": 459,
+          "value": 129,
+          "instructionStartCycle": 1386
+        },
+        "endGateOff": {
+          "voice": 1,
+          "call": 470,
+          "value": 16,
+          "instructionStartCycle": 789
+        },
+        "frequencyPairs": [
+          {
+            "voice": 1,
+            "call": 459,
+            "word": 1911,
+            "instructionStartCycle": 1261
+          },
+          {
+            "voice": 1,
+            "call": 459,
+            "word": 10240,
+            "instructionStartCycle": 1368
+          },
+          {
+            "voice": 1,
+            "call": 460,
+            "word": 1911,
+            "instructionStartCycle": 284
+          }
+        ],
+        "bodyAd": 5,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 1911,
+        "hz": 112.22422694166501,
+        "nearestMidi": 45,
+        "signedCentsFromSource": 34.656761412594506,
+        "rawGraphNote": 34,
+        "tonalStartCall": 459,
+        "onsetControl": {
+          "voice": 1,
+          "call": 459,
+          "value": 17,
+          "instructionStartCycle": 1307
+        },
+        "endGateOff": {
+          "voice": 1,
+          "call": 470,
+          "value": 16,
+          "instructionStartCycle": 735
+        },
+        "frequencyPairs": [
+          {
+            "voice": 1,
+            "call": 459,
+            "word": 1911,
+            "instructionStartCycle": 1211
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "harmony",
+      "index": 0,
+      "sourceMidi": 52,
+      "sourceNote": "E3",
+      "startBeat": 2.25,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 94,
+      "scheduledEndCall": 104,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 2864,
+        "hz": 168.18952692879571,
+        "nearestMidi": 52,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 41,
+        "tonalStartCall": 94,
+        "onsetControl": {
+          "voice": 2,
+          "call": 94,
+          "value": 65,
+          "instructionStartCycle": 1879
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 104,
+          "value": 64,
+          "instructionStartCycle": 1195
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 94,
+            "word": 2864,
+            "instructionStartCycle": 1793
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 2864,
+        "hz": 168.18952692879571,
+        "nearestMidi": 52,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 41,
+        "tonalStartCall": 94,
+        "onsetControl": {
+          "voice": 2,
+          "call": 94,
+          "value": 17,
+          "instructionStartCycle": 1823
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 104,
+          "value": 16,
+          "instructionStartCycle": 1086
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 94,
+            "word": 2864,
+            "instructionStartCycle": 1737
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "harmony",
+      "index": 1,
+      "sourceMidi": 57,
+      "sourceNote": "A3",
+      "startBeat": 2.5,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 104,
+      "scheduledEndCall": 115,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 3823,
+        "hz": 224.50717927681075,
+        "nearestMidi": 57,
+        "signedCentsFromSource": 35.10966764122472,
+        "rawGraphNote": 46,
+        "tonalStartCall": 104,
+        "onsetControl": {
+          "voice": 2,
+          "call": 104,
+          "value": 65,
+          "instructionStartCycle": 1591
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 115,
+          "value": 64,
+          "instructionStartCycle": 1173
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 104,
+            "word": 3823,
+            "instructionStartCycle": 1505
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 3823,
+        "hz": 224.50717927681075,
+        "nearestMidi": 57,
+        "signedCentsFromSource": 35.10966764122472,
+        "rawGraphNote": 46,
+        "tonalStartCall": 104,
+        "onsetControl": {
+          "voice": 2,
+          "call": 104,
+          "value": 17,
+          "instructionStartCycle": 1482
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 115,
+          "value": 16,
+          "instructionStartCycle": 1064
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 104,
+            "word": 3823,
+            "instructionStartCycle": 1396
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "harmony",
+      "index": 2,
+      "sourceMidi": 52,
+      "sourceNote": "E3",
+      "startBeat": 3.75,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 157,
+      "scheduledEndCall": 167,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 2864,
+        "hz": 168.18952692879571,
+        "nearestMidi": 52,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 41,
+        "tonalStartCall": 157,
+        "onsetControl": {
+          "voice": 2,
+          "call": 157,
+          "value": 65,
+          "instructionStartCycle": 1395
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 167,
+          "value": 64,
+          "instructionStartCycle": 1191
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 157,
+            "word": 2864,
+            "instructionStartCycle": 1309
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 2864,
+        "hz": 168.18952692879571,
+        "nearestMidi": 52,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 41,
+        "tonalStartCall": 157,
+        "onsetControl": {
+          "voice": 2,
+          "call": 157,
+          "value": 17,
+          "instructionStartCycle": 1249
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 167,
+          "value": 16,
+          "instructionStartCycle": 1086
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 157,
+            "word": 2864,
+            "instructionStartCycle": 1163
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "harmony",
+      "index": 3,
+      "sourceMidi": 56,
+      "sourceNote": "G#3",
+      "startBeat": 4.0,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 167,
+      "scheduledEndCall": 178,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 3608,
+        "hz": 211.88121967845493,
+        "nearestMidi": 56,
+        "signedCentsFromSource": 34.90263374610336,
+        "rawGraphNote": 45,
+        "tonalStartCall": 167,
+        "onsetControl": {
+          "voice": 2,
+          "call": 167,
+          "value": 65,
+          "instructionStartCycle": 1587
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 178,
+          "value": 64,
+          "instructionStartCycle": 1173
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 167,
+            "word": 3608,
+            "instructionStartCycle": 1501
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 3608,
+        "hz": 211.88121967845493,
+        "nearestMidi": 56,
+        "signedCentsFromSource": 34.90263374610336,
+        "rawGraphNote": 45,
+        "tonalStartCall": 167,
+        "onsetControl": {
+          "voice": 2,
+          "call": 167,
+          "value": 17,
+          "instructionStartCycle": 1482
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 178,
+          "value": 16,
+          "instructionStartCycle": 1064
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 167,
+            "word": 3608,
+            "instructionStartCycle": 1396
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "harmony",
+      "index": 4,
+      "sourceMidi": 52,
+      "sourceNote": "E3",
+      "startBeat": 5.25,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 219,
+      "scheduledEndCall": 230,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 2864,
+        "hz": 168.18952692879571,
+        "nearestMidi": 52,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 41,
+        "tonalStartCall": 219,
+        "onsetControl": {
+          "voice": 2,
+          "call": 219,
+          "value": 65,
+          "instructionStartCycle": 1350
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 230,
+          "value": 64,
+          "instructionStartCycle": 1187
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 219,
+            "word": 2864,
+            "instructionStartCycle": 1264
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 2864,
+        "hz": 168.18952692879571,
+        "nearestMidi": 52,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 41,
+        "tonalStartCall": 219,
+        "onsetControl": {
+          "voice": 2,
+          "call": 219,
+          "value": 17,
+          "instructionStartCycle": 1249
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 230,
+          "value": 16,
+          "instructionStartCycle": 1086
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 219,
+            "word": 2864,
+            "instructionStartCycle": 1163
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "harmony",
+      "index": 5,
+      "sourceMidi": 57,
+      "sourceNote": "A3",
+      "startBeat": 5.5,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 230,
+      "scheduledEndCall": 240,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 3823,
+        "hz": 224.50717927681075,
+        "nearestMidi": 57,
+        "signedCentsFromSource": 35.10966764122472,
+        "rawGraphNote": 46,
+        "tonalStartCall": 230,
+        "onsetControl": {
+          "voice": 2,
+          "call": 230,
+          "value": 65,
+          "instructionStartCycle": 1583
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 240,
+          "value": 64,
+          "instructionStartCycle": 1169
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 230,
+            "word": 3823,
+            "instructionStartCycle": 1497
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 3823,
+        "hz": 224.50717927681075,
+        "nearestMidi": 57,
+        "signedCentsFromSource": 35.10966764122472,
+        "rawGraphNote": 46,
+        "tonalStartCall": 230,
+        "onsetControl": {
+          "voice": 2,
+          "call": 230,
+          "value": 17,
+          "instructionStartCycle": 1482
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 240,
+          "value": 16,
+          "instructionStartCycle": 1064
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 230,
+            "word": 3823,
+            "instructionStartCycle": 1396
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "harmony",
+      "index": 6,
+      "sourceMidi": 52,
+      "sourceNote": "E3",
+      "startBeat": 8.25,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 345,
+      "scheduledEndCall": 355,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 2864,
+        "hz": 168.18952692879571,
+        "nearestMidi": 52,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 41,
+        "tonalStartCall": 345,
+        "onsetControl": {
+          "voice": 2,
+          "call": 345,
+          "value": 65,
+          "instructionStartCycle": 1358
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 355,
+          "value": 64,
+          "instructionStartCycle": 1191
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 345,
+            "word": 2864,
+            "instructionStartCycle": 1272
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 2864,
+        "hz": 168.18952692879571,
+        "nearestMidi": 52,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 41,
+        "tonalStartCall": 345,
+        "onsetControl": {
+          "voice": 2,
+          "call": 345,
+          "value": 17,
+          "instructionStartCycle": 1249
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 355,
+          "value": 16,
+          "instructionStartCycle": 1086
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 345,
+            "word": 2864,
+            "instructionStartCycle": 1163
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "harmony",
+      "index": 7,
+      "sourceMidi": 57,
+      "sourceNote": "A3",
+      "startBeat": 8.5,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 355,
+      "scheduledEndCall": 365,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 3823,
+        "hz": 224.50717927681075,
+        "nearestMidi": 57,
+        "signedCentsFromSource": 35.10966764122472,
+        "rawGraphNote": 46,
+        "tonalStartCall": 355,
+        "onsetControl": {
+          "voice": 2,
+          "call": 355,
+          "value": 65,
+          "instructionStartCycle": 1587
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 365,
+          "value": 64,
+          "instructionStartCycle": 1169
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 355,
+            "word": 3823,
+            "instructionStartCycle": 1501
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 3823,
+        "hz": 224.50717927681075,
+        "nearestMidi": 57,
+        "signedCentsFromSource": 35.10966764122472,
+        "rawGraphNote": 46,
+        "tonalStartCall": 355,
+        "onsetControl": {
+          "voice": 2,
+          "call": 355,
+          "value": 17,
+          "instructionStartCycle": 1482
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 365,
+          "value": 16,
+          "instructionStartCycle": 1064
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 355,
+            "word": 3823,
+            "instructionStartCycle": 1396
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "harmony",
+      "index": 8,
+      "sourceMidi": 52,
+      "sourceNote": "E3",
+      "startBeat": 9.75,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 407,
+      "scheduledEndCall": 418,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 2864,
+        "hz": 168.18952692879571,
+        "nearestMidi": 52,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 41,
+        "tonalStartCall": 407,
+        "onsetControl": {
+          "voice": 2,
+          "call": 407,
+          "value": 65,
+          "instructionStartCycle": 1400
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 418,
+          "value": 64,
+          "instructionStartCycle": 1195
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 407,
+            "word": 2864,
+            "instructionStartCycle": 1314
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 2864,
+        "hz": 168.18952692879571,
+        "nearestMidi": 52,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 41,
+        "tonalStartCall": 407,
+        "onsetControl": {
+          "voice": 2,
+          "call": 407,
+          "value": 17,
+          "instructionStartCycle": 1249
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 418,
+          "value": 16,
+          "instructionStartCycle": 1086
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 407,
+            "word": 2864,
+            "instructionStartCycle": 1163
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "harmony",
+      "index": 9,
+      "sourceMidi": 56,
+      "sourceNote": "G#3",
+      "startBeat": 10.0,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 418,
+      "scheduledEndCall": 428,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 3608,
+        "hz": 211.88121967845493,
+        "nearestMidi": 56,
+        "signedCentsFromSource": 34.90263374610336,
+        "rawGraphNote": 45,
+        "tonalStartCall": 418,
+        "onsetControl": {
+          "voice": 2,
+          "call": 418,
+          "value": 65,
+          "instructionStartCycle": 1591
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 428,
+          "value": 64,
+          "instructionStartCycle": 1173
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 418,
+            "word": 3608,
+            "instructionStartCycle": 1505
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 3608,
+        "hz": 211.88121967845493,
+        "nearestMidi": 56,
+        "signedCentsFromSource": 34.90263374610336,
+        "rawGraphNote": 45,
+        "tonalStartCall": 418,
+        "onsetControl": {
+          "voice": 2,
+          "call": 418,
+          "value": 17,
+          "instructionStartCycle": 1482
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 428,
+          "value": 16,
+          "instructionStartCycle": 1064
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 418,
+            "word": 3608,
+            "instructionStartCycle": 1396
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "harmony",
+      "index": 10,
+      "sourceMidi": 52,
+      "sourceNote": "E3",
+      "startBeat": 11.25,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 470,
+      "scheduledEndCall": 480,
+      "quantizedDurationCalls": 10,
+      "candidate": {
+        "word": 2864,
+        "hz": 168.18952692879571,
+        "nearestMidi": 52,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 41,
+        "tonalStartCall": 470,
+        "onsetControl": {
+          "voice": 2,
+          "call": 470,
+          "value": 65,
+          "instructionStartCycle": 1587
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 480,
+          "value": 64,
+          "instructionStartCycle": 770
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 470,
+            "word": 2864,
+            "instructionStartCycle": 1501
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 2864,
+        "hz": 168.18952692879571,
+        "nearestMidi": 52,
+        "signedCentsFromSource": 35.10121855675408,
+        "rawGraphNote": 41,
+        "tonalStartCall": 470,
+        "onsetControl": {
+          "voice": 2,
+          "call": 470,
+          "value": 17,
+          "instructionStartCycle": 1482
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 480,
+          "value": 16,
+          "instructionStartCycle": 665
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 470,
+            "word": 2864,
+            "instructionStartCycle": 1396
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    },
+    {
+      "role": "harmony",
+      "index": 11,
+      "sourceMidi": 57,
+      "sourceNote": "A3",
+      "startBeat": 11.5,
+      "durationBeats": 0.25,
+      "scheduledStartCall": 480,
+      "scheduledEndCall": 491,
+      "quantizedDurationCalls": 11,
+      "candidate": {
+        "word": 3823,
+        "hz": 224.50717927681075,
+        "nearestMidi": 57,
+        "signedCentsFromSource": 35.10966764122472,
+        "rawGraphNote": 46,
+        "tonalStartCall": 480,
+        "onsetControl": {
+          "voice": 2,
+          "call": 480,
+          "value": 65,
+          "instructionStartCycle": 1166
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 491,
+          "value": 64,
+          "instructionStartCycle": 1007
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 480,
+            "word": 3823,
+            "instructionStartCycle": 1080
+          }
+        ],
+        "bodyAd": 12,
+        "bodySr": 15
+      },
+      "reference": {
+        "word": 3823,
+        "hz": 224.50717927681075,
+        "nearestMidi": 57,
+        "signedCentsFromSource": 35.10966764122472,
+        "rawGraphNote": 46,
+        "tonalStartCall": 480,
+        "onsetControl": {
+          "voice": 2,
+          "call": 480,
+          "value": 17,
+          "instructionStartCycle": 1061
+        },
+        "endGateOff": {
+          "voice": 2,
+          "call": 491,
+          "value": 16,
+          "instructionStartCycle": 898
+        },
+        "frequencyPairs": [
+          {
+            "voice": 2,
+            "call": 480,
+            "word": 3823,
+            "instructionStartCycle": 975
+          }
+        ],
+        "bodyAd": 3,
+        "bodySr": 96
+      }
+    }
+  ],
+  "successiveIntervals": [
+    {
+      "role": "melody",
+      "fromIndex": 0,
+      "toIndex": 1,
+      "sourceSemitones": -1,
+      "measuredCents": -99.99487711400523,
+      "centsError": 0.005122885994765625,
+      "nearestSemitones": -1
+    },
+    {
+      "role": "melody",
+      "fromIndex": 1,
+      "toIndex": 2,
+      "sourceSemitones": 1,
+      "measuredCents": 99.99487711400505,
+      "centsError": -0.005122885994950366,
+      "nearestSemitones": 1
+    },
+    {
+      "role": "melody",
+      "fromIndex": 2,
+      "toIndex": 3,
+      "sourceSemitones": -1,
+      "measuredCents": -99.99487711400523,
+      "centsError": 0.005122885994765625,
+      "nearestSemitones": -1
+    },
+    {
+      "role": "melody",
+      "fromIndex": 3,
+      "toIndex": 4,
+      "sourceSemitones": 1,
+      "measuredCents": 99.99487711400505,
+      "centsError": -0.005122885994950366,
+      "nearestSemitones": 1
+    },
+    {
+      "role": "melody",
+      "fromIndex": 4,
+      "toIndex": 5,
+      "sourceSemitones": -5,
+      "measuredCents": -500.0105067591974,
+      "centsError": -0.010506759197426163,
+      "nearestSemitones": -5
+    },
+    {
+      "role": "melody",
+      "fromIndex": 5,
+      "toIndex": 6,
+      "sourceSemitones": 3,
+      "measuredCents": 300.0059927450721,
+      "centsError": 0.0059927450720920206,
+      "nearestSemitones": 3
+    },
+    {
+      "role": "melody",
+      "fromIndex": 6,
+      "toIndex": 7,
+      "sourceSemitones": -2,
+      "measuredCents": -199.8863859048314,
+      "centsError": 0.11361409516860022,
+      "nearestSemitones": -2
+    },
+    {
+      "role": "melody",
+      "fromIndex": 7,
+      "toIndex": 8,
+      "sourceSemitones": -3,
+      "measuredCents": -300.0253560014182,
+      "centsError": -0.0253560014181744,
+      "nearestSemitones": -3
+    },
+    {
+      "role": "melody",
+      "fromIndex": 8,
+      "toIndex": 9,
+      "sourceSemitones": -9,
+      "measuredCents": -899.9746439985817,
+      "centsError": 0.02535600141834493,
+      "nearestSemitones": -9
+    },
+    {
+      "role": "melody",
+      "fromIndex": 9,
+      "toIndex": 10,
+      "sourceSemitones": 4,
+      "measuredCents": 399.73978622365985,
+      "centsError": -0.2602137763401515,
+      "nearestSemitones": 4
+    },
+    {
+      "role": "melody",
+      "fromIndex": 10,
+      "toIndex": 11,
+      "sourceSemitones": 5,
+      "measuredCents": 500.23485777492186,
+      "centsError": 0.23485777492186344,
+      "nearestSemitones": 5
+    },
+    {
+      "role": "melody",
+      "fromIndex": 11,
+      "toIndex": 12,
+      "sourceSemitones": 2,
+      "measuredCents": 199.90574916117734,
+      "centsError": -0.09425083882265994,
+      "nearestSemitones": 2
+    },
+    {
+      "role": "melody",
+      "fromIndex": 12,
+      "toIndex": 13,
+      "sourceSemitones": -7,
+      "measuredCents": -700.1406069360993,
+      "centsError": -0.14060693609928876,
+      "nearestSemitones": -7
+    },
+    {
+      "role": "melody",
+      "fromIndex": 13,
+      "toIndex": 14,
+      "sourceSemitones": 4,
+      "measuredCents": 400.0413145937472,
+      "centsError": 0.041314593747188155,
+      "nearestSemitones": 4
+    },
+    {
+      "role": "melody",
+      "fromIndex": 14,
+      "toIndex": 15,
+      "sourceSemitones": 3,
+      "measuredCents": 300.0992923423521,
+      "centsError": 0.0992923423521006,
+      "nearestSemitones": 3
+    },
+    {
+      "role": "melody",
+      "fromIndex": 15,
+      "toIndex": 16,
+      "sourceSemitones": 1,
+      "measuredCents": 100.11960684024088,
+      "centsError": 0.11960684024087698,
+      "nearestSemitones": 1
+    },
+    {
+      "role": "melody",
+      "fromIndex": 16,
+      "toIndex": 17,
+      "sourceSemitones": -8,
+      "measuredCents": -800.2602137763402,
+      "centsError": -0.2602137763401515,
+      "nearestSemitones": -8
+    },
+    {
+      "role": "melody",
+      "fromIndex": 17,
+      "toIndex": 18,
+      "sourceSemitones": 12,
+      "measuredCents": 1200.1511136952968,
+      "centsError": 0.15111369529677177,
+      "nearestSemitones": 12
+    },
+    {
+      "role": "melody",
+      "fromIndex": 18,
+      "toIndex": 19,
+      "sourceSemitones": -1,
+      "measuredCents": -99.99487711400523,
+      "centsError": 0.005122885994765625,
+      "nearestSemitones": -1
+    },
+    {
+      "role": "melody",
+      "fromIndex": 19,
+      "toIndex": 20,
+      "sourceSemitones": 1,
+      "measuredCents": 99.99487711400505,
+      "centsError": -0.005122885994950366,
+      "nearestSemitones": 1
+    },
+    {
+      "role": "melody",
+      "fromIndex": 20,
+      "toIndex": 21,
+      "sourceSemitones": -1,
+      "measuredCents": -99.99487711400523,
+      "centsError": 0.005122885994765625,
+      "nearestSemitones": -1
+    },
+    {
+      "role": "melody",
+      "fromIndex": 21,
+      "toIndex": 22,
+      "sourceSemitones": 1,
+      "measuredCents": 99.99487711400505,
+      "centsError": -0.005122885994950366,
+      "nearestSemitones": 1
+    },
+    {
+      "role": "melody",
+      "fromIndex": 22,
+      "toIndex": 23,
+      "sourceSemitones": -5,
+      "measuredCents": -500.0105067591974,
+      "centsError": -0.010506759197426163,
+      "nearestSemitones": -5
+    },
+    {
+      "role": "melody",
+      "fromIndex": 23,
+      "toIndex": 24,
+      "sourceSemitones": 3,
+      "measuredCents": 300.0059927450721,
+      "centsError": 0.0059927450720920206,
+      "nearestSemitones": 3
+    },
+    {
+      "role": "melody",
+      "fromIndex": 24,
+      "toIndex": 25,
+      "sourceSemitones": -2,
+      "measuredCents": -199.8863859048314,
+      "centsError": 0.11361409516860022,
+      "nearestSemitones": -2
+    },
+    {
+      "role": "melody",
+      "fromIndex": 25,
+      "toIndex": 26,
+      "sourceSemitones": -3,
+      "measuredCents": -300.0253560014182,
+      "centsError": -0.0253560014181744,
+      "nearestSemitones": -3
+    },
+    {
+      "role": "melody",
+      "fromIndex": 26,
+      "toIndex": 27,
+      "sourceSemitones": -9,
+      "measuredCents": -899.9746439985817,
+      "centsError": 0.02535600141834493,
+      "nearestSemitones": -9
+    },
+    {
+      "role": "melody",
+      "fromIndex": 27,
+      "toIndex": 28,
+      "sourceSemitones": 4,
+      "measuredCents": 399.73978622365985,
+      "centsError": -0.2602137763401515,
+      "nearestSemitones": 4
+    },
+    {
+      "role": "melody",
+      "fromIndex": 28,
+      "toIndex": 29,
+      "sourceSemitones": 5,
+      "measuredCents": 500.23485777492186,
+      "centsError": 0.23485777492186344,
+      "nearestSemitones": 5
+    },
+    {
+      "role": "melody",
+      "fromIndex": 29,
+      "toIndex": 30,
+      "sourceSemitones": 2,
+      "measuredCents": 199.90574916117734,
+      "centsError": -0.09425083882265994,
+      "nearestSemitones": 2
+    },
+    {
+      "role": "melody",
+      "fromIndex": 30,
+      "toIndex": 31,
+      "sourceSemitones": -7,
+      "measuredCents": -700.1406069360993,
+      "centsError": -0.14060693609928876,
+      "nearestSemitones": -7
+    },
+    {
+      "role": "melody",
+      "fromIndex": 31,
+      "toIndex": 32,
+      "sourceSemitones": 8,
+      "measuredCents": 800.26021377634,
+      "centsError": 0.26021377634003784,
+      "nearestSemitones": 8
+    },
+    {
+      "role": "melody",
+      "fromIndex": 32,
+      "toIndex": 33,
+      "sourceSemitones": -1,
+      "measuredCents": -100.11960684024069,
+      "centsError": -0.11960684024069224,
+      "nearestSemitones": -1
+    },
+    {
+      "role": "melody",
+      "fromIndex": 33,
+      "toIndex": 34,
+      "sourceSemitones": -2,
+      "measuredCents": -199.90574916117737,
+      "centsError": 0.09425083882263152,
+      "nearestSemitones": -2
+    },
+    {
+      "role": "bass",
+      "fromIndex": 0,
+      "toIndex": 1,
+      "sourceSemitones": -5,
+      "measuredCents": -499.5555428558402,
+      "centsError": 0.44445714415979864,
+      "nearestSemitones": -5
+    },
+    {
+      "role": "bass",
+      "fromIndex": 1,
+      "toIndex": 2,
+      "sourceSemitones": 5,
+      "measuredCents": 499.55554285584026,
+      "centsError": -0.4444571441597418,
+      "nearestSemitones": 5
+    },
+    {
+      "role": "bass",
+      "fromIndex": 2,
+      "toIndex": 3,
+      "sourceSemitones": 0,
+      "measuredCents": 0.0,
+      "centsError": 0.0,
+      "nearestSemitones": 0
+    },
+    {
+      "role": "bass",
+      "fromIndex": 3,
+      "toIndex": 4,
+      "sourceSemitones": -5,
+      "measuredCents": -499.5555428558402,
+      "centsError": 0.44445714415979864,
+      "nearestSemitones": -5
+    },
+    {
+      "role": "bass",
+      "fromIndex": 4,
+      "toIndex": 5,
+      "sourceSemitones": 5,
+      "measuredCents": 499.55554285584026,
+      "centsError": -0.4444571441597418,
+      "nearestSemitones": 5
+    },
+    {
+      "role": "harmony",
+      "fromIndex": 0,
+      "toIndex": 1,
+      "sourceSemitones": 5,
+      "measuredCents": 500.0084490844707,
+      "centsError": 0.00844908447072612,
+      "nearestSemitones": 5
+    },
+    {
+      "role": "harmony",
+      "fromIndex": 1,
+      "toIndex": 2,
+      "sourceSemitones": -5,
+      "measuredCents": -500.00844908447067,
+      "centsError": -0.008449084470669277,
+      "nearestSemitones": -5
+    },
+    {
+      "role": "harmony",
+      "fromIndex": 2,
+      "toIndex": 3,
+      "sourceSemitones": 4,
+      "measuredCents": 399.8014151893496,
+      "centsError": -0.19858481065040223,
+      "nearestSemitones": 4
+    },
+    {
+      "role": "harmony",
+      "fromIndex": 3,
+      "toIndex": 4,
+      "sourceSemitones": -4,
+      "measuredCents": -399.80141518934937,
+      "centsError": 0.1985848106506296,
+      "nearestSemitones": -4
+    },
+    {
+      "role": "harmony",
+      "fromIndex": 4,
+      "toIndex": 5,
+      "sourceSemitones": 5,
+      "measuredCents": 500.0084490844707,
+      "centsError": 0.00844908447072612,
+      "nearestSemitones": 5
+    },
+    {
+      "role": "harmony",
+      "fromIndex": 5,
+      "toIndex": 6,
+      "sourceSemitones": -5,
+      "measuredCents": -500.00844908447067,
+      "centsError": -0.008449084470669277,
+      "nearestSemitones": -5
+    },
+    {
+      "role": "harmony",
+      "fromIndex": 6,
+      "toIndex": 7,
+      "sourceSemitones": 5,
+      "measuredCents": 500.0084490844707,
+      "centsError": 0.00844908447072612,
+      "nearestSemitones": 5
+    },
+    {
+      "role": "harmony",
+      "fromIndex": 7,
+      "toIndex": 8,
+      "sourceSemitones": -5,
+      "measuredCents": -500.00844908447067,
+      "centsError": -0.008449084470669277,
+      "nearestSemitones": -5
+    },
+    {
+      "role": "harmony",
+      "fromIndex": 8,
+      "toIndex": 9,
+      "sourceSemitones": 4,
+      "measuredCents": 399.8014151893496,
+      "centsError": -0.19858481065040223,
+      "nearestSemitones": 4
+    },
+    {
+      "role": "harmony",
+      "fromIndex": 9,
+      "toIndex": 10,
+      "sourceSemitones": -4,
+      "measuredCents": -399.80141518934937,
+      "centsError": 0.1985848106506296,
+      "nearestSemitones": -4
+    },
+    {
+      "role": "harmony",
+      "fromIndex": 10,
+      "toIndex": 11,
+      "sourceSemitones": 5,
+      "measuredCents": 500.0084490844707,
+      "centsError": 0.00844908447072612,
+      "nearestSemitones": 5
+    }
+  ],
+  "attackOnlyChanges": [
+    {
+      "role": "bass",
+      "index": 0,
+      "startCall": 84,
+      "bodyCall": 85,
+      "tonalWord": 1911,
+      "noiseWord": 10240,
+      "noiseControl": 129,
+      "nominalBodyDelaySeconds": 0.019950294553405162
+    },
+    {
+      "role": "bass",
+      "index": 1,
+      "startCall": 146,
+      "bodyCall": 147,
+      "tonalWord": 1432,
+      "noiseWord": 10240,
+      "noiseControl": 129,
+      "nominalBodyDelaySeconds": 0.019950294553405162
+    },
+    {
+      "role": "bass",
+      "index": 2,
+      "startCall": 209,
+      "bodyCall": 210,
+      "tonalWord": 1911,
+      "noiseWord": 10240,
+      "noiseControl": 129,
+      "nominalBodyDelaySeconds": 0.019950294553405162
+    },
+    {
+      "role": "bass",
+      "index": 3,
+      "startCall": 334,
+      "bodyCall": 335,
+      "tonalWord": 1911,
+      "noiseWord": 10240,
+      "noiseControl": 129,
+      "nominalBodyDelaySeconds": 0.019950294553405162
+    },
+    {
+      "role": "bass",
+      "index": 4,
+      "startCall": 397,
+      "bodyCall": 398,
+      "tonalWord": 1432,
+      "noiseWord": 10240,
+      "noiseControl": 129,
+      "nominalBodyDelaySeconds": 0.019950294553405162
+    },
+    {
+      "role": "bass",
+      "index": 5,
+      "startCall": 459,
+      "bodyCall": 460,
+      "tonalWord": 1911,
+      "noiseWord": 10240,
+      "noiseControl": 129,
+      "nominalBodyDelaySeconds": 0.019950294553405162
+    }
+  ],
+  "interpretation": {
+    "proven": "All 53 stable tonal notes, source gate-on calls, gate-off calls and gaps match. Candidate and plain reference have identical body words and relative intervals. No compiled note mapping or timing defect was found.",
+    "sharedTuning": "Both versions retain the same native table, approximately 35 cents sharp of A440 equal temperament. This could differ from another remembered/reference rendition, but cannot by itself explain a candidate-versus-plain pitch difference.",
+    "plausibleOnly": "Candidate pulse timbre/PWM, six brief bass noise onsets and native release nibble 15 before earlier gaps can alter clarity or perceived pitch. A SID voice retains the current oscillator word after gate-off; its release carries through the gap until retrigger, rather than mixing independent old and new pitches on that voice. These are possible perceptual influences, not an established cause of the user's uncertainty.",
+    "finalRelease": "The submitted final release is shortened from nibble 15 to 9 at each voice's final note end; the retained audio check reports zero final-window AC RMS.",
+    "notEstablished": "This check does not judge transcription fidelity to an external score/performance or determine why the listener perceived a slightly wrong tune. It compares the submitted files with the existing songs/fuer-elise.json source only."
+  },
+  "inputs": {
+    "songs/fuer-elise.json": {
+      "sha256": "a58bdad5e72a10c12b20913cf242e917b98bb010949ba3ea38f33cfe15b6368e",
+      "bytes": 126686
+    },
+    "evidence/ghouls-elise-transfer/run.json": {
+      "sha256": "4e325d726714d4b0a1373293269e1fe55a773493fe85410cb83be72a14e0794c",
+      "bytes": 38181
+    },
+    "evidence/ghouls-elise-transfer/audio.json": {
+      "sha256": "7ab6bba4de7cd397b4519b6150d1da6ecf0b93c4d439b915b98e1f5a46236fd8",
+      "bytes": 3247
+    },
+    "evidence/ghouls-elise-transfer/listening-review.json": {
+      "sha256": "0b3c0ce98168f3494a02130730febd3ebdb99095f1efdd69293d9f8cdadea931",
+      "bytes": 2287
+    },
+    "build/ghouls-elise-listening/plain-reference.wav": {
+      "sha256": "d4b0db39efae08b3a88f1442ff1b91efb31b02ed8298954f123652179b213d2d",
+      "bytes": 1261688
+    },
+    "build/ghouls-elise-listening/ghouls-transfer.wav": {
+      "sha256": "772edcbf89c4d9fdf779619c75ec9c102da4c5d7913e681453f6726aa99c4e82",
+      "bytes": 1261688
+    },
+    "build/ghouls-elise-listening/plain-then-ghouls.ab.wav": {
+      "sha256": "fc040075634bcead357c83e87423840bfef073e2bc3ff1892eebdc0a43c9d7d4",
+      "bytes": 2567432
+    },
+    "songs/ghouls-elise-transfer.json": {
+      "sha256": "8a39388386b7fb4af795fe600e5720920935b07b2a119a16d126dd704a7fe037",
+      "bytes": 57493
+    },
+    "evidence/ghouls-elise-transfer/candidate/verification.json": {
+      "sha256": "faf6ef78fa7256166d39d4a5fc72bf6de38b18e757dfb09ec655773e1ad2c354",
+      "bytes": 40438
+    },
+    "evidence/ghouls-elise-transfer/candidate/writes.json.gz": {
+      "sha256": "7de35158af4792c7cd105851e87717df948be49fed22532b4089884b2327675c",
+      "bytes": 15277
+    },
+    "build/ghouls-elise-transfer/cache/candidate-build/508497bbb5e05a7908d399094201f65ce95c3607abe4abd8217d0df2ab3f3cad/attempt-1d39fdb284c4434e8f1ddef69f34c7a3/candidate/reconstructed.sid": {
+      "sha256": "c801ca9b5fc6e51fb8d87013952c37a2f770290bd63b383eaf67e73cd176928f",
+      "bytes": 4164
+    },
+    "songs/ghouls-elise-reference.json": {
+      "sha256": "27639e869d5dc60a192d07faf3bccfd7ca7b5bf7b949e1c82959a7ed8ca571a3",
+      "bytes": 56713
+    },
+    "evidence/ghouls-elise-transfer/reference/verification.json": {
+      "sha256": "1cfa9ff1113de99fa9c2a36163d5110932a1eefbaaaf93349ef023f7a158e7a9",
+      "bytes": 39851
+    },
+    "evidence/ghouls-elise-transfer/reference/writes.json.gz": {
+      "sha256": "bd5efdcc0f1c164df32630bcd9e4e64a33bc6206bc8478131605e4e5e6974dd7",
+      "bytes": 6256
+    },
+    "build/ghouls-elise-transfer/cache/reference-build/6e4b4b220f02ba910b4a0223aff2640375b426944265a5070f70ebca19701276/attempt-b3da115eea4e4124829f04d6fb9c8a26/candidate/reconstructed.sid": {
+      "sha256": "628e6c894c468cf78ba0894b2dba9da8959c5a49b824c46a5e021c14218520cb",
+      "bytes": 4164
+    }
+  },
+  "tool": {
+    "path": "build/ghouls-transfer-pitch-review/review.py",
+    "sha256": "65b57329506694588b561032753607bd24ca7d51ada184b2833d3f77dd51957e"
+  }
+}

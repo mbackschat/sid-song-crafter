@@ -1,6 +1,6 @@
 # SID Song Crafter research
 
-Research updated: 2026-10-12. The priority is distinctive, expressive SID music: study the masters, understand their tools, develop reusable instruments, and verify the results. Source conversion and correct playback support that goal. This is an evidence-based working library, not a claim of exhaustive knowledge or completed listening tests.
+Research updated: 2026-10-13. The priority is distinctive, expressive SID music: study the masters, understand their tools, develop reusable instruments, and verify the results. Source conversion and correct playback support that goal. This is an evidence-based working library, not a claim of exhaustive knowledge or completed listening tests.
 
 ## Active work
 
@@ -34,6 +34,7 @@ Start with the [technique lookup](technique-index.md) to connect a musical need 
 | Plan Für Elise or Hummelflug | [Classical arrangements](composition/classical-arrangements.md) |
 | Find songs and editable examples | [Study corpus and rights](composers/study-corpus.md) |
 | Verify a result and identify remaining gaps | [Validation](validation/verification.md) |
+| Reduce routine listening work and assess audio models | [Automated musical assessment research](audio-assessment.md): recent specialist critics, reward models, hosted audio models and a proposed SID calibration benchmark |
 | Combine existing agent skills with VICE | [Skills and integrations](tools/skills-and-integrations.md) |
 | Build and verify the first opening excerpt | [First song](../songs/first-song.md), [headless audio](../workflows/audio-workflow.md) |
 | Diagnose emulator startup and headless builds | [VICE investigation](../setup/vice-startup-investigation.md) |

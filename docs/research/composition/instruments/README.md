@@ -9,7 +9,7 @@
 
 - [Monty tonal programs](monty-decoded-programs.md): accepted familiar-phrase transfer with narrow pulse bass, harmonic replies and shared moving-pulse melody; matched plain reference and explicit timing, tuning, phase and ending limits.
 - [Rambo tonal programs](rambo-decoded-programs.md): accepted moving pulse melody and bass with short pulse support on the same 53-note familiar phrase; native lifetime and gate scheduling, with balance, phrasing and ending reviewed.
-- [Ghouls pulse and staged-onset programs](ghouls-decoded-programs.md): moving pulse and one-call noise-to-triangle attack on the same 53-note familiar phrase, with preserved source gaps and an explicit final-release adaptation; execution/audio verified, listening pending.
+- [Ghouls pulse and staged-onset programs](ghouls-decoded-programs.md): moving pulse and one-call noise-to-triangle attack on the same 53-note familiar phrase; instruments, balance and adapted ending accepted with a tentative tune reservation. All tonal notes match the source; the perception's cause remains unknown.
 
 ## Original SID-Wizard instruments
 
