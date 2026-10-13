@@ -16,6 +16,13 @@ The current [Für Elise baseline](../../validation/fuer-elise-validation.md) est
 
 Use the [musical gesture library](gestures/README.md) for groove, chord responses and phrase variation. The [sustained chord instrument](instruments/chord-01-sustained-arpeggio.md) supplies a rendered CHORD-01 example with complete pitch/waveform-cycle guards. Its paired arrangements were judged not close to the desired DRAX fragment; that verdict rejects those matches rather than settling every use of the chord mechanism. The [executed-program study](../tools/sid-program-analysis.md) now owns the DRAX bass explanation and controlled mechanism comparisons. A reusable repertoire includes how to improvise around a recognizable theme, not only how to synthesize its notes. Preserve the source separately and make intentional interpretation changes explicit.
 
+## Reuse executed reference programs
+
+| Family | Find the editable mechanisms and performance constraints |
+| --- | --- |
+| [DRAX decoded trio](instruments/drax-decoded-trio.md) | Releasing bass, pulse lead and chord cycle from the preferred Für Elise texture; the card owns its bounded listening findings. |
+| [Flashdance decoded programs](instruments/flashdance-decoded-programs.md) | Staged lead, broad moving bass and four-tone pulse chords; the original C–F–D minor–G–C transfer has execution and rendered-audio evidence, with listening pending. |
+
 ## Reference material worth learning from
 
 - [Hülsbeck and Tel](../composers/huelsbeck-tel.md): programmable instruments, shared voice roles, groove, and the relationship between Soundmonitor and custom drivers.

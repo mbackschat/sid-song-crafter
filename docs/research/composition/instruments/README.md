@@ -1,6 +1,11 @@
-# Original native instrument bank
+# Instrument programs and native patches
 
-For decoded reference mechanisms, use the separate [DRAX trio mapping](drax-decoded-trio.md): bass, pulse lead, released chord and arrangement constraints, backed by an independent three-voice implementation. These are reconstructed reference techniques, distinct from the original designs below.
+## Choose a decoded reference program
+
+- [DRAX trio mapping](drax-decoded-trio.md): releasing bass, pulse lead and chord mechanisms with arrangement constraints and an independent three-voice implementation.
+- [Flashdance decoded programs](flashdance-decoded-programs.md): staged lead, evolving bass, moving four-tone chords and score-owned pitch effects, with an editable original transfer phrase and declared listening status.
+
+## Original SID-Wizard instruments
 
 Research and design date: 2026-10-12. This bank implements the first small group of experiments from [the repertoire brief](../sound-design-repertoire.md) using SID-Wizard 1.97 Extra. The [editable study source and workfiles](../../../../songs/studies/sidwizard-repertoire/README.md) retain the original patches, phrases and controlled comparisons.
 
