@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "kind": "shades-pwm-reference-audio",
+  "checkedOn": "2026-10-13",
+  "source": {
+    "path": ".local/research/shades/Shades_filter_corrected.sid",
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/H/Huelsbeck_Chris/Shades_filter_corrected.sid",
+    "sha256": "ac7c91d0c4fef41bbc9d9e50840492269151075727efa7182a68dc1a26f1d708",
+    "defaultSubtune": 1
+  },
+  "intervention": {
+    "ramAddress": 22063,
+    "fileOffset": 2157,
+    "from": 16,
+    "to": 0,
+    "purpose": "Freeze voice 1 PWM movement in combined block $5600, retaining its reset width",
+    "patchedSidSha256": "5033822bd7d4020b49e243d55b591652c9eefb1bd47097bf5f31edbd38790c64"
+  },
+  "rendering": {
+    "tool": "scripts/render-sid.cpp",
+    "executable": ".local/bin/render-sid",
+    "testedExecutableSha256": "80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe",
+    "library": "libsidplayfp",
+    "libraryVersion": "3.1.1",
+    "builder": "SIDLite",
+    "clock": "PAL",
+    "sidModel": "MOS6581",
+    "powerOnDelay": 0,
+    "sampleRate": 44100,
+    "channels": 1,
+    "format": "PCM16"
+  },
+  "audio": {
+    "reference330UsedForAudition": {
+      "seconds": 330,
+      "frames": 14553000,
+      "sha256": "582530398d8c533ca71f3b71db6222ba5af584f5e13a4a6e247476defdf08623"
+    },
+    "reproducedReference16": {
+      "seconds": 16,
+      "frames": 705600,
+      "sha256": "8bc7e31ed1669411d8afce6c6a75e14b8049e95d8d78eb5cf3dc9c08758b9859",
+      "identicalReference330Prefix": true,
+      "pcmPrefixSha256": "6af6efa76bd1f9f42328d6c161ae48a1fefabe1e413e58b34593597d6f1835bd"
+    },
+    "staticPulse16": {
+      "seconds": 16,
+      "frames": 705600,
+      "sha256": "e7d721bf0ddf6d1454d6dfb6ca7d3a95f4ad5522107ca38dfbe2956bb0c8fbd5",
+      "identicalOriginalStaticRender": true
+    },
+    "acceptedComparison": {
+      "order": [
+        "Corrected reference with moving PWM",
+        "Same reference with voice 1 PWM step zeroed"
+      ],
+      "windowSeconds": [
+        5,
+        12
+      ],
+      "windowFrames": [
+        220500,
+        529200
+      ],
+      "gapSeconds": 0.5,
+      "gapFrames": 22050,
+      "gain": 1,
+      "normalization": false,
+      "frames": 639450,
+      "seconds": 14.5,
+      "sha256": "8031032da2f9664f4748c649ddcdc7d3b5914fcea47fd9c57982871b7d97b76a",
+      "reproductionByteIdentical": true
+    },
+    "windowMeasurements": [
+      {
+        "role": "moving PWM",
+        "acRms": 2123.134462140497,
+        "peak": 4550,
+        "clippedSamples": 0
+      },
+      {
+        "role": "static pulse",
+        "acRms": 2331.0911796911055,
+        "peak": 4550,
+        "clippedSamples": 0
+      }
+    ]
+  },
+  "boundedProgramProof": {
+    "playCalls": 1280,
+    "sourceWriteCount": 8368,
+    "ciaWriteCount": 7,
+    "changedWrites": 1906,
+    "changedAddresses": [
+      54274,
+      54275
+    ],
+    "firstChangedCall": 386,
+    "lastChangedCall": 1279,
+    "orderedContextIdentical": true,
+    "nonPulseWritesAndTimingIdentical": true,
+    "ciaWritesIdentical": true,
+    "callCyclesIdentical": true
+  },
+  "reproduction": {
+    "workingDirectory": "repository root",
+    "freshOutputRequired": true,
+    "commands": [
+      [
+        "mkdir",
+        "build/shades-audio-baseline-reproduce"
+      ],
+      [
+        ".local/bin/render-sid",
+        ".local/research/shades/Shades_filter_corrected.sid",
+        "build/shades-audio-baseline-reproduce/filter-corrected.wav",
+        "330"
+      ],
+      [
+        "env",
+        "PYTHONPATH=.tools/test-deps",
+        "python3",
+        "scripts/compare-shades-pwm.py",
+        ".local/research/shades/Shades_filter_corrected.sid",
+        "--output",
+        "build/shades-pwm-audio-reproduce",
+        "--render",
+        "--baseline-reference",
+        "build/shades-audio-baseline-reproduce/filter-corrected.wav"
+      ]
+    ]
+  },
+  "evidence": {
+    "programAndAudioReceipt": "build/shades-pwm-reusable-final/comparison.json",
+    "acceptedListeningReceipt": "build/shades-pwm-intervention/comparison.json",
+    "owningStudy": "docs/research/composition/shades-preparation.md#causal-experiment-and-listening-result"
+  },
+  "publication": "Reference SID binaries and WAVs stay in ignored .local/ or build/. This portable record retains hashes, settings and reproduction commands.",
+  "limits": "One-byte reference intervention and exact accepted opening audition reproduction; no independent reconstruction, full-song intervention isolation or new listening verdict."
+}

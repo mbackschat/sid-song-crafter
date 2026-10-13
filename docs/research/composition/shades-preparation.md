@@ -12,7 +12,7 @@ Study Chris Hülsbeck's filter-corrected **Shades**, default subtune 1, PAL MOS6
 | Recover the full order, row and fade structure | [Executed form receipt](../../../build/shades-form-intake/form-receipt.json); source addresses below support decoding, not an editable runtime contract |
 | Understand the opening's animation | [Pulse mechanism and listening verdict](#moving-pulse-through-release), [controlled comparison receipt](../../../build/shades-pwm-intervention/comparison.json) |
 
-The complete [VICE trace](../../../build/shades-intake/vice-cia-corrected-full-final/trace.json), [callable store ledger](../../../build/shades-intake/vice-cia-corrected-full-final/oracle.writes.json), [consumed rows](../../../build/shades-form-intake/rows.json) and [per-call score state](../../../build/shades-form-intake/call-state.json) retain the detail behind the summaries. Keep these raw records; the tables below are navigation and interpretation, not lossless substitutes.
+The complete [VICE trace](../../../build/shades-intake/vice-cia-corrected-full-final/trace.json.gz), [callable store ledger](../../../build/shades-intake/vice-cia-corrected-full-final/oracle.writes.json.gz), [consumed rows](../../../build/shades-form-intake/rows.json.gz) and [per-call score state](../../../build/shades-form-intake/call-state.json.gz) retain the detail behind the summaries. Keep these raw records; the tables below are navigation and interpretation, not lossless substitutes.
 
 Historical Soundmonitor prose supplies useful parameter concepts, but the archived player uses combined 64-byte blocks and a different layout from the published editor. Do not import the manual's addresses or assume binary compatibility. Likewise, the original and corrected archive payloads differ beyond filter values; use a one-variable intervention when attributing an audible effect.
 
@@ -20,7 +20,7 @@ Historical Soundmonitor prose supplies useful parameter concepts, but the archiv
 
 The selected deliverable is the first traversal, source play calls **0–24,384 inclusive**, followed by an authored finite stop at call 24,385. The source itself continues playing, fades to zero, and loops. Preserve its fade before adding the stop; do not truncate at the order counter's wrap.
 
-The [form receipt](../../../build/shades-form-intake/form-receipt.json) observes 48,770 explicit source calls, covering two traversals. It verifies consumed rows and state; it does not establish analogue oscillator/envelope recurrence. The [full CIA trace](../../../build/shades-intake/vice-cia-corrected-full-final/study.json) separately executes all 24,385 selected calls with real timer interrupts and matches 296,907 ordered source stores, including 128 timer writes. Its [current-oracle revalidation](../../../build/shades-intake/vice-cia-corrected-full-final/current-oracle-revalidation.json) confirms the same writes and every source-call instruction duration after tightening the host's entry-state contract.
+The [form receipt](../../../build/shades-form-intake/form-receipt.json) observes 48,770 explicit source calls, covering two traversals. It verifies consumed rows and state; it does not establish analogue oscillator/envelope recurrence. The [full CIA trace](../../../build/shades-intake/vice-cia-corrected-full-final/study.json.gz) separately executes all 24,385 selected calls with real timer interrupts and matches 296,907 ordered source stores, including 128 timer writes. Its [current-oracle revalidation](../../../build/shades-intake/vice-cia-corrected-full-final/current-oracle-revalidation.json) confirms the same writes and every source-call instruction duration after tightening the host's entry-state contract.
 
 | Landmark | Source call / contract | Reason it matters |
 | --- | --- | --- |
@@ -86,6 +86,44 @@ Listen to [original-then-static-pulse.wav](../../../build/shades-pwm-interventio
 
 On 2026-10-13 the listener said: **“original is little quieter and more vibrant”**. The measured window AC RMS is about 2,123 for moving pulse and 2,331 for frozen pulse, consistent with the reported level difference; both have peak 4,550. Retain moving pulse for this sound. The verdict supports this opening intervention only; it does not approve an independent player, the entire reconstruction or a transfer phrase.
 
+The [reusable comparison tool](../../../scripts/compare-shades-pwm.py) performs the one-byte patch and ordered-write isolation proof, optionally rendering and assembling the audition. The [portable audio recipe](shades-reference-audio.json) retains exact source/output hashes, renderer settings, frame boundaries and commands; reference SIDs and WAVs remain out of Git. Reproduction in [the retained tool receipt](../../../build/shades-pwm-reusable-final/comparison.json) produced a byte-identical comparison WAV and frozen-pulse render. The new 16-second baseline's PCM also matches the original 330-second render's prefix exactly.
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/compare-shades-pwm.py .local/research/shades/Shades_filter_corrected.sid --output build/shades-pwm-new --render
+```
+
+Optionally pass `--baseline-reference build/shades-reference-window/filter-corrected.wav` to verify the regenerated baseline against that initialized reference's PCM prefix. The metadata recipe includes the command for recreating the 330-second reference when it is absent.
+
 ## Reconstruction boundary
 
-The independent implementation must compute note/target, envelope, pulse, portamento, vibrato and global filter state from editable fields, preserving row timing and release evolution. Use the original only as the comparison oracle. The complete finite export and an original transfer phrase still need execution, rendering and listening evidence before this study can close.
+The [editable score](../../../songs/shades-score.json) separates patterns, order, transpose, explicit gate semantics, row timing and fade commands. The [editable instrument description](../../../songs/shades-programs.json) supplies named voice/filter patches, the frequency lookup and named preloaded state. Source address annotations are provenance; neither description contains executable source-driver code or a captured playback ledger.
+
+The [program module](../../../scripts/shades_programs.py) implements `Programs`/`State`, `load_block`, `consume_row`, `advance_portamento`, `advance_vibrato`, `advance_filter` and `advance_pulse`. The [independent scheduler](../../../scripts/shades_player.py) owns modulation-before-row order, fade-before-selection order, conditional voice writers, timer-high commands and the finite stop. Its `compute(score, programs, calls=None, include_stop=False)` API runs without the original SID. The [score importer](../../../scripts/describe-shades-score.py) is a separate pinned-source analysis path; `expand_score(description)` requires only editable JSON.
+
+```sh
+python3 scripts/shades_player.py songs/shades-score.json --programs songs/shades-programs.json --output build/shades-model-new
+PYTHONPATH=.tools/test-deps python3 scripts/shades_player.py songs/shades-score.json --programs songs/shades-programs.json --reference .local/research/shades/Shades_filter_corrected.sid --output build/shades-model-checked-new
+PYTHONPATH=.tools/test-deps python3 scripts/describe-shades-score.py .local/research/shades/Shades_filter_corrected.sid --output songs/shades-score.json --check --evidence-output build/shades-score-evidence-new
+python3 scripts/shades_programs.py .local/research/shades/Shades_filter_corrected.sid --output build/shades-programs-new.json
+```
+
+Choose fresh output paths. The model CLI writes the complete computed store ledger and a verification receipt; adding `--reference` compares every source call before the four authored stop stores. Generated stores are analysis output, never the runtime sound program. The [full comparison receipt](../../../build/shades-semantic-verified/verification.json) verifies all 296,907 source SID/timer stores across 24,385 calls. The score importer can additionally retain consumed events, row/call snapshots, source mappings and ordered writes, with hashes rather than a prose-only summary; the [retained score-evidence receipt](../../../build/shades-score-verified/receipt.json) indexes those complete records.
+
+### Behavior lookup for reuse
+
+The [program guards](../../../tests/shades_programs_test.py) connect these rules to executed source transitions or focused source fixtures. The [full transition receipt](../../../build/shades-program-model/receipt.json) indexes a lossless named-state delta ledger with ordered source writes, covering every modulation stage and row across the selected span. The [scheduler guards](../../../tests/shades_player_test.py) exercise ordered writes, source-free annotations, a changed pulse parameter and the finite ending. These are behavioral contracts of the inspected driver, not general SID hardware rules.
+
+| Mechanism / parameter | Retained behavior and constraint |
+| --- | --- |
+| Pulse width and counters | Use a 16-bit accumulator; all up stages precede eligible down stages, including the same-call turnaround. A down step larger than the current accumulator stalls without consuming its counter. |
+| Rest and hold | Hold skips pitch/gate work. Rest clears GATE while effects continue; voice 2 emits its rest writer on every rest, while voices 1 and 3 suppress it when the previous row was already a rest. |
+| Portamento enable | The low byte of the step enables the effect; a step such as `$0100` is inactive despite its nonzero high byte. |
+| Downward target slide | Preserve the source's asymmetric byte comparison: with a `$0010` step, `$1020→$1000` snaps to target, while `$1008→$1000` subtracts to `$0FF8`. A conventional distance clamp would change the sound. |
+| Up/down pitch movement | Movement sets bit 1 of vibrato delay; reaching the target through the snap branch clears it. Preserve byte-width arithmetic and wraparound. |
+| Delayed vibrato | When delay expires, emit two subtractive pitch updates, then reset the phase before the ascending stage. Preserve both writes. |
+| Fine tune | Voices 2 and 3 add their fine-tune byte to the frequency low byte without carrying into the high byte. Keep this distinct from a conventional 16-bit cents offset. |
+| Global filter | One contour advances per call. The low-byte carry test uses a threshold of seven; descending high-byte subtraction is suppressed when it would underflow. Trigger mask chooses which voice can reset the contour. |
+| Envelope write ordering | Voice 1's SR is emitted by voice 2's writer; do not silently regroup all seven registers per voice. |
+| Fade | Advance before selecting the next row's block. An active fade suppresses normal voice-writer volume stores, including after it reaches zero. |
+
+The complete finite export and an original transfer phrase still need compiled execution, rendering and listening evidence before this study can close. Ordered computed-store equality establishes the semantic model; it does not establish CPU cost, within-call bus timing, analogue identity or musical approval of an independent player.
