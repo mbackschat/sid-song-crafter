@@ -42,7 +42,13 @@
       "wavSha256": "3c33089854a83119c0a4893a4ab45a2fa81d56e9961b62911682d26b499c6758",
       "seconds": 310,
       "frames": 13671000,
-      "audioReceipt": "evidence/shades-independent-full/audio-evidence.json"
+      "audioReceipt": "evidence/shades-independent-full/audio-evidence.json",
+      "listeningReview": {
+        "date": "2026-10-13",
+        "scope": "Complete reconstruction fade ending, stopping before the reference restarts",
+        "verdict": "accepted",
+        "listenerQuote": "it sounds ok, it fades out nice, if that what's your expectation"
+      }
     },
     {
       "role": "shades-transfer",
@@ -76,7 +82,12 @@
     "gapFrames": 22050,
     "gain": 1,
     "normalization": false,
-    "listeningReview": null,
+    "listeningReview": {
+      "date": "2026-10-13",
+      "scope": "Reference-first comparison: independent reconstruction sound and phrasing",
+      "verdict": "accepted",
+      "listenerQuote": "yes to first"
+    },
     "sha256": "a05925d1046f8a741a59b5f64d0d27af2fcbb48c9d6c98f6fb8cf9dc8576e35f",
     "frames": 1080450,
     "seconds": 24.5,
@@ -151,5 +162,5 @@
     ]
   },
   "publication": "Reference SID binaries, reference WAVs and A/B audio containing reference material remain local in ignored .local/ or build/, never in Git or LFS. This recipe retains hashes and commands.",
-  "limits": "Pinned renderer/settings support exact reproduction; another renderer build may differ. CPU/store and VICE verification are separate evidence. Musical review remains pending."
+  "limits": "Pinned renderer/settings support exact reproduction; another renderer build may differ. CPU/store and VICE verification are separate evidence. Reconstruction sound/phrasing and fade ending are listening-approved; the original transfer phrase remains pending."
 }

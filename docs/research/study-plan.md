@@ -15,7 +15,7 @@ These are recognizable signature candidates, not an asserted “number one” ra
 | Order / ID | Study and proposed reference | Learning target | State |
 | --- | --- | --- | --- |
 | 1 / F | [Flashdance: What a Feeling — DRAX](composition/flashdance-preparation.md), #1 | Staged waveform/PWM programs, evolving filtered bass, precise articulation; full arrangement and deliberate dual-SID expansion | Done: reconstruction, raw stereo dual arrangement and original transfer reviewed |
-| 2 / M1 | [Shades — Chris Hülsbeck](composition/shades-preparation.md), #1 | Soundmonitor's instrument model; expressive modulation and original/corrected filter intent | Awaiting listening: complete independent reconstruction and original transfer verified/rendered |
+| 2 / M1 | [Shades — Chris Hülsbeck](composition/shades-preparation.md), #1 | Soundmonitor's instrument model; expressive modulation and original/corrected filter intent | Reconstruction and fade ending accepted; verified/rendered original transfer awaits listening |
 | 3 / M2 | [Cybernoid II — Jeroen Tel](composition/cybernoid-ii-preparation.md), title #1 | Groove, bass/drum time-sharing, delayed modulation; music/driver collaboration with Charles Deenen | Preparation: editable numeric player matches all 645,960 stores over 36,000 calls; compiled export, ending, rendering and transfer remain |
 | 4 / M3 | [Monty on the Run — Rob Hubbard](composition/monty-preparation.md), #1 | Articulated lead, percussion substitutions, pitch effects and phrase development | Preparation: two order traversals and first-wrap CPU/VICE proof retained; independent note/body components verify shared PWM and pitch-state aliases; full player and reconstruction remain |
 | 5 / M4 | [Rambo: First Blood Part II — Martin Galway](composition/rambo-preparation.md), loader #1 | Sustained timbre evolution, introductory effects and original source-code hooks | Preparation: finite loader and CPU/VICE final stores verified; independent lifetime/PWM/sequential-pitch component matches ending contexts; remaining mechanisms and reconstruction pending |
@@ -48,10 +48,10 @@ The [owning study](composition/shades-preparation.md) retains the complete first
 | 1: Identify and map | Done | Calls 0–24,384, source fade and actual restart mapped; full real CIA dispatch verified |
 | 2: Explain mechanisms | Done | Editable programs, 122,048 source-state transitions and causal PWM intervention; listener finds moving pulse quieter and more vibrant |
 | 3: Reproduce independently | Done | Our compiled score/program player matches all 296,907 source stores, adds four finite-stop stores and passes full CIA-timed VICE execution |
-| 4: Verify and listen | Awaiting listening | Full 310-second render and reference-first trio comparison prepared; assess sound/phrasing and complete ending when the listener returns |
-| 5: Transfer and retain | Awaiting listening | Original eight-bar phrase, 22-second render, full CPU/VICE proof and [editable instrument card](composition/instruments/shades-decoded-programs.md); assess musical use and ending when the listener returns |
+| 4: Verify and listen | Done | Full 310-second reconstruction's sound/phrasing and fade ending accepted on 2026-10-13; exact verdict in the owning study |
+| 5: Transfer and retain | Awaiting listening | Original eight-bar phrase, 22-second render, full CPU/VICE proof and [editable instrument card](composition/instruments/shades-decoded-programs.md); clip supplied, musical use and ending verdict pending |
 
-The [independent export section](composition/shades-preparation.md#independent-export-and-original-transfer) links receipts, local audio and exact reproduction recipes. Questions wait while the user is away. Preserve the pending musical verdict; a verified render does not close this case.
+The [independent export section](composition/shades-preparation.md#independent-export-and-original-transfer) links receipts, local audio, exact reproduction recipes and accepted reconstruction feedback. Preserve the separate pending transfer verdict; approval of the reconstruction does not close this case by itself.
 
 ## Completion contract for every study
 

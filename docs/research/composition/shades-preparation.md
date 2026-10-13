@@ -141,12 +141,15 @@ Both use the shortest timer period of 12,326 cycles and pass the conservative 12
 
 The [instrument card](instruments/shades-decoded-programs.md) explains the original eight-bar C-major transfer, cold initialization, pulse motion, shared-filter ownership and voice-3 pitch glide. Its [parameter-isolation receipt](../../../evidence/shades-transfer-model-01/parameter-isolation.json) changes only the glide step from 96 to zero: differences remain confined to voice-3 pitch stores. This is an execution experiment; the two musical halves use different notes and are not an isolated listening A/B.
 
-### Reproduce and listen later
+### Reproduce and review listening
 
 Follow [the compiler workflow](../../workflows/decoded-song-workflow.md) and [portable audio recipe](shades-independent-audio.json) for fresh-output commands, input/output hashes and renderer settings. All reference and comparison audio remains local and excluded from Git/LFS.
 
 - [Reference then reconstruction](../../../build/shades-independent-full/listening/reference-then-ours.ab.wav): seconds 24–36 from each initialized render, a half-second gap, unity gain. This passage includes all three voices; A is the corrected reference, B our independent player.
+- [Full matching reference](../../../build/shades-reference-window/filter-corrected.wav): 330 seconds of the filter-corrected archive, including the next loop; this is the reference used for the comparison. The [original archive variant](../../../build/shades-reference-window/original.wav) is also available locally for comparison.
 - [Complete reconstruction](../../../build/shades-independent-full/reconstructed.wav): 310 seconds, including the source fade and finite ending.
 - [Original transfer phrase](../../../build/shades-transfer/reconstructed.wav): 22 seconds, including its release/fade.
 
-The [full audio receipt](../../../evidence/shades-independent-full/audio-evidence.json) and [transfer audio receipt](../../../evidence/shades-transfer/audio-evidence.json) record PAL MOS6581, libsidplayfp 3.1.1/SIDLite, default subtune 1, mono PCM16 at 44.1 kHz and no normalization. Neither render clips. The final half-second has zero AC RMS in both, with a constant renderer DC offset; this establishes a settled tail, not subjective ending quality. **Listening pending:** the earlier PWM-intervention verdict does not approve these independent exports.
+The [full audio receipt](../../../evidence/shades-independent-full/audio-evidence.json) and [transfer audio receipt](../../../evidence/shades-transfer/audio-evidence.json) record PAL MOS6581, libsidplayfp 3.1.1/SIDLite, default subtune 1, mono PCM16 at 44.1 kHz and no normalization. Neither render clips. The final half-second has zero AC RMS in both, with a constant renderer DC offset; this establishes a settled tail, not subjective ending quality.
+
+**Reconstruction listening approved on 2026-10-13:** the listener answered “yes to first” when asked whether the reference-first comparison preserves sound and phrasing. After initially describing the full ending as “it seems so” and requesting the original, the listener clarified: “it sounds ok, it fades out nice, if that what's your expectation.” The intended ending preserves the source fade and stops before its next loop; this accepts that declared reconstruction and ending. It does not establish PCM identity or approve the separate original transfer phrase, whose listening verdict remains pending.

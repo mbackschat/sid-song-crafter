@@ -2,7 +2,7 @@
 
 Use these programs for a moving pulse bass, short harmonic replies and a filtered melody with delayed vibrato or target glides. The [owning Shades study](../shades-preparation.md) connects the recovered mechanisms to executed instructions, state transitions and the original pulse intervention. The [reference intake](../../composers/huelsbeck-tel.md#shades-reference-intake) owns Chris Hülsbeck's attribution and the selected filter-corrected archive variant.
 
-**Status:** source-free score/modulation models and both compiled exports pass CPU and real CIA-timed VICE execution; rendering is complete, and independent reconstruction/transfer listening remains pending. The existing listening verdict applies only to the reference intervention: the moving-pulse original was “little quieter and more vibrant” than the frozen-pulse version. It does not approve this transfer phrase or an independent reconstruction.
+**Status:** source-free score/modulation models and both compiled exports pass CPU and real CIA-timed VICE execution; rendering is complete. On 2026-10-13 the listener accepted the independent reconstruction's sound/phrasing and fade ending; the [owning study](../shades-preparation.md#reproduce-and-review-listening) retains the exact verdict. This original transfer phrase still awaits listening approval. The earlier moving-pulse verdict, “little quieter and more vibrant” than the frozen-pulse version, applies separately to the reference intervention.
 
 ## Choose and edit the sound
 
