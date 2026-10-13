@@ -139,6 +139,27 @@ The compiler writes `reconstructed.sid`, assembly/listing, `build.json`, `audit.
 
 On 2026-10-13, the [full candidate VICE receipt](../../evidence/shades-independent-full/vice/study.json.gz) verifies 24,386 calls and 296,911 ordered stores, with maximum interval/phase errors of 4/2 cycles. The [transfer receipt](../../evidence/shades-transfer/vice/study.json.gz) verifies 1,522 calls and 10,734 stores, with errors of 4/3 cycles. These checks establish compiled execution and cadence in the declared host; they do not establish bus timing, PCM identity or a listening verdict.
 
+### Monty packed-score player
+
+The [editable Monty title](../../songs/monty-title.json) retains the first complete order cycle at calls `[0,17536)` and adds 128 release/fade calls. [compose-monty.py](../../scripts/compose-monty.py) compiles our [runtime scheduler](../../songs/players/monty.asm) and [sound programs](../../songs/players/monty-effects.asm), with packed orders/patterns, a shared mutable instrument bank and typed pointers into named voice state. Score rows are consumed at runtime; the binary contains neither an original driver nor a captured-register schedule. The [owning study](../research/composition/monty-preparation.md) owns evidence and current listening status.
+
+- Target: one PAL MOS6581, one update per 19,656 cycles, PSID v2 VBI scheduling. The complete payload must fit callable RAM `$0400–$9FFF`.
+- Inputs: `monty-editable-title-v1`, three voice orders, numeric patterns, twenty source instruments or an edited bank of 1–32 records, 96 frequency words, explicit beyond-table aliases and named initial state. Source annotations are ignored during synthesis. Unsupported transport/overlay paths and missing reachable lookup bytes reject before compilation.
+- Packed control bit `$40` appends the current instrument without a new pitch; otherwise bit `$80` adds an instrument/portamento parameter before the pitch byte. The low five bits reload remaining score ticks, with the next row selected one tick later. A pattern's terminal `$FF` advances the order; an order `$FF` restarts sequencing while retaining sound state.
+- Optional `ending` requires `start_call > 0`, `release_calls=64`, `fade_step_calls=4` and `play_calls=start_call+128`, with initial master volume 15. It freezes score/tempo/remaining lengths, closes the actual output gates and continues body effects with the global counter advancing. Every later control store is gate-masked while saved controls remain intact for pitch aliases. Volume fades through sixteen four-call levels, retaining mode bits. Subsequent calls after the finite tail emit no stores or change named state. A no-ending export guarantees only the declared diagnostic window; do not present it as an indefinitely verified musical player.
+
+Prepare the declared first cycle and build it without accessing the original SID:
+
+```sh
+python3 scripts/prepare-monty-title-ending.py --check
+python3 scripts/prepare-monty-title-ending.py --output build/monty-title-prepared-new/title.json
+PYTHONPATH=.tools/test-deps python3 scripts/compose-monty.py build/monty-title-prepared-new/title.json --output build/monty-title-new
+```
+
+Preparation binds the known cycle boundary to the pinned [numeric source description](../../songs/monty-title-source.json); edit the result for new arrangements. Re-extracting that numeric source uses [prepare-monty-title.py](../../scripts/prepare-monty-title.py) and the pinned local original, as documented in the study. The compiler emits SID, assembly/listing, build and CPU receipts, ordered writes and named-state checkpoints. Its default audit covers every declared call; `--calls` selects a diagnostic prefix without changing the composition.
+
+For instrument reuse, the [Monty familiar-transfer card](../research/composition/instruments/monty-decoded-programs.md) provides matching 53-note Für Elise descriptions and an honest generated plain reference. `python3 scripts/prepare-monty-elise.py --check` verifies both saved inputs. Native articulation and envelope/rest behavior remain explicit conversion limits; full execution and rendered signal health do not supply a musical verdict.
+
 ### Other drivers
 
 [describe-drax-score.py](../../scripts/describe-drax-score.py) is a pinned, driver-specific transcriber, not a universal SID importer. It observes executed note consumption, instrument initialization and score gate-off, then verifies preparation and repeat behavior. Use `--check` to compare its output with the retained fixture. For another player, recover its corresponding readers and state transitions before adapting the decoder. [The Flashdance study](../research/composition/flashdance-preparation.md) demonstrates its own decoded mechanisms and independently authored dual-SID arrangement.

@@ -17,7 +17,7 @@ These are recognizable signature candidates, not an asserted “number one” ra
 | 1 / F | [Flashdance: What a Feeling — DRAX](composition/flashdance-preparation.md), #1 | Staged waveform/PWM programs, evolving filtered bass, precise articulation; full arrangement and deliberate dual-SID expansion | Done: reconstruction, raw stereo dual arrangement and original transfer reviewed |
 | 2 / M1 | [Shades — Chris Hülsbeck](composition/shades-preparation.md), #1 | Soundmonitor's instrument model; expressive modulation and original/corrected filter intent | Done: reconstruction/fade and familiar Für Elise transfer/ending accepted; rejected invented ending retained as a limitation |
 | 3 / M2 | [Cybernoid II — Jeroen Tel](composition/cybernoid-ii-preparation.md), title #1 | Groove, bass/drum time-sharing, delayed modulation; music/driver collaboration with Charles Deenen | Done: full independent first title cycle, added release/fade and familiar 53-note transfer accepted; full CPU/VICE/audio evidence retained |
-| 4 / M3 | [Monty on the Run — Rob Hubbard](composition/monty-preparation.md), #1 | Articulated lead, percussion substitutions, pitch effects and phrase development | Active: two order traversals and first-wrap CPU/VICE proof retained; integrate the verified note/body components into a complete player while preserving deferred untracked files |
+| 4 / M3 | [Monty on the Run — Rob Hubbard](composition/monty-preparation.md), #1 | Articulated lead, percussion substitutions, pitch effects and phrase development | Awaiting listening: complete first-cycle export, finite ending and familiar 53-note transfer pass CPU/VICE/audio checks; original and generated plain references supplied |
 | 5 / M4 | [Rambo: First Blood Part II — Martin Galway](composition/rambo-preparation.md), loader #1 | Sustained timbre evolution, introductory effects and original source-code hooks | Preparation: finite loader and CPU/VICE final stores verified; independent lifetime/PWM/sequential-pitch component matches ending contexts; remaining mechanisms and reconstruction pending |
 | 6 / M5 | [Ghouls ’n Ghosts — Tim Follin](composition/ghouls-preparation.md), provisional #1 | Contrasting sections, changing orchestration and instrument transformations | Preparation: finite streams end at call 12,995; CPU/VICE agree across terminal commands and continuing filter writes; #1 label, sound mechanisms and independent player remain |
 | 7 / M6 | [Deflektor — Ben Daglish](composition/deflektor-preparation.md), #1 | Cowbell-driven rhythmic identity and independent supporting parts | Preparation: editable numeric player matches all 166,845 selected stores and stop behavior; compiled export, musical attribution, rendering and transfer remain |
@@ -34,7 +34,7 @@ Prioritize accepted musical deliverables over the number of decoded drivers. As 
 
 1. **Shades closed.** The familiar [Für Elise transfer and ending](composition/instruments/shades-decoded-programs.md#familiar-transfer-accepted) are accepted. Preserve the earlier invented fragment, whose instrument sound was accepted but ending rejected. Use familiar source-backed material by default to avoid conflating instrument reuse with new composition quality.
 2. **Cybernoid II closed.** The listener accepted the title opening and authored ending (“both are really good, I can not spot any difference to original”) and separately the familiar transfer (“Cybernoid version works musically”). Preserve the [actual comparison scope](composition/cybernoid-ii-preparation.md#listening-package-and-reproduction), native conversion limits and reproducible evidence.
-3. **Deliver Monty on the Run, then the remaining cases in table order.** Build on the verified components and first full traversal. The existing untracked Monty player/program files and tests remain unverified deferred material: inspect as needed but preserve them untouched and unstaged under the user's instruction. Use separate owned paths for new integration. Finish numeric composition, independent export, deliberate ending, matched listening and familiar transfer before advancing further. Extra analysis must resolve a named gap in that delivery.
+3. **Finish Monty's listening review, then the remaining cases in table order.** The [complete listening package](composition/monty-preparation.md#listening-package-and-reproduction) supplies original-first title/ending comparisons and a familiar plain-first transfer. Preserve the existing untracked Monty player/program files and tests untouched and unstaged; supported integration uses separate `monty_title_*` paths. Numeric composition, independent export, finite ending and transfer checks are complete. Record both musical verdicts before advancing; extra analysis must resolve a named gap in that delivery.
 
 Keep one musical case active. Pending listener feedback permits completing that case's packaging, reproduction instructions and reusable examples, but does not authorize deepening later studies to keep agents busy. When those independent tasks are finished, wait for the verdict. This order governs resumed study work; a documentation update does not itself resume a paused run.
 
@@ -76,6 +76,18 @@ The [independent export section](composition/shades-preparation.md#independent-e
 | 5: Transfer and retain | Done | [Familiar 53-note Für Elise pair](composition/instruments/cybernoid-decoded-programs.md) accepted as musically working; plain reference, native timing/tuning limits and full CPU/VICE/audio evidence retained |
 
 All five stages are complete for the declared first-cycle title and familiar-transfer scope. These verdicts do not establish PCM identity, physical hardware equivalence or suitability of every instrument on arbitrary material.
+
+## Monty on the Run: current milestones
+
+| Stage | State | Evidence / next action |
+| --- | --- | --- |
+| 1: Identify and map | Done | Pinned title #1, separate SID/inspiration credits, two complete order traversals and first-cycle boundary at call 17,536 |
+| 2: Explain mechanisms | Done | Independent packed scheduler and sound programs match all 373,739 source stores across 40,000 calls; four controlled source edits agree |
+| 3: Reproduce independently | Done | Compiled first cycle matches all 162,695 original init/music stores; explicit 128-call tail, complete named-state and CPU/VICE checks, two stopped calls |
+| 4: Verify and listen | Awaiting listening | [Title and ending package](composition/monty-preparation.md#listening-package-and-reproduction), original first; full reference/candidate supplied, signal health checked |
+| 5: Transfer and retain | Awaiting listening | [Familiar 53-note pair](composition/instruments/monty-decoded-programs.md), plain reference and Monty instruments; full CPU/VICE/audio checks pass, reusable code and evidence retained |
+
+Both sound questions have been presented. Keep Monty active while awaiting the listener; no musical acceptance follows from numerical equality or successful rendering.
 
 ## Completion contract for every study
 

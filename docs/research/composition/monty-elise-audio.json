@@ -1,0 +1,421 @@
+{
+  "schemaVersion": 1,
+  "kind": "monty-familiar-material-transfer-audio",
+  "checkedOn": "2026-10-13",
+  "source": {
+    "score": "songs/fuer-elise.json",
+    "scoreSha256": "a58bdad5e72a10c12b20913cf242e917b98bb010949ba3ea38f33cfe15b6368e",
+    "composer": "Ludwig van Beethoven",
+    "edition": "Breitkopf & Härtel, 1888, as identified by Mutopia-2015/08/18-931",
+    "provenance": "docs/songs/fuer-elise-score.md",
+    "excerptBeats": [
+      0,
+      12
+    ],
+    "retainedEvents": {
+      "bass": 6,
+      "harmony": 12,
+      "melody": 35
+    },
+    "totalRetainedEvents": 53
+  },
+  "inputs": {
+    "scripts/prepare-monty-title.py": "921a3c05895c81b57cbee1bf380b8f91d1264d1c87109113de0a66078cb1e0b6",
+    "scripts/prepare-monty-elise.py": "f15b69a78f2f32179231fc2afb4a88c1e8911d56ed081f684bf87d10f83db3a3",
+    "scripts/compose-monty.py": "e16668ece8dfbade0181e39a0e48a9cb118efd52af9586f0746001deb54c5a79",
+    "scripts/monty_title_player.py": "cf630fe9dc030789ffab355a209fdecc4427efc72af94100ad1a8fd215709053",
+    "scripts/monty_title_score.py": "2349c9db37c531c298dbf8bf0209aff0b8f3c0bcc8a79449d56d8bb718f8f055",
+    "scripts/monty_title_programs.py": "fdb26391dfdb9a58fe7ca8d9c42305f5301391fcf747511f272445e8682ff570",
+    "songs/players/monty.asm": "914c04341e8c6a0413646640ea1048dfb20e09b576e5d3c7a03db87bd65b8f31",
+    "songs/players/monty-effects.asm": "0948c435176bf3484fcb180598f3bd17a2c380863c2362db533e9445103921eb",
+    "scripts/sid_assembler.py": "2a1fecc8cb350c9cfdef292677a0cc54bcf2c0c069009b1222782708d42c287e",
+    "scripts/psid_audit.py": "eeea11cdbb5159745f36802526ee2f2986d12fe19ce47b3609fedcf15f47e1bd",
+    "scripts/psid_profile.py": "c2c696db133ed024840cfa5edbc76e3a07ef1f30345cc1820c978a51a73c816d",
+    "scripts/sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "scripts/verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+    "scripts/trace-sid-vice.py": "18a21e373d7dcd679771c256fa6d930106718246cb3e0c7647329d985eb73352",
+    "scripts/render-sid.cpp": "c7bc5f7b0fe8d18a54ecde7338b6efa786f87f54ec258a00fb01025486bad5fc",
+    "scripts/audio_comparison.py": "3d9ad70290cc5df00b9575b011ebdcd0b92d37e7c37464c886b873736bc78884",
+    "scripts/compare-audio.py": "af32799660edd43d56f81196994bf9629aec98e960f487ea98ad7b14e8c0fc48",
+    "tests/monty_elise_test.py": "3c2c2151d075c26f5dbfcbd6f96425b96d1d3033096a6c57b3e8f87834014b5c",
+    "tests/monty_compiler_test.py": "72498302247dd23bf4e22e5ccdaed8f2c81592e0588d3cbe05ca70e85ff93474",
+    "tests/monty_ending_test.py": "8938c439b5de2636f81ea5682bd9e0321d351259419bc4037bd5e6a5511c9473",
+    "tests/monty_effects_asm_test.py": "1977aeee8e7396f21959ade56f7867f4ccf20cf077dce8131900ef5a796e24fc",
+    "songs/monty-title-source.json": "c1597b914360bc80d68323033423beb6286b95088e4d72f943bf53d8f89424fc",
+    "songs/monty-elise-transfer.json": "7538854e2955138651d9ac97378778f317c96fcea83e39ffb026d3dca0e7d800",
+    "songs/monty-elise-reference.json": "5b48e33853e05f0e6af69f4f80b1750097b37128ae6db738e59f084fc8ef0d89"
+  },
+  "rendering": {
+    "executable": ".local/bin/render-sid",
+    "executableSha256": "80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe",
+    "source": "scripts/render-sid.cpp",
+    "library": "libsidplayfp 3.1.1",
+    "builder": "SIDLite",
+    "libraryArtifact": {
+      "path": ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+      "sha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00"
+    },
+    "clock": "PAL",
+    "chip": "MOS6581",
+    "defaultSubtune": 1,
+    "powerOnDelay": 0,
+    "sampleRate": 44100,
+    "channels": 1,
+    "format": "PCM16",
+    "seconds": 15,
+    "gain": 1,
+    "normalization": false
+  },
+  "roles": {
+    "reference": {
+      "path": "build/monty-elise-transfer/reference/reference.wav",
+      "sha256": "db37a5f012118e590a8a835bfcf24f48b341459ef78adc2eef9eb538feee588e",
+      "sid": {
+        "path": "build/monty-elise-transfer/reference/reconstructed.sid",
+        "sha256": "ede15233013a4484087784848c193248c018f005649c64a59ad81a47713514bb"
+      },
+      "description": "Generated plain triangle reference from the same 53 source events, calendar and native words; not an original performance.",
+      "buildReceipt": {
+        "path": "build/monty-elise-transfer/reference/build.json",
+        "sha256": "8e855dad684bed3de4ca1d8fa3b91b2e60d265de62c27ff6f94cc3c294d298c3"
+      },
+      "cpuAudit": {
+        "path": "build/monty-elise-transfer/reference/audit.json",
+        "sha256": "9f3767019efc5f8c2216135a3455162ee35351756c949107296e65fc1180232c"
+      },
+      "orderedWrites": {
+        "path": "build/monty-elise-transfer/reference/writes.json",
+        "sha256": "a3658cc6dccd949c866ed9ddb12a096b3ff8d9470ca0a19569c98368b0224fe8"
+      },
+      "stateCheckpoints": {
+        "path": "build/monty-elise-transfer/reference/state-checkpoints.json",
+        "sha256": "5142e19e3240c5add36a73c2552b9dd0259a5233af5e4f6cb97844cc63d11423"
+      },
+      "generatedAssembly": {
+        "path": "build/monty-elise-transfer/reference/player.asm",
+        "sha256": "cf2459c13ef836ba7ee7db9fcb13162eac3e3a999cbc06f51d833cf607f5a9e6"
+      },
+      "generatedListing": {
+        "path": "build/monty-elise-transfer/reference/player.listing",
+        "sha256": "bea31b934158e48c738aea4dfc5c95bd11167a413612300069d968632ccbcb65"
+      },
+      "viceReceipt": {
+        "path": "build/monty-elise-transfer/reference/vice/study.json",
+        "sha256": "ef65091f9615a31e625660cab8a3306137b05b61a4ca68dbe86fc2cf6ee44ff1"
+      },
+      "viceTrace": {
+        "path": "build/monty-elise-transfer/reference/vice/trace.json",
+        "sha256": "88dd7d6e70477ca1cb3bb53d3e618e63c5eff68484cb2a30a1862a238cab7f63"
+      },
+      "rendererSnapshots": {
+        "path": "build/monty-elise-transfer/reference/reference.wav.registers.tsv",
+        "sha256": "a994e653c680092c68df2491f0c432e11308ee4aa31d569ab6e5f5d26747cb3d"
+      },
+      "verification": {
+        "compiledCalls": 630,
+        "compiledStoresIncludingInit": 1396,
+        "matchedNamedStateAndBankCheckpoints": 11,
+        "maximumPlayCycles": 1755,
+        "viceCalls": 632,
+        "viceMatchedPlayStores": 1393,
+        "maximumCadenceErrorCycles": 7
+      }
+    },
+    "candidate": {
+      "path": "build/monty-elise-transfer/candidate/reconstructed.wav",
+      "sha256": "e355d21fb211711a3ace5ac6f819d950a47ace175e8146d957adec332d121845",
+      "sid": {
+        "path": "build/monty-elise-transfer/candidate/reconstructed.sid",
+        "sha256": "2b5b52dd1924a13af945d51306177fee53426256d2d656979d510866e338b17a"
+      },
+      "description": "Same 53 source events with native Monty records 2/6/15 on bass/harmony/melody; no drum, descent, octave or portamento pitch replacement.",
+      "buildReceipt": {
+        "path": "build/monty-elise-transfer/candidate/build.json",
+        "sha256": "e3a6bdbacbb474f561c566374e701668d76f00702650d361be7c02dbbd3fdf16"
+      },
+      "cpuAudit": {
+        "path": "build/monty-elise-transfer/candidate/audit.json",
+        "sha256": "34a4f36b1c1af9943a7020d0244b0238e8c0f15e0dcb8e5f201a6831d41ce749"
+      },
+      "orderedWrites": {
+        "path": "build/monty-elise-transfer/candidate/writes.json",
+        "sha256": "8e4c41b4e70ac7e41c30db7cd1342d4520e67ae1c978a585b71c42e05f4bfced"
+      },
+      "stateCheckpoints": {
+        "path": "build/monty-elise-transfer/candidate/state-checkpoints.json",
+        "sha256": "cd3f8e2a83cc802b0ef0c6afa1c7dc27f93b032ec424ddd104bdadd530e05776"
+      },
+      "generatedAssembly": {
+        "path": "build/monty-elise-transfer/candidate/player.asm",
+        "sha256": "7b08a52b78fe51b69de78295efef9740c1b02e4402ab9423017c561e224bbe04"
+      },
+      "generatedListing": {
+        "path": "build/monty-elise-transfer/candidate/player.listing",
+        "sha256": "0d17854def8543fd3cbb6492bddf4b01250713a7c852354ecd24fa54acebaccb"
+      },
+      "viceReceipt": {
+        "path": "build/monty-elise-transfer/candidate/vice/study.json",
+        "sha256": "e9fb092f8a29959a0b558771be654332491b744a68414b1df1a4475f9c90d14b"
+      },
+      "viceTrace": {
+        "path": "build/monty-elise-transfer/candidate/vice/trace.json",
+        "sha256": "e62d8d0bc374d8fb35a452bfbe9d465926f7cf5047f95e9b0aa81d5e4e38431c"
+      },
+      "rendererSnapshots": {
+        "path": "build/monty-elise-transfer/candidate/reconstructed.wav.registers.tsv",
+        "sha256": "964973daedf8e5a25d2adce6a47729c71d2053f5900a67053905dbd4bb034310"
+      },
+      "verification": {
+        "compiledCalls": 630,
+        "compiledStoresIncludingInit": 2832,
+        "matchedNamedStateAndBankCheckpoints": 11,
+        "maximumPlayCycles": 1824,
+        "viceCalls": 632,
+        "viceMatchedPlayStores": 2829,
+        "maximumCadenceErrorCycles": 7
+      }
+    }
+  },
+  "comparisons": {
+    "full": {
+      "path": "build/monty-elise-transfer/listening/plain-then-monty.ab.wav",
+      "sha256": "138c63c6977a74c5c416f61594b9ac22a6f7a7e8046bc21aa6f7d608cb84e0d3",
+      "seconds": 30.5,
+      "order": [
+        "plain reference",
+        "Monty transfer"
+      ],
+      "method": "full-file AC RMS, pooled channel power after subtracting each channel mean; silence and tails included",
+      "matching": "attenuation only",
+      "gainDb": [
+        0.0,
+        -4.7207305966543895
+      ],
+      "gapSeconds": 0.5,
+      "receipt": {
+        "path": "build/monty-elise-transfer/listening/plain-then-monty.comparison.json",
+        "sha256": "38633d6b218426b35fa45497aa78f72b70f4c31c6ee5ff811cb871d994ba6914"
+      },
+      "matchedCopies": [
+        {
+          "path": "build/monty-elise-transfer/listening/plain-then-monty.a.matched.wav",
+          "sha256": "db37a5f012118e590a8a835bfcf24f48b341459ef78adc2eef9eb538feee588e",
+          "role": "reference",
+          "gain": 1.0,
+          "gainDb": 0.0
+        },
+        {
+          "path": "build/monty-elise-transfer/listening/plain-then-monty.b.matched.wav",
+          "sha256": "4ab75fb4006356741c302f43a9794e3bd1e95e0e0b5903357817aa5a63df058e",
+          "role": "candidate",
+          "gain": 0.5807155697102259,
+          "gainDb": -4.7207305966543895
+        }
+      ]
+    },
+    "ending": {
+      "path": "build/monty-elise-transfer/listening/ending-plain-then-monty.ab.wav",
+      "sha256": "1ccd1661bb08f28e3966650d19f18047544ce205d0d1b295a12d121fea533ccc",
+      "seconds": 12.5,
+      "order": [
+        "plain reference",
+        "Monty transfer"
+      ],
+      "windowSeconds": [
+        8,
+        14
+      ],
+      "windowFrames": [
+        352800,
+        617400
+      ],
+      "gainDb": [
+        0,
+        0
+      ],
+      "normalization": false,
+      "gapSeconds": 0.5,
+      "method": "Unity-gain window of raw original-level renders; independent of full-file matching.",
+      "receipt": {
+        "path": "build/monty-elise-transfer/listening/ending-plain-then-monty.comparison.json",
+        "sha256": "d4443d94965d131d85328e70190db1c776b170cdca374fdf0c39ed782691d4b5"
+      }
+    }
+  },
+  "execution": {
+    "musicCalls": 502,
+    "declaredCalls": 630,
+    "viceWindowInclusive": [
+      0,
+      631
+    ],
+    "additionalSilentCalls": [
+      630,
+      631
+    ],
+    "tail": {
+      "start_call": 502,
+      "release_calls": 64,
+      "fade_step_calls": 4
+    },
+    "compilerReproductionCheck": {
+      "path": "build/monty-elise-transfer/compiler-reproduction-check.json",
+      "sha256": "c0a4c6c4d49e4620665bd07cfafa6463d81bf118d9d7d751399619ffd5666c85"
+    },
+    "viceExecutable": {
+      "path": ".tools/vice-headless-3.9/build/src/x64sc",
+      "sha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285"
+    },
+    "viceVersion": "3.9",
+    "viceDataDirectory": "/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice"
+  },
+  "audioHealth": {
+    "path": "build/monty-elise-transfer/audio-evidence.json",
+    "sha256": "1775e267e19d8d60852b71e784f4ba75f23d7ccbce23a06a50ea8b194235bee4"
+  },
+  "listeningReview": null,
+  "limits": [
+    "Generated same-material plain reference, not an original recording.",
+    "Source boundaries round to two-call PAL ticks; native gates release two calls before row ends, and silent rest records can shorten releases.",
+    "Native frequency words retain their base tuning; PWM and eligible vibrato are decoded timbre behavior.",
+    "Measured PCM and controlled CPU/VICE execution do not establish hearing, physical SID equivalence or musical approval."
+  ],
+  "publication": "All WAVs and compiled exports remain in ignored build/. Track editable inputs, code, hashes, reproduction instructions and analysis evidence.",
+  "reproduction": {
+    "workingDirectory": "repository root",
+    "freshOutputRequired": true,
+    "setup": "docs/setup/local-setup.md",
+    "audioSetup": "docs/workflows/audio-workflow.md",
+    "commands": [
+      [
+        "python3",
+        "scripts/prepare-monty-elise.py",
+        "--check"
+      ],
+      [
+        "python3",
+        "scripts/prepare-monty-elise.py",
+        "--transfer-output",
+        "build/monty-elise-reproduce-new/transfer.json",
+        "--reference-output",
+        "build/monty-elise-reproduce-new/reference.json"
+      ],
+      [
+        "env",
+        "PYTHONPATH=.tools/test-deps",
+        "python3",
+        "scripts/compose-monty.py",
+        "build/monty-elise-reproduce-new/reference.json",
+        "--output",
+        "build/monty-elise-reproduce-new/reference"
+      ],
+      [
+        "env",
+        "PYTHONPATH=.tools/test-deps",
+        "python3",
+        "scripts/trace-sid-vice.py",
+        "build/monty-elise-reproduce-new/reference/reconstructed.sid",
+        "--oracle",
+        "build/monty-elise-reproduce-new/reference/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "631",
+        "--timeout",
+        "180",
+        "--output",
+        "build/monty-elise-reproduce-new/reference/vice"
+      ],
+      [
+        ".local/bin/render-sid",
+        "build/monty-elise-reproduce-new/reference/reconstructed.sid",
+        "build/monty-elise-reproduce-new/reference/reference.wav",
+        "15"
+      ],
+      [
+        "env",
+        "PYTHONPATH=.tools/test-deps",
+        "python3",
+        "scripts/compose-monty.py",
+        "build/monty-elise-reproduce-new/transfer.json",
+        "--output",
+        "build/monty-elise-reproduce-new/candidate"
+      ],
+      [
+        "env",
+        "PYTHONPATH=.tools/test-deps",
+        "python3",
+        "scripts/trace-sid-vice.py",
+        "build/monty-elise-reproduce-new/candidate/reconstructed.sid",
+        "--oracle",
+        "build/monty-elise-reproduce-new/candidate/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "631",
+        "--timeout",
+        "180",
+        "--output",
+        "build/monty-elise-reproduce-new/candidate/vice"
+      ],
+      [
+        ".local/bin/render-sid",
+        "build/monty-elise-reproduce-new/candidate/reconstructed.sid",
+        "build/monty-elise-reproduce-new/candidate/reconstructed.wav",
+        "15"
+      ],
+      [
+        "python3",
+        "scripts/compare-audio.py",
+        "prepare",
+        "build/monty-elise-reproduce-new/reference/reference.wav",
+        "build/monty-elise-reproduce-new/candidate/reconstructed.wav",
+        "build/monty-elise-reproduce-new/listening/plain-then-monty",
+        "--individual-copies"
+      ],
+      [
+        "python3",
+        "scripts/compare-audio.py",
+        "window",
+        "build/monty-elise-reproduce-new/reference/reference.wav",
+        "build/monty-elise-reproduce-new/candidate/reconstructed.wav",
+        "build/monty-elise-reproduce-new/listening/ending-plain-then-monty",
+        "--start-seconds",
+        "8",
+        "--end-seconds",
+        "14"
+      ]
+    ],
+    "healthMeasurement": {
+      "api": "scripts/audio_comparison.py:read_pcm16,measure_pcm,Pcm16",
+      "tailWindowSeconds": [
+        14,
+        15
+      ],
+      "settledCriterion": "Last-second samples are identical and AC RMS zero; retain the DC value.",
+      "fullInspectCommands": [
+        [
+          "python3",
+          "scripts/compare-audio.py",
+          "inspect",
+          "build/monty-elise-reproduce-new/reference/reference.wav"
+        ],
+        [
+          "python3",
+          "scripts/compare-audio.py",
+          "inspect",
+          "build/monty-elise-reproduce-new/candidate/reconstructed.wav"
+        ]
+      ],
+      "tailInspectCommand": [
+        "env",
+        "PYTHONPATH=scripts",
+        "python3",
+        "-c",
+        "import json, sys\nfrom audio_comparison import Pcm16, read_pcm16, measure_pcm\nfor path in sys.argv[1:]:\n    audio = read_pcm16(path)\n    tail = Pcm16(audio.sample_rate, audio.channels, audio.sample_rate,\n                 audio.samples[-audio.sample_rate * audio.channels:], '')\n    print(json.dumps({'path': path, 'windowSeconds': [audio.frames / audio.sample_rate - 1,\n                                                   audio.frames / audio.sample_rate],\n                      'minimumSample': min(tail.samples), 'maximumSample': max(tail.samples),\n                      **measure_pcm(tail)}, indent=2))\n",
+        "build/monty-elise-reproduce-new/reference/reference.wav",
+        "build/monty-elise-reproduce-new/candidate/reconstructed.wav"
+      ]
+    }
+  }
+}

@@ -7,6 +7,8 @@
 - [Shades pulse and pitch programs](shades-decoded-programs.md): moving pulse, delayed vibrato, target glides and shared-filter ownership; reconstruction and familiar transfer accepted, with the invented fragment's rejected ending retained as a limitation.
 - [Cybernoid pulse programs](cybernoid-decoded-programs.md): transient bass, filtered replies and moving-pulse lead on familiar material; accepted paired plain-reference transfer with explicit native timing/tuning limits.
 
+- [Monty tonal programs](monty-decoded-programs.md): narrow pulse bass, harmonic replies and shared moving-pulse melody on familiar material, with a matched plain reference and explicit timing, tuning, phase and ending limits; listening pending.
+
 ## Original SID-Wizard instruments
 
 Research and design date: 2026-10-12. This bank implements the first small group of experiments from [the repertoire brief](../sound-design-repertoire.md) using SID-Wizard 1.97 Extra. The [editable study source and workfiles](../../../../songs/studies/sidwizard-repertoire/README.md) retain the original patches, phrases and controlled comparisons.

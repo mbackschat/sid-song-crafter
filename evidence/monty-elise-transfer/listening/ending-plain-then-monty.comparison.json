@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    8.0,
+    14.0
+  ],
+  "window": {
+    "startFrame": 352800,
+    "endFrame": 617400,
+    "frames": 264600,
+    "startSeconds": 8.0,
+    "endSeconds": 14.0,
+    "durationSeconds": 6.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-elise-transfer/listening/ending-plain-then-monty.ab.wav",
+    "frames": 551250,
+    "durationSeconds": 12.5,
+    "sha256": "1ccd1661bb08f28e3966650d19f18047544ce205d0d1b295a12d121fea533ccc"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 264600
+    },
+    {
+      "label": "silence",
+      "startFrame": 264600,
+      "endFrame": 286650
+    },
+    {
+      "label": "B",
+      "startFrame": 286650,
+      "endFrame": 551250
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-elise-transfer/reference/reference.wav",
+      "sha256": "db37a5f012118e590a8a835bfcf24f48b341459ef78adc2eef9eb538feee588e",
+      "originalFrames": 661500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 264600,
+        "durationSeconds": 6.0,
+        "peak": 6560,
+        "peakDbfs": -13.970921911681152,
+        "clippedSamples": 0,
+        "rms": 975.8533969154142,
+        "acRms": 975.8237322634614,
+        "acRmsDbfs": -30.521571178214778,
+        "perChannel": [
+          {
+            "dc": -7.608930461073318,
+            "rms": 975.8533969154142,
+            "acRms": 975.8237322634614
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-elise-transfer/candidate/reconstructed.wav",
+      "sha256": "e355d21fb211711a3ace5ac6f819d950a47ace175e8146d957adec332d121845",
+      "originalFrames": 661500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 264600,
+        "durationSeconds": 6.0,
+        "peak": 8787,
+        "peakDbfs": -11.432186171169135,
+        "clippedSamples": 0,
+        "rms": 1538.3643822715485,
+        "acRms": 1511.9878341517774,
+        "acRmsDbfs": -26.71803276454149,
+        "perChannel": [
+          {
+            "dc": -283.6507747543462,
+            "rms": 1538.3643822715485,
+            "acRms": 1511.9878341517774
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

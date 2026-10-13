@@ -18,7 +18,7 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Study Flashdance: What a Feeling](flashdance-reference.md): verified archive identities, synthesis lessons and a source-to-reference comparison contract.
 - [Reconstruct Shades](shades-preparation.md): accepted independent full-form reconstruction and familiar transfer, CIA proofs and editable pulse/glide programs.
 - [Cybernoid II title and reusable programs](cybernoid-ii-preparation.md): complete numeric model, accepted independent title/finite ending and accepted familiar pulse-program transfer.
-- [Prepare Monty on the Run](monty-preparation.md): pinned subtune, two order traversals, independent first-wrap verification and bounded note/body components with shared PWM and pitch-state aliases.
+- [Monty on the Run reconstruction](monty-preparation.md): complete independent first-cycle export, finite ending and familiar transfer with full CPU/VICE/audio evidence; both musical verdicts pending.
 - [Prepare Rambo: First Blood Part II](rambo-preparation.md): loader-specific attribution, finite command traversal, independent stop-window verification and named-state lifetime/PWM/pitch components.
 - [Prepare Ghouls ’n Ghosts](ghouls-preparation.md): archive/subtune boundaries, finite stream form and CPU/VICE terminal verification with continuing filter writes.
 - [Prepare Deflektor](deflektor-preparation.md): complete finite numeric player, ordered score operations, editable sound components and full-register proof with bounded source edits.

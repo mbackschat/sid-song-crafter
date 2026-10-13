@@ -1,0 +1,1480 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "classification": "Ordered source-write prefix equivalence plus separately checked arranged tail",
+  "preservedMusic": {
+    "firstCall": 0,
+    "lastCallInclusive": 17535,
+    "playCalls": 17536,
+    "initStores": 3,
+    "playStores": 162692,
+    "matchedStores": 162695,
+    "fields": [
+      "phase",
+      "tick",
+      "address",
+      "value"
+    ],
+    "orderPreserved": true,
+    "repeatedStoresPreserved": true,
+    "instructionStartCyclesCompared": false
+  },
+  "deliberateEnding": {
+    "classification": "Deliberate finite arrangement tail; excluded from source equivalence",
+    "firstCall": 17536,
+    "lastCallInclusive": 17663,
+    "playCalls": 128,
+    "contract": {
+      "start_call": 17536,
+      "release_calls": 64,
+      "fade_step_calls": 4
+    },
+    "matchedSourceStores": null,
+    "sourceComparisonApplied": false,
+    "controlStoresChecked": 3,
+    "modeVolumeStoresChecked": 128,
+    "everyControlGateClear": true,
+    "everyModeVolumeLowNibbleMatchesFade": true,
+    "lastFourCallsVolumeZero": true,
+    "observations": [
+      {
+        "call": 17536,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 128
+          },
+          {
+            "address": 54276,
+            "value": 64
+          }
+        ],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 10
+      },
+      {
+        "call": 17537,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17538,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17539,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17540,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17541,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17542,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17543,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17544,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17545,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17546,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17547,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17548,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17549,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17550,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17551,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17552,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17553,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17554,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17555,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17556,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17557,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17558,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17559,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17560,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17561,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17562,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17563,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17564,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17565,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17566,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17567,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17568,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17569,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17570,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17571,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17572,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17573,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17574,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17575,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17576,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17577,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17578,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17579,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17580,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17581,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17582,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17583,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17584,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17585,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17586,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17587,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17588,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17589,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17590,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17591,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17592,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17593,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17594,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17595,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17596,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17597,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17598,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17599,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17600,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17601,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17602,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 7
+      },
+      {
+        "call": 17603,
+        "expectedVolume": 15,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          15
+        ],
+        "finalModeVolume": 15,
+        "orderedStores": 5
+      },
+      {
+        "call": 17604,
+        "expectedVolume": 14,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          14
+        ],
+        "finalModeVolume": 14,
+        "orderedStores": 7
+      },
+      {
+        "call": 17605,
+        "expectedVolume": 14,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          14
+        ],
+        "finalModeVolume": 14,
+        "orderedStores": 5
+      },
+      {
+        "call": 17606,
+        "expectedVolume": 14,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          14
+        ],
+        "finalModeVolume": 14,
+        "orderedStores": 7
+      },
+      {
+        "call": 17607,
+        "expectedVolume": 14,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          14
+        ],
+        "finalModeVolume": 14,
+        "orderedStores": 5
+      },
+      {
+        "call": 17608,
+        "expectedVolume": 13,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          13
+        ],
+        "finalModeVolume": 13,
+        "orderedStores": 7
+      },
+      {
+        "call": 17609,
+        "expectedVolume": 13,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          13
+        ],
+        "finalModeVolume": 13,
+        "orderedStores": 5
+      },
+      {
+        "call": 17610,
+        "expectedVolume": 13,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          13
+        ],
+        "finalModeVolume": 13,
+        "orderedStores": 7
+      },
+      {
+        "call": 17611,
+        "expectedVolume": 13,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          13
+        ],
+        "finalModeVolume": 13,
+        "orderedStores": 5
+      },
+      {
+        "call": 17612,
+        "expectedVolume": 12,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          12
+        ],
+        "finalModeVolume": 12,
+        "orderedStores": 7
+      },
+      {
+        "call": 17613,
+        "expectedVolume": 12,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          12
+        ],
+        "finalModeVolume": 12,
+        "orderedStores": 5
+      },
+      {
+        "call": 17614,
+        "expectedVolume": 12,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          12
+        ],
+        "finalModeVolume": 12,
+        "orderedStores": 7
+      },
+      {
+        "call": 17615,
+        "expectedVolume": 12,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          12
+        ],
+        "finalModeVolume": 12,
+        "orderedStores": 5
+      },
+      {
+        "call": 17616,
+        "expectedVolume": 11,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          11
+        ],
+        "finalModeVolume": 11,
+        "orderedStores": 7
+      },
+      {
+        "call": 17617,
+        "expectedVolume": 11,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          11
+        ],
+        "finalModeVolume": 11,
+        "orderedStores": 5
+      },
+      {
+        "call": 17618,
+        "expectedVolume": 11,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          11
+        ],
+        "finalModeVolume": 11,
+        "orderedStores": 7
+      },
+      {
+        "call": 17619,
+        "expectedVolume": 11,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          11
+        ],
+        "finalModeVolume": 11,
+        "orderedStores": 5
+      },
+      {
+        "call": 17620,
+        "expectedVolume": 10,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          10
+        ],
+        "finalModeVolume": 10,
+        "orderedStores": 7
+      },
+      {
+        "call": 17621,
+        "expectedVolume": 10,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          10
+        ],
+        "finalModeVolume": 10,
+        "orderedStores": 5
+      },
+      {
+        "call": 17622,
+        "expectedVolume": 10,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          10
+        ],
+        "finalModeVolume": 10,
+        "orderedStores": 7
+      },
+      {
+        "call": 17623,
+        "expectedVolume": 10,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          10
+        ],
+        "finalModeVolume": 10,
+        "orderedStores": 5
+      },
+      {
+        "call": 17624,
+        "expectedVolume": 9,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          9
+        ],
+        "finalModeVolume": 9,
+        "orderedStores": 7
+      },
+      {
+        "call": 17625,
+        "expectedVolume": 9,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          9
+        ],
+        "finalModeVolume": 9,
+        "orderedStores": 5
+      },
+      {
+        "call": 17626,
+        "expectedVolume": 9,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          9
+        ],
+        "finalModeVolume": 9,
+        "orderedStores": 7
+      },
+      {
+        "call": 17627,
+        "expectedVolume": 9,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          9
+        ],
+        "finalModeVolume": 9,
+        "orderedStores": 5
+      },
+      {
+        "call": 17628,
+        "expectedVolume": 8,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          8
+        ],
+        "finalModeVolume": 8,
+        "orderedStores": 7
+      },
+      {
+        "call": 17629,
+        "expectedVolume": 8,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          8
+        ],
+        "finalModeVolume": 8,
+        "orderedStores": 5
+      },
+      {
+        "call": 17630,
+        "expectedVolume": 8,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          8
+        ],
+        "finalModeVolume": 8,
+        "orderedStores": 7
+      },
+      {
+        "call": 17631,
+        "expectedVolume": 8,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          8
+        ],
+        "finalModeVolume": 8,
+        "orderedStores": 5
+      },
+      {
+        "call": 17632,
+        "expectedVolume": 7,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          7
+        ],
+        "finalModeVolume": 7,
+        "orderedStores": 7
+      },
+      {
+        "call": 17633,
+        "expectedVolume": 7,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          7
+        ],
+        "finalModeVolume": 7,
+        "orderedStores": 5
+      },
+      {
+        "call": 17634,
+        "expectedVolume": 7,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          7
+        ],
+        "finalModeVolume": 7,
+        "orderedStores": 7
+      },
+      {
+        "call": 17635,
+        "expectedVolume": 7,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          7
+        ],
+        "finalModeVolume": 7,
+        "orderedStores": 5
+      },
+      {
+        "call": 17636,
+        "expectedVolume": 6,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          6
+        ],
+        "finalModeVolume": 6,
+        "orderedStores": 7
+      },
+      {
+        "call": 17637,
+        "expectedVolume": 6,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          6
+        ],
+        "finalModeVolume": 6,
+        "orderedStores": 5
+      },
+      {
+        "call": 17638,
+        "expectedVolume": 6,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          6
+        ],
+        "finalModeVolume": 6,
+        "orderedStores": 7
+      },
+      {
+        "call": 17639,
+        "expectedVolume": 6,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          6
+        ],
+        "finalModeVolume": 6,
+        "orderedStores": 5
+      },
+      {
+        "call": 17640,
+        "expectedVolume": 5,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          5
+        ],
+        "finalModeVolume": 5,
+        "orderedStores": 7
+      },
+      {
+        "call": 17641,
+        "expectedVolume": 5,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          5
+        ],
+        "finalModeVolume": 5,
+        "orderedStores": 5
+      },
+      {
+        "call": 17642,
+        "expectedVolume": 5,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          5
+        ],
+        "finalModeVolume": 5,
+        "orderedStores": 7
+      },
+      {
+        "call": 17643,
+        "expectedVolume": 5,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          5
+        ],
+        "finalModeVolume": 5,
+        "orderedStores": 5
+      },
+      {
+        "call": 17644,
+        "expectedVolume": 4,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          4
+        ],
+        "finalModeVolume": 4,
+        "orderedStores": 7
+      },
+      {
+        "call": 17645,
+        "expectedVolume": 4,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          4
+        ],
+        "finalModeVolume": 4,
+        "orderedStores": 5
+      },
+      {
+        "call": 17646,
+        "expectedVolume": 4,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          4
+        ],
+        "finalModeVolume": 4,
+        "orderedStores": 7
+      },
+      {
+        "call": 17647,
+        "expectedVolume": 4,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          4
+        ],
+        "finalModeVolume": 4,
+        "orderedStores": 5
+      },
+      {
+        "call": 17648,
+        "expectedVolume": 3,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          3
+        ],
+        "finalModeVolume": 3,
+        "orderedStores": 7
+      },
+      {
+        "call": 17649,
+        "expectedVolume": 3,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          3
+        ],
+        "finalModeVolume": 3,
+        "orderedStores": 5
+      },
+      {
+        "call": 17650,
+        "expectedVolume": 3,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          3
+        ],
+        "finalModeVolume": 3,
+        "orderedStores": 7
+      },
+      {
+        "call": 17651,
+        "expectedVolume": 3,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          3
+        ],
+        "finalModeVolume": 3,
+        "orderedStores": 5
+      },
+      {
+        "call": 17652,
+        "expectedVolume": 2,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          2
+        ],
+        "finalModeVolume": 2,
+        "orderedStores": 7
+      },
+      {
+        "call": 17653,
+        "expectedVolume": 2,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          2
+        ],
+        "finalModeVolume": 2,
+        "orderedStores": 5
+      },
+      {
+        "call": 17654,
+        "expectedVolume": 2,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          2
+        ],
+        "finalModeVolume": 2,
+        "orderedStores": 7
+      },
+      {
+        "call": 17655,
+        "expectedVolume": 2,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          2
+        ],
+        "finalModeVolume": 2,
+        "orderedStores": 5
+      },
+      {
+        "call": 17656,
+        "expectedVolume": 1,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          1
+        ],
+        "finalModeVolume": 1,
+        "orderedStores": 7
+      },
+      {
+        "call": 17657,
+        "expectedVolume": 1,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          1
+        ],
+        "finalModeVolume": 1,
+        "orderedStores": 5
+      },
+      {
+        "call": 17658,
+        "expectedVolume": 1,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          1
+        ],
+        "finalModeVolume": 1,
+        "orderedStores": 7
+      },
+      {
+        "call": 17659,
+        "expectedVolume": 1,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          1
+        ],
+        "finalModeVolume": 1,
+        "orderedStores": 5
+      },
+      {
+        "call": 17660,
+        "expectedVolume": 0,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          0
+        ],
+        "finalModeVolume": 0,
+        "orderedStores": 7
+      },
+      {
+        "call": 17661,
+        "expectedVolume": 0,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          0
+        ],
+        "finalModeVolume": 0,
+        "orderedStores": 5
+      },
+      {
+        "call": 17662,
+        "expectedVolume": 0,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          0
+        ],
+        "finalModeVolume": 0,
+        "orderedStores": 7
+      },
+      {
+        "call": 17663,
+        "expectedVolume": 0,
+        "controlWrites": [],
+        "modeVolumeWrites": [
+          0
+        ],
+        "finalModeVolume": 0,
+        "orderedStores": 5
+      }
+    ],
+    "contractNotes": [
+      "The original order restart is replaced; source calls at and after 17536 are not a tail oracle.",
+      "The runtime freezes score, tempo and remaining-length state, increments the global counter and continues sound programs.",
+      "Every effect control store is gate-masked without changing saved controls; the leading mode/volume store retains its mode high nibble.",
+      "This ledger check observes gates and volume, not internal note age, later callable state or rendered silence."
+    ]
+  },
+  "provenance": {
+    "reproducer": {
+      "path": "build/monty-independent-full/compare-source.py",
+      "sha256": "3584376c1546b12fe502d3595c780646c170453c9da60d53cbbbeb69ffda89dd",
+      "bytes": 11833
+    },
+    "description": {
+      "path": "songs/monty-title.json",
+      "sha256": "f622787951a1e35b1bb09f3f1d244fc214306e3bd66f84529e02c33573ab4dcf",
+      "bytes": 68237
+    },
+    "sourceLedger": {
+      "path": "evidence/monty-form/full40000/audit.writes.json.gz",
+      "sha256": "f78899ef13bb54345ec4192fc7a9aa0306ce701df8862c42d02aa11cc54606fe",
+      "bytes": 1589621,
+      "rawSha256": "7a9021a04e20a4e9f482de5af4606b8cb7c19b06612395293a9868b875f24df5",
+      "rawBytes": 31632107,
+      "stores": 373739,
+      "use": "Comparison oracle only; not a compiler or player input"
+    },
+    "candidate": {
+      "reconstructed.sid": {
+        "path": "build/monty-independent-full/candidate/reconstructed.sid",
+        "sha256": "afc976c6271652b2357523c98fd4b960509d3fdd8fcd54ed2555f647d7254522",
+        "bytes": 5475
+      },
+      "writes.json": {
+        "path": "build/monty-independent-full/candidate/writes.json",
+        "sha256": "4629efa9fdd2773ca4bd8df6f9bc49d6391225762a2571dce189fdc42e03a241",
+        "bytes": 15467549
+      },
+      "build.json": {
+        "path": "build/monty-independent-full/candidate/build.json",
+        "sha256": "ea4708e70ba74fe031bb62a28f9db23da5318e5d3ff65758bb7e72a1c9e7d98d",
+        "bytes": 25082
+      },
+      "audit.json": {
+        "path": "build/monty-independent-full/candidate/audit.json",
+        "sha256": "aa1dae17b3892df4487e895fc11a9aa97e2cdde7ada6beee947ec48cdb903bc1",
+        "bytes": 3449
+      },
+      "player.asm": {
+        "path": "build/monty-independent-full/candidate/player.asm",
+        "sha256": "37d8d34dec5d675ef01e2183d0be6c730dc382974cee9611a2fcec58c702daac",
+        "bytes": 37209
+      },
+      "player.listing": {
+        "path": "build/monty-independent-full/candidate/player.listing",
+        "sha256": "1db1f8eb70ec6958ec40a038534673e35f292e36219eabbb6dcfe9f370a81c00",
+        "bytes": 50865
+      }
+    },
+    "code": {
+      "scripts/compose-monty.py": {
+        "path": "scripts/compose-monty.py",
+        "sha256": "e16668ece8dfbade0181e39a0e48a9cb118efd52af9586f0746001deb54c5a79",
+        "bytes": 14464
+      },
+      "scripts/prepare-monty-title-ending.py": {
+        "path": "scripts/prepare-monty-title-ending.py",
+        "sha256": "9cd00b7ee352630ccac249cc8e4c186af6e289b4069fdb70a06d0b787aa4f3de",
+        "bytes": 2514
+      },
+      "scripts/monty_title_player.py": {
+        "path": "scripts/monty_title_player.py",
+        "sha256": "cf630fe9dc030789ffab355a209fdecc4427efc72af94100ad1a8fd215709053",
+        "bytes": 10334
+      },
+      "scripts/monty_title_score.py": {
+        "path": "scripts/monty_title_score.py",
+        "sha256": "2349c9db37c531c298dbf8bf0209aff0b8f3c0bcc8a79449d56d8bb718f8f055",
+        "bytes": 9493
+      },
+      "scripts/monty_title_programs.py": {
+        "path": "scripts/monty_title_programs.py",
+        "sha256": "fdb26391dfdb9a58fe7ca8d9c42305f5301391fcf747511f272445e8682ff570",
+        "bytes": 7491
+      },
+      "scripts/sid_assembler.py": {
+        "path": "scripts/sid_assembler.py",
+        "sha256": "2a1fecc8cb350c9cfdef292677a0cc54bcf2c0c069009b1222782708d42c287e",
+        "bytes": 3305
+      },
+      "scripts/verify_player.py": {
+        "path": "scripts/verify_player.py",
+        "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+        "bytes": 9535
+      },
+      "scripts/psid_audit.py": {
+        "path": "scripts/psid_audit.py",
+        "sha256": "eeea11cdbb5159745f36802526ee2f2986d12fe19ce47b3609fedcf15f47e1bd",
+        "bytes": 10460
+      },
+      "scripts/psid_profile.py": {
+        "path": "scripts/psid_profile.py",
+        "sha256": "c2c696db133ed024840cfa5edbc76e3a07ef1f30345cc1820c978a51a73c816d",
+        "bytes": 5202
+      },
+      "scripts/sid_audit_host.py": {
+        "path": "scripts/sid_audit_host.py",
+        "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+        "bytes": 3146
+      },
+      "songs/players/monty.asm": {
+        "path": "songs/players/monty.asm",
+        "sha256": "914c04341e8c6a0413646640ea1048dfb20e09b576e5d3c7a03db87bd65b8f31",
+        "bytes": 3805
+      },
+      "songs/players/monty-effects.asm": {
+        "path": "songs/players/monty-effects.asm",
+        "sha256": "0948c435176bf3484fcb180598f3bd17a2c380863c2362db533e9445103921eb",
+        "bytes": 5574
+      }
+    }
+  },
+  "limitations": [
+    "Phase/call/address/value and store order are compared; instruction-start cycles are retained but not equated.",
+    "Existing final candidate CPU/build receipts bind the ledger to the SID and editable description; this reproducer does not execute either player.",
+    "The tail is deliberately different from the looping source; its internal-state contract is covered by the player tests and model comparison.",
+    "No original SID payload, reference audio, VICE timing, PCM identity, rendered-silence or listening claim is produced."
+  ],
+  "reproduction": {
+    "argv": [
+      "python3",
+      "build/monty-independent-full/compare-source.py",
+      "--output-root",
+      "build/monty-independent-full",
+      "--candidate-root",
+      "build/monty-independent-full/candidate",
+      "--description",
+      "songs/monty-title.json",
+      "--source-ledger",
+      "evidence/monty-form/full40000/audit.writes.json.gz",
+      "--receipt-name",
+      "source-comparison-final.json"
+    ],
+    "output": "build/monty-independent-full/source-comparison-final.json",
+    "freshReceiptRequired": true
+  }
+}

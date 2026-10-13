@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "method": "full-file AC RMS, pooled channel power after subtracting each channel mean; silence and tails included",
+  "matching": "attenuation only",
+  "requestedAcRmsDbfs": null,
+  "targetAcRms": 1294.304586088037,
+  "targetAcRmsDbfs": -28.068268899102115,
+  "peakHeadroomDb": 1.0,
+  "peakLimit": 29203,
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-elise-transfer/listening/plain-then-monty.ab.wav",
+    "frames": 1345050,
+    "durationSeconds": 30.5,
+    "sha256": "138c63c6977a74c5c416f61594b9ac22a6f7a7e8046bc21aa6f7d608cb84e0d3"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 661500
+    },
+    {
+      "label": "silence",
+      "startFrame": 661500,
+      "endFrame": 683550
+    },
+    {
+      "label": "B",
+      "startFrame": 683550,
+      "endFrame": 1345050
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-elise-transfer/reference/reference.wav",
+      "sha256": "db37a5f012118e590a8a835bfcf24f48b341459ef78adc2eef9eb538feee588e",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 661500,
+        "durationSeconds": 15.0,
+        "peak": 7720,
+        "peakDbfs": -12.556652692479634,
+        "clippedSamples": 0,
+        "rms": 1296.2028072177416,
+        "acRms": 1294.304586088037,
+        "acRmsDbfs": -28.068268899102115,
+        "perChannel": [
+          {
+            "dc": 70.12386092214663,
+            "rms": 1296.2028072177416,
+            "acRms": 1294.304586088037
+          }
+        ]
+      },
+      "gain": 1.0,
+      "gainDb": 0.0,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 661500,
+        "durationSeconds": 15.0,
+        "peak": 7720,
+        "peakDbfs": -12.556652692479634,
+        "clippedSamples": 0,
+        "rms": 1296.2028072177416,
+        "acRms": 1294.304586088037,
+        "acRmsDbfs": -28.068268899102115,
+        "perChannel": [
+          {
+            "dc": 70.12386092214663,
+            "rms": 1296.2028072177416,
+            "acRms": 1294.304586088037
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-elise-transfer/listening/plain-then-monty.a.matched.wav"
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-elise-transfer/candidate/reconstructed.wav",
+      "sha256": "e355d21fb211711a3ace5ac6f819d950a47ace175e8146d957adec332d121845",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 661500,
+        "durationSeconds": 15.0,
+        "peak": 8839,
+        "peakDbfs": -11.380936021213266,
+        "clippedSamples": 0,
+        "rms": 2270.8568662183657,
+        "acRms": 2228.8098573521775,
+        "acRmsDbfs": -23.34753830244772,
+        "perChannel": [
+          {
+            "dc": -434.9684202569917,
+            "rms": 2270.8568662183657,
+            "acRms": 2228.8098573521775
+          }
+        ]
+      },
+      "gain": 0.5807155697102259,
+      "gainDb": -4.7207305966543895,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 661500,
+        "durationSeconds": 15.0,
+        "peak": 5133,
+        "peakDbfs": -16.101573413979104,
+        "clippedSamples": 0,
+        "rms": 1318.6693602984303,
+        "acRms": 1294.2646288936353,
+        "acRmsDbfs": -28.068537050155477,
+        "perChannel": [
+          {
+            "dc": -252.523171579743,
+            "rms": 1318.6693602984303,
+            "acRms": 1294.2646288936353
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-elise-transfer/listening/plain-then-monty.b.matched.wav"
+    }
+  ],
+  "listeningReview": null
+}

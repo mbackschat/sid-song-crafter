@@ -1,0 +1,563 @@
+{
+  "schemaVersion": 1,
+  "kind": "monty-title-reconstruction-listening-package",
+  "checkedOn": "2026-10-13",
+  "source": {
+    "title": "Monty on the Run",
+    "music": "Rob Hubbard",
+    "assetId": "monty-on-the-run",
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/H/Hubbard_Rob/Monty_on_the_Run.sid",
+    "path": ".local/monty-source.sid",
+    "sha256": "528a7330817e4a0a0f75a505e9fe2444e07c5072ce5383ceaa89f183f0eee3ab",
+    "bytes": 5694
+  },
+  "description": {
+    "path": "songs/monty-title.json",
+    "sha256": "f622787951a1e35b1bb09f3f1d244fc214306e3bd66f84529e02c33573ab4dcf",
+    "bytes": 68237
+  },
+  "codePins": {
+    "scripts/render-sid.cpp": {
+      "path": "scripts/render-sid.cpp",
+      "sha256": "c7bc5f7b0fe8d18a54ecde7338b6efa786f87f54ec258a00fb01025486bad5fc",
+      "bytes": 10392
+    },
+    "scripts/audio_comparison.py": {
+      "path": "scripts/audio_comparison.py",
+      "sha256": "3d9ad70290cc5df00b9575b011ebdcd0b92d37e7c37464c886b873736bc78884",
+      "bytes": 13190
+    },
+    "scripts/compare-audio.py": {
+      "path": "scripts/compare-audio.py",
+      "sha256": "af32799660edd43d56f81196994bf9629aec98e960f487ea98ad7b14e8c0fc48",
+      "bytes": 2971
+    },
+    "scripts/compose-monty.py": {
+      "path": "scripts/compose-monty.py",
+      "sha256": "e16668ece8dfbade0181e39a0e48a9cb118efd52af9586f0746001deb54c5a79",
+      "bytes": 14464
+    },
+    "scripts/prepare-monty-title-ending.py": {
+      "path": "scripts/prepare-monty-title-ending.py",
+      "sha256": "9cd00b7ee352630ccac249cc8e4c186af6e289b4069fdb70a06d0b787aa4f3de",
+      "bytes": 2514
+    },
+    "scripts/monty_title_player.py": {
+      "path": "scripts/monty_title_player.py",
+      "sha256": "cf630fe9dc030789ffab355a209fdecc4427efc72af94100ad1a8fd215709053",
+      "bytes": 10334
+    },
+    "scripts/monty_title_programs.py": {
+      "path": "scripts/monty_title_programs.py",
+      "sha256": "fdb26391dfdb9a58fe7ca8d9c42305f5301391fcf747511f272445e8682ff570",
+      "bytes": 7491
+    },
+    "scripts/monty_title_score.py": {
+      "path": "scripts/monty_title_score.py",
+      "sha256": "2349c9db37c531c298dbf8bf0209aff0b8f3c0bcc8a79449d56d8bb718f8f055",
+      "bytes": 9493
+    },
+    "songs/players/monty.asm": {
+      "path": "songs/players/monty.asm",
+      "sha256": "914c04341e8c6a0413646640ea1048dfb20e09b576e5d3c7a03db87bd65b8f31",
+      "bytes": 3805
+    },
+    "songs/players/monty-effects.asm": {
+      "path": "songs/players/monty-effects.asm",
+      "sha256": "0948c435176bf3484fcb180598f3bd17a2c380863c2362db533e9445103921eb",
+      "bytes": 5574
+    }
+  },
+  "rendering": {
+    "executable": {
+      "path": ".local/bin/render-sid",
+      "sha256": "80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe",
+      "bytes": 268712
+    },
+    "source": {
+      "path": "scripts/render-sid.cpp",
+      "sha256": "c7bc5f7b0fe8d18a54ecde7338b6efa786f87f54ec258a00fb01025486bad5fc",
+      "bytes": 10392
+    },
+    "library": {
+      "name": "libsidplayfp",
+      "version": "3.1.1",
+      "builder": "SIDLite",
+      "staticLibrary": {
+        "path": ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "sha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00",
+        "bytes": 470624
+      }
+    },
+    "settings": {
+      "clock": "PAL",
+      "clockForced": true,
+      "sidModel": "MOS6581",
+      "defaultSubtune": 1,
+      "subtuneSelection": "selectSong(0) selects the header default",
+      "powerOnDelay": 0,
+      "sampleRate": 44100,
+      "channels": 1,
+      "format": "PCM16",
+      "seconds": 355,
+      "frames": 15655500,
+      "gain": 1,
+      "normalization": false,
+      "trim": null,
+      "voiceDiagnostic": false
+    }
+  },
+  "roles": {
+    "reference": {
+      "path": "build/monty-independent-full/reference/reference.wav",
+      "sha256": "441988b6bfd7f4e5e080753af9fdd30d1f3243884b51f86a4f592c10ebe070d2",
+      "bytes": 31311044,
+      "sid": {
+        "path": ".local/monty-source.sid",
+        "sha256": "528a7330817e4a0a0f75a505e9fe2444e07c5072ce5383ceaa89f183f0eee3ab",
+        "bytes": 5694
+      },
+      "full": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 15655500,
+        "durationSeconds": 355.0,
+        "peak": 13266,
+        "peakDbfs": -7.854198839947207,
+        "clippedSamples": 0,
+        "rms": 3855.768745775293,
+        "acRms": 3726.9023249700012,
+        "acRmsDbfs": -18.882038481801565,
+        "perChannel": [
+          {
+            "dc": 988.5098284947782,
+            "rms": 3855.768745775293,
+            "acRms": 3726.9023249700012
+          }
+        ]
+      },
+      "lastOneSecond": {
+        "sourceSeconds": [
+          354,
+          355
+        ],
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 44100,
+        "durationSeconds": 1.0,
+        "peak": 9216,
+        "peakDbfs": -11.018149377611621,
+        "clippedSamples": 0,
+        "rms": 3794.860552620109,
+        "acRms": 3384.506132884882,
+        "acRmsDbfs": -19.719092591272503,
+        "perChannel": [
+          {
+            "dc": -1716.4162811791384,
+            "rms": 3794.860552620109,
+            "acRms": 3384.506132884882
+          }
+        ]
+      },
+      "registerSnapshots": {
+        "path": "build/monty-independent-full/reference/reference.wav.registers.tsv",
+        "sha256": "9348545a72915f751cc1a87100cb2f871942e43e294c86a5dff5aa82bcd6bce9",
+        "bytes": 1388523
+      }
+    },
+    "candidate": {
+      "path": "build/monty-independent-full/candidate/reconstructed.wav",
+      "sha256": "f5323da2eb894aab65f74f1782f95e65fc474d349b08d96dc10fddc56940e7f0",
+      "bytes": 31311044,
+      "sid": {
+        "path": "build/monty-independent-full/candidate/reconstructed.sid",
+        "sha256": "afc976c6271652b2357523c98fd4b960509d3fdd8fcd54ed2555f647d7254522",
+        "bytes": 5475
+      },
+      "full": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 15655500,
+        "durationSeconds": 355.0,
+        "peak": 13249,
+        "peakDbfs": -7.865336697316994,
+        "clippedSamples": 0,
+        "rms": 3824.482889579564,
+        "acRms": 3688.996446837572,
+        "acRmsDbfs": -18.970833960717272,
+        "perChannel": [
+          {
+            "dc": 1008.9472671585066,
+            "rms": 3824.482889579564,
+            "acRms": 3688.996446837572
+          }
+        ]
+      },
+      "lastOneSecond": {
+        "sourceSeconds": [
+          354,
+          355
+        ],
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 44100,
+        "durationSeconds": 1.0,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": -157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ]
+      },
+      "registerSnapshots": {
+        "path": "build/monty-independent-full/candidate/reconstructed.wav.registers.tsv",
+        "sha256": "d8955e988fbf2989179c3cb808fc27a61687790096cd086dcd8ff7ae36c0943e",
+        "bytes": 1388523
+      }
+    }
+  },
+  "comparisons": {
+    "opening": {
+      "receipt": {
+        "path": "build/monty-independent-full/listening/opening-reference-then-ours.comparison.json",
+        "sha256": "4b17a81debe2ba8c4f5f45cc856434d664c0bb86dd972df1c63a426482fb8051",
+        "bytes": 2763
+      },
+      "schemaVersion": 1,
+      "method": "same frame window from each input; original PCM preserved at unity gain",
+      "matching": "none",
+      "normalization": false,
+      "requestedWindowSeconds": [
+        0.0,
+        24.0
+      ],
+      "window": {
+        "startFrame": 0,
+        "endFrame": 1058400,
+        "frames": 1058400,
+        "startSeconds": 0.0,
+        "endSeconds": 24.0,
+        "durationSeconds": 24.0
+      },
+      "sampleRate": 44100,
+      "channels": 1,
+      "gapFrames": 22050,
+      "gapSeconds": 0.5,
+      "comparison": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-independent-full/listening/opening-reference-then-ours.ab.wav",
+        "frames": 2138850,
+        "durationSeconds": 48.5,
+        "sha256": "0f872d8f6ae9d981d47052dec63306f4213b13f11a4500148f4ce6295417f953"
+      },
+      "segments": [
+        {
+          "label": "A",
+          "startFrame": 0,
+          "endFrame": 1058400
+        },
+        {
+          "label": "silence",
+          "startFrame": 1058400,
+          "endFrame": 1080450
+        },
+        {
+          "label": "B",
+          "startFrame": 1080450,
+          "endFrame": 2138850
+        }
+      ],
+      "inputs": [
+        {
+          "label": "A",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-independent-full/reference/reference.wav",
+          "sha256": "441988b6bfd7f4e5e080753af9fdd30d1f3243884b51f86a4f592c10ebe070d2",
+          "originalFrames": 15655500,
+          "window": {
+            "format": "PCM16",
+            "sampleRate": 44100,
+            "channels": 1,
+            "frames": 1058400,
+            "durationSeconds": 24.0,
+            "peak": 12663,
+            "peakDbfs": -8.258266561712947,
+            "clippedSamples": 0,
+            "rms": 4046.6581290991035,
+            "acRms": 3745.228950310315,
+            "acRmsDbfs": -18.839431263466526,
+            "perChannel": [
+              {
+                "dc": -1532.5475925925925,
+                "rms": 4046.6581290991035,
+                "acRms": 3745.228950310315
+              }
+            ]
+          },
+          "gain": 1,
+          "gainDb": 0
+        },
+        {
+          "label": "B",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-independent-full/candidate/reconstructed.wav",
+          "sha256": "f5323da2eb894aab65f74f1782f95e65fc474d349b08d96dc10fddc56940e7f0",
+          "originalFrames": 15655500,
+          "window": {
+            "format": "PCM16",
+            "sampleRate": 44100,
+            "channels": 1,
+            "frames": 1058400,
+            "durationSeconds": 24.0,
+            "peak": 12508,
+            "peakDbfs": -8.365241247776446,
+            "clippedSamples": 0,
+            "rms": 4046.743906892837,
+            "acRms": 3744.2862782411803,
+            "acRmsDbfs": -18.84161777229941,
+            "perChannel": [
+              {
+                "dc": -1535.07541005291,
+                "rms": 4046.743906892837,
+                "acRms": 3744.2862782411803
+              }
+            ]
+          },
+          "gain": 1,
+          "gainDb": 0
+        }
+      ],
+      "listeningReview": null
+    },
+    "ending": {
+      "receipt": {
+        "path": "build/monty-independent-full/listening/ending-reference-then-ours.comparison.json",
+        "sha256": "46f1e313baa8b75c07a094c346b7c5620cd92b8657424de609c566330520b2ea",
+        "bytes": 2767
+      },
+      "schemaVersion": 1,
+      "method": "same frame window from each input; original PCM preserved at unity gain",
+      "matching": "none",
+      "normalization": false,
+      "requestedWindowSeconds": [
+        340.0,
+        355.0
+      ],
+      "window": {
+        "startFrame": 14994000,
+        "endFrame": 15655500,
+        "frames": 661500,
+        "startSeconds": 340.0,
+        "endSeconds": 355.0,
+        "durationSeconds": 15.0
+      },
+      "sampleRate": 44100,
+      "channels": 1,
+      "gapFrames": 22050,
+      "gapSeconds": 0.5,
+      "comparison": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-independent-full/listening/ending-reference-then-ours.ab.wav",
+        "frames": 1345050,
+        "durationSeconds": 30.5,
+        "sha256": "735c72f3d2a5ebd55a525d940d5fde418c6b6e8c65d3401c23e4ae8ac0c7d28c"
+      },
+      "segments": [
+        {
+          "label": "A",
+          "startFrame": 0,
+          "endFrame": 661500
+        },
+        {
+          "label": "silence",
+          "startFrame": 661500,
+          "endFrame": 683550
+        },
+        {
+          "label": "B",
+          "startFrame": 683550,
+          "endFrame": 1345050
+        }
+      ],
+      "inputs": [
+        {
+          "label": "A",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-independent-full/reference/reference.wav",
+          "sha256": "441988b6bfd7f4e5e080753af9fdd30d1f3243884b51f86a4f592c10ebe070d2",
+          "originalFrames": 15655500,
+          "window": {
+            "format": "PCM16",
+            "sampleRate": 44100,
+            "channels": 1,
+            "frames": 661500,
+            "durationSeconds": 15.0,
+            "peak": 11791,
+            "peakDbfs": -8.877985911855719,
+            "clippedSamples": 0,
+            "rms": 4256.454190102002,
+            "acRms": 4255.803412790664,
+            "acRmsDbfs": -17.729367529206826,
+            "perChannel": [
+              {
+                "dc": -74.42838246409676,
+                "rms": 4256.454190102002,
+                "acRms": 4255.803412790664
+              }
+            ]
+          },
+          "gain": 1,
+          "gainDb": 0
+        },
+        {
+          "label": "B",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-independent-full/candidate/reconstructed.wav",
+          "sha256": "f5323da2eb894aab65f74f1782f95e65fc474d349b08d96dc10fddc56940e7f0",
+          "originalFrames": 15655500,
+          "window": {
+            "format": "PCM16",
+            "sampleRate": 44100,
+            "channels": 1,
+            "frames": 661500,
+            "durationSeconds": 15.0,
+            "peak": 11818,
+            "peakDbfs": -8.858118986321404,
+            "clippedSamples": 0,
+            "rms": 3450.785784917146,
+            "acRms": 3396.2882734256546,
+            "acRmsDbfs": -19.688907787163263,
+            "perChannel": [
+              {
+                "dc": 610.8588193499622,
+                "rms": 3450.785784917146,
+                "acRms": 3396.2882734256546
+              }
+            ]
+          },
+          "gain": 1,
+          "gainDb": 0
+        }
+      ],
+      "listeningReview": null
+    }
+  },
+  "timing": {
+    "callRateHz": 50.12457321485099,
+    "musicCalls": 17536,
+    "totalPlayCalls": 17664,
+    "deliberateTailCalls": 128,
+    "releaseStartsSeconds": 349.8483652885129,
+    "fadeStartsSeconds": 351.12518413993087,
+    "finalZeroVolumeStartsSeconds": 352.32220181313517,
+    "declaredEndSeconds": 352.40200299134875,
+    "endingDifference": "The original restarts its score; the candidate freezes the score, releases actual gates and fades to zero."
+  },
+  "levelDecision": {
+    "method": "Unity gain; original PCM retained",
+    "openingCandidateMinusReferenceAcRmsDb": -0.002186508832885181,
+    "rationale": "The opening AC RMS differs by less than 1 dB; retain original levels without normalization or DC removal."
+  },
+  "audioReceipt": {
+    "path": "evidence/monty-independent-full/audio-evidence.json",
+    "sha256": "2abba2aa6f180aa2c2268b76e2935d90c238f50c27b225b4af0305233536d89e",
+    "bytes": 14932
+  },
+  "listeningReview": null,
+  "reproduction": {
+    "workingDirectory": "repository root",
+    "freshOutputRequired": true,
+    "pinnedRendererRequired": true,
+    "setup": "docs/workflows/audio-workflow.md",
+    "commands": [
+      [
+        "python3",
+        "scripts/setup-project.py",
+        "--only",
+        "references",
+        "--include",
+        "monty-on-the-run"
+      ],
+      [
+        "python3",
+        "scripts/prepare-monty-title-ending.py",
+        "--check"
+      ],
+      [
+        "python3",
+        "scripts/compose-monty.py",
+        "songs/monty-title.json",
+        "--output",
+        "build/monty-title-reproduce/candidate"
+      ],
+      [
+        "mkdir",
+        "-p",
+        "build/monty-title-reproduce/reference"
+      ],
+      [
+        ".local/bin/render-sid",
+        ".local/monty-source.sid",
+        "build/monty-title-reproduce/reference/reference.wav",
+        "355"
+      ],
+      [
+        ".local/bin/render-sid",
+        "build/monty-title-reproduce/candidate/reconstructed.sid",
+        "build/monty-title-reproduce/candidate/reconstructed.wav",
+        "355"
+      ],
+      [
+        "python3",
+        "scripts/compare-audio.py",
+        "window",
+        "build/monty-title-reproduce/reference/reference.wav",
+        "build/monty-title-reproduce/candidate/reconstructed.wav",
+        "build/monty-title-reproduce/listening/opening-reference-then-ours",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "24",
+        "--gap-seconds",
+        "0.5"
+      ],
+      [
+        "python3",
+        "scripts/compare-audio.py",
+        "window",
+        "build/monty-title-reproduce/reference/reference.wav",
+        "build/monty-title-reproduce/candidate/reconstructed.wav",
+        "build/monty-title-reproduce/listening/ending-reference-then-ours",
+        "--start-seconds",
+        "340",
+        "--end-seconds",
+        "355",
+        "--gap-seconds",
+        "0.5"
+      ],
+      [
+        "python3",
+        "evidence/monty-independent-full/package-audio.py",
+        "--root",
+        "build/monty-title-reproduce",
+        "--recipe",
+        "build/monty-title-reproduce/audio-recipe.json"
+      ]
+    ],
+    "notes": [
+      "Wait for each renderer to finish before reading its WAV.",
+      "PCM hashes reproduce with the pinned renderer; path-specific JSON receipts change in fresh directories."
+    ]
+  },
+  "publication": "Original SID, reference WAV and reference-containing A/B WAVs stay in ignored .local/ or build/, never Git or LFS.",
+  "limits": [
+    "Signal health and ordered writes do not prove acoustic equivalence or musical quality.",
+    "Same elapsed windows; no PCM alignment or within-call timing equivalence.",
+    "Reference SID, WAVs and A/B audio remain local, outside Git and LFS."
+  ]
+}

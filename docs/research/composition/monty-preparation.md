@@ -1,6 +1,6 @@
-# Monty on the Run: bounded archive intake
+# Monty on the Run: independent title reconstruction
 
-This prepares Rob Hubbard's **Monty on the Run**, selected subtune **1**, while [Shades](shades-preparation.md) remains the active reconstruction awaiting listening. It establishes the intact reference, cached attribution, declared timing, executed score navigation, two complete title order-list traversals and bounded note/body sound arithmetic. A complete independent player, musical section labels, original-host behavior and listening remain unresolved. Start with the [Hubbard composer study](../composers/hubbard-galway.md#hubbard-composing-with-a-changing-synthesis-engine), [listening catalogue](../composers/listening-catalogue.md) and [source-study boundary](../tools/source-studies.md) before extending this preparation.
+Rob Hubbard's **Monty on the Run**, selected subtune **1**, is the active case in the [delivery plan](../study-plan.md). Its independent packed-score player, complete first-cycle export, deliberate finite ending and familiar instrument transfer now pass CPU, VICE and rendered-signal checks. The [listening package](#listening-package-and-reproduction) awaits separate reconstruction and transfer verdicts; musical section labels and original-game host behavior remain outside the established scope. Start with the [Hubbard composer study](../composers/hubbard-galway.md#hubbard-composing-with-a-changing-synthesis-engine), [listening catalogue](../composers/listening-catalogue.md) and [source-study boundary](../tools/source-studies.md).
 
 ## Reference and subtune attribution
 
@@ -38,7 +38,7 @@ The [complete ordered ledger](../../../evidence/monty-intake/audit.writes.json.g
 | [Recovered repository listing](https://github.com/realdmx/c64_6581_sid_players/blob/f215174fc4c983674808fcd47bc506f96b3d2d04/Hubbard_Rob/Hubbard_Rob_Monty_on_the_Run.asm) | Revision `f215174fc4c983674808fcd47bc506f96b3d2d04`, 31,840 bytes, Git blob `332b81b5ddd21d1ab20c7cd37c32ac786760a267`, SHA-256 `52dbbf891b1a1d0f8750842ef91ebaf1fc62d65d7b46497ae6951576ece3ae6c`. The subsequently downloaded listing credits McSweeney's original disassembly/commenting and dmx87's ACME port. It forces one song and omits the archive's additional sound-effects tail. Bounded correspondence is established below; it was not assembled. |
 | [Hubbard's C64.COM account](https://www.c64.com/interviews/hubbard.html) and [contemporary April 1986 interview](https://www.muzines.co.uk/articles/techtalk-living-off-video/9284) | Existing composer research supplies the evolving-driver and delayed-vibrato/pitch-bend context. It does not assign exact records or executed mechanisms to this bounded Monty window. |
 
-Do not carry reconstructed listing addresses or omitted sound-effects behavior into the archive by assumption. The following executed mapping supplies actual archive PCs, without an independent sound implementation or listening claim.
+Do not carry reconstructed listing addresses or omitted sound-effects behavior into the archive by assumption. The following executed mapping supplies actual archive PCs; the later independent implementation builds on these findings. Listing correspondence alone supplies no listening claim.
 
 ## Executed score navigation
 
@@ -92,7 +92,76 @@ Native raw note **104** supplies a second concrete retained-state dependency: fr
 
 The [main verification](../../../evidence/monty-programs/verification.json) matches **11,568** isolated original-block cases across all three voices, plus **17** note setups, **7** append setups and **1,512** continuing blocks from the retained 512-call trace. The [context checker](../../../evidence/monty-programs/context.py) adds **2,882** cases: 2,688 using title-selected record values, 192 synthetic shared-bank steps and two alias forks. Its [complete numeric cases](../../../evidence/monty-programs/context-cases.json.gz) retain input/output state, ordered stores and source-block cycles. Retained continuing comparisons begin at `$81A3`, after the release prelude; release arithmetic is checked separately against original blocks. The largest synthetic block takes 2,599 cycles, which is not a measured title maximum.
 
-This helper covers the title's enabled negative `$84FD` context. The caller still owns score scheduling, portamento setup/reset, lookup resolution at each stage, global writes and init/body selection; the positive sound-overlay branch and omitted listing sound-effects tail are outside this proof. `PitchLookups` are numeric inputs resolved from current state, not an invented chromatic extension. No full-title CPU rerun, complete player, cycle-equivalent model, render or listening claim is included.
+This bounded helper covers the title's enabled negative `$84FD` context. Its caller owns score scheduling, portamento setup/reset, lookup resolution at each stage, global writes and init/body selection; the positive sound-overlay branch and omitted listing sound-effects tail are outside this component proof. `PitchLookups` are numeric inputs resolved from current state, not an invented chromatic extension. The later full-player integration below adds the caller; the historical component receipts remain unchanged.
+
+## Independent editable score and sound integration
+
+The [numeric source description](../../../songs/monty-title-source.json) contains three packed orders, their reachable patterns, exactly 96 frequency words, twenty named instruments, cold voice/global state and typed lookup aliases. [prepare-monty-title.py](../../../scripts/prepare-monty-title.py) checks the original fingerprint, extracts these numeric fields and verifies cold state at the first play boundary through one guarded source call. It preserves the nonzero loaded PWM phases: initialization changes the named status to `$40`, while the first play call performs the sequence reset. The description contains no original driver or full-memory snapshot; playback uses neither the SID nor source annotations.
+
+The [independent scheduler](../../../scripts/monty_title_score.py) computes packed row consumption and voice dispatch in order 2, 1, 0. Control bit `$40` selects a one-byte append; otherwise bit `$80` selects a parameter plus pitch, and an ordinary row consumes control plus pitch. The low five control bits reload duration; it takes one additional score tick to select the next row. The tempo countdown's negative decrement reloads the tempo, but the subsequent equality with the reload value decides score dispatch. These are distinct tests, including for edited initial countdowns. `$FF` order restarts retain sound/control state; unsupported `$FE`, negative-status and overlay contexts reject explicitly.
+
+The [complete score proof](../../../evidence/monty-title-score/verification.json), reproduced by its [checker](../../../evidence/monty-title-score/check.py), agrees with all 51,508 retained consumed-byte reads over 40,000 calls, every pointer selection, all 12,301 initializer sequence states, 151 appends, 601 pattern advances, six voice-order restarts and the final sequence state. It checks all 120,000 voice dispatches without rerunning the original CPU. This establishes numeric score semantics, separately from sound stores and timing.
+
+The [complete numeric player](../../../scripts/monty_title_player.py) integrates that scheduler with [typed sound programs](../../../scripts/monty_title_programs.py). Shared pulse widths update before the next voice; lookup aliases resolve from named state when each stage actually reads them. In particular, new-note frequency precedes replacement of the saved waveform, and octave frequency follows PWM, portamento, drum and descent. The stage-specific resolver is essential when a lookup aliases a pulse-direction byte changed by the same call. Source annotations remain nonexecuting provenance, and inputs remain unchanged.
+
+The [full player proof](../../../evidence/monty-title-player/verification.json) matches all **373,739** ordered init/play stores across 40,000 calls with the retained original ledger, including both restarts. Four separate 192-call private-source interventions change a score pitch, packed pulse step, prior saved waveform and octave enable; the independently edited descriptions match all resulting stores. They affect 64, 26, 97 and 189 calls respectively. The octave intervention is synthetic coverage of a stage-specific alias, not a claim that the title itself enables that combination. The [checker](../../../evidence/monty-title-player/check.py), [complete computed ledger](../../../evidence/monty-title-player/computed-writes.json.gz) and [edited cases](../../../evidence/monty-title-player/edited-cases.json.gz) preserve the evidence without original payloads. Instruction cycles, SID internal state, PCM and musical quality are not inferred from ordered-store equality.
+
+The independently written [6502 sound component](../../../songs/players/monty-effects.asm) uses the same named-state contract. Its [CPU guards](../../../tests/monty_effects_asm_test.py) compare ordered stores and resulting voice/shared-bank state with the numeric programs, covering all voices, retained append phase, signed vibrato-depth edges, adjacent lookup wrapping, PWM turning limits, portamento overflow, combined effect priority and late aliases. Writes outside the selected voice, shared pulse record, scratch, stack and SID are rejected by the test harness. Component behavior is established separately from the full compiled and cadence checks below.
+
+Reproduce the numeric source description and retained proofs in fresh ignored paths:
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/prepare-monty-title.py --check songs/monty-title-source.json
+mkdir build/monty-title-score-recheck
+cp evidence/monty-title-score/check.py build/monty-title-score-recheck/check.py
+python3 build/monty-title-score-recheck/check.py
+PYTHONPATH=.tools/test-deps python3 evidence/monty-title-player/check.py --output build/monty-title-player-recheck
+```
+
+The extraction check and four causal interventions require the pinned local original; the scheduler proof and numeric playback use tracked numeric inputs and retained observations only. The original remains unchanged. `compute_player(description, calls=N)` returns ordered stores, final named state, shared instruments and finite-stop status; `compute_writes` returns only the stores. Caps are exclusive and cannot exceed declared `play_calls`. Existing deferred Monty files remain untouched; these supported modules use distinct `monty_title_*` names.
+
+## Independent title export and finite ending
+
+[prepare-monty-title-ending.py](../../../scripts/prepare-monty-title-ending.py) preserves the first complete title cycle `[0,17536)` in the [finite description](../../../songs/monty-title.json), then adds 64 release calls and sixteen four-call fade levels. Source music lasts approximately **349.848 seconds**; the declared 17,664 calls end at **352.402 seconds**. This ending replaces the original order restart and introduces no new score notes. It is a deliberate arrangement decision, awaiting listening approval.
+
+[compose-monty.py](../../../scripts/compose-monty.py) assembles our [scheduler](../../../songs/players/monty.asm) and sound component with 58 packed patterns, three order lists and twenty editable instruments. The **5,351-byte** payload loads at `$1000`; it consumes rows and computes synthesis at runtime. Typed pointer tables resolve declared lookup aliases to current named state, without embedding the source RAM layout. Initialization restores voice/global state, the shared instrument bank and output-control shadows. No zero-page workspace is claimed from the caller. See the [public compiler contract](../../workflows/decoded-song-workflow.md#monty-packed-score-player) and [integration guards](../../../tests/monty_compiler_test.py).
+
+During the tail, score cursors, tempo countdowns and remaining durations freeze. The global counter and continuing sound programs advance. The first tail call closes the **actual last output controls**, which can differ from saved waveforms after a drum substitution; every subsequent control store remains gate-masked. Saved controls retain their values for state-dependent pitch lookups. `$D418` preserves mode bits and follows levels 15 through 0, reaching zero at call **17,660**. After call 17,663, play returns without further stores or named-state changes. [Ending guards](../../../tests/monty_ending_test.py) distinguish that explicit behavior from source equivalence or acoustic silence.
+
+The [build receipt](../../../evidence/monty-independent-full/candidate/build.json) and [CPU audit](../../../evidence/monty-independent-full/candidate/audit.json) cover all 17,664 calls: **163,466** ordered init/play stores and **11** matching complete named-state checkpoints, including shared instruments and finite-stop state. Maximum play cost is **2,394 / 19,656 cycles**. The [source-prefix comparison](../../../evidence/monty-independent-full/source-comparison.json) matches all **162,695** original init/music stores before the ending; its remaining **771** stores belong to the explicitly checked arrangement tail. Instruction-start cycles are retained, not equated with the original driver.
+
+The [full VICE receipt](../../../evidence/monty-independent-full/vice/study.json) agrees on **163,463 playback stores** over **17,666 host calls**, including two stopped calls without writes. The three initialization stores are covered by CPU evidence, outside this strict VICE playback comparison. Maximum cadence deviation is **7 cycles**, within the nine-cycle polling tolerance. [Complete CPU stores](../../../evidence/monty-independent-full/candidate/writes.json.gz), [named checkpoints](../../../evidence/monty-independent-full/candidate/state-checkpoints.json) and [VICE trace](../../../evidence/monty-independent-full/vice/trace.json.gz) remain lossless evidence. These results describe the controlled PAL host, not original-game IRQ timing or physical SID equivalence.
+
+Compiling the 40,000-call source description without `ending` is a bounded diagnostic: preflight guarantees reads only inside the declared call window. Its binary is not an indefinitely verified music export. Use the finite title or transfer for listening; both validate their complete musical range and stop afterward. A metadata-only compiler clarification after the initial export regenerates the exact same finite SID bytes, SHA-256 `afc976c6271652b2357523c98fd4b960509d3fdd8fcd54ed2555f647d7254522`.
+
+## Listening package and reproduction
+
+**Status, 2026-10-13: awaiting listening.** Both reconstruction and familiar-transfer questions have been presented, with explicit reference filenames. Technical results below do not preempt either verdict.
+
+| Judgment | Ignored local samples and order |
+| --- | --- |
+| Title sound and phrasing | `build/monty-independent-full/listening/opening-reference-then-ours.ab.wav`: original first, independent version second, source seconds 0–24, 0.5-second gap, 48.5 seconds total |
+| Deliberate title ending | `build/monty-independent-full/listening/ending-reference-then-ours.ab.wav`: original first, ours second, source seconds 340–355, 31 seconds total; the original restarts while ours releases/fades |
+| Complete first-cycle context | `build/monty-independent-full/reference/reference.wav` and `build/monty-independent-full/candidate/reconstructed.wav`, 355 seconds each |
+| Familiar instrument reuse | `build/monty-elise-transfer/listening/plain-then-monty.ab.wav`: generated plain Für Elise first, the same 53 notes with Monty instruments second, 30.5 seconds total |
+| Transfer ending and separate full files | `build/monty-elise-transfer/listening/ending-plain-then-monty.ab.wav` covers seconds 8–14; separate files are `build/monty-elise-transfer/reference/reference.wav` and `build/monty-elise-transfer/candidate/reconstructed.wav` |
+
+The [title audio recipe](monty-title-audio.json) pins the original URL/hash, renderer/library/settings, generated SID, PCM hashes, frame windows and reproduction commands. Both full title renders are mono PCM16 at 44,100 Hz, unclipped, with original levels retained. Opening AC RMS differs by approximately **−0.0022 dB**, so the comparison uses unity gain. The candidate's final second has **AC RMS zero** at constant −157 PCM; this is settled output, not literal PCM zero. [Audio evidence](../../../evidence/monty-independent-full/audio-evidence.json) retains complete measurements and separate signal/listening scopes.
+
+The [familiar-transfer card](instruments/monty-decoded-programs.md) owns records 2/6/15, editable controls and conversion limits; its [recipe](monty-elise-audio.json) labels the plain reference as generated, not an original recording. Both versions retain all 53 source notes and the same packed calendar. Their 630-call CPU and 632-call VICE runs pass, including two stopped calls, with maximum cadence deviation 7 cycles. Plain/Monty total CPU stores are 1,396/2,832; full renders are unclipped and settle to constant output. The full comparison attenuates Monty by **4.721 dB** for matching; the separate ending comparison retains unity gain. These are candidates for musical reuse, awaiting the listener's judgment.
+
+Rebuild the finite title, verify real cadence and render the original/candidate in fresh paths:
+
+```sh
+python3 scripts/prepare-monty-title-ending.py --check
+PYTHONPATH=.tools/test-deps python3 scripts/compose-monty.py songs/monty-title.json --output build/monty-title-reproduce/candidate
+python3 scripts/trace-sid-vice.py build/monty-title-reproduce/candidate/reconstructed.sid --oracle build/monty-title-reproduce/candidate/writes.json --first-call 0 --last-call 17665 --timeout 180 --output build/monty-title-reproduce/vice
+mkdir -p build/monty-title-reproduce/reference
+.local/bin/render-sid .local/monty-source.sid build/monty-title-reproduce/reference/reference.wav 355
+.local/bin/render-sid build/monty-title-reproduce/candidate/reconstructed.sid build/monty-title-reproduce/candidate/reconstructed.wav 355
+```
+
+The recipe adds exact A/B and measurement commands. [compare-source.py](../../../evidence/monty-independent-full/compare-source.py) reproduces the source-prefix and arranged-tail checks from the pinned original ledger; [package-audio.py](../../../evidence/monty-independent-full/package-audio.py) retains signal measurements and reproduction settings. Reference SID/WAV and A/B files stay local in ignored `.local/` or `build/`, never Git or LFS. Canonical numeric evidence follows the [archive workflow](../../workflows/build-cache.md); useful audition files remain local.
 
 ### Reproduce the bounded sound checks
 

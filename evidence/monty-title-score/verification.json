@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "complete": true,
+  "playCalls": 40000,
+  "consumedByteReads": 51508,
+  "rows": 12301,
+  "soundDispatches": 120000,
+  "retainedHookCounts": {
+    "orderRead": 12307,
+    "patternPointerLow": 12301,
+    "patternPointerHigh": 12301,
+    "rowControlRead": 12301,
+    "instrumentOrPortamentoRead": 2449,
+    "instrumentSet": 2339,
+    "pitchRead": 12150,
+    "initializerInstrument": 12301,
+    "patternEndPeek": 12301,
+    "appendBranch": 151,
+    "patternReset": 601,
+    "orderAdvance": 601,
+    "orderRestart": 6
+  },
+  "orderRestarts": [
+    {
+      "call": 17536,
+      "voice_index": 2
+    },
+    {
+      "call": 17536,
+      "voice_index": 1
+    },
+    {
+      "call": 17536,
+      "voice_index": 0
+    },
+    {
+      "call": 35072,
+      "voice_index": 2
+    },
+    {
+      "call": 35072,
+      "voice_index": 1
+    },
+    {
+      "call": 35072,
+      "voice_index": 0
+    }
+  ],
+  "finalState": {
+    "globals": {
+      "tempo_countdown": 0,
+      "tempo_reload": 1,
+      "status": 0,
+      "counter": 63,
+      "sfx_priority": 0,
+      "sfx_flags": 255,
+      "output_enable": 255,
+      "mode_volume": 15
+    },
+    "voices": [
+      {
+        "order_cursor": 15,
+        "pattern_cursor": 113,
+        "remaining": 0,
+        "control": 3,
+        "voice_control": 65,
+        "note": 60,
+        "instrument_index": 4,
+        "pulse_delay": 0,
+        "pulse_direction": 1,
+        "portamento": 0,
+        "held_frequency": 15880
+      },
+      {
+        "order_cursor": 17,
+        "pattern_cursor": 60,
+        "remaining": 0,
+        "control": 135,
+        "voice_control": 65,
+        "note": 47,
+        "instrument_index": 3,
+        "pulse_delay": 1,
+        "pulse_direction": 0,
+        "portamento": 0,
+        "held_frequency": 2500
+      },
+      {
+        "order_cursor": 29,
+        "pattern_cursor": 112,
+        "remaining": 0,
+        "control": 3,
+        "voice_control": 65,
+        "note": 36,
+        "instrument_index": 2,
+        "pulse_delay": 29,
+        "pulse_direction": 0,
+        "portamento": 0,
+        "held_frequency": 13350
+      }
+    ]
+  },
+  "pins": {
+    "sourceSha256": "528a7330817e4a0a0f75a505e9fe2444e07c5072ce5383ceaa89f183f0eee3ab",
+    "scoreSha256": "c1597b914360bc80d68323033423beb6286b95088e4d72f943bf53d8f89424fc",
+    "observationsSha256": "6a877c07bbdf22f3c5e4ca5f767ab6dedede531cf9725075c30326b39c53badf",
+    "schedulerSha256": "2349c9db37c531c298dbf8bf0209aff0b8f3c0bcc8a79449d56d8bb718f8f055",
+    "checkerSha256": "447534c251e327c37334f5603475fcd29b32000d3136efc6daec84bc1759c997"
+  },
+  "limits": "Retained numeric score consumption and sequence/global state; no CPU rerun, sound programs, cycles, SID internal state or listening judgment."
+}
