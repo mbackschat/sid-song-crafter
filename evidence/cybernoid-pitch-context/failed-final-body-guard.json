@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "failed post-audit coverage assertion; no pitch mismatch",
+  "sessionId": 19366,
+  "exitCode": 1,
+  "probePath": "build/cybernoid-pitch-context/probe.failed-final-body-guard.py",
+  "probeSha256": "b9aaa13228cb199867e6bc8765f5866fe8d7fc880f2e1f75a96b1c9bb1f0014d",
+  "originalExecutedPath": "build/cybernoid-pitch-context/probe.py",
+  "failure": "assert not pending and last_completed == 17280",
+  "mechanism": "Call17280 consists of new-row initializers; each voice last enters the pitch body at17279. Requiring a final-call body rejects a complete traversal.",
+  "auditReturnedBeforeAssertion": true,
+  "completedBodyRows": 47509,
+  "bodyCountsPerVoice": {
+    "2": 15232,
+    "1": 16595,
+    "0": 15682
+  },
+  "lastBodyCallsPerVoice": {
+    "2": 17279,
+    "1": 17279,
+    "0": 17279
+  },
+  "ledger": {
+    "path": "build/cybernoid-pitch-context/bodies.failed-final-body-guard.jsonl.gz",
+    "compressedBytes": 1092544,
+    "compressedSha256": "5a0a1c838a680ff6e30839ae956d70b86c95faa12688cff9d4a6a9ff78d3b021",
+    "originalBytes": 45122363,
+    "originalSha256": "34209d51c8dd238c917d1050e74b17c79bb6b34397e117c62f4cbb150b507836"
+  },
+  "orderedWritePrefixComparisonCompleted": false,
+  "limits": "Recorded rows passed state/delta assertions before serialization. The post-audit assertion prevented canonical write-prefix comparison and the success receipt; do not claim that comparison for this run."
+}

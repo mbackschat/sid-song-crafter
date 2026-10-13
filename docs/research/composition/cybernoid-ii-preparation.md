@@ -331,7 +331,7 @@ cp evidence/cybernoid-score-contract/decode.py build/cybernoid-score-new/
 python3 build/cybernoid-score-new/decode.py --output build/cybernoid-score-new/rows.json --contract-output build/cybernoid-score-new/contract.json
 ```
 
-This reads the local pinned SID/listing and canonical LFS event/state/instruction evidence. It performs no CPU run or render. The score contract is ready for composition with independently verified synthesis components; complete independent title playback remains the next preparation milestone.
+This reads the local pinned SID/listing and canonical LFS event/state/instruction evidence. The [companion dependency checkpoint](../../../evidence/cybernoid-score-contract/dependency-checkpoint.json) pins the imported parser/guard implementations and their committed checkout; the historical receipt remains unchanged. It performs no CPU run or render. The score contract is ready for composition with independently verified synthesis components; complete independent title playback remains the next preparation milestone.
 
 ## Named-state vibrato and glide component
 
@@ -360,4 +360,69 @@ cp evidence/cybernoid-pitch-extended/{model.py,check.py} build/cybernoid-pitch-e
 python3 build/cybernoid-pitch-extended-new/check.py
 ```
 
-The description step joins the fresh verification to the restored historical census; its 143 selected-title pitch summaries retain exact provenance. Next compare computed state at every eligible title body, then compose this component with the score and remaining macros. Later onset, drum and sweep behavior can change pitch after this block, so its buffer equality alone cannot establish final register or audio equivalence.
+The description step joins the fresh verification to the restored historical census; its 143 selected-title pitch summaries retain exact provenance. The following contextual proof extends this isolated evidence. Later onset, drum and sweep behavior can change pitch after this block, so its buffer equality alone cannot establish final register or audio equivalence.
+
+## Full-title contextual pitch verification
+
+The [context probe](../../../evidence/cybernoid-pitch-context/probe.py) observes each eligible pitch-block entry during intact source execution, supplies its named state and lookup words to the unchanged independent model, and compares the complete result before `$AB8D`. All **47,509 bodies** in calls 0–17,280 match: 15,682 / 16,595 / 15,232 for voice indices 0 / 1 / 2. This includes 26,925 active vibrato bodies, 399 glide interpolations, 65 completions and 124 waiting bodies. The [receipt](../../../evidence/cybernoid-pitch-context/receipt.json) pins source, model, tools, variants and coverage; the [lossless per-body ledger](../../../evidence/cybernoid-pitch-context/bodies.jsonl.gz) retains input state, parameters, lookup words, predicted output, observed delta and instruction-cycle boundaries. Equality is asserted before a successful row is recorded.
+
+The same execution matches every one of the 310,614 ordered initialization/play records against the canonical 36,000-call prefix, with no field, timing or value normalization. This verifies a component in actual caller context. The caller state and frequency-table words are observed inputs; the probe does not independently compute the surrounding score/arpeggio/init/output machinery or establish final synthesized audio equivalence.
+
+```sh
+python3 scripts/evidence.py restore evidence/cybernoid-title-mechanism-coverage/coverage.json.gz
+mkdir build/cybernoid-pitch-context-new
+cp evidence/cybernoid-pitch-context/probe.py build/cybernoid-pitch-context-new/
+python3 build/cybernoid-pitch-context-new/probe.py
+```
+
+Completion guards must distinguish play calls from eligible macro bodies. Call 17,280 initializes all three notes and skips these macros; the last eligible pitch body is call 17,279. The retained [guard reproducer](../../../evidence/cybernoid-pitch-context/guard-reproducer.py) and [result](../../../evidence/cybernoid-pitch-context/guard-reproducer.json) derive this from the census. An [earlier observer](../../../evidence/cybernoid-pitch-context/probe.failed-final-body-guard.py) incorrectly required a body on the final call; its [failure receipt](../../../evidence/cybernoid-pitch-context/failed-final-body-guard.json) makes no write-prefix claim. The corrected successful run checks full audit length, no pending entries and expected per-voice body counts. Both runs produced byte-identical body ledgers, so only one canonical ledger is retained.
+
+## Arpeggio, waveform and output components
+
+The [editable output model](../../../evidence/cybernoid-output-contract/model.py) separates arpeggio, high-byte sweep, pulse-run, onset/drum dispatch and the final five-store writer. Its [isolated checker](../../../evidence/cybernoid-output-contract/check.py) executes the corresponding original routines with explicit synthetic caller state and table RAM replacements; [all 3,540 cases match](../../../evidence/cybernoid-output-contract/verification.json.gz) across all three voices. The model receives numeric parameters and has no original-source dependency.
+
+| Helper | Contract needed by the caller |
+| --- | --- |
+| `advance_arpeggio` | Decrement the counter with byte wrapping, reload on its sign bit, consume the reverse table offset and add it to the base pitch index modulo 256. Return counter, current pitch index and lookup word; saved frequency is unchanged. |
+| `sweep_high_byte` | Decrement the saved frequency high byte and copy it to output high, retaining both low bytes. Its `base_frequency` argument means the saved buffer at `$A64B/$A645`, not the note-table word. |
+| `advance_pulse_run` | Maintain a separate initialization flag and low/high accumulator. Inactivity sets the flag; the next active body takes high from the PWM accumulator, resets low, then adds `$63`. A carry increments high; high 15 changes to 7. Only pulse output is overridden. |
+| `apply_wave_program` | Drum dispatch takes precedence over onset, including after its age window expires. Onset can replace waveform/high pitch, restore base waveform and saved frequency, or expire. Its restore limit is `(length + 2) & 255`. |
+| `apply_drum` | Consume waveform at age and frequency parameter at `(age − 1) & 255`; set gate mask from waveform bit 0. Relative pitch adds to the current pitch index without changing that index. Expiration preserves buffers. |
+| `voice_writes` | Emit control `(wave & mask)`, frequency low/high, then pulse low/high. Earlier setup/ADSR and shared-filter stores are separate. |
+
+The [opening checker](../../../evidence/cybernoid-output-contract/check-opening.py) makes no new CPU run. Its [accurate-input receipt](../../../evidence/cybernoid-output-contract/opening-verification-accurate-inputs.json.gz) matches 63 arpeggio bodies, 124 waveform bodies and 640 final-writer stores using retained incoming state and canonical instruction evidence. The 640 stores cover the waveform card's voice indices 0 and 2, not all three opening voices. Synthetic relative-drum, age-zero-drum and unusual counter/length cases do not establish their use in this title; real note initialization skips macro age zero.
+
+Preserve this order when composing the caller: tone arpeggio → vibrato/glide → PWM → high-byte sweep → shared filter → pulse-run output override → packed-field frequency addition → drum/onset → final writer. Eligibility, initialization, gate state, shared-filter ownership and voice order 2→1→0 remain caller responsibilities. The packed-field frequency-addition path is outside these helpers and has no executed title cases in the census.
+
+```sh
+python3 scripts/evidence.py restore evidence/cybernoid-title-mechanism-coverage/coverage.json.gz
+mkdir build/cybernoid-output-new
+cp evidence/cybernoid-output-contract/{model.py,check.py,check-opening.py} build/cybernoid-output-new/
+python3 build/cybernoid-output-new/check.py
+python3 build/cybernoid-output-new/check-opening.py
+```
+
+These checks establish bounded component behavior. Joining observed incoming buffers is not yet a complete independently computed song or a listening verdict.
+
+## Note setup, gate and filter-owner caller
+
+The [caller primitives](../../../evidence/cybernoid-initialization-contract/model.py) preserve the state transitions that connect score rows to sound macros. Their [checker](../../../evidence/cybernoid-initialization-contract/check.py) and [204-case receipt](../../../evidence/cybernoid-initialization-contract/verification-final.json.gz) compare 26 named fields and exact ordered setup/fallback stores against short original-routine execution: three row resets, nine age increments, 48 note/patch setups, 96 gate/release/body preludes and 48 filter-owner decisions.
+
+| Caller step | State and ordering |
+| --- | --- |
+| Every voice call | Increment note age modulo 256 before score dispatch. A newly selected row then resets note age, vibrato age and glide flags before commands can enable glide again. |
+| Selected note | Reload row countdown, clear arpeggio counter, set base pitch and saved/output frequency. Write SID frequency **high before low**; optional patch initialization then writes AD/SR and sets waveform, pulse, PWM direction and packed filter fields. |
+| Finish selected row | After score-owned peek/end processing, force gate mask `$FF` and go straight to the writer. Skip all synthesis macros. |
+| Retained state | Note/patch setup retains effective pitch, vibrato direction/position, filter cutoff and pulse-run state. The next body prelude copies base pitch into effective pitch before tone arpeggio. |
+| Gate on an existing row | Scheduled bodies recompute gate mask from remaining countdown versus `(current record field 4 & $F0) >> 2`; nonscheduled bodies retain it. Remaining at or below the threshold clears gate. Macros can continue and later drum handling can change the mask. |
+| Shared filter ownership | An enabled filter claims ownership before running its program. Otherwise a matching remembered owner with FX2 bit `$08` clear writes `$D418=$1F`, then `$D416=$80`. It retains ownership, routing and cutoff low, so fallback can recur. |
+
+The raw retained pulse flag `$10` has a special `$SR=$02` branch when remaining count is zero and tempo countdown is one. No selected title record carries that flag and the census contains no execution of that branch. It is synthetic coverage, as are patch-preservation flag cases and FX2-bit-`$08` fallback inhibition; this does not lift the score decoder's restriction on even-F grammar. Global PSID initialization, complete caller/score composition and full-title equality of these primitives remain separate work.
+
+```sh
+mkdir build/cybernoid-initialization-new
+cp evidence/cybernoid-initialization-contract/{model.py,check.py} build/cybernoid-initialization-new/
+python3 build/cybernoid-initialization-new/check.py --output build/cybernoid-initialization-new/verification.json
+```
+
+For integration, call `begin_voice_call` before score dispatch. On a selected row use `begin_row` → score commands → `initialize_note` → score peek/end → `finish_row` → writer. Otherwise use `body_prelude` → ordered macros → writer. The score decoder still owns scheduling and countdown decrement; each component's checks retain their own scope until the composed model is compared from initialization through the full title.

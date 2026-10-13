@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "censusPath": "build/cybernoid-title-mechanism-coverage/coverage.json",
+  "censusSha256": "d4c8275e3672e06a11eff254a522f94d9d9c0060412df684d126b593a9c8daaf",
+  "firstCall": 0,
+  "lastCallInclusive": 17280,
+  "expectedAuditCalls": 17281,
+  "expectedBodiesPerVoice": [
+    15682,
+    16595,
+    15232
+  ],
+  "expectedBodyCount": 47509,
+  "lastBodiesPerVoice": [
+    17279,
+    17279,
+    17279
+  ],
+  "lastInitializersPerVoice": [
+    17280,
+    17280,
+    17280
+  ],
+  "oldGuardRejectedCompleteCoverage": true,
+  "correctedGuard": "Require complete audit call count, no pending entries and body counts per voice equal the census; do not require a body on the final call.",
+  "limits": "Read-only accounting of an existing intact-execution census, not a new CPU or pitch-model run."
+}

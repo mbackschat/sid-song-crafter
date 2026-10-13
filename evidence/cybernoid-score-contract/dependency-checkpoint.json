@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "scope": "Companion dependency identity for the preserved independent score-decoder proof; no new execution claim.",
+  "implementationCheckpoint": "24ffa944dc6c91c4f38a9b2361bfe9e6b65d3a76",
+  "decoderSha256": "823c4819f98c9b0dcb69bef1427d86e930f38edf310e72f92fea4631d6b2b880",
+  "dependencies": {
+    "scripts/psid_profile.py": {
+      "sha256": "7971881fbb68e6f09c6c886650de26c5168a11770407e7551bfbe35195df7bb4",
+      "bytes": 3444
+    },
+    "scripts/verify_player.py": {
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+      "bytes": 9535
+    }
+  },
+  "receipt": "evidence/cybernoid-score-contract/contract-final.json",
+  "dependencyUse": {
+    "scripts/psid_profile.py": "Parse the pinned PSID into the banked title profile and payload boundaries.",
+    "scripts/verify_player.py": "Shared require guard; this score decoder does not execute the CPU."
+  }
+}
