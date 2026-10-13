@@ -1,6 +1,6 @@
 # Chris Hülsbeck and Jeroen Tel: the instrument is a program
 
-Research checked on 2026-10-12. These two composers make a strong case for putting composition tools and musical judgement at the centre of SID work. Their documented workflows join note writing, instrument programming, and playback-driver design. This note distinguishes first-hand recollections, archival commentary, inspected source, and proposed experiments. The referenced SID recordings have not been listened to or traced in this research pass; the listening questions below are an explicit next step.
+Research checked on 2026-10-12; Shades intake extended on 2026-10-13. These two composers make a strong case for putting composition tools and musical judgement at the centre of SID work. Their documented workflows join note writing, instrument programming, and playback-driver design. This note distinguishes first-hand recollections, archival commentary, inspected source, and proposed experiments. The bounded Shades dependency checks and reference renders below do not establish a decoded instrument or a listening verdict; the listening questions remain open.
 
 ## Chris Hülsbeck: synthesis made editable
 
@@ -17,6 +17,31 @@ In the [2025 Amazona interview](https://www.amazona.de/interview-chris-huelsbeck
 An especially practical correction appears in [HVSC STIL v85](https://hvsc.c64.org/download/C64Music/DOCUMENTS/STIL.txt): Hülsbeck explains that his original *Shades* development machine had an unusual filter, making the widely played version more filtered than intended. The archive identifies `Shades_filter_corrected.sid` as closer to his intention. A beloved reference recording is therefore not an unquestionable timbre target: retain the exact file variant, chip model, and rendering settings before comparing filters.
 
 My working interpretation is a melody-first, synthesizer-oriented workflow whose editor makes repeated musical and timbral experiments affordable. That interpretation follows the described process; it is not an executed-program study of *Shades*. For our Beethoven arrangement, the useful transfer is controlled timbral movement around preserved musical phrases, not importing Hülsbeck's samples or changing Beethoven's harmony.
+
+### Shades reference intake
+
+Use the filter-corrected version as the intended-timbre reference, based on the composer-attributed STIL account above; retain the original for comparison. Both files are PSID v2, one/default subtune 1, explicit PAL/MOS6581, with init `$7000`, play `$742E` and payload end `$7900` exclusive. Pin these exact archive variants before following the [study plan](../study-plan.md).
+
+| Role / archive download | SHA-256 | Embedded load |
+| --- | --- | --- |
+| Primary: [Shades_filter_corrected.sid](https://www.hvsc.de/download/C64Music/MUSICIANS/H/Huelsbeck_Chris/Shades_filter_corrected.sid) | `ac7c91d0c4fef41bbc9d9e50840492269151075727efa7182a68dc1a26f1d708` | `$4E40` |
+| Comparison: [Shades.sid](https://www.hvsc.de/download/C64Music/MUSICIANS/H/Huelsbeck_Chris/Shades.sid) | `75f37752bdc968f8700fe3f791a9c59cae398cdc7846cfea0478460ac6567986` | `$4EC0` |
+
+Both headers set speed word `$00000001`: CIA timing, not one call per PAL video frame. The unchanged [strict auditor](../../../scripts/psid_audit.py) rejects that timing before execution. The existing [controlled VICE tracer](../../../scripts/trace-sid-vice.py) schedules PAL-frame calls and is unsuitable unchanged. Preserve the original header and establish CIA scheduling through full-machine execution before assigning seconds or musical form to call counts.
+
+A hash-pinned RAM-only diagnostic permits exactly the timer write `STA $DC05` at PC `$7852`, without emulating a timer or stubbing I/O reads. Both variants complete 1,024 explicit calls: six `$DC05=$30` writes, no I/O reads, and init returning after 36 CPU cycles without SID writes. The timer-high value comes from the selected pattern-information block at offset `$0E`; timer low byte and control remain host dependencies. This locates a live CIA dependency but does not establish the complete latch, scheduler or rate. Ignored receipts and the probe are under `build/shades-intake/timing-feasibility/`; these bounded observations do not establish real-time playback.
+
+Keep downloads and raw receipts under ignored `.local/research/shades/`. The intake receipt is `intake-receipt.json`; its STIL v85 source is `.local/downloads/HVSC-STIL.txt`, SHA-256 `b1ef3584a5b3501e2bbd2ef056d6539a1bbee7933a7828537c3946c1b16cde43`. The loaded payloads differ at 1,600 shared addresses, so do not treat the corrected file as an otherwise identical filter-only patch. The [September 1986 correction article](https://www.64er-magazin.de/8609/tips_profis.html) identifies Shades, saves `$4EC0–$7A00` and starts at `$7000`, corroborating the original load/init lineage without identifying the exact archived correction. The October Soundmonitor article describes an editor written after the monitor-entered Shades composition; its `$C000` entry and `$A000`-area tables differ from these archived players. Its parameter descriptions are useful hypotheses, but their binary encoding and relocation remain unverified.
+
+The [single-SID audio renderer](../../workflows/audio-workflow.md) delegates CIA scheduling to libsidplayfp. Opening renders use default subtune 1, PAL/MOS6581, libsidplayfp 3.1.1/SIDLite, 44.1 kHz mono PCM16, power-on delay zero and unity gain without normalization:
+
+```sh
+mkdir -p build/shades-intake/reference-audio
+.local/bin/render-sid .local/research/shades/Shades.sid build/shades-intake/reference-audio/original.wav 30
+.local/bin/render-sid .local/research/shades/Shades_filter_corrected.sid build/shades-intake/reference-audio/filter-corrected.wav 30
+```
+
+Both 30-second files have nonzero signal and no PCM rail samples; `build/shades-intake/reference-audio/render-receipt.json` pins hashes and measurements. They are opening reference excerpts, not complete-form evidence, a reconstruction or a reviewed filter comparison.
 
 ## Jeroen Tel: arrangement and driver collaboration
 
