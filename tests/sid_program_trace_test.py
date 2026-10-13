@@ -97,11 +97,12 @@ class SidProgramTraceTest(unittest.TestCase):
                           'address': 0xd418, 'value': 15}], result['initSidWrites'])
         self.assertNotIn('diagnostic', result)
 
-    def test_flashdance_profile_is_private_and_leaves_default_paddle_rejection_intact(self):
+    def test_flashdance_profile_keeps_legacy_projection_while_default_records_all_ports(self):
         data = paddle_fixture()
         original = psid_audit.AuditMemory
-        with self.assertRaisesRegex(ValueError, 'Unsupported I/O write'):
-            trace.trace_program(data, first_call=0, last_call=0)
+        standard = trace.trace_program(data, first_call=0, last_call=0)
+        self.assertEqual([(0xd419, 0), (0xd41a, 0), (0xd418, 15)],
+                         [(row['address'], row['value']) for row in standard['initSidWrites']])
         with pinned_fixture(data):
             result = trace.trace_program(data, first_call=0, last_call=0, profile='flashdance-diagnostic')
         self.assertIs(original, psid_audit.AuditMemory)
@@ -110,8 +111,7 @@ class SidProgramTraceTest(unittest.TestCase):
         self.assertIn('not a production', result['diagnostic']['classification'])
         self.assertEqual([{'phase': 'init', 'tick': None, 'address': address, 'value': 0}
                           for address in (0xd419, 0xd41a)], result['diagnostic']['ignoredInitPaddleWrites'])
-        with self.assertRaisesRegex(ValueError, 'Unsupported I/O write'):
-            trace.trace_program(data, first_call=0, last_call=0)
+        self.assertEqual(standard, trace.trace_program(data, first_call=0, last_call=0))
 
     def test_flashdance_profile_requires_the_manifest_pin_before_execution(self):
         data = paddle_fixture()

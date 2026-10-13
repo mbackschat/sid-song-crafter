@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "classification": "Independent static primary-source review; no player execution or hardware experiment",
+  "checkedDate": "2026-10-13",
+  "sources": {
+    "viceResid": {
+      "localPath": ".tools/vice-headless-3.9/source/src/resid/sid.cc",
+      "bytes": 33926,
+      "sha256": "a8b780d55c3a2ee8c34e1fd3c669ad25c35b585e3275043d0cd68efd57b8958c",
+      "lineRanges": [
+        {
+          "first": 205,
+          "last": 219,
+          "basis": "Every write updates write address, bus latch and latch lifetime; MOS8580 fast-mode pipeline branch follows."
+        },
+        {
+          "first": 226,
+          "last": 310,
+          "basis": "Only offsets00..18 dispatch voice/filter controls; higher offsets reach default and pipeline bookkeeping."
+        },
+        {
+          "first": 176,
+          "last": 197,
+          "basis": "Readback offsets19..1C supply POTX/POTY/OSC3/ENV3; other reads expose the latch."
+        },
+        {
+          "first": 119,
+          "last": 119,
+          "basis": "Model-specific latch lifetime constant."
+        },
+        {
+          "first": 762,
+          "last": 767,
+          "basis": "Delta-clock bus latch aging."
+        }
+      ],
+      "version": "VICE 3.9 release",
+      "url": "https://sourceforge.net/projects/vice-emu/files/releases/vice-3.9.tar.gz/download",
+      "archiveSha256": "40202b63455e26b87ecc63eb5a52322c6fa3f57cab12acf0c227cf9f4daec370",
+      "archiveMember": "src/resid/sid.cc"
+    },
+    "viceResidSingleClock": {
+      "localPath": ".tools/vice-headless-3.9/source/src/resid/sid.h",
+      "bytes": 6526,
+      "sha256": "68ca9a9ff517115b0b25d79d3aea66e7fea993fa722cd1c68ca21e40bd4fdc62",
+      "lineRanges": [
+        {
+          "first": 231,
+          "last": 239,
+          "basis": "Single-cycle clock handles pending writes and bus latch aging."
+        }
+      ],
+      "version": "VICE 3.9 release",
+      "url": "https://sourceforge.net/projects/vice-emu/files/releases/vice-3.9.tar.gz/download",
+      "archiveSha256": "40202b63455e26b87ecc63eb5a52322c6fa3f57cab12acf0c227cf9f4daec370",
+      "archiveMember": "src/resid/sid.h"
+    },
+    "viceSidHost": {
+      "localPath": ".tools/vice-headless-3.9/source/src/sid/sid.c",
+      "bytes": 40270,
+      "sha256": "65b03a0ac76c697e058e6227ddebaa2b5998b0d0fe3f9a6a6ea66c9e535da793",
+      "lineRanges": [
+        {
+          "first": 234,
+          "last": 258,
+          "basis": "Debugger shadow is distinct from readback; register masking and RMW second-store handling."
+        }
+      ],
+      "version": "VICE 3.9 release",
+      "url": "https://sourceforge.net/projects/vice-emu/files/releases/vice-3.9.tar.gz/download",
+      "archiveSha256": "40202b63455e26b87ecc63eb5a52322c6fa3f57cab12acf0c227cf9f4daec370",
+      "archiveMember": "src/sid/sid.c"
+    },
+    "viceResidHost": {
+      "localPath": ".tools/vice-headless-3.9/source/src/sid/resid.cc",
+      "bytes": 14399,
+      "sha256": "8364f3f6f40585e68e4712193f225b439d561b64605b9ac7d53a2e3ea39e9303",
+      "lineRanges": [
+        {
+          "first": 251,
+          "last": 259,
+          "basis": "Actual engine read/store forwarding."
+        }
+      ],
+      "version": "VICE 3.9 release",
+      "url": "https://sourceforge.net/projects/vice-emu/files/releases/vice-3.9.tar.gz/download",
+      "archiveSha256": "40202b63455e26b87ecc63eb5a52322c6fa3f57cab12acf0c227cf9f4daec370",
+      "archiveMember": "src/sid/resid.cc"
+    },
+    "sidLite": {
+      "localPath": ".local/research/libsidplayfp-v3.1.1/src/builders/sidlite-builder/sidlite/SID.cpp",
+      "bytes": 3372,
+      "sha256": "6181c98e690a1836a09033bff809ab2df43452533603531f6c84a6317282da6f",
+      "lineRanges": [
+        {
+          "first": 86,
+          "last": 102,
+          "basis": "Write stores array byte; reads dispatch OSC3/ENV3 or return zero."
+        }
+      ],
+      "version": "libsidplayfp v3.1.1",
+      "url": "https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/builders/sidlite-builder/sidlite/SID.cpp"
+    },
+    "sidLiteRegisterBank": {
+      "localPath": ".local/research/libsidplayfp-v3.1.1/src/builders/sidlite-builder/sidlite/SID.h",
+      "bytes": 1854,
+      "sha256": "ff5282c2136fde83fba8867938cb5b4c1f44b3b97f0c652686afe33a5f4d1ef8",
+      "lineRanges": [
+        {
+          "first": 58,
+          "last": 64,
+          "basis": "32-byte register bank shared with synthesis consumers."
+        }
+      ],
+      "version": "libsidplayfp v3.1.1",
+      "url": "https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/builders/sidlite-builder/sidlite/SID.h"
+    },
+    "sidLiteEnvelope": {
+      "localPath": ".local/research/libsidplayfp-v3.1.1/src/builders/sidlite-builder/sidlite/ADSR.cpp",
+      "bytes": 5325,
+      "sha256": "4d4bb3c52991b1522562c45b899159b208a86a2fea1e3c61180e948039343ef0",
+      "lineRanges": [
+        {
+          "first": 59,
+          "last": 74,
+          "basis": "Three channel bases stride7; ADSR/control consume offsets4..6."
+        }
+      ],
+      "version": "libsidplayfp v3.1.1",
+      "url": "https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/builders/sidlite-builder/sidlite/ADSR.cpp"
+    },
+    "sidLiteWave": {
+      "localPath": ".local/research/libsidplayfp-v3.1.1/src/builders/sidlite-builder/sidlite/WavGen.cpp",
+      "bytes": 18043,
+      "sha256": "bb462bd02030f87e6a1c68410cb90751adf1c1b52fbae5a6da918bc33654a9b3",
+      "lineRanges": [
+        {
+          "first": 111,
+          "last": 120,
+          "basis": "Pulse helpers consume channel offsets2 and3."
+        },
+        {
+          "first": 149,
+          "last": 184,
+          "basis": "Voice waveform/pitch and routing/volume consume active offsets only."
+        },
+        {
+          "first": 324,
+          "last": 324,
+          "basis": "Alternate digital-wave path also consumes channel frequency-high offset1."
+        }
+      ],
+      "version": "libsidplayfp v3.1.1",
+      "url": "https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/builders/sidlite-builder/sidlite/WavGen.cpp"
+    },
+    "sidLiteFilter": {
+      "localPath": ".local/research/libsidplayfp-v3.1.1/src/builders/sidlite-builder/sidlite/Filter.cpp",
+      "bytes": 9186,
+      "sha256": "2fe02aeea08242bc7d1693c3b827b7957276449a63f1db45589fc43363056040",
+      "lineRanges": [
+        {
+          "first": 64,
+          "last": 73,
+          "basis": "Filter consumes offsets15..18."
+        }
+      ],
+      "version": "libsidplayfp v3.1.1",
+      "url": "https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/builders/sidlite-builder/sidlite/Filter.cpp"
+    },
+    "sidLiteChannelCount": {
+      "localPath": ".local/research/libsidplayfp-v3.1.1/src/builders/sidlite-builder/sidlite/sl_constants.h",
+      "bytes": 1327,
+      "sha256": "e96c5a086a74c26d483e7df35c22f13bac6b2aad424e22f3f41a93d8c05c828b",
+      "lineRanges": [
+        {
+          "first": 29,
+          "last": 29,
+          "basis": "Three synthesis voices."
+        }
+      ],
+      "version": "libsidplayfp v3.1.1",
+      "url": "https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/builders/sidlite-builder/sidlite/sl_constants.h"
+    },
+    "libsidSidHost": {
+      "localPath": ".local/research/libsidplayfp-v3.1.1/src/c64/c64sid.h",
+      "bytes": 1845,
+      "sha256": "1865fb5df4a2d48c84b8b7bd629859d1dd3f0381c786695d65d46b5253d239eb",
+      "lineRanges": [
+        {
+          "first": 59,
+          "last": 67,
+          "basis": "Full-machine host masks to32-byte offset and retains a last-write shadow."
+        }
+      ],
+      "version": "libsidplayfp v3.1.1",
+      "url": "https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/c64/c64sid.h"
+    }
+  },
+  "sourceBoundFindings": {
+    "reSid": "Every register write changes latch value/lifetime and write-address state. Offset19..1F has no voice/filter parameter case in the reviewed dispatch, but still participates in pipeline bookkeeping. Readback/default reads and clock aging can observe the latch state.",
+    "sidLite": "All32 offsets are retained in a register array. Reviewed synthesis consumers use voice offsets00..14 and shared offsets15..18. Readback is generated OSC3/ENV3 or zero, not the stored array. This backend supplies no matching reSID bus-latch/decay implementation.",
+    "hostShadows": "VICE siddata and libsidplayfp lastpoke are write-history/debugger shadows. They must not be interpreted as the actual POT/OSC/ENV device readback state.",
+    "rmw": "VICE explicitly handles the extra RMW bus write before the final store. The RAM-only auditor must keep SID/I/O reads and RMW rejected rather than treating RMW as a single normal store."
+  },
+  "canonicalWindowContract": {
+    "allowedOperation": "Ordinary non-RMW CPU stores to exactly one declared chip canonical window, retaining each original absolute address/value in ordered evidence.",
+    "addressPredicate": "any(base <= address < base + 32 for base in declaredSidBases); do not mask an undeclared address into acceptance",
+    "offsetClasses": {
+      "00..18": "Active voice/filter parameter dispatch",
+      "19..1C": "POTX, POTY, OSC3, ENV3 readback addresses; writes still have bus state consequences",
+      "1D..1F": "Unused register offsets; writes still have bus state consequences"
+    },
+    "unchangedRejections": [
+      "Every SID/I/O read",
+      "Every SID read-modify-write instruction",
+      "Any I/O write outside explicitly declared chip windows",
+      "Undeclared mirrors, including D420..D43F when only D400 is declared",
+      "Existing payload, entry, clock, model, banking and selected-subtune requirements"
+    ],
+    "compatibilityBoundary": "The selected policy deliberately expands canonical32-byte store admission for strict and pal-banked profiles. Format, selection, banking, reads and RMW restrictions remain unchanged. Standard Flashdance now records its two D419/D41A initialization bus writes; its pinned diagnostic retains the explicit bounded exclusion receipt. This is changed admission, not unchanged legacy rejection.",
+    "evidenceBoundary": "Preserve all writes, including readback/unused offsets, rather than silently excluding them. A software write shadow is not simulated SID state."
+  },
+  "recommendedGuards": [
+    "Non-RMW stores at offsets18,19,1C,1D,1F are recorded in order; offset20 rejects for a single declared chip",
+    "A second declared chip has its own exact32-byte window; absence of that declaration rejects its addresses",
+    "Reads at every canonical offset and undeclared I/O still reject",
+    "SID RMW remains rejected and no partial accepted-ledger claim is made",
+    "Verify strict Flashdance records both D419/D41A bus writes while its pinned diagnostic still enforces the exact two zero-write exclusion and source pin.",
+    "Independent VICE writer trace retains the same init/play offset19..1F stores"
+  ],
+  "limits": [
+    "This supports an explicit write-admission/ledger boundary, not a simulated bus latch or readback implementation.",
+    "Emulator-specific lifetime/pipeline details are not universal measured-silicon guarantees.",
+    "No claim that readback/unused writes have no effect, or that extending CPU admission proves PCM/hardware identity.",
+    "No Ghouls instruction, initializer-clear-loop or musical-mechanism claim follows from this static emulator review."
+  ],
+  "publicBoundary": "Only source URLs, fingerprints, exact line ranges and interpretation retained; no full third-party source file or reference payload copied."
+}

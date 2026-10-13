@@ -118,7 +118,7 @@ def trace_program(data, *, first_call, last_call, profile='strict', subtune=None
         key = (write['tick'], write['instructionStartCycle'], write['address'])
         require(key in stores, 'SID write lacks an observed store instruction')
         selected.append(dict(write, instructionPc=stores[key]))
-    result = {'schemaVersion': 1, 'sourceSha256': hashlib.sha256(data).hexdigest(), 'firstCall': first_call, 'lastCallInclusive': last_call, 'profile': profile.value, 'audit': audited, 'instructions': instructions, 'sidWrites': selected, 'initSidWrites': [row for row in writes if row['phase'] == 'init'], 'limitations': 'RAM-only callable PAL player; execution begins at init, records only the requested play-call window plus initialization sound-register writes. Cycles are instruction starts relative to each call. Operand values are backing-memory snapshots, not bus reads or readable SID state. No CIA/VIC scheduling, bus-cycle or audible-quality claim.'}
+    result = {'schemaVersion': 1, 'sourceSha256': hashlib.sha256(data).hexdigest(), 'firstCall': first_call, 'lastCallInclusive': last_call, 'profile': profile.value, 'audit': audited, 'instructions': instructions, 'sidWrites': selected, 'initSidWrites': [row for row in writes if row['phase'] == 'init'], 'limitations': 'RAM-only callable PAL player; execution begins at init, records only the requested play-call window plus initialization SID-port writes (subject to the selected profile). Cycles are instruction starts relative to each call. Operand values are backing-memory snapshots, not bus reads or readable SID state. No CIA/VIC scheduling, bus-cycle or audible-quality claim.'}
     if diagnostic is not None:
         result['diagnostic'] = diagnostic
     return result

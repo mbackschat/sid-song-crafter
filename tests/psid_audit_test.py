@@ -66,7 +66,7 @@ class PsidAuditTest(unittest.TestCase):
             data[offset] = value
             with self.subTest(offset=offset, value=value), self.assertRaises(ValueError):
                 audit.audit_psid(data, 1)
-        for address in (0xd419, 0xd41f, 0xd439, 0xd440):
+        for address in (0xd3ff, 0xd440, 0xd500, 0xdc04):
             data = sid_file(bytes((0xa9, 1, 0x8d, address & 255, address >> 8, 0x60)))
             data[5], data[119], data[122] = 3, 0xa4, 0x42
             with self.subTest(address=address), self.assertRaisesRegex(ValueError, 'I/O write'):
@@ -75,6 +75,63 @@ class PsidAuditTest(unittest.TestCase):
         data[5], data[119], data[122] = 3, 0xa4, 0x42
         with self.assertRaisesRegex(ValueError, 'I/O read'):
             audit.audit_psid(data, 1)
+
+    def test_declared_sid_windows_capture_read_only_unused_and_repeated_init_play_stores(self):
+        for dual in (False, True):
+            bases = (0xd400, 0xd420) if dual else (0xd400,)
+            init_stores = [(base + offset, value) for base in bases for offset, value in ((31, 0x13), (25, 0x79))]
+            play_stores = [(base + offset, value) for base in bases for offset, value in
+                           ((25, 0x21), (28, 0x9a), (31, 0x34), (25, 0x21))]
+            init = '\n'.join(f'LDA #${value:02X}\nSTA ${address:04X}' for address, value in init_stores) + '\nRTS'
+            play = '\n'.join(f'LDA #${value:02X}\nSTA ${address:04X}' for address, value in play_stores) + '\nRTS'
+            data = selected_fixture(init, play, load=0x1000, songs=1, dual=dual)
+            expected = [('init', None, address, value) for address, value in init_stores]
+            expected += [('play', tick, address, value) for tick in range(2) for address, value in play_stores]
+            for profile in ('strict', 'pal-banked'):
+                with self.subTest(dual=dual, profile=profile):
+                    report, writes = audit.audit_psid(data, 2, profile=profile, subtune=1)
+                    self.assertEqual(expected, [(row['phase'], row['tick'], row['address'], row['value']) for row in writes])
+                    self.assertEqual((len(init_stores), 2 * len(play_stores)),
+                                     (report['initWriteCount'], report['playWriteCount']))
+                    for base in bases:
+                        self.assertEqual(4, report['registers'][f'{base + 25:04x}']['writes'])
+                        self.assertEqual(1, report['registers'][f'{base + 25:04x}']['distinctValues'])
+                    self.assertIn('32-byte', report['limitations'])
+                    self.assertIn('read-only/unused', report['limitations'])
+                    self.assertIn('bus behavior', report['limitations'])
+                    self.assertIn('SID reads', report['limitations'])
+
+    def test_declared_sid_windows_still_reject_outside_ports_mirrors_and_non_sid_io(self):
+        for dual in (False, True):
+            for profile in ('strict', 'pal-banked'):
+                for address in (0xd3ff, 0xd440 if dual else 0xd420, 0xd500, 0xdc04):
+                    with self.subTest(dual=dual, profile=profile, address=address), self.assertRaisesRegex(ValueError, 'I/O write'):
+                        data = selected_fixture(play=f'STA ${address:04X}\nRTS', load=0x1000, songs=1, dual=dual)
+                        audit.audit_psid(data, 1, profile=profile, subtune=1)
+
+    def test_declared_read_only_and_unused_sid_ports_do_not_fabricate_read_values(self):
+        for dual in (False, True):
+            bases = (0xd400, 0xd420) if dual else (0xd400,)
+            for profile in ('strict', 'pal-banked'):
+                for base in bases:
+                    for offset in (25, 28, 31):
+                        with self.subTest(dual=dual, profile=profile, address=base + offset), self.assertRaisesRegex(ValueError, 'I/O read'):
+                            data = selected_fixture(play=f'LDA ${base + offset:04X}\nRTS', load=0x1000, songs=1, dual=dual)
+                            audit.audit_psid(data, 1, profile=profile, subtune=1)
+
+    def test_all_sid_rmw_modes_remain_rejected_on_read_only_unused_and_sound_ports(self):
+        for address in (0xd404, 0xd419, 0xd41c, 0xd41f, 0xd424, 0xd439, 0xd43c, 0xd43f):
+            for instruction in ('ASL', 'LSR', 'ROL', 'ROR', 'INC', 'DEC'):
+                with self.subTest(address=address, instruction=instruction), self.assertRaisesRegex(ValueError, 'I/O read'):
+                    data = selected_fixture(play=f'{instruction} ${address:04X}\nRTS', load=0x1000, songs=1, dual=True)
+                    audit.audit_psid(data, 1)
+        memory = audit.AuditMemory((0xd400, 0xd420))
+        for address in (0xd404, 0xd41f, 0xd424, 0xd43f):
+            for instruction in ('ASL', 'LSR', 'ROL', 'ROR', 'INC', 'DEC'):
+                memory.instruction = instruction
+                with self.subTest(direct_address=address, instruction=instruction), self.assertRaisesRegex(ValueError, 'read-modify-write'):
+                    memory[address] = 1
+        self.assertEqual([], memory.writes)
 
     def test_audits_a_driver_without_our_exporter_symbols_or_score(self):
         report, writes = audit.audit_psid(sid_file(), 3)

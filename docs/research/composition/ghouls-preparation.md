@@ -1,6 +1,6 @@
 # Ghouls 'n' Ghosts: reference intake
 
-This bounded intake pins the C64 reference, preserves supported subtune attribution and records a rejected callable audit. It establishes no decoded score or synthesis mechanism, complete form, rendered audio or listening verdict. Read the [Follin composer study](../composers/follin-daglish.md), [technique lookup](../technique-index.md) and [execution procedure](../tools/sid-program-analysis.md) before choosing a passage or implementing an instrument.
+This bounded preparation pins the C64 reference, preserves supported subtune attribution and verifies initialization plus 64 calls of selection 1 against headless VICE. It establishes no decoded score or synthesis mechanism, complete form, rendered audio or listening verdict. Read the [Follin composer study](../composers/follin-daglish.md), [technique lookup](../technique-index.md) and [execution procedure](../tools/sid-program-analysis.md) before choosing a passage or implementing an instrument.
 
 ## Reference identity
 
@@ -35,9 +35,19 @@ In [Stephen Ruddy's first-hand interview](https://www.c64.com/interviews/ruddy.h
 
 ## Callable admission and execution boundary
 
-The unchanged [PSID profile parser](../../../scripts/psid_profile.py) accepts this header with explicit `pal-banked` subtune 1. The attempted 64-call [CPU audit](../../../scripts/psid_audit.py) then rejects execution with the exact message `Unsupported I/O write at $d41c`. No audit report or ordered-write ledger was produced, and the requested 64 calls are not evidence that 64 calls completed. The CLI failure does not capture the failing phase or instruction PC.
+The unchanged [PSID profile parser](../../../scripts/psid_profile.py) accepts this header with explicit `pal-banked` subtune 1. The initial intake's attempted 64-call audit failed with `Unsupported I/O write at $d41c`, before producing a report or ordered-write ledger. The subsequent [frozen rejection context](../../../evidence/ghouls-sid-window/rejection.json) identifies init PC `$61AC`, `STA $D400,Y`, A=`$08`, Y=`$1C`, at instruction-start cycle 117,661 and before any captured SID store. The requested 64 calls did not complete in that historical run.
 
-`$D41C` is the SID voice-3 envelope readback address, within the [SID readback register range](../sid/hardware.md#register-reference); the current callable auditor permits SID stores only through `$D418`. The rejection does not establish why the driver writes there or justify ignoring that write. Production guards remain unchanged. Header admission and successful execution are separate findings; a future execution contract needs independently supported handling and emulator coverage before any form or instrument claims.
+The failure was a tool boundary error: the 25 sound-control registers do not exhaust the canonical 32-byte SID write window. The [primary-source receipt](../../../evidence/ghouls-sid-window/semantics.json) establishes that reviewed reSID writes update bus state before dispatching active controls; readback/unused ports are not safely described as inert. The [corrected common contract](../../validation/psid-audit.md#canonical-sid-write-windows) retains every ordinary store in each declared window. Reads, read-modify-write stores and undeclared mirrors remain rejected; no SID bus-state model was added.
+
+On 2026-10-13 the [CPU report](../../../evidence/ghouls-sid-window/audit64.json), [complete ordered ledger](../../../evidence/ghouls-sid-window/audit64.writes.json.gz), [parsed VICE trace](../../../evidence/ghouls-sid-window/vice64/trace.json.gz) and [VICE verification](../../../evidence/ghouls-sid-window/vice64/study.json) establish:
+
+| Scope | Observed result |
+| --- | --- |
+| Initialization | 119,552 CPU cycles; 58 stores: for Y=`$1C` down through `$00`, write `$08` then `$00` to `$D400+Y` from PCs `$61AC/$61B1`. Eight stores target readback ports `$D419–$D41C`; their order and values are retained. |
+| Play calls 0–63 | 329 stores; maximum 2,022 and mean 399.5625 CPU cycles per call, within the 19,656-cycle budget. |
+| Independent VICE comparison | All 387 init/play stores match in phase, call, address, value and order. Maximum observed call-cadence error is eight cycles against the nine-cycle polling tolerance. |
+
+The [verification receipt](../../../evidence/ghouls-sid-window/verification.json) pins inputs, tools and all retained records. This proves bounded execution under the controlled raster host, not the original game's environment or selection 1's musical role. The CPU report's register summary covers playback; use its complete ledger for initialization. Monitor timestamps are checkpoints, not exact SID bus-write cycles. Raw monitor/process logs and executable payload files stay local.
 
 ## Reproduce the bounded checks
 
@@ -45,8 +55,9 @@ Acquire the exact linked SID into its private location and verify the SHA-256 ab
 
 ```sh
 python3 scripts/setup-project.py --only references --include ghouls-n-ghosts
-python3 scripts/sid_intake.py .local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid --subtune 1 --output build/ghouls-intake/header.json
-PYTHONPATH=.tools/test-deps python3 scripts/psid_audit.py .local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid --ticks 64 --profile pal-banked --subtune 1 --output build/ghouls-intake/audit64.json
+python3 scripts/sid_intake.py .local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid --subtune 1 --output build/ghouls-sid-window-new/header.json
+PYTHONPATH=.tools/test-deps python3 scripts/psid_audit.py .local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid --ticks 64 --profile pal-banked --subtune 1 --output build/ghouls-sid-window-new/audit64.json
+python3 scripts/trace-sid-vice.py .local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid --oracle build/ghouls-sid-window-new/audit64.writes.json --profile pal-banked --subtune 1 --first-call 0 --last-call 63 --output build/ghouls-sid-window-new/vice64
 ```
 
-The audit command reproduces the recorded rejection with the pinned tool revisions in the receipt. No compatibility exception, longer trace or render is part of this intake.
+To check the old failure, [restore the archived records](../../workflows/build-cache.md) and run `PYTHONPATH=.tools/test-deps python3 build/ghouls-sid-window/verify-rejection.py`. That verifier checks source/dependency hashes, loads the frozen pre-fix auditor and compares all 12 retained instruction contexts without overwriting the receipt. The original executed probe is preserved separately; do not run it against the corrected auditor expecting the old failure. No longer trace or render is claimed here.

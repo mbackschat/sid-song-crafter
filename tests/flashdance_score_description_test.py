@@ -108,10 +108,11 @@ class FlashdanceCompleteScoreTest(unittest.TestCase):
         self.assertEqual([478, 482, 486, 490, 494, 498, 502, 506, 510],
                          [row['call'] for row in lead if row['kind'] == 'off' and row['call'] <= 513])
 
-    def test_diagnostic_execution_leaves_the_production_auditor_strict(self):
+    def test_diagnostic_projection_does_not_remove_standard_port_writes(self):
         self.assertIs(self.production_memory, psid_audit.AuditMemory)
-        with self.assertRaisesRegex(ValueError, 'Unsupported I/O write'):
-            psid_audit.AuditMemory()[0xd419] = 0
+        memory = psid_audit.AuditMemory()
+        memory[0xd419] = 0
+        self.assertEqual([(0xd419, 0)], [(row['address'], row['value']) for row in memory.writes])
         receipt = self.score['evidence']['diagnostic']['ignoredInitPaddleWrites']
         self.assertEqual([(0xd419, 0), (0xd41a, 0)], [(row['address'], row['value']) for row in receipt])
 

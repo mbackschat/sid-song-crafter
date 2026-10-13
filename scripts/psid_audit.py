@@ -34,7 +34,9 @@ class AuditMemory:
         if address == 1:
             require(value & 4 and value & 3, "CPU port change would hide SID I/O")
         if 0xd000 <= address <= 0xdfff:
-            require(any(base <= address <= base + 24 for base in self.sid_bases), f"Unsupported I/O write at ${address:04x}")
+            # VICE 3.9 reSID SID::write updates its bus value before sound-register dispatch;
+            # retain stores to read-only/unused ports without admitting undeclared mirrors.
+            require(any(base <= address <= base + 31 for base in self.sid_bases), f"Unsupported I/O write at ${address:04x}")
             require(self.instruction not in ("ASL", "LSR", "ROL", "ROR", "INC", "DEC"), "SID read-modify-write requires a bus-cycle emulator")
             self.writes.append({"phase": self.phase, "tick": self.tick, "instructionStartCycle": self.instruction_cycle, "address": address, "value": value})
         self.data[address] = value
@@ -123,7 +125,7 @@ def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict'):
         "initWriteCount": sum(row["phase"] == "init" for row in memory.writes),
         "playWriteCount": sum(row["phase"] == "play" for row in memory.writes),
         "registers": {f"{address:04x}": {"writes": len(items), "distinctValues": len(set(items)), "minimum": min(items), "maximum": max(items)} for address, items in sorted(values.items())},
-        "limitations": "No sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment.",
+        "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment.",
     }
     if banked:
         report.update(executionProfile=parsed['profile'], subtunes=parsed['subtunes'],

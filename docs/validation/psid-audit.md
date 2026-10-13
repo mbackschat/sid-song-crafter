@@ -12,9 +12,13 @@ Timing-sensitive execution uses the shared CPU adapter. See the [opcode timing l
 
 ## Supported execution contract
 
-The default `strict` profile is a bounded RAM-only audit: one subtune, a payload within `$0400–$9fff`, callable init/play, and one call per PAL frame. It supports PSID v2NG with one explicitly declared PAL 6581/8580, or PSID v3 with two same-model PAL 6581s or 8580s at `$D400` and `$D420` (flags `$0054` or `$00A4`, second-chip byte `$42`, no third chip). Other layouts are rejected. Reports list the declared chips and keep their register addresses distinct. The parser accepts either header or embedded load addresses and resolves zero init to the load address. These conventions follow [the HVSC format specification](https://hvsc.c64.org/download/C64Music/DOCUMENTS/SID_file_format.txt).
+The default `strict` profile is a bounded RAM-only audit: one subtune, a payload within `$0400–$9fff`, callable init/play, and a per-play-call PAL cycle budget. It supports PSID v2NG with one explicitly declared PAL 6581/8580, or PSID v3 with two same-model PAL 6581s or 8580s at `$D400` and `$D420` (flags `$0054` or `$00A4`, second-chip byte `$42`, no third chip). Other layouts are rejected. Reports list the declared chips and keep their register addresses distinct. The parser accepts either header or embedded load addresses and resolves zero init to the load address. These conventions follow [the HVSC format specification](https://hvsc.c64.org/download/C64Music/DOCUMENTS/SID_file_format.txt). Actual call cadence requires a separate VICE observation.
 
 Initialization starts with zero-filled RAM except CPU port `$2f/$37`, A/X/Y zero, and the normal py65 stack. Driver changes to RAM and registers persist across calls. The tool rejects unsupported opcodes, ROM/I/O reads, non-SID hardware writes, hidden I/O, missing returns, and excessive call budgets. Initialization has a separate million-cycle ceiling; playback across all declared chips must fit the same 19,656-cycle PAL frame; adding a chip does not double the CPU budget. Rejecting a driver means this restricted audit cannot model it; use full C64 emulation for broader contracts.
+
+## Canonical SID write windows
+
+Both `strict` and `pal-banked` retain every ordered store within each declared SID's canonical 32-byte window, `base` through `base+$1F`, including repeated stores and read-only/unused ports `$19–$1F`. The pinned reSID implementation updates its bus-value latch before active sound-register dispatch at offsets `$00–$18`; stores beyond `$18` therefore remain execution evidence even though they do not dispatch active sound controls. The [32-port semantics receipt](../../evidence/ghouls-sid-window/semantics.json) retains the primary-source basis and guards; the [Ghouls ’n Ghosts preparation](../research/composition/ghouls-preparation.md) owns the bounded original-driver comparison. This admission does not include undeclared chips or mirrored addresses outside the declared windows.
 
 ## Select a subtune and expose RAM beneath BASIC
 
@@ -38,6 +42,6 @@ This entry contract is not libsidplayfp's IRQ entry: its inspected `psiddrv.a65`
 
 ## Evidence limits
 
-`instructionStartCycle` identifies the start of the instruction performing a write, relative to its call. It is not a bus-cycle timestamp. Read-modify-write instructions targeting SID are unsupported because py65 does not reproduce their NMOS dummy writes. The tool does not emulate sound, badlines, interrupts, timer changes, or analogue chip behaviour.
+`instructionStartCycle` identifies the start of the instruction performing a write, relative to its call. It is not a bus-cycle timestamp. SID reads and internal bus-latch behavior are not modeled; all I/O reads remain rejected. Read-modify-write instructions targeting SID are unsupported because py65 does not reproduce their NMOS dummy writes. The tool does not emulate sound, badlines, interrupts, timer changes, or analogue chip behaviour.
 
 A completed audit establishes bounded execution and observed register trajectories in this declared environment. It does not establish note correctness, waveform quality, the song's ending, or listening approval. Compare the exported driver with its native source and render it through [the audio workflow](../workflows/audio-workflow.md); use a driver-specific expectation for the particular technique being tested.

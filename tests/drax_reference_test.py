@@ -61,7 +61,7 @@ class DraxReferenceTest(unittest.TestCase):
         self.assertEqual([row["address"] for row in memory.ignored_writes], [0xd419, 0xd41a])
         memory[0xd404] = 0x41
         self.assertEqual(memory.writes[-1]["address"], 0xd404)
-        for address in (0xd419, 0xd41a, 0xd41b, 0xdc00):
+        for address in (0xd419, 0xd41a, 0xd41b, 0xd41f, 0xdc00):
             with self.subTest(address=address), self.assertRaises(ValueError):
                 memory[address] = 1
         with self.assertRaisesRegex(ValueError, "Unsupported I/O"):
@@ -71,8 +71,9 @@ class DraxReferenceTest(unittest.TestCase):
             memory[0xd419] = 0
         with self.assertRaisesRegex(ValueError, "Unsupported I/O read"):
             memory[0xd419]
-        with self.assertRaisesRegex(ValueError, "Unsupported I/O write"):
-            study.psid_audit.AuditMemory()[0xd419] = 0
+        production = study.psid_audit.AuditMemory()
+        production[0xd419] = 0
+        self.assertEqual([(0xd419, 0)], [(row['address'], row['value']) for row in production.writes])
 
     def test_diagnostic_execution_does_not_change_the_production_auditor(self):
         header = bytearray(124)
@@ -87,8 +88,9 @@ class DraxReferenceTest(unittest.TestCase):
         self.assertEqual(len(ignored), 2)
         self.assertEqual(writes, [])
         self.assertIs(study.psid_audit.AuditMemory, original)
-        with self.assertRaisesRegex(ValueError, "Unsupported I/O write"):
-            study.psid_audit.audit_psid(data, 6000)
+        _, standard_writes = study.psid_audit.audit_psid(data, 1)
+        self.assertEqual([(0xd419, 0), (0xd41a, 0)],
+                         [(row['address'], row['value']) for row in standard_writes])
 
     def test_study_claims_require_exactly_6000_complete_single_sid_frames(self):
         for frames in ([[0] * 25] * 5999, [[0] * 25] * 6001, [[0] * 50] * 6000):

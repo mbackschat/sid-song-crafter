@@ -27,8 +27,8 @@ def entry(cycle, raster_cycle=12):
     return f'#1 (Trace  exec 1006)  250/$0fa, {raster_cycle:3}/$0c\n.C:1006  EE 00 20    INC $2000 - A:FA X:00 Y:00 SP:fd ..-..I.. {cycle}\n'
 
 
-def store(cycle, value=1, opcode='8D 02 D4', mnemonic='STA $D402'):
-    return f'#2 (Trace store d402)  250/$0fa,  28/$1c\n.C:100c  {opcode}    {mnemonic} - A:{value:02X} X:00 Y:00 SP:fd ..-..I.. {cycle}\n'
+def store(cycle, value=1, opcode='8D 02 D4', mnemonic='STA $D402', *, address=0xd402, x=0, y=0):
+    return f'#2 (Trace store {address:04x})  250/$0fa,  28/$1c\n.C:100c  {opcode}    {mnemonic} - A:{value:02X} X:{x:02X} Y:{y:02X} SP:fd ..-..I.. {cycle}\n'
 
 
 def marker(cycle, address):
@@ -211,15 +211,15 @@ class SidViceTraceTest(unittest.TestCase):
                     commands = (root / 'trace/commands.mon').read_text()
                     self.assertEqual(1, commands.count('trace exec $1000'))
 
-    def test_dual_pal_profile_declares_both_chips_and_traces_only_their_sound_registers(self):
+    def test_dual_pal_profile_declares_both_chips_and_traces_their_canonical_write_windows(self):
         data = sid_fixture()
         data[5], data[119], data[122] = 3, 0x54, 0x42
         profile = trace.psid_profile(data)
         self.assertEqual([0xd400, 0xd420], profile['sidBases'])
         _, labels = trace.harness(profile, 3)
         commands = trace.monitor_commands(Path('/tmp/payload.prg'), Path('/tmp/harness.prg'), profile, labels, 0, 2)
-        self.assertIn('trace store $d400 $d418 if', commands)
-        self.assertIn('trace store $d420 $d438 if', commands)
+        self.assertIn('trace store $d400 $d41f if', commands)
+        self.assertIn('trace store $d420 $d43f if', commands)
         second = store(120, 9, '8D 22 D4', 'STA $D422').replace('store d402', 'store d422')
         parsed = trace.parse_trace(entry(100) + store(116) + second, 0x1006, profile['sidBases'])
         self.assertEqual([0xd402, 0xd422], [row['address'] for row in parsed['writes']])
@@ -231,6 +231,49 @@ class SidViceTraceTest(unittest.TestCase):
             with self.subTest(offset=offset), self.assertRaises(ValueError):
                 trace.psid_profile(invalid)
 
+    def test_parser_records_every_port_in_each_declared_canonical_sid_window(self):
+        for bases in ((0xd400,), (0xd400, 0xd420)):
+            with self.subTest(bases=bases):
+                addresses = [base + offset for base in bases for offset in range(32)]
+                log = entry(100)
+                for index, address in enumerate(addresses):
+                    log += store(116 + index * 4, index, f'8D {address & 255:02X} {address >> 8:02X}',
+                                 f'STA ${address:04X}', address=address)
+                parsed = trace.parse_trace(log, 0x1006, bases)
+                self.assertEqual([(address, index) for index, address in enumerate(addresses)],
+                                 [(row['address'], row['value']) for row in parsed['writes']])
+                self.assertTrue(all(row['writerPc'] == 0x100c for row in parsed['writes']))
+
+    def test_parser_rejects_undeclared_adjacent_and_mirrored_sid_stores(self):
+        for bases, addresses in (((0xd400,), (0xd3ff, 0xd420, 0xd43f, 0xd440, 0xd500)),
+                                 ((0xd400, 0xd420), (0xd3ff, 0xd440, 0xd500))):
+            for address in addresses:
+                with self.subTest(bases=bases, address=address), self.assertRaisesRegex(ValueError, 'address'):
+                    log = entry(100) + store(116, 7, f'8D {address & 255:02X} {address >> 8:02X}',
+                                             f'STA ${address:04X}', address=address)
+                    trace.parse_trace(log, 0x1006, bases)
+
+    def test_extended_window_stores_keep_index_source_address_and_non_rmw_guards(self):
+        cases = [
+            ('9D 18 D4', 'STA $D418,X', 0xd419, 1, 0, 0x19),
+            ('99 18 D4', 'STA $D418,Y', 0xd41c, 0, 4, 0x19),
+            ('8E 1F D4', 'STX $D41F', 0xd41f, 0x7e, 0, 0x7e),
+            ('8C 3F D4', 'STY $D43F', 0xd43f, 0, 0x6b, 0x6b),
+        ]
+        for opcode, mnemonic, address, x, y, expected in cases:
+            with self.subTest(instruction=mnemonic):
+                parsed = trace.parse_trace(entry(100) + store(116, 0x19, opcode, mnemonic,
+                                           address=address, x=x, y=y), 0x1006, (0xd400, 0xd420))
+                self.assertEqual((address, expected), (parsed['writes'][0]['address'], parsed['writes'][0]['value']))
+        invalid = [
+            store(116, opcode='EE 19 D4', mnemonic='INC $D419', address=0xd419),
+            store(116, opcode='8D 18 D4', mnemonic='STA $D418', address=0xd419),
+            store(116, opcode='9D 3F D4', mnemonic='STA $D43F,X', address=0xd440, x=1),
+        ]
+        for record in invalid:
+            with self.subTest(record=record), self.assertRaises(ValueError):
+                trace.parse_trace(entry(100) + record, 0x1006, (0xd400, 0xd420))
+
     def test_headless_vice_dual_fixture_preserves_chip_filters_and_six_voice_writes(self):
         vice = ROOT / '.tools/vice-headless-3.9/build/src/x64sc'
         data_directory = Path('/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice')
@@ -241,6 +284,8 @@ class SidViceTraceTest(unittest.TestCase):
         pairs = [(base + voice * 7, value) for base, start in ((0xd400, 0x11), (0xd420, 0x51))
                  for voice, value in enumerate(range(start, start + 3))]
         pairs += [(0xd416, 0x20), (0xd436, 0xb0), (0xd418, 0x1f), (0xd438, 0x1a)]
+        pairs += [(base + offset, value) for base in (0xd400, 0xd420)
+                  for offset, value in ((0x19, 0x31), (0x1c, 0xa5), (0x1f, 0x5c))]
         for address, value in pairs:
             data.extend((0xa9, value, 0x8d, address & 255, address >> 8))
         data.append(0x60)
@@ -252,7 +297,7 @@ class SidViceTraceTest(unittest.TestCase):
             sid.write_bytes(data)
             expected.write_text(json.dumps(oracle))
             result = trace.run_trace(sid, expected, root / 'trace', 0, 2, vice, data_directory)
-            self.assertEqual(30, result['verification']['matchedWrites'])
+            self.assertEqual(48, result['verification']['matchedWrites'])
             command = json.loads((root / 'trace/command.json').read_text())
             self.assertIn('-sidextra', command)
             self.assertIn('0xd420', command)
@@ -277,7 +322,7 @@ class SidViceTraceTest(unittest.TestCase):
         self.assertIn(bytes.fromhex('200610'), program)
         self.assertGreater(labels['done'], 0xc000)
         commands = trace.monitor_commands(Path('/tmp/payload.prg'), Path('/tmp/harness.prg'), profile, labels, 1, 3)
-        self.assertIn('trace store $d400 $d418 if', commands)
+        self.assertIn('trace store $d400 $d41f if', commands)
         counter = '((@ram:$c101 * $0100) + @ram:$c100)'
         self.assertIn(f'({counter} >= $0001) && ({counter} <= $0003)', commands)
         self.assertIn('dummy off', commands)
@@ -329,8 +374,10 @@ class SidViceTraceTest(unittest.TestCase):
         data_directory = Path('/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice')
         if not vice.is_file() or not data_directory.is_dir():
             self.skipTest('Local headless VICE and ROM data are required for the executed fixture')
-        data = sid_fixture()[:130] + bytes.fromhex('ee0020ad00208d02d4a9e78d03d4a99960')
-        oracle = [dict(phase='play', tick=tick, address=address, value=value) for tick in range(3) for address, value in ((0xd402, tick + 1), (0xd403, 0xe7))]
+        data = sid_fixture()[:130] + bytes.fromhex('ee0020ad00208d02d4a9e78d03d4a9318d19d4a9a58d1cd4a95c8d1fd4a99960')
+        oracle = [dict(phase='play', tick=tick, address=address, value=value) for tick in range(3)
+                  for address, value in ((0xd402, tick + 1), (0xd403, 0xe7), (0xd419, 0x31),
+                                         (0xd41c, 0xa5), (0xd41f, 0x5c))]
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             sid, expected = root / 'fixture.sid', root / 'oracle.json'
@@ -338,8 +385,11 @@ class SidViceTraceTest(unittest.TestCase):
             expected.write_text(json.dumps(oracle))
             result = trace.run_trace(sid, expected, root / 'trace', 0, 2, vice, data_directory)
             parsed = json.loads((root / 'trace/trace.json').read_text())
-            self.assertEqual(result['verification']['matchedWrites'], 6)
-            self.assertEqual([(row['writerPc'], row['registers']['a']) for row in parsed['writes']], [(0x100c, 1), (0x1011, 0xe7), (0x100c, 2), (0x1011, 0xe7), (0x100c, 3), (0x1011, 0xe7)])
+            self.assertEqual(result['verification']['matchedWrites'], 15)
+            self.assertEqual([(row['writerPc'], row['registers']['a']) for row in parsed['writes']],
+                             [(pc, value) for tick in range(3) for pc, value in
+                              ((0x100c, tick + 1), (0x1011, 0xe7), (0x1016, 0x31),
+                               (0x101b, 0xa5), (0x1020, 0x5c))])
             self.assertEqual({row['monitorCycle'] - parsed['entries'][row['tick']]['monitorCycle'] for row in parsed['writes'] if row['writerPc'] == 0x100c}, {14})
 
     def test_headless_vice_full_cycle_preserves_call_numbers_and_window_across_byte_rollovers(self):

@@ -6,7 +6,7 @@ Use DRAX's **Flashdance (conversion)** as the studied reference for **What a Fee
 
 The [reference study](flashdance-reference.md) owns attribution, cached [HVSC STIL](https://www.hvsc.de/download/C64Music/DOCUMENTS/STIL.txt) identity and the [archived SID](https://www.hvsc.de/download/C64Music/MUSICIANS/D/DRAX/Worktunes/Flashdance_conversion.sid): DRAX, `1990 Vibrants`, one PAL MOS6581, default subtune 1. Pinned local SHA-256: `2f5216ab8f4438d8ef20c0153ce4671afbc5bc6e66d3b0984bb112fdbf46794c`.
 
-The retained [frames](../../../build/reference-studies/drax/flashdance.frames.json) and [ordered writes](../../../build/reference-studies/drax/flashdance.writes.json.gz) cover 6,000 calls. Their diagnostic adapter permits only the pinned initialization's two zero paddle-register writes; this is not a production-auditor pass or a complete-song coverage claim.
+The retained [frames](../../../build/reference-studies/drax/flashdance.frames.json) and [ordered writes](../../../build/reference-studies/drax/flashdance.writes.json.gz) cover 6,000 calls through an isolated diagnostic adapter. It preserves a 25-register sound-control projection and records exactly the pinned initialization's two zero stores to `$D419/$D41A` separately, excluding them from that control ledger. The standard auditor now retains stores across each declared SID's [canonical 32-byte write window](../../validation/psid-audit.md#canonical-sid-write-windows), including paddle-address stores; the historical receipts remain diagnostic evidence, not a new standard-auditor pass or complete-song coverage claim.
 
 | Opening observation | Difference from decoded Elise |
 | --- | --- |
@@ -60,7 +60,7 @@ A bounded execution study of the pinned binary identifies requirements beyond th
 | Moving chord variants | Initializers at calls 2/130/258/386 select four chord programs. The opening has offsets `[0,0,4,4,7,7,12,12]`, AD/SR `$03/$34`, width `$040` and step `$0D`. Describe the four-tone cycle independently from the score note. |
 | Per-voice fine tuning | PC `$14FB` adds the table `$1762,X` value: 0/1/2 for bass/lead/chord. The opening lead `$2710` becomes `$2711`; chord `$0F82` becomes `$0F84`. Preserve the exact programmed words alongside their musical interpretation. |
 
-The first four-chord turn, calls 0–513, is the [plan's first reconstruction milestone](../study-plan.md#flashdance-next-executable-milestones). The contracts below refine the score and PWM requirements. The complete selected score, waveform/pitch, PWM and filter programs now have an editable description; the pinned diagnostic adapter retains the production auditor's strict I/O boundary.
+The first four-chord turn, calls 0–513, is the [plan's first reconstruction milestone](../study-plan.md#flashdance-next-executable-milestones). The contracts below refine the score and PWM requirements. The complete selected score, waveform/pitch, PWM and filter programs now have an editable description; the pinned diagnostic adapter preserves the historical control projection and its exact two init-store exclusions.
 
 ### Editable full-span model
 

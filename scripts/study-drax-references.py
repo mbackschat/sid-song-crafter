@@ -54,6 +54,11 @@ class FlashdanceDiagnosticMemory(psid_audit.AuditMemory):
             require(self.phase == "init" and value == 0, "Flashdance diagnostic permits only init zero writes to $d419/$d41a")
             self.ignored_writes.append({"phase": self.phase, "tick": self.tick, "address": address, "value": value})
             return
+        if 0xd000 <= address <= 0xdfff:
+            # Keep the historical Flashdance proof's 25-control projection plus
+            # its two named exclusions; standard audits now retain all 32 ports.
+            require(any(base <= address <= base + 24 for base in self.sid_bases),
+                    f"Unsupported I/O write at ${address:04x} in the Flashdance diagnostic")
         super().__setitem__(address, value)
 
 
@@ -64,8 +69,8 @@ def audit_reference(name, data, play_calls):
         report, writes = psid_audit.audit_psid(data, play_calls)
         return report, writes, []
 
-    # This pinned tune clears paddle registers during init; a private module keeps
-    # its diagnostic exception out of the production auditor and candidate run.
+    # The retained Flashdance oracle excludes two init paddle writes. Its private
+    # module preserves that projection without suppressing standard audit stores.
     diagnostic = load_script("psid_audit.py", "drax_flashdance_diagnostic")
     memories = []
 

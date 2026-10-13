@@ -116,7 +116,7 @@ def monitor_commands(payload, program, profile, labels, first, last):
     banked = profile.get('profile') == 'pal-banked'
     if banked:
         condition = f'(@ram:${INIT_ACTIVE:04x} != $00) || ({condition})'
-    traces = [f'trace store ${base:04x} ${base + 24:04x} if {condition}' for base in profile['sidBases']]
+    traces = [f'trace store ${base:04x} ${base + 31:04x} if {condition}' for base in profile['sidBases']]
     lines = ['radix h', 'sidefx off', 'dummy off', 'bank ram', 'fill $0002 $bfff $00', f'load "{payload}" 0', f'load "{program}" 0', 'r a=$00,x=$00,y=$00,sp=$ff,fl=$24', f'r pc=${HARNESS_BASE:04x}']
     if banked:
         lines.extend([f'trace exec ${profile["initAddress"]:04x}', f'trace exec ${labels["init_return"]:04x}'])
@@ -200,7 +200,7 @@ def parse_trace(log, play_address, sid_bases=(0xd400,), *, init_address=None, in
             effective = (effective + registers['x']) & 65535
         elif opcode[0] == 0x99:
             effective = (effective + registers['y']) & 65535
-        require(effective == address and any(base <= address <= base + 24 for base in sid_bases), 'Store opcode and traced SID address disagree')
+        require(effective == address and any(base <= address <= base + 31 for base in sid_bases), 'Store opcode and traced SID address disagree')
         register = 'x' if opcode[0] == 0x8e else 'y' if opcode[0] == 0x8c else 'a'
         record.update(tick=None if banked and phase == 'init' else entries[-1]['tick'], address=address, value=registers[register])
         if banked:
