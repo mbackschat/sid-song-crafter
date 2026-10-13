@@ -1,6 +1,6 @@
 # Ghouls 'n' Ghosts: reference intake
 
-This preparation pins the C64 reference, preserves supported subtune attribution and establishes finite stream consumption for provisional selection **1**, followed by continued filter refresh. CPU execution covers 40,000 calls, with independent VICE comparisons at the opening and final stream stop. Selection 1's musical role, an independent score/synthesis model, rendered audio and listening remain unresolved. Read the [Follin composer study](../composers/follin-daglish.md), [technique lookup](../technique-index.md) and [execution procedure](../tools/sid-program-analysis.md) before choosing a passage or implementing an instrument.
+This preparation pins the C64 reference, preserves supported subtune attribution and establishes finite stream consumption for provisional selection **1**, followed by continued filter refresh. CPU execution covers 40,000 calls, with independent VICE comparisons at the opening and final stream stop. A 265-second initialized source render and contrasting Gauntlet III subtune intake are available. Selection 1's musical role, an independent score/synthesis model and reconstruction listening remain unresolved. Read the [Follin composer study](../composers/follin-daglish.md), [technique lookup](../technique-index.md) and [execution procedure](../tools/sid-program-analysis.md) before choosing a passage or implementing an instrument.
 
 ## Reference identity
 
@@ -32,6 +32,30 @@ Cached [HVSC STIL v85](https://hvsc.c64.org/download/C64Music/DOCUMENTS/STIL.txt
 The header credits Follin for the C64 soundtrack; the STIL credits above distinguish arcade source music from its C64 arrangement. Default selection 1 does not itself prove that entry is the title tune. Stage labels do not establish the complete form or duration of those entries.
 
 In [Stephen Ruddy's first-hand interview](https://www.c64.com/interviews/ruddy.html), the Ghouls discussion identifies his music-driver programming with Tim Follin's design input. This supports game-specific collaboration. It does not identify the exact revision of the pinned HVSC driver or make other Follin platform drivers interchangeable. The receipt pins the cached interview and relevant source lines; the [composer study](../composers/follin-daglish.md#what-the-published-accounts-establish) retains the wider workflow evidence.
+
+## Reproduce the source listening material
+
+The [primary intake spec](../../../config/reference-intake/ghouls-primary.json) renders explicit subtune 1 from initialization for 265 seconds and prepares original excerpts at `[0,16)`, `[120,136)` and `[245,265)` seconds. This spans the observed finite score and leaves a post-stop window; it is not yet a reconstruction or a listener-approved ending. The spec also checks the opening 256 callable CPU entries rather than repeating the already retained 40,000-call form investigation.
+
+```sh
+python3 scripts/setup-project.py --only references --include ghouls-n-ghosts
+python3 scripts/reference-intake.py run config/reference-intake/ghouls-primary.json --output build/reference-intake/ghouls-primary
+```
+
+Open the generated `build/reference-intake/ghouls-primary/listening.md` for the full source WAV and excerpts. The [source receipt](../../../evidence/ghouls-render-intake/sourceA-measure.json) retains the audio fingerprint and settings: libsidplayfp 3.1.1/SIDLite, forced PAL, MOS6581, power-on delay zero, unity gain, 44.1 kHz mono PCM16. All 11,686,500 requested frames were rendered with nonzero AC signal and no PCM rail samples. The [executed run](../../../evidence/ghouls-render-intake/run.json) took 6.56 seconds on 2026-10-13, including 3.08 seconds for rendering. These are source-render measurements, not independent-player verification or a musical judgment. Audio remains local; the checked-in spec and [exact executed recipe](../../../evidence/ghouls-render-intake/recipe.json) preserve reproduction details.
+
+## Contrasting Gauntlet III intake
+
+The [asset registry](../../../config/local-assets.json) pins the [HVSC Gauntlet III source](https://www.hvsc.de/download/C64Music/MUSICIANS/F/Follin_Tim/Gauntlet_III.sid) at `.local/research/gauntlet-iii/Gauntlet_III.sid`: SHA-256 `caec9549f437f6c1a1ee77edc9a034436fb66b2c8ba939adf45b889656c99328`, 6,642 bytes. Its header credits **Tim & Geoff Follin**, 1992 US Gold, with two subtunes, default 1, PAL/MOS6581 and VBI timing. The cached STIL contains no entry for this file. Joint authorship and unknown musical roles remain explicit.
+
+The payload occupies `$AB00–$C473`, overlapping the auditor's default `$C000` host. The [subtune spec](../../../config/reference-intake/follin-subtunes.json) therefore uses the existing explicit host-placement option at `$8000`; source bytes remain unchanged. Both selections pass 256-call CPU audits and initialized 32-second source renders. Their [subtune 1](../../../evidence/gauntlet-render-intake/sourceA-measure.json) and [subtune 2](../../../evidence/gauntlet-render-intake/sourceB-measure.json) receipts retain the hashes, settings and signal checks. These bounded captures do not establish complete form, VICE agreement or shared synthesis mechanisms.
+
+```sh
+python3 scripts/setup-project.py --only references --include gauntlet-iii
+python3 scripts/reference-intake.py run config/reference-intake/follin-subtunes.json --output build/reference-intake/follin-subtunes
+```
+
+The generated `build/reference-intake/follin-subtunes/listening.md` links both sources and an opening comparison: subtune 1 for 16 seconds, half a second of silence, then subtune 2 for 16 seconds. It compares two source selections, not a recreation. Choose the passage for the required mechanism corroboration after the primary Ghouls sound contracts are established; this intake alone does not complete the [contrasting-reference requirement](../study-plan.md#required-contrasting-references-for-the-six-composers).
 
 ## Callable admission and execution boundary
 

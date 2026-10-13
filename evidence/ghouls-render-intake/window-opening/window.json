@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "source-excerpt",
+  "order": [
+    "sourceA"
+  ],
+  "sources": [
+    {
+      "label": "sourceA",
+      "role": "Ghouls 'n Ghosts primary source, provisional subtune 1; musical role unlabeled in pinned STIL",
+      "selection": {
+        "assetId": "ghouls-n-ghosts",
+        "calls": 256,
+        "renderSeconds": 265,
+        "role": "Ghouls 'n Ghosts primary source, provisional subtune 1; musical role unlabeled in pinned STIL",
+        "route": "pal-banked",
+        "subtune": 1
+      },
+      "source": {
+        "id": "ghouls-n-ghosts",
+        "title": "Ghouls 'n Ghosts",
+        "credit": "Tim Follin; Tamayo Kawamoto source material on subtunes 8 and 10 per STIL",
+        "hvscPath": "MUSICIANS/F/Follin_Tim/Ghouls_n_Ghosts.sid",
+        "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/F/Follin_Tim/Ghouls_n_Ghosts.sid",
+        "sha256": "265644a66d6043e6fe5ddeeb0d87e9b4269386a73c3e26457c8d96ce3d042df4",
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/.local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid",
+        "default": false,
+        "bytes": 19005
+      },
+      "rendering": {
+        "renderer": ".local/bin/render-sid",
+        "library": "libsidplayfp 3.1.1 / SIDLite",
+        "clock": "PAL",
+        "clockForced": true,
+        "sidModel": "MOS6581",
+        "subtune": 1,
+        "powerOnDelay": 0,
+        "sampleRate": 44100,
+        "channels": 1,
+        "format": "PCM16",
+        "seconds": 265,
+        "gain": 1,
+        "normalization": false,
+        "initialized": true
+      },
+      "inputRender": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/ghouls-primary/cache/sourceA-render/79591893cde213727852b7a3acedd43871aba5961700f6b19e1d4826f1514daf/attempt-330498e5294e44528bac7ac965530315/source.wav",
+        "sha256": "133f7df0e50b44f78aa48888ebc470f5ade1c956b3355e5b120edb8d85c119d7",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 11686500,
+        "durationSeconds": 265.0,
+        "peak": 14720,
+        "peakDbfs": -6.950842499164757,
+        "clippedSamples": 0,
+        "rms": 2961.950763523134,
+        "acRms": 2940.9706319537154,
+        "acRmsDbfs": -20.939184944477162,
+        "perChannel": [
+          {
+            "dc": -351.9148583408206,
+            "rms": 2961.950763523134,
+            "acRms": 2940.9706319537154
+          }
+        ]
+      }
+    }
+  ],
+  "windowSeconds": [
+    0.0,
+    16.0
+  ],
+  "gain": 1,
+  "normalization": false,
+  "clip": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/ghouls-primary/cache/window-opening/ffbe5afa8f5be20eaa6f890cae34a4d6e54dae1238bec74ad6d73376bb08a5bb/attempt-cac9b93c444f41418f5d1741e949d2a3/source.wav",
+    "sha256": "7f1f301076065cb7461731e4635204a4fa827b66a940b3f97a721832137b4913",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 705600,
+    "durationSeconds": 16.0,
+    "peak": 9294,
+    "peakDbfs": -10.944945336337366,
+    "clippedSamples": 0,
+    "rms": 1169.1910517303957,
+    "acRms": 1160.0801265203638,
+    "acRmsDbfs": -29.019238961141205,
+    "perChannel": [
+      {
+        "dc": 145.67709325396825,
+        "rms": 1169.1910517303957,
+        "acRms": 1160.0801265203638
+      }
+    ]
+  },
+  "limitations": "Original source excerpts; a source contrast is not reconstruction fidelity or causal corroboration.",
+  "listeningReview": null
+}

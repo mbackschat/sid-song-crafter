@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "selected-original-source",
+  "selection": {
+    "assetId": "gauntlet-iii",
+    "calls": 256,
+    "hostBase": 32768,
+    "renderSeconds": 32,
+    "role": "Gauntlet III contrasting work by Tim and Geoff Follin; default source subtune 1, musical role unassigned",
+    "route": "pal-banked",
+    "subtune": 1
+  },
+  "source": {
+    "id": "gauntlet-iii",
+    "title": "Gauntlet III",
+    "credit": "Tim & Geoff Follin",
+    "hvscPath": "MUSICIANS/F/Follin_Tim/Gauntlet_III.sid",
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/F/Follin_Tim/Gauntlet_III.sid",
+    "sha256": "caec9549f437f6c1a1ee77edc9a034436fb66b2c8ba939adf45b889656c99328",
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/.local/research/gauntlet-iii/Gauntlet_III.sid",
+    "default": false,
+    "bytes": 6642
+  },
+  "registry": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/config/local-assets.json",
+    "bytes": 10463,
+    "sha256": "6485ac603b0f7d60c7dc301f5960fd1c287f9cfb9bd0fe2690846e46f0cd3397"
+  },
+  "header": {
+    "schemaVersion": 1,
+    "bytes": 6642,
+    "sha256": "caec9549f437f6c1a1ee77edc9a034436fb66b2c8ba939adf45b889656c99328",
+    "format": "PSID",
+    "version": 2,
+    "dataOffset": 124,
+    "headerLoadAddress": 0,
+    "loadAddress": 43776,
+    "payloadBytes": 6516,
+    "endAddressExclusive": 50292,
+    "initAddress": 50272,
+    "playAddress": 43952,
+    "subtunes": 2,
+    "defaultSubtune": 1,
+    "selectedSubtune": 1,
+    "speedWord": 0,
+    "flags": 20,
+    "clockDeclaration": "PAL",
+    "sidModelDeclaration": "MOS6581",
+    "selectedTimingDeclaration": "VBI",
+    "title": "Gauntlet III",
+    "author": "Tim & Geoff Follin",
+    "released": "1992 US Gold",
+    "callableProfile": {
+      "profile": "pal-banked",
+      "accepted": true,
+      "reason": null,
+      "hostBase": 32768,
+      "requestedHostBase": 32768
+    },
+    "limits": "Header declarations and current profile admission only; no driver execution, measured cadence, subtune-role identification or listening verdict."
+  },
+  "rendering": {
+    "renderer": ".local/bin/render-sid",
+    "library": "libsidplayfp 3.1.1 / SIDLite",
+    "clock": "PAL",
+    "clockForced": true,
+    "sidModel": "MOS6581",
+    "subtune": 1,
+    "powerOnDelay": 0,
+    "sampleRate": 44100,
+    "channels": 1,
+    "format": "PCM16",
+    "seconds": 32,
+    "gain": 1,
+    "normalization": false,
+    "initialized": true
+  },
+  "evidence": {
+    "route": "pal-banked",
+    "cpuOrderedStoresRequested": true,
+    "cpuCausalProof": false,
+    "registerObservation": "renderer-iteration register snapshots, not a bus-write trace",
+    "limitations": "Header admission, optional controlled callable CPU stores and modeled source audio; no original-host equivalence, causal corroboration or listening verdict."
+  },
+  "listeningReview": null
+}

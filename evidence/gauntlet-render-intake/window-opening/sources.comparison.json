@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    0.0,
+    16.0
+  ],
+  "window": {
+    "startFrame": 0,
+    "endFrame": 705600,
+    "frames": 705600,
+    "startSeconds": 0.0,
+    "endSeconds": 16.0,
+    "durationSeconds": 16.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/follin-subtunes/cache/window-opening/8c9e37d6a06837e33d62e4868050ffbba76c6133784e8a433726604bbc7402ef/attempt-2c9dc5a2900b4f318a24e375b8c7bbe3/sources.ab.wav",
+    "frames": 1433250,
+    "durationSeconds": 32.5,
+    "sha256": "62f1110d860387d534bf3e4f2a500071f798018788629cdad245c19d8da22379"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 705600
+    },
+    {
+      "label": "silence",
+      "startFrame": 705600,
+      "endFrame": 727650
+    },
+    {
+      "label": "B",
+      "startFrame": 727650,
+      "endFrame": 1433250
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/follin-subtunes/cache/sourceA-render/86855980b77cdd4e49ea5b37a3cc42a3becd9243d0fe4540973082a7c393caf1/attempt-cc8e79eff98b4251b4758578d2e3ab37/source.wav",
+      "sha256": "73106125ad0c8bb5fdcb9ecfaab5cf20b2495812b67719ceb91c3be6e853683d",
+      "originalFrames": 1411200,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 11216,
+        "peakDbfs": -9.31223868674269,
+        "clippedSamples": 0,
+        "rms": 4822.175390865252,
+        "acRms": 4805.23634033915,
+        "acRmsDbfs": -16.674703642533036,
+        "perChannel": [
+          {
+            "dc": -403.8306746031746,
+            "rms": 4822.175390865252,
+            "acRms": 4805.23634033915
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/follin-subtunes/cache/sourceB-render/80eab1dc5ab0bf1721d1dd3cce1639a4d7331b8d6d6b16b53ea82208b12e6d30/attempt-82d535c783164a4c8de563d1a3f9a2b5/source.wav",
+      "sha256": "96000bb434c2fa7e17a2264f2c13c7b78de1e2e83edbec1305870500a7378112",
+      "originalFrames": 1411200,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 15559,
+        "peakDbfs": -6.469365083187768,
+        "clippedSamples": 0,
+        "rms": 4517.366249952702,
+        "acRms": 4096.0111084674645,
+        "acRmsDbfs": -18.061776183493265,
+        "perChannel": [
+          {
+            "dc": -1905.0697718253969,
+            "rms": 4517.366249952702,
+            "acRms": 4096.0111084674645
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

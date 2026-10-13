@@ -1,0 +1,329 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "sourceA-selection",
+      "command": [
+        "{python}",
+        "scripts/reference-intake.py",
+        "selection",
+        "{{\"assetId\":\"gauntlet-iii\",\"calls\":256,\"hostBase\":32768,\"renderSeconds\":32,\"role\":\"Gauntlet III contrasting work by Tim and Geoff Follin; default source subtune 1, musical role unassigned\",\"route\":\"pal-banked\",\"subtune\":1}}",
+        "--registry-sha256",
+        "6485ac603b0f7d60c7dc301f5960fd1c287f9cfb9bd0fe2690846e46f0cd3397",
+        "--output",
+        "{out}/selection.json"
+      ],
+      "inputs": [
+        "config/local-assets.json",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/research/gauntlet-iii/Gauntlet_III.sid",
+        "scripts/reference-intake.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/listening-package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py"
+      ],
+      "outputs": [
+        "selection.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "sourceA-audit",
+      "command": [
+        "{python}",
+        "scripts/psid_audit.py",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/research/gauntlet-iii/Gauntlet_III.sid",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1",
+        "--ticks",
+        "256",
+        "--output",
+        "{out}/audit.json",
+        "--host-base",
+        "32768"
+      ],
+      "inputs": [
+        "config/local-assets.json",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/research/gauntlet-iii/Gauntlet_III.sid",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/psid_audit.py",
+        ".tools/test-deps/py65",
+        "{stage:sourceA-selection}/selection.json"
+      ],
+      "outputs": [
+        "audit.json",
+        "audit.writes.json"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "sourceA-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/research/gauntlet-iii/Gauntlet_III.sid",
+        "{out}/source.wav",
+        "32",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "config/local-assets.json",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/research/gauntlet-iii/Gauntlet_III.sid",
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "scripts/render-sid.cpp",
+        "{stage:sourceA-selection}/selection.json"
+      ],
+      "outputs": [
+        "source.wav",
+        "source.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "sourceA-measure",
+      "command": [
+        "{python}",
+        "scripts/reference-intake.py",
+        "measure",
+        "{stage:sourceA-selection}/selection.json",
+        "{stage:sourceA-render}/source.wav",
+        "--output",
+        "{out}/source.json"
+      ],
+      "inputs": [
+        "scripts/reference-intake.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/listening-package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "{stage:sourceA-selection}/selection.json",
+        "{stage:sourceA-render}/source.wav",
+        "{stage:sourceA-render}/source.wav.registers.tsv"
+      ],
+      "outputs": [
+        "source.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "sourceB-selection",
+      "command": [
+        "{python}",
+        "scripts/reference-intake.py",
+        "selection",
+        "{{\"assetId\":\"gauntlet-iii\",\"calls\":256,\"hostBase\":32768,\"renderSeconds\":32,\"role\":\"Gauntlet III alternative source subtune 2 by Tim and Geoff Follin; musical role unassigned\",\"route\":\"pal-banked\",\"subtune\":2}}",
+        "--registry-sha256",
+        "6485ac603b0f7d60c7dc301f5960fd1c287f9cfb9bd0fe2690846e46f0cd3397",
+        "--output",
+        "{out}/selection.json"
+      ],
+      "inputs": [
+        "config/local-assets.json",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/research/gauntlet-iii/Gauntlet_III.sid",
+        "scripts/reference-intake.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/listening-package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py"
+      ],
+      "outputs": [
+        "selection.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "sourceB-audit",
+      "command": [
+        "{python}",
+        "scripts/psid_audit.py",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/research/gauntlet-iii/Gauntlet_III.sid",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "2",
+        "--ticks",
+        "256",
+        "--output",
+        "{out}/audit.json",
+        "--host-base",
+        "32768"
+      ],
+      "inputs": [
+        "config/local-assets.json",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/research/gauntlet-iii/Gauntlet_III.sid",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/psid_audit.py",
+        ".tools/test-deps/py65",
+        "{stage:sourceB-selection}/selection.json"
+      ],
+      "outputs": [
+        "audit.json",
+        "audit.writes.json"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "sourceB-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/research/gauntlet-iii/Gauntlet_III.sid",
+        "{out}/source.wav",
+        "32",
+        "--subtune",
+        "2"
+      ],
+      "inputs": [
+        "config/local-assets.json",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/research/gauntlet-iii/Gauntlet_III.sid",
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "scripts/render-sid.cpp",
+        "{stage:sourceB-selection}/selection.json"
+      ],
+      "outputs": [
+        "source.wav",
+        "source.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "sourceB-measure",
+      "command": [
+        "{python}",
+        "scripts/reference-intake.py",
+        "measure",
+        "{stage:sourceB-selection}/selection.json",
+        "{stage:sourceB-render}/source.wav",
+        "--output",
+        "{out}/source.json"
+      ],
+      "inputs": [
+        "scripts/reference-intake.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/listening-package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "{stage:sourceB-selection}/selection.json",
+        "{stage:sourceB-render}/source.wav",
+        "{stage:sourceB-render}/source.wav.registers.tsv"
+      ],
+      "outputs": [
+        "source.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "window-opening",
+      "command": [
+        "{python}",
+        "scripts/reference-intake.py",
+        "window",
+        "{stage:sourceA-measure}/source.json",
+        "--second",
+        "{stage:sourceB-measure}/source.json",
+        "--start",
+        "0",
+        "--end",
+        "16",
+        "--gap",
+        "0.5",
+        "--output",
+        "{out}"
+      ],
+      "inputs": [
+        "scripts/reference-intake.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/listening-package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "{stage:sourceA-measure}/source.json",
+        "{stage:sourceA-render}/source.wav",
+        "{stage:sourceB-measure}/source.json",
+        "{stage:sourceB-render}/source.wav"
+      ],
+      "outputs": [
+        "sources.ab.wav",
+        "sources.comparison.json",
+        "window.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "sourceACpuAudit": "{stage:sourceA-audit}/audit.json",
+    "sourceAOrderedStores": "{stage:sourceA-audit}/audit.writes.json",
+    "sourceARender": "{stage:sourceA-render}/source.wav",
+    "sourceAReceipt": "{stage:sourceA-measure}/source.json",
+    "sourceBCpuAudit": "{stage:sourceB-audit}/audit.json",
+    "sourceBOrderedStores": "{stage:sourceB-audit}/audit.writes.json",
+    "sourceBRender": "{stage:sourceB-render}/source.wav",
+    "sourceBReceipt": "{stage:sourceB-measure}/source.json",
+    "sourceContrast-opening": "{stage:window-opening}/sources.ab.wav",
+    "windowReceipt-opening": "{stage:window-opening}/window.json"
+  }
+}

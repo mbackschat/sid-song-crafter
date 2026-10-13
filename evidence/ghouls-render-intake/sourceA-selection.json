@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "selected-original-source",
+  "selection": {
+    "assetId": "ghouls-n-ghosts",
+    "calls": 256,
+    "renderSeconds": 265,
+    "role": "Ghouls 'n Ghosts primary source, provisional subtune 1; musical role unlabeled in pinned STIL",
+    "route": "pal-banked",
+    "subtune": 1
+  },
+  "source": {
+    "id": "ghouls-n-ghosts",
+    "title": "Ghouls 'n Ghosts",
+    "credit": "Tim Follin; Tamayo Kawamoto source material on subtunes 8 and 10 per STIL",
+    "hvscPath": "MUSICIANS/F/Follin_Tim/Ghouls_n_Ghosts.sid",
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/F/Follin_Tim/Ghouls_n_Ghosts.sid",
+    "sha256": "265644a66d6043e6fe5ddeeb0d87e9b4269386a73c3e26457c8d96ce3d042df4",
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/.local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid",
+    "default": false,
+    "bytes": 19005
+  },
+  "registry": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/config/local-assets.json",
+    "bytes": 10028,
+    "sha256": "6118a18e94d645ba73ffa290d00c6334725aa775717a2f1266afeb6714be520c"
+  },
+  "header": {
+    "schemaVersion": 1,
+    "bytes": 19005,
+    "sha256": "265644a66d6043e6fe5ddeeb0d87e9b4269386a73c3e26457c8d96ce3d042df4",
+    "format": "PSID",
+    "version": 2,
+    "dataOffset": 124,
+    "headerLoadAddress": 0,
+    "loadAddress": 10624,
+    "payloadBytes": 18879,
+    "endAddressExclusive": 29503,
+    "initAddress": 24848,
+    "playAddress": 25140,
+    "subtunes": 32,
+    "defaultSubtune": 1,
+    "selectedSubtune": 1,
+    "speedWord": 0,
+    "flags": 20,
+    "clockDeclaration": "PAL",
+    "sidModelDeclaration": "MOS6581",
+    "selectedTimingDeclaration": "VBI",
+    "title": "Ghouls 'n' Ghosts",
+    "author": "Tim Follin",
+    "released": "1989 US Gold/Capcom",
+    "callableProfile": {
+      "profile": "pal-banked",
+      "accepted": true,
+      "reason": null,
+      "hostBase": 49152
+    },
+    "limits": "Header declarations and current profile admission only; no driver execution, measured cadence, subtune-role identification or listening verdict."
+  },
+  "rendering": {
+    "renderer": ".local/bin/render-sid",
+    "library": "libsidplayfp 3.1.1 / SIDLite",
+    "clock": "PAL",
+    "clockForced": true,
+    "sidModel": "MOS6581",
+    "subtune": 1,
+    "powerOnDelay": 0,
+    "sampleRate": 44100,
+    "channels": 1,
+    "format": "PCM16",
+    "seconds": 265,
+    "gain": 1,
+    "normalization": false,
+    "initialized": true
+  },
+  "evidence": {
+    "route": "pal-banked",
+    "cpuOrderedStoresRequested": true,
+    "cpuCausalProof": false,
+    "registerObservation": "renderer-iteration register snapshots, not a bus-write trace",
+    "limitations": "Header admission, optional controlled callable CPU stores and modeled source audio; no original-host equivalence, causal corroboration or listening verdict."
+  },
+  "listeningReview": null
+}
