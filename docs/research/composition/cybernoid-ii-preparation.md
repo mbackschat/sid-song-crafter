@@ -1,6 +1,6 @@
 # Cybernoid II: title form and executed command semantics
 
-This prepares Jeroen Tel's **Cybernoid II**, title subtune **1**, while Shades remains the sole active reconstruction under the [study plan](../study-plan.md). It establishes archive identity, execution under an explicit PAL host, two complete order-list traversals, contextual score commands and opening sound-record selection. Complete synthesis semantics, original-host equivalence, independent reconstruction and listening remain separate work. Consult the [composer account](../composers/huelsbeck-tel.md#jeroen-tel-arrangement-and-driver-collaboration), [listening catalogue](../composers/listening-catalogue.md) and [source-study boundary](../tools/source-studies.md) before extending this intake.
+This prepares Jeroen Tel's **Cybernoid II**, title subtune **1**, while Shades remains the sole active reconstruction under the [study plan](../study-plan.md). It establishes archive identity, execution under an explicit PAL host, two complete order-list traversals, contextual score commands and executed opening pitch, waveform/PWM, filter and arpeggio mechanisms. Complete synthesis semantics, original-host equivalence, independent reconstruction and listening remain separate work. Consult the [composer account](../composers/huelsbeck-tel.md#jeroen-tel-arrangement-and-driver-collaboration), [listening catalogue](../composers/listening-catalogue.md) and [source-study boundary](../tools/source-studies.md) before extending this intake.
 
 ## Archive identity
 
@@ -128,7 +128,7 @@ The [semantic source receipt](../../../evidence/cybernoid-form-source/semantics.
 | Pattern `$70–$7F` in arpeggio context | Select arpeggio pointer, then consume pitch | Opening executes selector `$72` on voice 2; the listing defines eight choices, while the encoded range is wider |
 | Pattern duration `$80–$BF`, with contextual continuations | Initial countdown = (byte & `$3F`) − 1; subsequent high-bit extension can add byte & `$7F` | Opening `$88→7`, `$A0→31`, `$A0,$A0→63`; retain the actual helper/branch sequence |
 | Pattern instrument `$C0–$DF` | (byte & `$1F`) + order offset selects an eight-byte record from `$B014` | Opening voices 1/2/3 select records 1/4/2: `bass`, `arp+filt`, `bassdrm` |
-| Pattern glide `$E0–$EF` | Consume delay, base pitch and target pitch; add pitch offset | Opening voice 1 executes `$E0,$40,$0C,$18`; synthesis progression remains a separate mechanism |
+| Pattern glide `$E0–$EF` | Consume packed glide control, base pitch and target pitch; add pitch offset | Opening voice 1 executes `$E0,$40,$0C,$18`; `$40` is packed control, not a 64-call delay; see the retained-pitch investigation below |
 | Initial pattern `$F0–$FF` | Odd prefix consumes `$D417` routing; even prefix skips part of patch initialization after frequency update | Opening proves `$F1` routing. Even-prefix behavior is static, not a complete legato guarantee |
 | Pattern end `$FF` at end-peek/helper | Reset pattern cursor; decrement repeat or advance order | Context differs from initial-prefix and order-stream `$FF`; preserve the helper's call-stack behavior |
 
@@ -152,7 +152,7 @@ Choose a fresh output directory. The [receipt](../../../evidence/cybernoid-form-
 | Selected-pattern consumption | First and second traversals each select 4,331 pattern pointers and consume 12,406 indirect pattern bytes in identical relative-call/voice order |
 | End and state | No order `$FE` global stop and no exact backing-RAM-plus-CPU recurrence in the observed 36,000 calls |
 
-A complete **order cycle** is established; a finite source ending or identical synthesized repeat is not. The first two traversals consume the same patterns, while ordered SID address/value sequences differ in 6,792 relative calls. The first difference is relative call 13: voice 1's frequency-low write is `$E1` on the first traversal and `$D1` on the second. This shows that wrapping the order lists does not restore all pitch-producing state. The cause still needs an executed synthesis-state explanation; do not name a particular modulation mechanism from this comparison alone. Whole-RAM hashes include stack and I/O shadows, and neither those hashes nor a register ledger represents SID oscillator/envelope state or rendered PCM.
+A complete **order cycle** is established; a finite source ending or identical synthesized repeat is not. The first two traversals consume the same patterns, while ordered SID address/value sequences differ in 6,792 relative calls. The first difference is relative call 13: voice 1's frequency-low write is `$E1` on the first traversal and `$D1` on the second. This shows that wrapping the order lists does not restore all pitch-producing state. The retained-pitch investigation below connects this first difference to vibrato phase with an executed state trace and a controlled intervention; it does not attribute all full-cycle differences to that mechanism. Whole-RAM hashes include stack and I/O shadows, and neither those hashes nor a register ledger represents SID oscillator/envelope state or rendered PCM.
 
 The [full VICE report](../../../evidence/cybernoid-form-36000/vice-full/study.json) independently matches all **645,960** initialization/play stores across all **36,000** calls. Its maximum cadence deviation is five cycles against the nine-cycle polling tolerance. The [run provenance](../../../evidence/cybernoid-form-36000/vice-full/provenance.json) pins the tracer, parsed trace and deadline. Reproduce from the observer's ordered-write output:
 
@@ -169,3 +169,89 @@ After restoring the archived inputs to their indexed `build/` paths, reproduce t
 ```sh
 python3 build/cybernoid-form-proof/compare-traversals.py build/cybernoid-form-36000 --output build/cybernoid-form-36000/traversal-comparison-new.json
 ```
+
+## Retained vibrato phase at the order wrap
+
+The title's voice 1 keeps vibrato direction at `$A667` and position at `$A66A` when order `$FF` resets its sequencing cursors. The [compact observer](../../../evidence/cybernoid-wrap-pitch/probe.py) runs the unchanged source through call 17,300, retaining [named state and arithmetic](../../../evidence/cybernoid-wrap-pitch/observations.json.gz) in calls 0–20 and 17,280–17,300. The [oracle cross-check](../../../evidence/cybernoid-wrap-pitch/oracle-crosscheck.json) matches every one of its 736 ordered SID-store records against the corresponding full-span CPU ledger already checked by VICE. The original opening begins with direction/position `$00/0`; the first wrap preserves `$FF/1` before and after `$A75F→$A76A`.
+
+| Executed point | Original opening | Opening after the first wrap |
+| --- | --- | --- |
+| First vibrato phase step, relative call 1 | Ascending position 0→1 | Descending position 1→0, then direction becomes ascending |
+| Glide completes, relative call 12 | Working frequency `$08E1`; position 1 | Working frequency `$08E1`; position 0 |
+| Next vibrato step, relative call 13 | Position 1→2 | Position 0→1 |
+| Frequency arithmetic at `$AA62/$AA78` | Base `$08E1` − 2×`$0010` + 2×`$0010` = `$08E1` | Same base − 2×`$0010` + 1×`$0010` = `$08D1` |
+
+The [diagnostic intervention](../../../evidence/cybernoid-wrap-pitch-intervention/run.py), with its [complete four-case results](../../../evidence/cybernoid-wrap-pitch-intervention/receipt.json.gz), seeds only these two voice-1 bytes before the first outer play call; it leaves the SID source and CPU registers unchanged. Four 21-call runs separate the control, each individual-byte change and the combined phase. The control matches every original-opening SID store. Seeding the retained pair `$FF/1` reproduces **all voice-1 ordered register writes** from calls 17,280–17,300, after subtracting the order period. Either single-byte change fails that comparison. This establishes causal sufficiency for that opening voice and window, not a reset recipe for the full song or an audible preference. The score's repeat marker should therefore preserve phase unless a deliberate arrangement change calls for restarting it.
+
+The historical contextual-command receipt calls `$A690` `glideDelay` and records decimal 64. That is the raw `$40` parameter, not a duration in calls: the synthesis routine splits its nibbles, and the observed opening glide finishes at relative call 12. Preserve that raw evidence while using **packed glide control** in new descriptions. A complete editable pitch program still needs the general glide and modulation contracts, including other sound records and release behavior.
+
+The independent [phase and centered-pitch model](../../../evidence/cybernoid-wrap-pitch/model.py) computes these two operations from editable numeric inputs. Its [verification](../../../evidence/cybernoid-wrap-pitch/model-verification.json) matches 18 recorded phase updates and the two detailed arithmetic paths. It preserves byte wrapping, asymmetric endpoints and the source's signed loop termination. The separate [isolated-routine checker](../../../evidence/cybernoid-wrap-pitch/edge-check.py) then executes `$AA20–$AA84` with 320 synthetic combinations of extent, direction, position and note age; [all results match](../../../evidence/cybernoid-wrap-pitch/edge-verification.json). This covers byte wrap, signed-loop edges and the zero-extent wait bypass without claiming those combinations occur in the score. Delta/depth selection, wait selection, glide and a complete instrument remain outside this helper.
+
+Restore the selected evidence with [the archive workflow](../../workflows/build-cache.md). For a fresh execution, copy the exact probe/model into a fresh `build/` directory; their source paths resolve from the repository root. The intervention additionally reads the restored historical baseline at `build/cybernoid-wrap-pitch/observations.json`:
+
+```sh
+python3 scripts/evidence.py restore evidence/cybernoid-wrap-pitch/observations.json.gz
+mkdir build/cybernoid-wrap-pitch-new
+cp evidence/cybernoid-wrap-pitch/probe.py evidence/cybernoid-wrap-pitch/model.py evidence/cybernoid-wrap-pitch/edge-check.py build/cybernoid-wrap-pitch-new/
+python3 build/cybernoid-wrap-pitch-new/probe.py
+python3 build/cybernoid-wrap-pitch-new/model.py
+python3 build/cybernoid-wrap-pitch-new/edge-check.py
+mkdir build/cybernoid-wrap-intervention-new
+cp evidence/cybernoid-wrap-pitch-intervention/run.py build/cybernoid-wrap-intervention-new/
+python3 build/cybernoid-wrap-intervention-new/run.py
+```
+
+## Opening sound-record fields, shared filter and arpeggio
+
+The [field/filter/arpeggio analysis](../../../evidence/cybernoid-filter-arp/analyze.py) reads the retained 64-call instruction trace and pinned archive. Its [lossless receipt](../../../evidence/cybernoid-filter-arp/receipt.json.gz) joins all 645 sound-record loads to the opening voice/record selections and preserves instruction indices, parameter reads and ordered sound writes. These are contextual fields, not eight independent knobs:
+
+| Record offset / source label | Established interpretation and boundary |
+| --- | --- |
+| 0 / `pulsehi` | Low nibble initializes pulse high; retain the full byte for other flags. Bit `$10` has a separate end-of-row SR branch, static in this window. |
+| 1 / `waveform` | Initial control byte; later onset/drum code can replace the working control. |
+| 2–3 / `attdec`, `susrel` | Initial SID attack/decay and sustain/release writes at patch setup. |
+| 4 / `filcount` | Low three bits select a filter pointer; high nibble shifted right twice participates in gate masking. Bit `$08` also enters a separate frequency-addition branch. |
+| 5 / `fx1` | Pitch-effect control normally; low nibble instead selects a drum table when `fx3` bit `$10` is set. |
+| 6 / `fx2` | Low three bits select a PWM table; upper nibble participates in PWM steps. Bit `$08` also affects remembered filter-owner fallback. |
+| 7 / `fx3` | Effect flags: record 4's `$85` enables filter, tone arpeggio and onset behavior. Other flags select drum, sweep or pulse-run paths; do not infer executed coverage from a flag name alone. |
+
+Opening voice 2 selects record 4, `arp+filt`, bytes `$04,$21,$00,$C8,$01,$00,$81,$85`. The score separately sends `$D417=$82` via `$F1`: resonance 8, only voice 2 routed through the shared filter. Record offset 4 selects filter program 1 at `$AFD6`; offset 7 enables its execution. Patch setup skips the synthesis body, so the first filter update is call 1. Calls 1–63 each write mode/volume `$3F` and cutoff high; cutoff low remains the initialization zero. Cutoff high starts `$A0`, falls by two per call through call 33, then rises by one on calls 34–63. Parameterized arithmetic matches all 126 ordered filter writes.
+
+The remembered filter owner is voice index 1 at `$A683`. The driver processes voices 3, 2, 1, so multiple enabled voices would write the shared registers in that order; only one enabled owner is demonstrated here. The receipt separates static owner-fallback and later filter stages from the phases actually executed. Filter age is note age, not the row countdown. Later owner changes, third/terminal stages and complete-title roles remain open.
+
+Tone-arpeggio selector `$72` chooses table 2 at `$AF97`: header 2, offsets `0,5,8`. Its counter decrements before consumption, wraps through the signed test, and reads offsets in reverse order: **8,5,0**. With base pitch-table index 47, the generated indices are 55,52,47. The checker matches all 63 body updates, 21 counter wraps and 126 final voice-2 frequency stores. Later onset logic restores the base pitch on calls 5–6 while the arpeggio counter continues; the raw arpeggio calculation alone is therefore insufficient to predict the final register write. The default `$AF9B` address encoded in the self-modified instruction is not the selected opening table.
+
+Reproduce the retained analysis without another CPU run:
+
+```sh
+python3 evidence/cybernoid-filter-arp/analyze.py --output build/cybernoid-filter-arp-new.json
+```
+
+The script needs the pinned local SID/listing and canonical instruction archive; the source URLs and hashes are in its receipt. It rejects an existing output. This analysis establishes executed programming behavior, not an independent complete instrument or listening approval.
+
+## Opening waveform, onset and PWM programs
+
+The opening `bass` and `bassdrm` records share neither a static waveform nor a generic pulse-width sweep. The [bounded checker](../../../evidence/cybernoid-wave-pwm/check-mechanisms.py), with its [lossless mechanism receipt](../../../evidence/cybernoid-wave-pwm/mechanisms-verified.json.gz), verifies four patch initializations, 63 bass PWM bodies, 63 bass onset bodies and 61 drum bodies against the retained instruction trace. Its program models take traced incoming buffers where upstream pitch or gate behavior is outside their scope; they are not a complete independent player.
+
+| Program | Executed contract |
+| --- | --- |
+| Patch initialization | Bass call 0 and drum calls 0,24,48 initialize waveform, pulse and gate state, then go directly to the writer. They skip the synthesis macros at age 0. |
+| Bass PWM | `fx2=$64` selects slot 4: lower high byte `$07`, upper `$0D`; age thresholds 3/6/9 use steps `$70/$60/$50`, then `$60` from age 10. Direction 1 adds and direction 0 subtracts with word arithmetic. Crossings reverse direction without clamping: widths `$0D40` at call 22, `$06E0` at 39 and `$0D40` at 56. |
+| Bass onset | `fx3` bit `$80`, onset length 2. Age 1 replaces control with `$81` and only frequency high with `$FA`, retaining the incoming low byte (observed `$FACF`). Ages 2–3 restore control `$41` and the saved frequency; age 4 onward makes no onset override. |
+| Drum | `fx3` bit `$10`, `fx1` selector 0. Ages 1–10 consume waveform `$81,$41,$40×8` and frequencies `$3400,$0A00,$0800,$0600,$0400,$0500,$0600,$0500,$0400,$0500`; waveform bit 0 selects gate mask `$FF` or `$FE`. From age 11 this macro stops changing its buffers, preserving `$40/$0500` in the observed passage. PWM selector zero leaves pulse width `$0800`. |
+| Final writer | Writes `(waveform & gateMask)`, frequency low/high and pulse low/high, in that order. Earlier note-setup frequency and ADSR stores are separate and remain in the full ledger. |
+
+PWM indexing has a carry dependency worth preserving: after masking selector 4 and shifting three times, carry is clear; `SBC #$07` therefore subtracts eight. The resulting offset 24 selects `$AFF4+24=$B00C`. A rewrite that blindly subtracts seven would read the wrong parameter bytes. The observed PWM mode reverses on threshold crossings and retains overshoot; static reset-to-lower and threshold direction-bit alternatives are excluded from this checker.
+
+The archived drum waveform table at `$AF4D` differs from the recovered listing's `dwa0` table. Both start with length 11 and waveform `$81`, but at offset 2 the archive has `$41` while the listing has `$81`; later archive entries are `$40`, while the listing uses `$20` and `$10`. This is an executed sound-program difference, even though the eight-byte drum record matches. Preserve archive tables when reconstructing this pinned reference. The corresponding frequency-high table and the selected PWM/onset tables do match the inspected listing.
+
+The [receipt checker](../../../evidence/cybernoid-wave-pwm/check-receipt.py) separately matches all 640 selected final-writer stores to the canonical ledger and checks that every listed contract PC executed. Its [negative controls](../../../evidence/cybernoid-wave-pwm/validation.json) detect a changed PWM threshold first at call 3 and substitution of the recovered drum waveform first at call 2. These are local arithmetic perturbations, distinct from the executed RAM intervention in the pitch study.
+
+```sh
+mkdir build/cybernoid-wave-pwm-new
+cp evidence/cybernoid-wave-pwm/check-mechanisms.py evidence/cybernoid-wave-pwm/check-receipt.py build/cybernoid-wave-pwm-new/
+python3 build/cybernoid-wave-pwm-new/check-mechanisms.py --output build/cybernoid-wave-pwm-new/mechanisms-verified.json
+python3 build/cybernoid-wave-pwm-new/check-receipt.py
+```
+
+The next full-title model must retain ordering among pitch, PWM, filter, onset/drum and final writes. Opening checks do not cover every instrument, pulse wrap mode, relative drum pitch, owner change or later score role. They provide verified components and explicit gaps for that work, while Shades remains the active reconstruction awaiting listening.

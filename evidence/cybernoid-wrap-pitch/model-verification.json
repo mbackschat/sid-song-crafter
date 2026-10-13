@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "41f338f44b4f54e351e672156ee0e2a60c8437eb24645db3f9d4abfbb0cff192",
+  "observationsSha256": "f75d3f29aceed466491a3d4ffb834a59156d621a7ea90704e77700d262f08efb",
+  "modelSha256": "741510ba2fecff249fda4bcbfa742a335df413c2412045eb32c724bcf065594e",
+  "phaseChecks": [
+    {
+      "call": 1,
+      "inputs": [
+        0,
+        0,
+        5
+      ],
+      "expected": [
+        0,
+        1
+      ],
+      "predicted": [
+        0,
+        1
+      ]
+    },
+    {
+      "call": 13,
+      "inputs": [
+        0,
+        1,
+        5
+      ],
+      "expected": [
+        0,
+        2
+      ],
+      "predicted": [
+        0,
+        2
+      ]
+    },
+    {
+      "call": 14,
+      "inputs": [
+        0,
+        2,
+        5
+      ],
+      "expected": [
+        0,
+        3
+      ],
+      "predicted": [
+        0,
+        3
+      ]
+    },
+    {
+      "call": 15,
+      "inputs": [
+        0,
+        3,
+        5
+      ],
+      "expected": [
+        0,
+        4
+      ],
+      "predicted": [
+        0,
+        4
+      ]
+    },
+    {
+      "call": 16,
+      "inputs": [
+        0,
+        4,
+        5
+      ],
+      "expected": [
+        0,
+        5
+      ],
+      "predicted": [
+        0,
+        5
+      ]
+    },
+    {
+      "call": 17,
+      "inputs": [
+        0,
+        5,
+        5
+      ],
+      "expected": [
+        255,
+        4
+      ],
+      "predicted": [
+        255,
+        4
+      ]
+    },
+    {
+      "call": 18,
+      "inputs": [
+        255,
+        4,
+        5
+      ],
+      "expected": [
+        255,
+        3
+      ],
+      "predicted": [
+        255,
+        3
+      ]
+    },
+    {
+      "call": 19,
+      "inputs": [
+        255,
+        3,
+        5
+      ],
+      "expected": [
+        255,
+        2
+      ],
+      "predicted": [
+        255,
+        2
+      ]
+    },
+    {
+      "call": 20,
+      "inputs": [
+        255,
+        2,
+        5
+      ],
+      "expected": [
+        255,
+        1
+      ],
+      "predicted": [
+        255,
+        1
+      ]
+    },
+    {
+      "call": 17281,
+      "inputs": [
+        255,
+        1,
+        5
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "predicted": [
+        0,
+        0
+      ]
+    },
+    {
+      "call": 17293,
+      "inputs": [
+        0,
+        0,
+        5
+      ],
+      "expected": [
+        0,
+        1
+      ],
+      "predicted": [
+        0,
+        1
+      ]
+    },
+    {
+      "call": 17294,
+      "inputs": [
+        0,
+        1,
+        5
+      ],
+      "expected": [
+        0,
+        2
+      ],
+      "predicted": [
+        0,
+        2
+      ]
+    },
+    {
+      "call": 17295,
+      "inputs": [
+        0,
+        2,
+        5
+      ],
+      "expected": [
+        0,
+        3
+      ],
+      "predicted": [
+        0,
+        3
+      ]
+    },
+    {
+      "call": 17296,
+      "inputs": [
+        0,
+        3,
+        5
+      ],
+      "expected": [
+        0,
+        4
+      ],
+      "predicted": [
+        0,
+        4
+      ]
+    },
+    {
+      "call": 17297,
+      "inputs": [
+        0,
+        4,
+        5
+      ],
+      "expected": [
+        0,
+        5
+      ],
+      "predicted": [
+        0,
+        5
+      ]
+    },
+    {
+      "call": 17298,
+      "inputs": [
+        0,
+        5,
+        5
+      ],
+      "expected": [
+        255,
+        4
+      ],
+      "predicted": [
+        255,
+        4
+      ]
+    },
+    {
+      "call": 17299,
+      "inputs": [
+        255,
+        4,
+        5
+      ],
+      "expected": [
+        255,
+        3
+      ],
+      "predicted": [
+        255,
+        3
+      ]
+    },
+    {
+      "call": 17300,
+      "inputs": [
+        255,
+        3,
+        5
+      ],
+      "expected": [
+        255,
+        2
+      ],
+      "predicted": [
+        255,
+        2
+      ]
+    }
+  ],
+  "pitchChecks": [
+    {
+      "call": 13,
+      "base": 2273,
+      "delta": 16,
+      "extent": 5,
+      "position": 2,
+      "noteAge": 13,
+      "wait": 12,
+      "expected": 2273,
+      "predicted": 2273
+    },
+    {
+      "call": 17293,
+      "base": 2273,
+      "delta": 16,
+      "extent": 5,
+      "position": 1,
+      "noteAge": 13,
+      "wait": 12,
+      "expected": 2257,
+      "predicted": 2257
+    }
+  ],
+  "limits": "Independent isolated arithmetic only. Dynamic checks cover recorded bass-phase steps and two pitch arithmetic paths. Byte-edge and extent-zero behavior is statically derived; full delta/depth/wait selection, eligibility, glide, other instruments, full title and audio are not implemented or verified by this model."
+}
