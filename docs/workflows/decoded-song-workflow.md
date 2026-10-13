@@ -178,6 +178,24 @@ The compiler emits our score/Morse and SOUND assembly, compact symbolic graph re
 
 The default audit covers every declared `range.auditCalls` entry; `--calls` selects a CPU prefix but still validates numeric execution over the full declared range. Named-state checkpoints and every ordered SID write are compared independently. The binary preserves score returns and continuing sound lifetimes instead of adding a declared-range cutoff or automatic fade. Arbitrary edited graphs are guaranteed only within the verified range; a finite musical deliverable must reach its verified ending. Callable RAM bounds, supported numeric lookups, voice-specific grammar and directly decodable SID stores are checked before a successful build.
 
+### Ghouls variant graph player
+
+[compose-ghouls.py](../../scripts/compose-ghouls.py) accepts `ghouls-composition-v1` descriptions: [the complete primary](../../songs/ghouls.json), [familiar transfer](../../songs/ghouls-elise-transfer.json) or [matched plain reference](../../songs/ghouls-elise-reference.json). [The study](../research/composition/ghouls-preparation.md#compiled-export-and-complete-listening-package) owns the complete execution/audio evidence; [the instrument card](../research/composition/instruments/ghouls-decoded-programs.md) owns reuse, articulation and listening limits.
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/compose-ghouls.py songs/ghouls.json --output build/ghouls-compiled-new
+python3 scripts/listening-package.py config/listening/ghouls-full.json --output build/ghouls-independent-full
+python3 scripts/listening-package.py config/listening/ghouls-elise-transfer.json --output build/ghouls-elise-transfer
+```
+
+The target is one PAL MOS6581 at `$D400`, updated every 19,656 cycles. The graph has symbolic node IDs and explicit `stream` and/or `override` variants. Live duration override chooses the variant: explicit stream durations occupy a field, while override notes use the current override value. Each enabled voice advances continuing sound before score consumption; shared filter processing follows all voices. Loops, calls, command setters, notes and rests execute from live state, without a per-call event schedule. `sourceEvidence` annotations do not affect synthesis.
+
+Inputs retain three initial score voices, three named sound states, shared filter state, three filter restart phases, pulse fallback words and explicit numeric frequency lookup entries, including aliases. Missing initial score fields use the scheduler's dataclass defaults; the compiler lowers those normalized states. Missing accessed lookup entries, absent live grammar variants, nonterminating filter arithmetic or unsupported graph commands fail preflight. The [score module](../../scripts/ghouls_score.py) owns the supported command fields. Compiler bounds are eight saved return nodes per voice, 256 graph operations per call and at most 255 writes per SID-store-list command.
+
+Every build numerically checks the complete declared `range.auditCalls` in 1–65,535. By default the compiled CPU proof covers every call and all named-state boundaries; optional `--calls` selects only a CPU diagnostic prefix while retaining the full numeric preflight. The payload must fit below `$A000`. Exported SID writes use directly decodable absolute/indexed stores. Init restores the complete mutable image, then performs the descending original 58-store SID reset. Explicit score disable stops that voice's effects; shared filter calls continue. No automatic musical ending or fade is inferred from the declared audit range.
+
+Outputs are `reconstructed.sid`, standalone `reconstructed.prg`, generated assembly/listing, `verification.json`, `audit.json`, ordered `writes.json` and named checkpoints. The PRG uses BASIC `SYS 2061` and the shared fixed-PAL harness, then idles after its declared call count. A poisoned-state bootstrap check executes that actual image's init and first two calls with modeled VIC/CIA reads. The full recipe separately verifies callable SID execution in headless VICE. Neither check claims original-game timing, bus-cycle identity, real VICE autostart of the PRG, audio identity or musical acceptance.
+
 ### Other drivers
 
 [describe-drax-score.py](../../scripts/studies/drax/describe-drax-score.py) is a pinned, driver-specific transcriber, not a universal SID importer. It observes executed note consumption, instrument initialization and score gate-off, then verifies preparation and repeat behavior. Use `--check` to compare its output with the retained fixture. For another player, recover its corresponding readers and state transitions before adapting the decoder. [The Flashdance study](../research/composition/flashdance-preparation.md) demonstrates its own decoded mechanisms and independently authored dual-SID arrangement.

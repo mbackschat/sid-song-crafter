@@ -1,0 +1,290 @@
+{
+  "passed": true,
+  "sourceSha256": "265644a66d6043e6fe5ddeeb0d87e9b4269386a73c3e26457c8d96ce3d042df4",
+  "selectedSubtune": 1,
+  "sourceBytesUnchanged": true,
+  "callsByEdit": {
+    "duration": 224,
+    "note": 224,
+    "repeat": 944,
+    "gate-time": 224,
+    "rest": 224
+  },
+  "edits": 5,
+  "descriptionSha256": "a6c68dc3d1b8ca7155b76eff26674774f4d4ae825b54dc950e97e007d8a3faf9",
+  "verifierSha256": "55471d01b39d4f526c4383fe693ac5ae40e721f519c93c1c70e159a2b2d430d5",
+  "tools": {
+    "ghouls_score.py": "2743d284199b83b2f36f6885b487df4364e3bcdbf606309c81439a084a17b9ad",
+    "ghouls_programs.py": "5693148d091ab107ea601aa244ae1673b1ac148375e7f935448842357f5a0342",
+    "ghouls_player.py": "e7583f3bd96fda894284aa079051ec7eacc2a57b65b9c9a2d4439c0cd08661a7",
+    "psid_audit.py": "eeea11cdbb5159745f36802526ee2f2986d12fe19ce47b3609fedcf15f47e1bd",
+    "psid_profile.py": "c2c696db133ed024840cfa5edbc76e3a07ef1f30345cc1820c978a51a73c816d",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "completeOrderedStoreComparisons": [
+    {
+      "name": "duration",
+      "passed": true,
+      "calls": 224,
+      "nativeStores": 1380,
+      "modelStores": 1380,
+      "completeOrderedStoresMatch": true,
+      "differsFromPrimary": true,
+      "firstDifference": null,
+      "mutation": {
+        "node": "phrase_7352",
+        "mode": "stream",
+        "path": [
+          "duration"
+        ],
+        "before": 42,
+        "after": 43
+      },
+      "ramEdits": [
+        {
+          "address": 29523,
+          "expectedOriginal": 42,
+          "value": 43
+        }
+      ]
+    },
+    {
+      "name": "note",
+      "passed": true,
+      "calls": 224,
+      "nativeStores": 1382,
+      "modelStores": 1382,
+      "completeOrderedStoresMatch": true,
+      "differsFromPrimary": true,
+      "firstDifference": null,
+      "mutation": {
+        "node": "phrase_7352",
+        "mode": "stream",
+        "path": [
+          "rawNote"
+        ],
+        "before": 95,
+        "after": 94
+      },
+      "ramEdits": [
+        {
+          "address": 29522,
+          "expectedOriginal": 95,
+          "value": 94
+        }
+      ]
+    },
+    {
+      "name": "repeat",
+      "passed": true,
+      "calls": 944,
+      "nativeStores": 4601,
+      "modelStores": 4601,
+      "completeOrderedStoresMatch": true,
+      "differsFromPrimary": true,
+      "firstDifference": null,
+      "mutation": {
+        "node": "phrase_77b2",
+        "mode": "stream",
+        "path": [
+          "fields",
+          "count"
+        ],
+        "before": 3,
+        "after": 2
+      },
+      "ramEdits": [
+        {
+          "address": 30643,
+          "expectedOriginal": 3,
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "gate-time",
+      "passed": true,
+      "calls": 224,
+      "nativeStores": 1384,
+      "modelStores": 1384,
+      "completeOrderedStoresMatch": true,
+      "differsFromPrimary": true,
+      "firstDifference": null,
+      "mutation": {
+        "node": "phrase_733a",
+        "mode": "stream",
+        "path": [
+          "fields",
+          "gateTime"
+        ],
+        "before": 255,
+        "after": 2
+      },
+      "ramEdits": [
+        {
+          "address": 29499,
+          "expectedOriginal": 255,
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "rest",
+      "passed": true,
+      "calls": 224,
+      "nativeStores": 1379,
+      "modelStores": 1379,
+      "completeOrderedStoresMatch": true,
+      "differsFromPrimary": true,
+      "firstDifference": null,
+      "mutation": {
+        "node": "phrase_7352",
+        "mode": "stream",
+        "path": [
+          "kind",
+          "rawNote"
+        ],
+        "before": 95,
+        "after": 0
+      },
+      "ramEdits": [
+        {
+          "address": 29522,
+          "expectedOriginal": 95,
+          "value": 0
+        }
+      ]
+    }
+  ],
+  "outputHashes": {
+    "duration.native.writes.json.gz": {
+      "bytes": 6022,
+      "sha256": "041ca2a488ce7cf90716ca6f26d6bf2819cd36d914ce936b603e7584ae8592e3",
+      "decodedBytes": 114484,
+      "decodedSha256": "678444e25536148a365ed21f466c47684003457e024dc2db2877ef7b835f1942"
+    },
+    "duration.model.writes.json.gz": {
+      "bytes": 5032,
+      "sha256": "81b588160b73e53bdbe406f5eb54a7b50038e3a5c949be1dd51f083189bfa9f1",
+      "decodedBytes": 76020,
+      "decodedSha256": "375743135825ecdb49e14ec69938c239dc25c9ca8c992d98a2db62b5c5e04e6e"
+    },
+    "duration.native.score.json.gz": {
+      "bytes": 3167,
+      "sha256": "2be8cd0c70d715b07953bbdfdc199f75307827103e2b50360c32d02982fba2ae",
+      "decodedBytes": 58121,
+      "decodedSha256": "b0d4a985050d428a1abcc7bc465007d5ab331e858178cbd398c7dc4d27dfaa69"
+    },
+    "duration.native.audit.json": {
+      "bytes": 3510,
+      "sha256": "c751ac5663c635576426815fb856f5dc2b6ddb0b499d25c6854e00e5bbe98cdf",
+      "decodedBytes": 3510,
+      "decodedSha256": "c751ac5663c635576426815fb856f5dc2b6ddb0b499d25c6854e00e5bbe98cdf"
+    },
+    "note.native.writes.json.gz": {
+      "bytes": 6004,
+      "sha256": "3eaff01a159fde935af1b405f02d4c4ae4f955d2b7bd2c022fc54b948b72b918",
+      "decodedBytes": 114648,
+      "decodedSha256": "37340e0650eeac0d52b9f945de7042870023894fa729cc2b44fc3fd75e67ad40"
+    },
+    "note.model.writes.json.gz": {
+      "bytes": 5024,
+      "sha256": "ab2e103584892dc86e6bf6bb9404142b834822956f5971ffb8980d03364153f7",
+      "decodedBytes": 76130,
+      "decodedSha256": "cfb8d08c3570157b7b99add4db88d2672a01df06c1ab77b4657f2007b369768a"
+    },
+    "note.native.score.json.gz": {
+      "bytes": 3170,
+      "sha256": "ea300d32dcf43f9b99267c80950e189d2eb6a55a7596bcc10a8a5627e224e22a",
+      "decodedBytes": 58121,
+      "decodedSha256": "bc4b82244f1a4d40b2c04ce22679751835ecc81c3cf474609853910c93914956"
+    },
+    "note.native.audit.json": {
+      "bytes": 3509,
+      "sha256": "b13c878de644affd601a6b1fce1690fc0dd766bb81b4f80c108821a59df17f93",
+      "decodedBytes": 3509,
+      "decodedSha256": "b13c878de644affd601a6b1fce1690fc0dd766bb81b4f80c108821a59df17f93"
+    },
+    "repeat.native.writes.json.gz": {
+      "bytes": 17572,
+      "sha256": "33de5ee5ecdb6ca7e50ca5dc1fe9c94b5d65c021e455d95d199b36f8f1d2e01a",
+      "decodedBytes": 381503,
+      "decodedSha256": "4cc61c061c1eda32a86a64bd0384b142bf2a0cc1f30b1246c62908596fde2290"
+    },
+    "repeat.model.writes.json.gz": {
+      "bytes": 15389,
+      "sha256": "23480f2d2c2994ebe13cf7adfab88563e550ab3e95478a15338076f21d81e9f5",
+      "decodedBytes": 252919,
+      "decodedSha256": "3d689bb56c4e693b54657d0ce8c5374728682c0b3b5ed844131c227a87393682"
+    },
+    "repeat.native.score.json.gz": {
+      "bytes": 11684,
+      "sha256": "2321afb113636a2d13e73ebd6a334b14416db971ab4729862c2c4ce392a2345e",
+      "decodedBytes": 233974,
+      "decodedSha256": "44daed4a2d17bdf26c2197f9f05903ccb5ce49900bd03ca62a34931a35f1f2be"
+    },
+    "repeat.native.audit.json": {
+      "bytes": 3727,
+      "sha256": "9bd833806281d7c5d2e10b963f20cdf85ca8b46d029cb3580d12041f846eda7f",
+      "decodedBytes": 3727,
+      "decodedSha256": "9bd833806281d7c5d2e10b963f20cdf85ca8b46d029cb3580d12041f846eda7f"
+    },
+    "gate-time.native.writes.json.gz": {
+      "bytes": 6026,
+      "sha256": "e90a7a20b89afa8dda32f5b2c808d9313f43ac4b57f1daf2733c2e7fd1a18362",
+      "decodedBytes": 114813,
+      "decodedSha256": "0bda8858cc350c38af821abb03bfb04154cad94aba0af7e54aaa064ade653179"
+    },
+    "gate-time.model.writes.json.gz": {
+      "bytes": 5031,
+      "sha256": "f40cffc56d464ab92150608df2bbaf4ba2697919350724391aaa54115c94471e",
+      "decodedBytes": 76240,
+      "decodedSha256": "28c26fc01d4b1599b5a2958ddce3220424a24b38aa7f6bd019f8034aa4bbaa50"
+    },
+    "gate-time.native.score.json.gz": {
+      "bytes": 3184,
+      "sha256": "aaf54c7789f45394af94d22847c266c37bb9632f3712467f0cec27fa5afc0de2",
+      "decodedBytes": 58220,
+      "decodedSha256": "3b06f9cfe103acc64a6831982aa2045276904c80d4a9ff6b75cf3a75fa022301"
+    },
+    "gate-time.native.audit.json": {
+      "bytes": 3510,
+      "sha256": "ac3f5f63856be4e88af8a17788703fe0f5a3938d2c5665b6bee7ce7736be7c99",
+      "decodedBytes": 3510,
+      "decodedSha256": "ac3f5f63856be4e88af8a17788703fe0f5a3938d2c5665b6bee7ce7736be7c99"
+    },
+    "rest.native.writes.json.gz": {
+      "bytes": 5990,
+      "sha256": "06482faf4b45e972a83a8f6f558295c7e3e3a2a08e6ea788980a232ae26883d1",
+      "decodedBytes": 114402,
+      "decodedSha256": "6577b0ac2bbe8c31912a019bb4eb2a637147e5ca69e89ab11b96d23c8a18c88b"
+    },
+    "rest.model.writes.json.gz": {
+      "bytes": 5009,
+      "sha256": "58f50caf448a712a05a06b3d55758497c54558d699049408d52ed7f1b0b21392",
+      "decodedBytes": 75968,
+      "decodedSha256": "c3014bb982b5ec12e71fe8ca4a2b78afbb758469729ac0b6b70b139f38d81781"
+    },
+    "rest.native.score.json.gz": {
+      "bytes": 3168,
+      "sha256": "1a3540a1d10a1e81189c4a8314ee45361d33dcd040f71fb39b9b8ef637845360",
+      "decodedBytes": 58120,
+      "decodedSha256": "c57ecf001581bfc5e5389a5792f55a5e405f06c7432daf49bfdd050701a1871b"
+    },
+    "rest.native.audit.json": {
+      "bytes": 3510,
+      "sha256": "df2ccd79f3ef2edb8d14c8730529cb2a90ab10b6563f761e64f2c71aff436d3a",
+      "decodedBytes": 3510,
+      "decodedSha256": "df2ccd79f3ef2edb8d14c8730529cb2a90ab10b6563f761e64f2c71aff436d3a"
+    },
+    "edits.json": {
+      "bytes": 2540,
+      "sha256": "06d051fe4a921e954c68c60babcefe3aed4de1ed44b136008dd74033e2a53088",
+      "decodedBytes": 2540,
+      "decodedSha256": "06d051fe4a921e954c68c60babcefe3aed4de1ed44b136008dd74033e2a53088"
+    }
+  },
+  "scope": "Five symbolic/numeric description edits match complete initialized source CPU ordered SID stores over the retained per-case horizons. Private RAM interventions preserve the original SID bytes; the numeric player reads only editable data.",
+  "excluded": "CPU-cycle identity, compiled-player/VICE execution, SID internals, rendered audio and listening acceptance."
+}

@@ -34,9 +34,9 @@ def _three(values, maximum, name):
     return values
 
 
-def sound_declarations(voice_states=None, filter_state=None, frequency_words=None,
-                       filter_restart_phases=None, pulse_fallbacks=None):
-    """Emit state, immutable tables and scratch in separately declared regions.
+def sound_values(voice_states=None, filter_state=None, frequency_words=None,
+                 filter_restart_phases=None, pulse_fallbacks=None):
+    """Return numeric state, immutable tables and scratch by their ABI labels.
 
     Missing numeric frequency words encode as zero; the composition compiler
     must validate every accessed index before admitting the compiled player.
@@ -72,7 +72,16 @@ def sound_declarations(voice_states=None, filter_state=None, frequency_words=Non
     for half, label in enumerate(('gh_frequency_lo', 'gh_frequency_hi')):
         values[label] = [(word >> (8 * half)) & 255 for word in words]
     values['gh_sid_offsets'] = [0, 7, 14]
-    return ''.join(label + ':\n  .byte ' + ','.join(f'${value:02x}' for value in values.get(label, [0] * size)) + '\n'
+    for label, size in SOUND_STORAGE:
+        values.setdefault(label, [0] * size)
+    return values
+
+
+def sound_declarations(voice_states=None, filter_state=None, frequency_words=None,
+                       filter_restart_phases=None, pulse_fallbacks=None):
+    """Emit the numeric sound ABI in its declared storage order."""
+    values = sound_values(voice_states, filter_state, frequency_words, filter_restart_phases, pulse_fallbacks)
+    return ''.join(label + ':\n  .byte ' + ','.join(f'${value:02x}' for value in values[label]) + '\n'
                    for label, size in SOUND_STORAGE)
 
 

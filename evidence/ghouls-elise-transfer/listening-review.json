@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-13",
+  "status": "awaiting-listening",
+  "judgmentsRequested": [
+    "same 53-note familiar phrase: instruments, balance, phrasing and adapted final release"
+  ],
+  "order": "reference first, half-second gap, candidate second",
+  "referenceKind": "generated plain rendering of the preserved score",
+  "publication": {
+    "schemaVersion": 1,
+    "run": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghouls-elise-transfer/run.json",
+      "sha256": "4e325d726714d4b0a1373293269e1fe55a773493fe85410cb83be72a14e0794c",
+      "bytes": 38181
+    },
+    "selection": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/ghouls-elise-transfer.audition.json",
+      "sha256": "a2bc343d6b21480eb342a6247b8ae5a5afaf1bef751dfe550ce12bacec486a10",
+      "bytes": 131
+    },
+    "files": [
+      {
+        "label": "fullReference",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/ghouls-elise-transfer/cache/reference-render/97f594a4376beb5aa12ec8c738be7878fd73370d75d736c1634050e98b56eec5/attempt-ed63de4612644730ae621095a08545d0/render.wav",
+        "filename": "plain-reference.wav",
+        "sha256": "d4b0db39efae08b3a88f1442ff1b91efb31b02ed8298954f123652179b213d2d",
+        "bytes": 1261688,
+        "stageId": "reference-render"
+      },
+      {
+        "label": "fullCandidate",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/ghouls-elise-transfer/cache/candidate-render/8513f2aade00ef791879bffcd1835e36d4b85606350700ebef6517415980ae28/attempt-66ba2b8d0f654a3db036830d407a9763/render.wav",
+        "filename": "ghouls-transfer.wav",
+        "sha256": "772edcbf89c4d9fdf779619c75ec9c102da4c5d7913e681453f6726aa99c4e82",
+        "bytes": 1261688,
+        "stageId": "candidate-render"
+      },
+      {
+        "label": "comparison",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/ghouls-elise-transfer/cache/comparison/3cb5ad7b31f1d6a09b8a4302c22f68cd525c620ddd01697ca2a25180d3aab9f9/attempt-14bbd144dfef4c28a15b0f839bbcfa9e/plain-then-ghouls.ab.wav",
+        "filename": "plain-then-ghouls.ab.wav",
+        "sha256": "fc040075634bcead357c83e87423840bfef073e2bc3ff1892eebdc0a43c9d7d4",
+        "bytes": 2567432,
+        "stageId": "comparison"
+      }
+    ]
+  }
+}

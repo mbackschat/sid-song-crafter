@@ -1,0 +1,2403 @@
+{
+  "format": "ghouls-composition-v1",
+  "profile": {
+    "clock": "PAL",
+    "sidModel": "MOS6581",
+    "sidCount": 1,
+    "sidBase": 54272,
+    "frameCycles": 19656
+  },
+  "initialSound": [
+    {
+      "waveform": 16,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 0,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 0,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 0,
+      "target_note_index": 0,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    {
+      "waveform": 16,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 0,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 0,
+      "target_note_index": 0,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    {
+      "waveform": 16,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 0,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 0,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 0,
+      "target_note_index": 0,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    }
+  ],
+  "initialFilter": {
+    "word": 0,
+    "default": 0,
+    "step": 0,
+    "owner": 1,
+    "direction": 0,
+    "reset_direction": 0,
+    "lower": 0,
+    "upper": 0
+  },
+  "pulseFallbacks": [
+    0,
+    0,
+    0
+  ],
+  "filterRestartPhases": [
+    0,
+    0,
+    0
+  ],
+  "frequencyWords": {
+    "0": 268,
+    "1": 284,
+    "2": 301,
+    "3": 318,
+    "4": 337,
+    "5": 358,
+    "6": 379,
+    "7": 401,
+    "8": 425,
+    "9": 451,
+    "10": 477,
+    "11": 506,
+    "12": 536,
+    "13": 568,
+    "14": 602,
+    "15": 637,
+    "16": 675,
+    "17": 716,
+    "18": 758,
+    "19": 803,
+    "20": 851,
+    "21": 902,
+    "22": 955,
+    "23": 1012,
+    "24": 1072,
+    "25": 1136,
+    "26": 1204,
+    "27": 1275,
+    "28": 1351,
+    "29": 1432,
+    "30": 1517,
+    "31": 1607,
+    "32": 1703,
+    "33": 1804,
+    "34": 1911,
+    "35": 2025,
+    "36": 2145,
+    "37": 2273,
+    "38": 2408,
+    "39": 2551,
+    "40": 2703,
+    "41": 2864,
+    "42": 3034,
+    "43": 3215,
+    "44": 3406,
+    "45": 3608,
+    "46": 3823,
+    "47": 4050,
+    "48": 4291,
+    "49": 4547,
+    "50": 4817,
+    "51": 5103,
+    "52": 5407,
+    "53": 5728,
+    "54": 6069,
+    "55": 6430,
+    "56": 6812,
+    "57": 7217,
+    "58": 7647,
+    "59": 8101,
+    "60": 8583,
+    "61": 9094,
+    "62": 9634,
+    "63": 10207,
+    "64": 10814,
+    "65": 11457,
+    "66": 12139,
+    "67": 12860,
+    "68": 13625,
+    "69": 14435,
+    "70": 15294,
+    "71": 16203,
+    "72": 17167,
+    "73": 18188,
+    "74": 19269,
+    "75": 20415,
+    "76": 21629,
+    "77": 22915,
+    "78": 24278,
+    "79": 25721,
+    "80": 27251,
+    "81": 28871,
+    "82": 30588,
+    "83": 32407,
+    "84": 34334,
+    "85": 36376,
+    "86": 38539,
+    "87": 40830,
+    "88": 43258,
+    "89": 45830,
+    "90": 48556,
+    "91": 51443,
+    "92": 54502,
+    "93": 57743,
+    "94": 61176,
+    "95": 64814,
+    "96": 65535,
+    "97": 8961,
+    "99": 12545,
+    "102": 16385,
+    "108": 26369
+  },
+  "program": {
+    "nodes": {
+      "melody-setup-envelope": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54277,
+                  "value": 2
+                },
+                {
+                  "address": 54278,
+                  "value": 144
+                },
+                {
+                  "address": 54274,
+                  "value": 0
+                },
+                {
+                  "address": 54275,
+                  "value": 0
+                },
+                {
+                  "address": 54295,
+                  "value": 0
+                },
+                {
+                  "address": 54296,
+                  "value": 31
+                }
+              ]
+            },
+            "next": "melody-setup-waveform"
+          }
+        }
+      },
+      "melody-setup-waveform": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "waveform",
+            "fields": {
+              "waveform": 16
+            },
+            "next": "melody-note-0"
+          }
+        }
+      },
+      "melody-note-0": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 65,
+            "duration": 10,
+            "next": "melody-gateoff-0"
+          }
+        }
+      },
+      "melody-gateoff-0": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-1"
+          }
+        }
+      },
+      "melody-note-1": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 64,
+            "duration": 11,
+            "next": "melody-gateoff-1"
+          }
+        }
+      },
+      "melody-gateoff-1": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-2"
+          }
+        }
+      },
+      "melody-note-2": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 65,
+            "duration": 10,
+            "next": "melody-gateoff-2"
+          }
+        }
+      },
+      "melody-gateoff-2": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-3"
+          }
+        }
+      },
+      "melody-note-3": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 64,
+            "duration": 11,
+            "next": "melody-gateoff-3"
+          }
+        }
+      },
+      "melody-gateoff-3": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-4"
+          }
+        }
+      },
+      "melody-note-4": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 65,
+            "duration": 10,
+            "next": "melody-gateoff-4"
+          }
+        }
+      },
+      "melody-gateoff-4": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-5"
+          }
+        }
+      },
+      "melody-note-5": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 60,
+            "duration": 11,
+            "next": "melody-gateoff-5"
+          }
+        }
+      },
+      "melody-gateoff-5": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-6"
+          }
+        }
+      },
+      "melody-note-6": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 63,
+            "duration": 10,
+            "next": "melody-gateoff-6"
+          }
+        }
+      },
+      "melody-gateoff-6": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-7"
+          }
+        }
+      },
+      "melody-note-7": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 61,
+            "duration": 11,
+            "next": "melody-gateoff-7"
+          }
+        }
+      },
+      "melody-gateoff-7": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-8"
+          }
+        }
+      },
+      "melody-note-8": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 58,
+            "duration": 20,
+            "next": "melody-gateoff-8"
+          }
+        }
+      },
+      "melody-gateoff-8": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-rest-0"
+          }
+        }
+      },
+      "melody-rest-0": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 11,
+            "next": "melody-note-9"
+          }
+        }
+      },
+      "melody-note-9": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 49,
+            "duration": 10,
+            "next": "melody-gateoff-9"
+          }
+        }
+      },
+      "melody-gateoff-9": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-10"
+          }
+        }
+      },
+      "melody-note-10": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 53,
+            "duration": 11,
+            "next": "melody-gateoff-10"
+          }
+        }
+      },
+      "melody-gateoff-10": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-11"
+          }
+        }
+      },
+      "melody-note-11": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 58,
+            "duration": 10,
+            "next": "melody-gateoff-11"
+          }
+        }
+      },
+      "melody-gateoff-11": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-12"
+          }
+        }
+      },
+      "melody-note-12": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 60,
+            "duration": 21,
+            "next": "melody-gateoff-12"
+          }
+        }
+      },
+      "melody-gateoff-12": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-rest-1"
+          }
+        }
+      },
+      "melody-rest-1": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 11,
+            "next": "melody-note-13"
+          }
+        }
+      },
+      "melody-note-13": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 53,
+            "duration": 10,
+            "next": "melody-gateoff-13"
+          }
+        }
+      },
+      "melody-gateoff-13": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-14"
+          }
+        }
+      },
+      "melody-note-14": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 57,
+            "duration": 10,
+            "next": "melody-gateoff-14"
+          }
+        }
+      },
+      "melody-gateoff-14": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-15"
+          }
+        }
+      },
+      "melody-note-15": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 60,
+            "duration": 11,
+            "next": "melody-gateoff-15"
+          }
+        }
+      },
+      "melody-gateoff-15": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-16"
+          }
+        }
+      },
+      "melody-note-16": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 61,
+            "duration": 21,
+            "next": "melody-gateoff-16"
+          }
+        }
+      },
+      "melody-gateoff-16": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-rest-2"
+          }
+        }
+      },
+      "melody-rest-2": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 10,
+            "next": "melody-note-17"
+          }
+        }
+      },
+      "melody-note-17": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 53,
+            "duration": 11,
+            "next": "melody-gateoff-17"
+          }
+        }
+      },
+      "melody-gateoff-17": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-18"
+          }
+        }
+      },
+      "melody-note-18": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 65,
+            "duration": 10,
+            "next": "melody-gateoff-18"
+          }
+        }
+      },
+      "melody-gateoff-18": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-19"
+          }
+        }
+      },
+      "melody-note-19": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 64,
+            "duration": 11,
+            "next": "melody-gateoff-19"
+          }
+        }
+      },
+      "melody-gateoff-19": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-20"
+          }
+        }
+      },
+      "melody-note-20": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 65,
+            "duration": 10,
+            "next": "melody-gateoff-20"
+          }
+        }
+      },
+      "melody-gateoff-20": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-21"
+          }
+        }
+      },
+      "melody-note-21": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 64,
+            "duration": 10,
+            "next": "melody-gateoff-21"
+          }
+        }
+      },
+      "melody-gateoff-21": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-22"
+          }
+        }
+      },
+      "melody-note-22": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 65,
+            "duration": 11,
+            "next": "melody-gateoff-22"
+          }
+        }
+      },
+      "melody-gateoff-22": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-23"
+          }
+        }
+      },
+      "melody-note-23": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 60,
+            "duration": 10,
+            "next": "melody-gateoff-23"
+          }
+        }
+      },
+      "melody-gateoff-23": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-24"
+          }
+        }
+      },
+      "melody-note-24": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 63,
+            "duration": 11,
+            "next": "melody-gateoff-24"
+          }
+        }
+      },
+      "melody-gateoff-24": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-25"
+          }
+        }
+      },
+      "melody-note-25": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 61,
+            "duration": 10,
+            "next": "melody-gateoff-25"
+          }
+        }
+      },
+      "melody-gateoff-25": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-26"
+          }
+        }
+      },
+      "melody-note-26": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 58,
+            "duration": 21,
+            "next": "melody-gateoff-26"
+          }
+        }
+      },
+      "melody-gateoff-26": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-rest-3"
+          }
+        }
+      },
+      "melody-rest-3": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 10,
+            "next": "melody-note-27"
+          }
+        }
+      },
+      "melody-note-27": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 49,
+            "duration": 11,
+            "next": "melody-gateoff-27"
+          }
+        }
+      },
+      "melody-gateoff-27": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-28"
+          }
+        }
+      },
+      "melody-note-28": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 53,
+            "duration": 10,
+            "next": "melody-gateoff-28"
+          }
+        }
+      },
+      "melody-gateoff-28": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-29"
+          }
+        }
+      },
+      "melody-note-29": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 58,
+            "duration": 11,
+            "next": "melody-gateoff-29"
+          }
+        }
+      },
+      "melody-gateoff-29": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-30"
+          }
+        }
+      },
+      "melody-note-30": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 60,
+            "duration": 21,
+            "next": "melody-gateoff-30"
+          }
+        }
+      },
+      "melody-gateoff-30": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-rest-4"
+          }
+        }
+      },
+      "melody-rest-4": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 10,
+            "next": "melody-note-31"
+          }
+        }
+      },
+      "melody-note-31": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 53,
+            "duration": 11,
+            "next": "melody-gateoff-31"
+          }
+        }
+      },
+      "melody-gateoff-31": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-32"
+          }
+        }
+      },
+      "melody-note-32": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 61,
+            "duration": 10,
+            "next": "melody-gateoff-32"
+          }
+        }
+      },
+      "melody-gateoff-32": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-33"
+          }
+        }
+      },
+      "melody-note-33": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 60,
+            "duration": 10,
+            "next": "melody-gateoff-33"
+          }
+        }
+      },
+      "melody-gateoff-33": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-note-34"
+          }
+        }
+      },
+      "melody-note-34": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 58,
+            "duration": 42,
+            "next": "melody-final-release"
+          }
+        }
+      },
+      "melody-final-release": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54278,
+                  "value": 144
+                }
+              ]
+            },
+            "next": "melody-gateoff-34"
+          }
+        }
+      },
+      "melody-gateoff-34": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-end-gate"
+          }
+        }
+      },
+      "melody-end-gate": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54276,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "melody-disable"
+          }
+        }
+      },
+      "melody-disable": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "disable-voice",
+            "fields": {}
+          }
+        }
+      },
+      "bass-rest-0": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 84,
+            "next": "bass-setup-envelope"
+          }
+        }
+      },
+      "bass-setup-envelope": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54284,
+                  "value": 3
+                },
+                {
+                  "address": 54285,
+                  "value": 96
+                },
+                {
+                  "address": 54281,
+                  "value": 0
+                },
+                {
+                  "address": 54282,
+                  "value": 3
+                }
+              ]
+            },
+            "next": "bass-setup-waveform"
+          }
+        }
+      },
+      "bass-setup-waveform": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "waveform",
+            "fields": {
+              "waveform": 16
+            },
+            "next": "bass-note-0"
+          }
+        }
+      },
+      "bass-note-0": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 34,
+            "duration": 10,
+            "next": "bass-gateoff-0"
+          }
+        }
+      },
+      "bass-gateoff-0": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54283,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "bass-rest-1"
+          }
+        }
+      },
+      "bass-rest-1": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 52,
+            "next": "bass-note-1"
+          }
+        }
+      },
+      "bass-note-1": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 29,
+            "duration": 11,
+            "next": "bass-gateoff-1"
+          }
+        }
+      },
+      "bass-gateoff-1": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54283,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "bass-rest-2"
+          }
+        }
+      },
+      "bass-rest-2": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 52,
+            "next": "bass-note-2"
+          }
+        }
+      },
+      "bass-note-2": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 34,
+            "duration": 10,
+            "next": "bass-gateoff-2"
+          }
+        }
+      },
+      "bass-gateoff-2": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54283,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "bass-rest-3"
+          }
+        }
+      },
+      "bass-rest-3": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 115,
+            "next": "bass-note-3"
+          }
+        }
+      },
+      "bass-note-3": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 34,
+            "duration": 11,
+            "next": "bass-gateoff-3"
+          }
+        }
+      },
+      "bass-gateoff-3": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54283,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "bass-rest-4"
+          }
+        }
+      },
+      "bass-rest-4": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 52,
+            "next": "bass-note-4"
+          }
+        }
+      },
+      "bass-note-4": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 29,
+            "duration": 10,
+            "next": "bass-gateoff-4"
+          }
+        }
+      },
+      "bass-gateoff-4": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54283,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "bass-rest-5"
+          }
+        }
+      },
+      "bass-rest-5": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 52,
+            "next": "bass-note-5"
+          }
+        }
+      },
+      "bass-note-5": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 34,
+            "duration": 11,
+            "next": "bass-final-release"
+          }
+        }
+      },
+      "bass-final-release": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54285,
+                  "value": 96
+                }
+              ]
+            },
+            "next": "bass-gateoff-5"
+          }
+        }
+      },
+      "bass-gateoff-5": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54283,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "bass-rest-6"
+          }
+        }
+      },
+      "bass-rest-6": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 31,
+            "next": "bass-end-gate"
+          }
+        }
+      },
+      "bass-end-gate": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54283,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "bass-disable"
+          }
+        }
+      },
+      "bass-disable": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "disable-voice",
+            "fields": {}
+          }
+        }
+      },
+      "harmony-rest-0": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 94,
+            "next": "harmony-setup-envelope"
+          }
+        }
+      },
+      "harmony-setup-envelope": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54291,
+                  "value": 3
+                },
+                {
+                  "address": 54292,
+                  "value": 96
+                },
+                {
+                  "address": 54288,
+                  "value": 0
+                },
+                {
+                  "address": 54289,
+                  "value": 0
+                }
+              ]
+            },
+            "next": "harmony-setup-waveform"
+          }
+        }
+      },
+      "harmony-setup-waveform": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "waveform",
+            "fields": {
+              "waveform": 16
+            },
+            "next": "harmony-note-0"
+          }
+        }
+      },
+      "harmony-note-0": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 41,
+            "duration": 10,
+            "next": "harmony-gateoff-0"
+          }
+        }
+      },
+      "harmony-gateoff-0": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54290,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "harmony-note-1"
+          }
+        }
+      },
+      "harmony-note-1": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 46,
+            "duration": 11,
+            "next": "harmony-gateoff-1"
+          }
+        }
+      },
+      "harmony-gateoff-1": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54290,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "harmony-rest-1"
+          }
+        }
+      },
+      "harmony-rest-1": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 42,
+            "next": "harmony-note-2"
+          }
+        }
+      },
+      "harmony-note-2": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 41,
+            "duration": 10,
+            "next": "harmony-gateoff-2"
+          }
+        }
+      },
+      "harmony-gateoff-2": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54290,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "harmony-note-3"
+          }
+        }
+      },
+      "harmony-note-3": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 45,
+            "duration": 11,
+            "next": "harmony-gateoff-3"
+          }
+        }
+      },
+      "harmony-gateoff-3": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54290,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "harmony-rest-2"
+          }
+        }
+      },
+      "harmony-rest-2": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 41,
+            "next": "harmony-note-4"
+          }
+        }
+      },
+      "harmony-note-4": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 41,
+            "duration": 11,
+            "next": "harmony-gateoff-4"
+          }
+        }
+      },
+      "harmony-gateoff-4": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54290,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "harmony-note-5"
+          }
+        }
+      },
+      "harmony-note-5": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 46,
+            "duration": 10,
+            "next": "harmony-gateoff-5"
+          }
+        }
+      },
+      "harmony-gateoff-5": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54290,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "harmony-rest-3"
+          }
+        }
+      },
+      "harmony-rest-3": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 105,
+            "next": "harmony-note-6"
+          }
+        }
+      },
+      "harmony-note-6": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 41,
+            "duration": 10,
+            "next": "harmony-gateoff-6"
+          }
+        }
+      },
+      "harmony-gateoff-6": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54290,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "harmony-note-7"
+          }
+        }
+      },
+      "harmony-note-7": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 46,
+            "duration": 10,
+            "next": "harmony-gateoff-7"
+          }
+        }
+      },
+      "harmony-gateoff-7": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54290,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "harmony-rest-4"
+          }
+        }
+      },
+      "harmony-rest-4": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 42,
+            "next": "harmony-note-8"
+          }
+        }
+      },
+      "harmony-note-8": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 41,
+            "duration": 11,
+            "next": "harmony-gateoff-8"
+          }
+        }
+      },
+      "harmony-gateoff-8": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54290,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "harmony-note-9"
+          }
+        }
+      },
+      "harmony-note-9": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 45,
+            "duration": 10,
+            "next": "harmony-gateoff-9"
+          }
+        }
+      },
+      "harmony-gateoff-9": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54290,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "harmony-rest-5"
+          }
+        }
+      },
+      "harmony-rest-5": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 42,
+            "next": "harmony-note-10"
+          }
+        }
+      },
+      "harmony-note-10": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 41,
+            "duration": 10,
+            "next": "harmony-gateoff-10"
+          }
+        }
+      },
+      "harmony-gateoff-10": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54290,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "harmony-note-11"
+          }
+        }
+      },
+      "harmony-note-11": {
+        "variants": {
+          "stream": {
+            "kind": "note",
+            "rawNote": 46,
+            "duration": 11,
+            "next": "harmony-final-release"
+          }
+        }
+      },
+      "harmony-final-release": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54292,
+                  "value": 96
+                }
+              ]
+            },
+            "next": "harmony-gateoff-11"
+          }
+        }
+      },
+      "harmony-gateoff-11": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54290,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "harmony-rest-6"
+          }
+        }
+      },
+      "harmony-rest-6": {
+        "variants": {
+          "stream": {
+            "kind": "rest",
+            "duration": 10,
+            "next": "harmony-end-gate"
+          }
+        }
+      },
+      "harmony-end-gate": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "sid-store-list",
+            "fields": {
+              "stores": [
+                {
+                  "address": 54290,
+                  "value": 16
+                }
+              ]
+            },
+            "next": "harmony-disable"
+          }
+        }
+      },
+      "harmony-disable": {
+        "variants": {
+          "stream": {
+            "kind": "command",
+            "command": "disable-voice",
+            "fields": {}
+          }
+        }
+      }
+    }
+  },
+  "voices": [
+    {
+      "cursor": "melody-setup-envelope",
+      "duration_remaining": 1,
+      "repeat_remaining": 0,
+      "repeat_cursor": null,
+      "stack": [],
+      "enabled": 255,
+      "duration_override": 0
+    },
+    {
+      "cursor": "bass-rest-0",
+      "duration_remaining": 1,
+      "repeat_remaining": 0,
+      "repeat_cursor": null,
+      "stack": [],
+      "enabled": 255,
+      "duration_override": 0
+    },
+    {
+      "cursor": "harmony-rest-0",
+      "duration_remaining": 1,
+      "repeat_remaining": 0,
+      "repeat_cursor": null,
+      "stack": [],
+      "enabled": 255,
+      "duration_override": 0
+    }
+  ],
+  "range": {
+    "auditCalls": 717
+  },
+  "sourceEvidence": {
+    "source": "songs/fuer-elise.json",
+    "sourceSha256": "a58bdad5e72a10c12b20913cf242e917b98bb010949ba3ea38f33cfe15b6368e",
+    "sourceEdition": "Breitkopf & Härtel, 1888, as identified by Mutopia-2015/08/18-931",
+    "programs": "songs/ghouls.json",
+    "programsSha256": "b8d74f9bf6fa81a34c5064bb7f687c8ad0ec3eb9f54113f214d8955f6a02cf56",
+    "excerptBeats": [
+      0,
+      12
+    ],
+    "roleOrder": [
+      "melody",
+      "bass",
+      "harmony"
+    ],
+    "patchSources": [
+      {
+        "role": "melody",
+        "physicalVoice": 3,
+        "noteCall": 1413,
+        "captured": {
+          "state": {
+            "waveform": 64,
+            "gate_enabled": 1,
+            "rest_reload": 255,
+            "rest_remaining": 241,
+            "pulse_word": 0,
+            "pulse_default": 0,
+            "pulse_step": 100,
+            "transpose": 0,
+            "onset_delay": 0,
+            "onset_control": 0,
+            "onset_frequency": 0,
+            "frequency_delay_reload": 0,
+            "note_positive_duration": 0,
+            "note_negative_duration": 0,
+            "note_remaining": 1,
+            "glide_rate": 0,
+            "note_index": 92,
+            "target_note_index": 0,
+            "current_frequency": 54502,
+            "frequency_delay_remaining": 0,
+            "frequency_direction_default": 0,
+            "frequency_half_remaining": 0,
+            "frequency_half_reload": 0,
+            "frequency_step": 0,
+            "onset_remaining": 0,
+            "gate_time": 1,
+            "note_step": 0,
+            "frequency_direction": 0,
+            "note_direction": 255,
+            "pulse_direction": 255,
+            "pulse_restart": 255,
+            "pitch_index_mode": 0
+          },
+          "filter": {
+            "word": 0,
+            "default": 0,
+            "step": 0,
+            "owner": 1,
+            "direction": 0,
+            "reset_direction": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "pulseFallback": 0,
+          "filterRestartPhase": 0,
+          "ad": 12,
+          "sr": 15,
+          "filterRouting": 0,
+          "filterMode": 31
+        },
+        "clearedTransientFields": [
+          "current_frequency",
+          "note_index",
+          "target_note_index",
+          "onset_remaining",
+          "note_remaining",
+          "note_direction",
+          "frequency_delay_remaining",
+          "frequency_half_remaining"
+        ],
+        "articulation": {
+          "gateTime": 255,
+          "restReload": 255,
+          "noteEnd": "Explicit gate-off at the absolute source boundary"
+        },
+        "finalRelease": {
+          "capturedNativeSR": 15,
+          "initialSR": 144,
+          "finalSR": 144,
+          "call": 501
+        },
+        "pulseAdmission": "Initial sentinel 1 defers motion until the first waveform setter restores the native phase"
+      },
+      {
+        "role": "bass",
+        "physicalVoice": 2,
+        "noteCall": 1413,
+        "captured": {
+          "state": {
+            "waveform": 16,
+            "gate_enabled": 1,
+            "rest_reload": 255,
+            "rest_remaining": 251,
+            "pulse_word": 768,
+            "pulse_default": 0,
+            "pulse_step": 0,
+            "transpose": 0,
+            "onset_delay": 1,
+            "onset_control": 128,
+            "onset_frequency": 10240,
+            "frequency_delay_reload": 0,
+            "note_positive_duration": 0,
+            "note_negative_duration": 0,
+            "note_remaining": 0,
+            "glide_rate": 0,
+            "note_index": 48,
+            "target_note_index": 0,
+            "current_frequency": 4291,
+            "frequency_delay_remaining": 0,
+            "frequency_direction_default": 0,
+            "frequency_half_remaining": 0,
+            "frequency_half_reload": 0,
+            "frequency_step": 0,
+            "onset_remaining": 0,
+            "gate_time": 1,
+            "note_step": 0,
+            "frequency_direction": 0,
+            "note_direction": 0,
+            "pulse_direction": 1,
+            "pulse_restart": 1,
+            "pitch_index_mode": 0
+          },
+          "filter": {
+            "word": 0,
+            "default": 0,
+            "step": 0,
+            "owner": 1,
+            "direction": 0,
+            "reset_direction": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "pulseFallback": 0,
+          "filterRestartPhase": 0,
+          "ad": 5,
+          "sr": 15,
+          "filterRouting": 0,
+          "filterMode": 31
+        },
+        "clearedTransientFields": [
+          "current_frequency",
+          "note_index",
+          "target_note_index",
+          "onset_remaining",
+          "note_remaining",
+          "note_direction",
+          "frequency_delay_remaining",
+          "frequency_half_remaining"
+        ],
+        "articulation": {
+          "gateTime": 255,
+          "restReload": 255,
+          "noteEnd": "Explicit gate-off at the absolute source boundary"
+        },
+        "finalRelease": {
+          "capturedNativeSR": 15,
+          "initialSR": 96,
+          "finalSR": 96,
+          "call": 470
+        },
+        "pulseAdmission": "Initial sentinel 1 defers motion until the first waveform setter restores the native phase"
+      },
+      {
+        "role": "harmony",
+        "physicalVoice": 3,
+        "noteCall": 1413,
+        "captured": {
+          "state": {
+            "waveform": 64,
+            "gate_enabled": 1,
+            "rest_reload": 255,
+            "rest_remaining": 241,
+            "pulse_word": 0,
+            "pulse_default": 0,
+            "pulse_step": 100,
+            "transpose": 0,
+            "onset_delay": 0,
+            "onset_control": 0,
+            "onset_frequency": 0,
+            "frequency_delay_reload": 0,
+            "note_positive_duration": 0,
+            "note_negative_duration": 0,
+            "note_remaining": 1,
+            "glide_rate": 0,
+            "note_index": 92,
+            "target_note_index": 0,
+            "current_frequency": 54502,
+            "frequency_delay_remaining": 0,
+            "frequency_direction_default": 0,
+            "frequency_half_remaining": 0,
+            "frequency_half_reload": 0,
+            "frequency_step": 0,
+            "onset_remaining": 0,
+            "gate_time": 1,
+            "note_step": 0,
+            "frequency_direction": 0,
+            "note_direction": 255,
+            "pulse_direction": 255,
+            "pulse_restart": 255,
+            "pitch_index_mode": 0
+          },
+          "filter": {
+            "word": 0,
+            "default": 0,
+            "step": 0,
+            "owner": 1,
+            "direction": 0,
+            "reset_direction": 0,
+            "lower": 0,
+            "upper": 0
+          },
+          "pulseFallback": 0,
+          "filterRestartPhase": 0,
+          "ad": 12,
+          "sr": 15,
+          "filterRouting": 0,
+          "filterMode": 31
+        },
+        "clearedTransientFields": [
+          "current_frequency",
+          "note_index",
+          "target_note_index",
+          "onset_remaining",
+          "note_remaining",
+          "note_direction",
+          "frequency_delay_remaining",
+          "frequency_half_remaining"
+        ],
+        "articulation": {
+          "gateTime": 255,
+          "restReload": 255,
+          "noteEnd": "Explicit gate-off at the absolute source boundary"
+        },
+        "finalRelease": {
+          "capturedNativeSR": 15,
+          "initialSR": 96,
+          "finalSR": 96,
+          "call": 491
+        },
+        "pulseAdmission": "Initial sentinel 1 defers motion until the first waveform setter restores the native phase"
+      }
+    ],
+    "changes": [
+      "Retain all transfer notes, source gaps, pitch words, absolute boundaries, gate-off schedule and stream disable.",
+      "Use the source triangle waveform and envelopes; disable staged onset and PWM for the plain reference.",
+      "Keep the matching final-release node at each last note end, retaining the plain source release nibble 0.",
+      "Setup envelope/waveform values and gate-off waveform bits differ; the musical score and release calendar are identical."
+    ],
+    "listeningStatus": "Generated plain score reference with source triangle/envelopes; not an original recording.",
+    "release": {
+      "provisionalSeconds": 3,
+      "releaseCalls": 151,
+      "confirmationCalls": 64,
+      "limitation": "The rendered tail must confirm acoustic release; numeric disabled score and gates do not prove silence."
+    }
+  }
+}

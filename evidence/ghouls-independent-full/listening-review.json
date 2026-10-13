@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-13",
+  "status": "awaiting-listening",
+  "judgmentsRequested": [
+    "phrase sound and phrasing",
+    "complete sparse ending and natural decay"
+  ],
+  "order": "reference first, half-second gap, candidate second",
+  "referenceKind": "original SID render",
+  "publication": {
+    "schemaVersion": 1,
+    "run": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghouls-independent-full/run.json",
+      "sha256": "6e3c96059afbaf90e2b4cd0103fd34eb57ea8eb3cb90f31ca29bdc6865801f13",
+      "bytes": 34531
+    },
+    "selection": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/ghouls-full.audition.json",
+      "sha256": "271fba960e6a0aa125f59346416d5fd273e3eb19951154bc59d548e833f53a72",
+      "bytes": 228
+    },
+    "files": [
+      {
+        "label": "fullReference",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/ghouls-independent-full/cache/reference-render/71877cc8ad31aac32c3f9bd1835319d5cd900b5cb643a5f831a7be726fefad71/attempt-3af3656e4ecb4ad69824ee27244200cc/render.wav",
+        "filename": "reference.wav",
+        "sha256": "133f7df0e50b44f78aa48888ebc470f5ade1c956b3355e5b120edb8d85c119d7",
+        "bytes": 23373044,
+        "stageId": "reference-render"
+      },
+      {
+        "label": "fullCandidate",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/ghouls-independent-full/cache/candidate-render/0f175087a53bc08aff6d34fa3a3c2a14acda5711ea0028c65ec9435ff23fed56/attempt-3f437f519ebb4c5db199f5156465ff02/render.wav",
+        "filename": "reconstructed.wav",
+        "sha256": "fda1d49193275709fef393cae9cf62806ed805231b6826fcf3698f46954121fa",
+        "bytes": 23373044,
+        "stageId": "candidate-render"
+      },
+      {
+        "label": "opening",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/ghouls-independent-full/cache/opening/d91fcbb6ee81e9ee23f53e850d945c5069fa3de5d49d0d8a452f195242a48ba0/attempt-13d0796c00794156bc742f509ec951e7/opening-reference-then-ours.ab.wav",
+        "filename": "opening-reference-then-ours.ab.wav",
+        "sha256": "d002b98e8065fff3d64cd6dde8b43be081b63331897214609e39055085d57482",
+        "bytes": 2866544,
+        "stageId": "opening"
+      },
+      {
+        "label": "phrase",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/ghouls-independent-full/cache/phrase/4c1f0005de37a286e8091952f55f47c03aaef03e81c54158ecd4aca7724b5fa0/attempt-a042ae7f1e634b8483243b36a120bb7f/phrase-reference-then-ours.ab.wav",
+        "filename": "phrase-reference-then-ours.ab.wav",
+        "sha256": "52fdc9855c7a73184eb913bf051cc80964fd76e6082965d229199ca720902382",
+        "bytes": 2866544,
+        "stageId": "phrase"
+      },
+      {
+        "label": "ending",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/ghouls-independent-full/cache/ending/de450bd6a11e819e16552598ee482fa9e0796cff809f991dd06a09f708b5ed50/attempt-bb6ddfe18cc646fd9baefef2712d5088/ending-reference-then-ours.ab.wav",
+        "filename": "ending-reference-then-ours.ab.wav",
+        "sha256": "20f6da30849fd115c5123e59846bc0bfc7dec5abda27ee682c4505c91719ae4e",
+        "bytes": 7100144,
+        "stageId": "ending"
+      }
+    ]
+  }
+}

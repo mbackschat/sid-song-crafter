@@ -4,7 +4,7 @@ Choose tools by their supported contract. A song or composer name does not itsel
 
 ## Supported workflows and shared infrastructure
 
-- [Listening packages](../docs/workflows/listening-package.md): recipe execution, verified stage reuse, timings, signal checks and audio links.
+- [Listening packages](../docs/workflows/listening-package.md): recipe execution, verified stage reuse, timings, signal checks and audio links; [publish-listening.py](publish-listening.py) copies explicitly selected verified WAVs into a fresh local audition folder.
 - [Reference intake](../docs/workflows/reference-intake.md): explicit source/subtune selection, execution admission, bounded traces/renders and source comparisons through the same recipe runner.
 - [Song workflow](../docs/workflows/song-workflow.md) and [native SID-Wizard workflow](../docs/workflows/native-song-workflow.md): editable arrangement, export and verification.
 - [Audio comparisons](../docs/workflows/audio-comparisons.md): PCM inspection and original-preserving A/B windows.
@@ -23,7 +23,7 @@ These remain in the shared scripts directory because supported workflows and tes
 | Cybernoid | [compose-cybernoid.py](compose-cybernoid.py), `cybernoid_*` runtime modules, [accepted familiar transfer](../docs/research/composition/instruments/cybernoid-decoded-programs.md) |
 | Monty | [compose-monty.py](compose-monty.py), `monty_title_*` runtime modules, [accepted familiar transfer](../docs/research/composition/instruments/monty-decoded-programs.md) |
 | Rambo | [compose-rambo.py](compose-rambo.py), [rambo_player.py](rambo_player.py), symbolic score/Morse and computed sound programs; [full compiled delivery](../docs/research/composition/rambo-preparation.md#independent-compiled-loader-and-musical-delivery), [accepted familiar transfer](../docs/research/composition/instruments/rambo-decoded-programs.md) |
-| Ghouls | [ghouls_player.py](ghouls_player.py), [ghouls_score.py](ghouls_score.py), [ghouls_programs.py](ghouls_programs.py); [complete numeric verification](../docs/research/composition/ghouls-preparation.md#independently-advancing-editable-player), compiled export and musical transfer pending |
+| Ghouls | [compose-ghouls.py](compose-ghouls.py), numeric score/sound modules and independent assembly; [complete execution and render verification](../docs/research/composition/ghouls-preparation.md#compiled-export-and-complete-listening-package), [familiar transfer](../docs/research/composition/instruments/ghouls-decoded-programs.md), listening pending |
 | Deflektor | [deflektor_player.py](deflektor_player.py), numeric score/program modules; [preparation evidence](../docs/research/composition/deflektor-preparation.md), not yet a completed compiled/listening-reviewed backend |
 
 ## Source-specific work

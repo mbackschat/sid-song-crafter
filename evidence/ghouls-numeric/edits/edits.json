@@ -1,0 +1,135 @@
+[
+  {
+    "name": "duration",
+    "passed": true,
+    "calls": 224,
+    "nativeStores": 1380,
+    "modelStores": 1380,
+    "completeOrderedStoresMatch": true,
+    "differsFromPrimary": true,
+    "firstDifference": null,
+    "mutation": {
+      "node": "phrase_7352",
+      "mode": "stream",
+      "path": [
+        "duration"
+      ],
+      "before": 42,
+      "after": 43
+    },
+    "ramEdits": [
+      {
+        "address": 29523,
+        "expectedOriginal": 42,
+        "value": 43
+      }
+    ]
+  },
+  {
+    "name": "note",
+    "passed": true,
+    "calls": 224,
+    "nativeStores": 1382,
+    "modelStores": 1382,
+    "completeOrderedStoresMatch": true,
+    "differsFromPrimary": true,
+    "firstDifference": null,
+    "mutation": {
+      "node": "phrase_7352",
+      "mode": "stream",
+      "path": [
+        "rawNote"
+      ],
+      "before": 95,
+      "after": 94
+    },
+    "ramEdits": [
+      {
+        "address": 29522,
+        "expectedOriginal": 95,
+        "value": 94
+      }
+    ]
+  },
+  {
+    "name": "repeat",
+    "passed": true,
+    "calls": 944,
+    "nativeStores": 4601,
+    "modelStores": 4601,
+    "completeOrderedStoresMatch": true,
+    "differsFromPrimary": true,
+    "firstDifference": null,
+    "mutation": {
+      "node": "phrase_77b2",
+      "mode": "stream",
+      "path": [
+        "fields",
+        "count"
+      ],
+      "before": 3,
+      "after": 2
+    },
+    "ramEdits": [
+      {
+        "address": 30643,
+        "expectedOriginal": 3,
+        "value": 2
+      }
+    ]
+  },
+  {
+    "name": "gate-time",
+    "passed": true,
+    "calls": 224,
+    "nativeStores": 1384,
+    "modelStores": 1384,
+    "completeOrderedStoresMatch": true,
+    "differsFromPrimary": true,
+    "firstDifference": null,
+    "mutation": {
+      "node": "phrase_733a",
+      "mode": "stream",
+      "path": [
+        "fields",
+        "gateTime"
+      ],
+      "before": 255,
+      "after": 2
+    },
+    "ramEdits": [
+      {
+        "address": 29499,
+        "expectedOriginal": 255,
+        "value": 2
+      }
+    ]
+  },
+  {
+    "name": "rest",
+    "passed": true,
+    "calls": 224,
+    "nativeStores": 1379,
+    "modelStores": 1379,
+    "completeOrderedStoresMatch": true,
+    "differsFromPrimary": true,
+    "firstDifference": null,
+    "mutation": {
+      "node": "phrase_7352",
+      "mode": "stream",
+      "path": [
+        "kind",
+        "rawNote"
+      ],
+      "before": 95,
+      "after": 0
+    },
+    "ramEdits": [
+      {
+        "address": 29522,
+        "expectedOriginal": 95,
+        "value": 0
+      }
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 # Ghouls 'n' Ghosts: reference intake
 
-This preparation pins the C64 reference, preserves supported subtune attribution and establishes finite stream consumption for provisional selection **1**, followed by continued filter refresh. CPU execution covers 40,000 calls, with independent VICE comparisons at the opening and final stream stop. A 265-second initialized source render and contrasting Gauntlet III subtune intake are available. Selection 1's musical role, a complete independent player and reconstruction listening remain unresolved. Read the [Follin composer study](../composers/follin-daglish.md), [technique lookup](../technique-index.md) and [execution procedure](../tools/sid-program-analysis.md) before choosing a passage or implementing an instrument.
+This preparation pins the C64 reference, preserves supported subtune attribution and establishes finite stream consumption for provisional selection **1**, followed by continued filter refresh. CPU execution covers 40,000 calls, with independent VICE comparisons at the opening and final stream stop. A 265-second initialized source render and contrasting Gauntlet III subtune intake are available. The complete editable numeric player, compiled export and full callable VICE comparison match the original ordered stores. Reconstruction and familiar-transfer listening, selection 1's musical role and Gauntlet III corroboration remain open. Read the [Follin composer study](../composers/follin-daglish.md), [technique lookup](../technique-index.md) and [execution procedure](../tools/sid-program-analysis.md) before choosing a passage or implementing an instrument.
 
 ## Reference identity
 
@@ -158,6 +158,38 @@ python3 -m unittest discover -s tests -p ghouls_player_test.py -v
 ```
 
 Extraction requires the pinned private SID and a fresh output path. Numeric verification requires only the editable description and canonical original ledger; it does not recapture or execute the original. The extractor stays under [study tools](../../../scripts/studies/README.md), while the source-free runtime serves editable compositions. Full export, listening and a familiar-material transfer must still establish the useful musical scope of this implementation family.
+
+## Compiled export and complete listening package
+
+[compose-ghouls.py](../../../scripts/compose-ghouls.py) compiles the editable graph into our [score scheduler](../../../songs/players/ghouls.asm) and [sound routines](../../../songs/players/ghouls-sound.asm). The original SID, driver instructions and captured register schedule are not build inputs. The [public compiler contract](../../workflows/decoded-song-workflow.md#ghouls-variant-graph-player) specifies live grammar variants, bounded score stacks, state restoration and the declared verification range.
+
+| Evidence | Verified scope |
+| --- | --- |
+| [Complete compiled CPU proof](../../../evidence/ghouls-independent-full/compiled/verification.json) | All 13,060 calls, 86,442 ordered stores and 13,061 named-state boundaries agree with the independent numeric player. Peak play cost is 7,668 cycles against the 19,656-cycle PAL budget. |
+| Reinitialization | The final mutated player restores cold state and reproduces all 58 initialization stores and 26 first-call stores. |
+| Standalone PRG bootstrap | The actual `SYS 2061` entry restores poisoned mutable state, then runs its first two calls with six cycles of raster jitter under modeled VIC/CIA reads and bank `$37`. This is separate from a VICE autostart. |
+| [Complete callable VICE proof](../../../evidence/ghouls-independent-full/vice/study.json) | All 86,442 stores and 13,060 calls agree under the PAL-banked host, with six-cycle maximum cadence error against a nine-cycle tolerance. |
+| [Initialized full renders](../../../evidence/ghouls-independent-full/audio.json) | Both WAVs contain all 11,686,500 requested samples at 44.1 kHz mono PCM16, with no clipping and a zero-AC final second. They are not PCM-identical; no musical verdict is inferred. |
+
+The primary payload is 12,691 bytes at `$1000–$4192`, with 930 graph variants and 210 cold-state bytes. The PSID remains callable after its finite score ends, retaining zero shared-filter writes. The standalone PRG runs its declared 13,060 calls and then idles; it does not reset or fade the SID at that boundary.
+
+```sh
+python3 scripts/listening-package.py config/listening/ghouls-full.json --output build/ghouls-independent-full
+```
+
+The [recipe](../../../config/listening/ghouls-full.json) pins the original, builds and audits the complete independent export, checks the original ledger, runs VICE, renders both versions for 265 seconds and creates original-first opening `[0,16)`, middle `[120,136)` and ending `[225,265)` comparisons. Open the generated `build/ghouls-independent-full/listening.md` for the full files and all three comparisons. The ending deliberately includes the sparse last musical events and their long quiet intervals; it has no added release or fade.
+
+The [initial complete workflow](../../../evidence/ghouls-independent-full/cold-run.json) took 96.39 seconds; the [unchanged repeat](../../../evidence/ghouls-independent-full/cached-run.json) took 0.80 seconds with all ten stages reused and no stage subprocesses. The cold run spent 48.24 seconds compiling and verifying CPU execution, 27.60 seconds in VICE and 7.60 seconds rendering both full WAVs. These retained local measurements demonstrate orchestration/cache savings, not faster original playback or a musical verdict.
+
+The [five controlled edits](../../../evidence/ghouls-numeric/edits/receipt.json) additionally compare complete continuous native/model output after changed notes, durations, repeat counts, gate timing and a rest. All five match the privately edited original execution and differ from the unchanged composition. Four checks cover 224 calls; the repeat needs 944 calls, with its first output difference at call 942. A shorter state-only difference would not prove the repeat's audible-output consequence. The original SID bytes remain unchanged.
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/studies/ghouls/check-ghouls-edits.py --output build/ghouls-edits-new
+```
+
+The submitted local audition lives in `build/ghouls-listening/`: `reference.wav`, `reconstructed.wav`, `opening-reference-then-ours.ab.wav`, `phrase-reference-then-ours.ab.wav` and `ending-reference-then-ours.ab.wav`. The [pending listening record](../../../evidence/ghouls-independent-full/listening-review.json) pins those exact files. Recreate a fresh stable folder with the [audition publisher](../../workflows/listening-package.md#preserve-stable-audition-filenames) and [selection](../../../config/listening/ghouls-full.audition.json).
+
+The [familiar transfer card](instruments/ghouls-decoded-programs.md) supplies a separate same-score comparison using selected pulse and staged-onset programs. Its final-release adaptation belongs only to that new arrangement; it does not change the primary reconstruction. The listener accepted the characteristic phrase on 2026-10-13: “I can't hear a difference, nice”; the [scoped verdict](../../../evidence/ghouls-independent-full/phrase-review.json) pins its audio. Ending and familiar-transfer acceptance remain pending.
 
 ## Reproduce the form investigation
 

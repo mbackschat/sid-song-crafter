@@ -1,8 +1,8 @@
 from dataclasses import dataclass, replace
 from pathlib import Path
-import copy
 import gzip
 import hashlib
+import importlib.util
 import json
 import sys
 import unittest
@@ -12,6 +12,11 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from ghouls_score import COMMAND_FIELDS, ScoreCommand, ScoreRuntime
+
+EDIT_SPEC = importlib.util.spec_from_file_location("ghouls_edit_checks",
+    ROOT / "scripts/studies/ghouls/check-ghouls-edits.py")
+EDIT_CHECKS = importlib.util.module_from_spec(EDIT_SPEC)
+EDIT_SPEC.loader.exec_module(EDIT_CHECKS)
 
 
 @dataclass
@@ -214,76 +219,31 @@ class GhoulsScoreTest(unittest.TestCase):
             self.assertEqual(self.run_score(description, 512), expected)
 
     def native_score(self, calls, edits):
-        from psid_audit import audit_psid
         source = ROOT / ".local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid"
         if not source.exists():
             self.skipTest("Pinned private SID is required for edited native score checks")
         data = source.read_bytes()
         self.assertEqual(hashlib.sha256(data).hexdigest(), "265644a66d6043e6fe5ddeeb0d87e9b4269386a73c3e26457c8d96ce3d042df4")
-        reads, bodies, gates = [], [], []
-        ranges = ((0x6356, 0x6421), (0x6543, 0x6610), (0x6732, 0x67ff), (0x6858, 0x6cb7))
-        dispatch = (0x6362, 0x654f, 0x673e)
-
-        def observe(cpu, memory):
-            if memory.phase != "play":
-                return
-            ram, pc, call = memory.data, cpu.pc, memory.tick
-            if pc == 0x6234 and call == 0:
-                for target, value in edits.items():
-                    ram[target] = value
-            if pc in (0x6348, 0x6535, 0x6724):
-                voice = (0x6348, 0x6535, 0x6724).index(pc)
-                gates.append(dict(call=call, voice=voice, address=0xd404 + 7 * voice, value=cpu.a))
-            if any(first <= pc < end for first, end in ranges) and ram[pc] == 0xb1 and ram[pc + 1] in (0x21, 0x23, 0x25):
-                voice = (ram[pc + 1] - 0x21) // 2
-                pointer = ram[ram[pc + 1]] | ram[ram[pc + 1] + 1] << 8
-                target = (pointer + cpu.y) & 65535
-                reads.append(dict(kind="dispatchRead" if pc in dispatch else "streamOperandRead",
-                    call=call, voice=voice, address=target, value=ram[target],
-                    callDepth=ram[0x69 + voice], repeatRemaining=ram[0x2d + voice]))
-            if pc == 0x6857 and cpu.sp == 0xfd:
-                word = lambda address: ram[address] | ram[address + 1] << 8
-                bodies.append(dict(call=call, streamPointers=[word(0x21 + 2 * v) for v in range(3)],
-                    durationRemaining=ram[0x27:0x2a], repeatRemaining=ram[0x2d:0x30],
-                    repeatPointers=[word(0x30 + 2 * v) for v in range(3)], callDepth=ram[0x69:0x6c],
-                    enableFlags=ram[0x7b:0x7e], transpose=ram[0x4e:0x51]))
-
-        audit_psid(data, calls, observer=observe, profile="pal-banked", subtune=1)
+        native = EDIT_CHECKS.native_score(data, calls, edits)
         self.assertEqual(source.read_bytes(), data)
-        return reads, bodies, gates
+        return native
 
     def test_duration_note_repeat_gate_setter_and_rest_edits_match_native_score(self):
         original = self.description()
-        operations, _ = self.run_score(original, 1)
-        first = next(op for op in operations if op["kind"] == "note" and op["voice"] == 0)
-        repeat = next(op for op in operations if op["kind"] == "command" and op["command"] == "repeat-start")
-        gate = next(op for op in operations if op["kind"] == "command" and op["command"] == "gate-time")
-        for edit in ("duration", "note", "repeat", "gate-time", "rest"):
-            with self.subTest(edit=edit):
-                description = copy.deepcopy(original)
-                selected = repeat if edit == "repeat" else gate if edit == "gate-time" else first
-                node = description["program"]["nodes"][selected["node"]]["variants"][selected["mode"]]
-                metadata = description["sourceEvidence"]["nodes"][selected["node"]][selected["mode"]]
-                if edit == "duration":
-                    node["duration"] += 1
-                    edits = {metadata["reads"][1]["address"]: node["duration"]}
-                elif edit == "note":
-                    node["rawNote"] -= 1
-                    edits = {metadata["address"]: node["rawNote"]}
-                elif edit == "repeat":
-                    node["fields"]["count"] -= 1
-                    edits = {metadata["reads"][1]["address"]: node["fields"]["count"]}
-                elif edit == "gate-time":
-                    node["fields"]["gateTime"] = 2
-                    edits = {metadata["reads"][1]["address"]: 2}
-                else:
-                    node["kind"] = "rest"
-                    del node["rawNote"]
-                    edits = {metadata["address"]: 0}
-                actual = self.projection(description, *self.run_score(description, 224))
-                expected = self.native_score(224, edits)
+        baselines = {calls: EDIT_CHECKS.ordered(EDIT_CHECKS.compute_player(original, calls=calls)["writes"])
+            for calls in set(EDIT_CHECKS.EDIT_CALLS.values())}
+        for case in EDIT_CHECKS.edit_cases(original):
+            with self.subTest(edit=case["name"]):
+                description = case["description"]
+                calls = case["calls"]
+                actual = self.projection(description, *self.run_score(description, calls))
+                native = self.native_score(calls, case["ramEdits"])
+                expected = tuple(native[key] for key in ("reads", "bodies", "gates"))
                 self.assertEqual(actual, expected)
-                self.assertNotEqual(actual, self.projection(original, *self.run_score(original, 224)))
+                self.assertTrue(actual != self.projection(original, *self.run_score(original, calls)))
+                complete = EDIT_CHECKS.ordered(EDIT_CHECKS.compute_player(description, calls=calls)["writes"])
+                self.assertEqual(complete, EDIT_CHECKS.ordered(native["writes"]))
+                self.assertTrue(complete != baselines[calls], "Edit had no output consequence inside its checked horizon")
 
     def test_invalid_links_fields_and_context_are_rejected(self):
         description = fixture()

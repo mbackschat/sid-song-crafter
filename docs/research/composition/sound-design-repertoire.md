@@ -26,6 +26,7 @@ Use the [musical gesture library](gestures/README.md) for groove, chord response
 | [Cybernoid pulse programs](instruments/cybernoid-decoded-programs.md) | Short noise-onset bass, shared-filter harmony and steady-pitch PWM lead; accepted 53-note familiar transfer with a matched plain reference and explicit native gate/tuning limits. |
 | [Monty tonal programs](instruments/monty-decoded-programs.md) | Narrow pulse bass, harmonic replies and shared moving-pulse melody; accepted 53-note familiar transfer with native articulation, retained pulse phase and explicit rest/ending limits. |
 | [Rambo tonal programs](instruments/rambo-decoded-programs.md) | Moving pulse melody and bass, plus short tonal support; matched 53-note transfer accepted for musical use, balance, phrasing and ending, with native lifetime/gate constraints. |
+| [Ghouls pulse and staged-onset programs](instruments/ghouls-decoded-programs.md) | Moving pulse melody/support and a one-call noise-to-triangle bass attack on the matched 53-note phrase; full execution/audio verified, explicit shorter final-note release, listening pending. |
 
 ## Reference material worth learning from
 
