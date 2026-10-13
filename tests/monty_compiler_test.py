@@ -1,8 +1,11 @@
 import copy
 import importlib.util
+import json
 from pathlib import Path
 import sys
+from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -45,6 +48,36 @@ def fixture(calls=64):
 
 
 class MontyCompilerTests(unittest.TestCase):
+    def test_run_uses_one_full_model_traversal_for_capped_cpu_and_state_checks(self):
+        compiled = compiler()
+        with TemporaryDirectory() as directory:
+            source = Path(directory) / 'title.json'
+            source.write_text(json.dumps(fixture(8)))
+            output = Path(directory) / 'candidate'
+            with patch.object(compiled, 'compute_player', wraps=compute_player) as model:
+                report = compiled.run(source, output, calls=1)
+            model.assert_called_once()
+            self.assertNotIn('calls', model.call_args.kwargs)
+            self.assertEqual({0, 1}, set(model.call_args.kwargs['checkpoint_calls']))
+            self.assertEqual(1, report['checkedPlayCalls'])
+            self.assertEqual(2, report['stateComparison']['matchedCheckpoints'])
+            self.assertEqual(report, json.loads((output / 'build.json').read_text()))
+            self.assertEqual({'model', 'assembly', 'cpuAudit', 'checkpointComparison', 'output'},
+                             set(report['stageSeconds']))
+            self.assertTrue(all(type(value) is float and value >= 0 for value in report['stageSeconds'].values()))
+
+    def test_capped_run_still_rejects_unmapped_numeric_reads_after_the_cpu_prefix(self):
+        compiled = compiler()
+        description = fixture(8)
+        description['score']['patterns'][0]['bytes'] = [0, 12, 0, 96, 255]
+        with TemporaryDirectory() as directory:
+            source = Path(directory) / 'title.json'
+            source.write_text(json.dumps(description))
+            output = Path(directory) / 'candidate'
+            with self.assertRaisesRegex(ValueError, 'unmapped frequency alias'):
+                compiled.run(source, output, calls=1)
+            self.assertFalse(output.exists())
+
     def assert_model(self, description):
         compiled = compiler()
         sid, built = compiled.build(description)

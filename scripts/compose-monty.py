@@ -5,8 +5,9 @@ import hashlib
 import json
 from pathlib import Path
 import struct
+from time import perf_counter
 
-from monty_title_player import GLOBAL_FIELDS, SEQUENCE_FIELDS, SOUND_FIELDS, alias_bindings, compute_writes, ending_contract
+from monty_title_player import GLOBAL_FIELDS, SEQUENCE_FIELDS, SOUND_FIELDS, alias_bindings, compute_player, compute_writes, ending_contract
 from monty_title_score import numeric_tables
 from psid_audit import audit_psid
 from sid_assembler import assemble
@@ -191,18 +192,19 @@ def read_state(memory, built):
 
 
 def run(description_path, output, calls=None):
-    from monty_title_player import compute_player
+    """Compile and compare one full model run with CPU stores and checkpoints.
 
+    stageSeconds.output covers the payload and evidence files, excluding the
+    build.json report's own write. A diagnostic CPU cap still validates every
+    numeric read in the declared model range before assembly.
+    """
     description_path, output = Path(description_path), Path(output)
     require(not output.exists() and not output.is_symlink(), 'Choose a fresh output directory')
     input_data = description_path.read_bytes()
     description = json.loads(input_data)
     compiler_contract(description)
-    expected = compute_writes(description)
-    sid, built = _build(description)
-    count = built['playCalls'] if calls is None else calls
-    require(type(count) is int and 1 <= count <= built['playCalls'], 'Requested calls exceed declared range')
-    expected = [row for row in expected if row['tick'] is None or row['tick'] < count]
+    count = description['play_calls'] if calls is None else calls
+    require(type(count) is int and 1 <= count <= description['play_calls'], 'Requested calls exceed declared range')
     checkpoint_calls = {call for call in (0, 1, 17535, 17536, 17537, 35071, 35072, count - 1)
                         if call < count}
     ending = ending_contract(description, description['play_calls'])
@@ -210,6 +212,14 @@ def run(description_path, output, calls=None):
         start = ending['start_call']
         checkpoint_calls.update(call for call in (start - 1, start, start + 1, start + 63, start + 64,
                                                   start + 67, start + 124) if call < count)
+    stage_seconds = {}
+    started = perf_counter()
+    numeric = compute_player(description, checkpoint_calls={0} | {call + 1 for call in checkpoint_calls})
+    stage_seconds['model'] = perf_counter() - started
+    started = perf_counter()
+    sid, built = _build(description)
+    stage_seconds['assembly'] = perf_counter() - started
+    expected = [row for row in numeric['writes'] if row['tick'] is None or row['tick'] < count]
     checkpoints = []
 
     def observer(cpu, memory):
@@ -219,7 +229,10 @@ def run(description_path, output, calls=None):
         if boundary and cpu.sp == 0xfd:
             checkpoints.append(dict(phase=memory.phase, call=memory.tick, **read_state(memory, built)))
 
+    started = perf_counter()
     audit, writes = audit_psid(sid, count, observer=observer)
+    stage_seconds['cpuAudit'] = perf_counter() - started
+    started = perf_counter()
     identity = lambda rows: [(row['phase'], row['tick'], row['address'], row['value']) for row in rows]
     if identity(expected) != identity(writes):
         for index, (wanted, actual) in enumerate(zip(identity(expected), identity(writes))):
@@ -228,10 +241,12 @@ def run(description_path, output, calls=None):
     require(len(checkpoints) == len(checkpoint_calls) + 1, 'Compiled state checkpoint coverage is incomplete')
     for checkpoint in checkpoints:
         checked_calls = 0 if checkpoint['phase'] == 'init' else checkpoint['call'] + 1
-        numeric = compute_player(description, calls=checked_calls)
+        expected_state = numeric['checkpoints'][checked_calls]
         for name in ('finalState', 'instruments', 'stopped'):
-            require(checkpoint[name] == numeric[name],
+            require(checkpoint[name] == expected_state[name],
                     f'Compiled {name} differs at {checkpoint["phase"]} call {checkpoint["call"]}')
+    stage_seconds['checkpointComparison'] = perf_counter() - started
+    started = perf_counter()
     output.mkdir(parents=True)
     (output / 'reconstructed.sid').write_bytes(sid)
     (output / 'player.asm').write_text(built.pop('source'))
@@ -242,16 +257,21 @@ def run(description_path, output, calls=None):
                   orderedStoreComparison=dict(matchedStores=len(writes), fields=['phase', 'tick', 'address', 'value']),
                   stateComparison=dict(matchedCheckpoints=len(checkpoints),
                                        fields=['globals', 'voices', 'sharedInstrumentBank']),
+                  stageSeconds=stage_seconds,
                   toolSha256={name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in
                               ('scripts/compose-monty.py', 'songs/players/monty.asm',
                                'songs/players/monty-effects.asm', 'scripts/monty_title_player.py',
                                'scripts/monty_title_score.py', 'scripts/monty_title_programs.py')},
                   limits='Independent compiled state computation; no bus timing, audio or listening claim.', **built)
-    for name, value in (('build.json', report), ('audit.json', audit), ('writes.json', writes),
+    for name, value in (('audit.json', audit), ('writes.json', writes),
                         ('state-checkpoints.json', checkpoints)):
         with (output / name).open('x') as handle:
             json.dump(value, handle, indent=None if name == 'writes.json' else 2, allow_nan=False)
             handle.write('\n')
+    stage_seconds['output'] = perf_counter() - started
+    with (output / 'build.json').open('x') as handle:
+        json.dump(report, handle, indent=2, allow_nan=False)
+        handle.write('\n')
     return report
 
 

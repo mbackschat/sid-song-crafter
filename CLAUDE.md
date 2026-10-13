@@ -56,6 +56,8 @@ Prefer verified headless VICE and file-monitor workflows. Use bridge tools only 
 
 ## Listening and retained findings
 
+For repeated build/render/comparison work, use the [recipe runner](docs/workflows/listening-package.md) and an owning checked-in recipe. Let it manage commands, deadlines, receipts, stage timings and the listening index. Reuse successful stages only after their declared input and output fingerprints match; include imported modules, tool binaries and data in recipe inputs. Change the recipe or fix a failed stage instead of manually recreating the pipeline. Musical judgments remain separate.
+
 Use the [listening package](docs/workflows/audio-comparisons.md#package-a-listening-review): a representative phrase, a separate ending comparison and direct links to both full renders. Offer few labelled clips with actual filenames, A/B order and one clear question per judgment. Identify originals, muted diagnostics, independent recreations and hybrids. Match phrase/model/settings; retain original levels and record gains. Use common gain for contextual substitutions. Preserve shared audition files and stop iterating when asked to await feedback.
 
 Present the reference alongside every generated reconstruction or A/B candidate. For genuinely new music, say explicitly that it is an original composition and identify the reused sounds; there is no original recording of that phrase. Link the source tune when it helps compare those sounds, clearly labelled as a timbral reference.

@@ -11,6 +11,8 @@ The filenames above are example inputs, not a claim that these renders already e
 
 ## Package a listening review
 
+Use the [recipe runner](listening-package.md) when the same build/render/comparison chain will run again. It creates the listening index and retains input/output hashes and stage timings automatically; this guide owns the musical comparison contract.
+
 Prepare the review before asking for feedback. Link actual filenames and state the reference variant, A/B order, passage times, duration and any gain changes. Use a representative 10–20-second phrase where that captures the musical question; include more context when necessary. For the initial reconstruction review, offer the phrase, ending and both full renders together. Add the transfer and its same-material reference when ready for their separate review:
 
 | Role | Suggested filename for new output | Purpose |

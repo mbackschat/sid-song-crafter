@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 1,
+  "measuredOn": "2026-10-13",
+  "scope": "Single local cold/hot/window runs; no CPU or source/VICE coverage reduction; accepted WAV and A/B SHA-256 unchanged.",
+  "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "recipe": {
+    "path": "config/listening/monty-reference-continuation.json",
+    "sha256": "e54694af5b140c21950d9be9db05ff8db22ea561f3a3641ae24f71b4c71ef4ba"
+  },
+  "tools": [
+    {
+      "path": "scripts/listening-package.py",
+      "sha256": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+    },
+    {
+      "path": "scripts/listening_package.py",
+      "sha256": "dd81e5bde2ac30cd4e1dae55d792e9dd944acd5bd09e30288ab7d4a22dc93397"
+    },
+    {
+      "path": "scripts/compose-monty.py",
+      "sha256": "2258e2f745e9b51836820080b285de34642759f6cd0386c549252a96fe2130ae"
+    },
+    {
+      "path": "scripts/monty_title_player.py",
+      "sha256": "f9041526403a0ce955a9c1c512197a234102c5004d9a0ed8295a241223e82285"
+    }
+  ],
+  "runs": {
+    "cold": {
+      "wallSeconds": 151.474933958,
+      "stages": [
+        {
+          "id": "reference-pin",
+          "cacheHit": false,
+          "wallSeconds": 0.133653292,
+          "executionSeconds": 0.129788542
+        },
+        {
+          "id": "build",
+          "cacheHit": false,
+          "wallSeconds": 102.927264417,
+          "executionSeconds": 102.875802667
+        },
+        {
+          "id": "source-writes",
+          "cacheHit": false,
+          "wallSeconds": 2.2978300000000047,
+          "executionSeconds": 2.2419934170000033
+        },
+        {
+          "id": "vice",
+          "cacheHit": false,
+          "wallSeconds": 31.101873667000007,
+          "executionSeconds": 30.848466291999998
+        },
+        {
+          "id": "reference-render",
+          "cacheHit": false,
+          "wallSeconds": 4.397893707999998,
+          "executionSeconds": 4.377258875000024
+        },
+        {
+          "id": "candidate-render",
+          "cacheHit": false,
+          "wallSeconds": 4.4283709999999985,
+          "executionSeconds": 4.407878874999994
+        },
+        {
+          "id": "signal-check",
+          "cacheHit": false,
+          "wallSeconds": 5.030072666999985,
+          "executionSeconds": 4.960748332999998
+        },
+        {
+          "id": "opening",
+          "cacheHit": false,
+          "wallSeconds": 0.6990460840000026,
+          "executionSeconds": 0.62149708299998
+        },
+        {
+          "id": "ending",
+          "cacheHit": false,
+          "wallSeconds": 0.42113745899999344,
+          "executionSeconds": 0.3508461670000145
+        }
+      ],
+      "localReceipt": {
+        "path": "build/listening-package-benchmark/cold.json",
+        "sha256": "2a5a9182970488cb59214978864153d455917b676715f3947841d91e77f794b6"
+      }
+    },
+    "hot": {
+      "wallSeconds": 0.394313958,
+      "stages": [
+        {
+          "id": "reference-pin",
+          "cacheHit": true,
+          "wallSeconds": 0.006035499999999999,
+          "executionSeconds": 0
+        },
+        {
+          "id": "build",
+          "cacheHit": true,
+          "wallSeconds": 0.036176916999999996,
+          "executionSeconds": 0
+        },
+        {
+          "id": "source-writes",
+          "cacheHit": true,
+          "wallSeconds": 0.02208020799999999,
+          "executionSeconds": 0
+        },
+        {
+          "id": "vice",
+          "cacheHit": true,
+          "wallSeconds": 0.13915725,
+          "executionSeconds": 0
+        },
+        {
+          "id": "reference-render",
+          "cacheHit": true,
+          "wallSeconds": 0.020634083000000025,
+          "executionSeconds": 0
+        },
+        {
+          "id": "candidate-render",
+          "cacheHit": true,
+          "wallSeconds": 0.02203258400000002,
+          "executionSeconds": 0
+        },
+        {
+          "id": "signal-check",
+          "cacheHit": true,
+          "wallSeconds": 0.03554212499999998,
+          "executionSeconds": 0
+        },
+        {
+          "id": "opening",
+          "cacheHit": true,
+          "wallSeconds": 0.038682541000000015,
+          "executionSeconds": 0
+        },
+        {
+          "id": "ending",
+          "cacheHit": true,
+          "wallSeconds": 0.035887791,
+          "executionSeconds": 0
+        }
+      ],
+      "localReceipt": {
+        "path": "build/listening-package-benchmark/hot.json",
+        "sha256": "562c3e11ffd493c7e726a0643cb76571ab23d381d93e14f41cd012a1b330699f"
+      }
+    },
+    "window": {
+      "wallSeconds": 0.674242709,
+      "stages": [
+        {
+          "id": "reference-pin",
+          "cacheHit": true,
+          "wallSeconds": 0.0010769590000000023,
+          "executionSeconds": 0
+        },
+        {
+          "id": "build",
+          "cacheHit": true,
+          "wallSeconds": 0.025019459,
+          "executionSeconds": 0
+        },
+        {
+          "id": "source-writes",
+          "cacheHit": true,
+          "wallSeconds": 0.020949834,
+          "executionSeconds": 0
+        },
+        {
+          "id": "vice",
+          "cacheHit": true,
+          "wallSeconds": 0.075792458,
+          "executionSeconds": 0
+        },
+        {
+          "id": "reference-render",
+          "cacheHit": true,
+          "wallSeconds": 0.018702917000000013,
+          "executionSeconds": 0
+        },
+        {
+          "id": "candidate-render",
+          "cacheHit": true,
+          "wallSeconds": 0.018046792000000006,
+          "executionSeconds": 0
+        },
+        {
+          "id": "signal-check",
+          "cacheHit": true,
+          "wallSeconds": 0.034515957999999985,
+          "executionSeconds": 0
+        },
+        {
+          "id": "opening",
+          "cacheHit": true,
+          "wallSeconds": 0.03506254100000003,
+          "executionSeconds": 0
+        },
+        {
+          "id": "ending",
+          "cacheHit": false,
+          "wallSeconds": 0.40558204099999995,
+          "executionSeconds": 0.33618716699999995
+        }
+      ],
+      "localReceipt": {
+        "path": "build/listening-package-benchmark/window.json",
+        "sha256": "ca5c53c4f564d4666c57a37bcb4c62748c0d7d9f9dfe10cfab4328a212e68557"
+      }
+    },
+    "restored": {
+      "wallSeconds": 0.302437834,
+      "stages": [
+        {
+          "id": "reference-pin",
+          "cacheHit": true,
+          "wallSeconds": 0.0009235840000000051,
+          "executionSeconds": 0
+        },
+        {
+          "id": "build",
+          "cacheHit": true,
+          "wallSeconds": 0.024732458000000006,
+          "executionSeconds": 0
+        },
+        {
+          "id": "source-writes",
+          "cacheHit": true,
+          "wallSeconds": 0.022078832999999992,
+          "executionSeconds": 0
+        },
+        {
+          "id": "vice",
+          "cacheHit": true,
+          "wallSeconds": 0.07146570900000002,
+          "executionSeconds": 0
+        },
+        {
+          "id": "reference-render",
+          "cacheHit": true,
+          "wallSeconds": 0.019033999999999995,
+          "executionSeconds": 0
+        },
+        {
+          "id": "candidate-render",
+          "cacheHit": true,
+          "wallSeconds": 0.018487750000000025,
+          "executionSeconds": 0
+        },
+        {
+          "id": "signal-check",
+          "cacheHit": true,
+          "wallSeconds": 0.03394729200000002,
+          "executionSeconds": 0
+        },
+        {
+          "id": "opening",
+          "cacheHit": true,
+          "wallSeconds": 0.03608716700000003,
+          "executionSeconds": 0
+        },
+        {
+          "id": "ending",
+          "cacheHit": true,
+          "wallSeconds": 0.037413207999999976,
+          "executionSeconds": 0
+        }
+      ],
+      "localReceipt": {
+        "path": "build/listening-package-benchmark/restored.json",
+        "sha256": "b13f8f9e98a6c822dccb22bb0c52a5e6d0a587a1e7a5680d5d9ec0239f6c0830"
+      }
+    }
+  },
+  "modelCheckpointComparison": {
+    "baselineRevision": "2eb752832d1208aa49792cea943daed72f32c497",
+    "baselinePlayerSha256": "cf630fe9dc030789ffab355a209fdecc4427efc72af94100ad1a8fd215709053",
+    "baselineFullModelSeconds": 3.2962133750000002,
+    "baselineCheckpointPrefixSeconds": 13.430521665999999,
+    "baselineTotalSeconds": 16.726735040999998,
+    "optimizedTotalSeconds": 3.451360166,
+    "exclusiveCheckpointCalls": [
+      0,
+      1,
+      2,
+      17536,
+      17537,
+      17538,
+      35072,
+      35073,
+      40000
+    ],
+    "method": "time.perf_counter around full compute_player plus separate calls=prefix computations before the change; around one compute_player(checkpoint_calls=counts) after. Both have373739 identical ordered stores and9 matching saved checkpoints. Excludes CPU audit, assembly and output."
+  },
+  "reproduction": "Run the documented Monty recipe into a fresh build/ directory, retain run.json, repeat unchanged, then edit only ending --start-seconds340 to341 in a local recipe copy and repeat against the same output cache. Restore the original recipe and verify all hits.",
+  "limits": [
+    "Single-run observations, not statistically controlled benchmark.",
+    "Cold execution still includes full40000-call CPU audit.",
+    "Hot stages launch no subprocesses but hash inputs and outputs."
+  ]
+}

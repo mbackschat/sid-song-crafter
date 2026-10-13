@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from monty_title_player import compute_player, compute_writes
 from monty_title_programs import Instrument, VoiceState, PitchLookups, advance_body, initialize_note
+from monty_title_score import expand_score
 
 
 def fixture():
@@ -32,6 +33,56 @@ def group(writes, call):
 
 
 class MontyTitlePlayerTests(unittest.TestCase):
+    def test_checkpoint_states_match_exclusive_prefixes_through_restart_and_finite_tail(self):
+        description = fixture()
+        description['play_calls'] = 134
+        description['ending'] = dict(start_call=6, release_calls=64, fade_step_calls=4)
+        description['initial_state']['globals'].update(status=64, counter=250)
+        description['instruments'][0].update(pulse_value=128, effects=4)
+        requested = [134, 0, 1, 2, 3, 6, 7, 69, 70, 73, 130, 3]
+        before = deepcopy(description)
+        with patch('monty_title_player.expand_score', wraps=expand_score) as expansion:
+            result = compute_player(description, checkpoint_calls=requested)
+        expansion.assert_called_once()
+        self.assertEqual(before, description)
+        self.assertEqual(sorted(set(requested)), list(result['checkpoints']))
+        for calls, checkpoint in result['checkpoints'].items():
+            with self.subTest(calls=calls):
+                prefix = compute_player(description, calls=calls)
+                self.assertEqual({name: prefix[name] for name in ('finalState', 'instruments', 'stopped')},
+                                 checkpoint)
+        self.assertFalse(result['checkpoints'][130]['stopped'])
+        self.assertTrue(result['checkpoints'][134]['stopped'])
+
+    def test_checkpoints_are_independent_deep_snapshots_without_changing_legacy_result(self):
+        description = fixture()
+        description['instruments'][0]['pulse_value'] = 128
+        legacy = compute_player(description)
+        self.assertEqual({'writes', 'finalState', 'instruments', 'stopped'}, set(legacy))
+        result = compute_player(description, checkpoint_calls=[0, 1, 2, 4])
+        self.assertEqual(legacy, {name: result[name] for name in legacy})
+        self.assertEqual(description['initial_state'], result['checkpoints'][0]['finalState'])
+        self.assertEqual(0x980, result['checkpoints'][2]['instruments'][0]['pulse_word'])
+        saved = deepcopy(result)
+        result['checkpoints'][0]['finalState']['globals']['counter'] = 99
+        result['checkpoints'][0]['finalState']['voices'][0]['note'] = 99
+        result['checkpoints'][0]['instruments'][0]['pulse_word'] = 99
+        for calls in (1, 2, 4):
+            self.assertEqual(saved['checkpoints'][calls], result['checkpoints'][calls])
+        self.assertEqual(saved['finalState'], result['finalState'])
+        self.assertEqual(saved['instruments'], result['instruments'])
+
+    def test_checkpoint_counts_are_bounded_by_the_exclusive_execution_cap(self):
+        for count in (-1, True, 1.5, 5):
+            with self.subTest(count=count), self.assertRaises(ValueError):
+                compute_player(fixture(), checkpoint_calls=[count])
+        with self.assertRaises(ValueError):
+            compute_player(fixture(), calls=2, checkpoint_calls=[3])
+        result = compute_player(fixture(), calls=0, checkpoint_calls=[0])
+        self.assertEqual(fixture()['initial_state'], result['checkpoints'][0]['finalState'])
+        self.assertFalse(result['checkpoints'][0]['stopped'])
+        self.assertEqual({}, compute_player(fixture(), checkpoint_calls=[])['checkpoints'])
+
     def test_state_result_exposes_named_final_state_and_shared_bank(self):
         description = fixture()
         description['instruments'][0]['pulse_value'] = 128

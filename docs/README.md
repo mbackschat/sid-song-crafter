@@ -16,6 +16,7 @@ Use the [project overview](../README.md) for SID Song Crafter's purpose and curr
 - [Build a native SID-Wizard song](workflows/native-song-workflow.md): editable three- or six-voice arrangements, export, audit and rendering.
 - [Try native instruments](workflows/instrument-trials.md): reproducible sound-design phrases and A/B trials.
 - [Render and inspect audio](workflows/audio-workflow.md): SID-to-WAV setup, timing, pitch and ending checks.
+- [Run a repeatable listening package](workflows/listening-package.md): execute a recipe, reuse verified stages and collect timings and audio links.
 - [Prepare listening comparisons](workflows/audio-comparisons.md): phrase and ending comparisons, immediate full-reference access, original-preserving excerpts and gain receipts.
 
 ## Verify execution

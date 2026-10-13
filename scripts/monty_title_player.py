@@ -72,7 +72,7 @@ def ending_contract(description, declared_calls):
     return ending
 
 
-def compute_player(description, *, calls=None):
+def compute_player(description, *, calls=None, checkpoint_calls=None):
     """Return ordered SID stores, named final state and shared instrument records.
 
     Numeric order/pattern expansion owns score timing and voice order. Shared
@@ -82,6 +82,10 @@ def compute_player(description, *, calls=None):
     guessed pitches. Source annotations and captured events are ignored.
 
     The optional call cap is exclusive and cannot exceed declared play_calls.
+    Optional checkpoint_calls are exclusive call counts within that cap;
+    zero captures init and each other count captures all completed calls.
+    They add a checkpoints mapping of independent state/bank/stopped snapshots
+    captured during the same traversal, without copying ordered stores.
     An optional ending freezes score and tempo at start_call, clears actual
     control gates, advances continuing programs for 64 release calls, then
     fades volume 15..0 with four calls per level. Saved control bytes retain
@@ -97,6 +101,12 @@ def compute_player(description, *, calls=None):
     ending = ending_contract(description, declared_calls)
     calls = declared_calls if calls is None else calls
     integer(calls, declared_calls, 'calls')
+    selected_checkpoints = set()
+    if checkpoint_calls is not None:
+        for count in checkpoint_calls:
+            integer(count, calls, 'checkpoint_calls')
+            selected_checkpoints.add(count)
+    checkpoints = {}
     initial = deepcopy(description['initial_state'])
     globals_, voices = initial['globals'], initial['voices']
     require(len(voices) == 3, 'Initial state requires three voices')
@@ -128,6 +138,12 @@ def compute_player(description, *, calls=None):
               for address in (0xd404, 0xd40b, 0xd412)]
     counter = globals_['counter']
     actual_controls = [0, 0, 0]
+
+    def checkpoint(count):
+        if count in selected_checkpoints:
+            checkpoints[count] = dict(finalState=deepcopy(initial),
+                                      instruments=[asdict(row) for row in bank],
+                                      stopped=ending is not None and count == declared_calls)
 
     def emit(call, index, relative_writes, *, release=False):
         for offset, value in relative_writes:
@@ -168,6 +184,7 @@ def compute_player(description, *, calls=None):
     for action in expanded['operations']:
         call, kind = action['call'], action['operation']
         if kind == 'call':
+            checkpoint(call)
             writes.append(dict(phase='play', tick=call, address=0xd418, value=globals_['mode_volume']))
             counter = action['counter']
             for name in ('counter', 'tempo_countdown', 'status'):
@@ -187,6 +204,7 @@ def compute_player(description, *, calls=None):
         emit(call, index, program(index, initialize=kind == 'initialize',
                                  append=action.get('append', False),
                                  release_check=action.get('score_tick', False)))
+    checkpoint(score_calls)
 
     if ending is not None:
         start = ending['start_call']
@@ -202,8 +220,12 @@ def compute_player(description, *, calls=None):
                     emit(call, index, ((4, actual_controls[index]),), release=True)
             for index in (2, 1, 0):
                 emit(call, index, program(index), release=True)
-    return dict(writes=writes, finalState=initial, instruments=[asdict(row) for row in bank],
-                stopped=ending is not None and calls == declared_calls)
+            checkpoint(call + 1)
+    result = dict(writes=writes, finalState=initial, instruments=[asdict(row) for row in bank],
+                  stopped=ending is not None and calls == declared_calls)
+    if checkpoint_calls is not None:
+        result['checkpoints'] = checkpoints
+    return result
 
 
 def compute_writes(description, *, calls=None):

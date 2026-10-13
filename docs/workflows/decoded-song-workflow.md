@@ -27,6 +27,8 @@ Compare similar completed transfers before claiming improved productivity. Use t
 
 ## Build, render and compare
 
+For repeatable deliveries, use the [listening-package runner](listening-package.md) to execute the existing driver-specific commands with timings and verified stage reuse. The [Monty recipe](../../config/listening/monty-reference-continuation.json) covers full CPU/source checks, a VICE restart check, renders, signal checks and A/B clips. Keep each backend’s declared coverage; cached results replace execution only when their input, tool and output fingerprints still match.
+
 After [headless audio setup](audio-workflow.md), choose a fresh output directory:
 
 ```sh
