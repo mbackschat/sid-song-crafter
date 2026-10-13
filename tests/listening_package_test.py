@@ -206,6 +206,81 @@ class ListeningPackageTests(unittest.TestCase):
         self.assertTrue(self.run_package()['stages'][0]['cacheHit'])
         self.assertEqual(self.launches(), ['check'])
 
+    def test_later_stage_changing_earlier_input_rejects_package_including_cache_hits(self):
+        for source in ('source.txt', 'build.py'):
+            with self.subTest(source=source):
+                first = self.run_package()
+                old_audio = Path(first['deliverables']['opening'])
+                old_bytes = old_audio.read_bytes()
+                self.write_tool('render',
+                                "Path(sys.argv[1], 'song.wav').write_bytes(b'WAV ' + Path(sys.argv[2]).read_bytes())\n"
+                                f"with Path({source!r}).open('a') as source:\n    source.write('\\n# changed')")
+                with self.assertRaisesRegex(listening_package.PackageError, 'build:.*changed.*completion'):
+                    self.run_package()
+                failed = json.loads((self.output / 'run.json').read_text())
+                self.assertTrue(failed['stages'][0]['cacheHit'])
+                self.assertEqual(failed['status'], 'failed')
+                self.assertEqual(failed['deliverables'], {})
+                self.assertNotIn('[opening]', (self.output / 'listening.md').read_text())
+                self.assertEqual(old_audio.read_bytes(), old_bytes)
+                self.write_tool('render', "Path(sys.argv[1], 'song.wav').write_bytes(b'WAV ' + Path(sys.argv[2]).read_bytes())")
+
+    def test_later_stage_changing_earlier_executable_rejects_package(self):
+        executable = self.root / 'emit'
+        executable.write_text('#!/bin/sh\nmkdir "$1/candidate"\ncp source.txt "$1/candidate/song.sid"\n')
+        executable.chmod(0o755)
+        self.recipe['stages'][0]['command'] = ['{root}/emit', '{out}']
+        self.write_tool('render',
+                        "Path(sys.argv[1], 'song.wav').write_bytes(b'WAV ' + Path(sys.argv[2]).read_bytes())\n"
+                        "with Path('emit').open('a') as executable:\n    executable.write('\\n# changed')")
+        with self.assertRaisesRegex(listening_package.PackageError, 'build: executable changed before package completion'):
+            self.run_package()
+        failed = json.loads((self.output / 'run.json').read_text())
+        self.assertEqual(failed['status'], 'failed')
+        self.assertEqual(failed['deliverables'], {})
+
+    def test_changed_runner_runtime_rejects_package(self):
+        runtime = listening_package._runtime_fingerprint()
+        changed = {**runtime, 'runnerVersion': runtime['runnerVersion'] + 1}
+        with patch.object(listening_package, '_runtime_fingerprint', side_effect=[runtime] * 4 + [changed]):
+            with self.assertRaisesRegex(listening_package.PackageError, 'runtime changed before package completion'):
+                self.run_package()
+        failed = json.loads((self.output / 'run.json').read_text())
+        self.assertEqual(failed['status'], 'failed')
+        self.assertEqual(failed['deliverables'], {})
+
+    def test_executable_changed_before_launch_cannot_leave_a_reusable_receipt(self):
+        executable = self.root / 'emit'
+        original = '#!/bin/sh\nprintf old > "$1/clip.wav"\n'
+        executable.write_text(original)
+        executable.chmod(0o755)
+        self.recipe['stages'] = [{'id': 'emit', 'command': ['{root}/emit', '{out}'], 'inputs': [],
+                                 'outputs': ['clip.wav'], 'timeoutSeconds': 5}]
+        self.recipe['deliverables'] = {'opening': '{stage:emit}/clip.wav'}
+        self.recipe_path.write_text(json.dumps(self.recipe))
+
+        def change_before_launch(message):
+            if message == 'emit: starting':
+                executable.write_text(original.replace('printf old', 'printf new'))
+
+        with self.assertRaisesRegex(listening_package.PackageError, 'executable changed'):
+            listening_package.run_recipe(self.recipe_path, self.output, root=self.root, progress=change_before_launch)
+        failed = json.loads((self.output / 'run.json').read_text())
+        self.assertFalse((Path(failed['stages'][0]['attemptDirectory']) / 'success.json').exists())
+        executable.write_text(original)
+        restored = self.run_package()
+        self.assertFalse(restored['stages'][0]['cacheHit'])
+        self.assertEqual(Path(restored['deliverables']['opening']).read_text(), 'old')
+
+    def test_runtime_changed_during_stage_cannot_leave_a_reusable_receipt(self):
+        runtime = listening_package._runtime_fingerprint()
+        changed = {**runtime, 'runnerVersion': runtime['runnerVersion'] + 1}
+        with patch.object(listening_package, '_runtime_fingerprint', side_effect=[runtime, changed]):
+            with self.assertRaisesRegex(listening_package.PackageError, 'runtime changed'):
+                self.run_package()
+        failed = json.loads((self.output / 'run.json').read_text())
+        self.assertFalse((Path(failed['stages'][0]['attemptDirectory']) / 'success.json').exists())
+
     def test_invalid_schema_paths_and_forward_dependencies_launch_nothing(self):
         cases = [
             ('schemaVersion', lambda: self.recipe.update(schemaVersion=2)),

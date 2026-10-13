@@ -343,6 +343,7 @@ def run_recipe(recipe_path, output, *, root=ROOT, progress=print):
     report = {'schemaVersion': 1, 'recipe': str(recipe_path.resolve()), 'recipeSha256': _sha256(recipe_path),
               'startedAt': _timestamp(), 'status': 'running', 'stages': [], 'artifacts': [], 'deliverables': {}}
     attempts = {}
+    fingerprints = {}
     try:
         runtime = _runtime_fingerprint()
         for stage in recipe['stages']:
@@ -358,6 +359,7 @@ def run_recipe(recipe_path, output, *, root=ROOT, progress=print):
                             'timeoutSeconds': stage['timeoutSeconds'], 'runtime': runtime,
                             'executable': _executable_fingerprint(_render(stage['command'][0], root, attempts), env, root)}
                 key = hashlib.sha256(_json_bytes(key_data)).hexdigest()
+                fingerprints[stage['id']] = key_data
                 result['cacheKey'] = key
                 base = output / 'cache' / stage['id'] / key
                 _no_symlinks(output, base)
@@ -377,6 +379,10 @@ def run_recipe(recipe_path, output, *, root=ROOT, progress=print):
                     records = _outputs(stage, attempt)
                     if _inputs(stage, root, attempts) != inputs:
                         raise PackageError('declared input content changed during execution')
+                    if _executable_fingerprint(command[0], env, root) != key_data['executable']:
+                        raise PackageError('executable changed during execution')
+                    if _runtime_fingerprint() != runtime:
+                        raise PackageError('runner or Python runtime changed during execution')
                     receipt = {'schemaVersion': 1, 'key': key, 'fingerprint': key_data, 'inputs': inputs, 'outputs': records, 'command': command,
                                'completedAt': _timestamp(), 'executionSeconds': result['executionSeconds']}
                     (attempt / 'success.json').write_text(json.dumps(receipt, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
@@ -392,6 +398,17 @@ def run_recipe(recipe_path, output, *, root=ROOT, progress=print):
                 result['wallSeconds'] = time.monotonic() - stage_started
                 action = 'reused' if result['cacheHit'] else 'run' if result['status'] == 'completed' else 'failed'
                 progress(f'{stage["id"]}: {action} ({result["wallSeconds"]:.3f}s)')
+        for stage in recipe['stages']:
+            fingerprint = fingerprints[stage['id']]
+            if _inputs(stage, root, attempts) != fingerprint['inputs']:
+                raise PackageError(f'{stage["id"]}: declared input content changed before package completion')
+            env = os.environ.copy()
+            env.update({name: _render(value, root, attempts) for name, value in stage.get('env', {}).items()})
+            executable = _executable_fingerprint(_render(stage['command'][0], root, attempts), env, root)
+            if executable != fingerprint['executable']:
+                raise PackageError(f'{stage["id"]}: executable changed before package completion')
+        if _runtime_fingerprint() != runtime:
+            raise PackageError('runner or Python runtime changed before package completion')
         for label, template in recipe.get('deliverables', {}).items():
             path = Path(_render(template, root, attempts))
             artifact = next(item for item in report['artifacts'] if item['path'] == str(path))

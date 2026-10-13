@@ -304,5 +304,144 @@
     "Single-run observations, not statistically controlled benchmark.",
     "Cold execution still includes full40000-call CPU audit.",
     "Hot stages launch no subprocesses but hash inputs and outputs."
-  ]
+  ],
+  "postReviewValidation": {
+    "measuredOn": "2026-10-13",
+    "scope": "Full Monty recipe after adding per-stage and final package input/executable/runtime consistency guards. Historical measurements above retain their original tool hashes.",
+    "runnerSha256": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+    "deliverablesMatchAcceptedSha256": {
+      "fullReference": "441988b6bfd7f4e5e080753af9fdd30d1f3243884b51f86a4f592c10ebe070d2",
+      "fullCandidate": "9eaa6533d17c9c45bb12d2e96b9b366f1aa6e7a9bdbbb6083d5827f219cff89e",
+      "opening": "fab72f2868c25aae76b18f9684269aeb9c31ef7e017342a0b45b6b7584a660b7",
+      "ending": "49fc1a5d2ed68664cb5383049100bd5ee80cf9f8473f352ffd93bc566456bb5e"
+    },
+    "runs": {
+      "cold": {
+        "wallSeconds": 141.275025875,
+        "stages": [
+          {
+            "id": "reference-pin",
+            "cacheHit": false,
+            "wallSeconds": 0.09235912500000001,
+            "executionSeconds": 0.08872004200000001
+          },
+          {
+            "id": "build",
+            "cacheHit": false,
+            "wallSeconds": 94.84761125,
+            "executionSeconds": 94.804096542
+          },
+          {
+            "id": "source-writes",
+            "cacheHit": false,
+            "wallSeconds": 2.2138705420000093,
+            "executionSeconds": 2.1684635000000014
+          },
+          {
+            "id": "vice",
+            "cacheHit": false,
+            "wallSeconds": 29.9814025,
+            "executionSeconds": 29.719062041
+          },
+          {
+            "id": "reference-render",
+            "cacheHit": false,
+            "wallSeconds": 4.076003416000006,
+            "executionSeconds": 4.053962124999998
+          },
+          {
+            "id": "candidate-render",
+            "cacheHit": false,
+            "wallSeconds": 4.0633114999999975,
+            "executionSeconds": 4.039635790999995
+          },
+          {
+            "id": "signal-check",
+            "cacheHit": false,
+            "wallSeconds": 4.770913000000007,
+            "executionSeconds": 4.702468249999981
+          },
+          {
+            "id": "opening",
+            "cacheHit": false,
+            "wallSeconds": 0.5593365000000006,
+            "executionSeconds": 0.48425195900000517
+          },
+          {
+            "id": "ending",
+            "cacheHit": false,
+            "wallSeconds": 0.3964640000000088,
+            "executionSeconds": 0.33025512500000787
+          }
+        ],
+        "localReceipt": {
+          "path": "build/listening-package-benchmark/review-cold.json",
+          "sha256": "f29e8a75e1e3de570cdbb7419b8151674366dd6e16c6b5e154ba8497c75dfa47"
+        }
+      },
+      "hot": {
+        "wallSeconds": 0.529897375,
+        "stages": [
+          {
+            "id": "reference-pin",
+            "cacheHit": true,
+            "wallSeconds": 0.002233625000000003,
+            "executionSeconds": 0
+          },
+          {
+            "id": "build",
+            "cacheHit": true,
+            "wallSeconds": 0.032388208999999994,
+            "executionSeconds": 0
+          },
+          {
+            "id": "source-writes",
+            "cacheHit": true,
+            "wallSeconds": 0.020309124999999997,
+            "executionSeconds": 0
+          },
+          {
+            "id": "vice",
+            "cacheHit": true,
+            "wallSeconds": 0.12776337499999998,
+            "executionSeconds": 0
+          },
+          {
+            "id": "reference-render",
+            "cacheHit": true,
+            "wallSeconds": 0.021353333000000002,
+            "executionSeconds": 0
+          },
+          {
+            "id": "candidate-render",
+            "cacheHit": true,
+            "wallSeconds": 0.02101687499999999,
+            "executionSeconds": 0
+          },
+          {
+            "id": "signal-check",
+            "cacheHit": true,
+            "wallSeconds": 0.03188304199999997,
+            "executionSeconds": 0
+          },
+          {
+            "id": "opening",
+            "cacheHit": true,
+            "wallSeconds": 0.036376624999999996,
+            "executionSeconds": 0
+          },
+          {
+            "id": "ending",
+            "cacheHit": true,
+            "wallSeconds": 0.03443375000000004,
+            "executionSeconds": 0
+          }
+        ],
+        "localReceipt": {
+          "path": "build/listening-package-benchmark/review-hot.json",
+          "sha256": "52840fc613c089587c0b57c429468874d1e19c7d2d6ad8300d7b2dff57927b67"
+        }
+      }
+    }
+  }
 }
