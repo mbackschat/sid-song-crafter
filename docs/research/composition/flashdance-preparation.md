@@ -20,7 +20,7 @@ These are measured trajectories, not recovered algorithms. Trace the responsible
 
 The single-SID deliverable covers **one complete recurring score cycle of the selected DRAX arrangement**, including startup: calls **0–1537**, followed by an independently authored ending. A fresh 6,500-call diagnostic execution on 2026-10-13 reproduces the retained [form evidence](../../../build/flashdance-f1-f2/score-form.json) exactly. The score starts at call 2 and repeats at call 1538: 1,536 calls, approximately 30.64365 seconds at the pinned PAL cadence. The two startup calls and the eventual ending are additional duration; call positions are not exact WAV timestamps.
 
-All three voices advance through six synchronized blocks. Pattern identifiers below describe executed driver structure, without assigning unverified verse or chorus names.
+All three voices advance through six synchronized blocks. Pattern identifiers describe executed driver structure; the published-source comparison below supplies the musical section map.
 
 | Block | Inclusive calls | Bass pattern | Lead pattern | Chord pattern |
 | --- | --- | --- | --- | --- |
@@ -33,7 +33,16 @@ All three voices advance through six synchronized blocks. Pattern identifiers be
 
 PC `$128F` restores all three track pointers at call 1534; PC `$1134` selects the first patterns again at 1538. Cutting at pointer restoration would truncate the final block. Restores at 3070, 4606 and 6142 corroborate the period, and the first two cycles agree in executed pattern selections and consumed note/hold/off commands. This establishes recurring score structure, not identical oscillator, envelope, filter or modulation state between cycles.
 
-**Source coverage:** no block of the selected recurring SID score is omitted. Correspondence to the original recording's introduction, verses, choruses, bridge and outro has not been established; which original-song sections are absent therefore remains unknown. Do not label this deliverable the complete original song. Extending beyond DRAX's selected arrangement requires separate source material and form mapping.
+**Source coverage:** the [licensed Hal Leonard piano/vocal/guitar preview](https://www.virtualsheetmusic.com/score/HL-4939.html), crediting Giorgio Moroder's music and Keith Forsey/Irene Cara's lyrics, and [Martin Seiler's 2015 HELBLING SMATB sample, HI-C7727](https://www.helbling.com/sites/default/files/media/documents/C7727_DEMO_C7727_Flashdance%20What%20a%20Feeling_SMATB_sample.pdf) support this map:
+
+| Selected span | Inclusive calls | Published-source correspondence | DRAX harmony |
+| --- | --- | --- | --- |
+| Startup and opening variation | 0–513 | Two startup calls, then the four-bar introduction's harmonic span. | B-flat–F/A–C minor–G minor/D |
+| Verse fragment | 514–1537 | First eight bars of Verse 1, published bars 5–12. | B-flat–F/A–C minor–G minor/D–E-flat–B-flat–A-flat–Fsus4→F |
+
+The [comparison receipt](../../../build/flashdance-original-form/source-form-comparison.json) retains 13 executed chord witnesses, six melody anchors and source/download hashes. Landmarks include D4 at 514, G4 at 1034, F4 at 1154 and E-flat4→D4→C4 at 1282/1306/1314. DRAX adds chromatic approaches and changes voicing, phrasing and the published final E-flat/F→F harmony to Fsus4→F.
+
+**Omissions and limits:** the loop returns before Verse 1's remaining eight bars; later verses, choruses and instrumental/outro development have no separate passages. Bar labels belong to Seiler's edition. Original-recording timestamps, exact introduction identity and version-specific ending remain unverified. No selected SID block is omitted; this deliverable remains an abbreviated DRAX arrangement. Listening acceptance is open.
 
 **Intended ending:** preserve the reference through call 1537, suppress the next score cycle, then release the voices while retaining their modulation and fade any remaining tail to zero volume. This is a deliberate arrangement change after the comparison span, not an ending found in the source: no terminating track command was observed. F4 must implement and audition the release/fade, determine its duration and verify final silence before declaring a total export length.
 
