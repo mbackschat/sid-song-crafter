@@ -1,12 +1,53 @@
 """Link bounded callable-PSID execution, RAM operands and ordered SID writes."""
 
 import argparse
+from enum import Enum
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 
 from psid_audit import audit_psid
 from verify_player import require
+
+
+class TraceProfile(str, Enum):
+    STRICT = 'strict'
+    FLASHDANCE_DIAGNOSTIC = 'flashdance-diagnostic'
+
+
+def load_reference():
+    spec = importlib.util.spec_from_file_location('sid_trace_reference', Path(__file__).with_name('study-drax-references.py'))
+    reference = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(reference)
+    return reference
+
+
+def audit_trace(data, calls, profile, observer):
+    if profile is TraceProfile.STRICT:
+        report, writes = audit_psid(data, calls, observer=observer)
+        return report, writes, None
+    require(profile is TraceProfile.FLASHDANCE_DIAGNOSTIC, 'Unknown trace profile')
+    reference = load_reference()
+    reference.verify_reference('flashdance', data)
+    diagnostic = reference.load_script('psid_audit.py', 'sid_trace_flashdance_audit')
+    memories = []
+
+    def memory_factory(sid_bases):
+        memory = reference.FlashdanceDiagnosticMemory(sid_bases)
+        memories.append(memory)
+        return memory
+
+    diagnostic.AuditMemory = memory_factory
+    report, writes = diagnostic.audit_psid(data, calls, observer=observer)
+    ignored = memories[0].ignored_writes
+    require(ignored == [{'phase': 'init', 'tick': None, 'address': address, 'value': 0}
+                        for address in (0xd419, 0xd41a)], 'Pinned Flashdance init paddle-write sequence changed')
+    return report, writes, {
+        'classification': 'Pinned Flashdance diagnostic adapter; not a production-auditor pass',
+        'ignoredInitPaddleWrites': ignored,
+        'boundary': 'Only the two pinned zero init paddle writes are excluded; all other audit guards remain active.',
+    }
 
 
 def operand_address(mode, operands, cpu, memory):
@@ -27,14 +68,19 @@ def operand_address(mode, operands, cpu, memory):
     return None
 
 
-def trace_program(data, *, first_call, last_call):
+def trace_program(data, *, first_call, last_call, profile='strict'):
     """Observe instructions without altering execution under the RAM-only audit contract.
 
     Operand values are pre-instruction RAM snapshots, not a bus-access trace.
     The py65 observer runs before each instruction; its cycle is consequently
     an instruction-start cycle relative to the play call, not a SID bus cycle.
+    Initialization sound-register writes are retained separately. The optional
+    Flashdance diagnostic profile requires the canonical reference hash and
+    excludes only its recorded two zero initialization paddle writes.
     """
     require(type(first_call) is int and type(last_call) is int and 0 <= first_call <= last_call < 100000 and last_call - first_call < 512, 'Select an inclusive window of 1..512 calls within 0..99999')
+    require(profile in tuple(TraceProfile), 'Unknown trace profile')
+    profile = TraceProfile(profile)
     from py65.disassembler import Disassembler
 
     instructions, stores = [], {}
@@ -60,7 +106,7 @@ def trace_program(data, *, first_call, last_call):
                     stores[(memory.tick, memory.instruction_cycle, address)] = pc
         instructions.append(row)
 
-    audited, writes = audit_psid(data, last_call + 1, observer=observe)
+    audited, writes, diagnostic = audit_trace(data, last_call + 1, profile, observe)
     selected = []
     for write in writes:
         if write['phase'] != 'play' or not first_call <= write['tick'] <= last_call:
@@ -68,7 +114,10 @@ def trace_program(data, *, first_call, last_call):
         key = (write['tick'], write['instructionStartCycle'], write['address'])
         require(key in stores, 'SID write lacks an observed store instruction')
         selected.append(dict(write, instructionPc=stores[key]))
-    return {'schemaVersion': 1, 'sourceSha256': hashlib.sha256(data).hexdigest(), 'firstCall': first_call, 'lastCallInclusive': last_call, 'audit': audited, 'instructions': instructions, 'sidWrites': selected, 'limitations': 'RAM-only callable PAL player; execution begins at init, records only the requested play-call window. Cycles are instruction starts relative to each call. Operand values are backing-memory snapshots, not bus reads or readable SID state. No CIA/VIC scheduling, bus-cycle or audible-quality claim.'}
+    result = {'schemaVersion': 1, 'sourceSha256': hashlib.sha256(data).hexdigest(), 'firstCall': first_call, 'lastCallInclusive': last_call, 'profile': profile.value, 'audit': audited, 'instructions': instructions, 'sidWrites': selected, 'initSidWrites': [row for row in writes if row['phase'] == 'init'], 'limitations': 'RAM-only callable PAL player; execution begins at init, records only the requested play-call window plus initialization sound-register writes. Cycles are instruction starts relative to each call. Operand values are backing-memory snapshots, not bus reads or readable SID state. No CIA/VIC scheduling, bus-cycle or audible-quality claim.'}
+    if diagnostic is not None:
+        result['diagnostic'] = diagnostic
+    return result
 
 
 def main():
@@ -76,10 +125,12 @@ def main():
     parser.add_argument('sid', type=Path)
     parser.add_argument('--first-call', type=int, required=True)
     parser.add_argument('--last-call', type=int, required=True, help='Inclusive, zero-based')
+    parser.add_argument('--profile', choices=[profile.value for profile in TraceProfile], default=TraceProfile.STRICT.value,
+                        help='Strict RAM-only audit by default; the Flashdance diagnostic requires its pinned archive bytes')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     require(not args.output.exists() and not args.output.is_symlink(), 'Choose a new output file')
-    result = trace_program(args.sid.read_bytes(), first_call=args.first_call, last_call=args.last_call)
+    result = trace_program(args.sid.read_bytes(), first_call=args.first_call, last_call=args.last_call, profile=args.profile)
     result['sourcePath'] = str(args.sid.resolve())
     result['toolSha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     args.output.parent.mkdir(parents=True, exist_ok=True)

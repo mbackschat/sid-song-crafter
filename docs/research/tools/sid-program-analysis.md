@@ -61,6 +61,24 @@ python3 -m unittest discover -s tests -p sid_vice_trace_test.py -v
 
 The VICE tracer deliberately supports only one explicitly declared PAL SID, one subtune, callable PSID v2 init/play, payload wholly inside RAM `$0400–$9FFF`, and a window ending by call 65,534. It rejects missing or extra calls, changed or reordered stores, malformed opcode/address context, unsupported read-modify-write stores, cadence overruns and existing output paths. Its 16-bit harness counter and monitor filter preserve call numbers across byte rollovers; an executed 2,018-call fixture guards this behavior. The tracepoint filter groups each comparison explicitly because VICE 3.9's [local monitor manual](../../../.tools/vice-headless-3.9/source/doc/vice.texi) defines left-to-right condition evaluation. Store-source registers and matching opcode bytes determine each value; the independent oracle must agree before the study is reported as verified.
 
+## Trace the pinned Flashdance opening
+
+The tracked [CPU tracer](../../../scripts/trace-sid-program.py) offers `--profile flashdance-diagnostic`, also available as `trace_program(..., profile='flashdance-diagnostic')`. It verifies the [canonical asset pin](../../../config/local-assets.json) through the tracked [reference adapter](../../../scripts/study-drax-references.py) before executing the SID. The [reference record](../composition/flashdance-reference.md) identifies the supported archive: default subtune 1, one PAL MOS6581, callable init `$1000` and play `$1003`.
+
+This explicit diagnostic excludes exactly the pinned, ordered pair of zero initialization writes to paddle registers `$D419/$D41A`; `diagnostic.ignoredInitPaddleWrites` preserves their receipt. A private auditor module keeps the production auditor unchanged. The default `strict` profile still rejects these writes, and the diagnostic retains rejection of nonzero/runtime paddle writes, other unsupported I/O writes and I/O/visible-ROM reads. Its output is labeled as a diagnostic adapter, not a production-auditor pass.
+
+Each inclusive instruction window contains at most 512 play calls. Both commands below execute initialization and every preceding call independently; the second does not resume the first. `instructions` and `sidWrites` cover the requested play window, while `initSidWrites` retains initialization sound-register stores separately. Use fresh outputs after the [dependency setup](../../setup/local-setup.md):
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/trace-sid-program.py .local/research/flashdance/drax-flashdance-conversion.sid --profile flashdance-diagnostic --first-call 0 --last-call 511 --output build/flashdance-portable-opening-new/opening.0-511.trace.json
+PYTHONPATH=.tools/test-deps python3 scripts/trace-sid-program.py .local/research/flashdance/drax-flashdance-conversion.sid --profile flashdance-diagnostic --first-call 512 --last-call 513 --output build/flashdance-portable-opening-new/opening.512-513.trace.json
+PYTHONPATH=.tools/test-deps python3 -m unittest discover -s tests -p sid_program_trace_test.py -v
+```
+
+On 2026-10-13, the traces record 182,188 instruction observations. The [portable opening receipt](../../../build/flashdance-portable-opening/verification.json) verifies all 9,345 initialization/opening sound-register writes against the cached oracle in phase, call, instruction-start cycle, address, value and order. The combined comparison counts initialization's 26 writes once, plus 9,319 playback writes across calls 0–513. Each trace retains the initialization and diagnostic receipts; the [guards](../../../tests/sid_program_trace_test.py) also verify source pinning, window bounds, exact paddle-write sequence and production-auditor isolation. The real-source guard skips when its ignored reference inputs are absent.
+
+This portable entry point supplies bounded original-driver execution evidence using tracked code and py65. Operand values remain backing-memory snapshots and cycles remain instruction starts. Score-form analysis, independently scheduled synthesis, VICE cross-checks, bus timing, audio and listening acceptance require separate evidence.
+
 ## Determine what causes the liked character
 
 Follow execution tracing with controlled listening interventions on ignored copies of the exact reference, preserving the original binary and PCM. Freeze pulse movement while retaining attack, pitch, envelope, filter and model; separately bypass bass filtering while preserving the pulse program. The interventions below render diagnostic bass solos; retain the [original full mix](../composition/fuer-elise-reference.md) as listening context. Check the modified execution before interpreting what changed. Each comparison answers a bounded question about the reference mechanism; it does not establish that an original arrangement has achieved the same musical quality.
