@@ -75,6 +75,24 @@ After fetching the evidence's Git LFS objects, check the canonical score proof d
 
 Dependency mismatches fail explicitly rather than silently substituting a different observer environment. The form and ending proofs cover the selected driver under this controlled host; original-game execution, independently synthesized instruments, audio and listening remain separate work.
 
+## Reusable score expansion
+
+The supported [score module](../../../scripts/deflektor_score.py) exposes `expand_score(tables, *, calls)` using the numeric schema in the [retained tables](../../../evidence/deflektor-form/full40000/tables.json). It reads no files, original SID, CPU or observed-event ledger at runtime; input tables remain unchanged and returned instrument fields are copied. The exclusive call cap is separate from `firstStopCall`: 8,480 calls exclude the stop, while 8,481 include the stop at index 8,480. Editable notes, transposes, durations and pattern/order data drive expansion; opaque effects remain numeric commands. Zero durations reject explicitly because that edge lacks source verification.
+
+```python
+import json
+from pathlib import Path
+import sys
+sys.path.insert(0, "scripts")
+from deflektor_score import expand_score
+
+tables = json.loads(Path("evidence/deflektor-form/full40000/tables.json").read_text())
+expanded = expand_score(tables, calls=8481)
+assert expanded["firstStopCall"] == 8480
+```
+
+The [executable guards](../../../tests/deflektor_score_test.py) compare complete consumption with the retained CPU ledger and check note edits, input preservation, cap/stop distinction, invalid data and unsupported zero durations. After fetching the required evidence's Git LFS objects, run `python3 -m unittest discover -s tests -p 'deflektor_score_test.py' -v`. This module expands the score; it does not implement the sound-record programs or acoustic release.
+
 ## Reproduce intake
 
 The download registry retains the URL/fingerprint; the original stays in ignored local storage:
