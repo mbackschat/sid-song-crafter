@@ -141,7 +141,7 @@ Compiling the 40,000-call source description without `ending` is a bounded diagn
 | Judgment | Ignored local samples and order |
 | --- | --- |
 | Title sound and phrasing | `build/monty-independent-full/listening/opening-reference-then-ours.ab.wav`: original first, independent version second, source seconds 0–24, 0.5-second gap, 48.5 seconds total |
-| Deliberate title ending | `build/monty-independent-full/listening/ending-reference-then-ours.ab.wav`: original first, ours second, source seconds 340–355, 31 seconds total; the original restarts while ours releases/fades |
+| Deliberate title ending | `build/monty-independent-full/listening/ending-reference-then-ours.ab.wav`: original first, ours second, source seconds 340–355, 30.5 seconds total; the original restarts while ours releases/fades |
 | Complete first-cycle context | `build/monty-independent-full/reference/reference.wav` and `build/monty-independent-full/candidate/reconstructed.wav`, 355 seconds each |
 | Familiar instrument reuse | `build/monty-elise-transfer/listening/plain-then-monty.ab.wav`: generated plain Für Elise first, the same 53 notes with Monty instruments second, 30.5 seconds total |
 | Transfer ending and separate full files | `build/monty-elise-transfer/listening/ending-plain-then-monty.ab.wav` covers seconds 8–14; separate files are `build/monty-elise-transfer/reference/reference.wav` and `build/monty-elise-transfer/candidate/reconstructed.wav` |
