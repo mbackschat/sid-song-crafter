@@ -1,0 +1,106 @@
+{
+  "format": "bach-toccata-arrangement-v1",
+  "sourceBundle": "songs/studies/bach-toccata-opening",
+  "acceptedOpening": "songs/studies/bach-toccata-opening-driven",
+  "sourceBeatRange": [0, 118],
+  "tailTicks": 125,
+  "timing": "Authored seconds at quarterBpm 60; preserve the accepted 12-second opening, compress notated rests, drive the triplets and hand-crossing runs, and let the final minor third settle. No timing alignment to an organ recording is claimed.",
+  "continuationAnchors": [
+    [10, 12], [11.75, 12.18], [12, 12.36], [16, 14.68],
+    [17.75, 15.695], [19.75, 15.915], [20, 16.06], [24, 18.38],
+    [25.75, 19.395], [27.75, 19.615], [28, 19.76], [32, 22.08],
+    [36, 24.4], [38, 25.56], [39, 26.06], [41, 27.56],
+    [44, 29.81], [45, 30.71], [45.75, 30.91], [48, 32.5975],
+    [52, 35.5975], [56, 38.5975], [60, 41.5975], [60.5, 41.9725],
+    [64, 44.4925], [68, 47.3725], [72, 50.2525], [72.75, 50.7925],
+    [72.875, 50.8925], [76, 53.1425], [80, 56.0225], [84, 58.9025],
+    [86, 60.4025], [88, 61.5625], [92, 63.8825], [96, 66.2025],
+    [100, 68.5225], [104, 70.8425], [106, 72.0025], [107, 72.9025],
+    [108, 73.8025], [109, 74.6525], [110, 75.5025], [111, 76.3525],
+    [112, 77.2025], [113, 78.0525], [114, 78.9025], [115, 79.7525],
+    [116, 80.6025], [116.5, 81.1025], [116.75, 81.3525],
+    [117, 81.6025], [118, 84.6025]
+  ],
+  "scenes": [
+    {
+      "name": "Octave triplets and descending broken intervals",
+      "sourceBeatRange": [10, 38],
+      "mode": "manual-pair",
+      "reduction": "RH upper line on melody and LH lower octave on bass; keep the written octave dialogue without inventing a percussion part. The notated long rests are deliberately compressed."
+    },
+    {
+      "name": "Second diminished hold and decorated arrival",
+      "sourceBeatRange": [38, 45],
+      "mode": "pedal-and-manuals",
+      "reduction": "Reserve bass for the pedal, melody for the latest RH onset, and harmony for the lower remaining manual tone. Cycle selected source chord tones during the hold; omit remaining doublings. The printed F4 trill is realized independently of MIDI."
+    },
+    {
+      "name": "Running right hand against repeated A accompaniment",
+      "sourceBeatRange": [45, 60.5],
+      "mode": "right-hand-led",
+      "reduction": "RH remains foreground even after descending below the offbeat LH A4. Put each LH A4 on the quieter harmony patch one octave lower; bass is reserved for written pedal notes."
+    },
+    {
+      "name": "Interleaved hands and pedal replies",
+      "sourceBeatRange": [60.5, 84],
+      "mode": "interleaved-manuals",
+      "reduction": "The newest manual onset owns melody, regardless of pitch or hand; simultaneous dyads retain their lower tone on harmony when possible. Bass retains the pedal. Omit additional sustained or doubled tones rather than masking the moving line."
+    },
+    {
+      "name": "Diminished pillar and paired triplet descent",
+      "sourceBeatRange": [84, 106],
+      "mode": "manual-pair",
+      "reduction": "The held chord uses pedal plus lead and selected harmony cycling. At source beat 86 the tied C#5 and E4 become the first triplet notes, despite having begun at beat 84. Subsequent RH/LH triplets keep independent melody/bass lanes."
+    },
+    {
+      "name": "Cadential chord replies and pedal run",
+      "sourceBeatRange": [106, 114.5],
+      "mode": "pedal-and-manuals",
+      "reduction": "Retain the pedal run and each upper chord attack; a single harmony voice cycles source-backed interior tones only during the four longer chord replies. Upper octave doublings remain explicit omissions."
+    },
+    {
+      "name": "Upper resolution with moving inner voice",
+      "sourceBeatRange": [114.5, 116],
+      "mode": "pedal-and-manuals",
+      "reduction": "Keep F4 then E4 on melody, D4 then C#4 on harmony, and the written pedal. G3 replaces the last quarter-beat of the C#4 inner sustain at 115.75 to expose the final inner resolution; omit A3 doubling."
+    },
+    {
+      "name": "Final D minor inner resolution and warm hold",
+      "sourceBeatRange": [116, 118],
+      "mode": "pedal-and-manuals",
+      "reduction": "D4 melody and D2 pedal remain sustained while harmony exposes G3–F3–E3–F3. Omit the simultaneous D3/A3 doublings. The final F3 is a sustained minor third rather than an arpeggio; the authored three-second last-beat hold precedes release."
+    }
+  ],
+  "octaveChanges": [
+    {"voice": "harmony", "sourcePart": "left-manual", "sourceBeatRange": [45, 60.5], "semitones": -12, "reason": "Keep the repeated A accompaniment below the high RH run and audible as rhythmic support when the RH descends."}
+  ],
+  "voiceOverrides": [
+    {"voice": "melody", "sourceBeatRange": [114.5, 115], "sourceId": "right-manual-0531"},
+    {"voice": "melody", "sourceBeatRange": [115, 116], "sourceId": "right-manual-0532"},
+    {"voice": "harmony", "sourceBeatRange": [114.5, 115.5], "sourceId": "right-manual-0530"},
+    {"voice": "harmony", "sourceBeatRange": [115.5, 115.75], "sourceId": "right-manual-0533"},
+    {"voice": "harmony", "sourceBeatRange": [115.75, 116], "sourceId": "left-manual-0354"},
+    {"voice": "harmony", "sourceBeatRange": [116, 116.5], "sourceId": "left-manual-0354"},
+    {"voice": "harmony", "sourceBeatRange": [116.5, 116.75], "sourceId": "left-manual-0357"},
+    {"voice": "harmony", "sourceBeatRange": [116.75, 117], "sourceId": "left-manual-0358"},
+    {"voice": "harmony", "sourceBeatRange": [117, 118], "sourceId": "left-manual-0359"}
+  ],
+  "chordCycles": [
+    {"sourceBeatRange": [39, 41], "voice": "harmony", "carrierSourceId": "left-manual-0154", "sourceIds": ["left-manual-0154", "left-manual-0155", "right-manual-0151", "right-manual-0152"], "instrumentId": "diminished-cycle"},
+    {"sourceBeatRange": [84, 86], "voice": "harmony", "carrierSourceId": "left-manual-0228", "sourceIds": ["left-manual-0228", "left-manual-0229", "right-manual-0378", "right-manual-0379"], "instrumentId": "diminished-cycle"},
+    {"sourceBeatRange": [106, 107], "voice": "harmony", "carrierSourceId": "left-manual-0349", "sourceIds": ["left-manual-0349", "right-manual-0500", "right-manual-0501", "right-manual-0502"], "instrumentId": "dominant-cycle"},
+    {"sourceBeatRange": [107, 108], "voice": "harmony", "carrierSourceId": "right-manual-0506", "sourceIds": ["right-manual-0506", "right-manual-0507", "right-manual-0508", "right-manual-0509"], "instrumentId": "minor-cycle"},
+    {"sourceBeatRange": [108, 109], "voice": "harmony", "carrierSourceId": "right-manual-0512", "sourceIds": ["right-manual-0512", "right-manual-0513", "right-manual-0514", "right-manual-0515"], "instrumentId": "subdominant-cycle"},
+    {"sourceBeatRange": [110, 111], "voice": "harmony", "carrierSourceId": "right-manual-0517", "sourceIds": ["right-manual-0517", "right-manual-0518", "right-manual-0519", "right-manual-0520"], "instrumentId": "dominant-inner-cycle"}
+  ],
+  "ornaments": [
+    {"sourceId": "right-manual-0167", "sourceBeatRange": [43, 43.75], "offsets": [0, 2, 0, 2, 0, 2, 0], "kind": "printed-trill", "basis": "ToccataFugue.ly:451, RH second voice m11 f8.^\\trill; G4 upper neighbour from the D-minor key", "interpretation": "Seven even F4/G4 alternations starting and ending on F4; an authored realization, not a MIDI ornament or a measured performance transcription."}
+  ],
+  "reviewUncertainties": [
+    "The MIDI encodes notation durations; concise breaths, rubato and final hold are authored and await full-form human listening.",
+    "The m11 trill alternation rate and main-note start are an authored ornament realization; historical-performance fidelity is not claimed.",
+    "Three voices omit manual doublings and shorten some inner sustains; sourceDisposition retains exact source IDs and omitted intervals.",
+    "Adjacent native selections reset sound tables and may retain the envelope at tempo 1; no organ legato or gate-reattack equivalence is claimed.",
+    "The raised F# in the accepted early cadence remains unchanged; final cadence uses the source F natural."
+  ]
+}

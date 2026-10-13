@@ -30,6 +30,8 @@ Use the [musical gesture library](gestures/README.md) for groove, chord response
 
 ## Reference material worth learning from
 
+The [organ-weight/forward-motion gesture](gestures/driven-organ-phrasing.md) records an original Bach application of moving pulse, filtered pedal foundation and selective chord cycling. The faster opening is accepted; its timing maps and native palette are editable. It also preserves the rejected slow pacing, so future reuse starts with the musical limitation as well as the patch settings.
+
 - [Hülsbeck and Tel](../composers/huelsbeck-tel.md): programmable instruments, shared voice roles, groove, and the relationship between Soundmonitor and custom drivers.
 - [Hubbard and Galway](../composers/hubbard-galway.md): staged transients, larger-ensemble illusion, filter character, custom music languages, and original player sources.
 - [Follin and Daglish](../composers/follin-daglish.md): expressive melodic lines, percussion identity, contrasting sections, and collaboration with tool programmers.
