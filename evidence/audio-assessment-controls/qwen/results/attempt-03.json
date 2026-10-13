@@ -1,0 +1,45 @@
+{
+  "id": "c03",
+  "wav_path": "/Users/mbackschat/Projects/c64-sid-skill/build/audio-perception-controls-20261013/inputs-local/c03.wav",
+  "audio_sha256": "84030a2eaf214416b20bcc96d621ddf4cd47f655f1d8dcdd380418b37ebacdc1",
+  "duration_seconds": 4.0,
+  "model": "qwen/qwen3.8-omni-flash",
+  "max_tokens": 1200,
+  "reasoning": false,
+  "reasoning_effort": null,
+  "payload_sha256": "c15ee653848e1ea243ae8cf10ba759487cc04819c81656d4309c3671a4cc80dd",
+  "status": "complete",
+  "started_at": "2026-10-13T22:05:42.575881+00:00",
+  "cost": 4.567e-05,
+  "key_limits": {
+    "limit": 10.0,
+    "limit_remaining": 9.99473408,
+    "limit_reset": null
+  },
+  "response_path": "response-03.json",
+  "response_sha256": "326bf348e5e7d3ad782d599abf4a9ecc4191cde32a7cc2b81d5665ef481fd891",
+  "finished_at": "2026-10-13T22:05:44.506080+00:00",
+  "usage": {
+    "prompt_tokens": 129,
+    "completion_tokens": 56,
+    "total_tokens": 185,
+    "cost": 4.567e-05,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 4.567e-05,
+      "upstream_inference_prompt_cost": 1.935e-05,
+      "upstream_inference_completions_cost": 2.632e-05
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

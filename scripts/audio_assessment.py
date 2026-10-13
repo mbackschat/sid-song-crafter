@@ -85,8 +85,8 @@ def _prepare(manifest_path, output_path):
         raise TrialError("Manifest model must be a nonempty string")
     if type(max_tokens) is not int or not 1 <= max_tokens <= 1200:
         raise TrialError("Manifest max_tokens must be an integer from 1 through 1200")
-    if type(reasoning) is not bool:
-        raise TrialError("Manifest reasoning must be a boolean")
+    if reasoning is not None and type(reasoning) is not bool:
+        raise TrialError("Manifest reasoning must be a boolean or null")
     if "reasoning_effort" in manifest and reasoning_effort not in ("low", "medium", "high"):
         raise TrialError("Manifest reasoning_effort must be low, medium or high")
     if reasoning_effort is not None and not reasoning:
@@ -117,7 +117,9 @@ def _prepare(manifest_path, output_path):
                     raise TrialError("WAV PCM is truncated")
         except (OSError, EOFError, wave.Error, ZeroDivisionError):
             raise TrialError(f"Cannot read valid PCM WAV: {path}") from None
-        payload = {"model": model, "max_tokens": max_tokens, "temperature": 0, "reasoning": {"enabled": reasoning}, "provider": {"allow_fallbacks": False}, "messages": [{"role": "user", "content": [{"type": "text", "text": case["prompt"]}, {"type": "input_audio", "input_audio": {"data": base64.b64encode(audio).decode("ascii"), "format": "wav"}}]}]}
+        payload = {"model": model, "max_tokens": max_tokens, "temperature": 0, "provider": {"allow_fallbacks": False}, "messages": [{"role": "user", "content": [{"type": "text", "text": case["prompt"]}, {"type": "input_audio", "input_audio": {"data": base64.b64encode(audio).decode("ascii"), "format": "wav"}}]}]}
+        if reasoning is not None:
+            payload["reasoning"] = {"enabled": reasoning}
         if reasoning_effort is not None:
             payload["reasoning"]["effort"] = reasoning_effort
         encoded = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()

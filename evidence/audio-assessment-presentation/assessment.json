@@ -1,0 +1,141 @@
+{
+  "date": "2026-10-14",
+  "model": "qwen/qwen3.8-omni-flash",
+  "scope": "Bounded prompt and sample-rate follow-up; single completion per cell, with two exact earlier-payload replications",
+  "total_cost_usd": "0.00043682",
+  "findings": {
+    "silence_freeform_44100": "invented sustained musical note; repeats earlier failure",
+    "silence_category_44100": "correct silence",
+    "silence_freeform_16000": "invented sustained electronic tone",
+    "silence_category_16000": "correct silence; repeats earlier success",
+    "pulse_AB_44100": "missed inferred animation direction",
+    "pulse_BA_44100": "missed inferred animation direction",
+    "identical_AA_44100": "correct no difference",
+    "pulse_AB_16000": "missed inferred animation direction; no separate human verdict for resample"
+  },
+  "decision": "Narrower prompt and 16 kHz do not establish pulse discrimination. Explicit categories improve this silence observation at both tested rates. No general model-listener adoption.",
+  "limitations": [
+    "One completion per factorial cell cannot estimate general reliability",
+    "Narrow animation question is an inference from the scoped human preference, not a separately accepted unique cue",
+    "All pulse answers use 0.95 confidence; self-reported confidence does not discriminate correctness",
+    "Do not continue tuning on this anchor and call it holdout validation"
+  ],
+  "cases": [
+    {
+      "id": "p01",
+      "expected": {
+        "category": "silence",
+        "music": false,
+        "speech": false
+      },
+      "audio_sha256": "f863d98220a9f1aa76e43170f4948f0888b2028fcf6b0aae497fde768efca380",
+      "payload_sha256": "2c094188b3ffe4403780d6d87eb9705c030d80e3c418c0c32bae5a89b8c334e2",
+      "response_sha256": "70de428f428abc85b7b2d61d4ef030067089688ffa91d9781c88ae37a3dc2c5d",
+      "provider": "Alibaba",
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "content": "The audio contains a single, sustained musical note. There is no speech present in the clip. The instrumental texture is monophonic, consisting of only one melodic line with no harmony or accompaniment.",
+      "cost_usd": 3.236e-05
+    },
+    {
+      "id": "p02",
+      "expected": {
+        "category": "silence",
+        "music": false,
+        "speech": false
+      },
+      "audio_sha256": "f863d98220a9f1aa76e43170f4948f0888b2028fcf6b0aae497fde768efca380",
+      "payload_sha256": "552611f4e2bfbc42333a1487d515c02557aed280c00b965eff942e6cc4a10277",
+      "response_sha256": "39f17c00ea7c9bed079c6ecb27dab338f2c7aaff104435bece3f49b498b404b6",
+      "provider": "Alibaba",
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "content": "```json\n{\n  \"category\": \"silence\",\n  \"evidence\": \"The audio file contains no audible sound.\",\n  \"transcript\": \"\"\n}\n```",
+      "cost_usd": 3.815e-05
+    },
+    {
+      "id": "p03",
+      "expected": {
+        "category": "silence",
+        "music": false,
+        "speech": false
+      },
+      "audio_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "payload_sha256": "52073021a723c7b60ce68d39c15c09accfe911e84644442ede9d8a86387a8fe7",
+      "response_sha256": "f3937356adf96fc2eca4d550bbb33da481c9a855768f0ee119c46ba308337167",
+      "provider": "Alibaba",
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "content": "The audio clip contains no speech or music. It consists of a single, sustained electronic tone that resembles a sine wave. The instrumental texture is monophonic, featuring only this one pure, unmodulated pitch.",
+      "cost_usd": 3.283e-05
+    },
+    {
+      "id": "p04",
+      "expected": {
+        "category": "silence",
+        "music": false,
+        "speech": false
+      },
+      "audio_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "payload_sha256": "2d12d0faa803bfaae6c7c31aaf20f8cbbbe4849751660aac0bf470dc97c2aa76",
+      "response_sha256": "8f40edd4d2435865f10ae42b4e24a5e6d79d31c6d4bec805c51dffad3a81baca",
+      "provider": "Alibaba",
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "content": "```json\n{\n  \"category\": \"silence\",\n  \"evidence\": \"The audio file contains no audible sound.\",\n  \"transcript\": \"\"\n}\n```",
+      "cost_usd": 3.815e-05
+    },
+    {
+      "id": "p05",
+      "expected": {
+        "difference": "yes",
+        "more_animated": "A"
+      },
+      "audio_sha256": "7513f4133a21fae7ba72c11d58b761e34c6bef36015be9dfa437d9cc86aee299",
+      "payload_sha256": "6493ee4d7747980ce369491680192267b22c40e12e3763827c3aa4cef60615f9",
+      "response_sha256": "e9037808fc2677d8d1d94cef31bab825650f00eba78f2ef3d40969b87d269863",
+      "provider": "Alibaba",
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "content": "{\n  \"difference\": \"no\",\n  \"more_animated\": \"neither\",\n  \"observations\": \"The lead tone in both sections A (0-8s) and B (8.5-16.5s) has a very similar static, bright, square-wave-like timbre. There is no audible periodic wavering or change in brightness in either section; they are essentially identical in this regard.\",\n  \"confidence\": 0.95\n}",
+      "cost_usd": 7.959e-05
+    },
+    {
+      "id": "p06",
+      "expected": {
+        "difference": "yes",
+        "more_animated": "B"
+      },
+      "audio_sha256": "c5ac6db63213810d97c2b8cc34393696ae08313879ce4cc36c0ec6cd98147345",
+      "payload_sha256": "e0755e7394408c0328977aba201ffdaae39f36309ee78b95a52e007ae31f695b",
+      "response_sha256": "226ab82214f014a2bbc0a824eaa52f6339bb89d57afe2b68b2e5e5f639dfb1f6",
+      "provider": "Alibaba",
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "content": "{\n  \"difference\": \"no\",\n  \"more_animated\": \"neither\",\n  \"observations\": [\n    \"In both segment A (0-8s) and segment B (8.5-16.5s), the lead sound has a consistent, static tone color.\",\n    \"There is no audible periodic change, wavering, or modulation in brightness in either segment; the timbre remains steady throughout.\"\n  ],\n  \"confidence\": 0.95\n}",
+      "cost_usd": 8.241e-05
+    },
+    {
+      "id": "p07",
+      "expected": {
+        "difference": "no",
+        "more_animated": "neither"
+      },
+      "audio_sha256": "31893bb09612df8c263b29ec6eace86fa189209243a3feb2e88ab7bc76c9ac6e",
+      "payload_sha256": "688a7af844ca58011dcd4e263221f8ec404583b4c98d9551fc8870a340231c25",
+      "response_sha256": "a28590999366cfc56053fe0ae34c76f8b9967a7a3ca0447496fa4207ed315497",
+      "provider": "Alibaba",
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "content": "{\"difference\": \"no\", \"more_animated\": \"neither\", \"observations\": [\"The lead sound in both section A (0-8s) and section B (8.5-16.5s) has a consistent, static tone color.\", \"There is no audible periodic change, wavering, or modulation in the brightness of the lead sound in either section.\"], \"confidence\": 0.95}",
+      "cost_usd": 7.348e-05
+    },
+    {
+      "id": "p08",
+      "expected": {
+        "difference": "yes",
+        "more_animated": "A"
+      },
+      "audio_sha256": "a13da173026ad252f58de7e5b9a744da52c554aa1dd71713ba48b755d7bb9a5b",
+      "payload_sha256": "52fd2e2fd6d8f99cc5cbe56908358afb6df0a85b37dfa5bb039417c95ab636a8",
+      "response_sha256": "1ffd4ccf6ace276abb3a3e870a0810b2ba6def8c8fb848112ddc5e8532ee7c62",
+      "provider": "Alibaba",
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "content": "{\"difference\": \"no\", \"more_animated\": \"neither\", \"observations\": [\"The lead sound in both segments has a consistent, static tone color.\", \"There is no audible periodic change or wavering in brightness in either segment.\"], \"confidence\": 0.95}",
+      "cost_usd": 5.985e-05
+    }
+  ]
+}

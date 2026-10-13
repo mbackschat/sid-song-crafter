@@ -1,0 +1,204 @@
+{
+  "model": "google/gemini-3.8-flash",
+  "passed": false,
+  "manifest_sha256": "124f4801d473171b1a40a573044f4cdd69a59ca97d896ffd127231f8215f959c",
+  "oracle_sha256": "280e6c6b547436fde60129ed5d2046a988005853ccac46113e7176e5ec091b5f",
+  "evaluator_sha256": "5c28f7acb993aa5e75360584dce0bf0d1277b692a7174f1780141840303b6690",
+  "correct": 5,
+  "total": 8,
+  "total_cost_usd": "0.00522300",
+  "cases": [
+    {
+      "id": "c01",
+      "expected": {
+        "id": "c01",
+        "category": "silence",
+        "audio_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809"
+      },
+      "passed": false,
+      "observed_category": "speech",
+      "missing_words": [],
+      "response": {
+        "category": "speech",
+        "evidence": "A person can be heard speaking clearly.",
+        "transcript": "a red apple"
+      },
+      "audio_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "payload_sha256": "3dfa3805bd1feb6b67580852cfce9e5b1d87654b1f4772d62451355fc25053eb",
+      "response_sha256": "4aff2d0ffee6684166556587a5c6282a0933dcb9f10322b7996f2ab70ed581d9",
+      "content": "```json\n{\n \"category\": \"speech\",\n \"evidence\": \"A person can be heard speaking clearly.\",\n \"transcript\": \"a red apple\"\n}\n```",
+      "cost_usd": 0.00027825,
+      "response_model": "google/gemini-3.8-flash",
+      "provider": "Google"
+    },
+    {
+      "id": "c02",
+      "expected": {
+        "id": "c02",
+        "category": "steady_tone",
+        "audio_sha256": "cdc22ed82304b95d78f49e64511e653bdaee3a8cb69604106b163760fe027ce2"
+      },
+      "passed": true,
+      "observed_category": "steady_tone",
+      "missing_words": [],
+      "response": {
+        "category": "steady_tone",
+        "evidence": "A continuous, high-pitched electronic whistle or tone sounds steadily throughout the recording.",
+        "transcript": ""
+      },
+      "audio_sha256": "cdc22ed82304b95d78f49e64511e653bdaee3a8cb69604106b163760fe027ce2",
+      "payload_sha256": "7bafdca700a8208473def00b1f5e1a5cdc54804521909b3567a299898a45cd28",
+      "response_sha256": "2a4040ed9b3aeab40fea3eeb5d0b67bdf6b5389a07c3fa73483000c5c145d21a",
+      "content": "```json\n{\n \"category\": \"steady_tone\",\n \"evidence\": \"A continuous, high-pitched electronic whistle or tone sounds steadily throughout the recording.\",\n \"transcript\": \"\"\n}\n```",
+      "cost_usd": 0.00074325,
+      "response_model": "google/gemini-3.8-flash",
+      "provider": "Google"
+    },
+    {
+      "id": "c03",
+      "expected": {
+        "id": "c03",
+        "category": "changing_tone",
+        "audio_sha256": "84030a2eaf214416b20bcc96d621ddf4cd47f655f1d8dcdd380418b37ebacdc1"
+      },
+      "passed": true,
+      "observed_category": "changing_tone",
+      "missing_words": [],
+      "response": {
+        "category": "changing_tone",
+        "evidence": "A continuous synthetic tone sweeps and modulates in pitch throughout the clip.",
+        "transcript": ""
+      },
+      "audio_sha256": "84030a2eaf214416b20bcc96d621ddf4cd47f655f1d8dcdd380418b37ebacdc1",
+      "payload_sha256": "d9e964fb1892a2c4d88d0b3bd1645d3efd7e3e34793ce5b726caf2aa3423517e",
+      "response_sha256": "383401960fd0f62edcc4aed624670051626a9954c68d665ba1d44b90a7ab9e27",
+      "content": "```json\n{\n \"category\": \"changing_tone\",\n \"evidence\": \"A continuous synthetic tone sweeps and modulates in pitch throughout the clip.\",\n \"transcript\": \"\"\n}\n```",
+      "cost_usd": 0.00067575,
+      "response_model": "google/gemini-3.8-flash",
+      "provider": "Google"
+    },
+    {
+      "id": "c04",
+      "expected": {
+        "id": "c04",
+        "category": "noise",
+        "audio_sha256": "646977e16748ca21b05f080370cd2be76d895bbfbbafdfc2801ab0809785b213"
+      },
+      "passed": true,
+      "observed_category": "noise",
+      "missing_words": [],
+      "response": {
+        "category": "noise",
+        "evidence": "Continuous static hissing noise resembling steam or white noise.",
+        "transcript": ""
+      },
+      "audio_sha256": "646977e16748ca21b05f080370cd2be76d895bbfbbafdfc2801ab0809785b213",
+      "payload_sha256": "7e24980dc3c993901e8442c784ae2c74574f67c8d3d27a8023edf52886904394",
+      "response_sha256": "b98af0c80d69587bf79dcfb8ff73cc3eda80b7124884d9d92d833acebda9f63a",
+      "content": "```json\n{\n \"category\": \"noise\",\n \"evidence\": \"Continuous static hissing noise resembling steam or white noise.\",\n \"transcript\": \"\"\n}\n```",
+      "cost_usd": 0.00040575,
+      "response_model": "google/gemini-3.8-flash",
+      "provider": "Google"
+    },
+    {
+      "id": "c05",
+      "expected": {
+        "id": "c05",
+        "category": "repeated_tones",
+        "audio_sha256": "fbf021da5147a0c4505368d713fe61577cc00da2dcb1a708a03a1f384b82d38d"
+      },
+      "passed": true,
+      "observed_category": "repeated_tones",
+      "missing_words": [],
+      "response": {
+        "category": "repeated_tones",
+        "evidence": "Short electronic beeps sound consecutively in the clip.",
+        "transcript": ""
+      },
+      "audio_sha256": "fbf021da5147a0c4505368d713fe61577cc00da2dcb1a708a03a1f384b82d38d",
+      "payload_sha256": "2c0f24ed623fbdcbef06a1dd5839f8b2a38f1d82615281b01a6b8864199e7625",
+      "response_sha256": "60b17caa330b723154688b2f65f3cc2f76f5c45687182b88f9a113beb419bea0",
+      "content": "```json\n{\n \"category\": \"repeated_tones\",\n \"evidence\": \"Short electronic beeps sound consecutively in the clip.\",\n \"transcript\": \"\"\n}\n```",
+      "cost_usd": 0.00079575,
+      "response_model": "google/gemini-3.8-flash",
+      "provider": "Google"
+    },
+    {
+      "id": "c06",
+      "expected": {
+        "id": "c06",
+        "category": "speech",
+        "required_words": [
+          "blue",
+          "lantern",
+          "seven",
+          "wooden",
+          "boxes"
+        ],
+        "audio_sha256": "69c7d7c22d666ad05097b43b0927fa827621fb01322653c0760c8f166d222f5f"
+      },
+      "passed": true,
+      "observed_category": "speech",
+      "missing_words": [],
+      "response": {
+        "category": "speech",
+        "evidence": "A female voice clearly speaks an English sentence.",
+        "transcript": "The blue lantern is beside seven wooden boxes."
+      },
+      "audio_sha256": "69c7d7c22d666ad05097b43b0927fa827621fb01322653c0760c8f166d222f5f",
+      "payload_sha256": "d7d0a0224f67560fe776f77eac1845f07f4a1de11bb983fac513c540958a00b6",
+      "response_sha256": "f486ff16c5b784d499df3392ae2a7b6f3337ddb72478ca08cb9e8f750537a0f2",
+      "content": "```json\n{\n \"category\": \"speech\",\n \"evidence\": \"A female voice clearly speaks an English sentence.\",\n \"transcript\": \"The blue lantern is beside seven wooden boxes.\"\n}\n```",
+      "cost_usd": 0.0005265,
+      "response_model": "google/gemini-3.8-flash",
+      "provider": "Google"
+    },
+    {
+      "id": "c07",
+      "expected": {
+        "id": "c07",
+        "category": "silence",
+        "audio_sha256": "47b589098cc9e4b92774cd5b6a57ccca0713c02396bf755b2318f7e81cdc534e"
+      },
+      "passed": false,
+      "observed_category": "speech",
+      "missing_words": [],
+      "response": {
+        "category": "speech",
+        "evidence": "A person speaks clearly throughout the audio clip.",
+        "transcript": "In other words, you have done nothing."
+      },
+      "audio_sha256": "47b589098cc9e4b92774cd5b6a57ccca0713c02396bf755b2318f7e81cdc534e",
+      "payload_sha256": "f3371a63840295468b1c8bbdaed071a6a6274f7f278602f82396d815fbcd30bb",
+      "response_sha256": "1b2ac9f612bab72fb0fb3afc30711a766fa75470bfa8e1c12d518bee5cb38d34",
+      "content": "```json\n{\n \"category\": \"speech\",\n \"evidence\": \"A person speaks clearly throughout the audio clip.\",\n \"transcript\": \"In other words, you have done nothing.\"\n}\n```",
+      "cost_usd": 0.00084075,
+      "response_model": "google/gemini-3.8-flash",
+      "provider": "Google"
+    },
+    {
+      "id": "c08",
+      "expected": {
+        "id": "c08",
+        "category": "steady_tone",
+        "audio_sha256": "d6f93d0f945e5e3eb75657e7c421a006e1dd6bfef3a2d554235fc6ea055bff5d"
+      },
+      "passed": false,
+      "observed_category": "changing_tone",
+      "missing_words": [],
+      "response": {
+        "category": "changing_tone",
+        "evidence": "A high-pitched siren or alarm tone continuously oscillates and modulates in frequency.",
+        "transcript": ""
+      },
+      "audio_sha256": "d6f93d0f945e5e3eb75657e7c421a006e1dd6bfef3a2d554235fc6ea055bff5d",
+      "payload_sha256": "39160965d686b9245e5ba8ed6f3a1e1e61c431f621d9720ac154e92cd1428ada",
+      "response_sha256": "664253a56636060ec593ed5be52283009360ac9816e0b8d70589d929d9099e3b",
+      "content": "```json\n{\n \"category\": \"changing_tone\",\n \"evidence\": \"A high-pitched siren or alarm tone continuously oscillates and modulates in frequency.\",\n \"transcript\": \"\"\n}\n```",
+      "cost_usd": 0.000957,
+      "response_model": "google/gemini-3.8-flash",
+      "provider": "Google"
+    }
+  ],
+  "scope": "Basic perception gate only; passing does not establish musical judgment."
+}

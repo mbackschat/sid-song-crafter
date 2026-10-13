@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "c01",
+      "category": "silence",
+      "audio_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809"
+    },
+    {
+      "id": "c02",
+      "category": "steady_tone",
+      "audio_sha256": "cdc22ed82304b95d78f49e64511e653bdaee3a8cb69604106b163760fe027ce2"
+    },
+    {
+      "id": "c03",
+      "category": "changing_tone",
+      "audio_sha256": "84030a2eaf214416b20bcc96d621ddf4cd47f655f1d8dcdd380418b37ebacdc1"
+    },
+    {
+      "id": "c04",
+      "category": "noise",
+      "audio_sha256": "646977e16748ca21b05f080370cd2be76d895bbfbbafdfc2801ab0809785b213"
+    },
+    {
+      "id": "c05",
+      "category": "repeated_tones",
+      "audio_sha256": "fbf021da5147a0c4505368d713fe61577cc00da2dcb1a708a03a1f384b82d38d"
+    },
+    {
+      "id": "c06",
+      "category": "speech",
+      "required_words": [
+        "blue",
+        "lantern",
+        "seven",
+        "wooden",
+        "boxes"
+      ],
+      "audio_sha256": "69c7d7c22d666ad05097b43b0927fa827621fb01322653c0760c8f166d222f5f"
+    },
+    {
+      "id": "c07",
+      "category": "silence",
+      "audio_sha256": "47b589098cc9e4b92774cd5b6a57ccca0713c02396bf755b2318f7e81cdc534e"
+    },
+    {
+      "id": "c08",
+      "category": "steady_tone",
+      "audio_sha256": "d6f93d0f945e5e3eb75657e7c421a006e1dd6bfef3a2d554235fc6ea055bff5d"
+    }
+  ],
+  "gate": {
+    "required_case_count": 8,
+    "require_all_categories_correct": true,
+    "require_all_speech_words": true,
+    "transcript_matching": "Case and punctuation ignored; 7 is equivalent to seven",
+    "establishes_musical_ability": false,
+    "scope": "A pass establishes perception of these elementary controls only; it does not establish musical comparison or judgment"
+  }
+}

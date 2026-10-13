@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/studies/audio-assessment/prepare-presentation.py",
+  "generator_sha256": "9d559f7a7f929f6345a018ef2c14322e1c98c73631a3e3f09075c70cd59c1e2d",
+  "pilot_provenance": {
+    "path": "build/audio-assessment-openrouter-20261013/provenance.json",
+    "sha256": "892e9642c4305a11c13df97de7ba5f02d5c96b3f7294ecb9f2c2a3e6d9b838c3"
+  },
+  "controls_provenance": {
+    "path": "build/audio-perception-controls-20261013/inputs-local/provenance.json",
+    "sha256": "4f9457fc061fd8ec259316327d36ed6a58b16f677f3c8ec9b4df6f4d21570a81"
+  },
+  "completed_receipts": {
+    "t01": [
+      "build/audio-assessment-openrouter-20261013/results/attempt-02.json",
+      "build/audio-assessment-openrouter-20261013/results/attempt-05.json"
+    ],
+    "t02": [
+      "build/audio-assessment-openrouter-20261013/results/attempt-03.json",
+      "build/audio-assessment-openrouter-20261013/results/attempt-06.json"
+    ],
+    "t03": [
+      "build/audio-assessment-openrouter-20261013/results/attempt-04.json",
+      "build/audio-assessment-openrouter-20261013/results/attempt-07.json"
+    ],
+    "silence44": [
+      "build/audio-assessment-openrouter-20261013/results/attempt-08.json"
+    ],
+    "silence16": [
+      "build/audio-perception-controls-20261014/qwen/results/attempt-01.json"
+    ]
+  },
+  "afconvert": {
+    "path": "/usr/bin/afconvert",
+    "sha256": "beec8f2d64388e6d707ac8b4fe7477649ab93c0c66610faf0abe3cfbdfda871b",
+    "version": "2.0",
+    "version_command": [
+      "/usr/bin/afconvert",
+      "-h"
+    ]
+  },
+  "gain": 1,
+  "normalization": false,
+  "cases": {
+    "p01": {
+      "role": "44.1 kHz silence; original freeform prompt",
+      "source": "build/audio-assessment-openrouter-repro-20261013/s01.wav",
+      "source_sha256": "f863d98220a9f1aa76e43170f4948f0888b2028fcf6b0aae497fde768efca380",
+      "prompt": "Describe the audible sounds in this short clip in at most three sentences. State whether there is music or speech and describe the instrumental texture. If you cannot hear or assess the audio, say so.",
+      "prompt_sha256": "edc3d3c601d23a8a483d56c2eaee8df7141f0624efda48c493db8646e6fa0498",
+      "output": {
+        "sha256": "f863d98220a9f1aa76e43170f4948f0888b2028fcf6b0aae497fde768efca380",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 176400,
+        "durationSeconds": 4.0,
+        "peak": 0,
+        "peakDbfs": null,
+        "clippedSamples": 0,
+        "rms": 0.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 0.0,
+            "rms": 0.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    },
+    "p02": {
+      "role": "44.1 kHz silence; category prompt",
+      "source": "build/audio-assessment-openrouter-repro-20261013/s01.wav",
+      "source_sha256": "f863d98220a9f1aa76e43170f4948f0888b2028fcf6b0aae497fde768efca380",
+      "prompt": "Listen to the attached audio and identify the dominant audible sound. Reply with JSON fields category, evidence, transcript. Category must be one of silence, speech, steady_tone, changing_tone, noise, repeated_tones, other, uncertain. Give brief evidence based on what you hear. If speech is present, transcribe it in transcript; otherwise use an empty string. If you cannot hear or assess the audio, choose uncertain.",
+      "prompt_sha256": "4c6c413d822bb9624957fe5a65be82b6f9be6bc2627ca8008cf75cb962d25f30",
+      "output": {
+        "sha256": "f863d98220a9f1aa76e43170f4948f0888b2028fcf6b0aae497fde768efca380",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 176400,
+        "durationSeconds": 4.0,
+        "peak": 0,
+        "peakDbfs": null,
+        "clippedSamples": 0,
+        "rms": 0.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 0.0,
+            "rms": 0.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    },
+    "p03": {
+      "role": "16 kHz silence; original freeform prompt",
+      "source": "build/audio-perception-controls-20261013/inputs-local/c01.wav",
+      "source_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "prompt": "Describe the audible sounds in this short clip in at most three sentences. State whether there is music or speech and describe the instrumental texture. If you cannot hear or assess the audio, say so.",
+      "prompt_sha256": "edc3d3c601d23a8a483d56c2eaee8df7141f0624efda48c493db8646e6fa0498",
+      "output": {
+        "sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+        "format": "PCM16",
+        "sampleRate": 16000,
+        "channels": 1,
+        "frames": 64000,
+        "durationSeconds": 4.0,
+        "peak": 0,
+        "peakDbfs": null,
+        "clippedSamples": 0,
+        "rms": 0.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 0.0,
+            "rms": 0.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    },
+    "p04": {
+      "role": "16 kHz silence; category prompt; deliberate exact-payload replication",
+      "source": "build/audio-perception-controls-20261013/inputs-local/c01.wav",
+      "source_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "prompt": "Listen to the attached audio and identify the dominant audible sound. Reply with JSON fields category, evidence, transcript. Category must be one of silence, speech, steady_tone, changing_tone, noise, repeated_tones, other, uncertain. Give brief evidence based on what you hear. If speech is present, transcribe it in transcript; otherwise use an empty string. If you cannot hear or assess the audio, choose uncertain.",
+      "prompt_sha256": "4c6c413d822bb9624957fe5a65be82b6f9be6bc2627ca8008cf75cb962d25f30",
+      "output": {
+        "sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+        "format": "PCM16",
+        "sampleRate": 16000,
+        "channels": 1,
+        "frames": 64000,
+        "durationSeconds": 4.0,
+        "peak": 0,
+        "peakDbfs": null,
+        "clippedSamples": 0,
+        "rms": 0.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 0.0,
+            "rms": 0.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    },
+    "p05": {
+      "role": "original A; stationary B; narrower lead-tone prompt",
+      "source": "build/audio-assessment-openrouter-20261013/t03.ab.wav",
+      "source_sha256": "7513f4133a21fae7ba72c11d58b761e34c6bef36015be9dfa437d9cc86aee299",
+      "prompt": "Compare the lead sound\u2019s tone color in A (0\u20138 s) and B (8.5\u201316.5 s). Ignore the shared melody and rhythm. Is one lead tone more periodically changing or wavering in brightness, or is there no audible difference? Return JSON difference yes/no/uncertain, more_animated A/B/neither/uncertain, observations, confidence. Do not infer synthesis method.",
+      "prompt_sha256": "c56973e9b62e639d57d18ad938ae43b7ae01d09ef58f19d0ea2e37f34e652790",
+      "output": {
+        "sha256": "7513f4133a21fae7ba72c11d58b761e34c6bef36015be9dfa437d9cc86aee299",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 727650,
+        "durationSeconds": 16.5,
+        "peak": 16128,
+        "peakDbfs": -6.157388403885733,
+        "clippedSamples": 0,
+        "rms": 4974.058123673147,
+        "acRms": 4939.564160558682,
+        "acRmsDbfs": -16.435226081104965,
+        "perChannel": [
+          {
+            "dc": -584.7735642135642,
+            "rms": 4974.058123673147,
+            "acRms": 4939.564160558682
+          }
+        ]
+      }
+    },
+    "p06": {
+      "role": "stationary A; original B; narrower lead-tone prompt",
+      "source": "build/audio-assessment-openrouter-20261013/t02.ab.wav",
+      "source_sha256": "c5ac6db63213810d97c2b8cc34393696ae08313879ce4cc36c0ec6cd98147345",
+      "prompt": "Compare the lead sound\u2019s tone color in A (0\u20138 s) and B (8.5\u201316.5 s). Ignore the shared melody and rhythm. Is one lead tone more periodically changing or wavering in brightness, or is there no audible difference? Return JSON difference yes/no/uncertain, more_animated A/B/neither/uncertain, observations, confidence. Do not infer synthesis method.",
+      "prompt_sha256": "c56973e9b62e639d57d18ad938ae43b7ae01d09ef58f19d0ea2e37f34e652790",
+      "output": {
+        "sha256": "c5ac6db63213810d97c2b8cc34393696ae08313879ce4cc36c0ec6cd98147345",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 727650,
+        "durationSeconds": 16.5,
+        "peak": 16128,
+        "peakDbfs": -6.157388403885733,
+        "clippedSamples": 0,
+        "rms": 4974.058123673147,
+        "acRms": 4939.564160558682,
+        "acRmsDbfs": -16.435226081104965,
+        "perChannel": [
+          {
+            "dc": -584.7735642135642,
+            "rms": 4974.058123673147,
+            "acRms": 4939.564160558682
+          }
+        ]
+      }
+    },
+    "p07": {
+      "role": "original A; original B; identical-pair control",
+      "source": "build/audio-assessment-openrouter-20261013/t01.ab.wav",
+      "source_sha256": "31893bb09612df8c263b29ec6eace86fa189209243a3feb2e88ab7bc76c9ac6e",
+      "prompt": "Compare the lead sound\u2019s tone color in A (0\u20138 s) and B (8.5\u201316.5 s). Ignore the shared melody and rhythm. Is one lead tone more periodically changing or wavering in brightness, or is there no audible difference? Return JSON difference yes/no/uncertain, more_animated A/B/neither/uncertain, observations, confidence. Do not infer synthesis method.",
+      "prompt_sha256": "c56973e9b62e639d57d18ad938ae43b7ae01d09ef58f19d0ea2e37f34e652790",
+      "output": {
+        "sha256": "31893bb09612df8c263b29ec6eace86fa189209243a3feb2e88ab7bc76c9ac6e",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 727650,
+        "durationSeconds": 16.5,
+        "peak": 16082,
+        "peakDbfs": -6.182197543593024,
+        "clippedSamples": 0,
+        "rms": 4988.5616302381995,
+        "acRms": 4945.513752251312,
+        "acRmsDbfs": -16.424770421871987,
+        "perChannel": [
+          {
+            "dc": -653.9425547996976,
+            "rms": 4988.5616302381995,
+            "acRms": 4945.513752251312
+          }
+        ]
+      }
+    },
+    "p08": {
+      "role": "original A; stationary B; narrower lead-tone prompt; 16 kHz resample of p05",
+      "source": "p05.wav",
+      "source_sha256": "7513f4133a21fae7ba72c11d58b761e34c6bef36015be9dfa437d9cc86aee299",
+      "prompt": "Compare the lead sound\u2019s tone color in A (0\u20138 s) and B (8.5\u201316.5 s). Ignore the shared melody and rhythm. Is one lead tone more periodically changing or wavering in brightness, or is there no audible difference? Return JSON difference yes/no/uncertain, more_animated A/B/neither/uncertain, observations, confidence. Do not infer synthesis method.",
+      "prompt_sha256": "c56973e9b62e639d57d18ad938ae43b7ae01d09ef58f19d0ea2e37f34e652790",
+      "conversion_command": [
+        "/usr/bin/afconvert",
+        "-f",
+        "WAVE",
+        "-d",
+        "LEI16@16000",
+        "-c",
+        "1",
+        "-r",
+        "127",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/audio-presentation-20261014/inputs/p05.wav",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/audio-presentation-20261014/inputs/.p08-converted.wav"
+      ],
+      "converted_container_sha256": "ca8ac0481d74d5c830bbc31743e9770078b056d98845e39effad4c986ce7383b",
+      "container_metadata_removed": true,
+      "segments_frames": {
+        "A": [
+          0,
+          128000
+        ],
+        "gap": [
+          128000,
+          136000
+        ],
+        "B": [
+          136000,
+          264000
+        ]
+      },
+      "output": {
+        "sha256": "a13da173026ad252f58de7e5b9a744da52c554aa1dd71713ba48b755d7bb9a5b",
+        "format": "PCM16",
+        "sampleRate": 16000,
+        "channels": 1,
+        "frames": 264000,
+        "durationSeconds": 16.5,
+        "peak": 15547,
+        "peakDbfs": -6.4760667279397435,
+        "clippedSamples": 0,
+        "rms": 4937.5995988596615,
+        "acRms": 4902.84938494411,
+        "acRmsDbfs": -16.500027659856634,
+        "perChannel": [
+          {
+            "dc": -584.7715,
+            "rms": 4937.5995988596615,
+            "acRms": 4902.84938494411
+          }
+        ]
+      }
+    }
+  },
+  "deliberate_replications": {
+    "p01": "original 44.1 kHz freeform silence exact payload",
+    "p04": "basic-control c01 16 kHz category silence exact payload"
+  },
+  "boundary": "cases.json contains anonymous IDs, filenames and prompts. Oracle/provenance remain local and must not be attached. All oracle cases bind to exact audio and payload hashes."
+}

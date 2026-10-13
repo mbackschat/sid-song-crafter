@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/studies/audio-assessment/prepare-controls.py",
+  "generator_sha256": "09774d2649dc0a49b2a54695970e242b4ae57165bb553886aaa67f37a9a275fd",
+  "python_version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "prompt_sha256": "4c6c413d822bb9624957fe5a65be82b6f9be6bc2627ca8008cf75cb962d25f30",
+  "cases": {
+    "c01": {
+      "synthesis": {
+        "method": "zero PCM",
+        "duration_seconds": 4
+      },
+      "pcm": {
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "sample_width_bits": 16,
+        "frames": 64000,
+        "duration_seconds": 4.0,
+        "minimum_sample": 0,
+        "maximum_sample": 0,
+        "nonzero_samples": 0,
+        "clipped_samples": 0,
+        "rms": 0.0,
+        "pcm_sha256": "eec19bc6af0b3b6dfb97a08782c65f4bb3c3203e789a015d2008b0d689ad08be",
+        "wav_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809"
+      }
+    },
+    "c02": {
+      "synthesis": {
+        "method": "sine",
+        "duration_seconds": 4,
+        "frequency_hz": 440,
+        "peak_amplitude_pcm16": 8192,
+        "fade_seconds": 0.01,
+        "phase_at_start_radians": 0
+      },
+      "pcm": {
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "sample_width_bits": 16,
+        "frames": 64000,
+        "duration_seconds": 4.0,
+        "minimum_sample": -8192,
+        "maximum_sample": 8192,
+        "nonzero_samples": 63679,
+        "clipped_samples": 0,
+        "rms": 0.17648085621956666,
+        "pcm_sha256": "ba68f0824a13203c8d8d4cef9b74ebb85c4c40501357debac41b58ce3d62f79d",
+        "wav_sha256": "cdc22ed82304b95d78f49e64511e653bdaee3a8cb69604106b163760fe027ce2"
+      }
+    },
+    "c03": {
+      "synthesis": {
+        "method": "linear sine sweep",
+        "duration_seconds": 4,
+        "start_frequency_hz": 220,
+        "end_frequency_hz": 880,
+        "peak_amplitude_pcm16": 8192,
+        "fade_seconds": 0.01,
+        "phase_at_start_radians": 0
+      },
+      "pcm": {
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "sample_width_bits": 16,
+        "frames": 64000,
+        "duration_seconds": 4.0,
+        "minimum_sample": -8192,
+        "maximum_sample": 8192,
+        "nonzero_samples": 63990,
+        "clipped_samples": 0,
+        "rms": 0.17648094028930808,
+        "pcm_sha256": "ea5c8a61c344fe61e09a3c56bf3b4c972231847ec7a8e61d373dda1427de1a32",
+        "wav_sha256": "84030a2eaf214416b20bcc96d621ddf4cd47f655f1d8dcdd380418b37ebacdc1"
+      }
+    },
+    "c04": {
+      "synthesis": {
+        "method": "uniform independent integer noise",
+        "duration_seconds": 4,
+        "seed": 20261013,
+        "minimum_sample": -6553,
+        "maximum_sample": 6553,
+        "generator": "random.Random"
+      },
+      "pcm": {
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "sample_width_bits": 16,
+        "frames": 64000,
+        "duration_seconds": 4.0,
+        "minimum_sample": -6553,
+        "maximum_sample": 6553,
+        "nonzero_samples": 63996,
+        "clipped_samples": 0,
+        "rms": 0.11542677924823486,
+        "pcm_sha256": "66e65df5df110f7e5b1a2dca70f126b696c30d9579ae695b439d4cdc56fec8c4",
+        "wav_sha256": "646977e16748ca21b05f080370cd2be76d895bbfbbafdfc2801ab0809785b213"
+      }
+    },
+    "c05": {
+      "synthesis": {
+        "method": "three sine beeps with zero PCM gaps",
+        "duration_seconds": 4,
+        "frequency_hz": 700,
+        "beep_duration_seconds": 0.4,
+        "beep_start_seconds": [
+          0.4,
+          1.7,
+          3.0
+        ],
+        "peak_amplitude_pcm16": 8192,
+        "fade_seconds": 0.01,
+        "phase_at_start_radians": 0
+      },
+      "pcm": {
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "sample_width_bits": 16,
+        "frames": 64000,
+        "duration_seconds": 4.0,
+        "minimum_sample": -8192,
+        "maximum_sample": 8192,
+        "nonzero_samples": 18957,
+        "clipped_samples": 0,
+        "rms": 0.09518878252992352,
+        "pcm_sha256": "987b2dce2989904b2a159bc1715bbab52c16d34de43cf03fe775c1b3572d5924",
+        "wav_sha256": "fbf021da5147a0c4505368d713fe61577cc00da2dcb1a708a03a1f384b82d38d"
+      }
+    },
+    "c06": {
+      "synthesis": {
+        "method": "offline macOS speech synthesis",
+        "text": "The blue lantern is beside seven wooden boxes.",
+        "voice": "Samantha",
+        "rate_words_per_minute": 150,
+        "commands": [
+          [
+            "/usr/bin/say",
+            "-v",
+            "Samantha",
+            "-r",
+            "150",
+            "-o",
+            "/Users/mbackschat/Projects/c64-sid-skill/build/audio-perception-controls-20261013/inputs-local/c06.aiff",
+            "The blue lantern is beside seven wooden boxes."
+          ],
+          [
+            "/usr/bin/afconvert",
+            "-f",
+            "WAVE",
+            "-d",
+            "LEI16@16000",
+            "-c",
+            "1",
+            "/Users/mbackschat/Projects/c64-sid-skill/build/audio-perception-controls-20261013/inputs-local/c06.aiff",
+            "/Users/mbackschat/Projects/c64-sid-skill/build/audio-perception-controls-20261013/inputs-local/.c06-converted.wav"
+          ]
+        ],
+        "source_file": "c06.aiff",
+        "source_sha256": "f9aa1a6acb7ca0db474eadba8813042e7d3a033f5787491716f2253f8a5a807e",
+        "converted_wav_sha256": "fd3a476158f7284240fc8dc4d442b69f56e1768c8235957583b791fee1561a17",
+        "container_metadata_removed": true,
+        "tools": {
+          "say": {
+            "path": "/usr/bin/say",
+            "sha256": "d4e3937cfbcec444132363b45368b6ed6a8849a7836338f430b97db990d7a529",
+            "version": null,
+            "version_note": "say does not expose a version option"
+          },
+          "afconvert": {
+            "path": "/usr/bin/afconvert",
+            "sha256": "beec8f2d64388e6d707ac8b4fe7477649ab93c0c66610faf0abe3cfbdfda871b",
+            "version": "2.0",
+            "version_command": [
+              "/usr/bin/afconvert",
+              "-h"
+            ]
+          }
+        },
+        "macos_version": "27.0.1"
+      },
+      "pcm": {
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "sample_width_bits": 16,
+        "frames": 48436,
+        "duration_seconds": 3.02725,
+        "minimum_sample": -13749,
+        "maximum_sample": 26162,
+        "nonzero_samples": 47790,
+        "clipped_samples": 0,
+        "rms": 0.15884750841009135,
+        "pcm_sha256": "a9a7b024247b9da9ff604fb92ad5923f91ed979ef0a59a332c96e7885f28db71",
+        "wav_sha256": "69c7d7c22d666ad05097b43b0927fa827621fb01322653c0760c8f166d222f5f"
+      }
+    },
+    "c07": {
+      "synthesis": {
+        "method": "zero PCM",
+        "duration_seconds": 6
+      },
+      "pcm": {
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "sample_width_bits": 16,
+        "frames": 96000,
+        "duration_seconds": 6.0,
+        "minimum_sample": 0,
+        "maximum_sample": 0,
+        "nonzero_samples": 0,
+        "clipped_samples": 0,
+        "rms": 0.0,
+        "pcm_sha256": "ea0787f65f73b0013d03b359490e3125211b28ad5c1502ffb1544c0ded4192f5",
+        "wav_sha256": "47b589098cc9e4b92774cd5b6a57ccca0713c02396bf755b2318f7e81cdc534e"
+      }
+    },
+    "c08": {
+      "synthesis": {
+        "method": "sine",
+        "duration_seconds": 5,
+        "frequency_hz": 880,
+        "peak_amplitude_pcm16": 8192,
+        "fade_seconds": 0.01,
+        "phase_at_start_radians": 0
+      },
+      "pcm": {
+        "sample_rate_hz": 16000,
+        "channels": 1,
+        "sample_width_bits": 16,
+        "frames": 80000,
+        "duration_seconds": 5.0,
+        "minimum_sample": -8192,
+        "maximum_sample": 8192,
+        "nonzero_samples": 79199,
+        "clipped_samples": 0,
+        "rms": 0.17654038364765892,
+        "pcm_sha256": "b19d169e3f7f0e658650a95ce60e0abb83bb8e27138502517dcbb03cac2ff942",
+        "wav_sha256": "d6f93d0f945e5e3eb75657e7c421a006e1dd6bfef3a2d554235fc6ea055bff5d"
+      }
+    }
+  },
+  "boundary": "cases.json contains anonymous IDs and one neutral prompt; the request includes only that prompt and re-encoded PCM WAV. Oracle and provenance are local and must not be attached."
+}

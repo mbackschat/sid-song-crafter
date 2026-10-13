@@ -1,0 +1,47 @@
+{
+  "model": "qwen/qwen3.8-omni-flash",
+  "max_tokens": 1200,
+  "reasoning": false,
+  "cases": [
+    {
+      "id": "p01",
+      "wav": "p01.wav",
+      "prompt": "Describe the audible sounds in this short clip in at most three sentences. State whether there is music or speech and describe the instrumental texture. If you cannot hear or assess the audio, say so."
+    },
+    {
+      "id": "p02",
+      "wav": "p02.wav",
+      "prompt": "Listen to the attached audio and identify the dominant audible sound. Reply with JSON fields category, evidence, transcript. Category must be one of silence, speech, steady_tone, changing_tone, noise, repeated_tones, other, uncertain. Give brief evidence based on what you hear. If speech is present, transcribe it in transcript; otherwise use an empty string. If you cannot hear or assess the audio, choose uncertain."
+    },
+    {
+      "id": "p03",
+      "wav": "p03.wav",
+      "prompt": "Describe the audible sounds in this short clip in at most three sentences. State whether there is music or speech and describe the instrumental texture. If you cannot hear or assess the audio, say so."
+    },
+    {
+      "id": "p04",
+      "wav": "p04.wav",
+      "prompt": "Listen to the attached audio and identify the dominant audible sound. Reply with JSON fields category, evidence, transcript. Category must be one of silence, speech, steady_tone, changing_tone, noise, repeated_tones, other, uncertain. Give brief evidence based on what you hear. If speech is present, transcribe it in transcript; otherwise use an empty string. If you cannot hear or assess the audio, choose uncertain."
+    },
+    {
+      "id": "p05",
+      "wav": "p05.wav",
+      "prompt": "Compare the lead sound\u2019s tone color in A (0\u20138 s) and B (8.5\u201316.5 s). Ignore the shared melody and rhythm. Is one lead tone more periodically changing or wavering in brightness, or is there no audible difference? Return JSON difference yes/no/uncertain, more_animated A/B/neither/uncertain, observations, confidence. Do not infer synthesis method."
+    },
+    {
+      "id": "p06",
+      "wav": "p06.wav",
+      "prompt": "Compare the lead sound\u2019s tone color in A (0\u20138 s) and B (8.5\u201316.5 s). Ignore the shared melody and rhythm. Is one lead tone more periodically changing or wavering in brightness, or is there no audible difference? Return JSON difference yes/no/uncertain, more_animated A/B/neither/uncertain, observations, confidence. Do not infer synthesis method."
+    },
+    {
+      "id": "p07",
+      "wav": "p07.wav",
+      "prompt": "Compare the lead sound\u2019s tone color in A (0\u20138 s) and B (8.5\u201316.5 s). Ignore the shared melody and rhythm. Is one lead tone more periodically changing or wavering in brightness, or is there no audible difference? Return JSON difference yes/no/uncertain, more_animated A/B/neither/uncertain, observations, confidence. Do not infer synthesis method."
+    },
+    {
+      "id": "p08",
+      "wav": "p08.wav",
+      "prompt": "Compare the lead sound\u2019s tone color in A (0\u20138 s) and B (8.5\u201316.5 s). Ignore the shared melody and rhythm. Is one lead tone more periodically changing or wavering in brightness, or is there no audible difference? Return JSON difference yes/no/uncertain, more_animated A/B/neither/uncertain, observations, confidence. Do not infer synthesis method."
+    }
+  ]
+}

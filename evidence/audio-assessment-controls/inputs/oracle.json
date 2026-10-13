@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "c01",
+      "category": "silence"
+    },
+    {
+      "id": "c02",
+      "category": "steady_tone"
+    },
+    {
+      "id": "c03",
+      "category": "changing_tone"
+    },
+    {
+      "id": "c04",
+      "category": "noise"
+    },
+    {
+      "id": "c05",
+      "category": "repeated_tones"
+    },
+    {
+      "id": "c06",
+      "category": "speech",
+      "required_words": [
+        "blue",
+        "lantern",
+        "seven",
+        "wooden",
+        "boxes"
+      ]
+    },
+    {
+      "id": "c07",
+      "category": "silence"
+    },
+    {
+      "id": "c08",
+      "category": "steady_tone"
+    }
+  ],
+  "gate": {
+    "required_case_count": 8,
+    "require_all_categories_correct": true,
+    "require_all_speech_words": true,
+    "transcript_matching": "Case and punctuation ignored; 7 is equivalent to seven",
+    "establishes_musical_ability": false,
+    "scope": "A pass establishes perception of these elementary controls only; it does not establish musical comparison or judgment"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "c08",
+  "wav_path": "/Users/mbackschat/Projects/c64-sid-skill/build/audio-perception-controls-20261013/inputs-local/c08.wav",
+  "audio_sha256": "d6f93d0f945e5e3eb75657e7c421a006e1dd6bfef3a2d554235fc6ea055bff5d",
+  "duration_seconds": 5.0,
+  "model": "openai/gpt-audio-mini",
+  "max_tokens": 1200,
+  "reasoning": null,
+  "reasoning_effort": null,
+  "payload_sha256": "10cfb63e9f3e9c093d2648b7d5c7a0df913bacf0b2920b06b18ba84187855b81",
+  "status": "complete",
+  "started_at": "2026-10-13T22:06:33.539513+00:00",
+  "cost": 0.0001656,
+  "key_limits": {
+    "limit": 10.0,
+    "limit_remaining": 9.99411516,
+    "limit_reset": null
+  },
+  "response_path": "response-08.json",
+  "response_sha256": "88754050d8a681809ff709b30de65cb12f0efde519eb8276c018bca4f680b9bd",
+  "finished_at": "2026-10-13T22:06:34.903007+00:00",
+  "usage": {
+    "prompt_tokens": 148,
+    "completion_tokens": 32,
+    "total_tokens": 180,
+    "cost": 0.0001656,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 50,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0001656,
+      "upstream_inference_prompt_cost": 8.88e-05,
+      "upstream_inference_completions_cost": 7.68e-05
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

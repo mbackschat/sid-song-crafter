@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "scope": "SongBench academic research trial; four eight-second anonymous mono clips",
+  "acceptance": "not accepted as musical preference judge",
+  "reason": "Musicality scores prefer stationary pulse over human-preferred original",
+  "musicality_scores": {
+    "q01": 4.371556758880615,
+    "q02": 4.7918701171875,
+    "q03": 2.648406982421875,
+    "q04": 1.1636500358581543
+  },
+  "known_preference": {
+    "preferred": "q01",
+    "other": "q02",
+    "expected_basis": "retained human judgment",
+    "model_preferred": "q02",
+    "agrees": false
+  },
+  "dropout_probe": {
+    "source": "q01",
+    "modified": "q03",
+    "expected_basis": "explicit defect hypothesis, not listening acceptance",
+    "lower_all_dimensions": true
+  },
+  "silence_probe": {
+    "id": "q04",
+    "scope": "score sensitivity to all-zero PCM; reward model cannot verbally identify silence",
+    "lower_all_dimensions": true
+  },
+  "mps_cpu_agreement": {
+    "case": "q01",
+    "max_absolute_score_difference": 1.9073486328125e-06,
+    "differences": {
+      "melody": 1.430511474609375e-06,
+      "arrangement": 4.76837158203125e-07,
+      "musicality": 1.430511474609375e-06,
+      "vocal": 2.384185791015625e-07,
+      "instrumental": 1.9073486328125e-06,
+      "mixing": 0.0,
+      "structure": 1.1920928955078125e-06
+    },
+    "tolerance": 0.0001,
+    "passed": true
+  },
+  "runtime": {
+    "mps_total_case_seconds": 54.30203758389689,
+    "mps_command_wall_seconds": 62.2,
+    "mps_peak_rss_bytes": 3079880704,
+    "cpu_q01_seconds": 6.504161666147411,
+    "cpu_peak_rss_bytes": 3160178688,
+    "cpu_time_report_status": "Model wrapper completed and retained output; /usr/bin/time -l exited 1 because sandbox denied kern.clockrate sysctl after execution"
+  },
+  "limitations": [
+    "Only one human preference anchor tested",
+    "No claim of universal score validity or explanations",
+    "Mono preprocessing excludes stereo assessment",
+    "No repeated MPS A/A run or holdout",
+    "Eight-second excerpts do not test full song structure or endings"
+  ]
+}

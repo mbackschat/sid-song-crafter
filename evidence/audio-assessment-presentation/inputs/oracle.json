@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "p01",
+      "audio_sha256": "f863d98220a9f1aa76e43170f4948f0888b2028fcf6b0aae497fde768efca380",
+      "payload_sha256": "2c094188b3ffe4403780d6d87eb9705c030d80e3c418c0c32bae5a89b8c334e2",
+      "expected": {
+        "category": "silence",
+        "music": false,
+        "speech": false
+      },
+      "basis": "zero PCM"
+    },
+    {
+      "id": "p02",
+      "audio_sha256": "f863d98220a9f1aa76e43170f4948f0888b2028fcf6b0aae497fde768efca380",
+      "payload_sha256": "552611f4e2bfbc42333a1487d515c02557aed280c00b965eff942e6cc4a10277",
+      "expected": {
+        "category": "silence",
+        "music": false,
+        "speech": false
+      },
+      "basis": "zero PCM"
+    },
+    {
+      "id": "p03",
+      "audio_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "payload_sha256": "52073021a723c7b60ce68d39c15c09accfe911e84644442ede9d8a86387a8fe7",
+      "expected": {
+        "category": "silence",
+        "music": false,
+        "speech": false
+      },
+      "basis": "zero PCM"
+    },
+    {
+      "id": "p04",
+      "audio_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "payload_sha256": "2d12d0faa803bfaae6c7c31aaf20f8cbbbe4849751660aac0bf470dc97c2aa76",
+      "expected": {
+        "category": "silence",
+        "music": false,
+        "speech": false
+      },
+      "basis": "zero PCM"
+    },
+    {
+      "id": "p05",
+      "audio_sha256": "7513f4133a21fae7ba72c11d58b761e34c6bef36015be9dfa437d9cc86aee299",
+      "payload_sha256": "6493ee4d7747980ce369491680192267b22c40e12e3763827c3aa4cef60615f9",
+      "expected": {
+        "difference": "yes",
+        "more_animated": "A"
+      },
+      "basis": "scoped human moving-pulse animation verdict; narrower-question target is an inference"
+    },
+    {
+      "id": "p06",
+      "audio_sha256": "c5ac6db63213810d97c2b8cc34393696ae08313879ce4cc36c0ec6cd98147345",
+      "payload_sha256": "e0755e7394408c0328977aba201ffdaae39f36309ee78b95a52e007ae31f695b",
+      "expected": {
+        "difference": "yes",
+        "more_animated": "B"
+      },
+      "basis": "scoped human moving-pulse animation verdict; narrower-question target is an inference"
+    },
+    {
+      "id": "p07",
+      "audio_sha256": "31893bb09612df8c263b29ec6eace86fa189209243a3feb2e88ab7bc76c9ac6e",
+      "payload_sha256": "688a7af844ca58011dcd4e263221f8ec404583b4c98d9551fc8870a340231c25",
+      "expected": {
+        "difference": "no",
+        "more_animated": "neither"
+      },
+      "basis": "exact segment PCM identity"
+    },
+    {
+      "id": "p08",
+      "audio_sha256": "a13da173026ad252f58de7e5b9a744da52c554aa1dd71713ba48b755d7bb9a5b",
+      "payload_sha256": "52fd2e2fd6d8f99cc5cbe56908358afb6df0a85b37dfa5bb039417c95ab636a8",
+      "expected": {
+        "difference": "yes",
+        "more_animated": "A"
+      },
+      "basis": "scoped human moving-pulse animation verdict; narrower-question target is an inference"
+    }
+  ],
+  "human_evidence": {
+    "path": "evidence/follin-contrast/listening-verdict.json",
+    "sha256": "61839b6db1c191fdaf9c04aac6ea9a75bb04608d4f7d32c0245026102ba92389",
+    "date": "2026-10-13",
+    "verdict": "the original sound more animated, yes: the main voice has this nice \"chiptuning\" vibe that's lost a bit with stationary-pulse",
+    "scope": "Gauntlet III subtune 2, original 16\u201324-second passage versus the same material with step zero and safe fixed fallback width. Two parameters change; no isolated rate-only preference, new arrangement acceptance or universal style inferred."
+  },
+  "boundary": "A/B expected direction applies the user's scoped animation judgment to a narrower question. It does not establish a unique lead-tone cue, isolated PWM rate, resampled listening acceptance or general musical ability. p08 has no separate human verdict. Silence is not musical-score ground truth."
+}

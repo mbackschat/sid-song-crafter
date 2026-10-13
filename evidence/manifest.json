@@ -7796,6 +7796,966 @@
       "originalBytes": 1621,
       "sha256": "55746370927260b45f70fd289b44f8b331d25736533d5feefa66b99217e9f8e3",
       "bytes": 1621
+    },
+    {
+      "path": "evidence/audio-assessment-controls/inputs/cases.json",
+      "originalPath": "build/audio-perception-controls-20261013/inputs-local/cases.json",
+      "group": "audio-assessment-controls",
+      "reason": "Preserve exact control preparation and oracle-to-audio fingerprints; audio remains local",
+      "originalSha256": "5b3bb57380bf5737dc084348871cd3089c17fb89d82984c4a70d5aa972cbee75",
+      "originalBytes": 4024,
+      "sha256": "5b3bb57380bf5737dc084348871cd3089c17fb89d82984c4a70d5aa972cbee75",
+      "bytes": 4024
+    },
+    {
+      "path": "evidence/audio-assessment-controls/inputs/oracle.json",
+      "originalPath": "build/audio-perception-controls-20261013/inputs-local/oracle.json",
+      "group": "audio-assessment-controls",
+      "reason": "Preserve exact control preparation and oracle-to-audio fingerprints; audio remains local",
+      "originalSha256": "89467afd12dc9642d852d614c5b8a45d05c5a9c86258e778373699b7e140093f",
+      "originalBytes": 1051,
+      "sha256": "89467afd12dc9642d852d614c5b8a45d05c5a9c86258e778373699b7e140093f",
+      "bytes": 1051
+    },
+    {
+      "path": "evidence/audio-assessment-controls/inputs/oracle-bound.json",
+      "originalPath": "build/audio-perception-controls-20261013/inputs-local/oracle-bound.json",
+      "group": "audio-assessment-controls",
+      "reason": "Preserve exact control preparation and oracle-to-audio fingerprints; audio remains local",
+      "originalSha256": "280e6c6b547436fde60129ed5d2046a988005853ccac46113e7176e5ec091b5f",
+      "originalBytes": 1771,
+      "sha256": "280e6c6b547436fde60129ed5d2046a988005853ccac46113e7176e5ec091b5f",
+      "bytes": 1771
+    },
+    {
+      "path": "evidence/audio-assessment-controls/inputs/provenance.json",
+      "originalPath": "build/audio-perception-controls-20261013/inputs-local/provenance.json",
+      "group": "audio-assessment-controls",
+      "reason": "Preserve exact control preparation and oracle-to-audio fingerprints; audio remains local",
+      "originalSha256": "4f9457fc061fd8ec259316327d36ed6a58b16f677f3c8ec9b4df6f4d21570a81",
+      "originalBytes": 8213,
+      "sha256": "4f9457fc061fd8ec259316327d36ed6a58b16f677f3c8ec9b4df6f4d21570a81",
+      "bytes": 8213
+    },
+    {
+      "path": "evidence/audio-assessment-controls/inputs/generator-at-capture.py",
+      "originalPath": "build/audio-perception-controls-20261013/inputs-local/generator-at-capture.py",
+      "group": "audio-assessment-controls",
+      "reason": "Preserve exact control preparation and oracle-to-audio fingerprints; audio remains local",
+      "originalSha256": "09774d2649dc0a49b2a54695970e242b4ae57165bb553886aaa67f37a9a275fd",
+      "originalBytes": 10986,
+      "sha256": "09774d2649dc0a49b2a54695970e242b4ae57165bb553886aaa67f37a9a275fd",
+      "bytes": 10986
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/cases.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/cases.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain exact bounded profile and hash-verified offline grading",
+      "originalSha256": "ddd8ab220c6c0c75e2e450a770400c56f72dc5e289146acc0936ea05261a0676",
+      "originalBytes": 4806,
+      "sha256": "ddd8ab220c6c0c75e2e450a770400c56f72dc5e289146acc0936ea05261a0676",
+      "bytes": 4806
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/verified-assessment.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/verified-assessment.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain exact bounded profile and hash-verified offline grading",
+      "originalSha256": "130f3566f23e5549429549b2707c2e9c5af23e7cd40f7f1e9c3c7045d7d26f3f",
+      "originalBytes": 9276,
+      "sha256": "130f3566f23e5549429549b2707c2e9c5af23e7cd40f7f1e9c3c7045d7d26f3f",
+      "bytes": 9276
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/attempt-01.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/attempt-01.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "4474713e502497f8cc93c8758d1682004c1b575a16c6b24b51329495f5d3da93",
+      "originalBytes": 1412,
+      "sha256": "4474713e502497f8cc93c8758d1682004c1b575a16c6b24b51329495f5d3da93",
+      "bytes": 1412
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/attempt-02.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/attempt-02.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "ed06ad197151db2cd86ebc7e64258caa4fda9a5983d5c9ed3f2a27d63f5fd1ee",
+      "originalBytes": 1413,
+      "sha256": "ed06ad197151db2cd86ebc7e64258caa4fda9a5983d5c9ed3f2a27d63f5fd1ee",
+      "bytes": 1413
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/attempt-03.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/attempt-03.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "55bf219c49aeb9e9883777fdb25fbaa00885a149f7f266657f40c50b310f035c",
+      "originalBytes": 1413,
+      "sha256": "55bf219c49aeb9e9883777fdb25fbaa00885a149f7f266657f40c50b310f035c",
+      "bytes": 1413
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/attempt-04.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/attempt-04.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "6b63878c1ec441e8cb89728a4fb01b503df2568716749930c5950fba02c35224",
+      "originalBytes": 1412,
+      "sha256": "6b63878c1ec441e8cb89728a4fb01b503df2568716749930c5950fba02c35224",
+      "bytes": 1412
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/attempt-05.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/attempt-05.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "5eef4789e964cd3ba93dcf47c9ea2aad4bbbd465c58aa42c3fd2d0777fb34247",
+      "originalBytes": 1413,
+      "sha256": "5eef4789e964cd3ba93dcf47c9ea2aad4bbbd465c58aa42c3fd2d0777fb34247",
+      "bytes": 1413
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/attempt-06.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/attempt-06.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "2eac343bcfe095c1652d98e1f12cc7e11fc78d48e65a8a6738b6b660d5a667bd",
+      "originalBytes": 1416,
+      "sha256": "2eac343bcfe095c1652d98e1f12cc7e11fc78d48e65a8a6738b6b660d5a667bd",
+      "bytes": 1416
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/attempt-07.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/attempt-07.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "ef50b305bca57f763b291e307f8c9881b86f19a86cf229c0a0454902707dd52f",
+      "originalBytes": 1412,
+      "sha256": "ef50b305bca57f763b291e307f8c9881b86f19a86cf229c0a0454902707dd52f",
+      "bytes": 1412
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/attempt-08.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/attempt-08.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "8cc7a5439ad721d5e34be01591e4cf464295fd5b57acfda29bef94e583848496",
+      "originalBytes": 1412,
+      "sha256": "8cc7a5439ad721d5e34be01591e4cf464295fd5b57acfda29bef94e583848496",
+      "bytes": 1412
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/response-01.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/response-01.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "16f40ac72d95ef2e328cc6bb96b94f4e656b0a5b552c6539652dafa913d5f3e8",
+      "originalBytes": 947,
+      "sha256": "16f40ac72d95ef2e328cc6bb96b94f4e656b0a5b552c6539652dafa913d5f3e8",
+      "bytes": 947
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/response-02.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/response-02.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "92d62e1fc3f7ba577dbd665efdc9e603c41a5ee547d44f3d477bf5921efc22f2",
+      "originalBytes": 990,
+      "sha256": "92d62e1fc3f7ba577dbd665efdc9e603c41a5ee547d44f3d477bf5921efc22f2",
+      "bytes": 990
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/response-03.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/response-03.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "326bf348e5e7d3ad782d599abf4a9ecc4191cde32a7cc2b81d5665ef481fd891",
+      "originalBytes": 1037,
+      "sha256": "326bf348e5e7d3ad782d599abf4a9ecc4191cde32a7cc2b81d5665ef481fd891",
+      "bytes": 1037
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/response-04.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/response-04.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "1c964b07b9d0ef1dd302fcb859d49b54477395b13156621de570fb37f3aeb81a",
+      "originalBytes": 1000,
+      "sha256": "1c964b07b9d0ef1dd302fcb859d49b54477395b13156621de570fb37f3aeb81a",
+      "bytes": 1000
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/response-05.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/response-05.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "0981780707a5c39fc334a876bc5a4d8bebc1b74cf9798b1ad7d7065008de97bf",
+      "originalBytes": 1038,
+      "sha256": "0981780707a5c39fc334a876bc5a4d8bebc1b74cf9798b1ad7d7065008de97bf",
+      "bytes": 1038
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/response-06.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/response-06.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "e866002fd2089897ecc200841d95114d38ed3a1feaf96270c0a57b37d7a8bee8",
+      "originalBytes": 1035,
+      "sha256": "e866002fd2089897ecc200841d95114d38ed3a1feaf96270c0a57b37d7a8bee8",
+      "bytes": 1035
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/response-07.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/response-07.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "500912469025f757f75db72536bdaad07a92a886a61330a82e1e3330db1b0c92",
+      "originalBytes": 947,
+      "sha256": "500912469025f757f75db72536bdaad07a92a886a61330a82e1e3330db1b0c92",
+      "bytes": 947
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/results/response-08.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/results/response-08.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "518e2474bcfeca5f989a9775ac39939c1ed8abb3179acef467f189f5ab466bc8",
+      "originalBytes": 989,
+      "sha256": "518e2474bcfeca5f989a9775ac39939c1ed8abb3179acef467f189f5ab466bc8",
+      "bytes": 989
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/cases.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/cases.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain exact bounded profile and hash-verified offline grading",
+      "originalSha256": "124f4801d473171b1a40a573044f4cdd69a59ca97d896ffd127231f8215f959c",
+      "originalBytes": 4834,
+      "sha256": "124f4801d473171b1a40a573044f4cdd69a59ca97d896ffd127231f8215f959c",
+      "bytes": 4834
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/verified-assessment.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/verified-assessment.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain exact bounded profile and hash-verified offline grading",
+      "originalSha256": "75e94d8ae80686b915f033d63ca69081664841d937ce7bbbe839bc9a62a1ca92",
+      "originalBytes": 9093,
+      "sha256": "75e94d8ae80686b915f033d63ca69081664841d937ce7bbbe839bc9a62a1ca92",
+      "bytes": 9093
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/attempt-01.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/attempt-01.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "b64e3eed76ae548327aa1ca45f29d50b845f79105be53e6d545c462461a84e8d",
+      "originalBytes": 1419,
+      "sha256": "b64e3eed76ae548327aa1ca45f29d50b845f79105be53e6d545c462461a84e8d",
+      "bytes": 1419
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/attempt-02.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/attempt-02.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "3beb4848fbcf1832912f87f2771be31ed4a78097630235830f7bab4e8284c0ab",
+      "originalBytes": 1422,
+      "sha256": "3beb4848fbcf1832912f87f2771be31ed4a78097630235830f7bab4e8284c0ab",
+      "bytes": 1422
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/attempt-03.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/attempt-03.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "1d8a342afcaeb95d5c23e30e15ab63c35586547de7ee3f2df1bce9641837354e",
+      "originalBytes": 1422,
+      "sha256": "1d8a342afcaeb95d5c23e30e15ab63c35586547de7ee3f2df1bce9641837354e",
+      "bytes": 1422
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/attempt-04.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/attempt-04.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "babe5eb59471b1a73697303bc71273647557e23590dd53cc2db61e8c1649b1fb",
+      "originalBytes": 1420,
+      "sha256": "babe5eb59471b1a73697303bc71273647557e23590dd53cc2db61e8c1649b1fb",
+      "bytes": 1420
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/attempt-05.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/attempt-05.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "3737e780b9fb62c67db14d37569900a7d2034ab8448e1c0861b59114e882ad37",
+      "originalBytes": 1422,
+      "sha256": "3737e780b9fb62c67db14d37569900a7d2034ab8448e1c0861b59114e882ad37",
+      "bytes": 1422
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/attempt-06.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/attempt-06.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "9d32422ad35f0943d433be2a2ed922fc8c76e5da9ae57d5386a87be7ae5672ca",
+      "originalBytes": 1419,
+      "sha256": "9d32422ad35f0943d433be2a2ed922fc8c76e5da9ae57d5386a87be7ae5672ca",
+      "bytes": 1419
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/attempt-07.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/attempt-07.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "52bae0e78a839d95d8e2e8895fb71cb178eb28f533b40dcc4c9cfcade34a85e0",
+      "originalBytes": 1421,
+      "sha256": "52bae0e78a839d95d8e2e8895fb71cb178eb28f533b40dcc4c9cfcade34a85e0",
+      "bytes": 1421
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/attempt-08.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/attempt-08.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "2c527dbb67d9774352649e993d2b4ee79e9800143f4f53f29db017d8737d77e7",
+      "originalBytes": 1417,
+      "sha256": "2c527dbb67d9774352649e993d2b4ee79e9800143f4f53f29db017d8737d77e7",
+      "bytes": 1417
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/response-01.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/response-01.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "4aff2d0ffee6684166556587a5c6282a0933dcb9f10322b7996f2ab70ed581d9",
+      "originalBytes": 1175,
+      "sha256": "4aff2d0ffee6684166556587a5c6282a0933dcb9f10322b7996f2ab70ed581d9",
+      "bytes": 1175
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/response-02.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/response-02.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "2a4040ed9b3aeab40fea3eeb5d0b67bdf6b5389a07c3fa73483000c5c145d21a",
+      "originalBytes": 1659,
+      "sha256": "2a4040ed9b3aeab40fea3eeb5d0b67bdf6b5389a07c3fa73483000c5c145d21a",
+      "bytes": 1659
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/response-03.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/response-03.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "383401960fd0f62edcc4aed624670051626a9954c68d665ba1d44b90a7ab9e27",
+      "originalBytes": 1632,
+      "sha256": "383401960fd0f62edcc4aed624670051626a9954c68d665ba1d44b90a7ab9e27",
+      "bytes": 1632
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/response-04.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/response-04.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "b98af0c80d69587bf79dcfb8ff73cc3eda80b7124884d9d92d833acebda9f63a",
+      "originalBytes": 1445,
+      "sha256": "b98af0c80d69587bf79dcfb8ff73cc3eda80b7124884d9d92d833acebda9f63a",
+      "bytes": 1445
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/response-05.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/response-05.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "60b17caa330b723154688b2f65f3cc2f76f5c45687182b88f9a113beb419bea0",
+      "originalBytes": 1604,
+      "sha256": "60b17caa330b723154688b2f65f3cc2f76f5c45687182b88f9a113beb419bea0",
+      "bytes": 1604
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/response-06.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/response-06.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "f486ff16c5b784d499df3392ae2a7b6f3337ddb72478ca08cb9e8f750537a0f2",
+      "originalBytes": 1714,
+      "sha256": "f486ff16c5b784d499df3392ae2a7b6f3337ddb72478ca08cb9e8f750537a0f2",
+      "bytes": 1714
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/response-07.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/response-07.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "1b2ac9f612bab72fb0fb3afc30711a766fa75470bfa8e1c12d518bee5cb38d34",
+      "originalBytes": 2071,
+      "sha256": "1b2ac9f612bab72fb0fb3afc30711a766fa75470bfa8e1c12d518bee5cb38d34",
+      "bytes": 2071
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/results/response-08.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/results/response-08.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "664253a56636060ec593ed5be52283009360ac9816e0b8d70589d929d9099e3b",
+      "originalBytes": 1547,
+      "sha256": "664253a56636060ec593ed5be52283009360ac9816e0b8d70589d929d9099e3b",
+      "bytes": 1547
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/cases.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/cases.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain exact bounded profile and hash-verified offline grading",
+      "originalSha256": "7b22e987ce251f5cbc347735712b6d32d559096a7a737d5ca760aa059029b1cd",
+      "originalBytes": 4803,
+      "sha256": "7b22e987ce251f5cbc347735712b6d32d559096a7a737d5ca760aa059029b1cd",
+      "bytes": 4803
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/verified-assessment.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/verified-assessment.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain exact bounded profile and hash-verified offline grading",
+      "originalSha256": "04c8c1003b9263b6a93e79a302978c38012e5fe5924d1c841ef2965a551f2dc0",
+      "originalBytes": 8000,
+      "sha256": "04c8c1003b9263b6a93e79a302978c38012e5fe5924d1c841ef2965a551f2dc0",
+      "bytes": 8000
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/attempt-01.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/attempt-01.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "de5035da33c6ccad415a0c65438c1786568e53661692f8b0c42ba571ae925cd6",
+      "originalBytes": 1409,
+      "sha256": "de5035da33c6ccad415a0c65438c1786568e53661692f8b0c42ba571ae925cd6",
+      "bytes": 1409
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/attempt-02.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/attempt-02.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "7085c38ac1c08f7ba161e424c6672add3b041954e71786973ca5cbabd6c5b643",
+      "originalBytes": 1409,
+      "sha256": "7085c38ac1c08f7ba161e424c6672add3b041954e71786973ca5cbabd6c5b643",
+      "bytes": 1409
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/attempt-03.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/attempt-03.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "2285b481dda4853bdc89ee03f70ca03cca05373fed83c3cff974fe6218282dd6",
+      "originalBytes": 1409,
+      "sha256": "2285b481dda4853bdc89ee03f70ca03cca05373fed83c3cff974fe6218282dd6",
+      "bytes": 1409
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/attempt-04.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/attempt-04.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "1b85b25e957afe91324be751a46ba3b6afcdef887938ede61fc94faaf493da3b",
+      "originalBytes": 1409,
+      "sha256": "1b85b25e957afe91324be751a46ba3b6afcdef887938ede61fc94faaf493da3b",
+      "bytes": 1409
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/attempt-05.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/attempt-05.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "612c4bd1af51f9ea6d02c2935cf018867b58c89bc85217fe3450a184338dabf6",
+      "originalBytes": 1409,
+      "sha256": "612c4bd1af51f9ea6d02c2935cf018867b58c89bc85217fe3450a184338dabf6",
+      "bytes": 1409
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/attempt-06.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/attempt-06.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "a14ed468d57fa08402e99160f43e495a58e0109a550cc8c048cbd260241dbd8f",
+      "originalBytes": 1408,
+      "sha256": "a14ed468d57fa08402e99160f43e495a58e0109a550cc8c048cbd260241dbd8f",
+      "bytes": 1408
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/attempt-07.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/attempt-07.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "279a24a78b7998fb59fbc39b3c35893c4cee5282bde45a9baaf8a0d289dcfbf9",
+      "originalBytes": 1409,
+      "sha256": "279a24a78b7998fb59fbc39b3c35893c4cee5282bde45a9baaf8a0d289dcfbf9",
+      "bytes": 1409
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/attempt-08.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/attempt-08.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "508f0b39f3f9fb4b1c6af3d4c33a5359dee13abc7e39c2949b79d5f2141a15b5",
+      "originalBytes": 1409,
+      "sha256": "508f0b39f3f9fb4b1c6af3d4c33a5359dee13abc7e39c2949b79d5f2141a15b5",
+      "bytes": 1409
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/response-01.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/response-01.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "542038a0910050a0ee66bba252f8c0ead3cb3eb1d4a64c79cd0771d53150756f",
+      "originalBytes": 1002,
+      "sha256": "542038a0910050a0ee66bba252f8c0ead3cb3eb1d4a64c79cd0771d53150756f",
+      "bytes": 1002
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/response-02.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/response-02.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "0d7b5b880a6713f72b8a2fd7427ed77171e2917e97e473becdb280f92ca82cca",
+      "originalBytes": 1003,
+      "sha256": "0d7b5b880a6713f72b8a2fd7427ed77171e2917e97e473becdb280f92ca82cca",
+      "bytes": 1003
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/response-03.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/response-03.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "962c191fe0e111c633ce5aedacb40e13c8c521962107b657441ca4b14c247ec5",
+      "originalBytes": 1002,
+      "sha256": "962c191fe0e111c633ce5aedacb40e13c8c521962107b657441ca4b14c247ec5",
+      "bytes": 1002
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/response-04.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/response-04.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "caa86f04af14a059b5b88d8d0bed41afc6b54d9042576d7667dd63abd93996c2",
+      "originalBytes": 1003,
+      "sha256": "caa86f04af14a059b5b88d8d0bed41afc6b54d9042576d7667dd63abd93996c2",
+      "bytes": 1003
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/response-05.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/response-05.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "cf136449d48b2760b860969dfe733d3621725a7a26ae0c78e4ffc382cec672ae",
+      "originalBytes": 965,
+      "sha256": "cf136449d48b2760b860969dfe733d3621725a7a26ae0c78e4ffc382cec672ae",
+      "bytes": 965
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/response-06.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/response-06.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "d20a5697a8d29791b650dc8c0e5a15164c3d1ea1a2050fd5adda09a12336c64e",
+      "originalBytes": 1009,
+      "sha256": "d20a5697a8d29791b650dc8c0e5a15164c3d1ea1a2050fd5adda09a12336c64e",
+      "bytes": 1009
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/response-07.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/response-07.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "58bc19e160efa5e7f1da6544c4353202ce0394340143294c9148c2cb8b9bb90e",
+      "originalBytes": 1002,
+      "sha256": "58bc19e160efa5e7f1da6544c4353202ce0394340143294c9148c2cb8b9bb90e",
+      "bytes": 1002
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/results/response-08.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/results/response-08.json",
+      "group": "audio-assessment-controls",
+      "reason": "Retain full provider responses and billed request receipts without audio or credentials",
+      "originalSha256": "88754050d8a681809ff709b30de65cb12f0efde519eb8276c018bca4f680b9bd",
+      "originalBytes": 964,
+      "sha256": "88754050d8a681809ff709b30de65cb12f0efde519eb8276c018bca4f680b9bd",
+      "bytes": 964
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/inputs/cases.json",
+      "originalPath": "build/audio-presentation-20261014/inputs/cases.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Separate prompt and sample-rate changes; preserve inferred and exact oracle boundaries",
+      "originalSha256": "cc7760bb1f06553fc814fdb7df2647d9be90c120e434f9cec88814f23783857b",
+      "originalBytes": 3382,
+      "sha256": "cc7760bb1f06553fc814fdb7df2647d9be90c120e434f9cec88814f23783857b",
+      "bytes": 3382
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/inputs/oracle.json",
+      "originalPath": "build/audio-presentation-20261014/inputs/oracle.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Separate prompt and sample-rate changes; preserve inferred and exact oracle boundaries",
+      "originalSha256": "36abf3a77f6603cfc03268ebec77919a51c0ef204629365ce196ad6e06d00455",
+      "originalBytes": 3910,
+      "sha256": "36abf3a77f6603cfc03268ebec77919a51c0ef204629365ce196ad6e06d00455",
+      "bytes": 3910
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/inputs/provenance.json",
+      "originalPath": "build/audio-presentation-20261014/inputs/provenance.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Separate prompt and sample-rate changes; preserve inferred and exact oracle boundaries",
+      "originalSha256": "849500b84ca59a90342872d524dac40f3f1887b0dd0350f99e4fc6126a07a904",
+      "originalBytes": 12884,
+      "sha256": "849500b84ca59a90342872d524dac40f3f1887b0dd0350f99e4fc6126a07a904",
+      "bytes": 12884
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/assessment.json",
+      "originalPath": "build/audio-presentation-20261014/assessment.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain failed pulse comparison and silence prompt findings without replacing original evidence",
+      "originalSha256": "eee73d4645003344afc8dc579cf3f5769efff55a327a1cf4bd9db06391e4d5f1",
+      "originalBytes": 7693,
+      "sha256": "eee73d4645003344afc8dc579cf3f5769efff55a327a1cf4bd9db06391e4d5f1",
+      "bytes": 7693
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/attempt-01.json",
+      "originalPath": "build/audio-presentation-20261014/results/attempt-01.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "7915aa5bd51037b3a089cac9c931fb26794d86f282ad0d9ac78a4dfd47c0bae7",
+      "originalBytes": 1399,
+      "sha256": "7915aa5bd51037b3a089cac9c931fb26794d86f282ad0d9ac78a4dfd47c0bae7",
+      "bytes": 1399
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/attempt-02.json",
+      "originalPath": "build/audio-presentation-20261014/results/attempt-02.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "e1de4a5c559fc4231106b36b4a812a73fb62d4e47c8f74b47b9ffb1dfc15d7ae",
+      "originalBytes": 1399,
+      "sha256": "e1de4a5c559fc4231106b36b4a812a73fb62d4e47c8f74b47b9ffb1dfc15d7ae",
+      "bytes": 1399
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/attempt-03.json",
+      "originalPath": "build/audio-presentation-20261014/results/attempt-03.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "1a3b40df490bf29f18dd47d2776d75a51020d998aa84a4f460c0dc301bd446b9",
+      "originalBytes": 1399,
+      "sha256": "1a3b40df490bf29f18dd47d2776d75a51020d998aa84a4f460c0dc301bd446b9",
+      "bytes": 1399
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/attempt-04.json",
+      "originalPath": "build/audio-presentation-20261014/results/attempt-04.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "1d0e5d910ae9df1ccd8a5ba7c5ba90f3427d362eff79cf23d47cbfa1df8a0d88",
+      "originalBytes": 1399,
+      "sha256": "1d0e5d910ae9df1ccd8a5ba7c5ba90f3427d362eff79cf23d47cbfa1df8a0d88",
+      "bytes": 1399
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/attempt-05.json",
+      "originalPath": "build/audio-presentation-20261014/results/attempt-05.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "e0feadf09dc6b01b951a6210934f27f55ce902d373e19e84969f7ee3a687a114",
+      "originalBytes": 1402,
+      "sha256": "e0feadf09dc6b01b951a6210934f27f55ce902d373e19e84969f7ee3a687a114",
+      "bytes": 1402
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/attempt-06.json",
+      "originalPath": "build/audio-presentation-20261014/results/attempt-06.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "e66622f62c228763c66e9682290780cf01f9410534c447480834dc602ddbcfd6",
+      "originalBytes": 1402,
+      "sha256": "e66622f62c228763c66e9682290780cf01f9410534c447480834dc602ddbcfd6",
+      "bytes": 1402
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/attempt-07.json",
+      "originalPath": "build/audio-presentation-20261014/results/attempt-07.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "c2fba728065499ac72d3c9a9eedb53a32ea96157dc16f4658dc2ab8655ef4a60",
+      "originalBytes": 1401,
+      "sha256": "c2fba728065499ac72d3c9a9eedb53a32ea96157dc16f4658dc2ab8655ef4a60",
+      "bytes": 1401
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/attempt-08.json",
+      "originalPath": "build/audio-presentation-20261014/results/attempt-08.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "90ffcbdb9cdf558bf8db710c8d089c13d538d277b4edf4cf8203c30f783cb739",
+      "originalBytes": 1400,
+      "sha256": "90ffcbdb9cdf558bf8db710c8d089c13d538d277b4edf4cf8203c30f783cb739",
+      "bytes": 1400
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/response-01.json",
+      "originalPath": "build/audio-presentation-20261014/results/response-01.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "70de428f428abc85b7b2d61d4ef030067089688ffa91d9781c88ae37a3dc2c5d",
+      "originalBytes": 1013,
+      "sha256": "70de428f428abc85b7b2d61d4ef030067089688ffa91d9781c88ae37a3dc2c5d",
+      "bytes": 1013
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/response-02.json",
+      "originalPath": "build/audio-presentation-20261014/results/response-02.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "39f17c00ea7c9bed079c6ecb27dab338f2c7aaff104435bece3f49b498b404b6",
+      "originalBytes": 947,
+      "sha256": "39f17c00ea7c9bed079c6ecb27dab338f2c7aaff104435bece3f49b498b404b6",
+      "bytes": 947
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/response-03.json",
+      "originalPath": "build/audio-presentation-20261014/results/response-03.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "f3937356adf96fc2eca4d550bbb33da481c9a855768f0ee119c46ba308337167",
+      "originalBytes": 1022,
+      "sha256": "f3937356adf96fc2eca4d550bbb33da481c9a855768f0ee119c46ba308337167",
+      "bytes": 1022
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/response-04.json",
+      "originalPath": "build/audio-presentation-20261014/results/response-04.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "8f40edd4d2435865f10ae42b4e24a5e6d79d31c6d4bec805c51dffad3a81baca",
+      "originalBytes": 947,
+      "sha256": "8f40edd4d2435865f10ae42b4e24a5e6d79d31c6d4bec805c51dffad3a81baca",
+      "bytes": 947
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/response-05.json",
+      "originalPath": "build/audio-presentation-20261014/results/response-05.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "e9037808fc2677d8d1d94cef31bab825650f00eba78f2ef3d40969b87d269863",
+      "originalBytes": 1175,
+      "sha256": "e9037808fc2677d8d1d94cef31bab825650f00eba78f2ef3d40969b87d269863",
+      "bytes": 1175
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/response-06.json",
+      "originalPath": "build/audio-presentation-20261014/results/response-06.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "226ab82214f014a2bbc0a824eaa52f6339bb89d57afe2b68b2e5e5f639dfb1f6",
+      "originalBytes": 1198,
+      "sha256": "226ab82214f014a2bbc0a824eaa52f6339bb89d57afe2b68b2e5e5f639dfb1f6",
+      "bytes": 1198
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/response-07.json",
+      "originalPath": "build/audio-presentation-20261014/results/response-07.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "a28590999366cfc56053fe0ae34c76f8b9967a7a3ca0447496fa4207ed315497",
+      "originalBytes": 1139,
+      "sha256": "a28590999366cfc56053fe0ae34c76f8b9967a7a3ca0447496fa4207ed315497",
+      "bytes": 1139
+    },
+    {
+      "path": "evidence/audio-assessment-presentation/results/response-08.json",
+      "originalPath": "build/audio-presentation-20261014/results/response-08.json",
+      "group": "audio-assessment-presentation",
+      "reason": "Retain complete Qwen follow-up response and billed request evidence",
+      "originalSha256": "1ffd4ccf6ace276abb3a3e870a0810b2ba6def8c8fb848112ddc5e8532ee7c62",
+      "originalBytes": 1069,
+      "sha256": "1ffd4ccf6ace276abb3a3e870a0810b2ba6def8c8fb848112ddc5e8532ee7c62",
+      "bytes": 1069
+    },
+    {
+      "path": "evidence/audio-assessment-songbench/assessment.json",
+      "originalPath": "build/songbench-trial-20261014/assessment.json",
+      "group": "audio-assessment-songbench",
+      "reason": "Preserve local feasibility, pinned asset URLs/hashes, package versions and bounded acceptance decision",
+      "originalSha256": "43deaf39d77fd9ee4271c26b3e02dffdf1aeb6eed996ab58ad461d96eb11d671",
+      "originalBytes": 2069,
+      "sha256": "43deaf39d77fd9ee4271c26b3e02dffdf1aeb6eed996ab58ad461d96eb11d671",
+      "bytes": 2069
+    },
+    {
+      "path": "evidence/audio-assessment-songbench/setup.json",
+      "originalPath": "build/songbench-trial-20261014/setup.json",
+      "group": "audio-assessment-songbench",
+      "reason": "Preserve local feasibility, pinned asset URLs/hashes, package versions and bounded acceptance decision",
+      "originalSha256": "b9446c05e5d420afe234d5d0bc09b53031f72c3c047d135cad27a8f8f9f77b8c",
+      "originalBytes": 5483,
+      "sha256": "b9446c05e5d420afe234d5d0bc09b53031f72c3c047d135cad27a8f8f9f77b8c",
+      "bytes": 5483
+    },
+    {
+      "path": "evidence/audio-assessment-songbench/inputs/cases.json",
+      "originalPath": "build/songbench-trial-20261014/inputs/cases.json",
+      "group": "audio-assessment-songbench",
+      "reason": "Preserve source-backed probe preparation and scoped ground truth without reference audio",
+      "originalSha256": "8db19dd15c6145a63ee195d45f0dda6d242e01b5001e96156f8d372a4cf7ea44",
+      "originalBytes": 240,
+      "sha256": "8db19dd15c6145a63ee195d45f0dda6d242e01b5001e96156f8d372a4cf7ea44",
+      "bytes": 240
+    },
+    {
+      "path": "evidence/audio-assessment-songbench/inputs/q01-cpu.json",
+      "originalPath": "build/songbench-trial-20261014/inputs/q01-cpu.json",
+      "group": "audio-assessment-songbench",
+      "reason": "Preserve source-backed probe preparation and scoped ground truth without reference audio",
+      "originalSha256": "d55b0489ad41e571312fc0f1938fb45ef6712f9246d6bc310d80204c5278bcef",
+      "originalBytes": 75,
+      "sha256": "d55b0489ad41e571312fc0f1938fb45ef6712f9246d6bc310d80204c5278bcef",
+      "bytes": 75
+    },
+    {
+      "path": "evidence/audio-assessment-songbench/inputs/oracle.json",
+      "originalPath": "build/songbench-trial-20261014/inputs/oracle.json",
+      "group": "audio-assessment-songbench",
+      "reason": "Preserve source-backed probe preparation and scoped ground truth without reference audio",
+      "originalSha256": "7040d393e9d0f691fb7e61473f0a859fefd0c9917577ba328c9cced6d5e32da1",
+      "originalBytes": 1608,
+      "sha256": "7040d393e9d0f691fb7e61473f0a859fefd0c9917577ba328c9cced6d5e32da1",
+      "bytes": 1608
+    },
+    {
+      "path": "evidence/audio-assessment-songbench/inputs/provenance.json",
+      "originalPath": "build/songbench-trial-20261014/inputs/provenance.json",
+      "group": "audio-assessment-songbench",
+      "reason": "Preserve source-backed probe preparation and scoped ground truth without reference audio",
+      "originalSha256": "0d5c3ae24a748803dc59f11f3ee390f43839aaf8af3a4a0fde59f99a7f417f61",
+      "originalBytes": 4620,
+      "sha256": "0d5c3ae24a748803dc59f11f3ee390f43839aaf8af3a4a0fde59f99a7f417f61",
+      "bytes": 4620
+    },
+    {
+      "path": "evidence/audio-assessment-songbench/mps/q01.json",
+      "originalPath": "build/songbench-trial-20261014/mps/q01.json",
+      "group": "audio-assessment-songbench",
+      "reason": "Keep full precision dimension scores, device runtime and audio/model fingerprints",
+      "originalSha256": "a8c6a0125e9dbcf9402c3fce80013499a6b5305bae960ce85517eaf4b6a61b92",
+      "originalBytes": 1118,
+      "sha256": "a8c6a0125e9dbcf9402c3fce80013499a6b5305bae960ce85517eaf4b6a61b92",
+      "bytes": 1118
+    },
+    {
+      "path": "evidence/audio-assessment-songbench/mps/q02.json",
+      "originalPath": "build/songbench-trial-20261014/mps/q02.json",
+      "group": "audio-assessment-songbench",
+      "reason": "Keep full precision dimension scores, device runtime and audio/model fingerprints",
+      "originalSha256": "6684a907f7b1056cbf5d9014891cffbfa747b5d0f78d3992d81764464abd1fe0",
+      "originalBytes": 1116,
+      "sha256": "6684a907f7b1056cbf5d9014891cffbfa747b5d0f78d3992d81764464abd1fe0",
+      "bytes": 1116
+    },
+    {
+      "path": "evidence/audio-assessment-songbench/mps/q03.json",
+      "originalPath": "build/songbench-trial-20261014/mps/q03.json",
+      "group": "audio-assessment-songbench",
+      "reason": "Keep full precision dimension scores, device runtime and audio/model fingerprints",
+      "originalSha256": "37d834b0df8bca0208a90e9e3d5c234548288968da3b9713482e2cf7d7c3036d",
+      "originalBytes": 1121,
+      "sha256": "37d834b0df8bca0208a90e9e3d5c234548288968da3b9713482e2cf7d7c3036d",
+      "bytes": 1121
+    },
+    {
+      "path": "evidence/audio-assessment-songbench/mps/q04.json",
+      "originalPath": "build/songbench-trial-20261014/mps/q04.json",
+      "group": "audio-assessment-songbench",
+      "reason": "Keep full precision dimension scores, device runtime and audio/model fingerprints",
+      "originalSha256": "1156118a7ee16f650ae532b339ec5db50b6208d74f253bc45fcfaf03d1cf9b52",
+      "originalBytes": 1122,
+      "sha256": "1156118a7ee16f650ae532b339ec5db50b6208d74f253bc45fcfaf03d1cf9b52",
+      "bytes": 1122
+    },
+    {
+      "path": "evidence/audio-assessment-songbench/cpu/q01.json",
+      "originalPath": "build/songbench-trial-20261014/cpu/q01.json",
+      "group": "audio-assessment-songbench",
+      "reason": "Keep full precision dimension scores, device runtime and audio/model fingerprints",
+      "originalSha256": "a6f30c8bc28d4c77370e25898e46fc336122335c89656118d806f70440eeb3be",
+      "originalBytes": 997,
+      "sha256": "a6f30c8bc28d4c77370e25898e46fc336122335c89656118d806f70440eeb3be",
+      "bytes": 997
+    },
+    {
+      "path": "evidence/audio-assessment-controls/qwen/receipt-bound-assessment.json",
+      "originalPath": "build/audio-perception-controls-20261014/qwen/receipt-bound-assessment.json",
+      "group": "audio-assessment-controls",
+      "reason": "Bind exact receipt bytes as well as audio, prompt and response to unchanged offline control grades",
+      "originalSha256": "6aefa374c283fe54f2191cd589f25680ecf4d9dc164ce6231297733379063dba",
+      "originalBytes": 10012,
+      "sha256": "6aefa374c283fe54f2191cd589f25680ecf4d9dc164ce6231297733379063dba",
+      "bytes": 10012
+    },
+    {
+      "path": "evidence/audio-assessment-controls/gemini/receipt-bound-assessment.json",
+      "originalPath": "build/audio-perception-controls-20261014/gemini/receipt-bound-assessment.json",
+      "group": "audio-assessment-controls",
+      "reason": "Bind exact receipt bytes as well as audio, prompt and response to unchanged offline control grades",
+      "originalSha256": "a393a48511200dfefab183efcf50954e289947962d1d778c1ed957fdf3afb9bb",
+      "originalBytes": 9829,
+      "sha256": "a393a48511200dfefab183efcf50954e289947962d1d778c1ed957fdf3afb9bb",
+      "bytes": 9829
+    },
+    {
+      "path": "evidence/audio-assessment-controls/mini/receipt-bound-assessment.json",
+      "originalPath": "build/audio-perception-controls-20261014/mini/receipt-bound-assessment.json",
+      "group": "audio-assessment-controls",
+      "reason": "Bind exact receipt bytes as well as audio, prompt and response to unchanged offline control grades",
+      "originalSha256": "ea82e26edb53a0f270cff02365bc3f2a8cea68d00d64f4fccbdf5ac0f0ca5f85",
+      "originalBytes": 8736,
+      "sha256": "ea82e26edb53a0f270cff02365bc3f2a8cea68d00d64f4fccbdf5ac0f0ca5f85",
+      "bytes": 8736
+    },
+    {
+      "path": "evidence/audio-assessment-controls/evaluator-at-verification.py",
+      "originalPath": "build/audio-perception-controls-20261014/evaluator-at-verification.py",
+      "group": "audio-assessment-controls",
+      "reason": "Preserve exact evaluator source matching historical verified report hashes",
+      "originalSha256": "5c28f7acb993aa5e75360584dce0bf0d1277b692a7174f1780141840303b6690",
+      "originalBytes": 5094,
+      "sha256": "5c28f7acb993aa5e75360584dce0bf0d1277b692a7174f1780141840303b6690",
+      "bytes": 5094
+    },
+    {
+      "path": "evidence/audio-assessment-songbench/inputs/generator-at-capture.py",
+      "originalPath": "build/songbench-trial-20261014/inputs/generator-at-capture.py",
+      "group": "audio-assessment-songbench",
+      "reason": "Preserve captured generator and bind scoped oracle to verified source PCM and scored input fingerprints",
+      "originalSha256": "f4e3873e7171ffbcf67acff81ae0fc182d7d02d58d7884b8acda6158e2fca96d",
+      "originalBytes": 7503,
+      "sha256": "f4e3873e7171ffbcf67acff81ae0fc182d7d02d58d7884b8acda6158e2fca96d",
+      "bytes": 7503
+    },
+    {
+      "path": "evidence/audio-assessment-songbench/inputs/oracle-bound.json",
+      "originalPath": "build/songbench-trial-20261014/inputs/oracle-bound.json",
+      "group": "audio-assessment-songbench",
+      "reason": "Preserve captured generator and bind scoped oracle to verified source PCM and scored input fingerprints",
+      "originalSha256": "d8aae3f053d9598b9616fe822b73f1e446b8be9b72cca1bcf32c8cbb466fc26f",
+      "originalBytes": 2522,
+      "sha256": "d8aae3f053d9598b9616fe822b73f1e446b8be9b72cca1bcf32c8cbb466fc26f",
+      "bytes": 2522
     }
   ],
   "independentShadesSources": {

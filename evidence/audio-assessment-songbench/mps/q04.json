@@ -1,0 +1,36 @@
+{
+  "input": {
+    "duration_seconds": 8.0,
+    "sample_rate": 44100,
+    "channels": 1,
+    "sha256": "d1478b62f6cde68fe22fab1558867e81a0c64d148ad6d8850dd0da7eae45ece1"
+  },
+  "device": "mps",
+  "scores": {
+    "melody": 1.0496158599853516,
+    "arrangement": 1.0314984321594238,
+    "musicality": 1.1636500358581543,
+    "vocal": 1.0450849533081055,
+    "instrumental": 1.0590028762817383,
+    "mixing": 1.07954740524292,
+    "structure": 1.0260405540466309
+  },
+  "model_loading_seconds": 4.133528457954526,
+  "total_seconds": 6.601440790807828,
+  "peak_rss_bytes": 3078111232,
+  "preprocessing": {
+    "loader": "librosa.load",
+    "sample_rate": 24000,
+    "mono": true,
+    "gain": 1,
+    "crop": null,
+    "muq_hidden_layer": 6
+  },
+  "model_source_sha256": "9475852aa4100347971ea556441574b7ca0372fbc0e765855445c77a41afab32",
+  "head_sha256": "ca27966a6d2b3312587b9e1d53ee3adf6bde8ac68a7d339e6f962206cbfde312",
+  "muq_sha256": "273febab2be02872c37d2c37e48a9d6c52c1c9392f3eeeabd498efa281ccb7a6",
+  "metal_memory_after_inference_bytes": {
+    "current_allocated": 1436030976,
+    "driver_allocated": 2354020352
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/studies/audio-assessment/prepare-quality-probes.py",
+  "generator_sha256": "f4e3873e7171ffbcf67acff81ae0fc182d7d02d58d7884b8acda6158e2fca96d",
+  "source_registry": "evidence/follin-contrast/audition-sources.json",
+  "source_registry_sha256": "658549413a4e26f763654f7015036da84faa47f855b5cb9ed01c2d298a62c2d4",
+  "sources": {
+    "reference.wav": {
+      "path": "build/gauntlet-listening/reference.wav",
+      "sha256": "96000bb434c2fa7e17a2264f2c13c7b78de1e2e83edbec1305870500a7378112",
+      "window_pcm_sha256": "e0611aaa6b32f680e7db63a013902fe7d69df986a4700626ad27af1bcfeb6b44"
+    },
+    "stationary-pulse.wav": {
+      "path": "build/gauntlet-listening/stationary-pulse.wav",
+      "sha256": "18079bcbbe3e5ef27fa354eddf6f46d117d730ba6f344c9f2fe731995f854fce",
+      "window_pcm_sha256": "15c5ae518578219e6a5020fea571d5de14fa89212e924063f25a8704d155e77a"
+    }
+  },
+  "window": {
+    "sample_rate_hz": 44100,
+    "channels": 1,
+    "sample_width_bits": 16,
+    "start_frame_inclusive": 705600,
+    "end_frame_exclusive": 1058400,
+    "frames": 352800,
+    "seconds": [
+      16,
+      24
+    ]
+  },
+  "gain": 1,
+  "dropout": {
+    "case_id": "q03",
+    "source_case": "q01",
+    "block_frames": 11025,
+    "block_seconds": 0.25,
+    "pattern": [
+      "original PCM",
+      "zero PCM"
+    ],
+    "period_seconds": 0.5,
+    "zeroed_frame_fraction": 0.5,
+    "zeroed_frames": 176400,
+    "fade": "none; abrupt boundaries"
+  },
+  "cases": {
+    "q01": {
+      "file": "q01.wav",
+      "pcm_sha256": "e0611aaa6b32f680e7db63a013902fe7d69df986a4700626ad27af1bcfeb6b44",
+      "metrics": {
+        "sha256": "c0fe86bc7e934fef6f21f97f92f1501d22ea31ebeb6f9c8bcadcca5408df3a17",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 352800,
+        "durationSeconds": 8.0,
+        "peak": 16082,
+        "peakDbfs": -6.182197543593024,
+        "clippedSamples": 0,
+        "rms": 5065.908283493564,
+        "acRms": 5020.820719732724,
+        "acRmsDbfs": -16.293504416383268,
+        "perChannel": [
+          {
+            "dc": -674.3782596371882,
+            "rms": 5065.908283493564,
+            "acRms": 5020.820719732724
+          }
+        ]
+      }
+    },
+    "q02": {
+      "file": "q02.wav",
+      "pcm_sha256": "15c5ae518578219e6a5020fea571d5de14fa89212e924063f25a8704d155e77a",
+      "metrics": {
+        "sha256": "02dda2433c22090af41accfe10412612825367d31d6e884b4800b8302138d504",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 352800,
+        "durationSeconds": 8.0,
+        "peak": 16128,
+        "peakDbfs": -6.157388403885733,
+        "clippedSamples": 0,
+        "rms": 5036.4084511876,
+        "acRms": 5008.261863043375,
+        "acRmsDbfs": -16.31525813100329,
+        "perChannel": [
+          {
+            "dc": -531.7172165532879,
+            "rms": 5036.4084511876,
+            "acRms": 5008.261863043375
+          }
+        ]
+      }
+    },
+    "q03": {
+      "file": "q03.wav",
+      "pcm_sha256": "e73e1d017988b6cef01dcd367c883813e45e9a5456e6e693691959d6a61dd74b",
+      "metrics": {
+        "sha256": "384d1e254ba91fef9cd212f610c72a1f8b9d2809d3b29330cd8ba0c06baa46b3",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 352800,
+        "durationSeconds": 8.0,
+        "peak": 16082,
+        "peakDbfs": -6.182197543593024,
+        "clippedSamples": 0,
+        "rms": 3572.2936074346203,
+        "acRms": 3562.008462563837,
+        "acRmsDbfs": -19.275099760824983,
+        "perChannel": [
+          {
+            "dc": -270.8825028344671,
+            "rms": 3572.2936074346203,
+            "acRms": 3562.008462563837
+          }
+        ]
+      }
+    },
+    "q04": {
+      "file": "q04.wav",
+      "pcm_sha256": "bbbf3baab8a5dc22f0ccabe9c9e753a0ec5a58713d6eab66ea37813498a1625a",
+      "metrics": {
+        "sha256": "d1478b62f6cde68fe22fab1558867e81a0c64d148ad6d8850dd0da7eae45ece1",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 352800,
+        "durationSeconds": 8.0,
+        "peak": 0,
+        "peakDbfs": null,
+        "clippedSamples": 0,
+        "rms": 0.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 0.0,
+            "rms": 0.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    }
+  },
+  "boundary": "Local reference-derived audio stays under ignored build/. Only anonymous IDs and filenames appear in cases.json; oracle and provenance must not be uploaded as model inputs."
+}

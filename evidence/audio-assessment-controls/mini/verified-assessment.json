@@ -1,0 +1,174 @@
+{
+  "model": "openai/gpt-audio-mini",
+  "passed": false,
+  "manifest_sha256": "7b22e987ce251f5cbc347735712b6d32d559096a7a737d5ca760aa059029b1cd",
+  "oracle_sha256": "280e6c6b547436fde60129ed5d2046a988005853ccac46113e7176e5ec091b5f",
+  "evaluator_sha256": "5c28f7acb993aa5e75360584dce0bf0d1277b692a7174f1780141840303b6690",
+  "correct": 2,
+  "total": 8,
+  "total_cost_usd": "0.0014280",
+  "cases": [
+    {
+      "id": "c01",
+      "expected": {
+        "id": "c01",
+        "category": "silence",
+        "audio_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809"
+      },
+      "passed": false,
+      "error": "No valid JSON object",
+      "observed_category": null,
+      "audio_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "payload_sha256": "459803bbae06320fb500c028927f79e5e619a0a71a3dba33f0e27d5eb0da0b4b",
+      "response_sha256": "542038a0910050a0ee66bba252f8c0ead3cb3eb1d4a64c79cd0771d53150756f",
+      "content": "I'm sorry, but I can't listen to or analyze audio. If you can provide a description of the sound or any details, I can help you interpret it. Let me know how you'd like to proceed.",
+      "cost_usd": 0.0001812,
+      "response_model": "openai/gpt-audio-mini",
+      "provider": "OpenAI"
+    },
+    {
+      "id": "c02",
+      "expected": {
+        "id": "c02",
+        "category": "steady_tone",
+        "audio_sha256": "cdc22ed82304b95d78f49e64511e653bdaee3a8cb69604106b163760fe027ce2"
+      },
+      "passed": false,
+      "error": "No valid JSON object",
+      "observed_category": null,
+      "audio_sha256": "cdc22ed82304b95d78f49e64511e653bdaee3a8cb69604106b163760fe027ce2",
+      "payload_sha256": "8ed69a13db916c31aa7ef202c27e880a905c07a8791aeedf80f0690718760dc6",
+      "response_sha256": "0d7b5b880a6713f72b8a2fd7427ed77171e2917e97e473becdb280f92ca82cca",
+      "content": "I'm sorry, but I can't listen to or analyze audio. If you can provide a description of the sound or any details, I can help you categorize it. Let me know how you'd like to proceed.",
+      "cost_usd": 0.0001812,
+      "response_model": "openai/gpt-audio-mini",
+      "provider": "OpenAI"
+    },
+    {
+      "id": "c03",
+      "expected": {
+        "id": "c03",
+        "category": "changing_tone",
+        "audio_sha256": "84030a2eaf214416b20bcc96d621ddf4cd47f655f1d8dcdd380418b37ebacdc1"
+      },
+      "passed": false,
+      "error": "No valid JSON object",
+      "observed_category": null,
+      "audio_sha256": "84030a2eaf214416b20bcc96d621ddf4cd47f655f1d8dcdd380418b37ebacdc1",
+      "payload_sha256": "6189c16fb81b4e0ee72d625ad193668a73c8f96c3185beaa15d65a1df16de693",
+      "response_sha256": "962c191fe0e111c633ce5aedacb40e13c8c521962107b657441ca4b14c247ec5",
+      "content": "I'm sorry, but I can't listen to or analyze audio. If you can provide a description of the sound or any details, I can help you interpret it. Let me know how you'd like to proceed.",
+      "cost_usd": 0.0001812,
+      "response_model": "openai/gpt-audio-mini",
+      "provider": "OpenAI"
+    },
+    {
+      "id": "c04",
+      "expected": {
+        "id": "c04",
+        "category": "noise",
+        "audio_sha256": "646977e16748ca21b05f080370cd2be76d895bbfbbafdfc2801ab0809785b213"
+      },
+      "passed": false,
+      "error": "No valid JSON object",
+      "observed_category": null,
+      "audio_sha256": "646977e16748ca21b05f080370cd2be76d895bbfbbafdfc2801ab0809785b213",
+      "payload_sha256": "f1b4506e9de30ff092abd489ec30bc70fd1fff912789f2f8c690c1a16ec4a118",
+      "response_sha256": "caa86f04af14a059b5b88d8d0bed41afc6b54d9042576d7667dd63abd93996c2",
+      "content": "I'm sorry, but I can't listen to or analyze audio. If you can provide a description of the sound or any details, I can help you categorize it. Let me know how you'd like to proceed.",
+      "cost_usd": 0.0001812,
+      "response_model": "openai/gpt-audio-mini",
+      "provider": "OpenAI"
+    },
+    {
+      "id": "c05",
+      "expected": {
+        "id": "c05",
+        "category": "repeated_tones",
+        "audio_sha256": "fbf021da5147a0c4505368d713fe61577cc00da2dcb1a708a03a1f384b82d38d"
+      },
+      "passed": true,
+      "observed_category": "repeated_tones",
+      "missing_words": [],
+      "response": {
+        "category": "repeated_tones",
+        "evidence": "There are repeated beeping sounds at regular intervals.",
+        "transcript": ""
+      },
+      "audio_sha256": "fbf021da5147a0c4505368d713fe61577cc00da2dcb1a708a03a1f384b82d38d",
+      "payload_sha256": "b89d20a0c72029b1d0827c96f9648c3d90149f20806fa8d40f119052ef776d0b",
+      "response_sha256": "cf136449d48b2760b860969dfe733d3621725a7a26ae0c78e4ffc382cec672ae",
+      "content": "{\n  \"category\": \"repeated_tones\",\n  \"evidence\": \"There are repeated beeping sounds at regular intervals.\",\n  \"transcript\": \"\"\n}",
+      "cost_usd": 0.0001644,
+      "response_model": "openai/gpt-audio-mini",
+      "provider": "OpenAI"
+    },
+    {
+      "id": "c06",
+      "expected": {
+        "id": "c06",
+        "category": "speech",
+        "required_words": [
+          "blue",
+          "lantern",
+          "seven",
+          "wooden",
+          "boxes"
+        ],
+        "audio_sha256": "69c7d7c22d666ad05097b43b0927fa827621fb01322653c0760c8f166d222f5f"
+      },
+      "passed": true,
+      "observed_category": "speech",
+      "missing_words": [],
+      "response": {
+        "category": "speech",
+        "evidence": "A clear sentence is spoken about a blue lantern and wooden boxes.",
+        "transcript": "The blue lantern is beside seven wooden boxes."
+      },
+      "audio_sha256": "69c7d7c22d666ad05097b43b0927fa827621fb01322653c0760c8f166d222f5f",
+      "payload_sha256": "8c23e8e7cd19fa0834f4900e46c67c058d990741d0ffe1448b15123176e2de34",
+      "response_sha256": "d20a5697a8d29791b650dc8c0e5a15164c3d1ea1a2050fd5adda09a12336c64e",
+      "content": "{\n  \"category\": \"speech\",\n  \"evidence\": \"A clear sentence is spoken about a blue lantern and wooden boxes.\",\n  \"transcript\": \"The blue lantern is beside seven wooden boxes.\"\n}",
+      "cost_usd": 0.00018,
+      "response_model": "openai/gpt-audio-mini",
+      "provider": "OpenAI"
+    },
+    {
+      "id": "c07",
+      "expected": {
+        "id": "c07",
+        "category": "silence",
+        "audio_sha256": "47b589098cc9e4b92774cd5b6a57ccca0713c02396bf755b2318f7e81cdc534e"
+      },
+      "passed": false,
+      "error": "No valid JSON object",
+      "observed_category": null,
+      "audio_sha256": "47b589098cc9e4b92774cd5b6a57ccca0713c02396bf755b2318f7e81cdc534e",
+      "payload_sha256": "72c7047871e7fac0c0b1db3559935714cda9306bd68e4f8cf77e866286854024",
+      "response_sha256": "58bc19e160efa5e7f1da6544c4353202ce0394340143294c9148c2cb8b9bb90e",
+      "content": "I'm sorry, but I can't listen to or analyze audio. If you can provide a description of the sound or any details, I can help you interpret it. Let me know how you'd like to proceed.",
+      "cost_usd": 0.0001932,
+      "response_model": "openai/gpt-audio-mini",
+      "provider": "OpenAI"
+    },
+    {
+      "id": "c08",
+      "expected": {
+        "id": "c08",
+        "category": "steady_tone",
+        "audio_sha256": "d6f93d0f945e5e3eb75657e7c421a006e1dd6bfef3a2d554235fc6ea055bff5d"
+      },
+      "passed": false,
+      "error": "No valid JSON object",
+      "observed_category": null,
+      "audio_sha256": "d6f93d0f945e5e3eb75657e7c421a006e1dd6bfef3a2d554235fc6ea055bff5d",
+      "payload_sha256": "10cfb63e9f3e9c093d2648b7d5c7a0df913bacf0b2920b06b18ba84187855b81",
+      "response_sha256": "88754050d8a681809ff709b30de65cb12f0efde519eb8276c018bca4f680b9bd",
+      "content": "I'm sorry, but I can't listen to or analyze audio. If you can provide a description of the sound or any details, I can help you categorize it.",
+      "cost_usd": 0.0001656,
+      "response_model": "openai/gpt-audio-mini",
+      "provider": "OpenAI"
+    }
+  ],
+  "scope": "Basic perception gate only; passing does not establish musical judgment."
+}

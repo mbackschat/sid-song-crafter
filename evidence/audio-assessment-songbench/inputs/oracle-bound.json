@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "q01",
+      "role": "original moving-pulse passage",
+      "audio_sha256": "c0fe86bc7e934fef6f21f97f92f1501d22ea31ebeb6f9c8bcadcca5408df3a17"
+    },
+    {
+      "id": "q02",
+      "role": "same-material stationary-pulse diagnostic",
+      "audio_sha256": "02dda2433c22090af41accfe10412612825367d31d6e884b4800b8302138d504"
+    },
+    {
+      "id": "q03",
+      "role": "original with deterministic 50 percent dropout",
+      "audio_sha256": "384d1e254ba91fef9cd212f610c72a1f8b9d2809d3b29330cd8ba0c06baa46b3"
+    },
+    {
+      "id": "q04",
+      "role": "digital silence input negative control",
+      "musical_quality_ground_truth": false,
+      "audio_sha256": "d1478b62f6cde68fe22fab1558867e81a0c64d148ad6d8850dd0da7eae45ece1"
+    }
+  ],
+  "human_preference": {
+    "preferred_case": "q01",
+    "other_case": "q02",
+    "evidence": "evidence/follin-contrast/listening-verdict.json",
+    "evidence_sha256": "61839b6db1c191fdaf9c04aac6ea9a75bb04608d4f7d32c0245026102ba92389",
+    "date": "2026-10-13",
+    "verdict": "the original sound more animated, yes: the main voice has this nice \"chiptuning\" vibe that's lost a bit with stationary-pulse",
+    "scope": "Gauntlet III subtune 2, original 16\u201324-second passage versus the same material with step zero and safe fixed fallback width. Two parameters change; no isolated rate-only preference, new arrangement acceptance or universal style inferred."
+  },
+  "hypotheses": [
+    {
+      "higher_quality_case": "q01",
+      "lower_quality_case": "q03",
+      "status": "untested quality hypothesis; no human verdict",
+      "basis": "The dropout transform interrupts half of the original passage with abrupt silence"
+    }
+  ],
+  "boundary": "Only q01 versus q02 has a retained human preference. Dropout degradation is a hypothesis. Silence tests input handling and has no musical-score ground truth. No absolute scores or complete ordering are declared.",
+  "binding": {
+    "original_oracle_sha256": "7040d393e9d0f691fb7e61473f0a859fefd0c9917577ba328c9cced6d5e32da1",
+    "pre_request_provenance_sha256": "0d5c3ae24a748803dc59f11f3ee390f43839aaf8af3a4a0fde59f99a7f417f61",
+    "historical_manifest_sha256": "8db19dd15c6145a63ee195d45f0dda6d242e01b5001e96156f8d372a4cf7ea44",
+    "generator_at_capture_sha256": "f4e3873e7171ffbcf67acff81ae0fc182d7d02d58d7884b8acda6158e2fca96d",
+    "basis": "Each retained WAV and PCM hash verified against pre-request provenance; original oracle and manifest preserved"
+  }
+}

@@ -122,14 +122,33 @@ class AudioAssessmentTest(unittest.TestCase):
             self.run_trial(transport)
         self.assertEqual(transport.requests, [])
 
-    def test_reasoning_requires_a_boolean_before_network(self):
-        for value in ("false", 0, None, {}):
+    def test_reasoning_rejects_nonboolean_nonnull_values_before_network(self):
+        for value in ("false", 0, {}, []):
             self.document["reasoning"] = value
             self.write_manifest()
             transport = Transport([])
             with self.assertRaisesRegex(audio_assessment.TrialError, "reasoning.*boolean"):
                 self.run_trial(transport)
             self.assertEqual(transport.requests, [])
+
+    def test_null_reasoning_omits_field_and_invalidates_default_payload_cache(self):
+        transport = Transport([key_info(), completion()] * 2)
+        original = self.run_trial(transport)[0]
+        default_payload = json.loads(transport.requests[-1][0].data)
+        self.assertEqual(default_payload["reasoning"], {"enabled": False})
+        self.document["reasoning"] = None
+        self.write_manifest()
+        omitted = self.run_trial(transport)[0]
+        self.assertNotIn("reasoning", json.loads(transport.requests[-1][0].data))
+        self.assertNotEqual(original["payload_sha256"], omitted["payload_sha256"])
+        self.assertIsNone(json.loads((self.output / "attempt-02.json").read_text())["reasoning"])
+        self.assertTrue(self.run_trial(Transport([]))[0]["cached"])
+        self.document["reasoning"] = False
+        self.write_manifest()
+        self.assertEqual(self.run_trial(Transport([]))[0]["payload_sha256"], original["payload_sha256"])
+        del self.document["reasoning"]
+        self.write_manifest()
+        self.assertEqual(self.run_trial(Transport([]))[0]["payload_sha256"], original["payload_sha256"])
 
     def test_reasoning_effort_requires_supported_value_and_enabled_reasoning(self):
         self.document["reasoning"] = True
@@ -140,13 +159,14 @@ class AudioAssessmentTest(unittest.TestCase):
             with self.assertRaisesRegex(audio_assessment.TrialError, "reasoning_effort"):
                 self.run_trial(transport)
             self.assertEqual(transport.requests, [])
-        self.document["reasoning"] = False
         self.document["reasoning_effort"] = "low"
-        self.write_manifest()
-        transport = Transport([])
-        with self.assertRaisesRegex(audio_assessment.TrialError, "reasoning.*true"):
-            self.run_trial(transport)
-        self.assertEqual(transport.requests, [])
+        for value in (False, None):
+            self.document["reasoning"] = value
+            self.write_manifest()
+            transport = Transport([])
+            with self.assertRaisesRegex(audio_assessment.TrialError, "reasoning.*true"):
+                self.run_trial(transport)
+            self.assertEqual(transport.requests, [])
 
     def test_reasoning_effort_accepts_low_medium_and_high(self):
         self.document["reasoning"] = True

@@ -1,0 +1,204 @@
+{
+  "model": "qwen/qwen3.8-omni-flash",
+  "passed": true,
+  "manifest_sha256": "ddd8ab220c6c0c75e2e450a770400c56f72dc5e289146acc0936ea05261a0676",
+  "oracle_sha256": "280e6c6b547436fde60129ed5d2046a988005853ccac46113e7176e5ec091b5f",
+  "evaluator_sha256": "5c28f7acb993aa5e75360584dce0bf0d1277b692a7174f1780141840303b6690",
+  "correct": 8,
+  "total": 8,
+  "total_cost_usd": "0.00034067",
+  "cases": [
+    {
+      "id": "c01",
+      "expected": {
+        "id": "c01",
+        "category": "silence",
+        "audio_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809"
+      },
+      "passed": true,
+      "observed_category": "silence",
+      "missing_words": [],
+      "response": {
+        "category": "silence",
+        "evidence": "The audio file contains no audible sound.",
+        "transcript": ""
+      },
+      "audio_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "payload_sha256": "2d12d0faa803bfaae6c7c31aaf20f8cbbbe4849751660aac0bf470dc97c2aa76",
+      "response_sha256": "16f40ac72d95ef2e328cc6bb96b94f4e656b0a5b552c6539652dafa913d5f3e8",
+      "content": "```json\n{\n  \"category\": \"silence\",\n  \"evidence\": \"The audio file contains no audible sound.\",\n  \"transcript\": \"\"\n}\n```",
+      "cost_usd": 3.815e-05,
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "provider": "Alibaba"
+    },
+    {
+      "id": "c02",
+      "expected": {
+        "id": "c02",
+        "category": "steady_tone",
+        "audio_sha256": "cdc22ed82304b95d78f49e64511e653bdaee3a8cb69604106b163760fe027ce2"
+      },
+      "passed": true,
+      "observed_category": "steady_tone",
+      "missing_words": [],
+      "response": {
+        "category": "steady_tone",
+        "evidence": "The audio consists of a single, continuous tone at a constant pitch and volume.",
+        "transcript": ""
+      },
+      "audio_sha256": "cdc22ed82304b95d78f49e64511e653bdaee3a8cb69604106b163760fe027ce2",
+      "payload_sha256": "4691bb6f45d63b8086417d1a4e5805158d2d7f3f93f8966831501550606a3042",
+      "response_sha256": "92d62e1fc3f7ba577dbd665efdc9e603c41a5ee547d44f3d477bf5921efc22f2",
+      "content": "```json\n{\n  \"category\": \"steady_tone\",\n  \"evidence\": \"The audio consists of a single, continuous tone at a constant pitch and volume.\",\n  \"transcript\": \"\"\n}\n```",
+      "cost_usd": 4.238e-05,
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "provider": "Alibaba"
+    },
+    {
+      "id": "c03",
+      "expected": {
+        "id": "c03",
+        "category": "changing_tone",
+        "audio_sha256": "84030a2eaf214416b20bcc96d621ddf4cd47f655f1d8dcdd380418b37ebacdc1"
+      },
+      "passed": true,
+      "observed_category": "changing_tone",
+      "missing_words": [],
+      "response": {
+        "category": "changing_tone",
+        "evidence": "The audio contains a single, continuous tone that smoothly sweeps upwards in pitch from a low frequency to a high frequency.",
+        "transcript": ""
+      },
+      "audio_sha256": "84030a2eaf214416b20bcc96d621ddf4cd47f655f1d8dcdd380418b37ebacdc1",
+      "payload_sha256": "c15ee653848e1ea243ae8cf10ba759487cc04819c81656d4309c3671a4cc80dd",
+      "response_sha256": "326bf348e5e7d3ad782d599abf4a9ecc4191cde32a7cc2b81d5665ef481fd891",
+      "content": "```json\n{\n  \"category\": \"changing_tone\",\n  \"evidence\": \"The audio contains a single, continuous tone that smoothly sweeps upwards in pitch from a low frequency to a high frequency.\",\n  \"transcript\": \"\"\n}\n```",
+      "cost_usd": 4.567e-05,
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "provider": "Alibaba"
+    },
+    {
+      "id": "c04",
+      "expected": {
+        "id": "c04",
+        "category": "noise",
+        "audio_sha256": "646977e16748ca21b05f080370cd2be76d895bbfbbafdfc2801ab0809785b213"
+      },
+      "passed": true,
+      "observed_category": "noise",
+      "missing_words": [],
+      "response": {
+        "category": "noise",
+        "evidence": "The audio consists of a loud, continuous hissing sound, characteristic of white noise or static.",
+        "transcript": ""
+      },
+      "audio_sha256": "646977e16748ca21b05f080370cd2be76d895bbfbbafdfc2801ab0809785b213",
+      "payload_sha256": "537890d7676c908e4cb2fb3b40eca0b23ff3db95bce2935fc4346efe6c519108",
+      "response_sha256": "1c964b07b9d0ef1dd302fcb859d49b54477395b13156621de570fb37f3aeb81a",
+      "content": "```json\n{\n  \"category\": \"noise\",\n  \"evidence\": \"The audio consists of a loud, continuous hissing sound, characteristic of white noise or static.\",\n  \"transcript\": \"\"\n}\n```",
+      "cost_usd": 4.285e-05,
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "provider": "Alibaba"
+    },
+    {
+      "id": "c05",
+      "expected": {
+        "id": "c05",
+        "category": "repeated_tones",
+        "audio_sha256": "fbf021da5147a0c4505368d713fe61577cc00da2dcb1a708a03a1f384b82d38d"
+      },
+      "passed": true,
+      "observed_category": "repeated_tones",
+      "missing_words": [],
+      "response": {
+        "category": "repeated_tones",
+        "evidence": "The audio contains a sequence of four identical, short electronic tones, characteristic of a telephone dial tone.",
+        "transcript": ""
+      },
+      "audio_sha256": "fbf021da5147a0c4505368d713fe61577cc00da2dcb1a708a03a1f384b82d38d",
+      "payload_sha256": "c123c4473b621acaa279f35e87ff19e73f47beb7780f9565f0787454c5a766ff",
+      "response_sha256": "0981780707a5c39fc334a876bc5a4d8bebc1b74cf9798b1ad7d7065008de97bf",
+      "content": "```json\n{\n  \"category\": \"repeated_tones\",\n  \"evidence\": \"The audio contains a sequence of four identical, short electronic tones, characteristic of a telephone dial tone.\",\n  \"transcript\": \"\"\n}\n```",
+      "cost_usd": 4.473e-05,
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "provider": "Alibaba"
+    },
+    {
+      "id": "c06",
+      "expected": {
+        "id": "c06",
+        "category": "speech",
+        "required_words": [
+          "blue",
+          "lantern",
+          "seven",
+          "wooden",
+          "boxes"
+        ],
+        "audio_sha256": "69c7d7c22d666ad05097b43b0927fa827621fb01322653c0760c8f166d222f5f"
+      },
+      "passed": true,
+      "observed_category": "speech",
+      "missing_words": [],
+      "response": {
+        "category": "speech",
+        "evidence": "The audio contains a clear, synthesized female voice speaking a sentence.",
+        "transcript": "The blue lantern is beside seven wooden boxes."
+      },
+      "audio_sha256": "69c7d7c22d666ad05097b43b0927fa827621fb01322653c0760c8f166d222f5f",
+      "payload_sha256": "d940a64d16d968118c90b20bea86be8b0037fa99d982ba8d71fd23f81db49d2e",
+      "response_sha256": "e866002fd2089897ecc200841d95114d38ed3a1feaf96270c0a57b37d7a8bee8",
+      "content": "```json\n{\n  \"category\": \"speech\",\n  \"evidence\": \"The audio contains a clear, synthesized female voice speaking a sentence.\",\n  \"transcript\": \"The blue lantern is beside seven wooden boxes.\"\n}\n```",
+      "cost_usd": 4.321e-05,
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "provider": "Alibaba"
+    },
+    {
+      "id": "c07",
+      "expected": {
+        "id": "c07",
+        "category": "silence",
+        "audio_sha256": "47b589098cc9e4b92774cd5b6a57ccca0713c02396bf755b2318f7e81cdc534e"
+      },
+      "passed": true,
+      "observed_category": "silence",
+      "missing_words": [],
+      "response": {
+        "category": "silence",
+        "evidence": "The audio file contains no audible sound.",
+        "transcript": ""
+      },
+      "audio_sha256": "47b589098cc9e4b92774cd5b6a57ccca0713c02396bf755b2318f7e81cdc534e",
+      "payload_sha256": "ea2da122e2d583306340fdbbf3c5c10adfdbb1cf997b183904cab5d2e7b2236a",
+      "response_sha256": "500912469025f757f75db72536bdaad07a92a886a61330a82e1e3330db1b0c92",
+      "content": "```json\n{\n  \"category\": \"silence\",\n  \"evidence\": \"The audio file contains no audible sound.\",\n  \"transcript\": \"\"\n}\n```",
+      "cost_usd": 4.025e-05,
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "provider": "Alibaba"
+    },
+    {
+      "id": "c08",
+      "expected": {
+        "id": "c08",
+        "category": "steady_tone",
+        "audio_sha256": "d6f93d0f945e5e3eb75657e7c421a006e1dd6bfef3a2d554235fc6ea055bff5d"
+      },
+      "passed": true,
+      "observed_category": "steady_tone",
+      "missing_words": [],
+      "response": {
+        "category": "steady_tone",
+        "evidence": "The audio consists of a single, continuous tone at a constant pitch and volume.",
+        "transcript": ""
+      },
+      "audio_sha256": "d6f93d0f945e5e3eb75657e7c421a006e1dd6bfef3a2d554235fc6ea055bff5d",
+      "payload_sha256": "1ee226a2234c03c20e0a46ebc6a3097d8f59e14de8579bba0c02813b47b5de56",
+      "response_sha256": "518e2474bcfeca5f989a9775ac39939c1ed8abb3179acef467f189f5ab466bc8",
+      "content": "```json\n{\n  \"category\": \"steady_tone\",\n  \"evidence\": \"The audio consists of a single, continuous tone at a constant pitch and volume.\",\n  \"transcript\": \"\"\n}\n```",
+      "cost_usd": 4.343e-05,
+      "response_model": "qwen/qwen3.8-omni-flash",
+      "provider": "Alibaba"
+    }
+  ],
+  "scope": "Basic perception gate only; passing does not establish musical judgment."
+}

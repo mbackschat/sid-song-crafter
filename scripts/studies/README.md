@@ -4,7 +4,10 @@ These tools investigate pinned recordings or prepare fixed demonstrations. They 
 
 | Study | Tools | Owning findings |
 | --- | --- | --- |
-| Audio assessment pilot | [Prepare pinned anonymous probes](audio-assessment/prepare-trial.py) | [Calibration method and results](../../docs/research/audio-assessment.md) |
+| Audio assessment pilot | [Prepare pinned anonymous comparisons](audio-assessment/prepare-trial.py) | [Commands, calibration and results](../../docs/research/audio-assessment.md) |
+| Basic audio perception | [Prepare elementary controls](audio-assessment/prepare-controls.py), [score verified responses](audio-assessment/evaluate-controls.py), [run the bounded model suite](audio-assessment/run-control-suite.py) | [Commands, calibration and results](../../docs/research/audio-assessment.md) |
+| Audio prompt and sample-rate presentation | [Prepare silence and narrower A/B checks](audio-assessment/prepare-presentation.py) | [Commands, calibration and results](../../docs/research/audio-assessment.md) |
+| Local musical quality assessment | [Prepare pinned quality probes](audio-assessment/prepare-quality-probes.py), [run SongBench on CPU or Apple Metal](audio-assessment/songbench-local.py) | [Commands, calibration and results](../../docs/research/audio-assessment.md) |
 | DRAX | [Describe the score](drax/describe-drax-score.py), [bass intervention](drax/study-drax-bass.py), [bass in context](drax/context-drax-bass.py), [full recurring-theme reconstruction](drax/reconstruct-drax-full.py), [bass transfer](drax/transfer-drax-bass.py) | [Decoded bass](../../songs/studies/drax-bass-reconstruction/README.md), [recurring theme](../../songs/studies/drax-full-reconstruction/README.md) |
 | Flashdance | [Describe the pinned score](flashdance/describe-flashdance-score.py) | [Flashdance study](../../docs/research/composition/flashdance-preparation.md) |
 | Shades | [PWM intervention](shades/compare-shades-pwm.py), [familiar phrase preparation](shades/prepare-shades-elise.py) | [Shades study](../../docs/research/composition/shades-preparation.md) |
