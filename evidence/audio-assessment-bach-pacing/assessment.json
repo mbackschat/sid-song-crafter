@@ -1,0 +1,313 @@
+{
+  "date": "2026-10-14",
+  "oracle_sha256": "aa10059caaab7476bd36249b072f524e4f5c8076207037bc786298cd003d4c0e",
+  "assessment_script_sha256": "25b4cd02190211f6ad1e7699fa379e039bfd7b6b74038d3a098170f61ae26492",
+  "scope": "First eight seconds of the same composition with differing phrasing contain different amounts of the score; the clips are not aligned to the same notes and do not isolate global tempo. The full-opening acceptance does not independently establish an eight-second preference. This tiny trial has no held-out passage and cannot establish model eligibility or adoption.",
+  "qwen": {
+    "cases": [
+      {
+        "id": "p01",
+        "expected": {
+          "audio_presence": "music",
+          "more_forward_motion": "B",
+          "longer_holds_or_gaps": "A"
+        },
+        "answer": {
+          "audio_presence": "music",
+          "more_forward_motion": "B",
+          "longer_holds_or_gaps": "A",
+          "observations": "Segment A features a sustained note at the beginning followed by distinct pauses between short melodic phrases. Segment B consists of continuous, rapid arpeggios with no noticeable gaps, creating a much faster and more driving sense of forward motion."
+        },
+        "content": "{\"audio_presence\": \"music\", \"more_forward_motion\": \"B\", \"longer_holds_or_gaps\": \"A\", \"observations\": \"Segment A features a sustained note at the beginning followed by distinct pauses between short melodic phrases. Segment B consists of continuous, rapid arpeggios with no noticeable gaps, creating a much faster and more driving sense of forward motion.\"}",
+        "field_matches": {
+          "audio_presence": true,
+          "more_forward_motion": true,
+          "longer_holds_or_gaps": true
+        },
+        "pass": true,
+        "cost_usd": 7.298e-05,
+        "model": "qwen/qwen3.8-omni-flash",
+        "provider": "Alibaba",
+        "audio_sha256": "4f7dfff57b00ab195aadebd8620dd1a9504900ba28f705048250a057b1e3971c",
+        "payload_sha256": "5b6ba9ad7032bcc047346e036c12fc9498c4d1ba93e1094007a0f9906a1f61ee",
+        "receipt_sha256": "3e435c8745a6a47324f5169247ed8a60f651d1d52fa79c326ed14e34d3bb6f7e",
+        "response_sha256": "325fa2222990d69bb7b6505e09b6232ddb5f831d4e7b7f7d555c79960adf4bdf"
+      },
+      {
+        "id": "p02",
+        "expected": {
+          "audio_presence": "music",
+          "more_forward_motion": "A",
+          "longer_holds_or_gaps": "B"
+        },
+        "answer": {
+          "audio_presence": "music",
+          "more_forward_motion": "A",
+          "longer_holds_or_gaps": "B",
+          "observations": "Segment A features a continuous stream of fast, staccato notes with very little silence between them, creating strong forward momentum. Segment B contains several long-held notes and distinct pauses/gaps between phrases, resulting in a much slower pacing."
+        },
+        "content": "{\"audio_presence\": \"music\", \"more_forward_motion\": \"A\", \"longer_holds_or_gaps\": \"B\", \"observations\": \"Segment A features a continuous stream of fast, staccato notes with very little silence between them, creating strong forward momentum. Segment B contains several long-held notes and distinct pauses/gaps between phrases, resulting in a much slower pacing.\"}",
+        "field_matches": {
+          "audio_presence": true,
+          "more_forward_motion": true,
+          "longer_holds_or_gaps": true
+        },
+        "pass": true,
+        "cost_usd": 7.345e-05,
+        "model": "qwen/qwen3.8-omni-flash",
+        "provider": "Alibaba",
+        "audio_sha256": "9ee48d44796c7761bd68b2f6c7932aa8d5c5e606661ed374576cd37b0d7fbc3b",
+        "payload_sha256": "e11f2a3f8add2d748cfa2a66901cedc66a217c5dd4dab8d0c57b5273f9d12850",
+        "receipt_sha256": "e545c82205ec9c50b6a87785f8b18b6df64c0451cd83fe8c6730f03560ce79fb",
+        "response_sha256": "64e0b8a37854c2b3b75cb65953bd54595bc0dddf46818618813f15d715ff4eb4"
+      },
+      {
+        "id": "p03",
+        "expected": {
+          "audio_presence": "music",
+          "more_forward_motion": "same",
+          "longer_holds_or_gaps": "same"
+        },
+        "answer": {
+          "audio_presence": "music",
+          "more_forward_motion": "same",
+          "longer_holds_or_gaps": "B",
+          "observations": [
+            "Segment A plays a continuous chiptune melody with no pauses.",
+            "Segment B repeats the exact same melody but includes a distinct silence/gap before it begins."
+          ]
+        },
+        "content": "{\"audio_presence\": \"music\", \"more_forward_motion\": \"same\", \"longer_holds_or_gaps\": \"B\", \"observations\": [\"Segment A plays a continuous chiptune melody with no pauses.\", \"Segment B repeats the exact same melody but includes a distinct silence/gap before it begins.\"]}",
+        "field_matches": {
+          "audio_presence": true,
+          "more_forward_motion": true,
+          "longer_holds_or_gaps": false
+        },
+        "pass": false,
+        "cost_usd": 6.64e-05,
+        "model": "qwen/qwen3.8-omni-flash",
+        "provider": "Alibaba",
+        "audio_sha256": "69d7ee21c698d44849251ec89f5b3cb11151ac70513ba0bbba192665ea1b07d1",
+        "payload_sha256": "b1bb9c4b06fb97851f68cbaf344fd495a32f1b9185bdd66cd6dc3826bdc9d0a8",
+        "receipt_sha256": "4143d8bb3a9c4e8b8ee672b7650d53caba8b5b2002a6a29b584a5e84c11c7c41",
+        "response_sha256": "6336ac589dbc03e13ce048e5d916813b5e958fc6a7aa593a892f4bb221810a02"
+      },
+      {
+        "id": "p04",
+        "expected": {
+          "audio_presence": "silence",
+          "more_forward_motion": "same",
+          "longer_holds_or_gaps": "same"
+        },
+        "answer": {
+          "audio_presence": "silence",
+          "more_forward_motion": "same",
+          "longer_holds_or_gaps": "same",
+          "observations": [
+            "Segment A is silent.",
+            "Segment B is silent."
+          ]
+        },
+        "content": "{\"audio_presence\": \"silence\", \"more_forward_motion\": \"same\", \"longer_holds_or_gaps\": \"same\", \"observations\": [\"Segment A is silent.\", \"Segment B is silent.\"]}",
+        "field_matches": {
+          "audio_presence": true,
+          "more_forward_motion": true,
+          "longer_holds_or_gaps": true
+        },
+        "pass": true,
+        "cost_usd": 5.7e-05,
+        "model": "qwen/qwen3.8-omni-flash",
+        "provider": "Alibaba",
+        "audio_sha256": "382151d2993bce1705e45ad252142c4c4335225e0d69a9857ee07aa56a3da56f",
+        "payload_sha256": "ad2720cf03bf7036161f204678c0bcdb8e91ebc5453f7da73e22f0f3b716e2ac",
+        "receipt_sha256": "11766c8300e05342cec8ed7878dfdb68ee47a3034534a8ec5f1e59db20a7d560",
+        "response_sha256": "434e2081a00e2d15ba6e5d0503c214b02a1f2677f24d574b7282b9a301e29a76"
+      }
+    ],
+    "passed_cases": 3,
+    "total_cases": 4,
+    "cost_usd": "0.00026983",
+    "declared_gate_pass": false
+  },
+  "songbench": {
+    "cases": {
+      "q01": {
+        "result_sha256": "8ddefd9192c9d5af63de24f011e972f560307ad6974a477775ca77dc73209fe8",
+        "input": {
+          "duration_seconds": 8.0,
+          "frames": 352800,
+          "sample_rate": 44100,
+          "channels": 1,
+          "sha256": "17cc43266cdeb17625d94631fd6af91f488da6e2ad7922ea7e53fe58033a33bc"
+        },
+        "device": "mps",
+        "scores": {
+          "melody": 3.274153470993042,
+          "arrangement": 3.793578624725342,
+          "musicality": 4.054288864135742,
+          "vocal": 2.7170250415802,
+          "instrumental": 4.601039409637451,
+          "mixing": 3.88824200630188,
+          "structure": 2.873162269592285
+        },
+        "model_loading_seconds": 10.44529450009577,
+        "total_seconds": 14.903885917039588,
+        "peak_rss_bytes": 3020537856,
+        "preprocessing": {
+          "loader": "librosa.load",
+          "sample_rate": 24000,
+          "decoded_frames": 192001,
+          "mono": true,
+          "gain": 1,
+          "crop": null,
+          "muq_hidden_layer": 6
+        },
+        "wrapper_sha256": "a221a1168073196790c768f8cacecdbfb6093acebb1c7ee93d0ff5b23d255350",
+        "model_source_sha256": "9475852aa4100347971ea556441574b7ca0372fbc0e765855445c77a41afab32",
+        "head_sha256": "ca27966a6d2b3312587b9e1d53ee3adf6bde8ac68a7d339e6f962206cbfde312",
+        "muq_config_sha256": "237335ee27d8fb951ce778701a12a79e06c51ae636dd786f97e45f51ce532543",
+        "muq_sha256": "273febab2be02872c37d2c37e48a9d6c52c1c9392f3eeeabd498efa281ccb7a6",
+        "metal_memory_after_inference_bytes": {
+          "current_allocated": 1436030976,
+          "driver_allocated": 2354020352
+        }
+      },
+      "q02": {
+        "result_sha256": "d75d99c99e3b22113d4d203c99d653421b13bafe69ff569aceb3dc0de53005a5",
+        "input": {
+          "duration_seconds": 8.0,
+          "frames": 352800,
+          "sample_rate": 44100,
+          "channels": 1,
+          "sha256": "8fe295f0657cc7a36e40e9e69709bfcacbd530450e977763d8bebf483f353c39"
+        },
+        "device": "mps",
+        "scores": {
+          "melody": 3.773737668991089,
+          "arrangement": 4.560082912445068,
+          "musicality": 4.134729862213135,
+          "vocal": 2.459247589111328,
+          "instrumental": 5.153666019439697,
+          "mixing": 4.1758131980896,
+          "structure": 3.5385165214538574
+        },
+        "model_loading_seconds": 4.955012999940664,
+        "total_seconds": 7.023094249889255,
+        "peak_rss_bytes": 3048849408,
+        "preprocessing": {
+          "loader": "librosa.load",
+          "sample_rate": 24000,
+          "decoded_frames": 192001,
+          "mono": true,
+          "gain": 1,
+          "crop": null,
+          "muq_hidden_layer": 6
+        },
+        "wrapper_sha256": "a221a1168073196790c768f8cacecdbfb6093acebb1c7ee93d0ff5b23d255350",
+        "model_source_sha256": "9475852aa4100347971ea556441574b7ca0372fbc0e765855445c77a41afab32",
+        "head_sha256": "ca27966a6d2b3312587b9e1d53ee3adf6bde8ac68a7d339e6f962206cbfde312",
+        "muq_config_sha256": "237335ee27d8fb951ce778701a12a79e06c51ae636dd786f97e45f51ce532543",
+        "muq_sha256": "273febab2be02872c37d2c37e48a9d6c52c1c9392f3eeeabd498efa281ccb7a6",
+        "metal_memory_after_inference_bytes": {
+          "current_allocated": 1436030976,
+          "driver_allocated": 2354020352
+        }
+      },
+      "q03": {
+        "result_sha256": "246583cc20a12c8c94be7944a37a07f616747f00eb8fe81685337af1db52089a",
+        "input": {
+          "duration_seconds": 8.0,
+          "frames": 352800,
+          "sample_rate": 44100,
+          "channels": 1,
+          "sha256": "d1478b62f6cde68fe22fab1558867e81a0c64d148ad6d8850dd0da7eae45ece1"
+        },
+        "device": "mps",
+        "scores": {
+          "melody": 1.0496158599853516,
+          "arrangement": 1.0314984321594238,
+          "musicality": 1.1636500358581543,
+          "vocal": 1.0450849533081055,
+          "instrumental": 1.0590028762817383,
+          "mixing": 1.07954740524292,
+          "structure": 1.0260405540466309
+        },
+        "model_loading_seconds": 4.410493457922712,
+        "total_seconds": 6.3609937080182135,
+        "peak_rss_bytes": 3078275072,
+        "preprocessing": {
+          "loader": "librosa.load",
+          "sample_rate": 24000,
+          "decoded_frames": 192001,
+          "mono": true,
+          "gain": 1,
+          "crop": null,
+          "muq_hidden_layer": 6
+        },
+        "wrapper_sha256": "a221a1168073196790c768f8cacecdbfb6093acebb1c7ee93d0ff5b23d255350",
+        "model_source_sha256": "9475852aa4100347971ea556441574b7ca0372fbc0e765855445c77a41afab32",
+        "head_sha256": "ca27966a6d2b3312587b9e1d53ee3adf6bde8ac68a7d339e6f962206cbfde312",
+        "muq_config_sha256": "237335ee27d8fb951ce778701a12a79e06c51ae636dd786f97e45f51ce532543",
+        "muq_sha256": "273febab2be02872c37d2c37e48a9d6c52c1c9392f3eeeabd498efa281ccb7a6",
+        "metal_memory_after_inference_bytes": {
+          "current_allocated": 1436030976,
+          "driver_allocated": 2354020352
+        }
+      },
+      "q04": {
+        "result_sha256": "9e284c6247b6be79d5dd7ca467d6882d76ef5827e8a9e09c59717e6f9dab7fa0",
+        "input": {
+          "duration_seconds": 8.0,
+          "frames": 352800,
+          "sample_rate": 44100,
+          "channels": 1,
+          "sha256": "8fe295f0657cc7a36e40e9e69709bfcacbd530450e977763d8bebf483f353c39"
+        },
+        "device": "mps",
+        "scores": {
+          "melody": 3.773737668991089,
+          "arrangement": 4.560082912445068,
+          "musicality": 4.134729862213135,
+          "vocal": 2.459247589111328,
+          "instrumental": 5.153666019439697,
+          "mixing": 4.1758131980896,
+          "structure": 3.5385165214538574
+        },
+        "model_loading_seconds": 4.006254500010982,
+        "total_seconds": 5.766234207898378,
+        "peak_rss_bytes": 3078209536,
+        "preprocessing": {
+          "loader": "librosa.load",
+          "sample_rate": 24000,
+          "decoded_frames": 192001,
+          "mono": true,
+          "gain": 1,
+          "crop": null,
+          "muq_hidden_layer": 6
+        },
+        "wrapper_sha256": "a221a1168073196790c768f8cacecdbfb6093acebb1c7ee93d0ff5b23d255350",
+        "model_source_sha256": "9475852aa4100347971ea556441574b7ca0372fbc0e765855445c77a41afab32",
+        "head_sha256": "ca27966a6d2b3312587b9e1d53ee3adf6bde8ac68a7d339e6f962206cbfde312",
+        "muq_config_sha256": "237335ee27d8fb951ce778701a12a79e06c51ae636dd786f97e45f51ce532543",
+        "muq_sha256": "273febab2be02872c37d2c37e48a9d6c52c1c9392f3eeeabd498efa281ccb7a6",
+        "metal_memory_after_inference_bytes": {
+          "current_allocated": 1436030976,
+          "driver_allocated": 2354020352
+        }
+      }
+    },
+    "primary_dimension": "musicality",
+    "driven_minus_previous": 0.08044099807739258,
+    "repeat_absolute_differences": {
+      "melody": 0.0,
+      "arrangement": 0.0,
+      "musicality": 0.0,
+      "vocal": 0.0,
+      "instrumental": 0.0,
+      "mixing": 0.0,
+      "structure": 0.0
+    }
+  },
+  "held_out_passage": false,
+  "establishes_model_eligibility": false
+}

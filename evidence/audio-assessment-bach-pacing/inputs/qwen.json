@@ -1,0 +1,31 @@
+{
+  "model": "qwen/qwen3.8-omni-flash",
+  "max_tokens": 1200,
+  "reasoning": false,
+  "cases": [
+    {
+      "id": "p01",
+      "wav": "p01.wav",
+      "audio_sha256": "4f7dfff57b00ab195aadebd8620dd1a9504900ba28f705048250a057b1e3971c",
+      "prompt": "Listen to segment A (0\u20138 s) and segment B (8.5\u201316.5 s). Compare their audible phrasing and pacing. Which segment has more forward motion, and which has longer holds or gaps? Use same when there is no audible difference and uncertain when you cannot tell. Return only JSON with audio_presence (music/silence/other/uncertain), more_forward_motion (A/B/same/uncertain), longer_holds_or_gaps (A/B/same/uncertain), and observations (short audible observations)."
+    },
+    {
+      "id": "p02",
+      "wav": "p02.wav",
+      "audio_sha256": "9ee48d44796c7761bd68b2f6c7932aa8d5c5e606661ed374576cd37b0d7fbc3b",
+      "prompt": "Listen to segment A (0\u20138 s) and segment B (8.5\u201316.5 s). Compare their audible phrasing and pacing. Which segment has more forward motion, and which has longer holds or gaps? Use same when there is no audible difference and uncertain when you cannot tell. Return only JSON with audio_presence (music/silence/other/uncertain), more_forward_motion (A/B/same/uncertain), longer_holds_or_gaps (A/B/same/uncertain), and observations (short audible observations)."
+    },
+    {
+      "id": "p03",
+      "wav": "p03.wav",
+      "audio_sha256": "69d7ee21c698d44849251ec89f5b3cb11151ac70513ba0bbba192665ea1b07d1",
+      "prompt": "Listen to segment A (0\u20138 s) and segment B (8.5\u201316.5 s). Compare their audible phrasing and pacing. Which segment has more forward motion, and which has longer holds or gaps? Use same when there is no audible difference and uncertain when you cannot tell. Return only JSON with audio_presence (music/silence/other/uncertain), more_forward_motion (A/B/same/uncertain), longer_holds_or_gaps (A/B/same/uncertain), and observations (short audible observations)."
+    },
+    {
+      "id": "p04",
+      "wav": "p04.wav",
+      "audio_sha256": "382151d2993bce1705e45ad252142c4c4335225e0d69a9857ee07aa56a3da56f",
+      "prompt": "Listen to segment A (0\u20138 s) and segment B (8.5\u201316.5 s). Compare their audible phrasing and pacing. Which segment has more forward motion, and which has longer holds or gaps? Use same when there is no audible difference and uncertain when you cannot tell. Return only JSON with audio_presence (music/silence/other/uncertain), more_forward_motion (A/B/same/uncertain), longer_holds_or_gaps (A/B/same/uncertain), and observations (short audible observations)."
+    }
+  ]
+}

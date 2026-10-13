@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "source_sha256s": {
+    "previous-hybrid.wav": "b1a905e379eedecea1df1e405233165850a319d3a14631a2479d6f3ce6102318",
+    "driven-hybrid.wav": "62ebf90fc8fa531f016bbcdad4236c01958a5e83d827e0a56efdab330e991b04"
+  },
+  "scope": "First eight seconds of the same composition with differing phrasing contain different amounts of the score; the clips are not aligned to the same notes and do not isolate global tempo. The full-opening acceptance does not independently establish an eight-second preference. This tiny trial has no held-out passage and cannot establish model eligibility or adoption.",
+  "human_context": {
+    "date": "2026-10-14",
+    "verdict": "nice",
+    "accepted_source": "driven-hybrid.wav",
+    "accepted_source_sha256": "62ebf90fc8fa531f016bbcdad4236c01958a5e83d827e0a56efdab330e991b04",
+    "scope": "Acceptance of the presented full faster hybrid opening and direction for continued arrangement",
+    "eight_second_preference_independently_reviewed": false
+  },
+  "qwen": {
+    "cases": [
+      {
+        "id": "p01",
+        "audio_sha256": "4f7dfff57b00ab195aadebd8620dd1a9504900ba28f705048250a057b1e3971c",
+        "payload_sha256": "5b6ba9ad7032bcc047346e036c12fc9498c4d1ba93e1094007a0f9906a1f61ee",
+        "expected": {
+          "audio_presence": "music",
+          "more_forward_motion": "B",
+          "longer_holds_or_gaps": "A"
+        },
+        "basis": "Differing phrasing schedule and contextual listener feedback; eight-second direction is an inferred hypothesis"
+      },
+      {
+        "id": "p02",
+        "audio_sha256": "9ee48d44796c7761bd68b2f6c7932aa8d5c5e606661ed374576cd37b0d7fbc3b",
+        "payload_sha256": "e11f2a3f8add2d748cfa2a66901cedc66a217c5dd4dab8d0c57b5273f9d12850",
+        "expected": {
+          "audio_presence": "music",
+          "more_forward_motion": "A",
+          "longer_holds_or_gaps": "B"
+        },
+        "basis": "Differing phrasing schedule and contextual listener feedback; eight-second direction is an inferred hypothesis"
+      },
+      {
+        "id": "p03",
+        "audio_sha256": "69d7ee21c698d44849251ec89f5b3cb11151ac70513ba0bbba192665ea1b07d1",
+        "payload_sha256": "b1bb9c4b06fb97851f68cbaf344fd495a32f1b9185bdd66cd6dc3826bdc9d0a8",
+        "expected": {
+          "audio_presence": "music",
+          "more_forward_motion": "same",
+          "longer_holds_or_gaps": "same"
+        },
+        "basis": "Exact segment PCM identity"
+      },
+      {
+        "id": "p04",
+        "audio_sha256": "382151d2993bce1705e45ad252142c4c4335225e0d69a9857ee07aa56a3da56f",
+        "payload_sha256": "ad2720cf03bf7036161f204678c0bcdb8e91ebc5453f7da73e22f0f3b716e2ac",
+        "expected": {
+          "audio_presence": "silence",
+          "more_forward_motion": "same",
+          "longer_holds_or_gaps": "same"
+        },
+        "basis": "Exact zero PCM"
+      }
+    ],
+    "criterion": "Require all three declared fields on all four cases; report misses and abstentions without adjusting the prompt"
+  },
+  "songbench": {
+    "cases": [
+      {
+        "id": "q01",
+        "audio_sha256": "17cc43266cdeb17625d94631fd6af91f488da6e2ad7922ea7e53fe58033a33bc",
+        "pcm_sha256": "d5a5c9a4eaaff3021ff36775e97b636914a7b00f54de277cbe895d2af5acb4ba",
+        "sources": [
+          "previous-hybrid.wav"
+        ]
+      },
+      {
+        "id": "q02",
+        "audio_sha256": "8fe295f0657cc7a36e40e9e69709bfcacbd530450e977763d8bebf483f353c39",
+        "pcm_sha256": "65055328d4e838227b3f511555d69ab1b25afed87bf8ae02c99d20475766ffd3",
+        "sources": [
+          "driven-hybrid.wav"
+        ]
+      },
+      {
+        "id": "q03",
+        "audio_sha256": "d1478b62f6cde68fe22fab1558867e81a0c64d148ad6d8850dd0da7eae45ece1",
+        "pcm_sha256": "bbbf3baab8a5dc22f0ccabe9c9e753a0ec5a58713d6eab66ea37813498a1625a",
+        "sources": [
+          "zero PCM"
+        ]
+      },
+      {
+        "id": "q04",
+        "audio_sha256": "8fe295f0657cc7a36e40e9e69709bfcacbd530450e977763d8bebf483f353c39",
+        "pcm_sha256": "65055328d4e838227b3f511555d69ab1b25afed87bf8ae02c99d20475766ffd3",
+        "sources": [
+          "driven-hybrid.wav"
+        ]
+      }
+    ],
+    "primary_dimension": "musicality",
+    "retain_dimensions": [
+      "melody",
+      "arrangement",
+      "musicality",
+      "vocal",
+      "instrumental",
+      "mixing",
+      "structure"
+    ],
+    "tentative_ranking": {
+      "higher_case": "q02",
+      "lower_case": "q01",
+      "status": "Inferred contextual hypothesis; not independently listener-reviewed for these eight-second clips"
+    },
+    "repeatability": {
+      "cases": [
+        "q02",
+        "q04"
+      ],
+      "basis": "Exact WAV and PCM identity",
+      "criterion": "Retain absolute differences for all seven dimensions; no adoption threshold"
+    },
+    "silence": {
+      "case": "q03",
+      "role": "input negative control",
+      "musical_quality_ground_truth": false
+    }
+  },
+  "held_out_passage": false,
+  "establishes_model_eligibility": false
+}

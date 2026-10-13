@@ -1,0 +1,397 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/studies/audio-assessment/prepare-bach-pacing.py",
+  "generator_sha256": "ea45535197a2d095c37b8d5836f27962df7ceddc50edaf1ae26d7df01f62b0a5",
+  "source_publication": {
+    "path": "build/bach-toccata-opening-driven-listening/sources.json",
+    "sha256": "310e3f9bac6370c92e2fb51c0dbb7e023359e83c869108818a527f8c0cad283b",
+    "record": {
+      "schemaVersion": 1,
+      "run": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-driven-v1/run.json",
+        "sha256": "0396be2710cb76cad7d5ded3ebeb4ab8d3bf0f6fab1fb07176a8cf7b53ae4ae7",
+        "bytes": 25492
+      },
+      "selection": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/bach-toccata-opening-driven-audition.json",
+        "sha256": "50bc575df23e7f9e1b54c77a706b639cb5e6ece083e0d0db312f68cfac5ad0d3",
+        "bytes": 140
+      },
+      "files": [
+        {
+          "label": "previousHybrid",
+          "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-driven-v1/cache/previous/70cd01e19ffc9623d43bc8c2d2d2f4f195e71eab162c9688c7565a58d538b685/attempt-fb20af0cb9a1489ab6695907f1222dd9/song/native-song.wav",
+          "filename": "previous-hybrid.wav",
+          "sha256": "b1a905e379eedecea1df1e405233165850a319d3a14631a2479d6f3ce6102318",
+          "bytes": 2426774,
+          "stageId": "previous"
+        },
+        {
+          "label": "drivenHybrid",
+          "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-driven-v1/cache/driven/14ce013ad5fd74d18bb6a7b00717f40d31bd6c5e0d3fe7694d1cb27c44227533/attempt-1a7d7563189b44138c4beca75fb3c5c7/song/native-song.wav",
+          "filename": "driven-hybrid.wav",
+          "sha256": "62ebf90fc8fa531f016bbcdad4236c01958a5e83d827e0a56efdab330e991b04",
+          "bytes": 1367484,
+          "stageId": "driven"
+        },
+        {
+          "label": "previousThenDriven",
+          "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-driven-v1/cache/comparison/c200097ad2da8479c82d5f9227f78811de2d038732f0f5426d56165728882772/attempt-6583c738835545c7a9311a3f3f8286fb/previous-then-driven.ab.wav",
+          "filename": "previous-then-driven.ab.wav",
+          "sha256": "c6e55abe52b01f61fe3624d26c2daa9e7c33495e5a6f344155169cc5ff9d4564",
+          "bytes": 3838314,
+          "stageId": "comparison"
+        }
+      ]
+    }
+  },
+  "sources": {
+    "previous-hybrid.wav": {
+      "path": "build/bach-toccata-opening-driven-listening/previous-hybrid.wav",
+      "sha256": "b1a905e379eedecea1df1e405233165850a319d3a14631a2479d6f3ce6102318",
+      "published_source": {
+        "label": "previousHybrid",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-driven-v1/cache/previous/70cd01e19ffc9623d43bc8c2d2d2f4f195e71eab162c9688c7565a58d538b685/attempt-fb20af0cb9a1489ab6695907f1222dd9/song/native-song.wav",
+        "filename": "previous-hybrid.wav",
+        "sha256": "b1a905e379eedecea1df1e405233165850a319d3a14631a2479d6f3ce6102318",
+        "bytes": 2426774,
+        "stageId": "previous"
+      },
+      "window": {
+        "sample_rate_hz": 44100,
+        "channels": 1,
+        "sample_width_bits": 16,
+        "start_frame_inclusive": 0,
+        "end_frame_exclusive": 352800,
+        "seconds": [
+          0,
+          8
+        ]
+      },
+      "window_pcm_sha256": "d5a5c9a4eaaff3021ff36775e97b636914a7b00f54de277cbe895d2af5acb4ba",
+      "render_verification": {
+        "path": "build/bach-toccata-opening-driven-v1/cache/previous/70cd01e19ffc9623d43bc8c2d2d2f4f195e71eab162c9688c7565a58d538b685/attempt-fb20af0cb9a1489ab6695907f1222dd9/song/verification.json",
+        "sha256": "e60213d97e6ae264cdab85ddb53d1c317047c9d43a72851e0a44c982ea62c6d3"
+      },
+      "renderer": {
+        "command": [
+          "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+          "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-driven-v1/cache/previous/70cd01e19ffc9623d43bc8c2d2d2f4f195e71eab162c9688c7565a58d538b685/attempt-fb20af0cb9a1489ab6695907f1222dd9/song/export/hybrid.sid",
+          "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-driven-v1/cache/previous/70cd01e19ffc9623d43bc8c2d2d2f4f195e71eab162c9688c7565a58d538b685/attempt-fb20af0cb9a1489ab6695907f1222dd9/song/native-song.wav",
+          "27.51394146147546"
+        ],
+        "executableSha256": "1c489b5b032977bdcc16c797e15273b5f657809fe2464f30cc60c885fa0a9a64",
+        "deadlineSeconds": 120,
+        "timedOut": false,
+        "returnCode": 0,
+        "stdout": "libsidplayfp 3.1.1 / SIDLite: 1213365 mono PCM16 samples at 44100 Hz, subtune 1 of 1",
+        "stderr": ""
+      },
+      "sid_configuration": {
+        "sidModel": "MOS8580",
+        "sidCount": 1,
+        "clockHz": 985248.6111111111,
+        "callRateHz": 50.12457321485099
+      }
+    },
+    "driven-hybrid.wav": {
+      "path": "build/bach-toccata-opening-driven-listening/driven-hybrid.wav",
+      "sha256": "62ebf90fc8fa531f016bbcdad4236c01958a5e83d827e0a56efdab330e991b04",
+      "published_source": {
+        "label": "drivenHybrid",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-driven-v1/cache/driven/14ce013ad5fd74d18bb6a7b00717f40d31bd6c5e0d3fe7694d1cb27c44227533/attempt-1a7d7563189b44138c4beca75fb3c5c7/song/native-song.wav",
+        "filename": "driven-hybrid.wav",
+        "sha256": "62ebf90fc8fa531f016bbcdad4236c01958a5e83d827e0a56efdab330e991b04",
+        "bytes": 1367484,
+        "stageId": "driven"
+      },
+      "window": {
+        "sample_rate_hz": 44100,
+        "channels": 1,
+        "sample_width_bits": 16,
+        "start_frame_inclusive": 0,
+        "end_frame_exclusive": 352800,
+        "seconds": [
+          0,
+          8
+        ]
+      },
+      "window_pcm_sha256": "65055328d4e838227b3f511555d69ab1b25afed87bf8ae02c99d20475766ffd3",
+      "render_verification": {
+        "path": "build/bach-toccata-opening-driven-v1/cache/driven/14ce013ad5fd74d18bb6a7b00717f40d31bd6c5e0d3fe7694d1cb27c44227533/attempt-1a7d7563189b44138c4beca75fb3c5c7/song/verification.json",
+        "sha256": "607a49e45d94c499a9dfb120c3cc9c2553acf73c68b60b359b9a86d04bb18bb2"
+      },
+      "renderer": {
+        "command": [
+          "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+          "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-driven-v1/cache/driven/14ce013ad5fd74d18bb6a7b00717f40d31bd6c5e0d3fe7694d1cb27c44227533/attempt-1a7d7563189b44138c4beca75fb3c5c7/song/export/hybrid.sid",
+          "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-driven-v1/cache/driven/14ce013ad5fd74d18bb6a7b00717f40d31bd6c5e0d3fe7694d1cb27c44227533/attempt-1a7d7563189b44138c4beca75fb3c5c7/song/native-song.wav",
+          "15.503864140325554"
+        ],
+        "executableSha256": "1c489b5b032977bdcc16c797e15273b5f657809fe2464f30cc60c885fa0a9a64",
+        "deadlineSeconds": 120,
+        "timedOut": false,
+        "returnCode": 0,
+        "stdout": "libsidplayfp 3.1.1 / SIDLite: 683720 mono PCM16 samples at 44100 Hz, subtune 1 of 1",
+        "stderr": ""
+      },
+      "sid_configuration": {
+        "sidModel": "MOS8580",
+        "sidCount": 1,
+        "clockHz": 985248.6111111111,
+        "callRateHz": 50.12457321485099
+      }
+    }
+  },
+  "gain": 1,
+  "normalization": false,
+  "resampling": false,
+  "scope": "First eight seconds of the same composition with differing phrasing contain different amounts of the score; the clips are not aligned to the same notes and do not isolate global tempo. The full-opening acceptance does not independently establish an eight-second preference. This tiny trial has no held-out passage and cannot establish model eligibility or adoption.",
+  "prompt": "Listen to segment A (0\u20138 s) and segment B (8.5\u201316.5 s). Compare their audible phrasing and pacing. Which segment has more forward motion, and which has longer holds or gaps? Use same when there is no audible difference and uncertain when you cannot tell. Return only JSON with audio_presence (music/silence/other/uncertain), more_forward_motion (A/B/same/uncertain), longer_holds_or_gaps (A/B/same/uncertain), and observations (short audible observations).",
+  "prompt_sha256": "5729299dfed9cb1379675085f18b1134d0f24e088b24f603bc24554223b6fe58",
+  "pair_segments_frames": {
+    "A": [
+      0,
+      352800
+    ],
+    "gap": [
+      352800,
+      374850
+    ],
+    "B": [
+      374850,
+      727650
+    ]
+  },
+  "cases": {
+    "p01": {
+      "file": "p01.wav",
+      "pcm_sha256": "3ee3cc7293b5a1624991d3d0b0f3c2fd24bd2504b83fb9992fa9e24904b93d91",
+      "metrics": {
+        "sha256": "4f7dfff57b00ab195aadebd8620dd1a9504900ba28f705048250a057b1e3971c",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 727650,
+        "durationSeconds": 16.5,
+        "peak": 8782,
+        "peakDbfs": -11.43713004382698,
+        "clippedSamples": 0,
+        "rms": 2764.435034713043,
+        "acRms": 2753.1548494882,
+        "acRmsDbfs": -21.51238592510915,
+        "perChannel": [
+          {
+            "dc": -249.4783274926132,
+            "rms": 2764.435034713043,
+            "acRms": 2753.1548494882
+          }
+        ]
+      },
+      "sources": [
+        "previous-hybrid.wav",
+        "driven-hybrid.wav"
+      ]
+    },
+    "p02": {
+      "file": "p02.wav",
+      "pcm_sha256": "d10c7da143810821286a6d5f6b12cf98468bbbab0dd4c1169213234cb466231e",
+      "metrics": {
+        "sha256": "9ee48d44796c7761bd68b2f6c7932aa8d5c5e606661ed374576cd37b0d7fbc3b",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 727650,
+        "durationSeconds": 16.5,
+        "peak": 8782,
+        "peakDbfs": -11.43713004382698,
+        "clippedSamples": 0,
+        "rms": 2764.435034713043,
+        "acRms": 2753.1548494882,
+        "acRmsDbfs": -21.51238592510915,
+        "perChannel": [
+          {
+            "dc": -249.4783274926132,
+            "rms": 2764.435034713043,
+            "acRms": 2753.1548494882
+          }
+        ]
+      },
+      "sources": [
+        "driven-hybrid.wav",
+        "previous-hybrid.wav"
+      ]
+    },
+    "p03": {
+      "file": "p03.wav",
+      "pcm_sha256": "3bdcfb4b6eecdaa9ca91f5628ff6ac92ed701f7bf7768d1d7ca7996a76c1e53f",
+      "metrics": {
+        "sha256": "69d7ee21c698d44849251ec89f5b3cb11151ac70513ba0bbba192665ea1b07d1",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 727650,
+        "durationSeconds": 16.5,
+        "peak": 8782,
+        "peakDbfs": -11.43713004382698,
+        "clippedSamples": 0,
+        "rms": 2814.6637096956956,
+        "acRms": 2804.9422262264848,
+        "acRmsDbfs": -21.350520289949216,
+        "perChannel": [
+          {
+            "dc": -233.73255273826703,
+            "rms": 2814.6637096956956,
+            "acRms": 2804.9422262264848
+          }
+        ]
+      },
+      "sources": [
+        "driven-hybrid.wav",
+        "driven-hybrid.wav"
+      ]
+    },
+    "p04": {
+      "file": "p04.wav",
+      "pcm_sha256": "699f3865b7d3495557b9fd96b668f77469109f39c278e67f93bb6eb44d3d62c5",
+      "metrics": {
+        "sha256": "382151d2993bce1705e45ad252142c4c4335225e0d69a9857ee07aa56a3da56f",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 727650,
+        "durationSeconds": 16.5,
+        "peak": 0,
+        "peakDbfs": null,
+        "clippedSamples": 0,
+        "rms": 0.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 0.0,
+            "rms": 0.0,
+            "acRms": 0.0
+          }
+        ]
+      },
+      "sources": [
+        "zero PCM",
+        "zero PCM"
+      ]
+    },
+    "q01": {
+      "file": "q01.wav",
+      "pcm_sha256": "d5a5c9a4eaaff3021ff36775e97b636914a7b00f54de277cbe895d2af5acb4ba",
+      "metrics": {
+        "sha256": "17cc43266cdeb17625d94631fd6af91f488da6e2ad7922ea7e53fe58033a33bc",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 352800,
+        "durationSeconds": 8.0,
+        "peak": 8776,
+        "peakDbfs": -11.443066407861265,
+        "clippedSamples": 0,
+        "rms": 2755.345490357424,
+        "acRms": 2741.736632620549,
+        "acRmsDbfs": -21.548484004442322,
+        "perChannel": [
+          {
+            "dc": -273.5123554421769,
+            "rms": 2755.345490357424,
+            "acRms": 2741.736632620549
+          }
+        ]
+      },
+      "sources": [
+        "previous-hybrid.wav"
+      ]
+    },
+    "q02": {
+      "file": "q02.wav",
+      "pcm_sha256": "65055328d4e838227b3f511555d69ab1b25afed87bf8ae02c99d20475766ffd3",
+      "metrics": {
+        "sha256": "8fe295f0657cc7a36e40e9e69709bfcacbd530450e977763d8bebf483f353c39",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 352800,
+        "durationSeconds": 8.0,
+        "peak": 8782,
+        "peakDbfs": -11.43713004382698,
+        "clippedSamples": 0,
+        "rms": 2858.304509212869,
+        "acRms": 2848.123238036696,
+        "acRmsDbfs": -21.217823154102035,
+        "perChannel": [
+          {
+            "dc": -241.03669501133786,
+            "rms": 2858.304509212869,
+            "acRms": 2848.123238036696
+          }
+        ]
+      },
+      "sources": [
+        "driven-hybrid.wav"
+      ]
+    },
+    "q03": {
+      "file": "q03.wav",
+      "pcm_sha256": "bbbf3baab8a5dc22f0ccabe9c9e753a0ec5a58713d6eab66ea37813498a1625a",
+      "metrics": {
+        "sha256": "d1478b62f6cde68fe22fab1558867e81a0c64d148ad6d8850dd0da7eae45ece1",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 352800,
+        "durationSeconds": 8.0,
+        "peak": 0,
+        "peakDbfs": null,
+        "clippedSamples": 0,
+        "rms": 0.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 0.0,
+            "rms": 0.0,
+            "acRms": 0.0
+          }
+        ]
+      },
+      "sources": [
+        "zero PCM"
+      ]
+    },
+    "q04": {
+      "file": "q04.wav",
+      "pcm_sha256": "65055328d4e838227b3f511555d69ab1b25afed87bf8ae02c99d20475766ffd3",
+      "metrics": {
+        "sha256": "8fe295f0657cc7a36e40e9e69709bfcacbd530450e977763d8bebf483f353c39",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 352800,
+        "durationSeconds": 8.0,
+        "peak": 8782,
+        "peakDbfs": -11.43713004382698,
+        "clippedSamples": 0,
+        "rms": 2858.304509212869,
+        "acRms": 2848.123238036696,
+        "acRmsDbfs": -21.217823154102035,
+        "perChannel": [
+          {
+            "dc": -241.03669501133786,
+            "rms": 2858.304509212869,
+            "acRms": 2848.123238036696
+          }
+        ]
+      },
+      "sources": [
+        "driven-hybrid.wav"
+      ]
+    }
+  },
+  "boundary": "Only anonymous audio, prompt and runner settings reach models. Oracle, source names and listener feedback remain local. Original render levels are retained."
+}

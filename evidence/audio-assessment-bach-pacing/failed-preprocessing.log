@@ -1,0 +1,12 @@
+/Users/mbackschat/Projects/c64-sid-skill/.tools/songbench-venv/lib/python3.11/site-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+Traceback (most recent call last):
+  File "/Users/mbackschat/Projects/c64-sid-skill/scripts/studies/audio-assessment/songbench-local.py", line 135, in <module>
+    main()
+  File "/Users/mbackschat/Projects/c64-sid-skill/scripts/studies/audio-assessment/songbench-local.py", line 120, in main
+    worker(args)
+  File "/Users/mbackschat/Projects/c64-sid-skill/scripts/studies/audio-assessment/songbench-local.py", line 97, in worker
+    verify_decoded_frames(len(waveform), sample_rate, input_info)
+  File "/Users/mbackschat/Projects/c64-sid-skill/scripts/studies/audio-assessment/songbench-local.py", line 49, in verify_decoded_frames
+    raise ValueError("Unexpected decoded frame count after resampling")
+ValueError: Unexpected decoded frame count after resampling

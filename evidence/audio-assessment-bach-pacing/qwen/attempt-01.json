@@ -1,0 +1,45 @@
+{
+  "id": "p01",
+  "wav_path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-model-pacing-20261014/inputs/p01.wav",
+  "audio_sha256": "4f7dfff57b00ab195aadebd8620dd1a9504900ba28f705048250a057b1e3971c",
+  "duration_seconds": 16.5,
+  "model": "qwen/qwen3.8-omni-flash",
+  "max_tokens": 1200,
+  "reasoning": false,
+  "reasoning_effort": null,
+  "payload_sha256": "5b6ba9ad7032bcc047346e036c12fc9498c4d1ba93e1094007a0f9906a1f61ee",
+  "status": "complete",
+  "started_at": "2026-10-13T22:56:17.689215+00:00",
+  "cost": 7.298e-05,
+  "key_limits": {
+    "limit": 10.0,
+    "limit_remaining": 9.98730559,
+    "limit_reset": null
+  },
+  "response_path": "response-01.json",
+  "response_sha256": "325fa2222990d69bb7b6505e09b6232ddb5f831d4e7b7f7d555c79960adf4bdf",
+  "finished_at": "2026-10-13T22:56:22.134223+00:00",
+  "usage": {
+    "prompt_tokens": 239,
+    "completion_tokens": 79,
+    "total_tokens": 318,
+    "cost": 7.298e-05,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 7.298e-05,
+      "upstream_inference_prompt_cost": 3.585e-05,
+      "upstream_inference_completions_cost": 3.713e-05
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
