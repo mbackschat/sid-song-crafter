@@ -1,0 +1,53 @@
+{
+  "classification": "Static numeric interface checks; no source CPU, events or register-ledger input",
+  "data": {
+    "path": "title-runtime.json",
+    "bytes": 3681090,
+    "sha256": "e56ed96c2a4dd6e9bacbbddf25253537c9d783b63dd986f2e7aaeb1b78179816"
+  },
+  "extractor": {
+    "path": "extract.py",
+    "bytes": 11190,
+    "sha256": "830be189d6477230115b3d494bde6678524bf9cfc3359b24e1ca2e6076673dc4"
+  },
+  "checker": {
+    "path": "check.py",
+    "bytes": 5120,
+    "sha256": "1d20395c48824ed9a4c7d2579b4f7a46ff6015491fba596c812bf9bf4fdb47a3"
+  },
+  "runtimeSemanticSha256": "d0b51ef61bfb293b6414f04742bc4409ef82af57621899cef24b3be1ef8b06e4",
+  "playCalls": 36000,
+  "rows": 8760,
+  "commandCounts": {
+    "arpeggio": 408,
+    "duration": 4139,
+    "extendDuration": 33,
+    "glide": 138,
+    "note": 8760,
+    "routing": 35,
+    "sound": 2558
+  },
+  "tableLengths": {
+    "records": 19,
+    "vibrato_wait": 20,
+    "onset_lengths": 12,
+    "onset_waves": 12,
+    "pulse_slots": 4,
+    "filter_programs": 4,
+    "arpeggios": 8,
+    "drums": 2
+  },
+  "frequencyWordCount": 257,
+  "rowOrder": "Unique call/voice positions, call ascending and source voice dispatch 2,1,0",
+  "noteTransform": "Every sourceNote+transpose uint8 sum equals the independent decoder pitchIndex annotation",
+  "negativeControls": [
+    "missing-adjacent-slot256",
+    "wrong-same-call-voice-order",
+    "duplicate-runtime-initial-config"
+  ],
+  "limits": [
+    "Changing duration requires rescheduling later absolute row calls",
+    "Opaque frequency words87..256 are not inferred chromatic notes",
+    "Interface/transformation checks do not establish composed-model synthesis or audio"
+  ]
+}

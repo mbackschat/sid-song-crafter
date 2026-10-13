@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "calls": 36000,
+  "orderedProjection": [
+    "phase",
+    "tick",
+    "address",
+    "value"
+  ],
+  "equal": true,
+  "actualWriteCount": 645960,
+  "expectedWriteCount": 645960,
+  "descriptionPath": "build/cybernoid-editable-data/title-runtime.json",
+  "descriptionSha256": "e56ed96c2a4dd6e9bacbbddf25253537c9d783b63dd986f2e7aaeb1b78179816",
+  "modelPath": "/Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-composed-model/model.py",
+  "modelSha256": "7b30dd01b823f5bf83d2f1c9e86ff67f9507c390839a1e7b5567e55d4eb4246d",
+  "checkerSha256": "c62cba0abf1a731a426c5879b625dd027d1803fc3e948c0e69e02605ed68927f",
+  "componentHashes": {
+    "cybernoid_pitch.py": "1e31d9ffa9ea248f3030149ae5540962e0d7dff8e515354b504f4f0d02bbbf3b",
+    "cybernoid_output.py": "169d882bff5e91cde4caca8e56baa418f1f53421ced0dd7de9bcbc5450b05a63",
+    "cybernoid_state.py": "3a2abd8cbbae6b95f098666827fb29ac450b9b937c3fdfc29a02937dd85ddf67",
+    "cybernoid_programs.py": "89d210c17cc41997fad4b8f22cdfc9ceaa09f64bd2c729fbb087a282ba93d7ed"
+  },
+  "canonicalPath": "evidence/cybernoid-form-36000/audit.writes.json.gz",
+  "canonicalCompressedSha256": "f98385d8ca3eee92f956813507757cbf5b60e19bdcd7c02cb8e7697d317fcd00",
+  "hashRecipe": "SHA256(UTF8(json.dumps(projected_ordered_rows,separators=(\",\",\":\"))+\"\\n\")); no cycle field or other normalization.",
+  "actualSha256": "030c4e5e51da3f9300bf7f6235f6a24cfb04b1976df71800148fde6549fed48c",
+  "expectedSha256": "030c4e5e51da3f9300bf7f6235f6a24cfb04b1976df71800148fde6549fed48c",
+  "command": "python3 build/cybernoid-composed-model/check.py build/cybernoid-editable-data/title-runtime.json --calls 36000 --model /Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-composed-model/model.py --output build/cybernoid-composed-model/full36000-final.json",
+  "limits": "Independent numeric score/program model; canonical original CPU writes are verification-only input. No original CPU execution, instruction-cycle equality, SID physical-state, PCM, render or listening claim."
+}

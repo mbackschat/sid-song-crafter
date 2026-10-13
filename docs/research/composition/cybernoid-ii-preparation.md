@@ -1,6 +1,6 @@
 # Cybernoid II: title form and executed command semantics
 
-This prepares Jeroen Tel's **Cybernoid II**, title subtune **1**, while Shades remains the sole active reconstruction under the [study plan](../study-plan.md). It establishes archive identity, execution under an explicit PAL host, two complete order-list traversals, contextual score commands and executed opening pitch, waveform/PWM, filter and arpeggio mechanisms. Complete synthesis semantics, original-host equivalence, independent reconstruction and listening remain separate work. Consult the [composer account](../composers/huelsbeck-tel.md#jeroen-tel-arrangement-and-driver-collaboration), [listening catalogue](../composers/listening-catalogue.md) and [source-study boundary](../tools/source-studies.md) before extending this intake.
+This prepares Jeroen Tel's **Cybernoid II**, title subtune **1**, while Shades remains the sole active reconstruction under the [study plan](../study-plan.md). It establishes archive identity, execution under an explicit PAL host, two complete order-list traversals, decoded score/program mechanisms and a source-free numeric player matching the full 36,000-call register sequence. Original-host equivalence, compiled reconstruction and listening remain separate work. Consult the [composer account](../composers/huelsbeck-tel.md#jeroen-tel-arrangement-and-driver-collaboration), [listening catalogue](../composers/listening-catalogue.md) and [source-study boundary](../tools/source-studies.md) before extending this intake.
 
 ## Archive identity
 
@@ -87,7 +87,7 @@ The [instruction tracer](../tools/sid-program-analysis.md#trace-a-selected-subtu
 | `bassdrm` / `$B024` | 215 | All eight offsets; every observed value matches the pinned record |
 | `arp+filt` / `$B034` | 215 | All eight offsets; every observed value matches the pinned record |
 
-The [read receipt](../../../evidence/cybernoid-title-instructions/table-reads.json) pins both the instruction trace and static lookup, records reader PCs and states the selection rule. These are actual table loads, rather than label matches alone. The contextual lookup below additionally identifies their opening voice selections; complete synthesis semantics, bass/drum time-sharing and a listening judgment remain unproven. Preserve those distinctions when interpreting the listing.
+The [read receipt](../../../evidence/cybernoid-title-instructions/table-reads.json) pins both the instruction trace and static lookup, records reader PCs and states the selection rule. These are actual table loads, rather than label matches alone. The contextual lookup below additionally identifies their opening voice selections; the opening evidence alone does not establish complete synthesis semantics, bass/drum time-sharing or a listening judgment. Preserve those distinctions when interpreting the listing.
 
 ```sh
 PYTHONPATH=.tools/test-deps python3 scripts/trace-sid-program.py .local/research/cybernoid-ii/Cybernoid_II.sid --profile pal-banked --subtune 1 --first-call 0 --last-call 63 --output build/cybernoid-title-new/opening.trace.json
@@ -110,12 +110,12 @@ At call 24, X=2 consumes pattern `$FF` at `$B284`, resets its pattern cursor 4�
 
 The recovered listing declares 33 pattern pointers, but its title orders include `$21`. The archive's lookup at `$AF43/$AF44` yields `$B62D`: its 32 bytes through `$B64C` exactly match the commented former title `st1e` fragment at listing lines 1765–1768. A later, active game-over `st1e` at line 1809 separately matches archive index `$1E→$B6FE`; the missing title entry is `$21`. These static matches explain a concrete gap in the recovered build route. The `$21` selection is absent from the retained 64-call opening, but the 36,000-call probe executes it 24 times, first on voice 2 at call 16,416. Consult the archive's consumed bytes before treating the recovered listing as a complete build route.
 
-The reusable probe below extends the initial 2,048-call check through two complete order traversals. The next mechanism work must connect selected records to changing synthesis state, including state retained across an order wrap. Shades remains awaiting its independent reconstruction and transfer listening verdict.
+The reusable probe below extends the initial 2,048-call check through two complete order traversals. The later component and composed-model sections connect selected records to changing synthesis state, including state retained across an order wrap. Shades remains awaiting its independent reconstruction and transfer listening verdict.
 
 
 ## Contextual score-command lookup
 
-The [semantic source receipt](../../../evidence/cybernoid-form-source/semantics.json) retains pinned source/listing/trace hashes, exact archive PCs and instruction bytes, and distinguishes executed opening branches from static interpretations. It is a navigation aid for a future decoder, not an executable grammar: the same high-bit byte can mean something different when consumed as a parameter or continuation.
+The [semantic source receipt](../../../evidence/cybernoid-form-source/semantics.json) retains pinned source/listing/trace hashes, exact archive PCs and instruction bytes, and distinguishes executed opening branches from static interpretations. It is a navigation aid for the decoder, not itself an executable grammar: the same high-bit byte can mean something different when consumed as a parameter or continuation.
 
 | Context / byte | Observed implementation or static contract | Constraint |
 | --- | --- | --- |
@@ -183,7 +183,7 @@ The title's voice 1 keeps vibrato direction at `$A667` and position at `$A66A` w
 
 The [diagnostic intervention](../../../evidence/cybernoid-wrap-pitch-intervention/run.py), with its [complete four-case results](../../../evidence/cybernoid-wrap-pitch-intervention/receipt.json.gz), seeds only these two voice-1 bytes before the first outer play call; it leaves the SID source and CPU registers unchanged. Four 21-call runs separate the control, each individual-byte change and the combined phase. The control matches every original-opening SID store. Seeding the retained pair `$FF/1` reproduces **all voice-1 ordered register writes** from calls 17,280–17,300, after subtracting the order period. Either single-byte change fails that comparison. This establishes causal sufficiency for that opening voice and window, not a reset recipe for the full song or an audible preference. The score's repeat marker should therefore preserve phase unless a deliberate arrangement change calls for restarting it.
 
-The historical contextual-command receipt calls `$A690` `glideDelay` and records decimal 64. That is the raw `$40` parameter, not a duration in calls: the synthesis routine splits its nibbles, and the observed opening glide finishes at relative call 12. Preserve that raw evidence while using **packed glide control** in new descriptions. The [later named-state pitch component](#named-state-vibrato-and-glide-component) extends this opening explanation to general glide and modulation arithmetic; full-title contextual composition remains a separate check.
+The historical contextual-command receipt calls `$A690` `glideDelay` and records decimal 64. That is the raw `$40` parameter, not a duration in calls: the synthesis routine splits its nibbles, and the observed opening glide finishes at relative call 12. Preserve that raw evidence while using **packed glide control** in new descriptions. The [later named-state pitch component](#named-state-vibrato-and-glide-component) extends this opening explanation to general glide and modulation arithmetic; the [composed model](#compose-the-complete-title-from-editable-data) separately checks full-span integration.
 
 The independent [phase and centered-pitch model](../../../evidence/cybernoid-wrap-pitch/model.py) computes these two operations from editable numeric inputs. Its [verification](../../../evidence/cybernoid-wrap-pitch/model-verification.json) matches 18 recorded phase updates and the two detailed arithmetic paths. It preserves byte wrapping, asymmetric endpoints and the source's signed loop termination. The separate [isolated-routine checker](../../../evidence/cybernoid-wrap-pitch/edge-check.py) then executes `$AA20–$AA84` with 320 synthetic combinations of extent, direction, position and note age; [all results match](../../../evidence/cybernoid-wrap-pitch/edge-verification.json). This covers byte wrap, signed-loop edges and the zero-extent wait bypass without claiming those combinations occur in the score. Delta/depth selection, wait selection, glide and a complete instrument remain outside this helper.
 
@@ -254,7 +254,7 @@ python3 build/cybernoid-wave-pwm-new/check-mechanisms.py --output build/cybernoi
 python3 build/cybernoid-wave-pwm-new/check-receipt.py
 ```
 
-The next full-title model must retain ordering among pitch, PWM, filter, onset/drum and final writes. Opening checks do not cover every instrument, pulse wrap mode, relative drum pitch, owner change or later score role. They provide verified components and explicit gaps for that work, while Shades remains the active reconstruction awaiting listening.
+The [composed model](#compose-the-complete-title-from-editable-data) retains ordering among pitch, PWM, filter, onset/drum and final writes. These opening checks alone do not cover every instrument, pulse wrap mode, relative drum pitch, owner change or later score role; subsequent component checks and the executed census identify broader coverage. Shades remains the active reconstruction awaiting listening.
 
 ## Reusable PWM and filter arithmetic
 
@@ -331,7 +331,7 @@ cp evidence/cybernoid-score-contract/decode.py build/cybernoid-score-new/
 python3 build/cybernoid-score-new/decode.py --output build/cybernoid-score-new/rows.json --contract-output build/cybernoid-score-new/contract.json
 ```
 
-This reads the local pinned SID/listing and canonical LFS event/state/instruction evidence. The [companion dependency checkpoint](../../../evidence/cybernoid-score-contract/dependency-checkpoint.json) pins the imported parser/guard implementations and their committed checkout; the historical receipt remains unchanged. It performs no CPU run or render. The score contract is ready for composition with independently verified synthesis components; complete independent title playback remains the next preparation milestone.
+This reads the local pinned SID/listing and canonical LFS event/state/instruction evidence. The [companion dependency checkpoint](../../../evidence/cybernoid-score-contract/dependency-checkpoint.json) pins the imported parser/guard implementations and their committed checkout; the historical receipt remains unchanged. It performs no CPU run or render. The [composed numeric player](#compose-the-complete-title-from-editable-data) consumes this score contract with the independently verified synthesis components. A compiled title player remains separate work.
 
 ## Named-state vibrato and glide component
 
@@ -402,7 +402,7 @@ python3 build/cybernoid-output-new/check.py
 python3 build/cybernoid-output-new/check-opening.py
 ```
 
-These checks establish bounded component behavior. Joining observed incoming buffers is not yet a complete independently computed song or a listening verdict.
+These checks establish bounded component behavior. The [composed numeric model](#compose-the-complete-title-from-editable-data) separately verifies their integration from cold state; neither proof is a listening verdict.
 
 ## Note setup, gate and filter-owner caller
 
@@ -417,7 +417,7 @@ The [caller primitives](../../../evidence/cybernoid-initialization-contract/mode
 | Gate on an existing row | Scheduled bodies recompute gate mask from remaining countdown versus `(current record field 4 & $F0) >> 2`; nonscheduled bodies retain it. Remaining at or below the threshold clears gate. Macros can continue and later drum handling can change the mask. |
 | Shared filter ownership | An enabled filter claims ownership before running its program. Otherwise a matching remembered owner with FX2 bit `$08` clear writes `$D418=$1F`, then `$D416=$80`. It retains ownership, routing and cutoff low, so fallback can recur. |
 
-The raw retained pulse flag `$10` has a special `$SR=$02` branch when remaining count is zero and tempo countdown is one. No selected title record carries that flag and the census contains no execution of that branch. It is synthetic coverage, as are patch-preservation flag cases and FX2-bit-`$08` fallback inhibition; this does not lift the score decoder's restriction on even-F grammar. Global PSID initialization, complete caller/score composition and full-title equality of these primitives remain separate work.
+The raw retained pulse flag `$10` has a special `$SR=$02` branch when remaining count is zero and tempo countdown is one. No selected title record carries that flag and the census contains no execution of that branch. It is synthetic coverage, as are patch-preservation flag cases and FX2-bit-`$08` fallback inhibition; this does not lift the score decoder's restriction on even-F grammar. The [composed proof below](#compose-the-complete-title-from-editable-data) supplies separate cold-initialization and full-span integration evidence.
 
 ```sh
 mkdir build/cybernoid-initialization-new
@@ -425,4 +425,58 @@ cp evidence/cybernoid-initialization-contract/{model.py,check.py} build/cybernoi
 python3 build/cybernoid-initialization-new/check.py --output build/cybernoid-initialization-new/verification.json
 ```
 
-For integration, call `begin_voice_call` before score dispatch. On a selected row use `begin_row` → score commands → `initialize_note` → score peek/end → `finish_row` → writer. Otherwise use `body_prelude` → ordered macros → writer. The score decoder still owns scheduling and countdown decrement; each component's checks retain their own scope until the composed model is compared from initialization through the full title.
+For integration, call `begin_voice_call` before score dispatch. On a selected row use `begin_row` → score commands → `initialize_note` → score peek/end → `finish_row` → writer. Otherwise use `body_prelude` → ordered macros → writer. Each component's checks retain their own scope. The composed model owns countdown decrement and consumes the independently expanded score's absolute row calendar.
+
+## Import the verified components
+
+The following supported import paths expose the same source-free functions as the frozen component proofs. The promoted pitch, output and caller modules are byte-identical to their archived model snapshots, so their receipt hashes still identify the implementation. Frozen snapshots remain available when later changes require new evidence.
+
+| Module | Responsibility |
+| --- | --- |
+| [cybernoid_pitch.py](../../../scripts/cybernoid_pitch.py) | Named pitch state, vibrato, packed glide timing and exact divider arithmetic. |
+| [cybernoid_programs.py](../../../scripts/cybernoid_programs.py) | PWM and filter parameter programs. |
+| [cybernoid_output.py](../../../scripts/cybernoid_output.py) | Arpeggio, saved-high sweep, pulse-run, onset/drum and ordered final stores. |
+| [cybernoid_state.py](../../../scripts/cybernoid_state.py) | Age/row transitions, note setup, retained state, gate/release and shared-filter ownership. |
+
+The [component regressions](../../../tests/cybernoid_components_test.py) protect source-established arithmetic and ordering traps without requiring the reference SID: signed phase fallthrough, wait bypass, divider rounding, ordinary vibrato, arpeggio wrap, separate pulse-run state, expired-drum priority, initializer/writer ordering and repeated filter fallback. They complement the isolated and contextual proofs above; they do not widen the claimed player or audio scope.
+
+```sh
+python3 -m unittest discover -s tests -p 'cybernoid_components_test.py' -v
+python3 -m unittest discover -s tests -p 'cybernoid_programs_test.py' -v
+```
+
+## Compose the complete title from editable data
+
+The [numeric player](../../../scripts/cybernoid_player.py) computes ordered SID stores from the [serialized title description](../../../evidence/cybernoid-editable-data/title-runtime.json.gz): 8,760 semantic rows, parameter programs, frequency lookup words and named cold state for 36,000 calls. It has no source-file, original CPU or captured-event dependency. The original write ledger is a comparison oracle only. [Full-span verification](../../../evidence/cybernoid-composed-model/full36000-final.json) matches all **645,960 initialization/play stores**, projected to `(phase, tick, address, value)`, including both order traversals and retained-state changes after the wraps. The projection SHA-256 is `030c4e5e51da3f9300bf7f6235f6a24cfb04b1976df71800148fde6549fed48c`.
+
+The [promoted-module receipt](../../../evidence/cybernoid-composed-model/public-verification.json) repeats that complete comparison using the supported import path and pins its implementation hashes. [Source-free regression tests](../../../tests/cybernoid_player_test.py) cover exact opening stores, note/PWM edits, input immutability, filesystem independence, ignored provenance, countdown consistency and the index-255/256 boundary. Initial caller/pitch views must agree and contain valid bytes/words; the [state-invariant proof](../../../evidence/cybernoid-composed-model/invariants.json.gz) also checks synchronized completed-voice observations after initialization and body macros.
+
+This is a numeric synthesis model, not a compiled C64 export. It establishes ordered register values per call, not instruction-cycle timing, physical SID state, PCM identity or musical approval. Shades remains the active reconstruction while its listening feedback is pending. A Cybernoid backend, finite ending, rendering and transfer phrase are later milestones.
+
+| Editable input | Contract |
+| --- | --- |
+| `rows` | Absolute `call`, `voiceIndex`, byte `transpose`, patch initialization/preservation choice and ordered semantic commands. Notes and programs can change independently. Duration or tempo edits must also reschedule later row calls; this prototype rejects calendar/countdown disagreement rather than scheduling patterns at runtime. |
+| `frequency_words` | Explicit lookup words through index 256. Note, transpose, arpeggio and glide-target arithmetic wrap at 256; vibrato's adjacent lookup uses **index + 1 without wrapping** because the source shifts the table bases. The declared chromatic portion has 87 words, while the title reaches index 88. Values outside the chromatic portion are retained adjacent data, not an inferred scale extension. |
+| `records` and programs | Named eight-byte sound records, vibrato waits, onset parameters, PWM slots, filter stages, reverse arpeggios and drum programs. FX3 `$08` and `$40` are inert in this archive variant; the similarly named listing contains paths absent from the pinned payload. |
+| `initial_state` | Global tempo/filter ownership and three named caller/pitch states. Cold voice 2 pulse output starts at `$0800`: its high byte sits immediately beyond the initializer's cleared range. A warm reinitialization retains the previous high byte instead of reloading 8. |
+| `sid_init` | Initial cutoff high, routing and mode/volume. The model emits those three stores followed by descending zero stores `$D415` through `$D400`, rather than replaying an input ledger. |
+| `sourceEvidence` | Provenance, derived annotations and source locations only. Removing or changing this metadata does not control synthesis. The runtime table/state fields remain the editable source of behaviour. |
+
+The [cold-initialization receipt](../../../evidence/cybernoid-global-init/receipt.json.gz) and [bounded probe](../../../evidence/cybernoid-global-init/probe.py) establish the initial named state and all 53 stores through the first call. The [semantic projection](../../../evidence/cybernoid-global-init/make-semantic-state.py) converts observed initialization into parameters and a fixed clear rule, preserving the original descriptor and receipt as derivation inputs. The [extractor](../../../evidence/cybernoid-editable-data/extract.py) uses the pinned SID only to decode rows and numeric tables; it executes no original driver. Its [interface checks](../../../evidence/cybernoid-editable-data/interface-verification.json) validate all 8,760 row transforms, table bounds and state separation. The source note is an unmasked byte: `$A87F/$A881/$A882` load it, clear carry and add transpose without `AND #$7F`.
+
+Restore the editable description, then call the player directly; neither step needs the original SID:
+
+```sh
+python3 scripts/evidence.py restore evidence/cybernoid-editable-data/title-runtime.json.gz
+PYTHONPATH=scripts python3 - <<'PY'
+import json
+from pathlib import Path
+from cybernoid_player import compute_writes
+description = json.loads(Path('build/cybernoid-editable-data/title-runtime.json').read_text())
+writes = compute_writes(description, calls=64)
+print(len(writes))  # 1,132 initialization/play stores
+PY
+python3 -m unittest discover -s tests -p 'cybernoid_player_test.py' -v
+```
+
+To reproduce source extraction, fetch `cybernoid-ii` with the [pinned download workflow](../../setup/local-setup.md), restore the global-init descriptor/receipt and copy the archived extractor into a fresh `build/<directory>/`. Run `extract.py --output <fresh-description.json>`; its source, decoder and initialization fingerprints must match. To repeat the frozen composition proof, copy [model.py](../../../evidence/cybernoid-composed-model/model.py) and [check.py](../../../evidence/cybernoid-composed-model/check.py) together into a fresh `build/<directory>/` and run `check.py <description.json> --calls 36000 --output <fresh-receipt.json>`. The canonical ledger remains verification-only input, and the checker records model/component/data hashes without writing another full register ledger.

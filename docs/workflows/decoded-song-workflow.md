@@ -2,6 +2,8 @@
 
 Use this workflow to turn executed-program findings into editable music and our own 6502 player. Start with the [analysis procedure](../research/tools/sid-program-analysis.md) and [musical mechanism library](../research/composition/instruments/drax-decoded-trio.md). The first complete example is [DRAX's recurring Für Elise theme](../../songs/studies/drax-full-reconstruction/README.md); it is not Beethoven's complete formal score.
 
+For preparation before a backend exists, the [Cybernoid II numeric model](../research/composition/cybernoid-ii-preparation.md#compose-the-complete-title-from-editable-data) demonstrates source-free score/program composition and complete ordered-register comparison. Its owning study provides the editable-data restoration and Python API; it does not yet export or render a C64 player.
+
 ## Build, render and compare
 
 After [headless audio setup](audio-workflow.md), choose a fresh output directory:
