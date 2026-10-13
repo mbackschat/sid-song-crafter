@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    205.0,
+    225.0
+  ],
+  "window": {
+    "startFrame": 9040500,
+    "endFrame": 9922500,
+    "frames": 882000,
+    "startSeconds": 205.0,
+    "endSeconds": 225.0,
+    "durationSeconds": 20.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-independent-full/cache/ending/71778a863e8ba483d7e5be8638269bdd8ecd27c9b40dd1c0575fac03fb981c12/attempt-c9ccd730ebf046fe906adee5925853f8/ending-reference-then-ours.ab.wav",
+    "frames": 1786050,
+    "durationSeconds": 40.5,
+    "sha256": "427b671b55b5f3307e9312afd0c5173a14b15a6d5de201287d52371c5d0abde0"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 882000
+    },
+    {
+      "label": "silence",
+      "startFrame": 882000,
+      "endFrame": 904050
+    },
+    {
+      "label": "B",
+      "startFrame": 904050,
+      "endFrame": 1786050
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-independent-full/cache/reference-render/ae5021e5b1cc8108452ef03f3a4c5bfc240326bc8ad19f429ac7880da037e55c/attempt-34e3ca24b3ab43698eb9aac1ef65f5f3/render.wav",
+      "sha256": "9a195a078bbc8f574f313fb79b48c5ce15ebdb1b94eb012bf7acb67da770257c",
+      "originalFrames": 9922500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 882000,
+        "durationSeconds": 20.0,
+        "peak": 4745,
+        "peakDbfs": -16.78427436392813,
+        "clippedSamples": 0,
+        "rms": 459.04290352991967,
+        "acRms": 433.30927563161185,
+        "acRmsDbfs": -37.57303898208829,
+        "perChannel": [
+          {
+            "dc": 151.5369886621315,
+            "rms": 459.04290352991967,
+            "acRms": 433.30927563161185
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-independent-full/cache/candidate-render/d85996787d60462fa61ecbc3b2cfed0bc394e9d75d66323cf95e2c7f8341faf1/attempt-b6d58ca366ee454fa5bc2b187a9171e0/render.wav",
+      "sha256": "8d4ff6dcadc1a6c63332b7227ddb96d566a4a5a8a56491a4c97ce7844b956efb",
+      "originalFrames": 9922500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 882000,
+        "durationSeconds": 20.0,
+        "peak": 4341,
+        "peakDbfs": -17.55720298242036,
+        "clippedSamples": 0,
+        "rms": 443.5838480714117,
+        "acRms": 417.02829333414115,
+        "acRmsDbfs": -37.905688284512756,
+        "perChannel": [
+          {
+            "dc": 151.17550340136054,
+            "rms": 443.5838480714117,
+            "acRms": 417.02829333414115
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

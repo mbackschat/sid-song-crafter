@@ -60,6 +60,8 @@ Use the [Monty recipe](../../config/listening/monty-reference-continuation.json)
 
 Optional top-level `deliverables` maps listening labels to declared stage outputs. Use it for reference and candidate audio and the small A/B set the listener actually needs. Every successful invocation emits those links automatically; agents should not recreate receipts, hand-build listening indexes or poll individual pipeline steps.
 
+For a declared finite ending, the `check-listening.py audio` stage can add `--tail-seconds 1 --max-tail-ac-rms 1`. Both arguments are required together. The checker measures the final rounded sample window in each render and rejects any channel above the AC RMS limit in PCM16 units; it retains DC separately in the receipt. This catches a still-sounding tail, but silence alone does not prove that an ending preserves the music. Keep the matched ending comparison and listener verdict. Omit this contract for references that deliberately continue or restart.
+
 ## Validation and performance
 
 The runner's focused tests exercise cache reuse, changed inputs and commands, corrupt or missing outputs, failed and timed-out processes, preserved prior attempts and invalid dependency paths. The [listening checks](../../scripts/check-listening.py) independently verify asset pins, ordered register stores and WAV signal contracts.

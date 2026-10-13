@@ -1,0 +1,21 @@
+radix h
+sidefx off
+dummy off
+bank ram
+fill $0002 $cfff $00
+fill $e000 $ffff $00
+load "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-independent-full/cache/vice/30f6ae95c96bf86ef20383d975493a86fc332f68769997b9c1fd35401e8cd731/attempt-e604e6607a7048458d03e4c6daee9d39/vice/payload.prg" 0
+load "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-independent-full/cache/vice/30f6ae95c96bf86ef20383d975493a86fc332f68769997b9c1fd35401e8cd731/attempt-e604e6607a7048458d03e4c6daee9d39/vice/harness.prg" 0
+r a=$00,x=$00,y=$00,sp=$ff,fl=$24
+r pc=$c000
+trace exec $1000
+trace exec $c03a
+trace exec $1014
+trace exec $c04a
+trace store $d400 $d41f if (@ram:$c102 != $00) || ((((@ram:$c101 * $0100) + @ram:$c100) >= $0000) && (((@ram:$c101 * $0100) + @ram:$c100) <= $2af7))
+until $c06d
+r
+bank ram
+d $1000 $2000
+m $1000 $28b6
+quit

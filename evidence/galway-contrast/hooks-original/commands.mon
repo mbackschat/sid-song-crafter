@@ -1,0 +1,20 @@
+radix h
+sidefx off
+dummy off
+bank ram
+load "/Users/mbackschat/Projects/c64-sid-skill/build/arkanoid-corroboration/listening/cache/executed-proof/abe333f4f8ec55200f2148e1e22e14f37ece68c9f1caaef1acbe6192d4243b8b/attempt-6091c47adc35416188b860a35b92dc36/evidence/hooks-original/payload.prg" 0
+r a=$00,x=$00,y=$00,sp=$ff,fl=$24
+r pc=$4000
+trace exec $4141
+break exec $4141
+ignore 2 $2000
+trace exec $2a46 $2a55
+trace exec $374b
+trace exec $3751
+trace exec $41a0
+trace store $3fff
+trace store $d417
+trace store $d418 if A > $0f
+g
+r
+quit

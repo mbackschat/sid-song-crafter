@@ -132,6 +132,33 @@ class ListeningChecksTest(unittest.TestCase):
         self.assertEqual(originals, [path.read_bytes() for path in (reference, candidate)])
         self.assertEqual([hashlib.sha256(raw).hexdigest() for raw in originals], [row['sha256'] for row in report['inputs']])
 
+    def test_optional_tail_checks_each_channel_and_retains_dc_separately(self):
+        reference, candidate = self.root / 'reference.wav', self.root / 'candidate.wav'
+        for path in (reference, candidate):
+            write_wav(path, [-100, 100, -100, 100, 5, 5, 5, 5])
+        report = check_audio(reference, candidate, seconds=1, sample_rate=8, output=self.output,
+                             tail_seconds=0.5, max_tail_ac_rms=1)
+        self.assertEqual(4, report['ending']['frames'])
+        self.assertEqual([0, 0], [row['acRms'] for row in report['ending']['measurements']])
+        self.assertEqual([5, 5], [row['perChannel'][0]['dc'] for row in report['ending']['measurements']])
+        self.output.unlink()
+        for path in (reference, candidate):
+            write_wav(path, [-100, 100, 100, -100, 0, -10, 0, 10, 0, -10, 0, 10], rate=6, channels=2)
+        with self.assertRaisesRegex(ValueError, 'tail'):
+            check_audio(reference, candidate, seconds=1, sample_rate=6, channels=2, output=self.output,
+                        tail_seconds=0.5, max_tail_ac_rms=8)
+        self.assertFalse(self.output.exists())
+
+    def test_optional_tail_rejects_incomplete_or_invalid_contract(self):
+        reference, candidate = self.root / 'reference.wav', self.root / 'candidate.wav'
+        for path in (reference, candidate):
+            write_wav(path, [-100, 100, -100, 100])
+        for tail, limit in ((None, 1), (0.5, None), (0, 1), (1, 1), (0.001, 1), (0.25, -1), (float('nan'), 1)):
+            with self.subTest(tail=tail, limit=limit), self.assertRaises(ValueError):
+                check_audio(reference, candidate, seconds=0.5, sample_rate=8, output=self.output,
+                            tail_seconds=tail, max_tail_ac_rms=limit)
+        self.assertFalse(self.output.exists())
+
     def test_audio_check_rejects_both_inputs_format_duration_clipping_and_silence(self):
         reference, candidate = self.root / 'reference.wav', self.root / 'candidate.wav'
         cases = [([-100, 100], {'width': 1}, 'PCM16'),

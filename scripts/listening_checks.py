@@ -7,7 +7,7 @@ import math
 from pathlib import Path
 import re
 
-from audio_comparison import inspect_wav
+from audio_comparison import Pcm16, measure_pcm, read_pcm16
 
 
 def _require(condition, message):
@@ -118,22 +118,39 @@ def check_writes(source, candidate, *, source_sha256, calls, output):
     return _receipt(report, output, [Path(source_pin['path']), Path(candidate_pin['path'])])
 
 
-def check_audio(reference, candidate, *, seconds, output, sample_rate=44100, channels=1):
+def check_audio(reference, candidate, *, seconds, output, sample_rate=44100, channels=1,
+                tail_seconds=None, max_tail_ac_rms=None):
     _require(type(sample_rate) is int and sample_rate > 0, 'Expected sample rate must be a positive integer')
     _require(type(channels) is int and channels in (1, 2), 'Expected channels must be one or two')
     _require(math.isfinite(seconds) and seconds > 0 and math.isfinite(seconds * sample_rate),
              'Expected duration must be finite and positive')
     frames = round(seconds * sample_rate)
     _require(frames > 0, 'Expected duration rounds to zero sample frames')
-    measurements = []
+    tail_frames = None
+    if tail_seconds is not None or max_tail_ac_rms is not None:
+        _require(type(tail_seconds) in (int, float) and math.isfinite(tail_seconds)
+                 and 0 < tail_seconds <= seconds, 'Expected tail duration within the full render')
+        _require(type(max_tail_ac_rms) in (int, float) and math.isfinite(max_tail_ac_rms)
+                 and max_tail_ac_rms >= 0, 'Expected nonnegative finite tail AC RMS limit')
+        tail_frames = round(tail_seconds * sample_rate)
+        _require(tail_frames > 0, 'Expected tail duration of at least one sample frame')
+    measurements, endings = [], []
     for label, path in (('reference', reference), ('candidate', candidate)):
-        metrics = inspect_wav(path)
+        path = Path(path).resolve()
+        audio = read_pcm16(path)
+        metrics = dict(path=str(path), sha256=audio.sha256, **measure_pcm(audio))
         _require(metrics['sampleRate'] == sample_rate, f'{label} sample rate differs from expected {sample_rate}')
         _require(metrics['channels'] == channels, f'{label} channels differ from expected {channels}')
         _require(metrics['frames'] == frames, f'{label} frame count differs from expected {frames}')
         _require(metrics['clippedSamples'] == 0, f'{label} has PCM rail samples indicating possible clipping')
         _require(metrics['acRms'] > 0, f'{label} has no AC energy (silence or DC only)')
         measurements.append(dict(label=label, **metrics))
+        if tail_frames is not None:
+            tail = Pcm16(sample_rate, channels, tail_frames, audio.samples[-tail_frames * channels:], '')
+            ending = measure_pcm(tail)
+            _require(all(row['acRms'] <= max_tail_ac_rms for row in ending['perChannel']),
+                     f'{label} tail exceeds the per-channel AC RMS limit')
+            endings.append(dict(label=label, **ending))
     report = {
         'schemaVersion': 1, 'check': 'audio', 'passed': True,
         'requestedSeconds': seconds, 'expectedFrames': frames,
@@ -142,4 +159,8 @@ def check_audio(reference, candidate, *, seconds, output, sample_rate=44100, cha
         'inputs': measurements,
         'claims': {'pcmIdentity': False, 'perceptualAgreement': False},
     }
+    if tail_frames is not None:
+        report['ending'] = dict(requestedSeconds=tail_seconds, frames=tail_frames,
+                                maximumChannelAcRms=max_tail_ac_rms, measurements=endings,
+                                scope='Final PCM window only; DC reported separately. A settled tail does not establish a musically complete ending.')
     return _receipt(report, output, [Path(row['path']) for row in measurements])

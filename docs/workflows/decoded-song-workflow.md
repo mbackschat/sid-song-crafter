@@ -164,6 +164,20 @@ Preparation binds the known cycle boundary to the pinned [numeric source descrip
 
 For instrument reuse, the [Monty familiar-transfer card](../research/composition/instruments/monty-decoded-programs.md) provides matching 53-note Für Elise descriptions and an honest generated plain reference. `python3 scripts/studies/monty/prepare-monty-elise.py --check` verifies both saved inputs. Native articulation and envelope/rest behavior remain explicit conversion limits; full execution and rendered signal health do not supply a musical verdict.
 
+### Rambo symbolic graph player
+
+[compose-rambo.py](../../scripts/compose-rambo.py) consumes the editable `rambo-loader-composition-v1` [loader](../../songs/rambo-loader.json), [familiar transfer](../../songs/rambo-elise-transfer.json) or [plain reference](../../songs/rambo-elise-reference.json). The [owning study](../research/composition/rambo-preparation.md#independent-compiled-loader-and-musical-delivery) retains the complete source/CPU/VICE/audio evidence; the [instrument card](../research/composition/instruments/rambo-decoded-programs.md) owns the accepted reuse and articulation limits.
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/compose-rambo.py songs/rambo-loader.json --output build/rambo-compiled-new
+python3 scripts/listening-package.py config/listening/rambo-loader-full.json --output build/rambo-independent-full
+python3 scripts/listening-package.py config/listening/rambo-elise-transfer.json --output build/rambo-elise-transfer
+```
+
+The compiler emits our score/Morse and SOUND assembly, compact symbolic graph records, numeric banks, restored initial state and a PAL/6581 PSID with one update per 19,656 cycles. Runtime state includes three 49-byte data blocks, three 39-byte sound blocks, graph cursors, eight-slot call/loop stacks, transposes and the Morse dispatch phase. Node IDs become internal addresses; original source addresses remain nonexecuting annotations. Edits require neither the original SID nor recorded register events.
+
+The default audit covers every declared `range.auditCalls` entry; `--calls` selects a CPU prefix but still validates numeric execution over the full declared range. Named-state checkpoints and every ordered SID write are compared independently. The binary preserves score returns and continuing sound lifetimes instead of adding a declared-range cutoff or automatic fade. Arbitrary edited graphs are guaranteed only within the verified range; a finite musical deliverable must reach its verified ending. Callable RAM bounds, supported numeric lookups, voice-specific grammar and directly decodable SID stores are checked before a successful build.
+
 ### Other drivers
 
 [describe-drax-score.py](../../scripts/studies/drax/describe-drax-score.py) is a pinned, driver-specific transcriber, not a universal SID importer. It observes executed note consumption, instrument initialization and score gate-off, then verifies preparation and repeat behavior. Use `--check` to compare its output with the retained fixture. For another player, recover its corresponding readers and state transitions before adapting the decoder. [The Flashdance study](../research/composition/flashdance-preparation.md) demonstrates its own decoded mechanisms and independently authored dual-SID arrangement.

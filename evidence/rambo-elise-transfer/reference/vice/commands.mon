@@ -1,0 +1,21 @@
+radix h
+sidefx off
+dummy off
+bank ram
+fill $0002 $cfff $00
+fill $e000 $ffff $00
+load "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-vice/e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294/attempt-8a89e84fe35e4948a29b3ef993b639c2/vice/payload.prg" 0
+load "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-vice/e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294/attempt-8a89e84fe35e4948a29b3ef993b639c2/vice/harness.prg" 0
+r a=$00,x=$00,y=$00,sp=$ff,fl=$24
+r pc=$c000
+trace exec $1000
+trace exec $c03a
+trace exec $1014
+trace exec $c04a
+trace store $d400 $d41f if (@ram:$c102 != $00) || ((((@ram:$c101 * $0100) + @ram:$c100) >= $0000) && (((@ram:$c101 * $0100) + @ram:$c100) <= $0335))
+until $c06d
+r
+bank ram
+d $1000 $1e44
+m $1000 $1e44
+quit

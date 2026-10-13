@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/G/Galway_Martin/Arkanoid.sid",
+    "sha256": "9a576463b6d9e46f35cf2c8fbf40b6b3915424b2207d7c44c73b36e6ce9bc1cd",
+    "subtune": 1,
+    "header": {
+      "schemaVersion": 1,
+      "bytes": 9834,
+      "sha256": "9a576463b6d9e46f35cf2c8fbf40b6b3915424b2207d7c44c73b36e6ce9bc1cd",
+      "format": "RSID",
+      "version": 2,
+      "dataOffset": 124,
+      "headerLoadAddress": 0,
+      "loadAddress": 8192,
+      "payloadBytes": 9708,
+      "endAddressExclusive": 17900,
+      "initAddress": 16384,
+      "playAddress": 0,
+      "subtunes": 20,
+      "defaultSubtune": 1,
+      "selectedSubtune": 1,
+      "speedWord": 0,
+      "flags": 20,
+      "clockDeclaration": "PAL",
+      "sidModelDeclaration": "MOS6581",
+      "selectedTimingDeclaration": "machine-controlled",
+      "title": "Arkanoid",
+      "author": "Martin Galway",
+      "released": "1987 Imagine",
+      "callableProfile": {
+        "profile": "pal-banked",
+        "accepted": false,
+        "reason": "Audit requires a complete PSID header"
+      },
+      "limits": "Header declarations and current profile admission only; no driver execution, measured cadence, subtune-role identification or listening verdict."
+    }
+  },
+  "sourceCorrespondence": {
+    "revision": "a458a3687e27a63647bbe41968094f0e6d0965a0",
+    "files": {
+      "arkanoid.asm": {
+        "sha256": "63d55459ad12a21ef179c98d6361381c883b1680dc997e33e5b924b991a59c67",
+        "url": "https://github.com/MartinGalway/C64_music/blob/a458a3687e27a63647bbe41968094f0e6d0965a0/arkanoid.asm"
+      },
+      "arkadrum.asm": {
+        "sha256": "2ac184533d43e4935408d59d2ae7fb410cc6b9774039e1738841a3dbd69712cf",
+        "url": "https://github.com/MartinGalway/C64_music/blob/a458a3687e27a63647bbe41968094f0e6d0965a0/arkadrum.asm"
+      },
+      "README.md": {
+        "sha256": "1533e9edda1ae937b9bc862b760566b2f7f865b31d6f726a894c0bee763a8da1",
+        "url": "https://github.com/MartinGalway/C64_music/blob/a458a3687e27a63647bbe41968094f0e6d0965a0/README.md"
+      }
+    },
+    "limitation": "Published source interprets related routines; archive has relocated/revised code and is not claimed source-build-identical."
+  },
+  "tools": {
+    "probeSha256": "65a535d31cae4a8a210210972863f6a9360516ed402b174e68c63729800289ce",
+    "viceSha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285",
+    "reusedTraceGrammarSha256": "18a21e373d7dcd679771c256fa6d930106718246cb3e0c7647329d985eb73352"
+  },
+  "host": {
+    "entry": 16384,
+    "initA": 0,
+    "initX": 0,
+    "initY": 0,
+    "initStack": 255,
+    "initFlags": 36,
+    "timing": "Original archived raster IRQ and foreground drum loop, entered after VICE KERNAL READY",
+    "clock": "PAL",
+    "sidModel": "MOS6581",
+    "cpuPortAfterInit": 53
+  },
+  "opening": {
+    "completedRefreshes": 512,
+    "sidStoreCount": 22045,
+    "d418StoreCount": 17426,
+    "writerCounts": {
+      "26c1": 1,
+      "401e": 1,
+      "42f6": 2400,
+      "41a0": 144,
+      "435a": 2400,
+      "438c": 6720,
+      "428a": 2736,
+      "42bc": 3024
+    },
+    "voice1ScoreRows": [
+      {
+        "refreshIndex": 0,
+        "value": 210
+      },
+      {
+        "refreshIndex": 0,
+        "value": 95
+      },
+      {
+        "refreshIndex": 128,
+        "value": 29
+      },
+      {
+        "refreshIndex": 256,
+        "value": 204
+      },
+      {
+        "refreshIndex": 256,
+        "value": 95
+      },
+      {
+        "refreshIndex": 384,
+        "value": 206
+      },
+      {
+        "refreshIndex": 384,
+        "value": 95
+      }
+    ],
+    "voice1PwmWrites": 748,
+    "voice1PwmFirstRefresh": 138,
+    "voice1PwmLastRefresh": 511,
+    "voice1PwmPredictionVerified": true
+  },
+  "causalIntervention": {
+    "address": 17137,
+    "original": 101,
+    "candidate": 100,
+    "candidateSha256": "d418f968fa32e90ac9270e26dcfdadee5395621ffb3616fdfb4340bc70f60d46",
+    "meaning": "Same-material diagnostic: change one tom accumulator increment, not recorded sample data.",
+    "verifiedOriginalTomWrites": 2400,
+    "verifiedCandidateTomWrites": 2400,
+    "changedVolumeWrites": 2250,
+    "writerOrderAndCheckpointTimingEqual": true,
+    "allNonD418StoreRecordsEqual": true,
+    "comparisonScope": "Initialization plus first 512 completed title refreshes"
+  },
+  "codeHooks": {
+    "completedRefreshes": 8192,
+    "targets": [
+      {
+        "pc": 14155,
+        "refreshIndex": 2304
+      },
+      {
+        "pc": 14161,
+        "refreshIndex": 5888
+      }
+    ],
+    "indirectJumpPc": 10837,
+    "modeShadow": 16383,
+    "foregroundRestoresVerified": 1649,
+    "restoredModeValues": [
+      15,
+      31
+    ],
+    "codeCommandTables": {
+      "voice1": {
+        "slot": 16152,
+        "target": 2650
+      },
+      "voice2": {
+        "slot": 16202,
+        "target": 2653
+      },
+      "voice3": {
+        "slot": 16252,
+        "target": 10822
+      }
+    },
+    "shadowWrites": [
+      {
+        "pc": 9918,
+        "value": 15,
+        "refreshIndex": null
+      },
+      {
+        "pc": 14157,
+        "value": 16,
+        "refreshIndex": 2304
+      },
+      {
+        "pc": 14163,
+        "value": 0,
+        "refreshIndex": 5888
+      }
+    ]
+  },
+  "listeningReview": null,
+  "limits": "This is bounded executed corroboration, not independent reconstruction, complete title form, original game-host equivalence, exact SID bus-cycle timing, hardware sound or musical acceptance. Store checkpoints follow instructions; execution checkpoints precede them. No renderer snapshots are used as a write ledger."
+}

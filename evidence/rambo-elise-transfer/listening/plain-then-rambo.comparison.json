@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    0.0,
+    17.0
+  ],
+  "window": {
+    "startFrame": 0,
+    "endFrame": 749700,
+    "frames": 749700,
+    "startSeconds": 0.0,
+    "endSeconds": 17.0,
+    "durationSeconds": 17.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/comparison/42fe2ca00bf1cd88813f9a1450f97e377be268c612041765040d33ece88dce81/attempt-7f58e404c4064049b40e5162f877fdb3/plain-then-rambo.ab.wav",
+    "frames": 1521450,
+    "durationSeconds": 34.5,
+    "sha256": "a7f9ab6a3b726b8092ffd8fa145186ba84b7fc67c7ee53392a0c037ebeaa9adb"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 749700
+    },
+    {
+      "label": "silence",
+      "startFrame": 749700,
+      "endFrame": 771750
+    },
+    {
+      "label": "B",
+      "startFrame": 771750,
+      "endFrame": 1521450
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-render/89c358beccf335a0f16c9eed812bd09db3077382e7055b6328d07e9dee513952/attempt-a559be6734ca4f0ea6fbc50664bcc81e/render.wav",
+      "sha256": "93f1b2cfc0913eb7db74e53f8b46e8156706f130b9d47fc62f271f28da35e34b",
+      "originalFrames": 749700,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 749700,
+        "durationSeconds": 17.0,
+        "peak": 7134,
+        "peakDbfs": -13.242336599147656,
+        "clippedSamples": 0,
+        "rms": 1204.872578547713,
+        "acRms": 1194.574767287618,
+        "acRmsDbfs": -28.76473195897072,
+        "perChannel": [
+          {
+            "dc": 157.1911444577831,
+            "rms": 1204.872578547713,
+            "acRms": 1194.574767287618
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-render/8de3693d9926126af44b9ba8890d6737a160555e07a0bded0d5816c4e42af6b5/attempt-d2dc9ed723e34a72b602a96f8e1d2811/render.wav",
+      "sha256": "d41a928648add791e8f5b3244d3f7de2e52aa6b5ae94692fe09ffe5e95813827",
+      "originalFrames": 749700,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 749700,
+        "durationSeconds": 17.0,
+        "peak": 10198,
+        "peakDbfs": -10.138698546565264,
+        "clippedSamples": 0,
+        "rms": 3170.1096706650833,
+        "acRms": 3167.2633681556877,
+        "acRmsDbfs": -20.295315142011333,
+        "perChannel": [
+          {
+            "dc": -134.3059223689476,
+            "rms": 3170.1096706650833,
+            "acRms": 3167.2633681556877
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

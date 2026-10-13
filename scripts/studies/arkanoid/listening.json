@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "executed-proof",
+      "command": [
+        "{python}",
+        "scripts/studies/arkanoid/check-arkanoid-contrast.py",
+        "--output",
+        "{out}/evidence"
+      ],
+      "inputs": [
+        "scripts/studies/arkanoid/check-arkanoid-contrast.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/trace-sid-vice.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_assembler.py",
+        "scripts/verify_player.py",
+        ".local/arkanoid-source.sid",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        ".tools/martin-galway-c64/arkanoid.asm",
+        ".tools/martin-galway-c64/arkadrum.asm",
+        ".tools/martin-galway-c64/README.md"
+      ],
+      "outputs": [
+        "evidence/verification.json",
+        "evidence/tom-increment-100.sid",
+        "evidence/tom-arithmetic-original.json",
+        "evidence/tom-arithmetic-increment-100.json",
+        "evidence/changed-volume-values.json",
+        "evidence/voice1-pwm-prediction.json",
+        "evidence/foreground-mode-restores.json",
+        "evidence/opening-original/trace.json.gz",
+        "evidence/opening-original/cadence.json",
+        "evidence/opening-original/monitor.log",
+        "evidence/opening-original/process.log",
+        "evidence/opening-original/command.json",
+        "evidence/opening-original/commands.mon",
+        "evidence/opening-increment-100/trace.json.gz",
+        "evidence/opening-increment-100/cadence.json",
+        "evidence/opening-increment-100/monitor.log",
+        "evidence/opening-increment-100/process.log",
+        "evidence/opening-increment-100/command.json",
+        "evidence/opening-increment-100/commands.mon",
+        "evidence/hooks-original/trace.json.gz",
+        "evidence/hooks-original/cadence.json",
+        "evidence/hooks-original/monitor.log",
+        "evidence/hooks-original/process.log",
+        "evidence/hooks-original/command.json",
+        "evidence/hooks-original/commands.mon"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "original-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/arkanoid-source.sid",
+        "{out}/render.wav",
+        "6",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        ".local/arkanoid-source.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "diagnostic-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:executed-proof}/evidence/tom-increment-100.sid",
+        "{out}/render.wav",
+        "6",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:executed-proof}/evidence/tom-increment-100.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:original-render}/render.wav",
+        "{stage:diagnostic-render}/render.wav",
+        "--seconds",
+        "6",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:diagnostic-render}/render.wav"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "tom-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:original-render}/render.wav",
+        "{stage:diagnostic-render}/render.wav",
+        "{out}/arkanoid-original-then-tom-increment-100",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "6",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:diagnostic-render}/render.wav"
+      ],
+      "outputs": [
+        "arkanoid-original-then-tom-increment-100.ab.wav",
+        "arkanoid-original-then-tom-increment-100.comparison.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "executedEvidence": "{stage:executed-proof}/evidence/verification.json",
+    "originalArkanoidTitleBounded6Seconds": "{stage:original-render}/render.wav",
+    "sameMaterialTomArithmeticDiagnosticBounded6Seconds": "{stage:diagnostic-render}/render.wav",
+    "originalThenTomArithmeticDiagnostic": "{stage:tom-comparison}/arkanoid-original-then-tom-increment-100.ab.wav"
+  }
+}

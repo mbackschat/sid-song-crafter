@@ -8,6 +8,7 @@
 - [Cybernoid pulse programs](cybernoid-decoded-programs.md): transient bass, filtered replies and moving-pulse lead on familiar material; accepted paired plain-reference transfer with explicit native timing/tuning limits.
 
 - [Monty tonal programs](monty-decoded-programs.md): accepted familiar-phrase transfer with narrow pulse bass, harmonic replies and shared moving-pulse melody; matched plain reference and explicit timing, tuning, phase and ending limits.
+- [Rambo tonal programs](rambo-decoded-programs.md): accepted moving pulse melody and bass with short pulse support on the same 53-note familiar phrase; native lifetime and gate scheduling, with balance, phrasing and ending reviewed.
 
 ## Original SID-Wizard instruments
 

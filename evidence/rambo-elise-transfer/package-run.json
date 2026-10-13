@@ -1,0 +1,569 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/rambo-elise-transfer.json",
+  "recipeSha256": "00f0cf6907e12c050d140a260b722cfa92f17c00034d0a36c3ca87abb9a67e83",
+  "startedAt": "2026-10-13T19:24:22.896121+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "prepare-check",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [],
+      "cacheKey": "ad662c4804d100ee5574f5358a7cd74036db31866f46476b2a2fbcf4913a5030",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/prepare-check/ad662c4804d100ee5574f5358a7cd74036db31866f46476b2a2fbcf4913a5030/attempt-cc0a271bb4fc4cb5ae17b80ce604e52f",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/prepare-check/ad662c4804d100ee5574f5358a7cd74036db31866f46476b2a2fbcf4913a5030/attempt-cc0a271bb4fc4cb5ae17b80ce604e52f/stage.log",
+      "wallSeconds": 0.0036819159999999934
+    },
+    {
+      "id": "reference-build",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 1.194238541,
+      "artifacts": [
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "e10b71c5cca761b296b8bfa39a683bf41e865029740d97356d9d9e493f6aa206"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "ef767382c5380a59559129582a8b2d14e62c5058ed267b73ee97345aba809f74"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "268a0acaee9595d383f23a207794cacbd8f072c52bfe8958f7675893d743961e"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "6967dfa2253b0ee4653247e209b8e0e093a5151569e5608282637c51c60bd512"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "5965a7a7ebe1376385fcf118e7349dc8f2b13f0a9c39411dd2eef2073bda32ef"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "d1c05e2139ba0b6ad2d4928198181e1095265c23abfd51706d7f62f9fe1f411b"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "e894c833d30abefddd665592bf84a369f447cd1184f5b80397c6b0ffcad4aff5"
+        }
+      ],
+      "cacheKey": "8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 1.2080751250000001
+    },
+    {
+      "id": "reference-vice",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 1.851914333,
+      "artifacts": [
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-vice/e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294/attempt-8a89e84fe35e4948a29b3ef993b639c2/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "6564110d92bcf8a4ace1010fd7e59e943027618042c005a4a9d890d8c8b11319"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-vice/e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294/attempt-8a89e84fe35e4948a29b3ef993b639c2/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "29f8468c1132eb64e151c16761c5351aa71b0fca8f6a1de80c7427c1d659675e"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-vice/e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294/attempt-8a89e84fe35e4948a29b3ef993b639c2/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "144cf10b5e17afd56c667d940e4b8d75d547614051fffaf8d54a67b6b0fea609"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-vice/e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294/attempt-8a89e84fe35e4948a29b3ef993b639c2/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "cd8ec35d6cf712d9106454f721981e0ce891879ec201aa130537b7bb259a8f24"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-vice/e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294/attempt-8a89e84fe35e4948a29b3ef993b639c2/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "9426d82436b94e28ab9dbd041ed142033e56ec17f89240d4b23021585e50e05b"
+        }
+      ],
+      "cacheKey": "e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-vice/e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294/attempt-8a89e84fe35e4948a29b3ef993b639c2",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-vice/e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294/attempt-8a89e84fe35e4948a29b3ef993b639c2/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 1.993147167
+    },
+    {
+      "id": "reference-render",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.2425614580000004,
+      "artifacts": [
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-render/89c358beccf335a0f16c9eed812bd09db3077382e7055b6328d07e9dee513952/attempt-a559be6734ca4f0ea6fbc50664bcc81e/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "93f1b2cfc0913eb7db74e53f8b46e8156706f130b9d47fc62f271f28da35e34b"
+        },
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-render/89c358beccf335a0f16c9eed812bd09db3077382e7055b6328d07e9dee513952/attempt-a559be6734ca4f0ea6fbc50664bcc81e/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "dc41ccb4e117d0b2e12fadf290c69396dbc1be05c4ff1c08ca25567f53513391"
+        }
+      ],
+      "cacheKey": "89c358beccf335a0f16c9eed812bd09db3077382e7055b6328d07e9dee513952",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-render/89c358beccf335a0f16c9eed812bd09db3077382e7055b6328d07e9dee513952/attempt-a559be6734ca4f0ea6fbc50664bcc81e",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-render/89c358beccf335a0f16c9eed812bd09db3077382e7055b6328d07e9dee513952/attempt-a559be6734ca4f0ea6fbc50664bcc81e/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.2481182500000001
+    },
+    {
+      "id": "candidate-build",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 1.6428056249999998,
+      "artifacts": [
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "663a0c13cd99bbd2327d2e60dc424ceed6b6a53440237a76e72bc67fb90ae81a"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "a0fad6da17592b2fff641de38f25ae7c8044e0d6d72d984180d8bfdcf19fec3e"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "f2d92b3bf2f41fa388b4369de74aec5555ecdb7383378892911dc72bcafa4888"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "430c1be82fc0ede571fecfce360ebedff630c4822adc85dc40fb86b0f9d08630"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "996321126a50933202efff994b6809f9db8d082f7c0da9b806f729bcd56ffcda"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "8283d2939338c7acce58ebeb765fd60786d969bd428039bf06aa10a44a564e0a"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "382f0fbe114b01ba730243dc60f06fb6c601081778c0cfb15c27b1987503affa"
+        }
+      ],
+      "cacheKey": "6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 1.651248791
+    },
+    {
+      "id": "candidate-vice",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 1.9074684159999995,
+      "artifacts": [
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-vice/e6fb5242f1065727cfc3b30146ba01acb08bc202870aad7b9c460a0fbf10bb55/attempt-33e25e84eb3544df933df1848c91b606/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "51816a3978ef809ab805641053caf12690ce21446319f0c95e54616a44154e2b"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-vice/e6fb5242f1065727cfc3b30146ba01acb08bc202870aad7b9c460a0fbf10bb55/attempt-33e25e84eb3544df933df1848c91b606/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "a5298e827ffd4f5922ccccdf9c68881eae2ad1cf075c70e46b90f88e9c1ec17c"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-vice/e6fb5242f1065727cfc3b30146ba01acb08bc202870aad7b9c460a0fbf10bb55/attempt-33e25e84eb3544df933df1848c91b606/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "bd57c8e27be18733fe388cce36f84263a8513cb5a35774579cf31befd0fa5a95"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-vice/e6fb5242f1065727cfc3b30146ba01acb08bc202870aad7b9c460a0fbf10bb55/attempt-33e25e84eb3544df933df1848c91b606/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "412dddd762193d65cc703fb97fbc84baefcf12c78bc94b7e768ce97a8227fb6e"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-vice/e6fb5242f1065727cfc3b30146ba01acb08bc202870aad7b9c460a0fbf10bb55/attempt-33e25e84eb3544df933df1848c91b606/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "75a8e4bcb960cc16e437c1acccc05be1e2a26f434428b67d8136431be645b8b2"
+        }
+      ],
+      "cacheKey": "e6fb5242f1065727cfc3b30146ba01acb08bc202870aad7b9c460a0fbf10bb55",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-vice/e6fb5242f1065727cfc3b30146ba01acb08bc202870aad7b9c460a0fbf10bb55/attempt-33e25e84eb3544df933df1848c91b606",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-vice/e6fb5242f1065727cfc3b30146ba01acb08bc202870aad7b9c460a0fbf10bb55/attempt-33e25e84eb3544df933df1848c91b606/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 1.9859576250000002
+    },
+    {
+      "id": "candidate-render",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.24218116599999995,
+      "artifacts": [
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-render/8de3693d9926126af44b9ba8890d6737a160555e07a0bded0d5816c4e42af6b5/attempt-d2dc9ed723e34a72b602a96f8e1d2811/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "d41a928648add791e8f5b3244d3f7de2e52aa6b5ae94692fe09ffe5e95813827"
+        },
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-render/8de3693d9926126af44b9ba8890d6737a160555e07a0bded0d5816c4e42af6b5/attempt-d2dc9ed723e34a72b602a96f8e1d2811/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "fc4ff4fa0dd929b79a8e09fb8edf796c9ca777f39db9c3077774760fad2f116e"
+        }
+      ],
+      "cacheKey": "8de3693d9926126af44b9ba8890d6737a160555e07a0bded0d5816c4e42af6b5",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-render/8de3693d9926126af44b9ba8890d6737a160555e07a0bded0d5816c4e42af6b5/attempt-d2dc9ed723e34a72b602a96f8e1d2811",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-render/8de3693d9926126af44b9ba8890d6737a160555e07a0bded0d5816c4e42af6b5/attempt-d2dc9ed723e34a72b602a96f8e1d2811/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.24679512500000023
+    },
+    {
+      "id": "signal-check",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.5124682919999994,
+      "artifacts": [
+        {
+          "stageId": "signal-check",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/signal-check/d1ecbb2f5bda870f7b70f6ab6a948f4e07be3dc7bafe4c72a848b292214ad90a/attempt-ee3b649e7e464d1d97c27912900354e8/audio.json",
+          "relativePath": "audio.json",
+          "type": "file",
+          "sha256": "a4ac73f6ce874785d304faf4afe4e3233131b79ee37d78507d88e94c3ff5b32c"
+        }
+      ],
+      "cacheKey": "d1ecbb2f5bda870f7b70f6ab6a948f4e07be3dc7bafe4c72a848b292214ad90a",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/signal-check/d1ecbb2f5bda870f7b70f6ab6a948f4e07be3dc7bafe4c72a848b292214ad90a/attempt-ee3b649e7e464d1d97c27912900354e8",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/signal-check/d1ecbb2f5bda870f7b70f6ab6a948f4e07be3dc7bafe4c72a848b292214ad90a/attempt-ee3b649e7e464d1d97c27912900354e8/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.5185471249999996
+    },
+    {
+      "id": "comparison",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.3449322499999994,
+      "artifacts": [
+        {
+          "stageId": "comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/comparison/42fe2ca00bf1cd88813f9a1450f97e377be268c612041765040d33ece88dce81/attempt-7f58e404c4064049b40e5162f877fdb3/plain-then-rambo.ab.wav",
+          "relativePath": "plain-then-rambo.ab.wav",
+          "type": "file",
+          "sha256": "a7f9ab6a3b726b8092ffd8fa145186ba84b7fc67c7ee53392a0c037ebeaa9adb"
+        },
+        {
+          "stageId": "comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/comparison/42fe2ca00bf1cd88813f9a1450f97e377be268c612041765040d33ece88dce81/attempt-7f58e404c4064049b40e5162f877fdb3/plain-then-rambo.comparison.json",
+          "relativePath": "plain-then-rambo.comparison.json",
+          "type": "file",
+          "sha256": "7251fdcf572f5f1790895f26d4e0175396df0bee260f356c06d4a1f3c029a747"
+        }
+      ],
+      "cacheKey": "42fe2ca00bf1cd88813f9a1450f97e377be268c612041765040d33ece88dce81",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/comparison/42fe2ca00bf1cd88813f9a1450f97e377be268c612041765040d33ece88dce81/attempt-7f58e404c4064049b40e5162f877fdb3",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/comparison/42fe2ca00bf1cd88813f9a1450f97e377be268c612041765040d33ece88dce81/attempt-7f58e404c4064049b40e5162f877fdb3/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.3523902089999993
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "e10b71c5cca761b296b8bfa39a683bf41e865029740d97356d9d9e493f6aa206"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "ef767382c5380a59559129582a8b2d14e62c5058ed267b73ee97345aba809f74"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "268a0acaee9595d383f23a207794cacbd8f072c52bfe8958f7675893d743961e"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "6967dfa2253b0ee4653247e209b8e0e093a5151569e5608282637c51c60bd512"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "5965a7a7ebe1376385fcf118e7349dc8f2b13f0a9c39411dd2eef2073bda32ef"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "d1c05e2139ba0b6ad2d4928198181e1095265c23abfd51706d7f62f9fe1f411b"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "e894c833d30abefddd665592bf84a369f447cd1184f5b80397c6b0ffcad4aff5"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-vice/e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294/attempt-8a89e84fe35e4948a29b3ef993b639c2/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "6564110d92bcf8a4ace1010fd7e59e943027618042c005a4a9d890d8c8b11319"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-vice/e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294/attempt-8a89e84fe35e4948a29b3ef993b639c2/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "29f8468c1132eb64e151c16761c5351aa71b0fca8f6a1de80c7427c1d659675e"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-vice/e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294/attempt-8a89e84fe35e4948a29b3ef993b639c2/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "144cf10b5e17afd56c667d940e4b8d75d547614051fffaf8d54a67b6b0fea609"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-vice/e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294/attempt-8a89e84fe35e4948a29b3ef993b639c2/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "cd8ec35d6cf712d9106454f721981e0ce891879ec201aa130537b7bb259a8f24"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-vice/e745e14e8a0a0a0c34b809695de23905deb9c2e374fae92f1c5b8c52e2fe5294/attempt-8a89e84fe35e4948a29b3ef993b639c2/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "9426d82436b94e28ab9dbd041ed142033e56ec17f89240d4b23021585e50e05b"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-render/89c358beccf335a0f16c9eed812bd09db3077382e7055b6328d07e9dee513952/attempt-a559be6734ca4f0ea6fbc50664bcc81e/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "93f1b2cfc0913eb7db74e53f8b46e8156706f130b9d47fc62f271f28da35e34b"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-render/89c358beccf335a0f16c9eed812bd09db3077382e7055b6328d07e9dee513952/attempt-a559be6734ca4f0ea6fbc50664bcc81e/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "dc41ccb4e117d0b2e12fadf290c69396dbc1be05c4ff1c08ca25567f53513391"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "663a0c13cd99bbd2327d2e60dc424ceed6b6a53440237a76e72bc67fb90ae81a"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "a0fad6da17592b2fff641de38f25ae7c8044e0d6d72d984180d8bfdcf19fec3e"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "f2d92b3bf2f41fa388b4369de74aec5555ecdb7383378892911dc72bcafa4888"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "430c1be82fc0ede571fecfce360ebedff630c4822adc85dc40fb86b0f9d08630"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "996321126a50933202efff994b6809f9db8d082f7c0da9b806f729bcd56ffcda"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "8283d2939338c7acce58ebeb765fd60786d969bd428039bf06aa10a44a564e0a"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "382f0fbe114b01ba730243dc60f06fb6c601081778c0cfb15c27b1987503affa"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-vice/e6fb5242f1065727cfc3b30146ba01acb08bc202870aad7b9c460a0fbf10bb55/attempt-33e25e84eb3544df933df1848c91b606/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "51816a3978ef809ab805641053caf12690ce21446319f0c95e54616a44154e2b"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-vice/e6fb5242f1065727cfc3b30146ba01acb08bc202870aad7b9c460a0fbf10bb55/attempt-33e25e84eb3544df933df1848c91b606/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "a5298e827ffd4f5922ccccdf9c68881eae2ad1cf075c70e46b90f88e9c1ec17c"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-vice/e6fb5242f1065727cfc3b30146ba01acb08bc202870aad7b9c460a0fbf10bb55/attempt-33e25e84eb3544df933df1848c91b606/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "bd57c8e27be18733fe388cce36f84263a8513cb5a35774579cf31befd0fa5a95"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-vice/e6fb5242f1065727cfc3b30146ba01acb08bc202870aad7b9c460a0fbf10bb55/attempt-33e25e84eb3544df933df1848c91b606/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "412dddd762193d65cc703fb97fbc84baefcf12c78bc94b7e768ce97a8227fb6e"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-vice/e6fb5242f1065727cfc3b30146ba01acb08bc202870aad7b9c460a0fbf10bb55/attempt-33e25e84eb3544df933df1848c91b606/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "75a8e4bcb960cc16e437c1acccc05be1e2a26f434428b67d8136431be645b8b2"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-render/8de3693d9926126af44b9ba8890d6737a160555e07a0bded0d5816c4e42af6b5/attempt-d2dc9ed723e34a72b602a96f8e1d2811/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "d41a928648add791e8f5b3244d3f7de2e52aa6b5ae94692fe09ffe5e95813827"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-render/8de3693d9926126af44b9ba8890d6737a160555e07a0bded0d5816c4e42af6b5/attempt-d2dc9ed723e34a72b602a96f8e1d2811/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "fc4ff4fa0dd929b79a8e09fb8edf796c9ca777f39db9c3077774760fad2f116e"
+    },
+    {
+      "stageId": "signal-check",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/signal-check/d1ecbb2f5bda870f7b70f6ab6a948f4e07be3dc7bafe4c72a848b292214ad90a/attempt-ee3b649e7e464d1d97c27912900354e8/audio.json",
+      "relativePath": "audio.json",
+      "type": "file",
+      "sha256": "a4ac73f6ce874785d304faf4afe4e3233131b79ee37d78507d88e94c3ff5b32c"
+    },
+    {
+      "stageId": "comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/comparison/42fe2ca00bf1cd88813f9a1450f97e377be268c612041765040d33ece88dce81/attempt-7f58e404c4064049b40e5162f877fdb3/plain-then-rambo.ab.wav",
+      "relativePath": "plain-then-rambo.ab.wav",
+      "type": "file",
+      "sha256": "a7f9ab6a3b726b8092ffd8fa145186ba84b7fc67c7ee53392a0c037ebeaa9adb"
+    },
+    {
+      "stageId": "comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/comparison/42fe2ca00bf1cd88813f9a1450f97e377be268c612041765040d33ece88dce81/attempt-7f58e404c4064049b40e5162f877fdb3/plain-then-rambo.comparison.json",
+      "relativePath": "plain-then-rambo.comparison.json",
+      "type": "file",
+      "sha256": "7251fdcf572f5f1790895f26d4e0175396df0bee260f356c06d4a1f3c029a747"
+    }
+  ],
+  "deliverables": {
+    "fullReference": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-render/89c358beccf335a0f16c9eed812bd09db3077382e7055b6328d07e9dee513952/attempt-a559be6734ca4f0ea6fbc50664bcc81e/render.wav",
+    "fullCandidate": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-render/8de3693d9926126af44b9ba8890d6737a160555e07a0bded0d5816c4e42af6b5/attempt-d2dc9ed723e34a72b602a96f8e1d2811/render.wav",
+    "comparison": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/comparison/42fe2ca00bf1cd88813f9a1450f97e377be268c612041765040d33ece88dce81/attempt-7f58e404c4064049b40e5162f877fdb3/plain-then-rambo.ab.wav",
+    "referenceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/reference-build/8ca2a82f366ba85876aa2801f16adaba5cdd80abae14f09e6822fd63fd79dd42/attempt-5d3c731c4b014d7896b258969304fa34/candidate/build.json",
+    "candidateProof": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-elise-transfer/cache/candidate-build/6e665fdc407fa6dfd29e99fc6a3ef08e45f9b350c1eec590cee46ae54026c170/attempt-bc681f3c9b3249c0b8e7c3b292438ed9/candidate/build.json"
+  },
+  "finishedAt": "2026-10-13T19:24:31.191165+00:00",
+  "wallSeconds": 8.295030541000001
+}

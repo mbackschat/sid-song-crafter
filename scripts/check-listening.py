@@ -26,6 +26,8 @@ def main():
     audio.add_argument('--seconds', type=float, required=True)
     audio.add_argument('--sample-rate', type=int, default=44100)
     audio.add_argument('--channels', type=int, default=1)
+    audio.add_argument('--tail-seconds', type=float, help='Require the final window to meet the supplied per-channel AC RMS limit')
+    audio.add_argument('--max-tail-ac-rms', type=float, help='Maximum final-window AC RMS in PCM16 units; requires --tail-seconds')
     audio.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     if args.command == 'asset':
@@ -33,7 +35,8 @@ def main():
     elif args.command == 'writes':
         check_writes(args.source, args.candidate, source_sha256=args.source_sha256, calls=args.calls, output=args.output)
     else:
-        check_audio(args.reference, args.candidate, seconds=args.seconds, sample_rate=args.sample_rate, channels=args.channels, output=args.output)
+        check_audio(args.reference, args.candidate, seconds=args.seconds, sample_rate=args.sample_rate, channels=args.channels,
+                    output=args.output, tail_seconds=args.tail_seconds, max_tail_ac_rms=args.max_tail_ac_rms)
     print(f'{args.command} check passed: {args.output}')
 
 
