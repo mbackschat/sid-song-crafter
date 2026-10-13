@@ -59,7 +59,18 @@ python3 scripts/trace-sid-vice.py .local/research/fuer-elise/drax-fuer-elise.sid
 python3 -m unittest discover -s tests -p sid_vice_trace_test.py -v
 ```
 
-The VICE tracer supports explicitly declared PAL profiles: one SID in PSID v2, or two same-model SIDs at `$D400/$D420` in PSID v3. Both require one subtune, callable init/play, payload wholly inside RAM `$0400–$9FFF`, and a window ending by call 65,534. Dual tracing explicitly configures the second chip and records both sound-register banks; an executed six-voice fixture checks distinct writes and independent filter values. It rejects missing or extra calls, changed or reordered stores, malformed opcode/address context, unsupported read-modify-write stores, cadence overruns and existing output paths. Its 16-bit harness counter and monitor filter preserve call numbers across byte rollovers; an executed 2,018-call fixture guards this behavior. The tracepoint filter groups each comparison explicitly because VICE 3.9's [local monitor manual](../../../.tools/vice-headless-3.9/source/doc/vice.texi) defines left-to-right condition evaluation. Store-source registers and matching opcode bytes determine each value; the independent oracle must agree before the study is reported as verified.
+The VICE tracer supports explicitly declared PAL profiles: one SID in PSID v2, or two same-model SIDs at `$D400/$D420` in PSID v3. The default strict profile requires one subtune, callable init/play and payload wholly inside RAM `$0400–$9FFF`; the explicit banked profile below extends the selected-subtune/RAM boundary. Both use a window ending by call 65,534. Dual tracing explicitly configures the second chip and records both sound-register banks; an executed six-voice fixture checks distinct writes and independent filter values. It rejects missing or extra calls, changed or reordered stores, malformed opcode/address context, unsupported read-modify-write stores, cadence overruns and existing output paths. Its 16-bit harness counter and monitor filter preserve call numbers across byte rollovers; an executed 2,018-call fixture guards this behavior. The tracepoint filter groups each comparison explicitly because VICE 3.9's [local monitor manual](../../../.tools/vice-headless-3.9/source/doc/vice.texi) defines left-to-right condition evaluation. Store-source registers and matching opcode bytes determine each value; the independent oracle must agree before the study is reported as verified.
+
+## Trace a selected subtune in banked RAM
+
+Use `--profile pal-banked --subtune N` consistently for [CPU auditing](../../validation/psid-audit.md#select-a-subtune-and-expose-ram-beneath-basic), instruction tracing and fixed-PAL VICE tracing. This keeps the original multi-subtune header and exposes BASIC RAM through an explicit host contract, instead of patching the source to pass a narrower auditor.
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/trace-sid-program.py .local/research/cybernoid-ii/Cybernoid_II.sid --profile pal-banked --subtune 1 --first-call 0 --last-call 63 --output build/cybernoid-title-new/opening.trace.json
+python3 scripts/trace-sid-vice.py .local/research/cybernoid-ii/Cybernoid_II.sid --profile pal-banked --subtune 1 --oracle build/cybernoid-title-new/audit.writes.json --first-call 0 --last-call 599 --output build/cybernoid-title-new/vice
+```
+
+Create the oracle with the audit command in the linked contract first, using fresh output paths. The instruction tracer records the same bounded instruction/operand evidence as its strict mode, plus init SID writes; its API accepts `subtune` alongside `profile`. The banked VICE path additionally marks init and checks its ordered SID stores before comparing the selected play window. The default legacy path's store coverage still begins after init. The [Cybernoid II study](../composition/cybernoid-ii-preparation.md) owns observed results and their musical scope.
 
 ## Trace the pinned Flashdance opening
 

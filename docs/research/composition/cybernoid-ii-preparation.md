@@ -1,6 +1,6 @@
-# Cybernoid II: pinned title reference and intake boundary
+# Cybernoid II: pinned title reference and bounded execution
 
-This is bounded binary intake for Jeroen Tel's **Cybernoid II**, title subtune **1**, while Shades remains the sole active reconstruction under the [study plan](../study-plan.md). It establishes archive identity, a limited static connection to the recovered listing and a rendered opening. It does not establish executed instruments, actual update cadence, complete form, reconstruction fidelity or a listening verdict. Consult the [composer account](../composers/huelsbeck-tel.md#jeroen-tel-arrangement-and-driver-collaboration), [listening catalogue](../composers/listening-catalogue.md) and [source-study boundary](../tools/source-studies.md) before extending this intake.
+This is bounded binary intake for Jeroen Tel's **Cybernoid II**, title subtune **1**, while Shades remains the sole active reconstruction under the [study plan](../study-plan.md). It establishes archive identity, bounded CPU/VICE execution under an explicit PAL host, executed reads of three source-labelled sound records and a rendered opening. It does not establish complete instrument semantics, original-host equivalence, complete form, reconstruction fidelity or a listening verdict. Consult the [composer account](../composers/huelsbeck-tel.md#jeroen-tel-arrangement-and-driver-collaboration), [listening catalogue](../composers/listening-catalogue.md) and [source-study boundary](../tools/source-studies.md) before extending this intake.
 
 ## Archive identity
 
@@ -51,8 +51,63 @@ shasum -a 256 build/cybernoid-ii-intake-new/reference-opening.wav
 
 The [observed opening WAV](../../../build/cybernoid-ii-intake/reference-opening.wav) SHA-256 is `60c139597792fbe0251ecf563c6dfcd6c544c3486c7ff0c78e967b9723cd650c`. It contains 1,323,000 sample frames, peak 11,661, AC RMS approximately 3,186.94 and zero PCM rail samples. The renderer executable SHA-256 is `80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe`; its [source](../../../scripts/render-sid.cpp) SHA-256 is `c7bc5f7b0fe8d18a54ecde7338b6efa786f87f54ec258a00fb01025486bad5fc`. The [render receipt](../../../evidence/cybernoid-ii-intake/render-receipt.json) retains the command, settings and measurements. This is an opening reference, with no listening verdict or complete-form/ending claim.
 
-## Exact next execution contract
+## Selected-subtune execution
 
-Current [RAM-only audit](../../../scripts/psid_audit.py), [instruction tracer](../../../scripts/trace-sid-program.py) and [fixed-PAL VICE tracer](../../../scripts/trace-sid-vice.py) require one subtune and payload entirely within `$0400–$9FFF`; they reject this intact archive. The [Shades CIA route](../../validation/cia-tracing.md) additionally requires CIA speed word 1 and its source wrapper is hash-pinned. No auditor was changed, header adapted or guard bypassed for this intake.
+The shared [execution profile](../../validation/psid-audit.md#select-a-subtune-and-expose-ram-beneath-basic) now accepts the intact archive through `--profile pal-banked --subtune N`. It restores `$01=$36` before each call, exposing RAM beneath BASIC. This matches the address-dependent bank choice in the inspected [libsidplayfp 3.1.1 `iomap`](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/psiddrv.cpp); its [song limit](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/sidtune/SidTuneBase.h) is 256. Our parser rejects malformed song metadata rather than silently repairing it. No source header, code or table bytes are patched.
 
-The next bounded task should establish a **selected-subtune execution profile for this pinned archive**: explicitly select one-based #1 and pass A=0 to init, retain the original two-subtune header and speed declarations, expose RAM beneath BASIC for the `$A600–$B717` code/data, preserve the driver's banking/zero-page behavior, and prove bounded ordered stores against a real headless VICE run from init. Subtune #2, if supported later, requires A=1 and its own evidence. Define the callable entry-register/status contract as well: the existing CPU audit retains A/status from the preceding driver call, whereas the fixed-PAL raster host enters play after its `A=250` polling comparison. Likewise, existing VICE store tracing begins after init. A new profile must verify any required entry-state agreement and label initialization-store coverage explicitly. Do not infer executable cadence from the zero speed word alone. Actual hardware dependencies, call cost, source correspondence beyond the compared regions and the complete title form remain open; mechanism decoding follows those checks.
+Init receives A=`subtune−1`, X/Y=0 and P=`$26`. Play receives A=`$FA`, retained X/Y and the successful raster comparison's C/Z set, N clear. This is the controlled polling host's contract; [libsidplayfp's IRQ driver](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/psiddrv.a65) enters play with A=0. The bounded equality below establishes the declared host, not equivalence of those entry environments or synthesized PCM. The default strict profile and the separate [Shades CIA route](../../validation/cia-tracing.md) retain their existing scope.
+
+On 2026-10-13, independent CPU execution and headless VICE agreed on every ordered `(phase, call, SID address, value)` in these windows, including initialization:
+
+| Selected subtune / observed calls | Init stores / cycles | Play stores / maximum body cycles | VICE cadence |
+| --- | --- | --- | --- |
+| #1 title, 0–599 | 25 / 1,738 | 10,333 / 2,473 | 600 calls; phase deviation at most 5 cycles from the 19,656-cycle PAL grid |
+| #2 game over, 0–63 | 25 / 1,738 | 1,253 / 2,599 | 64 calls; phase deviation at most 5 cycles from the same grid |
+
+The polling tolerance is nine cycles; the CPU play-body budget is one PAL frame. Initialization writes `$D416=$FF`, `$D417=$00`, `$D418=$1F`, followed by zeroes to `$D415` down through `$D400`, in both selected runs. VICE captures stores from init entry through its return separately from outer play calls: init-internal calls to play remain initialization, including drivers with a shared init/play address. Executed fixtures guard these phase boundaries and subtune-dependent entry state. CPU instruction-start cycles and VICE post-instruction checkpoints remain distinct observations.
+
+Reproduce into fresh directories after [dependency setup](../../setup/local-setup.md):
+
+```sh
+python3 scripts/psid_audit.py .local/research/cybernoid-ii/Cybernoid_II.sid --profile pal-banked --subtune 1 --ticks 600 --output build/cybernoid-title-new/audit.json
+python3 scripts/trace-sid-vice.py .local/research/cybernoid-ii/Cybernoid_II.sid --profile pal-banked --subtune 1 --oracle build/cybernoid-title-new/audit.writes.json --first-call 0 --last-call 599 --output build/cybernoid-title-new/vice
+python3 scripts/psid_audit.py .local/research/cybernoid-ii/Cybernoid_II.sid --profile pal-banked --subtune 2 --ticks 64 --output build/cybernoid-game-over-new/audit.json
+python3 scripts/trace-sid-vice.py .local/research/cybernoid-ii/Cybernoid_II.sid --profile pal-banked --subtune 2 --oracle build/cybernoid-game-over-new/audit.writes.json --first-call 0 --last-call 63 --output build/cybernoid-game-over-new/vice
+```
+
+The [title report](../../../evidence/cybernoid-title-execution/vice/study.json), [game-over report](../../../evidence/cybernoid-game-over-execution/vice/study.json) and [execution receipt](../../../evidence/cybernoid-title-execution/provenance.json) index the source/tool hashes and exact scope. Full CPU store ledgers and parsed VICE traces are retained losslessly in the [evidence manifest](../../../evidence/manifest.json); use the [archive restoration workflow](../../workflows/build-cache.md) to recover their original working paths. Original SIDs, payload dumps and reference audio are excluded.
+
+## Executed opening sound-record reads
+
+The [instruction tracer](../tools/sid-program-analysis.md#trace-a-selected-subtune-in-banked-ram) records 40,415 instructions and 1,107 play stores for title calls 0–63, plus 25 initialization stores. VICE independently matches the call, address, value and writer PC for all 1,107 play stores in this window. Filtering executed `LDA`/`LDX`/`LDY` operand addresses through the 18 statically matched eight-byte records finds:
+
+| Recovered label / actual archive address | Executed loads | Byte coverage |
+| --- | --- | --- |
+| `bass` / `$B01C` | 215 | All eight offsets; every observed value matches the pinned record |
+| `bassdrm` / `$B024` | 215 | All eight offsets; every observed value matches the pinned record |
+| `arp+filt` / `$B034` | 215 | All eight offsets; every observed value matches the pinned record |
+
+The [read receipt](../../../evidence/cybernoid-title-instructions/table-reads.json) pins both the instruction trace and static lookup, records reader PCs and states the selection rule. These are actual table loads, rather than label matches alone; they do not yet establish field semantics, voice allocation, bass/drum time-sharing or a listening judgment. Preserve those distinctions when interpreting the listing.
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/trace-sid-program.py .local/research/cybernoid-ii/Cybernoid_II.sid --profile pal-banked --subtune 1 --first-call 0 --last-call 63 --output build/cybernoid-title-new/opening.trace.json
+```
+
+## Navigation for the complete-form probe
+
+The [navigation receipt](../../../evidence/cybernoid-title-instructions/form-navigation.json.gz) separates executed opening observations from static branches that were not reached. These are actual archive addresses, not relocated listing addresses:
+
+| State | Archive location / observation hook |
+| --- | --- |
+| Tempo reload / countdown | `$A629` / `$A682`; `$A720` decrements and `$A725` reloads 2 on calls 0, 3, …, 63 |
+| Per-voice order / pattern cursors | `$A62D–$A62F` / `$A630–$A632`; `$A754` consumes order bytes |
+| Per-voice row countdown / duration / repeats | `$A633–$A635` / `$A636–$A638` / `$A684–$A686` |
+| Order pointers | Low/high banks `$AEFB–$AEFD` / `$AEFE–$AF00`; opening X=0/1/2 resolves to `$B0D8/$B14D/$B164` |
+| Pattern pointers / scratch | Table `$AF01`, scratch `$46–$47`; `$A7A5/$A7AA` resolve and `$A7C0/$A936/$A8F6` consume bytes |
+| Completed play body | `$AE2C` is the final `RTS` in all 64 observed calls |
+
+At call 24, X=2 consumes pattern `$FF` at `$B284`, resets its pattern cursor 4→0 and decrements repeats 29→28 while retaining order cursor 3. This is a pattern repeat, not a song restart. Static code separately handles order `$FF` by resetting that voice's sequencing state, and order `$FE` by setting global play flag `$A717=1` and clearing SID; neither order-terminal branch executes in the opening window. Do not equate an individual voice wrap with a complete-state recurrence.
+
+The recovered listing declares 33 pattern pointers, but its title orders include `$21`. The archive's prospective lookup at `$AF43/$AF44` yields `$B62D`; that selection was not executed in the retained opening. Consult actual consumed bytes before treating the listing's table layout as complete.
+
+Next, use compact observations at these hooks to establish the complete title form, then connect selected records to changing synthesis state. Start with a bounded 2,048-call probe and extend only when its observations justify it. The existing 600-call title check is bounded execution evidence, not a complete-song analysis. Shades remains awaiting its independent reconstruction and transfer listening verdict.

@@ -6,9 +6,9 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
+from sid_assembler import assemble
 spec = importlib.util.spec_from_file_location("psid_audit", ROOT / "scripts/psid_audit.py")
 audit = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(audit)
@@ -20,6 +20,20 @@ def sid_file(play=bytes((0xee, 0x00, 0x20, 0xad, 0x00, 0x20, 0x8d, 0x02, 0xd4, 0
     for offset, value in ((4, 2), (6, 0x7c), (8, 0x1000), (10, 0x1000), (12, 0x1006), (14, 1), (16, 1), (118, 0x24)):
         header[offset:offset + 2] = value.to_bytes(2, "big")
     return header + bytes((0xa9, 0x0f, 0x8d, 0x18, 0xd4, 0x60)) + play
+
+
+def selected_fixture(init='STA $D402\nRTS', play='RTS', *, load=0xa600, songs=2, default=1, dual=False):
+    # sid_assembler supports the old RAM range; these fixtures have only relative branches and external absolute operands.
+    code, symbols, _ = assemble(f'init:\n{init}\nplay:\n{play}\n')
+    symbols = {name: address - 0x1000 + load for name, address in symbols.items()}
+    header = bytearray(124)
+    header[:4] = b'PSID'
+    for offset, value in ((4, 3 if dual else 2), (6, 124), (8, load), (10, symbols['init']),
+                          (12, symbols['play']), (14, songs), (16, default), (118, 0x54 if dual else 0x14)):
+        header[offset:offset + 2] = value.to_bytes(2, 'big')
+    if dual:
+        header[122] = 0x42
+    return bytes(header) + code
 
 
 class PsidAuditTest(unittest.TestCase):
@@ -196,6 +210,122 @@ class PsidAuditTest(unittest.TestCase):
             with self.subTest(ticks=ticks, size=len(data)):
                 with self.assertRaises(ValueError):
                     audit.audit_psid(data, ticks)
+
+    def test_banked_selection_keeps_the_two_song_header_and_passes_zero_based_init_a(self):
+        data = selected_fixture()
+        for selector in (1, 2):
+            with self.subTest(selector=selector):
+                report, writes = audit.audit_psid(data, 2, profile='pal-banked', subtune=selector)
+                self.assertEqual([('init', None, 0xd402, selector - 1)],
+                                 [(row['phase'], row['tick'], row['address'], row['value']) for row in writes])
+                self.assertEqual((2, 1, selector, 'pal-banked', 0x36),
+                                 (report['subtunes'], report['defaultSubtune'], report['selectedSubtune'],
+                                  report['executionProfile'], report['entryBank']))
+                self.assertEqual(data, selected_fixture())
+        with self.assertRaisesRegex(ValueError, 'one subtune'):
+            audit.audit_psid(data, 1)
+        with self.assertRaisesRegex(ValueError, 'RAM'):
+            audit.audit_psid(selected_fixture(songs=1), 1)
+
+    def test_banked_selection_is_explicit_and_raw_header_counts_are_not_repaired(self):
+        for selector in (None, 0, 3, True, 1.0, '1'):
+            with self.subTest(selector=selector), self.assertRaises(ValueError):
+                audit.audit_psid(selected_fixture(), 1, profile='pal-banked', subtune=selector)
+        for songs, default in ((0, 1), (257, 1), (2, 0), (2, 3)):
+            with self.subTest(songs=songs, default=default), self.assertRaises(ValueError):
+                audit.audit_psid(selected_fixture(songs=songs, default=default), 1, profile='pal-banked', subtune=1)
+        report, writes = audit.audit_psid(selected_fixture(songs=256, default=256), 1,
+                                          profile='pal-banked', subtune=256)
+        self.assertEqual((256, 256, 255), (report['selectedSubtune'], report['defaultSubtune'], writes[0]['value']))
+        for selector in (0, 2, True, 1.0):
+            with self.subTest(strict_selector=selector), self.assertRaises(ValueError):
+                audit.audit_psid(sid_file(), 1, subtune=selector)
+        with self.assertRaisesRegex(ValueError, 'profile'):
+            audit.audit_psid(sid_file(), 1, profile='permissive')
+
+    def test_banked_entry_matches_init_flags_and_the_raster_poll_accumulator_status_and_xy(self):
+        init = ('STA $D402\nBNE invalid\nPHP\nPLA\nAND #$CF\nCMP #$06\nBNE invalid\n'
+                'LDX #$12\nLDY #$34\nSED\nCLC\nLDA #$80\nRTS\ninvalid:\nBRK')
+        play = ('STA $D403\nSTX $D404\nSTY $D405\nPHP\nPLA\nAND #$CF\nSTA $D406\n'
+                'INX\nINY\nCLC\nCLD\nLDA #$80\nRTS')
+        _, writes = audit.audit_psid(selected_fixture(init, play), 2, profile='pal-banked', subtune=2)
+        self.assertEqual([(0, 0xfa), (0, 0x12), (0, 0x34), (0, 0x0f),
+                          (1, 0xfa), (1, 0x13), (1, 0x35), (1, 0x07)],
+                         [(row['tick'], row['value']) for row in writes if row['phase'] == 'play'])
+
+    def test_strict_default_keeps_its_legacy_unwrapped_register_and_flag_entry(self):
+        init = 'LDX #$12\nLDY #$34\nSED\nCLC\nLDA #$80\nRTS'
+        play = 'STA $D403\nSTX $D404\nSTY $D405\nPHP\nPLA\nAND #$CF\nSTA $D406\nCLD\nRTS'
+        data = selected_fixture(init, play, load=0x1000, songs=1)
+        report, writes = audit.audit_psid(data, 1)
+        self.assertEqual([0x80, 0x12, 0x34, 0x88], [row['value'] for row in writes])
+        self.assertNotIn('executionProfile', report)
+        self.assertEqual((report, writes), audit.audit_psid(data, 1, profile='strict', subtune=1))
+
+    def test_banked_host_restores_basic_ram_before_every_call_without_resetting_player_ram(self):
+        play = ('LDA $01\nSTA $D403\nLDA $A000\nSTA $D404\nINC $2000\nLDA $2000\nSTA $D405\n'
+                'LDA #$37\nSTA $01\nRTS')
+        entries = []
+        def observe(cpu, memory):
+            if memory.instruction_cycle == 0:
+                entries.append((memory.phase, memory.tick, memory.data[1]))
+        _, writes = audit.audit_psid(selected_fixture('LDA #$37\nSTA $01\nRTS', play, load=0x1000),
+                                     3, profile='pal-banked', subtune=1, observer=observe)
+        self.assertEqual([('init', None, 0x36), ('play', 0, 0x36), ('play', 1, 0x36), ('play', 2, 0x36)], entries)
+        self.assertEqual([0x36, 0, 1, 0x36, 0, 2, 0x36, 0, 3], [row['value'] for row in writes])
+
+    def test_banked_profile_keeps_io_rom_rmw_and_host_vector_guards(self):
+        for instruction in ('LDA $D41B', 'LDA $E000', 'STA $DC04', 'INC $D404', 'LDA $C000', 'LDA $C1FF',
+                            'STA $C000', 'STA $C1FF', 'STA $0314', 'STA $0319', 'LDA #$34\nSTA $01'):
+            with self.subTest(instruction=instruction), self.assertRaises(ValueError):
+                audit.audit_psid(selected_fixture(play=instruction+'\nRTS'), 1, profile='pal-banked', subtune=1)
+        for offset, value in ((21, 1), (119, 0x18), (119, 0x34), (122, 0x42)):
+            data = bytearray(selected_fixture())
+            data[offset] = value
+            with self.subTest(offset=offset, value=value), self.assertRaises(ValueError):
+                audit.audit_psid(data, 1, profile='pal-banked', subtune=1)
+        _, writes = audit.audit_psid(selected_fixture(play='STA $C200\nRTS'), 1, profile='pal-banked', subtune=1)
+        self.assertEqual(1, len(writes))
+
+    def test_shared_banked_parser_handles_dual_sid_and_upper_payload_boundary(self):
+        from psid_profile import psid_profile
+        data = selected_fixture(play='LDA #$41\nSTA $D404\nLDA #$51\nSTA $D424\nRTS', dual=True)
+        profile = psid_profile(data, profile='pal-banked', subtune=2)
+        self.assertEqual(([0xd400,0xd420], 1, 0x36), (profile['sidBases'], profile['initAccumulator'], profile['entryBank']))
+        report, writes = audit.audit_psid(data, 1, profile='pal-banked', subtune=2)
+        self.assertEqual(2, report['sidCount'])
+        self.assertEqual([(0xd404,0x41),(0xd424,0x51)], [(row['address'],row['value']) for row in writes if row['phase']=='play'])
+        boundary = bytearray(selected_fixture(load=0xbff0))
+        boundary.extend(bytes(0xc000-(0xbff0+len(boundary)-124)))
+        self.assertEqual(0xc000, psid_profile(boundary, profile='pal-banked', subtune=1)['endAddress'])
+        with self.assertRaisesRegex(ValueError, 'RAM'):
+            psid_profile(boundary+b'\0', profile='pal-banked', subtune=1)
+
+    def test_banked_cli_writes_selected_evidence_without_changing_input(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source, output = root/'fixture.sid', root/'fixture.audit.json'
+            data = selected_fixture()
+            source.write_bytes(data)
+            argv = ['psid_audit.py',str(source),'--ticks','2','--profile','pal-banked','--subtune','2','--output',str(output)]
+            with patch.object(sys,'argv',argv), patch('builtins.print'):
+                audit.main()
+            self.assertEqual(data,source.read_bytes())
+            self.assertEqual(2,json.loads(output.read_text())['selectedSubtune'])
+
+    def test_real_cybernoid_archive_remains_unchanged_and_both_subtunes_are_callable(self):
+        path = ROOT/'.local/research/cybernoid-ii/Cybernoid_II.sid'
+        if not path.exists():
+            self.skipTest('Optional Cybernoid II reference is not installed')
+        import hashlib
+        data = path.read_bytes()
+        self.assertEqual('41f338f44b4f54e351e672156ee0e2a60c8437eb24645db3f9d4abfbb0cff192',hashlib.sha256(data).hexdigest())
+        for selector in (1,2):
+            report,writes = audit.audit_psid(data,16,profile='pal-banked',subtune=selector)
+            self.assertEqual((0xa600,0xa603),(report['initAddress'],report['playAddress']))
+            self.assertGreater(report['initWriteCount'],0)
+            self.assertGreater(report['playWriteCount'],0)
+            self.assertEqual(data,path.read_bytes())
 
 
 if __name__ == "__main__":

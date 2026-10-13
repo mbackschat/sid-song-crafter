@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 FRAME_CYCLES = 19656
 HARNESS_BASE = 0xc000
 COUNTER = 0xc100
+INIT_ACTIVE = COUNTER + 2
 
 
 def require(condition, message):
@@ -20,28 +21,15 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def psid_profile(data):
-    require(len(data) >= 124 and data[:4] == b'PSID', 'Expected a complete PSID header')
-    word = lambda offset: int.from_bytes(data[offset:offset + 2], 'big')
-    require(word(6) == 124, 'Trace requires a $7c-byte header')
-    require(word(14) == 1 and word(16) == 1, 'Trace requires exactly one subtune, initialized with A=0')
-    single = word(4) == 2 and word(118) in (0x14, 0x24) and data[122:124] == bytes(2)
-    dual = word(4) == 3 and word(118) in (0x54, 0xa4) and data[122:124] == bytes((0x42, 0))
-    require(data[18:22] == bytes(4) and (single or dual),
-            'Trace requires explicit PAL VBI with one SID or two same-model SIDs at $D400/$D420')
-    load = word(8)
-    payload = data[124:]
-    if load == 0:
-        require(len(payload) >= 2, 'Missing embedded load address')
-        load = int.from_bytes(payload[:2], 'little')
-        payload = payload[2:]
-    end = load + len(payload)
-    init, play = word(10) or load, word(12)
-    require(0x0400 <= load < end <= 0xa000, 'Payload must lie entirely in RAM $0400–$9fff')
-    require(load <= init < end and load <= play < end, 'Init and play must be callable addresses inside the payload')
-    return dict(loadAddress=load, endAddress=end, initAddress=init, playAddress=play,
-                sidModel='MOS6581' if word(118) in (0x14, 0x54) else 'MOS8580',
-                sidBases=[0xd400, 0xd420] if dual else [0xd400], payload=payload)
+def psid_profile(data, *, subtune=None, profile='strict'):
+    from psid_profile import psid_profile as validated_profile
+    result = validated_profile(data, subtune=subtune, profile=profile)
+    if result['profile'] == 'strict':
+        # Existing callers serialize this shape; the explicit profile owns the
+        # extra host fields without rewriting earlier strict-profile receipts.
+        return {key: result[key] for key in ('loadAddress', 'endAddress', 'initAddress', 'playAddress',
+                                            'sidModel', 'sidBases', 'payload')}
+    return result
 
 
 def harness(profile, calls):
@@ -62,7 +50,9 @@ def harness(profile, calls):
         emit(opcode, 0)
         branches.append((len(code) - 1, name))
 
-    # psid_audit.audit_psid starts init with SP=$FF and decimal mode clear; retain those call assumptions.
+    banked = profile.get('profile') == 'pal-banked'
+    # The strict oracle's established init assumptions remain byte-identical;
+    # pal-banked additionally matches the selected raster-host entry contract.
     emit(0x78, 0xd8, 0xa2, 0xff, 0x9a)
     emit(0xa9, 0x7f)
     absolute(0x8d, 0xdc0d)
@@ -72,8 +62,18 @@ def harness(profile, calls):
     emit(0xa9, 0)
     for address in (0xd01a, 0xd011, 0xd015, COUNTER, COUNTER + 1):
         absolute(0x8d, address)
-    emit(0xa9, 0x2f, 0x85, 0, 0xa9, 0x37, 0x85, 1, 0xa9, 0, 0xa2, 0, 0xa0, 0)
+    if banked:
+        emit(0xa9, 1)
+        absolute(0x8d, INIT_ACTIVE)
+    emit(0xa9, 0x2f, 0x85, 0, 0xa9, profile.get('entryBank', 0x37), 0x85, 1,
+         0xa9, profile.get('initAccumulator', 0), 0xa2, 0, 0xa0, 0)
     absolute(0x20, profile['initAddress'])
+    if banked:
+        label('init_return')
+        emit(0xa9, 0)
+        absolute(0x8d, INIT_ACTIVE)
+        label('restore_bank')
+        emit(0xa9, 0x36, 0x85, 1)
     label('wait')
     emit(0xa9, 250)
     absolute(0xcd, 0xd012)
@@ -94,7 +94,7 @@ def harness(profile, calls):
     emit(0xa9, 250)
     absolute(0xcd, 0xd012)
     branch(0xf0, 'leave')
-    absolute(0x4c, labels['wait'])
+    absolute(0x4c, labels['restore_bank'] if banked else labels['wait'])
     label('done')
     absolute(0x4c, labels['done'])
     for offset, target in branches:
@@ -112,8 +112,18 @@ def monitor_commands(payload, program, profile, labels, first, last):
     # VICE 3.9 condition expressions evaluate left to right (vice.texi CONDITION); group each comparison.
     counter = f'((@ram:${COUNTER + 1:04x} * $0100) + @ram:${COUNTER:04x})'
     condition = f'({counter} >= ${first:04x}) && ({counter} <= ${last:04x})'
+    banked = profile.get('profile') == 'pal-banked'
+    if banked:
+        condition = f'(@ram:${INIT_ACTIVE:04x} != $00) || ({condition})'
     traces = [f'trace store ${base:04x} ${base + 24:04x} if {condition}' for base in profile['sidBases']]
-    lines = ['radix h', 'sidefx off', 'dummy off', 'bank ram', 'fill $0002 $bfff $00', f'load "{payload}" 0', f'load "{program}" 0', 'r a=$00,x=$00,y=$00,sp=$ff,fl=$24', f'r pc=${HARNESS_BASE:04x}', f'until ${labels["wait"]:04x}', f'trace exec ${profile["playAddress"]:04x}', *traces, f'until ${labels["done"]:04x}', 'r', 'bank ram', f'd ${profile["initAddress"]:04x} ${min(profile["endAddress"] - 1, profile["initAddress"] + 0x1000):04x}', f'm ${profile["loadAddress"]:04x} ${profile["endAddress"] - 1:04x}', 'quit', '']
+    lines = ['radix h', 'sidefx off', 'dummy off', 'bank ram', 'fill $0002 $bfff $00', f'load "{payload}" 0', f'load "{program}" 0', 'r a=$00,x=$00,y=$00,sp=$ff,fl=$24', f'r pc=${HARNESS_BASE:04x}']
+    if banked:
+        lines.extend([f'trace exec ${profile["initAddress"]:04x}', f'trace exec ${labels["init_return"]:04x}'])
+    else:
+        lines.append(f'until ${labels["wait"]:04x}')
+    if not banked or profile['playAddress'] != profile['initAddress']:
+        lines.append(f'trace exec ${profile["playAddress"]:04x}')
+    lines.extend([*traces, f'until ${labels["done"]:04x}', 'r', 'bank ram', f'd ${profile["initAddress"]:04x} ${min(profile["endAddress"] - 1, profile["initAddress"] + 0x1000):04x}', f'm ${profile["loadAddress"]:04x} ${profile["endAddress"] - 1:04x}', 'quit', ''])
     return '\n'.join(lines)
 
 
@@ -121,8 +131,13 @@ TRACE_HEADER = re.compile(r'^#\d+ \(Trace\s+(exec|store)\s+([0-9a-f]{4})\)\s+(\d
 INSTRUCTION = re.compile(r'^\.C:([0-9a-f]{4})\s+((?:[0-9a-f]{2}\s+){1,3})(.*?)\s+-\s+A:([0-9a-f]{2}) X:([0-9a-f]{2}) Y:([0-9a-f]{2}) SP:([0-9a-f]{2}) (\S{8})\s+(\d+)\s*$', re.IGNORECASE)
 
 
-def parse_trace(log, play_address, sid_bases=(0xd400,)):
+def parse_trace(log, play_address, sid_bases=(0xd400,), *, init_address=None, init_return=None):
     entries, writes = [], []
+    banked = init_address is not None or init_return is not None
+    require(not banked or init_address is not None and init_return is not None, 'Both init markers are required')
+    init_entry_record = init_return_record = None
+    init_executions = []
+    phase = 'host'
     lines = log.splitlines()
     for index, line in enumerate(lines):
         header = TRACE_HEADER.fullmatch(line)
@@ -139,12 +154,39 @@ def parse_trace(log, play_address, sid_bases=(0xd400,)):
         require(0 <= record['rasterLine'] < 312 and 0 <= record['rasterCycle'] < 63, 'Trace raster context is outside the PAL range')
         address = int(address, 16)
         if operation.lower() == 'exec':
+            if banked and address == init_address and init_entry_record is None:
+                require(record['writerPc'] == init_address, 'Init marker address disagrees')
+                phase = 'init'
+                record.update(phase=phase, tick=None)
+                init_entry_record = record
+                init_executions.append(record)
+                continue
+            if banked and address == init_return:
+                require(record['writerPc'] == init_return and phase == 'init' and init_return_record is None,
+                        'Unexpected init-return marker')
+                phase = 'host'
+                record.update(phase=phase, tick=None)
+                init_return_record = record
+                continue
+            if banked and phase == 'init':
+                require(address in (init_address, play_address) and record['writerPc'] == address,
+                        'Unexpected init-internal entry marker')
+                record.update(phase='init', tick=None)
+                init_executions.append(record)
+                continue
             require(address == play_address and record['writerPc'] == play_address, 'Unexpected executed trace address')
+            if banked:
+                require(init_return_record is not None, 'Play entry precedes init return')
+                phase = 'play'
+                record['phase'] = phase
             record['tick'] = len(entries)
             entries.append(record)
             continue
-        require(entries, 'SID store precedes the first play-entry marker')
-        require(entries[-1]['monitorCycle'] <= record['monitorCycle'] < entries[-1]['monitorCycle'] + FRAME_CYCLES, 'SID store timestamp lies outside its PAL play call')
+        if banked and phase == 'init':
+            require(record['monitorCycle'] >= init_entry_record['monitorCycle'], 'SID store precedes init entry')
+        else:
+            require(entries and (not banked or phase == 'play'), 'SID store precedes the first play-entry marker')
+            require(entries[-1]['monitorCycle'] <= record['monitorCycle'] < entries[-1]['monitorCycle'] + FRAME_CYCLES, 'SID store timestamp lies outside its PAL play call')
         require(not writes or record['monitorCycle'] > writes[-1]['monitorCycle'], 'SID store monitor timestamps must increase')
         opcode = bytes.fromhex(record['opcodeHex'])
         require(len(opcode) == 3 and opcode[0] in (0x8d, 0x9d, 0x99, 0x8e, 0x8c), 'SID trace requires a supported non-RMW absolute store')
@@ -159,26 +201,46 @@ def parse_trace(log, play_address, sid_bases=(0xd400,)):
             effective = (effective + registers['y']) & 65535
         require(effective == address and any(base <= address <= base + 24 for base in sid_bases), 'Store opcode and traced SID address disagree')
         register = 'x' if opcode[0] == 0x8e else 'y' if opcode[0] == 0x8c else 'a'
-        record.update(tick=entries[-1]['tick'], address=address, value=registers[register])
+        record.update(tick=None if banked and phase == 'init' else entries[-1]['tick'], address=address, value=registers[register])
+        if banked:
+            record['phase'] = phase
         writes.append(record)
-    require(entries and writes, 'Missing play entries or SID stores')
-    return dict(entries=entries, writes=writes)
+    require(entries and (writes or banked), 'Missing play entries or SID stores')
+    result = dict(entries=entries, writes=writes)
+    if banked:
+        require(init_entry_record is not None and init_return_record is not None, 'Missing init entry or return marker')
+        require(init_entry_record['monitorCycle'] < init_return_record['monitorCycle'] <= entries[0]['monitorCycle'],
+                'Init marker timestamps disagree')
+        require(all(row['monitorCycle'] < init_return_record['monitorCycle'] for row in writes if row['phase'] == 'init'),
+                'Init store occurs after return')
+        result.update(initEntry=init_entry_record, initReturn=init_return_record, initExecutions=init_executions)
+    return result
 
 
 def verify_trace(parsed, oracle, first, last):
     require(len(parsed['entries']) == last + 1, 'Missing or extra VICE play calls')
-    actual = [(row['tick'], row['address'], row['value']) for row in parsed['writes']]
-    expected = [(row['tick'], row['address'], row['value']) for row in oracle if row['phase'] == 'play' and first <= row['tick'] <= last]
-    require(actual == expected and actual, 'VICE ordered SID stores disagree with the call/address/value oracle')
+    banked = 'initEntry' in parsed
+    if banked:
+        actual = [(row['phase'], row['tick'], row['address'], row['value']) for row in parsed['writes']]
+        expected = [(row['phase'], row['tick'], row['address'], row['value']) for row in oracle
+                    if row['phase'] == 'init' or row['phase'] == 'play' and first <= row['tick'] <= last]
+    else:
+        actual = [(row['tick'], row['address'], row['value']) for row in parsed['writes']]
+        expected = [(row['tick'], row['address'], row['value']) for row in oracle if row['phase'] == 'play' and first <= row['tick'] <= last]
+    require(actual == expected and (actual or banked), 'VICE ordered SID stores disagree with the call/address/value oracle')
     start = parsed['entries'][0]['monitorCycle']
     errors = [row['monitorCycle'] - start - row['tick'] * FRAME_CYCLES for row in parsed['entries']]
     require(max(abs(error) for error in errors) <= 9, 'VICE single-PAL cadence exceeds the polling-loop tolerance')
-    return dict(matchedWrites=len(actual), playCalls=len(parsed['entries']), firstCall=first, lastCall=last, frameCycles=FRAME_CYCLES, maximumCadenceError=max(abs(error) for error in errors), cadenceTolerance=9)
+    result = dict(matchedWrites=len(actual), playCalls=len(parsed['entries']), firstCall=first, lastCall=last, frameCycles=FRAME_CYCLES, maximumCadenceError=max(abs(error) for error in errors), cadenceTolerance=9)
+    if banked:
+        result.update(matchedInitWrites=sum(row['phase'] == 'init' for row in parsed['writes']),
+                      matchedPlayWrites=sum(row['phase'] == 'play' for row in parsed['writes']))
+    return result
 
 
-def run_trace(sid, oracle_path, output, first, last, vice, data_directory):
+def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, subtune=None, profile='strict'):
     sid_bytes, oracle_bytes = sid.read_bytes(), oracle_path.read_bytes()
-    profile = psid_profile(sid_bytes)
+    profile = psid_profile(sid_bytes, subtune=subtune, profile=profile)
     program, labels = harness(profile, last + 1)
     require(not output.exists() and not output.is_symlink(), 'Choose a fresh trace output directory')
     output.mkdir(parents=True)
@@ -200,7 +262,8 @@ def run_trace(sid, oracle_path, output, first, last, vice, data_directory):
     with (output / 'process.log').open('w') as process_log:
         subprocess.run(command, env=env, stdout=process_log, stderr=subprocess.STDOUT, timeout=60, check=True)
     log = (output / 'monitor.log').read_text(errors='replace')
-    parsed = parse_trace(log, profile['playAddress'], profile['sidBases'])
+    markers = dict(init_address=profile['initAddress'], init_return=labels['init_return']) if profile.get('profile') == 'pal-banked' else {}
+    parsed = parse_trace(log, profile['playAddress'], profile['sidBases'], **markers)
     verification = verify_trace(parsed, json.loads(oracle_bytes), first, last)
     writers = {}
     for row in parsed['writes']:
@@ -225,8 +288,10 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--vice', type=Path, default=ROOT / '.tools/vice-headless-3.9/build/src/x64sc')
     parser.add_argument('--data', type=Path, default=Path('/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice'))
+    parser.add_argument('--subtune', type=int, help='Explicit 1-based subtune selection')
+    parser.add_argument('--profile', choices=('strict', 'pal-banked'), default='strict')
     args = parser.parse_args()
-    result = run_trace(args.sid.resolve(), args.oracle.resolve(), args.output.resolve(), args.first_call, args.last_call, args.vice.resolve(), args.data.resolve())
+    result = run_trace(args.sid.resolve(), args.oracle.resolve(), args.output.resolve(), args.first_call, args.last_call, args.vice.resolve(), args.data.resolve(), subtune=args.subtune, profile=args.profile)
     print(json.dumps(result, indent=2))
 
 

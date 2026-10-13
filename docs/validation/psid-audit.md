@@ -12,9 +12,29 @@ Timing-sensitive execution uses the shared CPU adapter. See the [opcode timing l
 
 ## Supported execution contract
 
-This is a bounded RAM-only audit: one subtune, a payload within `$0400–$9fff`, callable init/play, and one call per PAL frame. It supports PSID v2NG with one explicitly declared PAL 6581/8580, or PSID v3 with two same-model PAL 6581s or 8580s at `$D400` and `$D420` (flags `$0054` or `$00A4`, second-chip byte `$42`, no third chip). Other layouts are rejected. Reports list the declared chips and keep their register addresses distinct. The parser accepts either header or embedded load addresses and resolves zero init to the load address. These conventions follow [the HVSC format specification](https://hvsc.c64.org/download/C64Music/DOCUMENTS/SID_file_format.txt).
+The default `strict` profile is a bounded RAM-only audit: one subtune, a payload within `$0400–$9fff`, callable init/play, and one call per PAL frame. It supports PSID v2NG with one explicitly declared PAL 6581/8580, or PSID v3 with two same-model PAL 6581s or 8580s at `$D400` and `$D420` (flags `$0054` or `$00A4`, second-chip byte `$42`, no third chip). Other layouts are rejected. Reports list the declared chips and keep their register addresses distinct. The parser accepts either header or embedded load addresses and resolves zero init to the load address. These conventions follow [the HVSC format specification](https://hvsc.c64.org/download/C64Music/DOCUMENTS/SID_file_format.txt).
 
 Initialization starts with zero-filled RAM except CPU port `$2f/$37`, A/X/Y zero, and the normal py65 stack. Driver changes to RAM and registers persist across calls. The tool rejects unsupported opcodes, ROM/I/O reads, non-SID hardware writes, hidden I/O, missing returns, and excessive call budgets. Initialization has a separate million-cycle ceiling; playback across all declared chips must fit the same 19,656-cycle PAL frame; adding a chip does not double the CPU budget. Rejecting a driver means this restricted audit cannot model it; use full C64 emulation for broader contracts.
+
+## Select a subtune and expose RAM beneath BASIC
+
+The explicit `pal-banked` profile supports intact PSID headers with a one-based `--subtune` selection and payloads within `$0400–$BFFF`. It uses the shared [header/profile parser](../../scripts/psid_profile.py); the header's declared subtunes/default, chip layout and VBI speed remain validated. The source bytes and hash do not change. An omitted selection is rejected in this profile; the default strict profile retains its original single-subtune and lower-RAM boundaries.
+
+```sh
+python3 scripts/psid_audit.py .local/research/cybernoid-ii/Cybernoid_II.sid --profile pal-banked --subtune 1 --ticks 600 --output build/cybernoid-title-new/audit.json
+```
+
+The API is `audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict')`. The profile describes a controlled raster-polling host, with explicit entry state shared by the [VICE tracer](../../scripts/trace-sid-vice.py):
+
+| Boundary | `pal-banked` contract |
+| --- | --- |
+| Mapping | Set CPU port `$01=$36` before init and each play call: BASIC hidden, KERNAL and SID I/O visible. Driver bank changes remain subject to guarded accesses. |
+| Init entry | A=`subtune−1`, X=Y=0, status `$26`, SP=`$FF` before the callable return address is pushed. |
+| Play entry | A=`$FA`; X/Y retain the preceding call's results. Set C/Z and clear N, retaining other status bits, matching the raster host's successful `CMP $D012` at line 250. |
+| Memory isolation | The raster host's `$C000–$C1FF` workspace rejects reads and writes; interrupt vectors reject writes. Existing mapped-ROM, I/O-read, SID visibility and unsupported-store guards remain. |
+| Timing | Play-body costs retain the 19,656-cycle bound; actual call cadence is checked separately in VICE. The CPU oracle does not emulate the raster poll or SID bus timing. |
+
+This entry contract is not libsidplayfp's IRQ entry: its inspected `psiddrv.a65` supplies A=0. Do not infer PCM or original-host identity from equality under the controlled raster host. [Cybernoid II's owning study](../research/composition/cybernoid-ii-preparation.md) retains the exact input, bank-selection basis and bounded execution evidence.
 
 ## Evidence limits
 

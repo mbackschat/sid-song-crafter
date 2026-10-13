@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-10-13",
+  "sourceRegistry": "config/local-assets.json",
+  "sourceAsset": "cybernoid-ii",
+  "sourceSha256": "41f338f44b4f54e351e672156ee0e2a60c8437eb24645db3f9d4abfbb0cff192",
+  "profile": "pal-banked",
+  "toolSources": [
+    {
+      "path": "scripts/psid_profile.py",
+      "sha256": "7971881fbb68e6f09c6c886650de26c5168a11770407e7551bfbe35195df7bb4"
+    },
+    {
+      "path": "scripts/psid_audit.py",
+      "sha256": "34d3bf48c00039c8d1521086180466fd63aa569a7b4fbae9fa43b4cf38c303c3"
+    },
+    {
+      "path": "scripts/trace-sid-program.py",
+      "sha256": "633a02df125e3a723fdce4e1d9458bc8046f49f11be29157b3307dba6626d699"
+    },
+    {
+      "path": "scripts/trace-sid-vice.py",
+      "sha256": "babcba6b230d494c2839de72d3be849b3e1dcf263c2df9e057d4edd86b4d8297"
+    },
+    {
+      "path": "scripts/verify_player.py",
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    }
+  ],
+  "runs": [
+    {
+      "subtune": 1,
+      "firstCall": 0,
+      "lastCallInclusive": 599,
+      "cpuReport": "build/cybernoid-title-execution/audit.json",
+      "viceReport": "build/cybernoid-title-execution/vice/study.json",
+      "initCycles": 1738,
+      "maximumPlayCycles": 2473,
+      "verification": {
+        "matchedWrites": 10358,
+        "playCalls": 600,
+        "firstCall": 0,
+        "lastCall": 599,
+        "frameCycles": 19656,
+        "maximumCadenceError": 5,
+        "cadenceTolerance": 9,
+        "matchedInitWrites": 25,
+        "matchedPlayWrites": 10333
+      }
+    },
+    {
+      "subtune": 2,
+      "firstCall": 0,
+      "lastCallInclusive": 63,
+      "cpuReport": "build/cybernoid-game-over-execution/audit.json",
+      "viceReport": "build/cybernoid-game-over-execution/vice/study.json",
+      "initCycles": 1738,
+      "maximumPlayCycles": 2599,
+      "verification": {
+        "matchedWrites": 1278,
+        "playCalls": 64,
+        "firstCall": 0,
+        "lastCall": 63,
+        "frameCycles": 19656,
+        "maximumCadenceError": 5,
+        "cadenceTolerance": 9,
+        "matchedInitWrites": 25,
+        "matchedPlayWrites": 1253
+      }
+    }
+  ],
+  "limitations": "Controlled raster host, not native IRQ or libsidplayfp entry ABI; bounded ordered SID stores and poll cadence, not full form, SID bus timing, synthesized PCM equality or listening approval.",
+  "openingInstructionCrossCheck": {
+    "firstCall": 0,
+    "lastCallInclusive": 63,
+    "matchedPlayWrites": 1107,
+    "fields": [
+      "tick",
+      "address",
+      "value",
+      "writerPc"
+    ],
+    "cpuTrace": "build/cybernoid-title-instructions/opening.trace.json",
+    "viceTrace": "build/cybernoid-title-execution/vice/trace.json"
+  }
+}

@@ -3,7 +3,7 @@
   "packagedOn": "2026-10-13",
   "implementationCheckpoint": "cf5c7cc3342d491029c244494e5ee4619e6794b9",
   "sourceRegistry": "config/local-assets.json",
-  "scope": "Canonical Shades and Flashdance analysis proofs plus Cybernoid II intake; original SIDs, audio and complete payload dumps excluded. Historical receipts retain original paths and proof-version identities.",
+  "scope": "Canonical Shades and Flashdance analysis proofs plus Cybernoid II intake and bounded selected-subtune execution; original SIDs, audio and complete payload dumps excluded. Historical receipts retain original paths and proof-version identities.",
   "files": [
     {
       "path": "evidence/shades-intake/vice-cia-corrected-full-final/trace.json.gz",
@@ -716,6 +716,126 @@
       "originalBytes": 1826,
       "group": "cybernoid-ii-intake",
       "reason": "Pinned source header, bounded static correspondence to recovered listing, or initialized reference-render recipe; no SID/WAV files."
+    },
+    {
+      "path": "evidence/cybernoid-title-execution/audit.json",
+      "originalPath": "build/cybernoid-title-execution/audit.json",
+      "sha256": "5f9bde32c818ed2c01baacc4d8962623e6a0f03bb981b6713287f8eec6d5f5b8",
+      "bytes": 3741,
+      "originalSha256": "5f9bde32c818ed2c01baacc4d8962623e6a0f03bb981b6713287f8eec6d5f5b8",
+      "originalBytes": 3741,
+      "group": "cybernoid-banked-execution",
+      "reason": "Bounded original-subtune CPU/VICE stores, init coverage, cadence and executed opening table-read evidence under the explicit controlled PAL banked host."
+    },
+    {
+      "path": "evidence/cybernoid-title-execution/audit.writes.json.gz",
+      "originalPath": "build/cybernoid-title-execution/audit.writes.json",
+      "sha256": "7ce3bfcc3da4245061c4c8c74a7492c471aad51f6e854577c30fb9895220e5d4",
+      "bytes": 58901,
+      "originalSha256": "318179af83fabf936bc097f035ebcdf8b81048837d1c36e2df4858cc11dedbda",
+      "originalBytes": 861451,
+      "group": "cybernoid-banked-execution",
+      "reason": "Bounded original-subtune CPU/VICE stores, init coverage, cadence and executed opening table-read evidence under the explicit controlled PAL banked host."
+    },
+    {
+      "path": "evidence/cybernoid-title-execution/vice/study.json",
+      "originalPath": "build/cybernoid-title-execution/vice/study.json",
+      "sha256": "381cc265b28df939bcd2980de9308b0a6ebb1beca2f7eab45c574fd7309b047f",
+      "bytes": 4798,
+      "originalSha256": "381cc265b28df939bcd2980de9308b0a6ebb1beca2f7eab45c574fd7309b047f",
+      "originalBytes": 4798,
+      "group": "cybernoid-banked-execution",
+      "reason": "Bounded original-subtune CPU/VICE stores, init coverage, cadence and executed opening table-read evidence under the explicit controlled PAL banked host."
+    },
+    {
+      "path": "evidence/cybernoid-title-execution/vice/trace.json.gz",
+      "originalPath": "build/cybernoid-title-execution/vice/trace.json",
+      "sha256": "bac9b9e5042cbe0864a82f1cb463f992536c151f8490edd62294a847576e51f3",
+      "bytes": 178168,
+      "originalSha256": "1ebbd28f7b6be2195a9b51fa3bf3f20c5a5da361c18f1aa555121ff357bf5188",
+      "originalBytes": 4290450,
+      "group": "cybernoid-banked-execution",
+      "reason": "Bounded original-subtune CPU/VICE stores, init coverage, cadence and executed opening table-read evidence under the explicit controlled PAL banked host."
+    },
+    {
+      "path": "evidence/cybernoid-title-execution/provenance.json",
+      "originalPath": "build/cybernoid-title-execution/provenance.json",
+      "sha256": "64029595409e9d8ba892e2f09f4d67af977b534fefe0bdabc7adc712fb60655a",
+      "bytes": 2707,
+      "originalSha256": "64029595409e9d8ba892e2f09f4d67af977b534fefe0bdabc7adc712fb60655a",
+      "originalBytes": 2707,
+      "group": "cybernoid-banked-execution",
+      "reason": "Bounded original-subtune CPU/VICE stores, init coverage, cadence and executed opening table-read evidence under the explicit controlled PAL banked host."
+    },
+    {
+      "path": "evidence/cybernoid-game-over-execution/audit.json",
+      "originalPath": "build/cybernoid-game-over-execution/audit.json",
+      "sha256": "ff899f9f12120d8a5c33fdfe82fd5b451d92c0c64f597a45ebdb5f8a90136538",
+      "bytes": 3709,
+      "originalSha256": "ff899f9f12120d8a5c33fdfe82fd5b451d92c0c64f597a45ebdb5f8a90136538",
+      "originalBytes": 3709,
+      "group": "cybernoid-banked-execution",
+      "reason": "Bounded original-subtune CPU/VICE stores, init coverage, cadence and executed opening table-read evidence under the explicit controlled PAL banked host."
+    },
+    {
+      "path": "evidence/cybernoid-game-over-execution/audit.writes.json.gz",
+      "originalPath": "build/cybernoid-game-over-execution/audit.writes.json",
+      "sha256": "fd2ca61798772706e219cd797d20d14b39017e33845e21344063d6cd4f76c47d",
+      "bytes": 7717,
+      "originalSha256": "0a061134c0ef586ff9a681da49b8c91035d09a3b499b75440d5b4c9f202223a5",
+      "originalBytes": 105612,
+      "group": "cybernoid-banked-execution",
+      "reason": "Bounded original-subtune CPU/VICE stores, init coverage, cadence and executed opening table-read evidence under the explicit controlled PAL banked host."
+    },
+    {
+      "path": "evidence/cybernoid-game-over-execution/vice/study.json",
+      "originalPath": "build/cybernoid-game-over-execution/vice/study.json",
+      "sha256": "bd19288dfc213339eb71047a55322952576fc95139c581d920053b98140fff69",
+      "bytes": 4789,
+      "originalSha256": "bd19288dfc213339eb71047a55322952576fc95139c581d920053b98140fff69",
+      "originalBytes": 4789,
+      "group": "cybernoid-banked-execution",
+      "reason": "Bounded original-subtune CPU/VICE stores, init coverage, cadence and executed opening table-read evidence under the explicit controlled PAL banked host."
+    },
+    {
+      "path": "evidence/cybernoid-game-over-execution/vice/trace.json.gz",
+      "originalPath": "build/cybernoid-game-over-execution/vice/trace.json",
+      "sha256": "7443b83cfe9ef7cd2c03a0e0cd9c7b6c993ed234cf5328c07b0fe1c8186c7a83",
+      "bytes": 23072,
+      "originalSha256": "c5c5ae9a04a391143feaf2ad0ca8c3716bbd737abe5bf212c6855a44560c8508",
+      "originalBytes": 525400,
+      "group": "cybernoid-banked-execution",
+      "reason": "Bounded original-subtune CPU/VICE stores, init coverage, cadence and executed opening table-read evidence under the explicit controlled PAL banked host."
+    },
+    {
+      "path": "evidence/cybernoid-title-instructions/opening.trace.json.gz",
+      "originalPath": "build/cybernoid-title-instructions/opening.trace.json",
+      "sha256": "4d2427d09244af5a56f7afeda21696ff60c4107aae19196fb163008622641cef",
+      "bytes": 770605,
+      "originalSha256": "a2ac87f2b73424a27145eaef9c3720786f78ee4d4e83b6f4642891068413753e",
+      "originalBytes": 10430145,
+      "group": "cybernoid-banked-execution",
+      "reason": "Bounded original-subtune CPU/VICE stores, init coverage, cadence and executed opening table-read evidence under the explicit controlled PAL banked host."
+    },
+    {
+      "path": "evidence/cybernoid-title-instructions/table-reads.json",
+      "originalPath": "build/cybernoid-title-instructions/table-reads.json",
+      "sha256": "f067750ffc6562bf9294d4a473ac66357b2f3908e89e200870801c4a2b4eb151",
+      "bytes": 2629,
+      "originalSha256": "f067750ffc6562bf9294d4a473ac66357b2f3908e89e200870801c4a2b4eb151",
+      "originalBytes": 2629,
+      "group": "cybernoid-banked-execution",
+      "reason": "Bounded original-subtune CPU/VICE stores, init coverage, cadence and executed opening table-read evidence under the explicit controlled PAL banked host."
+    },
+    {
+      "path": "evidence/cybernoid-title-instructions/form-navigation.json.gz",
+      "originalPath": "build/cybernoid-title-instructions/form-navigation.json",
+      "sha256": "be826e6a026074c3e618a69120b1a1a4b447f3b40326b83ea68029d04928c71c",
+      "bytes": 18953,
+      "originalSha256": "0ad83743a3ecb04fb371a0b8491ced871f40f5cf2f182811593915cfbe5c2ebc",
+      "originalBytes": 260242,
+      "group": "cybernoid-banked-execution",
+      "reason": "Archive-address form navigation with exact selected instruction records; static terminal branches and listing-table caveat explicitly separate from executed opening observations."
     }
   ],
   "independentShadesSources": {

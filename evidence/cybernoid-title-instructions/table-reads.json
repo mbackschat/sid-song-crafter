@@ -1,0 +1,108 @@
+{
+  "sourceSha256": "41f338f44b4f54e351e672156ee0e2a60c8437eb24645db3f9d4abfbb0cff192",
+  "selectedSubtune": 1,
+  "profile": "pal-banked",
+  "firstCall": 0,
+  "lastCallInclusive": 63,
+  "instructionTrace": "build/cybernoid-title-instructions/opening.trace.json",
+  "instructionTraceSha256": "a2ac87f2b73424a27145eaef9c3720786f78ee4d4e83b6f4642891068413753e",
+  "staticLookup": "evidence/cybernoid-ii-intake/source-comparison.json",
+  "staticLookupSha256": "4957ab87c13518a5cc325a53133bc7f65db3e523dc190c7da7cf465f27c23104",
+  "selection": "Executed LDA/LDX/LDY operand addresses within each matched eight-byte record; operand values must equal the pinned record byte.",
+  "records": [
+    {
+      "sourceLabel": "bass",
+      "sourceLine": 1505,
+      "recordAddress": 45084,
+      "recordSha256": "0c9ab12a72e3f6b194b9af2fa03272d1fc0b031104634b151363b13c67f3da28",
+      "loadInstructions": 215,
+      "firstCall": 0,
+      "lastCall": 63,
+      "fieldOffsets": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "allReadValuesMatchStaticRecord": true,
+      "readerPcs": [
+        43188,
+        43194,
+        43200,
+        43204,
+        43208,
+        43298,
+        43363,
+        43368,
+        43379
+      ]
+    },
+    {
+      "sourceLabel": "bassdrm",
+      "sourceLine": 1506,
+      "recordAddress": 45092,
+      "recordSha256": "c67c98a0d59edd3f64eb96dc8c452f8e3cda3356fcae35deec0fbe9b63afbdd3",
+      "loadInstructions": 215,
+      "firstCall": 0,
+      "lastCall": 63,
+      "fieldOffsets": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "allReadValuesMatchStaticRecord": true,
+      "readerPcs": [
+        43188,
+        43194,
+        43200,
+        43204,
+        43208,
+        43298,
+        43363,
+        43368,
+        43379
+      ]
+    },
+    {
+      "sourceLabel": "arp+filt",
+      "sourceLine": 1508,
+      "recordAddress": 45108,
+      "recordSha256": "8d805ac441583d4119a4d9f2cae7ff655965655caddde44b40f63cecfaac048c",
+      "loadInstructions": 215,
+      "firstCall": 0,
+      "lastCall": 63,
+      "fieldOffsets": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "allReadValuesMatchStaticRecord": true,
+      "readerPcs": [
+        43188,
+        43194,
+        43200,
+        43204,
+        43208,
+        43298,
+        43363,
+        43368,
+        43379
+      ]
+    }
+  ],
+  "limitations": "Bounded executed table loads, not complete instrument selection, field semantics, voice allocation, time-sharing or listening evidence."
+}

@@ -2,10 +2,12 @@ import importlib.util
 import json
 from pathlib import Path
 import tempfile
+import sys
 import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
 spec = importlib.util.spec_from_file_location('sid_vice_trace', ROOT / 'scripts/trace-sid-vice.py')
 trace = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(trace)
@@ -27,7 +29,154 @@ def store(cycle, value=1, opcode='8D 02 D4', mnemonic='STA $D402'):
     return f'#2 (Trace store d402)  250/$0fa,  28/$1c\n.C:100c  {opcode}    {mnemonic} - A:{value:02X} X:00 Y:00 SP:fd ..-..I.. {cycle}\n'
 
 
+def marker(cycle, address):
+    return f'#1 (Trace  exec {address:04x})  250/$0fa,  12/$0c\n.C:{address:04x}  A9 00    LDA #$00 - A:00 X:00 Y:00 SP:fd ..-..I.. {cycle}\n'
+
+
+def banked_fixture():
+    from verify_player import cpu_type
+    cpu_type()
+    from sid_assembler import assemble
+    source = '''
+init:
+STA $D400
+PHP
+PLA
+AND #$C7
+STA $D401
+LDX #$31
+LDY #$42
+LDA #$37
+STA $01
+RTS
+play:
+STA $D402
+PHP
+PLA
+AND #$C7
+STA $D403
+STX $D405
+STY $D406
+LDA $B000
+STA $D407
+LDA #$37
+STA $01
+RTS
+'''
+    payload, labels, _ = assemble(source)
+    header = sid_fixture()[:124]
+    header[12:14] = labels['play'].to_bytes(2, 'big')
+    header[14:16] = (2).to_bytes(2, 'big')
+    payload += bytes(0xb000 - 0x1000 - len(payload)) + bytes([0x7c])
+    return bytes(header) + payload
+
+
 class SidViceTraceTest(unittest.TestCase):
+    def test_selected_banked_profile_requires_explicit_selection_without_mutating_header(self):
+        data = banked_fixture()
+        original = bytes(data)
+        for selected in (1, 2):
+            profile = trace.psid_profile(data, subtune=selected, profile='pal-banked')
+            self.assertEqual(0xb001, profile['endAddress'])
+            self.assertEqual(selected - 1, profile['initAccumulator'])
+            self.assertEqual(0x36, profile['entryBank'])
+        self.assertEqual(original, data)
+        with self.assertRaises(ValueError):
+            trace.psid_profile(data)
+        for selected in (None, 0, 3, True, 1.5):
+            with self.subTest(selected=selected), self.assertRaises(ValueError):
+                trace.psid_profile(data, subtune=selected, profile='pal-banked')
+
+    def test_banked_harness_restores_bank_outside_nine_cycle_poll_and_traces_init(self):
+        profile = trace.psid_profile(banked_fixture(), subtune=2, profile='pal-banked')
+        program, labels = trace.harness(profile, 2)
+        poll = labels['wait'] - trace.HARNESS_BASE + 2
+        self.assertEqual(bytes.fromhex('a9facd12d0d0'), program[poll:poll + 6])
+        self.assertLess(labels['restore_bank'], labels['wait'])
+        restore = labels['restore_bank'] - trace.HARNESS_BASE + 2
+        self.assertEqual(bytes.fromhex('a9368501'), program[restore:restore + 4])
+        self.assertIn(bytes.fromhex('a901a200a000200010'), program)
+        commands = trace.monitor_commands(Path('/tmp/payload.prg'), Path('/tmp/harness.prg'), profile, labels, 1, 1)
+        self.assertIn('trace exec $1000', commands)
+        self.assertIn(f'trace exec ${labels["init_return"]:04x}', commands)
+        self.assertIn('@ram:$c102', commands)
+
+    def test_banked_parser_and_oracle_require_all_init_stores_and_both_markers(self):
+        log = marker(10, 0x1000) + store(20, 9) + marker(30, 0xc050)
+        log += entry(100) + entry(19756) + store(19772, 2)
+        parsed = trace.parse_trace(log, 0x1006, init_address=0x1000, init_return=0xc050)
+        expected = [dict(phase='init', tick=None, address=0xd402, value=9),
+                    dict(phase='play', tick=1, address=0xd402, value=2)]
+        result = trace.verify_trace(parsed, expected, 1, 1)
+        self.assertEqual((1, 1), (result['matchedInitWrites'], result['matchedPlayWrites']))
+        for oracle in (expected[1:], [dict(expected[0], value=8), expected[1]]):
+            with self.subTest(oracle=oracle), self.assertRaisesRegex(ValueError, 'ordered'):
+                trace.verify_trace(parsed, oracle, 1, 1)
+        for invalid in (log.replace(marker(10, 0x1000), ''),
+                        log.replace(marker(30, 0xc050), ''),
+                        log.replace(marker(30, 0xc050), marker(15, 0xc050))):
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                trace.parse_trace(invalid, 0x1006, init_address=0x1000, init_return=0xc050)
+
+    def test_headless_banked_selection_init_flags_poll_flags_and_bank_restoration(self):
+        vice = ROOT / '.tools/vice-headless-3.9/build/src/x64sc'
+        data_directory = Path('/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice')
+        if not vice.is_file() or not data_directory.is_dir():
+            self.skipTest('Local headless VICE and ROM data are required for the executed fixture')
+        from psid_audit import audit_psid
+        data = banked_fixture()
+        for selected, first in ((1, 0), (2, 1)):
+            with self.subTest(selected=selected), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                sid, expected = root / 'fixture.sid', root / 'oracle.json'
+                sid.write_bytes(data)
+                _, oracle = audit_psid(data, 2, subtune=selected, profile='pal-banked')
+                expected.write_text(json.dumps(oracle))
+                result = trace.run_trace(sid, expected, root / 'trace', first, 1, vice, data_directory,
+                                         subtune=selected, profile='pal-banked')
+                parsed = json.loads((root / 'trace/trace.json').read_text())
+                self.assertEqual([('init', None, 0xd400, selected - 1), ('init', None, 0xd401, 6)] +
+                                 [('play', tick, address, value) for tick in range(first, 2)
+                                  for address, value in ((0xd402, 250), (0xd403, 7), (0xd405, 0x31),
+                                                        (0xd406, 0x42), (0xd407, 0x7c))],
+                                 [(row['phase'], row['tick'], row['address'], row['value']) for row in parsed['writes']])
+                self.assertEqual(2, result['verification']['matchedInitWrites'])
+                self.assertEqual(data, sid.read_bytes())
+
+    def test_headless_init_internal_play_and_shared_entry_are_not_extra_play_calls(self):
+        vice = ROOT / '.tools/vice-headless-3.9/build/src/x64sc'
+        data_directory = Path('/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice')
+        if not vice.is_file() or not data_directory.is_dir():
+            self.skipTest('Local headless VICE and ROM data are required for the executed fixture')
+        from psid_audit import audit_psid
+        from sid_assembler import assemble
+        sources = {
+            'internal': 'init:\nLDA #$11\nSTA $D400\nJSR play\nLDA #$22\nSTA $D401\nRTS\nplay:\nSTA $D402\nRTS',
+            'shared': 'init:\nplay:\nSTA $D400\nPHP\nPLA\nAND #$C7\nSTA $D401\nRTS',
+        }
+        for kind, source in sources.items():
+            with self.subTest(kind=kind), tempfile.TemporaryDirectory() as directory:
+                payload, labels, _ = assemble(source)
+                header = sid_fixture()[:124]
+                header[12:14] = labels['play'].to_bytes(2, 'big')
+                encoded = bytes(header) + payload
+                _, oracle = audit_psid(encoded, 2, subtune=1, profile='pal-banked')
+                root = Path(directory)
+                sid, expected = root / 'fixture.sid', root / 'oracle.json'
+                sid.write_bytes(encoded)
+                expected.write_text(json.dumps(oracle))
+                result = trace.run_trace(sid, expected, root / 'trace', 0, 1, vice, data_directory,
+                                         subtune=1, profile='pal-banked')
+                self.assertEqual(2, result['verification']['playCalls'])
+                self.assertEqual(len(oracle), result['verification']['matchedWrites'])
+                parsed = json.loads((root / 'trace/trace.json').read_text())
+                self.assertEqual(2 if kind == 'internal' else 1, len(parsed['initExecutions']))
+                self.assertTrue(all(row['phase'] == 'init' and row['tick'] is None
+                                    for row in parsed['initExecutions']))
+                if kind == 'shared':
+                    commands = (root / 'trace/commands.mon').read_text()
+                    self.assertEqual(1, commands.count('trace exec $1000'))
+
     def test_dual_pal_profile_declares_both_chips_and_traces_only_their_sound_registers(self):
         data = sid_fixture()
         data[5], data[119], data[122] = 3, 0x54, 0x42

@@ -4,6 +4,7 @@ import importlib.util
 import json
 from pathlib import Path
 import sys
+import tempfile
 import unittest
 from unittest.mock import patch
 
@@ -46,6 +47,36 @@ def pinned_fixture(data):
 
 
 class SidProgramTraceTest(unittest.TestCase):
+    def test_selected_banked_trace_links_stores_and_retains_init_argument(self):
+        header = bytearray(fixture()[:124])
+        init = bytes.fromhex('8d 18 d4 8d 00 20 60')
+        play = bytes.fromhex('8d 00 d4 08 68 29 03 8d 01 d4 a5 01 8d 02 d4 ad 00 20 8d 03 d4 60')
+        for offset, value in ((8, 0xa600), (10, 0xa600), (12, 0xa600 + len(init)), (14, 2)):
+            header[offset:offset + 2] = value.to_bytes(2, 'big')
+        data = bytes(header) + init + play
+        result = trace.trace_program(data, first_call=0, last_call=1, profile='pal-banked', subtune=2)
+        self.assertEqual(result['sourceSha256'], hashlib.sha256(data).hexdigest())
+        self.assertEqual([1], [row['value'] for row in result['initSidWrites']])
+        self.assertEqual([(tick, address, value) for tick in range(2)
+                          for address, value in ((0xd400, 0xfa), (0xd401, 3), (0xd402, 0x36), (0xd403, 1))],
+                         [(row['tick'], row['address'], row['value']) for row in result['sidWrites']])
+        self.assertTrue(all(row['instructionPc'] >= 0xa600 for row in result['sidWrites']))
+        self.assertEqual(2, result['audit']['selectedSubtune'])
+        with tempfile.TemporaryDirectory() as directory:
+            source, output = Path(directory) / 'source.sid', Path(directory) / 'trace.json'
+            source.write_bytes(data)
+            with patch.object(sys, 'argv', ['trace-sid-program.py', str(source), '--first-call', '0',
+                                           '--last-call', '1', '--profile', 'pal-banked', '--subtune', '2',
+                                           '--output', str(output)]), patch('builtins.print'):
+                trace.main()
+            self.assertEqual(data, source.read_bytes())
+            self.assertEqual(result['sidWrites'], json.loads(output.read_text())['sidWrites'])
+
+    def test_subtune_selection_cannot_be_silently_ignored_by_diagnostic_profile(self):
+        with pinned_fixture(paddle_fixture()), self.assertRaisesRegex(ValueError, 'subtune'):
+            trace.trace_program(paddle_fixture(), first_call=0, last_call=0,
+                                profile='flashdance-diagnostic', subtune=2)
+
     def test_indexed_writer_and_ram_operand_are_linked_without_changing_execution(self):
         data = fixture()
         expected_report, expected_writes = trace.audit_psid(data, 4)

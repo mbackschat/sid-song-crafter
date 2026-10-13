@@ -6,6 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 
+from psid_profile import ExecutionProfile, psid_profile
 from verify_player import CYCLES_PER_FRAME, PAL_CLOCK, cpu_type, require
 
 
@@ -39,40 +40,42 @@ class AuditMemory:
         self.data[address] = value
 
 
-def audit_psid(data, ticks, *, observer=None):
+class BankedAuditMemory(AuditMemory):
+    def __init__(self, sid_bases):
+        super().__init__(sid_bases)
+        self.data[1] = 0x36
+
+    def __getitem__(self, address):
+        require(not 0xc000 <= address <= 0xc1ff, f'Unsupported fixed host RAM read at ${address:04x}')
+        return super().__getitem__(address)
+
+    def __setitem__(self, address, value):
+        require(not (0xc000 <= address <= 0xc1ff or 0x0314 <= address <= 0x0319),
+                f'Unsupported fixed host RAM or interrupt vector write at ${address:04x}')
+        super().__setitem__(address, value)
+
+
+def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict'):
     """Run init and bounded VBI calls; report execution evidence, not musical correctness.
 
     An optional read-only observer receives the CPU and memory immediately before
     each instruction. It can inspect phase, tick and instruction-start cycle to
     record driver-specific consumption without changing the execution model.
+    PAL banked requires an explicit subtune and mirrors the controlled raster
+    host's bank/register/flag entry state; it is not libsidplayfp IRQ execution.
     """
     require(type(ticks) is int and 1 <= ticks <= 100000, "Play-call count must be an integer from 1 to 100000")
-    require(len(data) >= 0x7c and data[:4] == b"PSID", "Audit requires a complete PSID header")
-    word = lambda offset: int.from_bytes(data[offset:offset + 2], "big")
-    require(word(6) == 0x7c, "Audit requires a $7c-byte PSID header")
-    require(word(14) == 1 and word(16) == 1, "Audit requires exactly one subtune")
-    require(data[18:22] == bytes(4), "CIA timing is unsupported; use a full C64 emulator")
-    if word(4) == 2:
-        require(word(118) in (0x14, 0x24), "Audit requires explicit PAL and one declared SID model without MUS/PlaySID flags")
-        require(data[122:124] == bytes(2), "PSID v2 requires zero additional-SID fields")
-        sids = [{"baseAddress": 0xd400, "model": "MOS8580" if word(118) == 0x24 else "MOS6581"}]
-    else:
-        require(word(4) == 3 and word(118) in (0x54, 0xa4) and data[122:124] == b"\x42\x00", "Dual-SID audit requires PSID v3 PAL with two same-model MOS6581s or MOS8580s at $d400/$d420")
-        sids = [{"baseAddress": base, "model": "MOS6581" if word(118) == 0x54 else "MOS8580"} for base in (0xd400, 0xd420)]
-    load = word(8)
-    payload = data[0x7c:]
-    if load == 0:
-        require(len(payload) >= 2, "Missing embedded load address")
-        load = int.from_bytes(payload[:2], "little")
-        payload = payload[2:]
-    end = load + len(payload)
-    init, play = word(10) or load, word(12)
-    require(0x0400 <= load < end <= 0xa000, "Audit supports payloads entirely in RAM $0400–$9fff")
-    require(load <= init < end and load <= play < end, "Callable init/play must lie inside the payload; IRQ players are unsupported")
-    memory = AuditMemory(tuple(sid["baseAddress"] for sid in sids))
-    memory.data[load:end] = payload
+    parsed = psid_profile(data, subtune=subtune, profile=profile)
+    banked = parsed['profile'] == ExecutionProfile.PAL_BANKED.value
+    load, init, play = (parsed[key] for key in ('loadAddress', 'initAddress', 'playAddress'))
+    sids = parsed['sids']
+    memory = (BankedAuditMemory if banked else AuditMemory)(tuple(parsed['sidBases']))
+    memory.data[load:parsed['endAddress']] = parsed['payload']
     cpu = cpu_type()(memory=memory, pc=init)
-    cpu.a = cpu.x = cpu.y = 0
+    cpu.a, cpu.x, cpu.y = parsed['initAccumulator'], 0, 0
+    if banked:
+        # trace-sid-vice's banked monitor starts FL=$24; SEI/CLD and final LDX/LDY #0 leave P=$26.
+        cpu.p = cpu.UNUSED | cpu.INTERRUPT | cpu.ZERO
 
     def call(address, budget):
         cpu.stPushWord(0x01ff)
@@ -97,6 +100,11 @@ def audit_psid(data, ticks, *, observer=None):
     total = 0
     for tick in range(ticks):
         memory.tick = tick
+        if banked:
+            # trace-sid-vice's successful LDA #$FA / CMP $D012 preserves X/Y and other status flags.
+            memory.data[1] = parsed['entryBank']
+            cpu.a = 0xfa
+            cpu.p = (cpu.p | cpu.CARRY | cpu.ZERO) & ~cpu.NEGATIVE
         cycles = call(play, CYCLES_PER_FRAME)
         maximum = max(maximum, cycles)
         total += cycles
@@ -117,6 +125,11 @@ def audit_psid(data, ticks, *, observer=None):
         "registers": {f"{address:04x}": {"writes": len(items), "distinctValues": len(set(items)), "minimum": min(items), "maximum": max(items)} for address, items in sorted(values.items())},
         "limitations": "No sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment.",
     }
+    if banked:
+        report.update(executionProfile=parsed['profile'], subtunes=parsed['subtunes'],
+                      defaultSubtune=parsed['defaultSubtune'], selectedSubtune=parsed['selectedSubtune'],
+                      entryBank=parsed['entryBank'],
+                      entryStateBasis='Controlled PAL raster host: init A=selection-1, X/Y=0, P=$26; play A=$FA, retained X/Y, CMP-equal C/Z set and N clear; bank $36 before each call')
     return report, memory.writes
 
 
@@ -124,12 +137,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("sid", type=Path)
     parser.add_argument("--ticks", type=int, required=True)
+    parser.add_argument('--profile', choices=[profile.value for profile in ExecutionProfile], default='strict')
+    parser.add_argument('--subtune', type=int, help='Explicit one-based selection; required for pal-banked')
     parser.add_argument("--output", type=Path, required=True, help="JSON report path; writes go in a sibling .writes.json file")
     args = parser.parse_args()
     writes_path = args.output.with_suffix(".writes.json")
     require(args.output.resolve() != args.sid.resolve() and writes_path.resolve() != args.sid.resolve(), "Output must not overwrite the input")
     require(not any(path.exists() or path.is_symlink() for path in (args.output, writes_path)), "Audit outputs already exist; choose a new output path")
-    report, writes = audit_psid(args.sid.read_bytes(), args.ticks)
+    report, writes = audit_psid(args.sid.read_bytes(), args.ticks, profile=args.profile, subtune=args.subtune)
     evidence = ((args.output, json.dumps(report, indent=2) + "\n"), (writes_path, json.dumps(writes, separators=(",", ":")) + "\n"))
     args.output.parent.mkdir(parents=True, exist_ok=True)
     created = []
