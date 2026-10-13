@@ -22,6 +22,7 @@ Use the [project overview](../README.md) for SID Song Crafter's purpose and curr
 
 ## Verify execution
 
+- [Prepare a reference intake](workflows/reference-intake.md): pin source and subtune, select a supported execution route, render bounded passages and prepare labelled source comparisons.
 - [Audit a callable PSID](validation/psid-audit.md): independent CPU execution and ordered register writes.
 - [Trace CIA-driven playback](validation/cia-tracing.md): real timer IRQs, latch changes, host assumptions and callable source observation.
 - [Check CPU instruction costs](validation/cpu-timing.md): verified opcode timings, the shared CPU adapter and corrections to retained evidence.

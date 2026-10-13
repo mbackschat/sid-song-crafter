@@ -80,7 +80,96 @@ def write_three_voice_sid(path):
     path.write_bytes(header + init + b"\x60")
 
 
+def write_two_subtune_sid(path, default_song):
+    # Hand-coded init exposes its incoming A and chooses pitch independently of the song compiler.
+    init = bytearray(bytes.fromhex("8D 05 D4 AA"))
+    table_loads = []
+    for offset in (0, 1):
+        table_loads.append(len(init))
+        init.extend((0xbd, 0, 0, 0x8d, offset, 0xd4))
+    init.extend(bytes.fromhex("A9 0F 8D 18 D4 A9 F0 8D 06 D4 A9 11 8D 04 D4 60"))
+    words = [round(hz * 2**24 / (17734475 / 18)) for hz in (440, 660)]
+    tables = bytes([word & 255 for word in words] + [word >> 8 for word in words])
+    for offset, position in enumerate(table_loads):
+        struct.pack_into("<H", init, position + 1, 0x1000 + len(init) + 1 + offset * 2)
+    header = bytearray(0x7c)
+    header[:4] = b"PSID"
+    struct.pack_into(">7HI", header, 4, 2, 0x7c, 0x1000, 0x1000, 0x1000 + len(init), 2, default_song, 0)
+    struct.pack_into(">H", header, 0x76, 0x24)
+    path.write_bytes(header + init + b"\x60" + tables)
+
+
 class HeadlessRenderTest(unittest.TestCase):
+    def test_explicit_subtunes_select_init_accumulator_and_pitch_and_preserve_default_output(self):
+        for default_song in (1, 2):
+            with self.subTest(default_song=default_song), tempfile.TemporaryDirectory() as directory:
+                sid = Path(directory) / "two-subtunes.sid"
+                write_two_subtune_sid(sid, default_song)
+                rendered = {}
+                for subtune in (None, 1, 2):
+                    output = Path(directory) / f"subtune-{subtune}.wav"
+                    command = [str(RENDERER), str(sid), str(output), "0.5"]
+                    if subtune is not None:
+                        command += ["--subtune", str(subtune)]
+                    result = subprocess.run(command, capture_output=True, text=True, timeout=20)
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    selected = default_song if subtune is None else subtune
+                    self.assertIn(f"subtune {selected} of 2", result.stdout)
+                    samples = read_samples(output)
+                    self.assertEqual(len(samples), RATE // 2)
+                    middle = samples[RATE // 4:]
+                    self.assertGreater(rms(middle), 100)
+                    self.assertAlmostEqual(frequency(middle), {1: 440, 2: 660}[selected], delta=3)
+                    rows = Path(str(output) + ".registers.tsv").read_text().splitlines()[1:]
+                    self.assertTrue(rows)
+                    self.assertTrue(all(bytes.fromhex(row.split("\t")[1])[5] == selected - 1 for row in rows))
+                    rendered[subtune] = output.read_bytes()
+                self.assertEqual(rendered[None], rendered[default_song])
+                self.assertNotEqual(rendered[1], rendered[2])
+
+    def test_subtune_and_voice_options_work_in_either_order(self):
+        with tempfile.TemporaryDirectory() as directory:
+            sid = Path(directory) / "two-subtunes.sid"
+            write_two_subtune_sid(sid, 1)
+            for voices in ("1", "none"):
+                rendered = []
+                for order in (0, 1):
+                    output = Path(directory) / f"order-{voices}-{order}.wav"
+                    options = ["--subtune", "2", "--voices", voices] if order == 0 else ["--voices", voices, "--subtune", "2"]
+                    result = subprocess.run([str(RENDERER), str(sid), str(output), "0.5", *options],
+                                            capture_output=True, text=True, timeout=20)
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    self.assertIn("subtune 2 of 2", result.stdout)
+                    middle = read_samples(output)[RATE // 4:]
+                    if voices == "none":
+                        self.assertLess(rms(middle), 1)
+                    else:
+                        self.assertGreater(rms(middle), 100)
+                        self.assertAlmostEqual(frequency(middle), 660, delta=3)
+                    rendered.append(output.read_bytes())
+                self.assertEqual(*rendered)
+
+    def test_subtune_options_reject_invalid_duplicate_and_unknown_arguments_without_truncation(self):
+        options = [["--subtune", value] for value in
+                   ("0", "3", "-1", "+1", "1.0", "", " 1", "1 ", "1junk", "nan", "42949672960")]
+        options += [["--subtune"], ["--voices"], ["--subtune", "1", "--subtune", "2"],
+                    ["--voices", "1", "--voices", "2"], ["--song", "1"],
+                    ["--subtune", "1", "--unknown", "2"]]
+        with tempfile.TemporaryDirectory() as directory:
+            sid, output = Path(directory) / "two-subtunes.sid", Path(directory) / "preserved.wav"
+            write_two_subtune_sid(sid, 1)
+            trace = Path(str(output) + ".registers.tsv")
+            for arguments in options:
+                with self.subTest(arguments=arguments):
+                    output.write_bytes(b"Existing audio")
+                    trace.write_bytes(b"Existing trace")
+                    result = subprocess.run([str(RENDERER), str(sid), str(output), "0.1", *arguments],
+                                            capture_output=True, text=True, timeout=20)
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertTrue(result.stderr.strip())
+                    self.assertEqual(output.read_bytes(), b"Existing audio")
+                    self.assertEqual(trace.read_bytes(), b"Existing trace")
+
     def test_renderer_honors_6581_declarations_for_one_and_two_chips(self):
         for count, fixture, flags in ((1, write_a4_sid, 0x14), (2, write_two_sid_fixture, 0x54)):
             with self.subTest(count=count), tempfile.TemporaryDirectory() as directory:

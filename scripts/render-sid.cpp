@@ -11,6 +11,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <limits>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -66,11 +67,59 @@ static std::array<bool, 3> selected_voices(const std::string &list) {
     throw std::runtime_error("Voices must not be empty or end with a comma");
 }
 
+static unsigned int selected_subtune(const std::string &value) {
+    unsigned int song = 0;
+    if (value.empty()) throw std::runtime_error("Subtune must be a positive one-based integer");
+    for (char character : value) {
+        if (character < '0' || character > '9') throw std::runtime_error("Subtune must be a positive one-based integer");
+        const unsigned int digit = character - '0';
+        if (song > (std::numeric_limits<unsigned int>::max() - digit) / 10) {
+            throw std::runtime_error("Subtune is outside the supported integer range");
+        }
+        song = song * 10 + digit;
+    }
+    if (song == 0) throw std::runtime_error("Subtune must be a positive one-based integer");
+    return song;
+}
+
+enum class RenderOption { Voices, Subtune };
+
+struct RenderOptions {
+    bool voice_diagnostic = false;
+    bool explicit_subtune = false;
+    unsigned int subtune = 0;
+    std::array<bool, 3> voices{true, true, true};
+};
+
+static RenderOptions parse_options(int argc, char **argv) {
+    if (argc < 4) throw std::runtime_error("Usage: render-sid INPUT.sid OUTPUT.wav SECONDS [--voices 1,2,3|none] [--subtune N] (PAL, 0 < seconds <= 600; subtune is one-based; voices is a one-SID control-mask diagnostic)");
+    RenderOptions options;
+    for (int index = 4; index < argc; index += 2) {
+        const std::string name = argv[index];
+        RenderOption option;
+        if (name == "--voices") option = RenderOption::Voices;
+        else if (name == "--subtune") option = RenderOption::Subtune;
+        else throw std::runtime_error("Unknown renderer option: " + name);
+        if (index + 1 == argc) throw std::runtime_error("Renderer option requires a value: " + name);
+        switch (option) {
+            case RenderOption::Voices:
+                if (options.voice_diagnostic) throw std::runtime_error("Duplicate --voices option");
+                options.voices = selected_voices(argv[index + 1]);
+                options.voice_diagnostic = true;
+                break;
+            case RenderOption::Subtune:
+                if (options.explicit_subtune) throw std::runtime_error("Duplicate --subtune option");
+                options.subtune = selected_subtune(argv[index + 1]);
+                options.explicit_subtune = true;
+                break;
+        }
+    }
+    return options;
+}
+
 int main(int argc, char **argv) {
     try {
-        if (argc != 4 && (argc != 6 || std::string(argv[4]) != "--voices")) throw std::runtime_error("Usage: render-sid INPUT.sid OUTPUT.wav SECONDS [--voices 1,2,3|none] (PAL, 0 < seconds <= 600; voices is a one-SID control-mask diagnostic)");
-        const bool voice_diagnostic = argc == 6;
-        const std::array<bool, 3> voices = voice_diagnostic ? selected_voices(argv[5]) : std::array<bool, 3>{true, true, true};
+        const RenderOptions options = parse_options(argc, argv);
         size_t parsed = 0;
         const double seconds = std::stod(argv[3], &parsed);
         if (parsed != std::string(argv[3]).size() || !std::isfinite(seconds) || seconds <= 0 || seconds > 600) {
@@ -84,7 +133,10 @@ int main(int argc, char **argv) {
         SidTune tune(argv[1]);
         if (!tune.getStatus()) throw std::runtime_error(tune.statusString());
         // SidTune starts unselected; psiddrv passes currentSong()-1 to init (libsidplayfp v3.1.1 src/psiddrv.cpp).
-        if (tune.selectSong(0) == 0) throw std::runtime_error("Unable to select the SID's default subtune");
+        if (options.explicit_subtune && options.subtune > tune.getInfo()->songs()) {
+            throw std::runtime_error("Subtune exceeds the SID's declared song count");
+        }
+        if (tune.selectSong(options.subtune) == 0) throw std::runtime_error("Unable to select the SID subtune");
         const SidTuneInfo *tune_info = tune.getInfo();
         const unsigned int sid_count = tune_info->sidChips();
         unsigned int channels;
@@ -105,7 +157,7 @@ int main(int argc, char **argv) {
             default:
                 throw std::runtime_error("This renderer supports one or two SID chips");
         }
-        if (voice_diagnostic && sid_count != 1) throw std::runtime_error("Voice diagnostics require one SID chip");
+        if (options.voice_diagnostic && sid_count != 1) throw std::runtime_error("Voice diagnostics require one SID chip");
         sidplayfp player;
         SidConfig config = player.config();
         config.frequency = rate;
@@ -117,9 +169,9 @@ int main(int argc, char **argv) {
         config.sidEmulation = &builder;
         if (!player.config(config) || !player.load(&tune)) throw std::runtime_error(player.error());
         if (player.installedSIDs() != sid_count) throw std::runtime_error("Installed SID count differs from the declared tune");
-        if (voice_diagnostic) {
+        if (options.voice_diagnostic) {
             // v3.1.1 sidemu masks GATE/waveform writes; true mutes despite the public header's enable wording: https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/sidemu.cpp.
-            for (unsigned int voice = 0; voice < voices.size(); ++voice) player.mute(0, voice, !voices[voice]);
+            for (unsigned int voice = 0; voice < options.voices.size(); ++voice) player.mute(0, voice, !options.voices[voice]);
         }
         player.initMixer(channels == 2);
         // v3.1.1 returns samples despite the header saying bytes: https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/player.cpp#L591.
@@ -180,7 +232,8 @@ int main(int argc, char **argv) {
         trace.close();
         if (!output || !trace) throw std::runtime_error("Unable to finish output files");
         std::cout << "libsidplayfp " << LIBSIDPLAYFP_VERSION_MAJ << '.' << LIBSIDPLAYFP_VERSION_MIN << '.' << LIBSIDPLAYFP_VERSION_LEV
-                  << " / SIDLite: " << written << (channels == 1 ? " mono PCM16 samples" : " stereo PCM16 frames") << " at " << rate << " Hz\n";
+                  << " / SIDLite: " << written << (channels == 1 ? " mono PCM16 samples" : " stereo PCM16 frames") << " at " << rate
+                  << " Hz, subtune " << tune_info->currentSong() << " of " << tune_info->songs() << '\n';
         return 0;
     } catch (const std::exception &error) {
         std::cerr << error.what() << '\n';

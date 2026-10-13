@@ -2,7 +2,7 @@
 
 [The renderer](../../scripts/render-sid.cpp) uses pinned libsidplayfp 3.1.1/SIDLite to write PCM16 audio at 44100 Hz without a window: mono for one SID, or stereo with one chip per channel for the supported two-SID profile. Its `.registers.tsv` sidecar records last-written SID register snapshots after each renderer iteration, timestamped by the emulation library. Snapshots are not individual bus writes or one-to-one PAL frames; use [the CPU audit](../validation/psid-audit.md) for ordered writes.
 
-The [audio integration tests](../../tests/render_audio_test.py) verify independent A4 and two-chip fixtures, default-subtune selection, separate chip audibility/routing, the opening Für Elise pitches/onsets and the ending. The [song guide](../songs/first-song.md) identifies the editable opening excerpt and its PRG/SID exports; [native instrument trials](instrument-trials.md) apply the same renderer to a different driver.
+The [audio integration tests](../../tests/render_audio_test.py) verify independent A4, two-subtune and two-chip fixtures, default and explicit subtune selection, separate chip audibility/routing, the opening Für Elise pitches/onsets and the ending. The [song guide](../songs/first-song.md) identifies the editable opening excerpt and its PRG/SID exports; [native instrument trials](instrument-trials.md) apply the same renderer to a different driver.
 
 ## Pinned library setup
 
@@ -22,7 +22,7 @@ The extracted dynamic library retains an unrelocated `@@HOMEBREW_PREFIX@@` insta
 
 ## Renderer contract and API findings
 
-The renderer accepts `INPUT.sid OUTPUT.wav SECONDS` and permits durations greater than zero through 600 seconds. One-SID output remains mono with PAL forced, the declared chip model honoured and MOS8580 as the fallback. An optional one-SID diagnostic selector, `--voices 1,3`, retains the named tone voices; its limits are described below. Two-SID output requires PSID v3, explicit PAL, VBI timing for every subtune, two declared same-model MOS6581 or MOS8580 chips at `$D400/$D420`, and no MUS/PlaySID flags. Other second-chip addresses, malformed or duplicate address declarations, a third chip, mixed chip models and other two-chip timing/version contracts are rejected before output creation. A fixed power-on delay keeps startup reproducible. Output contains exactly the requested number of sample frames rounded to the nearest frame, with a minimum of one; stereo frames contain two interleaved samples. Rebuild the executable after changing its source.
+The renderer accepts `INPUT.sid OUTPUT.wav SECONDS [--subtune N] [--voices 1,3]` and permits durations greater than zero through 600 seconds. `--subtune N` selects a one-based subtune within the loaded tune's song count; omission selects the header default. Both options may appear in either order, once each. Zero, out-of-range or malformed subtunes, duplicate options and unknown options are rejected before creating or truncating the WAV and register sidecar. The console receipt reports the selected subtune and total count. One-SID output remains mono with PAL forced, the declared chip model honoured and MOS8580 as the fallback. The optional one-SID diagnostic selector retains the named tone voices; its limits are described below. Two-SID output requires PSID v3, explicit PAL, VBI timing for every subtune, two declared same-model MOS6581 or MOS8580 chips at `$D400/$D420`, and no MUS/PlaySID flags. Other second-chip addresses, malformed or duplicate address declarations, a third chip, mixed chip models and other two-chip timing/version contracts are rejected before output creation. A fixed power-on delay keeps startup reproducible. Output contains exactly the requested number of sample frames rounded to the nearest frame, with a minimum of one; stereo frames contain two interleaved samples. Rebuild the executable after changing its source.
 
 Two-SID stereo uses the documented per-chip `buffers()` API at unity gain: chip 0 is left and chip 1 is right, with no crossfeed or summing. The pinned library's [default stereo matrix](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/simpleMixer.h) mixes half of each chip into the opposite channel, so this renderer interleaves raw chip buffers instead. Independent 440/660 Hz fixtures and versions with either chip muted verify both channels and the absence of crossfeed; stereo output is not a duplicate of a mono render. The mono mixer path is unchanged.
 
@@ -30,12 +30,22 @@ The mono snapshot header remains `time_ms\tregisters_hex`. Two-SID snapshots app
 
 Two libsidplayfp integration rules are required:
 
-- Call `tune.selectSong(0)` before `player.load()` to select the header's default subtune. [`SidTuneInfoImpl`](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/sidtune/SidTuneInfoImpl.h) starts `currentSong` at zero, and [`psiddrv`](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/psiddrv.cpp) passes `currentSong - 1` to init. Omitting selection passes `$FF`; a player that ignores A can hide the mistake. Independent fixtures for default songs 1 and 2 guard this contract.
+- Call `tune.selectSong(0)` before `player.load()` for the header default, or `tune.selectSong(N)` for an explicitly validated one-based selection. [`SidTuneInfoImpl`](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/sidtune/SidTuneInfoImpl.h) starts `currentSong` at zero, and [`psiddrv`](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/psiddrv.cpp) passes `currentSong - 1` to init. Omitting selection passes `$FF`; a player that ignores A can hide the mistake. [`SidTuneBase::selectSong`](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/sidtune/SidTuneBase.cpp) falls back to the default for an out-of-range number, so reject an invalid explicit choice before calling it. Independent fixtures for default songs 1 and 2 and explicit choices verify init A, distinct PCM pitches and identical omitted/explicit-default output.
 - Treat `getBufSize()` as a sample count in 3.1.1 despite its header's byte description. [The pinned implementation](https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/player.cpp#L591) returns samples. Allocate that many `short` values and check capacity before mixing; dividing by `sizeof(short)` underallocates the buffer.
 
 Measure ending silence using AC energy after subtracting the mean. A constant SIDLite DC offset is not continuing oscillator sound. Host speaker playback is a separate check: the restricted host can reject `afplay` with `AudioQueueStart failed (-66680)` even when file rendering succeeds.
 
 ## Render and validate
+
+### Select a subtune
+
+Pass `--subtune 1` for an explicit first subtune, or another valid one-based number for the desired song. Omitting the option retains default playback. For example, after obtaining the pinned Rambo reference through [local setup](../setup/local-setup.md):
+
+```sh
+.local/bin/render-sid .local/rambo-source.sid build/rambo-loader-first.wav 6 --subtune 1
+```
+
+Use the selected subtune in render provenance and listening recipes. Subtune selection can be combined with one-SID diagnostics, for example `--subtune 1 --voices 1,3`; the diagnostic's oscillator/filter limitations still apply.
 
 ### Diagnostic voice selection
 

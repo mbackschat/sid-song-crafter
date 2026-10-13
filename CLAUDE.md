@@ -12,6 +12,8 @@ Keep one musical case active, in the [plan's delivery order](docs/research/study
 
 For each of the six historical composer studies, complete the [required contrasting-reference check](docs/research/study-plan.md#required-contrasting-references-for-the-six-composers). Preserve accepted primary deliverables, but keep composer-wide claims provisional until a second tune verifies or narrows them.
 
+Use the [reference-intake workflow](docs/workflows/reference-intake.md) for repeatable source checks, explicit subtune selection, bounded execution/rendering and labelled source comparisons. Record callable CPU writes and renderer snapshots as different evidence. Successful intake prepares the study; it does not settle mechanism claims or listening acceptance.
+
 Before additional analysis, name the unresolved question, the deliverable or decision it blocks, and the evidence that will settle it. Once that evidence passes, advance to the next delivery stage. Reopen only for changed inputs, a demonstrated mismatch or an explicit expansion of the supported contract. Follow the [delivery and reuse workflow](docs/workflows/decoded-song-workflow.md#deliver-one-musical-case) without weakening required execution or full-form checks.
 
 Use a familiar, source-backed phrase as the default transfer test, with a same-material reference. This separates instrument usefulness from the quality of a newly invented composition. Original composition remains valuable but is a separate musical judgment, not a prerequisite for every instrument study.

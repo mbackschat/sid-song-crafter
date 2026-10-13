@@ -5,6 +5,7 @@ Choose tools by their supported contract. A song or composer name does not itsel
 ## Supported workflows and shared infrastructure
 
 - [Listening packages](../docs/workflows/listening-package.md): recipe execution, verified stage reuse, timings, signal checks and audio links.
+- [Reference intake](../docs/workflows/reference-intake.md): explicit source/subtune selection, execution admission, bounded traces/renders and source comparisons through the same recipe runner.
 - [Song workflow](../docs/workflows/song-workflow.md) and [native SID-Wizard workflow](../docs/workflows/native-song-workflow.md): editable arrangement, export and verification.
 - [Audio comparisons](../docs/workflows/audio-comparisons.md): PCM inspection and original-preserving A/B windows.
 - [CPU auditing](../docs/validation/psid-audit.md), [CIA tracing](../docs/validation/cia-tracing.md) and [assembler](sid_assembler.py): execution and timing infrastructure.
