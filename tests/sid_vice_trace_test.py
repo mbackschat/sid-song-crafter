@@ -1,9 +1,11 @@
 import importlib.util
+import io
 import json
 from pathlib import Path
 import tempfile
 import sys
 import unittest
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -72,6 +74,38 @@ RTS
 
 
 class SidViceTraceTest(unittest.TestCase):
+    def test_process_timeout_keeps_default_and_forwards_positive_override(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            sid, oracle = root / 'fixture.sid', root / 'oracle.json'
+            sid.write_bytes(sid_fixture())
+            oracle.write_text('[]')
+            for name, options, seconds in (('default', {}, 60), ('override', {'timeout': 180.5}, 180.5)):
+                with self.subTest(name=name), patch.object(trace.subprocess, 'run',
+                        side_effect=trace.subprocess.TimeoutExpired('VICE fixture', seconds)) as runner:
+                    with self.assertRaises(trace.subprocess.TimeoutExpired):
+                        trace.run_trace(sid, oracle, root / name, 0, 1, Path('/tmp/vice'), Path('/tmp/data'), **options)
+                    self.assertEqual(seconds, runner.call_args.kwargs['timeout'])
+                    self.assertFalse((root / name / 'study.json').exists())
+
+    def test_invalid_timeouts_fail_before_input_read_or_output_creation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for seconds in (0, -1, True, float('nan'), float('inf'), '180'):
+                output = root / 'output'
+                with self.subTest(timeout=seconds), self.assertRaisesRegex(ValueError, 'Timeout'):
+                    trace.run_trace(root / 'absent.sid', root / 'absent.json', output, 0, 1,
+                                    Path('/tmp/vice'), Path('/tmp/data'), timeout=seconds)
+                self.assertFalse(output.exists())
+
+    def test_cli_timeout_seconds_reach_the_public_runner(self):
+        arguments = ['trace-sid-vice.py', 'fixture.sid', '--oracle', 'oracle.json', '--output', 'fresh',
+                     '--timeout', '180.5']
+        with patch.object(sys, 'argv', arguments), patch.object(trace, 'run_trace', return_value={}) as runner:
+            with patch('sys.stdout', new_callable=io.StringIO):
+                trace.main()
+        self.assertEqual(180.5, runner.call_args.kwargs['timeout'])
+
     def test_selected_banked_profile_requires_explicit_selection_without_mutating_header(self):
         data = banked_fixture()
         original = bytes(data)

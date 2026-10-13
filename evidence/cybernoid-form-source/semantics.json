@@ -1,0 +1,1297 @@
+{
+  "schemaVersion": 1,
+  "classification": "Independent bounded score-command interpretation; not a complete form or synthesis decoder",
+  "inputs": {
+    "source": {
+      "path": ".local/research/cybernoid-ii/Cybernoid_II.sid",
+      "sha256": "41f338f44b4f54e351e672156ee0e2a60c8437eb24645db3f9d4abfbb0cff192"
+    },
+    "listing": {
+      "path": ".local/downloads/tel-cybernoid2.asm",
+      "sha256": "119b8cb1ecaf6a9700d1847c9879fa78d50229345dccaaa4f555d8354b73fe66",
+      "revision": "f215174fc4c983674808fcd47bc506f96b3d2d04"
+    },
+    "canonical64Trace": {
+      "path": "evidence/cybernoid-title-instructions/opening.trace.json.gz",
+      "compressedSha256": "4d2427d09244af5a56f7afeda21696ff60c4107aae19196fb163008622641cef",
+      "decodedSha256": "a2ac87f2b73424a27145eaef9c3720786f78ee4d4e83b6f4642891068413753e",
+      "firstCall": 0,
+      "lastCallInclusive": 63,
+      "selectedSubtune": 1
+    },
+    "navigation": {
+      "path": "evidence/cybernoid-title-instructions/form-navigation.json.gz",
+      "compressedSha256": "be826e6a026074c3e618a69120b1a1a4b447f3b40326b83ea68029d04928c71c"
+    }
+  },
+  "convention": {
+    "voiceIndex": "X0..2 means SID voices1..3; source processes2,1,0",
+    "instructionEvidence": "Registers and operandValueBefore are pre-instruction; store values follow sourceA and documented NMOS semantics. No post-state snapshot or bus timestamp is inferred.",
+    "hexadecimalFields": "PC/address/pattern-index/token string fields are hexadecimal; numeric calls and parameter values are JSON integers."
+  },
+  "commandFamilies": [
+    {
+      "name": "pattern reference",
+      "context": "Order stream",
+      "tokens": "00..3F",
+      "behavior": "Double token into Y; read little-endian pointer atAF01+2*token into scratch46/47. Pattern cursor is retained until an end path resets it.",
+      "archivePcs": [
+        "A7A3",
+        "A7A5",
+        "A7AA",
+        "A7AD"
+      ],
+      "state": {
+        "pointerTable": "AF01",
+        "scratch": [
+          "0046",
+          "0047"
+        ],
+        "patternCursor": "A630+X"
+      },
+      "basis": "Static pinned archive instructions, interpreted using the recovered listing; execution below is separately scoped.",
+      "executed64": {
+        "scope": "Executed title calls0..63 only",
+        "instructionCount": 20,
+        "traceRecordIndices": [
+          82,
+          84,
+          86,
+          87,
+          252,
+          254,
+          256,
+          257,
+          454,
+          456,
+          458,
+          459,
+          15789,
+          15791,
+          15793,
+          15794,
+          30583,
+          30585,
+          30587,
+          30588
+        ],
+        "calls": [
+          0,
+          24,
+          48
+        ],
+        "interpretation": "Checkpoint presence may include a token-family comparison whose branch was not taken. Read constraints/examples for demonstrated commands; record indices link to complete canonical instruction evidence."
+      },
+      "constraints": "Only indices01,02,03 are selected in the64-call opening.",
+      "staticArchiveInstructions": [
+        {
+          "pc": "A7A3",
+          "bytes": "0a",
+          "assembly": "ASL A"
+        },
+        {
+          "pc": "A7A5",
+          "bytes": "b901af",
+          "assembly": "LDA $af01,Y"
+        },
+        {
+          "pc": "A7AA",
+          "bytes": "b902af",
+          "assembly": "LDA $af02,Y"
+        },
+        {
+          "pc": "A7AD",
+          "bytes": "8547",
+          "assembly": "STA $47"
+        }
+      ]
+    },
+    {
+      "name": "additional pattern repetitions",
+      "context": "Order stream",
+      "tokens": "40..5F",
+      "behavior": "Store token&3F as additional repeat count, increment order cursor, and immediately read another order byte.",
+      "archivePcs": [
+        "A795",
+        "A797",
+        "A79A",
+        "A79D"
+      ],
+      "state": {
+        "repeatCount": "A684+X",
+        "orderCursor": "A62D+X"
+      },
+      "basis": "Static pinned archive instructions, interpreted using the recovered listing; execution below is separately scoped.",
+      "executed64": {
+        "scope": "Executed title calls0..63 only",
+        "instructionCount": 4,
+        "traceRecordIndices": [
+          69,
+          70,
+          71,
+          72
+        ],
+        "calls": [
+          0
+        ],
+        "interpretation": "Checkpoint presence may include a token-family comparison whose branch was not taken. Read constraints/examples for demonstrated commands; record indices link to complete canonical instruction evidence."
+      },
+      "constraints": "An FF pattern end with repeat>0 decrements it and retains the order cursor; a countN normally givesN+1 pattern passes.",
+      "staticArchiveInstructions": [
+        {
+          "pc": "A795",
+          "bytes": "293f",
+          "assembly": "AND #$3f"
+        },
+        {
+          "pc": "A797",
+          "bytes": "9d84a6",
+          "assembly": "STA $a684,X"
+        },
+        {
+          "pc": "A79A",
+          "bytes": "fe2da6",
+          "assembly": "INC $a62d,X"
+        },
+        {
+          "pc": "A79D",
+          "bytes": "4c51a7",
+          "assembly": "JMP $a751"
+        }
+      ]
+    },
+    {
+      "name": "instrument index offset",
+      "context": "Order stream",
+      "tokens": "60..7F",
+      "behavior": "Store token&0F; increment order cursor and immediately read another order byte.",
+      "archivePcs": [
+        "A78A",
+        "A78C",
+        "A78F",
+        "A792"
+      ],
+      "state": {
+        "instrumentOffset": "A699+X"
+      },
+      "basis": "Static pinned archive instructions, interpreted using the recovered listing; execution below is separately scoped.",
+      "executed64": {
+        "scope": "Executed title calls0..63 only",
+        "instructionCount": 4,
+        "traceRecordIndices": [
+          36,
+          37,
+          38,
+          39
+        ],
+        "calls": [
+          0
+        ],
+        "interpretation": "Checkpoint presence may include a token-family comparison whose branch was not taken. Read constraints/examples for demonstrated commands; record indices link to complete canonical instruction evidence."
+      },
+      "constraints": "The C0..DF pattern command adds this byte before later three-ASL record indexing; do not assume an unbounded sound bank.",
+      "staticArchiveInstructions": [
+        {
+          "pc": "A78A",
+          "bytes": "290f",
+          "assembly": "AND #$0f"
+        },
+        {
+          "pc": "A78C",
+          "bytes": "9d99a6",
+          "assembly": "STA $a699,X"
+        },
+        {
+          "pc": "A78F",
+          "bytes": "fe2da6",
+          "assembly": "INC $a62d,X"
+        },
+        {
+          "pc": "A792",
+          "bytes": "4c51a7",
+          "assembly": "JMP $a751"
+        }
+      ]
+    },
+    {
+      "name": "pitch-table offset",
+      "context": "Order stream",
+      "tokens": "80..FD",
+      "behavior": "After FE/FF terminal checks, store token&1F; increment order cursor and continue reading.",
+      "archivePcs": [
+        "A778",
+        "A77A",
+        "A77D",
+        "A780"
+      ],
+      "state": {
+        "pitchOffset": "A661+X"
+      },
+      "basis": "Static pinned archive instructions, interpreted using the recovered listing; execution below is separately scoped.",
+      "executed64": {
+        "scope": "Executed title calls0..63 only",
+        "instructionCount": 12,
+        "traceRecordIndices": [
+          51,
+          52,
+          53,
+          54,
+          239,
+          240,
+          241,
+          242,
+          441,
+          442,
+          443,
+          444
+        ],
+        "calls": [
+          0
+        ],
+        "interpretation": "Checkpoint presence may include a token-family comparison whose branch was not taken. Read constraints/examples for demonstrated commands; record indices link to complete canonical instruction evidence."
+      },
+      "constraints": "This is unsigned byte arithmetic. Do not sign-extend the five-bit field or assign a MIDI key without the actual frequency tables.",
+      "staticArchiveInstructions": [
+        {
+          "pc": "A778",
+          "bytes": "291f",
+          "assembly": "AND #$1f"
+        },
+        {
+          "pc": "A77A",
+          "bytes": "9d61a6",
+          "assembly": "STA $a661,X"
+        },
+        {
+          "pc": "A77D",
+          "bytes": "fe2da6",
+          "assembly": "INC $a62d,X"
+        },
+        {
+          "pc": "A780",
+          "bytes": "4c51a7",
+          "assembly": "JMP $a751"
+        }
+      ]
+    },
+    {
+      "name": "voice-local order wrap",
+      "context": "Order stream",
+      "tokens": "FF",
+      "behavior": "Set row countdown, order cursor and pattern cursor to0; immediately reread this voice order from the beginning.",
+      "archivePcs": [
+        "A75B",
+        "A75F",
+        "A761",
+        "A764",
+        "A767",
+        "A76A"
+      ],
+      "state": {
+        "cleared": [
+          "A633+X",
+          "A62D+X",
+          "A630+X"
+        ]
+      },
+      "basis": "Static pinned archive instructions, interpreted using the recovered listing; execution below is separately scoped.",
+      "executed64": {
+        "scope": "Executed title calls0..63 only",
+        "instructionCount": 10,
+        "traceRecordIndices": [
+          26,
+          44,
+          59,
+          77,
+          232,
+          247,
+          434,
+          449,
+          15784,
+          30578
+        ],
+        "calls": [
+          0,
+          24,
+          48
+        ],
+        "interpretation": "Checkpoint presence may include a token-family comparison whose branch was not taken. Read constraints/examples for demonstrated commands; record indices link to complete canonical instruction evidence."
+      },
+      "constraints": "Does not reset the complete instrument/global state; not evidence of a synchronized song recurrence. Not executed in0..63.",
+      "staticArchiveInstructions": [
+        {
+          "pc": "A75B",
+          "bytes": "c9ff",
+          "assembly": "CMP #$ff"
+        },
+        {
+          "pc": "A75F",
+          "bytes": "a900",
+          "assembly": "LDA #$00"
+        },
+        {
+          "pc": "A761",
+          "bytes": "9d33a6",
+          "assembly": "STA $a633,X"
+        },
+        {
+          "pc": "A764",
+          "bytes": "9d2da6",
+          "assembly": "STA $a62d,X"
+        },
+        {
+          "pc": "A767",
+          "bytes": "9d30a6",
+          "assembly": "STA $a630,X"
+        },
+        {
+          "pc": "A76A",
+          "bytes": "4c51a7",
+          "assembly": "JMP $a751"
+        }
+      ]
+    },
+    {
+      "name": "global stop",
+      "context": "Order stream",
+      "tokens": "FE",
+      "behavior": "BranchA759\u2192A70F, set immediate play flagA717 to1, jump toA704 and zero D415 down through D400.",
+      "archivePcs": [
+        "A757",
+        "A759",
+        "A70F",
+        "A711",
+        "A714",
+        "A704",
+        "A708",
+        "A71A"
+      ],
+      "state": {
+        "playFlag": "A717",
+        "clearInclusive": [
+          "D400",
+          "D415"
+        ],
+        "preservedByThisClear": [
+          "D416",
+          "D417",
+          "D418"
+        ]
+      },
+      "basis": "Static pinned archive instructions, interpreted using the recovered listing; execution below is separately scoped.",
+      "executed64": {
+        "scope": "Executed title calls0..63 only",
+        "instructionCount": 20,
+        "traceRecordIndices": [
+          24,
+          25,
+          42,
+          43,
+          57,
+          58,
+          75,
+          76,
+          230,
+          231,
+          245,
+          246,
+          432,
+          433,
+          447,
+          448,
+          15782,
+          15783,
+          30576,
+          30577
+        ],
+        "calls": [
+          0,
+          24,
+          48
+        ],
+        "interpretation": "Checkpoint presence may include a token-family comparison whose branch was not taken. Read constraints/examples for demonstrated commands; record indices link to complete canonical instruction evidence."
+      },
+      "constraints": "Static path only in the64-call window. Future stopped returns atA71A and audible release require executed confirmation.",
+      "staticArchiveInstructions": [
+        {
+          "pc": "A757",
+          "bytes": "c9fe",
+          "assembly": "CMP #$fe"
+        },
+        {
+          "pc": "A759",
+          "bytes": "f0b4",
+          "assembly": "BEQ $a70f"
+        },
+        {
+          "pc": "A70F",
+          "bytes": "a901",
+          "assembly": "LDA #$01"
+        },
+        {
+          "pc": "A711",
+          "bytes": "8d17a7",
+          "assembly": "STA $a717"
+        },
+        {
+          "pc": "A714",
+          "bytes": "d0ee",
+          "assembly": "BNE $a704"
+        },
+        {
+          "pc": "A704",
+          "bytes": "a900",
+          "assembly": "LDA #$00"
+        },
+        {
+          "pc": "A708",
+          "bytes": "9d00d4",
+          "assembly": "STA $d400,X"
+        },
+        {
+          "pc": "A71A",
+          "bytes": "60",
+          "assembly": "RTS"
+        }
+      ]
+    },
+    {
+      "name": "pitch byte",
+      "context": "Pattern note context after applicable prefixes",
+      "tokens": "00..6F",
+      "behavior": "Add pitch offset modulo256, retain index atA63F+X and fetch low/high frequency bytes atAE3F/AE96+index.",
+      "archivePcs": [
+        "A87F",
+        "A882",
+        "A885",
+        "A889",
+        "A893"
+      ],
+      "state": {
+        "pitchIndex": "A63F+X",
+        "frequencyLowTable": "AE3F",
+        "frequencyHighTable": "AE96"
+      },
+      "basis": "Static pinned archive instructions, interpreted using the recovered listing; execution below is separately scoped.",
+      "executed64": {
+        "scope": "Executed title calls0..63 only",
+        "instructionCount": 25,
+        "traceRecordIndices": [
+          143,
+          145,
+          146,
+          148,
+          152,
+          345,
+          347,
+          348,
+          350,
+          354,
+          549,
+          551,
+          552,
+          554,
+          558,
+          15822,
+          15824,
+          15825,
+          15827,
+          15831,
+          30644,
+          30646,
+          30647,
+          30649,
+          30653
+        ],
+        "calls": [
+          0,
+          24,
+          48
+        ],
+        "interpretation": "Checkpoint presence may include a token-family comparison whose branch was not taken. Read constraints/examples for demonstrated commands; record indices link to complete canonical instruction evidence."
+      },
+      "constraints": "00 is still a pitch byte here, not an unconditional rest. Gate/silence belongs to the selected sound and writer state.",
+      "staticArchiveInstructions": [
+        {
+          "pc": "A87F",
+          "bytes": "a543",
+          "assembly": "LDA $43"
+        },
+        {
+          "pc": "A882",
+          "bytes": "7d61a6",
+          "assembly": "ADC $a661,X"
+        },
+        {
+          "pc": "A885",
+          "bytes": "9d3fa6",
+          "assembly": "STA $a63f,X"
+        },
+        {
+          "pc": "A889",
+          "bytes": "b93fae",
+          "assembly": "LDA $ae3f,Y"
+        },
+        {
+          "pc": "A893",
+          "bytes": "b996ae",
+          "assembly": "LDA $ae96,Y"
+        }
+      ]
+    },
+    {
+      "name": "pitch-arpeggio pointer",
+      "context": "Pattern arpeggio context",
+      "tokens": "70..7F",
+      "behavior": "Select low/high arpeggio pointer by token&0F fromAF7F/AF87, then read the following pattern byte as pitch.",
+      "archivePcs": [
+        "A858",
+        "A85C",
+        "A861",
+        "A866",
+        "A869",
+        "A86C",
+        "A871"
+      ],
+      "state": {
+        "arpLow": "A670+X",
+        "arpHigh": "A673+X"
+      },
+      "basis": "Static pinned archive instructions, interpreted using the recovered listing; execution below is separately scoped.",
+      "executed64": {
+        "scope": "Executed title calls0..63 only",
+        "instructionCount": 10,
+        "traceRecordIndices": [
+          137,
+          322,
+          324,
+          327,
+          329,
+          330,
+          331,
+          333,
+          15816,
+          30638
+        ],
+        "calls": [
+          0,
+          24,
+          48
+        ],
+        "interpretation": "Checkpoint presence may include a token-family comparison whose branch was not taken. Read constraints/examples for demonstrated commands; record indices link to complete canonical instruction evidence."
+      },
+      "constraints": "Opening executes selector72 atcall0/X1. Static listing defines eight arpeggios; source code itself does not range-check all sixteen encoded values.",
+      "staticArchiveInstructions": [
+        {
+          "pc": "A858",
+          "bytes": "c970",
+          "assembly": "CMP #$70"
+        },
+        {
+          "pc": "A85C",
+          "bytes": "290f",
+          "assembly": "AND #$0f"
+        },
+        {
+          "pc": "A861",
+          "bytes": "b97faf",
+          "assembly": "LDA $af7f,Y"
+        },
+        {
+          "pc": "A866",
+          "bytes": "9d70a6",
+          "assembly": "STA $a670,X"
+        },
+        {
+          "pc": "A869",
+          "bytes": "b987af",
+          "assembly": "LDA $af87,Y"
+        },
+        {
+          "pc": "A86C",
+          "bytes": "9d73a6",
+          "assembly": "STA $a673,X"
+        },
+        {
+          "pc": "A871",
+          "bytes": "2032a9",
+          "assembly": "JSR $a932"
+        }
+      ]
+    },
+    {
+      "name": "duration and chained extension",
+      "context": "Pattern duration context",
+      "tokens": "80..BF initially; continuation consumes a subsequent high-bit byte",
+      "behavior": "Initial duration=(token&3F)-1 modulo256. Following high-bit continuation adds token&7F; helper reads and skip-loop branches make this context-sensitive.",
+      "archivePcs": [
+        "A82E",
+        "A832",
+        "A835",
+        "A837",
+        "A83D",
+        "A845",
+        "A848",
+        "A84B",
+        "A855",
+        "A874",
+        "A877"
+      ],
+      "state": {
+        "durationReload": "A636+X",
+        "rowCountdown": "A633+X"
+      },
+      "basis": "Static pinned archive instructions, interpreted using the recovered listing; execution below is separately scoped.",
+      "executed64": {
+        "scope": "Executed title calls0..63 only",
+        "instructionCount": 35,
+        "traceRecordIndices": [
+          119,
+          121,
+          123,
+          124,
+          133,
+          139,
+          140,
+          304,
+          306,
+          308,
+          309,
+          318,
+          341,
+          342,
+          491,
+          493,
+          495,
+          496,
+          505,
+          509,
+          511,
+          512,
+          523,
+          545,
+          546,
+          15814,
+          15818,
+          15819,
+          30620,
+          30622,
+          30624,
+          30625,
+          30634,
+          30640,
+          30641
+        ],
+        "calls": [
+          0,
+          24,
+          48
+        ],
+        "interpretation": "Checkpoint presence may include a token-family comparison whose branch was not taken. Read constraints/examples for demonstrated commands; record indices link to complete canonical instruction evidence."
+      },
+      "constraints": "Opening88\u21927, A0\u219231, A0+A0\u219263 are executed. Only observed tempo reload2 proves three-call update spacing; byte/signed-decrement edge cases are not a universal duration abstraction.",
+      "staticArchiveInstructions": [
+        {
+          "pc": "A82E",
+          "bytes": "c980",
+          "assembly": "CMP #$80"
+        },
+        {
+          "pc": "A832",
+          "bytes": "293f",
+          "assembly": "AND #$3f"
+        },
+        {
+          "pc": "A835",
+          "bytes": "e901",
+          "assembly": "SBC #$01"
+        },
+        {
+          "pc": "A837",
+          "bytes": "9d36a6",
+          "assembly": "STA $a636,X"
+        },
+        {
+          "pc": "A83D",
+          "bytes": "c9e0",
+          "assembly": "CMP #$e0"
+        },
+        {
+          "pc": "A845",
+          "bytes": "297f",
+          "assembly": "AND #$7f"
+        },
+        {
+          "pc": "A848",
+          "bytes": "7d36a6",
+          "assembly": "ADC $a636,X"
+        },
+        {
+          "pc": "A84B",
+          "bytes": "9d36a6",
+          "assembly": "STA $a636,X"
+        },
+        {
+          "pc": "A855",
+          "bytes": "4ceea7",
+          "assembly": "JMP $a7ee"
+        },
+        {
+          "pc": "A874",
+          "bytes": "bd36a6",
+          "assembly": "LDA $a636,X"
+        },
+        {
+          "pc": "A877",
+          "bytes": "9d33a6",
+          "assembly": "STA $a633,X"
+        }
+      ]
+    },
+    {
+      "name": "sound-record selection",
+      "context": "Pattern instrument context",
+      "tokens": "C0..DF",
+      "behavior": "Set sound index=(token&1F)+instrumentOffset modulo256, then read a continuation byte. Normal note setup indexes records by threeASLs.",
+      "archivePcs": [
+        "A81C",
+        "A820",
+        "A823",
+        "A826",
+        "A829",
+        "A8AD",
+        "A8B0",
+        "A8B4"
+      ],
+      "state": {
+        "soundIndex": "A642+X",
+        "recordBase": "B014",
+        "recordSize": 8
+      },
+      "basis": "Static pinned archive instructions, interpreted using the recovered listing; execution below is separately scoped.",
+      "executed64": {
+        "scope": "Executed title calls0..63 only",
+        "instructionCount": 36,
+        "traceRecordIndices": [
+          104,
+          106,
+          108,
+          109,
+          110,
+          162,
+          163,
+          167,
+          289,
+          291,
+          293,
+          294,
+          295,
+          364,
+          365,
+          369,
+          476,
+          478,
+          480,
+          481,
+          482,
+          568,
+          569,
+          573,
+          15811,
+          15841,
+          15842,
+          15846,
+          30605,
+          30607,
+          30609,
+          30610,
+          30611,
+          30663,
+          30664,
+          30668
+        ],
+        "calls": [
+          0,
+          24,
+          48
+        ],
+        "interpretation": "Checkpoint presence may include a token-family comparison whose branch was not taken. Read constraints/examples for demonstrated commands; record indices link to complete canonical instruction evidence."
+      },
+      "constraints": "Opening selects indices1,4,2 for X0,1,2 respectively; matched labelled records are B01C bass, B034 arp+filt, B024 bassdrm. This does not establish later full-title roles.",
+      "staticArchiveInstructions": [
+        {
+          "pc": "A81C",
+          "bytes": "c9c0",
+          "assembly": "CMP #$c0"
+        },
+        {
+          "pc": "A820",
+          "bytes": "291f",
+          "assembly": "AND #$1f"
+        },
+        {
+          "pc": "A823",
+          "bytes": "7d99a6",
+          "assembly": "ADC $a699,X"
+        },
+        {
+          "pc": "A826",
+          "bytes": "9d42a6",
+          "assembly": "STA $a642,X"
+        },
+        {
+          "pc": "A829",
+          "bytes": "2032a9",
+          "assembly": "JSR $a932"
+        },
+        {
+          "pc": "A8AD",
+          "bytes": "bd42a6",
+          "assembly": "LDA $a642,X"
+        },
+        {
+          "pc": "A8B0",
+          "bytes": "0a",
+          "assembly": "ASL A"
+        },
+        {
+          "pc": "A8B4",
+          "bytes": "bd16b0",
+          "assembly": "LDA $b016,X"
+        }
+      ]
+    },
+    {
+      "name": "delayed glide prefix",
+      "context": "Pattern glide context",
+      "tokens": "E0..EF",
+      "behavior": "Enable glide; consume delay, base pitch and target pitch. Target receives pitch offset; base becomes the normal note pitch.",
+      "archivePcs": [
+        "A7F0",
+        "A7F4",
+        "A7F6",
+        "A7FD",
+        "A7FF",
+        "A80A",
+        "A80D",
+        "A810",
+        "A814"
+      ],
+      "state": {
+        "enabled": "A64E+X",
+        "delay": "A690+X",
+        "targetIndex": "A68D+X"
+      },
+      "basis": "Static pinned archive instructions, interpreted using the recovered listing; execution below is separately scoped.",
+      "executed64": {
+        "scope": "Executed title calls0..63 only",
+        "instructionCount": 14,
+        "traceRecordIndices": [
+          101,
+          286,
+          473,
+          525,
+          527,
+          528,
+          531,
+          532,
+          537,
+          539,
+          540,
+          542,
+          15808,
+          30602
+        ],
+        "calls": [
+          0,
+          24,
+          48
+        ],
+        "interpretation": "Checkpoint presence may include a token-family comparison whose branch was not taken. Read constraints/examples for demonstrated commands; record indices link to complete canonical instruction evidence."
+      },
+      "constraints": "Executed call0/X0: E0,40,0C,18 with offset4 gives delay64/base index16/target index28. Actual glide progression is a separate synthesis routine, not decoded here.",
+      "staticArchiveInstructions": [
+        {
+          "pc": "A7F0",
+          "bytes": "c9e0",
+          "assembly": "CMP #$e0"
+        },
+        {
+          "pc": "A7F4",
+          "bytes": "a901",
+          "assembly": "LDA #$01"
+        },
+        {
+          "pc": "A7F6",
+          "bytes": "9d4ea6",
+          "assembly": "STA $a64e,X"
+        },
+        {
+          "pc": "A7FD",
+          "bytes": "b146",
+          "assembly": "LDA ($46),Y"
+        },
+        {
+          "pc": "A7FF",
+          "bytes": "9d90a6",
+          "assembly": "STA $a690,X"
+        },
+        {
+          "pc": "A80A",
+          "bytes": "b146",
+          "assembly": "LDA ($46),Y"
+        },
+        {
+          "pc": "A80D",
+          "bytes": "7d61a6",
+          "assembly": "ADC $a661,X"
+        },
+        {
+          "pc": "A810",
+          "bytes": "9d8da6",
+          "assembly": "STA $a68d,X"
+        },
+        {
+          "pc": "A814",
+          "bytes": "b146",
+          "assembly": "LDA ($46),Y"
+        }
+      ]
+    },
+    {
+      "name": "initial routing or skipped-patch-setup prefix",
+      "context": "Pattern first-byte context",
+      "tokens": "F0..FF: bit0 selects branch",
+      "behavior": "Odd prefix consumes next byte as D417 routing then resumes note prefixes. Even prefix sets A68A+X=1 and skips patch/envelope/wave/pulse/filter-start initialization after frequency update.",
+      "archivePcs": [
+        "A7C4",
+        "A7CA",
+        "A7CE",
+        "A7D0",
+        "A7DD",
+        "A7E1",
+        "A7E3",
+        "A7E6",
+        "A8A8",
+        "A8AB"
+      ],
+      "state": {
+        "skipPatchSetup": "A68A+X",
+        "routingRegister": "D417"
+      },
+      "basis": "Static pinned archive instructions, interpreted using the recovered listing; execution below is separately scoped.",
+      "executed64": {
+        "scope": "Executed title calls0..63 only",
+        "instructionCount": 20,
+        "traceRecordIndices": [
+          96,
+          160,
+          161,
+          266,
+          269,
+          271,
+          273,
+          274,
+          275,
+          362,
+          363,
+          468,
+          566,
+          567,
+          15803,
+          15839,
+          15840,
+          30597,
+          30661,
+          30662
+        ],
+        "calls": [
+          0,
+          24,
+          48
+        ],
+        "interpretation": "Checkpoint presence may include a token-family comparison whose branch was not taken. Read constraints/examples for demonstrated commands; record indices link to complete canonical instruction evidence."
+      },
+      "constraints": "Only F1 routing is executed in the opening: call0/X1 writes82. Even-prefix behavior is static and is not a claim of complete legato-state preservation. Pattern FF as an end peek has different semantics.",
+      "staticArchiveInstructions": [
+        {
+          "pc": "A7C4",
+          "bytes": "c9f0",
+          "assembly": "CMP #$f0"
+        },
+        {
+          "pc": "A7CA",
+          "bytes": "2901",
+          "assembly": "AND #$01"
+        },
+        {
+          "pc": "A7CE",
+          "bytes": "a901",
+          "assembly": "LDA #$01"
+        },
+        {
+          "pc": "A7D0",
+          "bytes": "9d8aa6",
+          "assembly": "STA $a68a,X"
+        },
+        {
+          "pc": "A7DD",
+          "bytes": "fe30a6",
+          "assembly": "INC $a630,X"
+        },
+        {
+          "pc": "A7E1",
+          "bytes": "b146",
+          "assembly": "LDA ($46),Y"
+        },
+        {
+          "pc": "A7E3",
+          "bytes": "8d17d4",
+          "assembly": "STA $d417"
+        },
+        {
+          "pc": "A7E6",
+          "bytes": "2032a9",
+          "assembly": "JSR $a932"
+        },
+        {
+          "pc": "A8A8",
+          "bytes": "bd8aa6",
+          "assembly": "LDA $a68a,X"
+        },
+        {
+          "pc": "A8AB",
+          "bytes": "d043",
+          "assembly": "BNE $a8f0"
+        }
+      ]
+    },
+    {
+      "name": "pattern end and continuation helper",
+      "context": "Pattern next-byte peek or helper context",
+      "tokens": "FF",
+      "behavior": "End peekA8F6 resets pattern cursor. Repeat>0 decrements and retains order; zero repeat increments order cursor. HelperA936 may also detectFF and branch toA8FC.",
+      "archivePcs": [
+        "A8F6",
+        "A8F8",
+        "A8FC",
+        "A8FE",
+        "A901",
+        "A906",
+        "A90B",
+        "A936",
+        "A938",
+        "A93A"
+      ],
+      "state": {
+        "patternCursor": "A630+X",
+        "repeatCount": "A684+X",
+        "orderCursor": "A62D+X"
+      },
+      "basis": "Static pinned archive instructions, interpreted using the recovered listing; execution below is separately scoped.",
+      "executed64": {
+        "scope": "Executed title calls0..63 only",
+        "instructionCount": 47,
+        "traceRecordIndices": [
+          113,
+          114,
+          115,
+          128,
+          129,
+          130,
+          193,
+          194,
+          278,
+          279,
+          280,
+          298,
+          299,
+          300,
+          313,
+          314,
+          315,
+          336,
+          337,
+          338,
+          395,
+          396,
+          485,
+          486,
+          487,
+          500,
+          501,
+          502,
+          516,
+          517,
+          518,
+          599,
+          600,
+          15872,
+          15873,
+          15875,
+          15876,
+          15877,
+          15879,
+          30614,
+          30615,
+          30616,
+          30629,
+          30630,
+          30631,
+          30694,
+          30695
+        ],
+        "calls": [
+          0,
+          24,
+          48
+        ],
+        "interpretation": "Checkpoint presence may include a token-family comparison whose branch was not taken. Read constraints/examples for demonstrated commands; record indices link to complete canonical instruction evidence."
+      },
+      "constraints": "Atcall24/X2 B284=FF: cursor4\u21920, repeat29\u219228, order cursor3 retained; next startcall48. Helper FF tail-jump while a JSR is outstanding is static/unexecuted here and must not be replaced by an assumed context-free token loop.",
+      "staticArchiveInstructions": [
+        {
+          "pc": "A8F6",
+          "bytes": "b146",
+          "assembly": "LDA ($46),Y"
+        },
+        {
+          "pc": "A8F8",
+          "bytes": "c9ff",
+          "assembly": "CMP #$ff"
+        },
+        {
+          "pc": "A8FC",
+          "bytes": "a900",
+          "assembly": "LDA #$00"
+        },
+        {
+          "pc": "A8FE",
+          "bytes": "9d30a6",
+          "assembly": "STA $a630,X"
+        },
+        {
+          "pc": "A901",
+          "bytes": "bd84a6",
+          "assembly": "LDA $a684,X"
+        },
+        {
+          "pc": "A906",
+          "bytes": "de84a6",
+          "assembly": "DEC $a684,X"
+        },
+        {
+          "pc": "A90B",
+          "bytes": "fe2da6",
+          "assembly": "INC $a62d,X"
+        },
+        {
+          "pc": "A936",
+          "bytes": "b146",
+          "assembly": "LDA ($46),Y"
+        },
+        {
+          "pc": "A938",
+          "bytes": "c9ff",
+          "assembly": "CMP #$ff"
+        },
+        {
+          "pc": "A93A",
+          "bytes": "f0c0",
+          "assembly": "BEQ $a8fc"
+        }
+      ]
+    }
+  ],
+  "missingListingPattern": {
+    "basis": "Static exact byte match only; no21 pointer lookup in canonical64-call trace",
+    "archiveOrderIndex": "21",
+    "archiveOrderByteAddress": "B160",
+    "tableWordAddress": "AF43",
+    "tableWordBytes": "2db6",
+    "resolvedPattern": "B62D",
+    "endExclusive": "B64D",
+    "bytes": "f1d5ca840c8200820cc38408ca820a840b820c820c8218c38408ca8213820cff",
+    "sha256": "0ce6efe3b7b2056bec568a0b6e981f9f3d17566779a11d79f379fd23f5f787f5",
+    "listingDeclaredPointerCount": 33,
+    "listingDeclaredRange": [
+      "00",
+      "20"
+    ],
+    "listingCommentedLabelLine": 1765,
+    "listingCommentedDataLines": [
+      1766,
+      1767,
+      1768
+    ],
+    "listingCommentedLabel": "st1e",
+    "exactMatch": true,
+    "limit": "The archive supplies a34th pointer and this32-byte omitted fragment. The recovered listing is a variant/incomplete build route; this does not establish complete code/table equivalence or executed21 selection.",
+    "activeListingSt1e": {
+      "line": 1809,
+      "archivePointerIndex": "1E",
+      "archivePattern": "B6FE",
+      "matchingByteCount": 22,
+      "exactStaticMatch": true,
+      "scope": "The later active game-over st1e label remains valid. The absent declaration/table entry is st21; the32-byte title fragment only retains a commented former st1e label."
+    }
+  },
+  "openingExamples": [
+    {
+      "call": 0,
+      "voiceIndex": 0,
+      "patternIndex": 1,
+      "pattern": "B208",
+      "selectedSoundIndex": 1,
+      "durationReload": 63,
+      "glideDelay": 64,
+      "baseIndex": 16,
+      "targetIndex": 28
+    },
+    {
+      "call": 0,
+      "voiceIndex": 1,
+      "patternIndex": 2,
+      "pattern": "B22C",
+      "selectedSoundIndex": 4,
+      "durationReload": 31,
+      "routing": 130,
+      "arpeggioSelector": 2
+    },
+    {
+      "call": 0,
+      "voiceIndex": 2,
+      "patternIndex": 3,
+      "pattern": "B280",
+      "selectedSoundIndex": 2,
+      "durationReload": 7,
+      "additionalPatternRepeats": 29,
+      "pitchOffset": 16
+    }
+  ],
+  "additional2048Context": {
+    "path": "build/cybernoid-form-independent-2048/observations.json",
+    "sha256": "7b43b9384d0cb1edc965768dd6c8b04a952a1ce72cab604cdca64705e3c3bbae",
+    "basis": "Separate existing narrow order-hook receipt; not new execution by this interpretation",
+    "scope": "2048title calls, no title orderFF/FE observed",
+    "roleLimit": "Canonical64-call sound records describe the introduction, not representative complete-title roles."
+  },
+  "highRiskUnknowns": [
+    "Full per-voice orders, common recurrence and endpoint remain unproved; individual orderFF and patternFF are different events.",
+    "Prefix priority and continuation control flow are context-sensitive; do not classify bytes by range independently of reader stage.",
+    "Signed countdown edges, helperFF stack/control flow, evenF-prefix behavior and unobserved command values need executed fixtures before a reusable model.",
+    "Pitch-table indices and zero bytes are not automatically MIDI notes/rests; instrument macros, glide, arpeggio and gate masks alter the audible result.",
+    "Source instrument records and effect tables must be joined through executed selection/field loads before inferring percussion/bass time-sharing or full-title musical roles."
+  ],
+  "nextMusicalDecodingSteps": [
+    "Retain compact order/pattern selection and transition events; establish all three voice spans and synchronized recurrence before describing complete form.",
+    "Observe actual$21 lookup at$A7A5/$A7AA with Y=$42 and subsequent$B62D reads before promoting the static missing-pattern correspondence to executed evidence.",
+    "Decode contextual pattern events with durationReload, pitch offset, sound index, routing, arp pointer and glide parameters; keep original source byte/address alongside semantic fields.",
+    "Then map selected sound/effect records to ordered waveform/pitch/pulse/filter writes through attack, sustain and release, preserving note-setup high-then-low frequency stores atA8A1/A8A5."
+  ],
+  "limits": [
+    "No production code or documentation edits; original source/listing unchanged.",
+    "No newly executed source workload, assembled recovered listing, reconstruction, PCM comparison or listening claim.",
+    "Only semantic parameters, bounded instruction addresses and a32-byte pattern fragment are retained; no complete source payload or opaque RAM dump."
+  ]
+}

@@ -1,0 +1,1979 @@
+{
+  "sourceSha256": "41f338f44b4f54e351e672156ee0e2a60c8437eb24645db3f9d4abfbb0cff192",
+  "profile": "pal-banked",
+  "selectedSubtune": 1,
+  "playCalls": 2048,
+  "audit": {
+    "schemaVersion": 1,
+    "sourceSha256": "41f338f44b4f54e351e672156ee0e2a60c8437eb24645db3f9d4abfbb0cff192",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS6581",
+    "sidCount": 1,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS6581"
+      }
+    ],
+    "loadAddress": 42496,
+    "initAddress": 42496,
+    "playAddress": 42499,
+    "clockHz": 985248.6111111111,
+    "playCalls": 2048,
+    "callRateHz": 50.12457321485099,
+    "initCycles": 1738,
+    "maximumPlayCycles": 2473,
+    "meanPlayCycles": 1936.89794921875,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 25,
+    "playWriteCount": 35724,
+    "registers": {
+      "d400": {
+        "writes": 2120,
+        "distinctValues": 56,
+        "minimum": 1,
+        "maximum": 255
+      },
+      "d401": {
+        "writes": 2120,
+        "distinctValues": 9,
+        "minimum": 2,
+        "maximum": 250
+      },
+      "d402": {
+        "writes": 2048,
+        "distinctValues": 12,
+        "minimum": 0,
+        "maximum": 224
+      },
+      "d403": {
+        "writes": 2048,
+        "distinctValues": 9,
+        "minimum": 5,
+        "maximum": 13
+      },
+      "d404": {
+        "writes": 2048,
+        "distinctValues": 3,
+        "minimum": 64,
+        "maximum": 129
+      },
+      "d405": {
+        "writes": 72,
+        "distinctValues": 1,
+        "minimum": 8,
+        "maximum": 8
+      },
+      "d406": {
+        "writes": 72,
+        "distinctValues": 1,
+        "minimum": 137,
+        "maximum": 137
+      },
+      "d407": {
+        "writes": 2089,
+        "distinctValues": 18,
+        "minimum": 12,
+        "maximum": 239
+      },
+      "d408": {
+        "writes": 2089,
+        "distinctValues": 52,
+        "minimum": 14,
+        "maximum": 71
+      },
+      "d409": {
+        "writes": 2048,
+        "distinctValues": 8,
+        "minimum": 0,
+        "maximum": 240
+      },
+      "d40a": {
+        "writes": 2048,
+        "distinctValues": 11,
+        "minimum": 0,
+        "maximum": 12
+      },
+      "d40b": {
+        "writes": 2048,
+        "distinctValues": 5,
+        "minimum": 32,
+        "maximum": 85
+      },
+      "d40c": {
+        "writes": 41,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40d": {
+        "writes": 41,
+        "distinctValues": 2,
+        "minimum": 184,
+        "maximum": 200
+      },
+      "d40e": {
+        "writes": 2182,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 99
+      },
+      "d40f": {
+        "writes": 2182,
+        "distinctValues": 14,
+        "minimum": 0,
+        "maximum": 250
+      },
+      "d410": {
+        "writes": 2048,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d411": {
+        "writes": 2048,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 8
+      },
+      "d412": {
+        "writes": 2048,
+        "distinctValues": 8,
+        "minimum": 16,
+        "maximum": 129
+      },
+      "d413": {
+        "writes": 134,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d414": {
+        "writes": 134,
+        "distinctValues": 3,
+        "minimum": 136,
+        "maximum": 169
+      },
+      "d416": {
+        "writes": 2007,
+        "distinctValues": 65,
+        "minimum": 96,
+        "maximum": 160
+      },
+      "d417": {
+        "writes": 2,
+        "distinctValues": 1,
+        "minimum": 130,
+        "maximum": 130
+      },
+      "d418": {
+        "writes": 2007,
+        "distinctValues": 2,
+        "minimum": 31,
+        "maximum": 63
+      }
+    },
+    "limitations": "No sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment.",
+    "executionProfile": "pal-banked",
+    "subtunes": 2,
+    "defaultSubtune": 1,
+    "selectedSubtune": 1,
+    "entryBank": 54,
+    "entryStateBasis": "Controlled PAL raster host: init A=selection-1, X/Y=0, P=$26; play A=$FA, retained X/Y, CMP-equal C/Z set and N clear; bank $36 before each call"
+  },
+  "orders": [
+    {
+      "tick": 0,
+      "voice": 2,
+      "cursor": 0,
+      "address": 45412,
+      "value": 96
+    },
+    {
+      "tick": 0,
+      "voice": 2,
+      "cursor": 1,
+      "address": 45413,
+      "value": 144
+    },
+    {
+      "tick": 0,
+      "voice": 2,
+      "cursor": 2,
+      "address": 45414,
+      "value": 93
+    },
+    {
+      "tick": 0,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 0,
+      "voice": 1,
+      "cursor": 0,
+      "address": 45389,
+      "value": 132
+    },
+    {
+      "tick": 0,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 0,
+      "voice": 0,
+      "cursor": 0,
+      "address": 45272,
+      "value": 132
+    },
+    {
+      "tick": 0,
+      "voice": 0,
+      "cursor": 1,
+      "address": 45273,
+      "value": 1
+    },
+    {
+      "tick": 24,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 48,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 72,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 96,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 96,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 120,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 144,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 168,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 192,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 192,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 192,
+      "voice": 0,
+      "cursor": 1,
+      "address": 45273,
+      "value": 1
+    },
+    {
+      "tick": 216,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 216,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 228,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 240,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 264,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 288,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 312,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 336,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 360,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 384,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 384,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 384,
+      "voice": 0,
+      "cursor": 1,
+      "address": 45273,
+      "value": 1
+    },
+    {
+      "tick": 408,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 432,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 456,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 480,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 480,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 504,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 528,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 552,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 576,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 576,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 576,
+      "voice": 0,
+      "cursor": 1,
+      "address": 45273,
+      "value": 1
+    },
+    {
+      "tick": 600,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 600,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 612,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 624,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 648,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 672,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 696,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 720,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 744,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 768,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 768,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 768,
+      "voice": 0,
+      "cursor": 1,
+      "address": 45273,
+      "value": 1
+    },
+    {
+      "tick": 792,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 804,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 816,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 840,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 840,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 864,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 876,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 888,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 912,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 912,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 936,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 936,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 960,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 960,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 960,
+      "voice": 0,
+      "cursor": 1,
+      "address": 45273,
+      "value": 1
+    },
+    {
+      "tick": 984,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 984,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 996,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1008,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1032,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1056,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1080,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1104,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1128,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1152,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1152,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1152,
+      "voice": 0,
+      "cursor": 1,
+      "address": 45273,
+      "value": 1
+    },
+    {
+      "tick": 1176,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1188,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1200,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1224,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1224,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1248,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1248,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1260,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1272,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1284,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1296,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1320,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1320,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1344,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1344,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1344,
+      "voice": 0,
+      "cursor": 1,
+      "address": 45273,
+      "value": 1
+    },
+    {
+      "tick": 1356,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1368,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1368,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1380,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1392,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1416,
+      "voice": 2,
+      "cursor": 3,
+      "address": 45415,
+      "value": 3
+    },
+    {
+      "tick": 1440,
+      "voice": 2,
+      "cursor": 4,
+      "address": 45416,
+      "value": 4
+    },
+    {
+      "tick": 1440,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1452,
+      "voice": 2,
+      "cursor": 4,
+      "address": 45416,
+      "value": 4
+    },
+    {
+      "tick": 1464,
+      "voice": 2,
+      "cursor": 4,
+      "address": 45416,
+      "value": 4
+    },
+    {
+      "tick": 1464,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1476,
+      "voice": 2,
+      "cursor": 4,
+      "address": 45416,
+      "value": 4
+    },
+    {
+      "tick": 1488,
+      "voice": 2,
+      "cursor": 4,
+      "address": 45416,
+      "value": 4
+    },
+    {
+      "tick": 1488,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1494,
+      "voice": 2,
+      "cursor": 4,
+      "address": 45416,
+      "value": 4
+    },
+    {
+      "tick": 1506,
+      "voice": 2,
+      "cursor": 4,
+      "address": 45416,
+      "value": 4
+    },
+    {
+      "tick": 1512,
+      "voice": 1,
+      "cursor": 1,
+      "address": 45390,
+      "value": 2
+    },
+    {
+      "tick": 1518,
+      "voice": 2,
+      "cursor": 4,
+      "address": 45416,
+      "value": 4
+    },
+    {
+      "tick": 1524,
+      "voice": 2,
+      "cursor": 4,
+      "address": 45416,
+      "value": 4
+    },
+    {
+      "tick": 1530,
+      "voice": 2,
+      "cursor": 4,
+      "address": 45416,
+      "value": 4
+    },
+    {
+      "tick": 1536,
+      "voice": 2,
+      "cursor": 5,
+      "address": 45417,
+      "value": 79
+    },
+    {
+      "tick": 1536,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1536,
+      "voice": 1,
+      "cursor": 2,
+      "address": 45391,
+      "value": 2
+    },
+    {
+      "tick": 1536,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1548,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1548,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1554,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1560,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1560,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1566,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1572,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1572,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1578,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1578,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1584,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1590,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1596,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1596,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1602,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1608,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1608,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1614,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1620,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1620,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1626,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1626,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1632,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1632,
+      "voice": 1,
+      "cursor": 2,
+      "address": 45391,
+      "value": 2
+    },
+    {
+      "tick": 1632,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1644,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1644,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1650,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1656,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1656,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1662,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1668,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1668,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1674,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1674,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1680,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1686,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1692,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1692,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1698,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1704,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1704,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1710,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1716,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1716,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1722,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1722,
+      "voice": 0,
+      "cursor": 2,
+      "address": 45274,
+      "value": 6
+    },
+    {
+      "tick": 1728,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1728,
+      "voice": 1,
+      "cursor": 2,
+      "address": 45391,
+      "value": 2
+    },
+    {
+      "tick": 1728,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1740,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1740,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1746,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1752,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1752,
+      "voice": 1,
+      "cursor": 2,
+      "address": 45391,
+      "value": 2
+    },
+    {
+      "tick": 1752,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1758,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1764,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1764,
+      "voice": 1,
+      "cursor": 2,
+      "address": 45391,
+      "value": 2
+    },
+    {
+      "tick": 1764,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1770,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1770,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1776,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1782,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1788,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1788,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1794,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1800,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1800,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1806,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1812,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1812,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1818,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1818,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1824,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1824,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1836,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1836,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1842,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1848,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1848,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1854,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1860,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1860,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1866,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1866,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1872,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1878,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1884,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1884,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1890,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1896,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1896,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1902,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1908,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1908,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1914,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1914,
+      "voice": 0,
+      "cursor": 3,
+      "address": 45275,
+      "value": 7
+    },
+    {
+      "tick": 1920,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1920,
+      "voice": 1,
+      "cursor": 2,
+      "address": 45391,
+      "value": 2
+    },
+    {
+      "tick": 1920,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 1932,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1932,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 1938,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1944,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1944,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 1950,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 1956,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1956,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 1962,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1962,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 1968,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1974,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 1980,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1980,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 1986,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1992,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 1992,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 1998,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 2004,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 2004,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 2010,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 2010,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 2016,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 2016,
+      "voice": 1,
+      "cursor": 2,
+      "address": 45391,
+      "value": 2
+    },
+    {
+      "tick": 2016,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 2028,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 2028,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 2034,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 2040,
+      "voice": 2,
+      "cursor": 6,
+      "address": 45418,
+      "value": 5
+    },
+    {
+      "tick": 2040,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    },
+    {
+      "tick": 2046,
+      "voice": 0,
+      "cursor": 4,
+      "address": 45276,
+      "value": 6
+    }
+  ],
+  "markers": [],
+  "lastCompletedBody": {
+    "tick": 2047,
+    "orders": [
+      4,
+      2,
+      6
+    ],
+    "patterns": [
+      25,
+      21,
+      10
+    ],
+    "repeats": [
+      0,
+      0,
+      10
+    ]
+  },
+  "orderedWritesSha256": "d6c1f3f820ea1de6637fe2ea4afcd082c3c871ee59f5918ae4a7d32c4e4a5da1",
+  "limits": "Independent narrow order hook only; no complete form or state recurrence claim."
+}

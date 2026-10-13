@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -238,7 +239,13 @@ def verify_trace(parsed, oracle, first, last):
     return result
 
 
-def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, subtune=None, profile='strict'):
+def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, subtune=None, profile='strict', timeout=60):
+    require(type(timeout) in (int, float) and timeout > 0, 'Timeout must be positive finite seconds')
+    try:
+        finite_timeout = math.isfinite(timeout)
+    except OverflowError:
+        finite_timeout = False
+    require(finite_timeout, 'Timeout must be positive finite seconds')
     sid_bytes, oracle_bytes = sid.read_bytes(), oracle_path.read_bytes()
     profile = psid_profile(sid_bytes, subtune=subtune, profile=profile)
     program, labels = harness(profile, last + 1)
@@ -260,7 +267,7 @@ def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, su
         (Path(env[key]) / 'vice').mkdir(parents=True)
     (output / 'command.json').write_text(json.dumps(command, indent=2) + '\n')
     with (output / 'process.log').open('w') as process_log:
-        subprocess.run(command, env=env, stdout=process_log, stderr=subprocess.STDOUT, timeout=60, check=True)
+        subprocess.run(command, env=env, stdout=process_log, stderr=subprocess.STDOUT, timeout=timeout, check=True)
     log = (output / 'monitor.log').read_text(errors='replace')
     markers = dict(init_address=profile['initAddress'], init_return=labels['init_return']) if profile.get('profile') == 'pal-banked' else {}
     parsed = parse_trace(log, profile['playAddress'], profile['sidBases'], **markers)
@@ -290,8 +297,9 @@ def main():
     parser.add_argument('--data', type=Path, default=Path('/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice'))
     parser.add_argument('--subtune', type=int, help='Explicit 1-based subtune selection')
     parser.add_argument('--profile', choices=('strict', 'pal-banked'), default='strict')
+    parser.add_argument('--timeout', type=float, default=60, help='Positive VICE wall-clock timeout in seconds (default: 60)')
     args = parser.parse_args()
-    result = run_trace(args.sid.resolve(), args.oracle.resolve(), args.output.resolve(), args.first_call, args.last_call, args.vice.resolve(), args.data.resolve(), subtune=args.subtune, profile=args.profile)
+    result = run_trace(args.sid.resolve(), args.oracle.resolve(), args.output.resolve(), args.first_call, args.last_call, args.vice.resolve(), args.data.resolve(), subtune=args.subtune, profile=args.profile, timeout=args.timeout)
     print(json.dumps(result, indent=2))
 
 

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "41f338f44b4f54e351e672156ee0e2a60c8437eb24645db3f9d4abfbb0cff192",
+  "tracerSha256": "9c06746abb7ccba71956624676b1e4d69b1303acd2cf69c0e1db21c0f79538a4",
+  "timeoutSeconds": 180,
+  "command": "python3 scripts/trace-sid-vice.py .local/research/cybernoid-ii/Cybernoid_II.sid --profile pal-banked --subtune 1 --oracle build/cybernoid-form-36000/audit.writes.json --first-call 0 --last-call 35999 --timeout 180 --output build/cybernoid-form-36000/vice-full",
+  "artifacts": {
+    "study.json": {
+      "sha256": "f6f31ab9d4344da14cd23c14e11a610a4bf9fde955217a78c22b2ceb83125bd4",
+      "bytes": 4977
+    },
+    "trace.json": {
+      "sha256": "51f5f71f5e96f295d9645d29eed50c478f47efa89d6939834181db48d1daf04b",
+      "bytes": 269555128
+    }
+  },
+  "verification": {
+    "matchedWrites": 645960,
+    "playCalls": 36000,
+    "firstCall": 0,
+    "lastCall": 35999,
+    "frameCycles": 19656,
+    "maximumCadenceError": 5,
+    "cadenceTolerance": 9,
+    "matchedInitWrites": 25,
+    "matchedPlayWrites": 645935
+  },
+  "scope": "Full selected polling-host CPU/VICE ordered SID store comparison, including initialization. No original IRQ-host, bus-cycle, PCM or listening equivalence claim."
+}
