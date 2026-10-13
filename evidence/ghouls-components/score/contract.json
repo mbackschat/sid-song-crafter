@@ -1,0 +1,195 @@
+{
+  "supportedSelection": 1,
+  "grammar": [
+    {
+      "code": 128,
+      "name": "pulse-parameters",
+      "operandFields": [
+        "pulseStep",
+        "pulseDefaultLow",
+        "pulseDefaultHigh"
+      ]
+    },
+    {
+      "code": 129,
+      "name": "repeat-end",
+      "operandFields": []
+    },
+    {
+      "code": 130,
+      "name": "repeat-start",
+      "operandFields": [
+        "count"
+      ]
+    },
+    {
+      "code": 131,
+      "name": "rest-parameters",
+      "operandFields": [
+        "restReload"
+      ]
+    },
+    {
+      "code": 132,
+      "name": "duration-override",
+      "operandFields": [
+        "durationOverride"
+      ]
+    },
+    {
+      "code": 133,
+      "name": "sid-store-list",
+      "operandFields": [
+        "stores"
+      ]
+    },
+    {
+      "code": 134,
+      "name": "disable-voice",
+      "operandFields": []
+    },
+    {
+      "code": 136,
+      "name": "filter-parameters",
+      "operandFields": [
+        "filterStep",
+        "filterRestartPhase",
+        "filterDefaultLow",
+        "filterDefaultHigh",
+        "filterLowerLow",
+        "filterLowerHigh",
+        "filterUpperLow",
+        "filterUpperHigh"
+      ]
+    },
+    {
+      "code": 137,
+      "name": "filter-owner",
+      "operandFields": []
+    },
+    {
+      "code": 138,
+      "name": "call",
+      "operandFields": [
+        "targetLow",
+        "targetHigh"
+      ]
+    },
+    {
+      "code": 139,
+      "name": "return",
+      "operandFields": []
+    },
+    {
+      "code": 140,
+      "name": "transpose",
+      "operandFields": [
+        "transpose"
+      ]
+    },
+    {
+      "code": 141,
+      "name": "waveform",
+      "operandFields": [
+        "waveform"
+      ]
+    },
+    {
+      "code": 142,
+      "name": "frequency-motion",
+      "operandFields": [
+        "frequencyDelayReload",
+        "frequencyStep",
+        "frequencyHalfReload",
+        "frequencyDirectionDefault"
+      ]
+    },
+    {
+      "code": 143,
+      "name": "onset-parameters",
+      "operandFields": [
+        "onsetDelay",
+        "onsetControl",
+        "onsetFrequencyLow",
+        "onsetFrequencyHigh"
+      ]
+    },
+    {
+      "code": 144,
+      "name": "gate-time",
+      "operandFields": [
+        "gateTime"
+      ]
+    },
+    {
+      "code": 145,
+      "name": "note-motion",
+      "operandFields": [
+        "noteStep",
+        "notePositiveDuration",
+        "noteNegativeDuration"
+      ]
+    },
+    {
+      "code": 146,
+      "name": "glide-rate",
+      "operandFields": [
+        "glideRate"
+      ]
+    }
+  ],
+  "unexecutedCommandsExcluded": [
+    135,
+    147,
+    148
+  ],
+  "scheduler": {
+    "voiceOrder": [
+      0,
+      1,
+      2
+    ],
+    "active": "enableFlag >= 128",
+    "sequence": [
+      "continuing sound stages",
+      "duration=(duration-1)&255",
+      "gate edge",
+      "restRemaining=(restRemaining-1)&255",
+      "if duration==0 consume score",
+      "next voice",
+      "shared filter update"
+    ],
+    "gatePredicate": "durationAfterDecrement == gateTime or restRemaining == 0",
+    "gateStore": "voice control = waveform & 254; restRemaining=(restRemaining+1)&255 before its unconditional decrement",
+    "disable": "increment enableFlag modulo256; do not advance stream pointer; skip subsequent voice processing"
+  },
+  "notes": {
+    "positive": "1..127; apply transpose modulo256; sound setup resolves current/target pitch",
+    "zero": "rest; reload restRemaining only, with no pitch/onset setup or immediate SID store",
+    "duration": "Persistent nonzero override supplies the duration and omits the stream duration byte; zero override consumes the following byte",
+    "durationZero": "Zero byte lasts 256 subsequent calls by decrement-before-zero scheduling",
+    "spacing": "A note loaded at call N with nonzero duration D advances again at N+D"
+  },
+  "control": {
+    "commandTiming": "Execute setters and navigation in stream order in the same call, ending at a note/rest/disable",
+    "repeat": "One saved pointer/counter per voice; start replaces them; end decrements modulo256, jumping while nonzero",
+    "scoreCall": "Save address+3, increment depth before reading destination operands; return pops the saved address",
+    "sidStoreList": "One or more nonnegative offset/value pairs at $D400+offset, terminated by a negative offset byte; zero pairs are outside executed contract",
+    "pulseZeroDefault": "A zero pulse default loads the separate pulseFallback into live pulseWord; all observed fallback words are zero and $94 is unexecuted"
+  },
+  "soundBoundary": {
+    "noteInput": [
+      "voice",
+      "rawNote",
+      "transpose",
+      "named current sound state"
+    ],
+    "restInput": [
+      "voice",
+      "restReload"
+    ],
+    "commandInput": "Typed operand fields plus current named state; command-setters.json.gz retains assignments and immediate SID stores",
+    "ownership": "Score owns navigation/countdown/gate/rest and setters. Sound owns continuing body stages and positive-note setup, retaining state between notes.",
+    "noteSetupEvidence": "Sound probe owns full onset/reset arithmetic; this score proof only independently schedules its input events"
+  }
+}

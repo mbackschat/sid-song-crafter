@@ -1,0 +1,903 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "voice": 0,
+      "stage": "onset",
+      "boundaries": 12948,
+      "callsWithWrites": 0,
+      "callsChangingValue": 0,
+      "changingField": "onset_remaining",
+      "paths": {
+        "idle": 12948
+      }
+    },
+    {
+      "voice": 0,
+      "stage": "frequency",
+      "boundaries": 12948,
+      "callsWithWrites": 5281,
+      "callsChangingValue": 5281,
+      "changingField": "current_frequency",
+      "paths": {
+        "disabled": 7667,
+        "down": 2632,
+        "down-reverse": 397,
+        "up": 1901,
+        "up-reverse": 351
+      }
+    },
+    {
+      "voice": 0,
+      "stage": "note",
+      "boundaries": 12948,
+      "callsWithWrites": 118,
+      "callsChangingValue": 118,
+      "changingField": "note_index",
+      "paths": {
+        "hold": 12830,
+        "glide-up": 72,
+        "glide-down": 46
+      }
+    },
+    {
+      "voice": 0,
+      "stage": "pulse",
+      "boundaries": 12948,
+      "callsWithWrites": 4160,
+      "callsChangingValue": 312,
+      "changingField": "pulse_word",
+      "paths": {
+        "disabled": 8788,
+        "up": 4000,
+        "up-upper-reverse": 4,
+        "down": 152,
+        "lower-reverse": 4
+      }
+    },
+    {
+      "voice": 0,
+      "stage": "setup",
+      "boundaries": 658,
+      "callsWithWrites": 658,
+      "callsChangingValue": 538,
+      "changingField": "note_index",
+      "paths": {
+        "positive-note": 658
+      }
+    },
+    {
+      "voice": 1,
+      "stage": "onset",
+      "boundaries": 12996,
+      "callsWithWrites": 400,
+      "callsChangingValue": 400,
+      "changingField": "onset_remaining",
+      "paths": {
+        "idle": 12596,
+        "restore": 400
+      }
+    },
+    {
+      "voice": 1,
+      "stage": "frequency",
+      "boundaries": 12996,
+      "callsWithWrites": 1380,
+      "callsChangingValue": 1380,
+      "changingField": "current_frequency",
+      "paths": {
+        "disabled": 11616,
+        "down": 557,
+        "down-reverse": 127,
+        "up": 583,
+        "up-reverse": 113
+      }
+    },
+    {
+      "voice": 1,
+      "stage": "note",
+      "boundaries": 12996,
+      "callsWithWrites": 192,
+      "callsChangingValue": 192,
+      "changingField": "note_index",
+      "paths": {
+        "hold": 12804,
+        "glide-up": 60,
+        "glide-down": 46,
+        "alternate-up": 43,
+        "alternate-down": 43
+      }
+    },
+    {
+      "voice": 1,
+      "stage": "pulse",
+      "boundaries": 12996,
+      "callsWithWrites": 1880,
+      "callsChangingValue": 0,
+      "changingField": "pulse_word",
+      "paths": {
+        "disabled": 11116,
+        "up": 1880
+      }
+    },
+    {
+      "voice": 1,
+      "stage": "setup",
+      "boundaries": 907,
+      "callsWithWrites": 907,
+      "callsChangingValue": 839,
+      "changingField": "note_index",
+      "paths": {
+        "positive-note": 907
+      }
+    },
+    {
+      "voice": 2,
+      "stage": "onset",
+      "boundaries": 12972,
+      "callsWithWrites": 0,
+      "callsChangingValue": 0,
+      "changingField": "onset_remaining",
+      "paths": {
+        "idle": 12972
+      }
+    },
+    {
+      "voice": 2,
+      "stage": "frequency",
+      "boundaries": 12972,
+      "callsWithWrites": 1160,
+      "callsChangingValue": 1160,
+      "changingField": "current_frequency",
+      "paths": {
+        "disabled": 11812,
+        "down": 914,
+        "down-reverse": 24,
+        "up": 204,
+        "up-reverse": 18
+      }
+    },
+    {
+      "voice": 2,
+      "stage": "note",
+      "boundaries": 12972,
+      "callsWithWrites": 1565,
+      "callsChangingValue": 1565,
+      "changingField": "note_index",
+      "paths": {
+        "hold": 11407,
+        "alternate-up": 784,
+        "alternate-down": 757,
+        "glide-up": 24
+      }
+    },
+    {
+      "voice": 2,
+      "stage": "pulse",
+      "boundaries": 12972,
+      "callsWithWrites": 6448,
+      "callsChangingValue": 5132,
+      "changingField": "pulse_word",
+      "paths": {
+        "disabled": 6524,
+        "up": 6288,
+        "up-upper-reverse": 4,
+        "down": 152,
+        "lower-reverse": 4
+      }
+    },
+    {
+      "voice": 2,
+      "stage": "setup",
+      "boundaries": 423,
+      "callsWithWrites": 423,
+      "callsChangingValue": 365,
+      "changingField": "note_index",
+      "paths": {
+        "positive-note": 423
+      }
+    },
+    {
+      "voice": "shared",
+      "stage": "filter",
+      "boundaries": 12996,
+      "callsWithWrites": 12996,
+      "callsChangingValue": 383,
+      "changingField": "word",
+      "paths": {
+        "down": 12996
+      }
+    }
+  ],
+  "perVoiceParameters": [
+    {
+      "voice": 0,
+      "values": {
+        "waveform": [
+          1,
+          16,
+          17,
+          20,
+          21,
+          64,
+          80,
+          81,
+          128,
+          129
+        ],
+        "gate_enabled": [
+          1
+        ],
+        "pulse_default": [
+          0,
+          160,
+          240,
+          500,
+          2050
+        ],
+        "pulse_step": [
+          0,
+          100
+        ],
+        "pulse_restart": [
+          1,
+          255
+        ],
+        "frequency_delay_reload": [
+          0,
+          1
+        ],
+        "frequency_step": [
+          0,
+          10,
+          15,
+          23,
+          33,
+          57,
+          60,
+          90,
+          150,
+          250,
+          255
+        ],
+        "frequency_half_reload": [
+          0,
+          2,
+          4,
+          5
+        ],
+        "frequency_direction_default": [
+          0
+        ],
+        "note_step": [
+          0
+        ],
+        "note_positive_duration": [
+          0
+        ],
+        "note_negative_duration": [
+          0
+        ],
+        "glide_rate": [
+          0,
+          1,
+          2
+        ],
+        "onset_delay": [
+          0
+        ],
+        "onset_control": [
+          0
+        ],
+        "onset_frequency": [
+          20480
+        ]
+      }
+    },
+    {
+      "voice": 1,
+      "values": {
+        "waveform": [
+          1,
+          16,
+          17,
+          20,
+          80,
+          81,
+          128,
+          129
+        ],
+        "gate_enabled": [
+          1
+        ],
+        "pulse_default": [
+          0,
+          500,
+          2050
+        ],
+        "pulse_step": [
+          0
+        ],
+        "pulse_restart": [
+          1,
+          255
+        ],
+        "frequency_delay_reload": [
+          0,
+          1
+        ],
+        "frequency_step": [
+          0,
+          10,
+          150
+        ],
+        "frequency_half_reload": [
+          0,
+          2,
+          4,
+          5
+        ],
+        "frequency_direction_default": [
+          0
+        ],
+        "note_step": [
+          0,
+          12
+        ],
+        "note_positive_duration": [
+          0,
+          1
+        ],
+        "note_negative_duration": [
+          0,
+          255
+        ],
+        "glide_rate": [
+          0,
+          1
+        ],
+        "onset_delay": [
+          0,
+          1
+        ],
+        "onset_control": [
+          0,
+          128
+        ],
+        "onset_frequency": [
+          0,
+          10240
+        ]
+      }
+    },
+    {
+      "voice": 2,
+      "values": {
+        "waveform": [
+          1,
+          16,
+          21,
+          64,
+          65,
+          80,
+          128
+        ],
+        "gate_enabled": [
+          1
+        ],
+        "pulse_default": [
+          0,
+          240,
+          500,
+          768
+        ],
+        "pulse_step": [
+          0,
+          40,
+          100
+        ],
+        "pulse_restart": [
+          1,
+          255
+        ],
+        "frequency_delay_reload": [
+          0,
+          1
+        ],
+        "frequency_step": [
+          0,
+          10,
+          23,
+          33,
+          60,
+          250
+        ],
+        "frequency_half_reload": [
+          0,
+          5
+        ],
+        "frequency_direction_default": [
+          0
+        ],
+        "note_step": [
+          0,
+          7,
+          12
+        ],
+        "note_positive_duration": [
+          0,
+          1
+        ],
+        "note_negative_duration": [
+          0,
+          1,
+          255
+        ],
+        "glide_rate": [
+          0,
+          1,
+          2
+        ],
+        "onset_delay": [
+          0
+        ],
+        "onset_control": [
+          0
+        ],
+        "onset_frequency": [
+          0
+        ]
+      }
+    }
+  ],
+  "voiceByteFields": {
+    "waveform": 42,
+    "gate_enabled": 54,
+    "rest_reload": 57,
+    "rest_remaining": 60,
+    "pulse_step": 75,
+    "transpose": 78,
+    "onset_delay": 81,
+    "onset_control": 84,
+    "frequency_delay_reload": 87,
+    "note_positive_duration": 90,
+    "note_negative_duration": 93,
+    "note_remaining": 96,
+    "glide_rate": 99,
+    "note_index": 102,
+    "target_note_index": 108,
+    "frequency_delay_remaining": 126,
+    "frequency_direction_default": 129,
+    "frequency_half_remaining": 132,
+    "frequency_half_reload": 135,
+    "frequency_step": 138,
+    "onset_remaining": 141,
+    "gate_time": 144,
+    "note_step": 147
+  },
+  "voiceWordFields": {
+    "pulse_word": 63,
+    "pulse_default": 69
+  },
+  "voicePhaseAddresses": {
+    "frequency_direction": [
+      25193,
+      25686,
+      26181
+    ],
+    "note_direction": [
+      25246,
+      25739,
+      26234
+    ],
+    "pulse_direction": [
+      25326,
+      25819,
+      26314
+    ],
+    "pulse_restart": [
+      25556,
+      26049,
+      26544
+    ],
+    "pitch_index_mode": [
+      25474,
+      25967,
+      26462
+    ]
+  },
+  "onsetFrequencyAddresses": [
+    27610,
+    27637,
+    27664
+  ],
+  "filterResetAddresses": [
+    25579,
+    26074,
+    26569
+  ],
+  "sharedFilterFields": {
+    "word": 111,
+    "default": 113,
+    "step": 115,
+    "owner": 116,
+    "direction": 26624,
+    "lowerLow": 26649,
+    "lowerHigh": 26643,
+    "upperLow": 26675,
+    "upperHigh": 26669
+  },
+  "usedLookup": {
+    "minimum": 19,
+    "maximum": 108,
+    "distinct": 79,
+    "values": [
+      {
+        "index": 19,
+        "word": 803
+      },
+      {
+        "index": 21,
+        "word": 902
+      },
+      {
+        "index": 22,
+        "word": 955
+      },
+      {
+        "index": 23,
+        "word": 1012
+      },
+      {
+        "index": 24,
+        "word": 1072
+      },
+      {
+        "index": 25,
+        "word": 1136
+      },
+      {
+        "index": 26,
+        "word": 1204
+      },
+      {
+        "index": 27,
+        "word": 1275
+      },
+      {
+        "index": 28,
+        "word": 1351
+      },
+      {
+        "index": 29,
+        "word": 1432
+      },
+      {
+        "index": 30,
+        "word": 1517
+      },
+      {
+        "index": 31,
+        "word": 1607
+      },
+      {
+        "index": 32,
+        "word": 1703
+      },
+      {
+        "index": 33,
+        "word": 1804
+      },
+      {
+        "index": 34,
+        "word": 1911
+      },
+      {
+        "index": 35,
+        "word": 2025
+      },
+      {
+        "index": 36,
+        "word": 2145
+      },
+      {
+        "index": 37,
+        "word": 2273
+      },
+      {
+        "index": 38,
+        "word": 2408
+      },
+      {
+        "index": 39,
+        "word": 2551
+      },
+      {
+        "index": 40,
+        "word": 2703
+      },
+      {
+        "index": 41,
+        "word": 2864
+      },
+      {
+        "index": 42,
+        "word": 3034
+      },
+      {
+        "index": 43,
+        "word": 3215
+      },
+      {
+        "index": 44,
+        "word": 3406
+      },
+      {
+        "index": 45,
+        "word": 3608
+      },
+      {
+        "index": 46,
+        "word": 3823
+      },
+      {
+        "index": 47,
+        "word": 4050
+      },
+      {
+        "index": 48,
+        "word": 4291
+      },
+      {
+        "index": 49,
+        "word": 4547
+      },
+      {
+        "index": 50,
+        "word": 4817
+      },
+      {
+        "index": 51,
+        "word": 5103
+      },
+      {
+        "index": 52,
+        "word": 5407
+      },
+      {
+        "index": 53,
+        "word": 5728
+      },
+      {
+        "index": 54,
+        "word": 6069
+      },
+      {
+        "index": 55,
+        "word": 6430
+      },
+      {
+        "index": 56,
+        "word": 6812
+      },
+      {
+        "index": 57,
+        "word": 7217
+      },
+      {
+        "index": 58,
+        "word": 7647
+      },
+      {
+        "index": 59,
+        "word": 8101
+      },
+      {
+        "index": 60,
+        "word": 8583
+      },
+      {
+        "index": 61,
+        "word": 9094
+      },
+      {
+        "index": 62,
+        "word": 9634
+      },
+      {
+        "index": 63,
+        "word": 10207
+      },
+      {
+        "index": 64,
+        "word": 10814
+      },
+      {
+        "index": 65,
+        "word": 11457
+      },
+      {
+        "index": 66,
+        "word": 12139
+      },
+      {
+        "index": 67,
+        "word": 12860
+      },
+      {
+        "index": 68,
+        "word": 13625
+      },
+      {
+        "index": 69,
+        "word": 14435
+      },
+      {
+        "index": 70,
+        "word": 15294
+      },
+      {
+        "index": 71,
+        "word": 16203
+      },
+      {
+        "index": 72,
+        "word": 17167
+      },
+      {
+        "index": 73,
+        "word": 18188
+      },
+      {
+        "index": 74,
+        "word": 19269
+      },
+      {
+        "index": 75,
+        "word": 20415
+      },
+      {
+        "index": 76,
+        "word": 21629
+      },
+      {
+        "index": 77,
+        "word": 22915
+      },
+      {
+        "index": 78,
+        "word": 24278
+      },
+      {
+        "index": 79,
+        "word": 25721
+      },
+      {
+        "index": 80,
+        "word": 27251
+      },
+      {
+        "index": 81,
+        "word": 28871
+      },
+      {
+        "index": 82,
+        "word": 30588
+      },
+      {
+        "index": 83,
+        "word": 32407
+      },
+      {
+        "index": 84,
+        "word": 34334
+      },
+      {
+        "index": 85,
+        "word": 36376
+      },
+      {
+        "index": 87,
+        "word": 40830
+      },
+      {
+        "index": 88,
+        "word": 43258
+      },
+      {
+        "index": 89,
+        "word": 45830
+      },
+      {
+        "index": 90,
+        "word": 48556
+      },
+      {
+        "index": 91,
+        "word": 51443
+      },
+      {
+        "index": 92,
+        "word": 54502
+      },
+      {
+        "index": 93,
+        "word": 57743
+      },
+      {
+        "index": 94,
+        "word": 61176
+      },
+      {
+        "index": 95,
+        "word": 64814
+      },
+      {
+        "index": 97,
+        "word": 8961
+      },
+      {
+        "index": 99,
+        "word": 12545
+      },
+      {
+        "index": 102,
+        "word": 16385
+      },
+      {
+        "index": 108,
+        "word": 26369
+      }
+    ],
+    "lowArrayStart": 27957,
+    "highArrayStart": 28054,
+    "nominalArrayLength": 97,
+    "adjacentAliases": [
+      {
+        "index": 97,
+        "word": 8961
+      },
+      {
+        "index": 99,
+        "word": 12545
+      },
+      {
+        "index": 102,
+        "word": 16385
+      },
+      {
+        "index": 108,
+        "word": 26369
+      }
+    ],
+    "scope": "Used numeric index map; indices beyond 96 read adjacent initialized data, not additional conventional notes."
+  },
+  "filterParameterSets": [
+    {
+      "step": 1,
+      "default": 256,
+      "owner": 1,
+      "lower": 0,
+      "upper": 1,
+      "resetDirection": 0,
+      "calls": 383
+    },
+    {
+      "step": 0,
+      "default": 0,
+      "owner": 1,
+      "lower": 0,
+      "upper": 0,
+      "resetDirection": 0,
+      "calls": 12613
+    }
+  ],
+  "musicalPurposeHypotheses": {
+    "frequency": "Delayed word-frequency motion supplies vibrato or sweeps.",
+    "note": "Alternating note indices supply octave/fifth motion; index glide connects score notes.",
+    "onset": "Voice 1 substitutes a one-call high-frequency noise onset before restoring body pitch.",
+    "pulse": "Pulse widths can remain fixed with repeated writes or move between native bounds.",
+    "filter": "Owner-1 note resets create repeated short downward cutoff trajectories."
+  },
+  "limits": "Musical purpose is inferred from parameter/register motion and awaits listening. Helpers receive observed stage state; an independent integrated player remains required."
+}

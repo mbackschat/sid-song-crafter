@@ -1,6 +1,6 @@
 # Ghouls 'n' Ghosts: reference intake
 
-This preparation pins the C64 reference, preserves supported subtune attribution and establishes finite stream consumption for provisional selection **1**, followed by continued filter refresh. CPU execution covers 40,000 calls, with independent VICE comparisons at the opening and final stream stop. A 265-second initialized source render and contrasting Gauntlet III subtune intake are available. Selection 1's musical role, an independent score/synthesis model and reconstruction listening remain unresolved. Read the [Follin composer study](../composers/follin-daglish.md), [technique lookup](../technique-index.md) and [execution procedure](../tools/sid-program-analysis.md) before choosing a passage or implementing an instrument.
+This preparation pins the C64 reference, preserves supported subtune attribution and establishes finite stream consumption for provisional selection **1**, followed by continued filter refresh. CPU execution covers 40,000 calls, with independent VICE comparisons at the opening and final stream stop. A 265-second initialized source render and contrasting Gauntlet III subtune intake are available. Selection 1's musical role, a complete independent player and reconstruction listening remain unresolved. Read the [Follin composer study](../composers/follin-daglish.md), [technique lookup](../technique-index.md) and [execution procedure](../tools/sid-program-analysis.md) before choosing a passage or implementing an instrument.
 
 ## Reference identity
 
@@ -35,14 +35,16 @@ In [Stephen Ruddy's first-hand interview](https://www.c64.com/interviews/ruddy.h
 
 ## Reproduce the source listening material
 
-The [primary intake spec](../../../config/reference-intake/ghouls-primary.json) renders explicit subtune 1 from initialization for 265 seconds and prepares original excerpts at `[0,16)`, `[120,136)` and `[245,265)` seconds. This spans the observed finite score and leaves a post-stop window; it is not yet a reconstruction or a listener-approved ending. The spec also checks the opening 256 callable CPU entries rather than repeating the already retained 40,000-call form investigation.
+The [primary intake spec](../../../config/reference-intake/ghouls-primary.json) renders explicit subtune 1 from initialization for 265 seconds and prepares original excerpts at `[0,16)`, `[120,136)` and `[225,265)` seconds. This spans the observed finite score and leaves a post-stop window; it is not yet a reconstruction or a listener-approved ending. The spec also checks the opening 256 callable CPU entries rather than repeating the already retained 40,000-call form investigation.
 
 ```sh
 python3 scripts/setup-project.py --only references --include ghouls-n-ghosts
 python3 scripts/reference-intake.py run config/reference-intake/ghouls-primary.json --output build/reference-intake/ghouls-primary
 ```
 
-Open the generated `build/reference-intake/ghouls-primary/listening.md` for the full source WAV and excerpts. The [source receipt](../../../evidence/ghouls-render-intake/sourceA-measure.json) retains the audio fingerprint and settings: libsidplayfp 3.1.1/SIDLite, forced PAL, MOS6581, power-on delay zero, unity gain, 44.1 kHz mono PCM16. All 11,686,500 requested frames were rendered with nonzero AC signal and no PCM rail samples. The [executed run](../../../evidence/ghouls-render-intake/run.json) took 6.56 seconds on 2026-10-13, including 3.08 seconds for rendering. These are source-render measurements, not independent-player verification or a musical judgment. Audio remains local; the checked-in spec and [exact executed recipe](../../../evidence/ghouls-render-intake/recipe.json) preserve reproduction details.
+Open the generated `build/reference-intake/ghouls-primary/listening.md` for the full source WAV and excerpts. The [source receipt](../../../evidence/ghouls-render-intake/sourceA-measure.json) retains the audio fingerprint and settings: libsidplayfp 3.1.1/SIDLite, forced PAL, MOS6581, power-on delay zero, unity gain, 44.1 kHz mono PCM16. All 11,686,500 requested frames were rendered with nonzero AC signal and no PCM rail samples. The [executed run](../../../evidence/ghouls-render-intake/run.json) took 6.56 seconds on 2026-10-13, including 3.08 seconds for rendering. These are source-render measurements, not independent-player verification or a musical judgment. Audio remains local; the checked-in spec and [current executed recipe](../../../evidence/ghouls-render-intake/ending-expanded-recipe.json) preserve reproduction details.
+
+The ending window includes the final musical events before the long quiet tail. The [one-second source profile](../../../evidence/ghouls-render-intake/one-second-profile.json.gz) retains energy at `[231,234)`, `[235,237)` and `[246,247)`, separated by zero-AC intervals; all one-second windows from 247 to 265 seconds have zero AC RMS with a constant PCM16 offset of 157. Active score streams therefore do not imply continuous audible output. Preserve these gaps and compare from 225 seconds when checking the reconstruction; a final silent window alone cannot establish a complete ending. The [expanded-window receipt](../../../evidence/ghouls-render-intake/ending-expanded-window.json) pins this excerpt.
 
 ## Contrasting Gauntlet III intake
 
@@ -105,7 +107,36 @@ Backing audit RAM and CPU snapshots at the fixed pre-RTS boundary match at calls
 
 Independent VICE checks all initialization stores plus calls **12,989–13,002**: all **102** ordered stores agree (**58** init, **44** play), including post-stop filter writes. All 13,003 outer play-entry checkpoints stay within **eight** cycles of the PAL grid, inside the nine-cycle polling tolerance. The [projection](../../../evidence/ghouls-form/vice-stop/projection.json), [VICE study](../../../evidence/ghouls-form/vice-stop/trace/study.json) and [parsed trace](../../../evidence/ghouls-form/vice-stop/trace/trace.json.gz) own this bounded machine comparison. It does not establish full-span VICE equality, original-game IRQ behavior, rendered audio or selection 1's musical role.
 
-### Reproduce the form investigation
+## Independent score and sound boundaries
+
+The [score probe](../../../scripts/studies/ghouls/score-probe.py) independently expands the initialized score data through all 12,996 calls ending at call 12,995. It matches 4,998 ordered stream reads and every retained named scheduler state, schedules 1,988 positive notes and 785 commands across 18 executed command codes, and verifies all 785 setter effects plus 7,659 scheduler gate writes against fresh native execution. That native execution also matches the existing 86,314-store initialization/play prefix, including instruction-start cycles. The [score receipt](../../../evidence/ghouls-components/score/receipt.json) and [machine-readable grammar](../../../evidence/ghouls-components/score/contract.json) own the precise coverage; `$87`, `$93` and `$94` remain outside the executed contract.
+
+| Score rule | Proven behavior and authoring consequence |
+| --- | --- |
+| Per-call ordering | Each enabled voice runs continuing sound, decrements duration, processes gate/rest countdowns, then consumes score if duration reached zero. Commands execute in stream order during the same call until a note, rest or disable. Shared filter processing follows all voices. |
+| Note duration | A nonzero duration `D` advances again at onset call `N+D`. A zero duration advances after 256 calls because decrement precedes the zero test. |
+| Persistent duration override | `$84` with a nonzero operand supplies subsequent durations and omits their duration bytes. Zero restores explicit per-note duration bytes. Treating it as an ordinary one-note field loses stream alignment. |
+| Rest versus gate-off | Note byte zero reloads the rest counter without positive-note pitch/onset setup or immediate SID writes. The separate scheduler gate condition still controls release. No zero-note rest occurs in the selected original traversal; this behavior is established by a private bounded intervention. |
+| Pulse restart | Waveform commands set current and restart pulse directions; zero pulse defaults select a separate fallback word. Preserve these fields rather than replacing every note with a fixed pulse width. |
+
+The negative duration-plus-one model first reads at call 41 instead of 40; ignoring the persistent override loses grammar. Separate controlled source edits prove rest behavior and zero-duration advancement. The [expanded events](../../../evidence/ghouls-components/score/expanded.json.gz), [native boundaries](../../../evidence/ghouls-components/score/native-boundaries.json.gz) and [setter records](../../../evidence/ghouls-components/score/command-setters.json.gz) preserve the full evidence without original driver code or RAM dumps.
+
+The [sound probe](../../../scripts/studies/ghouls/sound-probe.py) supplies independent numeric helpers for delayed onset restoration, frequency-word motion, note-index alternation/glide, pulse motion, positive-note setup and shared cutoff motion. Each helper receives observed named input state, computes its new state and ordered stores, and compares them with the native routine boundary. All 170,648 contextual boundaries through call 12,995 and 18 isolated parameter checks pass; the fresh native ledger again matches the retained 86,314-store prefix. This is component verification, not yet an independently advancing complete player. The [sound receipt](../../../evidence/ghouls-components/sound/receipt.json), [boundary map](../../../evidence/ghouls-components/sound/boundary-map.json) and [full contextual proofs](../../../evidence/ghouls-components/sound/proofs.json.gz) retain the scope and actual state-changing paths separately from routine visits.
+
+Pitch lookup must retain the actual numeric words: executed indices extend beyond the ordinary pitch-table portion into adjacent data. They cannot all be converted to conventional note names without changing the original behavior. The executed lookup uses 79 indices from 19 through 108, including the adjacent-data mappings `97→8961`, `99→12545`, `102→16385` and `108→26369`.
+
+Pulse phase 1 disables its motion, while phases 0 and 255 admit the two directions; an admitted routine can still have a zero step. Use the boundary map's measured parameter and state changes when choosing a technique, then establish its musical value by listening.
+
+Filter output stores alone do not demonstrate a moving cutoff. Retain three per-voice filter restart phases even though cutoff state is shared; the helper's `reset_direction` is the currently selected owner's phase, and the observed traversal keeps owner 1.
+
+```sh
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 scripts/studies/ghouls/score-probe.py --output build/ghouls-score-new
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 scripts/studies/ghouls/sound-probe.py --output build/ghouls-sound-new
+```
+
+These source-specific research commands require fresh output directories and the pinned private source. They automate capture, independent calculations, retained-oracle comparisons and controlled checks. They do not export a production song. Next integrate the named score and sound state into one independently advancing numeric player with editable data; then compile, compare full renders and transfer selected programs to the familiar phrase. No reconstruction or instrument-reuse listening verdict follows from these component proofs.
+
+## Reproduce the form investigation
 
 Install the pinned reference through the setup command below, obtain the retained evidence scripts, and use a fresh working directory. The four research scripts create their outputs exclusively. The opening and full-span probes execute the existing guarded CPU; the control/provenance scripts only inspect retained observations and pinned source data.
 

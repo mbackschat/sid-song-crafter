@@ -1,0 +1,32 @@
+{
+  "durationPlusOne": {
+    "passed": false,
+    "boundary": "stream-reads",
+    "firstDifference": {
+      "index": 60,
+      "model": {
+        "kind": "dispatchRead",
+        "call": 41,
+        "voice": 2,
+        "address": 30646,
+        "value": 141,
+        "callDepth": 0,
+        "repeatRemaining": 3
+      },
+      "oracle": {
+        "kind": "dispatchRead",
+        "call": 40,
+        "voice": 2,
+        "address": 30646,
+        "value": 141,
+        "callDepth": 0,
+        "repeatRemaining": 3
+      }
+    }
+  },
+  "ignorePersistentOverride": {
+    "passed": false,
+    "boundary": "score-grammar",
+    "error": "Unexecuted/unsupported command $ff at $7859"
+  }
+}
