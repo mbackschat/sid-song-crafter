@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from sid_assembler import assemble
 
-spec = importlib.util.spec_from_file_location('cybernoid_analysis', ROOT / 'scripts/analyze-cybernoid.py')
+spec = importlib.util.spec_from_file_location('cybernoid_analysis', ROOT / 'scripts/studies/cybernoid/analyze-cybernoid.py')
 probe = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(probe)
 SOURCE = ROOT / '.local/research/cybernoid-ii/Cybernoid_II.sid'

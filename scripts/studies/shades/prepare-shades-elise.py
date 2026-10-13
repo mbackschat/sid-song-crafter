@@ -6,13 +6,17 @@ from fractions import Fraction
 import hashlib
 import json
 from pathlib import Path
+import sys
+
+
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / 'scripts'))
 
 from shades_player import score_module
 from shades_programs import Programs, State
 from verify_player import require
 
 
-ROOT = Path(__file__).resolve().parents[1]
 PAL_CLOCK = 985248
 TIMER_PERIOD = 12326
 END_BEAT = Fraction(12)

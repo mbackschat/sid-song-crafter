@@ -7,15 +7,17 @@ from pathlib import Path
 import re
 import sys
 
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / 'scripts'))
+
 from verify_player import require
 
-ROOT = Path(__file__).resolve().parents[1]
 STUDY = ROOT / 'songs/studies/drax-full-reconstruction'
 DEFAULT_RECIPE = STUDY / 'instrument.json'
 
 
-def load_script(name):
-    spec = importlib.util.spec_from_file_location(name.replace('-', '_'), ROOT / 'scripts' / f'{name}.py')
+def load_script(name, directory=ROOT / 'scripts'):
+    spec = importlib.util.spec_from_file_location(name.replace('-', '_'), directory / f'{name}.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
@@ -23,7 +25,7 @@ def load_script(name):
 
 bass = load_script('reconstruct-drax-bass')
 native = load_script('native-song')
-context = load_script('context-drax-bass')
+context = load_script('context-drax-bass', Path(__file__).parent)
 
 
 def build(path):

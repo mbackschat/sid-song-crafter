@@ -11,7 +11,7 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPT = ROOT / 'scripts/prepare-cybernoid-title.py'
+SCRIPT = ROOT / 'scripts/studies/cybernoid/prepare-cybernoid-title.py'
 SOURCE = ROOT / 'evidence/cybernoid-editable-data/title-runtime.json.gz'
 TITLE = ROOT / 'songs/cybernoid-title.json'
 SOURCE_SHA256 = 'e56ed96c2a4dd6e9bacbbddf25253537c9d783b63dd986f2e7aaeb1b78179816'

@@ -21,11 +21,11 @@ Pass `--phrasing songs/studies/elise-decoded-bass/phrasing.json` to the transfer
 After [native setup](../../../docs/workflows/native-song-workflow.md), run into a fresh directory:
 
 ```sh
-PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 scripts/transfer-drax-bass.py songs/studies/fuer-elise-interpretation/recipe-b.json --output build/elise-decoded-bass-listen/new --vice
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 scripts/studies/drax/transfer-drax-bass.py songs/studies/fuer-elise-interpretation/recipe-b.json --output build/elise-decoded-bass-listen/new --vice
 PYTHONPATH=.tools/test-deps python3 -m unittest discover -s tests -p drax_bass_transfer_test.py -v
 ```
 
-The [tool](../../../scripts/transfer-drax-bass.py) reuses the retained arrangement/export pipeline and decoded assembly. It obtains exact bass frequency words from executed native body frames and retains their note-start calls. The generated `bass.recipe.json` describes the source mechanism; `study.json` records its adaptation to hardware voice two, `$D407–$D40D`, filter routing `$F2`, and assembly at `$8000`. Editable parameters remain owned by the [instrument recipe](../drax-bass-reconstruction/instrument.json).
+The [tool](../../../scripts/studies/drax/transfer-drax-bass.py) reuses the retained arrangement/export pipeline and decoded assembly. It obtains exact bass frequency words from executed native body frames and retains their note-start calls. The generated `bass.recipe.json` describes the source mechanism; `study.json` records its adaptation to hardware voice two, `$D407–$D40D`, filter routing `$F2`, and assembly at `$8000`. Editable parameters remain owned by the [instrument recipe](../drax-bass-reconstruction/instrument.json).
 
 The musical change is the complete bass articulation: noise attack, broad computed PWM, bass-only filter and early GATE closure with continuing release. Original score gate lengths are intentionally replaced. Preserve this distinction when transferring the mechanism to another song.
 

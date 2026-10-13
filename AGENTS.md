@@ -16,6 +16,8 @@ Navigate operational guides through [docs/README.md](docs/README.md); use task-o
 
 Keep third-party checkouts in ignored `.tools/`, runtime state in `.local/`, and machine configuration in `.codex/`; track portable examples in `config/`.
 
+Follow [tool boundaries](scripts/README.md): shared workflows and supported composition backends remain in `scripts/`; source-specific extractors, experiments and fixed examples belong in [scripts/studies](scripts/studies/README.md). Document compatibility exceptions instead of breaking existing consumers or rewriting frozen provenance.
+
 ## Build, Test, and Development Commands
 
 From the repository root, install pinned assets with `python3 scripts/setup-project.py` and check readiness with `python3 scripts/doctor.py`. Read [skill corrections](docs/setup/skill-guidance.md) before using installed upstream instructions. After dependency setup in [README.md](README.md):

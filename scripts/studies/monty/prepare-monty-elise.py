@@ -7,12 +7,16 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import sys
+
+
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / 'scripts'))
 
 from monty_title_player import compute_writes
 from verify_player import require
 
 
-ROOT = Path(__file__).resolve().parents[1]
 PAL_CLOCK = Fraction(17734475, 18)
 FRAME_CYCLES = 19656
 CALL_SECONDS = FRAME_CYCLES / PAL_CLOCK

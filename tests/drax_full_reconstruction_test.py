@@ -8,7 +8,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-spec = importlib.util.spec_from_file_location('full_reconstruction', ROOT / 'scripts/reconstruct-drax-full.py')
+spec = importlib.util.spec_from_file_location('full_reconstruction', ROOT / 'scripts/studies/drax/reconstruct-drax-full.py')
 full = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(full)
 

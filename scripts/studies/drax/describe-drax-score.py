@@ -4,6 +4,10 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / 'scripts'))
 
 from psid_audit import audit_psid
 from verify_player import require

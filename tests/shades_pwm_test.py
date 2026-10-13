@@ -11,7 +11,7 @@ import wave
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-spec = importlib.util.spec_from_file_location('shades_pwm', ROOT / 'scripts/compare-shades-pwm.py')
+spec = importlib.util.spec_from_file_location('shades_pwm', ROOT / 'scripts/studies/shades/compare-shades-pwm.py')
 pwm = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pwm)
 

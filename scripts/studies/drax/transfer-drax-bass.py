@@ -10,21 +10,21 @@ from pathlib import Path
 import struct
 import sys
 
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / "scripts"))
+
 from audio_comparison import Pcm16, inspect_wav, measure_pcm, read_pcm16
 from verify_player import require
 
 
-ROOT = Path(__file__).resolve().parents[1]
-
-
-def load_script(name):
-    spec = importlib.util.spec_from_file_location(name.replace("-", "_"), ROOT / "scripts" / f"{name}.py")
+def load_script(name, directory=ROOT / "scripts"):
+    spec = importlib.util.spec_from_file_location(name.replace("-", "_"), directory / f"{name}.py")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
 
 
-context = load_script("context-drax-bass")
+context = load_script("context-drax-bass", Path(__file__).parent)
 reconstruction = context.reconstruction
 comparison = load_script("compare-native-patch")
 native = comparison.native_song

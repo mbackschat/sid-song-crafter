@@ -2,7 +2,7 @@
 
 Use this example for a moving-pulse bass with a brief noise attack, filtered harmonic replies and a pulse lead whose initial pitch stays clear. The [owning Cybernoid study](../cybernoid-ii-preparation.md) retains Jeroen Tel's music attribution, Charles Deenen's recovered-driver credit and the executed mechanism evidence. The [editable title](../../../../songs/cybernoid-title.json) supplies the numeric programs; preparation and playback need no original SID or captured-write replay.
 
-**Status, 2026-10-13:** the [bounded adapter](../../../../scripts/prepare-cybernoid-elise.py) and [source-free tests](../../../../tests/cybernoid_elise_transfer_test.py) verify the complete numeric models, source-event selection, lookup mapping, gaps, native gate timing and finite fade. Both compiled versions pass full CPU/VICE checks, including two stopped calls, and render unclipped with settled final seconds. The [audio recipe](../cybernoid-elise-audio.json) pins reproduction and the [listening package](../cybernoid-ii-preparation.md#listening-package-and-reproduction) supplies both references and candidates. The listener accepted this same-material pair: “Cybernoid version works musically,” in response to the question including its ending. This acceptance is separate from the numerical checks and does not establish hardware equivalence.
+**Status, 2026-10-13:** the [bounded adapter](../../../../scripts/studies/cybernoid/prepare-cybernoid-elise.py) and [source-free tests](../../../../tests/cybernoid_elise_transfer_test.py) verify the complete numeric models, source-event selection, lookup mapping, gaps, native gate timing and finite fade. Both compiled versions pass full CPU/VICE checks, including two stopped calls, and render unclipped with settled final seconds. The [audio recipe](../cybernoid-elise-audio.json) pins reproduction and the [listening package](../cybernoid-ii-preparation.md#listening-package-and-reproduction) supplies both references and candidates. The listener accepted this same-material pair: “Cybernoid version works musically,” in response to the question including its ending. This acceptance is separate from the numerical checks and does not establish hardware equivalence.
 
 ## Choose and edit the programs
 
@@ -39,9 +39,9 @@ Beat 12 rounds to call **501**. The arranged tail introduces no new rows: it for
 Verify the saved pair, or prepare and compile into fresh paths:
 
 ```sh
-python3 scripts/prepare-cybernoid-elise.py --check
+python3 scripts/studies/cybernoid/prepare-cybernoid-elise.py --check
 python3 -m unittest discover -s tests -p 'cybernoid_elise_transfer_test.py' -v
-python3 scripts/prepare-cybernoid-elise.py --transfer-output build/cybernoid-elise-reuse-new/transfer.json --reference-output build/cybernoid-elise-reuse-new/reference.json
+python3 scripts/studies/cybernoid/prepare-cybernoid-elise.py --transfer-output build/cybernoid-elise-reuse-new/transfer.json --reference-output build/cybernoid-elise-reuse-new/reference.json
 PYTHONPATH=.tools/test-deps python3 scripts/compose-cybernoid.py build/cybernoid-elise-reuse-new/transfer.json --output build/cybernoid-elise-reuse-new/candidate
 PYTHONPATH=.tools/test-deps python3 scripts/compose-cybernoid.py build/cybernoid-elise-reuse-new/reference.json --output build/cybernoid-elise-reuse-new/reference
 ```

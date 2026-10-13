@@ -62,7 +62,7 @@ Compilation computes PWM, vibrato, attack stages, releases and arpeggios; it inc
 The separate [Flashdance composition](../../songs/flashdance-decoded.json) describes the selected arrangement's entire 1,536-call score cycle plus two startup calls. Its [owning study](../research/composition/flashdance-preparation.md) distinguishes this abbreviated arrangement from the original song. Regenerate or check the portable description from the pinned local reference:
 
 ```sh
-PYTHONPATH=.tools/test-deps python3 scripts/describe-flashdance-score.py .local/research/flashdance/drax-flashdance-conversion.sid --composition --output songs/flashdance-decoded.json --check
+PYTHONPATH=.tools/test-deps python3 scripts/studies/flashdance/describe-flashdance-score.py .local/research/flashdance/drax-flashdance-conversion.sid --composition --output songs/flashdance-decoded.json --check
 ```
 
 Omit `--check` and choose a fresh output path to create a description. Importing verifies the reference identity and executed score consumption; subsequent model execution uses only JSON. `flashdance_player.compute_writes(description)` computes the selected comparison span, while an explicit `calls` includes the authored ending. These Python writes are a synthesis-model oracle, not a SID export or listening result.
@@ -112,11 +112,11 @@ During the ending, the row calendar and tempo countdown stay fixed while sound p
 Check the canonical preparation and build into a fresh directory:
 
 ```sh
-python3 scripts/prepare-cybernoid-title.py --output songs/cybernoid-title.json --check
+python3 scripts/studies/cybernoid/prepare-cybernoid-title.py --output songs/cybernoid-title.json --check
 python3 scripts/compose-cybernoid.py songs/cybernoid-title.json --output build/cybernoid-independent-new
 ```
 
-[prepare-cybernoid-title.py](../../scripts/prepare-cybernoid-title.py) verifies the pinned decompressed evidence fingerprint, retains the first traversal and numeric programs/cold state, removes nested derivation annotations and declares the added ending. To create an editable copy, use `python3 scripts/prepare-cybernoid-title.py --output build/cybernoid-prepared-new/title.json` with a fresh output path. Preparation and compilation require no original SID. `sourceEvidence` is nonexecuting provenance; changing it does not change synthesis. Original reference SIDs and WAVs remain under the [public repository boundary](../../AGENTS.md#public-repository-boundary).
+[prepare-cybernoid-title.py](../../scripts/studies/cybernoid/prepare-cybernoid-title.py) verifies the pinned decompressed evidence fingerprint, retains the first traversal and numeric programs/cold state, removes nested derivation annotations and declares the added ending. To create an editable copy, use `python3 scripts/studies/cybernoid/prepare-cybernoid-title.py --output build/cybernoid-prepared-new/title.json` with a fresh output path. Preparation and compilation require no original SID. `sourceEvidence` is nonexecuting provenance; changing it does not change synthesis. Original reference SIDs and WAVs remain under the [public repository boundary](../../AGENTS.md#public-repository-boundary).
 
 The compiler writes `reconstructed.sid`, assembly/listing, `build.json`, `audit.json` and ordered `writes.json`. By default it independently executes all declared music and ending calls and compares every ordered SID store with [the Python model](../../scripts/cybernoid_player.py). `--calls` selects a diagnostic prefix in 1–`play_calls`; it does not shorten the compiled description. Use the [callable PSID audit](../validation/psid-audit.md), real VICE cadence checks and the [audio workflow](audio-workflow.md) for their respective evidence. CPU/model agreement does not establish within-call bus timing, rendered sound or a listening verdict; retain those results in the owning study.
 
@@ -153,19 +153,19 @@ The [editable Monty title](../../songs/monty-title.json) retains the first compl
 Prepare the declared first cycle and build it without accessing the original SID:
 
 ```sh
-python3 scripts/prepare-monty-title-ending.py --check
-python3 scripts/prepare-monty-title-ending.py --output build/monty-title-prepared-new/title.json
+python3 scripts/studies/monty/prepare-monty-title-ending.py --check
+python3 scripts/studies/monty/prepare-monty-title-ending.py --output build/monty-title-prepared-new/title.json
 PYTHONPATH=.tools/test-deps python3 scripts/compose-monty.py build/monty-title-prepared-new/title.json --output build/monty-title-new
 ```
 
 Preparation binds the known cycle boundary to the pinned [numeric source description](../../songs/monty-title-source.json); edit the result for new arrangements. Re-extracting that numeric source uses [prepare-monty-title.py](../../scripts/prepare-monty-title.py) and the pinned local original, as documented in the study. The compiler emits SID, assembly/listing, build and CPU receipts, ordered writes and named-state checkpoints. Its default audit covers every declared call; `--calls` selects a diagnostic prefix without changing the composition.
 
-For instrument reuse, the [Monty familiar-transfer card](../research/composition/instruments/monty-decoded-programs.md) provides matching 53-note Für Elise descriptions and an honest generated plain reference. `python3 scripts/prepare-monty-elise.py --check` verifies both saved inputs. Native articulation and envelope/rest behavior remain explicit conversion limits; full execution and rendered signal health do not supply a musical verdict.
+For instrument reuse, the [Monty familiar-transfer card](../research/composition/instruments/monty-decoded-programs.md) provides matching 53-note Für Elise descriptions and an honest generated plain reference. `python3 scripts/studies/monty/prepare-monty-elise.py --check` verifies both saved inputs. Native articulation and envelope/rest behavior remain explicit conversion limits; full execution and rendered signal health do not supply a musical verdict.
 
 ### Other drivers
 
-[describe-drax-score.py](../../scripts/describe-drax-score.py) is a pinned, driver-specific transcriber, not a universal SID importer. It observes executed note consumption, instrument initialization and score gate-off, then verifies preparation and repeat behavior. Use `--check` to compare its output with the retained fixture. For another player, recover its corresponding readers and state transitions before adapting the decoder. [The Flashdance study](../research/composition/flashdance-preparation.md) demonstrates its own decoded mechanisms and independently authored dual-SID arrangement.
+[describe-drax-score.py](../../scripts/studies/drax/describe-drax-score.py) is a pinned, driver-specific transcriber, not a universal SID importer. It observes executed note consumption, instrument initialization and score gate-off, then verifies preparation and repeat behavior. Use `--check` to compare its output with the retained fixture. For another player, recover its corresponding readers and state transitions before adapting the decoder. [The Flashdance study](../research/composition/flashdance-preparation.md) demonstrates its own decoded mechanisms and independently authored dual-SID arrangement.
 
 The [Shades study](../research/composition/shades-preparation.md#reconstruction-boundary) distinguishes source comparison, compiled execution, CIA cadence, rendered audio and listening. A computed store ledger alone remains diagnostic output; the compiled backend above supplies separate CPU and VICE evidence.
 
-For an accepted transfer of the Shades instruments to familiar musical material, use the [Für Elise comparison](../research/composition/instruments/shades-decoded-programs.md#familiar-transfer-accepted) and its [exact recipe](../research/composition/shades-elise-audio.json). `python3 scripts/prepare-shades-elise.py --check` verifies the retained score and plain reference bank. The same 53 source events feed both renderings; this demonstrates reusable sound programs without requiring the listener to judge an invented composition. The older eight-bar invented transfer above remains historical evidence with an unaccepted ending.
+For an accepted transfer of the Shades instruments to familiar musical material, use the [Für Elise comparison](../research/composition/instruments/shades-decoded-programs.md#familiar-transfer-accepted) and its [exact recipe](../research/composition/shades-elise-audio.json). `python3 scripts/studies/shades/prepare-shades-elise.py --check` verifies the retained score and plain reference bank. The same 53 source events feed both renderings; this demonstrates reusable sound programs without requiring the listener to judge an invented composition. The older eight-bar invented transfer above remains historical evidence with an unaccepted ending.

@@ -9,12 +9,14 @@ import struct
 import sys
 import wave
 
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / "scripts"))
+
 from audio_comparison import inspect_wav, read_pcm16
 from psid_audit import audit_psid
 from verify_player import require
 
 
-ROOT = Path(__file__).resolve().parents[1]
 BASS_LOAD = 0x8000
 WRAPPER_INIT = 0x9000
 WRAPPER_PLAY = 0x9020

@@ -7,7 +7,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-spec = importlib.util.spec_from_file_location("transfer", ROOT / "scripts/transfer-drax-bass.py")
+spec = importlib.util.spec_from_file_location("transfer", ROOT / "scripts/studies/drax/transfer-drax-bass.py")
 transfer = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(transfer)
 

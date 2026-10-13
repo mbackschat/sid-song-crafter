@@ -12,7 +12,7 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-spec = importlib.util.spec_from_file_location('prepare_monty_elise', ROOT / 'scripts/prepare-monty-elise.py')
+spec = importlib.util.spec_from_file_location('prepare_monty_elise', ROOT / 'scripts/studies/monty/prepare-monty-elise.py')
 prepare = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(prepare)
 from monty_title_player import compute_player, compute_writes
@@ -152,7 +152,7 @@ class MontyEliseTransferTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             transfer = Path(directory) / 'transfer.json'
             reference = Path(directory) / 'reference.json'
-            command = [sys.executable, str(ROOT / 'scripts/prepare-monty-elise.py'),
+            command = [sys.executable, str(ROOT / 'scripts/studies/monty/prepare-monty-elise.py'),
                        '--transfer-output', str(transfer), '--reference-output', str(reference)]
             built = subprocess.run(command, capture_output=True, text=True)
             self.assertEqual(0, built.returncode, built.stderr)

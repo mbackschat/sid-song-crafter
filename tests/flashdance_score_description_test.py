@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import psid_audit
 
-spec = importlib.util.spec_from_file_location('describe_flashdance_score', ROOT / 'scripts/describe-flashdance-score.py')
+spec = importlib.util.spec_from_file_location('describe_flashdance_score', ROOT / 'scripts/studies/flashdance/describe-flashdance-score.py')
 decoder = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(decoder)
 SOURCE = ROOT / '.local/research/flashdance/drax-flashdance-conversion.sid'

@@ -11,11 +11,14 @@ import subprocess
 import sys
 import wave
 
+
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / 'scripts'))
+
 from audio_comparison import Pcm16, measure_pcm, read_pcm16
 from verify_player import require
 
 
-ROOT = Path(__file__).resolve().parents[1]
 TRACE_PATH = ROOT / 'scripts/trace-shades-vice.py'
 spec = importlib.util.spec_from_file_location('shades_cia_trace', TRACE_PATH)
 cia = importlib.util.module_from_spec(spec)

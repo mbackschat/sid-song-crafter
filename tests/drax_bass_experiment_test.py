@@ -10,7 +10,7 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-spec = importlib.util.spec_from_file_location("drax_bass_experiment", ROOT / "scripts/study-drax-bass.py")
+spec = importlib.util.spec_from_file_location("drax_bass_experiment", ROOT / "scripts/studies/drax/study-drax-bass.py")
 experiment = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(experiment)
 

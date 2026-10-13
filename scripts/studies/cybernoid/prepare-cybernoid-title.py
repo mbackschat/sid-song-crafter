@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[3]
 CANONICAL_EVIDENCE = 'evidence/cybernoid-editable-data/title-runtime.json.gz'
 CANONICAL_SHA256 = 'e56ed96c2a4dd6e9bacbbddf25253537c9d783b63dd986f2e7aaeb1b78179816'
 CYCLE_CALLS = 17280

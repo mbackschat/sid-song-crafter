@@ -5,12 +5,16 @@ from collections import Counter
 import hashlib
 import json
 from pathlib import Path
+import sys
+
+
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / 'scripts'))
 
 from psid_audit import audit_psid
 from verify_player import require
 
 
-ROOT = Path(__file__).resolve().parents[1]
 # The source pin is required because this navigation hook/state map comes from evidence/cybernoid-title-instructions/form-navigation.json.gz.
 HOOKS = dict(orderByte=0xa754, patternPointer=0xa7ad, patternStart=0xa7c0,
              patternHelper=0xa936, patternPeek=0xa8f6, patternEnd=0xa8fc,
@@ -176,7 +180,8 @@ def analyze_source(data, ticks):
     """Return receipt, compact events, exact call-state hashes and full ordered SID writes for the pinned title."""
     entry = verify_source(data)
     report, events, states, writes = _observe_form(data, ticks)
-    provenance = {name: digest((ROOT / 'scripts' / name).read_bytes()) for name in
+    provenance = {name: digest((Path(__file__) if name == 'analyze-cybernoid.py'
+                               else ROOT / 'scripts' / name).read_bytes()) for name in
                   ('analyze-cybernoid.py', 'psid_audit.py', 'psid_profile.py', 'verify_player.py')}
     receipt = dict(schemaVersion=1, classification='Bounded executed Cybernoid II title form navigation',
                    sourceSha256=digest(data), sourceRegistryEntry=entry,

@@ -53,10 +53,10 @@ The diagnostic solo A/B and editable A1/E2 transfer remain available for separat
 
 ## Hear the reconstruction in the original accompaniment
 
-The diagnostic bass comparison above mutes the other voices during rendering; it is not a separate stem extracted from the original mix. For a direct musical comparison, [context-drax-bass.py](../../../scripts/context-drax-bass.py) makes a bounded local hybrid: DRAX's original accompaniment and the independently computed bass execute on one emulated PAL MOS6581. The original voice-one stores are suppressed only during play; voices two and three retain their original driver calculations, ordered writes and values. The independent bass owns runtime filter/volume writes, including the original recipe's bass-only routing. Independent initialization runs before the unchanged original init, so initialization cannot erase accompaniment after it starts.
+The diagnostic bass comparison above mutes the other voices during rendering; it is not a separate stem extracted from the original mix. For a direct musical comparison, [context-drax-bass.py](../../../scripts/studies/drax/context-drax-bass.py) makes a bounded local hybrid: DRAX's original accompaniment and the independently computed bass execute on one emulated PAL MOS6581. The original voice-one stores are suppressed only during play; voices two and three retain their original driver calculations, ordered writes and values. The independent bass owns runtime filter/volume writes, including the original recipe's bass-only routing. Independent initialization runs before the unchanged original init, so initialization cannot erase accompaniment after it starts.
 
 ```sh
-PYTHONPATH=.tools/test-deps python3 scripts/context-drax-bass.py .local/research/fuer-elise/drax-fuer-elise.sid --output build/drax-bass-context/new
+PYTHONPATH=.tools/test-deps python3 scripts/studies/drax/context-drax-bass.py .local/research/fuer-elise/drax-fuer-elise.sid --output build/drax-bass-context/new
 PYTHONPATH=.tools/test-deps python3 -m unittest discover -s tests -p drax_bass_context_test.py -v
 ```
 

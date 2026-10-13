@@ -86,10 +86,10 @@ Listen to [original-then-static-pulse.wav](../../../build/shades-pwm-interventio
 
 On 2026-10-13 the listener said: **“original is little quieter and more vibrant”**. The measured window AC RMS is about 2,123 for moving pulse and 2,331 for frozen pulse, consistent with the reported level difference; both have peak 4,550. Retain moving pulse for this sound. The verdict supports this opening intervention only; it does not approve an independent player, the entire reconstruction or a transfer phrase.
 
-The [reusable comparison tool](../../../scripts/compare-shades-pwm.py) performs the one-byte patch and ordered-write isolation proof, optionally rendering and assembling the audition. The [portable audio recipe](shades-reference-audio.json) retains exact source/output hashes, renderer settings, frame boundaries and commands; reference SIDs and WAVs remain out of Git. Reproduction in [the retained tool receipt](../../../evidence/shades-pwm-reusable-final/comparison.json) produced a byte-identical comparison WAV and frozen-pulse render. The new 16-second baseline's PCM also matches the original 330-second render's prefix exactly.
+The [reusable comparison tool](../../../scripts/studies/shades/compare-shades-pwm.py) performs the one-byte patch and ordered-write isolation proof, optionally rendering and assembling the audition. The [portable audio recipe](shades-reference-audio.json) retains exact source/output hashes, renderer settings, frame boundaries and commands; reference SIDs and WAVs remain out of Git. Reproduction in [the retained tool receipt](../../../evidence/shades-pwm-reusable-final/comparison.json) produced a byte-identical comparison WAV and frozen-pulse render. The new 16-second baseline's PCM also matches the original 330-second render's prefix exactly.
 
 ```sh
-PYTHONPATH=.tools/test-deps python3 scripts/compare-shades-pwm.py .local/research/shades/Shades_filter_corrected.sid --output build/shades-pwm-new --render
+PYTHONPATH=.tools/test-deps python3 scripts/studies/shades/compare-shades-pwm.py .local/research/shades/Shades_filter_corrected.sid --output build/shades-pwm-new --render
 ```
 
 Optionally pass `--baseline-reference build/shades-reference-window/filter-corrected.wav` to verify the regenerated baseline against that initialized reference's PCM prefix. The metadata recipe includes the command for recreating the 330-second reference when it is absent.

@@ -7,7 +7,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-spec = importlib.util.spec_from_file_location('describe_drax_score', ROOT / 'scripts/describe-drax-score.py')
+spec = importlib.util.spec_from_file_location('describe_drax_score', ROOT / 'scripts/studies/drax/describe-drax-score.py')
 decoder = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(decoder)
 SOURCE = ROOT / '.local/research/fuer-elise/drax-fuer-elise.sid'

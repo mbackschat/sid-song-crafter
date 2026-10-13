@@ -11,12 +11,14 @@ from pathlib import Path
 import subprocess
 import sys
 
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / "scripts"))
+
 from audio_comparison import inspect_wav, prepare_comparison
 from psid_audit import audit_psid
 from verify_player import require
 
 
-ROOT = Path(__file__).resolve().parents[1]
 SOURCE_SHA256 = "ea6b7eba46844d399e415368eae86c3ddf03bd9041ecba93e7bb53b384daa2a1"
 PLAY_CALLS = 151
 RENDER_SECONDS = 3
@@ -220,7 +222,10 @@ def run_study(source, output, renderer=ROOT / ".local/bin/render-sid"):
         "playCalls": PLAY_CALLS,
         "renderSeconds": RENDER_SECONDS,
         "rendererSha256": renderer_sha,
-        "toolSha256": {name: sha256((ROOT / "scripts" / name).read_bytes()) for name in ("study-drax-bass.py", "psid_audit.py", "native-song.py", "audio_comparison.py", "render-sid.cpp")},
+        "toolSha256": {
+            str(Path(__file__).resolve().relative_to(ROOT)): sha256(Path(__file__).read_bytes()),
+            **{name: sha256((ROOT / "scripts" / name).read_bytes()) for name in ("psid_audit.py", "native-song.py", "audio_comparison.py", "render-sid.cpp")},
+        },
         "variants": artifacts,
         "registerGuards": guards,
         "comparisons": comparisons,

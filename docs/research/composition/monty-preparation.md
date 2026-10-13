@@ -122,7 +122,7 @@ The extraction check and four causal interventions require the pinned local orig
 
 ## Independent title export and finite ending
 
-[prepare-monty-title-ending.py](../../../scripts/prepare-monty-title-ending.py) preserves the first complete title cycle `[0,17536)` in the [finite description](../../../songs/monty-title.json), then adds 64 release calls and sixteen four-call fade levels. Source music lasts approximately **349.848 seconds**; the declared 17,664 calls end at **352.402 seconds**. This ending replaces the original order restart and introduces no new score notes. It is an optional arrangement; the listener's request to preserve the reference's continuation supersedes it as the reconstruction candidate.
+[prepare-monty-title-ending.py](../../../scripts/studies/monty/prepare-monty-title-ending.py) preserves the first complete title cycle `[0,17536)` in the [finite description](../../../songs/monty-title.json), then adds 64 release calls and sixteen four-call fade levels. Source music lasts approximately **349.848 seconds**; the declared 17,664 calls end at **352.402 seconds**. This ending replaces the original order restart and introduces no new score notes. It is an optional arrangement; the listener's request to preserve the reference's continuation supersedes it as the reconstruction candidate.
 
 [compose-monty.py](../../../scripts/compose-monty.py) assembles our [scheduler](../../../songs/players/monty.asm) and sound component with 58 packed patterns, three order lists and twenty editable instruments. The **5,351-byte** payload loads at `$1000`; it consumes rows and computes synthesis at runtime. Typed pointer tables resolve declared lookup aliases to current named state, without embedding the source RAM layout. Initialization restores voice/global state, the shared instrument bank and output-control shadows. No zero-page workspace is claimed from the caller. See the [public compiler contract](../../workflows/decoded-song-workflow.md#monty-packed-score-player) and [integration guards](../../../tests/monty_compiler_test.py).
 
@@ -176,7 +176,7 @@ python3 scripts/compare-audio.py window build/monty-reference-continuation-repro
 Rebuild the earlier finite title, verify real cadence and render the original/candidate in fresh paths:
 
 ```sh
-python3 scripts/prepare-monty-title-ending.py --check
+python3 scripts/studies/monty/prepare-monty-title-ending.py --check
 PYTHONPATH=.tools/test-deps python3 scripts/compose-monty.py songs/monty-title.json --output build/monty-title-reproduce/candidate
 python3 scripts/trace-sid-vice.py build/monty-title-reproduce/candidate/reconstructed.sid --oracle build/monty-title-reproduce/candidate/writes.json --first-call 0 --last-call 17665 --timeout 180 --output build/monty-title-reproduce/vice
 mkdir -p build/monty-title-reproduce/reference

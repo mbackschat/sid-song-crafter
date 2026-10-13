@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[3]
 SOURCE_DESCRIPTION_SHA256 = 'c1597b914360bc80d68323033423beb6286b95088e4d72f943bf53d8f89424fc'
 
 

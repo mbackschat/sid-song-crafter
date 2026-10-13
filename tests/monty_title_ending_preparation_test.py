@@ -8,7 +8,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-spec = importlib.util.spec_from_file_location('monty_title_ending', ROOT / 'scripts/prepare-monty-title-ending.py')
+spec = importlib.util.spec_from_file_location('monty_title_ending', ROOT / 'scripts/studies/monty/prepare-monty-title-ending.py')
 preparation = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(preparation)
 

@@ -11,7 +11,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-spec = importlib.util.spec_from_file_location('prepare_shades_elise', ROOT / 'scripts/prepare-shades-elise.py')
+spec = importlib.util.spec_from_file_location('prepare_shades_elise', ROOT / 'scripts/studies/shades/prepare-shades-elise.py')
 adapter = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(adapter)
 from shades_player import Player, compute, score_module
@@ -170,7 +170,7 @@ class ShadesEliseTransferTests(unittest.TestCase):
     def test_saved_fixtures_are_reproducible_and_check_detects_a_modified_fixture(self):
         self.assertEqual(self.score, read_song('shades-elise-transfer.json'))
         self.assertEqual(self.reference, read_song('shades-elise-reference-programs.json'))
-        command = [sys.executable, str(ROOT / 'scripts/prepare-shades-elise.py')]
+        command = [sys.executable, str(ROOT / 'scripts/studies/shades/prepare-shades-elise.py')]
         checked = subprocess.run(command + ['--check'], capture_output=True, text=True, cwd=ROOT)
         self.assertEqual(0, checked.returncode, checked.stderr)
         receipt = json.loads(checked.stdout)

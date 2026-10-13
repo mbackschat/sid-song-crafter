@@ -6,11 +6,14 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / 'scripts'))
 
 from verify_player import CYCLES_PER_FRAME, require
 
 
-ROOT = Path(__file__).resolve().parents[1]
 TRACK_ADDRESSES = (0x207b, 0x247b, 0x287b)
 FIRST_SCORE_CALL = 2
 CYCLE_CALLS = 1536

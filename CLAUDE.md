@@ -20,6 +20,8 @@ Commit autonomously after a coherent feature set or meaningful verified checkpoi
 
 Keep guides in task-oriented subfolders under [docs](docs/README.md), with navigation from its README. Keep research in its existing indexed folders. Use [local setup](docs/setup/local-setup.md) and `python3 scripts/doctor.py` for readiness; read [skill corrections](docs/setup/skill-guidance.md) before applying downloaded instructions.
 
+Follow the [tool boundaries](scripts/README.md): source-specific extractors, experiments and fixed examples belong under [scripts/studies](scripts/studies/README.md). Keep supported composition backends and shared validation APIs separate from their case-study inputs. Preserve documented compatibility exceptions and frozen evidence paths; relocation must not rewrite historical provenance.
+
 ## Retrieve before researching
 
 Start with the [technique lookup](docs/research/technique-index.md), then read only the relevant owning study. Search locally before new research. Reuse demonstrated methods after checking their model, timing, voice dependencies and listening verdict. Repair missing index routes.

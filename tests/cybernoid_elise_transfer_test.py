@@ -12,7 +12,7 @@ from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPT = ROOT / 'scripts/prepare-cybernoid-elise.py'
+SCRIPT = ROOT / 'scripts/studies/cybernoid/prepare-cybernoid-elise.py'
 sys.path.insert(0, str(ROOT / 'scripts'))
 from cybernoid_player import compute_writes
 
