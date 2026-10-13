@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d",
+  "checkerSha256": "46510bd38be6cd00b1fafb63e029b6f8ebde0a018bdd5775681607702b68cc50",
+  "observedProbeSha256": "7b25b743e4aec60e8bf3795eb2c148f84c6435a747f0222634bd6c59d14fc0a0",
+  "playCalls": 40000,
+  "dependencies": {
+    "tables.json": "25a5604436d8b332fc749eb09dc9fea8431e76149bc41e78b276cf9b74ccc309",
+    "events.json.gz": "776c2aaa1effe25b1a70dc53630297b2d90961534db8f5febf4a232d59b4748a",
+    "receipt.json": "efda147190016b9f8d78a22852a1a9b422bca43aff5d594f03b90a97219ddbfb"
+  },
+  "firstStopCall": 8480,
+  "comparisons": [
+    {
+      "component": "reads",
+      "records": 5100,
+      "comparedFields": [
+        "kind",
+        "call",
+        "voiceIndex",
+        "context",
+        "sourceAddress",
+        "sourceValue"
+      ],
+      "exact": true
+    },
+    {
+      "component": "selections",
+      "records": 87,
+      "comparedFields": [
+        "call",
+        "voiceIndex",
+        "patternId",
+        "patternPointer"
+      ],
+      "exact": true
+    },
+    {
+      "component": "rows",
+      "records": 1905,
+      "comparedFields": [
+        "call",
+        "voiceIndex",
+        "rowKind",
+        "value"
+      ],
+      "exact": true
+    },
+    {
+      "component": "notes",
+      "records": 1820,
+      "comparedFields": [
+        "call",
+        "voiceIndex",
+        "sourceNote",
+        "transpose",
+        "pitchIndex"
+      ],
+      "exact": true
+    },
+    {
+      "component": "instruments",
+      "records": 663,
+      "comparedFields": [
+        "call",
+        "voiceIndex",
+        "slot",
+        "recordOffset",
+        "fields"
+      ],
+      "exact": true
+    }
+  ],
+  "consumedDurationMutationRejected": true,
+  "distinctOpaquePatternTokens": [
+    144,
+    145,
+    146,
+    147,
+    148,
+    149
+  ],
+  "limits": [
+    "Independent score expansion consumes retained source tables, never observed events or SID stores as runtime input. Events are comparison oracle only.",
+    "This proves selected title consumption, timing, pattern/record selection and lookup-index agreement; it does not synthesize SID sound or prove acoustic form.",
+    "Opaque effect token semantics remain unnamed; only executed operand consumption is compared. Unencountered byte combinations and zero-duration scheduling are not separately validated.",
+    "Extraction boundaries and initial FF stub are pinned archive facts, not a general Daglish format specification."
+  ]
+}

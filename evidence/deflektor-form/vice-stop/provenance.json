@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "path": ".local/research/deflektor/Deflektor.sid",
+    "sha256": "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d",
+    "bytes": 4081
+  },
+  "tools": {
+    "scripts/trace-sid-vice.py": {
+      "sha256": "a00830a610baf13b0d355b65baf818cd8579fce27743e9015563a9c37138da0f",
+      "bytes": 16182
+    },
+    "scripts/psid_profile.py": {
+      "sha256": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+      "bytes": 4337
+    },
+    "scripts/sid_audit_host.py": {
+      "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+      "bytes": 3146
+    },
+    "scripts/verify_player.py": {
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+      "bytes": 9535
+    }
+  },
+  "artifacts": {
+    "projection.json": {
+      "sha256": "8f64fc1ab2962879204c6da85fcfd3f719faf4babf6b42ff9a88e31fe0a99c70",
+      "bytes": 440
+    },
+    "oracle.json": {
+      "sha256": "ec81b47a7df0b9581d2d8cebcc5f6b55e8bd4dbd50a1dd754e54d72e8abb97a5",
+      "bytes": 8987
+    },
+    "trace/study.json": {
+      "sha256": "953c8a4381c2e3deba2c61cf4bf6e288abd61af69f976147d47bae94bc29b9ca",
+      "bytes": 4903
+    },
+    "trace/trace.json": {
+      "sha256": "8515829c45bd23f64acff2807930aa79f41f56c4ba5d17bef94c0a1fcc308b83",
+      "bytes": 3026118
+    },
+    "trace/harness.prg": {
+      "sha256": "3dc2b3ae89aa591d53de78abb06d4526e23bc4870f24dc168bc93dd6450e2ee0",
+      "bytes": 114
+    }
+  },
+  "verification": {
+    "matchedWrites": 75,
+    "playCalls": 8489,
+    "firstCall": 8476,
+    "lastCall": 8488,
+    "frameCycles": 19656,
+    "maximumCadenceError": 7,
+    "cadenceTolerance": 9,
+    "matchedInitWrites": 0,
+    "matchedPlayWrites": 75
+  },
+  "limits": "A controlled RAM harness calls the original init/play once per PAL frame with IRQs, sprites and display DMA disabled. This is not the original player boot environment. Tracepoint stopwatch/raster values describe monitor checkpoints, not exact SID bus-write cycles. Store values are decoded from unchanged store-source CPU registers and checked against an independent ordered-write oracle. No audio or listening verdict follows from this trace."
+}

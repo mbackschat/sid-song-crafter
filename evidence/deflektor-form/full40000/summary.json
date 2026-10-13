@@ -1,0 +1,850 @@
+{
+  "schemaVersion": 1,
+  "playCalls": 40000,
+  "eventKinds": {
+    "channelEntry": 25441,
+    "patternRead": 4934,
+    "patternEnd": 190,
+    "orderAdvance": 140,
+    "orderRead": 166,
+    "transposeSet": 26,
+    "repeatSetBeforeDecrement": 26,
+    "patternSelection": 87,
+    "rowReload": 1905,
+    "instrumentSlot": 663,
+    "instrumentSelection": 663,
+    "noteSetup": 1820,
+    "rowExpire": 1905,
+    "patternRepeat": 102,
+    "globalStop": 1
+  },
+  "firstStopCall": 8480,
+  "stopEvent": {
+    "call": 8480,
+    "pc": 49888,
+    "voiceIndex": 0,
+    "instructionStartCycle": 215,
+    "cpu": {
+      "a": 255,
+      "x": 0,
+      "y": 51,
+      "sp": 251,
+      "p": 119,
+      "pc": 49888
+    },
+    "stateBefore": {
+      "voiceIndex": 0,
+      "orderCursor": 52,
+      "transpose": 5,
+      "patternCursor": 9,
+      "patternPointer": 53055,
+      "sidShadow": [
+        219,
+        26,
+        4,
+        14,
+        64,
+        10,
+        10
+      ],
+      "repeatCount": 0,
+      "rowCountdown": 0,
+      "driverC0B4": 0,
+      "releaseThreshold": 2,
+      "driverC0BA": 4,
+      "driverC0BD": 32,
+      "orderParameterC0C0": 0,
+      "driverC0C3": 0,
+      "driverC0C6": 8,
+      "driverC0C9": 5,
+      "driverC0CC": 0,
+      "driverC0CF": 0,
+      "driverC0D2": 1,
+      "driverC0D5": 0,
+      "driverC0D8": 0,
+      "driverC0DB": 0,
+      "driverC0DE": 0,
+      "driverC0E1": 0,
+      "driverC0E4": 0,
+      "restCountdown": 0,
+      "driverC0EA": 0,
+      "driverC0ED": 1,
+      "driverC0F0": 3,
+      "driverC0F3": 63,
+      "driverC0F6": 1,
+      "driverC0F9": 2,
+      "driverC0FC": 181,
+      "driverC0FF": 3,
+      "pitchIndex": 55
+    },
+    "kind": "globalStop",
+    "causedByEventIndex": 38067,
+    "sourceAddress": 51802,
+    "sourceValue": 255,
+    "playFlagBefore": 15
+  },
+  "selectedFormCallsInclusive": [
+    0,
+    8480
+  ],
+  "postStopObservedCalls": 31519,
+  "stopCallWrites": [
+    {
+      "phase": "play",
+      "tick": 8480,
+      "instructionStartCycle": 223,
+      "address": 54276,
+      "value": 0
+    },
+    {
+      "phase": "play",
+      "tick": 8480,
+      "instructionStartCycle": 227,
+      "address": 54283,
+      "value": 0
+    },
+    {
+      "phase": "play",
+      "tick": 8480,
+      "instructionStartCycle": 231,
+      "address": 54290,
+      "value": 0
+    }
+  ],
+  "noPostStopWrites": true,
+  "voices": [
+    {
+      "voiceIndex": 0,
+      "patternSelections": 36,
+      "executedPatternOrder": [
+        {
+          "call": 0,
+          "patternId": 26,
+          "orderCursor": 4
+        },
+        {
+          "call": 640,
+          "patternId": 0,
+          "orderCursor": 6
+        },
+        {
+          "call": 1280,
+          "patternId": 1,
+          "orderCursor": 8
+        },
+        {
+          "call": 1920,
+          "patternId": 0,
+          "orderCursor": 9
+        },
+        {
+          "call": 2000,
+          "patternId": 5,
+          "orderCursor": 10
+        },
+        {
+          "call": 2240,
+          "patternId": 0,
+          "orderCursor": 11
+        },
+        {
+          "call": 2320,
+          "patternId": 5,
+          "orderCursor": 12
+        },
+        {
+          "call": 2560,
+          "patternId": 6,
+          "orderCursor": 13
+        },
+        {
+          "call": 2640,
+          "patternId": 5,
+          "orderCursor": 14
+        },
+        {
+          "call": 2880,
+          "patternId": 6,
+          "orderCursor": 15
+        },
+        {
+          "call": 2960,
+          "patternId": 5,
+          "orderCursor": 16
+        },
+        {
+          "call": 3200,
+          "patternId": 7,
+          "orderCursor": 19
+        },
+        {
+          "call": 3520,
+          "patternId": 7,
+          "orderCursor": 22
+        },
+        {
+          "call": 3840,
+          "patternId": 8,
+          "orderCursor": 23
+        },
+        {
+          "call": 3920,
+          "patternId": 8,
+          "orderCursor": 24
+        },
+        {
+          "call": 4000,
+          "patternId": 11,
+          "orderCursor": 25
+        },
+        {
+          "call": 4080,
+          "patternId": 11,
+          "orderCursor": 26
+        },
+        {
+          "call": 4160,
+          "patternId": 9,
+          "orderCursor": 28
+        },
+        {
+          "call": 4280,
+          "patternId": 10,
+          "orderCursor": 29
+        },
+        {
+          "call": 4600,
+          "patternId": 10,
+          "orderCursor": 30
+        },
+        {
+          "call": 4920,
+          "patternId": 19,
+          "orderCursor": 31
+        },
+        {
+          "call": 5480,
+          "patternId": 23,
+          "orderCursor": 32
+        },
+        {
+          "call": 5800,
+          "patternId": 23,
+          "orderCursor": 33
+        },
+        {
+          "call": 6120,
+          "patternId": 24,
+          "orderCursor": 34
+        },
+        {
+          "call": 6440,
+          "patternId": 10,
+          "orderCursor": 37
+        },
+        {
+          "call": 6760,
+          "patternId": 10,
+          "orderCursor": 38
+        },
+        {
+          "call": 7080,
+          "patternId": 8,
+          "orderCursor": 39
+        },
+        {
+          "call": 7160,
+          "patternId": 8,
+          "orderCursor": 40
+        },
+        {
+          "call": 7240,
+          "patternId": 11,
+          "orderCursor": 41
+        },
+        {
+          "call": 7320,
+          "patternId": 11,
+          "orderCursor": 42
+        },
+        {
+          "call": 7400,
+          "patternId": 9,
+          "orderCursor": 44
+        },
+        {
+          "call": 7520,
+          "patternId": 31,
+          "orderCursor": 46
+        },
+        {
+          "call": 7760,
+          "patternId": 32,
+          "orderCursor": 47
+        },
+        {
+          "call": 7840,
+          "patternId": 31,
+          "orderCursor": 49
+        },
+        {
+          "call": 8080,
+          "patternId": 32,
+          "orderCursor": 50
+        },
+        {
+          "call": 8160,
+          "patternId": 35,
+          "orderCursor": 51
+        }
+      ],
+      "rows": 493,
+      "rowKinds": {
+        "rest": 18,
+        "note": 475
+      },
+      "rowDurationValues": [
+        5,
+        10,
+        15,
+        20,
+        30,
+        40,
+        45,
+        50,
+        55,
+        60,
+        80,
+        90,
+        130
+      ],
+      "patternIds": [
+        0,
+        1,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        19,
+        23,
+        24,
+        26,
+        31,
+        32,
+        35
+      ],
+      "instrumentSelectionCount": 93,
+      "recordIndices": [
+        0,
+        1,
+        2,
+        6
+      ],
+      "finalState": {
+        "voiceIndex": 0,
+        "orderCursor": 52,
+        "transpose": 5,
+        "patternCursor": 9,
+        "patternPointer": 53055,
+        "sidShadow": [
+          219,
+          26,
+          4,
+          14,
+          64,
+          10,
+          10
+        ],
+        "repeatCount": 0,
+        "rowCountdown": 0,
+        "driverC0B4": 0,
+        "releaseThreshold": 2,
+        "driverC0BA": 4,
+        "driverC0BD": 32,
+        "orderParameterC0C0": 0,
+        "driverC0C3": 0,
+        "driverC0C6": 8,
+        "driverC0C9": 5,
+        "driverC0CC": 0,
+        "driverC0CF": 0,
+        "driverC0D2": 1,
+        "driverC0D5": 0,
+        "driverC0D8": 0,
+        "driverC0DB": 0,
+        "driverC0DE": 0,
+        "driverC0E1": 0,
+        "driverC0E4": 0,
+        "restCountdown": 0,
+        "driverC0EA": 0,
+        "driverC0ED": 1,
+        "driverC0F0": 3,
+        "driverC0F3": 63,
+        "driverC0F6": 1,
+        "driverC0F9": 2,
+        "driverC0FC": 181,
+        "driverC0FF": 3,
+        "pitchIndex": 55
+      }
+    },
+    {
+      "voiceIndex": 1,
+      "patternSelections": 28,
+      "executedPatternOrder": [
+        {
+          "call": 0,
+          "patternId": 2,
+          "orderCursor": 4
+        },
+        {
+          "call": 1920,
+          "patternId": 4,
+          "orderCursor": 6
+        },
+        {
+          "call": 3840,
+          "patternId": 12,
+          "orderCursor": 8
+        },
+        {
+          "call": 4080,
+          "patternId": 13,
+          "orderCursor": 9
+        },
+        {
+          "call": 4120,
+          "patternId": 14,
+          "orderCursor": 11
+        },
+        {
+          "call": 4280,
+          "patternId": 4,
+          "orderCursor": 13
+        },
+        {
+          "call": 4920,
+          "patternId": 17,
+          "orderCursor": 14
+        },
+        {
+          "call": 5000,
+          "patternId": 17,
+          "orderCursor": 17
+        },
+        {
+          "call": 5080,
+          "patternId": 17,
+          "orderCursor": 20
+        },
+        {
+          "call": 5160,
+          "patternId": 18,
+          "orderCursor": 21
+        },
+        {
+          "call": 5240,
+          "patternId": 18,
+          "orderCursor": 24
+        },
+        {
+          "call": 5320,
+          "patternId": 14,
+          "orderCursor": 28
+        },
+        {
+          "call": 5480,
+          "patternId": 25,
+          "orderCursor": 29
+        },
+        {
+          "call": 5560,
+          "patternId": 25,
+          "orderCursor": 32
+        },
+        {
+          "call": 5640,
+          "patternId": 25,
+          "orderCursor": 35
+        },
+        {
+          "call": 5720,
+          "patternId": 27,
+          "orderCursor": 38
+        },
+        {
+          "call": 5800,
+          "patternId": 25,
+          "orderCursor": 39
+        },
+        {
+          "call": 5880,
+          "patternId": 25,
+          "orderCursor": 42
+        },
+        {
+          "call": 5960,
+          "patternId": 25,
+          "orderCursor": 45
+        },
+        {
+          "call": 6040,
+          "patternId": 25,
+          "orderCursor": 48
+        },
+        {
+          "call": 6120,
+          "patternId": 25,
+          "orderCursor": 52
+        },
+        {
+          "call": 6440,
+          "patternId": 4,
+          "orderCursor": 54
+        },
+        {
+          "call": 7080,
+          "patternId": 12,
+          "orderCursor": 56
+        },
+        {
+          "call": 7320,
+          "patternId": 13,
+          "orderCursor": 57
+        },
+        {
+          "call": 7360,
+          "patternId": 14,
+          "orderCursor": 59
+        },
+        {
+          "call": 7520,
+          "patternId": 30,
+          "orderCursor": 60
+        },
+        {
+          "call": 7840,
+          "patternId": 30,
+          "orderCursor": 61
+        },
+        {
+          "call": 8160,
+          "patternId": 34,
+          "orderCursor": 63
+        }
+      ],
+      "rows": 722,
+      "rowKinds": {
+        "note": 679,
+        "rest": 43
+      },
+      "rowDurationValues": [
+        5,
+        10,
+        20,
+        30,
+        50
+      ],
+      "patternIds": [
+        2,
+        4,
+        12,
+        13,
+        14,
+        17,
+        18,
+        25,
+        27,
+        30,
+        34
+      ],
+      "instrumentSelectionCount": 187,
+      "recordIndices": [
+        0,
+        1,
+        2,
+        3,
+        7
+      ],
+      "finalState": {
+        "voiceIndex": 1,
+        "orderCursor": 63,
+        "transpose": 237,
+        "patternCursor": 3,
+        "patternPointer": 53051,
+        "sidShadow": [
+          66,
+          3,
+          147,
+          2,
+          64,
+          5,
+          105
+        ],
+        "repeatCount": 0,
+        "rowCountdown": 0,
+        "driverC0B4": 0,
+        "releaseThreshold": 2,
+        "driverC0BA": 12,
+        "driverC0BD": 0,
+        "orderParameterC0C0": 0,
+        "driverC0C3": 0,
+        "driverC0C6": 0,
+        "driverC0C9": 0,
+        "driverC0CC": 0,
+        "driverC0CF": 1,
+        "driverC0D2": 1,
+        "driverC0D5": 0,
+        "driverC0D8": 0,
+        "driverC0DB": 0,
+        "driverC0DE": 0,
+        "driverC0E1": 0,
+        "driverC0E4": 0,
+        "restCountdown": 0,
+        "driverC0EA": 1,
+        "driverC0ED": 1,
+        "driverC0F0": 6,
+        "driverC0F3": 21,
+        "driverC0F6": 2,
+        "driverC0F9": 2,
+        "driverC0FC": 238,
+        "driverC0FF": 3,
+        "pitchIndex": 19
+      }
+    },
+    {
+      "voiceIndex": 2,
+      "patternSelections": 23,
+      "executedPatternOrder": [
+        {
+          "call": 0,
+          "patternId": 26,
+          "orderCursor": 4
+        },
+        {
+          "call": 1280,
+          "patternId": 3,
+          "orderCursor": 6
+        },
+        {
+          "call": 3840,
+          "patternId": 15,
+          "orderCursor": 8
+        },
+        {
+          "call": 4080,
+          "patternId": 16,
+          "orderCursor": 9
+        },
+        {
+          "call": 4280,
+          "patternId": 3,
+          "orderCursor": 11
+        },
+        {
+          "call": 4920,
+          "patternId": 20,
+          "orderCursor": 12
+        },
+        {
+          "call": 5000,
+          "patternId": 20,
+          "orderCursor": 15
+        },
+        {
+          "call": 5080,
+          "patternId": 20,
+          "orderCursor": 18
+        },
+        {
+          "call": 5160,
+          "patternId": 21,
+          "orderCursor": 19
+        },
+        {
+          "call": 5240,
+          "patternId": 21,
+          "orderCursor": 22
+        },
+        {
+          "call": 5320,
+          "patternId": 22,
+          "orderCursor": 25
+        },
+        {
+          "call": 5400,
+          "patternId": 0,
+          "orderCursor": 26
+        },
+        {
+          "call": 5480,
+          "patternId": 28,
+          "orderCursor": 27
+        },
+        {
+          "call": 5640,
+          "patternId": 28,
+          "orderCursor": 30
+        },
+        {
+          "call": 5800,
+          "patternId": 28,
+          "orderCursor": 33
+        },
+        {
+          "call": 5960,
+          "patternId": 28,
+          "orderCursor": 36
+        },
+        {
+          "call": 6120,
+          "patternId": 29,
+          "orderCursor": 40
+        },
+        {
+          "call": 6440,
+          "patternId": 3,
+          "orderCursor": 44
+        },
+        {
+          "call": 7080,
+          "patternId": 15,
+          "orderCursor": 46
+        },
+        {
+          "call": 7320,
+          "patternId": 16,
+          "orderCursor": 47
+        },
+        {
+          "call": 7520,
+          "patternId": 33,
+          "orderCursor": 48
+        },
+        {
+          "call": 7840,
+          "patternId": 33,
+          "orderCursor": 49
+        },
+        {
+          "call": 8160,
+          "patternId": 0,
+          "orderCursor": 51
+        }
+      ],
+      "rows": 690,
+      "rowKinds": {
+        "rest": 24,
+        "note": 666
+      },
+      "rowDurationValues": [
+        5,
+        10,
+        15,
+        20,
+        80
+      ],
+      "patternIds": [
+        0,
+        3,
+        15,
+        16,
+        20,
+        21,
+        22,
+        26,
+        28,
+        29,
+        33
+      ],
+      "instrumentSelectionCount": 383,
+      "recordIndices": [
+        0,
+        4,
+        5
+      ],
+      "finalState": {
+        "voiceIndex": 2,
+        "orderCursor": 51,
+        "transpose": 5,
+        "patternCursor": 9,
+        "patternPointer": 51993,
+        "sidShadow": [
+          16,
+          39,
+          171,
+          8,
+          128,
+          6,
+          10
+        ],
+        "repeatCount": 0,
+        "rowCountdown": 0,
+        "driverC0B4": 0,
+        "releaseThreshold": 2,
+        "driverC0BA": 0,
+        "driverC0BD": 0,
+        "orderParameterC0C0": 0,
+        "driverC0C3": 0,
+        "driverC0C6": 0,
+        "driverC0C9": 0,
+        "driverC0CC": 5,
+        "driverC0CF": 255,
+        "driverC0D2": 243,
+        "driverC0D5": 0,
+        "driverC0D8": 0,
+        "driverC0DB": 0,
+        "driverC0DE": 0,
+        "driverC0E1": 0,
+        "driverC0E4": 0,
+        "restCountdown": 0,
+        "driverC0EA": 0,
+        "driverC0ED": 1,
+        "driverC0F0": 255,
+        "driverC0F3": 127,
+        "driverC0F6": 0,
+        "driverC0F9": 0,
+        "driverC0FC": 253,
+        "driverC0FF": 0,
+        "pitchIndex": 62
+      }
+    }
+  ],
+  "exactMachineRepeatCount": 31518,
+  "firstExactMachineRepeats": [
+    {
+      "firstCall": 8481,
+      "repeatedCall": 8482,
+      "returnKind": "stopped"
+    },
+    {
+      "firstCall": 8481,
+      "repeatedCall": 8483,
+      "returnKind": "stopped"
+    },
+    {
+      "firstCall": 8481,
+      "repeatedCall": 8484,
+      "returnKind": "stopped"
+    },
+    {
+      "firstCall": 8481,
+      "repeatedCall": 8485,
+      "returnKind": "stopped"
+    },
+    {
+      "firstCall": 8481,
+      "repeatedCall": 8486,
+      "returnKind": "stopped"
+    }
+  ],
+  "repeatBasis": "SHA256(bytes(AuditMemory.data)+bytes([A,X,Y,SP,P])+PC.to_bytes(2,\"little\")), immediately before the final callable RTS; no normalization. Absolute instruction-cycle bookkeeping is not included.",
+  "limitations": [
+    "These are source-pinned title transport/order/row observations under the selected controlled banked host, not original IRQ/game execution or PCM identity.",
+    "Final-RTS snapshots are immediately before the actual final RTS, followed by successful guarded callable return; they are not post-RTS register snapshots.",
+    "Whole backing-memory/register hashes omit physical SID, CIA, VIC and analog state. Repeated stopped states are not a musical-loop claim.",
+    "Order and pattern tables retain exact numeric data; actual consumption events distinguish executed bytes from unconsumed suffixes. Sound-record field meanings and audible instrument attribution are not established.",
+    "Global stop clears three control registers but does not prove audible silence, envelope decay duration or a complete acoustic ending. No audio or listening test is included."
+  ]
+}

@@ -86,6 +86,8 @@ gzip -dk build/monty-form-new/full40000/audit.writes.json.gz
 python3 scripts/trace-sid-vice.py .local/monty-source.sid --profile pal-banked --subtune 1 --oracle build/monty-form-new/full40000/audit.writes.json --first-call 17530 --last-call 17543 --timeout 180 --output build/monty-form-new/vice-wrap
 ```
 
+The archive restoration command writes decompressed JSON to the manifest’s working paths. To rerun `check-hooks.py` or `describe.py` against retained records, copy the canonical `.json.gz` files into the corresponding working subfolders unchanged: these checkers read gzip files and pin their stored bytes. Fresh probe runs already produce that layout.
+
 Decompression restores the JSON oracle expected by VICE; the retained init-plus-window projection is also sufficient for this selected window. The existing source acquisition commands below install the SID, not the attributed listing. No reconstruction, render or listening question is part of this checkpoint.
 
 ## Reproduce without publishing the original

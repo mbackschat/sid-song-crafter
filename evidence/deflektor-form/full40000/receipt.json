@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d",
+  "sourceUrl": "https://www.hvsc.de/download/C64Music/MUSICIANS/D/Daglish_Ben/Deflektor.sid",
+  "sourceBytes": 4081,
+  "sourcePayloadExported": false,
+  "originalSidPath": ".local/research/deflektor/Deflektor.sid",
+  "executionProfile": {
+    "profile": "pal-banked",
+    "subtune": 1,
+    "hostBase": 1024
+  },
+  "calls": 40000,
+  "firstStopCall": 8480,
+  "toolSha256": "7b25b743e4aec60e8bf3795eb2c148f84c6435a747f0222634bd6c59d14fc0a0",
+  "dependencies": {
+    "psid_profile.py": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+    "psid_audit.py": "4446a19a325e625e59f100aac0b186478fb1633f65886b260db2ad3da11419a5",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "ramHashRecipe": "SHA256(bytes(AuditMemory.data)): all 65536 backing-memory bytes in ascending address order, including loaded source, stack and I/O write shadows; no normalization.",
+  "machineHashRecipe": "SHA256(bytes(AuditMemory.data)+bytes([A,X,Y,SP,P])+PC.to_bytes(2,\"little\")), immediately before the final callable RTS; no normalization. Absolute instruction-cycle bookkeeping is not included.",
+  "instructionsScope": "All init instructions, complete calls0..63, the first stop call and its next64 calls. Other calls retain every score hook/event, final named state/hashes and SID store, not a full instruction trace.",
+  "files": [
+    {
+      "path": "audit.json",
+      "bytes": 4191,
+      "sha256": "09e9900fac63a2efa9011733a13d920a921a3babacf4a948d45fa74e106baed2"
+    },
+    {
+      "path": "tables.json",
+      "bytes": 27355,
+      "sha256": "25a5604436d8b332fc749eb09dc9fea8431e76149bc41e78b276cf9b74ccc309"
+    },
+    {
+      "path": "initial-state.json",
+      "bytes": 3291,
+      "sha256": "d64b226588ada0b67b4408c7d6f000037408193dade2f08665ef8cffc1cd595d"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 17675,
+      "sha256": "572d982702ec01894ced9ca9a1fbd54827a18d8fc270a41db7e23728efb1d209"
+    },
+    {
+      "path": "events.json.gz",
+      "bytes": 1151865,
+      "sha256": "776c2aaa1effe25b1a70dc53630297b2d90961534db8f5febf4a232d59b4748a"
+    },
+    {
+      "path": "states.json.gz",
+      "bytes": 1730442,
+      "sha256": "3b5fc9904cdb384b2b2e214ba9cf709827e205b1be2d1270833ece542f518891"
+    },
+    {
+      "path": "instructions.json.gz",
+      "bytes": 88610,
+      "sha256": "f9d9fe8efd0d76e6435dd6f6a2c684019c535f7368768916881d50583bff3845"
+    },
+    {
+      "path": "writes.json.gz",
+      "bytes": 938563,
+      "sha256": "7c1ccca95afc19175b4efc50674f8f1e23783b0dcad525d5955a9cf85523fa00"
+    }
+  ]
+}

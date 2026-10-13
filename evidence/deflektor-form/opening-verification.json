@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d",
+  "firstCall": 0,
+  "lastCallInclusive": 63,
+  "instructionsMatched": 10284,
+  "writesMatched": 502,
+  "consumptionReadsMatched": 30,
+  "checkerSha256": "99efc03721077379dad275833cda9995d1e2b8ac1fe6b317a2693fe72b33c57c",
+  "traceToolSha256": "c12d79938e4db8ba65959443fd8e42b768160c53728d280bfd0fcf2a8f9d7569",
+  "dependencies": [
+    {
+      "path": "build/deflektor-form/opening-trace.json.gz",
+      "sha256": "09a1cd767a1d66830c5532d00780f5ee9b001f0bef0cc7c1519c3ea666006213"
+    },
+    {
+      "path": "build/deflektor-form/full40000/instructions.json.gz",
+      "sha256": "f9d9fe8efd0d76e6435dd6f6a2c684019c535f7368768916881d50583bff3845"
+    },
+    {
+      "path": "build/deflektor-form/full40000/writes.json.gz",
+      "sha256": "7c1ccca95afc19175b4efc50674f8f1e23783b0dcad525d5955a9cf85523fa00"
+    },
+    {
+      "path": "build/deflektor-form/full40000/events.json.gz",
+      "sha256": "776c2aaa1effe25b1a70dc53630297b2d90961534db8f5febf4a232d59b4748a"
+    }
+  ],
+  "limits": "The two observers share the guarded CPU implementation. This checks observation fidelity, not independent CPU execution or audio."
+}
