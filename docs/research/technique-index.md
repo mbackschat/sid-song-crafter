@@ -25,7 +25,7 @@ Start here before selecting instruments, arranging voices, explaining a techniqu
 | Metallic; bell; ring modulation; hard sync | Allocate carrier and modulator together; voice dependencies can consume accompaniment capacity. | [Coupled oscillators](sid/advanced-techniques.md#coupled-oscillators-and-combined-waveforms), [hardware semantics](sid/hardware.md) |
 | Filter movement; conflicting instruments; 6581 vs 8580 | Assign shared-filter ownership. Numeric settings do not guarantee the same sound across models. | [Filter design](sid/advanced-techniques.md#filter-and-mix-design), [BASS-02 routing example](composition/instruments/bass-02-kick-to-bass.md) |
 | Inconsistent attack; missing grace note; hard restart; ADSR | Check ordered writes and the player's onset contract before changing notation. | [Envelope constraints](sid/advanced-techniques.md#envelope-timing-is-part-of-the-instrument), [native onset findings](../songs/fuer-elise-native.md) |
-| Dual SID; six voices; separate filters | Arrange two intentional mix groups with an explicit address/model profile. | [Two-chip design](sid/dual-sid.md), [native build and fixture](../workflows/native-song-workflow.md) |
+| Dual SID; six voices; separate filters; competing second melody; harmonic support | Arrange intentional mix groups; align sustained support to chord-body changes and check the whole held span and lead-register overlap. | [Accepted Flashdance raw stereo and arrangement lesson](composition/flashdance-preparation.md#deliberate-dual-sid-interpretation), [two-chip design](sid/dual-sid.md), [native build and fixture](../workflows/native-song-workflow.md) |
 
 ## Execute or assess the choice
 

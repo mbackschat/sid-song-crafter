@@ -8,14 +8,14 @@ Each study must leave reusable instruments, effects or arrangement methods, with
 
 ## Scope and order
 
-**Active: Flashdance.** Then study one signature tune from each of the six historical composers already researched. Follow those with **two additional 1980s pop songs, Airwolf and Ghostbusters**, as confirmed by the user. DRAX is our existing baseline; [Åkesson](composers/linus-akesson.md) remains a supplementary reference.
+**Active: Shades.** Flashdance is complete for its declared DRAX arrangement, accepted dual-SID expansion and original transfer phrase. Continue with one signature tune from each of the six historical composers already researched. Follow those with **two additional 1980s pop songs, Airwolf and Ghostbusters**, as confirmed by the user. DRAX is our existing baseline; [Åkesson](composers/linus-akesson.md) remains a supplementary reference.
 
 These are recognizable signature candidates, not an asserted “number one” ranking: no comparable popularity chart was verified. Choose the final archive variant and musical subtune at intake. Questions below are investigation targets, not claims that their mechanisms have already been decoded.
 
 | Order / ID | Study and proposed reference | Learning target | State |
 | --- | --- | --- | --- |
-| 1 / F | [Flashdance: What a Feeling — DRAX](composition/flashdance-preparation.md), #1 | Staged waveform/PWM programs, evolving filtered bass, precise articulation; full arrangement and deliberate dual-SID expansion | Active: reconstruction and transfer reviewed; revised dual listening pending |
-| 2 / M1 | [Shades — Chris Hülsbeck](composers/huelsbeck-tel.md), #1 | Soundmonitor's instrument model; expressive modulation and original/corrected filter intent | Queued |
+| 1 / F | [Flashdance: What a Feeling — DRAX](composition/flashdance-preparation.md), #1 | Staged waveform/PWM programs, evolving filtered bass, precise articulation; full arrangement and deliberate dual-SID expansion | Done: reconstruction, raw stereo dual arrangement and original transfer reviewed |
+| 2 / M1 | [Shades — Chris Hülsbeck](composers/huelsbeck-tel.md#shades-reference-intake), #1 | Soundmonitor's instrument model; expressive modulation and original/corrected filter intent | Active: references pinned; CIA timing validation |
 | 3 / M2 | [Cybernoid II — Jeroen Tel](composers/huelsbeck-tel.md), title #1 | Groove, bass/drum time-sharing, delayed modulation; music/driver collaboration with Charles Deenen | Queued |
 | 4 / M3 | [Monty on the Run — Rob Hubbard](composers/hubbard-galway.md), #1 | Articulated lead, percussion substitutions, pitch effects and phrase development | Queued |
 | 5 / M4 | [Rambo: First Blood Part II — Martin Galway](composers/hubbard-galway.md), loader #1 | Sustained timbre evolution, introductory effects and original source-code hooks | Queued |
@@ -28,16 +28,20 @@ These are recognizable signature candidates, not an asserted “number one” ra
 
 The six composer rows have archive and published-account routes in the [listening catalogue](composers/listening-catalogue.md). *Shades* is selected for its documented breakthrough and editor connection; *The Great Giana Sisters* is the alternate if intake favors a more familiar game theme. Preserve collaborators and source-composition credits at subtune level.
 
-## Flashdance: next executable milestones
+## Flashdance: completed milestones
 
 - [x] **F1 — Pin musical scope.** The [selected form and ending contract](composition/flashdance-preparation.md#selected-form-and-ending-contract) pins calls 0–1537: startup, a four-bar opening variation and the first eight-bar Verse 1 span, with source omissions and arrangement differences documented. F4 verifies the declared release/fade. The deliverable remains the selected DRAX arrangement.
 - [x] **F2 — Describe one complete opening phrase.** The [portable diagnostic tracer](tools/sid-program-analysis.md#trace-the-pinned-flashdance-opening) reproduces all 9,345 initialization/opening sound writes for calls 0–513. The [editable score and waveform/pitch/PWM/filter programs](composition/flashdance-preparation.md#editable-full-span-model) cover the opening and the entire selected cycle; the independent Python scheduler matches all 27,905 initialization/full-span writes. Runtime controls are separate from source annotations. The deferred local form-analysis script, its tests and study README remain untouched and unstaged; portable tracing uses the existing tracked tracer instead.
 - [x] **F3 — Independently reconstruct and audition.** The [independent export](composition/flashdance-preparation.md#independent-export-and-listening) matches every selected reference sound-register write and passes headless VICE. The listener accepted the sound and phrasing on 2026-10-13: “yes, quite good.”
 - [x] **F4 — Cover the declared full form.** Editable source, independent SID and comparison audio cover every selected block through call 1537. The authored release/fade passes execution and settled-tail checks, and the same listening response accepts its ending. The deliverable remains explicitly the abbreviated DRAX arrangement.
-- [ ] **F5 — Compose dual SID (awaiting revised listening).** The [authored secondary parts and independent export](composition/flashdance-preparation.md#deliberate-dual-sid-interpretation) pass full CPU/VICE and stereo/mono health checks. After “I don't hear a difference” on the first mix, the revision raises the added parts' level and extends their articulation. The revised comparison, full mix and second-chip-only diagnostic are delivered; balance and musical preference remain pending.
+- [x] **F5 — Compose dual SID.** The [authored secondary parts and independent export](composition/flashdance-preparation.md#deliberate-dual-sid-interpretation) pass full CPU/VICE and stereo/mono health checks. Following audibility and cohesion revisions, the listener calls the full raw stereo arrangement “really good” and its stereo “convincing”. That A-left/B-right presentation is accepted; no separate preference is inferred for crossfed or mono alternatives.
 - [x] **F6 — Prove reuse.** The [instrument card](composition/instruments/flashdance-decoded-programs.md) documents supported parameters and links the [original C-major transfer phrase](../../songs/flashdance-transfer.json), which changes notes, rhythm and legato while reusing the computed programs. CPU, full VICE and settled-audio checks pass. The listener says it “Works,” while noting it does not resemble Flashdance; the separate original phrase intentionally tests reuse, not recognition.
 
 The [Flashdance owning study](composition/flashdance-preparation.md) records the concrete backend gaps. Its same-call restart and changing waveform/PWM programs differ from Elise; do not squeeze them into Elise's fixed preparation schedule.
+
+## Shades: next executable milestone
+
+The [reference intake](composers/huelsbeck-tel.md#shades-reference-intake) pins the corrected version as primary and the original as comparison, supported by Hülsbeck's filter-intent account. Both require CIA timing. Establish actual timer-driven playback and startup before mapping the complete form; the fixed PAL-frame tracer cannot supply that evidence unchanged. Historical Soundmonitor documentation guides hypotheses but does not establish binary-format compatibility. No reconstruction or mechanism promotion has started.
 
 ## Completion contract for every study
 
