@@ -28,7 +28,7 @@ The explicit `pal-banked` profile supports intact PSID headers with a one-based 
 python3 scripts/psid_audit.py .local/research/cybernoid-ii/Cybernoid_II.sid --profile pal-banked --subtune 1 --ticks 600 --output build/cybernoid-title-new/audit.json
 ```
 
-The API is `audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict', host_base=None)`. The profile describes a controlled raster-polling host, with explicit entry state shared by the [VICE tracer](../../scripts/trace-sid-vice.py):
+The API is `audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict', host_base=None, assume_sid_model=None)`. The profile describes a controlled raster-polling host, with explicit entry state shared by the [VICE tracer](../../scripts/trace-sid-vice.py):
 
 | Boundary | `pal-banked` contract |
 | --- | --- |
@@ -40,6 +40,14 @@ The API is `audit_psid(data, ticks, *, observer=None, subtune=None, profile='str
 | Timing | Play-body costs retain the 19,656-cycle bound; actual call cadence is checked separately in VICE. The CPU oracle does not emulate the raster poll or SID bus timing. |
 
 This entry contract is not libsidplayfp's IRQ entry: its inspected `psiddrv.a65` supplies A=0. Do not infer PCM or original-host identity from equality under the controlled raster host. [Cybernoid II's owning study](../research/composition/cybernoid-ii-preparation.md) retains the exact input, bank-selection basis and bounded execution evidence.
+
+## Keep an assumed SID model separate from the header
+
+For a single-SID PSID v2 that declares PAL but leaves its SID model unknown (flags `$0004`), `pal-banked` accepts an explicit `--assume-sid-model MOS6581` or `MOS8580`. Pass the same option to the CPU auditor, instruction tracer and VICE tracer; their APIs use `assume_sid_model`. The source header, payload and SHA-256 remain unchanged. Default admission still rejects an unknown model.
+
+The effective `sidModel`/`sids` fields describe the experiment, while `sidModelAssumption` records `{"declared": "unknown", "assumed": "MOS6581"}` (or `MOS8580`). This field appears only when an assumption was supplied. VICE selects the corresponding reSID model. Existing declared-model reports retain their shape; an assumption cannot override even a matching declaration. Strict, diagnostic, multi-SID, NTSC/ambiguous clock, MUS/PlaySID and CIA cases remain outside this option's contract.
+
+The [executed fixtures](../../tests/sid_model_assumption_test.py) verify both model choices, report provenance, unchanged source bytes, matching CPU/instruction/VICE stores and rejection of other unsupported headers. The RAM-only CPU does not synthesize the SID, so equal stores under both assumptions do not choose the better-sounding model or establish equivalent audio. A later listening comparison must keep the model assumption explicit in its render recipe. [Take On Me](../research/composition/pop-theme-preparation.md#take-on-me) is the motivating reference.
 
 ## Place the host around a high-RAM reference
 

@@ -1,6 +1,6 @@
 # Pop songs and TV/film themes: pinned intake
 
-This prepares the four later references in the [study plan](../study-plan.md) while Shades remains the active reconstruction. It establishes exact downloads, archive declarations and scoped attribution. Billie Jean has bounded CPU/VICE comparisons; Airwolf now also has a complete score cycle and an independent numeric model checked against two traversals. Independent arrangement/export, rendered comparison and listening remain pending for all four.
+This prepares the four later references in the [study plan](../study-plan.md) while Shades remains the active reconstruction. It establishes exact downloads, archive declarations and scoped attribution. Take On Me and Billie Jean have bounded CPU/VICE comparisons; Airwolf now also has a complete score cycle and an independent numeric model checked against two traversals. Independent arrangement/export, rendered comparison and listening remain pending for all four.
 
 ## Sources and attribution
 
@@ -21,14 +21,26 @@ All four use a 124-byte version-2 header with embedded load address. The table g
 
 | Reference | Bytes / payload extent | Init / play | Declared clock/model | Admission |
 | --- | --- | --- | --- | --- |
-| Take On Me | 2,948 / `$1000–$1B06` | `$1B00` / `$1003` | PAL; SID model unspecified; flags `$0004`; VBI speed word zero | Callable audit rejects unspecified model; no execution attempted |
+| Take On Me | 2,948 / `$1000–$1B06` | `$1B00` / `$1003` | PAL; SID model unspecified; flags `$0004`; VBI speed word zero | Unassumed audit rejects unknown model; explicit 6581/8580 experiments verified below |
 | Billie Jean | 3,883 / `$1000–$1EAD` | `$14A0` / `$1000` | PAL / 6581; flags `$0014`; VBI speed word zero | `pal-banked`, explicit #1, default host `$C000` |
 | Airwolf | 1,280 / `$3ADD–$3F5F` | `$3B25` / `$3ADD` | PAL / 6581; flags `$0014`; VBI speed word zero | `pal-banked`, explicit #1, default host `$C000` |
 | Ghostbusters | 6,310 / `$900D–$A835` | `$900D` / `$0000` | NTSC / 6581; RSID, flags `$0018` | Requires machine-controlled RSID execution; callable PAL audit rejects the format |
 
 ### Take On Me
 
-The source has PAL timing but no declared chip model. Keep that uncertainty in the original header and every reference record. A future model selection must be an explicit experiment assumption, distinct from archive metadata, with model comparisons where they matter audibly. Patching the header or silently inheriting the 6581 target from another study would erase that distinction. No source or playback quality judgment follows from this intake.
+The source has PAL timing but no declared chip model. Keep that uncertainty in the original header and every reference record. The [explicit model-assumption contract](../../validation/psid-audit.md#keep-an-assumed-sid-model-separate-from-the-header) now permits separate 6581 and 8580 experiments without changing the source. The metadata inspector still reports unknown model and rejected **unassumed** admission; it does not silently choose a chip.
+
+The [bounded experiment receipt](../../../evidence/take-on-me-model/checked/receipt.json) pins the unchanged source, tools and both assumptions. Initialization plus calls 0–63 produce identical CPU ledgers under both assumptions: **5 init and 1,116 play writes**, 375 init cycles, peak 1,205 play cycles and mean 686.171875. Independent headless VICE agrees with all **1,121** stores in each experiment, with maximum cadence error **7 / 9 cycles**. The separate [6581 report](../../../evidence/take-on-me-model/checked/MOS6581/vice/study.json) and [8580 report](../../../evidence/take-on-me-model/checked/MOS8580/vice/study.json) retain the effective model and `sidModelAssumption`; each exported private payload equals the original with its load prefix.
+
+The RAM-only auditor does not synthesize a SID, so equal numeric trajectories are expected across these assumptions and do not establish equal sound. No preferred model, full form, instrument interpretation, original-host equivalence or listening verdict follows. Choose an explicit model for later rendering and compare models audibly where relevant; never promote that choice into archive metadata.
+
+After the pinned download and dependency setup, reproduce both controlled experiments into a fresh directory:
+
+```sh
+PYTHONPATH=.tools/test-deps python3 evidence/take-on-me-model/probe.py --output build/take-on-me-model-new
+```
+
+The [probe](../../../evidence/take-on-me-model/probe.py) checks source/tool hashes, runs both CPU and VICE comparisons, verifies unchanged payloads, and records exact settings. It retains no original binary or reference audio in the public evidence archive.
 
 ### Billie Jean and Airwolf
 

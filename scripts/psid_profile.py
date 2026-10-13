@@ -11,7 +11,10 @@ class ExecutionProfile(str, Enum):
     PAL_BANKED = 'pal-banked'
 
 
-def psid_profile(data, *, subtune=None, profile='strict', host_base=None):
+SID_MODELS = ('MOS6581', 'MOS8580')
+
+
+def psid_profile(data, *, subtune=None, profile='strict', host_base=None, assume_sid_model=None):
     """Return payload, chip layout, selection and entry-bank parameters.
 
     Strict retains the single-subtune RAM contract. PAL banked requires an
@@ -19,6 +22,9 @@ def psid_profile(data, *, subtune=None, profile='strict', host_base=None):
     selected 512-byte caller workspace. An explicit caller base must be in
     always-visible lower RAM; the default remains $C000.
     Both profiles require callable entries and unchanged PAL VBI declarations.
+    PAL banked can explicitly assume a model for an unknown-model single-SID
+    v2 header. The returned provenance keeps that assumption separate from
+    the declaration; declared models cannot be overridden.
     """
     require(profile in tuple(ExecutionProfile), 'Unknown PSID execution profile')
     profile = ExecutionProfile(profile)
@@ -42,10 +48,16 @@ def psid_profile(data, *, subtune=None, profile='strict', host_base=None):
         host_base = DEFAULT_HOST_BASE if host_base is None else host_base
         selected, bank, upper = subtune, 0x36, 0xd000
     require(data[18:22] == bytes(4), 'CIA timing is unsupported; use a full C64 emulator')
+    if assume_sid_model is not None:
+        require(assume_sid_model in SID_MODELS, 'Assumed SID model must be MOS6581 or MOS8580')
+        require(profile is ExecutionProfile.PAL_BANKED and word(4) == 2 and word(118) == 0x04,
+                'SID model assumption requires pal-banked PSID v2 with PAL timing and an unknown model only')
     if word(4) == 2:
-        require(word(118) in (0x14, 0x24), 'Audit requires explicit PAL and one declared SID model without MUS/PlaySID flags')
+        require(word(118) in (0x14, 0x24) or assume_sid_model is not None,
+                'Audit requires explicit PAL and one declared SID model without MUS/PlaySID flags')
         require(data[122:124] == bytes(2), 'PSID v2 requires zero additional-SID fields')
-        sids = [{'baseAddress': 0xd400, 'model': 'MOS8580' if word(118) == 0x24 else 'MOS6581'}]
+        model = assume_sid_model if assume_sid_model is not None else ('MOS8580' if word(118) == 0x24 else 'MOS6581')
+        sids = [{'baseAddress': 0xd400, 'model': model}]
     else:
         require(word(4) == 3 and word(118) in (0x54, 0xa4) and data[122:124] == b'\x42\x00',
                 'Dual-SID audit requires PSID v3 PAL with two same-model MOS6581s or MOS8580s at $d400/$d420')
@@ -69,4 +81,6 @@ def psid_profile(data, *, subtune=None, profile='strict', host_base=None):
                 initAccumulator=selected - 1, entryBank=bank, profile=profile.value)
     if profile is ExecutionProfile.PAL_BANKED:
         result['hostBase'] = host_base
+    if assume_sid_model is not None:
+        result['sidModelAssumption'] = {'declared': 'unknown', 'assumed': assume_sid_model}
     return result

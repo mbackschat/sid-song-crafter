@@ -10,6 +10,7 @@ import re
 import subprocess
 
 from sid_audit_host import COUNTER, HARNESS_BASE, INIT_ACTIVE, harness
+from psid_profile import SID_MODELS
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,9 +22,9 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def psid_profile(data, *, subtune=None, profile='strict', host_base=None):
+def psid_profile(data, *, subtune=None, profile='strict', host_base=None, assume_sid_model=None):
     from psid_profile import psid_profile as validated_profile
-    result = validated_profile(data, subtune=subtune, profile=profile, host_base=host_base)
+    result = validated_profile(data, subtune=subtune, profile=profile, host_base=host_base, assume_sid_model=assume_sid_model)
     if result['profile'] == 'strict':
         # Existing callers serialize this shape; the explicit profile owns the
         # extra host fields without rewriting earlier strict-profile receipts.
@@ -204,7 +205,7 @@ def verify_trace(parsed, oracle, first, last):
     return result
 
 
-def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, subtune=None, profile='strict', host_base=None, timeout=60):
+def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, subtune=None, profile='strict', host_base=None, assume_sid_model=None, timeout=60):
     require(type(timeout) in (int, float) and timeout > 0, 'Timeout must be positive finite seconds')
     try:
         finite_timeout = math.isfinite(timeout)
@@ -212,7 +213,7 @@ def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, su
         finite_timeout = False
     require(finite_timeout, 'Timeout must be positive finite seconds')
     sid_bytes, oracle_bytes = sid.read_bytes(), oracle_path.read_bytes()
-    profile = psid_profile(sid_bytes, subtune=subtune, profile=profile, host_base=host_base)
+    profile = psid_profile(sid_bytes, subtune=subtune, profile=profile, host_base=host_base, assume_sid_model=assume_sid_model)
     program, labels = harness(profile, last + 1)
     require(not output.exists() and not output.is_symlink(), 'Choose a fresh trace output directory')
     output.mkdir(parents=True)
@@ -263,9 +264,10 @@ def main():
     parser.add_argument('--subtune', type=int, help='Explicit 1-based subtune selection')
     parser.add_argument('--profile', choices=('strict', 'pal-banked'), default='strict')
     parser.add_argument('--host-base', type=lambda value: int(value, 0), help='PAL banked host address; explicit low-RAM page, e.g. 0x0400')
+    parser.add_argument('--assume-sid-model', choices=SID_MODELS, help='Explicit experiment model for an unknown-model PAL PSID v2; pal-banked only')
     parser.add_argument('--timeout', type=float, default=60, help='Positive VICE wall-clock timeout in seconds (default: 60)')
     args = parser.parse_args()
-    result = run_trace(args.sid.resolve(), args.oracle.resolve(), args.output.resolve(), args.first_call, args.last_call, args.vice.resolve(), args.data.resolve(), subtune=args.subtune, profile=args.profile, host_base=args.host_base, timeout=args.timeout)
+    result = run_trace(args.sid.resolve(), args.oracle.resolve(), args.output.resolve(), args.first_call, args.last_call, args.vice.resolve(), args.data.resolve(), subtune=args.subtune, profile=args.profile, host_base=args.host_base, assume_sid_model=args.assume_sid_model, timeout=args.timeout)
     print(json.dumps(result, indent=2))
 
 

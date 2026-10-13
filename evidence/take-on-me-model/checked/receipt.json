@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "c7e45037d20c3b85d18fc955a1cdfb70041f08dfc171e9b12d1c3327300101e6",
+  "sourceUrl": "https://www.hvsc.de/download/C64Music/MUSICIANS/P/PVL/Take_on_Me.sid",
+  "declaredSidModel": "unknown",
+  "declaredFlags": 4,
+  "selectedSubtune": 1,
+  "playCalls": 64,
+  "sourceUnchanged": true,
+  "modelLedgersEqual": true,
+  "exportedPayloadsEqualOriginal": true,
+  "tools": {
+    "psid_profile.py": "c2c696db133ed024840cfa5edbc76e3a07ef1f30345cc1820c978a51a73c816d",
+    "psid_audit.py": "eeea11cdbb5159745f36802526ee2f2986d12fe19ce47b3609fedcf15f47e1bd",
+    "trace-sid-vice.py": "18a21e373d7dcd679771c256fa6d930106718246cb3e0c7647329d985eb73352",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "probeSha256": "40024bec0f20f61e9349c9d09d387e4e7ba0370c4fd5dd5f5759922af5053da9",
+  "comparisons": {
+    "MOS6581": {
+      "matchedWrites": 1121,
+      "playCalls": 64,
+      "firstCall": 0,
+      "lastCall": 63,
+      "frameCycles": 19656,
+      "maximumCadenceError": 7,
+      "cadenceTolerance": 9,
+      "matchedInitWrites": 5,
+      "matchedPlayWrites": 1116
+    },
+    "MOS8580": {
+      "matchedWrites": 1121,
+      "playCalls": 64,
+      "firstCall": 0,
+      "lastCall": 63,
+      "frameCycles": 19656,
+      "maximumCadenceError": 7,
+      "cadenceTolerance": 9,
+      "matchedInitWrites": 5,
+      "matchedPlayWrites": 1116
+    }
+  },
+  "artifacts": {
+    "MOS6581/audit.json": {
+      "sha256": "95ff6c61e14f5af8e95118f03a3f81385f29faa8a708f9950eb409a8d003642f",
+      "bytes": 3966
+    },
+    "MOS6581/writes.json": {
+      "sha256": "8b1dc080a1466658b9802c1da8d1f8abcd8ad06f2372fc089a0edfa3da347e4d",
+      "bytes": 131379
+    },
+    "MOS6581/vice/study.json": {
+      "sha256": "c3cca06b3ab32e1592116c851b49275a0389a670f24e2d31454c3ae4300a2dc1",
+      "bytes": 4368
+    },
+    "MOS6581/vice/trace.json": {
+      "sha256": "dfd1c893041f50179b28dbd7053a1fd71ef956d103b7245204fc8a2cec044962",
+      "bytes": 483811
+    },
+    "MOS6581/vice/command.json": {
+      "sha256": "694097b817cb504c30db9c4da82249a2baae9c14cec956e06e549fac7e831cde",
+      "bytes": 528
+    },
+    "MOS8580/audit.json": {
+      "sha256": "1999d54338ab5d05ead642699afeca4481f2309315fdff40ef250a57c8451834",
+      "bytes": 3966
+    },
+    "MOS8580/writes.json": {
+      "sha256": "8b1dc080a1466658b9802c1da8d1f8abcd8ad06f2372fc089a0edfa3da347e4d",
+      "bytes": 131379
+    },
+    "MOS8580/vice/study.json": {
+      "sha256": "cbab7037bbfa5e0849b21bb51aa7f361954e2bfb358aaf09e18bd39080e0d678",
+      "bytes": 4368
+    },
+    "MOS8580/vice/trace.json": {
+      "sha256": "dfd1c893041f50179b28dbd7053a1fd71ef956d103b7245204fc8a2cec044962",
+      "bytes": 483811
+    },
+    "MOS8580/vice/command.json": {
+      "sha256": "dd70e96432c9e867d0aac297410eed480a917f4935738ef8d521c40b48b928e7",
+      "bytes": 528
+    }
+  },
+  "limits": "Two explicit model assumptions, not a recovered model declaration or acoustic comparison. CPU execution is SID-model independent; VICE verifies ordered writes and cadence only. No full-form, original-host, render, listening or independent-reconstruction claim. Original SID and exported payloads remain private."
+}

@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "c7e45037d20c3b85d18fc955a1cdfb70041f08dfc171e9b12d1c3327300101e6",
+  "cpu": "py65 NMOS 6502",
+  "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+  "sidModel": "MOS6581",
+  "sidCount": 1,
+  "sids": [
+    {
+      "baseAddress": 54272,
+      "model": "MOS6581"
+    }
+  ],
+  "loadAddress": 4096,
+  "initAddress": 6912,
+  "playAddress": 4099,
+  "clockHz": 985248.6111111111,
+  "playCalls": 64,
+  "callRateHz": 50.12457321485099,
+  "initCycles": 375,
+  "maximumPlayCycles": 1205,
+  "meanPlayCycles": 686.171875,
+  "frameCycleBudget": 19656,
+  "initWriteCount": 5,
+  "playWriteCount": 1116,
+  "registers": {
+    "d400": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 45,
+      "maximum": 45
+    },
+    "d401": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 1,
+      "maximum": 1
+    },
+    "d402": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d403": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d404": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d405": {
+      "writes": 1,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d406": {
+      "writes": 1,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d407": {
+      "writes": 64,
+      "distinctValues": 3,
+      "minimum": 62,
+      "maximum": 156
+    },
+    "d408": {
+      "writes": 64,
+      "distinctValues": 3,
+      "minimum": 26,
+      "maximum": 42
+    },
+    "d409": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d40a": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d40b": {
+      "writes": 64,
+      "distinctValues": 2,
+      "minimum": 32,
+      "maximum": 33
+    },
+    "d40c": {
+      "writes": 8,
+      "distinctValues": 1,
+      "minimum": 2,
+      "maximum": 2
+    },
+    "d40d": {
+      "writes": 16,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 106
+    },
+    "d40e": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 45,
+      "maximum": 45
+    },
+    "d40f": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 1,
+      "maximum": 1
+    },
+    "d410": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d411": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d412": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d413": {
+      "writes": 1,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d414": {
+      "writes": 1,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d415": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d416": {
+      "writes": 64,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    }
+  },
+  "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment.",
+  "sidModelAssumption": {
+    "declared": "unknown",
+    "assumed": "MOS6581"
+  },
+  "executionProfile": "pal-banked",
+  "subtunes": 1,
+  "defaultSubtune": 1,
+  "selectedSubtune": 1,
+  "entryBank": 54,
+  "hostBase": 49152,
+  "initReturnAddress": 49210,
+  "playReturnAddress": 49229,
+  "entryStateBasis": "Controlled PAL raster host: init A=selection-1, X/Y=0, P=$26; play A=$FA, retained X/Y, CMP-equal C/Z set and N clear; bank $36 before each call; callable return words derive from the shared harness JSR labels"
+}

@@ -6,7 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from psid_profile import ExecutionProfile, psid_profile
+from psid_profile import ExecutionProfile, SID_MODELS, psid_profile
 from sid_audit_host import DEFAULT_HOST_BASE, HOST_SIZE, harness
 from verify_player import CYCLES_PER_FRAME, PAL_CLOCK, cpu_type, require
 
@@ -59,7 +59,7 @@ class BankedAuditMemory(AuditMemory):
         super().__setitem__(address, value)
 
 
-def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict', host_base=None):
+def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict', host_base=None, assume_sid_model=None):
     """Run init and bounded VBI calls; report execution evidence, not musical correctness.
 
     An optional read-only observer receives the CPU and memory immediately before
@@ -70,7 +70,7 @@ def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict', ho
     its protected workspace. It is not libsidplayfp IRQ execution.
     """
     require(type(ticks) is int and 1 <= ticks <= 100000, "Play-call count must be an integer from 1 to 100000")
-    parsed = psid_profile(data, subtune=subtune, profile=profile, host_base=host_base)
+    parsed = psid_profile(data, subtune=subtune, profile=profile, host_base=host_base, assume_sid_model=assume_sid_model)
     banked = parsed['profile'] == ExecutionProfile.PAL_BANKED.value
     load, init, play = (parsed[key] for key in ('loadAddress', 'initAddress', 'playAddress'))
     sids = parsed['sids']
@@ -136,6 +136,8 @@ def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict', ho
         "registers": {f"{address:04x}": {"writes": len(items), "distinctValues": len(set(items)), "minimum": min(items), "maximum": max(items)} for address, items in sorted(values.items())},
         "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment.",
     }
+    if assume_sid_model is not None:
+        report['sidModelAssumption'] = parsed['sidModelAssumption']
     if banked:
         report.update(executionProfile=parsed['profile'], subtunes=parsed['subtunes'],
                       defaultSubtune=parsed['defaultSubtune'], selectedSubtune=parsed['selectedSubtune'],
@@ -152,12 +154,13 @@ def main():
     parser.add_argument('--profile', choices=[profile.value for profile in ExecutionProfile], default='strict')
     parser.add_argument('--subtune', type=int, help='Explicit one-based selection; required for pal-banked')
     parser.add_argument('--host-base', type=lambda value: int(value, 0), help='Explicit page-aligned lower-RAM caller placement; pal-banked only')
+    parser.add_argument('--assume-sid-model', choices=SID_MODELS, help='Explicit experiment model for an unknown-model PAL PSID v2; pal-banked only')
     parser.add_argument("--output", type=Path, required=True, help="JSON report path; writes go in a sibling .writes.json file")
     args = parser.parse_args()
     writes_path = args.output.with_suffix(".writes.json")
     require(args.output.resolve() != args.sid.resolve() and writes_path.resolve() != args.sid.resolve(), "Output must not overwrite the input")
     require(not any(path.exists() or path.is_symlink() for path in (args.output, writes_path)), "Audit outputs already exist; choose a new output path")
-    report, writes = audit_psid(args.sid.read_bytes(), args.ticks, profile=args.profile, subtune=args.subtune, host_base=args.host_base)
+    report, writes = audit_psid(args.sid.read_bytes(), args.ticks, profile=args.profile, subtune=args.subtune, host_base=args.host_base, assume_sid_model=args.assume_sid_model)
     evidence = ((args.output, json.dumps(report, indent=2) + "\n"), (writes_path, json.dumps(writes, separators=(",", ":")) + "\n"))
     args.output.parent.mkdir(parents=True, exist_ok=True)
     created = []
