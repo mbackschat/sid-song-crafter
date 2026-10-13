@@ -6416,6 +6416,56 @@
       "originalBytes": 40914,
       "sha256": "c252d95abd10d80f87657aed4639a86154318f4507a4a6a54a013c9ab7fabebf",
       "bytes": 40914
+    },
+    {
+      "path": "evidence/ghouls-numeric/receipt.json",
+      "originalPath": "build/ghouls-numeric/primary/receipt.json",
+      "group": "ghouls-numeric",
+      "reason": "Complete independently advancing score/sound verification, terminal state and source/component fingerprints.",
+      "originalSha256": "0184470475d3632ebbad0d5d644dad129a05e872989368d6240db650fd435322",
+      "originalBytes": 58332,
+      "sha256": "0184470475d3632ebbad0d5d644dad129a05e872989368d6240db650fd435322",
+      "bytes": 58332
+    },
+    {
+      "path": "evidence/ghouls-numeric/writes.json.gz",
+      "originalPath": "build/ghouls-numeric/primary/writes.json",
+      "group": "ghouls-numeric",
+      "reason": "Lossless complete numeric ordered-store output for 13060 calls, including 64 post-stop calls.",
+      "originalSha256": "d4bf7f3fdb3d38ba90021986ea0766d730fc6d4d0ec2d7c2d600158558bddb87",
+      "originalBytes": 4830454,
+      "sha256": "dc3887eed6d305dbdf3ddadd61912683f6f99cb8eae8d40f2c80ad3b1bd01546",
+      "bytes": 265498
+    },
+    {
+      "path": "evidence/ghouls-numeric/ordered-store-comparison.json",
+      "originalPath": "build/ghouls-numeric/primary/ordered-store-comparison.json",
+      "group": "ghouls-numeric",
+      "reason": "Exact comparison of all 86442 ordered numeric stores against pinned original ledger.",
+      "originalSha256": "87be415ee9cc96b2e3c514e0f3efb9b829d03d602604909a3767d04322faf4bf",
+      "originalBytes": 1242,
+      "sha256": "87be415ee9cc96b2e3c514e0f3efb9b829d03d602604909a3767d04322faf4bf",
+      "bytes": 1242
+    },
+    {
+      "path": "evidence/ghouls-numeric/sound/receipt.json",
+      "originalPath": "build/ghouls-sound/promoted/receipt.json",
+      "group": "ghouls-numeric",
+      "reason": "Promoted pure-module proof with 20 controlled checks and full native context coverage; unchanged boundary/archive hashes link prior evidence.",
+      "originalSha256": "78af61cb12b43185d46fa32f8e039940f82982734b3b9c193b9c5b7457a24fb0",
+      "originalBytes": 2374,
+      "sha256": "78af61cb12b43185d46fa32f8e039940f82982734b3b9c193b9c5b7457a24fb0",
+      "bytes": 2374
+    },
+    {
+      "path": "evidence/ghouls-numeric/sound/controls.json",
+      "originalPath": "build/ghouls-sound/promoted/controls.json",
+      "group": "ghouls-numeric",
+      "reason": "Original-execution controlled sound cases including high-word filter borrow and output-bit folding.",
+      "originalSha256": "9d87ca22ee3c012901c95cc603af2d540400d2d1a35bc6bf90e309a66f600767",
+      "originalBytes": 43087,
+      "sha256": "9d87ca22ee3c012901c95cc603af2d540400d2d1a35bc6bf90e309a66f600767",
+      "bytes": 43087
     }
   ],
   "independentShadesSources": {

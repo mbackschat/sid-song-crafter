@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "check": "writes",
+  "passed": true,
+  "inputs": [
+    {
+      "label": "source",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/evidence/ghouls-form/full40000/audit.writes.json.gz",
+      "sha256": "addb073a5219e46d9c1bee8f9249b9d0e98936399d951ff2936a616f870dff14",
+      "decompressedSha256": "3b36cd135ca31aadb50321033a7bdb1c25ea2f2123e638fd72ebb3cd0823930f"
+    },
+    {
+      "label": "candidate",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghouls-numeric/primary/writes.json",
+      "sha256": "d4bf7f3fdb3d38ba90021986ea0766d730fc6d4d0ec2d7c2d600158558bddb87",
+      "decompressedSha256": "d4bf7f3fdb3d38ba90021986ea0766d730fc6d4d0ec2d7c2d600158558bddb87"
+    }
+  ],
+  "expectedSourceDecompressedSha256": "3b36cd135ca31aadb50321033a7bdb1c25ea2f2123e638fd72ebb3cd0823930f",
+  "scope": {
+    "initialization": true,
+    "playCalls": 13060,
+    "firstCall": 0,
+    "lastCallInclusive": 13059
+  },
+  "identityFields": [
+    "phase",
+    "tick",
+    "address",
+    "value"
+  ],
+  "matchedWrites": 86442,
+  "matchedInitWrites": 58,
+  "matchedPlayWrites": 86384,
+  "claims": {
+    "orderedRegisterWriteIdentity": true,
+    "busCycleIdentity": false,
+    "perceptualAgreement": false
+  }
+}

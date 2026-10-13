@@ -1,0 +1,1988 @@
+[
+  {
+    "stage": "frequency",
+    "voice": 0,
+    "changes": {
+      "frequency_step": 0
+    },
+    "before": {
+      "waveform": 129,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 1,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 95,
+      "target_note_index": 0,
+      "current_frequency": 64814,
+      "frequency_delay_remaining": 1,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 129,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 1,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 95,
+      "target_note_index": 0,
+      "current_frequency": 64814,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 255,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [
+      [
+        54272,
+        46
+      ],
+      [
+        54273,
+        253
+      ]
+    ],
+    "path": "down",
+    "matchedSource": true,
+    "purpose": "freeze word-frequency motion",
+    "baselineWrites": [
+      [
+        54272,
+        245
+      ],
+      [
+        54273,
+        252
+      ]
+    ],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "current_frequency": [
+        64757,
+        64814
+      ],
+      "frequency_step": [
+        57,
+        0
+      ]
+    }
+  },
+  {
+    "stage": "frequency",
+    "voice": 0,
+    "changes": {
+      "frequency_direction": 255
+    },
+    "before": {
+      "waveform": 129,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 1,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 95,
+      "target_note_index": 0,
+      "current_frequency": 64814,
+      "frequency_delay_remaining": 1,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 57,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 255,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 129,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 1,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 95,
+      "target_note_index": 0,
+      "current_frequency": 64871,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 255,
+      "frequency_half_reload": 0,
+      "frequency_step": 57,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 255,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [
+      [
+        54272,
+        103
+      ],
+      [
+        54273,
+        253
+      ]
+    ],
+    "path": "up",
+    "matchedSource": true,
+    "purpose": "reverse word-frequency motion",
+    "baselineWrites": [
+      [
+        54272,
+        245
+      ],
+      [
+        54273,
+        252
+      ]
+    ],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "current_frequency": [
+        64757,
+        64871
+      ],
+      "frequency_direction": [
+        0,
+        255
+      ]
+    }
+  },
+  {
+    "stage": "frequency",
+    "voice": 0,
+    "changes": {
+      "frequency_half_remaining": 1,
+      "frequency_half_reload": 2
+    },
+    "before": {
+      "waveform": 129,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 1,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 95,
+      "target_note_index": 0,
+      "current_frequency": 64814,
+      "frequency_delay_remaining": 1,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 1,
+      "frequency_half_reload": 2,
+      "frequency_step": 57,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 129,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 1,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 95,
+      "target_note_index": 0,
+      "current_frequency": 64757,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 4,
+      "frequency_half_reload": 2,
+      "frequency_step": 57,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 255,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [
+      [
+        54272,
+        245
+      ],
+      [
+        54273,
+        252
+      ]
+    ],
+    "path": "down-reverse",
+    "matchedSource": true,
+    "purpose": "reverse after countdown expiry",
+    "baselineWrites": [
+      [
+        54272,
+        245
+      ],
+      [
+        54273,
+        252
+      ]
+    ],
+    "writesDiffer": false,
+    "namedStateDiff": {
+      "frequency_half_remaining": [
+        255,
+        4
+      ],
+      "frequency_half_reload": [
+        0,
+        2
+      ],
+      "frequency_direction": [
+        0,
+        255
+      ]
+    }
+  },
+  {
+    "stage": "frequency",
+    "voice": 0,
+    "changes": {
+      "frequency_delay_remaining": 2
+    },
+    "before": {
+      "waveform": 129,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 1,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 95,
+      "target_note_index": 0,
+      "current_frequency": 64814,
+      "frequency_delay_remaining": 2,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 57,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 129,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 1,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 95,
+      "target_note_index": 0,
+      "current_frequency": 64814,
+      "frequency_delay_remaining": 1,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 57,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [],
+    "path": "delay",
+    "matchedSource": true,
+    "purpose": "defer word-frequency motion",
+    "baselineWrites": [
+      [
+        54272,
+        245
+      ],
+      [
+        54273,
+        252
+      ]
+    ],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "current_frequency": [
+        64757,
+        64814
+      ],
+      "frequency_delay_remaining": [
+        0,
+        1
+      ],
+      "frequency_half_remaining": [
+        255,
+        0
+      ]
+    }
+  },
+  {
+    "stage": "frequency",
+    "voice": 0,
+    "changes": {
+      "current_frequency": 65535,
+      "frequency_direction": 255,
+      "frequency_step": 1
+    },
+    "before": {
+      "waveform": 129,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 1,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 95,
+      "target_note_index": 0,
+      "current_frequency": 65535,
+      "frequency_delay_remaining": 1,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 1,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 255,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 129,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 1,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 95,
+      "target_note_index": 0,
+      "current_frequency": 65535,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 255,
+      "frequency_half_reload": 0,
+      "frequency_step": 1,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 255,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [
+      [
+        54272,
+        255
+      ],
+      [
+        54273,
+        255
+      ]
+    ],
+    "path": "up",
+    "matchedSource": true,
+    "purpose": "retain native high-byte wrap fallthrough",
+    "baselineWrites": [
+      [
+        54272,
+        245
+      ],
+      [
+        54273,
+        252
+      ]
+    ],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "current_frequency": [
+        64757,
+        65535
+      ],
+      "frequency_step": [
+        57,
+        1
+      ],
+      "frequency_direction": [
+        0,
+        255
+      ]
+    }
+  },
+  {
+    "stage": "note",
+    "voice": 2,
+    "changes": {
+      "note_step": 0
+    },
+    "before": {
+      "waveform": 1,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 0,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 1,
+      "note_negative_duration": 1,
+      "note_remaining": 1,
+      "glide_rate": 0,
+      "note_index": 80,
+      "target_note_index": 0,
+      "current_frequency": 27251,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 1,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 1,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 0,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 1,
+      "note_negative_duration": 1,
+      "note_remaining": 1,
+      "glide_rate": 0,
+      "note_index": 80,
+      "target_note_index": 0,
+      "current_frequency": 27251,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 1,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 255,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [
+      [
+        54286,
+        115
+      ],
+      [
+        54287,
+        106
+      ]
+    ],
+    "path": "alternate-up",
+    "matchedSource": true,
+    "purpose": "freeze automatic note alternation",
+    "baselineWrites": [
+      [
+        54286,
+        230
+      ],
+      [
+        54287,
+        212
+      ]
+    ],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "note_index": [
+        92,
+        80
+      ],
+      "current_frequency": [
+        54502,
+        27251
+      ],
+      "note_step": [
+        12,
+        0
+      ]
+    }
+  },
+  {
+    "stage": "note",
+    "voice": 2,
+    "changes": {
+      "note_step": 12
+    },
+    "before": {
+      "waveform": 1,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 0,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 1,
+      "note_negative_duration": 1,
+      "note_remaining": 1,
+      "glide_rate": 0,
+      "note_index": 80,
+      "target_note_index": 0,
+      "current_frequency": 27251,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 1,
+      "note_step": 12,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 1,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 0,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 1,
+      "note_negative_duration": 1,
+      "note_remaining": 1,
+      "glide_rate": 0,
+      "note_index": 92,
+      "target_note_index": 0,
+      "current_frequency": 54502,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 1,
+      "note_step": 12,
+      "frequency_direction": 0,
+      "note_direction": 255,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [
+      [
+        54286,
+        230
+      ],
+      [
+        54287,
+        212
+      ]
+    ],
+    "path": "alternate-up",
+    "matchedSource": true,
+    "purpose": "widen automatic note alternation",
+    "baselineWrites": [
+      [
+        54286,
+        230
+      ],
+      [
+        54287,
+        212
+      ]
+    ],
+    "writesDiffer": false,
+    "namedStateDiff": {}
+  },
+  {
+    "stage": "note",
+    "voice": 0,
+    "changes": {
+      "glide_rate": 2,
+      "note_index": 40,
+      "target_note_index": 41,
+      "note_remaining": 0
+    },
+    "before": {
+      "waveform": 0,
+      "gate_enabled": 0,
+      "rest_reload": 0,
+      "rest_remaining": 0,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 2,
+      "note_index": 40,
+      "target_note_index": 41,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 0,
+      "gate_enabled": 0,
+      "rest_reload": 0,
+      "rest_remaining": 0,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 2,
+      "note_index": 41,
+      "target_note_index": 41,
+      "current_frequency": 2864,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [
+      [
+        54272,
+        48
+      ],
+      [
+        54273,
+        11
+      ]
+    ],
+    "path": "glide-up",
+    "matchedSource": true,
+    "purpose": "clamp upward glide to target",
+    "baselineWrites": [],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "glide_rate": [
+        0,
+        2
+      ],
+      "note_index": [
+        0,
+        41
+      ],
+      "target_note_index": [
+        0,
+        41
+      ],
+      "current_frequency": [
+        0,
+        2864
+      ]
+    }
+  },
+  {
+    "stage": "note",
+    "voice": 0,
+    "changes": {
+      "glide_rate": 2,
+      "note_index": 40,
+      "target_note_index": 39,
+      "note_remaining": 0
+    },
+    "before": {
+      "waveform": 0,
+      "gate_enabled": 0,
+      "rest_reload": 0,
+      "rest_remaining": 0,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 2,
+      "note_index": 40,
+      "target_note_index": 39,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 0,
+      "gate_enabled": 0,
+      "rest_reload": 0,
+      "rest_remaining": 0,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 2,
+      "note_index": 39,
+      "target_note_index": 39,
+      "current_frequency": 2551,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [
+      [
+        54272,
+        247
+      ],
+      [
+        54273,
+        9
+      ]
+    ],
+    "path": "glide-down",
+    "matchedSource": true,
+    "purpose": "clamp downward glide to target",
+    "baselineWrites": [],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "glide_rate": [
+        0,
+        2
+      ],
+      "note_index": [
+        0,
+        39
+      ],
+      "target_note_index": [
+        0,
+        39
+      ],
+      "current_frequency": [
+        0,
+        2551
+      ]
+    }
+  },
+  {
+    "stage": "pulse",
+    "voice": 0,
+    "changes": {
+      "pulse_direction": 0,
+      "pulse_word": 768,
+      "pulse_step": 25
+    },
+    "before": {
+      "waveform": 0,
+      "gate_enabled": 0,
+      "rest_reload": 0,
+      "rest_remaining": 0,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 25,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 0,
+      "target_note_index": 0,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 0,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 0,
+      "gate_enabled": 0,
+      "rest_reload": 0,
+      "rest_remaining": 0,
+      "pulse_word": 743,
+      "pulse_default": 0,
+      "pulse_step": 25,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 0,
+      "target_note_index": 0,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 0,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [
+      [
+        54274,
+        231
+      ],
+      [
+        54275,
+        2
+      ]
+    ],
+    "path": "down",
+    "matchedSource": true,
+    "purpose": "activate downward pulse motion",
+    "baselineWrites": [],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "pulse_word": [
+        768,
+        743
+      ],
+      "pulse_step": [
+        0,
+        25
+      ],
+      "pulse_direction": [
+        1,
+        0
+      ]
+    }
+  },
+  {
+    "stage": "pulse",
+    "voice": 0,
+    "changes": {
+      "pulse_direction": 0,
+      "pulse_word": 100,
+      "pulse_step": 25
+    },
+    "before": {
+      "waveform": 0,
+      "gate_enabled": 0,
+      "rest_reload": 0,
+      "rest_remaining": 0,
+      "pulse_word": 100,
+      "pulse_default": 0,
+      "pulse_step": 25,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 0,
+      "target_note_index": 0,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 0,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 0,
+      "gate_enabled": 0,
+      "rest_reload": 0,
+      "rest_remaining": 0,
+      "pulse_word": 100,
+      "pulse_default": 0,
+      "pulse_step": 25,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 0,
+      "target_note_index": 0,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 255,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [
+      [
+        54274,
+        100
+      ],
+      [
+        54275,
+        0
+      ]
+    ],
+    "path": "lower-reverse",
+    "matchedSource": true,
+    "purpose": "undo lower-bound pulse overshoot",
+    "baselineWrites": [],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "pulse_word": [
+        768,
+        100
+      ],
+      "pulse_step": [
+        0,
+        25
+      ],
+      "pulse_direction": [
+        1,
+        255
+      ]
+    }
+  },
+  {
+    "stage": "pulse",
+    "voice": 0,
+    "changes": {
+      "pulse_direction": 255,
+      "pulse_word": 3990,
+      "pulse_step": 25
+    },
+    "before": {
+      "waveform": 0,
+      "gate_enabled": 0,
+      "rest_reload": 0,
+      "rest_remaining": 0,
+      "pulse_word": 3990,
+      "pulse_default": 0,
+      "pulse_step": 25,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 0,
+      "target_note_index": 0,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 255,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 0,
+      "gate_enabled": 0,
+      "rest_reload": 0,
+      "rest_remaining": 0,
+      "pulse_word": 3990,
+      "pulse_default": 0,
+      "pulse_step": 25,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 0,
+      "target_note_index": 0,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 0,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [
+      [
+        54274,
+        150
+      ],
+      [
+        54275,
+        15
+      ]
+    ],
+    "path": "up-upper-reverse",
+    "matchedSource": true,
+    "purpose": "undo upper-bound pulse overshoot",
+    "baselineWrites": [],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "pulse_word": [
+        768,
+        3990
+      ],
+      "pulse_step": [
+        0,
+        25
+      ],
+      "pulse_direction": [
+        1,
+        0
+      ]
+    }
+  },
+  {
+    "stage": "onset",
+    "voice": 0,
+    "changes": {
+      "onset_remaining": 1,
+      "gate_enabled": 1,
+      "waveform": 64
+    },
+    "before": {
+      "waveform": 64,
+      "gate_enabled": 1,
+      "rest_reload": 0,
+      "rest_remaining": 0,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 0,
+      "target_note_index": 0,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 1,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 64,
+      "gate_enabled": 1,
+      "rest_reload": 0,
+      "rest_remaining": 0,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 0,
+      "target_note_index": 0,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [
+      [
+        54272,
+        0
+      ],
+      [
+        54273,
+        0
+      ],
+      [
+        54276,
+        65
+      ]
+    ],
+    "path": "restore",
+    "matchedSource": true,
+    "purpose": "restore body pitch and gate",
+    "baselineWrites": [],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "waveform": [
+        0,
+        64
+      ],
+      "gate_enabled": [
+        0,
+        1
+      ]
+    }
+  },
+  {
+    "stage": "onset",
+    "voice": 0,
+    "changes": {
+      "onset_remaining": 2
+    },
+    "before": {
+      "waveform": 0,
+      "gate_enabled": 0,
+      "rest_reload": 0,
+      "rest_remaining": 0,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 0,
+      "target_note_index": 0,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 2,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 0,
+      "gate_enabled": 0,
+      "rest_reload": 0,
+      "rest_remaining": 0,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 0,
+      "onset_control": 0,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 0,
+      "target_note_index": 0,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 1,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [],
+    "path": "waiting",
+    "matchedSource": true,
+    "purpose": "retain staged onset before restoration",
+    "baselineWrites": [],
+    "writesDiffer": false,
+    "namedStateDiff": {
+      "onset_remaining": [
+        0,
+        1
+      ]
+    }
+  },
+  {
+    "stage": "setup",
+    "voice": 0,
+    "changes": {
+      "onset_delay": 2,
+      "onset_control": 128,
+      "onset_frequency": 20480,
+      "gate_enabled": 1
+    },
+    "before": {
+      "waveform": 129,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 0,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 2,
+      "onset_control": 128,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 0,
+      "target_note_index": 0,
+      "current_frequency": 0,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 0,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "after": {
+      "waveform": 129,
+      "gate_enabled": 1,
+      "rest_reload": 255,
+      "rest_remaining": 255,
+      "pulse_word": 768,
+      "pulse_default": 0,
+      "pulse_step": 0,
+      "transpose": 0,
+      "onset_delay": 2,
+      "onset_control": 128,
+      "onset_frequency": 20480,
+      "frequency_delay_reload": 0,
+      "note_positive_duration": 0,
+      "note_negative_duration": 0,
+      "note_remaining": 0,
+      "glide_rate": 0,
+      "note_index": 95,
+      "target_note_index": 0,
+      "current_frequency": 64814,
+      "frequency_delay_remaining": 0,
+      "frequency_direction_default": 0,
+      "frequency_half_remaining": 0,
+      "frequency_half_reload": 0,
+      "frequency_step": 0,
+      "onset_remaining": 2,
+      "gate_time": 255,
+      "note_step": 0,
+      "frequency_direction": 0,
+      "note_direction": 0,
+      "pulse_direction": 1,
+      "pulse_restart": 1,
+      "pitch_index_mode": 0
+    },
+    "writes": [
+      [
+        54272,
+        46
+      ],
+      [
+        54273,
+        253
+      ],
+      [
+        54272,
+        0
+      ],
+      [
+        54273,
+        80
+      ],
+      [
+        54276,
+        129
+      ]
+    ],
+    "path": "positive-note",
+    "matchedSource": true,
+    "purpose": "substitute a staged noise onset",
+    "baselineWrites": [
+      [
+        54272,
+        46
+      ],
+      [
+        54273,
+        253
+      ],
+      [
+        54276,
+        129
+      ]
+    ],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "onset_delay": [
+        0,
+        2
+      ],
+      "onset_control": [
+        0,
+        128
+      ],
+      "onset_remaining": [
+        0,
+        2
+      ]
+    }
+  },
+  {
+    "stage": "filter",
+    "voice": "shared",
+    "changes": {
+      "step": 8,
+      "word": 512,
+      "lower": 50,
+      "upper": 1229,
+      "direction": 0
+    },
+    "before": {
+      "word": 512,
+      "default": 256,
+      "step": 8,
+      "owner": 1,
+      "direction": 0,
+      "reset_direction": 0,
+      "lower": 50,
+      "upper": 1229
+    },
+    "after": {
+      "word": 504,
+      "default": 256,
+      "step": 8,
+      "owner": 1,
+      "direction": 0,
+      "reset_direction": 0,
+      "lower": 50,
+      "upper": 1229
+    },
+    "writes": [
+      [
+        54293,
+        248
+      ],
+      [
+        54294,
+        63
+      ]
+    ],
+    "path": "down",
+    "matchedSource": true,
+    "purpose": "move shared cutoff downward",
+    "baselineWrites": [
+      [
+        54293,
+        255
+      ],
+      [
+        54294,
+        31
+      ]
+    ],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "word": [
+        255,
+        504
+      ],
+      "step": [
+        1,
+        8
+      ],
+      "lower": [
+        0,
+        50
+      ],
+      "upper": [
+        1,
+        1229
+      ]
+    }
+  },
+  {
+    "stage": "filter",
+    "voice": "shared",
+    "changes": {
+      "step": 8,
+      "word": 50,
+      "lower": 50,
+      "upper": 1229,
+      "direction": 0
+    },
+    "before": {
+      "word": 50,
+      "default": 256,
+      "step": 8,
+      "owner": 1,
+      "direction": 0,
+      "reset_direction": 0,
+      "lower": 50,
+      "upper": 1229
+    },
+    "after": {
+      "word": 50,
+      "default": 256,
+      "step": 8,
+      "owner": 1,
+      "direction": 255,
+      "reset_direction": 0,
+      "lower": 50,
+      "upper": 1229
+    },
+    "writes": [
+      [
+        54293,
+        50
+      ],
+      [
+        54294,
+        6
+      ]
+    ],
+    "path": "lower-reverse/up",
+    "matchedSource": true,
+    "purpose": "undo lower-bound filter overshoot",
+    "baselineWrites": [
+      [
+        54293,
+        255
+      ],
+      [
+        54294,
+        31
+      ]
+    ],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "word": [
+        255,
+        50
+      ],
+      "step": [
+        1,
+        8
+      ],
+      "direction": [
+        0,
+        255
+      ],
+      "lower": [
+        0,
+        50
+      ],
+      "upper": [
+        1,
+        1229
+      ]
+    }
+  },
+  {
+    "stage": "filter",
+    "voice": "shared",
+    "changes": {
+      "step": 8,
+      "word": 1229,
+      "lower": 50,
+      "upper": 1229,
+      "direction": 255
+    },
+    "before": {
+      "word": 1229,
+      "default": 256,
+      "step": 8,
+      "owner": 1,
+      "direction": 255,
+      "reset_direction": 0,
+      "lower": 50,
+      "upper": 1229
+    },
+    "after": {
+      "word": 1229,
+      "default": 256,
+      "step": 8,
+      "owner": 1,
+      "direction": 0,
+      "reset_direction": 0,
+      "lower": 50,
+      "upper": 1229
+    },
+    "writes": [
+      [
+        54293,
+        205
+      ],
+      [
+        54294,
+        153
+      ]
+    ],
+    "path": "upper-reverse/down",
+    "matchedSource": true,
+    "purpose": "undo upper-bound filter overshoot",
+    "baselineWrites": [
+      [
+        54293,
+        255
+      ],
+      [
+        54294,
+        31
+      ]
+    ],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "word": [
+        255,
+        1229
+      ],
+      "step": [
+        1,
+        8
+      ],
+      "lower": [
+        0,
+        50
+      ],
+      "upper": [
+        1,
+        1229
+      ]
+    }
+  },
+  {
+    "stage": "filter",
+    "voice": "shared",
+    "changes": {
+      "step": 1,
+      "word": 32769,
+      "lower": 0,
+      "upper": 65535,
+      "direction": 0
+    },
+    "before": {
+      "word": 32769,
+      "default": 256,
+      "step": 1,
+      "owner": 1,
+      "direction": 0,
+      "reset_direction": 0,
+      "lower": 0,
+      "upper": 65535
+    },
+    "after": {
+      "word": 32768,
+      "default": 256,
+      "step": 1,
+      "owner": 1,
+      "direction": 0,
+      "reset_direction": 0,
+      "lower": 0,
+      "upper": 65535
+    },
+    "writes": [
+      [
+        54293,
+        0
+      ],
+      [
+        54294,
+        8
+      ]
+    ],
+    "path": "down",
+    "matchedSource": true,
+    "purpose": "retain negative high byte without low-byte borrow",
+    "baselineWrites": [
+      [
+        54293,
+        255
+      ],
+      [
+        54294,
+        31
+      ]
+    ],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "word": [
+        255,
+        32768
+      ],
+      "upper": [
+        1,
+        65535
+      ]
+    }
+  },
+  {
+    "stage": "filter",
+    "voice": "shared",
+    "changes": {
+      "step": 1,
+      "word": 33024,
+      "lower": 0,
+      "upper": 65535,
+      "direction": 0
+    },
+    "before": {
+      "word": 33024,
+      "default": 256,
+      "step": 1,
+      "owner": 1,
+      "direction": 0,
+      "reset_direction": 0,
+      "lower": 0,
+      "upper": 65535
+    },
+    "after": {
+      "word": 33024,
+      "default": 256,
+      "step": 1,
+      "owner": 1,
+      "direction": 255,
+      "reset_direction": 0,
+      "lower": 0,
+      "upper": 65535
+    },
+    "writes": [
+      [
+        54293,
+        0
+      ],
+      [
+        54294,
+        40
+      ]
+    ],
+    "path": "lower-reverse/up",
+    "matchedSource": true,
+    "purpose": "reverse negative high byte after low-byte borrow",
+    "baselineWrites": [
+      [
+        54293,
+        255
+      ],
+      [
+        54294,
+        31
+      ]
+    ],
+    "writesDiffer": true,
+    "namedStateDiff": {
+      "word": [
+        255,
+        33024
+      ],
+      "direction": [
+        0,
+        255
+      ],
+      "upper": [
+        1,
+        65535
+      ]
+    }
+  }
+]

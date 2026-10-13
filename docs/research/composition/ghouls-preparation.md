@@ -134,7 +134,30 @@ PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 scripts/studies/ghou
 PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 scripts/studies/ghouls/sound-probe.py --output build/ghouls-sound-new
 ```
 
-These source-specific research commands require fresh output directories and the pinned private source. They automate capture, independent calculations, retained-oracle comparisons and controlled checks. They do not export a production song. Next integrate the named score and sound state into one independently advancing numeric player with editable data; then compile, compare full renders and transfer selected programs to the familiar phrase. No reconstruction or instrument-reuse listening verdict follows from these component proofs.
+These source-specific research commands require fresh output directories and the pinned private source. They automate capture, independent calculations, retained-oracle comparisons and controlled checks. They do not export a production song. The complete numeric integration below now advances those components together; compilation, matched full renders and familiar-material transfer follow. No reconstruction or instrument-reuse listening verdict follows from these component proofs.
+
+## Independently advancing editable player
+
+The [numeric description](../../../songs/ghouls.json) contains 930 symbolic graph nodes, named initial score/sound/filter state and explicit frequency words. [The scheduler](../../../scripts/ghouls_score.py) consumes graph operations using live duration, repeat and call-stack state. [The complete player](../../../scripts/ghouls_player.py) advances continuing sound before score processing for each enabled voice and then advances the shared filter. Runtime imports neither the private SID nor the original CPU, native code or captured event ledger. `sourceEvidence` retains extraction provenance and can be removed without changing playback.
+
+The [complete verification](../../../evidence/ghouls-numeric/receipt.json) matches all **86,442 ordered initialization/play stores** against the original through 13,060 calls. Voice termination remains at calls 12,947, 12,971 and 12,995 in physical voice order 1, 3, 2. All 64 following calls preserve stopped named state while emitting `$D415=0`, then `$D416=0`. The [lossless numeric output](../../../evidence/ghouls-numeric/writes.json.gz) and [store comparison](../../../evidence/ghouls-numeric/ordered-store-comparison.json) retain that full scope. This is independently advancing numeric behavior; compiled CPU/VICE execution, SID internals, audio identity and musical acceptance are separate checks.
+
+The promoted [sound module](../../../scripts/ghouls_programs.py) is also the implementation imported by the research probe, avoiding two maintained copies of its arithmetic. Its [fresh source receipt](../../../evidence/ghouls-numeric/sound/receipt.json) retains 170,648 passing native boundary contexts and 20 controlled checks. The contextual proof, native ledger, audit and boundary-map hashes are unchanged from [the component evidence](../../../evidence/ghouls-components/sound/receipt.json); those large records are reused rather than duplicated. The [expanded controls](../../../evidence/ghouls-numeric/sound/controls.json) add two cases needed when editing full-width filter words:
+
+| Editable boundary | Proven arithmetic |
+| --- | --- |
+| Downward filter subtraction | Test the high-byte sign for reversal only after low-byte borrow. A negative high byte alone is insufficient. |
+| Filter register output | Preserve native high-bit folding: with `lo = word & 255` and `hi = word >> 8`, `$D415 = lo` and `$D416 = ((hi & 7) << 5) | (hi >> 4) | (lo >> 3)`. A conventional eleven-bit shift differs for larger retained words. |
+
+Sound admission validates byte/word fields and supported pulse phases; every accessed lookup index must exist. Same-call score consumption and oscillating filter arithmetic have bounded failure paths. Missing grammar variants fail explicitly: the extracted graph retains observed stream/override contexts, so an edit that changes grammar mode must supply its corresponding variant. Unsupported native opcodes remain outside this description's contract.
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/studies/ghouls/prepare-ghouls.py --output build/ghouls-description-new.json
+python3 scripts/studies/ghouls/check-ghouls-player.py --output build/ghouls-numeric-new
+python3 -m unittest discover -s tests -p ghouls_player_test.py -v
+```
+
+Extraction requires the pinned private SID and a fresh output path. Numeric verification requires only the editable description and canonical original ledger; it does not recapture or execute the original. The extractor stays under [study tools](../../../scripts/studies/README.md), while the source-free runtime serves editable compositions. Full export, listening and a familiar-material transfer must still establish the useful musical scope of this implementation family.
 
 ## Reproduce the form investigation
 
