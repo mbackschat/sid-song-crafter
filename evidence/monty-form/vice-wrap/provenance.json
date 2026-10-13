@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "path": ".local/monty-source.sid",
+    "sha256": "528a7330817e4a0a0f75a505e9fe2444e07c5072ce5383ceaa89f183f0eee3ab",
+    "bytes": 5694
+  },
+  "tools": {
+    "scripts/trace-sid-vice.py": {
+      "sha256": "a00830a610baf13b0d355b65baf818cd8579fce27743e9015563a9c37138da0f",
+      "bytes": 16182
+    },
+    "scripts/psid_profile.py": {
+      "sha256": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+      "bytes": 4337
+    },
+    "scripts/sid_audit_host.py": {
+      "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+      "bytes": 3146
+    },
+    "scripts/verify_player.py": {
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+      "bytes": 9535
+    }
+  },
+  "artifacts": {
+    "projection.json": {
+      "sha256": "a38cf83ce58bb38308703bd83d7327e87ac6aa4384521a2413c7c8682bd75a2b",
+      "bytes": 445
+    },
+    "oracle.json": {
+      "sha256": "0a1686e4d287ee290243939c28bb8238ee0bc4fbdd1c0976a5b94fce03c5e981",
+      "bytes": 12669
+    },
+    "trace/study.json": {
+      "sha256": "64a5de0beddf36b6b2b2ee5656c394a95ba52ac0f2daaf428f3500d8788b325a",
+      "bytes": 5735
+    },
+    "trace/trace.json": {
+      "sha256": "8628a28d38f6a9a7cd1a6ff0332f52fc32fe1b059983f2035911959507366b33",
+      "bytes": 6270176
+    },
+    "trace/harness.prg": {
+      "sha256": "c579de03ecd44b9bfb5e3f9f41ff86840bb8595f3ffcfecf6b647fae3947e658",
+      "bytes": 114
+    }
+  },
+  "verification": {
+    "matchedWrites": 149,
+    "playCalls": 17544,
+    "firstCall": 17530,
+    "lastCall": 17543,
+    "frameCycles": 19656,
+    "maximumCadenceError": 7,
+    "cadenceTolerance": 9,
+    "matchedInitWrites": 3,
+    "matchedPlayWrites": 146
+  },
+  "limits": "A controlled RAM harness calls the original init/play once per PAL frame with IRQs, sprites and display DMA disabled. This is not the original player boot environment. Tracepoint stopwatch/raster values describe monitor checkpoints, not exact SID bus-write cycles. Store values are decoded from unchanged store-source CPU registers and checked against an independent ordered-write oracle. No audio or listening verdict follows from this trace."
+}

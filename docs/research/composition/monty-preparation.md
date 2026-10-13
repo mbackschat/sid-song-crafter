@@ -1,6 +1,6 @@
 # Monty on the Run: bounded archive intake
 
-This prepares Rob Hubbard's **Monty on the Run**, selected subtune **1**, while [Shades](shades-preparation.md) remains the active reconstruction awaiting listening. It establishes the intact reference, cached attribution, declared timing and 64 guarded CPU calls. Complete form, instruments, original-host behavior and listening remain unresolved. Start with the [Hubbard composer study](../composers/hubbard-galway.md#hubbard-composing-with-a-changing-synthesis-engine), [listening catalogue](../composers/listening-catalogue.md) and [source-study boundary](../tools/source-studies.md) before extending this intake.
+This prepares Rob Hubbard's **Monty on the Run**, selected subtune **1**, while [Shades](shades-preparation.md) remains the active reconstruction awaiting listening. It establishes the intact reference, cached attribution, declared timing, executed score navigation and two complete title order-list traversals. Instrument arithmetic, musical section labels, original-host behavior and listening remain unresolved. Start with the [Hubbard composer study](../composers/hubbard-galway.md#hubbard-composing-with-a-changing-synthesis-engine), [listening catalogue](../composers/listening-catalogue.md) and [source-study boundary](../tools/source-studies.md) before extending this preparation.
 
 ## Reference and subtune attribution
 
@@ -34,11 +34,59 @@ The [complete ordered ledger](../../../evidence/monty-intake/audit.writes.json.g
 
 | Route | Evidence and next-use boundary |
 | --- | --- |
-| [Anthony McSweeney's 1993 Monty routine](https://www.neperos.com/article/rxmd9gd536b13923) | Already inspected in the composer study. It is reverse engineering with sound-effects code removed, not Hubbard's original labeled source. Its note/body split, eight-byte instruments, octave alternation, saved-high-byte descent and noise transient are predictions to test against this archive; byte/address correspondence has not been established. |
-| [Recovered repository listing](https://github.com/realdmx/c64_6581_sid_players/blob/f215174fc4c983674808fcd47bc506f96b3d2d04/Hubbard_Rob/Hubbard_Rob_Monty_on_the_Run.asm) | The cached repository tree at revision `f215174fc4c983674808fcd47bc506f96b3d2d04` contains this 31,840-byte blob, Git SHA-1 `332b81b5ddd21d1ab20c7cd37c32ac786760a267`. Only tree metadata was inspected here; the listing body was not cached, downloaded, assembled or compared. Its relation to McSweeney's reconstruction and the pinned archive remains open. |
+| [Anthony McSweeney's 1993 Monty routine](https://www.neperos.com/article/rxmd9gd536b13923) | Already inspected in the composer study. It is reverse engineering with sound-effects code removed, not Hubbard's original labeled source. Its note/body split, eight-byte instruments, octave alternation, saved-high-byte descent and noise transient are predictions to test against this archive. The bounded correspondence below uses the pinned ACME listing; the web article has not been byte-compared with that listing or this archive. |
+| [Recovered repository listing](https://github.com/realdmx/c64_6581_sid_players/blob/f215174fc4c983674808fcd47bc506f96b3d2d04/Hubbard_Rob/Hubbard_Rob_Monty_on_the_Run.asm) | Revision `f215174fc4c983674808fcd47bc506f96b3d2d04`, 31,840 bytes, Git blob `332b81b5ddd21d1ab20c7cd37c32ac786760a267`, SHA-256 `52dbbf891b1a1d0f8750842ef91ebaf1fc62d65d7b46497ae6951576ece3ae6c`. The subsequently downloaded listing credits McSweeney's original disassembly/commenting and dmx87's ACME port. It forces one song and omits the archive's additional sound-effects tail. Bounded correspondence is established below; it was not assembled. |
 | [Hubbard's C64.COM account](https://www.c64.com/interviews/hubbard.html) and [contemporary April 1986 interview](https://www.muzines.co.uk/articles/techtalk-living-off-video/9284) | Existing composer research supplies the evolving-driver and delayed-vibrato/pitch-bend context. It does not assign exact records or executed mechanisms to this bounded Monty window. |
 
-The next bounded technical task should map selected archive code/data to an attributed listing, then observe actual score consumption and instrument-selection PCs in a short window. Establish those addresses before a whole-form probe; do not carry reconstructed listing addresses or omitted sound-effects behavior into the archive by assumption. This preparation makes no independent mechanism or listening claim.
+Do not carry reconstructed listing addresses or omitted sound-effects behavior into the archive by assumption. The following executed mapping supplies actual archive PCs, without an independent sound implementation or listening claim.
+
+## Executed score navigation
+
+The [navigation receipt](../../../evidence/monty-form/navigation.json) separates listing/data matches from executed hooks. All three complete listing title order lists match the archive uniquely: `montymaintr1` at `$8618` (65 bytes), `montymaintr2` at `$8659` (76 bytes), and `montymaintr3` at `$86A5` (132 bytes), including each terminal `$FF`. The 96 interleaved frequency words match at `$8400`. All twenty instrument records' fields 2–7 match at `$93B4`; loaded pulse bytes differ for records 0, 8, 9 and 12, and executed stores at `$8287/$828E` mutate those shared table bytes. These matches do not establish a byte-identical driver or sound state.
+
+| Navigation task | Actual archive state / executed PC |
+| --- | --- |
+| Tempo scheduling | Countdown `$84EB`, reload `$84EC`; reload 1 in the opening gives one score tick per two calls |
+| Voice sequencing | Order cursors `$84C4–$84C6`, pattern cursors `$84C7–$84C9`, remaining lengths `$84CA–$84CC`; voice dispatch 2, 1, 0 |
+| Consume order byte | `$8089`, `LDA ($02),Y`; track pointer banks `$8566/$8569` |
+| Resolve pattern pointer | `$80AB/$80B0`, low/high banks `$857E/$85CB`; pointer `$04/$05` |
+| Consume row fields | `$80C2` control/duration, `$80DD` instrument-or-portamento, `$80EE` pitch; `$80E7` commits a new instrument |
+| Append path / instrument initializer | `$8118` / `$811E`; instrument table at `$93B4`, eight-byte records |
+| End peek / advance order | `$8163` reads the next pattern byte; `$8169` resets pattern cursor and `$816E` advances order |
+| Order `$FF` / `$FE` | `$8099` resets that voice's sequencing cursors/remaining length; `$8096` exits toward the outer tail. Do not assume `$FE` mutes or sets a global stop flag |
+| Completed callable body | Outer `RTS` `$838C`, SP=`$FD`, with the saved return word checked against the shared host |
+
+The [512-call instruction window](../../../evidence/monty-form/boundary.trace.json.gz) executes append seven times on voice 1 and first advances all three order cursors at call **448**, after pattern `$FF` peeks at `$8BDD/$8BE8/$8BFA`. It does not yet execute an order restart. The [hook checker](../../../evidence/monty-form/check-hooks.py) matches all **180** compact hook events and **4,946** ordered init/play stores against this independently retained instruction window; its [receipt](../../../evidence/monty-form/hook-validation.json) distinguishes observer fidelity from independent-machine evidence.
+
+Retain raw note operands separately from inferred pitch names: opening voice 1 consumes `$68` (104), whose byte-doubled lookup offset `$D0` addresses `$84D0/$84D1`, beyond the declared 96-word frequency table and inside voice-control state. The archive also contains the `$838D–$83FD` sound-effects tail omitted by the listing. These are source-variant boundaries, not permission to invent a chromatic extension or discard latent state.
+
+## Two observed title order traversals
+
+The source-pinned [compact probe](../../../evidence/monty-form/probe.py) executes the shared `pal-banked` audit from initialization with default host `$C000`, records exact order/pattern reads, command branches, instrument records and every ordered SID store, and processes the entire requested cap. Its [40,000-call summary](../../../evidence/monty-form/full40000/summary.json) covers calls **0–39,999**, with 3 initialization stores and **373,736** playback stores, maximum **1,692 / 19,656 cycles**. The [observations](../../../evidence/monty-form/full40000/observations.json.gz) and [complete ledger](../../../evidence/monty-form/full40000/audit.writes.json.gz) are retained losslessly, without a source payload or RAM dump.
+
+All three voices execute the order `$FF` restart branch at calls **17,536** and **35,072**. Thus calls **0–17,535** are the first complete title order cycle, with a second traversal and confirming restart also observed. There are 12,301 row consumptions, 601 pattern advances and six order-restart branch executions across the complete cap; no `$FE` exit executes. This is an executed order-cycle boundary, not a musical-section labeling or ending assertion.
+
+The [reproducible comparison](../../../evidence/monty-form/describe.py) and [traversal receipt](../../../evidence/monty-form/traversal-comparison.json) preserve the raw order comparison as unequal: the second traversal begins with three terminal `$FF` reads absent at startup. Removing exactly those reads gives equal relative-call/voice/PC/source-address/value order streams. Pattern pointer, row, instrument/portamento, pitch, end-peek and instrument-index events match in those same fields. CPU registers, instruction cycles and mutable instrument-record values are excluded from that consumption comparison.
+
+The corresponding ordered SID address lists differ on **153** calls, so these traversals are not identical register-stream replays. Values and timing are compared only where the complete per-call address lists agree; the receipt does not zip mismatching shapes. Selected post-body backing-RAM/CPU fingerprints at calls 0, 17,536 and 35,072 also differ. The hash recipe includes all 65,536 backing-memory bytes and A/X/Y/SP/status/PC at the fixed pre-RTS boundary, without normalization; it excludes the monotonically increasing CPU cycle count and unmodeled SID internals. Neither score repetition nor these software-state checks establishes oscillator/envelope/PCM recurrence.
+
+Independent VICE checks initialization and calls **17,530–17,543** against the retained CPU ledger: all **149** stores agree (3 init, 146 play). All 17,544 play-entry checkpoints stay within **7** cycles of the PAL grid, inside the nine-cycle polling tolerance. The [projection receipt](../../../evidence/monty-form/vice-wrap/projection.json), [VICE study](../../../evidence/monty-form/vice-wrap/trace/study.json) and [parsed trace](../../../evidence/monty-form/vice-wrap/trace/trace.json.gz) own that bounded result. This verifies the declared controlled host around the first wrap, not the original game's IRQ host, complete 40,000-call VICE equality or audio.
+
+## Reproduce the form probe
+
+Restore the retained scripts through the [evidence workflow](../../workflows/build-cache.md), or copy `probe.py` into a fresh ignored working directory as below. The listing stays private/ignored; retain only its attribution, URL and fingerprints in public evidence. The probe verifies both the intact SID and listing before execution and requires a fresh output directory.
+
+```sh
+mkdir build/monty-form-new
+cp evidence/monty-form/probe.py build/monty-form-new/probe.py
+curl -fsSL https://raw.githubusercontent.com/realdmx/c64_6581_sid_players/f215174fc4c983674808fcd47bc506f96b3d2d04/Hubbard_Rob/Hubbard_Rob_Monty_on_the_Run.asm -o build/monty-form-new/Hubbard_Rob_Monty_on_the_Run.asm
+shasum -a 256 build/monty-form-new/Hubbard_Rob_Monty_on_the_Run.asm
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 build/monty-form-new/probe.py --ticks 40000 --output build/monty-form-new/full40000
+gzip -dk build/monty-form-new/full40000/audit.writes.json.gz
+python3 scripts/trace-sid-vice.py .local/monty-source.sid --profile pal-banked --subtune 1 --oracle build/monty-form-new/full40000/audit.writes.json --first-call 17530 --last-call 17543 --timeout 180 --output build/monty-form-new/vice-wrap
+```
+
+Decompression restores the JSON oracle expected by VICE; the retained init-plus-window projection is also sufficient for this selected window. The existing source acquisition commands below install the SID, not the attributed listing. No reconstruction, render or listening question is part of this checkpoint.
 
 ## Reproduce without publishing the original
 

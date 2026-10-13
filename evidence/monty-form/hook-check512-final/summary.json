@@ -1,0 +1,215 @@
+{
+  "actualProcessedCalls": 512,
+  "audit": {
+    "schemaVersion": 1,
+    "sourceSha256": "528a7330817e4a0a0f75a505e9fe2444e07c5072ce5383ceaa89f183f0eee3ab",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS6581",
+    "sidCount": 1,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS6581"
+      }
+    ],
+    "loadAddress": 32768,
+    "initAddress": 32768,
+    "playAddress": 32786,
+    "clockHz": 985248.6111111111,
+    "playCalls": 512,
+    "callRateHz": 50.12457321485099,
+    "initCycles": 165,
+    "maximumPlayCycles": 1566,
+    "meanPlayCycles": 1267.263671875,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 3,
+    "playWriteCount": 4943,
+    "registers": {
+      "d400": {
+        "writes": 512,
+        "distinctValues": 15,
+        "minimum": 19,
+        "maximum": 240
+      },
+      "d401": {
+        "writes": 512,
+        "distinctValues": 15,
+        "minimum": 104,
+        "maximum": 213
+      },
+      "d402": {
+        "writes": 8,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d403": {
+        "writes": 8,
+        "distinctValues": 1,
+        "minimum": 8,
+        "maximum": 8
+      },
+      "d404": {
+        "writes": 15,
+        "distinctValues": 2,
+        "minimum": 64,
+        "maximum": 65
+      },
+      "d405": {
+        "writes": 15,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 4
+      },
+      "d406": {
+        "writes": 15,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 64
+      },
+      "d407": {
+        "writes": 505,
+        "distinctValues": 4,
+        "minimum": 1,
+        "maximum": 193
+      },
+      "d408": {
+        "writes": 570,
+        "distinctValues": 74,
+        "minimum": 1,
+        "maximum": 84
+      },
+      "d409": {
+        "writes": 71,
+        "distinctValues": 8,
+        "minimum": 0,
+        "maximum": 224
+      },
+      "d40a": {
+        "writes": 71,
+        "distinctValues": 7,
+        "minimum": 8,
+        "maximum": 14
+      },
+      "d40b": {
+        "writes": 8,
+        "distinctValues": 2,
+        "minimum": 64,
+        "maximum": 65
+      },
+      "d40c": {
+        "writes": 8,
+        "distinctValues": 1,
+        "minimum": 63,
+        "maximum": 63
+      },
+      "d40d": {
+        "writes": 8,
+        "distinctValues": 1,
+        "minimum": 255,
+        "maximum": 255
+      },
+      "d40e": {
+        "writes": 1016,
+        "distinctValues": 5,
+        "minimum": 66,
+        "maximum": 133
+      },
+      "d40f": {
+        "writes": 1016,
+        "distinctValues": 2,
+        "minimum": 3,
+        "maximum": 6
+      },
+      "d410": {
+        "writes": 23,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 192
+      },
+      "d411": {
+        "writes": 23,
+        "distinctValues": 5,
+        "minimum": 10,
+        "maximum": 14
+      },
+      "d412": {
+        "writes": 9,
+        "distinctValues": 2,
+        "minimum": 64,
+        "maximum": 65
+      },
+      "d413": {
+        "writes": 9,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 9
+      },
+      "d414": {
+        "writes": 9,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 112
+      },
+      "d418": {
+        "writes": 512,
+        "distinctValues": 1,
+        "minimum": 15,
+        "maximum": 15
+      }
+    },
+    "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment.",
+    "executionProfile": "pal-banked",
+    "subtunes": 19,
+    "defaultSubtune": 1,
+    "selectedSubtune": 1,
+    "entryBank": 54,
+    "hostBase": 49152,
+    "initReturnAddress": 49210,
+    "playReturnAddress": 49229,
+    "entryStateBasis": "Controlled PAL raster host: init A=selection-1, X/Y=0, P=$26; play A=$FA, retained X/Y, CMP-equal C/Z set and N clear; bank $36 before each call; callable return words derive from the shared harness JSR labels"
+  },
+  "summary": {
+    "eventCounts": {
+      "orderRead": 24,
+      "patternPointerLow": 24,
+      "patternPointerHigh": 24,
+      "rowControlRead": 24,
+      "instrumentOrPortamentoRead": 3,
+      "instrumentSet": 3,
+      "pitchRead": 17,
+      "initializerInstrument": 24,
+      "patternEndPeek": 24,
+      "appendBranch": 7,
+      "patternReset": 3,
+      "orderAdvance": 3
+    },
+    "orderRestartsByVoice": {
+      "0": [],
+      "1": [],
+      "2": []
+    },
+    "jointOrderRestartCalls": [],
+    "repeatedStateFingerprints": {}
+  },
+  "provenance": {
+    "sourceSha256": "528a7330817e4a0a0f75a505e9fe2444e07c5072ce5383ceaa89f183f0eee3ab",
+    "listingSha256": "52dbbf891b1a1d0f8750842ef91ebaf1fc62d65d7b46497ae6951576ece3ae6c",
+    "listingGitBlobSha1": "332b81b5ddd21d1ab20c7cd37c32ac786760a267",
+    "tools": {
+      "scripts/psid_audit.py": "4446a19a325e625e59f100aac0b186478fb1633f65886b260db2ad3da11419a5",
+      "scripts/psid_profile.py": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+      "scripts/sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+      "scripts/verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    },
+    "probeSha256": "b339c9dc9ee907ee827f867740ccb7728b5a3b08ab3db9f992cbdcbab0c4053b"
+  },
+  "orderedLedger": {
+    "records": 4946,
+    "decodedSha256": "791a6382eb1bff295462e05fa8e4c5df6e7d718a861bfa7bb9845463130b6fe2",
+    "path": "audit.writes.json.gz"
+  },
+  "hashRecipe": "RAM: SHA-256 of all 65536 backing-memory bytes. State: SHA-256 of sorted-key compact JSON {ramSha256,cpu:{pc,a,x,y,sp,status}} at pre-RTS $838C/SP=$FD; no normalization. Absolute processorCycles omitted; no SID internal state is modeled.",
+  "limits": "Order restart is per voice. Joint order wraps do not establish whole sound-state or PCM recurrence. FE is retained as an exit branch, not assumed to mute/set a global stop flag. Only hook instructions are retained; no complete source payload or RAM dump."
+}

@@ -18,7 +18,7 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Study Flashdance: What a Feeling](flashdance-reference.md): verified archive identities, synthesis lessons and a source-to-reference comparison contract.
 - [Reconstruct Shades](shades-preparation.md): independent full-form/transfer players, CIA proofs, editable pulse/glide programs and pending reconstruction listening.
 - [Prepare Cybernoid II](cybernoid-ii-preparation.md): editable numeric score/program model, full-span register equality and bounded source proofs.
-- [Prepare Monty on the Run](monty-preparation.md): pinned subtune, source-composition credit and bounded callable execution.
+- [Prepare Monty on the Run](monty-preparation.md): pinned subtune, executed score navigation, two order traversals and independent first-wrap verification.
 - [Prepare Rambo: First Blood Part II](rambo-preparation.md): loader-specific attribution, original-source hooks and execution requirements.
 - [Prepare Ghouls ’n Ghosts](ghouls-preparation.md): archive/subtune boundaries, canonical SID port writes and bounded CPU/VICE execution.
 - [Prepare Deflektor](deflektor-preparation.md): source identity, cowbell study context and unchanged high-RAM CPU/VICE execution with explicit host placement.

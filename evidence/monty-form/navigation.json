@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "528a7330817e4a0a0f75a505e9fe2444e07c5072ce5383ceaa89f183f0eee3ab",
+  "sourceAsset": "monty-on-the-run",
+  "sourcePath": ".local/monty-source.sid",
+  "sourceURL": "https://www.hvsc.de/download/C64Music/MUSICIANS/H/Hubbard_Rob/Monty_on_the_Run.sid",
+  "listingSha256": "52dbbf891b1a1d0f8750842ef91ebaf1fc62d65d7b46497ae6951576ece3ae6c",
+  "listingGitBlobSha1": "332b81b5ddd21d1ab20c7cd37c32ac786760a267",
+  "listingURL": "https://raw.githubusercontent.com/realdmx/c64_6581_sid_players/f215174fc4c983674808fcd47bc506f96b3d2d04/Hubbard_Rob/Hubbard_Rob_Monty_on_the_Run.asm",
+  "listingPrivateCachePath": "build/monty-form/Hubbard_Rob_Monty_on_the_Run.asm",
+  "listingAttribution": "Original disassembly/commenting Anthony McSweeney; ACME port dmx87",
+  "toolHashes": {
+    "scripts/psid_audit.py": "4446a19a325e625e59f100aac0b186478fb1633f65886b260db2ad3da11419a5",
+    "scripts/psid_profile.py": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+    "scripts/sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "scripts/verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "probeSha256": "b339c9dc9ee907ee827f867740ccb7728b5a3b08ab3db9f992cbdcbab0c4053b",
+  "titleOrders": [
+    {
+      "listingLabel": "montymaintr1 =*",
+      "bytes": 65,
+      "sha256": "99dc3e08f044a7f198f8622b8638c5cab12b84188863f8c255ea53102998e811",
+      "archiveAddress": 34328
+    },
+    {
+      "listingLabel": "montymaintr2 =*",
+      "bytes": 76,
+      "sha256": "1d7fc39b8bd52fb8ee5edb532385e37cfc1638f9a1447c496c78cba53e6aa89c",
+      "archiveAddress": 34393
+    },
+    {
+      "listingLabel": "montymaintr3 =*",
+      "bytes": 132,
+      "sha256": "5444282961d41a4097b52a18e0e53d4f9b14717c0d27acbe5df9294168a2948f",
+      "archiveAddress": 34469
+    }
+  ],
+  "frequency": {
+    "address": 33792,
+    "declaredWords": 96,
+    "bytes": 192,
+    "sha256": "de4c8b553cbc5cc1876ec5de05a318182e540f87faf183d17d9b083680b2bad4",
+    "limit": "Executed raw note104 on voice1 call0 doubles to byte-offset208, reading voiceControl state at84D0/84D1 beyond the declared96-word table; do not infer a chromatic extension."
+  },
+  "instruments": {
+    "address": 37812,
+    "records": 20,
+    "fields2Through7Match": true,
+    "pulseFieldsDifferInitially": [
+      0,
+      8,
+      9,
+      12
+    ],
+    "executedMutablePulseFieldStorePCs": [
+      33415,
+      33422
+    ],
+    "limit": "Pulse bytes are shared mutable instrument data. No whole-player or initialized-sound equivalence follows from the remaining field matches."
+  },
+  "hooks": {
+    "8089": "orderRead",
+    "8099": "orderRestart",
+    "8096": "orderFEExit",
+    "80ab": "patternPointerLow",
+    "80b0": "patternPointerHigh",
+    "80c2": "rowControlRead",
+    "80dd": "instrumentOrPortamentoRead",
+    "80e7": "instrumentSet",
+    "80ee": "pitchRead",
+    "8118": "appendBranch",
+    "811e": "initializerInstrument",
+    "8163": "patternEndPeek",
+    "8169": "patternReset",
+    "816e": "orderAdvance"
+  },
+  "stateArrays": {
+    "orderCursor": 33988,
+    "patternCursor": 33991,
+    "remaining": 33994,
+    "savedControl": 33997,
+    "voiceControl": 34000,
+    "note": 34003,
+    "instrument": 34006,
+    "portamento": 34037
+  },
+  "tempo": {
+    "countdown": 34027,
+    "reload": 34028,
+    "openingReload": 1
+  },
+  "outerReturnPC": 33676,
+  "boundedValidation": {
+    "calls": 512,
+    "rowConsumptions": 24,
+    "appendBranches": 7,
+    "firstPatternAdvanceCallByVoice": [
+      448,
+      448,
+      448
+    ],
+    "orderRestarts": 0
+  },
+  "limits": "Archive PCs are observed or statically identified, not listing offsets. Listing forces one song and removes/omits the archive SFX tail838D..83FD; SFX behavior is unstudied. FE early exit is static and not executed in40000 titlecalls. No complete payload/RAM/source listing is exported.",
+  "checkerSha256": "2fe6fc74963f6697f9ad383efce35f94012f15422b73e458b22b4c6b80d0b156"
+}
