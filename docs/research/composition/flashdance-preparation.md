@@ -1,6 +1,6 @@
 # Flashdance preparation
 
-Use DRAX's **Flashdance (conversion)** as the next reference for **What a Feeling**. Its staged lead, evolving bass and moving chord extend the mechanisms learned from the positively received [independent Elise trio](../../../songs/studies/drax-full-reconstruction/README.md). This makes it a useful study candidate; musical preference is still pending. Audition the existing [20-second preview](../../../.local/research/flashdance/drax.preview.wav) before choosing the first phrase to reconstruct.
+Use DRAX's **Flashdance (conversion)** as the active reference for **What a Feeling**. Its staged lead, evolving bass and moving chord extend the mechanisms learned from the positively received [independent Elise trio](../../../songs/studies/drax-full-reconstruction/README.md). The first reconstruction target is calls 0–513; musical preference is still pending. The existing [20-second preview](../../../.local/research/flashdance/drax.preview.wav) provides listening context.
 
 ## Pinned evidence
 
@@ -16,6 +16,29 @@ The retained [frames](../../../build/reference-studies/drax/flashdance.frames.js
 
 These are measured trajectories, not recovered algorithms. Trace the responsible instructions and RAM operands before identifying bounds, delays, reset rules or reusable parameters.
 
+## Selected form and ending contract
+
+The single-SID deliverable covers **one complete recurring score cycle of the selected DRAX arrangement**, including startup: calls **0–1537**, followed by an independently authored ending. A fresh 6,500-call diagnostic execution on 2026-10-13 reproduces the retained [form evidence](../../../build/flashdance-f1-f2/score-form.json) exactly. The score starts at call 2 and repeats at call 1538: 1,536 calls, approximately 30.64365 seconds at the pinned PAL cadence. The two startup calls and the eventual ending are additional duration; call positions are not exact WAV timestamps.
+
+All three voices advance through six synchronized blocks. Pattern identifiers below describe executed driver structure, without assigning unverified verse or chorus names.
+
+| Block | Inclusive calls | Bass pattern | Lead pattern | Chord pattern |
+| --- | --- | --- | --- | --- |
+| 1 | 2–257 | 1 | 2 | 3 |
+| 2 | 258–513 | 5 | 4 | 6 |
+| 3 | 514–769 | 1 | 7 | 3 |
+| 4 | 770–1025 | 5 | 8 | 6 |
+| 5 | 1026–1281 | 10 | 9 | 11 |
+| 6 | 1282–1537 | 12 | 13 | 14 |
+
+PC `$128F` restores all three track pointers at call 1534; PC `$1134` selects the first patterns again at 1538. Cutting at pointer restoration would truncate the final block. Restores at 3070, 4606 and 6142 corroborate the period, and the first two cycles agree in executed pattern selections and consumed note/hold/off commands. This establishes recurring score structure, not identical oscillator, envelope, filter or modulation state between cycles.
+
+**Source coverage:** no block of the selected recurring SID score is omitted. Correspondence to the original recording's introduction, verses, choruses, bridge and outro has not been established; which original-song sections are absent therefore remains unknown. Do not label this deliverable the complete original song. Extending beyond DRAX's selected arrangement requires separate source material and form mapping.
+
+**Intended ending:** preserve the reference through call 1537, suppress the next score cycle, then release the voices while retaining their modulation and fade any remaining tail to zero volume. This is a deliberate arrangement change after the comparison span, not an ending found in the source: no terminating track command was observed. F4 must implement and audition the release/fade, determine its duration and verify final silence before declaring a total export length.
+
+The local analysis entry point and its tests remain deferred, untracked work. The retained evidence pins tool SHA-256 `6e0bbd4e08056c5b04426cedad194e1d5d62accb0e53b08d47d2efd94822fd55`; reproducing this form analysis currently requires that local tool. Integrate it before claiming a portable F2 tracing workflow. Its six tests passed on 2026-10-13, including real-source form verification and diagnostic-boundary checks. The retained opening traces also match all 9,345 initialization and calls 0–513 sound-register writes in the cached reference oracle. These checks establish analysis evidence, not independent reconstruction or listening acceptance.
+
 ## Executed feasibility findings
 
 A bounded execution study of the pinned binary identifies requirements beyond the Elise backend:
@@ -28,7 +51,48 @@ A bounded execution study of the pinned binary identifies requirements beyond th
 | Moving chord variants | Initializers at calls 2/130/258/386 select four chord programs. The opening has offsets `[0,0,4,4,7,7,12,12]`, AD/SR `$03/$34`, width `$040` and step `$0D`. Describe the four-tone cycle independently from the score note. |
 | Per-voice fine tuning | PC `$14FB` adds the table `$1762,X` value: 0/1/2 for bass/lead/chord. The opening lead `$2710` becomes `$2711`; chord `$0F82` becomes `$0F84`. Preserve the exact programmed words alongside their musical interpretation. |
 
-These are decoded local execution observations, not independent synthesis or listening acceptance. The first four-chord turn, calls 0–513, is the [plan's first reconstruction milestone](../study-plan.md#flashdance-next-executable-milestones). Continue through waveform/pitch tables `$187B/$197B`, PWM rows read at `$1399–$13DD`, movement `$13E0–$141A`, and score reader `$114B`; the existing pinned diagnostic adapter retains the production auditor's strict I/O boundary.
+These are decoded local execution observations, not independent synthesis or listening acceptance. The first four-chord turn, calls 0–513, is the [plan's first reconstruction milestone](../study-plan.md#flashdance-next-executable-milestones). The opening contracts below refine the score and PWM requirements; waveform/pitch tables `$187B/$197B` and the complete filter program still need an editable description. The existing pinned diagnostic adapter retains the production auditor's strict I/O boundary.
+
+### Score changes, restarts and gate ownership
+
+The [opening score inventory](../../../build/flashdance-opening-score-review/inventory.json) retains source-addressed commands and executed instruction witnesses for calls 0–513. Voice 1 consumes 13 note commands and restarts on each; voice 2 consumes 12 notes but restarts only ten times; voice 3 consumes four notes and restarts on each. Startup calls 0–1 consume no score commands, although the synthesis body runs from preloaded state.
+
+| Role | Selected instrument record offset | Opening distinction |
+| --- | --- | --- |
+| Bass | `$00` | All 13 notes use the same instrument; there is no score-off command in this passage. |
+| Lead | `$10` | Notes at calls 102 and 274 change pitch while suppressing restart. Score-off begins at 478 and repeats every four calls through 510. |
+| Chord | `$18/$20/$28/$30` at calls 2/130/258/386 | The four records share ADSR and PWM; their wave/pitch program offsets are `$10/$19/$22/$2B`. |
+
+The duration/control byte `$80` clears restart suppression, whereas `$90` sets it to `$10`; both load duration value 3 at `$1195–$11A4`, producing four-call score rows. On the two lead `$90` notes, `$114B` changes the score pitch and `$1166` restores gate mask `$FF`, but `$12AD–$12C3` skips the initializer and enters the ongoing body at `$138B`. Preserve waveform/PWM position across these note changes. A hold `$7E` also continues the body; score-off `$00` instead sets gate mask `$FE` through `$116C–$1178`. The final control writer at `$1615/$1618` applies that mask.
+
+Instrument release is separate: at bass call 5, `$150C` reads waveform/control `$40` from `$197D`; the gate mask is still `$FF`, so the instrument program itself clears gate. Also distinguish the score effect `$C0` from note-off: it selects `$82/$00`, scheduling SR `$00` two calls later via `$123D/$1243` and `$10F1–$1101`. At lead call 96, that SR write occurs while control remains `$41`. Conflating these commands would change articulation and envelope evolution.
+
+Two pitch controls are present. `$C1` selects `$60/$42`, initializing pitch-relative vibrato with interval 4, shift 2 and cleared phase/accumulators; the next note decrements its enable state at `$1153`. `$C2` selects `$10/$28` at lead call 262, enabling an accumulating `$28` pitch increment on calls 262–273; note 274 cancels that state at `$115B` despite suppressing the instrument restart. These observations constrain the editable description, but a complete independent pitch algorithm and all waveform/filter transitions remain to be verified. Command meanings here apply only to the executed branches of this pinned driver.
+
+### PWM state and row transitions
+
+PCs `$138B–$141A` operate on per-voice state at these base addresses plus voice index `X`: lower reversal high byte `$1731`, upper reversal high byte `$1734`, step `$1737`, direction `$173A`, row offset `$173D`, remaining calls `$1740`, and width low/high `$1743/$1746`. Direction zero adds the unsigned step; nonzero subtracts it. Both operations carry/borrow across the full two-byte state. After movement, the new high byte is compared for **equality** with the relevant reversal byte; equality toggles direction. Neither clamping nor a greater-than/less-than crossing test reproduces this code.
+
+Each row at `$1B7B + offset` occupies four bytes:
+
+| Byte | Executed meaning |
+| --- | --- |
+| 0 | High nibble is the lower reversal high byte; low nibble is the upper reversal high byte. |
+| 1 | Unsigned movement step. |
+| 2 | Low six bits reload the remaining-call counter. Bit 7 resets width and direction; bit 6 retains the row offset, otherwise it advances by four. |
+| 3 | Packed reset width: low byte is `value & $F0`, high byte is `value & $0F`. Thus `$0D` means `$D00`, `$40` means `$040`, and `$01` means `$100`. Used only when bit 7 requests a reset. |
+
+At routine entry, a nonzero counter is decremented; a zero counter consumes a row. Both paths then move the width on that same call. A row loading counter 8 therefore moves on its load call and on eight following countdown calls; the next row is consumed on the tenth call. The opening attack row is consumed at call 3 and its successor at 12. The successor's `$4F` flags retain width, direction and row offset, with a reread every 16 calls. This permits the lead to change its step from `$70` to `$10` while retaining its descending motion.
+
+| Role | Initial width | Lower / upper reversal high bytes | Attack / following step |
+| --- | --- | --- | --- |
+| Bass | `$100` | `$4 / $F` | `$40 / $40` |
+| Lead | `$D00` | `$A / $F` | `$70 / $10` |
+| All four chord variants | `$040` | `$1 / $F` | `$0D / $0D` |
+
+The initializer at `$12E9–$130A` selects the first row, clears its counter and sets packed width if requested; it does **not** load bounds/step or reset direction. That happens when the next body call consumes the row. The initializer exits before PWM movement and pulse-register writes. For a concrete arithmetic check, lead call 7 advances `$EC0 → $F30` and reverses on high byte `$F`; call 51 descends `$B00 → $AF0` and reverses on `$A`. These are high-byte reversal bands, not exact pulse-width endpoints. Bass movement continues after its instrument-owned gate release.
+
+The [bounded PWM probe](../../../build/flashdance-opening-pwm-review/probe.py) independently calculates each routine transition from its observed entry state. On 2026-10-13, all 1,515 transitions across calls 0–513 matched fresh CPU execution; six isolated interventions on RAM copies confirmed equality-only reversal and 16-bit wrap. The [receipt](../../../build/flashdance-opening-pwm-review/probe.json) preserves the state comparisons and interventions. This is a one-step mechanism check using original execution state, not an independently scheduled instrument, complete synthesis model or listening verdict.
 
 ## Description → library → our code
 
