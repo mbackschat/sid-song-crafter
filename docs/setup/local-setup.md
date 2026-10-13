@@ -25,7 +25,41 @@ python3 scripts/doctor.py
 
 The [manifest](../../config/local-assets.json) owns URLs, credits, commit pins and hashes. Default setup installs two DRAX reference tunes and the hardware skill. `--include flashdance-historical` adds the historical alternative; `--include sid-music` adds bridge instructions. `--only references` or `--only skills` limits installation. `--offline` uses existing verified files and pinned objects from local Git checkouts; `--check` performs read-only verification. Modified files are preserved and rejected, not silently overwritten. Downloads are verified before publishing their destination.
 
-Reference binaries live under ignored `.local/research/`; installed skill directories are ignored targets of the portable `.agents/skills/` links. Read [skill corrections](skill-guidance.md) before using them. A new agent session may be needed for discovery.
+Reference binaries live under ignored `.local/`; installed skill directories are ignored targets of the portable `.agents/skills/` links. Read [skill corrections](skill-guidance.md) before using them. A new agent session may be needed for discovery.
+
+### Original SID downloads on demand
+
+Keep the original SID's source URL and SHA-256 in the [asset manifest](../../config/local-assets.json), then use [setup-project.py](../../scripts/setup-project.py) to acquire it when needed. The ten entries below are actual downloaded study inputs; research possibilities mentioned in the [listening catalogue](../research/composers/listening-catalogue.md) are not installed as part of this inventory. All ten source URLs returned bytes matching their registered fingerprints on 2026-10-13. Generated arrangements and patched diagnostic copies retain their own recipes rather than being registered as originals.
+
+| Reference ID | Local cache path | Selection |
+| --- | --- | --- |
+| `fuer-elise` | `.local/research/fuer-elise/drax-fuer-elise.sid` | Default |
+| `flashdance` | `.local/research/flashdance/drax-flashdance-conversion.sid` | Default |
+| `flashdance-historical` | `.local/research/flashdance/kleimeyer-flashdance.sid` | `--include flashdance-historical` |
+| `shades-filter-corrected` | `.local/research/shades/Shades_filter_corrected.sid` | `--include shades-filter-corrected` |
+| `shades` | `.local/research/shades/Shades.sid` | `--include shades` |
+| `monty-on-the-run` | `.local/monty-source.sid` | `--include monty-on-the-run` |
+| `commando` | `.local/commando-source.sid` | `--include commando` |
+| `auf-wiedersehen-monty` | `.local/monty-wiedersehen-source.sid` | `--include auf-wiedersehen-monty` |
+| `rambo-first-blood-part-ii` | `.local/rambo-source.sid` | `--include rambo-first-blood-part-ii` |
+| `arkanoid` | `.local/arkanoid-source.sid` | `--include arkanoid` |
+
+The older composer caches keep their existing `.local/` paths. `--include` adds the requested optional entries to the default selection and can be repeated. Fetch both Shades variants, or verify their existing copies without network access:
+
+```sh
+python3 scripts/setup-project.py --only references --include shades-filter-corrected --include shades
+python3 scripts/setup-project.py --check --only references --include shades-filter-corrected --include shades
+```
+
+Acquire the earlier Hubbard/Galway inputs with the same downloader:
+
+```sh
+python3 scripts/setup-project.py --only references --include monty-on-the-run --include commando --include auf-wiedersehen-monty --include rambo-first-blood-part-ii --include arkanoid
+```
+
+Existing matching files are reused. Missing files are downloaded and checked before installation; a changed cached file or changed upstream response fails its fingerprint check. Original SID bytes remain ignored and outside Git. Deleting a local cache does not remove its provenance; rerunning the appropriate command restores the pinned file while the source URL still serves the recorded bytes.
+
+### Readiness and bridge setup
 
 Doctor supports `--json`, `--vice PATH`, `--vice-data PATH` and `--renderer PATH`, or `VICE_BINARY`, `VICE_DIRECTORY` and `SID_RENDERER`. It checks py65, renderer loading, headless VICE identification, expected ROM sizes and asset hashes; Mido and the bridge are optional. VICE identification from adjacent `config.h` is build evidence, not an emulator startup test. Use [native checkpoints](../validation/native-vice-checks.md) for actual execution. Setup does not install system packages or build VICE: use [the headless build instructions](vice-startup-investigation.md) and [renderer/dependency setup](../workflows/audio-workflow.md).
 

@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 1,
+  "classification": "Single-parameter reference-program intervention",
+  "sourceSha256": "ac7c91d0c4fef41bbc9d9e50840492269151075727efa7182a68dc1a26f1d708",
+  "patchedSha256": "5033822bd7d4020b49e243d55b591652c9eefb1bd47097bf5f31edbd38790c64",
+  "change": {
+    "ramAddress": 22063,
+    "fileOffset": 2157,
+    "from": 16,
+    "to": 0,
+    "purpose": "Freeze voice 1 PWM movement in combined block $5600, retaining its reset width"
+  },
+  "oracleToolSha256": "3ba00b545c424f0a91688022a0df690d8b3cbcbcac0efcb7d804b57e3f458183",
+  "cpuTimingToolSha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+  "verification": {
+    "playCalls": 1280,
+    "sourceWriteCount": 8368,
+    "ciaWriteCount": 7,
+    "changedWrites": 1906,
+    "changedAddresses": [
+      54274,
+      54275
+    ],
+    "firstChangedCall": 386,
+    "lastChangedCall": 1279,
+    "orderedContextIdentical": true,
+    "nonPulseWritesAndTimingIdentical": true,
+    "ciaWritesIdentical": true,
+    "callCyclesIdentical": true,
+    "firstChangedWrites": [
+      {
+        "original": {
+          "phase": "play",
+          "tick": 386,
+          "instructionStartCycle": 371,
+          "address": 54274,
+          "value": 15,
+          "writerPc": 29442
+        },
+        "frozen": {
+          "phase": "play",
+          "tick": 386,
+          "instructionStartCycle": 371,
+          "address": 54274,
+          "value": 255,
+          "writerPc": 29442
+        }
+      },
+      {
+        "original": {
+          "phase": "play",
+          "tick": 386,
+          "instructionStartCycle": 387,
+          "address": 54275,
+          "value": 14,
+          "writerPc": 29453
+        },
+        "frozen": {
+          "phase": "play",
+          "tick": 386,
+          "instructionStartCycle": 387,
+          "address": 54275,
+          "value": 13,
+          "writerPc": 29453
+        }
+      },
+      {
+        "original": {
+          "phase": "play",
+          "tick": 387,
+          "instructionStartCycle": 371,
+          "address": 54274,
+          "value": 31,
+          "writerPc": 29442
+        },
+        "frozen": {
+          "phase": "play",
+          "tick": 387,
+          "instructionStartCycle": 371,
+          "address": 54274,
+          "value": 255,
+          "writerPc": 29442
+        }
+      },
+      {
+        "original": {
+          "phase": "play",
+          "tick": 387,
+          "instructionStartCycle": 387,
+          "address": 54275,
+          "value": 14,
+          "writerPc": 29453
+        },
+        "frozen": {
+          "phase": "play",
+          "tick": 387,
+          "instructionStartCycle": 387,
+          "address": 54275,
+          "value": 13,
+          "writerPc": 29453
+        }
+      },
+      {
+        "original": {
+          "phase": "play",
+          "tick": 388,
+          "instructionStartCycle": 371,
+          "address": 54274,
+          "value": 47,
+          "writerPc": 29442
+        },
+        "frozen": {
+          "phase": "play",
+          "tick": 388,
+          "instructionStartCycle": 371,
+          "address": 54274,
+          "value": 255,
+          "writerPc": 29442
+        }
+      },
+      {
+        "original": {
+          "phase": "play",
+          "tick": 388,
+          "instructionStartCycle": 387,
+          "address": 54275,
+          "value": 14,
+          "writerPc": 29453
+        },
+        "frozen": {
+          "phase": "play",
+          "tick": 388,
+          "instructionStartCycle": 387,
+          "address": 54275,
+          "value": 13,
+          "writerPc": 29453
+        }
+      },
+      {
+        "original": {
+          "phase": "play",
+          "tick": 388,
+          "instructionStartCycle": 626,
+          "address": 54274,
+          "value": 47,
+          "writerPc": 30404
+        },
+        "frozen": {
+          "phase": "play",
+          "tick": 388,
+          "instructionStartCycle": 626,
+          "address": 54274,
+          "value": 255,
+          "writerPc": 30404
+        }
+      },
+      {
+        "original": {
+          "phase": "play",
+          "tick": 388,
+          "instructionStartCycle": 634,
+          "address": 54275,
+          "value": 14,
+          "writerPc": 30410
+        },
+        "frozen": {
+          "phase": "play",
+          "tick": 388,
+          "instructionStartCycle": 634,
+          "address": 54275,
+          "value": 13,
+          "writerPc": 30410
+        }
+      },
+      {
+        "original": {
+          "phase": "play",
+          "tick": 389,
+          "instructionStartCycle": 371,
+          "address": 54274,
+          "value": 63,
+          "writerPc": 29442
+        },
+        "frozen": {
+          "phase": "play",
+          "tick": 389,
+          "instructionStartCycle": 371,
+          "address": 54274,
+          "value": 255,
+          "writerPc": 29442
+        }
+      },
+      {
+        "original": {
+          "phase": "play",
+          "tick": 389,
+          "instructionStartCycle": 387,
+          "address": 54275,
+          "value": 14,
+          "writerPc": 29453
+        },
+        "frozen": {
+          "phase": "play",
+          "tick": 389,
+          "instructionStartCycle": 387,
+          "address": 54275,
+          "value": 13,
+          "writerPc": 29453
+        }
+      },
+      {
+        "original": {
+          "phase": "play",
+          "tick": 390,
+          "instructionStartCycle": 371,
+          "address": 54274,
+          "value": 79,
+          "writerPc": 29442
+        },
+        "frozen": {
+          "phase": "play",
+          "tick": 390,
+          "instructionStartCycle": 371,
+          "address": 54274,
+          "value": 255,
+          "writerPc": 29442
+        }
+      },
+      {
+        "original": {
+          "phase": "play",
+          "tick": 390,
+          "instructionStartCycle": 387,
+          "address": 54275,
+          "value": 14,
+          "writerPc": 29453
+        },
+        "frozen": {
+          "phase": "play",
+          "tick": 390,
+          "instructionStartCycle": 387,
+          "address": 54275,
+          "value": 13,
+          "writerPc": 29453
+        }
+      }
+    ]
+  },
+  "sourceCallCosts": {
+    "initCycles": 36,
+    "minimumPlayCycles": 670,
+    "maximumPlayCycles": 1814
+  },
+  "listeningReview": null,
+  "limitations": "Callable source execution establishes ordered-value isolation, source PCs and instruction costs. It does not emulate CIA counters or IRQ timing, reconstruct an independent player, establish whole-song isolation or supply a listening verdict.",
+  "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/.local/research/shades/Shades_filter_corrected.sid",
+  "output": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-pwm-reusable-final",
+  "renderCommands": [
+    [
+      "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+      "/Users/mbackschat/Projects/c64-sid-skill/build/shades-pwm-reusable-final/reference.sid",
+      "/Users/mbackschat/Projects/c64-sid-skill/build/shades-pwm-reusable-final/reference.wav",
+      "16"
+    ],
+    [
+      "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+      "/Users/mbackschat/Projects/c64-sid-skill/build/shades-pwm-reusable-final/zero-pwm-step.sid",
+      "/Users/mbackschat/Projects/c64-sid-skill/build/shades-pwm-reusable-final/zero-pwm-step.wav",
+      "16"
+    ]
+  ],
+  "listeningRecipe": {
+    "renderSeconds": 16,
+    "windowSeconds": [
+      5,
+      12
+    ],
+    "gain": 1,
+    "normalization": false,
+    "gapSeconds": 0.5
+  },
+  "audio": {
+    "renderer": [
+      {
+        "command": [
+          "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+          "/Users/mbackschat/Projects/c64-sid-skill/build/shades-pwm-reusable-final/reference.sid",
+          "/Users/mbackschat/Projects/c64-sid-skill/build/shades-pwm-reusable-final/reference.wav",
+          "16"
+        ],
+        "executableSha256": "80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe",
+        "returnCode": 0,
+        "stdout": "libsidplayfp 3.1.1 / SIDLite: 705600 mono PCM16 samples at 44100 Hz",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+          "/Users/mbackschat/Projects/c64-sid-skill/build/shades-pwm-reusable-final/zero-pwm-step.sid",
+          "/Users/mbackschat/Projects/c64-sid-skill/build/shades-pwm-reusable-final/zero-pwm-step.wav",
+          "16"
+        ],
+        "executableSha256": "80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe",
+        "returnCode": 0,
+        "stdout": "libsidplayfp 3.1.1 / SIDLite: 705600 mono PCM16 samples at 44100 Hz",
+        "stderr": ""
+      }
+    ],
+    "comparison": {
+      "windowSeconds": [
+        5,
+        12
+      ],
+      "gain": 1,
+      "normalization": false,
+      "gapSeconds": 0.5,
+      "order": [
+        "Corrected reference with moving PWM",
+        "Same reference with voice 1 PWM step zeroed"
+      ],
+      "inputs": [
+        {
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-pwm-reusable-final/reference.wav",
+          "sha256": "8bc7e31ed1669411d8afce6c6a75e14b8049e95d8d78eb5cf3dc9c08758b9859",
+          "window": {
+            "format": "PCM16",
+            "sampleRate": 44100,
+            "channels": 1,
+            "frames": 308700,
+            "durationSeconds": 7.0,
+            "peak": 4550,
+            "peakDbfs": -17.14877076605211,
+            "clippedSamples": 0,
+            "rms": 3322.711130355083,
+            "acRms": 2123.134462140497,
+            "acRmsDbfs": -23.76944870455612,
+            "perChannel": [
+              {
+                "dc": -2555.916530612245,
+                "rms": 3322.711130355083,
+                "acRms": 2123.134462140497
+              }
+            ]
+          }
+        },
+        {
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-pwm-reusable-final/zero-pwm-step.wav",
+          "sha256": "e7d721bf0ddf6d1454d6dfb6ca7d3a95f4ad5522107ca38dfbe2956bb0c8fbd5",
+          "window": {
+            "format": "PCM16",
+            "sampleRate": 44100,
+            "channels": 1,
+            "frames": 308700,
+            "durationSeconds": 7.0,
+            "peak": 4550,
+            "peakDbfs": -17.14877076605211,
+            "clippedSamples": 0,
+            "rms": 3330.9076695467,
+            "acRms": 2331.0911796911055,
+            "acRmsDbfs": -22.957813477068946,
+            "perChannel": [
+              {
+                "dc": -2379.277162293489,
+                "rms": 3330.9076695467,
+                "acRms": 2331.0911796911055
+              }
+            ]
+          }
+        }
+      ],
+      "output": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-pwm-reusable-final/original-then-static-pulse.wav",
+      "sha256": "8031032da2f9664f4748c649ddcdc7d3b5914fcea47fd9c57982871b7d97b76a",
+      "listeningReview": null
+    },
+    "baselinePrefix": {
+      "referencePath": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-reference-window/filter-corrected.wav",
+      "referenceSha256": "582530398d8c533ca71f3b71db6222ba5af584f5e13a4a6e247476defdf08623",
+      "shortenedPath": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-pwm-reusable-final/reference.wav",
+      "shortenedSha256": "8bc7e31ed1669411d8afce6c6a75e14b8049e95d8d78eb5cf3dc9c08758b9859",
+      "frames": 705600,
+      "pcmSha256": "6af6efa76bd1f9f42328d6c161ae48a1fefabe1e413e58b34593597d6f1835bd",
+      "identicalPcmPrefix": true
+    }
+  }
+}

@@ -12,7 +12,7 @@ Before SID technique explanations, arrangement, sound design or listening-feedba
 
 ## Project Structure & Module Organization
 
-Navigate operational guides through [docs/README.md](docs/README.md); use task-oriented subfolders. Research and provenance live in [docs/research](docs/research/README.md), scores/native instruments in `songs/`, tools in `scripts/`, tests in `tests/`, and installed skill sources in [skills](skills/README.md). Generated binaries, audio and traces go in ignored `build/`.
+Navigate operational guides through [docs/README.md](docs/README.md); use task-oriented subfolders. Research and provenance live in [docs/research](docs/research/README.md), scores/native instruments in `songs/`, tools in `scripts/`, tests in `tests/`, and installed skill sources in [skills](skills/README.md). Generated binaries, audio and working traces go in ignored `build/`. Promote canonical analysis records to [evidence](evidence/README.md), with compressed records in Git LFS and readable hash manifests in ordinary Git.
 
 Keep third-party checkouts in ignored `.tools/`, runtime state in `.local/`, and machine configuration in `.codex/`; track portable examples in `config/`.
 
@@ -49,7 +49,7 @@ Select the default SID subtune before libsidplayfp playback; an unselected tune 
 
 ## Public Repository Boundary
 
-Keep original reference SID binaries out of the public repository, including history. Reference WAV publication remains undecided; retain those WAVs under ignored `.local/` or `build/` for now. Analysis artifacts, traces, lookup tables, editable descriptions and reusable code may be tracked when useful. Preserve complete evidence alongside concise prose, with source hashes, settings and reproduction commands. Downloaded skills retain the ignored `skills/<name>/` installation layout. Never force-add original SID files; check tracked files and history before publishing.
+Keep original reference SID binaries out of the public repository, including history and LFS. Record each source URL and SHA-256 fingerprint in [the asset registry](config/local-assets.json); use [the verified downloader](scripts/setup-project.py) on demand. Keep reference WAVs out of Git under ignored `.local/` or `build/`; document exact reproduction commands, source hashes, subtune, renderer/version/settings, duration, gain, trim points and output hashes. Analysis artifacts, traces, lookup tables, editable descriptions and reusable code may be tracked when useful. Preserve complete evidence alongside concise prose, with source hashes, settings and reproduction commands. Downloaded skills retain the ignored `skills/<name>/` installation layout. Never force-add original SID files; check tracked files and history before publishing.
 
 ## Commit & Pull Request Guidelines
 

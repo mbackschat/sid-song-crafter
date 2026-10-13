@@ -7,6 +7,7 @@ Use the [project overview](../README.md) for SID Song Crafter's purpose and curr
 - [Skill corrections](setup/skill-guidance.md): hardware semantics and bridge limitations to apply alongside downloaded instructions.
 - [Local setup](setup/local-setup.md): dependency pins, skill activation and c64bridge configuration.
 - [Build and troubleshoot headless VICE](setup/vice-startup-investigation.md): verified startup constraints, build commands and workarounds.
+- [Manage generated evidence](workflows/build-cache.md): lossless compression, exact restoration and retention of accepted audio.
 
 ## Compose and listen
 

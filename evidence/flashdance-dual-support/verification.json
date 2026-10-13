@@ -1,0 +1,29 @@
+{
+  "primaryOrderedWritesUnchanged": true,
+  "primaryWrites": 30229,
+  "maxPlayCycles": 3508,
+  "viceMatchedWrites": 60231,
+  "viceMaximumCadenceError": 6,
+  "secondaryRelativeDb": -4.845961743800591,
+  "audioHealthyAndSettled": true,
+  "listeningVerdict": {
+    "date": "2026-10-13",
+    "file": "build/flashdance-dual-support/raw-stereo.wav",
+    "quote": "build/flashdance-dual-support/raw-stereo.wav is really good. Stereo sound is convincing!",
+    "scope": "Accepted full raw A-left/B-right stereo arrangement; no separate preference for mono or crossfed alternatives."
+  },
+  "rendererSha256": "80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe",
+  "sidSha256": "3b64d53cef33b62e261605f481948556ecc30c66d62090a61f5d72c8eef1bdc3",
+  "compositions": [
+    {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/songs/flashdance-decoded.json",
+      "sha256": "839251c75b3fa12e1b70abb4b0838662e42701b182ae85ca3c539863025cbdba"
+    },
+    {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/songs/flashdance-secondary.json",
+      "sha256": "9b79da4ec4e13871af406d566c66a5c8bd772e5f64a62f2f6485d595faca88fb"
+    }
+  ],
+  "renderSettings": "libsidplayfp 3.1.1 / SIDLite, PAL MOS6581 pair, default subtune, independent chip stereo PCM16 at 44100 Hz, 35 seconds",
+  "sourceAnnotationUpdate": "After the initial export, sourceEvidence prose was clarified. Reassembling current source produces byte-identical SID; build.json retains hashes of the initial source bytes."
+}

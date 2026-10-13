@@ -1,0 +1,55 @@
+{
+  "flashdance-single": {
+    "sidSha256": "2e05683534fdbef75c6ac2ea3b55496b1a9b3a81a68d86ebbc516531a8cf912b",
+    "maximumPlayCycles": 2231,
+    "writesUnchanged": 30229,
+    "previousAudit": "build/flashdance-independent-full/audit.json",
+    "previousMaximumPlayCycles": 2228
+  },
+  "flashdance-dual": {
+    "sidSha256": "3b64d53cef33b62e261605f481948556ecc30c66d62090a61f5d72c8eef1bdc3",
+    "maximumPlayCycles": 3514,
+    "writesUnchanged": 60283,
+    "previousAudit": "build/flashdance-dual-support/audit.json",
+    "previousMaximumPlayCycles": 3508
+  },
+  "flashdance-transfer": {
+    "sidSha256": "872cfbcbd2453e3ae8c3ccafb069dfe3794037da87a80174921a70f2ebbd36fe",
+    "maximumPlayCycles": 1768,
+    "writesUnchanged": 12787,
+    "previousAudit": "build/flashdance-transfer/audit.json",
+    "previousMaximumPlayCycles": 1768
+  },
+  "referenceComparison": {
+    "matchedWrites": 27905,
+    "minimumInstructionStartDifference": -235,
+    "maximumInstructionStartDifference": 418,
+    "basis": "Shared CPU with DEC absolute corrected to6cycles; not SID bus timing",
+    "sourceSha256": "2f5216ab8f4438d8ef20c0153ce4671afbc5bc6e66d3b0984bb112fdbf46794c",
+    "diagnostic": {
+      "classification": "Pinned Flashdance diagnostic adapter; not a production-auditor pass",
+      "ignoredInitPaddleWrites": [
+        {
+          "phase": "init",
+          "tick": null,
+          "address": 54297,
+          "value": 0
+        },
+        {
+          "phase": "init",
+          "tick": null,
+          "address": 54298,
+          "value": 0
+        }
+      ],
+      "boundary": "Only the two pinned zero init paddle writes are excluded; all other audit guards remain active."
+    }
+  },
+  "correction": {
+    "opcode": "$CE",
+    "instruction": "DEC absolute",
+    "oldCycles": 3,
+    "correctCycles": 6,
+    "meaning": "Write values/order, binaries, rendered audio and listening verdicts are unchanged; CPU durations and instruction-start timestamps are superseded."
+  }
+}

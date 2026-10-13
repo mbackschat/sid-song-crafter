@@ -1,0 +1,27 @@
+{
+  "sourceSha256": "ac7c91d0c4fef41bbc9d9e50840492269151075727efa7182a68dc1a26f1d708",
+  "playCalls": 24385,
+  "verifiedTransitions": {
+    "block": 128,
+    "portamento": 24384,
+    "vibrato": 24384,
+    "filter": 24384,
+    "pulse": 24384,
+    "row": 24384
+  },
+  "sourceFreePrograms": "/Users/mbackschat/Projects/c64-sid-skill/songs/shades-programs.json",
+  "programDescriptionSha256": "32ea2755fe5d68f27f9bb20a5c22da910052ad35ea5ca28399b5deca6cfd595c",
+  "modelSha256": "81662ac08b950931c99b7a26e15eb45eafcc0ce5332b5dd19cb3f8c3a8454269",
+  "testsSha256": "0ae328dd9f81cab84654136f34e0f7be573b48601228360074860e62a606bba5",
+  "namedStateDeltaLedger": "build/shades-program-model/full-transitions.jsonl",
+  "ledgerSha256": "65fa67283de34bed7c7195adf8801418eafff68e77c8ebf5ab71c9f2cf5f3314",
+  "ledgerContract": "Apply entryChanges to preceding exit state, then exitChanges; first entry provides complete named model state. Computed transitions and all source SID writes retain order. Equal source/computed states and outputs asserted before every record.",
+  "timingBasis": "Source instruction starts from corrected shared CPU loader; no independent-model cycle equivalence or PCM claim.",
+  "modelAtProof": "build/shades-program-model/model-at-proof.py",
+  "testsAtProof": "build/shades-program-model/tests-at-proof.py",
+  "subsequentValidation": {
+    "modelSha256": "48e3c96ff717534f9ab7b6a31749032fd9c8a07f50d2d15908f4352640bf592b",
+    "testsSha256": "437acec0aae5e88b7de92da6d9ff4a2662976d6ad305c6a024c31b84f35b637a",
+    "change": "Reject nonzero first-voice fine_tune at validated input boundary only; all demonstrated parameters and state transition functions unchanged. Red/green input guard passed."
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "kind": "read-only-v2-musical-diagnosis",
+  "generatedUtc": "2026-10-13T02:41:20.695320+00:00",
+  "primaryDescription": "songs/flashdance-decoded.json",
+  "primarySha256": "839251c75b3fa12e1b70abb4b0838662e42701b182ae85ca3c539863025cbdba",
+  "secondaryDescription": "songs/flashdance-secondary.json",
+  "secondaryV2Sha256": "42f2fcc1a87fa598fd67c35952683ccbdbd71a35ff7af01916907297059ac1dc",
+  "method": "Use the independently verified compute_writes semantic model for calls0–1537; retain final per-call register state and separate score chord classes from actual oscillator words. No new CPU broad tests, renderer runs or listening were performed.",
+  "staleNoteIntervals": [
+    {
+      "firstPrimaryNewChordBody": 1027,
+      "lastStaleB1Body": 1033,
+      "bodyCalls": 7,
+      "primaryHarmony": "Eb major",
+      "primaryPitchClasses": [
+        "Eb",
+        "G",
+        "Bb"
+      ],
+      "retainedB1": "D4",
+      "b1Word": 5000,
+      "b1Control": 65,
+      "nextB1ChangeCall": 1034,
+      "result": "Added chord extension outside the intended primary triad/sus voicing, rather than a universally invalid musical note."
+    },
+    {
+      "firstPrimaryNewChordBody": 1283,
+      "lastStaleB1Body": 1289,
+      "bodyCalls": 7,
+      "primaryHarmony": "Ab major",
+      "primaryPitchClasses": [
+        "Ab",
+        "C",
+        "Eb"
+      ],
+      "retainedB1": "F4",
+      "b1Word": 5945,
+      "b1Control": 65,
+      "nextB1ChangeCall": 1290,
+      "result": "Added chord extension outside the intended primary triad/sus voicing, rather than a universally invalid musical note."
+    },
+    {
+      "firstPrimaryNewChordBody": 1411,
+      "lastStaleB1Body": 1417,
+      "bodyCalls": 7,
+      "primaryHarmony": "Fsus4",
+      "primaryPitchClasses": [
+        "F",
+        "Bb",
+        "C"
+      ],
+      "retainedB1": "Eb4",
+      "b1Word": 5295,
+      "b1Control": 65,
+      "nextB1ChangeCall": 1418,
+      "result": "Added chord extension outside the intended primary triad/sus voicing, rather than a universally invalid musical note."
+    }
+  ],
+  "unisonPitchRanges": [
+    {
+      "firstCall": 1162,
+      "lastCall": 1233,
+      "nominalPitch": "F4",
+      "b1Word": 5945,
+      "primaryLeadMinimumWord": 5854,
+      "primaryLeadMaximumWord": 6084,
+      "firstMinimumCall": 1185,
+      "firstMaximumCall": 1180,
+      "primaryCentsRelativeToB1": [
+        -26.705,
+        40.012
+      ],
+      "bothControl": 65,
+      "inference": "The static pad doubles a moving nominal lead pitch; beating is plausible, but its audibility/contribution was not isolated."
+    },
+    {
+      "firstCall": 1418,
+      "lastCall": 1537,
+      "nominalPitch": "C4",
+      "b1Word": 4456,
+      "primaryLeadMinimumWord": 4387,
+      "primaryLeadMaximumWord": 4562,
+      "firstMinimumCall": 1423,
+      "firstMaximumCall": 1418,
+      "primaryCentsRelativeToB1": [
+        -27.017,
+        40.701
+      ],
+      "bothControl": 65,
+      "inference": "The static pad doubles a moving nominal lead pitch; beating is plausible, but its audibility/contribution was not isolated."
+    }
+  ],
+  "independentReplyPhrases": [
+    {
+      "bodies": [
+        [
+          482,
+          489,
+          "G4"
+        ],
+        [
+          494,
+          501,
+          "Bb4"
+        ],
+        [
+          506,
+          513,
+          "D5"
+        ]
+      ],
+      "primaryLead": "D5, gate-off pulse control$40 with continuing pitch program; score-off is not proof of an acoustically silent gap.",
+      "interpretation": "New eight-call triangle notes form an ascending tune in the primary lead register, although each note belongs to the current chord."
+    },
+    {
+      "bodies": [
+        [
+          1478,
+          1485,
+          "F4"
+        ],
+        [
+          1490,
+          1497,
+          "A4"
+        ],
+        [
+          1502,
+          1509,
+          "C5"
+        ]
+      ],
+      "primaryLead": "Held C4 with control$41 and vibrato.",
+      "interpretation": "Another independently articulated ascending tune above the primary melody."
+    }
+  ],
+  "backbeatPhaseExamples": [
+    {
+      "bNoiseFirstBody": 610,
+      "primaryBassControlAtThatCall": 9,
+      "primaryBassNoiseFirstBody": 611,
+      "primaryBassNoiseControl": 129
+    },
+    {
+      "bNoiseFirstBody": 674,
+      "primaryBassControlAtThatCall": 9,
+      "primaryBassNoiseFirstBody": 675,
+      "primaryBassNoiseControl": 129
+    },
+    {
+      "bNoiseFirstBody": 866,
+      "primaryBassControlAtThatCall": 9,
+      "primaryBassNoiseFirstBody": 867,
+      "primaryBassNoiseControl": 129
+    }
+  ],
+  "guardGap": "Current authoring harmony guard checks only each secondary note onset. It does not validate a held secondary note throughout every primary chord transition.",
+  "limitedListeningInference": "Listener reported hearing the additions as a slightly off second tune. The exact played clip was not identified here. The late stale-note and unison defects lie outside the8–16second comparison window; if that was the only audition, its independent opening reply and high pad register are more direct explanations. Register/score evidence confirms relationships, not which mechanism caused the reported sound.",
+  "recommendation": "Remove separately phrased replies and delayed high pad movement. For a six-voice arrangement, make B1/B3 lower sustained root/fifth reinforcement at the primary chord body boundaries, retain the backbeat, and leave primary score/instruments intact. Fsus4→F may retain the same F/C pair. Do not add pulse motion as a remedy for these pitch/scheduling issues."
+}

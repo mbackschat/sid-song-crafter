@@ -1,0 +1,83 @@
+{
+  "rendererSha256": "80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe",
+  "compiledSidSha256": "2e05683534fdbef75c6ac2ea3b55496b1a9b3a81a68d86ebbc516531a8cf912b",
+  "settings": "Same libsidplayfp 3.1.1/SIDLite PAL MOS6581 renderer, default subtune, mono PCM16 44100 Hz, unity gain; no individual normalization.",
+  "audio": {
+    "reference": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/flashdance-full-listening/reference.wav",
+      "sha256": "b5d19dce0b2be555d451809d07e79df4195b671d4ec8e1f14024f42bd2f03c80",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1543500,
+      "durationSeconds": 35.0,
+      "peak": 13839,
+      "peakDbfs": -7.486904512635776,
+      "clippedSamples": 0,
+      "rms": 1757.2745115970126,
+      "acRms": 1718.1500106800681,
+      "acRmsDbfs": -25.607777116199728,
+      "perChannel": [
+        {
+          "dc": 368.74686426951735,
+          "rms": 1757.2745115970126,
+          "acRms": 1718.1500106800681
+        }
+      ]
+    },
+    "reconstructed": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/flashdance-full-listening/reconstructed.wav",
+      "sha256": "d6af3c34d8385234594d44b7a2ffc62696b64a5b6a5fb7ff9b2a5b6c63e30ea6",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1543500,
+      "durationSeconds": 35.0,
+      "peak": 13284,
+      "peakDbfs": -7.842421360667405,
+      "clippedSamples": 0,
+      "rms": 1653.9023739111374,
+      "acRms": 1617.5718770432159,
+      "acRmsDbfs": -26.131726945026344,
+      "perChannel": [
+        {
+          "dc": 344.75249821833495,
+          "rms": 1653.9023739111374,
+          "acRms": 1617.5718770432159
+        }
+      ]
+    }
+  },
+  "settledTail": {
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 22050,
+    "durationSeconds": 0.5,
+    "peak": 157,
+    "peakDbfs": -46.391005651009685,
+    "clippedSamples": 0,
+    "rms": 157.0,
+    "acRms": 0.0,
+    "acRmsDbfs": null,
+    "perChannel": [
+      {
+        "dc": -157.0,
+        "rms": 157.0,
+        "acRms": 0.0
+      }
+    ]
+  },
+  "comparison": {
+    "path": "opening-reference-then-ours.wav",
+    "order": [
+      "reference",
+      "reconstructed"
+    ],
+    "secondsEach": 10.5,
+    "gapSeconds": 0.5,
+    "gain": 1
+  },
+  "referenceEnding": "Reference begins its next cycle; only ours has the authored release/fade.",
+  "listeningVerdict": "pending"
+}

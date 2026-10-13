@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "3b64d53cef33b62e261605f481948556ecc30c66d62090a61f5d72c8eef1bdc3",
+  "cpu": "py65 NMOS 6502",
+  "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+  "sidModel": "MOS6581",
+  "sidCount": 2,
+  "sids": [
+    {
+      "baseAddress": 54272,
+      "model": "MOS6581"
+    },
+    {
+      "baseAddress": 54304,
+      "model": "MOS6581"
+    }
+  ],
+  "loadAddress": 1024,
+  "initAddress": 1024,
+  "playAddress": 1031,
+  "clockHz": 985248.6111111111,
+  "playCalls": 1667,
+  "callRateHz": 50.12457321485099,
+  "initCycles": 5208,
+  "maximumPlayCycles": 3514,
+  "meanPlayCycles": 2810.2783443311337,
+  "frameCycleBudget": 19656,
+  "initWriteCount": 52,
+  "playWriteCount": 60231,
+  "registers": {
+    "d400": {
+      "writes": 1629,
+      "distinctValues": 31,
+      "minimum": 24,
+      "maximum": 246
+    },
+    "d401": {
+      "writes": 1629,
+      "distinctValues": 7,
+      "minimum": 1,
+      "maximum": 196
+    },
+    "d402": {
+      "writes": 1629,
+      "distinctValues": 4,
+      "minimum": 0,
+      "maximum": 192
+    },
+    "d403": {
+      "writes": 1629,
+      "distinctValues": 15,
+      "minimum": 1,
+      "maximum": 15
+    },
+    "d404": {
+      "writes": 1704,
+      "distinctValues": 6,
+      "minimum": 0,
+      "maximum": 129
+    },
+    "d405": {
+      "writes": 74,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 2
+    },
+    "d406": {
+      "writes": 111,
+      "distinctValues": 3,
+      "minimum": 0,
+      "maximum": 95
+    },
+    "d407": {
+      "writes": 1636,
+      "distinctValues": 68,
+      "minimum": 1,
+      "maximum": 254
+    },
+    "d408": {
+      "writes": 1636,
+      "distinctValues": 22,
+      "minimum": 0,
+      "maximum": 42
+    },
+    "d409": {
+      "writes": 1636,
+      "distinctValues": 16,
+      "minimum": 0,
+      "maximum": 240
+    },
+    "d40a": {
+      "writes": 1636,
+      "distinctValues": 15,
+      "minimum": 1,
+      "maximum": 15
+    },
+    "d40b": {
+      "writes": 1697,
+      "distinctValues": 7,
+      "minimum": 0,
+      "maximum": 65
+    },
+    "d40c": {
+      "writes": 60,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 3
+    },
+    "d40d": {
+      "writes": 90,
+      "distinctValues": 3,
+      "minimum": 0,
+      "maximum": 60
+    },
+    "d40e": {
+      "writes": 1653,
+      "distinctValues": 15,
+      "minimum": 6,
+      "maximum": 210
+    },
+    "d40f": {
+      "writes": 1653,
+      "distinctValues": 16,
+      "minimum": 1,
+      "maximum": 41
+    },
+    "d410": {
+      "writes": 1653,
+      "distinctValues": 191,
+      "minimum": 1,
+      "maximum": 254
+    },
+    "d411": {
+      "writes": 1653,
+      "distinctValues": 10,
+      "minimum": 0,
+      "maximum": 9
+    },
+    "d412": {
+      "writes": 1680,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 65
+    },
+    "d413": {
+      "writes": 26,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 3
+    },
+    "d414": {
+      "writes": 37,
+      "distinctValues": 3,
+      "minimum": 0,
+      "maximum": 52
+    },
+    "d416": {
+      "writes": 4918,
+      "distinctValues": 5,
+      "minimum": 32,
+      "maximum": 160
+    },
+    "d417": {
+      "writes": 80,
+      "distinctValues": 1,
+      "minimum": 241,
+      "maximum": 241
+    },
+    "d418": {
+      "writes": 54,
+      "distinctValues": 17,
+      "minimum": 0,
+      "maximum": 31
+    },
+    "d420": {
+      "writes": 1665,
+      "distinctValues": 7,
+      "minimum": 22,
+      "maximum": 232
+    },
+    "d421": {
+      "writes": 1665,
+      "distinctValues": 5,
+      "minimum": 1,
+      "maximum": 8
+    },
+    "d422": {
+      "writes": 1665,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d423": {
+      "writes": 1665,
+      "distinctValues": 1,
+      "minimum": 6,
+      "maximum": 6
+    },
+    "d424": {
+      "writes": 1668,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 17
+    },
+    "d425": {
+      "writes": 2,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 72
+    },
+    "d426": {
+      "writes": 2,
+      "distinctValues": 2,
+      "minimum": 15,
+      "maximum": 71
+    },
+    "d427": {
+      "writes": 1650,
+      "distinctValues": 2,
+      "minimum": 22,
+      "maximum": 224
+    },
+    "d428": {
+      "writes": 1650,
+      "distinctValues": 2,
+      "minimum": 1,
+      "maximum": 196
+    },
+    "d429": {
+      "writes": 1650,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d42a": {
+      "writes": 1650,
+      "distinctValues": 1,
+      "minimum": 6,
+      "maximum": 6
+    },
+    "d42b": {
+      "writes": 1683,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 129
+    },
+    "d42c": {
+      "writes": 32,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 4
+    },
+    "d42d": {
+      "writes": 32,
+      "distinctValues": 2,
+      "minimum": 4,
+      "maximum": 15
+    },
+    "d42e": {
+      "writes": 1665,
+      "distinctValues": 7,
+      "minimum": 9,
+      "maximum": 196
+    },
+    "d42f": {
+      "writes": 1665,
+      "distinctValues": 7,
+      "minimum": 1,
+      "maximum": 13
+    },
+    "d430": {
+      "writes": 1665,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d431": {
+      "writes": 1665,
+      "distinctValues": 1,
+      "minimum": 6,
+      "maximum": 6
+    },
+    "d432": {
+      "writes": 1668,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 65
+    },
+    "d433": {
+      "writes": 2,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 72
+    },
+    "d434": {
+      "writes": 2,
+      "distinctValues": 2,
+      "minimum": 15,
+      "maximum": 55
+    },
+    "d436": {
+      "writes": 4980,
+      "distinctValues": 1,
+      "minimum": 96,
+      "maximum": 96
+    },
+    "d437": {
+      "writes": 18,
+      "distinctValues": 1,
+      "minimum": 37,
+      "maximum": 37
+    },
+    "d438": {
+      "writes": 19,
+      "distinctValues": 14,
+      "minimum": 0,
+      "maximum": 28
+    }
+  },
+  "limitations": "No sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+}

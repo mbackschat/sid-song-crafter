@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "inputContract": "Raw independent SID chip outputs: A left, B right; not arbitrary stereo audio.",
+  "input": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/flashdance-dual-support/raw-stereo.wav",
+    "sha256": "5a22c6c6acbd155e9fca929d42b17df5355db053b29a9da3e9ab54b90442bf7f",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1543500,
+    "durationSeconds": 35.0,
+    "peak": 13118,
+    "peakDbfs": -7.951646167874032,
+    "clippedSamples": 0,
+    "rms": 1363.0640234323935,
+    "acRms": 1319.6751624008912,
+    "acRmsDbfs": -27.899657840807464,
+    "perChannel": [
+      {
+        "dc": 344.7592283770651,
+        "rms": 1656.0087083812489,
+        "acRms": 1619.7240248521914
+      },
+      {
+        "dc": -337.55454356980886,
+        "rms": 986.6722970251457,
+        "acRms": 927.1349156580477
+      }
+    ],
+    "tail": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 22050,
+      "durationSeconds": 0.5,
+      "peak": 157,
+      "peakDbfs": -46.391005651009685,
+      "clippedSamples": 0,
+      "rms": 157.0,
+      "acRms": 0.0,
+      "acRmsDbfs": null,
+      "perChannel": [
+        {
+          "dc": -157.0,
+          "rms": 157.0,
+          "acRms": 0.0
+        },
+        {
+          "dc": -157.0,
+          "rms": 157.0,
+          "acRms": 0.0
+        }
+      ]
+    }
+  },
+  "matrices": {
+    "mono": [
+      [
+        0.5,
+        0.5
+      ]
+    ],
+    "listeningStereo": [
+      [
+        0.5,
+        0.35
+      ],
+      [
+        0.5,
+        0.65
+      ]
+    ],
+    "comparisonPrimary": [
+      [
+        0.5,
+        0
+      ]
+    ],
+    "secondChipDiagnostic": [
+      [
+        0,
+        1.0
+      ]
+    ]
+  },
+  "normalization": "none",
+  "window": {
+    "startSeconds": 8.0,
+    "stopSeconds": 16.0,
+    "startFrame": 352800,
+    "stopFrame": 705600
+  },
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "segments": [
+    {
+      "label": "Chip A: three voices at gain 0.5",
+      "startFrame": 0,
+      "stopFrame": 352800
+    },
+    {
+      "label": "Silence",
+      "startFrame": 352800,
+      "stopFrame": 374850
+    },
+    {
+      "label": "Chips A+B: six voices at gain 0.5 each",
+      "startFrame": 374850,
+      "stopFrame": 727650
+    }
+  ],
+  "outputs": {
+    "mono": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/flashdance-dual-support/listening/dual-mono.wav",
+      "sha256": "a087b92098357956041fca5f0365dbb2d8aed926f39ae8bb043a100530204df5",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1543500,
+      "durationSeconds": 35.0,
+      "peak": 6398,
+      "peakDbfs": -14.188113984232594,
+      "clippedSamples": 0,
+      "rms": 914.9840201493159,
+      "acRms": 914.9769245398885,
+      "acRmsDbfs": -31.08079587079136,
+      "perChannel": [
+        {
+          "dc": 3.6034272756721735,
+          "rms": 914.9840201493159,
+          "acRms": 914.9769245398885
+        }
+      ],
+      "tail": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 22050,
+        "durationSeconds": 0.5,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": -157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    },
+    "stereo": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/flashdance-dual-support/listening/dual-listening-stereo.wav",
+      "sha256": "88e642a515fb05099afefd0026246a854f312a72e56e9127559bd2d2d39b89f4",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 1543500,
+      "durationSeconds": 35.0,
+      "peak": 6446,
+      "peakDbfs": -14.123192675668044,
+      "clippedSamples": 0,
+      "rms": 926.8778982416104,
+      "acRms": 925.4846622484403,
+      "acRmsDbfs": -30.98161418460257,
+      "perChannel": [
+        {
+          "dc": 54.2760019436346,
+          "rms": 860.5805431730269,
+          "acRms": 858.8672696645253
+        },
+        {
+          "dc": -47.07092517006803,
+          "rms": 988.7398066274001,
+          "acRms": 987.6187185413319
+        }
+      ],
+      "tail": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 22050,
+        "durationSeconds": 0.5,
+        "peak": 181,
+        "peakDbfs": -45.15542720181067,
+        "clippedSamples": 0,
+        "rms": 158.8238017426859,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": -133.0,
+            "rms": 133.0,
+            "acRms": 0.0
+          },
+          {
+            "dc": -181.0,
+            "rms": 181.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    },
+    "comparison": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/flashdance-dual-support/listening/three-then-six-voices.wav",
+      "sha256": "adc65eb49d3538ddf7b08c3f3fe3a2c52b063ea4c300f0ca66aa2c327dea2aa2",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 727650,
+      "durationSeconds": 16.5,
+      "peak": 6439,
+      "peakDbfs": -14.132630197351874,
+      "clippedSamples": 0,
+      "rms": 887.5180689221874,
+      "acRms": 882.3825423990044,
+      "acRmsDbfs": -31.395860555854938,
+      "perChannel": [
+        {
+          "dc": 95.3381955610527,
+          "rms": 887.5180689221874,
+          "acRms": 882.3825423990044
+        }
+      ],
+      "tail": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 22050,
+        "durationSeconds": 0.5,
+        "peak": 2802,
+        "peakDbfs": -21.359636080199245,
+        "clippedSamples": 0,
+        "rms": 925.2930712290021,
+        "acRms": 905.5771968458329,
+        "acRmsDbfs": -31.170489137167102,
+        "perChannel": [
+          {
+            "dc": 189.9926530612245,
+            "rms": 925.2930712290021,
+            "acRms": 905.5771968458329
+          }
+        ]
+      }
+    },
+    "secondChipDiagnostic": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/flashdance-dual-support/listening/second-chip-only.wav",
+      "sha256": "098e5416731fdd47942122d32923e0ed66cb0ab90ab26951e5ef99ef8ff95d1c",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1543500,
+      "durationSeconds": 35.0,
+      "peak": 7283,
+      "peakDbfs": -13.062792500108952,
+      "clippedSamples": 0,
+      "rms": 986.6722970251457,
+      "acRms": 927.1349156580477,
+      "acRmsDbfs": -30.966139963178165,
+      "perChannel": [
+        {
+          "dc": -337.55454356980886,
+          "rms": 986.6722970251457,
+          "acRms": 927.1349156580477
+        }
+      ],
+      "tail": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 22050,
+        "durationSeconds": 0.5,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": -157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ]
+      },
+      "label": "Diagnostic second-chip solo at raw gain 1.0; comparison contribution uses gain 0.5.",
+      "normalization": "none"
+    }
+  },
+  "listeningVerdict": null
+}

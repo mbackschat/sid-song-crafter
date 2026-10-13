@@ -1,0 +1,615 @@
+{
+  "classification": "Pinned score-structure diagnostic only; not production audit or CIA emulation",
+  "source": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/.local/research/shades/Shades_filter_corrected.sid",
+    "sha256": "ac7c91d0c4fef41bbc9d9e50840492269151075727efa7182a68dc1a26f1d708",
+    "load": 20032,
+    "init": 28672,
+    "play": 29742
+  },
+  "probeSha256AtExecution": "630dfa0c60c2ccdc8705d14e791cc45cf90cbe007a28bc17fd7957e6795c35a9",
+  "currentProbeSha256": "7b2d6b669c07e10b91cdd1d24d8a9e7c6a4950241533a5417afacf944a080b57",
+  "probeChangeAfterExecution": "Only the terminal print was shortened; the observed runtime, guards and artifacts were unchanged.",
+  "rawArtifacts": {
+    "summary.json": "024ad076fae43908fafdf2b75aa3dd03a71f7779fbc316ccb59d183bfa5d8f42",
+    "rows.json": "484a1d1fb27ce59d2e36d99575d80cf97e6a136e4bdfd804ce776f6535a17f95",
+    "call-state.json": "553cb246b45a0240b6c334826c9e28b0aa14be0d83d26040081e0cc2c6bcf59f"
+  },
+  "playCallsObserved": 48770,
+  "elapsedTimeAssigned": false,
+  "productionGuardChanged": false,
+  "allowedExtraIo": {
+    "write": {
+      "pc": 30802,
+      "address": 56325,
+      "source": "live ($AB),Y pattern operand"
+    },
+    "read": []
+  },
+  "ioReads": [],
+  "scoreTables": {
+    "order": 21888,
+    "voicePointers": [
+      20480,
+      20736,
+      20992
+    ],
+    "infoPointers": 21248,
+    "voiceTransposes": [
+      21504,
+      21632,
+      21760
+    ]
+  },
+  "state": {
+    "restartFlag": 828,
+    "playingFlag": 829,
+    "advanceFlag": 830,
+    "nextOrderIndex": 831,
+    "rowIndex": 832,
+    "rowCounter": 833,
+    "rowReload": 834,
+    "rowLimit": 879,
+    "pointerSwapStorage": 2025
+  },
+  "rowContract": {
+    "firstSelectionCall": 0,
+    "firstRowCall": 1,
+    "counterReload": 2,
+    "callsPerRow": 3,
+    "allConsumedIndicesValidated": true,
+    "ordinaryRowsPerSlot": 64,
+    "shortSlots": [
+      54,
+      55
+    ],
+    "shortRowsPerSlot": 32,
+    "rowsPerTraversal": 8128,
+    "callsPerRecurringTraversal": 24384,
+    "firstTraversalInclusiveCallRange": [
+      0,
+      24384
+    ]
+  },
+  "patternInfoBlocks": [
+    {
+      "address": 20160,
+      "slotRanges": [
+        [
+          102,
+          107
+        ]
+      ],
+      "rowLimits": [
+        64
+      ],
+      "timerHighs": [
+        48
+      ],
+      "fadeCommands": [
+        0
+      ]
+    },
+    {
+      "address": 20224,
+      "slotRanges": [
+        [
+          46,
+          53
+        ]
+      ],
+      "rowLimits": [
+        64
+      ],
+      "timerHighs": [
+        48
+      ],
+      "fadeCommands": [
+        0
+      ]
+    },
+    {
+      "address": 20288,
+      "slotRanges": [
+        [
+          54,
+          55
+        ]
+      ],
+      "rowLimits": [
+        32
+      ],
+      "timerHighs": [
+        48
+      ],
+      "fadeCommands": [
+        0
+      ]
+    },
+    {
+      "address": 20352,
+      "slotRanges": [
+        [
+          86,
+          93
+        ]
+      ],
+      "rowLimits": [
+        64
+      ],
+      "timerHighs": [
+        48
+      ],
+      "fadeCommands": [
+        0
+      ]
+    },
+    {
+      "address": 20416,
+      "slotRanges": [
+        [
+          76,
+          85
+        ],
+        [
+          94,
+          101
+        ]
+      ],
+      "rowLimits": [
+        64
+      ],
+      "timerHighs": [
+        48
+      ],
+      "fadeCommands": [
+        0
+      ]
+    },
+    {
+      "address": 22016,
+      "slotRanges": [
+        [
+          2,
+          17
+        ],
+        [
+          108,
+          119
+        ],
+        [
+          121,
+          127
+        ]
+      ],
+      "rowLimits": [
+        64
+      ],
+      "timerHighs": [
+        48
+      ],
+      "fadeCommands": [
+        0
+      ]
+    },
+    {
+      "address": 22080,
+      "slotRanges": [
+        [
+          18,
+          25
+        ],
+        [
+          56,
+          63
+        ],
+        [
+          65,
+          73
+        ],
+        [
+          75,
+          75
+        ]
+      ],
+      "rowLimits": [
+        64
+      ],
+      "timerHighs": [
+        48
+      ],
+      "fadeCommands": [
+        0
+      ]
+    },
+    {
+      "address": 22144,
+      "slotRanges": [
+        [
+          26,
+          27
+        ],
+        [
+          64,
+          64
+        ],
+        [
+          74,
+          74
+        ]
+      ],
+      "rowLimits": [
+        64
+      ],
+      "timerHighs": [
+        48
+      ],
+      "fadeCommands": [
+        0
+      ]
+    },
+    {
+      "address": 22208,
+      "slotRanges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "rowLimits": [
+        64
+      ],
+      "timerHighs": [
+        48
+      ],
+      "fadeCommands": [
+        255
+      ]
+    },
+    {
+      "address": 22272,
+      "slotRanges": [
+        [
+          34,
+          37
+        ]
+      ],
+      "rowLimits": [
+        64
+      ],
+      "timerHighs": [
+        48
+      ],
+      "fadeCommands": [
+        0
+      ]
+    },
+    {
+      "address": 22336,
+      "slotRanges": [
+        [
+          28,
+          33
+        ]
+      ],
+      "rowLimits": [
+        64
+      ],
+      "timerHighs": [
+        48
+      ],
+      "fadeCommands": [
+        0
+      ]
+    },
+    {
+      "address": 22400,
+      "slotRanges": [
+        [
+          38,
+          41
+        ]
+      ],
+      "rowLimits": [
+        64
+      ],
+      "timerHighs": [
+        48
+      ],
+      "fadeCommands": [
+        0
+      ]
+    },
+    {
+      "address": 22464,
+      "slotRanges": [
+        [
+          42,
+          45
+        ]
+      ],
+      "rowLimits": [
+        64
+      ],
+      "timerHighs": [
+        48
+      ],
+      "fadeCommands": [
+        0
+      ]
+    },
+    {
+      "address": 26368,
+      "slotRanges": [
+        [
+          120,
+          120
+        ]
+      ],
+      "rowLimits": [
+        64
+      ],
+      "timerHighs": [
+        48
+      ],
+      "fadeCommands": [
+        30
+      ]
+    }
+  ],
+  "executedSlotOrder": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127
+  ],
+  "selectedCallExamples": {
+    "0": 0,
+    "1": 193,
+    "2": 385,
+    "18": 3457,
+    "26": 4993,
+    "28": 5377,
+    "34": 6529,
+    "38": 7297,
+    "42": 8065,
+    "46": 8833,
+    "54": 10369,
+    "55": 10465,
+    "56": 10561,
+    "64": 12097,
+    "74": 14017,
+    "76": 14401,
+    "86": 16321,
+    "94": 17857,
+    "102": 19393,
+    "108": 20545,
+    "120": 22849,
+    "121": 23041,
+    "124": 23617,
+    "127": 24193
+  },
+  "firstPitchCommandsByPhysicalVoice": {
+    "1": {
+      "call": 385,
+      "slot": 2,
+      "row": 0,
+      "sourceAddress": 22848,
+      "byte": 19
+    },
+    "2": {
+      "call": 1153,
+      "slot": 6,
+      "row": 0,
+      "sourceAddress": 22592,
+      "byte": 45
+    },
+    "3": {
+      "call": 1921,
+      "slot": 10,
+      "row": 0,
+      "sourceAddress": 23104,
+      "byte": 57
+    }
+  },
+  "commandConsumptionPerTraversal": {
+    "1": {
+      "off": 6217,
+      "pitch-with-retrigger": 1198,
+      "hold": 601,
+      "pitch-without-retrigger": 112
+    },
+    "2": {
+      "off": 3609,
+      "pitch-with-retrigger": 1108,
+      "pitch-without-retrigger": 3410,
+      "hold": 1
+    },
+    "3": {
+      "off": 7485,
+      "pitch-with-retrigger": 421,
+      "pitch-without-retrigger": 216,
+      "hold": 6
+    }
+  },
+  "loopEvidence": {
+    "nextOrderIndexBecomesZeroAtLastSlotSelection": 24193,
+    "lastSlotConsumedRowCalls": [
+      24193,
+      24382
+    ],
+    "actualNextSlotZeroSelectionCalls": [
+      24385,
+      48769
+    ],
+    "recurringPeriodCalls": 24384,
+    "matchingSourceAddressValueRows": 8129,
+    "matchingRelevantScoreStatesAfterInactiveFadeNormalization": 8128,
+    "remainingInitialDifference": [
+      {
+        "firstCall": 1,
+        "followingCall": 24385,
+        "differentFields": {
+          "previousRows": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              188,
+              188,
+              188
+            ]
+          ]
+        }
+      }
+    ],
+    "normalizationBasis": "When$0377 is zero, $78BB\u2013$78BE exits before reading countdown$0378 or accumulator$0379; a later nonzero pattern fade command at$7866\u2013$786F replaces both. Normalize only those inactive fields, retaining raw row snapshots. Initial row0 still differs in previous-row history; following rows match.",
+    "interpretation": "Order index wrap occurs while the last slot is starting; it is not the score restart. First-pass startup has a one-call initialization asymmetry and different previous-row history at its first silent row. From the second consumed row, comparable traversal states match after ignoring unreachable inactive fade scratch values. Instrument/oscillator/envelope state equality is not claimed."
+  },
+  "endingEvidence": {
+    "fadeSelectedSlot": 120,
+    "fadeSelectedCall": 22849,
+    "infoPointer": 26368,
+    "fadeFieldOffset": 63,
+    "fadeCounterReload": 30,
+    "fadeRunsOnlyAtRowUpdates": true,
+    "rowUpdatesPerVolumeStep": 31,
+    "callsPerVolumeStep": 93,
+    "firstVolumeStepCall": 22942,
+    "firstVolumeStepValue": 30,
+    "volumeZeroCall": 24244,
+    "volumeZeroValue": 16,
+    "fadeCancelledBySlotZeroInfo": 22208,
+    "fadeCancelCommand": 255,
+    "playingFlagRemainsOne": true,
+    "noNativeStopReached": true,
+    "interpretation": "The program fades master volume to zero while continuing score/instrument work, then selects the initial silent slots again. Natural fade completion is distinct from loop restart and from a native stopped player."
+  },
+  "limits": "Pinned RAM diagnostic score/counter/fade evidence only. No seconds or native CIA cadence, full-machine acceptance, instrument reconstruction, analog recurrence, editor-format compatibility or listening verdict."
+}
