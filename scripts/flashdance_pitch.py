@@ -57,6 +57,8 @@ def advance_pitch(state, frequency, source_note, frequency_table, *, absolute=Fa
     if not vibrato.enabled:
         return frequency
 
+    if type(source_note) is not int or not 0 <= source_note < len(frequency_table) - 1:
+        raise ValueError('Active vibrato requires an adjacent frequency table note')
     delta = (frequency_table[source_note + 1] - frequency_table[source_note]) & 65535
     delta = ((delta + (vibrato.depth << 8)) & 65535) >> vibrato.shift
     vibrato.remaining = (vibrato.remaining - 1) & 255

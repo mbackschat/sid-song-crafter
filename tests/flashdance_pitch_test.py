@@ -1,3 +1,4 @@
+import copy
 import importlib.util
 from pathlib import Path
 import sys
@@ -43,6 +44,20 @@ class FlashdancePitchTests(unittest.TestCase):
         self.assertEqual(10000, advance_pitch(state, 10000, 0, [1000, 1256]))
         self.assertEqual(1, state.vibrato.depth)
         self.assertEqual(10128, advance_pitch(state, 10000, 0, [1000, 1256]))
+
+    def test_active_vibrato_requires_adjacent_table_note_before_state_advances(self):
+        for note in (-1, 1):
+            with self.subTest(note=note):
+                state = PitchEffects(vibrato=VibratoState(enabled=1, interval=4, remaining=3, shift=2))
+                before = copy.deepcopy(state)
+                with self.assertRaisesRegex(ValueError, 'frequency table'):
+                    advance_pitch(state, 10000, note, [1000, 1316])
+                self.assertEqual(before, state)
+
+    def test_last_table_note_is_valid_when_vibrato_does_not_run(self):
+        self.assertEqual(10000, advance_pitch(PitchEffects(), 10000, 1, [1000, 1316]))
+        state = PitchEffects(slide=SlideState(enabled=1, step=40), vibrato=VibratoState(enabled=1))
+        self.assertEqual(10040, advance_pitch(state, 10000, 1, [1000, 1316]))
 
 
 SOURCE = ROOT / '.local/research/flashdance/drax-flashdance-conversion.sid'

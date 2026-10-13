@@ -32,4 +32,34 @@ Compilation computes PWM, vibrato, attack stages, releases and arpeggios; it inc
 
 ## Recover another arrangement
 
+### Flashdance description
+
+The separate [Flashdance composition](../../songs/flashdance-decoded.json) describes the selected arrangement's entire 1,536-call score cycle plus two startup calls. Its [owning study](../research/composition/flashdance-preparation.md) distinguishes this abbreviated arrangement from the original song. Regenerate or check the portable description from the pinned local reference:
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/describe-flashdance-score.py .local/research/flashdance/drax-flashdance-conversion.sid --composition --output songs/flashdance-decoded.json --check
+```
+
+Omit `--check` and choose a fresh output path to create a description. Importing verifies the reference identity and executed score consumption; subsequent model execution uses only JSON. `flashdance_player.compute_writes(description)` computes the selected comparison span, while an explicit `calls` includes the authored ending. These Python writes are a synthesis-model oracle, not a SID export or listening result.
+
+- `score.roles` contains ordered instrument, note, hold, off and effect commands. Notes select a frequency-table index plus semitone transposition; `restart: false` preserves instrument progression. Instrument programs can clear gate independently of score-off.
+- `programs` contains editable frequency words, waveform/pitch rows, PWM rows, filter rows and instrument bindings. Rows and retained state use checked byte/word arithmetic. PWM reverses on high-byte equality; filter reversal uses separate crossing rules.
+- `initialEffects` and `preloaded` preserve the startup and retained modulation state needed before the first note. One declared voice owns the shared filter. `fineTuneWord` provides each voice's word offset.
+- `ending.releaseCalls` continues modulation with gates cleared; `fadeStepCalls` determines the subsequent volume staircase. The default is 64 release calls and four calls per fade step. `sourceEvidence` and source addresses are annotations, so musical edits do not require rewriting provenance.
+
+This description targets one PAL MOS6581 at one update per 19,656 cycles. Its program bank supports the decoded instrument/filter modes and checked links; it does not imply a universal importer. Run [the scheduler guards](../../tests/flashdance_player_test.py) with the score, program and pitch suites when changing these mechanisms.
+
+Build our independent player, then verify and render it into fresh paths:
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/compose-flashdance.py songs/flashdance-decoded.json --output build/flashdance-new
+python3 scripts/trace-sid-vice.py build/flashdance-new/reconstructed.sid --oracle build/flashdance-new/writes.json --first-call 0 --last-call 1666 --output build/flashdance-new/vice
+.local/bin/render-sid build/flashdance-new/reconstructed.sid build/flashdance-new/reconstructed.wav 35
+.local/bin/render-sid .local/research/flashdance/drax-flashdance-conversion.sid build/flashdance-new/reference.wav 35
+```
+
+The compiler emits SID, assembly/listing, build metadata, CPU audit and ordered writes. By default it audits the score, complete ending and first silent call against the model. `--calls` selects a bounded diagnostic override. The shown VICE window and render duration apply to the unchanged retained composition; edits to its score or ending require corresponding coverage. The compiler itself requires no reference file. See [measured differences and listening status](../research/composition/flashdance-preparation.md#independent-export-and-listening) before reusing its instruments as an accepted sound.
+
+### Other drivers
+
 [describe-drax-score.py](../../scripts/describe-drax-score.py) is a pinned, driver-specific transcriber, not a universal SID importer. It observes executed note consumption, instrument initialization and score gate-off, then verifies preparation and repeat behavior. Use `--check` to compare its output with the retained fixture. For another player, recover its corresponding readers and state transitions before adapting the decoder. [Flashdance preparation](../research/composition/flashdance-preparation.md) identifies the next mechanisms and the separate dual-SID arrangement plan.

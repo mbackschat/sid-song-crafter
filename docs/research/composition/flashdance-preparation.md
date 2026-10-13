@@ -14,7 +14,7 @@ The retained [frames](../../../build/reference-studies/drax/flashdance.frames.js
 | Lead: triangle at 3, saw at 4–5, pulse from 6. Width rises `$70`, reverses, then changes to `$10` descent at 12. Pitch first moves by 79 at 30. | Waveform staging and changing PWM rate replace the simple pulse lead; modulation needs its own decoded contract. |
 | Chord: B-flat3/D4/F4/B-flat4, two calls per tone, plain pulse and width movement `$0D` per opening call. | Four-tone moving pulse replaces the fixed-width triangle/pulse triad. |
 
-These are measured trajectories, not recovered algorithms. Trace the responsible instructions and RAM operands before identifying bounds, delays, reset rules or reusable parameters.
+These initial measurements motivated the executed mechanism studies below. The editable programs now compute their state transitions; sound quality and successful musical reuse remain separate questions.
 
 ## Selected form and ending contract
 
@@ -44,9 +44,9 @@ The [comparison receipt](../../../build/flashdance-original-form/source-form-com
 
 **Omissions and limits:** the loop returns before Verse 1's remaining eight bars; later verses, choruses and instrumental/outro development have no separate passages. Bar labels belong to Seiler's edition. Original-recording timestamps, exact introduction identity and version-specific ending remain unverified. No selected SID block is omitted; this deliverable remains an abbreviated DRAX arrangement. Listening acceptance is open.
 
-**Intended ending:** preserve the reference through call 1537, suppress the next score cycle, then release the voices while retaining their modulation and fade any remaining tail to zero volume. This is a deliberate arrangement change after the comparison span, not an ending found in the source: no terminating track command was observed. F4 must implement and audition the release/fade, determine its duration and verify final silence before declaring a total export length.
+**Authored ending:** preserve the reference through call 1537 and suppress the next score cycle. The editable model clears gate from call 1538 while continuing modulation, retains 64 release calls, then lowers volume every four calls. Volume reaches zero at call 1658; from call 1666 it repeatedly clears control and volume. This is an arrangement change after the comparison span, not an ending found in the source. Export execution, settled audio and listening must verify it before F4 closes.
 
-The local analysis entry point and its tests remain deferred, untracked work. The retained evidence pins tool SHA-256 `6e0bbd4e08056c5b04426cedad194e1d5d62accb0e53b08d47d2efd94822fd55`; reproducing this form analysis currently requires that local tool. Integrate it before claiming a portable F2 tracing workflow. Its six tests passed on 2026-10-13, including real-source form verification and diagnostic-boundary checks. The retained opening traces also match all 9,345 initialization and calls 0–513 sound-register writes in the cached reference oracle. These checks establish analysis evidence, not independent reconstruction or listening acceptance.
+The local form-analysis entry point and its tests remain deferred, untracked work. The retained evidence pins tool SHA-256 `6e0bbd4e08056c5b04426cedad194e1d5d62accb0e53b08d47d2efd94822fd55`; reproducing that form receipt still requires the local tool. Its six tests passed on 2026-10-13. Portable instruction tracing is separately supported by [trace-sid-program.py](../../../scripts/trace-sid-program.py) with its explicit pinned `flashdance-diagnostic` profile; it does not depend on the deferred tool. The retained opening traces match all 9,345 initialization and calls 0–513 sound-register writes in the cached reference oracle. These checks establish analysis evidence, not listening acceptance.
 
 ## Executed feasibility findings
 
@@ -60,7 +60,31 @@ A bounded execution study of the pinned binary identifies requirements beyond th
 | Moving chord variants | Initializers at calls 2/130/258/386 select four chord programs. The opening has offsets `[0,0,4,4,7,7,12,12]`, AD/SR `$03/$34`, width `$040` and step `$0D`. Describe the four-tone cycle independently from the score note. |
 | Per-voice fine tuning | PC `$14FB` adds the table `$1762,X` value: 0/1/2 for bass/lead/chord. The opening lead `$2710` becomes `$2711`; chord `$0F82` becomes `$0F84`. Preserve the exact programmed words alongside their musical interpretation. |
 
-These are decoded local execution observations, not independent synthesis or listening acceptance. The first four-chord turn, calls 0–513, is the [plan's first reconstruction milestone](../study-plan.md#flashdance-next-executable-milestones). The opening contracts below refine the score and PWM requirements; waveform/pitch tables `$187B/$197B` and the complete filter program still need an editable description. The existing pinned diagnostic adapter retains the production auditor's strict I/O boundary.
+The first four-chord turn, calls 0–513, is the [plan's first reconstruction milestone](../study-plan.md#flashdance-next-executable-milestones). The contracts below refine the score and PWM requirements. The complete selected score, waveform/pitch, PWM and filter programs now have an editable description; the pinned diagnostic adapter retains the production auditor's strict I/O boundary.
+
+### Editable full-span model
+
+The [portable composition](../../../songs/flashdance-decoded.json) separates musical commands, instrument programs, retained startup state and nonexecuting `sourceEvidence`. The [pinned score decoder](../../../scripts/describe-flashdance-score.py) checks two executed score cycles; the [program model](../../../scripts/flashdance_programs.py) computes waveform selection, absolute/relative pitch, PWM and the shared filter. The [scheduler](../../../scripts/flashdance_player.py) handles same-call restarts, legato changes, instrument-owned release, delayed SR writes and the authored ending without reading reference bytes during playback. See [reproduction and editable controls](../../workflows/decoded-song-workflow.md#flashdance-description).
+
+On 2026-10-13, the independently scheduled Python model matched **all 27,905 ordered sound-register writes**, including initialization and calls 0–1537, against the pinned original execution. The [receipt](../../../build/flashdance-computed-model/receipt.json) identifies the serialized input. The score/program/pitch/scheduler guards cover parameter interventions, source-read isolation, changed-note execution, JSON round-trip verification and release/fade behavior. The original writes remain a comparison oracle; the composition contains semantic programs and commands rather than per-call register playback.
+
+The shared filter advances only when its declared owner runs; companion voices repeat the retained cutoff write in the original voice order. Its rows carry independent lower/upper bounds, step, duration, optional reset and hold. Unlike PWM's equality reversal, the filter reverses upward at or above the upper bound and downward below the lower bound after byte arithmetic. The [executed program guards](../../../tests/flashdance_programs_test.py) compare all selected transitions and isolated boundary interventions against the original routines.
+
+### Independent export and listening
+
+The [compiler](../../../scripts/compose-flashdance.py) generates semantic score records and program tables for our [6502 scheduler](../../../songs/players/flashdance.asm), [instrument routines](../../../songs/players/flashdance-programs.asm) and [pitch routines](../../../songs/players/flashdance-pitch.asm). It reads the portable description and our source templates, with no reference-driver instructions or captured-register playback. The [compiler guards](../../../tests/flashdance_compiler_test.py) verify changed pitches/PWM, repeated initialization, zero-page preservation and all-register model equality through the ending.
+
+The [full export](../../../build/flashdance-independent-full/reconstructed.sid) independently matches all 27,905 reference initialization/music writes. Its [reference comparison](../../../build/flashdance-independent-full/reference-comparison.json) also records the remaining timing difference: candidate-minus-original instruction-start offsets range from −235 to +418 cycles. Equal call/address/value/order does not imply equal SID bus timing, oscillator phase or analog sound.
+
+The [CPU audit](../../../build/flashdance-independent-full/audit.json) covers 1,667 calls with a maximum of 2,228 cycles per call against the 19,656-cycle PAL budget. The [headless VICE check](../../../build/flashdance-independent-full/vice/study.json) independently matches all 30,203 playback writes through the first fully muted call, with at most five cycles of harness polling jitter. Its controlled harness disables IRQs, sprites and display DMA; this is not the reference's original machine environment.
+
+Both 35-second renders use the same PAL MOS6581, default subtune, libsidplayfp 3.1.1/SIDLite, mono PCM16 at 44.1 kHz and unity gain. Neither is individually normalized. The [audio receipt](../../../build/flashdance-full-listening/audio-evidence.json) records no clipped samples and zero AC RMS in our final half-second. The reference begins its next loop; our export releases, fades and stops.
+
+- [Opening comparison: reference, half-second gap, ours](../../../build/flashdance-full-listening/opening-reference-then-ours.wav): 10.5 seconds per side, rendered from initialization.
+- [Complete selected reconstruction with authored ending](../../../build/flashdance-full-listening/reconstructed.wav).
+- [Reference at the same gain and duration](../../../build/flashdance-full-listening/reference.wav).
+
+**Listening verdict: pending.** The listener has been asked whether the opening retains the sound/phrasing and whether the authored ending feels natural. Execution and PCM checks do not close F3/F4 without that judgment.
 
 ### Score changes, restarts and gate ownership
 
