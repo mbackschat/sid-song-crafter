@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    8.0,
+    14.0
+  ],
+  "window": {
+    "startFrame": 352800,
+    "endFrame": 617400,
+    "frames": 264600,
+    "startSeconds": 8.0,
+    "endSeconds": 14.0,
+    "durationSeconds": 6.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-elise-transfer/listening/ending-plain-then-cybernoid.ab.wav",
+    "frames": 551250,
+    "durationSeconds": 12.5,
+    "sha256": "31334e8579b6e462bc6cca881e6595d2e8d00879f1c94393883fa46ffacd2f3d"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 264600
+    },
+    {
+      "label": "silence",
+      "startFrame": 264600,
+      "endFrame": 286650
+    },
+    {
+      "label": "B",
+      "startFrame": 286650,
+      "endFrame": 551250
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-elise-transfer/reference/reference.wav",
+      "sha256": "c536601b2a12da678f78c8cca3e8ade05ad12a78771f51e0c5ebcd74f17b8bcb",
+      "originalFrames": 661500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 264600,
+        "durationSeconds": 6.0,
+        "peak": 6848,
+        "peakDbfs": -13.597723665812422,
+        "clippedSamples": 0,
+        "rms": 903.4043127262879,
+        "acRms": 903.3910976574948,
+        "acRmsDbfs": -31.19148256816207,
+        "perChannel": [
+          {
+            "dc": -4.886402116402117,
+            "rms": 903.4043127262879,
+            "acRms": 903.3910976574948
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-elise-transfer/candidate/reconstructed.wav",
+      "sha256": "329b849bc1d5de7653fa5670dd9266c8c9da89423ebe2aba8c6fc17c9b33acfb",
+      "originalFrames": 661500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 264600,
+        "durationSeconds": 6.0,
+        "peak": 8426,
+        "peakDbfs": -11.79656960337778,
+        "clippedSamples": 0,
+        "rms": 1731.3404350079231,
+        "acRms": 1731.3272994670888,
+        "acRmsDbfs": -25.54141515895082,
+        "perChannel": [
+          {
+            "dc": 6.744183673469387,
+            "rms": 1731.3404350079231,
+            "acRms": 1731.3272994670888
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

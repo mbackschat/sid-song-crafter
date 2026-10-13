@@ -16,8 +16,8 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Compare Für Elise with an existing SID](fuer-elise-reference.md): measured opening pitches, tempo/articulation differences, voice allocation and level-matched audition excerpts.
 - [Reconstruct Flashdance and compose dual SID](flashdance-preparation.md): accepted selected-form reconstruction and six-voice raw stereo interpretation, editable instrument programs and an original transfer phrase judged to work.
 - [Study Flashdance: What a Feeling](flashdance-reference.md): verified archive identities, synthesis lessons and a source-to-reference comparison contract.
-- [Reconstruct Shades](shades-preparation.md): independent full-form/transfer players, CIA proofs, editable pulse/glide programs and pending reconstruction listening.
-- [Prepare Cybernoid II](cybernoid-ii-preparation.md): editable numeric score/program model, full-span register equality and bounded source proofs.
+- [Reconstruct Shades](shades-preparation.md): accepted independent full-form reconstruction and familiar transfer, CIA proofs and editable pulse/glide programs.
+- [Cybernoid II title and reusable programs](cybernoid-ii-preparation.md): complete numeric model, accepted independent title/finite ending and accepted familiar pulse-program transfer.
 - [Prepare Monty on the Run](monty-preparation.md): pinned subtune, two order traversals, independent first-wrap verification and bounded note/body components with shared PWM and pitch-state aliases.
 - [Prepare Rambo: First Blood Part II](rambo-preparation.md): loader-specific attribution, finite command traversal, independent stop-window verification and named-state lifetime/PWM/pitch components.
 - [Prepare Ghouls ’n Ghosts](ghouls-preparation.md): archive/subtune boundaries, finite stream form and CPU/VICE terminal verification with continuing filter writes.

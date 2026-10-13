@@ -1,0 +1,349 @@
+{
+  "schemaVersion": 1,
+  "kind": "cybernoid-title-reconstruction-listening-package",
+  "checkedOn": "2026-10-13",
+  "source": {
+    "title": "Cybernoid II",
+    "music": "Jeroen Tel",
+    "driver": "Charles Deenen (recovered MUSICFILE driver)",
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/T/Tel_Jeroen/Cybernoid_II.sid",
+    "assetId": "cybernoid-ii",
+    "path": ".local/research/cybernoid-ii/Cybernoid_II.sid",
+    "sha256": "41f338f44b4f54e351e672156ee0e2a60c8437eb24645db3f9d4abfbb0cff192",
+    "bytes": 4502,
+    "defaultSubtune": 1
+  },
+  "description": {
+    "path": "songs/cybernoid-title.json",
+    "sha256": "4c70eb1dd9f81ded4b15ff19d4ec7634c400330c8fb4567a73888e755ca2519d",
+    "bytes": 707629
+  },
+  "codePins": {
+    "scripts/render-sid.cpp": "c7bc5f7b0fe8d18a54ecde7338b6efa786f87f54ec258a00fb01025486bad5fc",
+    "scripts/audio_comparison.py": "3d9ad70290cc5df00b9575b011ebdcd0b92d37e7c37464c886b873736bc78884",
+    "scripts/compare-audio.py": "af32799660edd43d56f81196994bf9629aec98e960f487ea98ad7b14e8c0fc48",
+    "scripts/prepare-cybernoid-title.py": "c5a7fb18ee371e2bb8cadbc0c33066db57e156c9556ac30e3808e0187109ce34",
+    "scripts/compose-cybernoid.py": "e71698934cb8c4f125c43ed95bff7627e9811ffa9ab287e33bc0139f645d9b32",
+    "scripts/cybernoid_player.py": "8859a86df6fc724f36aa0f77ea04095850405a5c3550aa0d8e4cc2c442b65867",
+    "songs/players/cybernoid.asm": "37ccc4d6876711613192d2c56c340da93bb1384b492600b8061935b485748a20",
+    "songs/players/cybernoid-pitch.asm": "9dc3187a29c18cdecafce2d2766d9c2ea4a95774d6641966891576dc279dd678",
+    "songs/players/cybernoid-effects.asm": "124bbb7d018b299db02fe2e5c424a547baf21d11d3bf041391a9a36e933d0212"
+  },
+  "rendering": {
+    "executable": {
+      "path": ".local/bin/render-sid",
+      "sha256": "80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe",
+      "bytes": 268712
+    },
+    "source": {
+      "path": "scripts/render-sid.cpp",
+      "sha256": "c7bc5f7b0fe8d18a54ecde7338b6efa786f87f54ec258a00fb01025486bad5fc",
+      "bytes": 10392
+    },
+    "library": {
+      "name": "libsidplayfp",
+      "version": "3.1.1",
+      "staticLibrary": {
+        "path": ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "sha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00",
+        "bytes": 470624
+      },
+      "builder": "SIDLite"
+    },
+    "settings": {
+      "clock": "PAL",
+      "clockForced": true,
+      "sidModel": "MOS6581",
+      "modelSelection": "Declared MOS6581 in both PSID v2 headers",
+      "defaultSubtune": 1,
+      "subtuneSelection": "selectSong(0) selects the header default",
+      "powerOnDelay": 0,
+      "sampleRate": 44100,
+      "channels": 1,
+      "format": "PCM16",
+      "seconds": 350,
+      "frames": 15435000,
+      "gain": 1,
+      "normalization": false,
+      "trim": null,
+      "voiceDiagnostic": false
+    }
+  },
+  "roles": {
+    "reference": {
+      "description": "Original Cybernoid II title subtune 1, including its restart",
+      "path": "build/cybernoid-independent-full/reference/reference.wav",
+      "sha256": "c675b21ec61c4a32a78b756a8af21cccb00f0810735fc568650b63b50745ed76",
+      "bytes": 30870044,
+      "seconds": 350,
+      "frames": 15435000,
+      "sid": {
+        "path": ".local/research/cybernoid-ii/Cybernoid_II.sid",
+        "sha256": "41f338f44b4f54e351e672156ee0e2a60c8437eb24645db3f9d4abfbb0cff192",
+        "bytes": 4502
+      },
+      "registerSnapshots": {
+        "path": "build/cybernoid-independent-full/reference/reference.wav.registers.tsv",
+        "sha256": "f9e1e3b75b2aeef3d0267817e06cf9c8b27ced2026398ce550bd8ce0c2ef33d8",
+        "bytes": 1368867
+      }
+    },
+    "candidate": {
+      "description": "Independent first traversal followed by a deliberate finite release/fade",
+      "path": "build/cybernoid-independent-full/candidate/reconstructed.wav",
+      "sha256": "6728f6045e9059098d5254ec96e34e0222a8c4b45770441b8146ef692e271ada",
+      "bytes": 30870044,
+      "seconds": 350,
+      "frames": 15435000,
+      "sid": {
+        "path": "build/cybernoid-independent-full/candidate/reconstructed.sid",
+        "sha256": "5753e8e0df1140de65a8116fb1b5ee4d2a4f6b64e383daa267e1e5eb0cfee7b4",
+        "bytes": 22666
+      },
+      "registerSnapshots": {
+        "path": "build/cybernoid-independent-full/candidate/reconstructed.wav.registers.tsv",
+        "sha256": "c437c01fae812c488f10a82b0c9d4782c7bdcd3e289780a67ff7ccf5f6918145",
+        "bytes": 1368867
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "role": "opening",
+      "path": "build/cybernoid-independent-full/listening/opening-reference-then-ours.ab.wav",
+      "sha256": "2628b3a792a48f8a05627013b281ec524b250b8a0cc668a84543a744d57ecf9f",
+      "frames": 2138850,
+      "seconds": 48.5,
+      "order": [
+        "Original reference",
+        "Independent reconstruction"
+      ],
+      "sourceWindowSeconds": [
+        0,
+        24
+      ],
+      "sourceWindowFrames": [
+        0,
+        1058400
+      ],
+      "gapSeconds": 0.5,
+      "gapFrames": 22050,
+      "segments": [
+        {
+          "label": "A",
+          "startFrame": 0,
+          "endFrame": 1058400
+        },
+        {
+          "label": "silence",
+          "startFrame": 1058400,
+          "endFrame": 1080450
+        },
+        {
+          "label": "B",
+          "startFrame": 1080450,
+          "endFrame": 2138850
+        }
+      ],
+      "gain": [
+        1,
+        1
+      ],
+      "gainDb": [
+        0,
+        0
+      ],
+      "normalization": false,
+      "receipt": {
+        "path": "evidence/cybernoid-independent-full/listening/opening-reference-then-ours.comparison.json",
+        "sha256": "5ddce7629fcdf214573304f07469f45ba7017e5586d760ea2b9d91a62e120fad",
+        "bytes": 2771
+      },
+      "listeningReview": null
+    },
+    {
+      "role": "ending",
+      "path": "build/cybernoid-independent-full/listening/ending-reference-then-ours.ab.wav",
+      "sha256": "efc3dd559681e2bc83eb690397372e91d80d274e261c33a86198ac7cf8fa2da0",
+      "frames": 1433250,
+      "seconds": 32.5,
+      "order": [
+        "Original reference",
+        "Independent reconstruction"
+      ],
+      "sourceWindowSeconds": [
+        334,
+        350
+      ],
+      "sourceWindowFrames": [
+        14729400,
+        15435000
+      ],
+      "gapSeconds": 0.5,
+      "gapFrames": 22050,
+      "segments": [
+        {
+          "label": "A",
+          "startFrame": 0,
+          "endFrame": 705600
+        },
+        {
+          "label": "silence",
+          "startFrame": 705600,
+          "endFrame": 727650
+        },
+        {
+          "label": "B",
+          "startFrame": 727650,
+          "endFrame": 1433250
+        }
+      ],
+      "gain": [
+        1,
+        1
+      ],
+      "gainDb": [
+        0,
+        0
+      ],
+      "normalization": false,
+      "receipt": {
+        "path": "evidence/cybernoid-independent-full/listening/ending-reference-then-ours.comparison.json",
+        "sha256": "6ef2b997daff462e2ef535c9edefe8bd1a44b456f20bb80742bbc220947d9004",
+        "bytes": 2778
+      },
+      "listeningReview": null
+    }
+  ],
+  "audioReceipt": {
+    "path": "evidence/cybernoid-independent-full/audio-evidence.json",
+    "sha256": "f1805fc93f427e29c309545d67a88733c8536a238d357b57f9cd07eba7ca2495",
+    "bytes": 16116
+  },
+  "timing": {
+    "callRateHz": 50.12457321485099,
+    "musicCalls": 17280,
+    "totalPlayCalls": 17408,
+    "deliberateTailCalls": 128,
+    "referenceScoreRestartSeconds": 344.7410898828412,
+    "arrangedReleaseStartsSeconds": 344.7410898828412,
+    "arrangedFadeStartsSeconds": 346.01790873425915,
+    "arrangedFinalZeroVolumeLevelStartsSeconds": 347.21492640746345,
+    "arrangedCallRangeEndsSeconds": 347.29472758567704,
+    "basis": "Score-calendar seconds at the PAL frame rate, rounded restart label 344.741 s; renderer bootstrap/instruction timing is separate.",
+    "endingDifference": "The reference restarts its order cycle; the candidate instead closes every gate, continues 64 release calls and fades through sixteen four-call levels to zero."
+  },
+  "levelDecision": {
+    "method": "Unity gain; original PCM retained",
+    "openingCandidateMinusReferenceAcRmsDb": 0.028769514830784715,
+    "rationale": "Keep unity gain: opening AC RMS differs by 0.029 dB; do not apply level matching or DC removal.",
+    "dcRemoval": false,
+    "normalization": false
+  },
+  "listeningReview": {
+    "date": "2026-10-13",
+    "scope": "Opening sound/phrasing and authored ending comparisons, original reference first and independent reconstruction second",
+    "verdict": "accepted",
+    "listenerQuote": "both are really good, I can not spot any difference to original"
+  },
+  "reviewQuestions": {
+    "opening": "Does the independent reconstruction preserve the reference's sound and phrasing?",
+    "fullTitle": "Does the complete first traversal preserve the musical form?",
+    "ending": "Does the deliberately added release/fade make a satisfactory finite ending?"
+  },
+  "reproduction": {
+    "workingDirectory": "repository root",
+    "freshOutputRequired": true,
+    "outputRoot": "build/cybernoid-title-reproduce",
+    "setup": "docs/workflows/audio-workflow.md",
+    "pinnedRendererRequired": true,
+    "commands": [
+      [
+        "python3",
+        "scripts/setup-project.py",
+        "--only",
+        "references",
+        "--include",
+        "cybernoid-ii"
+      ],
+      [
+        "python3",
+        "scripts/prepare-cybernoid-title.py",
+        "--output",
+        "songs/cybernoid-title.json",
+        "--check"
+      ],
+      [
+        "python3",
+        "scripts/compose-cybernoid.py",
+        "songs/cybernoid-title.json",
+        "--output",
+        "build/cybernoid-title-reproduce/candidate"
+      ],
+      [
+        "mkdir",
+        "-p",
+        "build/cybernoid-title-reproduce/reference"
+      ],
+      [
+        ".local/bin/render-sid",
+        ".local/research/cybernoid-ii/Cybernoid_II.sid",
+        "build/cybernoid-title-reproduce/reference/reference.wav",
+        "350"
+      ],
+      [
+        ".local/bin/render-sid",
+        "build/cybernoid-title-reproduce/candidate/reconstructed.sid",
+        "build/cybernoid-title-reproduce/candidate/reconstructed.wav",
+        "350"
+      ],
+      [
+        "python3",
+        "scripts/compare-audio.py",
+        "window",
+        "build/cybernoid-title-reproduce/reference/reference.wav",
+        "build/cybernoid-title-reproduce/candidate/reconstructed.wav",
+        "build/cybernoid-title-reproduce/listening/opening-reference-then-ours",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "24",
+        "--gap-seconds",
+        "0.5"
+      ],
+      [
+        "python3",
+        "scripts/compare-audio.py",
+        "window",
+        "build/cybernoid-title-reproduce/reference/reference.wav",
+        "build/cybernoid-title-reproduce/candidate/reconstructed.wav",
+        "build/cybernoid-title-reproduce/listening/ending-reference-then-ours",
+        "--start-seconds",
+        "334",
+        "--end-seconds",
+        "350",
+        "--gap-seconds",
+        "0.5"
+      ],
+      [
+        "env",
+        "PYTHONPATH=scripts",
+        "python3",
+        "-c",
+        "import json\nfrom pathlib import Path\nfrom audio_comparison import Pcm16, read_pcm16, measure_pcm\nroot = Path('build/cybernoid-title-reproduce')\nmeasurements = {}\nfor role, relative in (('reference', 'reference/reference.wav'), ('candidate', 'candidate/reconstructed.wav')):\n    audio = read_pcm16(root / relative)\n    assert audio.sample_rate == 44100 and audio.channels == 1 and audio.frames == 15435000\n    tail = Pcm16(audio.sample_rate, audio.channels, audio.sample_rate, audio.samples[-audio.sample_rate * audio.channels:], '')\n    measurements[role] = {'path': str(root / relative), 'sha256': audio.sha256, 'full': measure_pcm(audio), 'lastOneSecond': {'sourceSeconds': [349, 350], **measure_pcm(tail)}}\nassert measurements['reference']['full']['clippedSamples'] == measurements['candidate']['full']['clippedSamples'] == 0\nassert measurements['candidate']['lastOneSecond']['acRms'] == 0\nwith (root / 'audio-measurements.json').open('x') as output:\n    json.dump(measurements, output, indent=2, allow_nan=False)\n    output.write('\\n')\n"
+      ]
+    ],
+    "notes": [
+      "Wait for both render commands to exit successfully before reading WAVs; each produces 15,435,000 mono PCM16 frames and a register-snapshot sidecar.",
+      "The measurement command uses the same audio_comparison APIs as the retained receipt and writes a fresh audio-measurements.json.",
+      "Pinned WAV and comparison PCM hashes can be checked after reproduction. JSON receipt hashes are specific to their recorded paths, so fresh output prefixes change receipt bytes."
+    ]
+  },
+  "publication": "Original reference SID, reference WAV and A/B WAVs containing reference audio stay local under ignored .local/ or build/, never in Git or LFS. This recipe and the audio receipt retain hashes, settings, frame bounds and reproduction commands.",
+  "limits": [
+    "Same elapsed window copied at unity gain; no independent PCM alignment, cross-correlation, normalization, equalization or DC removal.",
+    "The ending A/B intentionally compares a reference restart with the candidate's authored fade; it is not an equivalent source ending.",
+    "Full render, signal health and a settled final AC tail do not establish PCM identity, SID hardware equivalence or a listening verdict.",
+    "Reference WAVs and A/B WAVs containing reference material remain ignored build output and are not archived in Git or LFS."
+  ]
+}

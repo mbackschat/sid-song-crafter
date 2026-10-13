@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    334.0,
+    350.0
+  ],
+  "window": {
+    "startFrame": 14729400,
+    "endFrame": 15435000,
+    "frames": 705600,
+    "startSeconds": 334.0,
+    "endSeconds": 350.0,
+    "durationSeconds": 16.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-independent-full/listening/ending-reference-then-ours.ab.wav",
+    "frames": 1433250,
+    "durationSeconds": 32.5,
+    "sha256": "efc3dd559681e2bc83eb690397372e91d80d274e261c33a86198ac7cf8fa2da0"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 705600
+    },
+    {
+      "label": "silence",
+      "startFrame": 705600,
+      "endFrame": 727650
+    },
+    {
+      "label": "B",
+      "startFrame": 727650,
+      "endFrame": 1433250
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-independent-full/reference/reference.wav",
+      "sha256": "c675b21ec61c4a32a78b756a8af21cccb00f0810735fc568650b63b50745ed76",
+      "originalFrames": 15435000,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 13102,
+        "peakDbfs": -7.962246797275939,
+        "clippedSamples": 0,
+        "rms": 3913.6502498988284,
+        "acRms": 3885.6186630837974,
+        "acRmsDbfs": -18.51979517044426,
+        "perChannel": [
+          {
+            "dc": 467.574468537415,
+            "rms": 3913.6502498988284,
+            "acRms": 3885.6186630837974
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-independent-full/candidate/reconstructed.wav",
+      "sha256": "6728f6045e9059098d5254ec96e34e0222a8c4b45770441b8146ef692e271ada",
+      "originalFrames": 15435000,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 13326,
+        "peakDbfs": -7.815002520552007,
+        "clippedSamples": 0,
+        "rms": 3487.323770248912,
+        "acRms": 3435.804228259615,
+        "acRmsDbfs": -19.588430502929967,
+        "perChannel": [
+          {
+            "dc": 597.2238973922903,
+            "rms": 3487.323770248912,
+            "acRms": 3435.804228259615
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

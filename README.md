@@ -11,6 +11,7 @@ Songs serve as case studies for learning sound design, preserving useful finding
 - [Technique lookup](docs/research/technique-index.md): reusable SID mechanisms, executable examples and structured evidence.
 - [CPU timing lookup](docs/validation/cpu-timing.md) and [CIA tracing](docs/validation/cia-tracing.md): verified timing constraints and reusable validation tools.
 - [Independent DRAX Für Elise comparison](songs/studies/drax-full-reconstruction/README.md): reconstructed recurring theme and its scope.
+- [Cybernoid II independent title and finite ending](docs/research/composition/cybernoid-ii-preparation.md#independent-title-export-and-finite-ending): editable runtime programs, full-form verification and matched listening material; [familiar transfer](docs/research/composition/instruments/cybernoid-decoded-programs.md) separates instrument reuse from new composition.
 - [Contributor guide](AGENTS.md) and [agent guide](CLAUDE.md): development and research conventions.
 
 ## Prepare local assets and check tools

@@ -8,7 +8,7 @@ Each study must leave reusable instruments, effects or arrangement methods, with
 
 ## Scope and order
 
-**Active: Cybernoid II.** Shades is complete through its accepted familiar-material transfer; Flashdance is complete for its declared DRAX arrangement, accepted dual-SID expansion and original transfer phrase. Continue with one signature tune from each of the six historical composers already researched. Follow those with **two additional 1980s pop songs, Airwolf and Ghostbusters**, as confirmed by the user. DRAX is our existing baseline; [Åkesson](composers/linus-akesson.md) remains a supplementary reference.
+**Active: Monty on the Run.** Cybernoid II is complete through its accepted title, authored ending and familiar-material transfer. Shades is complete through its accepted familiar-material transfer; Flashdance is complete for its declared DRAX arrangement, accepted dual-SID expansion and original transfer phrase. Continue with one signature tune from each of the six historical composers already researched. Follow those with **two additional 1980s pop songs, Airwolf and Ghostbusters**, as confirmed by the user. DRAX is our existing baseline; [Åkesson](composers/linus-akesson.md) remains a supplementary reference.
 
 These are recognizable signature candidates, not an asserted “number one” ranking: no comparable popularity chart was verified. Choose the final archive variant and musical subtune at intake. Questions below are investigation targets, not claims that their mechanisms have already been decoded.
 
@@ -16,8 +16,8 @@ These are recognizable signature candidates, not an asserted “number one” ra
 | --- | --- | --- | --- |
 | 1 / F | [Flashdance: What a Feeling — DRAX](composition/flashdance-preparation.md), #1 | Staged waveform/PWM programs, evolving filtered bass, precise articulation; full arrangement and deliberate dual-SID expansion | Done: reconstruction, raw stereo dual arrangement and original transfer reviewed |
 | 2 / M1 | [Shades — Chris Hülsbeck](composition/shades-preparation.md), #1 | Soundmonitor's instrument model; expressive modulation and original/corrected filter intent | Done: reconstruction/fade and familiar Für Elise transfer/ending accepted; rejected invented ending retained as a limitation |
-| 3 / M2 | [Cybernoid II — Jeroen Tel](composition/cybernoid-ii-preparation.md), title #1 | Groove, bass/drum time-sharing, delayed modulation; music/driver collaboration with Charles Deenen | Active: editable numeric player matches all 645,960 stores over 36,000 calls; next compiled export, ending, rendering and transfer |
-| 4 / M3 | [Monty on the Run — Rob Hubbard](composition/monty-preparation.md), #1 | Articulated lead, percussion substitutions, pitch effects and phrase development | Preparation: two order traversals and first-wrap CPU/VICE proof retained; independent note/body components verify shared PWM and pitch-state aliases; full player and reconstruction remain |
+| 3 / M2 | [Cybernoid II — Jeroen Tel](composition/cybernoid-ii-preparation.md), title #1 | Groove, bass/drum time-sharing, delayed modulation; music/driver collaboration with Charles Deenen | Done: full independent first title cycle, added release/fade and familiar 53-note transfer accepted; full CPU/VICE/audio evidence retained |
+| 4 / M3 | [Monty on the Run — Rob Hubbard](composition/monty-preparation.md), #1 | Articulated lead, percussion substitutions, pitch effects and phrase development | Active: two order traversals and first-wrap CPU/VICE proof retained; integrate the verified note/body components into a complete player while preserving deferred untracked files |
 | 5 / M4 | [Rambo: First Blood Part II — Martin Galway](composition/rambo-preparation.md), loader #1 | Sustained timbre evolution, introductory effects and original source-code hooks | Preparation: finite loader and CPU/VICE final stores verified; independent lifetime/PWM/sequential-pitch component matches ending contexts; remaining mechanisms and reconstruction pending |
 | 6 / M5 | [Ghouls ’n Ghosts — Tim Follin](composition/ghouls-preparation.md), provisional #1 | Contrasting sections, changing orchestration and instrument transformations | Preparation: finite streams end at call 12,995; CPU/VICE agree across terminal commands and continuing filter writes; #1 label, sound mechanisms and independent player remain |
 | 7 / M6 | [Deflektor — Ben Daglish](composition/deflektor-preparation.md), #1 | Cowbell-driven rhythmic identity and independent supporting parts | Preparation: editable numeric player matches all 166,845 selected stores and stop behavior; compiled export, musical attribution, rendering and transfer remain |
@@ -30,11 +30,11 @@ The six composer rows have archive and published-account routes in the [listenin
 
 ## Delivery order and work in progress
 
-Prioritize accepted musical deliverables over the number of decoded drivers. As of 2026-10-13, Flashdance and Shades are complete, and the other nine cases retain preparation evidence; Cybernoid II is the next delivery. This establishes technical progress and some musical success; it does not yet establish a measured reduction in composition effort.
+Prioritize accepted musical deliverables over the number of decoded drivers. As of 2026-10-13, Flashdance, Shades and Cybernoid II are complete for their declared scopes; Monty on the Run is next, and eight cases retain preparation evidence. This establishes technical progress and some musical success; it does not yet establish a measured reduction in composition effort.
 
 1. **Shades closed.** The familiar [Für Elise transfer and ending](composition/instruments/shades-decoded-programs.md#familiar-transfer-accepted) are accepted. Preserve the earlier invented fragment, whose instrument sound was accepted but ending rejected. Use familiar source-backed material by default to avoid conflating instrument reuse with new composition quality.
-2. **Deliver Cybernoid II next.** Start from its verified numeric model; implement the compiled export and deliberate ending, verify the declared full form and timing, prepare listening comparisons, then prove reuse on different musical material. Extra source analysis must resolve a named gap in that deliverable.
-3. **Resume the remaining cases in table order.** Preserve existing evidence. Monty's unfinished local player/score integration remains deferred and unverified; preserve it separately from the verified components and do not treat it as a completed player. Continue it when Monty becomes active, unless a specific dependency of the active case requires a bounded part of it.
+2. **Cybernoid II closed.** The listener accepted the title opening and authored ending (“both are really good, I can not spot any difference to original”) and separately the familiar transfer (“Cybernoid version works musically”). Preserve the [actual comparison scope](composition/cybernoid-ii-preparation.md#listening-package-and-reproduction), native conversion limits and reproducible evidence.
+3. **Deliver Monty on the Run, then the remaining cases in table order.** Build on the verified components and first full traversal. The existing untracked Monty player/program files and tests remain unverified deferred material: inspect as needed but preserve them untouched and unstaged under the user's instruction. Use separate owned paths for new integration. Finish numeric composition, independent export, deliberate ending, matched listening and familiar transfer before advancing further. Extra analysis must resolve a named gap in that delivery.
 
 Keep one musical case active. Pending listener feedback permits completing that case's packaging, reproduction instructions and reusable examples, but does not authorize deepening later studies to keep agents busy. When those independent tasks are finished, wait for the verdict. This order governs resumed study work; a documentation update does not itself resume a paused run.
 
@@ -64,6 +64,18 @@ The [owning study](composition/shades-preparation.md) retains the complete first
 | 5: Transfer and retain | Done | [Familiar-transfer card](composition/instruments/shades-decoded-programs.md#familiar-transfer-accepted): all 53 preserved Für Elise events, full CPU/CIA/audio proof and matched reference; listener accepts musical use and ending |
 
 The [independent export section](composition/shades-preparation.md#independent-export-and-original-transfer) links receipts, local audio, exact reproduction recipes and accepted reconstruction feedback. The invented transfer has accepted instruments and a rejected ending; the familiar Für Elise replacement has its own accepted musical and ending verdict. All five stages are complete for the declared Shades scope.
+
+## Cybernoid II: completed milestones
+
+| Stage | State | Evidence / next action |
+| --- | --- | --- |
+| 1: Identify and map | Done | Pinned title #1, credits, PAL/6581, two observed order traversals and first-cycle boundary at call 17,280 |
+| 2: Explain mechanisms | Done | Independent semantic score and sound programs match 645,960 original stores over 36,000 calls |
+| 3: Reproduce independently | Done | Compiled first cycle matches all 310,586 original init/music stores; explicit 128-call release/fade, full CPU/VICE and post-stop checks |
+| 4: Verify and listen | Done | [Full-title and ending package](composition/cybernoid-ii-preparation.md#listening-package-and-reproduction), with original reference; listener accepts both on 2026-10-13 and reports no perceptible difference |
+| 5: Transfer and retain | Done | [Familiar 53-note Für Elise pair](composition/instruments/cybernoid-decoded-programs.md) accepted as musically working; plain reference, native timing/tuning limits and full CPU/VICE/audio evidence retained |
+
+All five stages are complete for the declared first-cycle title and familiar-transfer scope. These verdicts do not establish PCM identity, physical hardware equivalence or suitability of every instrument on arbitrary material.
 
 ## Completion contract for every study
 

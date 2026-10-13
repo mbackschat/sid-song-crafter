@@ -2,7 +2,7 @@
 
 Use this workflow to turn executed-program findings into editable music and our own 6502 player. Start with the [analysis procedure](../research/tools/sid-program-analysis.md) and [musical mechanism library](../research/composition/instruments/drax-decoded-trio.md). The first complete example is [DRAX's recurring Für Elise theme](../../songs/studies/drax-full-reconstruction/README.md); it is not Beethoven's complete formal score.
 
-For preparation before a backend exists, the [Cybernoid II numeric model](../research/composition/cybernoid-ii-preparation.md#compose-the-complete-title-from-editable-data) demonstrates source-free score/program composition and complete ordered-register comparison. Its owning study provides the editable-data restoration and Python API; it does not yet export or render a C64 player.
+The [Cybernoid II compiled title](#cybernoid-ii-compiled-title) builds an independent C64 player from editable semantic rows and numeric programs. Its [owning study](../research/composition/cybernoid-ii-preparation.md#compose-the-complete-title-from-editable-data) retains source provenance, recovered mechanisms and validation boundaries.
 
 ## Deliver one musical case
 
@@ -95,6 +95,28 @@ python3 scripts/prepare-dual-listening.py build/flashdance-dual-new/raw-stereo.w
 ```
 
 The raw renderer output places chip A left and chip B right; this is the accepted stereo presentation for the current Flashdance arrangement. The listening tool makes a centered-primary stereo mix, mono downmix and three/six-voice comparison using explicit common gains, recording matrices and PCM measurements. It expects independent chip channels, not an arbitrary stereo master, and does not normalize each side separately. The [owning study](../research/composition/flashdance-preparation.md#deliberate-dual-sid-interpretation) records musical choices, execution limits and the separate listening verdict.
+
+### Cybernoid II compiled title
+
+The [editable title](../../songs/cybernoid-title.json), in `cybernoid-editable-title-v1` format, preserves the first complete title traversal at calls `[0,17280)` and adds a deliberate 128-call release/fade, for 17,408 total play calls. The source loops; this finite ending is an arrangement addition. [compose-cybernoid.py](../../scripts/compose-cybernoid.py) assembles our [scheduler and writers](../../songs/players/cybernoid.asm), [pitch engine](../../songs/players/cybernoid-pitch.asm) and [pulse/filter/wave engine](../../songs/players/cybernoid-effects.asm), with deduplicated semantic row payloads, per-voice call schedules and named initial state. It includes neither original driver instructions nor captured-register playback. See the [owning study](../research/composition/cybernoid-ii-preparation.md) for source constraints and evidence.
+
+- The player targets one PAL MOS6581 at one update per 19,656 cycles. Its PSID v2 header declares VBI scheduling. The compiler accepts 1–65,535 declared calls and requires the complete payload to fit callable RAM `$0400–$9FFF`.
+- Each row supplies an absolute `call`, `voiceIndex` 0–2, byte `transpose`, `patchSetup` (`initialize` or `preserve`) and ordered commands: `routing`, `sound`, `duration`, `extendDuration`, `arpeggio`, `glide` and a final `note`. There is at most one selected row per voice/call. Duration or tempo edits must reschedule later row calls consistently; compilation rejects disagreement with the retained countdowns.
+- Editable runtime inputs include 257 frequency words, eight-byte sound records, vibrato waits, onset lengths/waves, eight-byte pulse slots, ten-byte filter programs, arpeggios, drum waveform/pitch programs, `initial_state` and `sid_init`. Note, transpose, arpeggio and glide-target indices use byte arithmetic; vibrato adjacency can read frequency index 256. Init and reinit restore the declared cold state and schedules, including voice 2's `$0800` pulse output.
+- Optional `ending` contains positive `start_call`, nonnegative `release_calls` and `fade_step_calls` in 1–255. Rows must precede `start_call`, and `play_calls` must equal `start_call + release_calls + 16 * fade_step_calls`. Without `ending`, the declared range alone does not promise gate closure or silence.
+
+During the ending, the row calendar and tempo countdown stay fixed while sound programs continue. Note age saturates at 255, and every voice gate is cleared after effects and before its final writer. All `$D418` stores retain their mode high nibble and use the current tail-volume low nibble, so filter updates cannot restore volume between fade steps; each tail call also writes the resulting mode/volume after the voices. The retained title uses 64 release calls at volume 15 followed by sixteen levels 15 through 0, four calls per level. After call 17,407, subsequent play calls emit no stores or change player state. This contract defines an ending; rendered signal health and musical acceptance require separate checks.
+
+Check the canonical preparation and build into a fresh directory:
+
+```sh
+python3 scripts/prepare-cybernoid-title.py --output songs/cybernoid-title.json --check
+python3 scripts/compose-cybernoid.py songs/cybernoid-title.json --output build/cybernoid-independent-new
+```
+
+[prepare-cybernoid-title.py](../../scripts/prepare-cybernoid-title.py) verifies the pinned decompressed evidence fingerprint, retains the first traversal and numeric programs/cold state, removes nested derivation annotations and declares the added ending. To create an editable copy, use `python3 scripts/prepare-cybernoid-title.py --output build/cybernoid-prepared-new/title.json` with a fresh output path. Preparation and compilation require no original SID. `sourceEvidence` is nonexecuting provenance; changing it does not change synthesis. Original reference SIDs and WAVs remain under the [public repository boundary](../../AGENTS.md#public-repository-boundary).
+
+The compiler writes `reconstructed.sid`, assembly/listing, `build.json`, `audit.json` and ordered `writes.json`. By default it independently executes all declared music and ending calls and compares every ordered SID store with [the Python model](../../scripts/cybernoid_player.py). `--calls` selects a diagnostic prefix in 1–`play_calls`; it does not shorten the compiled description. Use the [callable PSID audit](../validation/psid-audit.md), real VICE cadence checks and the [audio workflow](audio-workflow.md) for their respective evidence. CPU/model agreement does not establish within-call bus timing, rendered sound or a listening verdict; retain those results in the owning study.
 
 ### Shades compiled CIA player
 

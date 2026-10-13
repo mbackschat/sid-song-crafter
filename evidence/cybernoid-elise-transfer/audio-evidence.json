@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-13",
+  "evidenceLevel": "Measured existing PCM16 renders and verified existing comparison samples; no rerender or hearing claim.",
+  "measurementApi": "scripts/audio_comparison.py:read_pcm16,measure_pcm,Pcm16",
+  "measurementCodeSha256": "3d9ad70290cc5df00b9575b011ebdcd0b92d37e7c37464c886b873736bc78884",
+  "rendering": {
+    "executable": ".local/bin/render-sid",
+    "executableSha256": "80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe",
+    "source": "scripts/render-sid.cpp",
+    "library": "libsidplayfp 3.1.1",
+    "builder": "SIDLite",
+    "libraryArtifact": {
+      "path": ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+      "sha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00"
+    },
+    "clock": "PAL",
+    "chip": "MOS6581",
+    "defaultSubtune": 1,
+    "powerOnDelay": 0,
+    "sampleRate": 44100,
+    "channels": 1,
+    "format": "PCM16",
+    "seconds": 15,
+    "gain": 1,
+    "normalization": false
+  },
+  "measurements": {
+    "reference": {
+      "wav": {
+        "path": "build/cybernoid-elise-transfer/reference/reference.wav",
+        "sha256": "c536601b2a12da678f78c8cca3e8ade05ad12a78771f51e0c5ebcd74f17b8bcb"
+      },
+      "fullRender": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 661500,
+        "durationSeconds": 15.0,
+        "peak": 7757,
+        "peakDbfs": -12.515122870310654,
+        "clippedSamples": 0,
+        "rms": 1188.531634805839,
+        "acRms": 1186.363286692885,
+        "acRmsDbfs": -28.824644728966508,
+        "perChannel": [
+          {
+            "dc": 71.7607059712774,
+            "rms": 1188.531634805839,
+            "acRms": 1186.363286692885
+          }
+        ]
+      },
+      "lastSecond": {
+        "startSeconds": 14,
+        "endSeconds": 15,
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 44100,
+        "durationSeconds": 1.0,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": -157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ],
+        "minimumSample": -157,
+        "maximumSample": -157
+      },
+      "health": {
+        "noPcmRailSamples": true,
+        "settledLastSecond": true,
+        "settledTailMeaning": "Zero AC energy with a constant SIDLite DC offset; no listening claim."
+      }
+    },
+    "candidate": {
+      "wav": {
+        "path": "build/cybernoid-elise-transfer/candidate/reconstructed.wav",
+        "sha256": "329b849bc1d5de7653fa5670dd9266c8c9da89423ebe2aba8c6fc17c9b33acfb"
+      },
+      "fullRender": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 661500,
+        "durationSeconds": 15.0,
+        "peak": 8754,
+        "peakDbfs": -11.464867853652454,
+        "clippedSamples": 0,
+        "rms": 2235.455058570939,
+        "acRms": 2228.5936194871615,
+        "acRmsDbfs": -23.34838104340323,
+        "perChannel": [
+          {
+            "dc": 175.0137082388511,
+            "rms": 2235.455058570939,
+            "acRms": 2228.5936194871615
+          }
+        ]
+      },
+      "lastSecond": {
+        "startSeconds": 14,
+        "endSeconds": 15,
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 44100,
+        "durationSeconds": 1.0,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": -157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ],
+        "minimumSample": -157,
+        "maximumSample": -157
+      },
+      "health": {
+        "noPcmRailSamples": true,
+        "settledLastSecond": true,
+        "settledTailMeaning": "Zero AC energy with a constant SIDLite DC offset; no listening claim."
+      }
+    }
+  },
+  "comparisonVerification": {
+    "fullComparison": {
+      "path": "build/cybernoid-elise-transfer/listening/plain-then-cybernoid.ab.wav",
+      "sha256": "9b6dd19d32496af885a813ace48d843aa7344f652c6b8e40b34948a1aa61ee38"
+    },
+    "endingComparison": {
+      "path": "build/cybernoid-elise-transfer/listening/ending-plain-then-cybernoid.ab.wav",
+      "sha256": "31334e8579b6e462bc6cca881e6595d2e8d00879f1c94393883fa46ffacd2f3d"
+    },
+    "matchedCopiesEqualRoundedGainOfRawSamples": true,
+    "fullSegmentsEqualMatchedCopies": true,
+    "endingSegmentsEqualRawEightToFourteenSeconds": true,
+    "comparisonGapsContainOnlyZeroSamples": true,
+    "fullComparisonHealth": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1345050,
+      "durationSeconds": 30.5,
+      "peak": 7757,
+      "peakDbfs": -12.515122870310654,
+      "clippedSamples": 0,
+      "rms": 1179.5093600176012,
+      "acRms": 1176.7186376088491,
+      "acRmsDbfs": -28.89554605645484,
+      "perChannel": [
+        {
+          "dc": 81.08993940745697,
+          "rms": 1179.5093600176012,
+          "acRms": 1176.7186376088491
+        }
+      ]
+    },
+    "endingComparisonHealth": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 551250,
+      "durationSeconds": 12.5,
+      "peak": 8426,
+      "peakDbfs": -11.79656960337778,
+      "clippedSamples": 0,
+      "rms": 1352.9840893336561,
+      "acRms": 1352.9837954677985,
+      "acRmsDbfs": -27.68314679652587,
+      "perChannel": [
+        {
+          "dc": 0.8917351473922902,
+          "rms": 1352.9840893336561,
+          "acRms": 1352.9837954677985
+        }
+      ]
+    }
+  },
+  "listeningReview": {
+    "status": "pending",
+    "scope": "Instrument usefulness and familiar phrase, including final notes and release/fade."
+  },
+  "limits": [
+    "Generated same-material plain reference, not an original recording.",
+    "Clipping means exact PCM rail samples; AC RMS removes channel DC before measuring energy.",
+    "Zero final-second AC energy establishes a settled render, not musical or analogue-hardware equivalence."
+  ]
+}

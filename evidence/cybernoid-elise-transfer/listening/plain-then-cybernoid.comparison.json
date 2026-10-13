@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "method": "full-file AC RMS, pooled channel power after subtracting each channel mean; silence and tails included",
+  "matching": "attenuation only",
+  "requestedAcRmsDbfs": null,
+  "targetAcRms": 1186.363286692885,
+  "targetAcRmsDbfs": -28.824644728966508,
+  "peakHeadroomDb": 1.0,
+  "peakLimit": 29203,
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-elise-transfer/listening/plain-then-cybernoid.ab.wav",
+    "frames": 1345050,
+    "durationSeconds": 30.5,
+    "sha256": "9b6dd19d32496af885a813ace48d843aa7344f652c6b8e40b34948a1aa61ee38"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 661500
+    },
+    {
+      "label": "silence",
+      "startFrame": 661500,
+      "endFrame": 683550
+    },
+    {
+      "label": "B",
+      "startFrame": 683550,
+      "endFrame": 1345050
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-elise-transfer/reference/reference.wav",
+      "sha256": "c536601b2a12da678f78c8cca3e8ade05ad12a78771f51e0c5ebcd74f17b8bcb",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 661500,
+        "durationSeconds": 15.0,
+        "peak": 7757,
+        "peakDbfs": -12.515122870310654,
+        "clippedSamples": 0,
+        "rms": 1188.531634805839,
+        "acRms": 1186.363286692885,
+        "acRmsDbfs": -28.824644728966508,
+        "perChannel": [
+          {
+            "dc": 71.7607059712774,
+            "rms": 1188.531634805839,
+            "acRms": 1186.363286692885
+          }
+        ]
+      },
+      "gain": 1.0,
+      "gainDb": 0.0,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 661500,
+        "durationSeconds": 15.0,
+        "peak": 7757,
+        "peakDbfs": -12.515122870310654,
+        "clippedSamples": 0,
+        "rms": 1188.531634805839,
+        "acRms": 1186.363286692885,
+        "acRmsDbfs": -28.824644728966508,
+        "perChannel": [
+          {
+            "dc": 71.7607059712774,
+            "rms": 1188.531634805839,
+            "acRms": 1186.363286692885
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-elise-transfer/listening/plain-then-cybernoid.a.matched.wav"
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-elise-transfer/candidate/reconstructed.wav",
+      "sha256": "329b849bc1d5de7653fa5670dd9266c8c9da89423ebe2aba8c6fc17c9b33acfb",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 661500,
+        "durationSeconds": 15.0,
+        "peak": 8754,
+        "peakDbfs": -11.464867853652454,
+        "clippedSamples": 0,
+        "rms": 2235.455058570939,
+        "acRms": 2228.5936194871615,
+        "acRmsDbfs": -23.34838104340323,
+        "perChannel": [
+          {
+            "dc": 175.0137082388511,
+            "rms": 2235.455058570939,
+            "acRms": 2228.5936194871615
+          }
+        ]
+      },
+      "gain": 0.5323371997115777,
+      "gainDb": -5.476263685563279,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 661500,
+        "durationSeconds": 15.0,
+        "peak": 4660,
+        "peakDbfs": -16.941280365394356,
+        "clippedSamples": 0,
+        "rms": 1190.0638462492925,
+        "acRms": 1186.4148597563615,
+        "acRmsDbfs": -28.824267147995954,
+        "perChannel": [
+          {
+            "dc": 93.12217082388511,
+            "rms": 1190.0638462492925,
+            "acRms": 1186.4148597563615
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-elise-transfer/listening/plain-then-cybernoid.b.matched.wav"
+    }
+  ],
+  "listeningReview": null
+}

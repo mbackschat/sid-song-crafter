@@ -57,6 +57,25 @@ def caller_from_pitch(state, computed):
                    glide_enabled=computed.glide_enabled, glide_active=computed.glide_active)
 
 
+def ending_parameters(description):
+    """Validate the optional arranged release/fade, which follows unchanged music.
+
+    The source loops. This explicit arrangement freezes its row calendar,
+    continues sound programs with saturating note age, and forces every gate
+    low. Every mode/volume store uses the current fade level so filter updates
+    cannot briefly restore full volume. The final level is zero.
+    """
+    ending = description.get('ending')
+    if ending is None:
+        return None
+    start = integer(ending['start_call'], 100000, 'Ending start')
+    release = integer(ending['release_calls'], 65535, 'Ending release')
+    step = integer(ending['fade_step_calls'], 255, 'Ending fade step')
+    if start == 0 or step == 0 or start + release + 16 * step != description['play_calls']:
+        raise ValueError('Ending must follow music and exactly fill declared calls with release and sixteen fade levels')
+    return start, release, step
+
+
 def compute_writes(description, *, calls=None):
     """Compute the declared row schedule; sourceEvidence never controls synthesis.
 
@@ -73,6 +92,8 @@ def compute_writes(description, *, calls=None):
 
 def _compute_writes(description, *, calls=None, observer=None):
     declared = integer(description['play_calls'], 100000, 'Declared calls')
+    ending = ending_parameters(description)
+    music_calls = ending[0] if ending else declared
     calls = declared if calls is None else calls
     if type(calls) is not int or not 1 <= calls <= declared:
         raise ValueError('Calls must be in 1..declared play_calls')
@@ -100,7 +121,7 @@ def _compute_writes(description, *, calls=None, observer=None):
                            sound_index=value['sound_index'], arpeggio_index=value['arpeggio_index']))
     rows = {}
     for row in description['rows']:
-        tick, voice = integer(row['call'], declared - 1, 'Row call'), integer(row['voiceIndex'], 2, 'Row voice')
+        tick, voice = integer(row['call'], music_calls - 1, 'Row call'), integer(row['voiceIndex'], 2, 'Row voice')
         if (tick, voice) in rows:
             raise ValueError('Only one selected row per voice/call')
         integer(row['transpose'], 255, 'Transpose')
@@ -108,9 +129,17 @@ def _compute_writes(description, *, calls=None, observer=None):
             raise ValueError('Unknown patchSetup')
         rows[tick, voice] = row
     writes = []
+    tail_volume = None
+    mode_volume = 0
 
     def emit(phase, tick, group):
-        writes.extend(dict(phase=phase, tick=tick, address=address, value=value) for address, value in group)
+        nonlocal mode_volume
+        for address, value in group:
+            if address == 0xD418:
+                if tail_volume is not None:
+                    value = (value & 0xf0) | tail_volume
+                mode_volume = value
+            writes.append(dict(phase=phase, tick=tick, address=address, value=value))
 
     sid = description['sid_init']
     init_group = [(0xD416, integer(sid['cutoff_high'], 255, 'Initial cutoff high')),
@@ -119,13 +148,19 @@ def _compute_writes(description, *, calls=None, observer=None):
     init_group.extend((address, 0) for address in range(0xD415, 0xD3FF, -1))
     emit('init', None, init_group)
     for tick in range(calls):
-        globals_['tempo_countdown'] = (globals_['tempo_countdown'] - 1) & 255
-        if globals_['tempo_countdown'] & 128:
-            globals_['tempo_countdown'] = globals_['tempo_reload']
-        scheduled = globals_['tempo_countdown'] == globals_['tempo_reload']
+        tail = tick >= music_calls
+        if tail:
+            age = tick - music_calls
+            tail_volume = 15 if age < ending[1] else 15 - (age - ending[1]) // ending[2]
+        else:
+            globals_['tempo_countdown'] = (globals_['tempo_countdown'] - 1) & 255
+            if globals_['tempo_countdown'] & 128:
+                globals_['tempo_countdown'] = globals_['tempo_reload']
+        scheduled = not tail and globals_['tempo_countdown'] == globals_['tempo_reload']
         for voice in (2, 1, 0):
             runtime = voices[voice]
-            state = caller.begin_voice_call(runtime['state'])
+            state = runtime['state']
+            state = replace(state, note_age=min(255, state.note_age + 1)) if tail else caller.begin_voice_call(state)
             if scheduled:
                 state = replace(state, row_remaining=(state.row_remaining - 1) & 255)
             row = rows.get((tick, voice))
@@ -219,6 +254,8 @@ def _compute_writes(description, *, calls=None, observer=None):
                     state.base_wave, state.held_frequency, state.wave, state.frequency, state.gate_mask)
                 state = replace(state, wave=result.wave, frequency=result.frequency_word, gate_mask=result.gate_mask)
                 stages['wave'] = asdict(result)
+            if tail:
+                state = replace(state, gate_mask=state.gate_mask & 254)
             group = output.voice_writes(voice, state.wave, state.gate_mask, state.frequency, state.pulse_output)
             emit('play', tick, group)
             runtime['state'] = state
@@ -227,4 +264,6 @@ def _compute_writes(description, *, calls=None, observer=None):
                 observer(dict(call=tick, voiceIndex=voice, globals=dict(globals_), state=asdict(state),
                               pitch=asdict(runtime['pitch']), sound_index=runtime['sound_index'],
                               arpeggio_index=runtime['arpeggio_index'], row=row, stages=stages))
+        if tail:
+            emit('play', tick, [(0xD418, mode_volume)])
     return writes

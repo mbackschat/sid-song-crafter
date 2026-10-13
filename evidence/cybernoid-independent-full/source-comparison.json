@@ -1,0 +1,3274 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "classification": "Ordered source-write prefix equivalence plus separately checked arranged tail",
+  "preservedMusic": {
+    "firstCall": 0,
+    "lastCallInclusive": 17279,
+    "playCalls": 17280,
+    "initStores": 25,
+    "playStores": 310561,
+    "matchedStores": 310586,
+    "fields": [
+      "phase",
+      "tick",
+      "address",
+      "value"
+    ],
+    "orderPreserved": true,
+    "repeatedStoresPreserved": true,
+    "instructionStartCyclesCompared": false
+  },
+  "deliberateEnding": {
+    "classification": "Deliberate finite arrangement tail; excluded from source equivalence",
+    "firstCall": 17280,
+    "lastCallInclusive": 17407,
+    "playCalls": 128,
+    "contract": {
+      "start_call": 17280,
+      "release_calls": 64,
+      "fade_step_calls": 4
+    },
+    "matchedSourceStores": null,
+    "sourceComparisonApplied": false,
+    "controlStoresChecked": 384,
+    "modeVolumeStoresChecked": 256,
+    "everyControlGateClear": true,
+    "everyModeVolumeLowNibbleMatchesFade": true,
+    "lastFourCallsVolumeZero": true,
+    "observations": [
+      {
+        "call": 17280,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17281,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17282,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17283,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17284,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17285,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17286,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17287,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17288,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17289,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17290,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17291,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17292,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17293,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17294,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17295,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17296,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17297,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17298,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17299,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17300,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17301,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17302,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17303,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17304,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17305,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17306,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17307,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17308,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17309,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17310,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17311,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17312,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17313,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17314,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17315,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17316,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17317,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17318,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17319,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17320,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17321,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17322,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17323,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17324,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17325,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17326,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17327,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17328,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17329,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17330,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17331,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17332,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17333,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17334,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17335,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17336,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17337,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17338,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17339,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17340,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17341,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17342,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17343,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17344,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17345,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17346,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17347,
+        "expectedVolume": 15,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          31,
+          31
+        ],
+        "finalModeVolume": 31,
+        "orderedStores": 18
+      },
+      {
+        "call": 17348,
+        "expectedVolume": 14,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          30,
+          30
+        ],
+        "finalModeVolume": 30,
+        "orderedStores": 18
+      },
+      {
+        "call": 17349,
+        "expectedVolume": 14,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          30,
+          30
+        ],
+        "finalModeVolume": 30,
+        "orderedStores": 18
+      },
+      {
+        "call": 17350,
+        "expectedVolume": 14,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          30,
+          30
+        ],
+        "finalModeVolume": 30,
+        "orderedStores": 18
+      },
+      {
+        "call": 17351,
+        "expectedVolume": 14,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          30,
+          30
+        ],
+        "finalModeVolume": 30,
+        "orderedStores": 18
+      },
+      {
+        "call": 17352,
+        "expectedVolume": 13,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          29,
+          29
+        ],
+        "finalModeVolume": 29,
+        "orderedStores": 18
+      },
+      {
+        "call": 17353,
+        "expectedVolume": 13,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          29,
+          29
+        ],
+        "finalModeVolume": 29,
+        "orderedStores": 18
+      },
+      {
+        "call": 17354,
+        "expectedVolume": 13,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          29,
+          29
+        ],
+        "finalModeVolume": 29,
+        "orderedStores": 18
+      },
+      {
+        "call": 17355,
+        "expectedVolume": 13,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          29,
+          29
+        ],
+        "finalModeVolume": 29,
+        "orderedStores": 18
+      },
+      {
+        "call": 17356,
+        "expectedVolume": 12,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          28,
+          28
+        ],
+        "finalModeVolume": 28,
+        "orderedStores": 18
+      },
+      {
+        "call": 17357,
+        "expectedVolume": 12,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          28,
+          28
+        ],
+        "finalModeVolume": 28,
+        "orderedStores": 18
+      },
+      {
+        "call": 17358,
+        "expectedVolume": 12,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          28,
+          28
+        ],
+        "finalModeVolume": 28,
+        "orderedStores": 18
+      },
+      {
+        "call": 17359,
+        "expectedVolume": 12,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          28,
+          28
+        ],
+        "finalModeVolume": 28,
+        "orderedStores": 18
+      },
+      {
+        "call": 17360,
+        "expectedVolume": 11,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          27,
+          27
+        ],
+        "finalModeVolume": 27,
+        "orderedStores": 18
+      },
+      {
+        "call": 17361,
+        "expectedVolume": 11,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          27,
+          27
+        ],
+        "finalModeVolume": 27,
+        "orderedStores": 18
+      },
+      {
+        "call": 17362,
+        "expectedVolume": 11,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          27,
+          27
+        ],
+        "finalModeVolume": 27,
+        "orderedStores": 18
+      },
+      {
+        "call": 17363,
+        "expectedVolume": 11,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          27,
+          27
+        ],
+        "finalModeVolume": 27,
+        "orderedStores": 18
+      },
+      {
+        "call": 17364,
+        "expectedVolume": 10,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          26,
+          26
+        ],
+        "finalModeVolume": 26,
+        "orderedStores": 18
+      },
+      {
+        "call": 17365,
+        "expectedVolume": 10,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          26,
+          26
+        ],
+        "finalModeVolume": 26,
+        "orderedStores": 18
+      },
+      {
+        "call": 17366,
+        "expectedVolume": 10,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          26,
+          26
+        ],
+        "finalModeVolume": 26,
+        "orderedStores": 18
+      },
+      {
+        "call": 17367,
+        "expectedVolume": 10,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          26,
+          26
+        ],
+        "finalModeVolume": 26,
+        "orderedStores": 18
+      },
+      {
+        "call": 17368,
+        "expectedVolume": 9,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          25,
+          25
+        ],
+        "finalModeVolume": 25,
+        "orderedStores": 18
+      },
+      {
+        "call": 17369,
+        "expectedVolume": 9,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          25,
+          25
+        ],
+        "finalModeVolume": 25,
+        "orderedStores": 18
+      },
+      {
+        "call": 17370,
+        "expectedVolume": 9,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          25,
+          25
+        ],
+        "finalModeVolume": 25,
+        "orderedStores": 18
+      },
+      {
+        "call": 17371,
+        "expectedVolume": 9,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          25,
+          25
+        ],
+        "finalModeVolume": 25,
+        "orderedStores": 18
+      },
+      {
+        "call": 17372,
+        "expectedVolume": 8,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          24,
+          24
+        ],
+        "finalModeVolume": 24,
+        "orderedStores": 18
+      },
+      {
+        "call": 17373,
+        "expectedVolume": 8,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          24,
+          24
+        ],
+        "finalModeVolume": 24,
+        "orderedStores": 18
+      },
+      {
+        "call": 17374,
+        "expectedVolume": 8,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          24,
+          24
+        ],
+        "finalModeVolume": 24,
+        "orderedStores": 18
+      },
+      {
+        "call": 17375,
+        "expectedVolume": 8,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          24,
+          24
+        ],
+        "finalModeVolume": 24,
+        "orderedStores": 18
+      },
+      {
+        "call": 17376,
+        "expectedVolume": 7,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          23,
+          23
+        ],
+        "finalModeVolume": 23,
+        "orderedStores": 18
+      },
+      {
+        "call": 17377,
+        "expectedVolume": 7,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          23,
+          23
+        ],
+        "finalModeVolume": 23,
+        "orderedStores": 18
+      },
+      {
+        "call": 17378,
+        "expectedVolume": 7,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          23,
+          23
+        ],
+        "finalModeVolume": 23,
+        "orderedStores": 18
+      },
+      {
+        "call": 17379,
+        "expectedVolume": 7,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          23,
+          23
+        ],
+        "finalModeVolume": 23,
+        "orderedStores": 18
+      },
+      {
+        "call": 17380,
+        "expectedVolume": 6,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          22,
+          22
+        ],
+        "finalModeVolume": 22,
+        "orderedStores": 18
+      },
+      {
+        "call": 17381,
+        "expectedVolume": 6,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          22,
+          22
+        ],
+        "finalModeVolume": 22,
+        "orderedStores": 18
+      },
+      {
+        "call": 17382,
+        "expectedVolume": 6,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          22,
+          22
+        ],
+        "finalModeVolume": 22,
+        "orderedStores": 18
+      },
+      {
+        "call": 17383,
+        "expectedVolume": 6,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          22,
+          22
+        ],
+        "finalModeVolume": 22,
+        "orderedStores": 18
+      },
+      {
+        "call": 17384,
+        "expectedVolume": 5,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          21,
+          21
+        ],
+        "finalModeVolume": 21,
+        "orderedStores": 18
+      },
+      {
+        "call": 17385,
+        "expectedVolume": 5,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          21,
+          21
+        ],
+        "finalModeVolume": 21,
+        "orderedStores": 18
+      },
+      {
+        "call": 17386,
+        "expectedVolume": 5,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          21,
+          21
+        ],
+        "finalModeVolume": 21,
+        "orderedStores": 18
+      },
+      {
+        "call": 17387,
+        "expectedVolume": 5,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          21,
+          21
+        ],
+        "finalModeVolume": 21,
+        "orderedStores": 18
+      },
+      {
+        "call": 17388,
+        "expectedVolume": 4,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          20,
+          20
+        ],
+        "finalModeVolume": 20,
+        "orderedStores": 18
+      },
+      {
+        "call": 17389,
+        "expectedVolume": 4,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          20,
+          20
+        ],
+        "finalModeVolume": 20,
+        "orderedStores": 18
+      },
+      {
+        "call": 17390,
+        "expectedVolume": 4,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          20,
+          20
+        ],
+        "finalModeVolume": 20,
+        "orderedStores": 18
+      },
+      {
+        "call": 17391,
+        "expectedVolume": 4,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          20,
+          20
+        ],
+        "finalModeVolume": 20,
+        "orderedStores": 18
+      },
+      {
+        "call": 17392,
+        "expectedVolume": 3,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          19,
+          19
+        ],
+        "finalModeVolume": 19,
+        "orderedStores": 18
+      },
+      {
+        "call": 17393,
+        "expectedVolume": 3,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          19,
+          19
+        ],
+        "finalModeVolume": 19,
+        "orderedStores": 18
+      },
+      {
+        "call": 17394,
+        "expectedVolume": 3,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          19,
+          19
+        ],
+        "finalModeVolume": 19,
+        "orderedStores": 18
+      },
+      {
+        "call": 17395,
+        "expectedVolume": 3,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          19,
+          19
+        ],
+        "finalModeVolume": 19,
+        "orderedStores": 18
+      },
+      {
+        "call": 17396,
+        "expectedVolume": 2,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          18,
+          18
+        ],
+        "finalModeVolume": 18,
+        "orderedStores": 18
+      },
+      {
+        "call": 17397,
+        "expectedVolume": 2,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          18,
+          18
+        ],
+        "finalModeVolume": 18,
+        "orderedStores": 18
+      },
+      {
+        "call": 17398,
+        "expectedVolume": 2,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          18,
+          18
+        ],
+        "finalModeVolume": 18,
+        "orderedStores": 18
+      },
+      {
+        "call": 17399,
+        "expectedVolume": 2,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          18,
+          18
+        ],
+        "finalModeVolume": 18,
+        "orderedStores": 18
+      },
+      {
+        "call": 17400,
+        "expectedVolume": 1,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          17,
+          17
+        ],
+        "finalModeVolume": 17,
+        "orderedStores": 18
+      },
+      {
+        "call": 17401,
+        "expectedVolume": 1,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          17,
+          17
+        ],
+        "finalModeVolume": 17,
+        "orderedStores": 18
+      },
+      {
+        "call": 17402,
+        "expectedVolume": 1,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          17,
+          17
+        ],
+        "finalModeVolume": 17,
+        "orderedStores": 18
+      },
+      {
+        "call": 17403,
+        "expectedVolume": 1,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          17,
+          17
+        ],
+        "finalModeVolume": 17,
+        "orderedStores": 18
+      },
+      {
+        "call": 17404,
+        "expectedVolume": 0,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          16,
+          16
+        ],
+        "finalModeVolume": 16,
+        "orderedStores": 18
+      },
+      {
+        "call": 17405,
+        "expectedVolume": 0,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          16,
+          16
+        ],
+        "finalModeVolume": 16,
+        "orderedStores": 18
+      },
+      {
+        "call": 17406,
+        "expectedVolume": 0,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          16,
+          16
+        ],
+        "finalModeVolume": 16,
+        "orderedStores": 18
+      },
+      {
+        "call": 17407,
+        "expectedVolume": 0,
+        "controlWrites": [
+          {
+            "address": 54290,
+            "value": 64
+          },
+          {
+            "address": 54283,
+            "value": 64
+          },
+          {
+            "address": 54276,
+            "value": 0
+          }
+        ],
+        "modeVolumeWrites": [
+          16,
+          16
+        ],
+        "finalModeVolume": 16,
+        "orderedStores": 18
+      }
+    ],
+    "contractNotes": [
+      "The original order restart is replaced; source calls at and after 17280 are not a tail oracle.",
+      "The runtime freezes row/tempo countdowns and saturates note age at 255 while sound programs continue.",
+      "Gate masking occurs after effects; all mode/volume stores combine their mode high nibble with the current tail volume.",
+      "This ledger check observes gates and volume, not internal note age, later callable state or rendered silence."
+    ]
+  },
+  "provenance": {
+    "reproducer": {
+      "path": "evidence/cybernoid-independent-full/compare-source.py",
+      "sha256": "7269e652669ea0be7efc2b65ce7c14a208125035e1ebda3ad62a6f77dd74a321",
+      "bytes": 11993
+    },
+    "description": {
+      "path": "songs/cybernoid-title.json",
+      "sha256": "4c70eb1dd9f81ded4b15ff19d4ec7634c400330c8fb4567a73888e755ca2519d",
+      "bytes": 707629
+    },
+    "sourceLedger": {
+      "path": "evidence/cybernoid-form-36000/audit.writes.json.gz",
+      "sha256": "f98385d8ca3eee92f956813507757cbf5b60e19bdcd7c02cb8e7697d317fcd00",
+      "bytes": 3349658,
+      "rawSha256": "268846b70fdd415e2ece14e9ddba99dfab8bed476396aae9cdf9901d5202a038",
+      "rawBytes": 55109977,
+      "stores": 645960,
+      "use": "Comparison oracle only; not a compiler or player input"
+    },
+    "candidate": {
+      "reconstructed.sid": {
+        "path": "build/cybernoid-independent-full/candidate/reconstructed.sid",
+        "sha256": "5753e8e0df1140de65a8116fb1b5ee4d2a4f6b64e383daa267e1e5eb0cfee7b4",
+        "bytes": 22666
+      },
+      "writes.json": {
+        "path": "build/cybernoid-independent-full/candidate/writes.json",
+        "sha256": "4399c5ab3edaed0c2bce8acd13a2ac8a5d024f25846c2def8f6c02e37f7e3847",
+        "bytes": 29743122
+      },
+      "build.json": {
+        "path": "build/cybernoid-independent-full/candidate/build.json",
+        "sha256": "46111533df2440180b0ceaf19d4a154d21f2772c896934cf436d28851ec14753",
+        "bytes": 16994
+      },
+      "audit.json": {
+        "path": "build/cybernoid-independent-full/candidate/audit.json",
+        "sha256": "0d422ec318e7d2dc86968d6a6a447df3cdf1b4ae0ac98162658519697d5961cd",
+        "bytes": 3691
+      },
+      "player.asm": {
+        "path": "build/cybernoid-independent-full/candidate/player.asm",
+        "sha256": "9b46c7c07c619190007d699fb000999177c06c3a442f24f20e42e1d9d6a61d82",
+        "bytes": 147419
+      },
+      "player.listing": {
+        "path": "build/cybernoid-independent-full/candidate/player.listing",
+        "sha256": "25325d0eccd3e5622496f9f4f6af2282217a2e7c74dd4866b7cb84a6c54cd4df",
+        "bytes": 236593
+      }
+    },
+    "code": {
+      "scripts/compose-cybernoid.py": {
+        "path": "scripts/compose-cybernoid.py",
+        "sha256": "e71698934cb8c4f125c43ed95bff7627e9811ffa9ab287e33bc0139f645d9b32",
+        "bytes": 17849
+      },
+      "scripts/prepare-cybernoid-title.py": {
+        "path": "scripts/prepare-cybernoid-title.py",
+        "sha256": "c5a7fb18ee371e2bb8cadbc0c33066db57e156c9556ac30e3808e0187109ce34",
+        "bytes": 5309
+      },
+      "scripts/cybernoid_player.py": {
+        "path": "scripts/cybernoid_player.py",
+        "sha256": "8859a86df6fc724f36aa0f77ea04095850405a5c3550aa0d8e4cc2c442b65867",
+        "bytes": 15523
+      },
+      "scripts/cybernoid_pitch.py": {
+        "path": "scripts/cybernoid_pitch.py",
+        "sha256": "1e31d9ffa9ea248f3030149ae5540962e0d7dff8e515354b504f4f0d02bbbf3b",
+        "bytes": 6619
+      },
+      "scripts/cybernoid_state.py": {
+        "path": "scripts/cybernoid_state.py",
+        "sha256": "3a2abd8cbbae6b95f098666827fb29ac450b9b937c3fdfc29a02937dd85ddf67",
+        "bytes": 5075
+      },
+      "scripts/cybernoid_programs.py": {
+        "path": "scripts/cybernoid_programs.py",
+        "sha256": "89d210c17cc41997fad4b8f22cdfc9ceaa09f64bd2c729fbb087a282ba93d7ed",
+        "bytes": 2752
+      },
+      "scripts/cybernoid_output.py": {
+        "path": "scripts/cybernoid_output.py",
+        "sha256": "169d882bff5e91cde4caca8e56baa418f1f53421ced0dd7de9bcbc5450b05a63",
+        "bytes": 6335
+      },
+      "scripts/sid_assembler.py": {
+        "path": "scripts/sid_assembler.py",
+        "sha256": "2a1fecc8cb350c9cfdef292677a0cc54bcf2c0c069009b1222782708d42c287e",
+        "bytes": 3305
+      },
+      "scripts/verify_player.py": {
+        "path": "scripts/verify_player.py",
+        "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+        "bytes": 9535
+      },
+      "scripts/psid_audit.py": {
+        "path": "scripts/psid_audit.py",
+        "sha256": "eeea11cdbb5159745f36802526ee2f2986d12fe19ce47b3609fedcf15f47e1bd",
+        "bytes": 10460
+      },
+      "scripts/psid_profile.py": {
+        "path": "scripts/psid_profile.py",
+        "sha256": "c2c696db133ed024840cfa5edbc76e3a07ef1f30345cc1820c978a51a73c816d",
+        "bytes": 5202
+      },
+      "scripts/sid_audit_host.py": {
+        "path": "scripts/sid_audit_host.py",
+        "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+        "bytes": 3146
+      },
+      "songs/players/cybernoid.asm": {
+        "path": "songs/players/cybernoid.asm",
+        "sha256": "37ccc4d6876711613192d2c56c340da93bb1384b492600b8061935b485748a20",
+        "bytes": 6598
+      },
+      "songs/players/cybernoid-pitch.asm": {
+        "path": "songs/players/cybernoid-pitch.asm",
+        "sha256": "9dc3187a29c18cdecafce2d2766d9c2ea4a95774d6641966891576dc279dd678",
+        "bytes": 6807
+      },
+      "songs/players/cybernoid-effects.asm": {
+        "path": "songs/players/cybernoid-effects.asm",
+        "sha256": "124bbb7d018b299db02fe2e5c424a547baf21d11d3bf041391a9a36e933d0212",
+        "bytes": 6212
+      }
+    }
+  },
+  "limitations": [
+    "Phase/call/address/value and store order are compared; instruction-start cycles are retained but not equated.",
+    "Existing final candidate CPU/build receipts bind the ledger to the SID and editable description; this reproducer does not execute either player.",
+    "The tail is deliberately different from the looping source; its internal-state contract is covered by the player tests and model comparison.",
+    "No original SID payload, reference audio, VICE timing, PCM identity, rendered-silence or listening claim is produced."
+  ],
+  "reproduction": {
+    "argv": [
+      "python3",
+      "evidence/cybernoid-independent-full/compare-source.py",
+      "--output-root",
+      "build/cybernoid-independent-full",
+      "--candidate-root",
+      "build/cybernoid-independent-full/candidate",
+      "--description",
+      "songs/cybernoid-title.json",
+      "--source-ledger",
+      "evidence/cybernoid-form-36000/audit.writes.json.gz",
+      "--receipt-name",
+      "source-comparison.json"
+    ],
+    "output": "build/cybernoid-independent-full/source-comparison.json",
+    "freshReceiptRequired": true
+  }
+}

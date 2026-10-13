@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 1,
+  "kind": "cybernoid-familiar-material-transfer-audio",
+  "checkedOn": "2026-10-13",
+  "source": {
+    "score": "songs/fuer-elise.json",
+    "scoreSha256": "a58bdad5e72a10c12b20913cf242e917b98bb010949ba3ea38f33cfe15b6368e",
+    "composer": "Ludwig van Beethoven",
+    "edition": "Breitkopf & Härtel, 1888, as identified by Mutopia-2015/08/18-931",
+    "provenance": "docs/songs/fuer-elise-score.md",
+    "excerptBeats": [
+      0,
+      12
+    ],
+    "retainedEvents": {
+      "melody": 35,
+      "bass": 6,
+      "harmony": 12
+    },
+    "totalRetainedEvents": 53
+  },
+  "inputs": {
+    "scripts/prepare-cybernoid-title.py": "c5a7fb18ee371e2bb8cadbc0c33066db57e156c9556ac30e3808e0187109ce34",
+    "scripts/prepare-cybernoid-elise.py": "9c01b5ba83fc934b5cbb6ba6de1eb4f252d8fd398d106de8e2da19f1e19f3de8",
+    "scripts/compose-cybernoid.py": "e71698934cb8c4f125c43ed95bff7627e9811ffa9ab287e33bc0139f645d9b32",
+    "scripts/cybernoid_player.py": "8859a86df6fc724f36aa0f77ea04095850405a5c3550aa0d8e4cc2c442b65867",
+    "scripts/cybernoid_pitch.py": "1e31d9ffa9ea248f3030149ae5540962e0d7dff8e515354b504f4f0d02bbbf3b",
+    "scripts/cybernoid_state.py": "3a2abd8cbbae6b95f098666827fb29ac450b9b937c3fdfc29a02937dd85ddf67",
+    "scripts/cybernoid_output.py": "169d882bff5e91cde4caca8e56baa418f1f53421ced0dd7de9bcbc5450b05a63",
+    "scripts/cybernoid_programs.py": "89d210c17cc41997fad4b8f22cdfc9ceaa09f64bd2c729fbb087a282ba93d7ed",
+    "songs/players/cybernoid.asm": "37ccc4d6876711613192d2c56c340da93bb1384b492600b8061935b485748a20",
+    "songs/players/cybernoid-pitch.asm": "9dc3187a29c18cdecafce2d2766d9c2ea4a95774d6641966891576dc279dd678",
+    "songs/players/cybernoid-effects.asm": "124bbb7d018b299db02fe2e5c424a547baf21d11d3bf041391a9a36e933d0212",
+    "scripts/sid_assembler.py": "2a1fecc8cb350c9cfdef292677a0cc54bcf2c0c069009b1222782708d42c287e",
+    "scripts/verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+    "scripts/psid_audit.py": "eeea11cdbb5159745f36802526ee2f2986d12fe19ce47b3609fedcf15f47e1bd",
+    "scripts/psid_profile.py": "c2c696db133ed024840cfa5edbc76e3a07ef1f30345cc1820c978a51a73c816d",
+    "scripts/sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "scripts/trace-sid-vice.py": "18a21e373d7dcd679771c256fa6d930106718246cb3e0c7647329d985eb73352",
+    "scripts/render-sid.cpp": "c7bc5f7b0fe8d18a54ecde7338b6efa786f87f54ec258a00fb01025486bad5fc",
+    "scripts/audio_comparison.py": "3d9ad70290cc5df00b9575b011ebdcd0b92d37e7c37464c886b873736bc78884",
+    "scripts/compare-audio.py": "af32799660edd43d56f81196994bf9629aec98e960f487ea98ad7b14e8c0fc48",
+    "tests/cybernoid_elise_transfer_test.py": "c761c05a31828aff8e3a1c2df0512e0682076efe1f5783b99b92f7b312cb4a1a",
+    "tests/cybernoid_compiler_test.py": "06f2a900f4ee77841ab89373bad7d07f3ed08026aed10734ac0823351cd7d55c",
+    "tests/cybernoid_pitch_asm_test.py": "0ed843a1d44956c5c3971b25de1e1d6ed5c2011e13ebebe95a675b48fdfdb49c",
+    "tests/cybernoid_effects_asm_test.py": "1235fbb325e00218ce8c3ac55ad41d9f92696bc90ff227497ed602b5a7140e35",
+    "songs/fuer-elise.json": "a58bdad5e72a10c12b20913cf242e917b98bb010949ba3ea38f33cfe15b6368e",
+    "songs/cybernoid-title.json": "4c70eb1dd9f81ded4b15ff19d4ec7634c400330c8fb4567a73888e755ca2519d",
+    "songs/cybernoid-elise-transfer.json": "158a0c8ac5c01f85e907312f434a3651beb4ea60c8e7e7e4d4fe8962b7499511",
+    "songs/cybernoid-elise-reference.json": "ed717a537686c4187e766805360eae33fdcfc1eaece748b606cad197b37dfb2a"
+  },
+  "rendering": {
+    "executable": ".local/bin/render-sid",
+    "executableSha256": "80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe",
+    "source": "scripts/render-sid.cpp",
+    "library": "libsidplayfp 3.1.1",
+    "builder": "SIDLite",
+    "libraryArtifact": {
+      "path": ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+      "sha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00"
+    },
+    "clock": "PAL",
+    "chip": "MOS6581",
+    "defaultSubtune": 1,
+    "powerOnDelay": 0,
+    "sampleRate": 44100,
+    "channels": 1,
+    "format": "PCM16",
+    "seconds": 15,
+    "gain": 1,
+    "normalization": false
+  },
+  "roles": {
+    "reference": {
+      "path": "build/cybernoid-elise-transfer/reference/reference.wav",
+      "sha256": "c536601b2a12da678f78c8cca3e8ade05ad12a78771f51e0c5ebcd74f17b8bcb",
+      "sid": {
+        "path": "build/cybernoid-elise-transfer/reference/reconstructed.sid",
+        "sha256": "d8ad9324b55f793d2bce222a7a8f58b45267ea2406b61fc458bdfa0fcf705a2e"
+      },
+      "description": "Generated plain triangle reference: the same 53 source events, calendar and raw pitch lookup; not an original recording.",
+      "buildReceipt": {
+        "path": "evidence/cybernoid-elise-transfer/reference/build.json",
+        "sha256": "413ee726e3214887e3119c32b217cf257288aef6fbce1316c3facc475b61792f"
+      },
+      "cpuAudit": {
+        "path": "evidence/cybernoid-elise-transfer/reference/audit.json",
+        "sha256": "8b7527aea4e7537cf8f4520ed7844d91338af0f6561271115fd281715bfd6617"
+      },
+      "orderedWrites": {
+        "path": "evidence/cybernoid-elise-transfer/reference/writes.json.gz",
+        "sha256": "ef09786bf27f9458202199daa4178bf896a39caab60e3505252845cdbd0379c5",
+        "rawSha256": "c2fcb8e1692a8a89d91a32c99276bd87680263029d730c6c3a9dd56dccb0dc1b"
+      },
+      "viceReceipt": {
+        "path": "evidence/cybernoid-elise-transfer/reference/vice/study.json",
+        "sha256": "3d57fb0648ab6b5bd74c093c58874947da43c86cf760fe3341c11366a5867f7c"
+      },
+      "rendererSnapshots": {
+        "path": "build/cybernoid-elise-transfer/reference/reference.wav.registers.tsv",
+        "sha256": "bb7ab2c816161c67c541e0e8b41955da2af73fa6df70d5c178b03113d86b6768"
+      },
+      "verification": {
+        "compiledCalls": 629,
+        "compiledStoresIncludingInit": 11108,
+        "maximumPlayCycles": 2162,
+        "viceCalls": 631,
+        "viceMatchedPlayStores": 11083,
+        "maximumCadenceErrorCycles": 8
+      },
+      "viceTrace": {
+        "path": "evidence/cybernoid-elise-transfer/reference/vice/trace.json.gz",
+        "sha256": "ac7a4c564cf1eabca689258de75d53a6665000b89d77fb64944bdbb1572a28bc",
+        "rawSha256": "e5cd640db64c60714dd9cd5098b4281b25723bc2a854b7d3f3b96110fbda2287"
+      }
+    },
+    "candidate": {
+      "path": "build/cybernoid-elise-transfer/candidate/reconstructed.wav",
+      "sha256": "329b849bc1d5de7653fa5670dd9266c8c9da89423ebe2aba8c6fc17c9b33acfb",
+      "sid": {
+        "path": "build/cybernoid-elise-transfer/candidate/reconstructed.sid",
+        "sha256": "ec08c07d2909a77bafdadebefe50fd12278cbb2c99572b8d3189bfa7518f2297"
+      },
+      "description": "Same 53 source events with original Cybernoid records 1/5/17 on bass/harmony/melody; no glide or tone arpeggio.",
+      "buildReceipt": {
+        "path": "evidence/cybernoid-elise-transfer/candidate/build.json",
+        "sha256": "2e2bd8bcd10e7e6c54119f6cd2499bd9bb20624e679e93c5d9371cda2f6eda9e"
+      },
+      "cpuAudit": {
+        "path": "evidence/cybernoid-elise-transfer/candidate/audit.json",
+        "sha256": "3c116297f0cef36f627d125ba9e008422970234a42f6f2a96be7ad28fc2084bf"
+      },
+      "orderedWrites": {
+        "path": "evidence/cybernoid-elise-transfer/candidate/writes.json.gz",
+        "sha256": "6bff8fd71b7e3f8b4e34572a77ea6894b28eadb843a9ca15b371b99d1e768d15",
+        "rawSha256": "fffbbd5a3569a4e50ba59e536a3c48a54ac4c5aeacd71517f8143767cfacd759"
+      },
+      "viceReceipt": {
+        "path": "evidence/cybernoid-elise-transfer/candidate/vice/study.json",
+        "sha256": "a3a2e9f3dee31f4f677d57c0de4ebc51c728ffeb0e8fcdc3de67e33dd0f41d4f"
+      },
+      "rendererSnapshots": {
+        "path": "build/cybernoid-elise-transfer/candidate/reconstructed.wav.registers.tsv",
+        "sha256": "2742507bbf4d3176880c4619b16e8fcdfed3231080e7e0afbd93528d758311c7"
+      },
+      "verification": {
+        "compiledCalls": 629,
+        "compiledStoresIncludingInit": 11094,
+        "maximumPlayCycles": 2204,
+        "viceCalls": 631,
+        "viceMatchedPlayStores": 11069,
+        "maximumCadenceErrorCycles": 8
+      },
+      "viceTrace": {
+        "path": "evidence/cybernoid-elise-transfer/candidate/vice/trace.json.gz",
+        "sha256": "18503b5be00d372665838c854d39c68c5953efd35b988ac5b38f38601c360492",
+        "rawSha256": "13f1bf5ba32e110c6dfa70ec9e6e03350468273c471ead0b747f6f4a15c00e42"
+      }
+    }
+  },
+  "comparisons": {
+    "full": {
+      "path": "build/cybernoid-elise-transfer/listening/plain-then-cybernoid.ab.wav",
+      "sha256": "9b6dd19d32496af885a813ace48d843aa7344f652c6b8e40b34948a1aa61ee38",
+      "seconds": 30.5,
+      "order": [
+        "plain reference",
+        "Cybernoid transfer"
+      ],
+      "method": "full-file AC RMS, pooled channel power after subtracting each channel mean; silence and tails included",
+      "matching": "attenuation only",
+      "gainDb": [
+        0.0,
+        -5.476263685563279
+      ],
+      "gapSeconds": 0.5,
+      "receipt": {
+        "path": "evidence/cybernoid-elise-transfer/listening/plain-then-cybernoid.comparison.json",
+        "sha256": "86e26d2b992cc28f7620863eed3a89ba2e4d0d216216eff081b094467db3d773"
+      },
+      "matchedCopies": [
+        {
+          "path": "build/cybernoid-elise-transfer/listening/plain-then-cybernoid.a.matched.wav",
+          "sha256": "c536601b2a12da678f78c8cca3e8ade05ad12a78771f51e0c5ebcd74f17b8bcb",
+          "role": "reference",
+          "gain": 1.0,
+          "gainDb": 0.0
+        },
+        {
+          "path": "build/cybernoid-elise-transfer/listening/plain-then-cybernoid.b.matched.wav",
+          "sha256": "8e1f2f53915797850b8668eef52161a84a022e6e6ee364c2f15aea72410fe3d3",
+          "role": "candidate",
+          "gain": 0.5323371997115777,
+          "gainDb": -5.476263685563279
+        }
+      ]
+    },
+    "ending": {
+      "path": "build/cybernoid-elise-transfer/listening/ending-plain-then-cybernoid.ab.wav",
+      "sha256": "31334e8579b6e462bc6cca881e6595d2e8d00879f1c94393883fa46ffacd2f3d",
+      "seconds": 12.5,
+      "order": [
+        "plain reference",
+        "Cybernoid transfer"
+      ],
+      "windowSeconds": [
+        8,
+        14
+      ],
+      "windowFrames": [
+        352800,
+        617400
+      ],
+      "gainDb": [
+        0,
+        0
+      ],
+      "normalization": false,
+      "gapSeconds": 0.5,
+      "method": "Unity-gain window of the raw original-level renders; independent of full-file matching.",
+      "receipt": {
+        "path": "evidence/cybernoid-elise-transfer/listening/ending-plain-then-cybernoid.comparison.json",
+        "sha256": "79f60004623766c360fd2390c0d71686c1d0b3743e56caff1289735b3d0e54e1"
+      }
+    }
+  },
+  "execution": {
+    "musicCalls": 501,
+    "declaredCalls": 629,
+    "viceWindowInclusive": [
+      0,
+      630
+    ],
+    "additionalSilentCalls": [
+      629,
+      630
+    ],
+    "tail": {
+      "start_call": 501,
+      "release_calls": 64,
+      "fade_step_calls": 4
+    },
+    "viceExecutable": {
+      "path": ".tools/vice-headless-3.9/build/src/x64sc",
+      "sha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285"
+    },
+    "viceVersion": "3.9",
+    "viceDataDirectory": "/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice"
+  },
+  "audioHealth": {
+    "path": "evidence/cybernoid-elise-transfer/audio-evidence.json",
+    "sha256": "a219fafe3f68fbd328213fb63d581444332937314a52babcfa855cc461ff12e1"
+  },
+  "listeningReview": {
+    "date": "2026-10-13",
+    "scope": "Musical usefulness of the familiar 53-note Für Elise transfer, in response to the question including its ending",
+    "verdict": "accepted",
+    "listenerQuote": "Cybernoid version works musically"
+  },
+  "limits": [
+    "The plain triangle reference is generated from the same 53 source events, not an original recording.",
+    "Source rows quantize to three-call PAL boundaries: maximum measured error 29.764 ms; native gates lead row ends by 59.851 ms.",
+    "Both banks retain the original PAL lookup tuning, approximately 35 cents sharp; onset noise and rest-patch release changes are deliberate transfer behavior.",
+    "Measured PCM and controlled VICE/callable execution do not establish hearing, physical-SID equivalence or approval of the whole Beethoven interpretation."
+  ],
+  "publication": "All WAVs and compiled SID exports remain in ignored build/. Track only editable inputs, code, hashes, reproduction instructions and analysis evidence.",
+  "reproduction": {
+    "workingDirectory": "repository root",
+    "freshOutputRequired": true,
+    "setup": "docs/setup/local-setup.md",
+    "audioSetup": "docs/workflows/audio-workflow.md",
+    "commands": [
+      [
+        "python3",
+        "scripts/prepare-cybernoid-elise.py",
+        "--check"
+      ],
+      [
+        "python3",
+        "scripts/prepare-cybernoid-elise.py",
+        "--transfer-output",
+        "build/cybernoid-elise-reproduce-new/transfer.json",
+        "--reference-output",
+        "build/cybernoid-elise-reproduce-new/reference.json"
+      ],
+      [
+        "env",
+        "PYTHONPATH=.tools/test-deps",
+        "python3",
+        "scripts/compose-cybernoid.py",
+        "build/cybernoid-elise-reproduce-new/reference.json",
+        "--output",
+        "build/cybernoid-elise-reproduce-new/reference"
+      ],
+      [
+        "env",
+        "PYTHONPATH=.tools/test-deps",
+        "python3",
+        "scripts/trace-sid-vice.py",
+        "build/cybernoid-elise-reproduce-new/reference/reconstructed.sid",
+        "--oracle",
+        "build/cybernoid-elise-reproduce-new/reference/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "630",
+        "--output",
+        "build/cybernoid-elise-reproduce-new/reference/vice"
+      ],
+      [
+        ".local/bin/render-sid",
+        "build/cybernoid-elise-reproduce-new/reference/reconstructed.sid",
+        "build/cybernoid-elise-reproduce-new/reference/reference.wav",
+        "15"
+      ],
+      [
+        "env",
+        "PYTHONPATH=.tools/test-deps",
+        "python3",
+        "scripts/compose-cybernoid.py",
+        "build/cybernoid-elise-reproduce-new/transfer.json",
+        "--output",
+        "build/cybernoid-elise-reproduce-new/candidate"
+      ],
+      [
+        "env",
+        "PYTHONPATH=.tools/test-deps",
+        "python3",
+        "scripts/trace-sid-vice.py",
+        "build/cybernoid-elise-reproduce-new/candidate/reconstructed.sid",
+        "--oracle",
+        "build/cybernoid-elise-reproduce-new/candidate/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "630",
+        "--output",
+        "build/cybernoid-elise-reproduce-new/candidate/vice"
+      ],
+      [
+        ".local/bin/render-sid",
+        "build/cybernoid-elise-reproduce-new/candidate/reconstructed.sid",
+        "build/cybernoid-elise-reproduce-new/candidate/reconstructed.wav",
+        "15"
+      ],
+      [
+        "python3",
+        "scripts/compare-audio.py",
+        "prepare",
+        "build/cybernoid-elise-reproduce-new/reference/reference.wav",
+        "build/cybernoid-elise-reproduce-new/candidate/reconstructed.wav",
+        "build/cybernoid-elise-reproduce-new/listening/plain-then-cybernoid",
+        "--individual-copies"
+      ],
+      [
+        "python3",
+        "scripts/compare-audio.py",
+        "window",
+        "build/cybernoid-elise-reproduce-new/reference/reference.wav",
+        "build/cybernoid-elise-reproduce-new/candidate/reconstructed.wav",
+        "build/cybernoid-elise-reproduce-new/listening/ending-plain-then-cybernoid",
+        "--start-seconds",
+        "8",
+        "--end-seconds",
+        "14"
+      ]
+    ],
+    "healthMeasurement": {
+      "api": "scripts/audio_comparison.py:read_pcm16,measure_pcm,Pcm16",
+      "tailWindowSeconds": [
+        14,
+        15
+      ],
+      "settledCriterion": "All last-second PCM samples are identical and AC RMS is zero; retain the DC value.",
+      "fullInspectCommands": [
+        [
+          "python3",
+          "scripts/compare-audio.py",
+          "inspect",
+          "build/cybernoid-elise-reproduce-new/reference/reference.wav"
+        ],
+        [
+          "python3",
+          "scripts/compare-audio.py",
+          "inspect",
+          "build/cybernoid-elise-reproduce-new/candidate/reconstructed.wav"
+        ]
+      ],
+      "tailInspectCommand": [
+        "env",
+        "PYTHONPATH=scripts",
+        "python3",
+        "-c",
+        "import json, sys\nfrom audio_comparison import Pcm16, read_pcm16, measure_pcm\nfor path in sys.argv[1:]:\n    audio = read_pcm16(path)\n    tail = Pcm16(audio.sample_rate, audio.channels, audio.sample_rate,\n                 audio.samples[-audio.sample_rate * audio.channels:], '')\n    print(json.dumps({'path': path, 'windowSeconds': [audio.frames / audio.sample_rate - 1,\n                                                   audio.frames / audio.sample_rate],\n                      **measure_pcm(tail)}, indent=2))\n",
+        "build/cybernoid-elise-reproduce-new/reference/reference.wav",
+        "build/cybernoid-elise-reproduce-new/candidate/reconstructed.wav"
+      ]
+    }
+  }
+}
