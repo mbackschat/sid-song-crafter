@@ -4,6 +4,7 @@
 
 - [DRAX trio mapping](drax-decoded-trio.md): releasing bass, pulse lead and chord mechanisms with arrangement constraints and an independent three-voice implementation.
 - [Flashdance decoded programs](flashdance-decoded-programs.md): staged lead, evolving bass, moving four-tone chords and score-owned pitch effects, with an editable original transfer phrase and declared listening status.
+- [Shades pulse and pitch programs](shades-decoded-programs.md): moving pulse, delayed vibrato, target glides and shared-filter ownership; independent full/transfer players verified with CPU and CIA-timed VICE, with listening pending.
 
 ## Original SID-Wizard instruments
 

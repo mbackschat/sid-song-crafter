@@ -3,7 +3,7 @@
   "packagedOn": "2026-10-13",
   "implementationCheckpoint": "cf5c7cc3342d491029c244494e5ee4619e6794b9",
   "sourceRegistry": "config/local-assets.json",
-  "scope": "Canonical Shades and Flashdance analysis proofs; source SIDs, audio and payload dumps excluded. Historical receipts retain their original paths and proof-version identities.",
+  "scope": "Canonical Shades and Flashdance analysis proofs, including independent Shades compilation and original transfer; source SIDs, audio and payload dumps excluded. Historical receipts retain their original paths and proof-version identities.",
   "files": [
     {
       "path": "evidence/shades-intake/vice-cia-corrected-full-final/trace.json.gz",
@@ -526,6 +526,177 @@
       "originalBytes": 3456,
       "group": "flashdance-corrected-cpu-timing",
       "reason": "Corrected CPU audit and per-call budget evidence complement the ordered store ledger."
+    },
+    {
+      "path": "evidence/shades-independent-full/build.json",
+      "originalPath": "build/shades-independent-full/build.json",
+      "sha256": "1d9d4938a9b22e650c7fd3b3eab608e8161abdd50a02476569ab8075f1fa2af2",
+      "bytes": 7784,
+      "originalSha256": "1d9d4938a9b22e650c7fd3b3eab608e8161abdd50a02476569ab8075f1fa2af2",
+      "originalBytes": 7784,
+      "group": "shades-independent-full",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-independent-full/audit.json.gz",
+      "originalPath": "build/shades-independent-full/audit.json",
+      "sha256": "d91154e79eef91506f31234e502ff59d5d7f82cf98c4b90ebb9c23e361c8b758",
+      "bytes": 14072,
+      "originalSha256": "8fa2c3dd75041ba79b6d58eda2cc7c4843ba665c0199a09a33bd6f02ffe7977b",
+      "originalBytes": 234811,
+      "group": "shades-independent-full",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-independent-full/audio-evidence.json",
+      "originalPath": "build/shades-independent-full/audio-evidence.json",
+      "sha256": "ec4458a1784ca46eedaed3a41a48da73f801381ff0f14f77cd6a793443d5e518",
+      "bytes": 1423,
+      "originalSha256": "ec4458a1784ca46eedaed3a41a48da73f801381ff0f14f77cd6a793443d5e518",
+      "originalBytes": 1423,
+      "group": "shades-independent-full",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-independent-full/reference-comparison.json",
+      "originalPath": "build/shades-independent-full/reference-comparison.json",
+      "sha256": "960c9009d02ee453dbb9797117052b062efa904c68e1f2a938d8e35bb3b3121e",
+      "bytes": 759,
+      "originalSha256": "960c9009d02ee453dbb9797117052b062efa904c68e1f2a938d8e35bb3b3121e",
+      "originalBytes": 759,
+      "group": "shades-independent-full",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-independent-full/vice/study.json.gz",
+      "originalPath": "build/shades-independent-full/vice/study.json",
+      "sha256": "667b62bd8cca2708d1f87d2acd572f6965758c15086856c7e924f82dfce06700",
+      "bytes": 72390,
+      "originalSha256": "d3e4abb2371c898f0d846c163bd03616e6980a0c86cdd81eb4179df49b5852ba",
+      "originalBytes": 1909029,
+      "group": "shades-independent-full",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-independent-full/vice/trace.json.gz",
+      "originalPath": "build/shades-independent-full/vice/trace.json",
+      "sha256": "62525ef13f235c2ea07e3633ff3124d678aa34992f39ab07b0c872b9a37042bc",
+      "bytes": 14631796,
+      "originalSha256": "b61a427f2822437ad845c6b32e69291cb4c086240d420a9afdec3c9ea9546eed",
+      "originalBytes": 324948715,
+      "group": "shades-independent-full",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-independent-full/vice/oracle.writes.json.gz",
+      "originalPath": "build/shades-independent-full/vice/oracle.writes.json",
+      "sha256": "9cf9bdde82af382a3c23c5ee4bdb2d29b3f75b5dda5095781d2fdd75a671e637",
+      "bytes": 1863240,
+      "originalSha256": "0d8b5feda279124247f3831e9c9a880514c20dca38faff3a69a89fdab41f4cc6",
+      "originalBytes": 42447365,
+      "group": "shades-independent-full",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-transfer/build.json",
+      "originalPath": "build/shades-transfer/build.json",
+      "sha256": "908caa94d2507753265783aec8d506526c18099b73afdc000cd73f009b73f8df",
+      "bytes": 6596,
+      "originalSha256": "908caa94d2507753265783aec8d506526c18099b73afdc000cd73f009b73f8df",
+      "originalBytes": 6596,
+      "group": "shades-transfer",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-transfer/audit.json.gz",
+      "originalPath": "build/shades-transfer/audit.json",
+      "sha256": "9fe6b101cb2f21f070741e45beb695d77f4391af818baf87683aea4933a459b8",
+      "bytes": 3061,
+      "originalSha256": "8dceb8e8f5d994010204d45c9ff389c8dbb3b489ad20a28f19bba67ef2ce740e",
+      "originalBytes": 20436,
+      "group": "shades-transfer",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-transfer/audio-evidence.json",
+      "originalPath": "build/shades-transfer/audio-evidence.json",
+      "sha256": "7c75d1681582ee1d8c1a07c1e95a8516d2b448d146cb1b4f38744aae32732ea4",
+      "bytes": 1414,
+      "originalSha256": "7c75d1681582ee1d8c1a07c1e95a8516d2b448d146cb1b4f38744aae32732ea4",
+      "originalBytes": 1414,
+      "group": "shades-transfer",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-transfer/vice/study.json.gz",
+      "originalPath": "build/shades-transfer/vice/study.json",
+      "sha256": "09699029f41eda6ab68982703d61eafa5bb992a3da204e81f5ea45798f739e29",
+      "bytes": 8400,
+      "originalSha256": "4ca6d7509aa671f8c2de8f09ff3dd8775ee6083ad253c1695bcc715e9354b077",
+      "originalBytes": 129208,
+      "group": "shades-transfer",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-transfer/vice/trace.json.gz",
+      "originalPath": "build/shades-transfer/vice/trace.json",
+      "sha256": "2332387e2be8f801a84339fbd02e2e858addd7db4f6937c07e2246672839b663",
+      "bytes": 650502,
+      "originalSha256": "0f521740bb67f3e8d0fb76f55aacb90dfa4f2c4189729a06b605161d82d4ebdc",
+      "originalBytes": 13350950,
+      "group": "shades-transfer",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-transfer/vice/oracle.writes.json.gz",
+      "originalPath": "build/shades-transfer/vice/oracle.writes.json",
+      "sha256": "4a5b96bc220b7a41887d39da44e3f2d4d582f18e439d2ad7bb48541433a3fe5c",
+      "bytes": 71046,
+      "originalSha256": "a3fbe6fe03c8a64d346a46076dd7bb250344e00538a9e04a5b06abef71f71213",
+      "originalBytes": 1518061,
+      "group": "shades-transfer",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-transfer-model-01/verification.json",
+      "originalPath": "build/shades-transfer-model-01/verification.json",
+      "sha256": "726e64f8722d8dfa5eeeb81d20cce692c4a27c86bde1971e2aff55d504537b2c",
+      "bytes": 680,
+      "originalSha256": "726e64f8722d8dfa5eeeb81d20cce692c4a27c86bde1971e2aff55d504537b2c",
+      "originalBytes": 680,
+      "group": "shades-transfer-model-01",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-transfer-model-01/parameter-isolation.json",
+      "originalPath": "build/shades-transfer-model-01/parameter-isolation.json",
+      "sha256": "1b6d87bb0345fc60e0d01285851a223b52e06ca59e9e4bc91cc96d414ff78e4d",
+      "bytes": 631,
+      "originalSha256": "1b6d87bb0345fc60e0d01285851a223b52e06ca59e9e4bc91cc96d414ff78e4d",
+      "originalBytes": 631,
+      "group": "shades-transfer-model-01",
+      "reason": "Independent computed player: complete CPU/CIA execution, source comparison, original transfer isolation or rendered-audio measurement; no SID/audio bytes."
+    },
+    {
+      "path": "evidence/shades-independent-full/listening/reference-then-ours.comparison.json",
+      "originalPath": "build/shades-independent-full/listening/reference-then-ours.comparison.json",
+      "sha256": "351c896c0ba6ada96c07a3daf76bd2ac34edb2adaa33e7d4a7842f053f9a2754",
+      "bytes": 2743,
+      "originalSha256": "351c896c0ba6ada96c07a3daf76bd2ac34edb2adaa33e7d4a7842f053f9a2754",
+      "originalBytes": 2743,
+      "group": "shades-independent-full",
+      "reason": "Unity-gain reference-first trio audition recipe and measured windows; hashes only, no reference audio."
     }
-  ]
+  ],
+  "independentShadesSources": {
+    "scripts/compose-shades.py": "91fbca004423813b5205d1caf62997ffad7c68f2b77f37745df8a5f2ced12d1c",
+    "songs/players/shades.asm": "076dd99d6301d398eb00bf6a408e82f22e41fd9f0cf5be9f9092f9bd1aa2d121",
+    "songs/players/shades-effects.asm": "1f5be8e5b1719235e6d6ee5589a91ee526cdb0d067c47a60eb0791d185fe23e9",
+    "scripts/shades_audit.py": "6b269351329e612ee8418d12030b4fd2b5ab302d9bbe6dfc4d1e1a1541332b52",
+    "scripts/trace-shades-vice.py": "d73ee4253edb99317c0feab629210039399a6ae30770e41e748fb97f3721a183",
+    "songs/shades-score.json": "92e86415d61a579871c25e48248846d9d34a8ff4042596816d5d9e4e973dea11",
+    "songs/shades-programs.json": "32ea2755fe5d68f27f9bb20a5c22da910052ad35ea5ca28399b5deca6cfd595c",
+    "songs/shades-transfer.json": "358649eb09183f018b27fad9d675367aa5e72d4507381b5878386fd344b91906",
+    "songs/shades-transfer-programs.json": "af316f792ec1c166c870dd1941ebc2de672bad0d9feab1a7da00bbf4d9c1f346"
+  }
 }

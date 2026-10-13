@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    24.0,
+    36.0
+  ],
+  "window": {
+    "startFrame": 1058400,
+    "endFrame": 1587600,
+    "frames": 529200,
+    "startSeconds": 24.0,
+    "endSeconds": 36.0,
+    "durationSeconds": 12.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-independent-full/listening/reference-then-ours.ab.wav",
+    "frames": 1080450,
+    "durationSeconds": 24.5,
+    "sha256": "a05925d1046f8a741a59b5f64d0d27af2fcbb48c9d6c98f6fb8cf9dc8576e35f"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 529200
+    },
+    {
+      "label": "silence",
+      "startFrame": 529200,
+      "endFrame": 551250
+    },
+    {
+      "label": "B",
+      "startFrame": 551250,
+      "endFrame": 1080450
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-reference-window/filter-corrected.wav",
+      "sha256": "582530398d8c533ca71f3b71db6222ba5af584f5e13a4a6e247476defdf08623",
+      "originalFrames": 14553000,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 529200,
+        "durationSeconds": 12.0,
+        "peak": 16569,
+        "peakDbfs": -5.923072740327568,
+        "clippedSamples": 0,
+        "rms": 5385.538661166786,
+        "acRms": 5274.879809473485,
+        "acRmsDbfs": -15.864747329476025,
+        "perChannel": [
+          {
+            "dc": -1086.1259901738474,
+            "rms": 5385.538661166786,
+            "acRms": 5274.879809473485
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/shades-independent-full/reconstructed.wav",
+      "sha256": "3c33089854a83119c0a4893a4ab45a2fa81d56e9961b62911682d26b499c6758",
+      "originalFrames": 13671000,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 529200,
+        "durationSeconds": 12.0,
+        "peak": 16598,
+        "peakDbfs": -5.907883494167528,
+        "clippedSamples": 0,
+        "rms": 5435.48212853488,
+        "acRms": 5325.261866661625,
+        "acRmsDbfs": -15.782179322894883,
+        "perChannel": [
+          {
+            "dc": -1089.0601549508692,
+            "rms": 5435.48212853488,
+            "acRms": 5325.261866661625
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

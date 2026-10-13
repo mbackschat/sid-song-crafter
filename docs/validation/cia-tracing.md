@@ -1,31 +1,31 @@
 # Tracing a CIA-driven SID player
 
-[The Shades tracer](../../scripts/trace-shades-vice.py) runs the unchanged, hash-pinned original or filter-corrected *Shades* payload in headless VICE. CIA1 Timer A dispatches real IRQs through the ROM KERNAL prologue. A separate callable RAM oracle checks ordered source stores and instruction durations; it does not schedule the CIA. Consult the [technique lookup](../research/technique-index.md) and [Shades reference intake](../research/composers/huelsbeck-tel.md#shades-reference-intake) for provenance and study status.
+[The Shades tracer](../../scripts/trace-shades-vice.py) runs the unchanged, hash-pinned original or filter-corrected *Shades* payload in headless VICE; its explicit `--candidate` route also verifies independently compiled CIA players. CIA1 Timer A dispatches real IRQs through the ROM KERNAL prologue. A separate callable RAM oracle checks ordered stores and instruction durations; it does not schedule the CIA. Consult the [technique lookup](../research/technique-index.md) and [Shades reference intake](../research/composers/huelsbeck-tel.md#shades-reference-intake) for provenance and study status.
 
 ## Reproduce the timing proof
 
-Install the [headless VICE and ROM data](../setup/local-setup.md) and the project's py65 dependencies. Keep reference binaries and generated evidence in ignored directories. The CLI accepts only the two pinned Shades hashes; it preserves their CIA speed word and initializes default subtune 1 with A=0. Choose a fresh output directory.
+Install the [headless VICE and ROM data](../setup/local-setup.md) and the project's py65 dependencies. Keep reference binaries and generated evidence in ignored directories. Without `--candidate`, the CLI accepts only the two pinned Shades hashes; it preserves their CIA speed word and initializes default subtune 1 with A=0. Choose a fresh output directory.
 
 ```sh
 PYTHONPATH=.tools/test-deps python3 scripts/trace-shades-vice.py .local/research/shades/Shades_filter_corrected.sid --calls 24385 --output build/shades-cia-primary-new
 PYTHONPATH=.tools/test-deps python3 scripts/trace-shades-vice.py .local/research/shades/Shades.sid --calls 400 --output build/shades-cia-comparison-new
 ```
 
-`--calls N` records N play entries numbered 0 through N−1. The finite 16-bit host supports 1–65,535 calls and stops the timer after acknowledging the last call. `--vice PATH` and `--data PATH` override executable and ROM-data locations. The process uses file-monitor commands, warp mode, no sound device, a finite emulated-cycle limit and a 60-second VICE timeout. A failed run retains diagnostics without a successful study report.
+`--calls N` records N play entries numbered 0 through N−1. The pinned-source route retains its 1–65,535-call limit. The candidate host supports 1–65,536 calls, allowing the terminal call at `stopCall=65535`; a zero counter target represents the first completed 16-bit wrap, not an immediate stop. Both routes stop the timer after acknowledging the last call. `--vice PATH` and `--data PATH` override executable and ROM-data locations. The process uses file-monitor commands, warp mode, no sound device, a finite emulated-cycle limit and a 60-second VICE timeout. A failed run retains diagnostics without a successful study report.
 
 | Output | Evidence |
 |---|---|
-| `study.json` | Source, VICE and harness hashes; execution profile; host choices; source-call costs; cadence and ordered-store verification; timer-write inventory; limitations. |
-| `trace.json` | Every play/ROM IRQ/host IRQ/return/acknowledgement checkpoint, ordered SID and timer stores, source registers, raster context and monitor stopwatch. |
-| `oracle.writes.json` | Ordered callable source stores with phase, call, writer PC, instruction-start cycle, address and value. |
-| `harness.prg`, `harness.listing`, `payload.prg` | The inspectable host and unchanged loaded reference payload. These generated reference bytes remain ignored. |
+| `study.json` | Payload, VICE and harness hashes; execution profile; host choices; call costs; cadence and ordered-store verification; timer-write inventory; limitations. |
+| `trace.json` | Every play/ROM IRQ/host IRQ/return/acknowledgement checkpoint, ordered SID and timer stores, payload registers, raster context and monitor stopwatch. |
+| `oracle.writes.json` | Ordered callable payload stores with phase, call, writer PC, instruction-start cycle, address and value. |
+| `harness.prg`, `harness.listing`, `payload.prg` | The inspectable host and unchanged loaded input payload. Generated binaries remain ignored; reference payloads must never enter Git. |
 | `commands.mon`, `command.json`, `monitor.log`, `process.log` | Exact VICE invocation, monitor recipe and raw machine observations. |
 
 Execution checkpoints precede their instructions; store checkpoints follow them. `instructionStartCycle` belongs to the callable CPU oracle. None of these fields is an exact SID/CIA bus-write timestamp.
 
 ## Host and timer lookup
 
-The host follows the timer setup and IRQ bank wrapper in the inspected libsidplayfp 3.1.1 `src/psiddrv.a65`, `cold` and `irqjob`. It explicitly selects VICE's new CIA model (`-cia1model 1 -cia2model 1`, MOS6526A), corresponding to libsidplayfp 3.1.1 `SidConfig.cpp`'s default new MOS8521 model. It starts with CPU port `$2F/$37`, zero-filled RAM, decimal mode clear, and the ROM KERNAL IRQ vector pointing to its handler. The host occupies `$0800–$0BFF`, within these references' declared relocation space and outside their payloads.
+The host follows the timer setup and IRQ bank wrapper in the inspected libsidplayfp 3.1.1 `src/psiddrv.a65`, `cold` and `irqjob`. It explicitly selects VICE's new CIA model (`-cia1model 1 -cia2model 1`, MOS6526A), corresponding to libsidplayfp 3.1.1 `SidConfig.cpp`'s default new MOS8521 model. It starts with CPU port `$2F/$37`, zero-filled RAM, decimal mode clear, and the ROM KERNAL IRQ vector pointing to its handler. The host occupies `$0800–$0BFF`, within the pinned references' declared relocation space; every candidate payload must also remain outside that workspace.
 
 | Register or locus | Established behavior |
 |---|---|
@@ -54,15 +54,41 @@ The observer can inspect `cpu.pc`, A/X/Y/SP/status and `memory.phase`, `tick`, `
 
 The lower-level `psid_profile`, `bounded_oracle`, `harness`, `parse_trace`, `verify_trace` and `run_profile` functions support independent fixtures with the same declared header/host contract. `LatchDiagnosticMemory` permits only play-phase non-RMW `$DC04/$DC05` latch stores beyond the strict auditor's SID writes. Production source intake remains hash-pinned; the [VBI auditor](psid-audit.md) and [fixed-PAL tracer](../../scripts/trace-sid-vice.py) retain their timing restrictions.
 
+## Generated candidate API
+
+[shades_audit.audit_candidate(data, calls, *, observer=None)](../../scripts/shades_audit.py) returns `(report, ordered_writes)` for 1–100,000 callable CPU play calls without loading an original reference or requiring its hash. The candidate input must declare PSID v2, one default subtune, PAL MOS6581 flags `$14`, CIA speed word `$00000001`, and callable RAM outside the host workspace. Its only timer-store allowance is play-phase non-RMW `STA $DC05`; it rejects `$DC04`, timer control, I/O or mapped-ROM reads, interrupt-vector/host writes, missing returns and play instructions that clear the IRQ mask. Ordinary SID stores retain the strict auditor's checks. Returned stores include phase, tick, writer PC, instruction-start cycle, address and value.
+
+The monitor starts status at `fl=$24`; the host then executes `SEI`, `CLD` and zero-register loads. Init therefore begins with A=X=Y=0 and status `$26`: I/Z set, decimal/carry/negative/overflow clear. Timer A already runs during init. The candidate bound requires init plus a 24-cycle startup-host allowance to finish before the initial 16,422-cycle underflow. Each play enters with A=0, retained idle X/Y, IRQ masked and bank `$37`; the host's `RTI` restores idle status between calls. The independently compiled Shades player restores all named state in init with no SID/CIA writes, but that silence is its compiler/model contract rather than a generic auditor restriction on SID initialization.
+
+The CPU audit assumes the host retains low latch byte `$25`, records the shortest period implied by the initial `$4025` latch and every emitted high byte, and requires `maximumPlayCycles + 160 < minimumTimerPeriodCycles`. The 160-cycle allowance conservatively covers IRQ dispatch, acknowledgement and finite counting in this controlled host. With minimum period 12,326, the admitted play budget is 12,165 cycles; init's budget is 16,397. These are cost guards, not CIA counter emulation or proof of actual cadence.
+
+Candidate CPU auditing runs automatically in [compose-shades.py](../../scripts/compose-shades.py); there is no separate auditor CLI. For real interrupts, use `trace-shades-vice.py --candidate` or `run_candidate_trace(sid_path, output_path, calls, vice_path, data_directory)`. It returns the study dictionary and uses the candidate CPU auditor without changing the pinned source route. See the [source-free full and transfer build commands](../workflows/decoded-song-workflow.md#shades-compiled-cia-player).
+
+## Compiled candidate evidence
+
+On 2026-10-13, both independent candidates matched their semantic models and passed the real CIA host. Their compiled init emits no sound/timer stores; call 0 writes only the selected timer high byte. The finite score stop contributes four final stores, followed by silent calls in the compiler guards.
+
+| Candidate and canonical VICE receipt | Play calls | Ordered SID/timer stores | Init cycles | Maximum play cycles | Maximum interval/phase error |
+|---|---:|---:|---:|---:|---:|
+| [Full decoded traversal](../../evidence/shades-independent-full/vice/study.json.gz) | 24,386 | 296,911 | 1,667 | 3,607 | 4 / 2 cycles |
+| [Original transfer phrase](../../evidence/shades-transfer/vice/study.json.gz) | 1,522 | 10,734 | 1,643 | 3,138 | 4 / 3 cycles |
+
+Both use a minimum 12,326-cycle timer window and pass the separate 12,165-cycle CPU play bound. Each VICE receipt checks every ordered store and call duration against the callable oracle, plus acknowledgement and latch-derived entry cadence. The [owning study](../research/composition/shades-preparation.md#reconstruction-boundary) retains input/output fingerprints and separate render/listening status; these timing receipts imply no listening acceptance or exact original within-call timing.
+
+```sh
+PYTHONPATH=.tools/test-deps python3 -m unittest discover -s tests -p shades_audit_test.py -v
+PYTHONPATH=.tools/test-deps python3 -m unittest discover -s tests -p shades_compiler_test.py -v
+```
+
 ## Retained proof and guards
 
-On 2026-10-13, the [corrected full receipt](../../evidence/shades-intake/vice-cia-corrected-full-final/study.json.gz) verifies calls 0–24,384: 296,779 ordered SID stores plus 128 `$DC05=$30` stores at PC `$7852`, all 24,385 Timer A acknowledgements, and every source-call instruction duration against the shared CPU oracle. Source calls take 670–2,831 cycles. High writes include calls 0, 193 and 385 and end at call 24,193. Maximum interval error is four cycles; cumulative phase stays within two cycles. The [current-oracle revalidation](../../evidence/shades-intake/vice-cia-corrected-full-final/current-oracle-revalidation.json) preserves agreement after tightening callable IRQ entry inputs. The [original comparison receipt](../../build/shades-intake/vice-cia-original-final/study.json) verifies 400 calls and 1,659 source stores, including the same first three timer writes and cadence bounds.
+On 2026-10-13, the [corrected full receipt](../../evidence/shades-intake/vice-cia-corrected-full-final/study.json.gz) verifies calls 0–24,384: 296,779 ordered SID stores plus 128 `$DC05=$30` stores at PC `$7852`, all 24,385 Timer A acknowledgements, and every source-call duration against the shared CPU oracle. Source calls take 670–2,831 cycles. High writes include calls 0, 193 and 385 and end at call 24,193. Maximum interval error is four cycles; cumulative phase stays within two cycles. The [current-oracle revalidation](../../evidence/shades-intake/vice-cia-corrected-full-final/current-oracle-revalidation.json) preserves agreement after tightening callable IRQ entry inputs. The [original comparison receipt](../../build/shades-intake/vice-cia-original-final/study.json) verifies 400 calls and 1,659 source stores, including the same first three timer writes and cadence bounds.
 
 ```sh
 PYTHONPATH=.tools/test-deps python3 -m unittest discover -s tests -p shades_vice_trace_test.py -v
 PYTHONPATH=.tools/test-deps python3 -m unittest discover -s tests -p shades_vice_trace_test.py -k absolute_decrement -v
 ```
 
-The eight guards cover a real changing-high-latch fixture, rejection of corrupted cadence/source-store evidence, bank restoration with preserved source zero page, an executed final 16-bit counter transition, unsupported headers and hardware dependencies, both real pinned references, and a separate `DEC absolute` VICE fixture. The latter measures 26 cycles for its complete body and catches the installed py65 table's former three-cycle `$CE` declaration through the shared timing loader. VICE/reference integration guards skip explicitly when local ignored dependencies are absent.
+The tracer guards cover a real changing-high-latch fixture, rejection of corrupted cadence/store evidence, bank restoration with preserved source zero page, final 16-bit counter transitions through the candidate's 65,536-call wrap, unsupported headers and hardware dependencies, both real pinned references, and a separate `DEC absolute` VICE fixture. The latter measures 26 cycles for its complete body and catches the installed py65 table's former three-cycle `$CE` declaration through the shared timing loader. The candidate auditor suite above adds IRQ-mask, init-entry/deadline and shortest-timer cost guards. VICE/reference integration guards skip explicitly when local ignored dependencies are absent.
 
-The controlled environment disables display/sprite DMA and unrelated interrupts, adds call counting after acknowledgement, and omits libsidplayfp's reset, relocation and raster-synchronized startup. It preserves the original driver bytes, banking operations, zero-page swaps and interrupt dispatch. The proof establishes this host's ordered execution and cadence; it does not establish libsidplayfp PCM alignment, decoded instruments, musical form, an ending or a listening judgment. Use the [audio workflow](../workflows/audio-workflow.md) for a separately identified render and retain musical findings in the owning study.
+The controlled environment disables display/sprite DMA and unrelated interrupts, adds call counting after acknowledgement, and omits libsidplayfp's reset, relocation and raster-synchronized startup. On the source route it preserves the original driver bytes, banking operations and zero-page swaps; the candidate route executes our independently generated payload under the same IRQ host. The proof establishes this host's ordered execution and cadence; it does not by itself establish libsidplayfp PCM alignment, decoded instruments, musical form, an audible ending or a listening judgment. Use the [audio workflow](../workflows/audio-workflow.md) for a separately identified render and retain musical findings in the owning study.

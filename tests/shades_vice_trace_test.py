@@ -146,9 +146,33 @@ class ShadesViceTraceTest(unittest.TestCase):
         self.assertEqual(0x0200, cpu.pc)
         self.assertEqual([255, 255, 1], memory[trace.COUNTER:trace.FINISHED + 1])
         self.assertEqual((0, 0x7f, 255), (memory[0xdc0e], memory[0xdc0d], cpu.sp))
-        for count in (0, 65536, True):
+        for count in (0, 65537, True):
             with self.subTest(count=count), self.assertRaises(ValueError):
                 trace.harness(profile, count)
+
+    def test_host_completes_65536_calls_only_on_full_counter_wrap(self):
+        profile = trace.psid_profile(fixture())
+        program, labels, _ = trace.harness(profile, 65536)
+        self.assertEqual((0, 0), (labels['count_lo'], labels['count_hi']))
+        for count, expected, finished in ((0x00ff, 0x0100, 0), (0xffff, 0, 1)):
+            with self.subTest(count=count):
+                memory = [0] * 65536
+                memory[profile['loadAddress']:profile['endAddress']] = profile['payload']
+                memory[trace.HOST_BASE:trace.HOST_BASE + len(program) - 2] = program[2:]
+                memory[1] = 0x37
+                memory[trace.COUNTER:trace.COUNTER + 2] = [count & 255, count >> 8]
+                cpu = cpu_type()(memory=memory, pc=labels['irq'])
+                cpu.stPushWord(0x0200)
+                for value in (cpu.p, 0, 0, 0):
+                    cpu.stPush(value)
+                for _ in range(100):
+                    if cpu.pc == 0x0200:
+                        break
+                    cpu.step()
+                self.assertEqual(0x0200, cpu.pc)
+                self.assertEqual(expected, memory[trace.COUNTER] | memory[trace.COUNTER + 1] << 8)
+                self.assertEqual(finished, memory[trace.FINISHED])
+                self.assertEqual(255, cpu.sp)
 
     def test_pinned_sources_match_bounded_store_oracle_across_pattern_reloads(self):
         vice = ROOT / '.tools/vice-headless-3.9/build/src/x64sc'

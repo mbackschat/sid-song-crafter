@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "kind": "shades-independent-and-transfer-audio",
+  "checkedOn": "2026-10-13",
+  "source": {
+    "path": ".local/research/shades/Shades_filter_corrected.sid",
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/H/Huelsbeck_Chris/Shades_filter_corrected.sid",
+    "sha256": "ac7c91d0c4fef41bbc9d9e50840492269151075727efa7182a68dc1a26f1d708",
+    "defaultSubtune": 1
+  },
+  "rendering": {
+    "tool": "scripts/render-sid.cpp",
+    "executable": ".local/bin/render-sid",
+    "testedExecutableSha256": "80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe",
+    "library": "libsidplayfp",
+    "libraryVersion": "3.1.1",
+    "builder": "SIDLite",
+    "clock": "PAL",
+    "sidModel": "MOS6581",
+    "powerOnDelay": 0,
+    "sampleRate": 44100,
+    "channels": 1,
+    "format": "PCM16"
+  },
+  "gain": 1,
+  "normalization": false,
+  "reference": {
+    "path": "build/shades-reference-window/filter-corrected.wav",
+    "seconds": 330,
+    "frames": 14553000,
+    "sha256": "582530398d8c533ca71f3b71db6222ba5af584f5e13a4a6e247476defdf08623"
+  },
+  "candidates": [
+    {
+      "role": "shades-independent-full",
+      "score": "songs/shades-score.json",
+      "scoreSha256": "92e86415d61a579871c25e48248846d9d34a8ff4042596816d5d9e4e973dea11",
+      "programs": "songs/shades-programs.json",
+      "programsSha256": "32ea2755fe5d68f27f9bb20a5c22da910052ad35ea5ca28399b5deca6cfd595c",
+      "sidSha256": "273336fd700c49fe7b354cf481c4e136873b5dbad55e7b2cb035e64a42a96f60",
+      "wavPath": "build/shades-independent-full/reconstructed.wav",
+      "wavSha256": "3c33089854a83119c0a4893a4ab45a2fa81d56e9961b62911682d26b499c6758",
+      "seconds": 310,
+      "frames": 13671000,
+      "audioReceipt": "evidence/shades-independent-full/audio-evidence.json"
+    },
+    {
+      "role": "shades-transfer",
+      "score": "songs/shades-transfer.json",
+      "scoreSha256": "358649eb09183f018b27fad9d675367aa5e72d4507381b5878386fd344b91906",
+      "programs": "songs/shades-transfer-programs.json",
+      "programsSha256": "af316f792ec1c166c870dd1941ebc2de672bad0d9feab1a7da00bbf4d9c1f346",
+      "sidSha256": "3ebe4d4dac0eb35b6fa9cc697ad34cac5243b5c62fd95fbaf9bcb8ce401fdee8",
+      "wavPath": "build/shades-transfer/reconstructed.wav",
+      "wavSha256": "e8cb6b059adbe701c949ebe263f6b3d6e4c3613317826de1cac9c2f37af9ff54",
+      "seconds": 22,
+      "frames": 970200,
+      "audioReceipt": "evidence/shades-transfer/audio-evidence.json"
+    }
+  ],
+  "comparison": {
+    "path": "build/shades-independent-full/listening/reference-then-ours.ab.wav",
+    "order": [
+      "Corrected reference",
+      "Independent reconstruction"
+    ],
+    "windowSeconds": [
+      24,
+      36
+    ],
+    "windowFrames": [
+      1058400,
+      1587600
+    ],
+    "gapSeconds": 0.5,
+    "gapFrames": 22050,
+    "gain": 1,
+    "normalization": false,
+    "listeningReview": null,
+    "sha256": "a05925d1046f8a741a59b5f64d0d27af2fcbb48c9d6c98f6fb8cf9dc8576e35f",
+    "frames": 1080450,
+    "seconds": 24.5,
+    "receipt": "evidence/shades-independent-full/listening/reference-then-ours.comparison.json"
+  },
+  "reproduction": {
+    "workingDirectory": "repository root",
+    "freshOutputRequired": true,
+    "setup": "docs/setup/local-setup.md",
+    "commands": [
+      [
+        "python3",
+        "scripts/setup-project.py",
+        "--only",
+        "references",
+        "--include",
+        "shades-filter-corrected"
+      ],
+      [
+        "mkdir",
+        "-p",
+        "build/shades-reference-reproduce"
+      ],
+      [
+        ".local/bin/render-sid",
+        ".local/research/shades/Shades_filter_corrected.sid",
+        "build/shades-reference-reproduce/filter-corrected.wav",
+        "330"
+      ],
+      [
+        "python3",
+        "scripts/compose-shades.py",
+        "songs/shades-score.json",
+        "--programs",
+        "songs/shades-programs.json",
+        "--output",
+        "build/shades-independent-reproduce"
+      ],
+      [
+        ".local/bin/render-sid",
+        "build/shades-independent-reproduce/reconstructed.sid",
+        "build/shades-independent-reproduce/reconstructed.wav",
+        "310"
+      ],
+      [
+        "python3",
+        "scripts/compose-shades.py",
+        "songs/shades-transfer.json",
+        "--programs",
+        "songs/shades-transfer-programs.json",
+        "--output",
+        "build/shades-transfer-reproduce"
+      ],
+      [
+        ".local/bin/render-sid",
+        "build/shades-transfer-reproduce/reconstructed.sid",
+        "build/shades-transfer-reproduce/reconstructed.wav",
+        "22"
+      ],
+      [
+        "python3",
+        "scripts/compare-audio.py",
+        "window",
+        "build/shades-reference-reproduce/filter-corrected.wav",
+        "build/shades-independent-reproduce/reconstructed.wav",
+        "build/shades-independent-reproduce/listening/reference-then-ours",
+        "--start-seconds",
+        "24",
+        "--end-seconds",
+        "36"
+      ]
+    ]
+  },
+  "publication": "Reference SID binaries, reference WAVs and A/B audio containing reference material remain local in ignored .local/ or build/, never in Git or LFS. This recipe retains hashes and commands.",
+  "limits": "Pinned renderer/settings support exact reproduction; another renderer build may differ. CPU/store and VICE verification are separate evidence. Musical review remains pending."
+}

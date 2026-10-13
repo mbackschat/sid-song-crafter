@@ -15,7 +15,7 @@ These are recognizable signature candidates, not an asserted “number one” ra
 | Order / ID | Study and proposed reference | Learning target | State |
 | --- | --- | --- | --- |
 | 1 / F | [Flashdance: What a Feeling — DRAX](composition/flashdance-preparation.md), #1 | Staged waveform/PWM programs, evolving filtered bass, precise articulation; full arrangement and deliberate dual-SID expansion | Done: reconstruction, raw stereo dual arrangement and original transfer reviewed |
-| 2 / M1 | [Shades — Chris Hülsbeck](composition/shades-preparation.md), #1 | Soundmonitor's instrument model; expressive modulation and original/corrected filter intent | Active: editable score/program model verified; independent compiled player next |
+| 2 / M1 | [Shades — Chris Hülsbeck](composition/shades-preparation.md), #1 | Soundmonitor's instrument model; expressive modulation and original/corrected filter intent | Awaiting listening: complete independent reconstruction and original transfer verified/rendered |
 | 3 / M2 | [Cybernoid II — Jeroen Tel](composers/huelsbeck-tel.md), title #1 | Groove, bass/drum time-sharing, delayed modulation; music/driver collaboration with Charles Deenen | Queued |
 | 4 / M3 | [Monty on the Run — Rob Hubbard](composers/hubbard-galway.md), #1 | Articulated lead, percussion substitutions, pitch effects and phrase development | Queued |
 | 5 / M4 | [Rambo: First Blood Part II — Martin Galway](composers/hubbard-galway.md), loader #1 | Sustained timbre evolution, introductory effects and original source-code hooks | Queued |
@@ -41,7 +41,17 @@ The [Flashdance owning study](composition/flashdance-preparation.md) records the
 
 ## Shades: next executable milestone
 
-The [owning study](composition/shades-preparation.md) retains the complete first-traversal contract, decoded row/gate semantics and opening pulse experiment. The [reference intake](composers/huelsbeck-tel.md#shades-reference-intake) owns variant provenance. Stage 1 is done: the selected calls 0–24,384, source fade and actual restart are mapped, and real CIA dispatch is verified across the complete span. Stage 2 is done: the executed modulation and row/gate mechanisms are encoded in editable programs; the listener finds the moving-pulse opening quieter and more vibrant than the frozen-pulse intervention. Stage 3 is active: the source-free score/program scheduler matches all 296,907 source SID/timer stores, and the program proof retains 122,048 verified state transitions. The next deliverable is an independent compiled player that computes these mechanisms from the descriptions, with CIA-aware execution and full-form rendering. No independent SID export or full reconstruction listening verdict is claimed. Stages 4 and 5 remain queued; defer sound-feedback questions while the user is away.
+The [owning study](composition/shades-preparation.md) retains the complete first traversal, decoded mechanisms and opening pulse experiment. The [reference intake](composers/huelsbeck-tel.md#shades-reference-intake) owns variant provenance.
+
+| Stage | State | Evidence / next action |
+| --- | --- | --- |
+| 1: Identify and map | Done | Calls 0–24,384, source fade and actual restart mapped; full real CIA dispatch verified |
+| 2: Explain mechanisms | Done | Editable programs, 122,048 source-state transitions and causal PWM intervention; listener finds moving pulse quieter and more vibrant |
+| 3: Reproduce independently | Done | Our compiled score/program player matches all 296,907 source stores, adds four finite-stop stores and passes full CIA-timed VICE execution |
+| 4: Verify and listen | Awaiting listening | Full 310-second render and reference-first trio comparison prepared; assess sound/phrasing and complete ending when the listener returns |
+| 5: Transfer and retain | Awaiting listening | Original eight-bar phrase, 22-second render, full CPU/VICE proof and [editable instrument card](composition/instruments/shades-decoded-programs.md); assess musical use and ending when the listener returns |
+
+The [independent export section](composition/shades-preparation.md#independent-export-and-original-transfer) links receipts, local audio and exact reproduction recipes. Questions wait while the user is away. Preserve the pending musical verdict; a verified render does not close this case.
 
 ## Completion contract for every study
 

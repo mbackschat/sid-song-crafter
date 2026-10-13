@@ -26,6 +26,7 @@ BASELINE_LATCH = 0x4025
 ROM_IRQ = 0xff48
 CADENCE_TOLERANCE = 4
 MAX_CALLS = 65535
+MAX_TRACE_CALLS = 65536
 spec = importlib.util.spec_from_file_location('fixed_pal_vice_trace', ROOT / 'scripts/trace-sid-vice.py')
 fixed_trace = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(fixed_trace)
@@ -58,6 +59,8 @@ def source_profile(data):
 
 
 class LatchDiagnosticMemory(AuditMemory):
+    allowed_timer_writes = (0xdc04, 0xdc05)
+
     def __init__(self):
         super().__init__()
         self.pc = 0
@@ -68,6 +71,7 @@ class LatchDiagnosticMemory(AuditMemory):
         require(not (HOST_BASE <= address < 0x0c00 or 0x0314 <= address <= 0x0319),
                 'Source writes CIA host RAM or interrupt vectors')
         if address in (0xdc04, 0xdc05):
+            require(address in self.allowed_timer_writes, f'Unsupported timer latch write at ${address:04x}')
             require(self.phase == 'play' and self.instruction == 'STA',
                     'Diagnostic permits only play-phase non-RMW timer latch stores')
             self.timer_writes.append(dict(phase=self.phase, tick=self.tick, writerPc=self.pc,
@@ -85,20 +89,26 @@ class LatchDiagnosticMemory(AuditMemory):
 
 def bounded_oracle(data, calls, *, observer=None):
     """Execute callable source for ordered-value evidence, without CIA scheduling."""
-    profile = psid_profile(data)
     require(type(calls) is int and 1 <= calls <= MAX_CALLS, 'Intake supports 1..65535 play calls')
-    memory = LatchDiagnosticMemory()
+    return _execute_oracle(data, calls, memory=LatchDiagnosticMemory(), observer=observer)
+
+
+def _execute_oracle(data, calls, *, memory, observer=None, init_budget=100000, play_budget=100000,
+                    require_irq_mask=False):
+    profile = psid_profile(data)
     memory.data[profile['loadAddress']:profile['endAddress']] = profile['payload']
     cpu = cpu_type()(memory=memory)
     cpu.a = cpu.x = cpu.y = 0
+    # harness timer_start dispatches init after SEI/CLD and LDA/LDX/LDY #0: I/Z set, N/D/C clear.
+    cpu.p = cpu.UNUSED | cpu.INTERRUPT | cpu.ZERO
     pcs = set()
 
-    def call(address):
+    def call(address, budget, label):
         cpu.stPushWord(0x01ff)
         cpu.pc = address
         start = cpu.processorCycles
         while cpu.pc != 0x0200:
-            require(cpu.processorCycles - start < 100000, 'Source call exceeds diagnostic instruction budget')
+            require(cpu.processorCycles - start < budget, f'{label} exceeds the {budget}-cycle callable budget')
             memory.pc = cpu.pc
             memory.instruction = cpu.disassemble[memory[cpu.pc]][0]
             require(memory.instruction not in ('???', 'BRK', 'RTI'), 'Unsupported callable source instruction')
@@ -107,10 +117,13 @@ def bounded_oracle(data, calls, *, observer=None):
             if observer is not None:
                 observer(cpu, memory)
             cpu.step()
+            if require_irq_mask and memory.phase == 'play':
+                require(cpu.p & cpu.INTERRUPT, 'Candidate play must keep IRQ interrupts masked')
         require(cpu.sp == 255, 'Source did not restore callable stack')
+        require(cpu.processorCycles - start <= budget, f'{label} exceeds the {budget}-cycle callable budget')
         return cpu.processorCycles - start
 
-    init_cycles = call(profile['initAddress'])
+    init_cycles = call(profile['initAddress'], init_budget, 'init')
     idle_x, idle_y = cpu.x, cpu.y
     idle_p = (cpu.p | cpu.ZERO | cpu.INTERRUPT) & ~cpu.NEGATIVE
     memory.phase = 'play'
@@ -121,13 +134,13 @@ def bounded_oracle(data, calls, *, observer=None):
         # psiddrv.a65 irqjob selects bank $37 and RTI restores the idle flags/XY between calls.
         memory.data[1] = 0x37
         cpu.p = idle_p
-        cycles.append(call(profile['playAddress']))
+        cycles.append(call(profile['playAddress'], play_budget, 'play'))
     writes = sorted(memory.writes + memory.timer_writes,
                     key=lambda row: (-1 if row['phase'] == 'init' else row['tick'], row['instructionStartCycle']))
     report = dict(playCalls=calls, initCycles=init_cycles, maximumPlayCycles=max(cycles),
                   playCycles=cycles, portWrites=memory.port_writes,
                   cpuCycleBasis='verify_player.cpu_type',
-                  executedPcs=sorted(pcs), additionalIoWrites=[0xdc04, 0xdc05], ioReads=[],
+                  executedPcs=sorted(pcs), additionalIoWrites=list(memory.allowed_timer_writes), ioReads=[],
                   limitations='Callable RAM execution checks ordered source values and PCs only; no CIA scheduling, IRQ latency or bus cycles.')
     return report, writes
 
@@ -144,10 +157,10 @@ def shades_oracle(data, calls, *, observer=None):
 
 
 def harness(profile, calls):
-    require(type(calls) is int and 1 <= calls <= MAX_CALLS, 'Intake supports 1..65535 play calls')
+    require(type(calls) is int and 1 <= calls <= MAX_TRACE_CALLS, 'CIA host supports 1..65536 play calls')
     constants = dict(init_address=profile['initAddress'], play_address=profile['playAddress'],
                      counter=COUNTER, counter_hi=COUNTER + 1, finished=FINISHED,
-                     count_lo=calls & 255, count_hi=calls >> 8)
+                     count_lo=calls & 255, count_hi=(calls >> 8) & 255)
     # libsidplayfp 3.1.1 psiddrv.a65 cold/irqjob defines the latch, bank wrapper and acknowledgement order.
     source = '''
 start:
@@ -393,11 +406,12 @@ def verify_trace(parsed, oracle, calls, oracle_report=None):
                              toleranceCycles=CADENCE_TOLERANCE))
 
 
-def run_profile(data, output, calls, vice, data_directory):
+def run_profile(data, output, calls, vice, data_directory, *, auditor=None):
     """Run a validated lower-level CIA fixture; public source intake uses run_trace."""
     profile = psid_profile(data)
     require(not output.exists() and not output.is_symlink(), 'Choose a fresh trace output directory')
-    oracle_report, oracle = (shades_oracle if hashlib.sha256(data).hexdigest() in SOURCE_PINS.values() else bounded_oracle)(data, calls)
+    audit = auditor or (shades_oracle if hashlib.sha256(data).hexdigest() in SOURCE_PINS.values() else bounded_oracle)
+    oracle_report, oracle = audit(data, calls)
     program, labels, listing = harness(profile, calls)
     output.mkdir(parents=True)
     payload_path, program_path = output / 'payload.prg', output / 'harness.prg'
@@ -442,15 +456,24 @@ def run_trace(sid, output, calls, vice, data_directory):
     return run_profile(data, output, calls, vice, data_directory)
 
 
+def run_candidate_trace(sid, output, calls, vice, data_directory):
+    """Verify a generated CIA candidate without changing the pinned source route."""
+    from shades_audit import audit_candidate
+    require(type(calls) is int and 1 <= calls <= MAX_TRACE_CALLS, 'Candidate VICE trace supports 1..65536 play calls')
+    return run_profile(sid.read_bytes(), output, calls, vice, data_directory, auditor=audit_candidate)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('sid', type=Path)
     parser.add_argument('--calls', type=int, default=400)
+    parser.add_argument('--candidate', action='store_true', help='audit and trace a generated CIA candidate instead of a pinned reference')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--vice', type=Path, default=ROOT / '.tools/vice-headless-3.9/build/src/x64sc')
     parser.add_argument('--data', type=Path, default=Path('/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice'))
     args = parser.parse_args()
-    result = run_trace(args.sid.resolve(), args.output.resolve(), args.calls, args.vice.resolve(), args.data.resolve())
+    runner = run_candidate_trace if args.candidate else run_trace
+    result = runner(args.sid.resolve(), args.output.resolve(), args.calls, args.vice.resolve(), args.data.resolve())
     print(json.dumps(dict(study=str(args.output.resolve() / 'study.json'), sourceSha256=result['sourceSha256'],
                           playCalls=result['verification']['playCalls'], matchedSourceWrites=result['verification']['matchedSourceWrites'],
                           maximumIntervalError=result['verification']['cadence']['maximumIntervalError'],

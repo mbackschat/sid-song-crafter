@@ -62,7 +62,7 @@ The compiler emits SID, assembly/listing, build metadata, CPU audit and ordered 
 
 ### Add an independently authored second chip
 
-The [secondary description](../../songs/flashdance-secondary.json) supplies harmonic support, backbeats and replies while the primary retains its accepted score and programs. The dual compiler assembles each engine at a separate RAM address, then calls A followed by B once per PAL frame. Profiles, score stops and ending parameters must agree. The output is PSID v3 for two MOS6581 chips at `$D400/$D420`; source annotations cannot supply executable playback.
+The [secondary description](../../songs/flashdance-secondary.json) supplies harmonic support and backbeats while the primary retains its accepted score and programs. The dual compiler assembles each engine at a separate RAM address, then calls A followed by B once per PAL frame. Profiles, score stops and ending parameters must agree. The output is PSID v3 for two MOS6581 chips at `$D400/$D420`; source annotations cannot supply executable playback.
 
 ```sh
 PYTHONPATH=.tools/test-deps python3 scripts/compose-flashdance-dual.py songs/flashdance-decoded.json songs/flashdance-secondary.json --output build/flashdance-dual-new
@@ -73,8 +73,29 @@ python3 scripts/prepare-dual-listening.py build/flashdance-dual-new/raw-stereo.w
 
 The raw renderer output places chip A left and chip B right; this is the accepted stereo presentation for the current Flashdance arrangement. The listening tool makes a centered-primary stereo mix, mono downmix and three/six-voice comparison using explicit common gains, recording matrices and PCM measurements. It expects independent chip channels, not an arbitrary stereo master, and does not normalize each side separately. The [owning study](../research/composition/flashdance-preparation.md#deliberate-dual-sid-interpretation) records musical choices, execution limits and the separate listening verdict.
 
+### Shades compiled CIA player
+
+The [Shades score](../../songs/shades-score.json) and [program bank](../../songs/shades-programs.json) are separate editable inputs to [compose-shades.py](../../scripts/compose-shades.py). The compiler emits our [scheduler and writers](../../songs/players/shades.asm), [computed effects](../../songs/players/shades-effects.asm), compact pattern tokens, order records and named initial state. Neither the reference SID nor a captured store ledger is a build input. The unchanged full description uses 56 patterns, 3,520 tokens, 128 orders and 14 program blocks in an 8,282-byte payload. See the [owning study](../research/composition/shades-preparation.md#reconstruction-boundary) and [instrument card](../research/composition/instruments/shades-decoded-programs.md) for recovered mechanisms and musical limits.
+
+Build the full traversal and the [independently authored transfer phrase](../../songs/shades-transfer.json) with its [edited program bank](../../songs/shades-transfer-programs.json), then establish real IRQ cadence in fresh directories:
+
+```sh
+python3 scripts/compose-shades.py songs/shades-score.json --programs songs/shades-programs.json --output build/shades-independent-new
+PYTHONPATH=.tools/test-deps python3 scripts/trace-shades-vice.py build/shades-independent-new/reconstructed.sid --candidate --calls 24386 --output build/shades-independent-new/vice
+python3 scripts/compose-shades.py songs/shades-transfer.json --programs songs/shades-transfer-programs.json --output build/shades-transfer-new
+PYTHONPATH=.tools/test-deps python3 scripts/trace-shades-vice.py build/shades-transfer-new/reconstructed.sid --candidate --calls 1522 --output build/shades-transfer-new/vice
+```
+
+The compiler writes `reconstructed.sid`, assembly/listing, `build.json`, `audit.json` and ordered `writes.json`. Its default audit covers all score calls plus the one authored stop call and compares every SID and `$DC05` store against [the Python model](../../scripts/shades_player.py). `--calls` selects a bounded prefix through that stop. The shown VICE call counts belong to the unchanged retained inputs; timing edits require corresponding coverage. Rendering and listening use the [audio workflow](audio-workflow.md) and remain separate evidence.
+
+- The PSID v2 header declares one PAL MOS6581 and CIA speed word `$00000001`. The host owns Timer A's low latch `$25`; each order supplies its high byte. Use the [CIA candidate auditor and tracer](../validation/cia-tracing.md#generated-candidate-api) rather than the VBI auditor or fixed-frame tracer.
+- Init restores the complete named state and scheduler without SID or CIA stores. Call 0 selects the first block and writes only `$DC05`; the first score row is call 1. Effects continue through hold and release, before row fade, block selection and ordered voice/filter writers. At `range.stopCall`, the player writes zero to the three controls and master volume once; subsequent calls emit no stores. Reinitialization restores the same behavior.
+- Orders support 1–256 rows and 1–256 calls per row, signed byte transposes and resolved frequency-table indices 0–95. The compiler checks the entire score and program inputs, uses absolute pattern pointers, permits at most 85 selected program blocks and rejects payloads outside callable RAM or overlapping the CIA host workspace. Provenance annotations do not affect bytes.
+
+On 2026-10-13, the [full candidate VICE receipt](../../evidence/shades-independent-full/vice/study.json.gz) verifies 24,386 calls and 296,911 ordered stores, with maximum interval/phase errors of 4/2 cycles. The [transfer receipt](../../evidence/shades-transfer/vice/study.json.gz) verifies 1,522 calls and 10,734 stores, with errors of 4/3 cycles. These checks establish compiled execution and cadence in the declared host; they do not establish bus timing, PCM identity or a listening verdict.
+
 ### Other drivers
 
 [describe-drax-score.py](../../scripts/describe-drax-score.py) is a pinned, driver-specific transcriber, not a universal SID importer. It observes executed note consumption, instrument initialization and score gate-off, then verifies preparation and repeat behavior. Use `--check` to compare its output with the retained fixture. For another player, recover its corresponding readers and state transitions before adapting the decoder. [The Flashdance study](../research/composition/flashdance-preparation.md) demonstrates its own decoded mechanisms and independently authored dual-SID arrangement.
 
-The [Shades model and reproduction commands](../research/composition/shades-preparation.md#reconstruction-boundary) provide a separate editable score/program contract and computed scheduler for its CIA-driven source. Its model compares complete ordered values against the source, including release modulation, unusual pitch-slide comparisons and the source fade. The [CIA tracer](../validation/cia-tracing.md) establishes the original's timer contract independently. A computed store ledger is diagnostic output; it is not a compiled reconstruction or an audio verdict.
+The [Shades study](../research/composition/shades-preparation.md#reconstruction-boundary) distinguishes source comparison, compiled execution, CIA cadence, rendered audio and listening. A computed store ledger alone remains diagnostic output; the compiled backend above supplies separate CPU and VICE evidence.

@@ -1,4 +1,4 @@
-"""Measure PCM16 renders and prepare traceable, safely level-matched A/B audio."""
+"""Measure PCM16 renders and prepare traceable unity-gain or level-matched A/B audio."""
 
 from array import array
 from dataclasses import dataclass
@@ -188,6 +188,75 @@ def prepare_comparison(a_path, b_path, prefix, *, target_ac_rms_dbfs=None, peak_
         report["comparison"]["sha256"] = hashlib.sha256(comparison_path.read_bytes()).hexdigest()
         for path, value in zip(matched_paths, matched):
             _write_wav(path, value, [value.samples], created)
+        with manifest_path.open("x") as output:
+            created.append(manifest_path)
+            output.write(json.dumps(report, indent=2, allow_nan=False) + "\n")
+    except Exception:
+        for path in created:
+            path.unlink(missing_ok=True)
+        raise
+    return report
+
+
+def prepare_window_comparison(a_path, b_path, prefix, *, start_seconds, end_seconds, gap_seconds=0.5):
+    """Copy one common PCM window at unity gain, rounding endpoints to frames.
+
+    Full input lengths may differ; both must contain the complete selected frame
+    range. Start is inclusive; end is exclusive. Rail samples, DC and silence remain intact.
+    """
+    _require(math.isfinite(start_seconds) and math.isfinite(end_seconds) and 0 <= start_seconds < end_seconds,
+             "Window bounds must be finite, nonnegative and increasing")
+    _require(math.isfinite(gap_seconds) and 0 <= gap_seconds <= 60,
+             "Gap must be finite and between zero and 60 seconds")
+    sources = [Path(path).resolve() for path in (a_path, b_path)]
+    prefix = Path(prefix).resolve()
+    comparison_path = Path(str(prefix) + ".ab.wav")
+    manifest_path = Path(str(prefix) + ".comparison.json")
+    for path in (comparison_path, manifest_path):
+        _require(path.resolve() not in sources, f"Output would overwrite a source WAV: {path}")
+        _require(not path.exists() and not path.is_symlink(), f"Output already exists: {path}")
+    audio = [read_pcm16(path) for path in sources]
+    rate, channels = audio[0].sample_rate, audio[0].channels
+    _require((rate, channels) == (audio[1].sample_rate, audio[1].channels),
+             "A and B must have the same sample rate and channels")
+    scaled_bounds = [seconds * rate for seconds in (start_seconds, end_seconds)]
+    _require(all(math.isfinite(value) for value in scaled_bounds), "Window exceeds the source frame range")
+    first, last = map(round, scaled_bounds)
+    _require(first < last, "Selected window is empty after rounding to frames")
+    _require(all(last <= value.frames for value in audio), "Both sources must contain the complete selected window")
+    frames = last - first
+    windows = [Pcm16(rate, channels, frames, value.samples[first * channels:last * channels], "") for value in audio]
+    gap_frames = round(gap_seconds * rate)
+    silence = array("h", [0]) * (gap_frames * channels)
+    report = {
+        "schemaVersion": 1,
+        "method": "same frame window from each input; original PCM preserved at unity gain",
+        "matching": "none",
+        "normalization": False,
+        "requestedWindowSeconds": [start_seconds, end_seconds],
+        "window": {"startFrame": first, "endFrame": last, "frames": frames,
+                   "startSeconds": first / rate, "endSeconds": last / rate, "durationSeconds": frames / rate},
+        "sampleRate": rate,
+        "channels": channels,
+        "gapFrames": gap_frames,
+        "gapSeconds": gap_frames / rate,
+        "comparison": {"path": str(comparison_path), "frames": 2 * frames + gap_frames,
+                       "durationSeconds": (2 * frames + gap_frames) / rate},
+        "segments": [
+            {"label": "A", "startFrame": 0, "endFrame": frames},
+            {"label": "silence", "startFrame": frames, "endFrame": frames + gap_frames},
+            {"label": "B", "startFrame": frames + gap_frames, "endFrame": 2 * frames + gap_frames},
+        ],
+        "inputs": [{"label": label, "path": str(path), "sha256": original.sha256,
+                    "originalFrames": original.frames, "window": measure_pcm(window), "gain": 1, "gainDb": 0}
+                   for label, path, original, window in zip(("A", "B"), sources, audio, windows)],
+        "listeningReview": None,
+    }
+    prefix.parent.mkdir(parents=True, exist_ok=True)
+    created = []
+    try:
+        _write_wav(comparison_path, audio[0], [windows[0].samples, silence, windows[1].samples], created)
+        report["comparison"]["sha256"] = hashlib.sha256(comparison_path.read_bytes()).hexdigest()
         with manifest_path.open("x") as output:
             created.append(manifest_path)
             output.write(json.dumps(report, indent=2, allow_nan=False) + "\n")

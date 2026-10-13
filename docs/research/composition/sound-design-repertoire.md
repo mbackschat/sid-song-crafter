@@ -22,6 +22,7 @@ Use the [musical gesture library](gestures/README.md) for groove, chord response
 | --- | --- |
 | [DRAX decoded trio](instruments/drax-decoded-trio.md) | Releasing bass, pulse lead and chord cycle from the preferred Für Elise texture; the card owns its bounded listening findings. |
 | [Flashdance decoded programs](instruments/flashdance-decoded-programs.md) | Staged lead, broad moving bass and four-tone pulse chords; the original C–F–D minor–G–C transfer has execution/audio evidence and was judged to work; its melody intentionally differs from Flashdance. |
+| [Shades pulse and pitch programs](instruments/shades-decoded-programs.md) | Moving pulse, delayed vibrato and target portamento with shared-filter ownership; independent reconstruction and original transfer verified/rendered, awaiting listening. |
 
 ## Reference material worth learning from
 

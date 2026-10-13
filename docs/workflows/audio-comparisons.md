@@ -1,13 +1,25 @@
-# Preparing level-matched audio comparisons
+# Preparing audio comparisons
 
-Use [compare-audio.py](../../scripts/compare-audio.py) to inspect original PCM16 WAV renders and prepare an A/B audition with documented gain. It uses only the Python standard library and needs no player/event manifest, so native SID-Wizard instrument phrases and the repository player can share this measurement step. Retain the original-amplitude renders and their native workfiles as evidence. See [the sound-design repertoire](../research/composition/sound-design-repertoire.md) for musical acceptance questions and [the audio workflow](audio-workflow.md) for rendering.
+Use [compare-audio.py](../../scripts/compare-audio.py) to inspect original PCM16 WAV renders and prepare an A/B audition with documented gain, or preserve a selected window at unity gain. It uses only the Python standard library and needs no player/event manifest, so native SID-Wizard instrument phrases and the repository player can share this measurement step. Retain the original-amplitude renders and their native workfiles as evidence. See [the sound-design repertoire](../research/composition/sound-design-repertoire.md) for musical acceptance questions and [the audio workflow](audio-workflow.md) for rendering.
 
 ```sh
 python3 scripts/compare-audio.py inspect build/baseline-phrase.wav
 python3 scripts/compare-audio.py prepare build/baseline-phrase.wav build/native-instrument-phrase.wav build/lead-01-ab --individual-copies
 ```
 
-The filenames above are example inputs, not a claim that these renders already exist. Render the same complete phrase, including the same rests and tail duration, at the same rate and channel count. The tool requires identical frame counts; it does not establish that notes, tempo, update cadence, SID model, alignment, or renderer settings agree. Record those source assumptions in the trial or [instrument card](../research/composition/instrument-card-template.md).
+The filenames above are example inputs, not a claim that these renders already exist. Render the same complete phrase, including the same rests and tail duration, at the same rate and channel count. The `prepare` mode requires identical frame counts; it does not establish that notes, tempo, update cadence, SID model, alignment, or renderer settings agree. Record those source assumptions in the trial or [instrument card](../research/composition/instrument-card-template.md).
+
+## Compare an initialized window at original levels
+
+Use `window` when the reference and reconstruction have different total lengths but contain the same desired passage:
+
+```sh
+python3 scripts/compare-audio.py window build/reference.wav build/reconstructed.wav build/phrase-ab --start-seconds 24 --end-seconds 36
+```
+
+Both inputs must have the same sample rate and channel count and contain the entire selected interval. Bounds are rounded to PCM frames, with the end exclusive. This mode copies the selected PCM exactly, with no gain, normalization, fades or resampling; it measures rail samples and silence without rejecting or altering them. The output contains A, a half-second gap by default, then B. `--gap-seconds` changes the gap. Matching time coordinates alone does not establish musical alignment; choose the passage from initialized renders and document the clock, chip, subtune and renderer.
+
+The output prefix produces `.ab.wav` and `.comparison.json`. The receipt pins complete input hashes, requested seconds, actual frame bounds, window measurements, unity gain, exact A/gap/B segment boundaries and output hash. `listeningReview` remains null. Exclusive output creation and rollback follow the preservation contract below. [The Shades reconstruction recipe](../research/composition/shades-independent-audio.json) demonstrates this mode with a corrected reference and independent player. Comparisons containing reference audio stay outside Git and LFS.
 
 ## Measurement and matching contract
 
@@ -48,4 +60,4 @@ The JSON `listeningReview` is `null`: the tool has not listened or made a musica
 python3 -m unittest discover -s tests -p 'audio_comparison_test.py' -v
 ```
 
-The tests use independent PCM fixtures to check exact A/B order and gaps, DC/AC separation, stereo balance, gain, both peak polarities, clipping and silence rejection, format/duration mismatches, quantization limits, source preservation and existing/concurrent output protection. They do not substitute for a listening review.
+The tests include exact unity-window copying, different full input lengths, frame bounds and rollback, and use independent PCM fixtures to check exact A/B order and gaps, DC/AC separation, stereo balance, gain, both peak polarities, clipping and silence rejection, format/duration mismatches, quantization limits, source preservation and existing/concurrent output protection. They do not substitute for a listening review.

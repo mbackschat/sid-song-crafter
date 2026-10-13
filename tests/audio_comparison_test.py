@@ -13,7 +13,7 @@ import wave
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from audio_comparison import inspect_wav, prepare_comparison
+from audio_comparison import inspect_wav, prepare_comparison, prepare_window_comparison
 
 
 def write_wav(path, samples, rate=8000, channels=1, width=2):
@@ -230,6 +230,108 @@ class AudioComparisonTest(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertTrue((self.root / "trial.ab.wav").exists())
         self.assertTrue((self.root / "trial.comparison.json").exists())
+
+    def test_window_copies_exact_stereo_pcm_and_gap_with_differing_full_lengths(self):
+        write_wav(self.a, [100, -100, 200, -200, -32768, 32767, 0, 0, 1000, -1000, 2, 3], rate=8, channels=2)
+        write_wav(self.b, [10, -10, 11, -11, -20, 20, -30, 30, -40, 40, 50, -50, 60, -60], rate=8, channels=2)
+        originals = [path.read_bytes() for path in (self.a, self.b)]
+        report = prepare_window_comparison(self.a, self.b, self.prefix, start_seconds=0.25, end_seconds=0.625, gap_seconds=0.25)
+        output = self.root / "trial.ab.wav"
+        self.assertEqual(((2, 8, 8), [-32768, 32767, 0, 0, 1000, -1000, 0, 0, 0, 0, -20, 20, -30, 30, -40, 40]), read_samples(output))
+        self.assertEqual((2, 5, 3), tuple(report["window"][key] for key in ("startFrame", "endFrame", "frames")))
+        self.assertEqual([0.25, 0.625], report["requestedWindowSeconds"])
+        self.assertFalse(report["normalization"])
+        self.assertEqual([1, 1], [source["gain"] for source in report["inputs"]])
+        self.assertEqual([0, 0], [source["gainDb"] for source in report["inputs"]])
+        self.assertEqual([6, 7], [source["originalFrames"] for source in report["inputs"]])
+        self.assertEqual(2, report["inputs"][0]["window"]["clippedSamples"])
+        self.assertEqual([3, 3], [source["window"]["frames"] for source in report["inputs"]])
+        self.assertEqual(report["segments"], [
+            {"label": "A", "startFrame": 0, "endFrame": 3},
+            {"label": "silence", "startFrame": 3, "endFrame": 5},
+            {"label": "B", "startFrame": 5, "endFrame": 8},
+        ])
+        for index, source in enumerate((self.a, self.b)):
+            self.assertEqual(originals[index], source.read_bytes())
+            self.assertEqual(hashlib.sha256(originals[index]).hexdigest(), report["inputs"][index]["sha256"])
+        self.assertEqual(hashlib.sha256(output.read_bytes()).hexdigest(), report["comparison"]["sha256"])
+        self.assertEqual(report, json.loads((self.root / "trial.comparison.json").read_text()))
+        self.assertIsNone(report["listeningReview"])
+
+    def test_window_rounds_frame_bounds_and_accepts_one_silent_frame(self):
+        write_wav(self.a, [9, 0, 8, 7], rate=8)
+        write_wav(self.b, [6, 0, 5], rate=8)
+        report = prepare_window_comparison(self.a, self.b, self.prefix, start_seconds=0.13, end_seconds=0.24, gap_seconds=0)
+        self.assertEqual((1, 2), (report["window"]["startFrame"], report["window"]["endFrame"]))
+        self.assertEqual((0.125, 0.25), (report["window"]["startSeconds"], report["window"]["endSeconds"]))
+        self.assertEqual(((1, 8, 2), [0, 0]), read_samples(self.root / "trial.ab.wav"))
+
+    def test_window_rejects_invalid_empty_and_out_of_range_bounds_before_writing(self):
+        write_wav(self.a, [1, 2, 3, 4], rate=8)
+        write_wav(self.b, [1, 2, 3], rate=8)
+        for start, end in ((-1, 0.25), (0, math.inf), (math.nan, 0.25), (0.25, 0.25), (0.25, 0.125), (0.01, 0.02), (0, 0.5)):
+            with self.subTest(start=start, end=end), self.assertRaises(ValueError):
+                prepare_window_comparison(self.a, self.b, self.prefix, start_seconds=start, end_seconds=end)
+        for gap in (-1, math.nan, math.inf, 61):
+            with self.subTest(gap=gap), self.assertRaises(ValueError):
+                prepare_window_comparison(self.a, self.b, self.prefix, start_seconds=0, end_seconds=0.25, gap_seconds=gap)
+        self.assertFalse((self.root / "trial.ab.wav").exists())
+        self.assertFalse((self.root / "trial.comparison.json").exists())
+
+    def test_window_rejects_rate_channels_and_empty_source(self):
+        write_wav(self.a, [1, 2, 3, 4], rate=8)
+        for samples, rate, channels in (([1, 2, 3, 4], 16, 1), ([1, 2, 3, 4], 8, 2)):
+            write_wav(self.b, samples, rate=rate, channels=channels)
+            with self.assertRaisesRegex(ValueError, "sample rate and channels"):
+                prepare_window_comparison(self.a, self.b, self.prefix, start_seconds=0, end_seconds=0.25)
+        write_wav(self.b, [], rate=8)
+        with self.assertRaisesRegex(ValueError, "empty"):
+            prepare_window_comparison(self.a, self.b, self.prefix, start_seconds=0, end_seconds=0.25)
+
+    def test_window_refuses_existing_outputs_and_source_collisions(self):
+        write_wav(self.a, [1, 2], rate=8)
+        write_wav(self.b, [3, 4], rate=8)
+        manifest = self.root / "trial.comparison.json"
+        manifest.write_text("keep")
+        with self.assertRaisesRegex(ValueError, "exists"):
+            prepare_window_comparison(self.a, self.b, self.prefix, start_seconds=0, end_seconds=0.25)
+        self.assertEqual("keep", manifest.read_text())
+        self.assertFalse((self.root / "trial.ab.wav").exists())
+        collision = self.root / "collision.ab.wav"
+        write_wav(collision, [5, 6], rate=8)
+        before = collision.read_bytes()
+        with self.assertRaisesRegex(ValueError, "source"):
+            prepare_window_comparison(collision, self.b, self.root / "collision", start_seconds=0, end_seconds=0.25)
+        self.assertEqual(before, collision.read_bytes())
+
+    def test_window_rolls_back_owned_files_but_preserves_concurrent_receipt(self):
+        write_wav(self.a, [1, 2], rate=8)
+        write_wav(self.b, [3, 4], rate=8)
+        original_open = Path.open
+        manifest = self.root / "trial.comparison.json"
+
+        def concurrent_open(path, mode="r", *args, **kwargs):
+            if path == manifest and mode == "x":
+                with original_open(path, "w") as concurrent:
+                    concurrent.write("keep concurrent receipt")
+            return original_open(path, mode, *args, **kwargs)
+
+        with patch.object(Path, "open", concurrent_open), self.assertRaises(FileExistsError):
+            prepare_window_comparison(self.a, self.b, self.prefix, start_seconds=0, end_seconds=0.25)
+        self.assertEqual("keep concurrent receipt", manifest.read_text())
+        self.assertFalse((self.root / "trial.ab.wav").exists())
+        manifest.unlink()
+        with patch("audio_comparison.json.dumps", side_effect=OSError("receipt failure")), self.assertRaises(OSError):
+            prepare_window_comparison(self.a, self.b, self.prefix, start_seconds=0, end_seconds=0.25)
+        self.assertFalse(manifest.exists())
+        self.assertFalse((self.root / "trial.ab.wav").exists())
+
+    def test_cli_window_preserves_unmatched_pcm(self):
+        write_wav(self.a, [9, 1, 2, 8], rate=8)
+        write_wav(self.b, [7, 10, 20, 6, 5], rate=8)
+        result = subprocess.run([sys.executable, str(ROOT / "scripts/compare-audio.py"), "window", str(self.a), str(self.b), str(self.prefix), "--start-seconds", "0.125", "--end-seconds", "0.375", "--gap-seconds", "0"], capture_output=True, text=True, timeout=10)
+        self.assertEqual(0, result.returncode, result.stderr)
+        self.assertEqual(((1, 8, 4), [1, 2, 10, 20]), read_samples(self.root / "trial.ab.wav"))
 
 
 if __name__ == "__main__":
