@@ -3,7 +3,7 @@
   "packagedOn": "2026-10-13",
   "implementationCheckpoint": "cf5c7cc3342d491029c244494e5ee4619e6794b9",
   "sourceRegistry": "config/local-assets.json",
-  "scope": "Canonical Shades and Flashdance analysis proofs plus Cybernoid II intake, selected-subtune execution, title traversals, mechanism census, score expansion, bounded synthesis components and complete numeric synthesis; original SIDs, audio and complete payload dumps excluded. Historical receipts retain original paths and proof-version identities.",
+  "scope": "Canonical Shades and Flashdance analysis proofs, Cybernoid II score/mechanism/numeric synthesis proofs, and Monty/Rambo/Ghouls/Deflektor source intake and execution boundaries; original SIDs, audio and complete payload dumps excluded. Historical receipts retain original paths and proof-version identities.",
   "files": [
     {
       "path": "evidence/shades-intake/vice-cia-corrected-full-final/trace.json.gz",
@@ -1666,6 +1666,186 @@
       "originalBytes": 1930,
       "group": "cybernoid-composed-model",
       "reason": "Complete source-free numeric synthesis from editable rows/programs/state, with 36,000-call ordered-store comparison against the canonical source oracle, state invariants and promoted-module verification."
+    },
+    {
+      "path": "evidence/monty-intake/intake.py",
+      "originalPath": "build/monty-intake/intake.py",
+      "sha256": "7d78a500bb6f18a44415bdfa20e39e3340a967135645b3ad1a190a65c36bbc45",
+      "bytes": 6846,
+      "originalSha256": "7d78a500bb6f18a44415bdfa20e39e3340a967135645b3ad1a190a65c36bbc45",
+      "originalBytes": 6846,
+      "group": "monty-intake",
+      "reason": "Pinned Monty subtune attribution and 64-call controlled-host execution, with complete ordered stores and source/tool provenance."
+    },
+    {
+      "path": "evidence/monty-intake/header.json",
+      "originalPath": "build/monty-intake/header.json",
+      "sha256": "e709c047c4c99647cdbc80716dd0e752763ff7edc9bf09cbc70ecf97dfd2373d",
+      "bytes": 1108,
+      "originalSha256": "e709c047c4c99647cdbc80716dd0e752763ff7edc9bf09cbc70ecf97dfd2373d",
+      "originalBytes": 1108,
+      "group": "monty-intake",
+      "reason": "Pinned Monty subtune attribution and 64-call controlled-host execution, with complete ordered stores and source/tool provenance."
+    },
+    {
+      "path": "evidence/monty-intake/audit.json",
+      "originalPath": "build/monty-intake/audit.json",
+      "sha256": "1dfd2affc1d3cc149c46a368a76ac97d3e9bee6a0e40555b944b665d25d93744",
+      "bytes": 3484,
+      "originalSha256": "1dfd2affc1d3cc149c46a368a76ac97d3e9bee6a0e40555b944b665d25d93744",
+      "originalBytes": 3484,
+      "group": "monty-intake",
+      "reason": "Pinned Monty subtune attribution and 64-call controlled-host execution, with complete ordered stores and source/tool provenance."
+    },
+    {
+      "path": "evidence/monty-intake/audit.writes.json.gz",
+      "originalPath": "build/monty-intake/audit.writes.json",
+      "sha256": "dfdf14b96e0199d6fc588ec3c6199feea82f20dff550f38c5325389d480f7182",
+      "bytes": 2800,
+      "originalSha256": "cbe755241603ab276b1f25877bbe63a98b1db571c51bb55273d7946af7a0e406",
+      "originalBytes": 52729,
+      "group": "monty-intake",
+      "reason": "Pinned Monty subtune attribution and 64-call controlled-host execution, with complete ordered stores and source/tool provenance."
+    },
+    {
+      "path": "evidence/monty-intake/provenance.json",
+      "originalPath": "build/monty-intake/provenance.json",
+      "sha256": "644d80ae80b2becbda29a05b5bddb8a75f6eaf7e05e7dc3d3ccedf932d14ce4d",
+      "bytes": 4696,
+      "originalSha256": "644d80ae80b2becbda29a05b5bddb8a75f6eaf7e05e7dc3d3ccedf932d14ce4d",
+      "originalBytes": 4696,
+      "group": "monty-intake",
+      "reason": "Pinned Monty subtune attribution and 64-call controlled-host execution, with complete ordered stores and source/tool provenance."
+    },
+    {
+      "path": "evidence/ghouls-intake/header.json",
+      "originalPath": "build/ghouls-intake/header.json",
+      "sha256": "c51871609697116ea5c800613ee3422e2d069f8235fb8aa960181f8dd1b4f9ff",
+      "bytes": 1136,
+      "originalSha256": "c51871609697116ea5c800613ee3422e2d069f8235fb8aa960181f8dd1b4f9ff",
+      "originalBytes": 1136,
+      "group": "ghouls-intake",
+      "reason": "Pinned Ghouls reference and known/unknown subtune labels, game-specific driver collaboration and precise rejected audit scope."
+    },
+    {
+      "path": "evidence/ghouls-intake/receipt.json",
+      "originalPath": "build/ghouls-intake/receipt.json",
+      "sha256": "3f0c1b96ec7f26e777f26c6c9230730f57d045e46f315a65198d5b28732c17fb",
+      "bytes": 13326,
+      "originalSha256": "3f0c1b96ec7f26e777f26c6c9230730f57d045e46f315a65198d5b28732c17fb",
+      "originalBytes": 13326,
+      "group": "ghouls-intake",
+      "reason": "Pinned Ghouls reference and known/unknown subtune labels, game-specific driver collaboration and precise rejected audit scope."
+    },
+    {
+      "path": "evidence/deflektor-intake/header.json",
+      "originalPath": "build/deflektor-intake/header.json",
+      "sha256": "bfb59974e4dd8270646dd86d9a793e1bdb7f4cd20ebac75cbd984cbcd0457c9a",
+      "bytes": 1171,
+      "originalSha256": "bfb59974e4dd8270646dd86d9a793e1bdb7f4cd20ebac75cbd984cbcd0457c9a",
+      "originalBytes": 1171,
+      "group": "deflektor-intake",
+      "reason": "Pinned Deflektor reference and header-only profile rejection caused by source overlap with the current fixed host workspace."
+    },
+    {
+      "path": "evidence/deflektor-intake/provenance.json",
+      "originalPath": "build/deflektor-intake/provenance.json",
+      "sha256": "50a902d755f8f2c8a011a044f158e5f6ac60caa762d0d35106d3f43e426dcbb7",
+      "bytes": 1814,
+      "originalSha256": "50a902d755f8f2c8a011a044f158e5f6ac60caa762d0d35106d3f43e426dcbb7",
+      "originalBytes": 1814,
+      "group": "deflektor-intake",
+      "reason": "Pinned Deflektor reference and header-only profile rejection caused by source overlap with the current fixed host workspace."
+    },
+    {
+      "path": "evidence/rambo-intake/header.json",
+      "originalPath": "build/rambo-intake/header.json",
+      "sha256": "f2929b23de0841f5062249d104fa5d9fe0fdcc59431bb179afd4cebb8131370d",
+      "bytes": 1111,
+      "originalSha256": "f2929b23de0841f5062249d104fa5d9fe0fdcc59431bb179afd4cebb8131370d",
+      "originalBytes": 1111,
+      "group": "rambo-intake",
+      "reason": "Pinned Rambo loader attribution, bounded primary-source/archive correspondence and 64-call controlled-host execution; preserve original and prose-corrected receipt/probe identities."
+    },
+    {
+      "path": "evidence/rambo-intake/attribution.json",
+      "originalPath": "build/rambo-intake/attribution.json",
+      "sha256": "e194f874981df60a6177aa7234b369e8f282dce64d98c58a574f68e2af4973e7",
+      "bytes": 2866,
+      "originalSha256": "e194f874981df60a6177aa7234b369e8f282dce64d98c58a574f68e2af4973e7",
+      "originalBytes": 2866,
+      "group": "rambo-intake",
+      "reason": "Pinned Rambo loader attribution, bounded primary-source/archive correspondence and 64-call controlled-host execution; preserve original and prose-corrected receipt/probe identities."
+    },
+    {
+      "path": "evidence/rambo-intake/receipt.json",
+      "originalPath": "build/rambo-intake/receipt.json",
+      "sha256": "7da60dd338844d535713922f49dbe3ea9c4dc926f334d0dc81849e9a1628cb15",
+      "bytes": 2599,
+      "originalSha256": "7da60dd338844d535713922f49dbe3ea9c4dc926f334d0dc81849e9a1628cb15",
+      "originalBytes": 2599,
+      "group": "rambo-intake",
+      "reason": "Pinned Rambo loader attribution, bounded primary-source/archive correspondence and 64-call controlled-host execution; preserve original and prose-corrected receipt/probe identities."
+    },
+    {
+      "path": "evidence/rambo-intake/audit64.json",
+      "originalPath": "build/rambo-intake/audit64.json",
+      "sha256": "e8467f31d1fcff9988b85c0cb1eef7de155cdf93d3e614fbf2b9e9ee6b508d96",
+      "bytes": 3161,
+      "originalSha256": "e8467f31d1fcff9988b85c0cb1eef7de155cdf93d3e614fbf2b9e9ee6b508d96",
+      "originalBytes": 3161,
+      "group": "rambo-intake",
+      "reason": "Pinned Rambo loader attribution, bounded primary-source/archive correspondence and 64-call controlled-host execution; preserve original and prose-corrected receipt/probe identities."
+    },
+    {
+      "path": "evidence/rambo-intake/audit64.writes.json.gz",
+      "originalPath": "build/rambo-intake/audit64.writes.json",
+      "sha256": "b38d22613c975d112a587b96577f5670249f34cb8a3fe04adaa3d7254baffd27",
+      "bytes": 2721,
+      "originalSha256": "25b08f2edc0f700cc0d29dc2ec6aebc8472324613b4199ad1ba6aa75ea6f5653",
+      "originalBytes": 47348,
+      "group": "rambo-intake",
+      "reason": "Pinned Rambo loader attribution, bounded primary-source/archive correspondence and 64-call controlled-host execution; preserve original and prose-corrected receipt/probe identities."
+    },
+    {
+      "path": "evidence/rambo-intake/hooks.json.gz",
+      "originalPath": "build/rambo-intake/hooks.json",
+      "sha256": "18407e965613a492f3ad15fdbf8d9d51e98d5080979b3d98318eecc2fde50e0b",
+      "bytes": 3387,
+      "originalSha256": "39a639ca81a5679be2fba23fc71097d66047281444b169c693a9cfb7b243c1d6",
+      "originalBytes": 70830,
+      "group": "rambo-intake",
+      "reason": "Pinned Rambo loader attribution, bounded primary-source/archive correspondence and 64-call controlled-host execution; preserve original and prose-corrected receipt/probe identities."
+    },
+    {
+      "path": "evidence/rambo-intake/probe.py",
+      "originalPath": "build/rambo-intake/probe.py",
+      "sha256": "4645a2399fa1d431ab4f98e352e2ff247832f6688c52d58ca5e48bec7af9c5e2",
+      "bytes": 8575,
+      "originalSha256": "4645a2399fa1d431ab4f98e352e2ff247832f6688c52d58ca5e48bec7af9c5e2",
+      "originalBytes": 8575,
+      "group": "rambo-intake",
+      "reason": "Pinned Rambo loader attribution, bounded primary-source/archive correspondence and 64-call controlled-host execution; preserve original and prose-corrected receipt/probe identities."
+    },
+    {
+      "path": "evidence/rambo-intake/probe-executed.py",
+      "originalPath": "build/rambo-intake/probe-executed.py",
+      "sha256": "2e09238c6201cbb3b3d2befb714560d5407d3bf57e6b8730945c041a308b1b00",
+      "bytes": 8564,
+      "originalSha256": "2e09238c6201cbb3b3d2befb714560d5407d3bf57e6b8730945c041a308b1b00",
+      "originalBytes": 8564,
+      "group": "rambo-intake",
+      "reason": "Pinned Rambo loader attribution, bounded primary-source/archive correspondence and 64-call controlled-host execution; preserve original and prose-corrected receipt/probe identities."
+    },
+    {
+      "path": "evidence/rambo-intake/receipt.original-execution.json",
+      "originalPath": "build/rambo-intake/receipt.original-execution.json",
+      "sha256": "dbda19fb12269652efd328a94ebb0c099dc178d06911e34f85f9b7ed72f1fdef",
+      "bytes": 1934,
+      "originalSha256": "dbda19fb12269652efd328a94ebb0c099dc178d06911e34f85f9b7ed72f1fdef",
+      "originalBytes": 1934,
+      "group": "rambo-intake",
+      "reason": "Pinned Rambo loader attribution, bounded primary-source/archive correspondence and 64-call controlled-host execution; preserve original and prose-corrected receipt/probe identities."
     }
   ],
   "independentShadesSources": {

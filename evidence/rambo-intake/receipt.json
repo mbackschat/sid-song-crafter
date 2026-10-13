@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "path": ".local/rambo-source.sid",
+    "bytes": 16805,
+    "sha256": "88a2b538ee3d3d1d8b0b754bef77a63d9750812694786977ae8c539f6ecd000e"
+  },
+  "selectedSubtune": 1,
+  "profile": "pal-banked",
+  "profileAdmission": "accepted",
+  "auditSucceeded": true,
+  "executionFailure": null,
+  "sourceFileUnchanged": true,
+  "probeSha256": "4645a2399fa1d431ab4f98e352e2ff247832f6688c52d58ca5e48bec7af9c5e2",
+  "tools": {
+    "sid_intake.py": "1f4a8f5b2a6aec2aec896003ff009ed7b7b112ec65694d89650f4f7bee01d76f",
+    "psid_profile.py": "7971881fbb68e6f09c6c886650de26c5168a11770407e7551bfbe35195df7bb4",
+    "psid_audit.py": "34d3bf48c00039c8d1521086180466fd63aa569a7b4fbae9fa43b4cf38c303c3",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "cadence": "64 controlled sequential calls under a per-call PAL-frame cycle budget; cadence is declared, not measured. The audit supplies no idle cycles or raster/IRQ dispatch measurement.",
+  "referenceScope": "Preparation only; Shades remains active reconstruction. No renderer/full-song run, source rebuild, independent instrument/player, intervention, listening or approval claim.",
+  "artifacts": {
+    "audit": {
+      "path": "build/rambo-intake/audit64.json",
+      "bytes": 3161,
+      "sha256": "e8467f31d1fcff9988b85c0cb1eef7de155cdf93d3e614fbf2b9e9ee6b508d96"
+    },
+    "writes": {
+      "path": "build/rambo-intake/audit64.writes.json",
+      "bytes": 47348,
+      "sha256": "25b08f2edc0f700cc0d29dc2ec6aebc8472324613b4199ad1ba6aa75ea6f5653"
+    },
+    "hooks": {
+      "path": "build/rambo-intake/hooks.json",
+      "bytes": 70830,
+      "sha256": "39a639ca81a5679be2fba23fc71097d66047281444b169c693a9cfb7b243c1d6"
+    },
+    "attribution": {
+      "path": "build/rambo-intake/attribution.json",
+      "bytes": 2866,
+      "sha256": "e194f874981df60a6177aa7234b369e8f282dce64d98c58a574f68e2af4973e7"
+    }
+  },
+  "executionProbeSha256": "2e09238c6201cbb3b3d2befb714560d5407d3bf57e6b8730945c041a308b1b00",
+  "executionProbePath": "build/rambo-intake/probe-executed.py",
+  "metadataCorrection": {
+    "scope": "Cadence prose only; no source, observer, instruction, audit-result or artifact changes and no repeat CPU execution.",
+    "originalReceiptPath": "build/rambo-intake/receipt.original-execution.json",
+    "originalReceiptSha256": "dbda19fb12269652efd328a94ebb0c099dc178d06911e34f85f9b7ed72f1fdef",
+    "currentProbePurpose": "Reproduction template with corrected receipt wording; executionProbeSha256 identifies the exact successful execution version."
+  }
+}

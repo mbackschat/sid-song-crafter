@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "selectedSubtune": 1,
+  "scope": "Original Morse-code loader, not the entire24subtune collection",
+  "sourceSid": {
+    "path": ".local/rambo-source.sid",
+    "bytes": 16805,
+    "sha256": "88a2b538ee3d3d1d8b0b754bef77a63d9750812694786977ae8c539f6ecd000e"
+  },
+  "stil": {
+    "path": ".local/downloads/HVSC-STIL.txt",
+    "bytes": 3750199,
+    "sha256": "b1ef3584a5b3501e2bbd2ef056d6539a1bbee7933a7828537c3946c1b16cde43"
+  },
+  "stilVersion": "85, June28 2026",
+  "stilEntryPath": "/MUSICIANS/G/Galway_Martin/Rambo_First_Blood_Part_II.sid",
+  "primarySource": {
+    "path": ".tools/martin-galway-c64/rambload.asm",
+    "bytes": 43766,
+    "sha256": "78e7927e6c2e8f7d42c18d2e02bec764a2911d2d8180cec789020bdd60cdbb75"
+  },
+  "primaryRevision": "a458a3687e27a63647bbe41968094f0e6d0965a0",
+  "primaryUrl": "https://github.com/MartinGalway/C64_music/blob/a458a3687e27a63647bbe41968094f0e6d0965a0/rambload.asm",
+  "composerOwnedReadme": {
+    "path": ".tools/martin-galway-c64/README.md",
+    "bytes": 751,
+    "sha256": "1533e9edda1ae937b9bc862b760566b2f7f865b31d6f726a894c0bee763a8da1"
+  },
+  "assemblerNotes": {
+    "path": ".tools/martin-galway-c64/ocean_assembler_directives.txt",
+    "bytes": 2938,
+    "sha256": "e61fa3676fa515dd871c139502eaaa37593777174a7f06038735125be108c0ee"
+  },
+  "primaryCredit": "Loading music composed, arranged and programmed by Martin Galway; Ocean Software1985; limited SSI version.",
+  "stilRole": {
+    "subtune1": "Creator-name Morse-code intro; source-composer comment discusses I/E error.",
+    "subtune2": "Same as1, corrected Morse code."
+  },
+  "separateSourceCompositions": {
+    "JerryGoldsmith": [
+      3,
+      6,
+      7,
+      8,
+      10,
+      11,
+      21
+    ],
+    "RichardWagner": [
+      22
+    ],
+    "subtune11": "Main Title credited to Goldsmith; STIL identifies Brian Carter/First Patrol disco version as the covered version."
+  },
+  "conclusion": "Loader1 has direct Galway composition/arrangement/programming credit in the original loader source. STIL assigns other listed subtunes to film/classical source compositions; do not transfer those credits to loader1 or call all24 tracks original Galway compositions.",
+  "correspondence": {
+    "secretText": "BILLBARNADAVIDCOLLIERMARTINGALWAYTONYPOMFRETSTEVEWAHID",
+    "sourceSecretSha256": "4792e1729c1e172fa430992e2e8538deb14f9c35bbfb08ef1be1c10659ac7227",
+    "sourceSecretLength": 55,
+    "archiveSecretAddress": 32926,
+    "sourceCodeTableSha256": "0426b634fe5f242faac54c554859771ad71e50d5e7e91f5c0ef7b5589236fd46",
+    "sourceCodeTableLength": 26,
+    "archiveCodeTableAddress": 32981,
+    "primaryIByte": 16
+  },
+  "limits": "Matching declared credit/intro data is not byte-identical source build or full musical analysis; published source explicitly describes an SSI variant. No source assembly or listening was performed."
+}

@@ -17,6 +17,10 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Reconstruct Flashdance and compose dual SID](flashdance-preparation.md): accepted selected-form reconstruction and six-voice raw stereo interpretation, editable instrument programs and an original transfer phrase judged to work.
 - [Study Flashdance: What a Feeling](flashdance-reference.md): verified archive identities, synthesis lessons and a source-to-reference comparison contract.
 - [Reconstruct Shades](shades-preparation.md): independent full-form/transfer players, CIA proofs, editable pulse/glide programs and pending reconstruction listening.
-- [Prepare Cybernoid II](cybernoid-ii-preparation.md): pinned title-subtune intake, archive/listing correspondence and the explicit banking/subtune boundary before execution tracing.
+- [Prepare Cybernoid II](cybernoid-ii-preparation.md): editable numeric score/program model, full-span register equality and bounded source proofs.
+- [Prepare Monty on the Run](monty-preparation.md): pinned subtune, source-composition credit and bounded callable execution.
+- [Prepare Rambo: First Blood Part II](rambo-preparation.md): loader-specific attribution, original-source hooks and execution requirements.
+- [Prepare Ghouls ’n Ghosts](ghouls-preparation.md): archive/subtune boundaries and the SID readback-write audit limitation.
+- [Prepare Deflektor](deflektor-preparation.md): source identity, cowbell study context and required host-memory separation.
 
 Study [the composers and their tools](../composers/README.md) before choosing a sound palette. A correct note sequence is a technical baseline; musical quality also requires phrasing, contrast, texture, and listening review.

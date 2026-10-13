@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "scope": "Intact archive metadata and RAM-only controlled-host calls 0..63 of subtune 1",
+  "source": {
+    "id": "monty-on-the-run",
+    "title": "Monty on the Run",
+    "credit": "Rob Hubbard",
+    "hvscPath": "MUSICIANS/H/Hubbard_Rob/Monty_on_the_Run.sid",
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/H/Hubbard_Rob/Monty_on_the_Run.sid",
+    "sha256": "528a7330817e4a0a0f75a505e9fe2444e07c5072ce5383ceaa89f183f0eee3ab",
+    "path": ".local/monty-source.sid",
+    "default": false,
+    "bytes": 5694
+  },
+  "registry": {
+    "path": "config/local-assets.json",
+    "sha256": "5903a5e7cdf8753054cfec5b64e1960d7a3c4583685d0e8b15d4489ce0002aea"
+  },
+  "stil": {
+    "path": ".local/downloads/HVSC-STIL.txt",
+    "sha256": "b1ef3584a5b3501e2bbd2ef056d6539a1bbee7933a7828537c3946c1b16cde43",
+    "version": "STIL v85, June 28, 2026",
+    "entryPath": "/MUSICIANS/H/Hubbard_Rob/Monty_on_the_Run.sid",
+    "firstLine": 50857,
+    "lastLine": 50868,
+    "entrySha256": "9f3c5519e91214cb4e7f8a3f712373431a9e925ec95f96a92ef9f7f33871d6d2",
+    "entryHashRecipe": "SHA-256 of original CRLF bytes from the path line through the blank lines before the next path",
+    "subtuneAnnotations": [
+      {
+        "subtune": 1,
+        "title": "The Devil's Gallop [from the Dick Barton radio show]",
+        "artist": "Charles Williams",
+        "meaning": "Inspiration/original-piece attribution; not an independent archive subtune-role label"
+      }
+    ],
+    "subtunesWithoutEntryAnnotations": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "commentSummary": "STIL attributes the energetic running character and use of newly written middle-section pitch-bend code to Hubbard."
+  },
+  "sourceRoutes": {
+    "attributedReconstruction": {
+      "url": "https://www.neperos.com/article/rxmd9gd536b13923",
+      "attribution": "Anthony McSweeney, 1993",
+      "status": "Already inspected in the composer study; reverse-engineered routine with sound-effects code removed, not original labeled source"
+    },
+    "cachedRepositoryListing": {
+      "treePath": ".local/downloads/c64-sid-players-tree.json",
+      "treeSha256": "88bbe298fe03b899bddad9e0ed04b2626b90daf5792fd49a5365ed4d1f79f2e0",
+      "revision": "f215174fc4c983674808fcd47bc506f96b3d2d04",
+      "path": "Hubbard_Rob/Hubbard_Rob_Monty_on_the_Run.asm",
+      "gitBlobSha1": "332b81b5ddd21d1ab20c7cd37c32ac786760a267",
+      "declaredBytes": 31840,
+      "url": "https://github.com/realdmx/c64_6581_sid_players/blob/f215174fc4c983674808fcd47bc506f96b3d2d04/Hubbard_Rob/Hubbard_Rob_Monty_on_the_Run.asm",
+      "status": "Path/blob identity observed in cached tree only; listing body not present in inspected cache and not downloaded, assembled or compared"
+    }
+  },
+  "tools": {
+    "scripts/sid_intake.py": "1f4a8f5b2a6aec2aec896003ff009ed7b7b112ec65694d89650f4f7bee01d76f",
+    "scripts/psid_profile.py": "7971881fbb68e6f09c6c886650de26c5168a11770407e7551bfbe35195df7bb4",
+    "scripts/psid_audit.py": "34d3bf48c00039c8d1521086180466fd63aa569a7b4fbae9fa43b4cf38c303c3",
+    "scripts/verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "collector": {
+    "path": "build/monty-intake/intake.py",
+    "sha256": "7d78a500bb6f18a44415bdfa20e39e3340a967135645b3ad1a190a65c36bbc45"
+  },
+  "environment": {
+    "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+    "py65Version": "1.2.0"
+  },
+  "artifacts": {
+    "header.json": {
+      "sha256": "e709c047c4c99647cdbc80716dd0e752763ff7edc9bf09cbc70ecf97dfd2373d",
+      "bytes": 1108
+    },
+    "audit.json": {
+      "sha256": "1dfd2affc1d3cc149c46a368a76ac97d3e9bee6a0e40555b944b665d25d93744",
+      "bytes": 3484
+    },
+    "audit.writes.json": {
+      "sha256": "cbe755241603ab276b1f25877bbe63a98b1db571c51bb55273d7946af7a0e406",
+      "bytes": 52729
+    }
+  },
+  "executedSummary": {
+    "initCycles": 165,
+    "maximumPlayCycles": 1460,
+    "meanPlayCycles": 1272.921875,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 3,
+    "playWriteCount": 641,
+    "initAddressValues": [
+      [
+        54276,
+        0
+      ],
+      [
+        54283,
+        0
+      ],
+      [
+        54290,
+        0
+      ]
+    ],
+    "playCallsWithMultipleStoresToSameRegister": 63,
+    "perVoicePlayStores": [
+      133,
+      181,
+      263
+    ],
+    "globalPlayStores": 64
+  },
+  "limitations": "No original IRQ host, actual VBI cadence, VICE comparison, sound synthesis, complete form, instrument decode, other-subtune audit or listening verdict."
+}

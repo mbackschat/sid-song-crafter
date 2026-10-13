@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/D/Daglish_Ben/Deflektor.sid",
+    "path": ".local/research/deflektor/Deflektor.sid",
+    "bytes": 4081,
+    "sha256": "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d"
+  },
+  "selectedSubtune": 1,
+  "headerReport": "header.json",
+  "headerSha256": "bfb59974e4dd8270646dd86d9a793e1bdb7f4cd20ebac75cbd984cbcd0457c9a",
+  "commands": [
+    "python3 scripts/sid_intake.py .local/research/deflektor/Deflektor.sid --subtune 1 --output build/deflektor-intake/header.json",
+    "PYTHONPATH=.tools/test-deps python3 scripts/psid_audit.py .local/research/deflektor/Deflektor.sid --profile pal-banked --subtune 1 --ticks 64 --output build/deflektor-intake/audit.json"
+  ],
+  "auditAttempt": {
+    "exitCode": 1,
+    "stderr": "Audit supports payloads entirely in RAM $0400\u2013$bfff",
+    "driverExecuted": false,
+    "reason": "The pinned payload occupies $C000\u2013$CF72 and overlaps the current banked host workspace $C000\u2013$C1FF. Profile admission rejects it before initialization."
+  },
+  "stil": {
+    "path": ".local/downloads/HVSC-STIL.txt",
+    "sha256": "b1ef3584a5b3501e2bbd2ef056d6539a1bbee7933a7828537c3946c1b16cde43",
+    "entry": "/MUSICIANS/D/Daglish_Ben/Deflektor.sid",
+    "entryPresent": false
+  },
+  "tools": {
+    "scripts/sid_intake.py": "1f4a8f5b2a6aec2aec896003ff009ed7b7b112ec65694d89650f4f7bee01d76f",
+    "scripts/psid_profile.py": "7971881fbb68e6f09c6c886650de26c5168a11770407e7551bfbe35195df7bb4",
+    "scripts/psid_audit.py": "34d3bf48c00039c8d1521086180466fd63aa569a7b4fbae9fa43b4cf38c303c3"
+  },
+  "limits": "No original execution, measured cadence, form, cowbell mechanism, rendering or listening verdict; header declarations and a current-host admission failure only."
+}

@@ -44,6 +44,8 @@ Keep the original SID's source URL and SHA-256 in the [asset manifest](../../con
 | `auf-wiedersehen-monty` | `.local/monty-wiedersehen-source.sid` | `--include auf-wiedersehen-monty` |
 | `rambo-first-blood-part-ii` | `.local/rambo-source.sid` | `--include rambo-first-blood-part-ii` |
 | `arkanoid` | `.local/arkanoid-source.sid` | `--include arkanoid` |
+| `ghouls-n-ghosts` | `.local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid` | `--include ghouls-n-ghosts` |
+| `deflektor` | `.local/research/deflektor/Deflektor.sid` | `--include deflektor` |
 
 The older composer caches keep their existing `.local/` paths. `--include` adds the requested optional entries to the default selection and can be repeated. Fetch both Shades variants, or verify their existing copies without network access:
 
@@ -59,6 +61,16 @@ python3 scripts/setup-project.py --only references --include monty-on-the-run --
 ```
 
 Existing matching files are reused. Missing files are downloaded and checked before installation; a changed cached file or changed upstream response fails its fingerprint check. Original SID bytes remain ignored and outside Git. Deleting a local cache does not remove its provenance; rerunning the appropriate command restores the pinned file while the source URL still serves the recorded bytes.
+
+### Inspect a selected reference before execution
+
+[sid_intake.py](../../scripts/sid_intake.py) reads PSID/RSID v2 metadata without executing the original or retaining payload bytes in its report. Select a one-based subtune explicitly and use a fresh output path:
+
+```sh
+python3 scripts/sid_intake.py .local/monty-source.sid --subtune 1 --output build/monty-intake-new/header.json
+```
+
+The report separates declared clock/model/timing from `callableProfile`, the current `pal-banked` audit's header admission result. Acceptance is not successful execution: additional I/O or host dependencies can still reject at runtime. RSID's reserved zero speed word is reported as machine-controlled rather than VBI. Other SID format versions are explicitly unsupported by this small intake tool; it is not a complete format validator. The report includes source/tool fingerprints and preserves raw entry addresses. Use the owning study for subtune labels, attribution and subsequent execution evidence.
 
 ### Readiness and bridge setup
 

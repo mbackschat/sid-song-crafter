@@ -27,7 +27,7 @@ Start with the [technique lookup](docs/research/technique-index.md), then read o
 | Run and inspect headlessly | [Setup](docs/setup/local-setup.md), [audio](docs/workflows/audio-workflow.md), [VICE checks](docs/validation/native-vice-checks.md), [verified capabilities](docs/research/tools/skills-and-integrations.md) |
 | Prepare listening comparisons | [Comparison workflow](docs/workflows/audio-comparisons.md), [DRAX reference and feedback](docs/research/composition/fuer-elise-reference.md) |
 | Find sources or skills | [Research index](docs/research/README.md), [provenance](docs/research/sources.md), [installed skills](skills/README.md) |
-| Download references or restore evidence | [Source URLs, fingerprints and downloads](docs/setup/local-setup.md), [archive verification and cache restoration](docs/workflows/build-cache.md), [canonical evidence index](evidence/README.md) |
+| Download or inspect references; restore evidence | [Source URLs, fingerprints, downloads and metadata inspection](docs/setup/local-setup.md), [archive verification and cache restoration](docs/workflows/build-cache.md), [canonical evidence index](evidence/README.md) |
 
 ## Preserve sources and SID expression
 
