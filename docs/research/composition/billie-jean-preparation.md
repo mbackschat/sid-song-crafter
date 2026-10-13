@@ -1,0 +1,56 @@
+# Billie Jean: selected score and form
+
+This owns the executed score/form findings for the pinned Johannes Bjerregaard SID while Shades remains the active reconstruction. The [shared intake](pop-theme-preparation.md) retains STIL's source-song attribution to Michael Jackson's *Billie Jean*, from *Thriller*; the archive credits Johannes Bjerregaard, 1990, for this SID. Its [registered download](../../../config/local-assets.json) is the [HVSC archive](https://www.hvsc.de/download/C64Music/MUSICIANS/B/Bjerregaard_Johannes/Billie_Jean.sid), SHA-256 `16d8eae4d22f368520589c44e9db399b64092664bee6e1e70ca4b21c60bf0c54`. The original SID and audio remain local.
+
+The intact single/default subtune 1 declares PAL, MOS6581 and VBI playback, with load `$1000`, exclusive end `$1EAD`, init `$14A0` and play `$1000`. The [banked callable host](../../validation/psid-audit.md#select-a-subtune-and-expose-ram-beneath-basic) supplies explicit selection, bank `$36` and validated call-return state. This is a controlled execution contract, not evidence of the original release's scheduling environment.
+
+## Find the score reader
+
+The [structured contract](../../../evidence/billie-jean-form/contract.json) and [executed hooks](../../../evidence/billie-jean-form/complete14274/hooks.json) preserve exact fields and PCs. Three order streams select patterns through split pointer tables `$1900/$1980`; patterns begin at `$1C00`. The driver processes physical voices 3, 2, 1 in that order.
+
+| Consumed field | Executed location | Selected semantics |
+| --- | --- | --- |
+| Order byte | `$102C`; streams `$1600/$1700/$1800`, cursors `$1460+voice` | A non-`$FF` high-bit byte sets unsigned transpose `value & $7F`, advances the cursor and reads a pattern index at `$104D`. Other pattern selections retain transpose. |
+| Order `$FF` | `$1032–$103D` | Reset **all three order cursors**, then reread the current voice's order within the same call. Sound/program state is retained; this does not call PSID init. |
+| Row header | `$1060`; pattern cursor `$145D+voice` | Low five bits are duration. Class `$C0–$DF` consumes no instrument/glide/note payload and sets the software gate mask to `$FE`; continuing sound processing still runs. It is not a measured silence. |
+| Optional setup | `$1099`, `$10AB/$10B1` | Header bit `$80` consumes an instrument argument, storing `(argument × 8) & $FF`. Bit `$40` consumes glide step and target before the ordinary note. |
+| Ordinary note | `$10BB`; base note `$145A+voice` | Add retained transpose modulo 256; header bit `$20` supplies the gate-hold flag. This score proof does not calculate resulting pitch/modulation programs. |
+| Following `$FF` | Rest peek `$1079`, ordinary peek `$10C9` | Reset this pattern cursor and increment this voice's order cursor; otherwise the cursor addresses the next header. |
+
+The shared divider `$1479` reloads 2 after a negative decrement result. Only divider zero decrements each row counter `$144A+voice`; a negative result dispatches the next row. Thus duration *d* spans **3 × (d+1) play calls**, and initialization's zero counters produce the first row at call **2**. Init clears score cursors, counters, hold flags and transpose, but retains loaded base notes/instrument offsets; the contract names these separately.
+
+The expander uses the low five bits of `row.header` as its runtime duration. Decoded `row.duration` is descriptive: changing that field alone has no effect. A duration edit must change the header bits, as the private source-copy guard below does; this component is a source-format score model rather than a validated general composition schema.
+
+## Complete score cycle and bounded recurrence
+
+The [decoded score](../../../evidence/billie-jean-form/complete14274/score.json) has **16 selected patterns and 261 stored rows**. Each voice's order spans **2,368 row-divider steps**, or **7,104 play calls**, despite different pattern and row counts. The [summary](../../../evidence/billie-jean-form/summary.json) retains order selections, transposes and pattern spans.
+
+| Physical voice | Pattern visits per traversal | Executed rows per traversal | First decoded note row |
+| --- | --- | --- | --- |
+| 1 | 28 | 503 | Call 2 |
+| 2 | 70 | 550 | Call 194 |
+| 3 | 42 | 498 | Call 962 |
+
+One initialized [14,274-call proof](../../../evidence/billie-jean-form/complete14274/receipt.json) observes global order wraps at **7106 and 14210**, both first encountered by physical voice 3. The independent [numeric decoder/expander](../../../evidence/billie-jean-form/score.py) matches all **20,343 consumed fields, 3,110 completed rows and 14,274 named return states**. It computes order/row timing from numeric data without original-driver execution or timed-event replay; it does not compute SID stores. The source [ordered ledger](../../../evidence/billie-jean-form/complete14274/writes.json.gz) retains **278,617 init/play stores**, including three init stores. Its 64-call prefix matches all 1,271 earlier intake records. Every callable RTS is checked against the actual host return word and stack depth. The [CPU report](../../../evidence/billie-jean-form/complete14274/audit.json) measures init 203 cycles and maximum play 1,277 against a 19,656-cycle per-call budget.
+
+Equal backing-RAM plus A/X/Y/SP/P/PC hashes at the two wrap returns establish that scoped CPU/RAM recurrence, with absolute cycle counts excluded. The initialized first and second 7,104-call SID streams nevertheless differ: both contain 138,653 stores, but their first differing value is `$D412=$20` versus `$F0`. The second and third 64-call openings match all 1,268 stores, including instruction-start cycles. The [return observations](../../../evidence/billie-jean-form/complete14274/returns.json.gz) and summary preserve these comparisons. No physical SID/CIA/VIC state, full-machine or acoustic recurrence follows from the hashes or score cycle.
+
+The [selected VICE wrap proof](../../../evidence/billie-jean-form/vice-wrap/trace/study.json), with [projection](../../../evidence/billie-jean-form/vice-wrap/projection.json) and [provenance](../../../evidence/billie-jean-form/vice-wrap/provenance.json), independently matches **261 stores: three init and 258 play** across calls **7100–7112**. All preceding host calls execute; 7,113 entries have maximum cadence error eight cycles against nine allowed. Parsed checkpoints verify the controlled PAL host, not exact SID bus-write timestamps or original-game cadence.
+
+## Edit guard and reproduction
+
+The [private duration intervention](../../../evidence/billie-jean-form/edit128/receipt.json) changes the first pattern-1 header at `$1C08` from `$83` to `$82`, reducing duration from 3 to 2. Two 128-call source executions match the numeric score reads; the next physical-voice-1 note moves from call **14 to 11**, as the three-call divider predicts. [Complete cases](../../../evidence/billie-jean-form/edit128/cases.json.gz) retain reads and source stores. The original stays unchanged; this is a score-timing guard, not independently synthesized output or a modified full-form proof.
+
+Obtain the pinned asset, then copy the analysis tools into a fresh one-level directory below `build/` to preserve their repository-relative paths and local imports. Source and tool fingerprints remain enforced.
+
+```sh
+python3 scripts/setup-project.py --only references --include billie-jean
+mkdir build/billie-jean-new
+cp evidence/billie-jean-form/score.py evidence/billie-jean-form/probe.py evidence/billie-jean-form/check-edit.py evidence/billie-jean-form/vice-wrap.py build/billie-jean-new/
+PYTHONPATH=.tools/test-deps python3 build/billie-jean-new/probe.py --calls 64 --output build/billie-jean-new/opening64
+PYTHONPATH=.tools/test-deps python3 build/billie-jean-new/probe.py --calls 14274 --output build/billie-jean-new/complete14274
+PYTHONPATH=.tools/test-deps python3 build/billie-jean-new/check-edit.py --output build/billie-jean-new/edit128
+PYTHONPATH=.tools/test-deps python3 build/billie-jean-new/vice-wrap.py --output build/billie-jean-new/vice-wrap
+```
+
+To repeat only the VICE boundary check, pass `--ledger evidence/billie-jean-form/complete14274/writes.json.gz`; no CPU traversal is then rerun. Canonical analysis archives follow the [evidence workflow](../../workflows/build-cache.md). Source reads, rows, return hashes and stores are retained losslessly; original payloads, full RAM, whole instruction logs and raw monitor dumps are excluded. Sound-program interpretation, independent player/export, musical ending, rendering/listening and transfer remain pending.

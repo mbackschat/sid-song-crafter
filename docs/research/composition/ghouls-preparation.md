@@ -1,6 +1,6 @@
 # Ghouls 'n' Ghosts: reference intake
 
-This bounded preparation pins the C64 reference, preserves supported subtune attribution and verifies initialization plus 64 calls of selection 1 against headless VICE. It establishes no decoded score or synthesis mechanism, complete form, rendered audio or listening verdict. Read the [Follin composer study](../composers/follin-daglish.md), [technique lookup](../technique-index.md) and [execution procedure](../tools/sid-program-analysis.md) before choosing a passage or implementing an instrument.
+This preparation pins the C64 reference, preserves supported subtune attribution and establishes finite stream consumption for provisional selection **1**, followed by continued filter refresh. CPU execution covers 40,000 calls, with independent VICE comparisons at the opening and final stream stop. Selection 1's musical role, an independent score/synthesis model, rendered audio and listening remain unresolved. Read the [Follin composer study](../composers/follin-daglish.md), [technique lookup](../technique-index.md) and [execution procedure](../tools/sid-program-analysis.md) before choosing a passage or implementing an instrument.
 
 ## Reference identity
 
@@ -49,6 +49,59 @@ On 2026-10-13 the [CPU report](../../../evidence/ghouls-sid-window/audit64.json)
 
 The [verification receipt](../../../evidence/ghouls-sid-window/verification.json) pins inputs, tools and all retained records. This proves bounded execution under the controlled raster host, not the original game's environment or selection 1's musical role. The CPU report's register summary covers playback; use its complete ledger for initialization. Monitor timestamps are checkpoints, not exact SID bus-write cycles. Raw monitor/process logs and executable payload files stay local.
 
+## Executed finite stream form
+
+The [source-pinned probe](../../../evidence/ghouls-form/probe.py) uses the shared `pal-banked` auditor, explicit subtune 1 and default host `$C000`, without altering the SID. The [form receipt](../../../evidence/ghouls-form/form.json) retains actual byte-stream navigation, while [provenance](../../../evidence/ghouls-form/provenance.json) separates static native instructions and command tables from observed reads/dispatches. No exact recovered listing for this archive was found in the existing source routes; composer interviews do not settle its byte grammar.
+
+Initialization copies `$2A44→$730E` (**5,083 bytes**) and `$3EAF→$958F` (**1,907 bytes**) using the native `$2999` routine under bank `$35`, before restoring the prior bank. The observed initial stream pointers are `$7338`, `$75F7` and `$77A8`. Their contents are initialized RAM data, rather than a guessed order/pattern format or the file's unchanged loaded bytes at those destinations. All **4,998** consumed stream/operand reads in the full run match the exact original source bytes through these executed copy mappings.
+
+| Navigation task | Actual state / native locus |
+| --- | --- |
+| Per-voice byte stream | Pointer pairs `$21/$22`, `$23/$24`, `$25/$26`; dispatch reads `$6362`, `$654F`, `$673E`; voice order 0, 1, 2 |
+| Command dispatch | Negative bytes index per-voice low/high command tables and patched `JMP` instructions `$6374/$6561/$6750`; nonnegative bytes take the note/rest path |
+| Duration and repeat state | Remaining durations `$27–$29`, repeat counters `$2D–$2F`, saved repeat-pointer pairs `$30–$35` |
+| Software score calls | Depth bytes `$69–$6B`; `$8A` saves stream return address+3, `$8B` restores it. These are score-stack operations, distinct from the CPU callable return stack |
+| Repeat start/end | `$82` loads a count and saves the following stream address; `$81` decrements the count and selects the saved address or the next byte |
+| Voice enable / terminal command | Signed enable flags `$7B–$7D`; `$86` selects `$698A/$698F/$6994`, whose `INC` changes that voice's `$FF` flag to zero and skips further stream work |
+| Completed callable body | Outer `RTS` `$6857`, SP=`$FD`, saved return word `$C04C` checked against the shared host |
+
+The [256-call instruction window](../../../evidence/ghouls-form/opening.trace.json.gz) independently checks the compact observer. Its [validation](../../../evidence/ghouls-form/opening-validation.json) matches **112** reads, **22** command dispatches, **256** outer returns and all **1,578** ordered init/play stores; its first 64 calls also match the prior 387-store canonical ledger, including instruction-start cycles. The full-span [control checker](../../../evidence/ghouls-form/describe.py) validates **305** observed repeat/call/return/disable transitions against the next consumed address, call depth and repeat counter. Calls and returns balance at 74 each, with maximum observed score-call depth one; this is not a complete independent note/instrument decoder. Command-table entries absent from the run, including `$87`, remain explicitly static/unexecuted in the provenance receipt.
+
+The [40,000-call report](../../../evidence/ghouls-form/full40000/audit.json), [complete ordered ledger](../../../evidence/ghouls-form/full40000/audit.writes.json.gz) and [compact observations](../../../evidence/ghouls-form/full40000/observations.json.gz) cover every requested call **0–39,999**, with **58** init and **140,264** play stores. Maximum play-body cost is **2,915 / 19,656 cycles**. Each voice's final `$8D` waveform command consumes operand zero, then its `$86` terminal command disables that stream:
+
+| Driver voice index | Terminal byte address | Dispatch target | Completed call / enable flags afterward |
+| --- | --- | --- | --- |
+| 0 | `$75E7` | `$698A` | 12,947 / `[0,$FF,$FF]` |
+| 2 | `$798B` | `$6994` | 12,971 / `[0,$FF,0]` |
+| 1 | `$77A7` | `$698F` | 12,995 / `[0,0,0]` |
+
+This establishes finite score consumption through call **12,995**, including all three terminal dispatches. No stream event occurs afterward, and the retained named score states stay unchanged. Calls **12,996–39,999** still emit exactly **54,008** stores: `$D415=0`, then `$D416=0`, on each of 27,004 calls. The stopped score therefore retains a callable filter tail; it is not a no-store ending. No recurrence of the initial streams is observed.
+
+Backing audit RAM and CPU snapshots at the fixed pre-RTS boundary match at calls **12,995** and **39,999**. The receipt hashes all 65,536 backing-memory bytes, then those bytes followed by A/X/Y/SP/status/PC-low/PC-high, without normalization or cycle count. This is equality of two sampled audit states, not a one-call fixed-point test, a complete C64 host state, SID oscillator/envelope recurrence or PCM/acoustic silence.
+
+Independent VICE checks all initialization stores plus calls **12,989–13,002**: all **102** ordered stores agree (**58** init, **44** play), including post-stop filter writes. All 13,003 outer play-entry checkpoints stay within **eight** cycles of the PAL grid, inside the nine-cycle polling tolerance. The [projection](../../../evidence/ghouls-form/vice-stop/projection.json), [VICE study](../../../evidence/ghouls-form/vice-stop/trace/study.json) and [parsed trace](../../../evidence/ghouls-form/vice-stop/trace/trace.json.gz) own this bounded machine comparison. It does not establish full-span VICE equality, original-game IRQ behavior, rendered audio or selection 1's musical role.
+
+### Reproduce the form investigation
+
+Install the pinned reference through the setup command below, obtain the retained evidence scripts, and use a fresh working directory. The four research scripts create their outputs exclusively. The opening and full-span probes execute the existing guarded CPU; the control/provenance scripts only inspect retained observations and pinned source data.
+
+```sh
+mkdir build/ghouls-form-new
+cp evidence/ghouls-form/probe.py evidence/ghouls-form/check-opening.py evidence/ghouls-form/describe.py evidence/ghouls-form/retain.py build/ghouls-form-new/
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 scripts/trace-sid-program.py .local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid --first-call 0 --last-call 255 --profile pal-banked --subtune 1 --output build/ghouls-form-new/opening.trace.json
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 build/ghouls-form-new/probe.py --ticks 256 --output build/ghouls-form-new/opening256
+cp build/ghouls-form-new/probe.py build/ghouls-form-new/opening256/probe-executed.py
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 build/ghouls-form-new/check-opening.py
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 build/ghouls-form-new/probe.py --ticks 40000 --output build/ghouls-form-new/full40000
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 build/ghouls-form-new/describe.py
+python3 scripts/trace-sid-vice.py .local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid --profile pal-banked --subtune 1 --oracle build/ghouls-form-new/vice-stop/oracle.json --first-call 12989 --last-call 13002 --timeout 180 --output build/ghouls-form-new/vice-stop/trace
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 build/ghouls-form-new/retain.py
+```
+
+The [manifest/evidence workflow](../../workflows/build-cache.md) restores historical paths when inspecting the canonical proof instead of repeating execution. The opening executed script is retained separately because the full-run script corrected one space in the hash-recipe text after opening validation; behavior is unchanged. Archive only the four scripts and opening script snapshot, bounded opening trace, validation/form/provenance receipts, both compact observation/ledger sets and reports, and stop-window projection/oracle/parsed trace/study. The original SID, whole payload/RAM image, executable VICE payload/host and raw monitor/process logs stay outside the archive.
+
+Restoration expands gzip files to their original JSON paths. The Ghouls checkers additionally expect the historical `.gz` observation and ledger containers in `opening256/` and `full40000/`; when checking an archived run, copy those canonical containers unchanged into the matching working subdirectories. Do not recompress them: receipts pin their stored bytes. Run checkers only where their exclusively created output files do not yet exist. The fresh-execution recipe above already produces the required layout.
+
 ## Reproduce the bounded checks
 
 Acquire the exact linked SID into its private location and verify the SHA-256 above. The [download and evidence guide](../../setup/local-setup.md) owns private reference handling. Use fresh output paths; the inspector and auditor refuse existing output files.
@@ -60,4 +113,4 @@ PYTHONPATH=.tools/test-deps python3 scripts/psid_audit.py .local/research/ghouls
 python3 scripts/trace-sid-vice.py .local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid --oracle build/ghouls-sid-window-new/audit64.writes.json --profile pal-banked --subtune 1 --first-call 0 --last-call 63 --output build/ghouls-sid-window-new/vice64
 ```
 
-To check the old failure, [restore the archived records](../../workflows/build-cache.md) and run `python3 build/ghouls-sid-window/reproduce-isolated.py`. The companion pins the original verifier and its dependencies from checkpoint `57b371b`, builds a temporary private root and compares all 12 retained instruction contexts without overwriting historical receipts. It removes the temporary source copy afterward. The direct old verifier intentionally rejects changed dependency hashes; isolation keeps it reproducible as the current profile parser evolves. Do not run the original executed probe against the corrected auditor expecting the old failure. No longer trace or render is claimed here.
+To check the old failure, [restore the archived records](../../workflows/build-cache.md) and run `python3 build/ghouls-sid-window/reproduce-isolated.py`. The companion pins the original verifier and its dependencies from checkpoint `57b371b`, builds a temporary private root and compares all 12 retained instruction contexts without overwriting historical receipts. It removes the temporary source copy afterward. The direct old verifier intentionally rejects changed dependency hashes; isolation keeps it reproducible as the current profile parser evolves. Do not run the original executed probe against the corrected auditor expecting the old failure. The historical failure recipe makes no additional execution or rendering claim.

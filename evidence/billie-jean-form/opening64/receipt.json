@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "inputs": {
+    "source": {
+      "path": ".local/research/billie-jean/Billie_Jean.sid",
+      "bytes": 3883,
+      "sha256": "16d8eae4d22f368520589c44e9db399b64092664bee6e1e70ca4b21c60bf0c54"
+    },
+    "baseline": {
+      "path": "evidence/pop-theme-intake/billie-jean.audit64.writes.json.gz",
+      "bytes": 5273,
+      "sha256": "f6927d772aef076194cca16ae27d65c8abe16832d423dba361c011a718bb41d5"
+    },
+    "probe": {
+      "path": "build/billie-jean-form/probe.py",
+      "bytes": 8713,
+      "sha256": "b057584cda8bf52b5bf7aeefc590573e7e276a61f566b08d6d710fa79b68b22e"
+    },
+    "model": {
+      "path": "build/billie-jean-form/score.py",
+      "bytes": 6285,
+      "sha256": "3fd1cba78fa1f94f2881059c93f2f6d8ee21f8eafea97a6a59fb3d461deed645"
+    },
+    "tools": {
+      "psid_audit.py": "eeea11cdbb5159745f36802526ee2f2986d12fe19ce47b3609fedcf15f47e1bd",
+      "psid_profile.py": "c2c696db133ed024840cfa5edbc76e3a07ef1f30345cc1820c978a51a73c816d",
+      "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+      "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    }
+  },
+  "calls": 64,
+  "matchedReads": 55,
+  "matchedRows": 8,
+  "matchedOpeningRecords": 1271,
+  "orderedWrites": 1271,
+  "validatedPlayReturns": 64,
+  "sourceUnchanged": true,
+  "globalWraps": [],
+  "failures": {},
+  "artifacts": {
+    "score.json": {
+      "sha256": "7c8b47afeaa046dbb5aefa02bb2c5cbb37062be8198ebd0017cd3fe077f4bb96",
+      "bytes": 20587,
+      "decodedSha256": "7c8b47afeaa046dbb5aefa02bb2c5cbb37062be8198ebd0017cd3fe077f4bb96",
+      "decodedBytes": 20587
+    },
+    "audit.json": {
+      "sha256": "fd6a6d95d3b2187f81ec290eb7d375f0763b516122a1366cb522c86d09cd319e",
+      "bytes": 2572,
+      "decodedSha256": "fd6a6d95d3b2187f81ec290eb7d375f0763b516122a1366cb522c86d09cd319e",
+      "decodedBytes": 2572
+    },
+    "reads.json.gz": {
+      "sha256": "17a686747b0e884ef58f1fb13005c3b3c719d403781b11a9c6465140c008331d",
+      "bytes": 539,
+      "decodedSha256": "09c518bc8e62c888d8522d964b1b1f1de5776e213051d3e8fc0917e8e4909777",
+      "decodedBytes": 4417
+    },
+    "rows.json.gz": {
+      "sha256": "a5af98b5058e18f15cc3178416ef71036cac467100a243f824e231b87053c3e7",
+      "bytes": 294,
+      "decodedSha256": "e06842348a6fe361cdbd86eca66f59a21fafbe295ee9832535e147ab52db69a2",
+      "decodedBytes": 1615
+    },
+    "returns.json.gz": {
+      "sha256": "61d7f74f8a17e059ccdccc79e65557be307ac3f32eaa3a2b2e5cad8dea2be9a6",
+      "bytes": 6214,
+      "decodedSha256": "5e71bdf850a8daea1b5cc4385ff4aa7d273bae62354de1f949fea50f8098a8b1",
+      "decodedBytes": 41563
+    },
+    "writes.json.gz": {
+      "sha256": "f6927d772aef076194cca16ae27d65c8abe16832d423dba361c011a718bb41d5",
+      "bytes": 5273,
+      "decodedSha256": "9fa5c718f36b636baa842c0471bbb3d3980eda123376be13c2d05f6c342cfb34",
+      "decodedBytes": 104090
+    },
+    "hooks.json": {
+      "sha256": "41ba353894863385958dc5ce3323b0193aa465c92485ff759650af327e156f0a",
+      "bytes": 968,
+      "decodedSha256": "41ba353894863385958dc5ce3323b0193aa465c92485ff759650af327e156f0a",
+      "decodedBytes": 968
+    }
+  },
+  "limits": "Initialized controlled PAL banked calls with score/read/row/return state equality only. Score expansion computes no sound programs or SID writes. RAM/CPU hashes exclude absolute cycles and physical SID/CIA/VIC state; no original-game cadence, bus-write timing, reconstruction, rendering or listening judgment."
+}

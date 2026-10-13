@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "16d8eae4d22f368520589c44e9db399b64092664bee6e1e70ca4b21c60bf0c54",
+  "selectedSubtune": 1,
+  "profile": "pal-banked",
+  "initPC": 5280,
+  "playPC": 4096,
+  "sourceHooks": "complete14274/hooks.json",
+  "scoreModel": "score.py",
+  "modelScope": "Only the pinned selected source grammar and named score state. No waveform/PWM/pitch/filter calculation or SID-event generation.",
+  "clock": {
+    "dividerAddress": 5241,
+    "reload": 2,
+    "reloadPC": 4107,
+    "rowRemainingBase": 5194,
+    "decrementPC": 4119,
+    "rule": "Divider decrements modulo256 and reloads2 on a negative result; remaining decrements only at divider0. Row dispatch requires the decrement result negative. Each low5-bit duration therefore lasts3*(duration+1) play calls.",
+    "firstRowCall": 2
+  },
+  "orders": {
+    "bases": [
+      5632,
+      5888,
+      6144
+    ],
+    "cursorBase": 5216,
+    "readPC": 4140,
+    "transposeBase": 5267,
+    "transposeRule": "NonFF high-bit byte sets unsigned transpose=value&7F, advances order cursor and consumes following pattern index. Transpose persists otherwise.",
+    "transposeReadPatternPC": 4173,
+    "globalFFResetPC": 4146,
+    "globalFFRule": "OrderFF resets ALL3order cursors to0 then rereads current voice order in the same call; no full initialization or sound-state reset.",
+    "patternPointerLowBase": 6400,
+    "patternPointerHighBase": 6528,
+    "patternCursorBase": 5213,
+    "selectedPatternBase": 5258,
+    "processingVoices": [
+      2,
+      1,
+      0
+    ]
+  },
+  "rows": {
+    "headerReadPC": 4192,
+    "durationMask": 31,
+    "restClassMask": 224,
+    "restClassValue": 192,
+    "restRule": "C0..DF header consumes no instrument/glide/note payload. Peek following byte forFF end, then gateMask=FE; continuing sound body still executes.",
+    "restFollowingReadPC": 4217,
+    "instrumentFlag": 128,
+    "instrumentReadPC": 4249,
+    "instrumentOffsetBase": 5232,
+    "instrumentRule": "instrumentOffset=(argument*8)&FF; field persists without the flag.",
+    "glideFlag": 64,
+    "glideStepReadPC": 4267,
+    "glideTargetReadPC": 4273,
+    "noteReadPC": 4283,
+    "baseNoteBase": 5210,
+    "noteRule": "Ordinary note and glide target add retained transpose modulo256.",
+    "holdFlagMask": 32,
+    "holdFlagBase": 5252,
+    "followingReadPC": 4297,
+    "endRule": "FollowingFF sets patternCursor0 and increments this voice order cursor; otherwise cursor points to next header.",
+    "byteCursorRule": "Pattern/order cursors and consumed Y offsets are bytes."
+  },
+  "initScoreState": {
+    "clearedBases": [
+      5213,
+      5216,
+      5194,
+      5252,
+      5267
+    ],
+    "clearedDivider": 5241,
+    "retainedLoadedBaseNotes": [
+      74,
+      25,
+      45
+    ],
+    "retainedLoadedInstrumentOffsets": [
+      8,
+      32,
+      56
+    ],
+    "retainedLoadedPatternIndices": [
+      1,
+      2,
+      0
+    ]
+  },
+  "callableReturns": {
+    "initOuterRTS": 5285,
+    "playOuterRTS": 4917,
+    "inactiveEarlyRTS": 4101,
+    "requiredSP": 253,
+    "stackWordInit": 49209,
+    "stackWordPlay": 49228,
+    "basis": "Actual shared fixed-PAL host JSR return-1 words, validated before each source RTS."
+  },
+  "provenScope": {
+    "calls": 14274,
+    "wrapCalls": [
+      7106,
+      14210
+    ],
+    "scoreReads": 20343,
+    "completedRows": 3110,
+    "playReturns": 14274,
+    "orderedInitPlayStores": 278617,
+    "initStores": 3,
+    "scoreModelComputesStores": false,
+    "boundedEditCallsPerCase": 128
+  },
+  "unproved": [
+    "Sound-program semantics",
+    "Complete independent player/export",
+    "Original loader cadence",
+    "Exact SID bus cycles",
+    "Physical SID/CIA/VIC state recurrence",
+    "Acoustic ending/repetition",
+    "Musical roles/phrasing",
+    "Rendering/listening/transfer"
+  ]
+}

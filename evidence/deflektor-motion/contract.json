@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Independent numeric Deflektor motion components; caller scheduling and complete note setup are separate.",
+  "api": {
+    "advance_pwm": {"inputs": ["PulseProgram(interval, table_base, low_step)", "PulseState(elapsed, position, word)", "motion_table"], "output": "PulseState"},
+    "initialize_pitch": {"inputs": ["selector", "PitchState(wait, position, word)", "motion_table"], "output": "PitchState"},
+    "advance_pitch": {"inputs": ["selector", "PitchState(wait, position, word)", "motion_table"], "output": "PitchState"},
+    "initialize_resonance": {"inputs": ["selector", "ResonanceState(countdown, position)", "resonance_table", "shared_shadow"], "output": ["ResonanceState", "shared_shadow"]},
+    "advance_resonance": {"inputs": ["selector", "ResonanceState(countdown, position)", "resonance_table", "shared_shadow"], "output": ["ResonanceState", "shared_shadow"]}
+  },
+  "data": {
+    "scalarDomain": "All parameters/state fields are uint8 except word, which is uint16; booleans reject. States/programs are frozen dataclasses and numeric mappings remain unchanged.",
+    "motionTable": {"domain": "Mapping[int, uint8]", "retainedIndicesInclusive": [0, 279], "pwmLookup": "(table_base + (position & 127)) & 255", "pitchLookup": "24 + ((selector + (position & 127)) & 255)", "pitchInitializerLookup": "24 + selector"},
+    "resonanceTable": {"domain": "Mapping[int, uint8]", "retainedIndicesInclusive": [0, 256], "headerLookup": "selector", "stageLookup": "1 + ((selector + position) & 255)", "initializerLookup": "1 + selector"},
+    "jsonMappingKeys": "Convert numeric JSON object keys with int(key) before supplying a Python table mapping.",
+    "sourceAliases": "PWM base32 and pitch selector8 use the same motion-table cells32..39. The extracted resonance view also overlaps motion cells132..279 at resonance indices0..147; extraction preserves equal source bytes, while each API receives an explicit editable mapping.",
+    "disabled": "Zero interval/selector retains the validated state and performs no table lookup.",
+    "unsupported": "Missing/non-byte numeric table entries and non-terminating PWM marker cycles reject. Synthetic table bytes are interpreted by the verified arithmetic, not inferred as musical notes."
+  },
+  "callerRules": [
+    "Invoke continuing motion only after caller body admission; row boundaries, rests and global suppression are external decisions.",
+    "Note initialization supplies the newly selected frequency word. Enabled pitch initialization loads its wait and position1 without changing the word.",
+    "Patch selection resets resonance position0 before any note initializer, retaining its countdown. Note initialization may then replace countdown/position.",
+    "Compose one shared resonance shadow in voice0, voice1, voice2 order. Each enabled update changes only high nibble, preserving incoming routing low bits.",
+    "PWM, delayed pitch and resonance compute RAM shadows, not SID stores. The ordered writer is a separate component."
+  ],
+  "verification": "verified-final/verification.json",
+  "sourceEvidence": {
+    "sourceSha256": "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d",
+    "sourceUrl": "https://www.hvsc.de/download/C64Music/MUSICIANS/D/Daglish_Ben/Deflektor.sid",
+    "credit": "Ben Daglish",
+    "motionTableBase": 51597,
+    "resonanceTableBase": 51729,
+    "voiceFieldAddresses": {"interval": 49338, "table_base": 49341, "low_step": 49395, "elapsed": 49392, "pulse_position": 49398, "pitch_selector": 49350, "pitch_wait": 49347, "pitch_position": 49353, "resonance_selector": 49407, "resonance_countdown": 49404, "resonance_position": 49401},
+    "sharedResonanceShadowAddress": 49324,
+    "observedScope": "PWM/pitch comparisons seed each incoming state from the retained complete source execution. Resonance carries independent local timers/positions and shared shadow across calls0..8480, but source evidence supplies selectors and row/patch actions. Mutation controls change inputs against those contexts, not a rerun of an edited original driver.",
+    "runtimeBoundary": "Source addresses, paths, CPU instructions, events and verification hashes are provenance only. Pure helpers consume named state and numeric table cells; no original driver or captured event/register replay is a runtime dependency."
+  }
+}

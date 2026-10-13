@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "traceInstructions": 34516,
+  "streamReads": 112,
+  "commandDispatches": 22,
+  "outerReturns": 256,
+  "orderedInitPlayStores": 1578,
+  "historicalFirst64Stores": 387,
+  "pureSummaryGuards": [
+    "Nested root-pointer read excluded",
+    "Partial voice disable is not global score stop",
+    "First all-inactive call and complete processed inactive span retained"
+  ],
+  "inputHashes": {
+    "build/ghouls-form/opening.trace.json": "e923d868fcde8ab520279d76960562d86e223999c14a4b2edde80e8f2a2fd7ca",
+    "build/ghouls-form/opening256/observations.json.gz": "96193bb8bbecd120c7d5fa61c8607bb8b83d296813d2f5a35f3f76eb142fb02b",
+    "build/ghouls-form/opening256/audit.writes.json.gz": "ca09f70ce90b78a2254238b3d7452cb45b6634bf30458904cad1c92d31f4952d",
+    "evidence/ghouls-sid-window/audit64.writes.json.gz": "ba0d96a861d0433abcc2f6eebed46c97715a25f1a6928850a47bf39827599ecd"
+  },
+  "checkerSha256": "1457461186b9627e5740a9c92b376b51954391f722d7c6e274d650814f90ca8b",
+  "limits": "Matches observed hook/read fields and ordered stores, not an independently implemented score decoder or full machine-state reconstruction."
+}

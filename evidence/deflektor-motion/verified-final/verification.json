@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d",
+  "dependencies": {
+    "psid_profile.py": "c2c696db133ed024840cfa5edbc76e3a07ef1f30345cc1820c978a51a73c816d",
+    "psid_audit.py": "eeea11cdbb5159745f36802526ee2f2986d12fe19ce47b3609fedcf15f47e1bd",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "canonicalEvidenceSha256": {
+    "states.json.gz": "3b5fc9904cdb384b2b2e214ba9cf709827e205b1be2d1270833ece542f518891",
+    "events.json.gz": "776c2aaa1effe25b1a70dc53630297b2d90961534db8f5febf4a232d59b4748a",
+    "writes.json.gz": "7c1ccca95afc19175b4efc50674f8f1e23783b0dcad525d5955a9cf85523fa00",
+    "initial-state.json": "d64b226588ada0b67b4408c7d6f000037408193dade2f08665ef8cffc1cd595d"
+  },
+  "source": {
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/D/Daglish_Ben/Deflektor.sid",
+    "credit": "Ben Daglish",
+    "bytes": 4081,
+    "selectedSubtune": 1,
+    "profile": "pal-banked",
+    "hostBase": 1024,
+    "loadAddress": 49152,
+    "endAddressExclusive": 53107,
+    "initAddress": 51216,
+    "playAddress": 49414,
+    "sidModel": "MOS6581"
+  },
+  "checkerSha256": "4719f16f620f18cb20a055f9449e4838d52ca16a0dcb8819aed7e4f44b5835db",
+  "modelSha256": "0645f389a28a5f3afa1cd93377d9c6bc42e09ed44eb2fdb2af15b862ed5425ae",
+  "testSha256": "1a6d88e3c85c85fad716dcb22a57e6018956ce4864c4b4a59493f21b21259879",
+  "sourceSegmentSha256": {
+    "pwm": {
+      "start": 50586,
+      "endExclusive": 50752,
+      "sha256": "82e8c17b3833efdaba7c08bcd484673104dfa2971a828055a671c4639c140b77"
+    },
+    "pitch": {
+      "start": 50752,
+      "endExclusive": 50895,
+      "sha256": "8d124cb32a564727848e8b44f1a48c67eda5cc6289c668c861b10698c149388c"
+    },
+    "pitchInit": {
+      "start": 50317,
+      "endExclusive": 50334,
+      "sha256": "932779a09e3cf7c9b33d565ae2bc9d2952c01645957d6a2a8a7845a41c2a4d7d"
+    },
+    "resonance": {
+      "start": 51139,
+      "endExclusive": 51215,
+      "sha256": "03eefda122faea0dfdf76ce26b3c12c48efbe78b1014faf4e29f161efdd61617"
+    },
+    "resonanceInit": {
+      "start": 50376,
+      "endExclusive": 50416,
+      "sha256": "5f555e653d9f7765ab9b24d2d3d100799b577f0e8a99bb7e77818176bdfa6a44"
+    }
+  },
+  "isolatedCaseCounts": {
+    "pwm": 720,
+    "pitch": 750,
+    "resonance": 720,
+    "pitchInit": 54,
+    "resonanceInit": 144
+  },
+  "isolatedMaximumCycles": 225,
+  "isolatedTableReads": {
+    "pwm": [
+      51597,
+      51598,
+      51599,
+      51600,
+      51629,
+      51630
+    ],
+    "pitch": [
+      51621,
+      51629,
+      51630,
+      51633,
+      51636,
+      51637,
+      51747,
+      51756,
+      51876
+    ],
+    "pitchInit": [
+      51629,
+      51876
+    ],
+    "resonance": [
+      51732,
+      51733,
+      51734,
+      51735,
+      51741,
+      51742,
+      51743,
+      51744,
+      51765,
+      51766,
+      51767,
+      51768
+    ],
+    "resonanceInit": [
+      51733,
+      51742,
+      51766
+    ]
+  },
+  "observedCounts": {
+    "patchResets": 663,
+    "resonanceNoteInitializers": 1820,
+    "sharedWriterChecks": 7524,
+    "pwmContexts": 19522,
+    "enabledPwmContexts": 15981,
+    "disabledPitchContexts": 14659,
+    "resonanceBodyContexts": 19522,
+    "enabledPitchContexts": 4863
+  },
+  "mutationCounts": {
+    "pulseStep": 15981,
+    "reverseVoiceOrder": 111,
+    "pitchStep": 159
+  },
+  "mutationExamples": {
+    "pulseStep": [
+      {
+        "call": 1,
+        "voiceIndex": 1,
+        "expected": {
+          "elapsed": 0,
+          "position": 1,
+          "word": 277
+        },
+        "altered": {
+          "elapsed": 0,
+          "position": 1,
+          "word": 278
+        }
+      },
+      {
+        "call": 2,
+        "voiceIndex": 1,
+        "expected": {
+          "elapsed": 1,
+          "position": 1,
+          "word": 298
+        },
+        "altered": {
+          "elapsed": 1,
+          "position": 1,
+          "word": 299
+        }
+      }
+    ],
+    "reverseVoiceOrder": [
+      {
+        "call": 1300,
+        "expected": 0,
+        "altered": 96
+      },
+      {
+        "call": 1460,
+        "expected": 0,
+        "altered": 96
+      }
+    ],
+    "pitchStep": [
+      {
+        "call": 2144,
+        "voiceIndex": 0,
+        "expected": {
+          "wait": 0,
+          "position": 2,
+          "word": 17924
+        },
+        "altered": {
+          "wait": 0,
+          "position": 2,
+          "word": 17923
+        }
+      },
+      {
+        "call": 2152,
+        "voiceIndex": 0,
+        "expected": {
+          "wait": 0,
+          "position": 130,
+          "word": 17724
+        },
+        "altered": {
+          "wait": 0,
+          "position": 130,
+          "word": 17725
+        }
+      }
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "numeric-tables.json",
+      "sha256": "e96d724d67f67cf6f0b322c393896c752e36ece1a344a3f35c8c8d61c8bd33d7",
+      "bytes": 8219,
+      "originalSha256": "e96d724d67f67cf6f0b322c393896c752e36ece1a344a3f35c8c8d61c8bd33d7",
+      "originalBytes": 8219
+    },
+    {
+      "path": "isolated-cases.json.gz",
+      "sha256": "1555af1f97fc2afc27731bb192d27297e61dd895076d2a63d680bdc4903d797c",
+      "bytes": 113613,
+      "originalSha256": "b326b8364f8028cdb1d70c96b0404e6fce8eb18e6716ddd67a657f462f1b115a",
+      "originalBytes": 4633675
+    },
+    {
+      "path": "contexts.json.gz",
+      "sha256": "1fba7201a4326bab7d740159bd10f6e4cf3e05906d07419a27085bf63143e6cc",
+      "bytes": 412983,
+      "originalSha256": "21e6d794bfa2867aa4292acb03793a6ff5109657ef518410f553b10fdca64fb2",
+      "originalBytes": 12305575
+    },
+    {
+      "path": "mutation-controls.json.gz",
+      "sha256": "ed090465b00237a234f33f5c3fb8e4ea0bebac30d792664a665d0b4f90058325",
+      "bytes": 90057,
+      "originalSha256": "ec3c86081515cfac7ef9354c26cabdf90fcc6f825c172610f030e4ba82da8372",
+      "originalBytes": 2061602
+    }
+  ],
+  "limits": [
+    "Independent numeric component predictions are compared to isolated original instructions and retained full-form states/stores. All oracles use the shared py65 CPU; no new full-title CPU or VICE run is made.",
+    "Observed PWM and delayed-pitch comparisons exclude row setup, rests and global suppression. Enabled delayed pitch is exposed only where score glide and later score-pitch macros are disabled. Resonance independently evolves local timers/positions and the shared shadow through selected calls0..8480, using selectors and row/patch actions supplied by retained source evidence; this is not an independent score scheduler.",
+    "Mutation controls change one numeric input against retained incoming contexts, or reverse same-call resonance processing. They demonstrate comparison sensitivity, not edited full-source reruns.",
+    "Tables retain literal aliased numeric byte ranges, not a raw RAM image, source payload or original code. Synthetic selector/phase edges use those same pinned bytes; they do not establish musical use of every table entry.",
+    "Non-terminating PWM marker chains reject explicitly. This component does not implement scheduling, complete note setup, complete synthesis, host IRQs, bus timing, audio or listening judgments."
+  ]
+}

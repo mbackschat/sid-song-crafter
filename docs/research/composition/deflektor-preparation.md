@@ -117,7 +117,7 @@ The editable [waveform model](../../../evidence/deflektor-programs/model.py) use
 
 The [verification](../../../evidence/deflektor-programs/verified-final/verification.json) and [receipt](../../../evidence/deflektor-programs/verified-final/receipt.json) preserve **624 isolated source cases**, **4,368 matching ordered writer stores**, and a new initialized 672-call ledger matching all **5,704 canonical stores**. The [real waveform boundaries](../../../evidence/deflektor-programs/verified-final/observed-wave.json.gz) match all 30 initializer/body invocations in calls 640–671 and all 28 voice-1 control stores. Note setup on 640 updates shadows while the global row-boundary path suppresses output: noise $81 reaches the SID on 641–642, triangle $11 on 643, coupled triangle $17 on 644, then noise again on 645. The next note repeats the coupled stage on 664. Removing SYNC/RING from that editable stage predicts and confirms $17→$11 at both 644 and 664. Gate-clear noise $80 is observed on 659. Four [model guards](../../../evidence/deflektor-programs/model_test.py) cover initialization replacement, finite hold/counter wrap, loop timing and disabled-state retention. The [complete narrow instruction record](../../../evidence/deflektor-programs/verified-final/instructions640-671.json.gz), [ordered initialized ledger](../../../evidence/deflektor-programs/verified-final/writes672.json.gz) and [isolated state/store records](../../../evidence/deflektor-programs/verified-final/isolated-cases.json.gz) retain the underlying evidence.
 
-The census separates source writes from loaded shadows: written cutoff bytes are $00/$0A, $D417 takes $00/$30/$60/$80 with routing low bits always zero, and $D418 remains $0F with filter modes clear. Shared resonance macros update one shadow in voice-processing order; a future player must preserve that ordering. No moving-filter contribution, original-game boot state, oscillator-phase equivalence, acoustic similarity or cowbell identification follows from the numeric checks. Only waveform advancement and the seven-register writer are independently modeled; scheduling, release eligibility, pulse, pitch and shared resonance remain separate components.
+The census separates source writes from loaded shadows: written cutoff bytes are $00/$0A, $D417 takes $00/$30/$60/$80 with routing low bits always zero, and $D418 remains $0F with filter modes clear. Shared resonance macros update one shadow in voice-processing order; a future player must preserve that ordering. No moving-filter contribution, original-game boot state, oscillator-phase equivalence, acoustic similarity or cowbell identification follows from the numeric checks. Waveform advancement and the seven-register writer are independently modeled; the [caller](#body-admission-and-score-selected-pitch-components) and [motion](#pulse-delayed-pitch-and-shared-resonance-components) components below provide further numeric primitives. Complete player integration remains separate.
 
 Reproduce into fresh outputs with the pinned dependencies and fetched form evidence:
 
@@ -129,6 +129,60 @@ PYTHONPATH=.tools/test-deps python3 evidence/deflektor-programs/paths.py .local/
 ```
 
 The [checker](../../../evidence/deflektor-programs/check.py) and [path probe](../../../evidence/deflektor-programs/paths.py) execute bounded original segments privately; the [context census](../../../evidence/deflektor-programs/context.py) reads retained evidence without CPU execution. None exports an original SID, full payload or full RAM image. Rendering, listening attribution and the independent complete-player implementation remain open.
+
+## Body admission and score-selected pitch components
+
+The independent [caller primitives](../../../evidence/deflektor-caller/model.py) compute named state without source files, CPU execution or event replay. They supply the body-entry decisions and late score-selected pitch operation needed to compose the waveform and motion components; they are not a complete scheduler or player.
+
+| Component / native locus | Numeric contract |
+| --- | --- |
+| `advance_prelude`, `$C529–$C59A` | Check gate release against the incoming row countdown first. Decrement the row and any rest countdown; a rest returns before motion. Otherwise a global row-boundary flag suppresses all subsequent programs. Return the updated `BodyState` and whether later programs must run. |
+| Three-byte score glide within the prelude | Decrement its wait before considering the active length. A nonzero length applies one 16-bit add/subtract step; length `$FF` persists, other lengths decrement. The direction comes from flag `$20`. This is separate from the instrument's delayed pitch program. |
+| `initialize_score_pitch`, `$C503–$C51C` | Reset enabled score-pitch position to one and load the decoded initial delay. Disabled programs retain their state. |
+| `advance_score_pitch`, `$C726–$C7C3` | Decrement its byte countdown, then apply the selected table-index offset to the base pitch index modulo 256. Add the unsigned detune byte to the caller-supplied frequency word modulo 65,536. Loop position zero supplies a base-pitch stage with its distinct restart delay. |
+| Finite score-pitch completion | On the first expired `$FF` position, restore base pitch plus detune and change position to `$FE`. Later calls keep decrementing/wrapping the countdown without further lookups. |
+
+The caller must perform the earlier global preparation: any row countdown equal to one is reset to zero, its rest flag is cleared, and that call suppresses continuing programs/output globally. It must then select row versus body processing. The prelude deliberately requires a nonzero incoming countdown and does not implement that earlier preparation itself. Release can still change a shadow during a suppressed body; a shadow change does not imply a SID store that call.
+
+All five selected score-pitch programs, offsets **8, 16, 24, 32 and 40**, decode to initial wait **2**, restart wait **1**, a loop flag and one or two editable offset/duration stages. The model retains raw frequency words rather than inventing chromatic pitches for adjacent source data. A zero restart-delay header follows a different native special case and is explicitly unsupported by this component. Three-byte glide remains synthetic source coverage: the retained title contexts never enable its length field.
+
+The [verification receipt](../../../evidence/deflektor-caller/verification.json) records **2,646 isolated original-block comparisons**: 576 preludes, 2,016 score-pitch bodies and 54 initializers. All match named output state with no unexpected SID stores or stack changes. The [complete isolated cases](../../../evidence/deflektor-caller/isolated.json.gz) include all three voices, wrap boundaries, rest/global suppression, delays, disabled programs and finite/looping pitch variants. Against existing full-form evidence, the helper matches **23,535** eligible body contexts and **5,791** exposed late pitch lookups; [all retained comparisons](../../../evidence/deflektor-caller/contexts.json.gz) preserve inputs, predictions and the checked scope. Scheduled rows are excluded. Later programs can overwrite earlier frequency/control results, so those values are compared only in skipped bodies or after an exposed final pitch lookup. No full-title CPU rerun, full synthesis, bus timing or listening claim follows.
+
+Three [focused guards](../../../evidence/deflektor-caller/model_test.py) cover release-before-rest, global suppression before glide, the final wrapping glide step and finite pitch restoration. After obtaining the pinned reference and dependencies, copy the scripts to a fresh working directory; the [source checker](../../../evidence/deflektor-caller/check.py) creates its evidence exclusively:
+
+```sh
+mkdir build/deflektor-caller-new
+cp evidence/deflektor-caller/model.py evidence/deflektor-caller/model_test.py evidence/deflektor-caller/check.py build/deflektor-caller-new/
+python3 build/deflektor-caller-new/model_test.py
+PYTHONPATH=.tools/test-deps python3 build/deflektor-caller-new/check.py
+```
+
+## Pulse, delayed pitch and shared resonance components
+
+The pure [motion helpers](../../../evidence/deflektor-motion/model.py) consume immutable named state and explicit numeric tables, with the interface and source-field mapping in the [contract](../../../evidence/deflektor-motion/contract.json). They read no source file, original CPU, captured events or register ledger at runtime. Caller admission, row scheduling, patch selection and the ordered SID writer are separate responsibilities.
+
+| Component / native locus | Numeric behavior |
+| --- | --- |
+| `advance_pwm`, `$C59A–$C640` | Increment an elapsed byte. On its interval, set the target high byte, clear the low byte and process direction/restart markers; interpolate toward the next target in that same invocation. Addition/subtraction changes only pulse low, without carrying or borrowing into high. |
+| `initialize_pitch` / `advance_pitch`, `$C48D–$C49E` / `$C640–$C6CF` | Load the initial wait and position one. Positive waits decrement without stepping; negative waits run until their low seven bits expire, with `$80` holding. Signed byte steps update the full frequency word modulo 65,536; phase reversal reverses their sign. |
+| `initialize_resonance` / `advance_resonance`, `$C4C8–$C4F0` / `$C7C3–$C80F` | The initializer adds one invocation to the first duration. Later stages use the literal low nibble, including zero; headers retain their literal low three bits, including zero. Each update replaces shared `$D417` high bits while preserving routing low bits. |
+
+The [editable numeric tables](../../../evidence/deflektor-motion/verified-final/numeric-tables.json) retain required aliased ranges. PWM's unshifted base `$20` and delayed-pitch selector 8 share motion cells 32–39. PWM indexing wraps the byte addition; pitch applies its extra logical base 24 **after** that wrap. The resonance view also overlaps part of the retained motion range; their source mapping records that overlap, while each helper accepts an explicit editable mapping. Convert JSON object keys with `int(key)` before supplying a Python table. Missing/non-byte cells and non-terminating PWM marker chains reject explicitly.
+
+The [verification receipt](../../../evidence/deflektor-motion/verified-final/verification.json) records **2,388 isolated original-segment comparisons**: 720 PWM, 750 delayed-pitch, 720 resonance, 54 pitch initializers and 144 resonance initializers. All three voices, low/word wrap, marker reversal, positive/negative waits, byte-index wrap, finite/loop positions and routing preservation are covered in the [complete isolated records](../../../evidence/deflektor-motion/verified-final/isolated-cases.json.gz); maximum segment cost is 225 cycles, with no SID stores or stack imbalance. The source oracles share the guarded py65 implementation, so this is independent arithmetic with a shared CPU oracle.
+
+Against existing full-form evidence, [retained comparisons](../../../evidence/deflektor-motion/verified-final/contexts.json.gz) match **19,522** admitted body contexts, including **15,981 enabled PWM** and **4,863 exposed delayed-pitch** contexts and their final register pairs. PWM/pitch checks exclude row setup, rests and globally suppressed calls; enabled delayed pitch is checked only where the score glide and later score-pitch macro cannot hide its result. Shared resonance independently carries local timers/positions and one shared shadow through calls **0–8,480**, including **1,820 note initializers**, **663 patch-position resets** and **7,524 `$D417` writer checks**. Selectors and row/patch actions come from source evidence: this checks the composed resonance machinery, not an independent score scheduler.
+
+The [mutation controls](../../../evidence/deflektor-motion/verified-final/mutation-controls.json.gz) detect pulse-step changes in 15,981 contexts, an altered pitch step in 159 contexts and reversed same-call voice order in 111 calls. First examples occur at 1/2 for pulse, 2,144/2,152 for pitch and 1,300/1,460 for voice order. These compare edited numeric inputs against retained incoming contexts; they are not edited full-source reruns. Eight [focused guards](../../../evidence/deflektor-motion/model_test.py) protect same-invocation PWM markers, low-only wrap, the aliased base, signed delay/reversal, literal zero resonance durations, voice order, disabled paths and rejected inputs.
+
+After fetching the form evidence's Git LFS objects and installing the pinned reference/dependencies, reproduce into a fresh output directory:
+
+```sh
+python3 evidence/deflektor-motion/model_test.py
+PYTHONPATH=.tools/test-deps python3 evidence/deflektor-motion/check.py .local/research/deflektor/Deflektor.sid --output build/deflektor-motion-new
+```
+
+The [checker](../../../evidence/deflektor-motion/check.py) pins the source, current guarded CPU dependencies and retained inputs before executing only bounded original segments. It exports numeric tables, named comparisons and bounded instruction evidence; no original SID, payload or full RAM image. The checkpoint adds no full-title CPU rerun, VICE run, render, acoustic comparison or listening judgment. It supplies components for a future independent complete player.
 
 ## Reproduce intake
 

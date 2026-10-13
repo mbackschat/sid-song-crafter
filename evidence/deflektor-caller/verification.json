@@ -1,0 +1,100 @@
+{
+  "sourceSha256": "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d",
+  "sourceUnchanged": true,
+  "tools": {
+    "psid_profile.py": "c2c696db133ed024840cfa5edbc76e3a07ef1f30345cc1820c978a51a73c816d",
+    "psid_audit.py": "eeea11cdbb5159745f36802526ee2f2986d12fe19ce47b3609fedcf15f47e1bd",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "statesSha256": "3b5fc9904cdb384b2b2e214ba9cf709827e205b1be2d1270833ece542f518891",
+  "modelSha256": "776e6854fe7053059c088bbf3c7639fe71ec45b5516c0b311bf7b61d8149f477",
+  "checkerSha256": "e19da9ddd6b47fbfb73faceafe3f2d139fe39754a4a7e47cfa6ea3d4191c353c",
+  "isolatedCases": 2646,
+  "retainedBodyContexts": 23535,
+  "exposedScorePitchLookups": 5791,
+  "programs": {
+    "8": {
+      "initial_wait": 2,
+      "restart_wait": 1,
+      "loop": true,
+      "stages": [
+        {
+          "offset": 22,
+          "duration": 1
+        }
+      ]
+    },
+    "16": {
+      "initial_wait": 2,
+      "restart_wait": 1,
+      "loop": true,
+      "stages": [
+        {
+          "offset": 4,
+          "duration": 1
+        },
+        {
+          "offset": 7,
+          "duration": 1
+        }
+      ]
+    },
+    "24": {
+      "initial_wait": 2,
+      "restart_wait": 1,
+      "loop": true,
+      "stages": [
+        {
+          "offset": 3,
+          "duration": 1
+        },
+        {
+          "offset": 8,
+          "duration": 1
+        }
+      ]
+    },
+    "32": {
+      "initial_wait": 2,
+      "restart_wait": 1,
+      "loop": true,
+      "stages": [
+        {
+          "offset": 5,
+          "duration": 1
+        },
+        {
+          "offset": 9,
+          "duration": 1
+        }
+      ]
+    },
+    "40": {
+      "initial_wait": 2,
+      "restart_wait": 1,
+      "loop": true,
+      "stages": [
+        {
+          "offset": 3,
+          "duration": 1
+        },
+        {
+          "offset": 7,
+          "duration": 1
+        }
+      ]
+    }
+  },
+  "artifacts": {
+    "isolated.json.gz": {
+      "sha256": "f43d2fff2d6ee1541be4c5c9ea3cbd69a3eeed1a67ef78fc81c5299928f7bc67",
+      "decodedSha256": "3d5ffd4c83f7318a90c66b22a959a62c123c0d2e88cfa68e494a464754e7228c"
+    },
+    "contexts.json.gz": {
+      "sha256": "88dbbcf8a4f521754da59ba021072261d722125412fa2cdd332a5dc5e526e1e8",
+      "decodedSha256": "892eeed8866e2b22f9d0b707e607387894356578c6bafd459f59540133bffd8b"
+    }
+  },
+  "limits": "Independent prelude and score-selected pitch only. Retained comparisons exclude scheduled rows; later motion can mask incoming frequency/control, so only exposed post-pitch lookups and skipped bodies assert those fields. Lookup words are numeric caller data, not a full player or audio model. Zero restart-delay headers are explicitly unsupported. No new full-title CPU run or original payload/RAM dump."
+}

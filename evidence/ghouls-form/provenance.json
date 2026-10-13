@@ -1,0 +1,1313 @@
+{
+  "sourceSha256": "265644a66d6043e6fe5ddeeb0d87e9b4269386a73c3e26457c8d96ce3d042df4",
+  "sourceURL": "https://www.hvsc.de/download/C64Music/MUSICIANS/F/Follin_Tim/Ghouls_n_Ghosts.sid",
+  "selectedSubtune": 1,
+  "musicalRole": "provisional",
+  "pythonVersion": "3.9.6",
+  "py65Version": "1.2.0",
+  "py65CoreSourceSha256": "15d93835b4f279b702270d9a0b417938291347ec57cc12d9e0307cd344d381fe",
+  "tools": {
+    "psid_profile.py": "c2c696db133ed024840cfa5edbc76e3a07ef1f30345cc1820c978a51a73c816d",
+    "psid_audit.py": "eeea11cdbb5159745f36802526ee2f2986d12fe19ce47b3609fedcf15f47e1bd",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+    "trace-sid-program.py": "0f5d9d5297236774227ccbb92c8aa3acc639846b0116fd445fc15b4520c7431b",
+    "trace-sid-vice.py": "18a21e373d7dcd679771c256fa6d930106718246cb3e0c7647329d985eb73352"
+  },
+  "scriptSha256": "82d14845c2a8cbef2e0af4e926e539fee8fbf2e2e7bcad0c4839f6af130519e6",
+  "artifacts": {
+    "probe.py": {
+      "bytes": 11543,
+      "sha256": "78c053e60fc99f9812608c8f85e1ced649abe13d440b17fbebb39c61e0259f94"
+    },
+    "opening256/probe-executed.py": {
+      "bytes": 11542,
+      "sha256": "1eb778ff9d5c14446c44ebd1cce8e2e74103d7dde12c3502569af8d9682b54a0"
+    },
+    "check-opening.py": {
+      "bytes": 4346,
+      "sha256": "1457461186b9627e5740a9c92b376b51954391f722d7c6e274d650814f90ca8b"
+    },
+    "describe.py": {
+      "bytes": 9311,
+      "sha256": "9853330947da8d82b2aebee4d2fbe720cca46ef99a1cb589fc52063ccd8785e8"
+    },
+    "opening.trace.json": {
+      "bytes": 8924735,
+      "sha256": "e923d868fcde8ab520279d76960562d86e223999c14a4b2edde80e8f2a2fd7ca"
+    },
+    "opening-validation.json": {
+      "bytes": 1142,
+      "sha256": "5b807efc7d276dec4ae15088561a925d82db4616032a3335f5c79ba20cc99986"
+    },
+    "opening256/observations.json.gz": {
+      "bytes": 5504,
+      "sha256": "96193bb8bbecd120c7d5fa61c8607bb8b83d296813d2f5a35f3f76eb142fb02b"
+    },
+    "opening256/audit.writes.json.gz": {
+      "bytes": 6793,
+      "sha256": "ca09f70ce90b78a2254238b3d7452cb45b6634bf30458904cad1c92d31f4952d"
+    },
+    "opening256/audit.json": {
+      "bytes": 3504,
+      "sha256": "6714caa88ecde49ca639f040a85797d42ede9a838fd0069aa8bef5e6341908c5"
+    },
+    "opening256/summary.json": {
+      "bytes": 3363,
+      "sha256": "60e1d80add5f1745becb072148bf35b5deab920227ec4c1a20c6019e6629116a"
+    },
+    "opening256/receipt.json": {
+      "bytes": 2443,
+      "sha256": "03a622dc748a8da4c951606fadef09cbf55d0b4838c43eebb68ce8a93f8af1b7"
+    },
+    "full40000/observations.json.gz": {
+      "bytes": 256267,
+      "sha256": "fe9f56123e415b529b05ccba7ffbcf3586b8ee72d476c16809c6b912fc80ff7f"
+    },
+    "full40000/audit.writes.json.gz": {
+      "bytes": 484284,
+      "sha256": "addb073a5219e46d9c1bee8f9249b9d0e98936399d951ff2936a616f870dff14"
+    },
+    "full40000/audit.json": {
+      "bytes": 4208,
+      "sha256": "31546ceb8092c8c6d045a22d0aad999d1365a1de6ada2f7dc98e81e8dd669f8b"
+    },
+    "full40000/summary.json": {
+      "bytes": 8146,
+      "sha256": "707f9b9f0e9f302acb98b5a3ebf4b8f73e741df5c265c8510e7ce703462d172b"
+    },
+    "full40000/receipt.json": {
+      "bytes": 2457,
+      "sha256": "1a7bd8715ec182ea68d8368171789add40472567b12413630125cef6fc01ae96"
+    },
+    "form.json": {
+      "bytes": 12026,
+      "sha256": "98b02ecafb66e1d14c3763fdab869ce658238cc48a5eac34f2a65b92ff9fc0a1"
+    },
+    "vice-stop/projection.json": {
+      "bytes": 658,
+      "sha256": "a50fcc51a2b54d3ce25261bf0e5e66942ad8f8f7c70e49ebf9aad5afbd0e7e1b"
+    },
+    "vice-stop/oracle.json": {
+      "bytes": 8679,
+      "sha256": "fc8290567325ef64c593055e94f5115d4faf53908dcd3b42ae1a561a1b3141f0"
+    },
+    "vice-stop/trace/study.json": {
+      "bytes": 3911,
+      "sha256": "74bee83098049069d7d2967cf2b094cfcf198299da7882bf7fce9c2bf99faf71"
+    },
+    "vice-stop/trace/trace.json": {
+      "bytes": 9175192,
+      "sha256": "b380ec7742f4b38cf29fcd996dcd5ebad0ca238848061136d9b4e473ae4e73ac"
+    }
+  },
+  "nativeStaticInstructionBasis": [
+    {
+      "pc": 24848,
+      "bytes": "a8",
+      "assembly": "TAY"
+    },
+    {
+      "pc": 24864,
+      "bytes": "4c1673",
+      "assembly": "JMP $7316"
+    },
+    {
+      "pc": 29462,
+      "bytes": "c90b",
+      "assembly": "CMP #$0b"
+    },
+    {
+      "pc": 29466,
+      "bytes": "4c8029",
+      "assembly": "JMP $2980"
+    },
+    {
+      "pc": 10626,
+      "bytes": "b91a2a",
+      "assembly": "LDA $2a1a,Y"
+    },
+    {
+      "pc": 10629,
+      "bytes": "209929",
+      "assembly": "JSR $2999"
+    },
+    {
+      "pc": 10635,
+      "bytes": "b9252a",
+      "assembly": "LDA $2a25,Y"
+    },
+    {
+      "pc": 10638,
+      "bytes": "209929",
+      "assembly": "JSR $2999"
+    },
+    {
+      "pc": 10646,
+      "bytes": "4c5361",
+      "assembly": "JMP $6153"
+    },
+    {
+      "pc": 10681,
+      "bytes": "a935",
+      "assembly": "LDA #$35"
+    },
+    {
+      "pc": 10683,
+      "bytes": "8501",
+      "assembly": "STA $01"
+    },
+    {
+      "pc": 10694,
+      "bytes": "b1fc",
+      "assembly": "LDA ($fc),Y"
+    },
+    {
+      "pc": 10696,
+      "bytes": "91fa",
+      "assembly": "STA ($fa),Y"
+    },
+    {
+      "pc": 10715,
+      "bytes": "b1fc",
+      "assembly": "LDA ($fc),Y"
+    },
+    {
+      "pc": 10717,
+      "bytes": "91fa",
+      "assembly": "STA ($fa),Y"
+    },
+    {
+      "pc": 10724,
+      "bytes": "8501",
+      "assembly": "STA $01"
+    },
+    {
+      "pc": 24918,
+      "bytes": "bd0e73",
+      "assembly": "LDA $730e,X"
+    },
+    {
+      "pc": 24923,
+      "bytes": "bd1573",
+      "assembly": "LDA $7315,X"
+    },
+    {
+      "pc": 24928,
+      "bytes": "bd1c73",
+      "assembly": "LDA $731c,X"
+    },
+    {
+      "pc": 24933,
+      "bytes": "bd2373",
+      "assembly": "LDA $7323,X"
+    },
+    {
+      "pc": 24938,
+      "bytes": "bd2a73",
+      "assembly": "LDA $732a,X"
+    },
+    {
+      "pc": 24943,
+      "bytes": "bd3173",
+      "assembly": "LDA $7331,X"
+    },
+    {
+      "pc": 25140,
+      "bytes": "a57b",
+      "assembly": "LDA $7b"
+    },
+    {
+      "pc": 25142,
+      "bytes": "3003",
+      "assembly": "BMI $623b"
+    },
+    {
+      "pc": 25144,
+      "bytes": "4c2164",
+      "assembly": "JMP $6421"
+    },
+    {
+      "pc": 25633,
+      "bytes": "a57c",
+      "assembly": "LDA $7c"
+    },
+    {
+      "pc": 25635,
+      "bytes": "3003",
+      "assembly": "BMI $6428"
+    },
+    {
+      "pc": 25637,
+      "bytes": "4c1066",
+      "assembly": "JMP $6610"
+    },
+    {
+      "pc": 26128,
+      "bytes": "a57d",
+      "assembly": "LDA $7d"
+    },
+    {
+      "pc": 26130,
+      "bytes": "3003",
+      "assembly": "BMI $6617"
+    },
+    {
+      "pc": 26132,
+      "bytes": "4cff67",
+      "assembly": "JMP $67ff"
+    },
+    {
+      "pc": 25442,
+      "bytes": "b121",
+      "assembly": "LDA ($21),Y"
+    },
+    {
+      "pc": 25448,
+      "bytes": "bd376c",
+      "assembly": "LDA $6c37,X"
+    },
+    {
+      "pc": 25454,
+      "bytes": "bd766c",
+      "assembly": "LDA $6c76,X"
+    },
+    {
+      "pc": 25460,
+      "bytes": "4ca368",
+      "assembly": "JMP $68a3"
+    },
+    {
+      "pc": 25935,
+      "bytes": "b123",
+      "assembly": "LDA ($23),Y"
+    },
+    {
+      "pc": 25941,
+      "bytes": "bd4c6c",
+      "assembly": "LDA $6c4c,X"
+    },
+    {
+      "pc": 25947,
+      "bytes": "bd8b6c",
+      "assembly": "LDA $6c8b,X"
+    },
+    {
+      "pc": 25953,
+      "bytes": "4c1a6c",
+      "assembly": "JMP $6c1a"
+    },
+    {
+      "pc": 26430,
+      "bytes": "b125",
+      "assembly": "LDA ($25),Y"
+    },
+    {
+      "pc": 26436,
+      "bytes": "bd616c",
+      "assembly": "LDA $6c61,X"
+    },
+    {
+      "pc": 26442,
+      "bytes": "bda06c",
+      "assembly": "LDA $6ca0,X"
+    },
+    {
+      "pc": 26448,
+      "bytes": "4c2d69",
+      "assembly": "JMP $692d"
+    },
+    {
+      "pc": 26943,
+      "bytes": "b121",
+      "assembly": "LDA ($21),Y"
+    },
+    {
+      "pc": 26945,
+      "bytes": "8d04d4",
+      "assembly": "STA $d404"
+    },
+    {
+      "pc": 26948,
+      "bytes": "852a",
+      "assembly": "STA $2a"
+    },
+    {
+      "pc": 26968,
+      "bytes": "b123",
+      "assembly": "LDA ($23),Y"
+    },
+    {
+      "pc": 26970,
+      "bytes": "8d0bd4",
+      "assembly": "STA $d40b"
+    },
+    {
+      "pc": 26973,
+      "bytes": "852b",
+      "assembly": "STA $2b"
+    },
+    {
+      "pc": 26993,
+      "bytes": "b125",
+      "assembly": "LDA ($25),Y"
+    },
+    {
+      "pc": 26995,
+      "bytes": "8d12d4",
+      "assembly": "STA $d412"
+    },
+    {
+      "pc": 26998,
+      "bytes": "852c",
+      "assembly": "STA $2c"
+    },
+    {
+      "pc": 27018,
+      "bytes": "e67b",
+      "assembly": "INC $7b"
+    },
+    {
+      "pc": 27020,
+      "bytes": "4c2164",
+      "assembly": "JMP $6421"
+    },
+    {
+      "pc": 27023,
+      "bytes": "e67c",
+      "assembly": "INC $7c"
+    },
+    {
+      "pc": 27025,
+      "bytes": "4c1066",
+      "assembly": "JMP $6610"
+    },
+    {
+      "pc": 27028,
+      "bytes": "e67d",
+      "assembly": "INC $7d"
+    },
+    {
+      "pc": 27030,
+      "bytes": "4cff67",
+      "assembly": "JMP $67ff"
+    },
+    {
+      "pc": 26684,
+      "bytes": "a56f",
+      "assembly": "LDA $6f"
+    },
+    {
+      "pc": 26686,
+      "bytes": "8d15d4",
+      "assembly": "STA $d415"
+    },
+    {
+      "pc": 26700,
+      "bytes": "0596",
+      "assembly": "ORA $96"
+    },
+    {
+      "pc": 26702,
+      "bytes": "8d16d4",
+      "assembly": "STA $d416"
+    },
+    {
+      "pc": 26705,
+      "bytes": "a57b",
+      "assembly": "LDA $7b"
+    },
+    {
+      "pc": 26707,
+      "bytes": "057c",
+      "assembly": "ORA $7c"
+    },
+    {
+      "pc": 26709,
+      "bytes": "057d",
+      "assembly": "ORA $7d"
+    },
+    {
+      "pc": 26711,
+      "bytes": "60",
+      "assembly": "RTS"
+    }
+  ],
+  "commandTables": [
+    {
+      "code": 128,
+      "voice": 0,
+      "annotation": "pulse-parameters",
+      "lowAddress": 27831,
+      "highAddress": 27894,
+      "bytes": [
+        153,
+        105
+      ],
+      "target": 27033,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 128,
+      "voice": 1,
+      "annotation": "pulse-parameters",
+      "lowAddress": 27852,
+      "highAddress": 27915,
+      "bytes": [
+        189,
+        105
+      ],
+      "target": 27069,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 128,
+      "voice": 2,
+      "annotation": "pulse-parameters",
+      "lowAddress": 27873,
+      "highAddress": 27936,
+      "bytes": [
+        225,
+        105
+      ],
+      "target": 27105,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 129,
+      "voice": 0,
+      "annotation": "repeat-end",
+      "lowAddress": 27832,
+      "highAddress": 27895,
+      "bytes": [
+        163,
+        104
+      ],
+      "target": 26787,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 129,
+      "voice": 1,
+      "annotation": "repeat-end",
+      "lowAddress": 27853,
+      "highAddress": 27916,
+      "bytes": [
+        178,
+        104
+      ],
+      "target": 26802,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 129,
+      "voice": 2,
+      "annotation": "repeat-end",
+      "lowAddress": 27874,
+      "highAddress": 27937,
+      "bytes": [
+        193,
+        104
+      ],
+      "target": 26817,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 130,
+      "voice": 0,
+      "annotation": "repeat-start",
+      "lowAddress": 27833,
+      "highAddress": 27896,
+      "bytes": [
+        88,
+        104
+      ],
+      "target": 26712,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 130,
+      "voice": 1,
+      "annotation": "repeat-start",
+      "lowAddress": 27854,
+      "highAddress": 27917,
+      "bytes": [
+        113,
+        104
+      ],
+      "target": 26737,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 130,
+      "voice": 2,
+      "annotation": "repeat-start",
+      "lowAddress": 27875,
+      "highAddress": 27938,
+      "bytes": [
+        138,
+        104
+      ],
+      "target": 26762,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 131,
+      "voice": 0,
+      "annotation": "rest-parameters",
+      "lowAddress": 27834,
+      "highAddress": 27897,
+      "bytes": [
+        208,
+        104
+      ],
+      "target": 26832,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 131,
+      "voice": 1,
+      "annotation": "rest-parameters",
+      "lowAddress": 27855,
+      "highAddress": 27918,
+      "bytes": [
+        218,
+        104
+      ],
+      "target": 26842,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 131,
+      "voice": 2,
+      "annotation": "rest-parameters",
+      "lowAddress": 27876,
+      "highAddress": 27939,
+      "bytes": [
+        228,
+        104
+      ],
+      "target": 26852,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 132,
+      "voice": 0,
+      "annotation": "duration-override",
+      "lowAddress": 27835,
+      "highAddress": 27898,
+      "bytes": [
+        238,
+        104
+      ],
+      "target": 26862,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 132,
+      "voice": 1,
+      "annotation": "duration-override",
+      "lowAddress": 27856,
+      "highAddress": 27919,
+      "bytes": [
+        247,
+        104
+      ],
+      "target": 26871,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 132,
+      "voice": 2,
+      "annotation": "duration-override",
+      "lowAddress": 27877,
+      "highAddress": 27940,
+      "bytes": [
+        0,
+        105
+      ],
+      "target": 26880,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 133,
+      "voice": 0,
+      "annotation": "sid-store-list",
+      "lowAddress": 27836,
+      "highAddress": 27899,
+      "bytes": [
+        9,
+        105
+      ],
+      "target": 26889,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 133,
+      "voice": 1,
+      "annotation": "sid-store-list",
+      "lowAddress": 27857,
+      "highAddress": 27920,
+      "bytes": [
+        27,
+        105
+      ],
+      "target": 26907,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 133,
+      "voice": 2,
+      "annotation": "sid-store-list",
+      "lowAddress": 27878,
+      "highAddress": 27941,
+      "bytes": [
+        45,
+        105
+      ],
+      "target": 26925,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 134,
+      "voice": 0,
+      "annotation": "disable-voice",
+      "lowAddress": 27837,
+      "highAddress": 27900,
+      "bytes": [
+        138,
+        105
+      ],
+      "target": 27018,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 134,
+      "voice": 1,
+      "annotation": "disable-voice",
+      "lowAddress": 27858,
+      "highAddress": 27921,
+      "bytes": [
+        143,
+        105
+      ],
+      "target": 27023,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 134,
+      "voice": 2,
+      "annotation": "disable-voice",
+      "lowAddress": 27879,
+      "highAddress": 27942,
+      "bytes": [
+        148,
+        105
+      ],
+      "target": 27028,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 135,
+      "voice": 0,
+      "annotation": "absolute-jump",
+      "lowAddress": 27838,
+      "highAddress": 27901,
+      "bytes": [
+        208,
+        106
+      ],
+      "target": 27344,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 135,
+      "voice": 1,
+      "annotation": "absolute-jump",
+      "lowAddress": 27859,
+      "highAddress": 27922,
+      "bytes": [
+        241,
+        106
+      ],
+      "target": 27377,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 135,
+      "voice": 2,
+      "annotation": "absolute-jump",
+      "lowAddress": 27880,
+      "highAddress": 27943,
+      "bytes": [
+        18,
+        107
+      ],
+      "target": 27410,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 136,
+      "voice": 0,
+      "annotation": "filter-parameters",
+      "lowAddress": 27839,
+      "highAddress": 27902,
+      "bytes": [
+        11,
+        106
+      ],
+      "target": 27147,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 136,
+      "voice": 1,
+      "annotation": "filter-parameters",
+      "lowAddress": 27860,
+      "highAddress": 27923,
+      "bytes": [
+        63,
+        106
+      ],
+      "target": 27199,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 136,
+      "voice": 2,
+      "annotation": "filter-parameters",
+      "lowAddress": 27881,
+      "highAddress": 27944,
+      "bytes": [
+        115,
+        106
+      ],
+      "target": 27251,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 137,
+      "voice": 0,
+      "annotation": "filter-owner",
+      "lowAddress": 27840,
+      "highAddress": 27903,
+      "bytes": [
+        167,
+        106
+      ],
+      "target": 27303,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 137,
+      "voice": 1,
+      "annotation": "filter-owner",
+      "lowAddress": 27861,
+      "highAddress": 27924,
+      "bytes": [
+        174,
+        106
+      ],
+      "target": 27310,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 137,
+      "voice": 2,
+      "annotation": "filter-owner",
+      "lowAddress": 27882,
+      "highAddress": 27945,
+      "bytes": [
+        181,
+        106
+      ],
+      "target": 27317,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 138,
+      "voice": 0,
+      "annotation": "call",
+      "lowAddress": 27841,
+      "highAddress": 27904,
+      "bytes": [
+        188,
+        106
+      ],
+      "target": 27324,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 138,
+      "voice": 1,
+      "annotation": "call",
+      "lowAddress": 27862,
+      "highAddress": 27925,
+      "bytes": [
+        221,
+        106
+      ],
+      "target": 27357,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 138,
+      "voice": 2,
+      "annotation": "call",
+      "lowAddress": 27883,
+      "highAddress": 27946,
+      "bytes": [
+        254,
+        106
+      ],
+      "target": 27390,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 139,
+      "voice": 0,
+      "annotation": "return",
+      "lowAddress": 27842,
+      "highAddress": 27905,
+      "bytes": [
+        49,
+        107
+      ],
+      "target": 27441,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 139,
+      "voice": 1,
+      "annotation": "return",
+      "lowAddress": 27863,
+      "highAddress": 27926,
+      "bytes": [
+        66,
+        107
+      ],
+      "target": 27458,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 139,
+      "voice": 2,
+      "annotation": "return",
+      "lowAddress": 27884,
+      "highAddress": 27947,
+      "bytes": [
+        83,
+        107
+      ],
+      "target": 27475,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 140,
+      "voice": 0,
+      "annotation": "transpose",
+      "lowAddress": 27843,
+      "highAddress": 27906,
+      "bytes": [
+        100,
+        107
+      ],
+      "target": 27492,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 140,
+      "voice": 1,
+      "annotation": "transpose",
+      "lowAddress": 27864,
+      "highAddress": 27927,
+      "bytes": [
+        108,
+        107
+      ],
+      "target": 27500,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 140,
+      "voice": 2,
+      "annotation": "transpose",
+      "lowAddress": 27885,
+      "highAddress": 27948,
+      "bytes": [
+        116,
+        107
+      ],
+      "target": 27508,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 141,
+      "voice": 0,
+      "annotation": "waveform",
+      "lowAddress": 27844,
+      "highAddress": 27907,
+      "bytes": [
+        63,
+        105
+      ],
+      "target": 26943,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 141,
+      "voice": 1,
+      "annotation": "waveform",
+      "lowAddress": 27865,
+      "highAddress": 27928,
+      "bytes": [
+        88,
+        105
+      ],
+      "target": 26968,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 141,
+      "voice": 2,
+      "annotation": "waveform",
+      "lowAddress": 27886,
+      "highAddress": 27949,
+      "bytes": [
+        113,
+        105
+      ],
+      "target": 26993,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 142,
+      "voice": 0,
+      "annotation": "frequency-motion",
+      "lowAddress": 27845,
+      "highAddress": 27908,
+      "bytes": [
+        124,
+        107
+      ],
+      "target": 27516,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 142,
+      "voice": 1,
+      "annotation": "frequency-motion",
+      "lowAddress": 27866,
+      "highAddress": 27929,
+      "bytes": [
+        147,
+        107
+      ],
+      "target": 27539,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 142,
+      "voice": 2,
+      "annotation": "frequency-motion",
+      "lowAddress": 27887,
+      "highAddress": 27950,
+      "bytes": [
+        170,
+        107
+      ],
+      "target": 27562,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 143,
+      "voice": 0,
+      "annotation": "onset-parameters",
+      "lowAddress": 27846,
+      "highAddress": 27909,
+      "bytes": [
+        193,
+        107
+      ],
+      "target": 27585,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 143,
+      "voice": 1,
+      "annotation": "onset-parameters",
+      "lowAddress": 27867,
+      "highAddress": 27930,
+      "bytes": [
+        220,
+        107
+      ],
+      "target": 27612,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 143,
+      "voice": 2,
+      "annotation": "onset-parameters",
+      "lowAddress": 27888,
+      "highAddress": 27951,
+      "bytes": [
+        247,
+        107
+      ],
+      "target": 27639,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 144,
+      "voice": 0,
+      "annotation": "gate-time",
+      "lowAddress": 27847,
+      "highAddress": 27910,
+      "bytes": [
+        18,
+        108
+      ],
+      "target": 27666,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 144,
+      "voice": 1,
+      "annotation": "gate-time",
+      "lowAddress": 27868,
+      "highAddress": 27931,
+      "bytes": [
+        26,
+        108
+      ],
+      "target": 27674,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 144,
+      "voice": 2,
+      "annotation": "gate-time",
+      "lowAddress": 27889,
+      "highAddress": 27952,
+      "bytes": [
+        34,
+        108
+      ],
+      "target": 27682,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 145,
+      "voice": 0,
+      "annotation": "note-motion",
+      "lowAddress": 27848,
+      "highAddress": 27911,
+      "bytes": [
+        42,
+        108
+      ],
+      "target": 27690,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 145,
+      "voice": 1,
+      "annotation": "note-motion",
+      "lowAddress": 27869,
+      "highAddress": 27932,
+      "bytes": [
+        60,
+        108
+      ],
+      "target": 27708,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 145,
+      "voice": 2,
+      "annotation": "note-motion",
+      "lowAddress": 27890,
+      "highAddress": 27953,
+      "bytes": [
+        78,
+        108
+      ],
+      "target": 27726,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 146,
+      "voice": 0,
+      "annotation": "glide-rate",
+      "lowAddress": 27849,
+      "highAddress": 27912,
+      "bytes": [
+        96,
+        108
+      ],
+      "target": 27744,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 146,
+      "voice": 1,
+      "annotation": "glide-rate",
+      "lowAddress": 27870,
+      "highAddress": 27933,
+      "bytes": [
+        104,
+        108
+      ],
+      "target": 27752,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 146,
+      "voice": 2,
+      "annotation": "glide-rate",
+      "lowAddress": 27891,
+      "highAddress": 27954,
+      "bytes": [
+        112,
+        108
+      ],
+      "target": 27760,
+      "dispatchedInFullRun": true
+    },
+    {
+      "code": 147,
+      "voice": 0,
+      "annotation": "pitch-index-mode",
+      "lowAddress": 27850,
+      "highAddress": 27913,
+      "bytes": [
+        120,
+        108
+      ],
+      "target": 27768,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 147,
+      "voice": 1,
+      "annotation": "pitch-index-mode",
+      "lowAddress": 27871,
+      "highAddress": 27934,
+      "bytes": [
+        126,
+        108
+      ],
+      "target": 27774,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 147,
+      "voice": 2,
+      "annotation": "pitch-index-mode",
+      "lowAddress": 27892,
+      "highAddress": 27955,
+      "bytes": [
+        132,
+        108
+      ],
+      "target": 27780,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 148,
+      "voice": 0,
+      "annotation": "pulse-default",
+      "lowAddress": 27851,
+      "highAddress": 27914,
+      "bytes": [
+        138,
+        108
+      ],
+      "target": 27786,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 148,
+      "voice": 1,
+      "annotation": "pulse-default",
+      "lowAddress": 27872,
+      "highAddress": 27935,
+      "bytes": [
+        153,
+        108
+      ],
+      "target": 27801,
+      "dispatchedInFullRun": false
+    },
+    {
+      "code": 148,
+      "voice": 2,
+      "annotation": "pulse-default",
+      "lowAddress": 27893,
+      "highAddress": 27956,
+      "bytes": [
+        168,
+        108
+      ],
+      "target": 27816,
+      "dispatchedInFullRun": false
+    }
+  ],
+  "annotationBoundary": "Command names describe native state/output families, not musical roles or complete synthesis contracts. Basis bytes are static archive instructions; patched JMP targets and consumed bytes are executed observations in the full ledger.",
+  "sourceCopies": [
+    {
+      "pc": 10678,
+      "source": 10820,
+      "destination": 29454,
+      "bytes": 5083,
+      "bankBefore": 55
+    },
+    {
+      "pc": 10678,
+      "source": 16047,
+      "destination": 38287,
+      "bytes": 1907,
+      "bankBefore": 55
+    }
+  ],
+  "scoreForm": "Finite per-voice stream consumption; all voices inactive after call12995",
+  "stateEquality": {
+    "calls": [
+      12995,
+      39999
+    ],
+    "ramSha256": "66a89436bb713ce6d5ef2925f80e17dfe21df607ba9b7bd0e07e9bd46e37d2d3",
+    "ramCpuSha256": "ee53278a3d20ed4a07667ba50746a7944d437ce1aa682ede9af45d4ecd8d9013",
+    "cpu": {
+      "a": 0,
+      "x": 134,
+      "y": 1,
+      "sp": 253,
+      "p": 38,
+      "pc": 26711
+    },
+    "scope": "Equal sampled complete backing-RAM+CPU state; not a one-call fixed-point test or SID/audio recurrence"
+  },
+  "viceVerification": {
+    "matchedWrites": 102,
+    "playCalls": 13003,
+    "firstCall": 12989,
+    "lastCall": 13002,
+    "frameCycles": 19656,
+    "maximumCadenceError": 8,
+    "cadenceTolerance": 9,
+    "matchedInitWrites": 58,
+    "matchedPlayWrites": 44
+  },
+  "proofScope": "Complete40000-call CPU ordered ledger,256-call instruction/hook validation, and all-init plus12989..13002 VICE ordered-store comparison.",
+  "excluded": [
+    "Original SID",
+    "Whole source payload/RAM dump",
+    "Full third-party listing",
+    "Executable payload/host",
+    "Raw monitor/process logs",
+    "Rendered audio"
+  ],
+  "limits": "Controlled PAL callable host, provisional selection1. Score stop retains two filter stores per later call. No original IRQ host, SID reads/bus-state model, cycle-equivalent reconstruction, acoustic ending or listening verdict."
+}
