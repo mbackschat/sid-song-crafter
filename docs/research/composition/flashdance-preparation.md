@@ -16,6 +16,20 @@ The retained [frames](../../../build/reference-studies/drax/flashdance.frames.js
 
 These are measured trajectories, not recovered algorithms. Trace the responsible instructions and RAM operands before identifying bounds, delays, reset rules or reusable parameters.
 
+## Executed feasibility findings
+
+A bounded execution study of the pinned binary identifies requirements beyond the Elise backend:
+
+| Mechanism | Executed evidence and consequence |
+| --- | --- |
+| Same-call restart | Instrument initialization writes AD `$00`, SR `$0F`, TEST `$08` at PCs `$12D3/$12D8/$12DD`, followed by actual ADSR and TEST/GATE `$09` at `$1374/$1380/$1385`. Do not impose Elise's two preceding preparation calls. |
+| Different body writer | PCs `$15F7–$1618` write pulse width, shared cutoff, frequency and control. ADSR belongs to initialization rather than being reasserted every body call. |
+| Staged lead | Instrument offset `$10` selects AD/SR `$03/$3C`, triangle→saw→pulse stages and a looping body. PWM begins at `$D00`, bounds high `$A/$F`, step `$70`; a later row changes the step to `$10` without resetting width. Preserve row transitions and state, not just extrema. |
+| Moving chord variants | Initializers at calls 2/130/258/386 select four chord programs. The opening has offsets `[0,0,4,4,7,7,12,12]`, AD/SR `$03/$34`, width `$040` and step `$0D`. Describe the four-tone cycle independently from the score note. |
+| Per-voice fine tuning | PC `$14FB` adds the table `$1762,X` value: 0/1/2 for bass/lead/chord. The opening lead `$2710` becomes `$2711`; chord `$0F82` becomes `$0F84`. Preserve the exact programmed words alongside their musical interpretation. |
+
+These are decoded local execution observations, not independent synthesis or listening acceptance. The first four-chord turn, calls 0–513, is the [plan's first reconstruction milestone](../study-plan.md#flashdance-next-executable-milestones). Continue through waveform/pitch tables `$187B/$197B`, PWM rows read at `$1399–$13DD`, movement `$13E0–$141A`, and score reader `$114B`; the existing pinned diagnostic adapter retains the production auditor's strict I/O boundary.
+
 ## Description → library → our code
 
 Decode one chosen phrase from initialization, including silent preparation. Retain exact frequency words, initializer/off calls, attack stages, PWM arithmetic, vibrato phase/delay, arpeggio dwell, release evolution and shared-filter write order. Keep score events separate from instrument-owned gate closure. Promote each verified mechanism into an editable library card with provenance, constraints, demonstration and listening verdict; then implement it in our computed engine. Include neither the original driver nor captured-register playback. Require ordered-write equality and independent VICE execution for the single-SID reconstruction before arrangement changes.

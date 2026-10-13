@@ -1,8 +1,12 @@
-# C64 SID music laboratory
+# SID Song Crafter
 
-Research and reusable tools for composing expressive Commodore 64 music for one or two SIDs. Songs serve as case studies for learning sound design, preserving useful findings and improving the next arrangement. Sound quality is the priority: learn from the masters, study their editors and drivers, and build a tested instrument repertoire. The working targets are PAL with one MOS6581/MOS8580 or two matching chips at `$D400/$D420`; native recipes default to MOS8580 and can select `sidModel: "MOS6581"`. Original musical sources, common scores, and SID arrangements remain separate so conversion does not erase source information or define the chip's expressive limits.
+A composition and sound-design workbench for the **Commodore 64 SID chip**, supporting **single- and dual-SID music**.
+
+Songs serve as case studies for learning sound design, preserving useful findings and improving the next arrangement. Sound quality is the priority: learn from the masters, study their editors and drivers, and build a tested instrument repertoire. The working targets are PAL with one MOS6581/MOS8580 or two matching chips at `$D400/$D420`; native recipes default to MOS8580 and can select `sidModel: "MOS6581"`. Original musical sources, common scores, and SID arrangements remain separate so conversion does not erase source information or define the chip's expressive limits.
 
 ## Start here
+
+- [Workbench study plan](docs/research/study-plan.md): Flashdance next, six master-composer studies, then two 1980s pop songs and two screen themes; scope and completion criteria.
 
 - [Full independent DRAX Für Elise comparison](songs/studies/drax-full-reconstruction/README.md): complete thematic cycle, original and our own computed player.
 - [Decoded-instrument composition workflow](docs/decoded-song-workflow.md): editable descriptions, independent code, full register and VICE verification; [Flashdance preparation](docs/research/composition/flashdance-preparation.md).
@@ -30,6 +34,8 @@ Research and reusable tools for composing expressive Commodore 64 music for one 
 ## Repository and dependencies
 
 Project sources and research belong in Git. `.tools/` contains reproducible third-party checkouts; `.local/` contains diagnostics and runtime state; `build/` contains generated output. These directories and the machine-local `.codex/` configuration are ignored. The relative skill symlinks in `.agents/skills/` point to the versioned copies in `skills/`.
+
+Downloaded reference SID files and their rendered audio stay in ignored `.local/` or `build/` directories and must not enter the public repository, including its Git history. Keep upstream download links, attribution, checksums and local preparation commands in Git; fetch the original files locally.
 
 The checked-in [configuration example](config/codex.toml) records this machine's installation paths. Adapt it before activating it on another computer. Follow [local setup](docs/local-setup.md) for exact upstream revisions and installation commands; use the upstream Bun lockfile for c64bridge.
 

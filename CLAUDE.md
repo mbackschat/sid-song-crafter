@@ -1,6 +1,10 @@
-# C64 SID Project Guide
+# SID Song Crafter Project Guide
 
 Read with [AGENTS.md](AGENTS.md), which owns contributor conventions, commands and repository layout. Prioritize expressive SID music and reusable knowledge. Correct notes and successful playback do not establish musical quality.
+
+## Continue the workbench
+
+Use the [study plan](docs/research/study-plan.md) for the active case and next milestone. SID Song Crafter is a composition and sound-design workbench for the Commodore 64 SID chip, supporting single- and dual-SID music; reusable playback code serves expressive music and an executable repertoire. A verified loop or pleasing excerpt does not complete a whole-song deliverable.
 
 ## Retrieve before researching
 

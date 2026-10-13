@@ -1,6 +1,10 @@
-# C64 SID research
+# SID Song Crafter research
 
 Research updated: 2026-10-12. The priority is distinctive, expressive SID music: study the masters, understand their tools, develop reusable instruments, and verify the results. Source conversion and correct playback support that goal. This is an evidence-based working library, not a claim of exhaustive knowledge or completed listening tests.
+
+## Active work
+
+Follow the [workbench study plan](study-plan.md): Flashdance, six composer studies, then two 1980s pop songs plus Airwolf and Ghostbusters. The plan owns sequence, completion criteria and remaining musical scope.
 
 ## Browse the library
 

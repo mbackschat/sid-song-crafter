@@ -8,7 +8,7 @@ Our own 6502 code reconstructs all three voices of DRAX's complete recurring the
 - [Our independent reconstruction](../../../build/drax-full-listen/reconstructed.wav).
 - [Our playable SID](../../../build/drax-full-listen/reconstructed.sid).
 
-Both WAVs are 42 seconds, rendered with identical PAL MOS6581 settings and unity gain. The original starts looping around 40.3 seconds; ours ends and retains a quiet verification tail. The full comparison awaits listening feedback. The earlier [independent opening A/B](../../../build/drax-independent-trio/full.ab.wav) received “Nice”; that does not establish full-song indistinguishability.
+Both WAVs are 42 seconds, rendered with identical PAL MOS6581 settings and unity gain. The original starts looping around 40.3 seconds; ours ends and retains a quiet verification tail. The full comparison received “nice so far,” with the finding that Elise feels unfinished. A complete Beethoven interpretation remains deferred behind Flashdance in the [work plan](../../../docs/research/study-plan.md). The earlier [independent opening A/B](../../../build/drax-independent-trio/full.ab.wav) received “Nice”; that does not establish full-song indistinguishability.
 
 ## Description, library and build
 

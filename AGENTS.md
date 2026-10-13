@@ -2,6 +2,8 @@
 
 ## Musical Priority
 
+**SID Song Crafter** is a composition and sound-design workbench for the Commodore 64 SID chip, supporting single- and dual-SID music.
+
 Prioritize expressive SID interpretations: capture a song's character through phrasing, groove, improvisation and native chip effects. Preserve source material separately from deliberate arrangement changes. Treat songs as case studies for learning sound design and building reusable tools and methods. Study composers, published accounts, editors and drivers; preserve findings in [research](docs/research/README.md). Extend the [sound repertoire](docs/research/composition/sound-design-repertoire.md) and [musical gesture library](docs/research/composition/gestures/README.md) with editable examples, useful contexts, limitations and listening evidence. Record reusable findings, source provenance and reproduction instructions; do not keep debugging diaries. Technical playback success does not establish musical quality; record listening judgments separately.
 
 ## Retrieve and Apply Knowledge
@@ -44,6 +46,10 @@ Record reusable constraints, verified workarounds and reproduction commands in [
 GTK VICE 3.9 opens in the user's Terminal but fails agent-launched OpenGL initialization; log-colour/minimization changes do not fix it. Its `-headless` is unsupported and `-console` still invokes GTK. Use the genuine headless build and file-based monitor; this session denies socket binding. c64bridge's dummy audio can produce empty recordings; capture directly to WAV without warp.
 
 Select the default SID subtune before libsidplayfp playback; an unselected tune passes `$ff` to init. Keep this [regression finding](docs/audio-workflow.md) in future renderers.
+
+## Public Repository Boundary
+
+Keep downloaded reference SID binaries and their rendered audio out of Git and the public repository, including history. Store them under ignored `.local/` or `build/`; commit upstream URLs, attribution, hashes and reproducible download instructions instead. Never force-add reference files. Check tracked files and history before publishing.
 
 ## Commit & Pull Request Guidelines
 
