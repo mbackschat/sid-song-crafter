@@ -6,6 +6,12 @@ Read with [AGENTS.md](AGENTS.md), which owns contributor conventions, commands a
 
 Use the [study plan](docs/research/study-plan.md) for the active case and next milestone. SID Song Crafter is a composition and sound-design workbench for the Commodore 64 SID chip, supporting single- and dual-SID music; reusable playback code serves expressive music and an executable repertoire. A verified loop or pleasing excerpt does not complete a whole-song deliverable.
 
+## Finish musical deliverables
+
+Keep one musical case active, in the [plan's delivery order](docs/research/study-plan.md#delivery-order-and-work-in-progress). Finish its export, ending, listening review and original transfer before deepening another study. Numeric agreement is preparation; successful reuse in a listening-reviewed original phrase is the decisive test of the workbench's value. While feedback is pending, finish that case's reproducibility and reuse documentation; spare agent capacity is not a reason to open another investigation. Preserve deferred work.
+
+Before additional analysis, name the unresolved question, the deliverable or decision it blocks, and the evidence that will settle it. Once that evidence passes, advance to the next delivery stage. Reopen only for changed inputs, a demonstrated mismatch or an explicit expansion of the supported contract. Follow the [delivery and reuse workflow](docs/workflows/decoded-song-workflow.md#deliver-one-musical-case) without weakening required execution or full-form checks.
+
 ## Checkpoints and documentation
 
 Commit autonomously after a coherent feature set or meaningful verified checkpoint. Batch related implementation, tests and findings into reviewable commits; avoid a commit for every small edit. Never push without authorization.
@@ -47,7 +53,7 @@ Prefer verified headless VICE and file-monitor workflows. Use bridge tools only 
 
 ## Listening and retained findings
 
-Offer few labelled clips with A/B order and one clear question. Identify originals, muted diagnostics, independent recreations and hybrids. Match phrase/model/settings; retain original levels and record gains. Use common gain for contextual substitutions. Preserve shared audition files and stop iterating when asked to await feedback.
+Use the [listening package](docs/workflows/audio-comparisons.md#package-a-listening-review): a representative phrase, a separate ending comparison and direct links to both full renders. Offer few labelled clips with actual filenames, A/B order and one clear question per judgment. Identify originals, muted diagnostics, independent recreations and hybrids. Match phrase/model/settings; retain original levels and record gains. Use common gain for contextual substitutions. Preserve shared audition files and stop iterating when asked to await feedback.
 
 Record the listener's verdict with its exact scope: perceptual agreement on one passage does not establish PCM identity, hardware equivalence or approval of another arrangement.
 
@@ -57,7 +63,7 @@ Keep reusable mechanisms, constraints, provenance and reproduction instructions 
 
 **Model tiers are symbolic (HIGH, MEDIUM).** Resolve them through the tier table in your global instructions; the maintainer's table is [Model tier mappings](https://github.com/mbackschat/coding-setup/blob/main/CLAUDE.md#model-tier-mappings). Without such a table, run HIGH on your most capable model and MEDIUM on a faster, cheaper one, and say which models you used. Do not duplicate mappings or silently substitute unsupported configurations.
 
-Delegation is authorized; prefer MEDIUM for bounded independent investigation, isolated implementation or consequential review. Keep small or tightly dependent work local. Give minimal sufficient context, file ownership and acceptance criteria. Reuse informed agents; batch related tasks and avoid duplicate research/testing. The coordinator owns integration and claims. Escalate only for demonstrated difficulty; stop obsolete work.
+Delegation is authorized; prefer MEDIUM for bounded independent investigation, isolated implementation or consequential review. Keep small or tightly dependent work local. Keep every assignment tied to the active musical deliverable or a concrete dependency it needs. Give minimal sufficient context, file ownership and acceptance criteria, including a stopping condition. Reuse informed agents; batch related tasks and avoid duplicate research/testing. The coordinator owns integration and claims. Escalate only for demonstrated difficulty; stop obsolete work.
 
 ## Choose validation that answers the question
 

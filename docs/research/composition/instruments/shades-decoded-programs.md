@@ -37,3 +37,17 @@ PYTHONPATH=.tools/test-deps python3 scripts/shades_player.py songs/shades-transf
 Compile and render the same editable inputs through [the independent workflow](../../../workflows/decoded-song-workflow.md). The [transfer build receipt](../../../../evidence/shades-transfer/build.json) records a 2,370-byte payload, 10,734 matching stores over 1,522 calls and no original driver or replay data. The [VICE receipt](../../../../evidence/shades-transfer/vice/study.json.gz) verifies the full arrangement and ending. The [local 22-second render](../../../../build/shades-transfer/reconstructed.wav) has no clipped samples and a settled final half-second; [the audio recipe](../shades-independent-audio.json) preserves exact settings and hashes.
 
 Use a fresh output directory. Model output is an ordered-write oracle, not captured-event playback or a listening verdict. Promote this as a listening-approved instrument example only after the compiled phrase and its ending have been reviewed.
+
+## Reuse outcome
+
+Baseline recorded on 2026-10-13 using the [reuse measurement rules](../../../workflows/decoded-song-workflow.md#record-reuse-and-effort). This records executable reuse; musical acceptance remains pending.
+
+| Field | Evidence / outcome |
+| --- | --- |
+| Original phrase | [Eight-bar score](../../../../songs/shades-transfer.json), [program bank](../../../../songs/shades-transfer-programs.json) and [22-second listening file](../../../../build/shades-transfer/reconstructed.wav) |
+| Reused components | Existing [compiler](../../../../scripts/compose-shades.py), [scheduler](../../../../songs/players/shades.asm) and [effect routines](../../../../songs/players/shades-effects.asm); the decoded `opening-pulse` patch is retained as `pulse-trio` |
+| Adaptation and new material | New notes, rhythm, cold silent initialization and authored fade; `glide-trio` changes voice 3's portamento step to 96 within the existing program contract |
+| Listening-driven revisions | None recorded for this transfer; first verdict pending |
+| Effort to accepted phrase | Pending; historical active work time was not recorded |
+| Transfer and ending verdict | Pending; reconstruction approval applies separately |
+| Next improvement | Let transfer feedback identify any needed musical change before extending the mechanism or backend |

@@ -4,6 +4,27 @@ Use this workflow to turn executed-program findings into editable music and our 
 
 For preparation before a backend exists, the [Cybernoid II numeric model](../research/composition/cybernoid-ii-preparation.md#compose-the-complete-title-from-editable-data) demonstrates source-free score/program composition and complete ordered-register comparison. Its owning study provides the editable-data restoration and Python API; it does not yet export or render a C64 player.
 
+## Deliver one musical case
+
+Use the [study plan](../research/study-plan.md#delivery-order-and-work-in-progress) to select the case. Name the next musical deliverable and its acceptance question before starting work; an existing verified numeric model should lead to an audible export, rather than another broad decoding exercise.
+
+1. Retrieve the relevant instrument cards and existing score/program model. Declare the selected full form, chip/clock/cadence and ending; retain source differences explicitly.
+2. Implement only the missing export or expressive behavior that this deliverable requires. Preserve editable musical inputs and use existing verified components where their contracts fit. Do not force a different driver into an unsuitable shared format.
+3. Verify the required ordered writes, compiled execution, real playback cadence and rendered signal health, including the complete ending. Use the owning study's CPU/VICE contract; a short audition does not reduce verification coverage. Reuse valid receipts for unchanged inputs instead of repeating passed checks.
+4. Supply the [listening package](audio-comparisons.md#package-a-listening-review) and record sound/phrasing, complete-form and ending judgments separately. Revise against actual feedback; do not infer approval from rendering success.
+5. Compose an original phrase using the promoted mechanisms, with changed musical material and explicit editable parameters. Verify it, add its listening file to the package, and request its separate musical and ending verdict. Acceptance of the reconstruction alone does not prove useful transfer.
+6. Record the reuse outcome below, link the executable example and limitations from the owning card, and close the case only when the plan's completion contract is satisfied.
+
+For additional investigation, follow the [analysis stopping rule](../research/tools/sid-program-analysis.md#bound-the-investigation). Preserve deferred experiments without allowing them to expand the active case.
+
+## Record reuse and effort
+
+Keep one compact outcome record in the owning study or [instrument card](../research/composition/instrument-card-template.md#reuse-outcome), linking it elsewhere rather than copying it. Record the original phrase, named components reused unchanged or adapted, new components required, listening-driven revision count and the final verdict. This shows whether the mechanism can serve new music and what still makes reuse difficult.
+
+Measure effort prospectively from the start of a transfer attempt to its accepted phrase. State the measurement basis: active work time excludes listener waiting; elapsed time includes it. Keep parallel-agent effort separate when available. If reliable timing or revision history is absent, write `not recorded`; do not invent historical estimates. Pending acceptance means the result is still pending, not a time-to-success measurement.
+
+Compare similar completed transfers before claiming improved productivity. Use the record to choose a concrete improvement for the next phrase, such as removing repeated manual setup or exposing a needed parameter. Do not build a metrics subsystem or a general backend without a demonstrated need.
+
 ## Build, render and compare
 
 After [headless audio setup](audio-workflow.md), choose a fresh output directory:

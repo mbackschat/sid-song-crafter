@@ -9,6 +9,26 @@ python3 scripts/compare-audio.py prepare build/baseline-phrase.wav build/native-
 
 The filenames above are example inputs, not a claim that these renders already exist. Render the same complete phrase, including the same rests and tail duration, at the same rate and channel count. The `prepare` mode requires identical frame counts; it does not establish that notes, tempo, update cadence, SID model, alignment, or renderer settings agree. Record those source assumptions in the trial or [instrument card](../research/composition/instrument-card-template.md).
 
+## Package a listening review
+
+Prepare the review before asking for feedback. Link actual filenames and state the reference variant, A/B order, passage times, duration and any gain changes. Use a representative 10–20-second phrase where that captures the musical question; include more context when necessary. For the initial reconstruction review, offer the phrase, ending and both full renders together. Add the original transfer clip when it is ready for its separate review:
+
+| Role | Suggested filename for new output | Purpose |
+| --- | --- | --- |
+| Phrase A/B | `phrase-reference-then-ours.ab.wav` | Sound and phrasing in the same musical context, reference first |
+| Ending A/B | `ending-reference-then-ours.ab.wav` | Approach to the ending, release/fade and settled tail, reference first |
+| Full reference | `reference.wav` | Immediate access to the selected original, including enough tail to compare its behavior |
+| Full candidate | `reconstructed.wav` | Complete declared form and authored ending |
+| Original transfer | `transfer/reconstructed.wav` | Musical usefulness of the reused sound in new material |
+
+These names describe roles, not new files already generated. Preserve filenames already shared with the listener; link them under these roles instead of renaming or duplicating large renders. Use fresh output prefixes for revised audio and retain the accepted or pending version.
+
+Match variant, subtune, clock, model and renderer settings, and render from initialization. Use unity-gain `window` below for aligned passages. It selects the same time interval in both inputs; it cannot independently align different ending times. If the reference loops while ours stops, label the reference restart and the authored ending explicitly. When no meaningful common window exists, provide separately labelled ending excerpts with exact source bounds and reproduction commands, or full files with listening timestamps; do not manufacture equivalence through undocumented trimming, padding or fades.
+
+Ask separately whether sound/phrasing is preserved, the ending works, and the original transfer is musically useful. Explain that the transfer is new music rather than a recognizable quotation. Give the full reference and candidate links in the first request so an ending judgment never requires another request for the original. Full-form review remains required for completion, but routine revisions can target the affected passage. Record answered questions with their exact scope and do not ask them again without a relevant change.
+
+Keep reference renders and every comparison containing reference audio outside Git and LFS. Retain reproducible commands, hashes, settings, gains and segment boundaries in the owning recipe; record listening judgments separately from immutable generated receipts.
+
 ## Compare an initialized window at original levels
 
 Use `window` when the reference and reconstruction have different total lengths but contain the same desired passage:

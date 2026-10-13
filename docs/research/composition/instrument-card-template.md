@@ -30,6 +30,18 @@ Copy this structure when an experiment from the [repertoire](sound-design-repert
 - Reference and candidate gains used for the listening comparison:
 - Listener, playback setup, date, verdict, and specific reasons:
 
+## Reuse outcome
+
+Use one record per completed or pending transfer; link the [measurement rules](../../workflows/decoded-song-workflow.md#record-reuse-and-effort). Unknown historical values are `not recorded`.
+
+- Original phrase, editable inputs and listening file:
+- Components reused unchanged, with links:
+- Components adapted and new work required, with links:
+- Listening-driven revisions and reasons:
+- Effort to accepted phrase, measurement basis and date (or pending):
+- Transfer and ending verdict, date and scope:
+- Remaining friction and the next concrete improvement, if demonstrated:
+
 ## Use and limitations
 
 - Arrangements in which the sound works well:

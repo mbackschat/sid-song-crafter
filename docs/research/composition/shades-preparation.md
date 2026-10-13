@@ -1,6 +1,6 @@
 # Shades: form, clock and evolving instruments
 
-Study Chris Hülsbeck's filter-corrected **Shades**, default subtune 1, PAL MOS6581. The [reference intake](../composers/huelsbeck-tel.md#shades-reference-intake) owns archive URLs, hashes, attribution and the composer's filter-intent account. This study owns the executed form and instrument findings. The reference form, independent reconstruction and original transfer have CPU, CIA-dispatch and rendered-audio evidence. Listening on the independent outputs remains pending under the [study plan](../study-plan.md).
+Study Chris Hülsbeck's filter-corrected **Shades**, default subtune 1, PAL MOS6581. The [reference intake](../composers/huelsbeck-tel.md#shades-reference-intake) owns archive URLs, hashes, attribution and the composer's filter-intent account. This study owns the executed form and instrument findings. The reference form, independent reconstruction and original transfer have CPU, CIA-dispatch and rendered-audio evidence. The independent reconstruction and fade are listening-approved; the original transfer verdict remains pending under the [study plan](../study-plan.md).
 
 ## Reuse the right evidence
 
