@@ -183,7 +183,7 @@ The title's voice 1 keeps vibrato direction at `$A667` and position at `$A66A` w
 
 The [diagnostic intervention](../../../evidence/cybernoid-wrap-pitch-intervention/run.py), with its [complete four-case results](../../../evidence/cybernoid-wrap-pitch-intervention/receipt.json.gz), seeds only these two voice-1 bytes before the first outer play call; it leaves the SID source and CPU registers unchanged. Four 21-call runs separate the control, each individual-byte change and the combined phase. The control matches every original-opening SID store. Seeding the retained pair `$FF/1` reproduces **all voice-1 ordered register writes** from calls 17,280–17,300, after subtracting the order period. Either single-byte change fails that comparison. This establishes causal sufficiency for that opening voice and window, not a reset recipe for the full song or an audible preference. The score's repeat marker should therefore preserve phase unless a deliberate arrangement change calls for restarting it.
 
-The historical contextual-command receipt calls `$A690` `glideDelay` and records decimal 64. That is the raw `$40` parameter, not a duration in calls: the synthesis routine splits its nibbles, and the observed opening glide finishes at relative call 12. Preserve that raw evidence while using **packed glide control** in new descriptions. A complete editable pitch program still needs the general glide and modulation contracts, including other sound records and release behavior.
+The historical contextual-command receipt calls `$A690` `glideDelay` and records decimal 64. That is the raw `$40` parameter, not a duration in calls: the synthesis routine splits its nibbles, and the observed opening glide finishes at relative call 12. Preserve that raw evidence while using **packed glide control** in new descriptions. The [later named-state pitch component](#named-state-vibrato-and-glide-component) extends this opening explanation to general glide and modulation arithmetic; full-title contextual composition remains a separate check.
 
 The independent [phase and centered-pitch model](../../../evidence/cybernoid-wrap-pitch/model.py) computes these two operations from editable numeric inputs. Its [verification](../../../evidence/cybernoid-wrap-pitch/model-verification.json) matches 18 recorded phase updates and the two detailed arithmetic paths. It preserves byte wrapping, asymmetric endpoints and the source's signed loop termination. The separate [isolated-routine checker](../../../evidence/cybernoid-wrap-pitch/edge-check.py) then executes `$AA20–$AA84` with 320 synthetic combinations of extent, direction, position and note age; [all results match](../../../evidence/cybernoid-wrap-pitch/edge-verification.json). This covers byte wrap, signed-loop edges and the zero-extent wait bypass without claiming those combinations occur in the score. Delta/depth selection, wait selection, glide and a complete instrument remain outside this helper.
 
@@ -217,7 +217,7 @@ The [field/filter/arpeggio analysis](../../../evidence/cybernoid-filter-arp/anal
 
 Opening voice 2 selects record 4, `arp+filt`, bytes `$04,$21,$00,$C8,$01,$00,$81,$85`. The score separately sends `$D417=$82` via `$F1`: resonance 8, only voice 2 routed through the shared filter. Record offset 4 selects filter program 1 at `$AFD6`; offset 7 enables its execution. Patch setup skips the synthesis body, so the first filter update is call 1. Calls 1–63 each write mode/volume `$3F` and cutoff high; cutoff low remains the initialization zero. Cutoff high starts `$A0`, falls by two per call through call 33, then rises by one on calls 34–63. Parameterized arithmetic matches all 126 ordered filter writes.
 
-The remembered filter owner is voice index 1 at `$A683`. The driver processes voices 3, 2, 1, so multiple enabled voices would write the shared registers in that order; only one enabled owner is demonstrated here. The receipt separates static owner-fallback and later filter stages from the phases actually executed. Filter age is note age, not the row countdown. Later owner changes, third/terminal stages and complete-title roles remain open.
+The remembered filter owner is voice index 1 at `$A683`. The driver processes voices 3, 2, 1, so multiple enabled voices would write the shared registers in that order; only one enabled owner is demonstrated here. The receipt separates static owner-fallback and later filter stages from the phases actually executed. Filter age is note age, not the row countdown. The [later title census](#full-title-mechanism-coverage) establishes owner changes and third/terminal stage execution; this opening receipt alone does not cover them.
 
 Tone-arpeggio selector `$72` chooses table 2 at `$AF97`: header 2, offsets `0,5,8`. Its counter decrements before consumption, wraps through the signed test, and reads offsets in reverse order: **8,5,0**. With base pitch-table index 47, the generated indices are 55,52,47. The checker matches all 63 body updates, 21 counter wraps and 126 final voice-2 frequency stores. Later onset logic restores the base pitch on calls 5–6 while the arpeggio counter continues; the raw arpeggio calculation alone is therefore insufficient to predict the final register write. The default `$AF9B` address encoded in the self-modified instruction is not the selected opening table.
 
@@ -255,3 +255,109 @@ python3 build/cybernoid-wave-pwm-new/check-receipt.py
 ```
 
 The next full-title model must retain ordering among pitch, PWM, filter, onset/drum and final writes. Opening checks do not cover every instrument, pulse wrap mode, relative drum pitch, owner change or later score role. They provide verified components and explicit gaps for that work, while Shades remains the active reconstruction awaiting listening.
+
+## Reusable PWM and filter arithmetic
+
+Use [cybernoid_programs.py](../../../scripts/cybernoid_programs.py) when editing these programs or implementing a caller that already owns note setup and macro ordering. The functions have no source-file dependency and do not replay captured register events. They validate numeric bounds and leave parameter tables unchanged.
+
+| Function | Inputs and result | Caller responsibility |
+| --- | --- | --- |
+| `advance_pulse(width, direction, age, fx2, slot)` | A 16-bit accumulator, direction byte, note-age byte, FX2 byte and selected eight-byte slot; returns `(width, direction)`. Selector zero retains the state without requiring a slot. | Select the slot, initialize the voice, copy the accumulator into output buffers and apply later overrides. |
+| `advance_filter(cutoff_high, age, program)` | Cutoff-high byte, note-age byte and ten-byte program; returns `(mode_volume, cutoff_high)`. | Filter enable, shared ownership, routing, fallback and actual register writes. Cutoff low is outside this operation. |
+
+PWM retains overshoot, byte/word wrapping, stage-forced downward direction and the wrap header's low-byte reset to **one**. Filter stages follow descending table-index priority even when edited thresholds are nonmonotonic. Sorting thresholds or clamping pulse width would change the program.
+
+The [isolated archive checker](../../../evidence/cybernoid-program-components/check.py) compares these functions with original `$AB8D–$AC53` and `$AC6E–$ACE1` execution. Its [complete receipt](../../../evidence/cybernoid-program-components/verification.json.gz) retains 2,048 PWM and 3,840 filter cases, including selector bypass, both directions, signed-looking direction bytes, boundary overshoot, word overflow, wrap headers, forced direction, every filter age byte and nonmonotonic thresholds. All 5,888 cases match; the receipt pins both implementation and verifier hashes. These synthetic caller states establish arithmetic behavior, not their occurrence in the title or complete-player/audio equivalence. The SID file is unchanged; synthetic parameters are supplied only in isolated RAM.
+
+```sh
+python3 -m unittest discover -s tests -p 'cybernoid_programs_test.py' -v
+mkdir build/cybernoid-program-components-new
+cp evidence/cybernoid-program-components/check.py build/cybernoid-program-components-new/
+python3 build/cybernoid-program-components-new/check.py
+```
+
+The recovered listing also contains waveform-arpeggio, pulse-arpeggio and “strange filter” blocks that are absent from the actual archive between its pulse-buffer copy and drum dispatch (`$AC46–$AD44`). The archive there executes high-byte sweep, shared filter, pulse-run and packed-field frequency-addition branches. A reconstruction must follow the pinned archive, using the listing as an interpretation aid rather than importing every listed feature.
+
+## Full-title mechanism coverage
+
+The [executed census](../../../evidence/cybernoid-title-mechanism-coverage/probe.py) covers calls 0–17,280: the first complete title traversal and its first wrapped call. All 310,614 ordered initialization/play records match the corresponding prefix of the canonical 36,000-call ledger, including instruction-start timestamps; peak play cost is 3,297 cycles in this span. The [lossless census](../../../evidence/cybernoid-title-mechanism-coverage/coverage.json.gz) retains source-bound record fields, executed opcode pins, per-voice/record/variant counts and representative states. The [compact summary](../../../evidence/cybernoid-title-mechanism-coverage/summary.json) provides first/last calls for follow-up probes. The separate [opening cross-check](../../../evidence/cybernoid-title-mechanism-coverage/opening-crosscheck.json) matches 1,803 hook visits across 56 groups against the retained instruction trace.
+
+| Scope | Executed evidence |
+| --- | --- |
+| Voice entry accounting | 51,843 entries: 4,334 patch initializers and 47,509 synthesis bodies; 1,266 explicit sound-record assignments. A retained record can initialize many notes. |
+| Selected records, voice indices 0/1/2 | Voice 0: `0,1,11,15`; voice 1: `3,4,5,6,9,10,11,14`; voice 2: `2,3,7,8,12,18`. Names and eight-byte fields are in the census. |
+| PWM | 37,760 selected arithmetic bodies and 9,749 selector-zero copies; 23,365 table steps and 14,395 fallback steps. Every selected body joins exactly one addition or subtraction path. |
+| Shared filter | 625 initial, 13,565 additive and 2,072 terminal updates; 748 owner fallbacks. All three additive stages execute. Filter programs 0–3 and ownership changes require the full-title caller. |
+| Drum | 5,848 waveform consumptions, all followed by absolute-frequency handling. No relative drum pitch executes in this traversal. |
+| Pulse-run | Record 12, voice 2: 1,280 advances, one pulse-run initializer, 495 carries and 61 high wraps. Patch initialization does not imply resetting this separate state. |
+| High-byte sweep | Record 9, voice 1: 608 executions, first call 1,441. |
+| Pitch | 26,925 active vibrato bodies; 399 glide interpolations and 65 target completions. Records 15/18 exercise age-dependent high-delta addition late in the title. |
+
+Counts above describe accepted-path instruction visits; looped arithmetic hooks in the full receipt can occur repeatedly within a call. The receipt separately counts distinct calls per voice/record/variant. PWM wrap-header reset, threshold-forced descent, relative drum pitch and packed-field-4 frequency addition have zero executed hooks here. Their absence in this title span is different from the listing-only code blocks that are absent from the archive itself. Synthetic component tests remain explicitly separate from title coverage.
+
+For a fresh census, retrieve the pinned SID/listing and LFS evidence, then use a new directory:
+
+```sh
+mkdir build/cybernoid-title-mechanism-new
+cp evidence/cybernoid-title-mechanism-coverage/{probe.py,summarize.py,check-opening.py} build/cybernoid-title-mechanism-new/
+python3 build/cybernoid-title-mechanism-new/probe.py --ticks 17281 --output build/cybernoid-title-mechanism-new/coverage.json
+python3 build/cybernoid-title-mechanism-new/summarize.py
+python3 build/cybernoid-title-mechanism-new/probe.py --ticks 64 --output build/cybernoid-title-mechanism-new/smoke64.json
+python3 build/cybernoid-title-mechanism-new/check-opening.py
+```
+
+This census selects the remaining synthesis contracts by actual use. It does not independently generate the title, model SID oscillator/envelope state or establish a listening verdict.
+
+## Independent title score expansion
+
+The [pure decoder](../../../evidence/cybernoid-score-contract/decode.py) expands the pinned order/pattern bytes into semantic rows without executing the original driver or consuming captured events as instructions. Its [contract and coverage](../../../evidence/cybernoid-score-contract/contract-final.json) and [lossless rows/action checks](../../../evidence/cybernoid-score-contract/verified-rows-final.json.gz) preserve the result. Over 36,000 calls it matches all 64,817 structural event projections and all 36,000 completed named sequencing states. It produces 8,760 semantic rows, including 4,331 in the first traversal. Separately, 7,276 executed accumulator contexts check sound, duration, arpeggio and glide-target actions; five opening pitch stores match the canonical instruction trace. Full-title base-pitch stores are not independently observed by the existing form hooks, so structural equality is not a complete synthesis proof.
+
+Each row contains voice, generated call, pattern selection, ordered tagged commands, frequency-table pitch index, countdown reload, retained sound/arpeggio selection, patch-setup mode and source-event provenance. Pitch indices are archive table identities, not MIDI notes. Provenance locates evidence and is not an instruction stream for a future player.
+
+| Sequencer rule | Independent contract |
+| --- | --- |
+| Scheduling | Decrement byte counters; their sign bit triggers reload/row consumption. Tempo reload 2 processes rows every three calls, voices 2→1→0. Observed row reloads are at most 67; their next row is `(reload + 1) × 3` calls later. |
+| Parsing | Initial F prefix, glide, optional sound, duration/continuations, arpeggio, then note. Helper continuations re-enter particular stages; a range-only token lexer loses this context. |
+| Glide source reads | Consecutive packed-control/base/target bytes are read in control/target/base order. Both pitches add transpose with byte wrapping. |
+| Duration | Retained until changed. A first duration sets `(byte & $3F) − 1`; continuation priority includes exact `$E0` glide re-entry and high-bit extension/re-entry rules. |
+| Row versus wrap | Each selected row resets glide flags, note/vibrato age and arpeggio counter. Order `$FF` resets row/order/pattern cursors and consumes order 0 immediately; it retains duration, repeat count, transpose, sound offset, sound/arpeggio selection and synthesis state. |
+| End peek | After initialization the driver peeks at the next byte. `$FF` updates pattern/order state while the current row still plays its duration. Raw pitch zero remains a lookup index, not an inferred rest. |
+
+The title contains 35 initial F prefixes, all `$F1`, and no `$FF` returned through the pattern helper. The decoder rejects even initial F prefixes and helper-`$FF` rather than claiming general support. Static code shows a nonzero even-F path can suppress patch setup, whereas a following zero falls into routing and clears that flag. The helper-`$FF` path also retains a return address while entering writer/voice traversal. These require focused fixtures before supporting edited scores that introduce them. Signed-duration edges, wider arpeggio selectors and global `$FE` stopping likewise remain outside demonstrated title coverage.
+
+```sh
+mkdir build/cybernoid-score-new
+cp evidence/cybernoid-score-contract/decode.py build/cybernoid-score-new/
+python3 build/cybernoid-score-new/decode.py --output build/cybernoid-score-new/rows.json --contract-output build/cybernoid-score-new/contract.json
+```
+
+This reads the local pinned SID/listing and canonical LFS event/state/instruction evidence. It performs no CPU run or render. The score contract is ready for composition with independently verified synthesis components; complete independent title playback remains the next preparation milestone.
+
+## Named-state vibrato and glide component
+
+The source-independent [pitch model](../../../evidence/cybernoid-pitch-contract/model.py) advances named buffers for archive `$A9C1–$AB8C`; drum dispatch enters at `$AA97` and bypasses vibrato. Its [typed contract and source-address map](../../../evidence/cybernoid-pitch-contract/contract.json.gz) separates persistent voice state, record parameters and caller-supplied frequency-table words/timing. `advance_pitch` returns updated state and diagnostics for vibrato and disabled/waiting/interpolating/completed glide. The caller still owns scheduling, initial note setup, tone arpeggio and later output overrides.
+
+| Operation | Retained byte-level behavior |
+| --- | --- |
+| Vibrato delta | Adjacent-minus-effective table difference, low-nibble shift and high-bit age growth. Age growth adds to the high byte with carry retained from the subtraction; it is not an ordinary linear scaling of the whole word. |
+| Vibrato phase/wait | Preserve signed direction/position branches and the conditional centered-pitch wait established by the earlier wrap proof. Active glide suppresses vibrato. |
+| Glide timing | Split packed control into length and offset; byte-wrapped row timing decides waiting, interpolation or target completion. Keep current and held frequency as distinct buffers. |
+| Glide divisor | Repeated byte addition retains carry between iterations and uses signed `DEY` termination; `(length × (speed + 1)) mod 256` is not general enough. |
+| Glide division/rounding | The routine divides the low 15 magnitude bits, retains bit 15 in the result and compares doubled remainder modulo 256. Conventional rounded 16-bit division gives different results for supported synthetic edge inputs. |
+
+The [isolated checker](../../../evidence/cybernoid-pitch-contract/check.py) and [complete verification](../../../evidence/cybernoid-pitch-contract/verification.json.gz) match 512 component cases, 154 division cases and 40 divisor cases. Component cases exercise all three voice indices and verify untouched other-voice state; no SID store is permitted in this block. Source bytes, static frequency/wait tables and the original SID file remain unchanged. The earlier 320-case phase/centered-pitch proof complements these checks. This is synthetic caller-state verification; the linked title census establishes which branches occur in the song, not per-body equality of this model across the title.
+
+The initial synthetic generator correlated control selection with active-glide state, so its `$10/$53/$F0/$FF` settings bypassed vibrato and did not enter centered subtraction. Preserve that receipt's actual scope. The [extended checker](../../../evidence/cybernoid-pitch-extended/check.py) breaks this correlation and guards the complete control × active-glide matrix, ordinary `$53` centered subtraction and its wait bypass using the archive's record-1 wait. These guards fail on the original generator. The [extended receipt](../../../evidence/cybernoid-pitch-extended/verification.json.gz) matches another 512 component cases, 154 divider cases and 40 divisor cases with the unchanged model. This makes branch coverage an executable requirement instead of inferring it from a large case count.
+
+```sh
+mkdir build/cybernoid-pitch-new
+cp evidence/cybernoid-pitch-contract/{model.py,check.py,describe.py} build/cybernoid-pitch-new/
+python3 build/cybernoid-pitch-new/check.py
+python3 scripts/evidence.py restore evidence/cybernoid-title-mechanism-coverage/coverage.json.gz
+python3 build/cybernoid-pitch-new/describe.py
+mkdir build/cybernoid-pitch-extended-new
+cp evidence/cybernoid-pitch-extended/{model.py,check.py} build/cybernoid-pitch-extended-new/
+python3 build/cybernoid-pitch-extended-new/check.py
+```
+
+The description step joins the fresh verification to the restored historical census; its 143 selected-title pitch summaries retain exact provenance. Next compare computed state at every eligible title body, then compose this component with the score and remaining macros. Later onset, drum and sweep behavior can change pitch after this block, so its buffer equality alone cannot establish final register or audio equivalence.

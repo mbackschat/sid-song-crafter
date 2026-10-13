@@ -10,7 +10,9 @@ Use [the archive and cache workflow](../docs/workflows/build-cache.md) to instal
 | --- | --- |
 | Shades CIA timing, form, modulation and semantic model | [Shades study](../docs/research/composition/shades-preparation.md), [CIA validation](../docs/validation/cia-tracing.md) |
 | Flashdance reconstruction, transfer and accepted stereo arrangement | [Flashdance study](../docs/research/composition/flashdance-preparation.md) |
-| Cybernoid II source intake, selected-subtune execution, title order traversals, contextual commands and opening pitch/PWM/filter/arpeggio mechanisms | [Cybernoid II preparation](../docs/research/composition/cybernoid-ii-preparation.md) |
+| Cybernoid II intake, execution, order traversals and opening mechanisms | [Cybernoid II preparation](../docs/research/composition/cybernoid-ii-preparation.md) |
+| Cybernoid II full-title mechanism census and reusable arithmetic | [Executed coverage](../docs/research/composition/cybernoid-ii-preparation.md#full-title-mechanism-coverage), [PWM/filter components](../docs/research/composition/cybernoid-ii-preparation.md#reusable-pwm-and-filter-arithmetic) |
+| Cybernoid II independent score and pitch models | [Contextual score expansion](../docs/research/composition/cybernoid-ii-preparation.md#independent-title-score-expansion), [named-state vibrato/glide](../docs/research/composition/cybernoid-ii-preparation.md#named-state-vibrato-and-glide-component) |
 | CPU timing correction | [Opcode timing finding](../docs/validation/cpu-timing.md) |
 
 The manifest identifies every retained file, its original location, byte counts, hashes and retention reason. Historical receipts are preserved byte-for-byte: their old paths, machine paths and source hashes describe the original experiment. Restoring evidence does not install tools, retrieve reference music or rerun an experiment. Follow the owning study for those steps, and distinguish exact proof-version snapshots from later working code. Earlier CPU traces may use the superseded `$CE` cost; the timing correction explains the boundary.

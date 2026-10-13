@@ -1,0 +1,1376 @@
+{
+  "scope": {
+    "firstCall": 0,
+    "lastCallInclusive": 17280,
+    "selectedSubtune": 1,
+    "executionProfile": "pal-banked",
+    "purpose": "Executed mechanism coverage and representative windows"
+  },
+  "source": {
+    "path": ".local/research/cybernoid-ii/Cybernoid_II.sid",
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/T/Tel_Jeroen/Cybernoid_II.sid",
+    "sha256": "41f338f44b4f54e351e672156ee0e2a60c8437eb24645db3f9d4abfbb0cff192"
+  },
+  "censusSha256": "d4c8275e3672e06a11eff254a522f94d9d9c0060412df684d126b593a9c8daaf",
+  "toolSha256": "dab5642db5f4699f2cdd24eb149f75446c6ecd2c7266f555f7d6475eb1c6062a",
+  "summaryToolSha256": "13b94058bf20d6e0ce58d6053097752dcb6e21279efd42a066a86d80ca4afe45",
+  "reproduce": "PYTHONPATH=.tools/test-deps python3 build/cybernoid-title-mechanism-coverage/probe.py --ticks 17281 --output build/cybernoid-title-mechanism-coverage/coverage.json",
+  "summarizeCommand": "python3 build/cybernoid-title-mechanism-coverage/summarize.py",
+  "recordCounts": {
+    "recordAssignment": 1266,
+    "recordBody": 47509,
+    "recordInitializer": 4334
+  },
+  "voiceEntryCounts": [
+    17281,
+    17281,
+    17281
+  ],
+  "selectedRecordsByVoice": {
+    "0": [
+      0,
+      1,
+      11,
+      15
+    ],
+    "1": [
+      3,
+      4,
+      5,
+      6,
+      9,
+      10,
+      11,
+      14
+    ],
+    "2": [
+      2,
+      3,
+      7,
+      8,
+      12,
+      18
+    ]
+  },
+  "hookCounts": [
+    {
+      "name": "recordAssignment",
+      "pc": 43046,
+      "visits": 1266
+    },
+    {
+      "name": "recordInitializer",
+      "pc": 43181,
+      "visits": 4334
+    },
+    {
+      "name": "recordBody",
+      "pc": 43363,
+      "visits": 47509
+    },
+    {
+      "name": "toneArpeggio",
+      "pc": 43417,
+      "visits": 9874
+    },
+    {
+      "name": "vibratoActive",
+      "pc": 43466,
+      "visits": 26925
+    },
+    {
+      "name": "vibratoAgeDepthOpcode",
+      "pc": 43533,
+      "visits": 26925
+    },
+    {
+      "name": "vibratoDeltaShift",
+      "pc": 43542,
+      "visits": 80638
+    },
+    {
+      "name": "vibratoDescendingPhase",
+      "pc": 43557,
+      "visits": 10735
+    },
+    {
+      "name": "vibratoAscendingPhase",
+      "pc": 43567,
+      "visits": 16190
+    },
+    {
+      "name": "vibratoLowerReversal",
+      "pc": 43562,
+      "visits": 2723
+    },
+    {
+      "name": "vibratoUpperReversal",
+      "pc": 43581,
+      "visits": 2724
+    },
+    {
+      "name": "vibratoCenterSubtract",
+      "pc": 43615,
+      "visits": 15444
+    },
+    {
+      "name": "vibratoPhaseAdd",
+      "pc": 43637,
+      "visits": 18688
+    },
+    {
+      "name": "vibratoOutputCommit",
+      "pc": 43657,
+      "visits": 26925
+    },
+    {
+      "name": "glideActive",
+      "pc": 43684,
+      "visits": 588
+    },
+    {
+      "name": "glideInterpolation",
+      "pc": 43730,
+      "visits": 399
+    },
+    {
+      "name": "glideNegativeDifference",
+      "pc": 43760,
+      "visits": 333
+    },
+    {
+      "name": "glideOutputCommit",
+      "pc": 43864,
+      "visits": 399
+    },
+    {
+      "name": "glideTargetCompletion",
+      "pc": 43884,
+      "visits": 65
+    },
+    {
+      "name": "pulseSelectorZero",
+      "pc": 43881,
+      "visits": 9749
+    },
+    {
+      "name": "pulseTableSelection",
+      "pc": 43931,
+      "visits": 37760
+    },
+    {
+      "name": "pulseWrapHeaderEnabled",
+      "pc": 43939,
+      "visits": 0
+    },
+    {
+      "name": "pulseThresholdForceDown",
+      "pc": 44007,
+      "visits": 0
+    },
+    {
+      "name": "pulseTableStep",
+      "pc": 44014,
+      "visits": 23365
+    },
+    {
+      "name": "pulseFallbackStep",
+      "pc": 44024,
+      "visits": 14395
+    },
+    {
+      "name": "pulseSubtract",
+      "pc": 44032,
+      "visits": 6194
+    },
+    {
+      "name": "pulseAdd",
+      "pc": 44058,
+      "visits": 31566
+    },
+    {
+      "name": "pulseLowerReversal",
+      "pc": 44054,
+      "visits": 187
+    },
+    {
+      "name": "pulseUpperBoundary",
+      "pc": 44080,
+      "visits": 346
+    },
+    {
+      "name": "pulseWrapReset",
+      "pc": 44084,
+      "visits": 0
+    },
+    {
+      "name": "pulseUpperReversal",
+      "pc": 44097,
+      "visits": 346
+    },
+    {
+      "name": "highByteSweep",
+      "pc": 44124,
+      "visits": 608
+    },
+    {
+      "name": "filterOwnerAssignment",
+      "pc": 44144,
+      "visits": 16262
+    },
+    {
+      "name": "filterModeTableRead",
+      "pc": 44176,
+      "visits": 16262
+    },
+    {
+      "name": "filterInitial",
+      "pc": 44210,
+      "visits": 625
+    },
+    {
+      "name": "filterAdditive",
+      "pc": 44227,
+      "visits": 13565
+    },
+    {
+      "name": "filterTerminal",
+      "pc": 44194,
+      "visits": 2072
+    },
+    {
+      "name": "filterOwnerFallback",
+      "pc": 44247,
+      "visits": 748
+    },
+    {
+      "name": "pulseRunActive",
+      "pc": 44266,
+      "visits": 1280
+    },
+    {
+      "name": "pulseRunInitialize",
+      "pc": 44271,
+      "visits": 1
+    },
+    {
+      "name": "pulseRunAdvance",
+      "pc": 44291,
+      "visits": 1280
+    },
+    {
+      "name": "pulseRunCarry",
+      "pc": 44301,
+      "visits": 495
+    },
+    {
+      "name": "pulseRunHighWrap",
+      "pc": 44311,
+      "visits": 61
+    },
+    {
+      "name": "packedField4FrequencyAdd",
+      "pc": 44339,
+      "visits": 0
+    },
+    {
+      "name": "drumPointerSetup",
+      "pc": 44362,
+      "visits": 7166
+    },
+    {
+      "name": "drumWaveConsume",
+      "pc": 44415,
+      "visits": 5848
+    },
+    {
+      "name": "drumRelativePitch",
+      "pc": 44449,
+      "visits": 0
+    },
+    {
+      "name": "drumAbsolutePitch",
+      "pc": 44461,
+      "visits": 5848
+    },
+    {
+      "name": "onsetEnabled",
+      "pc": 44483,
+      "visits": 25668
+    },
+    {
+      "name": "onsetWaveConsume",
+      "pc": 44494,
+      "visits": 6890
+    },
+    {
+      "name": "onsetNoiseHighOverride",
+      "pc": 44501,
+      "visits": 1750
+    },
+    {
+      "name": "onsetBaseRestore",
+      "pc": 44527,
+      "visits": 3968
+    },
+    {
+      "name": "orderWrap",
+      "pc": 42847,
+      "visits": 3
+    },
+    {
+      "name": "globalStop",
+      "pc": 42767,
+      "visits": 0
+    }
+  ],
+  "zeroExecutedHooks": [
+    {
+      "name": "pulseWrapHeaderEnabled",
+      "pc": 43939,
+      "visits": 0
+    },
+    {
+      "name": "pulseThresholdForceDown",
+      "pc": 44007,
+      "visits": 0
+    },
+    {
+      "name": "pulseWrapReset",
+      "pc": 44084,
+      "visits": 0
+    },
+    {
+      "name": "packedField4FrequencyAdd",
+      "pc": 44339,
+      "visits": 0
+    },
+    {
+      "name": "drumRelativePitch",
+      "pc": 44449,
+      "visits": 0
+    },
+    {
+      "name": "globalStop",
+      "pc": 42767,
+      "visits": 0
+    }
+  ],
+  "representativeRoutes": [
+    {
+      "mechanism": "glideOutputCommit",
+      "voiceIndex": 0,
+      "recordIndex": 1,
+      "variant": {
+        "lowNibble": 0,
+        "operation": "ADC",
+        "packed": 64,
+        "targetComparison": "up"
+      },
+      "firstCall": 1,
+      "lastCall": 1355,
+      "distinctCalls": 88
+    },
+    {
+      "mechanism": "glideOutputCommit",
+      "voiceIndex": 0,
+      "recordIndex": 15,
+      "variant": {
+        "lowNibble": 0,
+        "operation": "ADC",
+        "packed": 32,
+        "targetComparison": "up"
+      },
+      "firstCall": 16939,
+      "lastCall": 17189,
+      "distinctCalls": 25
+    },
+    {
+      "mechanism": "glideOutputCommit",
+      "voiceIndex": 0,
+      "recordIndex": 15,
+      "variant": {
+        "lowNibble": 0,
+        "operation": "ADC",
+        "packed": 48,
+        "targetComparison": "up"
+      },
+      "firstCall": 16645,
+      "lastCall": 16652,
+      "distinctCalls": 8
+    },
+    {
+      "mechanism": "glideOutputCommit",
+      "voiceIndex": 0,
+      "recordIndex": 15,
+      "variant": {
+        "lowNibble": 8,
+        "operation": "SBC",
+        "packed": 136,
+        "targetComparison": "down"
+      },
+      "firstCall": 16866,
+      "lastCall": 16889,
+      "distinctCalls": 24
+    },
+    {
+      "mechanism": "glideOutputCommit",
+      "voiceIndex": 1,
+      "recordIndex": 5,
+      "variant": {
+        "lowNibble": 0,
+        "operation": "ADC",
+        "packed": 32,
+        "targetComparison": "up"
+      },
+      "firstCall": 8215,
+      "lastCall": 9029,
+      "distinctCalls": 15
+    },
+    {
+      "mechanism": "glideOutputCommit",
+      "voiceIndex": 1,
+      "recordIndex": 5,
+      "variant": {
+        "lowNibble": 0,
+        "operation": "ADC",
+        "packed": 48,
+        "targetComparison": "up"
+      },
+      "firstCall": 3157,
+      "lastCall": 8936,
+      "distinctCalls": 64
+    },
+    {
+      "mechanism": "glideOutputCommit",
+      "voiceIndex": 1,
+      "recordIndex": 5,
+      "variant": {
+        "lowNibble": 4,
+        "operation": "SBC",
+        "packed": 20,
+        "targetComparison": "down"
+      },
+      "firstCall": 3264,
+      "lastCall": 4418,
+      "distinctCalls": 18
+    },
+    {
+      "mechanism": "glideOutputCommit",
+      "voiceIndex": 1,
+      "recordIndex": 6,
+      "variant": {
+        "lowNibble": 0,
+        "operation": "ADC",
+        "packed": 32,
+        "targetComparison": "up"
+      },
+      "firstCall": 5173,
+      "lastCall": 5945,
+      "distinctCalls": 10
+    },
+    {
+      "mechanism": "glideOutputCommit",
+      "voiceIndex": 1,
+      "recordIndex": 6,
+      "variant": {
+        "lowNibble": 0,
+        "operation": "ADC",
+        "packed": 48,
+        "targetComparison": "up"
+      },
+      "firstCall": 4801,
+      "lastCall": 5576,
+      "distinctCalls": 16
+    },
+    {
+      "mechanism": "glideOutputCommit",
+      "voiceIndex": 1,
+      "recordIndex": 11,
+      "variant": {
+        "lowNibble": 0,
+        "operation": "ADC",
+        "packed": 16,
+        "targetComparison": "up"
+      },
+      "firstCall": 11425,
+      "lastCall": 13922,
+      "distinctCalls": 4
+    },
+    {
+      "mechanism": "glideOutputCommit",
+      "voiceIndex": 1,
+      "recordIndex": 11,
+      "variant": {
+        "lowNibble": 0,
+        "operation": "ADC",
+        "packed": 32,
+        "targetComparison": "up"
+      },
+      "firstCall": 10993,
+      "lastCall": 14777,
+      "distinctCalls": 70
+    },
+    {
+      "mechanism": "glideOutputCommit",
+      "voiceIndex": 2,
+      "recordIndex": 18,
+      "variant": {
+        "lowNibble": 0,
+        "operation": "ADC",
+        "packed": 32,
+        "targetComparison": "up"
+      },
+      "firstCall": 16948,
+      "lastCall": 17198,
+      "distinctCalls": 25
+    },
+    {
+      "mechanism": "glideOutputCommit",
+      "voiceIndex": 2,
+      "recordIndex": 18,
+      "variant": {
+        "lowNibble": 0,
+        "operation": "ADC",
+        "packed": 48,
+        "targetComparison": "up"
+      },
+      "firstCall": 16654,
+      "lastCall": 16661,
+      "distinctCalls": 8
+    },
+    {
+      "mechanism": "glideOutputCommit",
+      "voiceIndex": 2,
+      "recordIndex": 18,
+      "variant": {
+        "lowNibble": 8,
+        "operation": "SBC",
+        "packed": 136,
+        "targetComparison": "down"
+      },
+      "firstCall": 16875,
+      "lastCall": 16898,
+      "distinctCalls": 24
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 0,
+      "recordIndex": 1,
+      "variant": {
+        "lowNibble": 0,
+        "packed": 64,
+        "targetComparison": "up"
+      },
+      "firstCall": 12,
+      "lastCall": 1356,
+      "distinctCalls": 8
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 0,
+      "recordIndex": 15,
+      "variant": {
+        "lowNibble": 0,
+        "packed": 32,
+        "targetComparison": "up"
+      },
+      "firstCall": 16944,
+      "lastCall": 17190,
+      "distinctCalls": 5
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 0,
+      "recordIndex": 15,
+      "variant": {
+        "lowNibble": 0,
+        "packed": 48,
+        "targetComparison": "up"
+      },
+      "firstCall": 16653,
+      "lastCall": 16653,
+      "distinctCalls": 1
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 0,
+      "recordIndex": 15,
+      "variant": {
+        "lowNibble": 1,
+        "packed": 1,
+        "targetComparison": "up"
+      },
+      "firstCall": 16719,
+      "lastCall": 16719,
+      "distinctCalls": 1
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 0,
+      "recordIndex": 15,
+      "variant": {
+        "lowNibble": 8,
+        "packed": 136,
+        "targetComparison": "down"
+      },
+      "firstCall": 16890,
+      "lastCall": 16890,
+      "distinctCalls": 1
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 1,
+      "recordIndex": 5,
+      "variant": {
+        "lowNibble": 0,
+        "packed": 32,
+        "targetComparison": "up"
+      },
+      "firstCall": 8220,
+      "lastCall": 9030,
+      "distinctCalls": 3
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 1,
+      "recordIndex": 5,
+      "variant": {
+        "lowNibble": 0,
+        "packed": 48,
+        "targetComparison": "up"
+      },
+      "firstCall": 3165,
+      "lastCall": 8937,
+      "distinctCalls": 8
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 1,
+      "recordIndex": 5,
+      "variant": {
+        "lowNibble": 4,
+        "packed": 20,
+        "targetComparison": "down"
+      },
+      "firstCall": 3267,
+      "lastCall": 4419,
+      "distinctCalls": 6
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 1,
+      "recordIndex": 6,
+      "variant": {
+        "lowNibble": 0,
+        "packed": 32,
+        "targetComparison": "up"
+      },
+      "firstCall": 5178,
+      "lastCall": 5946,
+      "distinctCalls": 2
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 1,
+      "recordIndex": 6,
+      "variant": {
+        "lowNibble": 0,
+        "packed": 48,
+        "targetComparison": "up"
+      },
+      "firstCall": 4809,
+      "lastCall": 5577,
+      "distinctCalls": 2
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 1,
+      "recordIndex": 11,
+      "variant": {
+        "lowNibble": 0,
+        "packed": 16,
+        "targetComparison": "up"
+      },
+      "firstCall": 11427,
+      "lastCall": 13923,
+      "distinctCalls": 2
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 1,
+      "recordIndex": 11,
+      "variant": {
+        "lowNibble": 0,
+        "packed": 32,
+        "targetComparison": "up"
+      },
+      "firstCall": 10998,
+      "lastCall": 14778,
+      "distinctCalls": 14
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 1,
+      "recordIndex": 11,
+      "variant": {
+        "lowNibble": 1,
+        "packed": 1,
+        "targetComparison": "up"
+      },
+      "firstCall": 9555,
+      "lastCall": 15315,
+      "distinctCalls": 4
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 2,
+      "recordIndex": 18,
+      "variant": {
+        "lowNibble": 0,
+        "packed": 32,
+        "targetComparison": "up"
+      },
+      "firstCall": 16953,
+      "lastCall": 17199,
+      "distinctCalls": 5
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 2,
+      "recordIndex": 18,
+      "variant": {
+        "lowNibble": 0,
+        "packed": 48,
+        "targetComparison": "up"
+      },
+      "firstCall": 16662,
+      "lastCall": 16662,
+      "distinctCalls": 1
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 2,
+      "recordIndex": 18,
+      "variant": {
+        "lowNibble": 1,
+        "packed": 1,
+        "targetComparison": "up"
+      },
+      "firstCall": 16728,
+      "lastCall": 16728,
+      "distinctCalls": 1
+    },
+    {
+      "mechanism": "glideTargetCompletion",
+      "voiceIndex": 2,
+      "recordIndex": 18,
+      "variant": {
+        "lowNibble": 8,
+        "packed": 136,
+        "targetComparison": "down"
+      },
+      "firstCall": 16899,
+      "lastCall": 16899,
+      "distinctCalls": 1
+    },
+    {
+      "mechanism": "vibratoAgeDepthOpcode",
+      "voiceIndex": 0,
+      "recordIndex": 1,
+      "variant": {
+        "bit7": false,
+        "depthNibble": 3,
+        "extent": 5,
+        "fx1": 83,
+        "operation": "LDY age"
+      },
+      "firstCall": 1,
+      "lastCall": 16511,
+      "distinctCalls": 14504
+    },
+    {
+      "mechanism": "vibratoAgeDepthOpcode",
+      "voiceIndex": 0,
+      "recordIndex": 11,
+      "variant": {
+        "bit7": false,
+        "depthNibble": 3,
+        "extent": 5,
+        "fx1": 83,
+        "operation": "LDY age"
+      },
+      "firstCall": 10753,
+      "lastCall": 13439,
+      "distinctCalls": 382
+    },
+    {
+      "mechanism": "vibratoAgeDepthOpcode",
+      "voiceIndex": 0,
+      "recordIndex": 15,
+      "variant": {
+        "bit7": true,
+        "depthNibble": 5,
+        "extent": 4,
+        "fx1": 197,
+        "operation": "ADC age high-delta"
+      },
+      "firstCall": 16513,
+      "lastCall": 17270,
+      "distinctCalls": 643
+    },
+    {
+      "mechanism": "vibratoAgeDepthOpcode",
+      "voiceIndex": 1,
+      "recordIndex": 5,
+      "variant": {
+        "bit7": false,
+        "depthNibble": 2,
+        "extent": 5,
+        "fx1": 82,
+        "operation": "LDY age"
+      },
+      "firstCall": 3073,
+      "lastCall": 9119,
+      "distinctCalls": 2709
+    },
+    {
+      "mechanism": "vibratoAgeDepthOpcode",
+      "voiceIndex": 1,
+      "recordIndex": 6,
+      "variant": {
+        "bit7": false,
+        "depthNibble": 3,
+        "extent": 5,
+        "fx1": 83,
+        "operation": "LDY age"
+      },
+      "firstCall": 4609,
+      "lastCall": 6047,
+      "distinctCalls": 1268
+    },
+    {
+      "mechanism": "vibratoAgeDepthOpcode",
+      "voiceIndex": 1,
+      "recordIndex": 11,
+      "variant": {
+        "bit7": false,
+        "depthNibble": 3,
+        "extent": 5,
+        "fx1": 83,
+        "operation": "LDY age"
+      },
+      "firstCall": 9217,
+      "lastCall": 16415,
+      "distinctCalls": 6776
+    },
+    {
+      "mechanism": "vibratoAgeDepthOpcode",
+      "voiceIndex": 2,
+      "recordIndex": 18,
+      "variant": {
+        "bit7": true,
+        "depthNibble": 5,
+        "extent": 4,
+        "fx1": 197,
+        "operation": "ADC age high-delta"
+      },
+      "firstCall": 16522,
+      "lastCall": 17279,
+      "distinctCalls": 643
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 0,
+      "recordIndex": 11,
+      "variant": {
+        "programAddress": 45034,
+        "selector": 3,
+        "stage": 1
+      },
+      "firstCall": 10754,
+      "lastCall": 13281,
+      "distinctCalls": 64
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 0,
+      "recordIndex": 11,
+      "variant": {
+        "programAddress": 45034,
+        "selector": 3,
+        "stage": 2
+      },
+      "firstCall": 10786,
+      "lastCall": 13282,
+      "distinctCalls": 2
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 0,
+      "recordIndex": 11,
+      "variant": {
+        "programAddress": 45034,
+        "selector": 3,
+        "stage": 3
+      },
+      "firstCall": 10787,
+      "lastCall": 13330,
+      "distinctCalls": 96
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 0,
+      "recordIndex": 15,
+      "variant": {
+        "programAddress": 45034,
+        "selector": 3,
+        "stage": 1
+      },
+      "firstCall": 16514,
+      "lastCall": 17217,
+      "distinctCalls": 540
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 0,
+      "recordIndex": 15,
+      "variant": {
+        "programAddress": 45034,
+        "selector": 3,
+        "stage": 2
+      },
+      "firstCall": 16546,
+      "lastCall": 17218,
+      "distinctCalls": 4
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 0,
+      "recordIndex": 15,
+      "variant": {
+        "programAddress": 45034,
+        "selector": 3,
+        "stage": 3
+      },
+      "firstCall": 16547,
+      "lastCall": 17266,
+      "distinctCalls": 93
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 1,
+      "recordIndex": 4,
+      "variant": {
+        "programAddress": 45014,
+        "selector": 1,
+        "stage": 1
+      },
+      "firstCall": 2,
+      "lastCall": 7557,
+      "distinctCalls": 2178
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 1,
+      "recordIndex": 4,
+      "variant": {
+        "programAddress": 45014,
+        "selector": 1,
+        "stage": 2
+      },
+      "firstCall": 34,
+      "lastCall": 7583,
+      "distinctCalls": 1440
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 1,
+      "recordIndex": 4,
+      "variant": {
+        "programAddress": 45014,
+        "selector": 1,
+        "stage": 3
+      },
+      "firstCall": 326,
+      "lastCall": 7295,
+      "distinctCalls": 522
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 1,
+      "recordIndex": 5,
+      "variant": {
+        "programAddress": 45004,
+        "selector": 0,
+        "stage": 1
+      },
+      "firstCall": 3074,
+      "lastCall": 9057,
+      "distinctCalls": 1356
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 1,
+      "recordIndex": 5,
+      "variant": {
+        "programAddress": 45004,
+        "selector": 0,
+        "stage": 2
+      },
+      "firstCall": 3106,
+      "lastCall": 9089,
+      "distinctCalls": 488
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 1,
+      "recordIndex": 5,
+      "variant": {
+        "programAddress": 45004,
+        "selector": 0,
+        "stage": 3
+      },
+      "firstCall": 3366,
+      "lastCall": 9119,
+      "distinctCalls": 372
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 1,
+      "recordIndex": 6,
+      "variant": {
+        "programAddress": 45024,
+        "selector": 2,
+        "stage": 1
+      },
+      "firstCall": 4610,
+      "lastCall": 5955,
+      "distinctCalls": 596
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 1,
+      "recordIndex": 6,
+      "variant": {
+        "programAddress": 45024,
+        "selector": 2,
+        "stage": 2
+      },
+      "firstCall": 4660,
+      "lastCall": 5971,
+      "distinctCalls": 304
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 1,
+      "recordIndex": 6,
+      "variant": {
+        "programAddress": 45024,
+        "selector": 2,
+        "stage": 3
+      },
+      "firstCall": 4676,
+      "lastCall": 6003,
+      "distinctCalls": 168
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 1,
+      "recordIndex": 11,
+      "variant": {
+        "programAddress": 45034,
+        "selector": 3,
+        "stage": 1
+      },
+      "firstCall": 9218,
+      "lastCall": 16365,
+      "distinctCalls": 4392
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 1,
+      "recordIndex": 11,
+      "variant": {
+        "programAddress": 45034,
+        "selector": 3,
+        "stage": 2
+      },
+      "firstCall": 10786,
+      "lastCall": 16366,
+      "distinctCalls": 28
+    },
+    {
+      "mechanism": "filterAdditive",
+      "voiceIndex": 1,
+      "recordIndex": 11,
+      "variant": {
+        "programAddress": 45034,
+        "selector": 3,
+        "stage": 3
+      },
+      "firstCall": 10787,
+      "lastCall": 16414,
+      "distinctCalls": 922
+    },
+    {
+      "mechanism": "filterOwnerFallback",
+      "voiceIndex": 0,
+      "recordIndex": 0,
+      "variant": {
+        "selector": 0
+      },
+      "firstCall": 17272,
+      "lastCall": 17279,
+      "distinctCalls": 8
+    },
+    {
+      "mechanism": "filterOwnerFallback",
+      "voiceIndex": 1,
+      "recordIndex": 3,
+      "variant": {
+        "selector": 0
+      },
+      "firstCall": 16441,
+      "lastCall": 16499,
+      "distinctCalls": 22
+    },
+    {
+      "mechanism": "filterOwnerFallback",
+      "voiceIndex": 1,
+      "recordIndex": 9,
+      "variant": {
+        "selector": 0
+      },
+      "firstCall": 1441,
+      "lastCall": 9167,
+      "distinctCalls": 608
+    },
+    {
+      "mechanism": "filterOwnerFallback",
+      "voiceIndex": 1,
+      "recordIndex": 10,
+      "variant": {
+        "selector": 0
+      },
+      "firstCall": 16417,
+      "lastCall": 16513,
+      "distinctCalls": 63
+    },
+    {
+      "mechanism": "filterOwnerFallback",
+      "voiceIndex": 1,
+      "recordIndex": 14,
+      "variant": {
+        "selector": 0
+      },
+      "firstCall": 9169,
+      "lastCall": 9215,
+      "distinctCalls": 47
+    },
+    {
+      "mechanism": "filterTerminal",
+      "voiceIndex": 0,
+      "recordIndex": 11,
+      "variant": {
+        "programAddress": 45034,
+        "selector": 3
+      },
+      "firstCall": 10835,
+      "lastCall": 13439,
+      "distinctCalls": 218
+    },
+    {
+      "mechanism": "filterTerminal",
+      "voiceIndex": 0,
+      "recordIndex": 15,
+      "variant": {
+        "programAddress": 45034,
+        "selector": 3
+      },
+      "firstCall": 17267,
+      "lastCall": 17270,
+      "distinctCalls": 4
+    },
+    {
+      "mechanism": "filterTerminal",
+      "voiceIndex": 1,
+      "recordIndex": 5,
+      "variant": {
+        "programAddress": 45004,
+        "selector": 0
+      },
+      "firstCall": 3398,
+      "lastCall": 8831,
+      "distinctCalls": 516
+    },
+    {
+      "mechanism": "filterTerminal",
+      "voiceIndex": 1,
+      "recordIndex": 6,
+      "variant": {
+        "programAddress": 45024,
+        "selector": 2
+      },
+      "firstCall": 4948,
+      "lastCall": 6047,
+      "distinctCalls": 176
+    },
+    {
+      "mechanism": "filterTerminal",
+      "voiceIndex": 1,
+      "recordIndex": 11,
+      "variant": {
+        "programAddress": 45034,
+        "selector": 3
+      },
+      "firstCall": 10835,
+      "lastCall": 16415,
+      "distinctCalls": 1158
+    },
+    {
+      "mechanism": "drumWaveConsume",
+      "voiceIndex": 1,
+      "recordIndex": 3,
+      "variant": {
+        "selector": 1
+      },
+      "firstCall": 16441,
+      "lastCall": 17266,
+      "distinctCalls": 180
+    },
+    {
+      "mechanism": "drumWaveConsume",
+      "voiceIndex": 2,
+      "recordIndex": 2,
+      "variant": {
+        "selector": 0
+      },
+      "firstCall": 1,
+      "lastCall": 16469,
+      "distinctCalls": 2680
+    },
+    {
+      "mechanism": "drumWaveConsume",
+      "voiceIndex": 2,
+      "recordIndex": 3,
+      "variant": {
+        "selector": 1
+      },
+      "firstCall": 1441,
+      "lastCall": 16520,
+      "distinctCalls": 2988
+    },
+    {
+      "mechanism": "highByteSweep",
+      "voiceIndex": 1,
+      "recordIndex": 9,
+      "variant": {},
+      "firstCall": 1441,
+      "lastCall": 9167,
+      "distinctCalls": 608
+    },
+    {
+      "mechanism": "pulseRunInitialize",
+      "voiceIndex": 2,
+      "recordIndex": 12,
+      "variant": {},
+      "firstCall": 7681,
+      "lastCall": 7681,
+      "distinctCalls": 1
+    },
+    {
+      "mechanism": "pulseRunHighWrap",
+      "voiceIndex": 2,
+      "recordIndex": 12,
+      "variant": {},
+      "firstCall": 7724,
+      "lastCall": 9213,
+      "distinctCalls": 61
+    },
+    {
+      "mechanism": "onsetNoiseHighOverride",
+      "voiceIndex": 0,
+      "recordIndex": 1,
+      "variant": {
+        "length": 2,
+        "onset": 129
+      },
+      "firstCall": 1,
+      "lastCall": 16507,
+      "distinctCalls": 1536
+    },
+    {
+      "mechanism": "onsetNoiseHighOverride",
+      "voiceIndex": 1,
+      "recordIndex": 10,
+      "variant": {
+        "length": 2,
+        "onset": 129
+      },
+      "firstCall": 16417,
+      "lastCall": 17275,
+      "distinctCalls": 86
+    },
+    {
+      "mechanism": "onsetNoiseHighOverride",
+      "voiceIndex": 2,
+      "recordIndex": 7,
+      "variant": {
+        "length": 2,
+        "onset": 129
+      },
+      "firstCall": 1549,
+      "lastCall": 3067,
+      "distinctCalls": 128
+    }
+  ],
+  "writeComparison": {
+    "equal": true,
+    "recordCount": 310614,
+    "hashRecipe": "SHA256(UTF8(json.dumps(ordered_records,separators=(\",\",\":\"))+\"\\n\")); no field or timing normalization.",
+    "prefixSha256": "c6135a2c83ca9904ddcc3a1b19a727788ba35511c8721ef6cc4b04a11c815695",
+    "canonicalPrefixSha256": "c6135a2c83ca9904ddcc3a1b19a727788ba35511c8721ef6cc4b04a11c815695",
+    "canonicalPath": "evidence/cybernoid-form-36000/audit.writes.json.gz",
+    "canonicalCompressedSha256": "f98385d8ca3eee92f956813507757cbf5b60e19bdcd7c02cb8e7697d317fcd00"
+  },
+  "audit": {
+    "playCalls": 17281,
+    "initWriteCount": 25,
+    "playWriteCount": 310589,
+    "maximumPlayCycles": 3297
+  },
+  "consistencyChecks": [
+    "Every voice visit joins a patch initializer or synthesis body.",
+    "Every body joins zero-selector PWM copy or selected PWM arithmetic.",
+    "PWM stages/fallback and add/subtract each cover selected arithmetic.",
+    "Filter initial/additive/terminal cover all mode-table updates.",
+    "Every consumed drum waveform joins absolute or relative pitch."
+  ],
+  "archiveListingBoundary": {
+    "actualArchiveRange": [
+      44102,
+      44356
+    ],
+    "sequence": [
+      "PWM copy",
+      "FX3 bit20 high-byte sweep",
+      "FX3 bit01 filter",
+      "FX3 bit02 pulse-run",
+      "packed field4 bit08 frequency addition"
+    ],
+    "absentRecoveredListingBlocks": [
+      "waveform arpeggio",
+      "pulse arpeggio",
+      "strange filter"
+    ],
+    "basis": "Pinned archive bytes and static hook pins, not a zero-visit inference about listing-only code."
+  },
+  "limits": [
+    "Mechanism hooks mark instructions inside accepted paths, not preceding flag tests. Counts distinguish raw instruction visits from distinct calls; looped arithmetic may visit a hook multiple times in one call.",
+    "Voice index follows executed STX48 atA728, not temporary X table/division indexes. Record counts distinguish score assignments, patch initializers, and synthesis bodies.",
+    "Raw effect instruction visits are unclassified instruction coverage, not independent semantic claims; no full instruction dump or CPU/RAM snapshot is emitted.",
+    "Recovered waveform-/pulse-arpeggio and strange-filter blocks are absent from actual archive AC46..AD44; no hooks are assigned to those listing-only blocks.",
+    "Flag parameters, retained buffers and table bytes are source-bound observations, not a complete editable synthesis model. No IRQ-host, SID physical-state, PCM or listening equivalence claim."
+  ]
+}
