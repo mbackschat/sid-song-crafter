@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "header",
+      "command": [
+        "{python}",
+        "scripts/sid_intake.py",
+        ".local/research/gyruss/Gyruss.sid",
+        "--subtune",
+        "1",
+        "--output",
+        "{out}/header.json"
+      ],
+      "inputs": [
+        ".local/research/gyruss/Gyruss.sid",
+        "config/local-assets.json",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py"
+      ],
+      "outputs": [
+        "header.json"
+      ],
+      "timeoutSeconds": 15
+    },
+    {
+      "id": "subtune-1",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/gyruss/Gyruss.sid",
+        "{out}/reference.wav",
+        "49",
+        "--subtune",
+        "1",
+        "--clock",
+        "ntsc"
+      ],
+      "inputs": [
+        ".local/research/gyruss/Gyruss.sid",
+        "scripts/render-sid.cpp",
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "reference.wav",
+        "reference.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 90
+    },
+    {
+      "id": "health-1",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "inspect",
+        "{stage:subtune-1}/reference.wav"
+      ],
+      "inputs": [
+        "{stage:subtune-1}/reference.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 15
+    },
+    {
+      "id": "subtune-2",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/gyruss/Gyruss.sid",
+        "{out}/reference.wav",
+        "7",
+        "--subtune",
+        "2",
+        "--clock",
+        "ntsc"
+      ],
+      "inputs": [
+        ".local/research/gyruss/Gyruss.sid",
+        "scripts/render-sid.cpp",
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "reference.wav",
+        "reference.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 90
+    },
+    {
+      "id": "health-2",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "inspect",
+        "{stage:subtune-2}/reference.wav"
+      ],
+      "inputs": [
+        "{stage:subtune-2}/reference.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 15
+    },
+    {
+      "id": "subtune-4",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/gyruss/Gyruss.sid",
+        "{out}/reference.wav",
+        "36",
+        "--subtune",
+        "4",
+        "--clock",
+        "ntsc"
+      ],
+      "inputs": [
+        ".local/research/gyruss/Gyruss.sid",
+        "scripts/render-sid.cpp",
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "reference.wav",
+        "reference.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 90
+    },
+    {
+      "id": "health-4",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "inspect",
+        "{stage:subtune-4}/reference.wav"
+      ],
+      "inputs": [
+        "{stage:subtune-4}/reference.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 15
+    },
+    {
+      "id": "comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "sequence",
+        "{stage:subtune-1}/reference.wav",
+        "build/bach-toccata-full-listening/toccata.wav",
+        "{out}/gyruss-then-ours",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:subtune-1}/reference.wav",
+        "build/bach-toccata-full-listening/toccata.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "gyruss-then-ours.ab.wav",
+        "gyruss-then-ours.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    }
+  ],
+  "deliverables": {
+    "header": "{stage:header}/header.json",
+    "gyruss1": "{stage:subtune-1}/reference.wav",
+    "gyruss2": "{stage:subtune-2}/reference.wav",
+    "gyruss4": "{stage:subtune-4}/reference.wav",
+    "gyrussThenOurs": "{stage:comparison}/gyruss-then-ours.ab.wav",
+    "comparisonReceipt": "{stage:comparison}/gyruss-then-ours.comparison.json"
+  }
+}

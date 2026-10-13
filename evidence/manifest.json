@@ -9416,6 +9416,86 @@
       "originalBytes": 913,
       "sha256": "dbfad6d9884582f911d9552859276f2e9b2757905b8e577d725ceae50a70f6e0",
       "bytes": 913
+    },
+    {
+      "path": "evidence/bach-gyruss-comparison/provenance.json",
+      "originalPath": "build/gyruss-source-intake/provenance.json",
+      "group": "bach-gyruss-comparison",
+      "reason": "Record authorized reference source, SID/catalogue fingerprints and independently accepted Bach baseline.",
+      "originalSha256": "eca9db8819c208efe7cf2efba4bfcc8aaa845cda46ba43437dfd8973e5ff29a5",
+      "originalBytes": 1467,
+      "sha256": "eca9db8819c208efe7cf2efba4bfcc8aaa845cda46ba43437dfd8973e5ff29a5",
+      "bytes": 1467
+    },
+    {
+      "path": "evidence/bach-gyruss-comparison/reference-clocks.json",
+      "originalPath": "build/gyruss-source-intake/reference-clocks.json",
+      "group": "bach-gyruss-comparison",
+      "reason": "Pin actual downloaded reference headers supporting the accepted PAL/NTSC policy.",
+      "originalSha256": "3b68c60a95f5cb6a87426e50992499e919b53bc46063436a0d2e256fe070316d",
+      "originalBytes": 25608,
+      "sha256": "3b68c60a95f5cb6a87426e50992499e919b53bc46063436a0d2e256fe070316d",
+      "bytes": 25608
+    },
+    {
+      "path": "evidence/bach-gyruss-comparison/check-reference-clocks.py",
+      "originalPath": "build/gyruss-source-intake/check-reference-clocks.py",
+      "group": "bach-gyruss-comparison",
+      "reason": "Reproduce the registry fingerprint and clock declaration inventory using the existing SID inspector.",
+      "originalSha256": "e49a52a4d030760b482fe50c967a58e19680c83a704356ffa13b998a6e86bfd9",
+      "originalBytes": 1113,
+      "sha256": "e49a52a4d030760b482fe50c967a58e19680c83a704356ffa13b998a6e86bfd9",
+      "bytes": 1113
+    },
+    {
+      "path": "evidence/bach-gyruss-comparison/audio-health.json",
+      "originalPath": "build/gyruss-source-intake/audio-health.json",
+      "group": "bach-gyruss-comparison",
+      "reason": "Verify numbered NTSC reference PCM format, duration, signal and no clipping while preserving the accepted Bach hash.",
+      "originalSha256": "5efac702dedaedce844f01768cfea8b884ec3372860207eb94585678da6d842b",
+      "originalBytes": 3078,
+      "sha256": "5efac702dedaedce844f01768cfea8b884ec3372860207eb94585678da6d842b",
+      "bytes": 3078
+    },
+    {
+      "path": "evidence/bach-gyruss-comparison/run.json",
+      "originalPath": "build/bach-gyruss-comparison-v1/run.json",
+      "group": "bach-gyruss-comparison",
+      "reason": "Retain explicit clock/subtune recipe execution, tool hashes and output fingerprints without source audio.",
+      "originalSha256": "2a2170efc0dd9e742e6bb3cef6fa27544d6e7c16e580bf092af0da72bc988d31",
+      "originalBytes": 15794,
+      "sha256": "2a2170efc0dd9e742e6bb3cef6fa27544d6e7c16e580bf092af0da72bc988d31",
+      "bytes": 15794
+    },
+    {
+      "path": "evidence/bach-gyruss-comparison/header.json",
+      "originalPath": "build/bach-gyruss-comparison-v1/cache/header/d119dcd5994588db8f44e068b5c237f2d6f63496db4efe867980253e819220ea/attempt-77f3aaa57510449283c195945312cead/header.json",
+      "group": "bach-gyruss-comparison",
+      "reason": "Preserve the original source header declarations separately from PAL callable-audit admission.",
+      "originalSha256": "536c05647ece55068a01126e31a46f25a411dbdab51174a09ff8018f677a34ea",
+      "originalBytes": 1174,
+      "sha256": "536c05647ece55068a01126e31a46f25a411dbdab51174a09ff8018f677a34ea",
+      "bytes": 1174
+    },
+    {
+      "path": "evidence/bach-gyruss-comparison/comparison.json",
+      "originalPath": "build/bach-gyruss-comparison-v1/cache/comparison/e0abb56b0d3ded1386f7132f5aa319ba3d905781a90a0da5e41dc046df1b02e2/attempt-e781dfdc855c483b91c583efe345e4de/gyruss-then-ours.comparison.json",
+      "group": "bach-gyruss-comparison",
+      "reason": "Retain exact original-level sequence boundaries and hashes.",
+      "originalSha256": "c64813a3b0ba76054e463556a2ab62cb9b315c3b8a2e86df3a0c1cd80b7bb3d0",
+      "originalBytes": 2712,
+      "sha256": "c64813a3b0ba76054e463556a2ab62cb9b315c3b8a2e86df3a0c1cd80b7bb3d0",
+      "bytes": 2712
+    },
+    {
+      "path": "evidence/bach-gyruss-comparison/audition.json",
+      "originalPath": "build/bach-gyruss-listening/sources.json",
+      "group": "bach-gyruss-comparison",
+      "reason": "Pin the published local reference WAVs and comparison source files.",
+      "originalSha256": "1463d8412b6bfbd3ecba0007887962dea4ce95d7b87efdf3b0580839b4a0eb7d",
+      "originalBytes": 2309,
+      "sha256": "1463d8412b6bfbd3ecba0007887962dea4ce95d7b87efdf3b0580839b4a0eb7d",
+      "bytes": 2309
     }
   ],
   "independentShadesSources": {

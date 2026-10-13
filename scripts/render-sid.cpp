@@ -82,23 +82,26 @@ static unsigned int selected_subtune(const std::string &value) {
     return song;
 }
 
-enum class RenderOption { Voices, Subtune };
+enum class RenderOption { Voices, Subtune, Clock };
 
 struct RenderOptions {
     bool voice_diagnostic = false;
     bool explicit_subtune = false;
+    bool explicit_clock = false;
     unsigned int subtune = 0;
+    SidConfig::c64_model_t clock = SidConfig::PAL;
     std::array<bool, 3> voices{true, true, true};
 };
 
 static RenderOptions parse_options(int argc, char **argv) {
-    if (argc < 4) throw std::runtime_error("Usage: render-sid INPUT.sid OUTPUT.wav SECONDS [--voices 1,2,3|none] [--subtune N] (PAL, 0 < seconds <= 600; subtune is one-based; voices is a one-SID control-mask diagnostic)");
+    if (argc < 4) throw std::runtime_error("Usage: render-sid INPUT.sid OUTPUT.wav SECONDS [--voices 1,2,3|none] [--subtune N] [--clock pal|ntsc] (default PAL, 0 < seconds <= 600; subtune is one-based; voices is a one-SID control-mask diagnostic)");
     RenderOptions options;
     for (int index = 4; index < argc; index += 2) {
         const std::string name = argv[index];
         RenderOption option;
         if (name == "--voices") option = RenderOption::Voices;
         else if (name == "--subtune") option = RenderOption::Subtune;
+        else if (name == "--clock") option = RenderOption::Clock;
         else throw std::runtime_error("Unknown renderer option: " + name);
         if (index + 1 == argc) throw std::runtime_error("Renderer option requires a value: " + name);
         switch (option) {
@@ -112,6 +115,15 @@ static RenderOptions parse_options(int argc, char **argv) {
                 options.subtune = selected_subtune(argv[index + 1]);
                 options.explicit_subtune = true;
                 break;
+            case RenderOption::Clock: {
+                if (options.explicit_clock) throw std::runtime_error("Duplicate --clock option");
+                const std::string clock = argv[index + 1];
+                if (clock == "pal") options.clock = SidConfig::PAL;
+                else if (clock == "ntsc") options.clock = SidConfig::NTSC;
+                else throw std::runtime_error("Clock must be pal or ntsc");
+                options.explicit_clock = true;
+                break;
+            }
         }
     }
     return options;
@@ -130,6 +142,7 @@ int main(int argc, char **argv) {
         const uint32_t frame_count = std::max(1L, std::lround(seconds * rate));
         SIDLiteBuilder builder("SIDLite");
         const bool declared_dual = has_dual_sid_header(argv[1]);
+        if (declared_dual && options.clock != SidConfig::PAL) throw std::runtime_error("Two-SID rendering requires PAL");
         SidTune tune(argv[1]);
         if (!tune.getStatus()) throw std::runtime_error(tune.statusString());
         // SidTune starts unselected; psiddrv passes currentSong()-1 to init (libsidplayfp v3.1.1 src/psiddrv.cpp).
@@ -161,7 +174,7 @@ int main(int argc, char **argv) {
         sidplayfp player;
         SidConfig config = player.config();
         config.frequency = rate;
-        config.defaultC64Model = SidConfig::PAL;
+        config.defaultC64Model = options.clock;
         config.forceC64Model = true;
         config.defaultSidModel = SidConfig::MOS8580;
         // SidConfig::MAX_POWER_ON_DELAY defines larger values as randomized startup.
@@ -233,7 +246,8 @@ int main(int argc, char **argv) {
         if (!output || !trace) throw std::runtime_error("Unable to finish output files");
         std::cout << "libsidplayfp " << LIBSIDPLAYFP_VERSION_MAJ << '.' << LIBSIDPLAYFP_VERSION_MIN << '.' << LIBSIDPLAYFP_VERSION_LEV
                   << " / SIDLite: " << written << (channels == 1 ? " mono PCM16 samples" : " stereo PCM16 frames") << " at " << rate
-                  << " Hz, subtune " << tune_info->currentSong() << " of " << tune_info->songs() << '\n';
+                  << " Hz, clock " << (options.clock == SidConfig::PAL ? "PAL" : "NTSC")
+                  << ", subtune " << tune_info->currentSong() << " of " << tune_info->songs() << '\n';
         return 0;
     } catch (const std::exception &error) {
         std::cerr << error.what() << '\n';

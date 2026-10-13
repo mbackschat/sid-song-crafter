@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "method": "complete inputs in sequence; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-gyruss-comparison-v1/cache/comparison/e0abb56b0d3ded1386f7132f5aa319ba3d905781a90a0da5e41dc046df1b02e2/attempt-e781dfdc855c483b91c583efe345e4de/gyruss-then-ours.ab.wav",
+    "frames": 6069171,
+    "durationSeconds": 137.62292517006802,
+    "sha256": "6a2bb16a33776b127aa1b23591270a85b682d929f40c8df56fea98b38d38399b"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 2160900
+    },
+    {
+      "label": "silence",
+      "startFrame": 2160900,
+      "endFrame": 2182950
+    },
+    {
+      "label": "B",
+      "startFrame": 2182950,
+      "endFrame": 6069171
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-gyruss-comparison-v1/cache/subtune-1/f72b6ac25d5b248cd31649903b80a5241a6789bda6a207e1bd069b4c81e562cd/attempt-581c98f7796243b6b2d47ded3dcb53a8/reference.wav",
+      "sha256": "8f1e40f069e7819aff984e38650d721ea37260c2b2dd772149728a446c30aa41",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 2160900,
+        "durationSeconds": 49.0,
+        "peak": 11216,
+        "peakDbfs": -9.31223868674269,
+        "clippedSamples": 0,
+        "rms": 1885.3449919542898,
+        "acRms": 1737.9547930217545,
+        "acRmsDbfs": -25.508229187856685,
+        "perChannel": [
+          {
+            "dc": 730.7796357998982,
+            "rms": 1885.3449919542898,
+            "acRms": 1737.9547930217545
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-full-listening/toccata.wav",
+      "sha256": "86e10f2cfe1341eb60d27f03e071dffb34181666bd605353378d5b48e0523b89",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 3886221,
+        "durationSeconds": 88.12292517006803,
+        "peak": 12817,
+        "peakDbfs": -8.153271012875292,
+        "clippedSamples": 0,
+        "rms": 3109.7303794856407,
+        "acRms": 3087.071373152678,
+        "acRmsDbfs": -20.518065289286586,
+        "perChannel": [
+          {
+            "dc": -374.7177206340041,
+            "rms": 3109.7303794856407,
+            "acRms": 3087.071373152678
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

@@ -1,10 +1,10 @@
 # Gyruss: written reception for the Bach trial
 
-Research checked: 2026-10-14. Evidence level: attributed written opinions and secondary catalogue information, with no listening or execution claim. This bounded review informs the [single-SID Bach Toccata trial](../study-plan.md#bach-toccata-next-workbench-trial); the [technique lookup](../technique-index.md) and [repertoire](sound-design-repertoire.md) remain the routes to our reusable sound programs.
+Written research checked: 2026-10-14. The initial review below contains attributed opinions and catalogue information, with no listening or execution claim. The later [authorized audio comparison](#authorized-audio-comparison-after-mono-acceptance) is recorded separately. This bounded review informs the [single-SID Bach Toccata trial](../study-plan.md#bach-toccata-next-workbench-trial); the [technique lookup](../technique-index.md) and [repertoire](sound-design-repertoire.md) remain the routes to our reusable sound programs.
 
 ## Source and influence boundary
 
-The user authorized research into what people write about Gyruss because they expect to judge our interpretation against it. The sources below were read as text. No Gyruss audio, video, SID binary, score extraction, instrument data or player program was downloaded, played or inspected. Embedded audio/video links were not followed. Our Bach notes and phrasing must come from the separately selected organ score and organ performance, with our three-voice reduction retained as an arrangement decision.
+For the initial review, the user authorized research into what people write about Gyruss because they expect to judge our interpretation against it. The sources below were read as text. During that initial review and preparation of our accepted arrangement, no Gyruss audio, video, SID binary, score extraction, instrument data or player program was downloaded, played or inspected. Embedded audio/video links were not followed. Our Bach notes and phrasing must come from the separately selected organ score and organ performance, with our three-voice reduction retained as an arrangement decision.
 
 Written Gyruss reception is now an acknowledged influence on our acceptance criteria. Describe the result as an independently authored score/program arrangement informed by these comments; do not claim an entirely uninfluenced interpretation. These pages cannot establish how a Gyruss sound is synthesized or whether our rendering resembles it.
 
@@ -40,3 +40,31 @@ These are our proposed criteria, inferred from the written reception and the tri
 - **Register and balance:** high notes should remain intelligible without dominating the pedal or making the sustained texture tiring. Envelope levels, static pulse width and any filter choice are musical candidates to evaluate, not settings inferred from these reviews.
 
 Provide the matching organ-performance passage beside the raw single-SID render and ask the listener about entrance, sustained weight, harmonic clarity and pace. A future authorized Gyruss audio comparison would need the selected platform and passage named separately. Written expectations and actual musical acceptance remain different evidence.
+
+## Authorized audio comparison after mono acceptance
+
+On **2026-10-14**, after hearing the complete single-SID Toccata, the user replied: “Yes, it is nice. Now I wonder how it compares to Gyruss? Can you give it to me, too?” This accepts the presented mono interpretation and explicitly authorizes the subsequent Gyruss reference audition. Preserve the accepted [Bach baseline](bach-toccata.md#complete-single-sid-delivery), commit `5b61384`, WAV SHA-256 `86e10f2cfe1341eb60d27f03e071dffb34181666bd605353378d5b48e0523b89`. This is a post-acceptance comparison; it does not retroactively make the original arrangement a Gyruss transcription. No Gyruss disassembly or instrument extraction is needed to provide the requested audio.
+
+The selected C64 file is [HVSC GAMES/G-L/Gyruss.sid](https://www.hvsc.de/download/C64Music/GAMES/G-L/Gyruss.sid), also identified by [C64-Wiki](https://www.c64-wiki.com/wiki/Gyruss). The 2,247-byte PSID v2 declares **NTSC, MOS6581, eight subtunes, default #1**, title `Gyruss`, unknown author `<?>`, release `1984 Parker Bros`. SHA-256: `06a7cf7ece3d3b69b0ec45c1007c4c0764933b4aabf60d4923f0c07e18f85d04`. The [download registry](../../../config/local-assets.json) stores its source URL/fingerprint and ignored local destination. Original SID and rendered audio stay outside Git and LFS.
+
+The downloaded [HVSC Songlengths.md5](https://www.hvsc.de/download/C64Music/DOCUMENTS/Songlengths.md5) matches the SID's complete-file MD5 `9073056c5ef8fce5ebfa47937ab622b2`; it lists subtunes 1–8 as **49, 7, 5, 36, 70, 55, 9 and 67 seconds**. STIL identifies Bach's Toccata material in **#1, #2 and #4**, without establishing their in-game roles. Use these three numbered labels rather than inventing title/level/game-over identities. Catalogue durations determine bounded audition windows; they do not prove a natural ending or exact correspondence with our complete source-backed Toccata.
+
+Preserve NTSC timing and the declared 6581 model for Gyruss. Our accepted arrangement remains PAL/8580. This is an interpretation comparison under each artifact's own settings, not an isolated chip-model experiment or equal-time phrase alignment. The original-level A/B places Gyruss #1 first, then a half-second separator, then our complete accepted piece. It is not loudness-normalized; use the separate files when evaluating balance. The user also identified [US/PAL–NTSC portability](../study-plan.md#required-palntsc-portability) as a project requirement; reference rendering alone does not satisfy native export portability.
+
+
+Reproduce the numbered reference windows and the post-acceptance comparison with the [cached recipe](../../../config/listening/bach-gyruss-comparison.json):
+
+```sh
+python3 scripts/setup-project.py --only references --include gyruss
+python3 scripts/listening-package.py config/listening/bach-gyruss-comparison.json --output build/bach-gyruss-comparison-v1
+python3 scripts/publish-listening.py build/bach-gyruss-comparison-v1/run.json --selection config/listening/bach-gyruss-comparison-audition.json --output build/bach-gyruss-listening
+```
+
+The recipe requires the accepted Bach WAV at its frozen local path; its source can be reproduced with the [full Bach recipe](../../../config/listening/bach-toccata-full.json), keeping its recorded waveform fingerprint as the baseline. Rebuild the [renderer with explicit clock support](../../workflows/audio-workflow.md) before running this comparison. The existing reference-intake admission remains PAL-only, so this NTSC reference uses the shared generic recipe runner with metadata inspection and explicit renderer selection; it does not claim a callable CPU trace. Reuse the cache after input/output hash checks, and choose a fresh publication directory if one already exists.
+
+- [Gyruss #1](../../../build/bach-gyruss-listening/gyruss-subtune-1.wav): 49-second default-subtune window; recommended starting point.
+- [Gyruss #2](../../../build/bach-gyruss-listening/gyruss-subtune-2.wav): seven-second additional Bach-labelled selection.
+- [Gyruss #4](../../../build/bach-gyruss-listening/gyruss-subtune-4.wav): 36-second additional Bach-labelled selection.
+- [Gyruss #1 then our accepted Toccata](../../../build/bach-gyruss-listening/gyruss-then-ours.ab.wav): 137.622925 seconds; ours begins at 49.5 seconds. Different form/pacing, original levels, no reference-matching claim.
+
+[Source fingerprints and catalogue-window provenance](../../../evidence/bach-gyruss-comparison/provenance.json), [render health](../../../evidence/bach-gyruss-comparison/audio-health.json), [recipe run](../../../evidence/bach-gyruss-comparison/run.json) and [comparison boundaries](../../../evidence/bach-gyruss-comparison/comparison.json) retain reproducibility without reference audio or SID bytes. Listening to Gyruss and judging its relationship to ours remains a separate musical assessment.

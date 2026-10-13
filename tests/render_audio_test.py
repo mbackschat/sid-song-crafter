@@ -40,6 +40,21 @@ def write_a4_sid(path):
     path.write_bytes(header + init + b"\x60")
 
 
+def write_ntsc_clock_sid(path):
+    # A triangle oscillator and a per-VBI counter independently expose clock pitch and update cadence.
+    word = round(440 * 2**24 / (14318181.82 / 14))
+    init = bytearray()
+    for offset, value in ((24, 15), (0, word & 255), (1, word >> 8), (5, 0), (6, 0xf0), (4, 0x11)):
+        init.extend((0xa9, value, 0x8d, offset, 0xd4))
+    init.extend(bytes.fromhex("A9 00 8D 00 11 8D 02 D4 60"))
+    play = bytes.fromhex("EE 00 11 AD 00 11 8D 02 D4 60")
+    header = bytearray(0x7c)
+    header[:4] = b"PSID"
+    struct.pack_into(">7HI", header, 4, 2, 0x7c, 0x1000, 0x1000, 0x1000 + len(init), 1, 1, 0)
+    struct.pack_into(">H", header, 0x76, 0x28)
+    path.write_bytes(header + init + play)
+
+
 def write_two_sid_fixture(path, default_song=1, left=True, right=True):
     # Hand-coded independent oscillators distinguish stereo routing from duplicated mono.
     init = bytearray((0xc9, default_song - 1, 0xf0, 1, 0x60))
@@ -100,6 +115,81 @@ def write_two_subtune_sid(path, default_song):
 
 
 class HeadlessRenderTest(unittest.TestCase):
+    def test_clock_selection_controls_actual_pitch_and_vbi_cadence_and_preserves_default_pal(self):
+        with tempfile.TemporaryDirectory() as directory:
+            sid = Path(directory) / "ntsc-clock.sid"
+            write_ntsc_clock_sid(sid)
+            source = sid.read_bytes()
+            rendered = {}
+            for clock in (None, "pal", "ntsc"):
+                output = Path(directory) / f"clock-{clock}.wav"
+                options = [] if clock is None else ["--clock", clock]
+                result = subprocess.run([str(RENDERER), str(sid), str(output), "1.2", *options],
+                                        capture_output=True, text=True, timeout=20)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                selected = "pal" if clock is None else clock
+                self.assertIn(f"clock {selected.upper()}", result.stdout)
+                samples = read_samples(output)
+                self.assertEqual(len(samples), round(1.2 * RATE))
+                middle = samples[RATE // 4:RATE]
+                cpu_clock, cycles = ((17734475 / 18, 312 * 63) if selected == "pal"
+                                     else (14318181.82 / 14, 263 * 65))
+                word = round(440 * 2**24 / (14318181.82 / 14))
+                self.assertGreater(rms(middle), 100)
+                self.assertAlmostEqual(frequency(middle), word * cpu_clock / 2**24, delta=3)
+                trace = Path(str(output) + ".registers.tsv").read_bytes()
+                rows = [(int(line.split("\t")[0]), bytes.fromhex(line.split("\t")[1])[2])
+                        for line in trace.decode().splitlines()[1:]]
+                start, end = rows[4], rows[-1]
+                expected_updates = (end[0] - start[0]) * cpu_clock / (1000 * cycles)
+                self.assertAlmostEqual(end[1] - start[1], expected_updates, delta=1.1)
+                rendered[clock] = output.read_bytes(), trace
+            self.assertEqual(rendered[None], rendered["pal"])
+            self.assertNotEqual(rendered["pal"][0], rendered["ntsc"][0])
+            self.assertEqual(sid.read_bytes(), source)
+
+    def test_clock_options_reject_invalid_missing_and_duplicate_values_before_output(self):
+        arguments = [["--clock", value] for value in ("", "auto", "PAL", " ntsc", "ntsc ", "old-ntsc")]
+        arguments += [["--clock"], ["--clock", "pal", "--clock", "ntsc"]]
+        with tempfile.TemporaryDirectory() as directory:
+            sid = Path(directory) / "clock.sid"
+            write_ntsc_clock_sid(sid)
+            for options in arguments:
+                for existing in (False, True):
+                    with self.subTest(options=options, existing=existing):
+                        output = Path(directory) / "invalid.wav"
+                        trace = Path(str(output) + ".registers.tsv")
+                        if existing:
+                            output.write_bytes(b"Existing audio")
+                            trace.write_bytes(b"Existing trace")
+                        else:
+                            output.unlink(missing_ok=True)
+                            trace.unlink(missing_ok=True)
+                        result = subprocess.run([str(RENDERER), str(sid), str(output), "0.1", *options],
+                                                capture_output=True, text=True, timeout=20)
+                        self.assertNotEqual(result.returncode, 0)
+                        self.assertIn("clock", result.stderr.lower())
+                        if existing:
+                            self.assertEqual(output.read_bytes(), b"Existing audio")
+                            self.assertEqual(trace.read_bytes(), b"Existing trace")
+                        else:
+                            self.assertFalse(output.exists())
+                            self.assertFalse(trace.exists())
+
+    def test_two_sid_rejects_ntsc_clock_override_without_truncating_output(self):
+        with tempfile.TemporaryDirectory() as directory:
+            sid, output = Path(directory) / "dual.sid", Path(directory) / "preserved.wav"
+            write_two_sid_fixture(sid)
+            trace = Path(str(output) + ".registers.tsv")
+            output.write_bytes(b"Existing audio")
+            trace.write_bytes(b"Existing trace")
+            result = subprocess.run([str(RENDERER), str(sid), str(output), "0.1", "--clock", "ntsc"],
+                                    capture_output=True, text=True, timeout=20)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("Two-SID rendering requires PAL", result.stderr)
+            self.assertEqual(output.read_bytes(), b"Existing audio")
+            self.assertEqual(trace.read_bytes(), b"Existing trace")
+
     def test_explicit_subtunes_select_init_accumulator_and_pitch_and_preserve_default_output(self):
         for default_song in (1, 2):
             with self.subTest(default_song=default_song), tempfile.TemporaryDirectory() as directory:
@@ -135,7 +225,8 @@ class HeadlessRenderTest(unittest.TestCase):
                 rendered = []
                 for order in (0, 1):
                     output = Path(directory) / f"order-{voices}-{order}.wav"
-                    options = ["--subtune", "2", "--voices", voices] if order == 0 else ["--voices", voices, "--subtune", "2"]
+                    options = (["--clock", "pal", "--subtune", "2", "--voices", voices] if order == 0
+                               else ["--voices", voices, "--subtune", "2", "--clock", "pal"])
                     result = subprocess.run([str(RENDERER), str(sid), str(output), "0.5", *options],
                                             capture_output=True, text=True, timeout=20)
                     self.assertEqual(result.returncode, 0, result.stderr)
