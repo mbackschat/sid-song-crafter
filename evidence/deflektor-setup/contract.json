@@ -1,0 +1,1049 @@
+{
+  "sourceSha256": "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d",
+  "sourceUnchanged": true,
+  "runtimeColdStateFile": "cold-state.json",
+  "numericLookupFile": "frequency-words.json",
+  "fieldSourceEvidence": {
+    "frequency": {
+      "baseAddress": 49301,
+      "voiceStride": 7,
+      "byteCount": 2,
+      "highAddress": null
+    },
+    "pulse_word": {
+      "baseAddress": 49303,
+      "voiceStride": 7,
+      "byteCount": 2,
+      "highAddress": null
+    },
+    "control": {
+      "baseAddress": 49305,
+      "voiceStride": 7,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "attack_decay": {
+      "baseAddress": 49306,
+      "voiceStride": 7,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "sustain_release": {
+      "baseAddress": 49307,
+      "voiceStride": 7,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "remaining": {
+      "baseAddress": 49329,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "rest": {
+      "baseAddress": 49383,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "release_threshold": {
+      "baseAddress": 49335,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "detune": {
+      "baseAddress": 49344,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "pitch_index": {
+      "baseAddress": 49410,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "pwm_interval": {
+      "baseAddress": 49338,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "pwm_base": {
+      "baseAddress": 49341,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "pwm_elapsed": {
+      "baseAddress": 49392,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "pwm_step": {
+      "baseAddress": 49395,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "pwm_position": {
+      "baseAddress": 49398,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "pitch_selector": {
+      "baseAddress": 49350,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "pitch_wait": {
+      "baseAddress": 49347,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "pitch_position": {
+      "baseAddress": 49353,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "wave_selector": {
+      "baseAddress": 49356,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "wave_countdown": {
+      "baseAddress": 49362,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "wave_position": {
+      "baseAddress": 49359,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "score_pitch_selector": {
+      "baseAddress": 49365,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "score_pitch_countdown": {
+      "baseAddress": 49389,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "score_pitch_position": {
+      "baseAddress": 49386,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "resonance_selector": {
+      "baseAddress": 49407,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "resonance_countdown": {
+      "baseAddress": 49404,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "resonance_position": {
+      "baseAddress": 49401,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "glide_wait": {
+      "baseAddress": 49377,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "glide_remaining": {
+      "baseAddress": 49368,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "glide_flags": {
+      "baseAddress": 49380,
+      "voiceStride": 1,
+      "byteCount": 1,
+      "highAddress": null
+    },
+    "glide_step": {
+      "baseAddress": 49371,
+      "voiceStride": 1,
+      "byteCount": 2,
+      "highAddress": 49374
+    }
+  },
+  "globalSourceEvidence": {
+    "play_flag": 49158,
+    "cutoff_low": 49322,
+    "cutoff_high": 49323,
+    "routing": 49324,
+    "mode_volume": 49325
+  },
+  "coldInit": {
+    "locus": [
+      51216,
+      51309
+    ],
+    "clearInclusiveRanges": [
+      [
+        49326,
+        49412
+      ],
+      [
+        49291,
+        49299
+      ]
+    ],
+    "retainedVoiceShadowRange": [
+      49301,
+      49321
+    ],
+    "patternPointers": "Three C8CC FF stubs",
+    "mappingDefaults": [
+      0,
+      9,
+      18,
+      27,
+      36,
+      45,
+      54,
+      63,
+      0,
+      9,
+      18,
+      27,
+      36,
+      45,
+      54,
+      63,
+      0,
+      9,
+      18,
+      27,
+      36,
+      45,
+      54,
+      63
+    ],
+    "sidStores": [],
+    "retainedSourceOnlyGlobals": {
+      "currentVoice": 2,
+      "sidVoiceOffset": 14,
+      "rowBoundarySkip": 0
+    },
+    "basis": "Static selected numeric data plus native explicit init rules; exact loaded shadow/default values and init clear-store addresses checked against retained initialization. No new CPU execution."
+  },
+  "instrumentSetup": {
+    "locus": [
+      50137,
+      50236
+    ],
+    "fields": {
+      "pwmPacked": 0,
+      "pulseHigh": 1,
+      "control": 2,
+      "attackDecay": 3,
+      "sustainRelease": 4,
+      "releaseThreshold": 5,
+      "pwmLowStep": 6,
+      "delayedPitchSelector": 7,
+      "waveformSelector": 8,
+      "contextualResonanceSelector": 9
+    },
+    "operations": [
+      "Retain pulse LOW; replace pulse HIGH, control, AD, SR",
+      "Replace release threshold and delayed-pitch/wave/resonance selectors and PWM step",
+      "pwm_interval=field0&15; pwm_base=field0&240 (unshifted)",
+      "pwm_elapsed=(interval-1)&255; pwm_position=0; resonance_position=0",
+      "Other counters/positions and frequency remain unchanged until a note initializer"
+    ],
+    "sidStores": []
+  },
+  "noteSetup": {
+    "locus": [
+      50242,
+      50472
+    ],
+    "frequencyIndex": "(sourceNote+transpose+20)&255",
+    "frequencyLowBase": 51405,
+    "frequencyHighBase": 51501,
+    "lookupDomain": [
+      0,
+      255
+    ],
+    "lowHighBaseSeparation": 96,
+    "frequency": "(numeric frequency_words[index]+unsigned detune)&65535; update RAM HIGH then LOW",
+    "order": [
+      "Frequency/pitch-index and control|1",
+      "Consume duration",
+      "Delayed-pitch initializer if enabled",
+      "Waveform initializer if enabled",
+      "Shared-resonance initializer if enabled",
+      "PWM elapsed/position reset ONLY when unshifted pwm_base nonzero",
+      "Score-pitch initializer if enabled",
+      "glide_wait=glide_flags&31",
+      "remaining=duration"
+    ],
+    "sidStores": [],
+    "retained": "Rest counter, glide flags/step/length; disabled program counters/positions; PWM phase when base zero",
+    "lookupBoundary": "256 native byte-index lookups include adjacent source numeric data, without guessed chromatic extension."
+  },
+  "restSetup": {
+    "locus": [
+      49995,
+      50021
+    ],
+    "operations": [
+      "rest=remaining=duration",
+      "Immediate SID control zero for that voice"
+    ],
+    "retained": "All frequency/PW/control/envelope shadows and programs; no new-note initializers"
+  },
+  "scoreEffects": {
+    "selector90Through95": "score_pitch_selector=(token&15)<<3; no phase reset until enabled note initialization",
+    "bf": "Clear only glide_remaining",
+    "threeByteGlide": "token>=C0: flags=token, wait=token&31, consume low/high step and length; body flag20 subtracts",
+    "rowEntry": "Clear glide_remaining unless FF, before any score commands",
+    "modeVolumeE8": "Next ORDER byte replaces mode_volume shadow at C301; no immediate D418 store"
+  },
+  "globalRowPreparation": {
+    "locus": [
+      49420,
+      49465
+    ],
+    "operations": "For each remaining==1: remaining=rest=0 and increment rowBoundarySkip",
+    "scope": "Bodies still decrement row/rest counters; nonzero skip prevents continuing programs. Notes initialize and rest direct stores still occur.",
+    "writerSuppression": "After all voices, nonzero skip resets to0 and returns without any voice/global writer stores"
+  },
+  "writer": {
+    "locus": [
+      49637,
+      49809
+    ],
+    "order": "For voices0,1,2 with rest==0: seven ascending SID voice registers; then D415,D416,D417,D418",
+    "selectedSongEntryOffset": 0,
+    "boundary": "Alternate entry offsets>=5 suppress voice2 processing/writes; outside selected title"
+  },
+  "stop": {
+    "locus": [
+      49888,
+      49906
+    ],
+    "orderedStores": [
+      [
+        54276,
+        0
+      ],
+      [
+        54283,
+        0
+      ],
+      [
+        54290,
+        0
+      ]
+    ],
+    "operations": "play_flag=0; unwind voice JSR and return immediately; no writer or skip reset",
+    "observedCall": 8480,
+    "retainedRowBoundarySkip": 3,
+    "laterCalls": "Immediate C10B return, no SID stores"
+  },
+  "retainedInitStoreEvidence": [
+    {
+      "pc": 51216,
+      "address": 49300,
+      "value": 0
+    },
+    {
+      "pc": 51225,
+      "address": 49300,
+      "value": 0
+    },
+    {
+      "pc": 51250,
+      "address": 49158,
+      "value": 0
+    },
+    {
+      "pc": 51255,
+      "address": 247,
+      "value": 204
+    },
+    {
+      "pc": 51257,
+      "address": 249,
+      "value": 204
+    },
+    {
+      "pc": 51259,
+      "address": 251,
+      "value": 204
+    },
+    {
+      "pc": 51263,
+      "address": 248,
+      "value": 200
+    },
+    {
+      "pc": 51265,
+      "address": 250,
+      "value": 200
+    },
+    {
+      "pc": 51267,
+      "address": 252,
+      "value": 200
+    },
+    {
+      "pc": 51271,
+      "address": 49324,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49412,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49411,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49410,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49409,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49408,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49407,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49406,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49405,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49404,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49403,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49402,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49401,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49400,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49399,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49398,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49397,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49396,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49395,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49394,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49393,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49392,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49391,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49390,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49389,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49388,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49387,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49386,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49385,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49384,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49383,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49382,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49381,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49380,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49379,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49378,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49377,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49376,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49375,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49374,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49373,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49372,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49371,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49370,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49369,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49368,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49367,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49366,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49365,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49364,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49363,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49362,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49361,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49360,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49359,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49358,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49357,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49356,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49355,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49354,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49353,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49352,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49351,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49350,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49349,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49348,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49347,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49346,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49345,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49344,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49343,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49342,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49341,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49340,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49339,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49338,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49337,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49336,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49335,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49334,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49333,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49332,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49331,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49330,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49329,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49328,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49327,
+      "value": 0
+    },
+    {
+      "pc": 51276,
+      "address": 49326,
+      "value": 0
+    },
+    {
+      "pc": 51284,
+      "address": 49299,
+      "value": 0
+    },
+    {
+      "pc": 51284,
+      "address": 49298,
+      "value": 0
+    },
+    {
+      "pc": 51284,
+      "address": 49297,
+      "value": 0
+    },
+    {
+      "pc": 51284,
+      "address": 49296,
+      "value": 0
+    },
+    {
+      "pc": 51284,
+      "address": 49295,
+      "value": 0
+    },
+    {
+      "pc": 51284,
+      "address": 49294,
+      "value": 0
+    },
+    {
+      "pc": 51284,
+      "address": 49293,
+      "value": 0
+    },
+    {
+      "pc": 51284,
+      "address": 49292,
+      "value": 0
+    },
+    {
+      "pc": 51284,
+      "address": 49291,
+      "value": 0
+    },
+    {
+      "pc": 51295,
+      "address": 49263,
+      "value": 63
+    },
+    {
+      "pc": 51295,
+      "address": 49262,
+      "value": 54
+    },
+    {
+      "pc": 51295,
+      "address": 49261,
+      "value": 45
+    },
+    {
+      "pc": 51295,
+      "address": 49260,
+      "value": 36
+    },
+    {
+      "pc": 51295,
+      "address": 49259,
+      "value": 27
+    },
+    {
+      "pc": 51295,
+      "address": 49258,
+      "value": 18
+    },
+    {
+      "pc": 51295,
+      "address": 49257,
+      "value": 9
+    },
+    {
+      "pc": 51295,
+      "address": 49256,
+      "value": 0
+    },
+    {
+      "pc": 51295,
+      "address": 49255,
+      "value": 63
+    },
+    {
+      "pc": 51295,
+      "address": 49254,
+      "value": 54
+    },
+    {
+      "pc": 51295,
+      "address": 49253,
+      "value": 45
+    },
+    {
+      "pc": 51295,
+      "address": 49252,
+      "value": 36
+    },
+    {
+      "pc": 51295,
+      "address": 49251,
+      "value": 27
+    },
+    {
+      "pc": 51295,
+      "address": 49250,
+      "value": 18
+    },
+    {
+      "pc": 51295,
+      "address": 49249,
+      "value": 9
+    },
+    {
+      "pc": 51295,
+      "address": 49248,
+      "value": 0
+    },
+    {
+      "pc": 51295,
+      "address": 49247,
+      "value": 63
+    },
+    {
+      "pc": 51295,
+      "address": 49246,
+      "value": 54
+    },
+    {
+      "pc": 51295,
+      "address": 49245,
+      "value": 45
+    },
+    {
+      "pc": 51295,
+      "address": 49244,
+      "value": 36
+    },
+    {
+      "pc": 51295,
+      "address": 49243,
+      "value": 27
+    },
+    {
+      "pc": 51295,
+      "address": 49242,
+      "value": 18
+    },
+    {
+      "pc": 51295,
+      "address": 49241,
+      "value": 9
+    },
+    {
+      "pc": 51295,
+      "address": 49240,
+      "value": 0
+    },
+    {
+      "pc": 51303,
+      "address": 49325,
+      "value": 15
+    },
+    {
+      "pc": 51306,
+      "address": 49158,
+      "value": 15
+    }
+  ],
+  "proofScope": "Cold/init and setup source contract checked by static native instructions and existing initialized records. Pure player separately verifies complete ordered stores; this is not another complete player or CPU run.",
+  "inputs": {
+    "evidence/deflektor-form/full40000/initial-state.json": "d64b226588ada0b67b4408c7d6f000037408193dade2f08665ef8cffc1cd595d",
+    "evidence/deflektor-form/full40000/instructions.json.gz": "f9d9fe8efd0d76e6435dd6f6a2c684019c535f7368768916881d50583bff3845"
+  },
+  "tools": {
+    "psid_profile.py": "c2c696db133ed024840cfa5edbc76e3a07ef1f30345cc1820c978a51a73c816d",
+    "psid_audit.py": "eeea11cdbb5159745f36802526ee2f2986d12fe19ce47b3609fedcf15f47e1bd",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "scriptSha256": "a92873118771fb6b26013ed0f760e3d0e5278b6289b2d26f07108eb9e235e414",
+  "artifacts": {
+    "cold-state.json": "866261a9ede3720da3aff79566494ffc8f5c9c4a364e937c5bffeb1236a2890d",
+    "frequency-words.json": "028d645f59e97def04a9a641ba3b632534c882b66e4c0a4f67df5beb8b3eefaa"
+  },
+  "limits": "Loaded SID shadows are numeric software state, not initialization SID writes or known physical chip state. No source SID, whole payload/RAM image, rendered audio or new original CPU traversal is retained."
+}

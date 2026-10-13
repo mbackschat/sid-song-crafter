@@ -58,6 +58,56 @@ class DeflektorScoreTests(unittest.TestCase):
         self.assertIsNone(expand_score(self.tables, calls=8480)['firstStopCall'])
         self.assertEqual(8480, expand_score(self.tables, calls=8481)['firstStopCall'])
 
+    def test_operations_preserve_effect_instrument_note_row_consumption_order(self):
+        actual = expand_score(self.tables, calls=1281)
+        operations = [row for row in actual['operations']
+                      if row['call'] == 1280 and row['voiceIndex'] == 2]
+        self.assertEqual([
+            dict(operation='command', call=1280, voiceIndex=2, sourceCommand=0xa8,
+                 kind='repeatTotal', value=8),
+            dict(operation='command', call=1280, voiceIndex=2, sourceCommand=0x95,
+                 kind='opaqueSingleByteEffect'),
+            dict(operation='instrument', call=1280, voiceIndex=2, slot=20,
+                 recordOffset=36, fields=[3, 8, 0, 9, 10, 2, 85, 0, 10]),
+            dict(operation='note', call=1280, voiceIndex=2, sourceNote=42,
+                 transpose=10, pitchIndex=72),
+            dict(operation='row', call=1280, voiceIndex=2, rowKind='note', value=10),
+        ], operations)
+
+    def test_operations_preserve_legacy_categories_voice_order_and_immediate_stop(self):
+        actual = expand_score(self.tables, calls=40000)
+        operations = actual['operations']
+        for operation, category in (('command', 'commands'), ('instrument', 'instruments'),
+                                    ('note', 'notes'), ('row', 'rows')):
+            with self.subTest(operation=operation):
+                projected = [{key: value for key, value in row.items() if key != 'operation'}
+                             for row in operations if row['operation'] == operation]
+                self.assertEqual(actual[category], projected)
+        self.assertEqual(sorted((row['call'], row['voiceIndex']) for row in operations),
+                         [(row['call'], row['voiceIndex']) for row in operations])
+        self.assertEqual([dict(operation='stop', call=8480, voiceIndex=0)],
+                         [row for row in operations if row['call'] >= 8480])
+        self.assertEqual('stop', operations[-1]['operation'])
+
+    def test_operation_lists_are_detached_from_input_and_legacy_events(self):
+        tables = copy.deepcopy(self.tables)
+        tables['patterns'] = [dict(patternId=0, pointer=0x5000,
+                                  bytes=[0xc0, 1, 2, 3, 0x80, 12, 1, 255])]
+        tables['orders'] = [dict(voiceIndex=voice, pointer=0x4000 + voice * 2,
+                                bytes=[0, 255]) for voice in range(3)]
+        original = copy.deepcopy(tables)
+        actual = expand_score(tables, calls=1)
+        expected_instruments = copy.deepcopy(actual['instruments'])
+        expected_commands = copy.deepcopy(actual['commands'])
+        for row in actual['operations']:
+            if row['operation'] == 'instrument':
+                row['fields'][0] ^= 255
+            elif row['operation'] == 'command' and 'arguments' in row:
+                row['arguments'][0] ^= 255
+        self.assertEqual(original, tables)
+        self.assertEqual(expected_instruments, actual['instruments'])
+        self.assertEqual(expected_commands, actual['commands'])
+
     def test_zero_duration_is_rejected_instead_of_guessing_one_call(self):
         edited = copy.deepcopy(self.tables)
         first = next(row for row in expand_score(edited, calls=1)['reads'] if row['context'] == 'noteDuration')

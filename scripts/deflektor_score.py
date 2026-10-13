@@ -1,5 +1,7 @@
 """Expand Deflektor's numeric order/pattern grammar without executing its driver."""
 
+from copy import deepcopy
+
 
 def require(ok, message):
     if not ok:
@@ -54,6 +56,12 @@ def expand_score(tables, *, calls):
     immediately when one voice consumes an order FF. The exclusive call cap
     alone does not imply an ending. Input tables are never mutated.
 
+    operations preserves consumption order across commands, instruments, notes
+    and rows, with an immediate stop entry at the terminal order FF. Each entry
+    has an operation tag and the corresponding legacy event fields; command
+    kind remains unchanged. Its nested fields are detached from legacy arrays.
+    Pattern selections remain navigation metadata in selections.
+
     This models score navigation, not synthesis or an acoustic tail. Opaque
     effects remain numeric commands. Only the pinned title's executed grammar
     has a complete source comparison; zero-duration scheduling is unsupported.
@@ -67,7 +75,12 @@ def expand_score(tables, *, calls):
     voices = [dict(orderCursor=0, patternCursor=0, patternId=None, repeatCount=0,
                    transpose=0, nextCall=0) for _ in range(3)]
     reads, selections, rows, notes, instruments, commands = [], [], [], [], [], []
+    operations = []
     stopped = None
+
+    def emit(operation, events, event):
+        events.append(event)
+        operations.append(dict(operation=operation, **deepcopy(event)))
 
     def consume(voice, call, context, *, order=False):
         state = voices[voice]
@@ -108,6 +121,7 @@ def expand_score(tables, *, calls):
                         command = consume(voice, call, 'command', order=True)
                         if command == 255:
                             stopped = call
+                            operations.append(dict(operation='stop', call=call, voiceIndex=voice))
                             break
                         if command < 128:
                             require(command in patterns, 'Pattern ID exceeds retained table')
@@ -131,19 +145,21 @@ def expand_score(tables, *, calls):
                             value = consume(voice, call, 'instrumentMapping', order=True)
                             mapping[voice * 8 + (command & 7)] = value
                             kind = 'instrumentMapping'
-                        commands.append(dict(call=call, voiceIndex=voice, sourceCommand=command, kind=kind, value=value))
+                        emit('command', commands,
+                             dict(call=call, voiceIndex=voice, sourceCommand=command, kind=kind, value=value))
                     else:
                         raise ValueError('Order commands do not reach a pattern/stop within the byte cursor domain')
                     if stopped is not None:
                         break
                     continue
                 if token < 128:
-                    notes.append(dict(call=call, voiceIndex=voice, sourceNote=token,
-                                      transpose=state['transpose'], pitchIndex=(token + state['transpose'] + 20) & 255))
+                    emit('note', notes,
+                         dict(call=call, voiceIndex=voice, sourceNote=token,
+                              transpose=state['transpose'], pitchIndex=(token + state['transpose'] + 20) & 255))
                     state['patternCursor'] = (state['patternCursor'] + 1) & 255
                     duration = consume(voice, call, 'noteDuration')
                     state['patternCursor'] = (state['patternCursor'] + 1) & 255
-                    rows.append(dict(call=call, voiceIndex=voice, rowKind='note', value=duration))
+                    emit('row', rows, dict(call=call, voiceIndex=voice, rowKind='note', value=duration))
                     require(duration != 0, 'Unsupported zero duration; no one-call substitution')
                     state['nextCall'] = call + duration
                     break
@@ -151,7 +167,7 @@ def expand_score(tables, *, calls):
                     state['patternCursor'] = (state['patternCursor'] + 1) & 255
                     duration = consume(voice, call, 'helper')
                     state['patternCursor'] = (state['patternCursor'] + 1) & 255
-                    rows.append(dict(call=call, voiceIndex=voice, rowKind='rest', value=duration))
+                    emit('row', rows, dict(call=call, voiceIndex=voice, rowKind='rest', value=duration))
                     require(duration != 0, 'Unsupported zero duration; no one-call substitution')
                     state['nextCall'] = call + duration
                     break
@@ -160,23 +176,27 @@ def expand_score(tables, *, calls):
                     require(slot < len(mapping), 'Instrument slot escapes retained mapping; no guessed adjacent memory')
                     offset = mapping[slot]
                     require(offset in records, 'Record offset is outside the established 9-byte record table')
-                    instruments.append(dict(call=call, voiceIndex=voice, slot=slot, recordOffset=offset,
-                                            fields=list(records[offset]['fields'])))
+                    emit('instrument', instruments,
+                         dict(call=call, voiceIndex=voice, slot=slot, recordOffset=offset,
+                              fields=list(records[offset]['fields'])))
                 elif token >= 0xc0:
                     arguments = []
                     for _ in range(3):
                         state['patternCursor'] = (state['patternCursor'] + 1) & 255
                         arguments.append(consume(voice, call, 'helper'))
-                    commands.append(dict(call=call, voiceIndex=voice, sourceCommand=token,
-                                         kind='opaqueThreeByteEffect', arguments=arguments))
+                    emit('command', commands,
+                         dict(call=call, voiceIndex=voice, sourceCommand=token,
+                              kind='opaqueThreeByteEffect', arguments=arguments))
                 else:
-                    commands.append(dict(call=call, voiceIndex=voice, sourceCommand=token,
-                                         kind='routingBitSet' if token == 0xa1 else
-                                              'routingBitClear' if token == 0xa2 else 'opaqueSingleByteEffect'))
+                    emit('command', commands,
+                         dict(call=call, voiceIndex=voice, sourceCommand=token,
+                              kind='routingBitSet' if token == 0xa1 else
+                                   'routingBitClear' if token == 0xa2 else 'opaqueSingleByteEffect'))
                 state['patternCursor'] = (state['patternCursor'] + 1) & 255
             else:
                 raise ValueError('Pattern commands do not reach a timed row/stop within the bounded expansion')
             if stopped is not None:
                 break
     return dict(reads=reads, selections=selections, rows=rows, notes=notes,
-                instruments=instruments, commands=commands, firstStopCall=stopped)
+                instruments=instruments, commands=commands, operations=operations,
+                firstStopCall=stopped)

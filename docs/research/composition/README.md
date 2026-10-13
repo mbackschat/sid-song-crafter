@@ -21,7 +21,7 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Prepare Monty on the Run](monty-preparation.md): pinned subtune, two order traversals, independent first-wrap verification and bounded note/body components with shared PWM and pitch-state aliases.
 - [Prepare Rambo: First Blood Part II](rambo-preparation.md): loader-specific attribution, finite command traversal, independent stop-window verification and named-state lifetime/PWM/pitch components.
 - [Prepare Ghouls ’n Ghosts](ghouls-preparation.md): archive/subtune boundaries, finite stream form and CPU/VICE terminal verification with continuing filter writes.
-- [Prepare Deflektor](deflektor-preparation.md): finite score expansion, high-RAM CPU/VICE execution and verified waveform, body-entry, pitch, PWM and shared-resonance components.
+- [Prepare Deflektor](deflektor-preparation.md): complete finite numeric player, ordered score operations, editable sound components and full-register proof with bounded source edits.
 - [Prepare Billie Jean](billie-jean-preparation.md): independent score expansion across two cycles, retained sound-state differences, duration intervention and VICE wrap verification.
 - [Prepare the pop songs and themes](pop-theme-preparation.md): pinned Take On Me, Billie Jean, Airwolf and Ghostbusters; Airwolf’s independent full-cycle model, bounded callable comparisons, unspecified-model and RSID boundaries.
 
