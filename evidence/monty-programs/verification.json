@@ -1,0 +1,811 @@
+{
+  "passed": true,
+  "sourceSha256": "528a7330817e4a0a0f75a505e9fe2444e07c5072ce5383ceaa89f183f0eee3ab",
+  "sourceBytesUnchanged": true,
+  "isolatedCases": 11568,
+  "maximumIsolatedCycles": 2599,
+  "retainedTrace": {
+    "matchedComponents": {
+      "note-setup": 17,
+      "continuing-effects": 1512,
+      "append-setup": 7
+    },
+    "totalMatchedComponents": 1536,
+    "examples": [
+      {
+        "call": 0,
+        "voice": 2,
+        "instrumentIndex": 8,
+        "kind": "note-setup",
+        "state": {
+          "note": 0,
+          "control": 191,
+          "remaining": 31,
+          "held_frequency": 13350,
+          "voice_control": 65,
+          "pulse_delay": 29,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "instrument": {
+          "pulse_word": 2688,
+          "waveform": 65,
+          "attack_decay": 9,
+          "sustain_release": 112,
+          "vibrato_depth": 2,
+          "pulse_value": 95,
+          "effects": 4
+        },
+        "outputState": {
+          "note": 19,
+          "control": 191,
+          "remaining": 31,
+          "held_frequency": 834,
+          "voice_control": 65,
+          "pulse_delay": 29,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "outputInstrument": {
+          "pulse_word": 2688,
+          "waveform": 65,
+          "attack_decay": 9,
+          "sustain_release": 112,
+          "vibrato_depth": 2,
+          "pulse_value": 95,
+          "effects": 4
+        },
+        "orderedWrites": [
+          [
+            1,
+            3
+          ],
+          [
+            0,
+            66
+          ],
+          [
+            4,
+            65
+          ],
+          [
+            2,
+            128
+          ],
+          [
+            3,
+            10
+          ],
+          [
+            5,
+            9
+          ],
+          [
+            6,
+            112
+          ]
+        ]
+      },
+      {
+        "call": 0,
+        "voice": 1,
+        "instrumentIndex": 12,
+        "kind": "note-setup",
+        "state": {
+          "note": 0,
+          "control": 191,
+          "remaining": 31,
+          "held_frequency": 2500,
+          "voice_control": 65,
+          "pulse_delay": 1,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "instrument": {
+          "pulse_word": 2976,
+          "waveform": 65,
+          "attack_decay": 63,
+          "sustain_release": 255,
+          "vibrato_depth": 1,
+          "pulse_value": 231,
+          "effects": 2
+        },
+        "outputState": {
+          "note": 104,
+          "control": 191,
+          "remaining": 31,
+          "held_frequency": 16705,
+          "voice_control": 65,
+          "pulse_delay": 1,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "outputInstrument": {
+          "pulse_word": 2976,
+          "waveform": 65,
+          "attack_decay": 63,
+          "sustain_release": 255,
+          "vibrato_depth": 1,
+          "pulse_value": 231,
+          "effects": 2
+        },
+        "orderedWrites": [
+          [
+            1,
+            65
+          ],
+          [
+            0,
+            65
+          ],
+          [
+            4,
+            65
+          ],
+          [
+            2,
+            160
+          ],
+          [
+            3,
+            11
+          ],
+          [
+            5,
+            63
+          ],
+          [
+            6,
+            255
+          ]
+        ]
+      },
+      {
+        "call": 0,
+        "voice": 0,
+        "instrumentIndex": 6,
+        "kind": "note-setup",
+        "state": {
+          "note": 0,
+          "control": 191,
+          "remaining": 31,
+          "held_frequency": 15880,
+          "voice_control": 65,
+          "pulse_delay": 0,
+          "pulse_direction": 1,
+          "portamento": 0
+        },
+        "instrument": {
+          "pulse_word": 2048,
+          "waveform": 65,
+          "attack_decay": 4,
+          "sustain_release": 64,
+          "vibrato_depth": 2,
+          "pulse_value": 0,
+          "effects": 0
+        },
+        "outputState": {
+          "note": 86,
+          "control": 191,
+          "remaining": 31,
+          "held_frequency": 40000,
+          "voice_control": 65,
+          "pulse_delay": 0,
+          "pulse_direction": 1,
+          "portamento": 0
+        },
+        "outputInstrument": {
+          "pulse_word": 2048,
+          "waveform": 65,
+          "attack_decay": 4,
+          "sustain_release": 64,
+          "vibrato_depth": 2,
+          "pulse_value": 0,
+          "effects": 0
+        },
+        "orderedWrites": [
+          [
+            1,
+            156
+          ],
+          [
+            0,
+            64
+          ],
+          [
+            4,
+            65
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            8
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            6,
+            64
+          ]
+        ]
+      },
+      {
+        "call": 1,
+        "voice": 2,
+        "instrumentIndex": 8,
+        "kind": "continuing-effects",
+        "state": {
+          "note": 19,
+          "control": 191,
+          "remaining": 31,
+          "held_frequency": 834,
+          "voice_control": 65,
+          "pulse_delay": 29,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "instrument": {
+          "pulse_word": 2688,
+          "waveform": 65,
+          "attack_decay": 9,
+          "sustain_release": 112,
+          "vibrato_depth": 2,
+          "pulse_value": 95,
+          "effects": 4
+        },
+        "outputState": {
+          "note": 19,
+          "control": 191,
+          "remaining": 31,
+          "held_frequency": 834,
+          "voice_control": 65,
+          "pulse_delay": 28,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "outputInstrument": {
+          "pulse_word": 2688,
+          "waveform": 65,
+          "attack_decay": 9,
+          "sustain_release": 112,
+          "vibrato_depth": 2,
+          "pulse_value": 95,
+          "effects": 4
+        },
+        "orderedWrites": [
+          [
+            0,
+            72
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            0,
+            133
+          ]
+        ]
+      },
+      {
+        "call": 1,
+        "voice": 1,
+        "instrumentIndex": 12,
+        "kind": "continuing-effects",
+        "state": {
+          "note": 104,
+          "control": 191,
+          "remaining": 31,
+          "held_frequency": 16705,
+          "voice_control": 65,
+          "pulse_delay": 1,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "instrument": {
+          "pulse_word": 2976,
+          "waveform": 65,
+          "attack_decay": 63,
+          "sustain_release": 255,
+          "vibrato_depth": 1,
+          "pulse_value": 231,
+          "effects": 2
+        },
+        "outputState": {
+          "note": 104,
+          "control": 191,
+          "remaining": 31,
+          "held_frequency": 16449,
+          "voice_control": 65,
+          "pulse_delay": 0,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "outputInstrument": {
+          "pulse_word": 2976,
+          "waveform": 65,
+          "attack_decay": 63,
+          "sustain_release": 255,
+          "vibrato_depth": 1,
+          "pulse_value": 231,
+          "effects": 2
+        },
+        "orderedWrites": [
+          [
+            0,
+            129
+          ],
+          [
+            1,
+            70
+          ],
+          [
+            1,
+            65
+          ]
+        ]
+      },
+      {
+        "call": 1,
+        "voice": 0,
+        "instrumentIndex": 6,
+        "kind": "continuing-effects",
+        "state": {
+          "note": 86,
+          "control": 191,
+          "remaining": 31,
+          "held_frequency": 40000,
+          "voice_control": 65,
+          "pulse_delay": 0,
+          "pulse_direction": 1,
+          "portamento": 0
+        },
+        "instrument": {
+          "pulse_word": 2048,
+          "waveform": 65,
+          "attack_decay": 4,
+          "sustain_release": 64,
+          "vibrato_depth": 2,
+          "pulse_value": 0,
+          "effects": 0
+        },
+        "outputState": {
+          "note": 86,
+          "control": 191,
+          "remaining": 31,
+          "held_frequency": 40000,
+          "voice_control": 65,
+          "pulse_delay": 0,
+          "pulse_direction": 1,
+          "portamento": 0
+        },
+        "outputInstrument": {
+          "pulse_word": 2048,
+          "waveform": 65,
+          "attack_decay": 4,
+          "sustain_release": 64,
+          "vibrato_depth": 2,
+          "pulse_value": 0,
+          "effects": 0
+        },
+        "orderedWrites": [
+          [
+            0,
+            103
+          ],
+          [
+            1,
+            157
+          ]
+        ]
+      },
+      {
+        "call": 2,
+        "voice": 2,
+        "instrumentIndex": 8,
+        "kind": "continuing-effects",
+        "state": {
+          "note": 19,
+          "control": 191,
+          "remaining": 30,
+          "held_frequency": 834,
+          "voice_control": 65,
+          "pulse_delay": 28,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "instrument": {
+          "pulse_word": 2688,
+          "waveform": 65,
+          "attack_decay": 9,
+          "sustain_release": 112,
+          "vibrato_depth": 2,
+          "pulse_value": 95,
+          "effects": 4
+        },
+        "outputState": {
+          "note": 19,
+          "control": 191,
+          "remaining": 30,
+          "held_frequency": 834,
+          "voice_control": 65,
+          "pulse_delay": 27,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "outputInstrument": {
+          "pulse_word": 2688,
+          "waveform": 65,
+          "attack_decay": 9,
+          "sustain_release": 112,
+          "vibrato_depth": 2,
+          "pulse_value": 95,
+          "effects": 4
+        },
+        "orderedWrites": [
+          [
+            0,
+            78
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            0,
+            66
+          ]
+        ]
+      },
+      {
+        "call": 2,
+        "voice": 1,
+        "instrumentIndex": 12,
+        "kind": "continuing-effects",
+        "state": {
+          "note": 104,
+          "control": 191,
+          "remaining": 30,
+          "held_frequency": 16449,
+          "voice_control": 65,
+          "pulse_delay": 0,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "instrument": {
+          "pulse_word": 2976,
+          "waveform": 65,
+          "attack_decay": 63,
+          "sustain_release": 255,
+          "vibrato_depth": 1,
+          "pulse_value": 231,
+          "effects": 2
+        },
+        "outputState": {
+          "note": 104,
+          "control": 191,
+          "remaining": 30,
+          "held_frequency": 16449,
+          "voice_control": 65,
+          "pulse_delay": 7,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "outputInstrument": {
+          "pulse_word": 3200,
+          "waveform": 65,
+          "attack_decay": 63,
+          "sustain_release": 255,
+          "vibrato_depth": 1,
+          "pulse_value": 231,
+          "effects": 2
+        },
+        "orderedWrites": [
+          [
+            0,
+            193
+          ],
+          [
+            1,
+            75
+          ],
+          [
+            3,
+            12
+          ],
+          [
+            2,
+            128
+          ]
+        ]
+      },
+      {
+        "call": 2,
+        "voice": 0,
+        "instrumentIndex": 6,
+        "kind": "continuing-effects",
+        "state": {
+          "note": 86,
+          "control": 191,
+          "remaining": 30,
+          "held_frequency": 40000,
+          "voice_control": 65,
+          "pulse_delay": 0,
+          "pulse_direction": 1,
+          "portamento": 0
+        },
+        "instrument": {
+          "pulse_word": 2048,
+          "waveform": 65,
+          "attack_decay": 4,
+          "sustain_release": 64,
+          "vibrato_depth": 2,
+          "pulse_value": 0,
+          "effects": 0
+        },
+        "outputState": {
+          "note": 86,
+          "control": 191,
+          "remaining": 30,
+          "held_frequency": 40000,
+          "voice_control": 65,
+          "pulse_delay": 0,
+          "pulse_direction": 1,
+          "portamento": 0
+        },
+        "outputInstrument": {
+          "pulse_word": 2048,
+          "waveform": 65,
+          "attack_decay": 4,
+          "sustain_release": 64,
+          "vibrato_depth": 2,
+          "pulse_value": 0,
+          "effects": 0
+        },
+        "orderedWrites": [
+          [
+            0,
+            142
+          ],
+          [
+            1,
+            158
+          ]
+        ]
+      },
+      {
+        "call": 3,
+        "voice": 2,
+        "instrumentIndex": 8,
+        "kind": "continuing-effects",
+        "state": {
+          "note": 19,
+          "control": 191,
+          "remaining": 30,
+          "held_frequency": 834,
+          "voice_control": 65,
+          "pulse_delay": 27,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "instrument": {
+          "pulse_word": 2688,
+          "waveform": 65,
+          "attack_decay": 9,
+          "sustain_release": 112,
+          "vibrato_depth": 2,
+          "pulse_value": 95,
+          "effects": 4
+        },
+        "outputState": {
+          "note": 19,
+          "control": 191,
+          "remaining": 30,
+          "held_frequency": 834,
+          "voice_control": 65,
+          "pulse_delay": 26,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "outputInstrument": {
+          "pulse_word": 2688,
+          "waveform": 65,
+          "attack_decay": 9,
+          "sustain_release": 112,
+          "vibrato_depth": 2,
+          "pulse_value": 95,
+          "effects": 4
+        },
+        "orderedWrites": [
+          [
+            0,
+            84
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            0,
+            133
+          ]
+        ]
+      },
+      {
+        "call": 3,
+        "voice": 1,
+        "instrumentIndex": 12,
+        "kind": "continuing-effects",
+        "state": {
+          "note": 104,
+          "control": 191,
+          "remaining": 30,
+          "held_frequency": 16449,
+          "voice_control": 65,
+          "pulse_delay": 7,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "instrument": {
+          "pulse_word": 3200,
+          "waveform": 65,
+          "attack_decay": 63,
+          "sustain_release": 255,
+          "vibrato_depth": 1,
+          "pulse_value": 231,
+          "effects": 2
+        },
+        "outputState": {
+          "note": 104,
+          "control": 191,
+          "remaining": 30,
+          "held_frequency": 16193,
+          "voice_control": 65,
+          "pulse_delay": 6,
+          "pulse_direction": 0,
+          "portamento": 0
+        },
+        "outputInstrument": {
+          "pulse_word": 3200,
+          "waveform": 65,
+          "attack_decay": 63,
+          "sustain_release": 255,
+          "vibrato_depth": 1,
+          "pulse_value": 231,
+          "effects": 2
+        },
+        "orderedWrites": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            81
+          ],
+          [
+            1,
+            64
+          ]
+        ]
+      },
+      {
+        "call": 3,
+        "voice": 0,
+        "instrumentIndex": 6,
+        "kind": "continuing-effects",
+        "state": {
+          "note": 86,
+          "control": 191,
+          "remaining": 30,
+          "held_frequency": 40000,
+          "voice_control": 65,
+          "pulse_delay": 0,
+          "pulse_direction": 1,
+          "portamento": 0
+        },
+        "instrument": {
+          "pulse_word": 2048,
+          "waveform": 65,
+          "attack_decay": 4,
+          "sustain_release": 64,
+          "vibrato_depth": 2,
+          "pulse_value": 0,
+          "effects": 0
+        },
+        "outputState": {
+          "note": 86,
+          "control": 191,
+          "remaining": 30,
+          "held_frequency": 40000,
+          "voice_control": 65,
+          "pulse_delay": 0,
+          "pulse_direction": 1,
+          "portamento": 0
+        },
+        "outputInstrument": {
+          "pulse_word": 2048,
+          "waveform": 65,
+          "attack_decay": 4,
+          "sustain_release": 64,
+          "vibrato_depth": 2,
+          "pulse_value": 0,
+          "effects": 0
+        },
+        "orderedWrites": [
+          [
+            0,
+            181
+          ],
+          [
+            1,
+            159
+          ]
+        ]
+      }
+    ],
+    "memoryRecovery": "Only explicit STA/STX/STY/INC/DEC changes recover named inputs from the recorded operand/CPU observations; no instruction execution or whole-RAM reconstruction is claimed."
+  },
+  "negativeControl": {
+    "parameter": "pulse_value 0x81\u21920",
+    "onlyPulseStoresRemoved": true,
+    "baselineWrites": [
+      [
+        0,
+        72
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        3,
+        14
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "stationaryWrites": [
+      [
+        0,
+        72
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "pulseStateUnchangedWhenDisabled": true
+  },
+  "artifacts": {
+    "modelSha256": "938031e1dfe3392a1b7c85bd6ddaf26b4e29ce7df4bb218f0f50b3f114ae69a0",
+    "checkerSha256": "e3adee69346af0274b62f43219249e1f2910a29fecb437b73efc7f95407f2251",
+    "traceSha256": "1790b52113bfd170e9ba6b35339db78d766b9263892339959d9c88fcd98914e1"
+  },
+  "tools": {
+    "psid_audit.py": "4446a19a325e625e59f100aac0b186478fb1633f65886b260db2ad3da11419a5",
+    "psid_profile.py": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "limits": "Isolated original routine execution and retained512-call components only. Numeric frequency lookups are caller inputs; out-of-table state aliases, score scheduling, overlay flag, globals and full-title synthesis are not implemented by the helper. No reconstruction/render/listening or new40000-call execution."
+}

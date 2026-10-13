@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "88a2b538ee3d3d1d8b0b754bef77a63d9750812694786977ae8c539f6ecd000e",
+  "primarySourceRevision": "a458a3687e27a63647bbe41968094f0e6d0965a0",
+  "primarySourceSha256": "78e7927e6c2e8f7d42c18d2e02bec764a2911d2d8180cec789020bdd60cdbb75",
+  "component": {
+    "file": "model.py",
+    "entry": "advance_voice(state, *, voice, row_remaining) -> (new_named_state, ordered_address_value_pairs)",
+    "bounds": "Voice integer 0..2; row_remaining byte; named byte/word fields and arrays of fixed lengths; bool and unknown fields rejected.",
+    "runtimeDependencies": "Python copy only; no source file, CPU, events or scheduler",
+    "arithmetic": "Binary word addition modulo 65536; byte countdowns. Steps are unsigned encoded 16-bit additive words. Emit the complete high byte without 12-bit normalization.",
+    "stateFields": {
+      "frequencySteps": {
+        "offsets": [
+          0,
+          2,
+          4,
+          6
+        ],
+        "encoding": "Four little-endian words"
+      },
+      "frequencyDurations": {
+        "offsets": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "encoding": "Four bytes; arpeggio aliases are outside this component"
+      },
+      "frequencyDelay": 12,
+      "frequencyFlags": 13,
+      "pulseDurations": [
+        14,
+        15
+      ],
+      "pulseDelay": 16,
+      "pulseFlags": 17,
+      "pulseSteps": {
+        "offsets": [
+          18,
+          20
+        ],
+        "encoding": "Two little-endian words"
+      },
+      "pulseInitial": {
+        "offset": 22,
+        "encoding": "Little-endian word"
+      },
+      "control": 26,
+      "releaseCountdown": 27,
+      "life": 28,
+      "frequency": {
+        "offset": 29,
+        "encoding": "Little-endian word"
+      },
+      "frequencyRemaining": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "pulse": {
+        "offset": 35,
+        "encoding": "Little-endian word"
+      },
+      "pulseRemaining": [
+        37,
+        38
+      ]
+    },
+    "incomingStateLimit": "SOUND input, not score or instrument initialization. Binary CPU mode required; helper returns no CPU registers/flags. SB offsets 24/25 excluded because these proved paths do not access them."
+  },
+  "voices": [
+    {
+      "physicalVoice": 1,
+      "stateBlock": 10674,
+      "soundEntry": 8753,
+      "lifeDecrementPc": 8792,
+      "terminalClearWriterPc": 8799,
+      "pulseWriterPcs": [
+        8911,
+        8914
+      ],
+      "frequencyWriterPcs": [
+        9057,
+        9060
+      ],
+      "sequentialPitchPhases": 4,
+      "call10561": {
+        "life": 100,
+        "pulseFlags": 255,
+        "frequencyFlags": 5,
+        "pulseDurations": [
+          10,
+          0
+        ],
+        "pulseSteps": [
+          2048,
+          52289
+        ],
+        "pulseInitial": 38557,
+        "frequencySteps": [
+          65509,
+          65535,
+          65532,
+          65533
+        ],
+        "frequencyDurations": [
+          100,
+          150,
+          100,
+          255
+        ]
+      }
+    },
+    {
+      "physicalVoice": 2,
+      "stateBlock": 10713,
+      "soundEntry": 9440,
+      "lifeDecrementPc": 9479,
+      "terminalClearWriterPc": 9486,
+      "pulseWriterPcs": [
+        9598,
+        9601
+      ],
+      "frequencyWriterPcs": [
+        9703,
+        9706
+      ],
+      "sequentialPitchPhases": 3,
+      "call10561": {
+        "life": 239,
+        "pulseFlags": 0,
+        "frequencyFlags": 5,
+        "pulseDurations": [
+          10,
+          255
+        ],
+        "pulseSteps": [
+          200,
+          65516
+        ],
+        "pulseInitial": 1024,
+        "frequencySteps": [
+          8,
+          65528,
+          8,
+          0
+        ],
+        "frequencyDurations": [
+          3,
+          6,
+          3,
+          0
+        ]
+      }
+    },
+    {
+      "physicalVoice": 3,
+      "stateBlock": 10752,
+      "soundEntry": 10137,
+      "lifeDecrementPc": 10176,
+      "terminalClearWriterPc": 10183,
+      "pulseWriterPcs": [
+        10295,
+        10298
+      ],
+      "frequencyWriterPcs": [
+        10433,
+        10436
+      ],
+      "sequentialPitchPhases": 4,
+      "call10561": {
+        "life": 254,
+        "pulseFlags": 5,
+        "frequencyFlags": 7,
+        "pulseDurations": [
+          25,
+          25
+        ],
+        "pulseSteps": [
+          10,
+          65526
+        ],
+        "pulseInitial": 2048,
+        "frequencySteps": [
+          0,
+          65533,
+          65533,
+          65514
+        ],
+        "frequencyDurations": [
+          50,
+          255,
+          255,
+          0
+        ]
+      }
+    }
+  ],
+  "lifetime": {
+    "scoreBitIndependent": true,
+    "lifeZero": "Immediate return with no state change or stores.",
+    "releaseNormal": "Positive release byte decrements; transition to zero writes control & F6 without updating stored control. Life decrements on later invocations.",
+    "rowControlled": "Control bit 08 compares row_remaining with releaseCountdown; below threshold clears stored control & F6 and release. Nonzero control writes once and continues; zero control falls into the normal life decrement.",
+    "lifeOneToZero": "Emit seven zeros at base+6 through base; return before PWM/pitch and preserve their remaining state.",
+    "sourceEvidence": "Primary SOUND/VC/adsr/cc code, captured ending PCs and isolated original-body cases."
+  },
+  "pwm": {
+    "twoPhases": "The first nonzero remaining phase adds its word and decrements its counter. Expired phases advance without a blank invocation.",
+    "delay": "Positive delay decrements and suppresses pulse stores for that invocation.",
+    "reload": "When both counters are zero, bit 7 resets width plus both counters; otherwise bit 0 reloads counters only. No repeat bits means unchanged width is emitted. Reload and first step occur in the same invocation.",
+    "writes": "Pulse low then complete high byte, before frequency stores."
+  },
+  "pitch": {
+    "sequence": "First live counter among three/four phases decrements and adds its word. Exhaustion reloads all four template counters and steps in the same invocation.",
+    "delay": "Positive delay decrements; flag bit 02 selects the fourth word during delay, otherwise no frequency stores.",
+    "writes": "Frequency low then high, after lifetime/control and PWM.",
+    "unsupported": "Arpeggio flag bit 08 on physical voices 1/3; all-zero repeating templates are rejected as non-terminating. No onset/filter/initializer model."
+  },
+  "proofScope": {
+    "calls": [
+      10540,
+      10816
+    ],
+    "bodies": 828,
+    "orderedStores": 2105,
+    "isolatedCases": 54,
+    "wrongScoreGateDetectedBodies": 595,
+    "completeInitializedPrefixMatchedRecords": 87534,
+    "noSoundQualityClaim": true
+  },
+  "causalInterventions": [
+    "Force life=1: terminal clear now, suppressing both programs without advancing their state.",
+    "Force life=0: no stores.",
+    "Disable PWM: pulse stores and steps cease while lifetime and sequential pitch advance.",
+    "Counter-only versus full reset preserves or replaces the accumulated 16-bit width."
+  ],
+  "untested": [
+    "Full-title component coverage",
+    "Arpeggio pitch and note-table bounds",
+    "Waveform/note/instrument initialization",
+    "Filter/global routing behavior",
+    "Arbitrary byte combinations beyond the 54 named synthetic cases",
+    "CPU register/flag return context",
+    "Audible release/silence or hardware audio equivalence"
+  ]
+}

@@ -82,6 +82,35 @@ The [form result](../../../evidence/rambo-form/complete40000/form.json) distingu
 
 The independent [selected VICE check](../../../evidence/rambo-form/vice-end/trace/study.json) matches **56 stores: 25 init and 31 play**, selecting calls **10808–10822** after initialization and all preceding calls. Its 10,823 entry checkpoints remain within **4 / 9 cycles** of the controlled one-PAL-frame cadence. The [projection](../../../evidence/rambo-form/vice-end/projection.json), [oracle](../../../evidence/rambo-form/vice-end/oracle.json), [provenance](../../../evidence/rambo-form/vice-end/provenance.json) and [trace](../../../evidence/rambo-form/vice-end/trace/trace.json.gz) retain this window's store equality and absence after the final store. Store coverage outside that selected window remains CPU evidence. Neither check measures an analogue tail, establishes the original loader host, or supplies listening approval.
 
+## Ongoing sound lifetime and programmed motion
+
+Score completion clears an active bit; it does not terminate the voice's sound routine. Inactive `MUSIC` paths still enter `SOUND` at `$2231/$24E0/$2799`. Each routine checks a separate **sound-life byte at state offset 28**. With release countdown zero, it decrements that byte and continues PWM/pitch while nonzero. Transition **1→0** clears all seven voice registers in descending address order and returns before either program advances. Later invocations return immediately. The [named-state contract](../../../evidence/rambo-programs/contract.json) retains field offsets, arithmetic, actual PCs and supported branches.
+
+| Physical voice | State block / life decrement PC | Life at score return → final clear | Observed ending programs |
+| --- | --- | --- | --- |
+| 1 | `$29B2` / `$2258` | 100 at 10560 → 10660 | PWM flag `$FF`: reload word `$969D` and ten-step counter, add `$0800` per step. Sequential pitch continues the fourth phase with encoded step `$FFFD` (−3). |
+| 2 | `$29D9` / `$2507` | 255 at 10544 → 10799 | PWM disabled. Its three-phase pitch cycle adds +8/−8/+8 for 3/6/3 steps, then reloads in the same invocation. |
+| 3 | `$2A00` / `$27C0` | 255 at 10559 → 10814 | PWM flag `$05`: 25 steps of +10, then 25 of −10, reloading counters while retaining width. Sequential pitch uses the retained four-phase program; its input, counters and every emitted word remain in the proof. |
+
+These are raw programmed words and stores, without an inferred audible role. PWM uses **16-bit arithmetic**, not a normalized 12-bit state: low-byte carry propagates into the full high byte, which the driver emits unchanged. On counter exhaustion, flag bit 7 reloads width and counters; bit 0 alone reloads counters while preserving width. Delay suppresses stores for that invocation. Lifetime/control processing precedes PWM, then frequency low/high writes. The second physical voice has three sequential pitch phases; the other two have four. Frequency delay either holds output or adds the fourth step according to flag bit `$02`.
+
+The normal release-countdown path emits `control & $F6` without replacing its stored control byte. That RAM field is therefore not the last-written SID control value. The separate control-bit `$08` path compares remaining row duration with release countdown and updates the stored control when its threshold is crossed. Neither gate state nor the score-active bit substitutes for the lifetime check.
+
+The [initialized narrow-window receipt](../../../evidence/rambo-programs/ending/receipt.json) captures calls **10540–10816**, after initialization and their preceding calls, with **828 SOUND invocations** and **2,105 stores**. Its complete executed prefix matches all **87,534** records in the earlier canonical ledger. [Input/output states](../../../evidence/rambo-programs/ending/bodies.json.gz) and [selected executed instructions](../../../evidence/rambo-programs/ending/instructions.json.gz) preserve the underlying observations without a RAM/payload dump or another 40,000-call run.
+
+The independent [Python helper](../../../evidence/rambo-programs/model.py) accepts named SOUND state, physical voice index 0–2 and a remaining-row byte, returning new state and ordered address/value pairs. It reads no original source, CPU or event ledger at runtime. The [verification](../../../evidence/rambo-programs/verification/verification.json) matches every captured state field and all 2,105 stores, plus **54 isolated original-routine cases** for lifetime, release thresholds, PWM reset/hold/delay, pitch delay/reload and word carry/borrow. The [isolated records](../../../evidence/rambo-programs/verification/isolated.json.gz) retain exact inputs, outputs, store order and executed PCs. Forcing life=1 clears immediately without advancing either program; forcing life=0 suppresses all stores; disabling PWM retains lifetime and pitch evolution. A deliberately incorrect score-active gate misses **595** writing invocations after all score bits clear.
+
+This component requires binary arithmetic, as supplied by the controlled host's `CLD`. Arpeggio pitch on physical voices 1/3 is explicitly unsupported when reached, and all-zero repeating templates are rejected as non-terminating. Note/waveform initialization, filter/global behavior, CPU register/flag outputs and whole-title component coverage remain outside this proof. Successful state/store comparison does not establish the audible tail or listening quality.
+
+After obtaining the pinned SID and primary source, reproduce this bounded component check with fresh output directories:
+
+```sh
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 evidence/rambo-programs/probe.py --first 10540 --last 10816 --output build/rambo-programs/new-ending
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 evidence/rambo-programs/check.py --bodies evidence/rambo-programs/ending/bodies.json.gz --output build/rambo-programs/new-check
+```
+
+The checker consumes the canonical `.gz` directly; a standard evidence restore may instead produce decompressed JSON. Its [executed helper snapshot](../../../evidence/rambo-programs/verification/model.py) and [checker snapshot](../../../evidence/rambo-programs/verification/check.py) preserve exact proof versions. The remaining program variants are retained as named inputs for later investigation, not silently approximated by this component.
+
 ## Reproduce and extend the bounded intake
 
 Run from the repository root after [local setup](../../setup/local-setup.md). Choose a fresh output directory; these tools protect existing outputs. The source-specific probe also requires the pinned cached STIL and primary-source checkout named in its attribution receipt. The following commands reproduce the intake; they were not run a second time for the documentation.

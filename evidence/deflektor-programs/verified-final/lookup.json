@@ -1,0 +1,1115 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d",
+  "recordStride": 9,
+  "fieldBindings": [
+    {
+      "offset": 0,
+      "name": "packedPulse",
+      "readerPc": 50207,
+      "targets": [
+        49338,
+        49341
+      ],
+      "meaning": "Low nibble is pulse update interval; unshifted high nibble is pulse-table base. Setup resets interval counter to low nibble minus one and pulse position to zero."
+    },
+    {
+      "offset": 1,
+      "name": "initialPulseHigh",
+      "readerPc": 50150,
+      "targets": [
+        49304
+      ],
+      "meaning": "Copies the high-byte PW shadow; does not clear its low byte."
+    },
+    {
+      "offset": 2,
+      "name": "initialControl",
+      "readerPc": 50156,
+      "targets": [
+        49305
+      ],
+      "meaning": "Copies base control; note setup ORs gate one, and enabled waveform initialization can replace it."
+    },
+    {
+      "offset": 3,
+      "name": "attackDecay",
+      "readerPc": 50162,
+      "targets": [
+        49306
+      ],
+      "meaning": "Copies attack/decay register shadow."
+    },
+    {
+      "offset": 4,
+      "name": "sustainRelease",
+      "readerPc": 50168,
+      "targets": [
+        49307
+      ],
+      "meaning": "Copies sustain/release register shadow."
+    },
+    {
+      "offset": 5,
+      "name": "gateReleaseCountdown",
+      "readerPc": 50177,
+      "targets": [
+        49335
+      ],
+      "meaning": "Body clears gate when incoming row countdown equals this byte."
+    },
+    {
+      "offset": 6,
+      "name": "pulseLowStep",
+      "readerPc": 50201,
+      "targets": [
+        49395
+      ],
+      "meaning": "Adds/subtracts only pulse low byte between high-byte table targets; no carry/borrow propagation to PW high in this branch."
+    },
+    {
+      "offset": 7,
+      "name": "pitchProgramOffset",
+      "readerPc": 50183,
+      "targets": [
+        49350
+      ],
+      "meaning": "Zero disables; nonzero selects delayed signed frequency-word steps from C9A5. This is separate from score-selected pitch tables."
+    },
+    {
+      "offset": 8,
+      "name": "waveProgramOffset",
+      "readerPc": 50189,
+      "targets": [
+        49356
+      ],
+      "meaning": "Zero disables; nonzero selects timed waveform/control stages and header from C9C1/C9C0."
+    },
+    {
+      "offset": 9,
+      "name": "resonanceProgramOffset",
+      "readerPc": 50195,
+      "targets": [
+        49407
+      ],
+      "meaning": "Contextual tenth load lies after the nine-byte record stride. Nonzero selects timed D417 resonance high nibble, preserving routing low nibble."
+    }
+  ],
+  "records": [
+    {
+      "recordIndex": 0,
+      "parameters": {
+        "packedPulse": 0,
+        "initialPulseHigh": 8,
+        "initialControl": 0,
+        "attackDecay": 6,
+        "sustainRelease": 10,
+        "gateReleaseCountdown": 2,
+        "pulseLowStep": 127,
+        "pitchProgramOffset": 0,
+        "waveProgramOffset": 5,
+        "resonanceProgramOffset": 0,
+        "pulseInterval": 0,
+        "pulseTableBase": 0
+      },
+      "sourceEvidence": {
+        "address": 49159,
+        "stride": 9,
+        "recordBytes": [
+          0,
+          8,
+          0,
+          6,
+          10,
+          2,
+          127,
+          0,
+          5
+        ],
+        "trailingSelectorAddress": 49168,
+        "trailingSelector": 0
+      }
+    },
+    {
+      "recordIndex": 1,
+      "parameters": {
+        "packedPulse": 0,
+        "initialPulseHigh": 8,
+        "initialControl": 129,
+        "attackDecay": 6,
+        "sustainRelease": 10,
+        "gateReleaseCountdown": 2,
+        "pulseLowStep": 127,
+        "pitchProgramOffset": 0,
+        "waveProgramOffset": 0,
+        "resonanceProgramOffset": 0,
+        "pulseInterval": 0,
+        "pulseTableBase": 0
+      },
+      "sourceEvidence": {
+        "address": 49168,
+        "stride": 9,
+        "recordBytes": [
+          0,
+          8,
+          129,
+          6,
+          10,
+          2,
+          127,
+          0,
+          0
+        ],
+        "trailingSelectorAddress": 49177,
+        "trailingSelector": 0
+      }
+    },
+    {
+      "recordIndex": 2,
+      "parameters": {
+        "packedPulse": 0,
+        "initialPulseHigh": 8,
+        "initialControl": 0,
+        "attackDecay": 9,
+        "sustainRelease": 10,
+        "gateReleaseCountdown": 2,
+        "pulseLowStep": 127,
+        "pitchProgramOffset": 0,
+        "waveProgramOffset": 15,
+        "resonanceProgramOffset": 12,
+        "pulseInterval": 0,
+        "pulseTableBase": 0
+      },
+      "sourceEvidence": {
+        "address": 49177,
+        "stride": 9,
+        "recordBytes": [
+          0,
+          8,
+          0,
+          9,
+          10,
+          2,
+          127,
+          0,
+          15
+        ],
+        "trailingSelectorAddress": 49186,
+        "trailingSelector": 12
+      }
+    },
+    {
+      "recordIndex": 3,
+      "parameters": {
+        "packedPulse": 12,
+        "initialPulseHigh": 8,
+        "initialControl": 65,
+        "attackDecay": 5,
+        "sustainRelease": 105,
+        "gateReleaseCountdown": 2,
+        "pulseLowStep": 21,
+        "pitchProgramOffset": 0,
+        "waveProgramOffset": 0,
+        "resonanceProgramOffset": 3,
+        "pulseInterval": 12,
+        "pulseTableBase": 0
+      },
+      "sourceEvidence": {
+        "address": 49186,
+        "stride": 9,
+        "recordBytes": [
+          12,
+          8,
+          65,
+          5,
+          105,
+          2,
+          21,
+          0,
+          0
+        ],
+        "trailingSelectorAddress": 49195,
+        "trailingSelector": 3
+      }
+    },
+    {
+      "recordIndex": 4,
+      "parameters": {
+        "packedPulse": 3,
+        "initialPulseHigh": 8,
+        "initialControl": 0,
+        "attackDecay": 9,
+        "sustainRelease": 10,
+        "gateReleaseCountdown": 2,
+        "pulseLowStep": 85,
+        "pitchProgramOffset": 0,
+        "waveProgramOffset": 10,
+        "resonanceProgramOffset": 3,
+        "pulseInterval": 3,
+        "pulseTableBase": 0
+      },
+      "sourceEvidence": {
+        "address": 49195,
+        "stride": 9,
+        "recordBytes": [
+          3,
+          8,
+          0,
+          9,
+          10,
+          2,
+          85,
+          0,
+          10
+        ],
+        "trailingSelectorAddress": 49204,
+        "trailingSelector": 3
+      }
+    },
+    {
+      "recordIndex": 5,
+      "parameters": {
+        "packedPulse": 3,
+        "initialPulseHigh": 8,
+        "initialControl": 0,
+        "attackDecay": 7,
+        "sustainRelease": 10,
+        "gateReleaseCountdown": 2,
+        "pulseLowStep": 85,
+        "pitchProgramOffset": 0,
+        "waveProgramOffset": 10,
+        "resonanceProgramOffset": 36,
+        "pulseInterval": 3,
+        "pulseTableBase": 0
+      },
+      "sourceEvidence": {
+        "address": 49204,
+        "stride": 9,
+        "recordBytes": [
+          3,
+          8,
+          0,
+          7,
+          10,
+          2,
+          85,
+          0,
+          10
+        ],
+        "trailingSelectorAddress": 49213,
+        "trailingSelector": 36
+      }
+    },
+    {
+      "recordIndex": 6,
+      "parameters": {
+        "packedPulse": 36,
+        "initialPulseHigh": 8,
+        "initialControl": 65,
+        "attackDecay": 10,
+        "sustainRelease": 10,
+        "gateReleaseCountdown": 2,
+        "pulseLowStep": 63,
+        "pitchProgramOffset": 8,
+        "waveProgramOffset": 0,
+        "resonanceProgramOffset": 3,
+        "pulseInterval": 4,
+        "pulseTableBase": 32
+      },
+      "sourceEvidence": {
+        "address": 49213,
+        "stride": 9,
+        "recordBytes": [
+          36,
+          8,
+          65,
+          10,
+          10,
+          2,
+          63,
+          8,
+          0
+        ],
+        "trailingSelectorAddress": 49222,
+        "trailingSelector": 3
+      }
+    },
+    {
+      "recordIndex": 7,
+      "parameters": {
+        "packedPulse": 3,
+        "initialPulseHigh": 8,
+        "initialControl": 65,
+        "attackDecay": 9,
+        "sustainRelease": 10,
+        "gateReleaseCountdown": 2,
+        "pulseLowStep": 85,
+        "pitchProgramOffset": 0,
+        "waveProgramOffset": 0,
+        "resonanceProgramOffset": 3,
+        "pulseInterval": 3,
+        "pulseTableBase": 0
+      },
+      "sourceEvidence": {
+        "address": 49222,
+        "stride": 9,
+        "recordBytes": [
+          3,
+          8,
+          65,
+          9,
+          10,
+          2,
+          85,
+          0,
+          0
+        ],
+        "trailingSelectorAddress": 49231,
+        "trailingSelector": 3
+      }
+    },
+    {
+      "recordIndex": 8,
+      "parameters": {
+        "packedPulse": 3,
+        "initialPulseHigh": 8,
+        "initialControl": 65,
+        "attackDecay": 9,
+        "sustainRelease": 10,
+        "gateReleaseCountdown": 2,
+        "pulseLowStep": 85,
+        "pitchProgramOffset": 0,
+        "waveProgramOffset": 0,
+        "resonanceProgramOffset": 0,
+        "pulseInterval": 3,
+        "pulseTableBase": 0
+      },
+      "sourceEvidence": {
+        "address": 49231,
+        "stride": 9,
+        "recordBytes": [
+          3,
+          8,
+          65,
+          9,
+          10,
+          2,
+          85,
+          0,
+          0
+        ],
+        "trailingSelectorAddress": 49240,
+        "trailingSelector": 0
+      }
+    }
+  ],
+  "wavePrograms": {
+    "wave-05": {
+      "loop": false,
+      "stages": [
+        {
+          "control_bits": 128,
+          "duration": 2
+        },
+        {
+          "control_bits": 16,
+          "duration": 1
+        },
+        {
+          "control_bits": 22,
+          "duration": 1
+        },
+        {
+          "control_bits": 128,
+          "duration": 1
+        }
+      ],
+      "sourceEvidence": {
+        "offset": 5,
+        "headerAddress": 51653,
+        "header": 4,
+        "stageAddress": 51654,
+        "packedStages": [
+          39,
+          16,
+          19,
+          23
+        ],
+        "controlTableAddress": 51645,
+        "controlTable": [
+          16,
+          18,
+          20,
+          22,
+          32,
+          64,
+          80,
+          128
+        ]
+      }
+    },
+    "wave-10": {
+      "loop": true,
+      "stages": [
+        {
+          "control_bits": 128,
+          "duration": 1
+        },
+        {
+          "control_bits": 64,
+          "duration": 2
+        },
+        {
+          "control_bits": 20,
+          "duration": 1
+        },
+        {
+          "control_bits": 32,
+          "duration": 2
+        }
+      ],
+      "sourceEvidence": {
+        "offset": 10,
+        "headerAddress": 51658,
+        "header": 132,
+        "stageAddress": 51659,
+        "packedStages": [
+          23,
+          37,
+          18,
+          36
+        ],
+        "controlTableAddress": 51645,
+        "controlTable": [
+          16,
+          18,
+          20,
+          22,
+          32,
+          64,
+          80,
+          128
+        ]
+      }
+    },
+    "wave-15": {
+      "loop": true,
+      "stages": [
+        {
+          "control_bits": 16,
+          "duration": 1
+        },
+        {
+          "control_bits": 128,
+          "duration": 1
+        }
+      ],
+      "sourceEvidence": {
+        "offset": 15,
+        "headerAddress": 51663,
+        "header": 130,
+        "stageAddress": 51664,
+        "packedStages": [
+          16,
+          23
+        ],
+        "controlTableAddress": 51645,
+        "controlTable": [
+          16,
+          18,
+          20,
+          22,
+          32,
+          64,
+          80,
+          128
+        ]
+      }
+    }
+  },
+  "bodyPaths": [
+    {
+      "name": "gateRelease",
+      "entry": 50473,
+      "exit": 50492
+    },
+    {
+      "name": "pulseTable",
+      "entry": 50586,
+      "exit": 50752
+    },
+    {
+      "name": "delayedSignedPitch",
+      "entry": 50752,
+      "exit": 50895
+    },
+    {
+      "name": "waveform",
+      "entry": 50895,
+      "exit": 50982
+    },
+    {
+      "name": "scoreSelectedPitch",
+      "entry": 50982,
+      "exit": 51139
+    },
+    {
+      "name": "sharedResonance",
+      "entry": 51139,
+      "exit": 51215
+    }
+  ],
+  "boundaries": "Nine-byte mapping stride does not limit setup reads to nine bytes. Trailing selectors and shared table aliases are retained as contextual source facts. This schema models waveform stages only; other paths are source-bound lookups, not independent synthesis implementations.",
+  "candidate": {
+    "recordIndex": 0,
+    "noteOnsets": 109,
+    "onsets": [
+      {
+        "call": 640,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 660,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 680,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 700,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 720,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 740,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 760,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 780,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 800,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 820,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 840,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 860,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 880,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 900,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 920,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 940,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 960,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 980,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1000,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1020,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1040,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1060,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1080,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1100,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1120,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1140,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1160,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1180,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1200,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1220,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1240,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1260,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1280,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1320,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1340,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1360,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1380,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1400,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1420,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1440,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1480,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1500,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1520,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1540,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1560,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1580,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1600,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1640,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1660,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1680,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1700,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1720,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1740,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1760,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1800,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1820,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1840,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1860,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1880,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1900,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1920,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1940,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1960,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 1980,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 2240,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 2260,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 2280,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 2300,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 3880,
+        "voiceIndex": 1,
+        "pitchIndex": 43
+      },
+      {
+        "call": 3900,
+        "voiceIndex": 1,
+        "pitchIndex": 43
+      },
+      {
+        "call": 3960,
+        "voiceIndex": 1,
+        "pitchIndex": 43
+      },
+      {
+        "call": 3980,
+        "voiceIndex": 1,
+        "pitchIndex": 43
+      },
+      {
+        "call": 4040,
+        "voiceIndex": 1,
+        "pitchIndex": 43
+      },
+      {
+        "call": 4060,
+        "voiceIndex": 1,
+        "pitchIndex": 43
+      },
+      {
+        "call": 4160,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 4200,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 4240,
+        "voiceIndex": 0,
+        "pitchIndex": 67
+      },
+      {
+        "call": 5340,
+        "voiceIndex": 2,
+        "pitchIndex": 67
+      },
+      {
+        "call": 5360,
+        "voiceIndex": 2,
+        "pitchIndex": 67
+      },
+      {
+        "call": 5380,
+        "voiceIndex": 2,
+        "pitchIndex": 67
+      },
+      {
+        "call": 5400,
+        "voiceIndex": 2,
+        "pitchIndex": 67
+      },
+      {
+        "call": 5420,
+        "voiceIndex": 2,
+        "pitchIndex": 67
+      },
+      {
+        "call": 5440,
+        "voiceIndex": 2,
+        "pitchIndex": 67
+      },
+      {
+        "call": 5460,
+        "voiceIndex": 2,
+        "pitchIndex": 67
+      },
+      {
+        "call": 7120,
+        "voiceIndex": 1,
+        "pitchIndex": 38
+      },
+      {
+        "call": 7140,
+        "voiceIndex": 1,
+        "pitchIndex": 38
+      },
+      {
+        "call": 7200,
+        "voiceIndex": 1,
+        "pitchIndex": 38
+      },
+      {
+        "call": 7220,
+        "voiceIndex": 1,
+        "pitchIndex": 38
+      },
+      {
+        "call": 7280,
+        "voiceIndex": 1,
+        "pitchIndex": 38
+      },
+      {
+        "call": 7300,
+        "voiceIndex": 1,
+        "pitchIndex": 38
+      },
+      {
+        "call": 7400,
+        "voiceIndex": 0,
+        "pitchIndex": 62
+      },
+      {
+        "call": 7440,
+        "voiceIndex": 0,
+        "pitchIndex": 62
+      },
+      {
+        "call": 7480,
+        "voiceIndex": 0,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8160,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8180,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8200,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8220,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8240,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8260,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8280,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8300,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8320,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8340,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8360,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8380,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8400,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8420,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8440,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      },
+      {
+        "call": 8460,
+        "voiceIndex": 2,
+        "pitchIndex": 62
+      }
+    ],
+    "context": "Recurring zero-sustain noise/triangle/coupled-triangle/noise program; a register-based percussive/metallic candidate only, not an identified cowbell or listening verdict."
+  }
+}

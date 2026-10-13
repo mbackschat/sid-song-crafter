@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d",
+  "selectedProfile": "pal-banked",
+  "subtune": 1,
+  "hostBase": 1024,
+  "modelSha256": "b558f9b38ff68bfea674f4850a5770ee34466d01e3ab95a314a5d1d3284e15d4",
+  "checkerSha256": "4cf9e5e47ab77289c8de43d678e003fa8b4ec57c5693220374cebdf84b87f1ad",
+  "dependencies": {
+    "psid_profile.py": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+    "psid_audit.py": "4446a19a325e625e59f100aac0b186478fb1633f65886b260db2ad3da11419a5",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "isolatedCases": 624,
+  "isolatedMacroStateMatches": 624,
+  "isolatedWriterStores": 4368,
+  "syntheticBasis": "Original source segments C49E..beforeC4C8 and C6CF..beforeC726 under explicitly seeded named state; selected source programs5/10/15 and disabled0, all three voice offsets, gates, zero/one/two/255 countdowns and active/stopped positions. Writer context is explicitly supplied, not a pitch/PWM model.",
+  "observedMacroStatesMatched": 30,
+  "observedControlStoresMatched": 28,
+  "initializedPlayCalls": 672,
+  "completeInitializedLedgerMatches": 5704,
+  "canonicalLedgerSha256": "7c1ccca95afc19175b4efc50674f8f1e23783b0dcad525d5955a9cf85523fa00",
+  "candidateWindowInclusive": [
+    640,
+    671
+  ],
+  "candidateOnsets": 109,
+  "mutationDifferences": [
+    {
+      "call": 644,
+      "original": {
+        "countdown": 1,
+        "position": 3,
+        "control": 23
+      },
+      "edited": {
+        "countdown": 1,
+        "position": 3,
+        "control": 17
+      }
+    },
+    {
+      "call": 664,
+      "original": {
+        "countdown": 1,
+        "position": 3,
+        "control": 23
+      },
+      "edited": {
+        "countdown": 1,
+        "position": 3,
+        "control": 17
+      }
+    }
+  ],
+  "limits": [
+    "Only the waveform initializer/body and seven-register writer are independently computed. Row scheduling, gate-release eligibility, pitch, pulse and resonance trajectories remain caller/source context.",
+    "Synthetic cases compare named waveform state and ordered writer values, not complete CPU flags or every unrelated RAM field. Active body lookups beyond supplied stages and arbitrary unselected table offsets are unsupported; initialization replaces prior position regardless of its old program.",
+    "Initialized observations share the guarded CPU implementation with the canonical ledger. No additional VICE, sound synthesis, reference audio, listening or cowbell identification is claimed.",
+    "Control17 engages triangle with sync+ring and depends on the preceding oscillator; its numeric agreement does not establish acoustic similarity across contexts."
+  ]
+}

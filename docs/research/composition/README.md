@@ -18,10 +18,10 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Study Flashdance: What a Feeling](flashdance-reference.md): verified archive identities, synthesis lessons and a source-to-reference comparison contract.
 - [Reconstruct Shades](shades-preparation.md): independent full-form/transfer players, CIA proofs, editable pulse/glide programs and pending reconstruction listening.
 - [Prepare Cybernoid II](cybernoid-ii-preparation.md): editable numeric score/program model, full-span register equality and bounded source proofs.
-- [Prepare Monty on the Run](monty-preparation.md): pinned subtune, executed score navigation, two order traversals and independent first-wrap verification.
-- [Prepare Rambo: First Blood Part II](rambo-preparation.md): loader-specific attribution, executed command grammar, finite traversal and independent stop-window verification.
+- [Prepare Monty on the Run](monty-preparation.md): pinned subtune, two order traversals, independent first-wrap verification and bounded note/body components with shared PWM and pitch-state aliases.
+- [Prepare Rambo: First Blood Part II](rambo-preparation.md): loader-specific attribution, finite command traversal, independent stop-window verification and named-state lifetime/PWM/pitch components.
 - [Prepare Ghouls ’n Ghosts](ghouls-preparation.md): archive/subtune boundaries, canonical SID port writes and bounded CPU/VICE execution.
-- [Prepare Deflektor](deflektor-preparation.md): source identity, finite score form, independent table expansion and high-RAM CPU/VICE execution with explicit host placement.
-- [Prepare the pop songs and themes](pop-theme-preparation.md): pinned Take On Me, Billie Jean, Airwolf and Ghostbusters; bounded callable comparisons, unspecified-model and RSID boundaries.
+- [Prepare Deflektor](deflektor-preparation.md): finite score expansion, high-RAM CPU/VICE execution, contextual sound-record lookup and verified staged-waveform component.
+- [Prepare the pop songs and themes](pop-theme-preparation.md): pinned Take On Me, Billie Jean, Airwolf and Ghostbusters; Airwolf’s independent full-cycle model, bounded callable comparisons, unspecified-model and RSID boundaries.
 
 Study [the composers and their tools](../composers/README.md) before choosing a sound palette. A correct note sequence is a technical baseline; musical quality also requires phrasing, contrast, texture, and listening review.

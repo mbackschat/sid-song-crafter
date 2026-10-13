@@ -1,0 +1,163 @@
+{
+  "passed": true,
+  "sourceSha256": "528a7330817e4a0a0f75a505e9fe2444e07c5072ce5383ceaa89f183f0eee3ab",
+  "sourceBytesUnchanged": true,
+  "titleSelectedRecordCount": 14,
+  "sourceCases": 2882,
+  "titleRecordCases": 2688,
+  "sharedRecordCases": 192,
+  "actualTitleAliases": [
+    {
+      "call": 0,
+      "voice": 1,
+      "rawNote": 104,
+      "frequencyAddress": 34000,
+      "voiceControlsBeforeLookup": [
+        65,
+        65,
+        65
+      ],
+      "resolvedFrequencyWord": 16705,
+      "instrumentIndex": 12,
+      "mutablePulseWord": 2976
+    },
+    {
+      "call": 12416,
+      "voice": 0,
+      "rawNote": 104,
+      "frequencyAddress": 34000,
+      "voiceControlsBeforeLookup": [
+        65,
+        129,
+        65
+      ],
+      "resolvedFrequencyWord": 33089,
+      "instrumentIndex": 12,
+      "mutablePulseWord": 2752
+    },
+    {
+      "call": 17536,
+      "voice": 1,
+      "rawNote": 104,
+      "frequencyAddress": 34000,
+      "voiceControlsBeforeLookup": [
+        65,
+        129,
+        65
+      ],
+      "resolvedFrequencyWord": 33089,
+      "instrumentIndex": 12,
+      "mutablePulseWord": 2528
+    },
+    {
+      "call": 29952,
+      "voice": 0,
+      "rawNote": 104,
+      "frequencyAddress": 34000,
+      "voiceControlsBeforeLookup": [
+        65,
+        129,
+        65
+      ],
+      "resolvedFrequencyWord": 33089,
+      "instrumentIndex": 12,
+      "mutablePulseWord": 3200
+    },
+    {
+      "call": 35072,
+      "voice": 1,
+      "rawNote": 104,
+      "frequencyAddress": 34000,
+      "voiceControlsBeforeLookup": [
+        65,
+        129,
+        65
+      ],
+      "resolvedFrequencyWord": 33089,
+      "instrumentIndex": 12,
+      "mutablePulseWord": 2080
+    }
+  ],
+  "causalAliasFork": [
+    {
+      "previousVoiceControl": 65,
+      "heldFrequency": 16705,
+      "orderedWrites": [
+        [
+          1,
+          65
+        ],
+        [
+          0,
+          65
+        ],
+        [
+          4,
+          65
+        ],
+        [
+          2,
+          160
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          5,
+          63
+        ],
+        [
+          6,
+          255
+        ]
+      ],
+      "sourceCycles": 182
+    },
+    {
+      "previousVoiceControl": 129,
+      "heldFrequency": 33089,
+      "orderedWrites": [
+        [
+          1,
+          129
+        ],
+        [
+          0,
+          65
+        ],
+        [
+          4,
+          65
+        ],
+        [
+          2,
+          160
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          5,
+          63
+        ],
+        [
+          6,
+          255
+        ]
+      ],
+      "sourceCycles": 182
+    }
+  ],
+  "inputs": {
+    "build/monty-form/full40000/observations.json.gz": "6a877c07bbdf22f3c5e4ca5f767ab6dedede531cf9725075c30326b39c53badf",
+    "build/monty-form/full40000/audit.writes.json.gz": "f78899ef13bb54345ec4192fc7a9aa0306ce701df8862c42d02aa11cc54606fe"
+  },
+  "modelSha256": "938031e1dfe3392a1b7c85bd6ddaf26b4e29ce7df4bb218f0f50b3f114ae69a0",
+  "checkerSha256": "e3adee69346af0274b62f43219249e1f2910a29fecb437b73efc7f95407f2251",
+  "contextCheckerSha256": "800a847a3a436529784efceb0c5a3aea1f60305bc0d7302e1e69539424f98225",
+  "contextCasesCompressedSha256": "499ce1bc7dd3e5749fdc11763930103119b63b009ab08ca2764699ee3002b292",
+  "contextCasesDecodedSha256": "356e2d6040974823d8a6114ef31a4c4e71e360f03f284affe120d4f680a3cc2f",
+  "limits": "Title-used parameter values checked in synthetic original blocks; the sequence is not the title score. Shared pulse width and separate voice delay/direction are exercised. Alias fork changes prior control context only and proves frequency sensitivity; it does not attribute all traversal differences or audible character."
+}

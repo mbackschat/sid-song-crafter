@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "03c602da9182759c78ca4d90ad3bd5b223b3eb61f34ea31c2205fffc589bf89f",
+  "sourceUrl": "https://www.hvsc.de/download/C64Music/MUSICIANS/C/Cooksey_Mark/Airwolf.sid",
+  "tools": {
+    "psid_audit.py": "4446a19a325e625e59f100aac0b186478fb1633f65886b260db2ad3da11419a5",
+    "psid_profile.py": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "probeSha256": "3a052c9c66b9b6d0990218eac60ca753b99799a901902893b7275686f694e392",
+  "modelSha256": "d671a1f523a365cf3333ad68e93969ea69b44a6b6e2d1ec8912f2de3ae78f4d9",
+  "calls": 2500,
+  "scoreRows": 138,
+  "cycleCalls": 1242,
+  "restartCalls": [
+    1241,
+    2483
+  ],
+  "matchedWrites": 11253,
+  "matchedReads": 1738,
+  "matchedOpeningWrites": 303,
+  "noteMutationRejected": true,
+  "restartMachineStatesEqual": true,
+  "artifacts": {
+    "score.json": {
+      "sha256": "1d658def8d8219c359b32f1ea2497def3e3d20e0526d34ac207f187e6981e3c6",
+      "bytes": 8934,
+      "decodedSha256": "1d658def8d8219c359b32f1ea2497def3e3d20e0526d34ac207f187e6981e3c6",
+      "decodedBytes": 8934
+    },
+    "audit.json": {
+      "sha256": "3936f88501a3830a4a117fa76bea1fc3bbffcf85829ec31ad6747da3dde38b19",
+      "bytes": 2469,
+      "decodedSha256": "3936f88501a3830a4a117fa76bea1fc3bbffcf85829ec31ad6747da3dde38b19",
+      "decodedBytes": 2469
+    },
+    "reads.json.gz": {
+      "sha256": "aa07c3244b12f6b3ed9b004acb57f415d269e88c7530067644456e26c6844e1d",
+      "bytes": 8380,
+      "decodedSha256": "61742cdb6cbcf63e768d1dc0107a16b71ea71e22a9e070b38211c92f3be6f9a1",
+      "decodedBytes": 131743
+    },
+    "states.json.gz": {
+      "sha256": "706a253fce3c752857c550af2dcfa9e74fcb3228ff1a9fcdf194c015f7434c74",
+      "bytes": 220851,
+      "decodedSha256": "fe522b722c3b06c6a2c4fe618948728be0a177079de20bdbcb4ec20ec0fc159a",
+      "decodedBytes": 694751
+    },
+    "writes.json.gz": {
+      "sha256": "59661c9e36329dcf937baa476bf3e0c308570783852146ac25c901016cc642d7",
+      "bytes": 37826,
+      "decodedSha256": "4d36fae24be9313bc95e4759462f4980832da923dbb9203f62b6a12780f61c4a",
+      "decodedBytes": 929101
+    }
+  },
+  "hashRecipe": "SHA256(all65536RAMbytes+A/X/Y/SP/P+little-endianPC) immediately before validated callable RTS; absolute CPU cycles excluded; no physical SID/CIA/VIC state.",
+  "limits": "Independent score/read/store computation under the fixed three-voice callable host, not synthesis, compiled reconstruction, original-game cadence, exact bus timing or listening. Instruction-start cycles retained only in source ledger; model comparison excludes cycles. No original executable payload or full RAM dump is retained."
+}

@@ -1,6 +1,6 @@
 # Monty on the Run: bounded archive intake
 
-This prepares Rob Hubbard's **Monty on the Run**, selected subtune **1**, while [Shades](shades-preparation.md) remains the active reconstruction awaiting listening. It establishes the intact reference, cached attribution, declared timing, executed score navigation and two complete title order-list traversals. Instrument arithmetic, musical section labels, original-host behavior and listening remain unresolved. Start with the [Hubbard composer study](../composers/hubbard-galway.md#hubbard-composing-with-a-changing-synthesis-engine), [listening catalogue](../composers/listening-catalogue.md) and [source-study boundary](../tools/source-studies.md) before extending this preparation.
+This prepares Rob Hubbard's **Monty on the Run**, selected subtune **1**, while [Shades](shades-preparation.md) remains the active reconstruction awaiting listening. It establishes the intact reference, cached attribution, declared timing, executed score navigation, two complete title order-list traversals and bounded note/body sound arithmetic. A complete independent player, musical section labels, original-host behavior and listening remain unresolved. Start with the [Hubbard composer study](../composers/hubbard-galway.md#hubbard-composing-with-a-changing-synthesis-engine), [listening catalogue](../composers/listening-catalogue.md) and [source-study boundary](../tools/source-studies.md) before extending this preparation.
 
 ## Reference and subtune attribution
 
@@ -71,6 +71,46 @@ The [reproducible comparison](../../../evidence/monty-form/describe.py) and [tra
 The corresponding ordered SID address lists differ on **153** calls, so these traversals are not identical register-stream replays. Values and timing are compared only where the complete per-call address lists agree; the receipt does not zip mismatching shapes. Selected post-body backing-RAM/CPU fingerprints at calls 0, 17,536 and 35,072 also differ. The hash recipe includes all 65,536 backing-memory bytes and A/X/Y/SP/status/PC at the fixed pre-RTS boundary, without normalization; it excludes the monotonically increasing CPU cycle count and unmodeled SID internals. Neither score repetition nor these software-state checks establishes oscillator/envelope/PCM recurrence.
 
 Independent VICE checks initialization and calls **17,530–17,543** against the retained CPU ledger: all **149** stores agree (3 init, 146 play). All 17,544 play-entry checkpoints stay within **7** cycles of the PAL grid, inside the nine-cycle polling tolerance. The [projection receipt](../../../evidence/monty-form/vice-wrap/projection.json), [VICE study](../../../evidence/monty-form/vice-wrap/trace/study.json) and [parsed trace](../../../evidence/monty-form/vice-wrap/trace/trace.json.gz) own that bounded result. This verifies the declared controlled host around the first wrap, not the original game's IRQ host, complete 40,000-call VICE equality or audio.
+
+## Bounded note and continuing sound programs
+
+The source-free [numeric helper](../../../evidence/monty-programs/model.py) computes immutable named voice/instrument state and ordered relative SID stores through `initialize_note(...)` and `advance_body(...)`. The [contract](../../../evidence/monty-programs/contract.json) maps its fields to actual archive bytes and separates static instruction loci from execution. Eight-byte instruments at `$93B4` contain shared pulse low/high, waveform, AD, SR, vibrato depth, packed PWM value and effect masks `$01/$02/$04` (drum, saved-high descent, octave alternation). The [selected-record inventory](../../../evidence/monty-programs/records.json) records fourteen actual title indices, their first executed values and every observed mutable pulse word; these are source indices, without guessed musical roles.
+
+| Operation | Actual archive locus and established behavior | Executed visits in calls 0–511 |
+| --- | --- | --- |
+| New note / append setup | `$80ED–$8170`: new note emits frequency high→low, then control, pulse low→high, AD and SR; append retains pitch but reapplies control with gate masked off, pulse and ADSR. Both retain PWM delay/direction and skip the continuing body that call. There is no universal gate-off/TEST sequence proving every new note restarts ADSR. | 17 new-note setups; 7 appends |
+| Scheduled release | `$8174–$81A2`: raw control bit `$20` clear and remaining length zero emits saved control `&$FE`, AD=0, SR=0. It does not change the saved control. | 8 at `$8190` |
+| Vibrato | `$81A3–$822F`: eight-call phase `0,1,2,3,3,2,1,0`; unsigned adjacent-word difference is shifted using the actual signed depth loop. Enabled vibrato emits low→high without updating the held frequency. Raw control length below eight suppresses the displacement. | 1,512 at `$8227` |
+| Shared PWM | `$8230–$8296`: nonzero packed value decrements per-voice delay; a negative result reloads `value&$1F` and adds/subtracts `value&$E0` modulo 12 bits. High-byte equality `$E`/`$8` changes direction, without clamping. Table high and SID high precede table low and SID low. | 78 at `$8287` |
+| Portamento / drum | `$8297–$8319`: portamento changes the held word modulo 16 bits; drum can emit the old held high byte while decrementing its saved value, then change control. Exact edge cases are in the numeric contract/checker. | No active updates; synthetic source cases only |
+| Saved-high descent | `$831A–$8335`: odd counter and nonzero held high decrement the saved byte, but the SID receives its old value because `LDA` precedes `DEC`. The hardware word can retain a low byte from an earlier vibrato write. | 65 at `$832D` |
+| Octave alternation | `$8336–$8366`: parity selects raw note or byte-wrapped note+12, then byte-doubles the lookup index; high→low stores occur last and leave the held buffer unchanged. | 504 at `$835E` |
+
+PWM updates the instrument bank, while delay/direction remain per voice. A caller must install the returned instrument before processing the next voice in order **2, 1, 0**, and retain both bank and voice state across note/append/order restarts. For actual record 12, onset pulse widths at the corresponding first rows are `$0BA0`, `$09E0` and `$0820` at calls **0**, **17,536** and **35,072**. Equal score consumption therefore does not imply equal onset sound parameters.
+
+Native raw note **104** supplies a second concrete retained-state dependency: frequency loads `$8400+$D0` and `$8401+$D0` read saved voice controls `$84D0/$84D1` before the initializer replaces them. The observed word is `$4141` at call 0 and `$8141` at calls 17,536 and 35,072. The [context proof](../../../evidence/monty-programs/context-verification.json) forks only prior voice-1 control `$41→$81` in the original initializer; only its frequency-high store and held word change. An independent PWM control sets only packed pulse value `$81→0`, removing pulse stores while preserving other stores and pulse state. Neither control attributes all traversal differences or establishes an audible judgment.
+
+The [main verification](../../../evidence/monty-programs/verification.json) matches **11,568** isolated original-block cases across all three voices, plus **17** note setups, **7** append setups and **1,512** continuing blocks from the retained 512-call trace. The [context checker](../../../evidence/monty-programs/context.py) adds **2,882** cases: 2,688 using title-selected record values, 192 synthetic shared-bank steps and two alias forks. Its [complete numeric cases](../../../evidence/monty-programs/context-cases.json.gz) retain input/output state, ordered stores and source-block cycles. Retained continuing comparisons begin at `$81A3`, after the release prelude; release arithmetic is checked separately against original blocks. The largest synthetic block takes 2,599 cycles, which is not a measured title maximum.
+
+This helper covers the title's enabled negative `$84FD` context. The caller still owns score scheduling, portamento setup/reset, lookup resolution at each stage, global writes and init/body selection; the positive sound-overlay branch and omitted listing sound-effects tail are outside this proof. `PitchLookups` are numeric inputs resolved from current state, not an invented chromatic extension. No full-title CPU rerun, complete player, cycle-equivalent model, render or listening claim is included.
+
+### Reproduce the bounded sound checks
+
+Copy the canonical gzip inputs unchanged to their historical ignored working paths, preserving any different existing files. The checkers read gzip directly; evidence restoration otherwise recreates decompressed JSON paths. Install the pinned original through the setup command below, then run in a fresh directory:
+
+```sh
+mkdir -p build/monty-form/full40000
+cp -n evidence/monty-form/boundary.trace.json.gz build/monty-form/boundary.trace.json.gz
+cp -n evidence/monty-form/full40000/observations.json.gz build/monty-form/full40000/observations.json.gz
+cp -n evidence/monty-form/full40000/audit.writes.json.gz build/monty-form/full40000/audit.writes.json.gz
+mkdir build/monty-programs-new
+cp evidence/monty-programs/model.py evidence/monty-programs/check.py evidence/monty-programs/context.py evidence/monty-programs/retain-contract.py build/monty-programs-new/
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 build/monty-programs-new/check.py
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 build/monty-programs-new/context.py
+PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 build/monty-programs-new/retain-contract.py
+```
+
+Receipts pin the original, retained inputs, model/checker and shared CPU/profile/host tools. The source blocks execute only private synthetic RAM copies with the existing guarded CPU; the SID file remains unchanged. Archive selection is the four scripts, `contract.json`, `records.json`, both verification receipts and `context-cases.json.gz`; no original SID, complete payload/RAM image or third-party listing is included.
 
 ## Reproduce the form probe
 

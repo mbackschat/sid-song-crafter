@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "inputs": {
+    "source": {
+      "path": ".local/rambo-source.sid",
+      "bytes": 16805,
+      "sha256": "88a2b538ee3d3d1d8b0b754bef77a63d9750812694786977ae8c539f6ecd000e"
+    },
+    "bodies": {
+      "path": "build/rambo-programs/ending/bodies.json.gz",
+      "bytes": 21499,
+      "sha256": "9548536988bdb4eca34024c505504e5b4cfbacb193ba30fec366b8f678a8276f"
+    },
+    "checker": {
+      "path": "build/rambo-programs/check.py",
+      "bytes": 8122,
+      "sha256": "e5551e23a8b5362c618611906090603def12a9bd5b4a431bff6ef08ab2f9c9ad"
+    },
+    "model": {
+      "path": "build/rambo-programs/model.py",
+      "bytes": 4657,
+      "sha256": "2aa0777176d66969e74b956008fbe9d07695a0e1ac8c72c015ad96145edbd7ca"
+    },
+    "tools": {
+      "psid_audit.py": "4446a19a325e625e59f100aac0b186478fb1633f65886b260db2ad3da11419a5",
+      "psid_profile.py": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+      "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+      "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    }
+  },
+  "contextBodies": 828,
+  "contextOrderedWrites": 2105,
+  "isolatedCases": 54,
+  "allStatesAndOrderedWritesMatched": true,
+  "negativeControl": {
+    "model": "Stop when score activeMask==0",
+    "mismatchingBodyInvocations": 595,
+    "detected": true
+  },
+  "supported": "Binary lifetime/control flow; two additive PWM phases with delay/counter-only/full reload; sequential3/4-phase pitch with delay and last-step delay mode. No CPU flags or scheduler outputs.",
+  "untested": "Arpeggio pitch on physical voices1/3 is rejected when reached; all-zero repeating durations are rejected as non-terminating. No waveform/note initializer, full-title component proof, synthesis or listening result.",
+  "artifacts": {
+    "context.json.gz": {
+      "path": "build/rambo-programs/verification/context.json.gz",
+      "bytes": 2283,
+      "sha256": "9cbb1a75fcaf1ee52e60744772f291ff32aaee38cb0f2921fa1398770246ff07",
+      "uncompressedSha256": "5cc9436f7d4b1846c6175bada6c9088b47ad3303d47359c26d763d1bc82e42a5"
+    },
+    "isolated.json.gz": {
+      "path": "build/rambo-programs/verification/isolated.json.gz",
+      "bytes": 2973,
+      "sha256": "bd2035913d3c7b2d00c2238e7ab9f14cbc8b29a5a85e2314cc0e04e236049cd0",
+      "uncompressedSha256": "4de300c3c6a9ef36a804bb544b6424fb355a90354e1e9a07a5eaaf0a693e0872"
+    }
+  }
+}

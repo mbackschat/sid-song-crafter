@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "path": ".local/research/airwolf/Airwolf.sid",
+    "sha256": "03c602da9182759c78ca4d90ad3bd5b223b3eb61f34ea31c2205fffc589bf89f",
+    "bytes": 1280
+  },
+  "tools": {
+    "scripts/trace-sid-vice.py": {
+      "sha256": "3cf11a1784e45c0b24afd48201a7f030384e6674519b9e0850b34f609fd001d0",
+      "bytes": 18433
+    },
+    "scripts/psid_profile.py": {
+      "sha256": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+      "bytes": 4337
+    },
+    "scripts/sid_audit_host.py": {
+      "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+      "bytes": 3146
+    },
+    "scripts/verify_player.py": {
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+      "bytes": 9535
+    }
+  },
+  "artifacts": {
+    "trace/study.json": {
+      "sha256": "718ebffb696c341645180bd23ec81c1abe36af50bef9b2976e16553964645d8c",
+      "bytes": 4916
+    },
+    "trace/trace.json": {
+      "sha256": "120b2ffbc9664280fd83e4ae87da39ee87475055c23d3096c48a20d3b50d864e",
+      "bytes": 901808
+    },
+    "trace/harness.prg": {
+      "sha256": "6dd083e10de6f30a45ecd63842650fb1637821975d2d002f5a30ccbd4c0f30a6",
+      "bytes": 114
+    }
+  },
+  "oracle": {
+    "sha256": "bdf53211e3536626b3dbc2db7eb720c0d0a267081551b04376a76a8d4d67e6d9",
+    "bytes": 8232
+  },
+  "verification": {
+    "matchedWrites": 69,
+    "playCalls": 1247,
+    "firstCall": 1238,
+    "lastCall": 1246,
+    "frameCycles": 19656,
+    "maximumCadenceError": 7,
+    "cadenceTolerance": 9,
+    "matchedInitWrites": 21,
+    "matchedPlayWrites": 48
+  },
+  "limits": "A controlled RAM harness calls the original init/play once per PAL frame with IRQs, sprites and display DMA disabled. This is not the original player boot environment. Tracepoint stopwatch/raster values describe monitor checkpoints, not exact SID bus-write cycles. Store values are decoded from unchanged store-source CPU registers and checked against an independent ordered-write oracle. No audio or listening verdict follows from this trace."
+}

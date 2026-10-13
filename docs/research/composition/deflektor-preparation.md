@@ -93,6 +93,43 @@ assert expanded["firstStopCall"] == 8480
 
 The [executable guards](../../../tests/deflektor_score_test.py) compare complete consumption with the retained CPU ledger and check note edits, input preservation, cap/stop distinction, invalid data and unsupported zero durations. After fetching the required evidence's Git LFS objects, run `python3 -m unittest discover -s tests -p 'deflektor_score_test.py' -v`. This module expands the score; it does not implement the sound-record programs or acoustic release.
 
+## Sound-record fields and staged waveform candidate
+
+The [field/program lookup](../../../evidence/deflektor-programs/verified-final/lookup.json) maps every record to its actual reader and named parameter. Instrument mappings advance by **nine bytes**, but setup also reads a **tenth contextual byte** at $C010+recordOffset: it selects the shared resonance program and aliases the next record's first byte, or the following mapping byte after record 8. A nine-byte record alone therefore omits a synthesis input. Eight records are selected in the finite score; record 8 remains a static data entry without observed title selection.
+
+| Offset | Executed setup meaning |
+| --- | --- |
+| 0 | Packed PWM: low nibble is the update interval; the **unshifted** high nibble is the table-base offset. Setup resets the interval counter to interval minus one and pulse position to zero. |
+| 1 | Initial pulse high-byte shadow; the low byte is retained. |
+| 2 | Initial control shadow; note setup sets GATE, and an enabled waveform program can replace the waveform. |
+| 3 / 4 | Attack/decay and sustain/release shadows. |
+| 5 | Incoming row-countdown value at which the body clears GATE. |
+| 6 | Pulse low-byte step. Between table targets, addition/subtraction affects only that byte, without propagating carry/borrow to pulse high. |
+| 7 | Delayed signed frequency-step program offset; zero disables this path. |
+| 8 | Timed waveform/control program offset; zero disables this path. |
+| 9, contextual lookahead | Timed shared $D417 resonance-high-nibble program offset, retaining routing low bits. |
+
+On the encountered title paths, the body processes gate release → PWM → delayed pitch → waveform → score-selected pitch → shared resonance. Its [retained-context checks](../../../evidence/deflektor-programs/path-verification.json.gz) reenact 37 PWM and 16 delayed-pitch contexts with isolated original segments and compare the next named states to the complete form ledger. Record 3 uses interval 12, base 0 and low-byte step $15; its first body produces pulse shadow $0115. Record 6 uses interval 4, base $20 and step $3F: the PWM reads at $C9AD/$C9AE alias bytes also used by its pitch program, so a separately truncated PWM table would lose required data. Its delayed pitch starts with wait 30 eligible body invocations, then uses frequency-word steps +100,+100,+100,-100,-100,-100,0; the phase's high bit reverses the direction on the following pass. These are source-context checks, not independent PWM/pitch implementations or semitone-domain modulation.
+
+**Record 0 is a recurring staged percussion candidate**, with 109 note onsets across the three voices. Its waveform program has header $04, packed stages $27,$10,$13,$17, and control progression **noise → triangle → triangle with SYNC and RING → noise**. AD/SR are $06/$0A, giving zero sustain; its own PWM and delayed-pitch offsets are disabled. The [offline context census](../../../evidence/deflektor-programs/context.json) retains all onsets and 109 coupled-triangle control stores. This identifies a candidate for listening, not Daglish's cowbell. The [SID coupling contract](../sid/hardware.md#sound-architecture) requires the preceding oscillator: voice 1 receives voice 3, voice 2 receives voice 1, and voice 3 receives voice 2. At the first coupled stage, call 644, this source has never written voice 3's frequency bytes; its nonzero loaded RAM shadow cannot establish on-chip frequency. The census preserves that value as unknown rather than assuming a reset or copying the software shadow.
+
+The editable [waveform model](../../../evidence/deflektor-programs/model.py) uses named Stage, WaveProgram and WaveState values with initialize_wave, advance_wave and an ordered seven-register writer. It reads no files, original driver or captured events at runtime. Initialization forces GATE, selects stage zero, starts position one and adds one to the first duration. Body output is stage control bits OR incoming GATE; all retained stage controls have their GATE bit clear, so they preserve the caller's gate state. Body reloads use the duration without the initializer's extra call. A finite program holds its last control after position $FF; its byte countdown still decrements and wraps without restarting the lookup. Initializing another program replaces its previous position. Globally suppressed body calls do not advance the program.
+
+The [verification](../../../evidence/deflektor-programs/verified-final/verification.json) and [receipt](../../../evidence/deflektor-programs/verified-final/receipt.json) preserve **624 isolated source cases**, **4,368 matching ordered writer stores**, and a new initialized 672-call ledger matching all **5,704 canonical stores**. The [real waveform boundaries](../../../evidence/deflektor-programs/verified-final/observed-wave.json.gz) match all 30 initializer/body invocations in calls 640–671 and all 28 voice-1 control stores. Note setup on 640 updates shadows while the global row-boundary path suppresses output: noise $81 reaches the SID on 641–642, triangle $11 on 643, coupled triangle $17 on 644, then noise again on 645. The next note repeats the coupled stage on 664. Removing SYNC/RING from that editable stage predicts and confirms $17→$11 at both 644 and 664. Gate-clear noise $80 is observed on 659. Four [model guards](../../../evidence/deflektor-programs/model_test.py) cover initialization replacement, finite hold/counter wrap, loop timing and disabled-state retention. The [complete narrow instruction record](../../../evidence/deflektor-programs/verified-final/instructions640-671.json.gz), [ordered initialized ledger](../../../evidence/deflektor-programs/verified-final/writes672.json.gz) and [isolated state/store records](../../../evidence/deflektor-programs/verified-final/isolated-cases.json.gz) retain the underlying evidence.
+
+The census separates source writes from loaded shadows: written cutoff bytes are $00/$0A, $D417 takes $00/$30/$60/$80 with routing low bits always zero, and $D418 remains $0F with filter modes clear. Shared resonance macros update one shadow in voice-processing order; a future player must preserve that ordering. No moving-filter contribution, original-game boot state, oscillator-phase equivalence, acoustic similarity or cowbell identification follows from the numeric checks. Only waveform advancement and the seven-register writer are independently modeled; scheduling, release eligibility, pulse, pitch and shared resonance remain separate components.
+
+Reproduce into fresh outputs with the pinned dependencies and fetched form evidence:
+
+```sh
+python3 evidence/deflektor-programs/model_test.py
+PYTHONPATH=.tools/test-deps python3 evidence/deflektor-programs/check.py .local/research/deflektor/Deflektor.sid --output build/deflektor-programs-new
+python3 evidence/deflektor-programs/context.py --output build/deflektor-context-new.json
+PYTHONPATH=.tools/test-deps python3 evidence/deflektor-programs/paths.py .local/research/deflektor/Deflektor.sid --output build/deflektor-paths-new.json
+```
+
+The [checker](../../../evidence/deflektor-programs/check.py) and [path probe](../../../evidence/deflektor-programs/paths.py) execute bounded original segments privately; the [context census](../../../evidence/deflektor-programs/context.py) reads retained evidence without CPU execution. None exports an original SID, full payload or full RAM image. Rendering, listening attribution and the independent complete-player implementation remain open.
+
 ## Reproduce intake
 
 The download registry retains the URL/fingerprint; the original stays in ignored local storage:
@@ -106,4 +143,4 @@ python3 scripts/trace-sid-vice.py .local/research/deflektor/Deflektor.sid --prof
 
 Choose fresh output paths. [sid_intake.py](../../../scripts/sid_intake.py) reports PSID/RSID v2 declarations and selected-host admission separately; it performs no CPU execution. The following two commands execute the original under their declared controlled environments. To inspect instructions later, pass the same host selection to the [instruction tracer](../tools/sid-program-analysis.md#trace-a-selected-subtune-in-banked-ram). Reference WAVs remain local; no render or listening assessment has been made here.
 
-Next locate the recurring cowbell in the executed form before choosing an intervention. Preserve its pitch/noise trajectory, articulation, shared-filter state and any voice dependencies. The study still needs independently computed sound, a complete declared arrangement and acoustic ending, listening, and an original transfer phrase.
+Next attribute the recurring staged candidate by listening in context before choosing an intervention. Preserve its pitch/noise trajectory, articulation, shared-filter state and oscillator dependencies. The study still needs independently computed complete sound, a complete declared arrangement and acoustic ending, listening, and an original transfer phrase.

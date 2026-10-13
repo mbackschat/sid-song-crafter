@@ -1,0 +1,1464 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "528a7330817e4a0a0f75a505e9fe2444e07c5072ce5383ceaa89f183f0eee3ab",
+  "sourceURL": "https://www.hvsc.de/download/C64Music/MUSICIANS/H/Hubbard_Rob/Monty_on_the_Run.sid",
+  "listing": {
+    "sha256": "52dbbf891b1a1d0f8750842ef91ebaf1fc62d65d7b46497ae6951576ece3ae6c",
+    "gitBlobSha1": "332b81b5ddd21d1ab20c7cd37c32ac786760a267",
+    "url": "https://raw.githubusercontent.com/realdmx/c64_6581_sid_players/f215174fc4c983674808fcd47bc506f96b3d2d04/Hubbard_Rob/Hubbard_Rob_Monty_on_the_Run.asm",
+    "attribution": "Anthony McSweeney disassembly/commenting, dmx87 ACME port",
+    "role": "Interpretation route; actual archive instructions and source execution settle the arithmetic"
+  },
+  "numericAPI": {
+    "module": "model.py",
+    "initializer": "initialize_note(state,instrument,*,note=None,frequency_word=None,append=False)->Step",
+    "body": "advance_body(state,instrument,lookups,*,counter,release_check=False)->Step",
+    "outputs": "Immutable VoiceState, immutable replacement Instrument, ordered relative SID offset/value pairs",
+    "instrumentFields": {
+      "pulse_word": "uint16; native fields0/1, retained shared mutable width",
+      "waveform": "uint8 field2",
+      "attack_decay": "uint8 field3",
+      "sustain_release": "uint8 field4",
+      "vibrato_depth": "uint8 field5",
+      "pulse_value": "uint8 field6; step=value&E0, reload=value&1F",
+      "effects": "uint8 field7; masks01/02/04 select drum/descent/octave"
+    },
+    "voiceAddresses": {
+      "note": 34003,
+      "control": 33997,
+      "remaining": 33994,
+      "held_frequency_low": 34034,
+      "held_frequency_high": 34031,
+      "voice_control": 34000,
+      "pulse_delay": 34021,
+      "pulse_direction": 34024,
+      "portamento": 34037
+    },
+    "sharedInstrumentBase": 37812,
+    "counterAddress": 34042,
+    "callerResponsibilities": [
+      "Resolve frequency/adjacent/octave words from current numeric tables/state at the proper stages",
+      "Install returned shared instrument before processing the next voice",
+      "Own row scheduling, portamento setup/reset, cursors and init/body selection",
+      "Use this helper only for enabled negative84FD context; positive overlay branch is outside scope",
+      "Retain all ordered stores; final word can combine vibrato low and descent high"
+    ]
+  },
+  "establishedScope": {
+    "retainedCalls": [
+      0,
+      511
+    ],
+    "actualComponents": 1536,
+    "actualNoteSetups": 17,
+    "actualAppendSetups": 7,
+    "actualContinuingBlocks": 1512,
+    "isolatedCases": 11568,
+    "selectedRecordSyntheticCases": 2688,
+    "sharedRecordSyntheticCases": 192,
+    "aliasForkCases": 2,
+    "actualTitleNoteRange": [
+      19,
+      104
+    ],
+    "actualTitleSelectedRecords": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15
+    ]
+  },
+  "controls": [
+    "Disable only pulse_value: source removes PWM writes and retains non-PW writes in the bounded case",
+    "Rawnote104 lookup with prior voice1control41 versus81: source changes only initializer frequency-high store and held word"
+  ],
+  "nativeBlocks": [
+    {
+      "name": "pitch-and-instrument-setup",
+      "firstPC": 33005,
+      "endExclusive": 33137,
+      "instructions": [
+        {
+          "pc": 33005,
+          "bytes": "c8",
+          "assembly": "INY"
+        },
+        {
+          "pc": 33006,
+          "bytes": "b104",
+          "assembly": "LDA ($04),Y"
+        },
+        {
+          "pc": 33008,
+          "bytes": "9dd384",
+          "assembly": "STA $84d3,X"
+        },
+        {
+          "pc": 33011,
+          "bytes": "0a",
+          "assembly": "ASL A"
+        },
+        {
+          "pc": 33012,
+          "bytes": "a8",
+          "assembly": "TAY"
+        },
+        {
+          "pc": 33013,
+          "bytes": "adfd84",
+          "assembly": "LDA $84fd"
+        },
+        {
+          "pc": 33016,
+          "bytes": "1021",
+          "assembly": "BPL $811b"
+        },
+        {
+          "pc": 33018,
+          "bytes": "b90084",
+          "assembly": "LDA $8400,Y"
+        },
+        {
+          "pc": 33021,
+          "bytes": "8ddb84",
+          "assembly": "STA $84db"
+        },
+        {
+          "pc": 33024,
+          "bytes": "b90184",
+          "assembly": "LDA $8401,Y"
+        },
+        {
+          "pc": 33027,
+          "bytes": "acc384",
+          "assembly": "LDY $84c3"
+        },
+        {
+          "pc": 33030,
+          "bytes": "9901d4",
+          "assembly": "STA $d401,Y"
+        },
+        {
+          "pc": 33033,
+          "bytes": "9def84",
+          "assembly": "STA $84ef,X"
+        },
+        {
+          "pc": 33036,
+          "bytes": "addb84",
+          "assembly": "LDA $84db"
+        },
+        {
+          "pc": 33039,
+          "bytes": "9900d4",
+          "assembly": "STA $d400,Y"
+        },
+        {
+          "pc": 33042,
+          "bytes": "9df284",
+          "assembly": "STA $84f2,X"
+        },
+        {
+          "pc": 33045,
+          "bytes": "4c1b81",
+          "assembly": "JMP $811b"
+        },
+        {
+          "pc": 33048,
+          "bytes": "ced984",
+          "assembly": "DEC $84d9"
+        },
+        {
+          "pc": 33051,
+          "bytes": "acc384",
+          "assembly": "LDY $84c3"
+        },
+        {
+          "pc": 33054,
+          "bytes": "bdd684",
+          "assembly": "LDA $84d6,X"
+        },
+        {
+          "pc": 33057,
+          "bytes": "8edc84",
+          "assembly": "STX $84dc"
+        },
+        {
+          "pc": 33060,
+          "bytes": "0a",
+          "assembly": "ASL A"
+        },
+        {
+          "pc": 33061,
+          "bytes": "0a",
+          "assembly": "ASL A"
+        },
+        {
+          "pc": 33062,
+          "bytes": "0a",
+          "assembly": "ASL A"
+        },
+        {
+          "pc": 33063,
+          "bytes": "aa",
+          "assembly": "TAX"
+        },
+        {
+          "pc": 33064,
+          "bytes": "bdb693",
+          "assembly": "LDA $93b6,X"
+        },
+        {
+          "pc": 33067,
+          "bytes": "8ddd84",
+          "assembly": "STA $84dd"
+        },
+        {
+          "pc": 33070,
+          "bytes": "adfd84",
+          "assembly": "LDA $84fd"
+        },
+        {
+          "pc": 33073,
+          "bytes": "1021",
+          "assembly": "BPL $8154"
+        },
+        {
+          "pc": 33075,
+          "bytes": "bdb693",
+          "assembly": "LDA $93b6,X"
+        },
+        {
+          "pc": 33078,
+          "bytes": "2dd984",
+          "assembly": "AND $84d9"
+        },
+        {
+          "pc": 33081,
+          "bytes": "9904d4",
+          "assembly": "STA $d404,Y"
+        },
+        {
+          "pc": 33084,
+          "bytes": "bdb493",
+          "assembly": "LDA $93b4,X"
+        },
+        {
+          "pc": 33087,
+          "bytes": "9902d4",
+          "assembly": "STA $d402,Y"
+        },
+        {
+          "pc": 33090,
+          "bytes": "bdb593",
+          "assembly": "LDA $93b5,X"
+        },
+        {
+          "pc": 33093,
+          "bytes": "9903d4",
+          "assembly": "STA $d403,Y"
+        },
+        {
+          "pc": 33096,
+          "bytes": "bdb793",
+          "assembly": "LDA $93b7,X"
+        },
+        {
+          "pc": 33099,
+          "bytes": "9905d4",
+          "assembly": "STA $d405,Y"
+        },
+        {
+          "pc": 33102,
+          "bytes": "bdb893",
+          "assembly": "LDA $93b8,X"
+        },
+        {
+          "pc": 33105,
+          "bytes": "9906d4",
+          "assembly": "STA $d406,Y"
+        },
+        {
+          "pc": 33108,
+          "bytes": "aedc84",
+          "assembly": "LDX $84dc"
+        },
+        {
+          "pc": 33111,
+          "bytes": "addd84",
+          "assembly": "LDA $84dd"
+        },
+        {
+          "pc": 33114,
+          "bytes": "9dd084",
+          "assembly": "STA $84d0,X"
+        },
+        {
+          "pc": 33117,
+          "bytes": "fec784",
+          "assembly": "INC $84c7,X"
+        },
+        {
+          "pc": 33120,
+          "bytes": "bcc784",
+          "assembly": "LDY $84c7,X"
+        },
+        {
+          "pc": 33123,
+          "bytes": "b104",
+          "assembly": "LDA ($04),Y"
+        },
+        {
+          "pc": 33125,
+          "bytes": "c9ff",
+          "assembly": "CMP #$ff"
+        },
+        {
+          "pc": 33127,
+          "bytes": "d008",
+          "assembly": "BNE $8171"
+        },
+        {
+          "pc": 33129,
+          "bytes": "a900",
+          "assembly": "LDA #$00"
+        },
+        {
+          "pc": 33131,
+          "bytes": "9dc784",
+          "assembly": "STA $84c7,X"
+        },
+        {
+          "pc": 33134,
+          "bytes": "fec484",
+          "assembly": "INC $84c4,X"
+        }
+      ],
+      "bytesSha256": "8c909c0cd4257e3689194914884add0c7fd718336a2fa4577091f97723dcb487",
+      "classification": "Pinned static instructions; execution evidence is supplied separately by verification/context receipts"
+    },
+    {
+      "name": "scheduled-release",
+      "firstPC": 33140,
+      "endExclusive": 33187,
+      "instructions": [
+        {
+          "pc": 33140,
+          "bytes": "adfd84",
+          "assembly": "LDA $84fd"
+        },
+        {
+          "pc": 33143,
+          "bytes": "3003",
+          "assembly": "BMI $817c"
+        },
+        {
+          "pc": 33145,
+          "bytes": "4c6783",
+          "assembly": "JMP $8367"
+        },
+        {
+          "pc": 33148,
+          "bytes": "acc384",
+          "assembly": "LDY $84c3"
+        },
+        {
+          "pc": 33151,
+          "bytes": "bdcd84",
+          "assembly": "LDA $84cd,X"
+        },
+        {
+          "pc": 33154,
+          "bytes": "2920",
+          "assembly": "AND #$20"
+        },
+        {
+          "pc": 33156,
+          "bytes": "d015",
+          "assembly": "BNE $819b"
+        },
+        {
+          "pc": 33158,
+          "bytes": "bdca84",
+          "assembly": "LDA $84ca,X"
+        },
+        {
+          "pc": 33161,
+          "bytes": "d010",
+          "assembly": "BNE $819b"
+        },
+        {
+          "pc": 33163,
+          "bytes": "bdd084",
+          "assembly": "LDA $84d0,X"
+        },
+        {
+          "pc": 33166,
+          "bytes": "29fe",
+          "assembly": "AND #$fe"
+        },
+        {
+          "pc": 33168,
+          "bytes": "9904d4",
+          "assembly": "STA $d404,Y"
+        },
+        {
+          "pc": 33171,
+          "bytes": "a900",
+          "assembly": "LDA #$00"
+        },
+        {
+          "pc": 33173,
+          "bytes": "9905d4",
+          "assembly": "STA $d405,Y"
+        },
+        {
+          "pc": 33176,
+          "bytes": "9906d4",
+          "assembly": "STA $d406,Y"
+        },
+        {
+          "pc": 33179,
+          "bytes": "adfd84",
+          "assembly": "LDA $84fd"
+        },
+        {
+          "pc": 33182,
+          "bytes": "3003",
+          "assembly": "BMI $81a3"
+        },
+        {
+          "pc": 33184,
+          "bytes": "4c6783",
+          "assembly": "JMP $8367"
+        }
+      ],
+      "bytesSha256": "832d7d18f8ce6dae63f0bb380a487e691d47ca5e510849857de61ab373456f54",
+      "classification": "Pinned static instructions; execution evidence is supplied separately by verification/context receipts"
+    },
+    {
+      "name": "vibrato",
+      "firstPC": 33187,
+      "endExclusive": 33328,
+      "instructions": [
+        {
+          "pc": 33187,
+          "bytes": "bdd684",
+          "assembly": "LDA $84d6,X"
+        },
+        {
+          "pc": 33190,
+          "bytes": "0a",
+          "assembly": "ASL A"
+        },
+        {
+          "pc": 33191,
+          "bytes": "0a",
+          "assembly": "ASL A"
+        },
+        {
+          "pc": 33192,
+          "bytes": "0a",
+          "assembly": "ASL A"
+        },
+        {
+          "pc": 33193,
+          "bytes": "a8",
+          "assembly": "TAY"
+        },
+        {
+          "pc": 33194,
+          "bytes": "8ced84",
+          "assembly": "STY $84ed"
+        },
+        {
+          "pc": 33197,
+          "bytes": "b9bb93",
+          "assembly": "LDA $93bb,Y"
+        },
+        {
+          "pc": 33200,
+          "bytes": "8df884",
+          "assembly": "STA $84f8"
+        },
+        {
+          "pc": 33203,
+          "bytes": "b9ba93",
+          "assembly": "LDA $93ba,Y"
+        },
+        {
+          "pc": 33206,
+          "bytes": "8ddf84",
+          "assembly": "STA $84df"
+        },
+        {
+          "pc": 33209,
+          "bytes": "b9b993",
+          "assembly": "LDA $93b9,Y"
+        },
+        {
+          "pc": 33212,
+          "bytes": "8dde84",
+          "assembly": "STA $84de"
+        },
+        {
+          "pc": 33215,
+          "bytes": "f06f",
+          "assembly": "BEQ $8230"
+        },
+        {
+          "pc": 33217,
+          "bytes": "adfa84",
+          "assembly": "LDA $84fa"
+        },
+        {
+          "pc": 33220,
+          "bytes": "2907",
+          "assembly": "AND #$07"
+        },
+        {
+          "pc": 33222,
+          "bytes": "c904",
+          "assembly": "CMP #$04"
+        },
+        {
+          "pc": 33224,
+          "bytes": "9002",
+          "assembly": "BCC $81cc"
+        },
+        {
+          "pc": 33226,
+          "bytes": "4907",
+          "assembly": "EOR #$07"
+        },
+        {
+          "pc": 33228,
+          "bytes": "8de484",
+          "assembly": "STA $84e4"
+        },
+        {
+          "pc": 33231,
+          "bytes": "bdd384",
+          "assembly": "LDA $84d3,X"
+        },
+        {
+          "pc": 33234,
+          "bytes": "0a",
+          "assembly": "ASL A"
+        },
+        {
+          "pc": 33235,
+          "bytes": "a8",
+          "assembly": "TAY"
+        },
+        {
+          "pc": 33236,
+          "bytes": "38",
+          "assembly": "SEC"
+        },
+        {
+          "pc": 33237,
+          "bytes": "b90284",
+          "assembly": "LDA $8402,Y"
+        },
+        {
+          "pc": 33240,
+          "bytes": "f90084",
+          "assembly": "SBC $8400,Y"
+        },
+        {
+          "pc": 33243,
+          "bytes": "8de084",
+          "assembly": "STA $84e0"
+        },
+        {
+          "pc": 33246,
+          "bytes": "b90384",
+          "assembly": "LDA $8403,Y"
+        },
+        {
+          "pc": 33249,
+          "bytes": "f90184",
+          "assembly": "SBC $8401,Y"
+        },
+        {
+          "pc": 33252,
+          "bytes": "4a",
+          "assembly": "LSR A"
+        },
+        {
+          "pc": 33253,
+          "bytes": "6ee084",
+          "assembly": "ROR $84e0"
+        },
+        {
+          "pc": 33256,
+          "bytes": "cede84",
+          "assembly": "DEC $84de"
+        },
+        {
+          "pc": 33259,
+          "bytes": "10f7",
+          "assembly": "BPL $81e4"
+        },
+        {
+          "pc": 33261,
+          "bytes": "8de184",
+          "assembly": "STA $84e1"
+        },
+        {
+          "pc": 33264,
+          "bytes": "b90084",
+          "assembly": "LDA $8400,Y"
+        },
+        {
+          "pc": 33267,
+          "bytes": "8de284",
+          "assembly": "STA $84e2"
+        },
+        {
+          "pc": 33270,
+          "bytes": "b90184",
+          "assembly": "LDA $8401,Y"
+        },
+        {
+          "pc": 33273,
+          "bytes": "8de384",
+          "assembly": "STA $84e3"
+        },
+        {
+          "pc": 33276,
+          "bytes": "bdcd84",
+          "assembly": "LDA $84cd,X"
+        },
+        {
+          "pc": 33279,
+          "bytes": "291f",
+          "assembly": "AND #$1f"
+        },
+        {
+          "pc": 33281,
+          "bytes": "c908",
+          "assembly": "CMP #$08"
+        },
+        {
+          "pc": 33283,
+          "bytes": "901c",
+          "assembly": "BCC $8221"
+        },
+        {
+          "pc": 33285,
+          "bytes": "ace484",
+          "assembly": "LDY $84e4"
+        },
+        {
+          "pc": 33288,
+          "bytes": "88",
+          "assembly": "DEY"
+        },
+        {
+          "pc": 33289,
+          "bytes": "3016",
+          "assembly": "BMI $8221"
+        },
+        {
+          "pc": 33291,
+          "bytes": "18",
+          "assembly": "CLC"
+        },
+        {
+          "pc": 33292,
+          "bytes": "ade284",
+          "assembly": "LDA $84e2"
+        },
+        {
+          "pc": 33295,
+          "bytes": "6de084",
+          "assembly": "ADC $84e0"
+        },
+        {
+          "pc": 33298,
+          "bytes": "8de284",
+          "assembly": "STA $84e2"
+        },
+        {
+          "pc": 33301,
+          "bytes": "ade384",
+          "assembly": "LDA $84e3"
+        },
+        {
+          "pc": 33304,
+          "bytes": "6de184",
+          "assembly": "ADC $84e1"
+        },
+        {
+          "pc": 33307,
+          "bytes": "8de384",
+          "assembly": "STA $84e3"
+        },
+        {
+          "pc": 33310,
+          "bytes": "4c0882",
+          "assembly": "JMP $8208"
+        },
+        {
+          "pc": 33313,
+          "bytes": "acc384",
+          "assembly": "LDY $84c3"
+        },
+        {
+          "pc": 33316,
+          "bytes": "ade284",
+          "assembly": "LDA $84e2"
+        },
+        {
+          "pc": 33319,
+          "bytes": "9900d4",
+          "assembly": "STA $d400,Y"
+        },
+        {
+          "pc": 33322,
+          "bytes": "ade384",
+          "assembly": "LDA $84e3"
+        },
+        {
+          "pc": 33325,
+          "bytes": "9901d4",
+          "assembly": "STA $d401,Y"
+        }
+      ],
+      "bytesSha256": "28c93a83ee40aaf5911211ef39b90bb3f4b1c2bae89df3f91b0a0062c6d686d9",
+      "classification": "Pinned static instructions; execution evidence is supplied separately by verification/context receipts"
+    },
+    {
+      "name": "shared-pwm",
+      "firstPC": 33328,
+      "endExclusive": 33431,
+      "instructions": [
+        {
+          "pc": 33328,
+          "bytes": "addf84",
+          "assembly": "LDA $84df"
+        },
+        {
+          "pc": 33331,
+          "bytes": "f062",
+          "assembly": "BEQ $8297"
+        },
+        {
+          "pc": 33333,
+          "bytes": "aced84",
+          "assembly": "LDY $84ed"
+        },
+        {
+          "pc": 33336,
+          "bytes": "291f",
+          "assembly": "AND #$1f"
+        },
+        {
+          "pc": 33338,
+          "bytes": "dee584",
+          "assembly": "DEC $84e5,X"
+        },
+        {
+          "pc": 33341,
+          "bytes": "1058",
+          "assembly": "BPL $8297"
+        },
+        {
+          "pc": 33343,
+          "bytes": "9de584",
+          "assembly": "STA $84e5,X"
+        },
+        {
+          "pc": 33346,
+          "bytes": "addf84",
+          "assembly": "LDA $84df"
+        },
+        {
+          "pc": 33349,
+          "bytes": "29e0",
+          "assembly": "AND #$e0"
+        },
+        {
+          "pc": 33351,
+          "bytes": "8df984",
+          "assembly": "STA $84f9"
+        },
+        {
+          "pc": 33354,
+          "bytes": "bde884",
+          "assembly": "LDA $84e8,X"
+        },
+        {
+          "pc": 33357,
+          "bytes": "d01a",
+          "assembly": "BNE $8269"
+        },
+        {
+          "pc": 33359,
+          "bytes": "adf984",
+          "assembly": "LDA $84f9"
+        },
+        {
+          "pc": 33362,
+          "bytes": "18",
+          "assembly": "CLC"
+        },
+        {
+          "pc": 33363,
+          "bytes": "79b493",
+          "assembly": "ADC $93b4,Y"
+        },
+        {
+          "pc": 33366,
+          "bytes": "48",
+          "assembly": "PHA"
+        },
+        {
+          "pc": 33367,
+          "bytes": "b9b593",
+          "assembly": "LDA $93b5,Y"
+        },
+        {
+          "pc": 33370,
+          "bytes": "6900",
+          "assembly": "ADC #$00"
+        },
+        {
+          "pc": 33372,
+          "bytes": "290f",
+          "assembly": "AND #$0f"
+        },
+        {
+          "pc": 33374,
+          "bytes": "48",
+          "assembly": "PHA"
+        },
+        {
+          "pc": 33375,
+          "bytes": "c90e",
+          "assembly": "CMP #$0e"
+        },
+        {
+          "pc": 33377,
+          "bytes": "d01d",
+          "assembly": "BNE $8280"
+        },
+        {
+          "pc": 33379,
+          "bytes": "fee884",
+          "assembly": "INC $84e8,X"
+        },
+        {
+          "pc": 33382,
+          "bytes": "4c8082",
+          "assembly": "JMP $8280"
+        },
+        {
+          "pc": 33385,
+          "bytes": "38",
+          "assembly": "SEC"
+        },
+        {
+          "pc": 33386,
+          "bytes": "b9b493",
+          "assembly": "LDA $93b4,Y"
+        },
+        {
+          "pc": 33389,
+          "bytes": "edf984",
+          "assembly": "SBC $84f9"
+        },
+        {
+          "pc": 33392,
+          "bytes": "48",
+          "assembly": "PHA"
+        },
+        {
+          "pc": 33393,
+          "bytes": "b9b593",
+          "assembly": "LDA $93b5,Y"
+        },
+        {
+          "pc": 33396,
+          "bytes": "e900",
+          "assembly": "SBC #$00"
+        },
+        {
+          "pc": 33398,
+          "bytes": "290f",
+          "assembly": "AND #$0f"
+        },
+        {
+          "pc": 33400,
+          "bytes": "48",
+          "assembly": "PHA"
+        },
+        {
+          "pc": 33401,
+          "bytes": "c908",
+          "assembly": "CMP #$08"
+        },
+        {
+          "pc": 33403,
+          "bytes": "d003",
+          "assembly": "BNE $8280"
+        },
+        {
+          "pc": 33405,
+          "bytes": "dee884",
+          "assembly": "DEC $84e8,X"
+        },
+        {
+          "pc": 33408,
+          "bytes": "8edc84",
+          "assembly": "STX $84dc"
+        },
+        {
+          "pc": 33411,
+          "bytes": "aec384",
+          "assembly": "LDX $84c3"
+        },
+        {
+          "pc": 33414,
+          "bytes": "68",
+          "assembly": "PLA"
+        },
+        {
+          "pc": 33415,
+          "bytes": "99b593",
+          "assembly": "STA $93b5,Y"
+        },
+        {
+          "pc": 33418,
+          "bytes": "9d03d4",
+          "assembly": "STA $d403,X"
+        },
+        {
+          "pc": 33421,
+          "bytes": "68",
+          "assembly": "PLA"
+        },
+        {
+          "pc": 33422,
+          "bytes": "99b493",
+          "assembly": "STA $93b4,Y"
+        },
+        {
+          "pc": 33425,
+          "bytes": "9d02d4",
+          "assembly": "STA $d402,X"
+        },
+        {
+          "pc": 33428,
+          "bytes": "aedc84",
+          "assembly": "LDX $84dc"
+        }
+      ],
+      "bytesSha256": "8fc5dd17408a323326fe8423f4671a2daaa5ce5a1313d42774bdb330fb4ab030",
+      "classification": "Pinned static instructions; execution evidence is supplied separately by verification/context receipts"
+    },
+    {
+      "name": "portamento",
+      "firstPC": 33431,
+      "endExclusive": 33502,
+      "instructions": [
+        {
+          "pc": 33431,
+          "bytes": "acc384",
+          "assembly": "LDY $84c3"
+        },
+        {
+          "pc": 33434,
+          "bytes": "bdf584",
+          "assembly": "LDA $84f5,X"
+        },
+        {
+          "pc": 33437,
+          "bytes": "f03f",
+          "assembly": "BEQ $82de"
+        },
+        {
+          "pc": 33439,
+          "bytes": "297e",
+          "assembly": "AND #$7e"
+        },
+        {
+          "pc": 33441,
+          "bytes": "8ddc84",
+          "assembly": "STA $84dc"
+        },
+        {
+          "pc": 33444,
+          "bytes": "bdf584",
+          "assembly": "LDA $84f5,X"
+        },
+        {
+          "pc": 33447,
+          "bytes": "2901",
+          "assembly": "AND #$01"
+        },
+        {
+          "pc": 33449,
+          "bytes": "f01b",
+          "assembly": "BEQ $82c6"
+        },
+        {
+          "pc": 33451,
+          "bytes": "38",
+          "assembly": "SEC"
+        },
+        {
+          "pc": 33452,
+          "bytes": "bdf284",
+          "assembly": "LDA $84f2,X"
+        },
+        {
+          "pc": 33455,
+          "bytes": "eddc84",
+          "assembly": "SBC $84dc"
+        },
+        {
+          "pc": 33458,
+          "bytes": "9df284",
+          "assembly": "STA $84f2,X"
+        },
+        {
+          "pc": 33461,
+          "bytes": "9900d4",
+          "assembly": "STA $d400,Y"
+        },
+        {
+          "pc": 33464,
+          "bytes": "bdef84",
+          "assembly": "LDA $84ef,X"
+        },
+        {
+          "pc": 33467,
+          "bytes": "e900",
+          "assembly": "SBC #$00"
+        },
+        {
+          "pc": 33469,
+          "bytes": "9def84",
+          "assembly": "STA $84ef,X"
+        },
+        {
+          "pc": 33472,
+          "bytes": "9901d4",
+          "assembly": "STA $d401,Y"
+        },
+        {
+          "pc": 33475,
+          "bytes": "4cde82",
+          "assembly": "JMP $82de"
+        },
+        {
+          "pc": 33478,
+          "bytes": "18",
+          "assembly": "CLC"
+        },
+        {
+          "pc": 33479,
+          "bytes": "bdf284",
+          "assembly": "LDA $84f2,X"
+        },
+        {
+          "pc": 33482,
+          "bytes": "6ddc84",
+          "assembly": "ADC $84dc"
+        },
+        {
+          "pc": 33485,
+          "bytes": "9df284",
+          "assembly": "STA $84f2,X"
+        },
+        {
+          "pc": 33488,
+          "bytes": "9900d4",
+          "assembly": "STA $d400,Y"
+        },
+        {
+          "pc": 33491,
+          "bytes": "bdef84",
+          "assembly": "LDA $84ef,X"
+        },
+        {
+          "pc": 33494,
+          "bytes": "6900",
+          "assembly": "ADC #$00"
+        },
+        {
+          "pc": 33496,
+          "bytes": "9def84",
+          "assembly": "STA $84ef,X"
+        },
+        {
+          "pc": 33499,
+          "bytes": "9901d4",
+          "assembly": "STA $d401,Y"
+        }
+      ],
+      "bytesSha256": "f3ee55872b7ca070435eb6f10a50f4f005dd9dc1c55cd6267a98e5afad26f6ae",
+      "classification": "Pinned static instructions; execution evidence is supplied separately by verification/context receipts"
+    },
+    {
+      "name": "drum",
+      "firstPC": 33502,
+      "endExclusive": 33562,
+      "instructions": [
+        {
+          "pc": 33502,
+          "bytes": "adf884",
+          "assembly": "LDA $84f8"
+        },
+        {
+          "pc": 33505,
+          "bytes": "2901",
+          "assembly": "AND #$01"
+        },
+        {
+          "pc": 33507,
+          "bytes": "f035",
+          "assembly": "BEQ $831a"
+        },
+        {
+          "pc": 33509,
+          "bytes": "bdef84",
+          "assembly": "LDA $84ef,X"
+        },
+        {
+          "pc": 33512,
+          "bytes": "f030",
+          "assembly": "BEQ $831a"
+        },
+        {
+          "pc": 33514,
+          "bytes": "bdca84",
+          "assembly": "LDA $84ca,X"
+        },
+        {
+          "pc": 33517,
+          "bytes": "f02b",
+          "assembly": "BEQ $831a"
+        },
+        {
+          "pc": 33519,
+          "bytes": "bdcd84",
+          "assembly": "LDA $84cd,X"
+        },
+        {
+          "pc": 33522,
+          "bytes": "291f",
+          "assembly": "AND #$1f"
+        },
+        {
+          "pc": 33524,
+          "bytes": "38",
+          "assembly": "SEC"
+        },
+        {
+          "pc": 33525,
+          "bytes": "e901",
+          "assembly": "SBC #$01"
+        },
+        {
+          "pc": 33527,
+          "bytes": "ddca84",
+          "assembly": "CMP $84ca,X"
+        },
+        {
+          "pc": 33530,
+          "bytes": "acc384",
+          "assembly": "LDY $84c3"
+        },
+        {
+          "pc": 33533,
+          "bytes": "9010",
+          "assembly": "BCC $830f"
+        },
+        {
+          "pc": 33535,
+          "bytes": "bdef84",
+          "assembly": "LDA $84ef,X"
+        },
+        {
+          "pc": 33538,
+          "bytes": "deef84",
+          "assembly": "DEC $84ef,X"
+        },
+        {
+          "pc": 33541,
+          "bytes": "9901d4",
+          "assembly": "STA $d401,Y"
+        },
+        {
+          "pc": 33544,
+          "bytes": "bdd084",
+          "assembly": "LDA $84d0,X"
+        },
+        {
+          "pc": 33547,
+          "bytes": "29fe",
+          "assembly": "AND #$fe"
+        },
+        {
+          "pc": 33549,
+          "bytes": "d008",
+          "assembly": "BNE $8317"
+        },
+        {
+          "pc": 33551,
+          "bytes": "bdef84",
+          "assembly": "LDA $84ef,X"
+        },
+        {
+          "pc": 33554,
+          "bytes": "9901d4",
+          "assembly": "STA $d401,Y"
+        },
+        {
+          "pc": 33557,
+          "bytes": "a980",
+          "assembly": "LDA #$80"
+        },
+        {
+          "pc": 33559,
+          "bytes": "9904d4",
+          "assembly": "STA $d404,Y"
+        }
+      ],
+      "bytesSha256": "f361b4618ed8fdfadde8c8bbdb7c810e52c653ce8badf98bce2592d06cb275b7",
+      "classification": "Pinned static instructions; execution evidence is supplied separately by verification/context receipts"
+    },
+    {
+      "name": "saved-high-descent",
+      "firstPC": 33562,
+      "endExclusive": 33590,
+      "instructions": [
+        {
+          "pc": 33562,
+          "bytes": "adf884",
+          "assembly": "LDA $84f8"
+        },
+        {
+          "pc": 33565,
+          "bytes": "2902",
+          "assembly": "AND #$02"
+        },
+        {
+          "pc": 33567,
+          "bytes": "f015",
+          "assembly": "BEQ $8336"
+        },
+        {
+          "pc": 33569,
+          "bytes": "adfa84",
+          "assembly": "LDA $84fa"
+        },
+        {
+          "pc": 33572,
+          "bytes": "2901",
+          "assembly": "AND #$01"
+        },
+        {
+          "pc": 33574,
+          "bytes": "f00e",
+          "assembly": "BEQ $8336"
+        },
+        {
+          "pc": 33576,
+          "bytes": "bdef84",
+          "assembly": "LDA $84ef,X"
+        },
+        {
+          "pc": 33579,
+          "bytes": "f009",
+          "assembly": "BEQ $8336"
+        },
+        {
+          "pc": 33581,
+          "bytes": "deef84",
+          "assembly": "DEC $84ef,X"
+        },
+        {
+          "pc": 33584,
+          "bytes": "acc384",
+          "assembly": "LDY $84c3"
+        },
+        {
+          "pc": 33587,
+          "bytes": "9901d4",
+          "assembly": "STA $d401,Y"
+        }
+      ],
+      "bytesSha256": "e950e9c1b8a355cb1cf1c5e51472e46b2084106d3fc112efce65ae8d06cf8bc1",
+      "classification": "Pinned static instructions; execution evidence is supplied separately by verification/context receipts"
+    },
+    {
+      "name": "octave-alternation",
+      "firstPC": 33590,
+      "endExclusive": 33639,
+      "instructions": [
+        {
+          "pc": 33590,
+          "bytes": "adf884",
+          "assembly": "LDA $84f8"
+        },
+        {
+          "pc": 33593,
+          "bytes": "2904",
+          "assembly": "AND #$04"
+        },
+        {
+          "pc": 33595,
+          "bytes": "f02a",
+          "assembly": "BEQ $8367"
+        },
+        {
+          "pc": 33597,
+          "bytes": "adfa84",
+          "assembly": "LDA $84fa"
+        },
+        {
+          "pc": 33600,
+          "bytes": "2901",
+          "assembly": "AND #$01"
+        },
+        {
+          "pc": 33602,
+          "bytes": "f009",
+          "assembly": "BEQ $834d"
+        },
+        {
+          "pc": 33604,
+          "bytes": "bdd384",
+          "assembly": "LDA $84d3,X"
+        },
+        {
+          "pc": 33607,
+          "bytes": "18",
+          "assembly": "CLC"
+        },
+        {
+          "pc": 33608,
+          "bytes": "690c",
+          "assembly": "ADC #$0c"
+        },
+        {
+          "pc": 33610,
+          "bytes": "4c5083",
+          "assembly": "JMP $8350"
+        },
+        {
+          "pc": 33613,
+          "bytes": "bdd384",
+          "assembly": "LDA $84d3,X"
+        },
+        {
+          "pc": 33616,
+          "bytes": "0a",
+          "assembly": "ASL A"
+        },
+        {
+          "pc": 33617,
+          "bytes": "a8",
+          "assembly": "TAY"
+        },
+        {
+          "pc": 33618,
+          "bytes": "b90084",
+          "assembly": "LDA $8400,Y"
+        },
+        {
+          "pc": 33621,
+          "bytes": "8ddb84",
+          "assembly": "STA $84db"
+        },
+        {
+          "pc": 33624,
+          "bytes": "b90184",
+          "assembly": "LDA $8401,Y"
+        },
+        {
+          "pc": 33627,
+          "bytes": "acc384",
+          "assembly": "LDY $84c3"
+        },
+        {
+          "pc": 33630,
+          "bytes": "9901d4",
+          "assembly": "STA $d401,Y"
+        },
+        {
+          "pc": 33633,
+          "bytes": "addb84",
+          "assembly": "LDA $84db"
+        },
+        {
+          "pc": 33636,
+          "bytes": "9900d4",
+          "assembly": "STA $d400,Y"
+        }
+      ],
+      "bytesSha256": "b0f729e453bc6b5dae823fb5c3d290a6f39e7fb88f3f20014bfa6593b720bf0d",
+      "classification": "Pinned static instructions; execution evidence is supplied separately by verification/context receipts"
+    }
+  ],
+  "limits": "Not a score decoder, complete player, frequency-alias resolver, oscillator/envelope model or reconstruction. Synthetic cases are explicit edited RAM inputs to original blocks, not extra title traversals. No original SID, complete payload/RAM or full third-party listing is exported.",
+  "hashes": {
+    "model.py": "938031e1dfe3392a1b7c85bd6ddaf26b4e29ce7df4bb218f0f50b3f114ae69a0",
+    "check.py": "e3adee69346af0274b62f43219249e1f2910a29fecb437b73efc7f95407f2251",
+    "context.py": "800a847a3a436529784efceb0c5a3aea1f60305bc0d7302e1e69539424f98225",
+    "verification.json": "b6a119c3f099dea15344c714022e2eab2402ac110db1a66b05387cb5b4b9bc70",
+    "context-verification.json": "3cb34f3a478633b296fcfd0b08c00c60fbedf44037106a4e8ab498ecb08f4342",
+    "records.json": "2ee6134837987631007f7809a9b7808c99238dff4422a4bd4f86d9a232fc11b6",
+    "context-cases.json.gz": "499ce1bc7dd3e5749fdc11763930103119b63b009ab08ca2764699ee3002b292"
+  },
+  "recipeSha256": "9ff2048215ad0b8921a0210fff4f6fe95a8965adc529215f955e4312d3e2b2fa",
+  "actualOpeningBodyVisits": {
+    "releaseStores": {
+      "pc": 33168,
+      "visits": 8
+    },
+    "vibratoStores": {
+      "pc": 33319,
+      "visits": 1512
+    },
+    "pwmUpdates": {
+      "pc": 33415,
+      "visits": 78
+    },
+    "portamentoUpdatesUp": {
+      "pc": 33488,
+      "visits": 0
+    },
+    "portamentoUpdatesDown": {
+      "pc": 33458,
+      "visits": 0
+    },
+    "drumActive": {
+      "pc": 33519,
+      "visits": 0
+    },
+    "descentUpdates": {
+      "pc": 33581,
+      "visits": 65
+    },
+    "octaveStores": {
+      "pc": 33630,
+      "visits": 504
+    }
+  }
+}

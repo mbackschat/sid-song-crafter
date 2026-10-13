@@ -1,6 +1,6 @@
 # Pop songs and TV/film themes: pinned intake
 
-This prepares the four later references in the [study plan](../study-plan.md) while Shades remains the active reconstruction. It establishes exact downloads, archive declarations and scoped attribution. Billie Jean and Airwolf also have bounded CPU/VICE comparisons. None has a decoded complete form, independent arrangement, rendered comparison or listening verdict yet.
+This prepares the four later references in the [study plan](../study-plan.md) while Shades remains the active reconstruction. It establishes exact downloads, archive declarations and scoped attribution. Billie Jean has bounded CPU/VICE comparisons; Airwolf now also has a complete score cycle and an independent numeric model checked against two traversals. Independent arrangement/export, rendered comparison and listening remain pending for all four.
 
 ## Sources and attribution
 
@@ -10,7 +10,7 @@ The [download registry](../../../config/local-assets.json) owns each original UR
 | --- | --- | --- | --- |
 | Take On Me / `take-on-me` | [PVL archive](https://www.hvsc.de/download/C64Music/MUSICIANS/P/PVL/Take_on_Me.sid); Pascal van Loosbroek (PVL), 1993 Slash Design; [header](../../../evidence/pop-theme-intake/take-on-me.header.json) | A-Ha, *Take On Me*, from *Hunting High and Low* | Single/default #1; musical form unmeasured |
 | Billie Jean / `billie-jean` | [Bjerregaard archive](https://www.hvsc.de/download/C64Music/MUSICIANS/B/Bjerregaard_Johannes/Billie_Jean.sid); Johannes Bjerregaard, 1990; [header](../../../evidence/pop-theme-intake/billie-jean.header.json) | Michael Jackson, *Billie Jean*, from *Thriller* | Single/default #1; musical form unmeasured |
-| Airwolf / `airwolf` | [Cooksey archive](https://www.hvsc.de/download/C64Music/MUSICIANS/C/Cooksey_Mark/Airwolf.sid); Mark Cooksey, 1985 Elite; [header](../../../evidence/pop-theme-intake/airwolf.header.json) | Sylvester Levay, *Airwolf Theme*, from the TV series | Single/default #1; musical form unmeasured |
+| Airwolf / `airwolf` | [Cooksey archive](https://www.hvsc.de/download/C64Music/MUSICIANS/C/Cooksey_Mark/Airwolf.sid); Mark Cooksey, 1985 Elite; [header](../../../evidence/pop-theme-intake/airwolf.header.json) | Sylvester Levay, *Airwolf Theme*, from the TV series | Single/default #1; [138-row, 1,242-call score cycle](#airwolf-score-cycle-and-independent-numeric-model) |
 | Ghostbusters / `ghostbusters` | [Lieblich archive](https://www.hvsc.de/download/C64Music/MUSICIANS/L/Lieblich_Russell/Ghostbusters.sid); Russell Lieblich, 1984 Activision; [header](../../../evidence/pop-theme-intake/ghostbusters.header.json) | #1: Ray Parker, Jr., *Ghostbusters*, from the film; all speech credited to Electronic Speech Systems | Default/selected #1 of five; #2–#5 have no labels in this cached STIL entry |
 
 STIL's artist/original-song fields do not transfer SID-arrangement credit to the original performer. Conversely, archive header authorship does not establish original composition of the covered song. Airwolf is a TV theme; Ghostbusters combines music and separately credited speech, whose implementation remains unexamined.
@@ -45,7 +45,29 @@ On 2026-10-13 both complete initialization and calls 0–63 under the [controlle
 | CPU report and complete ordered ledger | [Report](../../../evidence/pop-theme-intake/billie-jean.audit64.json), [ledger](../../../evidence/pop-theme-intake/billie-jean.audit64.writes.json.gz) | [Report](../../../evidence/pop-theme-intake/airwolf.audit64.json), [ledger](../../../evidence/pop-theme-intake/airwolf.audit64.writes.json.gz) |
 | VICE report and parsed trace | [Report](../../../evidence/pop-theme-intake/billie-jean.vice64/study.json), [trace](../../../evidence/pop-theme-intake/billie-jean.vice64/trace.json.gz) | [Report](../../../evidence/pop-theme-intake/airwolf.vice64/study.json), [trace](../../../evidence/pop-theme-intake/airwolf.vice64/trace.json.gz) |
 
-These bounded costs do not establish whole-song maxima or form. Monitor checkpoints are not exact SID bus-write timestamps; the controlled raster caller is not the original release's environment. Next identify executed order/pattern consumption and complete section coverage before attributing an instrument or implementing an independent arrangement.
+These 64-call costs do not establish whole-song maxima or form. Monitor checkpoints are not exact SID bus-write timestamps; the controlled raster caller is not the original release's environment. Airwolf's later complete-cycle evidence follows below; Billie Jean still needs executed order/pattern consumption and complete section coverage before instrument attribution or independent arrangement.
+
+### Airwolf score cycle and independent numeric model
+
+The [decoded score](../../../evidence/airwolf-form/complete/score.json) contains **138 rows**, each with duration byte 8. The driver decrements its countdown before testing `$FF`, so duration+1 is **nine callable updates** and the score cycle is **1,242 calls**. Initialization consumes the first row; zero-based play calls **1241 and 2483** consume the terminal zero duration and re-enter init `$3B25` and play `$3ADD` within the same host call. This is a repeating score, without a selected musical ending. A zero frequency-high field holds that voice and consumes no low byte; it performs no voice writes and does not establish silence.
+
+Each update first writes `$D418=$0F`, `$D403=$28` and `$D40A=$0A`. A pitched entry then writes attack/decay, zero sustain/release, control zero, control `$41` for voices 1/2 or `$11` for voice 3, and frequency high then low. At a restart the fixed writes occur again before row zero. The independent [numeric model](../../../evidence/airwolf-form/model.py) computes this order from editable durations and frequency words, without original CPU code or captured-event replay; source addresses only label its modeled reads.
+
+The [complete receipt](../../../evidence/airwolf-form/complete/receipt.json) proves **2,500 calls, 11,253 init/play stores and 1,738 consumed fields**, matching the [ordered ledger](../../../evidence/airwolf-form/complete/writes.json.gz) and [read observations](../../../evidence/airwolf-form/complete/reads.json.gz), including the retained 64-call opening. [Private source-copy interventions](../../../evidence/airwolf-form/edits.json.gz) separately change the first frequency low byte and duration; both match the model's changed stores while preserving the original. Equal [return-state hashes](../../../evidence/airwolf-form/complete/states.json.gz) at the two restarts cover all backing RAM plus A/X/Y/SP/P/PC, excluding absolute cycle counts. They do not establish physical SID/CIA/VIC state, full-machine recurrence or repeating audio.
+
+The [VICE wrap proof](../../../evidence/airwolf-form/vice-wrap-fixed/trace/study.json), with [provenance](../../../evidence/airwolf-form/vice-wrap-fixed/provenance.json), matches **69 stores: 21 init and 48 play** across calls 1238–1246, with maximum cadence error seven cycles against nine allowed. The reusable [host-call marker](../../validation/psid-audit.md#distinguish-host-calls-from-internal-entry-jumps) counts the harness JSR rather than driver-internal init/play visits, preserving the wrap's stores under call 1241. Monitor checkpoints remain distinct from exact bus timing; original-game cadence and audible recurrence remain unproved.
+
+Copy the retained tools into a fresh one-level directory below `build/` so their repository-relative paths and local imports remain valid. Their original-source and CPU-tool pins remain enforced; obtain the pinned asset using the intake commands below.
+
+```sh
+mkdir build/airwolf-new
+cp evidence/airwolf-form/model.py evidence/airwolf-form/probe.py evidence/airwolf-form/check-edits.py build/airwolf-new/
+PYTHONPATH=.tools/test-deps python3 build/airwolf-new/probe.py --output build/airwolf-new/complete
+PYTHONPATH=.tools/test-deps python3 build/airwolf-new/check-edits.py --output build/airwolf-new/edits.json
+python3 scripts/trace-sid-vice.py .local/research/airwolf/Airwolf.sid --profile pal-banked --subtune 1 --oracle evidence/airwolf-form/vice-wrap/oracle.json --first-call 1238 --last-call 1246 --output build/airwolf-new/vice-wrap
+```
+
+The probe generates the score needed by the edit checker. This research model is not a compiled arrangement/export; musical ending, rendering/listening and transfer remain pending.
 
 ### Ghostbusters
 
@@ -69,4 +91,4 @@ PYTHONPATH=.tools/test-deps python3 scripts/psid_audit.py .local/research/airwol
 python3 scripts/trace-sid-vice.py .local/research/airwolf/Airwolf.sid --profile pal-banked --subtune 1 --oracle build/pop-theme-new/airwolf.audit64.writes.json --first-call 0 --last-call 63 --output build/pop-theme-new/airwolf.vice64
 ```
 
-The retained [collector](../../../evidence/pop-theme-intake/intake.py) checks existing receipts, STIL entry fingerprints and source/export equality without rerunning the CPU. Its evidence dependencies are restored with the [archive workflow](../../workflows/build-cache.md). Complete form, decoded mechanisms, independent output, musical ending, listening and transfer remain required for every case.
+The retained [collector](../../../evidence/pop-theme-intake/intake.py) checks existing receipts, STIL entry fingerprints and source/export equality without rerunning the CPU. Its evidence dependencies are restored with the [archive workflow](../../workflows/build-cache.md). Airwolf has the verified score cycle and numeric model above; complete form and decoded mechanisms remain pending for the other cases. Independent arrangement/export, musical ending, listening and transfer remain required for every case.
