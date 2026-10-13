@@ -49,6 +49,14 @@ The shared generator derives code, return sites, the 16-bit counter at `hostBase
 
 The [Deflektor preparation](../research/composition/deflektor-preparation.md) owns the high-RAM reference and bounded comparison. Use the same `--host-base` for metadata admission, CPU audit, instruction tracing and VICE tracing; there is no automatic placement search. CPU auditing still accepts up to 100,000 calls, whereas the VICE counter supports at most 65,535 calls; shared return labels are derived from a representative valid host and do not extend the VICE counter's range.
 
+## Distinguish host calls from internal entry jumps
+
+The [VICE tracer](../../scripts/trace-sid-vice.py) marks the shared harness's play `JSR` as well as the original entry address. One host marker must be followed by one outer play-entry marker; subsequent visits to init or play remain inside that call. Parsed records retain `callMarkers` and `playInternalEntries` separately. Cadence still uses the outer original-entry checkpoints, and all selected SID stores retain their original call number and order.
+
+Airwolf's score terminator jumps through initialization back to its play address without returning to the host. Counting every play-address visit as another call misclassified this wrap; a play-body call to init also violated the old parser's phase assumption. The [executed regression fixtures](../../tests/sid_vice_trace_test.py) cover both reinitialization and nested play calls under strict and banked profiles, plus missing, duplicate, malformed and out-of-order markers. The harness bytes, call ABI, CPU oracle and original SID stay unchanged; the monitor adds a host-call checkpoint.
+
+`parse_trace(..., host_call=...)` requires the new markers. Omitting that argument retains the legacy parser for historical logs; those logs cannot establish correct call numbering for internal play-entry jumps. This is a trace-boundary correction, not a new original-game or SID timing model.
+
 ## Evidence limits
 
 `instructionStartCycle` identifies the start of the instruction performing a write, relative to its call. It is not a bus-cycle timestamp. SID reads and internal bus-latch behavior are not modeled; all I/O reads remain rejected. Read-modify-write instructions targeting SID are unsupported because py65 does not reproduce their NMOS dummy writes. The tool does not emulate sound, badlines, interrupts, timer changes, or analogue chip behaviour.

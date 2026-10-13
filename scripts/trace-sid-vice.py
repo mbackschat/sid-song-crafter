@@ -57,6 +57,7 @@ def monitor_commands(payload, program, profile, labels, first, last):
         lines.append(f'until ${labels["wait"]:04x}')
     if not banked or profile['playAddress'] != profile['initAddress']:
         lines.append(f'trace exec ${profile["playAddress"]:04x}')
+    lines.append(f'trace exec ${labels["call"]:04x}')
     lines.extend([*traces, f'until ${labels["done"]:04x}', 'r', 'bank ram', f'd ${profile["initAddress"]:04x} ${min(profile["endAddress"] - 1, profile["initAddress"] + 0x1000):04x}', f'm ${profile["loadAddress"]:04x} ${profile["endAddress"] - 1:04x}', 'quit', ''])
     return '\n'.join(lines)
 
@@ -65,12 +66,16 @@ TRACE_HEADER = re.compile(r'^#\d+ \(Trace\s+(exec|store)\s+([0-9a-f]{4})\)\s+(\d
 INSTRUCTION = re.compile(r'^\.C:([0-9a-f]{4})\s+((?:[0-9a-f]{2}\s+){1,3})(.*?)\s+-\s+A:([0-9a-f]{2}) X:([0-9a-f]{2}) Y:([0-9a-f]{2}) SP:([0-9a-f]{2}) (\S{8})\s+(\d+)\s*$', re.IGNORECASE)
 
 
-def parse_trace(log, play_address, sid_bases=(0xd400,), *, init_address=None, init_return=None):
+def parse_trace(log, play_address, sid_bases=(0xd400,), *, init_address=None, init_return=None, host_call=None):
     entries, writes = [], []
     banked = init_address is not None or init_return is not None
     require(not banked or init_address is not None and init_return is not None, 'Both init markers are required')
     init_entry_record = init_return_record = None
     init_executions = []
+    call_markers, internal_entries = [], []
+    awaiting_play = False
+    require(host_call is None or type(host_call) is int and 0 <= host_call <= 65535
+            and host_call not in (play_address, init_address, init_return), 'Invalid host-call marker')
     phase = 'host'
     lines = log.splitlines()
     for index, line in enumerate(lines):
@@ -88,6 +93,15 @@ def parse_trace(log, play_address, sid_bases=(0xd400,), *, init_address=None, in
         require(0 <= record['rasterLine'] < 312 and 0 <= record['rasterCycle'] < 63, 'Trace raster context is outside the PAL range')
         address = int(address, 16)
         if operation.lower() == 'exec':
+            if host_call is not None and address == host_call:
+                require(record['writerPc'] == host_call and record['opcodeHex'] ==
+                        '20' + play_address.to_bytes(2, 'little').hex(), 'Host-call marker is not the declared JSR')
+                require(not awaiting_play and (not banked or init_return_record is not None),
+                        'Host call precedes a required entry or init return')
+                record.update(tick=len(entries), phase='host')
+                call_markers.append(record)
+                awaiting_play = True
+                continue
             if banked and address == init_address and init_entry_record is None:
                 require(record['writerPc'] == init_address, 'Init marker address disagrees')
                 phase = 'init'
@@ -108,14 +122,29 @@ def parse_trace(log, play_address, sid_bases=(0xd400,), *, init_address=None, in
                 record.update(phase='init', tick=None)
                 init_executions.append(record)
                 continue
+            if host_call is not None and not awaiting_play:
+                # Airwolf returns to init/play inside a score wrap. Only the
+                # harness JSR starts a call; internal entries retain its tick.
+                require(entries and address in (play_address, init_address) and record['writerPc'] == address,
+                        'Internal entry precedes a host call or has an unexpected address')
+                require(entries[-1]['monitorCycle'] < record['monitorCycle'] < entries[-1]['monitorCycle'] + FRAME_CYCLES,
+                        'Internal entry lies outside its PAL play call')
+                record.update(phase='play', tick=entries[-1]['tick'])
+                internal_entries.append(record)
+                continue
             require(address == play_address and record['writerPc'] == play_address, 'Unexpected executed trace address')
+            if host_call is not None:
+                require(call_markers[-1]['monitorCycle'] < record['monitorCycle'],
+                        'Play entry precedes its host-call marker')
             if banked:
                 require(init_return_record is not None, 'Play entry precedes init return')
                 phase = 'play'
                 record['phase'] = phase
             record['tick'] = len(entries)
             entries.append(record)
+            awaiting_play = False
             continue
+        require(not awaiting_play, 'SID store precedes the declared play entry')
         if banked and phase == 'init':
             require(record['monitorCycle'] >= init_entry_record['monitorCycle'], 'SID store precedes init entry')
         else:
@@ -141,6 +170,9 @@ def parse_trace(log, play_address, sid_bases=(0xd400,), *, init_address=None, in
         writes.append(record)
     require(entries and (writes or banked), 'Missing play entries or SID stores')
     result = dict(entries=entries, writes=writes)
+    if host_call is not None:
+        require(not awaiting_play and len(call_markers) == len(entries), 'Missing host-call or play-entry marker')
+        result.update(callMarkers=call_markers, playInternalEntries=internal_entries)
     if banked:
         require(init_entry_record is not None and init_return_record is not None, 'Missing init entry or return marker')
         require(init_entry_record['monitorCycle'] < init_return_record['monitorCycle'] <= entries[0]['monitorCycle'],
@@ -203,7 +235,7 @@ def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, su
         subprocess.run(command, env=env, stdout=process_log, stderr=subprocess.STDOUT, timeout=timeout, check=True)
     log = (output / 'monitor.log').read_text(errors='replace')
     markers = dict(init_address=profile['initAddress'], init_return=labels['init_return']) if profile.get('profile') == 'pal-banked' else {}
-    parsed = parse_trace(log, profile['playAddress'], profile['sidBases'], **markers)
+    parsed = parse_trace(log, profile['playAddress'], profile['sidBases'], host_call=labels['call'], **markers)
     verification = verify_trace(parsed, json.loads(oracle_bytes), first, last)
     writers = {}
     for row in parsed['writes']:

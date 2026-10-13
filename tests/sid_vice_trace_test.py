@@ -36,6 +36,10 @@ def marker(cycle, address):
     return f'#1 (Trace  exec {address:04x})  250/$0fa,  12/$0c\n.C:{address:04x}  A9 00    LDA #$00 - A:00 X:00 Y:00 SP:fd ..-..I.. {cycle}\n'
 
 
+def host_call(cycle):
+    return f'#3 (Trace exec c040)  250/$0fa,  6/$06\n.C:c040  20 06 10    JSR $1006 - A:FA X:00 Y:00 SP:fd ..-..I.. {cycle}\n'
+
+
 def banked_fixture():
     from verify_player import cpu_type
     cpu_type()
@@ -122,7 +126,19 @@ RTS
 
 
 class SidViceTraceTest(unittest.TestCase):
-    def test_strict_default_retains_profile_shape_harness_bytes_and_monitor_commands(self):
+    def test_host_call_markers_require_an_entry_and_ordered_timestamps(self):
+        log = host_call(90) + entry(100) + entry(120) + store(136)
+        parsed = trace.parse_trace(log, 0x1006, host_call=0xc040)
+        self.assertEqual(1, len(parsed['entries']))
+        self.assertEqual([0], [row['tick'] for row in parsed['playInternalEntries']])
+        for invalid in (entry(100) + store(136), host_call(90) + store(136),
+                        host_call(90) + host_call(95) + entry(100) + store(136),
+                        host_call(110) + entry(100) + store(136),
+                        host_call(90).replace('20 06 10', '20 07 10') + entry(100) + store(136)):
+            with self.subTest(log=invalid), self.assertRaises(ValueError):
+                trace.parse_trace(invalid, 0x1006, host_call=0xc040)
+
+    def test_strict_default_retains_profile_shape_harness_bytes_and_base_monitor_commands(self):
         profile = trace.psid_profile(sid_fixture())
         program, labels = trace.harness(profile, 2)
         commands = trace.monitor_commands(Path('/tmp/payload.prg'), Path('/tmp/harness.prg'), profile, labels, 0, 1)
@@ -131,7 +147,8 @@ class SidViceTraceTest(unittest.TestCase):
         self.assertEqual('d8a5ee245b95aa058154b37496dc67fd569a3b10c7a85b0dfb38565f988bff0f',
                          hashlib.sha256(program).hexdigest())
         self.assertEqual('96073ed0d39045f844821442796f4587f27884043ad7401043af14e62898e10c',
-                         hashlib.sha256(commands.encode()).hexdigest())
+                         hashlib.sha256(commands.replace(f'trace exec ${labels["call"]:04x}\n', '').encode()).hexdigest())
+        self.assertEqual(1, commands.count(f'trace exec ${labels["call"]:04x}\n'))
 
     def test_banked_host_placement_moves_code_counters_and_zeroes_reachable_ram(self):
         data = high_ram_fixture()
@@ -343,6 +360,38 @@ class SidViceTraceTest(unittest.TestCase):
                 if kind == 'shared':
                     commands = (root / 'trace/commands.mon').read_text()
                     self.assertEqual(1, commands.count('trace exec $1000'))
+
+    def test_headless_play_internal_entries_keep_the_same_host_call(self):
+        vice = ROOT / '.tools/vice-headless-3.9/build/src/x64sc'
+        data_directory = Path('/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice')
+        if not vice.is_file() or not data_directory.is_dir():
+            self.skipTest('Local headless VICE and ROM data are required for the executed fixture')
+        from psid_audit import audit_psid
+        from sid_assembler import assemble
+        sources = {
+            'reinitialize': 'init:\nLDA #$33\nSTA $D400\nRTS\nplay:\nLDA #$11\nSTA $D402\nJSR init\nLDA #$22\nSTA $D403\nRTS',
+            'nested-play': 'init:\nLDA #$00\nSTA $2000\nRTS\nplay:\nLDA $2000\nBNE leaf\nINC $2000\nJSR play\nDEC $2000\nleaf:\nLDA $2000\nSTA $D402\nRTS',
+        }
+        for kind, source in sources.items():
+            for profile in ('strict', 'pal-banked'):
+                with self.subTest(kind=kind, profile=profile), tempfile.TemporaryDirectory() as directory:
+                    payload, labels, _ = assemble(source)
+                    header = sid_fixture()[:124]
+                    header[12:14] = labels['play'].to_bytes(2, 'big')
+                    encoded = bytes(header) + payload
+                    selection = {'subtune': 1} if profile == 'pal-banked' else {}
+                    _, oracle = audit_psid(encoded, 3, profile=profile, **selection)
+                    root = Path(directory)
+                    sid, expected = root / 'fixture.sid', root / 'oracle.json'
+                    sid.write_bytes(encoded)
+                    expected.write_text(json.dumps(oracle))
+                    result = trace.run_trace(sid, expected, root / 'trace', 0, 2, vice, data_directory,
+                                             profile=profile, **selection)
+                    self.assertEqual(3, result['verification']['playCalls'])
+                    parsed = json.loads((root / 'trace/trace.json').read_text())
+                    self.assertEqual(3, len(parsed['callMarkers']))
+                    if kind == 'nested-play' or profile == 'pal-banked':
+                        self.assertEqual([0, 1, 2], [row['tick'] for row in parsed['playInternalEntries']])
 
     def test_dual_pal_profile_declares_both_chips_and_traces_their_canonical_write_windows(self):
         data = sid_fixture()
