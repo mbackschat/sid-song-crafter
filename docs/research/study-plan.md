@@ -15,7 +15,7 @@ These are recognizable signature candidates, not an asserted “number one” ra
 | Order / ID | Study and proposed reference | Learning target | State |
 | --- | --- | --- | --- |
 | 1 / F | [Flashdance: What a Feeling — DRAX](composition/flashdance-preparation.md), #1 | Staged waveform/PWM programs, evolving filtered bass, precise articulation; full arrangement and deliberate dual-SID expansion | Done: reconstruction, raw stereo dual arrangement and original transfer reviewed |
-| 2 / M1 | [Shades — Chris Hülsbeck](composers/huelsbeck-tel.md#shades-reference-intake), #1 | Soundmonitor's instrument model; expressive modulation and original/corrected filter intent | Active: references pinned; CIA timing validation |
+| 2 / M1 | [Shades — Chris Hülsbeck](composition/shades-preparation.md), #1 | Soundmonitor's instrument model; expressive modulation and original/corrected filter intent | Active: full form/CIA dispatch verified; editable reconstruction underway |
 | 3 / M2 | [Cybernoid II — Jeroen Tel](composers/huelsbeck-tel.md), title #1 | Groove, bass/drum time-sharing, delayed modulation; music/driver collaboration with Charles Deenen | Queued |
 | 4 / M3 | [Monty on the Run — Rob Hubbard](composers/hubbard-galway.md), #1 | Articulated lead, percussion substitutions, pitch effects and phrase development | Queued |
 | 5 / M4 | [Rambo: First Blood Part II — Martin Galway](composers/hubbard-galway.md), loader #1 | Sustained timbre evolution, introductory effects and original source-code hooks | Queued |
@@ -41,7 +41,7 @@ The [Flashdance owning study](composition/flashdance-preparation.md) records the
 
 ## Shades: next executable milestone
 
-The [reference intake](composers/huelsbeck-tel.md#shades-reference-intake) pins the corrected version as primary and the original as comparison, supported by Hülsbeck's filter-intent account. Both require CIA timing. Establish actual timer-driven playback and startup before mapping the complete form; the fixed PAL-frame tracer cannot supply that evidence unchanged. Historical Soundmonitor documentation guides hypotheses but does not establish binary-format compatibility. No reconstruction or mechanism promotion has started.
+The [owning study](composition/shades-preparation.md) retains the complete first-traversal contract, decoded row/gate semantics and opening pulse experiment. The [reference intake](composers/huelsbeck-tel.md#shades-reference-intake) owns variant provenance. Stage 1 is done: the selected calls 0–24,384, source fade and actual restart are mapped, and real CIA dispatch is verified across the complete span. Stage 2 is active: the listener finds the moving-pulse opening quieter and more vibrant than the frozen-pulse intervention; remaining instrument mechanisms are being translated into editable programs. Stage 3 has started with score/program implementation; no independent export or full reconstruction listening verdict is claimed. Stages 4 and 5 remain queued.
 
 ## Completion contract for every study
 

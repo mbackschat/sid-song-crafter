@@ -49,7 +49,7 @@ Select the default SID subtune before libsidplayfp playback; an unselected tune 
 
 ## Public Repository Boundary
 
-Keep downloaded skill bodies, reference SID binaries and their rendered audio out of Git and the public repository, including history. Install skills under ignored `skills/<name>/` and references/audio under ignored `.local/` or `build/`; commit upstream URLs, attribution, hashes and reproducible download instructions instead. Never force-add reference files. Check tracked files and history before publishing.
+Keep original reference SID binaries out of the public repository, including history. Reference WAV publication remains undecided; retain those WAVs under ignored `.local/` or `build/` for now. Analysis artifacts, traces, lookup tables, editable descriptions and reusable code may be tracked when useful. Preserve complete evidence alongside concise prose, with source hashes, settings and reproduction commands. Downloaded skills retain the ignored `skills/<name>/` installation layout. Never force-add original SID files; check tracked files and history before publishing.
 
 ## Commit & Pull Request Guidelines
 

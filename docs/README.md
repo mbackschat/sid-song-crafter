@@ -20,6 +20,8 @@ Use the [project overview](../README.md) for SID Song Crafter's purpose and curr
 ## Verify execution
 
 - [Audit a callable PSID](validation/psid-audit.md): independent CPU execution and ordered register writes.
+- [Trace CIA-driven playback](validation/cia-tracing.md): real timer IRQs, latch changes, host assumptions and callable source observation.
+- [Check CPU instruction costs](validation/cpu-timing.md): verified opcode timings, the shared CPU adapter and corrections to retained evidence.
 - [Check a native standalone player in VICE](validation/native-vice-checks.md): register checkpoints and PAL cadence.
 - [Inspect complete Für Elise validation](validation/fuer-elise-validation.md): baseline binaries, rendered audio and standalone execution evidence.
 

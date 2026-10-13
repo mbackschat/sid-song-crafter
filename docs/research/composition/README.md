@@ -14,7 +14,9 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Source-to-SID workflow](../../workflows/song-workflow.md): original sources, intermediate scores, and independent SID expression.
 - [Für Elise source study](../../songs/fuer-elise-score.md): complete source preservation and transparent reductions in the working baseline.
 - [Compare Für Elise with an existing SID](fuer-elise-reference.md): measured opening pitches, tempo/articulation differences, voice allocation and level-matched audition excerpts.
-- [Reconstruct Flashdance and compose dual SID](flashdance-preparation.md): accepted selected-form reconstruction, editable instrument programs and complementary six-voice interpretation; original transfer judged to work; dual additions undergoing an audibility revision.
+- [Reconstruct Flashdance and compose dual SID](flashdance-preparation.md): accepted selected-form reconstruction and six-voice raw stereo interpretation, editable instrument programs and an original transfer phrase judged to work.
 - [Study Flashdance: What a Feeling](flashdance-reference.md): verified archive identities, synthesis lessons and a source-to-reference comparison contract.
+
+- [Reconstruct Shades](shades-preparation.md): complete form and fade, CIA tracing, source-command lookup and the listening-reviewed pulse-width intervention.
 
 Study [the composers and their tools](../composers/README.md) before choosing a sound palette. A correct note sequence is a technical baseline; musical quality also requires phrasing, contrast, texture, and listening review.

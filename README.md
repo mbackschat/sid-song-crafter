@@ -8,7 +8,8 @@ Songs serve as case studies for learning sound design, preserving useful finding
 
 - [Documentation](docs/README.md): setup, composition, audio, validation and architecture guides.
 - [Study plan](docs/research/study-plan.md): Flashdance, six master-composer studies and four later pop/theme studies.
-- [Technique lookup](docs/research/technique-index.md): reusable SID mechanisms and their evidence.
+- [Technique lookup](docs/research/technique-index.md): reusable SID mechanisms, executable examples and structured evidence.
+- [CPU timing lookup](docs/validation/cpu-timing.md) and [CIA tracing](docs/validation/cia-tracing.md): verified timing constraints and reusable validation tools.
 - [Independent DRAX Für Elise comparison](songs/studies/drax-full-reconstruction/README.md): reconstructed recurring theme and its scope.
 - [Contributor guide](AGENTS.md) and [agent guide](CLAUDE.md): development and research conventions.
 
@@ -25,7 +26,7 @@ Setup downloads the pinned Elise/Flashdance references and the `c64-sid` hardwar
 
 Project sources and research belong in Git. `.tools/` contains reproducible third-party checkouts; `.local/` contains diagnostics and runtime state; `build/` contains generated output. These directories and the machine-local `.codex/` configuration are ignored. The relative skill symlinks in `.agents/skills/` point to ignored, checksum-pinned local installs in `skills/`; only our own skill guide belongs in Git.
 
-Downloaded skill bodies stay in ignored `skills/<name>/` installs; reference SID files and their rendered audio stay under ignored `.local/` or `build/`. These downloads must not enter the public repository, including its Git history. Keep upstream download links, attribution, checksums and local preparation commands in Git; fetch the original files locally.
+Original reference SID files must stay out of the public repository, including its Git history. Reference WAV publication remains undecided, so keep those files ignored under `.local/` or `build/` for now. Analysis data, traces, tables, editable descriptions and reusable code may be tracked when useful; prose is a guide to the evidence, not a replacement for its detail. Retain complete local evidence and reproducible commands, source hashes and settings. Downloaded skill bodies continue to use the ignored `skills/<name>/` installation layout.
 
 The checked-in [configuration example](config/codex.toml) records this machine's installation paths. Adapt it before activating it on another computer. Follow [local setup](docs/setup/local-setup.md) for exact upstream revisions and installation commands; use the upstream Bun lockfile for c64bridge.
 
