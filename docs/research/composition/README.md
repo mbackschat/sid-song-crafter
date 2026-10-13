@@ -16,7 +16,7 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Compare Für Elise with an existing SID](fuer-elise-reference.md): measured opening pitches, tempo/articulation differences, voice allocation and level-matched audition excerpts.
 - [Reconstruct Flashdance and compose dual SID](flashdance-preparation.md): accepted selected-form reconstruction and six-voice raw stereo interpretation, editable instrument programs and an original transfer phrase judged to work.
 - [Study Flashdance: What a Feeling](flashdance-reference.md): verified archive identities, synthesis lessons and a source-to-reference comparison contract.
-
-- [Reconstruct Shades](shades-preparation.md): complete form and fade, CIA tracing, source-command lookup and the listening-reviewed pulse-width intervention.
+- [Reconstruct Shades](shades-preparation.md): independent full-form/transfer players, CIA proofs, editable pulse/glide programs and pending reconstruction listening.
+- [Prepare Cybernoid II](cybernoid-ii-preparation.md): pinned title-subtune intake, archive/listing correspondence and the explicit banking/subtune boundary before execution tracing.
 
 Study [the composers and their tools](../composers/README.md) before choosing a sound palette. A correct note sequence is a technical baseline; musical quality also requires phrasing, contrast, texture, and listening review.

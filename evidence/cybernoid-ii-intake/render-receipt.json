@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "classification": "Archive title-subtune reference opening only",
+  "command": [
+    "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+    "/Users/mbackschat/Projects/c64-sid-skill/.local/research/cybernoid-ii/Cybernoid_II.sid",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-ii-intake/reference-opening.wav",
+    "30"
+  ],
+  "sourceSha256": "41f338f44b4f54e351e672156ee0e2a60c8437eb24645db3f9d4abfbb0cff192",
+  "rendererSha256": "80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe",
+  "rendererSourceSha256": "c7bc5f7b0fe8d18a54ecde7338b6efa786f87f54ec258a00fb01025486bad5fc",
+  "renderer": "libsidplayfp 3.1.1 / SIDLite",
+  "settings": {
+    "subtune": 1,
+    "selection": "selectSong(0) selects header default",
+    "clock": "PAL forced",
+    "sidModel": "declared MOS6581",
+    "sampleRate": 44100,
+    "channels": 1,
+    "sampleFormat": "PCM16",
+    "powerOnDelay": 0,
+    "seconds": 30,
+    "gain": 1,
+    "normalization": false,
+    "trim": null
+  },
+  "returnCode": 0,
+  "stdout": "libsidplayfp 3.1.1 / SIDLite: 1323000 mono PCM16 samples at 44100 Hz",
+  "stderr": "",
+  "listeningReview": null,
+  "audio": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/cybernoid-ii-intake/reference-opening.wav",
+    "sha256": "60c139597792fbe0251ecf563c6dfcd6c544c3486c7ff0c78e967b9723cd650c",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 1323000,
+    "durationSeconds": 30.0,
+    "peak": 11661,
+    "peakDbfs": -8.974282792175782,
+    "clippedSamples": 0,
+    "rms": 3218.3818769667323,
+    "acRms": 3186.944447898958,
+    "acRmsDbfs": -20.241508833429847,
+    "perChannel": [
+      {
+        "dc": -448.7393363567649,
+        "rms": 3218.3818769667323,
+        "acRms": 3186.944447898958
+      }
+    ]
+  }
+}

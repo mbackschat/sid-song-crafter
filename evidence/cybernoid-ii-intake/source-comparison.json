@@ -1,0 +1,510 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "41f338f44b4f54e351e672156ee0e2a60c8437eb24645db3f9d4abfbb0cff192",
+  "recoveredListingPath": ".local/downloads/tel-cybernoid2.asm",
+  "recoveredListingSha256": "119b8cb1ecaf6a9700d1847c9879fa78d50229345dccaaa4f555d8354b73fe66",
+  "annotatedEightByteRecords": [
+    {
+      "sourceLine": 1505,
+      "sourceLabel": "bass",
+      "bytes": "0541088900536480",
+      "archiveMatches": [
+        45084
+      ]
+    },
+    {
+      "sourceLine": 1506,
+      "sourceLabel": "bassdrm",
+      "bytes": "081100a8f0000010",
+      "archiveMatches": [
+        45092
+      ]
+    },
+    {
+      "sourceLine": 1507,
+      "sourceLabel": "snardrm",
+      "bytes": "081100a9f0010010",
+      "archiveMatches": [
+        45100
+      ]
+    },
+    {
+      "sourceLine": 1508,
+      "sourceLabel": "arp+filt",
+      "bytes": "042100c801008185",
+      "archiveMatches": [
+        45108
+      ]
+    },
+    {
+      "sourceLine": 1509,
+      "sourceLabel": "melo-1",
+      "bytes": "0c4100b800522201",
+      "archiveMatches": [
+        45116
+      ]
+    },
+    {
+      "sourceLine": 1510,
+      "sourceLabel": "melo-2",
+      "bytes": "064100e802537401",
+      "archiveMatches": [
+        45124
+      ]
+    },
+    {
+      "sourceLine": 1511,
+      "sourceLabel": "$17zooi",
+      "bytes": "00170088f0000080",
+      "archiveMatches": [
+        45132
+      ]
+    },
+    {
+      "sourceLine": 1512,
+      "sourceLabel": "arp-filt",
+      "bytes": "0421008800008184",
+      "archiveMatches": [
+        45140
+      ]
+    },
+    {
+      "sourceLine": 1513,
+      "sourceLabel": "$55",
+      "bytes": "005500b800000020",
+      "archiveMatches": [
+        45148
+      ]
+    },
+    {
+      "sourceLine": 1514,
+      "sourceLabel": "bassfilt",
+      "bytes": "0341076900005180",
+      "archiveMatches": [
+        45156
+      ]
+    },
+    {
+      "sourceLine": 1515,
+      "sourceLabel": "melo-3",
+      "bytes": "054100b803538301",
+      "archiveMatches": [
+        45164
+      ]
+    },
+    {
+      "sourceLine": 1516,
+      "sourceLabel": "tingel",
+      "bytes": "01410089f0000002",
+      "archiveMatches": [
+        45172
+      ]
+    },
+    {
+      "sourceLine": 1517,
+      "sourceLabel": "omhoogt",
+      "bytes": "064100c808004100",
+      "archiveMatches": [
+        45180
+      ]
+    },
+    {
+      "sourceLine": 1518,
+      "sourceLabel": "$81lang",
+      "bytes": "078108fdf0000000",
+      "archiveMatches": [
+        45188
+      ]
+    },
+    {
+      "sourceLine": 1519,
+      "sourceLabel": "solo",
+      "bytes": "054100b803c52401",
+      "archiveMatches": [
+        45196
+      ]
+    },
+    {
+      "sourceLine": 1520,
+      "sourceLabel": "melo-1",
+      "bytes": "0c4100b800c62200",
+      "archiveMatches": [
+        45204
+      ]
+    },
+    {
+      "sourceLine": 1521,
+      "sourceLabel": "basso",
+      "bytes": "0741088900003100",
+      "archiveMatches": [
+        45212
+      ]
+    },
+    {
+      "sourceLine": 1522,
+      "sourceLabel": "solo2",
+      "bytes": "054100a700c52200",
+      "archiveMatches": [
+        45220
+      ]
+    }
+  ],
+  "limitation": "Static bounded byte comparison only. Code regions are linear disassembly of selected entry/jump-target regions, not an executed path. Listing is unassembled; no complete code/data equivalence, table ownership, instrument selection or execution claim.",
+  "staticCodeRegions": [
+    {
+      "firstAddress": 42496,
+      "lastAddressExclusive": 42506,
+      "instructions": [
+        {
+          "address": 42496,
+          "bytes": "4c06a6",
+          "assembly": "JMP $a606"
+        },
+        {
+          "address": 42499,
+          "bytes": "4c26a6",
+          "assembly": "JMP $a626"
+        },
+        {
+          "address": 42502,
+          "bytes": "aa",
+          "assembly": "TAX"
+        },
+        {
+          "address": 42503,
+          "bytes": "4c20a6",
+          "assembly": "JMP $a620"
+        }
+      ]
+    },
+    {
+      "firstAddress": 42528,
+      "lastAddressExclusive": 42537,
+      "instructions": [
+        {
+          "address": 42528,
+          "bytes": "4ccaa6",
+          "assembly": "JMP $a6ca"
+        },
+        {
+          "address": 42531,
+          "bytes": "4c0fa7",
+          "assembly": "JMP $a70f"
+        },
+        {
+          "address": 42534,
+          "bytes": "4c16a7",
+          "assembly": "JMP $a716"
+        }
+      ]
+    },
+    {
+      "firstAddress": 42698,
+      "lastAddressExclusive": 42774,
+      "instructions": [
+        {
+          "address": 42698,
+          "bytes": "a901",
+          "assembly": "LDA #$01"
+        },
+        {
+          "address": 42700,
+          "bytes": "8d17a7",
+          "assembly": "STA $a717"
+        },
+        {
+          "address": 42703,
+          "bytes": "8d9fa6",
+          "assembly": "STA $a69f"
+        },
+        {
+          "address": 42706,
+          "bytes": "8da0a6",
+          "assembly": "STA $a6a0"
+        },
+        {
+          "address": 42709,
+          "bytes": "8da1a6",
+          "assembly": "STA $a6a1"
+        },
+        {
+          "address": 42712,
+          "bytes": "bdedae",
+          "assembly": "LDA $aeed,X"
+        },
+        {
+          "address": 42715,
+          "bytes": "8d29a6",
+          "assembly": "STA $a629"
+        },
+        {
+          "address": 42718,
+          "bytes": "8a",
+          "assembly": "TXA"
+        },
+        {
+          "address": 42719,
+          "bytes": "8de4a6",
+          "assembly": "STA $a6e4"
+        },
+        {
+          "address": 42722,
+          "bytes": "0a",
+          "assembly": "ASL A"
+        },
+        {
+          "address": 42723,
+          "bytes": "6900",
+          "assembly": "ADC #$00"
+        },
+        {
+          "address": 42725,
+          "bytes": "0a",
+          "assembly": "ASL A"
+        },
+        {
+          "address": 42726,
+          "bytes": "6905",
+          "assembly": "ADC #$05"
+        },
+        {
+          "address": 42728,
+          "bytes": "aa",
+          "assembly": "TAX"
+        },
+        {
+          "address": 42729,
+          "bytes": "a005",
+          "assembly": "LDY #$05"
+        },
+        {
+          "address": 42731,
+          "bytes": "bdefae",
+          "assembly": "LDA $aeef,X"
+        },
+        {
+          "address": 42734,
+          "bytes": "99fbae",
+          "assembly": "STA $aefb,Y"
+        },
+        {
+          "address": 42737,
+          "bytes": "ca",
+          "assembly": "DEX"
+        },
+        {
+          "address": 42738,
+          "bytes": "88",
+          "assembly": "DEY"
+        },
+        {
+          "address": 42739,
+          "bytes": "10f6",
+          "assembly": "BPL $a6eb"
+        },
+        {
+          "address": 42741,
+          "bytes": "8c16d4",
+          "assembly": "STY $d416"
+        },
+        {
+          "address": 42744,
+          "bytes": "c8",
+          "assembly": "INY"
+        },
+        {
+          "address": 42745,
+          "bytes": "8c17d4",
+          "assembly": "STY $d417"
+        },
+        {
+          "address": 42748,
+          "bytes": "a91f",
+          "assembly": "LDA #$1f"
+        },
+        {
+          "address": 42750,
+          "bytes": "8d18d4",
+          "assembly": "STA $d418"
+        },
+        {
+          "address": 42753,
+          "bytes": "20b2a6",
+          "assembly": "JSR $a6b2"
+        },
+        {
+          "address": 42756,
+          "bytes": "a900",
+          "assembly": "LDA #$00"
+        },
+        {
+          "address": 42758,
+          "bytes": "a215",
+          "assembly": "LDX #$15"
+        },
+        {
+          "address": 42760,
+          "bytes": "9d00d4",
+          "assembly": "STA $d400,X"
+        },
+        {
+          "address": 42763,
+          "bytes": "ca",
+          "assembly": "DEX"
+        },
+        {
+          "address": 42764,
+          "bytes": "10fa",
+          "assembly": "BPL $a708"
+        },
+        {
+          "address": 42766,
+          "bytes": "60",
+          "assembly": "RTS"
+        },
+        {
+          "address": 42767,
+          "bytes": "a901",
+          "assembly": "LDA #$01"
+        },
+        {
+          "address": 42769,
+          "bytes": "8d17a7",
+          "assembly": "STA $a717"
+        },
+        {
+          "address": 42772,
+          "bytes": "d0ee",
+          "assembly": "BNE $a704"
+        }
+      ]
+    },
+    {
+      "firstAddress": 42774,
+      "lastAddressExclusive": 42825,
+      "instructions": [
+        {
+          "address": 42774,
+          "bytes": "a900",
+          "assembly": "LDA #$00"
+        },
+        {
+          "address": 42776,
+          "bytes": "f001",
+          "assembly": "BEQ $a71b"
+        },
+        {
+          "address": 42778,
+          "bytes": "60",
+          "assembly": "RTS"
+        },
+        {
+          "address": 42779,
+          "bytes": "ad29a6",
+          "assembly": "LDA $a629"
+        },
+        {
+          "address": 42782,
+          "bytes": "a202",
+          "assembly": "LDX #$02"
+        },
+        {
+          "address": 42784,
+          "bytes": "ce82a6",
+          "assembly": "DEC $a682"
+        },
+        {
+          "address": 42787,
+          "bytes": "1003",
+          "assembly": "BPL $a728"
+        },
+        {
+          "address": 42789,
+          "bytes": "8d82a6",
+          "assembly": "STA $a682"
+        },
+        {
+          "address": 42792,
+          "bytes": "8648",
+          "assembly": "STX $48"
+        },
+        {
+          "address": 42794,
+          "bytes": "fe5ea6",
+          "assembly": "INC $a65e,X"
+        },
+        {
+          "address": 42797,
+          "bytes": "bc2aa6",
+          "assembly": "LDY $a62a,X"
+        },
+        {
+          "address": 42800,
+          "bytes": "8449",
+          "assembly": "STY $49"
+        },
+        {
+          "address": 42802,
+          "bytes": "ad82a6",
+          "assembly": "LDA $a682"
+        },
+        {
+          "address": 42805,
+          "bytes": "cd29a6",
+          "assembly": "CMP $a629"
+        },
+        {
+          "address": 42808,
+          "bytes": "f003",
+          "assembly": "BEQ $a73d"
+        },
+        {
+          "address": 42810,
+          "bytes": "4c44a9",
+          "assembly": "JMP $a944"
+        },
+        {
+          "address": 42813,
+          "bytes": "bdfbae",
+          "assembly": "LDA $aefb,X"
+        },
+        {
+          "address": 42816,
+          "bytes": "8d55a7",
+          "assembly": "STA $a755"
+        },
+        {
+          "address": 42819,
+          "bytes": "bdfeae",
+          "assembly": "LDA $aefe,X"
+        },
+        {
+          "address": 42822,
+          "bytes": "8d56a7",
+          "assembly": "STA $a756"
+        }
+      ]
+    }
+  ],
+  "sharedLiteralCodeFragment": {
+    "sourceLines": [
+      190,
+      191,
+      192,
+      193,
+      194
+    ],
+    "archiveAddress": 42741,
+    "bytes": "8c16d4c88c17d4a91f8d18d4",
+    "scope": "Exact STY $D416 / INY / STY $D417 / LDA #$1F / STA $D418 fragment; listing constant volume=$0F. No executed-value or full driver equality claim."
+  },
+  "contiguousAnnotatedRecords": {
+    "count": 18,
+    "firstAddress": 45084,
+    "endAddressExclusive": 45228,
+    "byteCount": 144,
+    "sha256": "25e907f6d8b97bb30b49d57e8d750032812a975ff892a409e4420fa958126377",
+    "sourceFirstLine": 1505,
+    "sourceLastLine": 1522
+  }
+}

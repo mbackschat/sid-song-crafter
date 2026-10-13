@@ -3,7 +3,7 @@
   "packagedOn": "2026-10-13",
   "implementationCheckpoint": "cf5c7cc3342d491029c244494e5ee4619e6794b9",
   "sourceRegistry": "config/local-assets.json",
-  "scope": "Canonical Shades and Flashdance analysis proofs, including independent Shades compilation and original transfer; source SIDs, audio and payload dumps excluded. Historical receipts retain their original paths and proof-version identities.",
+  "scope": "Canonical Shades and Flashdance analysis proofs plus Cybernoid II intake; original SIDs, audio and complete payload dumps excluded. Historical receipts retain original paths and proof-version identities.",
   "files": [
     {
       "path": "evidence/shades-intake/vice-cia-corrected-full-final/trace.json.gz",
@@ -686,6 +686,36 @@
       "originalBytes": 2743,
       "group": "shades-independent-full",
       "reason": "Unity-gain reference-first trio audition recipe and measured windows; hashes only, no reference audio."
+    },
+    {
+      "path": "evidence/cybernoid-ii-intake/header.json",
+      "originalPath": "build/cybernoid-ii-intake/header.json",
+      "sha256": "9e96d60091264d3e7d12bfa7ef4b90b8efd372d00ec51ef7086e7802737cd7e1",
+      "bytes": 767,
+      "originalSha256": "9e96d60091264d3e7d12bfa7ef4b90b8efd372d00ec51ef7086e7802737cd7e1",
+      "originalBytes": 767,
+      "group": "cybernoid-ii-intake",
+      "reason": "Pinned source header, bounded static correspondence to recovered listing, or initialized reference-render recipe; no SID/WAV files."
+    },
+    {
+      "path": "evidence/cybernoid-ii-intake/source-comparison.json",
+      "originalPath": "build/cybernoid-ii-intake/source-comparison.json",
+      "sha256": "4957ab87c13518a5cc325a53133bc7f65db3e523dc190c7da7cf465f27c23104",
+      "bytes": 11235,
+      "originalSha256": "4957ab87c13518a5cc325a53133bc7f65db3e523dc190c7da7cf465f27c23104",
+      "originalBytes": 11235,
+      "group": "cybernoid-ii-intake",
+      "reason": "Pinned source header, bounded static correspondence to recovered listing, or initialized reference-render recipe; no SID/WAV files."
+    },
+    {
+      "path": "evidence/cybernoid-ii-intake/render-receipt.json",
+      "originalPath": "build/cybernoid-ii-intake/render-receipt.json",
+      "sha256": "7dc321adb1297635707962077e4d32623c1e63b31ec5e7f9b970d73132cd37f8",
+      "bytes": 1826,
+      "originalSha256": "7dc321adb1297635707962077e4d32623c1e63b31ec5e7f9b970d73132cd37f8",
+      "originalBytes": 1826,
+      "group": "cybernoid-ii-intake",
+      "reason": "Pinned source header, bounded static correspondence to recovered listing, or initialized reference-render recipe; no SID/WAV files."
     }
   ],
   "independentShadesSources": {

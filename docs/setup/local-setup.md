@@ -29,7 +29,7 @@ Reference binaries live under ignored `.local/`; installed skill directories are
 
 ### Original SID downloads on demand
 
-Keep the original SID's source URL and SHA-256 in the [asset manifest](../../config/local-assets.json), then use [setup-project.py](../../scripts/setup-project.py) to acquire it when needed. The ten entries below are actual downloaded study inputs; research possibilities mentioned in the [listening catalogue](../research/composers/listening-catalogue.md) are not installed as part of this inventory. All ten source URLs returned bytes matching their registered fingerprints on 2026-10-13. Generated arrangements and patched diagnostic copies retain their own recipes rather than being registered as originals.
+Keep the original SID's source URL and SHA-256 in the [asset manifest](../../config/local-assets.json), then use [setup-project.py](../../scripts/setup-project.py) to acquire it when needed. The entries below are actual downloaded study inputs; research possibilities mentioned in the [listening catalogue](../research/composers/listening-catalogue.md) are not installed as part of this inventory. The listed source URLs returned bytes matching their registered fingerprints on 2026-10-13. Generated arrangements and patched diagnostic copies retain their own recipes rather than being registered as originals.
 
 | Reference ID | Local cache path | Selection |
 | --- | --- | --- |
@@ -38,6 +38,7 @@ Keep the original SID's source URL and SHA-256 in the [asset manifest](../../con
 | `flashdance-historical` | `.local/research/flashdance/kleimeyer-flashdance.sid` | `--include flashdance-historical` |
 | `shades-filter-corrected` | `.local/research/shades/Shades_filter_corrected.sid` | `--include shades-filter-corrected` |
 | `shades` | `.local/research/shades/Shades.sid` | `--include shades` |
+| `cybernoid-ii` | `.local/research/cybernoid-ii/Cybernoid_II.sid` | `--include cybernoid-ii` |
 | `monty-on-the-run` | `.local/monty-source.sid` | `--include monty-on-the-run` |
 | `commando` | `.local/commando-source.sid` | `--include commando` |
 | `auf-wiedersehen-monty` | `.local/monty-wiedersehen-source.sid` | `--include auf-wiedersehen-monty` |
