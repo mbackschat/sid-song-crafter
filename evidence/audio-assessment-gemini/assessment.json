@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-13",
+  "model": "google/gemini-3.8-flash",
+  "requests": 5,
+  "totalCostUsd": "0.00302925",
+  "reasoning": true,
+  "reasoningEffort": "low",
+  "sameAudioBytesAsQwen": true,
+  "allRequestHashesVerified": true,
+  "allResponsesFinishStop": true,
+  "decision": "Not accepted for dependable musical assessment in this tested OpenRouter configuration.",
+  "results": {
+    "smoke": "Plausible description of music, no speech.",
+    "identicalPair": "Correct no-difference, high confidence.",
+    "changedPairBothOrders": "Missed pulse-animation difference, high confidence in both orders.",
+    "silence": "False description of hard-rock music with electric guitars, drums and bass."
+  },
+  "limits": "Single passage, one completion per configuration/order; results concern the tested model/API route, not all music tasks or direct-provider behavior. Silence input was decoded from the exact outgoing payload and verified as zero PCM. Missing endings, wrong notes, organ character and stereo remain untested."
+}

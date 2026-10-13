@@ -1,0 +1,22 @@
+{
+  "model": "qwen/qwen3.8-omni-flash",
+  "max_tokens": 1200,
+  "cases": [
+    {
+      "id": "t01",
+      "wav": "t01.ab.wav",
+      "prompt": "Listen to the attached instrumental audio. Segment A is 0\u20138 seconds; after 0.5 seconds of silence, segment B is 8.5\u201316.5 seconds. Compare the audible timbre, modulation, balance and phrasing. Do you hear a meaningful difference? If so describe it concretely and identify which segment has more animated or changing tone. No meaningful difference and uncertainty are valid answers. Do not infer how the sounds were produced. Reply with JSON fields difference (yes/no/uncertain), more_animated (A/B/neither/uncertain), observations (short text), confidence (low/medium/high)."
+    },
+    {
+      "id": "t02",
+      "wav": "t02.ab.wav",
+      "prompt": "Listen to the attached instrumental audio. Segment A is 0\u20138 seconds; after 0.5 seconds of silence, segment B is 8.5\u201316.5 seconds. Compare the audible timbre, modulation, balance and phrasing. Do you hear a meaningful difference? If so describe it concretely and identify which segment has more animated or changing tone. No meaningful difference and uncertainty are valid answers. Do not infer how the sounds were produced. Reply with JSON fields difference (yes/no/uncertain), more_animated (A/B/neither/uncertain), observations (short text), confidence (low/medium/high)."
+    },
+    {
+      "id": "t03",
+      "wav": "t03.ab.wav",
+      "prompt": "Listen to the attached instrumental audio. Segment A is 0\u20138 seconds; after 0.5 seconds of silence, segment B is 8.5\u201316.5 seconds. Compare the audible timbre, modulation, balance and phrasing. Do you hear a meaningful difference? If so describe it concretely and identify which segment has more animated or changing tone. No meaningful difference and uncertainty are valid answers. Do not infer how the sounds were produced. Reply with JSON fields difference (yes/no/uncertain), more_animated (A/B/neither/uncertain), observations (short text), confidence (low/medium/high)."
+    }
+  ],
+  "reasoning": true
+}

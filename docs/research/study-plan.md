@@ -87,7 +87,7 @@ Reuse the existing composition backends, verified sound mechanisms, rendering re
 
 **Existing SID boundary.** Do not download, inspect, play or use the Gyruss SID—or another SID version of this piece—during our independent development. Existing project knowledge from other works remains available. Only after the user approves our song and explicitly authorizes the comparison may the Gyruss version be acquired. Freeze our accepted version first, then compare concrete musical choices such as voicing, bass support, phrasing and harmonic density. Preserve the independent baseline; label any subsequent changes as informed by that comparison. A later benchmark is methodologically useful, but cannot retrospectively count as independent development evidence.
 
-The [audio-assessment research proposal](audio-assessment.md) considers automated listening and music judges; reliability on SID audio remains unvalidated. It supports, but does not replace, the listener's artistic judgment and must not turn the Bach trial into an infrastructure project.
+The [audio-assessment research and measured pilots](audio-assessment.md) cover automated listening and music judges. The initial Qwen, Gemini and GPT Audio Mini configurations did not pass the selected perception controls; none is adopted as a dependable listener. The bounded cached runner is available for explicit follow-up experiments. Automated assessment supports, but does not replace, the listener's artistic judgment and must not turn the Bach trial into an infrastructure project.
 
 **Next action:** source selection and musical mapping, followed by the short reference-backed organ-character audition. Ask the user only for sound-sample feedback; use the above recommendations for routine decisions.
 

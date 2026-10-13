@@ -8,6 +8,8 @@ Use [the archive and cache workflow](../docs/workflows/build-cache.md) to instal
 
 | Evidence | Interpretation and reproduction |
 | --- | --- |
+| OpenRouter/Qwen audio assessment pilot | [Measured failures, cost and reproduction](../docs/research/audio-assessment.md#measured-openrouter-pilot-not-accepted), [structured assessment](audio-assessment-openrouter/assessment.json); full model responses and request receipts, no audio or credentials |
+| Requested Gemini and GPT Audio Mini audio pilots | [Same-probe comparison and limitations](../docs/research/audio-assessment.md#requested-gemini-and-gpt-audio-mini-comparisons), [Gemini assessment](audio-assessment-gemini/assessment.json), [GPT Audio Mini assessment](audio-assessment-openai-mini/assessment.json); exact prompts, model metadata, full responses and billed receipts |
 | Shades reconstruction, familiar transfer, CIA timing, form and modulation | [Shades study](../docs/research/composition/shades-preparation.md), [CIA validation](../docs/validation/cia-tracing.md) |
 | Flashdance reconstruction, transfer and accepted stereo arrangement | [Flashdance study](../docs/research/composition/flashdance-preparation.md) |
 | Cybernoid II intake, execution, order traversals and opening mechanisms | [Cybernoid II preparation](../docs/research/composition/cybernoid-ii-preparation.md) |

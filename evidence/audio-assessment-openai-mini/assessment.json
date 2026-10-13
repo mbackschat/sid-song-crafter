@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-13",
+  "model": "openai/gpt-audio-mini",
+  "requests": 5,
+  "totalCostUsd": "0.0012162",
+  "reasoning": false,
+  "reasoningEffort": null,
+  "sameAudioBytesAsQwen": true,
+  "allRequestHashesVerified": true,
+  "allResponsesFinishStop": true,
+  "decision": "Not accepted for dependable musical assessment in this tested OpenRouter configuration.",
+  "results": {
+    "smoke": "Declined to assess audio.",
+    "identicalPair": "Uncertain; declined to assess.",
+    "stationaryThenMoving": "Correctly selected B as more animated, high confidence.",
+    "movingThenStationary": "Uncertain; declined to assess.",
+    "silence": "Declined to assess; did not positively identify silence."
+  },
+  "limits": "Single passage, one completion per configuration/order; results concern the tested model/API route, not all music tasks or direct-provider behavior. Silence input was decoded from the exact outgoing payload and verified as zero PCM. Missing endings, wrong notes, organ character and stereo remain untested."
+}

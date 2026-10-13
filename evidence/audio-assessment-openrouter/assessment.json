@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-13",
+  "model": "qwen/qwen3.8-omni-flash",
+  "provider": "Alibaba via OpenRouter",
+  "requests": 8,
+  "totalCostUsd": "0.00102047",
+  "accountUsageUsd": "0.00102047",
+  "accountRemainingUsd": "9.99897953",
+  "accountLimitUsd": 10,
+  "limitReset": null,
+  "audioFormat": "44100 Hz mono PCM16",
+  "baselineSettings": {
+    "temperature": 0,
+    "max_tokens": 1200,
+    "reasoning": false,
+    "providerFallbacks": false
+  },
+  "followup": "Same three paired prompts/audio with reasoning enabled; no prompt tuning.",
+  "cases": [
+    {
+      "ids": [
+        "s00"
+      ],
+      "outcome": "Plausible description of chiptune music and no speech; descriptive sanity check only."
+    },
+    {
+      "ids": [
+        "t01"
+      ],
+      "outcome": "Correct no-difference verdict in both reasoning configurations."
+    },
+    {
+      "ids": [
+        "t02",
+        "t03"
+      ],
+      "outcome": "Missed listener-confirmed pulse animation difference in both orders and both reasoning configurations; all four answers high confidence."
+    },
+    {
+      "ids": [
+        "s01"
+      ],
+      "outcome": "Reported a sustained musical note for verified all-zero PCM; false positive."
+    }
+  ],
+  "guards": {
+    "originalFirstMatchesHumanAuditionBytes": true,
+    "repreparedPilotAudioIdentical": true,
+    "silenceAllZeroPcm": true,
+    "silentWavSha256": "f863d98220a9f1aa76e43170f4948f0888b2028fcf6b0aae497fde768efca380"
+  },
+  "decision": "Do not adopt this configuration as a reliable musical assessor. Consider a bounded comparison with existing OpenAI access; no additional provider trial performed.",
+  "limits": "One short Gauntlet passage and controls; not a model-wide benchmark. Untested: missing endings, wrong notes, organ character, stereo. Audio token subfield reported zero; submitted input_audio payload and aggregate prompt costs are retained, but encoder internals are not independently observed."
+}

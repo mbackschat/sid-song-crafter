@@ -1,0 +1,45 @@
+{
+  "id": "s00",
+  "wav_path": "/Users/mbackschat/Projects/c64-sid-skill/build/audio-assessment-gemini-20261013/inputs/s00.wav",
+  "audio_sha256": "fe564521167583007bac960a68ce7edd09f7720a464e8bc32fe1504c3de441b2",
+  "duration_seconds": 4.0,
+  "model": "google/gemini-3.8-flash",
+  "max_tokens": 1200,
+  "reasoning": true,
+  "reasoning_effort": "low",
+  "payload_sha256": "36c09d969cc33b051878bd987ccaf6163d8d2b2903b2cebe021336e8014fd571",
+  "status": "complete",
+  "started_at": "2026-10-13T21:49:38.132587+00:00",
+  "cost": 0.0002355,
+  "key_limits": {
+    "limit": 10.0,
+    "limit_remaining": 9.99897953,
+    "limit_reset": null
+  },
+  "response_path": "response-01.json",
+  "response_sha256": "dec116f28813628ed4d1f403741fd8086ffeabebd34a1c95d1e16bb82de31a95",
+  "finished_at": "2026-10-13T21:49:41.912860+00:00",
+  "usage": {
+    "prompt_tokens": 139,
+    "completion_tokens": 35,
+    "total_tokens": 174,
+    "cost": 0.0002355,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 100,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0002355,
+      "upstream_inference_prompt_cost": 0.00010425,
+      "upstream_inference_completions_cost": 0.00013125
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

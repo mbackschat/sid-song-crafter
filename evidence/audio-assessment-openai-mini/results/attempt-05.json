@@ -1,0 +1,45 @@
+{
+  "id": "s01",
+  "wav_path": "/Users/mbackschat/Projects/c64-sid-skill/build/audio-assessment-openai-mini-20261013/inputs/s01.wav",
+  "audio_sha256": "f863d98220a9f1aa76e43170f4948f0888b2028fcf6b0aae497fde768efca380",
+  "duration_seconds": 4.0,
+  "model": "openai/gpt-audio-mini",
+  "max_tokens": 1200,
+  "reasoning": false,
+  "reasoning_effort": null,
+  "payload_sha256": "4c84c872f59cd9b4c5196c45c9e5c8e835d29562daf44254fdc92ff3780a9e8e",
+  "status": "complete",
+  "started_at": "2026-10-13T21:50:04.180758+00:00",
+  "cost": 0.0001308,
+  "key_limits": {
+    "limit": 10.0,
+    "limit_remaining": 9.99861563,
+    "limit_reset": null
+  },
+  "response_path": "response-05.json",
+  "response_sha256": "c69b6719620656a93be5c933f6ebd62fd7b3f69e7fe855e99ce7b52e3c086766",
+  "finished_at": "2026-10-13T21:50:05.288059+00:00",
+  "usage": {
+    "prompt_tokens": 90,
+    "completion_tokens": 32,
+    "total_tokens": 122,
+    "cost": 0.0001308,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 40,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0001308,
+      "upstream_inference_prompt_cost": 5.4e-05,
+      "upstream_inference_completions_cost": 7.68e-05
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

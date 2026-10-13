@@ -1,0 +1,45 @@
+{
+  "id": "t03",
+  "wav_path": "/Users/mbackschat/Projects/c64-sid-skill/build/audio-assessment-gemini-20261013/inputs/t03.ab.wav",
+  "audio_sha256": "7513f4133a21fae7ba72c11d58b761e34c6bef36015be9dfa437d9cc86aee299",
+  "duration_seconds": 16.5,
+  "model": "google/gemini-3.8-flash",
+  "max_tokens": 1200,
+  "reasoning": true,
+  "reasoning_effort": "low",
+  "payload_sha256": "5dabbcf4e9a8320a579c824b00d5ca038b7fd56caa3d5b55b224c6c9bf03bb28",
+  "status": "complete",
+  "started_at": "2026-10-13T21:50:01.558517+00:00",
+  "cost": 0.00066525,
+  "key_limits": {
+    "limit": 10.0,
+    "limit_remaining": 9.99861563,
+    "limit_reset": null
+  },
+  "response_path": "response-04.json",
+  "response_sha256": "a78a6d86c42805b45bd3e6279b37bbef5f62291902fdcd562c04d1ad285bc2c5",
+  "finished_at": "2026-10-13T21:50:25.336355+00:00",
+  "usage": {
+    "prompt_tokens": 542,
+    "completion_tokens": 69,
+    "total_tokens": 611,
+    "cost": 0.00066525,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 413,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00066525,
+      "upstream_inference_prompt_cost": 0.0004065,
+      "upstream_inference_completions_cost": 0.00025875
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "model": "google/gemini-3.8-flash",
+  "max_tokens": 1200,
+  "cases": [
+    {
+      "id": "s00",
+      "wav": "s00.wav",
+      "prompt": "Describe the audible sounds in this short clip in at most three sentences. State whether there is music or speech and describe the instrumental texture. If you cannot hear or assess the audio, say so."
+    },
+    {
+      "id": "t01",
+      "wav": "t01.ab.wav",
+      "prompt": "Listen to the attached instrumental audio. Segment A is 0\u20138 seconds; after 0.5 seconds of silence, segment B is 8.5\u201316.5 seconds. Compare the audible timbre, modulation, balance and phrasing. Do you hear a meaningful difference? If so describe it concretely and identify which segment has more animated or changing tone. No meaningful difference and uncertainty are valid answers. Do not infer how the sounds were produced. Reply with JSON fields difference (yes/no/uncertain), more_animated (A/B/neither/uncertain), observations (short text), confidence (low/medium/high)."
+    },
+    {
+      "id": "t02",
+      "wav": "t02.ab.wav",
+      "prompt": "Listen to the attached instrumental audio. Segment A is 0\u20138 seconds; after 0.5 seconds of silence, segment B is 8.5\u201316.5 seconds. Compare the audible timbre, modulation, balance and phrasing. Do you hear a meaningful difference? If so describe it concretely and identify which segment has more animated or changing tone. No meaningful difference and uncertainty are valid answers. Do not infer how the sounds were produced. Reply with JSON fields difference (yes/no/uncertain), more_animated (A/B/neither/uncertain), observations (short text), confidence (low/medium/high)."
+    },
+    {
+      "id": "t03",
+      "wav": "t03.ab.wav",
+      "prompt": "Listen to the attached instrumental audio. Segment A is 0\u20138 seconds; after 0.5 seconds of silence, segment B is 8.5\u201316.5 seconds. Compare the audible timbre, modulation, balance and phrasing. Do you hear a meaningful difference? If so describe it concretely and identify which segment has more animated or changing tone. No meaningful difference and uncertainty are valid answers. Do not infer how the sounds were produced. Reply with JSON fields difference (yes/no/uncertain), more_animated (A/B/neither/uncertain), observations (short text), confidence (low/medium/high)."
+    },
+    {
+      "id": "s01",
+      "wav": "s01.wav",
+      "prompt": "Describe the audible sounds in this short clip in at most three sentences. State whether there is music or speech and describe the instrumental texture. If you cannot hear or assess the audio, say so."
+    }
+  ],
+  "reasoning": true,
+  "reasoning_effort": "low"
+}

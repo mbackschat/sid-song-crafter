@@ -1,0 +1,33 @@
+{
+  "sources": {
+    "reference.wav": "96000bb434c2fa7e17a2264f2c13c7b78de1e2e83edbec1305870500a7378112",
+    "stationary-pulse.wav": "18079bcbbe3e5ef27fa354eddf6f46d117d730ba6f344c9f2fe731995f854fce"
+  },
+  "sourceWindowSeconds": [
+    16,
+    24
+  ],
+  "smokeWindowSeconds": [
+    16,
+    20
+  ],
+  "gain": 1,
+  "gapSeconds": 0.5,
+  "silenceControl": "Four seconds of zero PCM, same format and prompt as smoke.",
+  "cases": {
+    "t01": {
+      "role": "identical A/A control",
+      "sha256": "31893bb09612df8c263b29ec6eace86fa189209243a3feb2e88ab7bc76c9ac6e"
+    },
+    "t02": {
+      "role": "stationary first, moving pulse second",
+      "sha256": "c5ac6db63213810d97c2b8cc34393696ae08313879ce4cc36c0ec6cd98147345"
+    },
+    "t03": {
+      "role": "moving pulse first, stationary second",
+      "sha256": "7513f4133a21fae7ba72c11d58b761e34c6bef36015be9dfa437d9cc86aee299"
+    }
+  },
+  "reference": "docs/research/composition/follin-contrast.md",
+  "boundary": "Reference-derived audio stays local; model receives only anonymous prompt and PCM."
+}
