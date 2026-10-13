@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "evidenceLevel": "rendered experiment",
+  "listeningReview": null,
+  "conversionManifest": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-v1/cache/restrained/bbe2d86f4ed5b5e894cb054b7e1e32fba89aacb53241eb1720f95c6aab58e335/attempt-e6c4df2cac8c48b587cfdf5bc06f3ee6/song/conversion.json",
+  "exportReport": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-v1/cache/restrained/bbe2d86f4ed5b5e894cb054b7e1e32fba89aacb53241eb1720f95c6aab58e335/attempt-e6c4df2cac8c48b587cfdf5bc06f3ee6/song/export.json",
+  "audit": {
+    "schemaVersion": 1,
+    "sourceSha256": "e844a759c7a9cad571107c8f5dbb7243694006f7d3cb86381b35ae2dd0f15f17",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS8580",
+    "sidCount": 1,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS8580"
+      }
+    ],
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4099,
+    "clockHz": 985248.6111111111,
+    "playCalls": 1381,
+    "callRateHz": 50.12457321485099,
+    "initCycles": 1944,
+    "maximumPlayCycles": 2135,
+    "meanPlayCycles": 1657.4112961622013,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 24,
+    "playWriteCount": 34525,
+    "registers": {
+      "d400": {
+        "writes": 1381,
+        "distinctValues": 34,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d401": {
+        "writes": 1381,
+        "distinctValues": 16,
+        "minimum": 9,
+        "maximum": 58
+      },
+      "d402": {
+        "writes": 1381,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 128
+      },
+      "d403": {
+        "writes": 1381,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 7
+      },
+      "d404": {
+        "writes": 1381,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 65
+      },
+      "d405": {
+        "writes": 1381,
+        "distinctValues": 1,
+        "minimum": 2,
+        "maximum": 2
+      },
+      "d406": {
+        "writes": 1381,
+        "distinctValues": 1,
+        "minimum": 136,
+        "maximum": 136
+      },
+      "d407": {
+        "writes": 1381,
+        "distinctValues": 34,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d408": {
+        "writes": 1381,
+        "distinctValues": 14,
+        "minimum": 4,
+        "maximum": 29
+      },
+      "d409": {
+        "writes": 1381,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40a": {
+        "writes": 1381,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 6
+      },
+      "d40b": {
+        "writes": 1381,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 65
+      },
+      "d40c": {
+        "writes": 1381,
+        "distinctValues": 1,
+        "minimum": 2,
+        "maximum": 2
+      },
+      "d40d": {
+        "writes": 1381,
+        "distinctValues": 1,
+        "minimum": 169,
+        "maximum": 169
+      },
+      "d40e": {
+        "writes": 1381,
+        "distinctValues": 7,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d40f": {
+        "writes": 1381,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 13
+      },
+      "d410": {
+        "writes": 1381,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d411": {
+        "writes": 1381,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 6
+      },
+      "d412": {
+        "writes": 1381,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 81
+      },
+      "d413": {
+        "writes": 1381,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 2
+      },
+      "d414": {
+        "writes": 1381,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 88
+      },
+      "d415": {
+        "writes": 1381,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d416": {
+        "writes": 1381,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 160
+      },
+      "d417": {
+        "writes": 1381,
+        "distinctValues": 2,
+        "minimum": 2,
+        "maximum": 34
+      },
+      "d418": {
+        "writes": 1381,
+        "distinctValues": 3,
+        "minimum": 15,
+        "maximum": 31
+      }
+    },
+    "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+  },
+  "schedule": {
+    "method": "Pinned Extra driver note-column reads, discrete sound-start state and orderlist reads; exact ticks and instrument selections",
+    "noteCounts": [
+      21,
+      20,
+      4
+    ],
+    "lastNotes": [
+      {
+        "voice": 0,
+        "tick": 1103,
+        "nativeNote": 51,
+        "instrument": 1
+      },
+      {
+        "voice": 1,
+        "tick": 802,
+        "nativeNote": 27,
+        "instrument": 2
+      },
+      {
+        "voice": 2,
+        "tick": 1143,
+        "nativeNote": 43,
+        "instrument": 3
+      }
+    ],
+    "stopTicks": [
+      1328,
+      1328,
+      1328
+    ],
+    "stopVolumeClearTick": 1328,
+    "postStopOffReads": [
+      52,
+      52,
+      52
+    ],
+    "postStopVolumeReads": [
+      52,
+      52,
+      52
+    ],
+    "postStopGatesAndVolumeClear": true,
+    "criticalNotes": [],
+    "limitations": "Discrete source-note scheduling and selected short-note full-pitch register frames are verified; ADSR reattacks, vibrato, per-voice PCM audibility and musical quality are not established by this check."
+  },
+  "pcm": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-v1/cache/restrained/bbe2d86f4ed5b5e894cb054b7e1e32fba89aacb53241eb1720f95c6aab58e335/attempt-e6c4df2cac8c48b587cfdf5bc06f3ee6/song/native-song.wav",
+    "sha256": "993038d49c122b954848a492c32f033ee22c59a4fb424d0220db9f7c3510b6cd",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 1213365,
+    "durationSeconds": 27.513945578231294,
+    "peak": 11557,
+    "peakDbfs": -9.05209643365335,
+    "clippedSamples": 0,
+    "rms": 2771.3886818917063,
+    "acRms": 2736.656072800658,
+    "acRmsDbfs": -21.56459427507057,
+    "perChannel": [
+      {
+        "dc": -437.38857474873595,
+        "rms": 2771.3886818917063,
+        "acRms": 2736.656072800658
+      }
+    ]
+  },
+  "endingAcRms": 0.0,
+  "excerpt": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-v1/cache/restrained/bbe2d86f4ed5b5e894cb054b7e1e32fba89aacb53241eb1720f95c6aab58e335/attempt-e6c4df2cac8c48b587cfdf5bc06f3ee6/song/native-song.excerpt.wav",
+    "sourceStartFrame": 0,
+    "frames": 1058400,
+    "durationSeconds": 24.0,
+    "sha256": "db73f348ac59a6f1d7e65230bd921406365ac0bc9bb508b04642a8e86f87dc1b",
+    "gain": 1
+  },
+  "renderer": {
+    "command": [
+      "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+      "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-v1/cache/restrained/bbe2d86f4ed5b5e894cb054b7e1e32fba89aacb53241eb1720f95c6aab58e335/attempt-e6c4df2cac8c48b587cfdf5bc06f3ee6/song/export/restrained.sid",
+      "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-v1/cache/restrained/bbe2d86f4ed5b5e894cb054b7e1e32fba89aacb53241eb1720f95c6aab58e335/attempt-e6c4df2cac8c48b587cfdf5bc06f3ee6/song/native-song.wav",
+      "27.51394146147546"
+    ],
+    "executableSha256": "1c489b5b032977bdcc16c797e15273b5f657809fe2464f30cc60c885fa0a9a64",
+    "deadlineSeconds": 120,
+    "timedOut": false,
+    "returnCode": 0,
+    "stdout": "libsidplayfp 3.1.1 / SIDLite: 1213365 mono PCM16 samples at 44100 Hz, subtune 1 of 1",
+    "stderr": ""
+  },
+  "evidenceFiles": {
+    "writes": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-v1/cache/restrained/bbe2d86f4ed5b5e894cb054b7e1e32fba89aacb53241eb1720f95c6aab58e335/attempt-e6c4df2cac8c48b587cfdf5bc06f3ee6/song/native-song.writes.json",
+    "frames": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-v1/cache/restrained/bbe2d86f4ed5b5e894cb054b7e1e32fba89aacb53241eb1720f95c6aab58e335/attempt-e6c4df2cac8c48b587cfdf5bc06f3ee6/song/native-song.frames.json",
+    "nativeEvents": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-v1/cache/restrained/bbe2d86f4ed5b5e894cb054b7e1e32fba89aacb53241eb1720f95c6aab58e335/attempt-e6c4df2cac8c48b587cfdf5bc06f3ee6/song/native-song.native-events.json"
+  },
+  "limitations": "RAM-only CPU scheduling evidence and emulated PCM health; first-frame audible pitch and ADSR equivalence are limited by the native driver, no hardware or listening approval is claimed."
+}

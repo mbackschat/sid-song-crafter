@@ -38,3 +38,4 @@ Add `--vice-audio` for a separate full VICE/reSID WAV capture. This runs at norm
 3. Keep the complete common score; create a separate SID arrangement with explicit voice allocation and reduction decisions.
 4. Build and verify with `scripts/song.py`. Review the arrangement and listen to the resulting WAV: technical execution checks do not establish musical fidelity or artistic quality.
 5. Record newly discovered limitations and reusable fixes alongside the relevant tool documentation.
+6. Account for the [model-assistance reviews](../research/audio-assessment.md#use-and-reassess-model-assistance) at the first audition, after listener feedback or a musical revision and before closure. Record useful findings or a reason to skip a model call in the owning study, with the next checkpoint; model use remains advisory unless validated for that particular task.

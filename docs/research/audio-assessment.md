@@ -10,6 +10,22 @@ Keep one hosted gateway for now. OpenRouter permits model comparisons without se
 
 The intended benefit is fewer routine listening requests: identify likely missing material, compare timbral animation and phrasing, and bring specific uncertain passages to the user. Separate known-source correctness from musical success. A trace or preserved score can establish that a note is absent; it cannot establish that an intentional omission improves an arrangement. Likewise, a musically preferred candidate need not reproduce the source. Keep [execution verification](validation/verification.md), [matched audio comparisons](../workflows/audio-comparisons.md) and the listener's verdict as distinct evidence.
 
+## Use and reassess model assistance
+
+Use model assistance for source research, arrangement hypotheses and advisory audio observations, checking claims against sources, scores, execution evidence or listening as appropriate. Eligibility belongs to a specific **task, model/version, prompt and preprocessing**, never to a model in general. An elementary perception pass does not qualify defect detection or musical preference. Human listening remains the authority for organ character, expression and acceptance.
+
+**Status, 2026-10-14:** Qwen is eligible for narrow perception research after its 8/8 elementary-control pass, with the pulse-animation miss retained; SongBench is eligible for defect-sensitivity research after its local Metal trial, with its reversed musicality preference and unreviewed dropout hypothesis retained. Neither is validated for judging Bach, finding wrong notes or missing tails, or assessing stereo. Proceed with Bach's reference-backed audition; another model experiment is justified only by a concrete question that could improve that deliverable.
+
+Review usefulness **at the first representative audition, after listener feedback or a musical revision, and before closing each musical case**. Changes to the model/version, prompt or preprocessing trigger a recheck of the affected task before relying on prior validation. At every checkpoint, record a dated run **or an explicit skip** in the existing owning study; a skip needs a concrete reason and next checkpoint. Do not close the case while a due review is unrecorded. These are project milestones, not a calendar job.
+
+Use one compact review row, linking retained evidence rather than copying trial details:
+
+| Date / checkpoint | Task and pinned setup | Run or skip / evidence | Hits, misses and useful action | Eligibility / next checkpoint |
+| --- | --- | --- | --- | --- |
+| YYYY-MM-DD / milestone | Question; model/version, prompt and preprocessing receipt | Bounded run and evidence links, or concrete skip reason | Compare claims with scoped human verdicts or score/trace/PCM ground truth; state what changed | Retain, narrow or extend the supported task with evidence; name the next milestone |
+
+If human feedback is absent, record it as absent; a dropout hypothesis, score change or plausible description cannot supply that verdict. Assess whether assistance exposed a useful issue, saved work or misled the arrangement, and carry any eligibility change into the next decision. Before a new trial, name the unresolved question and resulting musical action, freeze its criterion and use controls plus a held-out passage. Reuse cached results; skip repeated paid calls when no changed input or testable improvement addresses the known failure. Use the existing bounded runners and owning records; no additional service, DSPy installation or evaluation framework is required.
+
 ## Candidates and access
 
 | Candidate | Best initial role | Verified access and material constraint |

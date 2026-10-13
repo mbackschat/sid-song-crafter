@@ -11,6 +11,8 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Run and audition the trials](../../workflows/instrument-trials.md): one-command export, audit, rendering and controlled A/B comparisons.
 - [Instrument card template](instrument-card-template.md): preserve a sound's source, behaviour, target, demonstration, and listening verdict.
 - [Classical arrangements](classical-arrangements.md): preserving musical structure in Für Elise and Hummelflug.
+- [Bach Toccata: active source and arrangement study](bach-toccata.md): pinned score/performance sources, exact Toccata/Fugue boundary and organ/chiptune audition brief.
+- [Written Gyruss comparisons for the Bach brief](bach-gyruss-commentary.md): platform-specific opinions and musical targets; existing SID audio and implementation remain excluded.
 - [Source-to-SID workflow](../../workflows/song-workflow.md): original sources, intermediate scores, and independent SID expression.
 - [Für Elise source study](../../songs/fuer-elise-score.md): complete source preservation and transparent reductions in the working baseline.
 - [Compare Für Elise with an existing SID](fuer-elise-reference.md): measured opening pitches, tempo/articulation differences, voice allocation and level-matched audition excerpts.

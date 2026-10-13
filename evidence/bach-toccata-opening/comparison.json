@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "method": "full-file AC RMS, pooled channel power after subtracting each channel mean; silence and tails included",
+  "matching": "attenuation only",
+  "requestedAcRmsDbfs": null,
+  "targetAcRms": 2736.656072800658,
+  "targetAcRmsDbfs": -21.56459427507057,
+  "peakHeadroomDb": 1.0,
+  "peakLimit": 29203,
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-v1/cache/comparison/0194750e27e11ddee86765b1a064e5804add7f017b75ea2d686be47f35358c22/attempt-20765c6f2f294de2b884dee7913b2860/restrained-then-hybrid.ab.wav",
+    "frames": 2448780,
+    "durationSeconds": 55.52789115646259,
+    "sha256": "f36f0ca34eedd37d140a4090474fdbb511139d3afcf97f624adc66acbb5ff1a1"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 1213365
+    },
+    {
+      "label": "silence",
+      "startFrame": 1213365,
+      "endFrame": 1235415
+    },
+    {
+      "label": "B",
+      "startFrame": 1235415,
+      "endFrame": 2448780
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-v1/cache/restrained/bbe2d86f4ed5b5e894cb054b7e1e32fba89aacb53241eb1720f95c6aab58e335/attempt-e6c4df2cac8c48b587cfdf5bc06f3ee6/song/native-song.wav",
+      "sha256": "993038d49c122b954848a492c32f033ee22c59a4fb424d0220db9f7c3510b6cd",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 1213365,
+        "durationSeconds": 27.513945578231294,
+        "peak": 11557,
+        "peakDbfs": -9.05209643365335,
+        "clippedSamples": 0,
+        "rms": 2771.3886818917063,
+        "acRms": 2736.656072800658,
+        "acRmsDbfs": -21.56459427507057,
+        "perChannel": [
+          {
+            "dc": -437.38857474873595,
+            "rms": 2771.3886818917063,
+            "acRms": 2736.656072800658
+          }
+        ]
+      },
+      "gain": 1.0,
+      "gainDb": 0.0,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 1213365,
+        "durationSeconds": 27.513945578231294,
+        "peak": 11557,
+        "peakDbfs": -9.05209643365335,
+        "clippedSamples": 0,
+        "rms": 2771.3886818917063,
+        "acRms": 2736.656072800658,
+        "acRmsDbfs": -21.56459427507057,
+        "perChannel": [
+          {
+            "dc": -437.38857474873595,
+            "rms": 2771.3886818917063,
+            "acRms": 2736.656072800658
+          }
+        ]
+      },
+      "matchedCopy": null
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-opening-v1/cache/hybrid/01e0f8d7a0245415d8db38eec77e699e41c691498268df9903bb0102de98e29b/attempt-29c9f8fbcaad4090a6557df42b694282/song/native-song.wav",
+      "sha256": "b1a905e379eedecea1df1e405233165850a319d3a14631a2479d6f3ce6102318",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 1213365,
+        "durationSeconds": 27.513945578231294,
+        "peak": 11540,
+        "peakDbfs": -9.064882522800106,
+        "clippedSamples": 0,
+        "rms": 2772.1798929344054,
+        "acRms": 2740.8897653299523,
+        "acRmsDbfs": -21.55116731545015,
+        "perChannel": [
+          {
+            "dc": -415.3367947814549,
+            "rms": 2772.1798929344054,
+            "acRms": 2740.8897653299523
+          }
+        ]
+      },
+      "gain": 0.9984553583355131,
+      "gainDb": -0.013426959620417633,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 1213365,
+        "durationSeconds": 27.513945578231294,
+        "peak": 11522,
+        "peakDbfs": -9.078441281384201,
+        "clippedSamples": 0,
+        "rms": 2767.9339634150456,
+        "acRms": 2736.706939905684,
+        "acRmsDbfs": -21.56443282915169,
+        "perChannel": [
+          {
+            "dc": -414.60047141626796,
+            "rms": 2767.9339634150456,
+            "acRms": 2736.706939905684
+          }
+        ]
+      },
+      "matchedCopy": null
+    }
+  ],
+  "listeningReview": null
+}

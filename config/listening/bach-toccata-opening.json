@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "restrained",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "songs/studies/bach-toccata-opening/restrained.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "24"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "songs/studies/bach-toccata-opening/score.json",
+        "songs/studies/bach-toccata-opening/restrained.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/restrained.sid",
+        "song/export/restrained.prg",
+        "song/native-song.writes.json"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "restrained-vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:restrained}/song/export/restrained.prg",
+        "{stage:restrained}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:restrained}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "3",
+        "100",
+        "500",
+        "906",
+        "1107",
+        "1207",
+        "1350",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:restrained}/song/export/restrained.prg",
+        "{stage:restrained}/song/native-song.writes.json",
+        "{stage:restrained}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 90,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "hybrid",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "songs/studies/bach-toccata-opening/hybrid.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "24"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "songs/studies/bach-toccata-opening/score.json",
+        "songs/studies/bach-toccata-opening/hybrid.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/hybrid.sid",
+        "song/export/hybrid.prg",
+        "song/native-song.writes.json"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "hybrid-vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:hybrid}/song/export/hybrid.prg",
+        "{stage:hybrid}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:hybrid}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "3",
+        "100",
+        "500",
+        "906",
+        "1107",
+        "1207",
+        "1350",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:hybrid}/song/export/hybrid.prg",
+        "{stage:hybrid}/song/native-song.writes.json",
+        "{stage:hybrid}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 90,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "prepare",
+        "{stage:restrained}/song/native-song.wav",
+        "{stage:hybrid}/song/native-song.wav",
+        "{out}/restrained-then-hybrid",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:restrained}/song/native-song.wav",
+        "{stage:hybrid}/song/native-song.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "restrained-then-hybrid.ab.wav",
+        "restrained-then-hybrid.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    }
+  ],
+  "deliverables": {
+    "restrainedSidReference": "{stage:restrained}/song/native-song.wav",
+    "hybridCandidate": "{stage:hybrid}/song/native-song.wav",
+    "restrainedThenHybrid": "{stage:comparison}/restrained-then-hybrid.ab.wav",
+    "hybridVerification": "{stage:hybrid}/song/verification.json",
+    "hybridVice": "{stage:hybrid-vice}/vice/verification.json"
+  }
+}
