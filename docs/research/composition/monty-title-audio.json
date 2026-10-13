@@ -453,7 +453,7 @@
         "date": "2026-10-13",
         "verdict": "reviewed-with-deliberate-ending-difference",
         "listenerQuote": "Identical, although the original played from 10:30s to 15:00s, while there is basically silence in ours from 25:80s onward (till end)",
-        "scope": "Ending comparison; listener reports matching music and notes silence where the original continues. The original restarts while the candidate releases/fades; approval of this deliberate finite-ending choice remains pending."
+        "scope": "Listener identified audible reference continuation absent from this finite variant and requested a corrected WAV. Retained as an optional authored release/fade; use monty-reference-continuation-audio.json for the corrected source-fidelity comparison."
       }
     }
   },
@@ -480,7 +480,7 @@
   },
   "listeningReview": {
     "date": "2026-10-13",
-    "verdict": "opening-accepted-ending-choice-pending",
+    "verdict": "opening-accepted-finite-variant-separated",
     "scope": "Presented opening and ending comparisons; no claim of an additional uninterrupted full-title audition.",
     "opening": {
       "verdict": "accepted",
@@ -490,8 +490,9 @@
     "ending": {
       "verdict": "reviewed-with-deliberate-ending-difference",
       "listenerQuote": "Identical, although the original played from 10:30s to 15:00s, while there is basically silence in ours from 25:80s onward (till end)",
-      "scope": "Ending comparison; listener reports matching music and notes silence where the original continues. The original restarts while the candidate releases/fades; approval of this deliberate finite-ending choice remains pending."
-    }
+      "scope": "Listener identified audible reference continuation absent from this finite variant and requested a corrected WAV. Retained as an optional authored release/fade; use monty-reference-continuation-audio.json for the corrected source-fidelity comparison."
+    },
+    "correctedComparisonRecipe": "docs/research/composition/monty-reference-continuation-audio.json"
   },
   "reproduction": {
     "workingDirectory": "repository root",

@@ -1,0 +1,552 @@
+{
+  "schemaVersion": 1,
+  "kind": "monty-corrected-reference-continuation",
+  "checkedOn": "2026-10-13",
+  "reason": "Preserve audible reference continuation suppressed by the optional finite release/fade. Both A/B halves now contain the restart.",
+  "source": {
+    "title": "Monty on the Run",
+    "music": "Rob Hubbard",
+    "assetId": "monty-on-the-run",
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/H/Hubbard_Rob/Monty_on_the_Run.sid",
+    "path": ".local/monty-source.sid",
+    "sha256": "528a7330817e4a0a0f75a505e9fe2444e07c5072ce5383ceaa89f183f0eee3ab",
+    "bytes": 5694
+  },
+  "description": {
+    "path": "songs/monty-title-source.json",
+    "sha256": "c1597b914360bc80d68323033423beb6286b95088e4d72f943bf53d8f89424fc",
+    "bytes": 67549
+  },
+  "rendering": {
+    "executable": {
+      "path": ".local/bin/render-sid",
+      "sha256": "80c6e88730445f65e03e28a56bb251922461e6d4364897b0bd79195edb53fdfe",
+      "bytes": 268712
+    },
+    "source": {
+      "path": "scripts/render-sid.cpp",
+      "sha256": "c7bc5f7b0fe8d18a54ecde7338b6efa786f87f54ec258a00fb01025486bad5fc",
+      "bytes": 10392
+    },
+    "library": {
+      "name": "libsidplayfp",
+      "version": "3.1.1",
+      "builder": "SIDLite",
+      "staticLibrary": {
+        "path": ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "sha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00",
+        "bytes": 470624
+      }
+    },
+    "settings": {
+      "clock": "PAL",
+      "clockForced": true,
+      "sidModel": "MOS6581",
+      "defaultSubtune": 1,
+      "subtuneSelection": "selectSong(0) selects the header default",
+      "powerOnDelay": 0,
+      "sampleRate": 44100,
+      "channels": 1,
+      "format": "PCM16",
+      "seconds": 355,
+      "frames": 15655500,
+      "gain": 1,
+      "normalization": false,
+      "trim": null,
+      "voiceDiagnostic": false
+    }
+  },
+  "candidateSid": {
+    "path": "build/monty-reference-continuation/candidate/reconstructed.sid",
+    "sha256": "30750f2b85bb902c750f67b5d414a642aa1dd90f321dc22efbec5f2fa889653a",
+    "bytes": 5475
+  },
+  "roles": {
+    "reference": {
+      "path": "build/monty-independent-full/reference/reference.wav",
+      "sha256": "441988b6bfd7f4e5e080753af9fdd30d1f3243884b51f86a4f592c10ebe070d2",
+      "bytes": 31311044
+    },
+    "candidate": {
+      "path": "build/monty-reference-continuation/reconstructed.wav",
+      "sha256": "9eaa6533d17c9c45bb12d2e96b9b366f1aa6e7a9bdbbb6083d5827f219cff89e",
+      "bytes": 31311044
+    }
+  },
+  "comparison": {
+    "schemaVersion": 1,
+    "method": "same frame window from each input; original PCM preserved at unity gain",
+    "matching": "none",
+    "normalization": false,
+    "requestedWindowSeconds": [
+      340.0,
+      355.0
+    ],
+    "window": {
+      "startFrame": 14994000,
+      "endFrame": 15655500,
+      "frames": 661500,
+      "startSeconds": 340.0,
+      "endSeconds": 355.0,
+      "durationSeconds": 15.0
+    },
+    "sampleRate": 44100,
+    "channels": 1,
+    "gapFrames": 22050,
+    "gapSeconds": 0.5,
+    "comparison": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-reference-continuation/listening/ending-reference-then-ours.ab.wav",
+      "frames": 1345050,
+      "durationSeconds": 30.5,
+      "sha256": "49fc1a5d2ed68664cb5383049100bd5ee80cf9f8473f352ffd93bc566456bb5e"
+    },
+    "segments": [
+      {
+        "label": "A",
+        "startFrame": 0,
+        "endFrame": 661500
+      },
+      {
+        "label": "silence",
+        "startFrame": 661500,
+        "endFrame": 683550
+      },
+      {
+        "label": "B",
+        "startFrame": 683550,
+        "endFrame": 1345050
+      }
+    ],
+    "inputs": [
+      {
+        "label": "A",
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-independent-full/reference/reference.wav",
+        "sha256": "441988b6bfd7f4e5e080753af9fdd30d1f3243884b51f86a4f592c10ebe070d2",
+        "originalFrames": 15655500,
+        "window": {
+          "format": "PCM16",
+          "sampleRate": 44100,
+          "channels": 1,
+          "frames": 661500,
+          "durationSeconds": 15.0,
+          "peak": 11791,
+          "peakDbfs": -8.877985911855719,
+          "clippedSamples": 0,
+          "rms": 4256.454190102002,
+          "acRms": 4255.803412790664,
+          "acRmsDbfs": -17.729367529206826,
+          "perChannel": [
+            {
+              "dc": -74.42838246409676,
+              "rms": 4256.454190102002,
+              "acRms": 4255.803412790664
+            }
+          ]
+        },
+        "gain": 1,
+        "gainDb": 0
+      },
+      {
+        "label": "B",
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-reference-continuation/reconstructed.wav",
+        "sha256": "9eaa6533d17c9c45bb12d2e96b9b366f1aa6e7a9bdbbb6083d5827f219cff89e",
+        "originalFrames": 15655500,
+        "window": {
+          "format": "PCM16",
+          "sampleRate": 44100,
+          "channels": 1,
+          "frames": 661500,
+          "durationSeconds": 15.0,
+          "peak": 11945,
+          "peakDbfs": -8.765275617476425,
+          "clippedSamples": 0,
+          "rms": 4341.00693533126,
+          "acRms": 4338.254592481976,
+          "acRmsDbfs": -17.56269799521306,
+          "perChannel": [
+            {
+              "dc": -154.5584142101285,
+              "rms": 4341.00693533126,
+              "acRms": 4338.254592481976
+            }
+          ]
+        },
+        "gain": 1,
+        "gainDb": 0
+      }
+    ],
+    "listeningReview": null
+  },
+  "verification": {
+    "compiler": {
+      "descriptionSha256": "c1597b914360bc80d68323033423beb6286b95088e4d72f943bf53d8f89424fc",
+      "sidSha256": "30750f2b85bb902c750f67b5d414a642aa1dd90f321dc22efbec5f2fa889653a",
+      "checkedPlayCalls": 40000,
+      "orderedStoreComparison": {
+        "matchedStores": 373739,
+        "fields": [
+          "phase",
+          "tick",
+          "address",
+          "value"
+        ]
+      },
+      "stateComparison": {
+        "matchedCheckpoints": 9,
+        "fields": [
+          "globals",
+          "voices",
+          "sharedInstrumentBank"
+        ]
+      },
+      "toolSha256": {
+        "scripts/compose-monty.py": "e16668ece8dfbade0181e39a0e48a9cb118efd52af9586f0746001deb54c5a79",
+        "songs/players/monty.asm": "914c04341e8c6a0413646640ea1048dfb20e09b576e5d3c7a03db87bd65b8f31",
+        "songs/players/monty-effects.asm": "0948c435176bf3484fcb180598f3bd17a2c380863c2362db533e9445103921eb",
+        "scripts/monty_title_player.py": "cf630fe9dc030789ffab355a209fdecc4427efc72af94100ad1a8fd215709053",
+        "scripts/monty_title_score.py": "2349c9db37c531c298dbf8bf0209aff0b8f3c0bcc8a79449d56d8bb718f8f055",
+        "scripts/monty_title_programs.py": "fdb26391dfdb9a58fe7ca8d9c42305f5301391fcf747511f272445e8682ff570"
+      },
+      "supportedCallRange": {
+        "firstInclusive": 0,
+        "lastExclusive": 40000
+      },
+      "diagnosticExport": true,
+      "indefinitePlaybackSupported": false,
+      "finiteMusicalEnding": false
+    },
+    "source": {
+      "passed": true,
+      "calls": 40000,
+      "matchedOrderedStores": 373739,
+      "fields": [
+        "phase",
+        "tick",
+        "address",
+        "value"
+      ],
+      "sourceLedger": "evidence/monty-form/full40000/audit.writes.json.gz",
+      "sourceUncompressedSha256": "7a9021a04e20a4e9f482de5af4606b8cb7c19b06612395293a9868b875f24df5",
+      "candidateWritesSha256": "fc2375b9bf872e058204ea560891d81c7985944611154e2d439e4c140a2ab6d5",
+      "limits": "Ordered store identity, not within-call timing or PCM identity."
+    },
+    "vice": {
+      "schemaVersion": 1,
+      "evidenceLevel": "Executed 6510 program in headless VICE",
+      "sourceSha256": "30750f2b85bb902c750f67b5d414a642aa1dd90f321dc22efbec5f2fa889653a",
+      "oracleSha256": "fc2375b9bf872e058204ea560891d81c7985944611154e2d439e4c140a2ab6d5",
+      "harnessSha256": "529f02cd457f01d54b0283f1aab7e4a88b5a9d47b9488ebc28a2f3f78ab6a1e3",
+      "viceSha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285",
+      "profile": {
+        "loadAddress": 4096,
+        "endAddress": 9447,
+        "initAddress": 4096,
+        "playAddress": 4112,
+        "sidModel": "MOS6581",
+        "sidBases": [
+          54272
+        ]
+      },
+      "harnessLabels": {
+        "init_return": 49205,
+        "wait": 49205,
+        "call": 49212,
+        "play_return": 49215,
+        "check_count": 49223,
+        "leave": 49237,
+        "done": 49247
+      },
+      "verification": {
+        "matchedWrites": 2832,
+        "playCalls": 17801,
+        "firstCall": 17520,
+        "lastCall": 17800,
+        "frameCycles": 19656,
+        "maximumCadenceError": 7,
+        "cadenceTolerance": 9
+      },
+      "writers": {
+        "1050": {
+          "instruction": "STA $D418",
+          "opcodeHex": "8d18d4",
+          "addresses": [
+            "d418"
+          ],
+          "writes": 281
+        },
+        "11d3": {
+          "instruction": "STA $D401,Y",
+          "opcodeHex": "9901d4",
+          "addresses": [
+            "d401",
+            "d408",
+            "d40f"
+          ],
+          "writes": 17
+        },
+        "11dc": {
+          "instruction": "STA $D400,Y",
+          "opcodeHex": "9900d4",
+          "addresses": [
+            "d400",
+            "d407",
+            "d40e"
+          ],
+          "writes": 17
+        },
+        "1183": {
+          "instruction": "STA $D404,Y",
+          "opcodeHex": "9904d4",
+          "addresses": [
+            "d404",
+            "d40b",
+            "d412"
+          ],
+          "writes": 43
+        },
+        "11fb": {
+          "instruction": "STA $D402,Y",
+          "opcodeHex": "9902d4",
+          "addresses": [
+            "d402",
+            "d409",
+            "d410"
+          ],
+          "writes": 21
+        },
+        "1207": {
+          "instruction": "STA $D403,Y",
+          "opcodeHex": "9903d4",
+          "addresses": [
+            "d403",
+            "d40a",
+            "d411"
+          ],
+          "writes": 21
+        },
+        "1213": {
+          "instruction": "STA $D405,Y",
+          "opcodeHex": "9905d4",
+          "addresses": [
+            "d405",
+            "d40c",
+            "d413"
+          ],
+          "writes": 21
+        },
+        "121f": {
+          "instruction": "STA $D406,Y",
+          "opcodeHex": "9906d4",
+          "addresses": [
+            "d406",
+            "d40d",
+            "d414"
+          ],
+          "writes": 21
+        },
+        "13bc": {
+          "instruction": "STA $D401,Y",
+          "opcodeHex": "9901d4",
+          "addresses": [
+            "d408"
+          ],
+          "writes": 1
+        },
+        "1429": {
+          "instruction": "STA $D401,Y",
+          "opcodeHex": "9901d4",
+          "addresses": [
+            "d408",
+            "d40f"
+          ],
+          "writes": 275
+        },
+        "142f": {
+          "instruction": "STA $D400,Y",
+          "opcodeHex": "9900d4",
+          "addresses": [
+            "d407",
+            "d40e"
+          ],
+          "writes": 275
+        },
+        "12db": {
+          "instruction": "STA $D400,Y",
+          "opcodeHex": "9900d4",
+          "addresses": [
+            "d400",
+            "d407",
+            "d40e"
+          ],
+          "writes": 793
+        },
+        "12e1": {
+          "instruction": "STA $D401,Y",
+          "opcodeHex": "9901d4",
+          "addresses": [
+            "d401",
+            "d408",
+            "d40f"
+          ],
+          "writes": 793
+        },
+        "13cd": {
+          "instruction": "STA $D401,Y",
+          "opcodeHex": "9901d4",
+          "addresses": [
+            "d408"
+          ],
+          "writes": 12
+        },
+        "1256": {
+          "instruction": "STA $D405,Y",
+          "opcodeHex": "9905d4",
+          "addresses": [
+            "d405",
+            "d40c",
+            "d413"
+          ],
+          "writes": 9
+        },
+        "1259": {
+          "instruction": "STA $D406,Y",
+          "opcodeHex": "9906d4",
+          "addresses": [
+            "d406",
+            "d40d",
+            "d414"
+          ],
+          "writes": 9
+        },
+        "1340": {
+          "instruction": "STA $D403,Y",
+          "opcodeHex": "9903d4",
+          "addresses": [
+            "d403",
+            "d40a",
+            "d411"
+          ],
+          "writes": 47
+        },
+        "134c": {
+          "instruction": "STA $D402,Y",
+          "opcodeHex": "9902d4",
+          "addresses": [
+            "d402",
+            "d409",
+            "d410"
+          ],
+          "writes": 47
+        },
+        "13ff": {
+          "instruction": "STA $D401,Y",
+          "opcodeHex": "9901d4",
+          "addresses": [
+            "d408"
+          ],
+          "writes": 129
+        }
+      },
+      "limitations": "A controlled RAM harness calls the original init/play once per PAL frame with IRQs, sprites and display DMA disabled. This is not the original player boot environment. Tracepoint stopwatch/raster values describe monitor checkpoints, not exact SID bus-write cycles. Store values are decoded from unchanged store-source CPU registers and checked against an independent ordered-write oracle. No audio or listening verdict follows from this trace."
+    },
+    "tailSignal": {
+      "reference": {
+        "seconds": [
+          350.3,
+          355
+        ],
+        "acRmsDbfs": -18.355345698009643,
+        "peak": 10199,
+        "clippedSamples": 0
+      },
+      "corrected": {
+        "seconds": [
+          350.3,
+          355
+        ],
+        "acRmsDbfs": -18.369392476695936,
+        "peak": 10320,
+        "clippedSamples": 0
+      }
+    }
+  },
+  "listeningReview": null,
+  "reproduction": {
+    "workingDirectory": "repository root",
+    "freshOutputRequired": true,
+    "commands": [
+      [
+        "python3",
+        "scripts/setup-project.py",
+        "--only",
+        "references",
+        "--include",
+        "monty-on-the-run"
+      ],
+      [
+        "python3",
+        "scripts/compose-monty.py",
+        "songs/monty-title-source.json",
+        "--output",
+        "build/monty-reference-continuation-reproduce/candidate"
+      ],
+      [
+        "mkdir",
+        "-p",
+        "build/monty-reference-continuation-reproduce/reference"
+      ],
+      [
+        ".local/bin/render-sid",
+        ".local/monty-source.sid",
+        "build/monty-reference-continuation-reproduce/reference/reference.wav",
+        "355"
+      ],
+      [
+        ".local/bin/render-sid",
+        "build/monty-reference-continuation-reproduce/candidate/reconstructed.sid",
+        "build/monty-reference-continuation-reproduce/reconstructed.wav",
+        "355"
+      ],
+      [
+        "python3",
+        "scripts/compare-audio.py",
+        "window",
+        "build/monty-reference-continuation-reproduce/reference/reference.wav",
+        "build/monty-reference-continuation-reproduce/reconstructed.wav",
+        "build/monty-reference-continuation-reproduce/listening/ending-reference-then-ours",
+        "--start-seconds",
+        "340",
+        "--end-seconds",
+        "355",
+        "--gap-seconds",
+        "0.5"
+      ],
+      [
+        "python3",
+        "scripts/trace-sid-vice.py",
+        "build/monty-reference-continuation-reproduce/candidate/reconstructed.sid",
+        "--oracle",
+        "build/monty-reference-continuation-reproduce/candidate/writes.json",
+        "--first-call",
+        "17520",
+        "--last-call",
+        "17800",
+        "--timeout",
+        "180",
+        "--output",
+        "build/monty-reference-continuation-reproduce/vice"
+      ]
+    ],
+    "notes": [
+      "Use PYTHONPATH=.tools/test-deps for compilation.",
+      "Wait for each renderer to exit successfully before comparing WAVs.",
+      "Compare compiled writes with evidence/monty-form/full40000/audit.writes.json.gz using the ordered fields phase, tick, address and value."
+    ]
+  },
+  "limits": [
+    "The 355-second capture covers the first complete score cycle and the start of the next; capture end is not a composed musical stop.",
+    "The no-ending player is verified for 40000 calls, not indefinite playback.",
+    "Ordered stores and levels do not establish PCM identity or listening acceptance."
+  ],
+  "publication": "Original SID, reference WAV and reference-containing A/B WAVs stay in ignored .local/ or build/, never Git or LFS."
+}
