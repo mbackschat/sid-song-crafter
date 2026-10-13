@@ -1,0 +1,54 @@
+{
+  "source": {
+    "path": ".local/rambo-source.sid",
+    "bytes": 16805,
+    "sha256": "88a2b538ee3d3d1d8b0b754bef77a63d9750812694786977ae8c539f6ecd000e"
+  },
+  "primarySource": {
+    "path": ".tools/martin-galway-c64/rambload.asm",
+    "bytes": 43766,
+    "sha256": "78e7927e6c2e8f7d42c18d2e02bec764a2911d2d8180cec789020bdd60cdbb75"
+  },
+  "mapping": {
+    "path": "build/rambo-form/mapping64-complete/mapping.json",
+    "bytes": 12650,
+    "sha256": "2193ce9538aebb25d5823f0ba6510967c1e3b84b6df910428d0f3d9227644a5b"
+  },
+  "mappingVerification": {
+    "path": "build/rambo-form/mapping64-complete/mapping-verification.json",
+    "bytes": 1979,
+    "sha256": "2e76bb727dddd20f3cf6ef09ea36c993bf28ea584082d74ebbee9118e2a09b11"
+  },
+  "openingLedger": {
+    "path": "build/rambo-intake/audit64.writes.json",
+    "bytes": 47348,
+    "sha256": "25b08f2edc0f700cc0d29dc2ec6aebc8472324613b4199ad1ba6aa75ea6f5653"
+  },
+  "executedProbe": {
+    "path": "build/rambo-form/form-probe.py",
+    "bytes": 13591,
+    "sha256": "9adc94e5df1372be0ac9f644e955ec80cd7c60e99a26d35b4b941e5858d54bb8"
+  },
+  "tools": {
+    "psid_audit.py": {
+      "path": "scripts/psid_audit.py",
+      "bytes": 10095,
+      "sha256": "4446a19a325e625e59f100aac0b186478fb1633f65886b260db2ad3da11419a5"
+    },
+    "psid_profile.py": {
+      "path": "scripts/psid_profile.py",
+      "bytes": 4337,
+      "sha256": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff"
+    },
+    "sid_audit_host.py": {
+      "path": "scripts/sid_audit_host.py",
+      "bytes": 3146,
+      "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+    },
+    "verify_player.py": {
+      "path": "scripts/verify_player.py",
+      "bytes": 9535,
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    }
+  }
+}

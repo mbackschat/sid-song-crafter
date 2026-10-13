@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "path": ".local/rambo-source.sid",
+    "bytes": 16805,
+    "sha256": "88a2b538ee3d3d1d8b0b754bef77a63d9750812694786977ae8c539f6ecd000e"
+  },
+  "primarySource": {
+    "path": ".tools/martin-galway-c64/rambload.asm",
+    "bytes": 43766,
+    "sha256": "78e7927e6c2e8f7d42c18d2e02bec764a2911d2d8180cec789020bdd60cdbb75"
+  },
+  "primaryRevision": "a458a3687e27a63647bbe41968094f0e6d0965a0",
+  "profile": "pal-banked",
+  "selectedSubtune": 1,
+  "probe": {
+    "path": "build/rambo-form/probe.py",
+    "bytes": 8001,
+    "sha256": "78f3bae3a1da758a66311be734600eb49b44dc5dbcdc46c72a823fdd6e2e1e9e"
+  },
+  "sourceUnchanged": true,
+  "tools": {
+    "psid_audit.py": "4446a19a325e625e59f100aac0b186478fb1633f65886b260db2ad3da11419a5",
+    "psid_profile.py": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "artifacts": {
+    "mapping.json": {
+      "path": "build/rambo-form/mapping64-complete/mapping.json",
+      "bytes": 12650,
+      "sha256": "2193ce9538aebb25d5823f0ba6510967c1e3b84b6df910428d0f3d9227644a5b"
+    },
+    "selected-instructions.json": {
+      "path": "build/rambo-form/mapping64-complete/selected-instructions.json",
+      "bytes": 338096,
+      "sha256": "d749ffce08b454b24336cc7d27fd1c3b1b3bf6cb4faf721bd56e3f540c106302"
+    },
+    "dispatches.json": {
+      "path": "build/rambo-form/mapping64-complete/dispatches.json",
+      "bytes": 9294,
+      "sha256": "a16eab6eca9c75344487c61c2d6a4d21fd886101e7d78084a9491a8193967380"
+    },
+    "call-states.json": {
+      "path": "build/rambo-form/mapping64-complete/call-states.json",
+      "bytes": 27149,
+      "sha256": "0e62c36d57cc0e6aa4bb0da0676ea8ccdafe5f7b529682d1c3d18733a0b602e8"
+    },
+    "visits.json": {
+      "path": "build/rambo-form/mapping64-complete/visits.json",
+      "bytes": 22453,
+      "sha256": "b67299ab708f7503bd8cadb086846251642629d830cb7180c8bcf06afa98545f"
+    },
+    "audit.json": {
+      "path": "build/rambo-form/mapping64-complete/audit.json",
+      "bytes": 3479,
+      "sha256": "816841e4e6d8b4ff440f42aac6d2662f4b2521b043009a8b8e7e3678fa4e1bb1"
+    },
+    "writes.json": {
+      "path": "build/rambo-form/mapping64-complete/writes.json",
+      "bytes": 68121,
+      "sha256": "4eef98451e72a7982ab26f08fc9859bbb233acb62c6ad603367d7984ac8eceba"
+    }
+  },
+  "calls": 64,
+  "limits": "Bounded score-dispatch mapping only. Selected executed instructions and named state; no full RAM, relocation-copy values, payload, sound model, measured dispatch cadence or complete-form claim."
+}

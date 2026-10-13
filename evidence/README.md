@@ -22,6 +22,7 @@ Use [the archive and cache workflow](../docs/workflows/build-cache.md) to instal
 | Ghouls canonical SID write-window correction, frozen rejection and 64-call CPU/VICE proof | [Bounded execution and reproduction](../docs/research/composition/ghouls-preparation.md#callable-admission-and-execution-boundary), [shared write-window contract](../docs/validation/psid-audit.md#canonical-sid-write-windows) |
 | Deflektor high-RAM execution, unchanged source and shared-host regressions | [Deflektor CPU/VICE proof](../docs/research/composition/deflektor-preparation.md#bounded-cpu-and-vice-verification), [host placement and return sites](../docs/validation/psid-audit.md#place-the-host-around-a-high-ram-reference) |
 | Deflektor finite score, independent expansion and VICE stop window | [Executed finite score form](../docs/research/composition/deflektor-preparation.md#executed-finite-score-form) |
+| Rambo finite loader, score-stack arithmetic and VICE final stores | [Executed command grammar](../docs/research/composition/rambo-preparation.md#executed-command-grammar-and-stream-addresses), [finite traversal](../docs/research/composition/rambo-preparation.md#finite-traversal-and-natural-stop) |
 | Take On Me, Billie Jean, Airwolf and Ghostbusters pinned intake | [Source attribution, bounded execution and remaining contracts](../docs/research/composition/pop-theme-preparation.md) |
 | CPU timing correction | [Opcode timing finding](../docs/validation/cpu-timing.md) |
 

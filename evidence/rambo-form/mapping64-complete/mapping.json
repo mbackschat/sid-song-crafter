@@ -1,0 +1,652 @@
+{
+  "refresh": 9734,
+  "refreshInstructions": [
+    {
+      "pc": 9734,
+      "bytes": "209f20",
+      "assembly": "JSR $209f"
+    },
+    {
+      "pc": 9737,
+      "bytes": "207423",
+      "assembly": "JSR $2374"
+    },
+    {
+      "pc": 9740,
+      "bytes": "4c0f26",
+      "assembly": "JMP $260f"
+    }
+  ],
+  "voices": [
+    {
+      "voice": 0,
+      "entry": 8351,
+      "read": 8374,
+      "fetch": 8376,
+      "dispatch": 8408,
+      "controlTable": 10985,
+      "slots": [
+        {
+          "opcode": 192,
+          "target": 8573
+        },
+        {
+          "opcode": 194,
+          "target": 8643
+        },
+        {
+          "opcode": 196,
+          "target": 0
+        },
+        {
+          "opcode": 198,
+          "target": 8659
+        },
+        {
+          "opcode": 200,
+          "target": 8665
+        },
+        {
+          "opcode": 202,
+          "target": 8701
+        },
+        {
+          "opcode": 204,
+          "target": 8733
+        },
+        {
+          "opcode": 206,
+          "target": 8723
+        },
+        {
+          "opcode": 208,
+          "target": 8740
+        },
+        {
+          "opcode": 210,
+          "target": 0
+        },
+        {
+          "opcode": 212,
+          "target": 8692
+        },
+        {
+          "opcode": 214,
+          "target": 8746
+        },
+        {
+          "opcode": 216,
+          "target": 8677
+        },
+        {
+          "opcode": 218,
+          "target": 8597
+        },
+        {
+          "opcode": 220,
+          "target": 8624
+        }
+      ],
+      "initialStream": 11488,
+      "entryInstructions": [
+        {
+          "pc": 8351,
+          "bytes": "a519",
+          "assembly": "LDA $19"
+        },
+        {
+          "pc": 8353,
+          "bytes": "4a",
+          "assembly": "LSR A"
+        },
+        {
+          "pc": 8354,
+          "bytes": "9004",
+          "assembly": "BCC $20a8"
+        },
+        {
+          "pc": 8356,
+          "bytes": "c61a",
+          "assembly": "DEC $1a"
+        },
+        {
+          "pc": 8358,
+          "bytes": "f00e",
+          "assembly": "BEQ $20b6"
+        },
+        {
+          "pc": 8360,
+          "bytes": "4c3122",
+          "assembly": "JMP $2231"
+        },
+        {
+          "pc": 8363,
+          "bytes": "a903",
+          "assembly": "LDA #$03"
+        },
+        {
+          "pc": 8365,
+          "bytes": "18",
+          "assembly": "CLC"
+        },
+        {
+          "pc": 8366,
+          "bytes": "6510",
+          "assembly": "ADC $10"
+        }
+      ],
+      "readInstructions": [
+        {
+          "pc": 8374,
+          "bytes": "a000",
+          "assembly": "LDY #$00"
+        },
+        {
+          "pc": 8376,
+          "bytes": "b110",
+          "assembly": "LDA ($10),Y"
+        },
+        {
+          "pc": 8378,
+          "bytes": "c9c0",
+          "assembly": "CMP #$c0"
+        },
+        {
+          "pc": 8380,
+          "bytes": "9020",
+          "assembly": "BCC $20de"
+        },
+        {
+          "pc": 8382,
+          "bytes": "293f",
+          "assembly": "AND #$3f"
+        },
+        {
+          "pc": 8384,
+          "bytes": "aa",
+          "assembly": "TAX"
+        },
+        {
+          "pc": 8385,
+          "bytes": "bde92a",
+          "assembly": "LDA $2ae9,X"
+        },
+        {
+          "pc": 8388,
+          "bytes": "8dd920",
+          "assembly": "STA $20d9"
+        },
+        {
+          "pc": 8391,
+          "bytes": "bdea2a",
+          "assembly": "LDA $2aea,X"
+        },
+        {
+          "pc": 8394,
+          "bytes": "8dda20",
+          "assembly": "STA $20da"
+        },
+        {
+          "pc": 8397,
+          "bytes": "c8",
+          "assembly": "INY"
+        },
+        {
+          "pc": 8398,
+          "bytes": "b110",
+          "assembly": "LDA ($10),Y"
+        },
+        {
+          "pc": 8400,
+          "bytes": "aa",
+          "assembly": "TAX"
+        },
+        {
+          "pc": 8401,
+          "bytes": "8516",
+          "assembly": "STA $16"
+        },
+        {
+          "pc": 8403,
+          "bytes": "c8",
+          "assembly": "INY"
+        },
+        {
+          "pc": 8404,
+          "bytes": "b110",
+          "assembly": "LDA ($10),Y"
+        },
+        {
+          "pc": 8406,
+          "bytes": "8517",
+          "assembly": "STA $17"
+        },
+        {
+          "pc": 8408,
+          "bytes": "4cffff",
+          "assembly": "JMP $ffff"
+        }
+      ]
+    },
+    {
+      "voice": 1,
+      "entry": 9076,
+      "read": 9100,
+      "fetch": 9102,
+      "dispatch": 9134,
+      "controlTable": 11045,
+      "slots": [
+        {
+          "opcode": 192,
+          "target": 9282
+        },
+        {
+          "opcode": 194,
+          "target": 9352
+        },
+        {
+          "opcode": 196,
+          "target": 9380
+        },
+        {
+          "opcode": 198,
+          "target": 9368
+        },
+        {
+          "opcode": 200,
+          "target": 9374
+        },
+        {
+          "opcode": 202,
+          "target": 9395
+        },
+        {
+          "opcode": 204,
+          "target": 1
+        },
+        {
+          "opcode": 206,
+          "target": 9417
+        },
+        {
+          "opcode": 208,
+          "target": 9427
+        },
+        {
+          "opcode": 210,
+          "target": 1
+        },
+        {
+          "opcode": 212,
+          "target": 1
+        },
+        {
+          "opcode": 214,
+          "target": 9433
+        },
+        {
+          "opcode": 216,
+          "target": 1
+        },
+        {
+          "opcode": 218,
+          "target": 9306
+        },
+        {
+          "opcode": 220,
+          "target": 9333
+        }
+      ],
+      "initialStream": 12334,
+      "entryInstructions": [
+        {
+          "pc": 9076,
+          "bytes": "a519",
+          "assembly": "LDA $19"
+        },
+        {
+          "pc": 9078,
+          "bytes": "2902",
+          "assembly": "AND #$02"
+        },
+        {
+          "pc": 9080,
+          "bytes": "f004",
+          "assembly": "BEQ $237e"
+        },
+        {
+          "pc": 9082,
+          "bytes": "c61b",
+          "assembly": "DEC $1b"
+        },
+        {
+          "pc": 9084,
+          "bytes": "f00e",
+          "assembly": "BEQ $238c"
+        },
+        {
+          "pc": 9086,
+          "bytes": "4ce024",
+          "assembly": "JMP $24e0"
+        },
+        {
+          "pc": 9089,
+          "bytes": "a903",
+          "assembly": "LDA #$03"
+        },
+        {
+          "pc": 9091,
+          "bytes": "18",
+          "assembly": "CLC"
+        },
+        {
+          "pc": 9092,
+          "bytes": "6512",
+          "assembly": "ADC $12"
+        }
+      ],
+      "readInstructions": [
+        {
+          "pc": 9100,
+          "bytes": "a000",
+          "assembly": "LDY #$00"
+        },
+        {
+          "pc": 9102,
+          "bytes": "b112",
+          "assembly": "LDA ($12),Y"
+        },
+        {
+          "pc": 9104,
+          "bytes": "c9c0",
+          "assembly": "CMP #$c0"
+        },
+        {
+          "pc": 9106,
+          "bytes": "9020",
+          "assembly": "BCC $23b4"
+        },
+        {
+          "pc": 9108,
+          "bytes": "293f",
+          "assembly": "AND #$3f"
+        },
+        {
+          "pc": 9110,
+          "bytes": "aa",
+          "assembly": "TAX"
+        },
+        {
+          "pc": 9111,
+          "bytes": "bd252b",
+          "assembly": "LDA $2b25,X"
+        },
+        {
+          "pc": 9114,
+          "bytes": "8daf23",
+          "assembly": "STA $23af"
+        },
+        {
+          "pc": 9117,
+          "bytes": "bd262b",
+          "assembly": "LDA $2b26,X"
+        },
+        {
+          "pc": 9120,
+          "bytes": "8db023",
+          "assembly": "STA $23b0"
+        },
+        {
+          "pc": 9123,
+          "bytes": "c8",
+          "assembly": "INY"
+        },
+        {
+          "pc": 9124,
+          "bytes": "b112",
+          "assembly": "LDA ($12),Y"
+        },
+        {
+          "pc": 9126,
+          "bytes": "aa",
+          "assembly": "TAX"
+        },
+        {
+          "pc": 9127,
+          "bytes": "8516",
+          "assembly": "STA $16"
+        },
+        {
+          "pc": 9129,
+          "bytes": "c8",
+          "assembly": "INY"
+        },
+        {
+          "pc": 9130,
+          "bytes": "b112",
+          "assembly": "LDA ($12),Y"
+        },
+        {
+          "pc": 9132,
+          "bytes": "8517",
+          "assembly": "STA $17"
+        },
+        {
+          "pc": 9134,
+          "bytes": "4cffff",
+          "assembly": "JMP $ffff"
+        }
+      ]
+    },
+    {
+      "voice": 2,
+      "entry": 9743,
+      "read": 9767,
+      "fetch": 9769,
+      "dispatch": 9801,
+      "controlTable": 11015,
+      "slots": [
+        {
+          "opcode": 192,
+          "target": 9966
+        },
+        {
+          "opcode": 194,
+          "target": 10036
+        },
+        {
+          "opcode": 196,
+          "target": 10052
+        },
+        {
+          "opcode": 198,
+          "target": 10058
+        },
+        {
+          "opcode": 200,
+          "target": 2
+        },
+        {
+          "opcode": 202,
+          "target": 10085
+        },
+        {
+          "opcode": 204,
+          "target": 10117
+        },
+        {
+          "opcode": 206,
+          "target": 10107
+        },
+        {
+          "opcode": 208,
+          "target": 10124
+        },
+        {
+          "opcode": 210,
+          "target": 10070
+        },
+        {
+          "opcode": 212,
+          "target": 2
+        },
+        {
+          "opcode": 214,
+          "target": 10130
+        },
+        {
+          "opcode": 216,
+          "target": 10064
+        },
+        {
+          "opcode": 218,
+          "target": 9990
+        },
+        {
+          "opcode": 220,
+          "target": 10017
+        }
+      ],
+      "initialStream": 11980,
+      "entryInstructions": [
+        {
+          "pc": 9743,
+          "bytes": "a519",
+          "assembly": "LDA $19"
+        },
+        {
+          "pc": 9745,
+          "bytes": "2904",
+          "assembly": "AND #$04"
+        },
+        {
+          "pc": 9747,
+          "bytes": "f004",
+          "assembly": "BEQ $2619"
+        },
+        {
+          "pc": 9749,
+          "bytes": "c61c",
+          "assembly": "DEC $1c"
+        },
+        {
+          "pc": 9751,
+          "bytes": "f00e",
+          "assembly": "BEQ $2627"
+        },
+        {
+          "pc": 9753,
+          "bytes": "4c9927",
+          "assembly": "JMP $2799"
+        },
+        {
+          "pc": 9756,
+          "bytes": "a903",
+          "assembly": "LDA #$03"
+        },
+        {
+          "pc": 9758,
+          "bytes": "18",
+          "assembly": "CLC"
+        },
+        {
+          "pc": 9759,
+          "bytes": "6514",
+          "assembly": "ADC $14"
+        }
+      ],
+      "readInstructions": [
+        {
+          "pc": 9767,
+          "bytes": "a000",
+          "assembly": "LDY #$00"
+        },
+        {
+          "pc": 9769,
+          "bytes": "b114",
+          "assembly": "LDA ($14),Y"
+        },
+        {
+          "pc": 9771,
+          "bytes": "c9c0",
+          "assembly": "CMP #$c0"
+        },
+        {
+          "pc": 9773,
+          "bytes": "9020",
+          "assembly": "BCC $264f"
+        },
+        {
+          "pc": 9775,
+          "bytes": "293f",
+          "assembly": "AND #$3f"
+        },
+        {
+          "pc": 9777,
+          "bytes": "aa",
+          "assembly": "TAX"
+        },
+        {
+          "pc": 9778,
+          "bytes": "bd072b",
+          "assembly": "LDA $2b07,X"
+        },
+        {
+          "pc": 9781,
+          "bytes": "8d4a26",
+          "assembly": "STA $264a"
+        },
+        {
+          "pc": 9784,
+          "bytes": "bd082b",
+          "assembly": "LDA $2b08,X"
+        },
+        {
+          "pc": 9787,
+          "bytes": "8d4b26",
+          "assembly": "STA $264b"
+        },
+        {
+          "pc": 9790,
+          "bytes": "c8",
+          "assembly": "INY"
+        },
+        {
+          "pc": 9791,
+          "bytes": "b114",
+          "assembly": "LDA ($14),Y"
+        },
+        {
+          "pc": 9793,
+          "bytes": "aa",
+          "assembly": "TAX"
+        },
+        {
+          "pc": 9794,
+          "bytes": "8516",
+          "assembly": "STA $16"
+        },
+        {
+          "pc": 9796,
+          "bytes": "c8",
+          "assembly": "INY"
+        },
+        {
+          "pc": 9797,
+          "bytes": "b114",
+          "assembly": "LDA ($14),Y"
+        },
+        {
+          "pc": 9799,
+          "bytes": "8517",
+          "assembly": "STA $17"
+        },
+        {
+          "pc": 9801,
+          "bytes": "4cffff",
+          "assembly": "JMP $ffff"
+        }
+      ]
+    }
+  ]
+}

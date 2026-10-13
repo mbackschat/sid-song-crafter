@@ -1,0 +1,524 @@
+[
+  {
+    "kind": "fetch",
+    "voice": 0,
+    "stream": 11488,
+    "upcomingBytes": [
+      191,
+      50,
+      212,
+      111
+    ],
+    "state": {
+      "activeMask": 7,
+      "mainTarget": 9734,
+      "voices": [
+        {
+          "voice": 0,
+          "stream": 11488,
+          "remaining": 0,
+          "stackIndex": 7
+        },
+        {
+          "voice": 1,
+          "stream": 12334,
+          "remaining": 1,
+          "stackIndex": 7
+        },
+        {
+          "voice": 2,
+          "stream": 11980,
+          "remaining": 1,
+          "stackIndex": 7
+        }
+      ]
+    },
+    "call": 0,
+    "instructionStartCycle": 62,
+    "pc": 8376,
+    "bytes": "b110",
+    "assembly": "LDA ($10),Y",
+    "a": 3,
+    "x": 6,
+    "y": 0,
+    "status": 39,
+    "sp": 251
+  },
+  {
+    "kind": "fetch",
+    "voice": 1,
+    "stream": 12334,
+    "upcomingBytes": [
+      96,
+      50,
+      196,
+      67
+    ],
+    "state": {
+      "activeMask": 7,
+      "mainTarget": 9734,
+      "voices": [
+        {
+          "voice": 0,
+          "stream": 11490,
+          "remaining": 50,
+          "stackIndex": 7
+        },
+        {
+          "voice": 1,
+          "stream": 12334,
+          "remaining": 0,
+          "stackIndex": 7
+        },
+        {
+          "voice": 2,
+          "stream": 11980,
+          "remaining": 1,
+          "stackIndex": 7
+        }
+      ]
+    },
+    "call": 0,
+    "instructionStartCycle": 159,
+    "pc": 9102,
+    "bytes": "b112",
+    "assembly": "LDA ($12),Y",
+    "a": 2,
+    "x": 0,
+    "y": 0,
+    "status": 38,
+    "sp": 251
+  },
+  {
+    "kind": "fetch",
+    "voice": 2,
+    "stream": 11980,
+    "upcomingBytes": [
+      96,
+      50,
+      191,
+      0
+    ],
+    "state": {
+      "activeMask": 7,
+      "mainTarget": 9734,
+      "voices": [
+        {
+          "voice": 0,
+          "stream": 11490,
+          "remaining": 50,
+          "stackIndex": 7
+        },
+        {
+          "voice": 1,
+          "stream": 12336,
+          "remaining": 50,
+          "stackIndex": 7
+        },
+        {
+          "voice": 2,
+          "stream": 11980,
+          "remaining": 0,
+          "stackIndex": 7
+        }
+      ]
+    },
+    "call": 0,
+    "instructionStartCycle": 1019,
+    "pc": 9769,
+    "bytes": "b114",
+    "assembly": "LDA ($14),Y",
+    "a": 4,
+    "x": 169,
+    "y": 0,
+    "status": 38,
+    "sp": 253
+  },
+  {
+    "kind": "fetch",
+    "voice": 0,
+    "stream": 11490,
+    "upcomingBytes": [
+      212,
+      111,
+      49,
+      218
+    ],
+    "state": {
+      "activeMask": 7,
+      "mainTarget": 9734,
+      "voices": [
+        {
+          "voice": 0,
+          "stream": 11490,
+          "remaining": 0,
+          "stackIndex": 7
+        },
+        {
+          "voice": 1,
+          "stream": 12336,
+          "remaining": 1,
+          "stackIndex": 7
+        },
+        {
+          "voice": 2,
+          "stream": 11982,
+          "remaining": 1,
+          "stackIndex": 7
+        }
+      ]
+    },
+    "call": 50,
+    "instructionStartCycle": 62,
+    "pc": 8376,
+    "bytes": "b110",
+    "assembly": "LDA ($10),Y",
+    "a": 3,
+    "x": 104,
+    "y": 0,
+    "status": 39,
+    "sp": 251
+  },
+  {
+    "kind": "control-dispatch",
+    "voice": 0,
+    "target": 8692,
+    "state": {
+      "activeMask": 7,
+      "mainTarget": 9734,
+      "voices": [
+        {
+          "voice": 0,
+          "stream": 11490,
+          "remaining": 0,
+          "stackIndex": 7
+        },
+        {
+          "voice": 1,
+          "stream": 12336,
+          "remaining": 1,
+          "stackIndex": 7
+        },
+        {
+          "voice": 2,
+          "stream": 11982,
+          "remaining": 1,
+          "stackIndex": 7
+        }
+      ]
+    },
+    "call": 50,
+    "instructionStartCycle": 113,
+    "pc": 8408,
+    "bytes": "4cf421",
+    "assembly": "JMP $21f4",
+    "a": 49,
+    "x": 111,
+    "y": 2,
+    "status": 37,
+    "sp": 251
+  },
+  {
+    "kind": "fetch",
+    "voice": 1,
+    "stream": 12336,
+    "upcomingBytes": [
+      196,
+      67,
+      43,
+      191
+    ],
+    "state": {
+      "activeMask": 7,
+      "mainTarget": 12555,
+      "voices": [
+        {
+          "voice": 0,
+          "stream": 11490,
+          "remaining": 255,
+          "stackIndex": 7
+        },
+        {
+          "voice": 1,
+          "stream": 12336,
+          "remaining": 0,
+          "stackIndex": 7
+        },
+        {
+          "voice": 2,
+          "stream": 11982,
+          "remaining": 1,
+          "stackIndex": 7
+        }
+      ]
+    },
+    "call": 50,
+    "instructionStartCycle": 249,
+    "pc": 9102,
+    "bytes": "b112",
+    "assembly": "LDA ($12),Y",
+    "a": 2,
+    "x": 0,
+    "y": 0,
+    "status": 39,
+    "sp": 247
+  },
+  {
+    "kind": "control-dispatch",
+    "voice": 1,
+    "target": 9380,
+    "state": {
+      "activeMask": 7,
+      "mainTarget": 12555,
+      "voices": [
+        {
+          "voice": 0,
+          "stream": 11490,
+          "remaining": 255,
+          "stackIndex": 7
+        },
+        {
+          "voice": 1,
+          "stream": 12336,
+          "remaining": 0,
+          "stackIndex": 7
+        },
+        {
+          "voice": 2,
+          "stream": 11982,
+          "remaining": 1,
+          "stackIndex": 7
+        }
+      ]
+    },
+    "call": 50,
+    "instructionStartCycle": 300,
+    "pc": 9134,
+    "bytes": "4ca424",
+    "assembly": "JMP $24a4",
+    "a": 43,
+    "x": 67,
+    "y": 2,
+    "status": 37,
+    "sp": 247
+  },
+  {
+    "kind": "fetch",
+    "voice": 1,
+    "stream": 12339,
+    "upcomingBytes": [
+      191,
+      0,
+      218,
+      14
+    ],
+    "state": {
+      "activeMask": 7,
+      "mainTarget": 12555,
+      "voices": [
+        {
+          "voice": 0,
+          "stream": 11490,
+          "remaining": 255,
+          "stackIndex": 7
+        },
+        {
+          "voice": 1,
+          "stream": 12339,
+          "remaining": 0,
+          "stackIndex": 7
+        },
+        {
+          "voice": 2,
+          "stream": 11982,
+          "remaining": 1,
+          "stackIndex": 7
+        }
+      ]
+    },
+    "call": 50,
+    "instructionStartCycle": 820,
+    "pc": 9102,
+    "bytes": "b112",
+    "assembly": "LDA ($12),Y",
+    "a": 51,
+    "x": 255,
+    "y": 0,
+    "status": 38,
+    "sp": 247
+  },
+  {
+    "kind": "fetch",
+    "voice": 2,
+    "stream": 11982,
+    "upcomingBytes": [
+      191,
+      0,
+      196,
+      67
+    ],
+    "state": {
+      "activeMask": 7,
+      "mainTarget": 12555,
+      "voices": [
+        {
+          "voice": 0,
+          "stream": 11490,
+          "remaining": 255,
+          "stackIndex": 7
+        },
+        {
+          "voice": 1,
+          "stream": 12341,
+          "remaining": 0,
+          "stackIndex": 7
+        },
+        {
+          "voice": 2,
+          "stream": 11982,
+          "remaining": 0,
+          "stackIndex": 7
+        }
+      ]
+    },
+    "call": 50,
+    "instructionStartCycle": 1086,
+    "pc": 9769,
+    "bytes": "b114",
+    "assembly": "LDA ($14),Y",
+    "a": 4,
+    "x": 174,
+    "y": 0,
+    "status": 38,
+    "sp": 249
+  },
+  {
+    "kind": "fetch",
+    "voice": 0,
+    "stream": 11493,
+    "upcomingBytes": [
+      218,
+      3,
+      191,
+      0
+    ],
+    "state": {
+      "activeMask": 7,
+      "mainTarget": 12555,
+      "voices": [
+        {
+          "voice": 0,
+          "stream": 11493,
+          "remaining": 255,
+          "stackIndex": 7
+        },
+        {
+          "voice": 1,
+          "stream": 12341,
+          "remaining": 0,
+          "stackIndex": 7
+        },
+        {
+          "voice": 2,
+          "stream": 11984,
+          "remaining": 0,
+          "stackIndex": 7
+        }
+      ]
+    },
+    "call": 50,
+    "instructionStartCycle": 1351,
+    "pc": 8376,
+    "bytes": "b110",
+    "assembly": "LDA ($10),Y",
+    "a": 229,
+    "x": 134,
+    "y": 0,
+    "status": 38,
+    "sp": 251
+  },
+  {
+    "kind": "control-dispatch",
+    "voice": 0,
+    "target": 8597,
+    "state": {
+      "activeMask": 7,
+      "mainTarget": 12555,
+      "voices": [
+        {
+          "voice": 0,
+          "stream": 11493,
+          "remaining": 255,
+          "stackIndex": 7
+        },
+        {
+          "voice": 1,
+          "stream": 12341,
+          "remaining": 0,
+          "stackIndex": 7
+        },
+        {
+          "voice": 2,
+          "stream": 11984,
+          "remaining": 0,
+          "stackIndex": 7
+        }
+      ]
+    },
+    "call": 50,
+    "instructionStartCycle": 1404,
+    "pc": 8408,
+    "bytes": "4c9521",
+    "assembly": "JMP $2195",
+    "a": 191,
+    "x": 3,
+    "y": 2,
+    "status": 165,
+    "sp": 251
+  },
+  {
+    "kind": "fetch",
+    "voice": 0,
+    "stream": 11495,
+    "upcomingBytes": [
+      191,
+      0,
+      220,
+      212
+    ],
+    "state": {
+      "activeMask": 7,
+      "mainTarget": 12555,
+      "voices": [
+        {
+          "voice": 0,
+          "stream": 11495,
+          "remaining": 255,
+          "stackIndex": 6
+        },
+        {
+          "voice": 1,
+          "stream": 12341,
+          "remaining": 0,
+          "stackIndex": 7
+        },
+        {
+          "voice": 2,
+          "stream": 11984,
+          "remaining": 0,
+          "stackIndex": 7
+        }
+      ]
+    },
+    "call": 50,
+    "instructionStartCycle": 1463,
+    "pc": 8376,
+    "bytes": "b110",
+    "assembly": "LDA ($10),Y",
+    "a": 231,
+    "x": 7,
+    "y": 0,
+    "status": 38,
+    "sp": 251
+  }
+]
