@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    30.0,
+    43.5
+  ],
+  "window": {
+    "startFrame": 1323000,
+    "endFrame": 1918350,
+    "frames": 595350,
+    "startSeconds": 30.0,
+    "endSeconds": 43.5,
+    "durationSeconds": 13.5
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-groove-subtraction-v1/cache/prior-comparison/3165bc808843fa4f3d74cbc949cbd4433ef8dfc27529277a262647a032f5bc01/attempt-0d940cf6278740799785071c6ee1eff0/prior-then-without-a3.ab.wav",
+    "frames": 1212750,
+    "durationSeconds": 27.5,
+    "sha256": "229a0b71d0e978a7be289d5cdf3f9cf94ecdba9e1628a5940549e2607422fe1e"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 595350
+    },
+    {
+      "label": "silence",
+      "startFrame": 595350,
+      "endFrame": 617400
+    },
+    {
+      "label": "B",
+      "startFrame": 617400,
+      "endFrame": 1212750
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-groove-subtraction-v1/cache/prior/eb27b93fd8cfec9b25eff19b3c159bc134b80250c8664fb899697fdbad5abbac/attempt-421e80fc87184983a72f7f8ede4c7e57/song/native-song.wav",
+      "sha256": "6b54d36eebbae35b45c56fa0d4bdd1169ba5adc8fa3c104f06d73a3c97099ab8",
+      "originalFrames": 3886221,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 595350,
+        "durationSeconds": 13.5,
+        "peak": 9214,
+        "peakDbfs": -11.020034540861142,
+        "clippedSamples": 0,
+        "rms": 2925.9639485966745,
+        "acRms": 2912.8643535189926,
+        "acRmsDbfs": -21.022593482369434,
+        "perChannel": [
+          {
+            "dc": 276.5615419501134,
+            "rms": 2925.9639485966745,
+            "acRms": 2912.8643535189926
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-groove-subtraction-v1/cache/candidate/bbd5a2d676c42463930d7d5f2c6edd9b889c4d70f771de78cba7da6350155eb5/attempt-f903f0df52de4f82a87ccd34c7f1fafb/song/native-song.wav",
+      "sha256": "b549235ba9f5c1720a7b6cc9ad1f449ae96ef21e13481989ad2acbcb5c1e81a8",
+      "originalFrames": 3886221,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 595350,
+        "durationSeconds": 13.5,
+        "peak": 8357,
+        "peakDbfs": -11.867990655850882,
+        "clippedSamples": 0,
+        "rms": 2729.614679456029,
+        "acRms": 2729.5758910656864,
+        "acRmsDbfs": -21.587095227084824,
+        "perChannel": [
+          {
+            "dc": 14.551742672377593,
+            "rms": 2729.614679456029,
+            "acRms": 2729.5758910656864
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

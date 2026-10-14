@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-14",
+  "purpose": "Bounded subtraction diagnostic; human component identification and musical acceptance pending",
+  "run": "build/bach-toccata-groove-subtraction-v1/run.json",
+  "runSha256": "9e2520a61a3aebd4eed3c72c8800b7ce921b4d1d3b3639a97cf674e5d2cc9a70",
+  "scoreGuard": {
+    "removedNotes": 56,
+    "removedMidi": 57,
+    "windowSeconds": [
+      30.71,
+      41.9725
+    ],
+    "foregroundEventsUnchanged": 491,
+    "bassEventsUnchanged": 339,
+    "remainingHarmonyEventsUnchanged": 37,
+    "totalDurationAndTailUnchanged": true,
+    "instrumentsAndSectionsUnchanged": true,
+    "previousScoreSha256": "b10d2318538cfcbbb3334af68a767f00053346a1deb69e1a89d9789dce6cbd06",
+    "candidateScoreSha256": "6d0cd47ea465d75acd125b9141485ed484965ca63656ea961c2054e34c8563a5"
+  },
+  "audio": [
+    {
+      "version": "prior-release",
+      "noteCounts": [
+        491,
+        339,
+        93
+      ],
+      "endingAcRms": 0.0,
+      "sha256": "6b54d36eebbae35b45c56fa0d4bdd1169ba5adc8fa3c104f06d73a3c97099ab8",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 88.12292517006803,
+      "peak": 12810,
+      "clippedSamples": 0
+    },
+    {
+      "version": "without-A3",
+      "noteCounts": [
+        491,
+        339,
+        37
+      ],
+      "endingAcRms": 0.0,
+      "sha256": "b549235ba9f5c1720a7b6cc9ad1f449ae96ef21e13481989ad2acbcb5c1e81a8",
+      "sampleRate": 44100,
+      "channels": 1,
+      "durationSeconds": 88.12292517006803,
+      "peak": 12817,
+      "clippedSamples": 0
+    }
+  ],
+  "compiledScheduleGuard": "Only the 56 declared A3 starts are absent; every retained pitch, onset, duration, gate-off and instrument selection matches.",
+  "registerIntervention": {
+    "frames": 4419,
+    "bankBytes": 25,
+    "allowedOffsets": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "changedOffsets": [
+      14,
+      15,
+      17,
+      18,
+      19,
+      20
+    ],
+    "changedFrames": 623,
+    "firstChangedFrame": 1563,
+    "lastChangedFrame": 2185,
+    "allOtherControlsEqual": true
+  },
+  "viceVerification": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-groove-subtraction-v1/cache/candidate-vice/48cbe1fa973eed24898b0a319243a8ed66689aff12da2d5e432c6cf9c9d6b66c/attempt-2481afd1cfe1421c88ec932a77dec16b/vice/verification.json",
+  "limitations": "Feedback does not uniquely identify voice 3. This diagnostic removes its repeated A3 part while preserving the low A2 score role, but neither register checks nor an authored bass note establishes convincing perceived bass or an accepted arrangement."
+}

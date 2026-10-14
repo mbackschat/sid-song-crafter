@@ -1,0 +1,57 @@
+{
+  "method": "Pinned Extra driver note-column reads, discrete sound-start state and orderlist reads; exact ticks and instrument selections",
+  "noteCounts": [
+    491,
+    339,
+    37
+  ],
+  "lastNotes": [
+    {
+      "voice": 0,
+      "tick": 4040,
+      "nativeNote": 51,
+      "instrument": 1
+    },
+    {
+      "voice": 1,
+      "tick": 4040,
+      "nativeNote": 27,
+      "instrument": 2
+    },
+    {
+      "voice": 2,
+      "tick": 4090,
+      "nativeNote": 42,
+      "instrument": 3
+    }
+  ],
+  "stopTicks": [
+    4366,
+    4366,
+    4366
+  ],
+  "stopVolumeClearTick": 4366,
+  "postStopOffReads": [
+    52,
+    52,
+    52
+  ],
+  "postStopVolumeReads": [
+    52,
+    52,
+    52
+  ],
+  "postStopGatesAndVolumeClear": true,
+  "criticalNotes": [
+    {
+      "voice": 0,
+      "tick": 2547,
+      "midi": 77,
+      "frequencyWord": 11893,
+      "expectedFrequencyWord": 11894,
+      "wordTolerance": 1,
+      "control": 65
+    }
+  ],
+  "limitations": "Discrete source-note scheduling and selected short-note full-pitch register frames are verified; ADSR reattacks, vibrato, per-voice PCM audibility and musical quality are not established by this check."
+}
