@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "check": "audio",
+  "passed": true,
+  "requestedSeconds": 32.0,
+  "expectedFrames": 1411200,
+  "expectedSampleRate": 44100,
+  "expectedChannels": 1,
+  "durationRule": "round(seconds * sampleRate) sample frames",
+  "inputs": [
+    {
+      "label": "reference",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/trap-filter-diagnostic/cache/original-render/0c24713aa2a3008602a4d632cb0555e98284131272e644d2348b4671ff7a934a/attempt-fb2ec9b6f157483f9667ba2752143d3c/render.wav",
+      "sha256": "658b31192a6c51908d7059e131694bb293f93e29c919c8c1ec16bee0402d88c6",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1411200,
+      "durationSeconds": 32.0,
+      "peak": 9780,
+      "peakDbfs": -10.50222160344233,
+      "clippedSamples": 0,
+      "rms": 3306.5042294812906,
+      "acRms": 3264.7011486182805,
+      "acRmsDbfs": -20.03213005861898,
+      "perChannel": [
+        {
+          "dc": 524.1150921201814,
+          "rms": 3306.5042294812906,
+          "acRms": 3264.7011486182805
+        }
+      ]
+    },
+    {
+      "label": "candidate",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/trap-filter-diagnostic/cache/bypass-render/4f0e3356bdb78373b21b9dc3d33f4438a97578cba9d3ebe8525fea6292ee529f/attempt-5adbb1fbeacf4177986d3da6f6c62454/render.wav",
+      "sha256": "905cdedb18501f70c0281e687aa246abb5474ca1b6f11e2426f4deec8d622809",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1411200,
+      "durationSeconds": 32.0,
+      "peak": 8942,
+      "peakDbfs": -11.2803053885541,
+      "clippedSamples": 0,
+      "rms": 3310.6182619250885,
+      "acRms": 3269.0738343568887,
+      "acRmsDbfs": -20.020504108378326,
+      "perChannel": [
+        {
+          "dc": 522.8284056122449,
+          "rms": 3310.6182619250885,
+          "acRms": 3269.0738343568887
+        }
+      ]
+    }
+  ],
+  "claims": {
+    "pcmIdentity": false,
+    "perceptualAgreement": false
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "executed-proof",
+      "command": [
+        "{python}",
+        "scripts/studies/deflektor/trap-filter-diagnostic.py",
+        "execute",
+        "--output",
+        "{out}/evidence"
+      ],
+      "inputs": [
+        "scripts/studies/deflektor/trap-filter-diagnostic.py",
+        "scripts/audio_comparison.py",
+        "config/local-assets.json",
+        ".local/research/trap/Trap.sid",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_intake.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "evidence/receipt.json",
+        "evidence/original.json",
+        "evidence/bypass.json",
+        "evidence/changed-routing.json",
+        "evidence/trap-voice2-filter-bypass.sid"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "focused-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "trap_filter_diagnostic_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "scripts/studies/deflektor/trap-filter-diagnostic.py",
+        "tests/trap_filter_diagnostic_test.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_intake.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "original-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/trap/Trap.sid",
+        "{out}/render.wav",
+        "32",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        ".local/research/trap/Trap.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "bypass-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:executed-proof}/evidence/trap-voice2-filter-bypass.sid",
+        "{out}/render.wav",
+        "32",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:executed-proof}/evidence/trap-voice2-filter-bypass.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:original-render}/render.wav",
+        "{stage:bypass-render}/render.wav",
+        "--seconds",
+        "32",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:bypass-render}/render.wav"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "contextual-difference",
+      "command": [
+        "{python}",
+        "scripts/studies/deflektor/trap-filter-diagnostic.py",
+        "signal",
+        "{stage:original-render}/render.wav",
+        "{stage:bypass-render}/render.wav",
+        "--output",
+        "{out}/difference.json"
+      ],
+      "inputs": [
+        "scripts/studies/deflektor/trap-filter-diagnostic.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:bypass-render}/render.wav",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_intake.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "difference.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "context-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:original-render}/render.wav",
+        "{stage:bypass-render}/render.wav",
+        "{out}/trap-original-then-voice2-filter-bypass",
+        "--start-seconds",
+        "16",
+        "--end-seconds",
+        "28",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:bypass-render}/render.wav"
+      ],
+      "outputs": [
+        "trap-original-then-voice2-filter-bypass.ab.wav",
+        "trap-original-then-voice2-filter-bypass.comparison.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "executedReceipt": "{stage:executed-proof}/evidence/receipt.json",
+    "originalInitialized32Seconds": "{stage:original-render}/render.wav",
+    "sameMaterialVoice2FilterBypass32Seconds": "{stage:bypass-render}/render.wav",
+    "originalThenVoice2FilterBypass16to28Seconds": "{stage:context-comparison}/trap-original-then-voice2-filter-bypass.ab.wav",
+    "contextualSignalDifference": "{stage:contextual-difference}/difference.json"
+  }
+}

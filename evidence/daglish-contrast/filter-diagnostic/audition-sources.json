@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "run": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/trap-filter-diagnostic/run.json",
+    "sha256": "d5916855d604cf7d6273af848334068e9c97f0dce7f8024a03130f66fc3c09a8",
+    "bytes": 18827
+  },
+  "selection": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/trap-filter-diagnostic.audition.json",
+    "sha256": "e9e6793c50b28a7416a99bb8a6a71419d682ee45431065670746116c79bbd6c9",
+    "bytes": 251
+  },
+  "files": [
+    {
+      "label": "originalInitialized32Seconds",
+      "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/trap-filter-diagnostic/cache/original-render/0c24713aa2a3008602a4d632cb0555e98284131272e644d2348b4671ff7a934a/attempt-fb2ec9b6f157483f9667ba2752143d3c/render.wav",
+      "filename": "trap-original-32s.wav",
+      "sha256": "658b31192a6c51908d7059e131694bb293f93e29c919c8c1ec16bee0402d88c6",
+      "bytes": 2822444,
+      "stageId": "original-render"
+    },
+    {
+      "label": "sameMaterialVoice2FilterBypass32Seconds",
+      "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/trap-filter-diagnostic/cache/bypass-render/4f0e3356bdb78373b21b9dc3d33f4438a97578cba9d3ebe8525fea6292ee529f/attempt-5adbb1fbeacf4177986d3da6f6c62454/render.wav",
+      "filename": "trap-voice2-filter-bypass-32s.wav",
+      "sha256": "905cdedb18501f70c0281e687aa246abb5474ca1b6f11e2426f4deec8d622809",
+      "bytes": 2822444,
+      "stageId": "bypass-render"
+    },
+    {
+      "label": "originalThenVoice2FilterBypass16to28Seconds",
+      "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/trap-filter-diagnostic/cache/context-comparison/61cf7ad222e35b563eee64e24091ee815c1499a0d09b5a6749618c9c911be6b9/attempt-b4980e18652241819dd58fcc1162316e/trap-original-then-voice2-filter-bypass.ab.wav",
+      "filename": "trap-original-then-voice2-filter-bypass-16to28s.ab.wav",
+      "sha256": "4ef7037efff2c7ddfeeb8c42270d99827800fffe2644ffb7c1830c9246dba724",
+      "bytes": 2160944,
+      "stageId": "context-comparison"
+    }
+  ]
+}
