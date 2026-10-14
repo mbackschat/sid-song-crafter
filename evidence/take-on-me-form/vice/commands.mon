@@ -1,0 +1,21 @@
+radix h
+sidefx off
+dummy off
+bank ram
+fill $0002 $cfff $00
+fill $e000 $ffff $00
+load "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-form-verification/cache/vice-wrap/162206df1993c11089b8725cd516e77de42eb362bbc19c1ce5ded9825ba63e1d/attempt-7f3988a3730341168a17370544dfb5c7/vice/payload.prg" 0
+load "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-form-verification/cache/vice-wrap/162206df1993c11089b8725cd516e77de42eb362bbc19c1ce5ded9825ba63e1d/attempt-7f3988a3730341168a17370544dfb5c7/vice/harness.prg" 0
+r a=$00,x=$00,y=$00,sp=$ff,fl=$24
+r pc=$c000
+trace exec $1b00
+trace exec $c03a
+trace exec $1003
+trace exec $c04a
+trace store $d400 $d41f if (@ram:$c102 != $00) || ((((@ram:$c101 * $0100) + @ram:$c100) >= $12fc) && (((@ram:$c101 * $0100) + @ram:$c100) <= $1304))
+until $c06d
+r
+bank ram
+d $1b00 $1b05
+m $1000 $1b05
+quit

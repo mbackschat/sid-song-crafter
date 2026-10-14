@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "c7e45037d20c3b85d18fc955a1cdfb70041f08dfc171e9b12d1c3327300101e6",
+  "declaredSidModel": "unknown",
+  "experimentalSidModel": "MOS8580",
+  "selectedSubtune": 1,
+  "playCalls": 8961,
+  "sourceUnchanged": true,
+  "retainedOpening64Equal": true,
+  "numericScoreEqual": true,
+  "matchedScoreReads": 15502,
+  "matchedRows": 2615,
+  "matchedReturnStates": 8961,
+  "rowsPerVoice": {
+    "2": 454,
+    "1": 1121,
+    "0": 1040
+  },
+  "patterns": 18,
+  "semanticRows": 460,
+  "scoreRecurrence": {
+    "firstReturnCall": 768,
+    "repeatedReturnCall": 4864,
+    "periodCalls": 4096
+  },
+  "wraps": [
+    {
+      "tick": 4864,
+      "voice": 2,
+      "target": 4
+    },
+    {
+      "tick": 4864,
+      "voice": 1,
+      "target": 4
+    },
+    {
+      "tick": 4864,
+      "voice": 0,
+      "target": 4
+    },
+    {
+      "tick": 8960,
+      "voice": 2,
+      "target": 4
+    },
+    {
+      "tick": 8960,
+      "voice": 1,
+      "target": 4
+    },
+    {
+      "tick": 8960,
+      "voice": 0,
+      "target": 4
+    }
+  ],
+  "stops": [],
+  "recurrenceCheckpoints": [
+    {
+      "tick": 768,
+      "ramSha256": "5954d3906c00b15385cea2ac63b3da4e3276f862ec0e54df14b9edd2ac8ac594",
+      "cpu": {
+        "a": 192,
+        "x": 255,
+        "y": 0,
+        "p": 165,
+        "sp": 253,
+        "pc": 5336
+      },
+      "ramAndCpuSha256": "f89ac22b76778adc961158d0ab38415cddbf0faa39a16a337c5d158da32563a8",
+      "ramChangesFromPrevious": null
+    },
+    {
+      "tick": 4864,
+      "ramSha256": "e29625689aaf3ce05138ff4fe666b5daf225893e41e8b123d0d573ecbdeae6d3",
+      "cpu": {
+        "a": 192,
+        "x": 255,
+        "y": 0,
+        "p": 165,
+        "sp": 253,
+        "pc": 5336
+      },
+      "ramAndCpuSha256": "3e3f0d063d02e5493a6f286d7001a326c0f8f79fc175c601f9a1a7fda3ad0bc9",
+      "ramChangesFromPrevious": [
+        {
+          "address": 6864,
+          "before": 67,
+          "after": 1
+        },
+        {
+          "address": 6881,
+          "before": 180,
+          "after": 104
+        },
+        {
+          "address": 6884,
+          "before": 0,
+          "after": 1
+        },
+        {
+          "address": 6886,
+          "before": 39,
+          "after": 0
+        }
+      ]
+    },
+    {
+      "tick": 8960,
+      "ramSha256": "e29625689aaf3ce05138ff4fe666b5daf225893e41e8b123d0d573ecbdeae6d3",
+      "cpu": {
+        "a": 192,
+        "x": 255,
+        "y": 0,
+        "p": 165,
+        "sp": 253,
+        "pc": 5336
+      },
+      "ramAndCpuSha256": "3e3f0d063d02e5493a6f286d7001a326c0f8f79fc175c601f9a1a7fda3ad0bc9",
+      "ramChangesFromPrevious": []
+    }
+  ],
+  "ramAndCpuCheckpointsEqual": false,
+  "settledRamAndCpuRecurrence": true,
+  "textureWindow": {
+    "firstCall": 764,
+    "lastCallExclusive": 1164,
+    "fullTextureFilterCalls": 140
+  },
+  "tools": {
+    ".tools/test-deps/py65/__init__.py": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc",
+    ".tools/test-deps/py65/devices/__init__.py": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc",
+    ".tools/test-deps/py65/devices/mpu6502.py": "15d93835b4f279b702270d9a0b417938291347ec57cc12d9e0307cd344d381fe",
+    ".tools/test-deps/py65/utils/__init__.py": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc",
+    ".tools/test-deps/py65/utils/conversions.py": "448b8aa2cc59aa71a6a644a5dd93051ab4b2def2ae720c4991c0e54f31a4eaa9",
+    ".tools/test-deps/py65/utils/devices.py": "fca3864bebcf1db7dbc13014487ad7091499d85c8cb14ca7288c5fdc63de6a0e",
+    "scripts/psid_audit.py": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0",
+    "scripts/psid_profile.py": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107",
+    "scripts/sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "scripts/sid_clock.py": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48",
+    "scripts/studies/take-on-me/probe-form.py": "a6852b7682370584e12cec21da1c26ab9ce1ea87cfa95789a3dc970739e52213",
+    "scripts/studies/take-on-me/score.py": "8408e77684bc4b786c2a7c56f829607d9dbd1011d2877724b46b3ca5c2bb1177",
+    "scripts/verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "python": {
+    "executable": "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]"
+  },
+  "limits": "Executed RAM-only score form and independent numeric score expansion. Return hashes cover backing RAM and A/X/Y/P/SP/PC before RTS, excluding absolute cycles and physical SID/CIA/VIC state. No sound synthesis, compiled player, VICE whole-form proof, chosen finite ending, acoustic recurrence or listening verdict."
+}

@@ -30,6 +30,7 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Follin contrast: Ghouls and Gauntlet III](follin-contrast.md): staged onset, phase-retaining pulse motion and controlled rest behavior, with joint Tim/Geoff credit and bounded listening diagnostic.
 - [Prepare Deflektor](deflektor-preparation.md): complete editable compiled player with CPU/VICE proof, accepted phrase/ending and accepted familiar transfer.
 - [Daglish contrast: Deflektor and Trap](daglish-contrast.md): pinned second reference, bounded waveform/filter/articulation comparison, explicit musical and extended-form limits.
+- [Prepare Take On Me](take-on-me-preparation.md): explicit chip-model assumptions and listening verdict; active complete-score and instrument work for an independent reconstruction.
 - [Prepare Billie Jean](billie-jean-preparation.md): independent score expansion across two cycles, retained sound-state differences, duration intervention and VICE wrap verification.
 - [Prepare the pop songs and themes](pop-theme-preparation.md): pinned Take On Me, Billie Jean, Airwolf and Ghostbusters; Airwolf’s independent full-cycle model, bounded callable comparisons, unspecified-model and RSID boundaries.
 

@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "score-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "take_on_me_score_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "scripts/studies/take-on-me/score.py",
+        "tests/take_on_me_score_test.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "score-proof",
+      "command": [
+        "{python}",
+        "scripts/studies/take-on-me/probe-form.py",
+        "--output",
+        "{out}/proof",
+        "--assume-sid-model",
+        "MOS8580",
+        "--calls",
+        "8961"
+      ],
+      "inputs": [
+        "scripts/studies/take-on-me/probe-form.py",
+        "scripts/studies/take-on-me/score.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".local/research/take-on-me/Take_on_Me.sid",
+        "evidence/take-on-me-model/checked/MOS6581/writes.json.gz"
+      ],
+      "outputs": [
+        "proof/receipt.json",
+        "proof/score.json",
+        "proof/audit.json",
+        "proof/reads.json.gz",
+        "proof/rows.json.gz",
+        "proof/returns.json.gz",
+        "proof/writes.json",
+        "proof/texture.json.gz",
+        "proof/intervention.json.gz"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "vice-wrap",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        ".local/research/take-on-me/Take_on_Me.sid",
+        "--oracle",
+        "{stage:score-proof}/proof/writes.json",
+        "--first-call",
+        "4860",
+        "--last-call",
+        "4868",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1",
+        "--assume-sid-model",
+        "MOS8580",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "scripts/studies/take-on-me/probe-form.py",
+        "scripts/studies/take-on-me/score.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".local/research/take-on-me/Take_on_Me.sid",
+        "evidence/take-on-me-model/checked/MOS6581/writes.json.gz",
+        "scripts/trace-sid-vice.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "{stage:score-proof}/proof/writes.json"
+      ],
+      "outputs": [
+        "vice/study.json",
+        "vice/trace.json",
+        "vice/commands.mon",
+        "vice/command.json",
+        "vice/monitor.log"
+      ],
+      "timeoutSeconds": 70,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "scoreDescription": "{stage:score-proof}/proof/score.json",
+    "scoreProof": "{stage:score-proof}/proof/receipt.json",
+    "sourceViceWrap": "{stage:vice-wrap}/vice/study.json"
+  }
+}
