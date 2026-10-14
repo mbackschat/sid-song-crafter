@@ -134,17 +134,20 @@ def selection_receipt(selection, *, root=ROOT, registry_sha256=None):
     source_sha = hashlib.sha256(raw).hexdigest()
     require(source_sha == asset['sha256'], 'Reference fingerprint differs from registry')
     header = inspect_sid(raw, subtune=selection['subtune'], host_base=selection.get('hostBase'))
-    require(header['clockDeclaration'] == 'PAL', 'Initial renderer contract requires declared PAL')
-    require(header['sidModelDeclaration'] in ('MOS6581', 'MOS8580'), 'Initial renderer contract requires one declared SID model')
-    require(raw[122:124] == bytes(2) and header['flags'] in (0x14, 0x24), 'Initial intake contract requires one SID and standard PAL/model flags')
+    clock = header['clockDeclaration']
+    require(clock in ('PAL', 'NTSC'), 'Renderer contract requires declared PAL or NTSC')
+    require(header['sidModelDeclaration'] in ('MOS6581', 'MOS8580'), 'Renderer contract requires one declared SID model')
+    require(raw[122:124] == bytes(2) and header['flags'] in (0x14, 0x24, 0x18, 0x28),
+            'Intake contract requires one SID and standard clock/model flags')
     route = ExecutionRoute(selection['route'])
     if route is ExecutionRoute.CALLABLE:
+        require(clock == 'PAL', 'Callable intake requires declared PAL')
         require(header['callableProfile']['accepted'], f'Unsupported callable selection: {header["callableProfile"]["reason"]}')
     return dict(schemaVersion=1, kind='selected-original-source', selection=selection,
                 source={**asset, 'path': str(source), 'bytes': len(raw), 'sha256': source_sha},
                 registry=dict(path=str(registry), bytes=len(registry_raw), sha256=registry_sha), header=header,
                 rendering=dict(renderer=RENDERER, library='libsidplayfp 3.1.1 / SIDLite',
-                               clock='PAL', clockForced=True, sidModel=header['sidModelDeclaration'],
+                               clock=clock, clockForced=True, sidModel=header['sidModelDeclaration'],
                                subtune=selection['subtune'], powerOnDelay=0, sampleRate=44100,
                                channels=1, format='PCM16', seconds=selection['renderSeconds'],
                                gain=1, normalization=False, initialized=True),
@@ -191,7 +194,8 @@ def make_recipe(spec_path, *, root=ROOT):
             deliverables[label + 'OrderedStores'] = '{stage:' + audited + '}/audit.writes.json'
         rendered = label + '-render'
         stages.append(_stage(rendered, ['{root}/' + RENDERER, source, '{out}/source.wav',
-                                       str(selection['renderSeconds']), '--subtune', str(selection['subtune'])],
+                                       str(selection['renderSeconds']), '--subtune', str(selection['subtune']),
+                                       '--clock', receipt['rendering']['clock'].lower()],
                              base + [RENDERER, RENDER_LIBRARY, 'scripts/render-sid.cpp',
                                      '{stage:' + selected + '}/selection.json'], ['source.wav', 'source.wav.registers.tsv']))
         stages.append(_stage(measured, ['{python}', 'scripts/reference-intake.py', 'measure',

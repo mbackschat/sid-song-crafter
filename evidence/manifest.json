@@ -16456,6 +16456,66 @@
       "originalBytes": 459,
       "sha256": "eacff5c7f911574874b486c64c1749aa78169d8ce5b9b22904e835137f9e2982",
       "bytes": 459
+    },
+    {
+      "path": "evidence/ghostbusters-intake/run.json",
+      "originalPath": "build/reference-intake/ghostbusters-title/run.json",
+      "group": "ghostbusters-intake",
+      "reason": "Retain initialized NTSC source-intake execution and reproduction fingerprints; no CPU store proof.",
+      "originalSha256": "3a2cabc050716ea692e4685db0051305ba47efe880dc579b5cc4cad2a512e4ed",
+      "originalBytes": 13296,
+      "sha256": "3a2cabc050716ea692e4685db0051305ba47efe880dc579b5cc4cad2a512e4ed",
+      "bytes": 13296
+    },
+    {
+      "path": "evidence/ghostbusters-intake/source.json",
+      "originalPath": "build/reference-intake/ghostbusters-title/cache/sourceA-measure/bb6ba44ab24738b15af7ad88bce37815a978355af6bed4add21a35be5dffa9e4/attempt-c6ad7cd888a0409ab8e9821585d2474a/source.json",
+      "group": "ghostbusters-intake",
+      "reason": "Retain pinned source/header/render settings and audio measurements without audio bytes.",
+      "originalSha256": "6fb0b5c63f3fd554d51a46a0db61858b033c7a431326d0b5a87a4ce9dba2f0fb",
+      "originalBytes": 3967,
+      "sha256": "6fb0b5c63f3fd554d51a46a0db61858b033c7a431326d0b5a87a4ce9dba2f0fb",
+      "bytes": 3967
+    },
+    {
+      "path": "evidence/ghostbusters-intake/opening.json",
+      "originalPath": "build/reference-intake/ghostbusters-title/cache/window-opening/e509acab908fe3abd2edd62dec6204c0117246b8ea0348fdd00adccbcea4e5c7/attempt-dd3a1b4c2b7641bdaa9cecd66650d706/window.json",
+      "group": "ghostbusters-intake",
+      "reason": "Retain bounded source-only excerpt coordinates and hashes, not reconstruction or musical acceptance.",
+      "originalSha256": "e99c589d458cdbcd03763649cb4e639c14d1b323eca598bc5d7467481401a2ac",
+      "originalBytes": 3382,
+      "sha256": "e99c589d458cdbcd03763649cb4e639c14d1b323eca598bc5d7467481401a2ac",
+      "bytes": 3382
+    },
+    {
+      "path": "evidence/ghostbusters-intake/continuing-phrase.json",
+      "originalPath": "build/reference-intake/ghostbusters-title/cache/window-continuing-phrase/0f24071c735c6c1f908814a11a27ae50821c8325a251ba5ebafb5b3488333900/attempt-308cb92ae70d4792bed2d82d9315c161/window.json",
+      "group": "ghostbusters-intake",
+      "reason": "Retain bounded source-only excerpt coordinates and hashes, not reconstruction or musical acceptance.",
+      "originalSha256": "bcdc439057b1ce6ac46d623eac83744b801e7484d67c35a31708d0f30832e556",
+      "originalBytes": 3397,
+      "sha256": "bcdc439057b1ce6ac46d623eac83744b801e7484d67c35a31708d0f30832e556",
+      "bytes": 3397
+    },
+    {
+      "path": "evidence/ghostbusters-intake/renderer.txt",
+      "originalPath": "build/reference-intake/ghostbusters-title/cache/sourceA-render/142e9480bb1bf1c333d600b743b8ca6e4b80adc8a52475af24acb025ccc96aac/attempt-cc589f5dfab1449b9fe9f546c001bf3f/stage.log",
+      "group": "ghostbusters-intake",
+      "reason": "Retain renderer diagnostics and selected NTSC configuration.",
+      "originalSha256": "163a1c3854f79f55ca488e82659bc60d9379225e82b0d5f6abc77abaab14e467",
+      "originalBytes": 127,
+      "sha256": "163a1c3854f79f55ca488e82659bc60d9379225e82b0d5f6abc77abaab14e467",
+      "bytes": 127
+    },
+    {
+      "path": "evidence/ghostbusters-intake/registers.tsv.gz",
+      "originalPath": "build/ghostbusters-intake-promotion/registers.tsv",
+      "group": "ghostbusters-intake",
+      "reason": "Numeric renderer snapshots only; these are neither ordered writes nor bus timestamps.",
+      "originalSha256": "ccfbf88d2e22cab60ffe062061b2717cd25bd56b1971e23550a2dc69f8e8dead",
+      "originalBytes": 130078,
+      "sha256": "52ecfd7abad576aa52d5e18fe7ed220b6d75c99b2e171d4896f58caa2bf16097",
+      "bytes": 6865
     }
   ],
   "independentShadesSources": {

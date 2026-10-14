@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "submission": "evidence/airwolf-continuation/listening/submission.json",
+  "submissionSha256": "33eccc058e3be24d51deed9471c3f28a7ec891710b5a2253eac30aeb7c0488c2",
+  "samples": [
+    {
+      "label": "ending",
+      "filename": "build/airwolf-continuation-listening/ending-reference-then-ours.ab.wav",
+      "comparisonSha256": "22253d87ee31c87751b52a35a4987f7d986b68ffcb3a177ded2e6132e648b445",
+      "humanAnswer": "Now it's fine",
+      "status": "accepted"
+    }
+  ],
+  "scope": "Corrected PAL/MOS6581 source-continuation comparison over song seconds 15..27, original first, reconstruction second. Native restart is retained; the 27-second recording boundary is a capture limit, not an authored stop.",
+  "interpretation": "Corrected continuation accepted. Together with the prior accepted phrase and familiar transfer, the Airwolf case is complete for its declared reconstruction and reuse scope.",
+  "historicalReviews": {
+    "phraseAndFiniteEnding": "songs/studies/airwolf-reconstruction/listening-review.json",
+    "familiarTransfer": "songs/studies/airwolf-elise/listening-review.json",
+    "finiteEndingAccepted": false
+  },
+  "limits": "Acceptance applies to the corrected submitted comparison and does not accept the old optional finite ending, establish PCM identity, real-hardware equivalence, arbitrary prior SID-state independence or NTSC support.",
+  "modelAssistanceReview": {
+    "checkpoint": "Corrected ending feedback and case closure",
+    "decision": "No model call",
+    "reason": "Source-event coverage and PCM activity established the omitted restart directly. Fine fidelity, balance and natural-ending judgments remain outside calibrated model eligibility; the listener accepts the correction and identifies no remaining defect for a useful model probe.",
+    "nextReview": "Ghostbusters first representative audition, after feedback/revision and before closure; retain experimental supporting status."
+  }
+}

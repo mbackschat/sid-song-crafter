@@ -71,6 +71,10 @@ class ReferenceIntakeTests(unittest.TestCase):
             'from array import array\nfrom pathlib import Path\nimport sys, wave\n'
             'assert sys.argv[4] == "--subtune"\n'
             'selection = int(sys.argv[5])\n'
+            'assert sys.argv[6] == "--clock"\n'
+            'flags = int.from_bytes(Path(sys.argv[1]).read_bytes()[118:120], "big")\n'
+            'assert sys.argv[7] == ("pal", "ntsc")[((flags >> 2) & 3) - 1]\n'
+            'with Path("clock-launches.txt").open("a") as log: log.write(sys.argv[7] + "\\n")\n'
             'with Path("launches.txt").open("a") as log: log.write(str(selection) + "\\n")\n'
             'with wave.open(sys.argv[2], "wb") as out:\n'
             ' out.setparams((1, 2, 44100, 0, "NONE", "not compressed"))\n'
@@ -97,6 +101,10 @@ class ReferenceIntakeTests(unittest.TestCase):
         self.assertEqual(self.asset['sha256'], receipt['source']['sha256'])
         self.assertIsNone(receipt['listeningReview'])
         self.assertTrue(receipt['evidence']['cpuOrderedStoresRequested'])
+        self.assertEqual('PAL', receipt['rendering']['clock'])
+        self.assertTrue(receipt['rendering']['clockForced'])
+        rendered = stages['sourceA-render']['command']
+        self.assertEqual('pal', rendered[rendered.index('--clock') + 1])
         self.assertIn('sourceACpuAudit', recipe['deliverables'])
         self.assertIn('sourceAOrderedStores', recipe['deliverables'])
 
@@ -143,6 +151,64 @@ class ReferenceIntakeTests(unittest.TestCase):
             self.write_registry()
             with self.subTest(flags=flags, extra=extra), self.assertRaisesRegex(ValueError, 'PAL|model|one SID'):
                 self.recipe()
+
+    def test_declared_ntsc_rsid_machine_render_propagates_clock_and_scoped_receipt(self):
+        self.install_tools()
+        self.spec['selections'][0]['route'] = 'full-machine-render'
+        self.spec['selections'][0].pop('calls')
+        for flags, model in ((0x18, 'MOS6581'), (0x28, 'MOS8580')):
+            with self.subTest(flags=flags):
+                raw = sid_fixture(magic=b'RSID', flags=flags, play=0)
+                self.source.write_bytes(raw)
+                self.asset['sha256'] = hashlib.sha256(raw).hexdigest()
+                self.write_registry()
+                recipe = self.recipe()
+                stages = {stage['id']: stage for stage in recipe['stages']}
+                command = stages['sourceA-render']['command']
+                self.assertEqual('ntsc', command[command.index('--clock') + 1])
+                self.assertEqual('2', command[command.index('--subtune') + 1])
+                self.assertNotIn('sourceA-audit', stages)
+                self.assertNotIn('sourceACpuAudit', recipe['deliverables'])
+                self.assertNotIn('sourceAOrderedStores', recipe['deliverables'])
+                run = reference_intake.run_intake(self.spec_path, self.output / model, root=self.root, progress=lambda _: None)
+                receipt = json.loads(Path(run['deliverables']['sourceAReceipt']).read_text())
+                self.assertEqual('NTSC', receipt['header']['clockDeclaration'])
+                self.assertEqual('machine-controlled', receipt['header']['selectedTimingDeclaration'])
+                self.assertFalse(receipt['header']['callableProfile']['accepted'])
+                self.assertEqual('NTSC', receipt['rendering']['clock'])
+                self.assertTrue(receipt['rendering']['clockForced'])
+                self.assertEqual(model, receipt['rendering']['sidModel'])
+                self.assertEqual('full-machine-render', receipt['evidence']['route'])
+                self.assertFalse(receipt['evidence']['cpuOrderedStoresRequested'])
+                self.assertFalse(receipt['evidence']['cpuCausalProof'])
+                self.assertEqual(self.asset['sha256'], receipt['source']['sha256'])
+                self.assertEqual(raw, self.source.read_bytes())
+                self.assertIsNone(receipt['listeningReview'])
+        self.assertEqual(['ntsc', 'ntsc'], (self.root / 'clock-launches.txt').read_text().splitlines())
+
+    def test_declared_ntsc_psid_remains_rejected_by_pal_banked_route(self):
+        for flags in (0x18, 0x28):
+            with self.subTest(flags=flags):
+                raw = sid_fixture(flags=flags)
+                self.source.write_bytes(raw)
+                self.asset['sha256'] = hashlib.sha256(raw).hexdigest()
+                self.write_registry()
+                with self.assertRaisesRegex(ValueError, 'PAL'):
+                    self.recipe()
+        self.assertFalse(self.output.exists())
+
+    def test_machine_render_still_rejects_unknown_mixed_and_nonstandard_declarations(self):
+        self.spec['selections'][0]['route'] = 'full-machine-render'
+        self.spec['selections'][0].pop('calls')
+        for flags, extra in ((0x08, 0), (0x10, 0), (0x1c, 0), (0x38, 0), (0x19, 0), (0x18, 0x42)):
+            with self.subTest(flags=flags, extra=extra):
+                raw = bytearray(sid_fixture(magic=b'RSID', flags=flags, play=0))
+                raw[122] = extra
+                self.source.write_bytes(raw)
+                self.asset['sha256'] = hashlib.sha256(raw).hexdigest()
+                self.write_registry()
+                with self.assertRaisesRegex(ValueError, 'PAL|NTSC|model|one SID'):
+                    self.recipe()
 
     def test_invalid_selection_and_execution_window_bounds_reject(self):
         original = copy.deepcopy(self.spec)
