@@ -1,0 +1,45 @@
+{
+  "id": "c01",
+  "wav_path": "/Users/mbackschat/Projects/c64-sid-skill/build/trap-model-perception-20261014/inputs/c01.wav",
+  "audio_sha256": "1059e488fdcba9ed7947a6a4bcc145b360da74cd5f0a474d117962756c62cb18",
+  "duration_seconds": 10.0,
+  "model": "google/gemini-3.8-flash",
+  "max_tokens": 1200,
+  "reasoning": true,
+  "reasoning_effort": "low",
+  "payload_sha256": "ef394dd2271e206ebf05e0936a01f89562705e32e0fedc3902d36e5435912a1c",
+  "status": "complete",
+  "started_at": "2026-10-14T09:00:06.047133+00:00",
+  "cost": 0.00067725,
+  "key_limits": {
+    "limit": 10.0,
+    "limit_remaining": 9.98659862,
+    "limit_reset": null
+  },
+  "response_path": "response-05.json",
+  "response_sha256": "15fa4aeea6e8a1ced74142988d3483e929dcfe0a8b666dac4579969ff2b46290",
+  "finished_at": "2026-10-14T09:00:09.492835+00:00",
+  "usage": {
+    "prompt_tokens": 408,
+    "completion_tokens": 99,
+    "total_tokens": 507,
+    "cost": 0.00067725,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 250,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00067725,
+      "upstream_inference_prompt_cost": 0.000306,
+      "upstream_inference_completions_cost": 0.00037125
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,341 @@
+{
+  "date": "2026-10-14",
+  "scope": "Calibration against two already-known, passage-scoped human observations and exact PCM controls; no held-out validation or model adoption. Only rhythmic_motion is scored on c01 and only development on c02. No numbered-voice attribution, background independence, musical preference, full-form judgment or composer-wide claim is tested. Single-clip presentation has no A/B separator; reversed-pair and A/A controls are inapplicable here and previous failed pair controls remain unresolved.",
+  "prompt": "Listen to this single audio clip. Is music present? What is the main perceived source of rhythmic motion: moving melody, repeated percussive attacks, both, unclear, or no music? Does the clip develop or predominantly repeat: develops, repeats, unclear, or no music? Report what you hear, without identifying a source or ranking quality. Return only JSON with music_present (yes/no/unclear), rhythmic_motion (moving melody/repeated percussive attacks/both/unclear/no music), development (develops/repeats/unclear/no music), and evidence (one or two short objects containing start_seconds, end_seconds, and observation). Times are relative to the clip and must lie within it. Use unclear when you cannot tell.",
+  "frozen_inputs_sha256": "7a341f349dfb8ebb671404af51e00fca552b2637a25a028f8c45e73cd91fb5b4",
+  "oracle_sha256": "b20066e0405f0ce91ce9a821d1fd8bdbe659b592e5071dd9eb2446ec73af0722",
+  "results": {
+    "qwen": {
+      "cases": [
+        {
+          "id": "c01",
+          "audio_sha256": "1059e488fdcba9ed7947a6a4bcc145b360da74cd5f0a474d117962756c62cb18",
+          "payload_sha256": "7b0f7f3b6346161b56b03b90c93489fff3eb46ca9261e6cc7e1505619e42a04b",
+          "duration_seconds": 10.0,
+          "expected": {
+            "rhythmic_motion": "moving melody"
+          },
+          "answer": {
+            "music_present": "yes",
+            "rhythmic_motion": "moving melody",
+            "development": "develops",
+            "evidence": [
+              {
+                "start_seconds": 0.0,
+                "end_seconds": 2.5,
+                "observation": "A low, buzzing synthesized tone is heard, establishing a pitch center."
+              },
+              {
+                "start_seconds": 2.5,
+                "end_seconds": 9.0,
+                "observation": "The pitch shifts upward to a sustained, high-frequency tone that wavers slightly, creating a melodic contour without percussive elements."
+              }
+            ]
+          },
+          "content": "```json\n{\n  \"music_present\": \"yes\",\n  \"rhythmic_motion\": \"moving melody\",\n  \"development\": \"develops\",\n  \"evidence\": [\n    {\n      \"start_seconds\": 0.0,\n      \"end_seconds\": 2.5,\n      \"observation\": \"A low, buzzing synthesized tone is heard, establishing a pitch center.\"\n    },\n    {\n      \"start_seconds\": 2.5,\n      \"end_seconds\": 9.0,\n      \"observation\": \"The pitch shifts upward to a sustained, high-frequency tone that wavers slightly, creating a melodic contour without percussive elements.\"\n    }\n  ]\n}\n```",
+          "parse_errors": [],
+          "field_matches": {
+            "rhythmic_motion": true
+          },
+          "pass": true,
+          "cost_usd": 0.00043714,
+          "actual_model": "qwen/qwen3.8-omni-flash",
+          "provider": "Alibaba",
+          "finish_reason": "stop",
+          "receipt": "build/trap-model-perception-20261014/results/attempt-01.json",
+          "receipt_sha256": "4c03d519af960ace2fce5980effc0efa7f62c59531b1f46df547934bf3a591cb",
+          "response": "build/trap-model-perception-20261014/results/response-01.json",
+          "response_sha256": "d3bb663ca251b963e3618b2494f8ca750c62b94ec00e9c9e8615ffa781202298"
+        },
+        {
+          "id": "c02",
+          "audio_sha256": "b17823b8e43ba23c8ad52f2c958c0d340efe8fc3af4caff74f9be4dd41da8618",
+          "payload_sha256": "ddf841776a29770433be96c275d2db4b72b28836d9dca638151491b94f5299e1",
+          "duration_seconds": 12.0,
+          "expected": {
+            "development": "develops"
+          },
+          "answer": {
+            "music_present": "yes",
+            "rhythmic_motion": "moving melody",
+            "development": "develops",
+            "evidence": [
+              {
+                "start_seconds": 0.0,
+                "end_seconds": 12.0,
+                "observation": "A synthesized, chiptune-style tone plays a rising sequence of notes, creating motion through pitch changes rather than percussion."
+              }
+            ]
+          },
+          "content": "```json\n{\n    \"music_present\": \"yes\",\n    \"rhythmic_motion\": \"moving melody\",\n    \"development\": \"develops\",\n    \"evidence\": [\n        {\n            \"start_seconds\": 0.0,\n            \"end_seconds\": 12.0,\n            \"observation\": \"A synthesized, chiptune-style tone plays a rising sequence of notes, creating motion through pitch changes rather than percussion.\"\n        }\n    ]\n}\n```",
+          "parse_errors": [],
+          "field_matches": {
+            "development": true
+          },
+          "pass": true,
+          "cost_usd": 0.00030482,
+          "actual_model": "qwen/qwen3.8-omni-flash",
+          "provider": "Alibaba",
+          "finish_reason": "stop",
+          "receipt": "build/trap-model-perception-20261014/results/attempt-02.json",
+          "receipt_sha256": "48a9502eb45df617d7dd19ddd7c42174e35e6fd979149f14724d628933f359c8",
+          "response": "build/trap-model-perception-20261014/results/response-02.json",
+          "response_sha256": "419a63c4c26fee95629bd35c0d7b4e2ecc0ab3ab3d0f8d5d7316b4d1f7befd66"
+        },
+        {
+          "id": "c03",
+          "audio_sha256": "9998c35bd0d1a852cc89270ae16a5ca891c813d4ece5dd564918b3b12dc82b71",
+          "payload_sha256": "ef805fb5c8e80b70f77e1b78c2af2e21f788c8ace6a8b0d7c945566252bc582d",
+          "duration_seconds": 12.0,
+          "expected": {
+            "music_present": "no",
+            "rhythmic_motion": "no music",
+            "development": "no music"
+          },
+          "answer": {
+            "music_present": "no",
+            "rhythmic_motion": "no music",
+            "development": "no music",
+            "evidence": [
+              {
+                "start_seconds": 0.0,
+                "end_seconds": 12.0,
+                "observation": "The audio contains no discernible musical content, rhythm, or melody; it is effectively silent."
+              }
+            ]
+          },
+          "content": "```json\n{\n    \"music_present\": \"no\",\n    \"rhythmic_motion\": \"no music\",\n    \"development\": \"no music\",\n    \"evidence\": [\n        {\n            \"start_seconds\": 0.0,\n            \"end_seconds\": 12.0,\n            \"observation\": \"The audio contains no discernible musical content, rhythm, or melody; it is effectively silent.\"\n        }\n    ]\n}\n```",
+          "parse_errors": [],
+          "field_matches": {
+            "music_present": true,
+            "rhythmic_motion": true,
+            "development": true
+          },
+          "pass": true,
+          "cost_usd": 0.00017604,
+          "actual_model": "qwen/qwen3.8-omni-flash",
+          "provider": "Alibaba",
+          "finish_reason": "stop",
+          "receipt": "build/trap-model-perception-20261014/results/attempt-03.json",
+          "receipt_sha256": "6eceb3ac0158dca4239772643ebac1188471939a306e0889914d5f7b4657a78f",
+          "response": "build/trap-model-perception-20261014/results/response-03.json",
+          "response_sha256": "cae91c188364cdac75822a5f105cd1004a26cc9cb7696a3d4b558d6bf0f10eb3"
+        },
+        {
+          "id": "c04",
+          "audio_sha256": "f5b07282e3291727433fb41b7ba323e5f6a7bdd38d696210645514e2d1cb7f0a",
+          "payload_sha256": "42f5c974c75a1fe89fea22b021be26ac3983f7dbdc82ed31d12fc41f5afd6f5a",
+          "duration_seconds": 12.0,
+          "expected": {
+            "development": "repeats"
+          },
+          "answer": {
+            "music_present": "yes",
+            "rhythmic_motion": "repeated percussive attacks",
+            "development": "repeats",
+            "evidence": [
+              {
+                "start_seconds": 0,
+                "end_seconds": 12,
+                "observation": "A harsh, electronic buzzing tone pulses in a strict, repetitive rhythm throughout the entire clip."
+              }
+            ]
+          },
+          "content": "```json\n{\n    \"music_present\": \"yes\",\n    \"rhythmic_motion\": \"repeated percussive attacks\",\n    \"development\": \"repeats\",\n    \"evidence\": [\n        {\n            \"start_seconds\": 0,\n            \"end_seconds\": 12,\n            \"observation\": \"A harsh, electronic buzzing tone pulses in a strict, repetitive rhythm throughout the entire clip.\"\n        }\n    ]\n}\n```",
+          "parse_errors": [],
+          "field_matches": {
+            "development": true
+          },
+          "pass": true,
+          "cost_usd": 0.0006075,
+          "actual_model": "qwen/qwen3.8-omni-flash",
+          "provider": "Alibaba",
+          "finish_reason": "stop",
+          "receipt": "build/trap-model-perception-20261014/results/attempt-04.json",
+          "receipt_sha256": "8737085e604c4ca12f37885bf8525eabf9a013717addb39faa81702820bbbace",
+          "response": "build/trap-model-perception-20261014/results/response-04.json",
+          "response_sha256": "a59cfbcd99ad1b6aee17678dc2ca418478df943e29c33b52baaa6092858da45f"
+        }
+      ],
+      "passed_cases": 4,
+      "total_cases": 4,
+      "human_observation_agreements": 2,
+      "human_observations_total": 2,
+      "control_passes": 2,
+      "controls_total": 2,
+      "calibration_pass": true,
+      "cost_usd": "0.00152550"
+    },
+    "gemini": {
+      "cases": [
+        {
+          "id": "c01",
+          "audio_sha256": "1059e488fdcba9ed7947a6a4bcc145b360da74cd5f0a474d117962756c62cb18",
+          "payload_sha256": "ef394dd2271e206ebf05e0936a01f89562705e32e0fedc3902d36e5435912a1c",
+          "duration_seconds": 10.0,
+          "expected": {
+            "rhythmic_motion": "moving melody"
+          },
+          "answer": {
+            "music_present": "yes",
+            "rhythmic_motion": "moving melody",
+            "development": "develops",
+            "evidence": [
+              {
+                "start_seconds": 0.0,
+                "end_seconds": 5.86,
+                "observation": "A sustained synth melody rises in pitch and shifts harmony over swelling pads without percussive beats."
+              }
+            ]
+          },
+          "content": "```json\n{\n \"music_present\": \"yes\",\n \"rhythmic_motion\": \"moving melody\",\n \"development\": \"develops\",\n \"evidence\": [\n  {\n   \"start_seconds\": 0.0,\n   \"end_seconds\": 5.86,\n   \"observation\": \"A sustained synth melody rises in pitch and shifts harmony over swelling pads without percussive beats.\"\n  }\n ]\n}\n```",
+          "parse_errors": [],
+          "field_matches": {
+            "rhythmic_motion": true
+          },
+          "pass": true,
+          "cost_usd": 0.00067725,
+          "actual_model": "google/gemini-3.8-flash",
+          "provider": "Google",
+          "finish_reason": "stop",
+          "receipt": "build/trap-model-perception-20261014/results/attempt-05.json",
+          "receipt_sha256": "550b90c71f181ffe4c96ad726d21209b9dd0d76185ca3ce25947fe0ffe6f274b",
+          "response": "build/trap-model-perception-20261014/results/response-05.json",
+          "response_sha256": "15fa4aeea6e8a1ced74142988d3483e929dcfe0a8b666dac4579969ff2b46290"
+        },
+        {
+          "id": "c02",
+          "audio_sha256": "b17823b8e43ba23c8ad52f2c958c0d340efe8fc3af4caff74f9be4dd41da8618",
+          "payload_sha256": "2bb0c3015dc7fee4bde9e4cf223ffa6ebab18e7a354cba92a27b0997b2bb4eec",
+          "duration_seconds": 12.0,
+          "expected": {
+            "development": "develops"
+          },
+          "answer": {
+            "music_present": "yes",
+            "rhythmic_motion": "both",
+            "development": "repeats",
+            "evidence": [
+              {
+                "start_seconds": 0.0,
+                "end_seconds": 3.4,
+                "observation": "A short synth lead phrase plays over a repetitive electronic drum beat."
+              },
+              {
+                "start_seconds": 3.4,
+                "end_seconds": 10.0,
+                "observation": "The melodic phrase and drum pattern loop repeatedly without significant variation."
+              }
+            ]
+          },
+          "content": "```json\n{\n \"music_present\": \"yes\",\n \"rhythmic_motion\": \"both\",\n \"development\": \"repeats\",\n \"evidence\": [\n  {\n   \"start_seconds\": 0.0,\n   \"end_seconds\": 3.4,\n   \"observation\": \"A short synth lead phrase plays over a repetitive electronic drum beat.\"\n  },\n  {\n   \"start_seconds\": 3.4,\n   \"end_seconds\": 10.0,\n   \"observation\": \"The melodic phrase and drum pattern loop repeatedly without significant variation.\"\n  }\n ]\n}\n```",
+          "parse_errors": [],
+          "field_matches": {
+            "development": false
+          },
+          "pass": false,
+          "cost_usd": 0.0008685,
+          "actual_model": "google/gemini-3.8-flash",
+          "provider": "Google",
+          "finish_reason": "stop",
+          "receipt": "build/trap-model-perception-20261014/results/attempt-06.json",
+          "receipt_sha256": "a32f30306f11a4aab10a0ec5e4f3727c1c754d54999b84a4a67d129c2af4edfa",
+          "response": "build/trap-model-perception-20261014/results/response-06.json",
+          "response_sha256": "71b1a9a2c4f1f6f5ca3b7e6c569857edbcf7ae87828b169e5a0bdc009bd01842"
+        },
+        {
+          "id": "c03",
+          "audio_sha256": "9998c35bd0d1a852cc89270ae16a5ca891c813d4ece5dd564918b3b12dc82b71",
+          "payload_sha256": "ad9a769c682f0b4981d421923d3e5d3fbfbd5dbddaaf3ac9bb7a4c5feecc3f9a",
+          "duration_seconds": 12.0,
+          "expected": {
+            "music_present": "no",
+            "rhythmic_motion": "no music",
+            "development": "no music"
+          },
+          "answer": {
+            "music_present": "yes",
+            "rhythmic_motion": "both",
+            "development": "repeats",
+            "evidence": [
+              {
+                "start_seconds": 0.0,
+                "end_seconds": 10.87,
+                "observation": "A short electric guitar riff and steady drum kit groove loop continuously with minimal variation throughout the clip."
+              }
+            ]
+          },
+          "content": "```json\n{\n \"music_present\": \"yes\",\n \"rhythmic_motion\": \"both\",\n \"development\": \"repeats\",\n \"evidence\": [\n  {\n   \"start_seconds\": 0.0,\n   \"end_seconds\": 10.87,\n   \"observation\": \"A short electric guitar riff and steady drum kit groove loop continuously with minimal variation throughout the clip.\"\n  }\n ]\n}\n```",
+          "parse_errors": [],
+          "field_matches": {
+            "music_present": false,
+            "rhythmic_motion": false,
+            "development": false
+          },
+          "pass": false,
+          "cost_usd": 0.00071475,
+          "actual_model": "google/gemini-3.8-flash",
+          "provider": "Google",
+          "finish_reason": "stop",
+          "receipt": "build/trap-model-perception-20261014/results/attempt-07.json",
+          "receipt_sha256": "4bf6371705823b3d5e609ac14cc757bfab64554235ea14a9d4b0361af0af5bd9",
+          "response": "build/trap-model-perception-20261014/results/response-07.json",
+          "response_sha256": "ec4e7d5a2849b90e1e3d48b22d3ae59b47984e413ae9895ce14e33db6f00c8c4"
+        },
+        {
+          "id": "c04",
+          "audio_sha256": "f5b07282e3291727433fb41b7ba323e5f6a7bdd38d696210645514e2d1cb7f0a",
+          "payload_sha256": "c0a85b8974b555474894a510586f7c37d1e90995c99eacb5baeaf85e5e329419",
+          "duration_seconds": 12.0,
+          "expected": {
+            "development": "repeats"
+          },
+          "answer": {
+            "music_present": "yes",
+            "rhythmic_motion": "moving melody",
+            "development": "repeats",
+            "evidence": [
+              {
+                "start_seconds": 0.0,
+                "end_seconds": 4.5,
+                "observation": "A short, repeated synth melody pattern plays continuously without percussive accompaniment."
+              },
+              {
+                "start_seconds": 4.5,
+                "end_seconds": 10.0,
+                "observation": "The same synth pattern continues to repeat steadily without structural development."
+              }
+            ]
+          },
+          "content": "```json\n{\n \"music_present\": \"yes\",\n \"rhythmic_motion\": \"moving melody\",\n \"development\": \"repeats\",\n \"evidence\": [\n  {\n   \"start_seconds\": 0.0,\n   \"end_seconds\": 4.5,\n   \"observation\": \"A short, repeated synth melody pattern plays continuously without percussive accompaniment.\"\n  },\n  {\n   \"start_seconds\": 4.5,\n   \"end_seconds\": 10.0,\n   \"observation\": \"The same synth pattern continues to repeat steadily without structural development.\"\n  }\n ]\n}\n```",
+          "parse_errors": [],
+          "field_matches": {
+            "development": true
+          },
+          "pass": true,
+          "cost_usd": 0.00087975,
+          "actual_model": "google/gemini-3.8-flash",
+          "provider": "Google",
+          "finish_reason": "stop",
+          "receipt": "build/trap-model-perception-20261014/results/attempt-08.json",
+          "receipt_sha256": "9d10d9e5632405d3a3f19e319e33334e3aeb7eebd4362cee5b7248a288776dbe",
+          "response": "build/trap-model-perception-20261014/results/response-08.json",
+          "response_sha256": "0d84d7eeb559b72b8e6761025dae6b8070e9c3c366a5c3ee0cab17883d225404"
+        }
+      ],
+      "passed_cases": 2,
+      "total_cases": 4,
+      "human_observation_agreements": 1,
+      "human_observations_total": 2,
+      "control_passes": 1,
+      "controls_total": 2,
+      "calibration_pass": false,
+      "cost_usd": "0.00314025"
+    }
+  },
+  "post_attempts": 8,
+  "cost_usd": "0.00466575",
+  "held_out_passage": false,
+  "establishes_model_eligibility": false,
+  "eligibility_conclusion": "Calibration outcomes only; neither model is adopted or independently validated for musical acceptance. Prior failed pair controls remain unresolved. Time-grounded explanations require human review."
+}

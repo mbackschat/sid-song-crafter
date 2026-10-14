@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "status": "completed-after-explicit-upload-authorization",
+  "authorization": "User: yes, go ahead, in response to the named OpenRouter/Qwen/Gemini four-clip upload request; subsequent instruction delegates routine decisions and reserves questions for sample feedback.",
+  "frozenProtocolUnchanged": true,
+  "postAttempts": 8,
+  "costUsd": "0.00466575",
+  "models": {
+    "qwen": {
+      "humanAgreements": 2,
+      "humanCases": 2,
+      "controlPasses": 2,
+      "controlCases": 2,
+      "provider": "Alibaba",
+      "costUsd": "0.00152550"
+    },
+    "gemini": {
+      "humanAgreements": 1,
+      "humanCases": 2,
+      "controlPasses": 1,
+      "controlCases": 2,
+      "provider": "Google",
+      "costUsd": "0.00314025"
+    }
+  },
+  "independentReview": {
+    "verified": "All 11 frozen inputs, eight distinct case/model audio and payload bindings, response hashes, complete statuses, requested reasoning/token settings, finish_reason stop and cost sums.",
+    "narrativeLimits": [
+      "Qwen no-percussion claim exceeds mainly-moving-melody human verdict.",
+      "Qwen low-to-high timeline and rising sequence are unverified.",
+      "Gemini swelling pads and harmonic movement are unverified.",
+      "Rhythmic source of loop has no oracle and is unscored.",
+      "Numeric evidence-span bounds do not establish event localization."
+    ],
+    "decisiveFailure": "Gemini fabricates electric guitar and drum-kit groove for exact digital silence."
+  },
+  "decision": "Qwen is a promising experimental source of coarse single-clip descriptions for this pinned task; Gemini fails the calibration. No held-out validation, general musical judge, voice/instrument attribution or adoption follows.",
+  "nextCheckpoint": "Independent human-reviewed passage with frozen prompt and controls; retain prior pair failures."
+}

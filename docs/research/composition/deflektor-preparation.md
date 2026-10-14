@@ -1,6 +1,6 @@
 # Deflektor preparation
 
-This pins Ben Daglish's *Deflektor*, the active reconstruction in the [study plan](../study-plan.md). The [composer account](../composers/follin-daglish.md#ben-daglish-a-memorable-instrument-can-organise-a-whole-piece) connects the piece's composition to a satisfying cowbell sound; the binary's precise cowbell mechanism remains unestablished. Apparent realism alone does not identify samples, ring modulation or oscillator allocation.
+This pins Ben Daglish's *Deflektor*, a completed primary reconstruction in the [study plan](../study-plan.md). The [composer account](../composers/follin-daglish.md#ben-daglish-a-memorable-instrument-can-organise-a-whole-piece) connects the piece's composition to a satisfying cowbell sound; the binary's precise cowbell mechanism remains unestablished. Apparent realism alone does not identify samples, ring modulation or oscillator allocation.
 
 ## Reference and execution boundary
 
@@ -273,4 +273,6 @@ Model-assistance review after that feedback: keep audio models experimental and 
 
 ## Familiar transfer accepted
 
-The [Deflektor tonal-program card](instruments/deflektor-decoded-programs.md) retains three executed pulse patches on the same 53 familiar Für Elise notes, with a generated plain reference. Full 717-call CPU/VICE playback and settled pre-stop release are verified; the listener accepts the instruments, balance and ending. The exact patch sources, native PWM/pitch semantics and final-row adaptation remain editable and documented. This completes the primary reconstruction/transfer scope; the [required Trap contrast](daglish-contrast.md) remains open for its musical probe. The precise historical cowbell attribution remains explicitly unresolved rather than promoted as a proven label.
+The [Deflektor tonal-program card](instruments/deflektor-decoded-programs.md) retains three executed pulse patches on the same 53 familiar Für Elise notes, with a generated plain reference. Full 717-call CPU/VICE playback and settled pre-stop release are verified; the listener accepts the instruments, balance and ending. The exact patch sources, native PWM/pitch semantics and final-row adaptation remain editable and documented. This completes the primary reconstruction/transfer scope; the [required Trap contrast](daglish-contrast.md#scoped-corroboration-outcome) is also complete for its bounded scope. The precise historical cowbell attribution remains explicitly unresolved rather than promoted as a proven label.
+
+The [closure model-assistance review](daglish-contrast.md#scoped-corroboration-outcome) includes the requested blind Trap calibration. Human reconstruction and transfer acceptance remain authoritative; Qwen’s narrow label agreement does not validate its detailed narrative or make it a musical judge.
