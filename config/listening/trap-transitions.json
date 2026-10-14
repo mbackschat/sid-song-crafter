@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "source-windows",
+      "command": [
+        "{python}",
+        "-c",
+        "import json\nfrom hashlib import sha256\nfrom pathlib import Path\nfrom reference_intake import source_window\nrun = json.loads(Path('build/reference-intake/trap-contrast/run.json').read_text())\nif run.get('status') != 'completed':\n    raise ValueError('Complete the original Trap contrast intake first')\nreceipts = [run['deliverables']['sourceAReceipt'], run['deliverables']['sourceBReceipt']]\nartifacts = dict((row['path'], row['sha256']) for row in run['artifacts'])\nfor receipt in receipts:\n    if sha256(Path(receipt).read_bytes()).hexdigest() != artifacts[receipt]:\n        raise ValueError('Source receipt differs from the completed intake')\nfor window, start, end in [('24to34', 24, 34), ('40to52', 40, 52)]:\n    for name, first, second in [('deflektor', receipts[0], None), ('trap', receipts[1], None), ('deflektor-then-trap', receipts[0], receipts[1])]:\n        output = Path('{out}') / window / name\n        output.mkdir(parents=True)\n        source_window(Path(first), None if second is None else Path(second), start=start, end=end, gap=0.5, output=output)\nprint(Path('{out}'))"
+      ],
+      "inputs": [
+        "build/reference-intake/trap-contrast",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "24to34/deflektor/source.wav",
+        "24to34/deflektor/window.json",
+        "24to34/trap/source.wav",
+        "24to34/trap/window.json",
+        "24to34/deflektor-then-trap/sources.ab.wav",
+        "24to34/deflektor-then-trap/sources.comparison.json",
+        "24to34/deflektor-then-trap/window.json",
+        "40to52/deflektor/source.wav",
+        "40to52/deflektor/window.json",
+        "40to52/trap/source.wav",
+        "40to52/trap/window.json",
+        "40to52/deflektor-then-trap/sources.ab.wav",
+        "40to52/deflektor-then-trap/sources.comparison.json",
+        "40to52/deflektor-then-trap/window.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/scripts:{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "voice3-change-trace",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-program.py",
+        ".local/research/trap/Trap.sid",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1",
+        "--host-base",
+        "0x0400",
+        "--first-call",
+        "1309",
+        "--last-call",
+        "1311",
+        "--output",
+        "{out}/trace.json"
+      ],
+      "inputs": [
+        ".local/research/trap/Trap.sid",
+        "config/local-assets.json",
+        "scripts/trace-sid-program.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "trace.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "voice1-change-trace",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-program.py",
+        ".local/research/trap/Trap.sid",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1",
+        "--host-base",
+        "0x0400",
+        "--first-call",
+        "2099",
+        "--last-call",
+        "2101",
+        "--output",
+        "{out}/trace.json"
+      ],
+      "inputs": [
+        ".local/research/trap/Trap.sid",
+        "config/local-assets.json",
+        "scripts/trace-sid-program.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "trace.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "trace-ledger-agreement",
+      "command": [
+        "{python}",
+        "scripts/studies/deflektor/probe-contrast.py",
+        "--run",
+        "build/reference-intake/trap-contrast/run.json",
+        "--trace",
+        "{stage:voice3-change-trace}/trace.json",
+        "--trace",
+        "{stage:voice1-change-trace}/trace.json",
+        "--output",
+        "{out}/census.json"
+      ],
+      "inputs": [
+        "scripts/studies/deflektor/probe-contrast.py",
+        "build/reference-intake/trap-contrast",
+        "{stage:voice3-change-trace}/trace.json",
+        "{stage:voice1-change-trace}/trace.json"
+      ],
+      "outputs": [
+        "census.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "originalDeflektor24to34Seconds": "{stage:source-windows}/24to34/deflektor/source.wav",
+    "originalTrap24to34Seconds": "{stage:source-windows}/24to34/trap/source.wav",
+    "originalDeflektorThenTrap24to34Seconds": "{stage:source-windows}/24to34/deflektor-then-trap/sources.ab.wav",
+    "originalDeflektor24to34Receipt": "{stage:source-windows}/24to34/deflektor/window.json",
+    "originalTrap24to34Receipt": "{stage:source-windows}/24to34/trap/window.json",
+    "sourceContrast24to34Receipt": "{stage:source-windows}/24to34/deflektor-then-trap/window.json",
+    "sourceContrast24to34Comparison": "{stage:source-windows}/24to34/deflektor-then-trap/sources.comparison.json",
+    "originalDeflektor40to52Seconds": "{stage:source-windows}/40to52/deflektor/source.wav",
+    "originalTrap40to52Seconds": "{stage:source-windows}/40to52/trap/source.wav",
+    "originalDeflektorThenTrap40to52Seconds": "{stage:source-windows}/40to52/deflektor-then-trap/sources.ab.wav",
+    "originalDeflektor40to52Receipt": "{stage:source-windows}/40to52/deflektor/window.json",
+    "originalTrap40to52Receipt": "{stage:source-windows}/40to52/trap/window.json",
+    "sourceContrast40to52Receipt": "{stage:source-windows}/40to52/deflektor-then-trap/window.json",
+    "sourceContrast40to52Comparison": "{stage:source-windows}/40to52/deflektor-then-trap/sources.comparison.json",
+    "voice3Change1309to1311Trace": "{stage:voice3-change-trace}/trace.json",
+    "voice1Change2099to2101Trace": "{stage:voice1-change-trace}/trace.json",
+    "traceLedgerAgreement": "{stage:trace-ledger-agreement}/census.json"
+  }
+}

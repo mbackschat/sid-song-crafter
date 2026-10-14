@@ -78,6 +78,31 @@ The same phrase’s [measurement receipt](../../../evidence/daglish-contrast/fil
 
 Reusable decision: when a support part needs to sit back or become clearer, test its filter route in the full mix before changing global gain or adding parts. Retain the original as the reference and judge the desired role; brighter/clearer is not automatically musically better. This is a demonstrated diagnostic and a bounded listening observation, not a newly accepted instrument or a universal 6581 filter setting.
 
+## Transition selection for the remaining musical question
+
+The filter observation does not by itself settle the planned comparison of recurring percussion, independent supporting roles and development. Keep the Daglish contrast open for those questions. Two changes in the already retained 6,000-call Trap ledger select short listening windows without expanding to another complete reconstruction:
+
+| Controlled call / approximate time | Executed change | Selected source window and question |
+| --- | --- | --- |
+| 1,310 / 26.14 seconds | Voice 3 changes from pitch `$0209`, pulse `$0641`, AD `$FF` at call 1,309 to `$3138`, `$0300`, AD `$CC`, with a fresh gate. Voice 1 remains sustained; voice 2 continues its independently timed articulation. | 24–34 seconds: does the changed upper part enter as a distinct line, rhythmic support or another texture, and how does its role contrast with Deflektor’s recurring percussion? |
+| 2,100 / 41.90 seconds | Voice 1 regates for the first time since call 0, changes pitch `$0421→$03A8` and resets pulse `$0950→$0000`. The other voices continue their score activity; voice 3 also changes pitch at this call. | 40–52 seconds: does this sound like a change in texture or phrase while the supporting pulse continues, or mostly repetition? |
+
+These are executed parameter changes, not yet formal section labels or listener-verified musical roles. Call times use the controlled PAL cadence and are approximate positions in the initialized render. The two works’ clips compare arrangement choices; equal time windows do not imply corresponding score passages or reconstruction fidelity. Full Trap introduction/returns/ending and its later Jeff Wayne quotation remain outside the captured scope.
+
+The [transition recipe](../../../config/listening/trap-transitions.json) reuses the verified initialized source renders and runs two narrow initialized instruction traces. The call-1,309–1,311 trace agrees with all **76** ordered source stores; the call-2,099–2,101 trace agrees with all **79**. The [retained trace agreement](../../../evidence/daglish-contrast/transitions/traceLedgerAgreement.json.gz) preserves both checks. This is fresh trace capture against a retained ledger, not a new complete source capture or an independent VICE proof. The source-window stage resolves the intake’s current receipt paths, checks their recorded hashes and lets the existing intake API verify each source WAV; no historical attempt path is embedded in the recipe.
+
+The [fresh run](../../../evidence/daglish-contrast/transitions/cold-run.json) completed in **35.10 seconds**; the [unchanged repeat](../../../evidence/daglish-contrast/transitions/hot-run.json) took **0.29 seconds**, reusing all four stages. The 40–52 second pair is byte-identical to the prior intake clip. [Audition provenance](../../../evidence/daglish-contrast/transitions/audition-sources.json) retains the stable names and fingerprints.
+
+Published originals are [Deflektor then Trap, 24–34 seconds](../../../build/trap-transitions-listening/deflektor-then-trap-24to34s.ab.wav) (20.5 seconds total) and [Deflektor then Trap, 40–52 seconds](../../../build/trap-transitions-listening/deflektor-then-trap-40to52s.ab.wav) (24.5 seconds total). Each retains unity gain and a 0.5-second gap; individual original excerpts are beside the pairs. The first question asks how Trap’s rhythm/support differs from Deflektor’s recurring percussion; the second asks whether Trap’s later passage develops in phrase/texture or mainly repeats. Listener verdicts remain pending. Model-assistance review at this audition: no call, because models are not yet qualified to resolve these musical-role judgments; reassess after feedback and before closure.
+
+Reproduce after the pinned source setup described below, then publish into a fresh folder:
+
+```sh
+python3 scripts/reference-intake.py run config/reference-intake/trap-contrast.json --output build/reference-intake/trap-contrast
+python3 scripts/listening-package.py config/listening/trap-transitions.json --output build/trap-transitions
+python3 scripts/publish-listening.py build/trap-transitions/run.json --selection config/listening/trap-transitions.audition.json --output build/trap-transitions-listening-new
+```
+
 ## Reproduction and remaining evidence
 
 Run the checked-in [verification recipe](../../../config/listening/daglish-contrast-verification.json) from the repository root, using the existing pinned renderer and CPU dependencies:
