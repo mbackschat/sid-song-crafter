@@ -19,7 +19,8 @@ ROOT = Path(__file__).resolve().parents[1]
 RENDERER = '.local/bin/render-sid'
 RENDER_LIBRARY = '.local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a'
 HEADER_DEPENDENCIES = ['scripts/sid_intake.py', 'scripts/psid_profile.py',
-                       'scripts/sid_audit_host.py', 'scripts/verify_player.py']
+                       'scripts/sid_clock.py', 'scripts/sid_audit_host.py',
+                       'scripts/verify_player.py']
 OWN_DEPENDENCIES = ['scripts/reference-intake.py', 'scripts/reference_intake.py',
                     'scripts/audio_comparison.py', 'scripts/listening_package.py',
                     'scripts/listening-package.py']

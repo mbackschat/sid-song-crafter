@@ -215,6 +215,22 @@ class ReferenceIntakeTests(unittest.TestCase):
         self.assertEqual(['2', '2'], (self.root / 'launches.txt').read_text().splitlines())
         self.assertTrue(all(Path(path).is_file() for path in first['deliverables'].values()))
 
+    def test_clock_dependency_change_invalidates_selection_and_execution(self):
+        self.install_tools()
+        clock = self.root / 'scripts/sid_clock.py'
+        self.assertTrue(clock.is_file(), 'Intake must declare the clock module imported by its profile')
+        self.write_spec()
+        reference_intake.run_intake(self.spec_path, self.output, root=self.root, progress=lambda _: None)
+        cached = reference_intake.run_intake(self.spec_path, self.output, root=self.root, progress=lambda _: None)
+        self.assertTrue(all(stage['cacheHit'] for stage in cached['stages']))
+        clock.write_text(clock.read_text() + '\n# changed clock fixture\n')
+        changed = reference_intake.run_intake(self.spec_path, self.output, root=self.root, progress=lambda _: None)
+        by_id = {stage['id']: stage for stage in changed['stages']}
+        self.assertFalse(by_id['sourceA-selection']['cacheHit'])
+        self.assertFalse(by_id['sourceA-audit']['cacheHit'])
+        self.assertTrue(by_id['sourceA-render']['cacheHit'])
+        self.assertEqual(['2'], (self.root / 'launches.txt').read_text().splitlines())
+
     def test_output_outside_build_or_through_symlink_is_rejected(self):
         self.write_spec()
         for output in (self.root / 'outside', self.root / 'build/../outside'):
