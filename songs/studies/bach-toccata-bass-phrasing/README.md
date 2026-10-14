@@ -1,0 +1,7 @@
+# Bach Toccata: parked bass-phrasing candidate
+
+**Status: parked, unreviewed and not selected.** On 2026-10-14 the listener closed further expansion of this experiment. The listening-preferred [subtraction passage](../bach-toccata-groove-subtraction/README.md) remains the selected passage; this candidate has received no listening verdict.
+
+The [prepared score](score.json) reduces the twenty-eight existing A2 attacks to seven existing onsets: a 0.60-second entrance, three 0.70-second run-group pillars and three 0.30-second pickups. Twenty-one repeated attacks are omitted. Foreground, other harmony, pitch, native instruments and total duration remain unchanged. The [native recipe](hybrid.json) and [preparation record](preparation.json) preserve the editable inputs and every deliberate accompaniment change.
+
+The already-started [listening recipe](../../../config/listening/bach-toccata-bass-phrasing.json) completed its five build/render, comparison, register-boundary and VICE stages before the stop instruction was handled. Its [completed run receipt](../../../build/bach-toccata-bass-phrasing-v1/run.json) and generated outputs remain local in ignored `build/`. No additional rendering, publication, evidence promotion or audition request followed the stop. The retained [publication selection](../../../config/listening/bach-toccata-bass-phrasing-audition.json) is unused; `build/bach-bass-phrasing-listening` was not created. Technical completion does not establish musical acceptance or select this candidate.
