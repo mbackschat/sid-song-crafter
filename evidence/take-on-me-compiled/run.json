@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/take-on-me-full.json",
+  "recipeSha256": "fda6636f99c3c122480b240daef66c11892ecb6f77efba5d11328a1f59405484",
+  "startedAt": "2026-10-14T11:37:19.878085+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "title-preparation",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.07783970800000001,
+      "artifacts": [],
+      "cacheKey": "fec1ecd05ac0cba190ae51d186b13316418fe80e2ee5685db97b60ff73188f48",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/title-preparation/fec1ecd05ac0cba190ae51d186b13316418fe80e2ee5685db97b60ff73188f48/attempt-699951ea879d44ecaaa851d975e4a7a3",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/title-preparation/fec1ecd05ac0cba190ae51d186b13316418fe80e2ee5685db97b60ff73188f48/attempt-699951ea879d44ecaaa851d975e4a7a3/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.082070917
+    },
+    {
+      "id": "reference-pin",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.134865667,
+      "artifacts": [
+        {
+          "stageId": "reference-pin",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/reference-pin/32c574507b1861a10d9ff842b2f5a5d0d1921768c0c07080d0ac238af5886cfd/attempt-5c81522161bd4a6d8302176b04daca6d/reference.json",
+          "relativePath": "reference.json",
+          "type": "file",
+          "sha256": "3f96a2fce5da1f76e73d96e477c0963f88cd10ccad8484b5f9ff2b9ef25e49bc"
+        }
+      ],
+      "cacheKey": "32c574507b1861a10d9ff842b2f5a5d0d1921768c0c07080d0ac238af5886cfd",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/reference-pin/32c574507b1861a10d9ff842b2f5a5d0d1921768c0c07080d0ac238af5886cfd/attempt-5c81522161bd4a6d8302176b04daca6d",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/reference-pin/32c574507b1861a10d9ff842b2f5a5d0d1921768c0c07080d0ac238af5886cfd/attempt-5c81522161bd4a6d8302176b04daca6d/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.139591791
+    },
+    {
+      "id": "build",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 27.76021875,
+      "artifacts": [
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "775926ae8466a42b5d85b70528e3a160d37aa853754c5526314eec1ccbd8320a"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/reconstructed.prg",
+          "relativePath": "candidate/reconstructed.prg",
+          "type": "file",
+          "sha256": "de9f838f5a6cd7b77d790b3bbd8f8787c2e005107a64e60e232ed40649d005d6"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/verification.json",
+          "relativePath": "candidate/verification.json",
+          "type": "file",
+          "sha256": "e9c2409f98b83879a98f3a872d7bca134cb6fb4d27d647a52ebc7bc88dde79ba"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "d7536649f5ccf2f41cfa8e690aba426626a9c64ed9a2533905d472711338566d"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "0a012202e03edf7077767754e5bb4eb4f59438ecb9d59ca5d7829a511a6b293e"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "4ca1585f80f2e996afd6289e96c8c55c1b995516f7e9199b3f52b7459dd5c965"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "7ec0a177522e52a1e7148fb5fa29db70bce96611d7675570c5e0bf8529ea416d"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "f78a9b3e0ffd66864ad24c56b34d82922da3f8f3fd8463152da1d49c24d166c8"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "68015c03b99d8524382ce77cb3f2ef80e76b59ac5c958c874d4e2970eef57a8c"
+        }
+      ],
+      "cacheKey": "1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 27.7938475
+    },
+    {
+      "id": "numeric-source-check",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.8827285000000025,
+      "artifacts": [
+        {
+          "stageId": "numeric-source-check",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/numeric-source-check/6ce6daaf5c464eee4be0d4c982eaf1dc0e309ef5b2cfe526d094e43fbaed7506/attempt-21677d9f0e9c4208ba656ad451ec23d0/source-prefix.json",
+          "relativePath": "source-prefix.json",
+          "type": "file",
+          "sha256": "a5d8e4e08434d687fe7ad83a6acb987b118c26ceb4171ca25d18d16013498a16"
+        }
+      ],
+      "cacheKey": "6ce6daaf5c464eee4be0d4c982eaf1dc0e309ef5b2cfe526d094e43fbaed7506",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/numeric-source-check/6ce6daaf5c464eee4be0d4c982eaf1dc0e309ef5b2cfe526d094e43fbaed7506/attempt-21677d9f0e9c4208ba656ad451ec23d0",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/numeric-source-check/6ce6daaf5c464eee4be0d4c982eaf1dc0e309ef5b2cfe526d094e43fbaed7506/attempt-21677d9f0e9c4208ba656ad451ec23d0/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.8980258750000019
+    },
+    {
+      "id": "vice",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 11.462738083000001,
+      "artifacts": [
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "56c6070ca8a7d8a820752e57ca7e49b560ff39ed2e7de3171c1391a86b9d032d"
+        },
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "7970ad77de15ad98d04ca5ebb8fe8cf0448256cea5fd9ee1457d0e83baa3df59"
+        },
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "d882bae61869a14a7d4959883f58a76d353e65ae635c073f53d09b205f3e6dc6"
+        },
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "52f4f9366d4cbd3823d0fda0eae37fc5fd63ea39df370e50f2f2187fe3ce3477"
+        },
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "7c56b7aefceb3ada61179cebf66f10cf3127c4c89bce7a89d1529f85d16eda29"
+        }
+      ],
+      "cacheKey": "fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 11.660233333
+    },
+    {
+      "id": "reference-render",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 1.2466882920000018,
+      "artifacts": [
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/reference-render/4528b2999b186ed8529851309faacc16647791ca819d0cd298e73ff0d15573dd/attempt-2cbc6e15c27d4d3ea04c2dc99b6aa5d7/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "8981e83d03b7f48a9bb3898dbca85ac05f3f1578066ad095b306b0e6af2fcc1f"
+        },
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/reference-render/4528b2999b186ed8529851309faacc16647791ca819d0cd298e73ff0d15573dd/attempt-2cbc6e15c27d4d3ea04c2dc99b6aa5d7/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "bd6bed600ab54f6055baa311223b69c549704a043c507a2c0441cbc0eefea37b"
+        }
+      ],
+      "cacheKey": "4528b2999b186ed8529851309faacc16647791ca819d0cd298e73ff0d15573dd",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/reference-render/4528b2999b186ed8529851309faacc16647791ca819d0cd298e73ff0d15573dd/attempt-2cbc6e15c27d4d3ea04c2dc99b6aa5d7",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/reference-render/4528b2999b186ed8529851309faacc16647791ca819d0cd298e73ff0d15573dd/attempt-2cbc6e15c27d4d3ea04c2dc99b6aa5d7/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 1.257242208000001
+    },
+    {
+      "id": "candidate-render",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 1.3187914579999997,
+      "artifacts": [
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/candidate-render/2a8939e488946abbe4449c1132736496383b731b75f46e24d4ce46614e8d4ebe/attempt-21977fdc1a9149bdba96bc5b36a55c3c/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "be91ca5bcd1e3dd8a2fe73f4a3b2da770aa6f474d38f0d7aafc1d239ae1a4f1a"
+        },
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/candidate-render/2a8939e488946abbe4449c1132736496383b731b75f46e24d4ce46614e8d4ebe/attempt-21977fdc1a9149bdba96bc5b36a55c3c/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "e35113262a00e72dd13d9959ceca39654bde2071220a04667e6d1fcf7dc08f1f"
+        }
+      ],
+      "cacheKey": "2a8939e488946abbe4449c1132736496383b731b75f46e24d4ce46614e8d4ebe",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/candidate-render/2a8939e488946abbe4449c1132736496383b731b75f46e24d4ce46614e8d4ebe/attempt-21977fdc1a9149bdba96bc5b36a55c3c",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/candidate-render/2a8939e488946abbe4449c1132736496383b731b75f46e24d4ce46614e8d4ebe/attempt-21977fdc1a9149bdba96bc5b36a55c3c/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 1.3320657919999945
+    },
+    {
+      "id": "signal-check",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 2.180441334000001,
+      "artifacts": [
+        {
+          "stageId": "signal-check",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/signal-check/11077d9d334f5bd18948256b8bbb5b09c61a0fde4a664254b45c510ea4c07a88/attempt-87b9526d06194da99f1f7c1d3eb98590/audio.json",
+          "relativePath": "audio.json",
+          "type": "file",
+          "sha256": "cf2e24d24371bd34028a5f48dd449839d8f992ad1601b9b2ed5d056347e6c567"
+        }
+      ],
+      "cacheKey": "11077d9d334f5bd18948256b8bbb5b09c61a0fde4a664254b45c510ea4c07a88",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/signal-check/11077d9d334f5bd18948256b8bbb5b09c61a0fde4a664254b45c510ea4c07a88/attempt-87b9526d06194da99f1f7c1d3eb98590",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/signal-check/11077d9d334f5bd18948256b8bbb5b09c61a0fde4a664254b45c510ea4c07a88/attempt-87b9526d06194da99f1f7c1d3eb98590/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 2.2109412080000013
+    },
+    {
+      "id": "opening",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.40794124999999326,
+      "artifacts": [
+        {
+          "stageId": "opening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/opening/a9c592d4bb2d6ef6ab9beebf8f1d88c1f1a41257b643e0e2d3d9fd50e7a62b49/attempt-829a33640acf47708a764492174d181b/opening-reference-then-ours.ab.wav",
+          "relativePath": "opening-reference-then-ours.ab.wav",
+          "type": "file",
+          "sha256": "a49a5f259884fa4c3c1312f82f3bbf36deb2d9b559934e013d4c327d4bf7d1c4"
+        },
+        {
+          "stageId": "opening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/opening/a9c592d4bb2d6ef6ab9beebf8f1d88c1f1a41257b643e0e2d3d9fd50e7a62b49/attempt-829a33640acf47708a764492174d181b/opening-reference-then-ours.comparison.json",
+          "relativePath": "opening-reference-then-ours.comparison.json",
+          "type": "file",
+          "sha256": "d6538163fa630426bcffac64b62ae383ede10774be125a60d8dcad23153b13d6"
+        }
+      ],
+      "cacheKey": "a9c592d4bb2d6ef6ab9beebf8f1d88c1f1a41257b643e0e2d3d9fd50e7a62b49",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/opening/a9c592d4bb2d6ef6ab9beebf8f1d88c1f1a41257b643e0e2d3d9fd50e7a62b49/attempt-829a33640acf47708a764492174d181b",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/opening/a9c592d4bb2d6ef6ab9beebf8f1d88c1f1a41257b643e0e2d3d9fd50e7a62b49/attempt-829a33640acf47708a764492174d181b/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.4360734999999991
+    },
+    {
+      "id": "ending",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.6734124999999977,
+      "artifacts": [
+        {
+          "stageId": "ending",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/ending/df2159453cdab270860801dc94847a5cbaf35a2c65f84338a95395fd7d970b98/attempt-194ce21ac4cc4a0a96e5646a919db01f/ending-reference-then-ours.ab.wav",
+          "relativePath": "ending-reference-then-ours.ab.wav",
+          "type": "file",
+          "sha256": "b54692053bf921d0cd6bdfc78e39637ff4100c82ca8d92296d0efc3920f9746a"
+        },
+        {
+          "stageId": "ending",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/ending/df2159453cdab270860801dc94847a5cbaf35a2c65f84338a95395fd7d970b98/attempt-194ce21ac4cc4a0a96e5646a919db01f/ending-reference-then-ours.comparison.json",
+          "relativePath": "ending-reference-then-ours.comparison.json",
+          "type": "file",
+          "sha256": "643c1c92d4a484dce0332239e5a20076ddc96be754ed15931ebe7c0506b58775"
+        }
+      ],
+      "cacheKey": "df2159453cdab270860801dc94847a5cbaf35a2c65f84338a95395fd7d970b98",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/ending/df2159453cdab270860801dc94847a5cbaf35a2c65f84338a95395fd7d970b98/attempt-194ce21ac4cc4a0a96e5646a919db01f",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/ending/df2159453cdab270860801dc94847a5cbaf35a2c65f84338a95395fd7d970b98/attempt-194ce21ac4cc4a0a96e5646a919db01f/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.7015760410000027
+    },
+    {
+      "id": "phrase",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.6862522909999953,
+      "artifacts": [
+        {
+          "stageId": "phrase",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/phrase/5f4124bc0e5c5e0a2ed79a15108eb7280b2961cd66bc79e442f5b866faefa739/attempt-54234eae48b44fd796b5cf319c6752c7/phrase-reference-then-ours.ab.wav",
+          "relativePath": "phrase-reference-then-ours.ab.wav",
+          "type": "file",
+          "sha256": "b824079c54a4e814e87d192ebfb23807efccf6da1623f9ef0d7d88b0fc333019"
+        },
+        {
+          "stageId": "phrase",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/phrase/5f4124bc0e5c5e0a2ed79a15108eb7280b2961cd66bc79e442f5b866faefa739/attempt-54234eae48b44fd796b5cf319c6752c7/phrase-reference-then-ours.comparison.json",
+          "relativePath": "phrase-reference-then-ours.comparison.json",
+          "type": "file",
+          "sha256": "36ba97650e44b0ae80b6802052b1e30a603c6ec6290639c5c4ee2f69825a982c"
+        }
+      ],
+      "cacheKey": "5f4124bc0e5c5e0a2ed79a15108eb7280b2961cd66bc79e442f5b866faefa739",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/phrase/5f4124bc0e5c5e0a2ed79a15108eb7280b2961cd66bc79e442f5b866faefa739/attempt-54234eae48b44fd796b5cf319c6752c7",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/phrase/5f4124bc0e5c5e0a2ed79a15108eb7280b2961cd66bc79e442f5b866faefa739/attempt-54234eae48b44fd796b5cf319c6752c7/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.7189887079999977
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "reference-pin",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/reference-pin/32c574507b1861a10d9ff842b2f5a5d0d1921768c0c07080d0ac238af5886cfd/attempt-5c81522161bd4a6d8302176b04daca6d/reference.json",
+      "relativePath": "reference.json",
+      "type": "file",
+      "sha256": "3f96a2fce5da1f76e73d96e477c0963f88cd10ccad8484b5f9ff2b9ef25e49bc"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "775926ae8466a42b5d85b70528e3a160d37aa853754c5526314eec1ccbd8320a"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/reconstructed.prg",
+      "relativePath": "candidate/reconstructed.prg",
+      "type": "file",
+      "sha256": "de9f838f5a6cd7b77d790b3bbd8f8787c2e005107a64e60e232ed40649d005d6"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/verification.json",
+      "relativePath": "candidate/verification.json",
+      "type": "file",
+      "sha256": "e9c2409f98b83879a98f3a872d7bca134cb6fb4d27d647a52ebc7bc88dde79ba"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "d7536649f5ccf2f41cfa8e690aba426626a9c64ed9a2533905d472711338566d"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "0a012202e03edf7077767754e5bb4eb4f59438ecb9d59ca5d7829a511a6b293e"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "4ca1585f80f2e996afd6289e96c8c55c1b995516f7e9199b3f52b7459dd5c965"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "7ec0a177522e52a1e7148fb5fa29db70bce96611d7675570c5e0bf8529ea416d"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "f78a9b3e0ffd66864ad24c56b34d82922da3f8f3fd8463152da1d49c24d166c8"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "68015c03b99d8524382ce77cb3f2ef80e76b59ac5c958c874d4e2970eef57a8c"
+    },
+    {
+      "stageId": "numeric-source-check",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/numeric-source-check/6ce6daaf5c464eee4be0d4c982eaf1dc0e309ef5b2cfe526d094e43fbaed7506/attempt-21677d9f0e9c4208ba656ad451ec23d0/source-prefix.json",
+      "relativePath": "source-prefix.json",
+      "type": "file",
+      "sha256": "a5d8e4e08434d687fe7ad83a6acb987b118c26ceb4171ca25d18d16013498a16"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "56c6070ca8a7d8a820752e57ca7e49b560ff39ed2e7de3171c1391a86b9d032d"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "7970ad77de15ad98d04ca5ebb8fe8cf0448256cea5fd9ee1457d0e83baa3df59"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "d882bae61869a14a7d4959883f58a76d353e65ae635c073f53d09b205f3e6dc6"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "52f4f9366d4cbd3823d0fda0eae37fc5fd63ea39df370e50f2f2187fe3ce3477"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "7c56b7aefceb3ada61179cebf66f10cf3127c4c89bce7a89d1529f85d16eda29"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/reference-render/4528b2999b186ed8529851309faacc16647791ca819d0cd298e73ff0d15573dd/attempt-2cbc6e15c27d4d3ea04c2dc99b6aa5d7/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "8981e83d03b7f48a9bb3898dbca85ac05f3f1578066ad095b306b0e6af2fcc1f"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/reference-render/4528b2999b186ed8529851309faacc16647791ca819d0cd298e73ff0d15573dd/attempt-2cbc6e15c27d4d3ea04c2dc99b6aa5d7/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "bd6bed600ab54f6055baa311223b69c549704a043c507a2c0441cbc0eefea37b"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/candidate-render/2a8939e488946abbe4449c1132736496383b731b75f46e24d4ce46614e8d4ebe/attempt-21977fdc1a9149bdba96bc5b36a55c3c/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "be91ca5bcd1e3dd8a2fe73f4a3b2da770aa6f474d38f0d7aafc1d239ae1a4f1a"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/candidate-render/2a8939e488946abbe4449c1132736496383b731b75f46e24d4ce46614e8d4ebe/attempt-21977fdc1a9149bdba96bc5b36a55c3c/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "e35113262a00e72dd13d9959ceca39654bde2071220a04667e6d1fcf7dc08f1f"
+    },
+    {
+      "stageId": "signal-check",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/signal-check/11077d9d334f5bd18948256b8bbb5b09c61a0fde4a664254b45c510ea4c07a88/attempt-87b9526d06194da99f1f7c1d3eb98590/audio.json",
+      "relativePath": "audio.json",
+      "type": "file",
+      "sha256": "cf2e24d24371bd34028a5f48dd449839d8f992ad1601b9b2ed5d056347e6c567"
+    },
+    {
+      "stageId": "opening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/opening/a9c592d4bb2d6ef6ab9beebf8f1d88c1f1a41257b643e0e2d3d9fd50e7a62b49/attempt-829a33640acf47708a764492174d181b/opening-reference-then-ours.ab.wav",
+      "relativePath": "opening-reference-then-ours.ab.wav",
+      "type": "file",
+      "sha256": "a49a5f259884fa4c3c1312f82f3bbf36deb2d9b559934e013d4c327d4bf7d1c4"
+    },
+    {
+      "stageId": "opening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/opening/a9c592d4bb2d6ef6ab9beebf8f1d88c1f1a41257b643e0e2d3d9fd50e7a62b49/attempt-829a33640acf47708a764492174d181b/opening-reference-then-ours.comparison.json",
+      "relativePath": "opening-reference-then-ours.comparison.json",
+      "type": "file",
+      "sha256": "d6538163fa630426bcffac64b62ae383ede10774be125a60d8dcad23153b13d6"
+    },
+    {
+      "stageId": "ending",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/ending/df2159453cdab270860801dc94847a5cbaf35a2c65f84338a95395fd7d970b98/attempt-194ce21ac4cc4a0a96e5646a919db01f/ending-reference-then-ours.ab.wav",
+      "relativePath": "ending-reference-then-ours.ab.wav",
+      "type": "file",
+      "sha256": "b54692053bf921d0cd6bdfc78e39637ff4100c82ca8d92296d0efc3920f9746a"
+    },
+    {
+      "stageId": "ending",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/ending/df2159453cdab270860801dc94847a5cbaf35a2c65f84338a95395fd7d970b98/attempt-194ce21ac4cc4a0a96e5646a919db01f/ending-reference-then-ours.comparison.json",
+      "relativePath": "ending-reference-then-ours.comparison.json",
+      "type": "file",
+      "sha256": "643c1c92d4a484dce0332239e5a20076ddc96be754ed15931ebe7c0506b58775"
+    },
+    {
+      "stageId": "phrase",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/phrase/5f4124bc0e5c5e0a2ed79a15108eb7280b2961cd66bc79e442f5b866faefa739/attempt-54234eae48b44fd796b5cf319c6752c7/phrase-reference-then-ours.ab.wav",
+      "relativePath": "phrase-reference-then-ours.ab.wav",
+      "type": "file",
+      "sha256": "b824079c54a4e814e87d192ebfb23807efccf6da1623f9ef0d7d88b0fc333019"
+    },
+    {
+      "stageId": "phrase",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/phrase/5f4124bc0e5c5e0a2ed79a15108eb7280b2961cd66bc79e442f5b866faefa739/attempt-54234eae48b44fd796b5cf319c6752c7/phrase-reference-then-ours.comparison.json",
+      "relativePath": "phrase-reference-then-ours.comparison.json",
+      "type": "file",
+      "sha256": "36ba97650e44b0ae80b6802052b1e30a603c6ec6290639c5c4ee2f69825a982c"
+    }
+  ],
+  "deliverables": {
+    "fullReference": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/reference-render/4528b2999b186ed8529851309faacc16647791ca819d0cd298e73ff0d15573dd/attempt-2cbc6e15c27d4d3ea04c2dc99b6aa5d7/render.wav",
+    "fullCandidate": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/candidate-render/2a8939e488946abbe4449c1132736496383b731b75f46e24d4ce46614e8d4ebe/attempt-21977fdc1a9149bdba96bc5b36a55c3c/render.wav",
+    "opening": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/opening/a9c592d4bb2d6ef6ab9beebf8f1d88c1f1a41257b643e0e2d3d9fd50e7a62b49/attempt-829a33640acf47708a764492174d181b/opening-reference-then-ours.ab.wav",
+    "ending": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/ending/df2159453cdab270860801dc94847a5cbaf35a2c65f84338a95395fd7d970b98/attempt-194ce21ac4cc4a0a96e5646a919db01f/ending-reference-then-ours.ab.wav",
+    "phrase": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/phrase/5f4124bc0e5c5e0a2ed79a15108eb7280b2961cd66bc79e442f5b866faefa739/attempt-54234eae48b44fd796b5cf319c6752c7/phrase-reference-then-ours.ab.wav",
+    "numericSourceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/numeric-source-check/6ce6daaf5c464eee4be0d4c982eaf1dc0e309ef5b2cfe526d094e43fbaed7506/attempt-21677d9f0e9c4208ba656ad451ec23d0/source-prefix.json",
+    "compiledProof": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/verification.json",
+    "viceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/study.json",
+    "signalProof": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/signal-check/11077d9d334f5bd18948256b8bbb5b09c61a0fde4a664254b45c510ea4c07a88/attempt-87b9526d06194da99f1f7c1d3eb98590/audio.json"
+  },
+  "finishedAt": "2026-10-14T11:38:07.296865+00:00",
+  "wallSeconds": 47.412296042
+}

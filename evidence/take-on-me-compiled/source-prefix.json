@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "check": "writes",
+  "passed": true,
+  "inputs": [
+    {
+      "label": "source",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/evidence/take-on-me-form/writes.json.gz",
+      "sha256": "9d9126d7bacaca0be2334f7f1423025d9f67c7bc5f5c50611f0ca98aace66081",
+      "decompressedSha256": "2d39e73334951e6fb425bcee373279e3f89d34ad037d4e6fe338a138b2bf2a09"
+    },
+    {
+      "label": "candidate",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/writes.json",
+      "sha256": "0a012202e03edf7077767754e5bb4eb4f59438ecb9d59ca5d7829a511a6b293e",
+      "decompressedSha256": "0a012202e03edf7077767754e5bb4eb4f59438ecb9d59ca5d7829a511a6b293e"
+    }
+  ],
+  "expectedSourceDecompressedSha256": "2d39e73334951e6fb425bcee373279e3f89d34ad037d4e6fe338a138b2bf2a09",
+  "scope": {
+    "initialization": true,
+    "playCalls": 4864,
+    "firstCall": 0,
+    "lastCallInclusive": 4863,
+    "candidatePrefix": true
+  },
+  "identityFields": [
+    "phase",
+    "tick",
+    "address",
+    "value"
+  ],
+  "matchedWrites": 86302,
+  "matchedInitWrites": 5,
+  "matchedPlayWrites": 86297,
+  "excludedCandidateWrites": 7,
+  "claims": {
+    "orderedRegisterWriteIdentity": true,
+    "busCycleIdentity": false,
+    "perceptualAgreement": false
+  }
+}

@@ -82,12 +82,25 @@ def compute(composition, *, calls=None, contexts=False):
     calls = declared if calls is None else calls
     if type(calls) is not int or not 1 <= calls <= declared:
         raise ValueError('Choose calls within the declared audit range')
+    ending = composition.get('ending')
+    if ending is not None:
+        if not isinstance(ending, dict) or set(ending) != {'startCall', 'releaseCalls'}:
+            raise ValueError('Ending requires startCall and releaseCalls')
+        start = ending['startCall']
+        release = ending['releaseCalls']
+        if type(start) is not int or type(release) is not int or start < 1 or release < 1:
+            raise ValueError('Ending start and release must be positive integers')
+        stop = start + release
+        if declared < stop + 65:
+            raise ValueError('Declared range must include 64 calls after the final stop')
+    else:
+        start = stop = declared
     numeric_score = deepcopy(composition['score'])
     for order in numeric_score['orders']:
         order['address'] = 0
     for pattern in numeric_score['patterns'].values():
         pattern['address'] = 0
-    scheduled = score.expand(numeric_score, calls)
+    scheduled = score.expand(numeric_score, min(calls, start))
     onsets = {(row['tick'], row['voice']): row for row in scheduled['rows']}
     stops = {row['tick']: row['voice'] for row in scheduled['stops']}
     instruments, bank = sound_data(composition['sound'])
@@ -114,8 +127,17 @@ def compute(composition, *, calls=None, contexts=False):
 
     emit([(0xd404, 0), (0xd40b, 0), (0xd412, 0), (0xd417, routing), (0xd418, mode_volume)], None)
     active = True
-    for tick, score_return in enumerate(scheduled['returns']):
-        if active:
+    for tick in range(calls):
+        score_return = scheduled['returns'][min(tick, len(scheduled['returns']) - 1)]
+        if ending is not None and tick >= start:
+            if tick == start:
+                voices = [replace(state, control=state.control & 254) for state in voices]
+                emit([(0xd404 + voice * 7, state.control) for voice, state in enumerate(voices)], tick)
+            elif tick == stop:
+                voices = [replace(state, control=0) for state in voices]
+                mode_volume &= 240
+                emit([(0xd404, 0), (0xd40b, 0), (0xd412, 0), (0xd418, mode_volume)], tick)
+        elif active:
             voices = [bridge(state, score_return['voices'][voice]) for voice, state in enumerate(voices)]
             for voice in (2, 1, 0):
                 state = voices[voice]
@@ -149,8 +171,12 @@ def compute(composition, *, calls=None, contexts=False):
                 emit(output, tick)
                 if contexts:
                     records.append(dict(stage='filter-output', call=tick, voice=0, writes=output))
-        returns.append(dict(tick=tick, score=score_return,
-            voices=[asdict(state) for state in voices], filter=asdict(shared)))
+        returned = dict(tick=tick, score=score_return,
+            voices=[asdict(state) for state in voices], filter=asdict(shared))
+        if ending is not None:
+            returned['ending'] = dict(phase=0 if tick < start else 1 if tick < stop else 2,
+                nextCall=tick + 1 if tick < stop else stop, modeVolume=mode_volume)
+        returns.append(returned)
     rows = [{key: value for key, value in row.items() if key != 'address'} for row in scheduled['rows']]
     return dict(writes=writes, rows=rows, wraps=scheduled['wraps'], stops=scheduled['stops'],
         returns=returns, contexts=records)

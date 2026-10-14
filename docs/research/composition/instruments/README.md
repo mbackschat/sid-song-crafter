@@ -13,6 +13,8 @@
 
 - [Deflektor tonal programs](deflektor-decoded-programs.md): accepted familiar 53-note transfer of moving-pulse melody, bass and support; computed low-byte PWM, delayed raw-word pitch and explicit release adaptation.
 
+- [Take On Me tonal programs](take-on-me-decoded-programs.md): accepted matched A440 familiar transfer with one-way pulse lead, delayed vibrato, moving-pulse filtered bass and explicit native articulation limits.
+
 ## Original SID-Wizard instruments
 
 Research and design date: 2026-10-12. This bank implements the first small group of experiments from [the repertoire brief](../sound-design-repertoire.md) using SID-Wizard 1.97 Extra. The [editable study source and workfiles](../../../../songs/studies/sidwizard-repertoire/README.md) retain the original patches, phrases and controlled comparisons.

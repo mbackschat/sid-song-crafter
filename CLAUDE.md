@@ -15,7 +15,8 @@ Current verified work and continuation:
 - [Bounded Shades/Giana contrast](docs/research/composition/huelsbeck-contrast.md#scoped-corroboration-outcome): complete; pulse motion corroborated and heard, shared-filter scheduling narrowed to each driver.
 - [Bounded Cybernoid II/Turbo Outrun contrast](docs/research/composition/tel-contrast.md): complete; packed sample playback and a tonal waveform onset are verified, with no audible difference detected in the onset diagnostic.
 - [Monty/Commando contrast](docs/research/composition/hubbard-contrast.md): complete for the bounded scope; no audible difference detected in the isolated percussion diagnostic. All six composer contrasts are closed.
-- Continue with [Take On Me](docs/research/composition/take-on-me-preparation.md) under the [study-plan order](docs/research/study-plan.md#delivery-order-and-work-in-progress). Keep audio models experimental and preserve human listening authority.
+- [Take On Me](docs/research/composition/take-on-me-preparation.md#familiar-transfer-and-case-closure): complete for the declared introduction/first-loop reconstruction, authored ending and accepted familiar transfer; [reusable pulse lead and filtered bass](docs/research/composition/instruments/take-on-me-decoded-programs.md) retained.
+- Continue with [Billie Jean](docs/research/composition/billie-jean-preparation.md) under the [study-plan order](docs/research/study-plan.md#delivery-order-and-work-in-progress). Keep audio models experimental and preserve human listening authority.
 
 ## Finish musical deliverables
 

@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "title-preparation",
+      "command": [
+        "{python}",
+        "scripts/studies/take-on-me/prepare-title.py",
+        "--check"
+      ],
+      "inputs": [
+        "scripts/studies/take-on-me/prepare-title.py",
+        "evidence/take-on-me-player/composition.json",
+        "songs/studies/take-on-me-reconstruction/composition.json",
+        "songs/studies/take-on-me-reconstruction/preparation.json"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference-pin",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "asset",
+        ".local/research/take-on-me/Take_on_Me.sid",
+        "--sha256",
+        "c7e45037d20c3b85d18fc955a1cdfb70041f08dfc171e9b12d1c3327300101e6",
+        "--output",
+        "{out}/reference.json"
+      ],
+      "inputs": [
+        ".local/research/take-on-me/Take_on_Me.sid",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "reference.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "build",
+      "command": [
+        "{python}",
+        "scripts/studies/take-on-me/compose.py",
+        "songs/studies/take-on-me-reconstruction/composition.json",
+        "--output",
+        "{out}/candidate"
+      ],
+      "inputs": [
+        "songs/studies/take-on-me-reconstruction/composition.json",
+        "scripts/studies/take-on-me/compose.py",
+        "scripts/studies/take-on-me/compiler.py",
+        "scripts/studies/take-on-me/player.py",
+        "scripts/studies/take-on-me/score.py",
+        "scripts/studies/take-on-me/programs.py",
+        "scripts/studies/take-on-me/effects_asm.py",
+        "songs/players/take-on-me.asm",
+        "songs/players/take-on-me-effects.asm",
+        "scripts/sid_assembler.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "candidate/reconstructed.sid",
+        "candidate/reconstructed.prg",
+        "candidate/verification.json",
+        "candidate/audit.json",
+        "candidate/writes.json",
+        "candidate/state-checkpoints.json",
+        "candidate/player.asm",
+        "candidate/player.listing",
+        "candidate/build.json"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "numeric-source-check",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "writes",
+        "evidence/take-on-me-form/writes.json.gz",
+        "{stage:build}/candidate/writes.json",
+        "--source-sha256",
+        "2d39e73334951e6fb425bcee373279e3f89d34ad037d4e6fe338a138b2bf2a09",
+        "--calls",
+        "4864",
+        "--candidate-prefix",
+        "--output",
+        "{out}/source-prefix.json"
+      ],
+      "inputs": [
+        "evidence/take-on-me-form/writes.json.gz",
+        "{stage:build}/candidate/writes.json",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "source-prefix.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "vice",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:build}/candidate/reconstructed.sid",
+        "--oracle",
+        "{stage:build}/candidate/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "4960",
+        "--timeout",
+        "300",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:build}/candidate/reconstructed.sid",
+        "{stage:build}/candidate/writes.json",
+        "scripts/trace-sid-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/study.json",
+        "vice/trace.json",
+        "vice/monitor.log",
+        "vice/command.json",
+        "vice/commands.mon"
+      ],
+      "timeoutSeconds": 330,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/take-on-me/Take_on_Me.sid",
+        "{out}/render.wav",
+        "100",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal",
+        "--assume-sid-model",
+        "MOS8580"
+      ],
+      "inputs": [
+        ".local/research/take-on-me/Take_on_Me.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:build}/candidate/reconstructed.sid",
+        "{out}/render.wav",
+        "100",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:build}/candidate/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "--seconds",
+        "100",
+        "--output",
+        "{out}/audio.json",
+        "--tail-seconds",
+        "1",
+        "--max-tail-ac-rms",
+        "1",
+        "--tail-target",
+        "candidate"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "opening",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{out}/opening-reference-then-ours",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "12",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "opening-reference-then-ours.ab.wav",
+        "opening-reference-then-ours.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "ending",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{out}/ending-reference-then-ours",
+        "--start-seconds",
+        "85",
+        "--end-seconds",
+        "100",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "ending-reference-then-ours.ab.wav",
+        "ending-reference-then-ours.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "phrase",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{out}/phrase-reference-then-ours",
+        "--start-seconds",
+        "16",
+        "--end-seconds",
+        "32",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "phrase-reference-then-ours.ab.wav",
+        "phrase-reference-then-ours.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "fullReference": "{stage:reference-render}/render.wav",
+    "fullCandidate": "{stage:candidate-render}/render.wav",
+    "opening": "{stage:opening}/opening-reference-then-ours.ab.wav",
+    "ending": "{stage:ending}/ending-reference-then-ours.ab.wav",
+    "phrase": "{stage:phrase}/phrase-reference-then-ours.ab.wav",
+    "numericSourceProof": "{stage:numeric-source-check}/source-prefix.json",
+    "compiledProof": "{stage:build}/candidate/verification.json",
+    "viceProof": "{stage:vice}/vice/study.json",
+    "signalProof": "{stage:signal-check}/audio.json"
+  }
+}

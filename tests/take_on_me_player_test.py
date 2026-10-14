@@ -131,6 +131,29 @@ class TakeOnMePlayerTest(unittest.TestCase):
         self.assertEqual(value, initial)
         self.assertEqual(first, player.compute(value))
 
+    def test_authored_release_freezes_score_and_modulation_then_stops_once(self):
+        value = example(calls=69)
+        value['ending'] = dict(startCall=2, releaseCalls=2)
+        value['sound']['instruments'][1]['body_control'] = 65
+        value['sound']['instruments'][1]['gate_half'] = 0
+        result = player.compute(value)
+        release = [(row['address'], row['value']) for row in result['writes'] if row['tick'] == 2]
+        self.assertEqual(release, [(0xd404, 64), (0xd40b, 64), (0xd412, 64)])
+        self.assertEqual([row for row in result['writes'] if row['tick'] == 3], [])
+        stop = [(row['address'], row['value']) for row in result['writes'] if row['tick'] == 4]
+        self.assertEqual(stop, [(0xd404, 0), (0xd40b, 0), (0xd412, 0), (0xd418, 16)])
+        self.assertEqual([row for row in result['writes'] if row['tick'] is not None and row['tick'] > 4], [])
+        self.assertEqual(result['returns'][2]['voices'], result['returns'][3]['voices'])
+        frozen = lambda row: {key: field for key, field in row.items() if key != 'tick'}
+        self.assertEqual(frozen(result['returns'][4]), frozen(result['returns'][68]))
+        self.assertEqual(result['returns'][4]['ending'], dict(phase=2, nextCall=4, modeVolume=16))
+
+    def test_authored_ending_requires_64_observed_calls_after_the_final_stop(self):
+        value = example(calls=68)
+        value['ending'] = dict(startCall=2, releaseCalls=2)
+        with self.assertRaisesRegex(ValueError, '64 calls after'):
+            player.compute(value)
+
 
 if __name__ == '__main__':
     unittest.main()

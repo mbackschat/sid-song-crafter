@@ -213,6 +213,22 @@ The compiler preflights the complete declared `play_calls` in 1–65,535; `--cal
 
 Outputs include PSID, standalone PRG, generated assembly/listing, CPU audit, ordered writes, named checkpoints and a verification receipt. Verification checks complete callable boundaries, independently computed ordered stores, executed SID writer sites, cycle budget and poisoned-state reinitialization. The PRG's actual SYS 2061 bootstrap is separately checked with modeled raster/CIA reads. Full headless VICE execution in the recipe checks callable playback, not real-machine PRG autostart. Audio checks and human listening remain separate.
 
+### Take On Me runtime score and sound programs
+
+The study-specific [compiler](../../scripts/studies/take-on-me/compose.py) consumes `take-on-me-composition-v1` descriptions, including the [editable title](../../songs/studies/take-on-me-reconstruction/README.md). Its [owning study](../research/composition/take-on-me-preparation.md) separates source provenance, numeric verification and listening status. The working target is one PAL MOS8580 at `$D400`, updated every 19,656 cycles; the original archive's unspecified chip model remains unchanged.
+
+```sh
+python3 scripts/studies/take-on-me/prepare-title.py --check
+PYTHONPATH=.tools/test-deps python3 scripts/studies/take-on-me/compose.py songs/studies/take-on-me-reconstruction/composition.json --output build/take-on-me-compiled-new
+python3 scripts/listening-package.py config/listening/take-on-me-full.json --output build/take-on-me-full-work
+```
+
+The compiler lowers editable order/pattern rows, instrument records, frequency and modulation tables, and named initial state into our [scheduler](../../songs/players/take-on-me.asm) and [sound routines](../../songs/players/take-on-me-effects.asm). These execute score and modulation at runtime, without original driver instructions or captured-write replay. Score-owned countdown, note, glide and arpeggio fields share one physical state store with the sound routines. Source annotations do not control synthesis. Preserve the native pitch table for reconstruction; retuning for different material is an explicit adaptation, not an implied regional conversion.
+
+Every build numerically executes the complete declared `range.auditCalls` in 1–65,535. The default compiled CPU comparison covers that whole range; `--calls` selects a diagnostic CPU prefix without shortening numeric admission or exported playback. Verification compares ordered stores and named state, checks writer sites and the PAL cycle budget, and poisons mutable state before testing reset. Outputs include SID, standalone PRG, assembly/listing, build metadata, audit, ordered writes, state checkpoints and a verification receipt. The actual PRG bootstrap has a separate modeled raster/CIA check; the recipe's headless VICE check covers callable playback, not real-machine PRG autostart.
+
+Optional `ending` declares positive integer `startCall` and `releaseCalls`; the declared range must include the stop call and at least 64 subsequent confirmation calls. At the start, close the held gates and freeze score and modulation. Leave the held release untouched until the stop call, then clear controls and master volume while retaining filter-mode bits. Subsequent calls leave named state unchanged and emit no stores. This is a deliberate arrangement ending; the source loops. The full recipe compares only the preserved musical prefix against the original, verifies the entire candidate including its ending in CPU/VICE, and applies settled-tail audio checks to the candidate alone. Source-prefix equality does not prove the authored tail; signal health does not establish musical acceptance.
+
 ### Other drivers
 
 [describe-drax-score.py](../../scripts/studies/drax/describe-drax-score.py) is a pinned, driver-specific transcriber, not a universal SID importer. It observes executed note consumption, instrument initialization and score gate-off, then verifies preparation and repeat behavior. Use `--check` to compare its output with the retained fixture. For another player, recover its corresponding readers and state transitions before adapting the decoder. [The Flashdance study](../research/composition/flashdance-preparation.md) demonstrates its own decoded mechanisms and independently authored dual-SID arrangement.

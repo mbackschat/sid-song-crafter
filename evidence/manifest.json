@@ -13836,6 +13836,566 @@
       "originalBytes": 1257,
       "sha256": "814df904695320dfb5a02c8963d34fb65bfbd3d672e6fe61c1d6b91ccf314d9d",
       "bytes": 435
+    },
+    {
+      "path": "evidence/take-on-me-compiled/run.json",
+      "originalPath": "build/take-on-me-full-work/run-executed.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain fresh full recipe commands, tools, inputs, outputs and stage timings.",
+      "originalSha256": "216393acb9a60c1aa6f1187c853e0a78c4050c84c511c2be4a3fa892f4673d97",
+      "originalBytes": 34624,
+      "sha256": "216393acb9a60c1aa6f1187c853e0a78c4050c84c511c2be4a3fa892f4673d97",
+      "bytes": 34624
+    },
+    {
+      "path": "evidence/take-on-me-compiled/repeat-run.json",
+      "originalPath": "build/take-on-me-full-work/run.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain fingerprint-verified stage reuse and measured repeated-run cost.",
+      "originalSha256": "6579feedfe0a6b4b8f3d64d71d23a1d2980ea78c8220016875e89859ae1a2475",
+      "originalBytes": 34188,
+      "sha256": "6579feedfe0a6b4b8f3d64d71d23a1d2980ea78c8220016875e89859ae1a2475",
+      "bytes": 34188
+    },
+    {
+      "path": "evidence/take-on-me-compiled/ending-measurements.json",
+      "originalPath": "build/take-on-me-full-work/ending-measurements.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain source-bound PCM measurements before authored stop without retaining audio.",
+      "originalSha256": "ef45eb40500f241ba902921165d92d8149daefff7f20a7d74220bcbc0e490e29",
+      "originalBytes": 2686,
+      "sha256": "ef45eb40500f241ba902921165d92d8149daefff7f20a7d74220bcbc0e490e29",
+      "bytes": 2686
+    },
+    {
+      "path": "evidence/take-on-me-compiled/listening/submission.json",
+      "originalPath": "build/take-on-me-listening/sources.json",
+      "group": "take-on-me-compiled",
+      "reason": "Bind the frozen listener files to the verified recipe and audio fingerprints.",
+      "originalSha256": "d5eb0453de50fc7dcb157886fd9efe1d7a58b0eab263c181a5d8754880ef68e4",
+      "originalBytes": 2807,
+      "sha256": "d5eb0453de50fc7dcb157886fd9efe1d7a58b0eab263c181a5d8754880ef68e4",
+      "bytes": 2807
+    },
+    {
+      "path": "evidence/take-on-me-compiled/reference.json",
+      "originalPath": "build/take-on-me-full-work/cache/reference-pin/32c574507b1861a10d9ff842b2f5a5d0d1921768c0c07080d0ac238af5886cfd/attempt-5c81522161bd4a6d8302176b04daca6d/reference.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "3f96a2fce5da1f76e73d96e477c0963f88cd10ccad8484b5f9ff2b9ef25e49bc",
+      "originalBytes": 386,
+      "sha256": "3f96a2fce5da1f76e73d96e477c0963f88cd10ccad8484b5f9ff2b9ef25e49bc",
+      "bytes": 386
+    },
+    {
+      "path": "evidence/take-on-me-compiled/candidate/verification.json",
+      "originalPath": "build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/verification.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "e9c2409f98b83879a98f3a872d7bca134cb6fb4d27d647a52ebc7bc88dde79ba",
+      "originalBytes": 8038,
+      "sha256": "e9c2409f98b83879a98f3a872d7bca134cb6fb4d27d647a52ebc7bc88dde79ba",
+      "bytes": 8038
+    },
+    {
+      "path": "evidence/take-on-me-compiled/candidate/audit.json",
+      "originalPath": "build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/audit.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "d7536649f5ccf2f41cfa8e690aba426626a9c64ed9a2533905d472711338566d",
+      "originalBytes": 3634,
+      "sha256": "d7536649f5ccf2f41cfa8e690aba426626a9c64ed9a2533905d472711338566d",
+      "bytes": 3634
+    },
+    {
+      "path": "evidence/take-on-me-compiled/candidate/writes.json.gz",
+      "originalPath": "build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/writes.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "0a012202e03edf7077767754e5bb4eb4f59438ecb9d59ca5d7829a511a6b293e",
+      "originalBytes": 7260967,
+      "sha256": "25899604c9b77cebf325a846b0cb91874d8789c7a0da28dbee1a742774f7d5af",
+      "bytes": 386136
+    },
+    {
+      "path": "evidence/take-on-me-compiled/candidate/state-checkpoints.json.gz",
+      "originalPath": "build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/state-checkpoints.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "4ca1585f80f2e996afd6289e96c8c55c1b995516f7e9199b3f52b7459dd5c965",
+      "originalBytes": 42031,
+      "sha256": "a0b5dafbed1f50481635fa70ee4823053400d546d9923e1e0696a820e33f4d10",
+      "bytes": 1384
+    },
+    {
+      "path": "evidence/take-on-me-compiled/candidate/player.asm.gz",
+      "originalPath": "build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/player.asm",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "7ec0a177522e52a1e7148fb5fa29db70bce96611d7675570c5e0bf8529ea416d",
+      "originalBytes": 39595,
+      "sha256": "07476746a687dc88c2efb92442980facc945e63fdd91165cb119e3b680455b64",
+      "bytes": 5016
+    },
+    {
+      "path": "evidence/take-on-me-compiled/candidate/player.listing.gz",
+      "originalPath": "build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/player.listing",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "f78a9b3e0ffd66864ad24c56b34d82922da3f8f3fd8463152da1d49c24d166c8",
+      "originalBytes": 56720,
+      "sha256": "9f18aa0020908ba56ac833d2850c79cf43a77430c2d74c3611b558f29caaa3be",
+      "bytes": 8412
+    },
+    {
+      "path": "evidence/take-on-me-compiled/candidate/build.json",
+      "originalPath": "build/take-on-me-full-work/cache/build/1c198b5b1727711dc914322eb0439db96caaa5492aff70ca7daf914e512ccdb6/attempt-8a9f2d506ea9422685338c6fb0506d2e/candidate/build.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "68015c03b99d8524382ce77cb3f2ef80e76b59ac5c958c874d4e2970eef57a8c",
+      "originalBytes": 10941,
+      "sha256": "68015c03b99d8524382ce77cb3f2ef80e76b59ac5c958c874d4e2970eef57a8c",
+      "bytes": 10941
+    },
+    {
+      "path": "evidence/take-on-me-compiled/source-prefix.json",
+      "originalPath": "build/take-on-me-full-work/cache/numeric-source-check/6ce6daaf5c464eee4be0d4c982eaf1dc0e309ef5b2cfe526d094e43fbaed7506/attempt-21677d9f0e9c4208ba656ad451ec23d0/source-prefix.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "a5d8e4e08434d687fe7ad83a6acb987b118c26ceb4171ca25d18d16013498a16",
+      "originalBytes": 1414,
+      "sha256": "a5d8e4e08434d687fe7ad83a6acb987b118c26ceb4171ca25d18d16013498a16",
+      "bytes": 1414
+    },
+    {
+      "path": "evidence/take-on-me-compiled/vice/study.json",
+      "originalPath": "build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/study.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "56c6070ca8a7d8a820752e57ca7e49b560ff39ed2e7de3171c1391a86b9d032d",
+      "originalBytes": 5349,
+      "sha256": "56c6070ca8a7d8a820752e57ca7e49b560ff39ed2e7de3171c1391a86b9d032d",
+      "bytes": 5349
+    },
+    {
+      "path": "evidence/take-on-me-compiled/vice/trace.json.gz",
+      "originalPath": "build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/trace.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "7970ad77de15ad98d04ca5ebb8fe8cf0448256cea5fd9ee1457d0e83baa3df59",
+      "originalBytes": 37490844,
+      "sha256": "b89d82546d8bfdd2133180429107f0be53e2ca376b6e396195143a6e71222b0f",
+      "bytes": 1279856
+    },
+    {
+      "path": "evidence/take-on-me-compiled/vice/monitor.txt.gz",
+      "originalPath": "build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/monitor.log",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "d882bae61869a14a7d4959883f58a76d353e65ae635c073f53d09b205f3e6dc6",
+      "originalBytes": 11641304,
+      "sha256": "4ace5eed5474baad78b2ad4c218ba5f45071b197f2fc8d30ebbeaae2100a7b47",
+      "bytes": 1021255
+    },
+    {
+      "path": "evidence/take-on-me-compiled/vice/command.json",
+      "originalPath": "build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/command.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "52f4f9366d4cbd3823d0fda0eae37fc5fd63ea39df370e50f2f2187fe3ce3477",
+      "originalBytes": 827,
+      "sha256": "52f4f9366d4cbd3823d0fda0eae37fc5fd63ea39df370e50f2f2187fe3ce3477",
+      "bytes": 827
+    },
+    {
+      "path": "evidence/take-on-me-compiled/vice/commands.mon",
+      "originalPath": "build/take-on-me-full-work/cache/vice/fd3bc47242121ab9bcd602644aca2b7f5026fa58a0c2746a400e81be8ad6cced/attempt-95d0d5fd76d14a9a94334493dfd9cfc3/vice/commands.mon",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "7c56b7aefceb3ada61179cebf66f10cf3127c4c89bce7a89d1529f85d16eda29",
+      "originalBytes": 820,
+      "sha256": "7c56b7aefceb3ada61179cebf66f10cf3127c4c89bce7a89d1529f85d16eda29",
+      "bytes": 820
+    },
+    {
+      "path": "evidence/take-on-me-compiled/reference-render/registers.tsv.gz",
+      "originalPath": "build/take-on-me-full-work/promotion/reference-registers.tsv",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "bd6bed600ab54f6055baa311223b69c549704a043c507a2c0441cbc0eefea37b",
+      "originalBytes": 386793,
+      "sha256": "030523ae3513abc50253f911bcc8ba5a1d5bb58f83c6d1d2290f09aa198f7190",
+      "bytes": 35206
+    },
+    {
+      "path": "evidence/take-on-me-compiled/candidate-render/registers.tsv.gz",
+      "originalPath": "build/take-on-me-full-work/promotion/candidate-registers.tsv",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "e35113262a00e72dd13d9959ceca39654bde2071220a04667e6d1fcf7dc08f1f",
+      "originalBytes": 386793,
+      "sha256": "03526882079d2b7b1e3f9dcfeee6ba17a21186ad2ded7955feeffbf30b392e3d",
+      "bytes": 34817
+    },
+    {
+      "path": "evidence/take-on-me-compiled/audio.json",
+      "originalPath": "build/take-on-me-full-work/cache/signal-check/11077d9d334f5bd18948256b8bbb5b09c61a0fde4a664254b45c510ea4c07a88/attempt-87b9526d06194da99f1f7c1d3eb98590/audio.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "cf2e24d24371bd34028a5f48dd449839d8f992ad1601b9b2ed5d056347e6c567",
+      "originalBytes": 2762,
+      "sha256": "cf2e24d24371bd34028a5f48dd449839d8f992ad1601b9b2ed5d056347e6c567",
+      "bytes": 2762
+    },
+    {
+      "path": "evidence/take-on-me-compiled/listening/opening-reference-then-ours.comparison.json",
+      "originalPath": "build/take-on-me-full-work/cache/opening/a9c592d4bb2d6ef6ab9beebf8f1d88c1f1a41257b643e0e2d3d9fd50e7a62b49/attempt-829a33640acf47708a764492174d181b/opening-reference-then-ours.comparison.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "d6538163fa630426bcffac64b62ae383ede10774be125a60d8dcad23153b13d6",
+      "originalBytes": 3086,
+      "sha256": "d6538163fa630426bcffac64b62ae383ede10774be125a60d8dcad23153b13d6",
+      "bytes": 3086
+    },
+    {
+      "path": "evidence/take-on-me-compiled/listening/ending-reference-then-ours.comparison.json",
+      "originalPath": "build/take-on-me-full-work/cache/ending/df2159453cdab270860801dc94847a5cbaf35a2c65f84338a95395fd7d970b98/attempt-194ce21ac4cc4a0a96e5646a919db01f/ending-reference-then-ours.comparison.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "643c1c92d4a484dce0332239e5a20076ddc96be754ed15931ebe7c0506b58775",
+      "originalBytes": 3095,
+      "sha256": "643c1c92d4a484dce0332239e5a20076ddc96be754ed15931ebe7c0506b58775",
+      "bytes": 3095
+    },
+    {
+      "path": "evidence/take-on-me-compiled/listening/phrase-reference-then-ours.comparison.json",
+      "originalPath": "build/take-on-me-full-work/cache/phrase/5f4124bc0e5c5e0a2ed79a15108eb7280b2961cd66bc79e442f5b866faefa739/attempt-54234eae48b44fd796b5cf319c6752c7/phrase-reference-then-ours.comparison.json",
+      "group": "take-on-me-compiled",
+      "reason": "Retain complete numeric, execution or comparison evidence; excludes reference and export binaries and audio.",
+      "originalSha256": "36ba97650e44b0ae80b6802052b1e30a603c6ec6290639c5c4ee2f69825a982c",
+      "originalBytes": 3090,
+      "sha256": "36ba97650e44b0ae80b6802052b1e30a603c6ec6290639c5c4ee2f69825a982c",
+      "bytes": 3090
+    },
+    {
+      "path": "evidence/take-on-me-compiled/reference-render/console.txt",
+      "originalPath": "build/take-on-me-full-work/cache/reference-render/4528b2999b186ed8529851309faacc16647791ca819d0cd298e73ff0d15573dd/attempt-2cbc6e15c27d4d3ea04c2dc99b6aa5d7/stage.log",
+      "group": "take-on-me-compiled",
+      "reason": "Retain renderer model, clock and subtune confirmation.",
+      "originalSha256": "ee887babe998ad3286262f3f93d31ed8e6ab372d2562b8979d1a02ef7c2cf44e",
+      "originalBytes": 143,
+      "sha256": "ee887babe998ad3286262f3f93d31ed8e6ab372d2562b8979d1a02ef7c2cf44e",
+      "bytes": 143
+    },
+    {
+      "path": "evidence/take-on-me-compiled/candidate-render/console.txt",
+      "originalPath": "build/take-on-me-full-work/cache/candidate-render/2a8939e488946abbe4449c1132736496383b731b75f46e24d4ce46614e8d4ebe/attempt-21977fdc1a9149bdba96bc5b36a55c3c/stage.log",
+      "group": "take-on-me-compiled",
+      "reason": "Retain renderer model, clock and subtune confirmation.",
+      "originalSha256": "2984dfa99a861bbc74cb286552117ecc71daba6535854ca0d3c49a2f9078b723",
+      "originalBytes": 126,
+      "sha256": "2984dfa99a861bbc74cb286552117ecc71daba6535854ca0d3c49a2f9078b723",
+      "bytes": 126
+    },
+    {
+      "path": "evidence/take-on-me-elise/run.json",
+      "originalPath": "build/take-on-me-elise-transfer-work/run.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete matched transfer preparation, both CPU/VICE builds, rendering and comparison provenance.",
+      "originalSha256": "8096128f7adc63c954eedafe0ad2250c5f396c71c4c094fb38ce4b5204edd2d7",
+      "originalBytes": 41591,
+      "sha256": "8096128f7adc63c954eedafe0ad2250c5f396c71c4c094fb38ce4b5204edd2d7",
+      "bytes": 41591
+    },
+    {
+      "path": "evidence/take-on-me-elise/listening/submission.json",
+      "originalPath": "build/take-on-me-elise-listening/sources.json",
+      "group": "take-on-me-elise",
+      "reason": "Bind presented generated plain reference and transferred instruments to verified recipe outputs.",
+      "originalSha256": "3748efff3e26ed33c25af5d68bae57f5a4651c3453bece99e41efbdd47461f01",
+      "originalBytes": 1924,
+      "sha256": "3748efff3e26ed33c25af5d68bae57f5a4651c3453bece99e41efbdd47461f01",
+      "bytes": 1924
+    },
+    {
+      "path": "evidence/take-on-me-elise/reference-build/verification.json",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/verification.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "9cf98711c4f3bf46f72b8777ad1b5b54ea8666789515116a259d8b8d61dde109",
+      "originalBytes": 7864,
+      "sha256": "9cf98711c4f3bf46f72b8777ad1b5b54ea8666789515116a259d8b8d61dde109",
+      "bytes": 7864
+    },
+    {
+      "path": "evidence/take-on-me-elise/reference-build/audit.json",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/audit.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "f2108537df5fafedbc1485324144863339b545e91315faeae39bdc6b9d2c9fee",
+      "originalBytes": 3591,
+      "sha256": "f2108537df5fafedbc1485324144863339b545e91315faeae39bdc6b9d2c9fee",
+      "bytes": 3591
+    },
+    {
+      "path": "evidence/take-on-me-elise/reference-build/writes.json.gz",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/writes.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "bd046a8f80728a8331d350b28e55c29bc2e2b7c8add2d86368a38d193024c75c",
+      "originalBytes": 714328,
+      "sha256": "87a7ea2939e78dd83d42b5ad72b4095c92535b89afc5fab4eacdf1eb24f95ce7",
+      "bytes": 28758
+    },
+    {
+      "path": "evidence/take-on-me-elise/reference-build/state-checkpoints.json.gz",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/state-checkpoints.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "9d5b4b6e1fa8160f41e57d4247f215c5b85ae1a0aadcca062e1db872e11ba80f",
+      "originalBytes": 34724,
+      "sha256": "cb15bb89ccabd203841da97c640d617342134e1361eaecaf1f0f22e7aa669b7d",
+      "bytes": 1066
+    },
+    {
+      "path": "evidence/take-on-me-elise/reference-build/player.asm.gz",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/player.asm",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "442c0ccacd1106ba5c1e5fa9175c0b336c75b5175914d1ecf216938a191601b3",
+      "originalBytes": 34967,
+      "sha256": "06d1b384bcae959df21e6a32e5c26dabfdc61a9902aa4274dcbf7b311fe237e4",
+      "bytes": 4258
+    },
+    {
+      "path": "evidence/take-on-me-elise/reference-build/player.listing.gz",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/player.listing",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "d17a6fe67da8146cce60728714e0361541ebdd9476baffc23f35436d40393a81",
+      "originalBytes": 50756,
+      "sha256": "737d3c2f71cb85cbdc80108d79482d42def027b60d591f987b26393539753af4",
+      "bytes": 7059
+    },
+    {
+      "path": "evidence/take-on-me-elise/reference-build/build.json",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/build.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "7da1016e15c52cb2310831ba0aab4e3fcea97a887a8bfb18ad6ef92ee716de24",
+      "originalBytes": 8737,
+      "sha256": "7da1016e15c52cb2310831ba0aab4e3fcea97a887a8bfb18ad6ef92ee716de24",
+      "bytes": 8737
+    },
+    {
+      "path": "evidence/take-on-me-elise/reference-vice/study.json",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/study.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "3c412a5c593437c4135fd63f01aea17f3a1f21605618dc0d6351759b3dc2de05",
+      "originalBytes": 5166,
+      "sha256": "3c412a5c593437c4135fd63f01aea17f3a1f21605618dc0d6351759b3dc2de05",
+      "bytes": 5166
+    },
+    {
+      "path": "evidence/take-on-me-elise/reference-vice/trace.json.gz",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/trace.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "e22a49388d4aa1f428e872cc04d73ad3dd151f62bb974f7484d32f5feccf38f8",
+      "originalBytes": 3821656,
+      "sha256": "c74928304222ec8ce76636de92109a39b76ad52cdfec900c961680d2d7c675bc",
+      "bytes": 111917
+    },
+    {
+      "path": "evidence/take-on-me-elise/reference-vice/monitor.txt.gz",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/monitor.log",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "78e0eae3e1b89fcf2c8d96e02fb69599557f8343ee613508d171a0a0dede5ca8",
+      "originalBytes": 1284509,
+      "sha256": "4b498911683998fcf5b881055d33ccee83361cce283039eb12231cc541159953",
+      "bytes": 97408
+    },
+    {
+      "path": "evidence/take-on-me-elise/reference-vice/command.json",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/command.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "bd400d73015115c7b283cb8ce9cc28e732f3b571ce4f1430bd5a825a29161242",
+      "originalBytes": 866,
+      "sha256": "bd400d73015115c7b283cb8ce9cc28e732f3b571ce4f1430bd5a825a29161242",
+      "bytes": 866
+    },
+    {
+      "path": "evidence/take-on-me-elise/reference-vice/commands.mon",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/commands.mon",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "d0495f11381ce245812e9005873cbb3562dd7eec8d5f1c7d00ce0483868ab887",
+      "originalBytes": 860,
+      "sha256": "d0495f11381ce245812e9005873cbb3562dd7eec8d5f1c7d00ce0483868ab887",
+      "bytes": 860
+    },
+    {
+      "path": "evidence/take-on-me-elise/candidate-build/verification.json",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/verification.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "a17e47691803065759539a7fa090e79d2e1f1416cf5a3c8008b6ade3b8295842",
+      "originalBytes": 8006,
+      "sha256": "a17e47691803065759539a7fa090e79d2e1f1416cf5a3c8008b6ade3b8295842",
+      "bytes": 8006
+    },
+    {
+      "path": "evidence/take-on-me-elise/candidate-build/audit.json",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/audit.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "fba813729a46af094c601a3386a12f52584046ed84a0d24689ae93e6cc80a607",
+      "originalBytes": 3607,
+      "sha256": "fba813729a46af094c601a3386a12f52584046ed84a0d24689ae93e6cc80a607",
+      "bytes": 3607
+    },
+    {
+      "path": "evidence/take-on-me-elise/candidate-build/writes.json.gz",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/writes.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "4ebcdc74d32a2f9ebe0459a1f36fe03557c82b317d235d51b432b06691e277ec",
+      "originalBytes": 723162,
+      "sha256": "feab49f214ed24664b3ab0962832347afde5d338715d884fdf8d45dfadb57e24",
+      "bytes": 37202
+    },
+    {
+      "path": "evidence/take-on-me-elise/candidate-build/state-checkpoints.json.gz",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/state-checkpoints.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "67aaa6e8f7b1cfc6841cde93e7c2ed9f9de675ac22f5d62fd033c72df8059775",
+      "originalBytes": 34831,
+      "sha256": "588e9681d7c7593ec07f51c8a38bca68adde650d5fba92dcca3542e0df917826",
+      "bytes": 1141
+    },
+    {
+      "path": "evidence/take-on-me-elise/candidate-build/player.asm.gz",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/player.asm",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "0ca28f663001217b5c208fe9a485a7ce0450fe67025c321d8a7e7d7bfd2bf6c4",
+      "originalBytes": 35777,
+      "sha256": "d94b44ba488e9244b6fa3bfe211f89b9e860b778e0cd239ffc3fb6952804302b",
+      "bytes": 4484
+    },
+    {
+      "path": "evidence/take-on-me-elise/candidate-build/player.listing.gz",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/player.listing",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "267c11d2f2af5fc65b4cb8d0fe5f2c1262bfd2c06f1c5791b3676f516f7a12f0",
+      "originalBytes": 51569,
+      "sha256": "c313ea9bba91e293d3b42e92da43e83e303aac665ea67604a8516f48fac39709",
+      "bytes": 7464
+    },
+    {
+      "path": "evidence/take-on-me-elise/candidate-build/build.json",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/build.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "7d6280db5ac20b8f3139fd581bd80a07adae7b64382a7605ce302c033bd4eae7",
+      "originalBytes": 9591,
+      "sha256": "7d6280db5ac20b8f3139fd581bd80a07adae7b64382a7605ce302c033bd4eae7",
+      "bytes": 9591
+    },
+    {
+      "path": "evidence/take-on-me-elise/candidate-vice/study.json",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/study.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "e5d453e44f66d5808ef075a8db0f3ea1bb707ed328881493c82583810c203c8b",
+      "originalBytes": 5332,
+      "sha256": "e5d453e44f66d5808ef075a8db0f3ea1bb707ed328881493c82583810c203c8b",
+      "bytes": 5332
+    },
+    {
+      "path": "evidence/take-on-me-elise/candidate-vice/trace.json.gz",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/trace.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "3e191aeac32a0b74f68760449b3147c6f11b3e3ba471a03b530ee242f1ccc2e8",
+      "originalBytes": 3842320,
+      "sha256": "e4d70b2a83e6eb8289a7750f82d9a8c9d8a77efcec9de5a3c2341077e84ab4d7",
+      "bytes": 122408
+    },
+    {
+      "path": "evidence/take-on-me-elise/candidate-vice/monitor.txt.gz",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/monitor.log",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "51841debbfc371942f2a2be1a73b22197d4af89d52a8c4699d93078f5c25d158",
+      "originalBytes": 1289903,
+      "sha256": "96947be04e03b22de639646408f83b3b78a0b1d7f99a92ad6f05ab9120695372",
+      "bytes": 119294
+    },
+    {
+      "path": "evidence/take-on-me-elise/candidate-vice/command.json",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/command.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "aca841aba43ebab9943725abd659658b5c11c83551fe9f31763cc373a67a11ec",
+      "originalBytes": 866,
+      "sha256": "aca841aba43ebab9943725abd659658b5c11c83551fe9f31763cc373a67a11ec",
+      "bytes": 866
+    },
+    {
+      "path": "evidence/take-on-me-elise/candidate-vice/commands.mon",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/commands.mon",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "d8dc734e1f8f0d504228d7735eb6d2acd98182598c011a71a93a87ae0d6a02d5",
+      "originalBytes": 860,
+      "sha256": "d8dc734e1f8f0d504228d7735eb6d2acd98182598c011a71a93a87ae0d6a02d5",
+      "bytes": 860
+    },
+    {
+      "path": "evidence/take-on-me-elise/audio.json",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/signal-check/92196cf530776262e65e245ff98ad8f87f3298326570299064115db288a9e0ca/attempt-66db122dd67649089a20c1afb7b47151/audio.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "bcf09ad801231091d6cbd01bf64c70e64fca942dfd073b2eef9e9f63f29878b5",
+      "originalBytes": 3255,
+      "sha256": "bcf09ad801231091d6cbd01bf64c70e64fca942dfd073b2eef9e9f63f29878b5",
+      "bytes": 3255
+    },
+    {
+      "path": "evidence/take-on-me-elise/listening/comparison.json",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/comparison/39f21eb21770b5438d1d9e900dfc65ea17af0c4c370b93fcbb8617b9cb19fcd6/attempt-afc2cf193b3a485aabf43fe976c9a88b/plain-then-take-on-me.comparison.json",
+      "group": "take-on-me-elise",
+      "reason": "Retain complete independent transfer execution and comparison evidence without audio or binaries.",
+      "originalSha256": "41da6919c5333dc7292e4fd0d1692581763d5894b485337b96232c00b4674f15",
+      "originalBytes": 3114,
+      "sha256": "41da6919c5333dc7292e4fd0d1692581763d5894b485337b96232c00b4674f15",
+      "bytes": 3114
+    },
+    {
+      "path": "evidence/take-on-me-elise/reference-render/console.txt",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/reference-render/889b5f01dac2174c618bcb1d6e9726accac1c2355ea2f7020b973632a4fc7592/attempt-c8faad421223424babb4cd4d7ce61ed8/stage.log",
+      "group": "take-on-me-elise",
+      "reason": "Retain declared PAL/MOS8580 render confirmation.",
+      "originalSha256": "77cd6083839debfddace683ce36b6277edd5763ab2fad6405804bc088a323aee",
+      "originalBytes": 125,
+      "sha256": "77cd6083839debfddace683ce36b6277edd5763ab2fad6405804bc088a323aee",
+      "bytes": 125
+    },
+    {
+      "path": "evidence/take-on-me-elise/candidate-render/console.txt",
+      "originalPath": "build/take-on-me-elise-transfer-work/cache/candidate-render/3d42b0be48995f9825f7cbd4e05efac6820912a64f332e893b01a7eca69f084b/attempt-f83f728f0a8e4240885fc880c1db7e24/stage.log",
+      "group": "take-on-me-elise",
+      "reason": "Retain declared PAL/MOS8580 render confirmation.",
+      "originalSha256": "77cd6083839debfddace683ce36b6277edd5763ab2fad6405804bc088a323aee",
+      "originalBytes": 125,
+      "sha256": "77cd6083839debfddace683ce36b6277edd5763ab2fad6405804bc088a323aee",
+      "bytes": 125
     }
   ],
   "independentShadesSources": {

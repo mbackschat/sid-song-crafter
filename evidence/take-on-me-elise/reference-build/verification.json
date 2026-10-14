@@ -1,0 +1,378 @@
+{
+  "checkedPlayCalls": 599,
+  "completeNumericRange": true,
+  "completeCompiledRange": true,
+  "maximumPlayCycles": 1465,
+  "orderedStoreComparison": {
+    "matchedStores": 8690,
+    "fields": [
+      "phase",
+      "tick",
+      "address",
+      "value"
+    ]
+  },
+  "callableBoundaries": 600,
+  "namedStateBoundaries": 600,
+  "sidWriterValidation": {
+    "checkedStores": 8690,
+    "writers": [
+      {
+        "pc": 4102,
+        "opcode": 141,
+        "addresses": [
+          54276
+        ]
+      },
+      {
+        "pc": 4105,
+        "opcode": 141,
+        "addresses": [
+          54283
+        ]
+      },
+      {
+        "pc": 4108,
+        "opcode": 141,
+        "addresses": [
+          54290
+        ]
+      },
+      {
+        "pc": 4114,
+        "opcode": 141,
+        "addresses": [
+          54295
+        ]
+      },
+      {
+        "pc": 4120,
+        "opcode": 141,
+        "addresses": [
+          54296
+        ]
+      },
+      {
+        "pc": 4178,
+        "opcode": 141,
+        "addresses": [
+          54276
+        ]
+      },
+      {
+        "pc": 4189,
+        "opcode": 141,
+        "addresses": [
+          54283
+        ]
+      },
+      {
+        "pc": 4200,
+        "opcode": 141,
+        "addresses": [
+          54290
+        ]
+      },
+      {
+        "pc": 4256,
+        "opcode": 141,
+        "addresses": [
+          54296
+        ]
+      },
+      {
+        "pc": 4387,
+        "opcode": 141,
+        "addresses": [
+          54276
+        ]
+      },
+      {
+        "pc": 4390,
+        "opcode": 141,
+        "addresses": [
+          54283
+        ]
+      },
+      {
+        "pc": 4393,
+        "opcode": 141,
+        "addresses": [
+          54290
+        ]
+      },
+      {
+        "pc": 4738,
+        "opcode": 153,
+        "addresses": [
+          54277,
+          54284,
+          54291
+        ]
+      },
+      {
+        "pc": 4743,
+        "opcode": 153,
+        "addresses": [
+          54278,
+          54285,
+          54292
+        ]
+      },
+      {
+        "pc": 5775,
+        "opcode": 153,
+        "addresses": [
+          54276,
+          54283,
+          54290
+        ]
+      },
+      {
+        "pc": 5781,
+        "opcode": 153,
+        "addresses": [
+          54275,
+          54282,
+          54289
+        ]
+      },
+      {
+        "pc": 5787,
+        "opcode": 153,
+        "addresses": [
+          54274,
+          54281,
+          54288
+        ]
+      },
+      {
+        "pc": 5793,
+        "opcode": 153,
+        "addresses": [
+          54273,
+          54280,
+          54287
+        ]
+      },
+      {
+        "pc": 5799,
+        "opcode": 153,
+        "addresses": [
+          54272,
+          54279,
+          54286
+        ]
+      },
+      {
+        "pc": 5806,
+        "opcode": 141,
+        "addresses": [
+          54293
+        ]
+      },
+      {
+        "pc": 5812,
+        "opcode": 141,
+        "addresses": [
+          54294
+        ]
+      }
+    ]
+  },
+  "resetVerification": {
+    "passed": true,
+    "restoredPoisonedState": true,
+    "restoredWorkspace": true,
+    "matchedInitStores": 5,
+    "matchedFirstCallStores": 23
+  },
+  "audit": {
+    "schemaVersion": 1,
+    "sourceSha256": "5a3ce4eedcc30e8f75bd76f0867f096a02eb9dd33edf4a6043c9555dfe4b27c7",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS8580",
+    "sidCount": 1,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS8580"
+      }
+    ],
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4124,
+    "clockHz": 985248.6111111111,
+    "playCalls": 599,
+    "callRateHz": 50.12457321485099,
+    "initCycles": 2366,
+    "maximumPlayCycles": 1465,
+    "meanPlayCycles": 846.068447412354,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 5,
+    "playWriteCount": 8685,
+    "registers": {
+      "d400": {
+        "writes": 502,
+        "distinctValues": 3,
+        "minimum": 22,
+        "maximum": 123
+      },
+      "d401": {
+        "writes": 502,
+        "distinctValues": 3,
+        "minimum": 1,
+        "maximum": 7
+      },
+      "d402": {
+        "writes": 502,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d403": {
+        "writes": 502,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d404": {
+        "writes": 504,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 17
+      },
+      "d405": {
+        "writes": 13,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 3
+      },
+      "d406": {
+        "writes": 13,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 96
+      },
+      "d407": {
+        "writes": 502,
+        "distinctValues": 4,
+        "minimum": 22,
+        "maximum": 247
+      },
+      "d408": {
+        "writes": 502,
+        "distinctValues": 4,
+        "minimum": 1,
+        "maximum": 14
+      },
+      "d409": {
+        "writes": 502,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40a": {
+        "writes": 502,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40b": {
+        "writes": 504,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 17
+      },
+      "d40c": {
+        "writes": 19,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 3
+      },
+      "d40d": {
+        "writes": 19,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 96
+      },
+      "d40e": {
+        "writes": 502,
+        "distinctValues": 9,
+        "minimum": 17,
+        "maximum": 237
+      },
+      "d40f": {
+        "writes": 502,
+        "distinctValues": 10,
+        "minimum": 1,
+        "maximum": 43
+      },
+      "d410": {
+        "writes": 502,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d411": {
+        "writes": 502,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d412": {
+        "writes": 504,
+        "distinctValues": 3,
+        "minimum": 0,
+        "maximum": 17
+      },
+      "d413": {
+        "writes": 40,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 2
+      },
+      "d414": {
+        "writes": 40,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 144
+      },
+      "d415": {
+        "writes": 502,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d416": {
+        "writes": 502,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d418": {
+        "writes": 1,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+  },
+  "sidSha256": "5a3ce4eedcc30e8f75bd76f0867f096a02eb9dd33edf4a6043c9555dfe4b27c7",
+  "prgSha256": "cbf6b087e3b47c3a906d9219d9b01a3c88cf00a53bef4ec36f6583ddda7bd63a",
+  "compositionSha256": "0483e5aada3d8429769d208b9b8d03d9d8ba1b93751d36b3bffdac8d82a45eff",
+  "standaloneBootstrapVerification": {
+    "passed": true,
+    "sysAddress": 2061,
+    "checkedPlayCalls": 2,
+    "restoredPoisonedState": true,
+    "matchedStores": 45,
+    "cadenceCycles": [
+      19661
+    ],
+    "scope": "Actual PRG bootstrap with modeled raster/CIA reads; separate from real VICE autostart."
+  },
+  "limitations": "Independent runtime score/program tables and compiled numeric equivalence under callable RAM-only PAL execution. Exact original instruction/bus timing, VICE, rendering and musical acceptance remain separate."
+}

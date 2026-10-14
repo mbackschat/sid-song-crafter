@@ -1,0 +1,629 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/take-on-me-elise-transfer.json",
+  "recipeSha256": "44cde94301d3eaf0628ba17764c6179c36fc47c81452342b2e41f0af7531c011",
+  "startedAt": "2026-10-14T11:41:01.332175+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "prepare-check",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.654788959,
+      "artifacts": [],
+      "cacheKey": "7bb86c8806a1d05926ea9d0fdfc813a95060ea19e9c60b7648fddaebdf6f9004",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/prepare-check/7bb86c8806a1d05926ea9d0fdfc813a95060ea19e9c60b7648fddaebdf6f9004/attempt-418ef6c895a2486281b75e928176d792",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/prepare-check/7bb86c8806a1d05926ea9d0fdfc813a95060ea19e9c60b7648fddaebdf6f9004/attempt-418ef6c895a2486281b75e928176d792/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.662798916
+    },
+    {
+      "id": "reference-build",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 2.061194708,
+      "artifacts": [
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "5a3ce4eedcc30e8f75bd76f0867f096a02eb9dd33edf4a6043c9555dfe4b27c7"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/reconstructed.prg",
+          "relativePath": "candidate/reconstructed.prg",
+          "type": "file",
+          "sha256": "cbf6b087e3b47c3a906d9219d9b01a3c88cf00a53bef4ec36f6583ddda7bd63a"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/verification.json",
+          "relativePath": "candidate/verification.json",
+          "type": "file",
+          "sha256": "9cf98711c4f3bf46f72b8777ad1b5b54ea8666789515116a259d8b8d61dde109"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "f2108537df5fafedbc1485324144863339b545e91315faeae39bdc6b9d2c9fee"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "bd046a8f80728a8331d350b28e55c29bc2e2b7c8add2d86368a38d193024c75c"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "9d5b4b6e1fa8160f41e57d4247f215c5b85ae1a0aadcca062e1db872e11ba80f"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "442c0ccacd1106ba5c1e5fa9175c0b336c75b5175914d1ecf216938a191601b3"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "d17a6fe67da8146cce60728714e0361541ebdd9476baffc23f35436d40393a81"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "7da1016e15c52cb2310831ba0aab4e3fcea97a887a8bfb18ad6ef92ee716de24"
+        }
+      ],
+      "cacheKey": "b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 2.094264042
+    },
+    {
+      "id": "reference-vice",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 1.9663273749999997,
+      "artifacts": [
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "3c412a5c593437c4135fd63f01aea17f3a1f21605618dc0d6351759b3dc2de05"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "e22a49388d4aa1f428e872cc04d73ad3dd151f62bb974f7484d32f5feccf38f8"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "78e0eae3e1b89fcf2c8d96e02fb69599557f8343ee613508d171a0a0dede5ca8"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "bd400d73015115c7b283cb8ce9cc28e732f3b571ce4f1430bd5a825a29161242"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "d0495f11381ce245812e9005873cbb3562dd7eec8d5f1c7d00ce0483868ab887"
+        }
+      ],
+      "cacheKey": "fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 2.375846959
+    },
+    {
+      "id": "reference-render",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.23956974999999936,
+      "artifacts": [
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-render/889b5f01dac2174c618bcb1d6e9726accac1c2355ea2f7020b973632a4fc7592/attempt-c8faad421223424babb4cd4d7ce61ed8/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "7a2424595e1fb1c1f92a8c01ee28c011ab05a03dc3c6b22922ba9237df1d3d20"
+        },
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-render/889b5f01dac2174c618bcb1d6e9726accac1c2355ea2f7020b973632a4fc7592/attempt-c8faad421223424babb4cd4d7ce61ed8/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "fc9b11e8c2db641daa546dd1a2d5e306cf209a2f531dff0d601e7b8f94bd0db4"
+        }
+      ],
+      "cacheKey": "889b5f01dac2174c618bcb1d6e9726accac1c2355ea2f7020b973632a4fc7592",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-render/889b5f01dac2174c618bcb1d6e9726accac1c2355ea2f7020b973632a4fc7592/attempt-c8faad421223424babb4cd4d7ce61ed8",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-render/889b5f01dac2174c618bcb1d6e9726accac1c2355ea2f7020b973632a4fc7592/attempt-c8faad421223424babb4cd4d7ce61ed8/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.24769754099999997
+    },
+    {
+      "id": "candidate-build",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 2.373364625,
+      "artifacts": [
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "a625c6050ca53d228e2a91eff32d29b1b0c381503f390bf3c61a2cb29ac0512d"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/reconstructed.prg",
+          "relativePath": "candidate/reconstructed.prg",
+          "type": "file",
+          "sha256": "57d133c4daa1d5e716cf2664afcaf8e4942ec1a810babdabbdbb720029f88cc2"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/verification.json",
+          "relativePath": "candidate/verification.json",
+          "type": "file",
+          "sha256": "a17e47691803065759539a7fa090e79d2e1f1416cf5a3c8008b6ade3b8295842"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "fba813729a46af094c601a3386a12f52584046ed84a0d24689ae93e6cc80a607"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "4ebcdc74d32a2f9ebe0459a1f36fe03557c82b317d235d51b432b06691e277ec"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "67aaa6e8f7b1cfc6841cde93e7c2ed9f9de675ac22f5d62fd033c72df8059775"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "0ca28f663001217b5c208fe9a485a7ce0450fe67025c321d8a7e7d7bfd2bf6c4"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "267c11d2f2af5fc65b4cb8d0fe5f2c1262bfd2c06f1c5791b3676f516f7a12f0"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "7d6280db5ac20b8f3139fd581bd80a07adae7b64382a7605ce302c033bd4eae7"
+        }
+      ],
+      "cacheKey": "f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 2.385444833
+    },
+    {
+      "id": "candidate-vice",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 1.776136084000001,
+      "artifacts": [
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "e5d453e44f66d5808ef075a8db0f3ea1bb707ed328881493c82583810c203c8b"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "3e191aeac32a0b74f68760449b3147c6f11b3e3ba471a03b530ee242f1ccc2e8"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "51841debbfc371942f2a2be1a73b22197d4af89d52a8c4699d93078f5c25d158"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "aca841aba43ebab9943725abd659658b5c11c83551fe9f31763cc373a67a11ec"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "d8dc734e1f8f0d504228d7735eb6d2acd98182598c011a71a93a87ae0d6a02d5"
+        }
+      ],
+      "cacheKey": "d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 1.8871028749999992
+    },
+    {
+      "id": "candidate-render",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.18503262499999984,
+      "artifacts": [
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-render/3d42b0be48995f9825f7cbd4e05efac6820912a64f332e893b01a7eca69f084b/attempt-f83f728f0a8e4240885fc880c1db7e24/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "6b930e6b57f092edebdf6489aab70a4d20a1b4b622fbf17e4a4d0bff9e2e66cc"
+        },
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-render/3d42b0be48995f9825f7cbd4e05efac6820912a64f332e893b01a7eca69f084b/attempt-f83f728f0a8e4240885fc880c1db7e24/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "eb76db86222a067bb8070ef3b66c52c5080571cc3f7ac1b77339abfc9f8dfe46"
+        }
+      ],
+      "cacheKey": "3d42b0be48995f9825f7cbd4e05efac6820912a64f332e893b01a7eca69f084b",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-render/3d42b0be48995f9825f7cbd4e05efac6820912a64f332e893b01a7eca69f084b/attempt-f83f728f0a8e4240885fc880c1db7e24",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-render/3d42b0be48995f9825f7cbd4e05efac6820912a64f332e893b01a7eca69f084b/attempt-f83f728f0a8e4240885fc880c1db7e24/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.18979858400000005
+    },
+    {
+      "id": "signal-check",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.2870758339999995,
+      "artifacts": [
+        {
+          "stageId": "signal-check",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/signal-check/92196cf530776262e65e245ff98ad8f87f3298326570299064115db288a9e0ca/attempt-66db122dd67649089a20c1afb7b47151/audio.json",
+          "relativePath": "audio.json",
+          "type": "file",
+          "sha256": "bcf09ad801231091d6cbd01bf64c70e64fca942dfd073b2eef9e9f63f29878b5"
+        }
+      ],
+      "cacheKey": "92196cf530776262e65e245ff98ad8f87f3298326570299064115db288a9e0ca",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/signal-check/92196cf530776262e65e245ff98ad8f87f3298326570299064115db288a9e0ca/attempt-66db122dd67649089a20c1afb7b47151",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/signal-check/92196cf530776262e65e245ff98ad8f87f3298326570299064115db288a9e0ca/attempt-66db122dd67649089a20c1afb7b47151/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.293394708000001
+    },
+    {
+      "id": "comparison",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.29158145799999957,
+      "artifacts": [
+        {
+          "stageId": "comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/comparison/39f21eb21770b5438d1d9e900dfc65ea17af0c4c370b93fcbb8617b9cb19fcd6/attempt-afc2cf193b3a485aabf43fe976c9a88b/plain-then-take-on-me.ab.wav",
+          "relativePath": "plain-then-take-on-me.ab.wav",
+          "type": "file",
+          "sha256": "88907b6718e5e9c2aa58220d1971fc83e50ca96cb011e80db797c297358de7c0"
+        },
+        {
+          "stageId": "comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/comparison/39f21eb21770b5438d1d9e900dfc65ea17af0c4c370b93fcbb8617b9cb19fcd6/attempt-afc2cf193b3a485aabf43fe976c9a88b/plain-then-take-on-me.comparison.json",
+          "relativePath": "plain-then-take-on-me.comparison.json",
+          "type": "file",
+          "sha256": "41da6919c5333dc7292e4fd0d1692581763d5894b485337b96232c00b4674f15"
+        }
+      ],
+      "cacheKey": "39f21eb21770b5438d1d9e900dfc65ea17af0c4c370b93fcbb8617b9cb19fcd6",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/comparison/39f21eb21770b5438d1d9e900dfc65ea17af0c4c370b93fcbb8617b9cb19fcd6/attempt-afc2cf193b3a485aabf43fe976c9a88b",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/comparison/39f21eb21770b5438d1d9e900dfc65ea17af0c4c370b93fcbb8617b9cb19fcd6/attempt-afc2cf193b3a485aabf43fe976c9a88b/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.2984983750000012
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "5a3ce4eedcc30e8f75bd76f0867f096a02eb9dd33edf4a6043c9555dfe4b27c7"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/reconstructed.prg",
+      "relativePath": "candidate/reconstructed.prg",
+      "type": "file",
+      "sha256": "cbf6b087e3b47c3a906d9219d9b01a3c88cf00a53bef4ec36f6583ddda7bd63a"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/verification.json",
+      "relativePath": "candidate/verification.json",
+      "type": "file",
+      "sha256": "9cf98711c4f3bf46f72b8777ad1b5b54ea8666789515116a259d8b8d61dde109"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "f2108537df5fafedbc1485324144863339b545e91315faeae39bdc6b9d2c9fee"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "bd046a8f80728a8331d350b28e55c29bc2e2b7c8add2d86368a38d193024c75c"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "9d5b4b6e1fa8160f41e57d4247f215c5b85ae1a0aadcca062e1db872e11ba80f"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "442c0ccacd1106ba5c1e5fa9175c0b336c75b5175914d1ecf216938a191601b3"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "d17a6fe67da8146cce60728714e0361541ebdd9476baffc23f35436d40393a81"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "7da1016e15c52cb2310831ba0aab4e3fcea97a887a8bfb18ad6ef92ee716de24"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "3c412a5c593437c4135fd63f01aea17f3a1f21605618dc0d6351759b3dc2de05"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "e22a49388d4aa1f428e872cc04d73ad3dd151f62bb974f7484d32f5feccf38f8"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "78e0eae3e1b89fcf2c8d96e02fb69599557f8343ee613508d171a0a0dede5ca8"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "bd400d73015115c7b283cb8ce9cc28e732f3b571ce4f1430bd5a825a29161242"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "d0495f11381ce245812e9005873cbb3562dd7eec8d5f1c7d00ce0483868ab887"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-render/889b5f01dac2174c618bcb1d6e9726accac1c2355ea2f7020b973632a4fc7592/attempt-c8faad421223424babb4cd4d7ce61ed8/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "7a2424595e1fb1c1f92a8c01ee28c011ab05a03dc3c6b22922ba9237df1d3d20"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-render/889b5f01dac2174c618bcb1d6e9726accac1c2355ea2f7020b973632a4fc7592/attempt-c8faad421223424babb4cd4d7ce61ed8/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "fc9b11e8c2db641daa546dd1a2d5e306cf209a2f531dff0d601e7b8f94bd0db4"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "a625c6050ca53d228e2a91eff32d29b1b0c381503f390bf3c61a2cb29ac0512d"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/reconstructed.prg",
+      "relativePath": "candidate/reconstructed.prg",
+      "type": "file",
+      "sha256": "57d133c4daa1d5e716cf2664afcaf8e4942ec1a810babdabbdbb720029f88cc2"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/verification.json",
+      "relativePath": "candidate/verification.json",
+      "type": "file",
+      "sha256": "a17e47691803065759539a7fa090e79d2e1f1416cf5a3c8008b6ade3b8295842"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "fba813729a46af094c601a3386a12f52584046ed84a0d24689ae93e6cc80a607"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "4ebcdc74d32a2f9ebe0459a1f36fe03557c82b317d235d51b432b06691e277ec"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "67aaa6e8f7b1cfc6841cde93e7c2ed9f9de675ac22f5d62fd033c72df8059775"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "0ca28f663001217b5c208fe9a485a7ce0450fe67025c321d8a7e7d7bfd2bf6c4"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "267c11d2f2af5fc65b4cb8d0fe5f2c1262bfd2c06f1c5791b3676f516f7a12f0"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "7d6280db5ac20b8f3139fd581bd80a07adae7b64382a7605ce302c033bd4eae7"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "e5d453e44f66d5808ef075a8db0f3ea1bb707ed328881493c82583810c203c8b"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "3e191aeac32a0b74f68760449b3147c6f11b3e3ba471a03b530ee242f1ccc2e8"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "51841debbfc371942f2a2be1a73b22197d4af89d52a8c4699d93078f5c25d158"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "aca841aba43ebab9943725abd659658b5c11c83551fe9f31763cc373a67a11ec"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "d8dc734e1f8f0d504228d7735eb6d2acd98182598c011a71a93a87ae0d6a02d5"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-render/3d42b0be48995f9825f7cbd4e05efac6820912a64f332e893b01a7eca69f084b/attempt-f83f728f0a8e4240885fc880c1db7e24/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "6b930e6b57f092edebdf6489aab70a4d20a1b4b622fbf17e4a4d0bff9e2e66cc"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-render/3d42b0be48995f9825f7cbd4e05efac6820912a64f332e893b01a7eca69f084b/attempt-f83f728f0a8e4240885fc880c1db7e24/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "eb76db86222a067bb8070ef3b66c52c5080571cc3f7ac1b77339abfc9f8dfe46"
+    },
+    {
+      "stageId": "signal-check",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/signal-check/92196cf530776262e65e245ff98ad8f87f3298326570299064115db288a9e0ca/attempt-66db122dd67649089a20c1afb7b47151/audio.json",
+      "relativePath": "audio.json",
+      "type": "file",
+      "sha256": "bcf09ad801231091d6cbd01bf64c70e64fca942dfd073b2eef9e9f63f29878b5"
+    },
+    {
+      "stageId": "comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/comparison/39f21eb21770b5438d1d9e900dfc65ea17af0c4c370b93fcbb8617b9cb19fcd6/attempt-afc2cf193b3a485aabf43fe976c9a88b/plain-then-take-on-me.ab.wav",
+      "relativePath": "plain-then-take-on-me.ab.wav",
+      "type": "file",
+      "sha256": "88907b6718e5e9c2aa58220d1971fc83e50ca96cb011e80db797c297358de7c0"
+    },
+    {
+      "stageId": "comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/comparison/39f21eb21770b5438d1d9e900dfc65ea17af0c4c370b93fcbb8617b9cb19fcd6/attempt-afc2cf193b3a485aabf43fe976c9a88b/plain-then-take-on-me.comparison.json",
+      "relativePath": "plain-then-take-on-me.comparison.json",
+      "type": "file",
+      "sha256": "41da6919c5333dc7292e4fd0d1692581763d5894b485337b96232c00b4674f15"
+    }
+  ],
+  "deliverables": {
+    "fullReference": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-render/889b5f01dac2174c618bcb1d6e9726accac1c2355ea2f7020b973632a4fc7592/attempt-c8faad421223424babb4cd4d7ce61ed8/render.wav",
+    "fullCandidate": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-render/3d42b0be48995f9825f7cbd4e05efac6820912a64f332e893b01a7eca69f084b/attempt-f83f728f0a8e4240885fc880c1db7e24/render.wav",
+    "comparison": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/comparison/39f21eb21770b5438d1d9e900dfc65ea17af0c4c370b93fcbb8617b9cb19fcd6/attempt-afc2cf193b3a485aabf43fe976c9a88b/plain-then-take-on-me.ab.wav",
+    "referenceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-build/b0db4076d41ed623b72c33b3f82c60200db2b8d04cab857f7fc30a2215f7e6c0/attempt-54aa4747ed8d48b5b3c58f1521183be6/candidate/verification.json",
+    "candidateProof": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-build/f8f0c8663237611ac472b6dfad436a5bb1ca527854608d3e6d02d43d73c6de08/attempt-0e7921567b0c41fcb594d21f535c7618/candidate/verification.json",
+    "referenceViceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/reference-vice/fc88fa6e31bb8c384cef0555bc4651170a6251609257948835cd864372c6b13d/attempt-2caaf0da0f494b269ce35f6c4655ebd5/vice/study.json",
+    "candidateViceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/candidate-vice/d9945367ef20856d588e6d51a2594631bae28a14041c0a03c8e7f568564f5e58/attempt-4e12c36bfc2e427fb20d61e7d64fc58f/vice/study.json",
+    "signalProof": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-elise-transfer-work/cache/signal-check/92196cf530776262e65e245ff98ad8f87f3298326570299064115db288a9e0ca/attempt-66db122dd67649089a20c1afb7b47151/audio.json"
+  },
+  "finishedAt": "2026-10-14T11:41:11.864472+00:00",
+  "wallSeconds": 10.532448333000001
+}
