@@ -184,7 +184,7 @@ All five stages are complete for the declared scope. Listening verdicts cover th
 | 3: Reproduce independently | Done | New computed 6502 scheduler/programs, full 40,000-call CPU proof, poisoned-state reset and PRG bootstrap, complete callable VICE through the stop |
 | 4: Verify and listen | Done | [Phrase and complete ending accepted](composition/deflektor-preparation.md#listening-verdict); complete 175-second renders supplied, without claiming uninterrupted whole-title audition or PCM identity |
 | 5: Transfer and retain | Done | [Same53-note familiar transfer accepted](composition/instruments/deflektor-decoded-programs.md) for instruments, balance and ending; editable source and explicit release adaptation with CPU/VICE/audio evidence |
-| Required second reference | In progress | [Trap contrast](composition/daglish-contrast.md) narrows waveform/filter claims; filter bypass is heard as clearer/crisper; supporting-role and transition listening remain open |
+| Required second reference | Awaiting listening | [Trap contrast](composition/daglish-contrast.md) narrows waveform/filter claims; filter bypass is heard as clearer/crisper; supporting-role and transition listening remain open |
 
 Primary acceptance does not close the required Daglish second-reference check. Keep the exact staged-percussion attribution qualified and avoid generalizing one tune's patch palette to the composer.
 
