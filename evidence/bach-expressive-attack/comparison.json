@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "method": "complete inputs in sequence; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-expressive-attack/cache/comparison/7a81a7ace118a477653563d09c3d9f2e146f343dfa27f1ea1fef89d7ae85f609/attempt-895355205bbc41a6a0b764020c4c0da0/accepted-then-candidate.ab.wav",
+    "frames": 1389490,
+    "durationSeconds": 31.507709750566892,
+    "sha256": "b5afb4b923deb2c2c589c96873913620b3504e0aef440c49b8eea2b2ea97c174"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 683720
+    },
+    {
+      "label": "silence",
+      "startFrame": 683720,
+      "endFrame": 705770
+    },
+    {
+      "label": "B",
+      "startFrame": 705770,
+      "endFrame": 1389490
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-expressive-attack/cache/accepted/e10150dd95c84eb32efb9d25ac4aa294ff5eeeb934cfe2426eaf26e64263485b/attempt-294499f468824d95a5fa0c87fc43b6cc/song/native-song.wav",
+      "sha256": "3d586854c2bccbcc45f28f7e11a84f705522fe12d7859489b1b7644ac38185a4",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 683720,
+        "durationSeconds": 15.503854875283446,
+        "peak": 10627,
+        "peakDbfs": -9.780785087618879,
+        "clippedSamples": 0,
+        "rms": 2876.2796241527576,
+        "acRms": 2867.7151296520096,
+        "acRmsDbfs": -21.158278547039625,
+        "perChannel": [
+          {
+            "dc": -221.79813227637044,
+            "rms": 2876.2796241527576,
+            "acRms": 2867.7151296520096
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-expressive-attack/cache/candidate/b22f717a5e1c0cf80b608fc19edbfb84aea069ef7e7963fc8d12062f63960d6e/attempt-77002c07774846568b170e66eab34201/song/native-song.wav",
+      "sha256": "f5c8b352276c675b8daa6822c00d1400afe18ed7211f767046434124672f8611",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 683720,
+        "durationSeconds": 15.503854875283446,
+        "peak": 10627,
+        "peakDbfs": -9.780785087618879,
+        "clippedSamples": 0,
+        "rms": 2922.394203317754,
+        "acRms": 2912.9527213709607,
+        "acRmsDbfs": -21.022329981679334,
+        "perChannel": [
+          {
+            "dc": -234.72179839700462,
+            "rms": 2922.394203317754,
+            "acRms": 2912.9527213709607
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

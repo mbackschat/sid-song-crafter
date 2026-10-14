@@ -1,0 +1,315 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score.json",
+  "author": "Original SID arrangement",
+  "released": "2026",
+  "sidCount": 1,
+  "sidModel": "MOS8580",
+  "timingPolicy": "retain-full-pitch",
+  "title": "Bach opening: SID hybrid",
+  "authorinfo": "ORIGINAL:BACH SID HYBRID OPENING",
+  "instruments": {
+    "lead": {
+      "name": "BCHPWM",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0288",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "84",
+          "00",
+          "00"
+        ],
+        [
+          "10",
+          "40",
+          "00"
+        ],
+        [
+          "20",
+          "e8",
+          "00"
+        ],
+        [
+          "20",
+          "18",
+          "00"
+        ],
+        {
+          "jump": 2
+        }
+      ],
+      "filter": []
+    },
+    "bass": {
+      "name": "BCHBASS",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "02a9",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ],
+      "filter": [
+        [
+          "92",
+          "a0",
+          "00"
+        ]
+      ]
+    },
+    "harmony": {
+      "name": "BCHHARM",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0258",
+      "frame1": "09",
+      "wave": [
+        [
+          "51",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ],
+      "filter": []
+    },
+    "diminished-cycle": {
+      "name": "BCHDIM",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0258",
+      "frame1": "09",
+      "wave": [
+        [
+          "51",
+          "00",
+          "00"
+        ],
+        [
+          "51",
+          "00",
+          "00"
+        ],
+        [
+          "51",
+          "03",
+          "00"
+        ],
+        [
+          "51",
+          "03",
+          "00"
+        ],
+        [
+          "51",
+          "06",
+          "00"
+        ],
+        [
+          "51",
+          "06",
+          "00"
+        ],
+        [
+          "51",
+          "09",
+          "00"
+        ],
+        [
+          "51",
+          "09",
+          "00"
+        ],
+        {
+          "jump": 0
+        }
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ],
+      "filter": []
+    },
+    "lead-attack": {
+      "name": "BCHATT",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0288",
+      "frame1": "09",
+      "wave": [
+        [
+          "21",
+          "0c",
+          "00"
+        ],
+        [
+          "21",
+          "0c",
+          "00"
+        ],
+        [
+          "21",
+          "07",
+          "00"
+        ],
+        [
+          "21",
+          "07",
+          "00"
+        ],
+        [
+          "41",
+          "03",
+          "00"
+        ],
+        [
+          "41",
+          "03",
+          "00"
+        ],
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "84",
+          "00",
+          "00"
+        ],
+        [
+          "10",
+          "40",
+          "00"
+        ],
+        [
+          "20",
+          "e8",
+          "00"
+        ],
+        [
+          "20",
+          "18",
+          "00"
+        ],
+        {
+          "jump": 2
+        }
+      ],
+      "filter": []
+    }
+  },
+  "sections": [
+    {
+      "name": "Descending electronic statement attack",
+      "startBeat": 0,
+      "endBeat": 0.8,
+      "voices": {
+        "melody": "lead-attack",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Accepted integrated lead",
+      "startBeat": 0.8,
+      "endBeat": 2.6,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Descending electronic statement attack",
+      "startBeat": 2.6,
+      "endBeat": 3.4,
+      "voices": {
+        "melody": "lead-attack",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Accepted integrated lead",
+      "startBeat": 3.4,
+      "endBeat": 4.9,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Descending electronic statement attack",
+      "startBeat": 4.9,
+      "endBeat": 5.7,
+      "voices": {
+        "melody": "lead-attack",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Accepted integrated lead",
+      "startBeat": 5.7,
+      "endBeat": 8.2,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Selective diminished harmony",
+      "startBeat": 8.2,
+      "endBeat": 10.2,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "diminished-cycle"
+      }
+    },
+    {
+      "name": "Written raised-third resolution",
+      "startBeat": 10.2,
+      "endBeat": 12,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    }
+  ]
+}

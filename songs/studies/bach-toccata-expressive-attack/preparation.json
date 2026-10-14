@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-14",
+  "status": "authored bolder candidate; listening pending",
+  "creativeBasis": "Accepted integrated Bach opening and prose intention for stronger experimental electronic expression. No Gyruss binary, traces, extracted notes, audio or program was consulted.",
+  "reference": {
+    "score.json": {
+      "path": "../bach-toccata-integrated-motion/score.json",
+      "sha256": "e839172df042f71932b0eddf2fb9d750c4e066aee2fc13a13d86ef72ea1fa009"
+    },
+    "hybrid.json": {
+      "path": "../bach-toccata-integrated-motion/hybrid.json",
+      "sha256": "4c4378422a8de9afee61898be03105862ab4cf9a27cb58960fc48986b9fed847"
+    }
+  },
+  "scope": {
+    "score": "Byte-identical 45-event source-backed score",
+    "deviation": "Lead pitch and waveform are deliberately transformed during the first six body calls of three existing long octave statements; these are native instrument offsets, not additional score notes.",
+    "unchanged": [
+      "All source note onsets and durations",
+      "Rapid passing notes and later holds",
+      "Lead ADSR and integrated pulse-width program",
+      "Bass, harmony, diminished cycle and shared filter"
+    ],
+    "sourceMapping": "../bach-toccata-opening-driven/preparation.json"
+  },
+  "attackWindowsSeconds": [
+    [
+      0,
+      0.8
+    ],
+    [
+      2.6,
+      3.4
+    ],
+    [
+      4.9,
+      5.7
+    ]
+  ],
+  "leadEventIndices": [
+    0,
+    7,
+    12
+  ],
+  "nativeAttack": {
+    "bodyStartsAtTickOffset": 1,
+    "relativeSemitones": [
+      12,
+      12,
+      7,
+      7,
+      3,
+      3,
+      0
+    ],
+    "controlBytes": [
+      33,
+      33,
+      33,
+      33,
+      65,
+      65,
+      65
+    ],
+    "firstBasePitchTickOffset": 7,
+    "tableEnding": "Finite waveform/pitch table ends on base-pitch gated pulse; no pitch loop, vibrato, noise, sync or ring dependency.",
+    "pulseProgram": "../bach-toccata-integrated-motion/preparation.json"
+  },
+  "target": {
+    "sidCount": 1,
+    "sidModel": "MOS8580",
+    "clock": "PAL",
+    "concertAHz": 440,
+    "timingPolicy": "retain-full-pitch"
+  },
+  "listeningQuestion": "Do the three main-lead attack transformations provide the bolder electronic character requested while still reading as the accepted Bach gestures?",
+  "modelAssistanceReview": {
+    "decision": "skip unvalidated musical-preference inference",
+    "reason": "Human feedback settles the requested experimental character; no qualified model criterion answers it.",
+    "nextCheckpoint": "Paired human audition feedback"
+  }
+}
