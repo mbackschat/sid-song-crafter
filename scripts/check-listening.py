@@ -19,6 +19,7 @@ def main():
     writes.add_argument('candidate', type=Path)
     writes.add_argument('--source-sha256', required=True, help='SHA-256 of the decompressed source JSON bytes')
     writes.add_argument('--calls', type=int, required=True)
+    writes.add_argument('--candidate-prefix', action='store_true', help='Compare the declared calls while validating and counting later candidate stores separately')
     writes.add_argument('--output', type=Path, required=True)
     audio = commands.add_parser('audio', help='check complete PCM16 renders without a listening or PCM-identity claim')
     audio.add_argument('reference', type=Path)
@@ -28,15 +29,19 @@ def main():
     audio.add_argument('--channels', type=int, default=1)
     audio.add_argument('--tail-seconds', type=float, help='Require the final window to meet the supplied per-channel AC RMS limit')
     audio.add_argument('--max-tail-ac-rms', type=float, help='Maximum final-window AC RMS in PCM16 units; requires --tail-seconds')
+    audio.add_argument('--tail-target', choices=('both', 'reference', 'candidate'), default='both',
+                       help='Apply the tail AC RMS limit to the selected render; full health checks cover both')
     audio.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     if args.command == 'asset':
         check_asset(args.source, sha256=args.sha256, output=args.output)
     elif args.command == 'writes':
-        check_writes(args.source, args.candidate, source_sha256=args.source_sha256, calls=args.calls, output=args.output)
+        check_writes(args.source, args.candidate, source_sha256=args.source_sha256, calls=args.calls,
+                     output=args.output, candidate_prefix=args.candidate_prefix)
     else:
         check_audio(args.reference, args.candidate, seconds=args.seconds, sample_rate=args.sample_rate, channels=args.channels,
-                    output=args.output, tail_seconds=args.tail_seconds, max_tail_ac_rms=args.max_tail_ac_rms)
+                    output=args.output, tail_seconds=args.tail_seconds, max_tail_ac_rms=args.max_tail_ac_rms,
+                    tail_target=args.tail_target)
     print(f'{args.command} check passed: {args.output}')
 
 

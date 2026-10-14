@@ -69,7 +69,7 @@ def _scoped_writes(raw, calls, label, *, allow_extra_calls):
         raise ValueError(f'{label} SID writes are not valid JSON') from error
     _require(isinstance(rows, list), f'{label} SID writes must be a JSON array')
     selected, seen_calls = [], set()
-    init_count, previous_tick = 0, -1
+    init_count, previous_tick, excluded_count = 0, -1, 0
     for index, row in enumerate(rows):
         _require(isinstance(row, dict) and all(key in row for key in ('phase', 'tick', 'address', 'value')),
                  f'{label} write {index} lacks phase, tick, address or value')
@@ -85,6 +85,7 @@ def _scoped_writes(raw, calls, label, *, allow_extra_calls):
             previous_tick = tick
             _require(allow_extra_calls or tick < calls, f'{label} play tick {tick} is outside declared play-call scope')
             if tick >= calls:
+                excluded_count += 1
                 continue
             seen_calls.add(tick)
         else:
@@ -92,40 +93,46 @@ def _scoped_writes(raw, calls, label, *, allow_extra_calls):
         selected.append((phase, tick, address, value))
     _require(init_count > 0, f'{label} has no initialization writes')
     _require(seen_calls == set(range(calls)), f'{label} lacks complete play-call coverage 0..{calls - 1}')
-    return selected, init_count
+    return selected, init_count, excluded_count
 
 
-def check_writes(source, candidate, *, source_sha256, calls, output):
+def check_writes(source, candidate, *, source_sha256, calls, output, candidate_prefix=False):
     _hash_pin(source_sha256)
     _require(type(calls) is int and calls > 0, 'Play-call count must be a positive integer')
+    _require(type(candidate_prefix) is bool, 'Candidate prefix must be a boolean')
     source_raw, source_pin = _read_writes(source)
     _require(source_pin['decompressedSha256'] == source_sha256,
              'Decompressed source SHA-256 does not match expected source SHA-256 pin')
     candidate_raw, candidate_pin = _read_writes(candidate)
-    expected, init_count = _scoped_writes(source_raw, calls, 'Source', allow_extra_calls=True)
-    actual, _ = _scoped_writes(candidate_raw, calls, 'Candidate', allow_extra_calls=False)
+    expected, init_count, _ = _scoped_writes(source_raw, calls, 'Source', allow_extra_calls=True)
+    actual, _, excluded_count = _scoped_writes(candidate_raw, calls, 'Candidate', allow_extra_calls=candidate_prefix)
     _require(expected == actual, 'Source and candidate ordered SID writes differ (phase, tick, address, value; duplicates retained)')
     report = {
         'schemaVersion': 1, 'check': 'writes', 'passed': True,
         'inputs': [dict(label='source', **source_pin), dict(label='candidate', **candidate_pin)],
         'expectedSourceDecompressedSha256': source_sha256,
-        'scope': {'initialization': True, 'playCalls': calls, 'firstCall': 0, 'lastCallInclusive': calls - 1},
+        'scope': {'initialization': True, 'playCalls': calls, 'firstCall': 0, 'lastCallInclusive': calls - 1,
+                  'candidatePrefix': candidate_prefix},
         'identityFields': ['phase', 'tick', 'address', 'value'],
         'matchedWrites': len(expected), 'matchedInitWrites': init_count,
         'matchedPlayWrites': len(expected) - init_count,
+        'excludedCandidateWrites': excluded_count,
         'claims': {'orderedRegisterWriteIdentity': True, 'busCycleIdentity': False, 'perceptualAgreement': False},
     }
     return _receipt(report, output, [Path(source_pin['path']), Path(candidate_pin['path'])])
 
 
 def check_audio(reference, candidate, *, seconds, output, sample_rate=44100, channels=1,
-                tail_seconds=None, max_tail_ac_rms=None):
+                tail_seconds=None, max_tail_ac_rms=None, tail_target='both'):
     _require(type(sample_rate) is int and sample_rate > 0, 'Expected sample rate must be a positive integer')
     _require(type(channels) is int and channels in (1, 2), 'Expected channels must be one or two')
     _require(math.isfinite(seconds) and seconds > 0 and math.isfinite(seconds * sample_rate),
              'Expected duration must be finite and positive')
     frames = round(seconds * sample_rate)
     _require(frames > 0, 'Expected duration rounds to zero sample frames')
+    _require(tail_target in ('both', 'reference', 'candidate'), 'Tail target must be both, reference or candidate')
+    _require(tail_target == 'both' or tail_seconds is not None and max_tail_ac_rms is not None,
+             'A selected tail target requires tail seconds and maximum tail AC RMS')
     tail_frames = None
     if tail_seconds is not None or max_tail_ac_rms is not None:
         _require(type(tail_seconds) in (int, float) and math.isfinite(tail_seconds)
@@ -145,7 +152,7 @@ def check_audio(reference, candidate, *, seconds, output, sample_rate=44100, cha
         _require(metrics['clippedSamples'] == 0, f'{label} has PCM rail samples indicating possible clipping')
         _require(metrics['acRms'] > 0, f'{label} has no AC energy (silence or DC only)')
         measurements.append(dict(label=label, **metrics))
-        if tail_frames is not None:
+        if tail_frames is not None and tail_target in ('both', label):
             tail = Pcm16(sample_rate, channels, tail_frames, audio.samples[-tail_frames * channels:], '')
             ending = measure_pcm(tail)
             _require(all(row['acRms'] <= max_tail_ac_rms for row in ending['perChannel']),
@@ -160,7 +167,7 @@ def check_audio(reference, candidate, *, seconds, output, sample_rate=44100, cha
         'claims': {'pcmIdentity': False, 'perceptualAgreement': False},
     }
     if tail_frames is not None:
-        report['ending'] = dict(requestedSeconds=tail_seconds, frames=tail_frames,
+        report['ending'] = dict(target=tail_target, requestedSeconds=tail_seconds, frames=tail_frames,
                                 maximumChannelAcRms=max_tail_ac_rms, measurements=endings,
                                 scope='Final PCM window only; DC reported separately. A settled tail does not establish a musically complete ending.')
     return _receipt(report, output, [Path(row['path']) for row in measurements])

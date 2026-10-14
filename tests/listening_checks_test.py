@@ -57,6 +57,8 @@ class ListeningChecksTest(unittest.TestCase):
         self.assertEqual(self.pin, report['inputs'][0]['decompressedSha256'])
         self.assertEqual(hashlib.sha256(originals[0]).hexdigest(), report['inputs'][0]['sha256'])
         self.assertEqual(2, report['scope']['playCalls'])
+        self.assertFalse(report['scope']['candidatePrefix'])
+        self.assertEqual(0, report['excludedCandidateWrites'])
         self.assertFalse(report['claims']['busCycleIdentity'])
         self.assertFalse(report['claims']['perceptualAgreement'])
         self.assertEqual(report, json.loads(self.output.read_text()))
@@ -99,6 +101,60 @@ class ListeningChecksTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'complete play-call coverage'):
             self.check_writes()
 
+    def test_candidate_prefix_compares_every_music_call_and_records_excluded_stores(self):
+        self.candidate.write_text(json.dumps(writes(4)))
+        originals = [path.read_bytes() for path in (self.source, self.candidate)]
+        report = check_writes(self.source, self.candidate, source_sha256=self.pin, calls=2,
+                              candidate_prefix=True, output=self.output)
+        self.assertTrue(report['scope']['candidatePrefix'])
+        self.assertEqual(7, report['matchedWrites'])
+        self.assertEqual(6, report['excludedCandidateWrites'])
+        self.assertEqual(self.pin, report['expectedSourceDecompressedSha256'])
+        self.assertEqual(hashlib.sha256(originals[1]).hexdigest(), report['inputs'][1]['sha256'])
+        self.assertEqual(report, json.loads(self.output.read_text()))
+        self.assertEqual(originals, [path.read_bytes() for path in (self.source, self.candidate)])
+
+    def test_candidate_prefix_rejects_invalid_or_unordered_excluded_rows(self):
+        variants = []
+        for change in ({'phase': 'host'}, {'tick': True}, {'address': 65536}, {'value': 256}):
+            rows = writes(3)
+            rows[-1].update(change)
+            variants.append(rows)
+        rows = writes(3)
+        rows[-1]['tick'] = 1
+        variants.append(rows)
+        variants.append(writes(3) + [dict(phase='init', tick=None, address=0xd404, value=0)])
+        for rows in variants:
+            self.candidate.write_text(json.dumps(rows))
+            with self.subTest(rows=rows), self.assertRaises(ValueError):
+                check_writes(self.source, self.candidate, source_sha256=self.pin, calls=2,
+                              candidate_prefix=True, output=self.output)
+        self.assertFalse(self.output.exists())
+
+    def test_candidate_prefix_retains_source_pin_and_exact_init_complete_call_identity(self):
+        variants = []
+        rows = writes(3)
+        rows[0]['value'] = 1
+        variants.append(rows)
+        rows = writes(3)
+        rows[2]['value'] = 40
+        variants.append(rows)
+        variants.append(writes(3)[:3] + writes(3)[4:])
+        variants.append([row for row in writes(3) if row['tick'] != 1])
+        for rows in variants:
+            self.candidate.write_text(json.dumps(rows))
+            with self.subTest(rows=rows), self.assertRaises(ValueError):
+                check_writes(self.source, self.candidate, source_sha256=self.pin, calls=2,
+                              candidate_prefix=True, output=self.output)
+        self.candidate.write_text(json.dumps(writes(3)))
+        with self.assertRaisesRegex(ValueError, 'source SHA-256'):
+            check_writes(self.source, self.candidate, source_sha256='0' * 64, calls=2,
+                          candidate_prefix=True, output=self.output)
+        with self.assertRaisesRegex(ValueError, 'boolean'):
+            check_writes(self.source, self.candidate, source_sha256=self.pin, calls=2,
+                          candidate_prefix=1, output=self.output)
+        self.assertFalse(self.output.exists())
+
     def test_write_check_rejects_invalid_phase_tick_address_value_and_no_init(self):
         for change in ({'phase': 'host'}, {'tick': True}, {'address': 65536}, {'value': 256}):
             rows = writes()
@@ -139,6 +195,7 @@ class ListeningChecksTest(unittest.TestCase):
         report = check_audio(reference, candidate, seconds=1, sample_rate=8, output=self.output,
                              tail_seconds=0.5, max_tail_ac_rms=1)
         self.assertEqual(4, report['ending']['frames'])
+        self.assertEqual('both', report['ending']['target'])
         self.assertEqual([0, 0], [row['acRms'] for row in report['ending']['measurements']])
         self.assertEqual([5, 5], [row['perChannel'][0]['dc'] for row in report['ending']['measurements']])
         self.output.unlink()
@@ -157,6 +214,62 @@ class ListeningChecksTest(unittest.TestCase):
             with self.subTest(tail=tail, limit=limit), self.assertRaises(ValueError):
                 check_audio(reference, candidate, seconds=0.5, sample_rate=8, output=self.output,
                             tail_seconds=tail, max_tail_ac_rms=limit)
+        self.assertFalse(self.output.exists())
+
+    def test_tail_target_limits_only_selected_tail_and_records_both_full_health_measurements(self):
+        reference, candidate = self.root / 'reference.wav', self.root / 'candidate.wav'
+        for target in ('reference', 'candidate'):
+            selected = reference if target == 'reference' else candidate
+            other = candidate if target == 'reference' else reference
+            write_wav(selected, [-100, 100, -100, 100, 5, 5, 5, 5])
+            write_wav(other, [-100, 100] * 4)
+            with self.subTest(target=target):
+                with self.assertRaisesRegex(ValueError, 'tail'):
+                    check_audio(reference, candidate, seconds=1, sample_rate=8, output=self.output,
+                                tail_seconds=0.5, max_tail_ac_rms=1)
+                report = check_audio(reference, candidate, seconds=1, sample_rate=8, output=self.output,
+                                     tail_seconds=0.5, max_tail_ac_rms=1, tail_target=target)
+                self.assertEqual(['reference', 'candidate'], [row['label'] for row in report['inputs']])
+                self.assertEqual(target, report['ending']['target'])
+                self.assertEqual([target], [row['label'] for row in report['ending']['measurements']])
+                self.assertEqual(0, report['ending']['measurements'][0]['acRms'])
+                self.assertEqual(5, report['ending']['measurements'][0]['perChannel'][0]['dc'])
+                self.assertEqual(report, json.loads(self.output.read_text()))
+                self.output.unlink()
+
+    def test_tail_target_requires_complete_tail_contract_and_rejects_unknown_target(self):
+        reference, candidate = self.root / 'reference.wav', self.root / 'candidate.wav'
+        for target, tail, limit in [('other', 0.5, 1)] + [
+            (target, tail, limit) for target in ('reference', 'candidate')
+            for tail, limit in ((None, None), (None, 1), (0.5, None))
+        ]:
+            with self.subTest(target=target, tail=tail, limit=limit), self.assertRaises(ValueError):
+                check_audio(reference, candidate, seconds=1, sample_rate=8, output=self.output,
+                            tail_seconds=tail, max_tail_ac_rms=limit, tail_target=target)
+        self.assertFalse(self.output.exists())
+
+    def test_tail_target_keeps_full_health_checks_on_unselected_input_and_per_channel_tail_limit(self):
+        reference, candidate = self.root / 'reference.wav', self.root / 'candidate.wav'
+        cases = [([128, 129] * 4, {'width': 1}, 'PCM16'),
+                 ([-100, 100] * 4, {'rate': 16}, 'sample rate'),
+                 ([-100, 100] * 4, {'channels': 2}, 'channels'),
+                 ([-100, 100] * 2, {}, 'frame count'),
+                 ([-32768, 100] + [5] * 6, {}, 'clipping'),
+                 ([5] * 8, {}, 'AC energy')]
+        for target in ('reference', 'candidate'):
+            selected = reference if target == 'reference' else candidate
+            other = candidate if target == 'reference' else reference
+            for samples, options, message in cases:
+                write_wav(selected, [-100, 100, -100, 100, 5, 5, 5, 5])
+                write_wav(other, samples, **options)
+                with self.subTest(target=target, options=options), self.assertRaisesRegex(ValueError, message):
+                    check_audio(reference, candidate, seconds=1, sample_rate=8, output=self.output,
+                                tail_seconds=0.5, max_tail_ac_rms=1, tail_target=target)
+        write_wav(reference, [-100, 100, 100, -100] * 3, rate=6, channels=2)
+        write_wav(candidate, [-100, 100, 100, -100, 0, -10, 0, 10, 0, -10, 0, 10], rate=6, channels=2)
+        with self.assertRaisesRegex(ValueError, 'tail'):
+            check_audio(reference, candidate, seconds=1, sample_rate=6, channels=2, output=self.output,
+                        tail_seconds=0.5, max_tail_ac_rms=8, tail_target='candidate')
         self.assertFalse(self.output.exists())
 
     def test_audio_check_rejects_both_inputs_format_duration_clipping_and_silence(self):
@@ -237,6 +350,33 @@ class ListeningChecksTest(unittest.TestCase):
         result = subprocess.run(command + ['audio', str(reference), str(candidate), '--seconds', '.5', '--sample-rate', '8', '--output', str(self.output)], capture_output=True, text=True, timeout=10)
         self.assertEqual(0, result.returncode, result.stderr)
         self.assertEqual(1, json.loads(self.output.read_text())['expectedChannels'])
+
+    def test_cli_records_explicit_candidate_prefix_and_candidate_tail_scope(self):
+        command = [sys.executable, str(ROOT / 'scripts/check-listening.py')]
+        self.candidate.write_text(json.dumps(writes(3)))
+        result = subprocess.run(command + ['writes', str(self.source), str(self.candidate),
+            '--source-sha256', self.pin, '--calls', '2', '--candidate-prefix', '--output', str(self.output)],
+            capture_output=True, text=True, timeout=10)
+        self.assertEqual(0, result.returncode, result.stderr)
+        report = json.loads(self.output.read_text())
+        self.assertTrue(report['scope']['candidatePrefix'])
+        self.assertEqual(3, report['excludedCandidateWrites'])
+        self.output.unlink()
+        reference, candidate = self.root / 'reference.wav', self.root / 'candidate.wav'
+        write_wav(reference, [-100, 100] * 4)
+        write_wav(candidate, [-100, 100, -100, 100, 5, 5, 5, 5])
+        arguments = ['audio', str(reference), str(candidate), '--seconds', '1', '--sample-rate', '8',
+            '--tail-target', 'candidate', '--output', str(self.output)]
+        result = subprocess.run(command + arguments + ['--tail-seconds', '.5', '--max-tail-ac-rms', '1'],
+            capture_output=True, text=True, timeout=10)
+        self.assertEqual(0, result.returncode, result.stderr)
+        report = json.loads(self.output.read_text())
+        self.assertEqual('candidate', report['ending']['target'])
+        self.assertEqual(['candidate'], [row['label'] for row in report['ending']['measurements']])
+        self.output.unlink()
+        result = subprocess.run(command + arguments, capture_output=True, text=True, timeout=10)
+        self.assertNotEqual(0, result.returncode)
+        self.assertFalse(self.output.exists())
 
 
 if __name__ == '__main__':
