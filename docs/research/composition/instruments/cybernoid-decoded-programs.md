@@ -4,6 +4,8 @@ Use this example for a moving-pulse bass with a brief noise attack, filtered har
 
 **Status, 2026-10-13:** the [bounded adapter](../../../../scripts/studies/cybernoid/prepare-cybernoid-elise.py) and [source-free tests](../../../../tests/cybernoid_elise_transfer_test.py) verify the complete numeric models, source-event selection, lookup mapping, gaps, native gate timing and finite fade. Both compiled versions pass full CPU/VICE checks, including two stopped calls, and render unclipped with settled final seconds. The [audio recipe](../cybernoid-elise-audio.json) pins reproduction and the [listening package](../cybernoid-ii-preparation.md#listening-package-and-reproduction) supplies both references and candidates. The listener accepted this same-material pair: “Cybernoid version works musically,” in response to the question including its ending. This acceptance is separate from the numerical checks and does not establish hardware equivalence.
 
+The [bounded Turbo Outrun contrast](../tel-contrast.md) corroborates note-age waveform staging in a different tonal role, while its packed-sample NMI path requires a separate machine/timer contract. The listener heard no difference in Turbo’s pulse-onset removal; do not infer perceptual benefit from a changed control register. This does not extend Cybernoid’s pitch/glide model or transfer sampled percussion into these oscillator programs.
+
 ## Choose and edit the programs
 
 The [transfer](../../../../songs/cybernoid-elise-transfer.json) retains these original records and their parameter tables. All three use pulse without ring/sync coupling. Physical voice indices are zero-based.

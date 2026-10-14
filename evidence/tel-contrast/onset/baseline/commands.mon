@@ -1,0 +1,110 @@
+radix h
+sidefx off
+dummy off
+bank ram
+load "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/payload.prg" 0
+load "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/host.prg" 0
+bank cpu
+> $0000 $2f $37
+> $d01a $00
+> $d019 $ff
+> $dc0d $7f
+> $dd0d $7f
+sidefx on
+m $dc0d $dc0d
+m $dd0d $dd0d
+sidefx off
+> $d418 $0f
+> $dc04 $25 $40
+> $dc0e $01
+> $d011 $9b $37
+> $dc0d $81
+r a=$00,x=$00,y=$00,sp=$ff,fl=$20
+r pc=$0400
+m $0000 $0001
+trace exec $cb40
+break exec $0403
+trace exec $cd00
+trace exec $cd2f
+trace exec $cd30
+trace exec $0943
+trace store $d400 $d7ff
+trace load $d400 $d7ff
+trace store $0000 $0001
+trace store $fffa $ffff
+trace store $dc00 $ddff
+trace store $d011 $d01a
+trace exec $0810
+trace exec $0819
+trace exec $0949
+trace exec $094c
+trace exec $0963
+trace exec $0974
+trace exec $0936
+trace exec $0904
+trace exec $0909
+trace store $00e5 $00f6
+trace store $0834 $0836
+trace store $082b $082d
+trace exec $0e08
+trace exec $0e0d
+trace exec $0e18
+trace exec $0e36
+trace exec $0e39
+trace exec $0c6e
+trace exec $0cf0
+g
+r
+m $0000 $0001
+m $fffa $ffff
+delete 2
+break exec $cd30
+disable 6
+disable 7
+disable 8
+disable 11
+disable 12
+disable 15
+disable 16
+disable 17
+disable 18
+disable 19
+disable 20
+disable 21
+disable 22
+disable 23
+disable 24
+disable 25
+disable 26
+disable 27
+disable 28
+disable 29
+disable 30
+disable 31
+break
+ignore 32 $0460
+g
+r
+m $0000 $0001
+m $fffa $ffff
+enable 7
+enable 8
+enable 11
+enable 12
+enable 22
+enable 23
+enable 24
+enable 25
+enable 26
+enable 27
+enable 28
+enable 29
+enable 30
+enable 31
+break
+ignore 32 $00bf
+g
+r
+m $0000 $0001
+m $fffa $ffff
+quit

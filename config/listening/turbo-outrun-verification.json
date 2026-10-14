@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "probe-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "turbo_outrun*_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "scripts/studies/turbo-outrun/probe-contrast.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/trace-sid-vice.py",
+        ".tools/test-deps/py65",
+        "tests/turbo_outrun_probe_test.py",
+        "scripts/studies/turbo-outrun/analyze-onset.py",
+        "tests/turbo_outrun_onset_test.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "initialized-census",
+      "command": [
+        "{python}",
+        "scripts/studies/turbo-outrun/probe-contrast.py",
+        "--output",
+        "{out}/capture",
+        "--refreshes",
+        "128"
+      ],
+      "inputs": [
+        "scripts/studies/turbo-outrun/probe-contrast.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/trace-sid-vice.py",
+        ".tools/test-deps/py65",
+        ".local/research/turbo-outrun/Turbo_Outrun.sid",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib"
+      ],
+      "outputs": [
+        "capture/verification.json",
+        "capture/trace.json.gz",
+        "capture/commands.mon",
+        "capture/command.json",
+        "capture/monitor.log.gz",
+        "capture/process.log.gz"
+      ],
+      "timeoutSeconds": 70,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "tonal-window",
+      "command": [
+        "{python}",
+        "scripts/studies/turbo-outrun/probe-contrast.py",
+        "--output",
+        "{out}/capture",
+        "--refreshes",
+        "192",
+        "--skip-refreshes",
+        "1120"
+      ],
+      "inputs": [
+        "scripts/studies/turbo-outrun/probe-contrast.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/trace-sid-vice.py",
+        ".tools/test-deps/py65",
+        ".local/research/turbo-outrun/Turbo_Outrun.sid",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib"
+      ],
+      "outputs": [
+        "capture/verification.json",
+        "capture/trace.json.gz",
+        "capture/commands.mon",
+        "capture/command.json",
+        "capture/monitor.log.gz",
+        "capture/process.log.gz"
+      ],
+      "timeoutSeconds": 70,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "onset-diagnostic",
+      "command": [
+        "{python}",
+        "scripts/studies/turbo-outrun/analyze-onset.py",
+        "--baseline",
+        "{stage:tonal-window}/capture",
+        "--output",
+        "{out}/evidence"
+      ],
+      "inputs": [
+        "scripts/studies/turbo-outrun/probe-contrast.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/trace-sid-vice.py",
+        ".tools/test-deps/py65",
+        ".local/research/turbo-outrun/Turbo_Outrun.sid",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/studies/turbo-outrun/analyze-onset.py",
+        "{stage:tonal-window}/capture/verification.json",
+        "{stage:tonal-window}/capture/trace.json.gz",
+        "{stage:tonal-window}/capture/commands.mon",
+        "{stage:tonal-window}/capture/command.json",
+        "{stage:tonal-window}/capture/monitor.log.gz",
+        "{stage:tonal-window}/capture/process.log.gz"
+      ],
+      "outputs": [
+        "evidence/verification.json",
+        "evidence/onset-ledger.json",
+        "evidence/patch.json",
+        "evidence/without-pulse-onset.sid",
+        "evidence/candidate/verification.json",
+        "evidence/candidate/trace.json.gz",
+        "evidence/candidate/commands.mon",
+        "evidence/candidate/command.json",
+        "evidence/candidate/monitor.log.gz",
+        "evidence/candidate/process.log.gz"
+      ],
+      "timeoutSeconds": 70,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "original-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/turbo-outrun/Turbo_Outrun.sid",
+        "{out}/render.wav",
+        "26",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        ".local/research/turbo-outrun/Turbo_Outrun.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "without-onset-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:onset-diagnostic}/evidence/without-pulse-onset.sid",
+        "{out}/render.wav",
+        "26",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:onset-diagnostic}/evidence/without-pulse-onset.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:original-render}/render.wav",
+        "{stage:without-onset-render}/render.wav",
+        "--seconds",
+        "26",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:without-onset-render}/render.wav"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "onset-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:original-render}/render.wav",
+        "{stage:without-onset-render}/render.wav",
+        "{out}/original-then-without-pulse-onset-23to26s",
+        "--start-seconds",
+        "23",
+        "--end-seconds",
+        "26",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:without-onset-render}/render.wav"
+      ],
+      "outputs": [
+        "original-then-without-pulse-onset-23to26s.ab.wav",
+        "original-then-without-pulse-onset-23to26s.comparison.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "initializedMachineCensus": "{stage:initialized-census}/capture/verification.json",
+    "privateOrderedCheckpoints": "{stage:initialized-census}/capture/trace.json.gz",
+    "privateRawMonitor": "{stage:initialized-census}/capture/monitor.log.gz",
+    "tonalWindowVerification": "{stage:tonal-window}/capture/verification.json",
+    "onsetIsolationVerification": "{stage:onset-diagnostic}/evidence/verification.json",
+    "onsetStateLedger": "{stage:onset-diagnostic}/evidence/onset-ledger.json",
+    "originalIntroFirst26Seconds": "{stage:original-render}/render.wav",
+    "sameMaterialWithoutPulseOnsetFirst26Seconds": "{stage:without-onset-render}/render.wav",
+    "originalThenWithoutPulseOnset23to26Seconds": "{stage:onset-comparison}/original-then-without-pulse-onset-23to26s.ab.wav",
+    "onsetComparisonReceipt": "{stage:onset-comparison}/original-then-without-pulse-onset-23to26s.comparison.json"
+  }
+}

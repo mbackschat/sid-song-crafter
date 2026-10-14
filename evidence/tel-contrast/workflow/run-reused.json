@@ -1,0 +1,526 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/turbo-outrun-verification.json",
+  "recipeSha256": "6ab7f0ddb9b16a94b0043d79f286b560ffa637825a699a7f38788c69945b46d1",
+  "startedAt": "2026-10-14T10:15:38.678230+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "probe-guards",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [],
+      "cacheKey": "69859e6c8dfd48a47b2fa5e2f574a9c24fbde75b3662f26f8954891ddb50e3f9",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/probe-guards/69859e6c8dfd48a47b2fa5e2f574a9c24fbde75b3662f26f8954891ddb50e3f9/attempt-4a0d171a9303412d91a8361b637960ab",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/probe-guards/69859e6c8dfd48a47b2fa5e2f574a9c24fbde75b3662f26f8954891ddb50e3f9/attempt-4a0d171a9303412d91a8361b637960ab/stage.log",
+      "wallSeconds": 0.03445841699999999
+    },
+    {
+      "id": "initialized-census",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "initialized-census",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/verification.json",
+          "relativePath": "capture/verification.json",
+          "type": "file",
+          "sha256": "27a99369b822488c214c2d5eadf88b13b2b11fb093bbd740f6a7f134eb4a64c7"
+        },
+        {
+          "stageId": "initialized-census",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/trace.json.gz",
+          "relativePath": "capture/trace.json.gz",
+          "type": "file",
+          "sha256": "e4fea2301cff4d31ef5bf1338203670a208f8010334b40e3301d523c16165bfa"
+        },
+        {
+          "stageId": "initialized-census",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/commands.mon",
+          "relativePath": "capture/commands.mon",
+          "type": "file",
+          "sha256": "cddf17fe69b1f293807cea9bc594c52e32c085e746e43b1d34d9bfb8b6392f2f"
+        },
+        {
+          "stageId": "initialized-census",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/command.json",
+          "relativePath": "capture/command.json",
+          "type": "file",
+          "sha256": "6cb352175314438427a5ac2b07d6ab8dabc573cfaaf2ade6dd9e69202944de29"
+        },
+        {
+          "stageId": "initialized-census",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/monitor.log.gz",
+          "relativePath": "capture/monitor.log.gz",
+          "type": "file",
+          "sha256": "7343c6f4cdf9d6209d9b0f0f26316f0310f84d551727400ee5886e74589b6916"
+        },
+        {
+          "stageId": "initialized-census",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/process.log.gz",
+          "relativePath": "capture/process.log.gz",
+          "type": "file",
+          "sha256": "0342e73c5322872164c0c68b53b3f4cc6f355694b66d1ff59dbc8ac5bd46b500"
+        }
+      ],
+      "cacheKey": "acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/stage.log",
+      "wallSeconds": 0.31094283300000003
+    },
+    {
+      "id": "tonal-window",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "tonal-window",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/verification.json",
+          "relativePath": "capture/verification.json",
+          "type": "file",
+          "sha256": "98efc8556f1389bcdf5a1eea56cf66a727f7d8007d317c5c33ae0ca864ce2555"
+        },
+        {
+          "stageId": "tonal-window",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/trace.json.gz",
+          "relativePath": "capture/trace.json.gz",
+          "type": "file",
+          "sha256": "ed5d5b617074cb66f6c2d924bb8f64206f1e2d899fefec2eaef38f5f56aa9c3b"
+        },
+        {
+          "stageId": "tonal-window",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/commands.mon",
+          "relativePath": "capture/commands.mon",
+          "type": "file",
+          "sha256": "a6641634545d7ebf2719d63a4e696027874c1156fc85f0df2aad0607eb2fef84"
+        },
+        {
+          "stageId": "tonal-window",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/command.json",
+          "relativePath": "capture/command.json",
+          "type": "file",
+          "sha256": "f89166681b1d3e15db2151907cf68f20b0a0f8acf30213e7784d9b3acba95f38"
+        },
+        {
+          "stageId": "tonal-window",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/monitor.log.gz",
+          "relativePath": "capture/monitor.log.gz",
+          "type": "file",
+          "sha256": "a971c0a9663a76e1848e7c44b69b012173e15fdb656da4cff85259563c96c723"
+        },
+        {
+          "stageId": "tonal-window",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/process.log.gz",
+          "relativePath": "capture/process.log.gz",
+          "type": "file",
+          "sha256": "f11219c979815538c9e380164e8b5c8e795c1c7e5738f8ad923a3565f69fab98"
+        }
+      ],
+      "cacheKey": "4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/stage.log",
+      "wallSeconds": 0.10939158300000001
+    },
+    {
+      "id": "onset-diagnostic",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "onset-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/verification.json",
+          "relativePath": "evidence/verification.json",
+          "type": "file",
+          "sha256": "757d4b51f5db9616a80f883212d75230362f76c449fce919910753a0cd298bd9"
+        },
+        {
+          "stageId": "onset-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/onset-ledger.json",
+          "relativePath": "evidence/onset-ledger.json",
+          "type": "file",
+          "sha256": "3bbced358c47b10c92e829427851e52688a3f79aa8ab65a674bef1a66f81abfa"
+        },
+        {
+          "stageId": "onset-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/patch.json",
+          "relativePath": "evidence/patch.json",
+          "type": "file",
+          "sha256": "a7304057125c7099622be656edb348a495294c282320516370c75c8e43e61da3"
+        },
+        {
+          "stageId": "onset-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/without-pulse-onset.sid",
+          "relativePath": "evidence/without-pulse-onset.sid",
+          "type": "file",
+          "sha256": "062f00fef353e151d7f155af9586e72145376cf2983c55e8c7c10be90577a3ab"
+        },
+        {
+          "stageId": "onset-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/candidate/verification.json",
+          "relativePath": "evidence/candidate/verification.json",
+          "type": "file",
+          "sha256": "c11038caffa0284bf71007dd4d3d58e8b51f0d311c51ce757ab39ec188ab1c31"
+        },
+        {
+          "stageId": "onset-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/candidate/trace.json.gz",
+          "relativePath": "evidence/candidate/trace.json.gz",
+          "type": "file",
+          "sha256": "f6d12366014b71dc20bb30b0e5b79865a4719075ca45fc8662ac688a3acae28d"
+        },
+        {
+          "stageId": "onset-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/candidate/commands.mon",
+          "relativePath": "evidence/candidate/commands.mon",
+          "type": "file",
+          "sha256": "8b73d991f71bde8d99279ed15ccb31242d88d8aa9341d0e3940339b0d91c9577"
+        },
+        {
+          "stageId": "onset-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/candidate/command.json",
+          "relativePath": "evidence/candidate/command.json",
+          "type": "file",
+          "sha256": "dde22c4d98b9315e608260b2439b165fa232c175a7c3ff4b01c66202cad893ac"
+        },
+        {
+          "stageId": "onset-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/candidate/monitor.log.gz",
+          "relativePath": "evidence/candidate/monitor.log.gz",
+          "type": "file",
+          "sha256": "3e2ca77c43cb94f56de530e98a887b2276e6c5651b24b35885b1a3fc702a8942"
+        },
+        {
+          "stageId": "onset-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/candidate/process.log.gz",
+          "relativePath": "evidence/candidate/process.log.gz",
+          "type": "file",
+          "sha256": "627dfbb48cc17a8bbebb619bbff73a05bf0011b10b5814f0de5a5cf92476f949"
+        }
+      ],
+      "cacheKey": "fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/stage.log",
+      "wallSeconds": 0.201786083
+    },
+    {
+      "id": "original-render",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "original-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/original-render/e02cf3a83246ea22796a60415a6db94a29d7ffa260d287a4729fafe0d05e4da5/attempt-c31c8241e36a4567877354a48757768a/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "ff0e9f78a0dbebaf1f7001fb3d4f5bdd5100dd5393830e9a2938121dc74610ea"
+        },
+        {
+          "stageId": "original-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/original-render/e02cf3a83246ea22796a60415a6db94a29d7ffa260d287a4729fafe0d05e4da5/attempt-c31c8241e36a4567877354a48757768a/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "02f301ec0e1fcafcb1dca0e03e09bca6defc1f27c4eb337fdf0caea967f6ec88"
+        }
+      ],
+      "cacheKey": "e02cf3a83246ea22796a60415a6db94a29d7ffa260d287a4729fafe0d05e4da5",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/original-render/e02cf3a83246ea22796a60415a6db94a29d7ffa260d287a4729fafe0d05e4da5/attempt-c31c8241e36a4567877354a48757768a",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/original-render/e02cf3a83246ea22796a60415a6db94a29d7ffa260d287a4729fafe0d05e4da5/attempt-c31c8241e36a4567877354a48757768a/stage.log",
+      "wallSeconds": 0.013769582999999974
+    },
+    {
+      "id": "without-onset-render",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "without-onset-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/without-onset-render/67716e04beb9adf0454c1dad55812d432303aee82a3006b03baa2b4955af6f23/attempt-244dd4e9658e4d99aa0e13ececa130d4/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "46e1e230b8c6df22facf76b08cefb485ccccce2fd25788553c58c0c7ce8e9933"
+        },
+        {
+          "stageId": "without-onset-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/without-onset-render/67716e04beb9adf0454c1dad55812d432303aee82a3006b03baa2b4955af6f23/attempt-244dd4e9658e4d99aa0e13ececa130d4/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "c16fdf406b2c8f3b49758b1ce6d0575878ce24db15983241c9a485330be47340"
+        }
+      ],
+      "cacheKey": "67716e04beb9adf0454c1dad55812d432303aee82a3006b03baa2b4955af6f23",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/without-onset-render/67716e04beb9adf0454c1dad55812d432303aee82a3006b03baa2b4955af6f23/attempt-244dd4e9658e4d99aa0e13ececa130d4",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/without-onset-render/67716e04beb9adf0454c1dad55812d432303aee82a3006b03baa2b4955af6f23/attempt-244dd4e9658e4d99aa0e13ececa130d4/stage.log",
+      "wallSeconds": 0.005616208000000067
+    },
+    {
+      "id": "signal-check",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "signal-check",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/signal-check/1ddde328d0fe5b67637eb0815c0fbffd1d59d5e1383310c954921be912ce46b5/attempt-c7f7c2edf48e48e9a8a2eeebb7f554b1/audio.json",
+          "relativePath": "audio.json",
+          "type": "file",
+          "sha256": "6b42b2b0e39d473879e8785d4fc74b6b0c05ba1b0ba1d21bcd10a9e29df5db02"
+        }
+      ],
+      "cacheKey": "1ddde328d0fe5b67637eb0815c0fbffd1d59d5e1383310c954921be912ce46b5",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/signal-check/1ddde328d0fe5b67637eb0815c0fbffd1d59d5e1383310c954921be912ce46b5/attempt-c7f7c2edf48e48e9a8a2eeebb7f554b1",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/signal-check/1ddde328d0fe5b67637eb0815c0fbffd1d59d5e1383310c954921be912ce46b5/attempt-c7f7c2edf48e48e9a8a2eeebb7f554b1/stage.log",
+      "wallSeconds": 0.011557124999999946
+    },
+    {
+      "id": "onset-comparison",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "onset-comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-comparison/f04f9d92cfeeffe9fb9c471fa2c983c56ea74f80c3094e1b808496c4ae49517c/attempt-1ff74194a10c41b49b33e60a2fd5518e/original-then-without-pulse-onset-23to26s.ab.wav",
+          "relativePath": "original-then-without-pulse-onset-23to26s.ab.wav",
+          "type": "file",
+          "sha256": "5cf54b472851b141392adcea37bdaf069544fb48d35df61366dd1d2a4a2fac0c"
+        },
+        {
+          "stageId": "onset-comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-comparison/f04f9d92cfeeffe9fb9c471fa2c983c56ea74f80c3094e1b808496c4ae49517c/attempt-1ff74194a10c41b49b33e60a2fd5518e/original-then-without-pulse-onset-23to26s.comparison.json",
+          "relativePath": "original-then-without-pulse-onset-23to26s.comparison.json",
+          "type": "file",
+          "sha256": "ce52de86e6f434d4a80c0a8a133bcaeb8e9d8412922484f062af1345a2d932f1"
+        }
+      ],
+      "cacheKey": "f04f9d92cfeeffe9fb9c471fa2c983c56ea74f80c3094e1b808496c4ae49517c",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-comparison/f04f9d92cfeeffe9fb9c471fa2c983c56ea74f80c3094e1b808496c4ae49517c/attempt-1ff74194a10c41b49b33e60a2fd5518e",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-comparison/f04f9d92cfeeffe9fb9c471fa2c983c56ea74f80c3094e1b808496c4ae49517c/attempt-1ff74194a10c41b49b33e60a2fd5518e/stage.log",
+      "wallSeconds": 0.006632458000000008
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "initialized-census",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/verification.json",
+      "relativePath": "capture/verification.json",
+      "type": "file",
+      "sha256": "27a99369b822488c214c2d5eadf88b13b2b11fb093bbd740f6a7f134eb4a64c7"
+    },
+    {
+      "stageId": "initialized-census",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/trace.json.gz",
+      "relativePath": "capture/trace.json.gz",
+      "type": "file",
+      "sha256": "e4fea2301cff4d31ef5bf1338203670a208f8010334b40e3301d523c16165bfa"
+    },
+    {
+      "stageId": "initialized-census",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/commands.mon",
+      "relativePath": "capture/commands.mon",
+      "type": "file",
+      "sha256": "cddf17fe69b1f293807cea9bc594c52e32c085e746e43b1d34d9bfb8b6392f2f"
+    },
+    {
+      "stageId": "initialized-census",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/command.json",
+      "relativePath": "capture/command.json",
+      "type": "file",
+      "sha256": "6cb352175314438427a5ac2b07d6ab8dabc573cfaaf2ade6dd9e69202944de29"
+    },
+    {
+      "stageId": "initialized-census",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/monitor.log.gz",
+      "relativePath": "capture/monitor.log.gz",
+      "type": "file",
+      "sha256": "7343c6f4cdf9d6209d9b0f0f26316f0310f84d551727400ee5886e74589b6916"
+    },
+    {
+      "stageId": "initialized-census",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/process.log.gz",
+      "relativePath": "capture/process.log.gz",
+      "type": "file",
+      "sha256": "0342e73c5322872164c0c68b53b3f4cc6f355694b66d1ff59dbc8ac5bd46b500"
+    },
+    {
+      "stageId": "tonal-window",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/verification.json",
+      "relativePath": "capture/verification.json",
+      "type": "file",
+      "sha256": "98efc8556f1389bcdf5a1eea56cf66a727f7d8007d317c5c33ae0ca864ce2555"
+    },
+    {
+      "stageId": "tonal-window",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/trace.json.gz",
+      "relativePath": "capture/trace.json.gz",
+      "type": "file",
+      "sha256": "ed5d5b617074cb66f6c2d924bb8f64206f1e2d899fefec2eaef38f5f56aa9c3b"
+    },
+    {
+      "stageId": "tonal-window",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/commands.mon",
+      "relativePath": "capture/commands.mon",
+      "type": "file",
+      "sha256": "a6641634545d7ebf2719d63a4e696027874c1156fc85f0df2aad0607eb2fef84"
+    },
+    {
+      "stageId": "tonal-window",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/command.json",
+      "relativePath": "capture/command.json",
+      "type": "file",
+      "sha256": "f89166681b1d3e15db2151907cf68f20b0a0f8acf30213e7784d9b3acba95f38"
+    },
+    {
+      "stageId": "tonal-window",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/monitor.log.gz",
+      "relativePath": "capture/monitor.log.gz",
+      "type": "file",
+      "sha256": "a971c0a9663a76e1848e7c44b69b012173e15fdb656da4cff85259563c96c723"
+    },
+    {
+      "stageId": "tonal-window",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/process.log.gz",
+      "relativePath": "capture/process.log.gz",
+      "type": "file",
+      "sha256": "f11219c979815538c9e380164e8b5c8e795c1c7e5738f8ad923a3565f69fab98"
+    },
+    {
+      "stageId": "onset-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/verification.json",
+      "relativePath": "evidence/verification.json",
+      "type": "file",
+      "sha256": "757d4b51f5db9616a80f883212d75230362f76c449fce919910753a0cd298bd9"
+    },
+    {
+      "stageId": "onset-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/onset-ledger.json",
+      "relativePath": "evidence/onset-ledger.json",
+      "type": "file",
+      "sha256": "3bbced358c47b10c92e829427851e52688a3f79aa8ab65a674bef1a66f81abfa"
+    },
+    {
+      "stageId": "onset-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/patch.json",
+      "relativePath": "evidence/patch.json",
+      "type": "file",
+      "sha256": "a7304057125c7099622be656edb348a495294c282320516370c75c8e43e61da3"
+    },
+    {
+      "stageId": "onset-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/without-pulse-onset.sid",
+      "relativePath": "evidence/without-pulse-onset.sid",
+      "type": "file",
+      "sha256": "062f00fef353e151d7f155af9586e72145376cf2983c55e8c7c10be90577a3ab"
+    },
+    {
+      "stageId": "onset-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/candidate/verification.json",
+      "relativePath": "evidence/candidate/verification.json",
+      "type": "file",
+      "sha256": "c11038caffa0284bf71007dd4d3d58e8b51f0d311c51ce757ab39ec188ab1c31"
+    },
+    {
+      "stageId": "onset-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/candidate/trace.json.gz",
+      "relativePath": "evidence/candidate/trace.json.gz",
+      "type": "file",
+      "sha256": "f6d12366014b71dc20bb30b0e5b79865a4719075ca45fc8662ac688a3acae28d"
+    },
+    {
+      "stageId": "onset-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/candidate/commands.mon",
+      "relativePath": "evidence/candidate/commands.mon",
+      "type": "file",
+      "sha256": "8b73d991f71bde8d99279ed15ccb31242d88d8aa9341d0e3940339b0d91c9577"
+    },
+    {
+      "stageId": "onset-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/candidate/command.json",
+      "relativePath": "evidence/candidate/command.json",
+      "type": "file",
+      "sha256": "dde22c4d98b9315e608260b2439b165fa232c175a7c3ff4b01c66202cad893ac"
+    },
+    {
+      "stageId": "onset-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/candidate/monitor.log.gz",
+      "relativePath": "evidence/candidate/monitor.log.gz",
+      "type": "file",
+      "sha256": "3e2ca77c43cb94f56de530e98a887b2276e6c5651b24b35885b1a3fc702a8942"
+    },
+    {
+      "stageId": "onset-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/candidate/process.log.gz",
+      "relativePath": "evidence/candidate/process.log.gz",
+      "type": "file",
+      "sha256": "627dfbb48cc17a8bbebb619bbff73a05bf0011b10b5814f0de5a5cf92476f949"
+    },
+    {
+      "stageId": "original-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/original-render/e02cf3a83246ea22796a60415a6db94a29d7ffa260d287a4729fafe0d05e4da5/attempt-c31c8241e36a4567877354a48757768a/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "ff0e9f78a0dbebaf1f7001fb3d4f5bdd5100dd5393830e9a2938121dc74610ea"
+    },
+    {
+      "stageId": "original-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/original-render/e02cf3a83246ea22796a60415a6db94a29d7ffa260d287a4729fafe0d05e4da5/attempt-c31c8241e36a4567877354a48757768a/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "02f301ec0e1fcafcb1dca0e03e09bca6defc1f27c4eb337fdf0caea967f6ec88"
+    },
+    {
+      "stageId": "without-onset-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/without-onset-render/67716e04beb9adf0454c1dad55812d432303aee82a3006b03baa2b4955af6f23/attempt-244dd4e9658e4d99aa0e13ececa130d4/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "46e1e230b8c6df22facf76b08cefb485ccccce2fd25788553c58c0c7ce8e9933"
+    },
+    {
+      "stageId": "without-onset-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/without-onset-render/67716e04beb9adf0454c1dad55812d432303aee82a3006b03baa2b4955af6f23/attempt-244dd4e9658e4d99aa0e13ececa130d4/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "c16fdf406b2c8f3b49758b1ce6d0575878ce24db15983241c9a485330be47340"
+    },
+    {
+      "stageId": "signal-check",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/signal-check/1ddde328d0fe5b67637eb0815c0fbffd1d59d5e1383310c954921be912ce46b5/attempt-c7f7c2edf48e48e9a8a2eeebb7f554b1/audio.json",
+      "relativePath": "audio.json",
+      "type": "file",
+      "sha256": "6b42b2b0e39d473879e8785d4fc74b6b0c05ba1b0ba1d21bcd10a9e29df5db02"
+    },
+    {
+      "stageId": "onset-comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-comparison/f04f9d92cfeeffe9fb9c471fa2c983c56ea74f80c3094e1b808496c4ae49517c/attempt-1ff74194a10c41b49b33e60a2fd5518e/original-then-without-pulse-onset-23to26s.ab.wav",
+      "relativePath": "original-then-without-pulse-onset-23to26s.ab.wav",
+      "type": "file",
+      "sha256": "5cf54b472851b141392adcea37bdaf069544fb48d35df61366dd1d2a4a2fac0c"
+    },
+    {
+      "stageId": "onset-comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-comparison/f04f9d92cfeeffe9fb9c471fa2c983c56ea74f80c3094e1b808496c4ae49517c/attempt-1ff74194a10c41b49b33e60a2fd5518e/original-then-without-pulse-onset-23to26s.comparison.json",
+      "relativePath": "original-then-without-pulse-onset-23to26s.comparison.json",
+      "type": "file",
+      "sha256": "ce52de86e6f434d4a80c0a8a133bcaeb8e9d8412922484f062af1345a2d932f1"
+    }
+  ],
+  "deliverables": {
+    "initializedMachineCensus": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/verification.json",
+    "privateOrderedCheckpoints": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/trace.json.gz",
+    "privateRawMonitor": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/initialized-census/acbc8c372ec4bb52eca75ac6654422081343f2c41a2b6d8ab3e5968d9f288d7a/attempt-2fb1e15523184732a438427eeaeeb703/capture/monitor.log.gz",
+    "tonalWindowVerification": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/tonal-window/4ededa96449e57d991c14e47637891538c1c87be38f9afb3e181161a26b4a187/attempt-064916a0ed1542ee889edd6647fbfa5a/capture/verification.json",
+    "onsetIsolationVerification": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/verification.json",
+    "onsetStateLedger": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-diagnostic/fca13acb019e3fa5965106fe56eafe9ec7de45a535226f52d87eab204ff402ea/attempt-f26476d980b148b49a2799d8be91de92/evidence/onset-ledger.json",
+    "originalIntroFirst26Seconds": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/original-render/e02cf3a83246ea22796a60415a6db94a29d7ffa260d287a4729fafe0d05e4da5/attempt-c31c8241e36a4567877354a48757768a/render.wav",
+    "sameMaterialWithoutPulseOnsetFirst26Seconds": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/without-onset-render/67716e04beb9adf0454c1dad55812d432303aee82a3006b03baa2b4955af6f23/attempt-244dd4e9658e4d99aa0e13ececa130d4/render.wav",
+    "originalThenWithoutPulseOnset23to26Seconds": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-comparison/f04f9d92cfeeffe9fb9c471fa2c983c56ea74f80c3094e1b808496c4ae49517c/attempt-1ff74194a10c41b49b33e60a2fd5518e/original-then-without-pulse-onset-23to26s.ab.wav",
+    "onsetComparisonReceipt": "/Users/mbackschat/Projects/c64-sid-skill/build/turbo-outrun-verification/cache/onset-comparison/f04f9d92cfeeffe9fb9c471fa2c983c56ea74f80c3094e1b808496c4ae49517c/attempt-1ff74194a10c41b49b33e60a2fd5518e/original-then-without-pulse-onset-23to26s.comparison.json"
+  },
+  "finishedAt": "2026-10-14T10:15:39.833930+00:00",
+  "wallSeconds": 1.155926708
+}
