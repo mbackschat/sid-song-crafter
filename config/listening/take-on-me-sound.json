@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "sound-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "-v",
+        "take_on_me_sound_test.TakeOnMeSoundTest.test_table_jump_keeps_terminal_hold_and_rejects_cycles",
+        "take_on_me_sound_test.TakeOnMeSoundTest.test_pulse_word_crossing_stops_after_the_overshooting_body",
+        "take_on_me_sound_test.TakeOnMeSoundTest.test_sweep_phase_changes_keep_the_overshooting_word",
+        "take_on_me_sound_test.TakeOnMeSoundTest.test_glide_suppresses_vibrato_until_target_crossing",
+        "take_on_me_sound_test.TakeOnMeSoundTest.test_vibrato_direction_change_has_a_stationary_frame",
+        "take_on_me_sound_test.TakeOnMeSoundTest.test_standalone_vibrato_helper_preserves_input_state",
+        "take_on_me_sound_test.TakeOnMeSoundTest.test_voice_zero_owns_filter_and_ordered_output",
+        "take_on_me_sound_test.TakeOnMeSoundTest.test_invalid_parameters_and_missing_lookup_are_rejected"
+      ],
+      "inputs": [
+        "scripts/studies/take-on-me/programs.py",
+        "tests/take_on_me_sound_test.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/tests",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "sound-proof",
+      "command": [
+        "{python}",
+        "scripts/studies/take-on-me/sound-probe.py",
+        "--calls",
+        "1024",
+        "--controls",
+        "--output",
+        "{out}/sound"
+      ],
+      "inputs": [
+        "scripts/studies/take-on-me/programs.py",
+        "scripts/studies/take-on-me/sound-probe.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".local/research/take-on-me/Take_on_Me.sid"
+      ],
+      "outputs": [
+        "sound/receipt.json",
+        "sound/sound-description.json",
+        "sound/arpeggio-offset.contexts.json.gz",
+        "sound/arpeggio-offset.reads.json.gz",
+        "sound/arpeggio-offset.writes.json.gz",
+        "sound/contexts.json.gz",
+        "sound/filter-down-step.contexts.json.gz",
+        "sound/filter-down-step.reads.json.gz",
+        "sound/filter-down-step.writes.json.gz",
+        "sound/percussion-waveform.contexts.json.gz",
+        "sound/percussion-waveform.reads.json.gz",
+        "sound/percussion-waveform.writes.json.gz",
+        "sound/pulse-down-step.contexts.json.gz",
+        "sound/pulse-down-step.reads.json.gz",
+        "sound/pulse-down-step.writes.json.gz",
+        "sound/reads.json.gz",
+        "sound/vibrato-delay.contexts.json.gz",
+        "sound/vibrato-delay.reads.json.gz",
+        "sound/vibrato-delay.writes.json.gz",
+        "sound/writes.json.gz"
+      ],
+      "timeoutSeconds": 150,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "soundDescription": "{stage:sound-proof}/sound/sound-description.json",
+    "soundProof": "{stage:sound-proof}/sound/receipt.json"
+  }
+}

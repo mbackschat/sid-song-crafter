@@ -59,3 +59,38 @@ python3 scripts/evidence.py verify --group take-on-me-form
 ```
 
 The [three-stage recipe](../../../config/listening/take-on-me-form.json) runs grammar guards, complete source/score proof and the VICE wrap check. On 2026-10-14 the [fresh run](../../../evidence/take-on-me-form/run-fresh.json) took 89.13 seconds; the [unchanged recheck](../../../evidence/take-on-me-form/run-reused.json) took 0.19 seconds with all stages reused and no stage subprocesses. Retained evidence verification checks fingerprints without claiming a fresh source capture. The numeric score proof does not yet establish an independent sound player, compiled export or musical acceptance.
+
+## Editable sound programs and isolated controls
+
+The [pure sound helpers](../../../scripts/studies/take-on-me/programs.py) compute note setup, ongoing body behavior and ordered voice/filter output from named state and editable numeric tables. The [source adapter and executed probe](../../../scripts/studies/take-on-me/sound-probe.py) retain source addresses separately. They are study components for integration, not yet an exported instrument bank or a listening-accepted transfer.
+
+| Instrument ID / observed physical voice | Numeric sound contract |
+| --- | --- |
+| 0 / voices 1 and 3 | Zero control/AD/SR, with continuing numeric pitch and pulse output; do not infer the entire chip is silent. |
+| 1 / voice 3 | Pulse `$41`, initial width `$0AC0`, one-way width sweep, delayed vibrato, half-duration gate and late release program. |
+| 2 / voice 2 | Saw `$21` with cycling pitch offsets held for two calls per tone, half-duration gate and late release program. |
+| 3 / voice 1 | Pulse `$41`, width `$0200`, bidirectional full-word width sweep and shared-filter descent. |
+| 4 / voice 1 | TEST/gate onset `$09`, then table-driven `$81 → $41 → $10` noise/pulse/triangle stages with independent high-byte pitch offsets; terminal table hold preserves the final state. |
+
+These roles describe executed programming in the bounded opening, not isolated listening judgments. The named [numeric sound description](../../../evidence/take-on-me-sound/sound-description.json) owns the exact parameters and native frequency table. Preserve its values rather than silently regularizing pitch; source index 32 contains 1,712 while other octaves suggest a slightly different value. A later transfer needs an explicit pitch-mapping check.
+
+At `$1168`, setup selects base frequency, initial pulse/control and ADSR; physical voice 1 alone initializes the shared filter. The continuing body at `$11B3` applies staged control, arpeggio, waveform/pitch tables, PWM, glide or vibrato, voice-1 filter motion, then gate/release rules. Output emits control, pulse high/low and frequency high/low for each voice, then filter low/high. Setup does not itself reset every modulation phase; the score caller and sound helper must retain their separate ownership.
+
+The [bounded receipt](../../../evidence/take-on-me-sound/receipt.json) matches **7,168 executed boundaries over 1,024 initialized calls**: 262 setups, 2,810 continuing bodies, 3,072 voice outputs and 1,024 filter outputs. It covers all five instrument IDs and captures five init plus 18,131 play stores. Each of five private-copy controls independently matches another 7,168 boundaries, for **43,008 comparisons** in total, with changes confined to the declared output ports:
+
+| Control | Source field / edit | Allowed changed output |
+| --- | --- | --- |
+| Pulse descent | `$168C`: 96 → 48 | Voice 3 pulse width |
+| Vibrato delay | `$16AA`: 9 → 5 | Voice 3 frequency |
+| Arpeggio offset | `$1660`: 8 → 12 | Voice 2 frequency |
+| Percussion waveform | `$1680`: `$81 → $41` | Voice 1 control |
+| Filter descent | `$16B6`: high step byte 16 → 8 | Shared filter cutoff |
+
+The [complete baseline contexts](../../../evidence/take-on-me-sound/contexts.json.gz), [data reads](../../../evidence/take-on-me-sound/reads.json.gz) and [ordered writes](../../../evidence/take-on-me-sound/writes.json.gz), together with identically named per-control records in the [manifest](../../../evidence/manifest.json), preserve all observations. These proofs explicitly use experimental **MOS6581** and do not synthesize the chip; the musical target remains **MOS8580** following the audition. Natural glide-body coverage is zero. Synthetic guards cover its contract without asserting natural-source execution.
+
+```sh
+python3 scripts/listening-package.py config/listening/take-on-me-sound.json --output build/take-on-me-sound-verification
+python3 scripts/evidence.py verify --group take-on-me-sound
+```
+
+The [sound recipe](../../../config/listening/take-on-me-sound.json) runs eight pure guards and the separate executed source/control proof, avoiding a duplicate source capture inside the unit-test stage. On 2026-10-14 its [fresh run](../../../evidence/take-on-me-sound/run-fresh.json) took 62.26 seconds and its [unchanged recheck](../../../evidence/take-on-me-sound/run-reused.json) took 0.02 seconds with no stage subprocesses. Full-score integration, compiled execution, acoustic quality and familiar-material reuse remain separate gates.

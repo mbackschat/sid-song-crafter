@@ -1,0 +1,1195 @@
+{
+  "sourceSha256": "c7e45037d20c3b85d18fc955a1cdfb70041f08dfc171e9b12d1c3327300101e6",
+  "playCalls": 1024,
+  "boundaryComparisons": 7168,
+  "boundaryCounts": {
+    "setup": 262,
+    "voice-output": 3072,
+    "filter-output": 1024,
+    "body": 2810
+  },
+  "instrumentIds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "activeGlideBodyInputs": 0,
+  "audit": {
+    "schemaVersion": 1,
+    "sourceSha256": "c7e45037d20c3b85d18fc955a1cdfb70041f08dfc171e9b12d1c3327300101e6",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS6581",
+    "sidCount": 1,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS6581"
+      }
+    ],
+    "loadAddress": 4096,
+    "initAddress": 6912,
+    "playAddress": 4099,
+    "clockHz": 985248.6111111111,
+    "playCalls": 1024,
+    "callRateHz": 50.12457321485099,
+    "initCycles": 375,
+    "maximumPlayCycles": 1208,
+    "meanPlayCycles": 818.953125,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 5,
+    "playWriteCount": 18131,
+    "registers": {
+      "d400": {
+        "writes": 1024,
+        "distinctValues": 6,
+        "minimum": 45,
+        "maximum": 251
+      },
+      "d401": {
+        "writes": 1024,
+        "distinctValues": 7,
+        "minimum": 1,
+        "maximum": 193
+      },
+      "d402": {
+        "writes": 1024,
+        "distinctValues": 8,
+        "minimum": 0,
+        "maximum": 240
+      },
+      "d403": {
+        "writes": 1024,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 8
+      },
+      "d404": {
+        "writes": 1024,
+        "distinctValues": 6,
+        "minimum": 0,
+        "maximum": 129
+      },
+      "d405": {
+        "writes": 47,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 2
+      },
+      "d406": {
+        "writes": 47,
+        "distinctValues": 3,
+        "minimum": 0,
+        "maximum": 226
+      },
+      "d407": {
+        "writes": 1024,
+        "distinctValues": 6,
+        "minimum": 62,
+        "maximum": 223
+      },
+      "d408": {
+        "writes": 1024,
+        "distinctValues": 7,
+        "minimum": 26,
+        "maximum": 47
+      },
+      "d409": {
+        "writes": 1024,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40a": {
+        "writes": 1024,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40b": {
+        "writes": 1024,
+        "distinctValues": 2,
+        "minimum": 32,
+        "maximum": 33
+      },
+      "d40c": {
+        "writes": 128,
+        "distinctValues": 1,
+        "minimum": 2,
+        "maximum": 2
+      },
+      "d40d": {
+        "writes": 256,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 106
+      },
+      "d40e": {
+        "writes": 1024,
+        "distinctValues": 16,
+        "minimum": 3,
+        "maximum": 255
+      },
+      "d40f": {
+        "writes": 1024,
+        "distinctValues": 15,
+        "minimum": 1,
+        "maximum": 71
+      },
+      "d410": {
+        "writes": 1024,
+        "distinctValues": 7,
+        "minimum": 0,
+        "maximum": 224
+      },
+      "d411": {
+        "writes": 1024,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 10
+      },
+      "d412": {
+        "writes": 1024,
+        "distinctValues": 3,
+        "minimum": 0,
+        "maximum": 65
+      },
+      "d413": {
+        "writes": 87,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 2
+      },
+      "d414": {
+        "writes": 158,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 92
+      },
+      "d415": {
+        "writes": 1024,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d416": {
+        "writes": 1024,
+        "distinctValues": 10,
+        "minimum": 0,
+        "maximum": 248
+      }
+    },
+    "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment.",
+    "sidModelAssumption": {
+      "declared": "unknown",
+      "assumed": "MOS6581"
+    },
+    "executionProfile": "pal-banked",
+    "subtunes": 1,
+    "defaultSubtune": 1,
+    "selectedSubtune": 1,
+    "entryBank": 54,
+    "hostBase": 49152,
+    "initReturnAddress": 49210,
+    "playReturnAddress": 49229,
+    "entryStateBasis": "Controlled PAL raster host: init A=selection-1, X/Y=0, P=$26; play A=$FA, retained X/Y, CMP-equal C/Z set and N clear; bank $36 before each call; callable return words derive from the shared harness JSR labels"
+  },
+  "controls": [
+    {
+      "name": "pulse-down-step",
+      "address": 5772,
+      "original": 96,
+      "candidate": 48,
+      "candidateSha256": "c26bbbd37a2aa6a5be63a9b6b52f3b9afb29c9a130a54f1a0490494a39f33688",
+      "declaredPorts": [
+        54288,
+        54289
+      ],
+      "onlyDeclaredPortsChanged": true,
+      "boundaryComparisons": 7168,
+      "audit": {
+        "schemaVersion": 1,
+        "sourceSha256": "c26bbbd37a2aa6a5be63a9b6b52f3b9afb29c9a130a54f1a0490494a39f33688",
+        "cpu": "py65 NMOS 6502",
+        "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+        "sidModel": "MOS6581",
+        "sidCount": 1,
+        "sids": [
+          {
+            "baseAddress": 54272,
+            "model": "MOS6581"
+          }
+        ],
+        "loadAddress": 4096,
+        "initAddress": 6912,
+        "playAddress": 4099,
+        "clockHz": 985248.6111111111,
+        "playCalls": 1024,
+        "callRateHz": 50.12457321485099,
+        "initCycles": 375,
+        "maximumPlayCycles": 1208,
+        "meanPlayCycles": 824.095703125,
+        "frameCycleBudget": 19656,
+        "initWriteCount": 5,
+        "playWriteCount": 18131,
+        "registers": {
+          "d400": {
+            "writes": 1024,
+            "distinctValues": 6,
+            "minimum": 45,
+            "maximum": 251
+          },
+          "d401": {
+            "writes": 1024,
+            "distinctValues": 7,
+            "minimum": 1,
+            "maximum": 193
+          },
+          "d402": {
+            "writes": 1024,
+            "distinctValues": 8,
+            "minimum": 0,
+            "maximum": 240
+          },
+          "d403": {
+            "writes": 1024,
+            "distinctValues": 4,
+            "minimum": 0,
+            "maximum": 8
+          },
+          "d404": {
+            "writes": 1024,
+            "distinctValues": 6,
+            "minimum": 0,
+            "maximum": 129
+          },
+          "d405": {
+            "writes": 47,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 2
+          },
+          "d406": {
+            "writes": 47,
+            "distinctValues": 3,
+            "minimum": 0,
+            "maximum": 226
+          },
+          "d407": {
+            "writes": 1024,
+            "distinctValues": 6,
+            "minimum": 62,
+            "maximum": 223
+          },
+          "d408": {
+            "writes": 1024,
+            "distinctValues": 7,
+            "minimum": 26,
+            "maximum": 47
+          },
+          "d409": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d40a": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d40b": {
+            "writes": 1024,
+            "distinctValues": 2,
+            "minimum": 32,
+            "maximum": 33
+          },
+          "d40c": {
+            "writes": 128,
+            "distinctValues": 1,
+            "minimum": 2,
+            "maximum": 2
+          },
+          "d40d": {
+            "writes": 256,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 106
+          },
+          "d40e": {
+            "writes": 1024,
+            "distinctValues": 16,
+            "minimum": 3,
+            "maximum": 255
+          },
+          "d40f": {
+            "writes": 1024,
+            "distinctValues": 15,
+            "minimum": 1,
+            "maximum": 71
+          },
+          "d410": {
+            "writes": 1024,
+            "distinctValues": 12,
+            "minimum": 0,
+            "maximum": 224
+          },
+          "d411": {
+            "writes": 1024,
+            "distinctValues": 4,
+            "minimum": 0,
+            "maximum": 10
+          },
+          "d412": {
+            "writes": 1024,
+            "distinctValues": 3,
+            "minimum": 0,
+            "maximum": 65
+          },
+          "d413": {
+            "writes": 87,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 2
+          },
+          "d414": {
+            "writes": 158,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 92
+          },
+          "d415": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d416": {
+            "writes": 1024,
+            "distinctValues": 10,
+            "minimum": 0,
+            "maximum": 248
+          }
+        },
+        "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment.",
+        "sidModelAssumption": {
+          "declared": "unknown",
+          "assumed": "MOS6581"
+        },
+        "executionProfile": "pal-banked",
+        "subtunes": 1,
+        "defaultSubtune": 1,
+        "selectedSubtune": 1,
+        "entryBank": 54,
+        "hostBase": 49152,
+        "initReturnAddress": 49210,
+        "playReturnAddress": 49229,
+        "entryStateBasis": "Controlled PAL raster host: init A=selection-1, X/Y=0, P=$26; play A=$FA, retained X/Y, CMP-equal C/Z set and N clear; bank $36 before each call; callable return words derive from the shared harness JSR labels"
+      }
+    },
+    {
+      "name": "vibrato-delay",
+      "address": 5802,
+      "original": 9,
+      "candidate": 5,
+      "candidateSha256": "942800514f028cd661f32ce2fd607135972648eaeaa9045ecce9dd5e5b0af878",
+      "declaredPorts": [
+        54286,
+        54287
+      ],
+      "onlyDeclaredPortsChanged": true,
+      "boundaryComparisons": 7168,
+      "audit": {
+        "schemaVersion": 1,
+        "sourceSha256": "942800514f028cd661f32ce2fd607135972648eaeaa9045ecce9dd5e5b0af878",
+        "cpu": "py65 NMOS 6502",
+        "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+        "sidModel": "MOS6581",
+        "sidCount": 1,
+        "sids": [
+          {
+            "baseAddress": 54272,
+            "model": "MOS6581"
+          }
+        ],
+        "loadAddress": 4096,
+        "initAddress": 6912,
+        "playAddress": 4099,
+        "clockHz": 985248.6111111111,
+        "playCalls": 1024,
+        "callRateHz": 50.12457321485099,
+        "initCycles": 375,
+        "maximumPlayCycles": 1208,
+        "meanPlayCycles": 825.0849609375,
+        "frameCycleBudget": 19656,
+        "initWriteCount": 5,
+        "playWriteCount": 18131,
+        "registers": {
+          "d400": {
+            "writes": 1024,
+            "distinctValues": 6,
+            "minimum": 45,
+            "maximum": 251
+          },
+          "d401": {
+            "writes": 1024,
+            "distinctValues": 7,
+            "minimum": 1,
+            "maximum": 193
+          },
+          "d402": {
+            "writes": 1024,
+            "distinctValues": 8,
+            "minimum": 0,
+            "maximum": 240
+          },
+          "d403": {
+            "writes": 1024,
+            "distinctValues": 4,
+            "minimum": 0,
+            "maximum": 8
+          },
+          "d404": {
+            "writes": 1024,
+            "distinctValues": 6,
+            "minimum": 0,
+            "maximum": 129
+          },
+          "d405": {
+            "writes": 47,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 2
+          },
+          "d406": {
+            "writes": 47,
+            "distinctValues": 3,
+            "minimum": 0,
+            "maximum": 226
+          },
+          "d407": {
+            "writes": 1024,
+            "distinctValues": 6,
+            "minimum": 62,
+            "maximum": 223
+          },
+          "d408": {
+            "writes": 1024,
+            "distinctValues": 7,
+            "minimum": 26,
+            "maximum": 47
+          },
+          "d409": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d40a": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d40b": {
+            "writes": 1024,
+            "distinctValues": 2,
+            "minimum": 32,
+            "maximum": 33
+          },
+          "d40c": {
+            "writes": 128,
+            "distinctValues": 1,
+            "minimum": 2,
+            "maximum": 2
+          },
+          "d40d": {
+            "writes": 256,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 106
+          },
+          "d40e": {
+            "writes": 1024,
+            "distinctValues": 23,
+            "minimum": 3,
+            "maximum": 255
+          },
+          "d40f": {
+            "writes": 1024,
+            "distinctValues": 23,
+            "minimum": 1,
+            "maximum": 71
+          },
+          "d410": {
+            "writes": 1024,
+            "distinctValues": 7,
+            "minimum": 0,
+            "maximum": 224
+          },
+          "d411": {
+            "writes": 1024,
+            "distinctValues": 4,
+            "minimum": 0,
+            "maximum": 10
+          },
+          "d412": {
+            "writes": 1024,
+            "distinctValues": 3,
+            "minimum": 0,
+            "maximum": 65
+          },
+          "d413": {
+            "writes": 87,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 2
+          },
+          "d414": {
+            "writes": 158,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 92
+          },
+          "d415": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d416": {
+            "writes": 1024,
+            "distinctValues": 10,
+            "minimum": 0,
+            "maximum": 248
+          }
+        },
+        "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment.",
+        "sidModelAssumption": {
+          "declared": "unknown",
+          "assumed": "MOS6581"
+        },
+        "executionProfile": "pal-banked",
+        "subtunes": 1,
+        "defaultSubtune": 1,
+        "selectedSubtune": 1,
+        "entryBank": 54,
+        "hostBase": 49152,
+        "initReturnAddress": 49210,
+        "playReturnAddress": 49229,
+        "entryStateBasis": "Controlled PAL raster host: init A=selection-1, X/Y=0, P=$26; play A=$FA, retained X/Y, CMP-equal C/Z set and N clear; bank $36 before each call; callable return words derive from the shared harness JSR labels"
+      }
+    },
+    {
+      "name": "arpeggio-offset",
+      "address": 5728,
+      "original": 8,
+      "candidate": 12,
+      "candidateSha256": "d54739a01ecce69cd84c257947bd4d2f542aef58d2987bed9621f033e8317f30",
+      "declaredPorts": [
+        54279,
+        54280
+      ],
+      "onlyDeclaredPortsChanged": true,
+      "boundaryComparisons": 7168,
+      "audit": {
+        "schemaVersion": 1,
+        "sourceSha256": "d54739a01ecce69cd84c257947bd4d2f542aef58d2987bed9621f033e8317f30",
+        "cpu": "py65 NMOS 6502",
+        "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+        "sidModel": "MOS6581",
+        "sidCount": 1,
+        "sids": [
+          {
+            "baseAddress": 54272,
+            "model": "MOS6581"
+          }
+        ],
+        "loadAddress": 4096,
+        "initAddress": 6912,
+        "playAddress": 4099,
+        "clockHz": 985248.6111111111,
+        "playCalls": 1024,
+        "callRateHz": 50.12457321485099,
+        "initCycles": 375,
+        "maximumPlayCycles": 1208,
+        "meanPlayCycles": 818.953125,
+        "frameCycleBudget": 19656,
+        "initWriteCount": 5,
+        "playWriteCount": 18131,
+        "registers": {
+          "d400": {
+            "writes": 1024,
+            "distinctValues": 6,
+            "minimum": 45,
+            "maximum": 251
+          },
+          "d401": {
+            "writes": 1024,
+            "distinctValues": 7,
+            "minimum": 1,
+            "maximum": 193
+          },
+          "d402": {
+            "writes": 1024,
+            "distinctValues": 8,
+            "minimum": 0,
+            "maximum": 240
+          },
+          "d403": {
+            "writes": 1024,
+            "distinctValues": 4,
+            "minimum": 0,
+            "maximum": 8
+          },
+          "d404": {
+            "writes": 1024,
+            "distinctValues": 6,
+            "minimum": 0,
+            "maximum": 129
+          },
+          "d405": {
+            "writes": 47,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 2
+          },
+          "d406": {
+            "writes": 47,
+            "distinctValues": 3,
+            "minimum": 0,
+            "maximum": 226
+          },
+          "d407": {
+            "writes": 1024,
+            "distinctValues": 8,
+            "minimum": 57,
+            "maximum": 223
+          },
+          "d408": {
+            "writes": 1024,
+            "distinctValues": 9,
+            "minimum": 26,
+            "maximum": 59
+          },
+          "d409": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d40a": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d40b": {
+            "writes": 1024,
+            "distinctValues": 2,
+            "minimum": 32,
+            "maximum": 33
+          },
+          "d40c": {
+            "writes": 128,
+            "distinctValues": 1,
+            "minimum": 2,
+            "maximum": 2
+          },
+          "d40d": {
+            "writes": 256,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 106
+          },
+          "d40e": {
+            "writes": 1024,
+            "distinctValues": 16,
+            "minimum": 3,
+            "maximum": 255
+          },
+          "d40f": {
+            "writes": 1024,
+            "distinctValues": 15,
+            "minimum": 1,
+            "maximum": 71
+          },
+          "d410": {
+            "writes": 1024,
+            "distinctValues": 7,
+            "minimum": 0,
+            "maximum": 224
+          },
+          "d411": {
+            "writes": 1024,
+            "distinctValues": 4,
+            "minimum": 0,
+            "maximum": 10
+          },
+          "d412": {
+            "writes": 1024,
+            "distinctValues": 3,
+            "minimum": 0,
+            "maximum": 65
+          },
+          "d413": {
+            "writes": 87,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 2
+          },
+          "d414": {
+            "writes": 158,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 92
+          },
+          "d415": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d416": {
+            "writes": 1024,
+            "distinctValues": 10,
+            "minimum": 0,
+            "maximum": 248
+          }
+        },
+        "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment.",
+        "sidModelAssumption": {
+          "declared": "unknown",
+          "assumed": "MOS6581"
+        },
+        "executionProfile": "pal-banked",
+        "subtunes": 1,
+        "defaultSubtune": 1,
+        "selectedSubtune": 1,
+        "entryBank": 54,
+        "hostBase": 49152,
+        "initReturnAddress": 49210,
+        "playReturnAddress": 49229,
+        "entryStateBasis": "Controlled PAL raster host: init A=selection-1, X/Y=0, P=$26; play A=$FA, retained X/Y, CMP-equal C/Z set and N clear; bank $36 before each call; callable return words derive from the shared harness JSR labels"
+      }
+    },
+    {
+      "name": "percussion-waveform",
+      "address": 5760,
+      "original": 129,
+      "candidate": 65,
+      "candidateSha256": "fe3eebc07a8419410828d1dac507a748b6e1fd0869c1e9678d0be575c21a5d28",
+      "declaredPorts": [
+        54276
+      ],
+      "onlyDeclaredPortsChanged": true,
+      "boundaryComparisons": 7168,
+      "audit": {
+        "schemaVersion": 1,
+        "sourceSha256": "fe3eebc07a8419410828d1dac507a748b6e1fd0869c1e9678d0be575c21a5d28",
+        "cpu": "py65 NMOS 6502",
+        "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+        "sidModel": "MOS6581",
+        "sidCount": 1,
+        "sids": [
+          {
+            "baseAddress": 54272,
+            "model": "MOS6581"
+          }
+        ],
+        "loadAddress": 4096,
+        "initAddress": 6912,
+        "playAddress": 4099,
+        "clockHz": 985248.6111111111,
+        "playCalls": 1024,
+        "callRateHz": 50.12457321485099,
+        "initCycles": 375,
+        "maximumPlayCycles": 1208,
+        "meanPlayCycles": 818.953125,
+        "frameCycleBudget": 19656,
+        "initWriteCount": 5,
+        "playWriteCount": 18131,
+        "registers": {
+          "d400": {
+            "writes": 1024,
+            "distinctValues": 6,
+            "minimum": 45,
+            "maximum": 251
+          },
+          "d401": {
+            "writes": 1024,
+            "distinctValues": 7,
+            "minimum": 1,
+            "maximum": 193
+          },
+          "d402": {
+            "writes": 1024,
+            "distinctValues": 8,
+            "minimum": 0,
+            "maximum": 240
+          },
+          "d403": {
+            "writes": 1024,
+            "distinctValues": 4,
+            "minimum": 0,
+            "maximum": 8
+          },
+          "d404": {
+            "writes": 1024,
+            "distinctValues": 5,
+            "minimum": 0,
+            "maximum": 65
+          },
+          "d405": {
+            "writes": 47,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 2
+          },
+          "d406": {
+            "writes": 47,
+            "distinctValues": 3,
+            "minimum": 0,
+            "maximum": 226
+          },
+          "d407": {
+            "writes": 1024,
+            "distinctValues": 6,
+            "minimum": 62,
+            "maximum": 223
+          },
+          "d408": {
+            "writes": 1024,
+            "distinctValues": 7,
+            "minimum": 26,
+            "maximum": 47
+          },
+          "d409": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d40a": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d40b": {
+            "writes": 1024,
+            "distinctValues": 2,
+            "minimum": 32,
+            "maximum": 33
+          },
+          "d40c": {
+            "writes": 128,
+            "distinctValues": 1,
+            "minimum": 2,
+            "maximum": 2
+          },
+          "d40d": {
+            "writes": 256,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 106
+          },
+          "d40e": {
+            "writes": 1024,
+            "distinctValues": 16,
+            "minimum": 3,
+            "maximum": 255
+          },
+          "d40f": {
+            "writes": 1024,
+            "distinctValues": 15,
+            "minimum": 1,
+            "maximum": 71
+          },
+          "d410": {
+            "writes": 1024,
+            "distinctValues": 7,
+            "minimum": 0,
+            "maximum": 224
+          },
+          "d411": {
+            "writes": 1024,
+            "distinctValues": 4,
+            "minimum": 0,
+            "maximum": 10
+          },
+          "d412": {
+            "writes": 1024,
+            "distinctValues": 3,
+            "minimum": 0,
+            "maximum": 65
+          },
+          "d413": {
+            "writes": 87,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 2
+          },
+          "d414": {
+            "writes": 158,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 92
+          },
+          "d415": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d416": {
+            "writes": 1024,
+            "distinctValues": 10,
+            "minimum": 0,
+            "maximum": 248
+          }
+        },
+        "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment.",
+        "sidModelAssumption": {
+          "declared": "unknown",
+          "assumed": "MOS6581"
+        },
+        "executionProfile": "pal-banked",
+        "subtunes": 1,
+        "defaultSubtune": 1,
+        "selectedSubtune": 1,
+        "entryBank": 54,
+        "hostBase": 49152,
+        "initReturnAddress": 49210,
+        "playReturnAddress": 49229,
+        "entryStateBasis": "Controlled PAL raster host: init A=selection-1, X/Y=0, P=$26; play A=$FA, retained X/Y, CMP-equal C/Z set and N clear; bank $36 before each call; callable return words derive from the shared harness JSR labels"
+      }
+    },
+    {
+      "name": "filter-down-step",
+      "address": 5814,
+      "original": 16,
+      "candidate": 8,
+      "candidateSha256": "62299a5303ef5ecb2274029f133a362cfe597fc6e2714eb26835b357b9fa8396",
+      "declaredPorts": [
+        54293,
+        54294
+      ],
+      "onlyDeclaredPortsChanged": true,
+      "boundaryComparisons": 7168,
+      "audit": {
+        "schemaVersion": 1,
+        "sourceSha256": "62299a5303ef5ecb2274029f133a362cfe597fc6e2714eb26835b357b9fa8396",
+        "cpu": "py65 NMOS 6502",
+        "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+        "sidModel": "MOS6581",
+        "sidCount": 1,
+        "sids": [
+          {
+            "baseAddress": 54272,
+            "model": "MOS6581"
+          }
+        ],
+        "loadAddress": 4096,
+        "initAddress": 6912,
+        "playAddress": 4099,
+        "clockHz": 985248.6111111111,
+        "playCalls": 1024,
+        "callRateHz": 50.12457321485099,
+        "initCycles": 375,
+        "maximumPlayCycles": 1208,
+        "meanPlayCycles": 818.953125,
+        "frameCycleBudget": 19656,
+        "initWriteCount": 5,
+        "playWriteCount": 18131,
+        "registers": {
+          "d400": {
+            "writes": 1024,
+            "distinctValues": 6,
+            "minimum": 45,
+            "maximum": 251
+          },
+          "d401": {
+            "writes": 1024,
+            "distinctValues": 7,
+            "minimum": 1,
+            "maximum": 193
+          },
+          "d402": {
+            "writes": 1024,
+            "distinctValues": 8,
+            "minimum": 0,
+            "maximum": 240
+          },
+          "d403": {
+            "writes": 1024,
+            "distinctValues": 4,
+            "minimum": 0,
+            "maximum": 8
+          },
+          "d404": {
+            "writes": 1024,
+            "distinctValues": 6,
+            "minimum": 0,
+            "maximum": 129
+          },
+          "d405": {
+            "writes": 47,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 2
+          },
+          "d406": {
+            "writes": 47,
+            "distinctValues": 3,
+            "minimum": 0,
+            "maximum": 226
+          },
+          "d407": {
+            "writes": 1024,
+            "distinctValues": 6,
+            "minimum": 62,
+            "maximum": 223
+          },
+          "d408": {
+            "writes": 1024,
+            "distinctValues": 7,
+            "minimum": 26,
+            "maximum": 47
+          },
+          "d409": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d40a": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d40b": {
+            "writes": 1024,
+            "distinctValues": 2,
+            "minimum": 32,
+            "maximum": 33
+          },
+          "d40c": {
+            "writes": 128,
+            "distinctValues": 1,
+            "minimum": 2,
+            "maximum": 2
+          },
+          "d40d": {
+            "writes": 256,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 106
+          },
+          "d40e": {
+            "writes": 1024,
+            "distinctValues": 16,
+            "minimum": 3,
+            "maximum": 255
+          },
+          "d40f": {
+            "writes": 1024,
+            "distinctValues": 15,
+            "minimum": 1,
+            "maximum": 71
+          },
+          "d410": {
+            "writes": 1024,
+            "distinctValues": 7,
+            "minimum": 0,
+            "maximum": 224
+          },
+          "d411": {
+            "writes": 1024,
+            "distinctValues": 4,
+            "minimum": 0,
+            "maximum": 10
+          },
+          "d412": {
+            "writes": 1024,
+            "distinctValues": 3,
+            "minimum": 0,
+            "maximum": 65
+          },
+          "d413": {
+            "writes": 87,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 2
+          },
+          "d414": {
+            "writes": 158,
+            "distinctValues": 2,
+            "minimum": 0,
+            "maximum": 92
+          },
+          "d415": {
+            "writes": 1024,
+            "distinctValues": 1,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "d416": {
+            "writes": 1024,
+            "distinctValues": 10,
+            "minimum": 0,
+            "maximum": 248
+          }
+        },
+        "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment.",
+        "sidModelAssumption": {
+          "declared": "unknown",
+          "assumed": "MOS6581"
+        },
+        "executionProfile": "pal-banked",
+        "subtunes": 1,
+        "defaultSubtune": 1,
+        "selectedSubtune": 1,
+        "entryBank": 54,
+        "hostBase": 49152,
+        "initReturnAddress": 49210,
+        "playReturnAddress": 49229,
+        "entryStateBasis": "Controlled PAL raster host: init A=selection-1, X/Y=0, P=$26; play A=$FA, retained X/Y, CMP-equal C/Z set and N clear; bank $36 before each call; callable return words derive from the shared harness JSR labels"
+      }
+    }
+  ],
+  "limitations": "Observed setup/body/output inputs under initialized RAM-only callable PAL PSID execution with an explicit experimental MOS6581 assumption. No scheduler/full-form equivalence, SID synthesis, bus timing, original-host equivalence or listening verdict. Natural rows do not exercise glide.",
+  "toolHashes": {
+    "programs.py": "54b238411ba81267c402f08f38161bf4cfd24b889fee66c9e1d8ec46fe7b8be4",
+    "sound-probe.py": "75b2bc447cfd0a8b9f4dbc8cb40f04a6890d611b8caceceadbe9b593e74be636"
+  },
+  "oracleToolHashes": {
+    "psid_audit.py": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0",
+    "psid_profile.py": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+  },
+  "outputHashes": {
+    "arpeggio-offset.contexts.json.gz": "9692a1dbc0c56ca8a23edacd96c978b0f2b83c6929468060b7c9ac63a36bb02b",
+    "arpeggio-offset.reads.json.gz": "27ac35a008adc73161d22396030a2f0722aeafd574624028329ef95d420d30fa",
+    "arpeggio-offset.writes.json.gz": "132c7484b649df8b2495b9d2fe3bee244a3882e2ae2718181b6c83e43ce7dfb5",
+    "contexts.json.gz": "a26cf6677a18acd790f0e8ec3624eb6709a9315e702c8344d8557aff72bfe733",
+    "filter-down-step.contexts.json.gz": "039418b7c101ba7c2b930bcca1428c79615249ffb0376887558b79c6a711e720",
+    "filter-down-step.reads.json.gz": "4c1b5b65352e3a32060e0b41b413196e6fc65cdf553b2b663ea7dca365f931a4",
+    "filter-down-step.writes.json.gz": "20dc442ef25ac19e5102ca33962b90d1e61859ad58b9c39b06a6f2711fc5d649",
+    "percussion-waveform.contexts.json.gz": "412a1df65162166e61cbac71d230875b7dc5e22a183325f9b523dd8e13e36374",
+    "percussion-waveform.reads.json.gz": "3d8a7ab0a83d1a11655c7bdb290314b7f801b87bcb38b3dce7497de997fef881",
+    "percussion-waveform.writes.json.gz": "d38a117131a3ca4cf027504bb6c233c537270ed07b270595f9bd82f3882ee6de",
+    "pulse-down-step.contexts.json.gz": "496cc0533cdfb80633eef85ecaacc05b21f2836871ff5bb93ad18b38593fbdff",
+    "pulse-down-step.reads.json.gz": "c68ffcda82ff2827b48a51c269d3bd0f1bbc15104940003a9e3a64560104ef2d",
+    "pulse-down-step.writes.json.gz": "65f86994651e2d852df5701694751829133d9b29785f670cf3093bc194f47726",
+    "reads.json.gz": "4c1b5b65352e3a32060e0b41b413196e6fc65cdf553b2b663ea7dca365f931a4",
+    "sound-description.json": "6e26054bb45f608dd3478f6dcdf33229807bc653a639c6566bb441ddc8634180",
+    "vibrato-delay.contexts.json.gz": "5ebb05ad3927e767439c3e87be856c3d9cbf54c286da3fdffb074350ce7ce900",
+    "vibrato-delay.reads.json.gz": "bd6dced44186860893186e4379d1cdf49cb3f5f04592aa73004e2d54c83c815b",
+    "vibrato-delay.writes.json.gz": "dc7e91b26f812ed60ded7bec9a8a4b0621e701a028001d455c8ca7c82243ca74",
+    "writes.json.gz": "fd67acd6af9aa99c9f52f83d5a4d179f9d4136057b7f8102075f872306932f19"
+  }
+}
