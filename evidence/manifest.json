@@ -14396,6 +14396,86 @@
       "originalBytes": 125,
       "sha256": "77cd6083839debfddace683ce36b6277edd5763ab2fad6405804bc088a323aee",
       "bytes": 125
+    },
+    {
+      "path": "evidence/billie-jean-score/run-executed.json",
+      "originalPath": "build/billie-jean-score-work/run-executed.json",
+      "group": "billie-jean-score",
+      "reason": "Retain migrated score recipe and explicit retained-execution rather than fresh CPU scope.",
+      "originalSha256": "05198e5d418ffe2a2f6f4d8dcc0b77faa3948526bd22823159b1643b4f9ab278",
+      "originalBytes": 6973,
+      "sha256": "05198e5d418ffe2a2f6f4d8dcc0b77faa3948526bd22823159b1643b4f9ab278",
+      "bytes": 6973
+    },
+    {
+      "path": "evidence/billie-jean-score/run-reused.json",
+      "originalPath": "build/billie-jean-score-work/run.json",
+      "group": "billie-jean-score",
+      "reason": "Retain fingerprint-checked stage reuse and repeat timing.",
+      "originalSha256": "6ff92c62e5662798f3407bfd3bd2957bbc1bfbf1818a3a100a619198fae40e64",
+      "originalBytes": 6918,
+      "sha256": "6ff92c62e5662798f3407bfd3bd2957bbc1bfbf1818a3a100a619198fae40e64",
+      "bytes": 6918
+    },
+    {
+      "path": "evidence/billie-jean-score/score.json",
+      "originalPath": "build/billie-jean-score-work/cache/retained-score-proof/7678ed08800925a95ee0d2848e60595e9b6ba2ad2893e8d6406e576b70a4c86d/attempt-771d2bd0fbb449409c8b90cd949a45af/proof/score.json",
+      "group": "billie-jean-score",
+      "reason": "Preserve portable header-owned score and complete independent re-expansion proof against archived source observations.",
+      "originalSha256": "5bfd916f53621d80fa244bf723fac482b0740b023dc20e518feb4651d1414b0c",
+      "originalBytes": 23854,
+      "sha256": "5bfd916f53621d80fa244bf723fac482b0740b023dc20e518feb4651d1414b0c",
+      "bytes": 23854
+    },
+    {
+      "path": "evidence/billie-jean-score/receipt.json",
+      "originalPath": "build/billie-jean-score-work/cache/retained-score-proof/7678ed08800925a95ee0d2848e60595e9b6ba2ad2893e8d6406e576b70a4c86d/attempt-771d2bd0fbb449409c8b90cd949a45af/proof/receipt.json",
+      "group": "billie-jean-score",
+      "reason": "Preserve portable header-owned score and complete independent re-expansion proof against archived source observations.",
+      "originalSha256": "6d5b9f1c591060b2d2025f655e8d8c7c39174567959fb9be2303c91f6e40427e",
+      "originalBytes": 4008,
+      "sha256": "6d5b9f1c591060b2d2025f655e8d8c7c39174567959fb9be2303c91f6e40427e",
+      "bytes": 4008
+    },
+    {
+      "path": "evidence/billie-jean-score/reads.json.gz",
+      "originalPath": "build/billie-jean-score-work/cache/retained-score-proof/7678ed08800925a95ee0d2848e60595e9b6ba2ad2893e8d6406e576b70a4c86d/attempt-771d2bd0fbb449409c8b90cd949a45af/proof/reads.json",
+      "group": "billie-jean-score",
+      "reason": "Preserve portable header-owned score and complete independent re-expansion proof against archived source observations.",
+      "originalSha256": "de6f533d4addb409e125e0ab0d8a2a25a684bab59f5430933d6fb05942724294",
+      "originalBytes": 1671326,
+      "sha256": "0f6f1802fb918342b3182b5127a88b1b6f0b01454ca60c9d836e1885d3620b18",
+      "bytes": 102083
+    },
+    {
+      "path": "evidence/billie-jean-score/rows.json.gz",
+      "originalPath": "build/billie-jean-score-work/cache/retained-score-proof/7678ed08800925a95ee0d2848e60595e9b6ba2ad2893e8d6406e576b70a4c86d/attempt-771d2bd0fbb449409c8b90cd949a45af/proof/rows.json",
+      "group": "billie-jean-score",
+      "reason": "Preserve portable header-owned score and complete independent re-expansion proof against archived source observations.",
+      "originalSha256": "016b80f8970bcaf02eb88dc09017bae1e6d7cdad5c57206437ca6432c000febd",
+      "originalBytes": 812163,
+      "sha256": "edaf7e29f7bd65fe3c3d663c6ae6a6f5c1558b673657442fe865fc0d2210b11f",
+      "bytes": 36951
+    },
+    {
+      "path": "evidence/billie-jean-score/returns.json.gz",
+      "originalPath": "build/billie-jean-score-work/cache/retained-score-proof/7678ed08800925a95ee0d2848e60595e9b6ba2ad2893e8d6406e576b70a4c86d/attempt-771d2bd0fbb449409c8b90cd949a45af/proof/returns.json",
+      "group": "billie-jean-score",
+      "reason": "Preserve portable header-owned score and complete independent re-expansion proof against archived source observations.",
+      "originalSha256": "599389584356aa5295c4684ad95bf1414b02d506a26a4a4283d38604af971e4e",
+      "originalBytes": 6170382,
+      "sha256": "5035d2df2b08e8deb517d8d52d4de171f7a8dcbfbbe3c611fd684d085e2bf144",
+      "bytes": 124981
+    },
+    {
+      "path": "evidence/billie-jean-score/guards.txt",
+      "originalPath": "build/billie-jean-score-work/cache/score-guards/3802adc9fab56939e1469661325928c5a674418da9dcc3a8100e6600b45f0d41/attempt-1b96522f6365417297e2719c6daeab98/stage.log",
+      "group": "billie-jean-score",
+      "reason": "Retain nine source-free schema and scheduling regression guard results.",
+      "originalSha256": "cb85b07307878d686c3fa12c5eab97213609f4afdd5fad46a4738a1c44127744",
+      "originalBytes": 1129,
+      "sha256": "cb85b07307878d686c3fa12c5eab97213609f4afdd5fad46a4738a1c44127744",
+      "bytes": 1129
     }
   ],
   "independentShadesSources": {

@@ -1,6 +1,6 @@
 # Billie Jean: selected score and form
 
-This owns the executed score/form findings for the pinned Johannes Bjerregaard SID while Shades remains the active reconstruction. The [shared intake](pop-theme-preparation.md) retains STIL's source-song attribution to Michael Jackson's *Billie Jean*, from *Thriller*; the archive credits Johannes Bjerregaard, 1990, for this SID. Its [registered download](../../../config/local-assets.json) is the [HVSC archive](https://www.hvsc.de/download/C64Music/MUSICIANS/B/Bjerregaard_Johannes/Billie_Jean.sid), SHA-256 `16d8eae4d22f368520589c44e9db399b64092664bee6e1e70ca4b21c60bf0c54`. The original SID and audio remain local.
+This is the active P2 case after the accepted [Take On Me reconstruction and transfer](take-on-me-preparation.md#familiar-transfer-and-case-closure). It owns the executed score/form findings for the pinned Johannes Bjerregaard SID. The [shared intake](pop-theme-preparation.md) retains STIL's source-song attribution to Michael Jackson's *Billie Jean*, from *Thriller*; the archive credits Johannes Bjerregaard, 1990, for this SID. Its [registered download](../../../config/local-assets.json) is the [HVSC archive](https://www.hvsc.de/download/C64Music/MUSICIANS/B/Bjerregaard_Johannes/Billie_Jean.sid), SHA-256 `16d8eae4d22f368520589c44e9db399b64092664bee6e1e70ca4b21c60bf0c54`. The original SID and audio remain local.
 
 The intact single/default subtune 1 declares PAL, MOS6581 and VBI playback, with load `$1000`, exclusive end `$1EAD`, init `$14A0` and play `$1000`. The [banked callable host](../../validation/psid-audit.md#select-a-subtune-and-expose-ram-beneath-basic) supplies explicit selection, bank `$36` and validated call-return state. This is a controlled execution contract, not evidence of the original release's scheduling environment.
 
@@ -41,7 +41,7 @@ The [selected VICE wrap proof](../../../evidence/billie-jean-form/vice-wrap/trac
 
 The [private duration intervention](../../../evidence/billie-jean-form/edit128/receipt.json) changes the first pattern-1 header at `$1C08` from `$83` to `$82`, reducing duration from 3 to 2. Two 128-call source executions match the numeric score reads; the next physical-voice-1 note moves from call **14 to 11**, as the three-call divider predicts. [Complete cases](../../../evidence/billie-jean-form/edit128/cases.json.gz) retain reads and source stores. The original stays unchanged; this is a score-timing guard, not independently synthesized output or a modified full-form proof.
 
-Obtain the pinned asset, then copy the analysis tools into a fresh one-level directory below `build/` to preserve their repository-relative paths and local imports. Source and tool fingerprints remain enforced.
+The following commands describe the historical fresh capture at commit `37081db`, whose four shared-tool hashes match the frozen probe pins. Use that historical source/tool version when reproducing the capture; the archived probe intentionally rejects changed shared helpers. For a current-checkout retained-evidence recheck, use the portable recipe below. Obtain the pinned asset, then copy the historical analysis tools into a fresh one-level directory below `build/` to preserve their repository-relative paths and local imports. Do not rewrite frozen fingerprints to make a newer toolset pass.
 
 ```sh
 python3 scripts/setup-project.py --only references --include billie-jean
@@ -54,3 +54,25 @@ PYTHONPATH=.tools/test-deps python3 build/billie-jean-new/vice-wrap.py --output 
 ```
 
 To repeat only the VICE boundary check, pass `--ledger evidence/billie-jean-form/complete14274/writes.json.gz`; no CPU traversal is then rerun. Canonical analysis archives follow the [evidence workflow](../../workflows/build-cache.md). Source reads, rows, return hashes and stores are retained losslessly; original payloads, full RAM, whole instruction logs and raw monitor dumps are excluded. Sound-program interpretation, independent player/export, musical ending, rendering/listening and transfer remain pending.
+
+## Active delivery boundary
+
+The next deliverable is an editable independent reconstruction of the pinned SID arrangement, preserving its verified complete first traversal and separating any authored finite ending from the source loop. Existing score/form and VICE-wrap evidence remain valid for their stated scope. The blocking question is how the executed sound routines transform the score's note, instrument, glide and hold inputs into ordered SID stores; independently computed named-state transitions and isolated parameter interventions will settle that question. Do not repeat full-form source capture solely to relocate or recheck unchanged score logic.
+
+Modernize the retained score component into the study-tools folder with one executable owner for duration and flags: the row header. Keep source addresses as provenance and derive byte offsets from the encoded rows. Recheck retained reads, rows, returns and the existing duration intervention before integration. Once sound helpers and the score contract agree, advance directly to the complete numeric player, compiled export, matched reconstruction/ending audition and familiar-material transfer under the [delivery workflow](../../workflows/decoded-song-workflow.md#deliver-one-musical-case).
+
+No new sound or musical acceptance is implied by this preparation. Model assistance will be reviewed at the first representative audition, after feedback/revision and before closure under the [standing rule](../audio-assessment.md#use-and-reassess-model-assistance); existing models remain experimental supporting signals.
+
+## Portable score and automated retained-proof recheck
+
+The [current score module](../../../scripts/studies/billie-jean/billie_jean_score.py) and [portable score](../../../evidence/billie-jean-score/score.json) use `billie-jean-score-v1`. Each row’s `header` owns duration, note/rest kind and optional instrument/glide/hold flags. Payload fields must exactly match those flags; redundant editable `duration` and `kind` fields reject rather than silently ignoring an edit. `set_duration(row, value)` updates only the low five bits. Byte offsets and row kinds are derived by encoding; `sourceAddress` fields label observations without influencing scheduling. Named initial state and the global reset behavior remain explicit. The unique module name avoids collisions with another study’s helpers when tests run together.
+
+The [checker](../../../scripts/studies/billie-jean/check-score.py) verifies the local source fingerprint and canonical archive hashes, decodes the pinned source data without executing it, then independently re-expands the portable score. The [receipt](../../../evidence/billie-jean-score/receipt.json) matches all **20,343 reads, 3,110 completed rows and 14,274 return states**, both global wraps and both retained 128-call duration cases. Complete [computed reads](../../../evidence/billie-jean-score/reads.json.gz), [rows](../../../evidence/billie-jean-score/rows.json.gz) and [returns](../../../evidence/billie-jean-score/returns.json.gz) preserve the comparison. The additional row `command` field exposes the authoritative payload to sound integration; sound-owned gate/glide state is not copied back from a stale score snapshot.
+
+```sh
+python3 scripts/listening-package.py config/listening/billie-jean-score.json --output build/billie-jean-score-work
+python3 scripts/studies/billie-jean/check-score.py --check evidence/billie-jean-score/score.json
+python3 scripts/evidence.py verify --group billie-jean-score
+```
+
+The [two-stage recipe](../../../config/listening/billie-jean-score.json) combines [nine bounded guards](../../../evidence/billie-jean-score/guards.txt) with the retained proof. On 2026-10-14 its [executed recheck](../../../evidence/billie-jean-score/run-executed.json) took **2.51 seconds**, and the [unchanged cached repeat](../../../evidence/billie-jean-score/run-reused.json) took **0.05 seconds**. This is a fresh numeric data decode and retained-execution recheck, **not fresh CPU/VICE capture**, sound synthesis or listening acceptance. Historical traces and their tool pins remain untouched. The sound-program and independent-player stages are the next delivery gates.

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "score-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "billie_jean_score_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "tests/billie_jean_score_test.py",
+        "scripts/studies/billie-jean/billie_jean_score.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "retained-score-proof",
+      "command": [
+        "{python}",
+        "scripts/studies/billie-jean/check-score.py",
+        "--output",
+        "{out}/proof"
+      ],
+      "inputs": [
+        "scripts/studies/billie-jean/check-score.py",
+        "scripts/studies/billie-jean/billie_jean_score.py",
+        ".local/research/billie-jean/Billie_Jean.sid",
+        "evidence/billie-jean-form",
+        "evidence/manifest.json",
+        "scripts/evidence.py"
+      ],
+      "outputs": [
+        "proof/score.json",
+        "proof/receipt.json",
+        "proof/reads.json",
+        "proof/rows.json",
+        "proof/returns.json"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "portableScore": "{stage:retained-score-proof}/proof/score.json",
+    "scoreProof": "{stage:retained-score-proof}/proof/receipt.json"
+  }
+}
