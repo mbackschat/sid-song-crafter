@@ -14,4 +14,4 @@ Reproduction uses the [generation and trial commands](../../../../songs/studies/
 
 ## In-context adaptation
 
-The [Bach low-body kick trial](../../../../songs/studies/bach-toccata-groove-kick/README.md) adapts this original mechanism to sparse quarter accents, A2 → E2 → A1 with a longer low body, and release 4. It follows listener rejection of a thin repeated pitched accompaniment and compares against the preferred version with that part removed. This is an editable in-context experiment, not acceptance of either kick patch; the owning study retains execution and listening status.
+The [Bach low-body kick trial](../../../../songs/studies/bach-toccata-groove-kick/README.md) adapts this original mechanism to sparse quarter accents, A2 → E2 → A1 with a longer low body, and release 4. It follows listener rejection of a thin repeated pitched accompaniment and compares against the preferred version with that part removed. The listener reported no audible difference in that paired mix, so it establishes no audible usefulness or acceptance of either kick patch; the owning study retains execution, exact feedback and signal diagnosis.

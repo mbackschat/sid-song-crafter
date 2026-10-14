@@ -1,0 +1,395 @@
+{
+  "date": "2026-10-14",
+  "listenerVerdict": "There is no difference in both",
+  "scope": "Bounded diagnosis only; no new musical variant",
+  "publication": {
+    "files": [
+      {
+        "label": "preferredThenKick",
+        "filename": "preferred-then-kick.ab.wav",
+        "sha256": "2169742f5c5fecafe71b93a46b39bf5691fef1e754c638b3129e267063fb8b4b",
+        "matchesPublishedReceipt": true
+      },
+      {
+        "label": "preferredPassage",
+        "filename": "preferred-passage.wav",
+        "sha256": "bdd323c047309288f80989694fd584883a6967769ed19f3ff2c446e1bc4be364",
+        "matchesPublishedReceipt": true
+      },
+      {
+        "label": "kickPassage",
+        "filename": "kick-passage.wav",
+        "sha256": "e39a0b0d58b9307f2d46a27bcc846d0bbb8a6dc48937262a33bec9eb0eeeb41d",
+        "matchesPublishedReceipt": true
+      },
+      {
+        "label": "optionalKick",
+        "filename": "optional-kick-toccata.wav",
+        "sha256": "4ebe72e2d3531f6bedf610842605db01d967bfe2f799d9d853b2ea5d32f3acf2",
+        "matchesPublishedReceipt": true
+      }
+    ],
+    "comparisonSha256": "2169742f5c5fecafe71b93a46b39bf5691fef1e754c638b3129e267063fb8b4b",
+    "windowSeconds": [
+      30,
+      43.5
+    ],
+    "segments": [
+      {
+        "label": "A",
+        "startFrame": 0,
+        "endFrame": 595350
+      },
+      {
+        "label": "silence",
+        "startFrame": 595350,
+        "endFrame": 617400
+      },
+      {
+        "label": "B",
+        "startFrame": 617400,
+        "endFrame": 1212750
+      }
+    ],
+    "sampleRate": 44100,
+    "gapSeconds": 0.5,
+    "unityGain": true,
+    "distinctInputs": true,
+    "conclusion": "Current published files match their verified publication hashes. The retained comparison record specifies preferred subtraction as A and optional kick as B; no duplicate-input or publication mismatch was found.",
+    "segmentVerification": "Direct PCM byte comparison confirms A equals preferred-passage.wav, then 22050 zero-valued mono frames, then B equals kick-passage.wav; no trailing frames."
+  },
+  "mixedWindow": {
+    "preferred": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 595350,
+      "durationSeconds": 13.5,
+      "peak": 8357,
+      "peakDbfs": -11.867990655850882,
+      "clippedSamples": 0,
+      "rms": 2729.614679456029,
+      "acRms": 2729.5758910656864,
+      "acRmsDbfs": -21.587095227084824,
+      "perChannel": [
+        {
+          "dc": 14.551742672377593,
+          "rms": 2729.614679456029,
+          "acRms": 2729.5758910656864
+        }
+      ]
+    },
+    "kick": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 595350,
+      "durationSeconds": 13.5,
+      "peak": 11466,
+      "peakDbfs": -9.12075995042123,
+      "clippedSamples": 0,
+      "rms": 2753.6804310885473,
+      "acRms": 2753.495182260464,
+      "acRmsDbfs": -21.511312280375307,
+      "perChannel": [
+        {
+          "dc": 31.94053581926598,
+          "rms": 2753.6804310885473,
+          "acRms": 2753.495182260464
+        }
+      ]
+    },
+    "acRmsIncreaseDb": 0.07578294670951424,
+    "peakIncreaseDb": 2.7472307054296534
+  },
+  "alignment": {
+    "method": "Coarse integer-lag search over \u00b12200 samples in steps of 10; refine \u00b110 samples at full rate, minimizing mean squared PCM difference. Positive lag compares preferred[i] with kick[i+lag].",
+    "checks": [
+      {
+        "windowSeconds": [
+          0.2,
+          0.6
+        ],
+        "bestLagSamples": 0,
+        "rawAndAlignedRms": 0.0
+      },
+      {
+        "windowSeconds": [
+          9.1,
+          9.4
+        ],
+        "bestLagSamples": 0,
+        "rawAndAlignedRms": 139.935701
+      },
+      {
+        "windowSeconds": [
+          30.9,
+          31.04
+        ],
+        "bestLagSamples": 0,
+        "rawAndAlignedRms": 1.158272
+      },
+      {
+        "windowSeconds": [
+          44.2,
+          44.5
+        ],
+        "bestLagSamples": 0,
+        "rawAndAlignedRms": 337.684232
+      }
+    ],
+    "appliedLagSamples": 0,
+    "limitation": "Global sample alignment does not make mixed-render subtraction an isolated voice signal. Residual differences outside the kick bodies remain and their mechanism was not investigated further."
+  },
+  "voice3Diagnostic": {
+    "path": "build/bach-toccata-groove-kick-v1/voice3-diagnostic.wav",
+    "sha256": "11dc3cc8f0ac4e11c8cf16bbf966a460c5961c199177eda13373a46783571f22",
+    "command": [
+      ".local/bin/render-sid",
+      "/Users/mbackschat/Projects/c64-sid-skill/build/bach-toccata-groove-kick-v1/cache/candidate/1631cd88d3b7b651307371a99ae472e6e25e1a6660f25cbf8e71b3f8ace6a2eb/attempt-895f762440874ee19933c7f3d544df93/song/export/hybrid.sid",
+      "build/bach-toccata-groove-kick-v1/voice3-diagnostic.wav",
+      "44",
+      "--voices",
+      "3",
+      "--clock",
+      "pal",
+      "--subtune",
+      "1"
+    ],
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 1940400,
+    "durationSeconds": 44,
+    "passageWindowSeconds": [
+      30,
+      43.5
+    ],
+    "passageAcRms": 555.649,
+    "passageMean": 110.361,
+    "passagePeak": 3956,
+    "bodyAcRmsRange": [
+      1055.77,
+      1131.69
+    ],
+    "tailAcRmsRange": [
+      591.31,
+      683.32
+    ],
+    "betweenAcRms": 0.0,
+    "conclusion": "Actual synthesized voice-3 output is nonzero on every kick, with a lower-level tail and quiet AC intervals. A silent kick or completely failed envelope is not supported.",
+    "limitation": "Control-mask diagnostic, not output-only muting: unselected GATE/waveform/envelope/filter inputs change. It is not an exact extraction from the complete mix.",
+    "rendererSha256": "41faedda70286c0ed3ffa662a75cdc55685ce03e3d8e1d2ac3c3bc8da5359ec1",
+    "inputSidSha256": "bd104fb82c18c1f41a794ff5ff56a658d9de1b51835c2e38b5bc93a3d244fdb6"
+  },
+  "nativeEvidence": {
+    "kickCheckSha256": "3ad62f42c97b9d029e350a72d445183cf3d39320dacb0a4eb4cf011ec5f1e3fa",
+    "body": {
+      "hits": 14,
+      "triangleOnly": true,
+      "noiseSelected": false,
+      "initialPitchStages": [
+        "A2",
+        "E2"
+      ],
+      "gatedA1FramesEach": 6,
+      "bodySecondsEach": 0.11970176732043097,
+      "programGateOffAfterUpdates": 9,
+      "releaseNibble": 4,
+      "tailRetainsLowTriangle": true
+    },
+    "registerBoundary": {
+      "frames": 4419,
+      "bankBytes": 25,
+      "allowedOffsets": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "changedOffsets": [
+        14,
+        15,
+        18,
+        19,
+        20
+      ],
+      "changedFrames": 627,
+      "firstChangedFrame": 1559,
+      "lastChangedFrame": 2185,
+      "allOtherControlsEqual": true
+    },
+    "routing": "Existing CPU/VICE evidence retains bass-only filter routing and enabled direct voice 3; the kick uses triangle with no ring/sync/noise or filter program. Exact envelope level is not captured by post-call register snapshots."
+  },
+  "hitMeasurements": [
+    {
+      "hit": 0,
+      "sourceStartSeconds": 31.0975,
+      "mixedDeltaHitAcRms": 1545.08,
+      "mixedDeltaHitPeak": 11208,
+      "preferredHitRms": 2863.4,
+      "mixedDeltaBetweenAcRms": 1254.49,
+      "voice3DiagnosticBodyAcRms": 1091.95,
+      "voice3DiagnosticTailAcRms": 640.79,
+      "voice3DiagnosticBetweenAcRms": 0.0
+    },
+    {
+      "hit": 1,
+      "sourceStartSeconds": 31.8475,
+      "mixedDeltaHitAcRms": 1500.97,
+      "mixedDeltaHitPeak": 11911,
+      "preferredHitRms": 2899.4,
+      "mixedDeltaBetweenAcRms": 576.98,
+      "voice3DiagnosticBodyAcRms": 1131.69,
+      "voice3DiagnosticTailAcRms": 591.31,
+      "voice3DiagnosticBetweenAcRms": 0.0
+    },
+    {
+      "hit": 2,
+      "sourceStartSeconds": 32.5975,
+      "mixedDeltaHitAcRms": 1701.86,
+      "mixedDeltaHitPeak": 11870,
+      "preferredHitRms": 2918.7,
+      "mixedDeltaBetweenAcRms": 2.36,
+      "voice3DiagnosticBodyAcRms": 1096.25,
+      "voice3DiagnosticTailAcRms": 636.26,
+      "voice3DiagnosticBetweenAcRms": 0.0
+    },
+    {
+      "hit": 3,
+      "sourceStartSeconds": 33.3475,
+      "mixedDeltaHitAcRms": 1833.53,
+      "mixedDeltaHitPeak": 11439,
+      "preferredHitRms": 2939.2,
+      "mixedDeltaBetweenAcRms": 1381.37,
+      "voice3DiagnosticBodyAcRms": 1060.87,
+      "voice3DiagnosticTailAcRms": 677.66,
+      "voice3DiagnosticBetweenAcRms": 0.0
+    },
+    {
+      "hit": 4,
+      "sourceStartSeconds": 34.0975,
+      "mixedDeltaHitAcRms": 1579.5,
+      "mixedDeltaHitPeak": 10405,
+      "preferredHitRms": 2950.0,
+      "mixedDeltaBetweenAcRms": 863.15,
+      "voice3DiagnosticBodyAcRms": 1111.66,
+      "voice3DiagnosticTailAcRms": 617.68,
+      "voice3DiagnosticBetweenAcRms": 0.0
+    },
+    {
+      "hit": 5,
+      "sourceStartSeconds": 34.8475,
+      "mixedDeltaHitAcRms": 1800.95,
+      "mixedDeltaHitPeak": 10830,
+      "preferredHitRms": 2930.1,
+      "mixedDeltaBetweenAcRms": 291.63,
+      "voice3DiagnosticBodyAcRms": 1076.1,
+      "voice3DiagnosticTailAcRms": 660.83,
+      "voice3DiagnosticBetweenAcRms": 0.0
+    },
+    {
+      "hit": 6,
+      "sourceStartSeconds": 35.5975,
+      "mixedDeltaHitAcRms": 1430.77,
+      "mixedDeltaHitPeak": 11493,
+      "preferredHitRms": 2937.5,
+      "mixedDeltaBetweenAcRms": 152.67,
+      "voice3DiagnosticBodyAcRms": 1124.18,
+      "voice3DiagnosticTailAcRms": 601.23,
+      "voice3DiagnosticBetweenAcRms": 0.0
+    },
+    {
+      "hit": 7,
+      "sourceStartSeconds": 36.3475,
+      "mixedDeltaHitAcRms": 1307.42,
+      "mixedDeltaHitPeak": 10817,
+      "preferredHitRms": 2842.9,
+      "mixedDeltaBetweenAcRms": 735.35,
+      "voice3DiagnosticBodyAcRms": 1088.14,
+      "voice3DiagnosticTailAcRms": 645.5,
+      "voice3DiagnosticBetweenAcRms": 0.0
+    },
+    {
+      "hit": 8,
+      "sourceStartSeconds": 37.0975,
+      "mixedDeltaHitAcRms": 1320.64,
+      "mixedDeltaHitPeak": 10413,
+      "preferredHitRms": 3067.0,
+      "mixedDeltaBetweenAcRms": 4.47,
+      "voice3DiagnosticBodyAcRms": 1127.31,
+      "voice3DiagnosticTailAcRms": 596.69,
+      "voice3DiagnosticBetweenAcRms": 0.0
+    },
+    {
+      "hit": 9,
+      "sourceStartSeconds": 37.8475,
+      "mixedDeltaHitAcRms": 1218.9,
+      "mixedDeltaHitPeak": 11718,
+      "preferredHitRms": 2882.2,
+      "mixedDeltaBetweenAcRms": 142.46,
+      "voice3DiagnosticBodyAcRms": 1090.81,
+      "voice3DiagnosticTailAcRms": 641.28,
+      "voice3DiagnosticBetweenAcRms": 0.0
+    },
+    {
+      "hit": 10,
+      "sourceStartSeconds": 38.5975,
+      "mixedDeltaHitAcRms": 1491.25,
+      "mixedDeltaHitPeak": 10832,
+      "preferredHitRms": 3069.7,
+      "mixedDeltaBetweenAcRms": 1251.34,
+      "voice3DiagnosticBodyAcRms": 1055.77,
+      "voice3DiagnosticTailAcRms": 683.32,
+      "voice3DiagnosticBetweenAcRms": 0.0
+    },
+    {
+      "hit": 11,
+      "sourceStartSeconds": 39.3475,
+      "mixedDeltaHitAcRms": 1422.61,
+      "mixedDeltaHitPeak": 9458,
+      "preferredHitRms": 2519.8,
+      "mixedDeltaBetweenAcRms": 742.57,
+      "voice3DiagnosticBodyAcRms": 1091.16,
+      "voice3DiagnosticTailAcRms": 640.81,
+      "voice3DiagnosticBetweenAcRms": 0.0
+    },
+    {
+      "hit": 12,
+      "sourceStartSeconds": 40.0975,
+      "mixedDeltaHitAcRms": 1293.95,
+      "mixedDeltaHitPeak": 11722,
+      "preferredHitRms": 2921.8,
+      "mixedDeltaBetweenAcRms": 735.22,
+      "voice3DiagnosticBodyAcRms": 1055.97,
+      "voice3DiagnosticTailAcRms": 682.45,
+      "voice3DiagnosticBetweenAcRms": 0.0
+    },
+    {
+      "hit": 13,
+      "sourceStartSeconds": 40.8475,
+      "mixedDeltaHitAcRms": 1277.44,
+      "mixedDeltaHitPeak": 11731,
+      "preferredHitRms": 3001.2,
+      "mixedDeltaBetweenAcRms": 3.09,
+      "voice3DiagnosticBodyAcRms": 1095.71,
+      "voice3DiagnosticTailAcRms": 636.57,
+      "voice3DiagnosticBetweenAcRms": 0.0
+    }
+  ],
+  "reproduction": {
+    "readers": "scripts/audio_comparison.py read_pcm16 and measure_pcm; standard-library array/wave/math for indexed windows.",
+    "sampleUnits": "Signed PCM16 amplitude units; RMS is sqrt(mean(square(x - mean(x)))) for AC, and sqrt(mean(square(x))) for uncentered reference RMS. Peaks are maximum absolute sample values.",
+    "windows": "For hit start t=31.0975+0.75*i, mixed hit=[t,t+0.35], mixed between=[t+0.4,t+0.7]; diagnostic body=[t+0.06,t+0.18], tail=[t+0.18,t+0.35], between=[t+0.4,t+0.7]. Slice sample indices with round(seconds*44100). Mixed residual is kick-preferred at the applied lag 0.",
+    "frequencyScope": "Approximately 55 Hz gated body is established by the retained register/frequency guard. No spectral low-band power measurement was made; NumPy/SciPy were unavailable and the bounded diagnosis did not add a new spectral tool."
+  },
+  "interpretation": "Publication is correct and the kick synthesizes measurable body/tail output, yet the listener reports no audible distinction or benefit in this mix. Masking, playback bass response, tone similarity and rhythmic salience remain possible explanations, not established causes. Keep the preferred no-kick passage; do not promote this optional patch.",
+  "limits": [
+    "Mixed PCM residual is not a guaranteed isolated kick signal, especially where between-hit or outside-window residual remains.",
+    "The diagnostic confirms nonzero synthesis, not perceptual audibility on the listener\u2019s playback equipment.",
+    "Measured total-window RMS increase is not a loudness or musical-quality verdict.",
+    "No exact internal envelope trajectory, psychoacoustic masking, hardware equivalence or low-band spectral power is established."
+  ]
+}
