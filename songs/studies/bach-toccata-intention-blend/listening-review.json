@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-14",
+  "verdict": "rejected",
+  "file": "build/bach-intention-blend-listening/intention-blend.wav",
+  "sha256": "a5ba244d71d4833071dfb2dc9fe7003448bafe2f8e970766a2aec105c742c7c3",
+  "listenerFeedback": "the blend is not good, the most obvious difference to the accepted one is an odd background sound, e.g. at 2:37s to 2:40s that get repeated",
+  "timingClarification": "Listener explicitly refers to the standalone intention-blend.wav, not the concatenated A/B. Interpreted as 2.37–2.40 seconds within its 15.50-second duration.",
+  "identifiedGesture": {
+    "instrument": "pulse-answer",
+    "voice": 3,
+    "scoreStartSeconds": 2.34,
+    "scoreEndSeconds": 2.54,
+    "pitches": [
+      "D5",
+      "A5",
+      "D5"
+    ],
+    "laterOccurrence": {
+      "scoreStartSeconds": 4.64,
+      "scoreEndSeconds": 4.84,
+      "pitches": [
+        "D4",
+        "A4",
+        "D4"
+      ]
+    }
+  },
+  "scope": "Rejects this blend. Accepted baseline and the broader aim of blending musical intentions remain valid. No separate listener verdict for each of the other two gestures.",
+  "designInference": "Adding independent pitched replies in silent slots did not produce the intended integrated electronic character. Do not infer that any unused voice slot needs filling, or that consonant pitch classes establish musical fit.",
+  "nextDesignRecommendation": "Return to the accepted opening and test one integrated change to an existing lead attack/body or transition, without repeated background replies. Treat this as a hypothesis requiring a new paired audition.",
+  "modelAssistanceReview": {
+    "decision": "skip unvalidated audio-model inference",
+    "reason": "Explicit localized human rejection and retained executed gesture frames identify the added part; model preference scoring would not override or resolve that verdict.",
+    "nextCheckpoint": "Before a revised paired audition and after its feedback."
+  }
+}
