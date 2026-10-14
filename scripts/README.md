@@ -6,6 +6,7 @@ Choose tools by their supported contract. A song or composer name does not itsel
 
 - [Listening packages](../docs/workflows/listening-package.md): recipe execution, verified stage reuse, timings, signal checks and audio links; [publish-listening.py](publish-listening.py) copies explicitly selected verified WAVs into a fresh local audition folder.
 - [Reference intake](../docs/workflows/reference-intake.md): explicit source/subtune selection, execution admission, bounded traces/renders and source comparisons through the same recipe runner.
+- [Exact STIL entry extraction](../docs/workflows/reference-intake.md#pin-the-exact-stil-entry): [inspect-stil.py](inspect-stil.py) preserves one entry's bytes and records hashes without confusing comment cross-references with entry headers.
 - [Song workflow](../docs/workflows/song-workflow.md) and [native SID-Wizard workflow](../docs/workflows/native-song-workflow.md): editable arrangement, export and verification.
 - [Regional native export targets](../docs/workflows/native-song-workflow.md#regional-export-targets): [sid_clock.py](sid_clock.py) owns the PAL and 263-line NTSC clock/frame definitions used by conversion, export and verification.
 - [Controlled native register changes](../docs/workflows/native-song-workflow.md#check-a-controlled-register-change): [native_frame_comparison.py](native_frame_comparison.py) enforces explicit changed-register boundaries between same-score post-call captures.

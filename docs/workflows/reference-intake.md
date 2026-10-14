@@ -16,6 +16,18 @@ The [Rambo subtune spec](../../config/reference-intake/rambo-subtunes.json) chec
 
 Open the selected output's `listening.md` for both complete **bounded renders**, source receipts and the sourceA-then-sourceB clip. “Complete bounded render” means all requested seconds, not a complete song. `run.json` retains stage outcomes, durations, input/output fingerprints and reuse. Run the same command again to reuse verified stages; changed sources, dependencies, settings or outputs invalidate affected stages. Missing sources produce an acquisition instruction; the intake runner performs no networking or source-header modification.
 
+## Pin the exact STIL entry
+
+Use [inspect-stil.py](../../scripts/inspect-stil.py) when interpreting tune or subtune credits from a locally retained STIL database:
+
+```sh
+python3 scripts/inspect-stil.py --stil .local/downloads/HVSC-STIL.txt --entry MUSICIANS/H/Hubbard_Rob/Commando.sid --output build/commando-stil-entry
+```
+
+The output directory must be fresh and inside ignored `build/`. `entry.txt` preserves the original bytes and line endings; `receipt.json` pins the database and entry hashes, byte counts and line bounds. Match a complete entry header: a substring search can select another tune's comment that merely mentions this path. Reading bytes also avoids assuming UTF-8 for older database text. Missing or duplicate headers fail explicitly.
+
+Interpret the selected subtune's credits separately from the C64 arranger and from other subtunes. The extractor identifies the source entry; it does not resolve attribution or verify STIL timestamps against playback. Keep the database and extracted text local, and retain source URLs, hashes and a scoped paraphrase in the study.
+
 ## Specification contract
 
 Specs require `schemaVersion: 1`, one or two ordered `selections`, one to eight `windows`, and an optional `gapSeconds` from 0 to 60, default 0.5. Each selection requires a registered `assetId`, a source-only `role`, an explicit one-based `subtune`, `route` and `renderSeconds`. Render duration must be positive and at most 600 seconds. Roles record the intake decision; archive metadata and published accounts must establish a subtune's musical identity independently.
