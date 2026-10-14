@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "method": "complete inputs in sequence; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-integrated-motion/cache/comparison/b8862de386a9b134316c641001ac29d07eea2ad27d3098ce9173dd266b16f669/attempt-15bebafcf68340688076b35329b0f613/accepted-then-candidate.ab.wav",
+    "frames": 1389490,
+    "durationSeconds": 31.507709750566892,
+    "sha256": "4d7ba3fc0878b626e99af113977b4d1763ad309bcdd303b830f6c9c21c54d9ce"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 683720
+    },
+    {
+      "label": "silence",
+      "startFrame": 683720,
+      "endFrame": 705770
+    },
+    {
+      "label": "B",
+      "startFrame": 705770,
+      "endFrame": 1389490
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-integrated-motion/cache/accepted/b620271d2385bf58b24c1bb23b834f3b677eae6d81143083b59f8021037bdc8f/attempt-4ba2fa061d91433b8e8a757f3f1e6984/song/native-song.wav",
+      "sha256": "62ebf90fc8fa531f016bbcdad4236c01958a5e83d827e0a56efdab330e991b04",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 683720,
+        "durationSeconds": 15.503854875283446,
+        "peak": 11557,
+        "peakDbfs": -9.05209643365335,
+        "clippedSamples": 0,
+        "rms": 2914.039310188461,
+        "acRms": 2881.82207825156,
+        "acRmsDbfs": -21.11565541404037,
+        "perChannel": [
+          {
+            "dc": -432.1187459778857,
+            "rms": 2914.039310188461,
+            "acRms": 2881.82207825156
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-integrated-motion/cache/candidate/de8c10f93585dbacb720e29ba2ef38562dec51abbc90f14b39ea7f9f59d167b5/attempt-14ca6933ebf64ea48198565d162bdcd9/song/native-song.wav",
+      "sha256": "3d586854c2bccbcc45f28f7e11a84f705522fe12d7859489b1b7644ac38185a4",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 683720,
+        "durationSeconds": 15.503854875283446,
+        "peak": 10627,
+        "peakDbfs": -9.780785087618879,
+        "clippedSamples": 0,
+        "rms": 2876.2796241527576,
+        "acRms": 2867.7151296520096,
+        "acRmsDbfs": -21.158278547039625,
+        "perChannel": [
+          {
+            "dc": -221.79813227637044,
+            "rms": 2876.2796241527576,
+            "acRms": 2867.7151296520096
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

@@ -1,0 +1,172 @@
+{
+  "date": "2026-10-14",
+  "evidenceLevel": "original sound-program candidate; listening pending",
+  "creativeBasis": "Accepted Bach inputs and written intentions only; no Gyruss binary, traces, notes, audio or program was consulted for this design.",
+  "creativeBrief": "Preserve accepted Bach gestures, harmonic weight and pacing; put electronic animation inside the existing lead, without extra pitched replies.",
+  "acceptedBaseline": {
+    "score.json": {
+      "path": "../bach-toccata-opening-driven/score.json",
+      "sha256": "e839172df042f71932b0eddf2fb9d750c4e066aee2fc13a13d86ef72ea1fa009"
+    },
+    "hybrid.json": {
+      "path": "../bach-toccata-opening-driven/hybrid.json",
+      "sha256": "0845d3d9c935b2256208be4bc1517ea94625a66eecc8f9e4f9a74b26dd862d08"
+    },
+    "preparation.json": {
+      "path": "../bach-toccata-opening-driven/preparation.json",
+      "sha256": "5e381aa857cf2aa77eb741c37d7e48cf53ff9d395c3efbe4f1ac7e0457b1de9d"
+    }
+  },
+  "scope": {
+    "score": "byte-identical accepted score",
+    "noteCounts": [
+      21,
+      20,
+      4
+    ],
+    "changedField": "instruments.lead.pulse",
+    "unchanged": [
+      "lead pitch and waveform",
+      "lead ADSR",
+      "all bass and harmony programs",
+      "filter ownership and program",
+      "note onsets and durations",
+      "12-second form and 125-tick release tail"
+    ],
+    "sourceMapping": "../bach-toccata-opening-driven/preparation.json"
+  },
+  "pulseProgram": {
+    "startWidth": 1024,
+    "onset": {
+      "deltaPerExecution": 64,
+      "executions": 16,
+      "endWidth": 2048
+    },
+    "body": [
+      {
+        "deltaPerExecution": -24,
+        "executions": 32,
+        "endWidth": 1280
+      },
+      {
+        "deltaPerExecution": 24,
+        "executions": 32,
+        "endWidth": 2048
+      }
+    ],
+    "jumpTargetRow": 2,
+    "widthRange": [
+      1024,
+      2048
+    ],
+    "reset": "Each existing explicit lead note starts its instrument; body begins on startTick + 1 after TEST frame.",
+    "nativeTiming": "Extra adds one unchanged-width call when advancing each sweep row; the jump also consumes an unchanged-width call.",
+    "oracle": {
+      "firstBodyTickOffset": 1,
+      "onsetWidths": [
+        1024,
+        1088,
+        1152,
+        1216,
+        1280,
+        1344,
+        1408,
+        1472,
+        1536,
+        1600,
+        1664,
+        1728,
+        1792,
+        1856,
+        1920,
+        1984,
+        2048,
+        2048
+      ],
+      "repeatingBodyWidths": [
+        2024,
+        2000,
+        1976,
+        1952,
+        1928,
+        1904,
+        1880,
+        1856,
+        1832,
+        1808,
+        1784,
+        1760,
+        1736,
+        1712,
+        1688,
+        1664,
+        1640,
+        1616,
+        1592,
+        1568,
+        1544,
+        1520,
+        1496,
+        1472,
+        1448,
+        1424,
+        1400,
+        1376,
+        1352,
+        1328,
+        1304,
+        1280,
+        1280,
+        1304,
+        1328,
+        1352,
+        1376,
+        1400,
+        1424,
+        1448,
+        1472,
+        1496,
+        1520,
+        1544,
+        1568,
+        1592,
+        1616,
+        1640,
+        1664,
+        1688,
+        1712,
+        1736,
+        1760,
+        1784,
+        1808,
+        1832,
+        1856,
+        1880,
+        1904,
+        1928,
+        1952,
+        1976,
+        2000,
+        2024,
+        2048,
+        2048,
+        2048
+      ]
+    },
+    "basis": ".tools/sid-wizard-1.97/native/sources/include/player.asm SETPWID/PWSWEEP/PWADVAN/PWTJUMP; original authored parameters, not copied arithmetic."
+  },
+  "target": {
+    "sidCount": 1,
+    "sidModel": "MOS8580",
+    "clock": "PAL",
+    "concertAHz": 440,
+    "timingPolicy": "retain-full-pitch"
+  },
+  "listeningQuestion": "Does motion within the existing lead make this opening feel more electronic and alive while retaining its accepted weight and gestures?",
+  "modelAssistanceReview": {
+    "date": "2026-10-14",
+    "decision": "skip audio-model inference",
+    "reason": "The unresolved question is musical preference; no validated model criterion settles this revision.",
+    "nextCheckpoint": "Human paired audition feedback"
+  }
+}

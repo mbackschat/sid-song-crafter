@@ -32,6 +32,16 @@ The audit requires exact ordered cell consumption and discrete note starts on ev
 
 The complete render must be PCM16 at 44100 Hz with the exact requested frame count: mono for one SID, stereo for two. Each chip channel must have nonzero AC energy and a quiet final half-second; no sample may reach the PCM rails. Stereo maps SID1 left and SID2 right without crossfeed, as specified by [the renderer contract](audio-workflow.md). The renderer command, executable SHA-256, stdout, stderr and exit/timeout result are retained in `.render.json` before PCM guards run. Raw CPU evidence is retained before schedule guards run, so a rejected schedule remains diagnosable; `.schedule.json` and the final `verification.json` appear only after their respective guards pass. Both the audit subprocess and renderer have 120-second wall-clock deadlines; each CPU play call must separately fit one PAL frame's cycle budget. Audit duration follows the converted complete song plus a verification tail, rather than a short acceptance excerpt. Excerpt options must be finite and fit inside the planned full render; the workflow does not silently shorten the requested excerpt.
 
+## Check a controlled register change
+
+For same-score sound experiments, [native_frame_comparison.py](../../scripts/native_frame_comparison.py) verifies that a nonempty pair of complete post-call captures differs only at explicitly allowed offsets. This automates the repeated intervention check; it does not establish musical improvement or ordered bus-write equality.
+
+```sh
+python3 scripts/native_frame_comparison.py build/reference/native-song.frames.json build/candidate/native-song.frames.json --allow-offset 2 --allow-offset 3 --output build/intervention.json
+```
+
+Offsets 2 and 3 select the first voice's pulse width. Native captures concatenate 25 sound-control bytes per SID, so second-chip offsets begin at 25, not the physical address gap. The checker rejects empty/malformed captures, unequal lengths, any unexpected register change, and an entirely unchanged candidate. It records input hashes and change counts. Use fresh output paths and declare both captures plus the checker as recipe inputs. Schedule, pitch-program and PCM checks remain separate.
+
 ## Evidence limits
 
 Decoded source notes and their scheduling do not by themselves prove exact audible onset pitch or ADSR reattack. SID-Wizard's first-frame and fast-row behaviour can differ from the baseline player's articulation, especially for adjacent short notes. Retain the conversion's explicit timing/articulation changes and the native instrument definitions alongside the evidence; see [the native Für Elise candidate](../songs/fuer-elise-native.md) for its concrete arrangement decisions and limitations.
