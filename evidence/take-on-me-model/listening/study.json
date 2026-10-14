@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "c7e45037d20c3b85d18fc955a1cdfb70041f08dfc171e9b12d1c3327300101e6",
+  "declaredModel": "unknown",
+  "selectedSubtune": 1,
+  "clock": "PAL",
+  "renderModels": [
+    "MOS6581",
+    "MOS8580"
+  ],
+  "library": "libsidplayfp 3.1.1 / SIDLite",
+  "sourceUnchanged": true,
+  "snapshotStreamsEqual": true,
+  "auditionWindowSeconds": [
+    16,
+    24
+  ],
+  "windowReason": "All three voice controls participate and routed cutoff changes appear in renderer snapshots, unlike the sparse opening.",
+  "snapshotObservations": {
+    "controls": [
+      [
+        9,
+        16,
+        64,
+        65,
+        129
+      ],
+      [
+        32,
+        33
+      ],
+      [
+        0,
+        64,
+        65
+      ]
+    ],
+    "cutoffHigh": [
+      80,
+      96,
+      112,
+      128,
+      144,
+      160,
+      176,
+      192,
+      248
+    ],
+    "resonanceRouting": [
+      241
+    ]
+  },
+  "listeningReview": null,
+  "modelAssistanceReview": {
+    "checkpoint": "first representative Take On Me audition",
+    "decision": "No hosted call",
+    "reason": "Current calibration does not qualify paired chip-model preference or subtle timbre judgment; source-model uncertainty must remain explicit.",
+    "nextReview": "after listener feedback or first independent reconstruction audition"
+  },
+  "limits": "Source renders under explicit assumptions, not independent reconstruction or historical chip identification. Renderer snapshots omit intervening stores and do not prove instruction timing. No perceptual preference inferred."
+}

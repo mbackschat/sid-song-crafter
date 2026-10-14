@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    16.0,
+    24.0
+  ],
+  "window": {
+    "startFrame": 705600,
+    "endFrame": 1058400,
+    "frames": 352800,
+    "startSeconds": 16.0,
+    "endSeconds": 24.0,
+    "durationSeconds": 8.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-model-listening-work/cache/model-comparison/1904f48ad528da90bd4d3e53bde45269f38870fd7ad310e1a77c73e8884b7918/attempt-8a6ef2ffbc7a4b63a4448f431d47b570/mos6581-then-mos8580-16to24s.ab.wav",
+    "frames": 727650,
+    "durationSeconds": 16.5,
+    "sha256": "79ee1a87ebd2300432cbce71421516eb05ec8783e9f3dccc93070123a6f76ba5"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 352800
+    },
+    {
+      "label": "silence",
+      "startFrame": 352800,
+      "endFrame": 374850
+    },
+    {
+      "label": "B",
+      "startFrame": 374850,
+      "endFrame": 727650
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-model-listening-work/cache/render-6581/9ddf6b915e6d87fa4cd6d3d10c2f01c7c10dba51693b6d5c58980afa21421e34/attempt-3031107cefd94a4390492caa2a4bc666/reference.wav",
+      "sha256": "275c2ce9fbce059f870b940e1c50c3e4a0e5ee81b24a0942dc9add0f5d48f702",
+      "originalFrames": 1411200,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 352800,
+        "durationSeconds": 8.0,
+        "peak": 13253,
+        "peakDbfs": -7.862714739818233,
+        "clippedSamples": 0,
+        "rms": 2324.951220323146,
+        "acRms": 2186.823420132628,
+        "acRmsDbfs": -23.512724371391673,
+        "perChannel": [
+          {
+            "dc": -789.4311281179139,
+            "rms": 2324.951220323146,
+            "acRms": 2186.823420132628
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-model-listening-work/cache/render-8580/38c1a16f75451455bf068a3950f08e0e9cd3830cb391ed66449a9873950d7ac4/attempt-9c758cbe8b3f4ddb86ab54da53e69e8d/reference.wav",
+      "sha256": "8e49e57f1bd635f34c47e37314e1264d7d604de78c2ce26f15d54574db29b5e3",
+      "originalFrames": 1411200,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 352800,
+        "durationSeconds": 8.0,
+        "peak": 14403,
+        "peakDbfs": -7.139939485417795,
+        "clippedSamples": 0,
+        "rms": 2305.0315706682222,
+        "acRms": 2173.0600424577847,
+        "acRmsDbfs": -23.567564175104657,
+        "perChannel": [
+          {
+            "dc": -768.7526218820861,
+            "rms": 2305.0315706682222,
+            "acRms": 2173.0600424577847
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

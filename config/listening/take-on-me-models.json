@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "source-pin",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "asset",
+        ".local/research/take-on-me/Take_on_Me.sid",
+        "--sha256",
+        "c7e45037d20c3b85d18fc955a1cdfb70041f08dfc171e9b12d1c3327300101e6",
+        "--output",
+        "{out}/source.json"
+      ],
+      "inputs": [
+        ".local/research/take-on-me/Take_on_Me.sid",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "source.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "render-6581",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/take-on-me/Take_on_Me.sid",
+        "{out}/reference.wav",
+        "32",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1",
+        "--assume-sid-model",
+        "MOS6581"
+      ],
+      "inputs": [
+        ".local/research/take-on-me/Take_on_Me.sid",
+        "{stage:source-pin}/source.json",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "reference.wav",
+        "reference.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "render-8580",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/take-on-me/Take_on_Me.sid",
+        "{out}/reference.wav",
+        "32",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1",
+        "--assume-sid-model",
+        "MOS8580"
+      ],
+      "inputs": [
+        ".local/research/take-on-me/Take_on_Me.sid",
+        "{stage:source-pin}/source.json",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "reference.wav",
+        "reference.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:render-6581}/reference.wav",
+        "{stage:render-8580}/reference.wav",
+        "--seconds",
+        "32",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py",
+        "{stage:render-6581}/reference.wav",
+        "{stage:render-8580}/reference.wav"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "model-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:render-6581}/reference.wav",
+        "{stage:render-8580}/reference.wav",
+        "{out}/mos6581-then-mos8580-16to24s",
+        "--start-seconds",
+        "16",
+        "--end-seconds",
+        "24",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:render-6581}/reference.wav",
+        "{stage:render-8580}/reference.wav"
+      ],
+      "outputs": [
+        "mos6581-then-mos8580-16to24s.ab.wav",
+        "mos6581-then-mos8580-16to24s.comparison.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "sourcePin": "{stage:source-pin}/source.json",
+    "sourceAssumingMOS6581First32Seconds": "{stage:render-6581}/reference.wav",
+    "sourceAssumingMOS8580First32Seconds": "{stage:render-8580}/reference.wav",
+    "signalCheck": "{stage:signal-check}/audio.json",
+    "MOS6581ThenMOS8580From16to24Seconds": "{stage:model-comparison}/mos6581-then-mos8580-16to24s.ab.wav"
+  }
+}

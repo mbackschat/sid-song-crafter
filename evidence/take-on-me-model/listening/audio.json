@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "check": "audio",
+  "passed": true,
+  "requestedSeconds": 32.0,
+  "expectedFrames": 1411200,
+  "expectedSampleRate": 44100,
+  "expectedChannels": 1,
+  "durationRule": "round(seconds * sampleRate) sample frames",
+  "inputs": [
+    {
+      "label": "reference",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-model-listening-work/cache/render-6581/9ddf6b915e6d87fa4cd6d3d10c2f01c7c10dba51693b6d5c58980afa21421e34/attempt-3031107cefd94a4390492caa2a4bc666/reference.wav",
+      "sha256": "275c2ce9fbce059f870b940e1c50c3e4a0e5ee81b24a0942dc9add0f5d48f702",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1411200,
+      "durationSeconds": 32.0,
+      "peak": 13253,
+      "peakDbfs": -7.862714739818233,
+      "clippedSamples": 0,
+      "rms": 1925.8687128261518,
+      "acRms": 1891.2808841542972,
+      "acRmsDbfs": -24.773878038957868,
+      "perChannel": [
+        {
+          "dc": -363.35508290816324,
+          "rms": 1925.8687128261518,
+          "acRms": 1891.2808841542972
+        }
+      ]
+    },
+    {
+      "label": "candidate",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/take-on-me-model-listening-work/cache/render-8580/38c1a16f75451455bf068a3950f08e0e9cd3830cb391ed66449a9873950d7ac4/attempt-9c758cbe8b3f4ddb86ab54da53e69e8d/reference.wav",
+      "sha256": "8e49e57f1bd635f34c47e37314e1264d7d604de78c2ce26f15d54574db29b5e3",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1411200,
+      "durationSeconds": 32.0,
+      "peak": 14403,
+      "peakDbfs": -7.139939485417795,
+      "clippedSamples": 0,
+      "rms": 1908.5104177853495,
+      "acRms": 1875.7001348771985,
+      "acRmsDbfs": -24.845730506365467,
+      "perChannel": [
+        {
+          "dc": -352.3648944160998,
+          "rms": 1908.5104177853495,
+          "acRms": 1875.7001348771985
+        }
+      ]
+    }
+  ],
+  "claims": {
+    "pcmIdentity": false,
+    "perceptualAgreement": false
+  }
+}

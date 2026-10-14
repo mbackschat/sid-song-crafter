@@ -1,4 +1,5 @@
 #include <sidplayfp/SidConfig.h>
+#include <sidplayfp/SidInfo.h>
 #include <sidplayfp/SidTune.h>
 #include <sidplayfp/SidTuneInfo.h>
 #include <sidplayfp/builders/sidlite.h>
@@ -26,7 +27,7 @@ static void write_u32(std::ostream &output, uint32_t value) {
     write_u16(output, value >> 16);
 }
 
-static bool has_dual_sid_header(const char *path, SidConfig::c64_model_t render_clock) {
+static bool has_dual_sid_header(const char *path, SidConfig::c64_model_t render_clock, bool model_assumption) {
     std::ifstream input(path, std::ios::binary);
     if (!input) throw std::runtime_error("Unable to open the SID input");
     std::array<unsigned char, 124> header{};
@@ -35,6 +36,9 @@ static bool has_dual_sid_header(const char *path, SidConfig::c64_model_t render_
         || std::string(reinterpret_cast<char *>(header.data()), 4) == "RSID";
     const unsigned int version = header[4] << 8 | header[5];
     if (!sid_header || input.gcount() < 124 || version < 2) return false;
+    if (model_assumption && (header[122] != 0 || header[123] != 0)) {
+        throw std::runtime_error("SID model assumption requires one SID chip");
+    }
     if (header[123] != 0) throw std::runtime_error("This renderer supports one or two SID chips");
     if (header[122] == 0) return false;
     // PSID parsers may discard invalid extra-SID addresses; validate the original declaration before loading.
@@ -86,19 +90,31 @@ static unsigned int selected_subtune(const std::string &value) {
     return song;
 }
 
-enum class RenderOption { Voices, Subtune, Clock };
+static const char *sid_model_name(SidTuneInfo::model_t model) {
+    switch (model) {
+        case SidTuneInfo::SIDMODEL_6581: return "MOS6581";
+        case SidTuneInfo::SIDMODEL_8580: return "MOS8580";
+        case SidTuneInfo::SIDMODEL_ANY: return "any";
+        case SidTuneInfo::SIDMODEL_UNKNOWN: return "unknown";
+    }
+    throw std::runtime_error("Unsupported SID model");
+}
+
+enum class RenderOption { Voices, Subtune, Clock, SidModelAssumption };
 
 struct RenderOptions {
     bool voice_diagnostic = false;
     bool explicit_subtune = false;
     bool explicit_clock = false;
+    bool explicit_sid_model = false;
     unsigned int subtune = 0;
     SidConfig::c64_model_t clock = SidConfig::PAL;
+    SidConfig::sid_model_t assumed_sid_model = SidConfig::MOS8580;
     std::array<bool, 3> voices{true, true, true};
 };
 
 static RenderOptions parse_options(int argc, char **argv) {
-    if (argc < 4) throw std::runtime_error("Usage: render-sid INPUT.sid OUTPUT.wav SECONDS [--voices 1,2,3|none] [--subtune N] [--clock pal|ntsc] (default PAL, 0 < seconds <= 600; subtune is one-based; voices is a one-SID control-mask diagnostic)");
+    if (argc < 4) throw std::runtime_error("Usage: render-sid INPUT.sid OUTPUT.wav SECONDS [--voices 1,2,3|none] [--subtune N] [--clock pal|ntsc] [--assume-sid-model MOS6581|MOS8580] (default PAL, 0 < seconds <= 600; subtune is one-based; voices is a one-SID control-mask diagnostic; model assumption requires an unknown-model one-SID input)");
     RenderOptions options;
     for (int index = 4; index < argc; index += 2) {
         const std::string name = argv[index];
@@ -106,6 +122,7 @@ static RenderOptions parse_options(int argc, char **argv) {
         if (name == "--voices") option = RenderOption::Voices;
         else if (name == "--subtune") option = RenderOption::Subtune;
         else if (name == "--clock") option = RenderOption::Clock;
+        else if (name == "--assume-sid-model") option = RenderOption::SidModelAssumption;
         else throw std::runtime_error("Unknown renderer option: " + name);
         if (index + 1 == argc) throw std::runtime_error("Renderer option requires a value: " + name);
         switch (option) {
@@ -128,6 +145,15 @@ static RenderOptions parse_options(int argc, char **argv) {
                 options.explicit_clock = true;
                 break;
             }
+            case RenderOption::SidModelAssumption: {
+                if (options.explicit_sid_model) throw std::runtime_error("Duplicate --assume-sid-model option");
+                const std::string model = argv[index + 1];
+                if (model == "MOS6581") options.assumed_sid_model = SidConfig::MOS6581;
+                else if (model == "MOS8580") options.assumed_sid_model = SidConfig::MOS8580;
+                else throw std::runtime_error("Assumed SID model must be MOS6581 or MOS8580");
+                options.explicit_sid_model = true;
+                break;
+            }
         }
     }
     return options;
@@ -146,7 +172,7 @@ int main(int argc, char **argv) {
         constexpr unsigned int batch_size = 19656;
         const uint32_t frame_count = std::max(1L, std::lround(seconds * rate));
         SIDLiteBuilder builder("SIDLite");
-        const bool declared_dual = has_dual_sid_header(argv[1], options.clock);
+        const bool declared_dual = has_dual_sid_header(argv[1], options.clock, options.explicit_sid_model);
         SidTune tune(argv[1]);
         if (!tune.getStatus()) throw std::runtime_error(tune.statusString());
         // SidTune starts unselected; psiddrv passes currentSong()-1 to init (libsidplayfp v3.1.1 src/psiddrv.cpp).
@@ -157,6 +183,12 @@ int main(int argc, char **argv) {
         const SidTuneInfo *tune_info = tune.getInfo();
         const SidTuneInfo::clock_t selected_clock = options.clock == SidConfig::PAL ? SidTuneInfo::CLOCK_PAL : SidTuneInfo::CLOCK_NTSC;
         const unsigned int sid_count = tune_info->sidChips();
+        if (options.explicit_sid_model) {
+            if (sid_count != 1) throw std::runtime_error("SID model assumption requires one SID chip");
+            if (tune_info->sidModel(0) != SidTuneInfo::SIDMODEL_UNKNOWN) {
+                throw std::runtime_error("SID model assumption requires an unknown model declaration");
+            }
+        }
         unsigned int channels;
         switch (sid_count) {
             case 1:
@@ -181,7 +213,8 @@ int main(int argc, char **argv) {
         config.frequency = rate;
         config.defaultC64Model = options.clock;
         config.forceC64Model = true;
-        config.defaultSidModel = SidConfig::MOS8580;
+        config.defaultSidModel = options.assumed_sid_model;
+        config.forceSidModel = false;
         // SidConfig::MAX_POWER_ON_DELAY defines larger values as randomized startup.
         config.powerOnDelay = 0;
         config.sidEmulation = &builder;
@@ -252,7 +285,13 @@ int main(int argc, char **argv) {
         std::cout << "libsidplayfp " << LIBSIDPLAYFP_VERSION_MAJ << '.' << LIBSIDPLAYFP_VERSION_MIN << '.' << LIBSIDPLAYFP_VERSION_LEV
                   << " / SIDLite: " << written << (channels == 1 ? " mono PCM16 samples" : " stereo PCM16 frames") << " at " << rate
                   << " Hz, clock " << (options.clock == SidConfig::PAL ? "PAL" : "NTSC")
-                  << ", subtune " << tune_info->currentSong() << " of " << tune_info->songs() << '\n';
+                  << ", subtune " << tune_info->currentSong() << " of " << tune_info->songs()
+                  << ", SID model " << sid_model_name(player.info().sidModel(0)) << " (";
+        if (options.explicit_sid_model) std::cout << "assumed; declared unknown";
+        else if (tune_info->sidModel(0) == SidTuneInfo::SIDMODEL_UNKNOWN || tune_info->sidModel(0) == SidTuneInfo::SIDMODEL_ANY) {
+            std::cout << "fallback; declared " << sid_model_name(tune_info->sidModel(0));
+        } else std::cout << "declared";
+        std::cout << ")\n";
         return 0;
     } catch (const std::exception &error) {
         std::cerr << error.what() << '\n';

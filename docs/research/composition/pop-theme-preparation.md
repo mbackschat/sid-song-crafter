@@ -28,6 +28,12 @@ All four use a 124-byte version-2 header with embedded load address. The table g
 
 ### Take On Me
 
+The active delivery target is an editable, independently computed reconstruction of this pinned SID arrangement, with its complete introduction/loop boundary, an explicitly authored ending and a familiar-material instrument transfer. Source score and sound behavior remain separate from deliberate arrangement changes. The next gates are:
+
+- Resolve the unknown-model rendering choice using unchanged source bytes, explicit 6581/8580 assumptions and a same-passage audition. Equal CPU writes cannot choose the acoustic target.
+- Establish complete score form by matching independently expanded order/pattern reads and score state against executed source, including the introduction and two loop traversals. Do not infer a whole-driver or acoustic restart from an order jump.
+- Recover the actual instrument/onset/body contract through executed state and isolated changes before integrating an independent player. Preserve pitch/modulation dependencies between score and sound rather than treating the event list as a complete instrument description.
+
 The source has PAL timing but no declared chip model. Keep that uncertainty in the original header and every reference record. The [explicit model-assumption contract](../../validation/psid-audit.md#keep-an-assumed-sid-model-separate-from-the-header) now permits separate 6581 and 8580 experiments without changing the source. The metadata inspector still reports unknown model and rejected **unassumed** admission; it does not silently choose a chip.
 
 The [bounded experiment receipt](../../../evidence/take-on-me-model/checked/receipt.json) pins the unchanged source, tools and both assumptions. Initialization plus calls 0–63 produce identical CPU ledgers under both assumptions: **5 init and 1,116 play writes**, 375 init cycles, peak 1,205 play cycles and mean 686.171875. Independent headless VICE agrees with all **1,121** stores in each experiment, with maximum cadence error **7 / 9 cycles**. The separate [6581 report](../../../evidence/take-on-me-model/checked/MOS6581/vice/study.json) and [8580 report](../../../evidence/take-on-me-model/checked/MOS8580/vice/study.json) retain the effective model and `sidModelAssumption`; each exported private payload equals the original with its load prefix.
@@ -41,6 +47,21 @@ PYTHONPATH=.tools/test-deps python3 evidence/take-on-me-model/probe.py --output 
 ```
 
 The [probe](../../../evidence/take-on-me-model/probe.py) checks source/tool hashes, runs both CPU and VICE comparisons, verifies unchanged payloads, and records exact settings. It retains no original binary or reference audio in the public evidence archive.
+
+#### Explicit chip-model audition and working target
+
+The [model recipe](../../../config/listening/take-on-me-models.json) renders the unchanged source with the renderer’s [explicit unknown-model option](../../workflows/audio-workflow.md#render-an-explicit-unknown-model-assumption). Both 32-second renders select #1, PAL, power-on delay zero, libsidplayfp 3.1.1/SIDLite, 44.1 kHz mono PCM16 and unity gain. [Signal checks](../../../evidence/take-on-me-model/listening/audio.json) show nonzero AC signal and no rail samples. [The study receipt](../../../evidence/take-on-me-model/listening/study.json) confirms identical renderer snapshot streams, without claiming that snapshots capture every SID write.
+
+The frozen [MOS6581-then-MOS8580 comparison](../../../build/take-on-me-model-listening/mos6581-then-mos8580-16to24s.ab.wav) contains the same 16–24 second passage under each assumption, with a half-second gap. This window includes all three voice controls and changing routed cutoff in the snapshots; it avoids the sparse opening. Separate context files are [MOS6581](../../../build/take-on-me-model-listening/source-mos6581-32s.wav) and [MOS8580](../../../build/take-on-me-model-listening/source-mos8580-32s.wav). Both are original-source renders, not reconstructions. [Comparison metadata](../../../evidence/take-on-me-model/listening/comparison.json) and [submission hashes](../../../evidence/take-on-me-model/listening/submission.json) preserve the exact presented pair.
+
+On 2026-10-14 the listener answered **“I don't hear any difference”**. The [scoped verdict](../../../evidence/take-on-me-model/listening/review.json) selects **MOS8580 as the explicit working target**, matching the established fallback because no preference was heard. The source header remains unknown. This does not identify the historical chip, establish hardware/model equivalence or accept an independent reconstruction. Existing MOS6581 callable proofs remain labelled numeric experiments; their RAM-only auditor does not synthesize the analog chip.
+
+```sh
+python3 scripts/listening-package.py config/listening/take-on-me-models.json --output build/take-on-me-model-listening-work
+python3 scripts/publish-listening.py build/take-on-me-model-listening-work/run.json --selection scripts/studies/take-on-me/audition.json --output build/take-on-me-model-listening-new
+```
+
+Use a fresh audition directory to preserve reviewed files. The [unchanged recheck](../../../evidence/take-on-me-model/listening/run-reused.json) reuses all five stages in 0.05 seconds with no stage subprocesses; the [preparation run](../../../evidence/take-on-me-model/listening/run-prepared.json) reused existing renders before assembling the chosen window and is not a cold benchmark. First-audition and post-feedback model-assistance reviews decline a hosted call because current calibration does not qualify subtle paired timbre preference. Reassess at the first independent reconstruction audition.
 
 ### Billie Jean and Airwolf
 

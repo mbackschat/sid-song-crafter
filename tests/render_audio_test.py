@@ -120,6 +120,110 @@ def write_two_subtune_sid(path, default_song):
 
 
 class HeadlessRenderTest(unittest.TestCase):
+    def test_unknown_model_assumptions_match_declared_model_audio_and_preserve_source_and_fallback(self):
+        with tempfile.TemporaryDirectory() as directory:
+            sid = Path(directory) / "unknown.sid"
+            write_a4_sid(sid)
+            original = bytearray(sid.read_bytes())
+            struct.pack_into(">H", original, 118, 0x04)
+            sid.write_bytes(original)
+            rendered = {}
+            for model, flags in (("MOS6581", 0x14), ("MOS8580", 0x24)):
+                with self.subTest(model=model):
+                    declared = Path(directory) / f"declared-{model}.sid"
+                    data = bytearray(original)
+                    struct.pack_into(">H", data, 118, flags)
+                    declared.write_bytes(data)
+                    outputs = []
+                    for source, options, origin in (
+                        (sid, ["--assume-sid-model", model, "--subtune", "1", "--clock", "pal", "--voices", "1"], "assumed; declared unknown"),
+                        (sid, ["--voices", "1", "--clock", "pal", "--subtune", "1", "--assume-sid-model", model], "assumed; declared unknown"),
+                        (declared, ["--clock", "pal", "--voices", "1", "--subtune", "1"], "declared"),
+                    ):
+                        output = Path(directory) / f"model-{model}-{len(outputs)}.wav"
+                        result = subprocess.run([str(RENDERER), str(source), str(output), "0.5", *options],
+                                                capture_output=True, text=True, timeout=20)
+                        self.assertEqual(result.returncode, 0, result.stderr)
+                        self.assertIn(f"SID model {model} ({origin})", result.stdout)
+                        samples = read_samples(output)
+                        self.assertEqual(len(samples), RATE // 2)
+                        self.assertGreater(rms(samples[RATE // 4:]), 100)
+                        self.assertAlmostEqual(frequency(samples[RATE // 4:]), 440, delta=3)
+                        outputs.append((output.read_bytes(), Path(str(output) + ".registers.tsv").read_bytes()))
+                    self.assertEqual(outputs[0], outputs[1])
+                    self.assertEqual(outputs[0], outputs[2])
+                    rendered[model] = outputs[0]
+            output = Path(directory) / "fallback.wav"
+            result = subprocess.run([str(RENDERER), str(sid), str(output), "0.5"],
+                                    capture_output=True, text=True, timeout=20)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("SID model MOS8580 (fallback; declared unknown)", result.stdout)
+            fallback = output.read_bytes(), Path(str(output) + ".registers.tsv").read_bytes()
+            self.assertEqual(fallback, rendered["MOS8580"])
+            self.assertNotEqual(rendered["MOS6581"][0], rendered["MOS8580"][0])
+            self.assertEqual(rendered["MOS6581"][1], rendered["MOS8580"][1])
+            self.assertEqual(sid.read_bytes(), original)
+
+    def test_model_assumption_options_reject_invalid_missing_and_duplicate_values_before_output(self):
+        arguments = [["--assume-sid-model", value] for value in
+                     ("", "6581", "8580", "mos6581", "unknown", " MOS6581", "MOS8580 ")]
+        arguments += [["--assume-sid-model"], ["--assume-sid-model", "MOS6581", "--assume-sid-model", "MOS8580"]]
+        with tempfile.TemporaryDirectory() as directory:
+            sid = Path(directory) / "unknown.sid"
+            write_a4_sid(sid)
+            data = bytearray(sid.read_bytes())
+            struct.pack_into(">H", data, 118, 0x04)
+            sid.write_bytes(data)
+            for options in arguments:
+                for existing in (False, True):
+                    with self.subTest(options=options, existing=existing):
+                        output = Path(directory) / "invalid.wav"
+                        trace = Path(str(output) + ".registers.tsv")
+                        if existing:
+                            output.write_bytes(b"Existing audio")
+                            trace.write_bytes(b"Existing trace")
+                        else:
+                            output.unlink(missing_ok=True)
+                            trace.unlink(missing_ok=True)
+                        result = subprocess.run([str(RENDERER), str(sid), str(output), "0.1", *options],
+                                                capture_output=True, text=True, timeout=20)
+                        self.assertNotEqual(result.returncode, 0)
+                        self.assertIn("model", result.stderr.lower())
+                        if existing:
+                            self.assertEqual(output.read_bytes(), b"Existing audio")
+                            self.assertEqual(trace.read_bytes(), b"Existing trace")
+                        else:
+                            self.assertFalse(output.exists())
+                            self.assertFalse(trace.exists())
+
+    def test_model_assumptions_reject_declared_any_and_multiple_chips_without_truncation(self):
+        fixtures = [("single", flags) for flags in (0x14, 0x24, 0x34)]
+        fixtures += [("dual", flags) for flags in (0x54, 0xa4, 0x04)]
+        for kind, flags in fixtures:
+            for model in ("MOS6581", "MOS8580"):
+                for existing in (False, True):
+                    with self.subTest(kind=kind, flags=flags, model=model, existing=existing), tempfile.TemporaryDirectory() as directory:
+                        sid, output = Path(directory) / "unsupported.sid", Path(directory) / "preserved.wav"
+                        (write_a4_sid if kind == "single" else write_two_sid_fixture)(sid)
+                        data = bytearray(sid.read_bytes())
+                        struct.pack_into(">H", data, 118, flags)
+                        sid.write_bytes(data)
+                        trace = Path(str(output) + ".registers.tsv")
+                        if existing:
+                            output.write_bytes(b"Existing audio")
+                            trace.write_bytes(b"Existing trace")
+                        result = subprocess.run([str(RENDERER), str(sid), str(output), "0.1", "--assume-sid-model", model],
+                                                capture_output=True, text=True, timeout=20)
+                        self.assertNotEqual(result.returncode, 0)
+                        self.assertIn("SID model assumption requires", result.stderr)
+                        self.assertEqual(sid.read_bytes(), data)
+                        if existing:
+                            self.assertEqual(output.read_bytes(), b"Existing audio")
+                            self.assertEqual(trace.read_bytes(), b"Existing trace")
+                        else:
+                            self.assertFalse(output.exists())
+                            self.assertFalse(trace.exists())
+
     def test_clock_selection_controls_actual_pitch_and_vbi_cadence_and_preserves_default_pal(self):
         with tempfile.TemporaryDirectory() as directory:
             sid = Path(directory) / "ntsc-clock.sid"
@@ -319,6 +423,7 @@ class HeadlessRenderTest(unittest.TestCase):
                     output = Path(directory) / f"{model}.wav"
                     result = subprocess.run([str(RENDERER), str(sid), str(output), "0.5"], capture_output=True, text=True, timeout=20)
                     self.assertEqual(result.returncode, 0, result.stderr)
+                    self.assertIn(f"SID model MOS{model} (declared)", result.stdout)
                     with wave.open(str(output), "rb") as source:
                         self.assertEqual(source.getnchannels(), count)
                         self.assertEqual(source.getnframes(), RATE // 2)
