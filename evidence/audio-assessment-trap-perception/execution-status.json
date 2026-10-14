@@ -1,0 +1,26 @@
+{
+  "status": "blocked-before-any-post",
+  "recorded_at": "2026-10-14T03:34:37.478407+00:00",
+  "post_attempt_receipts": 0,
+  "response_files": 0,
+  "measured_inference_cost_usd": "0",
+  "tests": {
+    "command": "python3 -m unittest discover -s tests -p 'trap_model_perception_test.py' -v",
+    "passed": 8,
+    "failed": 0
+  },
+  "dry_run_models": [
+    "qwen/qwen3.8-omni-flash",
+    "google/gemini-3.8-flash"
+  ],
+  "default_network_error": "API transport failed; request outcome is uncertain",
+  "network_error_locus": "key-limit GET; no POST receipt was written",
+  "automatic_approval_review": {
+    "action": "python3 scripts/audio_assessment.py build/trap-model-perception-20261014/inputs/qwen.json --output build/trap-model-perception-20261014/results",
+    "outcome": "rejected",
+    "reason": "The command would upload private Trap audio to OpenRouter; the user authorized evaluating models but did not specifically authorize exporting these files to that external destination.",
+    "constraint": "Do not bypass this rejection through a workaround or indirect execution."
+  },
+  "eligibility_conclusion": "No live responses; this prepared calibration establishes no new model capability or eligibility.",
+  "frozen_inputs_sha256": "7a341f349dfb8ebb671404af51e00fca552b2637a25a028f8c45e73cd91fb5b4"
+}

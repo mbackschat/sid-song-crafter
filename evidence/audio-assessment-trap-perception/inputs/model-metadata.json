@@ -1,0 +1,244 @@
+{
+  "gemini": {
+    "source": "evidence/audio-assessment-gemini/model-metadata.json",
+    "source_sha256": "75d9b70b24a1aa1091c40380ca0025ce515aeabd8f1ec759dffdd44ce60b665a",
+    "record": {
+      "id": "google/gemini-3.8-flash",
+      "canonical_slug": "google/gemini-3.8-flash-20260902",
+      "hugging_face_id": null,
+      "name": "Google: Gemini 3.8 Flash",
+      "created": 1788362056,
+      "description": "Gemini 3.8 Flash is Google's most intelligent Flash model with significant gains from 3.7 Flash across software engineering, agentic tasks, and multi-step reasoning.",
+      "context_length": 1048576,
+      "architecture": {
+        "modality": "text+image+file+audio+video->text",
+        "input_modalities": [
+          "text",
+          "image",
+          "video",
+          "file",
+          "audio"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Gemini",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.00000075",
+        "completion": "0.00000375",
+        "image": "0.00000075",
+        "audio": "0.00000075",
+        "input_audio_cache": "0.000000075",
+        "web_search": "0.014",
+        "internal_reasoning": "0.00000375",
+        "input_cache_read": "0.000000075",
+        "input_cache_write": "0.0000000416666666666667"
+      },
+      "top_provider": {
+        "context_length": 1048576,
+        "max_completion_tokens": 65536,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "reasoning_effort",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ],
+      "default_parameters": {},
+      "supported_voices": null,
+      "knowledge_cutoff": null,
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/google/gemini-3.8-flash-20260902/endpoints"
+      },
+      "benchmarks": {
+        "design_arena": [
+          {
+            "arena": "agents",
+            "category": "androidnative",
+            "elo": 1080,
+            "win_rate": 33.7,
+            "rank": 31
+          },
+          {
+            "arena": "agents",
+            "category": "fullstack",
+            "elo": 1244,
+            "win_rate": 48.1,
+            "rank": 11
+          },
+          {
+            "arena": "agents",
+            "category": "godotgamedev",
+            "elo": 1273,
+            "win_rate": 53,
+            "rank": 5
+          },
+          {
+            "arena": "agents",
+            "category": "mobileapps",
+            "elo": 1233,
+            "win_rate": 54.3,
+            "rank": 6
+          },
+          {
+            "arena": "agents",
+            "category": "python-pptxslides",
+            "elo": 1178,
+            "win_rate": 39.8,
+            "rank": 19
+          },
+          {
+            "arena": "agents",
+            "category": "webapps",
+            "elo": 1230,
+            "win_rate": 46.1,
+            "rank": 11
+          },
+          {
+            "arena": "models",
+            "category": "3d",
+            "elo": 1296,
+            "win_rate": 49.9,
+            "rank": 18
+          },
+          {
+            "arena": "models",
+            "category": "asciiart",
+            "elo": 1261,
+            "win_rate": 52.2,
+            "rank": 12
+          },
+          {
+            "arena": "models",
+            "category": "codecategories",
+            "elo": 1307,
+            "win_rate": 50.3,
+            "rank": 14
+          },
+          {
+            "arena": "models",
+            "category": "dataviz",
+            "elo": 1263,
+            "win_rate": 50,
+            "rank": 29
+          },
+          {
+            "arena": "models",
+            "category": "gamedev",
+            "elo": 1310,
+            "win_rate": 51,
+            "rank": 15
+          },
+          {
+            "arena": "models",
+            "category": "svg",
+            "elo": 1294,
+            "win_rate": 54.7,
+            "rank": 7
+          },
+          {
+            "arena": "models",
+            "category": "uicomponent",
+            "elo": 1321,
+            "win_rate": 53.7,
+            "rank": 13
+          },
+          {
+            "arena": "models",
+            "category": "website",
+            "elo": 1304,
+            "win_rate": 50,
+            "rank": 12
+          }
+        ],
+        "artificial_analysis": {
+          "intelligence_index": 40.9,
+          "coding_index": 76.3,
+          "agentic_index": 40.2
+        }
+      },
+      "reasoning": {
+        "mandatory": true,
+        "default_enabled": true,
+        "supported_efforts": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "default_effort": "medium"
+      }
+    }
+  },
+  "qwen": {
+    "configuration_evidence": "evidence/audio-assessment-openrouter/results/attempt-05.json",
+    "sha256": "74c8dbf46fcc09a4091b2b656ac56a6ef2b3cde62e73b402dd0d5f4e0d902008",
+    "record": {
+      "id": "t01",
+      "wav_path": "/Users/mbackschat/Projects/c64-sid-skill/build/audio-assessment-openrouter-20261013/t01.ab.wav",
+      "audio_sha256": "31893bb09612df8c263b29ec6eace86fa189209243a3feb2e88ab7bc76c9ac6e",
+      "duration_seconds": 16.5,
+      "model": "qwen/qwen3.8-omni-flash",
+      "max_tokens": 1200,
+      "reasoning": true,
+      "payload_sha256": "5f7c61d8d4b563f883bbeb34cd8642df2f3a1773b9e4321af00933fe36470d4a",
+      "status": "complete",
+      "started_at": "2026-10-13T21:43:15.885450+00:00",
+      "cost": 0.00034426,
+      "key_limits": {
+        "limit": 10.0,
+        "limit_remaining": 9.9997528,
+        "limit_reset": null
+      },
+      "response_path": "response-05.json",
+      "response_sha256": "906abad158b33258af4a153eaa34b0cdffcc27f1a4b8661c598e97ddfba5be0a",
+      "finished_at": "2026-10-13T21:43:25.421841+00:00",
+      "usage": {
+        "prompt_tokens": 296,
+        "completion_tokens": 638,
+        "total_tokens": 934,
+        "cost": 0.00034426,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00034426,
+          "upstream_inference_prompt_cost": 4.44e-05,
+          "upstream_inference_completions_cost": 0.00029986
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 558,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    }
+  },
+  "requested_settings": {
+    "qwen": {
+      "model": "qwen/qwen3.8-omni-flash",
+      "reasoning": true
+    },
+    "gemini": {
+      "model": "google/gemini-3.8-flash",
+      "reasoning": true,
+      "reasoning_effort": "low"
+    }
+  }
+}

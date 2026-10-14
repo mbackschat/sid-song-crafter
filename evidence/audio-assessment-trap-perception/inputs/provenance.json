@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "scope": "Calibration against two already-known, passage-scoped human observations and exact PCM controls; no held-out validation or model adoption. Only rhythmic_motion is scored on c01 and only development on c02. No numbered-voice attribution, background independence, musical preference, full-form judgment or composer-wide claim is tested. Single-clip presentation has no A/B separator; reversed-pair and A/A controls are inapplicable here and previous failed pair controls remain unresolved.",
+  "generator": "scripts/studies/audio-assessment/prepare-trap-perception.py",
+  "generator_sha256": "26fc3139992a17e0747da0fbb1d3b15505b4d8a41e16141d46d0c19e9d71c9b3",
+  "runner_sha256": "dc385afe65ef5cecac794bde8c3ae2c428e361441d1281911829ba5bdcb6d0a9",
+  "source_publication": {
+    "path": "build/trap-transitions-listening/sources.json",
+    "sha256": "95704d38b6c91fc76c8edb4c2f2bb76c47ccc0aad665d174d8b5abdb5ee22391",
+    "record": {
+      "schemaVersion": 1,
+      "run": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/trap-transitions/run.json",
+        "sha256": "9cd1930b37afc4aa17e6cfd5bb362ba2eeb05a19680556f69d37b1cad77a5d2a",
+        "bytes": 23632
+      },
+      "selection": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/trap-transitions.audition.json",
+        "sha256": "7182117390fdc11d3c100d12818a6572c6472ce6e398da30374c625013f56753",
+        "bytes": 427
+      },
+      "files": [
+        {
+          "label": "originalDeflektor24to34Seconds",
+          "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/trap-transitions/cache/source-windows/d89cd716c3780e9403daea68e57ccb5d0da28bd06258395a5ce968df99f31f99/attempt-fb28e58dccde43c2a5f223bb2bbf3219/24to34/deflektor/source.wav",
+          "filename": "deflektor-original-24to34s.wav",
+          "sha256": "6409a2864471450a25fa04856af23757c155f322a8bfc7abd6e7a1949048a7d3",
+          "bytes": 882044,
+          "stageId": "source-windows"
+        },
+        {
+          "label": "originalTrap24to34Seconds",
+          "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/trap-transitions/cache/source-windows/d89cd716c3780e9403daea68e57ccb5d0da28bd06258395a5ce968df99f31f99/attempt-fb28e58dccde43c2a5f223bb2bbf3219/24to34/trap/source.wav",
+          "filename": "trap-original-24to34s.wav",
+          "sha256": "1059e488fdcba9ed7947a6a4bcc145b360da74cd5f0a474d117962756c62cb18",
+          "bytes": 882044,
+          "stageId": "source-windows"
+        },
+        {
+          "label": "originalDeflektorThenTrap24to34Seconds",
+          "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/trap-transitions/cache/source-windows/d89cd716c3780e9403daea68e57ccb5d0da28bd06258395a5ce968df99f31f99/attempt-fb28e58dccde43c2a5f223bb2bbf3219/24to34/deflektor-then-trap/sources.ab.wav",
+          "filename": "deflektor-then-trap-24to34s.ab.wav",
+          "sha256": "c0c4275fc6beb3782a75136d31da56082221a032b87c24f0c8f254f1299bf32b",
+          "bytes": 1808144,
+          "stageId": "source-windows"
+        },
+        {
+          "label": "originalDeflektor40to52Seconds",
+          "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/trap-transitions/cache/source-windows/d89cd716c3780e9403daea68e57ccb5d0da28bd06258395a5ce968df99f31f99/attempt-fb28e58dccde43c2a5f223bb2bbf3219/40to52/deflektor/source.wav",
+          "filename": "deflektor-original-40to52s.wav",
+          "sha256": "9c4f3816ee5207af5562815a7d10e43f985048f36ba8db10db3ce8661e448150",
+          "bytes": 1058444,
+          "stageId": "source-windows"
+        },
+        {
+          "label": "originalTrap40to52Seconds",
+          "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/trap-transitions/cache/source-windows/d89cd716c3780e9403daea68e57ccb5d0da28bd06258395a5ce968df99f31f99/attempt-fb28e58dccde43c2a5f223bb2bbf3219/40to52/trap/source.wav",
+          "filename": "trap-original-40to52s.wav",
+          "sha256": "b17823b8e43ba23c8ad52f2c958c0d340efe8fc3af4caff74f9be4dd41da8618",
+          "bytes": 1058444,
+          "stageId": "source-windows"
+        },
+        {
+          "label": "originalDeflektorThenTrap40to52Seconds",
+          "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/trap-transitions/cache/source-windows/d89cd716c3780e9403daea68e57ccb5d0da28bd06258395a5ce968df99f31f99/attempt-fb28e58dccde43c2a5f223bb2bbf3219/40to52/deflektor-then-trap/sources.ab.wav",
+          "filename": "deflektor-then-trap-40to52s.ab.wav",
+          "sha256": "3b1e4e3c7bb2ffa092808039d330e4de287c2c94ac6477fac3b82bf3e1f4b539",
+          "bytes": 2160944,
+          "stageId": "source-windows"
+        }
+      ]
+    }
+  },
+  "source_sha256s": {
+    "trap-original-24to34s.wav": "1059e488fdcba9ed7947a6a4bcc145b360da74cd5f0a474d117962756c62cb18",
+    "trap-original-40to52s.wav": "b17823b8e43ba23c8ad52f2c958c0d340efe8fc3af4caff74f9be4dd41da8618"
+  },
+  "source_windows_seconds": {
+    "c01": [
+      24,
+      34
+    ],
+    "c02": [
+      40,
+      52
+    ]
+  },
+  "loop": {
+    "source_case": "c02",
+    "start_frame_inclusive": 0,
+    "end_frame_exclusive": 88200,
+    "repetitions": 6
+  },
+  "gain": 1,
+  "normalization": false,
+  "resampling": false,
+  "prompt": "Listen to this single audio clip. Is music present? What is the main perceived source of rhythmic motion: moving melody, repeated percussive attacks, both, unclear, or no music? Does the clip develop or predominantly repeat: develops, repeats, unclear, or no music? Report what you hear, without identifying a source or ranking quality. Return only JSON with music_present (yes/no/unclear), rhythmic_motion (moving melody/repeated percussive attacks/both/unclear/no music), development (develops/repeats/unclear/no music), and evidence (one or two short objects containing start_seconds, end_seconds, and observation). Times are relative to the clip and must lie within it. Use unclear when you cannot tell.",
+  "prompt_sha256": "2ec40069eebc2a2c2262d0f620df051d563adf8038834e996ef4abc1f6c4e2a9",
+  "cases": {
+    "c01": {
+      "file": "c01.wav",
+      "pcm_sha256": "80a0b403b1b4bf722588039c33ad4c643de332ba9a4598633ff44bca776c14e0",
+      "metrics": {
+        "sha256": "1059e488fdcba9ed7947a6a4bcc145b360da74cd5f0a474d117962756c62cb18",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 441000,
+        "durationSeconds": 10.0,
+        "peak": 9893,
+        "peakDbfs": -10.402438517646166,
+        "clippedSamples": 0,
+        "rms": 3353.070892888969,
+        "acRms": 3302.2769852444158,
+        "acRmsDbfs": -19.932728743322947,
+        "perChannel": [
+          {
+            "dc": 581.4216417233561,
+            "rms": 3353.070892888969,
+            "acRms": 3302.2769852444158
+          }
+        ]
+      }
+    },
+    "c02": {
+      "file": "c02.wav",
+      "pcm_sha256": "155015d09da4219322b74345ed285c6a0014118caf5ceced4d2e26bebec72aab",
+      "metrics": {
+        "sha256": "b17823b8e43ba23c8ad52f2c958c0d340efe8fc3af4caff74f9be4dd41da8618",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 529200,
+        "durationSeconds": 12.0,
+        "peak": 12161,
+        "peakDbfs": -8.60961292969461,
+        "clippedSamples": 0,
+        "rms": 4370.992280115443,
+        "acRms": 4232.345127059311,
+        "acRmsDbfs": -17.77737719792407,
+        "perChannel": [
+          {
+            "dc": 1092.1667630385487,
+            "rms": 4370.992280115443,
+            "acRms": 4232.345127059311
+          }
+        ]
+      }
+    },
+    "c03": {
+      "file": "c03.wav",
+      "pcm_sha256": "49b1a00c63f105edacdc97681f56968e17f6a083e89d6540ff86743159aced1c",
+      "metrics": {
+        "sha256": "9998c35bd0d1a852cc89270ae16a5ca891c813d4ece5dd564918b3b12dc82b71",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 529200,
+        "durationSeconds": 12.0,
+        "peak": 0,
+        "peakDbfs": null,
+        "clippedSamples": 0,
+        "rms": 0.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 0.0,
+            "rms": 0.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    },
+    "c04": {
+      "file": "c04.wav",
+      "pcm_sha256": "12077763e603ca60cde13a09968d41ee33b2c696d47b31f187db561d12a0adcb",
+      "metrics": {
+        "sha256": "f5b07282e3291727433fb41b7ba323e5f6a7bdd38d696210645514e2d1cb7f0a",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 529200,
+        "durationSeconds": 12.0,
+        "peak": 8778,
+        "peakDbfs": -11.441087169015269,
+        "clippedSamples": 0,
+        "rms": 2846.9182218664914,
+        "acRms": 2801.0766928769385,
+        "acRmsDbfs": -21.362498701678522,
+        "perChannel": [
+          {
+            "dc": 508.83467120181405,
+            "rms": 2846.9182218664914,
+            "acRms": 2801.0766928769385
+          }
+        ]
+      }
+    }
+  },
+  "boundary": "Only one anonymous audio clip, the neutral prompt and fixed runner settings are submitted. Source names, oracle and human judgments remain local."
+}

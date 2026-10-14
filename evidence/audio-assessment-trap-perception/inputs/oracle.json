@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "scope": "Calibration against two already-known, passage-scoped human observations and exact PCM controls; no held-out validation or model adoption. Only rhythmic_motion is scored on c01 and only development on c02. No numbered-voice attribution, background independence, musical preference, full-form judgment or composer-wide claim is tested. Single-clip presentation has no A/B separator; reversed-pair and A/A controls are inapplicable here and previous failed pair controls remain unresolved.",
+  "cases": [
+    {
+      "id": "c01",
+      "expected": {
+        "rhythmic_motion": "moving melody"
+      },
+      "basis": "Scoped human rhythm observation"
+    },
+    {
+      "id": "c02",
+      "expected": {
+        "development": "develops"
+      },
+      "basis": "Scoped human development observation"
+    },
+    {
+      "id": "c03",
+      "expected": {
+        "music_present": "no",
+        "rhythmic_motion": "no music",
+        "development": "no music"
+      },
+      "basis": "Exact digital silence"
+    },
+    {
+      "id": "c04",
+      "expected": {
+        "development": "repeats"
+      },
+      "basis": "First two seconds of c02 tiled six times with no gain or synthesis change"
+    }
+  ],
+  "models": {
+    "qwen": {
+      "manifest": "build/trap-model-perception-20261014/inputs/qwen.json",
+      "settings": {
+        "model": "qwen/qwen3.8-omni-flash",
+        "reasoning": true
+      },
+      "cases": [
+        {
+          "id": "c01",
+          "audio_sha256": "1059e488fdcba9ed7947a6a4bcc145b360da74cd5f0a474d117962756c62cb18",
+          "payload_sha256": "7b0f7f3b6346161b56b03b90c93489fff3eb46ca9261e6cc7e1505619e42a04b",
+          "duration_seconds": 10.0
+        },
+        {
+          "id": "c02",
+          "audio_sha256": "b17823b8e43ba23c8ad52f2c958c0d340efe8fc3af4caff74f9be4dd41da8618",
+          "payload_sha256": "ddf841776a29770433be96c275d2db4b72b28836d9dca638151491b94f5299e1",
+          "duration_seconds": 12.0
+        },
+        {
+          "id": "c03",
+          "audio_sha256": "9998c35bd0d1a852cc89270ae16a5ca891c813d4ece5dd564918b3b12dc82b71",
+          "payload_sha256": "ef805fb5c8e80b70f77e1b78c2af2e21f788c8ace6a8b0d7c945566252bc582d",
+          "duration_seconds": 12.0
+        },
+        {
+          "id": "c04",
+          "audio_sha256": "f5b07282e3291727433fb41b7ba323e5f6a7bdd38d696210645514e2d1cb7f0a",
+          "payload_sha256": "42f5c974c75a1fe89fea22b021be26ac3983f7dbdc82ed31d12fc41f5afd6f5a",
+          "duration_seconds": 12.0
+        }
+      ]
+    },
+    "gemini": {
+      "manifest": "build/trap-model-perception-20261014/inputs/gemini.json",
+      "settings": {
+        "model": "google/gemini-3.8-flash",
+        "reasoning": true,
+        "reasoning_effort": "low"
+      },
+      "cases": [
+        {
+          "id": "c01",
+          "audio_sha256": "1059e488fdcba9ed7947a6a4bcc145b360da74cd5f0a474d117962756c62cb18",
+          "payload_sha256": "ef394dd2271e206ebf05e0936a01f89562705e32e0fedc3902d36e5435912a1c",
+          "duration_seconds": 10.0
+        },
+        {
+          "id": "c02",
+          "audio_sha256": "b17823b8e43ba23c8ad52f2c958c0d340efe8fc3af4caff74f9be4dd41da8618",
+          "payload_sha256": "2bb0c3015dc7fee4bde9e4cf223ffa6ebab18e7a354cba92a27b0997b2bb4eec",
+          "duration_seconds": 12.0
+        },
+        {
+          "id": "c03",
+          "audio_sha256": "9998c35bd0d1a852cc89270ae16a5ca891c813d4ece5dd564918b3b12dc82b71",
+          "payload_sha256": "ad9a769c682f0b4981d421923d3e5d3fbfbd5dbddaaf3ac9bb7a4c5feecc3f9a",
+          "duration_seconds": 12.0
+        },
+        {
+          "id": "c04",
+          "audio_sha256": "f5b07282e3291727433fb41b7ba323e5f6a7bdd38d696210645514e2d1cb7f0a",
+          "payload_sha256": "c0a85b8974b555474894a510586f7c37d1e90995c99eacb5baeaf85e5e329419",
+          "duration_seconds": 12.0
+        }
+      ]
+    }
+  },
+  "held_out_passage": false,
+  "establishes_model_eligibility": false,
+  "criterion": "Each case passes only when finish_reason is stop, all declared expected labels match and the response parses with allowed labels and one or two bounded evidence spans. Require all four cases per model for a calibration pass. Abstention, truncation or malformed response is a miss; do not revise prompt after outputs. Evidence truth requires separate manual review.",
+  "parser": "Accept a JSON object, optionally wrapped in one outer ```json or ``` code fence; do not infer labels from prose.",
+  "budget": {
+    "post_attempts_total_max": 8,
+    "local_admission_cap_usd": "0.10",
+    "shared_results": "build/trap-model-perception-20261014/results",
+    "runner": "scripts/audio_assessment.py",
+    "no_retries": true
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "kind": "reference-intake-readiness",
+  "verifiedOn": "2026-10-14",
+  "source": {
+    "id": "great-giana-sisters",
+    "title": "The Great Giana Sisters",
+    "credit": "Chris Hülsbeck (C64 music); in-game tune 1 is subtune 3 per Ultimate SID Collection",
+    "hvscPath": "MUSICIANS/H/Huelsbeck_Chris/Great_Giana_Sisters.sid",
+    "url": "https://hvsc.c64.org/download/C64Music/MUSICIANS/H/Huelsbeck_Chris/Great_Giana_Sisters.sid",
+    "sha256": "014764e6ee11df4b458c6b30e235ea639d702bd56766a87b5e90d4737558b1c8",
+    "bytes": 23445
+  },
+  "sourceLocalPath": ".local/research/giana/Great_Giana_Sisters.sid",
+  "selection": {
+    "assetId": "great-giana-sisters",
+    "renderSeconds": 32,
+    "role": "Giana in-game tune 1, HVSC subtune 3; contrasting work original source excerpt",
+    "route": "full-machine-render",
+    "subtune": 3
+  },
+  "header": {
+    "schemaVersion": 1,
+    "bytes": 23445,
+    "sha256": "014764e6ee11df4b458c6b30e235ea639d702bd56766a87b5e90d4737558b1c8",
+    "format": "RSID",
+    "version": 2,
+    "dataOffset": 124,
+    "headerLoadAddress": 0,
+    "loadAddress": 29155,
+    "payloadBytes": 23319,
+    "endAddressExclusive": 52474,
+    "initAddress": 52358,
+    "playAddress": 0,
+    "subtunes": 23,
+    "defaultSubtune": 1,
+    "selectedSubtune": 3,
+    "speedWord": 0,
+    "flags": 20,
+    "clockDeclaration": "PAL",
+    "sidModelDeclaration": "MOS6581",
+    "selectedTimingDeclaration": "machine-controlled",
+    "title": "The Great Giana Sisters",
+    "author": "Chris Hülsbeck",
+    "released": "1987 Time Warp",
+    "callableProfile": {
+      "profile": "pal-banked",
+      "accepted": false,
+      "reason": "Audit requires a complete PSID header"
+    },
+    "limits": "Header declarations and current profile admission only; no driver execution, measured cadence, subtune-role identification or listening verdict."
+  },
+  "roleBasis": {
+    "title": "Ultimate SID Collection v1.7",
+    "url": "https://ultimatesid.dk/download/pdf/_Ultimate%20SID%20Collection%20V1-7.pdf",
+    "page": 6,
+    "row": 96,
+    "function": "In-game",
+    "additionalInfo": "In-game tune 1",
+    "hvscSubtune": 3,
+    "catalogueSha256": "fe18124e7e79d36c9024e1c4141b27b3054de964b05e104e54d9fa7e9fc88e29",
+    "verification": "pdftotext table extraction and visual page check"
+  },
+  "rendering": {
+    "renderer": ".local/bin/render-sid",
+    "library": "libsidplayfp 3.1.1 / SIDLite",
+    "clock": "PAL",
+    "clockForced": true,
+    "sidModel": "MOS6581",
+    "subtune": 3,
+    "powerOnDelay": 0,
+    "sampleRate": 44100,
+    "channels": 1,
+    "format": "PCM16",
+    "seconds": 32,
+    "gain": 1,
+    "normalization": false,
+    "initialized": true
+  },
+  "render": {
+    "sha256": "0ac9ddd314a85d941d446c73f0ad403ea8dbb4f35e50f3ba79ecaa188ce12c98",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 1411200,
+    "durationSeconds": 32.0,
+    "peak": 15819,
+    "peakDbfs": -6.325418178171827,
+    "clippedSamples": 0,
+    "rms": 2529.5540348313975,
+    "acRms": 2529.4132198575153,
+    "acRmsDbfs": -22.248603018242328,
+    "perChannel": [
+      {
+        "dc": 26.690416666666668,
+        "rms": 2529.5540348313975,
+        "acRms": 2529.4132198575153
+      }
+    ]
+  },
+  "registerSnapshots": {
+    "bytes": 123454,
+    "sha256": "c6b8832e4cefa8ede33cac15f28a7b032a84471e7724e21fead16be46271188f"
+  },
+  "evidence": {
+    "route": "full-machine-render",
+    "cpuOrderedStoresRequested": false,
+    "cpuCausalProof": false,
+    "registerObservation": "renderer-iteration register snapshots, not a bus-write trace",
+    "limitations": "Header admission, optional controlled callable CPU stores and modeled source audio; no original-host equivalence, causal corroboration or listening verdict."
+  },
+  "windows": [
+    {
+      "id": "opening-rhythm",
+      "startSeconds": 0,
+      "endSeconds": 12
+    },
+    {
+      "id": "continuing-phrase",
+      "startSeconds": 16,
+      "endSeconds": 28
+    }
+  ],
+  "run": {
+    "status": "completed",
+    "recipeSha256": "307a35345dae2149ab6e215390818deb83d11f3855d689ed9ae79fab5813dc5a",
+    "wallSeconds": 1.3908887909999998,
+    "stages": [
+      {
+        "id": "sourceA-selection",
+        "status": "completed",
+        "cacheHit": false
+      },
+      {
+        "id": "sourceA-render",
+        "status": "completed",
+        "cacheHit": false
+      },
+      {
+        "id": "sourceA-measure",
+        "status": "completed",
+        "cacheHit": false
+      },
+      {
+        "id": "window-opening-rhythm",
+        "status": "completed",
+        "cacheHit": false
+      },
+      {
+        "id": "window-continuing-phrase",
+        "status": "completed",
+        "cacheHit": false
+      }
+    ]
+  },
+  "workingListeningIndex": "build/reference-intake/giana-contrast/listening.md",
+  "listeningReview": null,
+  "limitations": "Source identity, selected role and 32-second initialized modeled playback only; no callable ledger, complete form, sample-path attribution, causal corroboration or human listening verdict.",
+  "unchangedRepeat": {
+    "status": "completed",
+    "wallSeconds": 0.03761808400000001,
+    "allStagesReused": true,
+    "runReceipt": "build/reference-intake/giana-contrast/run-hot.json"
+  }
+}
