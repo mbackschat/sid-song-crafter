@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "submission": "evidence/billie-jean-compiled/listening/submission.json",
+  "submissionSha256": "2c931b96c388f4dfd54ba09487ebbb70bc251d996b70008733834b66436e4358",
+  "samples": [
+    {
+      "label": "phrase",
+      "filename": "build/billie-jean-listening/phrase-reference-then-ours.ab.wav",
+      "comparisonSha256": "6cf965c17ca965e754bd54d700048cb29a9931ce2eda30037f0370cd7c63fdcc",
+      "humanAnswer": "I don't hear any difference"
+    },
+    {
+      "label": "ending",
+      "filename": "build/billie-jean-listening/ending-reference-then-ours.ab.wav",
+      "comparisonSha256": "e2d0362f48170c8299ce08f384094fd764a5f2e14ed74851ad89ecee44ef5751",
+      "humanAnswer": "I don't hear any difference"
+    }
+  ],
+  "scope": "Submitted PAL/MOS6581 original-first phrase and ending comparisons; independent initialized first traversal with an authored finite stop.",
+  "interpretation": "Accepted for the submitted sound/phrasing and ending review; the listener detected no difference and requested no correction.",
+  "limits": "Perceptual judgment does not establish PCM identity, hardware equivalence or identical endings: the original loops while the candidate finishes after one traversal.",
+  "modelAssistanceReview": {
+    "checkpoint": "Listener feedback and case closure",
+    "decision": "No model call",
+    "reason": "Fine reconstruction fidelity, balance and natural endings remain outside calibrated model eligibility. The listener reports no defect in these submitted samples; model agreement would add no validated musical evidence.",
+    "nextReview": "Airwolf first representative audition, after feedback/revision and before closure; retain experimental supporting status."
+  }
+}

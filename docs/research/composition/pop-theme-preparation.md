@@ -1,6 +1,6 @@
 # Pop songs and TV/film themes: pinned intake
 
-This owns the four later references in the [study plan](../study-plan.md). Take On Me is the active case after closure of all six bounded composer contrasts. It establishes exact downloads, archive declarations and scoped attribution. [Take On Me](take-on-me-preparation.md) has a complete independently expanded score and bounded CPU/VICE comparisons; [Billie Jean](billie-jean-preparation.md) has an independently expanded complete score cycle, and Airwolf has a complete numeric score/store model checked against two traversals. Independent arrangement/export, rendered comparison and listening remain pending for all four.
+This owns intake and retained preparation for the four later references in the [study plan](../study-plan.md). [Take On Me](take-on-me-preparation.md#familiar-transfer-and-case-closure) and [Billie Jean](billie-jean-preparation.md#listening-verdicts-and-case-closure) are complete for their accepted reconstructions, authored endings and familiar transfers. Airwolf is active, with a complete numeric score/store model checked against two traversals; its independent export, ending, listening and transfer remain. Ghostbusters follows afterward. Source attribution and historical evidence below retain their original bounded scope.
 
 ## Sources and attribution
 
@@ -28,7 +28,7 @@ All four use a 124-byte version-2 header with embedded load address. The table g
 
 ### Take On Me
 
-The [owning Take On Me study](take-on-me-preparation.md) now carries the explicit chip-model experiments, no-difference listening verdict, chosen MOS8580 working target and active independent score/sound work. The unchanged source header remains unknown-model; the existing 64-call CPU/VICE checks do not synthesize the chip or establish musical quality. Use its linked recipe to recreate the frozen original-source comparison.
+The [owning Take On Me study](take-on-me-preparation.md) now carries the explicit chip-model experiments, no-difference listening verdict, chosen MOS8580 working target and accepted independent reconstruction, authored ending and familiar transfer. The unchanged source header remains unknown-model; the existing 64-call CPU/VICE checks do not synthesize the chip or establish musical quality. Use its linked recipe to recreate the frozen original-source comparison.
 
 ### Billie Jean and Airwolf
 
@@ -91,4 +91,4 @@ PYTHONPATH=.tools/test-deps python3 scripts/psid_audit.py .local/research/airwol
 python3 scripts/trace-sid-vice.py .local/research/airwolf/Airwolf.sid --profile pal-banked --subtune 1 --oracle build/pop-theme-new/airwolf.audit64.writes.json --first-call 0 --last-call 63 --output build/pop-theme-new/airwolf.vice64
 ```
 
-The retained [collector](../../../evidence/pop-theme-intake/intake.py) checks existing receipts, STIL entry fingerprints and source/export equality without rerunning the CPU. Its evidence dependencies are restored with the [archive workflow](../../workflows/build-cache.md). Airwolf has the verified score/store model above, and Billie Jean has an independent full-cycle score model. Take On Me has the complete score form linked above; Ghostbusters still needs complete-form analysis; sound-program interpretation remains open where identified in the owning studies. Independent arrangement/export, musical ending, listening and transfer remain required for every case.
+The retained [collector](../../../evidence/pop-theme-intake/intake.py) checks existing receipts, STIL entry fingerprints and source/export equality without rerunning the CPU. Its evidence dependencies are restored with the [archive workflow](../../workflows/build-cache.md). Airwolf has the verified score/store model above; reuse it for independent export, deliberate ending and listening/transfer delivery. Ghostbusters still needs complete-form analysis in its machine-controlled environment. Take On Me and Billie Jean have completed their declared delivery scopes in their linked owning studies.

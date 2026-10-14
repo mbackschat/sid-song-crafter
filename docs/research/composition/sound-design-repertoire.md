@@ -29,7 +29,7 @@ Use the [musical gesture library](gestures/README.md) for groove, chord response
 | [Ghouls pulse and staged-onset programs](instruments/ghouls-decoded-programs.md) | Moving pulse melody/support and a one-call noise-to-triangle bass attack; instruments, balance and adapted ending accepted with a tentative tune reservation. Independent review matches all 53 source notes; native tuning is about 35 cents sharp in both versions. |
 | [Deflektor tonal programs](instruments/deflektor-decoded-programs.md) | Moving pulse trio with low-byte-only PWM and delayed raw-word pitch; familiar 53-note transfer accepted for instruments, balance and ending, with explicit native articulation and final-release adaptation. |
 | [Take On Me tonal programs](instruments/take-on-me-decoded-programs.md) | One-way pulse lead and harmonic replies with delayed vibrato, plus moving-pulse filtered bass; matched A440 familiar transfer accepted for instruments, balance and ending. |
-| [Billie Jean pulse lead and filtered support](instruments/billie-jean-decoded-programs.md) | Native pitch accents, delayed vibrato and shared-filter-compatible support; matched familiar transfer rendered, listening pending. An unfiltered patch can still reset shared cutoff at note setup. |
+| [Billie Jean pulse lead and filtered support](instruments/billie-jean-decoded-programs.md) | Native pitch accents, delayed vibrato and shared-filter-compatible support; matched familiar transfer accepted (“plays nice”). An unfiltered patch can still reset shared cutoff at note setup. |
 
 ## Reference material worth learning from
 

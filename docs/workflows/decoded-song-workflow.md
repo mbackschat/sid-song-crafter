@@ -231,7 +231,7 @@ Optional `ending` declares positive integer `startCall` and `releaseCalls`; the 
 
 ### Billie Jean runtime score and sound programs
 
-The study-specific [compiler](../../scripts/studies/billie-jean/compose.py) accepts `billie-jean-composition-v1`, including the [editable reconstruction](../../songs/studies/billie-jean-reconstruction/README.md) and [matched familiar transfer](../../songs/studies/billie-jean-elise/README.md). The [owning study](../research/composition/billie-jean-preparation.md#compiled-export-and-listening-package) separates source-prefix identity, authored ending, complete compiled execution and pending human judgments; the [palette card](../research/composition/instruments/billie-jean-decoded-programs.md) owns reuse and adaptation limits. The admitted target is one PAL MOS6581 at `$D400`, updated every 19,656 cycles.
+The study-specific [compiler](../../scripts/studies/billie-jean/compose.py) accepts `billie-jean-composition-v1`, including the [editable reconstruction](../../songs/studies/billie-jean-reconstruction/README.md) and [matched familiar transfer](../../songs/studies/billie-jean-elise/README.md). The [owning study](../research/composition/billie-jean-preparation.md#compiled-export-and-listening-package) separates source-prefix identity, authored ending, complete compiled execution and accepted human judgments; the [palette card](../research/composition/instruments/billie-jean-decoded-programs.md) owns reuse and adaptation limits. The admitted target is one PAL MOS6581 at `$D400`, updated every 19,656 cycles.
 
 ```sh
 python3 scripts/studies/billie-jean/prepare-title.py --check

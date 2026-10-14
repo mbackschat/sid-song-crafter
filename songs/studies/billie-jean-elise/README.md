@@ -1,6 +1,6 @@
 # Billie Jean sounds on Für Elise
 
-This [candidate](transfer.json) and [generated plain reference](reference.json) use the same 53 nominal notes from beats `[0,12)` of [the preserved Für Elise score](../../fuer-elise.json), at BPM 72. The [program card](../../../docs/research/composition/instruments/billie-jean-decoded-programs.md) owns palette selection, constraints and listening status. This is a generated score reference, not an original recording. Human musical review is pending.
+This [candidate](transfer.json) and [generated plain reference](reference.json) use the same 53 nominal notes from beats `[0,12)` of [the preserved Für Elise score](../../fuer-elise.json), at BPM 72. The [program card](../../../docs/research/composition/instruments/billie-jean-decoded-programs.md) owns palette selection, constraints and listening status. This is a generated score reference, not an original recording. The [listener verdict](listening-review.json) is “plays nice”; this familiar transfer is accepted.
 
 ```sh
 python3 scripts/studies/billie-jean/prepare-elise.py --output songs/studies/billie-jean-elise --check

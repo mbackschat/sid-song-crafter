@@ -1,6 +1,6 @@
 # Billie Jean independent reconstruction
 
-The [editable composition](composition.json) preserves the pinned Johannes Bjerregaard arrangement's initialized first traversal, with a separately authored finite ending. The original song is Michael Jackson's *Billie Jean*. The [owning study](../../../docs/research/composition/billie-jean-preparation.md#compiled-export-and-listening-package) retains source attribution, numerical evidence and listening status. Human review is pending.
+The [editable composition](composition.json) preserves the pinned Johannes Bjerregaard arrangement's initialized first traversal, with a separately authored finite ending. The original song is Michael Jackson's *Billie Jean*. The [owning study](../../../docs/research/composition/billie-jean-preparation.md#compiled-export-and-listening-package) retains source attribution, numerical evidence and listening status. The [listener verdicts](listening-review.json) report no difference in the phrase and ending comparisons; this declared reconstruction is accepted.
 
 ```sh
 python3 scripts/studies/billie-jean/prepare-title.py --check
