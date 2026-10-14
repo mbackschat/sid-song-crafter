@@ -1,0 +1,459 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/giana-verification.json",
+  "recipeSha256": "58d64bab0dc321940754183e2e9d1ab28af568c5d995ca5468e02bfc21eb7337",
+  "startedAt": "2026-10-14T09:40:00.978732+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "probe-guards",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.278797417,
+      "artifacts": [],
+      "cacheKey": "9a391ffe451c7da01affc9782313443519be4bcedc28318c7037adf3f39158e1",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/probe-guards/9a391ffe451c7da01affc9782313443519be4bcedc28318c7037adf3f39158e1/attempt-fb27e8cbfef44f4ab39917adf3897776",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/probe-guards/9a391ffe451c7da01affc9782313443519be4bcedc28318c7037adf3f39158e1/attempt-fb27e8cbfef44f4ab39917adf3897776/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.299031166
+    },
+    {
+      "id": "initialized-census",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "initialized-census",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/initialized-census/09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3/attempt-0b2aca79b6b542b0a9f5f8f83bacee21/capture/verification.json",
+          "relativePath": "capture/verification.json",
+          "type": "file",
+          "sha256": "1abaaa3f81c69a06ebd45170a0003b152a43462841e9e289ac3aeda5b46f624a"
+        },
+        {
+          "stageId": "initialized-census",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/initialized-census/09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3/attempt-0b2aca79b6b542b0a9f5f8f83bacee21/capture/trace.json.gz",
+          "relativePath": "capture/trace.json.gz",
+          "type": "file",
+          "sha256": "cedcfb25d0880bc9c4e44ca5bf8bba2772bf2bad3a195929f018bc5739d2a18f"
+        },
+        {
+          "stageId": "initialized-census",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/initialized-census/09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3/attempt-0b2aca79b6b542b0a9f5f8f83bacee21/capture/commands.mon",
+          "relativePath": "capture/commands.mon",
+          "type": "file",
+          "sha256": "c6548387104ef73e71834c15f7c23ed9f22e942938b0a64ffaea33c788fcc1d4"
+        },
+        {
+          "stageId": "initialized-census",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/initialized-census/09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3/attempt-0b2aca79b6b542b0a9f5f8f83bacee21/capture/command.json",
+          "relativePath": "capture/command.json",
+          "type": "file",
+          "sha256": "a5fb57dea57193ac7efbfed9b9af4db505cf677875b3f190e1a3a70517c524c0"
+        },
+        {
+          "stageId": "initialized-census",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/initialized-census/09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3/attempt-0b2aca79b6b542b0a9f5f8f83bacee21/capture/monitor.log",
+          "relativePath": "capture/monitor.log",
+          "type": "file",
+          "sha256": "80a1bcd775d692aeb49fc1bc59244cd64c534d450dcb6f6e124d4eac8f2cc6b7"
+        }
+      ],
+      "cacheKey": "09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/initialized-census/09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3/attempt-0b2aca79b6b542b0a9f5f8f83bacee21",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/initialized-census/09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3/attempt-0b2aca79b6b542b0a9f5f8f83bacee21/stage.log",
+      "wallSeconds": 0.12503112499999997
+    },
+    {
+      "id": "pulse-diagnostic",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 2.5015053750000003,
+      "artifacts": [
+        {
+          "stageId": "pulse-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/baseline-analysis.json",
+          "relativePath": "evidence/baseline-analysis.json",
+          "type": "file",
+          "sha256": "a4bc09fc8263538ebbbc85687d2862fbb43ae7756ee762b1bea06fcf03c4f112"
+        },
+        {
+          "stageId": "pulse-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/pulse-through-gate-off.json",
+          "relativePath": "evidence/pulse-through-gate-off.json",
+          "type": "file",
+          "sha256": "ed29dd63a85d1fc6b9ddc8199de4ca1f6c2f9a12a4b0e13d77af9ccff3e39011"
+        },
+        {
+          "stageId": "pulse-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/shared-filter-updates.json",
+          "relativePath": "evidence/shared-filter-updates.json",
+          "type": "file",
+          "sha256": "0e5ef79401522f1cc3c3b9450cfdc9b6d3d7df8d3a9f984211f1bf57634e40aa"
+        },
+        {
+          "stageId": "pulse-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/parameter-map.json",
+          "relativePath": "evidence/parameter-map.json",
+          "type": "file",
+          "sha256": "350c223cd1192c8c0c8a3ac8fe039c1c20396cce0da3d8fc63d95eb7980a70d6"
+        },
+        {
+          "stageId": "pulse-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/patch.json",
+          "relativePath": "evidence/patch.json",
+          "type": "file",
+          "sha256": "a48e7a37efc0dcc45e2fc400226aa4121b48801f0b441e98eaa8f860fe57c695"
+        },
+        {
+          "stageId": "pulse-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/frozen-pwm.sid",
+          "relativePath": "evidence/frozen-pwm.sid",
+          "type": "file",
+          "sha256": "50185346ecf1551383048614d5f13e43c35fde2e4138a409578dd2b7fb79318a"
+        },
+        {
+          "stageId": "pulse-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/candidate/verification.json",
+          "relativePath": "evidence/candidate/verification.json",
+          "type": "file",
+          "sha256": "1242efd23213d535b1d441479ef2a93feb1c9fbf2fa1fd49dc383488edb6a8bd"
+        },
+        {
+          "stageId": "pulse-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/candidate/trace.json.gz",
+          "relativePath": "evidence/candidate/trace.json.gz",
+          "type": "file",
+          "sha256": "a39580ba5d843d1d625927e7ff67a414f7d58098c3d0fee4b3ad8181ca827197"
+        },
+        {
+          "stageId": "pulse-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/candidate/commands.mon",
+          "relativePath": "evidence/candidate/commands.mon",
+          "type": "file",
+          "sha256": "df2ac48465a75cb89e8dfd6830386f889c730fffc708e9571ebc720d363fd9d2"
+        },
+        {
+          "stageId": "pulse-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/candidate/command.json",
+          "relativePath": "evidence/candidate/command.json",
+          "type": "file",
+          "sha256": "64c84281379ca7665086ff4685d0ef6c1a24767721eb55f8a501e1bad12f59cf"
+        },
+        {
+          "stageId": "pulse-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/candidate/monitor.log",
+          "relativePath": "evidence/candidate/monitor.log",
+          "type": "file",
+          "sha256": "88630eaa6b1bcb8dfa3b0a2f534d3e34c0338a79177292257d5882e057182f5a"
+        },
+        {
+          "stageId": "pulse-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/verification.json",
+          "relativePath": "evidence/verification.json",
+          "type": "file",
+          "sha256": "804cb5b25f0885a042f6800615c4f4892b31e5454718444d086e4ed92ebf04b9"
+        },
+        {
+          "stageId": "pulse-diagnostic",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/changed-pulse-values.json",
+          "relativePath": "evidence/changed-pulse-values.json",
+          "type": "file",
+          "sha256": "841bd08c4f67a6a7aff772d7009ebaf67081c95088c384ea8aa2ccdef5b6b4be"
+        }
+      ],
+      "cacheKey": "6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 2.615598625
+    },
+    {
+      "id": "original-render",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "original-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/original-render/111a218cd49f9750d0ee7315cbb1554cbc1269ea4606ca4c1b30f0faabb00347/attempt-9da74c837a8344c6a889dfcb512ecbf0/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "e990ffa37fb7573465264b9d0855cdd537f1b319831e15091f26d08b53105ad8"
+        },
+        {
+          "stageId": "original-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/original-render/111a218cd49f9750d0ee7315cbb1554cbc1269ea4606ca4c1b30f0faabb00347/attempt-9da74c837a8344c6a889dfcb512ecbf0/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "56ca6b01e732e4935478e71c5180bd91d5fe7433115457e345c5082b3fe86c6a"
+        }
+      ],
+      "cacheKey": "111a218cd49f9750d0ee7315cbb1554cbc1269ea4606ca4c1b30f0faabb00347",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/original-render/111a218cd49f9750d0ee7315cbb1554cbc1269ea4606ca4c1b30f0faabb00347/attempt-9da74c837a8344c6a889dfcb512ecbf0",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/original-render/111a218cd49f9750d0ee7315cbb1554cbc1269ea4606ca4c1b30f0faabb00347/attempt-9da74c837a8344c6a889dfcb512ecbf0/stage.log",
+      "wallSeconds": 0.004281583000000033
+    },
+    {
+      "id": "frozen-render",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "frozen-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/frozen-render/71ed9c1f0aa3ed064b3f153ca3c6e3d5a860873ec2d828ac2b6464258d53d693/attempt-8b53da22e4a24dcb8577df98656f6607/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "594888277e6852842f49a8ce005164f9e8631bdb582dd70b91fdaa4a5fe689d3"
+        },
+        {
+          "stageId": "frozen-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/frozen-render/71ed9c1f0aa3ed064b3f153ca3c6e3d5a860873ec2d828ac2b6464258d53d693/attempt-8b53da22e4a24dcb8577df98656f6607/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "92fc5d8dbb45fa80dae610f03d0721da1f3b8dfe8e314b48e204b340b5574a12"
+        }
+      ],
+      "cacheKey": "71ed9c1f0aa3ed064b3f153ca3c6e3d5a860873ec2d828ac2b6464258d53d693",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/frozen-render/71ed9c1f0aa3ed064b3f153ca3c6e3d5a860873ec2d828ac2b6464258d53d693/attempt-8b53da22e4a24dcb8577df98656f6607",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/frozen-render/71ed9c1f0aa3ed064b3f153ca3c6e3d5a860873ec2d828ac2b6464258d53d693/attempt-8b53da22e4a24dcb8577df98656f6607/stage.log",
+      "wallSeconds": 0.0029970829999999005
+    },
+    {
+      "id": "signal-check",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "signal-check",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/signal-check/dd50b8496a8e7975e5c8931ee57445ae7e2be130533cca98c37c8e7f69665bd2/attempt-b92c36c2b7524ab5a7172f84ea8dcde9/audio.json",
+          "relativePath": "audio.json",
+          "type": "file",
+          "sha256": "d1f374e4f47f0e17a66f0a053d4faa53b5f7fef5c8ca70420d707454e0d4b242"
+        }
+      ],
+      "cacheKey": "dd50b8496a8e7975e5c8931ee57445ae7e2be130533cca98c37c8e7f69665bd2",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/signal-check/dd50b8496a8e7975e5c8931ee57445ae7e2be130533cca98c37c8e7f69665bd2/attempt-b92c36c2b7524ab5a7172f84ea8dcde9",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/signal-check/dd50b8496a8e7975e5c8931ee57445ae7e2be130533cca98c37c8e7f69665bd2/attempt-b92c36c2b7524ab5a7172f84ea8dcde9/stage.log",
+      "wallSeconds": 0.0027621250000002817
+    },
+    {
+      "id": "pulse-comparison",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "pulse-comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-comparison/ecb3f8b39ba5d286a5a517db66a84d75256d1617e0d33a524e82ad60d8d35506/attempt-b1fc3307ca5d4d649f82fb5219af9bdb/original-then-frozen-pulse-8to10s.ab.wav",
+          "relativePath": "original-then-frozen-pulse-8to10s.ab.wav",
+          "type": "file",
+          "sha256": "3aec200cd5d145327bd1f2b4d23af4c4beff17c54e1a39a90d4d58b50bd7dbba"
+        },
+        {
+          "stageId": "pulse-comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-comparison/ecb3f8b39ba5d286a5a517db66a84d75256d1617e0d33a524e82ad60d8d35506/attempt-b1fc3307ca5d4d649f82fb5219af9bdb/original-then-frozen-pulse-8to10s.comparison.json",
+          "relativePath": "original-then-frozen-pulse-8to10s.comparison.json",
+          "type": "file",
+          "sha256": "df2696c657774167cff616c142fbd77d1dc2b100ca1c52cd059269689428f275"
+        }
+      ],
+      "cacheKey": "ecb3f8b39ba5d286a5a517db66a84d75256d1617e0d33a524e82ad60d8d35506",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-comparison/ecb3f8b39ba5d286a5a517db66a84d75256d1617e0d33a524e82ad60d8d35506/attempt-b1fc3307ca5d4d649f82fb5219af9bdb",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-comparison/ecb3f8b39ba5d286a5a517db66a84d75256d1617e0d33a524e82ad60d8d35506/attempt-b1fc3307ca5d4d649f82fb5219af9bdb/stage.log",
+      "wallSeconds": 0.0032685840000001853
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "initialized-census",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/initialized-census/09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3/attempt-0b2aca79b6b542b0a9f5f8f83bacee21/capture/verification.json",
+      "relativePath": "capture/verification.json",
+      "type": "file",
+      "sha256": "1abaaa3f81c69a06ebd45170a0003b152a43462841e9e289ac3aeda5b46f624a"
+    },
+    {
+      "stageId": "initialized-census",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/initialized-census/09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3/attempt-0b2aca79b6b542b0a9f5f8f83bacee21/capture/trace.json.gz",
+      "relativePath": "capture/trace.json.gz",
+      "type": "file",
+      "sha256": "cedcfb25d0880bc9c4e44ca5bf8bba2772bf2bad3a195929f018bc5739d2a18f"
+    },
+    {
+      "stageId": "initialized-census",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/initialized-census/09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3/attempt-0b2aca79b6b542b0a9f5f8f83bacee21/capture/commands.mon",
+      "relativePath": "capture/commands.mon",
+      "type": "file",
+      "sha256": "c6548387104ef73e71834c15f7c23ed9f22e942938b0a64ffaea33c788fcc1d4"
+    },
+    {
+      "stageId": "initialized-census",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/initialized-census/09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3/attempt-0b2aca79b6b542b0a9f5f8f83bacee21/capture/command.json",
+      "relativePath": "capture/command.json",
+      "type": "file",
+      "sha256": "a5fb57dea57193ac7efbfed9b9af4db505cf677875b3f190e1a3a70517c524c0"
+    },
+    {
+      "stageId": "initialized-census",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/initialized-census/09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3/attempt-0b2aca79b6b542b0a9f5f8f83bacee21/capture/monitor.log",
+      "relativePath": "capture/monitor.log",
+      "type": "file",
+      "sha256": "80a1bcd775d692aeb49fc1bc59244cd64c534d450dcb6f6e124d4eac8f2cc6b7"
+    },
+    {
+      "stageId": "pulse-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/baseline-analysis.json",
+      "relativePath": "evidence/baseline-analysis.json",
+      "type": "file",
+      "sha256": "a4bc09fc8263538ebbbc85687d2862fbb43ae7756ee762b1bea06fcf03c4f112"
+    },
+    {
+      "stageId": "pulse-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/pulse-through-gate-off.json",
+      "relativePath": "evidence/pulse-through-gate-off.json",
+      "type": "file",
+      "sha256": "ed29dd63a85d1fc6b9ddc8199de4ca1f6c2f9a12a4b0e13d77af9ccff3e39011"
+    },
+    {
+      "stageId": "pulse-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/shared-filter-updates.json",
+      "relativePath": "evidence/shared-filter-updates.json",
+      "type": "file",
+      "sha256": "0e5ef79401522f1cc3c3b9450cfdc9b6d3d7df8d3a9f984211f1bf57634e40aa"
+    },
+    {
+      "stageId": "pulse-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/parameter-map.json",
+      "relativePath": "evidence/parameter-map.json",
+      "type": "file",
+      "sha256": "350c223cd1192c8c0c8a3ac8fe039c1c20396cce0da3d8fc63d95eb7980a70d6"
+    },
+    {
+      "stageId": "pulse-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/patch.json",
+      "relativePath": "evidence/patch.json",
+      "type": "file",
+      "sha256": "a48e7a37efc0dcc45e2fc400226aa4121b48801f0b441e98eaa8f860fe57c695"
+    },
+    {
+      "stageId": "pulse-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/frozen-pwm.sid",
+      "relativePath": "evidence/frozen-pwm.sid",
+      "type": "file",
+      "sha256": "50185346ecf1551383048614d5f13e43c35fde2e4138a409578dd2b7fb79318a"
+    },
+    {
+      "stageId": "pulse-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/candidate/verification.json",
+      "relativePath": "evidence/candidate/verification.json",
+      "type": "file",
+      "sha256": "1242efd23213d535b1d441479ef2a93feb1c9fbf2fa1fd49dc383488edb6a8bd"
+    },
+    {
+      "stageId": "pulse-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/candidate/trace.json.gz",
+      "relativePath": "evidence/candidate/trace.json.gz",
+      "type": "file",
+      "sha256": "a39580ba5d843d1d625927e7ff67a414f7d58098c3d0fee4b3ad8181ca827197"
+    },
+    {
+      "stageId": "pulse-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/candidate/commands.mon",
+      "relativePath": "evidence/candidate/commands.mon",
+      "type": "file",
+      "sha256": "df2ac48465a75cb89e8dfd6830386f889c730fffc708e9571ebc720d363fd9d2"
+    },
+    {
+      "stageId": "pulse-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/candidate/command.json",
+      "relativePath": "evidence/candidate/command.json",
+      "type": "file",
+      "sha256": "64c84281379ca7665086ff4685d0ef6c1a24767721eb55f8a501e1bad12f59cf"
+    },
+    {
+      "stageId": "pulse-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/candidate/monitor.log",
+      "relativePath": "evidence/candidate/monitor.log",
+      "type": "file",
+      "sha256": "88630eaa6b1bcb8dfa3b0a2f534d3e34c0338a79177292257d5882e057182f5a"
+    },
+    {
+      "stageId": "pulse-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/verification.json",
+      "relativePath": "evidence/verification.json",
+      "type": "file",
+      "sha256": "804cb5b25f0885a042f6800615c4f4892b31e5454718444d086e4ed92ebf04b9"
+    },
+    {
+      "stageId": "pulse-diagnostic",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/changed-pulse-values.json",
+      "relativePath": "evidence/changed-pulse-values.json",
+      "type": "file",
+      "sha256": "841bd08c4f67a6a7aff772d7009ebaf67081c95088c384ea8aa2ccdef5b6b4be"
+    },
+    {
+      "stageId": "original-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/original-render/111a218cd49f9750d0ee7315cbb1554cbc1269ea4606ca4c1b30f0faabb00347/attempt-9da74c837a8344c6a889dfcb512ecbf0/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "e990ffa37fb7573465264b9d0855cdd537f1b319831e15091f26d08b53105ad8"
+    },
+    {
+      "stageId": "original-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/original-render/111a218cd49f9750d0ee7315cbb1554cbc1269ea4606ca4c1b30f0faabb00347/attempt-9da74c837a8344c6a889dfcb512ecbf0/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "56ca6b01e732e4935478e71c5180bd91d5fe7433115457e345c5082b3fe86c6a"
+    },
+    {
+      "stageId": "frozen-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/frozen-render/71ed9c1f0aa3ed064b3f153ca3c6e3d5a860873ec2d828ac2b6464258d53d693/attempt-8b53da22e4a24dcb8577df98656f6607/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "594888277e6852842f49a8ce005164f9e8631bdb582dd70b91fdaa4a5fe689d3"
+    },
+    {
+      "stageId": "frozen-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/frozen-render/71ed9c1f0aa3ed064b3f153ca3c6e3d5a860873ec2d828ac2b6464258d53d693/attempt-8b53da22e4a24dcb8577df98656f6607/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "92fc5d8dbb45fa80dae610f03d0721da1f3b8dfe8e314b48e204b340b5574a12"
+    },
+    {
+      "stageId": "signal-check",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/signal-check/dd50b8496a8e7975e5c8931ee57445ae7e2be130533cca98c37c8e7f69665bd2/attempt-b92c36c2b7524ab5a7172f84ea8dcde9/audio.json",
+      "relativePath": "audio.json",
+      "type": "file",
+      "sha256": "d1f374e4f47f0e17a66f0a053d4faa53b5f7fef5c8ca70420d707454e0d4b242"
+    },
+    {
+      "stageId": "pulse-comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-comparison/ecb3f8b39ba5d286a5a517db66a84d75256d1617e0d33a524e82ad60d8d35506/attempt-b1fc3307ca5d4d649f82fb5219af9bdb/original-then-frozen-pulse-8to10s.ab.wav",
+      "relativePath": "original-then-frozen-pulse-8to10s.ab.wav",
+      "type": "file",
+      "sha256": "3aec200cd5d145327bd1f2b4d23af4c4beff17c54e1a39a90d4d58b50bd7dbba"
+    },
+    {
+      "stageId": "pulse-comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-comparison/ecb3f8b39ba5d286a5a517db66a84d75256d1617e0d33a524e82ad60d8d35506/attempt-b1fc3307ca5d4d649f82fb5219af9bdb/original-then-frozen-pulse-8to10s.comparison.json",
+      "relativePath": "original-then-frozen-pulse-8to10s.comparison.json",
+      "type": "file",
+      "sha256": "df2696c657774167cff616c142fbd77d1dc2b100ca1c52cd059269689428f275"
+    }
+  ],
+  "deliverables": {
+    "initializedMachineCensus": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/initialized-census/09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3/attempt-0b2aca79b6b542b0a9f5f8f83bacee21/capture/verification.json",
+    "orderedMachineCheckpoints": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/initialized-census/09224e9ae5ea3f3a3d55602f0fab937c8b43e21444775e1b75bb7785290318c3/attempt-0b2aca79b6b542b0a9f5f8f83bacee21/capture/trace.json.gz",
+    "boundedMechanismAnalysis": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/baseline-analysis.json",
+    "pulseIsolationVerification": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/verification.json",
+    "privateFrozenPulseSource": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/frozen-pwm.sid",
+    "originalGianaSubtune3First11Seconds": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/original-render/111a218cd49f9750d0ee7315cbb1554cbc1269ea4606ca4c1b30f0faabb00347/attempt-9da74c837a8344c6a889dfcb512ecbf0/render.wav",
+    "sameMaterialFrozenPulseFirst11Seconds": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/frozen-render/71ed9c1f0aa3ed064b3f153ca3c6e3d5a860873ec2d828ac2b6464258d53d693/attempt-8b53da22e4a24dcb8577df98656f6607/render.wav",
+    "originalThenFrozenPulse8to10Seconds": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-comparison/ecb3f8b39ba5d286a5a517db66a84d75256d1617e0d33a524e82ad60d8d35506/attempt-b1fc3307ca5d4d649f82fb5219af9bdb/original-then-frozen-pulse-8to10s.ab.wav",
+    "pulseComparisonReceipt": "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-comparison/ecb3f8b39ba5d286a5a517db66a84d75256d1617e0d33a524e82ad60d8d35506/attempt-b1fc3307ca5d4d649f82fb5219af9bdb/original-then-frozen-pulse-8to10s.comparison.json"
+  },
+  "finishedAt": "2026-10-14T09:40:04.122232+00:00",
+  "wallSeconds": 3.14360975
+}

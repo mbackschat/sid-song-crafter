@@ -19,6 +19,7 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Reconstruct Flashdance and compose dual SID](flashdance-preparation.md): accepted selected-form reconstruction and six-voice raw stereo interpretation, editable instrument programs and an original transfer phrase judged to work.
 - [Study Flashdance: What a Feeling](flashdance-reference.md): verified archive identities, synthesis lessons and a source-to-reference comparison contract.
 - [Reconstruct Shades](shades-preparation.md): accepted independent full-form reconstruction and familiar transfer, CIA proofs and editable pulse/glide programs.
+- [Contrast Shades with Giana](huelsbeck-contrast.md): completed bounded check with initialized pulse/shared-filter evidence, a two-byte PWM diagnostic and audible animation/tone verdict.
 - [Cybernoid II title and reusable programs](cybernoid-ii-preparation.md): complete numeric model, accepted independent title/finite ending and accepted familiar pulse-program transfer.
 - [Monty on the Run reconstruction](monty-preparation.md): complete independent first-cycle export, finite ending and familiar transfer with full CPU/VICE/audio evidence; opening, corrected source continuation and familiar transfer accepted; authored fade retained separately.
 - [Rambo: First Blood Part II](rambo-preparation.md): independent compiled loader, complete CPU/VICE proof, matched listening package and accepted familiar-material transfer of its lifetime/PWM/pitch programs.

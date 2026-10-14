@@ -1,0 +1,53 @@
+radix h
+sidefx off
+dummy off
+bank ram
+load "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/candidate/payload.prg" 0
+load "/Users/mbackschat/Projects/c64-sid-skill/build/giana-verification/cache/pulse-diagnostic/6ffcef8add428640e0cc26eb5d8500fabea6be1770936eb7988e9040a6138b72/attempt-860280239b5740809c58333a6f896a21/evidence/candidate/host.prg" 0
+bank cpu
+> $0000 $2f $37
+> $d01a $00
+> $d019 $ff
+> $dc0d $7f
+> $dd0d $7f
+sidefx on
+m $dc0d $dc0d
+m $dd0d $dd0d
+sidefx off
+> $d418 $0f
+> $dc04 $25 $40
+> $dc0e $01
+> $d011 $9b $37
+> $dc0d $81
+r a=$02,x=$00,y=$00,sp=$ff,fl=$20
+r pc=$0400
+m $0000 $0001
+trace exec $cc86
+break exec $0403
+trace exec $ccf0
+trace exec $ccf1
+trace exec $ccd9
+trace exec $ccb5
+trace store $d400 $d7ff
+trace load $d400 $d7ff
+trace store $d011 $d01a
+trace store $dc00 $ddff
+trace store $0314 $0319
+trace store $0000 $0001
+g
+r
+m $0000 $0001
+m $0314 $0319
+delete 2
+break exec $ccf1
+ignore 13 $0200
+trace load $41ec
+trace store $4263 $4268
+trace store $4219 $421b
+trace store $41f2 $41f4
+trace store $423b $4242
+trace store $424a
+g
+r
+m $0000 $0001
+quit

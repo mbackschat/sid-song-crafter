@@ -111,6 +111,8 @@ Choose fresh output paths. The model CLI writes the complete computed store ledg
 
 ### Behavior lookup for reuse
 
+The [required Giana contrast](huelsbeck-contrast.md) tests which of these contracts survive in another Hülsbeck work. Its bounded execution corroborates pulse motion with GATE clear and narrows the shared-filter scheduling claim; the [instrument card's reuse constraint](instruments/shades-decoded-programs.md#timing-and-articulation-contract) separates the two drivers. Keep the accepted Shades implementation and listening results unchanged.
+
 The [program guards](../../../tests/shades_programs_test.py) connect these rules to executed source transitions or focused source fixtures. The [full transition receipt](../../../evidence/shades-program-model/receipt.json) indexes a lossless named-state delta ledger with ordered source writes, covering every modulation stage and row across the selected span. The [scheduler guards](../../../tests/shades_player_test.py) exercise ordered writes, source-free annotations, a changed pulse parameter and the finite ending. These are behavioral contracts of the inspected driver, not general SID hardware rules.
 
 | Mechanism / parameter | Retained behavior and constraint |

@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "probe-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "giana*_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "scripts/studies/giana/probe-contrast.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/trace-sid-vice.py",
+        ".tools/test-deps/py65",
+        "tests/giana_contrast_test.py",
+        "scripts/studies/giana/analyze-contrast.py",
+        "tests/giana_analysis_test.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "initialized-census",
+      "command": [
+        "{python}",
+        "scripts/studies/giana/probe-contrast.py",
+        "--output",
+        "{out}/capture",
+        "--refreshes",
+        "512"
+      ],
+      "inputs": [
+        "scripts/studies/giana/probe-contrast.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/trace-sid-vice.py",
+        ".tools/test-deps/py65",
+        ".local/research/giana/Great_Giana_Sisters.sid",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib"
+      ],
+      "outputs": [
+        "capture/verification.json",
+        "capture/trace.json.gz",
+        "capture/commands.mon",
+        "capture/command.json",
+        "capture/monitor.log"
+      ],
+      "timeoutSeconds": 70,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "pulse-diagnostic",
+      "command": [
+        "{python}",
+        "scripts/studies/giana/analyze-contrast.py",
+        "--baseline",
+        "{stage:initialized-census}/capture",
+        "--output",
+        "{out}/evidence"
+      ],
+      "inputs": [
+        "scripts/studies/giana/probe-contrast.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/trace-sid-vice.py",
+        ".tools/test-deps/py65",
+        ".local/research/giana/Great_Giana_Sisters.sid",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/studies/giana/analyze-contrast.py",
+        "{stage:initialized-census}/capture/verification.json",
+        "{stage:initialized-census}/capture/trace.json.gz",
+        "{stage:initialized-census}/capture/monitor.log"
+      ],
+      "outputs": [
+        "evidence/baseline-analysis.json",
+        "evidence/pulse-through-gate-off.json",
+        "evidence/shared-filter-updates.json",
+        "evidence/parameter-map.json",
+        "evidence/patch.json",
+        "evidence/frozen-pwm.sid",
+        "evidence/candidate/verification.json",
+        "evidence/candidate/trace.json.gz",
+        "evidence/candidate/commands.mon",
+        "evidence/candidate/command.json",
+        "evidence/candidate/monitor.log",
+        "evidence/verification.json",
+        "evidence/changed-pulse-values.json"
+      ],
+      "timeoutSeconds": 70,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "original-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/giana/Great_Giana_Sisters.sid",
+        "{out}/render.wav",
+        "11",
+        "--subtune",
+        "3",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        ".local/research/giana/Great_Giana_Sisters.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "frozen-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:pulse-diagnostic}/evidence/frozen-pwm.sid",
+        "{out}/render.wav",
+        "11",
+        "--subtune",
+        "3",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:pulse-diagnostic}/evidence/frozen-pwm.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:original-render}/render.wav",
+        "{stage:frozen-render}/render.wav",
+        "--seconds",
+        "11",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:frozen-render}/render.wav"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "pulse-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:original-render}/render.wav",
+        "{stage:frozen-render}/render.wav",
+        "{out}/original-then-frozen-pulse-8to10s",
+        "--start-seconds",
+        "8",
+        "--end-seconds",
+        "10",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:frozen-render}/render.wav"
+      ],
+      "outputs": [
+        "original-then-frozen-pulse-8to10s.ab.wav",
+        "original-then-frozen-pulse-8to10s.comparison.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "initializedMachineCensus": "{stage:initialized-census}/capture/verification.json",
+    "orderedMachineCheckpoints": "{stage:initialized-census}/capture/trace.json.gz",
+    "boundedMechanismAnalysis": "{stage:pulse-diagnostic}/evidence/baseline-analysis.json",
+    "pulseIsolationVerification": "{stage:pulse-diagnostic}/evidence/verification.json",
+    "privateFrozenPulseSource": "{stage:pulse-diagnostic}/evidence/frozen-pwm.sid",
+    "originalGianaSubtune3First11Seconds": "{stage:original-render}/render.wav",
+    "sameMaterialFrozenPulseFirst11Seconds": "{stage:frozen-render}/render.wav",
+    "originalThenFrozenPulse8to10Seconds": "{stage:pulse-comparison}/original-then-frozen-pulse-8to10s.ab.wav",
+    "pulseComparisonReceipt": "{stage:pulse-comparison}/original-then-frozen-pulse-8to10s.comparison.json"
+  }
+}

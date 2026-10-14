@@ -24,6 +24,8 @@ A hold preserves pitch/gate work while modulation continues. A rest requests gat
 
 The low byte of `portamento_step` enables the effect; a nonzero high byte alone does not. Target descent retains the source's unusual equal-high-byte comparison, and delayed vibrato emits two subtraction writes when its delay expires. The filter's fine-step carry threshold is seven. These are verified driver behaviors, not general SID rules; consult [the Python mechanisms](../../../../scripts/shades_programs.py) and owning study before reusing arithmetic in another driver.
 
+The [Giana second-reference check](../huelsbeck-contrast.md) corroborates changing pulse widths while GATE is clear in its bounded in-game opening. It also shows why the filter schedule above must remain driver-specific: two voice paths can advance Giana's shared cutoff state in one raster refresh, whereas Shades advances one global contour per call. Keep routing, state-update ownership and update cadence separate when translating a sound. The listener confirms an original animation/tone difference in Giana's isolated 8–10-second passage; this check does not change the accepted Shades implementation or promote a new Giana instrument.
+
 ## Original transfer phrase
 
 The eight-bar phrase uses C–A minor–F–G, then C–A minor–F–C. Voice 1 plays roots and fifths, voice 2 gives offbeat chord tones, and voice 3 develops an original melody around E4–C5 before resolving to C4. Each bar has 16 rows of ten calls, about two seconds. The first four bars use `pulse-trio`; the second four use `glide-trio`. This compares the gesture in related musical context, rather than claiming an isolated A/B experiment.
