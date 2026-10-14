@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-14",
+  "purpose": "One instrument-only punch trial on the previous fourteen quarter hits, compared against the preferred subtraction",
+  "sharedScore": "../bach-toccata-groove-kick/score.json",
+  "sharedScoreSha256": "7ea40781d2433b3d6081ab738235ae3f098d91924ba7879a4b830d77c5495246",
+  "previousRecipe": "../bach-toccata-groove-kick/hybrid.json",
+  "previousRecipeSha256": "d74de597686f7284298e34c431d4f8b15d7419d7f748ce66cea0f17e9421073d",
+  "instrumentChange": {
+    "instrument": "quarter-kick",
+    "name": "BCHA1PNC",
+    "adsr": "0864",
+    "attack": "One triangle update at A3 then one at A2",
+    "body": "Six gated updates of 50-percent pulse at absolute A1, approximately 55 Hz",
+    "tail": "Program-owned pulse gate clear after the low body; release 4 retains a natural decaying tail",
+    "basis": "Adapt the original DRUM-01 absolute-pitch and delayed-stage mechanism; add pulse harmonics and a broader downward attack to distinguish the kick from a pure low triangle"
+  },
+  "role": "Fourteen sparse quarter accents synchronized to the existing strong A2 pulses; no return of the removed A3 ticking part",
+  "foregroundBassAndAllScoreEventsUnchanged": true,
+  "allOtherInstrumentsUnchanged": true,
+  "filterOwner": "Existing bass only; kick writes no filter values",
+  "target": {
+    "clock": "PAL",
+    "sidModel": "MOS8580",
+    "sidCount": 1
+  },
+  "automaticDiagnostic": "One 44-second voice-3 control-mask render from initialization, with a unity-gain 30\u201343.5-second excerpt; this is not an exact extraction from the complete mix.",
+  "listeningReview": null,
+  "modelAssistanceReview": "Skip unvalidated model preference inference; one paired human audition is the next checkpoint.",
+  "limitations": "The previous triangle kick produced no perceived difference. The new attack/body is a deliberate contrast, not a guaranteed perceptual improvement. Actual body/tail output and scheduling are checked separately from musical acceptance; preferred subtraction remains the fallback."
+}
