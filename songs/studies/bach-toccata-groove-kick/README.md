@@ -1,0 +1,17 @@
+# Bach groove: optional quarter-kick audition
+
+This one optional trial adds a deliberate low bass-drum role to the listener-preferred [subtraction passage](../bach-toccata-groove-subtraction/README.md). That preferred version remains the fallback. The earlier repeated upper A3 accompaniment was removed after the listener confirmed it was the unwanted drum-like sound; this candidate does not restore those thin ticks.
+
+The [editable score](score.json) adds fourteen quarter accents at `31.0975 + n × 0.75` seconds, aligned with the retained A2 bass's strong pulses. Every existing foreground, bass and harmony event remains unchanged. The [native recipe](hybrid.json) appends one unfiltered triangle kick adapted from the original, listening-unaccepted [DRUM-01 mechanism](../../../docs/research/composition/instruments/drum-01-falling-kick.md). Its absolute-pitch program falls through A2 and E2 for one update each, holds A1 for six updates, then clears GATE while retaining the low triangle for release. ADSR `$0464` provides decay, sustain 6 and release 4; no noise, pulse program, ring/sync or filter writes are added. The existing bass retains sole ownership of the shared filter.
+
+The [preparation record](preparation.json) distinguishes this original percussion part from the source-backed Bach material and retains the exact preferred inputs. The [listening recipe](../../../config/listening/bach-toccata-groove-kick.json) builds both full initialized arrangements, checks their CPU schedules and PCM health, limits the intervention to voice 3, and checks the candidate PRG in headless VICE. Its pair plays the preferred subtraction, a half-second gap, then the optional kick, covering performed seconds 30–43.5 at unity gain.
+
+```sh
+python3 scripts/listening-package.py config/listening/bach-toccata-groove-kick.json --output build/bach-toccata-groove-kick-fresh
+```
+
+Listening acceptance is pending. Judge whether these sparse low accents add convincing rhythmic weight and work with the A2 bass. Register control and healthy PCM establish playback, not a convincing drum or a better arrangement. Model-assistance review: skip unvalidated preference inference; this single paired human audition is the next checkpoint.
+
+Executed checks on 2026-10-14 verified all fourteen kicks with one A2 update, one E2 update and six gated A1 updates each, approximately 119.7 ms at 55 Hz. Each program then clears GATE and retains its low triangle and release 4 through the tail. The [fourteen-hit guard](../../../evidence/bach-groove-kick/kick-check.json) retains every hit's registers, timing and limits. The complete candidate has 881 verified notes, against the preferred version's 867; every retained foreground and bass scheduling field matches. Across 4,419 post-call snapshots, changes are confined to voice 3. The standalone PRG passed headless VICE through call 4,400. Both full WAVs are 88.122925 seconds, mono PCM16 at 44.1 kHz, with zero clipping and silent tails; the preferred reference retains its published hash. These controls do not establish the internal envelope curve or drum perception.
+
+Listen to [preferred version then optional kick](../../../build/bach-groove-kick-listening/preferred-then-kick.ab.wav), 27.5 seconds; separate [preferred](../../../build/bach-groove-kick-listening/preferred-passage.wav) and [kick](../../../build/bach-groove-kick-listening/kick-passage.wav) excerpts are retained. Publish fresh copies with the [filename selection](../../../config/listening/bach-toccata-groove-kick-audition.json).
