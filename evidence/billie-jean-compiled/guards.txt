@@ -1,0 +1,36 @@
+test_all_voice_inputs_match_score_returns_and_age_saturates (billie_jean_player_test.BillieJeanPlayerTest) ... ok
+test_completed_glide_stays_cleared_on_later_hold_calls (billie_jean_player_test.BillieJeanPlayerTest) ... ok
+test_ending_closes_actual_restart_control_and_freezes_until_bounded_stop (billie_jean_player_test.BillieJeanPlayerTest) ... ok
+test_ending_preserves_the_music_prefix_and_requires_quiet_confirmation_range (billie_jean_player_test.BillieJeanPlayerTest) ... ok
+test_glide_target_setter_uses_retained_transpose_and_new_plain_note_clears_step (billie_jean_player_test.BillieJeanPlayerTest) ... ok
+test_init_and_hard_restart_have_only_their_native_stores (billie_jean_player_test.BillieJeanPlayerTest) ... ok
+test_initial_sound_cannot_duplicate_score_inputs_or_omit_cold_fields (billie_jean_player_test.BillieJeanPlayerTest) ... ok
+test_legato_uses_retained_phase_without_adsr_or_restart (billie_jean_player_test.BillieJeanPlayerTest) ... ok
+test_numeric_inputs_reinitialize_and_source_annotations_do_not_execute (billie_jean_player_test.BillieJeanPlayerTest) ... ok
+test_rest_uses_body_and_retains_active_glide (billie_jean_player_test.BillieJeanPlayerTest) ... ok
+test_shared_filter_updates_follow_voice_order_and_global_output_is_last (billie_jean_player_test.BillieJeanPlayerTest) ... ok
+test_unsupported_mix_cannot_become_a_silent_edit (billie_jean_player_test.BillieJeanPlayerTest) ... ok
+test_age_saturation_and_final_mode_volume_write_preserve_state (billie_jean_effects_asm_test.BillieJeanEffectsAssemblyTest) ... ok
+test_descending_mixed_stages_age_and_final_global_write (billie_jean_effects_asm_test.BillieJeanEffectsAssemblyTest) ... ok
+test_gate_hold_rest_and_shared_filter_wrap_are_independent (billie_jean_effects_asm_test.BillieJeanEffectsAssemblyTest) ... ok
+test_glide_branch_bypass_and_asymmetric_equal_target (billie_jean_effects_asm_test.BillieJeanEffectsAssemblyTest) ... ok
+test_invalid_jump_returns_bounded_failure_without_sid_writes (billie_jean_effects_asm_test.BillieJeanEffectsAssemblyTest) ... ok
+test_paired_table_jump_relative_absolute_and_hold_paths (billie_jean_effects_asm_test.BillieJeanEffectsAssemblyTest) ... ok
+test_pwm_masks_high_byte_carry_borrow_and_retains_crossing_word (billie_jean_effects_asm_test.BillieJeanEffectsAssemblyTest) ... ok
+test_seeded_admitted_arithmetic_preserves_neighbor_and_table_memory (billie_jean_effects_asm_test.BillieJeanEffectsAssemblyTest) ... ok
+test_setup_paths_preserve_cache_motion_and_native_write_order (billie_jean_effects_asm_test.BillieJeanEffectsAssemblyTest) ... ok
+test_vibrato_delay_high_note_flag_phase_direction_and_word_wrap (billie_jean_effects_asm_test.BillieJeanEffectsAssemblyTest) ... ok
+test_annotations_do_not_enter_payload_and_header_declares_native_target (billie_jean_compiler_test.BillieJeanCompilerTest) ... ok
+test_callable_and_actual_prg_restore_poisoned_cold_state (billie_jean_compiler_test.BillieJeanCompilerTest) ... ok
+test_compiled_ending_uses_actual_control_and_stays_write_free_after_stop (billie_jean_compiler_test.BillieJeanCompilerTest) ... ok
+test_compiled_glide_setters_transpose_and_rest_body_preserve_shared_ownership (billie_jean_compiler_test.BillieJeanCompilerTest) ... ok
+test_decimal_mode_callers_get_binary_row_transpose (billie_jean_compiler_test.BillieJeanCompilerTest) ... ok
+test_full_numeric_admission_rejects_a_late_accessed_frequency_hole (billie_jean_compiler_test.BillieJeanCompilerTest) ... ok
+test_runtime_global_wrap_retains_transpose_and_sound_state (billie_jean_compiler_test.BillieJeanCompilerTest) ... ok
+test_changed_source_requires_an_explicit_new_selection (billie_jean_title_test.BillieJeanTitleTest) ... ok
+test_title_preserves_all_musical_inputs_and_stops_before_the_global_wrap (billie_jean_title_test.BillieJeanTitleTest) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 3.396s
+
+OK

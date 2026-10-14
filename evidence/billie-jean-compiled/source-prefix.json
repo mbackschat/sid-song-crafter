@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "check": "writes",
+  "passed": true,
+  "inputs": [
+    {
+      "label": "source",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/evidence/billie-jean-form/complete14274/writes.json.gz",
+      "sha256": "46a4a4fd40111da355a6eadc06fb4b960d8dc4c446307fa6ca7ec790dbd09b2f",
+      "decompressedSha256": "209f3585b5152b4d4ea7b28baec47277bf44a131a8ee730161858404e6e86267"
+    },
+    {
+      "label": "candidate",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/writes.json",
+      "sha256": "8dec0e7c15c8f5fcd259e2fb9516cb7f81c717c193b093db5831e2517ee7ec34",
+      "decompressedSha256": "8dec0e7c15c8f5fcd259e2fb9516cb7f81c717c193b093db5831e2517ee7ec34"
+    }
+  ],
+  "expectedSourceDecompressedSha256": "209f3585b5152b4d4ea7b28baec47277bf44a131a8ee730161858404e6e86267",
+  "scope": {
+    "initialization": true,
+    "playCalls": 7106,
+    "firstCall": 0,
+    "lastCallInclusive": 7105,
+    "candidatePrefix": true
+  },
+  "identityFields": [
+    "phase",
+    "tick",
+    "address",
+    "value"
+  ],
+  "matchedWrites": 138696,
+  "matchedInitWrites": 3,
+  "matchedPlayWrites": 138693,
+  "excludedCandidateWrites": 7,
+  "claims": {
+    "orderedRegisterWriteIdentity": true,
+    "busCycleIdentity": false,
+    "perceptualAgreement": false
+  }
+}

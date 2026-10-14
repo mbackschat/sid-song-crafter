@@ -102,12 +102,40 @@ class BillieJeanPlayerTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'complete named sound state'):
             player.compute(value)
 
-    def test_unsupported_ending_or_mix_cannot_become_silent_edits(self):
-        for field in ('ending', 'mix'):
-            value = example()
-            value[field] = {}
-            with self.assertRaisesRegex(ValueError, 'Unknown composition fields'):
-                player.compute(value)
+    def test_unsupported_mix_cannot_become_a_silent_edit(self):
+        value = example()
+        value['mix'] = {}
+        with self.assertRaisesRegex(ValueError, 'Unknown composition fields'):
+            player.compute(value)
+
+    def test_ending_closes_actual_restart_control_and_freezes_until_bounded_stop(self):
+        value = example(calls=68)
+        value['score']['initialDivider'] = 1
+        value['initialSound']['filter']['mode'] = 48
+        value['ending'] = dict(startCall=1, releaseCalls=2)
+        result = player.compute(value)
+        self.assertEqual([(item['address'], item['value']) for item in result['writes'] if item['tick'] == 1],
+            [(0xd404, 8), (0xd40b, 8), (0xd412, 8)])
+        self.assertEqual(result['returns'][1]['voices'], result['returns'][0]['voices'])
+        self.assertEqual(result['returns'][2]['score'], result['returns'][0]['score'])
+        self.assertEqual([(item['address'], item['value']) for item in result['writes'] if item['tick'] == 3],
+            [(0xd404, 0), (0xd40b, 0), (0xd412, 0), (0xd418, 48)])
+        self.assertFalse(any(item['tick'] is not None and item['tick'] > 3 for item in result['writes']))
+        self.assertEqual(result['returns'][-1]['ending'], dict(phase=2, nextCall=3,
+            modeVolume=48, heldControls=[0, 0, 0]))
+
+    def test_ending_preserves_the_music_prefix_and_requires_quiet_confirmation_range(self):
+        value = example(calls=72)
+        baseline = player.compute(value, calls=5)
+        value['ending'] = dict(startCall=5, releaseCalls=2)
+        result = player.compute(value)
+        self.assertEqual([item for item in result['writes'] if item['tick'] is None or item['tick'] < 5],
+            baseline['writes'])
+        for actual, expected in zip(result['returns'][:5], baseline['returns']):
+            self.assertEqual({key: data for key, data in actual.items() if key != 'ending'}, expected)
+        value['range']['auditCalls'] = 71
+        with self.assertRaisesRegex(ValueError, '64 calls after'):
+            player.compute(value)
 
     def test_all_voice_inputs_match_score_returns_and_age_saturates(self):
         value = example()

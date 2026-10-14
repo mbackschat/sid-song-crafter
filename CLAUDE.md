@@ -16,7 +16,7 @@ Current verified work and continuation:
 - [Bounded Cybernoid II/Turbo Outrun contrast](docs/research/composition/tel-contrast.md): complete; packed sample playback and a tonal waveform onset are verified, with no audible difference detected in the onset diagnostic.
 - [Monty/Commando contrast](docs/research/composition/hubbard-contrast.md): complete for the bounded scope; no audible difference detected in the isolated percussion diagnostic. All six composer contrasts are closed.
 - [Take On Me](docs/research/composition/take-on-me-preparation.md#familiar-transfer-and-case-closure): complete for the declared introduction/first-loop reconstruction, authored ending and accepted familiar transfer; [reusable pulse lead and filtered bass](docs/research/composition/instruments/take-on-me-decoded-programs.md) retained.
-- Continue with [Billie Jean](docs/research/composition/billie-jean-preparation.md) under the [study-plan order](docs/research/study-plan.md#delivery-order-and-work-in-progress). Keep audio models experimental and preserve human listening authority.
+- [Billie Jean](docs/research/composition/billie-jean-preparation.md#compiled-export-and-listening-package): independent title, finite ending and [familiar transfer](docs/research/composition/instruments/billie-jean-decoded-programs.md) pass CPU/VICE and render checks; phrase, ending and transfer listening verdicts are pending. Finish this case before Airwolf, then Ghostbusters, under the [study-plan order](docs/research/study-plan.md#delivery-order-and-work-in-progress). Keep audio models experimental and preserve human listening authority.
 
 ## Finish musical deliverables
 

@@ -1,0 +1,641 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/billie-jean-elise-transfer.json",
+  "recipeSha256": "ddcf5f70d4bea02e241883070107d7efc0b9c2df1967b33185b8778a97b7758f",
+  "startedAt": "2026-10-14T12:37:36.606889+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "transfer-guards",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 9.863361292,
+      "artifacts": [],
+      "cacheKey": "44152766f1ef9b4974331c4f24f8f664e714c8339a686a08e416738267957e6a",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/transfer-guards/44152766f1ef9b4974331c4f24f8f664e714c8339a686a08e416738267957e6a/attempt-88dab31cd96441df9d75c96f2ac21c3f",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/transfer-guards/44152766f1ef9b4974331c4f24f8f664e714c8339a686a08e416738267957e6a/attempt-88dab31cd96441df9d75c96f2ac21c3f/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 9.875754333
+    },
+    {
+      "id": "prepare-check",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 1.2587740000000007,
+      "artifacts": [],
+      "cacheKey": "1376ec32fcd5a1991c05ff3dfa60716be9d686fb02aa48f7175d4761d0d3c06b",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/prepare-check/1376ec32fcd5a1991c05ff3dfa60716be9d686fb02aa48f7175d4761d0d3c06b/attempt-cc491fede8bc41b0a481e51b0d7e1937",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/prepare-check/1376ec32fcd5a1991c05ff3dfa60716be9d686fb02aa48f7175d4761d0d3c06b/attempt-cc491fede8bc41b0a481e51b0d7e1937/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 1.2650954999999993
+    },
+    {
+      "id": "reference-build",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 1.941305667,
+      "artifacts": [
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "f521239b6f1494881b947ccc32d64818df16047bfe6400fc03d01eb45bbed9fa"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/reconstructed.prg",
+          "relativePath": "candidate/reconstructed.prg",
+          "type": "file",
+          "sha256": "db5a3d5fc94b2c001cf699149ecdf827801b97bc453cb3970c0afa99a5af8c0c"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/verification.json",
+          "relativePath": "candidate/verification.json",
+          "type": "file",
+          "sha256": "d95dd6ef0bb0ed2d4dc4257a9efed9a5c37647b5b4b35c2800d0ae03ef916bec"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "bb58db0e0f785956bcd6a92ffb3902a23a82d9d2ac2686705bc1658c5e375dda"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "3d796da2b785e89fc9bfc1f933755c9d2a715d8424a73f1cac2f34d3c6d54b98"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "ea54df4fd349fade3404bc8be62b19d0308f53133ad8e4c7272bf2f79202f441"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "942b1936d2a5f5be6be49b0b4589b46c755aeeb9420ae8c13477150c0ecf1c49"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "6d01666ef36fccdfaddc6bc34943b6935d883eb1f06e5a569a661a1eb879e14c"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "899e6f5a9c6ed6ad4c69683eef4f3b931d88cf57e39b5b27a8f065633b42ea03"
+        }
+      ],
+      "cacheKey": "260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 1.9632505420000008
+    },
+    {
+      "id": "reference-vice",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 2.0737499579999987,
+      "artifacts": [
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "ddea29f32c187fd717bf8babe3fcca72d8c79ca69126f95612ef23135e55bfc4"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "ff7d92b06fc1bd446c4c5fea0bfcf2481f21e21eb7501335f9521cbc8aa13403"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "a1f51646c43f8a9a529b96f9b7dedae11620d9a82c764b041b839d742653b064"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "928cc157c23b662f09cad39a93a878d9ec1305888805d1358eaa7ac6d253c355"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "2e516c08bec6a011b71554e585e855968baae41e45ef0b4398efd9bc0fb4cd16"
+        }
+      ],
+      "cacheKey": "77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 2.2474760410000005
+    },
+    {
+      "id": "reference-render",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.19035650000000004,
+      "artifacts": [
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-render/4d640c40896b79b333943087bed4c6c5746050dc9ecaab0edb3f6c04569e7d68/attempt-6356fd6e05d64e26963d11a0f3ce6e0a/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "c83bb5baedccbf52d3897ebe9e11b98994327169724cb22f412f9965cf18f819"
+        },
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-render/4d640c40896b79b333943087bed4c6c5746050dc9ecaab0edb3f6c04569e7d68/attempt-6356fd6e05d64e26963d11a0f3ce6e0a/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "430989a4471a3fe7134435d8370985481ef63966a712e20ee838bb48559189b7"
+        }
+      ],
+      "cacheKey": "4d640c40896b79b333943087bed4c6c5746050dc9ecaab0edb3f6c04569e7d68",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-render/4d640c40896b79b333943087bed4c6c5746050dc9ecaab0edb3f6c04569e7d68/attempt-6356fd6e05d64e26963d11a0f3ce6e0a",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-render/4d640c40896b79b333943087bed4c6c5746050dc9ecaab0edb3f6c04569e7d68/attempt-6356fd6e05d64e26963d11a0f3ce6e0a/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.1973293750000007
+    },
+    {
+      "id": "candidate-build",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 3.5264057500000003,
+      "artifacts": [
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "9467ad2234aa8af1369bffff4670d052e77cb7b7301ec877269465ef356ae353"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/reconstructed.prg",
+          "relativePath": "candidate/reconstructed.prg",
+          "type": "file",
+          "sha256": "d24db1941342df56bd8014179b7b38267f646455d77cf85e6b6ee7a55fa6277c"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/verification.json",
+          "relativePath": "candidate/verification.json",
+          "type": "file",
+          "sha256": "259bded9cd7f6d840d69742535f64464ffc1b14f4dd6c4bf1b7a6f97e5b39533"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "2484f8532a24871f318f5eeee8148e75c8ef787f59862a2356647de5ff763a82"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "498a9241f4caaeb6ec67902e7332bda4c977dbbb377c9df3258482c7d93877d0"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "d5133b2e55ca3ac9b1a1737eb6bedc139d901914a54e1d0c2168ef37429964ab"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "3be2a1a3d36981f33132e097f65a0d2334abcb9c16e8144bae51b1561a331e9e"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "9c703987775abccdd4fc12de48128894298baf2edb3f479b40aaf1118268459a"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "899e6f5a9c6ed6ad4c69683eef4f3b931d88cf57e39b5b27a8f065633b42ea03"
+        }
+      ],
+      "cacheKey": "0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 3.545081290999999
+    },
+    {
+      "id": "candidate-vice",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 2.348399875000002,
+      "artifacts": [
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "60c32a04643e35869510795e43e7c3cd391e464922ab618f17495f5010f917b0"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "d3f9d84b3c0d7c7c932fcbe2cb4c405f9b8326d81d62bce5b87af3cf68de3760"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "a7b4c7742fdbc39124396cba884e4f85df8a56030dc23c7d5d35b87d90daca06"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "3b0f4f5aca0e0c94e19115a86b14f4d090355074d063229f11785c5d5a8fc6ca"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "6dfc065f809d69ccb4afce0720f8c6dc8c6d2ccf5cf6fdd2a80fbec3ab625037"
+        }
+      ],
+      "cacheKey": "352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 2.4701531669999994
+    },
+    {
+      "id": "candidate-render",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.19028737500000048,
+      "artifacts": [
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-render/ac157b4db2c6de43ada04f93d6931c3533e7a4e0c0cc358a7710537129d2d65b/attempt-15c17d86a97749f8814106da2f1a007f/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "fddc34a65bdf38546543ef6dcdd2b73dac76b41e5b68c2fb59bac8d331f86d58"
+        },
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-render/ac157b4db2c6de43ada04f93d6931c3533e7a4e0c0cc358a7710537129d2d65b/attempt-15c17d86a97749f8814106da2f1a007f/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "7df5e937a72229c2064160664284cc71dda94f415661497390c81db63f645902"
+        }
+      ],
+      "cacheKey": "ac157b4db2c6de43ada04f93d6931c3533e7a4e0c0cc358a7710537129d2d65b",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-render/ac157b4db2c6de43ada04f93d6931c3533e7a4e0c0cc358a7710537129d2d65b/attempt-15c17d86a97749f8814106da2f1a007f",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-render/ac157b4db2c6de43ada04f93d6931c3533e7a4e0c0cc358a7710537129d2d65b/attempt-15c17d86a97749f8814106da2f1a007f/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.19820858299999955
+    },
+    {
+      "id": "signal-check",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.37476704099999836,
+      "artifacts": [
+        {
+          "stageId": "signal-check",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/signal-check/e27f95a4ef7be46994912fb9edcebf91c55e02468e12e32f53c7ae01d2fb004b/attempt-16fb86f03c144dfbba28ce0526e4e300/audio.json",
+          "relativePath": "audio.json",
+          "type": "file",
+          "sha256": "61d8200b2d4f844a6531dd0c2706cdeec1d5ad0bc474fa7ce5043370fcd9f574"
+        }
+      ],
+      "cacheKey": "e27f95a4ef7be46994912fb9edcebf91c55e02468e12e32f53c7ae01d2fb004b",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/signal-check/e27f95a4ef7be46994912fb9edcebf91c55e02468e12e32f53c7ae01d2fb004b/attempt-16fb86f03c144dfbba28ce0526e4e300",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/signal-check/e27f95a4ef7be46994912fb9edcebf91c55e02468e12e32f53c7ae01d2fb004b/attempt-16fb86f03c144dfbba28ce0526e4e300/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.38500691699999834
+    },
+    {
+      "id": "comparison",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.4121737089999975,
+      "artifacts": [
+        {
+          "stageId": "comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/comparison/634fcbe83845b67b054195982ccfd50a0ddb967d241eb930e525ca33f0b6892b/attempt-335d68ffe93a4d27b641d5521b79bc5f/plain-then-billie-jean.ab.wav",
+          "relativePath": "plain-then-billie-jean.ab.wav",
+          "type": "file",
+          "sha256": "f80e5966210e472d2654589c9491b63100d8936fe0dc1a1483086a436a279a36"
+        },
+        {
+          "stageId": "comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/comparison/634fcbe83845b67b054195982ccfd50a0ddb967d241eb930e525ca33f0b6892b/attempt-335d68ffe93a4d27b641d5521b79bc5f/plain-then-billie-jean.comparison.json",
+          "relativePath": "plain-then-billie-jean.comparison.json",
+          "type": "file",
+          "sha256": "3eddc019a462c34de37233758473a459ed3a3e350de70af5ff7453051490933c"
+        }
+      ],
+      "cacheKey": "634fcbe83845b67b054195982ccfd50a0ddb967d241eb930e525ca33f0b6892b",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/comparison/634fcbe83845b67b054195982ccfd50a0ddb967d241eb930e525ca33f0b6892b/attempt-335d68ffe93a4d27b641d5521b79bc5f",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/comparison/634fcbe83845b67b054195982ccfd50a0ddb967d241eb930e525ca33f0b6892b/attempt-335d68ffe93a4d27b641d5521b79bc5f/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.4260299580000009
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "f521239b6f1494881b947ccc32d64818df16047bfe6400fc03d01eb45bbed9fa"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/reconstructed.prg",
+      "relativePath": "candidate/reconstructed.prg",
+      "type": "file",
+      "sha256": "db5a3d5fc94b2c001cf699149ecdf827801b97bc453cb3970c0afa99a5af8c0c"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/verification.json",
+      "relativePath": "candidate/verification.json",
+      "type": "file",
+      "sha256": "d95dd6ef0bb0ed2d4dc4257a9efed9a5c37647b5b4b35c2800d0ae03ef916bec"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "bb58db0e0f785956bcd6a92ffb3902a23a82d9d2ac2686705bc1658c5e375dda"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "3d796da2b785e89fc9bfc1f933755c9d2a715d8424a73f1cac2f34d3c6d54b98"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "ea54df4fd349fade3404bc8be62b19d0308f53133ad8e4c7272bf2f79202f441"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "942b1936d2a5f5be6be49b0b4589b46c755aeeb9420ae8c13477150c0ecf1c49"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "6d01666ef36fccdfaddc6bc34943b6935d883eb1f06e5a569a661a1eb879e14c"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "899e6f5a9c6ed6ad4c69683eef4f3b931d88cf57e39b5b27a8f065633b42ea03"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "ddea29f32c187fd717bf8babe3fcca72d8c79ca69126f95612ef23135e55bfc4"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "ff7d92b06fc1bd446c4c5fea0bfcf2481f21e21eb7501335f9521cbc8aa13403"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "a1f51646c43f8a9a529b96f9b7dedae11620d9a82c764b041b839d742653b064"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "928cc157c23b662f09cad39a93a878d9ec1305888805d1358eaa7ac6d253c355"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "2e516c08bec6a011b71554e585e855968baae41e45ef0b4398efd9bc0fb4cd16"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-render/4d640c40896b79b333943087bed4c6c5746050dc9ecaab0edb3f6c04569e7d68/attempt-6356fd6e05d64e26963d11a0f3ce6e0a/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "c83bb5baedccbf52d3897ebe9e11b98994327169724cb22f412f9965cf18f819"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-render/4d640c40896b79b333943087bed4c6c5746050dc9ecaab0edb3f6c04569e7d68/attempt-6356fd6e05d64e26963d11a0f3ce6e0a/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "430989a4471a3fe7134435d8370985481ef63966a712e20ee838bb48559189b7"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "9467ad2234aa8af1369bffff4670d052e77cb7b7301ec877269465ef356ae353"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/reconstructed.prg",
+      "relativePath": "candidate/reconstructed.prg",
+      "type": "file",
+      "sha256": "d24db1941342df56bd8014179b7b38267f646455d77cf85e6b6ee7a55fa6277c"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/verification.json",
+      "relativePath": "candidate/verification.json",
+      "type": "file",
+      "sha256": "259bded9cd7f6d840d69742535f64464ffc1b14f4dd6c4bf1b7a6f97e5b39533"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "2484f8532a24871f318f5eeee8148e75c8ef787f59862a2356647de5ff763a82"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "498a9241f4caaeb6ec67902e7332bda4c977dbbb377c9df3258482c7d93877d0"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "d5133b2e55ca3ac9b1a1737eb6bedc139d901914a54e1d0c2168ef37429964ab"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "3be2a1a3d36981f33132e097f65a0d2334abcb9c16e8144bae51b1561a331e9e"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "9c703987775abccdd4fc12de48128894298baf2edb3f479b40aaf1118268459a"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "899e6f5a9c6ed6ad4c69683eef4f3b931d88cf57e39b5b27a8f065633b42ea03"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "60c32a04643e35869510795e43e7c3cd391e464922ab618f17495f5010f917b0"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "d3f9d84b3c0d7c7c932fcbe2cb4c405f9b8326d81d62bce5b87af3cf68de3760"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "a7b4c7742fdbc39124396cba884e4f85df8a56030dc23c7d5d35b87d90daca06"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "3b0f4f5aca0e0c94e19115a86b14f4d090355074d063229f11785c5d5a8fc6ca"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "6dfc065f809d69ccb4afce0720f8c6dc8c6d2ccf5cf6fdd2a80fbec3ab625037"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-render/ac157b4db2c6de43ada04f93d6931c3533e7a4e0c0cc358a7710537129d2d65b/attempt-15c17d86a97749f8814106da2f1a007f/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "fddc34a65bdf38546543ef6dcdd2b73dac76b41e5b68c2fb59bac8d331f86d58"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-render/ac157b4db2c6de43ada04f93d6931c3533e7a4e0c0cc358a7710537129d2d65b/attempt-15c17d86a97749f8814106da2f1a007f/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "7df5e937a72229c2064160664284cc71dda94f415661497390c81db63f645902"
+    },
+    {
+      "stageId": "signal-check",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/signal-check/e27f95a4ef7be46994912fb9edcebf91c55e02468e12e32f53c7ae01d2fb004b/attempt-16fb86f03c144dfbba28ce0526e4e300/audio.json",
+      "relativePath": "audio.json",
+      "type": "file",
+      "sha256": "61d8200b2d4f844a6531dd0c2706cdeec1d5ad0bc474fa7ce5043370fcd9f574"
+    },
+    {
+      "stageId": "comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/comparison/634fcbe83845b67b054195982ccfd50a0ddb967d241eb930e525ca33f0b6892b/attempt-335d68ffe93a4d27b641d5521b79bc5f/plain-then-billie-jean.ab.wav",
+      "relativePath": "plain-then-billie-jean.ab.wav",
+      "type": "file",
+      "sha256": "f80e5966210e472d2654589c9491b63100d8936fe0dc1a1483086a436a279a36"
+    },
+    {
+      "stageId": "comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/comparison/634fcbe83845b67b054195982ccfd50a0ddb967d241eb930e525ca33f0b6892b/attempt-335d68ffe93a4d27b641d5521b79bc5f/plain-then-billie-jean.comparison.json",
+      "relativePath": "plain-then-billie-jean.comparison.json",
+      "type": "file",
+      "sha256": "3eddc019a462c34de37233758473a459ed3a3e350de70af5ff7453051490933c"
+    }
+  ],
+  "deliverables": {
+    "fullReference": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-render/4d640c40896b79b333943087bed4c6c5746050dc9ecaab0edb3f6c04569e7d68/attempt-6356fd6e05d64e26963d11a0f3ce6e0a/render.wav",
+    "fullCandidate": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-render/ac157b4db2c6de43ada04f93d6931c3533e7a4e0c0cc358a7710537129d2d65b/attempt-15c17d86a97749f8814106da2f1a007f/render.wav",
+    "comparison": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/comparison/634fcbe83845b67b054195982ccfd50a0ddb967d241eb930e525ca33f0b6892b/attempt-335d68ffe93a4d27b641d5521b79bc5f/plain-then-billie-jean.ab.wav",
+    "referenceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/verification.json",
+    "candidateProof": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/verification.json",
+    "referenceViceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/study.json",
+    "candidateViceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/study.json",
+    "signalProof": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/signal-check/e27f95a4ef7be46994912fb9edcebf91c55e02468e12e32f53c7ae01d2fb004b/attempt-16fb86f03c144dfbba28ce0526e4e300/audio.json"
+  },
+  "finishedAt": "2026-10-14T12:37:59.300898+00:00",
+  "wallSeconds": 22.693502083
+}

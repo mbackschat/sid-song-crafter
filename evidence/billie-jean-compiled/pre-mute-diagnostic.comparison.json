@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    142.202,
+    142.402
+  ],
+  "window": {
+    "startFrame": 6271108,
+    "endFrame": 6279928,
+    "frames": 8820,
+    "startSeconds": 142.20199546485262,
+    "endSeconds": 142.4019954648526,
+    "durationSeconds": 0.2
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 0,
+  "gapSeconds": 0.0,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-review/pre-mute-diagnostic.ab.wav",
+    "frames": 17640,
+    "durationSeconds": 0.4,
+    "sha256": "c8f71508b51eff0e487ac64036ef43c647c9a7abfef17a71105ea133d2bd5b24"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 8820
+    },
+    {
+      "label": "silence",
+      "startFrame": 8820,
+      "endFrame": 8820
+    },
+    {
+      "label": "B",
+      "startFrame": 8820,
+      "endFrame": 17640
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/candidate-render/b15777232a8b36c4d6242e9c1a1fb46937c7b4b289eff36a6cdf6a36ca7a6cf7/attempt-05a41578c8a847108d59c8a730b871e9/render.wav",
+      "sha256": "1793285759a9cb774b465250757595fab171fa676083a7da55dae281e6d019be",
+      "originalFrames": 6394500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 8820,
+        "durationSeconds": 0.2,
+        "peak": 153,
+        "peakDbfs": -46.61517008284238,
+        "clippedSamples": 0,
+        "rms": 153.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": -153.0,
+            "rms": 153.0,
+            "acRms": 0.0
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/candidate-render/b15777232a8b36c4d6242e9c1a1fb46937c7b4b289eff36a6cdf6a36ca7a6cf7/attempt-05a41578c8a847108d59c8a730b871e9/render.wav",
+      "sha256": "1793285759a9cb774b465250757595fab171fa676083a7da55dae281e6d019be",
+      "originalFrames": 6394500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 8820,
+        "durationSeconds": 0.2,
+        "peak": 153,
+        "peakDbfs": -46.61517008284238,
+        "clippedSamples": 0,
+        "rms": 153.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": -153.0,
+            "rms": 153.0,
+            "acRms": 0.0
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

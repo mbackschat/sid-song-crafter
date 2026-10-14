@@ -31,7 +31,7 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Prepare Deflektor](deflektor-preparation.md): complete editable compiled player with CPU/VICE proof, accepted phrase/ending and accepted familiar transfer.
 - [Daglish contrast: Deflektor and Trap](daglish-contrast.md): pinned second reference, bounded waveform/filter/articulation comparison, explicit musical and extended-form limits.
 - [Take On Me reconstruction and transfer](take-on-me-preparation.md): accepted independent first-loop title, authored ending and familiar transfer; [reusable pulse lead and filtered bass](instruments/take-on-me-decoded-programs.md), source model uncertainty retained.
-- [Prepare Billie Jean](billie-jean-preparation.md): independent score expansion across two cycles, retained sound-state differences, duration intervention and VICE wrap verification.
+- [Billie Jean reconstruction and transfer](billie-jean-preparation.md#compiled-export-and-listening-package): independent first-traversal export, authored finite ending and matched familiar transfer verified; three listening verdicts pending. [Reusable pulse lead and filtered support](instruments/billie-jean-decoded-programs.md) include shared-cutoff setup constraints.
 - [Prepare the pop songs and themes](pop-theme-preparation.md): pinned Take On Me, Billie Jean, Airwolf and Ghostbusters; Airwolf’s independent full-cycle model, bounded callable comparisons, unspecified-model and RSID boundaries.
 
 Study [the composers and their tools](../composers/README.md) before choosing a sound palette. A correct note sequence is a technical baseline; musical quality also requires phrasing, contrast, texture, and listening review.

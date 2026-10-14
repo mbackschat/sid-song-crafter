@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "sourcePrefixCalls": 7106,
+  "releaseCalls": 32,
+  "stopCall": 7138,
+  "confirmationCalls": 64,
+  "lastActiveVolumeSnapshotMs": 142414,
+  "firstFinalZeroVolumeSnapshotMs": 142432,
+  "snapshotLimits": "Renderer snapshots bracket the transition; they are not exact bus timestamps.",
+  "preMuteWindowSeconds": [
+    142.202,
+    142.402
+  ],
+  "preMuteAcRms": 0,
+  "preMuteDc": -153,
+  "finalOneSecondAcRms": 0,
+  "finalOneSecondDc": -157,
+  "candidateWavSha256": "1793285759a9cb774b465250757595fab171fa676083a7da55dae281e6d019be",
+  "basis": "pre-mute-diagnostic.comparison.json and audio.json; 200 ms window ends 30 ms before first final zero-volume snapshot.",
+  "limitations": "Measured settled PCM before/after mute supports decay inspection; naturalness and completeness require human listening."
+}

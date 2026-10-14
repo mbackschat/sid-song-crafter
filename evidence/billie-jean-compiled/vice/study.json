@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "evidenceLevel": "Executed 6510 program in headless VICE",
+  "sourceSha256": "4fb7d61f616fc983e2e677646c1b7a88f74f4994e92d7f783c5b34cd5010d487",
+  "oracleSha256": "8dec0e7c15c8f5fcd259e2fb9516cb7f81c717c193b093db5831e2517ee7ec34",
+  "harnessSha256": "6be6af0882046b76b4ad48c4576d93e17109be8f481fe94676476124c9db0f77",
+  "viceSha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285",
+  "profile": {
+    "loadAddress": 4096,
+    "endAddress": 11681,
+    "initAddress": 4096,
+    "playAddress": 4112,
+    "sidModel": "MOS6581",
+    "sidBases": [
+      54272
+    ],
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS6581"
+      }
+    ],
+    "subtunes": 1,
+    "defaultSubtune": 1,
+    "selectedSubtune": 1,
+    "initAccumulator": 0,
+    "entryBank": 54,
+    "profile": "pal-banked",
+    "hostBase": 49152
+  },
+  "harnessLabels": {
+    "init_return": 49210,
+    "restore_bank": 49215,
+    "wait": 49219,
+    "call": 49226,
+    "play_return": 49229,
+    "check_count": 49237,
+    "leave": 49251,
+    "done": 49261
+  },
+  "verification": {
+    "matchedWrites": 138703,
+    "playCalls": 7203,
+    "firstCall": 0,
+    "lastCall": 7202,
+    "frameCycles": 19656,
+    "maximumCadenceError": 5,
+    "cadenceTolerance": 9,
+    "matchedInitWrites": 3,
+    "matchedPlayWrites": 138700
+  },
+  "writers": {
+    "1006": {
+      "instruction": "STA $D404",
+      "opcodeHex": "8d04d4",
+      "addresses": [
+        "d404"
+      ],
+      "writes": 1
+    },
+    "1009": {
+      "instruction": "STA $D40B",
+      "opcodeHex": "8d0bd4",
+      "addresses": [
+        "d40b"
+      ],
+      "writes": 1
+    },
+    "100c": {
+      "instruction": "STA $D412",
+      "opcodeHex": "8d12d4",
+      "addresses": [
+        "d412"
+      ],
+      "writes": 1
+    },
+    "193a": {
+      "instruction": "STA $D417",
+      "opcodeHex": "8d17d4",
+      "addresses": [
+        "d417"
+      ],
+      "writes": 19831
+    },
+    "1967": {
+      "instruction": "STA $D404,Y",
+      "opcodeHex": "9904d4",
+      "addresses": [
+        "d404",
+        "d40b",
+        "d412"
+      ],
+      "writes": 19926
+    },
+    "196d": {
+      "instruction": "STA $D400,Y",
+      "opcodeHex": "9900d4",
+      "addresses": [
+        "d400",
+        "d407",
+        "d40e"
+      ],
+      "writes": 19926
+    },
+    "1973": {
+      "instruction": "STA $D401,Y",
+      "opcodeHex": "9901d4",
+      "addresses": [
+        "d401",
+        "d408",
+        "d40f"
+      ],
+      "writes": 19926
+    },
+    "1979": {
+      "instruction": "STA $D402,Y",
+      "opcodeHex": "9902d4",
+      "addresses": [
+        "d402",
+        "d409",
+        "d410"
+      ],
+      "writes": 19926
+    },
+    "197f": {
+      "instruction": "STA $D403,Y",
+      "opcodeHex": "9903d4",
+      "addresses": [
+        "d403",
+        "d40a",
+        "d411"
+      ],
+      "writes": 19926
+    },
+    "1925": {
+      "instruction": "STA $D416",
+      "opcodeHex": "8d16d4",
+      "addresses": [
+        "d416"
+      ],
+      "writes": 6558
+    },
+    "1994": {
+      "instruction": "STA $D418",
+      "opcodeHex": "8d18d4",
+      "addresses": [
+        "d418"
+      ],
+      "writes": 7106
+    },
+    "16d7": {
+      "instruction": "STA $D404,Y",
+      "opcodeHex": "9904d4",
+      "addresses": [
+        "d404",
+        "d40b",
+        "d412"
+      ],
+      "writes": 1392
+    },
+    "16dc": {
+      "instruction": "STA $D405,Y",
+      "opcodeHex": "9905d4",
+      "addresses": [
+        "d405",
+        "d40c",
+        "d413"
+      ],
+      "writes": 1392
+    },
+    "16e1": {
+      "instruction": "STA $D406,Y",
+      "opcodeHex": "9906d4",
+      "addresses": [
+        "d406",
+        "d40d",
+        "d414"
+      ],
+      "writes": 1392
+    },
+    "16e6": {
+      "instruction": "STA $D404,Y",
+      "opcodeHex": "9904d4",
+      "addresses": [
+        "d404",
+        "d40b",
+        "d412"
+      ],
+      "writes": 1392
+    },
+    "1046": {
+      "instruction": "STA $D404",
+      "opcodeHex": "8d04d4",
+      "addresses": [
+        "d404"
+      ],
+      "writes": 1
+    },
+    "1051": {
+      "instruction": "STA $D40B",
+      "opcodeHex": "8d0bd4",
+      "addresses": [
+        "d40b"
+      ],
+      "writes": 1
+    },
+    "105c": {
+      "instruction": "STA $D412",
+      "opcodeHex": "8d12d4",
+      "addresses": [
+        "d412"
+      ],
+      "writes": 1
+    },
+    "1089": {
+      "instruction": "STA $D404",
+      "opcodeHex": "8d04d4",
+      "addresses": [
+        "d404"
+      ],
+      "writes": 1
+    },
+    "108c": {
+      "instruction": "STA $D40B",
+      "opcodeHex": "8d0bd4",
+      "addresses": [
+        "d40b"
+      ],
+      "writes": 1
+    },
+    "108f": {
+      "instruction": "STA $D412",
+      "opcodeHex": "8d12d4",
+      "addresses": [
+        "d412"
+      ],
+      "writes": 1
+    },
+    "109a": {
+      "instruction": "STA $D418",
+      "opcodeHex": "8d18d4",
+      "addresses": [
+        "d418"
+      ],
+      "writes": 1
+    }
+  },
+  "limitations": "A controlled RAM harness calls the original init/play once per PAL frame with IRQs, sprites and display DMA disabled. This is not the original player boot environment. Tracepoint stopwatch/raster values describe monitor checkpoints, not exact SID bus-write cycles. Store values are decoded from unchanged store-source CPU registers and checked against an independent ordered-write oracle. No audio or listening verdict follows from this trace."
+}

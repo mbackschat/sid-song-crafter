@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "16d8eae4d22f368520589c44e9db399b64092664bee6e1e70ca4b21c60bf0c54",
+  "sourceUnchanged": true,
+  "retainedExecutionRecheck": true,
+  "freshCPUExecution": false,
+  "freshNumericComputation": true,
+  "playCalls": 14274,
+  "matchedWrites": 278617,
+  "matchedScoreReturns": 14274,
+  "matchedSoundCalls": 7107,
+  "matchedBoundaries": 49749,
+  "coldStateSourceBoundary": 5285,
+  "controls": [
+    {
+      "name": "control",
+      "kind": "duration",
+      "calls": 128,
+      "sourceVariantSha256": "16d8eae4d22f368520589c44e9db399b64092664bee6e1e70ca4b21c60bf0c54",
+      "matchedWrites": 2541,
+      "noteCallsVoice0": [
+        2,
+        14,
+        26,
+        38,
+        50,
+        62,
+        74,
+        86,
+        98,
+        110,
+        122
+      ]
+    },
+    {
+      "name": "first-pattern-duration",
+      "kind": "duration",
+      "calls": 128,
+      "sourceVariantSha256": "426662741f28b64ef8e5c717779e22a2c4ab464ced8dc6323df31188c008036a",
+      "matchedWrites": 2541,
+      "noteCallsVoice0": [
+        2,
+        11,
+        23,
+        35,
+        47,
+        59,
+        71,
+        83,
+        95,
+        104,
+        116
+      ]
+    },
+    {
+      "name": "pulse-step",
+      "kind": "sound",
+      "calls": 1500,
+      "sourceVariantSha256": "e9287d00eca7a503e71c0e7e2df8a339ba0c76c8d131667d272e64ad6c92a151",
+      "matchedWrites": 29385,
+      "matchedBoundaries": 10500,
+      "declaredPorts": [
+        54274,
+        54275,
+        54281,
+        54282,
+        54288,
+        54289
+      ],
+      "onlyDeclaredPortsChanged": true
+    },
+    {
+      "name": "vibrato-step",
+      "kind": "sound",
+      "calls": 1500,
+      "sourceVariantSha256": "fa24662848ee71c847ba75b682deb2bf78a8e360f8160aadbeed96b97ef7aff7",
+      "matchedWrites": 29385,
+      "matchedBoundaries": 10500,
+      "declaredPorts": [
+        54272,
+        54273,
+        54279,
+        54280,
+        54286,
+        54287
+      ],
+      "onlyDeclaredPortsChanged": true
+    },
+    {
+      "name": "attack-pitch",
+      "kind": "sound",
+      "calls": 1500,
+      "sourceVariantSha256": "f4bcf1aa43a39436776f8eb90292ad094cd01f824bf47f60b35f67c9699ab65e",
+      "matchedWrites": 29385,
+      "matchedBoundaries": 10500,
+      "declaredPorts": [
+        54272,
+        54273,
+        54279,
+        54280,
+        54286,
+        54287
+      ],
+      "onlyDeclaredPortsChanged": true
+    },
+    {
+      "name": "cutoff-start-and-step",
+      "kind": "sound",
+      "calls": 1500,
+      "sourceVariantSha256": "0a82eb12efc40474ef4c7cf3ade34470125d42cd318be5bd9543f6028b73dddf",
+      "matchedWrites": 29385,
+      "matchedBoundaries": 10500,
+      "declaredPorts": [
+        54294
+      ],
+      "onlyDeclaredPortsChanged": true
+    }
+  ],
+  "inputs": {
+    "evidence/billie-jean-score/score.json": "5bfd916f53621d80fa244bf723fac482b0740b023dc20e518feb4651d1414b0c",
+    "evidence/billie-jean-score/receipt.json": "6d5b9f1c591060b2d2025f655e8d8c7c39174567959fb9be2303c91f6e40427e",
+    "evidence/billie-jean-form/complete14274/receipt.json": "0842d671114d8cc3b65075adf6b180f885df5844e936ff5e4298528858d46809",
+    "evidence/billie-jean-form/complete14274/returns.json.gz": "82dcbfea6a733cdcc6c8e5ef422b85e1982c9ac1db61dce277a2536450abdc56",
+    "evidence/billie-jean-form/complete14274/writes.json.gz": "46a4a4fd40111da355a6eadc06fb4b960d8dc4c446307fa6ca7ec790dbd09b2f",
+    "evidence/billie-jean-form/edit128/receipt.json": "f7038b67c2066594ad24144391be5ea21ea13f576827329091ac72f85af9a274",
+    "evidence/billie-jean-form/edit128/cases.json.gz": "f61c09978eef276287377e3e01bbc41c8e3da0197c7d6c891c2de4a5f4abad9c"
+  },
+  "soundReceiptSha256": "92ca2d309074ea26297f3028827e998dcf09edd912b332870a8e0759cf960621",
+  "soundOutputHashes": {
+    "attack-pitch.contexts.json": "4aa9ccb9e5c8fb33ed6c9239a763b6d60b48bbe64dde93935a812f4a08889e23",
+    "attack-pitch.description.json": "1904c91c97375b910254dcc47bea78dd734d55fd31d390ec5c988ee537ce2d41",
+    "attack-pitch.reads.json": "ddd95475ecbbe5a4c7a980a0f9443b1abc79e26d3d956e74f92075bcb23cf458",
+    "attack-pitch.writes.json": "36777a515839cda7d40155b8261de77a4b53a2352e95aac85451c56f47b31b8a",
+    "contexts.json": "1f63003a7afee356c16af609f211f4824f9bbcaaadbb1f7773125ff2510ff3c4",
+    "cutoff-start-and-step.contexts.json": "42af73aaa2fde6b7e0fc1606853bb7914c3d4959720c34c3cbf6fa689a59eae0",
+    "cutoff-start-and-step.description.json": "1c2b248d993073ae9dc4430b8b5d1cbe5e456785dbd7c5ce3f4aac5aea891042",
+    "cutoff-start-and-step.reads.json": "5a3960f98a86f24da1f21a8d9235b5d0f42b515770612d8a63964e29556ffc85",
+    "cutoff-start-and-step.writes.json": "aa8f41c2f107105780c0cfe0dceb8e35c64c9ea7156f86ab9c1cebb01524ee36",
+    "description.json": "98098c1a8beb7f8058e687916660f41a262edcf25ac970d487d945237d98884b",
+    "initialSound.json": "fafb8c36f58efd6cdb3cc67ed969afc56293894a707e37673b5051c813abc3d2",
+    "pulse-step.contexts.json": "7f9ef394f7ff914922ff29e340a1e76b76c47b4a281e10d99927f6cab5a64d7f",
+    "pulse-step.description.json": "a8f1f3660313bc0cf95b674eccdd34f7f298da940c2785d9b08f73827b267459",
+    "pulse-step.reads.json": "29d076562529a31027ef29d918a9e22390c6eb511fd3a534ce0adcfbf26f9172",
+    "pulse-step.writes.json": "94acefa4efd42f24173e03c0f9b071528a3c693cad4e76a02c82b000d7da6442",
+    "reads.json": "4d33e2199dadff89aee66c88d7252f9487bb73c9721442cbaf65ead8885c5d4d",
+    "vibrato-step.contexts.json": "81d4a7d63af290f73178d81dbf054f23dd06466d7e5131fa428b1edb20d49554",
+    "vibrato-step.description.json": "43302f37ba5cee9bf07d9255035c16e23a1a47c0a856b7a60630c6473cf0888e",
+    "vibrato-step.reads.json": "69c8bf90adbe487b2e1997ab3235cc6909d98b85ebbe47338dc76048ee8d971f",
+    "vibrato-step.writes.json": "393facb1fdfa782817cdf9ded6e99fce12bee300f607a47e7eb253f25a81dfa1",
+    "writes.json": "55c07c542427fcbbe19c4caebc50cfff84d490c94d3dcccd450723263f2be444"
+  },
+  "producerSoundToolHashes": {
+    "billie_jean_programs.py": "58833e2f272f8654fc2c71b940697c41632bc6ca0977a831f708d04798117d1f",
+    "sound-probe.py": "b79df35729e6a5060300e2836098918207e206d5288f27580cf9a5635e3fc1e0"
+  },
+  "producerOracleToolHashes": {
+    "psid_audit.py": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0",
+    "psid_profile.py": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107",
+    "sid_clock.py": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "tools": {
+    "scripts/studies/billie-jean/check-player.py": "9499d271a102161efb871ef3a3a4ed3ee89b6160ae95a064416768ed997e0a40",
+    "scripts/studies/billie-jean/billie_jean_player.py": "851e0f089b93c7302648c7b65f16ce1e9668673d7f267c47d43f563209a4fa0a",
+    "scripts/studies/billie-jean/billie_jean_programs.py": "58833e2f272f8654fc2c71b940697c41632bc6ca0977a831f708d04798117d1f",
+    "scripts/studies/billie-jean/billie_jean_score.py": "adb17b0aeb9eb8f99df1fc42a4292a32214dca6f97ac173cfe1701bcef48f04e",
+    "scripts/evidence.py": "2765b8b3bfbc0a32297b3ef781cb2165ec0d270ef1698095f5e6cf5e835aad07"
+  },
+  "limits": "Independent numeric integration matches all retained original init/play stores and score returns across 14,274 calls, plus 7,107-call named sound boundaries and six retained source-copy cases. Runtime consumes numeric score/sound/cold state only. No new CPU/VICE traversal in this checker, compiled export, bus timing, acoustic recurrence, authored ending or listening verdict.",
+  "outputHashes": {
+    "returns.json": "8fb2def056cedb459b76f2af802cb7468829f35702819f71eeb0044558bb4009",
+    "writes.json": "b7bb0cb16b5ea3216373e0c198117e185ce6908fa88b26f2c705db9cd344e31f",
+    "contexts.json": "861a160f02b5ef2c3e82a8ef2e96dceda1fb659d5619b4a9a7908f1c565cc0f0",
+    "composition.json": "96d551545f6532b385efde01b8823045ed9b26d1fd2407d90d89783bdd9d1164"
+  }
+}

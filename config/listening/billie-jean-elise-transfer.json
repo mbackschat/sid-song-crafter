@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "transfer-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "billie_jean_transfer_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "scripts/studies/billie-jean/prepare-elise.py",
+        "songs/fuer-elise.json",
+        "evidence/billie-jean-player/composition.json",
+        "songs/studies/billie-jean-elise/reference.json",
+        "songs/studies/billie-jean-elise/transfer.json",
+        "songs/studies/billie-jean-elise/preparation.json",
+        "scripts/studies/billie-jean/billie_jean_player.py",
+        "scripts/studies/billie-jean/billie_jean_score.py",
+        "scripts/studies/billie-jean/billie_jean_programs.py",
+        "scripts/sid_clock.py",
+        "tests/billie_jean_transfer_test.py",
+        "evidence/billie-jean-sound/description.json",
+        "evidence/billie-jean-sound/contexts.json.gz",
+        "evidence/billie-jean-sound/receipt.json"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "prepare-check",
+      "command": [
+        "{python}",
+        "scripts/studies/billie-jean/prepare-elise.py",
+        "--check",
+        "--output",
+        "songs/studies/billie-jean-elise"
+      ],
+      "inputs": [
+        "scripts/studies/billie-jean/prepare-elise.py",
+        "songs/fuer-elise.json",
+        "evidence/billie-jean-player/composition.json",
+        "songs/studies/billie-jean-elise/reference.json",
+        "songs/studies/billie-jean-elise/transfer.json",
+        "songs/studies/billie-jean-elise/preparation.json",
+        "scripts/studies/billie-jean/billie_jean_player.py",
+        "scripts/studies/billie-jean/billie_jean_score.py",
+        "scripts/studies/billie-jean/billie_jean_programs.py",
+        "scripts/sid_clock.py",
+        "evidence/billie-jean-sound/description.json",
+        "evidence/billie-jean-sound/contexts.json.gz",
+        "evidence/billie-jean-sound/receipt.json"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference-build",
+      "command": [
+        "{python}",
+        "scripts/studies/billie-jean/compose.py",
+        "songs/studies/billie-jean-elise/reference.json",
+        "--output",
+        "{out}/candidate"
+      ],
+      "inputs": [
+        "songs/studies/billie-jean-elise/reference.json",
+        "scripts/studies/billie-jean/compose.py",
+        "scripts/studies/billie-jean/billie_jean_compiler.py",
+        "scripts/studies/billie-jean/billie_jean_player.py",
+        "scripts/studies/billie-jean/billie_jean_score.py",
+        "scripts/studies/billie-jean/billie_jean_programs.py",
+        "scripts/studies/billie-jean/billie_jean_effects_asm.py",
+        "songs/players/billie-jean.asm",
+        "scripts/sid_assembler.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "candidate/reconstructed.sid",
+        "candidate/reconstructed.prg",
+        "candidate/verification.json",
+        "candidate/audit.json",
+        "candidate/writes.json",
+        "candidate/state-checkpoints.json",
+        "candidate/player.asm",
+        "candidate/player.listing",
+        "candidate/build.json"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference-vice",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:reference-build}/candidate/reconstructed.sid",
+        "--oracle",
+        "{stage:reference-build}/candidate/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "597",
+        "--timeout",
+        "300",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:reference-build}/candidate/reconstructed.sid",
+        "{stage:reference-build}/candidate/writes.json",
+        "scripts/trace-sid-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/study.json",
+        "vice/trace.json",
+        "vice/monitor.log",
+        "vice/command.json",
+        "vice/commands.mon"
+      ],
+      "timeoutSeconds": 330,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:reference-build}/candidate/reconstructed.sid",
+        "{out}/render.wav",
+        "12",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:reference-build}/candidate/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate-build",
+      "command": [
+        "{python}",
+        "scripts/studies/billie-jean/compose.py",
+        "songs/studies/billie-jean-elise/transfer.json",
+        "--output",
+        "{out}/candidate"
+      ],
+      "inputs": [
+        "songs/studies/billie-jean-elise/transfer.json",
+        "scripts/studies/billie-jean/compose.py",
+        "scripts/studies/billie-jean/billie_jean_compiler.py",
+        "scripts/studies/billie-jean/billie_jean_player.py",
+        "scripts/studies/billie-jean/billie_jean_score.py",
+        "scripts/studies/billie-jean/billie_jean_programs.py",
+        "scripts/studies/billie-jean/billie_jean_effects_asm.py",
+        "songs/players/billie-jean.asm",
+        "scripts/sid_assembler.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "candidate/reconstructed.sid",
+        "candidate/reconstructed.prg",
+        "candidate/verification.json",
+        "candidate/audit.json",
+        "candidate/writes.json",
+        "candidate/state-checkpoints.json",
+        "candidate/player.asm",
+        "candidate/player.listing",
+        "candidate/build.json"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate-vice",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:candidate-build}/candidate/reconstructed.sid",
+        "--oracle",
+        "{stage:candidate-build}/candidate/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "597",
+        "--timeout",
+        "300",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:candidate-build}/candidate/reconstructed.sid",
+        "{stage:candidate-build}/candidate/writes.json",
+        "scripts/trace-sid-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/study.json",
+        "vice/trace.json",
+        "vice/monitor.log",
+        "vice/command.json",
+        "vice/commands.mon"
+      ],
+      "timeoutSeconds": 330,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:candidate-build}/candidate/reconstructed.sid",
+        "{out}/render.wav",
+        "12",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:candidate-build}/candidate/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "--seconds",
+        "12",
+        "--output",
+        "{out}/audio.json",
+        "--tail-seconds",
+        "1",
+        "--max-tail-ac-rms",
+        "1"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{out}/plain-then-billie-jean",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "12",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "plain-then-billie-jean.ab.wav",
+        "plain-then-billie-jean.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "fullReference": "{stage:reference-render}/render.wav",
+    "fullCandidate": "{stage:candidate-render}/render.wav",
+    "comparison": "{stage:comparison}/plain-then-billie-jean.ab.wav",
+    "referenceProof": "{stage:reference-build}/candidate/verification.json",
+    "candidateProof": "{stage:candidate-build}/candidate/verification.json",
+    "referenceViceProof": "{stage:reference-vice}/vice/study.json",
+    "candidateViceProof": "{stage:candidate-vice}/vice/study.json",
+    "signalProof": "{stage:signal-check}/audio.json"
+  }
+}

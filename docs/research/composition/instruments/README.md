@@ -14,6 +14,7 @@
 - [Deflektor tonal programs](deflektor-decoded-programs.md): accepted familiar 53-note transfer of moving-pulse melody, bass and support; computed low-byte PWM, delayed raw-word pitch and explicit release adaptation.
 
 - [Take On Me tonal programs](take-on-me-decoded-programs.md): accepted matched A440 familiar transfer with one-way pulse lead, delayed vibrato, moving-pulse filtered bass and explicit native articulation limits.
+- [Billie Jean pulse lead and filtered support](billie-jean-decoded-programs.md): matched A440 familiar transfer technically verified, musical acceptance pending; inspect setup cutoff writes even for unfiltered voices.
 
 ## Original SID-Wizard instruments
 

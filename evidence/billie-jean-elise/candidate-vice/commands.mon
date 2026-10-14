@@ -1,0 +1,21 @@
+radix h
+sidefx off
+dummy off
+bank ram
+fill $0002 $cfff $00
+fill $e000 $ffff $00
+load "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/payload.prg" 0
+load "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/harness.prg" 0
+r a=$00,x=$00,y=$00,sp=$ff,fl=$24
+r pc=$c000
+trace exec $1000
+trace exec $c03a
+trace exec $1010
+trace exec $c04a
+trace store $d400 $d41f if (@ram:$c102 != $00) || ((((@ram:$c101 * $0100) + @ram:$c100) >= $0000) && (((@ram:$c101 * $0100) + @ram:$c100) <= $0255))
+until $c06d
+r
+bank ram
+d $1000 $2000
+m $1000 $2b59
+quit

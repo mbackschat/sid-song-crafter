@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "9467ad2234aa8af1369bffff4670d052e77cb7b7301ec877269465ef356ae353",
+  "cpu": "py65 NMOS 6502",
+  "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+  "sidModel": "MOS6581",
+  "sidCount": 1,
+  "sids": [
+    {
+      "baseAddress": 54272,
+      "model": "MOS6581"
+    }
+  ],
+  "loadAddress": 4096,
+  "initAddress": 4096,
+  "playAddress": 4112,
+  "clockHz": 985248.6111111111,
+  "playCalls": 598,
+  "callRateHz": 50.12457321485099,
+  "initCycles": 1756,
+  "maximumPlayCycles": 1692,
+  "meanPlayCycles": 1132.7173913043478,
+  "frameCycleBudget": 19656,
+  "initWriteCount": 3,
+  "playWriteCount": 10404,
+  "registers": {
+    "d400": {
+      "writes": 466,
+      "distinctValues": 28,
+      "minimum": 10,
+      "maximum": 254
+    },
+    "d401": {
+      "writes": 466,
+      "distinctValues": 21,
+      "minimum": 17,
+      "maximum": 175
+    },
+    "d402": {
+      "writes": 466,
+      "distinctValues": 4,
+      "minimum": 63,
+      "maximum": 255
+    },
+    "d403": {
+      "writes": 466,
+      "distinctValues": 9,
+      "minimum": 7,
+      "maximum": 15
+    },
+    "d404": {
+      "writes": 538,
+      "distinctValues": 6,
+      "minimum": 0,
+      "maximum": 65
+    },
+    "d405": {
+      "writes": 35,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d406": {
+      "writes": 35,
+      "distinctValues": 1,
+      "minimum": 72,
+      "maximum": 72
+    },
+    "d407": {
+      "writes": 495,
+      "distinctValues": 6,
+      "minimum": 22,
+      "maximum": 207
+    },
+    "d408": {
+      "writes": 495,
+      "distinctValues": 3,
+      "minimum": 1,
+      "maximum": 7
+    },
+    "d409": {
+      "writes": 495,
+      "distinctValues": 32,
+      "minimum": 0,
+      "maximum": 248
+    },
+    "d40a": {
+      "writes": 495,
+      "distinctValues": 14,
+      "minimum": 0,
+      "maximum": 14
+    },
+    "d40b": {
+      "writes": 509,
+      "distinctValues": 4,
+      "minimum": 0,
+      "maximum": 65
+    },
+    "d40c": {
+      "writes": 6,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d40d": {
+      "writes": 6,
+      "distinctValues": 1,
+      "minimum": 134,
+      "maximum": 134
+    },
+    "d40e": {
+      "writes": 489,
+      "distinctValues": 8,
+      "minimum": 22,
+      "maximum": 247
+    },
+    "d40f": {
+      "writes": 489,
+      "distinctValues": 8,
+      "minimum": 1,
+      "maximum": 29
+    },
+    "d410": {
+      "writes": 489,
+      "distinctValues": 32,
+      "minimum": 0,
+      "maximum": 248
+    },
+    "d411": {
+      "writes": 489,
+      "distinctValues": 14,
+      "minimum": 0,
+      "maximum": 14
+    },
+    "d412": {
+      "writes": 515,
+      "distinctValues": 4,
+      "minimum": 0,
+      "maximum": 65
+    },
+    "d413": {
+      "writes": 12,
+      "distinctValues": 1,
+      "minimum": 7,
+      "maximum": 7
+    },
+    "d414": {
+      "writes": 12,
+      "distinctValues": 1,
+      "minimum": 134,
+      "maximum": 134
+    },
+    "d416": {
+      "writes": 984,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 32
+    },
+    "d417": {
+      "writes": 1450,
+      "distinctValues": 2,
+      "minimum": 244,
+      "maximum": 246
+    },
+    "d418": {
+      "writes": 502,
+      "distinctValues": 2,
+      "minimum": 48,
+      "maximum": 59
+    }
+  },
+  "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+}

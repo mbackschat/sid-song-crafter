@@ -14806,6 +14806,656 @@
       "originalBytes": 6786,
       "sha256": "1246c0712c8c7fb9a2f8019abd23e1cf22aa3fa66a7416818cb570a3f5efa27c",
       "bytes": 6786
+    },
+    {
+      "path": "evidence/billie-jean-compiled/run-executed.json",
+      "originalPath": "build/billie-jean-full-promotion/run-executed.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain recipe provenance, cached execution and scoped audition/ending assessment.",
+      "originalSha256": "d1464786a2ed43544ac624fa418dbbfb94157a5fa556d23906590156e500c1c8",
+      "originalBytes": 35471,
+      "sha256": "d1464786a2ed43544ac624fa418dbbfb94157a5fa556d23906590156e500c1c8",
+      "bytes": 35471
+    },
+    {
+      "path": "evidence/billie-jean-compiled/run-reused.json",
+      "originalPath": "build/billie-jean-full-promotion/run-reused.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain recipe provenance, cached execution and scoped audition/ending assessment.",
+      "originalSha256": "791e64a973be9d94519fe8966c6089366937835a4df8bc36bb384cc62ad71709",
+      "originalBytes": 34995,
+      "sha256": "791e64a973be9d94519fe8966c6089366937835a4df8bc36bb384cc62ad71709",
+      "bytes": 34995
+    },
+    {
+      "path": "evidence/billie-jean-compiled/model-review.json",
+      "originalPath": "build/billie-jean-full-promotion/model-review.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain recipe provenance, cached execution and scoped audition/ending assessment.",
+      "originalSha256": "e45a178bb09789bb2e63f70035fb8b98eaf82024c37dd3a7ffed7354aef26839",
+      "originalBytes": 546,
+      "sha256": "e45a178bb09789bb2e63f70035fb8b98eaf82024c37dd3a7ffed7354aef26839",
+      "bytes": 546
+    },
+    {
+      "path": "evidence/billie-jean-compiled/ending-measurements.json",
+      "originalPath": "build/billie-jean-full-promotion/ending-measurements.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain recipe provenance, cached execution and scoped audition/ending assessment.",
+      "originalSha256": "11e78c1234d067d14188e73e2bf2c87fdec6178ba3e073f8ed170e757f9f3379",
+      "originalBytes": 828,
+      "sha256": "11e78c1234d067d14188e73e2bf2c87fdec6178ba3e073f8ed170e757f9f3379",
+      "bytes": 828
+    },
+    {
+      "path": "evidence/billie-jean-compiled/guards.txt",
+      "originalPath": "build/billie-jean-full-work/cache/export-guards/edfa8750d217d41a0d1eb9e83ec3ca87937a33831553d7d009caf058bd409fb0/attempt-910354f85c6f4a21827e2106845216ce/stage.log",
+      "group": "billie-jean-compiled",
+      "reason": "Retain compiled/player/ending guard results.",
+      "originalSha256": "effa8523bd2d40cb22b04feb05556c04703d3acc7f0efdc6bd6c79f08c30bacb",
+      "originalBytes": 3892,
+      "sha256": "effa8523bd2d40cb22b04feb05556c04703d3acc7f0efdc6bd6c79f08c30bacb",
+      "bytes": 3892
+    },
+    {
+      "path": "evidence/billie-jean-compiled/reference.json",
+      "originalPath": "build/billie-jean-full-work/cache/reference-pin/824b379e9ba96f88ca0d8eb6c083f8a8dd116cfdd05a5cf01c7af966b2bec6e6/attempt-7ec0b1c28b5b4853b989a791f61a90d7/reference.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain original source fingerprint without its payload.",
+      "originalSha256": "80e26c0a554c6a4dc59c5f17470c4f7ac00065b7acb8fd48f08c68131dcec204",
+      "originalBytes": 388,
+      "sha256": "80e26c0a554c6a4dc59c5f17470c4f7ac00065b7acb8fd48f08c68131dcec204",
+      "bytes": 388
+    },
+    {
+      "path": "evidence/billie-jean-compiled/candidate/verification.json",
+      "originalPath": "build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/verification.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain our generated program and complete independent CPU verification; omit SID/PRG binaries.",
+      "originalSha256": "4ed2a8265397390458679cd4add25b72c978a711955d4570257a860149937076",
+      "originalBytes": 8110,
+      "sha256": "4ed2a8265397390458679cd4add25b72c978a711955d4570257a860149937076",
+      "bytes": 8110
+    },
+    {
+      "path": "evidence/billie-jean-compiled/candidate/audit.json",
+      "originalPath": "build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/audit.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain our generated program and complete independent CPU verification; omit SID/PRG binaries.",
+      "originalSha256": "2ece54b0d63e84ffedecdabd0a858e8131b4878b90c11684b4d4c82d109d4751",
+      "originalBytes": 3653,
+      "sha256": "2ece54b0d63e84ffedecdabd0a858e8131b4878b90c11684b4d4c82d109d4751",
+      "bytes": 3653
+    },
+    {
+      "path": "evidence/billie-jean-compiled/candidate/build.json",
+      "originalPath": "build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/build.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain our generated program and complete independent CPU verification; omit SID/PRG binaries.",
+      "originalSha256": "69b896d35efa23bd1271d4dbc544078d5ab1223773012e0d5dec6bdbcce95d4d",
+      "originalBytes": 7931,
+      "sha256": "69b896d35efa23bd1271d4dbc544078d5ab1223773012e0d5dec6bdbcce95d4d",
+      "bytes": 7931
+    },
+    {
+      "path": "evidence/billie-jean-compiled/candidate/writes.json.gz",
+      "originalPath": "build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/writes.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain our generated program and complete independent CPU verification; omit SID/PRG binaries.",
+      "originalSha256": "8dec0e7c15c8f5fcd259e2fb9516cb7f81c717c193b093db5831e2517ee7ec34",
+      "originalBytes": 11686246,
+      "sha256": "d8fa5dba9844eb2ff493c17fee2416419fc74bcee19843f2a2f9a506441bf06b",
+      "bytes": 672857
+    },
+    {
+      "path": "evidence/billie-jean-compiled/candidate/state-checkpoints.json.gz",
+      "originalPath": "build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/state-checkpoints.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain our generated program and complete independent CPU verification; omit SID/PRG binaries.",
+      "originalSha256": "fc1bb3520f9da5edfd5fcd27f9c4beaafd957caf84f8815282b51db7c7510f26",
+      "originalBytes": 27336,
+      "sha256": "25406ed46e08d86b4873d4f59701bd9d54943ddcc245ece68a9ef84d8221b0f7",
+      "bytes": 1160
+    },
+    {
+      "path": "evidence/billie-jean-compiled/candidate/player.asm.gz",
+      "originalPath": "build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/player.asm",
+      "group": "billie-jean-compiled",
+      "reason": "Retain our generated program and complete independent CPU verification; omit SID/PRG binaries.",
+      "originalSha256": "12d86e348edbd2d91ec50fbd06cfdf709cc8f68268a33b59a1f5989ad58623bf",
+      "originalBytes": 39853,
+      "sha256": "43ab78fb9473089cd26e06f6ae20a6104cb04a3360591c696591da50f60782dd",
+      "bytes": 4493
+    },
+    {
+      "path": "evidence/billie-jean-compiled/candidate/player.listing.gz",
+      "originalPath": "build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/player.listing",
+      "group": "billie-jean-compiled",
+      "reason": "Retain our generated program and complete independent CPU verification; omit SID/PRG binaries.",
+      "originalSha256": "7138b4f9596c7c3c2b979bea9ab3274f29dfa10f6d61302681693111bc89232e",
+      "originalBytes": 58206,
+      "sha256": "98f3e76014703df03c3f93f7ab75af61a01ced2ece93ae736eeb89bfa26f52ca",
+      "bytes": 7627
+    },
+    {
+      "path": "evidence/billie-jean-compiled/source-prefix.json",
+      "originalPath": "build/billie-jean-full-work/cache/numeric-source-check/f514d6c3a885d1aa2d1eec4e5a78aa1fa266a0bb1f0d0703966745811ae0b320/attempt-2f336c9dee1c4722b10c61e1578a746b/source-prefix.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain exact source-prefix comparison separately from seven authored ending stores.",
+      "originalSha256": "ce9cc190c84b20245afcf0ab995204d544cc54acf2c72afe1d0c4e3fa64b65d6",
+      "originalBytes": 1432,
+      "sha256": "ce9cc190c84b20245afcf0ab995204d544cc54acf2c72afe1d0c4e3fa64b65d6",
+      "bytes": 1432
+    },
+    {
+      "path": "evidence/billie-jean-compiled/vice/study.json",
+      "originalPath": "build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/study.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain independent VICE checkpoint proof and reproduction commands for our compiled player.",
+      "originalSha256": "3de6a8b5882315e951edfc6ee9ee42584d46f2b57c7f0a645d919d81a6f3aa84",
+      "originalBytes": 5409,
+      "sha256": "3de6a8b5882315e951edfc6ee9ee42584d46f2b57c7f0a645d919d81a6f3aa84",
+      "bytes": 5409
+    },
+    {
+      "path": "evidence/billie-jean-compiled/vice/trace.json.gz",
+      "originalPath": "build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/trace.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain independent VICE checkpoint proof and reproduction commands for our compiled player.",
+      "originalSha256": "4929da7741b9d32d5e6193f778cc30f6ce3286d7decc46f060bd8c9ba4805cd3",
+      "originalBytes": 59813961,
+      "sha256": "cd41b7b943d3fdb8e2129085ff470b806d4db172e565be7baf9a74fa2c0c143e",
+      "bytes": 1960848
+    },
+    {
+      "path": "evidence/billie-jean-compiled/vice/monitor.txt.gz",
+      "originalPath": "build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/monitor.log",
+      "group": "billie-jean-compiled",
+      "reason": "Retain independent VICE checkpoint proof and reproduction commands for our compiled player.",
+      "originalSha256": "442a1de9f9ea1ae307ce5da46b1007438b4104fddab0a7079b4f9cbaeada4b69",
+      "originalBytes": 18479483,
+      "sha256": "0c4e3a476e3e80df59d630936fe10df5c738932824aefe3ef8b5c2106b01b959",
+      "bytes": 1587186
+    },
+    {
+      "path": "evidence/billie-jean-compiled/vice/command.json",
+      "originalPath": "build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/command.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain independent VICE checkpoint proof and reproduction commands for our compiled player.",
+      "originalSha256": "1c9b49ef8ada6580be2bae55041bdf5477c12ba14c7231f07d0540ef0884b41c",
+      "originalBytes": 829,
+      "sha256": "1c9b49ef8ada6580be2bae55041bdf5477c12ba14c7231f07d0540ef0884b41c",
+      "bytes": 829
+    },
+    {
+      "path": "evidence/billie-jean-compiled/vice/commands.mon",
+      "originalPath": "build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/commands.mon",
+      "group": "billie-jean-compiled",
+      "reason": "Retain independent VICE checkpoint proof and reproduction commands for our compiled player.",
+      "originalSha256": "48181f73c158dfed04bcd0ab64d024a49e3548634e3fb7dddd96f880d7ded418",
+      "originalBytes": 822,
+      "sha256": "48181f73c158dfed04bcd0ab64d024a49e3548634e3fb7dddd96f880d7ded418",
+      "bytes": 822
+    },
+    {
+      "path": "evidence/billie-jean-compiled/reference-render/console.txt",
+      "originalPath": "build/billie-jean-full-work/cache/reference-render/73940159afc6135f366dd4e6f613b7e35355baec53f758722198b2e74464c8c7/attempt-9a68c0eeca864493b8fa6bdc017702a2/stage.log",
+      "group": "billie-jean-compiled",
+      "reason": "Retain renderer identity/settings without rendered audio.",
+      "originalSha256": "708da57bd6609a39a9ee704aad7006eb5083900e6c68ede55606a6ab3f7ca815",
+      "originalBytes": 126,
+      "sha256": "708da57bd6609a39a9ee704aad7006eb5083900e6c68ede55606a6ab3f7ca815",
+      "bytes": 126
+    },
+    {
+      "path": "evidence/billie-jean-compiled/reference-render/registers.tsv.gz",
+      "originalPath": "build/billie-jean-full-promotion/reference-render-registers.tsv",
+      "group": "billie-jean-compiled",
+      "reason": "Retain numeric 32-register renderer snapshots; this is tabular data, not audio.",
+      "originalSha256": "d0fdcacd184277c54a1d4f5e171e80517499f0d096d82a84962160831a70ddca",
+      "originalBytes": 563619,
+      "sha256": "46bfc9c1e8a74b08c8a1dc4a3179e13b3686e54e3df57e135926dc83e7faa89f",
+      "bytes": 57716
+    },
+    {
+      "path": "evidence/billie-jean-compiled/candidate-render/console.txt",
+      "originalPath": "build/billie-jean-full-work/cache/candidate-render/b15777232a8b36c4d6242e9c1a1fb46937c7b4b289eff36a6cdf6a36ca7a6cf7/attempt-05a41578c8a847108d59c8a730b871e9/stage.log",
+      "group": "billie-jean-compiled",
+      "reason": "Retain renderer identity/settings without rendered audio.",
+      "originalSha256": "708da57bd6609a39a9ee704aad7006eb5083900e6c68ede55606a6ab3f7ca815",
+      "originalBytes": 126,
+      "sha256": "708da57bd6609a39a9ee704aad7006eb5083900e6c68ede55606a6ab3f7ca815",
+      "bytes": 126
+    },
+    {
+      "path": "evidence/billie-jean-compiled/candidate-render/registers.tsv.gz",
+      "originalPath": "build/billie-jean-full-promotion/candidate-render-registers.tsv",
+      "group": "billie-jean-compiled",
+      "reason": "Retain numeric 32-register renderer snapshots; this is tabular data, not audio.",
+      "originalSha256": "be9ef9bf08076e4d0ea523c5324190378bc205ede92cb33d08ad5bdc092c03c4",
+      "originalBytes": 563619,
+      "sha256": "bd4a33c33778efb4c1d62be446f3bcb0b8c8d5c89b17c82b183d2c0377d17237",
+      "bytes": 57419
+    },
+    {
+      "path": "evidence/billie-jean-compiled/audio.json",
+      "originalPath": "build/billie-jean-full-work/cache/signal-check/f76d6dc7a435ffa6d7b66253487bd697aa86733f977fd84ec59e12bd60a1506d/attempt-00aadf4e1ccc47d2a0a6e4bd6be4a6b8/audio.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain PCM health/tail measurements and audio hashes without WAV bytes.",
+      "originalSha256": "7c3f93e854a1651810a03553caf3cfccb924a9155c8604ac2972190ba3ac2688",
+      "originalBytes": 2766,
+      "sha256": "7c3f93e854a1651810a03553caf3cfccb924a9155c8604ac2972190ba3ac2688",
+      "bytes": 2766
+    },
+    {
+      "path": "evidence/billie-jean-compiled/listening/opening-reference-then-ours.comparison.json",
+      "originalPath": "build/billie-jean-full-work/cache/opening/5c05f6cccebce9bc0366bf80ac26c16ed173e9b023c34e4f32b0860ac10ff8b9/attempt-052810a885014b34b8e0230f5afb2800/opening-reference-then-ours.comparison.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain exact matched audition windows, order, unity gain and audio fingerprints.",
+      "originalSha256": "e05696235f665036ab4f48dfa88539f0ee6c5b242d5112bd2374b161d999883b",
+      "originalBytes": 3091,
+      "sha256": "e05696235f665036ab4f48dfa88539f0ee6c5b242d5112bd2374b161d999883b",
+      "bytes": 3091
+    },
+    {
+      "path": "evidence/billie-jean-compiled/listening/ending-reference-then-ours.comparison.json",
+      "originalPath": "build/billie-jean-full-work/cache/ending/317e15616c8e1f4abccd420d6566e89b85a0acc8f09b35a04380a2cc84950247/attempt-cebb4ae73e904558a392813f67146424/ending-reference-then-ours.comparison.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain exact matched audition windows, order, unity gain and audio fingerprints.",
+      "originalSha256": "4817410b5b5d07d95eec21129bf2b59015d1b89fbeea5582812fd5a9c330e384",
+      "originalBytes": 3102,
+      "sha256": "4817410b5b5d07d95eec21129bf2b59015d1b89fbeea5582812fd5a9c330e384",
+      "bytes": 3102
+    },
+    {
+      "path": "evidence/billie-jean-compiled/listening/phrase-reference-then-ours.comparison.json",
+      "originalPath": "build/billie-jean-full-work/cache/phrase/564a0ea8167f584d82ba97e34b395c2e73e2f4d3544f41935c324737e9257089/attempt-c7b92413f7414a7d9a8aade51580795b/phrase-reference-then-ours.comparison.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain exact matched audition windows, order, unity gain and audio fingerprints.",
+      "originalSha256": "3418fcd605ff3343af730bf19fa29a3ad85f048a6769267e0e837a2ce7dc9327",
+      "originalBytes": 3095,
+      "sha256": "3418fcd605ff3343af730bf19fa29a3ad85f048a6769267e0e837a2ce7dc9327",
+      "bytes": 3095
+    },
+    {
+      "path": "evidence/billie-jean-compiled/listening/submission.json",
+      "originalPath": "build/billie-jean-listening/sources.json",
+      "group": "billie-jean-compiled",
+      "reason": "Bind immutable listening filenames to checked recipe outputs and audio hashes.",
+      "originalSha256": "2c931b96c388f4dfd54ba09487ebbb70bc251d996b70008733834b66436e4358",
+      "originalBytes": 2816,
+      "sha256": "2c931b96c388f4dfd54ba09487ebbb70bc251d996b70008733834b66436e4358",
+      "bytes": 2816
+    },
+    {
+      "path": "evidence/billie-jean-compiled/pre-mute-diagnostic.comparison.json",
+      "originalPath": "build/billie-jean-full-review/pre-mute-diagnostic.comparison.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain the same-candidate PCM measurement immediately before the final mute, not a musical A/B verdict.",
+      "originalSha256": "a11e99ffad974a4b17a636bc636670d94f9ac6bbdab8809cd7b0ed1951c7f4c8",
+      "originalBytes": 2813,
+      "sha256": "a11e99ffad974a4b17a636bc636670d94f9ac6bbdab8809cd7b0ed1951c7f4c8",
+      "bytes": 2813
+    },
+    {
+      "path": "evidence/billie-jean-compiled/ending-boundary-review.json",
+      "originalPath": "build/billie-jean-ending-review.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain the original first-traversal boundary observations and explicit finite-ending proposal.",
+      "originalSha256": "51565d23c7573c58e88b3c54e26a6b731d4eeeaefebd516c4a8e41816ec1cf7c",
+      "originalBytes": 17582,
+      "sha256": "51565d23c7573c58e88b3c54e26a6b731d4eeeaefebd516c4a8e41816ec1cf7c",
+      "bytes": 17582
+    },
+    {
+      "path": "evidence/billie-jean-compiled/post-ending-numeric-recheck.json",
+      "originalPath": "build/billie-jean-player-work/cache/player-proof/2c545a77e546c4a60fc3f8f995ced84ca2bf1d2bd2ca1e36ea5ff9a4a93838d4/attempt-ba797552a4c04866a0da06cc11e669d8/proof/receipt.json",
+      "group": "billie-jean-compiled",
+      "reason": "Confirm ending support leaves every original two-cycle numeric output byte-identical.",
+      "originalSha256": "0fc26a0f01226e9e5f28840102927148778cf1a3516697694dbd7039491d4374",
+      "originalBytes": 7968,
+      "sha256": "0fc26a0f01226e9e5f28840102927148778cf1a3516697694dbd7039491d4374",
+      "bytes": 7968
+    },
+    {
+      "path": "evidence/billie-jean-compiled/post-ending-numeric-run.json",
+      "originalPath": "build/billie-jean-player-work/run.json",
+      "group": "billie-jean-compiled",
+      "reason": "Retain the executed baseline recheck after the ending extension.",
+      "originalSha256": "7ab3b8496a084b4cc48e669269ffd8e620615df781446777007a35f6f7a9843a",
+      "originalBytes": 6837,
+      "sha256": "7ab3b8496a084b4cc48e669269ffd8e620615df781446777007a35f6f7a9843a",
+      "bytes": 6837
+    },
+    {
+      "path": "evidence/billie-jean-elise/run.json",
+      "originalPath": "build/billie-jean-elise-work/run.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain complete executed matched-transfer recipe and fingerprints.",
+      "originalSha256": "9df0bad4d4c16da7596fb638eacce3c4e1caf8de85028522f7fe519c71ee59bb",
+      "originalBytes": 41622,
+      "sha256": "9df0bad4d4c16da7596fb638eacce3c4e1caf8de85028522f7fe519c71ee59bb",
+      "bytes": 41622
+    },
+    {
+      "path": "evidence/billie-jean-elise/guards.txt",
+      "originalPath": "build/billie-jean-elise-work/cache/transfer-guards/44152766f1ef9b4974331c4f24f8f664e714c8339a686a08e416738267957e6a/attempt-88dab31cd96441df9d75c96f2ac21c3f/stage.log",
+      "group": "billie-jean-elise",
+      "reason": "Retain eight score/palette/preparation guard results.",
+      "originalSha256": "051c668495246348bd30ccd42033d0c8d222b198cba7f68e489523d602b35ef9",
+      "originalBytes": 1109,
+      "sha256": "051c668495246348bd30ccd42033d0c8d222b198cba7f68e489523d602b35ef9",
+      "bytes": 1109
+    },
+    {
+      "path": "evidence/billie-jean-elise/reference/verification.json",
+      "originalPath": "build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/verification.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain our independently compiled program and CPU state/store verification; exclude SID/PRG binaries.",
+      "originalSha256": "d95dd6ef0bb0ed2d4dc4257a9efed9a5c37647b5b4b35c2800d0ae03ef916bec",
+      "originalBytes": 7815,
+      "sha256": "d95dd6ef0bb0ed2d4dc4257a9efed9a5c37647b5b4b35c2800d0ae03ef916bec",
+      "bytes": 7815
+    },
+    {
+      "path": "evidence/billie-jean-elise/reference/audit.json",
+      "originalPath": "build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/audit.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain our independently compiled program and CPU state/store verification; exclude SID/PRG binaries.",
+      "originalSha256": "bb58db0e0f785956bcd6a92ffb3902a23a82d9d2ac2686705bc1658c5e375dda",
+      "originalBytes": 3486,
+      "sha256": "bb58db0e0f785956bcd6a92ffb3902a23a82d9d2ac2686705bc1658c5e375dda",
+      "bytes": 3486
+    },
+    {
+      "path": "evidence/billie-jean-elise/reference/build.json",
+      "originalPath": "build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/build.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain our independently compiled program and CPU state/store verification; exclude SID/PRG binaries.",
+      "originalSha256": "899e6f5a9c6ed6ad4c69683eef4f3b931d88cf57e39b5b27a8f065633b42ea03",
+      "originalBytes": 6767,
+      "sha256": "899e6f5a9c6ed6ad4c69683eef4f3b931d88cf57e39b5b27a8f065633b42ea03",
+      "bytes": 6767
+    },
+    {
+      "path": "evidence/billie-jean-elise/reference/writes.json.gz",
+      "originalPath": "build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/writes.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain our independently compiled program and CPU state/store verification; exclude SID/PRG binaries.",
+      "originalSha256": "3d796da2b785e89fc9bfc1f933755c9d2a715d8424a73f1cac2f34d3c6d54b98",
+      "originalBytes": 782225,
+      "sha256": "6dc454cf6ec197ee751ddbf1678df571c59dbdcc6727890fac1a26675706880c",
+      "bytes": 37388
+    },
+    {
+      "path": "evidence/billie-jean-elise/reference/state-checkpoints.json.gz",
+      "originalPath": "build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/state-checkpoints.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain our independently compiled program and CPU state/store verification; exclude SID/PRG binaries.",
+      "originalSha256": "ea54df4fd349fade3404bc8be62b19d0308f53133ad8e4c7272bf2f79202f441",
+      "originalBytes": 27077,
+      "sha256": "14067d4c082c0ed7873064d506ae65fabdfe9f3c8daebaf996cf7cb490c59b1f",
+      "bytes": 1033
+    },
+    {
+      "path": "evidence/billie-jean-elise/reference/player.asm.gz",
+      "originalPath": "build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/player.asm",
+      "group": "billie-jean-elise",
+      "reason": "Retain our independently compiled program and CPU state/store verification; exclude SID/PRG binaries.",
+      "originalSha256": "942b1936d2a5f5be6be49b0b4589b46c755aeeb9420ae8c13477150c0ecf1c49",
+      "originalBytes": 36813,
+      "sha256": "67ae2b16665583b6f3abdd3249f471144add442fac22a6b8aab7f565089035fc",
+      "bytes": 3567
+    },
+    {
+      "path": "evidence/billie-jean-elise/reference/player.listing.gz",
+      "originalPath": "build/billie-jean-elise-work/cache/reference-build/260569b0074d0f8175d414f7dea48a0e9eed357dcb50b644baa50af591746b4d/attempt-9f96c08f13fa4bbcaa4a41bc94efa181/candidate/player.listing",
+      "group": "billie-jean-elise",
+      "reason": "Retain our independently compiled program and CPU state/store verification; exclude SID/PRG binaries.",
+      "originalSha256": "6d01666ef36fccdfaddc6bc34943b6935d883eb1f06e5a569a661a1eb879e14c",
+      "originalBytes": 54139,
+      "sha256": "7b26e56169aa6a55be19a9d8e2756747d69fa1b35dabe2aa2601d8dcb0806fe0",
+      "bytes": 5924
+    },
+    {
+      "path": "evidence/billie-jean-elise/reference-vice/study.json",
+      "originalPath": "build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/study.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain full controlled-host VICE proof and reproduction commands.",
+      "originalSha256": "ddea29f32c187fd717bf8babe3fcca72d8c79ca69126f95612ef23135e55bfc4",
+      "originalBytes": 5238,
+      "sha256": "ddea29f32c187fd717bf8babe3fcca72d8c79ca69126f95612ef23135e55bfc4",
+      "bytes": 5238
+    },
+    {
+      "path": "evidence/billie-jean-elise/reference-vice/trace.json.gz",
+      "originalPath": "build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/trace.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain full controlled-host VICE proof and reproduction commands.",
+      "originalSha256": "ff7d92b06fc1bd446c4c5fea0bfcf2481f21e21eb7501335f9521cbc8aa13403",
+      "originalBytes": 4122089,
+      "sha256": "694b1868a2947a3465930e8cd28816a2d36f2fc9eab2070187e7cbf396bf4295",
+      "bytes": 120741
+    },
+    {
+      "path": "evidence/billie-jean-elise/reference-vice/monitor.txt.gz",
+      "originalPath": "build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/monitor.log",
+      "group": "billie-jean-elise",
+      "reason": "Retain full controlled-host VICE proof and reproduction commands.",
+      "originalSha256": "a1f51646c43f8a9a529b96f9b7dedae11620d9a82c764b041b839d742653b064",
+      "originalBytes": 1388991,
+      "sha256": "c84b44034f278a549f724b72361c922209e1dca4abd311014334859d2c8aece1",
+      "bytes": 121612
+    },
+    {
+      "path": "evidence/billie-jean-elise/reference-vice/command.json",
+      "originalPath": "build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/command.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain full controlled-host VICE proof and reproduction commands.",
+      "originalSha256": "928cc157c23b662f09cad39a93a878d9ec1305888805d1358eaa7ac6d253c355",
+      "originalBytes": 850,
+      "sha256": "928cc157c23b662f09cad39a93a878d9ec1305888805d1358eaa7ac6d253c355",
+      "bytes": 850
+    },
+    {
+      "path": "evidence/billie-jean-elise/reference-vice/commands.mon",
+      "originalPath": "build/billie-jean-elise-work/cache/reference-vice/77bd8bb078886ed7a909f423ed236ec5877463170f9e4d439e64b4da234a68ab/attempt-9fdd9499ece64affb59305ec6153b747/vice/commands.mon",
+      "group": "billie-jean-elise",
+      "reason": "Retain full controlled-host VICE proof and reproduction commands.",
+      "originalSha256": "2e516c08bec6a011b71554e585e855968baae41e45ef0b4398efd9bc0fb4cd16",
+      "originalBytes": 844,
+      "sha256": "2e516c08bec6a011b71554e585e855968baae41e45ef0b4398efd9bc0fb4cd16",
+      "bytes": 844
+    },
+    {
+      "path": "evidence/billie-jean-elise/reference-render/console.txt",
+      "originalPath": "build/billie-jean-elise-work/cache/reference-render/4d640c40896b79b333943087bed4c6c5746050dc9ecaab0edb3f6c04569e7d68/attempt-6356fd6e05d64e26963d11a0f3ce6e0a/stage.log",
+      "group": "billie-jean-elise",
+      "reason": "Retain renderer identity and settings without audio.",
+      "originalSha256": "7a092623fd622732d74498416334fe8e9a275b51af39369635e3bb56da2bfbfa",
+      "originalBytes": 125,
+      "sha256": "7a092623fd622732d74498416334fe8e9a275b51af39369635e3bb56da2bfbfa",
+      "bytes": 125
+    },
+    {
+      "path": "evidence/billie-jean-elise/reference-render/registers.tsv.gz",
+      "originalPath": "build/billie-jean-elise-promotion/reference-registers.tsv",
+      "group": "billie-jean-elise",
+      "reason": "Retain validated numeric 32-register renderer snapshots; no audio bytes.",
+      "originalSha256": "430989a4471a3fe7134435d8370985481ef63966a712e20ee838bb48559189b7",
+      "originalBytes": 45922,
+      "sha256": "556ccd880ee84f9346f1490208621a6b7ae130e1b3981720f976f620e4daef08",
+      "bytes": 2407
+    },
+    {
+      "path": "evidence/billie-jean-elise/candidate/verification.json",
+      "originalPath": "build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/verification.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain our independently compiled program and CPU state/store verification; exclude SID/PRG binaries.",
+      "originalSha256": "259bded9cd7f6d840d69742535f64464ffc1b14f4dd6c4bf1b7a6f97e5b39533",
+      "originalBytes": 8077,
+      "sha256": "259bded9cd7f6d840d69742535f64464ffc1b14f4dd6c4bf1b7a6f97e5b39533",
+      "bytes": 8077
+    },
+    {
+      "path": "evidence/billie-jean-elise/candidate/audit.json",
+      "originalPath": "build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/audit.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain our independently compiled program and CPU state/store verification; exclude SID/PRG binaries.",
+      "originalSha256": "2484f8532a24871f318f5eeee8148e75c8ef787f59862a2356647de5ff763a82",
+      "originalBytes": 3625,
+      "sha256": "2484f8532a24871f318f5eeee8148e75c8ef787f59862a2356647de5ff763a82",
+      "bytes": 3625
+    },
+    {
+      "path": "evidence/billie-jean-elise/candidate/build.json",
+      "originalPath": "build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/build.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain our independently compiled program and CPU state/store verification; exclude SID/PRG binaries.",
+      "originalSha256": "899e6f5a9c6ed6ad4c69683eef4f3b931d88cf57e39b5b27a8f065633b42ea03",
+      "originalBytes": 6767,
+      "sha256": "899e6f5a9c6ed6ad4c69683eef4f3b931d88cf57e39b5b27a8f065633b42ea03",
+      "bytes": 6767
+    },
+    {
+      "path": "evidence/billie-jean-elise/candidate/writes.json.gz",
+      "originalPath": "build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/writes.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain our independently compiled program and CPU state/store verification; exclude SID/PRG binaries.",
+      "originalSha256": "498a9241f4caaeb6ec67902e7332bda4c977dbbb377c9df3258482c7d93877d0",
+      "originalBytes": 866610,
+      "sha256": "cfaf46eacdef32e3d141f927b3acf064d7653272d404f14b00c7c0bd463fda27",
+      "bytes": 47367
+    },
+    {
+      "path": "evidence/billie-jean-elise/candidate/state-checkpoints.json.gz",
+      "originalPath": "build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/state-checkpoints.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain our independently compiled program and CPU state/store verification; exclude SID/PRG binaries.",
+      "originalSha256": "d5133b2e55ca3ac9b1a1737eb6bedc139d901914a54e1d0c2168ef37429964ab",
+      "originalBytes": 27191,
+      "sha256": "3f819569855d8b529fd2bd6cf53aadc41f5d6d72fc51a027ba800cefc2287ebc",
+      "bytes": 1147
+    },
+    {
+      "path": "evidence/billie-jean-elise/candidate/player.asm.gz",
+      "originalPath": "build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/player.asm",
+      "group": "billie-jean-elise",
+      "reason": "Retain our independently compiled program and CPU state/store verification; exclude SID/PRG binaries.",
+      "originalSha256": "3be2a1a3d36981f33132e097f65a0d2334abcb9c16e8144bae51b1561a331e9e",
+      "originalBytes": 36813,
+      "sha256": "8d9d752dd09b69f6be2d48ed96672efbca9d553d539199a4f914c40e742aeb09",
+      "bytes": 3899
+    },
+    {
+      "path": "evidence/billie-jean-elise/candidate/player.listing.gz",
+      "originalPath": "build/billie-jean-elise-work/cache/candidate-build/0e17509944d003a9974db8c7ecca8796310dac4041e6d645643ffca5390818af/attempt-977d4325695b475a9f881a7996b11bec/candidate/player.listing",
+      "group": "billie-jean-elise",
+      "reason": "Retain our independently compiled program and CPU state/store verification; exclude SID/PRG binaries.",
+      "originalSha256": "9c703987775abccdd4fc12de48128894298baf2edb3f479b40aaf1118268459a",
+      "originalBytes": 54139,
+      "sha256": "aa80fcecacca606f8901b4245d6b2ca965ea134066a4050ffa44513b5af969f9",
+      "bytes": 6571
+    },
+    {
+      "path": "evidence/billie-jean-elise/candidate-vice/study.json",
+      "originalPath": "build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/study.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain full controlled-host VICE proof and reproduction commands.",
+      "originalSha256": "60c32a04643e35869510795e43e7c3cd391e464922ab618f17495f5010f917b0",
+      "originalBytes": 5389,
+      "sha256": "60c32a04643e35869510795e43e7c3cd391e464922ab618f17495f5010f917b0",
+      "bytes": 5389
+    },
+    {
+      "path": "evidence/billie-jean-elise/candidate-vice/trace.json.gz",
+      "originalPath": "build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/trace.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain full controlled-host VICE proof and reproduction commands.",
+      "originalSha256": "d3f9d84b3c0d7c7c932fcbe2cb4c405f9b8326d81d62bce5b87af3cf68de3760",
+      "originalBytes": 4506768,
+      "sha256": "8204c0f55920a7b70974264080a2ad8b06149b150785539b63b5acaa69ae0c54",
+      "bytes": 148183
+    },
+    {
+      "path": "evidence/billie-jean-elise/candidate-vice/monitor.txt.gz",
+      "originalPath": "build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/monitor.log",
+      "group": "billie-jean-elise",
+      "reason": "Retain full controlled-host VICE proof and reproduction commands.",
+      "originalSha256": "a7b4c7742fdbc39124396cba884e4f85df8a56030dc23c7d5d35b87d90daca06",
+      "originalBytes": 1501676,
+      "sha256": "d165748c76d7c0137d78ea8d1bebd87cf48e862367c193befdd32bfabe2d6b48",
+      "bytes": 136675
+    },
+    {
+      "path": "evidence/billie-jean-elise/candidate-vice/command.json",
+      "originalPath": "build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/command.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain full controlled-host VICE proof and reproduction commands.",
+      "originalSha256": "3b0f4f5aca0e0c94e19115a86b14f4d090355074d063229f11785c5d5a8fc6ca",
+      "originalBytes": 850,
+      "sha256": "3b0f4f5aca0e0c94e19115a86b14f4d090355074d063229f11785c5d5a8fc6ca",
+      "bytes": 850
+    },
+    {
+      "path": "evidence/billie-jean-elise/candidate-vice/commands.mon",
+      "originalPath": "build/billie-jean-elise-work/cache/candidate-vice/352c173730f836b3837368691a501272003c6d85de1747162acc2eb173e3ae41/attempt-f6362ce2491d407eaf7c36e3c38d0644/vice/commands.mon",
+      "group": "billie-jean-elise",
+      "reason": "Retain full controlled-host VICE proof and reproduction commands.",
+      "originalSha256": "6dfc065f809d69ccb4afce0720f8c6dc8c6d2ccf5cf6fdd2a80fbec3ab625037",
+      "originalBytes": 844,
+      "sha256": "6dfc065f809d69ccb4afce0720f8c6dc8c6d2ccf5cf6fdd2a80fbec3ab625037",
+      "bytes": 844
+    },
+    {
+      "path": "evidence/billie-jean-elise/candidate-render/console.txt",
+      "originalPath": "build/billie-jean-elise-work/cache/candidate-render/ac157b4db2c6de43ada04f93d6931c3533e7a4e0c0cc358a7710537129d2d65b/attempt-15c17d86a97749f8814106da2f1a007f/stage.log",
+      "group": "billie-jean-elise",
+      "reason": "Retain renderer identity and settings without audio.",
+      "originalSha256": "7a092623fd622732d74498416334fe8e9a275b51af39369635e3bb56da2bfbfa",
+      "originalBytes": 125,
+      "sha256": "7a092623fd622732d74498416334fe8e9a275b51af39369635e3bb56da2bfbfa",
+      "bytes": 125
+    },
+    {
+      "path": "evidence/billie-jean-elise/candidate-render/registers.tsv.gz",
+      "originalPath": "build/billie-jean-elise-promotion/candidate-registers.tsv",
+      "group": "billie-jean-elise",
+      "reason": "Retain validated numeric 32-register renderer snapshots; no audio bytes.",
+      "originalSha256": "7df5e937a72229c2064160664284cc71dda94f415661497390c81db63f645902",
+      "originalBytes": 45922,
+      "sha256": "77c54764926444e4be35cc0106f8d63b8652c66891d97a136fb8ab6f938b95f6",
+      "bytes": 5508
+    },
+    {
+      "path": "evidence/billie-jean-elise/audio.json",
+      "originalPath": "build/billie-jean-elise-work/cache/signal-check/e27f95a4ef7be46994912fb9edcebf91c55e02468e12e32f53c7ae01d2fb004b/attempt-16fb86f03c144dfbba28ce0526e4e300/audio.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain PCM health and ending measurements without audio.",
+      "originalSha256": "61d8200b2d4f844a6531dd0c2706cdeec1d5ad0bc474fa7ce5043370fcd9f574",
+      "originalBytes": 3239,
+      "sha256": "61d8200b2d4f844a6531dd0c2706cdeec1d5ad0bc474fa7ce5043370fcd9f574",
+      "bytes": 3239
+    },
+    {
+      "path": "evidence/billie-jean-elise/listening/plain-then-billie-jean.comparison.json",
+      "originalPath": "build/billie-jean-elise-work/cache/comparison/634fcbe83845b67b054195982ccfd50a0ddb967d241eb930e525ca33f0b6892b/attempt-335d68ffe93a4d27b641d5521b79bc5f/plain-then-billie-jean.comparison.json",
+      "group": "billie-jean-elise",
+      "reason": "Retain exact comparison windows, ordering, gain and audio fingerprints.",
+      "originalSha256": "3eddc019a462c34de37233758473a459ed3a3e350de70af5ff7453051490933c",
+      "originalBytes": 3091,
+      "sha256": "3eddc019a462c34de37233758473a459ed3a3e350de70af5ff7453051490933c",
+      "bytes": 3091
+    },
+    {
+      "path": "evidence/billie-jean-elise/listening/submission.json",
+      "originalPath": "build/billie-jean-elise-listening/sources.json",
+      "group": "billie-jean-elise",
+      "reason": "Bind frozen listening files to verified outputs and fingerprints.",
+      "originalSha256": "f72861cb38e621d597218a76fed049acc95d7ea000cce9d8c91816cde3c71b61",
+      "originalBytes": 1886,
+      "sha256": "f72861cb38e621d597218a76fed049acc95d7ea000cce9d8c91816cde3c71b61",
+      "bytes": 1886
     }
   ],
   "independentShadesSources": {

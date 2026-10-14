@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/billie-jean-full.json",
+  "recipeSha256": "61ee33afc9c61d38cb0f8d6097fbe8075d3c988c85602a7ff5c264d08cf33c8b",
+  "startedAt": "2026-10-14T12:36:56.782332+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "export-guards",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [],
+      "cacheKey": "edfa8750d217d41a0d1eb9e83ec3ca87937a33831553d7d009caf058bd409fb0",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/export-guards/edfa8750d217d41a0d1eb9e83ec3ca87937a33831553d7d009caf058bd409fb0/attempt-910354f85c6f4a21827e2106845216ce",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/export-guards/edfa8750d217d41a0d1eb9e83ec3ca87937a33831553d7d009caf058bd409fb0/attempt-910354f85c6f4a21827e2106845216ce/stage.log",
+      "wallSeconds": 0.027609333000000007
+    },
+    {
+      "id": "title-preparation",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [],
+      "cacheKey": "815261a5de5e14301297d87e40c55be3ea2d5455984a4fef8731ba3abcde5d48",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/title-preparation/815261a5de5e14301297d87e40c55be3ea2d5455984a4fef8731ba3abcde5d48/attempt-231b3276f2e34f818e1cf021b21a23fe",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/title-preparation/815261a5de5e14301297d87e40c55be3ea2d5455984a4fef8731ba3abcde5d48/attempt-231b3276f2e34f818e1cf021b21a23fe/stage.log",
+      "wallSeconds": 0.003695249999999997
+    },
+    {
+      "id": "reference-pin",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "reference-pin",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/reference-pin/824b379e9ba96f88ca0d8eb6c083f8a8dd116cfdd05a5cf01c7af966b2bec6e6/attempt-7ec0b1c28b5b4853b989a791f61a90d7/reference.json",
+          "relativePath": "reference.json",
+          "type": "file",
+          "sha256": "80e26c0a554c6a4dc59c5f17470c4f7ac00065b7acb8fd48f08c68131dcec204"
+        }
+      ],
+      "cacheKey": "824b379e9ba96f88ca0d8eb6c083f8a8dd116cfdd05a5cf01c7af966b2bec6e6",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/reference-pin/824b379e9ba96f88ca0d8eb6c083f8a8dd116cfdd05a5cf01c7af966b2bec6e6/attempt-7ec0b1c28b5b4853b989a791f61a90d7",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/reference-pin/824b379e9ba96f88ca0d8eb6c083f8a8dd116cfdd05a5cf01c7af966b2bec6e6/attempt-7ec0b1c28b5b4853b989a791f61a90d7/stage.log",
+      "wallSeconds": 0.0026839589999999997
+    },
+    {
+      "id": "build",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "4fb7d61f616fc983e2e677646c1b7a88f74f4994e92d7f783c5b34cd5010d487"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/reconstructed.prg",
+          "relativePath": "candidate/reconstructed.prg",
+          "type": "file",
+          "sha256": "2627733a06d1da8d91b00562dbc8fd5f829745298660db756e542264aed1b7a1"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/verification.json",
+          "relativePath": "candidate/verification.json",
+          "type": "file",
+          "sha256": "4ed2a8265397390458679cd4add25b72c978a711955d4570257a860149937076"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "2ece54b0d63e84ffedecdabd0a858e8131b4878b90c11684b4d4c82d109d4751"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "8dec0e7c15c8f5fcd259e2fb9516cb7f81c717c193b093db5831e2517ee7ec34"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "fc1bb3520f9da5edfd5fcd27f9c4beaafd957caf84f8815282b51db7c7510f26"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "12d86e348edbd2d91ec50fbd06cfdf709cc8f68268a33b59a1f5989ad58623bf"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "7138b4f9596c7c3c2b979bea9ab3274f29dfa10f6d61302681693111bc89232e"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "69b896d35efa23bd1271d4dbc544078d5ab1223773012e0d5dec6bdbcce95d4d"
+        }
+      ],
+      "cacheKey": "87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/stage.log",
+      "wallSeconds": 0.020279041999999997
+    },
+    {
+      "id": "numeric-source-check",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "numeric-source-check",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/numeric-source-check/f514d6c3a885d1aa2d1eec4e5a78aa1fa266a0bb1f0d0703966745811ae0b320/attempt-2f336c9dee1c4722b10c61e1578a746b/source-prefix.json",
+          "relativePath": "source-prefix.json",
+          "type": "file",
+          "sha256": "ce9cc190c84b20245afcf0ab995204d544cc54acf2c72afe1d0c4e3fa64b65d6"
+        }
+      ],
+      "cacheKey": "f514d6c3a885d1aa2d1eec4e5a78aa1fa266a0bb1f0d0703966745811ae0b320",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/numeric-source-check/f514d6c3a885d1aa2d1eec4e5a78aa1fa266a0bb1f0d0703966745811ae0b320/attempt-2f336c9dee1c4722b10c61e1578a746b",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/numeric-source-check/f514d6c3a885d1aa2d1eec4e5a78aa1fa266a0bb1f0d0703966745811ae0b320/attempt-2f336c9dee1c4722b10c61e1578a746b/stage.log",
+      "wallSeconds": 0.016287417
+    },
+    {
+      "id": "vice",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "3de6a8b5882315e951edfc6ee9ee42584d46f2b57c7f0a645d919d81a6f3aa84"
+        },
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "4929da7741b9d32d5e6193f778cc30f6ce3286d7decc46f060bd8c9ba4805cd3"
+        },
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "442a1de9f9ea1ae307ce5da46b1007438b4104fddab0a7079b4f9cbaeada4b69"
+        },
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "1c9b49ef8ada6580be2bae55041bdf5477c12ba14c7231f07d0540ef0884b41c"
+        },
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "48181f73c158dfed04bcd0ab64d024a49e3548634e3fb7dddd96f880d7ded418"
+        }
+      ],
+      "cacheKey": "efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/stage.log",
+      "wallSeconds": 0.186561458
+    },
+    {
+      "id": "reference-render",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/reference-render/73940159afc6135f366dd4e6f613b7e35355baec53f758722198b2e74464c8c7/attempt-9a68c0eeca864493b8fa6bdc017702a2/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "162da2f9d472c8703160f790f85e9fce9f5541c44b9a2d7e3e961c07a9035b73"
+        },
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/reference-render/73940159afc6135f366dd4e6f613b7e35355baec53f758722198b2e74464c8c7/attempt-9a68c0eeca864493b8fa6bdc017702a2/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "d0fdcacd184277c54a1d4f5e171e80517499f0d096d82a84962160831a70ddca"
+        }
+      ],
+      "cacheKey": "73940159afc6135f366dd4e6f613b7e35355baec53f758722198b2e74464c8c7",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/reference-render/73940159afc6135f366dd4e6f613b7e35355baec53f758722198b2e74464c8c7/attempt-9a68c0eeca864493b8fa6bdc017702a2",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/reference-render/73940159afc6135f366dd4e6f613b7e35355baec53f758722198b2e74464c8c7/attempt-9a68c0eeca864493b8fa6bdc017702a2/stage.log",
+      "wallSeconds": 0.015234208000000027
+    },
+    {
+      "id": "candidate-render",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/candidate-render/b15777232a8b36c4d6242e9c1a1fb46937c7b4b289eff36a6cdf6a36ca7a6cf7/attempt-05a41578c8a847108d59c8a730b871e9/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "1793285759a9cb774b465250757595fab171fa676083a7da55dae281e6d019be"
+        },
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/candidate-render/b15777232a8b36c4d6242e9c1a1fb46937c7b4b289eff36a6cdf6a36ca7a6cf7/attempt-05a41578c8a847108d59c8a730b871e9/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "be9ef9bf08076e4d0ea523c5324190378bc205ede92cb33d08ad5bdc092c03c4"
+        }
+      ],
+      "cacheKey": "b15777232a8b36c4d6242e9c1a1fb46937c7b4b289eff36a6cdf6a36ca7a6cf7",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/candidate-render/b15777232a8b36c4d6242e9c1a1fb46937c7b4b289eff36a6cdf6a36ca7a6cf7/attempt-05a41578c8a847108d59c8a730b871e9",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/candidate-render/b15777232a8b36c4d6242e9c1a1fb46937c7b4b289eff36a6cdf6a36ca7a6cf7/attempt-05a41578c8a847108d59c8a730b871e9/stage.log",
+      "wallSeconds": 0.01458433299999995
+    },
+    {
+      "id": "signal-check",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "signal-check",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/signal-check/f76d6dc7a435ffa6d7b66253487bd697aa86733f977fd84ec59e12bd60a1506d/attempt-00aadf4e1ccc47d2a0a6e4bd6be4a6b8/audio.json",
+          "relativePath": "audio.json",
+          "type": "file",
+          "sha256": "7c3f93e854a1651810a03553caf3cfccb924a9155c8604ac2972190ba3ac2688"
+        }
+      ],
+      "cacheKey": "f76d6dc7a435ffa6d7b66253487bd697aa86733f977fd84ec59e12bd60a1506d",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/signal-check/f76d6dc7a435ffa6d7b66253487bd697aa86733f977fd84ec59e12bd60a1506d/attempt-00aadf4e1ccc47d2a0a6e4bd6be4a6b8",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/signal-check/f76d6dc7a435ffa6d7b66253487bd697aa86733f977fd84ec59e12bd60a1506d/attempt-00aadf4e1ccc47d2a0a6e4bd6be4a6b8/stage.log",
+      "wallSeconds": 0.018327666999999992
+    },
+    {
+      "id": "opening",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "opening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/opening/5c05f6cccebce9bc0366bf80ac26c16ed173e9b023c34e4f32b0860ac10ff8b9/attempt-052810a885014b34b8e0230f5afb2800/opening-reference-then-ours.ab.wav",
+          "relativePath": "opening-reference-then-ours.ab.wav",
+          "type": "file",
+          "sha256": "9e74e3453916a4664a79e747f459206e780467442776a48768c5c1a98fe93a9e"
+        },
+        {
+          "stageId": "opening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/opening/5c05f6cccebce9bc0366bf80ac26c16ed173e9b023c34e4f32b0860ac10ff8b9/attempt-052810a885014b34b8e0230f5afb2800/opening-reference-then-ours.comparison.json",
+          "relativePath": "opening-reference-then-ours.comparison.json",
+          "type": "file",
+          "sha256": "e05696235f665036ab4f48dfa88539f0ee6c5b242d5112bd2374b161d999883b"
+        }
+      ],
+      "cacheKey": "5c05f6cccebce9bc0366bf80ac26c16ed173e9b023c34e4f32b0860ac10ff8b9",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/opening/5c05f6cccebce9bc0366bf80ac26c16ed173e9b023c34e4f32b0860ac10ff8b9/attempt-052810a885014b34b8e0230f5afb2800",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/opening/5c05f6cccebce9bc0366bf80ac26c16ed173e9b023c34e4f32b0860ac10ff8b9/attempt-052810a885014b34b8e0230f5afb2800/stage.log",
+      "wallSeconds": 0.022210624999999984
+    },
+    {
+      "id": "ending",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "ending",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/ending/317e15616c8e1f4abccd420d6566e89b85a0acc8f09b35a04380a2cc84950247/attempt-cebb4ae73e904558a392813f67146424/ending-reference-then-ours.ab.wav",
+          "relativePath": "ending-reference-then-ours.ab.wav",
+          "type": "file",
+          "sha256": "e2d0362f48170c8299ce08f384094fd764a5f2e14ed74851ad89ecee44ef5751"
+        },
+        {
+          "stageId": "ending",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/ending/317e15616c8e1f4abccd420d6566e89b85a0acc8f09b35a04380a2cc84950247/attempt-cebb4ae73e904558a392813f67146424/ending-reference-then-ours.comparison.json",
+          "relativePath": "ending-reference-then-ours.comparison.json",
+          "type": "file",
+          "sha256": "4817410b5b5d07d95eec21129bf2b59015d1b89fbeea5582812fd5a9c330e384"
+        }
+      ],
+      "cacheKey": "317e15616c8e1f4abccd420d6566e89b85a0acc8f09b35a04380a2cc84950247",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/ending/317e15616c8e1f4abccd420d6566e89b85a0acc8f09b35a04380a2cc84950247/attempt-cebb4ae73e904558a392813f67146424",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/ending/317e15616c8e1f4abccd420d6566e89b85a0acc8f09b35a04380a2cc84950247/attempt-cebb4ae73e904558a392813f67146424/stage.log",
+      "wallSeconds": 0.023278208000000022
+    },
+    {
+      "id": "phrase",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "phrase",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/phrase/564a0ea8167f584d82ba97e34b395c2e73e2f4d3544f41935c324737e9257089/attempt-c7b92413f7414a7d9a8aade51580795b/phrase-reference-then-ours.ab.wav",
+          "relativePath": "phrase-reference-then-ours.ab.wav",
+          "type": "file",
+          "sha256": "6cf965c17ca965e754bd54d700048cb29a9931ce2eda30037f0370cd7c63fdcc"
+        },
+        {
+          "stageId": "phrase",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/phrase/564a0ea8167f584d82ba97e34b395c2e73e2f4d3544f41935c324737e9257089/attempt-c7b92413f7414a7d9a8aade51580795b/phrase-reference-then-ours.comparison.json",
+          "relativePath": "phrase-reference-then-ours.comparison.json",
+          "type": "file",
+          "sha256": "3418fcd605ff3343af730bf19fa29a3ad85f048a6769267e0e837a2ce7dc9327"
+        }
+      ],
+      "cacheKey": "564a0ea8167f584d82ba97e34b395c2e73e2f4d3544f41935c324737e9257089",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/phrase/564a0ea8167f584d82ba97e34b395c2e73e2f4d3544f41935c324737e9257089/attempt-c7b92413f7414a7d9a8aade51580795b",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/phrase/564a0ea8167f584d82ba97e34b395c2e73e2f4d3544f41935c324737e9257089/attempt-c7b92413f7414a7d9a8aade51580795b/stage.log",
+      "wallSeconds": 0.020096667000000012
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "reference-pin",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/reference-pin/824b379e9ba96f88ca0d8eb6c083f8a8dd116cfdd05a5cf01c7af966b2bec6e6/attempt-7ec0b1c28b5b4853b989a791f61a90d7/reference.json",
+      "relativePath": "reference.json",
+      "type": "file",
+      "sha256": "80e26c0a554c6a4dc59c5f17470c4f7ac00065b7acb8fd48f08c68131dcec204"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "4fb7d61f616fc983e2e677646c1b7a88f74f4994e92d7f783c5b34cd5010d487"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/reconstructed.prg",
+      "relativePath": "candidate/reconstructed.prg",
+      "type": "file",
+      "sha256": "2627733a06d1da8d91b00562dbc8fd5f829745298660db756e542264aed1b7a1"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/verification.json",
+      "relativePath": "candidate/verification.json",
+      "type": "file",
+      "sha256": "4ed2a8265397390458679cd4add25b72c978a711955d4570257a860149937076"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "2ece54b0d63e84ffedecdabd0a858e8131b4878b90c11684b4d4c82d109d4751"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "8dec0e7c15c8f5fcd259e2fb9516cb7f81c717c193b093db5831e2517ee7ec34"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "fc1bb3520f9da5edfd5fcd27f9c4beaafd957caf84f8815282b51db7c7510f26"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "12d86e348edbd2d91ec50fbd06cfdf709cc8f68268a33b59a1f5989ad58623bf"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "7138b4f9596c7c3c2b979bea9ab3274f29dfa10f6d61302681693111bc89232e"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "69b896d35efa23bd1271d4dbc544078d5ab1223773012e0d5dec6bdbcce95d4d"
+    },
+    {
+      "stageId": "numeric-source-check",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/numeric-source-check/f514d6c3a885d1aa2d1eec4e5a78aa1fa266a0bb1f0d0703966745811ae0b320/attempt-2f336c9dee1c4722b10c61e1578a746b/source-prefix.json",
+      "relativePath": "source-prefix.json",
+      "type": "file",
+      "sha256": "ce9cc190c84b20245afcf0ab995204d544cc54acf2c72afe1d0c4e3fa64b65d6"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "3de6a8b5882315e951edfc6ee9ee42584d46f2b57c7f0a645d919d81a6f3aa84"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "4929da7741b9d32d5e6193f778cc30f6ce3286d7decc46f060bd8c9ba4805cd3"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "442a1de9f9ea1ae307ce5da46b1007438b4104fddab0a7079b4f9cbaeada4b69"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "1c9b49ef8ada6580be2bae55041bdf5477c12ba14c7231f07d0540ef0884b41c"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "48181f73c158dfed04bcd0ab64d024a49e3548634e3fb7dddd96f880d7ded418"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/reference-render/73940159afc6135f366dd4e6f613b7e35355baec53f758722198b2e74464c8c7/attempt-9a68c0eeca864493b8fa6bdc017702a2/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "162da2f9d472c8703160f790f85e9fce9f5541c44b9a2d7e3e961c07a9035b73"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/reference-render/73940159afc6135f366dd4e6f613b7e35355baec53f758722198b2e74464c8c7/attempt-9a68c0eeca864493b8fa6bdc017702a2/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "d0fdcacd184277c54a1d4f5e171e80517499f0d096d82a84962160831a70ddca"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/candidate-render/b15777232a8b36c4d6242e9c1a1fb46937c7b4b289eff36a6cdf6a36ca7a6cf7/attempt-05a41578c8a847108d59c8a730b871e9/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "1793285759a9cb774b465250757595fab171fa676083a7da55dae281e6d019be"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/candidate-render/b15777232a8b36c4d6242e9c1a1fb46937c7b4b289eff36a6cdf6a36ca7a6cf7/attempt-05a41578c8a847108d59c8a730b871e9/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "be9ef9bf08076e4d0ea523c5324190378bc205ede92cb33d08ad5bdc092c03c4"
+    },
+    {
+      "stageId": "signal-check",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/signal-check/f76d6dc7a435ffa6d7b66253487bd697aa86733f977fd84ec59e12bd60a1506d/attempt-00aadf4e1ccc47d2a0a6e4bd6be4a6b8/audio.json",
+      "relativePath": "audio.json",
+      "type": "file",
+      "sha256": "7c3f93e854a1651810a03553caf3cfccb924a9155c8604ac2972190ba3ac2688"
+    },
+    {
+      "stageId": "opening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/opening/5c05f6cccebce9bc0366bf80ac26c16ed173e9b023c34e4f32b0860ac10ff8b9/attempt-052810a885014b34b8e0230f5afb2800/opening-reference-then-ours.ab.wav",
+      "relativePath": "opening-reference-then-ours.ab.wav",
+      "type": "file",
+      "sha256": "9e74e3453916a4664a79e747f459206e780467442776a48768c5c1a98fe93a9e"
+    },
+    {
+      "stageId": "opening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/opening/5c05f6cccebce9bc0366bf80ac26c16ed173e9b023c34e4f32b0860ac10ff8b9/attempt-052810a885014b34b8e0230f5afb2800/opening-reference-then-ours.comparison.json",
+      "relativePath": "opening-reference-then-ours.comparison.json",
+      "type": "file",
+      "sha256": "e05696235f665036ab4f48dfa88539f0ee6c5b242d5112bd2374b161d999883b"
+    },
+    {
+      "stageId": "ending",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/ending/317e15616c8e1f4abccd420d6566e89b85a0acc8f09b35a04380a2cc84950247/attempt-cebb4ae73e904558a392813f67146424/ending-reference-then-ours.ab.wav",
+      "relativePath": "ending-reference-then-ours.ab.wav",
+      "type": "file",
+      "sha256": "e2d0362f48170c8299ce08f384094fd764a5f2e14ed74851ad89ecee44ef5751"
+    },
+    {
+      "stageId": "ending",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/ending/317e15616c8e1f4abccd420d6566e89b85a0acc8f09b35a04380a2cc84950247/attempt-cebb4ae73e904558a392813f67146424/ending-reference-then-ours.comparison.json",
+      "relativePath": "ending-reference-then-ours.comparison.json",
+      "type": "file",
+      "sha256": "4817410b5b5d07d95eec21129bf2b59015d1b89fbeea5582812fd5a9c330e384"
+    },
+    {
+      "stageId": "phrase",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/phrase/564a0ea8167f584d82ba97e34b395c2e73e2f4d3544f41935c324737e9257089/attempt-c7b92413f7414a7d9a8aade51580795b/phrase-reference-then-ours.ab.wav",
+      "relativePath": "phrase-reference-then-ours.ab.wav",
+      "type": "file",
+      "sha256": "6cf965c17ca965e754bd54d700048cb29a9931ce2eda30037f0370cd7c63fdcc"
+    },
+    {
+      "stageId": "phrase",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/phrase/564a0ea8167f584d82ba97e34b395c2e73e2f4d3544f41935c324737e9257089/attempt-c7b92413f7414a7d9a8aade51580795b/phrase-reference-then-ours.comparison.json",
+      "relativePath": "phrase-reference-then-ours.comparison.json",
+      "type": "file",
+      "sha256": "3418fcd605ff3343af730bf19fa29a3ad85f048a6769267e0e837a2ce7dc9327"
+    }
+  ],
+  "deliverables": {
+    "fullReference": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/reference-render/73940159afc6135f366dd4e6f613b7e35355baec53f758722198b2e74464c8c7/attempt-9a68c0eeca864493b8fa6bdc017702a2/render.wav",
+    "fullCandidate": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/candidate-render/b15777232a8b36c4d6242e9c1a1fb46937c7b4b289eff36a6cdf6a36ca7a6cf7/attempt-05a41578c8a847108d59c8a730b871e9/render.wav",
+    "opening": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/opening/5c05f6cccebce9bc0366bf80ac26c16ed173e9b023c34e4f32b0860ac10ff8b9/attempt-052810a885014b34b8e0230f5afb2800/opening-reference-then-ours.ab.wav",
+    "ending": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/ending/317e15616c8e1f4abccd420d6566e89b85a0acc8f09b35a04380a2cc84950247/attempt-cebb4ae73e904558a392813f67146424/ending-reference-then-ours.ab.wav",
+    "phrase": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/phrase/564a0ea8167f584d82ba97e34b395c2e73e2f4d3544f41935c324737e9257089/attempt-c7b92413f7414a7d9a8aade51580795b/phrase-reference-then-ours.ab.wav",
+    "numericSourceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/numeric-source-check/f514d6c3a885d1aa2d1eec4e5a78aa1fa266a0bb1f0d0703966745811ae0b320/attempt-2f336c9dee1c4722b10c61e1578a746b/source-prefix.json",
+    "compiledProof": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/build/87727ebc17d4a806f7549756bcae9ff33dd7d987a1a9852e9521e2826fa8bec2/attempt-8721b797398847ae81d70d25b048fad6/candidate/verification.json",
+    "viceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/vice/efca40c7931a0955d79d479e2a21264b637c4566e18e406b27bc10239241bf5a/attempt-1c1af773ee2a42fc98840da06f496f9f/vice/study.json",
+    "signalProof": "/Users/mbackschat/Projects/c64-sid-skill/build/billie-jean-full-work/cache/signal-check/f76d6dc7a435ffa6d7b66253487bd697aa86733f977fd84ec59e12bd60a1506d/attempt-00aadf4e1ccc47d2a0a6e4bd6be4a6b8/audio.json"
+  },
+  "finishedAt": "2026-10-14T12:36:57.315497+00:00",
+  "wallSeconds": 0.5332812499999999
+}
