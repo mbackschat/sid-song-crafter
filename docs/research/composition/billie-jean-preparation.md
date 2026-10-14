@@ -53,13 +53,13 @@ PYTHONPATH=.tools/test-deps python3 build/billie-jean-new/check-edit.py --output
 PYTHONPATH=.tools/test-deps python3 build/billie-jean-new/vice-wrap.py --output build/billie-jean-new/vice-wrap
 ```
 
-To repeat only the VICE boundary check, pass `--ledger evidence/billie-jean-form/complete14274/writes.json.gz`; no CPU traversal is then rerun. Canonical analysis archives follow the [evidence workflow](../../workflows/build-cache.md). Source reads, rows, return hashes and stores are retained losslessly; original payloads, full RAM, whole instruction logs and raw monitor dumps are excluded. The sound-program proof below extends this retained form evidence; independent player/export, musical ending, rendering/listening and transfer remain pending.
+To repeat only the VICE boundary check, pass `--ledger evidence/billie-jean-form/complete14274/writes.json.gz`; no CPU traversal is then rerun. Canonical analysis archives follow the [evidence workflow](../../workflows/build-cache.md). Source reads, rows, return hashes and stores are retained losslessly; original payloads, full RAM, whole instruction logs and raw monitor dumps are excluded. The sound-program proof below extends this retained form evidence; compiled export, musical ending, rendering/listening and transfer remain pending.
 
 ## Active delivery boundary
 
-The next deliverable is an editable independent reconstruction of the pinned SID arrangement, preserving its verified complete first traversal and separating any authored finite ending from the source loop. Existing score/form and VICE-wrap evidence remain valid for their stated scope. The sound helpers below now match the executed note, instrument, glide and hold contexts. The next gate is combining those helpers with the independent score scheduler and matching the complete retained ordered-store ledger from initialization. Do not repeat full-form source capture solely to relocate or recheck unchanged score logic.
+The next deliverable is an editable independent reconstruction of the pinned SID arrangement, preserving its verified complete first traversal and separating any authored finite ending from the source loop. Existing score/form and VICE-wrap evidence remain valid for their stated scope. The sound helpers below now match the executed note, instrument, glide and hold contexts. The complete numeric player below now combines those helpers with the score scheduler and matches the retained ordered-store ledger from initialization. The next gate is an independent compiled SID/PRG with a declared finite ending and full CPU/VICE checks before listening. Do not repeat full-form source capture solely to relocate or recheck unchanged score logic.
 
-The portable score component below keeps one executable owner for duration and flags: the row header. Source addresses remain provenance, and byte offsets derive from encoded rows. Retained reads, rows, returns and the existing duration intervention match. Once sound helpers and the score contract agree, advance directly to the complete numeric player, compiled export, matched reconstruction/ending audition and familiar-material transfer under the [delivery workflow](../../workflows/decoded-song-workflow.md#deliver-one-musical-case).
+The portable score component below keeps one executable owner for duration and flags: the row header. Source addresses remain provenance, and byte offsets derive from encoded rows. Retained reads, rows, returns and the existing duration intervention match. Continue from the verified numeric player to compiled export, matched reconstruction/ending audition and familiar-material transfer under the [delivery workflow](../../workflows/decoded-song-workflow.md#deliver-one-musical-case).
 
 No new sound or musical acceptance is implied by this preparation. Model assistance will be reviewed at the first representative audition, after feedback/revision and before closure under the [standing rule](../audio-assessment.md#use-and-reassess-model-assistance); existing models remain experimental supporting signals.
 
@@ -75,7 +75,7 @@ python3 scripts/studies/billie-jean/check-score.py --check evidence/billie-jean-
 python3 scripts/evidence.py verify --group billie-jean-score
 ```
 
-The [two-stage recipe](../../../config/listening/billie-jean-score.json) combines [nine bounded guards](../../../evidence/billie-jean-score/guards.txt) with the retained proof. On 2026-10-14 its [executed recheck](../../../evidence/billie-jean-score/run-executed.json) took **2.51 seconds**, and the [unchanged cached repeat](../../../evidence/billie-jean-score/run-reused.json) took **0.05 seconds**. This is a fresh numeric data decode and retained-execution recheck, **not fresh CPU/VICE capture**, sound synthesis or listening acceptance. Historical traces and their tool pins remain untouched. The sound-program proof below now passes; independent-player integration is the next delivery gate.
+The [two-stage recipe](../../../config/listening/billie-jean-score.json) combines [nine bounded guards](../../../evidence/billie-jean-score/guards.txt) with the retained proof. On 2026-10-14 its [executed recheck](../../../evidence/billie-jean-score/run-executed.json) took **2.51 seconds**, and the [unchanged cached repeat](../../../evidence/billie-jean-score/run-reused.json) took **0.05 seconds**. This is a fresh numeric data decode and retained-execution recheck, **not fresh CPU/VICE capture**, sound synthesis or listening acceptance. Historical traces and their tool pins remain untouched. The sound-program and numeric integration proofs below now pass; compiled export is the next delivery gate.
 
 ## Editable sound programs and full-cycle contextual proof
 
@@ -105,3 +105,18 @@ Retained [contexts](../../../evidence/billie-jean-sound/contexts.json.gz), [para
 python3 scripts/listening-package.py config/listening/billie-jean-sound.json --output build/billie-jean-sound-work
 python3 scripts/evidence.py verify --group billie-jean-sound
 ```
+
+## Complete independent numeric player
+
+The [numeric player](../../../scripts/studies/billie-jean/billie_jean_player.py) consumes the [portable composition](../../../evidence/billie-jean-player/composition.json): explicit PAL/MOS6581 target, header-owned score, editable sound parameters and complete named cold state. It contains no original executable or timed-register replay. Each call processes physical voices 3, 2, 1, choosing setup for a new ordinary row and the continuing body otherwise, advances each voice's age and emits global mode/volume last. Initialization computes only the source's three control-zero stores.
+
+Score owns base note, remaining duration, hold and instrument offset. An ordinary row clears glide step, then applies any new glide step/target with retained transpose; a rest closes the software gate mask and still runs the body. Sound owns gate mask, glide completion and modulation state between rows. The cold image rejects duplicate score-owned fields and requires every named sound/filter field, preventing incidental default state from silently changing the opening. Source addresses remain nonexecuting annotations.
+
+The [retained-evidence checker](../../../scripts/studies/billie-jean/check-player.py) verifies source and archive fingerprints, then recomputes **278,617 ordered init/play stores and 14,274 score returns**, matching the original two-traversal ledger exactly. It also matches all **49,749 named sound boundaries through call 7106**, both 128-call duration cases and four 1,500-call sound interventions. The latter change editable numeric parameters independently, match the private source-copy results and preserve every store outside their declared ports. The [receipt](../../../evidence/billie-jean-player/receipt.json), full [stores](../../../evidence/billie-jean-player/writes.json.gz), [return states](../../../evidence/billie-jean-player/returns.json.gz) and [contexts](../../../evidence/billie-jean-player/contexts.json.gz) retain these distinct comparisons. The checker executes no original CPU code or new VICE traversal.
+
+```sh
+python3 scripts/listening-package.py config/listening/billie-jean-player.json --output build/billie-jean-player-work
+python3 scripts/evidence.py verify --group billie-jean-player
+```
+
+The [recipe](../../../config/listening/billie-jean-player.json) combines [ten focused state-ownership guards](../../../evidence/billie-jean-player/guards.txt) and the full retained proof. Its final [executed proof](../../../evidence/billie-jean-player/run-executed.json) on 2026-10-14 took **27.66 seconds** with unchanged guards reused; the [fully cached repeat](../../../evidence/billie-jean-player/run-reused.json) took **0.14 seconds**. This completes numeric integration, not compiled execution, acoustic fidelity or musical reuse. Those remain the delivery gates.
