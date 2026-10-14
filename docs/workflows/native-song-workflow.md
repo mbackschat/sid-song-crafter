@@ -56,3 +56,5 @@ python3 -m unittest discover -s tests -p 'psid_audit_test.py' -v
 ```
 
 The schedule guards reject missing, extra, wrong or mistimed cells; a fetched note that fails to start; wrong instruments; missing patterns; wrong stop ticks; loops; and gates/volume that persist after stop. Excerpt tests independently check exact sample selection and original preservation. CPU observer tests establish that read-only observations leave the original audit report and SID writes unchanged.
+
+For short or repeated accompaniment, native body/gate checks establish execution only. Include the release and next onset in the in-context audition; a clean silent gap can still sound abruptly cut off. Follow the [short-note ending decision table](../research/composition/sound-design-repertoire.md#shape-short-note-endings-in-context) to isolate gate duration, release and retrigger changes and retain the scoped listening verdict.

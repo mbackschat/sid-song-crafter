@@ -72,6 +72,18 @@ The arrangement target is additional instrument roles through time-sharing of th
 
 For BASS-02, judge whether percussion reads as a distinct rhythmic part and whether the bass remains convincing after each handoff. A noise-to-pulse instrument is a building block, not proof of an independently perceived drum part. The [DRAX listening finding](fuer-elise-reference.md#identify-the-preferred-layer-by-listening) establishes that its preferred vibrancy is already present in the bass solo. Follow the [executed bass mechanism](../tools/sid-program-analysis.md#follow-the-bass-program) before using additional musical roles as a remedy for that timbre.
 
+## Shape short-note endings in context
+
+**Reusable lesson from listener feedback, 2026-10-14:** rhythmic separation and convincing acoustic decay are independent requirements. The [Bach groove feedback](../../../songs/studies/bach-toccata-groove-blend/listening-review.json) found a repeated accompaniment abruptly cut off even though the native audit verified clean gate gaps. Do not use gate-off, silence before the next note, or lack of clipping as an oracle for musical articulation. This evidence supports a workflow correction; it does not establish one preferred release value for all music.
+
+| Listener description / musical need | Inspect first | Bounded response and acceptance check |
+| --- | --- | --- |
+| Repeated background tick, drum-like tone, abrupt cutoff | Identify the voice by register and repetition timing; compare at least two actual attacks, body frames, gate-off events and next retriggers. A tonal pulse may be perceived as percussion; do not infer the noise waveform from the word “noise”. | Preserve the rhythm and other voices, then isolate an envelope change. Compare in the mix with both the prior candidate and the accepted reference. |
+| Clear groove without chopped-off notes | Consider gate duration and release separately, including hard restart, TEST or waveform changes at the next onset. Check the actual body after the player's onset delay. | Prefer the smallest change that improves decay while preserving definition; lengthening release is a hypothesis, not a guaranteed fix. Hear dense repetitions as well as the final pulse before a gap. |
+| A technically clean instrument sounds detached from the music | Check the timescale and musical role of the effect, not merely its register correctness. | Audition the phrase in context. Preserve failed musical approaches so future work does not repeat them in another voice. |
+
+Record the listener's words and approximate timestamps separately from measured event timing; state uncertainty when more than one voice could match. Retain the isolated intervention and its execution evidence, but promote a patch as musically useful only after a scoped listening verdict. The [Bach release-only example](../../../songs/studies/bach-toccata-groove-release/README.md) is editable and reproducible, with listening acceptance pending. Its register comparison is a reusable check through the [native intervention workflow](../../workflows/native-song-workflow.md#check-a-controlled-register-change).
+
 ## How to evaluate a candidate
 
 Use the same notes, tempo, register, and arrangement when isolating an effect in an A/B comparison. A creative arrangement comparison may deliberately change them: declare those differences and judge the resulting phrase as a whole. Retain original-amplitude renders and document any gain adjustment used for level matching. A louder file should not win by default. Soloing helps diagnose a sound, but the full mix decides whether it belongs in the song.

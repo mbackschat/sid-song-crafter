@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-14",
+  "feedbackScope": "The listener finds a frequent background sound near excerpt second 1 abrupt in the groove, while the accepted original is okay.",
+  "diagnosis": "Repeated A3 accompaniment is the strongest candidate: source-spaced 0.1875-second repetitions now have short gated bodies and fast release. Exact identification of the heard component is an inference awaiting the paired audition.",
+  "sharedScore": "../bach-toccata-groove-blend/score.json",
+  "sharedScoreSha256": "b10d2318538cfcbbb3334af68a767f00053346a1deb69e1a89d9789dce6cbd06",
+  "previousRecipe": "../bach-toccata-groove-blend/hybrid.json",
+  "previousRecipeSha256": "c21413fe7cd8955f1e1354db697441f619c10b2e556bdddfe9ea4ba7304c30c7",
+  "change": {
+    "instrument": "groove-harmony",
+    "field": "adsr",
+    "before": "0351",
+    "after": "0354",
+    "meaning": "Only release nibble 1 to 4; attack 0, decay 3 and sustain 5 unchanged"
+  },
+  "scoreAndGateTimingsUnchanged": true,
+  "leadBassFilterAndOtherProgramsUnchanged": true,
+  "target": {
+    "clock": "PAL",
+    "sidModel": "MOS8580",
+    "sidCount": 1
+  },
+  "listeningReview": null,
+  "modelAssistanceReview": "Skip unvalidated model preference inference; prior-groove versus release-only revision is the next human checkpoint.",
+  "limitations": "Longer release intentionally changes the acoustic tail without changing note or GATE timing. PCM smoothness and listener identification require the paired audition; register equality is not a listening verdict."
+}
