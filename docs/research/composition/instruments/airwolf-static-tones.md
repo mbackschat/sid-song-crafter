@@ -1,0 +1,29 @@
+# Airwolf static pulse and triangle tones
+
+This editable palette has complete numeric, compiled CPU, callable VICE and rendered checks; **human musical review is pending**. It comes from Mark Cooksey’s C64 arrangement of Sylvester Levay’s *Airwolf Theme*. The [owning study](../airwolf-preparation.md) separates the pinned title reconstruction and authored ending from reuse on different material. The [familiar example](../../../../songs/studies/airwolf-elise/README.md) tests the palette over 53 nominal Für Elise notes; the assigned roles are arrangement choices, not listener-confirmed source-voice identities.
+
+## Select by voice and articulation
+
+| Transfer role / physical voice | Native patch | Pulse width with reset low byte |
+| --- | --- | --- |
+| Melody / 1 | Pulse control `$41`, AD `$0A`, SR `$00` | Raw high `$28` has effective high nibble 8: width 2048, 50% duty. |
+| Bass / 2 | Pulse control `$41`, AD `$0A`, SR `$00` | Raw high `$0A`: width 2560, 62.5% duty. |
+| Harmony / 3 | Triangle control `$11`, AD `$09`, SR `$00` | Pulse width is unused and unwritten. |
+
+Pitch, waveform and pulse width stay fixed between pitched rows; this contract has no PWM, vibrato, glide, sync/ring coupling or filter program. SID envelopes still evolve, and sustain is zero in all three patches. A hold preserves registers and the existing envelope rather than guaranteeing a continuously audible sustained note. Both transfer versions retain these AD/SR settings and native master volume 15; the [plain reference](../../../../songs/studies/airwolf-elise/reference.json) changes only the first two waveform controls to triangle `$11`.
+
+Pitched rows process physical voices 1→2→3, writing AD, SR, control zero, gated control, frequency high and frequency low. Each native update first writes volume and the two raw pulse-high bytes. A null entry skips that voice’s stores while these fixed writes continue; an authored `off` masks the last emitted control with `$FE` and leaves its releasing waveform and frequency intact. Use explicit offs for real score gaps; a zero-high source hold is not a rest. Pulse-low bytes, filter registers and voice-three pulse width are untouched. The widths in the table depend on zero low bytes, supplied by controlled renderer reset; the software reset is not a full SID hardware initialization.
+
+## Editable transfer and timing
+
+The [candidate](../../../../songs/studies/airwolf-elise/transfer.json) and plain reference retain 35 melody, six bass and twelve harmony notes from beats `[0,12)` of [the preserved Für Elise score](../../../../songs/fuer-elise.json), at BPM 72. The [preparer](../../../../scripts/studies/airwolf/prepare-elise.py) merges their rounded absolute boundaries into 48 runtime rows, including 19 explicit gate-off entries. Its [report](../../../../songs/studies/airwolf-elise/preparation.json) records every event, adaptation, native frequency word and A440 replacement. Both renders use PAL MOS6581 and A440, with nominal frequency-word error within 0.319 cents; the title preserves its original frequency words.
+
+Init consumes the first row at frame zero. Frame `q>0` belongs to play call `q−1`; duration byte `N` spans `N+1` frames. Boundary error is at most 9.814 ms and duration error at most 17.661 ms. The native byte format requires row spans of 2..256 frames; collapsed notes/gaps, overlaps, unsupported pitches and unrepresentable spans reject rather than silently alter the score. The transfer’s final boundary is frame 501: intercept the wrap at call 500, close held gates and freeze registers for 32 calls, then stop controls/master volume at 532 and verify 64 further write-free calls. This is an authored ending, with no added fade or claim of immediate acoustic silence at each nominal gap.
+
+## Reproduce and listen
+
+Run the [matched-transfer recipe](../../../../config/listening/airwolf-elise-transfer.json) and publication commands in the example README. The [completed run](../../../../evidence/airwolf-elise/run.json) validates both complete 597-call exports: CPU checks match all 598 named boundaries, and CPU/full callable VICE agree on all 1,847 init/play stores in each version. Maximum play cost is 456 of 19,656 PAL cycles; VICE cadence error is at most six cycles. Poisoned software reset and actual PRG SYS 2061 bootstrap are also checked; the latter executes init plus two calls with modeled raster/CIA reads, separate from full callable VICE playback. [PCM checks](../../../../evidence/airwolf-elise/audio.json) find no clipping and zero final-second AC RMS in both twelve-second renders. These checks establish execution and signal health, without hardware or musical acceptance.
+
+Listen to [plain-then-airwolf.ab.wav](../../../../build/airwolf-elise-listening/plain-then-airwolf.ab.wav), 24.5 seconds, with the generated plain reference first and the pulse/pulse/triangle palette second. The [submission](../../../../evidence/airwolf-elise/listening/submission.json) binds that pair to the proofs. Judge instruments, balance and ending. Reuse outcome is pending; composition effort is not recorded, and there are no listener revisions yet. The study backend supports one PAL MOS6581 only; no NTSC or arbitrary prior hardware-state equivalence is established.
+
+First-audition model-assistance review: no model call. Fine timbral fidelity, balance and natural endings remain outside calibrated eligibility. Models remain experimental supporting signals under the [standing rule](../../audio-assessment.md#use-and-reassess-model-assistance); reassess after feedback or revision and before case closure. Routine transfer recipe execution took 5.845 seconds on 2026-10-14; this is separate from engineering effort and time to musical acceptance.

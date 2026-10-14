@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "check": "audio",
+  "passed": true,
+  "requestedSeconds": 12.0,
+  "expectedFrames": 529200,
+  "expectedSampleRate": 44100,
+  "expectedChannels": 1,
+  "durationRule": "round(seconds * sampleRate) sample frames",
+  "inputs": [
+    {
+      "label": "reference",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-elise-work/cache/reference-render/59d4f9555b86f866d8e03d8efff82b2852f8bc4ec2f49b899c448320c7352d1c/attempt-55181768358d41b28113989a00df5709/render.wav",
+      "sha256": "039e8daa738fb11cf1878db4c4d9fc4c742a85ee051c0370ce655b5923e6e2ea",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 529200,
+      "durationSeconds": 12.0,
+      "peak": 9294,
+      "peakDbfs": -10.944945336337366,
+      "clippedSamples": 0,
+      "rms": 1945.6853167877227,
+      "acRms": 1942.8102526810521,
+      "acRmsDbfs": -24.540390965506518,
+      "perChannel": [
+        {
+          "dc": 105.73397770219199,
+          "rms": 1945.6853167877227,
+          "acRms": 1942.8102526810521
+        }
+      ]
+    },
+    {
+      "label": "candidate",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-elise-work/cache/candidate-render/e85ebb6136af5bd11ee9b3989cead9643b0eb8ac9c565763261f1a8dea80fbf2/attempt-2b370c6a39294a16bd6707cc78a1eaa5/render.wav",
+      "sha256": "5593090b1751280182f7841398d1bbc73185863258f6a0b5c08e187d8e21934c",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 529200,
+      "durationSeconds": 12.0,
+      "peak": 9917,
+      "peakDbfs": -10.381392434526155,
+      "clippedSamples": 0,
+      "rms": 3174.8767982693976,
+      "acRms": 3174.8767428593073,
+      "acRmsDbfs": -20.27446130937545,
+      "perChannel": [
+        {
+          "dc": 0.5931613756613756,
+          "rms": 3174.8767982693976,
+          "acRms": 3174.8767428593073
+        }
+      ]
+    }
+  ],
+  "claims": {
+    "pcmIdentity": false,
+    "perceptualAgreement": false
+  },
+  "ending": {
+    "target": "both",
+    "requestedSeconds": 1.0,
+    "frames": 44100,
+    "maximumChannelAcRms": 1.0,
+    "measurements": [
+      {
+        "label": "reference",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 44100,
+        "durationSeconds": 1.0,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": -157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ]
+      },
+      {
+        "label": "candidate",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 44100,
+        "durationSeconds": 1.0,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": -157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    ],
+    "scope": "Final PCM window only; DC reported separately. A settled tail does not establish a musically complete ending."
+  }
+}

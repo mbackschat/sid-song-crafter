@@ -1,0 +1,292 @@
+{
+  "checkedPlayCalls": 597,
+  "completeNumericRange": true,
+  "completeCompiledRange": true,
+  "maximumPlayCycles": 456,
+  "orderedStoreComparison": {
+    "matchedStores": 1847,
+    "fields": [
+      "phase",
+      "tick",
+      "address",
+      "value"
+    ]
+  },
+  "callableBoundaries": 598,
+  "namedStateBoundaries": 598,
+  "sidWriterValidation": {
+    "checkedStores": 1847,
+    "writers": [
+      {
+        "pc": 4176,
+        "opcode": 153,
+        "addresses": [
+          54276,
+          54283,
+          54290
+        ]
+      },
+      {
+        "pc": 4189,
+        "opcode": 141,
+        "addresses": [
+          54296
+        ]
+      },
+      {
+        "pc": 4245,
+        "opcode": 141,
+        "addresses": [
+          54296
+        ]
+      },
+      {
+        "pc": 4253,
+        "opcode": 141,
+        "addresses": [
+          54275
+        ]
+      },
+      {
+        "pc": 4261,
+        "opcode": 141,
+        "addresses": [
+          54282
+        ]
+      },
+      {
+        "pc": 4278,
+        "opcode": 153,
+        "addresses": [
+          54276,
+          54283,
+          54290
+        ]
+      },
+      {
+        "pc": 4333,
+        "opcode": 153,
+        "addresses": [
+          54276,
+          54283,
+          54290
+        ]
+      },
+      {
+        "pc": 4360,
+        "opcode": 153,
+        "addresses": [
+          54277,
+          54284,
+          54291
+        ]
+      },
+      {
+        "pc": 4369,
+        "opcode": 153,
+        "addresses": [
+          54278,
+          54285,
+          54292
+        ]
+      },
+      {
+        "pc": 4374,
+        "opcode": 153,
+        "addresses": [
+          54276,
+          54283,
+          54290
+        ]
+      },
+      {
+        "pc": 4383,
+        "opcode": 153,
+        "addresses": [
+          54276,
+          54283,
+          54290
+        ]
+      },
+      {
+        "pc": 4389,
+        "opcode": 153,
+        "addresses": [
+          54273,
+          54280,
+          54287
+        ]
+      },
+      {
+        "pc": 4395,
+        "opcode": 153,
+        "addresses": [
+          54272,
+          54279,
+          54286
+        ]
+      }
+    ]
+  },
+  "resetVerification": {
+    "passed": true,
+    "restoredPoisonedState": true,
+    "restoredWorkspace": true,
+    "decimalModeCleared": true,
+    "matchedInitStores": 11,
+    "matchedFirstCallStores": 3,
+    "hardwareReset": false
+  },
+  "audit": {
+    "schemaVersion": 1,
+    "sourceSha256": "8a72e64823193ffb016cd79af0a9a2c2eb9de6f1159c1b23a4270199f3866d2c",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS6581",
+    "sidCount": 1,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS6581"
+      }
+    ],
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4107,
+    "clockHz": 985248.6111111111,
+    "playCalls": 597,
+    "callRateHz": 50.12457321485099,
+    "initCycles": 776,
+    "maximumPlayCycles": 456,
+    "meanPlayCycles": 114.95644891122278,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 11,
+    "playWriteCount": 1836,
+    "registers": {
+      "d400": {
+        "writes": 34,
+        "distinctValues": 8,
+        "minimum": 17,
+        "maximum": 237
+      },
+      "d401": {
+        "writes": 34,
+        "distinctValues": 9,
+        "minimum": 17,
+        "maximum": 43
+      },
+      "d403": {
+        "writes": 500,
+        "distinctValues": 1,
+        "minimum": 40,
+        "maximum": 40
+      },
+      "d404": {
+        "writes": 75,
+        "distinctValues": 3,
+        "minimum": 0,
+        "maximum": 17
+      },
+      "d405": {
+        "writes": 34,
+        "distinctValues": 1,
+        "minimum": 10,
+        "maximum": 10
+      },
+      "d406": {
+        "writes": 34,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d407": {
+        "writes": 6,
+        "distinctValues": 2,
+        "minimum": 81,
+        "maximum": 123
+      },
+      "d408": {
+        "writes": 6,
+        "distinctValues": 2,
+        "minimum": 5,
+        "maximum": 7
+      },
+      "d40a": {
+        "writes": 500,
+        "distinctValues": 1,
+        "minimum": 10,
+        "maximum": 10
+      },
+      "d40b": {
+        "writes": 20,
+        "distinctValues": 3,
+        "minimum": 0,
+        "maximum": 17
+      },
+      "d40c": {
+        "writes": 6,
+        "distinctValues": 1,
+        "minimum": 10,
+        "maximum": 10
+      },
+      "d40d": {
+        "writes": 6,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40e": {
+        "writes": 12,
+        "distinctValues": 3,
+        "minimum": 162,
+        "maximum": 247
+      },
+      "d40f": {
+        "writes": 12,
+        "distinctValues": 3,
+        "minimum": 10,
+        "maximum": 14
+      },
+      "d412": {
+        "writes": 32,
+        "distinctValues": 3,
+        "minimum": 0,
+        "maximum": 17
+      },
+      "d413": {
+        "writes": 12,
+        "distinctValues": 1,
+        "minimum": 9,
+        "maximum": 9
+      },
+      "d414": {
+        "writes": 12,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d418": {
+        "writes": 501,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 15
+      }
+    },
+    "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+  },
+  "standaloneBootstrapVerification": {
+    "passed": true,
+    "sysAddress": 2061,
+    "checkedPlayCalls": 2,
+    "restoredPoisonedState": true,
+    "matchedStores": 17,
+    "cadenceCycles": [
+      19657
+    ],
+    "scope": "Actual PRG bootstrap with modeled raster/CIA reads; separate from real VICE autostart."
+  },
+  "sidSha256": "8a72e64823193ffb016cd79af0a9a2c2eb9de6f1159c1b23a4270199f3866d2c",
+  "prgSha256": "7b2b838830ee5e05d803db39692adb5e35ff59b6254ec14bc84b48c75930e64b",
+  "compositionSha256": "e75bcb401496f48f0b64a0b06fda933eed98dc9e9de2102493e5eb1f2f35b5d5",
+  "limitations": "Independent runtime rows and patches; callable RAM-only PAL numeric equivalence. Software reset does not reset physical SID state or untouched registers. Original bus timing, full VICE playback, rendered sound and musical acceptance remain separate."
+}

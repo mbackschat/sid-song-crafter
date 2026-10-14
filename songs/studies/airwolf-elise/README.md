@@ -1,0 +1,17 @@
+# Airwolf sounds on Für Elise
+
+The [candidate](transfer.json) and [generated plain reference](reference.json) use the same 53 nominal notes from beats `[0,12)` of [the preserved Für Elise score](../../fuer-elise.json), at BPM 72. Both use A440 and the same native envelope, volume and pulse-width settings; the plain reference changes the two pulse voices to triangles. This is a generated score reference, not an original recording. The [instrument card](../../../docs/research/composition/instruments/airwolf-static-tones.md) owns reuse constraints and the [owning study](../../../docs/research/composition/airwolf-preparation.md) retains delivery status. Human instruments, balance and ending review is pending.
+
+```sh
+python3 scripts/studies/airwolf/prepare-elise.py --output songs/studies/airwolf-elise --check
+python3 scripts/listening-package.py config/listening/airwolf-elise-transfer.json --output build/airwolf-elise-work
+python3 scripts/publish-listening.py build/airwolf-elise-work/run.json --selection scripts/studies/airwolf/elise-audition.json --output build/airwolf-elise-listening
+```
+
+Publication requires a fresh destination. Listen to [plain-then-airwolf.ab.wav](../../../build/airwolf-elise-listening/plain-then-airwolf.ab.wav), 24.5 seconds with the generated plain reference first. Separate twelve-second files are [plain-reference.wav](../../../build/airwolf-elise-listening/plain-reference.wav) and [airwolf-transfer.wav](../../../build/airwolf-elise-listening/airwolf-transfer.wav). The [submission](../../../evidence/airwolf-elise/listening/submission.json) binds the audio to the technical checks.
+
+The [preparation report](preparation.json) retains all notes, gaps, exact frequency words and timing errors. Physical voices 1/2/3 carry melody/bass/harmony with native pulse/pulse/triangle sounds. The first melody note occurs during init; initially unused voices are explicitly gated off. Later musical frame `q>0` maps to play call `q−1`. Null entries skip voice writes while fixed pulse-high/volume writes continue; explicit `off` closes that voice’s gate while allowing release. The 48 merged rows retain all 53 nominal notes and include 19 explicit gate-off entries.
+
+Rows end at frame 501, so the authored release starts at play call 500, stops at 532 and verifies 64 more calls, for 597 audited calls. Boundary error is at most 9.814 ms and duration error at most 17.661 ms; nominal pitch error is within 0.319 cents. Native AD/SR values are unchanged, so numerical gaps do not guarantee instantaneous acoustic silence. Raw pulse-high bytes 40 and 10 imply widths 2048 and 2560 only when unwritten low bytes start at zero, as in the controlled renderer reset.
+
+Both [compiled exports](../../../evidence/airwolf-elise/run.json) match every named return state through CPU checks; CPU and full callable VICE agree on all 1,847 init/play stores in each version. Their actual modeled PRG bootstrap checks cover init plus two calls. Rendered signal checks are complete; musical reuse remains pending, composition effort is not recorded and no listener revisions have been requested yet.

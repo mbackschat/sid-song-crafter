@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    0.0,
+    12.0
+  ],
+  "window": {
+    "startFrame": 0,
+    "endFrame": 529200,
+    "frames": 529200,
+    "startSeconds": 0.0,
+    "endSeconds": 12.0,
+    "durationSeconds": 12.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-full-work/cache/opening/1c1bfbb07e8a6c4ea54f2628f75729a6abc44e6209345fc381ca283f4b5bfa6a/attempt-bf0a4454b3444c8f8210e5b00c6f42c6/opening-reference-then-ours.ab.wav",
+    "frames": 1080450,
+    "durationSeconds": 24.5,
+    "sha256": "a1deb6cca537fc7cbe1ad21164cfadfe832c458ea52bad6032f6ef8b2e8eee26"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 529200
+    },
+    {
+      "label": "silence",
+      "startFrame": 529200,
+      "endFrame": 551250
+    },
+    {
+      "label": "B",
+      "startFrame": 551250,
+      "endFrame": 1080450
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-full-work/cache/reference-render/28c178916bb6b335b2ab3fb01d60f03eb2c2ab18828ab0abe76f132c2d6575aa/attempt-43fdcf09e7084b79b9a63f9bd700fcac/render.wav",
+      "sha256": "07a3ac94f73c65121584faebbfb977035ffefb9cff42532005f17a0904da0bef",
+      "originalFrames": 1190700,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 529200,
+        "durationSeconds": 12.0,
+        "peak": 13272,
+        "peakDbfs": -7.850271238868273,
+        "clippedSamples": 0,
+        "rms": 4740.061281129437,
+        "acRms": 4699.1444795087145,
+        "acRmsDbfs": -16.868622738983156,
+        "perChannel": [
+          {
+            "dc": -621.4677059712774,
+            "rms": 4740.061281129437,
+            "acRms": 4699.1444795087145
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-full-work/cache/candidate-render/4ed3ed75a43f4c569d266654eb40a160b8bd2d9b1f34a46167204ace1b32cb4a/attempt-3a67407bf7714c3b8bbc1773d3d4d404/render.wav",
+      "sha256": "7ff52159df94daf1c7c0606c5ddd82a7cbc8e2be539b381a25b5bc2ff8f7cfc0",
+      "originalFrames": 1190700,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 529200,
+        "durationSeconds": 12.0,
+        "peak": 13278,
+        "peakDbfs": -7.846345412976326,
+        "clippedSamples": 0,
+        "rms": 4737.881091843069,
+        "acRms": 4696.941324594572,
+        "acRmsDbfs": -16.87269600123075,
+        "perChannel": [
+          {
+            "dc": -621.4977343159486,
+            "rms": 4737.881091843069,
+            "acRms": 4696.941324594572
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "03c602da9182759c78ca4d90ad3bd5b223b3eb61f34ea31c2205fffc589bf89f",
+  "sourceUnchanged": true,
+  "retainedExecutionRecheck": true,
+  "freshCPUExecution": false,
+  "freshNumericComputation": true,
+  "playCalls": 2500,
+  "matchedWrites": 11253,
+  "matchedReads": 1738,
+  "matchedPointerCountdownStates": 2501,
+  "derivedRegisterShadowStates": 2501,
+  "initialState": {
+    "tick": null,
+    "nextRow": 1,
+    "countdown": 8,
+    "voices": [
+      {
+        "frequency": 3691,
+        "control": 65,
+        "attackDecay": 10,
+        "sustainRelease": 0
+      },
+      {
+        "frequency": 1845,
+        "control": 65,
+        "attackDecay": 10,
+        "sustainRelease": 0
+      },
+      {
+        "frequency": 22121,
+        "control": 17,
+        "attackDecay": 9,
+        "sustainRelease": 0
+      }
+    ],
+    "pulseHigh": [
+      40,
+      10
+    ],
+    "volume": 15
+  },
+  "restartCalls": [
+    1241,
+    2483
+  ],
+  "controls": [
+    {
+      "name": "first-frequency-low",
+      "calls": 128,
+      "sourceVariantSha256": "f3d97cb3f7d997fbc5dff7f5f500f86a437aa67685ea76ab0540510b511e66cd",
+      "matchedWrites": 591
+    },
+    {
+      "name": "first-duration",
+      "calls": 128,
+      "sourceVariantSha256": "03efda8c9e58e6050fa598a23e9f631d9051f13e3c7f9ebf3964993c0495e267",
+      "matchedWrites": 591
+    }
+  ],
+  "producerToolPins": {
+    "psid_audit.py": "4446a19a325e625e59f100aac0b186478fb1633f65886b260db2ad3da11419a5",
+    "psid_profile.py": "edc1109d1b393541a1df1c8d678923faab1d5240996c2eaee63db8691e9ea0ff",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "frozenModelSha256": "d671a1f523a365cf3333ad68e93969ea69b44a6b6e2d1ec8912f2de3ae78f4d9",
+  "frozenProbeSha256": "3a052c9c66b9b6d0990218eac60ca753b99799a901902893b7275686f694e392",
+  "inputs": {
+    "evidence/airwolf-form/model.py": "d671a1f523a365cf3333ad68e93969ea69b44a6b6e2d1ec8912f2de3ae78f4d9",
+    "evidence/airwolf-form/probe.py": "3a052c9c66b9b6d0990218eac60ca753b99799a901902893b7275686f694e392",
+    "evidence/airwolf-form/check-edits.py": "a0b2de68cc5181c7bf88ff0b1d43e1864a8eb1edcca3ce19a8f32be393516c51",
+    "evidence/airwolf-form/edits.json.gz": "417a03c3e39c40e8f4da98d6b478abf79365a28d3d82c76edf4480cea2c6f17c",
+    "evidence/airwolf-form/complete/receipt.json": "546471a5b5a60eac43d074019659b642a9f95b34719931184dfc610099d4f4b8",
+    "evidence/airwolf-form/complete/score.json": "1d658def8d8219c359b32f1ea2497def3e3d20e0526d34ac207f187e6981e3c6",
+    "evidence/airwolf-form/complete/audit.json": "3936f88501a3830a4a117fa76bea1fc3bbffcf85829ec31ad6747da3dde38b19",
+    "evidence/airwolf-form/complete/reads.json.gz": "aa07c3244b12f6b3ed9b004acb57f415d269e88c7530067644456e26c6844e1d",
+    "evidence/airwolf-form/complete/states.json.gz": "706a253fce3c752857c550af2dcfa9e74fcb3228ff1a9fcdf194c015f7434c74",
+    "evidence/airwolf-form/complete/writes.json.gz": "59661c9e36329dcf937baa476bf3e0c308570783852146ac25c901016cc642d7"
+  },
+  "tools": {
+    "scripts/studies/airwolf/check-player.py": "63ef0545b33dcf255ae7563eb05905a22194863f6ebd86dbd52ce5b38dfa2ea3",
+    "scripts/studies/airwolf/airwolf_player.py": "8fe93b59423e30f943a4a0ea682463ed8a0310f3e7edb2440b2008026e236d45",
+    "scripts/evidence.py": "2765b8b3bfbc0a32297b3ef781cb2165ec0d270ef1698095f5e6cf5e835aad07"
+  },
+  "limits": "Independent editable numeric player matches retained2500-call source stores/reads, explicit pointer/countdown states and both128-call private-copy interventions. Register shadows describe emitted ports only; unwritten pulse-low/filter and SID internal state depend on caller/reset state. No original CPU/VICE execution in this checker, compiled export, bus timing, audio identity, indefinite playback or listening verdict. Authored off/ending and editable fixed parameters are separate numeric/compiled contracts.",
+  "outputHashes": {
+    "returns.json": "2262a2d6d99b54bcc0ee85499cfa0398b963fa451e5ec923078cd91eec1fd39e",
+    "writes.json": "531b3516d7af846f9daf632b3a6d204161da69523706cc734d2c9e72fda87832",
+    "reads.json": "61742cdb6cbcf63e768d1dc0107a16b71ea71e22a9e070b38211c92f3be6f9a1",
+    "composition.json": "60854273ee76c8e86b54e66ace28d8217472879558ad64cfe969d4072e9cb418"
+  }
+}

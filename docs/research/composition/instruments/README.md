@@ -15,6 +15,7 @@
 
 - [Take On Me tonal programs](take-on-me-decoded-programs.md): accepted matched A440 familiar transfer with one-way pulse lead, delayed vibrato, moving-pulse filtered bass and explicit native articulation limits.
 - [Billie Jean pulse lead and filtered support](billie-jean-decoded-programs.md): matched A440 familiar transfer accepted (“plays nice”); inspect setup cutoff writes even for unfiltered voices.
+- [Airwolf static pulse and triangle sounds](airwolf-static-tones.md): complete native palette on matched A440 familiar material, explicit gap gates and init-aware timing; listening pending.
 
 ## Original SID-Wizard instruments
 

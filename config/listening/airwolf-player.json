@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "player-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "-v",
+        "airwolf_player_test",
+        "airwolf_title_test"
+      ],
+      "inputs": [
+        "scripts/studies/airwolf/airwolf_player.py",
+        "scripts/studies/airwolf/prepare-title.py",
+        "tests/airwolf_player_test.py",
+        "tests/airwolf_title_test.py",
+        "evidence/airwolf-form/complete/score.json"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/tests",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "retained-player-proof",
+      "command": [
+        "{python}",
+        "scripts/studies/airwolf/check-player.py",
+        "--output",
+        "{out}/proof"
+      ],
+      "inputs": [
+        "scripts/studies/airwolf/check-player.py",
+        "scripts/studies/airwolf/airwolf_player.py",
+        "scripts/evidence.py",
+        "evidence/manifest.json",
+        ".local/research/airwolf/Airwolf.sid",
+        "evidence/airwolf-form/model.py",
+        "evidence/airwolf-form/probe.py",
+        "evidence/airwolf-form/check-edits.py",
+        "evidence/airwolf-form/edits.json.gz",
+        "evidence/airwolf-form/complete/receipt.json",
+        "evidence/airwolf-form/complete/score.json",
+        "evidence/airwolf-form/complete/audit.json",
+        "evidence/airwolf-form/complete/reads.json.gz",
+        "evidence/airwolf-form/complete/states.json.gz",
+        "evidence/airwolf-form/complete/writes.json.gz"
+      ],
+      "outputs": [
+        "proof/composition.json",
+        "proof/receipt.json",
+        "proof/writes.json",
+        "proof/returns.json",
+        "proof/reads.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "composition": "{stage:retained-player-proof}/proof/composition.json",
+    "proof": "{stage:retained-player-proof}/proof/receipt.json"
+  }
+}

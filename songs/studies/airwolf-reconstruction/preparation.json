@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "source": "evidence/airwolf-form/complete/score.json",
+  "sourceSha256": "1d658def8d8219c359b32f1ea2497def3e3d20e0526d34ac207f187e6981e3c6",
+  "workingTarget": {
+    "clock": "pal",
+    "sidModel": "MOS6581",
+    "sidBase": 54272,
+    "frameCycles": 19656
+  },
+  "cycleUpdatesIncludingInit": 1242,
+  "musicPlayCalls": 1241,
+  "releaseCalls": 32,
+  "stopCall": 1273,
+  "confirmationCalls": 64,
+  "auditCalls": 1338,
+  "sourcePrefixStores": 5586,
+  "artificialFade": false,
+  "initTiming": "Init consumes row0 at grid frame0; play call t is grid frame t+1.",
+  "endingBasis": "Preserve init and calls0..1240. Before the internal restart at1241, close held gates and freeze row processing/fixed writes for32calls; zero controls/master volume at1273, then verify64 write-free calls.",
+  "hardwareInitialization": "Only observed source ports are written; pulse-low/filter and SID internal state depend on the caller or renderer reset.",
+  "listeningStatus": "Pending compiled verification, rendered tail measurement and human listening.",
+  "compositionSha256": "bb434b1fb0a294cdf5e40328170872d3993c7f18947b501527d5e12eb1efbc24"
+}

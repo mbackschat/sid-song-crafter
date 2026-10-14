@@ -1,0 +1,21 @@
+radix h
+sidefx off
+dummy off
+bank ram
+fill $0002 $cfff $00
+fill $e000 $ffff $00
+load "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-elise-work/cache/reference-vice/0b37b66d5a8e222999fc247b590e059075b21aebfcca2f08f666f56beb2f5e9a/attempt-0c80421448434d018e46349d7a6d1239/vice/payload.prg" 0
+load "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-elise-work/cache/reference-vice/0b37b66d5a8e222999fc247b590e059075b21aebfcca2f08f666f56beb2f5e9a/attempt-0c80421448434d018e46349d7a6d1239/vice/harness.prg" 0
+r a=$00,x=$00,y=$00,sp=$ff,fl=$24
+r pc=$c000
+trace exec $1000
+trace exec $c03a
+trace exec $100b
+trace exec $c04a
+trace store $d400 $d41f if (@ram:$c102 != $00) || ((((@ram:$c101 * $0100) + @ram:$c100) >= $0000) && (((@ram:$c101 * $0100) + @ram:$c100) <= $0254))
+until $c06d
+r
+bank ram
+d $1000 $13b4
+m $1000 $13b4
+quit
