@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "check": "audio",
+  "passed": true,
+  "requestedSeconds": 27.0,
+  "expectedFrames": 1190700,
+  "expectedSampleRate": 44100,
+  "expectedChannels": 1,
+  "durationRule": "round(seconds * sampleRate) sample frames",
+  "inputs": [
+    {
+      "label": "reference",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/reference-render/28c178916bb6b335b2ab3fb01d60f03eb2c2ab18828ab0abe76f132c2d6575aa/attempt-012946db58d14b44bdc9eb3161698247/render.wav",
+      "sha256": "07a3ac94f73c65121584faebbfb977035ffefb9cff42532005f17a0904da0bef",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1190700,
+      "durationSeconds": 27.0,
+      "peak": 13272,
+      "peakDbfs": -7.850271238868273,
+      "clippedSamples": 0,
+      "rms": 4688.217481635706,
+      "acRms": 4647.067554777622,
+      "acRmsDbfs": -16.96541898125505,
+      "perChannel": [
+        {
+          "dc": -619.7953665910809,
+          "rms": 4688.217481635706,
+          "acRms": 4647.067554777622
+        }
+      ]
+    },
+    {
+      "label": "candidate",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/candidate-render/8053277502fed16d849cddc0a98da17a4bb551971175af75556e6549f762ddaf/attempt-ddbfd4526732485d8e5aabdadf695481/render.wav",
+      "sha256": "e0b7c8dcca0ae2a2c23a7368693b14fcbeec85bd97a5a38c351dd683264c1e39",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1190700,
+      "durationSeconds": 27.0,
+      "peak": 13314,
+      "peakDbfs": -7.822827646881319,
+      "clippedSamples": 0,
+      "rms": 4683.158862646638,
+      "acRms": 4641.952676867345,
+      "acRmsDbfs": -16.974984526042995,
+      "perChannel": [
+        {
+          "dc": -619.8808583186361,
+          "rms": 4683.158862646638,
+          "acRms": 4641.952676867345
+        }
+      ]
+    }
+  ],
+  "claims": {
+    "pcmIdentity": false,
+    "perceptualAgreement": false
+  }
+}

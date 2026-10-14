@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "submission": "evidence/airwolf-elise/listening/submission.json",
+  "submissionSha256": "c861a7a8529eee62680d176dd6f45906ac67bbe6d376b429003137da7c100359",
+  "samples": [
+    {
+      "label": "comparison",
+      "filename": "build/airwolf-elise-listening/plain-then-airwolf.ab.wav",
+      "comparisonSha256": "0c614062b6e302212220881497cc596bbbf7d4dd81268f7c72486980ab908108",
+      "humanAnswer": "music is nice",
+      "status": "accepted"
+    }
+  ],
+  "scope": "Same 53 nominal Für Elise notes, generated plain triangle reference first and Airwolf pulse/pulse/triangle palette second, both A440/PAL/MOS6581; instruments, balance and ending.",
+  "interpretation": "Musical reuse accepted for the submitted familiar phrase; no transfer correction requested. The separately reported Airwolf title-ending cut remains open.",
+  "limits": "Acceptance covers this palette and arrangement, without universal instrument suitability, hardware equivalence or acceptance of the separate title ending. Native envelope, timing and caller/reset-state constraints remain.",
+  "modelAssistanceReview": {
+    "checkpoint": "Listener feedback",
+    "decision": "No model call",
+    "reason": "Fine fidelity, balance and natural endings remain outside calibrated model eligibility. The listener requests no transfer correction; the separate title cutoff is being investigated through PCM and source timing rather than model judgment.",
+    "nextReview": "Reassess after ending revision and before case closure; retain experimental supporting status."
+  }
+}

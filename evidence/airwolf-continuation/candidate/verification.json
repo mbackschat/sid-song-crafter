@@ -1,0 +1,258 @@
+{
+  "checkedPlayCalls": 2500,
+  "completeNumericRange": true,
+  "completeCompiledRange": true,
+  "maximumPlayCycles": 579,
+  "orderedStoreComparison": {
+    "matchedStores": 11253,
+    "fields": [
+      "phase",
+      "tick",
+      "address",
+      "value"
+    ]
+  },
+  "callableBoundaries": 2501,
+  "namedStateBoundaries": 2501,
+  "sidWriterValidation": {
+    "checkedStores": 11253,
+    "writers": [
+      {
+        "pc": 4245,
+        "opcode": 141,
+        "addresses": [
+          54296
+        ]
+      },
+      {
+        "pc": 4253,
+        "opcode": 141,
+        "addresses": [
+          54275
+        ]
+      },
+      {
+        "pc": 4261,
+        "opcode": 141,
+        "addresses": [
+          54282
+        ]
+      },
+      {
+        "pc": 4360,
+        "opcode": 153,
+        "addresses": [
+          54277,
+          54284,
+          54291
+        ]
+      },
+      {
+        "pc": 4369,
+        "opcode": 153,
+        "addresses": [
+          54278,
+          54285,
+          54292
+        ]
+      },
+      {
+        "pc": 4374,
+        "opcode": 153,
+        "addresses": [
+          54276,
+          54283,
+          54290
+        ]
+      },
+      {
+        "pc": 4383,
+        "opcode": 153,
+        "addresses": [
+          54276,
+          54283,
+          54290
+        ]
+      },
+      {
+        "pc": 4389,
+        "opcode": 153,
+        "addresses": [
+          54273,
+          54280,
+          54287
+        ]
+      },
+      {
+        "pc": 4395,
+        "opcode": 153,
+        "addresses": [
+          54272,
+          54279,
+          54286
+        ]
+      }
+    ]
+  },
+  "resetVerification": {
+    "passed": true,
+    "restoredPoisonedState": true,
+    "restoredWorkspace": true,
+    "decimalModeCleared": true,
+    "matchedInitStores": 21,
+    "matchedFirstCallStores": 3,
+    "hardwareReset": false
+  },
+  "audit": {
+    "schemaVersion": 1,
+    "sourceSha256": "8ec180ed3050bbcd5e87dfa709b22b0322705ffb41134ea89fd7295f742b7d43",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS6581",
+    "sidCount": 1,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS6581"
+      }
+    ],
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4107,
+    "clockHz": 985248.6111111111,
+    "playCalls": 2500,
+    "callRateHz": 50.12457321485099,
+    "initCycles": 922,
+    "maximumPlayCycles": 579,
+    "meanPlayCycles": 129.1316,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 21,
+    "playWriteCount": 11232,
+    "registers": {
+      "d400": {
+        "writes": 160,
+        "distinctValues": 18,
+        "minimum": 37,
+        "maximum": 227
+      },
+      "d401": {
+        "writes": 160,
+        "distinctValues": 18,
+        "minimum": 12,
+        "maximum": 57
+      },
+      "d403": {
+        "writes": 2502,
+        "distinctValues": 1,
+        "minimum": 40,
+        "maximum": 40
+      },
+      "d404": {
+        "writes": 320,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 65
+      },
+      "d405": {
+        "writes": 160,
+        "distinctValues": 1,
+        "minimum": 10,
+        "maximum": 10
+      },
+      "d406": {
+        "writes": 160,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d407": {
+        "writes": 184,
+        "distinctValues": 5,
+        "minimum": 53,
+        "maximum": 210
+      },
+      "d408": {
+        "writes": 184,
+        "distinctValues": 5,
+        "minimum": 3,
+        "maximum": 10
+      },
+      "d40a": {
+        "writes": 2502,
+        "distinctValues": 1,
+        "minimum": 10,
+        "maximum": 10
+      },
+      "d40b": {
+        "writes": 368,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 65
+      },
+      "d40c": {
+        "writes": 184,
+        "distinctValues": 1,
+        "minimum": 10,
+        "maximum": 10
+      },
+      "d40d": {
+        "writes": 184,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40e": {
+        "writes": 277,
+        "distinctValues": 4,
+        "minimum": 105,
+        "maximum": 194
+      },
+      "d40f": {
+        "writes": 277,
+        "distinctValues": 4,
+        "minimum": 57,
+        "maximum": 102
+      },
+      "d412": {
+        "writes": 554,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 17
+      },
+      "d413": {
+        "writes": 277,
+        "distinctValues": 1,
+        "minimum": 9,
+        "maximum": 9
+      },
+      "d414": {
+        "writes": 277,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d418": {
+        "writes": 2502,
+        "distinctValues": 1,
+        "minimum": 15,
+        "maximum": 15
+      }
+    },
+    "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+  },
+  "standaloneBootstrapVerification": {
+    "passed": true,
+    "sysAddress": 2061,
+    "checkedPlayCalls": 2,
+    "restoredPoisonedState": true,
+    "matchedStores": 27,
+    "cadenceCycles": [
+      19652
+    ],
+    "scope": "Actual PRG bootstrap with modeled raster/CIA reads; separate from real VICE autostart."
+  },
+  "sidSha256": "8ec180ed3050bbcd5e87dfa709b22b0322705ffb41134ea89fd7295f742b7d43",
+  "prgSha256": "b9bfc1157c594908fb6536f38d17a60f7cf0bfdc1aab113e4db0df1cc0c1e5b4",
+  "compositionSha256": "60854273ee76c8e86b54e66ace28d8217472879558ad64cfe969d4072e9cb418",
+  "limitations": "Independent runtime rows and patches; callable RAM-only PAL numeric equivalence. Software reset does not reset physical SID state or untouched registers. Original bus timing, full VICE playback, rendered sound and musical acceptance remain separate."
+}

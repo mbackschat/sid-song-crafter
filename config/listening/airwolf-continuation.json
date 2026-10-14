@@ -1,0 +1,443 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "continuation-admission",
+      "command": [
+        "{python}",
+        "-c",
+        "import json, sys; d = json.load(open(sys.argv[1])); assert d['schema'] == 'airwolf-composition-v1' and d['target'] == dict(clock='pal', sidModel='MOS6581', sidBase=54272, frameCycles=19656); assert 'ending' not in d, 'Source continuation must not contain an authored ending'; assert d['range'] == dict(auditCalls=2500), 'Verify the complete retained source range'; cycle = sum(row['duration'] + 1 for row in d['rows']); assert cycle == 1242 and len(d['rows']) == 138; assert [cycle - 1, 2 * cycle - 1] == [1241, 2483] and 2500 > 2 * cycle - 1; print('Source continuation: no authored ending; full 2500-call proof covers restarts 1241 and 2483.')",
+        "evidence/airwolf-player/composition.json"
+      ],
+      "inputs": [
+        "evidence/airwolf-player/composition.json"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "export-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "-v",
+        "airwolf_player_test",
+        "airwolf_compiler_test"
+      ],
+      "inputs": [
+        "evidence/airwolf-player/composition.json",
+        "scripts/studies/airwolf/compose.py",
+        "scripts/studies/airwolf/airwolf_compiler.py",
+        "scripts/studies/airwolf/airwolf_player.py",
+        "songs/players/airwolf.asm",
+        "scripts/sid_assembler.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        "tests/airwolf_player_test.py",
+        "tests/airwolf_compiler_test.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference-pin",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "asset",
+        ".local/research/airwolf/Airwolf.sid",
+        "--sha256",
+        "03c602da9182759c78ca4d90ad3bd5b223b3eb61f34ea31c2205fffc589bf89f",
+        "--output",
+        "{out}/reference.json"
+      ],
+      "inputs": [
+        ".local/research/airwolf/Airwolf.sid",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "reference.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "build",
+      "command": [
+        "{python}",
+        "scripts/studies/airwolf/compose.py",
+        "evidence/airwolf-player/composition.json",
+        "--output",
+        "{out}/candidate"
+      ],
+      "inputs": [
+        "evidence/airwolf-player/composition.json",
+        "scripts/studies/airwolf/compose.py",
+        "scripts/studies/airwolf/airwolf_compiler.py",
+        "scripts/studies/airwolf/airwolf_player.py",
+        "songs/players/airwolf.asm",
+        "scripts/sid_assembler.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "candidate/reconstructed.sid",
+        "candidate/reconstructed.prg",
+        "candidate/verification.json",
+        "candidate/audit.json",
+        "candidate/writes.json",
+        "candidate/state-checkpoints.json",
+        "candidate/player.asm",
+        "candidate/player.listing",
+        "candidate/build.json"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "numeric-source-check",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "writes",
+        "evidence/airwolf-form/complete/writes.json.gz",
+        "{stage:build}/candidate/writes.json",
+        "--source-sha256",
+        "4d36fae24be9313bc95e4759462f4980832da923dbb9203f62b6a12780f61c4a",
+        "--calls",
+        "2500",
+        "--output",
+        "{out}/source-writes.json"
+      ],
+      "inputs": [
+        "evidence/airwolf-form/complete/writes.json.gz",
+        "{stage:build}/candidate/writes.json",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "source-writes.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "vice",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:build}/candidate/reconstructed.sid",
+        "--oracle",
+        "{stage:build}/candidate/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "2499",
+        "--timeout",
+        "300",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:build}/candidate/reconstructed.sid",
+        "{stage:build}/candidate/writes.json",
+        "scripts/trace-sid-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/study.json",
+        "vice/trace.json",
+        "vice/monitor.log",
+        "vice/command.json",
+        "vice/commands.mon"
+      ],
+      "timeoutSeconds": 330,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/airwolf/Airwolf.sid",
+        "{out}/render.wav",
+        "27",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        ".local/research/airwolf/Airwolf.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:build}/candidate/reconstructed.sid",
+        "{out}/render.wav",
+        "27",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:build}/candidate/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "--seconds",
+        "27",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "opening",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{out}/opening-reference-then-ours",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "12",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "opening-reference-then-ours.ab.wav",
+        "opening-reference-then-ours.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "ending",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{out}/ending-reference-then-ours",
+        "--start-seconds",
+        "15",
+        "--end-seconds",
+        "27",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "ending-reference-then-ours.ab.wav",
+        "ending-reference-then-ours.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "phrase",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{out}/phrase-reference-then-ours",
+        "--start-seconds",
+        "3",
+        "--end-seconds",
+        "19",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "phrase-reference-then-ours.ab.wav",
+        "phrase-reference-then-ours.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "post-restart-window",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{out}/post-restart",
+        "--start-seconds",
+        "24.9",
+        "--end-seconds",
+        "25.1",
+        "--gap-seconds",
+        "0"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "post-restart.ab.wav",
+        "post-restart.comparison.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "post-restart-check",
+      "command": [
+        "{python}",
+        "-c",
+        "import json, sys; report = json.load(open(sys.argv[1])); assert report['requestedWindowSeconds'] == [24.9, 25.1]; assert all(channel['acRms'] > 1 for item in report['inputs'] for channel in item['window']['perChannel']), 'Reference continuation must not be replaced with silence'; print('Both reference and candidate retain nonzero AC signal after the first restart.')",
+        "{stage:post-restart-window}/post-restart.comparison.json"
+      ],
+      "inputs": [
+        "{stage:post-restart-window}/post-restart.comparison.json"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "fullReference": "{stage:reference-render}/render.wav",
+    "fullCandidate": "{stage:candidate-render}/render.wav",
+    "opening": "{stage:opening}/opening-reference-then-ours.ab.wav",
+    "ending": "{stage:ending}/ending-reference-then-ours.ab.wav",
+    "phrase": "{stage:phrase}/phrase-reference-then-ours.ab.wav",
+    "numericSourceProof": "{stage:numeric-source-check}/source-writes.json",
+    "compiledProof": "{stage:build}/candidate/verification.json",
+    "viceProof": "{stage:vice}/vice/study.json",
+    "signalProof": "{stage:signal-check}/audio.json",
+    "continuationProof": "{stage:post-restart-window}/post-restart.comparison.json"
+  }
+}

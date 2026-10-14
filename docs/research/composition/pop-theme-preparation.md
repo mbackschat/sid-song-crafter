@@ -1,6 +1,6 @@
 # Pop songs and TV/film themes: pinned intake
 
-This owns intake and retained preparation for the four later references in the [study plan](../study-plan.md). [Take On Me](take-on-me-preparation.md#familiar-transfer-and-case-closure) and [Billie Jean](billie-jean-preparation.md#listening-verdicts-and-case-closure) are complete for their accepted reconstructions, authored endings and familiar transfers. [Airwolf](airwolf-preparation.md) is active, with independent title and familiar-transfer exports verified through CPU/VICE and rendering; its three listening verdicts are pending. Ghostbusters follows afterward. Source attribution and historical evidence below retain their original bounded scope.
+This owns intake and retained preparation for the four later references in the [study plan](../study-plan.md). [Take On Me](take-on-me-preparation.md#familiar-transfer-and-case-closure) and [Billie Jean](billie-jean-preparation.md#listening-verdicts-and-case-closure) are complete for their accepted reconstructions, authored endings and familiar transfers. [Airwolf](airwolf-preparation.md) is active, with independent title and familiar-transfer exports verified through CPU/VICE and rendering; phrase and familiar transfer are accepted; the ending cutoff requires a corrected source-continuation review. Ghostbusters follows afterward. Source attribution and historical evidence below retain their original bounded scope.
 
 ## Sources and attribution
 
@@ -67,7 +67,7 @@ PYTHONPATH=.tools/test-deps python3 build/airwolf-new/check-edits.py --output bu
 python3 scripts/trace-sid-vice.py .local/research/airwolf/Airwolf.sid --profile pal-banked --subtune 1 --oracle evidence/airwolf-form/vice-wrap/oracle.json --first-call 1238 --last-call 1246 --output build/airwolf-new/vice-wrap
 ```
 
-The probe generates the score needed by the edit checker. This historical research model is not itself a compiled arrangement/export. The [independent delivery study](airwolf-preparation.md) now owns the runtime player, complete export/ending checks and familiar transfer, with listening verdicts pending. Prefer its current retained-proof recipe when rechecking unchanged evidence; the historical capture tools above keep their original pins.
+The probe generates the score needed by the edit checker. This historical research model is not itself a compiled arrangement/export. The [independent delivery study](airwolf-preparation.md) now owns the runtime player, complete export/ending checks and familiar transfer, with phrase and transfer accepted and corrected ending review pending. Prefer its current retained-proof recipe when rechecking unchanged evidence; the historical capture tools above keep their original pins.
 
 ### Ghostbusters
 
@@ -91,4 +91,4 @@ PYTHONPATH=.tools/test-deps python3 scripts/psid_audit.py .local/research/airwol
 python3 scripts/trace-sid-vice.py .local/research/airwolf/Airwolf.sid --profile pal-banked --subtune 1 --oracle build/pop-theme-new/airwolf.audit64.writes.json --first-call 0 --last-call 63 --output build/pop-theme-new/airwolf.vice64
 ```
 
-The retained [collector](../../../evidence/pop-theme-intake/intake.py) checks existing receipts, STIL entry fingerprints and source/export equality without rerunning the CPU. Its evidence dependencies are restored with the [archive workflow](../../workflows/build-cache.md). Airwolf’s [independent export and familiar transfer](airwolf-preparation.md) now pass technical checks and await musical feedback. Ghostbusters still needs complete-form analysis in its machine-controlled environment. Take On Me and Billie Jean have completed their declared delivery scopes in their linked owning studies.
+The retained [collector](../../../evidence/pop-theme-intake/intake.py) checks existing receipts, STIL entry fingerprints and source/export equality without rerunning the CPU. Its evidence dependencies are restored with the [archive workflow](../../workflows/build-cache.md). Airwolf’s [independent export and familiar transfer](airwolf-preparation.md) pass technical checks; phrase and transfer are accepted, with the corrected ending review pending. Ghostbusters still needs complete-form analysis in its machine-controlled environment. Take On Me and Billie Jean have completed their declared delivery scopes in their linked owning studies.

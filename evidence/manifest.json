@@ -16156,6 +16156,306 @@
       "originalBytes": 1854,
       "sha256": "c861a7a8529eee62680d176dd6f45906ac67bbe6d376b429003137da7c100359",
       "bytes": 1854
+    },
+    {
+      "path": "evidence/airwolf-continuation/run.json",
+      "originalPath": "build/airwolf-continuation-work/run.json",
+      "group": "airwolf-continuation",
+      "reason": "Reproduce source-continuation delivery and verify stage fingerprints.",
+      "originalSha256": "4929ae4350f05693e9dde4c0358287b62f15b2308030775ef73a90beb9e14005",
+      "originalBytes": 39567,
+      "sha256": "4929ae4350f05693e9dde4c0358287b62f15b2308030775ef73a90beb9e14005",
+      "bytes": 39567
+    },
+    {
+      "path": "evidence/airwolf-continuation/admission.txt",
+      "originalPath": "build/airwolf-continuation-work/cache/continuation-admission/0eed6f94aa4f843c33c473fe368d5ac9403e81011c691d529d8cc6270698324c/attempt-a458f2231a5c46359d3803dc140efcae/stage.log",
+      "group": "airwolf-continuation",
+      "reason": "Retain executed continuation admission, runtime guards and post-restart audio check.",
+      "originalSha256": "83bd81727465499d792f69696e2bd51ec862254d2e73d708bc89b4e14913f8d8",
+      "originalBytes": 93,
+      "sha256": "83bd81727465499d792f69696e2bd51ec862254d2e73d708bc89b4e14913f8d8",
+      "bytes": 93
+    },
+    {
+      "path": "evidence/airwolf-continuation/guards.txt",
+      "originalPath": "build/airwolf-continuation-work/cache/export-guards/86be1dfdb495a59a0244bae1f017ecca0e460621b66040908d7ea8a23700d47b/attempt-f647c73331a84f7389cfd67ccc8fc9ec/stage.log",
+      "group": "airwolf-continuation",
+      "reason": "Retain executed continuation admission, runtime guards and post-restart audio check.",
+      "originalSha256": "a401cdb3ecb4494e93c25649dc5de4b58f42a7cca52ac38da2d08f9c392132d5",
+      "originalBytes": 1943,
+      "sha256": "a401cdb3ecb4494e93c25649dc5de4b58f42a7cca52ac38da2d08f9c392132d5",
+      "bytes": 1943
+    },
+    {
+      "path": "evidence/airwolf-continuation/continuation-guard.txt",
+      "originalPath": "build/airwolf-continuation-work/cache/post-restart-check/fa723e2254827f58748c8ceb6d07f80fae020343668911c0b34206a198673666/attempt-63ba046abf9e4a73a70477be355c9123/stage.log",
+      "group": "airwolf-continuation",
+      "reason": "Retain executed continuation admission, runtime guards and post-restart audio check.",
+      "originalSha256": "3b4d2e39e8042af627d073524d40ab0ce7a97077fd757f96c6d1f240ffc267ab",
+      "originalBytes": 79,
+      "sha256": "3b4d2e39e8042af627d073524d40ab0ce7a97077fd757f96c6d1f240ffc267ab",
+      "bytes": 79
+    },
+    {
+      "path": "evidence/airwolf-continuation/candidate/verification.json",
+      "originalPath": "build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/verification.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain complete independent runtime proof; exclude SID and PRG binaries.",
+      "originalSha256": "821f484e5d7d389ef13e4185a5149bdab6a5d5b10a9bd3873a6ecf24347c6515",
+      "originalBytes": 5924,
+      "sha256": "821f484e5d7d389ef13e4185a5149bdab6a5d5b10a9bd3873a6ecf24347c6515",
+      "bytes": 5924
+    },
+    {
+      "path": "evidence/airwolf-continuation/candidate/audit.json",
+      "originalPath": "build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/audit.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain complete independent runtime proof; exclude SID and PRG binaries.",
+      "originalSha256": "92955691ebb03b1742d3c35d1701f0c237b4f947150b725c420e3d333ffc8c5e",
+      "originalBytes": 2959,
+      "sha256": "92955691ebb03b1742d3c35d1701f0c237b4f947150b725c420e3d333ffc8c5e",
+      "bytes": 2959
+    },
+    {
+      "path": "evidence/airwolf-continuation/candidate/build.json",
+      "originalPath": "build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/build.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain complete independent runtime proof; exclude SID and PRG binaries.",
+      "originalSha256": "c80214bab77c16a408c1a1e162c7eefc0cc87534ced366e725f3223c6a9cdb59",
+      "originalBytes": 14053,
+      "sha256": "c80214bab77c16a408c1a1e162c7eefc0cc87534ced366e725f3223c6a9cdb59",
+      "bytes": 14053
+    },
+    {
+      "path": "evidence/airwolf-continuation/candidate/writes.json.gz",
+      "originalPath": "build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/writes.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain complete independent runtime proof; exclude SID and PRG binaries.",
+      "originalSha256": "7f428e86f527c4aeff23d1986f2f76d77a3494ebf0f6fee8be6e40b6476707c0",
+      "originalBytes": 931602,
+      "sha256": "b92b45be3292e5c11918b673a8d930901f5bf0e362be8ffe810950eefd03d657",
+      "bytes": 38550
+    },
+    {
+      "path": "evidence/airwolf-continuation/candidate/state-checkpoints.json.gz",
+      "originalPath": "build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/state-checkpoints.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain complete independent runtime proof; exclude SID and PRG binaries.",
+      "originalSha256": "ce6b45aa98d7ea4ac4b35642fca51943b7d1270cc09470d5dd87da7e87a3d752",
+      "originalBytes": 5659,
+      "sha256": "32fa33e17d1812ecd68a94fbd8b5fe67fb0d04f02d3208716bc41b03576ae8b7",
+      "bytes": 380
+    },
+    {
+      "path": "evidence/airwolf-continuation/candidate/player.asm.gz",
+      "originalPath": "build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/player.asm",
+      "group": "airwolf-continuation",
+      "reason": "Retain complete independent runtime proof; exclude SID and PRG binaries.",
+      "originalSha256": "f7fda3efb7e75cb77cadf194dc640e26bf3eb258807243e1e42148cca850ea0d",
+      "originalBytes": 17272,
+      "sha256": "4690e993b70a670d09c764499703a6d3b944800a7b978c0901bd2b30b71bd5c7",
+      "bytes": 2349
+    },
+    {
+      "path": "evidence/airwolf-continuation/candidate/player.listing.gz",
+      "originalPath": "build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/player.listing",
+      "group": "airwolf-continuation",
+      "reason": "Retain complete independent runtime proof; exclude SID and PRG binaries.",
+      "originalSha256": "f38566b3d7fe631480da415b050eabb87d98bbbfaaa022c278e9c5fdf5df558c",
+      "originalBytes": 21837,
+      "sha256": "eb7f7d0c189d75beb28fa63e510d75d4f9f75083da2c3b7dc776f0f3534a25c7",
+      "bytes": 3422
+    },
+    {
+      "path": "evidence/airwolf-continuation/vice/study.json",
+      "originalPath": "build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/study.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain complete controlled-host VICE execution and reproduction settings.",
+      "originalSha256": "8d97812d00c78e58a2b6233df07aef54e7755faa3ed7ac7912e0bef4a9ba8e4c",
+      "originalBytes": 3373,
+      "sha256": "8d97812d00c78e58a2b6233df07aef54e7755faa3ed7ac7912e0bef4a9ba8e4c",
+      "bytes": 3373
+    },
+    {
+      "path": "evidence/airwolf-continuation/vice/trace.json.gz",
+      "originalPath": "build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/trace.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain complete controlled-host VICE execution and reproduction settings.",
+      "originalSha256": "08c29c45c0f7da65b7fcf0e3175e635ddb214cb5f5d777993a810b9c52628bec",
+      "originalBytes": 6160791,
+      "sha256": "9e84270b038ead0c0cac0e4a5d7cccc2b1c14cee3a0e4a6f94333dc42f81db41",
+      "bytes": 182654
+    },
+    {
+      "path": "evidence/airwolf-continuation/vice/monitor.txt.gz",
+      "originalPath": "build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/monitor.log",
+      "group": "airwolf-continuation",
+      "reason": "Retain complete controlled-host VICE execution and reproduction settings.",
+      "originalSha256": "9d865fb9f5081882d43b849bf6f85fc71f1aaa6fbbf4d83d7e7dbf585c6ffc7e",
+      "originalBytes": 1995583,
+      "sha256": "556d669fb7e8e9f478a5ea7892c4b0407dd7685ddc6be7db5b2de0ce5575e33a",
+      "bytes": 123001
+    },
+    {
+      "path": "evidence/airwolf-continuation/vice/command.json",
+      "originalPath": "build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/command.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain complete controlled-host VICE execution and reproduction settings.",
+      "originalSha256": "3fb8ad55ebdb6bbb0fb57bdfe13f6c7a7d87c7cc9cb9b65b7b8c6503a725bf97",
+      "originalBytes": 836,
+      "sha256": "3fb8ad55ebdb6bbb0fb57bdfe13f6c7a7d87c7cc9cb9b65b7b8c6503a725bf97",
+      "bytes": 836
+    },
+    {
+      "path": "evidence/airwolf-continuation/vice/commands.mon",
+      "originalPath": "build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/commands.mon",
+      "group": "airwolf-continuation",
+      "reason": "Retain complete controlled-host VICE execution and reproduction settings.",
+      "originalSha256": "cccc6d361610ddd5ace53101d5aa32f8019203e49c318ef939a34f6576b63d55",
+      "originalBytes": 830,
+      "sha256": "cccc6d361610ddd5ace53101d5aa32f8019203e49c318ef939a34f6576b63d55",
+      "bytes": 830
+    },
+    {
+      "path": "evidence/airwolf-continuation/source-comparison.json",
+      "originalPath": "build/airwolf-continuation-work/cache/numeric-source-check/668334691c0d0b9418bfd2b0979fb0e4da2c1c80da6fc4ee20ba7572550dbb7b/attempt-b0489b7690e549d2914688e7b7708569/source-writes.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain source agreement and measured rendered continuation, separate from listening acceptance.",
+      "originalSha256": "baaf0ff1fb6f104dc223788316c63134573426525e6b80ea629f83b1996dd808",
+      "originalBytes": 1427,
+      "sha256": "baaf0ff1fb6f104dc223788316c63134573426525e6b80ea629f83b1996dd808",
+      "bytes": 1427
+    },
+    {
+      "path": "evidence/airwolf-continuation/reference.json",
+      "originalPath": "build/airwolf-continuation-work/cache/reference-pin/cd2d73732ede9afa2fa10e5d6607550cd39d9062ddee438d6689f0133e18918e/attempt-7f4afed8602043039f43fe805079c032/reference.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain source agreement and measured rendered continuation, separate from listening acceptance.",
+      "originalSha256": "b0256b3101a35d610d36abc1e443322896d3c7449a06fb5e6dc7c510fb395896",
+      "originalBytes": 380,
+      "sha256": "b0256b3101a35d610d36abc1e443322896d3c7449a06fb5e6dc7c510fb395896",
+      "bytes": 380
+    },
+    {
+      "path": "evidence/airwolf-continuation/audio.json",
+      "originalPath": "build/airwolf-continuation-work/cache/signal-check/7649076838c6a253e9211e60c18d8fa4984d46d112c76bc54c77310a13183756/attempt-dce881ec0cf149748e94f22f7a224c3a/audio.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain source agreement and measured rendered continuation, separate from listening acceptance.",
+      "originalSha256": "a8c47b9334c21e5ac0320449a4e4733a396d02b0f8701bcc132ed212e215a4f5",
+      "originalBytes": 2004,
+      "sha256": "a8c47b9334c21e5ac0320449a4e4733a396d02b0f8701bcc132ed212e215a4f5",
+      "bytes": 2004
+    },
+    {
+      "path": "evidence/airwolf-continuation/post-restart.comparison.json",
+      "originalPath": "build/airwolf-continuation-work/cache/post-restart-window/cf5ca7938c3ecb95b480445c0825c8485ca539dbf0167e403356bdb5adb1a373/attempt-8fe87fe1dd074bcc89f9c903031943c7/post-restart.comparison.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain source agreement and measured rendered continuation, separate from listening acceptance.",
+      "originalSha256": "cef0dee07da621e19e9181d56e970de10aeaf82edc0dedea561c27905f9f5de0",
+      "originalBytes": 3078,
+      "sha256": "cef0dee07da621e19e9181d56e970de10aeaf82edc0dedea561c27905f9f5de0",
+      "bytes": 3078
+    },
+    {
+      "path": "evidence/airwolf-continuation/listening/opening.comparison.json",
+      "originalPath": "build/airwolf-continuation-work/cache/opening/b219d8b7520125d1e35ba09c0f5f4f2440ea0c62e85affd677017dee726c951b/attempt-8440195c81854f68b3ae4c2ec9a8135b/opening-reference-then-ours.comparison.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain immutable audition hashes and exact source/A/B bounds.",
+      "originalSha256": "886e35ded00438c999e1c519d5168114a803bc95681c62a15845992adbb92934",
+      "originalBytes": 3100,
+      "sha256": "886e35ded00438c999e1c519d5168114a803bc95681c62a15845992adbb92934",
+      "bytes": 3100
+    },
+    {
+      "path": "evidence/airwolf-continuation/listening/phrase.comparison.json",
+      "originalPath": "build/airwolf-continuation-work/cache/phrase/39dd5f36862ef7f1e25913b475c71688796a75a3f780da4f7cef7439297f8e3b/attempt-48dbaf66f52d4326a6acad622d35cc26/phrase-reference-then-ours.comparison.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain immutable audition hashes and exact source/A/B bounds.",
+      "originalSha256": "a2330d87404698b353a6b795f849e540893f82e22b5ea2a42bb918bb618c224d",
+      "originalBytes": 3100,
+      "sha256": "a2330d87404698b353a6b795f849e540893f82e22b5ea2a42bb918bb618c224d",
+      "bytes": 3100
+    },
+    {
+      "path": "evidence/airwolf-continuation/listening/ending.comparison.json",
+      "originalPath": "build/airwolf-continuation-work/cache/ending/5eac2ca6d46c554b29847357821594b08af805b32109af40fd88d45f68e4e880/attempt-8db49f9b542840d0b73f9eb58131cb2d/ending-reference-then-ours.comparison.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain immutable audition hashes and exact source/A/B bounds.",
+      "originalSha256": "a24de20b47d802a34cc36cb87cc5bb16263542ad86576632a9a954cd3e135dda",
+      "originalBytes": 3103,
+      "sha256": "a24de20b47d802a34cc36cb87cc5bb16263542ad86576632a9a954cd3e135dda",
+      "bytes": 3103
+    },
+    {
+      "path": "evidence/airwolf-continuation/reference-render/console.txt",
+      "originalPath": "build/airwolf-continuation-work/cache/reference-render/28c178916bb6b335b2ab3fb01d60f03eb2c2ab18828ab0abe76f132c2d6575aa/attempt-012946db58d14b44bdc9eb3161698247/stage.log",
+      "group": "airwolf-continuation",
+      "reason": "Retain renderer configuration and provenance without audio.",
+      "originalSha256": "de6d57ec828a273f0623b57414f8873ccf96653c7881ba3190e61d7599fcd15c",
+      "originalBytes": 126,
+      "sha256": "de6d57ec828a273f0623b57414f8873ccf96653c7881ba3190e61d7599fcd15c",
+      "bytes": 126
+    },
+    {
+      "path": "evidence/airwolf-continuation/reference-render/registers.tsv.gz",
+      "originalPath": "build/airwolf-continuation-promotion/reference-render.tsv",
+      "group": "airwolf-continuation",
+      "reason": "Numeric renderer snapshots only, not SID binaries or audio.",
+      "originalSha256": "d9a1805b00990d83a1ffa04f9e96a8ea07c4922bdeec0b877744c2fba518c628",
+      "originalBytes": 104071,
+      "sha256": "4422e5306631e4d69121422aecfafe7c97c62100e21c7d4eefd0145d88ce3240",
+      "bytes": 5327
+    },
+    {
+      "path": "evidence/airwolf-continuation/candidate-render/console.txt",
+      "originalPath": "build/airwolf-continuation-work/cache/candidate-render/8053277502fed16d849cddc0a98da17a4bb551971175af75556e6549f762ddaf/attempt-ddbfd4526732485d8e5aabdadf695481/stage.log",
+      "group": "airwolf-continuation",
+      "reason": "Retain renderer configuration and provenance without audio.",
+      "originalSha256": "de6d57ec828a273f0623b57414f8873ccf96653c7881ba3190e61d7599fcd15c",
+      "originalBytes": 126,
+      "sha256": "de6d57ec828a273f0623b57414f8873ccf96653c7881ba3190e61d7599fcd15c",
+      "bytes": 126
+    },
+    {
+      "path": "evidence/airwolf-continuation/candidate-render/registers.tsv.gz",
+      "originalPath": "build/airwolf-continuation-promotion/candidate-render.tsv",
+      "group": "airwolf-continuation",
+      "reason": "Numeric renderer snapshots only, not SID binaries or audio.",
+      "originalSha256": "2666feb8f03814485fd2ffc3c715ac9fc5174c8b593c5d76654e82c6d44f7638",
+      "originalBytes": 104071,
+      "sha256": "a4c24560b5a7a67b408aacd1386b9372d05de233e0f7eac93b216765115a87fe",
+      "bytes": 5379
+    },
+    {
+      "path": "evidence/airwolf-continuation/listening/submission.json",
+      "originalPath": "build/airwolf-continuation-listening/sources.json",
+      "group": "airwolf-continuation",
+      "reason": "Bind corrected published WAV hashes to the verified continuation run.",
+      "originalSha256": "33eccc058e3be24d51deed9471c3f28a7ec891710b5a2253eac30aeb7c0488c2",
+      "originalBytes": 2834,
+      "sha256": "33eccc058e3be24d51deed9471c3f28a7ec891710b5a2253eac30aeb7c0488c2",
+      "bytes": 2834
+    },
+    {
+      "path": "evidence/airwolf-continuation/old-cut.comparison.json",
+      "originalPath": "build/airwolf-cut-diagnostic.comparison.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain failing original audition measurement: source activity versus candidate silence at24.9\u201325.1s.",
+      "originalSha256": "938b528f0c9eb36561ccf37cbdc376137c2fbbf9ebdbc4c0231f357eea9b501d",
+      "originalBytes": 2584,
+      "sha256": "938b528f0c9eb36561ccf37cbdc376137c2fbbf9ebdbc4c0231f357eea9b501d",
+      "bytes": 2584
+    },
+    {
+      "path": "evidence/airwolf-continuation/model-review.json",
+      "originalPath": "build/airwolf-continuation-promotion/model-review.json",
+      "group": "airwolf-continuation",
+      "reason": "Retain required model-assistance review without treating experimental models as musical judges.",
+      "originalSha256": "eacff5c7f911574874b486c64c1749aa78169d8ce5b9b22904e835137f9e2982",
+      "originalBytes": 459,
+      "sha256": "eacff5c7f911574874b486c64c1749aa78169d8ce5b9b22904e835137f9e2982",
+      "bytes": 459
     }
   ],
   "independentShadesSources": {

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "check": "writes",
+  "passed": true,
+  "inputs": [
+    {
+      "label": "source",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/evidence/airwolf-form/complete/writes.json.gz",
+      "sha256": "59661c9e36329dcf937baa476bf3e0c308570783852146ac25c901016cc642d7",
+      "decompressedSha256": "4d36fae24be9313bc95e4759462f4980832da923dbb9203f62b6a12780f61c4a"
+    },
+    {
+      "label": "candidate",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/writes.json",
+      "sha256": "7f428e86f527c4aeff23d1986f2f76d77a3494ebf0f6fee8be6e40b6476707c0",
+      "decompressedSha256": "7f428e86f527c4aeff23d1986f2f76d77a3494ebf0f6fee8be6e40b6476707c0"
+    }
+  ],
+  "expectedSourceDecompressedSha256": "4d36fae24be9313bc95e4759462f4980832da923dbb9203f62b6a12780f61c4a",
+  "scope": {
+    "initialization": true,
+    "playCalls": 2500,
+    "firstCall": 0,
+    "lastCallInclusive": 2499,
+    "candidatePrefix": false
+  },
+  "identityFields": [
+    "phase",
+    "tick",
+    "address",
+    "value"
+  ],
+  "matchedWrites": 11253,
+  "matchedInitWrites": 21,
+  "matchedPlayWrites": 11232,
+  "excludedCandidateWrites": 0,
+  "claims": {
+    "orderedRegisterWriteIdentity": true,
+    "busCycleIdentity": false,
+    "perceptualAgreement": false
+  }
+}

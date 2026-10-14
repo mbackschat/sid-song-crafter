@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "submission": "evidence/airwolf-compiled/listening/submission.json",
+  "submissionSha256": "bcf82f196188eca37ea36d1601f79f80676920d024aa7ac600863654e18a8271",
+  "samples": [
+    {
+      "label": "phrase",
+      "filename": "build/airwolf-listening/phrase-reference-then-ours.ab.wav",
+      "comparisonSha256": "f4b646b36ee9c51e82e19f7e4e793edc930fb75eb9578cb4337f24a713a4a1cb",
+      "humanAnswer": "I don't hear any difference",
+      "status": "accepted"
+    },
+    {
+      "label": "ending",
+      "filename": "build/airwolf-listening/ending-reference-then-ours.ab.wav",
+      "comparisonSha256": "a7e3ffa1adfa3007509af4f7a9c3b8815a02f8bc0be4d633344ab8d1e708fd72",
+      "humanAnswer": "I don't hear any difference",
+      "qualification": "BTW: with the ending, the wav has a premature cut at about 22:40s, where the reference would play a little bit further",
+      "status": "open"
+    }
+  ],
+  "scope": "Submitted PAL/MOS6581 original-first phrase and ending comparisons; independent initialized first traversal with an authored finite stop. These hashes retain the original reviewed audio.",
+  "interpretation": "Phrase accepted for the submitted sound/phrasing. Ending remains open: the premature-cut qualification overrides the otherwise positive comparison answer and requires investigation before acceptance.",
+  "limits": "No PCM identity, hardware equivalence or identical-ending claim. The original loops while the candidate deliberately stops; that distinction does not dismiss the reported premature cut. The reported 22:40s notation is preserved without assigning a diagnosed cause or exact source-time mapping.",
+  "modelAssistanceReview": {
+    "checkpoint": "Listener feedback",
+    "decision": "No model call",
+    "reason": "Fine fidelity and natural endings remain outside calibrated model eligibility. The reported cutoff is being checked against PCM and source timing; a model judgment is not needed to establish that boundary.",
+    "nextReview": "Reassess after ending revision and before case closure; retain experimental supporting status."
+  }
+}

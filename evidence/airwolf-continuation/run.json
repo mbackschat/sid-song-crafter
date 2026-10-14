@@ -1,0 +1,610 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/airwolf-continuation.json",
+  "recipeSha256": "f01c8da5b290e81e7a4b0aed9b484072ddbbe4b713219bc68f5175018d2a58ad",
+  "startedAt": "2026-10-14T20:06:49.798284+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "continuation-admission",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.039702292,
+      "artifacts": [],
+      "cacheKey": "0eed6f94aa4f843c33c473fe368d5ac9403e81011c691d529d8cc6270698324c",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/continuation-admission/0eed6f94aa4f843c33c473fe368d5ac9403e81011c691d529d8cc6270698324c/attempt-a458f2231a5c46359d3803dc140efcae",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/continuation-admission/0eed6f94aa4f843c33c473fe368d5ac9403e81011c691d529d8cc6270698324c/attempt-a458f2231a5c46359d3803dc140efcae/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.042129292000000006
+    },
+    {
+      "id": "export-guards",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.8378595,
+      "artifacts": [],
+      "cacheKey": "86be1dfdb495a59a0244bae1f017ecca0e460621b66040908d7ea8a23700d47b",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/export-guards/86be1dfdb495a59a0244bae1f017ecca0e460621b66040908d7ea8a23700d47b/attempt-f647c73331a84f7389cfd67ccc8fc9ec",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/export-guards/86be1dfdb495a59a0244bae1f017ecca0e460621b66040908d7ea8a23700d47b/attempt-f647c73331a84f7389cfd67ccc8fc9ec/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.8544588329999999
+    },
+    {
+      "id": "reference-pin",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.077642875,
+      "artifacts": [
+        {
+          "stageId": "reference-pin",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/reference-pin/cd2d73732ede9afa2fa10e5d6607550cd39d9062ddee438d6689f0133e18918e/attempt-7f4afed8602043039f43fe805079c032/reference.json",
+          "relativePath": "reference.json",
+          "type": "file",
+          "sha256": "b0256b3101a35d610d36abc1e443322896d3c7449a06fb5e6dc7c510fb395896"
+        }
+      ],
+      "cacheKey": "cd2d73732ede9afa2fa10e5d6607550cd39d9062ddee438d6689f0133e18918e",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/reference-pin/cd2d73732ede9afa2fa10e5d6607550cd39d9062ddee438d6689f0133e18918e/attempt-7f4afed8602043039f43fe805079c032",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/reference-pin/cd2d73732ede9afa2fa10e5d6607550cd39d9062ddee438d6689f0133e18918e/attempt-7f4afed8602043039f43fe805079c032/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.0808008750000001
+    },
+    {
+      "id": "build",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.880539041,
+      "artifacts": [
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "8ec180ed3050bbcd5e87dfa709b22b0322705ffb41134ea89fd7295f742b7d43"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/reconstructed.prg",
+          "relativePath": "candidate/reconstructed.prg",
+          "type": "file",
+          "sha256": "b9bfc1157c594908fb6536f38d17a60f7cf0bfdc1aab113e4db0df1cc0c1e5b4"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/verification.json",
+          "relativePath": "candidate/verification.json",
+          "type": "file",
+          "sha256": "821f484e5d7d389ef13e4185a5149bdab6a5d5b10a9bd3873a6ecf24347c6515"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "92955691ebb03b1742d3c35d1701f0c237b4f947150b725c420e3d333ffc8c5e"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "7f428e86f527c4aeff23d1986f2f76d77a3494ebf0f6fee8be6e40b6476707c0"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "ce6b45aa98d7ea4ac4b35642fca51943b7d1270cc09470d5dd87da7e87a3d752"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "f7fda3efb7e75cb77cadf194dc640e26bf3eb258807243e1e42148cca850ea0d"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "f38566b3d7fe631480da415b050eabb87d98bbbfaaa022c278e9c5fdf5df558c"
+        },
+        {
+          "stageId": "build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "c80214bab77c16a408c1a1e162c7eefc0cc87534ced366e725f3223c6a9cdb59"
+        }
+      ],
+      "cacheKey": "0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.8899664999999999
+    },
+    {
+      "id": "numeric-source-check",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.18336041599999997,
+      "artifacts": [
+        {
+          "stageId": "numeric-source-check",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/numeric-source-check/668334691c0d0b9418bfd2b0979fb0e4da2c1c80da6fc4ee20ba7572550dbb7b/attempt-b0489b7690e549d2914688e7b7708569/source-writes.json",
+          "relativePath": "source-writes.json",
+          "type": "file",
+          "sha256": "baaf0ff1fb6f104dc223788316c63134573426525e6b80ea629f83b1996dd808"
+        }
+      ],
+      "cacheKey": "668334691c0d0b9418bfd2b0979fb0e4da2c1c80da6fc4ee20ba7572550dbb7b",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/numeric-source-check/668334691c0d0b9418bfd2b0979fb0e4da2c1c80da6fc4ee20ba7572550dbb7b/attempt-b0489b7690e549d2914688e7b7708569",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/numeric-source-check/668334691c0d0b9418bfd2b0979fb0e4da2c1c80da6fc4ee20ba7572550dbb7b/attempt-b0489b7690e549d2914688e7b7708569/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.18828533300000005
+    },
+    {
+      "id": "vice",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 5.205404625,
+      "artifacts": [
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "8d97812d00c78e58a2b6233df07aef54e7755faa3ed7ac7912e0bef4a9ba8e4c"
+        },
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "08c29c45c0f7da65b7fcf0e3175e635ddb214cb5f5d777993a810b9c52628bec"
+        },
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "9d865fb9f5081882d43b849bf6f85fc71f1aaa6fbbf4d83d7e7dbf585c6ffc7e"
+        },
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "3fb8ad55ebdb6bbb0fb57bdfe13f6c7a7d87c7cc9cb9b65b7b8c6503a725bf97"
+        },
+        {
+          "stageId": "vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "cccc6d361610ddd5ace53101d5aa32f8019203e49c318ef939a34f6576b63d55"
+        }
+      ],
+      "cacheKey": "b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 5.457419499999999
+    },
+    {
+      "id": "reference-render",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.5546946249999998,
+      "artifacts": [
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/reference-render/28c178916bb6b335b2ab3fb01d60f03eb2c2ab18828ab0abe76f132c2d6575aa/attempt-012946db58d14b44bdc9eb3161698247/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "07a3ac94f73c65121584faebbfb977035ffefb9cff42532005f17a0904da0bef"
+        },
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/reference-render/28c178916bb6b335b2ab3fb01d60f03eb2c2ab18828ab0abe76f132c2d6575aa/attempt-012946db58d14b44bdc9eb3161698247/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "d9a1805b00990d83a1ffa04f9e96a8ea07c4922bdeec0b877744c2fba518c628"
+        }
+      ],
+      "cacheKey": "28c178916bb6b335b2ab3fb01d60f03eb2c2ab18828ab0abe76f132c2d6575aa",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/reference-render/28c178916bb6b335b2ab3fb01d60f03eb2c2ab18828ab0abe76f132c2d6575aa/attempt-012946db58d14b44bdc9eb3161698247",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/reference-render/28c178916bb6b335b2ab3fb01d60f03eb2c2ab18828ab0abe76f132c2d6575aa/attempt-012946db58d14b44bdc9eb3161698247/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.5658558750000005
+    },
+    {
+      "id": "candidate-render",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.34692524999999996,
+      "artifacts": [
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/candidate-render/8053277502fed16d849cddc0a98da17a4bb551971175af75556e6549f762ddaf/attempt-ddbfd4526732485d8e5aabdadf695481/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "e0b7c8dcca0ae2a2c23a7368693b14fcbeec85bd97a5a38c351dd683264c1e39"
+        },
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/candidate-render/8053277502fed16d849cddc0a98da17a4bb551971175af75556e6549f762ddaf/attempt-ddbfd4526732485d8e5aabdadf695481/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "2666feb8f03814485fd2ffc3c715ac9fc5174c8b593c5d76654e82c6d44f7638"
+        }
+      ],
+      "cacheKey": "8053277502fed16d849cddc0a98da17a4bb551971175af75556e6549f762ddaf",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/candidate-render/8053277502fed16d849cddc0a98da17a4bb551971175af75556e6549f762ddaf/attempt-ddbfd4526732485d8e5aabdadf695481",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/candidate-render/8053277502fed16d849cddc0a98da17a4bb551971175af75556e6549f762ddaf/attempt-ddbfd4526732485d8e5aabdadf695481/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.35340487499999895
+    },
+    {
+      "id": "signal-check",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.5072754170000007,
+      "artifacts": [
+        {
+          "stageId": "signal-check",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/signal-check/7649076838c6a253e9211e60c18d8fa4984d46d112c76bc54c77310a13183756/attempt-dce881ec0cf149748e94f22f7a224c3a/audio.json",
+          "relativePath": "audio.json",
+          "type": "file",
+          "sha256": "a8c47b9334c21e5ac0320449a4e4733a396d02b0f8701bcc132ed212e215a4f5"
+        }
+      ],
+      "cacheKey": "7649076838c6a253e9211e60c18d8fa4984d46d112c76bc54c77310a13183756",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/signal-check/7649076838c6a253e9211e60c18d8fa4984d46d112c76bc54c77310a13183756/attempt-dce881ec0cf149748e94f22f7a224c3a",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/signal-check/7649076838c6a253e9211e60c18d8fa4984d46d112c76bc54c77310a13183756/attempt-dce881ec0cf149748e94f22f7a224c3a/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.5174141670000001
+    },
+    {
+      "id": "opening",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.29236741699999946,
+      "artifacts": [
+        {
+          "stageId": "opening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/opening/b219d8b7520125d1e35ba09c0f5f4f2440ea0c62e85affd677017dee726c951b/attempt-8440195c81854f68b3ae4c2ec9a8135b/opening-reference-then-ours.ab.wav",
+          "relativePath": "opening-reference-then-ours.ab.wav",
+          "type": "file",
+          "sha256": "df45b53f67a1aedc2477761dbe3269fec64b8f6a95d6a0a601ddca2d5dc3e29c"
+        },
+        {
+          "stageId": "opening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/opening/b219d8b7520125d1e35ba09c0f5f4f2440ea0c62e85affd677017dee726c951b/attempt-8440195c81854f68b3ae4c2ec9a8135b/opening-reference-then-ours.comparison.json",
+          "relativePath": "opening-reference-then-ours.comparison.json",
+          "type": "file",
+          "sha256": "886e35ded00438c999e1c519d5168114a803bc95681c62a15845992adbb92934"
+        }
+      ],
+      "cacheKey": "b219d8b7520125d1e35ba09c0f5f4f2440ea0c62e85affd677017dee726c951b",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/opening/b219d8b7520125d1e35ba09c0f5f4f2440ea0c62e85affd677017dee726c951b/attempt-8440195c81854f68b3ae4c2ec9a8135b",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/opening/b219d8b7520125d1e35ba09c0f5f4f2440ea0c62e85affd677017dee726c951b/attempt-8440195c81854f68b3ae4c2ec9a8135b/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.3033845839999998
+    },
+    {
+      "id": "ending",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.2911234580000013,
+      "artifacts": [
+        {
+          "stageId": "ending",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/ending/5eac2ca6d46c554b29847357821594b08af805b32109af40fd88d45f68e4e880/attempt-8db49f9b542840d0b73f9eb58131cb2d/ending-reference-then-ours.ab.wav",
+          "relativePath": "ending-reference-then-ours.ab.wav",
+          "type": "file",
+          "sha256": "22253d87ee31c87751b52a35a4987f7d986b68ffcb3a177ded2e6132e648b445"
+        },
+        {
+          "stageId": "ending",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/ending/5eac2ca6d46c554b29847357821594b08af805b32109af40fd88d45f68e4e880/attempt-8db49f9b542840d0b73f9eb58131cb2d/ending-reference-then-ours.comparison.json",
+          "relativePath": "ending-reference-then-ours.comparison.json",
+          "type": "file",
+          "sha256": "a24de20b47d802a34cc36cb87cc5bb16263542ad86576632a9a954cd3e135dda"
+        }
+      ],
+      "cacheKey": "5eac2ca6d46c554b29847357821594b08af805b32109af40fd88d45f68e4e880",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/ending/5eac2ca6d46c554b29847357821594b08af805b32109af40fd88d45f68e4e880/attempt-8db49f9b542840d0b73f9eb58131cb2d",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/ending/5eac2ca6d46c554b29847357821594b08af805b32109af40fd88d45f68e4e880/attempt-8db49f9b542840d0b73f9eb58131cb2d/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.30039374999999957
+    },
+    {
+      "id": "phrase",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.3450778329999995,
+      "artifacts": [
+        {
+          "stageId": "phrase",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/phrase/39dd5f36862ef7f1e25913b475c71688796a75a3f780da4f7cef7439297f8e3b/attempt-48dbaf66f52d4326a6acad622d35cc26/phrase-reference-then-ours.ab.wav",
+          "relativePath": "phrase-reference-then-ours.ab.wav",
+          "type": "file",
+          "sha256": "e43cc86b1467063ac696efe2300e6ebbd818cac1d625676080775d56283f6eea"
+        },
+        {
+          "stageId": "phrase",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/phrase/39dd5f36862ef7f1e25913b475c71688796a75a3f780da4f7cef7439297f8e3b/attempt-48dbaf66f52d4326a6acad622d35cc26/phrase-reference-then-ours.comparison.json",
+          "relativePath": "phrase-reference-then-ours.comparison.json",
+          "type": "file",
+          "sha256": "a2330d87404698b353a6b795f849e540893f82e22b5ea2a42bb918bb618c224d"
+        }
+      ],
+      "cacheKey": "39dd5f36862ef7f1e25913b475c71688796a75a3f780da4f7cef7439297f8e3b",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/phrase/39dd5f36862ef7f1e25913b475c71688796a75a3f780da4f7cef7439297f8e3b/attempt-48dbaf66f52d4326a6acad622d35cc26",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/phrase/39dd5f36862ef7f1e25913b475c71688796a75a3f780da4f7cef7439297f8e3b/attempt-48dbaf66f52d4326a6acad622d35cc26/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.35475458400000015
+    },
+    {
+      "id": "post-restart-window",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.07787108299999979,
+      "artifacts": [
+        {
+          "stageId": "post-restart-window",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/post-restart-window/cf5ca7938c3ecb95b480445c0825c8485ca539dbf0167e403356bdb5adb1a373/attempt-8fe87fe1dd074bcc89f9c903031943c7/post-restart.ab.wav",
+          "relativePath": "post-restart.ab.wav",
+          "type": "file",
+          "sha256": "470ecdc05e0a1c9ad50d821a5aca8aeb91732eee9fd3beac82b040cc4f03fdd5"
+        },
+        {
+          "stageId": "post-restart-window",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/post-restart-window/cf5ca7938c3ecb95b480445c0825c8485ca539dbf0167e403356bdb5adb1a373/attempt-8fe87fe1dd074bcc89f9c903031943c7/post-restart.comparison.json",
+          "relativePath": "post-restart.comparison.json",
+          "type": "file",
+          "sha256": "cef0dee07da621e19e9181d56e970de10aeaf82edc0dedea561c27905f9f5de0"
+        }
+      ],
+      "cacheKey": "cf5ca7938c3ecb95b480445c0825c8485ca539dbf0167e403356bdb5adb1a373",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/post-restart-window/cf5ca7938c3ecb95b480445c0825c8485ca539dbf0167e403356bdb5adb1a373/attempt-8fe87fe1dd074bcc89f9c903031943c7",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/post-restart-window/cf5ca7938c3ecb95b480445c0825c8485ca539dbf0167e403356bdb5adb1a373/attempt-8fe87fe1dd074bcc89f9c903031943c7/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.08627837499999913
+    },
+    {
+      "id": "post-restart-check",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.040401082999999005,
+      "artifacts": [],
+      "cacheKey": "fa723e2254827f58748c8ceb6d07f80fae020343668911c0b34206a198673666",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/post-restart-check/fa723e2254827f58748c8ceb6d07f80fae020343668911c0b34206a198673666/attempt-63ba046abf9e4a73a70477be355c9123",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/post-restart-check/fa723e2254827f58748c8ceb6d07f80fae020343668911c0b34206a198673666/attempt-63ba046abf9e4a73a70477be355c9123/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.04231379199999985
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "reference-pin",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/reference-pin/cd2d73732ede9afa2fa10e5d6607550cd39d9062ddee438d6689f0133e18918e/attempt-7f4afed8602043039f43fe805079c032/reference.json",
+      "relativePath": "reference.json",
+      "type": "file",
+      "sha256": "b0256b3101a35d610d36abc1e443322896d3c7449a06fb5e6dc7c510fb395896"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "8ec180ed3050bbcd5e87dfa709b22b0322705ffb41134ea89fd7295f742b7d43"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/reconstructed.prg",
+      "relativePath": "candidate/reconstructed.prg",
+      "type": "file",
+      "sha256": "b9bfc1157c594908fb6536f38d17a60f7cf0bfdc1aab113e4db0df1cc0c1e5b4"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/verification.json",
+      "relativePath": "candidate/verification.json",
+      "type": "file",
+      "sha256": "821f484e5d7d389ef13e4185a5149bdab6a5d5b10a9bd3873a6ecf24347c6515"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "92955691ebb03b1742d3c35d1701f0c237b4f947150b725c420e3d333ffc8c5e"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "7f428e86f527c4aeff23d1986f2f76d77a3494ebf0f6fee8be6e40b6476707c0"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "ce6b45aa98d7ea4ac4b35642fca51943b7d1270cc09470d5dd87da7e87a3d752"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "f7fda3efb7e75cb77cadf194dc640e26bf3eb258807243e1e42148cca850ea0d"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "f38566b3d7fe631480da415b050eabb87d98bbbfaaa022c278e9c5fdf5df558c"
+    },
+    {
+      "stageId": "build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "c80214bab77c16a408c1a1e162c7eefc0cc87534ced366e725f3223c6a9cdb59"
+    },
+    {
+      "stageId": "numeric-source-check",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/numeric-source-check/668334691c0d0b9418bfd2b0979fb0e4da2c1c80da6fc4ee20ba7572550dbb7b/attempt-b0489b7690e549d2914688e7b7708569/source-writes.json",
+      "relativePath": "source-writes.json",
+      "type": "file",
+      "sha256": "baaf0ff1fb6f104dc223788316c63134573426525e6b80ea629f83b1996dd808"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "8d97812d00c78e58a2b6233df07aef54e7755faa3ed7ac7912e0bef4a9ba8e4c"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "08c29c45c0f7da65b7fcf0e3175e635ddb214cb5f5d777993a810b9c52628bec"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "9d865fb9f5081882d43b849bf6f85fc71f1aaa6fbbf4d83d7e7dbf585c6ffc7e"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "3fb8ad55ebdb6bbb0fb57bdfe13f6c7a7d87c7cc9cb9b65b7b8c6503a725bf97"
+    },
+    {
+      "stageId": "vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "cccc6d361610ddd5ace53101d5aa32f8019203e49c318ef939a34f6576b63d55"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/reference-render/28c178916bb6b335b2ab3fb01d60f03eb2c2ab18828ab0abe76f132c2d6575aa/attempt-012946db58d14b44bdc9eb3161698247/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "07a3ac94f73c65121584faebbfb977035ffefb9cff42532005f17a0904da0bef"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/reference-render/28c178916bb6b335b2ab3fb01d60f03eb2c2ab18828ab0abe76f132c2d6575aa/attempt-012946db58d14b44bdc9eb3161698247/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "d9a1805b00990d83a1ffa04f9e96a8ea07c4922bdeec0b877744c2fba518c628"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/candidate-render/8053277502fed16d849cddc0a98da17a4bb551971175af75556e6549f762ddaf/attempt-ddbfd4526732485d8e5aabdadf695481/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "e0b7c8dcca0ae2a2c23a7368693b14fcbeec85bd97a5a38c351dd683264c1e39"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/candidate-render/8053277502fed16d849cddc0a98da17a4bb551971175af75556e6549f762ddaf/attempt-ddbfd4526732485d8e5aabdadf695481/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "2666feb8f03814485fd2ffc3c715ac9fc5174c8b593c5d76654e82c6d44f7638"
+    },
+    {
+      "stageId": "signal-check",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/signal-check/7649076838c6a253e9211e60c18d8fa4984d46d112c76bc54c77310a13183756/attempt-dce881ec0cf149748e94f22f7a224c3a/audio.json",
+      "relativePath": "audio.json",
+      "type": "file",
+      "sha256": "a8c47b9334c21e5ac0320449a4e4733a396d02b0f8701bcc132ed212e215a4f5"
+    },
+    {
+      "stageId": "opening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/opening/b219d8b7520125d1e35ba09c0f5f4f2440ea0c62e85affd677017dee726c951b/attempt-8440195c81854f68b3ae4c2ec9a8135b/opening-reference-then-ours.ab.wav",
+      "relativePath": "opening-reference-then-ours.ab.wav",
+      "type": "file",
+      "sha256": "df45b53f67a1aedc2477761dbe3269fec64b8f6a95d6a0a601ddca2d5dc3e29c"
+    },
+    {
+      "stageId": "opening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/opening/b219d8b7520125d1e35ba09c0f5f4f2440ea0c62e85affd677017dee726c951b/attempt-8440195c81854f68b3ae4c2ec9a8135b/opening-reference-then-ours.comparison.json",
+      "relativePath": "opening-reference-then-ours.comparison.json",
+      "type": "file",
+      "sha256": "886e35ded00438c999e1c519d5168114a803bc95681c62a15845992adbb92934"
+    },
+    {
+      "stageId": "ending",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/ending/5eac2ca6d46c554b29847357821594b08af805b32109af40fd88d45f68e4e880/attempt-8db49f9b542840d0b73f9eb58131cb2d/ending-reference-then-ours.ab.wav",
+      "relativePath": "ending-reference-then-ours.ab.wav",
+      "type": "file",
+      "sha256": "22253d87ee31c87751b52a35a4987f7d986b68ffcb3a177ded2e6132e648b445"
+    },
+    {
+      "stageId": "ending",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/ending/5eac2ca6d46c554b29847357821594b08af805b32109af40fd88d45f68e4e880/attempt-8db49f9b542840d0b73f9eb58131cb2d/ending-reference-then-ours.comparison.json",
+      "relativePath": "ending-reference-then-ours.comparison.json",
+      "type": "file",
+      "sha256": "a24de20b47d802a34cc36cb87cc5bb16263542ad86576632a9a954cd3e135dda"
+    },
+    {
+      "stageId": "phrase",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/phrase/39dd5f36862ef7f1e25913b475c71688796a75a3f780da4f7cef7439297f8e3b/attempt-48dbaf66f52d4326a6acad622d35cc26/phrase-reference-then-ours.ab.wav",
+      "relativePath": "phrase-reference-then-ours.ab.wav",
+      "type": "file",
+      "sha256": "e43cc86b1467063ac696efe2300e6ebbd818cac1d625676080775d56283f6eea"
+    },
+    {
+      "stageId": "phrase",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/phrase/39dd5f36862ef7f1e25913b475c71688796a75a3f780da4f7cef7439297f8e3b/attempt-48dbaf66f52d4326a6acad622d35cc26/phrase-reference-then-ours.comparison.json",
+      "relativePath": "phrase-reference-then-ours.comparison.json",
+      "type": "file",
+      "sha256": "a2330d87404698b353a6b795f849e540893f82e22b5ea2a42bb918bb618c224d"
+    },
+    {
+      "stageId": "post-restart-window",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/post-restart-window/cf5ca7938c3ecb95b480445c0825c8485ca539dbf0167e403356bdb5adb1a373/attempt-8fe87fe1dd074bcc89f9c903031943c7/post-restart.ab.wav",
+      "relativePath": "post-restart.ab.wav",
+      "type": "file",
+      "sha256": "470ecdc05e0a1c9ad50d821a5aca8aeb91732eee9fd3beac82b040cc4f03fdd5"
+    },
+    {
+      "stageId": "post-restart-window",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/post-restart-window/cf5ca7938c3ecb95b480445c0825c8485ca539dbf0167e403356bdb5adb1a373/attempt-8fe87fe1dd074bcc89f9c903031943c7/post-restart.comparison.json",
+      "relativePath": "post-restart.comparison.json",
+      "type": "file",
+      "sha256": "cef0dee07da621e19e9181d56e970de10aeaf82edc0dedea561c27905f9f5de0"
+    }
+  ],
+  "deliverables": {
+    "fullReference": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/reference-render/28c178916bb6b335b2ab3fb01d60f03eb2c2ab18828ab0abe76f132c2d6575aa/attempt-012946db58d14b44bdc9eb3161698247/render.wav",
+    "fullCandidate": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/candidate-render/8053277502fed16d849cddc0a98da17a4bb551971175af75556e6549f762ddaf/attempt-ddbfd4526732485d8e5aabdadf695481/render.wav",
+    "opening": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/opening/b219d8b7520125d1e35ba09c0f5f4f2440ea0c62e85affd677017dee726c951b/attempt-8440195c81854f68b3ae4c2ec9a8135b/opening-reference-then-ours.ab.wav",
+    "ending": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/ending/5eac2ca6d46c554b29847357821594b08af805b32109af40fd88d45f68e4e880/attempt-8db49f9b542840d0b73f9eb58131cb2d/ending-reference-then-ours.ab.wav",
+    "phrase": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/phrase/39dd5f36862ef7f1e25913b475c71688796a75a3f780da4f7cef7439297f8e3b/attempt-48dbaf66f52d4326a6acad622d35cc26/phrase-reference-then-ours.ab.wav",
+    "numericSourceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/numeric-source-check/668334691c0d0b9418bfd2b0979fb0e4da2c1c80da6fc4ee20ba7572550dbb7b/attempt-b0489b7690e549d2914688e7b7708569/source-writes.json",
+    "compiledProof": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/build/0f3ed1d2208da8d90dc4539eff3a2c729d71d345249d9d5eda29b32d26dc7955/attempt-c1f8e2f2daee400aad212f6234ae32ad/candidate/verification.json",
+    "viceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/vice/b5a27a7a07bafdd7a90404b1b9fa274aa970c46cdc90f06eca79932461d7ef0c/attempt-a068b07229a242049d591f71ae4c4190/vice/study.json",
+    "signalProof": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/signal-check/7649076838c6a253e9211e60c18d8fa4984d46d112c76bc54c77310a13183756/attempt-dce881ec0cf149748e94f22f7a224c3a/audio.json",
+    "continuationProof": "/Users/mbackschat/Projects/c64-sid-skill/build/airwolf-continuation-work/cache/post-restart-window/cf5ca7938c3ecb95b480445c0825c8485ca539dbf0167e403356bdb5adb1a373/attempt-8fe87fe1dd074bcc89f9c903031943c7/post-restart.comparison.json"
+  },
+  "finishedAt": "2026-10-14T20:06:59.931592+00:00",
+  "wallSeconds": 10.133468666999999
+}
