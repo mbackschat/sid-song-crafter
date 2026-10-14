@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "player-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "take_on_me_player_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "tests/take_on_me_player_test.py",
+        "scripts/studies/take-on-me/player.py",
+        "scripts/studies/take-on-me/score.py",
+        "scripts/studies/take-on-me/programs.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "player-proof",
+      "command": [
+        "{python}",
+        "scripts/studies/take-on-me/check-player.py",
+        "--output",
+        "{out}/proof"
+      ],
+      "inputs": [
+        ".local/research/take-on-me/Take_on_Me.sid",
+        ".tools/test-deps/py65/__init__.py",
+        ".tools/test-deps/py65/devices/__init__.py",
+        ".tools/test-deps/py65/devices/mpu6502.py",
+        ".tools/test-deps/py65/utils/__init__.py",
+        ".tools/test-deps/py65/utils/conversions.py",
+        ".tools/test-deps/py65/utils/devices.py",
+        "evidence/manifest.json",
+        "evidence/take-on-me-form/intervention.json.gz",
+        "evidence/take-on-me-form/receipt.json",
+        "evidence/take-on-me-form/returns.json.gz",
+        "evidence/take-on-me-form/score.json",
+        "evidence/take-on-me-form/writes.json.gz",
+        "evidence/take-on-me-sound/contexts.json.gz",
+        "evidence/take-on-me-sound/pulse-down-step.contexts.json.gz",
+        "evidence/take-on-me-sound/pulse-down-step.writes.json.gz",
+        "evidence/take-on-me-sound/receipt.json",
+        "evidence/take-on-me-sound/sound-description.json",
+        "scripts/evidence.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/studies/take-on-me/check-player.py",
+        "scripts/studies/take-on-me/player.py",
+        "scripts/studies/take-on-me/programs.py",
+        "scripts/studies/take-on-me/score.py",
+        "scripts/studies/take-on-me/sound-probe.py",
+        "scripts/verify_player.py"
+      ],
+      "outputs": [
+        "proof/composition.json",
+        "proof/receipt.json",
+        "proof/writes.json",
+        "proof/returns.json.gz",
+        "proof/contexts.json.gz",
+        "proof/controls.json.gz"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "composition": "{stage:player-proof}/proof/composition.json",
+    "playerProof": "{stage:player-proof}/proof/receipt.json"
+  }
+}
