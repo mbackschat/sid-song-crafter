@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "inputs": {
+    "snapshots": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-gyruss-comparison-v1/cache/subtune-1/f72b6ac25d5b248cd31649903b80a5241a6789bda6a207e1bd069b4c81e562cd/attempt-581c98f7796243b6b2d47ded3dcb53a8/reference.wav.registers.tsv",
+      "sha256": "b4f41b8dca52f9c15cebbb29687b7a1991a4a11b7301a455dfc7d6e9b9137cd7"
+    },
+    "preparation": {
+      "path": "songs/studies/bach-toccata-full/preparation.json",
+      "sha256": "1752ba4baec7053610030431ea5cc2f00ff732a94ecc7ee19f239e37f24caaa8"
+    }
+  },
+  "settings": {
+    "clockHz": 1022727,
+    "referenceAHz": 440,
+    "minimumSnapshots": 2,
+    "minimumPhraseNotes": 10,
+    "acceptedQuarterBpm": 60,
+    "acceptedTimingBasis": "prepare-toccata.py retains the accepted score's quarterBpm 60 from prepare-opening.py, so its pinned mapping beats encode seconds"
+  },
+  "observation": "Renderer iteration snapshots; runs group identical frequency/control observations, not score notes or bus writes",
+  "limitations": "Times bracket observed states at the snapshot cadence. Mid-call partial frequency words, unobserved writes, effects and repeated same-pitch notes can affect runs. One-snapshot states are excluded by default. Matches compare pitch classes only; frequency effects may produce incidental nominal pitches. No hearing, exact gate, harmonic-equivalence or full-form claim follows.",
+  "cadence": {
+    "count": 2786,
+    "firstSeconds": 0.017,
+    "lastSeconds": 48.995,
+    "minimumGapSeconds": 0.017,
+    "maximumGapSeconds": 0.018
+  },
+  "retainedTonalRunsByVoice": [
+    97,
+    259,
+    281
+  ],
+  "pitchClassMatches": [
+    {
+      "voice": 1,
+      "notes": 28,
+      "referenceSeconds": [
+        14.93,
+        19.432
+      ],
+      "acceptedSeconds": [
+        30.91,
+        36.16
+      ],
+      "sourceBeats": [
+        45.75,
+        52.75
+      ],
+      "observedNotes": [
+        "A3",
+        "D4",
+        "E4",
+        "F4",
+        "D4",
+        "E4",
+        "F4",
+        "G4",
+        "E4",
+        "F4",
+        "G4",
+        "A4",
+        "F4",
+        "G4",
+        "A4",
+        "A#4",
+        "G4",
+        "A4",
+        "F4",
+        "G4",
+        "E4",
+        "F4",
+        "D4",
+        "E4",
+        "C#3",
+        "D4",
+        "A3",
+        "A#3"
+      ],
+      "octaveDifferences": [
+        -24,
+        -12
+      ],
+      "sourceIds": [
+        "right-manual-0171",
+        "right-manual-0172",
+        "right-manual-0173",
+        "right-manual-0174",
+        "right-manual-0175",
+        "right-manual-0176",
+        "right-manual-0177",
+        "right-manual-0178",
+        "right-manual-0179",
+        "right-manual-0180",
+        "right-manual-0181",
+        "right-manual-0182",
+        "right-manual-0183",
+        "right-manual-0184",
+        "right-manual-0185",
+        "right-manual-0186",
+        "right-manual-0187",
+        "right-manual-0188",
+        "right-manual-0189",
+        "right-manual-0190",
+        "right-manual-0191",
+        "right-manual-0192",
+        "right-manual-0193",
+        "right-manual-0194",
+        "right-manual-0195",
+        "right-manual-0196",
+        "right-manual-0197",
+        "right-manual-0198"
+      ]
+    },
+    {
+      "voice": 1,
+      "notes": 28,
+      "referenceSeconds": [
+        20.206,
+        24.779
+      ],
+      "acceptedSeconds": [
+        30.91,
+        36.16
+      ],
+      "sourceBeats": [
+        45.75,
+        52.75
+      ],
+      "observedNotes": [
+        "A3",
+        "D4",
+        "E4",
+        "F4",
+        "D4",
+        "E4",
+        "F4",
+        "G4",
+        "E4",
+        "F4",
+        "G4",
+        "A4",
+        "F4",
+        "G4",
+        "A4",
+        "A#4",
+        "G4",
+        "A4",
+        "F4",
+        "G4",
+        "E4",
+        "F4",
+        "D4",
+        "E4",
+        "C#3",
+        "D4",
+        "A3",
+        "A#3"
+      ],
+      "octaveDifferences": [
+        -24,
+        -12
+      ],
+      "sourceIds": [
+        "right-manual-0171",
+        "right-manual-0172",
+        "right-manual-0173",
+        "right-manual-0174",
+        "right-manual-0175",
+        "right-manual-0176",
+        "right-manual-0177",
+        "right-manual-0178",
+        "right-manual-0179",
+        "right-manual-0180",
+        "right-manual-0181",
+        "right-manual-0182",
+        "right-manual-0183",
+        "right-manual-0184",
+        "right-manual-0185",
+        "right-manual-0186",
+        "right-manual-0187",
+        "right-manual-0188",
+        "right-manual-0189",
+        "right-manual-0190",
+        "right-manual-0191",
+        "right-manual-0192",
+        "right-manual-0193",
+        "right-manual-0194",
+        "right-manual-0195",
+        "right-manual-0196",
+        "right-manual-0197",
+        "right-manual-0198"
+      ]
+    },
+    {
+      "voice": 3,
+      "notes": 32,
+      "referenceSeconds": [
+        24.374,
+        29.702
+      ],
+      "acceptedSeconds": [
+        35.5975,
+        41.5975
+      ],
+      "sourceBeats": [
+        52.0,
+        60.0
+      ],
+      "observedNotes": [
+        "D3",
+        "A3",
+        "A#3",
+        "G3",
+        "A3",
+        "F3",
+        "G3",
+        "E3",
+        "F3",
+        "D3",
+        "G3",
+        "E3",
+        "F3",
+        "D3",
+        "E3",
+        "C#3",
+        "D3",
+        "A3",
+        "A#3",
+        "G3",
+        "A3",
+        "F3",
+        "G3",
+        "E3",
+        "F3",
+        "D3",
+        "G3",
+        "E3",
+        "F3",
+        "D3",
+        "E3",
+        "C#3"
+      ],
+      "octaveDifferences": [
+        -24,
+        -12,
+        0
+      ],
+      "sourceIds": [
+        "right-manual-0196",
+        "right-manual-0197",
+        "right-manual-0198",
+        "right-manual-0199",
+        "right-manual-0200",
+        "right-manual-0201",
+        "right-manual-0202",
+        "right-manual-0203",
+        "right-manual-0204",
+        "right-manual-0205",
+        "right-manual-0206",
+        "right-manual-0207",
+        "right-manual-0208",
+        "right-manual-0209",
+        "right-manual-0210",
+        "right-manual-0211",
+        "right-manual-0212",
+        "right-manual-0213",
+        "right-manual-0214",
+        "right-manual-0215",
+        "right-manual-0216",
+        "right-manual-0217",
+        "right-manual-0218",
+        "right-manual-0219",
+        "right-manual-0220",
+        "right-manual-0221",
+        "right-manual-0222",
+        "right-manual-0223",
+        "right-manual-0224",
+        "right-manual-0225",
+        "right-manual-0226",
+        "right-manual-0227"
+      ]
+    }
+  ],
+  "acceptedSections": [
+    {
+      "name": "Octave triplets and descending broken intervals",
+      "sourceBeatRange": [
+        10,
+        38
+      ],
+      "arrangementSeconds": [
+        12.0,
+        25.56
+      ],
+      "reduction": "RH upper line on melody and LH lower octave on bass; keep the written octave dialogue without inventing a percussion part. The notated long rests are deliberately compressed."
+    },
+    {
+      "name": "Second diminished hold and decorated arrival",
+      "sourceBeatRange": [
+        38,
+        45
+      ],
+      "arrangementSeconds": [
+        25.56,
+        30.71
+      ],
+      "reduction": "Reserve bass for the pedal, melody for the latest RH onset, and harmony for the lower remaining manual tone. Cycle selected source chord tones during the hold; omit remaining doublings. The printed F4 trill is realized independently of MIDI."
+    },
+    {
+      "name": "Running right hand against repeated A accompaniment",
+      "sourceBeatRange": [
+        45,
+        60.5
+      ],
+      "arrangementSeconds": [
+        30.71,
+        41.9725
+      ],
+      "reduction": "RH remains foreground even after descending below the offbeat LH A4. Put each LH A4 on the quieter harmony patch one octave lower; bass is reserved for written pedal notes."
+    },
+    {
+      "name": "Interleaved hands and pedal replies",
+      "sourceBeatRange": [
+        60.5,
+        84
+      ],
+      "arrangementSeconds": [
+        41.9725,
+        58.9025
+      ],
+      "reduction": "The newest manual onset owns melody, regardless of pitch or hand; simultaneous dyads retain their lower tone on harmony when possible. Bass retains the pedal. Omit additional sustained or doubled tones rather than masking the moving line."
+    },
+    {
+      "name": "Diminished pillar and paired triplet descent",
+      "sourceBeatRange": [
+        84,
+        106
+      ],
+      "arrangementSeconds": [
+        58.9025,
+        72.0025
+      ],
+      "reduction": "The held chord uses pedal plus lead and selected harmony cycling. At source beat 86 the tied C#5 and E4 become the first triplet notes, despite having begun at beat 84. Subsequent RH/LH triplets keep independent melody/bass lanes."
+    },
+    {
+      "name": "Cadential chord replies and pedal run",
+      "sourceBeatRange": [
+        106,
+        114.5
+      ],
+      "arrangementSeconds": [
+        72.0025,
+        79.3275
+      ],
+      "reduction": "Retain the pedal run and each upper chord attack; a single harmony voice cycles source-backed interior tones only during the four longer chord replies. Upper octave doublings remain explicit omissions."
+    },
+    {
+      "name": "Upper resolution with moving inner voice",
+      "sourceBeatRange": [
+        114.5,
+        116
+      ],
+      "arrangementSeconds": [
+        79.3275,
+        80.6025
+      ],
+      "reduction": "Keep F4 then E4 on melody, D4 then C#4 on harmony, and the written pedal. G3 replaces the last quarter-beat of the C#4 inner sustain at 115.75 to expose the final inner resolution; omit A3 doubling."
+    },
+    {
+      "name": "Final D minor inner resolution and warm hold",
+      "sourceBeatRange": [
+        116,
+        118
+      ],
+      "arrangementSeconds": [
+        80.6025,
+        84.6025
+      ],
+      "reduction": "D4 melody and D2 pedal remain sustained while harmony exposes G3\u2013F3\u2013E3\u2013F3. Omit the simultaneous D3/A3 doublings. The final F3 is a sustained minor third rather than an arpeggio; the authored three-second last-beat hold precedes release."
+    }
+  ]
+}

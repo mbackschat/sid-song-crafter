@@ -32,6 +32,8 @@ Use the [musical gesture library](gestures/README.md) for groove, chord response
 
 The [organ-weight/forward-motion gesture](gestures/driven-organ-phrasing.md) records an original Bach application of moving pulse, filtered pedal foundation and selective chord cycling. The faster opening is accepted; its timing maps and native palette are editable. It also preserves the rejected slow pacing, so future reuse starts with the musical limitation as well as the patch settings.
 
+The [post-acceptance Gyruss contrast](bach-gyruss-commentary.md#post-acceptance-arrangement-and-sound-analysis) adds an arrangement lesson: a dedicated electronic entrance effect, evolving voice roles and recurring bass can supply excitement beyond a sustained organ palette. The listener favors Gyruss’s effect-rich beginning for a game-music intention, while valuing our more source-faithful SID interpretation. Its bounded execution is understood, but no independent reusable patch or new listening-approved application is claimed yet.
+
 - [Hülsbeck and Tel](../composers/huelsbeck-tel.md): programmable instruments, shared voice roles, groove, and the relationship between Soundmonitor and custom drivers.
 - [Hubbard and Galway](../composers/hubbard-galway.md): staged transients, larger-ensemble illusion, filter character, custom music languages, and original player sources.
 - [Follin and Daglish](../composers/follin-daglish.md): expressive melodic lines, percussion identity, contrasting sections, and collaboration with tool programmers.
