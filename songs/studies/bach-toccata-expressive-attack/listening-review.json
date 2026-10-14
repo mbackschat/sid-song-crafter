@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-14",
+  "verdict": "rejected",
+  "feedback": "Not good. The expressive variant again just adds these odd short sounds.",
+  "candidate": "build/bach-expressive-attack-listening/expressive-attack.wav",
+  "sha256": "f5c8b352276c675b8daa6822c00d1400afe18ed7211f767046434124672f8611",
+  "scope": "Rejects the expressive-attack variant; the subtle integrated-width opening remains liked.",
+  "mechanism": "Three short foreground pitch/waveform attacks (+12,+7,+3,base; saw to pulse) instead of the source attacks.",
+  "designLesson": "Moving short effects from an extra voice into the lead did not resolve the perceptual complaint. Treat sustained musical character and phrase-level organization as the next design question; do not equate brief parameter excursions with the intended experimental character.",
+  "nextExperiment": "A bounded running passage with sustained rhythmic support/articulation, no short pitch effects, compared with the same initialized passage from the accepted full arrangement.",
+  "modelAssistanceReview": {
+    "decision": "skip unvalidated musical-preference inference",
+    "reason": "Human rejection is explicit; previous models have no calibrated criterion for integration or odd sound effects. Register correctness did not predict musical success.",
+    "nextCheckpoint": "Next phrase-level audition and its feedback."
+  }
+}
