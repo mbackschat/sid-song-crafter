@@ -11,6 +11,8 @@
 - [Rambo tonal programs](rambo-decoded-programs.md): accepted moving pulse melody and bass with short pulse support on the same 53-note familiar phrase; native lifetime and gate scheduling, with balance, phrasing and ending reviewed.
 - [Ghouls pulse and staged-onset programs](ghouls-decoded-programs.md): moving pulse and one-call noise-to-triangle attack on the same 53-note familiar phrase; instruments, balance and adapted ending accepted with a tentative tune reservation. All tonal notes match the source; the perception's cause remains unknown.
 
+- [Deflektor tonal programs](deflektor-decoded-programs.md): accepted familiar 53-note transfer of moving-pulse melody, bass and support; computed low-byte PWM, delayed raw-word pitch and explicit release adaptation.
+
 ## Original SID-Wizard instruments
 
 Research and design date: 2026-10-12. This bank implements the first small group of experiments from [the repertoire brief](../sound-design-repertoire.md) using SID-Wizard 1.97 Extra. The [editable study source and workfiles](../../../../songs/studies/sidwizard-repertoire/README.md) retain the original patches, phrases and controlled comparisons.

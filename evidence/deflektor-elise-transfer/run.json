@@ -1,0 +1,598 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/deflektor-elise-transfer.json",
+  "recipeSha256": "bac86d5ed9f62034834297d00c5f732f49b8e351e2bc387cdeff85e23eae5c0a",
+  "startedAt": "2026-10-14T02:12:24.699019+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "prepare-check",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.186915958,
+      "artifacts": [],
+      "cacheKey": "c346d678a12f4906a06ea4b892ba59e48957f7661d63b732c89b7b3efffde102",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/prepare-check/c346d678a12f4906a06ea4b892ba59e48957f7661d63b732c89b7b3efffde102/attempt-decfbb1c32f74630984d33252c3278cc",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/prepare-check/c346d678a12f4906a06ea4b892ba59e48957f7661d63b732c89b7b3efffde102/attempt-decfbb1c32f74630984d33252c3278cc/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.20112508299999998
+    },
+    {
+      "id": "reference-build",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 1.420219042,
+      "artifacts": [
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "b032bbf3b86a5d1b5fb7be6aaeddba2613d791bc3d9d671d966bb874b975005d"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/reconstructed.prg",
+          "relativePath": "candidate/reconstructed.prg",
+          "type": "file",
+          "sha256": "14febe1bebad52dd4d222d22ba6528a49ece78bc412dfd7f875886e0c1a5c6e6"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/verification.json",
+          "relativePath": "candidate/verification.json",
+          "type": "file",
+          "sha256": "02ae74ad277926b08b420e9ad4660beee66634a9bc65b5a74a1842dc1d0a4da4"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "af6a3c667e1f42c084ebff84ccc48690839e7030c6c9592c4d2fe7f19e7d600e"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "2845e5a6a4c972894f92c451d7064213e49a51b079167a5d616a16c80957c0e1"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "6acb75a78315743292a9c7360547e108a2b481250c87162f93811f35443b8b00"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "1e9cd97dcc5bd089f6a1370a50f44605ae511b8daf68a857de6fe2392b2c4dd2"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "53d599e645b8f631b8563ffa96323cc734255b449911cf09fdc49087fd2809f1"
+        }
+      ],
+      "cacheKey": "6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 1.458873875
+    },
+    {
+      "id": "reference-vice",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 2.453503791,
+      "artifacts": [
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-vice/7569df38d66454e6adbe52dcfc34c0dca432ae1d9307674c246f1060c9ab5423/attempt-96b8f711f36b4b589e8e8a12a7b51af1/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "8dd19c0a25b6895e00d608ada515716072569b92c85812c31979d5c5113ef709"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-vice/7569df38d66454e6adbe52dcfc34c0dca432ae1d9307674c246f1060c9ab5423/attempt-96b8f711f36b4b589e8e8a12a7b51af1/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "c82a469a76e9f27be0b84a3c1150daefd3b3a12d71ae4de1e5b39a1cdc6a65a7"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-vice/7569df38d66454e6adbe52dcfc34c0dca432ae1d9307674c246f1060c9ab5423/attempt-96b8f711f36b4b589e8e8a12a7b51af1/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "7ab0791ba0f340f019310769f67ca6de16279d33d5b955936366238c5a51ce23"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-vice/7569df38d66454e6adbe52dcfc34c0dca432ae1d9307674c246f1060c9ab5423/attempt-96b8f711f36b4b589e8e8a12a7b51af1/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "a511599c143399f9ffc28ad7cc172a69d908fb2e246ba7c8fcdbe6f47dc192ff"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-vice/7569df38d66454e6adbe52dcfc34c0dca432ae1d9307674c246f1060c9ab5423/attempt-96b8f711f36b4b589e8e8a12a7b51af1/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "5f7df73b005a95169ceeadf851ea57c46387235079bc3808c454250dbe710119"
+        }
+      ],
+      "cacheKey": "7569df38d66454e6adbe52dcfc34c0dca432ae1d9307674c246f1060c9ab5423",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-vice/7569df38d66454e6adbe52dcfc34c0dca432ae1d9307674c246f1060c9ab5423/attempt-96b8f711f36b4b589e8e8a12a7b51af1",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-vice/7569df38d66454e6adbe52dcfc34c0dca432ae1d9307674c246f1060c9ab5423/attempt-96b8f711f36b4b589e8e8a12a7b51af1/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 2.6341156249999997
+    },
+    {
+      "id": "reference-render",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.2825417080000001,
+      "artifacts": [
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-render/440ecfd0d03a04197642c172b25247f4006905cf8d056a6122e37ba4411eb0b5/attempt-bd7da40d1ca74376be79a8b5027fe88c/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "da4e9962a6041a67ec37c4f9900327c7dbfa8c181634f82551643228f2e38980"
+        },
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-render/440ecfd0d03a04197642c172b25247f4006905cf8d056a6122e37ba4411eb0b5/attempt-bd7da40d1ca74376be79a8b5027fe88c/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "a90c28421febd319aceb570b322475c0f259ae2a47b4cd0848712577bf55e694"
+        }
+      ],
+      "cacheKey": "440ecfd0d03a04197642c172b25247f4006905cf8d056a6122e37ba4411eb0b5",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-render/440ecfd0d03a04197642c172b25247f4006905cf8d056a6122e37ba4411eb0b5/attempt-bd7da40d1ca74376be79a8b5027fe88c",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-render/440ecfd0d03a04197642c172b25247f4006905cf8d056a6122e37ba4411eb0b5/attempt-bd7da40d1ca74376be79a8b5027fe88c/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.2986406669999999
+    },
+    {
+      "id": "candidate-build",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 1.8890157499999995,
+      "artifacts": [
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "09ccba97ff90486646e13e5a854dee5df0faf010a3c1649e2ddaf2a0f58bb427"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/reconstructed.prg",
+          "relativePath": "candidate/reconstructed.prg",
+          "type": "file",
+          "sha256": "c2268bb637f8c01634d08bc552461e66e48b040f0a3277c9517e93a22a0690c0"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/verification.json",
+          "relativePath": "candidate/verification.json",
+          "type": "file",
+          "sha256": "ab62984152549f2c2ad5540f33405d271b0acc2c0b899dd372336d1044306d65"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "d2843e97a3fb18defe3aea6608fc10b414310c184bafc4276f6b6cc8ea761e7a"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "5557daf5370aa0daa37b896dc0a3223ed8b369dd62485b8b2cfc13d1dec11f86"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "b7e467b5b693651c2eadf4ad07b109f676ff66adf47c435537adbdc5b3710b8e"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "ba124bfd4ea02462a388ebedb5fdfa8c2a96ca3119be4685a70015734706175d"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "7e303309bb977c05ad1d3959e906d004864235b6435fb3c7802fb99582de1712"
+        }
+      ],
+      "cacheKey": "a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 1.9132873749999995
+    },
+    {
+      "id": "candidate-vice",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 2.263370749999999,
+      "artifacts": [
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-vice/3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e/attempt-e9ea863af2bc48009acd974ebb1c1a34/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "cbf604c56649926da1edcf5cf8dd50750dde51ad5a60d748661f64fcddb536a8"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-vice/3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e/attempt-e9ea863af2bc48009acd974ebb1c1a34/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "ad3fecdee207366fe7351a5f077c36fbede3af520e5b0d9d547e96ebca2a620c"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-vice/3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e/attempt-e9ea863af2bc48009acd974ebb1c1a34/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "f28e5543ef33491949b5cae84fa6f45814586c82a6e485c86d32be86c5409b32"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-vice/3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e/attempt-e9ea863af2bc48009acd974ebb1c1a34/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "291aacfaab02111df41cd5d7e5247a79031a1ed33ec336fb3a97255af71e6a6a"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-vice/3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e/attempt-e9ea863af2bc48009acd974ebb1c1a34/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "c046e883aa81856b31436fb7c9ab5d6bba87daa79a7ca4a7205c8ec965b4ab2e"
+        }
+      ],
+      "cacheKey": "3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-vice/3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e/attempt-e9ea863af2bc48009acd974ebb1c1a34",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-vice/3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e/attempt-e9ea863af2bc48009acd974ebb1c1a34/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 2.38263375
+    },
+    {
+      "id": "candidate-render",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.2337138749999994,
+      "artifacts": [
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-render/cc6d2fb5a0b5f0c8e807cf4f980b094c036602dcf44289f8369661ea7e13516a/attempt-b67ed0ac498c4314a117f84c22995030/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "1087df5d255cd431feff0da4c3e985418d1cb726128777cdcea005e6dbd3eadc"
+        },
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-render/cc6d2fb5a0b5f0c8e807cf4f980b094c036602dcf44289f8369661ea7e13516a/attempt-b67ed0ac498c4314a117f84c22995030/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "35238632eab7e08a040b606b2ea7c4e1f6054c5faf3d12716d04e0ba2e3ca856"
+        }
+      ],
+      "cacheKey": "cc6d2fb5a0b5f0c8e807cf4f980b094c036602dcf44289f8369661ea7e13516a",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-render/cc6d2fb5a0b5f0c8e807cf4f980b094c036602dcf44289f8369661ea7e13516a/attempt-b67ed0ac498c4314a117f84c22995030",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-render/cc6d2fb5a0b5f0c8e807cf4f980b094c036602dcf44289f8369661ea7e13516a/attempt-b67ed0ac498c4314a117f84c22995030/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.23875212499999954
+    },
+    {
+      "id": "signal-check",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.3397388750000001,
+      "artifacts": [
+        {
+          "stageId": "signal-check",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/signal-check/ab58055e140446578904bf3fa8ef402003baa6ccfbf551eb29a0af8f7c88bc49/attempt-20920020df64485695f64c130190d37d/audio.json",
+          "relativePath": "audio.json",
+          "type": "file",
+          "sha256": "f639d43d5b0b5d7d7dd9fbf2e1aff9de51ea7278540c518a68a782013cb9ae54"
+        }
+      ],
+      "cacheKey": "ab58055e140446578904bf3fa8ef402003baa6ccfbf551eb29a0af8f7c88bc49",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/signal-check/ab58055e140446578904bf3fa8ef402003baa6ccfbf551eb29a0af8f7c88bc49/attempt-20920020df64485695f64c130190d37d",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/signal-check/ab58055e140446578904bf3fa8ef402003baa6ccfbf551eb29a0af8f7c88bc49/attempt-20920020df64485695f64c130190d37d/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.34742004099999946
+    },
+    {
+      "id": "comparison",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.3400870420000004,
+      "artifacts": [
+        {
+          "stageId": "comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/comparison/dacdc3202ab67a7f2e5e0505f6851654486d4baec5bb64d588d7d86143ddaf12/attempt-bcfddfb9a4e245cfb9a0c1f01fe71fb7/plain-then-deflektor.ab.wav",
+          "relativePath": "plain-then-deflektor.ab.wav",
+          "type": "file",
+          "sha256": "805dcb12a0356db54fd6862e830a41fefb34dc124d17592282a8c2998f696a24"
+        },
+        {
+          "stageId": "comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/comparison/dacdc3202ab67a7f2e5e0505f6851654486d4baec5bb64d588d7d86143ddaf12/attempt-bcfddfb9a4e245cfb9a0c1f01fe71fb7/plain-then-deflektor.comparison.json",
+          "relativePath": "plain-then-deflektor.comparison.json",
+          "type": "file",
+          "sha256": "368aaea0d769737bab8e0bb71bf71cd71ae3f85020d4fc4779081e1d5cecd70d"
+        }
+      ],
+      "cacheKey": "dacdc3202ab67a7f2e5e0505f6851654486d4baec5bb64d588d7d86143ddaf12",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/comparison/dacdc3202ab67a7f2e5e0505f6851654486d4baec5bb64d588d7d86143ddaf12/attempt-bcfddfb9a4e245cfb9a0c1f01fe71fb7",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/comparison/dacdc3202ab67a7f2e5e0505f6851654486d4baec5bb64d588d7d86143ddaf12/attempt-bcfddfb9a4e245cfb9a0c1f01fe71fb7/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.3514917079999993
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "b032bbf3b86a5d1b5fb7be6aaeddba2613d791bc3d9d671d966bb874b975005d"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/reconstructed.prg",
+      "relativePath": "candidate/reconstructed.prg",
+      "type": "file",
+      "sha256": "14febe1bebad52dd4d222d22ba6528a49ece78bc412dfd7f875886e0c1a5c6e6"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/verification.json",
+      "relativePath": "candidate/verification.json",
+      "type": "file",
+      "sha256": "02ae74ad277926b08b420e9ad4660beee66634a9bc65b5a74a1842dc1d0a4da4"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "af6a3c667e1f42c084ebff84ccc48690839e7030c6c9592c4d2fe7f19e7d600e"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "2845e5a6a4c972894f92c451d7064213e49a51b079167a5d616a16c80957c0e1"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "6acb75a78315743292a9c7360547e108a2b481250c87162f93811f35443b8b00"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "1e9cd97dcc5bd089f6a1370a50f44605ae511b8daf68a857de6fe2392b2c4dd2"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "53d599e645b8f631b8563ffa96323cc734255b449911cf09fdc49087fd2809f1"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-vice/7569df38d66454e6adbe52dcfc34c0dca432ae1d9307674c246f1060c9ab5423/attempt-96b8f711f36b4b589e8e8a12a7b51af1/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "8dd19c0a25b6895e00d608ada515716072569b92c85812c31979d5c5113ef709"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-vice/7569df38d66454e6adbe52dcfc34c0dca432ae1d9307674c246f1060c9ab5423/attempt-96b8f711f36b4b589e8e8a12a7b51af1/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "c82a469a76e9f27be0b84a3c1150daefd3b3a12d71ae4de1e5b39a1cdc6a65a7"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-vice/7569df38d66454e6adbe52dcfc34c0dca432ae1d9307674c246f1060c9ab5423/attempt-96b8f711f36b4b589e8e8a12a7b51af1/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "7ab0791ba0f340f019310769f67ca6de16279d33d5b955936366238c5a51ce23"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-vice/7569df38d66454e6adbe52dcfc34c0dca432ae1d9307674c246f1060c9ab5423/attempt-96b8f711f36b4b589e8e8a12a7b51af1/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "a511599c143399f9ffc28ad7cc172a69d908fb2e246ba7c8fcdbe6f47dc192ff"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-vice/7569df38d66454e6adbe52dcfc34c0dca432ae1d9307674c246f1060c9ab5423/attempt-96b8f711f36b4b589e8e8a12a7b51af1/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "5f7df73b005a95169ceeadf851ea57c46387235079bc3808c454250dbe710119"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-render/440ecfd0d03a04197642c172b25247f4006905cf8d056a6122e37ba4411eb0b5/attempt-bd7da40d1ca74376be79a8b5027fe88c/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "da4e9962a6041a67ec37c4f9900327c7dbfa8c181634f82551643228f2e38980"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-render/440ecfd0d03a04197642c172b25247f4006905cf8d056a6122e37ba4411eb0b5/attempt-bd7da40d1ca74376be79a8b5027fe88c/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "a90c28421febd319aceb570b322475c0f259ae2a47b4cd0848712577bf55e694"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "09ccba97ff90486646e13e5a854dee5df0faf010a3c1649e2ddaf2a0f58bb427"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/reconstructed.prg",
+      "relativePath": "candidate/reconstructed.prg",
+      "type": "file",
+      "sha256": "c2268bb637f8c01634d08bc552461e66e48b040f0a3277c9517e93a22a0690c0"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/verification.json",
+      "relativePath": "candidate/verification.json",
+      "type": "file",
+      "sha256": "ab62984152549f2c2ad5540f33405d271b0acc2c0b899dd372336d1044306d65"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "d2843e97a3fb18defe3aea6608fc10b414310c184bafc4276f6b6cc8ea761e7a"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "5557daf5370aa0daa37b896dc0a3223ed8b369dd62485b8b2cfc13d1dec11f86"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "b7e467b5b693651c2eadf4ad07b109f676ff66adf47c435537adbdc5b3710b8e"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "ba124bfd4ea02462a388ebedb5fdfa8c2a96ca3119be4685a70015734706175d"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "7e303309bb977c05ad1d3959e906d004864235b6435fb3c7802fb99582de1712"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-vice/3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e/attempt-e9ea863af2bc48009acd974ebb1c1a34/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "cbf604c56649926da1edcf5cf8dd50750dde51ad5a60d748661f64fcddb536a8"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-vice/3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e/attempt-e9ea863af2bc48009acd974ebb1c1a34/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "ad3fecdee207366fe7351a5f077c36fbede3af520e5b0d9d547e96ebca2a620c"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-vice/3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e/attempt-e9ea863af2bc48009acd974ebb1c1a34/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "f28e5543ef33491949b5cae84fa6f45814586c82a6e485c86d32be86c5409b32"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-vice/3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e/attempt-e9ea863af2bc48009acd974ebb1c1a34/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "291aacfaab02111df41cd5d7e5247a79031a1ed33ec336fb3a97255af71e6a6a"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-vice/3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e/attempt-e9ea863af2bc48009acd974ebb1c1a34/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "c046e883aa81856b31436fb7c9ab5d6bba87daa79a7ca4a7205c8ec965b4ab2e"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-render/cc6d2fb5a0b5f0c8e807cf4f980b094c036602dcf44289f8369661ea7e13516a/attempt-b67ed0ac498c4314a117f84c22995030/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "1087df5d255cd431feff0da4c3e985418d1cb726128777cdcea005e6dbd3eadc"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-render/cc6d2fb5a0b5f0c8e807cf4f980b094c036602dcf44289f8369661ea7e13516a/attempt-b67ed0ac498c4314a117f84c22995030/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "35238632eab7e08a040b606b2ea7c4e1f6054c5faf3d12716d04e0ba2e3ca856"
+    },
+    {
+      "stageId": "signal-check",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/signal-check/ab58055e140446578904bf3fa8ef402003baa6ccfbf551eb29a0af8f7c88bc49/attempt-20920020df64485695f64c130190d37d/audio.json",
+      "relativePath": "audio.json",
+      "type": "file",
+      "sha256": "f639d43d5b0b5d7d7dd9fbf2e1aff9de51ea7278540c518a68a782013cb9ae54"
+    },
+    {
+      "stageId": "comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/comparison/dacdc3202ab67a7f2e5e0505f6851654486d4baec5bb64d588d7d86143ddaf12/attempt-bcfddfb9a4e245cfb9a0c1f01fe71fb7/plain-then-deflektor.ab.wav",
+      "relativePath": "plain-then-deflektor.ab.wav",
+      "type": "file",
+      "sha256": "805dcb12a0356db54fd6862e830a41fefb34dc124d17592282a8c2998f696a24"
+    },
+    {
+      "stageId": "comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/comparison/dacdc3202ab67a7f2e5e0505f6851654486d4baec5bb64d588d7d86143ddaf12/attempt-bcfddfb9a4e245cfb9a0c1f01fe71fb7/plain-then-deflektor.comparison.json",
+      "relativePath": "plain-then-deflektor.comparison.json",
+      "type": "file",
+      "sha256": "368aaea0d769737bab8e0bb71bf71cd71ae3f85020d4fc4779081e1d5cecd70d"
+    }
+  ],
+  "deliverables": {
+    "fullReference": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-render/440ecfd0d03a04197642c172b25247f4006905cf8d056a6122e37ba4411eb0b5/attempt-bd7da40d1ca74376be79a8b5027fe88c/render.wav",
+    "fullCandidate": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-render/cc6d2fb5a0b5f0c8e807cf4f980b094c036602dcf44289f8369661ea7e13516a/attempt-b67ed0ac498c4314a117f84c22995030/render.wav",
+    "comparison": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/comparison/dacdc3202ab67a7f2e5e0505f6851654486d4baec5bb64d588d7d86143ddaf12/attempt-bcfddfb9a4e245cfb9a0c1f01fe71fb7/plain-then-deflektor.ab.wav",
+    "referenceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/reference-build/6873ff4602c631e51aba823b7f2a0d2aa781fe516c32faa4c0a71d1e8133f3d8/attempt-9f6a47befeb64b5e8a46155e02c0493d/candidate/verification.json",
+    "candidateProof": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-build/a124a7c177ba7bce96a222f1275c7ed852a9d7c14959d273b6eb4f20ed71d996/attempt-c636b56630674d7a83834c65f20e51d6/candidate/verification.json"
+  },
+  "finishedAt": "2026-10-14T02:12:34.694429+00:00",
+  "wallSeconds": 9.9959835
+}

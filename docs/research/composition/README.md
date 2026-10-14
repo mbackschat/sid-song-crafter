@@ -25,7 +25,8 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Galway contrast: Rambo and Arkanoid](galway-contrast.md): executed modulation through rests, score hooks and incompatible fast volume-path drum synthesis, with a bounded same-material listening diagnostic.
 - [Ghouls ’n Ghosts](ghouls-preparation.md): declared reconstruction and bounded corroboration complete; familiar transfer instruments, balance and ending accepted with a tentative tune reservation and no detected note-mapping defect.
 - [Follin contrast: Ghouls and Gauntlet III](follin-contrast.md): staged onset, phase-retaining pulse motion and controlled rest behavior, with joint Tim/Geoff credit and bounded listening diagnostic.
-- [Prepare Deflektor](deflektor-preparation.md): complete finite numeric player, ordered score operations, editable sound components and full-register proof with bounded source edits.
+- [Prepare Deflektor](deflektor-preparation.md): complete editable compiled player with CPU/VICE proof, accepted phrase/ending and accepted familiar transfer.
+- [Daglish contrast: Deflektor and Trap](daglish-contrast.md): pinned second reference, bounded waveform/filter/articulation comparison, explicit musical and extended-form limits.
 - [Prepare Billie Jean](billie-jean-preparation.md): independent score expansion across two cycles, retained sound-state differences, duration intervention and VICE wrap verification.
 - [Prepare the pop songs and themes](pop-theme-preparation.md): pinned Take On Me, Billie Jean, Airwolf and Ghostbusters; Airwolf’s independent full-cycle model, bounded callable comparisons, unspecified-model and RSID boundaries.
 

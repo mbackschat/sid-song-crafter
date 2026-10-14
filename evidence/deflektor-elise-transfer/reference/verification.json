@@ -1,0 +1,511 @@
+{
+  "descriptionPath": "/Users/mbackschat/Projects/c64-sid-skill/songs/studies/deflektor-elise-transfer/reference.json",
+  "descriptionSha256": "a2d0b6817d1678023d2efbce5f95e0acea2cbdd86dd8055b6c2f7cd3b0ced7b4",
+  "sidSha256": "b032bbf3b86a5d1b5fb7be6aaeddba2613d791bc3d9d671d966bb874b975005d",
+  "prgSha256": "14febe1bebad52dd4d222d22ba6528a49ece78bc412dfd7f875886e0c1a5c6e6",
+  "standaloneHost": {
+    "labels": {
+      "init_return": 49205,
+      "wait": 49205,
+      "call": 49212,
+      "play_return": 49215,
+      "check_count": 49223,
+      "leave": 49237,
+      "done": 49247
+    },
+    "calls": 717
+  },
+  "standaloneBootstrapVerification": {
+    "passed": true,
+    "sysAddress": 2061,
+    "restoredPoisonedState": true,
+    "checkedPlayCalls": 2,
+    "matchedStores": 24,
+    "playEntryCycles": [
+      15757,
+      35420
+    ],
+    "callCadenceCycles": [
+      19663
+    ],
+    "bank": 55,
+    "scope": "Executed bootstrap and first calls with modeled raster/CIA reads; separate from VICE and SID synthesis."
+  },
+  "stageSeconds": {
+    "numericPreflight": 0.044168292,
+    "assembly": 0.04243504099999998,
+    "cpuProof": 1.081742875
+  },
+  "compilerContract": {
+    "fullDeclaredNumericPreflight": true,
+    "playCalls": 717,
+    "grammar": "Verified title order/pattern commands and numeric programs"
+  },
+  "toolSha256": {
+    "deflektor_compiler.py": "5862d1e35a9e271406481fbbe6bdebf087ebcc4bf597c29dceff32020c7170aa",
+    "deflektor_asm.py": "b09d2d73d8e9a4e4d2e29d503f040c5f5f47f88f52404c796d5c0cec056aee80",
+    "compose-deflektor.py": "cf815e70996638bec39c42dc70d892cbdfced23d2a2027b30aceaf80e04d6a10",
+    "deflektor_player.py": "1f36c91b44102b7be7080ab0237f70b1cc96b60ca3b48ab48752c4c10d870c4e",
+    "deflektor_programs.py": "1d61eef160621d5157c7db44dbba0a919651d9e296f07064a19a5f9ae351cf75",
+    "deflektor_score.py": "b4a8df1185a397ef5325a3f8af348a13c51343c1253229aec88c504b40915024",
+    "sid_assembler.py": "2a1fecc8cb350c9cfdef292677a0cc54bcf2c0c069009b1222782708d42c287e",
+    "psid_audit.py": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0",
+    "psid_profile.py": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107",
+    "sid_clock.py": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "limits": "Ordered register values and CPU budget; no original bus timing, SID internal, rendered or listening claim.",
+  "checkedPlayCalls": 717,
+  "maximumPlayCycles": 1926,
+  "orderedStoreComparison": {
+    "matchedStores": 9934,
+    "fields": [
+      "phase",
+      "tick",
+      "address",
+      "value"
+    ]
+  },
+  "coldInitializationStores": 0,
+  "completeDeclaredRange": true,
+  "ending": {
+    "firstStopCall": 652,
+    "naturalControlZeroStop": true,
+    "stopStores": [
+      {
+        "address": 54276,
+        "value": 0
+      },
+      {
+        "address": 54283,
+        "value": 0
+      },
+      {
+        "address": 54290,
+        "value": 0
+      }
+    ],
+    "followingCallsWithoutStores": 64,
+    "artificialFade": false
+  },
+  "sidWriterValidation": {
+    "checkedStores": 9934,
+    "writers": [
+      {
+        "pc": 4225,
+        "opcode": 153,
+        "addresses": [
+          54272,
+          54279,
+          54286
+        ]
+      },
+      {
+        "pc": 4231,
+        "opcode": 153,
+        "addresses": [
+          54273,
+          54280,
+          54287
+        ]
+      },
+      {
+        "pc": 4237,
+        "opcode": 153,
+        "addresses": [
+          54274,
+          54281,
+          54288
+        ]
+      },
+      {
+        "pc": 4243,
+        "opcode": 153,
+        "addresses": [
+          54275,
+          54282,
+          54289
+        ]
+      },
+      {
+        "pc": 4249,
+        "opcode": 153,
+        "addresses": [
+          54276,
+          54283,
+          54290
+        ]
+      },
+      {
+        "pc": 4255,
+        "opcode": 153,
+        "addresses": [
+          54277,
+          54284,
+          54291
+        ]
+      },
+      {
+        "pc": 4261,
+        "opcode": 153,
+        "addresses": [
+          54278,
+          54285,
+          54292
+        ]
+      },
+      {
+        "pc": 4275,
+        "opcode": 141,
+        "addresses": [
+          54293
+        ]
+      },
+      {
+        "pc": 4281,
+        "opcode": 141,
+        "addresses": [
+          54294
+        ]
+      },
+      {
+        "pc": 4287,
+        "opcode": 141,
+        "addresses": [
+          54295
+        ]
+      },
+      {
+        "pc": 4293,
+        "opcode": 141,
+        "addresses": [
+          54296
+        ]
+      },
+      {
+        "pc": 4532,
+        "opcode": 141,
+        "addresses": [
+          54276
+        ]
+      },
+      {
+        "pc": 4535,
+        "opcode": 141,
+        "addresses": [
+          54283
+        ]
+      },
+      {
+        "pc": 4538,
+        "opcode": 141,
+        "addresses": [
+          54290
+        ]
+      },
+      {
+        "pc": 4575,
+        "opcode": 153,
+        "addresses": [
+          54276,
+          54283,
+          54290
+        ]
+      }
+    ]
+  },
+  "resetVerification": {
+    "passed": true,
+    "restoredPoisonedState": true,
+    "matchedInitStores": 0,
+    "matchedFirstCallStores": 13
+  },
+  "callableBoundaries": 718,
+  "symbols": {
+    "DF_POINTER_0": 128,
+    "DF_POINTER_1": 23,
+    "DF_POINTER_2": 130,
+    "DF_POINTER_3": 23,
+    "DF_POINTER_4": 132,
+    "DF_POINTER_5": 23,
+    "DF_POINTER_6": 127,
+    "DF_POINTER_7": 23,
+    "DF_POINTER_8": 134,
+    "DF_POINTER_9": 24,
+    "DF_POINTER_10": 217,
+    "DF_POINTER_11": 24,
+    "DF_POINTER_12": 244,
+    "DF_POINTER_13": 24,
+    "DF_POINTER_14": 0,
+    "DF_POINTER_15": 33,
+    "DF_POINTER_16": 10,
+    "DF_POINTER_17": 33,
+    "DF_POINTER_18": 20,
+    "DF_POINTER_19": 33,
+    "entry_init": 4096,
+    "df_init_done": 4100,
+    "entry_play": 4101,
+    "df_long_branch_9": 4110,
+    "df_play_active": 4113,
+    "df_prepare_voice": 4120,
+    "df_long_branch_20": 4130,
+    "df_prepare_next": 4143,
+    "df_long_branch_31": 4151,
+    "df_process_voice": 4153,
+    "df_long_branch_37": 4161,
+    "df_process_row": 4167,
+    "df_long_branch_45": 4177,
+    "df_row_glide_ready": 4182,
+    "df_long_branch_53": 4193,
+    "df_process_next": 4193,
+    "df_long_branch_59": 4201,
+    "df_long_branch_63": 4209,
+    "df_write_voice": 4211,
+    "df_long_branch_69": 4219,
+    "df_write_next": 4264,
+    "df_long_branch_90": 4272,
+    "df_call_done": 4296,
+    "df_pattern_read": 4297,
+    "df_order_read": 4316,
+    "df_score_row": 4335,
+    "df_long_branch_125": 4345,
+    "df_long_branch_129": 4352,
+    "df_long_branch_133": 4359,
+    "df_long_branch_137": 4366,
+    "df_long_branch_141": 4373,
+    "df_pattern_end": 4376,
+    "df_long_branch_147": 4384,
+    "df_order_next": 4395,
+    "df_long_branch_157": 4405,
+    "df_long_branch_161": 4412,
+    "df_long_branch_166": 4421,
+    "df_long_branch_170": 4428,
+    "df_long_branch_174": 4435,
+    "df_long_branch_178": 4442,
+    "df_order_volume": 4466,
+    "df_order_transpose": 4475,
+    "df_order_repeat": 4484,
+    "df_order_detune": 4497,
+    "df_order_pattern": 4506,
+    "df_stop": 4527,
+    "df_failure": 4542,
+    "df_score_pitch_effect": 4550,
+    "df_score_rest": 4561,
+    "df_score_instrument": 4579,
+    "df_score_note": 4677,
+    "df_long_branch_299": 4713,
+    "df_note_wave": 4724,
+    "df_long_branch_308": 4732,
+    "df_note_resonance": 4758,
+    "df_long_branch_325": 4766,
+    "df_note_pwm": 4787,
+    "df_long_branch_340": 4795,
+    "df_note_score_pitch": 4809,
+    "df_long_branch_351": 4817,
+    "df_note_glide": 4832,
+    "df_frequency_lookup": 4841,
+    "df_body": 4860,
+    "df_long_branch_378": 4871,
+    "df_body_count": 4879,
+    "df_long_branch_387": 4890,
+    "df_body_skip": 4894,
+    "df_long_branch_394": 4902,
+    "df_body_glide": 4903,
+    "df_long_branch_400": 4911,
+    "df_glide_length": 4917,
+    "df_long_branch_407": 4925,
+    "df_long_branch_412": 4935,
+    "df_glide_subtract": 4957,
+    "df_glide_decrement": 4976,
+    "df_long_branch_434": 4986,
+    "df_body_motion": 4989,
+    "df_pwm": 5004,
+    "df_long_branch_447": 5012,
+    "df_pwm_enabled": 5013,
+    "df_long_branch_455": 5027,
+    "df_pwm_marker": 5032,
+    "df_long_branch_474": 5064,
+    "df_long_branch_478": 5071,
+    "df_long_branch_482": 5078,
+    "df_pwm_forward_marker": 5086,
+    "df_long_branch_490": 5094,
+    "df_pwm_reverse_marker": 5105,
+    "df_pwm_advance": 5119,
+    "df_long_branch_507": 5127,
+    "df_pwm_backwards": 5133,
+    "df_long_branch_515": 5144,
+    "df_pwm_interpolate": 5147,
+    "df_long_branch_528": 5170,
+    "df_long_branch_531": 5175,
+    "df_pwm_subtract": 5186,
+    "df_pwm_done": 5196,
+    "df_pitch": 5197,
+    "df_long_branch_549": 5205,
+    "df_pitch_enabled": 5206,
+    "df_long_branch_555": 5214,
+    "df_long_branch_558": 5219,
+    "df_pitch_negative_wait": 5223,
+    "df_long_branch_565": 5230,
+    "df_pitch_step": 5231,
+    "df_long_branch_579": 5255,
+    "df_pitch_sign": 5257,
+    "df_long_branch_586": 5267,
+    "df_pitch_add": 5280,
+    "df_long_branch_608": 5312,
+    "df_long_branch_615": 5327,
+    "df_long_branch_619": 5335,
+    "df_pitch_done": 5338,
+    "df_wave_pointer": 5339,
+    "df_wave": 5350,
+    "df_long_branch_634": 5358,
+    "df_wave_enabled": 5359,
+    "df_long_branch_640": 5367,
+    "df_long_branch_644": 5375,
+    "df_long_branch_666": 5421,
+    "df_long_branch_671": 5429,
+    "df_wave_loop": 5434,
+    "df_wave_position_store": 5436,
+    "df_wave_done": 5439,
+    "df_score_pitch_pointer": 5440,
+    "df_score_pitch": 5451,
+    "df_long_branch_691": 5459,
+    "df_score_pitch_enabled": 5460,
+    "df_long_branch_697": 5468,
+    "df_long_branch_701": 5476,
+    "df_long_branch_705": 5483,
+    "df_score_pitch_stage": 5494,
+    "df_long_branch_715": 5505,
+    "df_score_pitch_restart": 5523,
+    "df_score_pitch_advance": 5534,
+    "df_long_branch_741": 5552,
+    "df_long_branch_746": 5560,
+    "df_score_pitch_loop": 5565,
+    "df_score_pitch_position_store": 5567,
+    "df_score_pitch_frequency": 5570,
+    "df_score_pitch_done": 5580,
+    "df_resonance_shadow": 5581,
+    "df_resonance_step": 5596,
+    "df_long_branch_774": 5604,
+    "df_resonance_enabled": 5605,
+    "df_long_branch_780": 5613,
+    "df_long_branch_784": 5621,
+    "df_long_branch_800": 5656,
+    "df_long_branch_804": 5663,
+    "df_resonance_loop": 5668,
+    "df_resonance_position_store": 5670,
+    "df_resonance_update": 5673,
+    "df_resonance_done": 5677,
+    "df_state_begin": 5678,
+    "df_play_flag": 5678,
+    "df_cutoff_low": 5679,
+    "df_cutoff_high": 5680,
+    "df_routing": 5681,
+    "df_mode_volume": 5682,
+    "df_frequency_lo": 5683,
+    "df_frequency_hi": 5686,
+    "df_pulse_word_lo": 5689,
+    "df_pulse_word_hi": 5692,
+    "df_control": 5695,
+    "df_attack_decay": 5698,
+    "df_sustain_release": 5701,
+    "df_remaining": 5704,
+    "df_rest": 5707,
+    "df_release_threshold": 5710,
+    "df_detune": 5713,
+    "df_pitch_index": 5716,
+    "df_pwm_interval": 5719,
+    "df_pwm_base": 5722,
+    "df_pwm_elapsed": 5725,
+    "df_pwm_step": 5728,
+    "df_pwm_position": 5731,
+    "df_pitch_selector": 5734,
+    "df_pitch_wait": 5737,
+    "df_pitch_position": 5740,
+    "df_wave_selector": 5743,
+    "df_wave_countdown": 5746,
+    "df_wave_position": 5749,
+    "df_score_pitch_selector": 5752,
+    "df_score_pitch_countdown": 5755,
+    "df_score_pitch_position": 5758,
+    "df_resonance_selector": 5761,
+    "df_resonance_countdown": 5764,
+    "df_resonance_position": 5767,
+    "df_glide_wait": 5770,
+    "df_glide_remaining": 5773,
+    "df_glide_flags": 5776,
+    "df_glide_step_lo": 5779,
+    "df_glide_step_hi": 5782,
+    "df_order_lo": 5785,
+    "df_pattern_lo": 5788,
+    "df_order_hi": 5791,
+    "df_pattern_hi": 5794,
+    "df_order_cursor": 5797,
+    "df_pattern_cursor": 5800,
+    "df_repeat_count": 5803,
+    "df_transpose": 5806,
+    "df_mapping": 5809,
+    "df_skip": 5833,
+    "df_failed": 5834,
+    "df_state_end": 5835,
+    "df_initial_state": 5835,
+    "df_restore_state": 5992,
+    "df_restore_0": 5994,
+    "df_long_branch_929": 6008,
+    "df_sid_offsets": 6009,
+    "df_mapping_offsets": 6012,
+    "df_initial_pattern": 6015,
+    "df_order_0": 6016,
+    "df_order_1": 6018,
+    "df_order_2": 6020,
+    "df_pattern_table_lo": 6022,
+    "df_pattern_table_hi": 6150,
+    "df_pattern_0": 6278,
+    "df_pattern_1": 6361,
+    "df_pattern_2": 6388,
+    "df_record_0": 6427,
+    "df_record_1": 6473,
+    "df_record_2": 6519,
+    "df_record_3": 6565,
+    "df_record_4": 6611,
+    "df_record_5": 6657,
+    "df_record_6": 6703,
+    "df_record_7": 6749,
+    "df_record_8": 6795,
+    "df_record_resonance": 6841,
+    "df_frequency_table_lo": 6887,
+    "df_frequency_table_hi": 7143,
+    "df_motion": 7399,
+    "df_resonance": 7679,
+    "df_wave_table_lo": 7936,
+    "df_wave_table_hi": 8192,
+    "df_wave_program_5": 8448,
+    "df_wave_program_10": 8458,
+    "df_wave_program_15": 8468,
+    "df_score_pitch_table_lo": 8474,
+    "df_score_pitch_table_hi": 8730
+  },
+  "loadAddress": 4096,
+  "payloadBytes": 4890,
+  "payloadEndAddress": 8986,
+  "originalDriverIncluded": false,
+  "registerDumpPlayback": false,
+  "runtimeScoreScheduler": true,
+  "indefinitePlaybackSupported": false,
+  "profile": {
+    "clock": "pal",
+    "sidModel": "6581",
+    "sidCount": 1,
+    "sidBases": [
+      54272
+    ],
+    "cadence": "vbi"
+  },
+  "supportedCallRange": {
+    "firstInclusive": 0,
+    "lastExclusive": 717
+  },
+  "stateBytes": 157,
+  "patternCount": 3,
+  "instrumentCount": 6
+}

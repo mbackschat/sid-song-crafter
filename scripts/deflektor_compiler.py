@@ -26,11 +26,28 @@ def data(label, values):
     return label + ':\n  .byte ' + ','.join(f'${value:02x}' if type(value) is int else value for value in values) + '\n'
 
 
+def header_text(value, field):
+    require(type(value) is str and '\0' not in value, f'{field} must be text without embedded NUL')
+    try:
+        encoded = value.encode('latin-1')
+    except UnicodeEncodeError as error:
+        raise ValueError(f'{field} must contain only Latin-1 characters') from error
+    return encoded[:31].ljust(32, b'\0')
+
+
+def header_fields(description):
+    return [(offset, header_text(value, field)) for offset, field, value in (
+        (22, 'title', description.get('title', 'Deflektor independent title')),
+        (54, 'author', description.get('author', 'SID Song Crafter')),
+        (86, 'released', '2026 independent reconstruction'))]
+
+
 def preflight(description):
     require(type(description.get('play_calls')) is int and 1 <= description['play_calls'] <= 65535,
             'Compiled play_calls must be in 1..65535')
     require(description.get('profile', PROFILE) == PROFILE,
             'The reconstructed Deflektor backend supports only PAL/6581 single-SID VBI')
+    header_fields(description)
     return compute_writes(description)
 
 
@@ -127,9 +144,8 @@ def _build(description):
     for offset, value in ((4, 2), (6, 124), (8, LOAD_ADDRESS), (10, symbols['entry_init']),
                           (12, symbols['entry_play']), (14, 1), (16, 1), (118, 0x14)):
         struct.pack_into('>H', header, offset, value)
-    for offset, value in ((22, 'Deflektor independent title'), (54, 'SID Song Crafter'),
-                          (86, '2026 independent reconstruction')):
-        header[offset:offset + 31] = value.encode('ascii')[:31].ljust(31, b'\0')
+    for offset, value in header_fields(description):
+        header[offset:offset + 32] = value
     return bytes(header) + payload, dict(symbols=symbols, source=source, listing=listing,
         loadAddress=LOAD_ADDRESS, payloadBytes=len(payload), payloadEndAddress=LOAD_ADDRESS + len(payload),
         originalDriverIncluded=False, registerDumpPlayback=False, runtimeScoreScheduler=True,
@@ -144,6 +160,8 @@ def build(description):
     inputs. The export has the reconstructed PAL/6581 cadence and tuning;
     native workflow regional support does not retune this source-specific backend.
     Source annotations have no influence on its executable bytes.
+    Optional title/author labels use Latin-1, truncated to 31 bytes plus NUL;
+    these header fields do not change the computed player payload.
     """
     preflight(description)
     return _build(description)

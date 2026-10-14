@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "recipe": {
+    "path": "config/listening/daglish-contrast-verification.json",
+    "sha256": "bc7966ff5d122ef191d628b554889ad75137cd20f42a3f5c0c3ac02888e958f6"
+  },
+  "coldRun": {
+    "path": "build/trap-intake/wrapper-cold-run.json",
+    "sha256": "8f77071573264a69c43039714247bfeb7c7d6d721076cb37af1761765ffc6b7b",
+    "wallSeconds": 61.00852875
+  },
+  "unchangedRepeat": {
+    "path": "build/trap-intake/wrapper-hot-run.json",
+    "sha256": "0590d74446752831fc32e810e0c960c50eeb48d139483117efe91a3f64ddbee7",
+    "wallSeconds": 0.18954904200000003,
+    "stageCount": 5,
+    "allStagesReused": true
+  },
+  "retainedEvidenceComparison": [
+    {
+      "label": "sourceA",
+      "sourceSha256": "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d",
+      "orderedStoresSha256": "18ca119e31b85604fd34d36b09088a35533a9fcaf0cd852cabda5479f4494251",
+      "fullLedgerByteIdentity": true,
+      "censusNumericIdentity": true,
+      "renderSha256": "36aaa14329da6c78721e10144443bca31dc972b55934825fe709b1617a70b01f",
+      "renderByteIdentity": true,
+      "canonicalLedger": "evidence/daglish-contrast/sourceA.writes.json.gz"
+    },
+    {
+      "label": "sourceB",
+      "sourceSha256": "c8954d2020bbd3b3d7dd75a6e376057e36816591042275ae864ea8ff2c034e20",
+      "orderedStoresSha256": "3febe3c573c7e263dbd90742222e0af527c0e9f5e05568b3da19de25d5fb5667",
+      "fullLedgerByteIdentity": true,
+      "censusNumericIdentity": true,
+      "renderSha256": "d80575a7b448914eecb25f08536133fc7a069f241fc3e3ef4ef31f13505e7acb",
+      "renderByteIdentity": true,
+      "canonicalLedger": "evidence/daglish-contrast/sourceB.writes.json.gz"
+    }
+  ],
+  "traceComparison": [
+    {
+      "firstCall": 601,
+      "sha256": "c2fb76cb529cc53a12329bc68586a816ad4621facabe9800ce6aa4691572834d",
+      "matchingStores": 25,
+      "traceByteIdentity": true
+    },
+    {
+      "firstCall": 815,
+      "sha256": "932103b5f2d62cd915b232ce2672d844560e218f9a4e9291f6afdabae38601fc",
+      "matchingStores": 26,
+      "traceByteIdentity": true
+    }
+  ],
+  "listeningReview": null,
+  "limits": "Fresh controlled execution and initialized modeled rendering agree with the retained bounded observations. Wrapper/cache verification does not establish original-game execution, physical-chip equivalence, full form or musical acceptance."
+}

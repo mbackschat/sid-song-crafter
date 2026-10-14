@@ -241,7 +241,7 @@ On 2026-10-14 the independent [compiler](../../../scripts/deflektor_compiler.py)
 | [Compiled proof](../../../evidence/deflektor-compiled/candidate/verification.json) and [CPU audit](../../../evidence/deflektor-compiled/candidate/audit.json) | All 40,000 compiled calls match numeric output; maximum 2,812 cycles, 6,327-byte payload; executed writer coverage, poisoned-state reset and actual PRG bootstrap checks |
 | [Full VICE proof](../../../evidence/deflektor-compiled/vice/study.json) | All 166,845 stores match over calls 0–8,550, including zero init stores and the natural stop; maximum cadence error six cycles within the nine-cycle polling tolerance |
 | [Rendered signal](../../../evidence/deflektor-compiled/audio.json) | Both full 175-second mono PCM16/44.1-kHz renders have no clipped samples; final second has zero AC RMS and the same retained DC offset of 157 PCM units |
-| [Listening submission](../../../evidence/deflektor-compiled/listening-submission.json) | Stable filenames and exact audio fingerprints; listener verdict pending |
+| [Listening submission](../../../evidence/deflektor-compiled/listening-submission.json) | Stable filenames and exact audio fingerprints; phrase sound/phrasing and complete ending accepted |
 
 The stop at call 8,480 writes control zero to all three voices and leaves subsequent calls without SID stores. The 40,000-call proof includes 31,519 such quiet calls. The render includes the original ending and settled tail; no authored fade or continuation is added. Candidate and original WAV hashes differ: ordered register equality does not imply instruction-cycle, internal oscillator/envelope or PCM identity. Full callable VICE execution and modeled PRG bootstrap are distinct evidence, neither claiming physical C64 playback or original-game execution.
 
@@ -264,3 +264,13 @@ The submitted comparisons use original first, a 0.5-second gap, then ours at unc
 | Date / checkpoint | Task and setup | Run or skip / reason | Useful action | Eligibility / next checkpoint |
 | --- | --- | --- | --- | --- |
 | 2026-10-14 / first representative title audition | Sound/phrasing and complete ending; no changed model, prompt or preprocessing proposed | Skip audio-model calls: current [calibration](../audio-assessment.md#use-and-reassess-model-assistance) does not qualify subtle timbre or missing-tail judgments, and another identical prompt does not address its failures | Use complete execution coverage, explicit final-window measurements and matched human audition; no musical changes inferred from model scores | Models remain experimental; reassess after listener feedback and at the familiar-transfer audition, then before case closure |
+
+### Listening verdict
+
+On 2026-10-14 the listener judged the submitted phrase: **“preserves the sound and phrasing”**. The [structured verdict](../../../songs/studies/deflektor-reconstruction/listening-review.json) binds that acceptance to the exact source-seconds12–28 comparison. The listener also judged the submitted ending: **“preserves the complete ending”**; the same record binds that acceptance to source seconds155–175. This does not identify the staged percussion specifically as Daglish’s cowbell or establish acceptance of the familiar transfer.
+
+Model-assistance review after that feedback: keep audio models experimental and skip another call; the human verdict settles this submitted phrase, while existing calibration still does not qualify subtle SID identity judgments. The next checkpoint is familiar-transfer feedback and case closure.
+
+## Familiar transfer accepted
+
+The [Deflektor tonal-program card](instruments/deflektor-decoded-programs.md) retains three executed pulse patches on the same 53 familiar Für Elise notes, with a generated plain reference. Full 717-call CPU/VICE playback and settled pre-stop release are verified; the listener accepts the instruments, balance and ending. The exact patch sources, native PWM/pitch semantics and final-row adaptation remain editable and documented. This completes the primary reconstruction/transfer scope; the [required Trap contrast](daglish-contrast.md) remains open for its musical probe. The precise historical cowbell attribution remains explicitly unresolved rather than promoted as a proven label.

@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "reference-intake",
+      "command": [
+        "{python}",
+        "scripts/reference-intake.py",
+        "run",
+        "config/reference-intake/trap-contrast.json",
+        "--output",
+        "{out}/intake"
+      ],
+      "inputs": [
+        "config/reference-intake/trap-contrast.json",
+        "config/local-assets.json",
+        ".local/research/deflektor/Deflektor.sid",
+        ".local/research/trap/Trap.sid",
+        "scripts/reference-intake.py",
+        "scripts/reference_intake.py",
+        "scripts/sid_intake.py",
+        "scripts/listening-package.py",
+        "scripts/listening_package.py",
+        "scripts/audio_comparison.py",
+        "scripts/render-sid.cpp",
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "intake",
+        "intake/run.json",
+        "intake/listening.md"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "filter-enable-trace",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-program.py",
+        ".local/research/trap/Trap.sid",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1",
+        "--host-base",
+        "0x0400",
+        "--first-call",
+        "601",
+        "--last-call",
+        "601",
+        "--output",
+        "{out}/trace.json"
+      ],
+      "inputs": [
+        ".local/research/trap/Trap.sid",
+        "config/local-assets.json",
+        "scripts/trace-sid-program.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "trace.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "filtered-note-trace",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-program.py",
+        ".local/research/trap/Trap.sid",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1",
+        "--host-base",
+        "0x0400",
+        "--first-call",
+        "815",
+        "--last-call",
+        "815",
+        "--output",
+        "{out}/trace.json"
+      ],
+      "inputs": [
+        ".local/research/trap/Trap.sid",
+        "config/local-assets.json",
+        "scripts/trace-sid-program.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "trace.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "contrast-census",
+      "command": [
+        "{python}",
+        "scripts/studies/deflektor/probe-contrast.py",
+        "--run",
+        "{stage:reference-intake}/intake/run.json",
+        "--trace",
+        "{stage:filter-enable-trace}/trace.json",
+        "--trace",
+        "{stage:filtered-note-trace}/trace.json",
+        "--output",
+        "{out}/census.json"
+      ],
+      "inputs": [
+        "scripts/studies/deflektor/probe-contrast.py",
+        "{stage:reference-intake}/intake",
+        "{stage:filter-enable-trace}/trace.json",
+        "{stage:filtered-note-trace}/trace.json"
+      ],
+      "outputs": [
+        "census.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "focused-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "daglish_contrast_probe_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "scripts/studies/deflektor/probe-contrast.py",
+        "tests/daglish_contrast_probe_test.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "sourceListeningIndex": "{stage:reference-intake}/intake/listening.md",
+    "intakeRun": "{stage:reference-intake}/intake/run.json",
+    "filterEnableTrace": "{stage:filter-enable-trace}/trace.json",
+    "filteredNoteTrace": "{stage:filtered-note-trace}/trace.json",
+    "census": "{stage:contrast-census}/census.json"
+  }
+}

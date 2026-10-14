@@ -1,0 +1,21 @@
+radix h
+sidefx off
+dummy off
+bank ram
+fill $0002 $cfff $00
+fill $e000 $ffff $00
+load "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-vice/3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e/attempt-e9ea863af2bc48009acd974ebb1c1a34/vice/payload.prg" 0
+load "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-elise-transfer/cache/candidate-vice/3628de26fd151c7f2005cb05326032e8b10017fc895abfb3dd1dbf22b26f993e/attempt-e9ea863af2bc48009acd974ebb1c1a34/vice/harness.prg" 0
+r a=$00,x=$00,y=$00,sp=$ff,fl=$24
+r pc=$c000
+trace exec $1000
+trace exec $c03a
+trace exec $1005
+trace exec $c04a
+trace store $d400 $d41f if (@ram:$c102 != $00) || ((((@ram:$c101 * $0100) + @ram:$c100) >= $0000) && (((@ram:$c101 * $0100) + @ram:$c100) <= $02cc))
+until $c06d
+r
+bank ram
+d $1000 $2000
+m $1000 $2319
+quit

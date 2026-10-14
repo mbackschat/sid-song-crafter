@@ -110,6 +110,31 @@ class DeflektorCompilerTests(unittest.TestCase):
             with self.subTest(kind=kind), self.assertRaises(ValueError):
                 build(data)
 
+    def test_optional_title_and_author_use_bounded_latin1_without_changing_payload(self):
+        data = title()
+        data['play_calls'] = 1
+        baseline, _ = build(data)
+        self.assertEqual(b'Deflektor independent title'.ljust(32, b'\0'), baseline[22:54])
+        self.assertEqual(b'SID Song Crafter'.ljust(32, b'\0'), baseline[54:86])
+        data['title'] = 'Für Elise with Deflektor tonal programs'
+        data['author'] = 'Ludwig van Beethoven / SID Song Crafter'
+        before = deepcopy(data)
+        changed, _ = build(data)
+        self.assertEqual(data['title'].encode('latin-1')[:31].ljust(32, b'\0'), changed[22:54])
+        self.assertEqual(data['author'].encode('latin-1')[:31].ljust(32, b'\0'), changed[54:86])
+        self.assertEqual(baseline[:22], changed[:22])
+        self.assertEqual(baseline[86:], changed[86:])
+        self.assertEqual(before, data)
+
+    def test_header_metadata_rejects_non_text_embedded_nul_and_non_latin1(self):
+        for field in ('title', 'author'):
+            for value in (None, True, 1, b'text', 'hidden\0label', 'Unsupported \u266b'):
+                data = title()
+                data['play_calls'] = 1
+                data[field] = value
+                with self.subTest(field=field, value=value), self.assertRaises(ValueError):
+                    build(data)
+
 
 if __name__ == '__main__':
     unittest.main()

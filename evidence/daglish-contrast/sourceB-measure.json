@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "kind": "selected-original-source",
+  "selection": {
+    "assetId": "trap",
+    "calls": 6000,
+    "hostBase": 1024,
+    "renderSeconds": 120,
+    "role": "Trap extended music #1, original opening and later bounded contrasting-work passages",
+    "route": "pal-banked",
+    "subtune": 1
+  },
+  "source": {
+    "id": "trap",
+    "title": "Trap",
+    "credit": "Ben Daglish (C64 score); Jeff Wayne source passage on subtune 1 per HVSC STIL",
+    "hvscPath": "MUSICIANS/D/Daglish_Ben/Trap.sid",
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/D/Daglish_Ben/Trap.sid",
+    "sha256": "c8954d2020bbd3b3d7dd75a6e376057e36816591042275ae864ea8ff2c034e20",
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/.local/research/trap/Trap.sid",
+    "default": false,
+    "bytes": 4478
+  },
+  "registry": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/config/local-assets.json",
+    "bytes": 11345,
+    "sha256": "93530d6cbc987c2c90662bae6b3be6198ef30dfd66e2a2e16ef9806f43eed17b"
+  },
+  "header": {
+    "schemaVersion": 1,
+    "bytes": 4478,
+    "sha256": "c8954d2020bbd3b3d7dd75a6e376057e36816591042275ae864ea8ff2c034e20",
+    "format": "PSID",
+    "version": 2,
+    "dataOffset": 124,
+    "headerLoadAddress": 0,
+    "loadAddress": 48896,
+    "payloadBytes": 4352,
+    "endAddressExclusive": 53248,
+    "initAddress": 49120,
+    "playAddress": 49154,
+    "subtunes": 2,
+    "defaultSubtune": 1,
+    "selectedSubtune": 1,
+    "speedWord": 0,
+    "flags": 20,
+    "clockDeclaration": "PAL",
+    "sidModelDeclaration": "MOS6581",
+    "selectedTimingDeclaration": "VBI",
+    "title": "Trap",
+    "author": "Ben Daglish",
+    "released": "1986 Alligata",
+    "callableProfile": {
+      "profile": "pal-banked",
+      "accepted": true,
+      "reason": null,
+      "hostBase": 1024,
+      "requestedHostBase": 1024
+    },
+    "limits": "Header declarations and current profile admission only; no driver execution, measured cadence, subtune-role identification or listening verdict."
+  },
+  "rendering": {
+    "renderer": ".local/bin/render-sid",
+    "library": "libsidplayfp 3.1.1 / SIDLite",
+    "clock": "PAL",
+    "clockForced": true,
+    "sidModel": "MOS6581",
+    "subtune": 1,
+    "powerOnDelay": 0,
+    "sampleRate": 44100,
+    "channels": 1,
+    "format": "PCM16",
+    "seconds": 120,
+    "gain": 1,
+    "normalization": false,
+    "initialized": true
+  },
+  "evidence": {
+    "route": "pal-banked",
+    "cpuOrderedStoresRequested": true,
+    "cpuCausalProof": false,
+    "registerObservation": "renderer-iteration register snapshots, not a bus-write trace",
+    "limitations": "Header admission, optional controlled callable CPU stores and modeled source audio; no original-host equivalence, causal corroboration or listening verdict."
+  },
+  "listeningReview": null,
+  "render": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/trap-contrast/cache/sourceB-render/a66c78c16ddaeab0e0e0a53c93ea39e56737d05a3e838f60ab4ab5941f485d38/attempt-e28efb9190ba42b9aa5d2e586249da31/source.wav",
+    "sha256": "d80575a7b448914eecb25f08536133fc7a069f241fc3e3ef4ef31f13505e7acb",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 5292000,
+    "durationSeconds": 120.0,
+    "peak": 13082,
+    "peakDbfs": -7.975515803275428,
+    "clippedSamples": 0,
+    "rms": 3980.793755197155,
+    "acRms": 3910.36995910967,
+    "acRmsDbfs": -18.46464174258603,
+    "perChannel": [
+      {
+        "dc": 745.470123015873,
+        "rms": 3980.793755197155,
+        "acRms": 3910.36995910967
+      }
+    ]
+  },
+  "registerSnapshots": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/trap-contrast/cache/sourceB-render/a66c78c16ddaeab0e0e0a53c93ea39e56737d05a3e838f60ab4ab5941f485d38/attempt-e28efb9190ba42b9aa5d2e586249da31/source.wav.registers.tsv",
+    "bytes": 465411,
+    "sha256": "5a40ee47a4fa7c810682c2264bf21c18a617ed30dc6dfd081f2314bf5a35f1cf"
+  }
+}

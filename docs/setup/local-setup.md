@@ -29,7 +29,7 @@ Reference binaries live under ignored `.local/`; installed skill directories are
 
 ### Original SID downloads on demand
 
-Keep the original SID's source URL and SHA-256 in the [asset manifest](../../config/local-assets.json), then use [setup-project.py](../../scripts/setup-project.py) to acquire it when needed. The entries below are actual downloaded study inputs; research possibilities mentioned in the [listening catalogue](../research/composers/listening-catalogue.md) are not installed as part of this inventory. The listed source URLs returned bytes matching their registered fingerprints on 2026-10-13. Generated arrangements and patched diagnostic copies retain their own recipes rather than being registered as originals.
+Keep the original SID's source URL and SHA-256 in the [asset manifest](../../config/local-assets.json), then use [setup-project.py](../../scripts/setup-project.py) to acquire it when needed. The entries below are actual downloaded study inputs; research possibilities mentioned in the [listening catalogue](../research/composers/listening-catalogue.md) are not installed as part of this inventory. The registry pins the bytes checked on acquisition; each owning study records its source-verification date. Generated arrangements and patched diagnostic copies retain their own recipes rather than being registered as originals.
 
 | Reference ID | Local cache path | Selection |
 | --- | --- | --- |
@@ -46,6 +46,7 @@ Keep the original SID's source URL and SHA-256 in the [asset manifest](../../con
 | `arkanoid` | `.local/arkanoid-source.sid` | `--include arkanoid` |
 | `ghouls-n-ghosts` | `.local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid` | `--include ghouls-n-ghosts` |
 | `deflektor` | `.local/research/deflektor/Deflektor.sid` | `--include deflektor` |
+| `trap` | `.local/research/trap/Trap.sid` | `--include trap`; [explicit #1 contrast and credit boundary](../research/composition/daglish-contrast.md) |
 | `take-on-me` | `.local/research/take-on-me/Take_on_Me.sid` | `--include take-on-me` |
 | `billie-jean` | `.local/research/billie-jean/Billie_Jean.sid` | `--include billie-jean` |
 | `airwolf` | `.local/research/airwolf/Airwolf.sid` | `--include airwolf` |

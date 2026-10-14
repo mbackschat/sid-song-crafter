@@ -27,6 +27,7 @@ Use the [musical gesture library](gestures/README.md) for groove, chord response
 | [Monty tonal programs](instruments/monty-decoded-programs.md) | Narrow pulse bass, harmonic replies and shared moving-pulse melody; accepted 53-note familiar transfer with native articulation, retained pulse phase and explicit rest/ending limits. |
 | [Rambo tonal programs](instruments/rambo-decoded-programs.md) | Moving pulse melody and bass, plus short tonal support; matched 53-note transfer accepted for musical use, balance, phrasing and ending, with native lifetime/gate constraints. |
 | [Ghouls pulse and staged-onset programs](instruments/ghouls-decoded-programs.md) | Moving pulse melody/support and a one-call noise-to-triangle bass attack; instruments, balance and adapted ending accepted with a tentative tune reservation. Independent review matches all 53 source notes; native tuning is about 35 cents sharp in both versions. |
+| [Deflektor tonal programs](instruments/deflektor-decoded-programs.md) | Moving pulse trio with low-byte-only PWM and delayed raw-word pitch; familiar 53-note transfer accepted for instruments, balance and ending, with explicit native articulation and final-release adaptation. |
 
 ## Reference material worth learning from
 
