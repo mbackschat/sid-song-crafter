@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "probe-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "commando*_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "scripts/studies/commando/probe-contrast.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        "config/local-assets.json",
+        ".local/commando-source.sid",
+        "tests/commando_contrast_test.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "executed-proof",
+      "command": [
+        "{python}",
+        "scripts/studies/commando/probe-contrast.py",
+        "--source",
+        ".local/commando-source.sid",
+        "--subtune",
+        "1",
+        "--calls",
+        "512",
+        "--output",
+        "{out}/evidence"
+      ],
+      "inputs": [
+        "scripts/studies/commando/probe-contrast.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        "config/local-assets.json",
+        ".local/commando-source.sid"
+      ],
+      "outputs": [
+        "evidence/receipt.json",
+        "evidence/findings.json",
+        "evidence/original.json.gz",
+        "evidence/no-record7-drum.json.gz",
+        "evidence/no-record7-drum.sid"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "source-audit",
+      "command": [
+        "{python}",
+        "scripts/psid_audit.py",
+        ".local/commando-source.sid",
+        "--ticks",
+        "128",
+        "--subtune",
+        "1",
+        "--profile",
+        "pal-banked",
+        "--host-base",
+        "0x0400",
+        "--output",
+        "{out}/audit.json"
+      ],
+      "inputs": [
+        "scripts/studies/commando/probe-contrast.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        "config/local-assets.json",
+        ".local/commando-source.sid"
+      ],
+      "outputs": [
+        "audit.json",
+        "audit.writes.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "source-vice",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        ".local/commando-source.sid",
+        "--oracle",
+        "{stage:source-audit}/audit.writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "127",
+        "--subtune",
+        "1",
+        "--profile",
+        "pal-banked",
+        "--host-base",
+        "0x0400",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "scripts/studies/commando/probe-contrast.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        "config/local-assets.json",
+        ".local/commando-source.sid",
+        "scripts/trace-sid-vice.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "{stage:source-audit}/audit.writes.json"
+      ],
+      "outputs": [
+        "vice/study.json",
+        "vice/trace.json",
+        "vice/commands.mon",
+        "vice/command.json",
+        "vice/monitor.log"
+      ],
+      "timeoutSeconds": 70,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "original-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/commando-source.sid",
+        "{out}/render.wav",
+        "10",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        ".local/commando-source.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "diagnostic-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:executed-proof}/evidence/no-record7-drum.sid",
+        "{out}/render.wav",
+        "10",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:executed-proof}/evidence/no-record7-drum.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:original-render}/render.wav",
+        "{stage:diagnostic-render}/render.wav",
+        "--seconds",
+        "10",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:diagnostic-render}/render.wav"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "drum-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:original-render}/render.wav",
+        "{stage:diagnostic-render}/render.wav",
+        "{out}/original-then-without-record7-drum-0to3s",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "3",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:original-render}/render.wav",
+        "{stage:diagnostic-render}/render.wav"
+      ],
+      "outputs": [
+        "original-then-without-record7-drum-0to3s.ab.wav",
+        "original-then-without-record7-drum-0to3s.comparison.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "executedEvidence": "{stage:executed-proof}/evidence/receipt.json",
+    "findings": "{stage:executed-proof}/evidence/findings.json",
+    "originalCommandoFirst10Seconds": "{stage:original-render}/render.wav",
+    "sameMaterialWithoutRecord7DrumFirst10Seconds": "{stage:diagnostic-render}/render.wav",
+    "originalThenWithoutRecord7Drum0to3Seconds": "{stage:drum-comparison}/original-then-without-record7-drum-0to3s.ab.wav",
+    "sourceViceEvidence": "{stage:source-vice}/vice/study.json"
+  }
+}

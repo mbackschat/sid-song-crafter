@@ -63,3 +63,5 @@ python3 scripts/studies/monty/prepare-monty-elise.py --transfer-output build/mon
 ```
 
 The [audio recipe](../monty-elise-audio.json) supplies complete fresh-path compile, VICE, render, comparison and PCM-measurement commands with the checked code/library fingerprints. The adapter reports source/output fingerprints, retained event counts, tuning and timing errors. Existing output paths reject; `--check` is read-only. Use alternate `--source` or `--programs` inputs to regenerate both matching descriptions. Retain the plain pair and a scoped listening judgment when applying these programs to different material through the [decoded-song workflow](../../../workflows/decoded-song-workflow.md).
+
+The [bounded Commando contrast](../hubbard-contrast.md) corroborates shared mutable instrument-bank state but narrows arithmetic reuse: its observed pulse motion is low-byte ADC, not Monty’s full-word bidirectional PWM. Commando also executes brief same-voice noise substitutions. These findings do not change this accepted transfer’s selected records or establish a universal Hubbard instrument contract.

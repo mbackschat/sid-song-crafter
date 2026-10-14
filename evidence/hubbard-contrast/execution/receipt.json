@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "source": {
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/H/Hubbard_Rob/Commando.sid",
+    "sha256": "5295378dacb06593a9c1853ce11a325ce885a16e26d56274d424e06492948de8",
+    "selectedSubtune": 1
+  },
+  "execution": {
+    "profile": "pal-banked",
+    "hostBase": 1024,
+    "calls": 512,
+    "clock": "PAL",
+    "sidModel": "MOS6581",
+    "sourceMaximumPlayCycles": 1248,
+    "candidateMaximumPlayCycles": 1248
+  },
+  "intervention": {
+    "change": {
+      "address": 21968,
+      "original": 5,
+      "candidate": 4,
+      "parameter": "instrument 7 drum flag"
+    },
+    "candidateSha256": "138ddf406df2f63f90f19454b48521d784dbbc84342d04b5c04316288e21d6e4"
+  },
+  "counts": {
+    "sourceStores": 5245,
+    "candidateStores": 5085,
+    "noteSetups": 132,
+    "continuingBodies": 1404,
+    "pulseSteps": 352,
+    "closedNoiseSubstitutions": 60
+  },
+  "findings": {
+    "channelSharing": "supported in bounded Commando passage",
+    "mutablePulse": "supported with driver-specific arithmetic"
+  },
+  "tools": {
+    "scripts/studies/commando/probe-contrast.py": "4e3faf97c0b3dc79bbfd37f18e68d673e19a0713a3a9d779b046574ba39db365",
+    "scripts/psid_audit.py": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0",
+    "scripts/psid_profile.py": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107",
+    "scripts/sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "scripts/sid_clock.py": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48",
+    "scripts/verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+    "config/local-assets.json": "542a2b89a00e4d45aa30c4fe75f9c00d89530ffd0d4ae41c6d0d5a7161626b95",
+    "py65.devices.mpu6502": "15d93835b4f279b702270d9a0b417938291347ec57cc12d9e0307cd344d381fe"
+  },
+  "outputs": {
+    "findings.json": {
+      "sha256": "27be793eb250205f7906ab1b05649385c0d096ded60c645bc553bb8627e10325",
+      "bytes": 23804
+    },
+    "no-record7-drum.json.gz": {
+      "sha256": "023ce43a48b500143d0612b06e866dcb79cc5b76d90cef0060a0f853e800fe2b",
+      "bytes": 89028
+    },
+    "no-record7-drum.sid": {
+      "sha256": "138ddf406df2f63f90f19454b48521d784dbbc84342d04b5c04316288e21d6e4",
+      "bytes": 4165
+    },
+    "original.json.gz": {
+      "sha256": "a1b3f6f5c8bf14d1323adaf0c047bf47c186342dfcf9b5b854e2a4c3bcc88694",
+      "bytes": 91953
+    }
+  },
+  "limits": "Bounded controlled callable execution and data intervention; no full reconstruction, original-game or renderer-host identity, hardware sound or listening judgment. Candidate SID remains private; compressed observations contain no payload/RAM dump."
+}

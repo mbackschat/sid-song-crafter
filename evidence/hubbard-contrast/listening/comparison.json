@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    0.0,
+    3.0
+  ],
+  "window": {
+    "startFrame": 0,
+    "endFrame": 132300,
+    "frames": 132300,
+    "startSeconds": 0.0,
+    "endSeconds": 3.0,
+    "durationSeconds": 3.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/commando-probe/verification/cache/drum-comparison/ccda0d8914f2f5dae988e6c27fbc21b25e2769143daee0bbfaef14352c017e3c/attempt-c80e9d65ba2841e8b3e09b30eeee3f1f/original-then-without-record7-drum-0to3s.ab.wav",
+    "frames": 286650,
+    "durationSeconds": 6.5,
+    "sha256": "3888664396597cd45350b82f1896c2505f7f8526f2618384889eeda4a8820c40"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 132300
+    },
+    {
+      "label": "silence",
+      "startFrame": 132300,
+      "endFrame": 154350
+    },
+    {
+      "label": "B",
+      "startFrame": 154350,
+      "endFrame": 286650
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/commando-probe/verification/cache/original-render/d84cff6ee320ee097394af8c5adb6101bc6da7aec3f041f864abf13b677816a4/attempt-08d8bf14efdf49879dd2c2d24ab1b805/render.wav",
+      "sha256": "61ac1df9fbffd939ea2fbcd34d6d87103d81da06a212880815bdf46a602a3c7c",
+      "originalFrames": 441000,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 132300,
+        "durationSeconds": 3.0,
+        "peak": 13301,
+        "peakDbfs": -7.8313128299942045,
+        "clippedSamples": 0,
+        "rms": 5758.468707022565,
+        "acRms": 3750.6751972103975,
+        "acRmsDbfs": -18.82680956849581,
+        "perChannel": [
+          {
+            "dc": 4369.484799697657,
+            "rms": 5758.468707022565,
+            "acRms": 3750.6751972103975
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/commando-probe/verification/cache/diagnostic-render/41e6787edeccce281a6c75bbfed3f35a99877e18486ded62becb8f26e6fd1af3/attempt-e71d9b07a07a43f5bc6c1dbd4795dd06/render.wav",
+      "sha256": "91fcfc142ab688f15178b29fd53ad10ff51c277e937b8bdb3f1aab31e0bb8275",
+      "originalFrames": 441000,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 132300,
+        "durationSeconds": 3.0,
+        "peak": 13301,
+        "peakDbfs": -7.8313128299942045,
+        "clippedSamples": 0,
+        "rms": 5761.364858351108,
+        "acRms": 3788.0583755366592,
+        "acRmsDbfs": -18.740665438408584,
+        "perChannel": [
+          {
+            "dc": 4340.960582010582,
+            "rms": 5761.364858351108,
+            "acRms": 3788.0583755366592
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

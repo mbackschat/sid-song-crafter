@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "run": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/commando-probe/verification/run.json",
+    "sha256": "be74692925d015e644576b4eff83a48885e64ba61084224e71a12b4bea46f2ec",
+    "bytes": 25522
+  },
+  "selection": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/scripts/studies/commando/audition.json",
+    "sha256": "ffeeededfa3b7505502b48343d92f36322cc2570d643632ba02fd2f4d0371f94",
+    "bytes": 239
+  },
+  "files": [
+    {
+      "label": "originalCommandoFirst10Seconds",
+      "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/commando-probe/verification/cache/original-render/d84cff6ee320ee097394af8c5adb6101bc6da7aec3f041f864abf13b677816a4/attempt-08d8bf14efdf49879dd2c2d24ab1b805/render.wav",
+      "filename": "original-10s.wav",
+      "sha256": "61ac1df9fbffd939ea2fbcd34d6d87103d81da06a212880815bdf46a602a3c7c",
+      "bytes": 882044,
+      "stageId": "original-render"
+    },
+    {
+      "label": "sameMaterialWithoutRecord7DrumFirst10Seconds",
+      "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/commando-probe/verification/cache/diagnostic-render/41e6787edeccce281a6c75bbfed3f35a99877e18486ded62becb8f26e6fd1af3/attempt-e71d9b07a07a43f5bc6c1dbd4795dd06/render.wav",
+      "filename": "without-record7-drum-10s.wav",
+      "sha256": "91fcfc142ab688f15178b29fd53ad10ff51c277e937b8bdb3f1aab31e0bb8275",
+      "bytes": 882044,
+      "stageId": "diagnostic-render"
+    },
+    {
+      "label": "originalThenWithoutRecord7Drum0to3Seconds",
+      "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/commando-probe/verification/cache/drum-comparison/ccda0d8914f2f5dae988e6c27fbc21b25e2769143daee0bbfaef14352c017e3c/attempt-c80e9d65ba2841e8b3e09b30eeee3f1f/original-then-without-record7-drum-0to3s.ab.wav",
+      "filename": "original-then-without-record7-drum-0to3s.ab.wav",
+      "sha256": "3888664396597cd45350b82f1896c2505f7f8526f2618384889eeda4a8820c40",
+      "bytes": 573344,
+      "stageId": "drum-comparison"
+    }
+  ]
+}
