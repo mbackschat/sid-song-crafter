@@ -12786,6 +12786,56 @@
       "originalBytes": 1470,
       "sha256": "935ab75b820aaceb0765a574f6d5f68799a465e56940968f620221da74d6b08e",
       "bytes": 1470
+    },
+    {
+      "path": "evidence/tel-contrast/intake/source.json",
+      "originalPath": "build/reference-intake/turbo-outrun-contrast/promotion-inputs/intake-receipt.json",
+      "group": "tel-contrast",
+      "reason": "Preserve source fingerprint, header, selected subtune, credits and execution-route limits without original SID bytes.",
+      "originalSha256": "e99a9056bf10479d14b89826de199ebf664c20044bbe2c09b816ae662e1e13a9",
+      "originalBytes": 3273,
+      "sha256": "e99a9056bf10479d14b89826de199ebf664c20044bbe2c09b816ae662e1e13a9",
+      "bytes": 3273
+    },
+    {
+      "path": "evidence/tel-contrast/intake/readiness.json",
+      "originalPath": "build/reference-intake/turbo-outrun-contrast/promotion-inputs/readiness.json",
+      "group": "tel-contrast",
+      "reason": "Retain the environment and pinned-source readiness checks for this intake.",
+      "originalSha256": "ae95088c78f76bcedf75ac995ccc29eb990d00871a44e8e039b9d59426adf16c",
+      "originalBytes": 6106,
+      "sha256": "ae95088c78f76bcedf75ac995ccc29eb990d00871a44e8e039b9d59426adf16c",
+      "bytes": 6106
+    },
+    {
+      "path": "evidence/tel-contrast/intake/summary.json",
+      "originalPath": "build/reference-intake/turbo-outrun-contrast/intake-summary.json",
+      "group": "tel-contrast",
+      "reason": "Retain initialized audio measurements, source/window fingerprints and evidence-route limits without audio.",
+      "originalSha256": "bfa2018bd4000fab5525f06cfe8042b10a36459c430fe0ff68bed9f3be477d2f",
+      "originalBytes": 6523,
+      "sha256": "bfa2018bd4000fab5525f06cfe8042b10a36459c430fe0ff68bed9f3be477d2f",
+      "bytes": 6523
+    },
+    {
+      "path": "evidence/tel-contrast/intake/run-cold.json",
+      "originalPath": "build/reference-intake/turbo-outrun-contrast/cold-run.json",
+      "group": "tel-contrast",
+      "reason": "Preserve first-run recipe dependencies, outputs and measured stage timing.",
+      "originalSha256": "6a5eee66d94455e7f5c910f48ff6c3264053bae6de2e4b53b8cd9921d576ef40",
+      "originalBytes": 13480,
+      "sha256": "6a5eee66d94455e7f5c910f48ff6c3264053bae6de2e4b53b8cd9921d576ef40",
+      "bytes": 13480
+    },
+    {
+      "path": "evidence/tel-contrast/intake/run-reused.json",
+      "originalPath": "build/reference-intake/turbo-outrun-contrast/hot-run.json",
+      "group": "tel-contrast",
+      "reason": "Preserve unchanged recheck timing and verified cache reuse.",
+      "originalSha256": "7e26d9f33ffd8317ef096d5c68c8e29414b032be1add536277aaf5853164b199",
+      "originalBytes": 13305,
+      "sha256": "7e26d9f33ffd8317ef096d5c68c8e29414b032be1add536277aaf5853164b199",
+      "bytes": 13305
     }
   ],
   "independentShadesSources": {

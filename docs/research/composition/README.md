@@ -21,6 +21,7 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 - [Reconstruct Shades](shades-preparation.md): accepted independent full-form reconstruction and familiar transfer, CIA proofs and editable pulse/glide programs.
 - [Contrast Shades with Giana](huelsbeck-contrast.md): completed bounded check with initialized pulse/shared-filter evidence, a two-byte PWM diagnostic and audible animation/tone verdict.
 - [Cybernoid II title and reusable programs](cybernoid-ii-preparation.md): complete numeric model, accepted independent title/finite ending and accepted familiar pulse-program transfer.
+- [Contrast Cybernoid II with Turbo Outrun](tel-contrast.md): pinned intro credits, initialized RSID intake and bounded oscillator/sample-path questions; mechanism and listening checks active.
 - [Monty on the Run reconstruction](monty-preparation.md): complete independent first-cycle export, finite ending and familiar transfer with full CPU/VICE/audio evidence; opening, corrected source continuation and familiar transfer accepted; authored fade retained separately.
 - [Rambo: First Blood Part II](rambo-preparation.md): independent compiled loader, complete CPU/VICE proof, matched listening package and accepted familiar-material transfer of its lifetime/PWM/pitch programs.
 - [Galway contrast: Rambo and Arkanoid](galway-contrast.md): executed modulation through rests, score hooks and incompatible fast volume-path drum synthesis, with a bounded same-material listening diagnostic.

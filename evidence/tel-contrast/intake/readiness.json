@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "root": "/Users/mbackschat/Projects/c64-sid-skill",
+  "ok": true,
+  "checks": [
+    {
+      "name": "py65",
+      "required": true,
+      "ok": true,
+      "detail": "/Users/mbackschat/Projects/c64-sid-skill/.tools/test-deps/py65/devices/mpu6502.py"
+    },
+    {
+      "name": "renderer",
+      "required": true,
+      "ok": true,
+      "detail": "Renderer usage probe passed",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid"
+    },
+    {
+      "name": "vice",
+      "required": true,
+      "ok": true,
+      "detail": "Headless UI confirmed by /Users/mbackschat/Projects/c64-sid-skill/.tools/vice-headless-3.9/build/src/config.h; emulator startup was not run",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/.tools/vice-headless-3.9/build/src/x64sc"
+    },
+    {
+      "name": "vice-roms",
+      "required": true,
+      "ok": true,
+      "detail": "C64 BASIC, KERNAL and character ROMs found",
+      "path": "/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice"
+    },
+    {
+      "name": "reference:fuer-elise",
+      "required": true,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/fuer-elise/drax-fuer-elise.sid"
+    },
+    {
+      "name": "reference:flashdance",
+      "required": true,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/flashdance/drax-flashdance-conversion.sid"
+    },
+    {
+      "name": "reference:flashdance-historical",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/flashdance/kleimeyer-flashdance.sid"
+    },
+    {
+      "name": "reference:shades-filter-corrected",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/shades/Shades_filter_corrected.sid"
+    },
+    {
+      "name": "reference:shades",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/shades/Shades.sid"
+    },
+    {
+      "name": "reference:great-giana-sisters",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/giana/Great_Giana_Sisters.sid"
+    },
+    {
+      "name": "reference:cybernoid-ii",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/cybernoid-ii/Cybernoid_II.sid"
+    },
+    {
+      "name": "reference:turbo-outrun",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/turbo-outrun/Turbo_Outrun.sid"
+    },
+    {
+      "name": "reference:monty-on-the-run",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/monty-source.sid"
+    },
+    {
+      "name": "reference:commando",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/commando-source.sid"
+    },
+    {
+      "name": "reference:auf-wiedersehen-monty",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/monty-wiedersehen-source.sid"
+    },
+    {
+      "name": "reference:rambo-first-blood-part-ii",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/rambo-source.sid"
+    },
+    {
+      "name": "reference:arkanoid",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/arkanoid-source.sid"
+    },
+    {
+      "name": "reference:deflektor",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/deflektor/Deflektor.sid"
+    },
+    {
+      "name": "reference:trap",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/trap/Trap.sid"
+    },
+    {
+      "name": "reference:ghouls-n-ghosts",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/ghouls-n-ghosts/Ghouls_n_Ghosts.sid"
+    },
+    {
+      "name": "reference:gauntlet-iii",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/gauntlet-iii/Gauntlet_III.sid"
+    },
+    {
+      "name": "reference:take-on-me",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/take-on-me/Take_on_Me.sid"
+    },
+    {
+      "name": "reference:billie-jean",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/billie-jean/Billie_Jean.sid"
+    },
+    {
+      "name": "reference:airwolf",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/airwolf/Airwolf.sid"
+    },
+    {
+      "name": "reference:ghostbusters",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/ghostbusters/Ghostbusters.sid"
+    },
+    {
+      "name": "reference:gyruss",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": ".local/research/gyruss/Gyruss.sid"
+    },
+    {
+      "name": "skill:c64-sid",
+      "required": true,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": "skills/c64-sid"
+    },
+    {
+      "name": "skill:sid-music",
+      "required": false,
+      "ok": true,
+      "detail": "Pinned files verified",
+      "path": "skills/sid-music"
+    },
+    {
+      "name": "mido",
+      "required": false,
+      "ok": true,
+      "detail": "/Users/mbackschat/Projects/c64-sid-skill/.tools/arrangement-deps/mido/__init__.py"
+    },
+    {
+      "name": "bridge",
+      "required": false,
+      "ok": true,
+      "detail": "Bridge and Bun installed; live connectivity was not tested",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/.tools/c64bridge"
+    }
+  ],
+  "remedy": "python3 scripts/setup-project.py"
+}

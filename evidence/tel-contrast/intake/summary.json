@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "status": "bounded-intake-ready",
+  "sourceSha256": "02e3840800c4f5f8b626864eeae92bd46a3742085c6a37b532acb363ad5cabfc",
+  "header": {
+    "schemaVersion": 1,
+    "bytes": 56430,
+    "sha256": "02e3840800c4f5f8b626864eeae92bd46a3742085c6a37b532acb363ad5cabfc",
+    "format": "RSID",
+    "version": 2,
+    "dataOffset": 124,
+    "headerLoadAddress": 0,
+    "loadAddress": 2064,
+    "payloadBytes": 56304,
+    "endAddressExclusive": 58368,
+    "initAddress": 52032,
+    "playAddress": 0,
+    "subtunes": 12,
+    "defaultSubtune": 1,
+    "selectedSubtune": 1,
+    "speedWord": 0,
+    "flags": 20,
+    "clockDeclaration": "PAL",
+    "sidModelDeclaration": "MOS6581",
+    "selectedTimingDeclaration": "machine-controlled",
+    "title": "Turbo Outrun",
+    "author": "Jeroen Tel",
+    "released": "1989 US Gold/Probe",
+    "callableProfile": {
+      "profile": "pal-banked",
+      "accepted": false,
+      "reason": "Audit requires a complete PSID header"
+    },
+    "limits": "Header declarations and current profile admission only; no driver execution, measured cadence, subtune-role identification or listening verdict."
+  },
+  "rendering": {
+    "renderer": ".local/bin/render-sid",
+    "library": "libsidplayfp 3.1.1 / SIDLite",
+    "clock": "PAL",
+    "clockForced": true,
+    "sidModel": "MOS6581",
+    "subtune": 1,
+    "powerOnDelay": 0,
+    "sampleRate": 44100,
+    "channels": 1,
+    "format": "PCM16",
+    "seconds": 32,
+    "gain": 1,
+    "normalization": false,
+    "initialized": true
+  },
+  "render": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/turbo-outrun-contrast/cache/sourceA-render/48c82329bb505eeafc33ff2bbcd96d4127300787c8d2f0313380b4204e65cf61/attempt-1548f687f7b54475b72c6265c59e9b57/source.wav",
+    "sha256": "c6edc179b19ff53e20830d0ba80fabcec283aeb103ae1b1baf31534392a87e77",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 1411200,
+    "durationSeconds": 32.0,
+    "peak": 9300,
+    "peakDbfs": -10.939339728115655,
+    "clippedSamples": 0,
+    "rms": 1839.9298212068882,
+    "acRms": 1839.1245697150525,
+    "acRmsDbfs": -25.016775771772252,
+    "perChannel": [
+      {
+        "dc": 54.42944090136054,
+        "rms": 1839.9298212068882,
+        "acRms": 1839.1245697150525
+      }
+    ]
+  },
+  "registerSnapshots": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/turbo-outrun-contrast/cache/sourceA-render/48c82329bb505eeafc33ff2bbcd96d4127300787c8d2f0313380b4204e65cf61/attempt-1548f687f7b54475b72c6265c59e9b57/source.wav.registers.tsv",
+    "bytes": 126844,
+    "sha256": "d6754da9650ec297f8948b885a48e798bc8ade8dd8b9c99bfa8cd14b72bf7b6f"
+  },
+  "coldRun": {
+    "path": "build/reference-intake/turbo-outrun-contrast/cold-run.json",
+    "status": "completed",
+    "wallSeconds": 7.9337655,
+    "executedStages": 5
+  },
+  "hotRun": {
+    "path": "build/reference-intake/turbo-outrun-contrast/hot-run.json",
+    "status": "completed",
+    "wallSeconds": 0.191441417,
+    "reusedStages": 5
+  },
+  "windows": {
+    "opening-rhythm": {
+      "seconds": [
+        0.0,
+        12.0
+      ],
+      "clip": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/turbo-outrun-contrast/cache/window-opening-rhythm/0c7461298672fbbf71ef6693b304b7cf1de82432ec4d81cc21829dcab95e4372/attempt-1074e184a9d74ab195ed7d826c709e7e/source.wav",
+        "sha256": "403e6f12f96c934d2fbaf2183fc69a856c00e6dc6b1f94dbb570f5c9b7f49ed4",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 529200,
+        "durationSeconds": 12.0,
+        "peak": 7205,
+        "peakDbfs": -13.156318996194196,
+        "clippedSamples": 0,
+        "rms": 1682.9757697003058,
+        "acRms": 1682.872837289488,
+        "acRmsDbfs": -25.787972685678437,
+        "perChannel": [
+          {
+            "dc": 18.61329931972789,
+            "rms": 1682.9757697003058,
+            "acRms": 1682.872837289488
+          }
+        ]
+      }
+    },
+    "continuing-phrase": {
+      "seconds": [
+        16.0,
+        28.0
+      ],
+      "clip": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/turbo-outrun-contrast/cache/window-continuing-phrase/cd79c3047bce3cbd7f7405fe1cc626ad596196ef6ef73e5a121921aa30458219/attempt-3f1bb6f782634d99bda352779f22ffca/source.wav",
+        "sha256": "7abb063129d46d709f698f62d1acf3e1df968ff0de70c6305bd824974425b8ee",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 529200,
+        "durationSeconds": 12.0,
+        "peak": 9219,
+        "peakDbfs": -11.015322399673547,
+        "clippedSamples": 0,
+        "rms": 1972.4027178938834,
+        "acRms": 1969.3824179221049,
+        "acRmsDbfs": -24.422397572295175,
+        "perChannel": [
+          {
+            "dc": 109.11174792139077,
+            "rms": 1972.4027178938834,
+            "acRms": 1969.3824179221049
+          }
+        ]
+      }
+    }
+  },
+  "sourceProvenance": ".local/research/turbo-outrun/intake-receipt.json",
+  "readiness": ".local/research/turbo-outrun/readiness.json",
+  "limitations": "Initialized libsidplayfp modeled audio and renderer snapshots only; no Turbo-specific instruction/store mechanism or listening acceptance established.",
+  "nextProbes": [
+    {
+      "question": "Does the selected intro use rapid volume-path audio alongside oscillator parts?",
+      "minimumEvidence": "Validate its returning or nonreturning init contract and renderer-compatible machine setup, then retain a short full-machine SID load/store ledger with writer PCs and checkpoint intervals. Compare the existing tone-voice-none diagnostic only after checking coupling and audio-path assumptions; it preserves the separate volume-digi channel.",
+      "contrast": "Cybernoid II callable oscillator programs versus Turbo Outrun machine-owned/software-audio timing; do not assume every drum is a sample."
+    },
+    {
+      "question": "Does one Turbo oscillator voice stage a transient before a pitched bass body, and retain delayed modulation as Cybernoid does?",
+      "minimumEvidence": "Within one short continuing phrase, tie waveform/frequency/control writes to executed note/program state and source bytes, then test one bounded causal change with unchanged timing and a labelled original/candidate listening pair.",
+      "contrast": "Verify or narrow bass/drum sharing and delayed modulation separately from sample playback."
+    }
+  ],
+  "listeningReview": null
+}

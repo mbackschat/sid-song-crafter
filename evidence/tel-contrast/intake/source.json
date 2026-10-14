@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "kind": "private-reference-intake",
+  "source": {
+    "url": "https://hvsc.c64.org/download/C64Music/MUSICIANS/T/Tel_Jeroen/Turbo_Outrun.sid",
+    "path": ".local/research/turbo-outrun/Turbo_Outrun.sid",
+    "bytes": 56430,
+    "sha256": "02e3840800c4f5f8b626864eeae92bd46a3742085c6a37b532acb363ad5cabfc"
+  },
+  "header": {
+    "schemaVersion": 1,
+    "bytes": 56430,
+    "sha256": "02e3840800c4f5f8b626864eeae92bd46a3742085c6a37b532acb363ad5cabfc",
+    "format": "RSID",
+    "version": 2,
+    "dataOffset": 124,
+    "headerLoadAddress": 0,
+    "loadAddress": 2064,
+    "payloadBytes": 56304,
+    "endAddressExclusive": 58368,
+    "initAddress": 52032,
+    "playAddress": 0,
+    "subtunes": 12,
+    "defaultSubtune": 1,
+    "selectedSubtune": 1,
+    "speedWord": 0,
+    "flags": 20,
+    "clockDeclaration": "PAL",
+    "sidModelDeclaration": "MOS6581",
+    "selectedTimingDeclaration": "machine-controlled",
+    "title": "Turbo Outrun",
+    "author": "Jeroen Tel",
+    "released": "1989 US Gold/Probe",
+    "callableProfile": {
+      "profile": "pal-banked",
+      "accepted": false,
+      "reason": "Audit requires a complete PSID header"
+    },
+    "limits": "Header declarations and current profile admission only; no driver execution, measured cadence, subtune-role identification or listening verdict."
+  },
+  "subtuneRole": {
+    "selection": 1,
+    "role": "Intro",
+    "sourceComposition": "Magical Sound Shower",
+    "sourceComposer": "Hiroshi Kawaguchi",
+    "c64Arrangement": "Jeroen Tel",
+    "sampledVoice": "Jeroen Tel",
+    "source": "HVSC STIL v85"
+  },
+  "stil": {
+    "url": "https://hvsc.c64.org/download/C64Music/DOCUMENTS/STIL.txt",
+    "path": ".local/downloads/HVSC-STIL.txt",
+    "bytes": 3750199,
+    "sha256": "b1ef3584a5b3501e2bbd2ef056d6539a1bbee7933a7828537c3946c1b16cde43",
+    "excerpt": ".local/research/turbo-outrun/STIL-turbo-outrun.txt"
+  },
+  "publishedAccount": {
+    "url": "https://blog.de.playstation.com/?p=4937",
+    "published": "2010-07-07",
+    "checked": "2026-10-14",
+    "finding": "Tel names sampled drums and his own voice in Turbo Outrun; the account does not locate every sampled role in intro #1."
+  },
+  "driverCredit": {
+    "status": "not established for this archive build",
+    "reason": "General Maniacs of Noise collaboration and the recovered Cybernoid II driver credit do not settle Turbo Outrun driver authorship."
+  },
+  "route": {
+    "selected": "full-machine-render",
+    "basis": "Intact RSID v2 declares machine-controlled playback and has no callable play address; existing pal-banked profile rejects its format. No header patch is made.",
+    "observation": "Initialized libsidplayfp source audio and renderer-iteration register snapshots; no callable CPU ledger or bus-write timing.",
+    "softwareAudioLimit": "Frame calls and renderer snapshots cannot establish intervening high-rate SID writes; determine the selected intro mechanism using a later bounded full-machine store trace."
+  },
+  "reproduction": [
+    "python3 scripts/setup-project.py --only references --include turbo-outrun",
+    "python3 scripts/reference-intake.py run config/reference-intake/turbo-outrun-contrast.json --output build/reference-intake/turbo-outrun-contrast"
+  ],
+  "listeningReview": null
+}
