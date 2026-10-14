@@ -135,3 +135,28 @@ The same message explicitly authorizes acquiring and rendering the **C64 Gyruss 
 
 
 The [post-acceptance Gyruss analysis](bach-gyruss-commentary.md#post-acceptance-arrangement-and-sound-analysis) records the later verdict: the listener likes both interpretations, finds Gyruss more modern/interesting for a game-music intention, especially its effect-rich beginning; ours is valued for source fidelity and its SID use. Executed sound programs and a score-passage comparison explain concrete differences without changing this accepted baseline. The owning note retains the comparison-feedback model-assistance review and proposed future experiments.
+
+
+### Original opening experiment from blended intentions
+
+After clarifying that both interpretations succeed for different aims, the listener requested a blend based on **prose intentions**. The [brief and influence boundary](bach-gyruss-commentary.md#authorized-intention-blend-experiment) retain this distinction. The [editable experiment](../../../songs/studies/bach-toccata-intention-blend/README.md) starts from our accepted 12-second opening: all 21 melody, 20 bass and four inherited harmony events, their timings and their patches remain unchanged. Four short, original third-voice pulse gestures fill previously unused slots before harmonic support enters. The candidate designer received our accepted inputs and the prose brief, without Gyruss audio, SID, extracted notes or effect program.
+
+| Intention | Authored realization | Tradeoff being auditioned |
+| --- | --- | --- |
+| Electronic entrance with a clear Bach attack | A short pulse-pitch arch starts at 0.14 seconds, after the octave attack | Adds a bright upper response; it must remain subordinate to the melody. |
+| Connected dramatic breaths | Short pulse answers at 2.34 and 4.64 seconds | Uses some former silence for replies without moving the next source note. |
+| Momentum into the pedal/harmony arrival | D3–F3–A3–D4 connector at 7.26 seconds | Adds authored D-minor material; it ends before the next accepted pedal attack. |
+| Retain organ weight and moving sustains | Original bass/filter, lead PWM and diminished chord cycling are preserved | This first experiment changes gestures, not the whole accompaniment or form. |
+
+Listen to [accepted opening then intention blend](../../../build/bach-intention-blend-listening/accepted-then-blend.ab.wav), approximately **31.51 seconds**, at original levels with a half-second separator. Separate files: [accepted opening](../../../build/bach-intention-blend-listening/accepted-opening.wav) and [intention blend](../../../build/bach-intention-blend-listening/intention-blend.wav), approximately **15.50 seconds** each including release/verification tail. These are two versions of our same opening, not Gyruss recordings. Musical acceptance of the new variant is pending; the complete accepted Toccata remains unchanged.
+
+Reproduce the builds and A/B through the [cached recipe](../../../config/listening/bach-toccata-intention-blend.json), then publish with the [stable filename selection](../../../config/listening/bach-toccata-intention-blend-audition.json):
+
+```sh
+python3 scripts/listening-package.py config/listening/bach-toccata-intention-blend.json --output build/bach-intention-blend
+python3 scripts/publish-listening.py build/bach-intention-blend/run.json --selection config/listening/bach-toccata-intention-blend-audition.json --output build/bach-intention-blend-listening
+```
+
+Publication requires a fresh directory. The accepted reference re-render matches the frozen opening WAV SHA-256 `62ebf90fc8fa531f016bbcdad4236c01958a5e83d827e0a56efdab330e991b04`. The candidate's verified schedule consumes 49 notes and stops all voices at call 726; the 779-call audit observes the silent post-stop state. No clipping is present. [Standalone VICE checks](../../../evidence/bach-intention-blend/vice.json) cover the authored gestures and post-stop call 750. The [independent pitch/PWM check](../../../evidence/bach-intention-blend/gesture-verification.json) verifies 30 authored body frames and unchanged inherited melody/bass/filter execution. [Complete verification](../../../evidence/bach-intention-blend/verification.json), [A/B boundaries](../../../evidence/bach-intention-blend/comparison.json) and [recipe receipt](../../../evidence/bach-intention-blend/run.json) retain the evidence. These checks establish execution and signal health, not whether the added gestures achieve the intended musical blend.
+
+**Model-assistance review, 2026-10-14 / intention-blend audition:** skip unvalidated audio-model preference inference. A fresh design agent translated a prose brief into editable choices; CPU/render checks establish their execution. No audio model is qualified to decide whether these particular replies preserve grandeur while adding playfulness. Retain human listening as the musical gate and reassess after the candidate feedback, using any concrete discrepancy to define a bounded model probe.

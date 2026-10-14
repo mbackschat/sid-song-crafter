@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-14",
+  "evidenceLevel": "authored inputs; native health and listening are separate",
+  "creativeBasis": "No Gyruss SID, extracted notes, audio or effect program was supplied to the candidate designer; source-backed accepted Bach inputs and the prose brief were used.",
+  "creativeBrief": "Keep Bach’s recognizable gestures, harmonic weight and dramatic shape. Give the entrance a playful electronic flourish, let sustained sounds move, and make transitions carry momentum. The effects should answer and connect the music, while leaving its strongest notes clear.",
+  "acceptedBaseline": {
+    "score.json": {
+      "path": "../bach-toccata-opening-driven/score.json",
+      "sha256": "e839172df042f71932b0eddf2fb9d750c4e066aee2fc13a13d86ef72ea1fa009"
+    },
+    "hybrid.json": {
+      "path": "../bach-toccata-opening-driven/hybrid.json",
+      "sha256": "0845d3d9c935b2256208be4bc1517ea94625a66eecc8f9e4f9a74b26dd862d08"
+    },
+    "preparation.json": {
+      "path": "../bach-toccata-opening-driven/preparation.json",
+      "sha256": "5e381aa857cf2aa77eb741c37d7e48cf53ff9d395c3efbe4f1ac7e0457b1de9d"
+    }
+  },
+  "inheritedScope": {
+    "melodyEvents": 21,
+    "bassEvents": 20,
+    "harmonyEvents": 4,
+    "pacing": "All accepted source-note pitches, onsets and durations are unchanged; four originally silent third-voice slots gain authored notes",
+    "sourceMapping": "Read the accepted baseline preparation for inherited source mapping; this candidate does not reclassify authored additions as source notes"
+  },
+  "intentionsToDecisions": [
+    {
+      "intention": "Keep Bach recognizable, weighted and dramatic",
+      "decision": "Retain every accepted melody, bass and harmony score event, the 12-second timing, lead PWM, bass/filter program and diminished chord cycle"
+    },
+    {
+      "intention": "Give the entrance a playful electronic flourish",
+      "decision": "Enter voice 3 at 0.14 seconds, after the original octave A attack, with a short A5–E6–A6–E6–A5 pulse-table arch"
+    },
+    {
+      "intention": "Let sustained sounds move",
+      "decision": "Retain the accepted lead PWM and one-voice diminished cycling; add a finite pulse-width rise to the short authored gestures"
+    },
+    {
+      "intention": "Make transitions carry momentum and leave strongest notes clear",
+      "decision": "Put D5–A5–D5 and D4–A4–D4 answers into existing breaths; end the final D3–F3–A3–D4 rise at 7.54 seconds before the 7.6-second pedal attack"
+    }
+  ],
+  "voiceAllocation": [
+    {
+      "sidVoice": 1,
+      "scoreVoice": "melody",
+      "role": "Recognizable octave gestures and harmonic top notes",
+      "program": "Inherited moving-pulse lead",
+      "filter": "unrouted"
+    },
+    {
+      "sidVoice": 2,
+      "scoreVoice": "bass",
+      "role": "Octave foundation then D2 pedal",
+      "program": "Inherited pulse bass",
+      "filter": "sole shared-filter owner"
+    },
+    {
+      "sidVoice": 3,
+      "scoreVoice": "harmony",
+      "role": "Four original short pulse replies before 8.2 seconds, then inherited chord cycle and G–E–F-sharp resolution",
+      "filter": "unrouted",
+      "ringSyncDependencies": []
+    }
+  ],
+  "authoredAdditions": [
+    {
+      "startBeat": 0.14,
+      "durationBeats": 0.28,
+      "midi": 81,
+      "voice": "harmony",
+      "candidateEventIndex": 0,
+      "instrument": "entrance-spark",
+      "audiblePitchSequenceMidi": [
+        81,
+        88,
+        93,
+        88,
+        81
+      ],
+      "dwellPalCallsPerPitch": 2
+    },
+    {
+      "startBeat": 2.34,
+      "durationBeats": 0.2,
+      "midi": 74,
+      "voice": "harmony",
+      "candidateEventIndex": 1,
+      "instrument": "pulse-answer",
+      "audiblePitchSequenceMidi": [
+        74,
+        81,
+        74
+      ],
+      "dwellPalCallsPerPitch": 2
+    },
+    {
+      "startBeat": 4.64,
+      "durationBeats": 0.2,
+      "midi": 62,
+      "voice": "harmony",
+      "candidateEventIndex": 2,
+      "instrument": "pulse-answer",
+      "audiblePitchSequenceMidi": [
+        62,
+        69,
+        62
+      ],
+      "dwellPalCallsPerPitch": 2
+    },
+    {
+      "startBeat": 7.26,
+      "durationBeats": 0.28,
+      "midi": 50,
+      "voice": "harmony",
+      "candidateEventIndex": 3,
+      "instrument": "pedal-connector",
+      "audiblePitchSequenceMidi": [
+        50,
+        53,
+        57,
+        62
+      ],
+      "dwellPalCallsPerPitch": 2
+    }
+  ],
+  "patchChanges": {
+    "inherited": [
+      "lead",
+      "bass",
+      "harmony",
+      "diminished-cycle"
+    ],
+    "authored": [
+      "entrance-spark",
+      "pulse-answer",
+      "pedal-connector"
+    ],
+    "mechanism": "Finite relative-pitch rows select gated pure pulse at every step; no waveform-table jump. Each patch starts pulse width at $300, adds $18 on 12 macro executions, then holds. ADSR $0132 gives a low sustain and short release. Native frame 1 remains TEST $09.",
+    "pitchTableEnd": "The last table tone is held after the finite table; no looping arpeggio or vibrato",
+    "limits": "One oscillator per gesture; simultaneous note tails on voice 3 cannot be independent. No noise, ring, sync or shared-filter program is added."
+  },
+  "target": {
+    "sidCount": 1,
+    "sidModel": "MOS8580",
+    "clock": "PAL",
+    "sidAddresses": [
+      "$D400"
+    ],
+    "concertAHz": 440,
+    "timingPolicy": "retain-full-pitch"
+  },
+  "listeningQuestion": "Do the short pulse replies make the entrance and breaths feel playful and connected while the Bach contour, pedal weight and chord arrival stay clear?",
+  "modelAssistanceReview": {
+    "date": "2026-10-14",
+    "decision": "skip audio-model inference",
+    "reason": "Human preference about electronic replies is the unresolved question; no validated model criterion answers it",
+    "nextCheckpoint": "After this original candidate audition"
+  }
+}

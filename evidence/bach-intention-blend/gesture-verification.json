@@ -1,0 +1,313 @@
+{
+  "schemaVersion": 1,
+  "method": "Independent finite pitch/PWM checks against complete CPU frames; equal-tempered PAL pitch oracle tolerance one register unit",
+  "candidatePsidSha256": "265f460c2fed5ad568a5b9f8b1a795432eeaf6eb32fb6f4c88f6a6026a0b7f14",
+  "candidateFramesSha256": "9c9a12ecf30c7c99cfd8d1b074a339f36fb758d8aa1b3a6d8de914cdb22ab120",
+  "acceptedFramesSha256": "d2e542e758af5afa9f66d2fead4736fb4e07308b22116af11da13d3abf0a8b04",
+  "allAcceptedMelodyBassAndFilterFramesEqual": true,
+  "allInheritedHarmonyFramesEqualAfterTestOnset": true,
+  "acceptedRenderMatchesPublishedAcceptedOpening": true,
+  "gestureBodyChecks": [
+    {
+      "scoreEvent": {
+        "startBeat": 0.14,
+        "durationBeats": 0.28,
+        "midi": 81,
+        "voice": "harmony",
+        "candidateEventIndex": 0,
+        "instrument": "entrance-spark",
+        "audiblePitchSequenceMidi": [
+          81,
+          88,
+          93,
+          88,
+          81
+        ],
+        "dwellPalCallsPerPitch": 2
+      },
+      "onsetTick": 7,
+      "onsetControl": 9,
+      "gateOffTick": 20,
+      "bodyFrames": [
+        {
+          "tick": 8,
+          "expectedMidi": 81,
+          "frequencyWord": 14985,
+          "pulseWidth": 768
+        },
+        {
+          "tick": 9,
+          "expectedMidi": 81,
+          "frequencyWord": 14985,
+          "pulseWidth": 792
+        },
+        {
+          "tick": 10,
+          "expectedMidi": 88,
+          "frequencyWord": 22452,
+          "pulseWidth": 816
+        },
+        {
+          "tick": 11,
+          "expectedMidi": 88,
+          "frequencyWord": 22452,
+          "pulseWidth": 840
+        },
+        {
+          "tick": 12,
+          "expectedMidi": 93,
+          "frequencyWord": 29970,
+          "pulseWidth": 864
+        },
+        {
+          "tick": 13,
+          "expectedMidi": 93,
+          "frequencyWord": 29970,
+          "pulseWidth": 888
+        },
+        {
+          "tick": 14,
+          "expectedMidi": 88,
+          "frequencyWord": 22452,
+          "pulseWidth": 912
+        },
+        {
+          "tick": 15,
+          "expectedMidi": 88,
+          "frequencyWord": 22452,
+          "pulseWidth": 936
+        },
+        {
+          "tick": 16,
+          "expectedMidi": 81,
+          "frequencyWord": 14985,
+          "pulseWidth": 960
+        },
+        {
+          "tick": 17,
+          "expectedMidi": 81,
+          "frequencyWord": 14985,
+          "pulseWidth": 984
+        }
+      ]
+    },
+    {
+      "scoreEvent": {
+        "startBeat": 2.34,
+        "durationBeats": 0.2,
+        "midi": 74,
+        "voice": "harmony",
+        "candidateEventIndex": 1,
+        "instrument": "pulse-answer",
+        "audiblePitchSequenceMidi": [
+          74,
+          81,
+          74
+        ],
+        "dwellPalCallsPerPitch": 2
+      },
+      "onsetTick": 117,
+      "onsetControl": 9,
+      "gateOffTick": 126,
+      "bodyFrames": [
+        {
+          "tick": 118,
+          "expectedMidi": 74,
+          "frequencyWord": 10001,
+          "pulseWidth": 768
+        },
+        {
+          "tick": 119,
+          "expectedMidi": 74,
+          "frequencyWord": 10001,
+          "pulseWidth": 792
+        },
+        {
+          "tick": 120,
+          "expectedMidi": 81,
+          "frequencyWord": 14985,
+          "pulseWidth": 816
+        },
+        {
+          "tick": 121,
+          "expectedMidi": 81,
+          "frequencyWord": 14985,
+          "pulseWidth": 840
+        },
+        {
+          "tick": 122,
+          "expectedMidi": 74,
+          "frequencyWord": 10001,
+          "pulseWidth": 864
+        },
+        {
+          "tick": 123,
+          "expectedMidi": 74,
+          "frequencyWord": 10001,
+          "pulseWidth": 888
+        }
+      ]
+    },
+    {
+      "scoreEvent": {
+        "startBeat": 4.64,
+        "durationBeats": 0.2,
+        "midi": 62,
+        "voice": "harmony",
+        "candidateEventIndex": 2,
+        "instrument": "pulse-answer",
+        "audiblePitchSequenceMidi": [
+          62,
+          69,
+          62
+        ],
+        "dwellPalCallsPerPitch": 2
+      },
+      "onsetTick": 233,
+      "onsetControl": 9,
+      "gateOffTick": 242,
+      "bodyFrames": [
+        {
+          "tick": 234,
+          "expectedMidi": 62,
+          "frequencyWord": 5000,
+          "pulseWidth": 768
+        },
+        {
+          "tick": 235,
+          "expectedMidi": 62,
+          "frequencyWord": 5000,
+          "pulseWidth": 792
+        },
+        {
+          "tick": 236,
+          "expectedMidi": 69,
+          "frequencyWord": 7492,
+          "pulseWidth": 816
+        },
+        {
+          "tick": 237,
+          "expectedMidi": 69,
+          "frequencyWord": 7492,
+          "pulseWidth": 840
+        },
+        {
+          "tick": 238,
+          "expectedMidi": 62,
+          "frequencyWord": 5000,
+          "pulseWidth": 864
+        },
+        {
+          "tick": 239,
+          "expectedMidi": 62,
+          "frequencyWord": 5000,
+          "pulseWidth": 888
+        }
+      ]
+    },
+    {
+      "scoreEvent": {
+        "startBeat": 7.26,
+        "durationBeats": 0.28,
+        "midi": 50,
+        "voice": "harmony",
+        "candidateEventIndex": 3,
+        "instrument": "pedal-connector",
+        "audiblePitchSequenceMidi": [
+          50,
+          53,
+          57,
+          62
+        ],
+        "dwellPalCallsPerPitch": 2
+      },
+      "onsetTick": 364,
+      "onsetControl": 9,
+      "gateOffTick": 377,
+      "bodyFrames": [
+        {
+          "tick": 365,
+          "expectedMidi": 50,
+          "frequencyWord": 2500,
+          "pulseWidth": 768
+        },
+        {
+          "tick": 366,
+          "expectedMidi": 50,
+          "frequencyWord": 2500,
+          "pulseWidth": 792
+        },
+        {
+          "tick": 367,
+          "expectedMidi": 53,
+          "frequencyWord": 2973,
+          "pulseWidth": 816
+        },
+        {
+          "tick": 368,
+          "expectedMidi": 53,
+          "frequencyWord": 2973,
+          "pulseWidth": 840
+        },
+        {
+          "tick": 369,
+          "expectedMidi": 57,
+          "frequencyWord": 3746,
+          "pulseWidth": 864
+        },
+        {
+          "tick": 370,
+          "expectedMidi": 57,
+          "frequencyWord": 3746,
+          "pulseWidth": 888
+        },
+        {
+          "tick": 371,
+          "expectedMidi": 62,
+          "frequencyWord": 5000,
+          "pulseWidth": 912
+        },
+        {
+          "tick": 372,
+          "expectedMidi": 62,
+          "frequencyWord": 5000,
+          "pulseWidth": 936
+        }
+      ]
+    }
+  ],
+  "candidateHealth": {
+    "playCalls": 779,
+    "maxPlayCycles": 2167,
+    "frameCycleBudget": 19656,
+    "pcm": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-intention-blend/cache/candidate/33507d6c015df9148f62ccb23653422d850d832da2897a329d72f5fd513e8df5/attempt-17aa59d58ee64ee69e7bff229e220820/song/native-song.wav",
+      "sha256": "a5ba244d71d4833071dfb2dc9fe7003448bafe2f8e970766a2aec105c742c7c3",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 683720,
+      "durationSeconds": 15.503854875283446,
+      "peak": 11540,
+      "peakDbfs": -9.064882522800106,
+      "clippedSamples": 0,
+      "rms": 2904.4594125659537,
+      "acRms": 2876.0580745205925,
+      "acRmsDbfs": -21.133045674232047,
+      "perChannel": [
+        {
+          "dc": -405.1844409992394,
+          "rms": 2904.4594125659537,
+          "acRms": 2876.0580745205925
+        }
+      ]
+    },
+    "endingAcRms": 0.0,
+    "allStopTicks": [
+      726,
+      726,
+      726
+    ]
+  },
+  "limitations": "CPU frame evidence does not establish acoustic audibility of each step or musical preference; native TEST onset low byte is intentionally excluded"
+}

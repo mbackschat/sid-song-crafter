@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "accepted",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "songs/studies/bach-toccata-opening-driven/hybrid.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "12"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "songs/studies/bach-toccata-opening-driven/score.json",
+        "songs/studies/bach-toccata-opening-driven/hybrid.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/hybrid.sid",
+        "song/export/hybrid.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "songs/studies/bach-toccata-intention-blend/hybrid.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "12"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "songs/studies/bach-toccata-intention-blend/score.json",
+        "songs/studies/bach-toccata-intention-blend/hybrid.json",
+        "songs/studies/bach-toccata-intention-blend/preparation.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/hybrid.sid",
+        "song/export/hybrid.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "sequence",
+        "{stage:accepted}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "{out}/accepted-then-candidate",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:accepted}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "accepted-then-candidate.ab.wav",
+        "accepted-then-candidate.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "candidate-vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:candidate}/song/export/hybrid.prg",
+        "{stage:candidate}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:candidate}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "9",
+        "12",
+        "16",
+        "30",
+        "119",
+        "131",
+        "235",
+        "247",
+        "365",
+        "378",
+        "415",
+        "750",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:candidate}/song/export/hybrid.prg",
+        "{stage:candidate}/song/native-song.writes.json",
+        "{stage:candidate}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 90,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "acceptedOpening": "{stage:accepted}/song/native-song.wav",
+    "originalCandidate": "{stage:candidate}/song/native-song.wav",
+    "acceptedThenCandidate": "{stage:comparison}/accepted-then-candidate.ab.wav",
+    "acceptedVerification": "{stage:accepted}/song/verification.json",
+    "candidateVerification": "{stage:candidate}/song/verification.json",
+    "candidatePrg": "{stage:candidate}/song/export/hybrid.prg",
+    "candidatePsid": "{stage:candidate}/song/export/hybrid.sid",
+    "candidateVice": "{stage:candidate-vice}/vice/verification.json"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "method": "complete inputs in sequence; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-intention-blend/cache/comparison/d54afa64252f04fdc2ff6cd2e9f01416efde11de91fa74ed7efa4531ecaa4a62/attempt-dbd21dcc65264dbfbca7176f4c7225bb/accepted-then-candidate.ab.wav",
+    "frames": 1389490,
+    "durationSeconds": 31.507709750566892,
+    "sha256": "95699b92ade282032909359923e4e1efa16ead64848d8c55d16a045f66723b87"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 683720
+    },
+    {
+      "label": "silence",
+      "startFrame": 683720,
+      "endFrame": 705770
+    },
+    {
+      "label": "B",
+      "startFrame": 705770,
+      "endFrame": 1389490
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-intention-blend/cache/accepted/b620271d2385bf58b24c1bb23b834f3b677eae6d81143083b59f8021037bdc8f/attempt-6fcb7491e1f640e4a8f9fdf182796310/song/native-song.wav",
+      "sha256": "62ebf90fc8fa531f016bbcdad4236c01958a5e83d827e0a56efdab330e991b04",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 683720,
+        "durationSeconds": 15.503854875283446,
+        "peak": 11557,
+        "peakDbfs": -9.05209643365335,
+        "clippedSamples": 0,
+        "rms": 2914.039310188461,
+        "acRms": 2881.82207825156,
+        "acRmsDbfs": -21.11565541404037,
+        "perChannel": [
+          {
+            "dc": -432.1187459778857,
+            "rms": 2914.039310188461,
+            "acRms": 2881.82207825156
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/bach-intention-blend/cache/candidate/49d2605e7d51eb1dde64ecbcb2d47cf7e77bb99fc658ab9e07a74ea4b421b9d6/attempt-8bbba838ed5643e49aa03d5574c5bfde/song/native-song.wav",
+      "sha256": "a5ba244d71d4833071dfb2dc9fe7003448bafe2f8e970766a2aec105c742c7c3",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 683720,
+        "durationSeconds": 15.503854875283446,
+        "peak": 11540,
+        "peakDbfs": -9.064882522800106,
+        "clippedSamples": 0,
+        "rms": 2904.4594125659537,
+        "acRms": 2876.0580745205925,
+        "acRmsDbfs": -21.133045674232047,
+        "perChannel": [
+          {
+            "dc": -405.1844409992394,
+            "rms": 2904.4594125659537,
+            "acRms": 2876.0580745205925
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}
