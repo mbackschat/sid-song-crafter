@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "sound-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "-v",
+        "billie_jean_sound_test.BillieJeanSoundTest.test_restart_keeps_old_pitch_and_pulse_direction_and_skips_writer",
+        "billie_jean_sound_test.BillieJeanSoundTest.test_legato_retains_motion_and_uses_wrapped_lookup_index",
+        "billie_jean_sound_test.BillieJeanSoundTest.test_pwm_masks_high_bits_and_keeps_overshoot_on_direction_change",
+        "billie_jean_sound_test.BillieJeanSoundTest.test_table_loop_retains_paired_waveform_and_pitch_order",
+        "billie_jean_sound_test.BillieJeanSoundTest.test_downward_glide_bypasses_filter_and_late_gate_and_clamps_at_equality",
+        "billie_jean_sound_test.BillieJeanSoundTest.test_high_note_bit_bypasses_zero_vibrato_delay_without_changing_pitch_alias",
+        "billie_jean_sound_test.BillieJeanSoundTest.test_age_saturates_at_signed_boundary_and_global_volume_is_last",
+        "billie_jean_sound_test.BillieJeanSoundTest.test_invalid_numeric_state_and_missing_frequency_fail",
+        "billie_jean_sound_test.BillieJeanSoundTest.test_small_baseline_ignores_unused_control_window_and_keeps_call_bounds"
+      ],
+      "inputs": [
+        "tests/billie_jean_sound_test.py",
+        "scripts/studies/billie-jean/sound-probe.py",
+        "scripts/studies/billie-jean/billie_jean_programs.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "sound-proof",
+      "command": [
+        "{python}",
+        "scripts/studies/billie-jean/sound-probe.py",
+        "--calls",
+        "7107",
+        "--controls",
+        "--control-calls",
+        "1500",
+        "--output",
+        "{out}/proof"
+      ],
+      "inputs": [
+        ".local/research/billie-jean/Billie_Jean.sid",
+        "scripts/studies/billie-jean/sound-probe.py",
+        "scripts/studies/billie-jean/billie_jean_programs.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "proof/description.json",
+        "proof/contexts.json",
+        "proof/reads.json",
+        "proof/writes.json",
+        "proof/initialSound.json",
+        "proof/receipt.json",
+        "proof/pulse-step.description.json",
+        "proof/pulse-step.contexts.json",
+        "proof/pulse-step.reads.json",
+        "proof/pulse-step.writes.json",
+        "proof/vibrato-step.description.json",
+        "proof/vibrato-step.contexts.json",
+        "proof/vibrato-step.reads.json",
+        "proof/vibrato-step.writes.json",
+        "proof/attack-pitch.description.json",
+        "proof/attack-pitch.contexts.json",
+        "proof/attack-pitch.reads.json",
+        "proof/attack-pitch.writes.json",
+        "proof/cutoff-start-and-step.description.json",
+        "proof/cutoff-start-and-step.contexts.json",
+        "proof/cutoff-start-and-step.reads.json",
+        "proof/cutoff-start-and-step.writes.json"
+      ],
+      "timeoutSeconds": 420,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "soundDescription": "{stage:sound-proof}/proof/description.json",
+    "soundProof": "{stage:sound-proof}/proof/receipt.json",
+    "initialSound": "{stage:sound-proof}/proof/initialSound.json"
+  }
+}
