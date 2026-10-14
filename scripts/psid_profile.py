@@ -1,8 +1,9 @@
-"""Validate explicit callable PAL VBI PSID execution profiles without changing headers."""
+"""Validate explicit callable VBI PSID execution profiles without changing headers."""
 
 from enum import Enum
 
 from sid_audit_host import DEFAULT_HOST_BASE, HOST_SIZE
+from sid_clock import clock_spec
 from verify_player import require
 
 
@@ -14,20 +15,24 @@ class ExecutionProfile(str, Enum):
 SID_MODELS = ('MOS6581', 'MOS8580')
 
 
-def psid_profile(data, *, subtune=None, profile='strict', host_base=None, assume_sid_model=None):
+def psid_profile(data, *, subtune=None, profile='strict', host_base=None, assume_sid_model=None, clock='pal'):
     """Return payload, chip layout, selection and entry-bank parameters.
 
     Strict retains the single-subtune RAM contract. PAL banked requires an
     explicit one-based selection and permits RAM through $CFFF, excluding its
     selected 512-byte caller workspace. An explicit caller base must be in
     always-visible lower RAM; the default remains $C000.
-    Both profiles require callable entries and unchanged PAL VBI declarations.
+    Both profiles require callable entries and unchanged VBI declarations.
+    Strict permits an explicit PAL or NTSC target matching the header; PAL
+    banked retains its PAL-only contract.
     PAL banked can explicitly assume a model for an unknown-model single-SID
     v2 header. The returned provenance keeps that assumption separate from
     the declaration; declared models cannot be overridden.
     """
     require(profile in tuple(ExecutionProfile), 'Unknown PSID execution profile')
     profile = ExecutionProfile(profile)
+    target = clock_spec(clock)
+    require(profile is ExecutionProfile.STRICT or target.name == 'pal', 'PAL banked supports only the PAL clock')
     require(len(data) >= 0x7c and data[:4] == b'PSID', 'Audit requires a complete PSID header')
     word = lambda offset: int.from_bytes(data[offset:offset + 2], 'big')
     require(word(6) == 0x7c, 'Audit requires a $7c-byte PSID header')
@@ -52,16 +57,18 @@ def psid_profile(data, *, subtune=None, profile='strict', host_base=None, assume
         require(assume_sid_model in SID_MODELS, 'Assumed SID model must be MOS6581 or MOS8580')
         require(profile is ExecutionProfile.PAL_BANKED and word(4) == 2 and word(118) == 0x04,
                 'SID model assumption requires pal-banked PSID v2 with PAL timing and an unknown model only')
+    single_flags = (0x14, 0x24) if target.name == 'pal' else (0x18, 0x28)
+    dual_flags = (0x54, 0xa4) if target.name == 'pal' else (0x58, 0xa8)
     if word(4) == 2:
-        require(word(118) in (0x14, 0x24) or assume_sid_model is not None,
-                'Audit requires explicit PAL and one declared SID model without MUS/PlaySID flags')
+        require(word(118) in single_flags or assume_sid_model is not None,
+                f'Audit requires explicit {target.name.upper()} and one declared SID model without MUS/PlaySID flags')
         require(data[122:124] == bytes(2), 'PSID v2 requires zero additional-SID fields')
-        model = assume_sid_model if assume_sid_model is not None else ('MOS8580' if word(118) == 0x24 else 'MOS6581')
+        model = assume_sid_model if assume_sid_model is not None else ('MOS8580' if word(118) == single_flags[1] else 'MOS6581')
         sids = [{'baseAddress': 0xd400, 'model': model}]
     else:
-        require(word(4) == 3 and word(118) in (0x54, 0xa4) and data[122:124] == b'\x42\x00',
-                'Dual-SID audit requires PSID v3 PAL with two same-model MOS6581s or MOS8580s at $d400/$d420')
-        sids = [{'baseAddress': base, 'model': 'MOS6581' if word(118) == 0x54 else 'MOS8580'} for base in (0xd400, 0xd420)]
+        require(word(4) == 3 and word(118) in dual_flags and data[122:124] == b'\x42\x00',
+                f'Dual-SID audit requires PSID v3 {target.name.upper()} with two same-model MOS6581s or MOS8580s at $d400/$d420')
+        sids = [{'baseAddress': base, 'model': 'MOS6581' if word(118) == dual_flags[0] else 'MOS8580'} for base in (0xd400, 0xd420)]
     load = word(8)
     payload = bytes(data[0x7c:])
     if load == 0:

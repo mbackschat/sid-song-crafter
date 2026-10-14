@@ -1,4 +1,4 @@
-"""Audit RAM-only, single-speed PAL PSID drivers without a score manifest."""
+"""Audit RAM-only, single-speed VBI PSID drivers without a score manifest."""
 
 import argparse
 from collections import defaultdict
@@ -8,7 +8,8 @@ from pathlib import Path
 
 from psid_profile import ExecutionProfile, SID_MODELS, psid_profile
 from sid_audit_host import DEFAULT_HOST_BASE, HOST_SIZE, harness
-from verify_player import CYCLES_PER_FRAME, PAL_CLOCK, cpu_type, require
+from sid_clock import clock_spec
+from verify_player import cpu_type, require
 
 
 class AuditMemory:
@@ -59,7 +60,7 @@ class BankedAuditMemory(AuditMemory):
         super().__setitem__(address, value)
 
 
-def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict', host_base=None, assume_sid_model=None):
+def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict', host_base=None, assume_sid_model=None, clock='pal'):
     """Run init and bounded VBI calls; report execution evidence, not musical correctness.
 
     An optional read-only observer receives the CPU and memory immediately before
@@ -68,9 +69,12 @@ def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict', ho
     PAL banked requires an explicit subtune and mirrors the controlled raster
     host's bank/register/flag and callable-return stack state; host_base selects
     its protected workspace. It is not libsidplayfp IRQ execution.
+    Strict supports explicit PAL or NTSC headers with the target frame budget;
+    omitting clock retains the legacy PAL-only interpretation.
     """
     require(type(ticks) is int and 1 <= ticks <= 100000, "Play-call count must be an integer from 1 to 100000")
-    parsed = psid_profile(data, subtune=subtune, profile=profile, host_base=host_base, assume_sid_model=assume_sid_model)
+    parsed = psid_profile(data, subtune=subtune, profile=profile, host_base=host_base, assume_sid_model=assume_sid_model, clock=clock)
+    target = clock_spec(clock)
     banked = parsed['profile'] == ExecutionProfile.PAL_BANKED.value
     load, init, play = (parsed[key] for key in ('loadAddress', 'initAddress', 'playAddress'))
     sids = parsed['sids']
@@ -116,7 +120,7 @@ def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict', ho
             memory.data[1] = parsed['entryBank']
             cpu.a = 0xfa
             cpu.p = (cpu.p | cpu.CARRY | cpu.ZERO) & ~cpu.NEGATIVE
-        cycles = call(play, CYCLES_PER_FRAME, play_return)
+        cycles = call(play, target.frame_cycles, play_return)
         maximum = max(maximum, cycles)
         total += cycles
     values = defaultdict(list)
@@ -128,9 +132,9 @@ def audit_psid(data, ticks, *, observer=None, subtune=None, profile='strict', ho
         "cpu": "py65 NMOS 6502", "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
         "sidModel": sids[0]["model"], "sidCount": len(sids), "sids": sids,
         "loadAddress": load, "initAddress": init, "playAddress": play,
-        "clockHz": PAL_CLOCK, "playCalls": ticks, "callRateHz": PAL_CLOCK / CYCLES_PER_FRAME,
+        "clockHz": target.clock_hz, "playCalls": ticks, "callRateHz": target.ticks_per_second,
         "initCycles": init_cycles, "maximumPlayCycles": maximum, "meanPlayCycles": total / ticks,
-        "frameCycleBudget": CYCLES_PER_FRAME,
+        "frameCycleBudget": target.frame_cycles,
         "initWriteCount": sum(row["phase"] == "init" for row in memory.writes),
         "playWriteCount": sum(row["phase"] == "play" for row in memory.writes),
         "registers": {f"{address:04x}": {"writes": len(items), "distinctValues": len(set(items)), "minimum": min(items), "maximum": max(items)} for address, items in sorted(values.items())},
@@ -152,6 +156,7 @@ def main():
     parser.add_argument("sid", type=Path)
     parser.add_argument("--ticks", type=int, required=True)
     parser.add_argument('--profile', choices=[profile.value for profile in ExecutionProfile], default='strict')
+    parser.add_argument('--clock', choices=('pal', 'ntsc'), default='pal', help='Explicit header clock target; NTSC requires strict')
     parser.add_argument('--subtune', type=int, help='Explicit one-based selection; required for pal-banked')
     parser.add_argument('--host-base', type=lambda value: int(value, 0), help='Explicit page-aligned lower-RAM caller placement; pal-banked only')
     parser.add_argument('--assume-sid-model', choices=SID_MODELS, help='Explicit experiment model for an unknown-model PAL PSID v2; pal-banked only')
@@ -160,7 +165,7 @@ def main():
     writes_path = args.output.with_suffix(".writes.json")
     require(args.output.resolve() != args.sid.resolve() and writes_path.resolve() != args.sid.resolve(), "Output must not overwrite the input")
     require(not any(path.exists() or path.is_symlink() for path in (args.output, writes_path)), "Audit outputs already exist; choose a new output path")
-    report, writes = audit_psid(args.sid.read_bytes(), args.ticks, profile=args.profile, subtune=args.subtune, host_base=args.host_base, assume_sid_model=args.assume_sid_model)
+    report, writes = audit_psid(args.sid.read_bytes(), args.ticks, profile=args.profile, subtune=args.subtune, host_base=args.host_base, assume_sid_model=args.assume_sid_model, clock=args.clock)
     evidence = ((args.output, json.dumps(report, indent=2) + "\n"), (writes_path, json.dumps(writes, separators=(",", ":")) + "\n"))
     args.output.parent.mkdir(parents=True, exist_ok=True)
     created = []
@@ -173,7 +178,7 @@ def main():
         for path in created:
             path.unlink(missing_ok=True)
         raise
-    print(f"Audited {report['playCalls']} calls, {report['playWriteCount']} SID writes; peak {report['maximumPlayCycles']}/{CYCLES_PER_FRAME} cycles")
+    print(f"Audited {report['playCalls']} calls, {report['playWriteCount']} SID writes; peak {report['maximumPlayCycles']}/{report['frameCycleBudget']} cycles")
 
 
 if __name__ == "__main__":

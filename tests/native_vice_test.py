@@ -7,6 +7,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
 spec = importlib.util.spec_from_file_location('native_vice', ROOT / 'scripts/verify-native-vice.py')
 native_vice = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(native_vice)
@@ -20,6 +21,29 @@ def log_for(states, cycles):
 
 
 class NativeViceTest(unittest.TestCase):
+    def test_ntsc_checkpoints_require_ntsc_cadence(self):
+        states = [bytes(25), bytes(25)]
+        log = log_for(states, [100, 100 + 10 * 17095 + 2])
+        result = native_vice.verify_log(log, [], [0, 10], clock="ntsc")
+        self.assertEqual(result["frameCycles"], 17095)
+        self.assertEqual(result["checkpoints"][1]["cycleError"], 2)
+        with self.assertRaises(ValueError):
+            native_vice.verify_log(log, [], [0, 10])
+        with self.assertRaises(ValueError):
+            native_vice.verify_log(log_for(states, [100, 100 + 10 * 19656]), [], [0, 10], clock="ntsc")
+
+    def test_export_timing_fields_cannot_contradict_declared_clock(self):
+        for field, value in (("clockHz", 985248), ("ticksPerSecond", 50), ("frameCycles", 19656), ("frameCycles", 17095.0)):
+            with self.subTest(field=field, value=value), self.assertRaises(ValueError):
+                native_vice.export_clock({"clock": "NTSC", field: value})
+
+    def test_export_rejects_unknown_or_ambiguous_clock(self):
+        prg = b"\x01\x08native"
+        report = {"prgSha256": hashlib.sha256(prg).hexdigest(), "player": "Extra", "frameSpeed": 1, "standalonePlayerPlayAddress": 0x1003, "sidModel": "MOS8580", "sids": [{"baseAddress": 0xd400, "model": "MOS8580"}]}
+        for clock in ("UNKNOWN", "PAL/NTSC", None):
+            with self.subTest(clock=clock), self.assertRaises(ValueError):
+                native_vice.export_profile(prg, dict(report, clock=clock))
+
     def test_6581_export_profile_selects_the_declared_model_for_vice(self):
         prg = b'\x01\x08native'
         report = {'prgSha256': hashlib.sha256(prg).hexdigest(), 'player': 'Extra', 'frameSpeed': 1, 'standalonePlayerPlayAddress': 0x1003, 'sidModel': 'MOS6581', 'sids': [{'baseAddress': 0xd400, 'model': 'MOS6581'}]}

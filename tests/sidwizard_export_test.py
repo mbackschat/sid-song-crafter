@@ -70,6 +70,97 @@ def six_voice_native_module():
 
 
 class SIDWizardExportTest(unittest.TestCase):
+    def test_explicit_pal_and_default_exports_preserve_the_frozen_pinned_binaries(self):
+        fixtures = (
+            (original_module(), "e67ec343370c86bda1108474b5943029c6239ca0c27367ddc587541aeea73807", "97eba2ba9a7dea7dd42abfbb1a5254327fd3812a8d4bff39b3e5c3873b29b236"),
+            (six_voice_native_module(), "0ebd35a38f068777762241015c2d4c552f0422a61d9492a84da29c7406210a62", "ce0c570753621233136128ef1dcf5b9186723745da01e1aaf62b2ad72ca03c77"),
+        )
+        for count, (data, sid_hash, prg_hash) in enumerate(fixtures, start=1):
+            with self.subTest(sid_count=count), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                source = root / "fixture.swm"
+                source.write_bytes(data)
+                default = EXPORTER.export_module(source, root / "default")
+                explicit = EXPORTER.export_module(source, root / "explicit", clock="pal")
+                self.assertEqual(default["clock"], "PAL")
+                self.assertEqual(default["sidSha256"], sid_hash)
+                self.assertEqual(default["prgSha256"], prg_hash)
+                for kind in ("sid", "prg"):
+                    self.assertEqual(Path(default[kind]).read_bytes(), Path(explicit[kind]).read_bytes())
+
+    def test_ntsc_exports_declare_the_region_and_patch_the_complete_equal_temperament_table(self):
+        for count, data in ((1, original_module()), (2, six_voice_native_module())):
+            label_dir = "sid-wizard-exporter" if count == 1 else "sid-wizard-exporter-2sid"
+            labels = {name: int(value, 16) for value, name in re.findall(r"^al ([\da-fA-F]+) \.(.+)$", (ROOT / ".tools" / label_dir / "exporter.labels").read_text(), re.MULTILINE)}
+            for model, flags in (("MOS6581", 0x18 if count == 1 else 0x58), ("MOS8580", 0x28 if count == 1 else 0xa8)):
+                with self.subTest(sid_count=count, model=model), tempfile.TemporaryDirectory() as directory:
+                    root = Path(directory)
+                    source = root / "fixture.swm"
+                    source.write_bytes(data)
+                    report = EXPORTER.export_module(source, root / "out", clock="ntsc", sid_model=model)
+                    sid, prg = Path(report["sid"]).read_bytes(), Path(report["prg"]).read_bytes()
+                    self.assertEqual(int.from_bytes(sid[118:120], "big"), flags)
+                    self.assertEqual((report["clock"], report["frameCycles"], report["clockHz"]), ("NTSC", 17095, 14318181.82 / 14))
+                    hi, lo = (labels[f"extraPlayer:player:{name}"] for name in ("FREQTBH", "FREQTBL"))
+                    for native_note in range(96):
+                        midi = native_note + 11
+                        expected = round(440 * 2 ** ((midi - 69) / 12) * 2**24 / (14318181.82 / 14))
+                        sid_word = sid[126 + lo - 0x1000 + native_note] | sid[126 + hi - 0x1000 + native_note] << 8
+                        prg_word = prg[2 + lo - labels["EXEstarter"] + native_note] | prg[2 + hi - labels["EXEstarter"] + native_note] << 8
+                        self.assertEqual(sid_word, expected, f"SID native note {native_note}")
+                        self.assertEqual(prg_word, expected, f"PRG native note {native_note}")
+                    self.assertEqual(source.read_bytes(), data)
+                    self.assertEqual(report["effectTimingPolicy"], "target-vbi")
+                    self.assertEqual(report["envelopeTimingPolicy"], "retain-sid-adsr-codes")
+
+    def test_export_rejects_unknown_clock_before_reading_or_creating_output(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for clock in ("PAL", "auto", "old-ntsc", None, True):
+                with self.subTest(clock=clock), self.assertRaisesRegex(ValueError, "clock"):
+                    EXPORTER.export_module(root / "absent.swm", root / "out", clock=clock)
+                self.assertFalse((root / "out").exists())
+
+    def test_ntsc_execution_uses_retuned_base_and_absolute_waveform_notes(self):
+        for absolute in (False, True):
+            with self.subTest(absolute_waveform_pitch=absolute), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                data = bytearray(stopped_native_module())
+                wave_start = len(data) - 32 + 16
+                data[wave_start] = 0x11
+                if absolute:
+                    data[wave_start + 1] = 0x80 | 58
+                else:
+                    data[78] = 0x80 | 58
+                source = root / "a4.swm"
+                source.write_bytes(data)
+                exported = EXPORTER.export_module(source, root / "out", clock="ntsc")
+                report, writes = audit_psid(Path(exported["sid"]).read_bytes(), 12, clock="ntsc")
+                values = {(row["tick"], row["address"]): row["value"] for row in writes if row["phase"] == "play"}
+                self.assertEqual(values[1, 0xd400] | values[1, 0xd401] << 8, 7218)
+                self.assertEqual(values[1, 0xd404], 0x11)
+                self.assertEqual(report["frameCycleBudget"], 17095)
+                for tick in range(4, 12):
+                    self.assertEqual(values[tick, 0xd418] & 15, 0)
+                    self.assertTrue(all(values[tick, address] & 1 == 0 for address in (0xd404, 0xd40b, 0xd412)))
+
+    def test_ntsc_dual_execution_retains_distinct_tuned_notes_filters_and_stop(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "six.sws"
+            source.write_bytes(six_voice_native_module())
+            exported = EXPORTER.export_module(source, root / "out", clock="ntsc")
+            _, writes = audit_psid(Path(exported["sid"]).read_bytes(), 12, clock="ntsc")
+            values = {(row["tick"], row["address"]): row["value"] for row in writes if row["phase"] == "play"}
+            for voice, midi in enumerate((60, 64, 67, 72, 76, 79)):
+                base = 0xd400 + voice // 3 * 0x20 + voice % 3 * 7
+                word = values[1, base] | values[1, base + 1] << 8
+                self.assertEqual(word, round(440 * 2 ** ((midi - 69) / 12) * 2**24 / (14318181.82 / 14)))
+                self.assertEqual(values[1, base + 4], 0x11)
+                self.assertTrue(all(values[tick, base + 4] & 1 == 0 for tick in range(7, 12)))
+            self.assertEqual((values[2, 0xd416], values[2, 0xd436]), (0x24, 0x78))
+            self.assertTrue(all(values[tick, address] & 15 == 0 for tick in range(7, 12) for address in (0xd418, 0xd438)))
+
     def test_native_model_selection_sets_psid_flags_and_preserves_standalone_player_bytes(self):
         for count, data, flags in ((1, original_module(), 0x14), (2, six_voice_native_module(), 0x54)):
             with self.subTest(count=count), tempfile.TemporaryDirectory() as directory:

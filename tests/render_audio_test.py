@@ -55,21 +55,26 @@ def write_ntsc_clock_sid(path):
     path.write_bytes(header + init + play)
 
 
-def write_two_sid_fixture(path, default_song=1, left=True, right=True):
+def write_two_sid_fixture(path, default_song=1, left=True, right=True, clock="pal", model="8580", counter=False):
     # Hand-coded independent oscillators distinguish stereo routing from duplicated mono.
     init = bytearray((0xc9, default_song - 1, 0xf0, 1, 0x60))
     for base, hz, enabled in ((0xd400, 440, left), (0xd420, 660, right)):
-        word = round(hz * 2**24 / (17734475 / 18))
+        cpu_clock = 17734475 / 18 if clock == "pal" else 14318181.82 / 14
+        word = round(hz * 2**24 / cpu_clock)
         for offset, value in ((24, 15 if enabled else 0), (0, word & 255), (1, word >> 8), (5, 0), (6, 0xf0), (4, 0x11)):
             address = base + offset
             init.extend((0xa9, value, 0x8d, address & 255, address >> 8))
+    if counter:
+        init.extend(bytes.fromhex("A9 00 8D 00 11 8D 02 D4 8D 22 D4"))
     init.append(0x60)
+    play = bytes.fromhex("EE 00 11 AD 00 11 8D 02 D4 8D 22 D4 60") if counter else b"\x60"
     header = bytearray(0x7c)
     header[:4] = b"PSID"
     struct.pack_into(">7HI", header, 4, 3, 0x7c, 0x1000, 0x1000, 0x1000 + len(init), 2, default_song, 0)
-    struct.pack_into(">H", header, 0x76, 0xa4)
+    flags = (0xa0 if model == "8580" else 0x50) | (4 if clock == "pal" else 8)
+    struct.pack_into(">H", header, 0x76, flags)
     header[0x7a] = 0x42
-    path.write_bytes(header + init + b"\x60")
+    path.write_bytes(header + init + play)
 
 
 def read_stereo_samples(path):
@@ -176,19 +181,58 @@ class HeadlessRenderTest(unittest.TestCase):
                             self.assertFalse(output.exists())
                             self.assertFalse(trace.exists())
 
-    def test_two_sid_rejects_ntsc_clock_override_without_truncating_output(self):
-        with tempfile.TemporaryDirectory() as directory:
-            sid, output = Path(directory) / "dual.sid", Path(directory) / "preserved.wav"
-            write_two_sid_fixture(sid)
-            trace = Path(str(output) + ".registers.tsv")
-            output.write_bytes(b"Existing audio")
-            trace.write_bytes(b"Existing trace")
-            result = subprocess.run([str(RENDERER), str(sid), str(output), "0.1", "--clock", "ntsc"],
-                                    capture_output=True, text=True, timeout=20)
-            self.assertNotEqual(result.returncode, 0)
-            self.assertIn("Two-SID rendering requires PAL", result.stderr)
-            self.assertEqual(output.read_bytes(), b"Existing audio")
-            self.assertEqual(trace.read_bytes(), b"Existing trace")
+    def test_two_sid_rejects_mismatched_clocks_without_creating_or_truncating_output(self):
+        for declared, selected in (("pal", "ntsc"), ("ntsc", "pal"), ("ntsc", None)):
+            for existing in (False, True):
+                with self.subTest(declared=declared, selected=selected, existing=existing), tempfile.TemporaryDirectory() as directory:
+                    sid, output = Path(directory) / "dual.sid", Path(directory) / "preserved.wav"
+                    write_two_sid_fixture(sid, clock=declared)
+                    trace = Path(str(output) + ".registers.tsv")
+                    if existing:
+                        output.write_bytes(b"Existing audio")
+                        trace.write_bytes(b"Existing trace")
+                    options = [] if selected is None else ["--clock", selected]
+                    result = subprocess.run([str(RENDERER), str(sid), str(output), "0.1", *options],
+                                            capture_output=True, text=True, timeout=20)
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertIn("clock must match", result.stderr)
+                    if existing:
+                        self.assertEqual(output.read_bytes(), b"Existing audio")
+                        self.assertEqual(trace.read_bytes(), b"Existing trace")
+                    else:
+                        self.assertFalse(output.exists())
+                        self.assertFalse(trace.exists())
+
+    def test_two_sid_ntsc_has_correct_pcm_pitches_duration_and_vbi_cadence_for_both_models(self):
+        cpu_clock, cycles = 14318181.82 / 14, 263 * 65
+        rendered = []
+        for model in ("8580", "6581"):
+            with self.subTest(model=model), tempfile.TemporaryDirectory() as directory:
+                sid, output = Path(directory) / "ntsc-dual.sid", Path(directory) / "ntsc-dual.wav"
+                write_two_sid_fixture(sid, clock="ntsc", model=model, counter=True)
+                original = sid.read_bytes()
+                result = subprocess.run([str(RENDERER), str(sid), str(output), "1.2", "--clock", "ntsc"],
+                                        capture_output=True, text=True, timeout=20)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertIn("clock NTSC", result.stdout)
+                frames, left, right = read_stereo_samples(output)
+                self.assertEqual(frames, round(1.2 * RATE))
+                for samples, expected in ((left, 440), (right, 660)):
+                    middle = samples[RATE // 4:RATE]
+                    self.assertGreater(rms(middle), 100)
+                    self.assertAlmostEqual(frequency(middle), expected, delta=3)
+                    self.assertFalse(any(value in (-32768, 32767) for value in samples))
+                rows = [line.split("\t") for line in Path(str(output) + ".registers.tsv").read_text().splitlines()]
+                self.assertEqual(rows[0], ["time_ms", "registers_hex", "registers_sid2_hex"])
+                snapshots = [(int(row[0]), bytes.fromhex(row[1]), bytes.fromhex(row[2])) for row in rows[1:]]
+                start, end = snapshots[4], snapshots[-1]
+                expected_updates = (end[0] - start[0]) * cpu_clock / (1000 * cycles)
+                for chip in (1, 2):
+                    self.assertAlmostEqual(end[chip][2] - start[chip][2], expected_updates, delta=1.1)
+                self.assertEqual(sid.read_bytes(), original)
+                rendered.append((output.read_bytes(), Path(str(output) + ".registers.tsv").read_bytes()))
+        self.assertNotEqual(rendered[0][0], rendered[1][0])
+        self.assertEqual(rendered[0][1], rendered[1][1])
 
     def test_explicit_subtunes_select_init_accumulator_and_pitch_and_preserve_default_output(self):
         for default_song in (1, 2):
@@ -374,22 +418,28 @@ class HeadlessRenderTest(unittest.TestCase):
                 self.assertEqual(len(first), 32)
                 self.assertEqual(len(second), 32)
                 self.assertNotEqual(first[0:2], second[0:2])
+                explicit = Path(directory) / "explicit-pal.wav"
+                result = subprocess.run([str(RENDERER), str(sid), str(explicit), "1.00001", "--clock", "pal"], capture_output=True, text=True, timeout=20)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(output.read_bytes(), explicit.read_bytes())
+                self.assertEqual(Path(str(output) + ".registers.tsv").read_bytes(), Path(str(explicit) + ".registers.tsv").read_bytes())
 
     def test_two_sid_muted_variants_prove_each_chip_contributes_only_to_its_channel(self):
-        for enabled_left, enabled_right in ((True, False), (False, True)):
-            with self.subTest(left=enabled_left, right=enabled_right), tempfile.TemporaryDirectory() as directory:
-                sid, output = Path(directory) / "isolated.sid", Path(directory) / "isolated.wav"
-                write_two_sid_fixture(sid, left=enabled_left, right=enabled_right)
-                result = subprocess.run([str(RENDERER), str(sid), str(output), "0.5"], capture_output=True, text=True, timeout=20)
-                self.assertEqual(result.returncode, 0, result.stderr)
-                _, left, right = read_stereo_samples(output)
-                for samples, enabled, expected in ((left, enabled_left, 440), (right, enabled_right, 660)):
-                    middle = samples[RATE // 4:]
-                    if enabled:
-                        self.assertGreater(rms(middle), 100)
-                        self.assertAlmostEqual(frequency(middle), expected, delta=3)
-                    else:
-                        self.assertLess(rms(middle), 1)
+        for clock in ("pal", "ntsc"):
+            for enabled_left, enabled_right in ((True, False), (False, True)):
+                with self.subTest(clock=clock, left=enabled_left, right=enabled_right), tempfile.TemporaryDirectory() as directory:
+                    sid, output = Path(directory) / "isolated.sid", Path(directory) / "isolated.wav"
+                    write_two_sid_fixture(sid, left=enabled_left, right=enabled_right, clock=clock)
+                    result = subprocess.run([str(RENDERER), str(sid), str(output), "0.5", "--clock", clock], capture_output=True, text=True, timeout=20)
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    _, left, right = read_stereo_samples(output)
+                    for samples, enabled, expected in ((left, enabled_left, 440), (right, enabled_right, 660)):
+                        middle = samples[RATE // 4:]
+                        if enabled:
+                            self.assertGreater(rms(middle), 100)
+                            self.assertAlmostEqual(frequency(middle), expected, delta=3)
+                        else:
+                            self.assertLess(rms(middle), 1)
 
     def test_two_sid_rejects_unsupported_chip_addresses_models_versions_and_timing_before_output(self):
         mutations = (
@@ -399,9 +449,12 @@ class HeadlessRenderTest(unittest.TestCase):
             ("duplicate address", lambda data: data.__setitem__(0x7a, 0x40)),
             ("PSID version", lambda data: struct.pack_into(">H", data, 4, 4)),
             ("v2 extra SID", lambda data: struct.pack_into(">H", data, 4, 2)),
-            ("NTSC", lambda data: struct.pack_into(">H", data, 0x76, 0xa8)),
+            ("both clocks", lambda data: struct.pack_into(">H", data, 0x76, 0xac)),
             ("unknown clock", lambda data: struct.pack_into(">H", data, 0x76, 0xa0)),
             ("CIA timing", lambda data: data.__setitem__(21, 1)),
+            ("later-subtune CIA timing", lambda data: data.__setitem__(21, 2)),
+            ("MUS", lambda data: struct.pack_into(">H", data, 0x76, 0xa5)),
+            ("PlaySID", lambda data: struct.pack_into(">H", data, 0x76, 0xa6)),
             ("mixed models, second 6581", lambda data: struct.pack_into(">H", data, 0x76, 0x64)),
             ("mixed models, first 6581", lambda data: struct.pack_into(">H", data, 0x76, 0x94)),
         )

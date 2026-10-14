@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-14",
+  "runSha256": "a7ec70bd0a5bd0fe5a68445509d4d18f0f51345cf6b0c70545ad6a6fd3dd43b9",
+  "checks": [
+    {
+      "target": "bach-pal",
+      "notes": 895,
+      "sourceSeconds": 84.6025,
+      "scoreSeconds": 84.6091992009913,
+      "maximumOnsetErrorSeconds": 0.009963175538040048,
+      "tailSeconds": 2.493786819175645,
+      "audioSeconds": 88.12292517006803,
+      "audioSha256": "86e10f2cfe1341eb60d27f03e071dffb34181666bd605353378d5b48e0523b89",
+      "checkedFixturePitchBodies": 0,
+      "viceLastCall": 4400,
+      "stopCall": 4366
+    },
+    {
+      "target": "bach-ntsc",
+      "notes": 895,
+      "sourceSeconds": 84.6025,
+      "scoreSeconds": 84.59517732259108,
+      "maximumOnsetErrorSeconds": 0.008357339210682824,
+      "tailSeconds": 2.490551555239295,
+      "audioSeconds": 88.10244897959184,
+      "audioSha256": "0201134de4307afb809684eca4505d4446e01123059dc63c062f3c79409f7cba",
+      "checkedFixturePitchBodies": 0,
+      "viceLastCall": 5250,
+      "stopCall": 5210
+    },
+    {
+      "target": "dual-pal",
+      "notes": 12,
+      "sourceSeconds": 4.0,
+      "scoreSeconds": 3.9900589106810327,
+      "maximumOnsetErrorSeconds": 0.0049705446594836555,
+      "tailSeconds": 0.4987573638351291,
+      "audioSeconds": 5.508775510204082,
+      "audioSha256": "1e732d2012805866608e22ea62adf1c9eb15f8029f766f1474db1b7ff1c3a99e",
+      "checkedFixturePitchBodies": 12,
+      "viceLastCall": 260,
+      "stopCall": 225
+    },
+    {
+      "target": "dual-ntsc",
+      "notes": 12,
+      "sourceSeconds": 4.0,
+      "scoreSeconds": 3.9949115550482652,
+      "maximumOnsetErrorSeconds": 0.005813333078626748,
+      "tailSeconds": 0.5014533332696567,
+      "audioSeconds": 5.513083900226757,
+      "audioSha256": "b2ce8ab7c64d7964dc3a50740db2ca07acbdee4c8df8b878e68a61c230066104",
+      "checkedFixturePitchBodies": 12,
+      "viceLastCall": 320,
+      "stopCall": 269
+    }
+  ],
+  "limits": "Source beat/elapsed-time and static fixture pitch oracles plus full CPU schedules and sampled standalone VICE. Native effects advance at regional VBI rates; ADSR codes unchanged. No cross-region timbre identity, hardware test or new listening acceptance."
+}

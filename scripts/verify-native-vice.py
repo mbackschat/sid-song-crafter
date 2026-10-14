@@ -1,14 +1,17 @@
 import argparse
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
 import subprocess
 
 
+from sid_clock import clock_spec
+
+
 ROOT = Path(__file__).resolve().parents[1]
-FRAME_CYCLES = 19656
 
 
 def require(condition, message):
@@ -63,7 +66,20 @@ def verify_selector(log, selector):
         require(len(snapshots) == 1 and ' '.join(snapshots[0].lower().split()[:2]) == expected, 'Native saved SID address differs from the declared second chip')
 
 
+def export_clock(report):
+    name = report.get('clock', 'PAL')
+    require(name in ('PAL', 'NTSC'), 'Unsupported standalone clock')
+    timing = clock_spec(name.lower())
+    cycles = report.get('frameCycles', timing.frame_cycles)
+    require(type(cycles) is int and cycles == timing.frame_cycles, 'Standalone frame geometry disagrees with its clock')
+    require(math.isclose(report.get('clockHz', timing.clock_hz), timing.clock_hz, rel_tol=1e-12)
+            and math.isclose(report.get('ticksPerSecond', timing.ticks_per_second), timing.ticks_per_second, rel_tol=1e-12),
+            'Standalone timing metadata disagrees with its clock')
+    return timing
+
+
 def export_profile(prg_bytes, report):
+    export_clock(report)
     require(hashlib.sha256(prg_bytes).hexdigest() == report['prgSha256'], 'PRG differs from its export report')
     require((report['player'], report['frameSpeed'], report['standalonePlayerPlayAddress']) == ('Extra', 1, 0x1003), 'Unsupported standalone player profile')
     count = report.get('sidCount', 1)
@@ -83,7 +99,8 @@ def export_profile(prg_bytes, report):
     return bases, selector, model
 
 
-def verify_log(log, writes, calls, sid_bases=(0xd400,)):
+def verify_log(log, writes, calls, sid_bases=(0xd400,), *, clock='pal'):
+    timing = clock_spec(clock)
     registers = re.findall(r'^\.;([0-9a-f]{4})\s+[^\n]*?\s+(\d+)\s*$', log, re.MULTILINE | re.IGNORECASE)
     memory = [re.findall(rf'^>C:{base:04x}\s+([^\n]+)', log, re.MULTILINE | re.IGNORECASE) for base in sid_bases]
     require(len(registers) == len(calls) and all(len(bank) == len(calls) for bank in memory), 'Missing or extra VICE checkpoint')
@@ -99,11 +116,11 @@ def verify_log(log, writes, calls, sid_bases=(0xd400,)):
             tokens.extend(row)
         state = bytes(int(token, 16) for token in tokens)
         require(state == expected[count], f'VICE SID registers disagree after {count} play calls')
-        error = int(cycle) - first_cycle - count * FRAME_CYCLES
+        error = int(cycle) - first_cycle - count * timing.frame_cycles
         # SID-Wizard 1.97 exporter.asm rast1st polls $d012; its instruction phase can shift within the seven-cycle polling loop.
-        require(abs(error) <= 7, f'VICE PAL cadence disagrees after {count} play calls: {error} cycles')
+        require(abs(error) <= 7, f'VICE {timing.name.upper()} cadence disagrees after {count} play calls: {error} cycles')
         checkpoints.append({'completedPlayCalls': count, 'cycle': int(cycle), 'cycleError': error, 'sidRegisters': state.hex()})
-    return {'checkpoints': checkpoints, 'frameCycles': FRAME_CYCLES, 'cycleTolerance': 7, 'scope': 'Standalone PRG boot, sampled SID write shadows and single-speed PAL cadence; not continuous write equivalence or listening evidence'}
+    return {'checkpoints': checkpoints, 'frameCycles': timing.frame_cycles, 'cycleTolerance': 7, 'scope': f'Standalone PRG boot, sampled SID write shadows and single-speed {timing.name.upper()} cadence; not continuous write equivalence or listening evidence'}
 
 
 def main():
@@ -123,13 +140,15 @@ def main():
     writes_bytes = writes_path.read_bytes()
     writes = json.loads(writes_bytes)
     require(prg_bytes[:2] == b'\x01\x08', 'Expected a BASIC-loadable native PRG')
-    sid_bases, selector, sid_model = export_profile(prg_bytes, json.loads(args.export_report.read_text())) if args.export_report else ((0xd400,), None, 'MOS8580')
+    exported = json.loads(args.export_report.read_text()) if args.export_report else {}
+    timing = export_clock(exported)
+    sid_bases, selector, sid_model = export_profile(prg_bytes, exported) if args.export_report else ((0xd400,), None, 'MOS8580')
     expected_states(writes, calls, sid_bases)
     require(any(write['phase'] == 'play' and write['tick'] >= calls[-1] - 1 for write in writes), 'Audit writes do not reach the requested final checkpoint')
     output.mkdir(parents=True, exist_ok=False)
     monitor = output / 'commands.mon'
     monitor.write_text(monitor_commands(prg, calls, sid_bases, selector))
-    command = [str(args.vice.resolve()), '-config', '/dev/null', '-directory', str(args.data.resolve()), '-pal', '+logcolorize', '-initbreak', 'ready', '-moncommands', str(monitor), '-monlog', '-monlogname', str(output / 'monitor.log'), '-limitcycles', str(4_000_000 + calls[-1] * FRAME_CYCLES), '-warp', '+sound']
+    command = [str(args.vice.resolve()), '-config', '/dev/null', '-directory', str(args.data.resolve()), '-' + timing.name, '+logcolorize', '-initbreak', 'ready', '-moncommands', str(monitor), '-monlog', '-monlogname', str(output / 'monitor.log'), '-limitcycles', str(4_000_000 + calls[-1] * timing.frame_cycles), '-warp', '+sound']
     command += ['-sidenginemodel', 'resid6581' if sid_model == 'MOS6581' else 'resid8580']
     if len(sid_bases) == 2:
         command += ['-sidextra', '1', '-sid2address', '0xd420', '-soundoutput', '2']
@@ -144,7 +163,7 @@ def main():
         subprocess.run(command, env=env, stdout=log, stderr=subprocess.STDOUT, timeout=60, check=True)
     monitor_log = (output / 'monitor.log').read_text(errors='replace')
     verify_selector(monitor_log, selector)
-    result = verify_log(monitor_log, writes, calls, sid_bases)
+    result = verify_log(monitor_log, writes, calls, sid_bases, clock=timing.name)
     result.update(sidBases=list(sid_bases), sidModel=sid_model, standaloneAddressSelector=selector)
     result.update(prgSha256=hashlib.sha256(prg_bytes).hexdigest(), writesSha256=hashlib.sha256(writes_bytes).hexdigest(), vice=str(args.vice.resolve()))
     (output / 'verification.json').write_text(json.dumps(result, indent=2) + '\n')

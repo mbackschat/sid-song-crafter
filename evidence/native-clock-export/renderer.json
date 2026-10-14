@@ -1,0 +1,120 @@
+{
+  "renderer_sha256": "5986d30ac0a79f37ff8a039973bfe4547cf71dc1d936d781dc8ee1b832d456c0",
+  "rate_hz": 44100,
+  "duration_seconds": 1.2,
+  "subtune": 1,
+  "chip_addresses": [
+    "0xd400",
+    "0xd420"
+  ],
+  "compatibility": [
+    {
+      "command": [
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/dual-ntsc-render-verification/mono-pal.sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/dual-ntsc-render-verification/mono-pal-after.wav",
+        "1.2",
+        "--clock",
+        "pal"
+      ],
+      "receipt": "libsidplayfp 3.1.1 / SIDLite: 52920 mono PCM16 samples at 44100 Hz, clock PAL, subtune 1 of 1",
+      "input_sha256": "46615750323432e6e5682be5aaa8acb8a0364809a65d22e49fdc694d7e099b79",
+      "output_sha256": "e596f62d5a94390f13cdb9054026d0c18127065ef543ef809e7d616b6eabce4b",
+      "registers_sha256": "d99a61a32f0651113034e5451d7ac55317458eb058d84f19550aea53016832fb",
+      "wav_matches_before": true,
+      "registers_match_before": true
+    },
+    {
+      "command": [
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/dual-ntsc-render-verification/dual-pal.sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/dual-ntsc-render-verification/dual-pal-after.wav",
+        "1.2",
+        "--clock",
+        "pal"
+      ],
+      "receipt": "libsidplayfp 3.1.1 / SIDLite: 52920 stereo PCM16 frames at 44100 Hz, clock PAL, subtune 1 of 2",
+      "input_sha256": "e08ca15c8d54ed8bdd3c3d36649a859c06ef100dff85be4af301f0e00d6a4e2e",
+      "output_sha256": "f20cd29fcd20443885112d27444f03a786e8d62d3cae2aacd3fbbe4445e5f51a",
+      "registers_sha256": "510b69ad75aeaf91d0075511e1cc5abae82c86fcf8b369330d77271ab68e50f0",
+      "wav_matches_before": true,
+      "registers_match_before": true
+    },
+    {
+      "command": [
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/dual-ntsc-render-verification/mono-ntsc.sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/dual-ntsc-render-verification/mono-ntsc-after.wav",
+        "1.2",
+        "--clock",
+        "ntsc"
+      ],
+      "receipt": "libsidplayfp 3.1.1 / SIDLite: 52920 mono PCM16 samples at 44100 Hz, clock NTSC, subtune 1 of 1",
+      "input_sha256": "5d6d6b833a2e96ab6fb955953cd2bab9aa8fe44a8a7c7116f602ffaefef9c1be",
+      "output_sha256": "36b977f6c7fa90a728f2ee63a1227282f47cb44e0a5538bbe23e0ac126bbbe97",
+      "registers_sha256": "c5dcc65992f0ecbbf74addb4fe2ad8630f1cc3449b4137c2ee8274039b13a32e",
+      "wav_matches_before": true,
+      "registers_match_before": true
+    }
+  ],
+  "ntsc": [
+    {
+      "command": [
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/dual-ntsc-render-verification/dual-ntsc-8580.sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/dual-ntsc-render-verification/dual-ntsc-8580.wav",
+        "1.2",
+        "--clock",
+        "ntsc"
+      ],
+      "receipt": "libsidplayfp 3.1.1 / SIDLite: 52920 stereo PCM16 frames at 44100 Hz, clock NTSC, subtune 1 of 2",
+      "input_sha256": "f5894c4d1ab885020993d98bb7519c69d959116820e8ac1690f03d382f6fc1fb",
+      "output_sha256": "abf1884fd8735b76aeac20b2f33349d291890edd53df8ad64f14c44a03fe52e1",
+      "registers_sha256": "a5e80069867be03746a1982ad883a2e93aa87ca2258642817439708b153b820b",
+      "model": "8580",
+      "channels": 2,
+      "frames": 52920,
+      "measured_duration_seconds": 1.2,
+      "left_hz": 439.93026076409944,
+      "right_hz": 659.9036743101202,
+      "left_rms": 2535.9452480950636,
+      "right_rms": 2536.0707635640233,
+      "elapsed_emulation_ms": 1125,
+      "expected_vbi_updates": 67.3043686437137,
+      "observed_vbi_updates": [
+        67,
+        67
+      ],
+      "expected_vbi_hz": 59.826105461078846
+    },
+    {
+      "command": [
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/dual-ntsc-render-verification/dual-ntsc-6581.sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/dual-ntsc-render-verification/dual-ntsc-6581.wav",
+        "1.2",
+        "--clock",
+        "ntsc"
+      ],
+      "receipt": "libsidplayfp 3.1.1 / SIDLite: 52920 stereo PCM16 frames at 44100 Hz, clock NTSC, subtune 1 of 2",
+      "input_sha256": "3c2551e90f226217ae9f6f985ef634747f80ea5a47b28226252ff176aca27a74",
+      "output_sha256": "b3c51c9f0dc91a05b34c67680d5c91b7f0ee2a347bd64a9d97f212c98ecec2e9",
+      "registers_sha256": "a5e80069867be03746a1982ad883a2e93aa87ca2258642817439708b153b820b",
+      "model": "6581",
+      "channels": 2,
+      "frames": 52920,
+      "measured_duration_seconds": 1.2,
+      "left_hz": 439.93026076409944,
+      "right_hz": 659.9036743101202,
+      "left_rms": 2535.9452480950636,
+      "right_rms": 2536.0707635640233,
+      "elapsed_emulation_ms": 1125,
+      "expected_vbi_updates": 67.3043686437137,
+      "observed_vbi_updates": [
+        67,
+        67
+      ],
+      "expected_vbi_hz": 59.826105461078846
+    }
+  ]
+}

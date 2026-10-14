@@ -1,3 +1,4 @@
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -36,7 +37,114 @@ def selected_fixture(init='STA $D402\nRTS', play='RTS', *, load=0xa600, songs=2,
     return bytes(header) + code
 
 
+def ntsc_fixture(play='RTS', *, dual=False, model='MOS6581'):
+    data = bytearray(selected_fixture(play=play, load=0x1000, songs=1, dual=dual))
+    flags = {'MOS6581': 0x58, 'MOS8580': 0xa8} if dual else {'MOS6581': 0x18, 'MOS8580': 0x28}
+    data[118:120] = flags[model].to_bytes(2, 'big')
+    return bytes(data)
+
+
 class PsidAuditTest(unittest.TestCase):
+    def test_explicit_ntsc_accepts_only_declared_single_and_same_model_dual_sid(self):
+        from psid_profile import psid_profile
+        for dual in (False, True):
+            bases = (0xd400, 0xd420) if dual else (0xd400,)
+            play = '\n'.join(f'LDA #$51\nSTA ${base + 4:04X}' for base in bases) + '\nRTS'
+            for model in ('MOS6581', 'MOS8580'):
+                with self.subTest(dual=dual, model=model):
+                    data = ntsc_fixture(play, dual=dual, model=model)
+                    parsed = psid_profile(data, clock='ntsc')
+                    self.assertEqual(list(bases), parsed['sidBases'])
+                    report, writes = audit.audit_psid(data, 2, clock='ntsc')
+                    self.assertEqual([{'baseAddress': base, 'model': model} for base in bases], report['sids'])
+                    self.assertEqual(14318181.82 / 14, report['clockHz'])
+                    self.assertEqual(17095, report['frameCycleBudget'])
+                    self.assertEqual((14318181.82 / 14) / 17095, report['callRateHz'])
+                    self.assertEqual([(base + 4, 0x51) for base in bases],
+                                     [(row['address'], row['value']) for row in writes if row['tick'] == 1])
+                    self.assertEqual(data, ntsc_fixture(play, dual=dual, model=model))
+
+    def test_explicit_target_rejects_mismatched_unknown_both_and_mixed_sid_headers(self):
+        from psid_profile import psid_profile
+        for dual in (False, True):
+            for clock, flags in (('pal', (0x58, 0xa8) if dual else (0x18, 0x28)),
+                                 ('ntsc', (0x50, 0x54, 0x5c, 0x68, 0x98) if dual else (0x08, 0x14, 0x1c, 0x38))):
+                for flag in flags:
+                    data = bytearray(ntsc_fixture(dual=dual))
+                    data[118:120] = flag.to_bytes(2, 'big')
+                    with self.subTest(dual=dual, clock=clock, flag=flag):
+                        with self.assertRaises(ValueError):
+                            psid_profile(data, clock=clock)
+                        with self.assertRaises(ValueError):
+                            audit.audit_psid(data, 1, clock=clock)
+            with self.subTest(default_clock_dual=dual), self.assertRaises(ValueError):
+                audit.audit_psid(ntsc_fixture(dual=dual), 1)
+
+    def test_ntsc_does_not_expand_callable_ram_single_subtune_or_model_assumption_contracts(self):
+        mutations = ((21, 1), (15, 2), (17, 2), (12, 0), (13, 0xff), (122, 0x44), (123, 0x42))
+        for offset, value in mutations:
+            data = bytearray(ntsc_fixture())
+            data[offset] = value
+            with self.subTest(offset=offset, value=value), self.assertRaises(ValueError):
+                audit.audit_psid(data, 1, clock='ntsc')
+        data = bytearray(ntsc_fixture())
+        data[8:10] = (0xa000).to_bytes(2, 'big')
+        with self.assertRaisesRegex(ValueError, 'RAM'):
+            audit.audit_psid(data, 1, clock='ntsc')
+        for option in ({'host_base': 0x0400}, {'assume_sid_model': 'MOS6581'}, {'subtune': 2}):
+            with self.subTest(option=option), self.assertRaises(ValueError):
+                audit.audit_psid(ntsc_fixture(), 1, clock='ntsc', **option)
+        for data in (selected_fixture(load=0x1000, songs=1), ntsc_fixture()):
+            with self.subTest(banked_source_flags=data[119]), self.assertRaisesRegex(ValueError, 'PAL'):
+                audit.audit_psid(data, 1, profile='pal-banked', subtune=1, clock='ntsc')
+        for clock in ('NTSC', 'auto', None, 1, True):
+            with self.subTest(clock=clock), self.assertRaises(ValueError):
+                audit.audit_psid(ntsc_fixture(), 1, clock=clock)
+
+    def test_ntsc_retains_the_io_rom_and_mapping_guards(self):
+        for play, message in (('LDA $D41B\nRTS', 'I/O read'), ('STA $DC04\nRTS', 'I/O write'),
+                              ('LDA $A000\nRTS', 'ROM read'), ('LDA #$34\nSTA $01\nRTS', 'hide SID I/O'),
+                              ('INC $D404\nRTS', 'I/O read')):
+            with self.subTest(play=play), self.assertRaisesRegex(ValueError, message):
+                audit.audit_psid(ntsc_fixture(play), 1, clock='ntsc')
+
+    def test_ntsc_call_budget_accepts_the_final_cycle_and_rejects_a_pal_only_driver(self):
+        exact_budget = sid_file(bytes((0x24, 0x20)) + b'\xea' * 8543 + b'\x60')
+        exact_budget[119] = 0x28
+        report, _ = audit.audit_psid(exact_budget, 1, clock='ntsc')
+        self.assertEqual(17095, report['maximumPlayCycles'])
+        pal_only = sid_file(b'\xea' * 8545 + b'\x60')
+        report, _ = audit.audit_psid(pal_only, 1)
+        self.assertEqual(17096, report['maximumPlayCycles'])
+        pal_only[119] = 0x28
+        with self.assertRaisesRegex(ValueError, '17095-cycle call budget'):
+            audit.audit_psid(pal_only, 1, clock='ntsc')
+
+    def test_pal_evidence_bytes_remain_compatible_with_both_legacy_profiles(self):
+        for profile, expected in (('strict', '7420eca9f621528837161591b55590d5f544a4a0ce46a0fab9cb4f44269c5863'),
+                                  ('pal-banked', '6a52aa19dc7f190c795d14e9d1f1bdd89a33977fcf9bbde7091f53cf44800fa0')):
+            with self.subTest(profile=profile):
+                data = selected_fixture(load=0x1000, songs=1)
+                report, writes = audit.audit_psid(data, 3, profile=profile, subtune=1)
+                self.assertEqual(expected, hashlib.sha256((json.dumps(report, indent=2) + '\n').encode()).hexdigest())
+                self.assertEqual('81a7da336f02750f40cde112e750186cf07dd262d51eeef6240ca854b860f40f',
+                                 hashlib.sha256((json.dumps(writes, separators=(',', ':')) + '\n').encode()).hexdigest())
+                self.assertEqual((report, writes), audit.audit_psid(data, 3, profile=profile, subtune=1, clock='pal'))
+
+    def test_ntsc_cli_writes_target_timing_evidence_and_preserves_input(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source, output = Path(directory) / 'ntsc.sid', Path(directory) / 'audit.json'
+            data = ntsc_fixture()
+            source.write_bytes(data)
+            argv = ['psid_audit.py', str(source), '--ticks', '2', '--clock', 'ntsc', '--output', str(output)]
+            with patch.object(sys, 'argv', argv), patch('builtins.print') as printed:
+                audit.main()
+            report = json.loads(output.read_text())
+            self.assertEqual(data, source.read_bytes())
+            self.assertEqual(17095, report['frameCycleBudget'])
+            self.assertEqual(14318181.82 / 14, report['clockHz'])
+            self.assertIn('/17095 cycles', printed.call_args.args[0])
+
     def test_dual_6581_declaration_keeps_both_models_and_the_same_cpu_evidence(self):
         data = sid_file(bytes((0xa9, 0x51, 0x8d, 0x24, 0xd4, 0x60)))
         data[5], data[119], data[122] = 3, 0xa4, 0x42

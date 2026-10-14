@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "bach-pal",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "songs/studies/bach-toccata-full/hybrid.json",
+        "--clock",
+        "pal",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "1"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "songs/studies/bach-toccata-full/hybrid.json",
+        "songs/studies/bach-toccata-full/score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/hybrid.sid",
+        "song/export/hybrid.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "bach-pal-vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:bach-pal}/song/export/hybrid.prg",
+        "{stage:bach-pal}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:bach-pal}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "20",
+        "200",
+        "4400",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:bach-pal}/song/export/hybrid.prg",
+        "{stage:bach-pal}/song/native-song.writes.json",
+        "{stage:bach-pal}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 90,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "bach-ntsc",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "songs/studies/bach-toccata-full/hybrid.json",
+        "--clock",
+        "ntsc",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "1"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "songs/studies/bach-toccata-full/hybrid.json",
+        "songs/studies/bach-toccata-full/score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/hybrid.sid",
+        "song/export/hybrid.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "bach-ntsc-vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:bach-ntsc}/song/export/hybrid.prg",
+        "{stage:bach-ntsc}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:bach-ntsc}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "20",
+        "200",
+        "5250",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:bach-ntsc}/song/export/hybrid.prg",
+        "{stage:bach-ntsc}/song/native-song.writes.json",
+        "{stage:bach-ntsc}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 90,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "dual-pal",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "tests/fixtures/sidwizard-2sid/recipe.json",
+        "--clock",
+        "pal",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "1"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter-2sid/build.json",
+        ".tools/sid-wizard-exporter-2sid/exporter.prg",
+        ".tools/sid-wizard-exporter-2sid/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "tests/fixtures/sidwizard-2sid/recipe.json",
+        "tests/fixtures/sidwizard-2sid/score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/recipe.sid",
+        "song/export/recipe.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "dual-pal-vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:dual-pal}/song/export/recipe.prg",
+        "{stage:dual-pal}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:dual-pal}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "20",
+        "100",
+        "260",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:dual-pal}/song/export/recipe.prg",
+        "{stage:dual-pal}/song/native-song.writes.json",
+        "{stage:dual-pal}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py",
+        ".tools/sid-wizard-exporter-2sid/exporter.labels"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 90,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "dual-ntsc",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "tests/fixtures/sidwizard-2sid/recipe.json",
+        "--clock",
+        "ntsc",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "1"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter-2sid/build.json",
+        ".tools/sid-wizard-exporter-2sid/exporter.prg",
+        ".tools/sid-wizard-exporter-2sid/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "tests/fixtures/sidwizard-2sid/recipe.json",
+        "tests/fixtures/sidwizard-2sid/score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/recipe.sid",
+        "song/export/recipe.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "dual-ntsc-vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:dual-ntsc}/song/export/recipe.prg",
+        "{stage:dual-ntsc}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:dual-ntsc}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "20",
+        "100",
+        "320",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:dual-ntsc}/song/export/recipe.prg",
+        "{stage:dual-ntsc}/song/native-song.writes.json",
+        "{stage:dual-ntsc}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py",
+        ".tools/sid-wizard-exporter-2sid/exporter.labels"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 90,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "bach-palVerification": "{stage:bach-pal}/song/verification.json",
+    "bach-palConversion": "{stage:bach-pal}/song/conversion.json",
+    "bach-palAudio": "{stage:bach-pal}/song/native-song.wav",
+    "bach-palVice": "{stage:bach-pal-vice}/vice/verification.json",
+    "bach-ntscVerification": "{stage:bach-ntsc}/song/verification.json",
+    "bach-ntscConversion": "{stage:bach-ntsc}/song/conversion.json",
+    "bach-ntscAudio": "{stage:bach-ntsc}/song/native-song.wav",
+    "bach-ntscVice": "{stage:bach-ntsc-vice}/vice/verification.json",
+    "dual-palVerification": "{stage:dual-pal}/song/verification.json",
+    "dual-palConversion": "{stage:dual-pal}/song/conversion.json",
+    "dual-palAudio": "{stage:dual-pal}/song/native-song.wav",
+    "dual-palVice": "{stage:dual-pal-vice}/vice/verification.json",
+    "dual-ntscVerification": "{stage:dual-ntsc}/song/verification.json",
+    "dual-ntscConversion": "{stage:dual-ntsc}/song/conversion.json",
+    "dual-ntscAudio": "{stage:dual-ntsc}/song/native-song.wav",
+    "dual-ntscVice": "{stage:dual-ntsc-vice}/vice/verification.json"
+  }
+}

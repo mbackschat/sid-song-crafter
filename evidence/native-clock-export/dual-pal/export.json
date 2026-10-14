@@ -1,0 +1,91 @@
+{
+  "source": "/Users/mbackschat/Projects/c64-sid-skill/build/native-clock-verification-v1/cache/dual-pal/5808e255e68830427fd1b58bf10f649011973ffc22ee5d00d800d5d6993249e0/attempt-98bf021a46d849289ab0ed2bf8477b6e/song/conversion/recipe.sws",
+  "sourceSha256": "c11f92387cbdec63124ba1933b804e1e78f040eade3658b29ebdd6ad4d600624",
+  "module": {
+    "sidCount": 2,
+    "patterns": 6,
+    "sequences": 6,
+    "instruments": [
+      {
+        "name": "LEFTFILT",
+        "size": 25
+      },
+      {
+        "name": "RGHTFILT",
+        "size": 25
+      }
+    ],
+    "chordBytes": 0,
+    "tempoBytes": 0
+  },
+  "sid": "/Users/mbackschat/Projects/c64-sid-skill/build/native-clock-verification-v1/cache/dual-pal/5808e255e68830427fd1b58bf10f649011973ffc22ee5d00d800d5d6993249e0/attempt-98bf021a46d849289ab0ed2bf8477b6e/song/export/recipe.sid",
+  "sidSha256": "205a3b35d802a702fd20c91154cee9a3cd1e70968f5577de952baab48793271a",
+  "prg": "/Users/mbackschat/Projects/c64-sid-skill/build/native-clock-verification-v1/cache/dual-pal/5808e255e68830427fd1b58bf10f649011973ffc22ee5d00d800d5d6993249e0/attempt-98bf021a46d849289ab0ed2bf8477b6e/song/export/recipe.prg",
+  "prgSha256": "aac252149044619d2ab7d3b1d12b6ec8f94c4d87c4dacc106bfea8d0f9640538",
+  "sidWizardVersion": "1.97",
+  "player": "Extra",
+  "driverType": 3,
+  "clock": "PAL",
+  "clockHz": 985248.6111111111,
+  "frameCycles": 19656,
+  "ticksPerSecond": 50.12457321485099,
+  "sidModel": "MOS8580",
+  "effectTimingPolicy": "target-vbi",
+  "effectUpdateRateHz": 50.12457321485099,
+  "envelopeTimingPolicy": "retain-sid-adsr-codes",
+  "frequencyTablePolicy": "unchanged-stock-pal",
+  "regionalDifferences": "Native row counts and instrument bytes are retained, with one play call per target VBI. Arrange beat-based scores for this clock before export. NTSC modulation and first-frame durations follow its faster VBI; unchanged ADSR codes follow its faster SID clock. Register-unit detune and modulation amplitudes are not rescaled.",
+  "sidCount": 2,
+  "sids": [
+    {
+      "baseAddress": 54272,
+      "model": "MOS8580"
+    },
+    {
+      "baseAddress": 54304,
+      "model": "MOS8580"
+    }
+  ],
+  "psidVersion": 3,
+  "frameSpeed": 1,
+  "loadAddress": 4096,
+  "initAddress": 4096,
+  "playAddress": 4099,
+  "standaloneLoadAddress": 2049,
+  "standaloneStartAddress": 2061,
+  "standalonePlayerInitAddress": 4096,
+  "standalonePlayerPlayAddress": 4099,
+  "exportEndAddress": 7904,
+  "nativeSourceRetained": true,
+  "exportLosses": [
+    "Instrument names are omitted from playback payload by upstream SID-Maker; retained in SWM/SWI."
+  ],
+  "nativeRoutineCycles": {
+    "setEXEdetails": 122220,
+    "preparetunedata": 57903,
+    "SID23set:CalcSID2addID": 49,
+    "setplayer": 6396,
+    "SetSIDply": 133,
+    "SetSIDt": 1332,
+    "dispMod": 337,
+    "setsaveparam": 175
+  },
+  "build": {
+    "sidWizardVersion": "1.97",
+    "sidWizardArchiveUrl": "https://csdb.dk/getinternalfile.php/281063/SID-Wizard-1.97-sources-examples.tar.gz",
+    "sidWizardArchiveSha256": "aeb265f4a778b2acb5aad13e8e98af882888292f749f29f4d18cbf49850e57bc",
+    "assemblerVersion": "64tass 1.60.3243",
+    "assemblerArchiveUrl": "https://downloads.sourceforge.net/project/tass64/source/64tass-1.60.3243-src.zip",
+    "assemblerArchiveSha256": "9d83be3d23a2c55e085b7c7a7856c2f96080447ea120a6a8c21a217ed76427f0",
+    "exporterSha256": "5a8dd460d4b3ce9c0c79ea91e22d2ea435bd5095d93e161b3cf3659688bac39e",
+    "labelsSha256": "fccf21dc8a2ed26ce4b438be5661770213a6283e15b182309ea4c2a2695002c8",
+    "sidCount": 2,
+    "sourceModified": false
+  },
+  "standaloneAddressSelector": {
+    "entryAddress": 2855,
+    "returnAddress": 3024,
+    "baseAddress": 54304,
+    "method": "At selector entry, VICE monitor sets PC to the existing RTS; native address application continues."
+  }
+}

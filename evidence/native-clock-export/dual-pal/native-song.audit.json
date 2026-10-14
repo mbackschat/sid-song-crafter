@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "205a3b35d802a702fd20c91154cee9a3cd1e70968f5577de952baab48793271a",
+  "cpu": "py65 NMOS 6502",
+  "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+  "sidModel": "MOS8580",
+  "sidCount": 2,
+  "sids": [
+    {
+      "baseAddress": 54272,
+      "model": "MOS8580"
+    },
+    {
+      "baseAddress": 54304,
+      "model": "MOS8580"
+    }
+  ],
+  "loadAddress": 4096,
+  "initAddress": 4096,
+  "playAddress": 4099,
+  "clockHz": 985248.6111111111,
+  "playCalls": 278,
+  "callRateHz": 50.12457321485099,
+  "initCycles": 3741,
+  "maximumPlayCycles": 4609,
+  "meanPlayCycles": 3694.359712230216,
+  "frameCycleBudget": 19656,
+  "initWriteCount": 48,
+  "playWriteCount": 13900,
+  "registers": {
+    "d400": {
+      "writes": 278,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 137
+    },
+    "d401": {
+      "writes": 278,
+      "distinctValues": 2,
+      "minimum": 17,
+      "maximum": 19
+    },
+    "d402": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d403": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d404": {
+      "writes": 278,
+      "distinctValues": 3,
+      "minimum": 9,
+      "maximum": 17
+    },
+    "d405": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 9,
+      "maximum": 9
+    },
+    "d406": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 168,
+      "maximum": 168
+    },
+    "d407": {
+      "writes": 278,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 238
+    },
+    "d408": {
+      "writes": 278,
+      "distinctValues": 2,
+      "minimum": 21,
+      "maximum": 23
+    },
+    "d409": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d40a": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d40b": {
+      "writes": 278,
+      "distinctValues": 3,
+      "minimum": 9,
+      "maximum": 17
+    },
+    "d40c": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 9,
+      "maximum": 9
+    },
+    "d40d": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 168,
+      "maximum": 168
+    },
+    "d40e": {
+      "writes": 278,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 69
+    },
+    "d40f": {
+      "writes": 278,
+      "distinctValues": 2,
+      "minimum": 26,
+      "maximum": 29
+    },
+    "d410": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d411": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d412": {
+      "writes": 278,
+      "distinctValues": 3,
+      "minimum": 9,
+      "maximum": 17
+    },
+    "d413": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 9,
+      "maximum": 9
+    },
+    "d414": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 168,
+      "maximum": 168
+    },
+    "d415": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d416": {
+      "writes": 278,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 36
+    },
+    "d417": {
+      "writes": 278,
+      "distinctValues": 2,
+      "minimum": 7,
+      "maximum": 55
+    },
+    "d418": {
+      "writes": 278,
+      "distinctValues": 3,
+      "minimum": 15,
+      "maximum": 31
+    },
+    "d420": {
+      "writes": 278,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 207
+    },
+    "d421": {
+      "writes": 278,
+      "distinctValues": 2,
+      "minimum": 34,
+      "maximum": 39
+    },
+    "d422": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d423": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d424": {
+      "writes": 278,
+      "distinctValues": 3,
+      "minimum": 9,
+      "maximum": 17
+    },
+    "d425": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 9,
+      "maximum": 9
+    },
+    "d426": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 168,
+      "maximum": 168
+    },
+    "d427": {
+      "writes": 278,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 219
+    },
+    "d428": {
+      "writes": 278,
+      "distinctValues": 2,
+      "minimum": 43,
+      "maximum": 46
+    },
+    "d429": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d42a": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d42b": {
+      "writes": 278,
+      "distinctValues": 3,
+      "minimum": 9,
+      "maximum": 17
+    },
+    "d42c": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 9,
+      "maximum": 9
+    },
+    "d42d": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 168,
+      "maximum": 168
+    },
+    "d42e": {
+      "writes": 278,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 138
+    },
+    "d42f": {
+      "writes": 278,
+      "distinctValues": 2,
+      "minimum": 52,
+      "maximum": 58
+    },
+    "d430": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d431": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d432": {
+      "writes": 278,
+      "distinctValues": 3,
+      "minimum": 9,
+      "maximum": 17
+    },
+    "d433": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 9,
+      "maximum": 9
+    },
+    "d434": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 168,
+      "maximum": 168
+    },
+    "d435": {
+      "writes": 278,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d436": {
+      "writes": 278,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 120
+    },
+    "d437": {
+      "writes": 278,
+      "distinctValues": 2,
+      "minimum": 7,
+      "maximum": 55
+    },
+    "d438": {
+      "writes": 278,
+      "distinctValues": 3,
+      "minimum": 15,
+      "maximum": 31
+    }
+  },
+  "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+}

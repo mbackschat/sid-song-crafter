@@ -8,9 +8,10 @@ import math
 from pathlib import Path
 import re
 
+from sid_clock import PAL_CLOCK, clock_spec
+
 
 ROOT = Path(__file__).resolve().parents[1]
-PAL_CLOCK = 17734475 / 18
 TICKS_PER_SECOND = PAL_CLOCK / (312 * 63)
 PATTERN_ROWS = 248
 
@@ -121,13 +122,14 @@ def retain_short_pitch(notes, voice, score_ticks):
     return changes
 
 
-def arrange(recipe_path, output_dir):
+def arrange(recipe_path, output_dir, *, clock=None):
     recipe_path = Path(recipe_path).resolve()
     output = Path(output_dir).resolve()
     require(not output.exists(), "Choose a fresh output directory; existing native workfiles are preserved")
     recipe_bytes = recipe_path.read_bytes()
     recipe = json.loads(recipe_bytes)
     require(recipe["format"] == "sidwizard-arrangement-v1", "Unsupported native arrangement recipe format")
+    target = clock_spec(recipe.get("clock", "pal") if clock is None else clock)
     sid_model = recipe.get("sidModel", "MOS8580")
     require(sid_model in ("MOS6581", "MOS8580"), "Native SID model must be MOS6581 or MOS8580")
     sid_count = recipe.get("sidCount", 1)
@@ -143,9 +145,11 @@ def arrange(recipe_path, output_dir):
     bpm, total_beats = score["quarterBpm"], score["totalBeats"]
     require(isinstance(bpm, (int, float)) and math.isfinite(bpm) and bpm > 0 and isinstance(total_beats, (int, float)) and math.isfinite(total_beats) and total_beats > 0, "Source tempo and duration must be positive and finite")
     require(score.get("volume", 15) == 15, "Native trial currently retains the full-volume source contract only")
-    tail = score.get("tailTicks", 25)
-    require(type(tail) is int and tail > 0, "Source must include a positive PAL release tail")
-    rate = 60 / bpm * TICKS_PER_SECOND
+    source_tail = score.get("tailTicks", 25)
+    require(type(source_tail) is int and source_tail > 0, "Source must include a positive PAL release tail")
+    tail = max(1, rounded(source_tail * target.ticks_per_second / TICKS_PER_SECOND))
+    rate = 60 / bpm * target.ticks_per_second
+    pal_rate = 60 / bpm * TICKS_PER_SECOND
     score_ticks = rounded(total_beats * rate)
     total_ticks = score_ticks + tail
     row_count = total_ticks + 1
@@ -190,13 +194,15 @@ def arrange(recipe_path, output_dir):
             notes.append({
                 "eventIndex": event_index, "startBeat": start_beat, "durationBeats": duration_beats,
                 "sourceStartTick": start, "sourceDurationTicks": duration, "sourceGateOffTick": off,
+                "sourcePalDurationTicks": rounded((start_beat + duration_beats) * pal_rate) - rounded(start_beat * pal_rate),
                 "startTick": start, "durationTicks": duration, "gateOffTick": off, "nativeGateOffTick": off,
                 "midi": midi, "nativeNote": native_note, "instrument": number, "instrumentId": identity, "section": section["name"],
             })
         timing_changes.extend(retain_short_pitch(notes, voice_index, score_ticks))
         for note in notes:
             start, duration = note["startTick"], note["durationTicks"]
-            if duration <= short_limit:
+            short_duration = duration if target.name == "pal" else note["sourcePalDurationTicks"]
+            if short_duration <= short_limit:
                 note["instrumentId"] = short_instruments.get(voice["name"], note["instrumentId"])
                 note["instrument"] = instrument_numbers[note["instrumentId"]]
             require(cells[start] == b"\x00", "Source note collision on the native tick grid")
@@ -260,9 +266,14 @@ def arrange(recipe_path, output_dir):
         "nativePath": str(native), "nativeSha256": digest(data), "title": recipe["title"], "author": recipe["author"], "released": recipe.get("released", "2026"),
         "timingPolicy": recipe["timingPolicy"], "nativeHeaderText": authorinfo.decode("ascii"),
         "sidModel": sid_model, "sidCount": sid_count, "sids": [{"baseAddress": 0xd400 + index * 0x20, "model": sid_model} for index in range(sid_count)],
-        "clockHz": PAL_CLOCK, "ticksPerSecond": TICKS_PER_SECOND, "frameSpeed": 1, "rowTicks": 1,
+        "clock": target.name.upper(), "clockHz": target.clock_hz, "frameCycles": target.frame_cycles,
+        "ticksPerSecond": target.ticks_per_second, "frameSpeed": 1, "rowTicks": 1,
+        "effectTimingPolicy": "target-vbi", "effectUpdateRateHz": target.ticks_per_second, "envelopeTimingPolicy": "retain-sid-adsr-codes",
+        "regionalDifferences": "Instrument programs retain their bytes and advance once per target video frame. NTSC modulation/first-frame durations follow its faster VBI; SID ADSR codes and retrigger rules stay unchanged, so envelope times follow the target SID clock. Register-unit detune and modulation amplitudes are not rescaled.",
+        "shortNoteThreshold": {"palTicks": short_limit, "policy": "PAL retains historical adjusted-note classification; NTSC uses original absolute PAL-grid source durations."},
+        "sourceTailPalTicks": source_tail,
         "scoreTicks": score_ticks, "tailTicks": tail, "totalTicks": total_ticks, "rowCount": row_count, "stopTick": total_ticks, "stopVolumeClearTick": total_ticks,
-        "renderSeconds": (total_ticks + 1) / TICKS_PER_SECOND + 1, "patterns": [{key: value for key, value in pattern.items() if key != "bytes"} for pattern in patterns],
+        "renderSeconds": (total_ticks + 1) / target.ticks_per_second + 1, "patterns": [{key: value for key, value in pattern.items() if key != "bytes"} for pattern in patterns],
         "instruments": [{"id": identity, "number": instrument_numbers[identity], "name": recipe["instruments"][identity]["name"]} for identity in identities],
         "voices": voices, "cellMap": cell_map, "timingChanges": timing_changes, "articulationChanges": changes, "endPolicy": "stop with gates closed and main volume zero",
         "criticalNotes": [dict(note, voice=index, audibleCheckTick=note["startTick"] + 1) for index, voice in enumerate(voices) for note in voice["notes"] if note["sourceDurationTicks"] <= 2 or note["durationTicks"] <= 2],
@@ -275,8 +286,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("recipe", type=Path)
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--clock", choices=("pal", "ntsc"), help="Composition target override; otherwise use the recipe clock or legacy PAL")
     args = parser.parse_args()
-    manifest = arrange(args.recipe, args.output_dir)
+    manifest = arrange(args.recipe, args.output_dir, clock=args.clock)
     print(f"Wrote {manifest['nativePath']}; retained {sum(len(voice['notes']) for voice in manifest['voices'])} notes in {len(manifest['patterns'])} native patterns")
 
 

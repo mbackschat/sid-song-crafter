@@ -13,6 +13,7 @@ import wave
 
 from audio_comparison import Pcm16, inspect_wav, measure_pcm, read_pcm16
 from psid_audit import audit_psid
+from sid_clock import clock_spec
 from verify_player import require
 
 
@@ -39,6 +40,20 @@ def sid_layout(report):
     sids = [{"baseAddress": base, "model": model} for base in (0xd400, 0xd420)[:count]]
     require(report.get("sids", sids if count == 1 else None) == sids, "Native SID layout requires ordered same-model chips at $d400/$d420")
     return sids
+
+
+def native_clock(manifest, exported):
+    name = manifest.get("clock", "PAL")
+    require(name in ("PAL", "NTSC") and exported.get("clock", "PAL") == name,
+            "Conversion and export clocks disagree or are unsupported")
+    timing = clock_spec(name.lower())
+    for report in (manifest, exported):
+        require(math.isclose(report.get("clockHz", timing.clock_hz), timing.clock_hz, rel_tol=1e-12)
+                and math.isclose(report.get("ticksPerSecond", timing.ticks_per_second), timing.ticks_per_second, rel_tol=1e-12),
+                "Native timing metadata disagrees with its target clock")
+        cycles = report.get("frameCycles", timing.frame_cycles)
+        require(type(cycles) is int and cycles == timing.frame_cycles, "Native frame geometry disagrees with its target clock")
+    return timing
 
 
 def voice_offset(voice):
@@ -148,6 +163,7 @@ def verify_driver_events(manifest, observer, frames):
 def audit_native(manifest_path, export_path, prefix, ticks):
     manifest = json.loads(Path(manifest_path).read_text())
     exported = json.loads(Path(export_path).read_text())
+    timing = native_clock(manifest, exported)
     sids = sid_layout(manifest)
     require(sid_layout(exported) == sids, "Conversion and export SID layouts disagree")
     native = Path(manifest["nativePath"])
@@ -160,7 +176,7 @@ def audit_native(manifest_path, export_path, prefix, ticks):
     require(hashlib.sha256(label_bytes).hexdigest() == exported["build"]["labelsSha256"], "Native observer labels differ from the exporter build")
     labels = {name: int(value, 16) for value, name in re.findall(r"^al ([\da-fA-F]+) \.(.+)$", label_bytes.decode(), re.MULTILINE)}
     observer = NativeObserver(labels, len(sids))
-    audited, writes = audit_psid(sid, ticks, observer=observer)
+    audited, writes = audit_psid(sid, ticks, observer=observer, clock=timing.name)
     require(sid_layout(audited) == sids, "Audited PSID and conversion SID layouts disagree")
     frames = frame_states(writes, ticks, tuple(sid["baseAddress"] for sid in sids))
     paths = {key: Path(str(prefix) + suffix) for key, suffix in (("audit", ".audit.json"), ("writes", ".writes.json"), ("frames", ".frames.json"), ("nativeEvents", ".native-events.json"), ("schedule", ".schedule.json"))}
@@ -192,19 +208,20 @@ def verify_render(pcm, seconds, sid_count):
     require(pcm["clippedSamples"] == 0 and len(pcm["perChannel"]) == sid_count and all(channel["acRms"] > 1 for channel in pcm["perChannel"]), "Full native render is clipped or contains a silent chip channel")
 
 
-def run_song(recipe, output, renderer=ROOT / ".local/bin/render-sid", excerpt_start=0, excerpt_seconds=20):
+def run_song(recipe, output, renderer=ROOT / ".local/bin/render-sid", excerpt_start=0, excerpt_seconds=20, *, clock=None):
     require(math.isfinite(excerpt_start) and excerpt_start >= 0 and math.isfinite(excerpt_seconds) and excerpt_seconds > 0, "Excerpt position/duration must be finite, nonnegative and positive respectively")
     recipe, output, renderer = Path(recipe).resolve(), Path(output).resolve(), Path(renderer).resolve()
     require(not output.exists(), "Native song output already exists; choose a fresh directory to preserve evidence")
     require(recipe.is_file() and renderer.is_file(), "Recipe and documented SID renderer must exist")
     output.mkdir(parents=True)
     converter = load_script("arrange-sidwizard")
-    manifest = converter.arrange(recipe, output / "conversion")
+    manifest = converter.arrange(recipe, output / "conversion", clock=clock)
+    timing = clock_spec(manifest.get("clock", "PAL").lower())
     sid_count = len(sid_layout(manifest))
     manifest_path = output / "conversion.json"
     write_json(manifest_path, manifest)
     exporter = load_script("export-sidwizard")
-    exported = exporter.export_module(manifest["nativePath"], output / "export", title=manifest["title"], author=manifest["author"], released=manifest["released"], sid_model=sid_layout(manifest)[0]["model"])
+    exported = exporter.export_module(manifest["nativePath"], output / "export", title=manifest["title"], author=manifest["author"], released=manifest["released"], sid_model=sid_layout(manifest)[0]["model"], clock=timing.name)
     export_path = output / "export.json"
     write_json(export_path, exported)
     prefix = output / "native-song"
@@ -215,7 +232,7 @@ def run_song(recipe, output, renderer=ROOT / ".local/bin/render-sid", excerpt_st
     print(f"Checking {ticks} native player calls and the complete converted schedule", flush=True)
     subprocess.run([sys.executable, str(Path(__file__).resolve()), "audit", str(manifest_path), str(export_path), str(prefix), "--ticks", str(ticks)], check=True, timeout=120)
     wav = Path(str(prefix) + ".wav")
-    command = [str(renderer), exported["sid"], str(wav), str(seconds)]
+    command = [str(renderer), exported["sid"], str(wav), str(seconds), "--clock", timing.name]
     print(f"Rendering complete native song: {seconds:.3f} seconds", flush=True)
     renderer_report = {"command": command, "executableSha256": hashlib.sha256(renderer.read_bytes()).hexdigest(), "deadlineSeconds": 120}
     try:
@@ -248,6 +265,7 @@ def main():
     build = commands.add_parser("build", help="convert, export, audit and render a native song in a fresh directory")
     build.add_argument("recipe", type=Path)
     build.add_argument("--output", type=Path, required=True)
+    build.add_argument("--clock", choices=("pal", "ntsc"), help="Override the recipe export target; omitted recipes retain PAL")
     build.add_argument("--renderer", type=Path, default=ROOT / ".local/bin/render-sid")
     build.add_argument("--excerpt-start", type=float, default=0)
     build.add_argument("--excerpt-seconds", type=float, default=20)
@@ -258,7 +276,7 @@ def main():
     audit.add_argument("--ticks", type=int, required=True)
     args = parser.parse_args()
     if args.command == "build":
-        run_song(args.recipe, args.output, args.renderer, args.excerpt_start, args.excerpt_seconds)
+        run_song(args.recipe, args.output, args.renderer, args.excerpt_start, args.excerpt_seconds, clock=args.clock)
     else:
         audit_native(args.manifest, args.export, args.prefix, args.ticks)
 

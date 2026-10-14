@@ -18,6 +18,35 @@ native_song = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(native_song)
 
 
+class NativeClockContractTest(unittest.TestCase):
+    def test_conversion_export_must_agree_on_clock_and_grid(self):
+        manifest = {"clock": "NTSC", "clockHz": 14318181.82 / 14, "ticksPerSecond": (14318181.82 / 14) / 17095}
+        self.assertEqual(native_song.native_clock(manifest, {"clock": "NTSC"}).name, "ntsc")
+        for change in ({"clock": "PAL"}, {"clock": "unknown"}, {}):
+            with self.subTest(export=change), self.assertRaises(ValueError):
+                native_song.native_clock(manifest, change)
+        for key in ("clockHz", "ticksPerSecond"):
+            changed = dict(manifest)
+            changed[key] *= 1.2
+            with self.subTest(field=key), self.assertRaises(ValueError):
+                native_song.native_clock(changed, {"clock": "NTSC"})
+
+    def test_export_timing_metadata_cannot_contradict_its_clock(self):
+        for field, value in (("clockHz", 985248), ("ticksPerSecond", 50), ("frameCycles", 19656)):
+            with self.subTest(field=field), self.assertRaises(ValueError):
+                native_song.native_clock({"clock": "NTSC"}, {"clock": "NTSC", field: value})
+
+    def test_frame_geometry_must_match_declared_region(self):
+        for clock, cycles in (("PAL", 19656), ("NTSC", 17095)):
+            for value in (cycles + 1, float(cycles), True):
+                with self.subTest(clock=clock, value=value), self.assertRaises(ValueError):
+                    native_song.native_clock({"clock": clock, "frameCycles": value}, {"clock": clock})
+
+    def test_legacy_pal_manifest_retains_its_clock(self):
+        manifest = {"clockHz": 17734475 / 18, "ticksPerSecond": (17734475 / 18) / 19656}
+        self.assertEqual(native_song.native_clock(manifest, {"clock": "PAL"}).name, "pal")
+
+
 def fixture():
     cells = [
         {"voice": 0, "tick": 0, "pattern": 1, "byteOffset": 0, "noteCode": 61, "instrument": 1},
@@ -338,7 +367,7 @@ class NativeSongTest(unittest.TestCase):
             recipe.write_text("fixture")
             renderer.write_bytes(b"renderer fixture")
             manifest = {"nativePath": str(root / "song.swm"), "title": "Fixture", "author": "Fixture", "released": "2026", "totalTicks": 10, "ticksPerSecond": 50}
-            converter = SimpleNamespace(arrange=lambda *args: manifest)
+            converter = SimpleNamespace(arrange=lambda *args, **kwargs: manifest)
             exporter = SimpleNamespace(export_module=lambda *args, **kwargs: {"sid": str(root / "song.sid")})
             completed = subprocess.CompletedProcess([], 0, "renderer identity", "renderer warning")
             invalid_pcm = {"sampleRate": 44100, "channels": 1, "frames": 1}

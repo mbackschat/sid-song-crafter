@@ -3,11 +3,13 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import sys
 import tempfile
 import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
 SPEC = importlib.util.spec_from_file_location("sidwizard_arrangement", ROOT / "scripts/arrange-sidwizard.py")
 ARRANGER = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(ARRANGER)
@@ -48,6 +50,87 @@ class SIDWizardArrangementTest(unittest.TestCase):
             settings["sidModel"] = sid_model
         configuration.write_text(json.dumps(settings))
         return configuration, ARRANGER.arrange(configuration, Path(directory) / "out")
+
+    def test_ntsc_target_quantizes_absolute_seconds_and_retains_the_pal_tail_duration(self):
+        for count in (1, 2):
+            with self.subTest(sid_count=count), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                score = synthetic_score([], beats=5)
+                score["quarterBpm"] = 60
+                score["voices"] = [{"name": f"part-{voice}", "events": [{"startBeat": 1.1, "durationBeats": 0.37, "midi": 69 + voice}]} for voice in range(count * 3)]
+                source, configuration = root / "score.json", root / "recipe.json"
+                source.write_text(json.dumps(score))
+                settings = recipe(source, score)
+                settings.update(sidCount=count, clock="ntsc")
+                configuration.write_text(json.dumps(settings))
+                manifest = ARRANGER.arrange(configuration, root / "out")
+                self.assertEqual(manifest["clock"], "NTSC")
+                self.assertEqual(manifest["clockHz"], 14318181.82 / 14)
+                self.assertEqual(manifest["frameCycles"], 17095)
+                rate = (14318181.82 / 14) / 17095
+                for voice in manifest["voices"]:
+                    note = voice["notes"][0]
+                    self.assertLessEqual(abs(note["sourceStartTick"] / rate - 1.1), 0.5 / rate)
+                    self.assertLessEqual(abs((note["sourceStartTick"] + note["sourceDurationTicks"]) / rate - 1.47), 0.5 / rate)
+                self.assertLessEqual(abs(manifest["scoreTicks"] / rate - 5), 0.5 / rate)
+                self.assertEqual(manifest["tailTicks"], 4)
+                self.assertEqual(manifest["sourceTailPalTicks"], 3)
+                self.assertEqual(manifest["effectTimingPolicy"], "target-vbi")
+                self.assertEqual(manifest["envelopeTimingPolicy"], "retain-sid-adsr-codes")
+                self.assertEqual(manifest["effectUpdateRateHz"], rate)
+
+    def test_clock_override_and_omitted_clock_preserve_the_frozen_pal_native_fixture(self):
+        configuration = ROOT / "tests/fixtures/sidwizard-2sid/recipe.json"
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            default = ARRANGER.arrange(configuration, root / "default")
+            explicit = ARRANGER.arrange(configuration, root / "explicit", clock="pal")
+            self.assertEqual(default["clock"], "PAL")
+            self.assertEqual(Path(default["nativePath"]).read_bytes(), Path(explicit["nativePath"]).read_bytes())
+            self.assertEqual(default["nativeSha256"], "c11f92387cbdec63124ba1933b804e1e78f040eade3658b29ebdd6ad4d600624")
+            settings = json.loads(configuration.read_text())
+            settings["score"] = str((configuration.parent / settings["score"]).resolve())
+            settings["clock"] = "ntsc"
+            alternate = root / "alternate.json"
+            alternate.write_text(json.dumps(settings))
+            overridden = ARRANGER.arrange(alternate, root / "override", clock="pal")
+            self.assertEqual(overridden["clock"], "PAL")
+            self.assertEqual(overridden["nativeSha256"], default["nativeSha256"])
+
+    def test_ntsc_short_patch_threshold_retains_original_pal_source_duration(self):
+        score = synthetic_score([{"startBeat": 0, "durationBeats": 2.1, "midi": 60}], beats=8)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "score.json"
+            source.write_text(json.dumps(score))
+            settings = recipe(source, score)
+            settings.update(clock="ntsc")
+            settings["instruments"]["short"] = dict(INSTRUMENT, name="SHORT")
+            settings["shortNoteInstruments"]["melody"] = "short"
+            configuration = root / "recipe.json"
+            configuration.write_text(json.dumps(settings))
+            manifest = ARRANGER.arrange(configuration, root / "out")
+            note = manifest["voices"][0]["notes"][0]
+            self.assertEqual(note["sourcePalDurationTicks"], 2)
+            self.assertEqual(note["durationTicks"], 3)
+            self.assertEqual(note["instrumentId"], "short")
+
+    def test_unknown_recipe_or_override_clock_is_rejected_before_output(self):
+        for value in ("auto", "PAL", "old-ntsc", None, True):
+            with self.subTest(clock=value), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                score = synthetic_score([], beats=4)
+                source, configuration = root / "score.json", root / "recipe.json"
+                source.write_text(json.dumps(score))
+                settings = recipe(source, score)
+                settings["clock"] = value
+                configuration.write_text(json.dumps(settings))
+                with self.assertRaisesRegex(ValueError, "clock"):
+                    ARRANGER.arrange(configuration, root / "out")
+                self.assertFalse((root / "out").exists())
+                if value is not None:
+                    with self.assertRaisesRegex(ValueError, "clock"):
+                        ARRANGER.arrange(configuration, root / "out", clock=value)
 
     def test_sid_model_is_retained_for_each_chip_without_changing_native_bytes(self):
         for count in (1, 2):

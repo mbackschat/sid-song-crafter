@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import re
 
+from sid_clock import clock_spec
 from verify_player import cpu_type
 
 
@@ -84,7 +85,7 @@ def inspect_module(data):
     pattern_limit, instrument_limit = (100, 36) if sid_count == 1 else (105, 29)
     require(header[4] == 1, "Batch trial supports 1x frame speed only")
     require(header[19] == 3, "Batch trial requires the Extra player (native driver type 3)")
-    require(header[20] == 0, "Batch trial supports standard PAL tuning only")
+    require(header[20] == 0, "Batch trial supports standard A4=440 equal-temperament tuning only")
     require(header[12] == sid_count * 3, f"Batch trial supports one subtune with {sid_count * 3} voice sequences")
     require(1 <= header[13] <= pattern_limit and 1 <= header[14] <= instrument_limit, "Unsupported native pattern or instrument count")
     require(sid_count == 1 or header[22] == 0, "Batch 2SID export requires the native SID2 address ID 0 ($D420)")
@@ -138,7 +139,8 @@ def write_text_field(memory, address, text):
     memory[address:address + 32] = encoded.ljust(32, b"\x00")
 
 
-def export_module(source, output_dir, title=None, author=None, released="2026", *, sid_model="MOS8580"):
+def export_module(source, output_dir, title=None, author=None, released="2026", *, sid_model="MOS8580", clock="pal"):
+    target = clock_spec(clock)
     require(sid_model in ("MOS6581", "MOS8580"), "Native SID model must be MOS6581 or MOS8580")
     data = Path(source).read_bytes()
     summary = inspect_module(data)
@@ -160,12 +162,14 @@ def export_module(source, output_dir, title=None, author=None, released="2026", 
     require(module_end < labels["MUSICDATA_END"], "Native module exceeds SID-Maker's available data memory")
     memory[music:module_end] = data[2:]
     memory[labels["compzptr"]:labels["compzptr"] + 2] = module_end.to_bytes(2, "little")
-    memory[labels["PALNTSC"]] = 1
+    memory[labels["PALNTSC"]] = 1 if target.name == "pal" else 0
     memory[labels["TuningType"]] = 0
     cpu = cpu_type()(memory=memory)
-    routine_cycles = {}
-    for name in ("setEXEdetails", "preparetunedata"):
-        routine_cycles[name] = call(cpu, labels, name)
+    routine_cycles = {"setEXEdetails": call(cpu, labels, "setEXEdetails")}
+    if target.name == "ntsc":
+        # exporter.asm disPtyp reads TuningType from MUSICDATA; preparetunedata later overwrites that workfile header, so clock selection must precede conversion.
+        routine_cycles["disPtyp"] = call(cpu, labels, "disPtyp")
+    routine_cycles["preparetunedata"] = call(cpu, labels, "preparetunedata")
     if sid_count == 2:
         # Upstream's setexport2 UI normally resolves the saved ID before setplayer patches every SID2 operand.
         name = "SID23set:CalcSID2addID"
@@ -183,6 +187,14 @@ def export_module(source, output_dir, title=None, author=None, released="2026", 
     write_text_field(memory, labels["SIDreleatx"], released)
     end = int.from_bytes(bytes(memory[labels["expoendadd"]:labels["expoendadd"] + 2]), "little")
     require(0x1000 < end < labels["MUSICDATA_END"], "SID-Maker returned an invalid export boundary")
+    if target.name == "ntsc":
+        hi, lo = (labels[f"extraPlayer:player:{name}"] for name in ("FREQTBH", "FREQTBL"))
+        require(0x1000 <= hi and hi + 96 <= lo and lo + 96 <= end, "Native Extra frequency tables lie outside the exported player")
+        # SID-Wizard 1.97 altplayers.inc NTSC literals miss A4 by two words and MIDI 104 by 57; use the SID oscillator equation for this new target while preserving accepted PAL bytes.
+        for native_note in range(96):
+            midi = native_note + 11
+            word = round(440 * 2 ** ((midi - 69) / 12) * 2**24 / target.clock_hz)
+            memory[hi + native_note], memory[lo + native_note] = word >> 8, word & 255
     sid_header = labels["SIDHEADER"]
     sid = bytes(memory[sid_header:sid_header + labels["SIDHEADERSIZE"]]) + b"\x00\x10" + bytes(memory[0x1000:end])
     memory[labels["outputformat"]] = 2
@@ -196,7 +208,11 @@ def export_module(source, output_dir, title=None, author=None, released="2026", 
     report = {
         "source": str(Path(source)), "sourceSha256": sha256(data), "module": summary,
         "sid": str(sid_path), "sidSha256": sha256(sid), "prg": str(prg_path), "prgSha256": sha256(standalone),
-        "sidWizardVersion": "1.97", "player": "Extra", "driverType": 3, "clock": "PAL", "sidModel": sid_model,
+        "sidWizardVersion": "1.97", "player": "Extra", "driverType": 3, "clock": target.name.upper(), "clockHz": target.clock_hz,
+        "frameCycles": target.frame_cycles, "ticksPerSecond": target.ticks_per_second, "sidModel": sid_model,
+        "effectTimingPolicy": "target-vbi", "effectUpdateRateHz": target.ticks_per_second, "envelopeTimingPolicy": "retain-sid-adsr-codes",
+        "frequencyTablePolicy": "unchanged-stock-pal" if target.name == "pal" else "rounded-equal-temperament-a4-440",
+        "regionalDifferences": "Native row counts and instrument bytes are retained, with one play call per target VBI. Arrange beat-based scores for this clock before export. NTSC modulation and first-frame durations follow its faster VBI; unchanged ADSR codes follow its faster SID clock. Register-unit detune and modulation amplitudes are not rescaled.",
         "sidCount": sid_count, "sids": [{"baseAddress": 0xd400 + index * 0x20, "model": sid_model} for index in range(sid_count)], "psidVersion": 2 if sid_count == 1 else 3,
         "frameSpeed": 1, "loadAddress": 0x1000, "initAddress": 0x1000, "playAddress": 0x1003,
         "standaloneLoadAddress": 0x0801, "standaloneStartAddress": labels["start2"],
@@ -226,8 +242,9 @@ def main():
     parser.add_argument("--author")
     parser.add_argument("--released", default="2026")
     parser.add_argument("--sid-model", choices=("MOS6581", "MOS8580"), default="MOS8580", help="PSID chip-model declaration; native SWM/SWS and standalone PRG do not declare a hardware model")
+    parser.add_argument("--clock", choices=("pal", "ntsc"), default="pal", help="Export target; native module rows must already use this target's VBI grid")
     args = parser.parse_args()
-    print(json.dumps(export_module(args.source, args.output_dir, args.title, args.author, args.released, sid_model=args.sid_model), indent=2))
+    print(json.dumps(export_module(args.source, args.output_dir, args.title, args.author, args.released, sid_model=args.sid_model, clock=args.clock), indent=2))
 
 
 if __name__ == "__main__":

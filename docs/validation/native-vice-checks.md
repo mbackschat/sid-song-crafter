@@ -1,6 +1,6 @@
 # Headless native-player checkpoints
 
-The [native VICE verifier](../../scripts/verify-native-vice.py) boots a SID-Wizard Extra single-speed PAL standalone PRG through BASIC and compares all 25 writable sound-register shadows per SID with the independent CPU audit at selected completed play-call counts. It supports one SID or two same-model MOS6581 or MOS8580 chips at `$D400/$D420`. Pass `--export-report PATH` to select the intended model; without a report it configures one MOS8580. The standalone PRG does not enforce a hardware model. It requires the [headless VICE installation](../setup/local-setup.md); no GUI, socket or audio device is needed.
+The [native VICE verifier](../../scripts/verify-native-vice.py) boots a SID-Wizard Extra single-speed PAL or NTSC standalone PRG through BASIC and compares all 25 writable sound-register shadows per SID with the independent CPU audit at selected completed play-call counts. It supports one SID or two same-model MOS6581 or MOS8580 chips at `$D400/$D420`. Pass `--export-report PATH` to select the intended model and clock; without a report it configures one PAL MOS8580. The standalone PRG does not enforce a hardware model. It requires the [headless VICE installation](../setup/local-setup.md); no GUI, socket or audio device is needed.
 
 ```sh
 python3 scripts/verify-native-vice.py \
@@ -21,7 +21,7 @@ The unmodified native two-chip starter asks for the second SID's address. It pol
 
 The initial breakpoint at `$1003` is after initialization and before the first play call, so it represents zero completed calls. Reaching completed call count 20 requires ignoring the next 19 crossings. Every later interval uses `nextCount - previousCount - 1`. Select decimal radix for ignore counts and hexadecimal radix for memory output; see the pinned [VICE 3.9 monitor manual](../../.tools/vice-headless-3.9/source/doc/vice.texi).
 
-PAL play entries must remain within seven cycles of `firstEntry + completedCalls × 19656`. This allows the instruction-phase jitter of the seven-cycle `$d012` polling loop in SID-Wizard 1.97's `exporter.asm`, `rast1st`, while rejecting raster-line or frame drift. The verifier requires a successful monitor exit; deliberate cycle-limit audio capture has a separate acceptance rule in [the audio guide](../workflows/audio-workflow.md).
+Play entries must remain within seven cycles of `firstEntry + completedCalls × frameCycles`, with 19,656 cycles for PAL and 17,095 for 263-line NTSC. This allows the instruction-phase jitter of the seven-cycle `$d012` polling loop in SID-Wizard 1.97's `exporter.asm`, `rast1st`, while rejecting raster-line or frame drift. The verifier requires a successful monitor exit; deliberate cycle-limit audio capture has a separate acceptance rule in [the audio guide](../workflows/audio-workflow.md).
 
 ## Validation status and limits
 

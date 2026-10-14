@@ -26,7 +26,7 @@ static void write_u32(std::ostream &output, uint32_t value) {
     write_u16(output, value >> 16);
 }
 
-static bool has_dual_sid_header(const char *path) {
+static bool has_dual_sid_header(const char *path, SidConfig::c64_model_t render_clock) {
     std::ifstream input(path, std::ios::binary);
     if (!input) throw std::runtime_error("Unable to open the SID input");
     std::array<unsigned char, 124> header{};
@@ -43,7 +43,11 @@ static bool has_dual_sid_header(const char *path) {
     }
     if (header[122] != 0x42) throw std::runtime_error("Two-SID rendering requires SID bases $D400/$D420");
     const unsigned int flags = header[118] << 8 | header[119];
-    if (flags != 0xa4 && flags != 0x54) throw std::runtime_error("Two-SID rendering requires explicit PAL and two same-model MOS6581 or MOS8580 chips without MUS/PlaySID flags");
+    if (flags != 0xa4 && flags != 0x54 && flags != 0xa8 && flags != 0x58) {
+        throw std::runtime_error("Two-SID rendering requires explicit PAL or NTSC and two same-model MOS6581 or MOS8580 chips without MUS/PlaySID flags");
+    }
+    const SidConfig::c64_model_t declared_clock = (flags & 0x0c) == 4 ? SidConfig::PAL : SidConfig::NTSC;
+    if (render_clock != declared_clock) throw std::runtime_error("Two-SID rendering clock must match the explicit header clock");
     if (std::any_of(header.begin() + 18, header.begin() + 22, [](unsigned char value) { return value != 0; })) {
         throw std::runtime_error("Two-SID rendering requires VBI timing for every subtune");
     }
@@ -138,11 +142,11 @@ int main(int argc, char **argv) {
             throw std::runtime_error("Seconds must be greater than zero and at most 600");
         }
         constexpr uint32_t rate = 44100;
-        constexpr unsigned int cycles = 312 * 63;
+        // libsidplayfp v3.1.1 src/player.cpp:241 dispatches scheduler events rather than CPU cycles; retain the legacy batch for stable snapshots.
+        constexpr unsigned int batch_size = 19656;
         const uint32_t frame_count = std::max(1L, std::lround(seconds * rate));
         SIDLiteBuilder builder("SIDLite");
-        const bool declared_dual = has_dual_sid_header(argv[1]);
-        if (declared_dual && options.clock != SidConfig::PAL) throw std::runtime_error("Two-SID rendering requires PAL");
+        const bool declared_dual = has_dual_sid_header(argv[1], options.clock);
         SidTune tune(argv[1]);
         if (!tune.getStatus()) throw std::runtime_error(tune.statusString());
         // SidTune starts unselected; psiddrv passes currentSong()-1 to init (libsidplayfp v3.1.1 src/psiddrv.cpp).
@@ -151,6 +155,7 @@ int main(int argc, char **argv) {
         }
         if (tune.selectSong(options.subtune) == 0) throw std::runtime_error("Unable to select the SID subtune");
         const SidTuneInfo *tune_info = tune.getInfo();
+        const SidTuneInfo::clock_t selected_clock = options.clock == SidConfig::PAL ? SidTuneInfo::CLOCK_PAL : SidTuneInfo::CLOCK_NTSC;
         const unsigned int sid_count = tune_info->sidChips();
         unsigned int channels;
         switch (sid_count) {
@@ -160,7 +165,7 @@ int main(int argc, char **argv) {
                 break;
             case 2:
                 if (!declared_dual || tune_info->sidChipBase(0) != 0xd400 || tune_info->sidChipBase(1) != 0xd420
-                    || tune_info->clockSpeed() != SidTuneInfo::CLOCK_PAL || tune_info->songSpeed() != SidTuneInfo::SPEED_VBI
+                    || tune_info->clockSpeed() != selected_clock || tune_info->songSpeed() != SidTuneInfo::SPEED_VBI
                     || (tune_info->sidModel(0) != SidTuneInfo::SIDMODEL_6581 && tune_info->sidModel(0) != SidTuneInfo::SIDMODEL_8580)
                     || tune_info->sidModel(0) != tune_info->sidModel(1)) {
                     throw std::runtime_error("Unsupported two-SID playback contract");
@@ -188,7 +193,7 @@ int main(int argc, char **argv) {
         }
         player.initMixer(channels == 2);
         // v3.1.1 returns samples despite the header saying bytes: https://github.com/libsidplayfp/libsidplayfp/blob/v3.1.1/src/player.cpp#L591.
-        const int buffer_size = player.getBufSize(cycles);
+        const int buffer_size = player.getBufSize(batch_size);
         if (buffer_size <= 0) throw std::runtime_error("Invalid mixer buffer size");
         std::vector<short> buffer(buffer_size);
         std::ofstream output(argv[2], std::ios::binary);
@@ -211,7 +216,7 @@ int main(int argc, char **argv) {
         trace << '\n';
         uint32_t written = 0;
         while (written < frame_count) {
-            const int samples = player.play(cycles);
+            const int samples = player.play(batch_size);
             if (samples <= 0) throw std::runtime_error(player.error());
             if (static_cast<size_t>(samples) * channels > buffer.size()) throw std::runtime_error("Mixer buffer is too small");
             unsigned int mixed;
