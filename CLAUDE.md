@@ -14,7 +14,8 @@ Current verified work and continuation:
 - [Deflektor primary](docs/research/composition/deflektor-preparation.md#compiled-export-and-listening-package) and [familiar transfer](docs/research/composition/instruments/deflektor-decoded-programs.md): accepted. The [bounded Trap contrast](docs/research/composition/daglish-contrast.md#scoped-corroboration-outcome) is complete, including the requested [blind model calibration](docs/research/audio-assessment.md#trap-melodic-motion-and-development-calibration): Qwen matched both human descriptions and controls; Gemini failed development and silence.
 - [Bounded Shades/Giana contrast](docs/research/composition/huelsbeck-contrast.md#scoped-corroboration-outcome): complete; pulse motion corroborated and heard, shared-filter scheduling narrowed to each driver.
 - [Bounded Cybernoid II/Turbo Outrun contrast](docs/research/composition/tel-contrast.md): complete; packed sample playback and a tonal waveform onset are verified, with no audible difference detected in the onset diagnostic.
-- Continue the [Monty/Commando contrast](docs/research/composition/hubbard-contrast.md) under the [study-plan order](docs/research/study-plan.md#delivery-order-and-work-in-progress). Keep audio models experimental and preserve human listening authority.
+- [Monty/Commando contrast](docs/research/composition/hubbard-contrast.md): complete for the bounded scope; no audible difference detected in the isolated percussion diagnostic. All six composer contrasts are closed.
+- Continue with [Take On Me](docs/research/composition/pop-theme-preparation.md#take-on-me) under the [study-plan order](docs/research/study-plan.md#delivery-order-and-work-in-progress). Keep audio models experimental and preserve human listening authority.
 
 ## Finish musical deliverables
 

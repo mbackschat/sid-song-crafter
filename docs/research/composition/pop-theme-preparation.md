@@ -1,6 +1,6 @@
 # Pop songs and TV/film themes: pinned intake
 
-This prepares the four later references in the [study plan](../study-plan.md) while Shades remains the active reconstruction. It establishes exact downloads, archive declarations and scoped attribution. Take On Me has bounded CPU/VICE comparisons; [Billie Jean](billie-jean-preparation.md) has an independently expanded complete score cycle, and Airwolf has a complete numeric score/store model checked against two traversals. Independent arrangement/export, rendered comparison and listening remain pending for all four.
+This owns the four later references in the [study plan](../study-plan.md). Take On Me is the active case after closure of all six bounded composer contrasts. It establishes exact downloads, archive declarations and scoped attribution. Take On Me has bounded CPU/VICE comparisons; [Billie Jean](billie-jean-preparation.md) has an independently expanded complete score cycle, and Airwolf has a complete numeric score/store model checked against two traversals. Independent arrangement/export, rendered comparison and listening remain pending for all four.
 
 ## Sources and attribution
 
