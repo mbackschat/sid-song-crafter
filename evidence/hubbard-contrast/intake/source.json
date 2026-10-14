@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "scope": "Selected Commando source #1 intake; archive declarations and exact owning STIL entry",
+  "source": {
+    "id": "commando",
+    "title": "Commando",
+    "credit": "Rob Hubbard",
+    "hvscPath": "MUSICIANS/H/Hubbard_Rob/Commando.sid",
+    "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/H/Hubbard_Rob/Commando.sid",
+    "sha256": "5295378dacb06593a9c1853ce11a325ce885a16e26d56274d424e06492948de8",
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/.local/commando-source.sid",
+    "default": false,
+    "bytes": 4165
+  },
+  "registry": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/config/local-assets.json",
+    "bytes": 12447,
+    "sha256": "542a2b89a00e4d45aa30c4fe75f9c00d89530ffd0d4ae41c6d0d5a7161626b95"
+  },
+  "header": {
+    "schemaVersion": 1,
+    "bytes": 4165,
+    "sha256": "5295378dacb06593a9c1853ce11a325ce885a16e26d56274d424e06492948de8",
+    "format": "PSID",
+    "version": 2,
+    "dataOffset": 124,
+    "headerLoadAddress": 0,
+    "loadAddress": 20480,
+    "payloadBytes": 4039,
+    "endAddressExclusive": 24519,
+    "initAddress": 24498,
+    "playAddress": 20498,
+    "subtunes": 19,
+    "defaultSubtune": 1,
+    "selectedSubtune": 1,
+    "speedWord": 0,
+    "flags": 20,
+    "clockDeclaration": "PAL",
+    "sidModelDeclaration": "MOS6581",
+    "selectedTimingDeclaration": "VBI",
+    "title": "Commando",
+    "author": "Rob Hubbard",
+    "released": "1985 Elite",
+    "callableProfile": {
+      "profile": "pal-banked",
+      "accepted": true,
+      "reason": null,
+      "hostBase": 1024,
+      "requestedHostBase": 1024
+    },
+    "limits": "Header declarations and current profile admission only; no driver execution, measured cadence, subtune-role identification or listening verdict."
+  },
+  "selection": {
+    "defaultSubtune": 1,
+    "explicitSubtune": 1,
+    "role": "Music #1, initialized opening and continuing bounded excerpts"
+  },
+  "credits": {
+    "c64Arrangement": "Rob Hubbard",
+    "arcadeSourceComposition": "Tamayo Kawamoto",
+    "basis": "The SID header names Hubbard; the exact owning STIL #1 annotation names Kawamoto for BGM1 at 0:00 and other identified later arcade material. STIL reproduces Hubbard describing listening to and adapting the arcade version. This preserves separate credits rather than replacing the C64 header."
+  },
+  "stil": {
+    "path": ".local/downloads/HVSC-STIL.txt",
+    "sha256": "b1ef3584a5b3501e2bbd2ef056d6539a1bbee7933a7828537c3946c1b16cde43",
+    "version": "STIL v85, June 28, 2026",
+    "entryPath": "/MUSICIANS/H/Hubbard_Rob/Commando.sid",
+    "firstLine": 50466,
+    "lastLine": 50493,
+    "entrySha256": "ba43c3a654b1387b172410970ca04191206295e4e801b724611f2e706bdddae5",
+    "entryHashRecipe": "Original CRLF bytes from exact path line through blank lines before the next path",
+    "subtuneAnnotations": [
+      {
+        "subtune": 1,
+        "sourceTitle": "BGM1 [from the arcade game Commando] (0:00)",
+        "sourceComposer": "Tamayo Kawamoto"
+      },
+      {
+        "subtune": 1,
+        "sourceTitle": "Base [from the arcade game Commando] (0:53)",
+        "sourceComposer": "Tamayo Kawamoto"
+      },
+      {
+        "subtune": 1,
+        "sourceTitle": "Level Complete [from the arcade game Commando] (1:16-1:32)",
+        "sourceComposer": "Tamayo Kawamoto"
+      },
+      {
+        "subtune": 1,
+        "sourceTitle": "Base [from the arcade game Commando] (2:02-2:10)",
+        "sourceComposer": "Tamayo Kawamoto"
+      },
+      {
+        "subtune": 1,
+        "sourceTitle": "Base [from the arcade game Commando] (2:18-2:21)",
+        "sourceComposer": "Tamayo Kawamoto"
+      },
+      {
+        "subtune": 1,
+        "sourceTitle": "Level Complete [from the arcade game Commando] (3:19-3:27)",
+        "sourceComposer": "Tamayo Kawamoto"
+      },
+      {
+        "subtune": 1,
+        "sourceTitle": "Base [from the arcade game Commando] (3:33-3:36)",
+        "sourceComposer": "Tamayo Kawamoto"
+      },
+      {
+        "subtune": 3,
+        "sourceTitle": "<?> [from the arcade game Commando]",
+        "sourceComposer": "Tamayo Kawamoto"
+      }
+    ],
+    "unlabelledSubtunes": [
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  "metadataLimitations": "Only #1 is selected or executed; no complete form, original arcade equivalence or roles for unlabelled archive entries are established.",
+  "listeningReview": null
+}
