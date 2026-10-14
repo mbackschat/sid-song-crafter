@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    12.0,
+    28.0
+  ],
+  "window": {
+    "startFrame": 529200,
+    "endFrame": 1234800,
+    "frames": 705600,
+    "startSeconds": 12.0,
+    "endSeconds": 28.0,
+    "durationSeconds": 16.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-independent-full/cache/phrase/31470b050175896751c2e5282fb45b716e5e48be27771af2624c288e7cd675b5/attempt-31c6ae4d74a74118be7b1076db131527/phrase-reference-then-ours.ab.wav",
+    "frames": 1433250,
+    "durationSeconds": 32.5,
+    "sha256": "54cc4286855916c9b09688c54414577dc97ba633f52828146da36421bd99e55a"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 705600
+    },
+    {
+      "label": "silence",
+      "startFrame": 705600,
+      "endFrame": 727650
+    },
+    {
+      "label": "B",
+      "startFrame": 727650,
+      "endFrame": 1433250
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-independent-full/cache/reference-render/9d4f2b2f8bc254e4ed42b71989e395d2c459fad640d5e7c764043fd236da8049/attempt-0f88cad0117f43eeb197421555347d70/render.wav",
+      "sha256": "ec941972320f03cf526964f1285fa49ac636b24cdd7f2b500db799ac4b9e0bed",
+      "originalFrames": 7717500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 13147,
+        "peakDbfs": -7.93246544052856,
+        "clippedSamples": 0,
+        "rms": 2044.29449647945,
+        "acRms": 1700.9678535881537,
+        "acRmsDbfs": -25.695076579102896,
+        "perChannel": [
+          {
+            "dc": 1133.9525340136054,
+            "rms": 2044.29449647945,
+            "acRms": 1700.9678535881537
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/deflektor-independent-full/cache/candidate-render/b9e5d44def595975018a5e5467c7d6fd590e9cb404eb2c7230b0d22ab720c68c/attempt-b672f632cc934167bebff287beb1a9fe/render.wav",
+      "sha256": "8089287269c967e36f4efc880457213837d5a03a27be6bec0e69df6556014528",
+      "originalFrames": 7717500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 13164,
+        "peakDbfs": -7.9212412267476395,
+        "clippedSamples": 0,
+        "rms": 2043.021690621253,
+        "acRms": 1700.043104384409,
+        "acRmsDbfs": -25.6998000391704,
+        "perChannel": [
+          {
+            "dc": 1133.0450439342403,
+            "rms": 2043.021690621253,
+            "acRms": 1700.043104384409
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

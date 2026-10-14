@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "reference-pin",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "asset",
+        ".local/research/deflektor/Deflektor.sid",
+        "--sha256",
+        "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d",
+        "--output",
+        "{out}/reference.json"
+      ],
+      "inputs": [
+        ".local/research/deflektor/Deflektor.sid",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "reference.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "build",
+      "command": [
+        "{python}",
+        "scripts/compose-deflektor.py",
+        "songs/studies/deflektor-reconstruction/title.json",
+        "--output",
+        "{out}/candidate"
+      ],
+      "inputs": [
+        "songs/studies/deflektor-reconstruction/title.json",
+        "scripts/compose-deflektor.py",
+        "scripts/deflektor_player.py",
+        "scripts/deflektor_score.py",
+        "scripts/deflektor_programs.py",
+        "scripts/sid_assembler.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        "scripts/sid_clock.py",
+        "scripts/deflektor_compiler.py",
+        "scripts/deflektor_asm.py"
+      ],
+      "outputs": [
+        "candidate/reconstructed.sid",
+        "candidate/reconstructed.prg",
+        "candidate/verification.json",
+        "candidate/audit.json",
+        "candidate/writes.json",
+        "candidate/state-checkpoints.json",
+        "candidate/player.asm",
+        "candidate/player.listing"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "numeric-source-check",
+      "command": [
+        "{python}",
+        "evidence/deflektor-player/check.py",
+        "songs/studies/deflektor-reconstruction/title.json",
+        "--output",
+        "{out}/numeric"
+      ],
+      "inputs": [
+        "songs/studies/deflektor-reconstruction/title.json",
+        "evidence/deflektor-player/check.py",
+        "evidence/deflektor-form/full40000/writes.json.gz",
+        ".local/research/deflektor/Deflektor.sid",
+        ".tools/test-deps/py65",
+        "evidence/deflektor-programs/model.py",
+        "evidence/deflektor-caller/model.py",
+        "evidence/deflektor-motion/model.py",
+        "scripts/deflektor_player.py",
+        "scripts/deflektor_score.py",
+        "scripts/deflektor_programs.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py"
+      ],
+      "outputs": [
+        "numeric/verification.json",
+        "numeric/computed-writes.json.gz",
+        "numeric/edited-cases.json.gz"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "vice",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:build}/candidate/reconstructed.sid",
+        "--oracle",
+        "{stage:build}/candidate/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "8550",
+        "--timeout",
+        "300",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:build}/candidate/reconstructed.sid",
+        "{stage:build}/candidate/writes.json",
+        "scripts/trace-sid-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/study.json",
+        "vice/trace.json",
+        "vice/monitor.log",
+        "vice/command.json",
+        "vice/commands.mon"
+      ],
+      "timeoutSeconds": 330,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/deflektor/Deflektor.sid",
+        "{out}/render.wav",
+        "175",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        ".local/research/deflektor/Deflektor.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:build}/candidate/reconstructed.sid",
+        "{out}/render.wav",
+        "175",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:build}/candidate/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "--seconds",
+        "175",
+        "--output",
+        "{out}/audio.json",
+        "--tail-seconds",
+        "1",
+        "--max-tail-ac-rms",
+        "1"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "opening",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{out}/opening-reference-then-ours",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "16",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "opening-reference-then-ours.ab.wav",
+        "opening-reference-then-ours.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "ending",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{out}/ending-reference-then-ours",
+        "--start-seconds",
+        "155",
+        "--end-seconds",
+        "175",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "ending-reference-then-ours.ab.wav",
+        "ending-reference-then-ours.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "phrase",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{out}/phrase-reference-then-ours",
+        "--start-seconds",
+        "12",
+        "--end-seconds",
+        "28",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "phrase-reference-then-ours.ab.wav",
+        "phrase-reference-then-ours.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "fullReference": "{stage:reference-render}/render.wav",
+    "fullCandidate": "{stage:candidate-render}/render.wav",
+    "opening": "{stage:opening}/opening-reference-then-ours.ab.wav",
+    "ending": "{stage:ending}/ending-reference-then-ours.ab.wav",
+    "phrase": "{stage:phrase}/phrase-reference-then-ours.ab.wav",
+    "numericSourceProof": "{stage:numeric-source-check}/numeric/verification.json",
+    "compiledProof": "{stage:build}/candidate/verification.json",
+    "viceProof": "{stage:vice}/vice/study.json"
+  }
+}

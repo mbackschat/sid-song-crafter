@@ -8,6 +8,7 @@ Use [the archive and cache workflow](../docs/workflows/build-cache.md) to instal
 
 | Evidence | Interpretation and reproduction |
 | --- | --- |
+| Deflektor compiled title | [Complete ordered-store, CPU, VICE, audio and pending listening evidence](../docs/research/composition/deflektor-preparation.md#compiled-export-and-listening-package); [recipe run](deflektor-compiled/run.json) and [cached repeat](deflektor-compiled/repeat-run.json) |
 | OpenRouter/Qwen audio assessment pilot | [Measured failures, cost and reproduction](../docs/research/audio-assessment.md#measured-openrouter-pilot-not-accepted), [structured assessment](audio-assessment-openrouter/assessment.json); full model responses and request receipts, no audio or credentials |
 | Requested Gemini and GPT Audio Mini audio pilots | [Same-probe comparison and limitations](../docs/research/audio-assessment.md#requested-gemini-and-gpt-audio-mini-comparisons), [Gemini assessment](audio-assessment-gemini/assessment.json), [GPT Audio Mini assessment](audio-assessment-openai-mini/assessment.json); exact prompts, model metadata, full responses and billed receipts |
 | Elementary audio perception and prompt/sample-rate controls | [Measured scope and reproduction](../docs/research/audio-assessment.md#elementary-perception-and-presentation-follow-up), [Qwen gate](audio-assessment-controls/qwen/verified-assessment.json), [presentation assessment](audio-assessment-presentation/assessment.json); oracle fingerprints, full responses and billed receipts |

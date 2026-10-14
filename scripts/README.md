@@ -27,7 +27,7 @@ These remain in the shared scripts directory because supported workflows and tes
 | Monty | [compose-monty.py](compose-monty.py), `monty_title_*` runtime modules, [accepted familiar transfer](../docs/research/composition/instruments/monty-decoded-programs.md) |
 | Rambo | [compose-rambo.py](compose-rambo.py), [rambo_player.py](rambo_player.py), symbolic score/Morse and computed sound programs; [full compiled delivery](../docs/research/composition/rambo-preparation.md#independent-compiled-loader-and-musical-delivery), [accepted familiar transfer](../docs/research/composition/instruments/rambo-decoded-programs.md) |
 | Ghouls | [compose-ghouls.py](compose-ghouls.py), numeric score/sound modules and independent assembly; [complete execution and render verification](../docs/research/composition/ghouls-preparation.md#compiled-export-and-complete-listening-package), [familiar transfer](../docs/research/composition/instruments/ghouls-decoded-programs.md); declared scope complete with qualified transfer acceptance and independent 53-note pitch review |
-| Deflektor | [deflektor_player.py](deflektor_player.py), numeric score/program modules; [preparation evidence](../docs/research/composition/deflektor-preparation.md), not yet a completed compiled/listening-reviewed backend |
+| Deflektor | [compose-deflektor.py](compose-deflektor.py), computed 6502 compiler and numeric score/program modules; [editable source](../songs/studies/deflektor-reconstruction/README.md), [full CPU/VICE/render proof and pending listening](../docs/research/composition/deflektor-preparation.md#compiled-export-and-listening-package) |
 
 ## Source-specific work
 

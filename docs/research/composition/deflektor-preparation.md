@@ -1,6 +1,6 @@
 # Deflektor preparation
 
-This pins Ben Daglish's *Deflektor* for the [study plan](../study-plan.md). Shades remains the active reconstruction. The [composer account](../composers/follin-daglish.md#ben-daglish-a-memorable-instrument-can-organise-a-whole-piece) connects the piece's composition to a satisfying cowbell sound; the binary's precise cowbell mechanism remains unestablished. Apparent realism alone does not identify samples, ring modulation or oscillator allocation.
+This pins Ben Daglish's *Deflektor*, the active reconstruction in the [study plan](../study-plan.md). The [composer account](../composers/follin-daglish.md#ben-daglish-a-memorable-instrument-can-organise-a-whole-piece) connects the piece's composition to a satisfying cowbell sound; the binary's precise cowbell mechanism remains unestablished. Apparent realism alone does not identify samples, ring modulation or oscillator allocation.
 
 ## Reference and execution boundary
 
@@ -230,3 +230,37 @@ python3 scripts/trace-sid-vice.py .local/research/deflektor/Deflektor.sid --prof
 Choose fresh output paths. [sid_intake.py](../../../scripts/sid_intake.py) reports PSID/RSID v2 declarations and selected-host admission separately; it performs no CPU execution. The following two commands execute the original under their declared controlled environments. To inspect instructions later, pass the same host selection to the [instruction tracer](../tools/sid-program-analysis.md#trace-a-selected-subtune-in-banked-ram). Reference WAVs remain local; no render or listening assessment has been made here.
 
 Next attribute the recurring staged candidate by listening in context before choosing an intervention. Preserve its pitch/noise trajectory, articulation, shared-filter state and oscillator dependencies. The complete numeric player now computes the selected register sequence independently; the study still needs a compiled arrangement, acoustic ending, listening, and an original transfer phrase.
+
+## Compiled export and listening package
+
+On 2026-10-14 the independent [compiler](../../../scripts/deflektor_compiler.py) and [6502 implementation](../../../scripts/deflektor_asm.py) exported the [editable title](../../../songs/studies/deflektor-reconstruction/title.json). Runtime order/pattern consumption and computed sound programs replace the original executable; the payload contains neither original driver instructions nor a captured register schedule. The [backend contract](../../workflows/decoded-song-workflow.md#deflektor-packed-score-player) and [source README](../../../songs/studies/deflektor-reconstruction/README.md) describe reuse and limits.
+
+| Evidence | Verified scope |
+| --- | --- |
+| [Numeric source recheck](../../../evidence/deflektor-compiled/numeric/verification.json) | All 166,845 canonical original stores across 40,000 calls; current model plus fresh 192-call note, duration and pulse edits against privately patched originals |
+| [Compiled proof](../../../evidence/deflektor-compiled/candidate/verification.json) and [CPU audit](../../../evidence/deflektor-compiled/candidate/audit.json) | All 40,000 compiled calls match numeric output; maximum 2,812 cycles, 6,327-byte payload; executed writer coverage, poisoned-state reset and actual PRG bootstrap checks |
+| [Full VICE proof](../../../evidence/deflektor-compiled/vice/study.json) | All 166,845 stores match over calls 0–8,550, including zero init stores and the natural stop; maximum cadence error six cycles within the nine-cycle polling tolerance |
+| [Rendered signal](../../../evidence/deflektor-compiled/audio.json) | Both full 175-second mono PCM16/44.1-kHz renders have no clipped samples; final second has zero AC RMS and the same retained DC offset of 157 PCM units |
+| [Listening submission](../../../evidence/deflektor-compiled/listening-submission.json) | Stable filenames and exact audio fingerprints; listener verdict pending |
+
+The stop at call 8,480 writes control zero to all three voices and leaves subsequent calls without SID stores. The 40,000-call proof includes 31,519 such quiet calls. The render includes the original ending and settled tail; no authored fade or continuation is added. Candidate and original WAV hashes differ: ordered register equality does not imply instruction-cycle, internal oscillator/envelope or PCM identity. Full callable VICE execution and modeled PRG bootstrap are distinct evidence, neither claiming physical C64 playback or original-game execution.
+
+```sh
+python3 scripts/listening-package.py config/listening/deflektor-full.json --output build/deflektor-independent-full
+python3 scripts/publish-listening.py build/deflektor-independent-full/run.json --selection config/listening/deflektor-full.audition.json --output build/deflektor-listening
+```
+
+The [recipe](../../../config/listening/deflektor-full.json) automates source verification, compilation, source-model recheck, VICE, rendering, signal checks and comparisons. Its [initial run](../../../evidence/deflektor-compiled/run.json) took 55.73 seconds; an unchanged [repeat](../../../evidence/deflektor-compiled/repeat-run.json) took 0.44 seconds, reusing all ten stages with no stage subprocesses. These are measured local workflow times, not rendering-speed claims. The historical complete original ledger is reused; three edited-source probes execute afresh in a cache-miss numeric stage. Declared dependencies include the shared clock module.
+
+The submitted comparisons use original first, a 0.5-second gap, then ours at unchanged levels:
+
+- `build/deflektor-listening/phrase-reference-then-ours.ab.wav`: source seconds 12–28, including recurring percussion; 32.5 seconds total.
+- `build/deflektor-listening/ending-reference-then-ours.ab.wav`: source seconds 155–175; 40.5 seconds total.
+- `build/deflektor-listening/opening-reference-then-ours.ab.wav`: optional opening seconds 0–16; 32.5 seconds total.
+- `build/deflektor-listening/reference.wav` and `reconstructed.wav`: complete 175-second renders.
+
+### Model-assistance review
+
+| Date / checkpoint | Task and setup | Run or skip / reason | Useful action | Eligibility / next checkpoint |
+| --- | --- | --- | --- | --- |
+| 2026-10-14 / first representative title audition | Sound/phrasing and complete ending; no changed model, prompt or preprocessing proposed | Skip audio-model calls: current [calibration](../audio-assessment.md#use-and-reassess-model-assistance) does not qualify subtle timbre or missing-tail judgments, and another identical prompt does not address its failures | Use complete execution coverage, explicit final-window measurements and matched human audition; no musical changes inferred from model scores | Models remain experimental; reassess after listener feedback and at the familiar-transfer audition, then before case closure |

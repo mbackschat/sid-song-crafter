@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "606ad4cb19e29c060bb77a9b44253dee62d3d972724acb6cddf625fc2466d44d",
+  "referenceLedgerSha256": "7c1ccca95afc19175b4efc50674f8f1e23783b0dcad525d5955a9cf85523fa00",
+  "descriptionSha256": "aa6ba2f380f493335d678ea77efa31f723cff827a2f5685f566431584b4fe6fb",
+  "checkerSha256": "fdc3a3a798f3b43a40cc5b5616336156457727c1f41a61530f43d7bc48fe8d1b",
+  "dependencies": {
+    "deflektor_player.py": "1f36c91b44102b7be7080ab0237f70b1cc96b60ca3b48ab48752c4c10d870c4e",
+    "deflektor_programs.py": "1d61eef160621d5157c7db44dbba0a919651d9e296f07064a19a5f9ae351cf75",
+    "deflektor_score.py": "b4a8df1185a397ef5325a3f8af348a13c51343c1253229aec88c504b40915024",
+    "psid_audit.py": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0",
+    "psid_profile.py": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107",
+    "sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "complete": {
+    "calls": 40000,
+    "matchedStores": 166845,
+    "firstStopCall": 8480,
+    "stoppedCallsWithoutWrites": 31519,
+    "noRuntimeFileIO": true,
+    "inputUnchanged": true
+  },
+  "capChecks": [
+    {
+      "calls": 0,
+      "stores": 0
+    },
+    {
+      "calls": 1,
+      "stores": 13
+    },
+    {
+      "calls": 64,
+      "stores": 502
+    },
+    {
+      "calls": 8480,
+      "stores": 166842
+    },
+    {
+      "calls": 8481,
+      "stores": 166845
+    }
+  ],
+  "unchangedComponentDefinitions": [
+    {
+      "family": "programs",
+      "definition": "Stage"
+    },
+    {
+      "family": "programs",
+      "definition": "WaveProgram"
+    },
+    {
+      "family": "programs",
+      "definition": "WaveState"
+    },
+    {
+      "family": "programs",
+      "definition": "validate_wave"
+    },
+    {
+      "family": "programs",
+      "definition": "initialize_wave"
+    },
+    {
+      "family": "programs",
+      "definition": "advance_wave"
+    },
+    {
+      "family": "programs",
+      "definition": "voice_writes"
+    },
+    {
+      "family": "caller",
+      "definition": "BodyState"
+    },
+    {
+      "family": "caller",
+      "definition": "advance_prelude"
+    },
+    {
+      "family": "caller",
+      "definition": "PitchStage"
+    },
+    {
+      "family": "caller",
+      "definition": "ScorePitchProgram"
+    },
+    {
+      "family": "caller",
+      "definition": "ScorePitchState"
+    },
+    {
+      "family": "caller",
+      "definition": "validate_score_pitch"
+    },
+    {
+      "family": "caller",
+      "definition": "initialize_score_pitch"
+    },
+    {
+      "family": "caller",
+      "definition": "advance_score_pitch"
+    },
+    {
+      "family": "motion",
+      "definition": "PulseProgram"
+    },
+    {
+      "family": "motion",
+      "definition": "PulseState"
+    },
+    {
+      "family": "motion",
+      "definition": "PitchState"
+    },
+    {
+      "family": "motion",
+      "definition": "ResonanceState"
+    },
+    {
+      "family": "motion",
+      "definition": "cell"
+    },
+    {
+      "family": "motion",
+      "definition": "pulse_interpolation"
+    },
+    {
+      "family": "motion",
+      "definition": "advance_pwm"
+    },
+    {
+      "family": "motion",
+      "definition": "initialize_pitch"
+    },
+    {
+      "family": "motion",
+      "definition": "advance_pitch"
+    },
+    {
+      "family": "motion",
+      "definition": "initialize_resonance"
+    },
+    {
+      "family": "motion",
+      "definition": "advance_resonance"
+    }
+  ],
+  "edits": [
+    {
+      "name": "note",
+      "sourceAddress": 52029,
+      "before": 18,
+      "after": 19,
+      "privateSourceSha256": "60df447a6ff89672e82b2a9a19f839627c581ff2d9af3e177b3b01a2ce7af726",
+      "changedCalls": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "name": "duration",
+      "sourceAddress": 52030,
+      "before": 10,
+      "after": 12,
+      "privateSourceSha256": "7dff220f633992361770cf1c1f0147bea9210454ccb40187f8a0256f7eb36984",
+      "changedCalls": [
+        9,
+        10,
+        11,
+        12,
+        19,
+        20,
+        21,
+        22,
+        29,
+        30,
+        31,
+        32,
+        39,
+        40,
+        41,
+        42,
+        90,
+        91,
+        92,
+        99,
+        100,
+        101,
+        102,
+        119,
+        120,
+        121,
+        122,
+        129,
+        130,
+        131,
+        132,
+        139,
+        140,
+        141,
+        142,
+        159,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191
+      ]
+    },
+    {
+      "name": "pulse_step",
+      "sourceAddress": 49192,
+      "before": 21,
+      "after": 22,
+      "privateSourceSha256": "e93ed3244fa16220d42e64860c7f5f007d3b1c66554bc3be1d3af669b34050b8",
+      "changedCalls": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        191
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "computed-writes.json.gz",
+      "bytes": 491400,
+      "sha256": "650079178a3c2302a4b76c9ae40843dc710bfa8dd596675e0e22d039d4c66db6",
+      "originalBytes": 9311362,
+      "originalSha256": "e7d0740296ca9f09675575fdfc3c246e1354da31ba4f6dad82cad9e26162d008"
+    },
+    {
+      "path": "edited-cases.json.gz",
+      "bytes": 37750,
+      "sha256": "2663c363a5f5c1881ff02bc27bda7a9ef6396e016c6d63aac488b304126d0eca",
+      "originalBytes": 674300,
+      "originalSha256": "acc7feeeb2d98c867e1b50237ef7c6946d2a1aaa6afa757e87177bcee75a5fdc"
+    }
+  ],
+  "limits": [
+    "Equality compares phase, exclusive call index, address, value and order; instruction/bus cycles are excluded.",
+    "The complete original ledger is retained evidence, not a new source run. Three edited sources execute 192 calls each through the shared guarded CPU.",
+    "No original SID, executable payload, complete RAM or audio is exported. Numeric equality does not establish acoustic equivalence, musical attribution or listening approval."
+  ]
+}

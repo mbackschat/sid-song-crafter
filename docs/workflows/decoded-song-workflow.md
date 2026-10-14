@@ -196,6 +196,21 @@ Every build numerically checks the complete declared `range.auditCalls` in 1–6
 
 Outputs are `reconstructed.sid`, standalone `reconstructed.prg`, generated assembly/listing, `verification.json`, `audit.json`, ordered `writes.json` and named checkpoints. The PRG uses BASIC `SYS 2061` and the shared fixed-PAL harness, then idles after its declared call count. A poisoned-state bootstrap check executes that actual image's init and first two calls with modeled VIC/CIA reads. The full recipe separately verifies callable SID execution in headless VICE. Neither check claims original-game timing, bus-cycle identity, real VICE autostart of the PRG, audio identity or musical acceptance.
 
+### Deflektor packed-score player
+
+[compose-deflektor.py](../../scripts/compose-deflektor.py) accepts the `sid-deflektor-player-v1` schema in the [editable title](../../songs/studies/deflektor-reconstruction/title.json). The [owning study](../research/composition/deflektor-preparation.md#compiled-export-and-listening-package) retains execution and listening evidence; the [source README](../../songs/studies/deflektor-reconstruction/README.md) describes reproduction and its boundary.
+
+```sh
+PYTHONPATH=.tools/test-deps python3 scripts/compose-deflektor.py songs/studies/deflektor-reconstruction/title.json --output build/deflektor-compiled-new
+python3 scripts/listening-package.py config/listening/deflektor-full.json --output build/deflektor-independent-full
+```
+
+The target is one PAL MOS6581 at `$D400`, updated once per 19,656-cycle frame. Order/pattern bytes, instrument-slot mappings and numeric sound tables remain runtime data in newly authored 6502 code. No captured event schedule or original driver instructions are embedded. Numeric source pointer annotations do not become executable addresses. Keep source-specific synthesis constraints explicit: low-byte-only PWM carry behavior, shared table aliases, ordered resonance updates and whole-call body suppression at row boundaries are part of this backend's sound.
+
+The compiler preflights the complete declared `play_calls` in 1–65,535; `--calls` narrows only the compiled CPU diagnostic prefix. The payload must fit below `$A000`. Cold initialization restores mutable state without SID writes. A terminal order marker clears all three controls and stops future stores; a call-count cap does not itself compose an ending. The verified title stops at call 8,480 without an added fade. Source-specific PAL tuning/cadence is retained; native regional export support does not automatically retune this backend.
+
+Outputs include PSID, standalone PRG, generated assembly/listing, CPU audit, ordered writes, named checkpoints and a verification receipt. Verification checks complete callable boundaries, independently computed ordered stores, executed SID writer sites, cycle budget and poisoned-state reinitialization. The PRG's actual SYS 2061 bootstrap is separately checked with modeled raster/CIA reads. Full headless VICE execution in the recipe checks callable playback, not real-machine PRG autostart. Audio checks and human listening remain separate.
+
 ### Other drivers
 
 [describe-drax-score.py](../../scripts/studies/drax/describe-drax-score.py) is a pinned, driver-specific transcriber, not a universal SID importer. It observes executed note consumption, instrument initialization and score gate-off, then verifies preparation and repeat behavior. Use `--check` to compare its output with the retained fixture. For another player, recover its corresponding readers and state transitions before adapting the decoder. [The Flashdance study](../research/composition/flashdance-preparation.md) demonstrates its own decoded mechanisms and independently authored dual-SID arrangement.
