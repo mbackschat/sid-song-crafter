@@ -14,6 +14,12 @@ Optional `patternBeats` selects a positive finite beat interval for pattern boun
 
 The explicit short-note policy retains a full-pitch sounding frame by extending a one-frame grace into available silence or borrowing a frame from its following note; the conversion report records every timing change. Native `.swm`/`.sws` songs and `.swi` instruments remain editable in SID-Wizard, but these edits do not roundtrip into the recipe: keep such versions as separate native workfiles and export them independently.
 
+## Frozen release source and publication
+
+Default to the editable SWM module (SWS for two SID chips) plus an export manifest as the frozen native release source. Preserve the module hash, exporter/player/toolchain identities, exact export command, clock, SID model, title/author/release metadata and expected SID/PRG hashes. Verify a fresh export against the accepted binaries before claiming exact-byte reproducibility. Keep the upstream score and authoring recipes separately so later musical edits remain reproducible. This contract applies to the SID-Wizard backend; other backends retain their own editable sources. See [Pink Panther's independently verified re-export](../../songs/pink-panther/README.md#source-of-truth-and-exact-byte-export).
+
+Publication is a separate rights decision. Publish a complete native module only when the composition and incorporated arrangement/source permit that distribution. Otherwise retain the score, SWM/SWS, SID/PRG and audio locally under ignored output, and publish independently shareable tools, original instrument programs, recipes without embedded score data, provenance and checksums. Contributors supply an appropriately obtained source themselves; a download link or a deterministic build does not grant publication rights. See [the repository boundary](../../CLAUDE.md#public-repository-boundary).
+
 ## Regional export targets
 
 Use recipe `"clock": "pal"` or `"clock": "ntsc"`, or override it with `native-song.py build … --clock ntsc`. Omitted targets preserve PAL. Both one- and two-SID native exports use the same target contract. This is explicit regional export, not automatic cross-region playback: use each PRG on its named machine timing. Independent native-module export also needs `export-sidwizard.py … --clock ntsc`; the editable SWM/SWS does not carry that choice.

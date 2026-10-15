@@ -176,6 +176,8 @@ Select the default SID subtune before libsidplayfp playback; an unselected tune 
 
 ## Public Repository Boundary
 
+For native SID-Wizard songs, retain SWM (SWS for two chips) plus a pinned export manifest as the default frozen release source; see [the native source contract](docs/workflows/native-song-workflow.md#frozen-release-source-and-publication). Reproducibility does not establish publication permission. When redistribution rights for a composition or source arrangement are unestablished, keep complete scores, native modules and generated song binaries/audio local; publish only independently shareable tools, instrument programs, recipes without embedded score data, provenance and hashes. Public-domain compositions still require checking the particular source arrangement or edition.
+
 Keep original reference SID binaries out of the public repository, including history and LFS. Record each source URL and SHA-256 fingerprint in [the asset registry](config/local-assets.json); use [the verified downloader](scripts/setup-project.py) on demand. Keep reference WAVs out of Git under ignored `.local/` or `build/`; document exact reproduction commands, source hashes, subtune, renderer/version/settings, duration, gain, trim points and output hashes. Analysis artifacts, traces, lookup tables, editable descriptions and reusable code may be tracked when useful. Preserve complete evidence alongside concise prose, with source hashes, settings and reproduction commands. Downloaded skills retain the ignored `skills/<name>/` installation layout. Never force-add original SID files; check tracked files and history before publishing.
 
 ## Commit & Pull Request Guidelines
