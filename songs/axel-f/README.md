@@ -1,6 +1,6 @@
 # Axel F: first SID palette audition
 
-Interpret Harold Faltermeyer's original electronic theme through a sourced score, using the existing native instrument bank and build workflow. This first audition is a **32.27-second tonal excerpt**, not the complete song. Listening feedback is pending. The [source research](source-research.md) owns the download, attribution limits, musical intent and conversion losses; no existing SID is the note source.
+Interpret Harold Faltermeyer's original electronic theme through a sourced score, using the existing native instrument bank and build workflow. This first audition is a **32.27-second tonal excerpt**, not the complete song. The listener prefers the longer-release lead after finding the initial version cut off too early. The complete sourced form is now being arranged. The [source research](source-research.md) owns the download, attribution limits, musical intent and conversion losses; no existing SID is the note source.
 
 ## Intent and arrangement
 
@@ -47,4 +47,24 @@ On 2026-10-15 the first five-stage run took **22.68 seconds**; an unchanged repe
 
 Model-assistance review at this first audition: no call. Existing calibrations do not qualify the models to judge punch, appropriate timbre, balance or momentum. Score/execution checks already establish known omissions. Reassess after listener feedback or a substantive revision under the [standing review rule](../../docs/research/audio-assessment.md#use-and-reassess-model-assistance).
 
-Next: obtain the scoped palette verdict, then carry a selected direction through the complete sourced form, including later marimba/high-lead material, percussion decisions and the actual source ending. Do not mark the song complete from this excerpt. Keep source MIDI, imported notes, SWM, SID/PRG and song audio private; public files here contain reusable instruments, recipes, provenance and aggregate verification only.
+Next: carry the preferred smoother lead through the complete sourced form, including later marimba/high-lead material, percussion decisions and the actual source ending. Do not mark the song complete from this excerpt. Keep source MIDI, imported notes, SWM, SID/PRG and song audio private; public files here contain reusable instruments, recipes, provenance and aggregate verification only.
+
+## Lead clipped too early: release-only revision
+
+On 2026-10-15 the listener reports: “the lead sound like it always stop too early (ticked off)”. The first palette is not accepted. The [revision record](release-review.json) preserves the exact feedback, diagnosis, isolation check and corrected verdict: “Sorry, yes, the smoother is better.” This supersedes the initial “No, still the same” reply; retain a relative preference, not complete-song approval.
+
+All 46 selected lead notes retain the MIDI's source durations, but the native converter's `gate_off_tick` clears GATE 1–2 frames before each endpoint. The first TEST frame also precedes the full-pitch body. For example, the first note has body tick 1, gate-off 17, source endpoint 19 and next onset 25. Another short note has body 45, gate-off 50, endpoint 51 and next onset 57: about 99.75 ms of gated body. A denser repetition has body 58, off 62 and next TEST 63, leaving only about 20 ms for release. Actual controls retain pulse `$40` after gate-off with SR `$A5`; the waveform is not disabled during release. Short bodies and release, combined with the source's existing rests, are the supported articulation mechanism; the exact perceptual cause remains a listening hypothesis.
+
+The [smoother palette](smoother.json) changes only the lead's release nibble 5→8, ADSR `$08A5`→`$08A8`. Score, onset, gate-off, attack, decay, sustain, pulse/vibrato program, bass and stabs stay fixed. A longer tail cannot remove the next note's TEST interruption, so assess dense repetitions as well as isolated notes. No shared patch or converter default is changed by this case-specific trial.
+
+The [eight-stage recipe](../../config/listening/axel-f-smoother.json) builds both versions, verifies the candidate in VICE, checks that only `$D406` differs across all 1,795 post-call snapshots, prepares the hook comparison and renders two private lead-only diagnostics. Both full excerpts pass signal/quiet-tail checks. The previous raw render is byte-identical to the initial audition's raw candidate. The A/B uses common unity gain rather than separate normalization; both halves are louder than the earlier attenuated plain/SID comparison, but have the same playback gain as one another.
+
+```sh
+python3 scripts/listening-package.py config/listening/axel-f-smoother.json --output build/axel-f-smoother
+python3 scripts/publish-listening.py build/axel-f-smoother/run.json --selection config/listening/axel-f-smoother.audition.json --output build/axel-f-smoother-listening
+open build/axel-f-smoother-listening/previous-then-smoother.ab.wav
+```
+
+The comparison is 32.7 seconds: previous hook first, longer-release hook second. `previous.wav` and `smoother.wav` contain the complete selected excerpt and tail. These are still palette auditions, not the complete song. Model review at the corrected verdict: no call; the human preference selects the smoother lead. Reassess at the complete arrangement audition.
+
+A reporting limitation exposed by this diagnosis: the converter field `sourceGateOffTick` already includes its early-release policy; it is not the original MIDI note-off. Likewise, zero `timingChanges` does not establish source-length gated sound, and the 45 articulation entries above do not enumerate all standard gate insets. Read the source endpoint, executed GATE and envelope separately. Clarifying that generic report is a separate workflow improvement; it is not silently folded into this timbre trial.

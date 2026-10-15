@@ -1,0 +1,117 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score.json",
+  "title": "Axel F SID interpretation",
+  "author": "Harold Faltermeyer",
+  "authorinfo": "SOURCE SCORE: SID INTERPRETATION",
+  "released": "2026",
+  "sidCount": 1,
+  "sidModel": "MOS8580",
+  "clock": "pal",
+  "timingPolicy": "retain-full-pitch",
+  "instruments": {
+    "lead": {
+      "name": "PULSEMOV",
+      "control": "1a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "08a8",
+      "frame1": "09",
+      "vibrato": "24",
+      "vibrato_delay": 12,
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "84",
+          "00",
+          "00"
+        ],
+        [
+          "20",
+          "20",
+          "00"
+        ],
+        [
+          "20",
+          "e0",
+          "00"
+        ],
+        {
+          "jump": 1
+        }
+      ],
+      "filter": []
+    },
+    "harmony": {
+      "name": "PLUCKBRI",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0734",
+      "frame1": "09",
+      "wave": [
+        [
+          "21",
+          "00",
+          "00"
+        ],
+        [
+          "11",
+          "80",
+          "ff"
+        ]
+      ],
+      "pulse": [],
+      "filter": []
+    },
+    "bass": {
+      "name": "BASSPLN",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "06b3",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ],
+      "filter": [
+        [
+          "94",
+          "80",
+          "00"
+        ],
+        [
+          "18",
+          "f0",
+          "00"
+        ]
+      ]
+    }
+  },
+  "sections": [
+    {
+      "name": "Source hook followed by harmonic stabs",
+      "startBeat": 0,
+      "endBeat": 64,
+      "voices": {
+        "melody": "lead",
+        "harmony": "harmony",
+        "bass": "bass"
+      }
+    }
+  ]
+}

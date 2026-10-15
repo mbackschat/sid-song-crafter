@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "feedback": {
+    "quote": "the lead sound like it always stop too early (ticked off)",
+    "scope": "Initial Axel F palette audition, lead phrasing; no overall acceptance inferred"
+  },
+  "intervention": {
+    "instrument": "lead",
+    "previousADSR": "08a5",
+    "candidateADSR": "08a8",
+    "scoreAndGateScheduleUnchanged": true,
+    "sourceNoteCount": 46
+  },
+  "diagnosticExamples": [
+    {
+      "eventIndex": 0,
+      "bodyTick": 1,
+      "gateOffTick": 17,
+      "sourceEndpointTick": 19,
+      "nextOnsetTick": 25
+    },
+    {
+      "eventIndex": 2,
+      "bodyTick": 45,
+      "gateOffTick": 50,
+      "sourceEndpointTick": 51,
+      "nextOnsetTick": 57
+    },
+    {
+      "eventIndex": 3,
+      "bodyTick": 58,
+      "gateOffTick": 62,
+      "sourceEndpointTick": 63,
+      "nextOnsetTick": 63
+    }
+  ],
+  "isolation": {
+    "schemaVersion": 1,
+    "referenceSha256": "e54180e091a16f85dfad0b192f1d21b76ded522941e2810200925f7f45b026ce",
+    "candidateSha256": "22320467fcc03beb91e3cfd49c94340c0b3a314e0c38de6ef2e20e705a046d07",
+    "comparison": {
+      "frames": 1795,
+      "bankBytes": 25,
+      "allowedOffsets": [
+        6
+      ],
+      "changedOffsets": [
+        6
+      ],
+      "changedFrames": 1795,
+      "firstChangedFrame": 0,
+      "lastChangedFrame": 1794,
+      "allOtherControlsEqual": true
+    },
+    "scope": "Post-call sound controls only; not ordered bus timing, analogue state, PCM equality or musical acceptance"
+  },
+  "renderChecks": {
+    "reference": {
+      "wavSha256": "5f0fd33d248c0f487f0a632eb9379496d88970e22c8bc9f2637850953a5cced0",
+      "durationSeconds": 35.7733560090703,
+      "clippedSamples": 0,
+      "endingHalfSecondAcRms": 0.0,
+      "playCalls": 1795,
+      "stopVolumeClearTick": 1742
+    },
+    "candidate": {
+      "wavSha256": "d841447b87aab32bf860959fd8089624617383031e8db385d9da5f0ecd8c754f",
+      "durationSeconds": 35.7733560090703,
+      "clippedSamples": 0,
+      "endingHalfSecondAcRms": 0.0,
+      "playCalls": 1795,
+      "stopVolumeClearTick": 1742
+    }
+  },
+  "baselineMatchesFirstAuditionRawRender": true,
+  "listeningVerdict": {
+    "quote": "Sorry, yes, the smoother is better.",
+    "supersedes": "No, still the same",
+    "scope": "Relative preference for the release-only hook comparison; not full-song acceptance.",
+    "selectedPalette": "songs/axel-f/smoother.json"
+  },
+  "modelAssistanceReview": {
+    "checkpoint": "Corrected listening verdict and preferred palette selection",
+    "decision": "No model call: listener explicitly prefers smoother R5-to-R8 lead; models cannot overrule that preference. Native evidence isolates the release change.",
+    "nextCheckpoint": "Complete arrangement audition or further musical revision"
+  },
+  "files": [
+    {
+      "path": "build/axel-f-smoother-listening/previous-then-smoother.ab.wav",
+      "sha256": "9b362e1ea4dfb485d954f336421861784a788aa5fbb1f5841a04e9088af49c0c"
+    },
+    {
+      "path": "build/axel-f-smoother-listening/previous.wav",
+      "sha256": "5f0fd33d248c0f487f0a632eb9379496d88970e22c8bc9f2637850953a5cced0"
+    },
+    {
+      "path": "build/axel-f-smoother-listening/smoother.wav",
+      "sha256": "d841447b87aab32bf860959fd8089624617383031e8db385d9da5f0ecd8c754f"
+    }
+  ]
+}
