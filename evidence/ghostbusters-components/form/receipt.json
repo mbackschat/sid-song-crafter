@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde",
+  "selectedSubtune": 1,
+  "clock": "NTSC",
+  "sidModel": "MOS6581",
+  "originalSourceUnchanged": true,
+  "musicCalls": 13961,
+  "independentScoreEqual": true,
+  "matchedScoreReads": 35315,
+  "matchedSemanticRows": 2394,
+  "matchedReturnStates": 13961,
+  "rowsPerVoice": {
+    "2": 863,
+    "1": 730,
+    "0": 798
+  },
+  "patterns": 65,
+  "distinctPatternRows": 400,
+  "firstResetCall": 13952,
+  "firstRestartCall": 13956,
+  "resetCaches": [
+    {
+      "tick": 13952,
+      "before": {
+        "phase": 128,
+        "voices": [
+          {
+            "orderCursor": 109,
+            "patternCursor": 0,
+            "remaining": 0,
+            "note": 59,
+            "header": 71,
+            "instrument": 5
+          },
+          {
+            "orderCursor": 109,
+            "patternCursor": 0,
+            "remaining": 0,
+            "note": 30,
+            "header": 3,
+            "instrument": 1
+          },
+          {
+            "orderCursor": 109,
+            "patternCursor": 0,
+            "remaining": 255,
+            "note": 95,
+            "header": 3,
+            "instrument": 3
+          }
+        ]
+      },
+      "cachedControlsBefore": [
+        33,
+        33,
+        129
+      ],
+      "after": {
+        "phase": 128,
+        "voices": [
+          {
+            "orderCursor": 0,
+            "patternCursor": 0,
+            "remaining": 0,
+            "note": 59,
+            "header": 71,
+            "instrument": 5
+          },
+          {
+            "orderCursor": 0,
+            "patternCursor": 0,
+            "remaining": 0,
+            "note": 30,
+            "header": 3,
+            "instrument": 1
+          },
+          {
+            "orderCursor": 0,
+            "patternCursor": 0,
+            "remaining": 0,
+            "note": 95,
+            "header": 3,
+            "instrument": 3
+          }
+        ]
+      },
+      "cachedControlsAfter": [
+        33,
+        33,
+        129
+      ]
+    }
+  ],
+  "retainedMachineSeedCheck": {
+    "receiptSha256": "66864764af1db674d810119ee1e74e7aee0b4086ce02793e07ee7d334f80e573",
+    "privateTraceSha256": "a6d902eeef3aca38bcdebf09b999f7710327dc408546550ab796ada9bda47665",
+    "machineBodies": 128,
+    "matchedTonalStores": 85,
+    "matchedInitClearStores": 24,
+    "namedMachineRamVerified": false,
+    "basis": "Source-defined zero buffers plus executed music init; first128 ordered tonal stores and24 init clears match retained NTSC machine capture. Active music RAM was not sampled by that capture; isolated named state is not relabelled machine state."
+  },
+  "audit": {
+    "cpu": "py65 NMOS 6502",
+    "environment": "Isolated original relocated music RAM fragments; no RSID speech/init/interrupt emulation",
+    "initClearCycles": 243,
+    "musicInitCycles": 1509,
+    "musicCalls": 13961,
+    "minimumWrapperCycles": 1620,
+    "maximumWrapperCycles": 2685,
+    "frameCycleBudget": 17095,
+    "contextSwapVerifiedCalls": 13961
+  },
+  "controls": {
+    "note": {
+      "kind": "note",
+      "calls": 128,
+      "sourceDataAddress": 41994,
+      "originalByte": 45,
+      "editedByte": 46,
+      "privateCopySha256": "88562269ff7f39faa57284431abb01c463acf98adaefd46dd419409e3de6dac8",
+      "originalRow": {
+        "header": 35,
+        "note": 45
+      },
+      "editedRow": {
+        "header": 35,
+        "note": 46
+      },
+      "beforeVoice0Onsets": [
+        0,
+        16,
+        32,
+        48,
+        64,
+        80,
+        96,
+        112
+      ],
+      "afterVoice0Onsets": [
+        0,
+        16,
+        32,
+        48,
+        64,
+        80,
+        96,
+        112
+      ],
+      "matchedScoreReads": 265,
+      "matchedRows": 12,
+      "matchedReturnStates": 128,
+      "companionRowsEqual": true,
+      "companionGlobalStoresEqual": true,
+      "changedVoiceStores": true,
+      "limits": "One source-data byte changed in memory, with independent edited-score/source agreement and scoped ordered-store consequences; no audio or modelled sound claim."
+    },
+    "duration": {
+      "kind": "duration",
+      "calls": 128,
+      "sourceDataAddress": 41993,
+      "originalByte": 35,
+      "editedByte": 36,
+      "privateCopySha256": "0d10c44b8c4906c537f95e8ba339bc3d30b9d2e6191e80924c2fa19913153d53",
+      "originalRow": {
+        "header": 35,
+        "note": 45
+      },
+      "editedRow": {
+        "header": 36,
+        "note": 45
+      },
+      "beforeVoice0Onsets": [
+        0,
+        16,
+        32,
+        48,
+        64,
+        80,
+        96,
+        112
+      ],
+      "afterVoice0Onsets": [
+        0,
+        20,
+        36,
+        52,
+        68,
+        84,
+        100,
+        116
+      ],
+      "matchedScoreReads": 265,
+      "matchedRows": 12,
+      "matchedReturnStates": 128,
+      "companionRowsEqual": true,
+      "companionGlobalStoresEqual": true,
+      "changedVoiceStores": true,
+      "limits": "One source-data byte changed in memory, with independent edited-score/source agreement and scoped ordered-store consequences; no audio or modelled sound claim."
+    }
+  },
+  "tools": {
+    ".tools/test-deps/py65/__init__.py": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc",
+    ".tools/test-deps/py65/devices/__init__.py": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc",
+    ".tools/test-deps/py65/devices/mpu6502.py": "15d93835b4f279b702270d9a0b417938291347ec57cc12d9e0307cd344d381fe",
+    ".tools/test-deps/py65/utils/__init__.py": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc",
+    ".tools/test-deps/py65/utils/conversions.py": "448b8aa2cc59aa71a6a644a5dd93051ab4b2def2ae720c4991c0e54f31a4eaa9",
+    ".tools/test-deps/py65/utils/devices.py": "fca3864bebcf1db7dbc13014487ad7091499d85c8cb14ca7288c5fdc63de6a0e",
+    "scripts/psid_audit.py": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0",
+    "scripts/psid_profile.py": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107",
+    "scripts/sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "scripts/sid_clock.py": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48",
+    "scripts/sid_intake.py": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0",
+    "scripts/studies/ghostbusters/probe-form.py": "f62e996f0d19413c9c5b36157b0b5f3a06828874aa2d4d1c74ffb2ff54057e68",
+    "scripts/studies/ghostbusters/score.py": "00b523a3d67c01ded44ebd9ccb0adecbd76ebef4107ef146e183a2643edd94d6",
+    "scripts/verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+  },
+  "python": {
+    "executable": "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]"
+  },
+  "limits": "Independent editable music score versus isolated original RAM-only music CPU through first reset/restart. Native context exchange/NTSC E2 phase and reset-retained score/sound caches checked; cached control remains sound-owned. Opening stores corroborated by retained machine128, not new fullmachineRSID/form/ROM/SID synthesis evidence. No speech bytes, decoder, complete machine recurrence, compiled runtime, selected finite ending or listening verdict."
+}

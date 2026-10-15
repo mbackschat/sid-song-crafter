@@ -16566,6 +16566,436 @@
       "originalBytes": 7846,
       "sha256": "1cd3f583601cbaa33b7fb4265b7d5fe44f71ac275cea40c8bf1f105e1578e868",
       "bytes": 7846
+    },
+    {
+      "path": "evidence/ghostbusters-components/run-executed.json",
+      "originalPath": "build/ghostbusters-components/run-executed.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve executed versus cached component workflow, artifact fingerprints and timings.",
+      "originalSha256": "00e2f1a9d674ecb6d22cd5ac685fe3756fb4af537dc7904746fb6e0b22392559",
+      "originalBytes": 43620,
+      "sha256": "00e2f1a9d674ecb6d22cd5ac685fe3756fb4af537dc7904746fb6e0b22392559",
+      "bytes": 43620
+    },
+    {
+      "path": "evidence/ghostbusters-components/run-reused.json",
+      "originalPath": "build/ghostbusters-components/run-reused.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve executed versus cached component workflow, artifact fingerprints and timings.",
+      "originalSha256": "277d54eac487111df9f949650578c9d4b42103a69c0c0bb12c57ae2a859d35d8",
+      "originalBytes": 43437,
+      "sha256": "277d54eac487111df9f949650578c9d4b42103a69c0c0bb12c57ae2a859d35d8",
+      "bytes": 43437
+    },
+    {
+      "path": "evidence/ghostbusters-components/stages/component-guards.json",
+      "originalPath": "build/ghostbusters-components/cache/component-guards/171527e6e3e15f218264d9797a9532d41989f19411b2bcf237133e637a0e8637/attempt-bf888748f0454e848c52a3ec86c8d970/success.json",
+      "group": "ghostbusters-components",
+      "reason": "Bind the exact executed command, tool/runtime dependencies and all output fingerprints, including private speech archives.",
+      "originalSha256": "96c5c1741eb52ed724421f2a7a40452114c5fb0faabce4460472c5a4b1319323",
+      "originalBytes": 18060,
+      "sha256": "96c5c1741eb52ed724421f2a7a40452114c5fb0faabce4460472c5a4b1319323",
+      "bytes": 18060
+    },
+    {
+      "path": "evidence/ghostbusters-components/guards.txt",
+      "originalPath": "build/ghostbusters-components/cache/component-guards/171527e6e3e15f218264d9797a9532d41989f19411b2bcf237133e637a0e8637/attempt-bf888748f0454e848c52a3ec86c8d970/stage.log",
+      "group": "ghostbusters-components",
+      "reason": "Retain the 42 focused component guard verdicts.",
+      "originalSha256": "7e6201c2a02eecec42907499ba827cdd421697c36c1d9f901130711e06510eda",
+      "originalBytes": 5225,
+      "sha256": "7e6201c2a02eecec42907499ba827cdd421697c36c1d9f901130711e06510eda",
+      "bytes": 5225
+    },
+    {
+      "path": "evidence/ghostbusters-components/stages/initialized-census.json",
+      "originalPath": "build/ghostbusters-components/cache/initialized-census/5e589c254e6833cd65cb7cb23400e93f80470817451242e0da0f018173659ba0/attempt-dc02297da0544b05a1b5bd9be85043bd/success.json",
+      "group": "ghostbusters-components",
+      "reason": "Bind the exact executed command, tool/runtime dependencies and all output fingerprints, including private speech archives.",
+      "originalSha256": "b87cb82abb8a90ff85caf620492a996b9ef92e4c599fccba260ad7f4bd99ed13",
+      "originalBytes": 202908,
+      "sha256": "b87cb82abb8a90ff85caf620492a996b9ef92e4c599fccba260ad7f4bd99ed13",
+      "bytes": 202908
+    },
+    {
+      "path": "evidence/ghostbusters-components/machine/verification.json",
+      "originalPath": "build/ghostbusters-components/cache/initialized-census/5e589c254e6833cd65cb7cb23400e93f80470817451242e0da0f018173659ba0/attempt-dc02297da0544b05a1b5bd9be85043bd/capture/verification.json",
+      "group": "ghostbusters-components",
+      "reason": "Retain initialized machine corroboration without private amplitude traces or monitor logs.",
+      "originalSha256": "66864764af1db674d810119ee1e74e7aee0b4086ce02793e07ee7d334f80e573",
+      "originalBytes": 24487,
+      "sha256": "66864764af1db674d810119ee1e74e7aee0b4086ce02793e07ee7d334f80e573",
+      "bytes": 24487
+    },
+    {
+      "path": "evidence/ghostbusters-components/machine/commands.mon",
+      "originalPath": "build/ghostbusters-components/cache/initialized-census/5e589c254e6833cd65cb7cb23400e93f80470817451242e0da0f018173659ba0/attempt-dc02297da0544b05a1b5bd9be85043bd/capture/commands.mon",
+      "group": "ghostbusters-components",
+      "reason": "Retain initialized machine corroboration without private amplitude traces or monitor logs.",
+      "originalSha256": "2709077249940fcab198c5eb05bb8692b781628ffa39c0b7b19f56c19468c7d8",
+      "originalBytes": 1458,
+      "sha256": "2709077249940fcab198c5eb05bb8692b781628ffa39c0b7b19f56c19468c7d8",
+      "bytes": 1458
+    },
+    {
+      "path": "evidence/ghostbusters-components/machine/command.json",
+      "originalPath": "build/ghostbusters-components/cache/initialized-census/5e589c254e6833cd65cb7cb23400e93f80470817451242e0da0f018173659ba0/attempt-dc02297da0544b05a1b5bd9be85043bd/capture/command.json",
+      "group": "ghostbusters-components",
+      "reason": "Retain initialized machine corroboration without private amplitude traces or monitor logs.",
+      "originalSha256": "850c51e5296409e449940af8dbd0913bbf08c119adf2ed3e3594190e2ef7bf3a",
+      "originalBytes": 913,
+      "sha256": "850c51e5296409e449940af8dbd0913bbf08c119adf2ed3e3594190e2ef7bf3a",
+      "bytes": 913
+    },
+    {
+      "path": "evidence/ghostbusters-components/stages/score-form.json",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/success.json",
+      "group": "ghostbusters-components",
+      "reason": "Bind the exact executed command, tool/runtime dependencies and all output fingerprints, including private speech archives.",
+      "originalSha256": "7c283dd1d1e2be6a2fd83123a5a57f68c8c35e426e6678b9ae3e5d94c6a0be2f",
+      "originalBytes": 19970,
+      "sha256": "7c283dd1d1e2be6a2fd83123a5a57f68c8c35e426e6678b9ae3e5d94c6a0be2f",
+      "bytes": 19970
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/score.json",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/score.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "f5a1d9397d1690cd115f76434d18074fcf0e60dae8c7615abe8144c61644dd0f",
+      "originalBytes": 39832,
+      "sha256": "f5a1d9397d1690cd115f76434d18074fcf0e60dae8c7615abe8144c61644dd0f",
+      "bytes": 39832
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/receipt.json",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/receipt.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "e9e7e541347f71868215ba05c484233f607d70a8bf9776c73e1e99ef571afd70",
+      "originalBytes": 7323,
+      "sha256": "e9e7e541347f71868215ba05c484233f607d70a8bf9776c73e1e99ef571afd70",
+      "bytes": 7323
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/reads.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/reads.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "ec41c9f86a462579f415feb190c12e8b5c1ecd6eacce4a5df99e0ef0b28480e4",
+      "originalBytes": 5906293,
+      "sha256": "a95e4c15cccad240163eb0c8955506dfc534a526d29f2ba78f327c6283d1b870",
+      "bytes": 188026
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/rows.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/rows.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "27a1100ace7151bf45dd637ec042b6d7a74fc1ee72988bedd37902d7c4c384ce",
+      "originalBytes": 597891,
+      "sha256": "ca389fddfb215896ca441baa7aed3dc227a01aa8ef21a81efd86a38e5cea07ef",
+      "bytes": 23039
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/returns.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/returns.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "eeb2f63c4d5edd9c7b3dc607c743ccfe589df5471cf2dc5ce9b7b37d9f2b381c",
+      "originalBytes": 8088629,
+      "sha256": "8e2b35b344870306939b40fc6a452b4efff283de9843e6a7218b968471d29ad0",
+      "bytes": 188363
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/resets.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/resets.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "e8b83a8f9b7f20e86cc3186869f69d8df084f8c35f85cc28fe0bcc09b91eff32",
+      "originalBytes": 341,
+      "sha256": "250b42fca3fd49bea677ae7f21afea33d19147e422c9ad937518740f276f581f",
+      "bytes": 152
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/contexts.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/contexts.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "1fc072e529f35ebda4490b8e7d4f41658e5fc5a17d15f17fa2434d77e463cbdd",
+      "originalBytes": 9587640,
+      "sha256": "8c5e96d1a5e54de8af446ad430207716f504208b49c2a9f297fca538b7cdb860",
+      "bytes": 149738
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/writes.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/writes.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "be8dc4794115f85e8014e27cf9b423eb62125f40867ff55c421d64d83006233e",
+      "originalBytes": 5978915,
+      "sha256": "7c40abab870559dc5c9d0086521fc7cf64aecb664242a8be05a0cdd718272395",
+      "bytes": 198401
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/controls/note/score.json",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/controls/note/score.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "dcbc99ed6265fdd8158d39ec1f645d403752f414d920bd2dd7ca920efe153dde",
+      "originalBytes": 39832,
+      "sha256": "dcbc99ed6265fdd8158d39ec1f645d403752f414d920bd2dd7ca920efe153dde",
+      "bytes": 39832
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/controls/note/receipt.json",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/controls/note/receipt.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "2c55071f259ac958c15afb0826e3ab0ef4b60dc7e988df4fc8d099e3149766e1",
+      "originalBytes": 851,
+      "sha256": "2c55071f259ac958c15afb0826e3ab0ef4b60dc7e988df4fc8d099e3149766e1",
+      "bytes": 851
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/controls/note/reads.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/controls/note/reads.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "5c0659feec3405d78053e0a85c4069815e77d2403cf5ec129869a44d25bee672",
+      "originalBytes": 43870,
+      "sha256": "d9e4314dcf97fdd4e5b838aa317eed8c25d6d358fc709826bd1ad169e178b36c",
+      "bytes": 1592
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/controls/note/rows.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/controls/note/rows.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "4ec713387f0185fea86dd32532447e140177c2347551da005e3abedbd2bb47c2",
+      "originalBytes": 2965,
+      "sha256": "ca6cbcfc97b557be18fd2aadcfb8649dfab9e6083b873031a87e70c1fda1c8d3",
+      "bytes": 309
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/controls/note/returns.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/controls/note/returns.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "08c3694ae1c2a23d50c87668e89fa5c5617de356cd54661575b5aa9ba3a572ca",
+      "originalBytes": 73739,
+      "sha256": "b10dce9aa85dcfe34f18b9fd183717f464ff477fb684990a30f8c5832eb41711",
+      "bytes": 1889
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/controls/note/writes.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/controls/note/writes.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "ed0f5f9853c8d8c83c9f4d8a9dfc8acfbe5e53c6f7b8fa15f9992d4eca55d7c3",
+      "originalBytes": 15446,
+      "sha256": "794886c3ed6a29c2e51d012da659519934da67a358645f0c955aeca83c304bd2",
+      "bytes": 840
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/controls/duration/score.json",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/controls/duration/score.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "83dfcdbfb0019e45b564883c01e5c53d71628abefbbf22d262398086bde59066",
+      "originalBytes": 39832,
+      "sha256": "83dfcdbfb0019e45b564883c01e5c53d71628abefbbf22d262398086bde59066",
+      "bytes": 39832
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/controls/duration/receipt.json",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/controls/duration/receipt.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "b1b54851bf1ad9747ddd6a56675c1a2b1bbf2e88f64db026782f98a7504eb49f",
+      "originalBytes": 856,
+      "sha256": "b1b54851bf1ad9747ddd6a56675c1a2b1bbf2e88f64db026782f98a7504eb49f",
+      "bytes": 856
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/controls/duration/reads.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/controls/duration/reads.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "749c92aec6c6c4a74116b65f8b91ce6e55d23241c4c9b51aaafa951b8394ecea",
+      "originalBytes": 43876,
+      "sha256": "bc069d8b15d6329627bb594804a2ac52ea23b00e5b907e3adaa732ff1e399867",
+      "bytes": 1593
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/controls/duration/rows.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/controls/duration/rows.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "896b4b48e060f60437d0fbb97467d4ddd4e2c8377b4cc1d11011aa6ee9dcdf31",
+      "originalBytes": 2966,
+      "sha256": "7905edf28dca5debadc4cddc3e56a2298b8bda6ca3a7b02c1f055dc4f139250d",
+      "bytes": 319
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/controls/duration/returns.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/controls/duration/returns.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "53911589371e456ca48d2177a4d995c18249ec50f23c8af30588d964b606a1fa",
+      "originalBytes": 73739,
+      "sha256": "c7909e7047e5cceb789746f7e4a55f38ddcfc701fb118df8dbdc32e305bd3f9d",
+      "bytes": 1894
+    },
+    {
+      "path": "evidence/ghostbusters-components/form/controls/duration/writes.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/score-form/3d382d4e7869df142f6451eb88574d0f57cadae6543d96c49e7137864f877e37/attempt-c9486afd0af74f199927fd1358f9d988/form/controls/duration/writes.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "57f4b5a472f24d94b1d583242b9d3300ae68a93597f7575532d83debb1adcff8",
+      "originalBytes": 15452,
+      "sha256": "b2d95097e942ef32a2ba7c5524e51b3419e72da3fb5f022f68ce69376320b055",
+      "bytes": 834
+    },
+    {
+      "path": "evidence/ghostbusters-components/stages/sound-programs.json",
+      "originalPath": "build/ghostbusters-components/cache/sound-programs/e69cd5878534a53ce4dcb0cdb4c1997b751211fefbbe54496452eda2db679beb/attempt-0a012cf0e57a4f2b943a6bf951365e0d/success.json",
+      "group": "ghostbusters-components",
+      "reason": "Bind the exact executed command, tool/runtime dependencies and all output fingerprints, including private speech archives.",
+      "originalSha256": "a738eb6258d070dceee3111ea470a27ede24cb87103b3351d90132ff9d0be4f3",
+      "originalBytes": 17375,
+      "sha256": "a738eb6258d070dceee3111ea470a27ede24cb87103b3351d90132ff9d0be4f3",
+      "bytes": 17375
+    },
+    {
+      "path": "evidence/ghostbusters-components/sound/receipt.json",
+      "originalPath": "build/ghostbusters-components/cache/sound-programs/e69cd5878534a53ce4dcb0cdb4c1997b751211fefbbe54496452eda2db679beb/attempt-0a012cf0e57a4f2b943a6bf951365e0d/sound/receipt.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "6f4da5fde015f54a427e3cf81f44c4ca5c52062e302213d84666600b61f1965e",
+      "originalBytes": 3709,
+      "sha256": "6f4da5fde015f54a427e3cf81f44c4ca5c52062e302213d84666600b61f1965e",
+      "bytes": 3709
+    },
+    {
+      "path": "evidence/ghostbusters-components/sound/description.json",
+      "originalPath": "build/ghostbusters-components/cache/sound-programs/e69cd5878534a53ce4dcb0cdb4c1997b751211fefbbe54496452eda2db679beb/attempt-0a012cf0e57a4f2b943a6bf951365e0d/sound/description.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "9597ae910d4175642099ca3e17d9439a15e1fcca282d333d1b935201608832fc",
+      "originalBytes": 2412,
+      "sha256": "9597ae910d4175642099ca3e17d9439a15e1fcca282d333d1b935201608832fc",
+      "bytes": 2412
+    },
+    {
+      "path": "evidence/ghostbusters-components/sound/contexts.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/sound-programs/e69cd5878534a53ce4dcb0cdb4c1997b751211fefbbe54496452eda2db679beb/attempt-0a012cf0e57a4f2b943a6bf951365e0d/sound/contexts.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "e2e355f54f87b8de27b1a21721228346f46cba690eb69b6d16835bcae1b87f82",
+      "originalBytes": 15835145,
+      "sha256": "7bcf169a012d54fb6bd67c03f7f2d2dbc5a7c1a5f3b5ac537af1a5d8b60e7116",
+      "bytes": 371129
+    },
+    {
+      "path": "evidence/ghostbusters-components/sound/control-pulse-low.contexts.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/sound-programs/e69cd5878534a53ce4dcb0cdb4c1997b751211fefbbe54496452eda2db679beb/attempt-0a012cf0e57a4f2b943a6bf951365e0d/sound/control-pulse-low.contexts.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "7cc2e48fa4e0b35d2753607f55a42ad8d99ef63a788c647907e96acaba8f2ced",
+      "originalBytes": 1886839,
+      "sha256": "2187915c12558c80842706c2387e8d63aa92635f2e054bd5acc668e680887963",
+      "bytes": 41338
+    },
+    {
+      "path": "evidence/ghostbusters-components/sound/control-pulse-low.description.json",
+      "originalPath": "build/ghostbusters-components/cache/sound-programs/e69cd5878534a53ce4dcb0cdb4c1997b751211fefbbe54496452eda2db679beb/attempt-0a012cf0e57a4f2b943a6bf951365e0d/sound/control-pulse-low.description.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "b1f933296660935111a8420f61feb194ea85854f6f8327e3123a4566681f580f",
+      "originalBytes": 2412,
+      "sha256": "b1f933296660935111a8420f61feb194ea85854f6f8327e3123a4566681f580f",
+      "bytes": 2412
+    },
+    {
+      "path": "evidence/ghostbusters-components/sound/control-sustain-release.contexts.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/sound-programs/e69cd5878534a53ce4dcb0cdb4c1997b751211fefbbe54496452eda2db679beb/attempt-0a012cf0e57a4f2b943a6bf951365e0d/sound/control-sustain-release.contexts.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "01b0ac3d5037f4873312214ef4f9fca069538a72af209f6c15a2707c2b86419c",
+      "originalBytes": 1886839,
+      "sha256": "a8fca68209c93279bdccc9dcde021da3f73877347b174b4210ac5eadf41a5002",
+      "bytes": 41348
+    },
+    {
+      "path": "evidence/ghostbusters-components/sound/control-sustain-release.description.json",
+      "originalPath": "build/ghostbusters-components/cache/sound-programs/e69cd5878534a53ce4dcb0cdb4c1997b751211fefbbe54496452eda2db679beb/attempt-0a012cf0e57a4f2b943a6bf951365e0d/sound/control-sustain-release.description.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "e605474d9362e8bd20f268c8fd9361e9b504cc1637cc16ee3d5d74bb71314a2e",
+      "originalBytes": 2412,
+      "sha256": "e605474d9362e8bd20f268c8fd9361e9b504cc1637cc16ee3d5d74bb71314a2e",
+      "bytes": 2412
+    },
+    {
+      "path": "evidence/ghostbusters-components/sound/control-vibrato-shift.contexts.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/sound-programs/e69cd5878534a53ce4dcb0cdb4c1997b751211fefbbe54496452eda2db679beb/attempt-0a012cf0e57a4f2b943a6bf951365e0d/sound/control-vibrato-shift.contexts.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "3e2bbd7f711ddfeaf541134d6e05fc3f548ddb12613ac2e5a8cdbbfd659afaa6",
+      "originalBytes": 1886839,
+      "sha256": "37eab28cf355438fe53f10e0f546525a0f9b7ec1631fd12d22209e347fdd5125",
+      "bytes": 41344
+    },
+    {
+      "path": "evidence/ghostbusters-components/sound/control-vibrato-shift.description.json",
+      "originalPath": "build/ghostbusters-components/cache/sound-programs/e69cd5878534a53ce4dcb0cdb4c1997b751211fefbbe54496452eda2db679beb/attempt-0a012cf0e57a4f2b943a6bf951365e0d/sound/control-vibrato-shift.description.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "94c729011d0539ed836ca9b0e73f8ff75f3598a9a3b300bf4c7f20e5a7724bac",
+      "originalBytes": 2412,
+      "sha256": "94c729011d0539ed836ca9b0e73f8ff75f3598a9a3b300bf4c7f20e5a7724bac",
+      "bytes": 2412
+    },
+    {
+      "path": "evidence/ghostbusters-components/sound/control-row-volume.contexts.json.gz",
+      "originalPath": "build/ghostbusters-components/cache/sound-programs/e69cd5878534a53ce4dcb0cdb4c1997b751211fefbbe54496452eda2db679beb/attempt-0a012cf0e57a4f2b943a6bf951365e0d/sound/control-row-volume.contexts.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "1733ecce57518c2e387525f7ed9e905a1f851826d4303edab3bf0dd60defc4db",
+      "originalBytes": 1886840,
+      "sha256": "dfc4f36ff28452008d14be45958e17868ae9ce988285e32556d8c1e3afbb0ed2",
+      "bytes": 41343
+    },
+    {
+      "path": "evidence/ghostbusters-components/sound/control-row-volume.description.json",
+      "originalPath": "build/ghostbusters-components/cache/sound-programs/e69cd5878534a53ce4dcb0cdb4c1997b751211fefbbe54496452eda2db679beb/attempt-0a012cf0e57a4f2b943a6bf951365e0d/sound/control-row-volume.description.json",
+      "group": "ghostbusters-components",
+      "reason": "Preserve complete numeric music score/sound evidence and causal controls; this stage excludes speech and reference audio.",
+      "originalSha256": "027cf4a8bf23b38c9920911a009967b14adfdb3192145f451e22b959b57f1ccd",
+      "originalBytes": 2412,
+      "sha256": "027cf4a8bf23b38c9920911a009967b14adfdb3192145f451e22b959b57f1ccd",
+      "bytes": 2412
+    },
+    {
+      "path": "evidence/ghostbusters-components/stages/serialized-speech.json",
+      "originalPath": "build/ghostbusters-components/cache/serialized-speech/5c2bd2eec18ea21df428c48831e7e0d5c165349027f5c0be3d8406c8bab81e61/attempt-b50417f4889148cfb5bdb9953557bbab/success.json",
+      "group": "ghostbusters-components",
+      "reason": "Bind the exact executed command, tool/runtime dependencies and all output fingerprints, including private speech archives.",
+      "originalSha256": "4c74a6e1780e436f65342b7b65efc1c03dda05c2d002cd36a6c9c03dfd7881ee",
+      "originalBytes": 12986,
+      "sha256": "4c74a6e1780e436f65342b7b65efc1c03dda05c2d002cd36a6c9c03dfd7881ee",
+      "bytes": 12986
+    },
+    {
+      "path": "evidence/ghostbusters-components/speech/verification.json",
+      "originalPath": "build/ghostbusters-components/cache/serialized-speech/5c2bd2eec18ea21df428c48831e7e0d5c165349027f5c0be3d8406c8bab81e61/attempt-b50417f4889148cfb5bdb9953557bbab/speech/verification.json",
+      "group": "ghostbusters-components",
+      "reason": "Retain serialized speech agreement, intervention effects and private-output hashes; amplitude streams remain local.",
+      "originalSha256": "a705206505f2129b7850b228936a530a53d8133acce433cfff6f9f74808830c0",
+      "originalBytes": 3753,
+      "sha256": "a705206505f2129b7850b228936a530a53d8133acce433cfff6f9f74808830c0",
+      "bytes": 3753
     }
   ],
   "independentShadesSources": {

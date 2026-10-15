@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde",
+  "cases": {
+    "baseline": {
+      "commands": [
+        {
+          "command": 1,
+          "nmiEvents": 15143,
+          "volumeStores": 12338,
+          "allBuffersAndNamedStateMatch": true
+        },
+        {
+          "command": 3,
+          "nmiEvents": 25897,
+          "volumeStores": 17768,
+          "allBuffersAndNamedStateMatch": true
+        }
+      ],
+      "outputSequenceSha256": "d17fedd3eb2ec89e584e8605a0ac6c722f7d860d0f3efaabd7129a4330d3b5d8",
+      "privateArtifacts": {
+        "private-events.jsonl.gz": {
+          "bytes": 162275,
+          "sha256": "21f56e0b60100518c2ad7a41ec0ad5b8fb4d6b8e8f4724d6ea559745662a6926"
+        }
+      },
+      "scope": "Independent descriptor decoding, waveform buffers, named state and every serialized original NMI store for opening commands 1 and 3. Original CPU executes one NMI to completion before the next. No original CIA/VIC timing, nested NMI equivalence, native export or listening acceptance claim.",
+      "inputMemorySha256": "237cc6e137df69f12cf1dc2e56d83fe712b5ad31df2a6222d1ab358c51b5e92b",
+      "intervention": null
+    },
+    "pitch-delta": {
+      "commands": [
+        {
+          "command": 1,
+          "nmiEvents": 15383,
+          "volumeStores": 12368,
+          "allBuffersAndNamedStateMatch": true
+        },
+        {
+          "command": 3,
+          "nmiEvents": 25897,
+          "volumeStores": 17768,
+          "allBuffersAndNamedStateMatch": true
+        }
+      ],
+      "outputSequenceSha256": "ffc329f85096265a505cabbe42279d0754707aca9cacb0504ee8563eabb64fb2",
+      "privateArtifacts": {
+        "private-events.jsonl.gz": {
+          "bytes": 163146,
+          "sha256": "48d4749085c1fedc9708523bf18c9badb5b285db0fdf7cb191a376f34c8654cb"
+        }
+      },
+      "scope": "Independent descriptor decoding, waveform buffers, named state and every serialized original NMI store for opening commands 1 and 3. Original CPU executes one NMI to completion before the next. No original CIA/VIC timing, nested NMI equivalence, native export or listening acceptance claim.",
+      "inputMemorySha256": "9c2ead5cbf8318edf8b1a1bf122a6de6cab1a90959509747da3e3f8fb987430a",
+      "intervention": {
+        "address": 62757,
+        "before": 7,
+        "after": 8
+      }
+    },
+    "interpolated-wave-blend": {
+      "commands": [
+        {
+          "command": 1,
+          "nmiEvents": 15143,
+          "volumeStores": 12338,
+          "allBuffersAndNamedStateMatch": true
+        },
+        {
+          "command": 3,
+          "nmiEvents": 25897,
+          "volumeStores": 17768,
+          "allBuffersAndNamedStateMatch": true
+        }
+      ],
+      "outputSequenceSha256": "8c8f89ac05f7eb7680f80af67d804f01b903872e47bc1195dde79c1dce29ad8d",
+      "privateArtifacts": {
+        "private-events.jsonl.gz": {
+          "bytes": 162450,
+          "sha256": "59c53a1db9f5ac2a11630538a5b5272caa8885220881a7dcd96f4fa22190f094"
+        }
+      },
+      "scope": "Independent descriptor decoding, waveform buffers, named state and every serialized original NMI store for opening commands 1 and 3. Original CPU executes one NMI to completion before the next. No original CIA/VIC timing, nested NMI equivalence, native export or listening acceptance claim.",
+      "inputMemorySha256": "1f0302aa06ca7668862c5370be52b4225185311c018afd5ff296f62c954825ff",
+      "intervention": {
+        "address": 63168,
+        "before": 90,
+        "after": 74
+      }
+    }
+  },
+  "tools": {
+    "speech.py": "c810cbc6c7e814304be2a51d90802634fec206cfd3000f4558a765d7081e1e74",
+    "check-speech.py": "50db07d39cbc883215c3f4ea93428d0ee9f85cc422de6b0e02f97c2c9206d19e"
+  }
+}

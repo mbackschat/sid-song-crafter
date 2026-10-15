@@ -1,0 +1,72 @@
+radix h
+sidefx off
+dummy off
+bank ram
+load "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-components/cache/initialized-census/5e589c254e6833cd65cb7cb23400e93f80470817451242e0da0f018173659ba0/attempt-dc02297da0544b05a1b5bd9be85043bd/capture/payload.prg" 0
+load "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-components/cache/initialized-census/5e589c254e6833cd65cb7cb23400e93f80470817451242e0da0f018173659ba0/attempt-dc02297da0544b05a1b5bd9be85043bd/capture/host.prg" 0
+bank cpu
+> $0000 $2f $37
+> $d01a $00
+> $d019 $ff
+> $dc0d $7f
+> $dd0d $7f
+sidefx on
+m $dc0d $dc0d
+m $dd0d $dd0d
+sidefx off
+> $d418 $0f
+> $dc04 $95 $42
+> $dc0e $01
+> $d011 $9b $37
+> $dc0d $81
+r a=$00,x=$00,y=$00,sp=$ff,fl=$20
+r pc=$0400
+m $0000 $0001
+m $02a6 $02a6
+io $d000
+trace exec $900d
+break exec $0403
+trace exec $9096
+trace exec $90d2
+trace exec $93f0
+trace exec $90e6
+trace exec $9056
+trace exec $93e2
+trace exec $9097
+trace exec $f083
+trace exec $f0a4
+trace exec $f0c3
+trace exec $f0d9
+trace exec $f0e1
+trace store $d400 $d7ff
+trace load $d400 $d7ff
+trace store $0000 $0001
+trace store $fffa $ffff
+trace store $dc00 $ddff
+trace load $dc00 $ddff
+trace store $d011 $d01a
+trace load $d011 $d01a
+trace store $0314 $0319
+trace load $02a6
+g
+r
+m $0000 $0001
+m $02a6 $02a6
+io $d000
+m $0314 $0319
+bank ram
+m $fffa $ffff
+bank cpu
+delete 2
+break exec $93f0
+ignore 25 $0080
+g
+r
+m $0000 $0001
+m $02a6 $02a6
+io $d000
+m $0314 $0319
+bank ram
+m $fffa $ffff
+bank cpu
+quit

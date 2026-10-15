@@ -1,0 +1,350 @@
+{
+  "schemaVersion": 1,
+  "key": "5c2bd2eec18ea21df428c48831e7e0d5c165349027f5c0be3d8406c8bab81e61",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "scripts/studies/ghostbusters/check-speech.py",
+      "--output",
+      "{out}/speech"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/.tools/test-deps",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": ".local/research/ghostbusters/Ghostbusters.sid",
+        "type": "file",
+        "sha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/speech.py",
+        "type": "file",
+        "sha256": "c810cbc6c7e814304be2a51d90802634fec206cfd3000f4558a765d7081e1e74"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/check-speech.py",
+        "type": "file",
+        "sha256": "50db07d39cbc883215c3f4ea93428d0ee9f85cc422de6b0e02f97c2c9206d19e"
+      },
+      {
+        "path": ".tools/test-deps/py65",
+        "type": "directory",
+        "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067",
+        "files": [
+          {
+            "path": "__init__.py",
+            "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+          },
+          {
+            "path": "assembler.py",
+            "sha256": "8e92b5249c1bedcbac26d03a64ab3d35852914dae005d5abf87a275a1d20a383"
+          },
+          {
+            "path": "compat.py",
+            "sha256": "fc140526c2f0b41d5b8cd67415273093c156d6d4b9d98c3f9421aa7e0f0d82c4"
+          },
+          {
+            "path": "devices/__init__.py",
+            "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+          },
+          {
+            "path": "devices/mpu6502.py",
+            "sha256": "15d93835b4f279b702270d9a0b417938291347ec57cc12d9e0307cd344d381fe"
+          },
+          {
+            "path": "devices/mpu65c02.py",
+            "sha256": "dfc5adcd63b82aaa95e5a4ae2a000af1c19fe7188575f41d70212542ec7694fb"
+          },
+          {
+            "path": "devices/mpu65org16.py",
+            "sha256": "9a2685c84444dac43873855b1bb5c54e30938368fcc89ba3a9a78b389044de72"
+          },
+          {
+            "path": "disassembler.py",
+            "sha256": "b8cca0c23ef69dcf88b6dccb08582e4a4d088a561a04c833acb37b3742cdcccc"
+          },
+          {
+            "path": "memory.py",
+            "sha256": "4bba749fe35ed9b9912a7da72eb74035d62a21a5b5895dd6c343f7ce25609cc8"
+          },
+          {
+            "path": "monitor.py",
+            "sha256": "36cf20d850f9c5ab099814fe8f620f13f83faaacc0a14d827e1ff00e4ed5e11e"
+          },
+          {
+            "path": "tests/__init__.py",
+            "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+          },
+          {
+            "path": "tests/devices/__init__.py",
+            "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+          },
+          {
+            "path": "tests/devices/test_mpu6502.py",
+            "sha256": "0ca74be9e0702f15c9be52517c068c21bcd8460af7496d57e151304a13d83558"
+          },
+          {
+            "path": "tests/devices/test_mpu65c02.py",
+            "sha256": "920c1cbf296bab3caabda3ad779f4044ff6c8b806989e3c5282a3c8e77d10694"
+          },
+          {
+            "path": "tests/end_to_end.py",
+            "sha256": "83c5237875784d7a24b3c1600f9ef465db47d0b62667ef18795494a2544f289e"
+          },
+          {
+            "path": "tests/test_assembler.py",
+            "sha256": "41c10c74ad05020874c3a0b7e8430a0994b10eadb7c56c04aa526886a4ffd805"
+          },
+          {
+            "path": "tests/test_disassembler.py",
+            "sha256": "8e68441e33110fbdbe182de1e4be7d2c644ac1f35918b252154654331fd687be"
+          },
+          {
+            "path": "tests/test_memory.py",
+            "sha256": "86c5f48a03f4327fcc614841de8e4f835557980588c481e40c4d27dccb1940f7"
+          },
+          {
+            "path": "tests/test_monitor.py",
+            "sha256": "bcf7cb673853f75f219c3d0df7f4d0448f92fbf32de6f952da30d54478152c1b"
+          },
+          {
+            "path": "tests/utils/__init__.py",
+            "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+          },
+          {
+            "path": "tests/utils/test_addressing.py",
+            "sha256": "45a118b610dc15a8529dd0dd401349f05c39bbd2172835f01c205d0158efcbcd"
+          },
+          {
+            "path": "tests/utils/test_console.py",
+            "sha256": "a07e911d2a1e6cc0439b8fb717c871dc2d651e041d5d4a511ce3acd90e90a063"
+          },
+          {
+            "path": "tests/utils/test_conversions.py",
+            "sha256": "691afa3f74134bdebef8087768222f4bebced78fd740d67a422c37e2f2bcfb52"
+          },
+          {
+            "path": "tests/utils/test_devices.py",
+            "sha256": "8ab80e6da32609f0461eaa7270fde00d1fbd1b3d7a1b63e3444f176dad85ab67"
+          },
+          {
+            "path": "utils/__init__.py",
+            "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+          },
+          {
+            "path": "utils/addressing.py",
+            "sha256": "3c5cb6555dc983a7990d4a739a5c4f08f7b7cd5549fafea77208fa740d6a46e1"
+          },
+          {
+            "path": "utils/console.py",
+            "sha256": "2fb0386f87b82f541dcea6350654f1017d65cacf6ed7ea7335e0caa31201ee95"
+          },
+          {
+            "path": "utils/conversions.py",
+            "sha256": "448b8aa2cc59aa71a6a644a5dd93051ab4b2def2ae720c4991c0e54f31a4eaa9"
+          },
+          {
+            "path": "utils/devices.py",
+            "sha256": "fca3864bebcf1db7dbc13014487ad7091499d85c8cb14ca7288c5fdc63de6a0e"
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      "speech/verification.json",
+      "speech/baseline/private-events.jsonl.gz",
+      "speech/pitch-delta/private-events.jsonl.gz",
+      "speech/interpolated-wave-blend/private-events.jsonl.gz"
+    ],
+    "timeoutSeconds": 90,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": ".local/research/ghostbusters/Ghostbusters.sid",
+      "type": "file",
+      "sha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/speech.py",
+      "type": "file",
+      "sha256": "c810cbc6c7e814304be2a51d90802634fec206cfd3000f4558a765d7081e1e74"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/check-speech.py",
+      "type": "file",
+      "sha256": "50db07d39cbc883215c3f4ea93428d0ee9f85cc422de6b0e02f97c2c9206d19e"
+    },
+    {
+      "path": ".tools/test-deps/py65",
+      "type": "directory",
+      "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067",
+      "files": [
+        {
+          "path": "__init__.py",
+          "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+        },
+        {
+          "path": "assembler.py",
+          "sha256": "8e92b5249c1bedcbac26d03a64ab3d35852914dae005d5abf87a275a1d20a383"
+        },
+        {
+          "path": "compat.py",
+          "sha256": "fc140526c2f0b41d5b8cd67415273093c156d6d4b9d98c3f9421aa7e0f0d82c4"
+        },
+        {
+          "path": "devices/__init__.py",
+          "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+        },
+        {
+          "path": "devices/mpu6502.py",
+          "sha256": "15d93835b4f279b702270d9a0b417938291347ec57cc12d9e0307cd344d381fe"
+        },
+        {
+          "path": "devices/mpu65c02.py",
+          "sha256": "dfc5adcd63b82aaa95e5a4ae2a000af1c19fe7188575f41d70212542ec7694fb"
+        },
+        {
+          "path": "devices/mpu65org16.py",
+          "sha256": "9a2685c84444dac43873855b1bb5c54e30938368fcc89ba3a9a78b389044de72"
+        },
+        {
+          "path": "disassembler.py",
+          "sha256": "b8cca0c23ef69dcf88b6dccb08582e4a4d088a561a04c833acb37b3742cdcccc"
+        },
+        {
+          "path": "memory.py",
+          "sha256": "4bba749fe35ed9b9912a7da72eb74035d62a21a5b5895dd6c343f7ce25609cc8"
+        },
+        {
+          "path": "monitor.py",
+          "sha256": "36cf20d850f9c5ab099814fe8f620f13f83faaacc0a14d827e1ff00e4ed5e11e"
+        },
+        {
+          "path": "tests/__init__.py",
+          "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+        },
+        {
+          "path": "tests/devices/__init__.py",
+          "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+        },
+        {
+          "path": "tests/devices/test_mpu6502.py",
+          "sha256": "0ca74be9e0702f15c9be52517c068c21bcd8460af7496d57e151304a13d83558"
+        },
+        {
+          "path": "tests/devices/test_mpu65c02.py",
+          "sha256": "920c1cbf296bab3caabda3ad779f4044ff6c8b806989e3c5282a3c8e77d10694"
+        },
+        {
+          "path": "tests/end_to_end.py",
+          "sha256": "83c5237875784d7a24b3c1600f9ef465db47d0b62667ef18795494a2544f289e"
+        },
+        {
+          "path": "tests/test_assembler.py",
+          "sha256": "41c10c74ad05020874c3a0b7e8430a0994b10eadb7c56c04aa526886a4ffd805"
+        },
+        {
+          "path": "tests/test_disassembler.py",
+          "sha256": "8e68441e33110fbdbe182de1e4be7d2c644ac1f35918b252154654331fd687be"
+        },
+        {
+          "path": "tests/test_memory.py",
+          "sha256": "86c5f48a03f4327fcc614841de8e4f835557980588c481e40c4d27dccb1940f7"
+        },
+        {
+          "path": "tests/test_monitor.py",
+          "sha256": "bcf7cb673853f75f219c3d0df7f4d0448f92fbf32de6f952da30d54478152c1b"
+        },
+        {
+          "path": "tests/utils/__init__.py",
+          "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+        },
+        {
+          "path": "tests/utils/test_addressing.py",
+          "sha256": "45a118b610dc15a8529dd0dd401349f05c39bbd2172835f01c205d0158efcbcd"
+        },
+        {
+          "path": "tests/utils/test_console.py",
+          "sha256": "a07e911d2a1e6cc0439b8fb717c871dc2d651e041d5d4a511ce3acd90e90a063"
+        },
+        {
+          "path": "tests/utils/test_conversions.py",
+          "sha256": "691afa3f74134bdebef8087768222f4bebced78fd740d67a422c37e2f2bcfb52"
+        },
+        {
+          "path": "tests/utils/test_devices.py",
+          "sha256": "8ab80e6da32609f0461eaa7270fde00d1fbd1b3d7a1b63e3444f176dad85ab67"
+        },
+        {
+          "path": "utils/__init__.py",
+          "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+        },
+        {
+          "path": "utils/addressing.py",
+          "sha256": "3c5cb6555dc983a7990d4a739a5c4f08f7b7cd5549fafea77208fa740d6a46e1"
+        },
+        {
+          "path": "utils/console.py",
+          "sha256": "2fb0386f87b82f541dcea6350654f1017d65cacf6ed7ea7335e0caa31201ee95"
+        },
+        {
+          "path": "utils/conversions.py",
+          "sha256": "448b8aa2cc59aa71a6a644a5dd93051ab4b2def2ae720c4991c0e54f31a4eaa9"
+        },
+        {
+          "path": "utils/devices.py",
+          "sha256": "fca3864bebcf1db7dbc13014487ad7091499d85c8cb14ca7288c5fdc63de6a0e"
+        }
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "relativePath": "speech/verification.json",
+      "type": "file",
+      "sha256": "a705206505f2129b7850b228936a530a53d8133acce433cfff6f9f74808830c0"
+    },
+    {
+      "relativePath": "speech/baseline/private-events.jsonl.gz",
+      "type": "file",
+      "sha256": "21f56e0b60100518c2ad7a41ec0ad5b8fb4d6b8e8f4724d6ea559745662a6926"
+    },
+    {
+      "relativePath": "speech/pitch-delta/private-events.jsonl.gz",
+      "type": "file",
+      "sha256": "48d4749085c1fedc9708523bf18c9badb5b285db0fdf7cb191a376f34c8654cb"
+    },
+    {
+      "relativePath": "speech/interpolated-wave-blend/private-events.jsonl.gz",
+      "type": "file",
+      "sha256": "59c53a1db9f5ac2a11630538a5b5272caa8885220881a7dcd96f4fa22190f094"
+    }
+  ],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "scripts/studies/ghostbusters/check-speech.py",
+    "--output",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-components/cache/serialized-speech/5c2bd2eec18ea21df428c48831e7e0d5c165349027f5c0be3d8406c8bab81e61/attempt-b50417f4889148cfb5bdb9953557bbab/speech"
+  ],
+  "completedAt": "2026-10-15T00:26:15.096644+00:00",
+  "executionSeconds": 6.52910079199998
+}

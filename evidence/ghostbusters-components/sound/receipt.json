@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde",
+  "playCalls": 13961,
+  "boundaryComparisons": 42083,
+  "paths": {
+    "note": 2199,
+    "volume": 203,
+    "steady": 26898,
+    "release": 6028,
+    "rest": 195,
+    "vibrato": 5259,
+    "release-vibrato": 1301
+  },
+  "originalInitStores": 24,
+  "musicStores": 41506,
+  "controls": [
+    {
+      "name": "pulse-low",
+      "sourceAddress": 42991,
+      "before": 64,
+      "after": 32,
+      "calls": 1700,
+      "changedSourceSha256": "6858caf5ac4c6f924b57d11fbf15c3d5c5e8654ff3d929c67edd790597f87d8f",
+      "boundaryComparisons": 5125,
+      "onlyDeclaredPortsChanged": true,
+      "allowedPorts": [
+        54274,
+        54288
+      ]
+    },
+    {
+      "name": "sustain-release",
+      "sourceAddress": 43003,
+      "before": 136,
+      "after": 132,
+      "calls": 1700,
+      "changedSourceSha256": "ac0d7eb4d3ba7e37d084c20bc0f8791c99ce309e2530fda11b702a1a0430f591",
+      "boundaryComparisons": 5125,
+      "onlyDeclaredPortsChanged": true,
+      "allowedPorts": [
+        54285
+      ]
+    },
+    {
+      "name": "vibrato-shift",
+      "sourceAddress": 43060,
+      "before": 3,
+      "after": 2,
+      "calls": 1700,
+      "changedSourceSha256": "fb41d642b3c806e1e40acbf388fb8fae6920b77922eb917620faadc74452ebdd",
+      "boundaryComparisons": 5125,
+      "onlyDeclaredPortsChanged": true,
+      "allowedPorts": [
+        54272,
+        54273
+      ],
+      "eligibleContext": {
+        "call": 1697,
+        "voice": 0,
+        "physicalVoice": 1,
+        "instrument": 8,
+        "inputs": {
+          "note": 50,
+          "header": 7,
+          "remaining": 7,
+          "cached_control": 33
+        },
+        "phase": 161,
+        "lastWrittenControlBefore": 33,
+        "originalWrites": [
+          [
+            54272,
+            226
+          ],
+          [
+            54273,
+            18
+          ]
+        ],
+        "editedWrites": [
+          [
+            54272,
+            244
+          ],
+          [
+            54273,
+            18
+          ]
+        ]
+      }
+    },
+    {
+      "name": "row-volume",
+      "sourceAddress": 42508,
+      "before": 97,
+      "after": 145,
+      "calls": 1700,
+      "changedSourceSha256": "67ddcf2043fe610ff9e7c06d054bc2b72f2c644721147ffaa8f260a8b25c21b7",
+      "boundaryComparisons": 5125,
+      "onlyDeclaredPortsChanged": true,
+      "allowedPorts": [
+        54296
+      ]
+    }
+  ],
+  "scope": "Isolated original music wrapper and independent sound helper comparison; no speech execution, full-machine timing or musical verdict.",
+  "outputs": {
+    "description.json": "9597ae910d4175642099ca3e17d9439a15e1fcca282d333d1b935201608832fc",
+    "contexts.json": "e2e355f54f87b8de27b1a21721228346f46cba690eb69b6d16835bcae1b87f82",
+    "control-pulse-low.contexts.json": "7cc2e48fa4e0b35d2753607f55a42ad8d99ef63a788c647907e96acaba8f2ced",
+    "control-pulse-low.description.json": "b1f933296660935111a8420f61feb194ea85854f6f8327e3123a4566681f580f",
+    "control-sustain-release.contexts.json": "01b0ac3d5037f4873312214ef4f9fca069538a72af209f6c15a2707c2b86419c",
+    "control-sustain-release.description.json": "e605474d9362e8bd20f268c8fd9361e9b504cc1637cc16ee3d5d74bb71314a2e",
+    "control-vibrato-shift.contexts.json": "3e2bbd7f711ddfeaf541134d6e05fc3f548ddb12613ac2e5a8cdbbfd659afaa6",
+    "control-vibrato-shift.description.json": "94c729011d0539ed836ca9b0e73f8ff75f3598a9a3b300bf4c7f20e5a7724bac",
+    "control-row-volume.contexts.json": "1733ecce57518c2e387525f7ed9e905a1f851826d4303edab3bf0dd60defc4db",
+    "control-row-volume.description.json": "027cf4a8bf23b38c9920911a009967b14adfdb3192145f451e22b959b57f1ccd"
+  }
+}

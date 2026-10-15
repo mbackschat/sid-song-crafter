@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "component-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "ghostbusters*_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "scripts/studies/ghostbusters/probe-machine.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/trace-sid-vice.py",
+        ".tools/test-deps/py65",
+        "tests/ghostbusters_machine_test.py",
+        "scripts/studies/ghostbusters/score.py",
+        "scripts/studies/ghostbusters/probe-form.py",
+        "scripts/studies/ghostbusters/programs.py",
+        "scripts/studies/ghostbusters/sound-probe.py",
+        "scripts/studies/ghostbusters/speech.py",
+        "scripts/studies/ghostbusters/check-speech.py",
+        "scripts/psid_audit.py",
+        "tests/ghostbusters_score_test.py",
+        "tests/ghostbusters_programs_test.py",
+        "tests/ghostbusters_speech_test.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "initialized-census",
+      "command": [
+        "{python}",
+        "scripts/studies/ghostbusters/probe-machine.py",
+        "--output",
+        "{out}/capture",
+        "--refreshes",
+        "128"
+      ],
+      "inputs": [
+        "scripts/studies/ghostbusters/probe-machine.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/trace-sid-vice.py",
+        ".tools/test-deps/py65",
+        ".local/research/ghostbusters/Ghostbusters.sid",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib"
+      ],
+      "outputs": [
+        "capture/verification.json",
+        "capture/commands.mon",
+        "capture/command.json",
+        "capture/trace.json.gz",
+        "capture/monitor.log.gz",
+        "capture/process.log.gz"
+      ],
+      "timeoutSeconds": 70,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "score-form",
+      "command": [
+        "{python}",
+        "scripts/studies/ghostbusters/probe-form.py",
+        "--output",
+        "{out}/form",
+        "--calls",
+        "13961",
+        "--machine-receipt",
+        "{stage:initialized-census}/capture/verification.json",
+        "--machine-trace",
+        "{stage:initialized-census}/capture/trace.json.gz"
+      ],
+      "inputs": [
+        ".local/research/ghostbusters/Ghostbusters.sid",
+        ".tools/test-deps/py65",
+        "scripts/studies/ghostbusters/score.py",
+        "scripts/studies/ghostbusters/probe-form.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_intake.py",
+        "scripts/verify_player.py",
+        "{stage:initialized-census}/capture/verification.json",
+        "{stage:initialized-census}/capture/command.json",
+        "{stage:initialized-census}/capture/trace.json.gz"
+      ],
+      "outputs": [
+        "form/score.json",
+        "form/receipt.json",
+        "form/reads.json",
+        "form/rows.json",
+        "form/returns.json",
+        "form/resets.json",
+        "form/contexts.json",
+        "form/writes.json",
+        "form/controls/note/score.json",
+        "form/controls/note/receipt.json",
+        "form/controls/note/reads.json",
+        "form/controls/note/rows.json",
+        "form/controls/note/returns.json",
+        "form/controls/note/writes.json",
+        "form/controls/duration/score.json",
+        "form/controls/duration/receipt.json",
+        "form/controls/duration/reads.json",
+        "form/controls/duration/rows.json",
+        "form/controls/duration/returns.json",
+        "form/controls/duration/writes.json"
+      ],
+      "timeoutSeconds": 240,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "sound-programs",
+      "command": [
+        "{python}",
+        "scripts/studies/ghostbusters/sound-probe.py",
+        "--output",
+        "{out}/sound",
+        "--calls",
+        "13961",
+        "--controls",
+        "--control-calls",
+        "1700"
+      ],
+      "inputs": [
+        ".local/research/ghostbusters/Ghostbusters.sid",
+        ".tools/test-deps/py65",
+        "scripts/studies/ghostbusters/score.py",
+        "scripts/studies/ghostbusters/probe-form.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_intake.py",
+        "scripts/verify_player.py",
+        "scripts/studies/ghostbusters/programs.py",
+        "scripts/studies/ghostbusters/sound-probe.py"
+      ],
+      "outputs": [
+        "sound/receipt.json",
+        "sound/description.json",
+        "sound/contexts.json",
+        "sound/control-pulse-low.contexts.json",
+        "sound/control-pulse-low.description.json",
+        "sound/control-sustain-release.contexts.json",
+        "sound/control-sustain-release.description.json",
+        "sound/control-vibrato-shift.contexts.json",
+        "sound/control-vibrato-shift.description.json",
+        "sound/control-row-volume.contexts.json",
+        "sound/control-row-volume.description.json"
+      ],
+      "timeoutSeconds": 300,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "serialized-speech",
+      "command": [
+        "{python}",
+        "scripts/studies/ghostbusters/check-speech.py",
+        "--output",
+        "{out}/speech"
+      ],
+      "inputs": [
+        ".local/research/ghostbusters/Ghostbusters.sid",
+        "scripts/studies/ghostbusters/speech.py",
+        "scripts/studies/ghostbusters/check-speech.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "speech/verification.json",
+        "speech/baseline/private-events.jsonl.gz",
+        "speech/pitch-delta/private-events.jsonl.gz",
+        "speech/interpolated-wave-blend/private-events.jsonl.gz"
+      ],
+      "timeoutSeconds": 90,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "initializedMachineCensus": "{stage:initialized-census}/capture/verification.json",
+    "completeScoreForm": "{stage:score-form}/form/receipt.json",
+    "editableScore": "{stage:score-form}/form/score.json",
+    "soundProgramProof": "{stage:sound-programs}/sound/receipt.json",
+    "serializedSpeechProof": "{stage:serialized-speech}/speech/verification.json"
+  }
+}
