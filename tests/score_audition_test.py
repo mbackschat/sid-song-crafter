@@ -101,6 +101,76 @@ class ScoreAuditionTest(unittest.TestCase):
             self.prepare()
         self.assertFalse(self.output.exists())
 
+    def test_explicit_omission_uses_complete_source_index_before_chord_reduction(self):
+        reason = "Preserve the lower chord tone for this arrangement"
+        self.projection["voices"][2]["omittedEvents"] = [{"sourceEventIndex": 1, "reason": reason}]
+        report = self.prepare()
+        score = json.loads((self.output / "score.json").read_text())
+        self.assertEqual([48, 55], [event["midi"] for event in score["voices"][2]["events"]])
+        losses = [event for event in report["reduction"]["omittedEvents"] if event["reason"] == reason]
+        self.assertEqual(1, len(losses))
+        self.assertEqual({"spanIndex": 0, "selectedStartBeat": [0, 1], "source": {
+            "part": "chords", "eventIndex": 1, "startBeat": [4, 1],
+            "durationBeats": [2, 3], "midi": 55, "velocity": 90,
+        }, "reason": reason}, losses[0])
+        self.assertEqual(13, report["reduction"]["retainedNotes"] + report["reduction"]["omittedNotes"])
+
+    def test_explicit_omission_accounts_for_each_repeated_source_occurrence(self):
+        self.projection["spans"] = [self.projection["spans"][0]] * 2
+        reason = "Deliberately omit this source note in both repetitions"
+        self.projection["voices"][0]["omittedEvents"] = [{"sourceEventIndex": 1, "reason": reason}]
+        report = self.prepare()
+        score = json.loads((self.output / "score.json").read_text())
+        self.assertEqual([64, 64], [event["midi"] for event in score["voices"][0]["events"]])
+        losses = [event for event in report["reduction"]["omittedEvents"] if event["reason"] == reason]
+        self.assertEqual([0, 1], [event["spanIndex"] for event in losses])
+        self.assertEqual([[0, 1], [4, 1]], [event["selectedStartBeat"] for event in losses])
+        self.assertEqual([1, 1], [event["source"]["eventIndex"] for event in losses])
+        self.assertEqual(16, report["reduction"]["sourceNotes"])
+        self.assertEqual(16, report["reduction"]["retainedNotes"] + report["reduction"]["omittedNotes"])
+
+    def test_omitting_later_overlapping_note_preserves_original_durations(self):
+        full = {"title": "Overlap fixture", "composer": "Test fixture", "quarterBpm": 120,
+                "timeSignature": [4, 4], "totalBeats": [8, 1], "provenance": {},
+                "parts": [{"id": part, "events": []} for part in ("lead", "bass", "chords")]}
+        upper = {"startBeat": [0, 1], "durationBeats": [5, 1], "midi": 59, "velocity": 90}
+        lower = {"startBeat": [4, 1], "durationBeats": [2, 1], "midi": 52, "velocity": 80}
+        full["parts"][2]["events"] = [upper, lower]
+        projection = {**self.projection, "spans": [{"startBeat": 0, "endBeat": 8}], "omittedParts": {}}
+        with self.assertRaisesRegex(ValueError, "overlap"):
+            MODULE.project_score(full, full, projection)
+        projection["voices"][2]["omittedEvents"] = [{"sourceEventIndex": 1, "reason": "Preserve the upper held note"}]
+        score = MODULE.project_score(full, full, projection)
+        self.assertEqual([{"startBeat": 0.0, "durationBeats": 5.0, "midi": 59}], score["voices"][2]["events"])
+        self.assertEqual([upper, lower], full["parts"][2]["events"])
+        reduction = score["provenance"]["reduction"]
+        self.assertEqual(0, reduction["shortenedNotes"])
+        self.assertEqual(lower, {key: value for key, value in reduction["omittedEvents"][0]["source"].items() if key not in ("part", "eventIndex")})
+
+    def test_rejects_invalid_explicit_omissions_before_creating_output(self):
+        invalid = [
+            ([{"sourceEventIndex": value, "reason": "Deliberate omission"}], "nonnegative integer")
+            for value in (-1, True, 1.0, "1", None)
+        ] + [
+            ([{"reason": "Missing source index"}], "nonnegative integer"),
+        ]
+        invalid.extend(([{"sourceEventIndex": 1, "reason": reason}], "nonblank reason") for reason in ("", "  ", None, 42))
+        invalid.extend([
+            ([{"sourceEventIndex": 1}], "nonblank reason"),
+            ([{"sourceEventIndex": 1, "reason": "One"}, {"sourceEventIndex": 1, "reason": "Two"}], "Duplicate"),
+            ([{"sourceEventIndex": 99, "reason": "Unknown note"}], "does not exist"),
+            ([{"sourceEventIndex": 0, "reason": "Outside selected passage"}], "not selected"),
+            ({"sourceEventIndex": 1, "reason": "Wrong container"}, "list"),
+            ([1], "object"),
+        ])
+        for index, (omissions, message) in enumerate(invalid):
+            with self.subTest(omissions=omissions):
+                self.output = self.root / ("invalid-" + str(index))
+                self.projection["voices"][0]["omittedEvents"] = omissions
+                with self.assertRaisesRegex(ValueError, message):
+                    self.prepare()
+                self.assertFalse(self.output.exists())
+
     def test_rejects_tied_highest_pitches_with_different_source_durations(self):
         midi = mido.MidiFile(self.source)
         midi.tracks[2] = mido.MidiTrack([

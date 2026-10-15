@@ -63,16 +63,20 @@ def pack_pattern(cells):
     return bytes(body + bytes((unpacked_size, len(cells)))), offsets
 
 
-def pattern_chunks(cells):
+def pattern_chunks(cells, *, pattern_beats=None, ticks_per_beat=1):
     start = 0
+    boundary_index = 1
     while start < len(cells):
+        region_end = len(cells) if pattern_beats is None else rounded(min(len(cells), boundary_index * pattern_beats * ticks_per_beat))
         end, unpacked_bytes = start, 0
-        while end < len(cells) and end - start < PATTERN_ROWS and unpacked_bytes + len(cells[end]) <= 248:
+        while end < region_end and end - start < PATTERN_ROWS and unpacked_bytes + len(cells[end]) <= 248:
             unpacked_bytes += len(cells[end])
             end += 1
         require(end > start, "Native row exceeds the editable pattern byte limit")
         yield start, cells[start:end]
         start = end
+        if start == region_end:
+            boundary_index += 1
 
 
 def select_sections(recipe, score):
@@ -150,6 +154,10 @@ def arrange(recipe_path, output_dir, *, clock=None):
     tail = max(1, rounded(source_tail * target.ticks_per_second / TICKS_PER_SECOND))
     rate = 60 / bpm * target.ticks_per_second
     pal_rate = 60 / bpm * TICKS_PER_SECOND
+    pattern_beats = recipe.get("patternBeats")
+    if "patternBeats" in recipe:
+        require(type(pattern_beats) in (int, float) and math.isfinite(pattern_beats) and pattern_beats > 0, "patternBeats must be a positive finite number")
+        require(pattern_beats * rate >= 1, "patternBeats must span at least one target-clock tick")
     score_ticks = rounded(total_beats * rate)
     total_ticks = score_ticks + tail
     row_count = total_ticks + 1
@@ -222,7 +230,7 @@ def arrange(recipe_path, output_dir, *, clock=None):
         cells[total_ticks] = b"\x7e"
         sequence = []
         entries = []
-        for chunk_start, chunk in pattern_chunks(cells):
+        for chunk_start, chunk in pattern_chunks(cells, pattern_beats=pattern_beats, ticks_per_beat=rate):
             packed, offsets = pack_pattern(chunk)
             if packed not in pattern_numbers:
                 number = len(patterns) + 1
@@ -264,7 +272,7 @@ def arrange(recipe_path, output_dir, *, clock=None):
     manifest = {
         "format": "sidwizard-arrangement-manifest-v1", "sourcePath": str(source), "sourceSha256": digest(source_bytes), "recipePath": str(recipe_path), "recipeSha256": digest(recipe_bytes),
         "nativePath": str(native), "nativeSha256": digest(data), "title": recipe["title"], "author": recipe["author"], "released": recipe.get("released", "2026"),
-        "timingPolicy": recipe["timingPolicy"], "nativeHeaderText": authorinfo.decode("ascii"),
+        "timingPolicy": recipe["timingPolicy"], "patternBeats": pattern_beats, "nativeHeaderText": authorinfo.decode("ascii"),
         "sidModel": sid_model, "sidCount": sid_count, "sids": [{"baseAddress": 0xd400 + index * 0x20, "model": sid_model} for index in range(sid_count)],
         "clock": target.name.upper(), "clockHz": target.clock_hz, "frameCycles": target.frame_cycles,
         "ticksPerSecond": target.ticks_per_second, "frameSpeed": 1, "rowTicks": 1,

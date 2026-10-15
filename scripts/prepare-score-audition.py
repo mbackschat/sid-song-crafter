@@ -46,6 +46,30 @@ def source_origins(full, selected, spans):
     return origins
 
 
+def explicit_omissions(voice, source_events, origins):
+    declarations = voice.get("omittedEvents", [])
+    if not isinstance(declarations, list):
+        raise ValueError("omittedEvents must be a list in voice " + voice["name"])
+    selected_indices = {origin["source"]["eventIndex"] for origin in origins}
+    reasons = {}
+    for declaration in declarations:
+        if not isinstance(declaration, dict):
+            raise ValueError("Each omittedEvents entry must be an object in voice " + voice["name"])
+        index, reason = declaration.get("sourceEventIndex"), declaration.get("reason")
+        if type(index) is not int or index < 0:
+            raise ValueError("sourceEventIndex must be a nonnegative integer in voice " + voice["name"])
+        if not isinstance(reason, str) or not reason.strip():
+            raise ValueError("Explicit omissions require a nonblank reason in voice " + voice["name"])
+        if index in reasons:
+            raise ValueError("Duplicate sourceEventIndex in voice " + voice["name"] + ": " + str(index))
+        if index >= len(source_events):
+            raise ValueError("Omitted source event does not exist in voice " + voice["name"] + ": " + str(index))
+        if index not in selected_indices:
+            raise ValueError("Omitted source event is not selected in voice " + voice["name"] + ": " + str(index))
+        reasons[index] = reason
+    return reasons
+
+
 def project_score(full, selected, recipe):
     voices = recipe["voices"]
     if len(voices) != 3 or len({voice["name"] for voice in voices}) != 3 or len({voice["sourcePart"] for voice in voices}) != 3:
@@ -64,9 +88,16 @@ def project_score(full, selected, recipe):
             policy = MonophonicPolicy(voice["monophonicPolicy"])
         except ValueError:
             raise ValueError("Unsupported monophonic policy: " + str(voice["monophonicPolicy"])) from None
+        part = next(part for part in full["parts"] if part["id"] == voice["sourcePart"])
+        voice_origins = origins[voice["sourcePart"]]
+        reasons = explicit_omissions(voice, part["events"], voice_origins)
         groups = defaultdict(list)
-        for origin in origins[voice["sourcePart"]]:
-            groups[beat(origin["selectedStartBeat"])].append(origin)
+        for origin in voice_origins:
+            reason = reasons.get(origin["source"]["eventIndex"])
+            if reason is not None:
+                losses.append({**origin, "reason": reason})
+            else:
+                groups[beat(origin["selectedStartBeat"])].append(origin)
         chosen = []
         for group in groups.values():
             if policy is MonophonicPolicy.REJECT_OVERLAP:

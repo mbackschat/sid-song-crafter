@@ -38,8 +38,32 @@ def synthetic_score(events, beats=500):
     }
 
 
+def expanded_native_cells(manifest):
+    data = Path(manifest["nativePath"]).read_bytes()
+    cursor = 66 + sum(len(voice["sequence"]) + 3 for voice in manifest["voices"])
+    patterns = {}
+    for pattern in manifest["patterns"]:
+        packed = data[cursor:cursor + pattern["packedBytes"] + 1]
+        cursor += len(packed)
+        cells = []
+        index = 0
+        while index < len(packed) - 2:
+            value = packed[index]
+            if 0x70 <= value <= 0x77:
+                cells.extend([b"\x00"] * (value - 0x6e))
+                index += 1
+            else:
+                size = 2 if value & 0x80 else 1
+                cells.append(packed[index:index + size])
+                index += size
+        if len(cells) != packed[-1] or sum(map(len, cells)) + 1 != packed[-2]:
+            raise AssertionError("Saved pattern disagrees with its decoded footer")
+        patterns[pattern["number"]] = cells
+    return [[cell for number in voice["sequence"] for cell in patterns[number]] for voice in manifest["voices"]]
+
+
 class SIDWizardArrangementTest(unittest.TestCase):
-    def create(self, directory, score, sid_count=None, sid_model=None):
+    def create(self, directory, score, sid_count=None, sid_model=None, **overrides):
         source = Path(directory) / "score.json"
         source.write_text(json.dumps(score))
         configuration = Path(directory) / "native.json"
@@ -48,6 +72,7 @@ class SIDWizardArrangementTest(unittest.TestCase):
             settings["sidCount"] = sid_count
         if sid_model is not None:
             settings["sidModel"] = sid_model
+        settings.update(overrides)
         configuration.write_text(json.dumps(settings))
         return configuration, ARRANGER.arrange(configuration, Path(directory) / "out")
 
@@ -86,6 +111,7 @@ class SIDWizardArrangementTest(unittest.TestCase):
             default = ARRANGER.arrange(configuration, root / "default")
             explicit = ARRANGER.arrange(configuration, root / "explicit", clock="pal")
             self.assertEqual(default["clock"], "PAL")
+            self.assertIsNone(default["patternBeats"])
             self.assertEqual(Path(default["nativePath"]).read_bytes(), Path(explicit["nativePath"]).read_bytes())
             self.assertEqual(default["nativeSha256"], "c11f92387cbdec63124ba1933b804e1e78f040eade3658b29ebdd6ad4d600624")
             settings = json.loads(configuration.read_text())
@@ -263,6 +289,74 @@ class SIDWizardArrangementTest(unittest.TestCase):
             self.assertEqual(pattern["unpackedBytes"], 249)
             self.assertLess(pattern["packedBytes"], pattern["unpackedBytes"])
             self.assertEqual(pattern["rows"], 247)
+
+    def test_beat_boundaries_use_absolute_rounding_and_preserve_byte_limited_cells(self):
+        cells = [b"\xb1\x01" if index % 2 == 0 else b"\x00" for index in range(1500)]
+        chunks = list(ARRANGER.pattern_chunks(cells, pattern_beats=400.4, ticks_per_beat=1.003))
+        boundaries = [math.floor(index * 400.4 * 1.003 + 0.5) for index in range(1, 4)]
+        starts = [start for start, chunk in chunks]
+        self.assertTrue(all(boundary in starts for boundary in boundaries))
+        self.assertEqual([cell for start, chunk in chunks for cell in chunk], cells)
+        for start, chunk in chunks:
+            self.assertLessEqual(len(chunk), 248)
+            self.assertLessEqual(sum(map(len, chunk)) + 1, 249)
+            self.assertFalse(any(start < boundary < start + len(chunk) for boundary in boundaries))
+        sparse = list(ARRANGER.pattern_chunks([b"\x00"] * 450, pattern_beats=100.2))
+        self.assertEqual([start for start, chunk in sparse], [0, 100, 200, 301, 401])
+
+    def test_beat_packing_preserves_every_native_cell_note_gate_and_partial_tail(self):
+        score = synthetic_score([
+            {"startBeat": 0, "durationBeats": 9, "midi": 60},
+            {"startBeat": 9, "durationBeats": 6, "midi": 62},
+            {"startBeat": 27, "durationBeats": 6, "midi": 64},
+        ], beats=33.2)
+        score["tailTicks"] = 15
+        score["voices"][1]["events"] = [{"startBeat": 3, "durationBeats": 23, "midi": 48}]
+        for clock in ("pal", "ntsc"):
+            with self.subTest(clock=clock), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                (root / "default").mkdir()
+                (root / "beats").mkdir()
+                _, default = self.create(root / "default", score, clock=clock)
+                _, bounded = self.create(root / "beats", score, clock=clock, patternBeats=5.5)
+                self.assertEqual(bounded["patternBeats"], 5.5)
+                self.assertEqual(expanded_native_cells(bounded), expanded_native_cells(default))
+                for field in ("rowCount", "scoreTicks", "tailTicks", "stopTick", "stopVolumeClearTick", "timingChanges", "articulationChanges"):
+                    self.assertEqual(bounded[field], default[field])
+                rate = bounded["ticksPerSecond"] * 60 / score["quarterBpm"]
+                boundaries = [0]
+                index = 1
+                while math.floor(index * 5.5 * rate + 0.5) < bounded["rowCount"]:
+                    boundaries.append(math.floor(index * 5.5 * rate + 0.5))
+                    index += 1
+                for original, voice, cells in zip(default["voices"], bounded["voices"], expanded_native_cells(bounded)):
+                    self.assertEqual([None if tick == 0 else tick - 1 for tick in boundaries], [entry["tick"] for entry in voice["expectedPatternEntries"]])
+                    self.assertEqual([{key: value for key, value in note.items() if key not in ("pattern", "row", "byteOffset")} for note in voice["notes"]], [{key: value for key, value in note.items() if key not in ("pattern", "row", "byteOffset")} for note in original["notes"]])
+                    self.assertEqual(len(cells), bounded["rowCount"])
+                    self.assertEqual(cells[-1], b"\x7e")
+
+    def test_beat_packing_reuses_repeated_phrases_that_exceed_greedy_pattern_capacity(self):
+        score = synthetic_score([], beats=223 * 40)
+        for voice_index, voice in enumerate(score["voices"]):
+            voice["events"] = [{"startBeat": repeat * 223 + offset, "durationBeats": 8, "midi": 48 + 12 * voice_index + note} for repeat in range(40) for note, offset in enumerate((0, 17, 43, 78, 113, 140, 167, 211))]
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "default").mkdir()
+            (root / "beats").mkdir()
+            with self.assertRaisesRegex(ValueError, "100-pattern limit"):
+                self.create(root / "default", score)
+            _, manifest = self.create(root / "beats", score, patternBeats=223)
+            self.assertEqual(len(manifest["patterns"]), 4)
+            self.assertEqual([len(voice["sequence"]) for voice in manifest["voices"]], [41, 41, 41])
+            self.assertEqual([len(cells) for cells in expanded_native_cells(manifest)], [8924] * 3)
+            self.assertEqual(sum(len(voice["notes"]) for voice in manifest["voices"]), 960)
+
+    def test_invalid_or_subtick_pattern_beats_are_rejected_before_output(self):
+        for value in (None, True, False, "8", [], {}, 0, -1, math.inf, -math.inf, math.nan, 0.99):
+            with self.subTest(pattern_beats=value), tempfile.TemporaryDirectory() as directory:
+                with self.assertRaisesRegex(ValueError, "patternBeats"):
+                    self.create(directory, synthetic_score([], beats=4), patternBeats=value)
+                self.assertFalse((Path(directory) / "out").exists())
 
     def test_rejects_overlapping_sections_and_note_collisions(self):
         score = synthetic_score([{"startBeat": 0, "durationBeats": 2, "midi": 60}, {"startBeat": 0, "durationBeats": 2, "midi": 64}], beats=4)
