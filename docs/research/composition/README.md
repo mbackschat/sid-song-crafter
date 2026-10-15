@@ -4,9 +4,10 @@ Turn musical material into deliberate SID arrangements. Return to the [research 
 
 - [Moon River score interpretation](moon-river-preparation.md): existing piano score, first-statement cadence and creative native sound design; [editable interpretation](../../../songs/moon-river/README.md).
 - [The Pink Panther Theme source intake](pink-panther-preparation.md): pinned multitrack source and encoded swing; [complete PAL MOS8580 ensemble interpretation](../../../songs/pink-panther/README.md#complete-sourced-arrangement) accepted throughout, including its ending.
-- [Axel F score interpretation](../../../songs/axel-f/README.md): sourced hook/bass/stabs audition through the existing native repertoire; first listening verdict pending, complete song still to deliver.
+- [Axel F score interpretation](../../../songs/axel-f/README.md): preferred smoother lead and verified complete tonal baseline; active Hülsbeck master study and pulse-only transfer audition, with musical acceptance pending.
 - [Technique lookup](../technique-index.md): start with a musical need, retrieve evidence and an existing implementation, then choose an audible check.
 - [Instruments and composition](instruments-and-composition.md): voice roles, evolving instruments, and shared controls.
+- [Instruments as SID programs](instruments-as-programs.md): a human-readable explanation of stateful sounds, with verified Hülsbeck, Galway, Hubbard and Follin examples and editable implementations.
 - [Sound-design repertoire](sound-design-repertoire.md): reusable experiment briefs, listening criteria, and admission rules for verified instruments.
 - [Original native instrument bank](instruments/README.md): implemented SID-Wizard patches with measured evidence and pending listening verdicts.
 - [Musical gesture library](gestures/README.md): bass answers, chord bursts and phrase variations; where to use them, native dependencies and evidence status.

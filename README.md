@@ -12,6 +12,8 @@ Adapting a score to SID requires decisions about voice allocation, instrument de
 
 This project studies how C64 composers such as Rob Hubbard, Martin Galway, Tim Follin, Ben Daglish, Chris Hülsbeck and Jeroen Tel used SID, and records the findings as editable instruments, worked arrangements and technical guides. The aim is to apply that knowledge to new scores without repeating the same research and implementation work. [PRODUCTS.md](PRODUCTS.md) describes the project scope.
 
+A SID instrument can be a small program that shapes a note's attack, moving tone and release through waveform, pitch, pulse-width and filter changes. Its behavior also depends on timing, retrigger rules and shared chip resources. [Instruments as SID programs](docs/research/composition/instruments-as-programs.md) explains this model through verified master studies and the project's editable implementations.
+
 ## Features
 
 - **Score preparation:** MIDI import with explicit track mappings, repeat handling and documented reductions into SID voices.
