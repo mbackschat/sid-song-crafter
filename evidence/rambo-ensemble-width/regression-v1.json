@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "baselineRun": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-width-v1/run.json",
+    "sha256": "e6a5960d5bc2c436041e6a2f799a9aaed1d55cbc6334d37fdfb45f0738ad0ea9"
+  },
+  "refactoredFreshRun": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-width-v2/first-run.json",
+    "sha256": "853e726c1f73e68692ddbcbdf480f3985f22477998f524e316af8f5c47655c4f"
+  },
+  "pcmChecks": [
+    {
+      "stage": "mapping-comparison",
+      "file": "current-then-hard-split-phrase.a.matched.wav",
+      "sha256": "ebf3410420aa595f8c6f174c06e324050e61340d7ad5e2be76aa7a4f4efbaa2d",
+      "matchesV1": true
+    },
+    {
+      "stage": "mapping-comparison",
+      "file": "current-then-hard-split-phrase.ab.wav",
+      "sha256": "dba159273eb6f20f56289fcba4cc7b4af2e39119265c6929a416008aba8ccd13",
+      "matchesV1": true
+    },
+    {
+      "stage": "mapping-comparison",
+      "file": "current-then-hard-split-phrase.b.matched.wav",
+      "sha256": "4a65458502dc05c92fe153af7dae8fce882f963b48770817efa0c069847f5929",
+      "matchesV1": true
+    },
+    {
+      "stage": "prepare",
+      "file": "current-centered-full.wav",
+      "sha256": "ed52009ce19c842fafd5c79fae0a62cc19d02150288b44d5bc37774104e1b0a4",
+      "matchesV1": true
+    },
+    {
+      "stage": "prepare",
+      "file": "current-centered-phrase.wav",
+      "sha256": "ebf3410420aa595f8c6f174c06e324050e61340d7ad5e2be76aa7a4f4efbaa2d",
+      "matchesV1": true
+    },
+    {
+      "stage": "prepare",
+      "file": "raw-hard-split-full.wav",
+      "sha256": "178d08860bddc06520a5c374b0badaf86e43dcad571e9388dbf545280843757f",
+      "matchesV1": true
+    },
+    {
+      "stage": "prepare",
+      "file": "raw-hard-split-phrase.wav",
+      "sha256": "08e3f60b92161ef6f4697ea4d239ca44bf2f03b364ff333794a511af134c96da",
+      "matchesV1": true
+    }
+  ],
+  "widthMetricsIdentical": true,
+  "widthJsonSha256": "8748b2475531173bf7cf9602e223d4a4d695e6b574c4e50936cee9cb1c1f08d9",
+  "matchingGainsAndMeasurementsIdentical": true,
+  "sources": [
+    {
+      "path": "config/listening/rambo-ensemble-width.json",
+      "sha256": "9721b6579d52c4de0003f1628f69a737b2d72717b355c37a6e28be47954d09be"
+    },
+    {
+      "path": "scripts/studies/rambo/prepare-width-diagnostic.py",
+      "sha256": "2615f31cf9dfafa400f3c7826b6b7f5b738dabcb00e6b635aecd1aa3ca76e9cc"
+    },
+    {
+      "path": "scripts/audio_comparison.py",
+      "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+    },
+    {
+      "path": "scripts/verify_player.py",
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    },
+    {
+      "path": "scripts/compare-audio.py",
+      "sha256": "fe8dc975c6bae65a17e85e56f87c3e720dfef7d6654cf8f593b48bb1572b8c96"
+    },
+    {
+      "path": "scripts/check-listening.py",
+      "sha256": "562acd7395111823046f96b17d2ee54839ae579f4e54ddf32f5526005c7cfa0a"
+    },
+    {
+      "path": "scripts/listening_checks.py",
+      "sha256": "2d07bf6b4a95df5c114619ed9a57e6122f1ccc86f86e13025e6586f86dd0b243"
+    }
+  ],
+  "freshWallSeconds": 10.030379125000001,
+  "publication": "No new listening publication; existing v1 shared sources remain unchanged"
+}

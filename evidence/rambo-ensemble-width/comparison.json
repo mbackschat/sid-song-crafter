@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "method": "full-file AC RMS, pooled channel power after subtracting each channel mean; silence and tails included",
+  "matching": "attenuation only",
+  "requestedAcRmsDbfs": null,
+  "targetAcRms": 2019.3486182108516,
+  "targetAcRmsDbfs": -24.204772668063153,
+  "peakHeadroomDb": 1.0,
+  "peakLimit": 29203,
+  "sampleRate": 44100,
+  "channels": 2,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-width-v2/cache/mapping-comparison/f09479bed81b9218afa25c69318d73cef909ef42f4c292271d6acf5b22930a7f/attempt-5182520fb1454ed588a6b2dca12fe71b/current-then-hard-split-phrase.ab.wav",
+    "frames": 1433250,
+    "durationSeconds": 32.5,
+    "sha256": "dba159273eb6f20f56289fcba4cc7b4af2e39119265c6929a416008aba8ccd13"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 705600
+    },
+    {
+      "label": "silence",
+      "startFrame": 705600,
+      "endFrame": 727650
+    },
+    {
+      "label": "B",
+      "startFrame": 727650,
+      "endFrame": 1433250
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-width-v2/cache/prepare/589e53a443638ddd6f0cefa0cbb89bd7b7a810fd6e196697715f6cf266a505de/attempt-8022ec60add9473a9632939c50408b79/current-centered-phrase.wav",
+      "sha256": "ebf3410420aa595f8c6f174c06e324050e61340d7ad5e2be76aa7a4f4efbaa2d",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 9166,
+        "peakDbfs": -11.065401641019001,
+        "clippedSamples": 0,
+        "rms": 2019.3942103322363,
+        "acRms": 2019.3486182108516,
+        "acRmsDbfs": -24.204772668063153,
+        "perChannel": [
+          {
+            "dc": -10.820342970521542,
+            "rms": 1885.8482991649016,
+            "acRms": 1885.8172572232847
+          },
+          {
+            "dc": 15.848971088435373,
+            "rms": 2144.6403302147332,
+            "acRms": 2144.5817671748955
+          }
+        ]
+      },
+      "gain": 1.0,
+      "gainDb": 0.0,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 9166,
+        "peakDbfs": -11.065401641019001,
+        "clippedSamples": 0,
+        "rms": 2019.3942103322363,
+        "acRms": 2019.3486182108516,
+        "acRmsDbfs": -24.204772668063153,
+        "perChannel": [
+          {
+            "dc": -10.820342970521542,
+            "rms": 1885.8482991649016,
+            "acRms": 1885.8172572232847
+          },
+          {
+            "dc": 15.848971088435373,
+            "rms": 2144.6403302147332,
+            "acRms": 2144.5817671748955
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-width-v2/cache/mapping-comparison/f09479bed81b9218afa25c69318d73cef909ef42f4c292271d6acf5b22930a7f/attempt-5182520fb1454ed588a6b2dca12fe71b/current-then-hard-split-phrase.a.matched.wav"
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-width-v2/cache/prepare/589e53a443638ddd6f0cefa0cbb89bd7b7a810fd6e196697715f6cf266a505de/attempt-8022ec60add9473a9632939c50408b79/raw-hard-split-phrase.wav",
+      "sha256": "08e3f60b92161ef6f4697ea4d239ca44bf2f03b364ff333794a511af134c96da",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 11005,
+        "peakDbfs": -9.477197761407023,
+        "clippedSamples": 0,
+        "rms": 2803.04537004296,
+        "acRms": 2801.7181747518616,
+        "acRmsDbfs": -21.360509751189923,
+        "perChannel": [
+          {
+            "dc": -83.69650793650794,
+            "rms": 3519.432725657764,
+            "acRms": 3518.43738113812
+          },
+          {
+            "dc": 88.72500283446712,
+            "rms": 1824.2039312005963,
+            "acRms": 1822.0449655482528
+          }
+        ]
+      },
+      "gain": 0.7207536562415662,
+      "gainDb": -2.844262916873228,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 7932,
+        "peakDbfs": -12.321344588529058,
+        "clippedSamples": 0,
+        "rms": 2020.3042789629706,
+        "acRms": 2019.3480636600518,
+        "acRmsDbfs": -24.204775053370803,
+        "perChannel": [
+          {
+            "dc": -60.324793083900225,
+            "rms": 2536.643452967522,
+            "acRms": 2535.926049162786
+          },
+          {
+            "dc": 63.925535714285715,
+            "rms": 1314.7998903670411,
+            "acRms": 1313.2449419635414
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-width-v2/cache/mapping-comparison/f09479bed81b9218afa25c69318d73cef909ef42f4c292271d6acf5b22930a7f/attempt-5182520fb1454ed588a6b2dca12fe71b/current-then-hard-split-phrase.b.matched.wav"
+    }
+  ],
+  "listeningReview": null
+}

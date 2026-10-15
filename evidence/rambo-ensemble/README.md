@@ -1,6 +1,6 @@
 # Rambo expanded ensemble evidence
 
-The [six-voice arrangement](../../songs/studies/rambo-ensemble/README.md) retains the faithful trio on SID A and adds source-derived support on SID B. Verified on 2026-10-15; human musical review remains pending. Music-derived score and note records retain Martin Galway's [GPLv3 loader terms and attribution](../../samples/rambo-loader/README.md). Reusable tools retain MIT separately.
+The [six-voice arrangement](../../songs/studies/rambo-ensemble/README.md) retains the faithful trio on SID A and adds source-derived support on SID B. Verified on 2026-10-15; the subsequent [listener review](../../songs/studies/rambo-ensemble/listening-review.json) found uncertain added weight and no distinct left/right placement. The receipts below remain the immutable first-submission evidence. Music-derived score and note records retain Martin Galway's [GPLv3 loader terms and attribution](../../samples/rambo-loader/README.md). Reusable tools retain MIT separately.
 
 | Question | Retained evidence |
 | --- | --- |

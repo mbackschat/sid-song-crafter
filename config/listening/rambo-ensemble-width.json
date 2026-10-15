@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "centered-pin",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "asset",
+        "build/rambo-ensemble-listening/ensemble-centered-full.wav",
+        "--sha256",
+        "ed52009ce19c842fafd5c79fae0a62cc19d02150288b44d5bc37774104e1b0a4",
+        "--output",
+        "{out}/centered.json"
+      ],
+      "inputs": [
+        "build/rambo-ensemble-listening/ensemble-centered-full.wav",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "centered.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "raw-pin",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "asset",
+        "build/rambo-ensemble-listening/ensemble-raw-chips-full.wav",
+        "--sha256",
+        "178d08860bddc06520a5c374b0badaf86e43dcad571e9388dbf545280843757f",
+        "--output",
+        "{out}/raw.json"
+      ],
+      "inputs": [
+        "build/rambo-ensemble-listening/ensemble-raw-chips-full.wav",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "raw.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "prepare",
+      "command": [
+        "{python}",
+        "scripts/studies/rambo/prepare-width-diagnostic.py",
+        "build/rambo-ensemble-listening/ensemble-centered-full.wav",
+        "build/rambo-ensemble-listening/ensemble-raw-chips-full.wav",
+        "{out}"
+      ],
+      "inputs": [
+        "scripts/studies/rambo/prepare-width-diagnostic.py",
+        "build/rambo-ensemble-listening/ensemble-centered-full.wav",
+        "build/rambo-ensemble-listening/ensemble-raw-chips-full.wav",
+        "build/rambo-ensemble-listening/sources.json",
+        "scripts/audio_comparison.py",
+        "scripts/verify_player.py"
+      ],
+      "outputs": [
+        "current-centered-full.wav",
+        "raw-hard-split-full.wav",
+        "current-centered-phrase.wav",
+        "raw-hard-split-phrase.wav",
+        "width.json",
+        "audition.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "mapping-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "prepare",
+        "{stage:prepare}/current-centered-phrase.wav",
+        "{stage:prepare}/raw-hard-split-phrase.wav",
+        "{out}/current-then-hard-split-phrase",
+        "--individual-copies",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:prepare}/current-centered-phrase.wav",
+        "{stage:prepare}/raw-hard-split-phrase.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "current-then-hard-split-phrase.ab.wav",
+        "current-then-hard-split-phrase.comparison.json",
+        "current-then-hard-split-phrase.a.matched.wav",
+        "current-then-hard-split-phrase.b.matched.wav"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "mappingComparison": "{stage:mapping-comparison}/current-then-hard-split-phrase.ab.wav",
+    "fullCurrent": "{stage:prepare}/current-centered-full.wav",
+    "fullRaw": "{stage:prepare}/raw-hard-split-full.wav",
+    "widthMetrics": "{stage:prepare}/width.json",
+    "auditionSelection": "{stage:prepare}/audition.json",
+    "comparisonReceipt": "{stage:mapping-comparison}/current-then-hard-split-phrase.comparison.json"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "status": "internal diagnostic; no listening verdict",
+  "sourceSidSha256": "c909f2d02c82e06291af8b33fb9618d9e576ced319c25a89fca17e8f48adb807",
+  "target": {
+    "clock": "PAL",
+    "sidModels": [
+      "MOS6581",
+      "MOS6581"
+    ],
+    "sidBases": [
+      54272,
+      54304
+    ]
+  },
+  "phraseSeconds": [
+    88,
+    104
+  ],
+  "mappings": {
+    "current": [
+      [
+        0.5,
+        0.35
+      ],
+      [
+        0.5,
+        0.65
+      ]
+    ],
+    "raw": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  "sources": [
+    {
+      "label": "current",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-listening/ensemble-centered-full.wav",
+      "sha256": "ed52009ce19c842fafd5c79fae0a62cc19d02150288b44d5bc37774104e1b0a4",
+      "fullCopySha256": "ed52009ce19c842fafd5c79fae0a62cc19d02150288b44d5bc37774104e1b0a4",
+      "phraseSha256": "ebf3410420aa595f8c6f174c06e324050e61340d7ad5e2be76aa7a4f4efbaa2d",
+      "originalGain": 1,
+      "full": {
+        "midAcRms": 1920.959791456149,
+        "sideAcRms": 210.4586480778382,
+        "sideToMidAcRmsRatio": 0.10955911155136872,
+        "leftRightCorrelation": 0.9794611530376474,
+        "definitions": "DC removed per channel; M=(L+R)/2; S=(L-R)/2; normalized zero-lag L/R covariance"
+      },
+      "phrase": {
+        "midAcRms": 2000.7676864687323,
+        "sideAcRms": 273.3084459957866,
+        "sideToMidAcRmsRatio": 0.1366017893252585,
+        "leftRightCorrelation": 0.9713384803292416,
+        "definitions": "DC removed per channel; M=(L+R)/2; S=(L-R)/2; normalized zero-lag L/R covariance"
+      }
+    },
+    {
+      "label": "raw",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-listening/ensemble-raw-chips-full.wav",
+      "sha256": "178d08860bddc06520a5c374b0badaf86e43dcad571e9388dbf545280843757f",
+      "fullCopySha256": "178d08860bddc06520a5c374b0badaf86e43dcad571e9388dbf545280843757f",
+      "phraseSha256": "08e3f60b92161ef6f4697ea4d239ca44bf2f03b364ff333794a511af134c96da",
+      "originalGain": 1,
+      "full": {
+        "midAcRms": 1920.9598475504843,
+        "sideAcRms": 1911.2907398332884,
+        "sideToMidAcRmsRatio": 0.9949665227362636,
+        "leftRightCorrelation": 0.007406134757718608,
+        "definitions": "DC removed per channel; M=(L+R)/2; S=(L-R)/2; normalized zero-lag L/R covariance"
+      },
+      "phrase": {
+        "midAcRms": 2000.7678681235373,
+        "sideAcRms": 1961.263028922765,
+        "sideToMidAcRmsRatio": 0.9802551611158057,
+        "leftRightCorrelation": 0.024415141165549516,
+        "definitions": "DC removed per channel; M=(L+R)/2; S=(L-R)/2; normalized zero-lag L/R covariance"
+      }
+    }
+  ],
+  "scope": "Same six-voice render, changed chip-output mapping only. Raw hard split places all faithful voices left and all added support right; it cannot pan individual voices within either chip. Width statistics do not establish stereo perception or musical usefulness."
+}

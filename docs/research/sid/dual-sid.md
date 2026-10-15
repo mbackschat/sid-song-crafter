@@ -6,6 +6,22 @@ Two independently addressed chips provide six oscillator/envelope voices and two
 
 Project recommendation: put melody and an associated voice group on the first chip, accompaniment and sustained support on the second. Keep each chip's filter ownership explicit. A six-voice arrangement should also have a documented three-voice reduction if standard C64 playback matters.
 
+## Expand the musical capacity, not only the stereo image
+
+The user's arrangement principle, clarified on 2026-10-15: study what a master achieved within one SID's limits, identify where musical roles had to share scarce resources, then use the second SID to develop those roles while preserving the work's character. Stereo placement is one part of that interpretation. Extra notes, louder backing or a wider copy alone do not demonstrate that the additional capacity serves the music.
+
+Build a short constraint map before arranging: **source passage and role → observed resource sharing → musical consequence to test → additional voice/filter allocation → comparison that can settle its value**. Consult composer interviews, contemporary accounts and relevant literature alongside executable evidence; retain citations in the [composer studies](../composers/README.md). Separate a documented composer complaint, an observed implementation limit and our arrangement hypothesis. “What might the master do with two SIDs?” guides interpretation; it is not permission to attribute our decisions to the composer.
+
+| Source constraint to establish | Possible use of the second chip | What must survive the change |
+| --- | --- | --- |
+| Bass and percussion take turns on one voice | Give a recovered percussion role its own oscillator so bass and drum bodies can overlap | Source groove, attack placement and balance; do not invent missing drums solely because capacity is available |
+| A new note replaces a still-sounding envelope | Allocate overlapping notes to separate voices so a selected release can finish | Phrasing and harmonic compatibility throughout the overlap; a nonzero lifetime counter alone does not prove audible loss |
+| One oscillator serializes chord tones | Sustain selected source chord tones independently, or separate chord articulation from its rhythmic arpeggio | Characteristic arpeggio motion and actual chord colors; a resource-saving gesture can also be an essential aesthetic choice |
+| Sync/ring effects require another oscillator | Reserve the coupled pair and place other roles on the second chip | Correct physical coupling and source timbre |
+| Shared filter prevents independent treatments | Give roles separate chip filters where the source and musical intent justify it | Target-chip behavior and balance; a second SID does not remove physical filter variability |
+
+More voices do not remove CPU, memory, driver or output-routing constraints. Empty passages are not automatically lost opportunities. Start with one demonstrated resource-sharing mechanism and one bounded musical comparison, then retain the result before expanding the treatment. For Rambo, the [source audit and next experiment](../../../songs/studies/rambo-ensemble/README.md#resource-informed-revision) replace generic added harmony as the basis for the next revision.
+
 ## Plan the sound hardware and the mix together
 
 **Each SID has one mono audio output.** Its three oscillators are not three independently pannable outputs. Two SIDs supply six voices but only two chip-output buses. There is no SID pan register. These hardware constraints follow the [register map and output/filter model](hardware.md); the [renderer implementation](../../../scripts/render-sid.cpp) deliberately captures each chip's raw output separately instead of hiding the library's crossfeed.
@@ -22,6 +38,16 @@ Project recommendation: put melody and an associated voice group on the first ch
 Before adding notes or selecting patches, write the role → chip/voice → coupling/filter ownership → output mix map in the owning arrangement. Validate both the native export and the rendered presentation; do not infer one from the other. Preserve a mono fold-down, check that centered material has equal left/right coefficients, and compare at one shared gain per stereo clip so channel balance is not erased by independent normalization.
 
 For example, the [Rambo ensemble](../../../songs/studies/rambo-ensemble/README.md) retains the faithful trio on chip A and adds three support roles on chip B. Its intended presentation is `left = 0.5 A + 0.35 B`, `right = 0.5 A + 0.65 B`: A is centered and B is biased right; this is not six independent pan positions. The [shared mixer](../../../scripts/prepare-dual-listening.py) implements that matrix and writes a hash-pinned receipt. The [earlier bass-only split](../../../songs/studies/rambo-stereo/listening-review.json) failed the user's intended scope because it only redistributed the original parts. That is a delivery lesson, not a verdict that raw stereo or three-part music is inherently inferior.
+
+### A correct matrix can still miss the spatial brief
+
+The [Rambo ensemble feedback](../../../songs/studies/rambo-ensemble/listening-review.json) reports uncertain added weight and no clearly left/right instrument despite verified six-voice execution and the exact matrix above. That matrix centers the entire primary trio; support is merely right-biased and no group favors the left. Before PCM rounding, its mid signal is `M = (L+R)/2 = 0.5 A + 0.5 B`, while its side signal is `S = (L-R)/2 = -0.15 B`. The dominant primary contributes nothing to side information. This explains the limited placement design; it is not a universal audibility threshold or proof that support is musically useful.
+
+Write the intended perceptual placements before choosing the matrix: a centered part, a clearly left part and a clearly right part are different requirements. Centering every primary part with mild crossfeed from the support does not implement that map. First compare the existing raw chip separation at matched whole-clip level to isolate the mix decision; do not compensate by blindly raising accompaniment or adding notes. A direct A-left/B-right comparison offers two clear groups but no independently centered instrument. If the brief requires all three placements simultaneously, revise the native allocation with the voice and coupling costs made explicit.
+
+Duplicating a part across chips consumes an oscillator on each; duplicating a coupled lead may also require its modulator. For example, duplicating the Rambo bass would leave only two second-chip voices for distinct added roles. Copying notes alone is insufficient when source hooks affect scheduling, and identical register programs on independent chips do not guarantee identical oscillator phase or envelope history. Verify the complete timing and resulting center image rather than promising sample identity.
+
+The [retained placement-only diagnostic](../../../evidence/rambo-ensemble-width/README.md) verifies this mapping distinction on the same initialized six-voice PCM, with matched whole-clip gains. Keep width measurements separate from listening and from the musical value of relieving a source constraint.
 
 ## Address agreement
 

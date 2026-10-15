@@ -1,0 +1,1207 @@
+{
+  "schemaVersion": 1,
+  "question": "Which actual one-oscillator state collisions can a second SID relieve without inventing notes?",
+  "sourceProfile": {
+    "clock": "PAL",
+    "sidModel": "MOS6581",
+    "sidBase": 54272,
+    "callCycles": 19656
+  },
+  "calls": 11000,
+  "inputs": [
+    {
+      "path": "songs/rambo-loader.json",
+      "sha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b"
+    },
+    {
+      "path": "evidence/rambo-ensemble/preparation/source-note-events.json.gz",
+      "sha256": "711380bb1f8c675ba874216f0c3a459c4e77b71c38565d464413f5fb45d7ff68"
+    },
+    {
+      "path": "evidence/rambo-independent-full/writes.json.gz",
+      "sha256": "8ec42cbae327c59206415e78515746a4cd8276c8d1c71414fb1bacde7a08c320"
+    },
+    {
+      "path": "evidence/rambo-sound-full/bodies.json.gz",
+      "sha256": "e8fa3475d94d333ede2bda556f706439eaa611b19307469ed0586f2abf64ce4e"
+    },
+    {
+      "path": "scripts/rambo_player.py",
+      "sha256": "c65ab14faaa21781258b1604862c3f47647c958f1489150683b6c9d9c0d53961"
+    },
+    {
+      "path": "scripts/rambo_score.py",
+      "sha256": "dcb443bd596ba3241642d2c49120174b75e1b17fcfb6e6013841265028f3ecbb"
+    },
+    {
+      "path": "scripts/rambo_programs.py",
+      "sha256": "1545db906a34416b34eca426cb67f5783454c1f0427f4233f4da0a502c68b96c"
+    }
+  ],
+  "oracle": {
+    "orderedWrites": 87534,
+    "exactPhaseTickAddressValue": true,
+    "sourceNotes": 2477,
+    "exactNotesAndEntryPatches": true,
+    "retainedSoundStatesMatched": 32445,
+    "retainedSoundInvocationRecords": 32448,
+    "stateComparisonBoundary": "Last SOUND state per physical voice/call; three duplicate reentrant invocation keys collapse to their final call state."
+  },
+  "perVoice": [
+    {
+      "voiceIndex": 0,
+      "notes": 635,
+      "replacesLiveSoftwareState": 600,
+      "gateOffBeforeLiveReplacement": 558,
+      "changedPitchAfterGateOff": 79
+    },
+    {
+      "voiceIndex": 1,
+      "notes": 977,
+      "replacesLiveSoftwareState": 976,
+      "gateOffBeforeLiveReplacement": 814,
+      "changedPitchAfterGateOff": 424
+    },
+    {
+      "voiceIndex": 2,
+      "notes": 865,
+      "replacesLiveSoftwareState": 862,
+      "gateOffBeforeLiveReplacement": 520,
+      "changedPitchAfterGateOff": 58
+    }
+  ],
+  "couplingIntervals": [
+    [
+      {
+        "startCall": 4915,
+        "endCall": 5427,
+        "flags": 2,
+        "recipientVoiceIndex": 0,
+        "modulatorVoiceIndex": 2
+      },
+      {
+        "startCall": 10035,
+        "endCall": 10660,
+        "flags": 4,
+        "recipientVoiceIndex": 0,
+        "modulatorVoiceIndex": 2
+      }
+    ],
+    [],
+    []
+  ],
+  "releaseOverlapExamples": [
+    {
+      "call": 2483,
+      "priorCall": 2355,
+      "priorPitch": 58,
+      "newPitch": 57,
+      "sourceAddress": 11614,
+      "nodeId": "voice-1-row-0280",
+      "actualSidControl": 64,
+      "remainingSoftwareLife": 62,
+      "remainingReleaseCountdown": 0,
+      "sourcePatch": [
+        65,
+        131,
+        203,
+        90,
+        100
+      ]
+    },
+    {
+      "call": 2611,
+      "priorCall": 2483,
+      "priorPitch": 57,
+      "newPitch": 55,
+      "sourceAddress": 11616,
+      "nodeId": "voice-1-row-0283",
+      "actualSidControl": 64,
+      "remainingSoftwareLife": 62,
+      "remainingReleaseCountdown": 0,
+      "sourcePatch": [
+        65,
+        131,
+        203,
+        90,
+        100
+      ]
+    },
+    {
+      "call": 2995,
+      "priorCall": 2867,
+      "priorPitch": 58,
+      "newPitch": 57,
+      "sourceAddress": 11624,
+      "nodeId": "voice-1-row-0295",
+      "actualSidControl": 64,
+      "remainingSoftwareLife": 62,
+      "remainingReleaseCountdown": 0,
+      "sourcePatch": [
+        65,
+        131,
+        203,
+        90,
+        100
+      ]
+    }
+  ],
+  "arpeggioCompression": {
+    "voiceIndex": 2,
+    "noteEntries": 712,
+    "firstCall": 2354,
+    "lastOnset": 7470,
+    "overlays": [
+      {
+        "offsets": [
+          0,
+          5,
+          9,
+          12,
+          0,
+          5,
+          9,
+          12,
+          0
+        ],
+        "noteEntries": 178
+      },
+      {
+        "offsets": [
+          0,
+          4,
+          7,
+          12,
+          0,
+          4,
+          7,
+          12,
+          0
+        ],
+        "noteEntries": 114
+      },
+      {
+        "offsets": [
+          0,
+          2,
+          7,
+          12,
+          0,
+          2,
+          7,
+          12,
+          0
+        ],
+        "noteEntries": 114
+      },
+      {
+        "offsets": [
+          0,
+          3,
+          8,
+          12,
+          0,
+          3,
+          8,
+          12,
+          0
+        ],
+        "noteEntries": 203
+      },
+      {
+        "offsets": [
+          0,
+          3,
+          7,
+          12,
+          0,
+          3,
+          7,
+          12,
+          0
+        ],
+        "noteEntries": 64
+      },
+      {
+        "offsets": [
+          0,
+          3,
+          6,
+          8,
+          0,
+          3,
+          6,
+          8,
+          0
+        ],
+        "noteEntries": 25
+      },
+      {
+        "offsets": [
+          0,
+          4,
+          8,
+          12,
+          0,
+          4,
+          8,
+          12,
+          0
+        ],
+        "noteEntries": 7
+      },
+      {
+        "offsets": [
+          0,
+          5,
+          8,
+          12,
+          0,
+          5,
+          8,
+          12,
+          0
+        ],
+        "noteEntries": 7
+      }
+    ],
+    "examples": [
+      {
+        "call": 2354,
+        "sourceAddress": 11880,
+        "nodeId": "voice-3-row-0093",
+        "basePitch": 41,
+        "offsets": [
+          0,
+          5,
+          9,
+          12,
+          0,
+          5,
+          9,
+          12,
+          0
+        ],
+        "distinctPitchIndices": [
+          41,
+          46,
+          50,
+          53
+        ]
+      },
+      {
+        "call": 2482,
+        "sourceAddress": 11880,
+        "nodeId": "voice-3-row-0093",
+        "basePitch": 41,
+        "offsets": [
+          0,
+          4,
+          7,
+          12,
+          0,
+          4,
+          7,
+          12,
+          0
+        ],
+        "distinctPitchIndices": [
+          41,
+          45,
+          48,
+          53
+        ]
+      },
+      {
+        "call": 2610,
+        "sourceAddress": 11880,
+        "nodeId": "voice-3-row-0093",
+        "basePitch": 41,
+        "offsets": [
+          0,
+          2,
+          7,
+          12,
+          0,
+          2,
+          7,
+          12,
+          0
+        ],
+        "distinctPitchIndices": [
+          41,
+          43,
+          48,
+          53
+        ]
+      },
+      {
+        "call": 2738,
+        "sourceAddress": 11880,
+        "nodeId": "voice-3-row-0093",
+        "basePitch": 40,
+        "offsets": [
+          0,
+          3,
+          8,
+          12,
+          0,
+          3,
+          8,
+          12,
+          0
+        ],
+        "distinctPitchIndices": [
+          40,
+          43,
+          48,
+          52
+        ]
+      },
+      {
+        "call": 2866,
+        "sourceAddress": 11880,
+        "nodeId": "voice-3-row-0093",
+        "basePitch": 41,
+        "offsets": [
+          0,
+          5,
+          9,
+          12,
+          0,
+          5,
+          9,
+          12,
+          0
+        ],
+        "distinctPitchIndices": [
+          41,
+          46,
+          50,
+          53
+        ]
+      },
+      {
+        "call": 2994,
+        "sourceAddress": 11880,
+        "nodeId": "voice-3-row-0093",
+        "basePitch": 41,
+        "offsets": [
+          0,
+          4,
+          7,
+          12,
+          0,
+          4,
+          7,
+          12,
+          0
+        ],
+        "distinctPitchIndices": [
+          41,
+          45,
+          48,
+          53
+        ]
+      }
+    ],
+    "executedFirstRow": [
+      {
+        "call": 2354,
+        "frequencyWord": 2930,
+        "releaseCountdown": 4,
+        "life": 40,
+        "writes": [
+          [
+            54286,
+            114
+          ],
+          [
+            54287,
+            11
+          ]
+        ]
+      },
+      {
+        "call": 2355,
+        "frequencyWord": 5859,
+        "releaseCountdown": 3,
+        "life": 40,
+        "writes": [
+          [
+            54286,
+            227
+          ],
+          [
+            54287,
+            22
+          ]
+        ]
+      },
+      {
+        "call": 2356,
+        "frequencyWord": 4927,
+        "releaseCountdown": 2,
+        "life": 40,
+        "writes": [
+          [
+            54286,
+            63
+          ],
+          [
+            54287,
+            19
+          ]
+        ]
+      },
+      {
+        "call": 2357,
+        "frequencyWord": 3910,
+        "releaseCountdown": 1,
+        "life": 40,
+        "writes": [
+          [
+            54286,
+            70
+          ],
+          [
+            54287,
+            15
+          ]
+        ]
+      },
+      {
+        "call": 2358,
+        "frequencyWord": 2930,
+        "releaseCountdown": 0,
+        "life": 40,
+        "writes": [
+          [
+            54290,
+            32
+          ],
+          [
+            54286,
+            114
+          ],
+          [
+            54287,
+            11
+          ]
+        ]
+      },
+      {
+        "call": 2359,
+        "frequencyWord": 5859,
+        "releaseCountdown": 0,
+        "life": 39,
+        "writes": [
+          [
+            54286,
+            227
+          ],
+          [
+            54287,
+            22
+          ]
+        ]
+      },
+      {
+        "call": 2360,
+        "frequencyWord": 4927,
+        "releaseCountdown": 0,
+        "life": 38,
+        "writes": [
+          [
+            54286,
+            63
+          ],
+          [
+            54287,
+            19
+          ]
+        ]
+      },
+      {
+        "call": 2361,
+        "frequencyWord": 3910,
+        "releaseCountdown": 0,
+        "life": 37,
+        "writes": [
+          [
+            54286,
+            70
+          ],
+          [
+            54287,
+            15
+          ]
+        ]
+      },
+      {
+        "call": 2362,
+        "frequencyWord": 2930,
+        "releaseCountdown": 4,
+        "life": 40,
+        "writes": [
+          [
+            54286,
+            114
+          ],
+          [
+            54287,
+            11
+          ]
+        ]
+      }
+    ],
+    "mechanism": "One SID oscillator emits one chord frequency per call; table pitches are serial, not simultaneous."
+  },
+  "downwardPitchGesture": {
+    "noteEntries": 11,
+    "observations": [
+      {
+        "call": 2227,
+        "voiceIndex": 0,
+        "pitchIndex": 50,
+        "sourceAddress": 11576,
+        "nodeId": "voice-1-row-0219",
+        "steps": [
+          -80,
+          8,
+          -8,
+          -72
+        ],
+        "durations": [
+          255,
+          6,
+          3,
+          0
+        ],
+        "delay": 0,
+        "frequencyFlags": 5,
+        "controlAdSrGateLife": [
+          65,
+          56,
+          169,
+          10,
+          255
+        ]
+      },
+      {
+        "call": 2231,
+        "voiceIndex": 0,
+        "pitchIndex": 50,
+        "sourceAddress": 11578,
+        "nodeId": "voice-1-row-0222",
+        "steps": [
+          -80,
+          8,
+          -8,
+          -72
+        ],
+        "durations": [
+          255,
+          6,
+          3,
+          0
+        ],
+        "delay": 0,
+        "frequencyFlags": 5,
+        "controlAdSrGateLife": [
+          65,
+          56,
+          169,
+          10,
+          255
+        ]
+      },
+      {
+        "call": 2235,
+        "voiceIndex": 0,
+        "pitchIndex": 50,
+        "sourceAddress": 11580,
+        "nodeId": "voice-1-row-0225",
+        "steps": [
+          -80,
+          8,
+          -8,
+          -72
+        ],
+        "durations": [
+          255,
+          6,
+          3,
+          0
+        ],
+        "delay": 0,
+        "frequencyFlags": 5,
+        "controlAdSrGateLife": [
+          65,
+          56,
+          169,
+          10,
+          255
+        ]
+      },
+      {
+        "call": 2239,
+        "voiceIndex": 0,
+        "pitchIndex": 50,
+        "sourceAddress": 11582,
+        "nodeId": "voice-1-row-0228",
+        "steps": [
+          -80,
+          8,
+          -8,
+          -72
+        ],
+        "durations": [
+          255,
+          6,
+          3,
+          0
+        ],
+        "delay": 0,
+        "frequencyFlags": 5,
+        "controlAdSrGateLife": [
+          65,
+          56,
+          169,
+          10,
+          255
+        ]
+      },
+      {
+        "call": 2243,
+        "voiceIndex": 0,
+        "pitchIndex": 50,
+        "sourceAddress": 11584,
+        "nodeId": "voice-1-row-0232",
+        "steps": [
+          -80,
+          8,
+          -8,
+          -72
+        ],
+        "durations": [
+          255,
+          6,
+          3,
+          0
+        ],
+        "delay": 0,
+        "frequencyFlags": 5,
+        "controlAdSrGateLife": [
+          65,
+          56,
+          169,
+          10,
+          255
+        ]
+      },
+      {
+        "call": 2251,
+        "voiceIndex": 0,
+        "pitchIndex": 44,
+        "sourceAddress": 11586,
+        "nodeId": "voice-1-row-0236",
+        "steps": [
+          -80,
+          8,
+          -8,
+          -72
+        ],
+        "durations": [
+          255,
+          6,
+          3,
+          0
+        ],
+        "delay": 0,
+        "frequencyFlags": 5,
+        "controlAdSrGateLife": [
+          65,
+          56,
+          169,
+          10,
+          255
+        ]
+      },
+      {
+        "call": 2259,
+        "voiceIndex": 0,
+        "pitchIndex": 42,
+        "sourceAddress": 11588,
+        "nodeId": "voice-1-row-0240",
+        "steps": [
+          -80,
+          8,
+          -8,
+          -72
+        ],
+        "durations": [
+          255,
+          6,
+          3,
+          0
+        ],
+        "delay": 0,
+        "frequencyFlags": 5,
+        "controlAdSrGateLife": [
+          65,
+          56,
+          169,
+          10,
+          255
+        ]
+      },
+      {
+        "call": 2267,
+        "voiceIndex": 0,
+        "pitchIndex": 44,
+        "sourceAddress": 11590,
+        "nodeId": "voice-1-row-0244",
+        "steps": [
+          -80,
+          8,
+          -8,
+          -72
+        ],
+        "durations": [
+          255,
+          6,
+          3,
+          0
+        ],
+        "delay": 0,
+        "frequencyFlags": 5,
+        "controlAdSrGateLife": [
+          65,
+          56,
+          169,
+          10,
+          255
+        ]
+      },
+      {
+        "call": 2283,
+        "voiceIndex": 0,
+        "pitchIndex": 44,
+        "sourceAddress": 11592,
+        "nodeId": "voice-1-row-0248",
+        "steps": [
+          -80,
+          8,
+          -8,
+          -72
+        ],
+        "durations": [
+          255,
+          6,
+          3,
+          0
+        ],
+        "delay": 0,
+        "frequencyFlags": 5,
+        "controlAdSrGateLife": [
+          65,
+          56,
+          169,
+          10,
+          255
+        ]
+      },
+      {
+        "call": 2291,
+        "voiceIndex": 0,
+        "pitchIndex": 44,
+        "sourceAddress": 11594,
+        "nodeId": "voice-1-row-0251",
+        "steps": [
+          -80,
+          8,
+          -8,
+          -72
+        ],
+        "durations": [
+          255,
+          6,
+          3,
+          0
+        ],
+        "delay": 0,
+        "frequencyFlags": 5,
+        "controlAdSrGateLife": [
+          65,
+          56,
+          169,
+          10,
+          255
+        ]
+      },
+      {
+        "call": 2299,
+        "voiceIndex": 0,
+        "pitchIndex": 42,
+        "sourceAddress": 11596,
+        "nodeId": "voice-1-row-0254",
+        "steps": [
+          -80,
+          8,
+          -8,
+          -72
+        ],
+        "durations": [
+          255,
+          6,
+          3,
+          0
+        ],
+        "delay": 0,
+        "frequencyFlags": 5,
+        "controlAdSrGateLife": [
+          65,
+          56,
+          169,
+          10,
+          255
+        ]
+      }
+    ],
+    "executedFirstAttacks": [
+      {
+        "call": 2227,
+        "frequencyWord": 4847,
+        "writes": [
+          [
+            54274,
+            20
+          ],
+          [
+            54275,
+            8
+          ],
+          [
+            54272,
+            239
+          ],
+          [
+            54273,
+            18
+          ]
+        ]
+      },
+      {
+        "call": 2228,
+        "frequencyWord": 4767,
+        "writes": [
+          [
+            54274,
+            40
+          ],
+          [
+            54275,
+            8
+          ],
+          [
+            54272,
+            159
+          ],
+          [
+            54273,
+            18
+          ]
+        ]
+      },
+      {
+        "call": 2229,
+        "frequencyWord": 4687,
+        "writes": [
+          [
+            54274,
+            60
+          ],
+          [
+            54275,
+            8
+          ],
+          [
+            54272,
+            79
+          ],
+          [
+            54273,
+            18
+          ]
+        ]
+      },
+      {
+        "call": 2230,
+        "frequencyWord": 4607,
+        "writes": [
+          [
+            54274,
+            80
+          ],
+          [
+            54275,
+            8
+          ],
+          [
+            54272,
+            255
+          ],
+          [
+            54273,
+            17
+          ]
+        ]
+      },
+      {
+        "call": 2231,
+        "frequencyWord": 4847,
+        "writes": [
+          [
+            54274,
+            20
+          ],
+          [
+            54275,
+            8
+          ],
+          [
+            54272,
+            239
+          ],
+          [
+            54273,
+            18
+          ]
+        ]
+      }
+    ],
+    "claim": "Tonal falling-pitch gesture. No percussion-role or composer-intent verdict follows from register shape."
+  },
+  "candidate": {
+    "type": "bounded original-lead release overlap",
+    "sourceOnsets": [
+      {
+        "call": 2355,
+        "pitchIndex": 58,
+        "nodeId": "voice-1-row-0277",
+        "sourceAddress": 11612,
+        "patch": [
+          30,
+          0,
+          226,
+          255,
+          30,
+          0,
+          0,
+          0,
+          3,
+          6,
+          3,
+          0,
+          22,
+          5,
+          20,
+          100,
+          3,
+          5,
+          70,
+          0,
+          25,
+          0,
+          100,
+          0,
+          65,
+          131,
+          203,
+          90,
+          100,
+          0,
+          0,
+          0,
+          0,
+          4,
+          8,
+          12,
+          16,
+          20,
+          24,
+          28,
+          32,
+          36,
+          40,
+          44,
+          48,
+          52,
+          56,
+          60,
+          64
+        ]
+      },
+      {
+        "call": 2483,
+        "pitchIndex": 57,
+        "nodeId": "voice-1-row-0280",
+        "sourceAddress": 11614,
+        "patch": [
+          30,
+          0,
+          226,
+          255,
+          30,
+          0,
+          0,
+          0,
+          3,
+          6,
+          3,
+          0,
+          22,
+          5,
+          20,
+          100,
+          3,
+          5,
+          70,
+          0,
+          25,
+          0,
+          100,
+          0,
+          65,
+          131,
+          203,
+          90,
+          100,
+          0,
+          0,
+          0,
+          0,
+          4,
+          8,
+          12,
+          16,
+          20,
+          24,
+          28,
+          32,
+          36,
+          40,
+          44,
+          48,
+          52,
+          56,
+          60,
+          64
+        ]
+      },
+      {
+        "call": 2611,
+        "pitchIndex": 55,
+        "nodeId": "voice-1-row-0283",
+        "sourceAddress": 11616,
+        "patch": [
+          30,
+          0,
+          226,
+          255,
+          30,
+          0,
+          0,
+          0,
+          3,
+          6,
+          3,
+          0,
+          22,
+          5,
+          20,
+          100,
+          3,
+          5,
+          70,
+          0,
+          25,
+          0,
+          100,
+          0,
+          65,
+          131,
+          203,
+          90,
+          100,
+          0,
+          0,
+          0,
+          0,
+          4,
+          8,
+          12,
+          16,
+          20,
+          24,
+          28,
+          32,
+          36,
+          40,
+          44,
+          48,
+          52,
+          56,
+          60,
+          64
+        ]
+      }
+    ],
+    "trialStartCall": 2355,
+    "trialEndCall": 2803,
+    "autonomousContinuation": [
+      {
+        "onsetCall": 2355,
+        "gateOffCall": 2444,
+        "terminalClearCall": 2544,
+        "scope": "Counterfactual autonomous source program continuation without a later same-voice retrigger; numeric prediction, not an executed musical variant or amplitude measurement."
+      },
+      {
+        "onsetCall": 2483,
+        "gateOffCall": 2572,
+        "terminalClearCall": 2672,
+        "scope": "Counterfactual autonomous source program continuation without a later same-voice retrigger; numeric prediction, not an executed musical variant or amplitude measurement."
+      },
+      {
+        "onsetCall": 2611,
+        "gateOffCall": 2700,
+        "terminalClearCall": 2800,
+        "scope": "Counterfactual autonomous source program continuation without a later same-voice retrigger; numeric prediction, not an executed musical variant or amplitude measurement."
+      }
+    ],
+    "proposal": "Keep the original attacks at2355/2611 on A1; move only the original2483 attack to B1 from its onset. Retain each original onset, pitch, entry patch and autonomous programs while the preceding oscillator continues its programmed release.",
+    "guard": "Source-onset multiset across A1/B1 equals original. Per-note native pitch/PWM/program initialization is unchanged. Preserve A1/A3 coupling intervals; no new melody, harmony or drum attacks.",
+    "limitations": [
+      "Software life is a programmed resource horizon, not an amplitude or audibility measurement.",
+      "Changing overlap changes harmony and texture; source note membership alone does not approve the concurrent interval.",
+      "A two-slot allocator may still steal a tail when later source onsets are denser; restrict the first trial to this phrase and record every actual steal.",
+      "SID envelope phase cannot be cloned at a later instant; allocate each attack to its eventual oscillator from onset.",
+      "A new physical oscillator attacks from its own residual envelope level. Equal register programs do not imply the same envelope trajectory or PCM as the original same-voice retrigger.",
+      "No Rambo-specific evidence establishes that Galway intended these tails to overlap or wanted extra drums."
+    ]
+  },
+  "negativeClaims": {
+    "noiseAndVolumeAbsenceDoesNotExcludeTonalPercussion": true,
+    "originalNotesAreNotMissing": true,
+    "musicalImprovementEstablished": false,
+    "originalAuthorIntentEstablished": false
+  },
+  "reproduction": "python3 build/rambo-resource-audit/backend-probe.py --root . --output build/rambo-resource-audit-recheck",
+  "detail": {
+    "path": "backend-note-observations.json.gz",
+    "sha256": "763da5a6197492b8088e7d9daab90e341d4807f88c4dd4860b2d65469fd3509c",
+    "uncompressedSha256": "af0194132699adb8269980bf4a9bd55f1a000bd593865955e0bc42c113e004d6",
+    "records": 2477
+  }
+}
