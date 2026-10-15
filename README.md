@@ -12,30 +12,127 @@ Studies of SID composers, editors and drivers feed an executable library of inst
 
 The working targets are PAL with one MOS6581/MOS8580 or two matching chips at `$D400/$D420`; native recipes default to MOS8580 and can select `sidModel: "MOS6581"`.
 
-## Start here
+## Test-drive: build and hear Bach on SID
 
-- [Current interpretation queue](docs/research/study-plan.md#active-score-interpretation-trial): [The Pink Panther Theme complete arrangement](songs/pink-panther/README.md#complete-sourced-arrangement) is accepted throughout, including its ending; the restrained Moon River first statement is accepted. Axel F is next using the [repeatable song routine](docs/workflows/song-workflow.md#repeatable-song-routine). [Night Transit](songs/night-transit/README.md) is closed as a rejected original composition.
-- [Documentation](docs/README.md): setup, composition, audio, validation and architecture guides.
-- [Tool boundaries](scripts/README.md): supported workflows and composition backends, source-specific study tools and compatibility exceptions.
-- [Study plan](docs/research/study-plan.md#delivery-order-and-work-in-progress): finish one musical case through listening and reuse on different musical material before deepening the next; retained preparation covers Flashdance, six master-composer studies and four later pop/theme studies.
-- [Technique lookup](docs/research/technique-index.md): reusable SID mechanisms, executable examples and structured evidence.
-- [CPU timing lookup](docs/validation/cpu-timing.md) and [CIA tracing](docs/validation/cia-tracing.md): verified timing constraints and reusable validation tools.
-- [Independent DRAX Für Elise comparison](songs/studies/drax-full-reconstruction/README.md): reconstructed recurring theme and its scope.
-- [Cybernoid II independent title and finite ending](docs/research/composition/cybernoid-ii-preparation.md#independent-title-export-and-finite-ending): editable runtime programs, full-form verification and matched listening material; [familiar transfer](docs/research/composition/instruments/cybernoid-decoded-programs.md) separates instrument reuse from new composition.
-- [Bach Toccata completed trial](docs/research/composition/bach-toccata.md#experiment-closure-and-reusable-outcome): complete mono accepted; Gyruss comparison and reusable musical lessons retained. The subtraction passage is preferred; further embellishment and stereo are deferred.
-- [Native PAL/NTSC export portability](docs/research/study-plan.md#regional-export-verification-completed): verified composition/export contract.
-- [Deflektor and bounded Trap contrast](docs/research/composition/daglish-contrast.md#scoped-corroboration-outcome): reconstruction, familiar transfer and scoped second-reference check complete.
-- [Shades/Giana contrast](docs/research/composition/huelsbeck-contrast.md#isolated-pulse-motion-audition-and-reproduction): bounded PWM/shared-filter check complete; listener confirms original animation/tone difference.
-- [Cybernoid II/Turbo Outrun contrast](docs/research/composition/tel-contrast.md): bounded sample-path/onset check complete; the listener heard no difference in the onset diagnostic.
-- [Monty/Commando contrast](docs/research/composition/hubbard-contrast.md): bounded percussion and retained pulse-state checks verified; listener detects no difference in the opening diagnostic.
-- [Take On Me](docs/research/composition/take-on-me-preparation.md): accepted independent reconstruction, authored ending and [familiar instrument transfer](docs/research/composition/instruments/take-on-me-decoded-programs.md); explicit 8580 target, original model metadata preserved as unknown.
-- [Billie Jean](docs/research/composition/billie-jean-preparation.md#compiled-export-and-listening-package): accepted independent first-traversal reconstruction, authored ending and [familiar instrument transfer](docs/research/composition/instruments/billie-jean-decoded-programs.md).
-- [Airwolf](docs/research/composition/airwolf-preparation.md#listening-verdicts-and-case-closure): phrase, corrected source continuation and [familiar transfer](docs/research/composition/instruments/airwolf-static-tones.md) accepted; reusable runtime and evidence retained. [Ghostbusters](docs/research/composition/ghostbusters-preparation.md#complete-native-title-and-listening-package) also has accepted opening speech, musical phrase, ending continuation and familiar transfer, backed by complete native CPU/VICE proof.
-- [Audio-model calibration](docs/research/audio-assessment.md#trap-melodic-motion-and-development-calibration): Qwen matched the two Trap observations and both controls; Gemini failed development and silence. Models remain experimental supporting signals.
-- [Ghouls independent player](docs/research/composition/ghouls-preparation.md#compiled-export-and-complete-listening-package): declared reconstruction and bounded Follin corroboration complete. The [familiar transfer](docs/research/composition/instruments/ghouls-decoded-programs.md) has accepted instruments, balance and ending, with a tentative tune reservation; all 53 tonal notes match the source, with common native tuning about 35 cents sharp.
-- [Generate a listening package](docs/workflows/listening-package.md): one command for verified builds, cached rendering, A/B files and stage timings.
-- [Monty independent title](docs/research/composition/monty-preparation.md): editable packed-score scheduling, shared pulse motion and state-dependent pitch; [familiar transfer](docs/research/composition/instruments/monty-decoded-programs.md) retains the same 53-note comparison phrase.
-- [Contributor and agent guide](CLAUDE.md): development and research conventions; [AGENTS.md](AGENTS.md) links to the same file.
+Start with our accepted **Toccata from Bach's BWV 565**: about 88 seconds combining organ-like weight, a moving pulse lead, rapid runs and a deliberate final cadence. This is the complete Toccata section, ending before the Fugue. The [case study](songs/studies/bach-toccata-full/README.md) records the arrangement and listening verdict.
+
+The score and interpretation inputs are included. You can build and listen locally without a model account, model weights, live bridge or C64 hardware.
+
+### 1. Prepare the native toolchain
+
+```sh
+git clone https://github.com/mbackschat/sid-song-crafter.git
+cd sid-song-crafter
+```
+
+Run subsequent commands from this directory. You need Python 3.9+, uv, `curl`, `make` and a C/C++ compiler. The documented renderer setup was verified on Apple Silicon macOS; other platforms need a matching libsidplayfp build.
+
+| Prepare once | How |
+| --- | --- |
+| Python CPU emulator | `uv --cache-dir .local/uv-cache pip install --target .tools/test-deps py65==1.2.0` ([checksum-verified wheel alternative](docs/songs/first-song.md#build-and-verify)) |
+| Audio renderer at `.local/bin/render-sid` | Follow [the pinned renderer build commands](docs/workflows/audio-workflow.md#pinned-library-setup) |
+| SID-Wizard exporter and assembler | Run `python3 scripts/setup-sidwizard.py`; it downloads, verifies and builds the pinned tools |
+
+This native test drive does not require Bun, VICE, ROMs or MIDI-import packages. `setup-project.py` downloads study assets and skills; it does **not** install the renderer or this complete toolchain.
+
+### 2. Prepare, build and render
+
+```sh
+python3 scripts/studies/bach/prepare-toccata.py --output build/readme-toccata-inputs
+python3 scripts/native-song.py build build/readme-toccata-inputs/hybrid.json --output build/readme-toccata
+```
+
+The first command applies the retained arrangement plan to the preserved Bach source notes. The second exports an editable native song, checks the complete player schedule, renders audio, and checks clipping and the ending. The commands print progress; build time depends on your machine. Choose fresh output directories for another run, because existing evidence is preserved.
+
+### 3. Listen now
+
+On macOS:
+
+```sh
+afplay build/readme-toccata/native-song.excerpt.wav
+afplay build/readme-toccata/native-song.wav
+```
+
+The first file plays the opening 20 seconds; the second plays the complete 88-second interpretation. Press Ctrl+C to stop playback. Listen for the lead's tone movement, the bass underneath the rapid passages, and the final cadence and decay.
+
+Alternatively, open the WAV in your normal music player. On macOS, `open build/readme-toccata/native-song.wav` launches the default app; on other systems, open the same file in a WAV-capable player. These files exist locally after building; GitHub does not host the generated audio.
+
+## Walkthrough: from the Bach score to a playable SID song
+
+The path is **preserved source score → arrangement decisions → three SID voices and instruments → editable native module → SID, PRG and WAV**. The source supplies the musical material; the arrangement supplies pacing, voicing and chip expression.
+
+### Start from an attributed score
+
+The included [MIDI](songs/studies/bach-toccata-opening/source/ToccataFugue.mid), [LilyPond notation](songs/studies/bach-toccata-opening/source/ToccataFugue.ly) and [extracted source notes](songs/studies/bach-toccata-opening/source-notes.json) retain the Mutopia/Bach-Gesellschaft source. [The source record](docs/research/composition/bach-toccata.md#retained-source-files) identifies its edition and fingerprints. The interpretation uses the Toccata through source quarter position 118 and excludes the Fugue pickup.
+
+### Decide how the score should sound on SID
+
+[The arrangement plan](songs/studies/bach-toccata-full/arrangement.json) records the musical choices: shorten long pauses for forward motion, allocate melody/bass/harmony, preserve the pedal where it matters, and cycle selected chord tones when three voices cannot hold the full organ texture. Source notes remain separate from these deliberate changes.
+
+The preparation command above generates these editable files in `build/readme-toccata-inputs/`:
+
+| File | What to inspect or change |
+| --- | --- |
+| `arrangement.json` | Timing anchors, voicing, ornaments and source-backed chord cycles |
+| `score.json` | The resulting three-voice performance |
+| `hybrid.json` | Moving pulse lead, filtered bass, harmony and instrument assignments |
+| `restrained.json` | The same reduced score with a more sustained SID palette |
+| `preparation.json` | Source fingerprints and the accounting of retained, shortened, cycled and omitted notes |
+
+This preparer is specific to the Bach case. The shared native compiler, exporter, renderer and checks work across songs; choosing a convincing reduction and palette remains musical work. To change pacing or voicing, edit a copy of `arrangement.json` and rerun `prepare-toccata.py --plan YOUR_PLAN.json --output A_FRESH_DIRECTORY`. To try another tone, edit the generated `hybrid.json` instrument programs and rebuild into a fresh output directory. [The sound repertoire](docs/research/composition/sound-design-repertoire.md) helps choose instruments by musical purpose.
+
+### Build the native song and inspect the results
+
+The native build command above consumes `hybrid.json` and its referenced `score.json`. It produces:
+
+| Output | File |
+| --- | --- |
+| First 20 seconds to audition | `build/readme-toccata/native-song.excerpt.wav` |
+| Complete performance | `build/readme-toccata/native-song.wav` |
+| Playable SID | `build/readme-toccata/export/hybrid.sid` |
+| Standalone C64 program | `build/readme-toccata/export/hybrid.prg` |
+| Editable SID-Wizard song | `build/readme-toccata/conversion/hybrid.swm` |
+| Editable instruments | `build/readme-toccata/conversion/instruments/` |
+| Export settings and hashes | `build/readme-toccata/export.json` |
+| Technical verification | `build/readme-toccata/verification.json` |
+
+The build verifies scheduling and audio health. Listening establishes whether the interpretation works musically; a changed palette needs a new listening judgment.
+
+### Play on a computer or C64
+
+- **Normal audio player:** open `build/readme-toccata/native-song.wav`, or use the `afplay` commands above. No emulator is needed to listen to the WAV.
+- **SID player:** open `build/readme-toccata/export/hybrid.sid` in a PSID-compatible player. This example targets PAL timing and MOS8580; honor those settings if the player asks. A SID file contains music data and playback code, so a normal WAV/MP3 player generally cannot play it.
+- **VICE emulator:** configure a PAL C64 with MOS8580, then open/autostart `build/readme-toccata/export/hybrid.prg`. If loaded without autostart, type `RUN`.
+- **Real C64:** transfer the PRG using your usual disk/SD device, load it with `LOAD"FILENAME",8,1` (substitute the device filename and number), then `RUN`. Use compatible PAL hardware for this export; a different SID model can change the sound.
+- **SID-Wizard editor:** load `build/readme-toccata/conversion/hybrid.swm` to inspect or edit the native song. Keep direct editor changes as a separate version; they do not automatically update the JSON recipe. See [native editing and export](docs/workflows/native-song-workflow.md).
+
+For an NTSC machine, build a separate target:
+
+```sh
+python3 scripts/native-song.py build build/readme-toccata-inputs/hybrid.json --clock ntsc --output build/readme-toccata-ntsc
+```
+
+Use the new directory's SID/PRG on that target. The [regional export guide](docs/workflows/native-song-workflow.md#regional-export-targets) explains timing and timbre differences; PAL listening acceptance does not imply an identical NTSC sound.
+
+### Supply a different score
+
+Start with an attributed MIDI and, where possible, the notation it represents. For a printed/PDF score, first obtain or transcribe a MIDI and verify it against the notation; this workflow does not automatically read sheet music. Keep the original source intact.
+
+1. Define source identity, track mappings, tempo and performance order in an import recipe. [The multitrack MIDI workflow](docs/workflows/song-workflow.md#prepare-a-multitrack-score-audition) and [Pink Panther's import recipe](config/scores/pink-panther-import.json) provide a worked route; replace their source-specific values with your own.
+2. Choose the melody, bass and supporting parts and record the reduction. Check repeats and the ending against the notation. The Bach-specific preparer is not a generic importer for an arbitrary MIDI.
+3. Define a native recipe pointing to your reduced score, with sections covering its form. Select instruments and effects from [the repertoire](docs/research/composition/sound-design-repertoire.md) for the song's mood.
+4. Run `python3 scripts/native-song.py build PATH_TO_YOUR_RECIPE.json --output build/my-song`, then play `build/my-song/native-song.wav`. Compare a representative passage with the supplied performance or a plain rendering, and check the complete ending before accepting the result.
+
+[The song workflow](docs/workflows/song-workflow.md) explains conversion contracts and musical decisions. Once the arrangement is established, [listening recipes](docs/workflows/listening-package.md) combine preparation, rendering and comparisons into one command and reuse unchanged stages.
+
+## Explore the project
+
+- [Musical purpose and scope](PRODUCTS.md): interpreting supplied scores through SID sound design.
+- [Technique lookup](docs/research/technique-index.md) and [sound repertoire](docs/research/composition/sound-design-repertoire.md): instruments, gestures, examples and listening evidence from the composer studies.
+- [Completed Bach Toccata trial](docs/research/composition/bach-toccata.md#experiment-closure-and-reusable-outcome), [Moon River](songs/moon-river/README.md) and [Pink Panther](songs/pink-panther/README.md): larger interpretation case studies with reproduction instructions and scoped verdicts.
+- [Study plan](docs/research/study-plan.md): completed studies and the next interpretation task.
+- [Documentation](docs/README.md) and [tool guide](scripts/README.md): setup, supported workflows and validation.
+- [Contributor guide](CLAUDE.md): contributor and publication rules; [AGENTS.md](AGENTS.md) links to the same file.
 
 ## Prepare local assets and check tools
 
@@ -67,13 +164,7 @@ python3 scripts/run-instrument-trials.py --output build/instrument-trials
 
 Use a fresh output directory for a revised trial. The pipeline retains native SWM/SWI files, exports the actual Extra driver, audits its register writes, renders the phrases, and prepares amplitude-matched A/B audio. Start with the [candidate mix](build/instrument-trials/mix-candidate/mix-candidate.wav), then review the [individual comparisons and listening record](docs/workflows/instrument-trials.md). The user accepted the short mix as sounding OK; broader listening and hardware checks remain open.
 
-To apply the palette to the complete Für Elise arrangement through the unmodified native Extra driver:
-
-```sh
-python3 scripts/native-song.py build songs/fuer-elise-sidwizard.json --output build/fuer-elise-native
-```
-
-This retains an editable SWM and instrument files alongside the SID, PRG, complete WAV, 20-second audition excerpt and conversion/verification reports. The [native recipe and timing record](docs/songs/fuer-elise-native.md) explain the section contrasts and a one-frame grace-note adjustment. The original source and baseline arrangement remain available for comparison; native editing need not pass back through the common score.
+For a complete score-based native build and all output paths, follow [the Bach walkthrough above](#walkthrough-from-the-bach-score-to-a-playable-sid-song).
 
 For two SIDs, run `python3 scripts/setup-sidwizard.py --sid-count 2`, then use a recipe with `sidCount: 2` and six ordered voices. The [native workflow](docs/workflows/native-song-workflow.md) includes an original six-voice/two-filter fixture and commands that verify its PSID, separate stereo channels and standalone PRG in headless VICE. This is a reusable technical foundation; a complete dual-SID song and its listening assessment remain separate work.
 
@@ -87,45 +178,19 @@ git -C .tools/c64bridge checkout 0781a7b6cfe7b92bbb6d68e048ad396bd3edfb18
 (cd .tools/c64bridge && bun install --frozen-lockfile)
 ```
 
-## Build and verify Für Elise
+## Additional examples and validation
 
-With the assembler, renderer, and headless VICE installed as described in [local setup](docs/setup/local-setup.md) and [the audio guide](docs/workflows/audio-workflow.md):
+- [Native instrument trials](docs/workflows/instrument-trials.md): short A/B comparisons for pulse motion, pluck attacks and bass transients.
+- [Complete Für Elise score and reduction](docs/songs/fuer-elise-score.md): an additional worked MIDI-import example, including explicit repeat handling and conversion reports.
+- [Baseline song workflow](docs/workflows/song-workflow.md) and [three-voice player](docs/architecture/three-voice-player.md): the simpler Bun-based backend; `python3 scripts/song.py songs/fuer-elise.json` additionally requires the renderer and headless VICE.
+- [Native VICE checks](docs/validation/native-vice-checks.md): independent execution checks beyond the native test drive's CPU audit and rendered audio.
+- [Two-SID workflow](docs/workflows/native-song-workflow.md#reusable-two-chip-test): an original six-voice fixture, stereo rendering and standalone verification.
 
-```sh
-python3 scripts/song.py songs/fuer-elise.json
-```
-
-This produces `build/fuer-elise.{sid,prg,wav}` plus assembly, register traces, and verification evidence. The arrangement covers the complete source with both printed repeats, reduced explicitly to three SID voices. It lasts approximately 157 seconds including the release and verification tails. Add `--vice-audio` for an independent VICE/reSID recording at normal emulation speed.
-
-The checked-in arrangement can be built without MIDI dependencies. To regenerate it from the preserved original after installing Mido as documented in [the score guide](docs/songs/fuer-elise-score.md):
+After installing the relevant [development dependencies](docs/setup/local-setup.md), run:
 
 ```sh
-PYTHONPATH=.tools/arrangement-deps python3 scripts/import-midi.py songs/sources/fuer-elise.mid songs/fuer-elise-import.json songs/sources/fuer-elise.score.json
-python3 scripts/arrange-score.py songs/sources/fuer-elise.score.json songs/fuer-elise-arrangement.json songs/fuer-elise.json
-```
-
-The importer prints its information-loss report; the arranger prints its reduction report. Original MIDI and LilyPond sources remain unchanged. See [the workflow](docs/workflows/song-workflow.md) for the design boundaries and adapting the tools to another song; see [the player contract](docs/architecture/three-voice-player.md) for the currently supported SID subset.
-
-## Opening excerpt and tests
-
-The smaller original example remains useful for learning and independent pitch checks:
-
-```sh
-bun scripts/build-song.ts
 bun test tests/music.test.ts tests/fuer-elise.test.ts
-```
-
-Edit [the score](songs/fuer-elise-opening.json) for pitches, durations, and instrument settings. The [assembly player](songs/player.asm) supplies callable SID initialization/play routines and the standalone C64 entry point. Output goes to `build/fuer-elise-opening.{prg,sid,asm,events.json}`. The excerpt contains the right-hand opening only; accompaniment and a second SID are outside this first example.
-
-For independent CPU and audio checks, first follow dependency setup in [the song guide](docs/songs/first-song.md) and [the audio guide](docs/workflows/audio-workflow.md), then run:
-
-```sh
 PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 -m unittest discover -s tests -p '*_test.py' -v
-.local/bin/render-sid build/fuer-elise-opening.sid build/fuer-elise-opening.wav 3.2
 ```
 
-The resulting WAV can be played without an emulator window. Rendering and checking a file is separate from verifying access to the host's audio output.
-
-## Verification status
-
-The full three-voice arrangement passes binary/header guards, independent 6502 register-write checks, rendered audio checks, and genuine headless VICE execution through BASIC and back. An independent native VICE/reSID recording also passes clipping and ending checks; see [full-song evidence](docs/validation/fuer-elise-validation.md). The complete [native SID-Wizard candidate](docs/songs/fuer-elise-native.md) also passes source-note, grace-pitch, ending, rendered-audio and headless VICE checkpoint checks. Its listening verdict remains open; the user's initial short-mix feedback is recorded separately. Binary-monitor socket binding is denied in this session, and host audio playback failed; no live MCP emulator connection or assistant listening is claimed.
+Integration tests need the tools named by their owning workflows. For a first listen, the native test drive above is sufficient; running the whole development suite is not a prerequisite.

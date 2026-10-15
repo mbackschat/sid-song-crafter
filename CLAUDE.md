@@ -46,7 +46,7 @@ Make routine execution and workflow decisions autonomously after checking the re
 
 Commit autonomously after a coherent feature set or meaningful verified checkpoint. Batch related implementation, tests and findings into reviewable commits; avoid a commit for every small edit. Never push without authorization.
 
-Keep [README.md](README.md) focused on project vision, features, setup and usage. Link to this guide and workflows for contributor and publication policies instead of repeating those rules there.
+Keep [README.md](README.md) focused on project vision, features, setup and usage. Include an executable build-and-listen test drive, a walkthrough from an attributed score to playable SID output, exact output filenames and playback instructions. Use the accepted Bach Toccata as the featured example; the user finds Für Elise too dull for this introduction. Link to this guide and workflows for contributor and publication policies instead of repeating those rules there.
 
 Keep guides in task-oriented subfolders under [docs](docs/README.md), with navigation from its README. Keep research in its existing indexed folders. Use [local setup](docs/setup/local-setup.md) and `python3 scripts/doctor.py` for readiness; read [skill corrections](docs/setup/skill-guidance.md) before applying downloaded instructions.
 
