@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "key": "a94df241b76c318de35660f956eac2b5dee870fe264c9ac7818bf0a888e5bfd2",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "scripts/studies/ghostbusters/prepare-support-control.py",
+      "--candidate",
+      "{stage:native}/candidate/reconstructed.sid",
+      "--build",
+      "{stage:native}/candidate/build.json",
+      "--verification",
+      "{stage:native}/candidate/verification.json",
+      "--output",
+      "{out}/prepared"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": "scripts/studies/ghostbusters/prepare-support-control.py",
+        "type": "file",
+        "sha256": "f089c04825d3c0b7e4f04624f314c8a4aacedfc15c52bd3aa081c209a9d85ef4"
+      },
+      {
+        "path": "{stage:native}/candidate/reconstructed.sid",
+        "type": "file",
+        "sha256": "8f7ee6f2b7211d18c829c4107a31e062c8cb19aa075d520a596e8b168b1dd18f"
+      },
+      {
+        "path": "{stage:native}/candidate/build.json",
+        "type": "file",
+        "sha256": "679af9d6a3143532908aeff9a5e688fc65627fd4a859bd149b2cdf99fca58e00"
+      },
+      {
+        "path": "{stage:native}/candidate/verification.json",
+        "type": "file",
+        "sha256": "2fa13691d2b810ae9d5d75f1db64762dd132d984e9637fd4f45afa979e72335f"
+      }
+    ],
+    "outputs": [
+      "prepared/support-disabled.sid",
+      "prepared/support-disabled.json"
+    ],
+    "timeoutSeconds": 120,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": "scripts/studies/ghostbusters/prepare-support-control.py",
+      "type": "file",
+      "sha256": "f089c04825d3c0b7e4f04624f314c8a4aacedfc15c52bd3aa081c209a9d85ef4"
+    },
+    {
+      "path": "{stage:native}/candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "8f7ee6f2b7211d18c829c4107a31e062c8cb19aa075d520a596e8b168b1dd18f"
+    },
+    {
+      "path": "{stage:native}/candidate/build.json",
+      "type": "file",
+      "sha256": "679af9d6a3143532908aeff9a5e688fc65627fd4a859bd149b2cdf99fca58e00"
+    },
+    {
+      "path": "{stage:native}/candidate/verification.json",
+      "type": "file",
+      "sha256": "2fa13691d2b810ae9d5d75f1db64762dd132d984e9637fd4f45afa979e72335f"
+    }
+  ],
+  "outputs": [
+    {
+      "relativePath": "prepared/support-disabled.sid",
+      "type": "file",
+      "sha256": "e50ffca7097b431064c182b46176b33b620d880dfe79f91bc144e30cf763b6a2"
+    },
+    {
+      "relativePath": "prepared/support-disabled.json",
+      "type": "file",
+      "sha256": "b681fbd0a8617c96617e05320c8cac26ba7a475243d93ab45ec18e5d0d7614ef"
+    }
+  ],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "scripts/studies/ghostbusters/prepare-support-control.py",
+    "--candidate",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-moving-pulse-workflow/cache/native/c8af93960954dc8f3945fa63b19f54c8e4a14ffc9a67d4653c7a439850c51cb3/attempt-94f681c980a64f63a2ce9ebd957b9510/candidate/reconstructed.sid",
+    "--build",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-moving-pulse-workflow/cache/native/c8af93960954dc8f3945fa63b19f54c8e4a14ffc9a67d4653c7a439850c51cb3/attempt-94f681c980a64f63a2ce9ebd957b9510/candidate/build.json",
+    "--verification",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-moving-pulse-workflow/cache/native/c8af93960954dc8f3945fa63b19f54c8e4a14ffc9a67d4653c7a439850c51cb3/attempt-94f681c980a64f63a2ce9ebd957b9510/candidate/verification.json",
+    "--output",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-moving-pulse-workflow/cache/support-control/a94df241b76c318de35660f956eac2b5dee870fe264c9ac7818bf0a888e5bfd2/attempt-07a050e4635c4ef385346dca906daa2c/prepared"
+  ],
+  "completedAt": "2026-10-15T14:42:01.853855+00:00",
+  "executionSeconds": 0.1973344159999968
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "scope": "48-second initialized diagnostic; old/new audition is 16\u201332 seconds; no complete revised performance claim",
+  "commonGain": 1,
+  "matching": "One common attenuation scalar for old, articulated and control audio, identical on left/right; no independent RMS matching",
+  "release": {
+    "passed": true,
+    "scope": "First 48 seconds and first source support region only; final truncated release and later harmony exits are outside this render",
+    "leftPcmIdentical": true,
+    "preSupportPcmIdentical": true,
+    "checkedCompleteGaps": 15,
+    "excludedCaptureEdgeGaps": 1,
+    "sourcePatternCalls": 128,
+    "gateCalls": 40,
+    "gateSeconds": 0.6686044443595422,
+    "alignment": {
+      "predictedFirstGateSeconds": 15.227241331399716,
+      "observedFirstContributionSeconds": 15.231133786848073,
+      "rendererAndAttackOffsetSeconds": 0.003892455448356813,
+      "maximumAbsoluteOffsetSeconds": 0.025
+    },
+    "measurementClock": "Native 17095-cycle call grid aligned to the first detected causal contribution; offset includes renderer startup and first attack latency. Windows exclude dispatch/onset margins.",
+    "windows": {
+      "attackAfterGate": [
+        0.025,
+        0.1
+      ],
+      "bodyAfterGate": 0.15,
+      "bodyBeforeOff": 0.05,
+      "earlyReleaseAfterOff": [
+        0.015,
+        0.06
+      ],
+      "lateGapBeforePatternBoundary": [
+        0.3,
+        0.05
+      ]
+    },
+    "minimumAttackAcRms": 1519.5691940750203,
+    "minimumBodyAcRms": 1168.4837297407341,
+    "minimumEarlyReleaseAcRms": 686.3762220136418,
+    "maximumEarlyReleaseToBodyRatio": 0.6315974018582393,
+    "maximumLateGapRms": 0.0,
+    "maximumLateGapPeak": 0,
+    "limits": {
+      "lateGapRms": 1,
+      "lateGapPeak": 2
+    },
+    "fullSongVerified": false,
+    "musicalAcceptanceEstablished": false
+  },
+  "privateLedgerSha256": "eec240e78999f29dd66dc7ae4c5014c311994c51e86af13a96305cf412658fe4",
+  "inputs": [
+    {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-articulated-full-listening/articulated-stereo-matched-full.wav",
+      "sha256": "5ca70c2eb8a06f1bf6fff4900eeab78ea3545536ab4cc23f78ad5af9b5a0f0c5"
+    },
+    {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-moving-pulse-workflow/cache/render/8d49629212eb983caee5ee44804c6d78f28fe5b9044deacbf17d5ed84a66ff66/attempt-f0e2a483027b490ba06fc29f91be4e7a/render.wav",
+      "sha256": "8e9f361b9ed6fa7cdbac924b053cb5b57c4493c9d924908e9faf74a9fdd30a98"
+    },
+    {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-moving-pulse-workflow/cache/support-control-render/061987caa102c09f815da24f7002dc5649ef28919ec88ef3780954b75cf8ca3d/attempt-d08b3462ac9c479b98851e68b84d175c/render.wav",
+      "sha256": "242fb1cb0bf1a799368cbb5a6f9109ab31aab4e513a5f23cf8408844e8181667"
+    }
+  ],
+  "musicalAcceptance": null,
+  "fullSongPending": true,
+  "comparisonSha256": "1bce2f1ba62b28cbeb217910f4c846e952e5fabe58b38e1bc34a524b0c9c4b28"
+}

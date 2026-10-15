@@ -14,8 +14,11 @@ def validate(arrangement):
     require(arrangement['target'] == dict(clock='ntsc', sidModel='MOS6581', sidBases=[0xd400, 0xd420]), 'Stereo requires NTSC matching MOS6581s at $D400/$D420')
     require(arrangement['mix'] == [[1, 0], [0, 1]], 'Stereo requires native raw A-left/B-right presentation')
     support = arrangement['support']
-    require(set(support) - {'articulation'} == {'sourceVoice', 'patterns', 'transpose', 'requiredCompanionPatch', 'allowedLeadIntervals', 'patch'}, 'Unknown held-support configuration')
+    require(set(support) - {'articulation', 'pulseMotion'} == {'sourceVoice', 'patterns', 'transpose', 'requiredCompanionPatch', 'allowedLeadIntervals', 'patch'}, 'Unknown held-support configuration')
     require(support.get('articulation', 'section-hold') in ('section-hold', 'source-root-prefix'), 'Unsupported tonal-support articulation')
+    if 'pulseMotion' in support:
+        require(support['pulseMotion'] == 'triangle-600-a00', 'Unsupported support pulse motion')
+        require(support.get('articulation') == 'source-root-prefix', 'Pulse motion requires source-root-prefix articulation')
     require(support['sourceVoice'] == 1 and support['transpose'] == 12 and support['requiredCompanionPatch'] == 3, 'Support requires octave-up source bass under source noise percussion')
     require(isinstance(support['patterns'], list) and 1 <= len(support['patterns']) <= 8 and len(set(support['patterns'])) == len(support['patterns']) and all(type(x) is int and 0 <= x < 128 for x in support['patterns']), 'Choose 1..8 distinct source bass patterns')
     require(support['allowedLeadIntervals'] == [0, 2, 3, 4, 5, 7, 9, 10], 'Hold screening requires the declared source dominant/blues interval set')
@@ -39,6 +42,11 @@ def root_prefix(pattern, root):
     require(32 <= prefix <= 40, 'Source root prefix requires 32..40 gate calls')
     require(total - prefix >= 32, 'Source root prefix requires a following gap of at least 32 calls')
     return prefix, total - prefix
+
+
+def pulse_width(phase):
+    position = phase & 31
+    return 0x600 + min(position, 32 - position) * 0x40
 
 
 def compute(player, composition, arrangement, *, calls=None):
@@ -108,6 +116,10 @@ def compute(player, composition, arrangement, *, calls=None):
                 if current is not None:
                     current['leadIntervals'].add(interval)
         result['writes'].extend(dict(phase='play', tick=tick, address=a, value=v) for a, v in emitted)
+        if support.get('pulseMotion') is not None:
+            width = pulse_width(model['returns'][tick]['score']['phaseBefore'])
+            result['writes'].extend(dict(phase='play', tick=tick, address=a, value=v)
+                for a, v in ((0xd429, width & 255), (0xd42a, width >> 8)))
         result['returns'][tick]['stereoSupport'] = deepcopy(state)
     if current is not None:
         current['endCall'] = count
@@ -130,6 +142,8 @@ def assembly(source, arrangement):
     source = replace_once(source, 'gb_selected_pattern:\n', 'gb_selected_pattern:\n  CPX #$01\n  BNE gb_stereo_pattern_saved\n  STA gb_support_pattern\ngb_stereo_pattern_saved:\n')
     source = replace_once(source, '  JMP gb_advance_phase\ngb_selected_pattern:', '  LDA #$ff\n  STA gb_support_pattern\n  JMP gb_advance_phase\ngb_selected_pattern:')
     source = replace_once(source, 'gb_advance_phase:\n', 'gb_advance_phase:\n  JSR gb_stereo_support\n')
+    if support.get('pulseMotion') is not None:
+        source = replace_once(source, '  JSR gb_stereo_support\n', '  JSR gb_stereo_support\n  JSR gb_support_pulse_motion\n')
     require(source.count('  STA $d418') == 1, 'Stereo music volume site changed')
     lines = source.splitlines()
     output, index = [], 0
@@ -228,5 +242,31 @@ gb_support_active:
   .byte $00
 gb_support_note:
   .byte $00
+'''
+    if support.get('pulseMotion') is not None:
+        generated += '''gb_support_pulse_motion:
+  LDA gb_phase
+  AND #$1f
+  CMP #$10
+  BCC gb_support_pulse_position
+  EOR #$1f
+  CLC
+  ADC #$01
+gb_support_pulse_position:
+  TAY
+  ASL A
+  ASL A
+  ASL A
+  ASL A
+  ASL A
+  ASL A
+  STA $d429
+  TYA
+  LSR A
+  LSR A
+  CLC
+  ADC #$06
+  STA $d42a
+  RTS
 '''
     return '\n'.join(output) + '\n' + generated

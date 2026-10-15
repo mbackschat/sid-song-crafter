@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "scope": "Complete declared independent numeric store and gate-ledger comparison; no complete native execution, PCM identity or musical-acceptance claim",
+  "checkedMusicCalls": 14389,
+  "matchedNonPulseStores": 63996,
+  "excludedPulseAddresses": [
+    54313,
+    54314
+  ],
+  "nonPulseStoresIdentical": true,
+  "supportGateLedgerIdentical": true,
+  "supportPhrases": 64,
+  "supportGateCalls": 2560,
+  "addedPulseStores": 28778,
+  "gateLedgerSha256": "c761b55984d63527d567dc11a319849a402812acda8ef308e27bb961fd51422d",
+  "inputs": {
+    "composition": {
+      "path": "evidence/ghostbusters-independent-full/native/composition.json",
+      "sha256": "11607342e73ec8f83969ec206ba27647b247e5797662dfd20eb524753e5e9100"
+    },
+    "baseline": {
+      "path": "songs/studies/ghostbusters-stereo/articulated-arrangement.json",
+      "sha256": "fb5bce4384bbaef8d86906fa17112cbe2beb7b682823ac6cc0ec22a854e04f46"
+    },
+    "candidate": {
+      "path": "songs/studies/ghostbusters-stereo/animated-arrangement.json",
+      "sha256": "b83fef78365babfc4b9e96b92e7c706d5fd57339f3639f048af12e304abaa1e3"
+    }
+  },
+  "tools": {
+    "scripts/studies/ghostbusters/check-pulse-motion.py": "ae2c614bda40bc78b3a3f995c30569f465d751781b1efce4df012af75f85b09d",
+    "scripts/studies/ghostbusters/compiler.py": "cd094de310e23d590763f5436a98913ab2c92bd87d4f3febed3143a957355b9c",
+    "scripts/studies/ghostbusters/player.py": "79874b08de7e42b0e1dc5cd9a54c6d9f3aafa8a2d16aeb3d501090324659a602",
+    "scripts/studies/ghostbusters/score.py": "00b523a3d67c01ded44ebd9ccb0adecbd76ebef4107ef146e183a2643edd94d6",
+    "scripts/studies/ghostbusters/programs.py": "3b642baaf3209a3e92a4ecd9ada25d23ed52529dccd013c9ab89ecea26d2e074",
+    "scripts/studies/ghostbusters/stereo.py": "fd5f1b2a71d99c941141340a630632d65a7830258ab84c296a0dd134ce64179a"
+  }
+}

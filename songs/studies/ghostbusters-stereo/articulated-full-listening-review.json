@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-15",
-  "status": "qualified-positive-full-performance-timbre-revision-active",
+  "status": "selected-complete-performance-with-timbre-reservation",
   "submission": "evidence/ghostbusters-stereo-articulated-full/listening-submission.json",
   "submissionSha256": "fa620f9929b4d0b31eb44f8245f70bf727f23b27280ca073087d9d0da78c7e13",
   "candidate": "build/ghostbusters-stereo-articulated-full-listening/articulated-stereo-matched-full.wav",
@@ -23,10 +23,17 @@
   "technicalProof": "evidence/ghostbusters-stereo-articulated-full/native-proof.json",
   "releaseProof": "evidence/ghostbusters-stereo-articulated-full/release.json",
   "modelAssistanceReview": {
-    "checkpoint": "Complete performance feedback and next timbre revision",
-    "decision": "No model call: existing calibration does not qualify spatial or musical preference judgments. Full native/PCM evidence and phrase identity do not establish complete musical acceptance.",
-    "nextCheckpoint": "Representative timbre comparison, then closure."
+    "checkpoint": "Complete feedback, rejected PWM comparison and case closure",
+    "decision": "No model call: the listener explicitly selects the prior version despite a timbre reservation. Existing calibration cannot adjudicate this preference; complete execution and PCM proof already support the selected technical scope.",
+    "nextCheckpoint": "Only if this case is explicitly reopened."
   },
   "finalReleaseVerification": "evidence/ghostbusters-stereo-articulated-full/final-release-verification.json",
-  "interpretation": "Preserve the improved articulated performance as the baseline. The persistent sound is resolved, but the added right-side instrument remains too plain/drum-like; its timbre needs a bounded revision without changing the accepted notes, rhythm or placement."
+  "interpretation": "Preserve the improved articulated performance as the baseline. The persistent sound is resolved, but the added right-side instrument remains too plain/drum-like; its timbre needs a bounded revision without changing the accepted notes, rhythm or placement.",
+  "finalSelection": {
+    "date": "2026-10-15",
+    "afterComparison": "build/ghostbusters-stereo-moving-pulse-listening/static-then-moving-pulse.ab.wav",
+    "humanAnswer": "Hmm. Different, but not suitable, too vibrant. Maybe stick with last (original) one.",
+    "selectedCandidateSha256": "5ca70c2eb8a06f1bf6fff4900eeab78ea3545536ab4cc23f78ad5af9b5a0f0c5",
+    "interpretation": "Select the previous complete articulated static-pulse stereo version; retain the earlier plain/drum-like timbre reservation. The initial long-held drone is not selected. No further timbre experiment is queued."
+  }
 }

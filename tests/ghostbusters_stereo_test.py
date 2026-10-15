@@ -133,6 +133,39 @@ class GhostbustersStereoTest(unittest.TestCase):
             with self.subTest(defect=defect), self.assertRaisesRegex(ValueError, 'root prefix|following gap'):
                 title.compiler.build(composition, arrangement=arrangement)
 
+    def test_animated_support_changes_only_b2_width_and_continues_after_gate_off(self):
+        composition, _, _, arrangement = articulated_example()
+        plain_sid, plain_built = title.compiler.build(composition, arrangement=arrangement)
+        self.assertEqual(hashlib.sha256(plain_sid).hexdigest(), '8f50013799b6923469f685de3eb19f9e5bc65dba4f0d83f67550663bbcda9ff6')
+        _, plain = title.compiler.verify(composition, plain_sid, plain_built)
+        animated = deepcopy(arrangement)
+        animated['support']['pulseMotion'] = 'triangle-600-a00'
+        sid, built = title.compiler.build(composition, arrangement=animated)
+        _, writes = title.compiler.verify(composition, sid, built)
+        self.assertEqual(title.compiler.identity([r for r in writes if r['address'] not in (0xd429,0xd42a)]),
+            title.compiler.identity([r for r in plain if r['address'] not in (0xd429,0xd42a)]))
+        widths = {}
+        for row in writes:
+            if row['phase'] == 'play' and row['address'] in (0xd429,0xd42a):
+                widths.setdefault(row['tick'], {})[row['address']] = row['value']
+        words = {tick: values[0xd429] | values[0xd42a] << 8 for tick,values in widths.items()}
+        self.assertEqual([words[t] for t in (0,1,8,16,24,31,32,40,48,64,128)],
+            [0x600,0x640,0x800,0xa00,0x800,0x640,0x600,0x800,0xa00,0x600,0x600])
+        self.assertEqual((min(words.values()),max(words.values())), (0x600,0xa00))
+        self.assertNotEqual(words[40],words[48])
+        self.assertEqual(title.compiler.numeric(composition,animated)['supportLedger'],
+            title.compiler.numeric(composition,arrangement)['supportLedger'])
+
+    def test_animated_support_rejects_unknown_motion_and_section_hold(self):
+        composition, _, _, arrangement = articulated_example()
+        arrangement['support']['pulseMotion'] = 'unknown'
+        with self.assertRaisesRegex(ValueError, 'pulse motion'):
+            title.compiler.build(composition, arrangement=arrangement)
+        arrangement['support']['pulseMotion'] = 'triangle-600-a00'
+        del arrangement['support']['articulation']
+        with self.assertRaisesRegex(ValueError, 'source-root-prefix'):
+            title.compiler.build(composition, arrangement=arrangement)
+
 
 if __name__ == '__main__':
     unittest.main()

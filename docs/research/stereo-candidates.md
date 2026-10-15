@@ -1,6 +1,6 @@
 # Licensed candidates for a future two-SID interpretation
 
-Checked **2026-10-15**. **Wizball title music is the recommended future candidate; Arkanoid's original title music is the second choice.** Both have a composer-owned GPL source release. This search found no confirmed downloadable native two-SID arrangement of either, but it did find existing stereo audio and an unresolved Wizball stereo-program lead. Do not describe either as having no stereo version. These are future candidates; Ghostbusters remains the next requested arrangement, and this research starts no new musical case.
+Checked **2026-10-15**. **Wizball title music is the recommended future candidate; Arkanoid's original title music is the second choice.** Both have a composer-owned GPL source release. This search found no confirmed downloadable native two-SID arrangement of either, but it did find existing stereo audio and an unresolved Wizball stereo-program lead. Do not describe either as having no stereo version. These remain future candidates; the requested Ghostbusters stereo case subsequently closed with a qualified selection, and this research starts no new musical case.
 
 ## What “free” covers
 

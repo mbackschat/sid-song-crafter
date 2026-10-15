@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    0,
+    16
+  ],
+  "window": {
+    "startFrame": 0,
+    "endFrame": 705600,
+    "frames": 705600,
+    "startSeconds": 0.0,
+    "endSeconds": 16.0,
+    "durationSeconds": 16.0
+  },
+  "sampleRate": 44100,
+  "channels": 2,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-moving-pulse-workflow/cache/prepare-listening/72713921b7ff879d766965815d9f4e5bff3420183c04cc248ded5aa6a61aff27/attempt-c5587b3e1bf8457ca0cc15679c537cfc/prepared/initial-then-articulated-phrase.ab.wav",
+    "frames": 1433250,
+    "durationSeconds": 32.5,
+    "sha256": "1bce2f1ba62b28cbeb217910f4c846e952e5fabe58b38e1bc34a524b0c9c4b28"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 705600
+    },
+    {
+      "label": "silence",
+      "startFrame": 705600,
+      "endFrame": 727650
+    },
+    {
+      "label": "B",
+      "startFrame": 727650,
+      "endFrame": 1433250
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-moving-pulse-workflow/cache/prepare-listening/72713921b7ff879d766965815d9f4e5bff3420183c04cc248ded5aa6a61aff27/attempt-c5587b3e1bf8457ca0cc15679c537cfc/prepared/initial-held-phrase.wav",
+      "sha256": "88c29f097982bd37f28caccb24529f0451b8bcaccbcbae5bb7555b2634b881c8",
+      "originalFrames": 705600,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 11472,
+        "peakDbfs": -9.11621593271986,
+        "clippedSamples": 0,
+        "rms": 1403.5005804908194,
+        "acRms": 1394.4959226964259,
+        "acRmsDbfs": -27.420653723395823,
+        "perChannel": [
+          {
+            "dc": 160.35301729024943,
+            "rms": 1558.5191094314077,
+            "acRms": 1550.2479557505571
+          },
+          {
+            "dc": 157.08886621315193,
+            "rms": 1229.083375696403,
+            "acRms": 1219.0032947146335
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-moving-pulse-workflow/cache/prepare-listening/72713921b7ff879d766965815d9f4e5bff3420183c04cc248ded5aa6a61aff27/attempt-c5587b3e1bf8457ca0cc15679c537cfc/prepared/articulated-phrase.wav",
+      "sha256": "e277cc09f23e2768ff649a395e45e195f9bac09ff67935d5470c975028b53bc9",
+      "originalFrames": 705600,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 11237,
+        "peakDbfs": -9.295991081916075,
+        "clippedSamples": 0,
+        "rms": 1404.81804865156,
+        "acRms": 1395.3911144598692,
+        "acRmsDbfs": -27.415079635968294,
+        "perChannel": [
+          {
+            "dc": 160.4871485260771,
+            "rms": 1561.780159181261,
+            "acRms": 1553.5125170947977
+          },
+          {
+            "dc": 164.43433390022676,
+            "rms": 1227.9536774740768,
+            "acRms": 1216.8942369232002
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "scope": "Allowlisted aggregate native execution evidence; complete source checkpoints and speech data remain private",
+  "privateNativeProof": {
+    "filename": "verification.json",
+    "bytes": 40515,
+    "sha256": "2fa13691d2b810ae9d5d75f1db64762dd132d984e9637fd4f45afa979e72335f"
+  },
+  "header": {
+    "format": "RSID",
+    "version": 3,
+    "bytes": 50087,
+    "sha256": "8f7ee6f2b7211d18c829c4107a31e062c8cb19aa075d520a596e8b168b1dd18f",
+    "dataOffset": 124,
+    "loadAddress": 2049,
+    "endAddressExclusive": 52010,
+    "initAddress": 2080,
+    "playAddress": 0,
+    "subtunes": 1,
+    "defaultSubtune": 1,
+    "selectedSubtune": 1,
+    "speedWord": 0,
+    "flags": 88,
+    "clockDeclaration": "NTSC",
+    "sidModelDeclaration": "MOS6581",
+    "selectedTimingDeclaration": "machine-controlled",
+    "sidCount": 2,
+    "sidBases": [
+      54272,
+      54304
+    ]
+  },
+  "generatedSpeechMatchesRetainedSerializedOriginalCpu": true,
+  "cpu": {
+    "passed": true,
+    "scope": "py65 new native instructions plus explicit instruction-boundary CIA model; no VIC, ROM, SID synthesis or source IRQ identity",
+    "bootstrap": "Real JSR init host",
+    "checkedMusicCalls": 2600,
+    "namedMusicStates": 2601,
+    "checkedStores": 73410,
+    "sidBases": [
+      54272,
+      54304
+    ],
+    "perBankStores": {
+      "54272": 35675,
+      "54304": 37735
+    },
+    "leadMirrorStores": 2224,
+    "sharedVolumeMirrorStores": 30150,
+    "supportStores": 5327,
+    "generatedSpeechTicks": 45410,
+    "maximumNmiCyclesIncludingEntry": 85,
+    "timerSampleCycles": 102,
+    "timerMusicCycles": 17095,
+    "musicEntryFromInit": 4632515,
+    "allOrderedStoresMatch": true,
+    "noSpeechNmiDuringMusic": true,
+    "decimalEntryCleared": true,
+    "nativeCpuCycles": 49062733,
+    "fastForwardedIdleIterations": 14424560,
+    "timedStoreSequenceSha256": "bffa1edaef98a3819882dbeeb4bc46d089a2fac5226f087844d13eab6e9ef1b9",
+    "musicIntervals": {
+      "count": 2599,
+      "minimum": 17093,
+      "maximum": 17119
+    }
+  },
+  "prgBootstrap": {
+    "passed": true,
+    "scope": "py65 new native instructions plus explicit instruction-boundary CIA model; no VIC, ROM, SID synthesis or source IRQ identity",
+    "bootstrap": "Executed SYS2061 machine entry",
+    "checkedMusicCalls": 2,
+    "namedMusicStates": 3,
+    "checkedStores": 60344,
+    "sidBases": [
+      54272,
+      54304
+    ],
+    "perBankStores": {
+      "54272": 30177,
+      "54304": 30167
+    },
+    "leadMirrorStores": 21,
+    "sharedVolumeMirrorStores": 30108,
+    "supportStores": 4,
+    "generatedSpeechTicks": 45410,
+    "maximumNmiCyclesIncludingEntry": 85,
+    "timerSampleCycles": 102,
+    "timerMusicCycles": 17095,
+    "musicEntryFromInit": 4632515,
+    "allOrderedStoresMatch": true,
+    "noSpeechNmiDuringMusic": true,
+    "decimalEntryCleared": true,
+    "nativeCpuCycles": 4649886,
+    "fastForwardedIdleIterations": 5275,
+    "timedStoreSequenceSha256": "631f9829e1e0e2432526994508ddd91063e02866afd7f4f6b12bdd3b85dd757e",
+    "musicIntervals": {
+      "count": 1,
+      "minimum": 17119,
+      "maximum": 17119
+    }
+  },
+  "poisonedInit": {
+    "passed": true,
+    "scope": "py65 new native instructions plus explicit instruction-boundary CIA model; no VIC, ROM, SID synthesis or source IRQ identity",
+    "bootstrap": "Real JSR init host",
+    "checkedMusicCalls": 2,
+    "namedMusicStates": 3,
+    "checkedStores": 60344,
+    "sidBases": [
+      54272,
+      54304
+    ],
+    "perBankStores": {
+      "54272": 30177,
+      "54304": 30167
+    },
+    "leadMirrorStores": 21,
+    "sharedVolumeMirrorStores": 30108,
+    "supportStores": 4,
+    "generatedSpeechTicks": 45410,
+    "maximumNmiCyclesIncludingEntry": 85,
+    "timerSampleCycles": 102,
+    "timerMusicCycles": 17095,
+    "musicEntryFromInit": 4632515,
+    "allOrderedStoresMatch": true,
+    "noSpeechNmiDuringMusic": true,
+    "decimalEntryCleared": true,
+    "nativeCpuCycles": 4649886,
+    "fastForwardedIdleIterations": 5276,
+    "timedStoreSequenceSha256": "631f9829e1e0e2432526994508ddd91063e02866afd7f4f6b12bdd3b85dd757e",
+    "musicIntervals": {
+      "count": 1,
+      "minimum": 17119,
+      "maximum": 17119
+    }
+  },
+  "vice": {
+    "passed": true,
+    "scope": "Actual NTSC VICE, real JSR native init, complete decoded speech stream and bounded music. Ordered stores and timer cadence; no source IRQ/PCM identity, rendered audio or physical hardware claim.",
+    "checkedMusicCalls": 2600,
+    "completedMusicCalls": 2600,
+    "sidBases": [
+      54272,
+      54304
+    ],
+    "perBankStores": {
+      "54272": 35675,
+      "54304": 37735
+    },
+    "leadMirrorStores": 2224,
+    "sharedVolumeMirrorStores": 30150,
+    "supportStores": 5327,
+    "terminalPlayExecuted": false,
+    "cycleLimit": 53130596,
+    "processTimeoutSeconds": 600,
+    "sidStores": 73410,
+    "sidReads": 0,
+    "nmiEntries": 45410,
+    "nestedNmi": false,
+    "samplePeriodCycles": 102,
+    "sampleEntryJitter": {
+      "minimum": -4,
+      "maximum": 0
+    },
+    "maximumObservedNmiCyclesIncludingEntry": 85,
+    "musicPeriodCycles": 17095,
+    "musicIntervals": {
+      "minimum": 17093,
+      "maximum": 17122
+    },
+    "actualInitRelativeFirstNmi": [
+      132592,
+      1756126
+    ],
+    "actualInitRelativeMusicInit": 4630357,
+    "actualInitRelativeFirstMusic": 4632515,
+    "tools": {
+      "viceSha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285",
+      "traceParserSha256": "f8ae01c6b20b45a1d249e57ea65dbe68aead7dc5bded7ee9386d378751c66e8b",
+      "sharedTraceGrammarSha256": "1df0cdee65ad8d0d0258e9920d57682b1940311c98e532472b8e0cb621b89e8d"
+    }
+  }
+}

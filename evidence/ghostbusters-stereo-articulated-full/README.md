@@ -1,6 +1,6 @@
 # Complete articulated Ghostbusters stereo evidence
 
-The [accepted articulated phrase](../../songs/studies/ghostbusters-stereo/articulated-listening-review.json) is preserved in this technically verified complete 245-second render. The [complete-performance verdict](../../songs/studies/ghostbusters-stereo/articulated-full-listening-review.json) is qualified positive, with a right-side timbre revision active. Initial speech and continuation verdicts retain their separate scopes; no complete musical acceptance follows from these records.
+The [accepted articulated phrase](../../songs/studies/ghostbusters-stereo/articulated-listening-review.json) is preserved in this technically verified complete 245-second render. The [complete-performance verdict](../../songs/studies/ghostbusters-stereo/articulated-full-listening-review.json) selects this version while retaining the plain right-side timbre reservation. Initial speech and continuation verdicts retain their separate scopes; this is a qualified musical selection, not unreserved approval.
 
 | Question | Retained evidence |
 | --- | --- |

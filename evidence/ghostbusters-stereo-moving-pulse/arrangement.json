@@ -1,0 +1,88 @@
+{
+  "format": "ghostbusters-stereo-v1",
+  "intent": "Keep the complete centered hook and source rhythm section, giving only the articulated right tonal support an evolving pulse-width body at unchanged notes, gate timing, envelope and output gains.",
+  "target": {
+    "clock": "ntsc",
+    "sidModel": "MOS6581",
+    "sidBases": [
+      54272,
+      54304
+    ]
+  },
+  "allocation": [
+    {
+      "chip": "A",
+      "voiceIndex": 0,
+      "role": "complete faithful main instrument"
+    },
+    {
+      "chip": "A",
+      "voiceIndex": 1,
+      "role": "complete faithful bass"
+    },
+    {
+      "chip": "A",
+      "voiceIndex": 2,
+      "role": "complete faithful tonal opening and percussion"
+    },
+    {
+      "chip": "B",
+      "voiceIndex": 0,
+      "role": "complete main-instrument duplicate, with shared-phase vibrato and volume"
+    },
+    {
+      "chip": "B",
+      "voiceIndex": 1,
+      "role": "source-bass root one octave above, articulated with the initial root prefix and a continuous pulse-width triangle through body and release"
+    },
+    {
+      "chip": "B",
+      "voiceIndex": 2,
+      "role": "silent"
+    }
+  ],
+  "support": {
+    "sourceVoice": 1,
+    "patterns": [
+      44,
+      45
+    ],
+    "transpose": 12,
+    "requiredCompanionPatch": 3,
+    "allowedLeadIntervals": [
+      0,
+      2,
+      3,
+      4,
+      5,
+      7,
+      9,
+      10
+    ],
+    "patch": {
+      "pulse_low": 0,
+      "pulse_high": 8,
+      "control": 65,
+      "attack_decay": 36,
+      "sustain_release": 72
+    },
+    "articulation": "source-root-prefix",
+    "pulseMotion": "triangle-600-a00"
+  },
+  "mix": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "modelAssistance": {
+    "reviewed": "2026-10-15",
+    "decision": "No model call: the listener mostly enjoys the complete articulated arrangement but finds the right support plain and drum-like. Accepted Shades pulse-motion and transfer evidence supports a bounded PWM body trial; human timbral preference remains required.",
+    "nextCheckpoint": "After the matched static-versus-moving pulse phrase and before full candidate delivery."
+  },
+  "publication": "Always-included tier only: source references, reusable tools and this note-free arrangement recipe. Original SID, source-derived notes, decoded speech, generated exports and audio remain private under build/."
+}

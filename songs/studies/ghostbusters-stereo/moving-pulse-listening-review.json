@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "status": "rejected-moving-pulse-static-articulated-selected",
+  "submission": "evidence/ghostbusters-stereo-moving-pulse/listening-submission.json",
+  "submissionSha256": "bd18da0989e99eb4a0374e94bd1d620f796caba6d86c32d7402a5bd80d8eae80",
+  "comparison": "build/ghostbusters-stereo-moving-pulse-listening/static-then-moving-pulse.ab.wav",
+  "comparisonSha256": "1bce2f1ba62b28cbeb217910f4c846e952e5fabe58b38e1bc34a524b0c9c4b28",
+  "baseline": "build/ghostbusters-stereo-moving-pulse-listening/static-pulse-phrase.wav",
+  "baselineSha256": "88c29f097982bd37f28caccb24529f0451b8bcaccbcbae5bb7555b2634b881c8",
+  "candidate": "build/ghostbusters-stereo-moving-pulse-listening/moving-pulse-phrase.wav",
+  "candidateSha256": "e277cc09f23e2768ff649a395e45e195f9bac09ff67935d5470c975028b53bc9",
+  "initializedWindowSeconds": [
+    16,
+    32
+  ],
+  "order": [
+    "Current articulated support with static pulse width",
+    "Same support with continuous pulse-width triangle"
+  ],
+  "commonGain": 1.0,
+  "hypothesis": "Pulse width alone moves from $600 to $A00 and back on B2, through body and release. Pitch, source-root articulation, patch envelope, placement and other register programs stay fixed.",
+  "priorBaselineReview": "songs/studies/ghostbusters-stereo/articulated-full-listening-review.json",
+  "scope": "Phrase from initialized 48-second native renders. Fifteen complete release/gap windows checked; final capture-edge gap and later harmony exits excluded. No complete moving-pulse revision claim.",
+  "humanAnswer": "Hmm. Different, but not suitable, too vibrant. Maybe stick with last (original) one.",
+  "fullSongPending": false,
+  "modelAssistanceReview": {
+    "checkpoint": "Moving-pulse listening verdict and case closure",
+    "decision": "No further model call: the listener hears the change but rejects its musical suitability as too vibrant. Existing model calibration cannot overrule this preference or select another timbre.",
+    "nextCheckpoint": "Only a new user request or a materially changed source/assessment configuration; no additional experiment is queued."
+  },
+  "selectedArrangement": "songs/studies/ghostbusters-stereo/articulated-arrangement.json",
+  "selectedRecipe": "config/listening/ghostbusters-stereo-articulated-full.json",
+  "selectedFullRender": "build/ghostbusters-stereo-articulated-full-listening/articulated-stereo-matched-full.wav",
+  "selectedFullRenderSha256": "5ca70c2eb8a06f1bf6fff4900eeab78ea3545536ab4cc23f78ad5af9b5a0f0c5",
+  "selectionScope": "Selects the current complete static-pulse articulated stereo version, represented by the first half of this comparison. Does not select the initial persistent section hold or the earlier mono reconstruction. Retain the qualified full-performance approval and plain-tone complaint in the prior baseline review.",
+  "fullMovingPulseVerified": false,
+  "fullMovingPulseRequired": false,
+  "closure": "The user rejected this bounded PWM timbre change and chose the previous complete articulated version. No full PWM render or further timbre experiment is requested."
+}
