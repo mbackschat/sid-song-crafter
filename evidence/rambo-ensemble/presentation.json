@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "inputContract": "Raw independent SID chip outputs: A left, B right; not arbitrary stereo audio.",
+  "input": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-v1/cache/candidate-render/239a44d328890e1c9373016f28443b06aaeb0b07ff4bd4c6eb284792b7cd2796/attempt-2222c1d8bc4046b19aeb40c8e7e35d88/render.wav",
+    "sha256": "178d08860bddc06520a5c374b0badaf86e43dcad571e9388dbf545280843757f",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 9922500,
+    "durationSeconds": 225.0,
+    "peak": 12421,
+    "peakDbfs": -8.425867463543891,
+    "clippedSamples": 0,
+    "rms": 2712.5151333962735,
+    "acRms": 2709.8190028254025,
+    "acRmsDbfs": -21.650193019708315,
+    "perChannel": [
+      {
+        "dc": 118.96244444444444,
+        "rms": 3568.2134288287284,
+        "acRms": 3566.2298033757547
+      },
+      {
+        "dc": 122.82743371126229,
+        "rms": 1408.3073613859788,
+        "acRms": 1402.9408560811976
+      }
+    ],
+    "tail": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 22050,
+      "durationSeconds": 0.5,
+      "peak": 157,
+      "peakDbfs": -46.391005651009685,
+      "clippedSamples": 0,
+      "rms": 157.0,
+      "acRms": 0.0,
+      "acRmsDbfs": null,
+      "perChannel": [
+        {
+          "dc": 157.0,
+          "rms": 157.0,
+          "acRms": 0.0
+        },
+        {
+          "dc": 157.0,
+          "rms": 157.0,
+          "acRms": 0.0
+        }
+      ]
+    }
+  },
+  "matrices": {
+    "mono": [
+      [
+        0.5,
+        0.5
+      ]
+    ],
+    "listeningStereo": [
+      [
+        0.5,
+        0.35
+      ],
+      [
+        0.5,
+        0.65
+      ]
+    ],
+    "comparisonPrimary": [
+      [
+        0.5,
+        0
+      ]
+    ],
+    "secondChipDiagnostic": [
+      [
+        0,
+        1.0
+      ]
+    ]
+  },
+  "normalization": "none",
+  "window": {
+    "startSeconds": 88.0,
+    "stopSeconds": 104.0,
+    "startFrame": 3880800,
+    "stopFrame": 4586400
+  },
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "segments": [
+    {
+      "label": "Chip A: three voices at gain 0.5",
+      "startFrame": 0,
+      "stopFrame": 705600
+    },
+    {
+      "label": "Silence",
+      "startFrame": 705600,
+      "stopFrame": 727650
+    },
+    {
+      "label": "Chips A+B: six voices at gain 0.5 each",
+      "startFrame": 727650,
+      "stopFrame": 1433250
+    }
+  ],
+  "outputs": {
+    "mono": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-v1/cache/presentation/aefab9bf4619643444999119cfa5582c25c791685d15fc9104b7da27e8739500/attempt-07b1095ac48a46a585b7f0a44c6c558e/presentation/dual-mono.wav",
+      "sha256": "a73449b20f836c2762dfb9bb53bbf3a694a88b55de781849550455a9ad2c86b2",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 9922500,
+      "durationSeconds": 225.0,
+      "peak": 8816,
+      "peakDbfs": -11.403567069040161,
+      "clippedSamples": 0,
+      "rms": 1924.7617297885351,
+      "acRms": 1920.96139682946,
+      "acRmsDbfs": -24.638625949721053,
+      "perChannel": [
+        {
+          "dc": 120.89263149407911,
+          "rms": 1924.7617297885351,
+          "acRms": 1920.96139682946
+        }
+      ],
+      "tail": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 22050,
+        "durationSeconds": 0.5,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    },
+    "stereo": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-v1/cache/presentation/aefab9bf4619643444999119cfa5582c25c791685d15fc9104b7da27e8739500/attempt-07b1095ac48a46a585b7f0a44c6c558e/presentation/dual-listening-stereo.wav",
+      "sha256": "ed52009ce19c842fafd5c79fae0a62cc19d02150288b44d5bc37774104e1b0a4",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 9922500,
+      "durationSeconds": 225.0,
+      "peak": 10134,
+      "peakDbfs": -10.193380700101313,
+      "clippedSamples": 0,
+      "rms": 1936.320526459712,
+      "acRms": 1932.4542330782385,
+      "acRmsDbfs": -24.58681435560901,
+      "perChannel": [
+        {
+          "dc": 102.39565542957924,
+          "rms": 1855.8162966474326,
+          "acRms": 1852.9892759137433
+        },
+        {
+          "dc": 139.3942833963215,
+          "rms": 2013.6087592867293,
+          "acRms": 2008.7781035327587
+        }
+      ],
+      "tail": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 22050,
+        "durationSeconds": 0.5,
+        "peak": 181,
+        "peakDbfs": -45.15542720181067,
+        "clippedSamples": 0,
+        "rms": 158.8238017426859,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 133.0,
+            "rms": 133.0,
+            "acRms": 0.0
+          },
+          {
+            "dc": 181.0,
+            "rms": 181.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    },
+    "comparison": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-v1/cache/presentation/aefab9bf4619643444999119cfa5582c25c791685d15fc9104b7da27e8739500/attempt-07b1095ac48a46a585b7f0a44c6c558e/presentation/three-then-six-voices.wav",
+      "sha256": "a757628b8bba5be1298d0dacd7ceab1bd2bb96e4ddb8f705f060d70ce7fe24c8",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1433250,
+      "durationSeconds": 32.5,
+      "peak": 8097,
+      "peakDbfs": -12.142515913670778,
+      "clippedSamples": 0,
+      "rms": 1869.55297932959,
+      "acRms": 1869.4526885512753,
+      "acRmsDbfs": -24.874709126036922,
+      "perChannel": [
+        {
+          "dc": -19.364601430315716,
+          "rms": 1869.55297932959,
+          "acRms": 1869.4526885512753
+        }
+      ],
+      "tail": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 22050,
+        "durationSeconds": 0.5,
+        "peak": 5246,
+        "peakDbfs": -15.912432974107665,
+        "clippedSamples": 0,
+        "rms": 2067.7772729592743,
+        "acRms": 2053.027498016079,
+        "acRmsDbfs": -24.061103373188566,
+        "perChannel": [
+          {
+            "dc": -246.53791383219954,
+            "rms": 2067.7772729592743,
+            "acRms": 2053.027498016079
+          }
+        ]
+      }
+    },
+    "secondChipDiagnostic": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-v1/cache/presentation/aefab9bf4619643444999119cfa5582c25c791685d15fc9104b7da27e8739500/attempt-07b1095ac48a46a585b7f0a44c6c558e/presentation/second-chip-only.wav",
+      "sha256": "424f502c5bc38e81d0577181b5eb5199e3d64d8fa8d02c8e1c19fb884e943a74",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 9922500,
+      "durationSeconds": 225.0,
+      "peak": 8815,
+      "peakDbfs": -11.404552366487541,
+      "clippedSamples": 0,
+      "rms": 1408.3073613859788,
+      "acRms": 1402.9408560811976,
+      "acRmsDbfs": -27.36821144283226,
+      "perChannel": [
+        {
+          "dc": 122.82743371126229,
+          "rms": 1408.3073613859788,
+          "acRms": 1402.9408560811976
+        }
+      ],
+      "tail": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 22050,
+        "durationSeconds": 0.5,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ]
+      },
+      "label": "Diagnostic second-chip solo at raw gain 1.0; comparison contribution uses gain 0.5.",
+      "normalization": "none"
+    }
+  },
+  "listeningVerdict": null
+}

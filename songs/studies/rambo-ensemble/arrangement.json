@@ -1,0 +1,97 @@
+{
+  "format": "rambo-ensemble-v1",
+  "source": "songs/rambo-loader.json",
+  "sourceSha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b",
+  "intent": "Broaden the faithful loader with low sustained support and restrained chord swells, preserving the centered source's melody, rhythmic identity and complete form.",
+  "sections": [
+    {
+      "kind": "anchor",
+      "voiceIndex": 2,
+      "startCall": 561,
+      "endCall": 2354
+    },
+    {
+      "kind": "chord",
+      "voiceIndex": 2,
+      "startCall": 2354,
+      "endCall": 7474
+    },
+    {
+      "kind": "anchor",
+      "voiceIndex": 1,
+      "startCall": 9010,
+      "endCall": 10034
+    }
+  ],
+  "roles": [
+    {
+      "voiceIndex": 0,
+      "role": "low moving-pulse anchor",
+      "patchSource": {
+        "voiceIndex": 1,
+        "noteCall": 2354
+      },
+      "pitchRange": [
+        24,
+        35
+      ],
+      "dataOverrides": {
+        "13": 0,
+        "25": 72,
+        "26": 87
+      },
+      "releaseCalls": 32
+    },
+    {
+      "voiceIndex": 1,
+      "role": "soft sustained inner chord tone",
+      "patchSource": {
+        "voiceIndex": 0,
+        "noteCall": 1763
+      },
+      "pitchRange": [
+        36,
+        47
+      ],
+      "dataOverrides": {
+        "13": 0,
+        "17": 0,
+        "24": 17,
+        "25": 104,
+        "26": 103
+      },
+      "releaseCalls": 32
+    },
+    {
+      "voiceIndex": 2,
+      "role": "spaced moving-pulse chord swell",
+      "patchSource": {
+        "voiceIndex": 2,
+        "noteCall": 7986
+      },
+      "pitchRange": [
+        43,
+        54
+      ],
+      "dataOverrides": {
+        "13": 0,
+        "25": 56,
+        "26": 87
+      },
+      "releaseCalls": 24,
+      "chordRegionStride": 2,
+      "entryFraction": 0.5,
+      "maximumSpanCalls": 64
+    }
+  ],
+  "mainPhraseSeconds": [
+    88,
+    104
+  ],
+  "modelAssistance": {
+    "status": "reviewed-no-call",
+    "reason": "A first expanded ensemble needs human judgment of weight, phrasing and spatial usefulness; existing bounded model trials do not qualify a model to decide those matters.",
+    "nextCheckpoint": "After the listener reviews the full ensemble, representative phrase and separate ending."
+  },
+  "publication": "The loader-derived secondary score and complete note ledgers retain Martin Galway credit and GNU GPL v3 under the title-specific loader grant documented in samples/rambo-loader/README.md. Generated audition audio and SID stay local pending listening review. Reusable tools retain MIT separately."
+}

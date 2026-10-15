@@ -33,6 +33,12 @@ Ask separately whether sound/phrasing is preserved, the ending works, and the tr
 
 Keep reference renders and every comparison containing reference audio outside Git and LFS. Retain reproducible commands, hashes, settings, gains and segment boundaries in the owning recipe; record listening judgments separately from immutable generated receipts.
 
+## Verify a two-chip presentation
+
+Apply the [hardware and mixing contract](../research/sid/dual-sid.md#plan-the-sound-hardware-and-the-mix-together): raw chip buses and the final stereo presentation are separate artifacts. For a fixed matrix, verify the actual quantized PCM against the source samples and declared coefficients, not only a receipt or output hash. A changed file with a refreshed hash can still implement the wrong mix. The [Rambo ensemble guard](../../scripts/studies/rambo/prepare-ensemble-listening.py) and [negative tests](../../tests/rambo_ensemble_listening_test.py) demonstrate this check across every output frame. Match the faithful reference's primary-bus coefficients to the candidate before any documented whole-clip level matching.
+
+To check that added roles contribute signal, render an initialized baseline and one omission per role over a passage where those roles actually play. Preserve the same render settings and compare residuals. These are causal diagnostics, not exact isolated stems: shared filters, modulation and chip nonlinearities can change other sound when a voice is omitted. Nonzero residual energy proves a signal change, not audibility or musical value. Treat any energy review band as a case-specific warning, never a universal acceptance threshold or instruction to normalize each role separately. The [Rambo case](../../songs/studies/rambo-ensemble/README.md) records its bounded diagnostic coverage separately from full-arrangement proof.
+
 ## Compare an initialized window at original levels
 
 Use `window` when the reference and reconstruction have different total lengths but contain the same desired passage:

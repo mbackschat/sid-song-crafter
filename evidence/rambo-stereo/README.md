@@ -1,6 +1,6 @@
 # Rambo stereo evidence
 
-These records support the [faithful three-part stereo treatment](../../songs/studies/rambo-stereo/README.md), verified on 2026-10-15. The same source score and instrument programs run on two MOS6581 chips: voices 1 and 3 remain together, and the independent bass moves to the second chip. Human musical acceptance is pending. Music-derived records retain Martin Galway's [GPL v3 terms](../../samples/rambo-loader/LICENSE) and [source attribution](../../samples/rambo-loader/README.md).
+These records support the [faithful three-part stereo treatment](../../songs/studies/rambo-stereo/README.md), verified on 2026-10-15. The same source score and instrument programs run on two MOS6581 chips: voices 1 and 3 remain together, and the independent bass moves to the second chip. The [listener correction](../../songs/studies/rambo-stereo/listening-review.json) identifies a scope mismatch: redistribution alone did not fulfill the requested expanded arrangement. Retain this as a routing diagnostic, not an accepted interpretation. Music-derived records retain Martin Galway's [GPL v3 terms](../../samples/rambo-loader/LICENSE) and [source attribution](../../samples/rambo-loader/README.md).
 
 | Question | Evidence |
 | --- | --- |

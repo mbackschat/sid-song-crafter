@@ -183,23 +183,32 @@ def parameters(description, *, stereo_bass=False):
                                    runtimeScoreScheduler=True, nodeLabels=nodes)
 
 
-def _assemble_player(description, *, load_address=LOAD_ADDRESS, stereo_bass=False):
+def _assemble_player(description, *, load_address=LOAD_ADDRESS, sid_base=0xd400, stereo_bass=False):
     require(type(load_address) is int and 0x0400 <= load_address < 0xa000,
             'Payload must remain in callable RAM')
+    require(type(sid_base) is int and sid_base in (0xd400, 0xd420),
+            'SID base must be $D400 or $D420')
+    require(not stereo_bass or sid_base == 0xd400,
+            'The stereo-bass layout cannot be combined with SID relocation')
     generated, references, sizes = parameters(description, stereo_bass=stereo_bass)
     constants = {name: 0 for name in references}
     constants['RB_INITIAL_VOLUME'] = description['initialization']['volume']
     source = '\n'.join((ROOT / 'songs/players' / name).read_text()
                        for name in ('rambo.asm', 'rambo-sound.asm')) + '\n' + generated
+    if sid_base != 0xd400:
+        for offset in range(25):
+            name = f'RB_SID_REGISTER_{offset:02X}'
+            source = source.replace(f'${0xd400 + offset:04x}', name)
+            constants[name] = sid_base + offset
     cpu_type()
     _, preliminary, _ = assemble(source, constants, load=load_address)
     constants.update({name: (preliminary[label] >> shift) & 255
                       for name, (label, shift) in references.items()})
     payload, symbols, listing = assemble(source, constants, load=load_address)
     require(load_address + len(payload) <= 0xa000, 'Payload must remain in callable RAM')
-    layout = dict(outputLayout='stereo-bass', sidBases=[0xd400, 0xd420],
-                  voiceSidOffsets=list(STEREO_VOICE_OFFSETS)) if stereo_bass else {}
+    layout = dict(outputLayout='stereo-bass', sidBases=[0xd400, 0xd420]) if stereo_bass else {}
     return payload, dict(symbols=symbols, source=source, listing=listing, loadAddress=load_address,
+                         sidBase=sid_base, voiceSidOffsets=list(STEREO_VOICE_OFFSETS if stereo_bass else (0, 7, 14)),
                          payloadBytes=len(payload), playCalls=description['range']['auditCalls'],
                          originalDriverIncluded=False, registerDumpPlayback=False,
                          supportedCallRange=dict(firstInclusive=0, lastExclusive=description['range']['auditCalls']),
@@ -207,10 +216,10 @@ def _assemble_player(description, *, load_address=LOAD_ADDRESS, stereo_bass=Fals
                          endingMechanism='Top-level score returns and sound lifetimes; no added fade', **sizes, **layout)
 
 
-def assemble_player(description, *, load_address=LOAD_ADDRESS, stereo_bass=False):
+def assemble_player(description, *, load_address=LOAD_ADDRESS, sid_base=0xd400, stereo_bass=False):
     compiler_contract(description)
     numeric_run(description, stereo_bass=stereo_bass)
-    return _assemble_player(description, load_address=load_address, stereo_bass=stereo_bass)
+    return _assemble_player(description, load_address=load_address, sid_base=sid_base, stereo_bass=stereo_bass)
 
 
 def _build(description, *, stereo_bass=False):

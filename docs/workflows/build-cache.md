@@ -63,6 +63,8 @@ Stop independent source and manifest writers before promotion. A persistent igno
 
 An ordinary failure before manifest replacement rolls back unchanged archive files created by that invocation. Concurrent replacements or edits detected by the ownership/content checks are preserved, and empty created directories remain. Interruptions preserve published archives, including an interruption immediately after a successful manifest replacement. An interruption or process/power loss may leave unindexed archives; a hard exit may also leave staging files. Verify the manifest and inspect such files against the reviewed selection before retrying or removing them. The tool does not automatically delete uncertain files or working sources.
 
+Before committing a promoted group, check that every new manifest archive is actually staged/tracked with `git ls-files`; successful promotion and hash verification do not establish Git inclusion. Global ignore rules also apply inside `evidence/`: the Rambo stereo verification log was initially omitted by a global `*.log` rule, corrected in commit `1237aa9` with a narrow repository exception. Inspect unexpected exclusions with `git check-ignore -v`, preserve the public-file boundary, and never force-add a directory to bypass it.
+
 ## Local cache compression
 
 The [listening-package runner](listening-package.md) separately caches successful computations. Its active stage outputs are hash-verified on reuse: compressing or removing them invalidates that stage and triggers regeneration. Keep accepted standalone audio and historical evidence archives separate from that working computation cache.

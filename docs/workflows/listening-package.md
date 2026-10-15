@@ -82,7 +82,7 @@ The runner's focused tests exercise cache reuse, changed inputs and commands, co
 
 Monty's numeric player captures requested state checkpoints in one traversal. Its compiler still validates the full declared input even for a diagnostic CPU prefix; the optimization removes repeated oracle computation without reducing the checked musical range. CPU, source-store, VICE, rendered-signal and listening evidence remain distinct.
 
-Measure cold and repeated invocations using their `run.json` receipts. Stage execution times and cache-check overhead are different measurements; do not infer a rendering speedup from total workflow savings or compare runs with different verification coverage.
+Measure cold and repeated invocations using their `run.json` receipts. Before the cached repeat overwrites that index, retain the completed fresh invocation as `first-run.json` (or another explicitly named fresh-run receipt); retain the repeat separately when promoting evidence. Stage execution times and cache-check overhead are different measurements; do not infer a rendering speedup from total workflow savings or compare runs with different verification coverage.
 
 On 2026-10-13, the [recorded Monty benchmark](listening-package-benchmark.json) took **151.47 seconds** for a fresh nine-stage package, **0.39 seconds** when repeated unchanged, and **0.67 seconds** after changing only the ending window (only that comparison ran). Full reference/candidate PCM and the original ending A/B retained their accepted hashes. The cold run spent 97.76 seconds in the CPU audit; each full 355-second render took about 4.4 seconds. These are single local observations, not universal speed guarantees.
 

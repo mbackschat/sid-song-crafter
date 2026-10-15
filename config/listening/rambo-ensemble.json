@@ -1,0 +1,638 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "source-pin",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "asset",
+        "songs/rambo-loader.json",
+        "--sha256",
+        "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b",
+        "--output",
+        "{out}/source.json"
+      ],
+      "inputs": [
+        "songs/rambo-loader.json",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "source.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "faithful-pin",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "asset",
+        "samples/rambo-loader/rambo-loader.sid",
+        "--sha256",
+        "9a6901e656f4de1888f9acc71c80abaf3608b9758b559b306b0b8b6eaa64aecd",
+        "--output",
+        "{out}/faithful.json"
+      ],
+      "inputs": [
+        "samples/rambo-loader/rambo-loader.sid",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "faithful.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "ensemble-focused-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "rambo_ensemble*_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "scripts/studies/rambo/prepare-ensemble.py",
+        "songs/studies/rambo-ensemble/arrangement.json",
+        "songs/rambo-loader.json",
+        "scripts/rambo_player.py",
+        "scripts/rambo_programs.py",
+        "scripts/rambo_score.py",
+        "scripts/verify_player.py",
+        "scripts/studies/rambo/prepare-ensemble-listening.py",
+        "scripts/audio_comparison.py",
+        "scripts/prepare-dual-listening.py",
+        "tests/rambo_ensemble_test.py",
+        "tests/rambo_ensemble_listening_test.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "compiler-focused-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "rambo_dual_compiler_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "songs/rambo-loader.json",
+        "scripts/compose-rambo.py",
+        "scripts/rambo_player.py",
+        "scripts/rambo_score.py",
+        "scripts/rambo_programs.py",
+        "scripts/verify_player.py",
+        "scripts/sid_assembler.py",
+        "songs/players/rambo.asm",
+        "songs/players/rambo-sound.asm",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        ".tools/test-deps/py65",
+        "scripts/compose-rambo-dual.py",
+        "tests/rambo_dual_compiler_test.py",
+        "tests/rambo_compiler_test.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "prepare-score",
+      "command": [
+        "{python}",
+        "scripts/studies/rambo/prepare-ensemble.py",
+        "songs/studies/rambo-ensemble/arrangement.json",
+        "--output",
+        "{out}/prepared"
+      ],
+      "inputs": [
+        "scripts/studies/rambo/prepare-ensemble.py",
+        "songs/studies/rambo-ensemble/arrangement.json",
+        "songs/rambo-loader.json",
+        "scripts/rambo_player.py",
+        "scripts/rambo_programs.py",
+        "scripts/rambo_score.py",
+        "scripts/verify_player.py"
+      ],
+      "outputs": [
+        "prepared/secondary.json",
+        "prepared/arrangement-proof.json",
+        "prepared/source-note-events.json.gz",
+        "prepared/support-note-events.json.gz"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate-build",
+      "command": [
+        "{python}",
+        "scripts/compose-rambo-dual.py",
+        "songs/rambo-loader.json",
+        "{stage:prepare-score}/prepared/secondary.json",
+        "--calls",
+        "11000",
+        "--output",
+        "{out}/candidate"
+      ],
+      "inputs": [
+        "songs/rambo-loader.json",
+        "scripts/compose-rambo.py",
+        "scripts/rambo_player.py",
+        "scripts/rambo_score.py",
+        "scripts/rambo_programs.py",
+        "scripts/verify_player.py",
+        "scripts/sid_assembler.py",
+        "songs/players/rambo.asm",
+        "songs/players/rambo-sound.asm",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        ".tools/test-deps/py65",
+        "scripts/compose-rambo-dual.py",
+        "{stage:prepare-score}/prepared/secondary.json"
+      ],
+      "outputs": [
+        "candidate/reconstructed.sid",
+        "candidate/build.json",
+        "candidate/audit.json",
+        "candidate/writes.json",
+        "candidate/state-checkpoints.json",
+        "candidate/wrapper.asm",
+        "candidate/wrapper.listing",
+        "candidate/primary.asm",
+        "candidate/primary.listing",
+        "candidate/secondary.asm",
+        "candidate/secondary.listing"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate-vice",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:candidate-build}/candidate/reconstructed.sid",
+        "--oracle",
+        "{stage:candidate-build}/candidate/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "10999",
+        "--timeout",
+        "300",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:candidate-build}/candidate/reconstructed.sid",
+        "{stage:candidate-build}/candidate/writes.json",
+        "scripts/trace-sid-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/sid_clock.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib"
+      ],
+      "outputs": [
+        "vice/study.json",
+        "vice/trace.json",
+        "vice/monitor.log",
+        "vice/command.json",
+        "vice/commands.mon"
+      ],
+      "timeoutSeconds": 330,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "faithful-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "samples/rambo-loader/rambo-loader.sid",
+        "{out}/render.wav",
+        "225",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "samples/rambo-loader/rambo-loader.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:candidate-build}/candidate/reconstructed.sid",
+        "{out}/render.wav",
+        "225",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:candidate-build}/candidate/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "support-build",
+      "command": [
+        "{python}",
+        "scripts/compose-rambo.py",
+        "{stage:prepare-score}/prepared/secondary.json",
+        "--calls",
+        "5300",
+        "--output",
+        "{out}/support"
+      ],
+      "inputs": [
+        "scripts/compose-rambo.py",
+        "scripts/rambo_player.py",
+        "scripts/rambo_score.py",
+        "scripts/rambo_programs.py",
+        "scripts/verify_player.py",
+        "scripts/sid_assembler.py",
+        "songs/players/rambo.asm",
+        "songs/players/rambo-sound.asm",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        ".tools/test-deps/py65",
+        "{stage:prepare-score}/prepared/secondary.json"
+      ],
+      "outputs": [
+        "support/reconstructed.sid",
+        "support/build.json",
+        "support/audit.json",
+        "support/writes.json",
+        "support/state-checkpoints.json",
+        "support/player.asm",
+        "support/player.listing"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "support-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:support-build}/support/reconstructed.sid",
+        "{out}/render.wav",
+        "104",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:support-build}/support/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "support-without-1",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:support-build}/support/reconstructed.sid",
+        "{out}/render.wav",
+        "104",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1",
+        "--voices",
+        "2,3"
+      ],
+      "inputs": [
+        "{stage:support-build}/support/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "support-without-2",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:support-build}/support/reconstructed.sid",
+        "{out}/render.wav",
+        "104",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1",
+        "--voices",
+        "1,3"
+      ],
+      "inputs": [
+        "{stage:support-build}/support/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "support-without-3",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:support-build}/support/reconstructed.sid",
+        "{out}/render.wav",
+        "104",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1",
+        "--voices",
+        "1,2"
+      ],
+      "inputs": [
+        "{stage:support-build}/support/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "presentation",
+      "command": [
+        "{python}",
+        "scripts/prepare-dual-listening.py",
+        "{stage:candidate-render}/render.wav",
+        "--output",
+        "{out}/presentation",
+        "--start",
+        "88",
+        "--stop",
+        "104"
+      ],
+      "inputs": [
+        "scripts/prepare-dual-listening.py",
+        "scripts/audio_comparison.py",
+        "scripts/verify_player.py",
+        "{stage:candidate-render}/render.wav"
+      ],
+      "outputs": [
+        "presentation/dual-mono.wav",
+        "presentation/dual-listening-stereo.wav",
+        "presentation/three-then-six-voices.wav",
+        "presentation/second-chip-only.wav",
+        "presentation/listening.json"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "prepare-listening",
+      "command": [
+        "{python}",
+        "scripts/studies/rambo/prepare-ensemble-listening.py",
+        "--faithful",
+        "{stage:faithful-render}/render.wav",
+        "--raw",
+        "{stage:candidate-render}/render.wav",
+        "--presentation",
+        "{stage:presentation}/presentation",
+        "--support",
+        "{stage:support-render}/render.wav",
+        "--omissions",
+        "{stage:support-without-1}/render.wav",
+        "{stage:support-without-2}/render.wav",
+        "{stage:support-without-3}/render.wav",
+        "--output",
+        "{out}/prepared"
+      ],
+      "inputs": [
+        "scripts/studies/rambo/prepare-ensemble-listening.py",
+        "scripts/audio_comparison.py",
+        "scripts/verify_player.py",
+        "scripts/prepare-dual-listening.py",
+        "{stage:faithful-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{stage:presentation}/presentation/dual-listening-stereo.wav",
+        "{stage:presentation}/presentation/listening.json",
+        "{stage:support-render}/render.wav",
+        "{stage:support-without-1}/render.wav",
+        "{stage:support-without-2}/render.wav",
+        "{stage:support-without-3}/render.wav"
+      ],
+      "outputs": [
+        "prepared/faithful-dual-mono.wav",
+        "prepared/faithful-phrase.wav",
+        "prepared/ensemble-phrase.wav",
+        "prepared/faithful-early.wav",
+        "prepared/ensemble-early.wav",
+        "prepared/faithful-ending.wav",
+        "prepared/ensemble-ending.wav",
+        "prepared/signal.json"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "phrase-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "prepare",
+        "{stage:prepare-listening}/prepared/faithful-phrase.wav",
+        "{stage:prepare-listening}/prepared/ensemble-phrase.wav",
+        "{out}/three-then-six-phrase",
+        "--individual-copies",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:prepare-listening}/prepared/faithful-phrase.wav",
+        "{stage:prepare-listening}/prepared/ensemble-phrase.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "three-then-six-phrase.ab.wav",
+        "three-then-six-phrase.comparison.json",
+        "three-then-six-phrase.a.matched.wav",
+        "three-then-six-phrase.b.matched.wav"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "ending-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "prepare",
+        "{stage:prepare-listening}/prepared/faithful-ending.wav",
+        "{stage:prepare-listening}/prepared/ensemble-ending.wav",
+        "{out}/three-then-six-ending",
+        "--individual-copies",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:prepare-listening}/prepared/faithful-ending.wav",
+        "{stage:prepare-listening}/prepared/ensemble-ending.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "three-then-six-ending.ab.wav",
+        "three-then-six-ending.comparison.json",
+        "three-then-six-ending.a.matched.wav",
+        "three-then-six-ending.b.matched.wav"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "fullFaithful": "{stage:prepare-listening}/prepared/faithful-dual-mono.wav",
+    "fullCandidate": "{stage:presentation}/presentation/dual-listening-stereo.wav",
+    "phraseComparison": "{stage:phrase-comparison}/three-then-six-phrase.ab.wav",
+    "endingComparison": "{stage:ending-comparison}/three-then-six-ending.ab.wav",
+    "fullRawCandidate": "{stage:candidate-render}/render.wav",
+    "addedSupportDiagnostic": "{stage:presentation}/presentation/second-chip-only.wav",
+    "monoSumDiagnostic": "{stage:presentation}/presentation/dual-mono.wav",
+    "audioHealth": "{stage:prepare-listening}/prepared/signal.json",
+    "presentationReceipt": "{stage:presentation}/presentation/listening.json",
+    "arrangementProof": "{stage:prepare-score}/prepared/arrangement-proof.json",
+    "secondaryDescription": "{stage:prepare-score}/prepared/secondary.json",
+    "candidateSid": "{stage:candidate-build}/candidate/reconstructed.sid",
+    "candidateBuild": "{stage:candidate-build}/candidate/build.json",
+    "candidateAudit": "{stage:candidate-build}/candidate/audit.json",
+    "candidateVice": "{stage:candidate-vice}/vice/study.json",
+    "supportPrefixBuild": "{stage:support-build}/support/build.json"
+  }
+}

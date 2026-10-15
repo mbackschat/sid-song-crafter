@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "c909f2d02c82e06291af8b33fb9618d9e576ced319c25a89fca17e8f48adb807",
+  "cpu": "py65 NMOS 6502",
+  "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+  "sidModel": "MOS6581",
+  "sidCount": 2,
+  "sids": [
+    {
+      "baseAddress": 54272,
+      "model": "MOS6581"
+    },
+    {
+      "baseAddress": 54304,
+      "model": "MOS6581"
+    }
+  ],
+  "loadAddress": 1024,
+  "initAddress": 1024,
+  "playAddress": 1031,
+  "clockHz": 985248.6111111111,
+  "playCalls": 11000,
+  "callRateHz": 50.12457321485099,
+  "initCycles": 12030,
+  "maximumPlayCycles": 7995,
+  "meanPlayCycles": 1661.868909090909,
+  "frameCycleBudget": 19656,
+  "initWriteCount": 50,
+  "playWriteCount": 106350,
+  "registers": {
+    "d400": {
+      "writes": 4202,
+      "distinctValues": 256,
+      "minimum": 0,
+      "maximum": 255
+    },
+    "d401": {
+      "writes": 4202,
+      "distinctValues": 71,
+      "minimum": 0,
+      "maximum": 172
+    },
+    "d402": {
+      "writes": 4661,
+      "distinctValues": 216,
+      "minimum": 0,
+      "maximum": 254
+    },
+    "d403": {
+      "writes": 4661,
+      "distinctValues": 51,
+      "minimum": 0,
+      "maximum": 230
+    },
+    "d404": {
+      "writes": 2177,
+      "distinctValues": 9,
+      "minimum": 0,
+      "maximum": 67
+    },
+    "d405": {
+      "writes": 1306,
+      "distinctValues": 7,
+      "minimum": 0,
+      "maximum": 238
+    },
+    "d406": {
+      "writes": 1306,
+      "distinctValues": 8,
+      "minimum": 0,
+      "maximum": 231
+    },
+    "d407": {
+      "writes": 3044,
+      "distinctValues": 109,
+      "minimum": 0,
+      "maximum": 255
+    },
+    "d408": {
+      "writes": 3044,
+      "distinctValues": 31,
+      "minimum": 0,
+      "maximum": 30
+    },
+    "d409": {
+      "writes": 9045,
+      "distinctValues": 47,
+      "minimum": 0,
+      "maximum": 254
+    },
+    "d40a": {
+      "writes": 9045,
+      "distinctValues": 9,
+      "minimum": 0,
+      "maximum": 11
+    },
+    "d40b": {
+      "writes": 2770,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 65
+    },
+    "d40c": {
+      "writes": 1955,
+      "distinctValues": 4,
+      "minimum": 0,
+      "maximum": 190
+    },
+    "d40d": {
+      "writes": 1955,
+      "distinctValues": 6,
+      "minimum": 0,
+      "maximum": 205
+    },
+    "d40e": {
+      "writes": 9448,
+      "distinctValues": 256,
+      "minimum": 0,
+      "maximum": 255
+    },
+    "d40f": {
+      "writes": 9448,
+      "distinctValues": 34,
+      "minimum": 0,
+      "maximum": 51
+    },
+    "d410": {
+      "writes": 4759,
+      "distinctValues": 48,
+      "minimum": 0,
+      "maximum": 254
+    },
+    "d411": {
+      "writes": 4759,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 11
+    },
+    "d412": {
+      "writes": 2256,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 65
+    },
+    "d413": {
+      "writes": 1733,
+      "distinctValues": 3,
+      "minimum": 0,
+      "maximum": 204
+    },
+    "d414": {
+      "writes": 1733,
+      "distinctValues": 4,
+      "minimum": 0,
+      "maximum": 204
+    },
+    "d420": {
+      "writes": 58,
+      "distinctValues": 9,
+      "minimum": 0,
+      "maximum": 208
+    },
+    "d421": {
+      "writes": 58,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 7
+    },
+    "d422": {
+      "writes": 8051,
+      "distinctValues": 64,
+      "minimum": 0,
+      "maximum": 252
+    },
+    "d423": {
+      "writes": 8051,
+      "distinctValues": 20,
+      "minimum": 0,
+      "maximum": 255
+    },
+    "d424": {
+      "writes": 170,
+      "distinctValues": 3,
+      "minimum": 0,
+      "maximum": 65
+    },
+    "d425": {
+      "writes": 114,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 72
+    },
+    "d426": {
+      "writes": 114,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 87
+    },
+    "d427": {
+      "writes": 43,
+      "distinctValues": 8,
+      "minimum": 0,
+      "maximum": 216
+    },
+    "d428": {
+      "writes": 43,
+      "distinctValues": 7,
+      "minimum": 0,
+      "maximum": 15
+    },
+    "d429": {
+      "writes": 85,
+      "distinctValues": 1,
+      "minimum": 0,
+      "maximum": 0
+    },
+    "d42a": {
+      "writes": 85,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 8
+    },
+    "d42b": {
+      "writes": 127,
+      "distinctValues": 3,
+      "minimum": 0,
+      "maximum": 17
+    },
+    "d42c": {
+      "writes": 85,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 104
+    },
+    "d42d": {
+      "writes": 85,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 103
+    },
+    "d42e": {
+      "writes": 38,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 227
+    },
+    "d42f": {
+      "writes": 38,
+      "distinctValues": 5,
+      "minimum": 0,
+      "maximum": 22
+    },
+    "d430": {
+      "writes": 703,
+      "distinctValues": 26,
+      "minimum": 0,
+      "maximum": 250
+    },
+    "d431": {
+      "writes": 703,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 8
+    },
+    "d432": {
+      "writes": 76,
+      "distinctValues": 3,
+      "minimum": 0,
+      "maximum": 65
+    },
+    "d433": {
+      "writes": 57,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 56
+    },
+    "d434": {
+      "writes": 57,
+      "distinctValues": 2,
+      "minimum": 0,
+      "maximum": 87
+    }
+  },
+  "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+}

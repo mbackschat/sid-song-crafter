@@ -8,6 +8,7 @@ Use [the archive and cache workflow](../docs/workflows/build-cache.md) to instal
 
 | Evidence | Interpretation and reproduction |
 | --- | --- |
+| Rambo expanded six-voice ensemble | [Arrangement and pending listening review](../songs/studies/rambo-ensemble/README.md), [complete evidence index](rambo-ensemble/README.md); source-derived support, full CPU/VICE proof, all-frame output-matrix check and bounded role-omission diagnostics |
 | Moon River first statement | [Source-backed interpretation](../songs/moon-river/README.md), [checks](moon-river-first-statement/checks.json), [recipe fingerprints](moon-river-first-statement/run.json); plain/candidate audio hashes and first-statement boundary; source notes and audio remain local, listening pending |
 | Night Transit original composition drafts | [Musical verdict, reuse and measured effort](../songs/night-transit/README.md), [revised PAL run](night-transit-drafts/night-transit-v2-ordered/run.json); both drafts retain full numeric CPU/schedule records, PAL/NTSC sampled VICE checks and audition hashes; both compositions rejected; closed in favor of interpreting existing scores |
 | Deflektor familiar transfer | [Accepted moving-pulse trio](../docs/research/composition/instruments/deflektor-decoded-programs.md), [complete recipe](deflektor-elise-transfer/run.json), both CPU/VICE proofs, audio hashes and pre-stop release measurement |

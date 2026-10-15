@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "method": "full-file AC RMS, pooled channel power after subtracting each channel mean; silence and tails included",
+  "matching": "attenuation only",
+  "requestedAcRmsDbfs": null,
+  "targetAcRms": 1761.0375159505127,
+  "targetAcRmsDbfs": -25.393626539567812,
+  "peakHeadroomDb": 1.0,
+  "peakLimit": 29203,
+  "sampleRate": 44100,
+  "channels": 2,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-v1/cache/phrase-comparison/298393a6fc586c90eabf8f18fdfa2dab3a373e6773fcc58b7c450060ffdc86a3/attempt-d3c1098a86bb4165bb11340b2c737f38/three-then-six-phrase.ab.wav",
+    "frames": 1433250,
+    "durationSeconds": 32.5,
+    "sha256": "aa86ae76775dadbed0118b51678afccf7326f006194a5b3d0b8bb4053bd135fc"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 705600
+    },
+    {
+      "label": "silence",
+      "startFrame": 705600,
+      "endFrame": 727650
+    },
+    {
+      "label": "B",
+      "startFrame": 727650,
+      "endFrame": 1433250
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-v1/cache/prepare-listening/ee99da87cd967e6889a2768285a8a543e87ae9dcea22d4176202737a31c9dad4/attempt-e16f8491720d4571b421ec11c5732c28/prepared/faithful-phrase.wav",
+      "sha256": "63dc4ed71febf351a3d73c9d73336eb38cb6566a5ea0d0244c11724cc791f8c8",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 5619,
+        "peakDbfs": -15.315818057296362,
+        "clippedSamples": 0,
+        "rms": 1761.509420269161,
+        "acRms": 1761.0375159505127,
+        "acRmsDbfs": -25.393626539567812,
+        "perChannel": [
+          {
+            "dc": -40.771376133786845,
+            "rms": 1761.509420269161,
+            "acRms": 1761.0375159505127
+          },
+          {
+            "dc": -40.771376133786845,
+            "rms": 1761.509420269161,
+            "acRms": 1761.0375159505127
+          }
+        ]
+      },
+      "gain": 1.0,
+      "gainDb": 0.0,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 5619,
+        "peakDbfs": -15.315818057296362,
+        "clippedSamples": 0,
+        "rms": 1761.509420269161,
+        "acRms": 1761.0375159505127,
+        "acRmsDbfs": -25.393626539567812,
+        "perChannel": [
+          {
+            "dc": -40.771376133786845,
+            "rms": 1761.509420269161,
+            "acRms": 1761.0375159505127
+          },
+          {
+            "dc": -40.771376133786845,
+            "rms": 1761.509420269161,
+            "acRms": 1761.0375159505127
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-v1/cache/phrase-comparison/298393a6fc586c90eabf8f18fdfa2dab3a373e6773fcc58b7c450060ffdc86a3/attempt-d3c1098a86bb4165bb11340b2c737f38/three-then-six-phrase.a.matched.wav"
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-v1/cache/prepare-listening/ee99da87cd967e6889a2768285a8a543e87ae9dcea22d4176202737a31c9dad4/attempt-e16f8491720d4571b421ec11c5732c28/prepared/ensemble-phrase.wav",
+      "sha256": "ebf3410420aa595f8c6f174c06e324050e61340d7ad5e2be76aa7a4f4efbaa2d",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 9166,
+        "peakDbfs": -11.065401641019001,
+        "clippedSamples": 0,
+        "rms": 2019.3942103322363,
+        "acRms": 2019.3486182108516,
+        "acRmsDbfs": -24.204772668063153,
+        "perChannel": [
+          {
+            "dc": -10.820342970521542,
+            "rms": 1885.8482991649016,
+            "acRms": 1885.8172572232847
+          },
+          {
+            "dc": 15.848971088435373,
+            "rms": 2144.6403302147332,
+            "acRms": 2144.5817671748955
+          }
+        ]
+      },
+      "gain": 0.8720819674568113,
+      "gainDb": -1.1888538715046633,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 7994,
+        "peakDbfs": -12.253715820712635,
+        "clippedSamples": 0,
+        "rms": 1761.0771644444467,
+        "acRms": 1761.0374063611703,
+        "acRmsDbfs": -25.393627080090635,
+        "perChannel": [
+          {
+            "dc": -9.435979308390023,
+            "rms": 1644.6138775901052,
+            "acRms": 1644.5868078810718
+          },
+          {
+            "dc": 13.821264172335601,
+            "rms": 1870.3023156413574,
+            "acRms": 1870.2512463704181
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-v1/cache/phrase-comparison/298393a6fc586c90eabf8f18fdfa2dab3a373e6773fcc58b7c450060ffdc86a3/attempt-d3c1098a86bb4165bb11340b2c737f38/three-then-six-phrase.b.matched.wav"
+    }
+  ],
+  "listeningReview": null
+}
