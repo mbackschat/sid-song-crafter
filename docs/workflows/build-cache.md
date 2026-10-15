@@ -2,6 +2,29 @@
 
 `build/` is ignored by Git. Keep accepted listening files and working output there. Preserve canonical verification receipts and complete analysis records in [evidence](../../evidence/README.md), with compressed records in Git LFS and readable manifests in ordinary Git. Remove superseded scratch runs only after identifying their retained replacement. Original reference SIDs and reference WAVs stay out of Git and LFS; [the asset registry](../../config/local-assets.json), [download workflow](../setup/local-setup.md), [audio workflow](audio-workflow.md) and study-specific recipes retain their source URLs, fingerprints and exact reproduction settings.
 
+## Automated cleanup and when to run it
+
+Use the [cleanup script](../../scripts/cleanup-build.py) for repeatable local housekeeping. It previews by default; `--apply` executes a newly checked safe selection and writes a fresh report directory under `build/`.
+
+```sh
+python3 scripts/cleanup-build.py
+python3 scripts/cleanup-build.py --apply --protect build/my-active-run
+```
+
+Replace the protection example with the actual active output paths; repeat `--protect` for multiple files or subtrees. Future output paths are valid protections. `--output build/cleanup-my-run` selects a fresh report directory; the default generates a unique timestamped name. Stop writers to selected files before applying. Identity/hash checks detect changes but do not lock independent producers; active code and audio work still need coordination.
+
+Run cleanup after a substantial completed rendering/evidence batch, at musical-case closure, and before handing off a session that produced substantial build output. First preserve the listening deliverables and promote the evidence that must survive working-cache removal. Defer cleanup while rapid iterations still benefit from the same cached stages, and protect any ongoing/deferred work. Once a pass has reclaimed eligible files, a large remainder is not itself a reason to repeat it: unique audio needs a separate retention decision.
+
+The script removes only cache WAVs whose size and SHA-256 match a retained regular WAV outside cache directories. It rechecks both files immediately before deletion and records the retained path. It delegates lossless compression of generated `.json`, `.jsonl`, `.log` and `.txt` files of at least 1 MiB to the existing [cache tool](../../scripts/build-cache.py); decompressed bytes are verified before the original is removed. Existing gzip destinations are skipped. Published listening directories, previous conventionally named cleanup reports, deferred paths, literal `build/` inputs in checked-in listening recipes and the local-asset registry, and explicit protections are excluded from mutation. It keeps all non-cache and unique WAVs and does not follow symlinks. It does not infer protections hidden in arbitrary scripts; declare those paths explicitly.
+
+Each report retains before/after inventories with hashes, the exact selection and configuration pins, an operation journal written before each mutation, and `summary.json` with logical/allocated sizes and whether unselected files stayed unchanged. File allocation and volume free-space changes are separate observations on filesystems with snapshots or clones. A failure can leave already completed safe operations in place; inspect the journal and use a fresh report directory for a later pass. No original SID or audio is added to Git by cleanup.
+
+Removing or compacting cached artifacts invalidates those stages. Restore a compressed text path with `python3 scripts/build-cache.py restore build/path/file.json.gz`, or regenerate it through the owning recipe. Keep stable listening paths outside the computation cache.
+
+### Verified automated pass, 2026-10-15
+
+The [apply report](../../build/cleanup-20261015-rambo-apply/summary.json) records 89 duplicate cache WAVs removed and 86 text files compressed, reclaiming 1,821,550,716 logical bytes. The inventoried build data decreased from 5,529,447,891 to 3,707,897,175 bytes, excluding the current report directory; all unselected pre-existing files retained their hashes. Retained data included 752 WAV files totaling 2,688,550,488 bytes, plus 410,511,133 bytes of gzip archives. These figures describe that pass, before subsequent generation, not a permanent size bound. The [selection](../../build/cleanup-20261015-rambo-apply/selection.json) and [operation journal](../../build/cleanup-20261015-rambo-apply/operations.jsonl) preserve the exact actions and retained copies.
+
 ## Persistent evidence
 
 Install [Git LFS](https://git-lfs.com/) (`brew install git-lfs` on macOS), then initialize it for this checkout and fetch the retained objects from its configured remote:

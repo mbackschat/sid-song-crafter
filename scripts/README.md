@@ -14,7 +14,7 @@ Choose tools by their supported contract. A song or composer name does not itsel
 - [Audio comparisons](../docs/workflows/audio-comparisons.md): PCM inspection and original-preserving A/B windows.
 - [Automated audio assessment](../docs/research/audio-assessment.md): bounded OpenRouter requests through [audio_assessment.py](audio_assessment.py), cached responses and cost receipts; find perception controls, presentation checks and local SongBench probes in the [study tools](studies/README.md). The research guide owns commands, calibration results and limits; experimental results remain separate from musical acceptance.
 - [CPU auditing](../docs/validation/psid-audit.md), [CIA tracing](../docs/validation/cia-tracing.md) and [assembler](sid_assembler.py): execution and timing infrastructure.
-- [Setup](../docs/setup/local-setup.md) and [evidence/cache management](../docs/workflows/build-cache.md): pinned assets, local tools, explicit archive promotion and verified restoration by path or group.
+- [Setup](../docs/setup/local-setup.md) and [evidence/cache management](../docs/workflows/build-cache.md): pinned assets, local tools, explicit archive promotion and verified restoration by path or group. [Automated build cleanup](cleanup-build.py) previews or applies verified cache-audio deduplication and lossless text compression.
 
 ## Specialized composition backends
 
