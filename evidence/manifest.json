@@ -18036,6 +18036,166 @@
       "originalBytes": 2981,
       "sha256": "ccd6e60f2cc770db77e64e338b529a0730e77150a6bf57822491d83046cbb620",
       "bytes": 2981
+    },
+    {
+      "path": "evidence/monty-reference-continuation/candidate/build.json",
+      "originalPath": "build/monty-reference-continuation/candidate/build.json",
+      "group": "monty-reference-continuation",
+      "reason": "Retain the corrected no-ending compiler identity, exact source/tool pins and 40000-call complete store/state proof.",
+      "originalSha256": "4d19dec8e95dbc3411d1de071dcd9a10a68f23d57dec82d913f5b29daa98c182",
+      "originalBytes": 25088,
+      "sha256": "4d19dec8e95dbc3411d1de071dcd9a10a68f23d57dec82d913f5b29daa98c182",
+      "bytes": 25088
+    },
+    {
+      "path": "evidence/monty-reference-continuation/candidate/audit.json",
+      "originalPath": "build/monty-reference-continuation/candidate/audit.json",
+      "group": "monty-reference-continuation",
+      "reason": "Retain the full compiled CPU audit, 373739-store count and bounded PAL execution budget.",
+      "originalSha256": "aabedbe0e616264705df12ee0f0b97f190835e883cfcb03d81bf8da28e5b6d8c",
+      "originalBytes": 3448,
+      "sha256": "aabedbe0e616264705df12ee0f0b97f190835e883cfcb03d81bf8da28e5b6d8c",
+      "bytes": 3448
+    },
+    {
+      "path": "evidence/monty-reference-continuation/candidate/state-checkpoints.json",
+      "originalPath": "build/monty-reference-continuation/candidate/state-checkpoints.json",
+      "group": "monty-reference-continuation",
+      "reason": "Retain all nine complete named compiled-state boundaries including both observed restarts.",
+      "originalSha256": "1435c14c6413ce63b97495b7b3e2eb3a0af27eaac2e8a5f0077da5054c0eb6ce",
+      "originalBytes": 49295,
+      "sha256": "1435c14c6413ce63b97495b7b3e2eb3a0af27eaac2e8a5f0077da5054c0eb6ce",
+      "bytes": 49295
+    },
+    {
+      "path": "evidence/monty-reference-continuation/candidate/writes.json.gz",
+      "originalPath": "build/monty-reference-continuation/candidate/writes.json",
+      "group": "monty-reference-continuation",
+      "reason": "Retain every ordered corrected-candidate init/play store across all 40000 calls; no source binary or audio.",
+      "originalSha256": "fc2375b9bf872e058204ea560891d81c7985944611154e2d439e4c140a2ab6d5",
+      "originalBytes": 35500438,
+      "sha256": "32431d53a1f643e31c8c276c9083d5bf969fa6bd87cc014ceac8e3e7e63dcc9a",
+      "bytes": 1637169
+    },
+    {
+      "path": "evidence/monty-reference-continuation/candidate/player.asm",
+      "originalPath": "build/monty-reference-continuation/candidate/player.asm",
+      "group": "monty-reference-continuation",
+      "reason": "Retain the exact independently generated runtime source and numeric music tables behind the accepted corrected candidate.",
+      "originalSha256": "37d8d34dec5d675ef01e2183d0be6c730dc382974cee9611a2fcec58c702daac",
+      "originalBytes": 37209,
+      "sha256": "37d8d34dec5d675ef01e2183d0be6c730dc382974cee9611a2fcec58c702daac",
+      "bytes": 37209
+    },
+    {
+      "path": "evidence/monty-reference-continuation/candidate/player.listing",
+      "originalPath": "build/monty-reference-continuation/candidate/player.listing",
+      "group": "monty-reference-continuation",
+      "reason": "Retain the independently assembled code listing for review of the corrected candidate; no original driver or audio.",
+      "originalSha256": "cf744f189ddf1c176b625cd46d8134906249759e0f34e2516fe793532d5ca45d",
+      "originalBytes": 50865,
+      "sha256": "cf744f189ddf1c176b625cd46d8134906249759e0f34e2516fe793532d5ca45d",
+      "bytes": 50865
+    },
+    {
+      "path": "evidence/monty-reference-continuation/source-comparison.json",
+      "originalPath": "build/monty-reference-continuation/source-comparison.json",
+      "group": "monty-reference-continuation",
+      "reason": "Bind the complete corrected compiled store projection to the already canonical original source ledger and both raw hashes.",
+      "originalSha256": "5a2f005e9828c0d2b6e30e90a294c7ab7dd6fb58e4d8c97bd6da6dbba0dbb35e",
+      "originalBytes": 488,
+      "sha256": "5a2f005e9828c0d2b6e30e90a294c7ab7dd6fb58e4d8c97bd6da6dbba0dbb35e",
+      "bytes": 488
+    },
+    {
+      "path": "evidence/monty-reference-continuation/vice/study.json",
+      "originalPath": "build/monty-reference-continuation/vice/study.json",
+      "group": "monty-reference-continuation",
+      "reason": "Retain the actual selected PAL VICE proof across calls 17520..17800 and its cadence limits.",
+      "originalSha256": "2d03258d328e2e5e7e6d2625dd23834566293b69bdb6bf72d17786a975daae2c",
+      "originalBytes": 4778,
+      "sha256": "2d03258d328e2e5e7e6d2625dd23834566293b69bdb6bf72d17786a975daae2c",
+      "bytes": 4778
+    },
+    {
+      "path": "evidence/monty-reference-continuation/vice/trace.json.gz",
+      "originalPath": "build/monty-reference-continuation/vice/trace.json",
+      "group": "monty-reference-continuation",
+      "reason": "Retain all observed entry/call records and 2832 selected ordered stores from the corrected-candidate VICE check.",
+      "originalSha256": "dc9ef3f579fecd9531429f89a40b7f54b4f73dc539cbc0afb0cfad015e7f8589",
+      "originalBytes": 13096020,
+      "sha256": "034168b11ea0f1ea01ebc6349945140678b330843c54f9fab550da8b87b7c0ed",
+      "bytes": 400095
+    },
+    {
+      "path": "evidence/monty-reference-continuation/vice/monitor.log.gz",
+      "originalPath": "build/monty-reference-continuation/vice/monitor.log",
+      "group": "monty-reference-continuation",
+      "reason": "Retain lossless monitor registration, checkpoints and independent compiled RAM/code observations; no original payload or samples.",
+      "originalSha256": "866a6112ae73ccf999e06ac043bde308fb91168e4223d0db2f9dda20b81297a2",
+      "originalBytes": 4695497,
+      "sha256": "da1a699132fe633d93256b0eb64b1a79d4b51f43af10c864b5f4e1a11639811c",
+      "bytes": 258319
+    },
+    {
+      "path": "evidence/monty-reference-continuation/vice/process.log.gz",
+      "originalPath": "build/monty-reference-continuation/vice/process.log",
+      "group": "monty-reference-continuation",
+      "reason": "Retain the complete VICE process diagnostics for the corrected-candidate proof, with no original SID or audio.",
+      "originalSha256": "a9b90c997060e8f576e8e65bd429ce77ab71a9a7bb72dbed2bfabb7b290d8a82",
+      "originalBytes": 4902863,
+      "sha256": "48f0d9e42c4e59d3fb37cb028faaa20c0c6baa95f9f36c65c016d667d5ea4107",
+      "bytes": 267465
+    },
+    {
+      "path": "evidence/monty-reference-continuation/vice/command.json",
+      "originalPath": "build/monty-reference-continuation/vice/command.json",
+      "group": "monty-reference-continuation",
+      "reason": "Retain the exact VICE invocation, native target and controlled-host settings.",
+      "originalSha256": "d36b770f8ed19f5bee1f474960ea6bac4da6f4fd412180f74e057cb4ff6e5ca6",
+      "originalBytes": 604,
+      "sha256": "d36b770f8ed19f5bee1f474960ea6bac4da6f4fd412180f74e057cb4ff6e5ca6",
+      "bytes": 604
+    },
+    {
+      "path": "evidence/monty-reference-continuation/vice/commands.mon",
+      "originalPath": "build/monty-reference-continuation/vice/commands.mon",
+      "group": "monty-reference-continuation",
+      "reason": "Retain the exact monitor load/checkpoint/selected-store commands without retaining PRG payloads.",
+      "originalSha256": "9f3f36fbe5c357e6fb801941e0ed852f6eec88c25156661579b4b1525c2032b9",
+      "originalBytes": 534,
+      "sha256": "9f3f36fbe5c357e6fb801941e0ed852f6eec88c25156661579b4b1525c2032b9",
+      "bytes": 534
+    },
+    {
+      "path": "evidence/monty-reference-continuation/tail-check.json",
+      "originalPath": "build/monty-reference-continuation/tail-check.json",
+      "group": "monty-reference-continuation",
+      "reason": "Retain measured continued AC activity in the corrected ending window; not a finite-tail silence claim.",
+      "originalSha256": "630fc4c6c825c7256969ed69adc4cd41b0c991ecfb959c5c23c0c8a2028cd1a2",
+      "originalBytes": 303,
+      "sha256": "630fc4c6c825c7256969ed69adc4cd41b0c991ecfb959c5c23c0c8a2028cd1a2",
+      "bytes": 303
+    },
+    {
+      "path": "evidence/monty-reference-continuation/listening/ending-reference-then-ours.comparison.json",
+      "originalPath": "build/monty-reference-continuation/listening/ending-reference-then-ours.comparison.json",
+      "group": "monty-reference-continuation",
+      "reason": "Retain comparison timing, levels and exact source/candidate/A-B WAV hashes without audio bytes.",
+      "originalSha256": "8380cca0b8ab1648c56fd466c830306b73d18125b6f5c7ad21435046aeda0660",
+      "originalBytes": 2765,
+      "sha256": "8380cca0b8ab1648c56fd466c830306b73d18125b6f5c7ad21435046aeda0660",
+      "bytes": 2765
+    },
+    {
+      "path": "evidence/monty-reference-continuation/reproduction.json",
+      "originalPath": "build/monty-reference-continuation/reproduction.json",
+      "group": "monty-reference-continuation",
+      "reason": "Retain an exact copy of the existing checked-in reproduction/acceptance descriptor, including source/render pins and historical listening scope.",
+      "originalSha256": "5808ed030d2ff7d2c88f7b3934133398ed20a6453d458edf405f76066d382424",
+      "originalBytes": 16655,
+      "sha256": "5808ed030d2ff7d2c88f7b3934133398ed20a6453d458edf405f76066d382424",
+      "bytes": 16655
     }
   ],
   "independentShadesSources": {

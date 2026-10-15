@@ -1,0 +1,19 @@
+radix h
+sidefx off
+dummy off
+bank ram
+fill $0002 $bfff $00
+load "/Users/mbackschat/Projects/c64-sid-skill/build/monty-reference-continuation/vice/payload.prg" 0
+load "/Users/mbackschat/Projects/c64-sid-skill/build/monty-reference-continuation/vice/harness.prg" 0
+r a=$00,x=$00,y=$00,sp=$ff,fl=$24
+r pc=$c000
+until $c035
+trace exec $1010
+trace exec $c03c
+trace store $d400 $d41f if (((@ram:$c101 * $0100) + @ram:$c100) >= $4470) && (((@ram:$c101 * $0100) + @ram:$c100) <= $4588)
+until $c05f
+r
+bank ram
+d $1000 $2000
+m $1000 $24e6
+quit

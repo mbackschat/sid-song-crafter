@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    340.0,
+    355.0
+  ],
+  "window": {
+    "startFrame": 14994000,
+    "endFrame": 15655500,
+    "frames": 661500,
+    "startSeconds": 340.0,
+    "endSeconds": 355.0,
+    "durationSeconds": 15.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-reference-continuation/listening/ending-reference-then-ours.ab.wav",
+    "frames": 1345050,
+    "durationSeconds": 30.5,
+    "sha256": "49fc1a5d2ed68664cb5383049100bd5ee80cf9f8473f352ffd93bc566456bb5e"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 661500
+    },
+    {
+      "label": "silence",
+      "startFrame": 661500,
+      "endFrame": 683550
+    },
+    {
+      "label": "B",
+      "startFrame": 683550,
+      "endFrame": 1345050
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-independent-full/reference/reference.wav",
+      "sha256": "441988b6bfd7f4e5e080753af9fdd30d1f3243884b51f86a4f592c10ebe070d2",
+      "originalFrames": 15655500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 661500,
+        "durationSeconds": 15.0,
+        "peak": 11791,
+        "peakDbfs": -8.877985911855719,
+        "clippedSamples": 0,
+        "rms": 4256.454190102002,
+        "acRms": 4255.803412790664,
+        "acRmsDbfs": -17.729367529206826,
+        "perChannel": [
+          {
+            "dc": -74.42838246409676,
+            "rms": 4256.454190102002,
+            "acRms": 4255.803412790664
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/monty-reference-continuation/reconstructed.wav",
+      "sha256": "9eaa6533d17c9c45bb12d2e96b9b366f1aa6e7a9bdbbb6083d5827f219cff89e",
+      "originalFrames": 15655500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 661500,
+        "durationSeconds": 15.0,
+        "peak": 11945,
+        "peakDbfs": -8.765275617476425,
+        "clippedSamples": 0,
+        "rms": 4341.00693533126,
+        "acRms": 4338.254592481976,
+        "acRmsDbfs": -17.56269799521306,
+        "perChannel": [
+          {
+            "dc": -154.5584142101285,
+            "rms": 4341.00693533126,
+            "acRms": 4338.254592481976
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}
