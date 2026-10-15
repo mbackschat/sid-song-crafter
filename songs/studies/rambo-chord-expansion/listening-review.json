@@ -4,8 +4,8 @@
     "wow, nice!",
     "second half adds useful fullness while keeping the  melody clear"
   ],
-  "verdict": "phrase-accepted-full-song-review-pending",
-  "scope": "The 88\u2013104-second prior-raw-then-expanded-chord comparison is positively reviewed. The listener explicitly hears useful added fullness with a clear melody. No complete-arrangement or new ending verdict is inferred.",
+  "verdict": "arrangement-liked-centered-presentation-pending",
+  "scope": "The 88\u2013104-second phrase is accepted for useful fullness and a clear melody. The complete 225-second arrangement is liked; the listener requests centering the main instrument. No acceptance of the revised mix is inferred.",
   "audition": {
     "schemaVersion": 1,
     "run": {
@@ -45,10 +45,22 @@
       }
     ]
   },
-  "decision": "Retain the sustained third chord tone and raw chip separation as the preferred direction. Present the already verified complete 225-second candidate for full-song listening before closing the Rambo stereo arrangement.",
+  "decision": "Preserve the liked raw arrangement as baseline. Reject whole-chip centering: the required target is the lead centered with independent accompaniment on both sides. Investigate native duplicate-lead allocation, explicit six-voice tradeoffs and same-chip sync/ring phase constraints before a new audition.",
   "modelAssistanceReview": {
     "decision": "No model preference call",
-    "reason": "The controlled in-context comparison now has a direct positive human verdict. Existing model trials are not qualified to judge harmonic fullness, melodic clarity or full-song arrangement acceptance.",
-    "nextCheckpoint": "At full-song feedback and before case closure."
-  }
+    "reason": "Human feedback and the chip-output constraints establish a native allocation question. Existing audio-model trials cannot decide allocation correctness or spatial/musical acceptance.",
+    "nextCheckpoint": "After the centered-presentation audition and before case closure."
+  },
+  "fullSongFeedback": {
+    "date": "2026-10-15",
+    "feedback": "This is really nice, great. One thing: the main instrument seems to be only left. I would like the main one in the middle. Check this",
+    "verdict": "full-arrangement-liked-center-primary-requested",
+    "scope": "The listener likes the complete chord-expanded arrangement but requests the main instrument in the middle. The raw A-left/B-right presentation is not the final spatial choice."
+  },
+  "placementClarifications": [
+    "With centering the main instrument/voice you have more creative freedom to distribute the rest left and right!",
+    "Re: Centering the whole first chip >> that would be bad, not the intention of stereo",
+    "I am not saying: nothing else in center. Go ahead and center others too, if it makes sense. My point: placement must be deliberate choice"
+  ],
+  "placementPrinciple": "Choose each musical role\u2019s spatial position intentionally, then allocate chip resources to support it. A stable centered lead may share the center with bass or other roles when that serves the music. Keep purposeful contrast across the accompaniment; neither automatic whole-chip centering nor a lead-only-center rule expresses the request."
 }

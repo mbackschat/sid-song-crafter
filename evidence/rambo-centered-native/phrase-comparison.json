@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "method": "full-file AC RMS, pooled channel power after subtracting each channel mean; silence and tails included",
+  "matching": "attenuation only",
+  "requestedAcRmsDbfs": null,
+  "targetAcRms": 2943.037275227931,
+  "targetAcRmsDbfs": -20.933083444811494,
+  "peakHeadroomDb": 1.0,
+  "peakLimit": 29203,
+  "sampleRate": 44100,
+  "channels": 2,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-centered-native-v1/cache/phrase-comparison/d6dc855563359abd26d0fc2c05fd377bcd34c80a4f66e8ee542740e682cb2cbf/attempt-9aec071ed22847cc82510bc075a00de7/previous-then-native-centered-lead-phrase.ab.wav",
+    "frames": 1433250,
+    "durationSeconds": 32.5,
+    "sha256": "50238583389e9c1cd2b4e2b0e7d838afff7aae698f3afb3ad16e998fe2a52957"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 705600
+    },
+    {
+      "label": "silence",
+      "startFrame": 705600,
+      "endFrame": 727650
+    },
+    {
+      "label": "B",
+      "startFrame": 727650,
+      "endFrame": 1433250
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-centered-native-v1/cache/prepare-listening/e4aeeaf583d4a4ec0e633c17bc003a8eed8f88f25986fa01d79b5f9680286f62/attempt-4afe1281fcbb42e98614ca2f2a00a90c/prepared/previous-raw-phrase.wav",
+      "sha256": "d9d6787f33546840365d4a5448ddddc9d01f55bcc93965f65ce9db259f8ae90c",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 12699,
+        "peakDbfs": -8.233608235320904,
+        "clippedSamples": 0,
+        "rms": 2943.7767677216016,
+        "acRms": 2943.037275227931,
+        "acRmsDbfs": -20.933083444811494,
+        "perChannel": [
+          {
+            "dc": -83.66512613378684,
+            "rms": 3521.476916410671,
+            "acRms": 3520.4828957803825
+          },
+          {
+            "dc": 41.31169642857143,
+            "rms": 2220.5503019615808,
+            "acRms": 2220.16598192114
+          }
+        ]
+      },
+      "gain": 1.0,
+      "gainDb": 0.0,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 12699,
+        "peakDbfs": -8.233608235320904,
+        "clippedSamples": 0,
+        "rms": 2943.7767677216016,
+        "acRms": 2943.037275227931,
+        "acRmsDbfs": -20.933083444811494,
+        "perChannel": [
+          {
+            "dc": -83.66512613378684,
+            "rms": 3521.476916410671,
+            "acRms": 3520.4828957803825
+          },
+          {
+            "dc": 41.31169642857143,
+            "rms": 2220.5503019615808,
+            "acRms": 2220.16598192114
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-centered-native-v1/cache/phrase-comparison/d6dc855563359abd26d0fc2c05fd377bcd34c80a4f66e8ee542740e682cb2cbf/attempt-9aec071ed22847cc82510bc075a00de7/previous-then-native-centered-lead-phrase.a.matched.wav"
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-centered-native-v1/cache/prepare-listening/e4aeeaf583d4a4ec0e633c17bc003a8eed8f88f25986fa01d79b5f9680286f62/attempt-4afe1281fcbb42e98614ca2f2a00a90c/prepared/native-raw-phrase.wav",
+      "sha256": "e80bf8b702c25e066838e68811cc8951ea0c242a10c5e95ab67d880eea808fca",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 11814,
+        "peakDbfs": -8.861059368759122,
+        "clippedSamples": 0,
+        "rms": 2995.6449650033487,
+        "acRms": 2988.228147986564,
+        "acRmsDbfs": -20.800723652732287,
+        "perChannel": [
+          {
+            "dc": -83.76643140589569,
+            "rms": 3520.893063360433,
+            "acRms": 3519.8964684474936
+          },
+          {
+            "dc": -285.9121697845805,
+            "rms": 2356.075030443686,
+            "acRms": 2338.6628188452664
+          }
+        ]
+      },
+      "gain": 0.9848770339744365,
+      "gainDb": -0.13235979207920434,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 11635,
+        "peakDbfs": -8.993670946739384,
+        "clippedSamples": 0,
+        "rms": 2950.3408415126623,
+        "acRms": 2943.0366273344493,
+        "acRmsDbfs": -20.93308535696257,
+        "perChannel": [
+          {
+            "dc": -82.49965419501133,
+            "rms": 3467.647430118294,
+            "acRms": 3466.6659064097466
+          },
+          {
+            "dc": -281.57910005668936,
+            "rms": 2320.4403596277334,
+            "acRms": 2303.29257216719
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-centered-native-v1/cache/phrase-comparison/d6dc855563359abd26d0fc2c05fd377bcd34c80a4f66e8ee542740e682cb2cbf/attempt-9aec071ed22847cc82510bc075a00de7/previous-then-native-centered-lead-phrase.b.matched.wav"
+    }
+  ],
+  "listeningReview": null
+}

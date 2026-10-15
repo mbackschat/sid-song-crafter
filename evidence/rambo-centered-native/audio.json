@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "normalization": "none",
+  "inputs": [
+    {
+      "label": "previous",
+      "sha256": "8af57282fc55b0153e3d47b6815b29f373184ab238d0207c613d524ec49ccf8d",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 9922500,
+      "durationSeconds": 225.0,
+      "peak": 12699,
+      "peakDbfs": -8.233608235320904,
+      "clippedSamples": 0,
+      "rms": 2776.714758355426,
+      "acRms": 2774.594201285734,
+      "acRmsDbfs": -21.445009213295872,
+      "perChannel": [
+        {
+          "dc": 117.20673368606703,
+          "rms": 3568.0802868530263,
+          "acRms": 3566.154723929939
+        },
+        {
+          "dc": 99.02684736709499,
+          "rms": 1639.8453479241543,
+          "acRms": 1636.8526044238145
+        }
+      ]
+    },
+    {
+      "label": "native",
+      "sha256": "c72cfab792214947717e02f3ef3b931af27af6fcd9dfa789a5189d196fd80e6c",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 9922500,
+      "durationSeconds": 225.0,
+      "peak": 12484,
+      "peakDbfs": -8.381923499328458,
+      "clippedSamples": 0,
+      "rms": 3103.3582302195646,
+      "acRms": 3101.374256084553,
+      "acRmsDbfs": -20.477915147779612,
+      "perChannel": [
+        {
+          "dc": 114.62927619047619,
+          "rms": 3579.054724039666,
+          "acRms": 3577.2185908482998
+        },
+        {
+          "dc": 107.14563255228018,
+          "rms": 2540.085016780415,
+          "acRms": 2537.8242070516494
+        }
+      ]
+    }
+  ],
+  "routing": "Native SID A left and SID B right; source lead on A1 and its copy on B1; no external pan matrix.",
+  "claims": {
+    "sourceExecutionPreserved": true,
+    "primaryPcmIdentity": false,
+    "phaseCoherentCenterEstablished": false,
+    "perceivedCenterEstablished": false
+  },
+  "mainPhrase": {
+    "seconds": [
+      88,
+      104
+    ],
+    "metrics": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 705600,
+      "durationSeconds": 16.0,
+      "peak": 11814,
+      "peakDbfs": -8.861059368759122,
+      "clippedSamples": 0,
+      "rms": 2995.6449650033487,
+      "acRms": 2988.228147986564,
+      "acRmsDbfs": -20.800723652732287,
+      "perChannel": [
+        {
+          "dc": -83.76643140589569,
+          "rms": 3520.893063360433,
+          "acRms": 3519.8964684474936
+        },
+        {
+          "dc": -285.9121697845805,
+          "rms": 2356.075030443686,
+          "acRms": 2338.6628188452664
+        }
+      ]
+    }
+  },
+  "closingBody": {
+    "seconds": [
+      205,
+      211
+    ],
+    "metrics": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 264600,
+      "durationSeconds": 6.0,
+      "peak": 4446,
+      "peakDbfs": -17.349609531934924,
+      "clippedSamples": 0,
+      "rms": 656.2602348235475,
+      "acRms": 641.2416732335524,
+      "acRmsDbfs": -34.168563925637436,
+      "perChannel": [
+        {
+          "dc": 139.21832577475433,
+          "rms": 773.4683680022575,
+          "acRms": 760.8361019750245
+        },
+        {
+          "dc": 139.9695767195767,
+          "rms": 512.9343772074939,
+          "acRms": 493.4675196141912
+        }
+      ]
+    }
+  },
+  "finalTail": [
+    {
+      "label": "previous",
+      "seconds": [
+        224,
+        225
+      ],
+      "metrics": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 44100,
+        "durationSeconds": 1.0,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          },
+          {
+            "dc": 157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "label": "native",
+      "seconds": [
+        224,
+        225
+      ],
+      "metrics": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 44100,
+        "durationSeconds": 1.0,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          },
+          {
+            "dc": 157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    }
+  ],
+  "leadDiagnostic": {
+    "mainPhrase": {
+      "seconds": [
+        88,
+        104
+      ],
+      "sourceAcRms": 1710.4305297511441,
+      "secondaryAcRms": 1710.4607034393323,
+      "secondaryToSourceAcRmsRatio": 1.0000176409901853,
+      "secondaryMinusSourceDb": 0.0001532263423275475,
+      "summedStereoLeadEnergyChangeDb": 3.0103765704867365
+    },
+    "initializedPrefix": {
+      "seconds": [
+        0,
+        104
+      ],
+      "sourceAcRms": 2474.135686503216,
+      "secondaryAcRms": 2473.0345045177264,
+      "secondaryToSourceAcRmsRatio": 0.9995549225567956,
+      "secondaryMinusSourceDb": -0.003866754118430054,
+      "summedStereoLeadEnergyChangeDb": 3.0083670099276176
+    },
+    "warnings": [],
+    "scope": "Independently initialized one-chip voice-1 control-mask diagnostics, not exact dual-render stems or phase proof. The energy change sums separate channel powers, not a coherent mono sum."
+  },
+  "monoFoldDown": {
+    "matrix": [
+      [
+        0.5,
+        0.5
+      ]
+    ],
+    "normalization": "none",
+    "metrics": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 9922500,
+      "durationSeconds": 225.0,
+      "peak": 10732,
+      "peakDbfs": -9.695385419196331,
+      "clippedSamples": 0,
+      "rms": 2270.514510584485,
+      "acRms": 2267.8052725666075,
+      "acRmsDbfs": -23.196883485610297,
+      "perChannel": [
+        {
+          "dc": 110.88457283950618,
+          "rms": 2270.514510584485,
+          "acRms": 2267.8052725666075
+        }
+      ]
+    },
+    "closingBody": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 264600,
+      "durationSeconds": 6.0,
+      "peak": 2932,
+      "peakDbfs": -20.965719379812555,
+      "clippedSamples": 0,
+      "rms": 413.49223673182854,
+      "acRms": 389.21644549075927,
+      "acRmsDbfs": -38.50517505621986,
+      "perChannel": [
+        {
+          "dc": 139.5936545729403,
+          "rms": 413.49223673182854,
+          "acRms": 389.21644549075927
+        }
+      ]
+    },
+    "finalTail": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 44100,
+      "durationSeconds": 1.0,
+      "peak": 157,
+      "peakDbfs": -46.391005651009685,
+      "clippedSamples": 0,
+      "rms": 157.0,
+      "acRms": 0.0,
+      "acRmsDbfs": null,
+      "perChannel": [
+        {
+          "dc": 157.0,
+          "rms": 157.0,
+          "acRms": 0.0
+        }
+      ]
+    },
+    "purpose": "Internal compatibility diagnostic",
+    "sha256": "09ff3d49dadad8cd67d680c59d1192d89c3be7e6baff140175642836a95182b6"
+  },
+  "listeningVerdict": null,
+  "arrangementProof": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-centered-native-v1/cache/prepare-score/6171796775e42a4b4d1a95cf624a10ee6c48d3c345a28fab7535d50e41addbc8/attempt-00ad0e7961a640fe80fd5f67a5de3893/prepared/arrangement-proof.json",
+    "sha256": "af70174139cef5ffb42440289a85ad7b27643eeaa77961c5b33d505355ce6b00"
+  },
+  "sourcePaths": [
+    "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-listening/expanded-chord-raw-full.wav",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-centered-native-v1/cache/candidate-render/cbefb396bdf9a635b4ff1761c6296cf2514e9a6c5e39b13eddcdcc1421c45fdd/attempt-5cf54956b8144e148d2f6026b5ad69cc/render.wav",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-centered-native-v1/cache/source-lead-render/0be7ee0bc5a36e6b526d25a5c1ada424b4749e2cb657059c760d4aff70d5b25c/attempt-5b83ed0cb4f74e1e8cb82e9fb5869bca/render.wav",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-centered-native-v1/cache/secondary-lead-render/ec9984f4f4076877bc9f85d052e7a582d7be190164c2ad272b05a33cf2559cd7/attempt-db8041c683354cdf90353ed9587a065d/render.wav"
+  ],
+  "outputs": {
+    "previous-raw-phrase.wav": {
+      "sha256": "d9d6787f33546840365d4a5448ddddc9d01f55bcc93965f65ce9db259f8ae90c",
+      "gain": 1
+    },
+    "previous-raw-ending.wav": {
+      "sha256": "d599ff8cbb30a339a45c215d6891df030a5f45a07fc2fc2da8e14924b29512cc",
+      "gain": 1
+    },
+    "native-raw-phrase.wav": {
+      "sha256": "e80bf8b702c25e066838e68811cc8951ea0c242a10c5e95ab67d880eea808fca",
+      "gain": 1
+    },
+    "native-raw-ending.wav": {
+      "sha256": "53a8301d2e589d73090583f7160a43b7660ba1b2f0121b149bbc25ba9380e7da",
+      "gain": 1
+    }
+  }
+}

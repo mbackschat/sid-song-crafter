@@ -1,0 +1,528 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "source-pin",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "asset",
+        "songs/rambo-loader.json",
+        "--sha256",
+        "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b",
+        "--output",
+        "{out}/source.json"
+      ],
+      "inputs": [
+        "songs/rambo-loader.json",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "source.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "previous-pin",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "asset",
+        "build/rambo-chord-expansion-listening/expanded-chord-raw-full.wav",
+        "--sha256",
+        "8af57282fc55b0153e3d47b6815b29f373184ab238d0207c613d524ec49ccf8d",
+        "--output",
+        "{out}/pin.json"
+      ],
+      "inputs": [
+        "build/rambo-chord-expansion-listening/expanded-chord-raw-full.wav",
+        "build/rambo-chord-expansion-listening/sources.json",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "pin.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "source-sid-pin",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "asset",
+        "samples/rambo-loader/rambo-loader.sid",
+        "--sha256",
+        "9a6901e656f4de1888f9acc71c80abaf3608b9758b559b306b0b8b6eaa64aecd",
+        "--output",
+        "{out}/pin.json"
+      ],
+      "inputs": [
+        "samples/rambo-loader/rambo-loader.sid",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "pin.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "centered-focused-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "rambo_centered_native*_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "scripts/studies/rambo/prepare-centered-native.py",
+        "scripts/studies/rambo/prepare-ensemble.py",
+        "songs/studies/rambo-centered-native/arrangement.json",
+        "songs/studies/rambo-chord-expansion/arrangement.json",
+        "songs/rambo-loader.json",
+        "scripts/rambo_player.py",
+        "scripts/rambo_programs.py",
+        "scripts/rambo_score.py",
+        "scripts/verify_player.py",
+        "scripts/studies/rambo/prepare-centered-native-listening.py",
+        "scripts/audio_comparison.py",
+        "tests/rambo_centered_native_test.py",
+        "tests/rambo_centered_native_listening_test.py",
+        "scripts/compose-rambo.py",
+        "scripts/sid_assembler.py",
+        "songs/players/rambo.asm",
+        "songs/players/rambo-sound.asm",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        ".tools/test-deps/py65",
+        "scripts/compose-rambo-dual.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "compiler-focused-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "rambo_dual_compiler_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "songs/rambo-loader.json",
+        "scripts/compose-rambo.py",
+        "scripts/rambo_player.py",
+        "scripts/rambo_score.py",
+        "scripts/rambo_programs.py",
+        "scripts/verify_player.py",
+        "scripts/sid_assembler.py",
+        "songs/players/rambo.asm",
+        "songs/players/rambo-sound.asm",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        ".tools/test-deps/py65",
+        "scripts/compose-rambo-dual.py",
+        "tests/rambo_dual_compiler_test.py",
+        "tests/rambo_compiler_test.py",
+        "samples/rambo-loader/rambo-loader.sid"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "prepare-score",
+      "command": [
+        "{python}",
+        "scripts/studies/rambo/prepare-centered-native.py",
+        "songs/studies/rambo-centered-native/arrangement.json",
+        "--output",
+        "{out}/prepared"
+      ],
+      "inputs": [
+        "scripts/studies/rambo/prepare-centered-native.py",
+        "scripts/studies/rambo/prepare-ensemble.py",
+        "songs/studies/rambo-centered-native/arrangement.json",
+        "songs/studies/rambo-chord-expansion/arrangement.json",
+        "songs/rambo-loader.json",
+        "scripts/rambo_player.py",
+        "scripts/rambo_programs.py",
+        "scripts/rambo_score.py",
+        "scripts/verify_player.py"
+      ],
+      "outputs": [
+        "prepared/primary.json",
+        "prepared/secondary.json",
+        "prepared/arrangement-proof.json",
+        "prepared/source-observations.json.gz",
+        "prepared/baseline-observations.json.gz",
+        "prepared/variant-observations.json.gz",
+        "prepared/source-note-events.json.gz",
+        "prepared/baseline-note-events.json.gz",
+        "prepared/variant-note-events.json.gz",
+        "prepared/held-note-events.json.gz"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate-build",
+      "command": [
+        "{python}",
+        "scripts/compose-rambo-dual.py",
+        "{stage:prepare-score}/prepared/primary.json",
+        "{stage:prepare-score}/prepared/secondary.json",
+        "--calls",
+        "11000",
+        "--output",
+        "{out}/candidate"
+      ],
+      "inputs": [
+        "songs/rambo-loader.json",
+        "scripts/compose-rambo.py",
+        "scripts/rambo_player.py",
+        "scripts/rambo_score.py",
+        "scripts/rambo_programs.py",
+        "scripts/verify_player.py",
+        "scripts/sid_assembler.py",
+        "songs/players/rambo.asm",
+        "songs/players/rambo-sound.asm",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        ".tools/test-deps/py65",
+        "scripts/compose-rambo-dual.py",
+        "{stage:prepare-score}/prepared/secondary.json",
+        "{stage:prepare-score}/prepared/primary.json"
+      ],
+      "outputs": [
+        "candidate/reconstructed.sid",
+        "candidate/build.json",
+        "candidate/audit.json",
+        "candidate/writes.json",
+        "candidate/state-checkpoints.json",
+        "candidate/wrapper.asm",
+        "candidate/wrapper.listing",
+        "candidate/primary.asm",
+        "candidate/primary.listing",
+        "candidate/secondary.asm",
+        "candidate/secondary.listing"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate-vice",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:candidate-build}/candidate/reconstructed.sid",
+        "--oracle",
+        "{stage:candidate-build}/candidate/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "10999",
+        "--timeout",
+        "300",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:candidate-build}/candidate/reconstructed.sid",
+        "{stage:candidate-build}/candidate/writes.json",
+        "scripts/trace-sid-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/sid_clock.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib"
+      ],
+      "outputs": [
+        "vice/study.json",
+        "vice/trace.json",
+        "vice/monitor.log",
+        "vice/command.json",
+        "vice/commands.mon"
+      ],
+      "timeoutSeconds": 330,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:candidate-build}/candidate/reconstructed.sid",
+        "{out}/render.wav",
+        "225",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:candidate-build}/candidate/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "secondary-prefix-build",
+      "command": [
+        "{python}",
+        "scripts/compose-rambo.py",
+        "{stage:prepare-score}/prepared/secondary.json",
+        "--calls",
+        "5300",
+        "--output",
+        "{out}/support"
+      ],
+      "inputs": [
+        "scripts/compose-rambo.py",
+        "scripts/rambo_player.py",
+        "scripts/rambo_score.py",
+        "scripts/rambo_programs.py",
+        "scripts/verify_player.py",
+        "scripts/sid_assembler.py",
+        "songs/players/rambo.asm",
+        "songs/players/rambo-sound.asm",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        ".tools/test-deps/py65",
+        "{stage:prepare-score}/prepared/secondary.json"
+      ],
+      "outputs": [
+        "support/reconstructed.sid",
+        "support/build.json",
+        "support/audit.json",
+        "support/writes.json",
+        "support/state-checkpoints.json",
+        "support/player.asm",
+        "support/player.listing"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "source-lead-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "samples/rambo-loader/rambo-loader.sid",
+        "{out}/render.wav",
+        "104",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1",
+        "--voices",
+        "1"
+      ],
+      "inputs": [
+        "samples/rambo-loader/rambo-loader.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "secondary-lead-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:secondary-prefix-build}/support/reconstructed.sid",
+        "{out}/render.wav",
+        "104",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1",
+        "--voices",
+        "1"
+      ],
+      "inputs": [
+        "{stage:secondary-prefix-build}/support/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "prepare-listening",
+      "command": [
+        "{python}",
+        "scripts/studies/rambo/prepare-centered-native-listening.py",
+        "--previous",
+        "build/rambo-chord-expansion-listening/expanded-chord-raw-full.wav",
+        "--native",
+        "{stage:candidate-render}/render.wav",
+        "--source-lead",
+        "{stage:source-lead-render}/render.wav",
+        "--secondary-lead",
+        "{stage:secondary-lead-render}/render.wav",
+        "--proof",
+        "{stage:prepare-score}/prepared/arrangement-proof.json",
+        "--output",
+        "{out}/prepared"
+      ],
+      "inputs": [
+        "scripts/studies/rambo/prepare-centered-native-listening.py",
+        "scripts/audio_comparison.py",
+        "scripts/verify_player.py",
+        "build/rambo-chord-expansion-listening/expanded-chord-raw-full.wav",
+        "{stage:candidate-render}/render.wav",
+        "{stage:source-lead-render}/render.wav",
+        "{stage:secondary-lead-render}/render.wav",
+        "{stage:prepare-score}/prepared/arrangement-proof.json"
+      ],
+      "outputs": [
+        "prepared/previous-raw-full.wav",
+        "prepared/previous-raw-phrase.wav",
+        "prepared/native-raw-phrase.wav",
+        "prepared/previous-raw-ending.wav",
+        "prepared/native-raw-ending.wav",
+        "prepared/native-mono-diagnostic.wav",
+        "prepared/audio.json"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "phrase-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "prepare",
+        "{stage:prepare-listening}/prepared/previous-raw-phrase.wav",
+        "{stage:prepare-listening}/prepared/native-raw-phrase.wav",
+        "{out}/previous-then-native-centered-lead-phrase",
+        "--individual-copies",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:prepare-listening}/prepared/previous-raw-phrase.wav",
+        "{stage:prepare-listening}/prepared/native-raw-phrase.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "previous-then-native-centered-lead-phrase.ab.wav",
+        "previous-then-native-centered-lead-phrase.comparison.json",
+        "previous-then-native-centered-lead-phrase.a.matched.wav",
+        "previous-then-native-centered-lead-phrase.b.matched.wav"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "fullPrevious": "{stage:prepare-listening}/prepared/previous-raw-full.wav",
+    "fullCandidate": "{stage:candidate-render}/render.wav",
+    "phraseComparison": "{stage:phrase-comparison}/previous-then-native-centered-lead-phrase.ab.wav",
+    "audioHealth": "{stage:prepare-listening}/prepared/audio.json",
+    "arrangementProof": "{stage:prepare-score}/prepared/arrangement-proof.json",
+    "primaryDescription": "{stage:prepare-score}/prepared/primary.json",
+    "secondaryDescription": "{stage:prepare-score}/prepared/secondary.json",
+    "candidateSid": "{stage:candidate-build}/candidate/reconstructed.sid",
+    "candidateBuild": "{stage:candidate-build}/candidate/build.json",
+    "candidateAudit": "{stage:candidate-build}/candidate/audit.json",
+    "candidateVice": "{stage:candidate-vice}/vice/study.json",
+    "secondaryPrefixBuild": "{stage:secondary-prefix-build}/support/build.json",
+    "monoDiagnostic": "{stage:prepare-listening}/prepared/native-mono-diagnostic.wav"
+  }
+}

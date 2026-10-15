@@ -1,6 +1,6 @@
 # Rambo held-chord expansion evidence
 
-The [arrangement](../../songs/studies/rambo-chord-expansion/README.md) develops the source's one-oscillator chord serialization by sustaining three source chord tones on SID B alongside the faithful trio on SID A. Only B3's calendar changes relative to the previous six-voice ensemble. The [phrase is accepted](../../songs/studies/rambo-chord-expansion/listening-review.json) for useful added fullness with a clear melody; full-song review remains pending. Music-derived scores, note ledgers and traces retain Martin Galway's [GPLv3 loader terms and attribution](../../samples/rambo-loader/README.md); independently authored reusable tools retain MIT separately.
+The [arrangement](../../songs/studies/rambo-chord-expansion/README.md) develops the source's one-oscillator chord serialization by sustaining three source chord tones on SID B alongside the faithful trio on SID A. Only B3's calendar changes relative to the previous six-voice ensemble. The [phrase is accepted](../../songs/studies/rambo-chord-expansion/listening-review.json) for useful added fullness with a clear melody; the complete arrangement is subsequently liked, with a centered-primary presentation requested. These receipts retain the raw version before that native allocation change. Music-derived scores, note ledgers and traces retain Martin Galway's [GPLv3 loader terms and attribution](../../samples/rambo-loader/README.md); independently authored reusable tools retain MIT separately.
 
 | Question | Retained evidence |
 | --- | --- |

@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "key": "0be7ee0bc5a36e6b526d25a5c1ada424b4749e2cb657059c760d4aff70d5b25c",
+  "fingerprint": {
+    "command": [
+      "{root}/.local/bin/render-sid",
+      "samples/rambo-loader/rambo-loader.sid",
+      "{out}/render.wav",
+      "104",
+      "--clock",
+      "pal",
+      "--subtune",
+      "1",
+      "--voices",
+      "1"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/.tools/test-deps",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": "samples/rambo-loader/rambo-loader.sid",
+        "type": "file",
+        "sha256": "9a6901e656f4de1888f9acc71c80abaf3608b9758b559b306b0b8b6eaa64aecd"
+      },
+      {
+        "path": ".local/bin/render-sid",
+        "type": "file",
+        "sha256": "6fa0a3f03eb190153871e7040c4dc827163e40feda7dd44e982ab34ebb3728d4"
+      },
+      {
+        "path": "scripts/render-sid.cpp",
+        "type": "file",
+        "sha256": "7d4eb7bc14df5dc46bc81c3d2cd8d94a3e1a30b34d96bb7944c09abf662ab73f"
+      },
+      {
+        "path": ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "type": "file",
+        "sha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00"
+      }
+    ],
+    "outputs": [
+      "render.wav",
+      "render.wav.registers.tsv"
+    ],
+    "timeoutSeconds": 120,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "6fa0a3f03eb190153871e7040c4dc827163e40feda7dd44e982ab34ebb3728d4"
+    }
+  },
+  "inputs": [
+    {
+      "path": "samples/rambo-loader/rambo-loader.sid",
+      "type": "file",
+      "sha256": "9a6901e656f4de1888f9acc71c80abaf3608b9758b559b306b0b8b6eaa64aecd"
+    },
+    {
+      "path": ".local/bin/render-sid",
+      "type": "file",
+      "sha256": "6fa0a3f03eb190153871e7040c4dc827163e40feda7dd44e982ab34ebb3728d4"
+    },
+    {
+      "path": "scripts/render-sid.cpp",
+      "type": "file",
+      "sha256": "7d4eb7bc14df5dc46bc81c3d2cd8d94a3e1a30b34d96bb7944c09abf662ab73f"
+    },
+    {
+      "path": ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+      "type": "file",
+      "sha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00"
+    }
+  ],
+  "outputs": [
+    {
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "134d91e631f19e661295f0fa3067cd2554dbd6bb63fc1aaef7ccd1a810d80ea0"
+    },
+    {
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "fbb16315b84bb9ad178a360f5ec6d119c0fda812059ff8f40ac3c9ba45e11ea3"
+    }
+  ],
+  "command": [
+    "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+    "samples/rambo-loader/rambo-loader.sid",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-centered-native-v1/cache/source-lead-render/0be7ee0bc5a36e6b526d25a5c1ada424b4749e2cb657059c760d4aff70d5b25c/attempt-5b83ed0cb4f74e1e8cb82e9fb5869bca/render.wav",
+    "104",
+    "--clock",
+    "pal",
+    "--subtune",
+    "1",
+    "--voices",
+    "1"
+  ],
+  "completedAt": "2026-10-15T13:15:16.702211+00:00",
+  "executionSeconds": 1.5127909160000002
+}

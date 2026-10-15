@@ -1,0 +1,104 @@
+{
+  "primaryUnchanged": true,
+  "lead": {
+    "orderedStoresIdentical": true,
+    "dataAndSoundIdentical": true,
+    "scoreStateIdentical": true,
+    "morseIdentical": true,
+    "noteCount": 635,
+    "storeCount": 22522
+  },
+  "inner": {
+    "orderedStoresIdentical": true,
+    "noteLedgerIdentical": true,
+    "dataAndSoundIdentical": true,
+    "noteCount": 42,
+    "storeCount": 560
+  },
+  "third": {
+    "sourceWindows": [
+      {
+        "startCall": 4914,
+        "endCall": 5554,
+        "entryNode": "voice-3-row-0115",
+        "stopNode": "voice-3-row-0181",
+        "prefix": "sync",
+        "orderedStoresIdentical": true,
+        "dataAndSoundIdentical": true,
+        "noteLedgerIdentical": true,
+        "noteCount": 80
+      },
+      {
+        "startCall": 10034,
+        "endCall": 11000,
+        "entryNode": "voice-3-row-0336",
+        "stopNode": null,
+        "prefix": "ending",
+        "orderedStoresIdentical": true,
+        "dataAndSoundIdentical": true,
+        "noteLedgerIdentical": true,
+        "noteCount": 1
+      }
+    ],
+    "heldRegionsRetained": 37,
+    "heldRegionsReplaced": 5,
+    "heldOrderedStoresIdentical": true,
+    "heldDataAndSoundIdentical": true,
+    "naturalClearCall": 10814
+  },
+  "ending": {
+    "activeMask": 0,
+    "remainingLifetimes": [
+      0,
+      0,
+      0
+    ],
+    "morseActive": false
+  },
+  "schemaVersion": 1,
+  "passed": true,
+  "checkedCalls": 11000,
+  "sourceSha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b",
+  "configSha256": "7e4f32f40aabfc189b7af4966bf45330f4cd9843cdc19dae68d7a89bc65ba3ef",
+  "baselineConfigSha256": "42bdea267f34ca2ed6a551380d400e6e8a2f46c63ff90f2c93ba2f206fde8edf",
+  "baselineSecondarySha256": "a7092c4dff358ef43c799c9dc9e8287f6a7b7714e05acd0d6f2679802ee8b5f8",
+  "primarySha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b",
+  "secondarySha256": "967027cb95f7287c33f70f833bada141c63f8cbda2bd0378fb536add5358ab67",
+  "couplingWindows": [
+    {
+      "kind": "sync",
+      "startCall": 4915,
+      "endCall": 5427
+    },
+    {
+      "kind": "ring",
+      "startCall": 10035,
+      "endCall": 10660
+    }
+  ],
+  "phaseHistoryIdentical": false,
+  "pcmIdentityClaimed": false,
+  "centeredImageEstablished": false,
+  "hardware": {
+    "clock": "PAL",
+    "sidModels": [
+      "MOS6581",
+      "MOS6581"
+    ],
+    "sidBases": [
+      54272,
+      54304
+    ],
+    "callCycles": 19656
+  },
+  "mainPhraseSeconds": [
+    88,
+    104
+  ],
+  "modelAssistance": {
+    "reviewed": "2026-10-15",
+    "decision": "No paid model call. Human spatial feedback and executed oscillator dependencies define this allocation; current model trials cannot approve the center image, handoff timbre or reduced support weight.",
+    "nextCheckpoint": "After the verified matched native-allocation audition and before case closure."
+  },
+  "scope": "Exact source lead software state/stores, accepted inner support and bounded source-modulator programs; CPU budget, VICE execution, rendered balance and centered image require separate checks."
+}

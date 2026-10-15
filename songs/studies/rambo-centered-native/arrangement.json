@@ -1,0 +1,27 @@
+{
+  "format": "rambo-centered-native-v1",
+  "source": "songs/rambo-loader.json",
+  "sourceSha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b",
+  "baselineArrangement": "songs/studies/rambo-chord-expansion/arrangement.json",
+  "baselineArrangementSha256": "42bdea267f34ca2ed6a551380d400e6e8a2f46c63ff90f2c93ba2f206fde8edf",
+  "intent": "Place the original main instrument on both native chip outputs while retaining deliberate accompaniment on each side, preserving the faithful primary and as much of the accepted held chord as the six-oscillator budget allows.",
+  "allocation": [
+    {"chip": "A", "voiceIndex": 0, "role": "complete faithful source lead"},
+    {"chip": "A", "voiceIndex": 1, "role": "complete faithful source bass"},
+    {"chip": "A", "voiceIndex": 2, "role": "complete faithful source arpeggio and lead modulator"},
+    {"chip": "B", "voiceIndex": 0, "role": "complete source lead duplicate including Morse hooks; replaces previous low support anchor"},
+    {"chip": "B", "voiceIndex": 1, "role": "unchanged accepted inner chord support"},
+    {"chip": "B", "voiceIndex": 2, "role": "37 accepted held-third regions, with source arpeggio during the sync handoff and source final modulator gesture"}
+  ],
+  "sourceWindows": [
+    {"startCall": 4914, "endCall": 5554, "entryNode": "voice-3-row-0115", "stopNode": "voice-3-row-0181", "prefix": "sync"},
+    {"startCall": 10034, "endCall": 11000, "entryNode": "voice-3-row-0336", "stopNode": null, "prefix": "ending"}
+  ],
+  "mainPhraseSeconds": [88, 104],
+  "modelAssistance": {
+    "reviewed": "2026-10-15",
+    "decision": "No paid model call. Human spatial feedback and executed oscillator dependencies define this allocation; current model trials cannot approve the center image, handoff timbre or reduced support weight.",
+    "nextCheckpoint": "After the verified matched native-allocation audition and before case closure."
+  },
+  "publication": "The loader-derived score, software entry-state records and note ledgers retain Martin Galway credit and GNU GPL v3 under samples/rambo-loader/README.md. Generated SID and audition audio remain local pending review; reusable tools retain MIT separately."
+}

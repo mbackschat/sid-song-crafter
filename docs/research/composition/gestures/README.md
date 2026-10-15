@@ -8,6 +8,7 @@ A reusable gesture describes a musical action: what to play, when to leave space
 | [CHORD-01: selective chord bursts](chord-bursts.md) | Suggest fuller harmony with one oscillator while leaving melodic space | Original burst arrangement rendered; listening pending |
 | [FORM-01: vary a returning phrase](phrase-variation.md) | Keep the theme recognizable while changing its energy | Returning-phrase variation rendered; listening pending |
 | [FORM-02: organ weight with forward motion](driven-organ-phrasing.md) | Compress holds and gaps while preserving rapid-note clarity | Bach faster opening and complete mono interpretation accepted |
+| [SPACE-01: deliberate left/right movement](stereo-movement.md) | Spatial response or phrase handoff, used sparingly for a stated musical purpose | Design option; listener generally dislikes repeated movement; no demonstration or acceptance yet |
 
 The first [editable interpretation study](../../../../songs/studies/fuer-elise-interpretation/README.md) combines these gestures in two new Für Elise palettes. Its score preserves the opening melody and records original accompaniment; technical checks and listening acceptance remain separate.
 
