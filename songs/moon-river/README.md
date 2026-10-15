@@ -28,7 +28,7 @@ The comparison plays a plain triangle rendering first, then the SID interpretati
 
 On **2026-10-15**, the listener recognized the tune and considered the score acceptable, but rejected the first SID interpretation as bad, too loud and offensive. The first candidate is **musically rejected**; correct execution and recognizable notes do not establish a convincing interpretation. The listener subsequently accepted the mood brief above. The [structured listening record](listening-review.json) retains both verdicts. The listener subsequently called the restrained revision “quite nice” and requested an existing SID version for comparison.
 
-At first audition and again after this feedback, no audio-model call is justified: the [existing perception trials](../../docs/research/audio-assessment.md#use-and-reassess-model-assistance) do not validate mood, musical preference or harmonic-fidelity scoring on this source. The human rejection determines the outcome. Reassess model usefulness after the restrained audition and before closure; model outputs remain experimental supporting signals.
+At first audition and again after this feedback, no audio-model call is justified: the [existing perception trials](../../docs/research/audio-assessment.md#use-and-reassess-model-assistance) do not validate mood, musical preference or harmonic-fidelity scoring on this source. The human rejection determines the outcome. After the external comparison, the human preference also settles which rendition to retain; no model call adds decision-relevant evidence. Reassess before any later revision or case closure; model outputs remain experimental supporting signals.
 
 ## Restrained revision
 
@@ -47,7 +47,7 @@ python3 scripts/publish-listening.py build/moon-river-restrained-reproduction/ru
 
 The restrained render passes 4,947 CPU calls with the same 87 melody, 46 bass and 160 harmony events and stop at call 4,894; sampled standalone VICE checks extend through call 4,910. PCM checks find zero clipping and a quiet ending; the reduced score hash is unchanged. Its full-file AC RMS is approximately 7.96 dB lower than the rejected candidate without post-render gain adjustment, a level measurement rather than a LUFS measurement or musical verdict. The 98.656689-second full WAV has SHA-256 `fa517698dbb9991a25edd295dd7399e7bb43de6d51d2c915662592eaa12cb4cc`.
 
-The listener called this revised WAV **“quite nice”** on 2026-10-15. This is positive feedback on the complete submitted rendition, not a separate verdict on each instrument or an unrestricted claim about other songs. Preserve it as the preferred Moon River candidate while comparing an external SID interpretation.
+The listener called this revised WAV **“quite nice”** on 2026-10-15. This is positive feedback on the complete submitted rendition, not a separate verdict on each instrument or an unrestricted claim about other songs. After hearing Robert Lee Woodyard’s BASIC version, the listener explicitly preferred ours: **“I actually like Our revised version better. nice.”** Preserve the restrained first statement as the accepted interpretation. This preference applies to the two submitted renditions; it does not establish that each changed parameter independently improved the music.
 
 ## First listening package
 

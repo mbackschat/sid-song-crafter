@@ -16,7 +16,7 @@
     "comparison": "build/moon-river-restrained-listening/plain-then-sid.ab.wav",
     "comparisonSha256": "641e7d83ab352e3a31550bf376c10fe23888d0f40e22151d183ff4a85c08b9a8",
     "referenceType": "generated plain triangle rendering of the same reduced score; not the film recording",
-    "listeningVerdict": "positive: quite nice",
+    "listeningVerdict": "accepted first-statement interpretation; preferred over the selected Moon River BASIC reference",
     "musicalIntent": "Intimate, tender and wistful; lighter accompaniment beneath a rounder lead.",
     "scope": "Instrument waveform, envelope, balance and delayed-vibrato revision. Source notes, reduction and constant tempo unchanged; no restored rubato or authored legato claimed.",
     "durationSeconds": 98.65668934240362,
@@ -48,9 +48,16 @@
     "verbatimFeedback": "moon-river-sid.wav is quite nice. Can you find a SID version on the internet?"
   },
   "modelAssistanceReview": {
-    "checkpoint": "positive restrained-revision feedback",
+    "checkpoint": "positive external-comparison feedback",
     "callMade": false,
-    "reason": "Human listener calls the revision quite nice; existing calibrated tasks do not validate mood preference. An external SID comparison is now requested.",
-    "nextCheckpoint": "After external-reference comparison, or before case closure."
+    "reason": "The human listener explicitly prefers our restrained rendition. Current model calibrations do not validate musical preference and would add no decision-relevant evidence.",
+    "nextCheckpoint": "Before any later musical revision or case closure; no further inference needed for this preference."
+  },
+  "externalComparison": {
+    "verbatimFeedback": "I actually like   Our revised version better. nice.",
+    "preferredCandidateSha256": "fa517698dbb9991a25edd295dd7399e7bb43de6d51d2c915662592eaa12cb4cc",
+    "reference": "songs/moon-river/basic-reference.json",
+    "referenceWavSha256": "1ef97a3bedb0bb6c126aa16af48317d59beb39e5f07e05f6ea99604918e6706d",
+    "scope": "Listener preference between these two submitted interpretations; not an isolated instrument verdict or a claim of universal superiority."
   }
 }
