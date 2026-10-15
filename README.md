@@ -31,8 +31,9 @@ These samples are included in the repository and can be played without building 
 | --- | --- | --- | --- | --- |
 | Bach Toccata — complete Toccata section, about 1:28 | [SID](samples/bach-toccata/bach-toccata.sid) | [WAV](samples/bach-toccata/bach-toccata.wav) | [PRG](samples/bach-toccata/bach-toccata.prg) | [SWM](samples/bach-toccata/bach-toccata.swm) |
 | Original instrument mix — 10-second three-voice demo | [SID](samples/instrument-mix/instrument-mix.sid) | [WAV](samples/instrument-mix/instrument-mix.wav) | [PRG](samples/instrument-mix/instrument-mix.prg) | [SWM](samples/instrument-mix/instrument-mix.swm) |
+| Rambo loader — faithful reconstruction, 3:45 | [SID](samples/rambo-loader/rambo-loader.sid) | [WAV](samples/rambo-loader/rambo-loader.wav) | — | [Score and build source](samples/rambo-loader/README.md) |
 
-On GitHub, open a file and use **Download raw file**. Open a SID in a PSID-compatible player, a WAV in a normal audio player, or autostart a PRG in VICE. Both samples target PAL and MOS8580. [Sample details](samples/README.md) include source attribution, hashes and reproduction commands.
+On GitHub, open a file and use **Download raw file**. Open a SID in a PSID-compatible player, a WAV in a normal audio player, or autostart a PRG in VICE. All samples target PAL; Bach and the instrument mix use MOS8580, Rambo uses MOS6581. [Sample details](samples/README.md) include source attribution, hashes and reproduction commands.
 
 After cloning, macOS users can play the included Bach recording directly:
 
@@ -137,7 +138,7 @@ Play the SID or PRG from that new directory. [Regional export](docs/workflows/na
 
 ## Examples
 
-Bach and the original instrument mix have [ready-to-play downloads](#downloads). Moon River and Pink Panther provide recipes and local build instructions; their complete song files are not distributed here.
+Bach, the original instrument mix and the faithful Rambo loader reconstruction have [ready-to-play downloads](#downloads). Moon River and Pink Panther provide recipes and local build instructions; their complete song files are not distributed here.
 
 | Example | Arrangement | Build and play |
 | --- | --- | --- |

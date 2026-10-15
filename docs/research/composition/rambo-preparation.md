@@ -10,6 +10,16 @@ Galway's [primary loader source](https://github.com/MartinGalway/C64_music/blob/
 
 Cached [STIL](https://hvsc.c64.org/download/C64Music/DOCUMENTS/STIL.txt) v85, June 28, 2026, identifies **#1** as the creator-name Morse-code introduction and **#2** as the same loader with corrected Morse code. Its comment discusses the I/E encoding error. STIL separately attributes source compositions in #3, #6, #7, #8, #10, #11 and #21 to Jerry Goldsmith and #22 to Richard Wagner; #11 names the First Patrol/Brian Carter disco version as the covered arrangement. Those credits do not replace the direct loader credit or establish that all 24 subtunes are original Galway compositions. The [attribution receipt](../../../evidence/rambo-intake/attribution.json) retains source, STIL and primary-source hashes, subtune scope and correspondence boundaries.
 
+## Publication and source identity
+
+The [downloadable reconstruction](../../../samples/rambo-loader/README.md) includes our accepted SID/WAV, editable graph, corresponding build sources and a pinned manifest under GPLv3. Galway’s published source and ownership statement supply the scoped licensing basis; see the [game-music review](../game-music-permissions.md). The [source-data checker](../../../scripts/studies/rambo/check-published-score.py) compares the complete reachable graph and referenced banks to the pinned published loader without needing a reference SID. Its [receipt](../../../evidence/rambo-source-license/receipt.json) records 457 graph nodes, 32 banks, three initial data banks and 89 frequency words matched, plus altered-note/bank negative controls. It checks composition identity, not original executable-byte identity or legal ownership.
+
+```sh
+python3 scripts/studies/rambo/check-published-score.py --source .tools/martin-galway-c64/rambload.asm --description songs/rambo-loader.json --falsify --output build/rambo-published-score-check.json
+```
+
+The user requested a separate creative interpretation on 2026-10-15; reconstruction acceptance must not be carried over to that candidate. Preserve this faithful baseline while the new treatment awaits listening.
+
 ## Archive declarations and callable admission
 
 The reusable [header inspector](../../../scripts/sid_intake.py) records declarations separately from admission in the [header receipt](../../../evidence/rambo-intake/header.json).

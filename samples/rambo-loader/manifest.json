@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "sampleId": "rambo-loader",
+  "title": "Rambo: First Blood Part II — loader, independent reconstruction",
+  "packagedDate": "2026-10-15",
+  "pathBase": "repository-root",
+  "assets": {
+    "sid": {
+      "path": "samples/rambo-loader/rambo-loader.sid",
+      "bytes": 6451,
+      "sha256": "9a6901e656f4de1888f9acc71c80abaf3608b9758b559b306b0b8b6eaa64aecd"
+    },
+    "wav": {
+      "path": "samples/rambo-loader/rambo-loader.wav",
+      "bytes": 19845044,
+      "sha256": "8d4ff6dcadc1a6c63332b7227ddb96d566a4a5a8a56491a4c97ce7844b956efb"
+    },
+    "license": {
+      "path": "samples/rambo-loader/LICENSE",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    }
+  },
+  "target": {
+    "clock": "PAL",
+    "clockHz": 985248.6111111111,
+    "sidModel": "MOS6581",
+    "sidCount": 1,
+    "sidBaseAddress": 54272,
+    "callCycles": 19656,
+    "callsPerSecond": 50.12457321485099,
+    "subtune": 1,
+    "supportedCalls": 11000,
+    "standalonePrg": false,
+    "sidWizardModule": false
+  },
+  "audio": {
+    "format": "PCM16 little-endian",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 9922500,
+    "durationSeconds": 225,
+    "gain": 1,
+    "trim": "none",
+    "postprocessing": "none"
+  },
+  "rights": {
+    "license": "GPL-3.0-only",
+    "licensePath": "samples/rambo-loader/LICENSE",
+    "attribution": "Composed, arranged and programmed by Martin Galway, 1985; original header: (C) Ocean Software 1985. Galway states in the upstream README dated 2026-04-14 that he later acquired the music/programming rights from Infogrames.",
+    "modificationNotice": "Independent SID Song Crafter reconstruction, packaged 2026-10-15: editable symbolic score and computed player, not the upstream driver binary.",
+    "scope": "The complete-song package, score and combined generated SID/WAV are distributed under GNU GPL version 3. Independently authored reusable tools retain their separate MIT license when used separately.",
+    "upstreamRepository": "https://github.com/MartinGalway/C64_music",
+    "upstreamRevision": "a458a3687e27a63647bbe41968094f0e6d0965a0",
+    "upstreamFiles": [
+      {
+        "path": "README.md",
+        "bytes": 751,
+        "sha256": "1533e9edda1ae937b9bc862b760566b2f7f865b31d6f726a894c0bee763a8da1",
+        "url": "https://github.com/MartinGalway/C64_music/blob/a458a3687e27a63647bbe41968094f0e6d0965a0/README.md"
+      },
+      {
+        "path": "LICENSE",
+        "bytes": 35149,
+        "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+        "url": "https://github.com/MartinGalway/C64_music/blob/a458a3687e27a63647bbe41968094f0e6d0965a0/LICENSE"
+      },
+      {
+        "path": "rambload.asm",
+        "bytes": 43766,
+        "sha256": "78e7927e6c2e8f7d42c18d2e02bec764a2911d2d8180cec789020bdd60cdbb75",
+        "url": "https://github.com/MartinGalway/C64_music/blob/a458a3687e27a63647bbe41968094f0e6d0965a0/rambload.asm"
+      }
+    ],
+    "excluded": "No downloaded original SID, upstream binary, reference WAV, movie audio or other recording is included."
+  },
+  "correspondingSource": {
+    "preferredEditableScore": "songs/rambo-loader.json",
+    "files": [
+      {
+        "path": "songs/rambo-loader.json",
+        "bytes": 96091,
+        "sha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b"
+      },
+      {
+        "path": "songs/players/rambo.asm",
+        "bytes": 6952,
+        "sha256": "34f2964bbbea71172daa3156f44e77a1cbe79db1f6646b2e4042bfe74cd12b56"
+      },
+      {
+        "path": "songs/players/rambo-sound.asm",
+        "bytes": 4046,
+        "sha256": "8b1cc3e7332eb1c392cc19bbba70bd0fb5c172502b9140aa014fbf0e76af24d2"
+      },
+      {
+        "path": "scripts/compose-rambo.py",
+        "bytes": 17864,
+        "sha256": "6009b07c2e30c3ec19084e796323690dace6138b2af5a51ac1ea4484552490df"
+      },
+      {
+        "path": "scripts/rambo_player.py",
+        "bytes": 12446,
+        "sha256": "c65ab14faaa21781258b1604862c3f47647c958f1489150683b6c9d9c0d53961"
+      },
+      {
+        "path": "scripts/rambo_score.py",
+        "bytes": 13622,
+        "sha256": "dcb443bd596ba3241642d2c49120174b75e1b17fcfb6e6013841265028f3ecbb"
+      },
+      {
+        "path": "scripts/rambo_programs.py",
+        "bytes": 7202,
+        "sha256": "1545db906a34416b34eca426cb67f5783454c1f0427f4233f4da0a502c68b96c"
+      },
+      {
+        "path": "scripts/sid_assembler.py",
+        "bytes": 3305,
+        "sha256": "2a1fecc8cb350c9cfdef292677a0cc54bcf2c0c069009b1222782708d42c287e"
+      },
+      {
+        "path": "scripts/psid_audit.py",
+        "bytes": 10832,
+        "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+      },
+      {
+        "path": "scripts/psid_profile.py",
+        "bytes": 5704,
+        "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+      },
+      {
+        "path": "scripts/sid_audit_host.py",
+        "bytes": 3146,
+        "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+      },
+      {
+        "path": "scripts/sid_clock.py",
+        "bytes": 848,
+        "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+      },
+      {
+        "path": "scripts/verify_player.py",
+        "bytes": 9535,
+        "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+      }
+    ],
+    "externalBuildDependency": {
+      "package": "py65",
+      "version": "1.2.0",
+      "url": "https://pypi.org/project/py65/1.2.0/",
+      "license": "BSD-3-Clause"
+    },
+    "contract": "These tracked files include the complete score, generated-player source templates, compiler and transitive local imports required for the normal verified build. No downloaded original SID or evidence archive is read by this build."
+  },
+  "reproduction": {
+    "workingDirectory": "repository-root",
+    "buildCommand": "PYTHONPATH=.tools/test-deps python3 scripts/compose-rambo.py songs/rambo-loader.json --output build/rambo-public-rebuild",
+    "renderCommand": ".local/bin/render-sid build/rambo-public-rebuild/reconstructed.sid build/rambo-public-rebuild/reconstructed.wav 225 --clock pal --subtune 1",
+    "dependencySetupPath": "README.md",
+    "rendererSetupPath": "docs/workflows/audio-workflow.md",
+    "outputPolicy": "Use a fresh output directory. The full listening recipe also compares an original reference; it is not required to reproduce these independent sample files."
+  },
+  "renderer": {
+    "version": "libsidplayfp 3.1.1 / SIDLite",
+    "powerOnDelay": 0,
+    "batchSize": 19656,
+    "subtune": 1,
+    "clock": "PAL",
+    "voices": [
+      1,
+      2,
+      3
+    ],
+    "historicalExecutableSha256": "1c489b5b032977bdcc16c797e15273b5f657809fe2464f30cc60c885fa0a9a64",
+    "libraryStaticArchiveSha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00",
+    "librarySourceUrl": "https://github.com/libsidplayfp/libsidplayfp/tree/v3.1.1",
+    "historicalSource": {
+      "path": "scripts/render-sid.cpp",
+      "gitRevision": "c31fcdd591e9b463fa7f3863f0308cb2cc245e00",
+      "bytes": 12689,
+      "sha256": "691148f6c1f2e2bb43387b71aae69da951c3f67f082a1809ebf38ae73bed51e3",
+      "url": "https://github.com/mbackschat/sid-song-crafter/blob/c31fcdd591e9b463fa7f3863f0308cb2cc245e00/scripts/render-sid.cpp"
+    },
+    "currentSource": {
+      "path": "scripts/render-sid.cpp",
+      "bytes": 19214,
+      "sha256": "7d4eb7bc14df5dc46bc81c3d2cd8d94a3e1a30b34d96bb7944c09abf662ab73f"
+    },
+    "exactAudioRebuild": "The retained WAV was made with the historical renderer source. Recover it with git show c31fcdd591e9b463fa7f3863f0308cb2cc245e00:scripts/render-sid.cpp and build against the pinned library using the audio workflow. A newer renderer source is not claimed byte-identical."
+  },
+  "verification": {
+    "date": "2026-10-15",
+    "freshCompileSidMatchesRetainedBytes": true,
+    "checkedPlayCalls": 11000,
+    "matchedOrderedStores": 87534,
+    "matchedStateCheckpoints": 10,
+    "retainedBuildReceiptPath": "evidence/rambo-independent-full/build.json",
+    "retainedAudioReceiptPath": "evidence/rambo-independent-full/audio.json",
+    "audioMatchesRetainedReceipt": true,
+    "audioRegenerated": false,
+    "licenseMatchesUpstreamBytes": true,
+    "noClippedSamples": true,
+    "finalSecondAcRms": 0
+  },
+  "listeningStatus": {
+    "date": "2026-10-13",
+    "status": "accepted characteristic phrase and natural ending",
+    "scope": "The listener corrected the phrase response to cannot hear a difference; the ending likewise had no audible difference. This does not claim PCM or hardware identity or a full-song perceptual comparison.",
+    "recordPath": "docs/research/composition/rambo-preparation.md",
+    "section": "independent-compiled-loader-and-musical-delivery"
+  }
+}

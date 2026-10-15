@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "status": "pass",
+  "source": {
+    "path": ".tools/martin-galway-c64/rambload.asm",
+    "bytes": 43766,
+    "sha256": "78e7927e6c2e8f7d42c18d2e02bec764a2911d2d8180cec789020bdd60cdbb75"
+  },
+  "sourceRevision": "a458a3687e27a63647bbe41968094f0e6d0965a0",
+  "sourceUrl": "https://github.com/MartinGalway/C64_music/blob/a458a3687e27a63647bbe41968094f0e6d0965a0/rambload.asm",
+  "description": {
+    "path": "songs/rambo-loader.json",
+    "bytes": 96091,
+    "sha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b"
+  },
+  "checker": {
+    "path": "scripts/studies/rambo/check-published-score.py",
+    "bytes": 11749,
+    "sha256": "dc4b11966b4a9f8c3ef1470c965a59694cd510a914709bf204e02183f4d2de8d"
+  },
+  "comparison": {
+    "graphNodes": 457,
+    "nodesByKind": {
+      "call": 31,
+      "call-transposed": 54,
+      "chord": 26,
+      "code": 4,
+      "frequency": 15,
+      "jump-transposed": 1,
+      "loop": 13,
+      "next": 13,
+      "poke-data": 18,
+      "poke-sound": 15,
+      "pulse": 3,
+      "return": 21,
+      "row": 227,
+      "transpose": 5,
+      "volume": 8,
+      "write-data": 3
+    },
+    "copyBanks": 32,
+    "copyBankBytes": 371,
+    "namedHooks": 4,
+    "initialDataBanks": 3,
+    "initialDataBytes": 147,
+    "frequencyWords": 89,
+    "comparedPublishedDataBytes": 1741,
+    "unresolvedComparedBytes": 0,
+    "differences": 0
+  },
+  "falsification": [
+    {
+      "name": "alter-one-note",
+      "target": "voice-2-row-0002",
+      "rejected": true,
+      "diagnostic": "voice-2-row-0002 sourceNote differs from the published score"
+    },
+    {
+      "name": "alter-one-copy-bank-byte",
+      "target": "data-2b43-29",
+      "rejected": true,
+      "diagnostic": "voice-3-row-0008 copy bank data-2b43-29 differs from the published score"
+    }
+  ],
+  "limits": [
+    "Pinned-source data-directive comparison, not a general assembler or legal adjudication.",
+    "Virtual data addresses ignore instruction lengths; graph edges and hook targets are matched symbolically.",
+    "Source address/opcode annotations are ignored; runtime graph operands and referenced bank contents are compared.",
+    "Hook instruction bodies, Morse letters/codes/frequencies, initial SOUND state and host initialization are not compared.",
+    "No original SID, machine execution, register timing, audio rendering or listening is involved.",
+    "Does not establish historical binary identity, ownership, licence compliance or permission for other subtunes."
+  ]
+}

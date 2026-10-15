@@ -4,6 +4,7 @@ These tools investigate pinned recordings or prepare fixed demonstrations. They 
 
 | Study | Tools | Owning findings |
 | --- | --- | --- |
+| Rambo published-source identity | [Compare loader graph and banks](rambo/check-published-score.py) | [Source identity and GPL-scoped sample](../../docs/research/composition/rambo-preparation.md#publication-and-source-identity) |
 | Moon River | [Prepare pinned piano score and tempo adaptation](moon-river/prepare-source.py), [listening recipe](../../config/listening/moon-river.json) | [Source provenance and full-score preservation](../../docs/research/composition/moon-river-preparation.md), [editable SID interpretation](../../songs/moon-river/README.md) |
 | Pink Panther BASIC | [Guarded lead-width intervention and snapshot check](pink-panther/probe-width.py), [cached diagnostic recipe](../../config/listening/pink-panther-width-diagnostic.json) | [Source instrument and transfer boundaries](../../songs/pink-panther/README.md); BASIC numeric-text edits require a timing check before claiming an isolated intervention |
 | Audio assessment pilot | [Prepare pinned anonymous comparisons](audio-assessment/prepare-trial.py) | [Commands, calibration and results](../../docs/research/audio-assessment.md) |
