@@ -1,0 +1,79 @@
+{
+  "sourceAsset": "moon-river-basic",
+  "sourceSha256": "5aaea7df193b97fd3d63b6e44345007c7991812c90175695b1be8a7e995b15f0",
+  "sourceMatchesPinnedDownload": true,
+  "sourceUrl": "https://www.hvsc.de/download/C64Music/DEMOS/M-R/Moon_River_BASIC.sid",
+  "title": "Moon River",
+  "sidCredit": "Robert Lee Woodyard",
+  "released": "1984 Robert Lee Woodyard",
+  "selection": "User explicitly identified this BASIC SID after rejecting the Clean Up Time reference.",
+  "subtune": 1,
+  "clock": "ntsc",
+  "sidModel": "MOS6581",
+  "targetProvenance": "Declared in RSID header",
+  "rendererSha256": "6fa0a3f03eb190153871e7040c4dc827163e40feda7dd44e982ab34ebb3728d4",
+  "rendererSourceSha256": "7d4eb7bc14df5dc46bc81c3d2cd8d94a3e1a30b34d96bb7944c09abf662ab73f",
+  "rendererVersion": "libsidplayfp 3.1.1 / SIDLite",
+  "roms": {
+    "kernal-901227-03.bin": "83c60d47047d7beab8e5b7bf6f67f80daa088b7a6a27de0d7e016f6484042721",
+    "basic-901226-01.bin": "89878cea0a268734696de11c4bae593eaaa506465d2029d619c0e0cbccdfa62d",
+    "chargen-901225-01.bin": "fd0d53b8480e86163ac98998976c72cc58d5dd8eb824ed7b829774e74213b420"
+  },
+  "audio": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/moon-river-basic-listening/external-moon-river.wav",
+    "sha256": "1ef97a3bedb0bb6c126aa16af48317d59beb39e5f07e05f6ea99604918e6706d",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 3528000,
+    "durationSeconds": 80.0,
+    "peak": 9294,
+    "peakDbfs": -10.944945336337366,
+    "clippedSamples": 0,
+    "rms": 2418.553105438859,
+    "acRms": 2413.7091851500873,
+    "acRmsDbfs": -22.65529983709806,
+    "perChannel": [
+      {
+        "dc": 152.9937689909297,
+        "rms": 2418.553105438859,
+        "acRms": 2413.7091851500873
+      }
+    ]
+  },
+  "gain": 1,
+  "trim": {
+    "sourceStartFrame": 396900,
+    "sourceEndFrameExclusive": 3924900,
+    "startSeconds": 9,
+    "endSeconds": 89,
+    "reason": "Remove machine-start transient and BASIC initialization pause; retain full active passage and silent release tail.",
+    "pcmSliceVerified": true
+  },
+  "fade": null,
+  "scope": "80-second listening file cropped from 110-second ROM-backed capture. Audible activity in raw one-second windows9 through86; final output second has zero AC energy. No fade or time stretching; not a synchronized comparison.",
+  "listeningVerdict": "pending",
+  "rawAudio": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/moon-river-basic-listening/basic-raw.wav",
+    "sha256": "0f3d9d23948a6ff89c3cf83dd55ba3ff002c0ba1e95df1c7c43311f8716388d9",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 4851000,
+    "durationSeconds": 110.0,
+    "peak": 9294,
+    "peakDbfs": -10.944945336337366,
+    "clippedSamples": 0,
+    "rms": 2066.418408323417,
+    "acRms": 2065.333513242986,
+    "acRmsDbfs": -24.009194855222876,
+    "perChannel": [
+      {
+        "dc": 66.95160441146156,
+        "rms": 2066.418408323417,
+        "acRms": 2065.333513242986
+      }
+    ]
+  },
+  "finalSecondAcRms": 0
+}

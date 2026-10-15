@@ -10,6 +10,8 @@ import wave
 ROOT = Path(__file__).resolve().parents[1]
 RENDERER = ROOT / ".local/bin/render-sid"
 RATE = 44100
+ROM_DIR = ROOT / ".tools/vice-headless-3.9/source/data/C64"
+ROM_FILES = ("kernal-901227-03.bin", "basic-901226-01.bin", "chargen-901225-01.bin")
 
 
 def read_samples(path):
@@ -38,6 +40,21 @@ def write_a4_sid(path):
     struct.pack_into(">7HI", header, 4, 2, 0x7C, 0x1000, 0x1000, 0x1000 + len(init), 1, 1, 0)
     struct.pack_into(">H", header, 0x76, 0x24)
     path.write_bytes(header + init + b"\x60")
+
+
+def write_basic_a4_sid(path):
+    # Tokenized BASIC POKEs require the real interpreter rather than the PSID init/play driver.
+    word = round(440 * 2**24 / (14318181.82 / 14))
+    commands = [b"\x97" + f"{0xd400 + offset},{value}".encode()
+                for offset, value in ((24, 15), (0, word & 255), (1, word >> 8), (5, 0), (6, 240), (4, 17))]
+    first_line = b":".join(commands) + b"\0"
+    program = struct.pack("<HH", 0x0801 + 4 + len(first_line), 10) + first_line
+    program += struct.pack("<HH", 0x0801 + len(program) + 8, 20) + b"\x8920\0\0\0"
+    header = bytearray(0x7c)
+    header[:4] = b"RSID"
+    struct.pack_into(">7HI", header, 4, 2, 0x7c, 0, 0, 0, 1, 1, 0)
+    struct.pack_into(">H", header, 0x76, 0x1a)
+    path.write_bytes(header + struct.pack("<H", 0x0801) + program)
 
 
 def write_ntsc_clock_sid(path):
@@ -120,6 +137,95 @@ def write_two_subtune_sid(path, default_song):
 
 
 class HeadlessRenderTest(unittest.TestCase):
+    def test_basic_requires_explicit_roms_before_creating_or_truncating_outputs(self):
+        with tempfile.TemporaryDirectory() as directory:
+            sid, output = Path(directory) / "basic.sid", Path(directory) / "basic.wav"
+            write_basic_a4_sid(sid)
+            trace = Path(str(output) + ".registers.tsv")
+            for existing in (False, True):
+                with self.subTest(existing=existing):
+                    if existing:
+                        output.write_bytes(b"Existing audio")
+                        trace.write_bytes(b"Existing trace")
+                    result = subprocess.run([str(RENDERER), str(sid), str(output), "0.1"],
+                                            capture_output=True, text=True, timeout=20)
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertIn("RSID BASIC requires --rom-dir", result.stderr)
+                    if existing:
+                        self.assertEqual(output.read_bytes(), b"Existing audio")
+                        self.assertEqual(trace.read_bytes(), b"Existing trace")
+                    else:
+                        self.assertFalse(output.exists())
+                        self.assertFalse(trace.exists())
+
+    @unittest.skipUnless(all((ROM_DIR / name).is_file() for name in ROM_FILES), "C64 ROMs are optional local assets")
+    def test_basic_rom_backed_interpreter_produces_the_independent_a4_tone(self):
+        with tempfile.TemporaryDirectory() as directory:
+            sid, output = Path(directory) / "basic.sid", Path(directory) / "basic.wav"
+            write_basic_a4_sid(sid)
+            original = sid.read_bytes()
+            result = subprocess.run([str(RENDERER), str(sid), str(output), "2", "--clock", "ntsc",
+                                     "--rom-dir", str(ROM_DIR)], capture_output=True, text=True, timeout=20)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            samples = read_samples(output)
+            self.assertEqual(len(samples), 2 * RATE)
+            self.assertGreater(rms(samples[RATE:]), 100)
+            self.assertAlmostEqual(frequency(samples[RATE:]), 440, delta=3)
+            self.assertEqual(sid.read_bytes(), original)
+
+    def test_missing_malformed_and_unrecognized_roms_preserve_outputs(self):
+        sizes = (8192, 8192, 4096)
+        cases = [(None, None)] + [(index, size + delta) for index, size in enumerate(sizes) for delta in (-1, 1)]
+        cases += [(index, None) for index in range(3)]
+        with tempfile.TemporaryDirectory() as directory:
+            sid, output = Path(directory) / "basic.sid", Path(directory) / "basic.wav"
+            write_basic_a4_sid(sid)
+            roms = Path(directory) / "roms"
+            roms.mkdir()
+            trace = Path(str(output) + ".registers.tsv")
+            for changed, changed_size in cases:
+                for index, (name, size) in enumerate(zip(ROM_FILES, sizes)):
+                    path = roms / name
+                    path.unlink(missing_ok=True)
+                    if changed != index or changed_size is not None:
+                        path.write_bytes(bytes(changed_size if changed == index else size))
+                for existing in (False, True):
+                    with self.subTest(changed=changed, changed_size=changed_size, existing=existing):
+                        if existing:
+                            output.write_bytes(b"Existing audio")
+                            trace.write_bytes(b"Existing trace")
+                        else:
+                            output.unlink(missing_ok=True)
+                            trace.unlink(missing_ok=True)
+                        result = subprocess.run([str(RENDERER), str(sid), str(output), "0.1", "--rom-dir", str(roms)],
+                                                capture_output=True, text=True, timeout=20)
+                        self.assertNotEqual(result.returncode, 0)
+                        self.assertIn("ROM", result.stderr)
+                        if existing:
+                            self.assertEqual(output.read_bytes(), b"Existing audio")
+                            self.assertEqual(trace.read_bytes(), b"Existing trace")
+                        else:
+                            self.assertFalse(output.exists())
+                            self.assertFalse(trace.exists())
+
+    def test_rom_options_reject_empty_missing_duplicate_and_nonexistent_directories_before_output(self):
+        with tempfile.TemporaryDirectory() as directory:
+            sid, output = Path(directory) / "a4.sid", Path(directory) / "preserved.wav"
+            write_a4_sid(sid)
+            trace = Path(str(output) + ".registers.tsv")
+            cases = [["--rom-dir"], ["--rom-dir", ""], ["--rom-dir", str(Path(directory) / "missing")],
+                     ["--rom-dir", str(ROM_DIR), "--rom-dir", str(ROM_DIR)]]
+            for options in cases:
+                with self.subTest(options=options):
+                    output.write_bytes(b"Existing audio")
+                    trace.write_bytes(b"Existing trace")
+                    result = subprocess.run([str(RENDERER), str(sid), str(output), "0.1", *options],
+                                            capture_output=True, text=True, timeout=20)
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertIn("rom", result.stderr.lower())
+                    self.assertEqual(output.read_bytes(), b"Existing audio")
+                    self.assertEqual(trace.read_bytes(), b"Existing trace")
+
     def test_unknown_model_assumptions_match_declared_model_audio_and_preserve_source_and_fallback(self):
         with tempfile.TemporaryDirectory() as directory:
             sid = Path(directory) / "unknown.sid"

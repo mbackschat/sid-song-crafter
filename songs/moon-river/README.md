@@ -59,14 +59,17 @@ The full source import retains 750 notes; the first-statement view selects 319. 
 
 ## External SID interpretation
 
-After hearing the restrained revision, the user requested an existing SID version. [Clean Up Time on Lemon64](https://www.lemon64.com/game/clean-up-time) credits Karl Hörnell (1986) and identifies **subtune 6** as Moon River, with a catalogue length of 41 seconds. HVSC's STIL agrees. [Listen to the 43-second local capture](../../build/moon-river-external-listening/clean-up-time-moon-river.wav); this is a historical game arrangement, not the score source for our independent rendition. Its tempo, form and instrumentation may differ, so it is not a time-aligned fidelity comparison.
+The selected external reference is **Moon River BASIC**, credited in its RSID header to **Robert Lee Woodyard, 1984**. The user identified `/Volumes/Buffer/retrogames/c64/C64Music/DEMOS/M-R/Moon_River_BASIC.sid`; its bytes match the optional `moon-river-basic` download in the [asset registry](../../config/local-assets.json), SHA-256 `5aaea7df193b97fd3d63b6e44345007c7991812c90175695b1be8a7e995b15f0`. The source declares NTSC and MOS6581. Keep the original SID and its rendered audio local.
 
-The [asset registry](../../config/local-assets.json) pins both `moon-river-clean-up-time` and `moon-river-basic`. The latter is HVSC's `DEMOS/M-R/Moon_River_BASIC.sid`, credited in its RSID header to Robert Lee Woodyard, 1984; it has been downloaded and identified but not rendered here. Keep both SID binaries and all reference audio local. [Render provenance](external-reference.json) records hashes, settings and capture scope for Clean Up Time. Its header leaves the chip model unknown; the explicit MOS6581 assumption follows Lemon64, with PAL timing declared in the header.
+[Listen to the selected BASIC version](../../build/moon-river-basic-listening/external-moon-river.wav), an 80-second listening file with the BASIC initialization pause removed. The user's local HVSC song-length database lists 76.851 seconds; the capture retains the final decay and a quiet tail. Compare with [our preferred rendition](../../build/moon-river-restrained-listening/moon-river-sid.wav) as a different interpretation, not a synchronized reconstruction. [BASIC render provenance](basic-reference.json) retains the input, renderer and ROM fingerprints.
 
 ```sh
-python3 scripts/setup-project.py --only references --include moon-river-clean-up-time
-mkdir -p build/moon-river-external-listening
-.local/bin/render-sid .local/research/moon-river/clean-up-time.sid build/moon-river-external-listening/clean-up-time-moon-river.wav 43 --subtune 6 --clock pal --assume-sid-model MOS6581
+python3 scripts/setup-project.py --only references --include moon-river-basic
+mkdir -p build/moon-river-basic-listening
+.local/bin/render-sid .local/research/moon-river/moon-river-basic.sid build/moon-river-basic-listening/basic-raw.wav 110 --clock ntsc --subtune 1 --rom-dir .tools/vice-headless-3.9/source/data/C64
+ffmpeg -v error -i build/moon-river-basic-listening/basic-raw.wav -af atrim=start_sample=396900:end_sample=3924900,asetpts=PTS-STARTPTS -c:a pcm_s16le build/moon-river-basic-listening/external-moon-river.wav
 ```
 
-The render uses libsidplayfp 3.1.1 / SIDLite, mono PCM16 at 44.1 kHz, unity gain, no trimming and no added fade. The captured duration is not a verified natural ending. Playback is non-silent and unclipped; no comparative listening judgment has yet been recorded.
+This is a BASIC RSID, so playback needs the C64 ROMs as well as SID emulation. Rendering without ROMs initially returned success but produced constant DC, not music. The renderer now requires explicit ROM input for BASIC tunes; see [the audio workflow](../../docs/workflows/audio-workflow.md). PCM validation must check AC energy rather than nonzero sample values.
+
+The earlier [Clean Up Time listing](https://www.lemon64.com/game/clean-up-time) and HVSC STIL identify subtune 6 as Moon River, but the user rejected our rendered result as **not Moon River**. The [retained receipt](external-reference.json) records this conflict; that audio is not a confirmed musical reference. Catalogue metadata helps discover candidates but does not settle audible identity. The discrepancy is unresolved, and no inference that either catalogue or player is at fault has been established.

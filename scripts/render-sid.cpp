@@ -9,6 +9,7 @@
 #include <array>
 #include <cmath>
 #include <cstdint>
+#include <filesystem>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
@@ -100,13 +101,31 @@ static const char *sid_model_name(SidTuneInfo::model_t model) {
     throw std::runtime_error("Unsupported SID model");
 }
 
-enum class RenderOption { Voices, Subtune, Clock, SidModelAssumption };
+template<size_t size>
+static std::array<uint8_t, size> read_rom(const std::string &directory, const char *name) {
+    const std::filesystem::path path = std::filesystem::path(directory) / name;
+    std::ifstream input(path, std::ios::binary | std::ios::ate);
+    if (!input) throw std::runtime_error("Unable to open C64 ROM: " + path.string());
+    if (input.tellg() != static_cast<std::streamoff>(size)) {
+        throw std::runtime_error("C64 ROM must contain exactly " + std::to_string(size) + " bytes: " + path.string());
+    }
+    std::array<uint8_t, size> rom{};
+    input.seekg(0);
+    if (!input.read(reinterpret_cast<char *>(rom.data()), rom.size())) {
+        throw std::runtime_error("Unable to read C64 ROM: " + path.string());
+    }
+    return rom;
+}
+
+enum class RenderOption { Voices, Subtune, Clock, SidModelAssumption, RomDirectory };
 
 struct RenderOptions {
     bool voice_diagnostic = false;
     bool explicit_subtune = false;
     bool explicit_clock = false;
     bool explicit_sid_model = false;
+    bool explicit_rom_directory = false;
+    std::string rom_directory;
     unsigned int subtune = 0;
     SidConfig::c64_model_t clock = SidConfig::PAL;
     SidConfig::sid_model_t assumed_sid_model = SidConfig::MOS8580;
@@ -114,7 +133,7 @@ struct RenderOptions {
 };
 
 static RenderOptions parse_options(int argc, char **argv) {
-    if (argc < 4) throw std::runtime_error("Usage: render-sid INPUT.sid OUTPUT.wav SECONDS [--voices 1,2,3|none] [--subtune N] [--clock pal|ntsc] [--assume-sid-model MOS6581|MOS8580] (default PAL, 0 < seconds <= 600; subtune is one-based; voices is a one-SID control-mask diagnostic; model assumption requires an unknown-model one-SID input)");
+    if (argc < 4) throw std::runtime_error("Usage: render-sid INPUT.sid OUTPUT.wav SECONDS [--voices 1,2,3|none] [--subtune N] [--clock pal|ntsc] [--assume-sid-model MOS6581|MOS8580] [--rom-dir DIRECTORY] (default PAL, 0 < seconds <= 600; subtune is one-based; voices is a one-SID control-mask diagnostic; model assumption requires an unknown-model one-SID input; RSID BASIC requires C64 ROMs)");
     RenderOptions options;
     for (int index = 4; index < argc; index += 2) {
         const std::string name = argv[index];
@@ -123,6 +142,7 @@ static RenderOptions parse_options(int argc, char **argv) {
         else if (name == "--subtune") option = RenderOption::Subtune;
         else if (name == "--clock") option = RenderOption::Clock;
         else if (name == "--assume-sid-model") option = RenderOption::SidModelAssumption;
+        else if (name == "--rom-dir") option = RenderOption::RomDirectory;
         else throw std::runtime_error("Unknown renderer option: " + name);
         if (index + 1 == argc) throw std::runtime_error("Renderer option requires a value: " + name);
         switch (option) {
@@ -154,6 +174,12 @@ static RenderOptions parse_options(int argc, char **argv) {
                 options.explicit_sid_model = true;
                 break;
             }
+            case RenderOption::RomDirectory:
+                if (options.explicit_rom_directory) throw std::runtime_error("Duplicate --rom-dir option");
+                options.rom_directory = argv[index + 1];
+                if (options.rom_directory.empty()) throw std::runtime_error("ROM directory must not be empty");
+                options.explicit_rom_directory = true;
+                break;
         }
     }
     return options;
@@ -181,6 +207,9 @@ int main(int argc, char **argv) {
         }
         if (tune.selectSong(options.subtune) == 0) throw std::runtime_error("Unable to select the SID subtune");
         const SidTuneInfo *tune_info = tune.getInfo();
+        if (tune_info->compatibility() == SidTuneInfo::COMPATIBILITY_BASIC && !options.explicit_rom_directory) {
+            throw std::runtime_error("RSID BASIC requires --rom-dir with C64 KERNAL, BASIC and character ROMs");
+        }
         const SidTuneInfo::clock_t selected_clock = options.clock == SidConfig::PAL ? SidTuneInfo::CLOCK_PAL : SidTuneInfo::CLOCK_NTSC;
         const unsigned int sid_count = tune_info->sidChips();
         if (options.explicit_sid_model) {
@@ -209,6 +238,20 @@ int main(int argc, char **argv) {
         }
         if (options.voice_diagnostic && sid_count != 1) throw std::runtime_error("Voice diagnostics require one SID chip");
         sidplayfp player;
+        if (options.explicit_rom_directory) {
+            const auto kernal = read_rom<8192>(options.rom_directory, "kernal-901227-03.bin");
+            const auto basic = read_rom<8192>(options.rom_directory, "basic-901226-01.bin");
+            const auto chargen = read_rom<4096>(options.rom_directory, "chargen-901225-01.bin");
+            player.setRoms(kernal.data(), basic.data(), chargen.data());
+            const std::array<const char *, 3> descriptions{
+                player.info().kernalDesc(), player.info().basicDesc(), player.info().chargenDesc()
+            };
+            if (std::any_of(descriptions.begin(), descriptions.end(), [](const char *description) {
+                return std::string(description) == "Unknown Rom";
+            })) {
+                throw std::runtime_error("Unrecognized C64 ROM contents in --rom-dir");
+            }
+        }
         SidConfig config = player.config();
         config.frequency = rate;
         config.defaultC64Model = options.clock;
@@ -291,7 +334,12 @@ int main(int argc, char **argv) {
         else if (tune_info->sidModel(0) == SidTuneInfo::SIDMODEL_UNKNOWN || tune_info->sidModel(0) == SidTuneInfo::SIDMODEL_ANY) {
             std::cout << "fallback; declared " << sid_model_name(tune_info->sidModel(0));
         } else std::cout << "declared";
-        std::cout << ")\n";
+        std::cout << ')';
+        if (options.explicit_rom_directory) {
+            std::cout << ", C64 ROMs: " << player.info().kernalDesc() << "; "
+                      << player.info().basicDesc() << "; " << player.info().chargenDesc();
+        }
+        std::cout << '\n';
         return 0;
     } catch (const std::exception &error) {
         std::cerr << error.what() << '\n';
