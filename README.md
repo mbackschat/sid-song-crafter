@@ -14,7 +14,7 @@ The working targets are PAL with one MOS6581/MOS8580 or two matching chips at `$
 
 ## Start here
 
-- [Current interpretation queue](docs/research/study-plan.md#active-score-interpretation-trial): [The Pink Panther Theme complete arrangement](songs/pink-panther/README.md#complete-sourced-arrangement) extends the accepted ensemble palette and tests reuse; the restrained Moon River first statement is accepted. Axel F remains later training material. [Night Transit](songs/night-transit/README.md) is closed as a rejected original composition.
+- [Current interpretation queue](docs/research/study-plan.md#active-score-interpretation-trial): [The Pink Panther Theme complete arrangement](songs/pink-panther/README.md#complete-sourced-arrangement) is accepted throughout, including its ending; the restrained Moon River first statement is accepted. Axel F is next using the [repeatable song routine](docs/workflows/song-workflow.md#repeatable-song-routine). [Night Transit](songs/night-transit/README.md) is closed as a rejected original composition.
 - [Documentation](docs/README.md): setup, composition, audio, validation and architecture guides.
 - [Tool boundaries](scripts/README.md): supported workflows and composition backends, source-specific study tools and compatibility exceptions.
 - [Study plan](docs/research/study-plan.md#delivery-order-and-work-in-progress): finish one musical case through listening and reuse on different musical material before deepening the next; retained preparation covers Flashdance, six master-composer studies and four later pop/theme studies.

@@ -31,7 +31,7 @@ PYTHONPATH=.tools/arrangement-deps python3 scripts/import-midi.py .local/researc
 
 The 2026-10-15 smoke import preserves all 2,113 source notes across the six sounding tracks, with matched positive-duration note pairs and no added trailing rest. The importer checks the source hash and requires every sounding track to remain represented. Its generated loss report retains 25 unmapped controller messages (volume, pan, reverb and chorus), six GM program changes and one instrument-name message. Channel identities and note-off velocities are not represented in common-score v1; the original MIDI retains them. There are no source pitch-bend or sustain-controller messages. Engraved spelling, slurs, articulation marks and repeat notation cannot be recovered from this MIDI alone.
 
-The imported score proves source preservation within that contract. The [audition](../../../songs/pink-panther/README.md) now applies an explicit three-voice reduction and native palette. The first excerpt is positively reviewed; full-form interpretation remains open.
+The imported score proves source preservation within that contract. The [audition](../../../songs/pink-panther/README.md) now applies an explicit three-voice reduction and native palette. The first excerpt and the [complete sourced ensemble interpretation](../../../songs/pink-panther/README.md#complete-sourced-arrangement) are now accepted, including the full version’s ending. This verdict covers the declared PAL MOS8580 three-voice interpretation.
 
 ## Mood and interpretation brief
 

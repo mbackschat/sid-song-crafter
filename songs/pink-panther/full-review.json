@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-15",
-  "status": "complete sourced arrangement rendered and verified; awaiting full-song and ending listening feedback",
+  "status": "accepted complete sourced arrangement and ending; case closed for the declared PAL MOS8580 single-SID scope",
   "source": {
     "assetId": "pink-panther-score",
     "url": "https://www.dongrays.com/midi/archive/tv-film/ppanther.mid",
@@ -353,15 +353,29 @@
     }
   },
   "listening": {
-    "fullSong": null,
-    "ending": null,
-    "scopeOfPriorAcceptance": "Only the previous matched 20-second ensemble-palette trial; not this complete arrangement"
+    "fullSong": "accepted: sound stays engaging throughout",
+    "ending": "accepted: ending works musically",
+    "scopeOfPriorAcceptance": "Only the previous matched 20-second ensemble-palette trial; not this complete arrangement",
+    "review": {
+      "date": "2026-10-15",
+      "file": "build/pink-panther-full-listening/pulse-ensemble-complete.wav",
+      "sha256": "d9f99f1e2523efdb137897f2d70fc48b40dd7f08db5720816836947fcfa723e2",
+      "verbatim": "accepted sound stays engaging throughout, and the ending does work musically",
+      "scope": "Complete published ensemble candidate, including ending; not an original-recording fidelity verdict or approval of other chip/clock/stereo targets."
+    }
   },
   "modelAssistance": {
     "checkpoint": "accepted-palette feedback and full-form revision",
     "decision": "skip",
     "reason": "Retained model calibrations do not validate ensemble vibrancy, complete musical shape or ending completeness; source/execution checks and human listening answer these questions.",
-    "nextCheckpoint": "After full-song feedback and before case closure"
+    "nextCheckpoint": "First representative audition of the next musical case, or a substantive revision to this accepted arrangement.",
+    "closureReview": {
+      "date": "2026-10-15",
+      "checkpoint": "full-song feedback and case closure",
+      "decision": "skip",
+      "reason": "Human full-song and ending acceptance resolves the outstanding musical question. Existing model calibrations do not qualify preference or ending judgments; no new uncertainty justifies a call.",
+      "nextCheckpoint": "First representative audition of the next musical case, or a substantive revision to this accepted arrangement."
+    }
   },
   "workflow": {
     "recipe": "config/listening/pink-panther-full.json",
@@ -421,5 +435,71 @@
       1,
       1
     ]
-  }
+  },
+  "nativeSourceReexport": {
+    "schemaVersion": 1,
+    "source": "pink-panther.swm",
+    "sourceSha256": "ee24e661071d87a4b1fd4fa21e688653dbeefbea153c219bb28c8542796daa8e",
+    "sourceBytes": 5113,
+    "exportSettings": {
+      "title": "Pink Panther complete",
+      "author": "Henry Mancini",
+      "released": "2026",
+      "sidModel": "MOS8580",
+      "clock": "pal"
+    },
+    "toolchain": {
+      "sidWizardVersion": "1.97",
+      "sidWizardArchiveUrl": "https://csdb.dk/getinternalfile.php/281063/SID-Wizard-1.97-sources-examples.tar.gz",
+      "sidWizardArchiveSha256": "aeb265f4a778b2acb5aad13e8e98af882888292f749f29f4d18cbf49850e57bc",
+      "assemblerVersion": "64tass 1.60.3243",
+      "assemblerArchiveUrl": "https://downloads.sourceforge.net/project/tass64/source/64tass-1.60.3243-src.zip",
+      "assemblerArchiveSha256": "9d83be3d23a2c55e085b7c7a7856c2f96080447ea120a6a8c21a217ed76427f0",
+      "exporterSha256": "02b3ad16fbe59bdd9d3fcbe77f7a9be7535dbe109fdbf0c7d9e2753896b3ad89",
+      "labelsSha256": "ebc2234576a5a98b07d570c93e0838c1da9d9f0aa6d669e5c1ae80ae32f90b2a",
+      "sourceModified": false
+    },
+    "sidSha256": "3a7ce4b887733903fba2748de9d5a35ffb19d5b2d44d1dd20ebfb2268b38b83c",
+    "prgSha256": "1ee5f70fd46e2168ef72333e64af582e645043988da36231e73af09a248c23bf",
+    "verifiedAgainstAcceptedBuild": true,
+    "verification": "Fresh export from copied SWM only; no MIDI, projection recipe, original song build or cached export used by exporter. Compared complete SID and PRG bytes to accepted build.",
+    "repositoryRevision": "31f73b99a5a75ad545694dc0d52790b240aaea77",
+    "wrapperFiles": {
+      "scripts/export-sidwizard.py": "26f271749db1de69dce53e95b35e74703b5d0625eae865423ded594a5e331c40",
+      "scripts/sid_clock.py": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48",
+      "scripts/verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    },
+    "cpuImplementationFiles": {
+      ".tools/test-deps/py65/__init__.py": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc",
+      ".tools/test-deps/py65/assembler.py": "8e92b5249c1bedcbac26d03a64ab3d35852914dae005d5abf87a275a1d20a383",
+      ".tools/test-deps/py65/compat.py": "fc140526c2f0b41d5b8cd67415273093c156d6d4b9d98c3f9421aa7e0f0d82c4",
+      ".tools/test-deps/py65/devices/__init__.py": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc",
+      ".tools/test-deps/py65/devices/mpu6502.py": "15d93835b4f279b702270d9a0b417938291347ec57cc12d9e0307cd344d381fe",
+      ".tools/test-deps/py65/devices/mpu65c02.py": "dfc5adcd63b82aaa95e5a4ae2a000af1c19fe7188575f41d70212542ec7694fb",
+      ".tools/test-deps/py65/devices/mpu65org16.py": "9a2685c84444dac43873855b1bb5c54e30938368fcc89ba3a9a78b389044de72",
+      ".tools/test-deps/py65/disassembler.py": "b8cca0c23ef69dcf88b6dccb08582e4a4d088a561a04c833acb37b3742cdcccc",
+      ".tools/test-deps/py65/memory.py": "4bba749fe35ed9b9912a7da72eb74035d62a21a5b5895dd6c343f7ce25609cc8",
+      ".tools/test-deps/py65/monitor.py": "36cf20d850f9c5ab099814fe8f620f13f83faaacc0a14d827e1ff00e4ed5e11e",
+      ".tools/test-deps/py65/tests/__init__.py": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc",
+      ".tools/test-deps/py65/tests/devices/__init__.py": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc",
+      ".tools/test-deps/py65/tests/devices/test_mpu6502.py": "0ca74be9e0702f15c9be52517c068c21bcd8460af7496d57e151304a13d83558",
+      ".tools/test-deps/py65/tests/devices/test_mpu65c02.py": "920c1cbf296bab3caabda3ad779f4044ff6c8b806989e3c5282a3c8e77d10694",
+      ".tools/test-deps/py65/tests/end_to_end.py": "83c5237875784d7a24b3c1600f9ef465db47d0b62667ef18795494a2544f289e",
+      ".tools/test-deps/py65/tests/test_assembler.py": "41c10c74ad05020874c3a0b7e8430a0994b10eadb7c56c04aa526886a4ffd805",
+      ".tools/test-deps/py65/tests/test_disassembler.py": "8e68441e33110fbdbe182de1e4be7d2c644ac1f35918b252154654331fd687be",
+      ".tools/test-deps/py65/tests/test_memory.py": "86c5f48a03f4327fcc614841de8e4f835557980588c481e40c4d27dccb1940f7",
+      ".tools/test-deps/py65/tests/test_monitor.py": "bcf7cb673853f75f219c3d0df7f4d0448f92fbf32de6f952da30d54478152c1b",
+      ".tools/test-deps/py65/tests/utils/__init__.py": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc",
+      ".tools/test-deps/py65/tests/utils/test_addressing.py": "45a118b610dc15a8529dd0dd401349f05c39bbd2172835f01c205d0158efcbcd",
+      ".tools/test-deps/py65/tests/utils/test_console.py": "a07e911d2a1e6cc0439b8fb717c871dc2d651e041d5d4a511ce3acd90e90a063",
+      ".tools/test-deps/py65/tests/utils/test_conversions.py": "691afa3f74134bdebef8087768222f4bebced78fd740d67a422c37e2f2bcfb52",
+      ".tools/test-deps/py65/tests/utils/test_devices.py": "8ab80e6da32609f0461eaa7270fde00d1fbd1b3d7a1b63e3444f176dad85ab67",
+      ".tools/test-deps/py65/utils/__init__.py": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc",
+      ".tools/test-deps/py65/utils/addressing.py": "3c5cb6555dc983a7990d4a739a5c4f08f7b7cd5549fafea77208fa740d6a46e1",
+      ".tools/test-deps/py65/utils/console.py": "2fb0386f87b82f541dcea6350654f1017d65cacf6ed7ea7335e0caa31201ee95",
+      ".tools/test-deps/py65/utils/conversions.py": "448b8aa2cc59aa71a6a644a5dd93051ab4b2def2ae720c4991c0e54f31a4eaa9",
+      ".tools/test-deps/py65/utils/devices.py": "fca3864bebcf1db7dbc13014487ad7091499d85c8cb14ca7288c5fdc63de6a0e"
+    }
+  },
+  "verificationContext": "Verification fields preserve technical receipts prepared before listener feedback; their pending-acceptance wording is historical. Current full-song and ending acceptance is recorded in listening and status."
 }

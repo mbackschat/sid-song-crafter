@@ -12,6 +12,16 @@ Establish the intended mood from the brief and a relevant performance or documen
 
 Present the source recording or a clearly labelled plain rendering of the same retained score alongside each SID audition. Judge source preservation and artistic interpretation separately. Reuse the existing repertoire and recipe tools, measure execution effort honestly, and require listening acceptance before claiming musical productivity.
 
+## Repeatable song routine
+
+1. **Establish the musical target.** Identify the score edition, complete form and ending; research the intended mood. Source selection and interpretation require judgment. Preserve the original separately with its URL and fingerprint.
+2. **Configure the reduction.** Reuse the importer and declare source parts, spans, omissions and single- or dual-SID roles. Automated accounting preserves the complete source and checks every retained or omitted event; choosing what the listener should hear remains a musical decision.
+3. **Select the sound.** Retrieve the established master-study repertoire first, check listening scope and driver constraints, then choose instruments, articulation and effects for the brief. Use a representative source-backed audition to test the palette before extending the complete form.
+4. **Execute one recipe.** The [listening runner](listening-package.md) prepares, builds, audits, renders, checks standalone playback and endings, and creates labelled comparisons. Cache unchanged stages by verified inputs and outputs; use the existing publisher for stable listening files.
+5. **Review and retain.** Human feedback settles musical fit. Record the verdict with the reviewed file hash, fix only demonstrated gaps, and retain reusable findings and code. Review optional model assistance at the required checkpoints without treating it as an artistic authority.
+
+For the next song, change source/import mappings, reduction, palette and recipe configuration before considering new infrastructure. Source compatibility, voice allocation, phrasing and instrument balance are not automatically solved. Pink Panther required two shared-tool extensions for explicit event omissions and repeat-aware storage; those cases now have reusable support. Its accepted complete song demonstrates musical reuse, while its roughly 161-second package execution and 0.49-second unchanged repeat measure execution only, not total production effort. See the [case evidence](../../songs/pink-panther/README.md#complete-sourced-arrangement). Measure exceptional investigation/implementation separately on the next case; do not claim a total productivity gain until comparable effort has been measured.
+
 ## Prepare a multitrack score audition
 
 Use [prepare-score-audition.py](../../scripts/prepare-score-audition.py) when an existing MIDI import recipe has more parts than a three-voice audition needs. The [Pink Panther projection](../../songs/pink-panther/reduction.json) is a worked configuration; its [listening recipe](../../config/listening/pink-panther-theme.json) handles the rest of the pipeline.
