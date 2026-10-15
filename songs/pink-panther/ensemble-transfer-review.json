@@ -1,6 +1,6 @@
 {
   "date": "2026-10-15",
-  "status": "rendered ensemble-palette trial; listening pending",
+  "status": "listening accepted for vibrancy and melody clarity in the matched 20-second audition",
   "hypothesis": "With the static lead preserved, does replacing triangle support with the external source-specific narrow-pulse backing patch recover useful ensemble vibrancy?",
   "palette": "songs/pink-panther/ensemble-pulse.json",
   "baselinePalette": "songs/pink-panther/basic-inspired.json",
@@ -99,8 +99,8 @@
   },
   "modelAssistanceReview": {
     "callMade": false,
-    "reason": "Post-revision: native register, score and PCM checks verify the bounded backing substitution. Current audio-model calibrations cannot settle desired vibrancy or balance; focused human comparison is ready.",
-    "nextCheckpoint": "After listening feedback or before closure."
+    "reason": "Post-feedback: listener accepts the bounded ensemble improvement; source/register guards verify its scope. No unresolved model-eligible question justifies an additional call.",
+    "nextCheckpoint": "First full-form audition, subsequent revision, or case closure."
   },
   "reference": {
     "audio": {
@@ -153,5 +153,14 @@
     },
     "endingAcRms": 0.0,
     "cpuCalls": 1921
-  }
+  },
+  "listenerFeedback": {
+    "date": "2026-10-15",
+    "verbatim": "the second half recovers useful vibrancy while keeping the melody clear",
+    "comparisonPath": "build/pink-panther-ensemble-listening/baseline-then-ensemble.level-matched.ab.wav",
+    "comparisonSha256": "478017d09ac8fa542e6201d160c2055ad0fe03aace40583d4e85bcf3e5e39513",
+    "candidateSha256": "6311e927994e615385987f02dd5075cd3fe00f81055272d2075e73f83ae7a7c8",
+    "scope": "Second 20-second half of the overall-level-matched comparison; supports this ensemble palette in the current arrangement. Does not establish complete-song/ending acceptance or a particular physical beating mechanism."
+  },
+  "selection": "Preferred working palette for continuing the Pink Panther interpretation; preserve previous auditions."
 }
