@@ -1,0 +1,157 @@
+{
+  "date": "2026-10-15",
+  "status": "rendered ensemble-palette trial; listening pending",
+  "hypothesis": "With the static lead preserved, does replacing triangle support with the external source-specific narrow-pulse backing patch recover useful ensemble vibrancy?",
+  "palette": "songs/pink-panther/ensemble-pulse.json",
+  "baselinePalette": "songs/pink-panther/basic-inspired.json",
+  "contract": {
+    "schemaVersion": 1,
+    "scope": "Source-specific ensemble-palette experiment supporting the master-study repertoire: replace only the backing patches over the preserved D W Barnes reduction",
+    "sameSourceSha256": "2ee1204f46a5972fb03dfffe624ada8f2feb45a43465ccac995c6204bb62254d",
+    "sameNativeSchedule": true,
+    "sameNativeEvents": true,
+    "leadRegistersIdentical": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "allRolePitchAndGateSchedulesIdentical": true,
+    "sharedSidControlsIdentical": true,
+    "framesChecked": 1921,
+    "backingBody": {
+      "controlOn": "41",
+      "controlOff": "40",
+      "pulseWidth": "f37",
+      "ad": "0a",
+      "sr": "29",
+      "pulseFramesChecked": {
+        "bass": 1877,
+        "harmony": 1891
+      },
+      "noPwmVibratoOrFilter": true
+    },
+    "candidateFrameSha256": "c6dcb8249c5d5bb7c36ca12f25136acd074606c23bb17ce14b85855c5856131b",
+    "limitations": "This changes complete backing patches, including decay/release; it does not isolate waveform alone. Native TEST first frames, note/gate scheduling and PAL MOS8580 target remain. The external BASIC accompaniment, interpreter articulation, score and NTSC MOS6581 rendering are not reconstructed. It does not prove beating as a cause, equal source arrangement or musical acceptance."
+  },
+  "fullVice": {
+    "reference": {
+      "checkpoints": 1922,
+      "firstCompletedCall": 0,
+      "lastCompletedCall": 1921,
+      "allCallsChecked": true,
+      "maximumAbsoluteCycleError": 4,
+      "prgSha256": "3fe0723a45a013461555868659ce4b530663bfd709c3f72b70112c2230fa8d2f",
+      "writesSha256": "38ebc282551565d91d95365c7f8d7ccfe90c526e3d3b98564a630ffe1e7298ab"
+    },
+    "candidate": {
+      "checkpoints": 1922,
+      "firstCompletedCall": 0,
+      "lastCompletedCall": 1921,
+      "allCallsChecked": true,
+      "maximumAbsoluteCycleError": 3,
+      "prgSha256": "496e9fe727335507540af3e46af27110b5ae0c93c4acd49ddd9194c43fb8cea0",
+      "writesSha256": "250ee3d207bfc9da546453da227dc49649c0f0bf90775437ef7b53bf0273142d"
+    }
+  },
+  "comparison": {
+    "order": [
+      "triangle backing baseline",
+      "pulse backing candidate"
+    ],
+    "openingGain": [
+      1.0,
+      0.4981707686631144
+    ],
+    "openingGainDb": [
+      0.0,
+      -6.052435185960357
+    ],
+    "openingMatching": "full-clip AC RMS; attenuation only; each mix relative balance preserved",
+    "leadIdentityScope": "Lead register identity is verified before comparison gain; matched halves apply a different global scalar to each complete mix",
+    "endingGain": [
+      1,
+      1
+    ],
+    "endingGainDb": [
+      0,
+      0
+    ],
+    "fullFilesGain": [
+      1,
+      1
+    ],
+    "path": "build/pink-panther-ensemble-listening/baseline-then-ensemble.level-matched.ab.wav",
+    "sha256": "478017d09ac8fa542e6201d160c2055ad0fe03aace40583d4e85bcf3e5e39513",
+    "durationSeconds": 40.5
+  },
+  "fullReport": {
+    "run": "build/pink-panther-ensemble-transfer/run.json",
+    "deliverable": "trial-report",
+    "sha256": "7a6a3a20cbf26f54f0272278b4a739b7e59c41b1c93b35c23087f550d688210b"
+  },
+  "cacheRepeat": {
+    "allStagesReused": true,
+    "wallSeconds": 0.46396745899999997
+  },
+  "modelAssistanceReview": {
+    "callMade": false,
+    "reason": "Post-revision: native register, score and PCM checks verify the bounded backing substitution. Current audio-model calibrations cannot settle desired vibrancy or balance; focused human comparison is ready.",
+    "nextCheckpoint": "After listening feedback or before closure."
+  },
+  "reference": {
+    "audio": {
+      "path": "build/pink-panther-ensemble-listening/static-lead-triangle-backing.wav",
+      "sha256": "15555fe53683c62ea3501794e2d8c1f1249f03c401cebbd9669b88b72b16c03f",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1688461,
+      "durationSeconds": 38.28709750566893,
+      "peak": 11497,
+      "peakDbfs": -9.097308071977062,
+      "clippedSamples": 0,
+      "rms": 1766.0958604546468,
+      "acRms": 1519.5567583142313,
+      "acRmsDbfs": -26.674660170436717,
+      "perChannel": [
+        {
+          "dc": -900.0232477978467,
+          "rms": 1766.0958604546468,
+          "acRms": 1519.5567583142313
+        }
+      ]
+    },
+    "endingAcRms": 0.0,
+    "cpuCalls": 1921
+  },
+  "candidate": {
+    "audio": {
+      "path": "build/pink-panther-ensemble-listening/static-lead-pulse-ensemble.wav",
+      "sha256": "6311e927994e615385987f02dd5075cd3fe00f81055272d2075e73f83ae7a7c8",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1688461,
+      "durationSeconds": 38.28709750566893,
+      "peak": 13042,
+      "peakDbfs": -8.002114781765544,
+      "clippedSamples": 0,
+      "rms": 4179.585991603027,
+      "acRms": 2986.672071352427,
+      "acRmsDbfs": -20.80524788233342,
+      "perChannel": [
+        {
+          "dc": -2923.8209588495083,
+          "rms": 4179.585991603027,
+          "acRms": 2986.672071352427
+        }
+      ]
+    },
+    "endingAcRms": 0.0,
+    "cpuCalls": 1921
+  }
+}

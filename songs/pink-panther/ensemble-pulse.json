@@ -1,0 +1,98 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score.json",
+  "title": "Pink Panther sly theme",
+  "author": "Henry Mancini",
+  "authorinfo": "D W BARNES SCORE: SID INTERPRETATION",
+  "released": "2026",
+  "sidCount": 1,
+  "sidModel": "MOS8580",
+  "clock": "pal",
+  "timingPolicy": "retain-full-pitch",
+  "instruments": {
+    "lead": {
+      "name": "PNTHPULS",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0922",
+      "frame1": "09",
+      "vibrato": "00",
+      "vibrato_delay": 0,
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "8f",
+          "37",
+          "00"
+        ]
+      ],
+      "filter": []
+    },
+    "bass": {
+      "name": "PNTHBASS",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0a29",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "8f",
+          "37",
+          "00"
+        ]
+      ],
+      "filter": [],
+      "vibrato": "00",
+      "vibrato_delay": 0
+    },
+    "harmony": {
+      "name": "PNTHCOMP",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0a29",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "8f",
+          "37",
+          "00"
+        ]
+      ],
+      "filter": [],
+      "vibrato": "00",
+      "vibrato_delay": 0
+    }
+  },
+  "sections": [
+    {
+      "name": "Chromatic pickup and four theme phrases",
+      "startBeat": 0,
+      "endBeat": 64.33333333333333,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    }
+  ]
+}
