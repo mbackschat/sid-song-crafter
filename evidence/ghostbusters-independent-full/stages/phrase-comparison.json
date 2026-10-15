@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "key": "39cca6eb0c30bfee7c4f8526b74b4c9a4120599f459e664a1c5f2b0c370723c8",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "scripts/compare-audio.py",
+      "window",
+      "{stage:reference-render}/render.wav",
+      "{stage:candidate-render}/render.wav",
+      "{out}/phrase-reference-then-ours",
+      "--start-seconds",
+      "16",
+      "--end-seconds",
+      "32"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": "{stage:reference-render}/render.wav",
+        "type": "file",
+        "sha256": "91360cff28fcb4610edbe5425662ace00aa95b186ef67705f6b81079db784f1b"
+      },
+      {
+        "path": "{stage:candidate-render}/render.wav",
+        "type": "file",
+        "sha256": "72f818806173aa93909b11739ccd5a297ca357d7c1e357d4d81252bd75032019"
+      },
+      {
+        "path": "scripts/compare-audio.py",
+        "type": "file",
+        "sha256": "fe8dc975c6bae65a17e85e56f87c3e720dfef7d6654cf8f593b48bb1572b8c96"
+      },
+      {
+        "path": "scripts/audio_comparison.py",
+        "type": "file",
+        "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+      }
+    ],
+    "outputs": [
+      "phrase-reference-then-ours.ab.wav",
+      "phrase-reference-then-ours.comparison.json"
+    ],
+    "timeoutSeconds": 120,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": "{stage:reference-render}/render.wav",
+      "type": "file",
+      "sha256": "91360cff28fcb4610edbe5425662ace00aa95b186ef67705f6b81079db784f1b"
+    },
+    {
+      "path": "{stage:candidate-render}/render.wav",
+      "type": "file",
+      "sha256": "72f818806173aa93909b11739ccd5a297ca357d7c1e357d4d81252bd75032019"
+    },
+    {
+      "path": "scripts/compare-audio.py",
+      "type": "file",
+      "sha256": "fe8dc975c6bae65a17e85e56f87c3e720dfef7d6654cf8f593b48bb1572b8c96"
+    },
+    {
+      "path": "scripts/audio_comparison.py",
+      "type": "file",
+      "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+    }
+  ],
+  "outputs": [
+    {
+      "relativePath": "phrase-reference-then-ours.ab.wav",
+      "type": "file",
+      "sha256": "c13692985b60a1e9f3483eba179749283fc7ef6dc841bc721c0c0f0bc8692360"
+    },
+    {
+      "relativePath": "phrase-reference-then-ours.comparison.json",
+      "type": "file",
+      "sha256": "013b1d3516fecc3df83372e2d0dfeacad20cd52ec3be66b445feeb11af08a401"
+    }
+  ],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "scripts/compare-audio.py",
+    "window",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/cache/reference-render/603c4e60aba70347489b33ca29002c9fd426b6aa17c203cd62d7cde6fe1ae7d0/attempt-9c1211149af840fb82893c61fbd2779a/render.wav",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/cache/candidate-render/c2a0bda426b5b9a6f5dc0ec0107f777ea471dc0118c28d89c46aef7674e69036/attempt-87cf036be339405aab86bdfa10f4cacc/render.wav",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/cache/phrase-comparison/39cca6eb0c30bfee7c4f8526b74b4c9a4120599f459e664a1c5f2b0c370723c8/attempt-e3881d50a55c4b10a103b8b688cfaa8e/phrase-reference-then-ours",
+    "--start-seconds",
+    "16",
+    "--end-seconds",
+    "32"
+  ],
+  "completedAt": "2026-10-15T01:16:50.001291+00:00",
+  "executionSeconds": 0.397291709000001
+}

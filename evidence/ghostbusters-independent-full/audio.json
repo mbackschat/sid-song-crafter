@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "check": "audio",
+  "passed": true,
+  "requestedSeconds": 245.0,
+  "expectedFrames": 10804500,
+  "expectedSampleRate": 44100,
+  "expectedChannels": 1,
+  "durationRule": "round(seconds * sampleRate) sample frames",
+  "inputs": [
+    {
+      "label": "reference",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/cache/reference-render/603c4e60aba70347489b33ca29002c9fd426b6aa17c203cd62d7cde6fe1ae7d0/attempt-9c1211149af840fb82893c61fbd2779a/render.wav",
+      "sha256": "91360cff28fcb4610edbe5425662ace00aa95b186ef67705f6b81079db784f1b",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 10804500,
+      "durationSeconds": 245.0,
+      "peak": 12561,
+      "peakDbfs": -8.3285143869765,
+      "clippedSamples": 0,
+      "rms": 2584.540584285507,
+      "acRms": 2355.80279413938,
+      "acRmsDbfs": -22.866220048214675,
+      "perChannel": [
+        {
+          "dc": 1063.0349133231523,
+          "rms": 2584.540584285507,
+          "acRms": 2355.80279413938
+        }
+      ]
+    },
+    {
+      "label": "candidate",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/cache/candidate-render/c2a0bda426b5b9a6f5dc0ec0107f777ea471dc0118c28d89c46aef7674e69036/attempt-87cf036be339405aab86bdfa10f4cacc/render.wav",
+      "sha256": "72f818806173aa93909b11739ccd5a297ca357d7c1e357d4d81252bd75032019",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 10804500,
+      "durationSeconds": 245.0,
+      "peak": 12310,
+      "peakDbfs": -8.503837640568033,
+      "clippedSamples": 0,
+      "rms": 2585.647562386972,
+      "acRms": 2356.8546912880192,
+      "acRmsDbfs": -22.86234254906535,
+      "perChannel": [
+        {
+          "dc": 1063.3951669211901,
+          "rms": 2585.647562386972,
+          "acRms": 2356.8546912880192
+        }
+      ]
+    }
+  ],
+  "claims": {
+    "pcmIdentity": false,
+    "perceptualAgreement": false
+  }
+}

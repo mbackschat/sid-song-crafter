@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    16.0,
+    32.0
+  ],
+  "window": {
+    "startFrame": 705600,
+    "endFrame": 1411200,
+    "frames": 705600,
+    "startSeconds": 16.0,
+    "endSeconds": 32.0,
+    "durationSeconds": 16.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/cache/phrase-comparison/39cca6eb0c30bfee7c4f8526b74b4c9a4120599f459e664a1c5f2b0c370723c8/attempt-e3881d50a55c4b10a103b8b688cfaa8e/phrase-reference-then-ours.ab.wav",
+    "frames": 1433250,
+    "durationSeconds": 32.5,
+    "sha256": "c13692985b60a1e9f3483eba179749283fc7ef6dc841bc721c0c0f0bc8692360"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 705600
+    },
+    {
+      "label": "silence",
+      "startFrame": 705600,
+      "endFrame": 727650
+    },
+    {
+      "label": "B",
+      "startFrame": 727650,
+      "endFrame": 1433250
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/cache/reference-render/603c4e60aba70347489b33ca29002c9fd426b6aa17c203cd62d7cde6fe1ae7d0/attempt-9c1211149af840fb82893c61fbd2779a/render.wav",
+      "sha256": "91360cff28fcb4610edbe5425662ace00aa95b186ef67705f6b81079db784f1b",
+      "originalFrames": 10804500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 10806,
+        "peakDbfs": -9.63569943513082,
+        "clippedSamples": 0,
+        "rms": 1554.207502738119,
+        "acRms": 1545.8936971862088,
+        "acRmsDbfs": -26.52540616903236,
+        "perChannel": [
+          {
+            "dc": 160.54170351473923,
+            "rms": 1554.207502738119,
+            "acRms": 1545.8936971862088
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/cache/candidate-render/c2a0bda426b5b9a6f5dc0ec0107f777ea471dc0118c28d89c46aef7674e69036/attempt-87cf036be339405aab86bdfa10f4cacc/render.wav",
+      "sha256": "72f818806173aa93909b11739ccd5a297ca357d7c1e357d4d81252bd75032019",
+      "originalFrames": 10804500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 11692,
+        "peakDbfs": -8.951222565486383,
+        "clippedSamples": 0,
+        "rms": 1556.0694984750737,
+        "acRms": 1547.772158829812,
+        "acRmsDbfs": -26.514858092226245,
+        "perChannel": [
+          {
+            "dc": 160.47937074829932,
+            "rms": 1556.0694984750737,
+            "acRms": 1547.772158829812
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

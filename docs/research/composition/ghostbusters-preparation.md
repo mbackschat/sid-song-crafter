@@ -1,6 +1,6 @@
 # Ghostbusters: NTSC machine-controlled title
 
-Ghostbusters is the active T2 case after [Airwolf closure](airwolf-preparation.md#listening-verdicts-and-case-closure). The intended deliverable is an editable independent reconstruction with source-faithful continuation and a familiar-material instrument transfer. The [shared intake](pop-theme-preparation.md#ghostbusters) owns historical header admission; this study will own executed form, sound mechanisms and delivery. Successful rendering alone does not establish reconstruction or musical acceptance.
+Ghostbusters is the active T2 case after [Airwolf closure](airwolf-preparation.md#listening-verdicts-and-case-closure). The intended deliverable is an editable independent reconstruction with source-faithful continuation and a familiar-material instrument transfer. The [shared intake](pop-theme-preparation.md#ghostbusters) owns historical header admission; this study owns executed form, sound mechanisms and delivery. Successful rendering alone does not establish reconstruction or musical acceptance.
 
 ## Source and selected scope
 
@@ -159,7 +159,7 @@ The [full-reference intake](../../../config/reference-intake/ghostbusters-comple
 
 Machine-preparation review on 2026-10-15: no OpenRouter or local SongBench inference. The unresolved questions concern executed timing, state ownership and speech decoding, which require machine evidence rather than a musical score or prose critique. The existing model routes remain experimental; assess their usefulness again at the first representative Ghostbusters audition rather than treating this no-call decision as a case-wide exclusion.
 
-The [familiar transfer](instruments/ghostbusters-decoded-programs.md#familiar-material-transfer-and-listening-verdict) is accepted for instruments, balance and ending; its case-specific plain-reference differences are documented in the linked card. The complete independent speech/music reconstruction remains in preparation; no Ghostbusters musical verdict is inferred from earlier cases. At the first representative comparison, after feedback or a substantive revision, and before closure, record the [model-assistance review](../audio-assessment.md#use-and-reassess-model-assistance). Models remain experimental supporting signals; execution and PCM checks must not be presented as musical acceptance.
+The [familiar transfer](instruments/ghostbusters-decoded-programs.md#familiar-material-transfer-and-listening-verdict) is accepted for instruments, balance and ending; its case-specific plain-reference differences are documented in the linked card. The complete independent speech/music reconstruction is now submitted separately; transfer acceptance does not establish title acceptance. At the first representative comparison, after feedback or a substantive revision, and before closure, record the [model-assistance review](../audio-assessment.md#use-and-reassess-model-assistance). Models remain experimental supporting signals; execution and PCM checks must not be presented as musical acceptance.
 
 ### Planned bounded speech-recognition check
 
@@ -168,3 +168,35 @@ The serialized speech adaptation supplies a concrete experimental question: does
 Freeze the following protocol before requests: four anonymous single-clip cases, comprising each render's first 4.45 seconds at unity gain converted to 16 kHz mono PCM16, exact digital silence, and the retained ordinary-speech control. The known speech control must retain all its expected words; silence must have an empty transcript and silence category. If either fails, disregard the musical cases. Record classifications and transcripts for original/candidate separately and compare them without supplying song names or expected words in the prompt. Agreement is an advisory observation, not independent transcription ground truth, intelligibility acceptance or PCM equivalence. No pairwise preference, voice attribution or full-song quality claim is tested, and earlier failed A/A comparisons remain unresolved.
 
 Use the existing bounded OpenRouter runner and its spending/cache guards; retain prompts, control oracle, exact audio/preprocessing fingerprints, model/provider responses and measured cost. There will be no retries or prompt tuning to obtain agreement. SongBench's quality scores do not answer this speech question, so omit it. The paired user audition remains required regardless of the result. This protocol is prepared; no Ghostbusters audio-model requests have run yet.
+
+
+## Complete native title and listening package
+
+The [native compiler](../../../scripts/studies/ghostbusters/compile-title.py) integrates independently computed music with the verified serialized speech decoder using [new assembly](../../../songs/players/ghostbusters-title.asm). The selected deliverable covers 245 seconds at NTSC/MOS6581, including the opening speech and the music’s first reset/restart continuation. The decoder generates a private amplitude stream from the pinned source descriptors; it does not replay captured register output or include original driver instructions. This is explicitly a scheduling adaptation: it does not reproduce the original nested NMI races or their code-byte sample reads.
+
+The [build metadata](../../../evidence/ghostbusters-independent-full/native/build.json) pins source inputs, new code, decoder proof and alignment. CIA2 Timer B owns the 102-cycle speech clock; it is stopped, masked and acknowledged before CIA1 Timer A takes over the 17,095-cycle music cadence. The speech stream ends below `$D000` with bank `$35`. New NMI code preserves A/Y and does not mutate X; music IRQ code preserves A/X/Y. Maximum measured NMI cost including entry is 85 cycles, below the 102-cycle period. Source checkpoint targets and actual instruction entry are distinguished; neither promises renderer phase or PCM identity.
+
+The [complete proof](../../../evidence/ghostbusters-independent-full/native/verification.json) covers 14,389 music calls, 14,390 named music states, 45,412 speech ticks and all 71,934 native stores in modeled CPU execution. A fresh extended isolated-source music check and independently compiled music check agree on all 41,803 initialization/play stores through call 14,388, including reset at 13,952. The real SYS 2061 bootstrap and poisoned initialization have separate two-call checks after complete speech; they are not full-form standalone PRG execution claims. Twelve [focused guards](../../../tests/ghostbusters_title_test.py) include equivalence between fully stepped and safely skipped idle JMP loops, covering timed stores, final cycles and event intervals rather than only final register values.
+
+The [actual NTSC VICE proof](../../../evidence/ghostbusters-independent-full/native/vice.json) independently completes all 14,389 calls and checks all 71,934 stores, zero SID reads, 45,412 NMI entries and no nested NMI. Sample-entry jitter is −4 to 0 cycles relative to the 102-cycle grid. Music entry intervals span 17,093–17,124 cycles, including first-handoff dispatch latency; do not describe the whole range as a nine-cycle polling tolerance. VICE executes a real JSR into the new native init; source IRQ identity and physical hardware equivalence remain outside this contract.
+
+Both [full renders](../../../evidence/ghostbusters-independent-full/audio.json) contain exactly 10,804,500 mono PCM16 frames at 44.1 kHz, with no clipping. The source WAV hash reproduces the earlier full-reference intake. No PCM identity or musical acceptance follows from the similar measured levels. Speech-bearing SID/PRG exports, amplitude buffers, raw native VICE logs and renderer register snapshots remain private alongside audio. Retained generated assembly/listing contain new host/music code and numeric music data only; the speech stream is a separate private build input.
+
+Reproduce with the [cached recipe](../../../config/listening/ghostbusters-full.json), after restoring the registered private source and pinned toolchain:
+
+```sh
+python3 scripts/setup-project.py --only references --include ghostbusters
+python3 scripts/listening-package.py config/listening/ghostbusters-full.json --output build/ghostbusters-independent-full
+python3 scripts/publish-listening.py build/ghostbusters-independent-full/run.json --selection evidence/ghostbusters-independent-full/listening/audition-selection.json --output build/ghostbusters-listening-new
+python3 scripts/evidence.py verify --group ghostbusters-independent-full
+```
+
+The [fresh run](../../../evidence/ghostbusters-independent-full/run-executed.json) took 159.513 seconds on 2026-10-15; the [cached repeat](../../../evidence/ghostbusters-independent-full/run-reused.json) took 0.602 seconds with all eight stages reused and no stage subprocesses. Publication requires a fresh destination. The [submission](../../../evidence/ghostbusters-independent-full/listening/submission.json) binds the supplied files to the immutable fresh run and exact output hashes.
+
+| Listening purpose | Reference first, then independent version | Full source window |
+| --- | --- | --- |
+| Speech character and opening | [opening-reference-then-ours.ab.wav](../../../build/ghostbusters-listening/opening-reference-then-ours.ab.wav), 24.5 seconds | 0–12 seconds each |
+| Musical sound and phrasing | [phrase-reference-then-ours.ab.wav](../../../build/ghostbusters-listening/phrase-reference-then-ours.ab.wav), 32.5 seconds | 16–32 seconds each |
+| Complete continuation without premature cut | [ending-reference-then-ours.ab.wav](../../../build/ghostbusters-listening/ending-reference-then-ours.ab.wav), 40.5 seconds | 225–245 seconds each |
+
+Full files: [reference.wav](../../../build/ghostbusters-listening/reference.wav) and [reconstructed.wav](../../../build/ghostbusters-listening/reconstructed.wav), 245 seconds each. Comparisons retain unity gain and a half-second separator. The ending preserves source continuation rather than introducing a finite stop or fade. The [2026-10-15 listening record](../../../songs/studies/ghostbusters-title/listening-review.json) accepts recognizable speech and preserved musical sound/phrasing; the ending verdict remains pending. the [familiar transfer](instruments/ghostbusters-decoded-programs.md#familiar-material-transfer-and-listening-verdict) is accepted independently. The [bounded speech-model check](#planned-bounded-speech-recognition-check) remains supporting evidence only and cannot supply the missing listening verdict.

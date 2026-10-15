@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "adaptation": "Serialized independent speech decoder; new fixed CIA2 Timer B sample player and CIA1 Timer A NTSC music host. Source checkpoint start offsets quantized to sample ticks; no source IRQ, nested NMI, code-byte sample or PCM identity claim.",
+  "profile": {
+    "clock": "ntsc",
+    "sidModel": "MOS6581"
+  },
+  "durationSeconds": 245,
+  "musicCalls": 14389,
+  "musicCallRange": {
+    "firstInclusive": 0,
+    "lastExclusive": 14389
+  },
+  "samplePeriodCycles": 102,
+  "sampleTimer": "CIA2 Timer B",
+  "musicTimer": "CIA1 Timer A",
+  "musicPeriodCycles": 17095,
+  "timerSetupCpuCycles": 367,
+  "loadAddress": 2049,
+  "initAddress": 2080,
+  "bootstrapAddress": 2061,
+  "streamAddress": 6294,
+  "streamBytes": 45412,
+  "streamSha256": "fd45c9a561d28bc9b80587a39db0bee120060e39e7dc563f0f27471c8b32d097",
+  "payloadEndAddress": 51706,
+  "commands": [
+    {
+      "command": 1,
+      "ticks": 15143,
+      "volumeStores": 12338,
+      "decodedTickSha256": "8db7048dfadf62938ec345bd1641e79f3f385933277ec7bfd0b18f76ea25aa53",
+      "cumulativeOracleSequenceSha256": "7c6b529fd040add5b890bfdd066ad78a2ec8672723167142d91461c3f16ac453"
+    },
+    {
+      "command": 3,
+      "ticks": 25897,
+      "volumeStores": 17768,
+      "decodedTickSha256": "e5f5eea8209193835e8955e5dcfd4306387b3fed1b1fa34c8a94e80a14e3a965",
+      "cumulativeOracleSequenceSha256": "d17fedd3eb2ec89e584e8605a0ac6c722f7d860d0f3efaabd7129a4330d3b5d8"
+    }
+  ],
+  "alignment": [
+    {
+      "name": "command1",
+      "tick": 1295,
+      "sourceCheckpointCycle": 132565,
+      "scheduledTimerCycle": 132559,
+      "quantizationCycles": -6
+    },
+    {
+      "name": "command3",
+      "tick": 17213,
+      "sourceCheckpointCycle": 1756161,
+      "scheduledTimerCycle": 1756195,
+      "quantizationCycles": 34
+    },
+    {
+      "name": "musicInit",
+      "tick": 45390,
+      "sourceCheckpointCycle": 4630235,
+      "scheduledTimerCycle": 4630249,
+      "quantizationCycles": 14
+    },
+    {
+      "name": "musicBody",
+      "tick": 45411,
+      "sourceCheckpointCycle": 4632351,
+      "scheduledTimerCycle": 4632391,
+      "quantizationCycles": 40
+    }
+  ],
+  "originalInstructionsIncluded": false,
+  "capturedOutputPlayback": false,
+  "decodedPrivateSpeechData": true,
+  "runtimeMusicScore": true,
+  "speechInterleaving": "serialized",
+  "display": "disabled",
+  "sourceIrqIdentity": false,
+  "inputs": {
+    ".local/research/ghostbusters/Ghostbusters.sid": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde",
+    "evidence/ghostbusters-player/composition.json": "fd0263e704261ece85375feea44ea882e16483977bfef2333a4d27e31cb0c421",
+    "evidence/ghostbusters-speech-handoff/summary.json": "9e5e77d3f8ffbba5153b9c11bc9c1eea88ba362aff63ec2a2e4ca8f9d33cf569",
+    "evidence/ghostbusters-components/speech/verification.json": "a705206505f2129b7850b228936a530a53d8133acce433cfff6f9f74808830c0"
+  },
+  "tools": {
+    "scripts/studies/ghostbusters/compile-title.py": "6dee7be8e363e56dc1370adf420014041aaf52af0f9de6e7d4c4e883a39e0ec2",
+    "scripts/studies/ghostbusters/compiler.py": "9d573d89cec1493501d2adb1b071000d744f66487e7f37055af7602757617541",
+    "scripts/studies/ghostbusters/player.py": "79874b08de7e42b0e1dc5cd9a54c6d9f3aafa8a2d16aeb3d501090324659a602",
+    "scripts/studies/ghostbusters/score.py": "00b523a3d67c01ded44ebd9ccb0adecbd76ebef4107ef146e183a2643edd94d6",
+    "scripts/studies/ghostbusters/programs.py": "3b642baaf3209a3e92a4ecd9ada25d23ed52529dccd013c9ab89ecea26d2e074",
+    "scripts/studies/ghostbusters/speech.py": "c810cbc6c7e814304be2a51d90802634fec206cfd3000f4558a765d7081e1e74",
+    "songs/players/ghostbusters.asm": "287dcbd692fe68a2d47e200e52865583a3602609002ea4997573ac314858bdf1",
+    "songs/players/ghostbusters-title.asm": "1d2db2cedf61bac3555855cf3cdfb8ec8e466a3e6707fcdae7d9c9d675dec67b",
+    "scripts/sid_assembler.py": "2a1fecc8cb350c9cfdef292677a0cc54bcf2c0c069009b1222782708d42c287e",
+    "scripts/sid_clock.py": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48",
+    "scripts/sid_intake.py": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0",
+    "scripts/psid_audit.py": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0",
+    "scripts/psid_profile.py": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107",
+    "scripts/sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "scripts/verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+    "scripts/studies/ghostbusters/probe-form.py": "f62e996f0d19413c9c5b36157b0b5f3a06828874aa2d4d1c74ffb2ff54057e68"
+  }
+}

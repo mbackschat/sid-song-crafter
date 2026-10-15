@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "key": "ad2b33af2dac526934d60fcf15e0fa5860d4450bd402eb265cb8be5d138371e3",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "scripts/check-listening.py",
+      "audio",
+      "{stage:reference-render}/render.wav",
+      "{stage:candidate-render}/render.wav",
+      "--seconds",
+      "245",
+      "--output",
+      "{out}/audio.json"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": "{stage:reference-render}/render.wav",
+        "type": "file",
+        "sha256": "91360cff28fcb4610edbe5425662ace00aa95b186ef67705f6b81079db784f1b"
+      },
+      {
+        "path": "{stage:candidate-render}/render.wav",
+        "type": "file",
+        "sha256": "72f818806173aa93909b11739ccd5a297ca357d7c1e357d4d81252bd75032019"
+      },
+      {
+        "path": "scripts/check-listening.py",
+        "type": "file",
+        "sha256": "562acd7395111823046f96b17d2ee54839ae579f4e54ddf32f5526005c7cfa0a"
+      },
+      {
+        "path": "scripts/listening_checks.py",
+        "type": "file",
+        "sha256": "2d07bf6b4a95df5c114619ed9a57e6122f1ccc86f86e13025e6586f86dd0b243"
+      },
+      {
+        "path": "scripts/audio_comparison.py",
+        "type": "file",
+        "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+      }
+    ],
+    "outputs": [
+      "audio.json"
+    ],
+    "timeoutSeconds": 120,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": "{stage:reference-render}/render.wav",
+      "type": "file",
+      "sha256": "91360cff28fcb4610edbe5425662ace00aa95b186ef67705f6b81079db784f1b"
+    },
+    {
+      "path": "{stage:candidate-render}/render.wav",
+      "type": "file",
+      "sha256": "72f818806173aa93909b11739ccd5a297ca357d7c1e357d4d81252bd75032019"
+    },
+    {
+      "path": "scripts/check-listening.py",
+      "type": "file",
+      "sha256": "562acd7395111823046f96b17d2ee54839ae579f4e54ddf32f5526005c7cfa0a"
+    },
+    {
+      "path": "scripts/listening_checks.py",
+      "type": "file",
+      "sha256": "2d07bf6b4a95df5c114619ed9a57e6122f1ccc86f86e13025e6586f86dd0b243"
+    },
+    {
+      "path": "scripts/audio_comparison.py",
+      "type": "file",
+      "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+    }
+  ],
+  "outputs": [
+    {
+      "relativePath": "audio.json",
+      "type": "file",
+      "sha256": "4320f901e114be1171f96a7f34abd7d9daa29db4bfad30f61106ef5b5cd689d3"
+    }
+  ],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "scripts/check-listening.py",
+    "audio",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/cache/reference-render/603c4e60aba70347489b33ca29002c9fd426b6aa17c203cd62d7cde6fe1ae7d0/attempt-9c1211149af840fb82893c61fbd2779a/render.wav",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/cache/candidate-render/c2a0bda426b5b9a6f5dc0ec0107f777ea471dc0118c28d89c46aef7674e69036/attempt-87cf036be339405aab86bdfa10f4cacc/render.wav",
+    "--seconds",
+    "245",
+    "--output",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/cache/signal-check/ad2b33af2dac526934d60fcf15e0fa5860d4450bd402eb265cb8be5d138371e3/attempt-53c578d02b324dee87b3ca00551e2d2e/audio.json"
+  ],
+  "completedAt": "2026-10-15T01:16:49.034491+00:00",
+  "executionSeconds": 3.888741541999991
+}

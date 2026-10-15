@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "title-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "-v",
+        "ghostbusters_title_test"
+      ],
+      "inputs": [
+        "tests/ghostbusters_compiler_test.py",
+        "scripts/studies/ghostbusters/compiler.py",
+        "scripts/studies/ghostbusters/player.py",
+        "scripts/studies/ghostbusters/score.py",
+        "scripts/studies/ghostbusters/programs.py",
+        "songs/players/ghostbusters.asm",
+        "scripts/sid_assembler.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        "evidence/ghostbusters-player/composition.json",
+        "scripts/trace-sid-vice.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/studies/ghostbusters/compile-title.py",
+        "songs/players/ghostbusters-title.asm",
+        "tests/ghostbusters_title_test.py",
+        "scripts/studies/ghostbusters/speech.py",
+        "scripts/studies/ghostbusters/probe-machine.py",
+        "scripts/studies/ghostbusters/probe-form.py",
+        "scripts/sid_intake.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        ".local/research/ghostbusters/Ghostbusters.sid",
+        "evidence/ghostbusters-speech-handoff/summary.json",
+        "evidence/ghostbusters-components/speech/verification.json",
+        "scripts/reference-intake.py",
+        "scripts/listening-package.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "native-title",
+      "command": [
+        "{python}",
+        "scripts/studies/ghostbusters/compile-title.py",
+        "--output",
+        "{out}/candidate",
+        "--probe-calls",
+        "14389",
+        "--verify-source-music",
+        "--vice",
+        ".tools/vice-headless-3.9/build/src/x64sc"
+      ],
+      "inputs": [
+        "tests/ghostbusters_compiler_test.py",
+        "scripts/studies/ghostbusters/compiler.py",
+        "scripts/studies/ghostbusters/player.py",
+        "scripts/studies/ghostbusters/score.py",
+        "scripts/studies/ghostbusters/programs.py",
+        "songs/players/ghostbusters.asm",
+        "scripts/sid_assembler.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        "evidence/ghostbusters-player/composition.json",
+        "scripts/trace-sid-vice.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/studies/ghostbusters/compile-title.py",
+        "songs/players/ghostbusters-title.asm",
+        "tests/ghostbusters_title_test.py",
+        "scripts/studies/ghostbusters/speech.py",
+        "scripts/studies/ghostbusters/probe-machine.py",
+        "scripts/studies/ghostbusters/probe-form.py",
+        "scripts/sid_intake.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        ".local/research/ghostbusters/Ghostbusters.sid",
+        "evidence/ghostbusters-speech-handoff/summary.json",
+        "evidence/ghostbusters-components/speech/verification.json",
+        "scripts/reference-intake.py",
+        "scripts/listening-package.py"
+      ],
+      "outputs": [
+        "candidate/reconstructed.sid",
+        "candidate/reconstructed.prg",
+        "candidate/private-speech.bin",
+        "candidate/composition.json",
+        "candidate/player.asm",
+        "candidate/player.listing",
+        "candidate/build.json",
+        "candidate/verification.json",
+        "candidate/vice.json",
+        "candidate/vice-command.json",
+        "candidate/commands.mon",
+        "candidate/private-host.prg",
+        "candidate/private-monitor.log.gz",
+        "candidate/private-process.log.gz"
+      ],
+      "timeoutSeconds": 900,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/ghostbusters/Ghostbusters.sid",
+        "{out}/render.wav",
+        "245",
+        "--subtune",
+        "1",
+        "--clock",
+        "ntsc"
+      ],
+      "inputs": [
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "scripts/render-sid.cpp",
+        ".local/research/ghostbusters/Ghostbusters.sid"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:native-title}/candidate/reconstructed.sid",
+        "{out}/render.wav",
+        "245",
+        "--subtune",
+        "1",
+        "--clock",
+        "ntsc"
+      ],
+      "inputs": [
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "scripts/render-sid.cpp",
+        "{stage:native-title}/candidate/reconstructed.sid"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "--seconds",
+        "245",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "opening-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{out}/opening-reference-then-ours",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "12"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "opening-reference-then-ours.ab.wav",
+        "opening-reference-then-ours.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "phrase-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{out}/phrase-reference-then-ours",
+        "--start-seconds",
+        "16",
+        "--end-seconds",
+        "32"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "phrase-reference-then-ours.ab.wav",
+        "phrase-reference-then-ours.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "ending-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "{out}/ending-reference-then-ours",
+        "--start-seconds",
+        "225",
+        "--end-seconds",
+        "245"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:candidate-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "ending-reference-then-ours.ab.wav",
+        "ending-reference-then-ours.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "fullReference": "{stage:reference-render}/render.wav",
+    "fullCandidate": "{stage:candidate-render}/render.wav",
+    "nativeProof": "{stage:native-title}/candidate/verification.json",
+    "sourceAndTiming": "{stage:native-title}/candidate/build.json",
+    "signalProof": "{stage:signal-check}/audio.json",
+    "openingComparison": "{stage:opening-comparison}/opening-reference-then-ours.ab.wav",
+    "phraseComparison": "{stage:phrase-comparison}/phrase-reference-then-ours.ab.wav",
+    "endingComparison": "{stage:ending-comparison}/ending-reference-then-ours.ab.wav"
+  }
+}

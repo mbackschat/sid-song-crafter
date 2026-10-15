@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "scope": "Actual NTSC VICE, real JSR native init, complete decoded speech stream and bounded music. Ordered stores and timer cadence; no source IRQ/PCM identity, rendered audio or physical hardware claim.",
+  "checkedMusicCalls": 14389,
+  "completedMusicCalls": 14389,
+  "terminalPlayExecuted": false,
+  "cycleLimit": 254663631,
+  "processTimeoutSeconds": 600,
+  "sidStores": 71934,
+  "sidReads": 0,
+  "nmiEntries": 45412,
+  "nestedNmi": false,
+  "samplePeriodCycles": 102,
+  "sampleEntryJitter": {
+    "minimum": -4,
+    "maximum": 0
+  },
+  "maximumObservedNmiCyclesIncludingEntry": 85,
+  "musicPeriodCycles": 17095,
+  "musicIntervals": {
+    "minimum": 17093,
+    "maximum": 17124
+  },
+  "actualInitRelativeFirstNmi": [
+    132572,
+    1756207
+  ],
+  "actualInitRelativeMusicInit": 4630337,
+  "actualInitRelativeFirstMusic": 4632501,
+  "tools": {
+    "viceSha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285",
+    "traceParserSha256": "f8ae01c6b20b45a1d249e57ea65dbe68aead7dc5bded7ee9386d378751c66e8b",
+    "sharedTraceGrammarSha256": "1df0cdee65ad8d0d0258e9920d57682b1940311c98e532472b8e0cb621b89e8d"
+  },
+  "privateArtifacts": {
+    "private-monitor.log.gz": {
+      "bytes": 1856040,
+      "sha256": "1d817aa841caf8219a808cb6f6d74e3c79a483984d470828dfddec6701e7cfd3"
+    },
+    "private-process.log.gz": {
+      "bytes": 1870411,
+      "sha256": "def09df6a2bed9e0b9f4671ef74f09d3af15122046d1d1f8cc935f84d89ef028"
+    }
+  }
+}

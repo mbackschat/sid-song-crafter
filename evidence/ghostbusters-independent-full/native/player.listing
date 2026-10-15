@@ -1,0 +1,409 @@
+0820  78           SEI
+0821  d8           CLD
+0822  a92f         LDA #$2f
+0824  8500         STA $00
+0826  a935         LDA #$35
+0828  8501         STA $01
+082a  a900         LDA #$00
+082c  8d11d0       STA $d011
+082f  8d1ad0       STA $d01a
+0832  8d0edc       STA $dc0e
+0835  8d0fdd       STA $dd0f
+0838  8d0909       STA title_stage
+083b  a97f         LDA #$7f
+083d  8d0ddc       STA $dc0d
+0840  8d0ddd       STA $dd0d
+0843  ad0ddc       LDA $dc0d
+0846  ad0ddd       LDA $dd0d
+0849  a9ff         LDA #$ff
+084b  8d19d0       STA $d019
+084e  a217         LDX #$17
+0850  a900         LDA #$00
+0852  9d00d4       STA $d400,X
+0855  ca           DEX
+0856  10fa         BPL title_clear_sid
+0858  a90f         LDA #$0f
+085a  8d18d4       STA $d418
+085d  a996         LDA #SPEECH_LO
+085f  85d0         STA $d0
+0861  a918         LDA #SPEECH_HI
+0863  85d1         STA $d1
+0865  a9b8         LDA #NMI_LO
+0867  8dfaff       STA $fffa
+086a  a908         LDA #NMI_HI
+086c  8dfbff       STA $fffb
+086f  a9f8         LDA #IRQ_LO
+0871  8dfeff       STA $fffe
+0874  a908         LDA #IRQ_HI
+0876  8dffff       STA $ffff
+0879  a965         LDA #$65
+087b  8d06dd       STA $dd06
+087e  a900         LDA #$00
+0880  8d07dd       STA $dd07
+0883  a982         LDA #$82
+0885  8d0ddd       STA $dd0d
+0888  a911         LDA #$11
+088a  8d0fdd       STA $dd0f
+088d  ad0909       LDA title_stage
+0890  f0fb         BEQ title_wait_init
+0892  200010       JSR MUSIC_INIT
+0895  a9c6         LDA #$c6
+0897  8d04dc       STA $dc04
+089a  a942         LDA #$42
+089c  8d05dc       STA $dc05
+089f  a981         LDA #$81
+08a1  8d0ddc       STA $dc0d
+08a4  ad0909       LDA title_stage
+08a7  c902         CMP #$02
+08a9  d0f9         BNE title_wait_music
+08ab  a911         LDA #$11
+08ad  8d0edc       STA $dc0e
+08b0  200f10       JSR MUSIC_PLAY
+08b3  58           CLI
+08b4  60           RTS
+08b5  4cb508       JMP title_idle
+08b8  48           PHA
+08b9  98           TYA
+08ba  48           PHA
+08bb  ad0ddd       LDA $dd0d
+08be  a000         LDY #$00
+08c0  b1d0         LDA ($d0),Y
+08c2  c9ff         CMP #$ff
+08c4  f028         BEQ title_next_sample
+08c6  c9fc         CMP #$fc
+08c8  f00a         BEQ title_init_marker
+08ca  c9fe         CMP #$fe
+08cc  f00e         BEQ title_music_marker
+08ce  8d18d4       STA $d418
+08d1  4cee08       JMP title_next_sample
+08d4  a901         LDA #$01
+08d6  8d0909       STA title_stage
+08d9  4cee08       JMP title_next_sample
+08dc  a900         LDA #$00
+08de  8d0fdd       STA $dd0f
+08e1  a97f         LDA #$7f
+08e3  8d0ddd       STA $dd0d
+08e6  ad0ddd       LDA $dd0d
+08e9  a902         LDA #$02
+08eb  8d0909       STA title_stage
+08ee  e6d0         INC $d0
+08f0  d002         BNE title_nmi_restore
+08f2  e6d1         INC $d1
+08f4  68           PLA
+08f5  a8           TAY
+08f6  68           PLA
+08f7  40           RTI
+08f8  48           PHA
+08f9  8a           TXA
+08fa  48           PHA
+08fb  98           TYA
+08fc  48           PHA
+08fd  ad0ddc       LDA $dc0d
+0900  200f10       JSR MUSIC_PLAY
+0903  68           PLA
+0904  a8           TAY
+0905  68           PLA
+0906  aa           TAX
+0907  68           PLA
+0908  40           RTI
+0909  00           .byte $00
+1000  d8           CLD
+1001  20f011       JSR gb_restore_state
+1004  a217         LDX #$17
+1006  a900         LDA #$00
+1008  9d00d4       STA $d400,X
+100b  ca           DEX
+100c  10fa         BPL gb_clear_ports
+100e  60           RTS
+100f  d8           CLD
+1010  a202         LDX #$02
+1012  adc411       LDA gb_phase
+1015  2903         AND #$03
+1017  f006         BEQ gb_quarter
+1019  204011       JSR gb_body
+101c  4cae10       JMP gb_next_voice
+101f  bdcb11       LDA gb_remaining,X
+1022  1003         BPL gb_active_quarter
+1024  4cae10       JMP gb_next_voice
+1027  decb11       DEC gb_remaining,X
+102a  3006         BMI gb_fetch_row
+102c  204011       JSR gb_body
+102f  4cae10       JMP gb_next_voice
+1032  bd0512       LDA gb_order_ptr_lo,X
+1035  85e0         STA $e0
+1037  bd0812       LDA gb_order_ptr_hi,X
+103a  85e1         STA $e1
+103c  bcc511       LDY gb_order_cursor,X
+103f  b1e0         LDA ($e0),Y
+1041  c9ff         CMP #$ff
+1043  d013         BNE gb_selected_pattern
+1045  a202         LDX #$02
+1047  a900         LDA #$00
+1049  9dc511       STA gb_order_cursor,X
+104c  9dc811       STA gb_pattern_cursor,X
+104f  9dcb11       STA gb_remaining,X
+1052  ca           DEX
+1053  10f4         BPL gb_reset_cursors
+1055  4cb410       JMP gb_advance_phase
+1058  a8           TAY
+1059  b90b12       LDA gb_pattern_ptr_lo,Y
+105c  85e0         STA $e0
+105e  b98b12       LDA gb_pattern_ptr_hi,Y
+1061  85e1         STA $e1
+1063  bcc811       LDY gb_pattern_cursor,X
+1066  b1e0         LDA ($e0),Y
+1068  9dd111       STA gb_header,X
+106b  291f         AND #$1f
+106d  9dcb11       STA gb_remaining,X
+1070  c8           INY
+1071  bdd111       LDA gb_header,X
+1074  2940         AND #$40
+1076  d01e         BNE gb_lookahead
+1078  b1e0         LDA ($e0),Y
+107a  9dce11       STA gb_note,X
+107d  c8           INY
+107e  bdd111       LDA gb_header,X
+1081  1013         BPL gb_lookahead
+1083  b1e0         LDA ($e0),Y
+1085  85ed         STA $ed
+1087  290f         AND #$0f
+1089  9dd411       STA gb_instrument,X
+108c  a5ed         LDA $ed
+108e  4a           LSR A
+108f  4a           LSR A
+1090  4a           LSR A
+1091  4a           LSR A
+1092  20b810       JSR gb_volume_output
+1095  c8           INY
+1096  b1e0         LDA ($e0),Y
+1098  c9ff         CMP #$ff
+109a  d00b         BNE gb_keep_pattern
+109c  a900         LDA #$00
+109e  9dc811       STA gb_pattern_cursor,X
+10a1  fec511       INC gb_order_cursor,X
+10a4  4cab10       JMP gb_row_ready
+10a7  98           TYA
+10a8  9dc811       STA gb_pattern_cursor,X
+10ab  20df10       JSR gb_onset
+10ae  ca           DEX
+10af  3003         BMI gb_advance_phase
+10b1  4c1210       JMP gb_voice_loop
+10b4  eec411       INC gb_phase
+10b7  60           RTS
+10b8  c90f         CMP #$0f
+10ba  d00c         BNE gb_volume_store
+10bc  a96d         LDA #$6d
+10be  38           SEC
+10bf  edc511       SBC gb_order_cursor
+10c2  c90f         CMP #$0f
+10c4  9002         BCC gb_volume_store
+10c6  a90f         LDA #$0f
+10c8  8d18d4       STA $d418
+10cb  60           RTS
+10cc  bdce11       LDA gb_note,X
+10cf  297f         AND #$7f
+10d1  a8           TAY
+10d2  84e4         STY $e4
+10d4  b9d317       LDA gb_frequency_lo,Y
+10d7  85e5         STA $e5
+10d9  b93318       LDA gb_frequency_hi,Y
+10dc  85e6         STA $e6
+10de  60           RTS
+10df  bdd111       LDA gb_header,X
+10e2  2940         AND #$40
+10e4  d010         BNE gb_patch_setup
+10e6  20cc10       JSR gb_load_frequency
+10e9  bc9318       LDY gb_sid_offsets,X
+10ec  a5e6         LDA $e6
+10ee  9901d4       STA $d401,Y
+10f1  a5e5         LDA $e5
+10f3  9900d4       STA $d400,Y
+10f6  bcd411       LDY gb_instrument,X
+10f9  b9af17       LDA gb_patch_control,Y
+10fc  9dd711       STA gb_cached_control,X
+10ff  b99d17       LDA gb_patch_pulse_low,Y
+1102  85e5         STA $e5
+1104  b9a617       LDA gb_patch_pulse_high,Y
+1107  85e6         STA $e6
+1109  b9b817       LDA gb_patch_attack_decay,Y
+110c  85e7         STA $e7
+110e  b9c117       LDA gb_patch_sustain_release,Y
+1111  85e8         STA $e8
+1113  bc9318       LDY gb_sid_offsets,X
+1116  bdd111       LDA gb_header,X
+1119  2940         AND #$40
+111b  f008         BEQ gb_note_control
+111d  bdd711       LDA gb_cached_control,X
+1120  29fe         AND #$fe
+1122  4c2811       JMP gb_setup_ports
+1125  bdd711       LDA gb_cached_control,X
+1128  9904d4       STA $d404,Y
+112b  a5e5         LDA $e5
+112d  9902d4       STA $d402,Y
+1130  a5e6         LDA $e6
+1132  9903d4       STA $d403,Y
+1135  a5e7         LDA $e7
+1137  9905d4       STA $d405,Y
+113a  a5e8         LDA $e8
+113c  9906d4       STA $d406,Y
+113f  60           RTS
+1140  adc411       LDA gb_phase
+1143  2903         AND #$03
+1145  d01d         BNE gb_vibrato
+1147  bdd111       LDA gb_header,X
+114a  2920         AND #$20
+114c  d016         BNE gb_vibrato
+114e  bc9318       LDY gb_sid_offsets,X
+1151  bdd711       LDA gb_cached_control,X
+1154  29fe         AND #$fe
+1156  9904d4       STA $d404,Y
+1159  bdcb11       LDA gb_remaining,X
+115c  d006         BNE gb_vibrato
+115e  9905d4       STA $d405,Y
+1161  9906d4       STA $d406,Y
+1164  bcd411       LDY gb_instrument,X
+1167  b9ca17       LDA gb_patch_vibrato_shift,Y
+116a  f057         BEQ gb_body_done
+116c  85e9         STA $e9
+116e  20cc10       JSR gb_load_frequency
+1171  a4e4         LDY $e4
+1173  c8           INY
+1174  b9d317       LDA gb_frequency_lo,Y
+1177  38           SEC
+1178  e5e5         SBC $e5
+117a  85e7         STA $e7
+117c  b93318       LDA gb_frequency_hi,Y
+117f  e5e6         SBC $e6
+1181  85e8         STA $e8
+1183  46e8         LSR $e8
+1185  66e7         ROR $e7
+1187  c6e9         DEC $e9
+1189  10f8         BPL gb_divide_delta
+118b  adc411       LDA gb_phase
+118e  2907         AND #$07
+1190  c904         CMP #$04
+1192  9002         BCC gb_multiplier_ready
+1194  4907         EOR #$07
+1196  85ea         STA $ea
+1198  bdd111       LDA gb_header,X
+119b  291f         AND #$1f
+119d  c905         CMP #$05
+119f  9015         BCC gb_body_pitch
+11a1  a5ea         LDA $ea
+11a3  f011         BEQ gb_body_pitch
+11a5  18           CLC
+11a6  a5e5         LDA $e5
+11a8  65e7         ADC $e7
+11aa  85e5         STA $e5
+11ac  a5e6         LDA $e6
+11ae  65e8         ADC $e8
+11b0  85e6         STA $e6
+11b2  c6ea         DEC $ea
+11b4  d0ef         BNE gb_add_displacement
+11b6  bc9318       LDY gb_sid_offsets,X
+11b9  a5e5         LDA $e5
+11bb  9900d4       STA $d400,Y
+11be  a5e6         LDA $e6
+11c0  9901d4       STA $d401,Y
+11c3  60           RTS
+11c4  00           .byte $00
+11c5  000000       .byte $00,$00,$00
+11c8  000000       .byte $00,$00,$00
+11cb  000000       .byte $00,$00,$00
+11ce  000000       .byte $00,$00,$00
+11d1  000000       .byte $00,$00,$00
+11d4  000000       .byte $00,$00,$00
+11d7  000000       .byte $00,$00,$00
+11da  00000000000000000000000000000000000000000000 .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+11f0  a015         LDY #GB_STATE_LAST
+11f2  b9da11       LDA gb_initial_image,Y
+11f5  99c411       STA gb_state_begin,Y
+11f8  88           DEY
+11f9  10f7         BPL gb_restore_loop
+11fb  a20f         LDX #$0f
+11fd  a900         LDA #$00
+11ff  95e0         STA $e0,X
+1201  ca           DEX
+1202  10fb         BPL gb_clear_workspace
+1204  60           RTS
+1205  0b79e7       .byte GB_ORDER_PTR_LO_0,GB_ORDER_PTR_LO_1,GB_ORDER_PTR_LO_2
+1208  131313       .byte GB_ORDER_PTR_HI_0,GB_ORDER_PTR_HI_1,GB_ORDER_PTR_HI_2
+120b  555768758292a1b3bfcdddeefd0e1a23272f333b46565a6f7c8593a8bac8d9eb011225333e4a0000585e63686b7d8e97a4adba0000cbd2dae3ea0000f3f8fd02052a3c5e687a8b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 .byte GB_PATTERN_PTR_LO_0,GB_PATTERN_PTR_LO_1,GB_PATTERN_PTR_LO_2,GB_PATTERN_PTR_LO_3,GB_PATTERN_PTR_LO_4,GB_PATTERN_PTR_LO_5,GB_PATTERN_PTR_LO_6,GB_PATTERN_PTR_LO_7,GB_PATTERN_PTR_LO_8,GB_PATTERN_PTR_LO_9,GB_PATTERN_PTR_LO_10,GB_PATTERN_PTR_LO_11,GB_PATTERN_PTR_LO_12,GB_PATTERN_PTR_LO_13,GB_PATTERN_PTR_LO_14,GB_PATTERN_PTR_LO_15,GB_PATTERN_PTR_LO_16,GB_PATTERN_PTR_LO_17,GB_PATTERN_PTR_LO_18,GB_PATTERN_PTR_LO_19,GB_PATTERN_PTR_LO_20,GB_PATTERN_PTR_LO_21,GB_PATTERN_PTR_LO_22,GB_PATTERN_PTR_LO_23,GB_PATTERN_PTR_LO_24,GB_PATTERN_PTR_LO_25,GB_PATTERN_PTR_LO_26,GB_PATTERN_PTR_LO_27,GB_PATTERN_PTR_LO_28,GB_PATTERN_PTR_LO_29,GB_PATTERN_PTR_LO_30,GB_PATTERN_PTR_LO_31,GB_PATTERN_PTR_LO_32,GB_PATTERN_PTR_LO_33,GB_PATTERN_PTR_LO_34,GB_PATTERN_PTR_LO_35,GB_PATTERN_PTR_LO_36,GB_PATTERN_PTR_LO_37,$00,$00,GB_PATTERN_PTR_LO_40,GB_PATTERN_PTR_LO_41,GB_PATTERN_PTR_LO_42,GB_PATTERN_PTR_LO_43,GB_PATTERN_PTR_LO_44,GB_PATTERN_PTR_LO_45,GB_PATTERN_PTR_LO_46,GB_PATTERN_PTR_LO_47,GB_PATTERN_PTR_LO_48,GB_PATTERN_PTR_LO_49,GB_PATTERN_PTR_LO_50,$00,$00,GB_PATTERN_PTR_LO_53,GB_PATTERN_PTR_LO_54,GB_PATTERN_PTR_LO_55,GB_PATTERN_PTR_LO_56,GB_PATTERN_PTR_LO_57,$00,$00,GB_PATTERN_PTR_LO_60,GB_PATTERN_PTR_LO_61,GB_PATTERN_PTR_LO_62,GB_PATTERN_PTR_LO_63,GB_PATTERN_PTR_LO_64,GB_PATTERN_PTR_LO_65,GB_PATTERN_PTR_LO_66,GB_PATTERN_PTR_LO_67,GB_PATTERN_PTR_LO_68,GB_PATTERN_PTR_LO_69,GB_PATTERN_PTR_LO_70,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+128b  1414141414141414141414141415151515151515151515151515151515151515161616161616000016161616161616161616160000161616161600001616161717171717171717000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 .byte GB_PATTERN_PTR_HI_0,GB_PATTERN_PTR_HI_1,GB_PATTERN_PTR_HI_2,GB_PATTERN_PTR_HI_3,GB_PATTERN_PTR_HI_4,GB_PATTERN_PTR_HI_5,GB_PATTERN_PTR_HI_6,GB_PATTERN_PTR_HI_7,GB_PATTERN_PTR_HI_8,GB_PATTERN_PTR_HI_9,GB_PATTERN_PTR_HI_10,GB_PATTERN_PTR_HI_11,GB_PATTERN_PTR_HI_12,GB_PATTERN_PTR_HI_13,GB_PATTERN_PTR_HI_14,GB_PATTERN_PTR_HI_15,GB_PATTERN_PTR_HI_16,GB_PATTERN_PTR_HI_17,GB_PATTERN_PTR_HI_18,GB_PATTERN_PTR_HI_19,GB_PATTERN_PTR_HI_20,GB_PATTERN_PTR_HI_21,GB_PATTERN_PTR_HI_22,GB_PATTERN_PTR_HI_23,GB_PATTERN_PTR_HI_24,GB_PATTERN_PTR_HI_25,GB_PATTERN_PTR_HI_26,GB_PATTERN_PTR_HI_27,GB_PATTERN_PTR_HI_28,GB_PATTERN_PTR_HI_29,GB_PATTERN_PTR_HI_30,GB_PATTERN_PTR_HI_31,GB_PATTERN_PTR_HI_32,GB_PATTERN_PTR_HI_33,GB_PATTERN_PTR_HI_34,GB_PATTERN_PTR_HI_35,GB_PATTERN_PTR_HI_36,GB_PATTERN_PTR_HI_37,$00,$00,GB_PATTERN_PTR_HI_40,GB_PATTERN_PTR_HI_41,GB_PATTERN_PTR_HI_42,GB_PATTERN_PTR_HI_43,GB_PATTERN_PTR_HI_44,GB_PATTERN_PTR_HI_45,GB_PATTERN_PTR_HI_46,GB_PATTERN_PTR_HI_47,GB_PATTERN_PTR_HI_48,GB_PATTERN_PTR_HI_49,GB_PATTERN_PTR_HI_50,$00,$00,GB_PATTERN_PTR_HI_53,GB_PATTERN_PTR_HI_54,GB_PATTERN_PTR_HI_55,GB_PATTERN_PTR_HI_56,GB_PATTERN_PTR_HI_57,$00,$00,GB_PATTERN_PTR_HI_60,GB_PATTERN_PTR_HI_61,GB_PATTERN_PTR_HI_62,GB_PATTERN_PTR_HI_63,GB_PATTERN_PTR_HI_64,GB_PATTERN_PTR_HI_65,GB_PATTERN_PTR_HI_66,GB_PATTERN_PTR_HI_67,GB_PATTERN_PTR_HI_68,GB_PATTERN_PTR_HI_69,GB_PATTERN_PTR_HI_70,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+130b  0101010101020202030405041a1b1c021d1b1c0708090a090a0b0c0b180d02041a1b1c021d1b1c0708090a090a0b0c0b180405041a1e1f20060e0f10111900121304050421222223060014151600141517090a090a0b0c0b180405041a24252306040504050405040504050405ff .byte $01,$01,$01,$01,$01,$02,$02,$02,$03,$04,$05,$04,$1a,$1b,$1c,$02,$1d,$1b,$1c,$07,$08,$09,$0a,$09,$0a,$0b,$0c,$0b,$18,$0d,$02,$04,$1a,$1b,$1c,$02,$1d,$1b,$1c,$07,$08,$09,$0a,$09,$0a,$0b,$0c,$0b,$18,$04,$05,$04,$1a,$1e,$1f,$20,$06,$0e,$0f,$10,$11,$19,$00,$12,$13,$04,$05,$04,$21,$22,$22,$23,$06,$00,$14,$15,$16,$00,$14,$15,$17,$09,$0a,$09,$0a,$0b,$0c,$0b,$18,$04,$05,$04,$1a,$24,$25,$23,$06,$04,$05,$04,$05,$04,$05,$04,$05,$04,$05,$04,$05,$ff
+1379  28292a2b2b2c2d2c2d2c2d2c2d2c2d2c2d2c2d2c2d2e2f30312e2f30312c2d2c2d2c2d2c2d2c2d2c2d2e2f30312e2f30312c2d2c2d2c2d2c2d36373637363738392c2d2c2d2c2d2c2d32323232323232352e2f30312e2f30312c2d2c2d2c2d2c2d2c2d2c2d2c2d2c2d2c2d2c2dff .byte $28,$29,$2a,$2b,$2b,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$2e,$2f,$30,$31,$2e,$2f,$30,$31,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$2e,$2f,$30,$31,$2e,$2f,$30,$31,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$36,$37,$36,$37,$36,$37,$38,$39,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$32,$32,$32,$32,$32,$32,$32,$35,$2e,$2f,$30,$31,$2e,$2f,$30,$31,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$2c,$2d,$ff
+13e7  3c3d3e3f404141414141414142414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141444141434141414141414141454145414541454641414141414141414141414141414141414141414141414141414141ff .byte $3c,$3d,$3e,$3f,$40,$41,$41,$41,$41,$41,$41,$41,$42,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$44,$41,$41,$43,$41,$41,$41,$41,$41,$41,$41,$41,$45,$41,$45,$41,$45,$41,$45,$46,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$41,$ff
+1455  5fff         .byte $5f,$ff
+1457  232d232e232d232e232d232e232d232eff .byte $23,$2d,$23,$2e,$23,$2d,$23,$2e,$23,$2d,$23,$2e,$23,$2d,$23,$2e,$ff
+1468  832ff5032f47033943033843ff .byte $83,$2f,$f5,$03,$2f,$47,$03,$39,$43,$03,$38,$43,$ff
+1475  032f032f4703390339033843ff .byte $03,$2f,$03,$2f,$47,$03,$39,$03,$39,$03,$38,$43,$ff
+1482  43813bf5013b233f033b233d033947ff .byte $43,$81,$3b,$f5,$01,$3b,$23,$3f,$03,$3b,$23,$3d,$03,$39,$47,$ff
+1492  47013b013b013b013b2339033b47ff .byte $47,$01,$3b,$01,$3b,$01,$3b,$01,$3b,$23,$39,$03,$3b,$47,$ff
+14a1  47813bf5013b013b013b2339033d033b43ff .byte $47,$81,$3b,$f5,$01,$3b,$01,$3b,$01,$3b,$23,$39,$03,$3d,$03,$3b,$43,$ff
+14b3  032f032f47033d43033b43ff .byte $03,$2f,$03,$2f,$47,$03,$3d,$43,$03,$3b,$43,$ff
+14bf  032f032f47033d033d033b0336ff .byte $03,$2f,$03,$2f,$47,$03,$3d,$03,$3d,$03,$3b,$03,$36,$ff
+14cd  853ef2013b43053e013b43053e013bff .byte $85,$3e,$f2,$01,$3b,$43,$05,$3e,$01,$3b,$43,$05,$3e,$01,$3b,$ff
+14dd  43053e013b43033e033b2139213a033bff .byte $43,$05,$3e,$01,$3b,$43,$03,$3e,$03,$3b,$21,$39,$21,$3a,$03,$3b,$ff
+14ee  0542013e430542013e430542013eff .byte $05,$42,$01,$3e,$43,$05,$42,$01,$3e,$43,$05,$42,$01,$3e,$ff
+14fd  430542013e430342033e213c213d033eff .byte $43,$05,$42,$01,$3e,$43,$03,$42,$03,$3e,$21,$3c,$21,$3d,$03,$3e,$ff
+150e  033b033b47033943033843ff .byte $03,$3b,$03,$3b,$47,$03,$39,$43,$03,$38,$43,$ff
+151a  47873ef2073d2739ff .byte $47,$87,$3e,$f2,$07,$3d,$27,$39,$ff
+1523  0f394fff     .byte $0f,$39,$4f,$ff
+1527  47073d0739273bff .byte $47,$07,$3d,$07,$39,$27,$3b,$ff
+152f  073b57ff     .byte $07,$3b,$57,$ff
+1533  47073d07390740ff .byte $47,$07,$3d,$07,$39,$07,$40,$ff
+153b  073e073d073b03390336ff .byte $07,$3e,$07,$3d,$07,$3b,$03,$39,$03,$36,$ff
+1546  8147f70147014741873ef2073d2739ff .byte $81,$47,$f7,$01,$47,$01,$47,$41,$87,$3e,$f2,$07,$3d,$27,$39,$ff
+1556  0f394fff     .byte $0f,$39,$4f,$ff
+155a  8147f7014701474145a12af20136013603340736ff .byte $81,$47,$f7,$01,$47,$01,$47,$41,$45,$a1,$2a,$f2,$01,$36,$01,$36,$03,$34,$07,$36,$ff
+156f  47872af507362139213a033bff .byte $47,$87,$2a,$f5,$07,$36,$21,$39,$21,$3a,$03,$3b,$ff
+157c  430542013e430f47ff .byte $43,$05,$42,$01,$3e,$43,$0f,$47,$ff
+1585  47033e034023422140253e033eff .byte $47,$03,$3e,$03,$40,$23,$42,$21,$40,$25,$3e,$03,$3e,$ff
+1593  47013b013b013b013b2339033d033b812ff8012fff .byte $47,$01,$3b,$01,$3b,$01,$3b,$01,$3b,$23,$39,$03,$3d,$03,$3b,$81,$2f,$f8,$01,$2f,$ff
+15a8  0332032f07328339f5430338812ff8012dff .byte $03,$32,$03,$2f,$07,$32,$83,$39,$f5,$43,$03,$38,$81,$2f,$f8,$01,$2d,$ff
+15ba  032f032f072f8339f543033843ff .byte $03,$2f,$03,$2f,$07,$2f,$83,$39,$f5,$43,$03,$38,$43,$ff
+15c8  032f032f47033903390338812ff8012fff .byte $03,$2f,$03,$2f,$47,$03,$39,$03,$39,$03,$38,$81,$2f,$f8,$01,$2f,$ff
+15d9  0332032f0332833bf5233d033945812ff8ff .byte $03,$32,$03,$2f,$03,$32,$83,$3b,$f5,$23,$3d,$03,$39,$45,$81,$2f,$f8,$ff
+15eb  032f032f012f813bf5013b013b2339033b43832ff8ff .byte $03,$2f,$03,$2f,$01,$2f,$81,$3b,$f5,$01,$3b,$01,$3b,$23,$39,$03,$3b,$43,$83,$2f,$f8,$ff
+1601  032f813bf5013b233f033b233d033947ff .byte $03,$2f,$81,$3b,$f5,$01,$3b,$23,$3f,$03,$3b,$23,$3d,$03,$39,$47,$ff
+1612  47013b013b013b013b2339033d033b832ff8ff .byte $47,$01,$3b,$01,$3b,$01,$3b,$01,$3b,$23,$39,$03,$3d,$03,$3b,$83,$2f,$f8,$ff
+1625  4307320131012f0732032f032dff .byte $43,$07,$32,$01,$31,$01,$2f,$07,$32,$03,$2f,$03,$2d,$ff
+1633  41012d012f012d072f4fff .byte $41,$01,$2d,$01,$2f,$01,$2d,$07,$2f,$4f,$ff
+163e  073603340332073645012fff .byte $07,$36,$03,$34,$03,$32,$07,$36,$45,$01,$2f,$ff
+164a  012f012f032f032f032d032f4bff .byte $01,$2f,$01,$2f,$03,$2f,$03,$2f,$03,$2d,$03,$2f,$4b,$ff
+1658  af17612f1fff .byte $af,$17,$61,$2f,$1f,$ff
+165e  2f1e2f1dff   .byte $2f,$1e,$2f,$1d,$ff
+1663  2f1c2f1aff   .byte $2f,$1c,$2f,$1a,$ff
+1668  3f22ff       .byte $3f,$22,$ff
+166b  8317f10517011b031e03210321031c031cff .byte $83,$17,$f1,$05,$17,$01,$1b,$03,$1e,$03,$21,$03,$21,$03,$1c,$03,$1c,$ff
+167d  03170517011b031e03210321031c031eff .byte $03,$17,$05,$17,$01,$1b,$03,$1e,$03,$21,$03,$21,$03,$1c,$03,$1e,$ff
+168e  0723072f0723072dff .byte $07,$23,$07,$2f,$07,$23,$07,$2d,$ff
+1697  0721072d0321032103210321ff .byte $07,$21,$07,$2d,$03,$21,$03,$21,$03,$21,$03,$21,$ff
+16a4  0720072c07200728ff .byte $07,$20,$07,$2c,$07,$20,$07,$28,$ff
+16ad  071c0728031c031c031c031cff .byte $07,$1c,$07,$28,$03,$1c,$03,$1c,$03,$1c,$03,$1c,$ff
+16ba  03120312031203120312031203120319ff .byte $03,$12,$03,$12,$03,$12,$03,$12,$03,$12,$03,$12,$03,$12,$03,$19,$ff
+16cb  031e371e031eff .byte $03,$1e,$37,$1e,$03,$1e,$ff
+16d2  8317f637152315ff .byte $83,$17,$f6,$37,$15,$23,$15,$ff
+16da  0b15031703174347ff .byte $0b,$15,$03,$17,$03,$17,$43,$47,$ff
+16e3  0317371a0326ff .byte $03,$17,$37,$1a,$03,$26,$ff
+16ea  071e071e07120712ff .byte $07,$1e,$07,$1e,$07,$12,$07,$12,$ff
+16f3  2f2f2f2bff   .byte $2f,$2f,$2f,$2b,$ff
+16f8  2f2a2f29ff   .byte $2f,$2a,$2f,$29,$ff
+16fd  2f282f32ff   .byte $2f,$28,$2f,$32,$ff
+1702  3f2eff       .byte $3f,$2e,$ff
+1705  815f63015f015f015f815f93015f015f015f815fc3015f015f015f815ff3015f015f015fff .byte $81,$5f,$63,$01,$5f,$01,$5f,$01,$5f,$81,$5f,$93,$01,$5f,$01,$5f,$01,$5f,$81,$5f,$c3,$01,$5f,$01,$5f,$01,$5f,$81,$5f,$f3,$01,$5f,$01,$5f,$01,$5f,$ff
+172a  835ff3035f0317035f035f035f0317035fff .byte $83,$5f,$f3,$03,$5f,$03,$17,$03,$5f,$03,$5f,$03,$5f,$03,$17,$03,$5f,$ff
+173c  815ff3015f015f015f015f015f015f015f015f015f015f015f015f015f015f015fff .byte $81,$5f,$f3,$01,$5f,$01,$5f,$01,$5f,$01,$5f,$01,$5f,$01,$5f,$01,$5f,$01,$5f,$01,$5f,$01,$5f,$01,$5f,$01,$5f,$01,$5f,$01,$5f,$01,$5f,$ff
+175e  8742f20740073e073dff .byte $87,$42,$f2,$07,$40,$07,$3e,$07,$3d,$ff
+1768  035f035f833bf2033d233e213d253b033bff .byte $03,$5f,$03,$5f,$83,$3b,$f2,$03,$3d,$23,$3e,$21,$3d,$25,$3b,$03,$3b,$ff
+177a  0317035f47015f015f015f015f011745ff .byte $03,$17,$03,$5f,$47,$01,$5f,$01,$5f,$01,$5f,$01,$5f,$01,$17,$45,$ff
+178b  8334f2033203340332053623342132032fff .byte $83,$34,$f2,$03,$32,$03,$34,$03,$32,$05,$36,$23,$34,$21,$32,$03,$2f,$ff
+179d  400000000000000000 .byte $40,$00,$00,$00,$00,$00,$00,$00,$00
+17a6  000801080808080808 .byte $00,$08,$01,$08,$08,$08,$08,$08,$08
+17af  412141814121214121 .byte $41,$21,$41,$81,$41,$21,$21,$41,$21
+17b8  2f282f142f26220288 .byte $2f,$28,$2f,$14,$2f,$26,$22,$02,$88
+17c1  ff88ff00ff8faa2688 .byte $ff,$88,$ff,$00,$ff,$8f,$aa,$26,$88
+17ca  000002000000000003 .byte $00,$00,$02,$00,$00,$00,$00,$00,$03
+17d3  0c1c2d3e51667b91a9c3ddfa18385a7da3ccf6235386bbf43070b4fb4798ed47a70c77e961e168f78f30da8f4e18efd2c3c3d1ef1f60b51e9c31dfa58786a2df3ec16b3c3963be4b0f0c45bf7d83d66173c77c971e188b7efa06acf3e68ff82e .byte $0c,$1c,$2d,$3e,$51,$66,$7b,$91,$a9,$c3,$dd,$fa,$18,$38,$5a,$7d,$a3,$cc,$f6,$23,$53,$86,$bb,$f4,$30,$70,$b4,$fb,$47,$98,$ed,$47,$a7,$0c,$77,$e9,$61,$e1,$68,$f7,$8f,$30,$da,$8f,$4e,$18,$ef,$d2,$c3,$c3,$d1,$ef,$1f,$60,$b5,$1e,$9c,$31,$df,$a5,$87,$86,$a2,$df,$3e,$c1,$6b,$3c,$39,$63,$be,$4b,$0f,$0c,$45,$bf,$7d,$83,$d6,$61,$73,$c7,$7c,$97,$1e,$18,$8b,$7e,$fa,$06,$ac,$f3,$e6,$8f,$f8,$2e
+1833  010101010101010101010101020202020202020303030303040404040505050606070707080809090a0b0b0c0d0e0e0f10111213151617191a1c1d1f212325272a2c2f3235383b3f43474b4f54595e686a70777e868e969fa8b3bdc8d4e1eefd .byte $01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$02,$02,$02,$02,$02,$02,$02,$03,$03,$03,$03,$03,$04,$04,$04,$04,$05,$05,$05,$06,$06,$07,$07,$07,$08,$08,$09,$09,$0a,$0b,$0b,$0c,$0d,$0e,$0e,$0f,$10,$11,$12,$13,$15,$16,$17,$19,$1a,$1c,$1d,$1f,$21,$23,$25,$27,$2a,$2c,$2f,$32,$35,$38,$3b,$3f,$43,$47,$4b,$4f,$54,$59,$5e,$68,$6a,$70,$77,$7e,$86,$8e,$96,$9f,$a8,$b3,$bd,$c8,$d4,$e1,$ee,$fd
+1893  00070e       .byte $00,$07,$0e

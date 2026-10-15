@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "key": "603c4e60aba70347489b33ca29002c9fd426b6aa17c203cd62d7cde6fe1ae7d0",
+  "fingerprint": {
+    "command": [
+      "{root}/.local/bin/render-sid",
+      ".local/research/ghostbusters/Ghostbusters.sid",
+      "{out}/render.wav",
+      "245",
+      "--subtune",
+      "1",
+      "--clock",
+      "ntsc"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": ".local/bin/render-sid",
+        "type": "file",
+        "sha256": "fa1c7a8daca10b157159b1163989ad4c898c50d19a142db03be387ab052e2b9a"
+      },
+      {
+        "path": ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "type": "file",
+        "sha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00"
+      },
+      {
+        "path": "scripts/render-sid.cpp",
+        "type": "file",
+        "sha256": "0761dcea8ae08bbe439e43af9697381b1f9ec99f92593fd5e4d23615acc37dde"
+      },
+      {
+        "path": ".local/research/ghostbusters/Ghostbusters.sid",
+        "type": "file",
+        "sha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde"
+      }
+    ],
+    "outputs": [
+      "render.wav",
+      "render.wav.registers.tsv"
+    ],
+    "timeoutSeconds": 120,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "fa1c7a8daca10b157159b1163989ad4c898c50d19a142db03be387ab052e2b9a"
+    }
+  },
+  "inputs": [
+    {
+      "path": ".local/bin/render-sid",
+      "type": "file",
+      "sha256": "fa1c7a8daca10b157159b1163989ad4c898c50d19a142db03be387ab052e2b9a"
+    },
+    {
+      "path": ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+      "type": "file",
+      "sha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00"
+    },
+    {
+      "path": "scripts/render-sid.cpp",
+      "type": "file",
+      "sha256": "0761dcea8ae08bbe439e43af9697381b1f9ec99f92593fd5e4d23615acc37dde"
+    },
+    {
+      "path": ".local/research/ghostbusters/Ghostbusters.sid",
+      "type": "file",
+      "sha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde"
+    }
+  ],
+  "outputs": [
+    {
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "91360cff28fcb4610edbe5425662ace00aa95b186ef67705f6b81079db784f1b"
+    },
+    {
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "1cff218d89773f3ee29a06c4bd81cb6cbde9b06df7398365e1f9954fa01cf586"
+    }
+  ],
+  "command": [
+    "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+    ".local/research/ghostbusters/Ghostbusters.sid",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/cache/reference-render/603c4e60aba70347489b33ca29002c9fd426b6aa17c203cd62d7cde6fe1ae7d0/attempt-9c1211149af840fb82893c61fbd2779a/render.wav",
+    "245",
+    "--subtune",
+    "1",
+    "--clock",
+    "ntsc"
+  ],
+  "completedAt": "2026-10-15T01:16:41.295735+00:00",
+  "executionSeconds": 3.584091457999989
+}

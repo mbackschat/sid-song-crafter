@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "submission": "evidence/ghostbusters-independent-full/listening/submission.json",
+  "submissionSha256": "ccd6e60f2cc770db77e64e338b529a0730e77150a6bf57822491d83046cbb620",
+  "samples": [
+    {
+      "filename": "build/ghostbusters-listening/opening-reference-then-ours.ab.wav",
+      "sha256": "f665fd43c847363378042c30f0657205ca364d5f8ac95fe81ae00294d2652bb7",
+      "status": "accepted",
+      "scope": "Opening speech remains recognizable"
+    },
+    {
+      "filename": "build/ghostbusters-listening/phrase-reference-then-ours.ab.wav",
+      "sha256": "c13692985b60a1e9f3483eba179749283fc7ef6dc841bc721c0c0f0bc8692360",
+      "status": "accepted",
+      "scope": "Music preserves sound and phrasing"
+    }
+  ],
+  "humanAnswer": "speech remain recognizable, music preserves the sound and phrasing",
+  "endingVerdict": "pending",
+  "limits": "Acceptance covers submitted opening speech and characteristic musical phrase, not PCM identity, original interrupt-race equivalence or uninterrupted whole-title listening. Ending remains separately pending.",
+  "modelAssistanceReview": {
+    "checkpoint": "Opening and phrase listener feedback",
+    "decision": "Continue previously frozen blind speech-recognition protocol without exposing this verdict to the model.",
+    "reason": "Human acceptance supports the delivered adaptation; model transcripts remain experimental and must pass silence and ordinary-speech controls.",
+    "nextReview": "After trial and final ending feedback, before case closure."
+  }
+}
