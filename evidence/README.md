@@ -8,6 +8,7 @@ Use [the archive and cache workflow](../docs/workflows/build-cache.md) to instal
 
 | Evidence | Interpretation and reproduction |
 | --- | --- |
+| Moon River first statement | [Source-backed interpretation](../songs/moon-river/README.md), [checks](moon-river-first-statement/checks.json), [recipe fingerprints](moon-river-first-statement/run.json); plain/candidate audio hashes and first-statement boundary; source notes and audio remain local, listening pending |
 | Night Transit original composition drafts | [Musical verdict, reuse and measured effort](../songs/night-transit/README.md), [revised PAL run](night-transit-drafts/night-transit-v2-ordered/run.json); both drafts retain full numeric CPU/schedule records, PAL/NTSC sampled VICE checks and audition hashes; both compositions rejected; closed in favor of interpreting existing scores |
 | Deflektor familiar transfer | [Accepted moving-pulse trio](../docs/research/composition/instruments/deflektor-decoded-programs.md), [complete recipe](deflektor-elise-transfer/run.json), both CPU/VICE proofs, audio hashes and pre-stop release measurement |
 | Daglish second reference | [Deflektor/Trap bounded execution and source contrast](../docs/research/composition/daglish-contrast.md); [intake receipt](daglish-contrast/run.json), complete ordered stores, initialized filter/transition traces and scoped [melody/development observations](daglish-contrast/transitions/listening-review.json) |

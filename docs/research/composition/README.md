@@ -2,6 +2,8 @@
 
 Turn musical material into deliberate SID arrangements. Return to the [research index](../README.md).
 
+- [Moon River score interpretation](moon-river-preparation.md): existing piano score, first-statement cadence and creative native sound design; [editable interpretation](../../../songs/moon-river/README.md).
+- [The Pink Panther Theme source intake](pink-panther-preparation.md): pinned multitrack source and encoded swing, queued after Moon River.
 - [Technique lookup](../technique-index.md): start with a musical need, retrieve evidence and an existing implementation, then choose an audible check.
 - [Instruments and composition](instruments-and-composition.md): voice roles, evolving instruments, and shared controls.
 - [Sound-design repertoire](sound-design-repertoire.md): reusable experiment briefs, listening criteria, and admission rules for verified instruments.

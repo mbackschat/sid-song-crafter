@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "method": "complete inputs in sequence; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/moon-river-first-statement-v2/cache/comparison/4f5ccb8a4d958b50e681f5eb04fb4bf13e728fc06e7bff48d723e9b03003c55c/attempt-14b49363439a487fb987e315a0cad216/plain-then-sid.ab.wav",
+    "frames": 2138850,
+    "durationSeconds": 48.5,
+    "sha256": "48aa9df5aeb5f12aebf66d71bc88982193ca4866e060246d9df2a1cbea03b76d"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 1058400
+    },
+    {
+      "label": "silence",
+      "startFrame": 1058400,
+      "endFrame": 1080450
+    },
+    {
+      "label": "B",
+      "startFrame": 1080450,
+      "endFrame": 2138850
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/moon-river-first-statement-v2/cache/reference/e3d1f29e570103f4e50dd2f894d848c57b96f23f6dcac0dbddd03dd3f25a3f08/attempt-34a2f42d3355406ba31d196ecacc30f4/song/native-song.excerpt.wav",
+      "sha256": "6fd20be0aec045e0bcf29bc2b5b5690abf26112b5402457d2cddc2c444e0c06a",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 1058400,
+        "durationSeconds": 24.0,
+        "peak": 8928,
+        "peakDbfs": -11.293915067324287,
+        "clippedSamples": 0,
+        "rms": 2119.3748275249673,
+        "acRms": 2113.7708663960884,
+        "acRmsDbfs": -23.80784054263417,
+        "perChannel": [
+          {
+            "dc": 154.02072562358276,
+            "rms": 2119.3748275249673,
+            "acRms": 2113.7708663960884
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/moon-river-first-statement-v2/cache/candidate/252155b6a5bbb4db36200f445289761e93050c5e4e6d5ec70ccb8a90ba3bd6af/attempt-d4211e8d911342bd88762236212cef64/song/native-song.excerpt.wav",
+      "sha256": "5866782e84d0db37f4a752bebb1c0dde909aa83179ab83d94d310ad31ed8725e",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 1058400,
+        "durationSeconds": 24.0,
+        "peak": 11316,
+        "peakDbfs": -9.235139923495295,
+        "clippedSamples": 0,
+        "rms": 3262.6985419861708,
+        "acRms": 3256.250319025387,
+        "acRmsDbfs": -20.054643035337595,
+        "perChannel": [
+          {
+            "dc": -205.02593915343914,
+            "rms": 3262.6985419861708,
+            "acRms": 3256.250319025387
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}
