@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "key": "59bf6e680647409edae2519c683d0b6d99b61d0485543762b5882904a9b293f3",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "scripts/check-listening.py",
+      "asset",
+      ".local/research/ghostbusters/Ghostbusters.sid",
+      "--sha256",
+      "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde",
+      "--output",
+      "{out}/pin.json"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": ".local/research/ghostbusters/Ghostbusters.sid",
+        "type": "file",
+        "sha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde"
+      },
+      {
+        "path": "scripts/check-listening.py",
+        "type": "file",
+        "sha256": "562acd7395111823046f96b17d2ee54839ae579f4e54ddf32f5526005c7cfa0a"
+      },
+      {
+        "path": "scripts/listening_checks.py",
+        "type": "file",
+        "sha256": "2d07bf6b4a95df5c114619ed9a57e6122f1ccc86f86e13025e6586f86dd0b243"
+      },
+      {
+        "path": "scripts/audio_comparison.py",
+        "type": "file",
+        "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+      }
+    ],
+    "outputs": [
+      "pin.json"
+    ],
+    "timeoutSeconds": 180,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": ".local/research/ghostbusters/Ghostbusters.sid",
+      "type": "file",
+      "sha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde"
+    },
+    {
+      "path": "scripts/check-listening.py",
+      "type": "file",
+      "sha256": "562acd7395111823046f96b17d2ee54839ae579f4e54ddf32f5526005c7cfa0a"
+    },
+    {
+      "path": "scripts/listening_checks.py",
+      "type": "file",
+      "sha256": "2d07bf6b4a95df5c114619ed9a57e6122f1ccc86f86e13025e6586f86dd0b243"
+    },
+    {
+      "path": "scripts/audio_comparison.py",
+      "type": "file",
+      "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+    }
+  ],
+  "outputs": [
+    {
+      "relativePath": "pin.json",
+      "type": "file",
+      "sha256": "cc3203109960781b2dc6c1867a9d69723b3b1576c871671c0f05a821378ec749"
+    }
+  ],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "scripts/check-listening.py",
+    "asset",
+    ".local/research/ghostbusters/Ghostbusters.sid",
+    "--sha256",
+    "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde",
+    "--output",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-articulated-full-workflow/cache/source-pin/59bf6e680647409edae2519c683d0b6d99b61d0485543762b5882904a9b293f3/attempt-1c3d010db8c947efbdcc61e8e458cc05/pin.json"
+  ],
+  "completedAt": "2026-10-15T14:24:25.088901+00:00",
+  "executionSeconds": 0.132846792
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "scope": "Final full-scope admission now rejects any excluded capture-edge gap; the actual 64-gap release result and all published audio remain unchanged.",
+  "authoritativeRun": "evidence/ghostbusters-stereo-articulated-full/run-final-verified.json",
+  "authoritativeStage": "evidence/ghostbusters-stereo-articulated-full/stages/release-check-final.json",
+  "helperSha256": "25511d91dfa349de4ae1075356322db559c4383fedf0e48aaaafd9a9fa68e114",
+  "checkedCompleteGaps": 64,
+  "excludedCaptureEdgeGaps": 0,
+  "releaseResultSha256": "2efccbd3aca4ac8b9f4447c06aa73f9310450fe0f891a9fad25b883cc3027df6",
+  "retainedResult": "evidence/ghostbusters-stereo-articulated-full/release.json",
+  "acceptedPhraseStillIdentical": true,
+  "acceptedPhraseSha256": "88c29f097982bd37f28caccb24529f0451b8bcaccbcbae5bb7555b2634b881c8",
+  "reusedStages": [
+    "source-pin",
+    "accepted-mono-pin",
+    "complete-native",
+    "complete-render",
+    "support-control",
+    "support-control-render",
+    "complete-listening"
+  ],
+  "executedStages": [
+    "release-guards",
+    "release-check"
+  ],
+  "wallSeconds": 10.395564792
+}

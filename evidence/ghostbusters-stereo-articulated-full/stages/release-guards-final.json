@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "key": "97233880eff362dbfe09c7e9b145e4fdc00b9c46df42796066d30c57053029af",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "-m",
+      "unittest",
+      "-v",
+      "ghostbusters_articulated_listening_test"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": "scripts/studies/ghostbusters/prepare-articulated-listening.py",
+        "type": "file",
+        "sha256": "25511d91dfa349de4ae1075356322db559c4383fedf0e48aaaafd9a9fa68e114"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/prepare-stereo-listening.py",
+        "type": "file",
+        "sha256": "6c47d18dcb91703cfad64b9f7f7e05e5f0e181aa60d850cd91d47b8f2bce548a"
+      },
+      {
+        "path": "scripts/audio_comparison.py",
+        "type": "file",
+        "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+      },
+      {
+        "path": "scripts/verify_player.py",
+        "type": "file",
+        "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+      },
+      {
+        "path": "scripts/sid_clock.py",
+        "type": "file",
+        "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+      },
+      {
+        "path": "tests/ghostbusters_articulated_listening_test.py",
+        "type": "file",
+        "sha256": "a837760f19386d71263ff46f544acdd18e33b8f961ccf609466808289ec7d164"
+      }
+    ],
+    "outputs": [],
+    "timeoutSeconds": 120,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": "scripts/studies/ghostbusters/prepare-articulated-listening.py",
+      "type": "file",
+      "sha256": "25511d91dfa349de4ae1075356322db559c4383fedf0e48aaaafd9a9fa68e114"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/prepare-stereo-listening.py",
+      "type": "file",
+      "sha256": "6c47d18dcb91703cfad64b9f7f7e05e5f0e181aa60d850cd91d47b8f2bce548a"
+    },
+    {
+      "path": "scripts/audio_comparison.py",
+      "type": "file",
+      "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+    },
+    {
+      "path": "scripts/verify_player.py",
+      "type": "file",
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    },
+    {
+      "path": "scripts/sid_clock.py",
+      "type": "file",
+      "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+    },
+    {
+      "path": "tests/ghostbusters_articulated_listening_test.py",
+      "type": "file",
+      "sha256": "a837760f19386d71263ff46f544acdd18e33b8f961ccf609466808289ec7d164"
+    }
+  ],
+  "outputs": [],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "-m",
+    "unittest",
+    "-v",
+    "ghostbusters_articulated_listening_test"
+  ],
+  "completedAt": "2026-10-15T14:33:08.131303+00:00",
+  "executionSeconds": 1.1535527500000002
+}

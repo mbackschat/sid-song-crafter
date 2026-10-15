@@ -19,12 +19,12 @@ def helper():
     return module
 
 
-def fixture():
+def fixture(seconds=48):
     rate = 1000
     ledger = [dict(startCall=start, endCall=start + 40) for start in (640, 768, 896)]
     clock = lambda call: 4.53 + call * NTSC_FRAME_CYCLES / NTSC_CLOCK
     enabled, disabled = array('h'), array('h')
-    for frame in range(48 * rate):
+    for frame in range(seconds * rate):
         at = frame / rate
         base = 1000 if frame % 2 else -1000
         support = 0
@@ -37,7 +37,7 @@ def fixture():
         enabled.extend((base, base + support))
         disabled.extend((base, base))
     proof = dict(cpu=dict(musicEntryFromInit=round(4.53 * NTSC_CLOCK)))
-    return Pcm16(rate, 2, rate * 48, enabled, ''), Pcm16(rate, 2, rate * 48, disabled, ''), ledger, proof
+    return Pcm16(rate, 2, rate * seconds, enabled, ''), Pcm16(rate, 2, rate * seconds, disabled, ''), ledger, proof
 
 
 class GhostbustersArticulatedListeningTests(unittest.TestCase):
@@ -48,7 +48,7 @@ class GhostbustersArticulatedListeningTests(unittest.TestCase):
     def test_requires_rendered_attack_body_release_and_settled_late_gap(self):
         enabled, disabled, ledger, proof = fixture()
         report = self.helper.check_release(enabled, disabled, ledger, proof)
-        self.assertEqual(report['checkedCompleteGaps'], 2)
+        self.assertEqual(report['checkedCompleteGaps'], 3)
         self.assertGreater(report['minimumBodyAcRms'], 32)
         self.assertGreater(report['minimumEarlyReleaseAcRms'], 0)
         self.assertLessEqual(report['maximumLateGapRms'], 1)
@@ -76,6 +76,23 @@ class GhostbustersArticulatedListeningTests(unittest.TestCase):
         proof['cpu']['musicEntryFromInit'] += round(.1 * NTSC_CLOCK)
         with self.assertRaisesRegex(ValueError, 'alignment'):
             self.helper.check_release(enabled, disabled, ledger, proof)
+
+    def test_full_render_checks_last_prefix_at_its_own_pattern_boundary(self):
+        enabled, disabled, ledger, proof = fixture(seconds=245)
+        report = self.helper.check_release(enabled, disabled, ledger, proof, seconds=245)
+        self.assertEqual(report['checkedCompleteGaps'], 3)
+        self.assertTrue(report['fullSongVerified'])
+        boundary = (proof['cpu']['musicEntryFromInit'] + (ledger[-1]['startCall'] + 128) * NTSC_FRAME_CYCLES) / NTSC_CLOCK
+        for frame in range(round((boundary - .25) * 1000), round((boundary - .1) * 1000)):
+            enabled.samples[frame * 2 + 1] += 100 if frame % 2 else -100
+        with self.assertRaisesRegex(ValueError, 'late gap'):
+            self.helper.check_release(enabled, disabled, ledger, proof, seconds=245)
+
+    def test_full_render_rejects_a_support_gap_outside_the_capture(self):
+        enabled, disabled, ledger, proof = fixture(seconds=245)
+        ledger.append(dict(startCall=14300, endCall=14340))
+        with self.assertRaisesRegex(ValueError, 'capture-edge'):
+            self.helper.check_release(enabled, disabled, ledger, proof, seconds=245)
 
     def test_common_gain_preserves_old_new_energy_difference_and_both_channel_balances(self):
         a = Pcm16(1, 2, 2, array('h', [20000, -10000, -20000, 10000]), '')
