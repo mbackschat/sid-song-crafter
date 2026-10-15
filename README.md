@@ -4,173 +4,159 @@
 
 # SID Song Crafter
 
-A workbench for creative interpretations of existing musical scores on the **Commodore 64 SID chip**, supporting **single-SID and dual-SID stereo music**.
+**Give a familiar score a new voice on the Commodore 64.** SID Song Crafter helps you turn existing music into expressive performances for one SID chip or two chips in stereo.
 
-SID Song Crafter builds and uses a body of musical and technical knowledge to turn a given score into an inspiring SID performance. Creativity lies in choosing instruments, arranging the voices, shaping phrasing and applying effects or stereo to express the song's character. Making full use of the chip includes subtlety and restraint when the music calls for them. Original score composition is outside the current remit unless explicitly requested; see the [product purpose and scope](PRODUCTS.md).
+The creative work is in the interpretation: choosing a lead that suits the melody, giving the bass room, shaping the phrasing, and using the chip's distinctive effects where they serve the music. The project brings together instruments, arrangement techniques and lessons from studying SID composers, with editable examples and tools to build and hear the result. [Read the project vision](PRODUCTS.md).
 
-Studies of SID composers, editors and drivers feed an executable library of instruments, arrangement techniques, examples and reusable tools, with listening evidence and limitations. Each new interpretation should apply and extend that knowledge so the next song benefits from what was learned. Original musical sources, common scores and SID arrangements remain separate so conversion does not erase source information or define the chip's expressive limits.
+## Walkthrough: give Bach a SID voice
 
-The working targets are PAL with one MOS6581/MOS8580 or two matching chips at `$D400/$D420`; native recipes default to MOS8580 and can select `sidModel: "MOS6581"`.
+Bach's Toccata makes a good challenge. An organ can sustain a huge chord while the melody moves above it; one SID has just three voices. We want to keep the music's weight and drama while giving it the pace and electronic character of game music.
 
-## Test-drive: build and hear Bach on SID
+In this walkthrough you'll build our 88-second interpretation, listen to it, and try a different set of instruments on the same arranged score. You'll finish with audio you can play on your computer, a SID file for a music player, and a program you can run on a C64. The piece covers the Toccata from BWV 565, stopping before the Fugue.
 
-Start with our accepted **Toccata from Bach's BWV 565**: about 88 seconds combining organ-like weight, a moving pulse lead, rapid runs and a deliberate final cadence. This is the complete Toccata section, ending before the Fugue. The [case study](songs/studies/bach-toccata-full/README.md) records the arrangement and listening verdict.
-
-The score and interpretation inputs are included. You can build and listen locally without a model account, model weights, live bridge or C64 hardware.
-
-### 1. Prepare the native toolchain
+### Get ready
 
 ```sh
 git clone https://github.com/mbackschat/sid-song-crafter.git
 cd sid-song-crafter
 ```
 
-Run subsequent commands from this directory. You need Python 3.9+, uv, `curl`, `make` and a C/C++ compiler. The documented renderer setup was verified on Apple Silicon macOS; other platforms need a matching libsidplayfp build.
+You need Python 3.9+, uv, `curl`, `make` and a C/C++ compiler. Run the following commands from the repository directory:
 
-| Prepare once | How |
+```sh
+uv --cache-dir .local/uv-cache pip install --target .tools/test-deps py65==1.2.0
+python3 scripts/setup-sidwizard.py
+```
+
+Next, follow the [renderer setup](docs/workflows/audio-workflow.md#pinned-library-setup) to build `.local/bin/render-sid`, which turns the SID program into a WAV. That guide provides the verified Apple Silicon macOS setup; other platforms need a matching libsidplayfp build. A [checksum-verified Python dependency download](docs/songs/first-song.md#build-and-verify) is also available.
+
+Once those tools are ready, you can complete this walkthrough without an emulator window, C64 hardware or an AI service. VICE and MIDI-import dependencies are needed only for some of the other examples below.
+
+### Start with the music
+
+The [source MIDI and notation](songs/studies/bach-toccata-opening/source/) are included, along with their [provenance](docs/research/composition/bach-toccata.md#retained-source-files). The arrangement makes three choices that you can listen for:
+
+| Musical intention | How this interpretation uses SID |
 | --- | --- |
-| Python CPU emulator | `uv --cache-dir .local/uv-cache pip install --target .tools/test-deps py65==1.2.0` ([checksum-verified wheel alternative](docs/songs/first-song.md#build-and-verify)) |
-| Audio renderer at `.local/bin/render-sid` | Follow [the pinned renderer build commands](docs/workflows/audio-workflow.md#pinned-library-setup) |
-| SID-Wizard exporter and assembler | Run `python3 scripts/setup-sidwizard.py`; it downloads, verifies and builds the pinned tools |
+| Keep the organ's weight | Reserve a voice for the pedal bass when it matters, and use the remaining voices for melody and selected harmony. |
+| Give the lead an electronic character | Vary its pulse width during a note, so its tone moves as it sounds. Selected chord tones also cycle rapidly to suggest a fuller harmony. |
+| Keep the performance moving | Shorten long holds and gaps while allowing the fast runs and final cadence to keep their shape. |
 
-This native test drive does not require Bun, VICE, ROMs or MIDI-import packages. `setup-project.py` downloads study assets and skills; it does **not** install the renderer or this complete toolchain.
+These choices draw on the project's [sound repertoire](docs/research/composition/sound-design-repertoire.md) and its [organ phrasing example](docs/research/composition/gestures/driven-organ-phrasing.md). They are recorded in an editable [arrangement plan](songs/studies/bach-toccata-full/arrangement.json), separate from Bach's source notes.
 
-### 2. Prepare, build and render
+Prepare that arrangement and build the song:
 
 ```sh
 python3 scripts/studies/bach/prepare-toccata.py --output build/readme-toccata-inputs
 python3 scripts/native-song.py build build/readme-toccata-inputs/hybrid.json --output build/readme-toccata
 ```
 
-The first command applies the retained arrangement plan to the preserved Bach source notes. The second exports an editable native song, checks the complete player schedule, renders audio, and checks clipping and the ending. The commands print progress; build time depends on your machine. Choose fresh output directories for another run, because existing evidence is preserved.
+The first command prepares the three musical parts and their instrument recipes. The second creates the SID program and renders it to audio, checking note scheduling, clipping and the ending along the way. Each command prints progress. Use fresh output directories on subsequent runs to preserve earlier versions.
 
-### 3. Listen now
+### Hear the result
 
-On macOS:
+Open `build/readme-toccata/native-song.wav` in your usual audio player. On macOS, you can play the opening first, then the whole piece:
 
 ```sh
 afplay build/readme-toccata/native-song.excerpt.wav
 afplay build/readme-toccata/native-song.wav
 ```
 
-The first file plays the opening 20 seconds; the second plays the complete 88-second interpretation. Press Ctrl+C to stop playback. Listen for the lead's tone movement, the bass underneath the rapid passages, and the final cadence and decay.
+The excerpt lasts 20 seconds; the full performance lasts about 88 seconds. Press Ctrl+C to stop `afplay`, or use `open build/readme-toccata/native-song.wav` to launch your default player.
 
-Alternatively, open the WAV in your normal music player. On macOS, `open build/readme-toccata/native-song.wav` launches the default app; on other systems, open the same file in a WAV-capable player. These files exist locally after building; GitHub does not host the generated audio.
+Follow the lead through the rapid passages, then listen to what the bass and harmony contribute underneath. Does the piece keep its weight without losing momentum? That is the musical goal behind the settings. This complete version has passed listening review; the [case study](songs/studies/bach-toccata-full/README.md) records the choices and their limits.
 
-## Walkthrough: from the Bach score to a playable SID song
+### Change the character without changing the score
 
-The path is **preserved source score → arrangement decisions → three SID voices and instruments → editable native module → SID, PRG and WAV**. The source supplies the musical material; the arrangement supplies pacing, voicing and chip expression.
+A score alone does not determine the sound. Try the included sustained palette on the same arranged notes and timing:
 
-### Start from an attributed score
+```sh
+python3 scripts/native-song.py build songs/studies/bach-toccata-full/restrained.json --output build/bach-sustained
+python3 scripts/compare-audio.py prepare build/bach-sustained/native-song.excerpt.wav build/readme-toccata/native-song.excerpt.wav build/bach-palettes
+```
 
-The included [MIDI](songs/studies/bach-toccata-opening/source/ToccataFugue.mid), [LilyPond notation](songs/studies/bach-toccata-opening/source/ToccataFugue.ly) and [extracted source notes](songs/studies/bach-toccata-opening/source-notes.json) retain the Mutopia/Bach-Gesellschaft source. [The source record](docs/research/composition/bach-toccata.md#retained-source-files) identifies its edition and fingerprints. The interpretation uses the Toccata through source quarter position 118 and excludes the Fugue pickup.
+Play `build/bach-palettes.ab.wav` in your audio player, or run `afplay build/bach-palettes.ab.wav` on macOS. You'll hear 20 seconds of the sustained palette, a short gap, then 20 seconds of the moving-pulse interpretation. The comparison adjusts their levels to make tone and texture easier to judge. Both are SID performances; the first is not an organ recording.
 
-### Decide how the score should sound on SID
+Notice how changing the instruments changes the impression of the same phrase. To explore further, open `build/readme-toccata-inputs/hybrid.json`: it contains the instrument programs and their assignments to the musical parts. Keep your experiments in a copy beside `score.json`, then build that recipe into another output directory. The [instrument cards](docs/research/composition/instruments/README.md) explain useful settings and the musical situations they suit.
 
-[The arrangement plan](songs/studies/bach-toccata-full/arrangement.json) records the musical choices: shorten long pauses for forward motion, allocate melody/bass/harmony, preserve the pedal where it matters, and cycle selected chord tones when three voices cannot hold the full organ texture. Source notes remain separate from these deliberate changes.
+Pacing and voicing live in `build/readme-toccata-inputs/arrangement.json`. To change those, edit a copy and regenerate with `python3 scripts/studies/bach/prepare-toccata.py --plan YOUR_PLAN.json --output A_FRESH_DIRECTORY`. This preparer knows the Bach arrangement; the shared native build tools can also build other songs.
 
-The preparation command above generates these editable files in `build/readme-toccata-inputs/`:
+### Take the song to a SID player or C64
 
-| File | What to inspect or change |
+You have more than a recording. The build also produced these files:
+
+| File | How to use it |
 | --- | --- |
-| `arrangement.json` | Timing anchors, voicing, ornaments and source-backed chord cycles |
-| `score.json` | The resulting three-voice performance |
-| `hybrid.json` | Moving pulse lead, filtered bass, harmony and instrument assignments |
-| `restrained.json` | The same reduced score with a more sustained SID palette |
-| `preparation.json` | Source fingerprints and the accounting of retained, shortened, cycled and omitted notes |
+| `build/readme-toccata/native-song.wav` | Open in a normal audio player. |
+| `build/readme-toccata/export/hybrid.sid` | Open in a PSID-compatible music player. A normal WAV/MP3 player generally cannot play SID files. |
+| `build/readme-toccata/export/hybrid.prg` | Open/autostart in VICE, or transfer to a C64 using your disk/SD device. |
+| `build/readme-toccata/conversion/hybrid.swm` | Open in SID-Wizard to edit the native song. |
 
-This preparer is specific to the Bach case. The shared native compiler, exporter, renderer and checks work across songs; choosing a convincing reduction and palette remains musical work. To change pacing or voicing, edit a copy of `arrangement.json` and rerun `prepare-toccata.py --plan YOUR_PLAN.json --output A_FRESH_DIRECTORY`. To try another tone, edit the generated `hybrid.json` instrument programs and rebuild into a fresh output directory. [The sound repertoire](docs/research/composition/sound-design-repertoire.md) helps choose instruments by musical purpose.
+For VICE, select a PAL C64 with the MOS8580 SID model, then autostart the PRG. If it is loaded without autostart, type `RUN`. On a compatible real C64, use `LOAD"FILENAME",8,1`, substituting your filename and device number, then `RUN`. The hardware's SID model can affect the sound.
 
-### Build the native song and inspect the results
-
-The native build command above consumes `hybrid.json` and its referenced `score.json`. It produces:
-
-| Output | File |
-| --- | --- |
-| First 20 seconds to audition | `build/readme-toccata/native-song.excerpt.wav` |
-| Complete performance | `build/readme-toccata/native-song.wav` |
-| Playable SID | `build/readme-toccata/export/hybrid.sid` |
-| Standalone C64 program | `build/readme-toccata/export/hybrid.prg` |
-| Editable SID-Wizard song | `build/readme-toccata/conversion/hybrid.swm` |
-| Editable instruments | `build/readme-toccata/conversion/instruments/` |
-| Export settings and hashes | `build/readme-toccata/export.json` |
-| Technical verification | `build/readme-toccata/verification.json` |
-
-The build verifies scheduling and audio health. Listening establishes whether the interpretation works musically; a changed palette needs a new listening judgment.
-
-### Play on a computer or C64
-
-- **Normal audio player:** open `build/readme-toccata/native-song.wav`, or use the `afplay` commands above. No emulator is needed to listen to the WAV.
-- **SID player:** open `build/readme-toccata/export/hybrid.sid` in a PSID-compatible player. This example targets PAL timing and MOS8580; honor those settings if the player asks. A SID file contains music data and playback code, so a normal WAV/MP3 player generally cannot play it.
-- **VICE emulator:** configure a PAL C64 with MOS8580, then open/autostart `build/readme-toccata/export/hybrid.prg`. If loaded without autostart, type `RUN`.
-- **Real C64:** transfer the PRG using your usual disk/SD device, load it with `LOAD"FILENAME",8,1` (substitute the device filename and number), then `RUN`. Use compatible PAL hardware for this export; a different SID model can change the sound.
-- **SID-Wizard editor:** load `build/readme-toccata/conversion/hybrid.swm` to inspect or edit the native song. Keep direct editor changes as a separate version; they do not automatically update the JSON recipe. See [native editing and export](docs/workflows/native-song-workflow.md).
-
-For an NTSC machine, build a separate target:
+For NTSC playback, make a separate export:
 
 ```sh
 python3 scripts/native-song.py build build/readme-toccata-inputs/hybrid.json --clock ntsc --output build/readme-toccata-ntsc
 ```
 
-Use the new directory's SID/PRG on that target. The [regional export guide](docs/workflows/native-song-workflow.md#regional-export-targets) explains timing and timbre differences; PAL listening acceptance does not imply an identical NTSC sound.
+Play the SID or PRG from that new directory. [Regional export](docs/workflows/native-song-workflow.md#regional-export-targets) explains the timing and sound differences. Direct edits in SID-Wizard remain a separate native version; they do not flow back into the JSON recipe.
 
-### Supply a different score
+## Choose something else to play
 
-Start with an attributed MIDI and, where possible, the notation it represents. For a printed/PDF score, first obtain or transcribe a MIDI and verify it against the notation; this workflow does not automatically read sheet music. Keep the original source intact.
+These are the preferred listening files from the worked examples. **SID and WAV files are generated locally, not included in a fresh clone.** If a file already exists in your checkout, open it directly; otherwise use the build route below. On macOS, `afplay PATH.wav` plays any listed WAV.
 
-1. Define source identity, track mappings, tempo and performance order in an import recipe. [The multitrack MIDI workflow](docs/workflows/song-workflow.md#prepare-a-multitrack-score-audition) and [Pink Panther's import recipe](config/scores/pink-panther-import.json) provide a worked route; replace their source-specific values with your own.
-2. Choose the melody, bass and supporting parts and record the reduction. Check repeats and the ending against the notation. The Bach-specific preparer is not a generic importer for an arbitrary MIDI.
-3. Define a native recipe pointing to your reduced score, with sections covering its form. Select instruments and effects from [the repertoire](docs/research/composition/sound-design-repertoire.md) for the song's mood.
-4. Run `python3 scripts/native-song.py build PATH_TO_YOUR_RECIPE.json --output build/my-song`, then play `build/my-song/native-song.wav`. Compare a representative passage with the supplied performance or a plain rendering, and check the complete ending before accepting the result.
+| Example | Local WAV | Build route |
+| --- | --- | --- |
+| Bach Toccata — dramatic, moving pulse lead; 1:28 | [Complete performance](build/readme-toccata/native-song.wav) | Walkthrough above; SID: `build/readme-toccata/export/hybrid.sid` |
+| Moon River — gentle triangle-led first statement; 1:39 | [Restrained interpretation](build/moon-river-restrained-listening/moon-river-sid.wav) | Commands below |
+| Pink Panther — melody and lively pulse accompaniment; 3:20 | [Complete interpretation](build/pink-panther-full-listening/pulse-ensemble-complete.wav) | Commands below |
+| Instrument mix — short three-voice sound demo; 0:10 | [Candidate mix](build/instrument-trials/mix-candidate/mix-candidate.wav) | `python3 scripts/run-instrument-trials.py --pair mix --output build/instrument-trials`; SID: `build/instrument-trials/mix-candidate/mix-candidate.sid` |
 
-[The song workflow](docs/workflows/song-workflow.md) explains conversion contracts and musical decisions. Once the arrangement is established, [listening recipes](docs/workflows/listening-package.md) combine preparation, rendering and comparisons into one command and reuse unchanged stages.
-
-## Explore the project
-
-- [Musical purpose and scope](PRODUCTS.md): interpreting supplied scores through SID sound design.
-- [Technique lookup](docs/research/technique-index.md) and [sound repertoire](docs/research/composition/sound-design-repertoire.md): instruments, gestures, examples and listening evidence from the composer studies.
-- [Completed Bach Toccata trial](docs/research/composition/bach-toccata.md#experiment-closure-and-reusable-outcome), [Moon River](songs/moon-river/README.md) and [Pink Panther](songs/pink-panther/README.md): larger interpretation case studies with reproduction instructions and scoped verdicts.
-- [Study plan](docs/research/study-plan.md): completed studies and the next interpretation task.
-- [Documentation](docs/README.md) and [tool guide](scripts/README.md): setup, supported workflows and validation.
-- [Contributor guide](CLAUDE.md): contributor and publication rules; [AGENTS.md](AGENTS.md) links to the same file.
-
-## Prepare local assets and check tools
+Moon River and Pink Panther additionally need [MIDI dependencies](docs/songs/fuer-elise-score.md#reproduce-and-verify) and [headless VICE with its data files](docs/setup/local-setup.md), because their recipes also run emulator checks. Their source MIDIs are downloaded separately. Once those prerequisites are ready:
 
 ```sh
-python3 scripts/setup-project.py
-python3 scripts/doctor.py
+# Moon River
+python3 scripts/setup-project.py --only references --include moon-river-score
+python3 scripts/listening-package.py config/listening/moon-river-restrained.json --output build/moon-river-restrained
+python3 scripts/publish-listening.py build/moon-river-restrained/run.json --selection config/listening/moon-river-audition.json --output build/moon-river-restrained-listening
+
+# Pink Panther
+python3 scripts/setup-project.py --only references --include pink-panther-score
+python3 scripts/listening-package.py config/listening/pink-panther-full.json --output build/pink-panther-full
+python3 scripts/publish-listening.py build/pink-panther-full/run.json --selection config/listening/pink-panther-full.audition.json --output build/pink-panther-full-listening
 ```
 
-Setup downloads the pinned Elise/Flashdance references and the `c64-sid` hardware skill. Add `--include sid-music` only for bridge workflows; use `--offline` with existing caches/checkouts or `--check` for read-only hash verification. [Local setup](docs/setup/local-setup.md) explains prerequisites, optional selections and repairs. Doctor checks dependencies, renderer, VICE build configuration, ROM availability and asset hashes; it does not install tools or certify musical playback.
+The recipe runner reuses unchanged successful stages. The listening publisher needs a fresh destination; if the listed listening folder already exists, play it or choose another output folder. Each recipe's generated `listening.md` lists its audio and comparison files; the Pink Panther package also links its SID export. [Moon River's notes](songs/moon-river/README.md) and [Pink Panther's notes](songs/pink-panther/README.md) explain their musical briefs and source arrangements.
 
-Local audio models, including SongBench/MuQ, are optional research tools. Normal setup, readiness checks, song builds and tests require no model weights or ML dependencies. Only follow [optional model setup](docs/setup/local-setup.md#optional-local-audio-models) for a deliberate evaluation trial; the [measured results](docs/research/audio-assessment.md#measured-local-songbench-trial) do not qualify SongBench as a dependable musical judge.
+## Bring your own score
 
-## Repository and dependencies
+Start with a MIDI and, ideally, the notation or a reference performance. Give the interpretation a musical brief: intimate or forceful, spacious or driving, one SID or two. “Keep the melody clear and the bass warm” is a more useful starting point than “add more effects.”
 
-`.tools/` contains reproducible third-party checkouts; `.local/` contains local assets and runtime state; `build/` contains generated output. These directories and machine-local `.codex/` configuration are ignored. Installed skill sources also remain local; see [the skill guide](skills/README.md).
+The work follows the same sequence you explored with Bach: understand the music, choose which parts the chip will carry, select sounds for those roles, then build and listen. The [score workflow](docs/workflows/song-workflow.md#prepare-a-multitrack-score-audition) takes you through importing a multitrack MIDI and defining its reduction. The [repertoire](docs/research/composition/sound-design-repertoire.md) supplies techniques and examples to adapt. Printed/PDF notation needs transcription or a corresponding MIDI first; automatic sheet-music reading is not part of this workflow.
 
-[Setup](docs/setup/local-setup.md) downloads and verifies reference assets using [the source registry](config/local-assets.json). Retained analysis is indexed in [evidence](evidence/README.md); [the cache workflow](docs/workflows/build-cache.md) explains verification and restoration. Contributor and publication rules live in [CLAUDE.md](CLAUDE.md).
-
-The checked-in [configuration example](config/codex.toml) records this machine's installation paths. Adapt it before activating it on another computer. Follow [local setup](docs/setup/local-setup.md) for exact upstream revisions and installation commands; use the upstream Bun lockfile for c64bridge.
-
-## Native sound-design trials
-
-After preparing the renderer and py65 dependency, build the pinned SID-Wizard exporter and run the original instrument bank:
+Once your reduced score and [native instrument recipe](docs/workflows/native-song-workflow.md) are ready:
 
 ```sh
-python3 scripts/setup-sidwizard.py
-python3 scripts/run-instrument-trials.py --output build/instrument-trials
+python3 scripts/native-song.py build PATH_TO_YOUR_RECIPE.json --output build/my-song
 ```
 
-Use a fresh output directory for a revised trial. The pipeline retains native SWM/SWI files, exports the actual Extra driver, audits its register writes, renders the phrases, and prepares amplitude-matched A/B audio. Start with the [candidate mix](build/instrument-trials/mix-candidate/mix-candidate.wav), then review the [individual comparisons and listening record](docs/workflows/instrument-trials.md). The user accepted the short mix as sounding OK; broader listening and hardware checks remain open.
+Open `build/my-song/native-song.wav`. Compare the phrasing and balance with your musical brief, listen through the ending, and revise the arrangement or instruments where needed. Source selection and musical judgment remain part of the work; the build handles export, rendering and technical checks. For repeated comparisons, [listening recipes](docs/workflows/listening-package.md) automate the sequence and cache unchanged stages.
 
-For a complete score-based native build and all output paths, follow [the Bach walkthrough above](#walkthrough-from-the-bach-score-to-a-playable-sid-song).
+## Explore further
 
-For two SIDs, run `python3 scripts/setup-sidwizard.py --sid-count 2`, then use a recipe with `sidCount: 2` and six ordered voices. The [native workflow](docs/workflows/native-song-workflow.md) includes an original six-voice/two-filter fixture and commands that verify its PSID, separate stereo channels and standalone PRG in headless VICE. This is a reusable technical foundation; a complete dual-SID song and its listening assessment remain separate work.
+- [Technique lookup](docs/research/technique-index.md), [instruments](docs/research/composition/instruments/README.md) and [gestures](docs/research/composition/gestures/README.md): find a technique by musical purpose, with examples and listening evidence.
+- [Study plan](docs/research/study-plan.md): composer studies, completed interpretations and the next musical task.
+- [Two-SID workflow](docs/workflows/native-song-workflow.md#reusable-two-chip-test): six voices, separate chip roles and stereo output.
+- [Setup guide](docs/setup/local-setup.md): optional reference downloads, dependency checks and platform details. `python3 scripts/doctor.py` reports readiness; it does not install missing tools.
+- [Tool guide](scripts/README.md) and [documentation index](docs/README.md): supported workflows and detailed technical contracts.
+- [Contributor guide](CLAUDE.md): development and publication rules. [AGENTS.md](AGENTS.md) links to the same guide.
+
+Audio models are optional experiments; no model download or API account is required to build songs. Generated files live in ignored `build/`, third-party tools in `.tools/`, and local assets in `.local/`.
 
 ## Prepare the assembler
 
-The song build uses Bun and only the assembler from the pinned c64bridge checkout. On a fresh checkout, prepare that dependency:
+For the alternative Bun-based examples and their tests, prepare the pinned c64bridge assembler. The native Bach walkthrough above uses its own assembler and does not need this checkout:
 
 ```sh
 git clone https://github.com/chrisgleissner/c64bridge.git .tools/c64bridge
@@ -178,19 +164,17 @@ git -C .tools/c64bridge checkout 0781a7b6cfe7b92bbb6d68e048ad396bd3edfb18
 (cd .tools/c64bridge && bun install --frozen-lockfile)
 ```
 
-## Additional examples and validation
+## Development checks
 
-- [Native instrument trials](docs/workflows/instrument-trials.md): short A/B comparisons for pulse motion, pluck attacks and bass transients.
-- [Complete Für Elise score and reduction](docs/songs/fuer-elise-score.md): an additional worked MIDI-import example, including explicit repeat handling and conversion reports.
-- [Baseline song workflow](docs/workflows/song-workflow.md) and [three-voice player](docs/architecture/three-voice-player.md): the simpler Bun-based backend; `python3 scripts/song.py songs/fuer-elise.json` additionally requires the renderer and headless VICE.
-- [Native VICE checks](docs/validation/native-vice-checks.md): independent execution checks beyond the native test drive's CPU audit and rendered audio.
-- [Two-SID workflow](docs/workflows/native-song-workflow.md#reusable-two-chip-test): an original six-voice fixture, stereo rendering and standalone verification.
-
-After installing the relevant [development dependencies](docs/setup/local-setup.md), run:
+After installing the relevant [development dependencies](docs/setup/local-setup.md):
 
 ```sh
 bun test tests/music.test.ts tests/fuer-elise.test.ts
 PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 -m unittest discover -s tests -p '*_test.py' -v
 ```
 
-Integration tests need the tools named by their owning workflows. For a first listen, the native test drive above is sufficient; running the whole development suite is not a prerequisite.
+Integration tests need the tools named by their owning workflows. Running the full suite is not a prerequisite for listening to the examples.
+
+## License
+
+Original project work is available under the [MIT License](LICENSE). Music sources and third-party components retain their own terms; see [third-party notices](THIRD_PARTY_NOTICES.md).

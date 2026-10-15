@@ -46,7 +46,7 @@ Make routine execution and workflow decisions autonomously after checking the re
 
 Commit autonomously after a coherent feature set or meaningful verified checkpoint. Batch related implementation, tests and findings into reviewable commits; avoid a commit for every small edit. Never push without authorization.
 
-Keep [README.md](README.md) focused on project vision, features, setup and usage. Include an executable build-and-listen test drive, a walkthrough from an attributed score to playable SID output, exact output filenames and playback instructions. Use the accepted Bach Toccata as the featured example; the user finds Für Elise too dull for this introduction. Link to this guide and workflows for contributor and publication policies instead of repeating those rules there.
+Keep [README.md](README.md) focused on project vision, features, setup and usage. Write the walkthrough for a newcomer who wants to hear and shape a song: connect musical intent to audible SID choices, provide an early listening result and a supported way to explore a different sound, then explain how to bring another score. Include executable build commands, exact playable filenames and playback instructions; distinguish generated local audio from files shipped in Git. Link detailed artifact inventories and validation contracts instead of making them the narrative. Use the accepted Bach Toccata as the featured example; the user finds Für Elise too dull for this introduction. Link to this guide and workflows for contributor and publication policies instead of repeating those rules there.
 
 Keep guides in task-oriented subfolders under [docs](docs/README.md), with navigation from its README. Keep research in its existing indexed folders. Use [local setup](docs/setup/local-setup.md) and `python3 scripts/doctor.py` for readiness; read [skill corrections](docs/setup/skill-guidance.md) before applying downloaded instructions.
 
@@ -177,6 +177,8 @@ GTK VICE 3.9 opens in the user's Terminal but fails agent-launched OpenGL initia
 Select the default SID subtune before libsidplayfp playback; an unselected tune passes `$ff` to init. Keep this [regression finding](docs/workflows/audio-workflow.md) in future renderers.
 
 ## Public Repository Boundary
+
+Original project work is licensed under [MIT](LICENSE). Preserve the separate terms and attribution recorded in [third-party notices](THIRD_PARTY_NOTICES.md); the project license does not relicense upstream code, player binaries or musical sources.
 
 Every sample song must have a public, reusable package under this two-tier policy:
 
