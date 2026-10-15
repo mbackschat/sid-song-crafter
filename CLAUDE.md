@@ -8,6 +8,8 @@ Use the [study plan](docs/research/study-plan.md) for the active case and next m
 
 The [Bach Toccata musical trial](docs/research/composition/bach-toccata.md#experiment-closure-and-reusable-outcome) is closed by user instruction on 2026-10-14. Preserve the accepted complete mono version at commit `5b61384` and the preferred subtraction passage. Integrated lead motion was liked at the opening; additional replies, pitched attacks and stronger repeating percussion did not meet the intended role. The final bass-phrasing candidate is parked, unreviewed and not selected; do not resume optional Bach or stereo experiments without a new request.
 
+The active task is the [Night Transit composition trial](songs/night-transit/README.md): reuse existing sounds to make another compelling piece and measure effort. The first palette/balance is liked, but the melody is rejected; musical revision remains required.
+
 Current verified work and continuation:
 
 - [Native PAL/NTSC composition/export contract](docs/research/study-plan.md#regional-export-verification-completed): verified.

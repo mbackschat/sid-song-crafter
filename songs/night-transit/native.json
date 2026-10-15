@@ -1,0 +1,156 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score.json",
+  "title": "Night Transit",
+  "author": "SID Song Crafter",
+  "released": "2026",
+  "authorinfo": "ORIGINAL:NIGHT TRANSIT",
+  "sidCount": 1,
+  "sidModel": "MOS8580",
+  "clock": "pal",
+  "timingPolicy": "retain-full-pitch",
+  "instruments": {
+    "lead": {
+      "name": "BCHPWM",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0288",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "84",
+          "00",
+          "00"
+        ],
+        [
+          "10",
+          "40",
+          "00"
+        ],
+        [
+          "20",
+          "e8",
+          "00"
+        ],
+        [
+          "20",
+          "18",
+          "00"
+        ],
+        {
+          "jump": 2
+        }
+      ],
+      "filter": []
+    },
+    "bass": {
+      "name": "BCHBASS",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "02a9",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ],
+      "filter": [
+        [
+          "92",
+          "a0",
+          "00"
+        ]
+      ]
+    },
+    "harmony": {
+      "name": "BCHHARM",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0258",
+      "frame1": "09",
+      "wave": [
+        [
+          "51",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ],
+      "filter": []
+    }
+  },
+  "sections": [
+    {
+      "name": "Departure",
+      "startBeat": 0,
+      "endBeat": 16,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Night transit: main theme",
+      "startBeat": 16,
+      "endBeat": 48,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Open sky: contrasting response",
+      "startBeat": 48,
+      "endBeat": 80,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Homeward: theme varied",
+      "startBeat": 80,
+      "endBeat": 112,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Arrival: resolved cadence",
+      "startBeat": 112,
+      "endBeat": 128,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    }
+  ]
+}

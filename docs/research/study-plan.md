@@ -6,6 +6,10 @@
 
 Each study must leave reusable instruments, effects or arrangement methods, with evidence connecting **musical intention → editable description → SID programming** and back. Follow the [analysis procedure](tools/sid-program-analysis.md), [composition workflow](../workflows/decoded-song-workflow.md) and [technique index](technique-index.md). This plan owns priorities and completion state; owning studies retain findings and provenance.
 
+## Active composition productivity trial
+
+[Night Transit](../../songs/night-transit/README.md) is the next task: create a compelling original 60–90-second single-SID piece using existing repertoire and measure effort without adding infrastructure. First draft playback is verified on PAL/NTSC; the listener supports its sounds and balance but rejects the melody. Revise the composition before claiming success. Preserve the completed study scopes below.
+
 ## Scope and order
 
 **All required studies are complete for their declared scopes as of 2026-10-15.** Ghostbusters completes the sequence with accepted speech, musical phrasing, source continuation and familiar transfer. The optional Airwolf finite ending remains unaccepted and is not the selected reconstruction. See the [completion audit](#completion-audit).

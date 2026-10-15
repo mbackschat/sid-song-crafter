@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "measurementStartUtc": "2026-10-15T01:35:54Z",
+  "measurementBasis": "Wall time from first explicit clock sample; initial repository/skill retrieval preceded this marker and is not timed. Repository publishing and build cleanup are separate administration. Human wait must be separated from active work where measured; parallel agent elapsed is not added to wall time.",
+  "brief": {
+    "durationSeconds": [
+      60,
+      90
+    ],
+    "originalMusic": true,
+    "sidCount": 1,
+    "sidModel": "MOS8580",
+    "tempoBpm": 112,
+    "sections": [
+      {
+        "name": "Departure",
+        "startBeat": 0,
+        "endBeat": 16
+      },
+      {
+        "name": "Night transit: main theme",
+        "startBeat": 16,
+        "endBeat": 48
+      },
+      {
+        "name": "Open sky: contrasting response",
+        "startBeat": 48,
+        "endBeat": 80
+      },
+      {
+        "name": "Homeward: theme varied",
+        "startBeat": 80,
+        "endBeat": 112
+      },
+      {
+        "name": "Arrival: resolved cadence",
+        "startBeat": 112,
+        "endBeat": 128
+      }
+    ]
+  },
+  "unchangedInstruments": [
+    {
+      "role": "lead",
+      "path": "songs/studies/bach-toccata-integrated-motion/hybrid.json",
+      "key": "instruments.lead",
+      "sourceSha256": "4c4378422a8de9afee61898be03105862ab4cf9a27cb58960fc48986b9fed847"
+    },
+    {
+      "role": "bass",
+      "path": "songs/studies/bach-toccata-full/hybrid.json",
+      "key": "instruments.bass",
+      "sourceSha256": "c93f5f4de21c3f14f82b0b4fb93060c6bbf20f72fa7775492ead74d3896b4eba"
+    },
+    {
+      "role": "harmony",
+      "path": "songs/studies/bach-toccata-full/hybrid.json",
+      "key": "instruments.harmony",
+      "sourceSha256": "c93f5f4de21c3f14f82b0b4fb93060c6bbf20f72fa7775492ead74d3896b4eba"
+    }
+  ],
+  "newBackendCode": false,
+  "newInfrastructure": false,
+  "paletteReview": {
+    "agentTier": "MEDIUM",
+    "startedAt": "2026-10-15T01:36:21Z",
+    "finishedAt": "2026-10-15T01:37:23Z",
+    "elapsedSeconds": 62
+  },
+  "modelReview": {
+    "checkpoint": "First representative audition",
+    "decision": "No audio-model inference",
+    "reason": "Original melody, balance and emotional character have no calibrated musical-quality oracle; native schedule/PCM checks and human listening answer the current question.",
+    "nextReview": "After listener feedback and before closure"
+  },
+  "listeningVerdict": {
+    "sample": "build/night-transit-listening/main-theme.wav",
+    "sha256": "dba9dd6230e28604a4514807da616236f092e089dd27db2074510eca07181ca0",
+    "verbatim": "yes, feel engaging and melodic, with a warm bass and clear lead .  But melody (composition) is not nice, however this was not your point!",
+    "scope": "Palette and balance supported; composition rejected. Complete-piece acceptance remains pending.",
+    "nextAction": "Keep sounds and accompaniment; revise melody into a clearer recurring phrase with breathing space."
+  },
+  "firstAuditionObservedUtc": "2026-10-15T01:42:10Z",
+  "elapsedSecondsToFirstAuditionFromMarker": 376,
+  "firstBuild": {
+    "run": "build/night-transit-v1/run.json",
+    "wallSeconds": 23.826965417,
+    "stages": [
+      {
+        "id": "native",
+        "executionSeconds": 16.848461832999998,
+        "cacheHit": false
+      },
+      {
+        "id": "vice",
+        "executionSeconds": 6.558503458000001,
+        "cacheHit": false
+      }
+    ]
+  },
+  "administrationExcludedFromCompositionClaim": [
+    "Creation/connection and initial push of public repository",
+    "Build-cache cleanup (separate agent: approximately 159 seconds)",
+    "Documentation of optional local model setup"
+  ],
+  "comparisonLimit": "No reliable prospective active-work baseline exists for Bach, so this first-draft measurement cannot prove a percentage productivity gain or time to human acceptance.",
+  "modelReviewAfterFeedback": {
+    "decision": "No inference",
+    "reason": "No calibrated model test establishes melody preference; the listener rejects the composition. Revise from this judgment rather than a speculative model score.",
+    "nextReview": "Revised audition and closure"
+  }
+}
