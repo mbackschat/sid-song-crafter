@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-15",
-  "status": "selected-roles-integrated-full-review-pending",
+  "status": "full-arrangement-reviewed-revision-required",
   "scope": "Integrate only the listener-preferred high-lead ELSOFT treatment into the preserved complete narrow-pulse tonal baseline. Keep original pulse held support and omit the unselected kick. The whole arrangement is not accepted; broader groove and section-development feedback remains open.",
   "baselinePalette": "songs/axel-f/full-huelsbeck-pulse.json",
   "candidatePalette": "songs/axel-f/selected-roles.json",
@@ -47,8 +47,8 @@
   "selection": "config/listening/axel-f-selected-roles.audition.json",
   "modelAssistanceReview": {
     "status": "no-call",
-    "reason": "Human feedback settles the patch selections. Available models are not calibrated to judge the whole arrangement or choose musical development; no model call is useful for this mechanical integration.",
-    "nextCheckpoint": "Before the next substantive arrangement audition or case closure."
+    "reason": "Human feedback rates the integrated full arrangement mediocre and identifies three preferred master-reference moments. Existing models are not calibrated to choose the required instrument/ensemble interpretation; inspect those source moments and audition a bounded revision.",
+    "nextCheckpoint": "Master-informed palette audition or a substantive further revision."
   },
   "referenceMatchesSubmittedNarrowPulseFullWav": true,
   "sourceNotes": 5199,
@@ -342,5 +342,11 @@
     "Preserve the original narrow-pulse full version, rejected both-role palette and kick trial with their original submitted audio and scoped verdicts.",
     "Post-call CPU snapshots, sampled standalone VICE playback and renderer signal checks support distinct technical claims; no physical SID equivalence or new human approval is claimed.",
     "All source score notes, generated music and detailed note evidence remain private local outputs."
-  ]
+  ],
+  "fullArrangementVerdict": {
+    "date": "2026-10-15",
+    "status": "revision-required",
+    "quote": "mediocre. Hülsbeck is just so much better, his instrument. Example the supporting instrument starting at 28.80s (in .local/research/axel-f/huelsbeck-original.sid) is great choice. The main instrument (starts at about 9.50s, also great the background beat there), the switch to different instrument (playing e.g. at 1:00.00s)",
+    "scope": "Integrated complete render remains unsatisfactory. Preserve earlier relative high-lead preference without promoting it to complete-song acceptance. The named reference moments direct the next bounded master study."
+  }
 }

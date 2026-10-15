@@ -1,0 +1,707 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "question": "Identify the source lead with beat, low supporting entrance and perceived instrument change near60seconds, then constrain one coherent native lead/bass palette transfer.",
+  "source": {
+    "path": ".local/research/axel-f/huelsbeck-original.sid",
+    "sha256": "87e0a1e8ad618a497e54fc5d4228dee7be53ef6365a30900debcdafbcd21251b",
+    "subtune": 1,
+    "clock": "declared PAL",
+    "sidModel": "declared MOS6581",
+    "sidCount": 1,
+    "sidAddress": 54272,
+    "timer": "CIA1 Timer A",
+    "steadyPeriodCycles": 17921,
+    "callsPerSecond": 54.977323314051176,
+    "boundedCalls": 3900,
+    "nominalDurationSeconds": 70.93833902610594,
+    "renderSeconds": 70
+  },
+  "entrancesRendererSeconds": {
+    "percussionVoice3": 0.146,
+    "hookVoice2": 9.461,
+    "bassVoice1": 28.091
+  },
+  "voiceRoles": [
+    {
+      "voice": 1,
+      "role": "low pulse bass",
+      "recordSelections": {
+        "1": 119
+      },
+      "program": {
+        "recordIndex": 1,
+        "waveform": 65,
+        "attackDecay": 9,
+        "sustainRelease": 153,
+        "initialPulseWidth": 1280,
+        "ascendingCalls": 32,
+        "descendingCalls": 16,
+        "pulseStep": 37,
+        "releaseControl": 64,
+        "repeatPulse": true
+      },
+      "bassOnsetRangeFirstPhraseMidi": [
+        29,
+        45
+      ],
+      "coupling": "none",
+      "filter": "no oscillator route"
+    },
+    {
+      "voice": 2,
+      "role": "hook and contrasting upper repeated-note phrase",
+      "recordSelections": {
+        "2": 166
+      },
+      "program": {
+        "recordIndex": 2,
+        "waveform": 65,
+        "attackDecay": 10,
+        "sustainRelease": 73,
+        "initialPulseWidth": 512,
+        "ascendingCalls": 32,
+        "descendingCalls": 16,
+        "pulseStep": 32,
+        "releaseControl": 64,
+        "repeatPulse": true
+      },
+      "coupling": "none",
+      "filter": "no oscillator route"
+    },
+    {
+      "voice": 3,
+      "role": "independent percussion throughout capture",
+      "recordSelections": {
+        "3": 157,
+        "5": 92,
+        "4": 61
+      },
+      "programs": {
+        "3": "noise followed by falling-frequency triangle, AD20/SR50",
+        "4": "longer descending noise, AD20/SR90",
+        "5": "short noise followed by waveform-off, AD20/SR20"
+      },
+      "coupling": "none",
+      "filter": "no oscillator route"
+    }
+  ],
+  "sixtySecondFinding": {
+    "actualProgramSwitch": false,
+    "basis": "Executed record-copy observations atCB21 select only record2 for the lead and record1 for bass throughout3900calls; waveform/envelope families remain unchanged. The high phrase uses shorter/repeated notes and a higher register with the same pulse program. Percussion develops a descending pitched fill near64.8\u201365.3renderer seconds before the lower hook returns near65.35.",
+    "highPhrase": {
+      "completeSourceBlockCalls": [
+        3079,
+        3591
+      ],
+      "nominalSeconds": [
+        56.00490919522568,
+        65.31783985711446
+      ],
+      "leadOnsets": 28,
+      "leadOnsetMidiRange": [
+        77,
+        81
+      ],
+      "focusedMeasurementCalls": [
+        3111,
+        3559
+      ],
+      "focusedOnsets": 27,
+      "gatedBodyCalls": {
+        "minimum": 4,
+        "maximum": 12,
+        "counts": {
+          "4": 9,
+          "8": 16,
+          "12": 2
+        }
+      },
+      "gatedBodySecondsRange": [
+        0.07275727079600608,
+        0.21827181238801824
+      ],
+      "gatedPulseWidthRange": [
+        512,
+        864
+      ],
+      "sameLeadRecord": 2
+    },
+    "comparisonToOurHighRole": "Our different score part has97notes atMIDI80\u201387 and3\u201312native gated body updates. The source finding does not support a general claim that its high phrase reaches a longer-developed PWM or uses a new instrument. Register, phrasing, envelope/retrigger history and ensemble interaction remain supported differences; their perceptual contribution is a hypothesis."
+  },
+  "articulation": {
+    "instructionStartGateGapCycles": {
+      "1": {
+        "minimum": 49,
+        "maximum": 49,
+        "counts": {
+          "49": 118
+        }
+      },
+      "2": {
+        "minimum": 49,
+        "maximum": 49,
+        "counts": {
+          "49": 165
+        }
+      }
+    },
+    "perNoteTestFrame": false,
+    "startupScope": "Inactive voices begin with TEST set; subsequent source onsets clear/set GATE without a per-note TEST interval.",
+    "pitchOnlyRowCallsInReportedWindows": 0,
+    "limit": "Register setup is not measured envelope amplitude. Slow decay and short source retriggers mean programmed sustain4does not prove short notes sound at4/15level. Native Extra TEST and hard-restart history remain a material departure."
+  },
+  "causalBassPwm": {
+    "initialWidth": 1280,
+    "ascendingCalls": 32,
+    "descendingCalls": 16,
+    "step": 37,
+    "comparedCallStates": 2357,
+    "movingStatesWithGateOff": 36,
+    "nominalNetWidthChangePerUninterruptedCycle": 592,
+    "intervention": {
+      "changedRamAddress": 44575,
+      "changedFileOffset": 3741,
+      "before": 37,
+      "after": 0,
+      "changedStoreValues": 4072,
+      "changedAddresses": [
+        54274,
+        54275
+      ],
+      "allOtherOrderedStoreValuesAndIdentitiesEqual": true,
+      "identicalCallableCosts": true
+    },
+    "mechanism": "A new bass setup resets width500, ascent32and descent16; the shared C364/C39B routine adds/subtracts the full-word step37. The last ascent and first descent can share a call. Motion continues while GATE is clear. Note retriggers reset the cumulative trajectory.",
+    "basisAddresses": [
+      "C59C",
+      "C5A9",
+      "C5AC\u2013C5C1",
+      "C5E8",
+      "C364",
+      "C39B"
+    ]
+  },
+  "leadPulseModel": {
+    "comparedLeadCallStates": 3381,
+    "leadOnsets": 166,
+    "changingPulseStatesWithGateOff": 1526,
+    "initialWidth": 512,
+    "pulseStep": 32,
+    "ascendingCalls": 32,
+    "descendingCalls": 16,
+    "repeatReloadsBothCounters": true,
+    "lastAscentAndFirstDescentCanShareCall": true,
+    "netWidthChangePerCompleteCycle": 512,
+    "independentOfGateState": true,
+    "limitations": "Numeric pulse-state proof driven by observed onset boundaries; not a score decoder, independently scheduled song or listening result."
+  },
+  "registerComparison": {
+    "sourceFirstHookMidi": 69,
+    "sourceFirstBassMidi": 33,
+    "sourceSeparationSemitones": 36,
+    "ourFirstHookMidi": 65,
+    "ourFirstBassMidi": 41,
+    "ourSeparationSemitones": 24,
+    "ourRetainedHookBassMidiRange": [
+      36,
+      53
+    ],
+    "interpretation": "At these corresponding entrances our bass is one octave higher relative to the lead/key. Source key, tempo, form and score differ, so this is a role/register observation, not a proven cause of preference or permission to transpose the first controlled audition."
+  },
+  "recommendedNextAudition": {
+    "scope": "One same-score32-beat hook/bass comparison, no percussion or full-song rebuild. Preserve our melody/bass pitches, onsets, durations, native TEST/gates, PAL MOS8580 target and accepted bounded lead pulse.",
+    "lead": "Use source-informed AD0A/SR49 with the accepted narrow pulse; retain existing native vibrato for this bounded comparison rather than copying source raw-word arithmetic.",
+    "bass": "Use source-informed AD09/SR99, remove the existing bass low-pass/resonance program, start atwidth500 and give the pulse body bounded ongoing movement. At50.12VBIHz, source37per54.98CIAupdate maps approximately41pernativeupdate;32/16source calls map approximately29/15updates.",
+    "musicalQuestion": "Does the coherent pulse lead and moving unfiltered bass make the hook feel more alive and integrated while retaining clarity?",
+    "notTransferred": "Source6581response, exact49cycle retrigger history, cumulative pulse drift, deeper bass register and complete rhythmic arrangement. Native table transition holds and per-note macro resets require execution verification.",
+    "selectionStatus": "Recommendation and executed source evidence; musical acceptance remains pending."
+  },
+  "verification": {
+    "calls": 3900,
+    "matchedViceSourceWrites": 40081,
+    "acknowledgedInterrupts": 3900,
+    "maximumIntervalErrorCycles": 4,
+    "maximumAccumulatedPhaseErrorCycles": 2,
+    "maximumCallablePlayCycles": 5158,
+    "rendererCapture": {
+      "rows": 3821,
+      "firstSeconds": 0.018,
+      "lastSeconds": 69.927
+    },
+    "sourceFilterRouteCounts": {
+      "00": 7,
+      "08": 3893
+    },
+    "evidenceKinds": "Ordered callable observations, controlled CIA/VICE source-write proof, numeric pulse models, one-byte bass-step intervention and separately timestamped renderer snapshots. No hardware equivalence, complete-song reconstruction or musical causation is established."
+  },
+  "windows": [
+    {
+      "name": "lead-entry",
+      "firstCall": 519,
+      "endCallExclusive": 1031,
+      "nominalSeconds": [
+        9.44025588578179,
+        18.753186547670566
+      ],
+      "voices": [
+        {
+          "voice": 1,
+          "programOnsets": 0,
+          "pitchOnlyRowCalls": 0,
+          "programRecords": {},
+          "controls": {
+            "08": 512
+          },
+          "adsr": {
+            "0000": 512
+          },
+          "gatedBodyCalls": null,
+          "onsetMidiRange": null,
+          "gatedPulseWidthRange": null
+        },
+        {
+          "voice": 2,
+          "programOnsets": 23,
+          "pitchOnlyRowCalls": 0,
+          "programRecords": {
+            "2": 23
+          },
+          "controls": {
+            "41": 304,
+            "40": 208
+          },
+          "adsr": {
+            "0a49": 512
+          },
+          "gatedBodyCalls": {
+            "minimum": 8,
+            "maximum": 44,
+            "counts": {
+              "8": 11,
+              "12": 6,
+              "16": 2,
+              "20": 1,
+              "24": 2,
+              "44": 1
+            }
+          },
+          "onsetMidiRange": [
+            64,
+            81
+          ],
+          "gatedPulseWidthRange": [
+            512,
+            1504
+          ]
+        },
+        {
+          "voice": 3,
+          "programOnsets": 41,
+          "pitchOnlyRowCalls": 0,
+          "programRecords": {
+            "3": 21,
+            "5": 12,
+            "4": 8
+          },
+          "controls": {
+            "81": 276,
+            "11": 180,
+            "01": 56
+          },
+          "adsr": {
+            "2050": 264,
+            "2020": 104,
+            "2090": 144
+          },
+          "gatedBodyCalls": {
+            "minimum": 8,
+            "maximum": 24,
+            "counts": {
+              "8": 20,
+              "16": 19,
+              "24": 2
+            }
+          },
+          "onsetMidiRange": [
+            69,
+            96
+          ],
+          "gatedPulseWidthRange": null
+        }
+      ]
+    },
+    {
+      "name": "bass-entry",
+      "firstCall": 1543,
+      "endCallExclusive": 2055,
+      "nominalSeconds": [
+        28.066117209559348,
+        37.37904787144812
+      ],
+      "voices": [
+        {
+          "voice": 1,
+          "programOnsets": 26,
+          "pitchOnlyRowCalls": 0,
+          "programRecords": {
+            "1": 26
+          },
+          "controls": {
+            "41": 504,
+            "40": 8
+          },
+          "adsr": {
+            "0999": 512
+          },
+          "gatedBodyCalls": {
+            "minimum": 8,
+            "maximum": 40,
+            "counts": {
+              "8": 6,
+              "12": 1,
+              "16": 11,
+              "28": 1,
+              "32": 5,
+              "40": 2
+            }
+          },
+          "onsetMidiRange": [
+            29,
+            45
+          ],
+          "gatedPulseWidthRange": [
+            1280,
+            2427
+          ]
+        },
+        {
+          "voice": 2,
+          "programOnsets": 23,
+          "pitchOnlyRowCalls": 0,
+          "programRecords": {
+            "2": 23
+          },
+          "controls": {
+            "41": 304,
+            "40": 208
+          },
+          "adsr": {
+            "0a49": 512
+          },
+          "gatedBodyCalls": {
+            "minimum": 8,
+            "maximum": 44,
+            "counts": {
+              "8": 11,
+              "12": 6,
+              "16": 2,
+              "20": 1,
+              "24": 2,
+              "44": 1
+            }
+          },
+          "onsetMidiRange": [
+            64,
+            81
+          ],
+          "gatedPulseWidthRange": [
+            512,
+            1504
+          ]
+        },
+        {
+          "voice": 3,
+          "programOnsets": 41,
+          "pitchOnlyRowCalls": 0,
+          "programRecords": {
+            "3": 21,
+            "5": 12,
+            "4": 8
+          },
+          "controls": {
+            "81": 276,
+            "11": 180,
+            "01": 56
+          },
+          "adsr": {
+            "2050": 264,
+            "2020": 104,
+            "2090": 144
+          },
+          "gatedBodyCalls": {
+            "minimum": 8,
+            "maximum": 24,
+            "counts": {
+              "8": 20,
+              "16": 19,
+              "24": 2
+            }
+          },
+          "onsetMidiRange": [
+            69,
+            96
+          ],
+          "gatedPulseWidthRange": null
+        }
+      ]
+    },
+    {
+      "name": "high-register-phrase",
+      "firstCall": 3111,
+      "endCallExclusive": 3559,
+      "nominalSeconds": [
+        56.58696736159373,
+        64.7357816907464
+      ],
+      "voices": [
+        {
+          "voice": 1,
+          "programOnsets": 23,
+          "pitchOnlyRowCalls": 0,
+          "programRecords": {
+            "1": 23
+          },
+          "controls": {
+            "41": 440,
+            "40": 8
+          },
+          "adsr": {
+            "0999": 448
+          },
+          "gatedBodyCalls": {
+            "minimum": 8,
+            "maximum": 40,
+            "counts": {
+              "8": 6,
+              "12": 1,
+              "16": 9,
+              "28": 1,
+              "32": 4,
+              "40": 2
+            }
+          },
+          "onsetMidiRange": [
+            29,
+            45
+          ],
+          "gatedPulseWidthRange": [
+            1280,
+            2427
+          ]
+        },
+        {
+          "voice": 2,
+          "programOnsets": 27,
+          "pitchOnlyRowCalls": 0,
+          "programRecords": {
+            "2": 27
+          },
+          "controls": {
+            "41": 188,
+            "40": 260
+          },
+          "adsr": {
+            "0a49": 448
+          },
+          "gatedBodyCalls": {
+            "minimum": 4,
+            "maximum": 12,
+            "counts": {
+              "4": 9,
+              "8": 16,
+              "12": 2
+            }
+          },
+          "onsetMidiRange": [
+            77,
+            81
+          ],
+          "gatedPulseWidthRange": [
+            512,
+            864
+          ]
+        },
+        {
+          "voice": 3,
+          "programOnsets": 34,
+          "pitchOnlyRowCalls": 0,
+          "programRecords": {
+            "4": 8,
+            "3": 16,
+            "5": 10
+          },
+          "controls": {
+            "81": 248,
+            "11": 152,
+            "01": 48
+          },
+          "adsr": {
+            "2090": 144,
+            "2050": 216,
+            "2020": 88
+          },
+          "gatedBodyCalls": {
+            "minimum": 8,
+            "maximum": 24,
+            "counts": {
+              "8": 14,
+              "16": 18,
+              "24": 2
+            }
+          },
+          "onsetMidiRange": [
+            69,
+            96
+          ],
+          "gatedPulseWidthRange": null
+        }
+      ]
+    },
+    {
+      "name": "lower-hook-return",
+      "firstCall": 3591,
+      "endCallExclusive": 3890,
+      "nominalSeconds": [
+        65.31783985711446,
+        70.75644584911592
+      ],
+      "voices": [
+        {
+          "voice": 1,
+          "programOnsets": 15,
+          "pitchOnlyRowCalls": 0,
+          "programRecords": {
+            "1": 15
+          },
+          "controls": {
+            "41": 295,
+            "40": 4
+          },
+          "adsr": {
+            "0999": 299
+          },
+          "gatedBodyCalls": {
+            "minimum": 8,
+            "maximum": 40,
+            "counts": {
+              "8": 3,
+              "12": 1,
+              "16": 5,
+              "21": 1,
+              "32": 4,
+              "40": 1
+            }
+          },
+          "onsetMidiRange": [
+            29,
+            45
+          ],
+          "gatedPulseWidthRange": [
+            1280,
+            2427
+          ]
+        },
+        {
+          "voice": 2,
+          "programOnsets": 17,
+          "pitchOnlyRowCalls": 0,
+          "programRecords": {
+            "2": 17
+          },
+          "controls": {
+            "41": 220,
+            "40": 79
+          },
+          "adsr": {
+            "0a49": 299
+          },
+          "gatedBodyCalls": {
+            "minimum": 8,
+            "maximum": 24,
+            "counts": {
+              "8": 6,
+              "12": 6,
+              "16": 2,
+              "20": 1,
+              "24": 2
+            }
+          },
+          "onsetMidiRange": [
+            67,
+            81
+          ],
+          "gatedPulseWidthRange": [
+            512,
+            1248
+          ]
+        },
+        {
+          "voice": 3,
+          "programOnsets": 23,
+          "pitchOnlyRowCalls": 0,
+          "programRecords": {
+            "3": 10,
+            "5": 8,
+            "4": 5
+          },
+          "controls": {
+            "81": 155,
+            "11": 104,
+            "01": 40
+          },
+          "adsr": {
+            "2050": 144,
+            "2020": 72,
+            "2090": 83
+          },
+          "gatedBodyCalls": {
+            "minimum": 8,
+            "maximum": 24,
+            "counts": {
+              "8": 9,
+              "16": 12,
+              "21": 1,
+              "24": 1
+            }
+          },
+          "onsetMidiRange": [
+            69,
+            96
+          ],
+          "gatedPulseWidthRange": null
+        }
+      ]
+    }
+  ],
+  "reproduction": {
+    "command": "python3 scripts/listening-package.py config/listening/axel-f-huelsbeck-roles.json --output build/axel-f-huelsbeck-roles",
+    "recipe": "config/listening/axel-f-huelsbeck-roles.json",
+    "probe": "scripts/studies/axel-f/study-huelsbeck-roles.py",
+    "reuse": "The existing pinned bank-aware callable memory and CIA host remain unchanged; the new adapter fixes its own bounded3900call contract rather than broadening general source admission.",
+    "privateEvidence": "Detailed source stores, state snapshots, frozen source copy, renderer audio and VICE logs remain under ignored build/."
+  },
+  "modelAssistanceReview": {
+    "decision": "No model call: source role/program execution can be settled locally; present audio calibrations do not qualify preference, arrangement quality or attribution of the heard instrument change.",
+    "nextCheckpoint": "Human verdict on the coherent same-score lead/bass palette transfer."
+  },
+  "runReceipt": {
+    "path": "build/axel-f-huelsbeck-roles/completed-run.json",
+    "sha256": "551412533090b9807b82fdac6f012c453af000acb7950eca5ca90f4419238e9e"
+  },
+  "verificationAsset": {
+    "path": "build/axel-f-huelsbeck-roles/cache/roles/304ef9ba24efccf0b96a5eaa566c197b7fc452be1ef6046ad8f9c0b33f1439e2/attempt-fe9a7be1ffd040ad995ff13bae26bb53/study/verification.json",
+    "sha256": "9c714bd58cc3db82530e8e1d4422e489c5ccc4c5c0627c038778fb7f18848887"
+  },
+  "evidence": [
+    {
+      "path": "build/axel-f-huelsbeck-roles/cache/render/c501101db77f6471677d57b3f818132c8f391aa7ed3af0d97e8f548b0158a52b/attempt-91ca515f25f14efe87a12b3f187b60bd/huelsbeck-70s.wav",
+      "sha256": "7def9d1b024fd53a96d6bcd311054d2a3600c6ae8bea18f350bfe2d2dca29283"
+    },
+    {
+      "path": "build/axel-f-huelsbeck-roles/cache/render/c501101db77f6471677d57b3f818132c8f391aa7ed3af0d97e8f548b0158a52b/attempt-91ca515f25f14efe87a12b3f187b60bd/huelsbeck-70s.wav.registers.tsv",
+      "sha256": "e6ac4554ee5116c8a8ca0b7aad93d2ee7e90db7cccfc15e0a47450a563cf290e"
+    }
+  ],
+  "limitations": "Timing windows use nominal steady call conversion and retain renderer startup separately. The last bounded source body may be truncated by capture end. Public aggregate contains program/role measurements without the source score, source payload or audio."
+}

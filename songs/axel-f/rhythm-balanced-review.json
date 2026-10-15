@@ -1,0 +1,330 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "A bounded native quieter balance of the same 68 source-maracas attacks in the 32-beat hook. The complete selected-timbre arrangement is unchanged; no percussion rollout or whole-song acceptance.",
+  "priorFeedback": {
+    "quote": "yes, maracas add a nice touch, but a bit too loud",
+    "decision": "Keep the source rhythm and noise role, then submit a quieter native envelope balance for a separate verdict."
+  },
+  "listeningVerdict": {
+    "date": "2026-10-15",
+    "quote": "In the second one, I can barely hear the maracas",
+    "status": "too-quiet-in-context",
+    "decision": "Do not select AD11. Its measured attenuation shortened the useful body too far in this mix. Try an intermediate native decay between the original AD14 and this AD11, preserving all source attacks."
+  },
+  "configuration": "songs/axel-f/rhythm-balanced.json",
+  "previousConfiguration": "songs/axel-f/rhythm-trial.json",
+  "target": {
+    "sidCount": 1,
+    "sidModel": "MOS8580",
+    "clock": "pal",
+    "baseAddress": "D400",
+    "cadence": "PAL single-speed VBI"
+  },
+  "mechanism": {
+    "previousAdSr": "1400",
+    "quieterAdSr": "1100",
+    "changedParameter": "Decay-rate nibble only, D4 to D1. Retain A1, S0, R0; do not lower already-zero sustain.",
+    "purpose": "Reduce integrated short-noise body energy while retaining the source onset/gate schedule and the previous attack rate.",
+    "limits": "This changes the native envelope shape, not a linear voice gain. The solo peak stays 4482 while its AC RMS falls 4.83 dB; the shorter decay may affect perceived texture and needs human review.",
+    "unchanged": "C6 absolute noise clock, noise waveform, TEST/GATE schedule, source durations, source pitch/rhythm, lead, bass, filter ownership and chip master volume. No waveform gain, WAV stem gain or normalization.",
+    "programIsOriginalApproximation": true
+  },
+  "rejectedScreen": {
+    "adSr": "3400",
+    "changedParameter": "Slower attack A1 to A3, retaining D4/S0/R0.",
+    "decision": "Rejected by measured signal guard before listening submission.",
+    "conditions": "Same cold-start source hook, native PAL MOS8580 export, original renderer, unity gain and same noise-only voice selection.",
+    "previousNoiseAcRms": 700.5157701848033,
+    "screenNoiseAcRms": 858.6526776570443,
+    "screenNoiseChangeDb": 1.7679922380782245,
+    "measurementDurationSeconds": 16.139795918367348,
+    "lesson": "A SID ADSR rate is not a gain control. In this gate/history context the slower attack prolonged energy and made the noise louder; choose balance changes by their executed and rendered result. No universal monotonic attack-to-loudness rule is claimed.",
+    "evidence": [
+      {
+        "path": "build/axel-f-rhythm-trial/cache/balance-prepare/270c1692cb309b12d9f8b2315ce76ee6e3ceea241341fbc34bd56f9253c59ccd/attempt-2d045838ae724b59b7f67a1d8219ee65/balance/candidate.json",
+        "sha256": "59a9caabd7ccca18345b2b252cfebdd44f5049b4f57e1eb02ed3bfe0f0139333"
+      },
+      {
+        "path": "build/axel-f-rhythm-trial/cache/balanced/b829b749aaf55727e291b0d587a3e74bedcc7349c02e56bcc1d400e1a0d2c0c8/attempt-433b1575085f4acaac473af66021960c/song/native-song.wav",
+        "sha256": "c00286fb9607265c728b277abf244784a0f8152d34618a226e08a9b3067610d7"
+      },
+      {
+        "path": "build/axel-f-rhythm-trial/cache/balanced-noise-only/1ae76297c37b7ce43d1080f522cc08213524e07bf768666f91f8eab2b8dffb05/attempt-bcf9d8f3b0f84c95833ad1df93fa3377/noise-only.wav",
+        "sha256": "c0df6d316bb21dbe920bfc5def8f327c48222537058c53b0a92c2a39e385b61d"
+      },
+      {
+        "path": "build/axel-f-rhythm-trial/cache/balanced-noise-only/1ae76297c37b7ce43d1080f522cc08213524e07bf768666f91f8eab2b8dffb05/attempt-bcf9d8f3b0f84c95833ad1df93fa3377/noise-only.wav.registers.tsv",
+        "sha256": "cc35b42ecfee967bd1de39ea4be437d29d9d9734b50f38f8cc5787ff76780530"
+      }
+    ]
+  },
+  "sourcePreservation": {
+    "sourceSha256": "8bf2fa73160461e13ace1609393879e12929ada5241e80f397cd3c0e4dfe429d",
+    "sourceWindowBeats": [
+      68,
+      100
+    ],
+    "arrangedWindowBeats": [
+      64,
+      96
+    ],
+    "onsets": 68,
+    "offBassOnsets": 30,
+    "durationAdaptation": false,
+    "nativeTonalAndRhythmSchedulesIdentical": true,
+    "coldStart": "Both exports retain the same bounded hook cold start; this does not promise the full version\u2019s preceding envelope history."
+  },
+  "verification": {
+    "cpuCalls": 987,
+    "changedFrameOffsets": [
+      12
+    ],
+    "changedRegister": "D40C voice2 AD only",
+    "unchangedSourceSchedule": true,
+    "unchangedTonalVoicesAndSharedControls": true,
+    "noiseOnsets": 68,
+    "renderedNonzeroNoiseAttacks": 68,
+    "gatedNoiseBodyCallCounts": {
+      "1": 36,
+      "2": 31,
+      "3": 1
+    },
+    "fixedNoiseFrequencyWord": 17820,
+    "sourceDurationAdaptation": false,
+    "matchedOrderedSidStores": 24699,
+    "maximumInstructionStartDifferenceCycles": 0,
+    "sameSidMutedRendererSnapshotsIdentical": true,
+    "mutedPreviousAndQuieterPcmIdentical": true,
+    "preStopReleaseAcRms": 0.0
+  },
+  "vice": {
+    "calls": [
+      0,
+      1,
+      3,
+      6,
+      150,
+      400,
+      810,
+      930,
+      980
+    ],
+    "maximumAbsoluteCycleError": 2,
+    "scope": "Standalone PRG boot, sampled SID write shadows and single-speed PAL cadence; not continuous write equivalence or listening evidence"
+  },
+  "signal": {
+    "noiseOnlyChangeDb": -4.830945717876951,
+    "sameSidDifferenceAcRms": [
+      700.58383337262,
+      401.7019655746121
+    ],
+    "sameSidDifferenceChangeDb": -4.831123091107249,
+    "phrasePcm": {
+      "previousFull": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 10731,
+        "peakDbfs": -9.696194801821719,
+        "clippedSamples": 0,
+        "rms": 2766.8535535926044,
+        "acRms": 2635.346105324258,
+        "acRmsDbfs": -21.89224549788768,
+        "perChannel": [
+          {
+            "dc": 842.869795508349,
+            "rms": 2766.8535535926044,
+            "acRms": 2635.346105324258
+          }
+        ]
+      },
+      "quieterFull": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 9688,
+        "peakDbfs": -10.584316096494442,
+        "clippedSamples": 0,
+        "rms": 2707.3425778682254,
+        "acRms": 2573.519900810549,
+        "acRmsDbfs": -22.09844807996494,
+        "perChannel": [
+          {
+            "dc": 840.6540037793372,
+            "rms": 2707.3425778682254,
+            "acRms": 2573.519900810549
+          }
+        ]
+      },
+      "previousNoiseOnly": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 4482,
+        "peakDbfs": -17.279561655213513,
+        "clippedSamples": 0,
+        "rms": 719.3100129953237,
+        "acRms": 700.5157701848033,
+        "acRmsDbfs": -33.40064036565511,
+        "perChannel": [
+          {
+            "dc": 163.35406489501452,
+            "rms": 719.3100129953237,
+            "acRms": 700.5157701848033
+          }
+        ]
+      },
+      "quieterNoiseOnly": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 4482,
+        "peakDbfs": -17.279561655213513,
+        "clippedSamples": 0,
+        "rms": 432.76354760356884,
+        "acRms": 401.6711417682014,
+        "acRmsDbfs": -38.23158608353206,
+        "perChannel": [
+          {
+            "dc": 161.07321939123165,
+            "rms": 432.76354760356884,
+            "acRms": 401.6711417682014
+          }
+        ]
+      },
+      "previousMuted": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 9688,
+        "peakDbfs": -10.584316096494442,
+        "clippedSamples": 0,
+        "rms": 2678.0832977291902,
+        "acRms": 2544.057525853023,
+        "acRmsDbfs": -22.19846015339266,
+        "perChannel": [
+          {
+            "dc": 836.6011323962263,
+            "rms": 2678.0832977291902,
+            "acRms": 2544.057525853023
+          }
+        ]
+      },
+      "quieterMuted": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 9688,
+        "peakDbfs": -10.584316096494442,
+        "clippedSamples": 0,
+        "rms": 2678.0832977291902,
+        "acRms": 2544.057525853023,
+        "acRmsDbfs": -22.19846015339266,
+        "perChannel": [
+          {
+            "dc": 836.6011323962263,
+            "rms": 2678.0832977291902,
+            "acRms": 2544.057525853023
+          }
+        ]
+      }
+    },
+    "scope": "Same-SID voice muting is a contribution diagnostic, not an additive stem. The previous/quieter exports are separate native programs; ordered values and instruction timing are checked, while internal synthesis equivalence and musical acceptance remain unclaimed."
+  },
+  "comparison": {
+    "order": [
+      "previous maracas",
+      "quieter native maracas"
+    ],
+    "windowSeconds": [
+      0.0,
+      16.134432
+    ],
+    "gapSeconds": 0.5,
+    "durationSeconds": 32.768843537414966,
+    "gains": [
+      1,
+      1
+    ],
+    "normalization": false,
+    "reference": "The previously submitted maracas native export, unchanged.",
+    "candidate": "Same source hook with native noise decay $14\u2192$11 only.",
+    "timingCaveat": "Separate native exports can shift unchanged register timing. Here all 24,699 ordered store locations match and instruction starts have 0-cycle difference; the two muted renders are PCM-identical. This scoped execution/render result is not a hardware-equivalence guarantee. Same-candidate muting is a diagnostic, not an additive stem."
+  },
+  "modelAssistanceReview": {
+    "decision": "No call after feedback: the listener reports the revised maracas is barely audible. Technical contribution and per-attack nonzero energy did not establish useful prominence; an intermediate body/energy setting is the next bounded revision.",
+    "nextCheckpoint": "Intermediate-maracas audition feedback or a substantive musical revision."
+  },
+  "acceptanceQuestion": "Does the quieter version keep the nice rhythmic touch at a better balance?",
+  "recipe": "config/listening/axel-f-rhythm-balanced.json",
+  "cacheReuse": "This invocation used build/axel-f-rhythm-trial as a shared recipe cache: all 8 previous stages were fingerprint-verified and reused, preserving old immutable attempts and the original completed-run.json. A fresh output directory may rebuild the complete bounded package.",
+  "runReceipt": {
+    "path": "build/axel-f-rhythm-balanced/completed-run.json",
+    "sha256": "b72ec8e845f0df3f09caa82a6c0571b053fac75e4046c18d1e83a86ad1464891"
+  },
+  "publicationReceipt": {
+    "path": "build/axel-f-rhythm-balanced-listening/sources.json",
+    "sha256": "39e9280b138e4a646d07f420dd4250491cf1fd7cc77200a787b7e5d74ae509b2"
+  },
+  "evidence": [
+    {
+      "path": "build/axel-f-rhythm-trial/cache/balanced/955a94fab571087afb3b0737a14ebede909a681b7b3acdd513ceb23a5a68533f/attempt-ab54c3cde23b4ac0bd33010ffeb97831/song/verification.json",
+      "sha256": "37b15a82cbe883cc4caf3e3bf8c4904cfade4da7ae16c4fcf1af4cdce6229e75"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/balanced-vice/19ea11c0147bdca30b8d138cefc60900baa90dfb36f82dc3a31c3a88cbd5fb93/attempt-c1f94e6e35b64af598c437744551a9a0/vice/verification.json",
+      "sha256": "6160937a25c266ff22605a6d2cfde97653fdc1603d9f2a17a15120e32a50cd93"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/balance-mechanism/0b829c4c84c61298782eb8b73c2744a448dc3f9f83054e8a8202b6f6489c996a/attempt-8de74467866d4aeeb6a5927bafa1ea92/balance-mechanism.json",
+      "sha256": "54210939abafa61b3e8685162f62975636ba9319d8df4cc617fa8a829b0b0dd5"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/trial/1f74b19c8e9ac933fa2f471f9d960e154ac6a24c262403d2f5f1cad5c1803755/attempt-f5c3bbb3cb6a42fc8cbcb2ad0906cb36/trial/adaptation.json",
+      "sha256": "369cc2df52abf2451f267cdeab2c71cf24cdf09918a44a84f9275d527f1745f1"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/balanced/955a94fab571087afb3b0737a14ebede909a681b7b3acdd513ceb23a5a68533f/attempt-ab54c3cde23b4ac0bd33010ffeb97831/song/export/candidate.sid",
+      "sha256": "2085c29175f8b4ccd5fe3856d107fff9c56e23940821f6a78df3c3e46d0bcef3"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/balanced/955a94fab571087afb3b0737a14ebede909a681b7b3acdd513ceb23a5a68533f/attempt-ab54c3cde23b4ac0bd33010ffeb97831/song/export/candidate.prg",
+      "sha256": "f7806b6b1fba652ee3be991e809ddb503e0a970faa311bbffa82dfbcc17fef9d"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/balanced/955a94fab571087afb3b0737a14ebede909a681b7b3acdd513ceb23a5a68533f/attempt-ab54c3cde23b4ac0bd33010ffeb97831/song/conversion/candidate.swm",
+      "sha256": "74902c8a9c49b771f377aceafbeb2d1ddd52955ca1a853edb0665461b04d01a5"
+    }
+  ],
+  "files": [
+    {
+      "path": "build/axel-f-rhythm-balanced-listening/previous-maracas.wav",
+      "sha256": "158387717fed1eef62948b25dfb40dba1b907c09e774dfae66b65815f38bf252"
+    },
+    {
+      "path": "build/axel-f-rhythm-balanced-listening/quieter-maracas.wav",
+      "sha256": "e97703d75e48393f32d6461aafff86d8d9f8999612dee6f9da0e7e6c453bc748"
+    },
+    {
+      "path": "build/axel-f-rhythm-balanced-listening/previous-then-quieter.ab.wav",
+      "sha256": "e261962d994c1670ddb1e4c826f350e5cc4e92cd67e3631c9c21bcdc9c9f2d91"
+    }
+  ],
+  "focusedTests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=scripts python3 -m unittest discover -s tests -p 'axel_f_rhythm*_test.py'",
+    "result": "All 9 focused source-projection and balance guards pass after red/green implementation."
+  }
+}

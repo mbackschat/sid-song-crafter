@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "render",
+      "command": [
+        ".local/bin/render-sid",
+        ".local/research/axel-f/huelsbeck-original.sid",
+        "{out}/huelsbeck-70s.wav",
+        "70",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        ".local/research/axel-f/huelsbeck-original.sid",
+        "scripts/render-sid.cpp",
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "huelsbeck-70s.wav",
+        "huelsbeck-70s.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "roles",
+      "command": [
+        "{python}",
+        "scripts/studies/axel-f/study-huelsbeck-roles.py",
+        ".local/research/axel-f/huelsbeck-original.sid",
+        "--render-snapshots",
+        "{stage:render}/huelsbeck-70s.wav.registers.tsv",
+        "--output",
+        "{out}/study"
+      ],
+      "inputs": [
+        "scripts/studies/axel-f/study-huelsbeck.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_intake.py",
+        "scripts/verify_player.py",
+        "scripts/sid_assembler.py",
+        "scripts/trace-shades-vice.py",
+        "scripts/trace-sid-vice.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        ".local/research/axel-f/huelsbeck-original.sid",
+        "scripts/studies/axel-f/study-huelsbeck-roles.py",
+        "{stage:render}/huelsbeck-70s.wav.registers.tsv"
+      ],
+      "outputs": [
+        "study/verification.json",
+        "study/frozen-bass-pwm.sid",
+        "study/bass-intervention-differences.json.gz",
+        "study/original/report.json",
+        "study/original/writes.json.gz",
+        "study/original/snapshots.json.gz",
+        "study/original/observations.json.gz",
+        "study/frozen-bass/report.json",
+        "study/frozen-bass/writes.json.gz",
+        "study/frozen-bass/snapshots.json.gz",
+        "study/frozen-bass/observations.json.gz",
+        "study/vice-original/verification.json",
+        "study/vice-original/trace.json.gz"
+      ],
+      "timeoutSeconds": 240,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "reference": "{stage:render}/huelsbeck-70s.wav",
+    "snapshots": "{stage:render}/huelsbeck-70s.wav.registers.tsv",
+    "verification": "{stage:roles}/study/verification.json"
+  }
+}

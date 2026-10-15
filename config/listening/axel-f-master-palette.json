@@ -1,0 +1,424 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "prepare",
+      "command": [
+        "{python}",
+        "scripts/prepare-score-audition.py",
+        ".local/research/axel-f/winjammer-axelf.mid",
+        "config/scores/axel-f-import.json",
+        "--output",
+        "{out}/score",
+        "--arrangement",
+        "songs/axel-f/full-reduction.json",
+        "--candidate",
+        "songs/axel-f/master-palette.json",
+        "--reference",
+        "songs/axel-f/selected-roles.json"
+      ],
+      "inputs": [
+        ".local/research/axel-f/winjammer-axelf.mid",
+        "config/scores/axel-f-import.json",
+        "scripts/prepare-score-audition.py",
+        "scripts/score_tools.py",
+        "songs/axel-f/full-reduction.json",
+        "songs/axel-f/selected-roles.json",
+        ".tools/arrangement-deps/mido",
+        "songs/axel-f/master-palette.json"
+      ],
+      "outputs": [
+        "score/common-score.json",
+        "score/score.json",
+        "score/candidate.json",
+        "score/reference.json",
+        "score/adaptation.json",
+        "score/source.mid",
+        "score/import-recipe.json",
+        "score/full-common-score.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/arrangement-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "trial",
+      "command": [
+        "{python}",
+        "-c",
+        "import copy,hashlib,json,pathlib,sys\nfrom fractions import Fraction\n\ndef require(condition,message):\n    if not condition:raise ValueError(message)\n\ndef read(path):return json.loads(path.read_text())\ndef rational(value):return Fraction(*value) if isinstance(value,list) else Fraction(str(value))\nscore_path,reference_path,candidate_path,source_path,output=map(pathlib.Path,sys.argv[1:])\nscore,reference,candidate=map(read,(score_path,reference_path,candidate_path))\nrequire(hashlib.sha256(score_path.read_bytes()).hexdigest()=='888c0e3f69eae5cc1bf45f78e55dffbd3a3bf40716943e03f9cb6878a20f97bd','Preserved complete reduction changed')\nrequire(hashlib.sha256(source_path.read_bytes()).hexdigest()=='8bf2fa73160461e13ace1609393879e12929ada5241e80f397cd3c0e4dfe429d','Pinned source MIDI changed')\nrequire((candidate['sidCount'],candidate['sidModel'],candidate['clock'])==(1,'MOS8580','pal'),'Keep the established native target')\nexpected=dict(lead=dict(adsr='0a49'),bass=dict(adsr='0999',pulse=[['85','00','00'],['1d','29','00'],['0f','d7','00'],['0f','29','00'],dict(jump=2)],filter=[]))\nrestored=copy.deepcopy(candidate)\nfor role,fields in expected.items():\n    for field,value in fields.items():\n        require(candidate['instruments'][role][field]==value,'Master palette does not implement the selected '+role+' '+field)\n        restored['instruments'][role][field]=copy.deepcopy(reference['instruments'][role][field])\nrequire(restored==reference,'Only the approved lead ADSR and bass ADSR/PWM/filter may change')\nrequire([voice['name'] for voice in score['voices']]==['melody','harmony','bass'],'Established physical roles changed')\nstart,end=map(Fraction,(64,96))\nselected=copy.deepcopy(score)\nselected.pop('sections',None)\nselected['totalBeats']=float(end-start)\nselected['provenance']=dict((key,value) for key,value in score['provenance'].items() if key!='reduction')\nselected['provenance']['masterPaletteTrial']=dict(arrangedWindowBeats=[64,96],sourceWindowBeats=[68,100],fullReducedScoreSha256=hashlib.sha256(score_path.read_bytes()).hexdigest())\nfor before,after in zip(score['voices'],selected['voices']):\n    require(not any(rational(event['startBeat'])<start<rational(event['startBeat'])+rational(event['durationBeats']) for event in before['events']),'A note crosses the excerpt entrance')\n    after['events']=[]\n    for event in before['events']:\n        onset,duration=map(rational,(event['startBeat'],event['durationBeats']))\n        if start<=onset<end:\n            require(onset+duration<=end,'A note crosses the excerpt ending')\n            after['events'].append(dict(event,startBeat=float(onset-start)))\nrequire(not selected['voices'][1]['events'],'Harmony voice must remain vacant; no percussion in this palette trial')\nreport=dict(schemaVersion=1,arrangedWindowBeats=[64,96],sourceWindowBeats=[68,100],sourceSha256=score['provenance']['sourceSha256'],fullReducedScoreSha256=hashlib.sha256(score_path.read_bytes()).hexdigest(),changedInstrumentFields=expected,sourcePitchesDurationsAndOnsetsPreserved=True,tonalNoteCounts=[len(voice['events']) for voice in selected['voices']],transpositionSemitones=0,percussionAdded=False,scope='One coherent lead-and-bass palette on the existing hook, not a full arrangement revision or exact source-driver reconstruction.')\noutput.mkdir()\nfor name,value in (('score.json',selected),('adaptation.json',report)):\n    (output/name).write_text(json.dumps(value,indent=2)+chr(10))\nfor name,palette in (('reference.json',reference),('candidate.json',candidate)):\n    palette=copy.deepcopy(palette)\n    palette['sections']=[dict(name='Existing hook and bass; no percussion',startBeat=0,endBeat=32,voices=dict(melody='lead',harmony='harmony',bass='bass'))]\n    palette['score']='score.json'\n    (output/name).write_text(json.dumps(palette,indent=2)+chr(10))\n",
+        "{stage:prepare}/score/score.json",
+        "{stage:prepare}/score/reference.json",
+        "{stage:prepare}/score/candidate.json",
+        ".local/research/axel-f/winjammer-axelf.mid",
+        "{out}/trial"
+      ],
+      "inputs": [
+        "{stage:prepare}/score/score.json",
+        "{stage:prepare}/score/reference.json",
+        "{stage:prepare}/score/candidate.json",
+        ".local/research/axel-f/winjammer-axelf.mid"
+      ],
+      "outputs": [
+        "trial/score.json",
+        "trial/adaptation.json",
+        "trial/reference.json",
+        "trial/candidate.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "reference",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:trial}/trial/reference.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "16.134432",
+        "--excerpt-start",
+        "0"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:trial}/trial/reference.json",
+        "{stage:trial}/trial/score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/reference.sid",
+        "song/export/reference.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/reference.swm",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:trial}/trial/candidate.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "16.134432",
+        "--excerpt-start",
+        "0"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:trial}/trial/candidate.json",
+        "{stage:trial}/trial/score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/candidate.sid",
+        "song/export/candidate.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/candidate.swm",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "isolation",
+      "command": [
+        "{python}",
+        "-c",
+        "import collections,hashlib,json,pathlib,sys\n\ndef require(condition,message):\n    if not condition:raise ValueError(message)\ndef read(path):return json.loads(path.read_text())\na_path,b_path,ma_path,mb_path,score_path,output=map(pathlib.Path,sys.argv[1:])\na,b,ma,mb=map(read,(a_path,b_path,ma_path,mb_path))\nrequire(len(a)==len(b) and all(len(row)==25 for row in a+b),'Complete native frame coverage changed')\nignored=set(('instrument','instrumentId','pattern','row','byteOffset'))\nschedule=lambda manifest:[[dict((key,value) for key,value in note.items() if key not in ignored) for note in voice['notes']] for voice in manifest['voices']]\nrequire(schedule(ma)==schedule(mb),'Source pitches, onsets, durations or native note/gate timing changed')\nrequire(all(ma[key]==mb[key] for key in ('stopTick','stopVolumeClearTick','clock','sidModel','sidCount','totalTicks','ticksPerSecond')),'Native target or ending changed')\nscore=read(score_path)\nrequire([len(voice['notes']) for voice in mb['voices']]==[len(voice['events']) for voice in score['voices']] and not score['voices'][1]['events'],'Native note coverage differs from the actual source projection')\nallowed=set((5,6,16,17,19,20,21,22,23,24))\nchanged=collections.Counter()\nfor tick,(left,right) in enumerate(zip(a,b)):\n    require(left[7:14]==right[7:14],'Vacant harmony voice changed')\n    require(left[24]&15==right[24]&15,'Master volume changed')\n    require(all(left[offset]==right[offset] for offset in (0,1,4,14,15,18)),'Pitch, GATE, TEST, waveform or coupling changed')\n    require(right[23]==0 and right[24]&0xf0==0,'Candidate must bypass oscillator routing, resonance and filter modes')\n    for offset,(before,after) in enumerate(zip(left,right)):\n        if before!=after:\n            require(offset in allowed,'An unselected SID register changed at tick '+str(tick)+' offset '+str(offset))\n            changed[offset]+=1\nrequire(changed[5] and changed[6] and changed[16] and changed[19] and changed[20] and changed[23],'Selected lead/bass intervention did not execute')\nwidths=[row[16]+((row[17]&15)<<8) for row in b]\nnotes=mb['voices'][2]['notes']\nresets=[note['startTick']+1 for note in notes]\nrequire(all(widths[tick]==0x500 for tick in resets),'Every native bass onset must reset width to $500')\nreset=resets[-1];stop=mb['stopTick']\nrequire(reset+127<stop<len(b),'Final bass release must expose the bounded native pulse loop')\nexpected=dict(((0,0x500),(29,0x9a5),(30,0x9a5),(45,0x73e),(46,0x73e),(61,0x9a5),(62,0x9a5),(63,0x9a5),(78,0x73e),(94,0x9a5),(111,0x73e),(127,0x9a5)))\nrequire(all(widths[reset+offset]==value for offset,value in expected.items()),'Executed bass PWM extrema or transition holds differ')\nrequire(all(widths[reset+offset]==0x500+41*offset for offset in range(30)),'Bass rise must execute 29 steps of 41')\nrequire(all(0x73e<=value<=0x9a5 for value in widths[reset+31:stop]),'Executed bass loop exceeds its bounds')\nrequire(all(after-before in (-41,0,41) for before,after in zip(widths[reset:stop-1],widths[reset+1:stop])),'Bass pulse step changed')\nwords=[b[note['startTick']+1][14]+(b[note['startTick']+1][15]<<8) for note in notes]\nrate=mb['ticksPerSecond']\ngated_widths=[width for width,row in zip(widths,b) if row[18]==0x41]\nrequire(gated_widths,'Bass must have gated pulse bodies')\nreport=dict(schemaVersion=1,frames=len(b),noteCounts=[len(voice['notes']) for voice in mb['voices']],allSourceAndNativeNoteSchedulesEqual=True,allFrequencyWordsWaveformsGateTestAndCouplingEqual=True,unusedHarmonyVoiceEqual=True,masterVolumeEqual=True,allUnselectedRegistersEqual=True,changedOffsets=dict(changed),allowedChangedOffsets=sorted(allowed),candidateOscillatorFilterRoute=0,leadAdsr='0a49',bassAdsr='0999',bassMidiRange=[min(note['midi'] for note in notes),max(note['midi'] for note in notes)],bassBodyFrequencyWordRange=[min(words),max(words)],bassOnsets=len(resets),allBassOnsetsResetPulseTo=0x500,finalBassResetTick=reset,firstBassPwmPeakSeconds=29/rate,steadyPwmDescentFrames=17,steadyPwmRiseFrames=16,steadyPwmCycleFrames=33,steadyPwmCycleSeconds=33/rate,steadyPwmMinimum=0x73e,steadyPwmMaximum=0x9a5,gatedBassPulseWidthRange=[min(gated_widths),max(gated_widths)],firstFinalNotePwmPeakIsGated=bool(b[reset+29][18]&1),transitionHoldsIncluded=True,finalBassGateClearTick=next(tick for tick in range(reset,stop) if not b[tick][18]&1),checkedBassPulseBoundaries=[dict(tick=reset+offset,width=widths[reset+offset],gate=bool(b[reset+offset][18]&1)) for offset in expected],scope='Same-score palette intervention. Every pitch/control trajectory and nonselected register agrees in post-call snapshots; selected ADSR, bass PWM and shared filter bypass change. Native per-note resets and TEST frames are retained, so this is not source legato, cumulative drift, PCM identity or musical acceptance.')\noutput.write_text(json.dumps(report,indent=2)+chr(10))\n",
+        "{stage:reference}/song/native-song.frames.json",
+        "{stage:candidate}/song/native-song.frames.json",
+        "{stage:reference}/song/conversion.json",
+        "{stage:candidate}/song/conversion.json",
+        "{stage:trial}/trial/score.json",
+        "{out}/palette-isolation.json"
+      ],
+      "inputs": [
+        "{stage:reference}/song/native-song.frames.json",
+        "{stage:candidate}/song/native-song.frames.json",
+        "{stage:reference}/song/conversion.json",
+        "{stage:candidate}/song/conversion.json",
+        "{stage:trial}/trial/score.json"
+      ],
+      "outputs": [
+        "palette-isolation.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:candidate}/song/export/candidate.prg",
+        "{stage:candidate}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:candidate}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "3",
+        "6",
+        "150",
+        "400",
+        "810",
+        "930",
+        "980",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:candidate}/song/export/candidate.prg",
+        "{stage:candidate}/song/native-song.writes.json",
+        "{stage:candidate}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "{out}/previous-then-master-palette",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "16.134432"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav"
+      ],
+      "outputs": [
+        "previous-then-master-palette.ab.wav",
+        "previous-then-master-palette.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "pre-stop-release",
+      "command": [
+        "{python}",
+        "-c",
+        "import hashlib,json,math,pathlib,sys\nfrom audio_comparison import Pcm16,measure_pcm,read_pcm16\ndef require(condition,message):\n    if not condition: raise ValueError(message)\nreports=[]\nfor label,manifest_path,wav_path in zip(('reference','candidate'),sys.argv[1:3],sys.argv[3:5]):\n    manifest_bytes=pathlib.Path(manifest_path).read_bytes()\n    manifest=json.loads(manifest_bytes)\n    stop_tick,rate=manifest['stopTick'],manifest['ticksPerSecond']\n    require(type(stop_tick) is int and stop_tick>0 and type(rate) in (int,float) and math.isfinite(rate) and rate>0 and manifest['stopVolumeClearTick']==stop_tick,'Invalid native stop/volume-clear timing')\n    stop=stop_tick/rate\n    audio=read_pcm16(wav_path)\n    first,last=(round((stop-offset)*audio.sample_rate) for offset in (0.5,0.1))\n    require(audio.channels==manifest['sidCount'] and 0<=first<last<=audio.frames and last/audio.sample_rate<stop,'Pre-stop release window must fit the declared audio before volume clear')\n    samples=audio.samples[first*audio.channels:last*audio.channels]\n    metrics=measure_pcm(Pcm16(audio.sample_rate,audio.channels,last-first,samples,''))\n    require(all(channel['acRms']<=16 for channel in metrics['perChannel']),label+' release exceeds 16 PCM16 AC RMS before volume clear')\n    if sys.byteorder!='little': samples.byteswap()\n    reports.append(dict(label=label,manifestSha256=hashlib.sha256(manifest_bytes).hexdigest(),audioSha256=audio.sha256,stopTick=stop_tick,stopVolumeClearTick=manifest['stopVolumeClearTick'],ticksPerSecond=rate,stopSeconds=stop,requestedWindowSeconds=[stop-0.5,stop-0.1],window=dict(startFrame=first,endFrame=last,startSeconds=first/audio.sample_rate,endSeconds=last/audio.sample_rate,pcm16LeSha256=hashlib.sha256(samples.tobytes()).hexdigest(),metrics=metrics)))\npathlib.Path(sys.argv[5]).write_text(json.dumps(dict(schemaVersion=1,maxPerChannelAcRms=16,scope='Rendered decay must settle in the declared window before native volume clear; musical ending acceptance remains open.',renders=reports),indent=2)+chr(10))\n",
+        "{stage:reference}/song/conversion.json",
+        "{stage:candidate}/song/conversion.json",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "{out}/pre-stop-release.json"
+      ],
+      "inputs": [
+        "scripts/audio_comparison.py",
+        "{stage:reference}/song/conversion.json",
+        "{stage:candidate}/song/conversion.json",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav"
+      ],
+      "outputs": [
+        "pre-stop-release.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "master-source",
+      "command": [
+        "{python}",
+        "-c",
+        "import hashlib,json,pathlib,subprocess,sys\nsource,renderer,output=map(pathlib.Path,sys.argv[1:])\nif hashlib.sha256(source.read_bytes()).hexdigest()!='87e0a1e8ad618a497e54fc5d4228dee7be53ef6365a30900debcdafbcd21251b':raise ValueError('Pinned Hulsbeck original changed')\nsubprocess.run([str(renderer),str(source),str(output),'70','--subtune','1','--clock','pal'],check=True,timeout=30)\n",
+        ".local/research/axel-f/huelsbeck-original.sid",
+        ".local/bin/render-sid",
+        "{out}/huelsbeck-original-70s.wav"
+      ],
+      "inputs": [
+        ".local/research/axel-f/huelsbeck-original.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "huelsbeck-original-70s.wav",
+        "huelsbeck-original-70s.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 45
+    },
+    {
+      "id": "master-contexts",
+      "command": [
+        "{python}",
+        "-c",
+        "import hashlib,json,pathlib,sys,wave\nfrom audio_comparison import Pcm16,measure_pcm,read_pcm16\nsource_path,output=map(pathlib.Path,sys.argv[1:]);audio=read_pcm16(source_path)\nreports=[]\nfor name,start,end in (('huelsbeck-lead-and-beat-9.5-20s.wav',9.5,20),('huelsbeck-support-28-44s.wav',28,44),('huelsbeck-high-phrase-56-66s.wav',56,66)):\n    first,last=(round(value*audio.sample_rate) for value in (start,end))\n    if not 0<=first<last<=audio.frames:raise ValueError('Source context is outside the rendered stream')\n    samples=audio.samples[first*audio.channels:last*audio.channels]\n    metrics=measure_pcm(Pcm16(audio.sample_rate,audio.channels,last-first,samples,''))\n    if metrics['acRms']<=1 or metrics['clippedSamples']:raise ValueError('Source context has an unhealthy signal')\n    if sys.byteorder!='little':samples.byteswap()\n    data=samples.tobytes()\n    path=output/name\n    with path.open('xb') as stream:\n        with wave.open(stream,'wb') as wav:\n            wav.setparams((audio.channels,2,audio.sample_rate,0,'NONE','not compressed'));wav.writeframes(data)\n    reports.append(dict(filename=name,sourceWindowSeconds=[start,end],gain=1,sha256=hashlib.sha256(path.read_bytes()).hexdigest(),metrics=metrics))\n(output/'source-contexts.json').write_text(json.dumps(dict(schemaVersion=1,sourceWavSha256=audio.sha256,clock='PAL',sidModel='MOS6581',subtune=1,clips=reports,scope='Original Hulsbeck reference in its own key, tempo, form and arrangement; timbral/ensemble context, not same-score A/B fidelity.'),indent=2)+chr(10))\n",
+        "{stage:master-source}/huelsbeck-original-70s.wav",
+        "{out}"
+      ],
+      "inputs": [
+        "scripts/audio_comparison.py",
+        "{stage:master-source}/huelsbeck-original-70s.wav"
+      ],
+      "outputs": [
+        "huelsbeck-lead-and-beat-9.5-20s.wav",
+        "huelsbeck-support-28-44s.wav",
+        "huelsbeck-high-phrase-56-66s.wav",
+        "source-contexts.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "palette-audio",
+      "command": [
+        "{python}",
+        "-c",
+        "import hashlib,json,math,pathlib,sys\nfrom audio_comparison import read_pcm16\n\ndef require(condition,message):\n    if not condition:raise ValueError(message)\n\na,b=map(read_pcm16,sys.argv[1:3])\nrequire((a.sample_rate,a.channels,a.frames)==(b.sample_rate,b.channels,b.frames),'Full render formats and lengths differ')\nreports=[]\nfor label,report_path in zip(('lead-and-bass-palette',),sys.argv[3:4]):\n    report=json.loads(pathlib.Path(report_path).read_text())\n    require(report['normalization'] is False and all(x['gain']==1 and x['gainDb']==0 for x in report['inputs']),'Both comparison sides must retain unity gain')\n    require([x['sha256'] for x in report['inputs']]==[a.sha256,b.sha256],'Comparison must use these exact full renders in baseline/candidate order')\n    first,last=(report['window'][key]*a.channels for key in ('startFrame','endFrame'))\n    delta=[y-x for x,y in zip(a.samples[first:last],b.samples[first:last])]\n    changed=sum(x!=0 for x in delta)\n    require(changed>0,'The submitted role pair has no signal change')\n    mean=sum(delta)/len(delta)\n    rms=math.sqrt(sum(x*x for x in delta)/len(delta))\n    reports.append(dict(label=label,window=report['window'],changedSamples=changed,totalSamples=len(delta),deltaRms=rms,deltaAcRms=math.sqrt(max(0,rms*rms-mean*mean)),comparisonSha256=report['comparison']['sha256'],inputGains=[x['gain'] for x in report['inputs']]))\npathlib.Path(sys.argv[4]).write_text(json.dumps(dict(schemaVersion=1,referenceSha256=a.sha256,candidateSha256=b.sha256,comparisons=reports,scope='Confirms nonidentical PCM from the exact submitted unity-gain pair; this does not establish audibility, preference or musical usefulness.'),indent=2)+chr(10))\n",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "{stage:comparison}/previous-then-master-palette.comparison.json",
+        "{out}/palette-audio.json"
+      ],
+      "inputs": [
+        "scripts/audio_comparison.py",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "{stage:comparison}/previous-then-master-palette.comparison.json"
+      ],
+      "outputs": [
+        "palette-audio.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "matched-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "prepare",
+        "{stage:reference}/song/native-song.excerpt.wav",
+        "{stage:candidate}/song/native-song.excerpt.wav",
+        "{out}/previous-then-master-palette-matched"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:reference}/song/native-song.excerpt.wav",
+        "{stage:candidate}/song/native-song.excerpt.wav"
+      ],
+      "outputs": [
+        "previous-then-master-palette-matched.ab.wav",
+        "previous-then-master-palette-matched.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    }
+  ],
+  "deliverables": {
+    "reference": "{stage:reference}/song/native-song.wav",
+    "candidate": "{stage:candidate}/song/native-song.wav",
+    "comparison": "{stage:matched-comparison}/previous-then-master-palette-matched.ab.wav",
+    "master-lead-context": "{stage:master-contexts}/huelsbeck-lead-and-beat-9.5-20s.wav",
+    "master-support-context": "{stage:master-contexts}/huelsbeck-support-28-44s.wav",
+    "verification": "{stage:candidate}/song/verification.json",
+    "vice": "{stage:vice}/vice/verification.json",
+    "isolation": "{stage:isolation}/palette-isolation.json",
+    "adaptation": "{stage:trial}/trial/adaptation.json",
+    "pre-stop-release": "{stage:pre-stop-release}/pre-stop-release.json",
+    "source-contexts": "{stage:master-contexts}/source-contexts.json",
+    "candidate-sid": "{stage:candidate}/song/export/candidate.sid",
+    "candidate-prg": "{stage:candidate}/song/export/candidate.prg",
+    "candidate-native": "{stage:candidate}/song/conversion/candidate.swm",
+    "palette-audio": "{stage:palette-audio}/palette-audio.json",
+    "master-high-context": "{stage:master-contexts}/huelsbeck-high-phrase-56-66s.wav",
+    "unity-comparison": "{stage:comparison}/previous-then-master-palette.ab.wav",
+    "matched-comparison-report": "{stage:matched-comparison}/previous-then-master-palette-matched.comparison.json"
+  }
+}

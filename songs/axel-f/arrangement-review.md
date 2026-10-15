@@ -63,7 +63,7 @@ All comparisons use common unity gain and a half-second gap. These are generated
 
 The [role review](role-aware-review.json) pins the complete renders and submitted clips. All 1,025 note schedules are unchanged across 9,006 CPU calls; exactly one held-support and 97 upper-lead assignments change. Other voices, filter, volume, GATE/TEST and coupling schedules agree. Sampled VICE checks cover both changes and returns through call 9,000; both full WAVs are unclipped and end quietly. This establishes the declared timbre intervention, not musical improvement.
 
-The [kick review](kick-trial-review.json) pins its separate source-backed experiment. Its 146 notes pass 987 CPU calls and sampled VICE checks through call 980. Forty hits retain three gated updates of the low C1 body; three retain one, and five retain none because the next source hit arrives too soon. The unchanged lead and bass preserve their own envelopes and the bass remains the sole filter owner. This is a bounded percussion test, not the complete drum arrangement.
+The [kick review](kick-trial-review.json) pins its separate source-backed experiment. Its 144 notes (46 lead, 48 kick and 50 bass) pass 987 CPU calls and sampled VICE checks through call 980. Forty hits retain three gated updates of the low C1 body; three retain one, and five retain none because the next source hit arrives too soon. The unchanged lead and bass preserve their own envelopes and the bass remains the sole filter owner. This is a bounded percussion test, not the complete drum arrangement.
 
 ```sh
 python3 scripts/listening-package.py config/listening/axel-f-role-aware.json --output build/axel-f-role-aware
@@ -111,11 +111,60 @@ The stable local folder is `build/axel-f-selected-roles-listening/`: `axel-f-sel
 
 The [rhythm configuration](rhythm-trial.json) selects the source’s 68 GM-maracas attacks in beats 68–100, including 30 that do not coincide with bass. The original short noise program uses a fixed oscillator frequency, `AD=$14/SR=$00`, and no filter, vibrato or oscillator coupling. The [Ghostbusters noise instrument](../../docs/research/composition/instruments/ghostbusters-decoded-programs.md) supplies prior envelope evidence; Hülsbeck supplies the stronger arrangement lesson of a dedicated, contrasting percussion role. Neither makes this a recovered master patch or a faithful acoustic-maracas emulation.
 
-The candidate retains every selected source onset and duration. Native execution yields 36 one-update, 31 two-update and one three-update gated noise bodies, followed by the declared release. The unchanged lead and bass plus 68 percussion events pass 987 calls and sampled VICE checks. The [review](rhythm-trial-review.json) records the counts, source projection, same-SID muted control, signal checks and pending human verdict. A measured contribution remains separate from musical benefit.
+The candidate retains every selected source onset and duration. Native execution yields 36 one-update, 31 two-update and one three-update gated noise bodies, followed by the declared release. The unchanged lead and bass plus 68 percussion events pass 987 calls and sampled VICE checks. The [review](rhythm-trial-review.json) records the counts, source projection, same-SID muted control, signal checks and the liked-role/too-loud verdict. A measured contribution remains separate from musical benefit.
 
 ```sh
 python3 scripts/listening-package.py config/listening/axel-f-rhythm-trial.json --output build/axel-f-rhythm-trial
 python3 scripts/publish-listening.py build/axel-f-rhythm-trial/run.json --selection config/listening/axel-f-rhythm-trial.audition.json --output build/axel-f-rhythm-trial-listening-new
 ```
 
-The stable folder `build/axel-f-rhythm-trial-listening/` contains `without-then-with-maracas.ab.wav` (32.77 seconds, muted first, full second, common unity gain), `without-maracas.wav`, `with-maracas.wav`, and the optional `maracas-only.wav` diagnostic. The primary question is whether the source-backed off-bass attacks add useful movement while preserving melody and bass clarity. No further gain-only kick trial is queued. The complete selected-timbre render does not include this unreviewed addition. Model review is no-call: the present models are not calibrated to settle this musical preference.
+The stable folder `build/axel-f-rhythm-trial-listening/` contains `without-then-with-maracas.ab.wav` (32.77 seconds, muted first, full second, common unity gain), `without-maracas.wav`, `with-maracas.wav`, and the optional `maracas-only.wav` diagnostic. The primary question is whether the source-backed off-bass attacks add useful movement while preserving melody and bass clarity. No further gain-only kick trial is queued. The complete selected-timbre render does not include this addition; its rhythmic role is liked but its level requires the balance revision below. Model review is no-call: the present models are not calibrated to settle this musical preference.
+
+## Full-version verdict and named master passages
+
+The listener rates the selected full render “mediocre” and identifies three strengths in Hülsbeck’s original: the main instrument and background beat around 9.50 seconds, the supporting instrument around 28.80 seconds, and the instrument change heard around 60 seconds. These reference times belong to the pinned original SID, not our independently sourced score. The earlier relative high-lead preference does not establish a compelling arrangement.
+
+The maracas comparison receives “yes, maracas add a nice touch, but a bit too loud”. Retain its rhythmic role, with native balance revision required. The next work separates that small level correction from a deeper master-informed instrument/ensemble trial. Inspect the named source transitions before assigning an explanation; a perceived instrument change can arise from a program, register, articulation or ensemble change. Preserve that distinction in the executed evidence and test one coherent source-informed palette on our existing score rather than continuing arbitrary patch substitutions.
+
+Model review after these verdicts is no-call: the user has supplied specific positive reference moments and a useful-role/excessive-level distinction. Source analysis and native checks can narrow the interventions, while neither current model scores nor register agreement establish a compelling musical result.
+
+## Quieter native maracas
+
+The [balance configuration](rhythm-balanced.json) changes only the noise instrument’s decay nibble, `AD=$14→$11`, retaining attack, zero sustain/release, source notes, durations and all 68 attacks. The [verified balance review](rhythm-balanced-review.json) records a 4.83 dB reduction in noise AC RMS and same-SID contribution. Its peak is unchanged: this is a shorter body, not a linear gain control. The previous and revised exports have identical ordered write timing and byte-identical muted audio; only voice 2’s AD register changes across 987 calls. Native, sampled VICE, unclipped-signal and quiet-tail checks pass. The reusable verifier now rejects instruction-timing drift and changed muted PCM rather than merely reporting them; negative tests cover both, and retained AD11/AD13 evidence satisfies the stronger guards unchanged. Listening then rejects this setting as too quiet: “In the second one, I can barely hear the maracas”.
+
+An initially screened slower attack (`AD=$34`) increased noise RMS by 1.768 dB and was rejected before submission. In this short-note context, a slower attack did not provide quieter support. Retain the measured result with the source gate/history and target; do not infer a universal attack-to-loudness rule. Envelope rates shape a trajectory and must be checked at the actual note ages.
+
+```sh
+python3 scripts/listening-package.py config/listening/axel-f-rhythm-balanced.json --output build/axel-f-rhythm-balanced-new
+python3 scripts/publish-listening.py build/axel-f-rhythm-balanced-new/run.json --selection config/listening/axel-f-rhythm-balanced.audition.json --output build/axel-f-rhythm-balanced-listening-new
+```
+
+The stable pair is `build/axel-f-rhythm-balanced-listening/previous-then-quieter.ab.wav` (32.77 seconds; previous then revised at common unity gain). Separate files are `previous-maracas.wav` and `quieter-maracas.wav`. The shorter body did not retain sufficient prominence for the listener; keep this failed balance as the lower comparison bound. This balance trial does not alter the complete arrangement or settle its instrument choices.
+
+## Master-informed ensemble audition
+
+The [extended master study](huelsbeck-study.md#targeted-role-study-lead-support-and-the-apparent-switch) confirms a moving, unfiltered supporting pulse and no lead-program selection change near one minute. It also identifies the lower bass register relative to the lead. The first coherent palette trial deliberately keeps our source pitches and rhythm: lead `ADSR=$0A49`, bass `ADSR=$0999`, an independently moving bass pulse and filter bypass. Native TEST onsets, PAL MOS8580 and the existing bounded lead pulse remain explicit departures from Hülsbeck’s source. Programmed sustain is not interpreted as a simple gain ratio.
+
+This trial asks whether the lead/support combination provides a more useful character than our current palette. It does not test the source’s lower bass octave, reconstruct its arrangement, or roll the quieter maracas into the full song. Retain those as separate choices; the short ensemble verdict below accepts only this pairing.
+
+The listener strongly accepts the level-matched pairing: “the "Hülsbeck-informed combination second" is so much better!!!” and “The "Hülsbeck-informed combination second" has just the right choice of instruments”. This settles the tested ensemble choice, not which individual parameter caused the preference or whether it works across the complete arrangement. Extend the pairing across its existing lead and bass roles, preserving the separately preferred rounder high lead, held-support treatment, source notes and form. Keep the undecided percussion balance separate.
+
+The [palette review](master-palette-review.json) pins the accepted comparison, native exports and verification. `build/axel-f-master-palette-matched-listening/previous-then-master-palette-matched.ab.wav` is 32.77 seconds, previous first and candidate second. One constant candidate attenuation of 2.3489 dB matches AC RMS while preserving internal balance; this is playback preparation, not a per-voice SID gain control. All 96 projected notes and 987 calls retain their pitch, gate/TEST and waveform schedules; sampled VICE, unclipped audio and quiet ending checks pass. The three original Hülsbeck context clips use his distinct arrangement and are not fidelity comparisons.
+
+```sh
+python3 scripts/listening-package.py config/listening/axel-f-master-palette.json --output build/axel-f-master-palette-new
+python3 scripts/publish-listening.py build/axel-f-master-palette-new/run.json --selection config/listening/axel-f-master-palette.audition.json --output build/axel-f-master-palette-listening-new
+```
+
+Model checkpoint after acceptance: no call. Human feedback settles the pairing; current model calibration cannot attribute the preference or predict complete-song acceptance. Reassess at the full rendition.
+
+## Intermediate maracas balance
+
+The [middle configuration](rhythm-middle.json) and [pinned review](rhythm-middle-review.json) retain all 68 attacks and change only `AD14→AD13`. Noise AC RMS falls from 700.52 to 576.39, a 1.694 dB reduction; this is 3.137 dB above the barely audible `AD11` trial. An intermediate `AD12` screen measured −3.048 dB and fell outside the preselected 1–3 dB reduction range; retain that screen without presenting it as musically rejected. The final candidate passes schedule, ordered-write timing, sampled VICE, clipping and quiet-tail checks. The listener accepts it: “yes to: second half keep the nice rhythmic touch without becoming too prominent”. Retain AD13 for this role; its balance with the newly accepted lead/bass pairing and coverage through the full arrangement still need checking.
+
+Nonzero signal on all attacks and a chosen decibel target were insufficient acceptance criteria for the prior candidate; the useful noise body must remain perceptible in the mix. `build/axel-f-rhythm-middle-listening/previous-then-middle.ab.wav` plays the original then intermediate balance at common gain (32.77 seconds). `previous-maracas.wav` and `middle-maracas.wav` preserve separate renders. This accepts the bounded balance trial, not full-song percussion coverage.
+
+```sh
+python3 scripts/listening-package.py config/listening/axel-f-rhythm-middle.json --output build/axel-f-rhythm-middle-new
+python3 scripts/publish-listening.py build/axel-f-rhythm-middle-new/run.json --selection config/listening/axel-f-rhythm-middle.audition.json --output build/axel-f-rhythm-middle-listening-new
+```

@@ -1,0 +1,13 @@
+{
+  "format": "axel-f-rhythm-balance-v1",
+  "previousConfiguration": "songs/axel-f/rhythm-trial.json",
+  "previousConfigurationFingerprint": "aae3229c2029f442d8a882f555a343509134d6dac722aa35a7a7865f1bb7ac42",
+  "adsr": "1300",
+  "expectedOnsets": 68,
+  "noiseReductionDbRange": [
+    1,
+    3
+  ],
+  "rationale": "The listener liked AD14 maracas but found them a bit too loud, then said of AD11: In the second one, I can barely hear the maracas. AD12 measured a 3.048 dB energy reduction, just outside the frozen 1\u20133 dB target. Use the single milder AD13 alternative with A1/S0/R0 retained. Preserve source attacks, gate schedule and tonal balance; require 1\u20133 dB lower noise energy than AD14 and energy strictly between AD14 and AD11.",
+  "scope": "One intermediate native hook balance awaiting listening feedback. Preserve both earlier candidates; no full-song rollout, PCM gain adjustment or new rhythm."
+}

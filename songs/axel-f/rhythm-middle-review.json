@@ -1,0 +1,354 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "One intermediate native maracas balance of the same source-backed 32-beat hook. No full-song rollout or complete arrangement acceptance.",
+  "listeningVerdict": {
+    "date": "2026-10-15",
+    "status": "accepted-for-tested-excerpt",
+    "quote": "yes to: second half keep the nice rhythmic touch without becoming too prominent",
+    "scope": "The AD13 balance is accepted in the submitted same-score excerpt. Full arrangement and the combination with the newly accepted lead/bass palette still require context review."
+  },
+  "priorFeedback": [
+    {
+      "configuration": "songs/axel-f/rhythm-trial.json",
+      "adSr": "1400",
+      "quote": "yes, maracas add a nice touch, but a bit too loud",
+      "decision": "Retain the source rhythm and maracas noise role while reducing its native envelope energy."
+    },
+    {
+      "configuration": "songs/axel-f/rhythm-balanced.json",
+      "adSr": "1100",
+      "quote": "In the second one, I can barely hear the maracas",
+      "decision": "Reject AD11 as the selected balance; its lower measured energy did not retain sufficient perceived body in this mix."
+    }
+  ],
+  "configuration": "songs/axel-f/rhythm-middle.json",
+  "target": {
+    "sidCount": 1,
+    "sidModel": "MOS8580",
+    "clock": "pal",
+    "baseAddress": "D400",
+    "cadence": "PAL single-speed VBI"
+  },
+  "mechanism": {
+    "previousAdSr": "1400",
+    "middleAdSr": "1300",
+    "changedParameter": "One native decay-rate nibble, D4\u2192D3; retain A1/S0/R0, waveform, noise clock, source gates and all tonal/shared controls.",
+    "selection": "AD12 was screened first, then the single authorized milder AD13 alternative passed the frozen 1\u20133 dB noise-energy reduction target.",
+    "limits": "This is native envelope shaping, not linear gain. Attack peak remains unchanged while the body energy decreases. Technical energy and nonzero attacks do not establish the listener\u2019s preferred balance."
+  },
+  "rejectedScreen": {
+    "adSr": "1200",
+    "noiseOnlyAcRms": 493.1985068871424,
+    "noiseOnlyChangeDb": -3.047923270752981,
+    "measurementDurationSeconds": 16.139795918367348,
+    "decision": "Do not submit AD12: its 3.048 dB reduction falls just beyond the frozen 1\u20133 dB target; choose the one milder AD13 check.",
+    "evidence": [
+      {
+        "path": "build/axel-f-rhythm-middle/ad12-screen-configuration.json",
+        "sha256": "1edf550052c26b0d14415934515d61282ac8c71869132a4294ba1cb9e7a1d91a"
+      },
+      {
+        "path": "build/axel-f-rhythm-middle/ad12-screen-run.json",
+        "sha256": "ae2665ced1f6205aaeed97fd64def188bae027cec14b721aec8e3ada497dddfa"
+      },
+      {
+        "path": "build/axel-f-rhythm-trial/cache/balanced-noise-only/f508e84712801122c0729a94552a02199851d0b7fae37c3de63bcfe460c04ec2/attempt-906b304d9bae4f32bb1186d78b9a3710/noise-only.wav",
+        "sha256": "305be11164e27fe13c17bb80aad2048ef88661dad4ff86a9f558e4f3e4c0127e"
+      },
+      {
+        "path": "build/axel-f-rhythm-trial/cache/balance-prepare/fc4a9ecc0b36facd1c9a03c0c105bd255b556af90761d71cff31dcaaf5f328be/attempt-8fac7ff263b142508720db3a9da38416/balance/candidate.json",
+        "sha256": "6d689ea0f3530f746379d807e63fe29ca51d9c9095baae1fbb6fd0d46ad5f96c"
+      },
+      {
+        "path": "build/axel-f-rhythm-trial/cache/balanced/08a879c3f0edecb83a377e62f88840835bb7cdf4305c342865e6e11d5dce7c50/attempt-a1940423ceed408b855d214e1ecdf078/song/export/candidate.sid",
+        "sha256": "05aeb4bd773174aa0c80f89d86baa0837c2c1cf778be8cc13153f0568a9be39d"
+      }
+    ]
+  },
+  "sourcePreservation": {
+    "sourceSha256": "8bf2fa73160461e13ace1609393879e12929ada5241e80f397cd3c0e4dfe429d",
+    "sourceWindowBeats": [
+      68,
+      100
+    ],
+    "arrangedWindowBeats": [
+      64,
+      96
+    ],
+    "onsets": 68,
+    "offBassOnsets": 30,
+    "durationAdaptation": false,
+    "nativeTonalAndRhythmSchedulesIdentical": true,
+    "coldStart": "The same bounded cold-start hook is retained; this does not promise the complete arrangement\u2019s preceding envelope history."
+  },
+  "verification": {
+    "cpuCalls": 987,
+    "changedFrameOffsets": [
+      12
+    ],
+    "changedRegister": "D40C voice2 AD only",
+    "unchangedSourceSchedule": true,
+    "unchangedTonalVoicesAndSharedControls": true,
+    "noiseOnsets": 68,
+    "renderedNonzeroNoiseAttacks": 68,
+    "gatedNoiseBodyCallCounts": {
+      "1": 36,
+      "2": 31,
+      "3": 1
+    },
+    "fixedNoiseFrequencyWord": 17820,
+    "sourceDurationAdaptation": false,
+    "matchedOrderedSidStores": 24699,
+    "maximumInstructionStartDifferenceCycles": 0,
+    "sameSidMutedRendererSnapshotsIdentical": true,
+    "mutedPreviousAndQuieterPcmIdentical": true,
+    "preStopReleaseAcRms": 0.0
+  },
+  "vice": {
+    "calls": [
+      0,
+      1,
+      3,
+      6,
+      150,
+      400,
+      810,
+      930,
+      980
+    ],
+    "maximumAbsoluteCycleError": 2,
+    "scope": "Standalone PRG boot, sampled SID write shadows and single-speed PAL cadence; not continuous write equivalence or listening evidence"
+  },
+  "signal": {
+    "noiseOnlyChangeDb": -1.6940469279659403,
+    "sameSidDifferenceAcRms": [
+      700.58383337262,
+      576.4458414497528
+    ],
+    "sameSidDifferenceChangeDb": -1.6940320173518342,
+    "middleVersusAd11NoiseChangeDb": 3.136898789911011,
+    "intermediateGuard": {
+      "schemaVersion": 1,
+      "strictlyIntermediate": true,
+      "diagnostics": [
+        {
+          "diagnostic": "noiseOnly",
+          "originalAd14AcRms": 700.5157701848033,
+          "middleAd13AcRms": 576.3888490704913,
+          "tooQuietAd11AcRms": 401.6711417682014
+        },
+        {
+          "diagnostic": "sameSidDifference",
+          "originalAd14AcRms": 700.58383337262,
+          "middleAd13AcRms": 576.4458414497528,
+          "tooQuietAd11AcRms": 401.7019655746121
+        }
+      ]
+    },
+    "phrasePcm": {
+      "previousFull": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 10731,
+        "peakDbfs": -9.696194801821719,
+        "clippedSamples": 0,
+        "rms": 2766.8535535926044,
+        "acRms": 2635.346105324258,
+        "acRmsDbfs": -21.89224549788768,
+        "perChannel": [
+          {
+            "dc": 842.869795508349,
+            "rms": 2766.8535535926044,
+            "acRms": 2635.346105324258
+          }
+        ]
+      },
+      "quieterFull": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 10123,
+        "peakDbfs": -10.202813962224027,
+        "clippedSamples": 0,
+        "rms": 2738.1844674005524,
+        "acRms": 2605.324048900192,
+        "acRmsDbfs": -21.99176373268903,
+        "perChannel": [
+          {
+            "dc": 842.579834636432,
+            "rms": 2738.1844674005524,
+            "acRms": 2605.324048900192
+          }
+        ]
+      },
+      "previousNoiseOnly": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 4482,
+        "peakDbfs": -17.279561655213513,
+        "clippedSamples": 0,
+        "rms": 719.3100129953237,
+        "acRms": 700.5157701848033,
+        "acRmsDbfs": -33.40064036565511,
+        "perChannel": [
+          {
+            "dc": 163.35406489501452,
+            "rms": 719.3100129953237,
+            "acRms": 700.5157701848033
+          }
+        ]
+      },
+      "quieterNoiseOnly": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 4482,
+        "peakDbfs": -17.279561655213513,
+        "clippedSamples": 0,
+        "rms": 599.003225294279,
+        "acRms": 576.3888490704913,
+        "acRmsDbfs": -35.09468729362105,
+        "perChannel": [
+          {
+            "dc": 163.0360652743532,
+            "rms": 599.003225294279,
+            "acRms": 576.3888490704913
+          }
+        ]
+      },
+      "previousMuted": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 9688,
+        "peakDbfs": -10.584316096494442,
+        "clippedSamples": 0,
+        "rms": 2678.0832977291902,
+        "acRms": 2544.057525853023,
+        "acRmsDbfs": -22.19846015339266,
+        "perChannel": [
+          {
+            "dc": 836.6011323962263,
+            "rms": 2678.0832977291902,
+            "acRms": 2544.057525853023
+          }
+        ]
+      },
+      "quieterMuted": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 9688,
+        "peakDbfs": -10.584316096494442,
+        "clippedSamples": 0,
+        "rms": 2678.0832977291902,
+        "acRms": 2544.057525853023,
+        "acRmsDbfs": -22.19846015339266,
+        "perChannel": [
+          {
+            "dc": 836.6011323962263,
+            "rms": 2678.0832977291902,
+            "acRms": 2544.057525853023
+          }
+        ]
+      }
+    },
+    "scope": "Same-SID voice muting is a contribution diagnostic, not an additive stem. The previous/quieter exports are separate native programs; ordered values and instruction timing are checked, while internal synthesis equivalence and musical acceptance remain unclaimed."
+  },
+  "comparison": {
+    "order": [
+      "original AD14 maracas, liked but too loud",
+      "intermediate AD13 maracas, awaiting verdict"
+    ],
+    "windowSeconds": [
+      0.0,
+      16.134432
+    ],
+    "durationSeconds": 32.768843537414966,
+    "gapSeconds": 0.5,
+    "gains": [
+      1,
+      1
+    ],
+    "normalization": false,
+    "timingCaveat": "These are separate native exports. All 24,699 ordered store locations and unchanged values agree, instruction starts differ by 0 cycles, and muted PCM is identical in this scoped pair. Same-SID muting remains a diagnostic rather than an additive stem; hardware equivalence is not claimed."
+  },
+  "modelAssistanceReview": {
+    "decision": "No call after positive human feedback: the listener settles useful presence and balance in this excerpt; current models are not calibrated for preference or extrapolation to the new full ensemble.",
+    "nextCheckpoint": "Combined full ensemble audition or case closure."
+  },
+  "acceptanceQuestion": "Does the intermediate version retain the nice maracas touch at a better balance?",
+  "recipe": "config/listening/axel-f-rhythm-middle.json",
+  "cacheReuse": "All 8 original trial stages were fingerprint-verified and reused in the existing immutable stage cache. New native candidate, VICE, diagnostic renders and balance/interval guards ran for AD13. Prior AD14 and AD11 audio and frozen receipts remain preserved.",
+  "runReceipt": {
+    "path": "build/axel-f-rhythm-middle/completed-run.json",
+    "sha256": "6df48846c18b8bf47c78136093b0d10819fa44e49c5257d5f29760041fd48cd3"
+  },
+  "publicationReceipt": {
+    "path": "build/axel-f-rhythm-middle-listening/sources.json",
+    "sha256": "555800f68a5640d4339ced15f6c80b98d2ead7d661f68d9012024f098bb4a843"
+  },
+  "evidence": [
+    {
+      "path": "build/axel-f-rhythm-trial/cache/balanced/c978c95d7ce5fc53c7661d400571f27ce52998b5398a54af7b1f4a782027b220/attempt-e32b798224b84963abe2cf3e9b8fd661/song/verification.json",
+      "sha256": "8a38e8ef442ac601d268096576d73159ad19fd5594385b20a40ecd472c954049"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/balanced-vice/b82af21c1749bb95e63869aa400f858c04cdde2683761af6793f8dc2dade1580/attempt-e644d9ccbb81463f96136db4750e776d/vice/verification.json",
+      "sha256": "9b7a71f988f7dac6718178814db824796a598de335bbdf623699a895046e193f"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/balance-mechanism/6c3f09a9d2179feaa7f8cef5f187a752e8835174e70af8164fe28e9aadcc36a6/attempt-79b3c5ff0ce44cb3b3e6c4316894fc29/balance-mechanism.json",
+      "sha256": "6b76f20f13bfe210f6b52908a319710651ac0f4c051c5b7c4d40a4124db27d11"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/middle-interval/bd114a909931dc1d4a86d5304794553e20b4670c2f59d41e0f52c1a7b4015bce/attempt-1fe74426edb74371b32867d2414247d6/middle-interval.json",
+      "sha256": "05be8efe065b98ee6704c1597c35ff9f1e36fb895fc345658a70351cc7bcbc1c"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/trial/1f74b19c8e9ac933fa2f471f9d960e154ac6a24c262403d2f5f1cad5c1803755/attempt-f5c3bbb3cb6a42fc8cbcb2ad0906cb36/trial/adaptation.json",
+      "sha256": "369cc2df52abf2451f267cdeab2c71cf24cdf09918a44a84f9275d527f1745f1"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/balanced/c978c95d7ce5fc53c7661d400571f27ce52998b5398a54af7b1f4a782027b220/attempt-e32b798224b84963abe2cf3e9b8fd661/song/export/candidate.sid",
+      "sha256": "ac2bb00d0a993f32082337778547c6f07adc86f920aaccd8ea931f89eec67101"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/balanced/c978c95d7ce5fc53c7661d400571f27ce52998b5398a54af7b1f4a782027b220/attempt-e32b798224b84963abe2cf3e9b8fd661/song/export/candidate.prg",
+      "sha256": "589ffc22269846d43e9b592f81caac504f6d3fddfebd237d0b210b800edec0b9"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/balanced/c978c95d7ce5fc53c7661d400571f27ce52998b5398a54af7b1f4a782027b220/attempt-e32b798224b84963abe2cf3e9b8fd661/song/conversion/candidate.swm",
+      "sha256": "b07370acf6a17e5e4acba2d42e97db2f718087af989de558ba094796133b1cc6"
+    }
+  ],
+  "files": [
+    {
+      "path": "build/axel-f-rhythm-middle-listening/previous-maracas.wav",
+      "sha256": "158387717fed1eef62948b25dfb40dba1b907c09e774dfae66b65815f38bf252"
+    },
+    {
+      "path": "build/axel-f-rhythm-middle-listening/middle-maracas.wav",
+      "sha256": "db7fe333a63139561703ca97dbb146c2f76d5ac9c8f62359d754fe81189bf6ae"
+    },
+    {
+      "path": "build/axel-f-rhythm-middle-listening/previous-then-middle.ab.wav",
+      "sha256": "db612114a835d568abe093e5448988bfc317af470bad3dc7a341b12133198d44"
+    }
+  ]
+}

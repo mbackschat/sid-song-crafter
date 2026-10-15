@@ -1,0 +1,627 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "prepare",
+      "command": [
+        "{python}",
+        "scripts/prepare-score-audition.py",
+        ".local/research/axel-f/winjammer-axelf.mid",
+        "config/scores/axel-f-import.json",
+        "--output",
+        "{out}/score",
+        "--arrangement",
+        "songs/axel-f/full-reduction.json",
+        "--candidate",
+        "songs/axel-f/full-huelsbeck-pulse.json",
+        "--reference",
+        "songs/axel-f/full-native.json"
+      ],
+      "inputs": [
+        ".local/research/axel-f/winjammer-axelf.mid",
+        "config/scores/axel-f-import.json",
+        "scripts/prepare-score-audition.py",
+        "scripts/score_tools.py",
+        "songs/axel-f/full-reduction.json",
+        "songs/axel-f/full-native.json",
+        ".tools/arrangement-deps/mido",
+        "songs/axel-f/full-huelsbeck-pulse.json"
+      ],
+      "outputs": [
+        "score/common-score.json",
+        "score/score.json",
+        "score/candidate.json",
+        "score/reference.json",
+        "score/adaptation.json",
+        "score/source.mid",
+        "score/import-recipe.json",
+        "score/full-common-score.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/arrangement-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "trial",
+      "command": [
+        "{python}",
+        "scripts/studies/axel-f/prepare-rhythm-trial.py",
+        "prepare",
+        "{stage:prepare}/score/full-common-score.json",
+        "{stage:prepare}/score/score.json",
+        "songs/axel-f/full-huelsbeck-pulse.json",
+        "songs/axel-f/rhythm-trial.json",
+        "--output",
+        "{out}/trial"
+      ],
+      "inputs": [
+        "scripts/studies/axel-f/prepare-rhythm-trial.py",
+        "scripts/studies/axel-f/prepare-kick-trial.py",
+        "scripts/audio_comparison.py",
+        "{stage:prepare}/score/full-common-score.json",
+        "{stage:prepare}/score/score.json",
+        "songs/axel-f/full-huelsbeck-pulse.json",
+        "songs/axel-f/rhythm-trial.json"
+      ],
+      "outputs": [
+        "trial/baseline-score.json",
+        "trial/candidate-score.json",
+        "trial/reference.json",
+        "trial/candidate.json",
+        "trial/adaptation.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:trial}/trial/reference.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "16.134432",
+        "--excerpt-start",
+        "0"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:trial}/trial/reference.json",
+        "{stage:trial}/trial/baseline-score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/reference.sid",
+        "song/export/reference.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/reference.swm",
+        "song/native-song.excerpt.wav",
+        "song/native-song.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 360,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:trial}/trial/candidate.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "16.134432",
+        "--excerpt-start",
+        "0"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:trial}/trial/candidate.json",
+        "{stage:trial}/trial/candidate-score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/candidate.sid",
+        "song/export/candidate.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/candidate.swm",
+        "song/native-song.excerpt.wav",
+        "song/native-song.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 360,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:candidate}/song/export/candidate.prg",
+        "{stage:candidate}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:candidate}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "3",
+        "6",
+        "150",
+        "400",
+        "810",
+        "930",
+        "980",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:candidate}/song/export/candidate.prg",
+        "{stage:candidate}/song/native-song.writes.json",
+        "{stage:candidate}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "noise-only",
+      "command": [
+        "{python}",
+        "-c",
+        "import json,pathlib,subprocess,sys\nseconds=json.loads(pathlib.Path(sys.argv[1]).read_text())[\"pcm\"][\"durationSeconds\"]\nsubprocess.run([sys.argv[2],sys.argv[3],sys.argv[4],str(seconds),\"--voices\",sys.argv[5],\"--clock\",\"pal\"],check=True,timeout=30)\n",
+        "{stage:candidate}/song/verification.json",
+        ".local/bin/render-sid",
+        "{stage:candidate}/song/export/candidate.sid",
+        "{out}/noise-only.wav",
+        "2"
+      ],
+      "inputs": [
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "{stage:candidate}/song/export/candidate.sid",
+        "{stage:candidate}/song/verification.json"
+      ],
+      "outputs": [
+        "noise-only.wav",
+        "noise-only.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "noise-muted",
+      "command": [
+        "{python}",
+        "-c",
+        "import json,pathlib,subprocess,sys\nseconds=json.loads(pathlib.Path(sys.argv[1]).read_text())[\"pcm\"][\"durationSeconds\"]\nsubprocess.run([sys.argv[2],sys.argv[3],sys.argv[4],str(seconds),\"--voices\",sys.argv[5],\"--clock\",\"pal\"],check=True,timeout=30)\n",
+        "{stage:candidate}/song/verification.json",
+        ".local/bin/render-sid",
+        "{stage:candidate}/song/export/candidate.sid",
+        "{out}/noise-muted.wav",
+        "1,3"
+      ],
+      "inputs": [
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "{stage:candidate}/song/export/candidate.sid",
+        "{stage:candidate}/song/verification.json"
+      ],
+      "outputs": [
+        "noise-muted.wav",
+        "noise-muted.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "mechanism",
+      "command": [
+        "{python}",
+        "scripts/studies/axel-f/prepare-rhythm-trial.py",
+        "verify",
+        "{stage:reference}/song",
+        "{stage:candidate}/song",
+        "{stage:noise-only}/noise-only.wav",
+        "{stage:noise-muted}/noise-muted.wav",
+        "songs/axel-f/rhythm-trial.json",
+        "--output",
+        "{out}/mechanism.json"
+      ],
+      "inputs": [
+        "scripts/studies/axel-f/prepare-rhythm-trial.py",
+        "scripts/studies/axel-f/prepare-kick-trial.py",
+        "songs/axel-f/rhythm-trial.json",
+        "scripts/audio_comparison.py",
+        "{stage:reference}/song/native-song.frames.json",
+        "{stage:candidate}/song/native-song.frames.json",
+        "{stage:candidate}/song/conversion.json",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "{stage:noise-only}/noise-only.wav",
+        "{stage:noise-muted}/noise-muted.wav",
+        "{stage:reference}/song/native-song.writes.json",
+        "{stage:candidate}/song/native-song.writes.json",
+        "{stage:noise-muted}/noise-muted.wav.registers.tsv",
+        "{stage:candidate}/song/native-song.wav.registers.tsv"
+      ],
+      "outputs": [
+        "mechanism.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "balance-prepare",
+      "command": [
+        "{python}",
+        "scripts/studies/axel-f/prepare-rhythm-balance.py",
+        "prepare",
+        "{stage:trial}/trial/candidate.json",
+        "{stage:trial}/trial/candidate-score.json",
+        "songs/axel-f/rhythm-trial.json",
+        "songs/axel-f/rhythm-middle.json",
+        "--output",
+        "{out}/balance"
+      ],
+      "inputs": [
+        "scripts/studies/axel-f/prepare-rhythm-balance.py",
+        "scripts/studies/axel-f/prepare-rhythm-trial.py",
+        "scripts/studies/axel-f/prepare-kick-trial.py",
+        "scripts/audio_comparison.py",
+        "songs/axel-f/rhythm-middle.json",
+        "{stage:trial}/trial/candidate.json",
+        "{stage:trial}/trial/candidate-score.json",
+        "songs/axel-f/rhythm-trial.json"
+      ],
+      "outputs": [
+        "balance/candidate.json",
+        "balance/candidate-score.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "balanced",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:balance-prepare}/balance/candidate.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "16.134432",
+        "--excerpt-start",
+        "0"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:balance-prepare}/balance/candidate.json",
+        "{stage:balance-prepare}/balance/candidate-score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/candidate.sid",
+        "song/export/candidate.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/candidate.swm",
+        "song/native-song.excerpt.wav",
+        "song/native-song.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 360,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "balanced-vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:balanced}/song/export/candidate.prg",
+        "{stage:balanced}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:balanced}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "3",
+        "6",
+        "150",
+        "400",
+        "810",
+        "930",
+        "980",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:balanced}/song/export/candidate.prg",
+        "{stage:balanced}/song/native-song.writes.json",
+        "{stage:balanced}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "balanced-noise-only",
+      "command": [
+        "{python}",
+        "-c",
+        "import json,pathlib,subprocess,sys\nseconds=json.loads(pathlib.Path(sys.argv[1]).read_text())[\"pcm\"][\"durationSeconds\"]\nsubprocess.run([sys.argv[2],sys.argv[3],sys.argv[4],str(seconds),\"--voices\",sys.argv[5],\"--clock\",\"pal\"],check=True,timeout=30)\n",
+        "{stage:balanced}/song/verification.json",
+        ".local/bin/render-sid",
+        "{stage:balanced}/song/export/candidate.sid",
+        "{out}/noise-only.wav",
+        "2"
+      ],
+      "inputs": [
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "{stage:balanced}/song/export/candidate.sid",
+        "{stage:balanced}/song/verification.json"
+      ],
+      "outputs": [
+        "noise-only.wav",
+        "noise-only.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "balanced-noise-muted",
+      "command": [
+        "{python}",
+        "-c",
+        "import json,pathlib,subprocess,sys\nseconds=json.loads(pathlib.Path(sys.argv[1]).read_text())[\"pcm\"][\"durationSeconds\"]\nsubprocess.run([sys.argv[2],sys.argv[3],sys.argv[4],str(seconds),\"--voices\",sys.argv[5],\"--clock\",\"pal\"],check=True,timeout=30)\n",
+        "{stage:balanced}/song/verification.json",
+        ".local/bin/render-sid",
+        "{stage:balanced}/song/export/candidate.sid",
+        "{out}/noise-muted.wav",
+        "1,3"
+      ],
+      "inputs": [
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "{stage:balanced}/song/export/candidate.sid",
+        "{stage:balanced}/song/verification.json"
+      ],
+      "outputs": [
+        "noise-muted.wav",
+        "noise-muted.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "balance-mechanism",
+      "command": [
+        "{python}",
+        "scripts/studies/axel-f/prepare-rhythm-balance.py",
+        "verify",
+        "{stage:candidate}/song",
+        "{stage:balanced}/song",
+        "{stage:noise-only}/noise-only.wav",
+        "{stage:balanced-noise-only}/noise-only.wav",
+        "{stage:noise-muted}/noise-muted.wav",
+        "{stage:balanced-noise-muted}/noise-muted.wav",
+        "songs/axel-f/rhythm-middle.json",
+        "--output",
+        "{out}/balance-mechanism.json"
+      ],
+      "inputs": [
+        "scripts/studies/axel-f/prepare-rhythm-balance.py",
+        "scripts/studies/axel-f/prepare-rhythm-trial.py",
+        "scripts/studies/axel-f/prepare-kick-trial.py",
+        "scripts/audio_comparison.py",
+        "songs/axel-f/rhythm-middle.json",
+        "{stage:candidate}/song/native-song.frames.json",
+        "{stage:candidate}/song/conversion.json",
+        "{stage:candidate}/song/native-song.schedule.json",
+        "{stage:candidate}/song/native-song.writes.json",
+        "{stage:candidate}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav.registers.tsv",
+        "{stage:balanced}/song/native-song.frames.json",
+        "{stage:balanced}/song/conversion.json",
+        "{stage:balanced}/song/native-song.schedule.json",
+        "{stage:balanced}/song/native-song.writes.json",
+        "{stage:balanced}/song/native-song.wav",
+        "{stage:balanced}/song/native-song.wav.registers.tsv",
+        "{stage:noise-only}/noise-only.wav",
+        "{stage:noise-only}/noise-only.wav.registers.tsv",
+        "{stage:balanced-noise-only}/noise-only.wav",
+        "{stage:balanced-noise-only}/noise-only.wav.registers.tsv",
+        "{stage:noise-muted}/noise-muted.wav",
+        "{stage:noise-muted}/noise-muted.wav.registers.tsv",
+        "{stage:balanced-noise-muted}/noise-muted.wav",
+        "{stage:balanced-noise-muted}/noise-muted.wav.registers.tsv",
+        "songs/axel-f/rhythm-trial.json"
+      ],
+      "outputs": [
+        "balance-mechanism.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "middle-interval",
+      "command": [
+        "{python}",
+        "-c",
+        "import json,pathlib,sys\nmiddle=json.loads(pathlib.Path(sys.argv[1]).read_text())\nquiet=json.loads(pathlib.Path(sys.argv[2]).read_text())[\"signal\"]\nrows=[]\nfor label,a,b,c in ((\"noiseOnly\",middle[\"phrasePcm\"][\"previousNoiseOnly\"][\"acRms\"],middle[\"phrasePcm\"][\"quieterNoiseOnly\"][\"acRms\"],quiet[\"phrasePcm\"][\"quieterNoiseOnly\"][\"acRms\"]),(\"sameSidDifference\",middle[\"sameSidDifferenceAcRms\"][0],middle[\"sameSidDifferenceAcRms\"][1],quiet[\"sameSidDifferenceAcRms\"][1])):\n if not a>b>c>1:raise ValueError(\"Intermediate noise energy must lie strictly between AD14 and AD11\")\n rows.append(dict(diagnostic=label,originalAd14AcRms=a,middleAd13AcRms=b,tooQuietAd11AcRms=c))\npathlib.Path(sys.argv[3]).write_text(json.dumps(dict(schemaVersion=1,strictlyIntermediate=True,diagnostics=rows),indent=2)+\"\\n\")\n",
+        "{stage:balance-mechanism}/balance-mechanism.json",
+        "songs/axel-f/rhythm-balanced-review.json",
+        "{out}/middle-interval.json"
+      ],
+      "inputs": [
+        "{stage:balance-mechanism}/balance-mechanism.json",
+        "songs/axel-f/rhythm-balanced-review.json"
+      ],
+      "outputs": [
+        "middle-interval.json"
+      ],
+      "timeoutSeconds": 10
+    },
+    {
+      "id": "balance-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:candidate}/song/native-song.wav",
+        "{stage:balanced}/song/native-song.wav",
+        "{out}/previous-then-middle",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "16.134432"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:candidate}/song/native-song.wav",
+        "{stage:balanced}/song/native-song.wav"
+      ],
+      "outputs": [
+        "previous-then-middle.ab.wav",
+        "previous-then-middle.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    }
+  ],
+  "deliverables": {
+    "previous": "{stage:candidate}/song/native-song.wav",
+    "candidate": "{stage:balanced}/song/native-song.wav",
+    "comparison": "{stage:balance-comparison}/previous-then-middle.ab.wav",
+    "previous-noise-only": "{stage:noise-only}/noise-only.wav",
+    "quieter-noise-only": "{stage:balanced-noise-only}/noise-only.wav",
+    "quieter-noise-muted": "{stage:balanced-noise-muted}/noise-muted.wav",
+    "verification": "{stage:balanced}/song/verification.json",
+    "vice": "{stage:balanced-vice}/vice/verification.json",
+    "mechanism": "{stage:balance-mechanism}/balance-mechanism.json",
+    "adaptation": "{stage:trial}/trial/adaptation.json",
+    "candidate-sid": "{stage:balanced}/song/export/candidate.sid",
+    "candidate-prg": "{stage:balanced}/song/export/candidate.prg",
+    "candidate-native": "{stage:balanced}/song/conversion/candidate.swm",
+    "intermediate-guard": "{stage:middle-interval}/middle-interval.json"
+  }
+}

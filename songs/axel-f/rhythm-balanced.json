@@ -1,0 +1,13 @@
+{
+  "format": "axel-f-rhythm-balance-v1",
+  "previousConfiguration": "songs/axel-f/rhythm-trial.json",
+  "previousConfigurationFingerprint": "aae3229c2029f442d8a882f555a343509134d6dac722aa35a7a7865f1bb7ac42",
+  "adsr": "1100",
+  "expectedOnsets": 68,
+  "noiseReductionDbRange": [
+    3,
+    8
+  ],
+  "rationale": "The listener likes the maracas role but finds it a bit too loud. The original SR00 already has zero sustain; shorten its decay through one AD nibble ($14 to $11), retaining attack, sustain, release, wave/frequency and every source gate boundary. A slower-attack $34 screen increased noise energy and was rejected. Verify actual solo and same-SID muted-difference energy before submitting.",
+  "scope": "One bounded quieter hook balance, awaiting listening feedback. No full-song rollout, tonal changes, shared-volume changes, PCM gain adjustment or new rhythm."
+}

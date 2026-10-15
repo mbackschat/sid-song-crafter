@@ -47,3 +47,25 @@ Model-assistance review: no audio-model call. The existing calibration does not 
 ## Full-arrangement limitation
 
 The subsequent [full listening feedback and arrangement diagnosis](arrangement-review.md) reject applying this hook patch to every role. A long chord-support note becomes too persistent, and short high-register notes restart before the intended motion develops. The hook verdict remains valid within its tested scope; the overall arrangement needs role-aware choices and a deliberate rhythmic allocation. Subsequent listening prefers the rounder high lead but rejects the softer held-support substitution; retain that mixed result rather than treating every distinct role as requiring a new patch.
+
+## Targeted role study: lead, support and the apparent switch
+
+The listener singled out the original’s lead and beat near 9.5 seconds, supporting instrument near 28.8 seconds and a perceived instrument change near one minute. The [extended role study](huelsbeck-roles-study.json) executes 3,900 CIA calls with 40,081 source stores matching the controlled VICE run, and relates these observations to a 70-second renderer capture. This extends the earlier opening proof; it is not a complete-song reconstruction.
+
+| Named passage | Executed behavior | Interpretation consequence |
+| --- | --- | --- |
+| Lead and beat near 9.5 seconds | Lead uses pulse record 2, `ADSR=$0A49`; voice 3 continues its contrasting percussion programs. | Treat lead articulation and its rhythm section together. Copying pulse width alone does not reproduce the source’s envelope history. |
+| Supporting voice near 28.8 seconds | Bass uses record 1, pulse `$41`, `ADSR=$0999`, width starting at `$500`, 32 rising and 16 falling calls at step 37, no vibrato/glide and no oscillator filter route. | Its moving, unfiltered pulse differs materially from our fixed `$600` pulse and resonant low-pass sweep. The first palette trial changes this behavior without silently transposing the score. |
+| High passage around 60 seconds | Lead still selects record 2; bass still selects record 1. The narrower measured high window has 27 lead setups, 4–12 gated calls and widths `$200–$360`. | No instrument-record switch is established. The heard contrast accompanies register, phrasing and percussion development. It is not explained by a longer, fully developed PWM cycle. |
+
+The independent bass PWM model matches 2,357 states. Freezing its step from 37 to zero changes 4,072 stores only in `$D402/$D403`, establishing the pulse-motion mechanism. Bass and lead retriggers clear/set GATE about 49 CPU cycles apart without a per-note TEST frame. No pitch-only row calls occur in the selected windows. The source’s short gate gap, slow decay and retained envelope history matter: programmed sustain `$4` does not prove a short note has reached 4/15 amplitude.
+
+Register is a separate arrangement difference. At the measured entrances, source lead A4 and bass A1 are three octaves apart; our corresponding F4/F2 entrances are two octaves apart. Over the bounded passages, source bass spans approximately MIDI 29–45, ours 36–53. Different key and musical material prevent direct pitch-by-pitch equivalence, but the octave disposition at those entrances is clear. It may contribute to the source’s perceived weight; this has not been isolated in a listening test. Preserve it as a next arrangement choice, not an unreported change inside the first timbre comparison.
+
+The complete source high block contains 28 lead setups over about 56.0–65.3 seconds; the narrower analysis window above intentionally excludes its edges. Its high register and shorter bodies do not establish the listener’s perception of a new patch. All 166 lead setups in the bounded trace also retain the same complete 16-byte program fields, corroborating that the unchanged record number does not hide a mutated program. Record selection, evolving state and perceived instrument identity are separate claims.
+
+```sh
+python3 scripts/listening-package.py config/listening/axel-f-huelsbeck-roles.json --output build/axel-f-huelsbeck-roles
+```
+
+The [pinned source-specific probe](../../scripts/studies/axel-f/study-huelsbeck-roles.py) retains detailed source execution and causal-intervention evidence privately; the aggregate owns hashes, bounded counts and reproduction scope. Models were not called: execution can settle program selection, while musical preference still belongs to the listener.

@@ -1,8 +1,13 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-15",
-  "scope": "Pending listening: one source-maracas noise trial in the 32-beat hook. No complete-song percussion rollout or master reconstruction.",
-  "listeningVerdict": null,
+  "scope": "Rhythmic contribution liked; level too loud. One source-maracas noise trial in the 32-beat hook; no complete-song percussion approval.",
+  "listeningVerdict": {
+    "date": "2026-10-15",
+    "quote": "yes, maracas add a nice touch, but a bit too loud",
+    "status": "role-liked-balance-needs-revision",
+    "decision": "Retain source maracas rhythm; reduce its native instrument contribution while preserving the lead, bass and source onsets. Do not infer approval of the current level or full arrangement."
+  },
   "priorFeedback": {
     "kickQuote": "no difference, may a bit louder",
     "decision": "Preserve that rejected kick experiment and change the rhythmic role/spectrum instead of increasing its gain."
@@ -32,7 +37,7 @@
       "offBassOnsets": 30
     },
     "choice": "Use source MIDI70 alone: it supplies30 attacks away from bass onsets with a lighter grid than the dense cabasa. No source GM hi-hat was selected or relabelled.",
-    "sourceLabel": "GM maracas; rendered through an original noise approximation, not faithful General MIDI or recovered H\u00fclsbeck audio."
+    "sourceLabel": "GM maracas; rendered through an original noise approximation, not faithful General MIDI or recovered Hülsbeck audio."
   },
   "program": {
     "identity": "MARNOISE",
@@ -41,7 +46,7 @@
     "adsr": "1400",
     "waveform": "81 while gated,80 through release",
     "pulseFilterCouplingVibrato": "none",
-    "basis": "Ghostbusters static-noise patch3 supplies verified prior AD14/SR00 behavior; H\u00fclsbeck bounded opening supplies the independent percussion-role example. Neither prior study establishes this trial\u2019s sound or musical acceptance.",
+    "basis": "Ghostbusters static-noise patch3 supplies verified prior AD14/SR00 behavior; Hülsbeck bounded opening supplies the independent percussion-role example. Neither prior study establishes this trial’s sound or musical acceptance.",
     "basisOwner": "docs/research/composition/instruments/ghostbusters-decoded-programs.md",
     "fingerprint": "5619035acf8011e11488956e7f40bcc2b53d597cc417e8ac526ed4e829555495"
   },
@@ -71,7 +76,7 @@
     "coincidentBassOnsets": 38,
     "durationAdaptation": false,
     "nativeDurationPolicy": "Exact source durations remain in candidate score/origin records; native absolute boundaries are quantized and the existing gate inset plus TEST onset reduce gated noise body. No hidden extension, overlap trimming or invented percussion rhythm.",
-    "coldStart": "The trial slices the same sourced hook from cold native state; this does not promise the complete baseline\u2019s preceding envelope history."
+    "coldStart": "The trial slices the same sourced hook from cold native state; this does not promise the complete baseline’s preceding envelope history."
   },
   "comparison": {
     "reference": "Same candidate SID with voice2 muted; voices1,3 retained",
@@ -164,11 +169,11 @@
     "sameSidPairDifferenceRms": 634.9015701279396,
     "sameSidPairDifferentSamples": 255740,
     "measurementDurationSeconds": 19.653514739229024,
-    "scope": "Nonzero contribution and unclipped signal are established. Useful drive, audibility and balance need the listener\u2019s verdict; no gain increase or candidate revision was made."
+    "scope": "Nonzero contribution and unclipped signal are established. Useful drive, audibility and balance need the listener’s verdict; no gain increase or candidate revision was made."
   },
   "modelAssistanceReview": {
-    "decision": "No model call: current calibration does not qualify rhythmic usefulness, annoyance or preference. Technical checks settle the changed source role and generated signal; the human listening verdict remains decisive.",
-    "nextCheckpoint": "Scoped maracas trial feedback or substantive revision"
+    "decision": "No call after feedback: the human verdict distinguishes useful rhythm from excessive level. Native envelope and signal checks can constrain a quieter trial; current models cannot settle musical balance.",
+    "nextCheckpoint": "Quieter maracas audition or master-informed palette revision"
   },
   "runReceipt": {
     "path": "build/axel-f-rhythm-trial/completed-run.json",

@@ -1,0 +1,665 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "status": "excerpt-palette-accepted-full-rollout-pending",
+  "question": "Does a source-informed lead envelope and independently moving unfiltered bass make the existing hook more appealing than the selected prior palette?",
+  "scope": "One coherent lead-and-bass palette on arranged beats 64\u201396 (source beats 68\u2013100). Preserve every projected pitch, onset and duration, all native gate/TEST timing and the PAL MOS8580 target. No percussion, high-lead change, bass transposition or complete-song export is included.",
+  "baselinePalette": "songs/axel-f/selected-roles.json",
+  "candidatePalette": "songs/axel-f/master-palette.json",
+  "sourceStudy": {
+    "path": "songs/axel-f/huelsbeck-roles-study.json",
+    "sha256": "a58f7094edb65f4dbe4505e8d50ea01949fb4b804edf8c53b7e389a8fc5adc0b"
+  },
+  "sourceStudyRecipe": "config/listening/axel-f-huelsbeck-roles.json",
+  "sourceSha256": "8bf2fa73160461e13ace1609393879e12929ada5241e80f397cd3c0e4dfe429d",
+  "fullReducedScoreSha256": "888c0e3f69eae5cc1bf45f78e55dffbd3a3bf40716943e03f9cb6878a20f97bd",
+  "sourceReference": {
+    "path": ".local/research/axel-f/huelsbeck-original.sid",
+    "sha256": "87e0a1e8ad618a497e54fc5d4228dee7be53ef6365a30900debcdafbcd21251b",
+    "subtune": 1,
+    "clock": "PAL",
+    "sidModel": "MOS6581",
+    "cadence": "CIA1 Timer A, approximately 54.9773 calls per second",
+    "contextScope": "The original has its own key, tempo, score, register allocation, form and percussion. These three clips are timbral and ensemble references; they are not a same-score fidelity A/B."
+  },
+  "nativeTarget": {
+    "sidCount": 1,
+    "sidModel": "MOS8580",
+    "clock": "PAL",
+    "baseAddress": 54272,
+    "updatesPerSecond": 50.12457321485099
+  },
+  "programChanges": {
+    "lead": {
+      "adsr": "0a49"
+    },
+    "bass": {
+      "adsr": "0999",
+      "pulse": [
+        [
+          "85",
+          "00",
+          "00"
+        ],
+        [
+          "1d",
+          "29",
+          "00"
+        ],
+        [
+          "0f",
+          "d7",
+          "00"
+        ],
+        [
+          "0f",
+          "29",
+          "00"
+        ],
+        {
+          "jump": 2
+        }
+      ],
+      "filter": []
+    }
+  },
+  "musicalHypothesis": "Keep the preferred narrow-pulse hook trajectory while trying the source lead ADSR register target and a separate moving pulse bass with the source bass ADSR target and filter bypass. The pair changes ensemble behavior beyond the earlier pulse-only lead trial; the listener strongly accepts the resulting pairing in this excerpt.",
+  "articulationLimits": [
+    "Source lead record 2 uses AD $0A / SR $49 and source bass record 1 AD $09 / SR $99; their short 49-cycle GATE-clear/set retriggers have no per-note TEST. The native driver retains its TEST onset frame, source-preserving gate schedule and macro reset at each note.",
+    "Sustain nibble 4 is a register target, not a claim of 4/15 linear audible amplitude. Slow decay and envelope history mean this is not an envelope or loudness match to the source.",
+    "Native bass motion translates the source initial $500 and asymmetric32/16 CIA-call, step-37 program into bounded 29/15-step tables with step 41 tables. Executed transition holds make the native steady legs of 17/16 updates. It deliberately does not reproduce the source cumulative drift.",
+    "The verified steady native pulse loop includes release. During actual gated bass bodies the width spans $500\u2013$6EC; the final-note first $9A5 peak occurs with GATE clear. This does not establish that the complete loop is audible.",
+    "The retained bass range is MIDI 36\u201353, unchanged. Source first lead/bass A4/A1 are 36 semitones apart, while this score first F4/F2 are 24 semitones apart; this trial does not transfer the original deeper relative bass register.",
+    "The source change heard around 60 seconds uses the same lead/bass records. Its reference clip is retained separately; no new high-role program is inferred or applied."
+  ],
+  "arrangedWindowBeats": [
+    64,
+    96
+  ],
+  "sourceWindowBeats": [
+    68,
+    100
+  ],
+  "transpositionSemitones": 0,
+  "percussionAdded": false,
+  "cpuCalls": 987,
+  "noteCounts": [
+    46,
+    0,
+    50
+  ],
+  "retainedTonalNotes": 96,
+  "frameIsolation": {
+    "schemaVersion": 1,
+    "frames": 987,
+    "noteCounts": [
+      46,
+      0,
+      50
+    ],
+    "allSourceAndNativeNoteSchedulesEqual": true,
+    "allFrequencyWordsWaveformsGateTestAndCouplingEqual": true,
+    "unusedHarmonyVoiceEqual": true,
+    "masterVolumeEqual": true,
+    "allUnselectedRegistersEqual": true,
+    "changedOffsets": {
+      "5": 987,
+      "6": 987,
+      "19": 987,
+      "20": 987,
+      "23": 987,
+      "17": 745,
+      "22": 986,
+      "24": 986,
+      "16": 936
+    },
+    "allowedChangedOffsets": [
+      5,
+      6,
+      16,
+      17,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "candidateOscillatorFilterRoute": 0,
+    "leadAdsr": "0a49",
+    "bassAdsr": "0999",
+    "bassMidiRange": [
+      36,
+      53
+    ],
+    "bassBodyFrequencyWordRange": [
+      1113,
+      2973
+    ],
+    "bassOnsets": 50,
+    "allBassOnsetsResetPulseTo": 1280,
+    "finalBassResetTick": 797,
+    "firstBassPwmPeakSeconds": 0.5785585420487497,
+    "steadyPwmDescentFrames": 17,
+    "steadyPwmRiseFrames": 16,
+    "steadyPwmCycleFrames": 33,
+    "steadyPwmCycleSeconds": 0.6583597202623703,
+    "steadyPwmMinimum": 1854,
+    "steadyPwmMaximum": 2469,
+    "gatedBassPulseWidthRange": [
+      1280,
+      1772
+    ],
+    "firstFinalNotePwmPeakIsGated": false,
+    "transitionHoldsIncluded": true,
+    "finalBassGateClearTick": 801,
+    "checkedBassPulseBoundaries": [
+      {
+        "tick": 797,
+        "width": 1280,
+        "gate": true
+      },
+      {
+        "tick": 826,
+        "width": 2469,
+        "gate": false
+      },
+      {
+        "tick": 827,
+        "width": 2469,
+        "gate": false
+      },
+      {
+        "tick": 842,
+        "width": 1854,
+        "gate": false
+      },
+      {
+        "tick": 843,
+        "width": 1854,
+        "gate": false
+      },
+      {
+        "tick": 858,
+        "width": 2469,
+        "gate": false
+      },
+      {
+        "tick": 859,
+        "width": 2469,
+        "gate": false
+      },
+      {
+        "tick": 860,
+        "width": 2469,
+        "gate": false
+      },
+      {
+        "tick": 875,
+        "width": 1854,
+        "gate": false
+      },
+      {
+        "tick": 891,
+        "width": 2469,
+        "gate": false
+      },
+      {
+        "tick": 908,
+        "width": 1854,
+        "gate": false
+      },
+      {
+        "tick": 924,
+        "width": 2469,
+        "gate": false
+      }
+    ],
+    "scope": "Same-score palette intervention. Every pitch/control trajectory and nonselected register agrees in post-call snapshots; selected ADSR, bass PWM and shared filter bypass change. Native per-note resets and TEST frames are retained, so this is not source legato, cumulative drift, PCM identity or musical acceptance."
+  },
+  "vice": {
+    "calls": [
+      0,
+      1,
+      3,
+      6,
+      150,
+      400,
+      810,
+      930,
+      980
+    ],
+    "maximumAbsoluteCycleError": 4,
+    "scope": "Standalone PRG boot, sampled SID write shadows and single-speed PAL cadence; not continuous write equivalence or listening evidence"
+  },
+  "pcm": {
+    "reference": {
+      "durationSeconds": 19.653514739229024,
+      "frames": 866720,
+      "peak": 9721,
+      "clippedSamples": 0,
+      "rms": 2426.157928379691,
+      "acRms": 2329.4170050943476,
+      "perChannel": [
+        {
+          "dc": 678.2762783828688,
+          "rms": 2426.157928379691,
+          "acRms": 2329.4170050943476
+        }
+      ],
+      "endingAcRms": 0.0
+    },
+    "candidate": {
+      "durationSeconds": 19.653514739229024,
+      "frames": 866720,
+      "peak": 9294,
+      "clippedSamples": 0,
+      "rms": 3606.336603760166,
+      "acRms": 3131.6588068063625,
+      "perChannel": [
+        {
+          "dc": 1788.4006311150083,
+          "rms": 3606.336603760166,
+          "acRms": 3131.6588068063625
+        }
+      ],
+      "endingAcRms": 0.0
+    }
+  },
+  "preStopRelease": [
+    {
+      "label": "reference",
+      "windowSeconds": [
+        18.133575112880422,
+        18.53357511288042
+      ],
+      "acRms": 0.0
+    },
+    {
+      "label": "candidate",
+      "windowSeconds": [
+        18.133575112880422,
+        18.53357511288042
+      ],
+      "acRms": 0.0
+    }
+  ],
+  "sameScoreComparison": {
+    "path": "build/axel-f-master-palette-matched-listening/previous-then-master-palette-matched.ab.wav",
+    "durationSeconds": 32.768843537414966,
+    "sourceWindowSeconds": [
+      0,
+      16.134421768707483
+    ],
+    "order": [
+      "previous selected hook/bass palette",
+      "source-informed lead/bass palette"
+    ],
+    "gapSeconds": 0.5,
+    "matching": "attenuation only",
+    "method": "full-file AC RMS, pooled channel power after subtracting each channel mean; silence and tails included",
+    "targetAcRms": 2534.417194109264,
+    "inputGains": [
+      1.0,
+      0.763052058852642
+    ],
+    "inputGainDb": [
+      0.0,
+      -2.348916630124422
+    ],
+    "matchedAcRms": [
+      2534.417194109264,
+      2534.412351975202
+    ],
+    "comparisonSha256": "6314ce64a5ff27719f89334814f581fb92c295476e65d8ce9ccaa02fa0c6e790",
+    "scope": "Primary listening comparison: each complete 16.134-second excerpt receives one constant whole-mix gain, preserving that mix internal lead/bass balance. Only the candidate is attenuated, by 2.348916630124422 dB. The raw WAVs and unity-gain comparison remain separate; equal AC RMS does not establish equal perceived loudness or musical preference."
+  },
+  "sourceContexts": {
+    "schemaVersion": 1,
+    "sourceWavSha256": "7def9d1b024fd53a96d6bcd311054d2a3600c6ae8bea18f350bfe2d2dca29283",
+    "clock": "PAL",
+    "sidModel": "MOS6581",
+    "subtune": 1,
+    "clips": [
+      {
+        "filename": "huelsbeck-lead-and-beat-9.5-20s.wav",
+        "sourceWindowSeconds": [
+          9.5,
+          20
+        ],
+        "gain": 1,
+        "sha256": "79c8e2b6a52413e63b99c68f8bd724d030ea794a88aada3998073ebfc4be8325",
+        "metrics": {
+          "format": "PCM16",
+          "sampleRate": 44100,
+          "channels": 1,
+          "frames": 463050,
+          "durationSeconds": 10.5,
+          "peak": 8617,
+          "peakDbfs": -11.601876840282896,
+          "clippedSamples": 0,
+          "rms": 2920.4147074517864,
+          "acRms": 2472.80821191381,
+          "acRmsDbfs": -22.445190013193468,
+          "perChannel": [
+            {
+              "dc": 1553.7186394557823,
+              "rms": 2920.4147074517864,
+              "acRms": 2472.80821191381
+            }
+          ]
+        }
+      },
+      {
+        "filename": "huelsbeck-support-28-44s.wav",
+        "sourceWindowSeconds": [
+          28,
+          44
+        ],
+        "gain": 1,
+        "sha256": "76ea45aa19ccaeaa634c3e712602f6c6f87e138a27b52904a3946c6eecf51b06",
+        "metrics": {
+          "format": "PCM16",
+          "sampleRate": 44100,
+          "channels": 1,
+          "frames": 705600,
+          "durationSeconds": 16.0,
+          "peak": 11469,
+          "peakDbfs": -9.118487644420547,
+          "clippedSamples": 0,
+          "rms": 4406.1446172914475,
+          "acRms": 3835.7342430797653,
+          "acRmsDbfs": -18.632028505875592,
+          "perChannel": [
+            {
+              "dc": 2168.237349773243,
+              "rms": 4406.1446172914475,
+              "acRms": 3835.7342430797653
+            }
+          ]
+        }
+      },
+      {
+        "filename": "huelsbeck-high-phrase-56-66s.wav",
+        "sourceWindowSeconds": [
+          56,
+          66
+        ],
+        "gain": 1,
+        "sha256": "135545f368ac49233c2410b2b91d35c274beb9d561a1cacbdbc33901d907a35e",
+        "metrics": {
+          "format": "PCM16",
+          "sampleRate": 44100,
+          "channels": 1,
+          "frames": 441000,
+          "durationSeconds": 10.0,
+          "peak": 11452,
+          "peakDbfs": -9.131371912203138,
+          "clippedSamples": 0,
+          "rms": 4320.531885923705,
+          "acRms": 3791.3619583999794,
+          "acRmsDbfs": -18.733093735899985,
+          "perChannel": [
+            {
+              "dc": 2071.85189569161,
+              "rms": 4320.531885923705,
+              "acRms": 3791.3619583999794
+            }
+          ]
+        }
+      }
+    ],
+    "scope": "Original Hulsbeck reference in its own key, tempo, form and arrangement; timbral/ensemble context, not same-score A/B fidelity."
+  },
+  "submittedAudio": [
+    {
+      "label": "reference",
+      "filename": "previous-hook-and-bass.wav",
+      "sha256": "3959562df28018daba0ff3a1827a41d9dfe7d230172d41312885233c4f02949b",
+      "bytes": 1733484
+    },
+    {
+      "label": "candidate",
+      "filename": "master-palette-hook-and-bass.wav",
+      "sha256": "8808ef65d0fa506635a0f760638636729f62d4a3330ce2a13cc3f4ed59c74ef4",
+      "bytes": 1733484
+    },
+    {
+      "label": "comparison",
+      "filename": "previous-then-master-palette-matched.ab.wav",
+      "sha256": "6314ce64a5ff27719f89334814f581fb92c295476e65d8ce9ccaa02fa0c6e790",
+      "bytes": 2890256
+    },
+    {
+      "label": "master-lead-context",
+      "filename": "huelsbeck-lead-and-beat-9.5-20s.wav",
+      "sha256": "79c8e2b6a52413e63b99c68f8bd724d030ea794a88aada3998073ebfc4be8325",
+      "bytes": 926144
+    },
+    {
+      "label": "master-support-context",
+      "filename": "huelsbeck-support-28-44s.wav",
+      "sha256": "76ea45aa19ccaeaa634c3e712602f6c6f87e138a27b52904a3946c6eecf51b06",
+      "bytes": 1411244
+    },
+    {
+      "label": "master-high-context",
+      "filename": "huelsbeck-high-phrase-56-66s.wav",
+      "sha256": "135545f368ac49233c2410b2b91d35c274beb9d561a1cacbdbc33901d907a35e",
+      "bytes": 882044
+    },
+    {
+      "label": "unity-comparison",
+      "filename": "previous-then-master-palette.ab.wav",
+      "sha256": "5c01c768a311a465e988fb2110e060e769d3927034fdcf5759024d51de921950",
+      "bytes": 2890256
+    }
+  ],
+  "nativeExports": {
+    "candidate-sid": {
+      "path": "build/axel-f-master-palette/cache/candidate/2712f9c5e580e18be362a0fa6c12decfc5cd2f1a63353deb7d512b8d447ea44a/attempt-fed27f952ff9450aafb4c1196b83d353/song/export/candidate.sid",
+      "sha256": "2a21e2d1e73f59329f37def01a39ba027bab628212e2328b0d6e1a46150a4b02"
+    },
+    "candidate-prg": {
+      "path": "build/axel-f-master-palette/cache/candidate/2712f9c5e580e18be362a0fa6c12decfc5cd2f1a63353deb7d512b8d447ea44a/attempt-fed27f952ff9450aafb4c1196b83d353/song/export/candidate.prg",
+      "sha256": "c33b1b83fadc9084673d8f3510ab0fd6ee6a2467d8660302b24d81efa32538c2"
+    },
+    "candidate-native": {
+      "path": "build/axel-f-master-palette/cache/candidate/2712f9c5e580e18be362a0fa6c12decfc5cd2f1a63353deb7d512b8d447ea44a/attempt-fed27f952ff9450aafb4c1196b83d353/song/conversion/candidate.swm",
+      "sha256": "906b3ec7de462fc9411b9fb55ab7802cf87be371105d098cc57db42f18f0b66b"
+    }
+  },
+  "listeningVerdict": {
+    "status": "accepted-for-tested-excerpt",
+    "date": "2026-10-15",
+    "feedback": [
+      "the \"H\u00fclsbeck-informed combination second\" is so much better!!!",
+      "The \"H\u00fclsbeck-informed combination second\" has just the right choice of instruments"
+    ],
+    "scope": "Strong preference for the combined lead/bass palette in the level-matched same-score excerpt. Does not isolate the contribution of each parameter or establish complete-arrangement acceptance. Preserve the separately preferred rounder high lead and test the pairing through the full score.",
+    "audioSha256": "6314ce64a5ff27719f89334814f581fb92c295476e65d8ce9ccaa02fa0c6e790"
+  },
+  "modelAssistanceReview": {
+    "status": "no-call",
+    "reason": "The listener strongly selects this pairing in the level-matched excerpt. Existing models are not calibrated to attribute that preference to individual parameters or to judge full-form musical success; no call adds decision-relevant evidence.",
+    "nextCheckpoint": "At the complete arrangement audition or after new feedback."
+  },
+  "recipe": "config/listening/axel-f-master-palette.json",
+  "selection": "config/listening/axel-f-master-palette.audition.json",
+  "executionTiming": {
+    "initialNativeBuildAttemptWallSeconds": 37.059181542,
+    "initialNativeBuildAttemptStatus": "failed",
+    "initialStartedAt": "2026-10-15T19:41:28.145166+00:00",
+    "initialFinishedAt": "2026-10-15T19:42:05.205172+00:00",
+    "completionRunWallSeconds": 9.311499874999999,
+    "finalStartedAt": "2026-10-15T19:48:17.290710+00:00",
+    "finalFinishedAt": "2026-10-15T19:48:21.669183+00:00",
+    "initialStages": [
+      {
+        "id": "prepare",
+        "status": "completed",
+        "executionSeconds": 2.632483542,
+        "wallSeconds": 2.737046833,
+        "cacheHit": false
+      },
+      {
+        "id": "trial",
+        "status": "completed",
+        "executionSeconds": 0.5989944169999997,
+        "wallSeconds": 0.629107125,
+        "cacheHit": false
+      },
+      {
+        "id": "reference",
+        "status": "completed",
+        "executionSeconds": 16.157449334,
+        "wallSeconds": 16.264404041000002,
+        "cacheHit": false
+      },
+      {
+        "id": "candidate",
+        "status": "completed",
+        "executionSeconds": 17.298233541,
+        "wallSeconds": 17.340734750000003,
+        "cacheHit": false
+      },
+      {
+        "id": "isolation",
+        "status": "failed",
+        "executionSeconds": 0.08022395900000134,
+        "wallSeconds": 0.08307645800000074,
+        "cacheHit": false
+      }
+    ],
+    "scope": "Both native builds passed on the first run; a wrong hardcoded note-count expectation stopped isolation. The guard was corrected to use actual projected source arrays (46 lead / 50 bass), without changing notes or palette. The next run reused both builds and completed all checks. The final cached run tightened filter-bypass reporting and added the 56\u201366-second clip from the existing 70-second source render. A later listening-preparation-only run reused every native/source stage and added the level-matched A/B.",
+    "sourceContextAndGuardRunWallSeconds": 1.291854625,
+    "matchedPreparationRunWallSeconds": 4.378769292
+  },
+  "evidence": {
+    "adaptation": {
+      "path": "build/axel-f-master-palette/cache/trial/efd2ed8bf42d200b645418c07f996c383ea7ca0a70208aeece0c7926b79d5c01/attempt-dc824ca98f9a435382af72dffe7b6586/trial/adaptation.json",
+      "sha256": "4c1c7253609028c9de8c36d0e2ce3f7564111bf18e7bb5fb9cb20d7b9dddeca7"
+    },
+    "isolation": {
+      "path": "build/axel-f-master-palette/cache/isolation/bae79af6ad187d38a3d8a1e9e2b283dfab23d058b20afa36e45ee4f446d790e2/attempt-1ddf7f3d9b2a481794b1723015060aaa/palette-isolation.json",
+      "sha256": "1ca89b56e1f6be8bc30d8c3a3cdf236c824833ee52c3f77ebff4e7fef12d3488"
+    },
+    "verification": {
+      "path": "build/axel-f-master-palette/cache/candidate/2712f9c5e580e18be362a0fa6c12decfc5cd2f1a63353deb7d512b8d447ea44a/attempt-fed27f952ff9450aafb4c1196b83d353/song/verification.json",
+      "sha256": "4c89c0c42f06575e3308c16f9c334761fc9c711d3d3a1b0fecf5060eddef3940"
+    },
+    "vice": {
+      "path": "build/axel-f-master-palette/cache/vice/a69c05830b9ec8cb96b1fd7a994a3828615e02a028d3d91870fbfd7e0f59d19b/attempt-6b7f1b589df944d88f97d909cb652dfc/vice/verification.json",
+      "sha256": "79e8ccc9a384f752ea8e22153b2ddc7a122aba703347c690e5d0be315de13de1"
+    },
+    "palette-audio": {
+      "path": "build/axel-f-master-palette/cache/palette-audio/e6a138f8bc7309ca7040c1249f26bbc961d733cdba9adabeef046ea2934b1467/attempt-ed0c51cb73354c3b8054b6515c5e88be/palette-audio.json",
+      "sha256": "89598bb4a320f0d5ce3d8a9afa7a37ee50be3d5243ba39abbc848c722216e9b0"
+    },
+    "pre-stop-release": {
+      "path": "build/axel-f-master-palette/cache/pre-stop-release/ab64040b429f9497f971fe8c0d2a4bba90bb282eeb410adc0fd2fc0b8465fac2/attempt-5d0d389e3d864924857cb49e26c29fd4/pre-stop-release.json",
+      "sha256": "9782221d95a20e571ac3b34ab43a665e7968b14f613c0132fabdd3aaa5d1ef24"
+    },
+    "source-contexts": {
+      "path": "build/axel-f-master-palette/cache/master-contexts/31e25ceee96a3466cdb5d193670ec9d7845dd1396cb5f2f09c45ea86535de9e6/attempt-4c235f5999104f5788b9daa331fd1fb4/source-contexts.json",
+      "sha256": "064b3cb83b87b06b97f683e5f4a0ee4d2beb95600e2a28984090e83d13bd630c"
+    },
+    "run": {
+      "path": "build/axel-f-master-palette/run.json",
+      "sha256": "189d0b0206ea13214441756ff6c2dea94dc88d1cf94e81037a767299e286bb58"
+    },
+    "initial-native-build-attempt": {
+      "path": "build/axel-f-master-palette/first-attempt.json",
+      "sha256": "1de35b8a16e82fd9103665fb0110f0231ce543a611730f4b7ff28ff4d64004fa"
+    },
+    "first-success": {
+      "path": "build/axel-f-master-palette/first-success.json",
+      "sha256": "0864e0afe4d360bd2535c4216cb4de3db67f06136f1676fa4fa27c5a518f847d"
+    },
+    "red-guard": {
+      "path": "build/axel-f-master-palette-red-guard/red-guard.json",
+      "sha256": "fa854cfe64aa4ab00e77ff2c351e021c63482820afa4376f9c89146b4aa072a4"
+    },
+    "published-sources": {
+      "path": "build/axel-f-master-palette-matched-listening/sources.json",
+      "sha256": "50f73e492d96fe61d44e25ea6d74fb90c9c6c2c0207ce6fe6262b03f6633b0b2"
+    },
+    "comparison": {
+      "path": "build/axel-f-master-palette/cache/comparison/87d9b17cb01e7baa3cc80d8f203c14ff44f0722006276761a3ea9d5bb2963e73/attempt-1be9ddadce8e4913862b005c38631216/previous-then-master-palette.comparison.json",
+      "sha256": "39a7a61b384b188ce1db495fced9f24aa9c13422883de83fcd77b35181e6c4bd"
+    },
+    "unity-publication-run": {
+      "path": "build/axel-f-master-palette/unity-publication-run.json",
+      "sha256": "c80314621bd1bed108d78b1b75ac8ac9b2023c12691e4728734c86e93f0a8b14"
+    },
+    "original-unity-publication": {
+      "path": "build/axel-f-master-palette-listening/sources.json",
+      "sha256": "edd34eafb176223d6f2f40a261ba27ad33c053fc5fee385084ab39a75145df60"
+    },
+    "matched-comparison-report": {
+      "path": "build/axel-f-master-palette/cache/matched-comparison/b5efe3005bd36716a65e7f77de30e62748244542d34156c1bd57a154bf5662c6/attempt-e9f3868596574f6d984d358aa038c203/previous-then-master-palette-matched.comparison.json",
+      "sha256": "26ce584eae24a49482d656de601b831c8f0d818de808d3552f8cd1085c70699c"
+    }
+  },
+  "reproduceCommands": [
+    "python3 scripts/listening-package.py config/listening/axel-f-master-palette.json --output build/axel-f-master-palette",
+    "python3 scripts/publish-listening.py build/axel-f-master-palette/run.json --selection config/listening/axel-f-master-palette.audition.json --output build/axel-f-master-palette-matched-listening-new"
+  ],
+  "limits": [
+    "One hook passage and its release are verified; this is not a complete arrangement or a claimed resolution of the broader musical criticism.",
+    "Post-call snapshots preserve pitch/waveform/GATE/TEST/coupling values and every unselected register, while ADSRs, bass PWM and shared filter bypass deliberately change. This is not PCM, bus timing or hardware equivalence.",
+    "All original scores, source SIDs, generated music, private note projections and reference clips remain local under ignored storage. The public review contains parameters, aggregate measurements and provenance only.",
+    "The preserved prior palettes, full versions and earlier reviewed comparisons are unchanged."
+  ],
+  "unityGainComparison": {
+    "path": "build/axel-f-master-palette-matched-listening/previous-then-master-palette.ab.wav",
+    "windowSeconds": [
+      0.0,
+      16.134421768707483
+    ],
+    "order": [
+      "previous selected hook/bass palette",
+      "source-informed lead/bass palette"
+    ],
+    "gapSeconds": 0.5,
+    "inputGains": [
+      1,
+      1
+    ],
+    "normalization": false,
+    "windowAcRms": [
+      2534.417194109264,
+      3321.4210809156625
+    ],
+    "candidateMinusReferenceAcRmsDb": 2.3489166301244224,
+    "scope": "Common unity gain preserves the actual dynamics of this coherent palette. The candidate has higher measured AC energy; that does not establish perceived loudness, preference or a causal explanation for a listening judgment."
+  },
+  "unityGainAudioChangeCheck": {
+    "schemaVersion": 1,
+    "referenceSha256": "3959562df28018daba0ff3a1827a41d9dfe7d230172d41312885233c4f02949b",
+    "candidateSha256": "8808ef65d0fa506635a0f760638636729f62d4a3330ce2a13cc3f4ed59c74ef4",
+    "comparisons": [
+      {
+        "label": "lead-and-bass-palette",
+        "window": {
+          "startFrame": 0,
+          "endFrame": 711528,
+          "frames": 711528,
+          "startSeconds": 0.0,
+          "endSeconds": 16.134421768707483,
+          "durationSeconds": 16.134421768707483
+        },
+        "changedSamples": 708883,
+        "totalSamples": 711528,
+        "deltaRms": 4466.158065264602,
+        "deltaAcRms": 4256.610691912918,
+        "comparisonSha256": "5c01c768a311a465e988fb2110e060e769d3927034fdcf5759024d51de921950",
+        "inputGains": [
+          1,
+          1
+        ]
+      }
+    ],
+    "scope": "Confirms nonidentical PCM from the exact submitted unity-gain pair; this does not establish audibility, preference or musical usefulness."
+  }
+}

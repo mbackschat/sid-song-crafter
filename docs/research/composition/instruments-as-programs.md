@@ -46,6 +46,10 @@ Our initialized execution of the selected filter-corrected *Shades* variant veri
 
 Its CIA timer supplies approximately 79.93 updates per second, so “delay 16” is not sixteen PAL video frames. The listener heard the moving pulse as more vibrant than the frozen diagnostic, and accepted the familiar-material transfer. Those are bounded verdicts, not approval of every glide: a separate invented ending was rejected. Follow the [Shades card](instruments/shades-decoded-programs.md) to the evidence, editable banks and [computed sound routines](../../../scripts/shades_programs.py).
 
+### Hülsbeck: one program can be heard as different instruments
+
+In the [Axel F role study](../../../songs/axel-f/huelsbeck-study.md#targeted-role-study-lead-support-and-the-apparent-switch), the listener singled out a perceived instrument change around one minute. Ordered execution shows that the lead keeps the same instrument record while register, phrasing and the surrounding percussion change. This does not identify a single cause of the perceived contrast, but it rules out describing it as a new selected patch. Distinguish the program’s identity, its current state and the instrument the listener perceives in the arrangement.
+
 ### Galway: Rambo separates note length from sound lifetime
 
 The executed loader has distinct score activity, gate-release countdown and sound lifetime. Returning from the score does not immediately stop the sound routine: PWM and pitch processing can continue until the lifetime expires. Copying its notes and waveform while discarding these counters would lose part of the ending gesture.
