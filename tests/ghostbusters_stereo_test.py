@@ -1,0 +1,95 @@
+"""Guard native stereo allocation independently of a source-derived score."""
+
+from copy import deepcopy
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+import sys
+import unittest
+from unittest.mock import patch
+
+
+ROOT = Path(__file__).resolve().parents[1]
+spec = importlib.util.spec_from_file_location('gb_stereo_title_tests', ROOT / 'scripts/studies/ghostbusters/compile-title.py')
+title = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = title
+spec.loader.exec_module(title)
+from ghostbusters_title_test import fixture
+
+
+def example():
+    composition, alignment, commands = fixture()
+    composition['sound']['patches']['3'] = dict(pulse_low=0, pulse_high=8, control=129, attack_decay=0x14, sustain_release=0, vibrato_shift=0)
+    composition['score']['initialState']['voices'][2]['instrument'] = 3
+    composition['score']['patterns']['2'] = deepcopy(composition['score']['patterns']['0'])
+    composition['score']['patterns']['2']['rows'][0]['parameter']['instrument'] = 3
+    composition['score']['orders'][2] = dict(patterns=[2])
+    composition['score']['patterns']['1'] = dict(rows=[dict(header=0x47)])
+    composition['score']['orders'][1] = dict(patterns=[0, 1])
+    composition['sound']['frequencies'].update({'36': 0x2468, '37': 0x2568})
+    arrangement = json.loads((ROOT / 'songs/studies/ghostbusters-stereo/arrangement.json').read_text())
+    arrangement['support']['patterns'] = [0]
+    return composition, alignment, commands, arrangement
+
+
+class GhostbustersStereoTest(unittest.TestCase):
+    def test_runtime_duplicates_complete_lead_and_volume_and_independent_hold(self):
+        composition, _, _, arrangement = example()
+        sid, built = title.compiler.build(composition, arrangement=arrangement)
+        verified, writes = title.compiler.verify(composition, sid, built)
+        self.assertEqual(int.from_bytes(sid[4:6], 'big'), 3)
+        self.assertEqual(sid[118:120], b'\x00\x58')
+        self.assertEqual(sid[122:124], b'\x42\x00')
+        self.assertEqual(verified['namedStateBoundaries'], 49)
+        mono = title.compiler.player.compute(composition)
+        self.assertEqual(title.compiler.identity([r for r in writes if r['address'] < 0xd420]), title.compiler.identity(mono['writes']))
+        a = [(r['phase'], r['tick'], r['address'] + 32, r['value']) for r in writes if 0xd400 <= r['address'] <= 0xd406 or r['address'] == 0xd418]
+        b = [(r['phase'], r['tick'], r['address'], r['value']) for r in writes if 0xd420 <= r['address'] <= 0xd426 or r['address'] == 0xd438]
+        self.assertEqual(a, b)
+        support = [(r['tick'], r['address'], r['value']) for r in writes if r['phase'] == 'play' and 0xd427 <= r['address'] <= 0xd42d]
+        self.assertEqual(support[:7], [(0,0xd428,0x24),(0,0xd427,0x68),(0,0xd42b,0x41),(0,0xd429,0),(0,0xd42a,8),(0,0xd42c,0x24),(0,0xd42d,0x48)])
+        self.assertEqual(support[7:9], [(40,0xd42b,0x40),(40,0xd42d,0)])
+        self.assertEqual([r[0] for r in support[9:]], [44] * 7)
+        self.assertTrue(verified['resetVerification']['restoredPoisonedState'])
+        self.assertLess(verified['maximumPlayCycles'], 17095)
+
+    def test_native_speech_is_on_both_chips_without_missing_timer_ticks(self):
+        composition, alignment, commands, arrangement = example()
+        with patch.object(title, 'decode_commands', return_value=(commands, [])):
+            built = title.build(composition, bytes(65536), alignment, seconds=5, arrangement=arrangement)
+        checked = title.verify_native(built, 48)
+        self.assertLess(checked['maximumNmiCyclesIncludingEntry'], 102)
+        self.assertTrue(checked['allOrderedStoresMatch'])
+        self.assertEqual(title.admit_rsid(built['rsid'])['sidCount'], 2)
+        self.assertEqual(title.admit_rsid(built['rsid'])['sha256'], hashlib.sha256(built['rsid']).hexdigest())
+        self.assertEqual(title.verify_native(built, 2, poisoned=True)['checkedMusicCalls'], 2)
+
+    def test_invalid_mix_and_changed_template_are_rejected(self):
+        composition, _, _, arrangement = example()
+        arrangement['mix'] = [[0.5,0.5],[0.5,0.5]]
+        with self.assertRaisesRegex(ValueError, 'raw A-left'):
+            title.compiler.build(composition, arrangement=arrangement)
+        _, _, _, arrangement = example()
+        with self.assertRaisesRegex(ValueError, 'anchor changed'):
+            title.compiler.stereo.assembly('entry_init:\n  RTS\n', arrangement)
+
+    def test_hold_screen_checks_later_lead_and_rejects_non_noise_companion(self):
+        composition, _, _, arrangement = example()
+        composition['score']['patterns']['0']['rows'][1] = dict(header=1, note=25)
+        composition['sound']['frequencies']['26'] = 0x1300
+        with self.assertRaisesRegex(ValueError, 'conflicts with source lead at call 32'):
+            title.compiler.build(composition, arrangement=arrangement)
+        composition, _, _, arrangement = example()
+        composition['sound']['patches']['3']['control'] = 0x41
+        with self.assertRaisesRegex(ValueError, 'source noise percussion'):
+            title.compiler.build(composition, arrangement=arrangement)
+
+    def test_default_mono_payload_matches_frozen_accepted_export(self):
+        composition = json.loads((ROOT / 'evidence/ghostbusters-independent-full/native/composition.json').read_text())
+        sid, _ = title.compiler.build(composition)
+        self.assertEqual(hashlib.sha256(sid[124:]).hexdigest(), '7ebcc77aa57e79ce0ff8ac19c8437a8f0994c918c9cba3be765153dae2727567')
+
+
+if __name__ == '__main__':
+    unittest.main()

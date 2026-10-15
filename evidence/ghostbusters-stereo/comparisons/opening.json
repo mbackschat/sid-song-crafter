@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    0,
+    12
+  ],
+  "window": {
+    "startFrame": 0,
+    "endFrame": 529200,
+    "frames": 529200,
+    "startSeconds": 0.0,
+    "endSeconds": 12.0,
+    "durationSeconds": 12.0
+  },
+  "sampleRate": 44100,
+  "channels": 2,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/f94c9fcbcd3e9914b8fea085bfd95ffc30fa54adf29e353f1a75221809d5ab79/attempt-57cd20cfebe94badb80a12f085afc9ea/prepared/opening-mono-then-stereo.ab.wav",
+    "frames": 1080450,
+    "durationSeconds": 24.5,
+    "sha256": "91d6877c4c5105d94ee397fda3122be84aadf3d77fcd93fc50e003fc7de025e4"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 529200
+    },
+    {
+      "label": "silence",
+      "startFrame": 529200,
+      "endFrame": 551250
+    },
+    {
+      "label": "B",
+      "startFrame": 551250,
+      "endFrame": 1080450
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/f94c9fcbcd3e9914b8fea085bfd95ffc30fa54adf29e353f1a75221809d5ab79/attempt-57cd20cfebe94badb80a12f085afc9ea/prepared/reference-matched-full.wav",
+      "sha256": "ac9acf1d55a78df754134716aafe164f360ebbee6eb64ece33f9b7d9af2bd846",
+      "originalFrames": 10804500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 529200,
+        "durationSeconds": 12.0,
+        "peak": 4873,
+        "peakDbfs": -16.553070471568468,
+        "clippedSamples": 0,
+        "rms": 2714.4660734104127,
+        "acRms": 1821.7754714683933,
+        "acRmsDbfs": -25.099101691142632,
+        "perChannel": [
+          {
+            "dc": 2012.327059712774,
+            "rms": 2714.4660734104127,
+            "acRms": 1821.7754714683933
+          },
+          {
+            "dc": 2012.327059712774,
+            "rms": 2714.4660734104127,
+            "acRms": 1821.7754714683933
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/f94c9fcbcd3e9914b8fea085bfd95ffc30fa54adf29e353f1a75221809d5ab79/attempt-57cd20cfebe94badb80a12f085afc9ea/prepared/native-matched-full.wav",
+      "sha256": "bda82aabbb0b74c607705c071a6236e34396a8209f617de9697029b003fc3559",
+      "originalFrames": 10804500,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 529200,
+        "durationSeconds": 12.0,
+        "peak": 5196,
+        "peakDbfs": -15.995615851174554,
+        "clippedSamples": 0,
+        "rms": 2301.875783251201,
+        "acRms": 1576.465556099184,
+        "acRmsDbfs": -26.355308971819404,
+        "perChannel": [
+          {
+            "dc": 2145.5633314436886,
+            "rms": 2893.788586675044,
+            "acRms": 1941.7956574096588
+          },
+          {
+            "dc": 1011.6001851851852,
+            "rms": 1491.057295567783,
+            "acRms": 1095.4071955210127
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

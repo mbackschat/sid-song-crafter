@@ -98,6 +98,10 @@ def pack_timeline(commands, alignment, timer_start_cycle):
 
 def wrapper_source(music, stream_address):
     source = (ROOT / 'songs/players/ghostbusters-title.asm').read_text()
+    if music.get('arrangement') is not None:
+        source = compiler.stereo.replace_once(source, '  STA $d400,X', '  STA $d400,X\n  STA $d420,X')
+        require(source.count('  STA $d418') == 2, 'Stereo title volume sites changed')
+        source = source.replace('  STA $d418', '  STA $d418\n  STA $d438')
     constants = dict(SPEECH_LO=stream_address & 255, SPEECH_HI=stream_address >> 8,
         MUSIC_INIT=music['symbols']['entry_init'], MUSIC_PLAY=music['symbols']['entry_play'],
         NMI_LO=0, NMI_HI=0, IRQ_LO=0, IRQ_HI=0)
@@ -121,16 +125,25 @@ def startup_cycles(wrapper, symbols):
 
 
 def admit_rsid(data):
-    header = inspect_sid(data, subtune=1)
+    dual = data[:6] == b'RSID\x00\x03'
+    if dual:
+        require(len(data) >= 126 and data[118:120] == b'\x00\x58' and data[120:124] == b'\x00\x00\x42\x00', 'Native dual RSID target/address contract differs')
+        normalized = bytearray(data)
+        normalized[5], normalized[119], normalized[122] = 2, 0x18, 0
+        header = inspect_sid(bytes(normalized), subtune=1)
+        header.update(version=3, flags=0x58, sidCount=2, sidBases=[0xd400, 0xd420], sha256=sha(data))
+    else:
+        header = inspect_sid(data, subtune=1)
+        header['sidCount'] = 1
     require(header['format'] == 'RSID' and header['headerLoadAddress'] == header['playAddress'] == header['speedWord'] == 0
-        and header['dataOffset'] == 124 and header['flags'] == 0x18
+        and header['dataOffset'] == 124 and header['flags'] == (0x58 if dual else 0x18)
         and header['subtunes'] == header['defaultSubtune'] == 1
         and header['loadAddress'] == LOAD <= header['initAddress'] < header['endAddressExclusive'] < 0xd000
-        and not any(data[120:124]), 'Native RSID reserved fields, target or memory contract differ')
+        and (dual or not any(data[120:124])), 'Native RSID reserved fields, target or memory contract differ')
     return header
 
 
-def build(composition, memory, alignment, *, seconds=245):
+def build(composition, memory, alignment, *, seconds=245, arrangement=None):
     require(type(seconds) in (int, float) and math.isfinite(seconds) and 5 <= seconds <= 260,
         'Title duration must be a finite 5–260 seconds')
     require(alignment['clockHz'] == NTSC_CLOCK, 'Alignment must use the explicit NTSC clock')
@@ -138,7 +151,7 @@ def build(composition, memory, alignment, *, seconds=245):
     calls = math.ceil((seconds * NTSC_CLOCK - alignment['firstMusicBody']) / NTSC_FRAME_CYCLES) + 2
     require(1 <= calls <= 16000, 'Title music exceeds the frozen bounded compiler range')
     description['range']['auditCalls'] = calls
-    sid, music = compiler.build(description)
+    sid, music = compiler.build(description, arrangement=arrangement)
     music_payload = sid[124:]
     stream_address = music['payloadEndAddress']
     wrapper, symbols, source, listing = wrapper_source(music, stream_address)
@@ -160,12 +173,16 @@ def build(composition, memory, alignment, *, seconds=245):
         struct.pack_into('>H', header, offset, value)
     for offset, value in ((22, 'Ghostbusters serialized title'), (54, 'SID Song Crafter'), (86, '2026 scheduling adaptation')):
         header[offset:offset + 32] = compiler.text(value, 'metadata')
+    if arrangement is not None:
+        struct.pack_into('>H', header, 4, 3)
+        struct.pack_into('>H', header, 118, 0x58)
+        header[122] = 0x42
     prg = LOAD.to_bytes(2, 'little') + image
     rsid = bytes(header) + prg
     admit_rsid(rsid)
     return dict(rsid=rsid, prg=prg, stream=stream, commands=commands, composition=description, music=music, musicSid=sid,
-        symbols=symbols, wrapperSource=source, wrapperListing=listing, info=dict(schemaVersion=1,
-            adaptation=ADAPTATION, profile=dict(clock='ntsc', sidModel='MOS6581'), durationSeconds=seconds,
+        symbols=symbols, wrapperSource=source, wrapperListing=listing, info=dict(schemaVersion=1, arrangement=arrangement,
+            adaptation=ADAPTATION, profile=dict(clock='ntsc', sidModel='MOS6581', sidBases=[0xd400, 0xd420] if arrangement is not None else [0xd400]), durationSeconds=seconds,
             musicCalls=calls, musicCallRange=dict(firstInclusive=0, lastExclusive=calls),
             samplePeriodCycles=SAMPLE_CYCLES, sampleTimer='CIA2 Timer B', musicTimer='CIA1 Timer A',
             musicPeriodCycles=NTSC_FRAME_CYCLES, timerSetupCpuCycles=timer_start,
@@ -202,7 +219,7 @@ class NativeMemory:
     def __setitem__(self, address, value):
         self.data[address] = value
         cycle = self.cpu.processorCycles if self.cpu is not None else 0
-        if 0xd400 <= address <= 0xd41f:
+        if 0xd400 <= address <= 0xd43f:
             self.writes.append(dict(cycle=cycle, address=address, value=value))
         if address in (0xdd0d, 0xdc0d):
             enabled = bool(value & 128)
@@ -219,6 +236,29 @@ class NativeMemory:
             else:
                 self.timer_irq = period + 1
                 self.next_irq = cycle + 4 + self.timer_irq if value & 1 else None
+
+
+def opening_writes(built):
+    dual = built['music'].get('arrangement') is not None
+    result = []
+    for address in range(0xd417, 0xd3ff, -1):
+        result.append((address, 0))
+        if dual:
+            result.append((address + 32, 0))
+    for value in [15] + [value for value in built['stream'] if value <= 15]:
+        result.append((0xd418, value))
+        if dual:
+            result.append((0xd438, value))
+    return result
+
+
+def stereo_metrics(built, writes, music_model):
+    if built['music'].get('arrangement') is None:
+        return {}
+    addresses = [row['address'] for row in writes]
+    return dict(sidBases=[0xd400, 0xd420], perBankStores={str(base): sum(base <= address <= base + 31 for address in addresses) for base in (0xd400, 0xd420)},
+        leadMirrorStores=sum(0xd420 <= address <= 0xd426 for address in addresses),
+        sharedVolumeMirrorStores=addresses.count(0xd438), supportStores=sum(row['phase'] == 'play' and 0xd427 <= row['address'] <= 0xd42d for row in music_model['writes']))
 
 
 def pairs(writes):
@@ -241,9 +281,8 @@ def verify_native(built, calls=2, *, bootstrap=False, poisoned=False, fast_forwa
     else:
         memory.data[0x0400:0x0406] = [0x20, symbols['title_init'] & 255, symbols['title_init'] >> 8, 0x4c, 3, 4]
         cpu.pc = 0x0400
-    model = compiler.player.compute(built['composition'], calls=calls)
-    expected = [(address, 0) for address in range(0xd417, 0xd3ff, -1)] + [(0xd418, 15)]
-    expected += [(0xd418, value) for value in built['stream'] if value <= 15]
+    model = compiler.numeric(built['composition'], built['music'].get('arrangement'), calls=calls)
+    expected = opening_writes(built)
     expected += pairs(model['writes'])
     entries, returns, nmis, states = [], 0, [], 0
     init_entry = None
@@ -302,7 +341,7 @@ def verify_native(built, calls=2, *, bootstrap=False, poisoned=False, fast_forwa
     intervals = [right - left for left, right in zip(entries, entries[1:])]
     require(not intervals or max(abs(value - NTSC_FRAME_CYCLES) for value in intervals) <= 64,
         'Native music cadence exceeds instruction-boundary dispatch allowance')
-    return dict(passed=True, scope='py65 new native instructions plus explicit instruction-boundary CIA model; no VIC, ROM, SID synthesis or source IRQ identity',
+    return dict(**stereo_metrics(built, memory.writes, model), passed=True, scope='py65 new native instructions plus explicit instruction-boundary CIA model; no VIC, ROM, SID synthesis or source IRQ identity',
         bootstrap='Executed SYS2061 machine entry' if bootstrap else 'Real JSR init host',
         checkedMusicCalls=calls, namedMusicStates=states, checkedStores=len(memory.writes),
         generatedSpeechTicks=len(nmis), maximumNmiCyclesIncludingEntry=max(nmi_cycles) + 7,
@@ -338,6 +377,8 @@ def verify_vice(built, output, vice, calls):
         '-ntsc', '+logcolorize', '-initbreak', 'ready', '-moncommands', str(monitor),
         '-monlog', '-monlogname', str(output / 'private-monitor.log'), '-limitcycles', str(cycle_limit),
         '-warp', '+sound', '-sidenginemodel', 'resid6581', '-cia1model', '1', '-cia2model', '1']
+    if music.get('arrangement') is not None:
+        command += ['-sidextra', '1', '-sid2address', '0xd420']
     env = os.environ.copy()
     for key in ('DISPLAY', 'WAYLAND_DISPLAY'):
         env.pop(key, None)
@@ -367,10 +408,13 @@ def verify_vice(built, output, vice, calls):
     require(len(terminal) == 1 and terminal[0]['checkpoint'] == 10 and rows[-1] == terminal[0],
         'Native VICE terminal play was executed or wrong stop')
     stores = [row for row in rows if row['operation'] == 'store' and 'sidAddress' in row]
+    if music.get('arrangement') is not None:
+        require(all(0xd400 <= row['address'] <= 0xd43f for row in stores), 'Native stores escape the two declared SID windows')
+        for row in stores:
+            row['sidAddress'] = row['address']
     require(not any(row['operation'] == 'load' and 'sidAddress' in row for row in rows), 'Native SID reads unexpectedly present')
-    model = compiler.player.compute(built['composition'], calls=calls)
-    expected = [(address, 0) for address in range(0xd417, 0xd3ff, -1)] + [(0xd418, 15)]
-    expected += [(0xd418, value) for value in built['stream'] if value <= 15] + pairs(model['writes'])
+    model = compiler.numeric(built['composition'], built['music'].get('arrangement'), calls=calls)
+    expected = opening_writes(built) + pairs(model['writes'])
     require([(row['sidAddress'], row['value']) for row in stores] == expected, 'Native VICE ordered speech/music stores differ')
     def exec_at(pc):
         return [row for row in rows if row['operation'] == 'exec' and row['pc'] == pc and row['kind'] == 'trace']
@@ -388,7 +432,7 @@ def verify_vice(built, output, vice, calls):
     init = exec_at(symbols['title_init'])
     require(len(init) == len(exec_at(music['symbols']['entry_init'])) == 1, 'Native init count differs')
     command_starts = [nmis[row['tick']]['monitorCycle'] - init[0]['monitorCycle'] for row in built['info']['alignment'][:2]]
-    result = dict(passed=True, scope='Actual NTSC VICE, real JSR native init, complete decoded speech stream and bounded music. Ordered stores and timer cadence; no source IRQ/PCM identity, rendered audio or physical hardware claim.',
+    result = dict(**stereo_metrics(built, stores, model), passed=True, scope='Actual NTSC VICE, real JSR native init, complete decoded speech stream and bounded music. Ordered stores and timer cadence; no source IRQ/PCM identity, rendered audio or physical hardware claim.',
         checkedMusicCalls=calls, completedMusicCalls=len(completed), terminalPlayExecuted=False,
         cycleLimit=cycle_limit, processTimeoutSeconds=600,
         sidStores=len(stores), sidReads=0, nmiEntries=len(nmis), nestedNmi=False,
@@ -425,21 +469,28 @@ def verify_source_music(source, built):
     require(observed['initialCachedControls'] == model['initial']['cachedControls'], 'Extended source initial caches differ')
     require([row['cachedControls'] for row in observed['contexts']] == [row['cachedControls'] for row in model['returns']],
         'Extended source music caches differ')
-    compiled, _ = compiler.verify(built['composition'], built['musicSid'], built['music'], computed=model)
+    compiled_model = compiler.numeric(built['composition'], built['music'].get('arrangement'))
+    compiled, _ = compiler.verify(built['composition'], built['musicSid'], built['music'], computed=compiled_model)
     return dict(sourceSha256=sha(data), freshOriginalMusicCpu=True, checkedMusicCalls=built['info']['musicCalls'],
         matchedStores=len(observed['writes']), namedReturns=len(observed['returns']), resetCalls=model['resetCalls'],
         scope=observed['audit']['environment'], speechOrFullMachineSourceIdentity=False,
         fullIndependentCompiledMusic=compiled)
 
 
-def run(source, composition_path, alignment_path, output, *, seconds=245, calls=16, vice=None, source_music=False):
+def run(source, composition_path, alignment_path, output, *, seconds=245, calls=16, vice=None, source_music=False, arrangement_path=None):
     require(not output.exists() and output.resolve().is_relative_to((ROOT / 'build').resolve()), 'Choose a fresh private build/ output')
     data = source.read_bytes()
     memory = speech.private_source_memory(data)
     alignment_record = json.loads(alignment_path.read_text())
     require(alignment_record['sourceSha256'] == speech.SOURCE_SHA, 'Alignment source pin differs')
     composition = json.loads(composition_path.read_text())
-    built = build(composition, memory, alignment_record['sourceAlignment'], seconds=seconds)
+    arrangement = json.loads(arrangement_path.read_text()) if arrangement_path is not None else None
+    built = build(composition, memory, alignment_record['sourceAlignment'], seconds=seconds, arrangement=arrangement)
+    if arrangement is not None:
+        ledger = compiler.numeric(built['composition'], arrangement)['supportLedger']
+        ledger_bytes = json.dumps(ledger, indent=2).encode() + b'\n'
+        built['info']['stereoSupport'] = dict(regions=len(ledger), heldCalls=sum(row['endCall'] - row['startCall'] for row in ledger), ledgerSha256=sha(ledger_bytes),
+            controlOnsetAddress=built['music']['symbols']['gb_support_control_onset'])
     decoder_receipt_path = ROOT / 'evidence/ghostbusters-components/speech/verification.json'
     decoder_receipt = json.loads(decoder_receipt_path.read_text())
     require(decoder_receipt['sourceSha256'] == speech.SOURCE_SHA
@@ -452,6 +503,8 @@ def run(source, composition_path, alignment_path, output, *, seconds=245, calls=
     (output / 'player.asm').write_text(built['wrapperSource'] + '\n' + built['music']['source'])
     (output / 'player.listing').write_text(built['wrapperListing'] + built['music']['listing'])
     write_json(output / 'composition.json', built['composition'])
+    if arrangement is not None:
+        (output / 'support-ledger.json').write_bytes(ledger_bytes)
     built['info']['inputs'] = {str(path.relative_to(ROOT)): sha(path.read_bytes()) for path in (source, composition_path, alignment_path, decoder_receipt_path)}
     built['info']['tools'] = {str(path.relative_to(ROOT)): sha(path.read_bytes()) for path in (
         Path(__file__), Path(__file__).with_name('compiler.py'), Path(__file__).with_name('player.py'),
@@ -459,6 +512,10 @@ def run(source, composition_path, alignment_path, output, *, seconds=245, calls=
         ROOT / 'songs/players/ghostbusters.asm', ROOT / 'songs/players/ghostbusters-title.asm', ROOT / 'scripts/sid_assembler.py',
         ROOT / 'scripts/sid_clock.py', ROOT / 'scripts/sid_intake.py', ROOT / 'scripts/psid_audit.py',
         ROOT / 'scripts/psid_profile.py', ROOT / 'scripts/sid_audit_host.py', ROOT / 'scripts/verify_player.py')}
+    if arrangement_path is not None:
+        built['info']['inputs'][str(arrangement_path.relative_to(ROOT))] = sha(arrangement_path.read_bytes())
+        path = Path(__file__).with_name('stereo.py')
+        built['info']['tools'][str(path.relative_to(ROOT))] = sha(path.read_bytes())
     if source_music:
         path = Path(__file__).with_name('probe-form.py')
         built['info']['tools'][str(path.relative_to(ROOT))] = sha(path.read_bytes())
@@ -486,9 +543,10 @@ def main():
     parser.add_argument('--probe-calls', type=int, default=16)
     parser.add_argument('--vice', type=Path)
     parser.add_argument('--verify-source-music', action='store_true')
+    parser.add_argument('--arrangement', type=Path, help='Explicit note-free native stereo allocation')
     args = parser.parse_args()
     result = run(args.source.resolve(), args.composition.resolve(), args.alignment.resolve(), args.output.resolve(),
-        seconds=args.seconds, calls=args.probe_calls, vice=args.vice, source_music=args.verify_source_music)
+        seconds=args.seconds, calls=args.probe_calls, vice=args.vice, source_music=args.verify_source_music, arrangement_path=args.arrangement.resolve() if args.arrangement else None)
     print(json.dumps(dict(verification=str(args.output / 'verification.json'), native=result['cpu']['passed'],
         speechTicks=result['cpu']['generatedSpeechTicks'], musicCalls=result['cpu']['checkedMusicCalls'],
         vicePassed=result.get('vice', {}).get('passed'), adaptation=ADAPTATION), indent=2))

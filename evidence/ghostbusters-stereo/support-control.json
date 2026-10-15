@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "diagnostic": "B2 held-support gate disabled; not an isolated audio stem or musical verdict",
+  "originalSha256": "e3687a138e7903222c071e37a0599c59c3e8790395b7cf4a42361ce214705c9e",
+  "diagnosticSha256": "33833b50fdbec95a77631c83324c8baa9cc07cf4b54ada6573c18f78a2bc94cb",
+  "bytes": 50011,
+  "controlOnsetAddress": 4725,
+  "changedFileOffset": 2803,
+  "originalValue": 65,
+  "diagnosticValue": 64,
+  "contextHex": "a9418d2bd4a9008d29d4",
+  "changedBytes": 1,
+  "identicalInstructionLayout": true,
+  "semantics": "Only GATE changes in LDA #$41; STA $D42B. The next LDA #$00 overwrites A/N/Z before another use; addressing, instruction lengths, branches and CPU cycles remain unchanged.",
+  "requiredPcmCheck": "Same render settings and candidate gain; left PCM exactly unchanged and right difference nonzero during a held-support window."
+}

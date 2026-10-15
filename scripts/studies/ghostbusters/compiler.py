@@ -32,6 +32,9 @@ player = importlib.util.module_from_spec(spec)
 sys.modules[spec.name] = player
 spec.loader.exec_module(player)
 
+stereo = player.load_module('ghostbusters_stereo_expansion', 'stereo.py')
+
+
 LOAD = 0x1000
 WORKSPACE = slice(0xe0, 0xf0)
 SCORE_LABELS = dict(orderCursor='gb_order_cursor', patternCursor='gb_pattern_cursor',
@@ -111,9 +114,16 @@ def parameters(description):
     return generated, references, dict(GB_STATE_LAST=state_bytes - 1), state_bytes
 
 
-def _build(description):
+def numeric(description, arrangement=None, *, calls=None):
+    return player.compute(description, calls=calls) if arrangement is None else stereo.compute(player, description, arrangement, calls=calls)
+
+
+def _build(description, arrangement=None):
     generated, references, constants, state_bytes = parameters(description)
-    source = (ROOT / 'songs/players/ghostbusters.asm').read_text() + '\n' + generated
+    source = (ROOT / 'songs/players/ghostbusters.asm').read_text()
+    if arrangement is not None:
+        source = stereo.assembly(source, arrangement)
+    source += '\n' + generated
     cpu_type()
     constants.update({name: 0 for name in references})
     _, preliminary, _ = assemble(source, constants, load=LOAD)
@@ -126,18 +136,24 @@ def _build(description):
         struct.pack_into('>H', header, offset, value)
     for offset, name in ((22, 'title'), (54, 'author'), (86, 'released')):
         header[offset:offset + 32] = text(description.get(name, DEFAULT_METADATA[name]), name)
-    return bytes(header) + payload, dict(symbols=symbols, source=source, listing=listing,
+    if arrangement is not None:
+        struct.pack_into('>H', header, 4, 3)
+        struct.pack_into('>H', header, 118, 0x58)
+        header[122] = 0x42
+    return bytes(header) + payload, dict(arrangement=arrangement, symbols=symbols, source=source, listing=listing,
         stateBytes=state_bytes, loadAddress=LOAD, payloadBytes=len(payload), payloadEndAddress=LOAD + len(payload),
         originalDriverIncluded=False, registerDumpPlayback=False, runtimeScoreScheduler=True,
-        profile=dict(clock='ntsc', sidModel='MOS6581', sidBase=0xd400, frameCycles=NTSC_FRAME_CYCLES),
+        profile=dict(clock='ntsc', sidModel='MOS6581', sidBase=0xd400, frameCycles=NTSC_FRAME_CYCLES, **(dict(sidBases=[0xd400, 0xd420], sidCount=2) if arrangement is not None else {})),
         supportedCallRange=dict(firstInclusive=0, lastExclusive=description['range']['auditCalls']),
         musicComponentOnly=True, speechIncluded=False, hardwareReset=False,
-        initialization=dict(zeroPortsDescending=['d417', 'd400'], stores=24, volumeStore=False))
+        initialization=dict(zeroPortsDescending=[['d417', 'd400'], ['d437', 'd420']] if arrangement is not None else ['d417', 'd400'], stores=48 if arrangement is not None else 24, volumeStore=False))
 
 
-def build(description):
+def build(description, *, arrangement=None):
     preflight(description)
-    return _build(description)
+    if arrangement is not None:
+        numeric(description, arrangement)
+    return _build(description, arrangement)
 
 
 def read_state(memory, built, description, phase, tick):
@@ -150,9 +166,12 @@ def read_state(memory, built, description, phase, tick):
     voices = [{field: byte(label, voice) for field, label in SCORE_LABELS.items()} for voice in range(3)]
     cached = [byte('gb_cached_control', voice) for voice in range(3)]
     if phase == 'init':
-        return dict(score=dict(phase=after, voices=voices), cachedControls=cached)
-    return dict(tick=tick, score=dict(tick=tick, phaseBefore=(after - 1) & 255,
-        phaseAfter=after, voices=voices), cachedControls=cached)
+        result = dict(score=dict(phase=after, voices=voices), cachedControls=cached)
+    else:
+        result = dict(tick=tick, score=dict(tick=tick, phaseBefore=(after - 1) & 255, phaseAfter=after, voices=voices), cachedControls=cached)
+    if built.get('arrangement') is not None:
+        result['stereoSupport'] = {field: byte('gb_support_' + field) for field in ('pattern', 'active', 'note')}
+    return result
 
 
 def identity(writes):
@@ -161,13 +180,17 @@ def identity(writes):
 
 def runtime_image(memory, built):
     symbols = built['symbols']
-    return memory.data[symbols['gb_state_begin']:symbols['gb_state_end']], memory.data[WORKSPACE]
+    extra = tuple(memory.data[symbols['gb_support_' + field]] for field in ('pattern', 'active', 'note')) if built.get('arrangement') is not None else ()
+    return memory.data[symbols['gb_state_begin']:symbols['gb_state_end']], memory.data[WORKSPACE], extra
 
 
 def poison(memory, built):
     symbols = built['symbols']
     memory.data[symbols['gb_state_begin']:symbols['gb_state_end']] = [0xa5] * built['stateBytes']
     memory.data[WORKSPACE] = [0xa5] * 16
+    if built.get('arrangement') is not None:
+        for field in ('pattern', 'active', 'note'):
+            memory.data[symbols['gb_support_' + field]] = 0xa5
 
 
 def reset_verification(cpu, memory, description, built, cold_image):
@@ -190,7 +213,7 @@ def reset_verification(cpu, memory, description, built, cold_image):
         require(cpu.sp == 255 and not cpu.p & cpu.DECIMAL, 'Reset stack/decimal contract differs')
         return memory.writes[first:]
 
-    model = player.compute(description, calls=1)
+    model = numeric(description, built.get('arrangement'), calls=1)
     init = call('entry_init', 'init', None)
     require(identity(init) == identity([row for row in model['writes'] if row['phase'] == 'init']), 'Poisoned init stores differ')
     require(read_state(memory, built, description, 'init', None) == model['initial'], 'Poisoned init state differs')
@@ -203,7 +226,7 @@ def reset_verification(cpu, memory, description, built, cold_image):
 
 
 def verify(description, sid, built, calls=None, computed=None):
-    full = preflight(description) if computed is None else computed
+    full = numeric(description, built.get('arrangement')) if computed is None else computed
     count = description['range']['auditCalls'] if calls is None else calls
     require(type(count) is int and 1 <= count <= description['range']['auditCalls'], 'CPU diagnostic calls exceed declared range')
     expected = [row for row in full['writes'] if row['tick'] is None or row['tick'] < count]
@@ -216,7 +239,7 @@ def verify(description, sid, built, calls=None, computed=None):
         if opcode in (0x8d, 0x9d, 0x99, 0x8e, 0x8c):
             address = memory.data[cpu.pc + 1] | memory.data[cpu.pc + 2] << 8
             address += cpu.x if opcode == 0x9d else cpu.y if opcode == 0x99 else 0
-            if 0xd400 <= address <= 0xd41f:
+            if 0xd400 <= address <= (0xd43f if built.get('arrangement') is not None else 0xd41f):
                 writers.setdefault(cpu.pc, dict(opcode=opcode, addresses=set()))['addresses'].add(address)
                 writer_count += 1
         if cpu.pc not in (built['symbols']['gb_init_done'], built['symbols']['gb_call_done']) or cpu.sp != 0xfd:
@@ -290,7 +313,7 @@ def bootstrap_verification(prg, labels, description, built):
     cpu = cpu_type()(memory=memory, pc=2061)
     memory.cpu = cpu
     count = min(2, description['range']['auditCalls'])
-    model = player.compute(description, calls=count)
+    model = numeric(description, built.get('arrangement'), calls=count)
     checked, initialized, entries = 0, False, []
     while checked < count:
         require(cpu.processorCycles < NTSC_FRAME_CYCLES * (count + 3), 'Standalone bootstrap exceeds bounded NTSC raster run')

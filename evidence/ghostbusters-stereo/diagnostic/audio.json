@@ -1,0 +1,337 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "scope": "48-second initialized diagnostic",
+  "sourceFiles": [
+    {
+      "label": "accepted mono",
+      "sha256": "72f818806173aa93909b11739ccd5a297ca357d7c1e357d4d81252bd75032019",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 10804500,
+      "durationSeconds": 245.0,
+      "peak": 12310,
+      "peakDbfs": -8.503837640568033,
+      "clippedSamples": 0,
+      "rms": 2585.647562386972,
+      "acRms": 2356.8546912880192,
+      "acRmsDbfs": -22.86234254906535,
+      "perChannel": [
+        {
+          "dc": 1063.3951669211901,
+          "rms": 2585.647562386972,
+          "acRms": 2356.8546912880192
+        }
+      ]
+    },
+    {
+      "label": "native stereo",
+      "sha256": "26405e606e12fbfe181d438cbdf936751fe1bdc449c24bda33caec0be9c22ff1",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 2116800,
+      "durationSeconds": 48.0,
+      "peak": 11216,
+      "peakDbfs": -9.31223868674269,
+      "clippedSamples": 0,
+      "rms": 1904.3745818322384,
+      "acRms": 1764.9455525283292,
+      "acRmsDbfs": -25.37437245487314,
+      "perChannel": [
+        {
+          "dc": 858.5321234882842,
+          "rms": 2134.005615343713,
+          "acRms": 1953.6894736004483
+        },
+        {
+          "dc": 534.9225009448223,
+          "rms": 1642.956216561758,
+          "acRms": 1553.4358845867644
+        }
+      ]
+    }
+  ],
+  "referenceMatrix": [
+    [
+      1
+    ],
+    [
+      1
+    ]
+  ],
+  "nativeMatrix": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "routing": "Raw SID A left and SID B right; no external stereo crossfeed or per-channel normalization",
+  "matching": {
+    "method": "Complete-file pooled channel AC power, including speech, silence and continuation",
+    "scopeSeconds": [
+      0,
+      48.0
+    ],
+    "gainPolicy": "One attenuation-only scalar per full file, applied equally to both channels; all windows retain that gain",
+    "peakHeadroomDb": 1,
+    "peakLimit": 29203,
+    "targetAcRms": 1764.9455525283292,
+    "inputs": [
+      {
+        "label": "reference",
+        "gain": 0.9044698150896657,
+        "gainDb": -0.8721184458177532,
+        "original": {
+          "format": "PCM16",
+          "sampleRate": 44100,
+          "channels": 2,
+          "frames": 2116800,
+          "durationSeconds": 48.0,
+          "peak": 11692,
+          "peakDbfs": -8.951222565486383,
+          "clippedSamples": 0,
+          "rms": 2131.8941486001822,
+          "acRms": 1951.3592638283449,
+          "acRmsDbfs": -24.50225400905538,
+          "perChannel": [
+            {
+              "dc": 858.5858630952381,
+              "rms": 2131.8941486001822,
+              "acRms": 1951.3592638283449
+            },
+            {
+              "dc": 858.5858630952381,
+              "rms": 2131.8941486001822,
+              "acRms": 1951.3592638283449
+            }
+          ]
+        },
+        "matched": {
+          "format": "PCM16",
+          "sampleRate": 44100,
+          "channels": 2,
+          "frames": 2116800,
+          "durationSeconds": 48.0,
+          "peak": 10575,
+          "peakDbfs": -9.82339117825276,
+          "clippedSamples": 0,
+          "rms": 1928.2338079783842,
+          "acRms": 1764.945820896381,
+          "acRmsDbfs": -25.374371134143953,
+          "perChannel": [
+            {
+              "dc": 776.5641425736961,
+              "rms": 1928.2338079783842,
+              "acRms": 1764.945820896381
+            },
+            {
+              "dc": 776.5641425736961,
+              "rms": 1928.2338079783842,
+              "acRms": 1764.945820896381
+            }
+          ]
+        }
+      },
+      {
+        "label": "native",
+        "gain": 1.0,
+        "gainDb": 0.0,
+        "original": {
+          "format": "PCM16",
+          "sampleRate": 44100,
+          "channels": 2,
+          "frames": 2116800,
+          "durationSeconds": 48.0,
+          "peak": 11216,
+          "peakDbfs": -9.31223868674269,
+          "clippedSamples": 0,
+          "rms": 1904.3745818322384,
+          "acRms": 1764.9455525283292,
+          "acRmsDbfs": -25.37437245487314,
+          "perChannel": [
+            {
+              "dc": 858.5321234882842,
+              "rms": 2134.005615343713,
+              "acRms": 1953.6894736004483
+            },
+            {
+              "dc": 534.9225009448223,
+              "rms": 1642.956216561758,
+              "acRms": 1553.4358845867644
+            }
+          ]
+        },
+        "matched": {
+          "format": "PCM16",
+          "sampleRate": 44100,
+          "channels": 2,
+          "frames": 2116800,
+          "durationSeconds": 48.0,
+          "peak": 11216,
+          "peakDbfs": -9.31223868674269,
+          "clippedSamples": 0,
+          "rms": 1904.3745818322384,
+          "acRms": 1764.9455525283292,
+          "acRmsDbfs": -25.37437245487314,
+          "perChannel": [
+            {
+              "dc": 858.5321234882842,
+              "rms": 2134.005615343713,
+              "acRms": 1953.6894736004483
+            },
+            {
+              "dc": 534.9225009448223,
+              "rms": 1642.956216561758,
+              "acRms": 1553.4358845867644
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "phrase": {
+    "seconds": [
+      16,
+      32
+    ],
+    "sideAcRms": 847.9685555777991,
+    "metrics": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 705600,
+      "durationSeconds": 16.0,
+      "peak": 11216,
+      "peakDbfs": -9.31223868674269,
+      "clippedSamples": 0,
+      "rms": 1547.1132605840376,
+      "acRms": 1538.9788097948863,
+      "acRmsDbfs": -26.564345897789057,
+      "perChannel": [
+        {
+          "dc": 160.12132086167802,
+          "rms": 1560.2114905189592,
+          "acRms": 1551.9732786852046
+        },
+        {
+          "dc": 156.7433914399093,
+          "rms": 1533.9031869719,
+          "acRms": 1525.8736829247912
+        }
+      ]
+    }
+  },
+  "monoFoldDown": {
+    "matrix": [
+      [
+        0.5,
+        0.5
+      ]
+    ],
+    "metrics": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 2116800,
+      "durationSeconds": 48.0,
+      "peak": 8217,
+      "peakDbfs": -12.014732959721883,
+      "clippedSamples": 0,
+      "rms": 1715.1182163755461,
+      "acRms": 1567.227442218889,
+      "acRmsDbfs": -26.40635814783376,
+      "perChannel": [
+        {
+          "dc": 696.7270918367346,
+          "rms": 1715.1182163755461,
+          "acRms": 1567.227442218889
+        }
+      ]
+    }
+  },
+  "claims": {
+    "bothSidBanksExecuted": true,
+    "primaryPcmIdentity": false,
+    "phaseCoherentCenterEstablished": false,
+    "musicalAcceptanceEstablished": false
+  },
+  "listeningVerdict": null,
+  "nativeProof": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/c65cc909f3229d80d30339d5a7121c70168e82e7ebcbae13c99dad84c9e2177b/attempt-16e890ee09fb4eed99ab8f8d5820eb3a/candidate/verification.json",
+    "sha256": "efafa465bd104cb1625ac5d27021ab6515c5fb481103c4cad106cbb4ba55a3b0"
+  },
+  "sourcePaths": [
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-listening/reconstructed.wav",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-render/f922c6dfe08f7d944de90032bf7c410fe7e64939452858a08fbb60434aa38b49/attempt-cd161a74d65e4482be8133ea374b2124/render.wav"
+  ],
+  "outputs": {
+    "reference-duplicated-full.wav": {
+      "bytes": 8467244,
+      "sha256": "180d78b81f4d52ea213704ee1974ea8fed5b26a824d3da1057963cd74d6f18a1"
+    },
+    "reference-matched-full.wav": {
+      "bytes": 8467244,
+      "sha256": "a86c7be7f8561f978aaf221a8650c59d2d4a050ec819acbca8f5dc584033be21"
+    },
+    "native-matched-full.wav": {
+      "bytes": 8467244,
+      "sha256": "26405e606e12fbfe181d438cbdf936751fe1bdc449c24bda33caec0be9c22ff1"
+    },
+    "native-mono-diagnostic.wav": {
+      "bytes": 4233644,
+      "sha256": "a53a0615d14655272a5a692fbea654f228b1383262c7599b4e39ad4629309380"
+    },
+    "opening-mono-then-stereo.ab.wav": {
+      "bytes": 4321844,
+      "sha256": "4da67f7ac26b4109c5e9d89f79e0c881adadb5a3eb368d4394731250631ff824"
+    },
+    "opening-mono-then-stereo.comparison.json": {
+      "bytes": 3477,
+      "sha256": "c89d32e3d374449ffa959d3c932d577329a49919bdbac816aaf67e89b2ce6fa3"
+    },
+    "phrase-mono-then-stereo.ab.wav": {
+      "bytes": 5733044,
+      "sha256": "8ce7050c8134cddb80a566f987e89bf27bf142a6a039b65f41d0377301f5f98e"
+    },
+    "phrase-mono-then-stereo.comparison.json": {
+      "bytes": 3487,
+      "sha256": "c48ce56f71af5164aeeaf037b224486ec77208fb73aa628a07293c416c9439da"
+    },
+    "native-proof.json": {
+      "bytes": 5654,
+      "sha256": "08fd759f8d817f46764204bf88e529daba2de0e530255f603d4d8ff5caf8b812"
+    }
+  },
+  "comparisons": {
+    "opening": {
+      "seconds": [
+        0,
+        12
+      ],
+      "order": [
+        "Accepted faithful mono, duplicated equally to left and right",
+        "Native two-SID candidate"
+      ],
+      "matching": "The complete-file scalar gains above; no additional window matching",
+      "comparisonSha256": "4da67f7ac26b4109c5e9d89f79e0c881adadb5a3eb368d4394731250631ff824"
+    },
+    "phrase": {
+      "seconds": [
+        16,
+        32
+      ],
+      "order": [
+        "Accepted faithful mono, duplicated equally to left and right",
+        "Native two-SID candidate"
+      ],
+      "matching": "The complete-file scalar gains above; no additional window matching",
+      "comparisonSha256": "8ce7050c8134cddb80a566f987e89bf27bf142a6a039b65f41d0377301f5f98e"
+    }
+  }
+}

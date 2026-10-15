@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "key": "ba2edefb599e33702b61df1445d3d5e79c07f0fb2768e35f75658ff32e2878cf",
+  "fingerprint": {
+    "command": [
+      "{root}/.local/bin/render-sid",
+      "{stage:support-control}/prepared/support-disabled.sid",
+      "{out}/render.wav",
+      "245",
+      "--subtune",
+      "1",
+      "--clock",
+      "ntsc"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": "{stage:support-control}/prepared/support-disabled.sid",
+        "type": "file",
+        "sha256": "33833b50fdbec95a77631c83324c8baa9cc07cf4b54ada6573c18f78a2bc94cb"
+      },
+      {
+        "path": ".local/bin/render-sid",
+        "type": "file",
+        "sha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46"
+      },
+      {
+        "path": "scripts/render-sid.cpp",
+        "type": "file",
+        "sha256": "c779f01c187cb913ce49f61d6a94fc1d0a3d0f3ae54214dc201a93df8cf3180f"
+      },
+      {
+        "path": ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "type": "file",
+        "sha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00"
+      }
+    ],
+    "outputs": [
+      "render.wav",
+      "render.wav.registers.tsv"
+    ],
+    "timeoutSeconds": 180,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46"
+    }
+  },
+  "inputs": [
+    {
+      "path": "{stage:support-control}/prepared/support-disabled.sid",
+      "type": "file",
+      "sha256": "33833b50fdbec95a77631c83324c8baa9cc07cf4b54ada6573c18f78a2bc94cb"
+    },
+    {
+      "path": ".local/bin/render-sid",
+      "type": "file",
+      "sha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46"
+    },
+    {
+      "path": "scripts/render-sid.cpp",
+      "type": "file",
+      "sha256": "c779f01c187cb913ce49f61d6a94fc1d0a3d0f3ae54214dc201a93df8cf3180f"
+    },
+    {
+      "path": ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+      "type": "file",
+      "sha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00"
+    }
+  ],
+  "outputs": [
+    {
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "e03111bfcfc0c4d57b87cc541d68be93820c73f75062a4a763deaa1fc9c4bc93"
+    },
+    {
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "781a01ea08252a41077f4f5f44cb66bb4406a1d6a8f09870c8776d9d809757ca"
+    }
+  ],
+  "command": [
+    "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/support-control/7eb6a9b9e5f3fbd21be4d83f11bea821b94192727ddbc801fb172609c4a49ae2/attempt-7589a73e201e44d7b8af173480053f42/prepared/support-disabled.sid",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/support-control-render/ba2edefb599e33702b61df1445d3d5e79c07f0fb2768e35f75658ff32e2878cf/attempt-247cc980d0654a9497a795fb88a2619b/render.wav",
+    "245",
+    "--subtune",
+    "1",
+    "--clock",
+    "ntsc"
+  ],
+  "completedAt": "2026-10-15T13:57:53.779177+00:00",
+  "executionSeconds": 4.141978666999989
+}

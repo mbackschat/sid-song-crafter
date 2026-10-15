@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "status": "initial-held-support-rejected-revision-active",
+  "submission": "evidence/ghostbusters-stereo/listening-submission.json",
+  "submissionSha256": "5498966ff5c9c76d49f3034de20294d287d0165b962e7ac21d95d5e5d2abcdbc",
+  "candidate": "native-stereo-matched-full.wav",
+  "candidateSha256": "bda82aabbb0b74c607705c071a6236e34396a8209f617de9697029b003fc3559",
+  "baseline": "faithful-mono-matched-full.wav",
+  "baselineSha256": "ac9acf1d55a78df754134716aafe164f360ebbee6eb64ece33f9b7d9af2bd846",
+  "order": [
+    "Accepted faithful mono duplicated equally into left and right",
+    "Initial native stereo with held right-side support"
+  ],
+  "samples": [
+    {
+      "filename": "build/ghostbusters-stereo-listening/phrase-mono-then-stereo.ab.wav",
+      "sha256": "4ec6683e77204995c3db4717815cb5ad517ce462daaff4d3a371d0b0405babf9",
+      "seconds": [
+        16,
+        32
+      ],
+      "status": "rejected",
+      "humanAnswer": "With the stereo one: there is a persistent sound on the right side, seems like a bug",
+      "scope": "Rejects the persistent right-side sound in the initial stereo phrase. Does not establish a hook-centering verdict or a general verdict about stereo."
+    },
+    {
+      "filename": "build/ghostbusters-stereo-listening/opening-mono-then-stereo.ab.wav",
+      "sha256": "91d6877c4c5105d94ee397fda3122be84aadf3d77fcd93fc50e003fc7de025e4",
+      "seconds": [
+        0,
+        12
+      ],
+      "status": "accepted",
+      "scope": "Opening speech remains recognizable and centered in the submitted initial stereo candidate."
+    },
+    {
+      "filename": "build/ghostbusters-stereo-listening/ending-mono-then-stereo.ab.wav",
+      "sha256": "a0519cee08ff477cb594fb7fbebf9569fc60cf13f9b2153966c9cb05ca80608a",
+      "seconds": [
+        225,
+        245
+      ],
+      "status": "accepted",
+      "scope": "Complete ending/restart continuation remains intact in the submitted initial stereo candidate."
+    }
+  ],
+  "speechAndEndingHumanAnswer": "Yes to : speech remain recognizable and centered, and does the complete ending/continuation remain intact",
+  "limits": "These are scoped human judgments of the submitted matched clips. No phase coherence, PCM identity, physical hardware equivalence or approval of the held support is claimed.",
+  "decision": "Preserve the initial audio and evidence. Revise the persistent right-side support in one bounded correction; keep the case active. Retain accepted speech/continuation verdicts for their unchanged scopes.",
+  "modelAssistanceReview": {
+    "checkpoint": "First representative audition and listener feedback",
+    "decision": "No model call.",
+    "reason": "Existing measured trials do not qualify a model to decide spatial placement, persistent-support benefit or musical balance. Causal code/PCM checks can establish contribution but cannot overrule the human rejection.",
+    "nextCheckpoint": "Corrected representative phrase, further listener feedback and pre-closure."
+  }
+}

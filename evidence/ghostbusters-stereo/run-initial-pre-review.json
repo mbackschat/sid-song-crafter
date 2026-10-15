@@ -1,0 +1,930 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/ghostbusters-stereo.json",
+  "recipeSha256": "5fbe48b40eabebc241936db3422fbccdc4485fcc800e313b344c2410100baa0b",
+  "startedAt": "2026-10-15T13:48:27.084059+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "source-pin",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.18358870800000004,
+      "artifacts": [
+        {
+          "stageId": "source-pin",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/source-pin/59bf6e680647409edae2519c683d0b6d99b61d0485543762b5882904a9b293f3/attempt-1bb0ff88cc4447ceb4d6fbb8c48ea050/pin.json",
+          "relativePath": "pin.json",
+          "type": "file",
+          "sha256": "cc3203109960781b2dc6c1867a9d69723b3b1576c871671c0f05a821378ec749"
+        }
+      ],
+      "cacheKey": "59bf6e680647409edae2519c683d0b6d99b61d0485543762b5882904a9b293f3",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/source-pin/59bf6e680647409edae2519c683d0b6d99b61d0485543762b5882904a9b293f3/attempt-1bb0ff88cc4447ceb4d6fbb8c48ea050",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/source-pin/59bf6e680647409edae2519c683d0b6d99b61d0485543762b5882904a9b293f3/attempt-1bb0ff88cc4447ceb4d6fbb8c48ea050/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.188232833
+    },
+    {
+      "id": "accepted-mono-pin",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.18334462499999998,
+      "artifacts": [
+        {
+          "stageId": "accepted-mono-pin",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/accepted-mono-pin/c62795398e16b16bc64de556fd1e392a98e8897c2435d832631ffa1e438fe18c/attempt-6e02872a4a404ddb84669007a98597d9/pin.json",
+          "relativePath": "pin.json",
+          "type": "file",
+          "sha256": "7d772928ec78745220d49d2bae92ae4d6e6f5ae9b93fab87ca215c507ab17ab3"
+        }
+      ],
+      "cacheKey": "c62795398e16b16bc64de556fd1e392a98e8897c2435d832631ffa1e438fe18c",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/accepted-mono-pin/c62795398e16b16bc64de556fd1e392a98e8897c2435d832631ffa1e438fe18c/attempt-6e02872a4a404ddb84669007a98597d9",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/accepted-mono-pin/c62795398e16b16bc64de556fd1e392a98e8897c2435d832631ffa1e438fe18c/attempt-6e02872a4a404ddb84669007a98597d9/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.21951491699999998
+    },
+    {
+      "id": "focused-guards",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 2.7330250840000003,
+      "artifacts": [],
+      "cacheKey": "c38b544e56cb3c5ab9983d3cf6c9dc9c3a1eb2da1f4ce908869f028e9b088e3f",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/focused-guards/c38b544e56cb3c5ab9983d3cf6c9dc9c3a1eb2da1f4ce908869f028e9b088e3f/attempt-87f7bcde3d6843f0bf5cd07e6fc431b9",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/focused-guards/c38b544e56cb3c5ab9983d3cf6c9dc9c3a1eb2da1f4ce908869f028e9b088e3f/attempt-87f7bcde3d6843f0bf5cd07e6fc431b9/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 2.9731481669999997
+    },
+    {
+      "id": "diagnostic-native",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 27.50047775,
+      "artifacts": [
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "e3687a138e7903222c071e37a0599c59c3e8790395b7cf4a42361ce214705c9e"
+        },
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/reconstructed.prg",
+          "relativePath": "candidate/reconstructed.prg",
+          "type": "file",
+          "sha256": "e5a8324a677cf41e646688c15ad338c20cf8a296cf20c52079107288644dfbc1"
+        },
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/private-speech.bin",
+          "relativePath": "candidate/private-speech.bin",
+          "type": "file",
+          "sha256": "4d49e2fd1004c0877446671f91f8026eab609d39a4b1f650cdf0a6819d2d44a3"
+        },
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/composition.json",
+          "relativePath": "candidate/composition.json",
+          "type": "file",
+          "sha256": "6818774828d32c230e65abe0a3f2fcdc249c077961e6afd4fe3c14ab46327e09"
+        },
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "7e30bf44ab0235aba6142da072c2ca4d43cf7f39da3fb1de173c752766240f1c"
+        },
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "5f41bfb75d56b7aafdfdfd2f47e848ea69b15afcf49c77a67002f6b958c28f71"
+        },
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "92ebd5e1c38be4a99ff53c19c364d42d3c6dc6ff3316804a58adbb22b43a9d76"
+        },
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/verification.json",
+          "relativePath": "candidate/verification.json",
+          "type": "file",
+          "sha256": "d85226640e7f5dc1b6cdc82a2a25d13c27b68294f1bab12807dd28aebd166f4f"
+        },
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/vice.json",
+          "relativePath": "candidate/vice.json",
+          "type": "file",
+          "sha256": "6113198c31632ae7522dae996fa21d98438fd0fc429635102609f2fba4c5b396"
+        },
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/vice-command.json",
+          "relativePath": "candidate/vice-command.json",
+          "type": "file",
+          "sha256": "a9364d4c661b5181bd6d5d67750e1305d64b731873a7a7be1eed13e951fb4e1b"
+        },
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/commands.mon",
+          "relativePath": "candidate/commands.mon",
+          "type": "file",
+          "sha256": "91bc277f975d25ee6ff43761416663302b77041b8ed19b8e26b334d925763944"
+        },
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/private-host.prg",
+          "relativePath": "candidate/private-host.prg",
+          "type": "file",
+          "sha256": "cbd02eb94450135f3acc5d6df5d05f6855f810740a0b00e338f0eb0aa17b9ebe"
+        },
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/private-monitor.log.gz",
+          "relativePath": "candidate/private-monitor.log.gz",
+          "type": "file",
+          "sha256": "67385ed4713d558701ef84738948009edb570b837d2b242b8bcf2a0aa619baaf"
+        },
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/private-process.log.gz",
+          "relativePath": "candidate/private-process.log.gz",
+          "type": "file",
+          "sha256": "97bd19f00db44d637dbdce3d4b4e3465471ed8fa6e9fab5995499bd1e76c594d"
+        },
+        {
+          "stageId": "diagnostic-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/support-ledger.json",
+          "relativePath": "candidate/support-ledger.json",
+          "type": "file",
+          "sha256": "5663f3689e8f01a377984ee59eefb4c6c89de54568f392fdf1b9658a7eda4947"
+        }
+      ],
+      "cacheKey": "49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 27.711023
+    },
+    {
+      "id": "diagnostic-render",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.9441690419999951,
+      "artifacts": [
+        {
+          "stageId": "diagnostic-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-render/f922c6dfe08f7d944de90032bf7c410fe7e64939452858a08fbb60434aa38b49/attempt-cd161a74d65e4482be8133ea374b2124/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "26405e606e12fbfe181d438cbdf936751fe1bdc449c24bda33caec0be9c22ff1"
+        },
+        {
+          "stageId": "diagnostic-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-render/f922c6dfe08f7d944de90032bf7c410fe7e64939452858a08fbb60434aa38b49/attempt-cd161a74d65e4482be8133ea374b2124/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "33b7220f8f5b0e049e1957b7f8c989a5ecb00b936a7aaae01b89b6b9f50dd621"
+        }
+      ],
+      "cacheKey": "f922c6dfe08f7d944de90032bf7c410fe7e64939452858a08fbb60434aa38b49",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-render/f922c6dfe08f7d944de90032bf7c410fe7e64939452858a08fbb60434aa38b49/attempt-cd161a74d65e4482be8133ea374b2124",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-render/f922c6dfe08f7d944de90032bf7c410fe7e64939452858a08fbb60434aa38b49/attempt-cd161a74d65e4482be8133ea374b2124/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.9586095419999978
+    },
+    {
+      "id": "diagnostic-listening",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 9.899087542000004,
+      "artifacts": [
+        {
+          "stageId": "diagnostic-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/reference-duplicated-full.wav",
+          "relativePath": "prepared/reference-duplicated-full.wav",
+          "type": "file",
+          "sha256": "180d78b81f4d52ea213704ee1974ea8fed5b26a824d3da1057963cd74d6f18a1"
+        },
+        {
+          "stageId": "diagnostic-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/reference-matched-full.wav",
+          "relativePath": "prepared/reference-matched-full.wav",
+          "type": "file",
+          "sha256": "a86c7be7f8561f978aaf221a8650c59d2d4a050ec819acbca8f5dc584033be21"
+        },
+        {
+          "stageId": "diagnostic-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/native-matched-full.wav",
+          "relativePath": "prepared/native-matched-full.wav",
+          "type": "file",
+          "sha256": "26405e606e12fbfe181d438cbdf936751fe1bdc449c24bda33caec0be9c22ff1"
+        },
+        {
+          "stageId": "diagnostic-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/native-mono-diagnostic.wav",
+          "relativePath": "prepared/native-mono-diagnostic.wav",
+          "type": "file",
+          "sha256": "a53a0615d14655272a5a692fbea654f228b1383262c7599b4e39ad4629309380"
+        },
+        {
+          "stageId": "diagnostic-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/audio.json",
+          "relativePath": "prepared/audio.json",
+          "type": "file",
+          "sha256": "64fa110ed69611d90f444d0c6eb783cd6d4940b6f1e22b19b2ed72a16d663261"
+        },
+        {
+          "stageId": "diagnostic-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/opening-mono-then-stereo.ab.wav",
+          "relativePath": "prepared/opening-mono-then-stereo.ab.wav",
+          "type": "file",
+          "sha256": "4da67f7ac26b4109c5e9d89f79e0c881adadb5a3eb368d4394731250631ff824"
+        },
+        {
+          "stageId": "diagnostic-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/opening-mono-then-stereo.comparison.json",
+          "relativePath": "prepared/opening-mono-then-stereo.comparison.json",
+          "type": "file",
+          "sha256": "357d7dbaf3072b6e49d7cbc146ca0b965cbcce6f088202729d57463aaf885e0b"
+        },
+        {
+          "stageId": "diagnostic-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/phrase-mono-then-stereo.ab.wav",
+          "relativePath": "prepared/phrase-mono-then-stereo.ab.wav",
+          "type": "file",
+          "sha256": "8ce7050c8134cddb80a566f987e89bf27bf142a6a039b65f41d0377301f5f98e"
+        },
+        {
+          "stageId": "diagnostic-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/phrase-mono-then-stereo.comparison.json",
+          "relativePath": "prepared/phrase-mono-then-stereo.comparison.json",
+          "type": "file",
+          "sha256": "d1e94a047bdaaa0646885b48149b1634fc4088a2d9f3cb64842cd5ceb3c75def"
+        }
+      ],
+      "cacheKey": "15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 9.985005874999999
+    },
+    {
+      "id": "complete-native",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 128.70056125,
+      "artifacts": [
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "e3687a138e7903222c071e37a0599c59c3e8790395b7cf4a42361ce214705c9e"
+        },
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/reconstructed.prg",
+          "relativePath": "candidate/reconstructed.prg",
+          "type": "file",
+          "sha256": "e5a8324a677cf41e646688c15ad338c20cf8a296cf20c52079107288644dfbc1"
+        },
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/private-speech.bin",
+          "relativePath": "candidate/private-speech.bin",
+          "type": "file",
+          "sha256": "4d49e2fd1004c0877446671f91f8026eab609d39a4b1f650cdf0a6819d2d44a3"
+        },
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/composition.json",
+          "relativePath": "candidate/composition.json",
+          "type": "file",
+          "sha256": "11607342e73ec8f83969ec206ba27647b247e5797662dfd20eb524753e5e9100"
+        },
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "7e30bf44ab0235aba6142da072c2ca4d43cf7f39da3fb1de173c752766240f1c"
+        },
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "5f41bfb75d56b7aafdfdfd2f47e848ea69b15afcf49c77a67002f6b958c28f71"
+        },
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "d2fe2220f7fa5abc7fe8378b3a615d04202ab75ab13e213ad50929718017895d"
+        },
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/verification.json",
+          "relativePath": "candidate/verification.json",
+          "type": "file",
+          "sha256": "ef77d35bbdd3dcd4f83c7df9d6368b5091e7bc8f748f9d62f6da272f00612d07"
+        },
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/vice.json",
+          "relativePath": "candidate/vice.json",
+          "type": "file",
+          "sha256": "7d07b49d3d2236611802a1ce76492d6b6abe1ec39fbb676d63361dafa664bc9d"
+        },
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/vice-command.json",
+          "relativePath": "candidate/vice-command.json",
+          "type": "file",
+          "sha256": "4acf281a0186b1ca02a4940e804ac42aad93f8aab9a02cde558ba36ba02c1adb"
+        },
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/commands.mon",
+          "relativePath": "candidate/commands.mon",
+          "type": "file",
+          "sha256": "f06f3fa65899177bc29bb79d062d0f605e5ea61aff4f4f2920ae380de3552e4f"
+        },
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/private-host.prg",
+          "relativePath": "candidate/private-host.prg",
+          "type": "file",
+          "sha256": "cbd02eb94450135f3acc5d6df5d05f6855f810740a0b00e338f0eb0aa17b9ebe"
+        },
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/private-monitor.log.gz",
+          "relativePath": "candidate/private-monitor.log.gz",
+          "type": "file",
+          "sha256": "c6c1903d105d286d9ab791bc55deebd9527732fd7b749b316944fd829e458ac8"
+        },
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/private-process.log.gz",
+          "relativePath": "candidate/private-process.log.gz",
+          "type": "file",
+          "sha256": "b237e3aa2ac307793f22ef9950457c80a10dcdba4604ddf633bbc9b62d7d33ed"
+        },
+        {
+          "stageId": "complete-native",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/support-ledger.json",
+          "relativePath": "candidate/support-ledger.json",
+          "type": "file",
+          "sha256": "b2951d6a263709d3cb8ff1533e9a3de2352a0f93c4f5cf724f162ee044fddccd"
+        }
+      ],
+      "cacheKey": "142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 128.917447
+    },
+    {
+      "id": "complete-render",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 4.378448791000011,
+      "artifacts": [
+        {
+          "stageId": "complete-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-render/08eceb7786a2edb66aa142ec0dd0511a87ebddad2d26da5b5480471976c36cbc/attempt-f436a73e57744a3788444c49e0d17f47/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "bda82aabbb0b74c607705c071a6236e34396a8209f617de9697029b003fc3559"
+        },
+        {
+          "stageId": "complete-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-render/08eceb7786a2edb66aa142ec0dd0511a87ebddad2d26da5b5480471976c36cbc/attempt-f436a73e57744a3788444c49e0d17f47/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "856ecd2b14eaa11825be70d5a37520a1b5a49f732b861608a662c4c52b6e5caa"
+        }
+      ],
+      "cacheKey": "08eceb7786a2edb66aa142ec0dd0511a87ebddad2d26da5b5480471976c36cbc",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-render/08eceb7786a2edb66aa142ec0dd0511a87ebddad2d26da5b5480471976c36cbc/attempt-f436a73e57744a3788444c49e0d17f47",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-render/08eceb7786a2edb66aa142ec0dd0511a87ebddad2d26da5b5480471976c36cbc/attempt-f436a73e57744a3788444c49e0d17f47/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 4.408716125000012
+    },
+    {
+      "id": "complete-listening",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 42.88304416700001,
+      "artifacts": [
+        {
+          "stageId": "complete-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/reference-duplicated-full.wav",
+          "relativePath": "prepared/reference-duplicated-full.wav",
+          "type": "file",
+          "sha256": "9780af56796318ce55f32574dee2da9a284b702c832a00ec10c37c16923aae83"
+        },
+        {
+          "stageId": "complete-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/reference-matched-full.wav",
+          "relativePath": "prepared/reference-matched-full.wav",
+          "type": "file",
+          "sha256": "ac9acf1d55a78df754134716aafe164f360ebbee6eb64ece33f9b7d9af2bd846"
+        },
+        {
+          "stageId": "complete-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/native-matched-full.wav",
+          "relativePath": "prepared/native-matched-full.wav",
+          "type": "file",
+          "sha256": "bda82aabbb0b74c607705c071a6236e34396a8209f617de9697029b003fc3559"
+        },
+        {
+          "stageId": "complete-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/native-mono-diagnostic.wav",
+          "relativePath": "prepared/native-mono-diagnostic.wav",
+          "type": "file",
+          "sha256": "2480db905ad6008723a5dbb5b72038c35302ab10c640d235b3e6fdae5e68291c"
+        },
+        {
+          "stageId": "complete-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/audio.json",
+          "relativePath": "prepared/audio.json",
+          "type": "file",
+          "sha256": "ece31ac3122efb364715e2defd3563751ec4fda9226a5398a7bd90f3da2bfd8f"
+        },
+        {
+          "stageId": "complete-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/opening-mono-then-stereo.ab.wav",
+          "relativePath": "prepared/opening-mono-then-stereo.ab.wav",
+          "type": "file",
+          "sha256": "91d6877c4c5105d94ee397fda3122be84aadf3d77fcd93fc50e003fc7de025e4"
+        },
+        {
+          "stageId": "complete-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/opening-mono-then-stereo.comparison.json",
+          "relativePath": "prepared/opening-mono-then-stereo.comparison.json",
+          "type": "file",
+          "sha256": "20d5ade38228a01fd4b74a4b8e04415c650b8ecb959435e7e040ea94e9267459"
+        },
+        {
+          "stageId": "complete-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/phrase-mono-then-stereo.ab.wav",
+          "relativePath": "prepared/phrase-mono-then-stereo.ab.wav",
+          "type": "file",
+          "sha256": "4ec6683e77204995c3db4717815cb5ad517ce462daaff4d3a371d0b0405babf9"
+        },
+        {
+          "stageId": "complete-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/phrase-mono-then-stereo.comparison.json",
+          "relativePath": "prepared/phrase-mono-then-stereo.comparison.json",
+          "type": "file",
+          "sha256": "e23ca9af8da5a61da11b3230f4c41565dfa804146d42fec63b680fc5c9b53e9d"
+        },
+        {
+          "stageId": "complete-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/ending-mono-then-stereo.ab.wav",
+          "relativePath": "prepared/ending-mono-then-stereo.ab.wav",
+          "type": "file",
+          "sha256": "a0519cee08ff477cb594fb7fbebf9569fc60cf13f9b2153966c9cb05ca80608a"
+        },
+        {
+          "stageId": "complete-listening",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/ending-mono-then-stereo.comparison.json",
+          "relativePath": "prepared/ending-mono-then-stereo.comparison.json",
+          "type": "file",
+          "sha256": "cc2d6a4fa09576708151afbdb8fb7b8652d527146bd113300940348d52bf1867"
+        }
+      ],
+      "cacheKey": "c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 43.12481162500001
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "source-pin",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/source-pin/59bf6e680647409edae2519c683d0b6d99b61d0485543762b5882904a9b293f3/attempt-1bb0ff88cc4447ceb4d6fbb8c48ea050/pin.json",
+      "relativePath": "pin.json",
+      "type": "file",
+      "sha256": "cc3203109960781b2dc6c1867a9d69723b3b1576c871671c0f05a821378ec749"
+    },
+    {
+      "stageId": "accepted-mono-pin",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/accepted-mono-pin/c62795398e16b16bc64de556fd1e392a98e8897c2435d832631ffa1e438fe18c/attempt-6e02872a4a404ddb84669007a98597d9/pin.json",
+      "relativePath": "pin.json",
+      "type": "file",
+      "sha256": "7d772928ec78745220d49d2bae92ae4d6e6f5ae9b93fab87ca215c507ab17ab3"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "e3687a138e7903222c071e37a0599c59c3e8790395b7cf4a42361ce214705c9e"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/reconstructed.prg",
+      "relativePath": "candidate/reconstructed.prg",
+      "type": "file",
+      "sha256": "e5a8324a677cf41e646688c15ad338c20cf8a296cf20c52079107288644dfbc1"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/private-speech.bin",
+      "relativePath": "candidate/private-speech.bin",
+      "type": "file",
+      "sha256": "4d49e2fd1004c0877446671f91f8026eab609d39a4b1f650cdf0a6819d2d44a3"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/composition.json",
+      "relativePath": "candidate/composition.json",
+      "type": "file",
+      "sha256": "6818774828d32c230e65abe0a3f2fcdc249c077961e6afd4fe3c14ab46327e09"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "7e30bf44ab0235aba6142da072c2ca4d43cf7f39da3fb1de173c752766240f1c"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "5f41bfb75d56b7aafdfdfd2f47e848ea69b15afcf49c77a67002f6b958c28f71"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "92ebd5e1c38be4a99ff53c19c364d42d3c6dc6ff3316804a58adbb22b43a9d76"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/verification.json",
+      "relativePath": "candidate/verification.json",
+      "type": "file",
+      "sha256": "d85226640e7f5dc1b6cdc82a2a25d13c27b68294f1bab12807dd28aebd166f4f"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/vice.json",
+      "relativePath": "candidate/vice.json",
+      "type": "file",
+      "sha256": "6113198c31632ae7522dae996fa21d98438fd0fc429635102609f2fba4c5b396"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/vice-command.json",
+      "relativePath": "candidate/vice-command.json",
+      "type": "file",
+      "sha256": "a9364d4c661b5181bd6d5d67750e1305d64b731873a7a7be1eed13e951fb4e1b"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/commands.mon",
+      "relativePath": "candidate/commands.mon",
+      "type": "file",
+      "sha256": "91bc277f975d25ee6ff43761416663302b77041b8ed19b8e26b334d925763944"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/private-host.prg",
+      "relativePath": "candidate/private-host.prg",
+      "type": "file",
+      "sha256": "cbd02eb94450135f3acc5d6df5d05f6855f810740a0b00e338f0eb0aa17b9ebe"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/private-monitor.log.gz",
+      "relativePath": "candidate/private-monitor.log.gz",
+      "type": "file",
+      "sha256": "67385ed4713d558701ef84738948009edb570b837d2b242b8bcf2a0aa619baaf"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/private-process.log.gz",
+      "relativePath": "candidate/private-process.log.gz",
+      "type": "file",
+      "sha256": "97bd19f00db44d637dbdce3d4b4e3465471ed8fa6e9fab5995499bd1e76c594d"
+    },
+    {
+      "stageId": "diagnostic-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-native/49a02718a2b855613887c2c8b5f69392881567d34708b5ba3c1ea25aabf9c2bf/attempt-4343cfe309654399992495033cca6665/candidate/support-ledger.json",
+      "relativePath": "candidate/support-ledger.json",
+      "type": "file",
+      "sha256": "5663f3689e8f01a377984ee59eefb4c6c89de54568f392fdf1b9658a7eda4947"
+    },
+    {
+      "stageId": "diagnostic-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-render/f922c6dfe08f7d944de90032bf7c410fe7e64939452858a08fbb60434aa38b49/attempt-cd161a74d65e4482be8133ea374b2124/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "26405e606e12fbfe181d438cbdf936751fe1bdc449c24bda33caec0be9c22ff1"
+    },
+    {
+      "stageId": "diagnostic-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-render/f922c6dfe08f7d944de90032bf7c410fe7e64939452858a08fbb60434aa38b49/attempt-cd161a74d65e4482be8133ea374b2124/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "33b7220f8f5b0e049e1957b7f8c989a5ecb00b936a7aaae01b89b6b9f50dd621"
+    },
+    {
+      "stageId": "diagnostic-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/reference-duplicated-full.wav",
+      "relativePath": "prepared/reference-duplicated-full.wav",
+      "type": "file",
+      "sha256": "180d78b81f4d52ea213704ee1974ea8fed5b26a824d3da1057963cd74d6f18a1"
+    },
+    {
+      "stageId": "diagnostic-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/reference-matched-full.wav",
+      "relativePath": "prepared/reference-matched-full.wav",
+      "type": "file",
+      "sha256": "a86c7be7f8561f978aaf221a8650c59d2d4a050ec819acbca8f5dc584033be21"
+    },
+    {
+      "stageId": "diagnostic-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/native-matched-full.wav",
+      "relativePath": "prepared/native-matched-full.wav",
+      "type": "file",
+      "sha256": "26405e606e12fbfe181d438cbdf936751fe1bdc449c24bda33caec0be9c22ff1"
+    },
+    {
+      "stageId": "diagnostic-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/native-mono-diagnostic.wav",
+      "relativePath": "prepared/native-mono-diagnostic.wav",
+      "type": "file",
+      "sha256": "a53a0615d14655272a5a692fbea654f228b1383262c7599b4e39ad4629309380"
+    },
+    {
+      "stageId": "diagnostic-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/audio.json",
+      "relativePath": "prepared/audio.json",
+      "type": "file",
+      "sha256": "64fa110ed69611d90f444d0c6eb783cd6d4940b6f1e22b19b2ed72a16d663261"
+    },
+    {
+      "stageId": "diagnostic-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/opening-mono-then-stereo.ab.wav",
+      "relativePath": "prepared/opening-mono-then-stereo.ab.wav",
+      "type": "file",
+      "sha256": "4da67f7ac26b4109c5e9d89f79e0c881adadb5a3eb368d4394731250631ff824"
+    },
+    {
+      "stageId": "diagnostic-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/opening-mono-then-stereo.comparison.json",
+      "relativePath": "prepared/opening-mono-then-stereo.comparison.json",
+      "type": "file",
+      "sha256": "357d7dbaf3072b6e49d7cbc146ca0b965cbcce6f088202729d57463aaf885e0b"
+    },
+    {
+      "stageId": "diagnostic-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/phrase-mono-then-stereo.ab.wav",
+      "relativePath": "prepared/phrase-mono-then-stereo.ab.wav",
+      "type": "file",
+      "sha256": "8ce7050c8134cddb80a566f987e89bf27bf142a6a039b65f41d0377301f5f98e"
+    },
+    {
+      "stageId": "diagnostic-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/phrase-mono-then-stereo.comparison.json",
+      "relativePath": "prepared/phrase-mono-then-stereo.comparison.json",
+      "type": "file",
+      "sha256": "d1e94a047bdaaa0646885b48149b1634fc4088a2d9f3cb64842cd5ceb3c75def"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "e3687a138e7903222c071e37a0599c59c3e8790395b7cf4a42361ce214705c9e"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/reconstructed.prg",
+      "relativePath": "candidate/reconstructed.prg",
+      "type": "file",
+      "sha256": "e5a8324a677cf41e646688c15ad338c20cf8a296cf20c52079107288644dfbc1"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/private-speech.bin",
+      "relativePath": "candidate/private-speech.bin",
+      "type": "file",
+      "sha256": "4d49e2fd1004c0877446671f91f8026eab609d39a4b1f650cdf0a6819d2d44a3"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/composition.json",
+      "relativePath": "candidate/composition.json",
+      "type": "file",
+      "sha256": "11607342e73ec8f83969ec206ba27647b247e5797662dfd20eb524753e5e9100"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "7e30bf44ab0235aba6142da072c2ca4d43cf7f39da3fb1de173c752766240f1c"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "5f41bfb75d56b7aafdfdfd2f47e848ea69b15afcf49c77a67002f6b958c28f71"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "d2fe2220f7fa5abc7fe8378b3a615d04202ab75ab13e213ad50929718017895d"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/verification.json",
+      "relativePath": "candidate/verification.json",
+      "type": "file",
+      "sha256": "ef77d35bbdd3dcd4f83c7df9d6368b5091e7bc8f748f9d62f6da272f00612d07"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/vice.json",
+      "relativePath": "candidate/vice.json",
+      "type": "file",
+      "sha256": "7d07b49d3d2236611802a1ce76492d6b6abe1ec39fbb676d63361dafa664bc9d"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/vice-command.json",
+      "relativePath": "candidate/vice-command.json",
+      "type": "file",
+      "sha256": "4acf281a0186b1ca02a4940e804ac42aad93f8aab9a02cde558ba36ba02c1adb"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/commands.mon",
+      "relativePath": "candidate/commands.mon",
+      "type": "file",
+      "sha256": "f06f3fa65899177bc29bb79d062d0f605e5ea61aff4f4f2920ae380de3552e4f"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/private-host.prg",
+      "relativePath": "candidate/private-host.prg",
+      "type": "file",
+      "sha256": "cbd02eb94450135f3acc5d6df5d05f6855f810740a0b00e338f0eb0aa17b9ebe"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/private-monitor.log.gz",
+      "relativePath": "candidate/private-monitor.log.gz",
+      "type": "file",
+      "sha256": "c6c1903d105d286d9ab791bc55deebd9527732fd7b749b316944fd829e458ac8"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/private-process.log.gz",
+      "relativePath": "candidate/private-process.log.gz",
+      "type": "file",
+      "sha256": "b237e3aa2ac307793f22ef9950457c80a10dcdba4604ddf633bbc9b62d7d33ed"
+    },
+    {
+      "stageId": "complete-native",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/support-ledger.json",
+      "relativePath": "candidate/support-ledger.json",
+      "type": "file",
+      "sha256": "b2951d6a263709d3cb8ff1533e9a3de2352a0f93c4f5cf724f162ee044fddccd"
+    },
+    {
+      "stageId": "complete-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-render/08eceb7786a2edb66aa142ec0dd0511a87ebddad2d26da5b5480471976c36cbc/attempt-f436a73e57744a3788444c49e0d17f47/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "bda82aabbb0b74c607705c071a6236e34396a8209f617de9697029b003fc3559"
+    },
+    {
+      "stageId": "complete-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-render/08eceb7786a2edb66aa142ec0dd0511a87ebddad2d26da5b5480471976c36cbc/attempt-f436a73e57744a3788444c49e0d17f47/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "856ecd2b14eaa11825be70d5a37520a1b5a49f732b861608a662c4c52b6e5caa"
+    },
+    {
+      "stageId": "complete-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/reference-duplicated-full.wav",
+      "relativePath": "prepared/reference-duplicated-full.wav",
+      "type": "file",
+      "sha256": "9780af56796318ce55f32574dee2da9a284b702c832a00ec10c37c16923aae83"
+    },
+    {
+      "stageId": "complete-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/reference-matched-full.wav",
+      "relativePath": "prepared/reference-matched-full.wav",
+      "type": "file",
+      "sha256": "ac9acf1d55a78df754134716aafe164f360ebbee6eb64ece33f9b7d9af2bd846"
+    },
+    {
+      "stageId": "complete-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/native-matched-full.wav",
+      "relativePath": "prepared/native-matched-full.wav",
+      "type": "file",
+      "sha256": "bda82aabbb0b74c607705c071a6236e34396a8209f617de9697029b003fc3559"
+    },
+    {
+      "stageId": "complete-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/native-mono-diagnostic.wav",
+      "relativePath": "prepared/native-mono-diagnostic.wav",
+      "type": "file",
+      "sha256": "2480db905ad6008723a5dbb5b72038c35302ab10c640d235b3e6fdae5e68291c"
+    },
+    {
+      "stageId": "complete-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/audio.json",
+      "relativePath": "prepared/audio.json",
+      "type": "file",
+      "sha256": "ece31ac3122efb364715e2defd3563751ec4fda9226a5398a7bd90f3da2bfd8f"
+    },
+    {
+      "stageId": "complete-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/opening-mono-then-stereo.ab.wav",
+      "relativePath": "prepared/opening-mono-then-stereo.ab.wav",
+      "type": "file",
+      "sha256": "91d6877c4c5105d94ee397fda3122be84aadf3d77fcd93fc50e003fc7de025e4"
+    },
+    {
+      "stageId": "complete-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/opening-mono-then-stereo.comparison.json",
+      "relativePath": "prepared/opening-mono-then-stereo.comparison.json",
+      "type": "file",
+      "sha256": "20d5ade38228a01fd4b74a4b8e04415c650b8ecb959435e7e040ea94e9267459"
+    },
+    {
+      "stageId": "complete-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/phrase-mono-then-stereo.ab.wav",
+      "relativePath": "prepared/phrase-mono-then-stereo.ab.wav",
+      "type": "file",
+      "sha256": "4ec6683e77204995c3db4717815cb5ad517ce462daaff4d3a371d0b0405babf9"
+    },
+    {
+      "stageId": "complete-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/phrase-mono-then-stereo.comparison.json",
+      "relativePath": "prepared/phrase-mono-then-stereo.comparison.json",
+      "type": "file",
+      "sha256": "e23ca9af8da5a61da11b3230f4c41565dfa804146d42fec63b680fc5c9b53e9d"
+    },
+    {
+      "stageId": "complete-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/ending-mono-then-stereo.ab.wav",
+      "relativePath": "prepared/ending-mono-then-stereo.ab.wav",
+      "type": "file",
+      "sha256": "a0519cee08ff477cb594fb7fbebf9569fc60cf13f9b2153966c9cb05ca80608a"
+    },
+    {
+      "stageId": "complete-listening",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/ending-mono-then-stereo.comparison.json",
+      "relativePath": "prepared/ending-mono-then-stereo.comparison.json",
+      "type": "file",
+      "sha256": "cc2d6a4fa09576708151afbdb8fb7b8652d527146bd113300940348d52bf1867"
+    }
+  ],
+  "deliverables": {
+    "fullReference": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/reference-matched-full.wav",
+    "fullCandidate": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/native-matched-full.wav",
+    "rawReference": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/reference-duplicated-full.wav",
+    "rawCandidate": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-render/08eceb7786a2edb66aa142ec0dd0511a87ebddad2d26da5b5480471976c36cbc/attempt-f436a73e57744a3788444c49e0d17f47/render.wav",
+    "openingComparison": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/opening-mono-then-stereo.ab.wav",
+    "phraseComparison": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/phrase-mono-then-stereo.ab.wav",
+    "endingComparison": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/ending-mono-then-stereo.ab.wav",
+    "signalProof": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/audio.json",
+    "nativeProof": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/verification.json",
+    "nativeBuild": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/build.json",
+    "candidateSid": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/reconstructed.sid",
+    "candidatePrg": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/reconstructed.prg",
+    "nativeVice": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-native/142f0fe517ba33fdc4dbfeaac530493ba2447eefeaf14a5cac29f48e5a450a2c/attempt-7a73d428b18047fdbea2afa1a311ab26/candidate/vice.json",
+    "monoDiagnostic": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/complete-listening/c1ed1d04accebe7837ed9f914b18f369450b4f06ddec2a064ba438dff4f3c981/attempt-35d747a37ba641ca911ed5eabea442e9/prepared/native-mono-diagnostic.wav",
+    "diagnosticSignalProof": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-native-workflow/cache/diagnostic-listening/15e0cd6d8898399a37bf68f4c086ffb3ba5f4e9ed9c422fe4e03084e110de757/attempt-478fbc26934d467eb212f1db2cf080c5/prepared/audio.json"
+  },
+  "finishedAt": "2026-10-15T13:52:06.529174+00:00",
+  "wallSeconds": 219.41224400000002
+}
