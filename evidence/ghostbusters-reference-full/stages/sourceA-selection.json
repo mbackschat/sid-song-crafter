@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "key": "34b57897fae7e868b3c96acc73897d363b0631302729e0a5d609901fb7785fe8",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "scripts/reference-intake.py",
+      "selection",
+      "{{\"assetId\":\"ghostbusters\",\"renderSeconds\":245,\"role\":\"Ghostbusters original title, subtune 1; full reference window covering the decoded first music traversal and restart, not an independent reconstruction\",\"route\":\"full-machine-render\",\"subtune\":1}}",
+      "--registry-sha256",
+      "542a2b89a00e4d45aa30c4fe75f9c00d89530ffd0d4ae41c6d0d5a7161626b95",
+      "--output",
+      "{out}/selection.json"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/.tools/test-deps",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": "config/local-assets.json",
+        "type": "file",
+        "sha256": "542a2b89a00e4d45aa30c4fe75f9c00d89530ffd0d4ae41c6d0d5a7161626b95"
+      },
+      {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/.local/research/ghostbusters/Ghostbusters.sid",
+        "type": "file",
+        "sha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde"
+      },
+      {
+        "path": "scripts/reference-intake.py",
+        "type": "file",
+        "sha256": "c9e003c9778e092752b12e3b38c59a4dff57791273750331215d2ebd2cde525b"
+      },
+      {
+        "path": "scripts/reference_intake.py",
+        "type": "file",
+        "sha256": "06b7c594fee404b5487c041ff78275b5de0cb49dfb4640e51dd9adbb1ae14d99"
+      },
+      {
+        "path": "scripts/audio_comparison.py",
+        "type": "file",
+        "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+      },
+      {
+        "path": "scripts/listening_package.py",
+        "type": "file",
+        "sha256": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130"
+      },
+      {
+        "path": "scripts/listening-package.py",
+        "type": "file",
+        "sha256": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      {
+        "path": "scripts/sid_intake.py",
+        "type": "file",
+        "sha256": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0"
+      },
+      {
+        "path": "scripts/psid_profile.py",
+        "type": "file",
+        "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+      },
+      {
+        "path": "scripts/sid_clock.py",
+        "type": "file",
+        "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+      },
+      {
+        "path": "scripts/sid_audit_host.py",
+        "type": "file",
+        "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+      },
+      {
+        "path": "scripts/verify_player.py",
+        "type": "file",
+        "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+      }
+    ],
+    "outputs": [
+      "selection.json"
+    ],
+    "timeoutSeconds": 120,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": "config/local-assets.json",
+      "type": "file",
+      "sha256": "542a2b89a00e4d45aa30c4fe75f9c00d89530ffd0d4ae41c6d0d5a7161626b95"
+    },
+    {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/.local/research/ghostbusters/Ghostbusters.sid",
+      "type": "file",
+      "sha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde"
+    },
+    {
+      "path": "scripts/reference-intake.py",
+      "type": "file",
+      "sha256": "c9e003c9778e092752b12e3b38c59a4dff57791273750331215d2ebd2cde525b"
+    },
+    {
+      "path": "scripts/reference_intake.py",
+      "type": "file",
+      "sha256": "06b7c594fee404b5487c041ff78275b5de0cb49dfb4640e51dd9adbb1ae14d99"
+    },
+    {
+      "path": "scripts/audio_comparison.py",
+      "type": "file",
+      "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+    },
+    {
+      "path": "scripts/listening_package.py",
+      "type": "file",
+      "sha256": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130"
+    },
+    {
+      "path": "scripts/listening-package.py",
+      "type": "file",
+      "sha256": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+    },
+    {
+      "path": "scripts/sid_intake.py",
+      "type": "file",
+      "sha256": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0"
+    },
+    {
+      "path": "scripts/psid_profile.py",
+      "type": "file",
+      "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+    },
+    {
+      "path": "scripts/sid_clock.py",
+      "type": "file",
+      "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+    },
+    {
+      "path": "scripts/sid_audit_host.py",
+      "type": "file",
+      "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+    },
+    {
+      "path": "scripts/verify_player.py",
+      "type": "file",
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    }
+  ],
+  "outputs": [
+    {
+      "relativePath": "selection.json",
+      "type": "file",
+      "sha256": "e527b6d6f70827bc613b9dd58b165696cda404a13a1da519ac3204712231e41e"
+    }
+  ],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "scripts/reference-intake.py",
+    "selection",
+    "{\"assetId\":\"ghostbusters\",\"renderSeconds\":245,\"role\":\"Ghostbusters original title, subtune 1; full reference window covering the decoded first music traversal and restart, not an independent reconstruction\",\"route\":\"full-machine-render\",\"subtune\":1}",
+    "--registry-sha256",
+    "542a2b89a00e4d45aa30c4fe75f9c00d89530ffd0d4ae41c6d0d5a7161626b95",
+    "--output",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/ghostbusters-complete/cache/sourceA-selection/34b57897fae7e868b3c96acc73897d363b0631302729e0a5d609901fb7785fe8/attempt-913d6a85bb364efa818231ec43755eda/selection.json"
+  ],
+  "completedAt": "2026-10-15T00:35:05.343924+00:00",
+  "executionSeconds": 0.13779595899999997
+}

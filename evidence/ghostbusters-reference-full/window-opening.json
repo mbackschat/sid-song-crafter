@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "source-excerpt",
+  "order": [
+    "sourceA"
+  ],
+  "sources": [
+    {
+      "label": "sourceA",
+      "role": "Ghostbusters original title, subtune 1; full reference window covering the decoded first music traversal and restart, not an independent reconstruction",
+      "selection": {
+        "assetId": "ghostbusters",
+        "renderSeconds": 245,
+        "role": "Ghostbusters original title, subtune 1; full reference window covering the decoded first music traversal and restart, not an independent reconstruction",
+        "route": "full-machine-render",
+        "subtune": 1
+      },
+      "source": {
+        "id": "ghostbusters",
+        "hvscPath": "MUSICIANS/L/Lieblich_Russell/Ghostbusters.sid",
+        "url": "https://www.hvsc.de/download/C64Music/MUSICIANS/L/Lieblich_Russell/Ghostbusters.sid",
+        "sha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde",
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/.local/research/ghostbusters/Ghostbusters.sid",
+        "title": "Ghostbusters",
+        "credit": "Russell Lieblich",
+        "default": false,
+        "bytes": 6310
+      },
+      "rendering": {
+        "renderer": ".local/bin/render-sid",
+        "library": "libsidplayfp 3.1.1 / SIDLite",
+        "clock": "NTSC",
+        "clockForced": true,
+        "sidModel": "MOS6581",
+        "subtune": 1,
+        "powerOnDelay": 0,
+        "sampleRate": 44100,
+        "channels": 1,
+        "format": "PCM16",
+        "seconds": 245,
+        "gain": 1,
+        "normalization": false,
+        "initialized": true
+      },
+      "inputRender": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/ghostbusters-complete/cache/sourceA-render/c12b10a4a44526553ae70743f160d56cc9d35c32f316029546d5b244ac319dbe/attempt-39c497397cac4fcba2157e3ee6ebdc6c/source.wav",
+        "sha256": "91360cff28fcb4610edbe5425662ace00aa95b186ef67705f6b81079db784f1b",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 10804500,
+        "durationSeconds": 245.0,
+        "peak": 12561,
+        "peakDbfs": -8.3285143869765,
+        "clippedSamples": 0,
+        "rms": 2584.540584285507,
+        "acRms": 2355.80279413938,
+        "acRmsDbfs": -22.866220048214675,
+        "perChannel": [
+          {
+            "dc": 1063.0349133231523,
+            "rms": 2584.540584285507,
+            "acRms": 2355.80279413938
+          }
+        ]
+      }
+    }
+  ],
+  "windowSeconds": [
+    0.0,
+    12.0
+  ],
+  "gain": 1,
+  "normalization": false,
+  "clip": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/ghostbusters-complete/cache/window-opening/166494752c84da8a05e129976108e9af0d3be14b0ad313a5a73a20f37ef82f7a/attempt-5a4cfd335d234af3920e5ff4b445891a/source.wav",
+    "sha256": "b9edce87b6d139d0b0279b6fe99726425c0617fbce7bb17fe87860671daf1e1f",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 529200,
+    "durationSeconds": 12.0,
+    "peak": 5325,
+    "peakDbfs": -15.78260645697885,
+    "clippedSamples": 0,
+    "rms": 2891.1738992418973,
+    "acRms": 1943.264912771339,
+    "acRmsDbfs": -24.538358515171957,
+    "perChannel": [
+      {
+        "dc": 2140.70268707483,
+        "rms": 2891.1738992418973,
+        "acRms": 1943.264912771339
+      }
+    ]
+  },
+  "limitations": "Original source excerpts; a source contrast is not reconstruction fidelity or causal corroboration.",
+  "listeningReview": null
+}

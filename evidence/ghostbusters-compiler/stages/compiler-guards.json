@@ -1,0 +1,416 @@
+{
+  "schemaVersion": 1,
+  "key": "8e10ac4ef5939fcb005c9a0c8716e203177712c44fec99d38ca46ef549c4bb4d",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "-m",
+      "unittest",
+      "-v",
+      "ghostbusters_compiler_test"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": "tests/ghostbusters_compiler_test.py",
+        "type": "file",
+        "sha256": "2263d3d7f5d685a02f7ee4becf340e5be9d443e7bdc261d3886848fed4397d48"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/compiler.py",
+        "type": "file",
+        "sha256": "9d573d89cec1493501d2adb1b071000d744f66487e7f37055af7602757617541"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/player.py",
+        "type": "file",
+        "sha256": "79874b08de7e42b0e1dc5cd9a54c6d9f3aafa8a2d16aeb3d501090324659a602"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/score.py",
+        "type": "file",
+        "sha256": "00b523a3d67c01ded44ebd9ccb0adecbd76ebef4107ef146e183a2643edd94d6"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/programs.py",
+        "type": "file",
+        "sha256": "3b642baaf3209a3e92a4ecd9ada25d23ed52529dccd013c9ab89ecea26d2e074"
+      },
+      {
+        "path": "songs/players/ghostbusters.asm",
+        "type": "file",
+        "sha256": "287dcbd692fe68a2d47e200e52865583a3602609002ea4997573ac314858bdf1"
+      },
+      {
+        "path": "scripts/sid_assembler.py",
+        "type": "file",
+        "sha256": "2a1fecc8cb350c9cfdef292677a0cc54bcf2c0c069009b1222782708d42c287e"
+      },
+      {
+        "path": "scripts/psid_audit.py",
+        "type": "file",
+        "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+      },
+      {
+        "path": "scripts/psid_profile.py",
+        "type": "file",
+        "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+      },
+      {
+        "path": "scripts/sid_audit_host.py",
+        "type": "file",
+        "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+      },
+      {
+        "path": "scripts/sid_clock.py",
+        "type": "file",
+        "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+      },
+      {
+        "path": "scripts/verify_player.py",
+        "type": "file",
+        "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+      },
+      {
+        "path": ".tools/test-deps/py65",
+        "type": "directory",
+        "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067",
+        "files": [
+          {
+            "path": "__init__.py",
+            "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+          },
+          {
+            "path": "assembler.py",
+            "sha256": "8e92b5249c1bedcbac26d03a64ab3d35852914dae005d5abf87a275a1d20a383"
+          },
+          {
+            "path": "compat.py",
+            "sha256": "fc140526c2f0b41d5b8cd67415273093c156d6d4b9d98c3f9421aa7e0f0d82c4"
+          },
+          {
+            "path": "devices/__init__.py",
+            "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+          },
+          {
+            "path": "devices/mpu6502.py",
+            "sha256": "15d93835b4f279b702270d9a0b417938291347ec57cc12d9e0307cd344d381fe"
+          },
+          {
+            "path": "devices/mpu65c02.py",
+            "sha256": "dfc5adcd63b82aaa95e5a4ae2a000af1c19fe7188575f41d70212542ec7694fb"
+          },
+          {
+            "path": "devices/mpu65org16.py",
+            "sha256": "9a2685c84444dac43873855b1bb5c54e30938368fcc89ba3a9a78b389044de72"
+          },
+          {
+            "path": "disassembler.py",
+            "sha256": "b8cca0c23ef69dcf88b6dccb08582e4a4d088a561a04c833acb37b3742cdcccc"
+          },
+          {
+            "path": "memory.py",
+            "sha256": "4bba749fe35ed9b9912a7da72eb74035d62a21a5b5895dd6c343f7ce25609cc8"
+          },
+          {
+            "path": "monitor.py",
+            "sha256": "36cf20d850f9c5ab099814fe8f620f13f83faaacc0a14d827e1ff00e4ed5e11e"
+          },
+          {
+            "path": "tests/__init__.py",
+            "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+          },
+          {
+            "path": "tests/devices/__init__.py",
+            "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+          },
+          {
+            "path": "tests/devices/test_mpu6502.py",
+            "sha256": "0ca74be9e0702f15c9be52517c068c21bcd8460af7496d57e151304a13d83558"
+          },
+          {
+            "path": "tests/devices/test_mpu65c02.py",
+            "sha256": "920c1cbf296bab3caabda3ad779f4044ff6c8b806989e3c5282a3c8e77d10694"
+          },
+          {
+            "path": "tests/end_to_end.py",
+            "sha256": "83c5237875784d7a24b3c1600f9ef465db47d0b62667ef18795494a2544f289e"
+          },
+          {
+            "path": "tests/test_assembler.py",
+            "sha256": "41c10c74ad05020874c3a0b7e8430a0994b10eadb7c56c04aa526886a4ffd805"
+          },
+          {
+            "path": "tests/test_disassembler.py",
+            "sha256": "8e68441e33110fbdbe182de1e4be7d2c644ac1f35918b252154654331fd687be"
+          },
+          {
+            "path": "tests/test_memory.py",
+            "sha256": "86c5f48a03f4327fcc614841de8e4f835557980588c481e40c4d27dccb1940f7"
+          },
+          {
+            "path": "tests/test_monitor.py",
+            "sha256": "bcf7cb673853f75f219c3d0df7f4d0448f92fbf32de6f952da30d54478152c1b"
+          },
+          {
+            "path": "tests/utils/__init__.py",
+            "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+          },
+          {
+            "path": "tests/utils/test_addressing.py",
+            "sha256": "45a118b610dc15a8529dd0dd401349f05c39bbd2172835f01c205d0158efcbcd"
+          },
+          {
+            "path": "tests/utils/test_console.py",
+            "sha256": "a07e911d2a1e6cc0439b8fb717c871dc2d651e041d5d4a511ce3acd90e90a063"
+          },
+          {
+            "path": "tests/utils/test_conversions.py",
+            "sha256": "691afa3f74134bdebef8087768222f4bebced78fd740d67a422c37e2f2bcfb52"
+          },
+          {
+            "path": "tests/utils/test_devices.py",
+            "sha256": "8ab80e6da32609f0461eaa7270fde00d1fbd1b3d7a1b63e3444f176dad85ab67"
+          },
+          {
+            "path": "utils/__init__.py",
+            "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+          },
+          {
+            "path": "utils/addressing.py",
+            "sha256": "3c5cb6555dc983a7990d4a739a5c4f08f7b7cd5549fafea77208fa740d6a46e1"
+          },
+          {
+            "path": "utils/console.py",
+            "sha256": "2fb0386f87b82f541dcea6350654f1017d65cacf6ed7ea7335e0caa31201ee95"
+          },
+          {
+            "path": "utils/conversions.py",
+            "sha256": "448b8aa2cc59aa71a6a644a5dd93051ab4b2def2ae720c4991c0e54f31a4eaa9"
+          },
+          {
+            "path": "utils/devices.py",
+            "sha256": "fca3864bebcf1db7dbc13014487ad7091499d85c8cb14ca7288c5fdc63de6a0e"
+          }
+        ]
+      }
+    ],
+    "outputs": [],
+    "timeoutSeconds": 120,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": "tests/ghostbusters_compiler_test.py",
+      "type": "file",
+      "sha256": "2263d3d7f5d685a02f7ee4becf340e5be9d443e7bdc261d3886848fed4397d48"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/compiler.py",
+      "type": "file",
+      "sha256": "9d573d89cec1493501d2adb1b071000d744f66487e7f37055af7602757617541"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/player.py",
+      "type": "file",
+      "sha256": "79874b08de7e42b0e1dc5cd9a54c6d9f3aafa8a2d16aeb3d501090324659a602"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/score.py",
+      "type": "file",
+      "sha256": "00b523a3d67c01ded44ebd9ccb0adecbd76ebef4107ef146e183a2643edd94d6"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/programs.py",
+      "type": "file",
+      "sha256": "3b642baaf3209a3e92a4ecd9ada25d23ed52529dccd013c9ab89ecea26d2e074"
+    },
+    {
+      "path": "songs/players/ghostbusters.asm",
+      "type": "file",
+      "sha256": "287dcbd692fe68a2d47e200e52865583a3602609002ea4997573ac314858bdf1"
+    },
+    {
+      "path": "scripts/sid_assembler.py",
+      "type": "file",
+      "sha256": "2a1fecc8cb350c9cfdef292677a0cc54bcf2c0c069009b1222782708d42c287e"
+    },
+    {
+      "path": "scripts/psid_audit.py",
+      "type": "file",
+      "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+    },
+    {
+      "path": "scripts/psid_profile.py",
+      "type": "file",
+      "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+    },
+    {
+      "path": "scripts/sid_audit_host.py",
+      "type": "file",
+      "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+    },
+    {
+      "path": "scripts/sid_clock.py",
+      "type": "file",
+      "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+    },
+    {
+      "path": "scripts/verify_player.py",
+      "type": "file",
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    },
+    {
+      "path": ".tools/test-deps/py65",
+      "type": "directory",
+      "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067",
+      "files": [
+        {
+          "path": "__init__.py",
+          "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+        },
+        {
+          "path": "assembler.py",
+          "sha256": "8e92b5249c1bedcbac26d03a64ab3d35852914dae005d5abf87a275a1d20a383"
+        },
+        {
+          "path": "compat.py",
+          "sha256": "fc140526c2f0b41d5b8cd67415273093c156d6d4b9d98c3f9421aa7e0f0d82c4"
+        },
+        {
+          "path": "devices/__init__.py",
+          "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+        },
+        {
+          "path": "devices/mpu6502.py",
+          "sha256": "15d93835b4f279b702270d9a0b417938291347ec57cc12d9e0307cd344d381fe"
+        },
+        {
+          "path": "devices/mpu65c02.py",
+          "sha256": "dfc5adcd63b82aaa95e5a4ae2a000af1c19fe7188575f41d70212542ec7694fb"
+        },
+        {
+          "path": "devices/mpu65org16.py",
+          "sha256": "9a2685c84444dac43873855b1bb5c54e30938368fcc89ba3a9a78b389044de72"
+        },
+        {
+          "path": "disassembler.py",
+          "sha256": "b8cca0c23ef69dcf88b6dccb08582e4a4d088a561a04c833acb37b3742cdcccc"
+        },
+        {
+          "path": "memory.py",
+          "sha256": "4bba749fe35ed9b9912a7da72eb74035d62a21a5b5895dd6c343f7ce25609cc8"
+        },
+        {
+          "path": "monitor.py",
+          "sha256": "36cf20d850f9c5ab099814fe8f620f13f83faaacc0a14d827e1ff00e4ed5e11e"
+        },
+        {
+          "path": "tests/__init__.py",
+          "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+        },
+        {
+          "path": "tests/devices/__init__.py",
+          "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+        },
+        {
+          "path": "tests/devices/test_mpu6502.py",
+          "sha256": "0ca74be9e0702f15c9be52517c068c21bcd8460af7496d57e151304a13d83558"
+        },
+        {
+          "path": "tests/devices/test_mpu65c02.py",
+          "sha256": "920c1cbf296bab3caabda3ad779f4044ff6c8b806989e3c5282a3c8e77d10694"
+        },
+        {
+          "path": "tests/end_to_end.py",
+          "sha256": "83c5237875784d7a24b3c1600f9ef465db47d0b62667ef18795494a2544f289e"
+        },
+        {
+          "path": "tests/test_assembler.py",
+          "sha256": "41c10c74ad05020874c3a0b7e8430a0994b10eadb7c56c04aa526886a4ffd805"
+        },
+        {
+          "path": "tests/test_disassembler.py",
+          "sha256": "8e68441e33110fbdbe182de1e4be7d2c644ac1f35918b252154654331fd687be"
+        },
+        {
+          "path": "tests/test_memory.py",
+          "sha256": "86c5f48a03f4327fcc614841de8e4f835557980588c481e40c4d27dccb1940f7"
+        },
+        {
+          "path": "tests/test_monitor.py",
+          "sha256": "bcf7cb673853f75f219c3d0df7f4d0448f92fbf32de6f952da30d54478152c1b"
+        },
+        {
+          "path": "tests/utils/__init__.py",
+          "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+        },
+        {
+          "path": "tests/utils/test_addressing.py",
+          "sha256": "45a118b610dc15a8529dd0dd401349f05c39bbd2172835f01c205d0158efcbcd"
+        },
+        {
+          "path": "tests/utils/test_console.py",
+          "sha256": "a07e911d2a1e6cc0439b8fb717c871dc2d651e041d5d4a511ce3acd90e90a063"
+        },
+        {
+          "path": "tests/utils/test_conversions.py",
+          "sha256": "691afa3f74134bdebef8087768222f4bebced78fd740d67a422c37e2f2bcfb52"
+        },
+        {
+          "path": "tests/utils/test_devices.py",
+          "sha256": "8ab80e6da32609f0461eaa7270fde00d1fbd1b3d7a1b63e3444f176dad85ab67"
+        },
+        {
+          "path": "utils/__init__.py",
+          "sha256": "4f6a41c619e2f0d6fc48eaf9fbc9ca31729365888c26df8c7750cf4c571ee8fc"
+        },
+        {
+          "path": "utils/addressing.py",
+          "sha256": "3c5cb6555dc983a7990d4a739a5c4f08f7b7cd5549fafea77208fa740d6a46e1"
+        },
+        {
+          "path": "utils/console.py",
+          "sha256": "2fb0386f87b82f541dcea6350654f1017d65cacf6ed7ea7335e0caa31201ee95"
+        },
+        {
+          "path": "utils/conversions.py",
+          "sha256": "448b8aa2cc59aa71a6a644a5dd93051ab4b2def2ae720c4991c0e54f31a4eaa9"
+        },
+        {
+          "path": "utils/devices.py",
+          "sha256": "fca3864bebcf1db7dbc13014487ad7091499d85c8cb14ca7288c5fdc63de6a0e"
+        }
+      ]
+    }
+  ],
+  "outputs": [],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "-m",
+    "unittest",
+    "-v",
+    "ghostbusters_compiler_test"
+  ],
+  "completedAt": "2026-10-15T00:49:29.351611+00:00",
+  "executionSeconds": 2.4634095
+}

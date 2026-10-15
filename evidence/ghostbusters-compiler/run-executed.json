@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/ghostbusters-compiler.json",
+  "recipeSha256": "f4605e86c59c712628b6800089a9e69106086ceb13ab6ae9db645966f0cdffd6",
+  "startedAt": "2026-10-15T00:49:26.853925+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "compiler-guards",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 2.4634095,
+      "artifacts": [],
+      "cacheKey": "8e10ac4ef5939fcb005c9a0c8716e203177712c44fec99d38ca46ef549c4bb4d",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/compiler-guards/8e10ac4ef5939fcb005c9a0c8716e203177712c44fec99d38ca46ef549c4bb4d/attempt-36c8ca6e168146a3b8df0ae82dcc3f8f",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/compiler-guards/8e10ac4ef5939fcb005c9a0c8716e203177712c44fec99d38ca46ef549c4bb4d/attempt-36c8ca6e168146a3b8df0ae82dcc3f8f/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 2.497983584
+    },
+    {
+      "id": "music-component-export",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 19.655252083,
+      "artifacts": [
+        {
+          "stageId": "music-component-export",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "7324e52d5f6fa8011b951a2ee83b287a652984631ef5464932beb3e0ff042540"
+        },
+        {
+          "stageId": "music-component-export",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/reconstructed.prg",
+          "relativePath": "candidate/reconstructed.prg",
+          "type": "file",
+          "sha256": "a1310fa94af955fd1e87c11aee3693413b0133b71842c11f2510e8fee9dd5e22"
+        },
+        {
+          "stageId": "music-component-export",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/verification.json",
+          "relativePath": "candidate/verification.json",
+          "type": "file",
+          "sha256": "0c95cbd83d8a66dc34f5dfa042e2a397135c8aa4594f43b983af1ce50ba58100"
+        },
+        {
+          "stageId": "music-component-export",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "f1a75faf5568f6eec4e69ebe3cb69879f543f05409d574b9e1c34fbca8b80642"
+        },
+        {
+          "stageId": "music-component-export",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "4b32027b0eff86023763666900a72e1448baae7104ef23f0fb42339035c6fffd"
+        },
+        {
+          "stageId": "music-component-export",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "a05499b6171864b824da257994424fafaeef8c687eea24ea8b08c3c59015d417"
+        },
+        {
+          "stageId": "music-component-export",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "9bdf572c21cb8cfdc3aaee95f854cf88f5c3000ac6860b77ce9e05485e661818"
+        },
+        {
+          "stageId": "music-component-export",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "0e147ae8868dfc500c620ecf73704695bed9cf8ee5196fbca1a3f8eb9776b182"
+        },
+        {
+          "stageId": "music-component-export",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "40a1c95e7cf3a776678f79677b63f221a7be568ad3c5ee3e70f42a6b265c139c"
+        }
+      ],
+      "cacheKey": "bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 19.684837792
+    },
+    {
+      "id": "ntsc-music-vice",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 22.829673749999998,
+      "artifacts": [
+        {
+          "stageId": "ntsc-music-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "51cc880176d84f54d305940b92f8db4000406da313e434cff58b99ed28f73a77"
+        },
+        {
+          "stageId": "ntsc-music-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "8b556e080d67abcc7c41c0dfd815c226a7b8b08602a469e0c3e5cc66c3e5f97e"
+        },
+        {
+          "stageId": "ntsc-music-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "bb451c32a60df4ec8df588c078e620517229da68d5f64d5bb1b7ca9576ce74a6"
+        },
+        {
+          "stageId": "ntsc-music-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/process.log",
+          "relativePath": "vice/process.log",
+          "type": "file",
+          "sha256": "57654824dbe0927348516855e9268285e93eafd7c7dfec7f8279d1be3270396a"
+        },
+        {
+          "stageId": "ntsc-music-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "60ccbe4180ff96c52886af657ebceeefc1c4c2aec1954f122b96f17558e65ba5"
+        },
+        {
+          "stageId": "ntsc-music-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "b9b7e71bd1c6d43e6ccabf82e99e07f65eb5c3755e726b9dd38e050cd10cd929"
+        },
+        {
+          "stageId": "ntsc-music-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/payload.prg",
+          "relativePath": "vice/payload.prg",
+          "type": "file",
+          "sha256": "26a58dfe6850b39664ecfa4ff814d3f4260233c864f5f2cc10fabe23feeba2c4"
+        },
+        {
+          "stageId": "ntsc-music-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/harness.prg",
+          "relativePath": "vice/harness.prg",
+          "type": "file",
+          "sha256": "782770527e12dd29965840df64d43981d77da464250c9f151a3263528465c8e3"
+        }
+      ],
+      "cacheKey": "4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 23.126916667
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "music-component-export",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "7324e52d5f6fa8011b951a2ee83b287a652984631ef5464932beb3e0ff042540"
+    },
+    {
+      "stageId": "music-component-export",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/reconstructed.prg",
+      "relativePath": "candidate/reconstructed.prg",
+      "type": "file",
+      "sha256": "a1310fa94af955fd1e87c11aee3693413b0133b71842c11f2510e8fee9dd5e22"
+    },
+    {
+      "stageId": "music-component-export",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/verification.json",
+      "relativePath": "candidate/verification.json",
+      "type": "file",
+      "sha256": "0c95cbd83d8a66dc34f5dfa042e2a397135c8aa4594f43b983af1ce50ba58100"
+    },
+    {
+      "stageId": "music-component-export",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "f1a75faf5568f6eec4e69ebe3cb69879f543f05409d574b9e1c34fbca8b80642"
+    },
+    {
+      "stageId": "music-component-export",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "4b32027b0eff86023763666900a72e1448baae7104ef23f0fb42339035c6fffd"
+    },
+    {
+      "stageId": "music-component-export",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "a05499b6171864b824da257994424fafaeef8c687eea24ea8b08c3c59015d417"
+    },
+    {
+      "stageId": "music-component-export",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "9bdf572c21cb8cfdc3aaee95f854cf88f5c3000ac6860b77ce9e05485e661818"
+    },
+    {
+      "stageId": "music-component-export",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "0e147ae8868dfc500c620ecf73704695bed9cf8ee5196fbca1a3f8eb9776b182"
+    },
+    {
+      "stageId": "music-component-export",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "40a1c95e7cf3a776678f79677b63f221a7be568ad3c5ee3e70f42a6b265c139c"
+    },
+    {
+      "stageId": "ntsc-music-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "51cc880176d84f54d305940b92f8db4000406da313e434cff58b99ed28f73a77"
+    },
+    {
+      "stageId": "ntsc-music-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "8b556e080d67abcc7c41c0dfd815c226a7b8b08602a469e0c3e5cc66c3e5f97e"
+    },
+    {
+      "stageId": "ntsc-music-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "bb451c32a60df4ec8df588c078e620517229da68d5f64d5bb1b7ca9576ce74a6"
+    },
+    {
+      "stageId": "ntsc-music-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/process.log",
+      "relativePath": "vice/process.log",
+      "type": "file",
+      "sha256": "57654824dbe0927348516855e9268285e93eafd7c7dfec7f8279d1be3270396a"
+    },
+    {
+      "stageId": "ntsc-music-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "60ccbe4180ff96c52886af657ebceeefc1c4c2aec1954f122b96f17558e65ba5"
+    },
+    {
+      "stageId": "ntsc-music-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "b9b7e71bd1c6d43e6ccabf82e99e07f65eb5c3755e726b9dd38e050cd10cd929"
+    },
+    {
+      "stageId": "ntsc-music-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/payload.prg",
+      "relativePath": "vice/payload.prg",
+      "type": "file",
+      "sha256": "26a58dfe6850b39664ecfa4ff814d3f4260233c864f5f2cc10fabe23feeba2c4"
+    },
+    {
+      "stageId": "ntsc-music-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/harness.prg",
+      "relativePath": "vice/harness.prg",
+      "type": "file",
+      "sha256": "782770527e12dd29965840df64d43981d77da464250c9f151a3263528465c8e3"
+    }
+  ],
+  "deliverables": {
+    "musicComponentSid": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/reconstructed.sid",
+    "musicComponentPrg": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/reconstructed.prg",
+    "cpuMusicProof": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/verification.json",
+    "compiledStateCheckpoints": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/state-checkpoints.json",
+    "viceMusicPlayProof": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/study.json"
+  },
+  "finishedAt": "2026-10-15T00:50:12.229084+00:00",
+  "wallSeconds": 45.374285416
+}

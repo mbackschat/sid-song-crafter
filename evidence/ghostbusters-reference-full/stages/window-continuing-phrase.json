@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "key": "c0cabad1bb9dffbb4ee572c414e97228ec6fb7a6b96ece3f227cf121122c7bcf",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "scripts/reference-intake.py",
+      "window",
+      "{stage:sourceA-measure}/source.json",
+      "--start",
+      "16",
+      "--end",
+      "28",
+      "--gap",
+      "0.5",
+      "--output",
+      "{out}"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/.tools/test-deps",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": "scripts/reference-intake.py",
+        "type": "file",
+        "sha256": "c9e003c9778e092752b12e3b38c59a4dff57791273750331215d2ebd2cde525b"
+      },
+      {
+        "path": "scripts/reference_intake.py",
+        "type": "file",
+        "sha256": "06b7c594fee404b5487c041ff78275b5de0cb49dfb4640e51dd9adbb1ae14d99"
+      },
+      {
+        "path": "scripts/audio_comparison.py",
+        "type": "file",
+        "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+      },
+      {
+        "path": "scripts/listening_package.py",
+        "type": "file",
+        "sha256": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130"
+      },
+      {
+        "path": "scripts/listening-package.py",
+        "type": "file",
+        "sha256": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      {
+        "path": "scripts/sid_intake.py",
+        "type": "file",
+        "sha256": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0"
+      },
+      {
+        "path": "scripts/psid_profile.py",
+        "type": "file",
+        "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+      },
+      {
+        "path": "scripts/sid_clock.py",
+        "type": "file",
+        "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+      },
+      {
+        "path": "scripts/sid_audit_host.py",
+        "type": "file",
+        "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+      },
+      {
+        "path": "scripts/verify_player.py",
+        "type": "file",
+        "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+      },
+      {
+        "path": "{stage:sourceA-measure}/source.json",
+        "type": "file",
+        "sha256": "dfadc5bce7dd9fef4e8ca3cf8703b089b0429c1ef7d6ee9762af357d2c0dda6e"
+      },
+      {
+        "path": "{stage:sourceA-render}/source.wav",
+        "type": "file",
+        "sha256": "91360cff28fcb4610edbe5425662ace00aa95b186ef67705f6b81079db784f1b"
+      }
+    ],
+    "outputs": [
+      "source.wav",
+      "window.json"
+    ],
+    "timeoutSeconds": 120,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": "scripts/reference-intake.py",
+      "type": "file",
+      "sha256": "c9e003c9778e092752b12e3b38c59a4dff57791273750331215d2ebd2cde525b"
+    },
+    {
+      "path": "scripts/reference_intake.py",
+      "type": "file",
+      "sha256": "06b7c594fee404b5487c041ff78275b5de0cb49dfb4640e51dd9adbb1ae14d99"
+    },
+    {
+      "path": "scripts/audio_comparison.py",
+      "type": "file",
+      "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+    },
+    {
+      "path": "scripts/listening_package.py",
+      "type": "file",
+      "sha256": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130"
+    },
+    {
+      "path": "scripts/listening-package.py",
+      "type": "file",
+      "sha256": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+    },
+    {
+      "path": "scripts/sid_intake.py",
+      "type": "file",
+      "sha256": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0"
+    },
+    {
+      "path": "scripts/psid_profile.py",
+      "type": "file",
+      "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+    },
+    {
+      "path": "scripts/sid_clock.py",
+      "type": "file",
+      "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+    },
+    {
+      "path": "scripts/sid_audit_host.py",
+      "type": "file",
+      "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+    },
+    {
+      "path": "scripts/verify_player.py",
+      "type": "file",
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    },
+    {
+      "path": "{stage:sourceA-measure}/source.json",
+      "type": "file",
+      "sha256": "dfadc5bce7dd9fef4e8ca3cf8703b089b0429c1ef7d6ee9762af357d2c0dda6e"
+    },
+    {
+      "path": "{stage:sourceA-render}/source.wav",
+      "type": "file",
+      "sha256": "91360cff28fcb4610edbe5425662ace00aa95b186ef67705f6b81079db784f1b"
+    }
+  ],
+  "outputs": [
+    {
+      "relativePath": "source.wav",
+      "type": "file",
+      "sha256": "6709d1477b933e6b92a03fb8476a0bc6649dfa7c68cf31b09abc1cb32a946339"
+    },
+    {
+      "relativePath": "window.json",
+      "type": "file",
+      "sha256": "56d561baf101d096a9dae4807f7bb78af42d2823743701b8dcfdb02b70b4e459"
+    }
+  ],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "scripts/reference-intake.py",
+    "window",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/ghostbusters-complete/cache/sourceA-measure/119c4cce46706c3b7f628b24a0d586a76b4be4e703bbdcdaf6a6e5fa0acfa949/attempt-32e898a30d714b1aac9e79e8cc61d8a5/source.json",
+    "--start",
+    "16",
+    "--end",
+    "28",
+    "--gap",
+    "0.5",
+    "--output",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/reference-intake/ghostbusters-complete/cache/window-continuing-phrase/c0cabad1bb9dffbb4ee572c414e97228ec6fb7a6b96ece3f227cf121122c7bcf/attempt-75d646bf94434ab99cda4f9f91084a68"
+  ],
+  "completedAt": "2026-10-15T00:35:13.762728+00:00",
+  "executionSeconds": 0.29191325000000035
+}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "player-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "-v",
+        "ghostbusters_player_test"
+      ],
+      "inputs": [
+        "scripts/studies/ghostbusters/player.py",
+        "scripts/studies/ghostbusters/score.py",
+        "scripts/studies/ghostbusters/programs.py",
+        "scripts/sid_clock.py",
+        "tests/ghostbusters_player_test.py",
+        "scripts/studies/ghostbusters/check-player.py",
+        "scripts/evidence.py",
+        "scripts/listening_package.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "{root}/tests"
+      }
+    },
+    {
+      "id": "retained-integration",
+      "command": [
+        "{python}",
+        "scripts/studies/ghostbusters/check-player.py",
+        "--output",
+        "{out}/verified"
+      ],
+      "inputs": [
+        "scripts/studies/ghostbusters/player.py",
+        "scripts/studies/ghostbusters/score.py",
+        "scripts/studies/ghostbusters/programs.py",
+        "scripts/sid_clock.py",
+        "scripts/studies/ghostbusters/check-player.py",
+        "scripts/studies/ghostbusters/probe-form.py",
+        "scripts/studies/ghostbusters/sound-probe.py",
+        "scripts/evidence.py",
+        "scripts/listening_package.py",
+        "evidence/manifest.json",
+        "evidence/ghostbusters-components"
+      ],
+      "outputs": [
+        "verified/composition.json",
+        "verified/receipt.json",
+        "verified/writes.json",
+        "verified/returns.json",
+        "verified/contexts.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "{root}/tests"
+      }
+    }
+  ],
+  "deliverables": {
+    "editableMusic": "{stage:retained-integration}/verified/composition.json",
+    "integrationProof": "{stage:retained-integration}/verified/receipt.json"
+  }
+}

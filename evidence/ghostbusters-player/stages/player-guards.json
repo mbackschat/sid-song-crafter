@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "key": "7e8fbaea7361bab60621562bc2727a736214edd55352ea960c04b7c2f43b1438",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "-m",
+      "unittest",
+      "-v",
+      "ghostbusters_player_test"
+    ],
+    "env": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "{root}/tests"
+    },
+    "inputs": [
+      {
+        "path": "scripts/studies/ghostbusters/player.py",
+        "type": "file",
+        "sha256": "79874b08de7e42b0e1dc5cd9a54c6d9f3aafa8a2d16aeb3d501090324659a602"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/score.py",
+        "type": "file",
+        "sha256": "00b523a3d67c01ded44ebd9ccb0adecbd76ebef4107ef146e183a2643edd94d6"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/programs.py",
+        "type": "file",
+        "sha256": "3b642baaf3209a3e92a4ecd9ada25d23ed52529dccd013c9ab89ecea26d2e074"
+      },
+      {
+        "path": "scripts/sid_clock.py",
+        "type": "file",
+        "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+      },
+      {
+        "path": "tests/ghostbusters_player_test.py",
+        "type": "file",
+        "sha256": "20d314f26c2044aa9e9ba8474331bfd803910ff1d4105e423eb3d24d313a7c5b"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/check-player.py",
+        "type": "file",
+        "sha256": "3160551fc0ab99892c5a56ca24812962b7acd2eaa60d8df0ac43bdcf5076c00b"
+      },
+      {
+        "path": "scripts/evidence.py",
+        "type": "file",
+        "sha256": "2765b8b3bfbc0a32297b3ef781cb2165ec0d270ef1698095f5e6cf5e835aad07"
+      },
+      {
+        "path": "scripts/listening_package.py",
+        "type": "file",
+        "sha256": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130"
+      }
+    ],
+    "outputs": [],
+    "timeoutSeconds": 60,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": "scripts/studies/ghostbusters/player.py",
+      "type": "file",
+      "sha256": "79874b08de7e42b0e1dc5cd9a54c6d9f3aafa8a2d16aeb3d501090324659a602"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/score.py",
+      "type": "file",
+      "sha256": "00b523a3d67c01ded44ebd9ccb0adecbd76ebef4107ef146e183a2643edd94d6"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/programs.py",
+      "type": "file",
+      "sha256": "3b642baaf3209a3e92a4ecd9ada25d23ed52529dccd013c9ab89ecea26d2e074"
+    },
+    {
+      "path": "scripts/sid_clock.py",
+      "type": "file",
+      "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+    },
+    {
+      "path": "tests/ghostbusters_player_test.py",
+      "type": "file",
+      "sha256": "20d314f26c2044aa9e9ba8474331bfd803910ff1d4105e423eb3d24d313a7c5b"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/check-player.py",
+      "type": "file",
+      "sha256": "3160551fc0ab99892c5a56ca24812962b7acd2eaa60d8df0ac43bdcf5076c00b"
+    },
+    {
+      "path": "scripts/evidence.py",
+      "type": "file",
+      "sha256": "2765b8b3bfbc0a32297b3ef781cb2165ec0d270ef1698095f5e6cf5e835aad07"
+    },
+    {
+      "path": "scripts/listening_package.py",
+      "type": "file",
+      "sha256": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130"
+    }
+  ],
+  "outputs": [],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "-m",
+    "unittest",
+    "-v",
+    "ghostbusters_player_test"
+  ],
+  "completedAt": "2026-10-15T00:37:12.859672+00:00",
+  "executionSeconds": 0.29882633399999997
+}

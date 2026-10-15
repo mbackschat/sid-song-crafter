@@ -1,4 +1,4 @@
-"""Trace a bounded callable PAL PSID program through the headless VICE monitor."""
+"""Trace a bounded callable PAL or explicit NTSC PSID through headless VICE."""
 
 import argparse
 import hashlib
@@ -11,10 +11,10 @@ import subprocess
 
 from sid_audit_host import COUNTER, HARNESS_BASE, INIT_ACTIVE, harness
 from psid_profile import SID_MODELS
+from sid_clock import clock_spec
 
 
 ROOT = Path(__file__).resolve().parents[1]
-FRAME_CYCLES = 19656
 
 
 def require(condition, message):
@@ -22,9 +22,9 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def psid_profile(data, *, subtune=None, profile='strict', host_base=None, assume_sid_model=None):
+def psid_profile(data, *, subtune=None, profile='strict', host_base=None, assume_sid_model=None, clock='pal'):
     from psid_profile import psid_profile as validated_profile
-    result = validated_profile(data, subtune=subtune, profile=profile, host_base=host_base, assume_sid_model=assume_sid_model)
+    result = validated_profile(data, subtune=subtune, profile=profile, host_base=host_base, assume_sid_model=assume_sid_model, clock=clock)
     if result['profile'] == 'strict':
         # Existing callers serialize this shape; the explicit profile owns the
         # extra host fields without rewriting earlier strict-profile receipts.
@@ -67,7 +67,9 @@ TRACE_HEADER = re.compile(r'^#\d+ \(Trace\s+(exec|store)\s+([0-9a-f]{4})\)\s+(\d
 INSTRUCTION = re.compile(r'^\.C:([0-9a-f]{4})\s+((?:[0-9a-f]{2}\s+){1,3})(.*?)\s+-\s+A:([0-9a-f]{2}) X:([0-9a-f]{2}) Y:([0-9a-f]{2}) SP:([0-9a-f]{2}) (\S{8})\s+(\d+)\s*$', re.IGNORECASE)
 
 
-def parse_trace(log, play_address, sid_bases=(0xd400,), *, init_address=None, init_return=None, host_call=None):
+def parse_trace(log, play_address, sid_bases=(0xd400,), *, init_address=None, init_return=None, host_call=None, clock='pal'):
+    target = clock_spec(clock)
+    lines_per_frame, cycles_per_line = (263, 65) if target.name == 'ntsc' else (312, 63)
     entries, writes = [], []
     banked = init_address is not None or init_return is not None
     require(not banked or init_address is not None and init_return is not None, 'Both init markers are required')
@@ -91,7 +93,7 @@ def parse_trace(log, play_address, sid_bases=(0xd400,), *, init_address=None, in
         pc, encoded, mnemonic, a, x, y, sp, flags, cycle = instruction.groups()
         registers = dict(a=int(a, 16), x=int(x, 16), y=int(y, 16), sp=int(sp, 16), flags=flags)
         record = dict(writerPc=int(pc, 16), opcodeHex=''.join(encoded.split()).lower(), instruction=mnemonic.strip(), registers=registers, rasterLine=int(raster), rasterCycle=int(raster_cycle), monitorCycle=int(cycle))
-        require(0 <= record['rasterLine'] < 312 and 0 <= record['rasterCycle'] < 63, 'Trace raster context is outside the PAL range')
+        require(0 <= record['rasterLine'] < lines_per_frame and 0 <= record['rasterCycle'] < cycles_per_line, f'Trace raster context is outside the {target.name.upper()} range')
         address = int(address, 16)
         if operation.lower() == 'exec':
             if host_call is not None and address == host_call:
@@ -128,8 +130,8 @@ def parse_trace(log, play_address, sid_bases=(0xd400,), *, init_address=None, in
                 # harness JSR starts a call; internal entries retain its tick.
                 require(entries and address in (play_address, init_address) and record['writerPc'] == address,
                         'Internal entry precedes a host call or has an unexpected address')
-                require(entries[-1]['monitorCycle'] < record['monitorCycle'] < entries[-1]['monitorCycle'] + FRAME_CYCLES,
-                        'Internal entry lies outside its PAL play call')
+                require(entries[-1]['monitorCycle'] < record['monitorCycle'] < entries[-1]['monitorCycle'] + target.frame_cycles,
+                        'Internal entry lies outside its selected-clock play call')
                 record.update(phase='play', tick=entries[-1]['tick'])
                 internal_entries.append(record)
                 continue
@@ -150,7 +152,7 @@ def parse_trace(log, play_address, sid_bases=(0xd400,), *, init_address=None, in
             require(record['monitorCycle'] >= init_entry_record['monitorCycle'], 'SID store precedes init entry')
         else:
             require(entries and (not banked or phase == 'play'), 'SID store precedes the first play-entry marker')
-            require(entries[-1]['monitorCycle'] <= record['monitorCycle'] < entries[-1]['monitorCycle'] + FRAME_CYCLES, 'SID store timestamp lies outside its PAL play call')
+            require(entries[-1]['monitorCycle'] <= record['monitorCycle'] < entries[-1]['monitorCycle'] + target.frame_cycles, 'SID store timestamp lies outside its selected-clock play call')
         require(not writes or record['monitorCycle'] > writes[-1]['monitorCycle'], 'SID store monitor timestamps must increase')
         opcode = bytes.fromhex(record['opcodeHex'])
         require(len(opcode) == 3 and opcode[0] in (0x8d, 0x9d, 0x99, 0x8e, 0x8c), 'SID trace requires a supported non-RMW absolute store')
@@ -170,7 +172,7 @@ def parse_trace(log, play_address, sid_bases=(0xd400,), *, init_address=None, in
             record['phase'] = phase
         writes.append(record)
     require(entries and (writes or banked), 'Missing play entries or SID stores')
-    result = dict(entries=entries, writes=writes)
+    result = dict(entries=entries, writes=writes, clock=target.name)
     if host_call is not None:
         require(not awaiting_play and len(call_markers) == len(entries), 'Missing host-call or play-entry marker')
         result.update(callMarkers=call_markers, playInternalEntries=internal_entries)
@@ -184,7 +186,9 @@ def parse_trace(log, play_address, sid_bases=(0xd400,), *, init_address=None, in
     return result
 
 
-def verify_trace(parsed, oracle, first, last):
+def verify_trace(parsed, oracle, first, last, *, clock='pal'):
+    target = clock_spec(clock)
+    require(parsed.get('clock', 'pal') == target.name, 'Parsed trace clock differs from verification clock')
     require(len(parsed['entries']) == last + 1, 'Missing or extra VICE play calls')
     banked = 'initEntry' in parsed
     if banked:
@@ -196,24 +200,25 @@ def verify_trace(parsed, oracle, first, last):
         expected = [(row['tick'], row['address'], row['value']) for row in oracle if row['phase'] == 'play' and first <= row['tick'] <= last]
     require(actual == expected and (actual or banked), 'VICE ordered SID stores disagree with the call/address/value oracle')
     start = parsed['entries'][0]['monitorCycle']
-    errors = [row['monitorCycle'] - start - row['tick'] * FRAME_CYCLES for row in parsed['entries']]
-    require(max(abs(error) for error in errors) <= 9, 'VICE single-PAL cadence exceeds the polling-loop tolerance')
-    result = dict(matchedWrites=len(actual), playCalls=len(parsed['entries']), firstCall=first, lastCall=last, frameCycles=FRAME_CYCLES, maximumCadenceError=max(abs(error) for error in errors), cadenceTolerance=9)
+    errors = [row['monitorCycle'] - start - row['tick'] * target.frame_cycles for row in parsed['entries']]
+    require(max(abs(error) for error in errors) <= 9, 'VICE selected-clock cadence exceeds the polling-loop tolerance')
+    result = dict(matchedWrites=len(actual), playCalls=len(parsed['entries']), firstCall=first, lastCall=last, frameCycles=target.frame_cycles, maximumCadenceError=max(abs(error) for error in errors), cadenceTolerance=9)
     if banked:
         result.update(matchedInitWrites=sum(row['phase'] == 'init' for row in parsed['writes']),
                       matchedPlayWrites=sum(row['phase'] == 'play' for row in parsed['writes']))
     return result
 
 
-def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, subtune=None, profile='strict', host_base=None, assume_sid_model=None, timeout=60):
+def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, subtune=None, profile='strict', host_base=None, assume_sid_model=None, timeout=60, clock='pal'):
     require(type(timeout) in (int, float) and timeout > 0, 'Timeout must be positive finite seconds')
     try:
         finite_timeout = math.isfinite(timeout)
     except OverflowError:
         finite_timeout = False
     require(finite_timeout, 'Timeout must be positive finite seconds')
+    target = clock_spec(clock)
     sid_bytes, oracle_bytes = sid.read_bytes(), oracle_path.read_bytes()
-    profile = psid_profile(sid_bytes, subtune=subtune, profile=profile, host_base=host_base, assume_sid_model=assume_sid_model)
+    profile = psid_profile(sid_bytes, subtune=subtune, profile=profile, host_base=host_base, assume_sid_model=assume_sid_model, clock=target.name)
     program, labels = harness(profile, last + 1)
     require(not output.exists() and not output.is_symlink(), 'Choose a fresh trace output directory')
     output.mkdir(parents=True)
@@ -222,7 +227,7 @@ def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, su
     program_path.write_bytes(program)
     monitor = output / 'commands.mon'
     monitor.write_text(monitor_commands(payload_path, program_path, profile, labels, first, last))
-    command = [str(vice), '-config', '/dev/null', '-directory', str(data_directory), '-pal', '+logcolorize', '-initbreak', 'ready', '-moncommands', str(monitor), '-monlog', '-monlogname', str(output / 'monitor.log'), '-limitcycles', str(4_000_000 + (last + 1) * FRAME_CYCLES), '-warp', '+sound', '-sidenginemodel', 'resid6581' if profile['sidModel'] == 'MOS6581' else 'resid8580']
+    command = [str(vice), '-config', '/dev/null', '-directory', str(data_directory), '-' + target.name, '+logcolorize', '-initbreak', 'ready', '-moncommands', str(monitor), '-monlog', '-monlogname', str(output / 'monitor.log'), '-limitcycles', str(4_000_000 + (last + 1) * target.frame_cycles), '-warp', '+sound', '-sidenginemodel', 'resid6581' if profile['sidModel'] == 'MOS6581' else 'resid8580']
     if len(profile['sidBases']) == 2:
         command.extend(['-sidextra', '1', '-sid2address', '0xd420'])
     env = os.environ.copy()
@@ -236,8 +241,8 @@ def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, su
         subprocess.run(command, env=env, stdout=process_log, stderr=subprocess.STDOUT, timeout=timeout, check=True)
     log = (output / 'monitor.log').read_text(errors='replace')
     markers = dict(init_address=profile['initAddress'], init_return=labels['init_return']) if profile.get('profile') == 'pal-banked' else {}
-    parsed = parse_trace(log, profile['playAddress'], profile['sidBases'], host_call=labels['call'], **markers)
-    verification = verify_trace(parsed, json.loads(oracle_bytes), first, last)
+    parsed = parse_trace(log, profile['playAddress'], profile['sidBases'], host_call=labels['call'], clock=target.name, **markers)
+    verification = verify_trace(parsed, json.loads(oracle_bytes), first, last, clock=target.name)
     writers = {}
     for row in parsed['writes']:
         key = f'{row["writerPc"]:04x}'
@@ -246,7 +251,7 @@ def run_trace(sid, oracle_path, output, first, last, vice, data_directory, *, su
         writer['writes'] += 1
     for writer in writers.values():
         writer['addresses'] = sorted(writer['addresses'])
-    result = dict(schemaVersion=1, evidenceLevel='Executed 6510 program in headless VICE', sourceSha256=hashlib.sha256(sid_bytes).hexdigest(), oracleSha256=hashlib.sha256(oracle_bytes).hexdigest(), harnessSha256=hashlib.sha256(program).hexdigest(), viceSha256=hashlib.sha256(vice.read_bytes()).hexdigest(), profile={key: value for key, value in profile.items() if key != 'payload'}, harnessLabels=labels, verification=verification, writers=writers, limitations='A controlled RAM harness calls the original init/play once per PAL frame with IRQs, sprites and display DMA disabled. This is not the original player boot environment. Tracepoint stopwatch/raster values describe monitor checkpoints, not exact SID bus-write cycles. Store values are decoded from unchanged store-source CPU registers and checked against an independent ordered-write oracle. No audio or listening verdict follows from this trace.')
+    result = dict(schemaVersion=1, clock=target.name, evidenceLevel='Executed 6510 program in headless VICE', sourceSha256=hashlib.sha256(sid_bytes).hexdigest(), oracleSha256=hashlib.sha256(oracle_bytes).hexdigest(), harnessSha256=hashlib.sha256(program).hexdigest(), viceSha256=hashlib.sha256(vice.read_bytes()).hexdigest(), profile={key: value for key, value in profile.items() if key != 'payload'}, harnessLabels=labels, verification=verification, writers=writers, limitations=f'A controlled RAM harness calls the supplied init/play once per {target.name.upper()} frame with IRQs, sprites and display DMA disabled. This is not the original player boot environment. Tracepoint stopwatch/raster values describe monitor checkpoints, not exact SID bus-write cycles. Store values are decoded from unchanged store-source CPU registers and checked against an independent ordered-write oracle. No audio or listening verdict follows from this trace.')
     for path, value in ((output / 'trace.json', parsed), (output / 'study.json', result)):
         path.write_text(json.dumps(value, indent=2) + '\n')
     return result
@@ -263,11 +268,12 @@ def main():
     parser.add_argument('--data', type=Path, default=Path('/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice'))
     parser.add_argument('--subtune', type=int, help='Explicit 1-based subtune selection')
     parser.add_argument('--profile', choices=('strict', 'pal-banked'), default='strict')
+    parser.add_argument('--clock', choices=('pal', 'ntsc'), default='pal', help='Explicit matching target; 263-line NTSC is supported only by strict PSID admission')
     parser.add_argument('--host-base', type=lambda value: int(value, 0), help='PAL banked host address; explicit low-RAM page, e.g. 0x0400')
     parser.add_argument('--assume-sid-model', choices=SID_MODELS, help='Explicit experiment model for an unknown-model PAL PSID v2; pal-banked only')
     parser.add_argument('--timeout', type=float, default=60, help='Positive VICE wall-clock timeout in seconds (default: 60)')
     args = parser.parse_args()
-    result = run_trace(args.sid.resolve(), args.oracle.resolve(), args.output.resolve(), args.first_call, args.last_call, args.vice.resolve(), args.data.resolve(), subtune=args.subtune, profile=args.profile, host_base=args.host_base, assume_sid_model=args.assume_sid_model, timeout=args.timeout)
+    result = run_trace(args.sid.resolve(), args.oracle.resolve(), args.output.resolve(), args.first_call, args.last_call, args.vice.resolve(), args.data.resolve(), subtune=args.subtune, profile=args.profile, host_base=args.host_base, assume_sid_model=args.assume_sid_model, timeout=args.timeout, clock=args.clock)
     print(json.dumps(result, indent=2))
 
 

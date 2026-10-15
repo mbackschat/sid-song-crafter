@@ -16996,6 +16996,406 @@
       "originalBytes": 3753,
       "sha256": "a705206505f2129b7850b228936a530a53d8133acce433cfff6f9f74808830c0",
       "bytes": 3753
+    },
+    {
+      "path": "evidence/ghostbusters-reference-full/run-executed.json",
+      "originalPath": "build/reference-intake/ghostbusters-complete/run-executed.json",
+      "group": "ghostbusters-reference-full",
+      "reason": "Retain full-reference preparation and cache timings without original audio.",
+      "originalSha256": "6541f416fc26b2b313861685652e2fafece15f59ca32f7d5db317e38f9c74753",
+      "originalBytes": 16772,
+      "sha256": "6541f416fc26b2b313861685652e2fafece15f59ca32f7d5db317e38f9c74753",
+      "bytes": 16772
+    },
+    {
+      "path": "evidence/ghostbusters-reference-full/run-reused.json",
+      "originalPath": "build/reference-intake/ghostbusters-complete/run-reused.json",
+      "group": "ghostbusters-reference-full",
+      "reason": "Retain full-reference preparation and cache timings without original audio.",
+      "originalSha256": "ebc044af568a33303ce238f01daf162724f3d15b6fd3636752792910a616cc10",
+      "originalBytes": 16535,
+      "sha256": "ebc044af568a33303ce238f01daf162724f3d15b6fd3636752792910a616cc10",
+      "bytes": 16535
+    },
+    {
+      "path": "evidence/ghostbusters-reference-full/recipe.json",
+      "originalPath": "build/reference-intake/ghostbusters-complete/recipes/3174b1205336a3c62ee92e604bb81938fe25793bba9a0cf3b267ae4e83511bdc.json",
+      "group": "ghostbusters-reference-full",
+      "reason": "Retain exact generated intake commands and dependency declarations.",
+      "originalSha256": "3174b1205336a3c62ee92e604bb81938fe25793bba9a0cf3b267ae4e83511bdc",
+      "originalBytes": 7044,
+      "sha256": "3174b1205336a3c62ee92e604bb81938fe25793bba9a0cf3b267ae4e83511bdc",
+      "bytes": 7044
+    },
+    {
+      "path": "evidence/ghostbusters-reference-full/source.json",
+      "originalPath": "build/reference-intake/ghostbusters-complete/cache/sourceA-measure/119c4cce46706c3b7f628b24a0d586a76b4be4e703bbdcdaf6a6e5fa0acfa949/attempt-32e898a30d714b1aac9e79e8cc61d8a5/source.json",
+      "group": "ghostbusters-reference-full",
+      "reason": "Retain original provenance, declared render settings and full WAV fingerprint/health; audio stays local.",
+      "originalSha256": "dfadc5bce7dd9fef4e8ca3cf8703b089b0429c1ef7d6ee9762af357d2c0dda6e",
+      "originalBytes": 4031,
+      "sha256": "dfadc5bce7dd9fef4e8ca3cf8703b089b0429c1ef7d6ee9762af357d2c0dda6e",
+      "bytes": 4031
+    },
+    {
+      "path": "evidence/ghostbusters-reference-full/stages/sourceA-selection.json",
+      "originalPath": "build/reference-intake/ghostbusters-complete/cache/sourceA-selection/34b57897fae7e868b3c96acc73897d363b0631302729e0a5d609901fb7785fe8/attempt-913d6a85bb364efa818231ec43755eda/success.json",
+      "group": "ghostbusters-reference-full",
+      "reason": "Bind renderer/tool/input and output fingerprints for faithful reference regeneration.",
+      "originalSha256": "536fb3994bb35625626a9b358c86b1937c6dcbbb86ae0012b4362c29488585e9",
+      "originalBytes": 6705,
+      "sha256": "536fb3994bb35625626a9b358c86b1937c6dcbbb86ae0012b4362c29488585e9",
+      "bytes": 6705
+    },
+    {
+      "path": "evidence/ghostbusters-reference-full/stages/sourceA-render.json",
+      "originalPath": "build/reference-intake/ghostbusters-complete/cache/sourceA-render/c12b10a4a44526553ae70743f160d56cc9d35c32f316029546d5b244ac319dbe/attempt-39c497397cac4fcba2157e3ee6ebdc6c/success.json",
+      "group": "ghostbusters-reference-full",
+      "reason": "Bind renderer/tool/input and output fingerprints for faithful reference regeneration.",
+      "originalSha256": "128a83652dce881880abfe21331116f22b4d880c675609b4eca886bcd29d962c",
+      "originalBytes": 4415,
+      "sha256": "128a83652dce881880abfe21331116f22b4d880c675609b4eca886bcd29d962c",
+      "bytes": 4415
+    },
+    {
+      "path": "evidence/ghostbusters-reference-full/stages/sourceA-measure.json",
+      "originalPath": "build/reference-intake/ghostbusters-complete/cache/sourceA-measure/119c4cce46706c3b7f628b24a0d586a76b4be4e703bbdcdaf6a6e5fa0acfa949/attempt-32e898a30d714b1aac9e79e8cc61d8a5/success.json",
+      "group": "ghostbusters-reference-full",
+      "reason": "Bind renderer/tool/input and output fingerprints for faithful reference regeneration.",
+      "originalSha256": "a828d42426668fa07c1af9ec4e5c593413aa66e344afd51111e522c6c124eda1",
+      "originalBytes": 6795,
+      "sha256": "a828d42426668fa07c1af9ec4e5c593413aa66e344afd51111e522c6c124eda1",
+      "bytes": 6795
+    },
+    {
+      "path": "evidence/ghostbusters-reference-full/stages/window-opening.json",
+      "originalPath": "build/reference-intake/ghostbusters-complete/cache/window-opening/166494752c84da8a05e129976108e9af0d3be14b0ad313a5a73a20f37ef82f7a/attempt-5a4cfd335d234af3920e5ff4b445891a/success.json",
+      "group": "ghostbusters-reference-full",
+      "reason": "Bind renderer/tool/input and output fingerprints for faithful reference regeneration.",
+      "originalSha256": "72348e9afeb9f7e66a6a2bf8cc08b643c15f45208bb3106c90be234e9b9e3f27",
+      "originalBytes": 6433,
+      "sha256": "72348e9afeb9f7e66a6a2bf8cc08b643c15f45208bb3106c90be234e9b9e3f27",
+      "bytes": 6433
+    },
+    {
+      "path": "evidence/ghostbusters-reference-full/window-opening.json",
+      "originalPath": "build/reference-intake/ghostbusters-complete/cache/window-opening/166494752c84da8a05e129976108e9af0d3be14b0ad313a5a73a20f37ef82f7a/attempt-5a4cfd335d234af3920e5ff4b445891a/window.json",
+      "group": "ghostbusters-reference-full",
+      "reason": "Retain source-only excerpt bounds and hashes; this is not a reconstruction comparison.",
+      "originalSha256": "780a55369fc7990b57b30859f7f5adb5a85912ef586cd4f78994121e89ffdaae",
+      "originalBytes": 3504,
+      "sha256": "780a55369fc7990b57b30859f7f5adb5a85912ef586cd4f78994121e89ffdaae",
+      "bytes": 3504
+    },
+    {
+      "path": "evidence/ghostbusters-reference-full/stages/window-continuing-phrase.json",
+      "originalPath": "build/reference-intake/ghostbusters-complete/cache/window-continuing-phrase/c0cabad1bb9dffbb4ee572c414e97228ec6fb7a6b96ece3f227cf121122c7bcf/attempt-75d646bf94434ab99cda4f9f91084a68/success.json",
+      "group": "ghostbusters-reference-full",
+      "reason": "Bind renderer/tool/input and output fingerprints for faithful reference regeneration.",
+      "originalSha256": "2905c702a132628712d338d162cb33988cac536e0729efb011b38ec87601785a",
+      "originalBytes": 6446,
+      "sha256": "2905c702a132628712d338d162cb33988cac536e0729efb011b38ec87601785a",
+      "bytes": 6446
+    },
+    {
+      "path": "evidence/ghostbusters-reference-full/window-continuing-phrase.json",
+      "originalPath": "build/reference-intake/ghostbusters-complete/cache/window-continuing-phrase/c0cabad1bb9dffbb4ee572c414e97228ec6fb7a6b96ece3f227cf121122c7bcf/attempt-75d646bf94434ab99cda4f9f91084a68/window.json",
+      "group": "ghostbusters-reference-full",
+      "reason": "Retain source-only excerpt bounds and hashes; this is not a reconstruction comparison.",
+      "originalSha256": "56d561baf101d096a9dae4807f7bb78af42d2823743701b8dcfdb02b70b4e459",
+      "originalBytes": 3519,
+      "sha256": "56d561baf101d096a9dae4807f7bb78af42d2823743701b8dcfdb02b70b4e459",
+      "bytes": 3519
+    },
+    {
+      "path": "evidence/ghostbusters-reference-full/stages/window-source-ending-continuation.json",
+      "originalPath": "build/reference-intake/ghostbusters-complete/cache/window-source-ending-continuation/ecdeda1d3a62724f93e42576340f953fd9dda56b58839ced4c40f461749e0bb8/attempt-f14bc75d44324503a2c605085b28aa2f/success.json",
+      "group": "ghostbusters-reference-full",
+      "reason": "Bind renderer/tool/input and output fingerprints for faithful reference regeneration.",
+      "originalSha256": "3aea0744f3d5c1363778abc572e4a0877000606612eea9283903166f3a93126d",
+      "originalBytes": 6459,
+      "sha256": "3aea0744f3d5c1363778abc572e4a0877000606612eea9283903166f3a93126d",
+      "bytes": 6459
+    },
+    {
+      "path": "evidence/ghostbusters-reference-full/window-source-ending-continuation.json",
+      "originalPath": "build/reference-intake/ghostbusters-complete/cache/window-source-ending-continuation/ecdeda1d3a62724f93e42576340f953fd9dda56b58839ced4c40f461749e0bb8/attempt-f14bc75d44324503a2c605085b28aa2f/window.json",
+      "group": "ghostbusters-reference-full",
+      "reason": "Retain source-only excerpt bounds and hashes; this is not a reconstruction comparison.",
+      "originalSha256": "e882f3f0c6b69af78ed0990c93e7bba9df18e9a7c250f2e1bf0f42d8e0a3f618",
+      "originalBytes": 3526,
+      "sha256": "e882f3f0c6b69af78ed0990c93e7bba9df18e9a7c250f2e1bf0f42d8e0a3f618",
+      "bytes": 3526
+    },
+    {
+      "path": "evidence/ghostbusters-player/run-executed.json",
+      "originalPath": "build/ghostbusters-player-verification/run-executed.json",
+      "group": "ghostbusters-player",
+      "reason": "Retain retained-only integration execution and cache reuse, without rerunning original code.",
+      "originalSha256": "10fc594edc9f33750d7a848baf14034d9587c397915268b46052694f3b71b95e",
+      "originalBytes": 7260,
+      "sha256": "10fc594edc9f33750d7a848baf14034d9587c397915268b46052694f3b71b95e",
+      "bytes": 7260
+    },
+    {
+      "path": "evidence/ghostbusters-player/run-reused.json",
+      "originalPath": "build/ghostbusters-player-verification/run-reused.json",
+      "group": "ghostbusters-player",
+      "reason": "Retain retained-only integration execution and cache reuse, without rerunning original code.",
+      "originalSha256": "2a8038c05ca27a55b1efb2ddc30cf360f3819ded116e193238481cbd430df84b",
+      "originalBytes": 7178,
+      "sha256": "2a8038c05ca27a55b1efb2ddc30cf360f3819ded116e193238481cbd430df84b",
+      "bytes": 7178
+    },
+    {
+      "path": "evidence/ghostbusters-player/stages/player-guards.json",
+      "originalPath": "build/ghostbusters-player-verification/cache/player-guards/7e8fbaea7361bab60621562bc2727a736214edd55352ea960c04b7c2f43b1438/attempt-30a43900b1d848a5a3d202a3800ee421/success.json",
+      "group": "ghostbusters-player",
+      "reason": "Bind exact retained evidence, helper fingerprints and generated output hashes.",
+      "originalSha256": "89c2f21a4ec677af7f3425e01b1daa3ef3dc19e8c4fa475b9e134c49224a23fd",
+      "originalBytes": 4161,
+      "sha256": "89c2f21a4ec677af7f3425e01b1daa3ef3dc19e8c4fa475b9e134c49224a23fd",
+      "bytes": 4161
+    },
+    {
+      "path": "evidence/ghostbusters-player/guards.txt",
+      "originalPath": "build/ghostbusters-player-verification/cache/player-guards/7e8fbaea7361bab60621562bc2727a736214edd55352ea960c04b7c2f43b1438/attempt-30a43900b1d848a5a3d202a3800ee421/stage.log",
+      "group": "ghostbusters-player",
+      "reason": "Retain focused player and provenance guards.",
+      "originalSha256": "c48a04ab1f4e62b34f24b09736b3acdc6c484f0d31829a97d1808cdd8fd7446c",
+      "originalBytes": 1665,
+      "sha256": "c48a04ab1f4e62b34f24b09736b3acdc6c484f0d31829a97d1808cdd8fd7446c",
+      "bytes": 1665
+    },
+    {
+      "path": "evidence/ghostbusters-player/stages/retained-integration.json",
+      "originalPath": "build/ghostbusters-player-verification/cache/retained-integration/35a938ebebc253768d1d8ecfa3592e539c5d61e243d385e37f68c55809755875/attempt-af20b98ae3454c3e9989bfadd134417c/success.json",
+      "group": "ghostbusters-player",
+      "reason": "Bind exact retained evidence, helper fingerprints and generated output hashes.",
+      "originalSha256": "cecc35933bb98e707a9d7126a55c1dd635cc047fb23f81c3f58d1cca9c3fe26e",
+      "originalBytes": 20483,
+      "sha256": "cecc35933bb98e707a9d7126a55c1dd635cc047fb23f81c3f58d1cca9c3fe26e",
+      "bytes": 20483
+    },
+    {
+      "path": "evidence/ghostbusters-player/composition.json",
+      "originalPath": "build/ghostbusters-player-verification/cache/retained-integration/35a938ebebc253768d1d8ecfa3592e539c5d61e243d385e37f68c55809755875/attempt-af20b98ae3454c3e9989bfadd134417c/verified/composition.json",
+      "group": "ghostbusters-player",
+      "reason": "Retain independent editable music or complete numeric comparison against source component evidence; no sampled speech.",
+      "originalSha256": "fd0263e704261ece85375feea44ea882e16483977bfef2333a4d27e31cb0c421",
+      "originalBytes": 49910,
+      "sha256": "fd0263e704261ece85375feea44ea882e16483977bfef2333a4d27e31cb0c421",
+      "bytes": 49910
+    },
+    {
+      "path": "evidence/ghostbusters-player/receipt.json",
+      "originalPath": "build/ghostbusters-player-verification/cache/retained-integration/35a938ebebc253768d1d8ecfa3592e539c5d61e243d385e37f68c55809755875/attempt-af20b98ae3454c3e9989bfadd134417c/verified/receipt.json",
+      "group": "ghostbusters-player",
+      "reason": "Retain independent editable music or complete numeric comparison against source component evidence; no sampled speech.",
+      "originalSha256": "9b51e72e8eb4d449e693e33a319f636b2dde245fd54330be8932d6406ea0ea55",
+      "originalBytes": 12965,
+      "sha256": "9b51e72e8eb4d449e693e33a319f636b2dde245fd54330be8932d6406ea0ea55",
+      "bytes": 12965
+    },
+    {
+      "path": "evidence/ghostbusters-player/writes.json.gz",
+      "originalPath": "build/ghostbusters-player-verification/cache/retained-integration/35a938ebebc253768d1d8ecfa3592e539c5d61e243d385e37f68c55809755875/attempt-af20b98ae3454c3e9989bfadd134417c/verified/writes.json",
+      "group": "ghostbusters-player",
+      "reason": "Retain independent editable music or complete numeric comparison against source component evidence; no sampled speech.",
+      "originalSha256": "ca96950ce550fe6f92f72e67373382ca87852f404583a14f71dbc27a12ed574c",
+      "originalBytes": 2336870,
+      "sha256": "cab17e882efab7ca2f24e6c098c087fde07c3ecc92ea641e9774057024a79c6a",
+      "bytes": 136233
+    },
+    {
+      "path": "evidence/ghostbusters-player/returns.json.gz",
+      "originalPath": "build/ghostbusters-player-verification/cache/retained-integration/35a938ebebc253768d1d8ecfa3592e539c5d61e243d385e37f68c55809755875/attempt-af20b98ae3454c3e9989bfadd134417c/verified/returns.json",
+      "group": "ghostbusters-player",
+      "reason": "Retain independent editable music or complete numeric comparison against source component evidence; no sampled speech.",
+      "originalSha256": "14f1feb29ec61baaeb6b836a84532ca483525eda328644f65fd4a77c3eb9843b",
+      "originalBytes": 5214649,
+      "sha256": "511fa57a7c73d47d87d8ef89d87baa5cab8c175bd6dae666da4310db8449bd31",
+      "bytes": 201437
+    },
+    {
+      "path": "evidence/ghostbusters-player/contexts.json.gz",
+      "originalPath": "build/ghostbusters-player-verification/cache/retained-integration/35a938ebebc253768d1d8ecfa3592e539c5d61e243d385e37f68c55809755875/attempt-af20b98ae3454c3e9989bfadd134417c/verified/contexts.json",
+      "group": "ghostbusters-player",
+      "reason": "Retain independent editable music or complete numeric comparison against source component evidence; no sampled speech.",
+      "originalSha256": "e2e355f54f87b8de27b1a21721228346f46cba690eb69b6d16835bcae1b87f82",
+      "originalBytes": 15835145,
+      "sha256": "7bcf169a012d54fb6bd67c03f7f2d2dbc5a7c1a5f3b5ac537af1a5d8b60e7116",
+      "bytes": 371129
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/run-executed.json",
+      "originalPath": "build/ghostbusters-compiler-verification/run-executed.json",
+      "group": "ghostbusters-compiler",
+      "reason": "Retain full compiled music verification and cached workflow timings.",
+      "originalSha256": "d5f0bcbadc5494ee137c4d575dd472db94815015caf1a2221483a4fd2a80c93e",
+      "originalBytes": 20144,
+      "sha256": "d5f0bcbadc5494ee137c4d575dd472db94815015caf1a2221483a4fd2a80c93e",
+      "bytes": 20144
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/run-reused.json",
+      "originalPath": "build/ghostbusters-compiler-verification/run-reused.json",
+      "group": "ghostbusters-compiler",
+      "reason": "Retain full compiled music verification and cached workflow timings.",
+      "originalSha256": "3e65145e9e01e82922f9098cf7dfa0d666747fd58a2b93b0c6b70a6bdfe58bf7",
+      "originalBytes": 20040,
+      "sha256": "3e65145e9e01e82922f9098cf7dfa0d666747fd58a2b93b0c6b70a6bdfe58bf7",
+      "bytes": 20040
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/stages/compiler-guards.json",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/compiler-guards/8e10ac4ef5939fcb005c9a0c8716e203177712c44fec99d38ca46ef549c4bb4d/attempt-36c8ca6e168146a3b8df0ae82dcc3f8f/success.json",
+      "group": "ghostbusters-compiler",
+      "reason": "Bind source/helper/tool fingerprints and all output hashes for independent music execution.",
+      "originalSha256": "a8883e274ab96d51c28887d6fbfd27fd466044d54280032e76037e60bb423090",
+      "originalBytes": 14837,
+      "sha256": "a8883e274ab96d51c28887d6fbfd27fd466044d54280032e76037e60bb423090",
+      "bytes": 14837
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/guards.txt",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/compiler-guards/8e10ac4ef5939fcb005c9a0c8716e203177712c44fec99d38ca46ef549c4bb4d/attempt-36c8ca6e168146a3b8df0ae82dcc3f8f/stage.log",
+      "group": "ghostbusters-compiler",
+      "reason": "Retain range, reinitialization and independent compiled music guards.",
+      "originalSha256": "5e5af1e7642886285da6fd0231a4777c3f2f628cdf2307077f89020125940261",
+      "originalBytes": 1358,
+      "sha256": "5e5af1e7642886285da6fd0231a4777c3f2f628cdf2307077f89020125940261",
+      "bytes": 1358
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/stages/music-component-export.json",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/success.json",
+      "group": "ghostbusters-compiler",
+      "reason": "Bind source/helper/tool fingerprints and all output hashes for independent music execution.",
+      "originalSha256": "cf05b18f1213454fccadc5856a757cd27134ef0fd612a1bc48a5c01b22e29307",
+      "originalBytes": 17026,
+      "sha256": "cf05b18f1213454fccadc5856a757cd27134ef0fd612a1bc48a5c01b22e29307",
+      "bytes": 17026
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/compiled/verification.json",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/verification.json",
+      "group": "ghostbusters-compiler",
+      "reason": "Retain independent music compilation and full CPU proof; includes no sampled speech or original driver.",
+      "originalSha256": "0c95cbd83d8a66dc34f5dfa042e2a397135c8aa4594f43b983af1ce50ba58100",
+      "originalBytes": 7681,
+      "sha256": "0c95cbd83d8a66dc34f5dfa042e2a397135c8aa4594f43b983af1ce50ba58100",
+      "bytes": 7681
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/compiled/audit.json",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/audit.json",
+      "group": "ghostbusters-compiler",
+      "reason": "Retain independent music compilation and full CPU proof; includes no sampled speech or original driver.",
+      "originalSha256": "f1a75faf5568f6eec4e69ebe3cb69879f543f05409d574b9e1c34fbca8b80642",
+      "originalBytes": 3423,
+      "sha256": "f1a75faf5568f6eec4e69ebe3cb69879f543f05409d574b9e1c34fbca8b80642",
+      "bytes": 3423
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/compiled/writes.json.gz",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/writes.json",
+      "group": "ghostbusters-compiler",
+      "reason": "Retain independent music compilation and full CPU proof; includes no sampled speech or original driver.",
+      "originalSha256": "4b32027b0eff86023763666900a72e1448baae7104ef23f0fb42339035c6fffd",
+      "originalBytes": 3495683,
+      "sha256": "a17365475411f299b98d51eff14befcd300f8927c8eb0696cee40a372ecb58dd",
+      "bytes": 175572
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/compiled/state-checkpoints.json",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/state-checkpoints.json",
+      "group": "ghostbusters-compiler",
+      "reason": "Retain independent music compilation and full CPU proof; includes no sampled speech or original driver.",
+      "originalSha256": "a05499b6171864b824da257994424fafaeef8c687eea24ea8b08c3c59015d417",
+      "originalBytes": 7712,
+      "sha256": "a05499b6171864b824da257994424fafaeef8c687eea24ea8b08c3c59015d417",
+      "bytes": 7712
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/compiled/player.asm",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/player.asm",
+      "group": "ghostbusters-compiler",
+      "reason": "Retain independent music compilation and full CPU proof; includes no sampled speech or original driver.",
+      "originalSha256": "9bdf572c21cb8cfdc3aaee95f854cf88f5c3000ac6860b77ce9e05485e661818",
+      "originalBytes": 15044,
+      "sha256": "9bdf572c21cb8cfdc3aaee95f854cf88f5c3000ac6860b77ce9e05485e661818",
+      "bytes": 15044
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/compiled/player.listing.gz",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/player.listing",
+      "group": "ghostbusters-compiler",
+      "reason": "Retain independent music compilation and full CPU proof; includes no sampled speech or original driver.",
+      "originalSha256": "0e147ae8868dfc500c620ecf73704695bed9cf8ee5196fbca1a3f8eb9776b182",
+      "originalBytes": 20681,
+      "sha256": "ef14b57ce1c2043420c3fdab19719eae88edacc34836049d28b4f88a5a3224e9",
+      "bytes": 5032
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/compiled/build.json",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/music-component-export/bbbd7e8baf7dc9e51cfb527f049596034b33b4e025c30aaf77eeec649e43d987/attempt-ce00045ac99e4037bc24e89340d4de55/candidate/build.json",
+      "group": "ghostbusters-compiler",
+      "reason": "Retain independent music compilation and full CPU proof; includes no sampled speech or original driver.",
+      "originalSha256": "40a1c95e7cf3a776678f79677b63f221a7be568ad3c5ee3e70f42a6b265c139c",
+      "originalBytes": 8449,
+      "sha256": "40a1c95e7cf3a776678f79677b63f221a7be568ad3c5ee3e70f42a6b265c139c",
+      "bytes": 8449
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/stages/ntsc-music-vice.json",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/success.json",
+      "group": "ghostbusters-compiler",
+      "reason": "Bind source/helper/tool fingerprints and all output hashes for independent music execution.",
+      "originalSha256": "f6a75abe78b72b491ef5e6db01579e532b383f130750f947ba4fdd7fb11b4696",
+      "originalBytes": 193795,
+      "sha256": "f6a75abe78b72b491ef5e6db01579e532b383f130750f947ba4fdd7fb11b4696",
+      "bytes": 193795
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/vice/study.json",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/study.json",
+      "group": "ghostbusters-compiler",
+      "reason": "Retain actual NTSC callable-music stores and cadence; original machine environment and standalone autostart are not claimed.",
+      "originalSha256": "51cc880176d84f54d305940b92f8db4000406da313e434cff58b99ed28f73a77",
+      "originalBytes": 3821,
+      "sha256": "51cc880176d84f54d305940b92f8db4000406da313e434cff58b99ed28f73a77",
+      "bytes": 3821
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/vice/trace.json.gz",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/trace.json",
+      "group": "ghostbusters-compiler",
+      "reason": "Retain actual NTSC callable-music stores and cadence; original machine environment and standalone autostart are not claimed.",
+      "originalSha256": "8b556e080d67abcc7c41c0dfd815c226a7b8b08602a469e0c3e5cc66c3e5f97e",
+      "originalBytes": 24895187,
+      "sha256": "4d674dd16e04d2e97962e3dc633755234c15c9ee295ee4bb196e468c5a2b8aca",
+      "bytes": 799490
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/vice/command.json",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/command.json",
+      "group": "ghostbusters-compiler",
+      "reason": "Retain actual NTSC callable-music stores and cadence; original machine environment and standalone autostart are not claimed.",
+      "originalSha256": "60ccbe4180ff96c52886af657ebceeefc1c4c2aec1954f122b96f17558e65ba5",
+      "originalBytes": 878,
+      "sha256": "60ccbe4180ff96c52886af657ebceeefc1c4c2aec1954f122b96f17558e65ba5",
+      "bytes": 878
+    },
+    {
+      "path": "evidence/ghostbusters-compiler/vice/commands.mon",
+      "originalPath": "build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/commands.mon",
+      "group": "ghostbusters-compiler",
+      "reason": "Retain actual NTSC callable-music stores and cadence; original machine environment and standalone autostart are not claimed.",
+      "originalSha256": "b9b7e71bd1c6d43e6ccabf82e99e07f65eb5c3755e726b9dd38e050cd10cd929",
+      "originalBytes": 802,
+      "sha256": "b9b7e71bd1c6d43e6ccabf82e99e07f65eb5c3755e726b9dd38e050cd10cd929",
+      "bytes": 802
     }
   ],
   "independentShadesSources": {

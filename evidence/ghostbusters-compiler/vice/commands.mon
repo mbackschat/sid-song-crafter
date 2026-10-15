@@ -1,0 +1,19 @@
+radix h
+sidefx off
+dummy off
+bank ram
+fill $0002 $bfff $00
+load "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/payload.prg" 0
+load "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-compiler-verification/cache/ntsc-music-vice/4819b38724b852c0a940e284b5c44ec96e7fff56ed47befb8b008eebec9cf785/attempt-cab6f1c909494f87a6124a3835944ead/vice/harness.prg" 0
+r a=$00,x=$00,y=$00,sp=$ff,fl=$24
+r pc=$c000
+until $c035
+trace exec $100f
+trace exec $c03c
+trace store $d400 $d41f if (((@ram:$c101 * $0100) + @ram:$c100) >= $0000) && (((@ram:$c101 * $0100) + @ram:$c100) <= $3688)
+until $c05f
+r
+bank ram
+d $1000 $1895
+m $1000 $1895
+quit

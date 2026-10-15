@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "sourceA-selection",
+      "command": [
+        "{python}",
+        "scripts/reference-intake.py",
+        "selection",
+        "{{\"assetId\":\"ghostbusters\",\"renderSeconds\":245,\"role\":\"Ghostbusters original title, subtune 1; full reference window covering the decoded first music traversal and restart, not an independent reconstruction\",\"route\":\"full-machine-render\",\"subtune\":1}}",
+        "--registry-sha256",
+        "542a2b89a00e4d45aa30c4fe75f9c00d89530ffd0d4ae41c6d0d5a7161626b95",
+        "--output",
+        "{out}/selection.json"
+      ],
+      "inputs": [
+        "config/local-assets.json",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/research/ghostbusters/Ghostbusters.sid",
+        "scripts/reference-intake.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/listening-package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py"
+      ],
+      "outputs": [
+        "selection.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "sourceA-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/research/ghostbusters/Ghostbusters.sid",
+        "{out}/source.wav",
+        "245",
+        "--subtune",
+        "1",
+        "--clock",
+        "ntsc"
+      ],
+      "inputs": [
+        "config/local-assets.json",
+        "/Users/mbackschat/Projects/c64-sid-skill/.local/research/ghostbusters/Ghostbusters.sid",
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "scripts/render-sid.cpp",
+        "{stage:sourceA-selection}/selection.json"
+      ],
+      "outputs": [
+        "source.wav",
+        "source.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "sourceA-measure",
+      "command": [
+        "{python}",
+        "scripts/reference-intake.py",
+        "measure",
+        "{stage:sourceA-selection}/selection.json",
+        "{stage:sourceA-render}/source.wav",
+        "--output",
+        "{out}/source.json"
+      ],
+      "inputs": [
+        "scripts/reference-intake.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/listening-package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "{stage:sourceA-selection}/selection.json",
+        "{stage:sourceA-render}/source.wav",
+        "{stage:sourceA-render}/source.wav.registers.tsv"
+      ],
+      "outputs": [
+        "source.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "window-opening",
+      "command": [
+        "{python}",
+        "scripts/reference-intake.py",
+        "window",
+        "{stage:sourceA-measure}/source.json",
+        "--start",
+        "0",
+        "--end",
+        "12",
+        "--gap",
+        "0.5",
+        "--output",
+        "{out}"
+      ],
+      "inputs": [
+        "scripts/reference-intake.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/listening-package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "{stage:sourceA-measure}/source.json",
+        "{stage:sourceA-render}/source.wav"
+      ],
+      "outputs": [
+        "source.wav",
+        "window.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "window-continuing-phrase",
+      "command": [
+        "{python}",
+        "scripts/reference-intake.py",
+        "window",
+        "{stage:sourceA-measure}/source.json",
+        "--start",
+        "16",
+        "--end",
+        "28",
+        "--gap",
+        "0.5",
+        "--output",
+        "{out}"
+      ],
+      "inputs": [
+        "scripts/reference-intake.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/listening-package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "{stage:sourceA-measure}/source.json",
+        "{stage:sourceA-render}/source.wav"
+      ],
+      "outputs": [
+        "source.wav",
+        "window.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "window-source-ending-continuation",
+      "command": [
+        "{python}",
+        "scripts/reference-intake.py",
+        "window",
+        "{stage:sourceA-measure}/source.json",
+        "--start",
+        "225",
+        "--end",
+        "245",
+        "--gap",
+        "0.5",
+        "--output",
+        "{out}"
+      ],
+      "inputs": [
+        "scripts/reference-intake.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/listening-package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "{stage:sourceA-measure}/source.json",
+        "{stage:sourceA-render}/source.wav"
+      ],
+      "outputs": [
+        "source.wav",
+        "window.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "sourceARender": "{stage:sourceA-render}/source.wav",
+    "sourceAReceipt": "{stage:sourceA-measure}/source.json",
+    "sourceWindow-opening": "{stage:window-opening}/source.wav",
+    "windowReceipt-opening": "{stage:window-opening}/window.json",
+    "sourceWindow-continuing-phrase": "{stage:window-continuing-phrase}/source.wav",
+    "windowReceipt-continuing-phrase": "{stage:window-continuing-phrase}/window.json",
+    "sourceWindow-source-ending-continuation": "{stage:window-source-ending-continuation}/source.wav",
+    "windowReceipt-source-ending-continuation": "{stage:window-source-ending-continuation}/window.json"
+  }
+}
