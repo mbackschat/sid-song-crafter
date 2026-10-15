@@ -168,3 +168,35 @@ Nonzero signal on all attacks and a chosen decibel target were insufficient acce
 python3 scripts/listening-package.py config/listening/axel-f-rhythm-middle.json --output build/axel-f-rhythm-middle-new
 python3 scripts/publish-listening.py build/axel-f-rhythm-middle-new/run.json --selection config/listening/axel-f-rhythm-middle.audition.json --output build/axel-f-rhythm-middle-listening-new
 ```
+
+## Planned complete source-maracas allocation
+
+The accepted AD13 setting can be extended conservatively to four sections where the reduced harmony voice is entirely vacant. A read-only comparison against the pinned MIDI identifies 186 source attacks with unique onsets and no overlaps; every original duration fits. These ranges are arranged beats, with source beats four beats later.
+
+| Arranged section | Source maracas attacks | Allocation |
+| --- | ---: | --- |
+| 32–64 | 68 | Vacant harmony voice |
+| 64–96 | 68 | Vacant harmony voice; includes the reviewed rhythm excerpt |
+| 128–156 | 16 | Vacant harmony voice below retained held support |
+| 156–172 | 34 | Vacant harmony voice during source high descent |
+
+Preserve all 259 tonal harmony events, melody, bass and form. No source maracas occur in the final section or omitted percussion tail. Across all nominal note gaps, 261 source records represent 249 distinct attacks, including 12 simultaneous duplicates; the first full integration should exclude the 63 additional distinct gap hits rather than risk tonal releases or add duplicate attacks. This is an allocation proposal, not an implemented or listening-approved full percussion arrangement. Native TEST/body checks and actual release boundaries must still be verified after projection. The complete tonal palette is being reviewed first; retain its percussion-free reference for a subsequent combined audition.
+
+To reproduce the coverage check, resolve the `prepare` stage’s `attemptDirectory` in `build/axel-f-rhythm-trial/completed-run.json`. Read `score/full-common-score.json` and `score/score.json` there; their source and reduced-score hashes are pinned in [the rhythm review](rhythm-trial-review.json). Select GM70 source events starting in `[4,353.3125)`, subtract four beats from each onset, and preserve duration. Use exact rational source times and `Fraction(str(value))` for reduced decimal times. Compare half-open event intervals with the reduced harmony intervals. The full projection has 512 records / 478 distinct attacks; nominal free gaps admit 261 / 249, and the four entirely vacant sections admit 186 / 186. A future projector must preserve source identities and reject overlaps, rather than treating these aggregate counts as its sole oracle.
+
+Implementation should reuse the current backend with a small source-specific full-projection preparation step: append AD13 without shifting existing instrument IDs, add the 186 source events to harmony, and select that instrument only in the four vacant sections. Expected voice totals are `[288,445,478]`, preserving all 1,025 tonal notes. The excerpt verifier assumes every harmony event is noise and cannot be reused unchanged; the full guard must distinguish the 259 tonal harmony events from percussion. At the occupied-to-empty boundary near beat 128, the previous harmony gate clears 17 native calls (about 339 ms) before the first maracas onset; verify actual release sound rather than treating that timing margin as proof of silence. Whole-track voice-2 muting would remove tonal harmony as well, so restrict any contribution diagnostic to the vacant windows. Added processing can shift instruction timing; do not impose the decay-only trial’s exact timing/PCM invariant on this different intervention.
+
+## Accepted pairing across the complete tonal arrangement
+
+The [full palette](full-master-palette.json), [recipe](../../config/listening/axel-f-full-master-palette.json) and [review](full-master-palette-review.json) extend the accepted lead/bass pairing through the existing complete score. Main lead uses the accepted envelope; bass uses the accepted independently moving, unfiltered pulse. The original held-support program is copied into its own role for arranged beats 128–156, retaining `ADSR=$08A8`; the 97 preferred ELSOFT high-lead notes retain their program. Score, pitches, form and all 1,025 tonal notes remain unchanged. No percussion is added in this package.
+
+All 9,006 calls pass the full schedule/register checks; held and upper-lead registers match their previous programs over each exact role lifetime. Role verification uses the first assigned onset inclusive and the next different role’s onset exclusive: its initial end-boundary check incorrectly included the next role’s TEST/ADSR setup. The same failure reproduced at both preserved-role transitions and was fixed without changing or rerendering the music. Fourteen sampled VICE checkpoints through call 9,000 pass with maximum cadence error five cycles. The 179.634943-second candidate has peak 12,178, no clipped samples and zero measured AC RMS in its pre-stop release and final tail.
+
+`build/axel-f-full-master-palette-listening/axel-f-full-master-palette.wav` is the complete candidate at native unity gain; `previous-selected-full.wav` preserves the exact earlier full version. The held-support and high-lead context pairs use whole-excerpt level matching, with candidate attenuation of 0.8610 and 1.3573 dB respectively. Their preserved lead programs do not imply identical full mixes: the bass underneath them changes. `ending-before-then-after.ab.wav` retains unity gain. Complete-form listening is pending; the accepted short pairing is not promoted to whole-song acceptance.
+
+```sh
+python3 scripts/listening-package.py config/listening/axel-f-full-master-palette.json --output build/axel-f-full-master-palette-new
+python3 scripts/publish-listening.py build/axel-f-full-master-palette-new/run.json --selection config/listening/axel-f-full-master-palette.audition.json --output build/axel-f-full-master-palette-listening-new
+```
+
+The recipe imports the previous full render and execution artifacts from a frozen successful receipt with file hashes; it builds only the new candidate. That candidate stage took 127.18 seconds on 2026-10-15; the final verification/preparation run reused it and completed in 1.15 seconds. This comparison recipe requires the retained baseline receipt and its files at the declared relative paths; it is a new candidate render against retained reference evidence, not a from-scratch baseline recipe. A fresh selected-roles run produces different attempt paths, so reproducing that recipe alone does not populate this frozen reference bundle. Restore the pinned bundle for this exact comparison. Receipt matching uses stage/relative artifact identity and hashes rather than binding the archive to one machine’s absolute path. Source scores, native song files, original reference and rendered audio remain private. Model review is no-call: available models cannot establish full-form preference; retain the user’s listening verdict as the decision point.
