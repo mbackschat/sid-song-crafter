@@ -48,6 +48,8 @@ Follow the [tool boundaries](scripts/README.md): source-specific extractors, exp
 
 ## Retrieve before researching
 
+The established master-composer studies are the primary repertoire and carry the strongest influence on sound and arrangement choices. Popular-song and BASIC interpretations provide supporting, context-specific evidence; they do not displace the masters merely because a patch is convenient or liked once. Expand master references when a concrete gap calls for contrasting evidence, while retaining each source’s execution and listening limits.
+
 Start with the [technique lookup](docs/research/technique-index.md), then read only the relevant owning study. Search locally before new research. Reuse demonstrated methods after checking their model, timing, voice dependencies and listening verdict. Repair missing index routes.
 
 | Task | References |

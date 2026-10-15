@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-15",
+  "sourceAsset": "pink-panther-basic",
+  "sourceUrl": "https://www.hvsc.de/download/C64Music/DEMOS/M-R/Pink_Panther_BASIC.sid",
+  "sourceSha256": "c4c641525b4a71bc28a316b8f10a8000cdc875187981e0ab75cd9f4c97bf6205",
+  "sourceMatchesPinnedDownload": true,
+  "title": "Pink Panther",
+  "sidCredit": "Stan Kicak",
+  "released": "198? Stan Kicak",
+  "clock": "ntsc",
+  "clockProvenance": "RSID flags 0x000a declare NTSC and BASIC",
+  "sidModel": "MOS6581",
+  "modelProvenance": "Explicit assumption: header leaves chip model unspecified; not a verified original-chip declaration.",
+  "subtune": 1,
+  "rendererSha256": "6fa0a3f03eb190153871e7040c4dc827163e40feda7dd44e982ab34ebb3728d4",
+  "rendererSourceSha256": "7d4eb7bc14df5dc46bc81c3d2cd8d94a3e1a30b34d96bb7944c09abf662ab73f",
+  "roms": {
+    "kernal-901227-03.bin": "83c60d47047d7beab8e5b7bf6f67f80daa088b7a6a27de0d7e016f6484042721",
+    "basic-901226-01.bin": "89878cea0a268734696de11c4bae593eaaa506465d2029d619c0e0cbccdfa62d",
+    "chargen-901225-01.bin": "fd0d53b8480e86163ac98998976c72cc58d5dd8eb824ed7b829774e74213b420"
+  },
+  "rawAudio": {
+    "path": "build/pink-panther-basic-reference/run.json: raw deliverable",
+    "sha256": "e530b6c191c725183225e9822b0f552b7175653232e480c43c68e1561e9c9a7e",
+    "durationSeconds": 150
+  },
+  "audio": {
+    "path": "build/pink-panther-basic-listening/external-pink-panther.wav",
+    "sha256": "502e3a993892175e540b0b505fedcb89831c4eb33fe13f9b2baa60156792bb5b",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 4542300,
+    "durationSeconds": 103.0,
+    "peak": 12179,
+    "peakDbfs": -8.59676608976143,
+    "clippedSamples": 0,
+    "rms": 3515.819280756747,
+    "acRms": 2413.0495433659544,
+    "acRmsDbfs": -22.6576739254234,
+    "perChannel": [
+      {
+        "dc": -2556.9859436849174,
+        "rms": 3515.819280756747,
+        "acRms": 2413.0495433659544
+      }
+    ]
+  },
+  "trim": {
+    "startFrame": 0,
+    "endFrameExclusive": 4542300,
+    "pcmSliceVerified": true,
+    "gain": 1,
+    "fade": null,
+    "reason": "Retain startup and music through natural stop; remove excess silent tail. Raw one-second AC windows101 onward are silent; output final second is constant DC."
+  },
+  "comparison": {
+    "path": "build/pink-panther-basic-listening/basic-then-ours.ab.wav",
+    "durationSeconds": 40.5,
+    "order": [
+      "BASIC raw17.45–37.45",
+      "ours0–20"
+    ],
+    "sourceFrames": [
+      769545,
+      1651545
+    ],
+    "gainDb": [
+      -5.604299476622207,
+      0.0
+    ],
+    "scope": "Different arrangements, registers and timing; whole-mix AC-RMS matching, not an isolated timbre intervention or exact-score comparison."
+  },
+  "listeningVerdict": "Listener praises external main instrument as matching the song intention; our original audition is also quite good."
+}

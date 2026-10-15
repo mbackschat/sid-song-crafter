@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "BASIC instrument and articulation decoding corroborated by initialized renderer snapshots; bounded width intervention fails timing isolation; independent native patch transfer rendered, awaiting listening.",
+  "source": {
+    "path": ".local/research/pink-panther/pink-panther-basic.sid",
+    "sha256": "c4c641525b4a71bc28a316b8f10a8000cdc875187981e0ab75cd9f4c97bf6205",
+    "bytes": 8962,
+    "format": "RSID v2 BASIC",
+    "loadAddress": "$0801",
+    "title": "Pink Panther",
+    "author": "Stan Kicak",
+    "released": "198? Stan Kicak",
+    "subtune": 1,
+    "clockDeclaration": "NTSC",
+    "sidModelDeclaration": "unknown"
+  },
+  "render": {
+    "run": "build/pink-panther-basic-reference/run.json",
+    "clock": "NTSC",
+    "sidModel": "MOS6581",
+    "sidModelOrigin": "explicit experimental assumption, not recovered source metadata",
+    "subtune": 1,
+    "registerSidecar": "build/pink-panther-basic-reference/cache/render/bcf3028ae5872ab444f05a5adfd80ed5fe32e92be1aa133ae33d997d7902956b/attempt-434897c3636c4f79a8d4cde2ffad674d/raw.wav.registers.tsv",
+    "registerSidecarSha256": "7d5a389dc62c5b043951bef4a3f64630cddb6d722b06399018d992510632fa1a",
+    "observer": "last-written register snapshots after renderer iterations; not individual SID bus writes, exact store times or a one-to-one video-frame trace"
+  },
+  "sourceInspection": {
+    "detokenizer": "VICE petcat -2",
+    "privateDecodedSource": "build/pink-panther-basic-analysis/source.bas",
+    "lineAddresses": {
+      "1": "$080C",
+      "12": "$08A9",
+      "13": "$08CD",
+      "14": "$08F1",
+      "37": "$09C2",
+      "49": "$09F4",
+      "50": "$0A02",
+      "51": "$0A1F",
+      "57": "$0A44",
+      "58": "$0A7B",
+      "59": "$0A9C",
+      "60": "$0AD7",
+      "61": "$0AFA",
+      "62": "$0B3A",
+      "65": "$0B61",
+      "99": "$0B79",
+      "181": "$0EE5",
+      "15000": "$2A54"
+    },
+    "lines1And15000": "Clear all SID control registers at start/end, with master-volume clearing.",
+    "lines12To14": "Select AD, SR, pulse high, pulse low, waveform from instrument arrays.",
+    "line37": "Only two declared instruments; both pulse $41 and pulse width $F37.",
+    "line99": "Select instrument 1 on all three voices.",
+    "line181": "Select instrument 2 for voice 1; voices 2 and 3 keep instrument 1.",
+    "lines57To62": "Set frequency high byte before low byte; negative high-byte values request gate off then on; nonnegative values write gate-on only.",
+    "line65": "No continuously running sound program: interpreter waits for TI to reach 27*T after per-row timer reset."
+  },
+  "basicInstrument": {
+    "waveform": "pulse",
+    "gateOn": "$41",
+    "gateOff": "$40",
+    "pulseWidth": "$F37",
+    "pulseWidthDecimal": 3895,
+    "pulseThresholdFraction": 0.950927734375,
+    "narrowComplementFraction": 0.049072265625,
+    "waveformMotion": false,
+    "pulseWidthMotion": false,
+    "vibrato": false,
+    "arpeggioProgram": false,
+    "ringModulation": false,
+    "oscillatorSync": false,
+    "filter": {
+      "D415": "$00",
+      "D416": "$00",
+      "D417": "$00",
+      "D418DuringMusic": "$0F",
+      "routing": "all three voices bypass filter"
+    },
+    "patch1": {
+      "AD": "$0A",
+      "SR": "$29",
+      "A": 0,
+      "D": 10,
+      "S": 2,
+      "R": 9,
+      "roles": "all voices initially; accompaniment remains here"
+    },
+    "patch2": {
+      "AD": "$09",
+      "SR": "$22",
+      "A": 0,
+      "D": 9,
+      "S": 2,
+      "R": 2,
+      "role": "main melody voice 1 from score line 181"
+    },
+    "articulation": "Negative frequency-high fields toggle GATE off/on; positive fields leave it high and retune without restarting the envelope. Zero-frequency score rests also leave GATE high. No TEST or ADSR hard restart is programmed."
+  },
+  "snapshotCorroboration": {
+    "rows": 8536,
+    "filterRegisterSets": {
+      "$D415": [
+        "$00"
+      ],
+      "$D416": [
+        "$00"
+      ],
+      "$D417": [
+        "$00"
+      ],
+      "$D418": [
+        "$00",
+        "$0F"
+      ]
+    },
+    "pulseRegisterSetsByVoice": {
+      "1": {
+        "lo": [
+          "$00",
+          "$37"
+        ],
+        "hi": [
+          "$00",
+          "$0F"
+        ]
+      },
+      "2": {
+        "lo": [
+          "$00",
+          "$37"
+        ],
+        "hi": [
+          "$00",
+          "$0F"
+        ]
+      },
+      "3": {
+        "lo": [
+          "$00",
+          "$37"
+        ],
+        "hi": [
+          "$00",
+          "$0F"
+        ]
+      }
+    },
+    "firstCompleteVoice1Patch1SnapshotMs": 650,
+    "firstCompleteVoice1Patch2SnapshotMs": 16568,
+    "intermediatePitchObservation": {
+      "cause": "Frequency-high POKE completes before frequency-low POKE. The interpreter separates them enough that intermediate pitches survive a renderer snapshot.",
+      "observedPairedSnapshotTimesMs": [
+        [
+          17710,
+          17728
+        ],
+        [
+          18729,
+          18747
+        ],
+        [
+          19748,
+          19766
+        ]
+      ],
+      "limit": "These are observer timestamps, not exact bus-write durations; audibility or contribution to preference has not been tested."
+    }
+  },
+  "ours": {
+    "recipe": "songs/pink-panther/native.json",
+    "recipeSha256": "a6b42c8a398a9a6d69379e5bd39441fe4495dc2dbc29035ed59593a877b34a2a",
+    "clock": "PAL",
+    "sidModel": "MOS8580",
+    "lead": {
+      "waveform": "sawtooth $21",
+      "AD": "$26",
+      "SR": "$74",
+      "A": 2,
+      "D": 6,
+      "S": 7,
+      "R": 4,
+      "vibrato": "$14 delayed 16 PAL calls (~0.319 s), documented rate ~6.27 Hz",
+      "filter": "voice 1 low-pass, resonance 1, cutoff 832 down to 736",
+      "firstFrame": "$09 TEST+GATE",
+      "hardRestartADSR": "Configured $0F00; tempo1 bypasses hard restart (arrange-sidwizard.py native-first-frame-and-envelope contract). Adjacent notes without gate-off do not retrigger."
+    },
+    "registerSidecar": "build/pink-panther-theme/cache/candidate/1855fc51ed8811142e77fbea61f988f3dbc0b331b1dd1dd82b755d589bcc28cc/attempt-5c429110f21646b7827febc9fe331231/song/native-song.wav.registers.tsv",
+    "registerSidecarSha256": "98a2f36444c618814931433435aeb9f2324681f54531b0aa8df275378ae01660",
+    "snapshotSets": {
+      "$D402": [
+        "$00"
+      ],
+      "$D403": [
+        "$00"
+      ],
+      "$D404": [
+        "$09",
+        "$20",
+        "$21"
+      ],
+      "$D405": [
+        "$26"
+      ],
+      "$D406": [
+        "$74"
+      ],
+      "$D415": [
+        "$00"
+      ],
+      "$D416": [
+        "$00",
+        "$5C",
+        "$5D",
+        "$5E",
+        "$5F",
+        "$60",
+        "$61",
+        "$62",
+        "$63",
+        "$64",
+        "$65",
+        "$66",
+        "$67",
+        "$68"
+      ],
+      "$D417": [
+        "$01",
+        "$11"
+      ],
+      "$D418": [
+        "$0F",
+        "$10",
+        "$1F"
+      ]
+    }
+  },
+  "interpretation": {
+    "verifiedContrast": "The liked BASIC reference uses a fixed very narrow unfiltered pulse, faster attack code, lower sustain code and score-controlled legato/reattack. Ours uses a filtered saw, slower attack code, higher sustain code and added delayed vibrato.",
+    "hypothesis": "The narrow-pulse spectrum and selective articulation are plausible reasons for its more fitting foreground character; no causal comparison has yet isolated them.",
+    "comparisonLimits": [
+      "Different score arrangements and timing; same-material timbral illustration is not a controlled lead-only A/B.",
+      "Different clocks and SID model choices; BASIC source model is unknown.",
+      "Nominal envelope rates describe full-scale cycles; clearing/reopening GATE does not guarantee a zero-level restart.",
+      "Snapshot timing cannot establish exact store times or isolated voice perception."
+    ],
+    "recommendedNextBoundedTrial": "Preserve our score and backing; independently transfer static unfiltered pulse patch2 before testing articulation separately. Native tempo1 gate/TEST behavior is retained, not BASIC interpreter timing."
+  },
+  "listeningPassage": {
+    "basicRawStartSeconds": 17.45,
+    "durationSeconds": 20,
+    "purpose": "Starts immediately before main-theme lead pickup using patch2; arrangement differs from ours."
+  },
+  "interventionReview": "songs/pink-panther/width-diagnostic-review.json",
+  "independentTransferReview": "songs/pink-panther/pulse-transfer-review.json"
+}

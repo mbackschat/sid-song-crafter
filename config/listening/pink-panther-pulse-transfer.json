@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "prepare",
+      "command": [
+        "{python}",
+        "scripts/prepare-score-audition.py",
+        ".local/research/pink-panther/dw-barnes-ppanther.mid",
+        "config/scores/pink-panther-import.json",
+        "--output",
+        "{out}/score",
+        "--arrangement",
+        "songs/pink-panther/reduction.json",
+        "--candidate",
+        "songs/pink-panther/basic-inspired.json",
+        "--reference",
+        "songs/pink-panther/native.json"
+      ],
+      "inputs": [
+        ".local/research/pink-panther/dw-barnes-ppanther.mid",
+        "config/scores/pink-panther-import.json",
+        "scripts/prepare-score-audition.py",
+        "scripts/score_tools.py",
+        "songs/pink-panther/reduction.json",
+        "songs/pink-panther/native.json",
+        ".tools/arrangement-deps/mido",
+        "songs/pink-panther/basic-inspired.json"
+      ],
+      "outputs": [
+        "score/common-score.json",
+        "score/score.json",
+        "score/candidate.json",
+        "score/reference.json",
+        "score/adaptation.json",
+        "score/source.mid",
+        "score/import-recipe.json",
+        "score/full-common-score.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/arrangement-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "baseline",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:prepare}/score/reference.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "20",
+        "--excerpt-start",
+        "0"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:prepare}/score/reference.json",
+        "{stage:prepare}/score/score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/reference.sid",
+        "song/export/reference.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/reference.swm",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 240,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:prepare}/score/candidate.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "20",
+        "--excerpt-start",
+        "0"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:prepare}/score/candidate.json",
+        "{stage:prepare}/score/score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/candidate.sid",
+        "song/export/candidate.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/candidate.swm",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 240,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "support-check",
+      "command": [
+        "{python}",
+        "scripts/native_frame_comparison.py",
+        "{stage:baseline}/song/native-song.frames.json",
+        "{stage:candidate}/song/native-song.frames.json",
+        "--allow-offset",
+        "0",
+        "--allow-offset",
+        "1",
+        "--allow-offset",
+        "2",
+        "--allow-offset",
+        "3",
+        "--allow-offset",
+        "4",
+        "--allow-offset",
+        "5",
+        "--allow-offset",
+        "6",
+        "--allow-offset",
+        "21",
+        "--allow-offset",
+        "22",
+        "--allow-offset",
+        "23",
+        "--allow-offset",
+        "24",
+        "--output",
+        "{out}/support-check.json"
+      ],
+      "inputs": [
+        "{stage:baseline}/song/native-song.frames.json",
+        "{stage:candidate}/song/native-song.frames.json",
+        "scripts/native_frame_comparison.py"
+      ],
+      "outputs": [
+        "support-check.json"
+      ],
+      "timeoutSeconds": 15
+    },
+    {
+      "id": "patch-contract",
+      "command": [
+        "{python}",
+        "-c",
+        "import hashlib,json,pathlib,sys\nload=lambda path:json.loads(pathlib.Path(path).read_text())\nbaseline,candidate,a,b,frames=map(load,sys.argv[1:6])\ndef require(condition,message):\n    if not condition:\n        raise ValueError(message)\nrequire(dict((key,value) for key,value in baseline.items() if key!='instruments')==dict((key,value) for key,value in candidate.items() if key!='instruments'),'Transfer changes arrangement settings beyond the lead instrument')\nrequire(set(baseline['instruments'])==set(candidate['instruments'])==set(('lead','bass','harmony')),'Transfer must retain the three accepted roles')\nfor role in ('bass','harmony'):\n    require(baseline['instruments'][role]==candidate['instruments'][role],role+' patch changed')\nfor key in ('sourceSha256','voices','cellMap','patterns','timingChanges','articulationChanges','criticalNotes','scoreTicks','stopTick','stopVolumeClearTick'):\n    require(a[key]==b[key],'Native scheduling changed: '+key)\nrequire(bool(frames) and all(isinstance(frame,list) and len(frame)==25 for frame in frames),'Malformed or empty register frames')\npulse_frames=[frame for frame in frames if frame[4]&0x40]\nrequire(bool(pulse_frames),'Candidate never emits a pulse body')\nrequire(all(frame[2]+((frame[3]&15)<<8)==0xf37 for frame in pulse_frames),'Candidate pulse width is not exactly $F37')\nrequire(all(frame[4] in (0x40,0x41) and frame[5:7]==[0x09,0x22] for frame in pulse_frames),'Candidate pulse body has unexpected waveform or ADSR')\nrequire(all(frame[23]&7==0 and frame[24]&0xf0==0 for frame in frames),'Candidate is not filter bypassed')\nreport=dict(schemaVersion=1,scope='Independent lead-patch transfer over the accepted D W Barnes reduction; source score, bass and harmony unchanged',sameSourceSha256=a['sourceSha256'],sameNativeSchedule=True,exactPulseBody=dict(controlOn='41',controlOff='40',pulseWidth='f37',ad='09',sr='22',pulseFramesChecked=len(pulse_frames),filterBypassed=True),captureSha256=hashlib.sha256(pathlib.Path(sys.argv[5]).read_bytes()).hexdigest(),limitations='Native TEST first frames and existing gate schedule remain; no BASIC score or interpreter is copied, and BASIC held-gate articulation or legato is not reconstructed. This PAL MOS8580 transfer does not claim the reference NTSC MOS6581 sound or musical acceptance.')\npathlib.Path(sys.argv[6]).write_text(json.dumps(report,indent=2)+chr(10))\n",
+        "songs/pink-panther/native.json",
+        "songs/pink-panther/basic-inspired.json",
+        "{stage:baseline}/song/conversion.json",
+        "{stage:candidate}/song/conversion.json",
+        "{stage:candidate}/song/native-song.frames.json",
+        "{out}/patch-contract.json"
+      ],
+      "inputs": [
+        "songs/pink-panther/native.json",
+        "songs/pink-panther/basic-inspired.json",
+        "{stage:baseline}/song/conversion.json",
+        "{stage:candidate}/song/conversion.json",
+        "{stage:candidate}/song/native-song.frames.json"
+      ],
+      "outputs": [
+        "patch-contract.json"
+      ],
+      "timeoutSeconds": 15
+    },
+    {
+      "id": "vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:candidate}/song/export/candidate.prg",
+        "{stage:candidate}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:candidate}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "3",
+        "300",
+        "800",
+        "1500",
+        "1905",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:candidate}/song/export/candidate.prg",
+        "{stage:candidate}/song/native-song.writes.json",
+        "{stage:candidate}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 90,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "sequence",
+        "{stage:baseline}/song/native-song.excerpt.wav",
+        "{stage:candidate}/song/native-song.excerpt.wav",
+        "{out}/baseline-then-pulse"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:baseline}/song/native-song.excerpt.wav",
+        "{stage:candidate}/song/native-song.excerpt.wav"
+      ],
+      "outputs": [
+        "baseline-then-pulse.ab.wav",
+        "baseline-then-pulse.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "ending-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:baseline}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "{out}/baseline-then-pulse-ending",
+        "--start-seconds",
+        "32",
+        "--end-seconds",
+        "38.28710052031425"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:baseline}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav"
+      ],
+      "outputs": [
+        "baseline-then-pulse-ending.ab.wav",
+        "baseline-then-pulse-ending.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    }
+  ],
+  "deliverables": {
+    "baseline": "{stage:baseline}/song/native-song.wav",
+    "candidate": "{stage:candidate}/song/native-song.wav",
+    "comparison": "{stage:comparison}/baseline-then-pulse.ab.wav",
+    "ending-comparison": "{stage:ending-comparison}/baseline-then-pulse-ending.ab.wav",
+    "baseline-opening": "{stage:baseline}/song/native-song.excerpt.wav",
+    "candidate-opening": "{stage:candidate}/song/native-song.excerpt.wav",
+    "verification": "{stage:candidate}/song/verification.json",
+    "vice": "{stage:vice}/vice/verification.json",
+    "support-check": "{stage:support-check}/support-check.json",
+    "patch-contract": "{stage:patch-contract}/patch-contract.json",
+    "candidate-psid": "{stage:candidate}/song/export/candidate.sid",
+    "candidate-prg": "{stage:candidate}/song/export/candidate.prg"
+  }
+}

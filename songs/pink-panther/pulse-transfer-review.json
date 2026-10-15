@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-15",
+  "status": "rendered experiment; listening pending",
+  "purpose": "Test the externally liked static narrow-pulse patch on our accepted score and unchanged backing. Supporting reference, not a replacement for the master-study repertoire.",
+  "candidate": {
+    "palette": "songs/pink-panther/basic-inspired.json",
+    "audio": {
+      "path": "build/pink-panther-pulse-transfer-listening/basic-inspired-pulse-transfer.wav",
+      "sha256": "15555fe53683c62ea3501794e2d8c1f1249f03c401cebbd9669b88b72b16c03f",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1688461,
+      "durationSeconds": 38.28709750566893,
+      "peak": 11497,
+      "peakDbfs": -9.097308071977062,
+      "clippedSamples": 0,
+      "rms": 1766.0958604546468,
+      "acRms": 1519.5567583142313,
+      "acRmsDbfs": -26.674660170436717,
+      "perChannel": [
+        {
+          "dc": -900.0232477978467,
+          "rms": 1766.0958604546468,
+          "acRms": 1519.5567583142313
+        }
+      ]
+    }
+  },
+  "baseline": {
+    "palette": "songs/pink-panther/native.json",
+    "audio": {
+      "path": "build/pink-panther-pulse-transfer-listening/accepted-sid-baseline.wav",
+      "sha256": "fc4bf56aefd86c2f4cedfa3daa811e8d9f776e716f729fc3aa0bac8327954108",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 1688461,
+      "durationSeconds": 38.28709750566893,
+      "peak": 9320,
+      "peakDbfs": -10.92068045211473,
+      "clippedSamples": 0,
+      "rms": 1188.1211727974498,
+      "acRms": 1179.4682479657506,
+      "acRmsDbfs": -28.875273621279685,
+      "perChannel": [
+        {
+          "dc": 143.1313148482553,
+          "rms": 1188.1211727974498,
+          "acRms": 1179.4682479657506
+        }
+      ]
+    }
+  },
+  "comparison": "build/pink-panther-pulse-transfer-listening/baseline-then-pulse.ab.wav",
+  "comparisonPolicy": "20 seconds baseline, 0.5 second silence, 20 seconds transfer; unity gain to retain actual role balance. Whole lead patch changes, not a single-parameter intervention.",
+  "patchContract": {
+    "schemaVersion": 1,
+    "scope": "Independent lead-patch transfer over the accepted D W Barnes reduction; source score, bass and harmony unchanged",
+    "sameSourceSha256": "2ee1204f46a5972fb03dfffe624ada8f2feb45a43465ccac995c6204bb62254d",
+    "sameNativeSchedule": true,
+    "exactPulseBody": {
+      "controlOn": "41",
+      "controlOff": "40",
+      "pulseWidth": "f37",
+      "ad": "09",
+      "sr": "22",
+      "pulseFramesChecked": 1850,
+      "filterBypassed": true
+    },
+    "captureSha256": "94dff2263f65fe6f9fdafa848f8a87b15a66e81470188eaa4d3e46fc39d3811a",
+    "limitations": "Native TEST first frames and existing gate schedule remain; no BASIC score or interpreter is copied, and BASIC held-gate articulation or legato is not reconstructed. This PAL MOS8580 transfer does not claim the reference NTSC MOS6581 sound or musical acceptance."
+  },
+  "supportCheck": {
+    "schemaVersion": 1,
+    "referenceSha256": "97ff5acecbd26a091b620e2d8859cd6f6ec5371c71bc7528496acac6ec2d9bda",
+    "candidateSha256": "94dff2263f65fe6f9fdafa848f8a87b15a66e81470188eaa4d3e46fc39d3811a",
+    "comparison": {
+      "frames": 1921,
+      "bankBytes": 25,
+      "allowedOffsets": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        21,
+        22,
+        23,
+        24
+      ],
+      "changedOffsets": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        22,
+        23,
+        24
+      ],
+      "changedFrames": 1921,
+      "firstChangedFrame": 0,
+      "lastChangedFrame": 1920,
+      "allOtherControlsEqual": true
+    },
+    "scope": "Post-call sound controls only; not ordered bus timing, analogue state, PCM equality or musical acceptance"
+  },
+  "cacheRepeat": {
+    "wallSeconds": 0.200972333,
+    "allStagesReused": true
+  },
+  "modelAssistanceReview": {
+    "callMade": false,
+    "reason": "Post-revision: exact register and score guards answer implementation questions; models are not calibrated for this subtle musical preference.",
+    "nextCheckpoint": "After listener feedback or before case closure."
+  }
+}

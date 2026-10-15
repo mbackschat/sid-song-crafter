@@ -5,6 +5,7 @@ These tools investigate pinned recordings or prepare fixed demonstrations. They 
 | Study | Tools | Owning findings |
 | --- | --- | --- |
 | Moon River | [Prepare pinned piano score and tempo adaptation](moon-river/prepare-source.py), [listening recipe](../../config/listening/moon-river.json) | [Source provenance and full-score preservation](../../docs/research/composition/moon-river-preparation.md), [editable SID interpretation](../../songs/moon-river/README.md) |
+| Pink Panther BASIC | [Guarded lead-width intervention and snapshot check](pink-panther/probe-width.py), [cached diagnostic recipe](../../config/listening/pink-panther-width-diagnostic.json) | [Source instrument and transfer boundaries](../../songs/pink-panther/README.md); BASIC numeric-text edits require a timing check before claiming an isolated intervention |
 | Audio assessment pilot | [Prepare pinned anonymous comparisons](audio-assessment/prepare-trial.py) | [Commands, calibration and results](../../docs/research/audio-assessment.md) |
 | Basic audio perception | [Prepare elementary controls](audio-assessment/prepare-controls.py), [score verified responses](audio-assessment/evaluate-controls.py), [run the bounded model suite](audio-assessment/run-control-suite.py) | [Commands, calibration and results](../../docs/research/audio-assessment.md) |
 | Audio prompt and sample-rate presentation | [Prepare silence and narrower A/B checks](audio-assessment/prepare-presentation.py) | [Commands, calibration and results](../../docs/research/audio-assessment.md) |

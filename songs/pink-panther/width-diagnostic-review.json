@@ -1,0 +1,46 @@
+{
+  "scope": "Two bounded source pulse-width diagnostics failed snapshot-isolation checks; no causal listening claim.",
+  "retainedRecipe": "config/listening/pink-panther-width-diagnostic.json",
+  "run": "build/pink-panther-width-diagnostic-package/run.json",
+  "retainedDiagnosticWidth": "$C37",
+  "changedSourceBytes": 1,
+  "rejectedInitialWidth": "$800",
+  "reason": "Changing BASIC numeric text preserved all other source bytes but did not preserve initialized renderer timestamps or pitch/gate register snapshots. Numeric interpretation timing is a plausible mechanism; not independently traced.",
+  "tests": "4 synthetic-fixture tests pass",
+  "next": "Use the independent native instrument transfer for musical review; do not offer these source diagnostics as a clean width-only A/B.",
+  "generation": {
+    "schemaVersion": 1,
+    "sourceSha256": "c4c641525b4a71bc28a316b8f10a8000cdc875187981e0ab75cd9f4c97bf6205",
+    "diagnosticSha256": "195bd7aab839979697d99f82ca470cdb5c222e7be89f4fa002a18867d774fb3c",
+    "sourceBytes": 8962,
+    "diagnosticBytes": 8962,
+    "basicLine": 37,
+    "originalPulseWidth": 3895,
+    "diagnosticPulseWidth": 3127,
+    "changedBytes": [
+      {
+        "fileOffset": 601,
+        "c64Address": 2524,
+        "original": 53,
+        "diagnostic": 50
+      }
+    ],
+    "scope": "Only the main melody instrument pulse width changes. Intro/accompaniment instrument, ADSR, waveform, score, BASIC links and header retain their bytes.",
+    "limits": "A source-byte intervention alone does not prove unchanged interpreter timing, SID writes or audible cause; render and compare the initialized register trajectories.",
+    "sourcePath": ".local/research/pink-panther/pink-panther-basic.sid",
+    "diagnosticPath": "build/pink-panther-width-diagnostic-package/run.json: diagnostic deliverable",
+    "generatorSha256": "b5413e660b4a10f3731ccfa82f415fa2c8e3fb34250582284faf4fdc7fbeb9f0"
+  },
+  "inspection": {
+    "schemaVersion": 1,
+    "referenceSha256": "7d5a389dc62c5b043951bef4a3f64630cddb6d722b06399018d992510632fa1a",
+    "diagnosticSha256": "657b822472e57ff589a49c974d65562ed227480a978230b0ba94c885f1985208",
+    "referenceSnapshots": 8536,
+    "diagnosticSnapshots": 8536,
+    "timestampsEqual": false,
+    "snapshotValueCheck": null,
+    "snapshotValueCheckError": "Unexpected register change at frame 305, offset 0",
+    "snapshotIsolationPassed": false,
+    "limits": "Renderer snapshots can miss intervening writes. Failed equality prohibits an isolated width comparison; passed equality still does not establish exact bus timing, waveform state or musical preference."
+  }
+}

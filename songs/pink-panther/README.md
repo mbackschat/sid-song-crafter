@@ -1,12 +1,12 @@
 # The Pink Panther Theme: character-first SID audition
 
-The brief is a light, sly, mischievous jazz interpretation. [Mood research and source intake](../../docs/research/composition/pink-panther-preparation.md) distinguish the original theme's character from D. W. Barnes's MIDI arrangement, which supplies our notes. [Mancini's official recording](https://www.youtube.com/watch?v=dtnNO5_Ao6U) is the artistic reference; the generated plain rendering below checks the selected musical material. Neither establishes musical acceptance of our SID version.
+The brief is a light, sly, mischievous jazz interpretation. [Mood research and source intake](../../docs/research/composition/pink-panther-preparation.md) distinguish the original theme's character from D. W. Barnes's MIDI arrangement, which supplies our notes. [Mancini's official recording](https://www.youtube.com/watch?v=dtnNO5_Ao6U) is the artistic reference; the generated plain rendering below checks the selected musical material. On 2026-10-15 the listener called our audition “quite good”; that acceptance covers the excerpt, not a completed full-form interpretation.
 
 ## Hear the first trial
 
 - [Plain then SID](../../build/pink-panther-theme-listening/plain-then-sid.ab.wav): 40.5 seconds, 20 seconds per version with a half-second gap.
 - [SID passage](../../build/pink-panther-theme-listening/pink-panther-sid.wav) and [matching plain reference](../../build/pink-panther-theme-listening/plain-reference.wav): 38.29 seconds each, including release and verification tail.
-- [Listening status, hashes and measurements](listening-review.json): pending. Judge whether the lead, groove and support convey a sly, light, playful character together.
+- [Listening status, hashes and measurements](listening-review.json): positively reviewed (“The SID version is quite good.”).
 
 This is an excerpt from source beats 107/3 through 100, retaining the main theme's chromatic pickup and four phrases. It contains 34.77 seconds of source music. No selected source note crosses its boundaries, but the bass and accompaniment approach the next section near the end: this is an audition stop, not an authenticated tonic cadence or the source song's ending. The complete 196.76-second source arrangement remains preserved for later work.
 
@@ -46,3 +46,53 @@ The [recipe](../../config/listening/pink-panther-theme.json) prepares, builds, a
 | Remaining judgment | Mood, passage boundaries, omitted voices, palette balance and useful expressive gestures still require musical decisions. A note-safe boundary can still leave a harmonic approach unresolved. Source velocities and full-form contrast need explicit treatment when extending this trial. |
 
 At this audition checkpoint, no model call is justified: the current [audio-model calibrations](../../docs/research/audio-assessment.md) do not validate subtle character or preference judgments on this source. Reassess after listener feedback and before closure. Keep the reference MIDI, imported notes and generated audio local; public files retain source fingerprints, configuration and reproducible commands.
+
+## Learn from the selected BASIC interpretation
+
+The listener selected Stan Kicak’s **Pink_Panther_BASIC.sid** and praised its main instrument as matching the intention. The earlier non-BASIC filename is superseded as the comparison target. Listen to the [BASIC then ours comparison](../../build/pink-panther-basic-listening/basic-then-ours.ab.wav), 40.5 seconds: BASIC main-theme passage first, our existing audition second. Whole-mix AC RMS is matched by attenuating BASIC by 5.6043 dB; ours stays at unity. These are different arrangements, registers and timings, not an isolated timbre test. Original-level files: [external BASIC interpretation](../../build/pink-panther-basic-listening/external-pink-panther.wav), 103 seconds including startup and natural stop, and [our unchanged excerpt](../../build/pink-panther-basic-listening/our-pink-panther.wav).
+
+The [reference receipt](basic-reference.json) pins the source, ROMs, renderer, audio and trims. The [instrument evidence](basic-instrument-evidence.json) records BASIC line locations and initialized register observations without redistributing the source program or score. Source NTSC is declared; MOS6581 is explicitly assumed because the header leaves the chip model unspecified. Our audition is PAL MOS8580. Do not attribute the whole perceptual difference to the patch alone.
+
+| Verified property | BASIC reference | Our existing audition |
+| --- | --- | --- |
+| Lead waveform | Fixed pulse `$41`, width `$F37` (3895/4096 threshold, about 4.9% narrow complement) | Saw `$21` |
+| Main melody envelope | AD `$09`, SR `$22`; intro and supporting voices use `$0A/$29` | AD `$26`, SR `$74` |
+| Continuing effects | No PWM, vibrato, sync, ring modulation or filter | Low-pass contour and delayed vibrato |
+| Articulation | Score explicitly distinguishes reattack from connected retuning; zero-frequency rests retain gate | Native tempo-1 note/gate policy: hard restart bypassed; adjacent notes without gate-off also stay connected |
+
+The reference demonstrates a liked sound with few moving parameters. A narrow-pulse spectrum, lower sustain and selective rearticulation are plausible contributors, but the user’s approval of the whole instrument does not establish which parameter caused it. The BASIC interpreter also separates high- and low-frequency writes enough to expose intermediate words in snapshots; this is an implementation observation, not a proven desirable effect to copy.
+
+**Evidence priority:** the established master-composer studies remain the primary repertoire and arrangement foundation. This BASIC song is a supporting, song-specific contrast. Cross-reference [Airwolf’s accepted static pulse transfer](../../docs/research/composition/instruments/airwolf-static-tones.md) and [Ghostbusters’s score-owned articulation](../../docs/research/composition/instruments/ghostbusters-decoded-programs.md); neither implies that their patches or this BASIC patch fit every song. Add another master reference only to answer a concrete unresolved musical or technical question. Do not replace the master studies with a collection of convenient BASIC presets.
+
+Recreate the external comparison after preparing the original audition above. The commands reuse the existing downloader, ROM-backed renderer, cached recipe runner, PCM comparison and publisher; no new song-specific execution script is needed:
+
+```sh
+python3 scripts/setup-project.py --only references --include pink-panther-basic
+python3 scripts/listening-package.py config/listening/pink-panther-basic.json --output build/pink-panther-basic-reference
+python3 scripts/publish-listening.py build/pink-panther-basic-reference/run.json --selection config/listening/pink-panther-basic-audition.json --output build/pink-panther-basic-listening
+```
+
+Publication requires a fresh destination. The raw capture is 150 seconds; the full listening copy retains frames `[0,4542300)` at 44100 Hz without gain or fade, and its final second has zero AC energy. The comparison selects raw BASIC seconds 17.45–37.45, just before the main melody pickup, and our seconds 0–20. Native reference-intake currently requires a declared chip model and lacks ROM arguments, so this case deliberately uses its supported lower-level recipe runner rather than weakening that admission contract. This is a recorded automation gap, not a reason to create a parallel intake framework.
+
+## Independent lead transfer: listening pending
+
+Listen to [baseline then pulse](../../build/pink-panther-pulse-transfer-listening/baseline-then-pulse.ab.wav), 40.5 seconds: 20 seconds of our liked audition, half a second of silence, then the identical score/backing with the static pulse lead. Both halves retain unity gain so the changed lead’s actual balance remains audible. Separate full excerpts: [baseline](../../build/pink-panther-pulse-transfer-listening/accepted-sid-baseline.wav) and [pulse transfer](../../build/pink-panther-pulse-transfer-listening/basic-inspired-pulse-transfer.wav). This is a whole-lead-patch substitution, not an isolated pulse-width test.
+
+The editable [transfer palette](basic-inspired.json) uses exact width `$F37`, waveform `$41`, ADSR `$0922`, no vibrato and no filter. It retains our source score, arrangement, bass, harmony and native gate/TEST scheduling; BASIC legato and interpreter timing are not reconstructed. The target remains PAL MOS8580. Approval of the external instrument does not automatically approve this transfer.
+
+The [transfer receipt](pulse-transfer-review.json) records unchanged score/native scheduling, identical bass/harmony registers over all 1,921 snapshots, exact pulse/ADSR over 1,850 active pulse frames, CPU checks and VICE beyond the stop. Rebuilt baseline PCM is byte-identical to the accepted audition. No clipping occurs, and the final half-second is silent. These checks establish the substitution, leaving musical fit to listening.
+
+```sh
+python3 scripts/listening-package.py config/listening/pink-panther-pulse-transfer.json --output build/pink-panther-pulse-transfer
+python3 scripts/publish-listening.py build/pink-panther-pulse-transfer/run.json --selection config/listening/pink-panther-pulse-transfer.audition.json --output build/pink-panther-pulse-transfer-listening
+```
+
+The transfer uses the existing native builder, register comparator, VICE verification and cached workflow. Only an editable palette and recipe are new; the unchanged repeat took 0.201 seconds with all eight stages reused. This is routine execution reuse, not a measurement of total musical decision time. The model-assistance review again found no calibrated model useful for this subtle preference; reassess after feedback or before closure.
+
+## BASIC intervention limit
+
+A source-copy diagnostic changed only the main melody patch’s width, leaving score bytes, envelope, other instruments and BASIC links intact. Both a four-byte `$F37`→`$800` edit and a one-byte `$F37`→`$C37` edit shifted observed frequency/gate timing. Therefore neither is presented as a clean pulse-width listening experiment. The changed numeric DATA text is a plausible interpreter-timing mechanism, not independently traced. Byte-local changes do not guarantee timing-local changes; snapshot evidence detects the confound but does not establish its exact cause, cycle cost or audibility.
+
+The independent native transfer above is the useful musical test: it preserves a verified common note schedule, with its deliberate whole-patch changes disclosed. It does not establish that width alone explains the source preference. Stop the source-intervention branch here rather than adding ad hoc timing corrections to make the diagnostic appear isolated.
+
+The [diagnostic receipt](width-diagnostic-review.json) retains source-byte and register evidence; the [guarded study tool](../../scripts/studies/pink-panther/probe-width.py) and [cached recipe](../../config/listening/pink-panther-width-diagnostic.json) reproduce the failed isolation check without publishing the source binary. Run `python3 scripts/listening-package.py config/listening/pink-panther-width-diagnostic.json --output build/pink-panther-width-diagnostic-package`. A completed recipe means the inspection ran; its `snapshotIsolationPassed: false` explicitly rejects the experimental premise. Four synthetic-fixture tests cover source pinning, BASIC link preservation, exact one-byte scope and rejection of timing-confounded snapshots.

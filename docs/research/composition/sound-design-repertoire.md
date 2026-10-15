@@ -2,6 +2,8 @@
 
 Research date: 2026-10-12. The aim is a library of expressive, editable instruments and arrangement techniques that make the next song easier and better. A list of hexadecimal presets is insufficient: each sound needs a musical use, a performance program, target assumptions, and evidence. Start with [the composer studies](../composers/README.md), [advanced techniques](../sid/advanced-techniques.md), and [the tool assessment](../tools/composition-tools.md).
 
+The master-composer studies are the primary knowledge base and strongest influence on arrangement and sound selection. Supplemental popular-song interpretations can expose a useful contrast, but retain their narrower scope and do not outrank the masters by convenience. Use each source’s measured mechanisms and listening verdict, not reputation alone, to decide whether a technique fits the current role.
+
 ## Evidence levels
 
 | Label | Meaning |
@@ -34,6 +36,8 @@ Use the [musical gesture library](gestures/README.md) for groove, chord response
 | [Ghostbusters static patches and shared-phase vibrato](instruments/ghostbusters-decoded-programs.md) | Fixed pulse/saw/noise patches, one-sided shared-phase vibrato and native score-owned release; execution verified; familiar transfer accepted for instruments, balance and ending. |
 
 ## Reference material worth learning from
+
+The [Pink Panther BASIC contrast](../../../songs/pink-panther/README.md#learn-from-the-selected-basic-interpretation) is supporting evidence for static narrow pulse and selective articulation. The listener likes that source’s lead; independent transfer acceptance is separate. Its lack of PWM/filter/vibrato illustrates why “more effects” is not a sufficient selection rule.
 
 The [organ-weight/forward-motion gesture](gestures/driven-organ-phrasing.md) records an original Bach application of moving pulse, filtered pedal foundation and selective chord cycling. The faster opening is accepted; its timing maps and native palette are editable. It also preserves the rejected slow pacing, so future reuse starts with the musical limitation as well as the patch settings.
 

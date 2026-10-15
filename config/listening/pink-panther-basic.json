@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/pink-panther/pink-panther-basic.sid",
+        "{out}/raw.wav",
+        "150",
+        "--clock",
+        "ntsc",
+        "--subtune",
+        "1",
+        "--assume-sid-model",
+        "MOS6581",
+        "--rom-dir",
+        ".tools/vice-headless-3.9/source/data/C64"
+      ],
+      "inputs": [
+        ".local/research/pink-panther/pink-panther-basic.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".tools/vice-headless-3.9/source/data/C64/kernal-901227-03.bin",
+        ".tools/vice-headless-3.9/source/data/C64/basic-901226-01.bin",
+        ".tools/vice-headless-3.9/source/data/C64/chargen-901225-01.bin"
+      ],
+      "outputs": [
+        "raw.wav",
+        "raw.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 90
+    },
+    {
+      "id": "listening",
+      "command": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "{stage:render}/raw.wav",
+        "-af",
+        "atrim=start_sample=0:end_sample=4542300,asetpts=PTS-STARTPTS",
+        "-c:a",
+        "pcm_s16le",
+        "{out}/external-pink-panther.wav"
+      ],
+      "inputs": [
+        "{stage:render}/raw.wav"
+      ],
+      "outputs": [
+        "external-pink-panther.wav"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "theme",
+      "command": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "{stage:render}/raw.wav",
+        "-af",
+        "atrim=start_sample=769545:end_sample=1651545,asetpts=PTS-STARTPTS",
+        "-c:a",
+        "pcm_s16le",
+        "{out}/basic-theme.wav"
+      ],
+      "inputs": [
+        "{stage:render}/raw.wav"
+      ],
+      "outputs": [
+        "basic-theme.wav"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "prepare",
+        "{stage:theme}/basic-theme.wav",
+        "build/pink-panther-theme-listening/sid-opening.wav",
+        "{out}/basic-then-ours",
+        "--individual-copies"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:theme}/basic-theme.wav",
+        "build/pink-panther-theme-listening/sid-opening.wav"
+      ],
+      "outputs": [
+        "basic-then-ours.ab.wav",
+        "basic-then-ours.comparison.json",
+        "basic-then-ours.a.matched.wav",
+        "basic-then-ours.b.matched.wav"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "baseline",
+      "command": [
+        "cp",
+        "build/pink-panther-theme-listening/pink-panther-sid.wav",
+        "{out}/ours.wav"
+      ],
+      "inputs": [
+        "build/pink-panther-theme-listening/pink-panther-sid.wav"
+      ],
+      "outputs": [
+        "ours.wav"
+      ],
+      "timeoutSeconds": 10
+    }
+  ],
+  "deliverables": {
+    "raw": "{stage:render}/raw.wav",
+    "reference": "{stage:listening}/external-pink-panther.wav",
+    "comparison": "{stage:comparison}/basic-then-ours.ab.wav",
+    "basic-theme": "{stage:theme}/basic-theme.wav",
+    "ours": "{stage:baseline}/ours.wav"
+  }
+}

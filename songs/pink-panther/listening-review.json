@@ -1,6 +1,6 @@
 {
   "date": "2026-10-15",
-  "status": "first audition; listening pending",
+  "status": "first audition positively reviewed; external lead comparison in progress",
   "scope": "Source beats107/3 to100, shifted to zero. Finite excerpt, not full song or authenticated tonic ending; source bass/harmony approach next section at the boundary.",
   "candidate": {
     "palette": "songs/pink-panther/native.json",
@@ -60,7 +60,21 @@
   },
   "modelAssistanceReview": {
     "callMade": false,
-    "reason": "Current calibrated model tasks do not establish subtle musical character or preference for this new source. Source-note guards and human audition answer current questions.",
-    "nextCheckpoint": "After listener feedback or revision, and before case closure."
-  }
+    "reason": "After feedback: exact source program inspection explains waveform and gate differences; current model calibrations do not establish preference or the causal contribution to this listener verdict.",
+    "nextCheckpoint": "After a sound revision or before case closure."
+  },
+  "listenerFeedback": [
+    {
+      "date": "2026-10-15",
+      "target": "candidate",
+      "verbatim": "The SID version is quite good.",
+      "scope": "Existing 38.29-second audition, not full-form interpretation."
+    },
+    {
+      "date": "2026-10-15",
+      "target": "Pink_Panther_BASIC.sid",
+      "verbatim": "Pink_Panther_BASIC.sid has great instrument choice (the main one), it matches the intention quite good.",
+      "scope": "External Stan Kicak BASIC interpretation; listener approves lead choice in that context, not an isolated parameter or transfer to ours."
+    }
+  ]
 }

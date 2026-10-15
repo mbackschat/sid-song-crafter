@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "generate",
+      "command": [
+        "{python}",
+        "scripts/studies/pink-panther/probe-width.py",
+        "prepare",
+        ".local/research/pink-panther/pink-panther-basic.sid",
+        "--output",
+        "{out}/diagnostic"
+      ],
+      "inputs": [
+        "scripts/studies/pink-panther/probe-width.py",
+        "scripts/native_frame_comparison.py",
+        ".local/research/pink-panther/pink-panther-basic.sid"
+      ],
+      "outputs": [
+        "diagnostic/lead-wide-diagnostic.sid",
+        "diagnostic/diagnostic.json"
+      ],
+      "timeoutSeconds": 15
+    },
+    {
+      "id": "original",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/pink-panther/pink-panther-basic.sid",
+        "{out}/raw.wav",
+        "150",
+        "--clock",
+        "ntsc",
+        "--subtune",
+        "1",
+        "--assume-sid-model",
+        "MOS6581",
+        "--rom-dir",
+        ".tools/vice-headless-3.9/source/data/C64"
+      ],
+      "inputs": [
+        ".local/research/pink-panther/pink-panther-basic.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".tools/vice-headless-3.9/source/data/C64/kernal-901227-03.bin",
+        ".tools/vice-headless-3.9/source/data/C64/basic-901226-01.bin",
+        ".tools/vice-headless-3.9/source/data/C64/chargen-901225-01.bin"
+      ],
+      "outputs": [
+        "raw.wav",
+        "raw.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 90
+    },
+    {
+      "id": "diagnostic",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:generate}/diagnostic/lead-wide-diagnostic.sid",
+        "{out}/raw.wav",
+        "150",
+        "--clock",
+        "ntsc",
+        "--subtune",
+        "1",
+        "--assume-sid-model",
+        "MOS6581",
+        "--rom-dir",
+        ".tools/vice-headless-3.9/source/data/C64"
+      ],
+      "inputs": [
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".tools/vice-headless-3.9/source/data/C64/kernal-901227-03.bin",
+        ".tools/vice-headless-3.9/source/data/C64/basic-901226-01.bin",
+        ".tools/vice-headless-3.9/source/data/C64/chargen-901225-01.bin",
+        "{stage:generate}/diagnostic/lead-wide-diagnostic.sid",
+        "{stage:generate}/diagnostic/diagnostic.json"
+      ],
+      "outputs": [
+        "raw.wav",
+        "raw.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 90
+    },
+    {
+      "id": "inspection",
+      "command": [
+        "{python}",
+        "scripts/studies/pink-panther/probe-width.py",
+        "inspect",
+        "{stage:original}/raw.wav.registers.tsv",
+        "{stage:diagnostic}/raw.wav.registers.tsv",
+        "--output",
+        "{out}/inspection.json"
+      ],
+      "inputs": [
+        "scripts/studies/pink-panther/probe-width.py",
+        "scripts/native_frame_comparison.py",
+        "{stage:original}/raw.wav.registers.tsv",
+        "{stage:diagnostic}/raw.wav.registers.tsv"
+      ],
+      "outputs": [
+        "inspection.json"
+      ],
+      "timeoutSeconds": 15
+    }
+  ],
+  "deliverables": {
+    "generation": "{stage:generate}/diagnostic/diagnostic.json",
+    "reference": "{stage:original}/raw.wav",
+    "diagnostic": "{stage:diagnostic}/raw.wav",
+    "inspection": "{stage:inspection}/inspection.json"
+  }
+}

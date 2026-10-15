@@ -1,6 +1,6 @@
 # The Pink Panther Theme: source preparation
 
-The first [SID audition and reuse assessment](../../../songs/pink-panther/README.md) are ready after mood research. Its source preparation, reduction and technical playback pass; listening acceptance remains pending. Follow the [source-to-SID workflow](../../workflows/song-workflow.md), keeping the complete source separate from later reductions and musical changes.
+The first [SID audition and reuse assessment](../../../songs/pink-panther/README.md) are ready after mood research. Its source preparation, reduction and technical playback pass; the listener calls the first audition “quite good”. Follow the [source-to-SID workflow](../../workflows/song-workflow.md), keeping the complete source separate from later reductions and musical changes.
 
 ## Source and scope
 
@@ -31,7 +31,7 @@ PYTHONPATH=.tools/arrangement-deps python3 scripts/import-midi.py .local/researc
 
 The 2026-10-15 smoke import preserves all 2,113 source notes across the six sounding tracks, with matched positive-duration note pairs and no added trailing rest. The importer checks the source hash and requires every sounding track to remain represented. Its generated loss report retains 25 unmapped controller messages (volume, pan, reverb and chorus), six GM program changes and one instrument-name message. Channel identities and note-off velocities are not represented in common-score v1; the original MIDI retains them. There are no source pitch-bend or sustain-controller messages. Engraved spelling, slurs, articulation marks and repeat notation cannot be recovered from this MIDI alone.
 
-The imported score proves source preservation within that contract. The [audition](../../../songs/pink-panther/README.md) now applies an explicit three-voice reduction and native palette. Musical acceptance and full-form interpretation remain open.
+The imported score proves source preservation within that contract. The [audition](../../../songs/pink-panther/README.md) now applies an explicit three-voice reduction and native palette. The first excerpt is positively reviewed; full-form interpretation remains open.
 
 ## Mood and interpretation brief
 
@@ -47,7 +47,7 @@ Use [Henry Mancini, “The Pink Panther Theme (From The Pink Panther)” — off
 
 ## Translate the character into a SID trial
 
-The following are testable design hypotheses, not listening-approved Pink Panther patches. They follow the [technique lookup](../technique-index.md), [sound repertoire](sound-design-repertoire.md) and owning cards' constraints. Preserve the source pitches, rhythmic irregularities, rests and form before judging the sounds.
+The following began as design hypotheses; the resulting first excerpt was subsequently called “quite good”, without isolating individual patch choices. They follow the [technique lookup](../technique-index.md), [sound repertoire](sound-design-repertoire.md) and owning cards' constraints. Preserve the source pitches, rhythmic irregularities, rests and form before judging the sounds.
 
 | Musical purpose | SID hypothesis to audition | Constraint and acceptance question |
 | --- | --- | --- |
@@ -58,3 +58,7 @@ The following are testable design hypotheses, not listening-approved Pink Panthe
 | Sophistication through contrast | Make selected arrivals and returns more emphatic through envelope, register or filter colour, while letting quieter motifs recede. | Shared filter and master volume affect the mix; [two-chip roles](../sid/dual-sid.md) can separate control domains only if the arrangement needs them. Contrast is an authored interpretation choice unless already represented in the source. Does the full phrase retain suspense and shape instead of one constant level of brightness? |
 
 The first listening decision is whether the lead, groove and accompaniment convey the intended character together. Compare the same representative source phrase with the official reference available; report musical fit separately from score-preservation, register and PCM checks. Do not promote prior acceptance of a patch on another song as evidence that this trial succeeds.
+
+## Supporting historical contrast
+
+The listener praised the main instrument in Stan Kicak’s BASIC interpretation. The [source inspection, matched-level comparison and reuse boundaries](../../../songs/pink-panther/README.md#learn-from-the-selected-basic-interpretation) connect that verdict to fixed narrow pulse and explicit score articulation. Established master-composer studies remain the primary knowledge base; this is supplementary, song-specific evidence, not a replacement hierarchy.
