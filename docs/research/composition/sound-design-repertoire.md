@@ -37,7 +37,7 @@ Use the [musical gesture library](gestures/README.md) for groove, chord response
 
 ## Reference material worth learning from
 
-The [Pink Panther BASIC contrast](../../../songs/pink-panther/README.md#learn-from-the-selected-basic-interpretation) is supporting evidence for static narrow pulse and selective articulation. The listener likes that source’s lead; independent transfer acceptance is separate. Its lack of PWM/filter/vibrato illustrates why “more effects” is not a sufficient selection rule.
+The [Pink Panther BASIC contrast](../../../songs/pink-panther/README.md#learn-from-the-selected-basic-interpretation) is supporting evidence for static narrow pulse and selective articulation. The listener likes that source’s lead but finds the static-patch transfer much less vibrant. [Voice-isolation evidence](../../../songs/pink-panther/README.md#locate-the-missing-vibrato-like-character) investigates the missing motion; do not promote the patch bytes alone as the complete instrument. Its lack of PWM/filter/vibrato illustrates why “more effects” is not a sufficient selection rule.
 
 The [organ-weight/forward-motion gesture](gestures/driven-organ-phrasing.md) records an original Bach application of moving pulse, filtered pedal foundation and selective chord cycling. The faster opening is accepted; its timing maps and native palette are editable. It also preserves the rejected slow pacing, so future reuse starts with the musical limitation as well as the patch settings.
 

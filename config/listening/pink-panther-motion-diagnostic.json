@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "full",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/pink-panther/pink-panther-basic.sid",
+        "{out}/raw.wav",
+        "35",
+        "--clock",
+        "ntsc",
+        "--subtune",
+        "1",
+        "--assume-sid-model",
+        "MOS6581",
+        "--rom-dir",
+        ".tools/vice-headless-3.9/source/data/C64"
+      ],
+      "inputs": [
+        ".local/research/pink-panther/pink-panther-basic.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".tools/vice-headless-3.9/source/data/C64/kernal-901227-03.bin",
+        ".tools/vice-headless-3.9/source/data/C64/basic-901226-01.bin",
+        ".tools/vice-headless-3.9/source/data/C64/chargen-901225-01.bin"
+      ],
+      "outputs": [
+        "raw.wav",
+        "raw.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 90
+    },
+    {
+      "id": "full-theme",
+      "command": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "{stage:full}/raw.wav",
+        "-af",
+        "atrim=start_sample=769545:end_sample=1386945,asetpts=PTS-STARTPTS",
+        "-c:a",
+        "pcm_s16le",
+        "{out}/full-theme.wav"
+      ],
+      "inputs": [
+        "{stage:full}/raw.wav"
+      ],
+      "outputs": [
+        "full-theme.wav"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "lead",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/pink-panther/pink-panther-basic.sid",
+        "{out}/raw.wav",
+        "35",
+        "--clock",
+        "ntsc",
+        "--subtune",
+        "1",
+        "--assume-sid-model",
+        "MOS6581",
+        "--rom-dir",
+        ".tools/vice-headless-3.9/source/data/C64",
+        "--voices",
+        "1"
+      ],
+      "inputs": [
+        ".local/research/pink-panther/pink-panther-basic.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".tools/vice-headless-3.9/source/data/C64/kernal-901227-03.bin",
+        ".tools/vice-headless-3.9/source/data/C64/basic-901226-01.bin",
+        ".tools/vice-headless-3.9/source/data/C64/chargen-901225-01.bin"
+      ],
+      "outputs": [
+        "raw.wav",
+        "raw.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 90
+    },
+    {
+      "id": "lead-theme",
+      "command": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "{stage:lead}/raw.wav",
+        "-af",
+        "atrim=start_sample=769545:end_sample=1386945,asetpts=PTS-STARTPTS",
+        "-c:a",
+        "pcm_s16le",
+        "{out}/lead-theme.wav"
+      ],
+      "inputs": [
+        "{stage:lead}/raw.wav"
+      ],
+      "outputs": [
+        "lead-theme.wav"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "backing",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        ".local/research/pink-panther/pink-panther-basic.sid",
+        "{out}/raw.wav",
+        "35",
+        "--clock",
+        "ntsc",
+        "--subtune",
+        "1",
+        "--assume-sid-model",
+        "MOS6581",
+        "--rom-dir",
+        ".tools/vice-headless-3.9/source/data/C64",
+        "--voices",
+        "2,3"
+      ],
+      "inputs": [
+        ".local/research/pink-panther/pink-panther-basic.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".tools/vice-headless-3.9/source/data/C64/kernal-901227-03.bin",
+        ".tools/vice-headless-3.9/source/data/C64/basic-901226-01.bin",
+        ".tools/vice-headless-3.9/source/data/C64/chargen-901225-01.bin"
+      ],
+      "outputs": [
+        "raw.wav",
+        "raw.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 90
+    },
+    {
+      "id": "backing-theme",
+      "command": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "{stage:backing}/raw.wav",
+        "-af",
+        "atrim=start_sample=769545:end_sample=1386945,asetpts=PTS-STARTPTS",
+        "-c:a",
+        "pcm_s16le",
+        "{out}/backing-theme.wav"
+      ],
+      "inputs": [
+        "{stage:backing}/raw.wav"
+      ],
+      "outputs": [
+        "backing-theme.wav"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "audio",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:full}/raw.wav",
+        "{stage:lead}/raw.wav",
+        "--seconds",
+        "35",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py",
+        "{stage:full}/raw.wav",
+        "{stage:lead}/raw.wav"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "sequence",
+        "{stage:full-theme}/full-theme.wav",
+        "{stage:lead-theme}/lead-theme.wav",
+        "{out}/full-then-lead"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:full-theme}/full-theme.wav",
+        "{stage:lead-theme}/lead-theme.wav"
+      ],
+      "outputs": [
+        "full-then-lead.ab.wav",
+        "full-then-lead.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "full-intro",
+      "command": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "{stage:full}/raw.wav",
+        "-af",
+        "atrim=start_sample=88200:end_sample=441000,asetpts=PTS-STARTPTS",
+        "-c:a",
+        "pcm_s16le",
+        "{out}/full-intro.wav"
+      ],
+      "inputs": [
+        "{stage:full}/raw.wav"
+      ],
+      "outputs": [
+        "full-intro.wav"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "lead-intro",
+      "command": [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        "{stage:lead}/raw.wav",
+        "-af",
+        "atrim=start_sample=88200:end_sample=441000,asetpts=PTS-STARTPTS",
+        "-c:a",
+        "pcm_s16le",
+        "{out}/lead-intro.wav"
+      ],
+      "inputs": [
+        "{stage:lead}/raw.wav"
+      ],
+      "outputs": [
+        "lead-intro.wav"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "intro-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "sequence",
+        "{stage:full-intro}/full-intro.wav",
+        "{stage:lead-intro}/lead-intro.wav",
+        "{out}/intro-full-then-lead"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:full-intro}/full-intro.wav",
+        "{stage:lead-intro}/lead-intro.wav"
+      ],
+      "outputs": [
+        "intro-full-then-lead.ab.wav",
+        "intro-full-then-lead.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    }
+  ],
+  "deliverables": {
+    "full": "{stage:full-theme}/full-theme.wav",
+    "lead": "{stage:lead-theme}/lead-theme.wav",
+    "backing": "{stage:backing-theme}/backing-theme.wav",
+    "comparison": "{stage:comparison}/full-then-lead.ab.wav",
+    "intro-full": "{stage:full-intro}/full-intro.wav",
+    "intro-lead": "{stage:lead-intro}/lead-intro.wav",
+    "intro-comparison": "{stage:intro-comparison}/intro-full-then-lead.ab.wav"
+  }
+}

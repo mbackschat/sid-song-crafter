@@ -1,0 +1,165 @@
+{
+  "date": "2026-10-15",
+  "question": "Is the listener-described vibration necessarily a programmed lead vibrato, and did a static lead patch substitution capture the reference sound?",
+  "scope": "Bounded original-source full/lead/backing diagnostics from initialization through35s; no source edits, patch intervention or perceptual verdict.",
+  "settings": {
+    "clock": "NTSC declared",
+    "sidModel": "MOS6581 explicitly assumed; source header unknown",
+    "subtune": 1,
+    "sampleRate": 44100,
+    "ROMs": "same pinned C64 ROM files as songs/pink-panther/basic-reference.json",
+    "voiceMask": "libsidplayfp control-mask diagnostic, not output-only muting"
+  },
+  "run": {
+    "path": "build/pink-panther-motion-diagnostic/run.json",
+    "sha256": "75a68f7f16abddd89ddcc363b79f83eb7c7c4d2298d23005401b24a9a30edab3"
+  },
+  "source": {
+    "path": ".local/research/pink-panther/pink-panther-basic.sid",
+    "sha256": "c4c641525b4a71bc28a316b8f10a8000cdc875187981e0ab75cd9f4c97bf6205"
+  },
+  "fullSourcePrefixMatchesExistingListeningPCM": true,
+  "registerSnapshotsIdenticalAcrossDiagnostics": true,
+  "independenceBasis": "Decoded source uses pulse only without ring/sync, filter routing, SID reads, or volume digi during this passage; source snapshots are not internal mute state or exact bus timestamps.",
+  "method": {
+    "implementation": "NumPy 2.4.6 and scipy.signal using existing .tools/songbench-venv; no model inference",
+    "filter": "Fourth-order Butterworth plus/minus12Hz around expected lead frequency, zero-phase sosfiltfilt on complete35s PCM; analytic Hilbert phase/envelope then selected settled body windows",
+    "pitchEstimate": "Least-squares analytic phase slope;100ms independent subwindow slopes reported without FFT-bin quantization",
+    "amplitudeCV": "Standard deviation/mean of analytic narrowband amplitude; this measures local band motion, not perceived vibrato or loudness. Main backing estimates near absent lead harmonics are intentionally omitted."
+  },
+  "steadyBodyMeasurements": [
+    {
+      "section": "intro",
+      "sourceStartSeconds": 4.0,
+      "sourceEndSeconds": 4.6,
+      "leadFrequencyWord": 4050,
+      "measurements": {
+        "full": {
+          "fittedHz": 247.52073396279104,
+          "subwindowMinHz": 246.91274092135492,
+          "subwindowMaxHz": 247.95328037451475,
+          "narrowbandAmplitudeCV": 0.63693690026341
+        },
+        "lead": {
+          "fittedHz": 246.8468825984295,
+          "subwindowMinHz": 246.8468409235693,
+          "subwindowMaxHz": 246.8470115342831,
+          "narrowbandAmplitudeCV": 0.00011619099846352595
+        }
+      }
+    },
+    {
+      "section": "main",
+      "sourceStartSeconds": 22.1,
+      "sourceEndSeconds": 22.7,
+      "leadFrequencyWord": 3823,
+      "measurements": {
+        "full": {
+          "fittedHz": 233.01776715790453,
+          "subwindowMinHz": 232.9367519954699,
+          "subwindowMaxHz": 233.2354931754597,
+          "narrowbandAmplitudeCV": 0.011037726746489713
+        },
+        "lead": {
+          "fittedHz": 233.01156922644452,
+          "subwindowMinHz": 233.01124422437883,
+          "subwindowMaxHz": 233.0202671009857,
+          "narrowbandAmplitudeCV": 0.004250218690231134
+        }
+      }
+    },
+    {
+      "section": "main",
+      "sourceStartSeconds": 24.2,
+      "sourceEndSeconds": 24.65,
+      "leadFrequencyWord": 2703,
+      "measurements": {
+        "full": {
+          "fittedHz": 164.7473858463969,
+          "subwindowMinHz": 164.746346485772,
+          "subwindowMaxHz": 164.74712009296013,
+          "narrowbandAmplitudeCV": 0.0008977559904741241
+        },
+        "lead": {
+          "fittedHz": 164.74746597081327,
+          "subwindowMinHz": 164.74739346181522,
+          "subwindowMaxHz": 164.74789376411422,
+          "narrowbandAmplitudeCV": 0.0003159717169752069
+        }
+      }
+    }
+  ],
+  "structuralFindings": [
+    "Complete decoded BASIC source has no continuing pitch, pulse-width, waveform or filter modulation loop; wait loop only checks TI. Negative high-byte fields selectively reattack, positive fields retune under a high gate.",
+    "BASIC writes frequency high then low with snapshot-visible intermediate pitches at transitions; no causal audibility or exact duration claim follows from these snapshots.",
+    "Intro0.65-15s combines all three identical bright narrow-pulse patches and repeatedly changes bass beneath held upper voices; a lead-only patch substitution does not preserve this texture.",
+    "Main-theme selected17.45-31.45s opens D#3/E3 in both BASIC source and our native score; there is no octave disparity in these compared opening pickups. Later BASIC repetition moves up an octave, outside this diagnostic.",
+    "Our transfer retains a different source arrangement, triangle support, and native gate/TEST scheduling. Exact ADSR/waveform/width fields do not establish equivalent articulation, motion or ensemble balance."
+  ],
+  "conclusion": {
+    "highConfidence": "The sampled settled solo lead bodies have effectively stationary pitch; explicit periodic vibrato is absent from decoded source. The intro full mix contains measurable narrowband amplitude/phase movement while the corresponding solo body is stationary.",
+    "causalInference": "Near-coincident harmonics of bright pulse voices, changing accompaniment/envelopes, and selective rearticulation can contribute to perceived animation. Their relative perceptual contribution remains unsettled.",
+    "notEstablished": "The user's perceived vibration has not been localized by listening, nor has ensemble beating been proven to be its sole cause. No fresh candidate patch or claimed musical acceptance."
+  },
+  "audition": {
+    "comparison": {
+      "path": "build/pink-panther-motion-listening/full-then-lead-diagnostic.ab.wav",
+      "sha256": "e6f186583b9fcd37100edaef9f682a46fe6063e74393834f741d5d9d8266f9f0"
+    },
+    "order": [
+      "Original full mix raw17.45-31.45s at unity gain",
+      "0.5s silence",
+      "Original lead-only control-mask diagnostic for identical raw17.45-31.45s at unity gain"
+    ],
+    "seconds": 28.5,
+    "listeningQuestion": "Does the vibration you mean remain in the second, isolated-lead half, or mostly disappear with the other two voices?"
+  },
+  "introNearHarmonicPredictions": {
+    "observedHeldWords": [
+      4050,
+      2703,
+      1351
+    ],
+    "scope": "Three coincident pitch words in intro; not a score transcription. Rates below derive from source-word differences scaled by measured solo pitch.",
+    "pairDifferencesHz": {
+      "leadFundamental_vs_bassThirdHarmonic": 0.18284954266550332,
+      "leadSecond_vs_middleThirdHarmonic": 0.5485486279965099,
+      "leadTenth_vs_middleFifteenthHarmonic": 2.74274313998255
+    },
+    "limit": "Predicted harmonic beating rates do not alone establish perceptual vibration or its cause."
+  },
+  "publishedReferenceSlice": {
+    "sourcePath": "build/pink-panther-basic-listening/external-pink-panther.wav",
+    "sourceSha256": "502e3a993892175e540b0b505fedcb89831c4eb33fe13f9b2baa60156792bb5b",
+    "startFrame": 769545,
+    "endFrameExclusive": 1386945,
+    "sampleRate": 44100,
+    "gain": 1,
+    "fade": null,
+    "pcmSliceVerified": true,
+    "abSegmentsVerified": true,
+    "gapFrames": 22050
+  },
+  "reproduce": [
+    "python3 scripts/listening-package.py config/listening/pink-panther-motion-diagnostic.json --output build/pink-panther-motion-diagnostic-reproduction",
+    "python3 scripts/publish-listening.py build/pink-panther-motion-diagnostic-reproduction/run.json --selection config/listening/pink-panther-motion-diagnostic.audition.json --output build/pink-panther-motion-listening-reproduction",
+    "python3 scripts/publish-listening.py build/pink-panther-motion-diagnostic-reproduction/run.json --selection config/listening/pink-panther-intro-motion.audition.json --output build/pink-panther-intro-motion-reproduction-listening"
+  ],
+  "introAudition": {
+    "path": "build/pink-panther-intro-motion-listening/intro-full-then-lead.ab.wav",
+    "sha256": "ffb134411a8a24b275c5dfcccf7bca07095ae223ef79bf37b93a67e6e9579f27",
+    "seconds": 16.5,
+    "sourceWindowSeconds": [
+      2,
+      10
+    ],
+    "order": [
+      "external full intro",
+      "0.5 second silence",
+      "same original lead alone"
+    ],
+    "gain": 1,
+    "pcmSliceAndAbVerified": true,
+    "purpose": "Includes the intro held-note body with measured ensemble motion; main theme diagnostic remains separately available."
+  }
+}
