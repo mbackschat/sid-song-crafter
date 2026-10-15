@@ -1,0 +1,23 @@
+# Rambo held-chord expansion evidence
+
+The [arrangement](../../songs/studies/rambo-chord-expansion/README.md) develops the source's one-oscillator chord serialization by sustaining three source chord tones on SID B alongside the faithful trio on SID A. Only B3's calendar changes relative to the previous six-voice ensemble. The [phrase is accepted](../../songs/studies/rambo-chord-expansion/listening-review.json) for useful added fullness with a clear melody; full-song review remains pending. Music-derived scores, note ledgers and traces retain Martin Galway's [GPLv3 loader terms and attribution](../../samples/rambo-loader/README.md); independently authored reusable tools retain MIT separately.
+
+| Question | Retained evidence |
+| --- | --- |
+| Which source and added notes? | [Source pin](source.json), [prior raw pin](previous.json), [secondary score](preparation/secondary.json), [harmonic/articulation proof](preparation/arrangement-proof.json), [source note entries](preparation/source-note-events.json.gz), [support note entries](preparation/support-note-events.json.gz) |
+| Which execution and guard results? | [Initial rejected run](failed-run.json), [corrected recovery](recovery-run.json), [cached repeat](run.json), [arrangement/audio guards](chord-focused-guards.txt), [compiler guards](compiler-focused-guards.txt), [timing guards](timing-focused-guards.txt) |
+| Does the complete export execute correctly? | [CPU build](cpu/build.json), [cycle audit](cpu/audit.json), [all ordered writes](cpu/writes.json.gz), [state checkpoints](cpu/state-checkpoints.json.gz), [VICE proof](vice/study.json), [complete VICE trace](vice/trace.json.gz), [VICE command](vice/command.json) |
+| Is the primary source preserved despite different PCM? | [Payload and timing proof](timing/timing-proof.json), [all 11,000 entry and 87,534 store deltas](timing/timing-deltas.json.gz), [independent render repeat](render-repeat-check.json), [repeat recipe](repeat-render.recipe.json), [repeat run](render-repeat-run.json) |
+| What was rendered and submitted? | [Audio/mono/ending measurements](audio.json), [standalone support-prefix build](support-prefix/build.json) and [audit](support-prefix/audit.json), [A/B bounds and gains](phrase-comparison.json), [stable audition hashes](listening-sources.json) |
+
+The initial failed run took 185.462 seconds, the corrected recovery 52.306 seconds with ten stages reused, and the final unchanged repeat 1.076 seconds with all 15 stages reused. Do not describe the recovery as a fresh full execution. These timings exclude investigation and human listening.
+
+## Verification boundaries
+
+The full candidate passes 11,000 calls, 113,001 ordered stores and ten numeric state checkpoints. Its peak play cost is 9,181 of 19,656 PAL cycles. Three distinct source-supported tones occupy all 42 actual chord regions, including their declared release intervals; four-tone source chords retain an explicit three-tone reduction on B while A's original arpeggio preserves all source colors.
+
+The initial audio gate failed because it demanded bit-identical primary-channel PCM from an unchanged primary program. The complete source store sequence and within-call timing match, but changed secondary work shifts the controlled host's entry phase. The first VICE difference is call 2355, after the B3 intervention at 2354; later differences span −8 to +8 cycles. VICE checkpoints are not exact SID bus timestamps or a trace of the renderer's schedule. The candidate's independent repeat render is byte-identical, establishing reproducibility without establishing identity to the previous arrangement.
+
+Keep these claims separate: unchanged source musical events, verified CPU/VICE execution, rendered signal contribution, and human musical benefit. Residuals from removing B3 establish a contribution to the rendered signal; they are not an exact stem or an audibility verdict. Both A/B halves use raw A-left/B-right placement, with one level-matching gain per complete stereo clip. Neither half is the previously reviewed centered presentation.
+
+No SID or WAV is embedded in this evidence group. The [recipe](../../config/listening/rambo-chord-expansion.json) and [reproduction instructions](../../songs/studies/rambo-chord-expansion/README.md#reproduce-and-verify) rebuild local outputs from tracked sources and the pinned prior render. Verify stored and decoded hashes with `python3 scripts/evidence.py verify --group rambo-chord-expansion`; see the [evidence workflow](../../docs/workflows/build-cache.md). Historical absolute paths identify the measured run, not portable download locations.

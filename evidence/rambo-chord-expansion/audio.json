@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "inputs": [
+    {
+      "label": "previous",
+      "sha256": "178d08860bddc06520a5c374b0badaf86e43dcad571e9388dbf545280843757f",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 9922500,
+      "durationSeconds": 225.0,
+      "peak": 12421,
+      "peakDbfs": -8.425867463543891,
+      "clippedSamples": 0,
+      "rms": 2712.5151333962735,
+      "acRms": 2709.8190028254025,
+      "acRmsDbfs": -21.650193019708315,
+      "perChannel": [
+        {
+          "dc": 118.96244444444444,
+          "rms": 3568.2134288287284,
+          "acRms": 3566.2298033757547
+        },
+        {
+          "dc": 122.82743371126229,
+          "rms": 1408.3073613859788,
+          "acRms": 1402.9408560811976
+        }
+      ]
+    },
+    {
+      "label": "expanded",
+      "sha256": "8af57282fc55b0153e3d47b6815b29f373184ab238d0207c613d524ec49ccf8d",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 9922500,
+      "durationSeconds": 225.0,
+      "peak": 12699,
+      "peakDbfs": -8.233608235320904,
+      "clippedSamples": 0,
+      "rms": 2776.714758355426,
+      "acRms": 2774.594201285734,
+      "acRmsDbfs": -21.445009213295872,
+      "perChannel": [
+        {
+          "dc": 117.20673368606703,
+          "rms": 3568.0802868530263,
+          "acRms": 3566.154723929939
+        },
+        {
+          "dc": 99.02684736709499,
+          "rms": 1639.8453479241543,
+          "acRms": 1636.8526044238145
+        }
+      ]
+    }
+  ],
+  "routing": "Raw SID A left and SID B right in both versions; no centered remix or chip normalization.",
+  "primaryPcmComparison": {
+    "identical": false,
+    "firstDifferenceFrame": 2075670,
+    "unequalSamples": 6129865,
+    "peakAbsoluteDifference": 17606,
+    "residualAcRmsPerChannel": [
+      1148.7447867241074
+    ]
+  },
+  "endingPcmComparison": {
+    "identical": false,
+    "firstDifferenceFrame": 0,
+    "unequalSamples": 308065,
+    "peakAbsoluteDifference": 5928,
+    "residualAcRmsPerChannel": [
+      99.71716602885728,
+      0.0
+    ],
+    "seconds": [
+      205,
+      225
+    ]
+  },
+  "primaryPrefixIdentity": {
+    "throughSourceCallExclusive": 2354,
+    "seconds": [
+      0,
+      46.96299337871575
+    ],
+    "matchedFrames": 2071068,
+    "exact": true
+  },
+  "sourceTimingClaims": {
+    "passed": true,
+    "primaryPayloadMatchesReference": true,
+    "primaryOrderedStoresIdentical": true,
+    "primaryRelativeCpuTimingIdentical": true,
+    "primaryViceOffsetsIdentical": true
+  },
+  "timingLimits": {
+    "pcmIdentity": false,
+    "exactBusTiming": false,
+    "rendererScheduleProven": false
+  },
+  "closingBody": {
+    "seconds": [
+      205,
+      211
+    ],
+    "metrics": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 264600,
+      "durationSeconds": 6.0,
+      "peak": 4683,
+      "peakDbfs": -16.898515543552758,
+      "clippedSamples": 0,
+      "rms": 558.696008377563,
+      "acRms": 538.9349771848074,
+      "acRmsDbfs": -35.678271289830505,
+      "perChannel": [
+        {
+          "dc": 136.86358276643992,
+          "rms": 774.3600322550511,
+          "acRms": 762.1691539719892
+        },
+        {
+          "dc": 157.0,
+          "rms": 157.0,
+          "acRms": 0.0
+        }
+      ]
+    }
+  },
+  "finalTail": [
+    {
+      "label": "previous",
+      "seconds": [
+        224,
+        225
+      ],
+      "metrics": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 44100,
+        "durationSeconds": 1.0,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          },
+          {
+            "dc": 157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "label": "expanded",
+      "seconds": [
+        224,
+        225
+      ],
+      "metrics": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 44100,
+        "durationSeconds": 1.0,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          },
+          {
+            "dc": 157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    }
+  ],
+  "monoFoldDown": {
+    "matrix": [
+      [
+        0.5,
+        0.5
+      ]
+    ],
+    "normalization": "none",
+    "metrics": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 9922500,
+      "durationSeconds": 225.0,
+      "peak": 10787,
+      "peakDbfs": -9.650985124540837,
+      "clippedSamples": 0,
+      "rms": 1970.2718428884918,
+      "acRms": 1967.3033287724359,
+      "acRmsDbfs": -24.431572163178327,
+      "perChannel": [
+        {
+          "dc": 108.11451095993954,
+          "rms": 1970.2718428884918,
+          "acRms": 1967.3033287724359
+        }
+      ]
+    },
+    "closingBody": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 264600,
+      "durationSeconds": 6.0,
+      "peak": 2420,
+      "peakDbfs": -22.632691379585733,
+      "clippedSamples": 0,
+      "rms": 408.42921159066776,
+      "acRms": 381.08466481800565,
+      "acRmsDbfs": -38.688569244554955,
+      "perChannel": [
+        {
+          "dc": 146.93161375661376,
+          "rms": 408.42921159066776,
+          "acRms": 381.08466481800565
+        }
+      ]
+    },
+    "finalTail": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 44100,
+      "durationSeconds": 1.0,
+      "peak": 157,
+      "peakDbfs": -46.391005651009685,
+      "clippedSamples": 0,
+      "rms": 157.0,
+      "acRms": 0.0,
+      "acRmsDbfs": null,
+      "perChannel": [
+        {
+          "dc": 157.0,
+          "rms": 157.0,
+          "acRms": 0.0
+        }
+      ]
+    },
+    "purpose": "Internal compatibility diagnostic",
+    "sha256": "41875e15a6c3d10b2b3d9f27def8bf1bd7fd7f742482f22760f5ce61f13e96b1"
+  },
+  "mainPhrase": {
+    "seconds": [
+      88,
+      104
+    ],
+    "changedSupportAcRms": 1674.299766109834,
+    "primaryPcmComparison": {
+      "identical": false,
+      "firstDifferenceFrame": 0,
+      "unequalSamples": 705566,
+      "peakAbsoluteDifference": 12076,
+      "residualAcRmsPerChannel": [
+        650.4616699754895
+      ]
+    }
+  },
+  "thirdVoiceContribution": {
+    "seconds": [
+      88,
+      104
+    ],
+    "residualAcRms": 1423.599883917577,
+    "residualToSupportAcRmsRatio": 0.6400389256841478,
+    "supportSha256": "8c3f1c06a1f8124dfff61031d5db97927d021dfe0c091098a63509809dade2a4",
+    "omissionSha256": "741cf57cd14d5d25fb5a239a86f2e295ac0db27fc5c70bb7d79f14a23f98386d",
+    "scope": "B3 control-mask omission residual; not an exact stem or a musical audibility verdict."
+  },
+  "listeningVerdict": null,
+  "timingProof": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/timing-comparison/3dee7670f9c32f00e37e0ee04509c25a25878280e8895072a3fcca571b228bf4/attempt-d97d67f1badc4e618ec6a2087b2fb0cc/timing/timing-proof.json",
+    "sha256": "f56b76130ab25d072759aec6827d2cfde8e5901bed08cab2819b6e3fdab2be1f"
+  },
+  "sourcePaths": [
+    "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-ensemble-listening/ensemble-raw-chips-full.wav",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/candidate-render/1a1551177c3434e57a2719af1ac264c06a1d651ac4fb5f80ac835d459428a842/attempt-6994215b8f684aff8dad2dcb4a486cd1/render.wav",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/support-render/45b1544e2c233222b6b70b5bf7f56f44a4a686170ecd5f69daeeff89dff564df/attempt-ce3f7d9f6f44485dafced9e13c745f4e/render.wav",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/support-without-3/b2c889275be0b30ec07d3f82381476dc2dc92ecf67bb96f162f23b358feed55b/attempt-8edc09228bbd48cc9a7e25bc867db52d/render.wav"
+  ],
+  "outputs": {
+    "previous-raw-phrase.wav": {
+      "sha256": "08e3f60b92161ef6f4697ea4d239ca44bf2f03b364ff333794a511af134c96da",
+      "gain": 1
+    },
+    "expanded-raw-phrase.wav": {
+      "sha256": "d9d6787f33546840365d4a5448ddddc9d01f55bcc93965f65ce9db259f8ae90c",
+      "gain": 1
+    }
+  }
+}

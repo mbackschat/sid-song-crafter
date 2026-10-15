@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "playCalls": 11000,
+  "candidateSidSha256": "ddcfd4d129974227d68cae452b10fea60329bd3df2b1f3f8cb722309b7e2ebf7",
+  "referenceDualSidSha256": "c909f2d02c82e06291af8b33fb9618d9e576ced319c25a89fca17e8f48adb807",
+  "primaryPayloadMatchesReference": true,
+  "primaryOrderedStoresIdentical": true,
+  "primaryRelativeCpuTimingIdentical": true,
+  "primaryViceOffsetsIdentical": true,
+  "primaryPayloadSha256": "bcbfb783176b9e5c72ebb192d6fc8e89b9ce707941159de1a46c540dabaa84ab",
+  "matchedPrimaryStores": 87534,
+  "matchedPrimaryPlayStores": 87509,
+  "firstSecondaryDifferenceCall": 2354,
+  "firstHostEntryDifferenceCall": 2355,
+  "primaryLayout": {
+    "loadAddress": 4096,
+    "payloadBytes": 6327,
+    "initAddress": 4096,
+    "playAddress": 4116
+  },
+  "secondaryLayout": [
+    {
+      "loadAddress": 10496,
+      "payloadBytes": 5802,
+      "stateBegin": 12518,
+      "initialState": 12872,
+      "restore": 13226
+    },
+    {
+      "loadAddress": 10496,
+      "payloadBytes": 6145,
+      "stateBegin": 12518,
+      "initialState": 12872,
+      "restore": 13226
+    }
+  ],
+  "hostTiming": {
+    "entryCount": 11000,
+    "minimumEntryDelta": -8,
+    "maximumEntryDelta": 8,
+    "entryDeltaCounts": {
+      "-8": 73,
+      "-7": 113,
+      "-6": 159,
+      "-5": 825,
+      "-4": 1018,
+      "-3": 1056,
+      "-2": 425,
+      "-1": 540,
+      "0": 2986,
+      "1": 547,
+      "2": 414,
+      "3": 335,
+      "4": 995,
+      "5": 830,
+      "6": 493,
+      "7": 127,
+      "8": 64
+    },
+    "initializationCycles": [
+      12030,
+      12030
+    ],
+    "cadence": [
+      {
+        "maximumMeasuredPhaseError": 7,
+        "declaredTolerance": 9
+      },
+      {
+        "maximumMeasuredPhaseError": 7,
+        "declaredTolerance": 9
+      }
+    ]
+  },
+  "claims": {
+    "pcmIdentity": false,
+    "exactBusTiming": false,
+    "rendererScheduleProven": false
+  },
+  "interpretation": "The complete primary payload and logical/relative execution are unchanged. Changed secondary work can alter the instruction phase at the next host wait-loop exit. VICE monitor checkpoints demonstrate that host-entry phase mechanism in this controlled harness; they are not SID bus timestamps or a trace of the renderer host. Independent deterministic renders may therefore differ in primary PCM without a score/program regression.",
+  "inputs": {
+    "reference_build": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/evidence/rambo-ensemble/cpu/build.json",
+      "sha256": "a8848a31f8826d393e4f76ea8e0bd2ea70c215092c33cb7ce95e771c40834cf7",
+      "decodedSha256": "a8848a31f8826d393e4f76ea8e0bd2ea70c215092c33cb7ce95e771c40834cf7"
+    },
+    "reference_writes": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/evidence/rambo-ensemble/cpu/writes.json.gz",
+      "sha256": "05936825f20a65efea07d40e3fa7b3dc197e676a36d0b15c7fbe36a8ea2088ce",
+      "decodedSha256": "afa546d53897b10a26b050ab199dc15ed9aef6ce07a378fcc66e91e4093e27d8"
+    },
+    "reference_study": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/evidence/rambo-ensemble/vice/study.json",
+      "sha256": "2059ff2c992a2ff59e0bd35749e5a52335bd2ea6d6a92a9c1f3cefc9d342de44",
+      "decodedSha256": "2059ff2c992a2ff59e0bd35749e5a52335bd2ea6d6a92a9c1f3cefc9d342de44"
+    },
+    "reference_trace": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/evidence/rambo-ensemble/vice/trace.json.gz",
+      "sha256": "5868fa9205fa39cfc4e883cd23a4d2505d6076e6c223f20410211d0ec763b610",
+      "decodedSha256": "bc08ad84f429df12cf73e184bb25352281cd4dacdd37f93ca68b44f2ad3fad4d"
+    },
+    "candidate_build": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/candidate-build/902345883cb0b4f7b79cee158b7de6f737b66057048c86b1a4ebe829702c45f5/attempt-5421fc75a6db44bdb771b4ef51eeb553/candidate/build.json",
+      "sha256": "d0222ced1cadd407040cecbe340c3a61cdee6fad5a731b792f78842f0869360b",
+      "decodedSha256": "d0222ced1cadd407040cecbe340c3a61cdee6fad5a731b792f78842f0869360b"
+    },
+    "candidate_writes": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/candidate-build/902345883cb0b4f7b79cee158b7de6f737b66057048c86b1a4ebe829702c45f5/attempt-5421fc75a6db44bdb771b4ef51eeb553/candidate/writes.json",
+      "sha256": "bb5f46d71bbe07d1c7de3ead1560bb1c64668caf616fdc6ad98f9bb64aa5a7b5",
+      "decodedSha256": "bb5f46d71bbe07d1c7de3ead1560bb1c64668caf616fdc6ad98f9bb64aa5a7b5"
+    },
+    "candidate_study": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/candidate-vice/77ac2404ed029d1b9e283c1bd2d2312c7b51d422bee263d47595fa1bf254b45f/attempt-4cd19042eabf4542a1ffd337babdb0e8/vice/study.json",
+      "sha256": "dc7af3fd15c86dc23e459266b2fe0f61a9ff3c42f488b25b66c1de06a61db125",
+      "decodedSha256": "dc7af3fd15c86dc23e459266b2fe0f61a9ff3c42f488b25b66c1de06a61db125"
+    },
+    "candidate_trace": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/candidate-vice/77ac2404ed029d1b9e283c1bd2d2312c7b51d422bee263d47595fa1bf254b45f/attempt-4cd19042eabf4542a1ffd337babdb0e8/vice/trace.json",
+      "sha256": "026cb78edb2cc1a2a3508cc8ec4ea23c9d5560c62c1e5398260e651d4c73551d",
+      "decodedSha256": "026cb78edb2cc1a2a3508cc8ec4ea23c9d5560c62c1e5398260e651d4c73551d"
+    },
+    "candidate_sid": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/candidate-build/902345883cb0b4f7b79cee158b7de6f737b66057048c86b1a4ebe829702c45f5/attempt-5421fc75a6db44bdb771b4ef51eeb553/candidate/reconstructed.sid",
+      "sha256": "ddcfd4d129974227d68cae452b10fea60329bd3df2b1f3f8cb722309b7e2ebf7"
+    },
+    "primary_reference": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/samples/rambo-loader/rambo-loader.sid",
+      "sha256": "9a6901e656f4de1888f9acc71c80abaf3608b9758b559b306b0b8b6eaa64aecd"
+    }
+  },
+  "toolSha256": "c47931a2d6758af5271e0400ec9dfa60ea8412d7439811548f3562d5cc37079b",
+  "deltas": {
+    "path": "timing-deltas.json.gz",
+    "sha256": "3e3c43f6037efec75add106fce0cab1f4b071d8bcaff53f0030809d47dd8100e",
+    "entryRecords": 11000,
+    "primaryStoreRecords": 87534
+  }
+}

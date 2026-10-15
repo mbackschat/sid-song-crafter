@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "method": "full-file AC RMS, pooled channel power after subtracting each channel mean; silence and tails included",
+  "matching": "attenuation only",
+  "requestedAcRmsDbfs": null,
+  "targetAcRms": 2801.7181747518616,
+  "targetAcRmsDbfs": -21.360509751189923,
+  "peakHeadroomDb": 1.0,
+  "peakLimit": 29203,
+  "sampleRate": 44100,
+  "channels": 2,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/phrase-comparison/6631864775fab33fd56a96672da9898ea17b3364f666cae8dba13b2dbae7e09f/attempt-5837f3bfff3c4f13accfd7fff1022a4e/prior-raw-then-expanded-chord-phrase.ab.wav",
+    "frames": 1433250,
+    "durationSeconds": 32.5,
+    "sha256": "bdcc4c27822f8a4fc9fdae92b0a3717737b45d3e8215ffbeeecb44c6ec7bb6c4"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 705600
+    },
+    {
+      "label": "silence",
+      "startFrame": 705600,
+      "endFrame": 727650
+    },
+    {
+      "label": "B",
+      "startFrame": 727650,
+      "endFrame": 1433250
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/prepare-listening/d0a48890670715f2933142a44af13169166877bc0312330443e0e36358f325a0/attempt-e6df4e3fcbf1487286fb754c1c98d954/prepared/previous-raw-phrase.wav",
+      "sha256": "08e3f60b92161ef6f4697ea4d239ca44bf2f03b364ff333794a511af134c96da",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 11005,
+        "peakDbfs": -9.477197761407023,
+        "clippedSamples": 0,
+        "rms": 2803.04537004296,
+        "acRms": 2801.7181747518616,
+        "acRmsDbfs": -21.360509751189923,
+        "perChannel": [
+          {
+            "dc": -83.69650793650794,
+            "rms": 3519.432725657764,
+            "acRms": 3518.43738113812
+          },
+          {
+            "dc": 88.72500283446712,
+            "rms": 1824.2039312005963,
+            "acRms": 1822.0449655482528
+          }
+        ]
+      },
+      "gain": 1.0,
+      "gainDb": 0.0,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 11005,
+        "peakDbfs": -9.477197761407023,
+        "clippedSamples": 0,
+        "rms": 2803.04537004296,
+        "acRms": 2801.7181747518616,
+        "acRmsDbfs": -21.360509751189923,
+        "perChannel": [
+          {
+            "dc": -83.69650793650794,
+            "rms": 3519.432725657764,
+            "acRms": 3518.43738113812
+          },
+          {
+            "dc": 88.72500283446712,
+            "rms": 1824.2039312005963,
+            "acRms": 1822.0449655482528
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/phrase-comparison/6631864775fab33fd56a96672da9898ea17b3364f666cae8dba13b2dbae7e09f/attempt-5837f3bfff3c4f13accfd7fff1022a4e/prior-raw-then-expanded-chord-phrase.a.matched.wav"
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/prepare-listening/d0a48890670715f2933142a44af13169166877bc0312330443e0e36358f325a0/attempt-e6df4e3fcbf1487286fb754c1c98d954/prepared/expanded-raw-phrase.wav",
+      "sha256": "d9d6787f33546840365d4a5448ddddc9d01f55bcc93965f65ce9db259f8ae90c",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 12699,
+        "peakDbfs": -8.233608235320904,
+        "clippedSamples": 0,
+        "rms": 2943.7767677216016,
+        "acRms": 2943.037275227931,
+        "acRmsDbfs": -20.933083444811494,
+        "perChannel": [
+          {
+            "dc": -83.66512613378684,
+            "rms": 3521.476916410671,
+            "acRms": 3520.4828957803825
+          },
+          {
+            "dc": 41.31169642857143,
+            "rms": 2220.5503019615808,
+            "acRms": 2220.16598192114
+          }
+        ]
+      },
+      "gain": 0.9519818856303394,
+      "gainDb": -0.4274263063784311,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 12089,
+        "peakDbfs": -8.661191147560046,
+        "clippedSamples": 0,
+        "rms": 2802.420822325315,
+        "acRms": 2801.7172194616414,
+        "acRmsDbfs": -21.360512712782175,
+        "perChannel": [
+          {
+            "dc": -79.64763605442177,
+            "rms": 3352.3822869662185,
+            "acRms": 3351.43599849912
+          },
+          {
+            "dc": 39.273772675736964,
+            "rms": 2113.920039367652,
+            "acRms": 2113.555181115447
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/phrase-comparison/6631864775fab33fd56a96672da9898ea17b3364f666cae8dba13b2dbae7e09f/attempt-5837f3bfff3c4f13accfd7fff1022a4e/prior-raw-then-expanded-chord-phrase.b.matched.wav"
+    }
+  ],
+  "listeningReview": null
+}

@@ -214,12 +214,14 @@ def verify_support_calendar(description, events):
             if expected:
                 require(block[29] | block[30] << 8 == description['frequencyWords'][expected['pitchIndex']],
                         'Actual support pitch differs from its source-backed sounding calendar')
+                life = expected['releaseLifetime'] - max(0, call - expected['gateOffCall'])
+                require(block[28] == life, 'Actual support lifetime calendar differs from its declared articulation')
                 gate_on = call < expected['startCall'] + expected['gateCountdown'] - 1
                 require(bool(controls[voice] & 1) == gate_on, 'Actual support gate calendar differs from its declared articulation')
     return player
 
 
-def prepare(source, config):
+def prepare(source, config, *, arrangement_path='songs/studies/rambo-ensemble/arrangement.json'):
     require(config.get('format') == 'rambo-ensemble-v1', 'Expected Rambo ensemble arrangement config')
     require(digest(source) == config['sourceSha256'], 'Retained source fingerprint changed')
     roles = config['roles']
@@ -236,10 +238,10 @@ def prepare(source, config):
                      program=graph, voices=voices, dataBanks={}, morse=deepcopy(source['morse']),
                      range=deepcopy(source['range']),
                      sourceEvidence=dict(source=config['source'], sourceSha256=config['sourceSha256'],
-                                         arrangement='songs/studies/rambo-ensemble/arrangement.json',
+                                         arrangement=arrangement_path,
                                          arrangementSha256=digest(config), originalSource=deepcopy(source['sourceEvidence']),
                                          changes=['Derive pitched support only from contemporaneous source chord programs or source bass-anchor classes.',
-                                                  'Sustain low and inner voices instead of copying the source rhythm; add spaced chord swells on existing source chord-row onsets.',
+                                                  'Give all support roles the onset, gate and lifetime calendars declared by the arrangement config.',
                                                   'Keep the initial sweep/Morse passage, late bass figure and final long-release gesture exposed.'],
                                          listeningStatus='Pending human review; secondary arrangement, not a source reconstruction.'))
     player = verify_support_calendar(secondary, events)
@@ -276,7 +278,7 @@ def main():
     args = parser.parse_args()
     config = json.loads(args.arrangement.read_text())
     source = json.loads((ROOT / config['source']).read_text())
-    secondary, report, notes, events = prepare(source, config)
+    secondary, report, notes, events = prepare(source, config, arrangement_path=str(args.arrangement))
     require(not args.output.exists(), 'Choose a fresh preparation output directory')
     args.output.mkdir(parents=True)
     (args.output / 'secondary.json').write_bytes(encoded(secondary))

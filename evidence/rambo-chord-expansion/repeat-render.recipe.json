@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "repeat-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/candidate-build/902345883cb0b4f7b79cee158b7de6f737b66057048c86b1a4ebe829702c45f5/attempt-5421fc75a6db44bdb771b4ef51eeb553/candidate/reconstructed.sid",
+        "{out}/render.wav",
+        "225",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-chord-expansion-v1/cache/candidate-build/902345883cb0b4f7b79cee158b7de6f737b66057048c86b1a4ebe829702c45f5/attempt-5421fc75a6db44bdb771b4ef51eeb553/candidate/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "repeatedRaw": "{stage:repeat-render}/render.wav"
+  }
+}
