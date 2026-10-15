@@ -23,6 +23,8 @@ Removing or compacting cached artifacts invalidates those stages. Restore a comp
 
 ### Verified automated pass, 2026-10-15
 
+At the Axel F session close, the [cleanup summary](../../build/cleanup-session-close-axel/summary.json) records 29 duplicate cache WAVs removed and 51 generated text files compressed, reclaiming 333,207,297 logical bytes. The remaining inventory is 5,860,084,417 bytes, excluding the current cleanup report. All listening files, unique audio, native exports and deferred work remain; the selected full tonal palette and its selected-roles baseline are explicitly protected. The maracas trial is parked after feedback, so its large text evidence can now require lossless restoration and its duplicate cache WAVs can require regeneration; published audition WAVs remain at their original paths. Use the restoration command above when a historical receipt names a compacted file. All unselected pre-existing files passed unchanged-hash verification.
+
 The [apply report](../../build/cleanup-20261015-rambo-apply/summary.json) records 89 duplicate cache WAVs removed and 86 text files compressed, reclaiming 1,821,550,716 logical bytes. The inventoried build data decreased from 5,529,447,891 to 3,707,897,175 bytes, excluding the current report directory; all unselected pre-existing files retained their hashes. Retained data included 752 WAV files totaling 2,688,550,488 bytes, plus 410,511,133 bytes of gzip archives. These figures describe that pass, before subsequent generation, not a permanent size bound. The [selection](../../build/cleanup-20261015-rambo-apply/selection.json) and [operation journal](../../build/cleanup-20261015-rambo-apply/operations.jsonl) preserve the exact actions and retained copies.
 
 ## Persistent evidence
