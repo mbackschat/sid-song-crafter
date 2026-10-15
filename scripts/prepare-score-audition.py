@@ -17,6 +17,11 @@ class MonophonicPolicy(str, Enum):
     HIGHEST_AT_ONSET = "highest-at-onset"
 
 
+class OverlapPolicy(str, Enum):
+    REJECT_OVERLAP = "reject-overlap"
+    SHORTEN_TO_NEXT_ONSET = "shorten-to-next-onset"
+
+
 def write_json(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n")
 
@@ -46,41 +51,62 @@ def source_origins(full, selected, spans):
     return origins
 
 
+def voice_source_parts(voice):
+    if ("sourcePart" in voice) == ("sourceParts" in voice):
+        raise ValueError("Each voice requires either sourcePart or sourceParts: " + voice["name"])
+    parts = voice["sourceParts"] if "sourceParts" in voice else [voice["sourcePart"]]
+    if not isinstance(parts, list) or not parts or any(not isinstance(part, str) or not part.strip() for part in parts):
+        raise ValueError("sourceParts must be a nonempty list of sourcePart IDs in voice " + voice["name"])
+    if len(parts) != len(set(parts)):
+        raise ValueError("sourceParts must contain distinct sourcePart IDs in voice " + voice["name"])
+    return parts
+
+
 def explicit_omissions(voice, source_events, origins):
     declarations = voice.get("omittedEvents", [])
     if not isinstance(declarations, list):
         raise ValueError("omittedEvents must be a list in voice " + voice["name"])
-    selected_indices = {origin["source"]["eventIndex"] for origin in origins}
+    selected_indices = {(origin["source"]["part"], origin["source"]["eventIndex"]) for origin in origins}
     reasons = {}
     for declaration in declarations:
         if not isinstance(declaration, dict):
             raise ValueError("Each omittedEvents entry must be an object in voice " + voice["name"])
+        part = declaration.get("sourcePart")
+        if "sourcePart" not in declaration and len(source_events) == 1:
+            part = next(iter(source_events))
+        if not isinstance(part, str) or part not in source_events:
+            raise ValueError("Explicit omissions require an owned sourcePart in voice " + voice["name"])
         index, reason = declaration.get("sourceEventIndex"), declaration.get("reason")
         if type(index) is not int or index < 0:
             raise ValueError("sourceEventIndex must be a nonnegative integer in voice " + voice["name"])
         if not isinstance(reason, str) or not reason.strip():
             raise ValueError("Explicit omissions require a nonblank reason in voice " + voice["name"])
-        if index in reasons:
+        identity = (part, index)
+        if identity in reasons:
             raise ValueError("Duplicate sourceEventIndex in voice " + voice["name"] + ": " + str(index))
-        if index >= len(source_events):
+        if index >= len(source_events[part]):
             raise ValueError("Omitted source event does not exist in voice " + voice["name"] + ": " + str(index))
-        if index not in selected_indices:
+        if identity not in selected_indices:
             raise ValueError("Omitted source event is not selected in voice " + voice["name"] + ": " + str(index))
-        reasons[index] = reason
+        reasons[identity] = reason
     return reasons
 
 
 def project_score(full, selected, recipe):
     voices = recipe["voices"]
-    if len(voices) != 3 or len({voice["name"] for voice in voices}) != 3 or len({voice["sourcePart"] for voice in voices}) != 3:
-        raise ValueError("Projection requires three distinctly named voices from distinct source parts")
-    parts = {part["id"] for part in full["parts"]}
-    mapped = {voice["sourcePart"] for voice in voices}
+    if len(voices) != 3 or len({voice["name"] for voice in voices}) != 3:
+        raise ValueError("Projection requires three distinctly named voices")
+    voice_parts = [voice_source_parts(voice) for voice in voices]
+    mapped_ids = [part for parts in voice_parts for part in parts]
+    mapped = set(mapped_ids)
+    if len(mapped_ids) != len(mapped):
+        raise ValueError("Projection requires distinct sourcePart ownership across voices")
+    parts = {part["id"]: part["events"] for part in full["parts"]}
     omitted = recipe.get("omittedParts", {})
-    if mapped & set(omitted) or mapped | set(omitted) != parts or any(not isinstance(reason, str) or not reason.strip() for reason in omitted.values()):
+    if mapped & set(omitted) or mapped | set(omitted) != set(parts) or any(not isinstance(reason, str) or not reason.strip() for reason in omitted.values()):
         raise ValueError("Every source part must be mapped once or explicitly omitted with a reason")
     origins = source_origins(full, selected, recipe["spans"])
-    retained, losses, output_voices = [], [], []
+    retained, losses, shortened, output_voices = [], [], [], []
     for part, reason in omitted.items():
         losses.extend({**origin, "reason": reason} for origin in origins[part])
     for voice_index, voice in enumerate(voices):
@@ -88,12 +114,16 @@ def project_score(full, selected, recipe):
             policy = MonophonicPolicy(voice["monophonicPolicy"])
         except ValueError:
             raise ValueError("Unsupported monophonic policy: " + str(voice["monophonicPolicy"])) from None
-        part = next(part for part in full["parts"] if part["id"] == voice["sourcePart"])
-        voice_origins = origins[voice["sourcePart"]]
-        reasons = explicit_omissions(voice, part["events"], voice_origins)
+        try:
+            overlap_policy = OverlapPolicy(voice.get("overlapPolicy", "reject-overlap"))
+        except ValueError:
+            raise ValueError("Unsupported overlap policy: " + str(voice["overlapPolicy"])) from None
+        source_parts = voice_parts[voice_index]
+        voice_origins = sorted((origin for part in source_parts for origin in origins[part]), key=lambda origin: (beat(origin["selectedStartBeat"]), origin["source"]["midi"]))
+        reasons = explicit_omissions(voice, {part: parts[part] for part in source_parts}, voice_origins)
         groups = defaultdict(list)
         for origin in voice_origins:
-            reason = reasons.get(origin["source"]["eventIndex"])
+            reason = reasons.get((origin["source"]["part"], origin["source"]["eventIndex"]))
             if reason is not None:
                 losses.append({**origin, "reason": reason})
             else:
@@ -109,27 +139,35 @@ def project_score(full, selected, recipe):
                 chosen.append(highest)
                 losses.extend({**origin, "reason": "Lower chord note omitted by highest-at-onset"} for origin in group if origin is not highest)
         events = []
-        end = Fraction(0)
-        for origin in chosen:
+        for index, origin in enumerate(chosen):
             start = beat(origin["selectedStartBeat"])
             duration = beat(origin["source"]["durationBeats"])
-            if start < end:
-                raise ValueError("Selected notes overlap in voice " + voice["name"] + "; change the passage or projection policy")
-            end = start + duration
-            retained.append({**origin, "voice": voice["name"], "voiceIndex": voice_index, "outputEventIndex": len(events)})
+            output_origin = {**origin, "voice": voice["name"], "voiceIndex": voice_index, "outputEventIndex": len(events)}
+            if index + 1 < len(chosen):
+                next_start = beat(chosen[index + 1]["selectedStartBeat"])
+                if start + duration > next_start:
+                    if overlap_policy is OverlapPolicy.REJECT_OVERLAP:
+                        raise ValueError("Selected notes overlap in voice " + voice["name"] + "; change the passage or projection policy")
+                    if next_start <= start:
+                        raise ValueError("Cannot shorten simultaneous onsets in voice " + voice["name"])
+                    duration = next_start - start
+                    output_origin["outputDurationBeats"] = rational(duration)
+                    shortened.append(output_origin)
+            retained.append(output_origin)
             events.append({"startBeat": float(start), "durationBeats": float(duration), "midi": origin["source"]["midi"]})
         output_voices.append({"name": voice["name"], "instrument": voice["instrument"], "events": events})
     reduction = {
         "sourceNotes": sum(len(part["events"]) for part in selected["parts"]),
         "retainedNotes": len(retained),
         "omittedNotes": len(losses),
-        "shortenedNotes": 0,
+        "shortenedNotes": len(shortened),
         "outputEvents": len(retained),
-        "voices": [{key: voice[key] for key in ("name", "sourcePart", "monophonicPolicy")} for voice in voices],
+        "voices": [{key: voice[key] for key in ("name", "sourcePart", "sourceParts", "monophonicPolicy", "overlapPolicy") if key in voice} for voice in voices],
         "omittedParts": omitted,
         "retainedEvents": retained,
         "omittedEvents": losses,
-        "timing": "Retained source notes keep their complete durations and exact rational timing in origin records; output beats use the existing arranged-score numeric format. No swing transform, note extension or transposition is applied.",
+        "shortenedEvents": shortened,
+        "timing": "Retained source notes keep their exact rational timing in origin records; output beats use the existing arranged-score numeric format. Only an explicit shorten-to-next-onset policy may reduce durations to preserve later source onsets; original durations remain in source records and exact output durations are recorded for shortened events. No swing transform, note extension or transposition is applied.",
         "velocity": "Preserved in common score and origin records; fixed per-voice SID envelopes",
     }
     if reduction["sourceNotes"] != reduction["retainedNotes"] + reduction["omittedNotes"]:
