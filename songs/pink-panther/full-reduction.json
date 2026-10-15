@@ -1,0 +1,87 @@
+{
+  "title": "The Pink Panther Theme: complete D. W. Barnes source form",
+  "composer": "Henry Mancini; D. W. Barnes MIDI arrangement",
+  "spans": [
+    {
+      "startBeat": 0,
+      "endBeat": 364
+    }
+  ],
+  "voices": [
+    {
+      "name": "melody",
+      "sourcePart": "piano-lead",
+      "monophonicPolicy": "highest-at-onset",
+      "instrument": {
+        "waveform": 16,
+        "attackDecay": 2,
+        "sustainRelease": 128
+      }
+    },
+    {
+      "name": "bass",
+      "sourcePart": "bass",
+      "monophonicPolicy": "reject-overlap",
+      "instrument": {
+        "waveform": 16,
+        "attackDecay": 2,
+        "sustainRelease": 128
+      }
+    },
+    {
+      "name": "harmony",
+      "sourcePart": "piano-accompaniment",
+      "monophonicPolicy": "highest-at-onset",
+      "instrument": {
+        "waveform": 16,
+        "attackDecay": 2,
+        "sustainRelease": 128
+      },
+      "omittedEvents": [
+        {
+          "sourceEventIndex": 344,
+          "reason": "Omit the lower E2 (MIDI 40) at source beat 352 because it overlaps the upper B2 (MIDI 47) from beat 348 through 353; preserve the upper note and both source durations in the full common score."
+        }
+      ]
+    }
+  ],
+  "omittedParts": {
+    "alto-sax": "Omit the later melodic doubling to reserve one lead voice: unison from beat 587/3, then octave reinforcement from beat 827/3 until the final chord, where its top note doubles the retained piano note at unison. The piano retains the complete melody contour; all original sax notes remain in the full common score.",
+    "baritone-sax": "Omit the low accompaniment doubling to reserve the independent walking bass and the upper piano chord-tone voice.",
+    "drums": "Omit GM percussion for the pitched three-voice interpretation; retain the complete source swing, walking bass, chord-tone timing and finite form."
+  },
+  "volume": 15,
+  "tailTicks": 125,
+  "sections": [
+    {
+      "name": "Introduction: chromatic bass-register motifs",
+      "startBeat": 0,
+      "endBeat": 35.666666666666664
+    },
+    {
+      "name": "Theme cycle 1",
+      "startBeat": 35.666666666666664,
+      "endBeat": 115.66666666666667
+    },
+    {
+      "name": "Theme cycle 2",
+      "startBeat": 115.66666666666667,
+      "endBeat": 195.66666666666666
+    },
+    {
+      "name": "Theme cycle 3: source unison sax doubling",
+      "startBeat": 195.66666666666666,
+      "endBeat": 275.6666666666667
+    },
+    {
+      "name": "Theme cycle 4: source octave sax doubling",
+      "startBeat": 275.6666666666667,
+      "endBeat": 355
+    },
+    {
+      "name": "Source final chord and release",
+      "startBeat": 355,
+      "endBeat": 364
+    }
+  ]
+}

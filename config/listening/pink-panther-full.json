@@ -1,0 +1,435 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "prepare",
+      "command": [
+        "{python}",
+        "scripts/prepare-score-audition.py",
+        ".local/research/pink-panther/dw-barnes-ppanther.mid",
+        "config/scores/pink-panther-import.json",
+        "--output",
+        "{out}/score",
+        "--arrangement",
+        "songs/pink-panther/full-reduction.json",
+        "--candidate",
+        "songs/pink-panther/full-native.json",
+        "--reference",
+        "songs/pink-panther/full-plain.json"
+      ],
+      "inputs": [
+        ".local/research/pink-panther/dw-barnes-ppanther.mid",
+        "config/scores/pink-panther-import.json",
+        "scripts/prepare-score-audition.py",
+        "scripts/score_tools.py",
+        "songs/pink-panther/full-reduction.json",
+        "songs/pink-panther/full-plain.json",
+        ".tools/arrangement-deps/mido",
+        "songs/pink-panther/full-native.json"
+      ],
+      "outputs": [
+        "score/common-score.json",
+        "score/score.json",
+        "score/candidate.json",
+        "score/reference.json",
+        "score/adaptation.json",
+        "score/source.mid",
+        "score/import-recipe.json",
+        "score/full-common-score.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/arrangement-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:prepare}/score/reference.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "16",
+        "--excerpt-start",
+        "20"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:prepare}/score/reference.json",
+        "{stage:prepare}/score/score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/reference.sid",
+        "song/export/reference.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/reference.swm",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 360,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:prepare}/score/candidate.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "16",
+        "--excerpt-start",
+        "20"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:prepare}/score/candidate.json",
+        "{stage:prepare}/score/score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/candidate.sid",
+        "song/export/candidate.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/candidate.swm",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 360,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "same-score",
+      "command": [
+        "{python}",
+        "-c",
+        "import hashlib,json,pathlib,sys\nfrom verify_player import require\nload=lambda path:json.loads(pathlib.Path(path).read_text())\nscore,reference,candidate=map(load,sys.argv[1:4])\nsource_hash=hashlib.sha256(pathlib.Path(sys.argv[1]).read_bytes()).hexdigest()\nrequire(reference['sourceSha256']==candidate['sourceSha256']==source_hash,'Native exports do not share the exact prepared score')\nrequire(score['totalBeats']==364,'Complete source form must retain 364 beats')\nfor key in ('clock','sidModel','sidCount','ticksPerSecond','scoreTicks','tailTicks','totalTicks','stopTick','stopVolumeClearTick','timingChanges','articulationChanges'):\n    require(reference[key]==candidate[key],'Native scheduling differs: '+key)\nfields=('eventIndex','startBeat','durationBeats','midi','sourceStartTick','sourceDurationTicks','startTick','durationTicks','gateOffTick','nativeGateOffTick')\nschedules=lambda value:[[[note[field] for field in fields] for note in voice['notes']] for voice in value['voices']]\nrequire(schedules(reference)==schedules(candidate),'Native notes, durations or articulation differ')\nreport=dict(schemaVersion=1,preparedScoreSha256=source_hash,totalBeats=score['totalBeats'],sameSourceAndNativeNotes=True,nativeNotesPerVoice=[len(voice['notes']) for voice in reference['voices']],clock=reference['clock'],sidModel=reference['sidModel'],sidCount=reference['sidCount'],scoreTicks=reference['scoreTicks'],tailTicks=reference['tailTicks'],stopTick=reference['stopTick'],scope='Shared exact projected source and native note/gate schedules; each export independently audits complete driver consumption. Instrument programs intentionally differ. Musical acceptance remains open.')\npathlib.Path(sys.argv[4]).write_text(json.dumps(report,indent=2)+chr(10))\n",
+        "{stage:prepare}/score/score.json",
+        "{stage:reference}/song/conversion.json",
+        "{stage:candidate}/song/conversion.json",
+        "{out}/same-score.json"
+      ],
+      "inputs": [
+        "scripts/verify_player.py",
+        "{stage:prepare}/score/score.json",
+        "{stage:reference}/song/conversion.json",
+        "{stage:candidate}/song/conversion.json"
+      ],
+      "outputs": [
+        "same-score.json"
+      ],
+      "timeoutSeconds": 15,
+      "env": {
+        "PYTHONPATH": "{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "timbre-scope",
+      "command": [
+        "{python}",
+        "scripts/native_frame_comparison.py",
+        "{stage:reference}/song/native-song.frames.json",
+        "{stage:candidate}/song/native-song.frames.json",
+        "--allow-offset",
+        "2",
+        "--allow-offset",
+        "3",
+        "--allow-offset",
+        "4",
+        "--allow-offset",
+        "5",
+        "--allow-offset",
+        "6",
+        "--allow-offset",
+        "9",
+        "--allow-offset",
+        "10",
+        "--allow-offset",
+        "11",
+        "--allow-offset",
+        "12",
+        "--allow-offset",
+        "13",
+        "--allow-offset",
+        "16",
+        "--allow-offset",
+        "17",
+        "--allow-offset",
+        "18",
+        "--allow-offset",
+        "19",
+        "--allow-offset",
+        "20",
+        "--output",
+        "{out}/timbre-scope.json"
+      ],
+      "inputs": [
+        "{stage:reference}/song/native-song.frames.json",
+        "{stage:candidate}/song/native-song.frames.json",
+        "scripts/native_frame_comparison.py"
+      ],
+      "outputs": [
+        "timbre-scope.json"
+      ],
+      "timeoutSeconds": 15
+    },
+    {
+      "id": "reference-vice",
+      "command": [
+        "{python}",
+        "-c",
+        "import json,pathlib,runpy,sys\nprg,writes,export,frames,output=sys.argv[1:]\ncalls=len(json.loads(pathlib.Path(frames).read_text()))\nsys.argv=['scripts/verify-native-vice.py',prg,writes,'--export-report',export,'--data','.tools/vice-headless-3.9/source/data','--calls',*[str(count) for count in range(1,calls+1)],'--output',output]\nrunpy.run_path('scripts/verify-native-vice.py',run_name='__main__')\n",
+        "{stage:reference}/song/export/reference.prg",
+        "{stage:reference}/song/native-song.writes.json",
+        "{stage:reference}/song/export.json",
+        "{stage:reference}/song/native-song.frames.json",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:reference}/song/export/reference.prg",
+        "{stage:reference}/song/native-song.writes.json",
+        "{stage:reference}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py",
+        "{stage:reference}/song/native-song.frames.json"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate-vice",
+      "command": [
+        "{python}",
+        "-c",
+        "import json,pathlib,runpy,sys\nprg,writes,export,frames,output=sys.argv[1:]\ncalls=len(json.loads(pathlib.Path(frames).read_text()))\nsys.argv=['scripts/verify-native-vice.py',prg,writes,'--export-report',export,'--data','.tools/vice-headless-3.9/source/data','--calls',*[str(count) for count in range(1,calls+1)],'--output',output]\nrunpy.run_path('scripts/verify-native-vice.py',run_name='__main__')\n",
+        "{stage:candidate}/song/export/candidate.prg",
+        "{stage:candidate}/song/native-song.writes.json",
+        "{stage:candidate}/song/export.json",
+        "{stage:candidate}/song/native-song.frames.json",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:candidate}/song/export/candidate.prg",
+        "{stage:candidate}/song/native-song.writes.json",
+        "{stage:candidate}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py",
+        "{stage:candidate}/song/native-song.frames.json"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "audio",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "--seconds",
+        "200.26354199941076",
+        "--tail-seconds",
+        "0.5",
+        "--max-tail-ac-rms",
+        "16",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 90
+    },
+    {
+      "id": "pre-stop-release",
+      "command": [
+        "{python}",
+        "-c",
+        "import hashlib,json,math,pathlib,sys\nfrom audio_comparison import Pcm16,measure_pcm,read_pcm16\ndef require(condition,message):\n    if not condition: raise ValueError(message)\nreports=[]\nfor label,manifest_path,wav_path in zip(('reference','candidate'),sys.argv[1:3],sys.argv[3:5]):\n    manifest_bytes=pathlib.Path(manifest_path).read_bytes()\n    manifest=json.loads(manifest_bytes)\n    stop_tick,rate=manifest['stopTick'],manifest['ticksPerSecond']\n    require(type(stop_tick) is int and stop_tick>0 and type(rate) in (int,float) and math.isfinite(rate) and rate>0 and manifest['stopVolumeClearTick']==stop_tick,'Invalid native stop/volume-clear timing')\n    stop=stop_tick/rate\n    audio=read_pcm16(wav_path)\n    first,last=(round((stop-offset)*audio.sample_rate) for offset in (0.5,0.1))\n    require(audio.channels==manifest['sidCount'] and 0<=first<last<=audio.frames and last/audio.sample_rate<stop,'Pre-stop release window must fit the declared audio before volume clear')\n    samples=audio.samples[first*audio.channels:last*audio.channels]\n    metrics=measure_pcm(Pcm16(audio.sample_rate,audio.channels,last-first,samples,''))\n    require(all(channel['acRms']<=16 for channel in metrics['perChannel']),label+' release exceeds 16 PCM16 AC RMS before volume clear')\n    if sys.byteorder!='little': samples.byteswap()\n    reports.append(dict(label=label,manifestSha256=hashlib.sha256(manifest_bytes).hexdigest(),audioSha256=audio.sha256,stopTick=stop_tick,stopVolumeClearTick=manifest['stopVolumeClearTick'],ticksPerSecond=rate,stopSeconds=stop,requestedWindowSeconds=[stop-0.5,stop-0.1],window=dict(startFrame=first,endFrame=last,startSeconds=first/audio.sample_rate,endSeconds=last/audio.sample_rate,pcm16LeSha256=hashlib.sha256(samples.tobytes()).hexdigest(),metrics=metrics)))\npathlib.Path(sys.argv[5]).write_text(json.dumps(dict(schemaVersion=1,maxPerChannelAcRms=16,scope='Rendered decay must settle in the declared window before native volume clear; musical ending acceptance remains open.',renders=reports),indent=2)+chr(10))\n",
+        "{stage:reference}/song/conversion.json",
+        "{stage:candidate}/song/conversion.json",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "{out}/pre-stop-release.json"
+      ],
+      "inputs": [
+        "scripts/audio_comparison.py",
+        "{stage:reference}/song/conversion.json",
+        "{stage:candidate}/song/conversion.json",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav"
+      ],
+      "outputs": [
+        "pre-stop-release.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "theme-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "prepare",
+        "{stage:reference}/song/native-song.excerpt.wav",
+        "{stage:candidate}/song/native-song.excerpt.wav",
+        "{out}/plain-then-ensemble-theme",
+        "--individual-copies"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:reference}/song/native-song.excerpt.wav",
+        "{stage:candidate}/song/native-song.excerpt.wav"
+      ],
+      "outputs": [
+        "plain-then-ensemble-theme.ab.wav",
+        "plain-then-ensemble-theme.comparison.json",
+        "plain-then-ensemble-theme.a.matched.wav",
+        "plain-then-ensemble-theme.b.matched.wav"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "ending-comparison",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "{out}/plain-then-ensemble-ending",
+        "--start-seconds",
+        "182",
+        "--end-seconds",
+        "200.26354199941076"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav"
+      ],
+      "outputs": [
+        "plain-then-ensemble-ending.ab.wav",
+        "plain-then-ensemble-ending.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    }
+  ],
+  "deliverables": {
+    "reference": "{stage:reference}/song/native-song.wav",
+    "candidate": "{stage:candidate}/song/native-song.wav",
+    "theme-comparison": "{stage:theme-comparison}/plain-then-ensemble-theme.ab.wav",
+    "ending-comparison": "{stage:ending-comparison}/plain-then-ensemble-ending.ab.wav",
+    "reference-theme": "{stage:theme-comparison}/plain-then-ensemble-theme.a.matched.wav",
+    "candidate-theme": "{stage:theme-comparison}/plain-then-ensemble-theme.b.matched.wav",
+    "reference-verification": "{stage:reference}/song/verification.json",
+    "candidate-verification": "{stage:candidate}/song/verification.json",
+    "reference-vice": "{stage:reference-vice}/vice/verification.json",
+    "candidate-vice": "{stage:candidate-vice}/vice/verification.json",
+    "same-score": "{stage:same-score}/same-score.json",
+    "timbre-scope": "{stage:timbre-scope}/timbre-scope.json",
+    "audio": "{stage:audio}/audio.json",
+    "candidate-psid": "{stage:candidate}/song/export/candidate.sid",
+    "candidate-prg": "{stage:candidate}/song/export/candidate.prg",
+    "candidate-native": "{stage:candidate}/song/conversion/candidate.swm",
+    "source-adaptation": "{stage:prepare}/score/adaptation.json",
+    "pre-stop-release": "{stage:pre-stop-release}/pre-stop-release.json"
+  }
+}

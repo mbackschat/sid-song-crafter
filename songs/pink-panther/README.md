@@ -4,6 +4,35 @@ The brief is a light, sly, mischievous jazz interpretation. [Mood research and s
 
 The current preferred palette is the [accepted ensemble pulse trial](#test-the-accompaniments-contribution), which recovers vibrancy while retaining melody clarity in its 20-second matched audition. Earlier first-trial audio below remains as comparison evidence.
 
+## Complete sourced arrangement
+
+The full-form candidate keeps the accepted [ensemble palette](ensemble-pulse.json) over the complete D. W. Barnes arrangement: introduction, four theme cycles with the source's register changes, and its final held chord. This is the complete supplied arrangement, not a claim to reproduce Mancini's original orchestration. The earlier 20-second palette acceptance does not establish full-song or ending acceptance.
+
+- [Complete SID interpretation](../../build/pink-panther-full-listening/pulse-ensemble-complete.wav) and [complete plain triangle reference](../../build/pink-panther-full-listening/plain-triangle-complete.wav): about 3:20 each, including release and verification tail. The plain file is a generated rendering of the same reduced score, not an original recording.
+- [Plain then ensemble theme](../../build/pink-panther-full-listening/plain-then-ensemble-theme.level-matched.ab.wav): 32.5 seconds, selecting seconds 20–36 of each full render, with recorded whole-mix level matching.
+- [Plain then ensemble ending](../../build/pink-panther-full-listening/plain-then-ensemble-ending.unity.ab.wav): about 37 seconds, selecting seconds 182 through the complete tail from each version at original levels. This reaches the source final chord rather than stopping at the earlier excerpt's unresolved approach.
+- [Full-form review and verification record](full-review.json): technical evidence and pending musical verdicts are separate.
+
+The [full reduction](full-reduction.json) retains 747 of 2,113 source notes: 341 melody, 239 bass and 167 upper accompaniment notes. All 1,366 omissions retain source identities and reasons in the local adaptation report; no retained note is shortened or transposed. Later unison/octave sax doubling, baritone doubling and drums remain in the complete common score but are omitted from the three-voice projection. Highest-at-onset selects the upper final melody note; one explicit omission removes the lower accompaniment event at beat 352 while preserving the upper note held from beats 348–353. Fixed role envelopes deliberately do not reproduce source velocity dynamics. Native frame quantization and gate policy remain as documented; no one-frame-note timing corrections are needed here.
+
+The [full native palette](full-native.json) and [plain reference](full-plain.json) use the same PAL MOS8580 target and `patternBeats: 8`. Beat-aligned storage exposes repeated phrases without changing any score tick, gate, instrument or release-tail cell. The grid continues through the tail: both exports use 91 unique patterns and 47 order entries per voice, within the unchanged native limits. The previous greedy segmentation required 121 unique patterns for this form. This is a storage improvement, not a tempo or arrangement change.
+
+Reproduce using the existing cached recipe runner and publisher; publication requires a fresh destination:
+
+```sh
+python3 scripts/setup-project.py --only references --include pink-panther-score
+python3 scripts/listening-package.py config/listening/pink-panther-full.json --output build/pink-panther-full
+python3 scripts/publish-listening.py build/pink-panther-full/run.json --selection config/listening/pink-panther-full.audition.json --output build/pink-panther-full-listening
+```
+
+The [recipe](../../config/listening/pink-panther-full.json) checks identical prepared-score hashes and native note schedules, complete CPU execution, every-call standalone VICE checkpoints, PCM clipping/tails, settled decay before volume clear and labelled comparisons. Both full WAVs retain original gain. The historical [BASIC interpretation](../../build/pink-panther-basic-listening/external-pink-panther.wav) remains a separate artistic comparison with a different arrangement, duration, clock and assumed model; it is not a note-for-note oracle for this full score.
+
+**Reuse assessment:** extending a short audition exposed two supported-tool gaps: an explicit source-event omission and repeat-aware pattern boundaries. These now live in the shared [score projection](../../docs/workflows/song-workflow.md#prepare-a-multitrack-score-audition) and [native conversion](../../docs/workflows/native-song-workflow.md), with independent synthetic tests. The full song needs configuration and the existing eleven-stage recipe, not a new player or song-specific compiler. This demonstrates reusable execution and resolves these two gaps; musical judgment and total interpretation effort remain separate from measured build time. Before Axel F, explain the routine and its remaining decisions to the user, as required by the [plan](../../docs/research/study-plan.md#active-score-interpretation-trial).
+
+On 2026-10-15 both full exports passed 10,040 CPU calls and 10,041 VICE checkpoints including initialization, with all 747 note starts verified. The candidate peaks at −7.99 dBFS with no clipped samples. Both versions have zero AC RMS in the measured 0.4-second window before volume clear as well as the final half-second. The initial ten-stage package took 160.89 seconds; final verification with the added release guard took 160.99 seconds with four stages reused. An unchanged repeat reused all eleven stages in 0.49 seconds without stage subprocesses. These are local execution measurements, not total song-production effort. Exact hashes, windows, comparison gains and limits are in the [review record](full-review.json).
+
+**Model-assistance review, 2026-10-15:** no model call at the accepted-palette feedback/full-form revision checkpoint. The [retained calibrations](../../docs/research/audio-assessment.md#use-and-reassess-model-assistance) do not qualify a model to judge this ensemble's vibrancy, full-form musical shape or ending completeness. Use source accounting and execution checks for preservation, and the listener for musical acceptance. Reassess after full-song feedback and before closure; optional models remain supporting research signals.
+
 ## Hear the first trial
 
 - [Plain then SID](../../build/pink-panther-theme-listening/plain-then-sid.ab.wav): 40.5 seconds, 20 seconds per version with a half-second gap.

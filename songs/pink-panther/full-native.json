@@ -1,0 +1,149 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score.json",
+  "title": "Pink Panther complete",
+  "author": "Henry Mancini",
+  "authorinfo": "D W BARNES SCORE: SID INTERPRETATION",
+  "released": "2026",
+  "sidCount": 1,
+  "sidModel": "MOS8580",
+  "clock": "pal",
+  "timingPolicy": "retain-full-pitch",
+  "instruments": {
+    "lead": {
+      "name": "PNTHPULS",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0922",
+      "frame1": "09",
+      "vibrato": "00",
+      "vibrato_delay": 0,
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "8f",
+          "37",
+          "00"
+        ]
+      ],
+      "filter": []
+    },
+    "bass": {
+      "name": "PNTHBASS",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0a29",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "8f",
+          "37",
+          "00"
+        ]
+      ],
+      "filter": [],
+      "vibrato": "00",
+      "vibrato_delay": 0
+    },
+    "harmony": {
+      "name": "PNTHCOMP",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0a29",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "8f",
+          "37",
+          "00"
+        ]
+      ],
+      "filter": [],
+      "vibrato": "00",
+      "vibrato_delay": 0
+    }
+  },
+  "sections": [
+    {
+      "name": "Introduction: chromatic bass-register motifs",
+      "startBeat": 0,
+      "endBeat": 35.666666666666664,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Theme cycle 1",
+      "startBeat": 35.666666666666664,
+      "endBeat": 115.66666666666667,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Theme cycle 2",
+      "startBeat": 115.66666666666667,
+      "endBeat": 195.66666666666666,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Theme cycle 3: source unison sax doubling",
+      "startBeat": 195.66666666666666,
+      "endBeat": 275.6666666666667,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Theme cycle 4: source octave sax doubling",
+      "startBeat": 275.6666666666667,
+      "endBeat": 355,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    },
+    {
+      "name": "Source final chord and release",
+      "startBeat": 355,
+      "endBeat": 364,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    }
+  ],
+  "patternBeats": 8
+}

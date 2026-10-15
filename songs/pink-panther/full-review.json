@@ -1,0 +1,425 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "status": "complete sourced arrangement rendered and verified; awaiting full-song and ending listening feedback",
+  "source": {
+    "assetId": "pink-panther-score",
+    "url": "https://www.dongrays.com/midi/archive/tv-film/ppanther.mid",
+    "sha256": "d1d21050bc639c74093d8b9bacb185ecfedb22174446e1ff5717745a9d9fd8a4",
+    "credit": "Henry Mancini; D. W. Barnes MIDI arrangement",
+    "scope": "Complete supplied arrangement, not authenticated original film score",
+    "totalBeats": 364,
+    "musicSeconds": 196.75655999999998
+  },
+  "arrangement": {
+    "recipe": "songs/pink-panther/full-reduction.json",
+    "palette": "songs/pink-panther/full-native.json",
+    "referencePalette": "songs/pink-panther/full-plain.json",
+    "retainedPalette": "songs/pink-panther/ensemble-pulse.json",
+    "selectedNotes": 2113,
+    "retainedNotes": 747,
+    "omittedNotes": 1366,
+    "shortenedNotes": 0,
+    "omissionBoundary": "Full per-note provenance remains in ignored prepared score/adaptation outputs. Three-voice projection omits declared parts, lower simultaneous tones and one explicit overlapping accompaniment event."
+  },
+  "verification": {
+    "reference": {
+      "conversionSha256": "815e28522b7e73e7a5af4eab4ef6cfa2eea7e962f13ba0d5d519548311ab3957",
+      "verificationSha256": "5cccbc3187cd0c5ea463dd2b8b47fa3d124c996fcd1b04afa24e8ab720d3a622",
+      "cpuPlayCalls": 10040,
+      "maximumPlayCycles": 2298,
+      "frameCycleBudget": 19656,
+      "noteCounts": [
+        341,
+        239,
+        167
+      ],
+      "postStopGatesAndVolumeClear": true,
+      "patternBeats": 8,
+      "uniquePatterns": 91,
+      "orderEntries": [
+        47,
+        47,
+        47
+      ],
+      "maximumPatternRows": 217,
+      "maximumPatternDecodedBytes": 232,
+      "scoreTicks": 9862,
+      "tailTicks": 125,
+      "stopTick": 9987,
+      "timingChanges": [],
+      "vice": {
+        "checkpoints": 10041,
+        "firstCompletedCall": 0,
+        "lastCompletedCall": 10040,
+        "maximumAbsoluteCycleError": 6,
+        "reportSha256": "119d465fabfd846fe92493c294afa5445d083cf922f8a6adc9b98cc0e2c28d1c",
+        "prgSha256": "0032f441e56cfc030d928bf58819b8559d52021169cb44d7804b8e4363f8aef3",
+        "writesSha256": "96c1d29a490fd93d18686b1fb55460f6c1f77ea5aa65948e58c3cf8747c64ec3"
+      },
+      "pcm": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/pink-panther-full/cache/reference/12a6f7ec7053150377d429ef48e175ef0b96342a4b5bc332a90fd250a2e94bcc/attempt-3a1a131ed1d448c98a5b4abce65d6207/song/native-song.wav",
+        "sha256": "afbfaeed41977e4c89647b486bb514d9fc2438e9122cc2a93955a60a43c2d96f",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 8831622,
+        "durationSeconds": 200.26353741496598,
+        "peak": 12156,
+        "peakDbfs": -8.613184871036253,
+        "clippedSamples": 0,
+        "rms": 1991.3464905237558,
+        "acRms": 1984.6814703421146,
+        "acRmsDbfs": -24.355182399359563,
+        "perChannel": [
+          {
+            "dc": 162.7891476786484,
+            "rms": 1991.3464905237558,
+            "acRms": 1984.6814703421146
+          }
+        ]
+      },
+      "finalHalfSecondAcRms": 0.0
+    },
+    "candidate": {
+      "conversionSha256": "cd2038b4755ca0589e817c7980d63e7684611d73bcb5d2a6eb103cb2c810e4b8",
+      "verificationSha256": "434c7c137fa320a31793caf3a9b309fbe646ae9bde20c8355fa1402e0549505c",
+      "cpuPlayCalls": 10040,
+      "maximumPlayCycles": 2295,
+      "frameCycleBudget": 19656,
+      "noteCounts": [
+        341,
+        239,
+        167
+      ],
+      "postStopGatesAndVolumeClear": true,
+      "patternBeats": 8,
+      "uniquePatterns": 91,
+      "orderEntries": [
+        47,
+        47,
+        47
+      ],
+      "maximumPatternRows": 217,
+      "maximumPatternDecodedBytes": 232,
+      "scoreTicks": 9862,
+      "tailTicks": 125,
+      "stopTick": 9987,
+      "timingChanges": [],
+      "vice": {
+        "checkpoints": 10041,
+        "firstCompletedCall": 0,
+        "lastCompletedCall": 10040,
+        "maximumAbsoluteCycleError": 6,
+        "reportSha256": "af3f005dfae19f102d48de84c703e59721fc1b25c56c16511f3f073fd4d6ca08",
+        "prgSha256": "1ee5f70fd46e2168ef72333e64af582e645043988da36231e73af09a248c23bf",
+        "writesSha256": "e00e063cb31fdeb0ea41007cbe67d1165f73629a9c7c6c632dd424425749e905"
+      },
+      "pcm": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/pink-panther-full/cache/candidate/d180fcc4b7fc48ffa324885e98528fbee31f412f552bc3a87f78b58402c2badb/attempt-8cb1dfc3441548b7883b1adcc6f901bd/song/native-song.wav",
+        "sha256": "d9f99f1e2523efdb137897f2d70fc48b40dd7f08db5720816836947fcfa723e2",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 8831622,
+        "durationSeconds": 200.26353741496598,
+        "peak": 13060,
+        "peakDbfs": -7.990135160413256,
+        "clippedSamples": 0,
+        "rms": 4247.103719095962,
+        "acRms": 2959.1875191813315,
+        "acRmsDbfs": -20.885548967016977,
+        "perChannel": [
+          {
+            "dc": -3046.4896564866567,
+            "rms": 4247.103719095962,
+            "acRms": 2959.1875191813315
+          }
+        ]
+      },
+      "finalHalfSecondAcRms": 0.0
+    },
+    "same-score": {
+      "schemaVersion": 1,
+      "preparedScoreSha256": "ec283dd325ed37fbf1ffd807d8bebe6c6aa14ca4ad0ec09cc40cd8cacf99f041",
+      "totalBeats": 364.0,
+      "sameSourceAndNativeNotes": true,
+      "nativeNotesPerVoice": [
+        341,
+        239,
+        167
+      ],
+      "clock": "PAL",
+      "sidModel": "MOS8580",
+      "sidCount": 1,
+      "scoreTicks": 9862,
+      "tailTicks": 125,
+      "stopTick": 9987,
+      "scope": "Shared exact projected source and native note/gate schedules; each export independently audits complete driver consumption. Instrument programs intentionally differ. Musical acceptance remains open."
+    },
+    "timbre-scope": {
+      "schemaVersion": 1,
+      "referenceSha256": "f3410827a8dfd9aae6aec0c133fe74935aa6de014f0efee1e7e5c958dc88becd",
+      "candidateSha256": "a9ef4aa83f69cddaa54c843a7d83cf79042fd9285a2fbfbc84ecc090a7323a77",
+      "comparison": {
+        "frames": 10040,
+        "bankBytes": 25,
+        "allowedOffsets": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          9,
+          10,
+          11,
+          12,
+          13,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "changedOffsets": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          9,
+          10,
+          11,
+          12,
+          13,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "changedFrames": 9968,
+        "firstChangedFrame": 72,
+        "lastChangedFrame": 10039,
+        "allOtherControlsEqual": true
+      },
+      "scope": "Post-call sound controls only; not ordered bus timing, analogue state, PCM equality or musical acceptance"
+    },
+    "pre-stop-release": {
+      "schemaVersion": 1,
+      "maxPerChannelAcRms": 16,
+      "scope": "Rendered decay must settle in the declared window before native volume clear; musical ending acceptance remains open.",
+      "renders": [
+        {
+          "label": "reference",
+          "manifestSha256": "815e28522b7e73e7a5af4eab4ef6cfa2eea7e962f13ba0d5d519548311ab3957",
+          "audioSha256": "afbfaeed41977e4c89647b486bb514d9fc2438e9122cc2a93955a60a43c2d96f",
+          "stopTick": 9987,
+          "stopVolumeClearTick": 9987,
+          "ticksPerSecond": 50.12457321485099,
+          "stopSeconds": 199.24359170485735,
+          "requestedWindowSeconds": [
+            198.74359170485735,
+            199.14359170485736
+          ],
+          "window": {
+            "startFrame": 8764592,
+            "endFrame": 8782232,
+            "startSeconds": 198.7435827664399,
+            "endSeconds": 199.14358276643992,
+            "pcm16LeSha256": "f8194284927aa31c73aaf71b1af027e455885f28de4be3299c8fe4638ed33027",
+            "metrics": {
+              "format": "PCM16",
+              "sampleRate": 44100,
+              "channels": 1,
+              "frames": 17640,
+              "durationSeconds": 0.4,
+              "peak": 157,
+              "peakDbfs": -46.391005651009685,
+              "clippedSamples": 0,
+              "rms": 157.0,
+              "acRms": 0.0,
+              "acRmsDbfs": null,
+              "perChannel": [
+                {
+                  "dc": 157.0,
+                  "rms": 157.0,
+                  "acRms": 0.0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "label": "candidate",
+          "manifestSha256": "cd2038b4755ca0589e817c7980d63e7684611d73bcb5d2a6eb103cb2c810e4b8",
+          "audioSha256": "d9f99f1e2523efdb137897f2d70fc48b40dd7f08db5720816836947fcfa723e2",
+          "stopTick": 9987,
+          "stopVolumeClearTick": 9987,
+          "ticksPerSecond": 50.12457321485099,
+          "stopSeconds": 199.24359170485735,
+          "requestedWindowSeconds": [
+            198.74359170485735,
+            199.14359170485736
+          ],
+          "window": {
+            "startFrame": 8764592,
+            "endFrame": 8782232,
+            "startSeconds": 198.7435827664399,
+            "endSeconds": 199.14358276643992,
+            "pcm16LeSha256": "f8194284927aa31c73aaf71b1af027e455885f28de4be3299c8fe4638ed33027",
+            "metrics": {
+              "format": "PCM16",
+              "sampleRate": 44100,
+              "channels": 1,
+              "frames": 17640,
+              "durationSeconds": 0.4,
+              "peak": 157,
+              "peakDbfs": -46.391005651009685,
+              "clippedSamples": 0,
+              "rms": 157.0,
+              "acRms": 0.0,
+              "acRmsDbfs": null,
+              "perChannel": [
+                {
+                  "dc": 157.0,
+                  "rms": 157.0,
+                  "acRms": 0.0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "files": {
+    "reference": {
+      "path": "build/pink-panther-full-listening/plain-triangle-complete.wav",
+      "sha256": "afbfaeed41977e4c89647b486bb514d9fc2438e9122cc2a93955a60a43c2d96f",
+      "frames": 8831622,
+      "sampleRate": 44100,
+      "durationSeconds": 200.26353741496598
+    },
+    "candidate": {
+      "path": "build/pink-panther-full-listening/pulse-ensemble-complete.wav",
+      "sha256": "d9f99f1e2523efdb137897f2d70fc48b40dd7f08db5720816836947fcfa723e2",
+      "frames": 8831622,
+      "sampleRate": 44100,
+      "durationSeconds": 200.26353741496598
+    },
+    "theme-comparison": {
+      "path": "build/pink-panther-full-listening/plain-then-ensemble-theme.level-matched.ab.wav",
+      "sha256": "dbda68b7acb40f3964db7874ded332a11ef05ae906cc48f9ba8adf854c0c9385",
+      "frames": 1433250,
+      "sampleRate": 44100,
+      "durationSeconds": 32.5
+    },
+    "ending-comparison": {
+      "path": "build/pink-panther-full-listening/plain-then-ensemble-ending.unity.ab.wav",
+      "sha256": "7af0a97a4fcd967a470f5588da2298b0916a34b58e81dc07b072eddcc911921e",
+      "frames": 1632894,
+      "sampleRate": 44100,
+      "durationSeconds": 37.027074829931976
+    },
+    "reference-theme": {
+      "path": "build/pink-panther-full-listening/plain-triangle-theme.matched.wav",
+      "sha256": "f76fc570f8244d31c42fc3b2ba66f0d31e88b112de2cff0d3ac2aed8e3dd7904",
+      "frames": 705600,
+      "sampleRate": 44100,
+      "durationSeconds": 16.0
+    },
+    "candidate-theme": {
+      "path": "build/pink-panther-full-listening/pulse-ensemble-theme.matched.wav",
+      "sha256": "aef61b25c93a74a9c347454505253f22249309ba4894f7660556f5c3a2d3bb43",
+      "frames": 705600,
+      "sampleRate": 44100,
+      "durationSeconds": 16.0
+    },
+    "candidate-psid": {
+      "path": "build/pink-panther-full/cache/candidate/d180fcc4b7fc48ffa324885e98528fbee31f412f552bc3a87f78b58402c2badb/attempt-8cb1dfc3441548b7883b1adcc6f901bd/song/export/candidate.sid",
+      "sha256": "3a7ce4b887733903fba2748de9d5a35ffb19d5b2d44d1dd20ebfb2268b38b83c",
+      "bytes": 8155
+    },
+    "candidate-prg": {
+      "path": "build/pink-panther-full/cache/candidate/d180fcc4b7fc48ffa324885e98528fbee31f412f552bc3a87f78b58402c2badb/attempt-8cb1dfc3441548b7883b1adcc6f901bd/song/export/candidate.prg",
+      "sha256": "1ee5f70fd46e2168ef72333e64af582e645043988da36231e73af09a248c23bf",
+      "bytes": 9027
+    },
+    "candidate-native": {
+      "path": "build/pink-panther-full/cache/candidate/d180fcc4b7fc48ffa324885e98528fbee31f412f552bc3a87f78b58402c2badb/attempt-8cb1dfc3441548b7883b1adcc6f901bd/song/conversion/candidate.swm",
+      "sha256": "ee24e661071d87a4b1fd4fa21e688653dbeefbea153c219bb28c8542796daa8e",
+      "bytes": 5113
+    }
+  },
+  "listening": {
+    "fullSong": null,
+    "ending": null,
+    "scopeOfPriorAcceptance": "Only the previous matched 20-second ensemble-palette trial; not this complete arrangement"
+  },
+  "modelAssistance": {
+    "checkpoint": "accepted-palette feedback and full-form revision",
+    "decision": "skip",
+    "reason": "Retained model calibrations do not validate ensemble vibrancy, complete musical shape or ending completeness; source/execution checks and human listening answer these questions.",
+    "nextCheckpoint": "After full-song feedback and before case closure"
+  },
+  "workflow": {
+    "recipe": "config/listening/pink-panther-full.json",
+    "selection": "config/listening/pink-panther-full.audition.json",
+    "initialTenStageRunSeconds": 160.888545042,
+    "finalElevenStageVerificationSeconds": 160.994499375,
+    "finalVerificationCacheHits": 4,
+    "unchangedRepeatSeconds": 0.49425450000000004,
+    "unchangedRepeatCacheHits": 11,
+    "stages": 11,
+    "scope": "Local package execution only; excludes research, implementation, review, musical decisions and listening. Final verification updated provenance and added the pre-stop guard; it reused four unchanged evidence/audio stages."
+  },
+  "limitations": [
+    "PAL MOS8580 single-SID audition; no claim of this song being validated on NTSC, stereo or real hardware.",
+    "Source velocities are preserved in origins but fixed per-role native envelopes do not reproduce those dynamics.",
+    "Native frame quantization, TEST first frame and existing gate policy remain; this score requires no one-frame timing adjustments.",
+    "Plain triangle reference is generated from the same reduction, not an original recording.",
+    "Technical checks do not establish artistic quality or full-form listening acceptance."
+  ],
+  "comparisons": {
+    "theme": {
+      "sourceWindowSeconds": [
+        20,
+        36
+      ],
+      "order": [
+        "generated plain triangle reference",
+        "accepted ensemble palette on complete score"
+      ],
+      "gapSeconds": 0.5,
+      "gains": [
+        1.0,
+        0.6675235667932746
+      ],
+      "gainsDb": [
+        0.0,
+        -3.510667940163561
+      ],
+      "matching": "attenuation only"
+    },
+    "ending": {
+      "sourceWindowSeconds": [
+        182,
+        200.26353741496598
+      ],
+      "order": [
+        "generated plain triangle reference",
+        "ensemble candidate"
+      ],
+      "gain": [
+        1,
+        1
+      ],
+      "gapSeconds": 0.5
+    },
+    "fullFilesGain": [
+      1,
+      1
+    ]
+  }
+}
