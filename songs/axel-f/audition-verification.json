@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "First tonal palette audition of source beats 68–132; not the complete composition, original performance fidelity or listening acceptance.",
+  "sourceSha256": "8bf2fa73160461e13ace1609393879e12929ada5241e80f397cd3c0e4dfe429d",
+  "recipeSha256": "91bbcbc93eca287079cb4f434c4600b806cf83857bdda10f282852438557e5e7",
+  "sourceNotes": 5199,
+  "selectedNotes": 1030,
+  "retainedNotes": 212,
+  "omittedNotes": 818,
+  "shortenedNotes": 0,
+  "renderChecks": {
+    "reference": {
+      "playCalls": 1795,
+      "maximumPlayCycles": 2127,
+      "frameCycleBudget": 19656,
+      "stopVolumeClearTick": 1742,
+      "postStopGatesAndVolumeClear": true,
+      "durationSeconds": 35.7733560090703,
+      "sampleRate": 44100,
+      "channels": 1,
+      "clippedSamples": 0,
+      "endingHalfSecondAcRms": 0.0,
+      "unmatchedWavSha256": "767e1f71a68a466af42aaeebd69d9286e2ea826b0b1add5210cc052aba92a624"
+    },
+    "candidate": {
+      "playCalls": 1795,
+      "maximumPlayCycles": 2153,
+      "frameCycleBudget": 19656,
+      "stopVolumeClearTick": 1742,
+      "postStopGatesAndVolumeClear": true,
+      "durationSeconds": 35.7733560090703,
+      "sampleRate": 44100,
+      "channels": 1,
+      "clippedSamples": 0,
+      "endingHalfSecondAcRms": 0.0,
+      "unmatchedWavSha256": "5f0fd33d248c0f487f0a632eb9379496d88970e22c8bc9f2637850953a5cced0"
+    }
+  },
+  "viceScope": "Standalone PRG boot, sampled SID write shadows and single-speed PAL cadence; not continuous write equivalence or listening evidence",
+  "viceCompletedCalls": [
+    0,
+    1,
+    3,
+    300,
+    800,
+    1500,
+    1750,
+    1790
+  ],
+  "viceCycleErrors": [
+    0,
+    -5,
+    -1,
+    -5,
+    -3,
+    -1,
+    -4,
+    -6
+  ],
+  "executionSeconds": {
+    "first": 22.68207675,
+    "unchangedRepeat": 0.244013083
+  },
+  "comparison": {
+    "method": "full-file AC RMS, pooled channel power after subtracting each channel mean; silence and tails included",
+    "gainsDb": {
+      "A": 0.0,
+      "B": -6.36962473979147
+    },
+    "durationSeconds": 72.0467120181406
+  },
+  "files": [
+    {
+      "path": "build/axel-f-theme-listening/axel-f-sid.wav",
+      "bytes": 3155254,
+      "sha256": "30ba83045c25186c3b4e732f50b6b8852552495d6b5f2a1b440cee617ee06aeb"
+    },
+    {
+      "path": "build/axel-f-theme-listening/plain-reference.wav",
+      "bytes": 3155254,
+      "sha256": "767e1f71a68a466af42aaeebd69d9286e2ea826b0b1add5210cc052aba92a624"
+    },
+    {
+      "path": "build/axel-f-theme-listening/plain-then-sid.ab.wav",
+      "bytes": 6354564,
+      "sha256": "658d346cb2e55a983780882ffed8ec8a82414cad6149beca769593b08c56c706"
+    }
+  ],
+  "listeningVerdict": null,
+  "modelAssistanceReview": {
+    "checkpoint": "First representative audition",
+    "decision": "No call: models have not been calibrated for punch, appropriate timbre, balance or musical momentum. Known conversion losses are established from MIDI and execution rather than model listening.",
+    "nextCheckpoint": "User feedback or a substantive musical revision; retain experimental supporting-signal status."
+  },
+  "nativeConversion": {
+    "timingChanges": 0,
+    "articulationEntries": 45,
+    "shortNoteReleaseAfterBody": 44,
+    "generalOnsetEnvelopeLimitations": 1
+  }
+}

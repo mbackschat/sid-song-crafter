@@ -1,0 +1,29 @@
+{
+  "title": "Axel F (WinJammer-labelled MIDI arrangement)",
+  "composer": "Harold Faltermeyer",
+  "sourceFile": ".local/research/axel-f/winjammer-axelf.mid",
+  "sourceSha256": "8bf2fa73160461e13ace1609393879e12929ada5241e80f397cd3c0e4dfe429d",
+  "parts": [
+    { "track": 1, "id": "drums" },
+    { "track": 2, "id": "synth-bass" },
+    { "track": 3, "id": "theme" },
+    { "track": 4, "id": "chord-stabs" },
+    { "track": 5, "id": "held-chord-and-descent" },
+    { "track": 6, "id": "second-bass" },
+    { "track": 7, "id": "marimba-like" },
+    { "track": 8, "id": "high-lead" },
+    { "track": 9, "id": "noise-sweep" },
+    { "track": 10, "id": "brass-stabs" }
+  ],
+  "provenance": {
+    "sourceAssetId": "axel-f-score",
+    "sourceUrl": "https://raw.githubusercontent.com/nowhereman999/MIDI-2-CoCo-Converter/af8c1c987d16f5affc91d8308addc3b228727195/Axelf.mid",
+    "catalogueUrl": "https://github.com/nowhereman999/MIDI-2-CoCo-Converter",
+    "sourceCommit": "af8c1c987d16f5affc91d8308addc3b228727195",
+    "sequencer": "Unknown; all track-name metadata reads WinJammer Demo",
+    "sourceEdition": "Web MIDI arrangement bundled as an example with Glen's MIDI-2-CoCo converter; not verified against Faltermeyer's manuscript or an authorized score edition",
+    "usageTerms": "No composition or MIDI-arrangement redistribution permission established; retain source, imported notes and generated song outputs privately",
+    "timingPolicy": "Preserve exact MIDI timing and constant 504201 microseconds per quarter; the original recording's small cue-dependent tempo changes are not represented",
+    "metadataLimitations": "The MIDI key-signature event says C major although its theme and main bass are centered on F minor; instrument_name fields identify roles but are reported as unmapped by common score v1"
+  }
+}

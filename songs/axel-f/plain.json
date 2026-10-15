@@ -1,0 +1,56 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score.json",
+  "title": "Axel F plain score reference",
+  "author": "Harold Faltermeyer",
+  "authorinfo": "SOURCE SCORE: SID INTERPRETATION",
+  "released": "2026",
+  "sidCount": 1,
+  "sidModel": "MOS8580",
+  "clock": "pal",
+  "timingPolicy": "retain-full-pitch",
+  "instruments": {
+    "lead": {
+      "name": "PLAIN0",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0288",
+      "frame1": "09",
+      "wave": [["11", "00", "00"]],
+      "pulse": [],
+      "filter": []
+    },
+    "harmony": {
+      "name": "PLAIN1",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0288",
+      "frame1": "09",
+      "wave": [["11", "00", "00"]],
+      "pulse": [],
+      "filter": []
+    },
+    "bass": {
+      "name": "PLAIN2",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0288",
+      "frame1": "09",
+      "wave": [["11", "00", "00"]],
+      "pulse": [],
+      "filter": []
+    }
+  },
+  "sections": [
+    {
+      "name": "Source hook followed by harmonic stabs",
+      "startBeat": 0,
+      "endBeat": 64,
+      "voices": {
+        "melody": "lead",
+        "harmony": "harmony",
+        "bass": "bass"
+      }
+    }
+  ]
+}

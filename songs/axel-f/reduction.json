@@ -1,0 +1,53 @@
+{
+  "title": "Axel F: source hook and chord-stab passage",
+  "composer": "Harold Faltermeyer; unidentified WinJammer MIDI arrangement",
+  "spans": [
+    {
+      "startBeat": 68,
+      "endBeat": 132
+    }
+  ],
+  "voices": [
+    {
+      "name": "melody",
+      "sourcePart": "theme",
+      "monophonicPolicy": "reject-overlap",
+      "instrument": {
+        "waveform": 16,
+        "attackDecay": 2,
+        "sustainRelease": 128
+      }
+    },
+    {
+      "name": "harmony",
+      "sourcePart": "chord-stabs",
+      "monophonicPolicy": "highest-at-onset",
+      "instrument": {
+        "waveform": 16,
+        "attackDecay": 2,
+        "sustainRelease": 128
+      }
+    },
+    {
+      "name": "bass",
+      "sourcePart": "synth-bass",
+      "monophonicPolicy": "reject-overlap",
+      "instrument": {
+        "waveform": 16,
+        "attackDecay": 2,
+        "sustainRelease": 128
+      }
+    }
+  ],
+  "omittedParts": {
+    "drums": "Retained in the complete source; omitted from this three-voice tonal audition. Independent source percussion is not replaced with invented pitched drum notes.",
+    "held-chord-and-descent": "Retained in the complete source; omitted from this three-voice tonal audition. No added doubling or effects are inferred from this part.",
+    "second-bass": "Retained in the complete source; omitted from this three-voice tonal audition. No added doubling or effects are inferred from this part.",
+    "marimba-like": "Retained in the complete source; omitted from this three-voice tonal audition. No added doubling or effects are inferred from this part.",
+    "high-lead": "Retained in the complete source; omitted from this three-voice tonal audition. No added doubling or effects are inferred from this part.",
+    "noise-sweep": "Retained in the complete source; omitted from this three-voice tonal audition. No added doubling or effects are inferred from this part.",
+    "brass-stabs": "Retained in the complete source; omitted from this three-voice tonal audition. No added doubling or effects are inferred from this part."
+  },
+  "volume": 15,
+  "tailTicks": 125
+}
