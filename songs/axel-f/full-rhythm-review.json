@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-15",
-  "status": "ready-for-full-combination-listening-with-known-zero-hit",
+  "status": "rhythmic-drive-positive-maracas-not-selected",
   "scope": "Combine the accepted full master palette with exact source maracas only in four entirely vacant harmony sections. All 1,025 tonal notes, source timing/form, preferred ELSOFT high lead, original held-support program and native PAL MOS8580 target are retained. No additional musical changes or transposition.",
   "recipe": "config/listening/axel-f-full-rhythm.json",
   "selection": "config/listening/axel-f-full-rhythm.audition.json",
@@ -18,7 +18,7 @@
       "quote": "yes to: second half keep the nice rhythmic touch without becoming too prominent",
       "scope": "AD13 balance accepted in the tested source-backed excerpt."
     },
-    "combinedFull": "Pending human review; the individual preferences do not establish acceptance of this complete combination."
+    "combinedFull": "Reviewed: useful drive without competition affirmed; maracas character disliked. See listeningVerdict; no ending verdict supplied."
   },
   "sourceSha256": "8bf2fa73160461e13ace1609393879e12929ada5241e80f397cd3c0e4dfe429d",
   "sourceProjection": {
@@ -490,8 +490,8 @@
   },
   "modelAssistanceReview": {
     "status": "no-call",
-    "reason": "The listener selected the AD13 balance and tonal palette. Current models are uncalibrated for this full combination and its musical balance; execution and PCM checks support technical claims only.",
-    "nextCheckpoint": "After the full-combination listening verdict or before case closure."
+    "reason": "The listener distinguishes useful rhythmic drive from an unwanted maracas character. This directly settles selection; current models cannot override the preference or establish a preferred replacement.",
+    "nextCheckpoint": "At a materially different sound audition, or before case closure."
   },
   "executionTiming": {
     "initialStartedAt": "2026-10-15T20:45:38.264918+00:00",
@@ -598,6 +598,15 @@
     "logicalBytesReclaimed": 152060558,
     "remainingInventoriedLogicalBytes": 6173359771,
     "unselectedFilesUnchanged": true,
-    "retention": "All shared listening files and active candidate/baseline evidence remain. Final selection and retirement of superseded working caches await the combined listening verdict."
+    "retention": "All shared listening files and current candidate/baseline evidence retained. The maracas trial is now parked; any later cache retirement must preserve its reproducibility and the selected tonal baseline."
+  },
+  "listeningVerdict": {
+    "date": "2026-10-15",
+    "quote": "yes to: rhythm add useful drive without competing with the tune . However: i am not a fan of the maracas here.",
+    "rhythmicContribution": "Useful drive without competing with the tune.",
+    "instrumentSuitability": "Listener is not a fan of the maracas in this arrangement; do not select this addition as final.",
+    "ending": "No verdict supplied.",
+    "decision": "Retain the positively received full master palette without maracas as the current baseline. This is the coordinator selection, not an explicit listener preference between complete versions. Preserve the rhythm trial and its evidence.",
+    "lesson": "Accepting rhythmic function and relative balance does not establish liking the instrument or accepting the complete arrangement."
   }
 }
