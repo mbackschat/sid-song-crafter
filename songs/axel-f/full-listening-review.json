@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Complete sourced tonal interpretation, first four silent source beats trimmed. Original drums, second bass, noise sweeps and pitch bends omitted; source percussion-only ending is absent.",
+  "listeningVerdict": null,
+  "preferredLead": "songs/axel-f/smoother.json",
+  "sourceSha256": "8bf2fa73160461e13ace1609393879e12929ada5241e80f397cd3c0e4dfe429d",
+  "sourceNotes": 5199,
+  "retainedNotes": 1025,
+  "omittedNotes": 4174,
+  "shortenedNotes": 26,
+  "nativePatterns": 85,
+  "cpuCalls": 9006,
+  "viceCalls": [
+    0,
+    1,
+    3,
+    800,
+    4000,
+    6000,
+    8000,
+    8900,
+    9000
+  ],
+  "verificationScope": "Complete projected note schedule; sampled standalone VICE registers/cadence; unclipped full PCM and zero AC RMS before volume clear. Not a musical acceptance or hardware-equivalence claim.",
+  "modelAssistanceReview": {
+    "checkpoint": "Complete tonal interpretation ready for listening",
+    "decision": "No model call; complete phrasing, balance and ending are not calibrated model tasks. Numeric projection/execution checks pass; await scoped human feedback after selected external-reference comparison.",
+    "nextCheckpoint": "Full listening verdict or substantive revision"
+  },
+  "files": [
+    {
+      "path": "build/axel-f-full-listening/axel-f-full.wav",
+      "sha256": "888be7e34a07e72a263fd7a8cf88fe9324a2010f2beba3d262179d2c76fe6a88"
+    },
+    {
+      "path": "build/axel-f-full-listening/plain-reference-full.wav",
+      "sha256": "28731d7ec08b4eaa4aeca21ccbfbf63aabd6d0c1e41f6e78039fccc1d26c11af"
+    },
+    {
+      "path": "build/axel-f-full-listening/plain-then-sid-ending.ab.wav",
+      "sha256": "b01ae4b8047b820a3424a12431bdd96d6da7d993ca0cdf7a3c5ba4b4ed3b6a60"
+    },
+    {
+      "path": "build/axel-f-full-listening/plain-then-sid-later-section.ab.wav",
+      "sha256": "44ba6177d303cc678780b44970ddea31e3ed73e22400cfb88a6b44f7a5f283f2"
+    }
+  ]
+}

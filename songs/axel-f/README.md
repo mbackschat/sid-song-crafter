@@ -1,6 +1,6 @@
 # Axel F: first SID palette audition
 
-Interpret Harold Faltermeyer's original electronic theme through a sourced score, using the existing native instrument bank and build workflow. This first audition is a **32.27-second tonal excerpt**, not the complete song. The listener prefers the longer-release lead after finding the initial version cut off too early. The complete sourced form is now being arranged. The [source research](source-research.md) owns the download, attribution limits, musical intent and conversion losses; no existing SID is the note source.
+Interpret Harold Faltermeyer's original electronic theme through a sourced score, using the existing native instrument bank and build workflow. This first audition is a **32.27-second tonal excerpt**, not the complete song. The listener prefers the longer-release lead after finding the initial version cut off too early. The complete sourced tonal form is ready for review. The [source research](source-research.md) owns the download, attribution limits, musical intent and conversion losses; no existing SID is the note source.
 
 ## Intent and arrangement
 
@@ -68,3 +68,23 @@ open build/axel-f-smoother-listening/previous-then-smoother.ab.wav
 The comparison is 32.7 seconds: previous hook first, longer-release hook second. `previous.wav` and `smoother.wav` contain the complete selected excerpt and tail. These are still palette auditions, not the complete song. Model review at the corrected verdict: no call; the human preference selects the smoother lead. Reassess at the complete arrangement audition.
 
 A reporting limitation exposed by this diagnosis: the converter field `sourceGateOffTick` already includes its early-release policy; it is not the original MIDI note-off. Likewise, zero `timingChanges` does not establish source-length gated sound, and the 45 articulation entries above do not enumerate all standard gate insets. Read the source endpoint, executed GATE and envelope separately. Clarifying that generic report is a separate workflow improvement; it is not silently folded into this timbre trial.
+
+## Complete tonal interpretation ready for review
+
+The [full reduction](full-reduction.json), [native palette](full-native.json) and [plain reference](full-plain.json) now cover source beats 4–353.3125, trimming only four initial silent beats. The preferred smoother lead is unchanged. Source theme, held/descent and later high-lead parts share voice 1 in their respective sections; chord stabs, marimba-like material and brass share voice 2; main bass retains voice 3 and sole filter ownership. The marimba region uses the existing soft triangle pluck to distinguish its lighter role from the bright foreground stabs.
+
+This is the complete **tonal reduction**, not a faithful rendering of every source instrument: drums, second bass, noise sweeps and bass pitch bends are omitted. The final retained tone ends at source beat 351.75; the remaining 1.5625 source beats contain omitted percussion. Their timeline is retained as silence, followed by the native release tail. Do not describe this as preserving the original percussion ending.
+
+The projection retains 1,025 of 5,199 notes (288 melody, 259 harmony, 478 bass). Sixteen same-pitch brass doubles are explicitly omitted in favor of the longer simultaneous marimba note. Twenty-six slight melodic overlaps shorten to the next onset, totaling 71/96 beat cumulatively; original durations remain in exact source records. Every retained pitch and onset is source-derived. The [shared projection contract](../../docs/workflows/song-workflow.md#prepare-a-multitrack-score-audition) now supports multiple source parts per voice and opt-in overlap trimming; these are reusable reductions, not a new source-specific player.
+
+```sh
+python3 scripts/listening-package.py config/listening/axel-f-full.json --output build/axel-f-full
+python3 scripts/publish-listening.py build/axel-f-full/run.json --selection config/listening/axel-f-full.audition.json --output build/axel-f-full-listening
+open build/axel-f-full-listening/axel-f-full.wav
+```
+
+Generated files are `axel-f-full.wav` and `plain-reference-full.wav` (179.635 seconds each), `plain-then-sid-later-section.ab.wav` (40.5 seconds, source-derived plain first then SID, covering 104–124 seconds), and `plain-then-sid-ending.ab.wav` (34.5 seconds, plain first then SID). Full files retain original amplitude; the later-section comparison is level matched. The recipe also exposes the private candidate SID, PRG and editable SWM. Fresh publication destinations are required.
+
+Both exports use 85 native patterns and pass all 1,025 projected notes across 9,006 CPU calls. Candidate VICE checkpoints extend through call 9,000, after volume clear at 8,953; this is sampled register/cadence agreement, not continuous VICE equivalence. Both rendered decays settle to zero AC RMS before volume clear, in the 178.115–178.515 second window. All full WAVs are unclipped with quiet tails. The [review record](full-listening-review.json) pins the files and separates this verification from pending musical acceptance. The initial seven-stage run took 112.68 seconds; source research, review and the small shared reduction extension are additional effort, not included in that execution figure.
+
+The user's subsequently selected TGI interpretation is a separate lead and drum-balance reference, not the note source. Its [bounded comparison and Hülsbeck original](tgi-reference.md) retain attribution, local paths and the distinction between volume-path samples and oscillator percussion. The user selects Hülsbeck’s original for the [active master study](tgi-reference.md#active-master-study) and calls it “really great”. Complete-song feedback on our tonal version remains pending while the lead and phrasing study informs a bounded revision. Models remain experimental and were not used to infer musical acceptance.

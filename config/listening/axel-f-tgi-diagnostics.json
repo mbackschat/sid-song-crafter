@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "source-pin",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "asset",
+        ".local/research/axel-f/tgi.sid",
+        "--sha256",
+        "0c4ce734df21ceeb289ea6b7f313f606d6f518c62c49b6ab166d566f6dd7dbb9",
+        "--output",
+        "{out}/asset.json"
+      ],
+      "inputs": [
+        ".local/research/axel-f/tgi.sid",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "asset.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "full",
+      "command": [
+        ".local/bin/render-sid",
+        ".local/research/axel-f/tgi.sid",
+        "{out}/source.wav",
+        "16",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        ".local/research/axel-f/tgi.sid",
+        "scripts/render-sid.cpp",
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "{stage:source-pin}/asset.json"
+      ],
+      "outputs": [
+        "source.wav",
+        "source.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "volume-path",
+      "command": [
+        ".local/bin/render-sid",
+        ".local/research/axel-f/tgi.sid",
+        "{out}/source.wav",
+        "16",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal",
+        "--voices",
+        "none"
+      ],
+      "inputs": [
+        ".local/research/axel-f/tgi.sid",
+        "scripts/render-sid.cpp",
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "{stage:source-pin}/asset.json"
+      ],
+      "outputs": [
+        "source.wav",
+        "source.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "voice-2-plus-volume",
+      "command": [
+        ".local/bin/render-sid",
+        ".local/research/axel-f/tgi.sid",
+        "{out}/source.wav",
+        "16",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal",
+        "--voices",
+        "2"
+      ],
+      "inputs": [
+        ".local/research/axel-f/tgi.sid",
+        "scripts/render-sid.cpp",
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "{stage:source-pin}/asset.json"
+      ],
+      "outputs": [
+        "source.wav",
+        "source.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "voice-3-plus-volume",
+      "command": [
+        ".local/bin/render-sid",
+        ".local/research/axel-f/tgi.sid",
+        "{out}/source.wav",
+        "16",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal",
+        "--voices",
+        "3"
+      ],
+      "inputs": [
+        ".local/research/axel-f/tgi.sid",
+        "scripts/render-sid.cpp",
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "{stage:source-pin}/asset.json"
+      ],
+      "outputs": [
+        "source.wav",
+        "source.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "measure-volume-path",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:full}/source.wav",
+        "{stage:volume-path}/source.wav",
+        "--seconds",
+        "16",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "scripts/check-listening.py",
+        "scripts/audio_comparison.py",
+        "{stage:full}/source.wav",
+        "{stage:volume-path}/source.wav",
+        "scripts/listening_checks.py"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "measure-voice-2-plus-volume",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:full}/source.wav",
+        "{stage:voice-2-plus-volume}/source.wav",
+        "--seconds",
+        "16",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "scripts/check-listening.py",
+        "scripts/audio_comparison.py",
+        "{stage:full}/source.wav",
+        "{stage:voice-2-plus-volume}/source.wav",
+        "scripts/listening_checks.py"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "measure-voice-3-plus-volume",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:full}/source.wav",
+        "{stage:voice-3-plus-volume}/source.wav",
+        "--seconds",
+        "16",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "scripts/check-listening.py",
+        "scripts/audio_comparison.py",
+        "{stage:full}/source.wav",
+        "{stage:voice-3-plus-volume}/source.wav",
+        "scripts/listening_checks.py"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "opening-control",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:full}/source.wav",
+        "{stage:volume-path}/source.wav",
+        "{out}/full-then-volume-only",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "8"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:full}/source.wav",
+        "{stage:volume-path}/source.wav"
+      ],
+      "outputs": [
+        "full-then-volume-only.ab.wav",
+        "full-then-volume-only.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "lead-context-control",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:full}/source.wav",
+        "{stage:volume-path}/source.wav",
+        "{out}/full-then-volume-only",
+        "--start-seconds",
+        "8",
+        "--end-seconds",
+        "16"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:full}/source.wav",
+        "{stage:volume-path}/source.wav"
+      ],
+      "outputs": [
+        "full-then-volume-only.ab.wav",
+        "full-then-volume-only.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "attribution",
+      "command": [
+        "{python}",
+        "-c",
+        "import json, math, sys\nfrom pathlib import Path\nsys.path.insert(0, 'scripts')\nfrom audio_comparison import read_pcm16\nnames = ('full', 'volume-path', 'voice-2-plus-volume', 'voice-3-plus-volume')\naudio = dict(zip(names, map(read_pcm16, sys.argv[2:])))\nrate = audio['full'].sample_rate\nstop = round(7.5 * rate)\nchecks = dict(openingFullEqualsVoice3PlusVolume=audio['full'].samples[:stop] == audio['voice-3-plus-volume'].samples[:stop], openingVolumeEqualsVoice2PlusVolume=audio['volume-path'].samples[:stop] == audio['voice-2-plus-volume'].samples[:stop])\nif not all(checks.values()): raise ValueError('Opening voice-attribution control changed')\ndef ac(samples):\n    count = len(samples)\n    return math.sqrt((sum(x * x for x in samples) * count - sum(samples) ** 2) / count ** 2)\nlevels = dict((name, dict((str(start) + '-' + str(end), ac(item.samples[round(start * rate):round(end * rate)])) for start, end in ((0, 7.5), (8, 16)))) for name, item in audio.items())\nsamples = audio['volume-path'].samples\nstep = round(rate * 0.01)\nenvelope = [ac(samples[start:start + step]) for start in range(0, stop, step)]\nstarts, active = [], False\nfor index, value in enumerate(envelope):\n    time = index * 0.01\n    if value >= 1000 and not active and (not starts or time - starts[-1] > 0.12): starts.append(round(time, 2))\n    active = value >= 1000\nreport = dict(schemaVersion=1, sourceSha256='0c4ce734df21ceeb289ea6b7f313f606d6f518c62c49b6ab166d566f6dd7dbb9', sourceNoteDataIncluded=False, inputAudioSha256=dict((name, item.sha256) for name, item in audio.items()), checkedOpeningSeconds=[0, 7.5], checks=checks, windowAcRmsPcm16=levels, volumePathBurstProbe=dict(binSeconds=0.01, thresholdAcRms=1000, refractorySeconds=0.12, startsSeconds=starts, interpretation='Threshold crossings of rendered volume-path residual; not musical onset annotation or listening acceptance'), limits='Control masks preserve volume-path samples; they do not isolate all percussion, form additive stems or establish subjective balance. No ordered CPU-write trace.')\nPath(sys.argv[1]).write_text(json.dumps(report, indent=2))\n",
+        "{out}/attribution.json",
+        "{stage:full}/source.wav",
+        "{stage:volume-path}/source.wav",
+        "{stage:voice-2-plus-volume}/source.wav",
+        "{stage:voice-3-plus-volume}/source.wav"
+      ],
+      "inputs": [
+        "scripts/audio_comparison.py",
+        "{stage:full}/source.wav",
+        "{stage:volume-path}/source.wav",
+        "{stage:voice-2-plus-volume}/source.wav",
+        "{stage:voice-3-plus-volume}/source.wav"
+      ],
+      "outputs": [
+        "attribution.json"
+      ],
+      "timeoutSeconds": 30
+    }
+  ],
+  "deliverables": {
+    "full": "{stage:full}/source.wav",
+    "volume-path": "{stage:volume-path}/source.wav",
+    "voice-2-plus-volume": "{stage:voice-2-plus-volume}/source.wav",
+    "voice-3-plus-volume": "{stage:voice-3-plus-volume}/source.wav",
+    "opening-control": "{stage:opening-control}/full-then-volume-only.ab.wav",
+    "lead-context-control": "{stage:lead-context-control}/full-then-volume-only.ab.wav",
+    "attribution": "{stage:attribution}/attribution.json"
+  }
+}

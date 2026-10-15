@@ -1,0 +1,207 @@
+{
+  "title": "Axel F: complete source-backed tonal interpretation",
+  "composer": "Harold Faltermeyer; unidentified WinJammer MIDI arrangement",
+  "spans": [
+    {
+      "startBeat": 4,
+      "endBeat": 353.3125
+    }
+  ],
+  "voices": [
+    {
+      "name": "melody",
+      "sourceParts": [
+        "theme",
+        "held-chord-and-descent",
+        "high-lead"
+      ],
+      "monophonicPolicy": "highest-at-onset",
+      "overlapPolicy": "shorten-to-next-onset",
+      "instrument": {
+        "waveform": 16,
+        "attackDecay": 2,
+        "sustainRelease": 128
+      }
+    },
+    {
+      "name": "harmony",
+      "sourceParts": [
+        "chord-stabs",
+        "marimba-like",
+        "brass-stabs"
+      ],
+      "monophonicPolicy": "highest-at-onset",
+      "instrument": {
+        "waveform": 16,
+        "attackDecay": 2,
+        "sustainRelease": 128
+      },
+      "omittedEvents": [
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 0,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 2,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 4,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 6,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 8,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 10,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 12,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 14,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 16,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 18,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 20,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 24,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 26,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 28,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 30,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        },
+        {
+          "sourcePart": "brass-stabs",
+          "sourceEventIndex": 32,
+          "reason": "Omit this simultaneous same-pitch brass doubling so the single accompaniment voice retains the longer marimba body. The complete source retains both attacks and durations; their independent timbres and overlapping envelopes cannot coexist on one voice."
+        }
+      ]
+    },
+    {
+      "name": "bass",
+      "sourcePart": "synth-bass",
+      "monophonicPolicy": "reject-overlap",
+      "instrument": {
+        "waveform": 16,
+        "attackDecay": 2,
+        "sustainRelease": 128
+      }
+    }
+  ],
+  "omittedParts": {
+    "drums": "Retain all GM percussion in the complete private source; omit it from this three-voice tonal interpretation to reserve independent melody, upper accompaniment and main bass. This loses the source drum groove, fills and final percussion-only tail through source beat 353.3125; no invented pitched percussion replaces it.",
+    "second-bass": "Retain the later layered bass in the complete private source; omit it to preserve the continuous synth-bass part and the independent marimba/high-lead contrast. This loses its additional low-register pitches, simultaneous layering and overlapping tails.",
+    "noise-sweep": "Retain the percussion-channel sweep events in the complete private source; omit them because their repeated MIDI note does not encode the original noise timbre and no fourth independent voice is available. This loses both source transition sweeps rather than presenting the repeated note as pitched melody."
+  },
+  "volume": 15,
+  "tailTicks": 125,
+  "sections": [
+    {
+      "name": "Opening hook",
+      "startBeat": 0,
+      "endBeat": 16
+    },
+    {
+      "name": "Opening hook: source upper-octave doubling reduced",
+      "startBeat": 16,
+      "endBeat": 32
+    },
+    {
+      "name": "Main bass entry: source percussion omitted",
+      "startBeat": 32,
+      "endBeat": 64
+    },
+    {
+      "name": "Theme return",
+      "startBeat": 64,
+      "endBeat": 96
+    },
+    {
+      "name": "Rhythmic upper chord tones",
+      "startBeat": 96,
+      "endBeat": 128
+    },
+    {
+      "name": "Held upper chord tone and bass transition",
+      "startBeat": 128,
+      "endBeat": 156
+    },
+    {
+      "name": "Source high descent",
+      "startBeat": 156,
+      "endBeat": 172
+    },
+    {
+      "name": "Theme return before marimba contrast",
+      "startBeat": 172,
+      "endBeat": 204
+    },
+    {
+      "name": "Marimba-like figure over main bass",
+      "startBeat": 204,
+      "endBeat": 236
+    },
+    {
+      "name": "High lead with marimba-like figure",
+      "startBeat": 236,
+      "endBeat": 252
+    },
+    {
+      "name": "High lead, marimba and upper brass reduction",
+      "startBeat": 252,
+      "endBeat": 276
+    },
+    {
+      "name": "Rhythmic upper chord tones return",
+      "startBeat": 276,
+      "endBeat": 316
+    },
+    {
+      "name": "Final theme, bass and omitted source percussion tail",
+      "startBeat": 316,
+      "endBeat": 349.3125
+    }
+  ]
+}
