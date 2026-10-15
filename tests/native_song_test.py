@@ -360,6 +360,30 @@ class NativeSongTest(unittest.TestCase):
                     native_song.run_song(root / "recipe.json", root / "output", excerpt_start=start, excerpt_seconds=seconds)
                 self.assertFalse((root / "output").exists())
 
+    def test_audit_deadline_can_cover_a_longer_complete_schedule(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            recipe, renderer = root / "recipe.json", root / "renderer"
+            recipe.write_text("fixture")
+            renderer.write_bytes(b"renderer fixture")
+            manifest = {"nativePath": str(root / "song.swm"), "title": "Fixture", "author": "Fixture", "released": "2026", "totalTicks": 10, "ticksPerSecond": 50}
+            converter = SimpleNamespace(arrange=lambda *args, **kwargs: manifest)
+            exporter = SimpleNamespace(export_module=lambda *args, **kwargs: {"sid": str(root / "song.sid")})
+            for deadline in (120, 300):
+                kwargs = {} if deadline == 120 else {"audit_timeout_seconds": deadline}
+                with patch.object(native_song, "load_script", side_effect=[converter, exporter]), patch.object(native_song.subprocess, "run", side_effect=subprocess.TimeoutExpired("audit", deadline)) as run, patch("builtins.print"), self.assertRaises(subprocess.TimeoutExpired):
+                    native_song.run_song(recipe, root / str(deadline), renderer, excerpt_seconds=0.5, **kwargs)
+                self.assertEqual(deadline, run.call_args.kwargs["timeout"])
+                self.assertIn("--ticks", run.call_args.args[0])
+
+    def test_invalid_audit_deadline_fails_before_creating_output(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for deadline in (0, -1, float("nan"), float("inf")):
+                with self.subTest(deadline=deadline), self.assertRaisesRegex(ValueError, "Audit deadline"):
+                    native_song.run_song(root / "recipe.json", root / "output", audit_timeout_seconds=deadline)
+                self.assertFalse((root / "output").exists())
+
     def test_failed_pcm_guard_retains_renderer_command_and_output(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

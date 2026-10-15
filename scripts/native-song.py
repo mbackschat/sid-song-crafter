@@ -208,8 +208,9 @@ def verify_render(pcm, seconds, sid_count):
     require(pcm["clippedSamples"] == 0 and len(pcm["perChannel"]) == sid_count and all(channel["acRms"] > 1 for channel in pcm["perChannel"]), "Full native render is clipped or contains a silent chip channel")
 
 
-def run_song(recipe, output, renderer=ROOT / ".local/bin/render-sid", excerpt_start=0, excerpt_seconds=20, *, clock=None):
+def run_song(recipe, output, renderer=ROOT / ".local/bin/render-sid", excerpt_start=0, excerpt_seconds=20, *, clock=None, audit_timeout_seconds=120):
     require(math.isfinite(excerpt_start) and excerpt_start >= 0 and math.isfinite(excerpt_seconds) and excerpt_seconds > 0, "Excerpt position/duration must be finite, nonnegative and positive respectively")
+    require(math.isfinite(audit_timeout_seconds) and audit_timeout_seconds > 0, "Audit deadline must be finite and positive")
     recipe, output, renderer = Path(recipe).resolve(), Path(output).resolve(), Path(renderer).resolve()
     require(not output.exists(), "Native song output already exists; choose a fresh directory to preserve evidence")
     require(recipe.is_file() and renderer.is_file(), "Recipe and documented SID renderer must exist")
@@ -230,7 +231,7 @@ def run_song(recipe, output, renderer=ROOT / ".local/bin/render-sid", excerpt_st
     require(excerpt_start + excerpt_seconds <= seconds, "Excerpt must fit wholly inside the planned full render")
     ticks = math.ceil(seconds * manifest["ticksPerSecond"]) + 1
     print(f"Checking {ticks} native player calls and the complete converted schedule", flush=True)
-    subprocess.run([sys.executable, str(Path(__file__).resolve()), "audit", str(manifest_path), str(export_path), str(prefix), "--ticks", str(ticks)], check=True, timeout=120)
+    subprocess.run([sys.executable, str(Path(__file__).resolve()), "audit", str(manifest_path), str(export_path), str(prefix), "--ticks", str(ticks)], check=True, timeout=audit_timeout_seconds)
     wav = Path(str(prefix) + ".wav")
     command = [str(renderer), exported["sid"], str(wav), str(seconds), "--clock", timing.name]
     print(f"Rendering complete native song: {seconds:.3f} seconds", flush=True)
@@ -269,6 +270,7 @@ def main():
     build.add_argument("--renderer", type=Path, default=ROOT / ".local/bin/render-sid")
     build.add_argument("--excerpt-start", type=float, default=0)
     build.add_argument("--excerpt-seconds", type=float, default=20)
+    build.add_argument("--audit-timeout-seconds", type=float, default=120, help="Positive wall-clock deadline for the complete CPU audit (default: 120); does not reduce verified calls")
     audit = commands.add_parser("audit", help="verify native note/pattern consumption from a conversion and export manifest")
     audit.add_argument("manifest", type=Path)
     audit.add_argument("export", type=Path)
@@ -276,7 +278,7 @@ def main():
     audit.add_argument("--ticks", type=int, required=True)
     args = parser.parse_args()
     if args.command == "build":
-        run_song(args.recipe, args.output, args.renderer, args.excerpt_start, args.excerpt_seconds, clock=args.clock)
+        run_song(args.recipe, args.output, args.renderer, args.excerpt_start, args.excerpt_seconds, clock=args.clock, audit_timeout_seconds=args.audit_timeout_seconds)
     else:
         audit_native(args.manifest, args.export, args.prefix, args.ticks)
 
