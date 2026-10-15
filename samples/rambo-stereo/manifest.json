@@ -1,0 +1,549 @@
+{
+  "schemaVersion": 1,
+  "sampleId": "rambo-stereo",
+  "title": "Rambo: First Blood Part II — centered-lead two-SID arrangement",
+  "packagedDate": "2026-10-15",
+  "pathBase": "repository-root",
+  "assets": {
+    "sid": {
+      "path": "samples/rambo-stereo/rambo-stereo.sid",
+      "bytes": 17683,
+      "sha256": "33dfda271536ea1c97de204bc415a8ff619f5c326a536ec0be4f9dc3a0f1c889"
+    },
+    "fullWav": {
+      "path": "samples/rambo-stereo/rambo-stereo.wav",
+      "bytes": 39690044,
+      "sha256": "c72cfab792214947717e02f3ef3b931af27af6fcd9dfa789a5189d196fd80e6c"
+    },
+    "featuredWav": {
+      "path": "samples/rambo-stereo/rambo-stereo-featured-32-64.wav",
+      "bytes": 5644844,
+      "sha256": "485ca71c8255c5a38481c5c7deeef7bb75163aa6eab7dd3ae269f780951a0c40"
+    },
+    "license": {
+      "path": "samples/rambo-stereo/LICENSE",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    }
+  },
+  "target": {
+    "clock": "PAL",
+    "clockHz": 985248.6111111111,
+    "sidModels": [
+      "MOS6581",
+      "MOS6581"
+    ],
+    "sidCount": 2,
+    "sidBaseAddresses": [
+      54272,
+      54304
+    ],
+    "callCycles": 19656,
+    "callsPerSecond": 50.12457321485099,
+    "subtune": 1,
+    "supportedCalls": 11000,
+    "standalonePrg": false,
+    "sidWizardModule": false,
+    "sharedProcessing": {
+      "filterRouting": 0,
+      "filterModes": 0,
+      "masterVolume": 15,
+      "ownership": "Each chip has its own shared filter/master volume and one mono output. Both filters remain bypassed; no shared-processing register changes during playback.",
+      "evidencePath": "evidence/rambo-centered-native/cpu/writes.json.gz"
+    },
+    "allocation": [
+      {
+        "chip": "A",
+        "voice": 1,
+        "role": "faithful complete source lead",
+        "coupling": "A3 is the native modulator in the source sync/ring passages",
+        "output": "left"
+      },
+      {
+        "chip": "A",
+        "voice": 2,
+        "role": "faithful complete source bass",
+        "coupling": "none",
+        "output": "left"
+      },
+      {
+        "chip": "A",
+        "voice": 3,
+        "role": "faithful complete source arpeggio and lead modulator",
+        "coupling": "modulates A1 during source sync/ring passages",
+        "output": "left"
+      },
+      {
+        "chip": "B",
+        "voice": 1,
+        "role": "complete native source lead duplicate",
+        "coupling": "B3 is the native modulator during bounded handoffs",
+        "output": "right"
+      },
+      {
+        "chip": "B",
+        "voice": 2,
+        "role": "accepted sustained inner chord support",
+        "coupling": "none",
+        "output": "right"
+      },
+      {
+        "chip": "B",
+        "voice": 3,
+        "role": "37 accepted held-third regions; source arpeggio/modulator during handoffs",
+        "coupling": "source segments at calls 4914–5553 and 10034–10999 preserve B1 sync/ring dependencies",
+        "output": "right"
+      }
+    ]
+  },
+  "audio": {
+    "format": "PCM16 little-endian",
+    "sampleRate": 44100,
+    "channels": 2,
+    "fullFrames": 9922500,
+    "fullDurationSeconds": 225,
+    "gain": 1,
+    "fullTrim": "none",
+    "postprocessing": "none",
+    "outputMatrix": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "matrixRows": [
+      "left",
+      "right"
+    ],
+    "matrixColumns": [
+      "SID A",
+      "SID B"
+    ],
+    "routing": "Native SID A left, SID B right; the source lead runs on A1 and B1, with independent accompaniment on both sides. No per-voice pan register or external centering matrix.",
+    "featuredExcerpt": {
+      "sourceAsset": "fullWav",
+      "seconds": [
+        32,
+        64
+      ],
+      "startFrame": 1411200,
+      "endFrameExclusive": 2822400,
+      "frames": 1411200,
+      "durationSeconds": 32,
+      "gain": 1,
+      "fades": "none",
+      "pcmBytesSha256": "990657b0717fcde0c572ade9fb392f8b21afb6a68d61d72c4b04b1e06fad227f",
+      "contract": "Exact contiguous PCM frames from the accepted full render; the excerpt starts and ends inside the complete song. The full SID and full WAV retain the original introduction."
+    }
+  },
+  "rights": {
+    "license": "GPL-3.0-only",
+    "licensePath": "samples/rambo-stereo/LICENSE",
+    "attribution": "Composed, arranged and programmed by Martin Galway, 1985; original header: (C) Ocean Software 1985. Galway states in the upstream README dated 2026-04-14 that he later acquired the music/programming rights from Infogrames.",
+    "modificationNotice": "Modified version, packaged 2026-10-15: independent SID Song Crafter symbolic score and computed two-SID player; source-derived held harmony, native duplicated lead and bounded sync/ring modulator handoffs. This is not the upstream driver binary.",
+    "scope": "This stereo complete-song package, music-derived score/arrangement descriptions and combined generated SID/WAV files are distributed under GNU GPL version 3, without warranty. Independently authored reusable tools retain MIT when used separately.",
+    "upstreamRepository": "https://github.com/MartinGalway/C64_music",
+    "upstreamRevision": "a458a3687e27a63647bbe41968094f0e6d0965a0",
+    "upstreamFiles": [
+      {
+        "path": "README.md",
+        "bytes": 751,
+        "sha256": "1533e9edda1ae937b9bc862b760566b2f7f865b31d6f726a894c0bee763a8da1",
+        "url": "https://github.com/MartinGalway/C64_music/blob/a458a3687e27a63647bbe41968094f0e6d0965a0/README.md"
+      },
+      {
+        "path": "LICENSE",
+        "bytes": 35149,
+        "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+        "url": "https://github.com/MartinGalway/C64_music/blob/a458a3687e27a63647bbe41968094f0e6d0965a0/LICENSE"
+      },
+      {
+        "path": "rambload.asm",
+        "bytes": 43766,
+        "sha256": "78e7927e6c2e8f7d42c18d2e02bec764a2911d2d8180cec789020bdd60cdbb75",
+        "url": "https://github.com/MartinGalway/C64_music/blob/a458a3687e27a63647bbe41968094f0e6d0965a0/rambload.asm"
+      }
+    ],
+    "excluded": "No downloaded original SID, upstream binary, reference WAV, movie audio or other recording is included.",
+    "upstreamFilesLiveRechecked": "2026-10-15"
+  },
+  "correspondingSource": {
+    "gitRevision": "b22d5e13699da9e76e651b06033ca36d21e0a087",
+    "preferredEditableScore": "songs/rambo-loader.json",
+    "arrangement": "songs/studies/rambo-centered-native/arrangement.json",
+    "baselineArrangement": "songs/studies/rambo-chord-expansion/arrangement.json",
+    "files": [
+      {
+        "path": "songs/rambo-loader.json",
+        "bytes": 96091,
+        "sha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b"
+      },
+      {
+        "path": "songs/studies/rambo-centered-native/arrangement.json",
+        "bytes": 2200,
+        "sha256": "5226fead55bb675bf7083c7697939b156238ed3c353df755977ef4cc81d8ba2a"
+      },
+      {
+        "path": "songs/studies/rambo-chord-expansion/arrangement.json",
+        "bytes": 2556,
+        "sha256": "42bdea267f34ca2ed6a551380d400e6e8a2f46c63ff90f2c93ba2f206fde8edf"
+      },
+      {
+        "path": "scripts/studies/rambo/prepare-centered-native.py",
+        "bytes": 15841,
+        "sha256": "68edb8ee1cad57925407deb5e576979b99e9ecf646a5904c2daaf084f9a99b3d"
+      },
+      {
+        "path": "scripts/studies/rambo/prepare-ensemble.py",
+        "bytes": 17410,
+        "sha256": "68c1b839f6419d0e30a190a53d270f2d5e1cb6ee9e2a655646a846833842ba76"
+      },
+      {
+        "path": "songs/players/rambo.asm",
+        "bytes": 6952,
+        "sha256": "34f2964bbbea71172daa3156f44e77a1cbe79db1f6646b2e4042bfe74cd12b56"
+      },
+      {
+        "path": "songs/players/rambo-sound.asm",
+        "bytes": 4046,
+        "sha256": "8b1cc3e7332eb1c392cc19bbba70bd0fb5c172502b9140aa014fbf0e76af24d2"
+      },
+      {
+        "path": "scripts/compose-rambo-dual.py",
+        "bytes": 11765,
+        "sha256": "9dc81a1b7d8a18378b6e1fc7dcb323fa7a286b3a992efd86a889efa31e134822"
+      },
+      {
+        "path": "scripts/compose-rambo.py",
+        "bytes": 21239,
+        "sha256": "97a97f182c48c472390dec8bf6a4cf095169b3c74c62f7be918f4ea8d29b1ac5"
+      },
+      {
+        "path": "scripts/rambo_player.py",
+        "bytes": 12446,
+        "sha256": "c65ab14faaa21781258b1604862c3f47647c958f1489150683b6c9d9c0d53961"
+      },
+      {
+        "path": "scripts/rambo_score.py",
+        "bytes": 13622,
+        "sha256": "dcb443bd596ba3241642d2c49120174b75e1b17fcfb6e6013841265028f3ecbb"
+      },
+      {
+        "path": "scripts/rambo_programs.py",
+        "bytes": 7202,
+        "sha256": "1545db906a34416b34eca426cb67f5783454c1f0427f4233f4da0a502c68b96c"
+      },
+      {
+        "path": "scripts/sid_assembler.py",
+        "bytes": 3305,
+        "sha256": "2a1fecc8cb350c9cfdef292677a0cc54bcf2c0c069009b1222782708d42c287e"
+      },
+      {
+        "path": "scripts/psid_audit.py",
+        "bytes": 10832,
+        "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+      },
+      {
+        "path": "scripts/psid_profile.py",
+        "bytes": 5704,
+        "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+      },
+      {
+        "path": "scripts/sid_audit_host.py",
+        "bytes": 3146,
+        "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+      },
+      {
+        "path": "scripts/sid_clock.py",
+        "bytes": 848,
+        "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+      },
+      {
+        "path": "scripts/verify_player.py",
+        "bytes": 9535,
+        "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+      }
+    ],
+    "externalBuildDependency": {
+      "package": "py65",
+      "version": "1.2.0",
+      "url": "https://pypi.org/project/py65/1.2.0/",
+      "license": "BSD-3-Clause"
+    },
+    "contract": "Complete tracked score, arrangement inputs, preparation algorithms, assembly templates, compilers and transitive local imports for the verified two-SID build. No downloaded original SID, reference WAV or evidence archive is required by preparation/compilation."
+  },
+  "reproduction": {
+    "workingDirectory": "repository-root",
+    "prepareCommand": "python3 scripts/studies/rambo/prepare-centered-native.py songs/studies/rambo-centered-native/arrangement.json --output build/rambo-stereo-public-preparation",
+    "buildCommand": "PYTHONPATH=.tools/test-deps python3 scripts/compose-rambo-dual.py build/rambo-stereo-public-preparation/primary.json build/rambo-stereo-public-preparation/secondary.json --calls 11000 --output build/rambo-stereo-public-export",
+    "renderCommand": ".local/bin/render-sid build/rambo-stereo-public-export/reconstructed.sid build/rambo-stereo-public-export/reconstructed.wav 225 --clock pal --subtune 1",
+    "excerptInstructionsPath": "samples/rambo-stereo/README.md",
+    "dependencySetupPath": "README.md",
+    "rendererSetupPath": "docs/workflows/audio-workflow.md",
+    "outputPolicy": "Use fresh preparation/export directories. The optional full comparison recipe requires its earlier accepted independent WAV baseline; it is not required to reproduce this package.",
+    "recipe": {
+      "gitRevision": "b22d5e13699da9e76e651b06033ca36d21e0a087",
+      "path": "config/listening/rambo-centered-native.json",
+      "sha256": "1e878cfefcf76fe1508b5944b011c4af8bc6679be22eeb9de08351865c8e018f",
+      "trackedInputs": [
+        {
+          "path": "config/listening/rambo-centered-native.json",
+          "bytes": 16164,
+          "sha256": "1e878cfefcf76fe1508b5944b011c4af8bc6679be22eeb9de08351865c8e018f"
+        },
+        {
+          "path": "samples/rambo-loader/rambo-loader.sid",
+          "bytes": 6451,
+          "sha256": "9a6901e656f4de1888f9acc71c80abaf3608b9758b559b306b0b8b6eaa64aecd"
+        },
+        {
+          "path": "scripts/audio_comparison.py",
+          "bytes": 16012,
+          "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+        },
+        {
+          "path": "scripts/check-listening.py",
+          "bytes": 3023,
+          "sha256": "562acd7395111823046f96b17d2ee54839ae579f4e54ddf32f5526005c7cfa0a"
+        },
+        {
+          "path": "scripts/compare-audio.py",
+          "bytes": 3547,
+          "sha256": "fe8dc975c6bae65a17e85e56f87c3e720dfef7d6654cf8f593b48bb1572b8c96"
+        },
+        {
+          "path": "scripts/compose-rambo-dual.py",
+          "bytes": 11765,
+          "sha256": "9dc81a1b7d8a18378b6e1fc7dcb323fa7a286b3a992efd86a889efa31e134822"
+        },
+        {
+          "path": "scripts/compose-rambo.py",
+          "bytes": 21239,
+          "sha256": "97a97f182c48c472390dec8bf6a4cf095169b3c74c62f7be918f4ea8d29b1ac5"
+        },
+        {
+          "path": "scripts/listening-package.py",
+          "bytes": 778,
+          "sha256": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+        },
+        {
+          "path": "scripts/listening_checks.py",
+          "bytes": 9547,
+          "sha256": "2d07bf6b4a95df5c114619ed9a57e6122f1ccc86f86e13025e6586f86dd0b243"
+        },
+        {
+          "path": "scripts/listening_package.py",
+          "bytes": 20671,
+          "sha256": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130"
+        },
+        {
+          "path": "scripts/listening_publish.py",
+          "bytes": 8788,
+          "sha256": "d8e7f7e3981f2e51b22bd6144dc0d79ae11f268767ff90add233bc9c6bfd7908"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "bytes": 10832,
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "bytes": 5704,
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/publish-listening.py",
+          "bytes": 1093,
+          "sha256": "87e9861a9ea13c62884eb734000b8b96e1d0ccb83b27fa085630da4e458f7d25"
+        },
+        {
+          "path": "scripts/rambo_player.py",
+          "bytes": 12446,
+          "sha256": "c65ab14faaa21781258b1604862c3f47647c958f1489150683b6c9d9c0d53961"
+        },
+        {
+          "path": "scripts/rambo_programs.py",
+          "bytes": 7202,
+          "sha256": "1545db906a34416b34eca426cb67f5783454c1f0427f4233f4da0a502c68b96c"
+        },
+        {
+          "path": "scripts/rambo_score.py",
+          "bytes": 13622,
+          "sha256": "dcb443bd596ba3241642d2c49120174b75e1b17fcfb6e6013841265028f3ecbb"
+        },
+        {
+          "path": "scripts/render-sid.cpp",
+          "bytes": 19214,
+          "sha256": "7d4eb7bc14df5dc46bc81c3d2cd8d94a3e1a30b34d96bb7944c09abf662ab73f"
+        },
+        {
+          "path": "scripts/sid_assembler.py",
+          "bytes": 3305,
+          "sha256": "2a1fecc8cb350c9cfdef292677a0cc54bcf2c0c069009b1222782708d42c287e"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "bytes": 3146,
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "bytes": 848,
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/studies/rambo/prepare-centered-native-listening.py",
+          "bytes": 8578,
+          "sha256": "99ed33679c69f520e89acf6b6bade42253876222e7ac0f38253c8cc10d063b51"
+        },
+        {
+          "path": "scripts/studies/rambo/prepare-centered-native.py",
+          "bytes": 15841,
+          "sha256": "68edb8ee1cad57925407deb5e576979b99e9ecf646a5904c2daaf084f9a99b3d"
+        },
+        {
+          "path": "scripts/studies/rambo/prepare-ensemble.py",
+          "bytes": 17410,
+          "sha256": "68c1b839f6419d0e30a190a53d270f2d5e1cb6ee9e2a655646a846833842ba76"
+        },
+        {
+          "path": "scripts/trace-sid-vice.py",
+          "bytes": 19557,
+          "sha256": "1df0cdee65ad8d0d0258e9920d57682b1940311c98e532472b8e0cb621b89e8d"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "bytes": 9535,
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": "songs/players/rambo-sound.asm",
+          "bytes": 4046,
+          "sha256": "8b1cc3e7332eb1c392cc19bbba70bd0fb5c172502b9140aa014fbf0e76af24d2"
+        },
+        {
+          "path": "songs/players/rambo.asm",
+          "bytes": 6952,
+          "sha256": "34f2964bbbea71172daa3156f44e77a1cbe79db1f6646b2e4042bfe74cd12b56"
+        },
+        {
+          "path": "songs/rambo-loader.json",
+          "bytes": 96091,
+          "sha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b"
+        },
+        {
+          "path": "songs/studies/rambo-centered-native/arrangement.json",
+          "bytes": 2200,
+          "sha256": "5226fead55bb675bf7083c7697939b156238ed3c353df755977ef4cc81d8ba2a"
+        },
+        {
+          "path": "songs/studies/rambo-centered-native/audition.json",
+          "bytes": 185,
+          "sha256": "e362a8b52e67ae1b24a071fb9ea7e447e9aa9382435e1307ac42276132919e21"
+        },
+        {
+          "path": "songs/studies/rambo-chord-expansion/arrangement.json",
+          "bytes": 2556,
+          "sha256": "42bdea267f34ca2ed6a551380d400e6e8a2f46c63ff90f2c93ba2f206fde8edf"
+        },
+        {
+          "path": "tests/rambo_centered_native_listening_test.py",
+          "bytes": 6446,
+          "sha256": "091d18c7f1fe3e4010a799906f29f21886f5c7265e8d6e52cdbe84d941cf4612"
+        },
+        {
+          "path": "tests/rambo_centered_native_test.py",
+          "bytes": 6800,
+          "sha256": "ad65a38e0ce74d536256f4b7beaf8bb71d3a221fb4a39fea24891e41b94d2a4b"
+        },
+        {
+          "path": "tests/rambo_compiler_test.py",
+          "bytes": 9965,
+          "sha256": "b9695e2354bc8ba2ffc2542a69302c48f3c2c0fbf43c02636118311b8443e1fc"
+        },
+        {
+          "path": "tests/rambo_dual_compiler_test.py",
+          "bytes": 12985,
+          "sha256": "4e20e34560252f6768a4069fe761be779beb1a7effe80a0c9428e0138377746f"
+        }
+      ]
+    }
+  },
+  "renderer": {
+    "version": "libsidplayfp 3.1.1 / SIDLite",
+    "gitRevision": "b22d5e13699da9e76e651b06033ca36d21e0a087",
+    "source": {
+      "path": "scripts/render-sid.cpp",
+      "bytes": 19214,
+      "sha256": "7d4eb7bc14df5dc46bc81c3d2cd8d94a3e1a30b34d96bb7944c09abf662ab73f"
+    },
+    "executableSha256": "6fa0a3f03eb190153871e7040c4dc827163e40feda7dd44e982ab34ebb3728d4",
+    "libraryStaticArchiveSha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00",
+    "librarySourceUrl": "https://github.com/libsidplayfp/libsidplayfp/tree/v3.1.1",
+    "powerOnDelay": 0,
+    "batchSize": 19656,
+    "subtune": 1,
+    "clock": "PAL",
+    "fullRenderReceiptPath": "evidence/rambo-centered-native/candidate-render.json",
+    "exactAudioRebuild": "Retained WAV bytes use this renderer/library build and its recorded settings; another build is not claimed byte-identical."
+  },
+  "verification": {
+    "date": "2026-10-15",
+    "sidMatchesAcceptedBytes": true,
+    "fullWavMatchesAcceptedBytes": true,
+    "featuredPcmMatchesFullRenderFrames": true,
+    "audioRegenerated": false,
+    "licenseMatchesLiveUpstreamBytes": true,
+    "sidHeader": {
+      "magic": "PSID",
+      "version": 3,
+      "dataOffset": 124,
+      "loadAddress": 1024,
+      "initAddress": 1024,
+      "playAddress": 1031,
+      "songs": 1,
+      "startSong": 1,
+      "flags": 84,
+      "secondSidAddressByte": 66
+    },
+    "retainedExecution": {
+      "buildPath": "evidence/rambo-centered-native/cpu/build.json",
+      "auditPath": "evidence/rambo-centered-native/cpu/audit.json",
+      "vicePath": "evidence/rambo-centered-native/vice/study.json",
+      "checkedPlayCalls": 11000,
+      "matchedOrderedStores": 123221,
+      "matchedStateCheckpoints": 10,
+      "maximumPlayCycles": 16169,
+      "frameCycleBudget": 19656,
+      "maximumViceCadenceErrorCycles": 7,
+      "viceCadenceToleranceCycles": 9
+    },
+    "audioHealthPath": "evidence/rambo-centered-native/audio.json",
+    "noClippedSamples": true,
+    "finalSecondAcRms": 0,
+    "featuredSignal": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 1411200,
+      "durationSeconds": 32.0,
+      "peak": 11661,
+      "peakDbfs": -8.974282792175782,
+      "clippedSamples": 0,
+      "rms": 3633.7535132644266,
+      "acRms": 3627.5409423810206
+    }
+  },
+  "listeningStatus": {
+    "date": "2026-10-15",
+    "status": "accepted complete revised version",
+    "listenerVerdict": "Complete revised version : sounds great.",
+    "scope": "Complete native centered-lead arrangement accepted after phrase acceptance of perceived centering, accompaniment space and fullness. This does not claim PCM identity or hardware equivalence.",
+    "demoSelection": "Feature music after the first 32 seconds: the listener finds the introduction weak in both this arrangement and the original.",
+    "recordPath": "songs/studies/rambo-centered-native/listening-review.json"
+  }
+}
