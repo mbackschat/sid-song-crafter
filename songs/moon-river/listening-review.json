@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-15",
+  "initial": {
+    "candidate": "build/moon-river-listening/moon-river-sid.wav",
+    "sha256": "bbc955a13871e728327a684d2f39a10ac7e61d7e85ae7e3a76dab8c454f010b5",
+    "verbatimFeedback": "My feedback on moon river sid: I recognize it, score is ok, but the interpretation is bad, too loud, offensive. Look up and learn about the mood of the song, and explain to me",
+    "scoreVerdict": "recognizable; score okay",
+    "interpretationVerdict": "rejected",
+    "acRmsDbfs": -20.22861691722522
+  },
+  "restrainedRevision": {
+    "palette": "songs/moon-river/restrained.json",
+    "recipe": "config/listening/moon-river-restrained.json",
+    "candidate": "build/moon-river-restrained-listening/moon-river-sid.wav",
+    "sha256": "fa517698dbb9991a25edd295dd7399e7bb43de6d51d2c915662592eaa12cb4cc",
+    "comparison": "build/moon-river-restrained-listening/plain-then-sid.ab.wav",
+    "comparisonSha256": "641e7d83ab352e3a31550bf376c10fe23888d0f40e22151d183ff4a85c08b9a8",
+    "referenceType": "generated plain triangle rendering of the same reduced score; not the film recording",
+    "listeningVerdict": "pending",
+    "musicalIntent": "Intimate, tender and wistful; lighter accompaniment beneath a rounder lead.",
+    "scope": "Instrument waveform, envelope, balance and delayed-vibrato revision. Source notes, reduction and constant tempo unchanged; no restored rubato or authored legato claimed.",
+    "durationSeconds": 98.65668934240362,
+    "acRmsDbfs": -28.18526056321297,
+    "changeFromInitialAcRmsDb": -7.95664364598775,
+    "measurementLimit": "AC RMS is a signal-level measurement, not LUFS, perceived loudness or musical acceptance. No post-render gain applied.",
+    "noteCounts": [
+      87,
+      46,
+      160
+    ],
+    "stopTicks": [
+      4894,
+      4894,
+      4894
+    ],
+    "cpuCalls": 4947,
+    "clippedSamples": 0,
+    "viceCheckpointCalls": [
+      0,
+      1,
+      3,
+      500,
+      1500,
+      3000,
+      4700,
+      4910
+    ]
+  },
+  "modelAssistanceReview": {
+    "checkpoint": "human rejection and revised audition",
+    "callMade": false,
+    "reason": "Current calibrated model tasks do not validate mood preference; the human rejection already determines the need for revision.",
+    "nextCheckpoint": "After restrained-revision feedback and before case closure."
+  }
+}

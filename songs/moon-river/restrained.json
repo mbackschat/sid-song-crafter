@@ -1,0 +1,76 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score.json",
+  "title": "Moon River restrained",
+  "author": "Henry Mancini",
+  "authorinfo": "SOURCE SCORE: SID INTERPRETATION",
+  "released": "2026",
+  "sidCount": 1,
+  "sidModel": "MOS8580",
+  "clock": "pal",
+  "timingPolicy": "retain-full-pitch",
+  "instruments": {
+    "lead": {
+      "name": "MRVOICE",
+      "control": "1a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "4676",
+      "frame1": "09",
+      "vibrato": "12",
+      "vibrato_delay": 20,
+      "wave": [
+        [
+          "11",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [],
+      "filter": []
+    },
+    "bass": {
+      "name": "MRBASS",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0535",
+      "frame1": "09",
+      "wave": [
+        [
+          "11",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [],
+      "filter": []
+    },
+    "harmony": {
+      "name": "MRPLUCK",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0414",
+      "frame1": "09",
+      "wave": [
+        [
+          "11",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [],
+      "filter": []
+    }
+  },
+  "sections": [
+    {
+      "name": "Complete first statement through source tonic close",
+      "startBeat": 0,
+      "endBeat": 111,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    }
+  ]
+}

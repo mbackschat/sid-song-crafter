@@ -8,6 +8,8 @@ Start with a given, attributed score. Original score composition is outside the 
 
 Choose SID instruments, voice allocation, reductions, articulation, groove, modulation and effects to express the score's character. Single- and dual-SID arrangements are both valid; choose stereo when its musical roles justify it. Record departures such as octave shifts, omitted inner voices, arpeggiated chords or altered phrasing so the listener can distinguish source content from interpretation. Technical note/cadence checks do not establish compelling music, as the [rejected Night Transit trial](../../songs/night-transit/README.md) demonstrated.
 
+Establish the intended mood from the brief and a relevant performance or documented musical context before selecting patches. A plain score rendering checks the musical material; it does not establish an expressive performance reference. Prior acceptance of a patch is context-specific. Separate playback level, spectral brightness, articulation and accompaniment weight when diagnosing an unsuitable interpretation; turning down the WAV alone cannot correct all four. The [Moon River case](../research/composition/moon-river-preparation.md) records this distinction.
+
 Present the source recording or a clearly labelled plain rendering of the same retained score alongside each SID audition. Judge source preservation and artistic interpretation separately. Reuse the existing repertoire and recipe tools, measure execution effort honestly, and require listening acceptance before claiming musical productivity.
 
 ## Information boundaries

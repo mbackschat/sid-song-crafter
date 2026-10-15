@@ -1,6 +1,6 @@
 # SID Song Crafter Project Guide
 
-Read with [AGENTS.md](AGENTS.md), which owns contributor conventions, commands and repository layout. Prioritize expressive SID music and reusable knowledge. Correct notes and successful playback do not establish musical quality.
+Read with [AGENTS.md](AGENTS.md), which owns contributor conventions, commands and repository layout, and [PRODUCTS.md](PRODUCTS.md), which defines the musical purpose. Prioritize expressive SID music and reusable knowledge. Correct notes and successful playback do not establish musical quality. Establish the intended mood before selecting instruments; follow the [score-interpretation workflow](docs/workflows/song-workflow.md) and treat prior patch acceptance as context-specific.
 
 ## Continue the workbench
 
