@@ -85,6 +85,32 @@ Doctor supports `--json`, `--vice PATH`, `--vice-data PATH` and `--renderer PATH
 
 For optional live bridge use, prepare the pinned checkout described in the [project README](../../README.md#prepare-the-assembler), run `bun install --frozen-lockfile` there, and adapt [the configuration example](../../config/codex.toml) before activating it. Keep the upstream Bun lockfile. A skill installation alone neither installs the server nor establishes emulator connectivity.
 
+### Optional local audio models
+
+SongBench and its MuQ backbone are an opt-in research experiment. Contributors can skip the model source, checkpoints, isolated Python environment and all ML packages: `setup-project.py` does not download them, `doctor.py` does not probe them, and normal song builds and tests do not require them. Hosted assessment is also a separate deliberate trial; no model account or API credential is needed for normal setup. The [measured assessment](../research/audio-assessment.md#measured-local-songbench-trial) records the limited value, resource use and noncommercial research license constraints. Human listening determines musical acceptance.
+
+Only to repeat the local experiment, acquire the exact source and checkpoint files from the URLs in the [setup receipt](../../evidence/audio-assessment-songbench/setup.json), verifying their recorded SHA-256 fingerprints. The receipt lists each local destination: SongBench source and scoring weights under `.tools/songbench/`, MuQ configuration and weights under `.local/audio-models/muq/`. The runner's `--source` and `--muq` options accept other local directories. These files are intentionally outside the ordinary asset installer and remain ignored.
+
+Prepare an isolated environment from the recorded package versions rather than adding ML packages to the workbench's test dependencies. These commands install optional dependencies; the recorded trial used Python 3.11 on Apple Silicon, and the package receipt is a reproduction record rather than a cross-platform support guarantee:
+
+```sh
+uv venv --python 3.11 .tools/songbench-venv
+python3 - <<'PY'
+import json
+from pathlib import Path
+
+receipt = json.loads(Path("evidence/audio-assessment-songbench/setup.json").read_text())
+requirements = Path(".local/songbench-requirements.txt")
+requirements.parent.mkdir(parents=True, exist_ok=True)
+requirements.write_text("".join(f"{name}=={version}\n" for name, version in sorted(receipt["packages"].items())))
+PY
+uv --cache-dir .local/uv-cache pip install --python .tools/songbench-venv/bin/python -r .local/songbench-requirements.txt
+.tools/songbench-venv/bin/python -c 'import librosa, torch, torchaudio, muq, transformers, safetensors; print("ML imports ready; Metal available:", torch.backends.mps.is_available())'
+.tools/songbench-venv/bin/python scripts/studies/audio-assessment/songbench-local.py --help
+```
+
+The import check establishes package availability; it does not load checkpoints or validate an evaluation result. Use the [bounded runner commands](../research/audio-assessment.md#measured-local-songbench-trial) only after restoring those assets and an explicit input manifest. Missing packages or checkpoints can fail that opted-in invocation without affecting ordinary readiness. There is no automatic download or device fallback in the inference worker.
+
 ## Headless bridge configuration
 
 The example selects the project-built headless executable, PAL and normal speed, with ROM resources from the installed desktop package. It disables Xvfb and keeps bridge state/diagnostics under `.local/c64bridge`.

@@ -166,6 +166,8 @@ Fresh output directories cause paid requests; use the recorded trial directories
 
 ## Measured local SongBench trial
 
+This trial is optional. The normal workbench setup, readiness checks, song builds and tests do not require SongBench, MuQ, model weights or ML dependencies. Follow [optional local model setup](../setup/local-setup.md#optional-local-audio-models) only when deliberately reproducing this experiment; skipping it does not block composition, execution verification or human listening review.
+
 On **2026-10-14**, SongBench scored four anonymous eight-second clips on the **Apple M1 Metal GPU**, followed by one CPU comparison of the original clip. The [assessment](../../evidence/audio-assessment-songbench/assessment.json) records the decision; the [setup receipt](../../evidence/audio-assessment-songbench/setup.json) retains source revisions, asset fingerprints, package versions and machine checks. **SongBench is not accepted as a dependable musical preference judge:** its musicality score favors the stationary-pulse diagnostic over the listener-preferred original. This is one failed project preference anchor, not a model-wide accuracy estimate.
 
 | Probe | Musicality score, 1–10 | Evidence and scope |

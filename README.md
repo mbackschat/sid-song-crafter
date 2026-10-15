@@ -37,6 +37,8 @@ python3 scripts/doctor.py
 
 Setup downloads the pinned Elise/Flashdance references and the `c64-sid` hardware skill. Add `--include sid-music` only for bridge workflows; use `--offline` with existing caches/checkouts or `--check` for read-only hash verification. [Local setup](docs/setup/local-setup.md) explains prerequisites, optional selections and repairs. Doctor checks dependencies, renderer, VICE build configuration, ROM availability and asset hashes; it does not install tools or certify musical playback.
 
+Local audio models, including SongBench/MuQ, are optional research tools. Normal setup, readiness checks, song builds and tests require no model weights or ML dependencies. Only follow [optional model setup](docs/setup/local-setup.md#optional-local-audio-models) for a deliberate evaluation trial; the [measured results](docs/research/audio-assessment.md#measured-local-songbench-trial) do not qualify SongBench as a dependable musical judge.
+
 ## Repository and dependencies
 
 Project sources and research belong in Git. `.tools/` contains reproducible third-party checkouts; `.local/` contains diagnostics and runtime state; `build/` contains generated output. These directories and the machine-local `.codex/` configuration are ignored. The relative skill symlinks in `.agents/skills/` point to ignored, checksum-pinned local installs in `skills/`; only our own skill guide belongs in Git.
