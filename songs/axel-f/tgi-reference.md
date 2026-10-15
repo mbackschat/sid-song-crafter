@@ -4,7 +4,7 @@ On 2026-10-15 the listener selected the TGI version as a “nice interpretation 
 
 ## Active master study
 
-Use Hülsbeck as the principal sound-design reference for this Axel F interpretation. The bounded question is how its lead combines attack, audible body, release and modulation, and which of those mechanisms improves our preferred longer-release palette on the preserved score. Trace actual CIA-timed execution before attributing the sound to a particular parameter; test the selected mechanism in isolation and retain a same-score comparison. Keep TGI’s added-digi balance finding separate. The existing Shades and Giana studies remain the prior Hülsbeck evidence; this song adds contextual evidence rather than redefining a composer-wide style.
+Use Hülsbeck as the principal sound-design reference for this Axel F interpretation. The bounded question is how its lead combines attack, audible body, release and modulation, and which of those mechanisms improves our preferred longer-release palette on the preserved score. The [executed lead study and native pulse trial](huelsbeck-study.md) trace actual CIA-timed execution and test one mechanism in a same-score comparison. Keep TGI’s added-digi balance finding separate. The existing Shades and Giana studies remain the prior Hülsbeck evidence; this song adds contextual evidence rather than redefining a composer-wide style.
 
 ## Sources and attribution
 

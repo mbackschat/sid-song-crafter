@@ -11,7 +11,7 @@ python3 scripts/cleanup-build.py
 python3 scripts/cleanup-build.py --apply --protect build/my-active-run
 ```
 
-Replace the protection example with the actual active output paths; repeat `--protect` for multiple files or subtrees. Future output paths are valid protections. `--output build/cleanup-my-run` selects a fresh report directory; the default generates a unique timestamped name. Stop writers to selected files before applying. Identity/hash checks detect changes but do not lock independent producers; active code and audio work still need coordination.
+Replace the protection example with the actual active output paths; repeat `--protect` for multiple files or subtrees. Future output paths are valid protections. `--output build/cleanup-my-run` selects a fresh report directory; the default generates a unique timestamped name. Stop all independent build writers before either preview or apply, including writers to protected paths. Protection prevents cleanup selection but does not exempt those files from the final unchanged-files guard; an active VICE log caused a dry-run rejection on 2026-10-15 despite its protected directory. Identity/hash checks detect changes but do not lock independent producers.
 
 Run cleanup after a substantial completed rendering/evidence batch, at musical-case closure, and before handing off a session that produced substantial build output. First preserve the listening deliverables and promote the evidence that must survive working-cache removal. Defer cleanup while rapid iterations still benefit from the same cached stages, and protect any ongoing/deferred work. Once a pass has reclaimed eligible files, a large remainder is not itself a reason to repeat it: unique audio needs a separate retention decision.
 

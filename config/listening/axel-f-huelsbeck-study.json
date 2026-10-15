@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "study",
+      "command": [
+        "{python}",
+        "scripts/studies/axel-f/study-huelsbeck.py",
+        ".local/research/axel-f/huelsbeck-original.sid",
+        "--calls",
+        "1600",
+        "--output",
+        "{out}/study"
+      ],
+      "inputs": [
+        "scripts/studies/axel-f/study-huelsbeck.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_intake.py",
+        "scripts/verify_player.py",
+        "scripts/sid_assembler.py",
+        "scripts/trace-shades-vice.py",
+        "scripts/trace-sid-vice.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        ".local/research/axel-f/huelsbeck-original.sid"
+      ],
+      "outputs": [
+        "study/verification.json",
+        "study/frozen-pwm.sid",
+        "study/intervention-differences.json.gz",
+        "study/original/report.json",
+        "study/original/writes.json.gz",
+        "study/original/observations.json.gz",
+        "study/original/snapshots.json.gz",
+        "study/frozen/report.json",
+        "study/frozen/writes.json.gz",
+        "study/frozen/observations.json.gz",
+        "study/frozen/snapshots.json.gz",
+        "study/vice-original/verification.json",
+        "study/vice-original/trace.json.gz",
+        "study/vice-frozen/verification.json",
+        "study/vice-frozen/trace.json.gz"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "verification": "{stage:study}/study/verification.json",
+    "frozen-pwm": "{stage:study}/study/frozen-pwm.sid"
+  }
+}

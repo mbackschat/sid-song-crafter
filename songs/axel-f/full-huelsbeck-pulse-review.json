@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Complete sourced tonal interpretation with the pulse table accepted in the 0–16.1-second hook comparison. First four silent source beats trimmed; source drums, second bass, noise sweeps and pitch bends remain omitted, including the percussion-only ending. Full-version listening remains pending.",
+  "listeningVerdict": null,
+  "acceptedHookVerdict": {
+    "date": "2026-10-15",
+    "feedback": "Yes: second lead have a more appealing character while keeping the melody clear",
+    "scope": "Previous smoother lead versus narrower pulse, 0–16.1 seconds only; not complete-song or ending acceptance",
+    "comparison": {
+      "path": "build/axel-f-huelsbeck-pulse-listening/previous-then-narrow-pulse.ab.wav",
+      "sha256": "68bafea4301b37c34f6b52aae53cd8b04b7925138bfadcf2a92a2a9e48457ec2"
+    }
+  },
+  "referencePalette": "songs/axel-f/full-native.json",
+  "candidatePalette": "songs/axel-f/full-huelsbeck-pulse.json",
+  "acceptedPulseSource": "songs/axel-f/huelsbeck-pulse.json",
+  "changedPath": "instruments.lead.pulse",
+  "allOtherPaletteFieldsEqual": true,
+  "sourceSha256": "8bf2fa73160461e13ace1609393879e12929ada5241e80f397cd3c0e4dfe429d",
+  "sharedScoreSha256": "888c0e3f69eae5cc1bf45f78e55dffbd3a3bf40716943e03f9cb6878a20f97bd",
+  "scoreMatchesPreservedFullBaseline": true,
+  "sourceNotes": 5199,
+  "retainedNotes": 1025,
+  "omittedNotes": 4174,
+  "shortenedNotes": 26,
+  "nativePatterns": 85,
+  "cpuCalls": 9006,
+  "noteCounts": [
+    288,
+    259,
+    478
+  ],
+  "viceCalls": [
+    0,
+    1,
+    3,
+    800,
+    4000,
+    6000,
+    8000,
+    8900,
+    9000
+  ],
+  "frameIsolation": {
+    "frames": 9006,
+    "bankBytes": 25,
+    "allowedOffsets": [
+      2,
+      3
+    ],
+    "changedOffsets": [
+      2,
+      3
+    ],
+    "changedFrames": 9005,
+    "firstChangedFrame": 1,
+    "lastChangedFrame": 9005,
+    "allOtherControlsEqual": true
+  },
+  "pcm": {
+    "reference": {
+      "durationSeconds": 179.6349433106576,
+      "frames": 7921901,
+      "peak": 13139,
+      "clippedSamples": 0,
+      "endingAcRms": 0.0
+    },
+    "candidate": {
+      "durationSeconds": 179.6349433106576,
+      "frames": 7921901,
+      "peak": 13166,
+      "clippedSamples": 0,
+      "endingAcRms": 0.0
+    }
+  },
+  "preStopRelease": {
+    "maxPerChannelAcRms": 16,
+    "renders": [
+      {
+        "label": "reference",
+        "stopTick": 8953,
+        "stopVolumeClearTick": 8953,
+        "windowSeconds": [
+          178.1149886621315,
+          178.51498866213151
+        ],
+        "perChannelAcRms": [
+          0.0
+        ]
+      },
+      {
+        "label": "candidate",
+        "stopTick": 8953,
+        "stopVolumeClearTick": 8953,
+        "windowSeconds": [
+          178.1149886621315,
+          178.51498866213151
+        ],
+        "perChannelAcRms": [
+          0.0
+        ]
+      }
+    ]
+  },
+  "comparisons": {
+    "comparison": {
+      "windowSeconds": [
+        32.27,
+        48.37
+      ],
+      "durationSeconds": 32.7,
+      "gains": [
+        1,
+        1
+      ],
+      "order": [
+        "previous full tonal palette",
+        "accepted narrower-pulse lead on the same full tonal score"
+      ]
+    },
+    "ending": {
+      "windowSeconds": [
+        162.0,
+        179.0
+      ],
+      "durationSeconds": 34.5,
+      "gains": [
+        1,
+        1
+      ],
+      "order": [
+        "previous full tonal palette",
+        "accepted narrower-pulse lead on the same full tonal score"
+      ]
+    }
+  },
+  "signalContribution": {
+    "phrase": {
+      "startSeconds": 32.27,
+      "endSeconds": 48.37,
+      "frames": 710010,
+      "differentSamples": 288422,
+      "differenceRms": 1574.2094577564649,
+      "scope": "PCM contribution only; no audibility or preference verdict"
+    },
+    "ending": {
+      "startSeconds": 162,
+      "endSeconds": 179,
+      "frames": 749700,
+      "differentSamples": 271870,
+      "differenceRms": 1368.7114368725195,
+      "scope": "PCM contribution only; no audibility or preference verdict"
+    }
+  },
+  "verificationScope": "Complete projected note schedule and post-call register isolation; sampled standalone VICE registers/cadence; unclipped full PCM and zero AC RMS before volume clear. Not continuous VICE/bus-timing equivalence, source-driver reconstruction, hardware equivalence or full musical acceptance.",
+  "modelAssistanceReview": {
+    "checkpoint": "Accepted hook pulse carried into the complete tonal arrangement",
+    "decision": "No model call: the accepted same-score hook selects the pulse table, while full-form character, balance and ending still need scoped human listening. Existing calibration does not qualify model preference for this decision.",
+    "nextCheckpoint": "Complete-version and ending listening verdict or substantive revision"
+  },
+  "runReceipt": {
+    "path": "build/axel-f-full-huelsbeck-pulse/first-run.json",
+    "sha256": "335f46d89179b74077e39478670b9359c0370a48850748ebc14bceecbce7424d"
+  },
+  "runWallSeconds": 140.0343495,
+  "runStages": 9,
+  "evidence": [
+    {
+      "path": "build/axel-f-full-huelsbeck-pulse/cache/contract/1ace53ed78bf7b5edbb90a5818acc5c4f33c57afc23d2555d4a4d9b8b589eae5/attempt-756b2af5785942b8b813b97984b8554e/pulse-only-contract.json",
+      "sha256": "9e823fb2007e7517d5bcf93af7704242c1834d1d0c93c498eba69d91810e9397"
+    },
+    {
+      "path": "build/axel-f-full-huelsbeck-pulse/cache/isolation/5e3031de714054285630dfeaeed32c17f86f57f656b8226716db16790fd22b6f/attempt-843eab07820c4e6dadfee83942466438/pulse-only.json",
+      "sha256": "d6f7f93c2750baa1eba45e1d54ad8b366fe6d146da1b135527887929532748ac"
+    },
+    {
+      "path": "build/axel-f-full-huelsbeck-pulse/cache/candidate/d47d98da1e7677bf0f71c97e5d657cebab1a62b38e28e1e2fc60ecd4c4c34096/attempt-46f28d3049bf464fb84652e68d3110cd/song/verification.json",
+      "sha256": "4df84c311b3f1633fc14db7c7249a3beb6388ea50402e8ed138c8a73c9cf577a"
+    },
+    {
+      "path": "build/axel-f-full-huelsbeck-pulse/cache/vice/d5aa59382c532e4acbe549e931a04eddcb1b55a6c7ba33baa01ce7bda99c9ef8/attempt-fc7a14c785184b0ca02ca6c5f6e898d9/vice/verification.json",
+      "sha256": "0bf2360977bda1142f04ce3611fa579cc3bceb2807746334c8b7b70db7d26c6d"
+    },
+    {
+      "path": "build/axel-f-full-huelsbeck-pulse/cache/pre-stop-release/21729a615297e5640e1294670823844b2484922a3dcf67640e6257b73b122b4d/attempt-63f0c87bada542d7a9717468510e816e/pre-stop-release.json",
+      "sha256": "8cfe273161e411410392390bc0e387c90aa330beaeed8cccb4b8b06e78198c11"
+    }
+  ],
+  "files": [
+    {
+      "path": "build/axel-f-full-huelsbeck-pulse-listening/previous-full.wav",
+      "sha256": "888be7e34a07e72a263fd7a8cf88fe9324a2010f2beba3d262179d2c76fe6a88"
+    },
+    {
+      "path": "build/axel-f-full-huelsbeck-pulse-listening/narrow-pulse-full.wav",
+      "sha256": "27cfef0f6487a919881dacd6b697edcab843be866198f7512aeedabc2703ce57"
+    },
+    {
+      "path": "build/axel-f-full-huelsbeck-pulse-listening/previous-then-narrow-pulse-phrase.ab.wav",
+      "sha256": "5fdcdf15866a421b97f755f758ad8521c874e477f8da29671f312bc2756eba0d"
+    },
+    {
+      "path": "build/axel-f-full-huelsbeck-pulse-listening/ending-previous-then-narrow-pulse.ab.wav",
+      "sha256": "21f347f6ea0b7a6873f8c47fcda9a1b0d1ec619b8a3bdeb40f74aed1263368a1"
+    }
+  ]
+}

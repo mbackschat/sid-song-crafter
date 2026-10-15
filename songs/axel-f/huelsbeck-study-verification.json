@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "87e0a1e8ad618a497e54fc5d4228dee7be53ef6365a30900debcdafbcd21251b",
+  "workingFrozenSha256": "cccf53efe66e2819e4ca74e996515d06fc846c265cbc94f7377a1c4ab4d72ba5",
+  "calls": 1600,
+  "pulseModel": {
+    "comparedLeadCallStates": 1081,
+    "leadOnsets": 49,
+    "changingPulseStatesWithGateOff": 420,
+    "initialWidth": 512,
+    "pulseStep": 32,
+    "ascendingCalls": 32,
+    "descendingCalls": 16,
+    "repeatReloadsBothCounters": true,
+    "lastAscentAndFirstDescentCanShareCall": true,
+    "netWidthChangePerCompleteCycle": 512,
+    "independentOfGateState": true,
+    "limitations": "Numeric pulse-state proof driven by observed onset boundaries; not a score decoder, independently scheduled song or listening result."
+  },
+  "intervention": {
+    "changedByteAddress": 44599,
+    "changedFileOffset": 3765,
+    "before": 32,
+    "after": 0,
+    "matchedOrderedStoreIdentities": 17659,
+    "changedPulseStoreValues": 1699,
+    "changedAddressCounts": {
+      "d409": 950,
+      "d40a": 749
+    },
+    "maximumInstructionStartDifferenceCycles": 0,
+    "limitations": "Values/order/count of every non-pulse SID/timer store are preserved. Recorded store instruction-start timing is checked separately; no SID bus-time or PCM identity follows.",
+    "identicalPlayCallCycles": true
+  },
+  "viceSha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285",
+  "harnessSha256": "1695fb20af85d47823b137e4322542c6aee20a2e3947f1c33d575bb9e96cba31",
+  "initialTimerPeriodCycles": 16422,
+  "steadyTimerPeriodCycles": 17921,
+  "steadyCallsPerSecond": 54.977323314051176,
+  "original": {
+    "initCycles": 18,
+    "maximumPlayCycles": 5158,
+    "matchedSourceWrites": 17659,
+    "acknowledgedInterrupts": 1600,
+    "maximumIntervalError": 4,
+    "maximumAccumulatedPhaseError": 2
+  },
+  "frozen": {
+    "maximumPlayCycles": 5158,
+    "matchedSourceWrites": 17659,
+    "acknowledgedInterrupts": 1600,
+    "maximumIntervalError": 4,
+    "maximumAccumulatedPhaseError": 2
+  },
+  "limitations": "Bounded unchanged source and one-byte intervention under a controlled bank-aware CIA IRQ host, not a full song, original-game/renderer startup, SID bus timing, instrument transfer, PCM equivalence or musical acceptance. No generic source admission is expanded.",
+  "implementationFingerprints": {
+    "scripts/studies/axel-f/study-huelsbeck.py": "b2435349f813e433c9d79846d87878890bcb62b2e2cb12b1553ea7623738e466",
+    "scripts/psid_audit.py": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0",
+    "scripts/psid_profile.py": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107",
+    "scripts/sid_audit_host.py": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed",
+    "scripts/sid_clock.py": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48",
+    "scripts/sid_intake.py": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0",
+    "scripts/verify_player.py": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab",
+    "scripts/sid_assembler.py": "2a1fecc8cb350c9cfdef292677a0cc54bcf2c0c069009b1222782708d42c287e",
+    "scripts/trace-shades-vice.py": "d73ee4253edb99317c0feab629210039399a6ae30770e41e748fb97f3721a183",
+    "scripts/trace-sid-vice.py": "1df0cdee65ad8d0d0258e9920d57682b1940311c98e532472b8e0cb621b89e8d"
+  },
+  "source": {
+    "title": "Axel F",
+    "author": "Chris Hülsbeck",
+    "underlyingComposition": "Harold Faltermeyer",
+    "clock": "PAL",
+    "sidModel": "MOS6581",
+    "subtune": 1,
+    "initAddress": 49152,
+    "playAddress": 49184,
+    "loadAddress": 40960,
+    "endAddressExclusive": 52180,
+    "timing": "CIA1 Timer A"
+  },
+  "guards": {
+    "changedSourceRejected": true,
+    "existingOutputRejected": true
+  },
+  "privateEvidenceRoot": "build/axel-f-huelsbeck-verification/cache/study/98cd488cbe5142b7f21a006c46c1b6716c90efd2b198bcc5880649404c8a0446/attempt-3c92240ba456466ea099c7cf920c93fe/study",
+  "privateEvidenceFingerprints": {
+    "original/writes.json.gz": "73f9c18add45a0c982880e2114a1277da29d8c9146afb6a3797c5c478cbc0e02",
+    "original/observations.json.gz": "a0ad88aa812a87dbd88501abbe8ed6d0c4192d45f9763ad428e3581c796adc33",
+    "original/snapshots.json.gz": "ac367ca074a9ebce135bc11f12834d8b0b56b4b4ce08b01ab6381b247921aced",
+    "frozen/writes.json.gz": "4be369610c9b5b139cb3c5b9085345f28a64af8f3b35e1f7b8c32b6fbdafc90a",
+    "vice-original/trace.json.gz": "80f552cd245fcd91c2c1e581918c1f5622cb63d525b16010e408364903537c0b",
+    "vice-frozen/trace.json.gz": "b144cc16e46629777fa53cf820c3fa91b6c9ad43a110e1107909e34a988fb12c"
+  },
+  "recipe": "config/listening/axel-f-huelsbeck-study.json",
+  "recipeSha256": "1eba74833987b5de599e1fe260b3c18ec8c32619189042d41b64a49ada74eafb"
+}
