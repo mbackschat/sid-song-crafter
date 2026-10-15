@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "probe-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "ghostbusters_machine_test.py",
+        "-v"
+      ],
+      "inputs": [
+        "scripts/studies/ghostbusters/probe-machine.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/trace-sid-vice.py",
+        ".tools/test-deps/py65",
+        "tests/ghostbusters_machine_test.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "initialized-census",
+      "command": [
+        "{python}",
+        "scripts/studies/ghostbusters/probe-machine.py",
+        "--output",
+        "{out}/capture",
+        "--refreshes",
+        "128"
+      ],
+      "inputs": [
+        "scripts/studies/ghostbusters/probe-machine.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        "scripts/sid_intake.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/trace-sid-vice.py",
+        ".tools/test-deps/py65",
+        ".local/research/ghostbusters/Ghostbusters.sid",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib"
+      ],
+      "outputs": [
+        "capture/verification.json",
+        "capture/commands.mon",
+        "capture/command.json",
+        "capture/trace.json.gz",
+        "capture/monitor.log.gz",
+        "capture/process.log.gz"
+      ],
+      "timeoutSeconds": 70,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "initializedMachineCensus": "{stage:initialized-census}/capture/verification.json"
+  }
+}
