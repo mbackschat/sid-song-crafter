@@ -16,7 +16,7 @@
     "comparison": "build/moon-river-restrained-listening/plain-then-sid.ab.wav",
     "comparisonSha256": "641e7d83ab352e3a31550bf376c10fe23888d0f40e22151d183ff4a85c08b9a8",
     "referenceType": "generated plain triangle rendering of the same reduced score; not the film recording",
-    "listeningVerdict": "pending",
+    "listeningVerdict": "positive: quite nice",
     "musicalIntent": "Intimate, tender and wistful; lighter accompaniment beneath a rounder lead.",
     "scope": "Instrument waveform, envelope, balance and delayed-vibrato revision. Source notes, reduction and constant tempo unchanged; no restored rubato or authored legato claimed.",
     "durationSeconds": 98.65668934240362,
@@ -44,12 +44,13 @@
       3000,
       4700,
       4910
-    ]
+    ],
+    "verbatimFeedback": "moon-river-sid.wav is quite nice. Can you find a SID version on the internet?"
   },
   "modelAssistanceReview": {
-    "checkpoint": "human rejection and revised audition",
+    "checkpoint": "positive restrained-revision feedback",
     "callMade": false,
-    "reason": "Current calibrated model tasks do not validate mood preference; the human rejection already determines the need for revision.",
-    "nextCheckpoint": "After restrained-revision feedback and before case closure."
+    "reason": "Human listener calls the revision quite nice; existing calibrated tasks do not validate mood preference. An external SID comparison is now requested.",
+    "nextCheckpoint": "After external-reference comparison, or before case closure."
   }
 }
