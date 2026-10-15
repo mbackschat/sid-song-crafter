@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "method": "full-file AC RMS, pooled channel power after subtracting each channel mean; silence and tails included",
+  "matching": "attenuation only",
+  "requestedAcRmsDbfs": null,
+  "targetAcRms": 2503.2986172979963,
+  "targetAcRmsDbfs": -22.338745509593117,
+  "peakHeadroomDb": 1.0,
+  "peakLimit": 29203,
+  "sampleRate": 44100,
+  "channels": 2,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-stereo-v1/cache/phrase-comparison/0ed45e605342d67be01d988efe0b50467d6dee0b8d9d5e04efdb49d394f86e52/attempt-cfde0c2b840b427db24556e4d1f05ddd/faithful-then-stereo-phrase.ab.wav",
+    "frames": 1433250,
+    "durationSeconds": 32.5,
+    "sha256": "f9c386165e459c96794abf41938b7f4ef1d23c424ad23a437a799ebf8072c13a"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 705600
+    },
+    {
+      "label": "silence",
+      "startFrame": 705600,
+      "endFrame": 727650
+    },
+    {
+      "label": "B",
+      "startFrame": 727650,
+      "endFrame": 1433250
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-stereo-v1/cache/prepare/6411f1065898e8990313338632e7c031ddfc1912b3671a6f2fa9a1e9c39f03d1/attempt-8962b93e4a35405ea4f028dfb37aaa7b/prepared/faithful-phrase.wav",
+      "sha256": "c92b958123d951135f5ab33b7765e3151ec4f323cd68c03adf4d9db550070eb6",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 10580,
+        "peakDbfs": -9.81928534521102,
+        "clippedSamples": 0,
+        "rms": 3565.3027735293313,
+        "acRms": 3563.6916715457737,
+        "acRmsDbfs": -19.2709962573231,
+        "perChannel": [
+          {
+            "dc": 107.17059807256236,
+            "rms": 3565.3027735293313,
+            "acRms": 3563.6916715457737
+          },
+          {
+            "dc": 107.17059807256236,
+            "rms": 3565.3027735293313,
+            "acRms": 3563.6916715457737
+          }
+        ]
+      },
+      "gain": 0.7024453426444086,
+      "gainDb": -3.0677492522700147,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 7432,
+        "peakDbfs": -12.886884679482652,
+        "clippedSamples": 0,
+        "rms": 2504.4300245915033,
+        "acRms": 2503.298316504824,
+        "acRmsDbfs": -22.338746553278614,
+        "perChannel": [
+          {
+            "dc": 75.28138321995465,
+            "rms": 2504.4300245915033,
+            "acRms": 2503.298316504824
+          },
+          {
+            "dc": 75.28138321995465,
+            "rms": 2504.4300245915033,
+            "acRms": 2503.298316504824
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-stereo-v1/cache/phrase-comparison/0ed45e605342d67be01d988efe0b50467d6dee0b8d9d5e04efdb49d394f86e52/attempt-cfde0c2b840b427db24556e4d1f05ddd/faithful-then-stereo-phrase.a.matched.wav"
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-stereo-v1/cache/prepare/6411f1065898e8990313338632e7c031ddfc1912b3671a6f2fa9a1e9c39f03d1/attempt-8962b93e4a35405ea4f028dfb37aaa7b/prepared/stereo-phrase.wav",
+      "sha256": "b24fda577fe0a59fc0f53e20a1f864385189c735be6e2c998035d0c7f93853a9",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 8528,
+        "peakDbfs": -11.692054865544417,
+        "clippedSamples": 0,
+        "rms": 2507.029238983954,
+        "acRms": 2503.2986172979963,
+        "acRmsDbfs": -22.338745509593117,
+        "perChannel": [
+          {
+            "dc": 87.68617063492063,
+            "rms": 3138.6488573026577,
+            "acRms": 3137.42374965937
+          },
+          {
+            "dc": 172.3206632653061,
+            "rms": 1649.0223045167252,
+            "acRms": 1639.9939481002532
+          }
+        ]
+      },
+      "gain": 1.0,
+      "gainDb": 0.0,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 8528,
+        "peakDbfs": -11.692054865544417,
+        "clippedSamples": 0,
+        "rms": 2507.029238983954,
+        "acRms": 2503.2986172979963,
+        "acRmsDbfs": -22.338745509593117,
+        "perChannel": [
+          {
+            "dc": 87.68617063492063,
+            "rms": 3138.6488573026577,
+            "acRms": 3137.42374965937
+          },
+          {
+            "dc": 172.3206632653061,
+            "rms": 1649.0223045167252,
+            "acRms": 1639.9939481002532
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-stereo-v1/cache/phrase-comparison/0ed45e605342d67be01d988efe0b50467d6dee0b8d9d5e04efdb49d394f86e52/attempt-cfde0c2b840b427db24556e4d1f05ddd/faithful-then-stereo-phrase.b.matched.wav"
+    }
+  ],
+  "listeningReview": null
+}

@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "durationSeconds": 225,
+  "inputs": [
+    {
+      "label": "faithful",
+      "sha256": "8d4ff6dcadc1a6c63332b7227ddb96d566a4a5a8a56491a4c97ce7844b956efb",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 9922500,
+      "durationSeconds": 225.0,
+      "peak": 12579,
+      "peakDbfs": -8.316076356729745,
+      "clippedSamples": 0,
+      "rms": 3575.8482333916013,
+      "acRms": 3573.856553535312,
+      "acRmsDbfs": -19.246256360638426,
+      "perChannel": [
+        {
+          "dc": 119.33114850088184,
+          "rms": 3575.8482333916013,
+          "acRms": 3573.856553535312
+        }
+      ]
+    },
+    {
+      "label": "stereo",
+      "sha256": "e16c9cca85ba486e064ad7a3eef5bc34ae43d971cafa5057af8fe6e98d251ba8",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 9922500,
+      "durationSeconds": 225.0,
+      "peak": 8908,
+      "peakDbfs": -11.313394531954346,
+      "clippedSamples": 0,
+      "rms": 2521.2192473278974,
+      "acRms": 2516.944843341093,
+      "acRmsDbfs": -22.291524729864527,
+      "perChannel": [
+        {
+          "dc": 95.39689281934996,
+          "rms": 2782.580275743725,
+          "acRms": 2780.9445200863747
+        },
+        {
+          "dc": 184.3087903250189,
+          "rms": 2229.425934009756,
+          "acRms": 2221.794379559954
+        }
+      ]
+    }
+  ],
+  "unequalChannelFrames": 9294743,
+  "closingBody": {
+    "seconds": [
+      205,
+      211
+    ],
+    "metrics": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 264600,
+      "durationSeconds": 6.0,
+      "peak": 2807,
+      "peakDbfs": -21.344150446505576,
+      "clippedSamples": 0,
+      "rms": 559.5182240501356,
+      "acRms": 540.1118351110557,
+      "acRmsDbfs": -35.65932482336831,
+      "perChannel": [
+        {
+          "dc": 133.7510015117158,
+          "rms": 511.1118972696803,
+          "acRms": 493.30116675842686
+        },
+        {
+          "dc": 157.44956916099773,
+          "rms": 604.057873516953,
+          "acRms": 583.1771152307327
+        }
+      ]
+    },
+    "minimumAcRms": 32
+  },
+  "finalTail": {
+    "maximumChannelAcRms": 1,
+    "measurements": [
+      {
+        "label": "faithful",
+        "seconds": [
+          224,
+          225
+        ],
+        "metrics": {
+          "format": "PCM16",
+          "sampleRate": 44100,
+          "channels": 1,
+          "frames": 44100,
+          "durationSeconds": 1.0,
+          "peak": 157,
+          "peakDbfs": -46.391005651009685,
+          "clippedSamples": 0,
+          "rms": 157.0,
+          "acRms": 0.0,
+          "acRmsDbfs": null,
+          "perChannel": [
+            {
+              "dc": 157.0,
+              "rms": 157.0,
+              "acRms": 0.0
+            }
+          ]
+        }
+      },
+      {
+        "label": "stereo",
+        "seconds": [
+          224,
+          225
+        ],
+        "metrics": {
+          "format": "PCM16",
+          "sampleRate": 44100,
+          "channels": 2,
+          "frames": 44100,
+          "durationSeconds": 1.0,
+          "peak": 157,
+          "peakDbfs": -46.391005651009685,
+          "clippedSamples": 0,
+          "rms": 157.0,
+          "acRms": 0.0,
+          "acRmsDbfs": null,
+          "perChannel": [
+            {
+              "dc": 157.0,
+              "rms": 157.0,
+              "acRms": 0.0
+            },
+            {
+              "dc": 157.0,
+              "rms": 157.0,
+              "acRms": 0.0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "claims": {
+    "pcmIdentity": false,
+    "perceptualAgreement": false,
+    "musicalAcceptance": false
+  },
+  "listeningReview": null,
+  "sourcePaths": {
+    "faithful": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-stereo-v1/cache/faithful-render/b8871556f870af898fc51c205279884632d2e66438ba1616582b59703a64fb32/attempt-cdb067041e25408c907383e830baaea2/render.wav",
+    "stereo": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-stereo-v1/cache/candidate-render/cf973e17adbdab69f458bbfa9bf9bdae3714187dfe2cd0aacf693e48aa19fda5/attempt-0de9d462fe8e46009b8ead5077905508/render.wav"
+  },
+  "routing": {
+    "rawStereo": "SID A at $D400 left; SID B at $D420 right",
+    "sourceVoices": {
+      "left": [
+        1,
+        3
+      ],
+      "right": [
+        2
+      ]
+    },
+    "sourceParts": 3,
+    "sidChips": 2,
+    "crossfeed": false
+  },
+  "matrices": {
+    "faithfulDualMono": [
+      [
+        1
+      ],
+      [
+        1
+      ]
+    ],
+    "stereoMonoSum": [
+      [
+        0.5,
+        0.5
+      ]
+    ]
+  },
+  "monoSumDiagnostic": {
+    "metrics": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 9922500,
+      "durationSeconds": 225.0,
+      "peak": 6264,
+      "peakDbfs": -14.371963718196618,
+      "clippedSamples": 0,
+      "rms": 1791.2261982451625,
+      "acRms": 1785.758488105109,
+      "acRmsDbfs": -25.272544237209846,
+      "perChannel": [
+        {
+          "dc": 139.84961723356008,
+          "rms": 1791.2261982451625,
+          "acRms": 1785.758488105109
+        }
+      ]
+    },
+    "residualToFaithfulAcRms": 2812.2360245321233,
+    "normalization": "none",
+    "rounding": "nearest integer, ties to even",
+    "scope": "Arithmetic fold-down only; separate SID analog paths need not match the mono chip PCM."
+  },
+  "windows": [
+    {
+      "name": "phrase",
+      "seconds": [
+        32,
+        48
+      ],
+      "startFrame": 1411200,
+      "endFrame": 2116800
+    },
+    {
+      "name": "ending",
+      "seconds": [
+        205,
+        225
+      ],
+      "startFrame": 9040500,
+      "endFrame": 9922500
+    }
+  ],
+  "outputs": {
+    "faithful-dual-mono.wav": {
+      "sha256": "dc7d321d6f27d520a5c820fc45bfcbc61d7de6847b7cd95e37261d3c5e644b28",
+      "channels": 2,
+      "frames": 9922500,
+      "gain": 1
+    },
+    "stereo-mono-sum.wav": {
+      "sha256": "c5ee6b5b75c56deaba1ad7884530f96a3381dfe9e0cee636f08dab017a335805",
+      "channels": 1,
+      "frames": 9922500,
+      "gain": 1
+    },
+    "faithful-phrase.wav": {
+      "sha256": "c92b958123d951135f5ab33b7765e3151ec4f323cd68c03adf4d9db550070eb6",
+      "channels": 2,
+      "frames": 705600,
+      "gain": 1
+    },
+    "stereo-phrase.wav": {
+      "sha256": "b24fda577fe0a59fc0f53e20a1f864385189c735be6e2c998035d0c7f93853a9",
+      "channels": 2,
+      "frames": 705600,
+      "gain": 1
+    },
+    "faithful-ending.wav": {
+      "sha256": "f5f09923a1a3e4f76ebcf8631eda54c49b50e41919385204337a3990bc309dd1",
+      "channels": 2,
+      "frames": 882000,
+      "gain": 1
+    },
+    "stereo-ending.wav": {
+      "sha256": "af6fbd7aee7ca52d23c5923a6ab56de6b2c06adc9a1ca0c499961acfd10ae23e",
+      "channels": 2,
+      "frames": 882000,
+      "gain": 1
+    }
+  }
+}

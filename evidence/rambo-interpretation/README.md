@@ -1,6 +1,6 @@
 # Rambo interpretation evidence
 
-These records support the [complete palette interpretation](../../songs/studies/rambo-interpretation/README.md), verified on 2026-10-15. They establish source-note/timing identity, independent compiled execution and measured audio properties. **Musical acceptance is pending.** The score and music-derived records retain Martin Galway's [GPLv3 terms](../../samples/rambo-loader/LICENSE), attribution and [source provenance](../../samples/rambo-loader/README.md); they are not MIT relicensing of his music. Our palette changes and preservation rules are documented in the owning case.
+These records support the [complete palette interpretation](../../songs/studies/rambo-interpretation/README.md), verified on 2026-10-15. They establish source-note/timing identity, independent compiled execution and measured audio properties. The receipts predate listening; [subsequent feedback](../../songs/studies/rambo-interpretation/listening-review.json) is inconclusive and redirects the work toward stereo with the faithful palette. The score and music-derived records retain Martin Galway's [GPLv3 terms](../../samples/rambo-loader/LICENSE), attribution and [source provenance](../../samples/rambo-loader/README.md); they are not MIT relicensing of his music. Our palette changes and preservation rules are documented in the owning case.
 
 | Question | Retained evidence |
 | --- | --- |

@@ -14,10 +14,11 @@ PSID v3 encodes the second SID location in header byte `$7A`: `$42` means `$D420
 
 ## Tools and execution
 
-Two implemented routes retain separate authoring contracts:
+Implemented routes retain separate authoring contracts:
 
 - [SID-Wizard's native two-chip Extra player](../tools/sid-wizard-trial.md): six ordered voices, two independent filters, editable `.sws` source and PSID v3 export for two 8580s at `$D400/$D420`. Follow [the shared native workflow](../../workflows/native-song-workflow.md) for its original six-voice fixture, stereo render and headless VICE checks.
 - [Independently computed Flashdance programs](../../workflows/decoded-song-workflow.md#add-an-independently-authored-second-chip): two semantic descriptions compile to separate engines and a shared PAL wrapper, exporting PSID v3 for two 6581s at `$D400/$D420`. The [authored arrangement](../composition/flashdance-preparation.md#deliberate-dual-sid-interpretation) has full two-bank CPU/VICE, stereo/mono and ending evidence; its owning study retains listening feedback and limits.
+- [Rambo spatial interpretation](../../../songs/studies/rambo-stereo/README.md): one score engine distributes the faithful three parts across two 6581s at `$D400/$D420`. The lead and its sync/ring modulator remain together; only the independent bass moves to chip B. No notes, instrument patches or extra musical parts are added. The compiler checks that future source edits do not introduce unsupported cross-chip dependencies or shared-filter behavior; listening acceptance belongs to the case, not to the routing mechanism.
 
 GoatTracker Stereo remains an alternative tracker backend. ChiptuneSAK's GoatTracker module recognizes three- and six-voice song structures. c64bridge's inspected SIDWAVE compiler explicitly constructs only voices 1–3, so dual-SID output is not an established capability there. [S08](../sources.md#s08), [S12](../sources.md#s12), [S24](../sources.md#s24)
 

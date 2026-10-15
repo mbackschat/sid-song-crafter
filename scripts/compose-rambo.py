@@ -1,4 +1,4 @@
-"""Compile an editable Rambo loader graph and computed sound into a PAL PSID."""
+"""Compile an editable Rambo loader graph into a PAL mono or bass-split PSID."""
 
 import argparse
 from copy import deepcopy
@@ -22,6 +22,8 @@ PHASES = tuple(MorsePhase)
 COPY_LAYOUT = {'volume': (24, 5), 'write-data': (0, 29), 'frequency': (0, 14),
                'pulse': (14, 10), 'chord': (0, 10)}
 HOOKS = ('increment-transpose', 'morse-pitch-one', 'morse-pitch-two', 'start-morse')
+STEREO_VOICE_CHIPS = (0, 1, 0)
+STEREO_VOICE_OFFSETS = (0, 39, 14)
 
 
 def data(label, values):
@@ -46,21 +48,50 @@ def model_state(player):
                 morseActive=player.morse_active, morsePhase=player.morse_phase.value)
 
 
-def numeric_run(description, checkpoint_calls=()):
+def stereo_writes(writes, volume):
+    """Route the independent bass while preserving the source oscillator groups.
+
+    SID sync/ring recipients depend on the preceding physical oscillator;
+    docs/research/sid/advanced-techniques.md owns this hardware constraint.
+    Shared filtering and live globals require a separate arrangement contract.
+    """
+    result = [dict(phase='init', tick=None, address=0xd438, value=volume)]
+    result.extend(dict(phase='init', tick=None, address=0xd420 + offset, value=0)
+                  for offset in range(23, -1, -1))
+    for row in writes:
+        address = row['address']
+        require(0xd400 <= address <= 0xd418, 'Stereo bass requires source writes in its declared SID bank')
+        if address in (0xd415, 0xd416, 0xd417, 0xd418):
+            require(row['value'] == 0 if address < 0xd418 else row['phase'] == 'init',
+                    'Stereo bass does not support source shared filter or live global changes')
+        if address in (0xd404, 0xd40b, 0xd412) and row['value'] & 6:
+            voice = (address - 0xd404) // 7
+            modulator = (voice + 2) % 3
+            require(STEREO_VOICE_CHIPS[voice] == STEREO_VOICE_CHIPS[modulator],
+                    f'Stereo bass rejects cross-chip oscillator coupling on source voice {voice + 1}')
+        if row['phase'] == 'play' and 0xd407 <= address <= 0xd40d:
+            result.append(dict(row, address=address + 32))
+        else:
+            result.append(row)
+    return result
+
+
+def numeric_run(description, checkpoint_calls=(), *, stereo_bass=False):
     player = LoaderPlayer(description)
     checkpoints = {0: model_state(player)}
     for call in range(description['range']['auditCalls']):
         player.play(call)
         if call + 1 in checkpoint_calls:
             checkpoints[call + 1] = model_state(player)
-    return dict(writes=player.writes, checkpoints=checkpoints)
+    writes = stereo_writes(player.writes, description['initialization']['volume']) if stereo_bass else player.writes
+    return dict(writes=writes, checkpoints=checkpoints)
 
 
-def parameters(description):
+def parameters(description, *, stereo_bass=False):
     program = description['program']
     nodes = {node_id: f'rb_node_{index}' for index, node_id in enumerate(program)}
     banks = {bank_id: f'rb_bank_{index}' for index, bank_id in enumerate(description['dataBanks'])}
-    source = data('rb_sid_offsets', [0, 7, 14]) + data('rb_voice_bits', [1, 2, 4])
+    source = data('rb_sid_offsets', STEREO_VOICE_OFFSETS if stereo_bass else [0, 7, 14]) + data('rb_voice_bits', [1, 2, 4])
     source += data('rb_stack_bases', [0, 8, 16])
     frequency = description['frequencyWords'] + [0] * (256 - len(description['frequencyWords']))
     source += data('rb_frequency_lo', [word & 255 for word in frequency])
@@ -119,6 +150,9 @@ def parameters(description):
         source += (f'  LDY #$00\nrb_restore_{offset}:\n'
                    f'  LDA rb_initial_state++{offset},Y\n  STA rb_state_begin++{offset},Y\n'
                    f'  INY\n  CPY #${size:02x}\n  BNE rb_restore_{offset}\n')
+    if stereo_bass:
+        source += ('  LDA #RB_INITIAL_VOLUME\n  STA $d438\n  LDX #$17\n  LDA #$00\n'
+                   'rb_init_secondary_clear:\n  STA $d420,X\n  DEX\n  BPL rb_init_secondary_clear\n')
     source += '  RTS\n'
     for node_id, node in program.items():
         kind = node['kind']
@@ -149,10 +183,10 @@ def parameters(description):
                                    runtimeScoreScheduler=True, nodeLabels=nodes)
 
 
-def _assemble_player(description, *, load_address=LOAD_ADDRESS):
+def _assemble_player(description, *, load_address=LOAD_ADDRESS, stereo_bass=False):
     require(type(load_address) is int and 0x0400 <= load_address < 0xa000,
             'Payload must remain in callable RAM')
-    generated, references, sizes = parameters(description)
+    generated, references, sizes = parameters(description, stereo_bass=stereo_bass)
     constants = {name: 0 for name in references}
     constants['RB_INITIAL_VOLUME'] = description['initialization']['volume']
     source = '\n'.join((ROOT / 'songs/players' / name).read_text()
@@ -163,37 +197,41 @@ def _assemble_player(description, *, load_address=LOAD_ADDRESS):
                       for name, (label, shift) in references.items()})
     payload, symbols, listing = assemble(source, constants, load=load_address)
     require(load_address + len(payload) <= 0xa000, 'Payload must remain in callable RAM')
+    layout = dict(outputLayout='stereo-bass', sidBases=[0xd400, 0xd420],
+                  voiceSidOffsets=list(STEREO_VOICE_OFFSETS)) if stereo_bass else {}
     return payload, dict(symbols=symbols, source=source, listing=listing, loadAddress=load_address,
                          payloadBytes=len(payload), playCalls=description['range']['auditCalls'],
                          originalDriverIncluded=False, registerDumpPlayback=False,
                          supportedCallRange=dict(firstInclusive=0, lastExclusive=description['range']['auditCalls']),
                          indefinitePlaybackSupported=False,
-                         endingMechanism='Top-level score returns and sound lifetimes; no added fade', **sizes)
+                         endingMechanism='Top-level score returns and sound lifetimes; no added fade', **sizes, **layout)
 
 
-def assemble_player(description, *, load_address=LOAD_ADDRESS):
+def assemble_player(description, *, load_address=LOAD_ADDRESS, stereo_bass=False):
     compiler_contract(description)
-    numeric_run(description)
-    return _assemble_player(description, load_address=load_address)
+    numeric_run(description, stereo_bass=stereo_bass)
+    return _assemble_player(description, load_address=load_address, stereo_bass=stereo_bass)
 
 
-def _build(description):
-    payload, built = _assemble_player(description)
+def _build(description, *, stereo_bass=False):
+    payload, built = _assemble_player(description, stereo_bass=stereo_bass)
     header = bytearray(124)
     header[:4] = b'PSID'
-    for offset, value in ((4, 2), (6, 124), (8, LOAD_ADDRESS), (10, built['symbols']['entry_init']),
-                          (12, built['symbols']['entry_play']), (14, 1), (16, 1), (118, 0x14)):
+    for offset, value in ((4, 3 if stereo_bass else 2), (6, 124), (8, LOAD_ADDRESS), (10, built['symbols']['entry_init']),
+                          (12, built['symbols']['entry_play']), (14, 1), (16, 1), (118, 0x54 if stereo_bass else 0x14)):
         struct.pack_into('>H', header, offset, value)
-    for offset, value in ((22, 'Rambo independent loader'), (54, 'SID Song Crafter'),
+    if stereo_bass:
+        header[122] = 0x42
+    for offset, value in ((22, 'Rambo bass-split stereo' if stereo_bass else 'Rambo independent loader'), (54, 'SID Song Crafter'),
                           (86, '2026 independent reconstruction')):
         header[offset:offset + 31] = value.encode('ascii')[:31].ljust(31, b'\0')
     return bytes(header) + payload, built
 
 
-def build(description):
+def build(description, *, stereo_bass=False):
     compiler_contract(description)
-    numeric_run(description)
-    return _build(description)
+    numeric_run(description, stereo_bass=stereo_bass)
+    return _build(description, stereo_bass=stereo_bass)
 
 
 def read_state(memory, built):
@@ -245,7 +283,7 @@ def check_sid_writer(cpu, memory):
     return cpu.pc, opcode, address
 
 
-def run(description_path, output, calls=None):
+def run(description_path, output, calls=None, *, stereo_bass=False):
     description_path, output = Path(description_path), Path(output)
     require(not output.exists() and not output.is_symlink(), 'Choose a fresh output directory')
     input_data = description_path.read_bytes()
@@ -257,10 +295,10 @@ def run(description_path, output, calls=None):
     checkpoint_calls = {call for call in (0, 1, 49, 50, 51, 10813, 10814, 10815, count - 1) if call < count}
     stages = {}
     started = perf_counter()
-    numeric = numeric_run(description, {call + 1 for call in checkpoint_calls})
+    numeric = numeric_run(description, {call + 1 for call in checkpoint_calls}, stereo_bass=stereo_bass)
     stages['model'] = perf_counter() - started
     started = perf_counter()
-    sid, built = _build(description)
+    sid, built = _build(description, stereo_bass=stereo_bass)
     stages['assembly'] = perf_counter() - started
     checkpoints = []
     writer_sites = {}
@@ -327,8 +365,10 @@ def main():
     parser.add_argument('description', type=Path)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--calls', type=int)
+    parser.add_argument('--stereo-bass', action='store_true',
+                        help='Move source voice 2 to SID 2 at $D420, retaining voices 1/3 and their oscillator coupling on SID 1')
     args = parser.parse_args()
-    print(json.dumps(run(args.description, args.output, args.calls), indent=2))
+    print(json.dumps(run(args.description, args.output, args.calls, stereo_bass=args.stereo_bass), indent=2))
 
 
 if __name__ == '__main__':

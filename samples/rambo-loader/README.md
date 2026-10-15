@@ -12,7 +12,7 @@ The [owning study](../../docs/research/composition/rambo-preparation.md#independ
 
 ## Reproduce from corresponding source
 
-The manifest lists the complete tracked score, assembly templates, compiler and transitive local imports with SHA-256 fingerprints. Build from the repository root after installing the [documented Python dependencies](../../README.md#requirements-and-setup), including py65 1.2.0:
+The manifest lists the complete tracked score, assembly templates, compiler and transitive local imports with SHA-256 fingerprints at commit `23acbec4d2de99c0f950354694f5b6063ce001b7`. Those pins preserve the exact corresponding source as the compiler evolves; the optional stereo export also guards unchanged default mono SID bytes. Build from the repository root after installing the [documented Python dependencies](../../README.md#requirements-and-setup), including py65 1.2.0:
 
 ```sh
 PYTHONPATH=.tools/test-deps python3 scripts/compose-rambo.py songs/rambo-loader.json --output build/rambo-public-rebuild
