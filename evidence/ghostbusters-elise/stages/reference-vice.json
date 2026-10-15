@@ -1,0 +1,5040 @@
+{
+  "schemaVersion": 1,
+  "key": "c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "scripts/trace-sid-vice.py",
+      "{stage:reference-build}/candidate/reconstructed.sid",
+      "--oracle",
+      "{stage:reference-build}/candidate/writes.json",
+      "--first-call",
+      "0",
+      "--last-call",
+      "719",
+      "--clock",
+      "ntsc",
+      "--profile",
+      "strict",
+      "--subtune",
+      "1",
+      "--vice",
+      ".tools/vice-headless-3.9/build/src/x64sc",
+      "--data",
+      ".tools/vice-headless-3.9/source/data",
+      "--timeout",
+      "300",
+      "--output",
+      "{out}/vice"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": "{stage:reference-build}/candidate/reconstructed.sid",
+        "type": "file",
+        "sha256": "1f28cb7fe181bbc6cdcc12b254615d62622febebc914d2fcc445572dcd6003be"
+      },
+      {
+        "path": "{stage:reference-build}/candidate/writes.json",
+        "type": "file",
+        "sha256": "7793489054244d1bbe3668b1f29ac151269c07a9e2ee0bb0d0bf257ec07d1618"
+      },
+      {
+        "path": "scripts/trace-sid-vice.py",
+        "type": "file",
+        "sha256": "1df0cdee65ad8d0d0258e9920d57682b1940311c98e532472b8e0cb621b89e8d"
+      },
+      {
+        "path": "scripts/psid_profile.py",
+        "type": "file",
+        "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+      },
+      {
+        "path": "scripts/sid_audit_host.py",
+        "type": "file",
+        "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+      },
+      {
+        "path": "scripts/sid_clock.py",
+        "type": "file",
+        "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+      },
+      {
+        "path": "scripts/verify_player.py",
+        "type": "file",
+        "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+      },
+      {
+        "path": ".tools/vice-headless-3.9/build/src/x64sc",
+        "type": "file",
+        "sha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285"
+      },
+      {
+        "path": ".tools/vice-headless-3.9/source/data",
+        "type": "directory",
+        "sha256": "87a5a8ee759d6b69dbafb8873137a8001e01855e385280864ec5cc64f4547d11",
+        "files": [
+          {
+            "path": "C128/Makefile.am",
+            "sha256": "d6f2c81430b193bacb7b73ec18fd3ded6eab0ada4ac4bb9a1cd4dcc8a2d2c4e0"
+          },
+          {
+            "path": "C128/Makefile.in",
+            "sha256": "784cbfc1348a4fa668b0494d76db8655a15f86df5ae08b88f75fa6b1d6c8d3d8"
+          },
+          {
+            "path": "C128/basic64-901226-01.bin",
+            "sha256": "89878cea0a268734696de11c4bae593eaaa506465d2029d619c0e0cbccdfa62d"
+          },
+          {
+            "path": "C128/basichi-318019-04.bin",
+            "sha256": "121b7c7f15f9b72e83f293f8fb3c4686730ee02359cea71d18a72c6f489cd2d7"
+          },
+          {
+            "path": "C128/basiclo-318018-04.bin",
+            "sha256": "ccb0d516219f12857fef3ae7409fff072e47b9480d7eafb5eea7e0b188c958f5"
+          },
+          {
+            "path": "C128/c64hq.vpl",
+            "sha256": "a7e996ed7f8ad92ad92e815fa5ce7202302859a1080c2c986a5daae82490b3e0"
+          },
+          {
+            "path": "C128/c64s.vpl",
+            "sha256": "a659adade49fb62ce24bc7a474929764fe07c688f3a5fa0143a1818a1c7f5032"
+          },
+          {
+            "path": "C128/ccs64.vpl",
+            "sha256": "175e79d22eb380d1a695f9df34442f1a1bd22c7f26d765b5268f4e0d20c998cb"
+          },
+          {
+            "path": "C128/chargen-315079-01.bin",
+            "sha256": "7a6aff617e4f10323263ed48805ee7e3bce61b02c5ed409ccd8b6bb47b924dde"
+          },
+          {
+            "path": "C128/chargen-325078-02.bin",
+            "sha256": "945db6be6c05d6f3c2b970b5445a89b1201176956903b7b6b2257ecde2144871"
+          },
+          {
+            "path": "C128/chargen-325167-01.bin",
+            "sha256": "718bebcc2617817935be241deaba1fff27750f2ec3339f279a12345aef36ddea"
+          },
+          {
+            "path": "C128/chargen-325167-02.bin",
+            "sha256": "1b597333c90a316a3eff438678d945ec34218d6d0ccdcb267813d254a7677762"
+          },
+          {
+            "path": "C128/chargen-325173-01D.bin",
+            "sha256": "307437f161c032dd069c7e75db7253babbf7ca2712743475289ae45f44b539f0"
+          },
+          {
+            "path": "C128/chargen-325181-01.bin",
+            "sha256": "ff702f8aa9c2a024d54a6f955c0b2889d884352d8b0f1fcc726100236fefbd32"
+          },
+          {
+            "path": "C128/chargen-390059-01.bin",
+            "sha256": "f08d8f525b44f5cbb3f5776739fcdff737886e1813f1eb7a20aedb128db1d4a8"
+          },
+          {
+            "path": "C128/cjam.vpl",
+            "sha256": "88d4bf8af92ffc9b2f3a5cecca5a42fd67aae346bf18b01e68b7c49b6d073144"
+          },
+          {
+            "path": "C128/colodore.vpl",
+            "sha256": "3ac258746a7efe8ca1e5c863dab8bdcdc297049a99ca127e51423f1fc957273a"
+          },
+          {
+            "path": "C128/community-colors.vpl",
+            "sha256": "2bab9ac265df10a38b797806c0c56f3391cb13187b7af73072d8f7ccd35fc25d"
+          },
+          {
+            "path": "C128/deekay.vpl",
+            "sha256": "0ca5a21a703dd1d6973154b6389980fdc5288c2d8fed09dbee05798100f1d1e2"
+          },
+          {
+            "path": "C128/default.vrs",
+            "sha256": "5510a719a7458fc8cbd58a6decd9c5d465e0ddb6d5c3b07297c49fae27872428"
+          },
+          {
+            "path": "C128/frodo.vpl",
+            "sha256": "901f94116866df5d64ae7ebaa801b6a144e422cb157c544d3cea98728bd7f43e"
+          },
+          {
+            "path": "C128/godot.vpl",
+            "sha256": "14a3e5d7bf20c65fc9b3bfbff4f00b5871f97203e70342aea9424b8b68e3d75b"
+          },
+          {
+            "path": "C128/gtk3_keyrahv3.vkm",
+            "sha256": "2f615c34d9b2a48b0141b71b9b79bc8c5c755bcabc8f8e4dd6535b30c74548f3"
+          },
+          {
+            "path": "C128/gtk3_keyrahv3_de.vkm",
+            "sha256": "ec8de20037c494a117b83d3cda1f9149f192a96d8b15e49173bd0487aa481077"
+          },
+          {
+            "path": "C128/gtk3_pos.vkm",
+            "sha256": "c5517bd2539f52bc91b17f8b465cca2731b10902bf44336f9cad0b9ad4466c58"
+          },
+          {
+            "path": "C128/gtk3_pos_de.vkm",
+            "sha256": "4a83bb53d4d315dcebebb2785cde04abd5eadf18fc163930d0c881656b9ece05"
+          },
+          {
+            "path": "C128/gtk3_pos_se.vkm",
+            "sha256": "33c8667ecfccbeef8f4537590c6b6c7c8b4b3a7a98e8b17c73eb755bf3eb449f"
+          },
+          {
+            "path": "C128/gtk3_sym.vkm",
+            "sha256": "605568dd8e1ad7ca95169f9b4f19b95619d7a606f00040d339176ddc1cafcb85"
+          },
+          {
+            "path": "C128/gtk3_sym_de.vkm",
+            "sha256": "fadee460107d79fb83b1e27b5c403ef882b60016f1ab0fa4c02d856aa97daa2b"
+          },
+          {
+            "path": "C128/gtk3_sym_fr.vkm",
+            "sha256": "7a279cf01009988f2a273902e2c50cd315bd027a727361f1b7414665b6fe7601"
+          },
+          {
+            "path": "C128/gtk3_sym_se.vkm",
+            "sha256": "3b3c97faf12add95de03e6c5f5bf2f08d0f8cd5ecadfd7305f45530248536067"
+          },
+          {
+            "path": "C128/kernal-315078-03.bin",
+            "sha256": "a068438e6276a5a3d54cb3f0d0da74c0885b839ae501e09318885130bdbcee9f"
+          },
+          {
+            "path": "C128/kernal-318020-05.bin",
+            "sha256": "64ed21ad31da2840aa90eab70c6ed4731f63268a1b3c5cf85273e28d6cfa6d4d"
+          },
+          {
+            "path": "C128/kernal-318034-01.bin",
+            "sha256": "2222e29cd47ff5d1fdb7c2647d52400b619a0a4acbc6060ae1131afc0b3466dd"
+          },
+          {
+            "path": "C128/kernal-325172-01.bin",
+            "sha256": "7f3c16d39f29e99bab4036537cbc8681f71042bc001dffb5a856e8990b25aeaf"
+          },
+          {
+            "path": "C128/kernal64-325179-01.bin",
+            "sha256": "734344149c44dfac54d3c876798679d871432fc8dde6d864e681031adc614bac"
+          },
+          {
+            "path": "C128/kernal64-325182-01.bin",
+            "sha256": "19fe656f85efaad51e6134a23465fb9f4a9264294014dcf5ef9f4d13a75cd1b7"
+          },
+          {
+            "path": "C128/kernal64-901227-03.bin",
+            "sha256": "83c60d47047d7beab8e5b7bf6f67f80daa088b7a6a27de0d7e016f6484042721"
+          },
+          {
+            "path": "C128/kernalfi",
+            "sha256": "a7fce9cbd6fd3b6eb789f27ff7235433724e1ed0a9bdd5509bdfc8e1e62204da"
+          },
+          {
+            "path": "C128/kernalfr",
+            "sha256": "0f9148ceabe738ec38757df6efd41b063fbb3fc3e111b4c508aeacddd1e59e21"
+          },
+          {
+            "path": "C128/kernalit",
+            "sha256": "3c7a629a3bb9a3957825b38f6af6e84204737dd11e42ffaca3d465c511e6cd56"
+          },
+          {
+            "path": "C128/kernalno",
+            "sha256": "1a5dbdf241e1ce1719381b802dbf9b2cd14b56c02d312bceec8fe1fc566d16ec"
+          },
+          {
+            "path": "C128/lemon64.vpl",
+            "sha256": "ba65a852097b7d581abd07603f586ca5016f0113110cec0127464ca310432c38"
+          },
+          {
+            "path": "C128/palette.vpl",
+            "sha256": "ffd2484d3b502138a3b6824e46d19e200392dc629f9fa7045c635a5acaa788f8"
+          },
+          {
+            "path": "C128/palette_6569R1_v1r.vpl",
+            "sha256": "9d0d7e7f230f1bcf9cb0d5bd35a2ec1060b908b0f935a30c80cf2d97afe9c683"
+          },
+          {
+            "path": "C128/palette_6569R5_v1r.vpl",
+            "sha256": "7ad1d58be53edc28f6abaf2f42ec01dd9e6a9e0a9206c73d03a455d026f2c26a"
+          },
+          {
+            "path": "C128/palette_8565R2_v1r.vpl",
+            "sha256": "9bea19e5c5c574dda560892dd63189fedff37e20438e299478c54622d7809364"
+          },
+          {
+            "path": "C128/palette_C64_amber.vpl",
+            "sha256": "26ba9995968da3b9a992a2b6801942d17bdb65c8edf9b23022706f36b67b86d1"
+          },
+          {
+            "path": "C128/palette_C64_cyan.vpl",
+            "sha256": "dbfd9001890508ed50d109a467658f66041e239b93b3d7b9d78f8038ba7dfc67"
+          },
+          {
+            "path": "C128/palette_C64_green.vpl",
+            "sha256": "d5d8c21142c0f47fc30b6294ec9d71a76a4d117b6c550312aa5c2810b065ccb0"
+          },
+          {
+            "path": "C128/pc64.vpl",
+            "sha256": "30072b164fd0137cd38799d95f2b5c7f4041bea4f1413a991747f40644a87463"
+          },
+          {
+            "path": "C128/pepto-ntsc-sony.vpl",
+            "sha256": "d7487cb9ffe8b14926b2a69e3a4d726db8a9b0cbd13225af1f2b15b2002e610b"
+          },
+          {
+            "path": "C128/pepto-ntsc.vpl",
+            "sha256": "7c36f799dc9dfc4ad40c1a8d62c7cdfa6c8b0868f777883e5e1dc26e05ebebb9"
+          },
+          {
+            "path": "C128/pepto-pal.vpl",
+            "sha256": "7e2c2241d0dc8968954d5ee77996282309ea966f2a3e284d3d0b26d0a5237b7e"
+          },
+          {
+            "path": "C128/pepto-palold.vpl",
+            "sha256": "779b7297e0673e928ce2c0d5f804b519fb525806ddb5bd3d1274d6aa3f677d83"
+          },
+          {
+            "path": "C128/pixcen.vpl",
+            "sha256": "d9d0cde15a7c47eae67d3ddafe34942537e431d8fb4afeabe4d20691975464ce"
+          },
+          {
+            "path": "C128/ptoing.vpl",
+            "sha256": "e810cca1244e062c77ebc1281473903c24de4762328ce43d68c84027e8a4252d"
+          },
+          {
+            "path": "C128/rgb.vpl",
+            "sha256": "2909e259abbfcfff0da34c01d985969f9f70e49a7ab360381eedf1c3860237a8"
+          },
+          {
+            "path": "C128/sdl_pos.vkm",
+            "sha256": "ce5ee63f0fc092d603fcaee3f5f81e3bc92164dc59d1788e164d20e7c6971693"
+          },
+          {
+            "path": "C128/sdl_pos_de.vkm",
+            "sha256": "4a9110ba74722d33557cbedb4392f8eca09ded88155d60c5cb2651537c489445"
+          },
+          {
+            "path": "C128/sdl_sym.vkm",
+            "sha256": "876ffc90dab8617ed88739a9350451d45bfa16ee0d5801d3c70298b7645a909f"
+          },
+          {
+            "path": "C128/sdl_sym_de.vkm",
+            "sha256": "6b246dc96fcda373bdd4fc977b1ee6d6ab267ea56227f75aaf7a7559214f6ce7"
+          },
+          {
+            "path": "C128/sdl_sym_fr.vkm",
+            "sha256": "49debb99357a03f9a312afabcb39e13543e85608628a151dae6f49e0fabadc81"
+          },
+          {
+            "path": "C128/sdl_v128.vkm",
+            "sha256": "6f671f4209570a363dee6ba248fc27b85f88c8e7dab26ba69fd0b1ca1b648f1a"
+          },
+          {
+            "path": "C128/the64.vpl",
+            "sha256": "b6729eff540482bf3cf5678a5dcef47d1d7a2721e06d02e116d7829df6662fbd"
+          },
+          {
+            "path": "C128/vdc_comp.vpl",
+            "sha256": "0b11ab7378ba9bc96bfa981066743253564d92bc8260b033d424035c96439627"
+          },
+          {
+            "path": "C128/vdc_deft.vpl",
+            "sha256": "18090da8f7b5c00e197fcfd737cfd186c4784596c1e586573b1ed212d1ac73aa"
+          },
+          {
+            "path": "C128/vdc_scart.vpl",
+            "sha256": "ebfa30108dbcdc6f36fc68270988a27f41f19e75db70d486536793bd771468b6"
+          },
+          {
+            "path": "C128/vice.vpl",
+            "sha256": "2bdd1241b5106fbe85a501c98b11c05fafec91acb070bbb406c0832be339eae2"
+          },
+          {
+            "path": "C64/Makefile.am",
+            "sha256": "b178a75071d148ca39dfbf7107b6985356cb123e347fcd6b1bd35e56f313379b"
+          },
+          {
+            "path": "C64/Makefile.in",
+            "sha256": "e2905c60cd125411be39525b02dae4169bbdad2ca9c56694fd840b19305f7767"
+          },
+          {
+            "path": "C64/basic-901226-01.bin",
+            "sha256": "89878cea0a268734696de11c4bae593eaaa506465d2029d619c0e0cbccdfa62d"
+          },
+          {
+            "path": "C64/c64hq.vpl",
+            "sha256": "a7e996ed7f8ad92ad92e815fa5ce7202302859a1080c2c986a5daae82490b3e0"
+          },
+          {
+            "path": "C64/c64mem.sym",
+            "sha256": "6e8ce78f1a5a1f2f9e04e990b48ae657c2dd127f1a7745e942041b14f287fec3"
+          },
+          {
+            "path": "C64/c64s.vpl",
+            "sha256": "c31eb83924a792a468fada474834c136c1fd7f3009beacaa7f365b32149788c1"
+          },
+          {
+            "path": "C64/ccs64.vpl",
+            "sha256": "175e79d22eb380d1a695f9df34442f1a1bd22c7f26d765b5268f4e0d20c998cb"
+          },
+          {
+            "path": "C64/chargen-901225-01.bin",
+            "sha256": "fd0d53b8480e86163ac98998976c72cc58d5dd8eb824ed7b829774e74213b420"
+          },
+          {
+            "path": "C64/chargen-906143-02.bin",
+            "sha256": "0f4a5b0f9ec0d86639ba316053e330fdd849692623a41f8de4a420fcd47c55ee"
+          },
+          {
+            "path": "C64/cjam.vpl",
+            "sha256": "88d4bf8af92ffc9b2f3a5cecca5a42fd67aae346bf18b01e68b7c49b6d073144"
+          },
+          {
+            "path": "C64/colodore.vpl",
+            "sha256": "3ac258746a7efe8ca1e5c863dab8bdcdc297049a99ca127e51423f1fc957273a"
+          },
+          {
+            "path": "C64/community-colors.vpl",
+            "sha256": "2bab9ac265df10a38b797806c0c56f3391cb13187b7af73072d8f7ccd35fc25d"
+          },
+          {
+            "path": "C64/deekay.vpl",
+            "sha256": "0ca5a21a703dd1d6973154b6389980fdc5288c2d8fed09dbee05798100f1d1e2"
+          },
+          {
+            "path": "C64/default.vrs",
+            "sha256": "aa0e8cc1eabea1dfd5ed03e1d6337e5d71d390fc7d7541c487056e131247e897"
+          },
+          {
+            "path": "C64/frodo.vpl",
+            "sha256": "901f94116866df5d64ae7ebaa801b6a144e422cb157c544d3cea98728bd7f43e"
+          },
+          {
+            "path": "C64/godot.vpl",
+            "sha256": "14a3e5d7bf20c65fc9b3bfbff4f00b5871f97203e70342aea9424b8b68e3d75b"
+          },
+          {
+            "path": "C64/gtk3_keyrah.vkm",
+            "sha256": "b618475a4dc8e9d134273c9598c40f741c44249def8934f1a4358281e53fd310"
+          },
+          {
+            "path": "C64/gtk3_keyrah_de.vkm",
+            "sha256": "d48c6c09baa7e1517b149781e55059b426cc1c47a956d9b739da36fb0ff88054"
+          },
+          {
+            "path": "C64/gtk3_pos.vkm",
+            "sha256": "df7332c52430ec344c9821ead8f16650ca31dc5676d0c40c5915e5594bd3493d"
+          },
+          {
+            "path": "C64/gtk3_pos_bmc64.vkm",
+            "sha256": "322a5cc04f800d2e485f62c3e12d21091e8d19041506efd0cc10bc068e4881b9"
+          },
+          {
+            "path": "C64/gtk3_pos_de.vkm",
+            "sha256": "251f324393a2fdcc85f84ce8348f916ec8b3cddcc528794a798de5c452c3e1a7"
+          },
+          {
+            "path": "C64/gtk3_pos_es.vkm",
+            "sha256": "b9e3ac042f7291af974e7efc15a641d0d0bb12171f0d32b8803b290c04fae6ec"
+          },
+          {
+            "path": "C64/gtk3_pos_it.vkm",
+            "sha256": "c970ad545b0786e174165dfb931ef99d4f72102ba11ad9fbdb09f8049e856d4e"
+          },
+          {
+            "path": "C64/gtk3_pos_se.vkm",
+            "sha256": "85c21e9145b2ce108fc8cda3c8345c78e586b47dce732df71d0b06b553ed7e3a"
+          },
+          {
+            "path": "C64/gtk3_pos_tr.vkm",
+            "sha256": "a259004fd4b1ad49bc3d836ad3b3bbd1c20a62e6fa1e95f21dee9c13ff734d0d"
+          },
+          {
+            "path": "C64/gtk3_pos_uk.vkm",
+            "sha256": "9f4802186ee61ce4be89aea5fb7d4235b6d692bff980f2f7a06b3bfdb4a013ea"
+          },
+          {
+            "path": "C64/gtk3_sym.vkm",
+            "sha256": "478f7d46bcfa0547d2c3fe1fb410a854501e2833472fa47448f29110dfa09428"
+          },
+          {
+            "path": "C64/gtk3_sym_be.vkm",
+            "sha256": "a0d7d54b468bf5be4ed643c2594c82916e9fa200fac0a8d8c4ddffe09a49033c"
+          },
+          {
+            "path": "C64/gtk3_sym_da.vkm",
+            "sha256": "6ab95868fee51344af693453e9c09b3c790f2d0af535ccafdab4f7ad35d1fe6f"
+          },
+          {
+            "path": "C64/gtk3_sym_de.vkm",
+            "sha256": "e786a29c19c655d020dccc1fcc4323af794e9958033e9e335bd7d8f326a9fe25"
+          },
+          {
+            "path": "C64/gtk3_sym_fr.vkm",
+            "sha256": "5b5df4e79f4592508fd8333c45d884aacc9a0b0c0860fae134b72a8e03be98ae"
+          },
+          {
+            "path": "C64/gtk3_sym_it.vkm",
+            "sha256": "2c998d86a9517a8eec2720a840abae80e11d8ddc0800c55e70df15b3adb62040"
+          },
+          {
+            "path": "C64/gtk3_sym_nl.vkm",
+            "sha256": "ef9a8aaf4cb97c2e42a1f0eaccff4e86f34f98df6c2a2159a24690cd4cea86d2"
+          },
+          {
+            "path": "C64/gtk3_sym_se.vkm",
+            "sha256": "19560e536800ded9d0e5d149c05acaf02e429488b83f8d0b24c66b6c0256f931"
+          },
+          {
+            "path": "C64/gtk3_sym_tr.vkm",
+            "sha256": "d95d441fbfe3ba1b1c0cf6b2e64d7b78159125505ea57ed8f6568f0e1c3c5315"
+          },
+          {
+            "path": "C64/gtk3_sym_uk.vkm",
+            "sha256": "291805b53e65c8c3fce152072608f4402f54408b94661863235d5bae1bc07a9a"
+          },
+          {
+            "path": "C64/gtk3_the64_de.vkm",
+            "sha256": "bb323aabcc7f6117aab8dbe6246c55898f9ee9c6b487a110f921e3fbec87d447"
+          },
+          {
+            "path": "C64/kernal-251104-04.bin",
+            "sha256": "81ad3a08920f2782ab031bb3ae02789d1f5f216c3d24d262e752a2b13e9faf73"
+          },
+          {
+            "path": "C64/kernal-390852-01.bin",
+            "sha256": "0a644f5e7f6ef8cb67b07e7a80f3f9a35584d9b131294c64f6e747a7e5c8a789"
+          },
+          {
+            "path": "C64/kernal-901227-01.bin",
+            "sha256": "f585600a2e47d0224459e878184d3f4cce2665bfcce65e61732530c6d89c4269"
+          },
+          {
+            "path": "C64/kernal-901227-02.bin",
+            "sha256": "675cf19a3e04bf68e41cc7a9010b353e51845ed9069db65496c52b79f1e1385f"
+          },
+          {
+            "path": "C64/kernal-901227-03.bin",
+            "sha256": "83c60d47047d7beab8e5b7bf6f67f80daa088b7a6a27de0d7e016f6484042721"
+          },
+          {
+            "path": "C64/kernal-901246-01.bin",
+            "sha256": "b2b430a134514af11f3ed64c0929fc5241d8436ba7b12514ec02d1b2cb2fd533"
+          },
+          {
+            "path": "C64/kernal-906145-02.bin",
+            "sha256": "48af48070ec9adda79ae7f65b772c422062eb12e69214a7cf788e6947a3b4117"
+          },
+          {
+            "path": "C64/lemon64.vpl",
+            "sha256": "ba65a852097b7d581abd07603f586ca5016f0113110cec0127464ca310432c38"
+          },
+          {
+            "path": "C64/palette.vpl",
+            "sha256": "ffd2484d3b502138a3b6824e46d19e200392dc629f9fa7045c635a5acaa788f8"
+          },
+          {
+            "path": "C64/palette_6569R1_v1r.vpl",
+            "sha256": "9d0d7e7f230f1bcf9cb0d5bd35a2ec1060b908b0f935a30c80cf2d97afe9c683"
+          },
+          {
+            "path": "C64/palette_6569R5_v1r.vpl",
+            "sha256": "7ad1d58be53edc28f6abaf2f42ec01dd9e6a9e0a9206c73d03a455d026f2c26a"
+          },
+          {
+            "path": "C64/palette_8565R2_v1r.vpl",
+            "sha256": "9bea19e5c5c574dda560892dd63189fedff37e20438e299478c54622d7809364"
+          },
+          {
+            "path": "C64/palette_C64_amber.vpl",
+            "sha256": "26ba9995968da3b9a992a2b6801942d17bdb65c8edf9b23022706f36b67b86d1"
+          },
+          {
+            "path": "C64/palette_C64_cyan.vpl",
+            "sha256": "dbfd9001890508ed50d109a467658f66041e239b93b3d7b9d78f8038ba7dfc67"
+          },
+          {
+            "path": "C64/palette_C64_green.vpl",
+            "sha256": "d5d8c21142c0f47fc30b6294ec9d71a76a4d117b6c550312aa5c2810b065ccb0"
+          },
+          {
+            "path": "C64/pc64.vpl",
+            "sha256": "30072b164fd0137cd38799d95f2b5c7f4041bea4f1413a991747f40644a87463"
+          },
+          {
+            "path": "C64/pepto-ntsc-sony.vpl",
+            "sha256": "d7487cb9ffe8b14926b2a69e3a4d726db8a9b0cbd13225af1f2b15b2002e610b"
+          },
+          {
+            "path": "C64/pepto-ntsc.vpl",
+            "sha256": "10763039b2282e24f737c6ffae40c92e68407e13a5eda76acfd67612591d2365"
+          },
+          {
+            "path": "C64/pepto-pal.vpl",
+            "sha256": "8601a72d62687450e5b015fd78974d6fdf008ec17ee25c8a234b959668ae032a"
+          },
+          {
+            "path": "C64/pepto-palold.vpl",
+            "sha256": "779b7297e0673e928ce2c0d5f804b519fb525806ddb5bd3d1274d6aa3f677d83"
+          },
+          {
+            "path": "C64/pixcen.vpl",
+            "sha256": "d9d0cde15a7c47eae67d3ddafe34942537e431d8fb4afeabe4d20691975464ce"
+          },
+          {
+            "path": "C64/ptoing.vpl",
+            "sha256": "e810cca1244e062c77ebc1281473903c24de4762328ce43d68c84027e8a4252d"
+          },
+          {
+            "path": "C64/rgb.vpl",
+            "sha256": "2909e259abbfcfff0da34c01d985969f9f70e49a7ab360381eedf1c3860237a8"
+          },
+          {
+            "path": "C64/sdl_joymap_keyrah_v3.vjm",
+            "sha256": "84d056d488c1682924bbb60086f72b0c889150f058b70bc8cd148006fb0d6fce"
+          },
+          {
+            "path": "C64/sdl_joymap_ps3.vjm",
+            "sha256": "40bd7d48ae8d8c434948bd6eea775ca7d600082b354f7bd9335b1dd0d835efbb"
+          },
+          {
+            "path": "C64/sdl_joymap_thec64.vjm",
+            "sha256": "07c866c2517de037fe1a291130aedb917823beeec1d21bce8701a19fed6c4891"
+          },
+          {
+            "path": "C64/sdl_joymap_xbox360.vjm",
+            "sha256": "3b7b87cf6014223cd410052fc2cfe8a0d203b02f86cd61c56d772cd66bee1c47"
+          },
+          {
+            "path": "C64/sdl_keyrah.vkm",
+            "sha256": "28aa188889fb9eac99c9f81157fe9b4547098e75a41958d115273389eb8ae05d"
+          },
+          {
+            "path": "C64/sdl_keyrah_combian.vkm",
+            "sha256": "c18be00a53f861084165abf0a8fe55810d962abcdf68f1f3b454d021dc92b383"
+          },
+          {
+            "path": "C64/sdl_keyrah_de.vkm",
+            "sha256": "5b10e79e6c41f07487be99d4412028de1987f6bc7123d24be484148f5053930e"
+          },
+          {
+            "path": "C64/sdl_keyrah_retropie.vkm",
+            "sha256": "7ab980ad0d6db5aa7c3785368665823254f18bafb0eee65b36b3ce65411ae66a"
+          },
+          {
+            "path": "C64/sdl_keyrah_retropie_de.vkm",
+            "sha256": "3d30f7b4ff16e180518991312bbb97ba48734a7e716b1b6ad41571caaed5d8e5"
+          },
+          {
+            "path": "C64/sdl_pos.vkm",
+            "sha256": "db446496a278d47ba1327ce5b4ab2988596542a57517efced68dd8937c89ab36"
+          },
+          {
+            "path": "C64/sdl_pos_ch.vkm",
+            "sha256": "809ade0293c09cfb62be9672ee386bf22e1657a556d9c9bf9d457085b1b97102"
+          },
+          {
+            "path": "C64/sdl_pos_da.vkm",
+            "sha256": "489828c39da90854acfba3278976a1f568a9e7e21ec82188fb25ebf0ea4b168a"
+          },
+          {
+            "path": "C64/sdl_pos_de.vkm",
+            "sha256": "ab8452f548108f1d9ba747d0c728d9710f8646fbe19e2f6c3eccbe51fda99aca"
+          },
+          {
+            "path": "C64/sdl_pos_fi.vkm",
+            "sha256": "e701f373a94d9a9394f20d3f98a31c77408167920e5dc97f87dacf0f25ff985e"
+          },
+          {
+            "path": "C64/sdl_pos_no.vkm",
+            "sha256": "f3f88e4aeabc011a17d2148489150d30435e3146cc516a31f0d54c578ffa50ee"
+          },
+          {
+            "path": "C64/sdl_pos_tr.vkm",
+            "sha256": "11a5cf5603a2eebb197ffd94e4aa83ddc7983480da365f314b9b5c423c69a06e"
+          },
+          {
+            "path": "C64/sdl_pos_uk.vkm",
+            "sha256": "ac880b959f5e1517272b50d93618d17b7975d2d5a4e7e62185aa7c200d5d3468"
+          },
+          {
+            "path": "C64/sdl_sym.vkm",
+            "sha256": "883d122f3cba8c707ad47c8a50b37d158df1fc548a32ed3893386243dd3c4c38"
+          },
+          {
+            "path": "C64/sdl_sym_da.vkm",
+            "sha256": "6c1d2317ade3cd2ac6380ae223fddc4a6ed1ba298256ecdfa190b48320f86547"
+          },
+          {
+            "path": "C64/sdl_sym_de.vkm",
+            "sha256": "30ce36a16cb9190355a9f360d50dfe51d76c03ed68647c7d51d7251f0e46d3a3"
+          },
+          {
+            "path": "C64/sdl_sym_fr.vkm",
+            "sha256": "c247eeebb0953fc7010e67cab0ed49665bef299856712b861021f1692cc4793e"
+          },
+          {
+            "path": "C64/sdl_sym_it.vkm",
+            "sha256": "48ed248da32e64ecef8d70c3ea94c9ead1a596d9d8c88132cf2850e71c7c06b4"
+          },
+          {
+            "path": "C64/sdl_sym_nl.vkm",
+            "sha256": "95fcfa154b407a635c9e9864342d386299b42b28566f93b05ee30b7a8d5711d2"
+          },
+          {
+            "path": "C64/sdl_sym_tr.vkm",
+            "sha256": "7435cd95753ed34cd6011fa418988c59cea9f236e0e302461c732253db9f8cb4"
+          },
+          {
+            "path": "C64/sdl_sym_uk.vkm",
+            "sha256": "0d4e9824cae9de15b587b5a7023d8277484290acd1bad3d88eca090e10c65c00"
+          },
+          {
+            "path": "C64/the64.vpl",
+            "sha256": "bcce3a4620cef2a64b114068ffb59446335f0d616a25bfec3111a09284989f00"
+          },
+          {
+            "path": "C64/vice.vpl",
+            "sha256": "c4652015277cbd3eaa57a84327bfddb255571599a7caa97fe2d7c1c6cd4a501d"
+          },
+          {
+            "path": "C64DTV/Makefile.am",
+            "sha256": "0c8b9ed78ffdca881e36ca09d9009417d7e0454c48f655b316f11df4845503f0"
+          },
+          {
+            "path": "C64DTV/Makefile.in",
+            "sha256": "0b3e84bdeca0e7139755fdf0574e0cd964d85204d4d3322b76dc9ad3479a4a16"
+          },
+          {
+            "path": "C64DTV/basic-901226-01.bin",
+            "sha256": "89878cea0a268734696de11c4bae593eaaa506465d2029d619c0e0cbccdfa62d"
+          },
+          {
+            "path": "C64DTV/c64mem.sym",
+            "sha256": "6e8ce78f1a5a1f2f9e04e990b48ae657c2dd127f1a7745e942041b14f287fec3"
+          },
+          {
+            "path": "C64DTV/chargen-901225-01.bin",
+            "sha256": "fd0d53b8480e86163ac98998976c72cc58d5dd8eb824ed7b829774e74213b420"
+          },
+          {
+            "path": "C64DTV/default.vrs",
+            "sha256": "aa0e8cc1eabea1dfd5ed03e1d6337e5d71d390fc7d7541c487056e131247e897"
+          },
+          {
+            "path": "C64DTV/dtvrom.bin",
+            "sha256": "6c0158e6d7a343e23126def9f8a2b89c562a4f82db8f615da3accdaebb943518"
+          },
+          {
+            "path": "C64DTV/gtk3_keyrah.vkm",
+            "sha256": "b618475a4dc8e9d134273c9598c40f741c44249def8934f1a4358281e53fd310"
+          },
+          {
+            "path": "C64DTV/gtk3_keyrah_de.vkm",
+            "sha256": "d48c6c09baa7e1517b149781e55059b426cc1c47a956d9b739da36fb0ff88054"
+          },
+          {
+            "path": "C64DTV/gtk3_pos.vkm",
+            "sha256": "df7332c52430ec344c9821ead8f16650ca31dc5676d0c40c5915e5594bd3493d"
+          },
+          {
+            "path": "C64DTV/gtk3_pos_bmc64.vkm",
+            "sha256": "322a5cc04f800d2e485f62c3e12d21091e8d19041506efd0cc10bc068e4881b9"
+          },
+          {
+            "path": "C64DTV/gtk3_pos_de.vkm",
+            "sha256": "251f324393a2fdcc85f84ce8348f916ec8b3cddcc528794a798de5c452c3e1a7"
+          },
+          {
+            "path": "C64DTV/gtk3_pos_es.vkm",
+            "sha256": "b9e3ac042f7291af974e7efc15a641d0d0bb12171f0d32b8803b290c04fae6ec"
+          },
+          {
+            "path": "C64DTV/gtk3_pos_it.vkm",
+            "sha256": "c970ad545b0786e174165dfb931ef99d4f72102ba11ad9fbdb09f8049e856d4e"
+          },
+          {
+            "path": "C64DTV/gtk3_pos_se.vkm",
+            "sha256": "85c21e9145b2ce108fc8cda3c8345c78e586b47dce732df71d0b06b553ed7e3a"
+          },
+          {
+            "path": "C64DTV/gtk3_pos_tr.vkm",
+            "sha256": "a259004fd4b1ad49bc3d836ad3b3bbd1c20a62e6fa1e95f21dee9c13ff734d0d"
+          },
+          {
+            "path": "C64DTV/gtk3_pos_uk.vkm",
+            "sha256": "9f4802186ee61ce4be89aea5fb7d4235b6d692bff980f2f7a06b3bfdb4a013ea"
+          },
+          {
+            "path": "C64DTV/gtk3_sym.vkm",
+            "sha256": "478f7d46bcfa0547d2c3fe1fb410a854501e2833472fa47448f29110dfa09428"
+          },
+          {
+            "path": "C64DTV/gtk3_sym_be.vkm",
+            "sha256": "a0d7d54b468bf5be4ed643c2594c82916e9fa200fac0a8d8c4ddffe09a49033c"
+          },
+          {
+            "path": "C64DTV/gtk3_sym_da.vkm",
+            "sha256": "6ab95868fee51344af693453e9c09b3c790f2d0af535ccafdab4f7ad35d1fe6f"
+          },
+          {
+            "path": "C64DTV/gtk3_sym_de.vkm",
+            "sha256": "e786a29c19c655d020dccc1fcc4323af794e9958033e9e335bd7d8f326a9fe25"
+          },
+          {
+            "path": "C64DTV/gtk3_sym_fr.vkm",
+            "sha256": "efb8bf024451676f5941bcbe660161e4560bfcda30b9429a5bf55325d12e8db9"
+          },
+          {
+            "path": "C64DTV/gtk3_sym_it.vkm",
+            "sha256": "aa2cf54da37ecc17f998e9e0e2284d0613db9029a557dc86ca0a6515adc174ab"
+          },
+          {
+            "path": "C64DTV/gtk3_sym_nl.vkm",
+            "sha256": "ef9a8aaf4cb97c2e42a1f0eaccff4e86f34f98df6c2a2159a24690cd4cea86d2"
+          },
+          {
+            "path": "C64DTV/gtk3_sym_se.vkm",
+            "sha256": "19560e536800ded9d0e5d149c05acaf02e429488b83f8d0b24c66b6c0256f931"
+          },
+          {
+            "path": "C64DTV/gtk3_sym_tr.vkm",
+            "sha256": "d95d441fbfe3ba1b1c0cf6b2e64d7b78159125505ea57ed8f6568f0e1c3c5315"
+          },
+          {
+            "path": "C64DTV/gtk3_sym_uk.vkm",
+            "sha256": "291805b53e65c8c3fce152072608f4402f54408b94661863235d5bae1bc07a9a"
+          },
+          {
+            "path": "C64DTV/gtk3_the64_de.vkm",
+            "sha256": "bb323aabcc7f6117aab8dbe6246c55898f9ee9c6b487a110f921e3fbec87d447"
+          },
+          {
+            "path": "C64DTV/kernal-901227-03.bin",
+            "sha256": "83c60d47047d7beab8e5b7bf6f67f80daa088b7a6a27de0d7e016f6484042721"
+          },
+          {
+            "path": "C64DTV/sdl_keyrah.vkm",
+            "sha256": "28aa188889fb9eac99c9f81157fe9b4547098e75a41958d115273389eb8ae05d"
+          },
+          {
+            "path": "C64DTV/sdl_keyrah_combian.vkm",
+            "sha256": "c18be00a53f861084165abf0a8fe55810d962abcdf68f1f3b454d021dc92b383"
+          },
+          {
+            "path": "C64DTV/sdl_keyrah_de.vkm",
+            "sha256": "5b10e79e6c41f07487be99d4412028de1987f6bc7123d24be484148f5053930e"
+          },
+          {
+            "path": "C64DTV/sdl_keyrah_retropie.vkm",
+            "sha256": "7ab980ad0d6db5aa7c3785368665823254f18bafb0eee65b36b3ce65411ae66a"
+          },
+          {
+            "path": "C64DTV/sdl_keyrah_retropie_de.vkm",
+            "sha256": "3d30f7b4ff16e180518991312bbb97ba48734a7e716b1b6ad41571caaed5d8e5"
+          },
+          {
+            "path": "C64DTV/sdl_pos.vkm",
+            "sha256": "db446496a278d47ba1327ce5b4ab2988596542a57517efced68dd8937c89ab36"
+          },
+          {
+            "path": "C64DTV/sdl_pos_ch.vkm",
+            "sha256": "809ade0293c09cfb62be9672ee386bf22e1657a556d9c9bf9d457085b1b97102"
+          },
+          {
+            "path": "C64DTV/sdl_pos_da.vkm",
+            "sha256": "489828c39da90854acfba3278976a1f568a9e7e21ec82188fb25ebf0ea4b168a"
+          },
+          {
+            "path": "C64DTV/sdl_pos_de.vkm",
+            "sha256": "ab8452f548108f1d9ba747d0c728d9710f8646fbe19e2f6c3eccbe51fda99aca"
+          },
+          {
+            "path": "C64DTV/sdl_pos_fi.vkm",
+            "sha256": "e701f373a94d9a9394f20d3f98a31c77408167920e5dc97f87dacf0f25ff985e"
+          },
+          {
+            "path": "C64DTV/sdl_pos_no.vkm",
+            "sha256": "f3f88e4aeabc011a17d2148489150d30435e3146cc516a31f0d54c578ffa50ee"
+          },
+          {
+            "path": "C64DTV/sdl_pos_tr.vkm",
+            "sha256": "11a5cf5603a2eebb197ffd94e4aa83ddc7983480da365f314b9b5c423c69a06e"
+          },
+          {
+            "path": "C64DTV/sdl_pos_uk.vkm",
+            "sha256": "ac880b959f5e1517272b50d93618d17b7975d2d5a4e7e62185aa7c200d5d3468"
+          },
+          {
+            "path": "C64DTV/sdl_sym.vkm",
+            "sha256": "883d122f3cba8c707ad47c8a50b37d158df1fc548a32ed3893386243dd3c4c38"
+          },
+          {
+            "path": "C64DTV/sdl_sym_da.vkm",
+            "sha256": "6c1d2317ade3cd2ac6380ae223fddc4a6ed1ba298256ecdfa190b48320f86547"
+          },
+          {
+            "path": "C64DTV/sdl_sym_de.vkm",
+            "sha256": "30ce36a16cb9190355a9f360d50dfe51d76c03ed68647c7d51d7251f0e46d3a3"
+          },
+          {
+            "path": "C64DTV/sdl_sym_fr.vkm",
+            "sha256": "c247eeebb0953fc7010e67cab0ed49665bef299856712b861021f1692cc4793e"
+          },
+          {
+            "path": "C64DTV/sdl_sym_nl.vkm",
+            "sha256": "95fcfa154b407a635c9e9864342d386299b42b28566f93b05ee30b7a8d5711d2"
+          },
+          {
+            "path": "C64DTV/sdl_sym_tr.vkm",
+            "sha256": "7435cd95753ed34cd6011fa418988c59cea9f236e0e302461c732253db9f8cb4"
+          },
+          {
+            "path": "C64DTV/sdl_sym_uk.vkm",
+            "sha256": "0d4e9824cae9de15b587b5a7023d8277484290acd1bad3d88eca090e10c65c00"
+          },
+          {
+            "path": "C64DTV/spiff.vpl",
+            "sha256": "93e5f3636da0189b1e53094834a1813029ea446edb51df49476618bfccf2fc95"
+          },
+          {
+            "path": "CBM-II/Makefile.am",
+            "sha256": "880a261f688e0d0a4515274f45b0b2768225efcce3cbf6ddf5c7086bc41cf116"
+          },
+          {
+            "path": "CBM-II/Makefile.in",
+            "sha256": "703b90bb40c1ddbf87974985ee853e9c4910e7894883a90cf62a365153ffcb1d"
+          },
+          {
+            "path": "CBM-II/amber.vpl",
+            "sha256": "04bf31a789f3cce7ef667426cb7a8cdf0979ed953c57d2e95776b7f1565b2c95"
+          },
+          {
+            "path": "CBM-II/basic-901235+6-02.bin",
+            "sha256": "169257e77d112d7600cfa452c2ddc04dd44cb4880209194ead07884a799932fa"
+          },
+          {
+            "path": "CBM-II/basic-901240+1-03.bin",
+            "sha256": "0c3fa48c3821f6cae3ff33cab2717a8449fd9da6d8dc18281a3002f2f39f08ee"
+          },
+          {
+            "path": "CBM-II/basic-901242+3-04a.bin",
+            "sha256": "e5fba50567b9b6e85edfa53b3f32c4bef1dd158942b088c855a6b64875ee4511"
+          },
+          {
+            "path": "CBM-II/c64hq.vpl",
+            "sha256": "a7e996ed7f8ad92ad92e815fa5ce7202302859a1080c2c986a5daae82490b3e0"
+          },
+          {
+            "path": "CBM-II/c64s.vpl",
+            "sha256": "c31eb83924a792a468fada474834c136c1fd7f3009beacaa7f365b32149788c1"
+          },
+          {
+            "path": "CBM-II/ccs64.vpl",
+            "sha256": "175e79d22eb380d1a695f9df34442f1a1bd22c7f26d765b5268f4e0d20c998cb"
+          },
+          {
+            "path": "CBM-II/chargen-901225-01.bin",
+            "sha256": "fd0d53b8480e86163ac98998976c72cc58d5dd8eb824ed7b829774e74213b420"
+          },
+          {
+            "path": "CBM-II/chargen-901232-01.bin",
+            "sha256": "a6f97a57ddd24aba9df43758551269fe3c869e0501fec8d67732e4756d4a8857"
+          },
+          {
+            "path": "CBM-II/chargen-901237-01.bin",
+            "sha256": "9ee7de848178c504d5a8de450435d2876489dba328d3d839a679d77f1d7fba70"
+          },
+          {
+            "path": "CBM-II/cjam.vpl",
+            "sha256": "88d4bf8af92ffc9b2f3a5cecca5a42fd67aae346bf18b01e68b7c49b6d073144"
+          },
+          {
+            "path": "CBM-II/colodore.vpl",
+            "sha256": "3ac258746a7efe8ca1e5c863dab8bdcdc297049a99ca127e51423f1fc957273a"
+          },
+          {
+            "path": "CBM-II/community-colors.vpl",
+            "sha256": "2bab9ac265df10a38b797806c0c56f3391cb13187b7af73072d8f7ccd35fc25d"
+          },
+          {
+            "path": "CBM-II/deekay.vpl",
+            "sha256": "0ca5a21a703dd1d6973154b6389980fdc5288c2d8fed09dbee05798100f1d1e2"
+          },
+          {
+            "path": "CBM-II/frodo.vpl",
+            "sha256": "901f94116866df5d64ae7ebaa801b6a144e422cb157c544d3cea98728bd7f43e"
+          },
+          {
+            "path": "CBM-II/godot.vpl",
+            "sha256": "14a3e5d7bf20c65fc9b3bfbff4f00b5871f97203e70342aea9424b8b68e3d75b"
+          },
+          {
+            "path": "CBM-II/green.vpl",
+            "sha256": "429b5be2d400b6517e5b6b0dc3c9d271f0c794f888825a0f34433a345992c0f7"
+          },
+          {
+            "path": "CBM-II/gtk3_pos.vkm",
+            "sha256": "45a3ad19983ad4e32b7677806b97306125c8a459aab918b3eebd416964ac9798"
+          },
+          {
+            "path": "CBM-II/gtk3_pos_de.vkm",
+            "sha256": "00999faa91fbde63017a9a1395a803da3b4f9263e9c5ee446cd378abef8934eb"
+          },
+          {
+            "path": "CBM-II/gtk3_sym.vkm",
+            "sha256": "846474292d967c7fec5fcebc1d091eff8613e11d4de41e8adf0f31fe9a154610"
+          },
+          {
+            "path": "CBM-II/gtk3_sym_de.vkm",
+            "sha256": "9088b78925791a7cbe2bbedc21bf91aa3c0ac43c5896ccf84824198ceb0ed775"
+          },
+          {
+            "path": "CBM-II/kernal-901234-02.bin",
+            "sha256": "66ae5a60ec9e34c076e8a5d6b1df75046fdf57f6fdc87bdd7ed4e915688b6b2a"
+          },
+          {
+            "path": "CBM-II/kernal-901244-04a.bin",
+            "sha256": "a3132af49a31f6f563c28cea88e4b17d768bd6b7831da8605a8721dd014d67ab"
+          },
+          {
+            "path": "CBM-II/palette.vpl",
+            "sha256": "ffd2484d3b502138a3b6824e46d19e200392dc629f9fa7045c635a5acaa788f8"
+          },
+          {
+            "path": "CBM-II/palette_6569R1_v1r.vpl",
+            "sha256": "9d0d7e7f230f1bcf9cb0d5bd35a2ec1060b908b0f935a30c80cf2d97afe9c683"
+          },
+          {
+            "path": "CBM-II/palette_6569R5_v1r.vpl",
+            "sha256": "7ad1d58be53edc28f6abaf2f42ec01dd9e6a9e0a9206c73d03a455d026f2c26a"
+          },
+          {
+            "path": "CBM-II/palette_8565R2_v1r.vpl",
+            "sha256": "9bea19e5c5c574dda560892dd63189fedff37e20438e299478c54622d7809364"
+          },
+          {
+            "path": "CBM-II/palette_C64_amber.vpl",
+            "sha256": "26ba9995968da3b9a992a2b6801942d17bdb65c8edf9b23022706f36b67b86d1"
+          },
+          {
+            "path": "CBM-II/palette_C64_cyan.vpl",
+            "sha256": "dbfd9001890508ed50d109a467658f66041e239b93b3d7b9d78f8038ba7dfc67"
+          },
+          {
+            "path": "CBM-II/palette_C64_green.vpl",
+            "sha256": "d5d8c21142c0f47fc30b6294ec9d71a76a4d117b6c550312aa5c2810b065ccb0"
+          },
+          {
+            "path": "CBM-II/pc64.vpl",
+            "sha256": "30072b164fd0137cd38799d95f2b5c7f4041bea4f1413a991747f40644a87463"
+          },
+          {
+            "path": "CBM-II/pepto-ntsc-sony.vpl",
+            "sha256": "d7487cb9ffe8b14926b2a69e3a4d726db8a9b0cbd13225af1f2b15b2002e610b"
+          },
+          {
+            "path": "CBM-II/pepto-ntsc.vpl",
+            "sha256": "7c36f799dc9dfc4ad40c1a8d62c7cdfa6c8b0868f777883e5e1dc26e05ebebb9"
+          },
+          {
+            "path": "CBM-II/pepto-pal.vpl",
+            "sha256": "8601a72d62687450e5b015fd78974d6fdf008ec17ee25c8a234b959668ae032a"
+          },
+          {
+            "path": "CBM-II/pepto-palold.vpl",
+            "sha256": "779b7297e0673e928ce2c0d5f804b519fb525806ddb5bd3d1274d6aa3f677d83"
+          },
+          {
+            "path": "CBM-II/pixcen.vpl",
+            "sha256": "d9d0cde15a7c47eae67d3ddafe34942537e431d8fb4afeabe4d20691975464ce"
+          },
+          {
+            "path": "CBM-II/ptoing.vpl",
+            "sha256": "e810cca1244e062c77ebc1281473903c24de4762328ce43d68c84027e8a4252d"
+          },
+          {
+            "path": "CBM-II/rgb.vpl",
+            "sha256": "2909e259abbfcfff0da34c01d985969f9f70e49a7ab360381eedf1c3860237a8"
+          },
+          {
+            "path": "CBM-II/rom128h.vrs",
+            "sha256": "50cbee91e518497cf61a70257f017b5690ce38f201d4b73592dea3da328601ae"
+          },
+          {
+            "path": "CBM-II/rom128l.vrs",
+            "sha256": "e36074a2b85c0f573f6ea735b54c65dc42b7e74167e88b0b39fa145d9832410a"
+          },
+          {
+            "path": "CBM-II/rom256h.vrs",
+            "sha256": "9cb08e36b87ba08e65e29280f078f9a7f1618f51adf526443fa51239fe9a6dfb"
+          },
+          {
+            "path": "CBM-II/rom256l.vrs",
+            "sha256": "630e109022c9bc30eb5e141962296b70be3df547c067fcbb9971b942a82f23c5"
+          },
+          {
+            "path": "CBM-II/rom500.vrs",
+            "sha256": "28888dc8fbcc45d5652689de4e3c23f2fdca22bae178c1776101a562925386c5"
+          },
+          {
+            "path": "CBM-II/sdl_pos.vkm",
+            "sha256": "f4974a556a53fcf04c5da417141f22083821bfc9f7a78d50c817dcb2fc105287"
+          },
+          {
+            "path": "CBM-II/sdl_sym.vkm",
+            "sha256": "aa41adf67e35d4173625a20e8096dd44562308503c04de9fc057d0e0e83b7c55"
+          },
+          {
+            "path": "CBM-II/the64.vpl",
+            "sha256": "bcce3a4620cef2a64b114068ffb59446335f0d616a25bfec3111a09284989f00"
+          },
+          {
+            "path": "CBM-II/vice.vpl",
+            "sha256": "c4652015277cbd3eaa57a84327bfddb255571599a7caa97fe2d7c1c6cd4a501d"
+          },
+          {
+            "path": "CBM-II/white.vpl",
+            "sha256": "eabe658a7770f0057b12b44adc13e2ff11a1b468f434f64a7040ad1d416ca751"
+          },
+          {
+            "path": "DRIVES/Makefile.am",
+            "sha256": "b85e4ad08af8cd6766e7727dd1522251bc69ba90cac20807fca3d630df4f6c42"
+          },
+          {
+            "path": "DRIVES/Makefile.in",
+            "sha256": "9c977f6f269eada2a26201bc8ecdc3fdc9eefc15c868fb56de49a165021aaba8"
+          },
+          {
+            "path": "DRIVES/dos1001-901887+8-01.bin",
+            "sha256": "63884dceaa746524d2579d35b9c07b5d5285e860d9daba8106778e391e20251b"
+          },
+          {
+            "path": "DRIVES/dos1540-325302+3-01.bin",
+            "sha256": "a966e3ff6fd2db7b8f6d57e4d105c589a92e88a6705201215604ac864cc3c27f"
+          },
+          {
+            "path": "DRIVES/dos1541-325302-01+901229-05.bin",
+            "sha256": "d1d45afb46fd4e2b48d93ca367b889d75654a3b7acf73044e51f6d880c09369e"
+          },
+          {
+            "path": "DRIVES/dos1541ii-251968-03.bin",
+            "sha256": "326c289c38753323d7e8167897447cf61ef35189d82eb8d75210ece949adda7c"
+          },
+          {
+            "path": "DRIVES/dos1551-318008-01.bin",
+            "sha256": "187554776846349896cca6b1fd23e327606d11046d4ca56c895607d798f7d84f"
+          },
+          {
+            "path": "DRIVES/dos1570-315090-01.bin",
+            "sha256": "948e042a17578446124f8982857e9a77d9de86fd5f8d939ba5785e62faef6870"
+          },
+          {
+            "path": "DRIVES/dos1571-310654-05.bin",
+            "sha256": "1fd73459b54a72a737609a879c283645acc37835de2c121633153db9fac81d45"
+          },
+          {
+            "path": "DRIVES/dos1571cr-318047-01.bin",
+            "sha256": "5ecaa4906147c5f5e0a6a7f64b020b5ba09e50074a32c664b325c5c722f24d67"
+          },
+          {
+            "path": "DRIVES/dos1581-318045-02.bin",
+            "sha256": "8f689277f36be357f5f105e6e606c35c42e73c581cdeec14b58f31850dfbcfcb"
+          },
+          {
+            "path": "DRIVES/dos2031-901484-03+05.bin",
+            "sha256": "af4e1175ec8afa6853d8d5dfa5af5b7fd3bcacc03c8a67d0e067f020ac0b423c"
+          },
+          {
+            "path": "DRIVES/dos2040-901468-06+07.bin",
+            "sha256": "b6a05b015b2e9bad4784a148f11b5bf00818dbb6509cab366e3663852e8bc753"
+          },
+          {
+            "path": "DRIVES/dos3040-901468-11-13.bin",
+            "sha256": "168a3044e4bae738dee90d1648d6f601b1b7f04315799f3325a409206b12e8af"
+          },
+          {
+            "path": "DRIVES/dos4040-901468-14-16.bin",
+            "sha256": "7b5c98f884012173e2c4450b7dd5bde45cf5a63920119f1ffc98e6b29371c2e4"
+          },
+          {
+            "path": "DRIVES/dos9000-300516+7-revC.bin",
+            "sha256": "69a6d670caa0db7e50e5902b5c6d07df04dd28a3a6ea5648a097c17db590e3cd"
+          },
+          {
+            "path": "GLSL/Makefile.am",
+            "sha256": "0a42c266d90ecdc58a12443866638ce9822de656e17eb5c9bbe1fca4f0bc3308"
+          },
+          {
+            "path": "GLSL/Makefile.in",
+            "sha256": "6b147bd5a2670930941233f8ab0c2462fcde836ad4cf2e5a1ef427f2a51ac467"
+          },
+          {
+            "path": "GLSL/bicubic-interlaced.frag",
+            "sha256": "14b569e3d9dfc4109375620cdf2747923357730c909f8f037c34f170c1cf8149"
+          },
+          {
+            "path": "GLSL/bicubic.frag",
+            "sha256": "19e46fa5fb7c14a99204c833af6f9b1fe17e86dcfe9966286af3a9918d7d4730"
+          },
+          {
+            "path": "GLSL/builtin-interlaced.frag",
+            "sha256": "de24bcaacd0fc116233de6101fe2f7330d2000785e064935a8bfe81fadf6a35b"
+          },
+          {
+            "path": "GLSL/builtin.frag",
+            "sha256": "e4289f45e2485b28bc360669124e699d870a27001c06f89c6554a70211793d3c"
+          },
+          {
+            "path": "GLSL/viewport.vert",
+            "sha256": "70ef747fd4c325ee06dd13890b06b355932e7959635e2d337785b96d804b8b32"
+          },
+          {
+            "path": "Makefile.am",
+            "sha256": "2aa3f7053b41767e95d079e5651649d36c851965ab31b39da17349303e44f374"
+          },
+          {
+            "path": "Makefile.in",
+            "sha256": "4b3bfdb0c08254f396fe109de4e38248050ee816e591e19731edcc647fd3474b"
+          },
+          {
+            "path": "PET/2001-blueish.vpl",
+            "sha256": "f67afed03695b32cdf8588739935f9e677f1799ebaa534a9e637b05f42ab034b"
+          },
+          {
+            "path": "PET/Makefile.am",
+            "sha256": "293ddea565e5f57608e2258946245c6ad5f3ceb20adb46c994f39f33c2cea4f6"
+          },
+          {
+            "path": "PET/Makefile.in",
+            "sha256": "b8ed4cafc34618759a3613d5ef9ad46f930bc649fcf435f15448ce2168d284ac"
+          },
+          {
+            "path": "PET/amber.vpl",
+            "sha256": "4828fa3e8894f164cff722f78e117b3107714db46af1bb76db6e86120d08a875"
+          },
+          {
+            "path": "PET/basic-1.901439-09-05-02-06.bin",
+            "sha256": "629b630f695d004b788aa23bcfa4acb84d405d4b22d136c7cf93571dd89ee4a1"
+          },
+          {
+            "path": "PET/basic-2.901465-01-02.bin",
+            "sha256": "5b426b5c50350e5d50c4308a81288bb34f310d7384bcc43c66a0e18716a4cdbe"
+          },
+          {
+            "path": "PET/basic-4.901465-23-20-21.bin",
+            "sha256": "71bb94523f666fc10a2da1b15790620d07ef0ed9696a37922cbea28d8f468025"
+          },
+          {
+            "path": "PET/characters-1.901447-08.bin",
+            "sha256": "697390d9cd7da9e77d71935b0bf71d1181f624e0be802cbfb472803861443340"
+          },
+          {
+            "path": "PET/characters-2.901447-10.bin",
+            "sha256": "da3374c21d6ea440cef5f338ce3f524e0a1e40dcb1ef64446c695f92c636f1fa"
+          },
+          {
+            "path": "PET/characters.901640-01.bin",
+            "sha256": "e6a9d1b829ef498c3d69e5c892a06a947a9baf5d4e6f43f60ef814371038a311"
+          },
+          {
+            "path": "PET/chargen.de",
+            "sha256": "15f4d7ccf63f9d9f5bd82ea4665a85bdf91391883768fe44344b15ff245a1e61"
+          },
+          {
+            "path": "PET/edit-1-n.901439-03.bin",
+            "sha256": "86dc50795651de9f99c886ea61bd412f5372fa4940eec7b550a9fa2d2dfffc13"
+          },
+          {
+            "path": "PET/edit-2-b.901474-01.bin",
+            "sha256": "448483549a95c5828ca509081d9f621a569fdcd3fcd9bbacdeef036ea18ea628"
+          },
+          {
+            "path": "PET/edit-2-n.901447-24.bin",
+            "sha256": "5338b1dffebd695f6110c9995e16f7536bb63a909c2a0062b4789de46904ade9"
+          },
+          {
+            "path": "PET/edit-4-40-b-50Hz.ts.bin",
+            "sha256": "eaf7889580a437869b69b2cf4443d7971645c0e1ebc22199921b4749a07369d1"
+          },
+          {
+            "path": "PET/edit-4-40-b-60Hz.ts.bin",
+            "sha256": "a1feb896b8da6d4f66b36287c52ae7e718ce3b580c6fddc5e873963ca74f2463"
+          },
+          {
+            "path": "PET/edit-4-40-n-50Hz.901498-01.bin",
+            "sha256": "e851f8c61b9ae8d81236e093ba9efbb21576d7eeab4f82435ba3be5e081d8d48"
+          },
+          {
+            "path": "PET/edit-4-40-n-60Hz.901499-01.bin",
+            "sha256": "15e4c2759d2b7cbeb3c228358e188e084c862979df7cbdfbff3e447d257e1945"
+          },
+          {
+            "path": "PET/edit-4-80-b-50Hz.901474-04.bin",
+            "sha256": "0c7b772881f437cf8526f9c8e3d03acb16ab1ae07aa7b69f940c2ce5a44a6099"
+          },
+          {
+            "path": "PET/edit-4-80-b-50Hz.901474-04_.bin",
+            "sha256": "c4863ecf4a61e9c1d1e600b6dcefe4672b386072ef1033f12c0ead814de4ad9c"
+          },
+          {
+            "path": "PET/edit-4-80-b-60Hz.901474-03.bin",
+            "sha256": "a7fb224049e12387349d7b1873a0cb421cbe3097838eccc414de5ffe39aef2a4"
+          },
+          {
+            "path": "PET/edit-4-b-noCRTC.901474-02.bin",
+            "sha256": "d3b7b8fd3405055df62b265e01141464532fd0500b907bb9b9164740b2210bac"
+          },
+          {
+            "path": "PET/green.vpl",
+            "sha256": "e1bcd3b861bfdee8a87b1ff7e3d88e91baeb7fa16cee8c2e292283d5d6cf9819"
+          },
+          {
+            "path": "PET/gtk3_bude_pos.vkm",
+            "sha256": "73237cbd9dab1cce76ea92d194fced6692011968b3f23f70b800cc1364ae88f2"
+          },
+          {
+            "path": "PET/gtk3_bude_pos_de.vkm",
+            "sha256": "59f8de3090201a386e65f1682a28525678e2907dacc165d2cdc37df974210493"
+          },
+          {
+            "path": "PET/gtk3_bude_sym.vkm",
+            "sha256": "f6697b8892a207796ab21aa86f5bb6c3fe7687da12ec0c619cba70c9a07a974c"
+          },
+          {
+            "path": "PET/gtk3_bude_sym_de.vkm",
+            "sha256": "39dc92bf2020c3e53f06e55447d02d2ac7aa8fcb95279c507a2ab7332382d938"
+          },
+          {
+            "path": "PET/gtk3_buuk_pos.vkm",
+            "sha256": "0a11e84a89f763d0d79a2bf98715181444f67a8dcd900e9bca4e8f65ac4fdf54"
+          },
+          {
+            "path": "PET/gtk3_buuk_pos_de.vkm",
+            "sha256": "ac4f51b38a3c5947f1ca2ce3bb7d91e31f0aa12035ca4bd1a36d5be48755df6c"
+          },
+          {
+            "path": "PET/gtk3_buuk_sym.vkm",
+            "sha256": "6dc01bb6722dacd24960abd42669fa962509bbf744a6e290999fab3891c7bfc5"
+          },
+          {
+            "path": "PET/gtk3_buuk_sym_de.vkm",
+            "sha256": "32c6188fd4412a6a56e381d79696c4e72a02ce016769d409e50f22762c6e1940"
+          },
+          {
+            "path": "PET/gtk3_grus_pos.vkm",
+            "sha256": "dfbeb9f8aa7419f353cd9564fbcde7b92fb018658dccf73105b06911f8754eda"
+          },
+          {
+            "path": "PET/gtk3_grus_pos_de.vkm",
+            "sha256": "595ebf539830032cad420db03bc553296eb57192e2846fb8d9ffedfe089c7420"
+          },
+          {
+            "path": "PET/gtk3_grus_sym.vkm",
+            "sha256": "96d5369ed54260c14f91551dea9f85e8d16df5c8661c5858d3791277e42dc8dc"
+          },
+          {
+            "path": "PET/gtk3_grus_sym_de.vkm",
+            "sha256": "ea2aaa2eb540cfdf5005cc009cb5694349ec3486e804843ff797f6432b7eb783"
+          },
+          {
+            "path": "PET/gtk3_pos.vkm",
+            "sha256": "88bbeb4d5cf605efaa3cbc992ba3675409d8fae8825f2c3284b6ee0388e5575f"
+          },
+          {
+            "path": "PET/gtk3_sym.vkm",
+            "sha256": "225f9501577babd93278e87f42dd5035013ec1edfa80e0989dd269c3a6ad3a97"
+          },
+          {
+            "path": "PET/hre-9000.324992-02.bin",
+            "sha256": "72f209733f5124952023c778ebfb4c34811d1d3f1d3dc95e653826017b8dde73"
+          },
+          {
+            "path": "PET/hre-a000.324993-02.bin",
+            "sha256": "a208dab2d5979e4a484a7df2939a590eaad52150381101dfae778489c8cbf895"
+          },
+          {
+            "path": "PET/hre.vrs",
+            "sha256": "9e39c436971a718717a6120177930e0d883c2b5c5aedbb83abf202b09cdc4ae7"
+          },
+          {
+            "path": "PET/kernal-1.901439-04-07.bin",
+            "sha256": "397b8ca539372d6e731ebd426077976c00e714cd140dc00e66b6af7e0fc0b3de"
+          },
+          {
+            "path": "PET/kernal-2.901465-03.bin",
+            "sha256": "056d5e84a6e4f2b5b40a4109f49515c2496a4bf99139a9f59abe486ded5cd03d"
+          },
+          {
+            "path": "PET/kernal-4.901465-22.bin",
+            "sha256": "7cf8678b748bda1ffedee69ea54888feb3f5ec66dca8143375cbdf8c3de4d573"
+          },
+          {
+            "path": "PET/rom1g.vrs",
+            "sha256": "a5ab262db15f878a8526c48645482a76e58cb3584ed983735b5fa806178d7b8d"
+          },
+          {
+            "path": "PET/rom2b.vrs",
+            "sha256": "b89bf32e07d8ec24bb7ec30535bda1a2fff109b9c15766dd309826e88b2d25dc"
+          },
+          {
+            "path": "PET/rom2g.vrs",
+            "sha256": "e4aaed1d0681410ba46271ee97535fa10cc4ad4ccc77b21034a15ee73aeb80c0"
+          },
+          {
+            "path": "PET/rom4b40.vrs",
+            "sha256": "25a0a2a877e7bfa18aaaaa543cec3e045a48b7b0c4d0b012b73c60aa2788bc7c"
+          },
+          {
+            "path": "PET/rom4b80.vrs",
+            "sha256": "9e9bf05f40eac93f9e7dc1bf07c24b05d72649e584b06e87c1048301c7f9af4c"
+          },
+          {
+            "path": "PET/rom4g40.vrs",
+            "sha256": "b16705f6063d850e9fff8a201654014ca8158096711e18580e74d6293d6ef6f0"
+          },
+          {
+            "path": "PET/romsuperpet.vrs",
+            "sha256": "5773efa8fb68111ef5dc41f92a34036954d47cddc3500a5d64dcc4773d0e74fa"
+          },
+          {
+            "path": "PET/sdl_buuk_pos.vkm",
+            "sha256": "7fee1bd12a7a372d6ef183c57d3b921e5d7a0c98753c0bd0d7fcd9904281b32e"
+          },
+          {
+            "path": "PET/sdl_buuk_pos_de.vkm",
+            "sha256": "5405b052b2a47dc9178585afbdb8bd515dcd1acdfc80b9c03de4bcabdd6cda70"
+          },
+          {
+            "path": "PET/sdl_buuk_sym.vkm",
+            "sha256": "d2553123e0fb66f8424514c13540310ecdebfb2738aeb7c8d08ab1c2309fb40e"
+          },
+          {
+            "path": "PET/sdl_buuk_sym_de.vkm",
+            "sha256": "13d5c66ea0c811a017d41226f2db338f16d6db7732d0ba9dccb73f6391b615f1"
+          },
+          {
+            "path": "PET/sdl_grus_pos.vkm",
+            "sha256": "e8217733f21685af295e5298ab1ec5b245941dfe68ec275443f5d86109bcb0b0"
+          },
+          {
+            "path": "PET/sdl_grus_pos_de.vkm",
+            "sha256": "967e0c9f2ffc0e9951b9d4224c0e6b9b49736e276b747a5f2867a044115ecced"
+          },
+          {
+            "path": "PET/sdl_grus_sym.vkm",
+            "sha256": "868f99578a4d9b5f13111f2d8c03896d5d717323561fb3e7387d5abe69e38f0c"
+          },
+          {
+            "path": "PET/sdl_grus_sym_de.vkm",
+            "sha256": "1bb91ed73fae4aaa6c109d82f2b54dfded0da1b22bfd220d0f14ba080fc181e1"
+          },
+          {
+            "path": "PET/sdl_pos.vkm",
+            "sha256": "253e9e83df764b5939b767fc9352e6330dd9fb13f85a11f0d495a2588ee16da3"
+          },
+          {
+            "path": "PET/sdl_sym.vkm",
+            "sha256": "ae2fca8b5df6ddf8a3736cb21991eaaddfca3398037ec2a18ef9518aa0d4e91f"
+          },
+          {
+            "path": "PET/waterloo-a000.901898-01.bin",
+            "sha256": "a55aace69825d605e89bb177f0b749325418f4c22250d35e53d567cc63919404"
+          },
+          {
+            "path": "PET/waterloo-b000.901898-02.bin",
+            "sha256": "d815b0d554c4998e9acfe23fc81ea4027e0f422c095d642f3d589bffb0b8fc47"
+          },
+          {
+            "path": "PET/waterloo-c000.901898-03.bin",
+            "sha256": "f8d2bc9eae09da569983236706139d0a11e1cfc626f701124c92b610d1ebe86e"
+          },
+          {
+            "path": "PET/waterloo-d000.901898-04.bin",
+            "sha256": "11df5991bbbfd2f2b7a708a4327dc3f7593834c48292abfde9f91d0485f21acf"
+          },
+          {
+            "path": "PET/waterloo-e000.901897-01.bin",
+            "sha256": "9d733b7a2938532aabaf614750563f9bf3f76223c584014fe0fec4d5733f7682"
+          },
+          {
+            "path": "PET/waterloo-f000.901898-05.bin",
+            "sha256": "e0cf60892ffa404e33828ea1175822d196272c88b5a8c1fde12823e886a31f31"
+          },
+          {
+            "path": "PET/white.vpl",
+            "sha256": "a9e2f0bf30c1dc59b3f7fb5a62fd646fb4ba221c948066e0e74d386b78af7f9b"
+          },
+          {
+            "path": "PLUS4/3plus1-317053-01.bin",
+            "sha256": "628eb4b01b8701e6fc5bd4b7e9e6573deae47e0b0f8b150b4022596501d5131d"
+          },
+          {
+            "path": "PLUS4/3plus1-317054-01.bin",
+            "sha256": "2e83bfdfd93a2d9e8adfe4bb302869a30eac12015f6b41302c9d1ed3bb83de16"
+          },
+          {
+            "path": "PLUS4/ITU-R_BT2020.vpl",
+            "sha256": "620149a1ccab501313cda44f78f521dcc4e985a400b3e1df765ca2daea3efcc0"
+          },
+          {
+            "path": "PLUS4/ITU-R_BT601_CRT.vpl",
+            "sha256": "7d7b66cb6e68a3f94ffb7478cbf5dc16b0d321400c00d91d6a3697aee99fb4a8"
+          },
+          {
+            "path": "PLUS4/ITU-R_BT709_HDTV.vpl",
+            "sha256": "376f7e7aef345317a9d057822ae06b5dd3712f136da5a2aed40ba7c68977b8e5"
+          },
+          {
+            "path": "PLUS4/Makefile.am",
+            "sha256": "f644590a4f2920580fa137bc438dc015bb66d76f20e38c7472423f83738d9289"
+          },
+          {
+            "path": "PLUS4/Makefile.in",
+            "sha256": "2536f7b46d0b920f97daf302b638d105fa675d3795b4b9ba961c00f8c1600706"
+          },
+          {
+            "path": "PLUS4/basic-318006-01.bin",
+            "sha256": "cbf0c4dec44e3e203beaf09690e5c7f859b0eca164e789884161c8cb0e596567"
+          },
+          {
+            "path": "PLUS4/c2lo-364.bin",
+            "sha256": "25271429c27d507d03f1a67e5a50f5d3988b1c5755c519153ecfc857d5aec6ac"
+          },
+          {
+            "path": "PLUS4/colodore_ted.vpl",
+            "sha256": "16da80a113480302cf11f4c9845cc494b0faec0a66345f2a283c5062bbdca8d4"
+          },
+          {
+            "path": "PLUS4/default.vrs",
+            "sha256": "3be418d503c9ca0bcb150076663cc8354b65718396bd92f9504cc4bf27ac0b5e"
+          },
+          {
+            "path": "PLUS4/gtk3_c116_pos_it.vkm",
+            "sha256": "2983897ff66c46eb9de5f300660e181b1869c3b3cae44dbf24f6b62f78ffada4"
+          },
+          {
+            "path": "PLUS4/gtk3_c16_pos_it.vkm",
+            "sha256": "b6f0de186fc316e7142329ca3f6dba1851693978038a036ee6d365cdae912ae5"
+          },
+          {
+            "path": "PLUS4/gtk3_pos.vkm",
+            "sha256": "eaba04ac023e9ae94441486e32a9f2b821251fdad033bbe2c5d749a2f266bec5"
+          },
+          {
+            "path": "PLUS4/gtk3_pos_de.vkm",
+            "sha256": "ee55cf2f9c38bed22bdc86b7bd5edf5d22266a173adc8c04bca98c7165156c9b"
+          },
+          {
+            "path": "PLUS4/gtk3_pos_es.vkm",
+            "sha256": "49b5edce0b0e4892708b044222cf0b3c49728fb7398c347e434b3bbde62b50df"
+          },
+          {
+            "path": "PLUS4/gtk3_pos_it.vkm",
+            "sha256": "f79880cb076b9233a5b987f439774b2a2c86ac711aeec441b7cbe7f939cdd850"
+          },
+          {
+            "path": "PLUS4/gtk3_sym.vkm",
+            "sha256": "b57f9a8f103e6a83254b84f594258b521afd78aed1ade6973814b5b28370a86c"
+          },
+          {
+            "path": "PLUS4/gtk3_sym_de.vkm",
+            "sha256": "411aba9444966c2fee05f21db1b65d0715197d4caaf5aa74f66612c27c284709"
+          },
+          {
+            "path": "PLUS4/gtk3_sym_fr.vkm",
+            "sha256": "880f0bb4249a72defeac3ab25682b29647da204d03dbd37fdc786eafd2f7ddfe"
+          },
+          {
+            "path": "PLUS4/gtk3_sym_it.vkm",
+            "sha256": "f82876e3aa34d8b2eff4a62c82e250255307538ae4c6202eae0aa729238d2bd1"
+          },
+          {
+            "path": "PLUS4/kernal-318004-01.bin",
+            "sha256": "8e2cb1db9aa8083bd296a0484bf7580a96934bd9c911cb0b32f33ca4bd6c2884"
+          },
+          {
+            "path": "PLUS4/kernal-318004-05.bin",
+            "sha256": "1f07270c43fc84d1556978e5bb3a6b08aa7b1253f2e46d1a452c89c972ae506b"
+          },
+          {
+            "path": "PLUS4/kernal-318005-05.bin",
+            "sha256": "5c094751e8bbac217726e25e0864769aacb76f606f2ab807e10d420a5209aaf3"
+          },
+          {
+            "path": "PLUS4/kernal-364.bin",
+            "sha256": "c683d498b2d5feecd64bbb8add548e17f9b62bee80a0baf1f66ecacf712b6092"
+          },
+          {
+            "path": "PLUS4/sdl_pos.vkm",
+            "sha256": "1e455909a38bd1adda1e1da5a55fab1ef3365cc782a4ca219975b04bc369d7fb"
+          },
+          {
+            "path": "PLUS4/sdl_pos_fr.vkm",
+            "sha256": "0e6ba79037f47268d9b6ec14ed80d809bda2d209f90a3d1666b0745c69e9506b"
+          },
+          {
+            "path": "PLUS4/sdl_sym.vkm",
+            "sha256": "e35f429074abcddd4b5eda7b87e89ce48c361bdea1329e32c986a927cdac873a"
+          },
+          {
+            "path": "PLUS4/sdl_sym_de.vkm",
+            "sha256": "ebd404b6d19748c6d1b44978255780c13fe8acc476ea1938c03949e2e66d1627"
+          },
+          {
+            "path": "PLUS4/yape-ntsc.vpl",
+            "sha256": "fd61a5425bd7630ffd7c4394b5ce742e09e6424d376671bf7ccd4cae4539b3c2"
+          },
+          {
+            "path": "PLUS4/yape-pal.vpl",
+            "sha256": "2ed5cda02671d8048f453e849b728b11313b5e332b7deaa8bf3ece0610b4bc47"
+          },
+          {
+            "path": "PRINTER/1520.vpl",
+            "sha256": "a722ad707d3f9d33e358802fbed144bd39bcf2c408070eb62667faf326e43144"
+          },
+          {
+            "path": "PRINTER/2022-901472-04.bin",
+            "sha256": "34d329e5194f022ef35627f6b848b8ce7efacb0ef784d2a5ad97a49fceea0e0a"
+          },
+          {
+            "path": "PRINTER/3022-901472-06.bin",
+            "sha256": "4f6c60f78aa4256b612372a15a8b1a194fca6fa2787c9344ea40aa2d5f324598"
+          },
+          {
+            "path": "PRINTER/4023-325360-02.bin",
+            "sha256": "2de89f57a4bca66e290998e5cac754a5f63d6d38b6428f1198e39d5f8c7d1c15"
+          },
+          {
+            "path": "PRINTER/8023-325320-02.bin",
+            "sha256": "c50bddfc86cbfd4347cd792eee193d16c84951f71c07f859448f931f26177563"
+          },
+          {
+            "path": "PRINTER/Makefile.am",
+            "sha256": "1584703175d3a8e7eb2ee3930cc18bff19a3e383e97ea30b59d07514f34ca294"
+          },
+          {
+            "path": "PRINTER/Makefile.in",
+            "sha256": "e80750824bf96f8af6b8025aae22317d98071c59cc5ebc00a58bd4e3be993a81"
+          },
+          {
+            "path": "PRINTER/cbm1526-325341-08.bin",
+            "sha256": "083c86af5a2aa90d1aed0c61693b84b2f6d6dd3073b153752ea52b5c176bcb47"
+          },
+          {
+            "path": "PRINTER/mps801.bin",
+            "sha256": "d80c96e45454ca012fbd8be02d9975d35724c321ba065c0d35d8a267c0cb3e92"
+          },
+          {
+            "path": "PRINTER/mps803-D7811G-111-U32053A.bin",
+            "sha256": "03efca4cbdbbb39d84233e0abd063f98738d4637ce216a4a38025d37447665a3"
+          },
+          {
+            "path": "PRINTER/mps803.vpl",
+            "sha256": "0ae5223ae3f61b122c2453de058df46fde31a6447c7b1ea253524bce59e38828"
+          },
+          {
+            "path": "PRINTER/nl10.bin",
+            "sha256": "4bfde70de1b374660fe35e37e3dcc33c41f70f15c965849e28ac1a8790f27f82"
+          },
+          {
+            "path": "PRINTER/nl10.vpl",
+            "sha256": "0ae5223ae3f61b122c2453de058df46fde31a6447c7b1ea253524bce59e38828"
+          },
+          {
+            "path": "SCPU64/Makefile.am",
+            "sha256": "dacade0abe4eace0445408d617345d811283f0a314b3edb743e78055a85ad44b"
+          },
+          {
+            "path": "SCPU64/Makefile.in",
+            "sha256": "f5061ba912cc38b949995ef211329a66d9cad2bb054ed2ee3af4eb182ad3d1ed"
+          },
+          {
+            "path": "SCPU64/c64hq.vpl",
+            "sha256": "a7e996ed7f8ad92ad92e815fa5ce7202302859a1080c2c986a5daae82490b3e0"
+          },
+          {
+            "path": "SCPU64/c64s.vpl",
+            "sha256": "c31eb83924a792a468fada474834c136c1fd7f3009beacaa7f365b32149788c1"
+          },
+          {
+            "path": "SCPU64/ccs64.vpl",
+            "sha256": "175e79d22eb380d1a695f9df34442f1a1bd22c7f26d765b5268f4e0d20c998cb"
+          },
+          {
+            "path": "SCPU64/chargen-901225-01.bin",
+            "sha256": "fd0d53b8480e86163ac98998976c72cc58d5dd8eb824ed7b829774e74213b420"
+          },
+          {
+            "path": "SCPU64/chargen-906143-02.bin",
+            "sha256": "0f4a5b0f9ec0d86639ba316053e330fdd849692623a41f8de4a420fcd47c55ee"
+          },
+          {
+            "path": "SCPU64/cjam.vpl",
+            "sha256": "88d4bf8af92ffc9b2f3a5cecca5a42fd67aae346bf18b01e68b7c49b6d073144"
+          },
+          {
+            "path": "SCPU64/colodore.vpl",
+            "sha256": "3ac258746a7efe8ca1e5c863dab8bdcdc297049a99ca127e51423f1fc957273a"
+          },
+          {
+            "path": "SCPU64/community-colors.vpl",
+            "sha256": "2bab9ac265df10a38b797806c0c56f3391cb13187b7af73072d8f7ccd35fc25d"
+          },
+          {
+            "path": "SCPU64/deekay.vpl",
+            "sha256": "0ca5a21a703dd1d6973154b6389980fdc5288c2d8fed09dbee05798100f1d1e2"
+          },
+          {
+            "path": "SCPU64/default.vrs",
+            "sha256": "83b81b784559e4484757e33fb62278d5a63600b9e97bde6d9d33214f0763a736"
+          },
+          {
+            "path": "SCPU64/frodo.vpl",
+            "sha256": "901f94116866df5d64ae7ebaa801b6a144e422cb157c544d3cea98728bd7f43e"
+          },
+          {
+            "path": "SCPU64/godot.vpl",
+            "sha256": "14a3e5d7bf20c65fc9b3bfbff4f00b5871f97203e70342aea9424b8b68e3d75b"
+          },
+          {
+            "path": "SCPU64/gtk3_keyrah.vkm",
+            "sha256": "b618475a4dc8e9d134273c9598c40f741c44249def8934f1a4358281e53fd310"
+          },
+          {
+            "path": "SCPU64/gtk3_keyrah_de.vkm",
+            "sha256": "d48c6c09baa7e1517b149781e55059b426cc1c47a956d9b739da36fb0ff88054"
+          },
+          {
+            "path": "SCPU64/gtk3_pos.vkm",
+            "sha256": "df7332c52430ec344c9821ead8f16650ca31dc5676d0c40c5915e5594bd3493d"
+          },
+          {
+            "path": "SCPU64/gtk3_pos_bmc64.vkm",
+            "sha256": "322a5cc04f800d2e485f62c3e12d21091e8d19041506efd0cc10bc068e4881b9"
+          },
+          {
+            "path": "SCPU64/gtk3_pos_de.vkm",
+            "sha256": "251f324393a2fdcc85f84ce8348f916ec8b3cddcc528794a798de5c452c3e1a7"
+          },
+          {
+            "path": "SCPU64/gtk3_pos_es.vkm",
+            "sha256": "b9e3ac042f7291af974e7efc15a641d0d0bb12171f0d32b8803b290c04fae6ec"
+          },
+          {
+            "path": "SCPU64/gtk3_pos_it.vkm",
+            "sha256": "c970ad545b0786e174165dfb931ef99d4f72102ba11ad9fbdb09f8049e856d4e"
+          },
+          {
+            "path": "SCPU64/gtk3_pos_se.vkm",
+            "sha256": "85c21e9145b2ce108fc8cda3c8345c78e586b47dce732df71d0b06b553ed7e3a"
+          },
+          {
+            "path": "SCPU64/gtk3_pos_tr.vkm",
+            "sha256": "a259004fd4b1ad49bc3d836ad3b3bbd1c20a62e6fa1e95f21dee9c13ff734d0d"
+          },
+          {
+            "path": "SCPU64/gtk3_pos_uk.vkm",
+            "sha256": "9f4802186ee61ce4be89aea5fb7d4235b6d692bff980f2f7a06b3bfdb4a013ea"
+          },
+          {
+            "path": "SCPU64/gtk3_sym.vkm",
+            "sha256": "478f7d46bcfa0547d2c3fe1fb410a854501e2833472fa47448f29110dfa09428"
+          },
+          {
+            "path": "SCPU64/gtk3_sym_be.vkm",
+            "sha256": "a0d7d54b468bf5be4ed643c2594c82916e9fa200fac0a8d8c4ddffe09a49033c"
+          },
+          {
+            "path": "SCPU64/gtk3_sym_da.vkm",
+            "sha256": "6ab95868fee51344af693453e9c09b3c790f2d0af535ccafdab4f7ad35d1fe6f"
+          },
+          {
+            "path": "SCPU64/gtk3_sym_de.vkm",
+            "sha256": "e786a29c19c655d020dccc1fcc4323af794e9958033e9e335bd7d8f326a9fe25"
+          },
+          {
+            "path": "SCPU64/gtk3_sym_fr.vkm",
+            "sha256": "efb8bf024451676f5941bcbe660161e4560bfcda30b9429a5bf55325d12e8db9"
+          },
+          {
+            "path": "SCPU64/gtk3_sym_it.vkm",
+            "sha256": "aa2cf54da37ecc17f998e9e0e2284d0613db9029a557dc86ca0a6515adc174ab"
+          },
+          {
+            "path": "SCPU64/gtk3_sym_nl.vkm",
+            "sha256": "ef9a8aaf4cb97c2e42a1f0eaccff4e86f34f98df6c2a2159a24690cd4cea86d2"
+          },
+          {
+            "path": "SCPU64/gtk3_sym_se.vkm",
+            "sha256": "19560e536800ded9d0e5d149c05acaf02e429488b83f8d0b24c66b6c0256f931"
+          },
+          {
+            "path": "SCPU64/gtk3_sym_tr.vkm",
+            "sha256": "d95d441fbfe3ba1b1c0cf6b2e64d7b78159125505ea57ed8f6568f0e1c3c5315"
+          },
+          {
+            "path": "SCPU64/gtk3_sym_uk.vkm",
+            "sha256": "291805b53e65c8c3fce152072608f4402f54408b94661863235d5bae1bc07a9a"
+          },
+          {
+            "path": "SCPU64/gtk3_the64_de.vkm",
+            "sha256": "bb323aabcc7f6117aab8dbe6246c55898f9ee9c6b487a110f921e3fbec87d447"
+          },
+          {
+            "path": "SCPU64/lemon64.vpl",
+            "sha256": "ba65a852097b7d581abd07603f586ca5016f0113110cec0127464ca310432c38"
+          },
+          {
+            "path": "SCPU64/palette.vpl",
+            "sha256": "ffd2484d3b502138a3b6824e46d19e200392dc629f9fa7045c635a5acaa788f8"
+          },
+          {
+            "path": "SCPU64/palette_6569R1_v1r.vpl",
+            "sha256": "9d0d7e7f230f1bcf9cb0d5bd35a2ec1060b908b0f935a30c80cf2d97afe9c683"
+          },
+          {
+            "path": "SCPU64/palette_6569R5_v1r.vpl",
+            "sha256": "7ad1d58be53edc28f6abaf2f42ec01dd9e6a9e0a9206c73d03a455d026f2c26a"
+          },
+          {
+            "path": "SCPU64/palette_8565R2_v1r.vpl",
+            "sha256": "9bea19e5c5c574dda560892dd63189fedff37e20438e299478c54622d7809364"
+          },
+          {
+            "path": "SCPU64/palette_C64_amber.vpl",
+            "sha256": "26ba9995968da3b9a992a2b6801942d17bdb65c8edf9b23022706f36b67b86d1"
+          },
+          {
+            "path": "SCPU64/palette_C64_cyan.vpl",
+            "sha256": "dbfd9001890508ed50d109a467658f66041e239b93b3d7b9d78f8038ba7dfc67"
+          },
+          {
+            "path": "SCPU64/palette_C64_green.vpl",
+            "sha256": "d5d8c21142c0f47fc30b6294ec9d71a76a4d117b6c550312aa5c2810b065ccb0"
+          },
+          {
+            "path": "SCPU64/pc64.vpl",
+            "sha256": "30072b164fd0137cd38799d95f2b5c7f4041bea4f1413a991747f40644a87463"
+          },
+          {
+            "path": "SCPU64/pepto-ntsc-sony.vpl",
+            "sha256": "d7487cb9ffe8b14926b2a69e3a4d726db8a9b0cbd13225af1f2b15b2002e610b"
+          },
+          {
+            "path": "SCPU64/pepto-ntsc.vpl",
+            "sha256": "7c36f799dc9dfc4ad40c1a8d62c7cdfa6c8b0868f777883e5e1dc26e05ebebb9"
+          },
+          {
+            "path": "SCPU64/pepto-pal.vpl",
+            "sha256": "7e2c2241d0dc8968954d5ee77996282309ea966f2a3e284d3d0b26d0a5237b7e"
+          },
+          {
+            "path": "SCPU64/pepto-palold.vpl",
+            "sha256": "779b7297e0673e928ce2c0d5f804b519fb525806ddb5bd3d1274d6aa3f677d83"
+          },
+          {
+            "path": "SCPU64/pixcen.vpl",
+            "sha256": "d9d0cde15a7c47eae67d3ddafe34942537e431d8fb4afeabe4d20691975464ce"
+          },
+          {
+            "path": "SCPU64/ptoing.vpl",
+            "sha256": "e810cca1244e062c77ebc1281473903c24de4762328ce43d68c84027e8a4252d"
+          },
+          {
+            "path": "SCPU64/rgb.vpl",
+            "sha256": "2909e259abbfcfff0da34c01d985969f9f70e49a7ab360381eedf1c3860237a8"
+          },
+          {
+            "path": "SCPU64/scpu64",
+            "sha256": "1ca7732d7d61d1e6463e140068c32f34d14b8cc3af98f3af0526a4ee081b5803"
+          },
+          {
+            "path": "SCPU64/scpu64mem.sym",
+            "sha256": "6e8ce78f1a5a1f2f9e04e990b48ae657c2dd127f1a7745e942041b14f287fec3"
+          },
+          {
+            "path": "SCPU64/sdl_keyrah.vkm",
+            "sha256": "28aa188889fb9eac99c9f81157fe9b4547098e75a41958d115273389eb8ae05d"
+          },
+          {
+            "path": "SCPU64/sdl_keyrah_combian.vkm",
+            "sha256": "c18be00a53f861084165abf0a8fe55810d962abcdf68f1f3b454d021dc92b383"
+          },
+          {
+            "path": "SCPU64/sdl_keyrah_de.vkm",
+            "sha256": "5b10e79e6c41f07487be99d4412028de1987f6bc7123d24be484148f5053930e"
+          },
+          {
+            "path": "SCPU64/sdl_keyrah_retropie.vkm",
+            "sha256": "7ab980ad0d6db5aa7c3785368665823254f18bafb0eee65b36b3ce65411ae66a"
+          },
+          {
+            "path": "SCPU64/sdl_keyrah_retropie_de.vkm",
+            "sha256": "3d30f7b4ff16e180518991312bbb97ba48734a7e716b1b6ad41571caaed5d8e5"
+          },
+          {
+            "path": "SCPU64/sdl_pos.vkm",
+            "sha256": "db446496a278d47ba1327ce5b4ab2988596542a57517efced68dd8937c89ab36"
+          },
+          {
+            "path": "SCPU64/sdl_pos_ch.vkm",
+            "sha256": "809ade0293c09cfb62be9672ee386bf22e1657a556d9c9bf9d457085b1b97102"
+          },
+          {
+            "path": "SCPU64/sdl_pos_da.vkm",
+            "sha256": "489828c39da90854acfba3278976a1f568a9e7e21ec82188fb25ebf0ea4b168a"
+          },
+          {
+            "path": "SCPU64/sdl_pos_de.vkm",
+            "sha256": "31832d4daee650a649806839cdb34cddcf2abb8c982370afe419b1cc616a2868"
+          },
+          {
+            "path": "SCPU64/sdl_pos_fi.vkm",
+            "sha256": "e701f373a94d9a9394f20d3f98a31c77408167920e5dc97f87dacf0f25ff985e"
+          },
+          {
+            "path": "SCPU64/sdl_pos_no.vkm",
+            "sha256": "f3f88e4aeabc011a17d2148489150d30435e3146cc516a31f0d54c578ffa50ee"
+          },
+          {
+            "path": "SCPU64/sdl_pos_tr.vkm",
+            "sha256": "11a5cf5603a2eebb197ffd94e4aa83ddc7983480da365f314b9b5c423c69a06e"
+          },
+          {
+            "path": "SCPU64/sdl_pos_uk.vkm",
+            "sha256": "ac880b959f5e1517272b50d93618d17b7975d2d5a4e7e62185aa7c200d5d3468"
+          },
+          {
+            "path": "SCPU64/sdl_sym.vkm",
+            "sha256": "883d122f3cba8c707ad47c8a50b37d158df1fc548a32ed3893386243dd3c4c38"
+          },
+          {
+            "path": "SCPU64/sdl_sym_da.vkm",
+            "sha256": "6c1d2317ade3cd2ac6380ae223fddc4a6ed1ba298256ecdfa190b48320f86547"
+          },
+          {
+            "path": "SCPU64/sdl_sym_de.vkm",
+            "sha256": "30ce36a16cb9190355a9f360d50dfe51d76c03ed68647c7d51d7251f0e46d3a3"
+          },
+          {
+            "path": "SCPU64/sdl_sym_fr.vkm",
+            "sha256": "c247eeebb0953fc7010e67cab0ed49665bef299856712b861021f1692cc4793e"
+          },
+          {
+            "path": "SCPU64/sdl_sym_nl.vkm",
+            "sha256": "95fcfa154b407a635c9e9864342d386299b42b28566f93b05ee30b7a8d5711d2"
+          },
+          {
+            "path": "SCPU64/sdl_sym_tr.vkm",
+            "sha256": "7435cd95753ed34cd6011fa418988c59cea9f236e0e302461c732253db9f8cb4"
+          },
+          {
+            "path": "SCPU64/sdl_sym_uk.vkm",
+            "sha256": "0d4e9824cae9de15b587b5a7023d8277484290acd1bad3d88eca090e10c65c00"
+          },
+          {
+            "path": "SCPU64/the64.vpl",
+            "sha256": "bcce3a4620cef2a64b114068ffb59446335f0d616a25bfec3111a09284989f00"
+          },
+          {
+            "path": "SCPU64/vice.vpl",
+            "sha256": "c4652015277cbd3eaa57a84327bfddb255571599a7caa97fe2d7c1c6cd4a501d"
+          },
+          {
+            "path": "VIC20/Makefile.am",
+            "sha256": "fb122e0318f18b80f88322c94900e32c14f73ad93ad6c74b8872c184de9dc63c"
+          },
+          {
+            "path": "VIC20/Makefile.in",
+            "sha256": "578fadbd56c5c60a8bf28614046e0fff17fc356f66371b5a753250d01537d737"
+          },
+          {
+            "path": "VIC20/PALette.vpl",
+            "sha256": "c59d7e88b4ed0c75cbe2c46b11afd302ffd2c05be71d176ee84c50ff4ad40e86"
+          },
+          {
+            "path": "VIC20/basic-901486-01.bin",
+            "sha256": "8be2d882e0eeb1c6923a43660236ea69d43ca8a3bd0613b1b6c910601584fbed"
+          },
+          {
+            "path": "VIC20/chargen-901460-02.bin",
+            "sha256": "66a81f03332f46a289d175933d50bba9cc4636d18bba439d324b2eb1bd1c43ab"
+          },
+          {
+            "path": "VIC20/chargen-901460-03.bin",
+            "sha256": "bda280726cfe069ca70ef5e2f2d95a29f69d3950c859a12e6979464963fcf502"
+          },
+          {
+            "path": "VIC20/colodore_vic.vpl",
+            "sha256": "27c691e9b9bac1de37f626e201ed346761e5be17a96d829dca0f93506ad5b868"
+          },
+          {
+            "path": "VIC20/default.vrs",
+            "sha256": "6cb955ad03766b3c1891defdfb90b07457d014e76325c0bf4401defc79df5a16"
+          },
+          {
+            "path": "VIC20/gtk3_pos.vkm",
+            "sha256": "61dfd1e717a3a6a3fcde84f368cc9b6428bc62fe329c1572d3c538b06daae1fa"
+          },
+          {
+            "path": "VIC20/gtk3_pos_de.vkm",
+            "sha256": "d40b967081350ca67b18eddbab954aa9ee78c4be2403b37aa51d975f8a5f846b"
+          },
+          {
+            "path": "VIC20/gtk3_pos_it.vkm",
+            "sha256": "bdec7812a2f13c976171eb53d7d3903fbdfbf58600e1f2f072a54bf88e3cad9b"
+          },
+          {
+            "path": "VIC20/gtk3_sym.vkm",
+            "sha256": "b9b74622065799e4b8a167217c3498ac325b7bc831036100c21b8a9d405d5354"
+          },
+          {
+            "path": "VIC20/gtk3_sym_de.vkm",
+            "sha256": "7b50d35d562d99dfc31a5c6fd854bf3dff096df5066713ef6f01255248d8926a"
+          },
+          {
+            "path": "VIC20/gtk3_sym_fr.vkm",
+            "sha256": "8008d0123bb5c3d374a7627ec2295a57153ce51d18fc82c3dddfafbec537caeb"
+          },
+          {
+            "path": "VIC20/gtk3_sym_it.vkm",
+            "sha256": "adc664b6e467efca6341dcee6fe0fc4a5e4221117c4e9cda12f3768e6563e66c"
+          },
+          {
+            "path": "VIC20/kernal.901486-02.bin",
+            "sha256": "7e2df5778dfdf787a6e09f0576442d32c8e9160b7e34d22e07547c22bf9030e1"
+          },
+          {
+            "path": "VIC20/kernal.901486-06.bin",
+            "sha256": "8fc94bd895f488ac0ae1a52abdc32988cd63c777770b89a9d415513098535cc2"
+          },
+          {
+            "path": "VIC20/kernal.901486-07.bin",
+            "sha256": "ff6d1416b91a71f5240a5bb8adc9fdc1b955374c48322ca47b3e436334f168fb"
+          },
+          {
+            "path": "VIC20/mike-ntsc.vpl",
+            "sha256": "91697d1e61645ca9097722ab04db8d4a2df8cd70c1ab52b2340b89f39cc76cc5"
+          },
+          {
+            "path": "VIC20/mike-pal.vpl",
+            "sha256": "2fd5c6fc9450be1902d7a4fd2b83be80001ed4004ad7b7ba1ebef83bab56e099"
+          },
+          {
+            "path": "VIC20/sdl_pos.vkm",
+            "sha256": "fcacaf1f4b6a308e484d7b2c3e96889800f7d6ea17ad3e96c2f80a32ac70b3f1"
+          },
+          {
+            "path": "VIC20/sdl_pos_de.vkm",
+            "sha256": "b35a66739ade107e46f66a31fdc624556a4f60659a6e76ee3c2b8628373b646d"
+          },
+          {
+            "path": "VIC20/sdl_pos_fi.vkm",
+            "sha256": "f3c7de0932253dd20eea1fb8557657e2af8f655b40880d2dd7a278030d14ac66"
+          },
+          {
+            "path": "VIC20/sdl_pos_fr.vkm",
+            "sha256": "843cc3bedbc79c7277a8ff75087e48131cbc1def76092d27c5874169ed94f72b"
+          },
+          {
+            "path": "VIC20/sdl_pos_uk.vkm",
+            "sha256": "f0bfb0d14b7ef0927a5a84c1e8530ff7256cf538fb349838e2cb7c8394e05b0e"
+          },
+          {
+            "path": "VIC20/sdl_sym.vkm",
+            "sha256": "3de57424772415c9ae47606be229b95424b9a8a8750082cc31a8623463067e97"
+          },
+          {
+            "path": "VIC20/sdl_sym_de.vkm",
+            "sha256": "e52e5a916b499b25362dba6bdcb877f8f73750e5bfb2aaa535079967e1251d9d"
+          },
+          {
+            "path": "VIC20/sdl_sym_uk.vkm",
+            "sha256": "3fd18913e2da2f18150175775d2f54b5d018916f5f51926aa608a7867163b2cb"
+          },
+          {
+            "path": "VIC20/vice.vpl",
+            "sha256": "2177474e1913d101fff2ff83c30a1fcd83b7d812ff066cd01d62c1cdeb712b52"
+          },
+          {
+            "path": "common/C128_1024.svg",
+            "sha256": "cec437f3def18b45a4a3fceb6c8c6e8d8f3ff148f39bf33068f68e56c4a2412a"
+          },
+          {
+            "path": "common/C128_16.png",
+            "sha256": "46518e522c0fce5e808e2155054cd3adaa3c9c86fe7caf6d84946be7391b096d"
+          },
+          {
+            "path": "common/C128_24.png",
+            "sha256": "bb0e82dd924c5103e1f1c4c2a1a8aea312e8a70a013c934f97b0d8077bd50530"
+          },
+          {
+            "path": "common/C128_256.png",
+            "sha256": "7a5b733debde4468c74b3ee26931ca2f9db5359e8f5da971d5ec319e817bce70"
+          },
+          {
+            "path": "common/C128_32.png",
+            "sha256": "8c572c0b18879bf99a06f5ff4eb81c73f4f5c7c81a0157b0070c5e35dba86273"
+          },
+          {
+            "path": "common/C128_48.png",
+            "sha256": "e67583f0a662471fe32cf125257042a569399235896831aafe5ddce2bece8311"
+          },
+          {
+            "path": "common/C128_64.png",
+            "sha256": "eecf8b7ca2629821f2892e54f32d9c60d19b61bd7dd27298a21898d4ee5df8ea"
+          },
+          {
+            "path": "common/C64_1024.svg",
+            "sha256": "2f6b915b16d955ebf4af7458075ad55399e5fc134c5b228abc93542410764084"
+          },
+          {
+            "path": "common/C64_16.png",
+            "sha256": "54a3bf93aea67d5f400770c0c5a38b764a5c1e955075fd60d399556d4570c46f"
+          },
+          {
+            "path": "common/C64_24.png",
+            "sha256": "080d3c7bb6c7cb5289ae6cb1f5e103e661546f520f530ece39f76ce0ba6938c4"
+          },
+          {
+            "path": "common/C64_256.png",
+            "sha256": "5f74d430018f61f46b625a330e39ce8be29d3d1dcc06ae0a6322840c7306beac"
+          },
+          {
+            "path": "common/C64_32.png",
+            "sha256": "d46e5bb3981cfe8fb5b080a913018b8a7e7b31a530950e17f23e518619bcaebd"
+          },
+          {
+            "path": "common/C64_48.png",
+            "sha256": "0c1c8c2abd7570a9658e5f6ee21b640fc63661093790f6e1f9b951792dc5bd4c"
+          },
+          {
+            "path": "common/C64_64.png",
+            "sha256": "024db9e9d3b09c7bc63ecaf83d8c73a3b75c8fba056bfa449b51665c120b34f9"
+          },
+          {
+            "path": "common/C64_Pro_Mono-STYLE.ttf",
+            "sha256": "b2b6d4efa0fb7170f273dc0e16e9a54fc5021c247dbd9e235b16adf90bfe00d8"
+          },
+          {
+            "path": "common/CBM2_1024.svg",
+            "sha256": "09da7fee74f13667a4a1d869f1c1c4fe5fd0ace8b092c5ae846c3e4c3a09d584"
+          },
+          {
+            "path": "common/CBM2_16.png",
+            "sha256": "c8a1a365e97a06aaf63b92937b8faf61ef1db52d01b3961ca3268ebf9796e617"
+          },
+          {
+            "path": "common/CBM2_24.png",
+            "sha256": "c24893c6b9a0ad4aec4f082918818ee7b09c6cd0f48639437b346280c17129ed"
+          },
+          {
+            "path": "common/CBM2_256.png",
+            "sha256": "f21bc44e7067301b91995d43f4a29d6dbb8b7797f1068b5a26b096f5602a14c5"
+          },
+          {
+            "path": "common/CBM2_32.png",
+            "sha256": "94bdad4f636ff53d169a3c90eade7dfd2c54e6e3e753e3eca655013bebe55a89"
+          },
+          {
+            "path": "common/CBM2_48.png",
+            "sha256": "e4eec9eab9aa5aaa30b5422fbf290ef8158ba9998e8e619d808df4bcb09c11d2"
+          },
+          {
+            "path": "common/CBM2_64.png",
+            "sha256": "233e4a5c0fd394a1b716f0ac09d11486e76c01fc4f9c772b1a7c6c6323e2dec2"
+          },
+          {
+            "path": "common/CBM_Logo.svg",
+            "sha256": "71f0acf2d762869a33b121141e1c3f63b53a474fcb2f3a6a64417ad4d7e7d90d"
+          },
+          {
+            "path": "common/DTV_1024.svg",
+            "sha256": "5e0af7deadbdad829f8efc762236695530805d93d85e8f379b5c5f99de8a5412"
+          },
+          {
+            "path": "common/DTV_16.png",
+            "sha256": "ec2354e49588a5bd6ca763fa6f7d1bebad4719bca1194b328b2fba9cd4da6f1c"
+          },
+          {
+            "path": "common/DTV_24.png",
+            "sha256": "52bb784bbdb50fd65dfd9fdee9e5df323e2739081064f81e01a91cd2789beb21"
+          },
+          {
+            "path": "common/DTV_256.png",
+            "sha256": "1dc76e22e3ebe57cbd22dcf7da8b5b8880fdf53a4ce9d2c2e13150eeb47600ec"
+          },
+          {
+            "path": "common/DTV_32.png",
+            "sha256": "d3fd7876841795053c451a7e0322b48fdf2c5cc39763b3ffb68d0c7d70d4ae1e"
+          },
+          {
+            "path": "common/DTV_48.png",
+            "sha256": "332c6078050415576eba23414d6c54e276f002fc170e4abd6ce367dc399003ad"
+          },
+          {
+            "path": "common/DTV_64.png",
+            "sha256": "626957151eff770e96164cde68d40aeec67122247a02c1501ee7fb8757cdc972"
+          },
+          {
+            "path": "common/Icon-128@2x.png",
+            "sha256": "99f3b4334e9cb54cf470167d66e0287c1c55608422fba50b88561f2a98065bb0"
+          },
+          {
+            "path": "common/Makefile.am",
+            "sha256": "53df816ffec1d79363a92438442bbb9ceabe5c6d27e7e2d901b1639fd67dec57"
+          },
+          {
+            "path": "common/Makefile.in",
+            "sha256": "c33ca0acc7ab8b28db28da22bf9c42a0c7b947ea8c67721cdb09b0258b1f2d73"
+          },
+          {
+            "path": "common/PET_1024.svg",
+            "sha256": "b6fecc7c862c5c7370f9eda716f029255d9bb29c6c507080b53589d3ab896db2"
+          },
+          {
+            "path": "common/PET_16.png",
+            "sha256": "8d2da407738c3b675b6be0d3add7fab3d57baf991307caddfa28d84eaf53470e"
+          },
+          {
+            "path": "common/PET_24.png",
+            "sha256": "b6af8532f213c07db04fbdd64dd1e1763a5f19455e13d757b898036a35728e6f"
+          },
+          {
+            "path": "common/PET_256.png",
+            "sha256": "2195650dabfa73233b27830eff992e113947417d300396307888fcee9ef3888b"
+          },
+          {
+            "path": "common/PET_256.svg",
+            "sha256": "195c1eb1989b16d7f78a0866980ca0919655808f483d3f79c0dfed1ccacefdc5"
+          },
+          {
+            "path": "common/PET_32.png",
+            "sha256": "f49061d043f56950628d7c58a3743a3f3150e75c613cfa243f2abf56485762bb"
+          },
+          {
+            "path": "common/PET_48.png",
+            "sha256": "bc814119ea5fd90bfd7dee3ff12c84a8941651ea54634ef13ce38bc3ed78ef3f"
+          },
+          {
+            "path": "common/PET_64.png",
+            "sha256": "005afcaab78b5a1865ecd3774fd795e97849b9931c97606b49a57069b01c5ca2"
+          },
+          {
+            "path": "common/PetMe-FreeLicense.txt",
+            "sha256": "5b26f7318dddc8d1ace2353992924d5dc0fc6123656de7bdd81ac69f9a8b0878"
+          },
+          {
+            "path": "common/PetMe.ttf",
+            "sha256": "a259b2571cfb5afb45f5ea0f6966015a4cc9eb8934501c5c0d125681b360bba6"
+          },
+          {
+            "path": "common/PetMe128.ttf",
+            "sha256": "810073a6156594e0e471d328ce1817957300c311695ec0ce57d76d886c26e5dc"
+          },
+          {
+            "path": "common/PetMe1282Y.ttf",
+            "sha256": "ffabcd9a85b09cf4117446f4ca627244aa3064a6c8938d8c2d5fb665aa8078cd"
+          },
+          {
+            "path": "common/PetMe2X.ttf",
+            "sha256": "96854e63788c0b8db5308357eb56d9f107ea162e98a9c10737bf85cd29d68e14"
+          },
+          {
+            "path": "common/PetMe2Y.ttf",
+            "sha256": "358b8f9c288dcf42e4c46fbf40e671ba9c451f7b1aea5297708ff171e23170b1"
+          },
+          {
+            "path": "common/PetMe64.ttf",
+            "sha256": "1a5a4bf4af2076345480b1a99490a16503f0f5c167e200c8e7644fd40b72d9fd"
+          },
+          {
+            "path": "common/PetMe642Y.ttf",
+            "sha256": "6b32c148a8315a2f768bc629abb3bc09d941131c0c78b21827d3763caac7889e"
+          },
+          {
+            "path": "common/Plus4_1024.svg",
+            "sha256": "db2a72d6185b7eddc476639a24b81ec9bd193b83ace44d26bfad8111239451a8"
+          },
+          {
+            "path": "common/Plus4_16.png",
+            "sha256": "a4dd9737e43fd0e4bc0e09fc8a1646f58aadffcba9c55b2bf451fdeb6dc9819f"
+          },
+          {
+            "path": "common/Plus4_24.png",
+            "sha256": "925eb901d47261f6be7d55085e7e16fcad42784110e4b009921a3dfa32773f98"
+          },
+          {
+            "path": "common/Plus4_256.png",
+            "sha256": "6e74082d295c81c54a646ccffb098cff47d202cf4640b9e036743c4e2be1de4d"
+          },
+          {
+            "path": "common/Plus4_32.png",
+            "sha256": "eacd789021c584a3a0ca91ca010423f5787c15a93e1dfb159d3fad40ecef9500"
+          },
+          {
+            "path": "common/Plus4_48.png",
+            "sha256": "a12ae22b355a53cc5a884dac7c591d865ff22dae80c20c232747bc6d6081acc5"
+          },
+          {
+            "path": "common/Plus4_64.png",
+            "sha256": "a7736e860224ee3bb98981ce4ee8e65c6508b99d89fd178e2415ca77a5d2d61e"
+          },
+          {
+            "path": "common/SCPU_1024.svg",
+            "sha256": "ce2710836a0622295d033c6b21d8d1b896cc3138d774234336f07bfc292ee317"
+          },
+          {
+            "path": "common/SCPU_16.png",
+            "sha256": "7bc9a483f438288053e38e953965ac36189a179bd3fff16971f0e602bbbacf37"
+          },
+          {
+            "path": "common/SCPU_24.png",
+            "sha256": "5a151a14455c4e38ca5b9ee47b400b66a6000d71f1c01743bc8713cd416f14d7"
+          },
+          {
+            "path": "common/SCPU_256.png",
+            "sha256": "01c5bf6d9b2fb21901934b677efe5bc3efc17c5894cb395a197846a6aacf9408"
+          },
+          {
+            "path": "common/SCPU_32.png",
+            "sha256": "06fa14c20c71ce935bcd81d814076d3cafdd05b3dee5318f4cbd3f59bfd5dfc7"
+          },
+          {
+            "path": "common/SCPU_48.png",
+            "sha256": "34c7e2a3f8507373739dacb7c97d14660c5a9ade0a9694ec82bd641ef292d477"
+          },
+          {
+            "path": "common/SCPU_64.png",
+            "sha256": "adc5a5e207325d41f82b1b6b39aa4454bbb7697f7c116cd1f7e92db5e8754190"
+          },
+          {
+            "path": "common/SID_1024.svg",
+            "sha256": "c443e2f8617b6404cd5a26678a5c018c8b12a0c1024275aebfe2e2addab17368"
+          },
+          {
+            "path": "common/SID_16.png",
+            "sha256": "00aebd3657bbae9093172c46ecc8ccc1296ee0a09d9bdcfa2e80ecc12bc9d6ee"
+          },
+          {
+            "path": "common/SID_24.png",
+            "sha256": "7605c5c1ea63719467e41b149c5eedd38718b366c75e4d1657e7691f1e5f3b43"
+          },
+          {
+            "path": "common/SID_256.png",
+            "sha256": "c9ed87f05d26a5868bc535b0ec678b7eae4bbc614eac4f4f1e099847ce60449f"
+          },
+          {
+            "path": "common/SID_32.png",
+            "sha256": "54f84e2904e27cc20a34ce4cf9bd40b33456c3464dcad62dea51439fa6c855e4"
+          },
+          {
+            "path": "common/SID_48.png",
+            "sha256": "9f997ef5200e90a89c439458485cad4c45ff5ef5cef14f110a31307658cda741"
+          },
+          {
+            "path": "common/SID_64.png",
+            "sha256": "d3ce920c5c8207aa95c8576332fd0276af668fcdd8b9767f5873995f27f9622a"
+          },
+          {
+            "path": "common/VIC20_1024.svg",
+            "sha256": "bee44a1fe16fb92550c5960b9c568982624a6c3d18bdb44f82efd34ea0a0c66c"
+          },
+          {
+            "path": "common/VIC20_16.png",
+            "sha256": "71d2cc75cebd66e4a8c99bb9545ade903026b5fed17af7bc195595dba8c4105f"
+          },
+          {
+            "path": "common/VIC20_24.png",
+            "sha256": "28e85864576397e21af2de28e7eb97f6dce8c5a564cda5c174e4f750f9e268c9"
+          },
+          {
+            "path": "common/VIC20_256.png",
+            "sha256": "8b6b53ce276a7a5d9969fe24a5838b8b0fa695623cf2dcdb601ebf015dedbd32"
+          },
+          {
+            "path": "common/VIC20_32.png",
+            "sha256": "d830fb64be9a867edd0e056b28726adb830159ae11f76bc4963e779f668888a3"
+          },
+          {
+            "path": "common/VIC20_48.png",
+            "sha256": "49b39ae81a83feb7ef619303d344addb9839ad77bad799c44b85d8547509bf36"
+          },
+          {
+            "path": "common/VIC20_64.png",
+            "sha256": "63d434528dda585b6df4bc8b1125816054eee4f78d2011bc223ce746c748e318"
+          },
+          {
+            "path": "common/icon1024x1024.png",
+            "sha256": "c3f6577a9f85f21dd1d04e4d9260b40738af56b5492d08b225b390e24922ccd1"
+          },
+          {
+            "path": "common/vice-logo-black.svg",
+            "sha256": "bf5b25d1dc7f3b8563eec49141933282c60c87908d81dbe5dfbf91cff75ed2d2"
+          },
+          {
+            "path": "common/vice.gresource.xml",
+            "sha256": "73aa684be31a98d577edf4ead225a23159fe82669cd000443514fbdf9ec1cb23"
+          },
+          {
+            "path": "common/vsid.rc",
+            "sha256": "0226c25938286384cc33195bc55e70c1bf7065c234ce1df29806236f88782292"
+          },
+          {
+            "path": "common/x128.rc",
+            "sha256": "6a4c4173a9be64fa235a0eb9b4d43a3a1936b3061e6fafe8487364abac3e18da"
+          },
+          {
+            "path": "common/x64.rc",
+            "sha256": "0d5b98dd686220c3ae3398ffb0e5bfec449cc4f63154948fa3c19a74374b7bfd"
+          },
+          {
+            "path": "common/x64dtv.rc",
+            "sha256": "09d5fa3d3706904d3ae294d9beefea3f348a1c9b3e17bf59d9f812b0bd38ca8e"
+          },
+          {
+            "path": "common/x64sc.rc",
+            "sha256": "16ac5322463c60347fca2ee2ff5aace15b9d1b1e802448ba47e08943af0379bc"
+          },
+          {
+            "path": "common/xcbm2.rc",
+            "sha256": "7430b50656c83b81a18e288e3ed6819fd2fbcdf2cf6eaa7445a7b95227a8b4fa"
+          },
+          {
+            "path": "common/xcbm5x0.rc",
+            "sha256": "d8e2684477d3ed5626d65a60ea771438e00cc4501594760e73e3921c8ce83578"
+          },
+          {
+            "path": "common/xpet.rc",
+            "sha256": "e30e2ae9c5cd169f6ce0c4f600c9486e3f830e6a8251246e87adefba71bfd3db"
+          },
+          {
+            "path": "common/xplus4.rc",
+            "sha256": "877f92d11bd25da24bbe9c1b8a227f0dce00e496198362005941968b9592a716"
+          },
+          {
+            "path": "common/xscpu64.rc",
+            "sha256": "0a79aca6419fd5ad7e04f5be7fbcaf299e0982e86db6ff9cb0350df05a4c7a3b"
+          },
+          {
+            "path": "common/xvic.rc",
+            "sha256": "567a68ccc2c7ff64f9b6074ced8a1eb4d2fea9f580dd98c71be8b3cfce805ca2"
+          },
+          {
+            "path": "hotkeys/Makefile.am",
+            "sha256": "8b662a7da1903958b3eed82e1d14938cd8acbddb44921b18913903d7fc7f31db"
+          },
+          {
+            "path": "hotkeys/Makefile.in",
+            "sha256": "72f41db5a270e8e0d72093495943868bb2f7734afa8b2028796fe470c11315a3"
+          },
+          {
+            "path": "hotkeys/hotkeys-cartridge.vhk",
+            "sha256": "9bf35c6c94b1a7c1085f20938e78b09326b521b1d935cd3e3b44c623a5558fd7"
+          },
+          {
+            "path": "hotkeys/hotkeys-datasette.vhk",
+            "sha256": "f24a53bb31110865a5db08b3b3ed57258312eaa9daeb836bcf16b2a5cca2fcb2"
+          },
+          {
+            "path": "hotkeys/hotkeys-debug.vhk",
+            "sha256": "a95019866b4bbefb9648b66e90ed9d81dbadc1f89d74651e19335aae9e93733b"
+          },
+          {
+            "path": "hotkeys/hotkeys-drive.vhk",
+            "sha256": "a70f283f1cb5a37db411b72fe7f9583d1a943957be1bd3f8e692f9add9a7f585"
+          },
+          {
+            "path": "hotkeys/hotkeys-fliplist.vhk",
+            "sha256": "9bceb66518f5b0d3899615c39dedea3fd9de28fd6fa78ecb3fb4787faaf05e44"
+          },
+          {
+            "path": "hotkeys/hotkeys-help.vhk",
+            "sha256": "bc69e39f2c96743bee48ebfc2c3633a57f11eca523ac3c5329066b26b10f9b37"
+          },
+          {
+            "path": "hotkeys/hotkeys-settings.vhk",
+            "sha256": "8a6f30a02bdf8513e1b2bacf234e910bb9866ae1e2fab90f5f90798113d5db2c"
+          },
+          {
+            "path": "hotkeys/hotkeys-snapshot.vhk",
+            "sha256": "cc4067dc05e4f90000c34de092fbb41e583f635537f3b90891f832c1d2d7678f"
+          },
+          {
+            "path": "hotkeys/hotkeys-vsid.vhk",
+            "sha256": "98b379c6e4c2037cd77010d0fb30ff25f5adaa475c0fd1ddf7139200cf61320a"
+          },
+          {
+            "path": "hotkeys/hotkeys-winvice-legacy.vhk",
+            "sha256": "66854513a112bc8f90905ada8c39f16bebe8b92d8712f89d36fdf79167bc7d99"
+          },
+          {
+            "path": "hotkeys/hotkeys.vhk",
+            "sha256": "311512ce276ff74762ab9c16aefc1225ed40215755aca5da8b77a34ba6b0a901"
+          }
+        ]
+      },
+      {
+        "path": "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "type": "file",
+        "sha256": "0c6d618e75fea85cc3d631e164a71766fba9341d19ce1f723300c52e63037c51"
+      }
+    ],
+    "outputs": [
+      "vice/study.json",
+      "vice/trace.json",
+      "vice/monitor.log",
+      "vice/process.log",
+      "vice/command.json",
+      "vice/commands.mon",
+      "vice/payload.prg",
+      "vice/harness.prg"
+    ],
+    "timeoutSeconds": 330,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": "{stage:reference-build}/candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "1f28cb7fe181bbc6cdcc12b254615d62622febebc914d2fcc445572dcd6003be"
+    },
+    {
+      "path": "{stage:reference-build}/candidate/writes.json",
+      "type": "file",
+      "sha256": "7793489054244d1bbe3668b1f29ac151269c07a9e2ee0bb0d0bf257ec07d1618"
+    },
+    {
+      "path": "scripts/trace-sid-vice.py",
+      "type": "file",
+      "sha256": "1df0cdee65ad8d0d0258e9920d57682b1940311c98e532472b8e0cb621b89e8d"
+    },
+    {
+      "path": "scripts/psid_profile.py",
+      "type": "file",
+      "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+    },
+    {
+      "path": "scripts/sid_audit_host.py",
+      "type": "file",
+      "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+    },
+    {
+      "path": "scripts/sid_clock.py",
+      "type": "file",
+      "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+    },
+    {
+      "path": "scripts/verify_player.py",
+      "type": "file",
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/build/src/x64sc",
+      "type": "file",
+      "sha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data",
+      "type": "directory",
+      "sha256": "87a5a8ee759d6b69dbafb8873137a8001e01855e385280864ec5cc64f4547d11",
+      "files": [
+        {
+          "path": "C128/Makefile.am",
+          "sha256": "d6f2c81430b193bacb7b73ec18fd3ded6eab0ada4ac4bb9a1cd4dcc8a2d2c4e0"
+        },
+        {
+          "path": "C128/Makefile.in",
+          "sha256": "784cbfc1348a4fa668b0494d76db8655a15f86df5ae08b88f75fa6b1d6c8d3d8"
+        },
+        {
+          "path": "C128/basic64-901226-01.bin",
+          "sha256": "89878cea0a268734696de11c4bae593eaaa506465d2029d619c0e0cbccdfa62d"
+        },
+        {
+          "path": "C128/basichi-318019-04.bin",
+          "sha256": "121b7c7f15f9b72e83f293f8fb3c4686730ee02359cea71d18a72c6f489cd2d7"
+        },
+        {
+          "path": "C128/basiclo-318018-04.bin",
+          "sha256": "ccb0d516219f12857fef3ae7409fff072e47b9480d7eafb5eea7e0b188c958f5"
+        },
+        {
+          "path": "C128/c64hq.vpl",
+          "sha256": "a7e996ed7f8ad92ad92e815fa5ce7202302859a1080c2c986a5daae82490b3e0"
+        },
+        {
+          "path": "C128/c64s.vpl",
+          "sha256": "a659adade49fb62ce24bc7a474929764fe07c688f3a5fa0143a1818a1c7f5032"
+        },
+        {
+          "path": "C128/ccs64.vpl",
+          "sha256": "175e79d22eb380d1a695f9df34442f1a1bd22c7f26d765b5268f4e0d20c998cb"
+        },
+        {
+          "path": "C128/chargen-315079-01.bin",
+          "sha256": "7a6aff617e4f10323263ed48805ee7e3bce61b02c5ed409ccd8b6bb47b924dde"
+        },
+        {
+          "path": "C128/chargen-325078-02.bin",
+          "sha256": "945db6be6c05d6f3c2b970b5445a89b1201176956903b7b6b2257ecde2144871"
+        },
+        {
+          "path": "C128/chargen-325167-01.bin",
+          "sha256": "718bebcc2617817935be241deaba1fff27750f2ec3339f279a12345aef36ddea"
+        },
+        {
+          "path": "C128/chargen-325167-02.bin",
+          "sha256": "1b597333c90a316a3eff438678d945ec34218d6d0ccdcb267813d254a7677762"
+        },
+        {
+          "path": "C128/chargen-325173-01D.bin",
+          "sha256": "307437f161c032dd069c7e75db7253babbf7ca2712743475289ae45f44b539f0"
+        },
+        {
+          "path": "C128/chargen-325181-01.bin",
+          "sha256": "ff702f8aa9c2a024d54a6f955c0b2889d884352d8b0f1fcc726100236fefbd32"
+        },
+        {
+          "path": "C128/chargen-390059-01.bin",
+          "sha256": "f08d8f525b44f5cbb3f5776739fcdff737886e1813f1eb7a20aedb128db1d4a8"
+        },
+        {
+          "path": "C128/cjam.vpl",
+          "sha256": "88d4bf8af92ffc9b2f3a5cecca5a42fd67aae346bf18b01e68b7c49b6d073144"
+        },
+        {
+          "path": "C128/colodore.vpl",
+          "sha256": "3ac258746a7efe8ca1e5c863dab8bdcdc297049a99ca127e51423f1fc957273a"
+        },
+        {
+          "path": "C128/community-colors.vpl",
+          "sha256": "2bab9ac265df10a38b797806c0c56f3391cb13187b7af73072d8f7ccd35fc25d"
+        },
+        {
+          "path": "C128/deekay.vpl",
+          "sha256": "0ca5a21a703dd1d6973154b6389980fdc5288c2d8fed09dbee05798100f1d1e2"
+        },
+        {
+          "path": "C128/default.vrs",
+          "sha256": "5510a719a7458fc8cbd58a6decd9c5d465e0ddb6d5c3b07297c49fae27872428"
+        },
+        {
+          "path": "C128/frodo.vpl",
+          "sha256": "901f94116866df5d64ae7ebaa801b6a144e422cb157c544d3cea98728bd7f43e"
+        },
+        {
+          "path": "C128/godot.vpl",
+          "sha256": "14a3e5d7bf20c65fc9b3bfbff4f00b5871f97203e70342aea9424b8b68e3d75b"
+        },
+        {
+          "path": "C128/gtk3_keyrahv3.vkm",
+          "sha256": "2f615c34d9b2a48b0141b71b9b79bc8c5c755bcabc8f8e4dd6535b30c74548f3"
+        },
+        {
+          "path": "C128/gtk3_keyrahv3_de.vkm",
+          "sha256": "ec8de20037c494a117b83d3cda1f9149f192a96d8b15e49173bd0487aa481077"
+        },
+        {
+          "path": "C128/gtk3_pos.vkm",
+          "sha256": "c5517bd2539f52bc91b17f8b465cca2731b10902bf44336f9cad0b9ad4466c58"
+        },
+        {
+          "path": "C128/gtk3_pos_de.vkm",
+          "sha256": "4a83bb53d4d315dcebebb2785cde04abd5eadf18fc163930d0c881656b9ece05"
+        },
+        {
+          "path": "C128/gtk3_pos_se.vkm",
+          "sha256": "33c8667ecfccbeef8f4537590c6b6c7c8b4b3a7a98e8b17c73eb755bf3eb449f"
+        },
+        {
+          "path": "C128/gtk3_sym.vkm",
+          "sha256": "605568dd8e1ad7ca95169f9b4f19b95619d7a606f00040d339176ddc1cafcb85"
+        },
+        {
+          "path": "C128/gtk3_sym_de.vkm",
+          "sha256": "fadee460107d79fb83b1e27b5c403ef882b60016f1ab0fa4c02d856aa97daa2b"
+        },
+        {
+          "path": "C128/gtk3_sym_fr.vkm",
+          "sha256": "7a279cf01009988f2a273902e2c50cd315bd027a727361f1b7414665b6fe7601"
+        },
+        {
+          "path": "C128/gtk3_sym_se.vkm",
+          "sha256": "3b3c97faf12add95de03e6c5f5bf2f08d0f8cd5ecadfd7305f45530248536067"
+        },
+        {
+          "path": "C128/kernal-315078-03.bin",
+          "sha256": "a068438e6276a5a3d54cb3f0d0da74c0885b839ae501e09318885130bdbcee9f"
+        },
+        {
+          "path": "C128/kernal-318020-05.bin",
+          "sha256": "64ed21ad31da2840aa90eab70c6ed4731f63268a1b3c5cf85273e28d6cfa6d4d"
+        },
+        {
+          "path": "C128/kernal-318034-01.bin",
+          "sha256": "2222e29cd47ff5d1fdb7c2647d52400b619a0a4acbc6060ae1131afc0b3466dd"
+        },
+        {
+          "path": "C128/kernal-325172-01.bin",
+          "sha256": "7f3c16d39f29e99bab4036537cbc8681f71042bc001dffb5a856e8990b25aeaf"
+        },
+        {
+          "path": "C128/kernal64-325179-01.bin",
+          "sha256": "734344149c44dfac54d3c876798679d871432fc8dde6d864e681031adc614bac"
+        },
+        {
+          "path": "C128/kernal64-325182-01.bin",
+          "sha256": "19fe656f85efaad51e6134a23465fb9f4a9264294014dcf5ef9f4d13a75cd1b7"
+        },
+        {
+          "path": "C128/kernal64-901227-03.bin",
+          "sha256": "83c60d47047d7beab8e5b7bf6f67f80daa088b7a6a27de0d7e016f6484042721"
+        },
+        {
+          "path": "C128/kernalfi",
+          "sha256": "a7fce9cbd6fd3b6eb789f27ff7235433724e1ed0a9bdd5509bdfc8e1e62204da"
+        },
+        {
+          "path": "C128/kernalfr",
+          "sha256": "0f9148ceabe738ec38757df6efd41b063fbb3fc3e111b4c508aeacddd1e59e21"
+        },
+        {
+          "path": "C128/kernalit",
+          "sha256": "3c7a629a3bb9a3957825b38f6af6e84204737dd11e42ffaca3d465c511e6cd56"
+        },
+        {
+          "path": "C128/kernalno",
+          "sha256": "1a5dbdf241e1ce1719381b802dbf9b2cd14b56c02d312bceec8fe1fc566d16ec"
+        },
+        {
+          "path": "C128/lemon64.vpl",
+          "sha256": "ba65a852097b7d581abd07603f586ca5016f0113110cec0127464ca310432c38"
+        },
+        {
+          "path": "C128/palette.vpl",
+          "sha256": "ffd2484d3b502138a3b6824e46d19e200392dc629f9fa7045c635a5acaa788f8"
+        },
+        {
+          "path": "C128/palette_6569R1_v1r.vpl",
+          "sha256": "9d0d7e7f230f1bcf9cb0d5bd35a2ec1060b908b0f935a30c80cf2d97afe9c683"
+        },
+        {
+          "path": "C128/palette_6569R5_v1r.vpl",
+          "sha256": "7ad1d58be53edc28f6abaf2f42ec01dd9e6a9e0a9206c73d03a455d026f2c26a"
+        },
+        {
+          "path": "C128/palette_8565R2_v1r.vpl",
+          "sha256": "9bea19e5c5c574dda560892dd63189fedff37e20438e299478c54622d7809364"
+        },
+        {
+          "path": "C128/palette_C64_amber.vpl",
+          "sha256": "26ba9995968da3b9a992a2b6801942d17bdb65c8edf9b23022706f36b67b86d1"
+        },
+        {
+          "path": "C128/palette_C64_cyan.vpl",
+          "sha256": "dbfd9001890508ed50d109a467658f66041e239b93b3d7b9d78f8038ba7dfc67"
+        },
+        {
+          "path": "C128/palette_C64_green.vpl",
+          "sha256": "d5d8c21142c0f47fc30b6294ec9d71a76a4d117b6c550312aa5c2810b065ccb0"
+        },
+        {
+          "path": "C128/pc64.vpl",
+          "sha256": "30072b164fd0137cd38799d95f2b5c7f4041bea4f1413a991747f40644a87463"
+        },
+        {
+          "path": "C128/pepto-ntsc-sony.vpl",
+          "sha256": "d7487cb9ffe8b14926b2a69e3a4d726db8a9b0cbd13225af1f2b15b2002e610b"
+        },
+        {
+          "path": "C128/pepto-ntsc.vpl",
+          "sha256": "7c36f799dc9dfc4ad40c1a8d62c7cdfa6c8b0868f777883e5e1dc26e05ebebb9"
+        },
+        {
+          "path": "C128/pepto-pal.vpl",
+          "sha256": "7e2c2241d0dc8968954d5ee77996282309ea966f2a3e284d3d0b26d0a5237b7e"
+        },
+        {
+          "path": "C128/pepto-palold.vpl",
+          "sha256": "779b7297e0673e928ce2c0d5f804b519fb525806ddb5bd3d1274d6aa3f677d83"
+        },
+        {
+          "path": "C128/pixcen.vpl",
+          "sha256": "d9d0cde15a7c47eae67d3ddafe34942537e431d8fb4afeabe4d20691975464ce"
+        },
+        {
+          "path": "C128/ptoing.vpl",
+          "sha256": "e810cca1244e062c77ebc1281473903c24de4762328ce43d68c84027e8a4252d"
+        },
+        {
+          "path": "C128/rgb.vpl",
+          "sha256": "2909e259abbfcfff0da34c01d985969f9f70e49a7ab360381eedf1c3860237a8"
+        },
+        {
+          "path": "C128/sdl_pos.vkm",
+          "sha256": "ce5ee63f0fc092d603fcaee3f5f81e3bc92164dc59d1788e164d20e7c6971693"
+        },
+        {
+          "path": "C128/sdl_pos_de.vkm",
+          "sha256": "4a9110ba74722d33557cbedb4392f8eca09ded88155d60c5cb2651537c489445"
+        },
+        {
+          "path": "C128/sdl_sym.vkm",
+          "sha256": "876ffc90dab8617ed88739a9350451d45bfa16ee0d5801d3c70298b7645a909f"
+        },
+        {
+          "path": "C128/sdl_sym_de.vkm",
+          "sha256": "6b246dc96fcda373bdd4fc977b1ee6d6ab267ea56227f75aaf7a7559214f6ce7"
+        },
+        {
+          "path": "C128/sdl_sym_fr.vkm",
+          "sha256": "49debb99357a03f9a312afabcb39e13543e85608628a151dae6f49e0fabadc81"
+        },
+        {
+          "path": "C128/sdl_v128.vkm",
+          "sha256": "6f671f4209570a363dee6ba248fc27b85f88c8e7dab26ba69fd0b1ca1b648f1a"
+        },
+        {
+          "path": "C128/the64.vpl",
+          "sha256": "b6729eff540482bf3cf5678a5dcef47d1d7a2721e06d02e116d7829df6662fbd"
+        },
+        {
+          "path": "C128/vdc_comp.vpl",
+          "sha256": "0b11ab7378ba9bc96bfa981066743253564d92bc8260b033d424035c96439627"
+        },
+        {
+          "path": "C128/vdc_deft.vpl",
+          "sha256": "18090da8f7b5c00e197fcfd737cfd186c4784596c1e586573b1ed212d1ac73aa"
+        },
+        {
+          "path": "C128/vdc_scart.vpl",
+          "sha256": "ebfa30108dbcdc6f36fc68270988a27f41f19e75db70d486536793bd771468b6"
+        },
+        {
+          "path": "C128/vice.vpl",
+          "sha256": "2bdd1241b5106fbe85a501c98b11c05fafec91acb070bbb406c0832be339eae2"
+        },
+        {
+          "path": "C64/Makefile.am",
+          "sha256": "b178a75071d148ca39dfbf7107b6985356cb123e347fcd6b1bd35e56f313379b"
+        },
+        {
+          "path": "C64/Makefile.in",
+          "sha256": "e2905c60cd125411be39525b02dae4169bbdad2ca9c56694fd840b19305f7767"
+        },
+        {
+          "path": "C64/basic-901226-01.bin",
+          "sha256": "89878cea0a268734696de11c4bae593eaaa506465d2029d619c0e0cbccdfa62d"
+        },
+        {
+          "path": "C64/c64hq.vpl",
+          "sha256": "a7e996ed7f8ad92ad92e815fa5ce7202302859a1080c2c986a5daae82490b3e0"
+        },
+        {
+          "path": "C64/c64mem.sym",
+          "sha256": "6e8ce78f1a5a1f2f9e04e990b48ae657c2dd127f1a7745e942041b14f287fec3"
+        },
+        {
+          "path": "C64/c64s.vpl",
+          "sha256": "c31eb83924a792a468fada474834c136c1fd7f3009beacaa7f365b32149788c1"
+        },
+        {
+          "path": "C64/ccs64.vpl",
+          "sha256": "175e79d22eb380d1a695f9df34442f1a1bd22c7f26d765b5268f4e0d20c998cb"
+        },
+        {
+          "path": "C64/chargen-901225-01.bin",
+          "sha256": "fd0d53b8480e86163ac98998976c72cc58d5dd8eb824ed7b829774e74213b420"
+        },
+        {
+          "path": "C64/chargen-906143-02.bin",
+          "sha256": "0f4a5b0f9ec0d86639ba316053e330fdd849692623a41f8de4a420fcd47c55ee"
+        },
+        {
+          "path": "C64/cjam.vpl",
+          "sha256": "88d4bf8af92ffc9b2f3a5cecca5a42fd67aae346bf18b01e68b7c49b6d073144"
+        },
+        {
+          "path": "C64/colodore.vpl",
+          "sha256": "3ac258746a7efe8ca1e5c863dab8bdcdc297049a99ca127e51423f1fc957273a"
+        },
+        {
+          "path": "C64/community-colors.vpl",
+          "sha256": "2bab9ac265df10a38b797806c0c56f3391cb13187b7af73072d8f7ccd35fc25d"
+        },
+        {
+          "path": "C64/deekay.vpl",
+          "sha256": "0ca5a21a703dd1d6973154b6389980fdc5288c2d8fed09dbee05798100f1d1e2"
+        },
+        {
+          "path": "C64/default.vrs",
+          "sha256": "aa0e8cc1eabea1dfd5ed03e1d6337e5d71d390fc7d7541c487056e131247e897"
+        },
+        {
+          "path": "C64/frodo.vpl",
+          "sha256": "901f94116866df5d64ae7ebaa801b6a144e422cb157c544d3cea98728bd7f43e"
+        },
+        {
+          "path": "C64/godot.vpl",
+          "sha256": "14a3e5d7bf20c65fc9b3bfbff4f00b5871f97203e70342aea9424b8b68e3d75b"
+        },
+        {
+          "path": "C64/gtk3_keyrah.vkm",
+          "sha256": "b618475a4dc8e9d134273c9598c40f741c44249def8934f1a4358281e53fd310"
+        },
+        {
+          "path": "C64/gtk3_keyrah_de.vkm",
+          "sha256": "d48c6c09baa7e1517b149781e55059b426cc1c47a956d9b739da36fb0ff88054"
+        },
+        {
+          "path": "C64/gtk3_pos.vkm",
+          "sha256": "df7332c52430ec344c9821ead8f16650ca31dc5676d0c40c5915e5594bd3493d"
+        },
+        {
+          "path": "C64/gtk3_pos_bmc64.vkm",
+          "sha256": "322a5cc04f800d2e485f62c3e12d21091e8d19041506efd0cc10bc068e4881b9"
+        },
+        {
+          "path": "C64/gtk3_pos_de.vkm",
+          "sha256": "251f324393a2fdcc85f84ce8348f916ec8b3cddcc528794a798de5c452c3e1a7"
+        },
+        {
+          "path": "C64/gtk3_pos_es.vkm",
+          "sha256": "b9e3ac042f7291af974e7efc15a641d0d0bb12171f0d32b8803b290c04fae6ec"
+        },
+        {
+          "path": "C64/gtk3_pos_it.vkm",
+          "sha256": "c970ad545b0786e174165dfb931ef99d4f72102ba11ad9fbdb09f8049e856d4e"
+        },
+        {
+          "path": "C64/gtk3_pos_se.vkm",
+          "sha256": "85c21e9145b2ce108fc8cda3c8345c78e586b47dce732df71d0b06b553ed7e3a"
+        },
+        {
+          "path": "C64/gtk3_pos_tr.vkm",
+          "sha256": "a259004fd4b1ad49bc3d836ad3b3bbd1c20a62e6fa1e95f21dee9c13ff734d0d"
+        },
+        {
+          "path": "C64/gtk3_pos_uk.vkm",
+          "sha256": "9f4802186ee61ce4be89aea5fb7d4235b6d692bff980f2f7a06b3bfdb4a013ea"
+        },
+        {
+          "path": "C64/gtk3_sym.vkm",
+          "sha256": "478f7d46bcfa0547d2c3fe1fb410a854501e2833472fa47448f29110dfa09428"
+        },
+        {
+          "path": "C64/gtk3_sym_be.vkm",
+          "sha256": "a0d7d54b468bf5be4ed643c2594c82916e9fa200fac0a8d8c4ddffe09a49033c"
+        },
+        {
+          "path": "C64/gtk3_sym_da.vkm",
+          "sha256": "6ab95868fee51344af693453e9c09b3c790f2d0af535ccafdab4f7ad35d1fe6f"
+        },
+        {
+          "path": "C64/gtk3_sym_de.vkm",
+          "sha256": "e786a29c19c655d020dccc1fcc4323af794e9958033e9e335bd7d8f326a9fe25"
+        },
+        {
+          "path": "C64/gtk3_sym_fr.vkm",
+          "sha256": "5b5df4e79f4592508fd8333c45d884aacc9a0b0c0860fae134b72a8e03be98ae"
+        },
+        {
+          "path": "C64/gtk3_sym_it.vkm",
+          "sha256": "2c998d86a9517a8eec2720a840abae80e11d8ddc0800c55e70df15b3adb62040"
+        },
+        {
+          "path": "C64/gtk3_sym_nl.vkm",
+          "sha256": "ef9a8aaf4cb97c2e42a1f0eaccff4e86f34f98df6c2a2159a24690cd4cea86d2"
+        },
+        {
+          "path": "C64/gtk3_sym_se.vkm",
+          "sha256": "19560e536800ded9d0e5d149c05acaf02e429488b83f8d0b24c66b6c0256f931"
+        },
+        {
+          "path": "C64/gtk3_sym_tr.vkm",
+          "sha256": "d95d441fbfe3ba1b1c0cf6b2e64d7b78159125505ea57ed8f6568f0e1c3c5315"
+        },
+        {
+          "path": "C64/gtk3_sym_uk.vkm",
+          "sha256": "291805b53e65c8c3fce152072608f4402f54408b94661863235d5bae1bc07a9a"
+        },
+        {
+          "path": "C64/gtk3_the64_de.vkm",
+          "sha256": "bb323aabcc7f6117aab8dbe6246c55898f9ee9c6b487a110f921e3fbec87d447"
+        },
+        {
+          "path": "C64/kernal-251104-04.bin",
+          "sha256": "81ad3a08920f2782ab031bb3ae02789d1f5f216c3d24d262e752a2b13e9faf73"
+        },
+        {
+          "path": "C64/kernal-390852-01.bin",
+          "sha256": "0a644f5e7f6ef8cb67b07e7a80f3f9a35584d9b131294c64f6e747a7e5c8a789"
+        },
+        {
+          "path": "C64/kernal-901227-01.bin",
+          "sha256": "f585600a2e47d0224459e878184d3f4cce2665bfcce65e61732530c6d89c4269"
+        },
+        {
+          "path": "C64/kernal-901227-02.bin",
+          "sha256": "675cf19a3e04bf68e41cc7a9010b353e51845ed9069db65496c52b79f1e1385f"
+        },
+        {
+          "path": "C64/kernal-901227-03.bin",
+          "sha256": "83c60d47047d7beab8e5b7bf6f67f80daa088b7a6a27de0d7e016f6484042721"
+        },
+        {
+          "path": "C64/kernal-901246-01.bin",
+          "sha256": "b2b430a134514af11f3ed64c0929fc5241d8436ba7b12514ec02d1b2cb2fd533"
+        },
+        {
+          "path": "C64/kernal-906145-02.bin",
+          "sha256": "48af48070ec9adda79ae7f65b772c422062eb12e69214a7cf788e6947a3b4117"
+        },
+        {
+          "path": "C64/lemon64.vpl",
+          "sha256": "ba65a852097b7d581abd07603f586ca5016f0113110cec0127464ca310432c38"
+        },
+        {
+          "path": "C64/palette.vpl",
+          "sha256": "ffd2484d3b502138a3b6824e46d19e200392dc629f9fa7045c635a5acaa788f8"
+        },
+        {
+          "path": "C64/palette_6569R1_v1r.vpl",
+          "sha256": "9d0d7e7f230f1bcf9cb0d5bd35a2ec1060b908b0f935a30c80cf2d97afe9c683"
+        },
+        {
+          "path": "C64/palette_6569R5_v1r.vpl",
+          "sha256": "7ad1d58be53edc28f6abaf2f42ec01dd9e6a9e0a9206c73d03a455d026f2c26a"
+        },
+        {
+          "path": "C64/palette_8565R2_v1r.vpl",
+          "sha256": "9bea19e5c5c574dda560892dd63189fedff37e20438e299478c54622d7809364"
+        },
+        {
+          "path": "C64/palette_C64_amber.vpl",
+          "sha256": "26ba9995968da3b9a992a2b6801942d17bdb65c8edf9b23022706f36b67b86d1"
+        },
+        {
+          "path": "C64/palette_C64_cyan.vpl",
+          "sha256": "dbfd9001890508ed50d109a467658f66041e239b93b3d7b9d78f8038ba7dfc67"
+        },
+        {
+          "path": "C64/palette_C64_green.vpl",
+          "sha256": "d5d8c21142c0f47fc30b6294ec9d71a76a4d117b6c550312aa5c2810b065ccb0"
+        },
+        {
+          "path": "C64/pc64.vpl",
+          "sha256": "30072b164fd0137cd38799d95f2b5c7f4041bea4f1413a991747f40644a87463"
+        },
+        {
+          "path": "C64/pepto-ntsc-sony.vpl",
+          "sha256": "d7487cb9ffe8b14926b2a69e3a4d726db8a9b0cbd13225af1f2b15b2002e610b"
+        },
+        {
+          "path": "C64/pepto-ntsc.vpl",
+          "sha256": "10763039b2282e24f737c6ffae40c92e68407e13a5eda76acfd67612591d2365"
+        },
+        {
+          "path": "C64/pepto-pal.vpl",
+          "sha256": "8601a72d62687450e5b015fd78974d6fdf008ec17ee25c8a234b959668ae032a"
+        },
+        {
+          "path": "C64/pepto-palold.vpl",
+          "sha256": "779b7297e0673e928ce2c0d5f804b519fb525806ddb5bd3d1274d6aa3f677d83"
+        },
+        {
+          "path": "C64/pixcen.vpl",
+          "sha256": "d9d0cde15a7c47eae67d3ddafe34942537e431d8fb4afeabe4d20691975464ce"
+        },
+        {
+          "path": "C64/ptoing.vpl",
+          "sha256": "e810cca1244e062c77ebc1281473903c24de4762328ce43d68c84027e8a4252d"
+        },
+        {
+          "path": "C64/rgb.vpl",
+          "sha256": "2909e259abbfcfff0da34c01d985969f9f70e49a7ab360381eedf1c3860237a8"
+        },
+        {
+          "path": "C64/sdl_joymap_keyrah_v3.vjm",
+          "sha256": "84d056d488c1682924bbb60086f72b0c889150f058b70bc8cd148006fb0d6fce"
+        },
+        {
+          "path": "C64/sdl_joymap_ps3.vjm",
+          "sha256": "40bd7d48ae8d8c434948bd6eea775ca7d600082b354f7bd9335b1dd0d835efbb"
+        },
+        {
+          "path": "C64/sdl_joymap_thec64.vjm",
+          "sha256": "07c866c2517de037fe1a291130aedb917823beeec1d21bce8701a19fed6c4891"
+        },
+        {
+          "path": "C64/sdl_joymap_xbox360.vjm",
+          "sha256": "3b7b87cf6014223cd410052fc2cfe8a0d203b02f86cd61c56d772cd66bee1c47"
+        },
+        {
+          "path": "C64/sdl_keyrah.vkm",
+          "sha256": "28aa188889fb9eac99c9f81157fe9b4547098e75a41958d115273389eb8ae05d"
+        },
+        {
+          "path": "C64/sdl_keyrah_combian.vkm",
+          "sha256": "c18be00a53f861084165abf0a8fe55810d962abcdf68f1f3b454d021dc92b383"
+        },
+        {
+          "path": "C64/sdl_keyrah_de.vkm",
+          "sha256": "5b10e79e6c41f07487be99d4412028de1987f6bc7123d24be484148f5053930e"
+        },
+        {
+          "path": "C64/sdl_keyrah_retropie.vkm",
+          "sha256": "7ab980ad0d6db5aa7c3785368665823254f18bafb0eee65b36b3ce65411ae66a"
+        },
+        {
+          "path": "C64/sdl_keyrah_retropie_de.vkm",
+          "sha256": "3d30f7b4ff16e180518991312bbb97ba48734a7e716b1b6ad41571caaed5d8e5"
+        },
+        {
+          "path": "C64/sdl_pos.vkm",
+          "sha256": "db446496a278d47ba1327ce5b4ab2988596542a57517efced68dd8937c89ab36"
+        },
+        {
+          "path": "C64/sdl_pos_ch.vkm",
+          "sha256": "809ade0293c09cfb62be9672ee386bf22e1657a556d9c9bf9d457085b1b97102"
+        },
+        {
+          "path": "C64/sdl_pos_da.vkm",
+          "sha256": "489828c39da90854acfba3278976a1f568a9e7e21ec82188fb25ebf0ea4b168a"
+        },
+        {
+          "path": "C64/sdl_pos_de.vkm",
+          "sha256": "ab8452f548108f1d9ba747d0c728d9710f8646fbe19e2f6c3eccbe51fda99aca"
+        },
+        {
+          "path": "C64/sdl_pos_fi.vkm",
+          "sha256": "e701f373a94d9a9394f20d3f98a31c77408167920e5dc97f87dacf0f25ff985e"
+        },
+        {
+          "path": "C64/sdl_pos_no.vkm",
+          "sha256": "f3f88e4aeabc011a17d2148489150d30435e3146cc516a31f0d54c578ffa50ee"
+        },
+        {
+          "path": "C64/sdl_pos_tr.vkm",
+          "sha256": "11a5cf5603a2eebb197ffd94e4aa83ddc7983480da365f314b9b5c423c69a06e"
+        },
+        {
+          "path": "C64/sdl_pos_uk.vkm",
+          "sha256": "ac880b959f5e1517272b50d93618d17b7975d2d5a4e7e62185aa7c200d5d3468"
+        },
+        {
+          "path": "C64/sdl_sym.vkm",
+          "sha256": "883d122f3cba8c707ad47c8a50b37d158df1fc548a32ed3893386243dd3c4c38"
+        },
+        {
+          "path": "C64/sdl_sym_da.vkm",
+          "sha256": "6c1d2317ade3cd2ac6380ae223fddc4a6ed1ba298256ecdfa190b48320f86547"
+        },
+        {
+          "path": "C64/sdl_sym_de.vkm",
+          "sha256": "30ce36a16cb9190355a9f360d50dfe51d76c03ed68647c7d51d7251f0e46d3a3"
+        },
+        {
+          "path": "C64/sdl_sym_fr.vkm",
+          "sha256": "c247eeebb0953fc7010e67cab0ed49665bef299856712b861021f1692cc4793e"
+        },
+        {
+          "path": "C64/sdl_sym_it.vkm",
+          "sha256": "48ed248da32e64ecef8d70c3ea94c9ead1a596d9d8c88132cf2850e71c7c06b4"
+        },
+        {
+          "path": "C64/sdl_sym_nl.vkm",
+          "sha256": "95fcfa154b407a635c9e9864342d386299b42b28566f93b05ee30b7a8d5711d2"
+        },
+        {
+          "path": "C64/sdl_sym_tr.vkm",
+          "sha256": "7435cd95753ed34cd6011fa418988c59cea9f236e0e302461c732253db9f8cb4"
+        },
+        {
+          "path": "C64/sdl_sym_uk.vkm",
+          "sha256": "0d4e9824cae9de15b587b5a7023d8277484290acd1bad3d88eca090e10c65c00"
+        },
+        {
+          "path": "C64/the64.vpl",
+          "sha256": "bcce3a4620cef2a64b114068ffb59446335f0d616a25bfec3111a09284989f00"
+        },
+        {
+          "path": "C64/vice.vpl",
+          "sha256": "c4652015277cbd3eaa57a84327bfddb255571599a7caa97fe2d7c1c6cd4a501d"
+        },
+        {
+          "path": "C64DTV/Makefile.am",
+          "sha256": "0c8b9ed78ffdca881e36ca09d9009417d7e0454c48f655b316f11df4845503f0"
+        },
+        {
+          "path": "C64DTV/Makefile.in",
+          "sha256": "0b3e84bdeca0e7139755fdf0574e0cd964d85204d4d3322b76dc9ad3479a4a16"
+        },
+        {
+          "path": "C64DTV/basic-901226-01.bin",
+          "sha256": "89878cea0a268734696de11c4bae593eaaa506465d2029d619c0e0cbccdfa62d"
+        },
+        {
+          "path": "C64DTV/c64mem.sym",
+          "sha256": "6e8ce78f1a5a1f2f9e04e990b48ae657c2dd127f1a7745e942041b14f287fec3"
+        },
+        {
+          "path": "C64DTV/chargen-901225-01.bin",
+          "sha256": "fd0d53b8480e86163ac98998976c72cc58d5dd8eb824ed7b829774e74213b420"
+        },
+        {
+          "path": "C64DTV/default.vrs",
+          "sha256": "aa0e8cc1eabea1dfd5ed03e1d6337e5d71d390fc7d7541c487056e131247e897"
+        },
+        {
+          "path": "C64DTV/dtvrom.bin",
+          "sha256": "6c0158e6d7a343e23126def9f8a2b89c562a4f82db8f615da3accdaebb943518"
+        },
+        {
+          "path": "C64DTV/gtk3_keyrah.vkm",
+          "sha256": "b618475a4dc8e9d134273c9598c40f741c44249def8934f1a4358281e53fd310"
+        },
+        {
+          "path": "C64DTV/gtk3_keyrah_de.vkm",
+          "sha256": "d48c6c09baa7e1517b149781e55059b426cc1c47a956d9b739da36fb0ff88054"
+        },
+        {
+          "path": "C64DTV/gtk3_pos.vkm",
+          "sha256": "df7332c52430ec344c9821ead8f16650ca31dc5676d0c40c5915e5594bd3493d"
+        },
+        {
+          "path": "C64DTV/gtk3_pos_bmc64.vkm",
+          "sha256": "322a5cc04f800d2e485f62c3e12d21091e8d19041506efd0cc10bc068e4881b9"
+        },
+        {
+          "path": "C64DTV/gtk3_pos_de.vkm",
+          "sha256": "251f324393a2fdcc85f84ce8348f916ec8b3cddcc528794a798de5c452c3e1a7"
+        },
+        {
+          "path": "C64DTV/gtk3_pos_es.vkm",
+          "sha256": "b9e3ac042f7291af974e7efc15a641d0d0bb12171f0d32b8803b290c04fae6ec"
+        },
+        {
+          "path": "C64DTV/gtk3_pos_it.vkm",
+          "sha256": "c970ad545b0786e174165dfb931ef99d4f72102ba11ad9fbdb09f8049e856d4e"
+        },
+        {
+          "path": "C64DTV/gtk3_pos_se.vkm",
+          "sha256": "85c21e9145b2ce108fc8cda3c8345c78e586b47dce732df71d0b06b553ed7e3a"
+        },
+        {
+          "path": "C64DTV/gtk3_pos_tr.vkm",
+          "sha256": "a259004fd4b1ad49bc3d836ad3b3bbd1c20a62e6fa1e95f21dee9c13ff734d0d"
+        },
+        {
+          "path": "C64DTV/gtk3_pos_uk.vkm",
+          "sha256": "9f4802186ee61ce4be89aea5fb7d4235b6d692bff980f2f7a06b3bfdb4a013ea"
+        },
+        {
+          "path": "C64DTV/gtk3_sym.vkm",
+          "sha256": "478f7d46bcfa0547d2c3fe1fb410a854501e2833472fa47448f29110dfa09428"
+        },
+        {
+          "path": "C64DTV/gtk3_sym_be.vkm",
+          "sha256": "a0d7d54b468bf5be4ed643c2594c82916e9fa200fac0a8d8c4ddffe09a49033c"
+        },
+        {
+          "path": "C64DTV/gtk3_sym_da.vkm",
+          "sha256": "6ab95868fee51344af693453e9c09b3c790f2d0af535ccafdab4f7ad35d1fe6f"
+        },
+        {
+          "path": "C64DTV/gtk3_sym_de.vkm",
+          "sha256": "e786a29c19c655d020dccc1fcc4323af794e9958033e9e335bd7d8f326a9fe25"
+        },
+        {
+          "path": "C64DTV/gtk3_sym_fr.vkm",
+          "sha256": "efb8bf024451676f5941bcbe660161e4560bfcda30b9429a5bf55325d12e8db9"
+        },
+        {
+          "path": "C64DTV/gtk3_sym_it.vkm",
+          "sha256": "aa2cf54da37ecc17f998e9e0e2284d0613db9029a557dc86ca0a6515adc174ab"
+        },
+        {
+          "path": "C64DTV/gtk3_sym_nl.vkm",
+          "sha256": "ef9a8aaf4cb97c2e42a1f0eaccff4e86f34f98df6c2a2159a24690cd4cea86d2"
+        },
+        {
+          "path": "C64DTV/gtk3_sym_se.vkm",
+          "sha256": "19560e536800ded9d0e5d149c05acaf02e429488b83f8d0b24c66b6c0256f931"
+        },
+        {
+          "path": "C64DTV/gtk3_sym_tr.vkm",
+          "sha256": "d95d441fbfe3ba1b1c0cf6b2e64d7b78159125505ea57ed8f6568f0e1c3c5315"
+        },
+        {
+          "path": "C64DTV/gtk3_sym_uk.vkm",
+          "sha256": "291805b53e65c8c3fce152072608f4402f54408b94661863235d5bae1bc07a9a"
+        },
+        {
+          "path": "C64DTV/gtk3_the64_de.vkm",
+          "sha256": "bb323aabcc7f6117aab8dbe6246c55898f9ee9c6b487a110f921e3fbec87d447"
+        },
+        {
+          "path": "C64DTV/kernal-901227-03.bin",
+          "sha256": "83c60d47047d7beab8e5b7bf6f67f80daa088b7a6a27de0d7e016f6484042721"
+        },
+        {
+          "path": "C64DTV/sdl_keyrah.vkm",
+          "sha256": "28aa188889fb9eac99c9f81157fe9b4547098e75a41958d115273389eb8ae05d"
+        },
+        {
+          "path": "C64DTV/sdl_keyrah_combian.vkm",
+          "sha256": "c18be00a53f861084165abf0a8fe55810d962abcdf68f1f3b454d021dc92b383"
+        },
+        {
+          "path": "C64DTV/sdl_keyrah_de.vkm",
+          "sha256": "5b10e79e6c41f07487be99d4412028de1987f6bc7123d24be484148f5053930e"
+        },
+        {
+          "path": "C64DTV/sdl_keyrah_retropie.vkm",
+          "sha256": "7ab980ad0d6db5aa7c3785368665823254f18bafb0eee65b36b3ce65411ae66a"
+        },
+        {
+          "path": "C64DTV/sdl_keyrah_retropie_de.vkm",
+          "sha256": "3d30f7b4ff16e180518991312bbb97ba48734a7e716b1b6ad41571caaed5d8e5"
+        },
+        {
+          "path": "C64DTV/sdl_pos.vkm",
+          "sha256": "db446496a278d47ba1327ce5b4ab2988596542a57517efced68dd8937c89ab36"
+        },
+        {
+          "path": "C64DTV/sdl_pos_ch.vkm",
+          "sha256": "809ade0293c09cfb62be9672ee386bf22e1657a556d9c9bf9d457085b1b97102"
+        },
+        {
+          "path": "C64DTV/sdl_pos_da.vkm",
+          "sha256": "489828c39da90854acfba3278976a1f568a9e7e21ec82188fb25ebf0ea4b168a"
+        },
+        {
+          "path": "C64DTV/sdl_pos_de.vkm",
+          "sha256": "ab8452f548108f1d9ba747d0c728d9710f8646fbe19e2f6c3eccbe51fda99aca"
+        },
+        {
+          "path": "C64DTV/sdl_pos_fi.vkm",
+          "sha256": "e701f373a94d9a9394f20d3f98a31c77408167920e5dc97f87dacf0f25ff985e"
+        },
+        {
+          "path": "C64DTV/sdl_pos_no.vkm",
+          "sha256": "f3f88e4aeabc011a17d2148489150d30435e3146cc516a31f0d54c578ffa50ee"
+        },
+        {
+          "path": "C64DTV/sdl_pos_tr.vkm",
+          "sha256": "11a5cf5603a2eebb197ffd94e4aa83ddc7983480da365f314b9b5c423c69a06e"
+        },
+        {
+          "path": "C64DTV/sdl_pos_uk.vkm",
+          "sha256": "ac880b959f5e1517272b50d93618d17b7975d2d5a4e7e62185aa7c200d5d3468"
+        },
+        {
+          "path": "C64DTV/sdl_sym.vkm",
+          "sha256": "883d122f3cba8c707ad47c8a50b37d158df1fc548a32ed3893386243dd3c4c38"
+        },
+        {
+          "path": "C64DTV/sdl_sym_da.vkm",
+          "sha256": "6c1d2317ade3cd2ac6380ae223fddc4a6ed1ba298256ecdfa190b48320f86547"
+        },
+        {
+          "path": "C64DTV/sdl_sym_de.vkm",
+          "sha256": "30ce36a16cb9190355a9f360d50dfe51d76c03ed68647c7d51d7251f0e46d3a3"
+        },
+        {
+          "path": "C64DTV/sdl_sym_fr.vkm",
+          "sha256": "c247eeebb0953fc7010e67cab0ed49665bef299856712b861021f1692cc4793e"
+        },
+        {
+          "path": "C64DTV/sdl_sym_nl.vkm",
+          "sha256": "95fcfa154b407a635c9e9864342d386299b42b28566f93b05ee30b7a8d5711d2"
+        },
+        {
+          "path": "C64DTV/sdl_sym_tr.vkm",
+          "sha256": "7435cd95753ed34cd6011fa418988c59cea9f236e0e302461c732253db9f8cb4"
+        },
+        {
+          "path": "C64DTV/sdl_sym_uk.vkm",
+          "sha256": "0d4e9824cae9de15b587b5a7023d8277484290acd1bad3d88eca090e10c65c00"
+        },
+        {
+          "path": "C64DTV/spiff.vpl",
+          "sha256": "93e5f3636da0189b1e53094834a1813029ea446edb51df49476618bfccf2fc95"
+        },
+        {
+          "path": "CBM-II/Makefile.am",
+          "sha256": "880a261f688e0d0a4515274f45b0b2768225efcce3cbf6ddf5c7086bc41cf116"
+        },
+        {
+          "path": "CBM-II/Makefile.in",
+          "sha256": "703b90bb40c1ddbf87974985ee853e9c4910e7894883a90cf62a365153ffcb1d"
+        },
+        {
+          "path": "CBM-II/amber.vpl",
+          "sha256": "04bf31a789f3cce7ef667426cb7a8cdf0979ed953c57d2e95776b7f1565b2c95"
+        },
+        {
+          "path": "CBM-II/basic-901235+6-02.bin",
+          "sha256": "169257e77d112d7600cfa452c2ddc04dd44cb4880209194ead07884a799932fa"
+        },
+        {
+          "path": "CBM-II/basic-901240+1-03.bin",
+          "sha256": "0c3fa48c3821f6cae3ff33cab2717a8449fd9da6d8dc18281a3002f2f39f08ee"
+        },
+        {
+          "path": "CBM-II/basic-901242+3-04a.bin",
+          "sha256": "e5fba50567b9b6e85edfa53b3f32c4bef1dd158942b088c855a6b64875ee4511"
+        },
+        {
+          "path": "CBM-II/c64hq.vpl",
+          "sha256": "a7e996ed7f8ad92ad92e815fa5ce7202302859a1080c2c986a5daae82490b3e0"
+        },
+        {
+          "path": "CBM-II/c64s.vpl",
+          "sha256": "c31eb83924a792a468fada474834c136c1fd7f3009beacaa7f365b32149788c1"
+        },
+        {
+          "path": "CBM-II/ccs64.vpl",
+          "sha256": "175e79d22eb380d1a695f9df34442f1a1bd22c7f26d765b5268f4e0d20c998cb"
+        },
+        {
+          "path": "CBM-II/chargen-901225-01.bin",
+          "sha256": "fd0d53b8480e86163ac98998976c72cc58d5dd8eb824ed7b829774e74213b420"
+        },
+        {
+          "path": "CBM-II/chargen-901232-01.bin",
+          "sha256": "a6f97a57ddd24aba9df43758551269fe3c869e0501fec8d67732e4756d4a8857"
+        },
+        {
+          "path": "CBM-II/chargen-901237-01.bin",
+          "sha256": "9ee7de848178c504d5a8de450435d2876489dba328d3d839a679d77f1d7fba70"
+        },
+        {
+          "path": "CBM-II/cjam.vpl",
+          "sha256": "88d4bf8af92ffc9b2f3a5cecca5a42fd67aae346bf18b01e68b7c49b6d073144"
+        },
+        {
+          "path": "CBM-II/colodore.vpl",
+          "sha256": "3ac258746a7efe8ca1e5c863dab8bdcdc297049a99ca127e51423f1fc957273a"
+        },
+        {
+          "path": "CBM-II/community-colors.vpl",
+          "sha256": "2bab9ac265df10a38b797806c0c56f3391cb13187b7af73072d8f7ccd35fc25d"
+        },
+        {
+          "path": "CBM-II/deekay.vpl",
+          "sha256": "0ca5a21a703dd1d6973154b6389980fdc5288c2d8fed09dbee05798100f1d1e2"
+        },
+        {
+          "path": "CBM-II/frodo.vpl",
+          "sha256": "901f94116866df5d64ae7ebaa801b6a144e422cb157c544d3cea98728bd7f43e"
+        },
+        {
+          "path": "CBM-II/godot.vpl",
+          "sha256": "14a3e5d7bf20c65fc9b3bfbff4f00b5871f97203e70342aea9424b8b68e3d75b"
+        },
+        {
+          "path": "CBM-II/green.vpl",
+          "sha256": "429b5be2d400b6517e5b6b0dc3c9d271f0c794f888825a0f34433a345992c0f7"
+        },
+        {
+          "path": "CBM-II/gtk3_pos.vkm",
+          "sha256": "45a3ad19983ad4e32b7677806b97306125c8a459aab918b3eebd416964ac9798"
+        },
+        {
+          "path": "CBM-II/gtk3_pos_de.vkm",
+          "sha256": "00999faa91fbde63017a9a1395a803da3b4f9263e9c5ee446cd378abef8934eb"
+        },
+        {
+          "path": "CBM-II/gtk3_sym.vkm",
+          "sha256": "846474292d967c7fec5fcebc1d091eff8613e11d4de41e8adf0f31fe9a154610"
+        },
+        {
+          "path": "CBM-II/gtk3_sym_de.vkm",
+          "sha256": "9088b78925791a7cbe2bbedc21bf91aa3c0ac43c5896ccf84824198ceb0ed775"
+        },
+        {
+          "path": "CBM-II/kernal-901234-02.bin",
+          "sha256": "66ae5a60ec9e34c076e8a5d6b1df75046fdf57f6fdc87bdd7ed4e915688b6b2a"
+        },
+        {
+          "path": "CBM-II/kernal-901244-04a.bin",
+          "sha256": "a3132af49a31f6f563c28cea88e4b17d768bd6b7831da8605a8721dd014d67ab"
+        },
+        {
+          "path": "CBM-II/palette.vpl",
+          "sha256": "ffd2484d3b502138a3b6824e46d19e200392dc629f9fa7045c635a5acaa788f8"
+        },
+        {
+          "path": "CBM-II/palette_6569R1_v1r.vpl",
+          "sha256": "9d0d7e7f230f1bcf9cb0d5bd35a2ec1060b908b0f935a30c80cf2d97afe9c683"
+        },
+        {
+          "path": "CBM-II/palette_6569R5_v1r.vpl",
+          "sha256": "7ad1d58be53edc28f6abaf2f42ec01dd9e6a9e0a9206c73d03a455d026f2c26a"
+        },
+        {
+          "path": "CBM-II/palette_8565R2_v1r.vpl",
+          "sha256": "9bea19e5c5c574dda560892dd63189fedff37e20438e299478c54622d7809364"
+        },
+        {
+          "path": "CBM-II/palette_C64_amber.vpl",
+          "sha256": "26ba9995968da3b9a992a2b6801942d17bdb65c8edf9b23022706f36b67b86d1"
+        },
+        {
+          "path": "CBM-II/palette_C64_cyan.vpl",
+          "sha256": "dbfd9001890508ed50d109a467658f66041e239b93b3d7b9d78f8038ba7dfc67"
+        },
+        {
+          "path": "CBM-II/palette_C64_green.vpl",
+          "sha256": "d5d8c21142c0f47fc30b6294ec9d71a76a4d117b6c550312aa5c2810b065ccb0"
+        },
+        {
+          "path": "CBM-II/pc64.vpl",
+          "sha256": "30072b164fd0137cd38799d95f2b5c7f4041bea4f1413a991747f40644a87463"
+        },
+        {
+          "path": "CBM-II/pepto-ntsc-sony.vpl",
+          "sha256": "d7487cb9ffe8b14926b2a69e3a4d726db8a9b0cbd13225af1f2b15b2002e610b"
+        },
+        {
+          "path": "CBM-II/pepto-ntsc.vpl",
+          "sha256": "7c36f799dc9dfc4ad40c1a8d62c7cdfa6c8b0868f777883e5e1dc26e05ebebb9"
+        },
+        {
+          "path": "CBM-II/pepto-pal.vpl",
+          "sha256": "8601a72d62687450e5b015fd78974d6fdf008ec17ee25c8a234b959668ae032a"
+        },
+        {
+          "path": "CBM-II/pepto-palold.vpl",
+          "sha256": "779b7297e0673e928ce2c0d5f804b519fb525806ddb5bd3d1274d6aa3f677d83"
+        },
+        {
+          "path": "CBM-II/pixcen.vpl",
+          "sha256": "d9d0cde15a7c47eae67d3ddafe34942537e431d8fb4afeabe4d20691975464ce"
+        },
+        {
+          "path": "CBM-II/ptoing.vpl",
+          "sha256": "e810cca1244e062c77ebc1281473903c24de4762328ce43d68c84027e8a4252d"
+        },
+        {
+          "path": "CBM-II/rgb.vpl",
+          "sha256": "2909e259abbfcfff0da34c01d985969f9f70e49a7ab360381eedf1c3860237a8"
+        },
+        {
+          "path": "CBM-II/rom128h.vrs",
+          "sha256": "50cbee91e518497cf61a70257f017b5690ce38f201d4b73592dea3da328601ae"
+        },
+        {
+          "path": "CBM-II/rom128l.vrs",
+          "sha256": "e36074a2b85c0f573f6ea735b54c65dc42b7e74167e88b0b39fa145d9832410a"
+        },
+        {
+          "path": "CBM-II/rom256h.vrs",
+          "sha256": "9cb08e36b87ba08e65e29280f078f9a7f1618f51adf526443fa51239fe9a6dfb"
+        },
+        {
+          "path": "CBM-II/rom256l.vrs",
+          "sha256": "630e109022c9bc30eb5e141962296b70be3df547c067fcbb9971b942a82f23c5"
+        },
+        {
+          "path": "CBM-II/rom500.vrs",
+          "sha256": "28888dc8fbcc45d5652689de4e3c23f2fdca22bae178c1776101a562925386c5"
+        },
+        {
+          "path": "CBM-II/sdl_pos.vkm",
+          "sha256": "f4974a556a53fcf04c5da417141f22083821bfc9f7a78d50c817dcb2fc105287"
+        },
+        {
+          "path": "CBM-II/sdl_sym.vkm",
+          "sha256": "aa41adf67e35d4173625a20e8096dd44562308503c04de9fc057d0e0e83b7c55"
+        },
+        {
+          "path": "CBM-II/the64.vpl",
+          "sha256": "bcce3a4620cef2a64b114068ffb59446335f0d616a25bfec3111a09284989f00"
+        },
+        {
+          "path": "CBM-II/vice.vpl",
+          "sha256": "c4652015277cbd3eaa57a84327bfddb255571599a7caa97fe2d7c1c6cd4a501d"
+        },
+        {
+          "path": "CBM-II/white.vpl",
+          "sha256": "eabe658a7770f0057b12b44adc13e2ff11a1b468f434f64a7040ad1d416ca751"
+        },
+        {
+          "path": "DRIVES/Makefile.am",
+          "sha256": "b85e4ad08af8cd6766e7727dd1522251bc69ba90cac20807fca3d630df4f6c42"
+        },
+        {
+          "path": "DRIVES/Makefile.in",
+          "sha256": "9c977f6f269eada2a26201bc8ecdc3fdc9eefc15c868fb56de49a165021aaba8"
+        },
+        {
+          "path": "DRIVES/dos1001-901887+8-01.bin",
+          "sha256": "63884dceaa746524d2579d35b9c07b5d5285e860d9daba8106778e391e20251b"
+        },
+        {
+          "path": "DRIVES/dos1540-325302+3-01.bin",
+          "sha256": "a966e3ff6fd2db7b8f6d57e4d105c589a92e88a6705201215604ac864cc3c27f"
+        },
+        {
+          "path": "DRIVES/dos1541-325302-01+901229-05.bin",
+          "sha256": "d1d45afb46fd4e2b48d93ca367b889d75654a3b7acf73044e51f6d880c09369e"
+        },
+        {
+          "path": "DRIVES/dos1541ii-251968-03.bin",
+          "sha256": "326c289c38753323d7e8167897447cf61ef35189d82eb8d75210ece949adda7c"
+        },
+        {
+          "path": "DRIVES/dos1551-318008-01.bin",
+          "sha256": "187554776846349896cca6b1fd23e327606d11046d4ca56c895607d798f7d84f"
+        },
+        {
+          "path": "DRIVES/dos1570-315090-01.bin",
+          "sha256": "948e042a17578446124f8982857e9a77d9de86fd5f8d939ba5785e62faef6870"
+        },
+        {
+          "path": "DRIVES/dos1571-310654-05.bin",
+          "sha256": "1fd73459b54a72a737609a879c283645acc37835de2c121633153db9fac81d45"
+        },
+        {
+          "path": "DRIVES/dos1571cr-318047-01.bin",
+          "sha256": "5ecaa4906147c5f5e0a6a7f64b020b5ba09e50074a32c664b325c5c722f24d67"
+        },
+        {
+          "path": "DRIVES/dos1581-318045-02.bin",
+          "sha256": "8f689277f36be357f5f105e6e606c35c42e73c581cdeec14b58f31850dfbcfcb"
+        },
+        {
+          "path": "DRIVES/dos2031-901484-03+05.bin",
+          "sha256": "af4e1175ec8afa6853d8d5dfa5af5b7fd3bcacc03c8a67d0e067f020ac0b423c"
+        },
+        {
+          "path": "DRIVES/dos2040-901468-06+07.bin",
+          "sha256": "b6a05b015b2e9bad4784a148f11b5bf00818dbb6509cab366e3663852e8bc753"
+        },
+        {
+          "path": "DRIVES/dos3040-901468-11-13.bin",
+          "sha256": "168a3044e4bae738dee90d1648d6f601b1b7f04315799f3325a409206b12e8af"
+        },
+        {
+          "path": "DRIVES/dos4040-901468-14-16.bin",
+          "sha256": "7b5c98f884012173e2c4450b7dd5bde45cf5a63920119f1ffc98e6b29371c2e4"
+        },
+        {
+          "path": "DRIVES/dos9000-300516+7-revC.bin",
+          "sha256": "69a6d670caa0db7e50e5902b5c6d07df04dd28a3a6ea5648a097c17db590e3cd"
+        },
+        {
+          "path": "GLSL/Makefile.am",
+          "sha256": "0a42c266d90ecdc58a12443866638ce9822de656e17eb5c9bbe1fca4f0bc3308"
+        },
+        {
+          "path": "GLSL/Makefile.in",
+          "sha256": "6b147bd5a2670930941233f8ab0c2462fcde836ad4cf2e5a1ef427f2a51ac467"
+        },
+        {
+          "path": "GLSL/bicubic-interlaced.frag",
+          "sha256": "14b569e3d9dfc4109375620cdf2747923357730c909f8f037c34f170c1cf8149"
+        },
+        {
+          "path": "GLSL/bicubic.frag",
+          "sha256": "19e46fa5fb7c14a99204c833af6f9b1fe17e86dcfe9966286af3a9918d7d4730"
+        },
+        {
+          "path": "GLSL/builtin-interlaced.frag",
+          "sha256": "de24bcaacd0fc116233de6101fe2f7330d2000785e064935a8bfe81fadf6a35b"
+        },
+        {
+          "path": "GLSL/builtin.frag",
+          "sha256": "e4289f45e2485b28bc360669124e699d870a27001c06f89c6554a70211793d3c"
+        },
+        {
+          "path": "GLSL/viewport.vert",
+          "sha256": "70ef747fd4c325ee06dd13890b06b355932e7959635e2d337785b96d804b8b32"
+        },
+        {
+          "path": "Makefile.am",
+          "sha256": "2aa3f7053b41767e95d079e5651649d36c851965ab31b39da17349303e44f374"
+        },
+        {
+          "path": "Makefile.in",
+          "sha256": "4b3bfdb0c08254f396fe109de4e38248050ee816e591e19731edcc647fd3474b"
+        },
+        {
+          "path": "PET/2001-blueish.vpl",
+          "sha256": "f67afed03695b32cdf8588739935f9e677f1799ebaa534a9e637b05f42ab034b"
+        },
+        {
+          "path": "PET/Makefile.am",
+          "sha256": "293ddea565e5f57608e2258946245c6ad5f3ceb20adb46c994f39f33c2cea4f6"
+        },
+        {
+          "path": "PET/Makefile.in",
+          "sha256": "b8ed4cafc34618759a3613d5ef9ad46f930bc649fcf435f15448ce2168d284ac"
+        },
+        {
+          "path": "PET/amber.vpl",
+          "sha256": "4828fa3e8894f164cff722f78e117b3107714db46af1bb76db6e86120d08a875"
+        },
+        {
+          "path": "PET/basic-1.901439-09-05-02-06.bin",
+          "sha256": "629b630f695d004b788aa23bcfa4acb84d405d4b22d136c7cf93571dd89ee4a1"
+        },
+        {
+          "path": "PET/basic-2.901465-01-02.bin",
+          "sha256": "5b426b5c50350e5d50c4308a81288bb34f310d7384bcc43c66a0e18716a4cdbe"
+        },
+        {
+          "path": "PET/basic-4.901465-23-20-21.bin",
+          "sha256": "71bb94523f666fc10a2da1b15790620d07ef0ed9696a37922cbea28d8f468025"
+        },
+        {
+          "path": "PET/characters-1.901447-08.bin",
+          "sha256": "697390d9cd7da9e77d71935b0bf71d1181f624e0be802cbfb472803861443340"
+        },
+        {
+          "path": "PET/characters-2.901447-10.bin",
+          "sha256": "da3374c21d6ea440cef5f338ce3f524e0a1e40dcb1ef64446c695f92c636f1fa"
+        },
+        {
+          "path": "PET/characters.901640-01.bin",
+          "sha256": "e6a9d1b829ef498c3d69e5c892a06a947a9baf5d4e6f43f60ef814371038a311"
+        },
+        {
+          "path": "PET/chargen.de",
+          "sha256": "15f4d7ccf63f9d9f5bd82ea4665a85bdf91391883768fe44344b15ff245a1e61"
+        },
+        {
+          "path": "PET/edit-1-n.901439-03.bin",
+          "sha256": "86dc50795651de9f99c886ea61bd412f5372fa4940eec7b550a9fa2d2dfffc13"
+        },
+        {
+          "path": "PET/edit-2-b.901474-01.bin",
+          "sha256": "448483549a95c5828ca509081d9f621a569fdcd3fcd9bbacdeef036ea18ea628"
+        },
+        {
+          "path": "PET/edit-2-n.901447-24.bin",
+          "sha256": "5338b1dffebd695f6110c9995e16f7536bb63a909c2a0062b4789de46904ade9"
+        },
+        {
+          "path": "PET/edit-4-40-b-50Hz.ts.bin",
+          "sha256": "eaf7889580a437869b69b2cf4443d7971645c0e1ebc22199921b4749a07369d1"
+        },
+        {
+          "path": "PET/edit-4-40-b-60Hz.ts.bin",
+          "sha256": "a1feb896b8da6d4f66b36287c52ae7e718ce3b580c6fddc5e873963ca74f2463"
+        },
+        {
+          "path": "PET/edit-4-40-n-50Hz.901498-01.bin",
+          "sha256": "e851f8c61b9ae8d81236e093ba9efbb21576d7eeab4f82435ba3be5e081d8d48"
+        },
+        {
+          "path": "PET/edit-4-40-n-60Hz.901499-01.bin",
+          "sha256": "15e4c2759d2b7cbeb3c228358e188e084c862979df7cbdfbff3e447d257e1945"
+        },
+        {
+          "path": "PET/edit-4-80-b-50Hz.901474-04.bin",
+          "sha256": "0c7b772881f437cf8526f9c8e3d03acb16ab1ae07aa7b69f940c2ce5a44a6099"
+        },
+        {
+          "path": "PET/edit-4-80-b-50Hz.901474-04_.bin",
+          "sha256": "c4863ecf4a61e9c1d1e600b6dcefe4672b386072ef1033f12c0ead814de4ad9c"
+        },
+        {
+          "path": "PET/edit-4-80-b-60Hz.901474-03.bin",
+          "sha256": "a7fb224049e12387349d7b1873a0cb421cbe3097838eccc414de5ffe39aef2a4"
+        },
+        {
+          "path": "PET/edit-4-b-noCRTC.901474-02.bin",
+          "sha256": "d3b7b8fd3405055df62b265e01141464532fd0500b907bb9b9164740b2210bac"
+        },
+        {
+          "path": "PET/green.vpl",
+          "sha256": "e1bcd3b861bfdee8a87b1ff7e3d88e91baeb7fa16cee8c2e292283d5d6cf9819"
+        },
+        {
+          "path": "PET/gtk3_bude_pos.vkm",
+          "sha256": "73237cbd9dab1cce76ea92d194fced6692011968b3f23f70b800cc1364ae88f2"
+        },
+        {
+          "path": "PET/gtk3_bude_pos_de.vkm",
+          "sha256": "59f8de3090201a386e65f1682a28525678e2907dacc165d2cdc37df974210493"
+        },
+        {
+          "path": "PET/gtk3_bude_sym.vkm",
+          "sha256": "f6697b8892a207796ab21aa86f5bb6c3fe7687da12ec0c619cba70c9a07a974c"
+        },
+        {
+          "path": "PET/gtk3_bude_sym_de.vkm",
+          "sha256": "39dc92bf2020c3e53f06e55447d02d2ac7aa8fcb95279c507a2ab7332382d938"
+        },
+        {
+          "path": "PET/gtk3_buuk_pos.vkm",
+          "sha256": "0a11e84a89f763d0d79a2bf98715181444f67a8dcd900e9bca4e8f65ac4fdf54"
+        },
+        {
+          "path": "PET/gtk3_buuk_pos_de.vkm",
+          "sha256": "ac4f51b38a3c5947f1ca2ce3bb7d91e31f0aa12035ca4bd1a36d5be48755df6c"
+        },
+        {
+          "path": "PET/gtk3_buuk_sym.vkm",
+          "sha256": "6dc01bb6722dacd24960abd42669fa962509bbf744a6e290999fab3891c7bfc5"
+        },
+        {
+          "path": "PET/gtk3_buuk_sym_de.vkm",
+          "sha256": "32c6188fd4412a6a56e381d79696c4e72a02ce016769d409e50f22762c6e1940"
+        },
+        {
+          "path": "PET/gtk3_grus_pos.vkm",
+          "sha256": "dfbeb9f8aa7419f353cd9564fbcde7b92fb018658dccf73105b06911f8754eda"
+        },
+        {
+          "path": "PET/gtk3_grus_pos_de.vkm",
+          "sha256": "595ebf539830032cad420db03bc553296eb57192e2846fb8d9ffedfe089c7420"
+        },
+        {
+          "path": "PET/gtk3_grus_sym.vkm",
+          "sha256": "96d5369ed54260c14f91551dea9f85e8d16df5c8661c5858d3791277e42dc8dc"
+        },
+        {
+          "path": "PET/gtk3_grus_sym_de.vkm",
+          "sha256": "ea2aaa2eb540cfdf5005cc009cb5694349ec3486e804843ff797f6432b7eb783"
+        },
+        {
+          "path": "PET/gtk3_pos.vkm",
+          "sha256": "88bbeb4d5cf605efaa3cbc992ba3675409d8fae8825f2c3284b6ee0388e5575f"
+        },
+        {
+          "path": "PET/gtk3_sym.vkm",
+          "sha256": "225f9501577babd93278e87f42dd5035013ec1edfa80e0989dd269c3a6ad3a97"
+        },
+        {
+          "path": "PET/hre-9000.324992-02.bin",
+          "sha256": "72f209733f5124952023c778ebfb4c34811d1d3f1d3dc95e653826017b8dde73"
+        },
+        {
+          "path": "PET/hre-a000.324993-02.bin",
+          "sha256": "a208dab2d5979e4a484a7df2939a590eaad52150381101dfae778489c8cbf895"
+        },
+        {
+          "path": "PET/hre.vrs",
+          "sha256": "9e39c436971a718717a6120177930e0d883c2b5c5aedbb83abf202b09cdc4ae7"
+        },
+        {
+          "path": "PET/kernal-1.901439-04-07.bin",
+          "sha256": "397b8ca539372d6e731ebd426077976c00e714cd140dc00e66b6af7e0fc0b3de"
+        },
+        {
+          "path": "PET/kernal-2.901465-03.bin",
+          "sha256": "056d5e84a6e4f2b5b40a4109f49515c2496a4bf99139a9f59abe486ded5cd03d"
+        },
+        {
+          "path": "PET/kernal-4.901465-22.bin",
+          "sha256": "7cf8678b748bda1ffedee69ea54888feb3f5ec66dca8143375cbdf8c3de4d573"
+        },
+        {
+          "path": "PET/rom1g.vrs",
+          "sha256": "a5ab262db15f878a8526c48645482a76e58cb3584ed983735b5fa806178d7b8d"
+        },
+        {
+          "path": "PET/rom2b.vrs",
+          "sha256": "b89bf32e07d8ec24bb7ec30535bda1a2fff109b9c15766dd309826e88b2d25dc"
+        },
+        {
+          "path": "PET/rom2g.vrs",
+          "sha256": "e4aaed1d0681410ba46271ee97535fa10cc4ad4ccc77b21034a15ee73aeb80c0"
+        },
+        {
+          "path": "PET/rom4b40.vrs",
+          "sha256": "25a0a2a877e7bfa18aaaaa543cec3e045a48b7b0c4d0b012b73c60aa2788bc7c"
+        },
+        {
+          "path": "PET/rom4b80.vrs",
+          "sha256": "9e9bf05f40eac93f9e7dc1bf07c24b05d72649e584b06e87c1048301c7f9af4c"
+        },
+        {
+          "path": "PET/rom4g40.vrs",
+          "sha256": "b16705f6063d850e9fff8a201654014ca8158096711e18580e74d6293d6ef6f0"
+        },
+        {
+          "path": "PET/romsuperpet.vrs",
+          "sha256": "5773efa8fb68111ef5dc41f92a34036954d47cddc3500a5d64dcc4773d0e74fa"
+        },
+        {
+          "path": "PET/sdl_buuk_pos.vkm",
+          "sha256": "7fee1bd12a7a372d6ef183c57d3b921e5d7a0c98753c0bd0d7fcd9904281b32e"
+        },
+        {
+          "path": "PET/sdl_buuk_pos_de.vkm",
+          "sha256": "5405b052b2a47dc9178585afbdb8bd515dcd1acdfc80b9c03de4bcabdd6cda70"
+        },
+        {
+          "path": "PET/sdl_buuk_sym.vkm",
+          "sha256": "d2553123e0fb66f8424514c13540310ecdebfb2738aeb7c8d08ab1c2309fb40e"
+        },
+        {
+          "path": "PET/sdl_buuk_sym_de.vkm",
+          "sha256": "13d5c66ea0c811a017d41226f2db338f16d6db7732d0ba9dccb73f6391b615f1"
+        },
+        {
+          "path": "PET/sdl_grus_pos.vkm",
+          "sha256": "e8217733f21685af295e5298ab1ec5b245941dfe68ec275443f5d86109bcb0b0"
+        },
+        {
+          "path": "PET/sdl_grus_pos_de.vkm",
+          "sha256": "967e0c9f2ffc0e9951b9d4224c0e6b9b49736e276b747a5f2867a044115ecced"
+        },
+        {
+          "path": "PET/sdl_grus_sym.vkm",
+          "sha256": "868f99578a4d9b5f13111f2d8c03896d5d717323561fb3e7387d5abe69e38f0c"
+        },
+        {
+          "path": "PET/sdl_grus_sym_de.vkm",
+          "sha256": "1bb91ed73fae4aaa6c109d82f2b54dfded0da1b22bfd220d0f14ba080fc181e1"
+        },
+        {
+          "path": "PET/sdl_pos.vkm",
+          "sha256": "253e9e83df764b5939b767fc9352e6330dd9fb13f85a11f0d495a2588ee16da3"
+        },
+        {
+          "path": "PET/sdl_sym.vkm",
+          "sha256": "ae2fca8b5df6ddf8a3736cb21991eaaddfca3398037ec2a18ef9518aa0d4e91f"
+        },
+        {
+          "path": "PET/waterloo-a000.901898-01.bin",
+          "sha256": "a55aace69825d605e89bb177f0b749325418f4c22250d35e53d567cc63919404"
+        },
+        {
+          "path": "PET/waterloo-b000.901898-02.bin",
+          "sha256": "d815b0d554c4998e9acfe23fc81ea4027e0f422c095d642f3d589bffb0b8fc47"
+        },
+        {
+          "path": "PET/waterloo-c000.901898-03.bin",
+          "sha256": "f8d2bc9eae09da569983236706139d0a11e1cfc626f701124c92b610d1ebe86e"
+        },
+        {
+          "path": "PET/waterloo-d000.901898-04.bin",
+          "sha256": "11df5991bbbfd2f2b7a708a4327dc3f7593834c48292abfde9f91d0485f21acf"
+        },
+        {
+          "path": "PET/waterloo-e000.901897-01.bin",
+          "sha256": "9d733b7a2938532aabaf614750563f9bf3f76223c584014fe0fec4d5733f7682"
+        },
+        {
+          "path": "PET/waterloo-f000.901898-05.bin",
+          "sha256": "e0cf60892ffa404e33828ea1175822d196272c88b5a8c1fde12823e886a31f31"
+        },
+        {
+          "path": "PET/white.vpl",
+          "sha256": "a9e2f0bf30c1dc59b3f7fb5a62fd646fb4ba221c948066e0e74d386b78af7f9b"
+        },
+        {
+          "path": "PLUS4/3plus1-317053-01.bin",
+          "sha256": "628eb4b01b8701e6fc5bd4b7e9e6573deae47e0b0f8b150b4022596501d5131d"
+        },
+        {
+          "path": "PLUS4/3plus1-317054-01.bin",
+          "sha256": "2e83bfdfd93a2d9e8adfe4bb302869a30eac12015f6b41302c9d1ed3bb83de16"
+        },
+        {
+          "path": "PLUS4/ITU-R_BT2020.vpl",
+          "sha256": "620149a1ccab501313cda44f78f521dcc4e985a400b3e1df765ca2daea3efcc0"
+        },
+        {
+          "path": "PLUS4/ITU-R_BT601_CRT.vpl",
+          "sha256": "7d7b66cb6e68a3f94ffb7478cbf5dc16b0d321400c00d91d6a3697aee99fb4a8"
+        },
+        {
+          "path": "PLUS4/ITU-R_BT709_HDTV.vpl",
+          "sha256": "376f7e7aef345317a9d057822ae06b5dd3712f136da5a2aed40ba7c68977b8e5"
+        },
+        {
+          "path": "PLUS4/Makefile.am",
+          "sha256": "f644590a4f2920580fa137bc438dc015bb66d76f20e38c7472423f83738d9289"
+        },
+        {
+          "path": "PLUS4/Makefile.in",
+          "sha256": "2536f7b46d0b920f97daf302b638d105fa675d3795b4b9ba961c00f8c1600706"
+        },
+        {
+          "path": "PLUS4/basic-318006-01.bin",
+          "sha256": "cbf0c4dec44e3e203beaf09690e5c7f859b0eca164e789884161c8cb0e596567"
+        },
+        {
+          "path": "PLUS4/c2lo-364.bin",
+          "sha256": "25271429c27d507d03f1a67e5a50f5d3988b1c5755c519153ecfc857d5aec6ac"
+        },
+        {
+          "path": "PLUS4/colodore_ted.vpl",
+          "sha256": "16da80a113480302cf11f4c9845cc494b0faec0a66345f2a283c5062bbdca8d4"
+        },
+        {
+          "path": "PLUS4/default.vrs",
+          "sha256": "3be418d503c9ca0bcb150076663cc8354b65718396bd92f9504cc4bf27ac0b5e"
+        },
+        {
+          "path": "PLUS4/gtk3_c116_pos_it.vkm",
+          "sha256": "2983897ff66c46eb9de5f300660e181b1869c3b3cae44dbf24f6b62f78ffada4"
+        },
+        {
+          "path": "PLUS4/gtk3_c16_pos_it.vkm",
+          "sha256": "b6f0de186fc316e7142329ca3f6dba1851693978038a036ee6d365cdae912ae5"
+        },
+        {
+          "path": "PLUS4/gtk3_pos.vkm",
+          "sha256": "eaba04ac023e9ae94441486e32a9f2b821251fdad033bbe2c5d749a2f266bec5"
+        },
+        {
+          "path": "PLUS4/gtk3_pos_de.vkm",
+          "sha256": "ee55cf2f9c38bed22bdc86b7bd5edf5d22266a173adc8c04bca98c7165156c9b"
+        },
+        {
+          "path": "PLUS4/gtk3_pos_es.vkm",
+          "sha256": "49b5edce0b0e4892708b044222cf0b3c49728fb7398c347e434b3bbde62b50df"
+        },
+        {
+          "path": "PLUS4/gtk3_pos_it.vkm",
+          "sha256": "f79880cb076b9233a5b987f439774b2a2c86ac711aeec441b7cbe7f939cdd850"
+        },
+        {
+          "path": "PLUS4/gtk3_sym.vkm",
+          "sha256": "b57f9a8f103e6a83254b84f594258b521afd78aed1ade6973814b5b28370a86c"
+        },
+        {
+          "path": "PLUS4/gtk3_sym_de.vkm",
+          "sha256": "411aba9444966c2fee05f21db1b65d0715197d4caaf5aa74f66612c27c284709"
+        },
+        {
+          "path": "PLUS4/gtk3_sym_fr.vkm",
+          "sha256": "880f0bb4249a72defeac3ab25682b29647da204d03dbd37fdc786eafd2f7ddfe"
+        },
+        {
+          "path": "PLUS4/gtk3_sym_it.vkm",
+          "sha256": "f82876e3aa34d8b2eff4a62c82e250255307538ae4c6202eae0aa729238d2bd1"
+        },
+        {
+          "path": "PLUS4/kernal-318004-01.bin",
+          "sha256": "8e2cb1db9aa8083bd296a0484bf7580a96934bd9c911cb0b32f33ca4bd6c2884"
+        },
+        {
+          "path": "PLUS4/kernal-318004-05.bin",
+          "sha256": "1f07270c43fc84d1556978e5bb3a6b08aa7b1253f2e46d1a452c89c972ae506b"
+        },
+        {
+          "path": "PLUS4/kernal-318005-05.bin",
+          "sha256": "5c094751e8bbac217726e25e0864769aacb76f606f2ab807e10d420a5209aaf3"
+        },
+        {
+          "path": "PLUS4/kernal-364.bin",
+          "sha256": "c683d498b2d5feecd64bbb8add548e17f9b62bee80a0baf1f66ecacf712b6092"
+        },
+        {
+          "path": "PLUS4/sdl_pos.vkm",
+          "sha256": "1e455909a38bd1adda1e1da5a55fab1ef3365cc782a4ca219975b04bc369d7fb"
+        },
+        {
+          "path": "PLUS4/sdl_pos_fr.vkm",
+          "sha256": "0e6ba79037f47268d9b6ec14ed80d809bda2d209f90a3d1666b0745c69e9506b"
+        },
+        {
+          "path": "PLUS4/sdl_sym.vkm",
+          "sha256": "e35f429074abcddd4b5eda7b87e89ce48c361bdea1329e32c986a927cdac873a"
+        },
+        {
+          "path": "PLUS4/sdl_sym_de.vkm",
+          "sha256": "ebd404b6d19748c6d1b44978255780c13fe8acc476ea1938c03949e2e66d1627"
+        },
+        {
+          "path": "PLUS4/yape-ntsc.vpl",
+          "sha256": "fd61a5425bd7630ffd7c4394b5ce742e09e6424d376671bf7ccd4cae4539b3c2"
+        },
+        {
+          "path": "PLUS4/yape-pal.vpl",
+          "sha256": "2ed5cda02671d8048f453e849b728b11313b5e332b7deaa8bf3ece0610b4bc47"
+        },
+        {
+          "path": "PRINTER/1520.vpl",
+          "sha256": "a722ad707d3f9d33e358802fbed144bd39bcf2c408070eb62667faf326e43144"
+        },
+        {
+          "path": "PRINTER/2022-901472-04.bin",
+          "sha256": "34d329e5194f022ef35627f6b848b8ce7efacb0ef784d2a5ad97a49fceea0e0a"
+        },
+        {
+          "path": "PRINTER/3022-901472-06.bin",
+          "sha256": "4f6c60f78aa4256b612372a15a8b1a194fca6fa2787c9344ea40aa2d5f324598"
+        },
+        {
+          "path": "PRINTER/4023-325360-02.bin",
+          "sha256": "2de89f57a4bca66e290998e5cac754a5f63d6d38b6428f1198e39d5f8c7d1c15"
+        },
+        {
+          "path": "PRINTER/8023-325320-02.bin",
+          "sha256": "c50bddfc86cbfd4347cd792eee193d16c84951f71c07f859448f931f26177563"
+        },
+        {
+          "path": "PRINTER/Makefile.am",
+          "sha256": "1584703175d3a8e7eb2ee3930cc18bff19a3e383e97ea30b59d07514f34ca294"
+        },
+        {
+          "path": "PRINTER/Makefile.in",
+          "sha256": "e80750824bf96f8af6b8025aae22317d98071c59cc5ebc00a58bd4e3be993a81"
+        },
+        {
+          "path": "PRINTER/cbm1526-325341-08.bin",
+          "sha256": "083c86af5a2aa90d1aed0c61693b84b2f6d6dd3073b153752ea52b5c176bcb47"
+        },
+        {
+          "path": "PRINTER/mps801.bin",
+          "sha256": "d80c96e45454ca012fbd8be02d9975d35724c321ba065c0d35d8a267c0cb3e92"
+        },
+        {
+          "path": "PRINTER/mps803-D7811G-111-U32053A.bin",
+          "sha256": "03efca4cbdbbb39d84233e0abd063f98738d4637ce216a4a38025d37447665a3"
+        },
+        {
+          "path": "PRINTER/mps803.vpl",
+          "sha256": "0ae5223ae3f61b122c2453de058df46fde31a6447c7b1ea253524bce59e38828"
+        },
+        {
+          "path": "PRINTER/nl10.bin",
+          "sha256": "4bfde70de1b374660fe35e37e3dcc33c41f70f15c965849e28ac1a8790f27f82"
+        },
+        {
+          "path": "PRINTER/nl10.vpl",
+          "sha256": "0ae5223ae3f61b122c2453de058df46fde31a6447c7b1ea253524bce59e38828"
+        },
+        {
+          "path": "SCPU64/Makefile.am",
+          "sha256": "dacade0abe4eace0445408d617345d811283f0a314b3edb743e78055a85ad44b"
+        },
+        {
+          "path": "SCPU64/Makefile.in",
+          "sha256": "f5061ba912cc38b949995ef211329a66d9cad2bb054ed2ee3af4eb182ad3d1ed"
+        },
+        {
+          "path": "SCPU64/c64hq.vpl",
+          "sha256": "a7e996ed7f8ad92ad92e815fa5ce7202302859a1080c2c986a5daae82490b3e0"
+        },
+        {
+          "path": "SCPU64/c64s.vpl",
+          "sha256": "c31eb83924a792a468fada474834c136c1fd7f3009beacaa7f365b32149788c1"
+        },
+        {
+          "path": "SCPU64/ccs64.vpl",
+          "sha256": "175e79d22eb380d1a695f9df34442f1a1bd22c7f26d765b5268f4e0d20c998cb"
+        },
+        {
+          "path": "SCPU64/chargen-901225-01.bin",
+          "sha256": "fd0d53b8480e86163ac98998976c72cc58d5dd8eb824ed7b829774e74213b420"
+        },
+        {
+          "path": "SCPU64/chargen-906143-02.bin",
+          "sha256": "0f4a5b0f9ec0d86639ba316053e330fdd849692623a41f8de4a420fcd47c55ee"
+        },
+        {
+          "path": "SCPU64/cjam.vpl",
+          "sha256": "88d4bf8af92ffc9b2f3a5cecca5a42fd67aae346bf18b01e68b7c49b6d073144"
+        },
+        {
+          "path": "SCPU64/colodore.vpl",
+          "sha256": "3ac258746a7efe8ca1e5c863dab8bdcdc297049a99ca127e51423f1fc957273a"
+        },
+        {
+          "path": "SCPU64/community-colors.vpl",
+          "sha256": "2bab9ac265df10a38b797806c0c56f3391cb13187b7af73072d8f7ccd35fc25d"
+        },
+        {
+          "path": "SCPU64/deekay.vpl",
+          "sha256": "0ca5a21a703dd1d6973154b6389980fdc5288c2d8fed09dbee05798100f1d1e2"
+        },
+        {
+          "path": "SCPU64/default.vrs",
+          "sha256": "83b81b784559e4484757e33fb62278d5a63600b9e97bde6d9d33214f0763a736"
+        },
+        {
+          "path": "SCPU64/frodo.vpl",
+          "sha256": "901f94116866df5d64ae7ebaa801b6a144e422cb157c544d3cea98728bd7f43e"
+        },
+        {
+          "path": "SCPU64/godot.vpl",
+          "sha256": "14a3e5d7bf20c65fc9b3bfbff4f00b5871f97203e70342aea9424b8b68e3d75b"
+        },
+        {
+          "path": "SCPU64/gtk3_keyrah.vkm",
+          "sha256": "b618475a4dc8e9d134273c9598c40f741c44249def8934f1a4358281e53fd310"
+        },
+        {
+          "path": "SCPU64/gtk3_keyrah_de.vkm",
+          "sha256": "d48c6c09baa7e1517b149781e55059b426cc1c47a956d9b739da36fb0ff88054"
+        },
+        {
+          "path": "SCPU64/gtk3_pos.vkm",
+          "sha256": "df7332c52430ec344c9821ead8f16650ca31dc5676d0c40c5915e5594bd3493d"
+        },
+        {
+          "path": "SCPU64/gtk3_pos_bmc64.vkm",
+          "sha256": "322a5cc04f800d2e485f62c3e12d21091e8d19041506efd0cc10bc068e4881b9"
+        },
+        {
+          "path": "SCPU64/gtk3_pos_de.vkm",
+          "sha256": "251f324393a2fdcc85f84ce8348f916ec8b3cddcc528794a798de5c452c3e1a7"
+        },
+        {
+          "path": "SCPU64/gtk3_pos_es.vkm",
+          "sha256": "b9e3ac042f7291af974e7efc15a641d0d0bb12171f0d32b8803b290c04fae6ec"
+        },
+        {
+          "path": "SCPU64/gtk3_pos_it.vkm",
+          "sha256": "c970ad545b0786e174165dfb931ef99d4f72102ba11ad9fbdb09f8049e856d4e"
+        },
+        {
+          "path": "SCPU64/gtk3_pos_se.vkm",
+          "sha256": "85c21e9145b2ce108fc8cda3c8345c78e586b47dce732df71d0b06b553ed7e3a"
+        },
+        {
+          "path": "SCPU64/gtk3_pos_tr.vkm",
+          "sha256": "a259004fd4b1ad49bc3d836ad3b3bbd1c20a62e6fa1e95f21dee9c13ff734d0d"
+        },
+        {
+          "path": "SCPU64/gtk3_pos_uk.vkm",
+          "sha256": "9f4802186ee61ce4be89aea5fb7d4235b6d692bff980f2f7a06b3bfdb4a013ea"
+        },
+        {
+          "path": "SCPU64/gtk3_sym.vkm",
+          "sha256": "478f7d46bcfa0547d2c3fe1fb410a854501e2833472fa47448f29110dfa09428"
+        },
+        {
+          "path": "SCPU64/gtk3_sym_be.vkm",
+          "sha256": "a0d7d54b468bf5be4ed643c2594c82916e9fa200fac0a8d8c4ddffe09a49033c"
+        },
+        {
+          "path": "SCPU64/gtk3_sym_da.vkm",
+          "sha256": "6ab95868fee51344af693453e9c09b3c790f2d0af535ccafdab4f7ad35d1fe6f"
+        },
+        {
+          "path": "SCPU64/gtk3_sym_de.vkm",
+          "sha256": "e786a29c19c655d020dccc1fcc4323af794e9958033e9e335bd7d8f326a9fe25"
+        },
+        {
+          "path": "SCPU64/gtk3_sym_fr.vkm",
+          "sha256": "efb8bf024451676f5941bcbe660161e4560bfcda30b9429a5bf55325d12e8db9"
+        },
+        {
+          "path": "SCPU64/gtk3_sym_it.vkm",
+          "sha256": "aa2cf54da37ecc17f998e9e0e2284d0613db9029a557dc86ca0a6515adc174ab"
+        },
+        {
+          "path": "SCPU64/gtk3_sym_nl.vkm",
+          "sha256": "ef9a8aaf4cb97c2e42a1f0eaccff4e86f34f98df6c2a2159a24690cd4cea86d2"
+        },
+        {
+          "path": "SCPU64/gtk3_sym_se.vkm",
+          "sha256": "19560e536800ded9d0e5d149c05acaf02e429488b83f8d0b24c66b6c0256f931"
+        },
+        {
+          "path": "SCPU64/gtk3_sym_tr.vkm",
+          "sha256": "d95d441fbfe3ba1b1c0cf6b2e64d7b78159125505ea57ed8f6568f0e1c3c5315"
+        },
+        {
+          "path": "SCPU64/gtk3_sym_uk.vkm",
+          "sha256": "291805b53e65c8c3fce152072608f4402f54408b94661863235d5bae1bc07a9a"
+        },
+        {
+          "path": "SCPU64/gtk3_the64_de.vkm",
+          "sha256": "bb323aabcc7f6117aab8dbe6246c55898f9ee9c6b487a110f921e3fbec87d447"
+        },
+        {
+          "path": "SCPU64/lemon64.vpl",
+          "sha256": "ba65a852097b7d581abd07603f586ca5016f0113110cec0127464ca310432c38"
+        },
+        {
+          "path": "SCPU64/palette.vpl",
+          "sha256": "ffd2484d3b502138a3b6824e46d19e200392dc629f9fa7045c635a5acaa788f8"
+        },
+        {
+          "path": "SCPU64/palette_6569R1_v1r.vpl",
+          "sha256": "9d0d7e7f230f1bcf9cb0d5bd35a2ec1060b908b0f935a30c80cf2d97afe9c683"
+        },
+        {
+          "path": "SCPU64/palette_6569R5_v1r.vpl",
+          "sha256": "7ad1d58be53edc28f6abaf2f42ec01dd9e6a9e0a9206c73d03a455d026f2c26a"
+        },
+        {
+          "path": "SCPU64/palette_8565R2_v1r.vpl",
+          "sha256": "9bea19e5c5c574dda560892dd63189fedff37e20438e299478c54622d7809364"
+        },
+        {
+          "path": "SCPU64/palette_C64_amber.vpl",
+          "sha256": "26ba9995968da3b9a992a2b6801942d17bdb65c8edf9b23022706f36b67b86d1"
+        },
+        {
+          "path": "SCPU64/palette_C64_cyan.vpl",
+          "sha256": "dbfd9001890508ed50d109a467658f66041e239b93b3d7b9d78f8038ba7dfc67"
+        },
+        {
+          "path": "SCPU64/palette_C64_green.vpl",
+          "sha256": "d5d8c21142c0f47fc30b6294ec9d71a76a4d117b6c550312aa5c2810b065ccb0"
+        },
+        {
+          "path": "SCPU64/pc64.vpl",
+          "sha256": "30072b164fd0137cd38799d95f2b5c7f4041bea4f1413a991747f40644a87463"
+        },
+        {
+          "path": "SCPU64/pepto-ntsc-sony.vpl",
+          "sha256": "d7487cb9ffe8b14926b2a69e3a4d726db8a9b0cbd13225af1f2b15b2002e610b"
+        },
+        {
+          "path": "SCPU64/pepto-ntsc.vpl",
+          "sha256": "7c36f799dc9dfc4ad40c1a8d62c7cdfa6c8b0868f777883e5e1dc26e05ebebb9"
+        },
+        {
+          "path": "SCPU64/pepto-pal.vpl",
+          "sha256": "7e2c2241d0dc8968954d5ee77996282309ea966f2a3e284d3d0b26d0a5237b7e"
+        },
+        {
+          "path": "SCPU64/pepto-palold.vpl",
+          "sha256": "779b7297e0673e928ce2c0d5f804b519fb525806ddb5bd3d1274d6aa3f677d83"
+        },
+        {
+          "path": "SCPU64/pixcen.vpl",
+          "sha256": "d9d0cde15a7c47eae67d3ddafe34942537e431d8fb4afeabe4d20691975464ce"
+        },
+        {
+          "path": "SCPU64/ptoing.vpl",
+          "sha256": "e810cca1244e062c77ebc1281473903c24de4762328ce43d68c84027e8a4252d"
+        },
+        {
+          "path": "SCPU64/rgb.vpl",
+          "sha256": "2909e259abbfcfff0da34c01d985969f9f70e49a7ab360381eedf1c3860237a8"
+        },
+        {
+          "path": "SCPU64/scpu64",
+          "sha256": "1ca7732d7d61d1e6463e140068c32f34d14b8cc3af98f3af0526a4ee081b5803"
+        },
+        {
+          "path": "SCPU64/scpu64mem.sym",
+          "sha256": "6e8ce78f1a5a1f2f9e04e990b48ae657c2dd127f1a7745e942041b14f287fec3"
+        },
+        {
+          "path": "SCPU64/sdl_keyrah.vkm",
+          "sha256": "28aa188889fb9eac99c9f81157fe9b4547098e75a41958d115273389eb8ae05d"
+        },
+        {
+          "path": "SCPU64/sdl_keyrah_combian.vkm",
+          "sha256": "c18be00a53f861084165abf0a8fe55810d962abcdf68f1f3b454d021dc92b383"
+        },
+        {
+          "path": "SCPU64/sdl_keyrah_de.vkm",
+          "sha256": "5b10e79e6c41f07487be99d4412028de1987f6bc7123d24be484148f5053930e"
+        },
+        {
+          "path": "SCPU64/sdl_keyrah_retropie.vkm",
+          "sha256": "7ab980ad0d6db5aa7c3785368665823254f18bafb0eee65b36b3ce65411ae66a"
+        },
+        {
+          "path": "SCPU64/sdl_keyrah_retropie_de.vkm",
+          "sha256": "3d30f7b4ff16e180518991312bbb97ba48734a7e716b1b6ad41571caaed5d8e5"
+        },
+        {
+          "path": "SCPU64/sdl_pos.vkm",
+          "sha256": "db446496a278d47ba1327ce5b4ab2988596542a57517efced68dd8937c89ab36"
+        },
+        {
+          "path": "SCPU64/sdl_pos_ch.vkm",
+          "sha256": "809ade0293c09cfb62be9672ee386bf22e1657a556d9c9bf9d457085b1b97102"
+        },
+        {
+          "path": "SCPU64/sdl_pos_da.vkm",
+          "sha256": "489828c39da90854acfba3278976a1f568a9e7e21ec82188fb25ebf0ea4b168a"
+        },
+        {
+          "path": "SCPU64/sdl_pos_de.vkm",
+          "sha256": "31832d4daee650a649806839cdb34cddcf2abb8c982370afe419b1cc616a2868"
+        },
+        {
+          "path": "SCPU64/sdl_pos_fi.vkm",
+          "sha256": "e701f373a94d9a9394f20d3f98a31c77408167920e5dc97f87dacf0f25ff985e"
+        },
+        {
+          "path": "SCPU64/sdl_pos_no.vkm",
+          "sha256": "f3f88e4aeabc011a17d2148489150d30435e3146cc516a31f0d54c578ffa50ee"
+        },
+        {
+          "path": "SCPU64/sdl_pos_tr.vkm",
+          "sha256": "11a5cf5603a2eebb197ffd94e4aa83ddc7983480da365f314b9b5c423c69a06e"
+        },
+        {
+          "path": "SCPU64/sdl_pos_uk.vkm",
+          "sha256": "ac880b959f5e1517272b50d93618d17b7975d2d5a4e7e62185aa7c200d5d3468"
+        },
+        {
+          "path": "SCPU64/sdl_sym.vkm",
+          "sha256": "883d122f3cba8c707ad47c8a50b37d158df1fc548a32ed3893386243dd3c4c38"
+        },
+        {
+          "path": "SCPU64/sdl_sym_da.vkm",
+          "sha256": "6c1d2317ade3cd2ac6380ae223fddc4a6ed1ba298256ecdfa190b48320f86547"
+        },
+        {
+          "path": "SCPU64/sdl_sym_de.vkm",
+          "sha256": "30ce36a16cb9190355a9f360d50dfe51d76c03ed68647c7d51d7251f0e46d3a3"
+        },
+        {
+          "path": "SCPU64/sdl_sym_fr.vkm",
+          "sha256": "c247eeebb0953fc7010e67cab0ed49665bef299856712b861021f1692cc4793e"
+        },
+        {
+          "path": "SCPU64/sdl_sym_nl.vkm",
+          "sha256": "95fcfa154b407a635c9e9864342d386299b42b28566f93b05ee30b7a8d5711d2"
+        },
+        {
+          "path": "SCPU64/sdl_sym_tr.vkm",
+          "sha256": "7435cd95753ed34cd6011fa418988c59cea9f236e0e302461c732253db9f8cb4"
+        },
+        {
+          "path": "SCPU64/sdl_sym_uk.vkm",
+          "sha256": "0d4e9824cae9de15b587b5a7023d8277484290acd1bad3d88eca090e10c65c00"
+        },
+        {
+          "path": "SCPU64/the64.vpl",
+          "sha256": "bcce3a4620cef2a64b114068ffb59446335f0d616a25bfec3111a09284989f00"
+        },
+        {
+          "path": "SCPU64/vice.vpl",
+          "sha256": "c4652015277cbd3eaa57a84327bfddb255571599a7caa97fe2d7c1c6cd4a501d"
+        },
+        {
+          "path": "VIC20/Makefile.am",
+          "sha256": "fb122e0318f18b80f88322c94900e32c14f73ad93ad6c74b8872c184de9dc63c"
+        },
+        {
+          "path": "VIC20/Makefile.in",
+          "sha256": "578fadbd56c5c60a8bf28614046e0fff17fc356f66371b5a753250d01537d737"
+        },
+        {
+          "path": "VIC20/PALette.vpl",
+          "sha256": "c59d7e88b4ed0c75cbe2c46b11afd302ffd2c05be71d176ee84c50ff4ad40e86"
+        },
+        {
+          "path": "VIC20/basic-901486-01.bin",
+          "sha256": "8be2d882e0eeb1c6923a43660236ea69d43ca8a3bd0613b1b6c910601584fbed"
+        },
+        {
+          "path": "VIC20/chargen-901460-02.bin",
+          "sha256": "66a81f03332f46a289d175933d50bba9cc4636d18bba439d324b2eb1bd1c43ab"
+        },
+        {
+          "path": "VIC20/chargen-901460-03.bin",
+          "sha256": "bda280726cfe069ca70ef5e2f2d95a29f69d3950c859a12e6979464963fcf502"
+        },
+        {
+          "path": "VIC20/colodore_vic.vpl",
+          "sha256": "27c691e9b9bac1de37f626e201ed346761e5be17a96d829dca0f93506ad5b868"
+        },
+        {
+          "path": "VIC20/default.vrs",
+          "sha256": "6cb955ad03766b3c1891defdfb90b07457d014e76325c0bf4401defc79df5a16"
+        },
+        {
+          "path": "VIC20/gtk3_pos.vkm",
+          "sha256": "61dfd1e717a3a6a3fcde84f368cc9b6428bc62fe329c1572d3c538b06daae1fa"
+        },
+        {
+          "path": "VIC20/gtk3_pos_de.vkm",
+          "sha256": "d40b967081350ca67b18eddbab954aa9ee78c4be2403b37aa51d975f8a5f846b"
+        },
+        {
+          "path": "VIC20/gtk3_pos_it.vkm",
+          "sha256": "bdec7812a2f13c976171eb53d7d3903fbdfbf58600e1f2f072a54bf88e3cad9b"
+        },
+        {
+          "path": "VIC20/gtk3_sym.vkm",
+          "sha256": "b9b74622065799e4b8a167217c3498ac325b7bc831036100c21b8a9d405d5354"
+        },
+        {
+          "path": "VIC20/gtk3_sym_de.vkm",
+          "sha256": "7b50d35d562d99dfc31a5c6fd854bf3dff096df5066713ef6f01255248d8926a"
+        },
+        {
+          "path": "VIC20/gtk3_sym_fr.vkm",
+          "sha256": "8008d0123bb5c3d374a7627ec2295a57153ce51d18fc82c3dddfafbec537caeb"
+        },
+        {
+          "path": "VIC20/gtk3_sym_it.vkm",
+          "sha256": "adc664b6e467efca6341dcee6fe0fc4a5e4221117c4e9cda12f3768e6563e66c"
+        },
+        {
+          "path": "VIC20/kernal.901486-02.bin",
+          "sha256": "7e2df5778dfdf787a6e09f0576442d32c8e9160b7e34d22e07547c22bf9030e1"
+        },
+        {
+          "path": "VIC20/kernal.901486-06.bin",
+          "sha256": "8fc94bd895f488ac0ae1a52abdc32988cd63c777770b89a9d415513098535cc2"
+        },
+        {
+          "path": "VIC20/kernal.901486-07.bin",
+          "sha256": "ff6d1416b91a71f5240a5bb8adc9fdc1b955374c48322ca47b3e436334f168fb"
+        },
+        {
+          "path": "VIC20/mike-ntsc.vpl",
+          "sha256": "91697d1e61645ca9097722ab04db8d4a2df8cd70c1ab52b2340b89f39cc76cc5"
+        },
+        {
+          "path": "VIC20/mike-pal.vpl",
+          "sha256": "2fd5c6fc9450be1902d7a4fd2b83be80001ed4004ad7b7ba1ebef83bab56e099"
+        },
+        {
+          "path": "VIC20/sdl_pos.vkm",
+          "sha256": "fcacaf1f4b6a308e484d7b2c3e96889800f7d6ea17ad3e96c2f80a32ac70b3f1"
+        },
+        {
+          "path": "VIC20/sdl_pos_de.vkm",
+          "sha256": "b35a66739ade107e46f66a31fdc624556a4f60659a6e76ee3c2b8628373b646d"
+        },
+        {
+          "path": "VIC20/sdl_pos_fi.vkm",
+          "sha256": "f3c7de0932253dd20eea1fb8557657e2af8f655b40880d2dd7a278030d14ac66"
+        },
+        {
+          "path": "VIC20/sdl_pos_fr.vkm",
+          "sha256": "843cc3bedbc79c7277a8ff75087e48131cbc1def76092d27c5874169ed94f72b"
+        },
+        {
+          "path": "VIC20/sdl_pos_uk.vkm",
+          "sha256": "f0bfb0d14b7ef0927a5a84c1e8530ff7256cf538fb349838e2cb7c8394e05b0e"
+        },
+        {
+          "path": "VIC20/sdl_sym.vkm",
+          "sha256": "3de57424772415c9ae47606be229b95424b9a8a8750082cc31a8623463067e97"
+        },
+        {
+          "path": "VIC20/sdl_sym_de.vkm",
+          "sha256": "e52e5a916b499b25362dba6bdcb877f8f73750e5bfb2aaa535079967e1251d9d"
+        },
+        {
+          "path": "VIC20/sdl_sym_uk.vkm",
+          "sha256": "3fd18913e2da2f18150175775d2f54b5d018916f5f51926aa608a7867163b2cb"
+        },
+        {
+          "path": "VIC20/vice.vpl",
+          "sha256": "2177474e1913d101fff2ff83c30a1fcd83b7d812ff066cd01d62c1cdeb712b52"
+        },
+        {
+          "path": "common/C128_1024.svg",
+          "sha256": "cec437f3def18b45a4a3fceb6c8c6e8d8f3ff148f39bf33068f68e56c4a2412a"
+        },
+        {
+          "path": "common/C128_16.png",
+          "sha256": "46518e522c0fce5e808e2155054cd3adaa3c9c86fe7caf6d84946be7391b096d"
+        },
+        {
+          "path": "common/C128_24.png",
+          "sha256": "bb0e82dd924c5103e1f1c4c2a1a8aea312e8a70a013c934f97b0d8077bd50530"
+        },
+        {
+          "path": "common/C128_256.png",
+          "sha256": "7a5b733debde4468c74b3ee26931ca2f9db5359e8f5da971d5ec319e817bce70"
+        },
+        {
+          "path": "common/C128_32.png",
+          "sha256": "8c572c0b18879bf99a06f5ff4eb81c73f4f5c7c81a0157b0070c5e35dba86273"
+        },
+        {
+          "path": "common/C128_48.png",
+          "sha256": "e67583f0a662471fe32cf125257042a569399235896831aafe5ddce2bece8311"
+        },
+        {
+          "path": "common/C128_64.png",
+          "sha256": "eecf8b7ca2629821f2892e54f32d9c60d19b61bd7dd27298a21898d4ee5df8ea"
+        },
+        {
+          "path": "common/C64_1024.svg",
+          "sha256": "2f6b915b16d955ebf4af7458075ad55399e5fc134c5b228abc93542410764084"
+        },
+        {
+          "path": "common/C64_16.png",
+          "sha256": "54a3bf93aea67d5f400770c0c5a38b764a5c1e955075fd60d399556d4570c46f"
+        },
+        {
+          "path": "common/C64_24.png",
+          "sha256": "080d3c7bb6c7cb5289ae6cb1f5e103e661546f520f530ece39f76ce0ba6938c4"
+        },
+        {
+          "path": "common/C64_256.png",
+          "sha256": "5f74d430018f61f46b625a330e39ce8be29d3d1dcc06ae0a6322840c7306beac"
+        },
+        {
+          "path": "common/C64_32.png",
+          "sha256": "d46e5bb3981cfe8fb5b080a913018b8a7e7b31a530950e17f23e518619bcaebd"
+        },
+        {
+          "path": "common/C64_48.png",
+          "sha256": "0c1c8c2abd7570a9658e5f6ee21b640fc63661093790f6e1f9b951792dc5bd4c"
+        },
+        {
+          "path": "common/C64_64.png",
+          "sha256": "024db9e9d3b09c7bc63ecaf83d8c73a3b75c8fba056bfa449b51665c120b34f9"
+        },
+        {
+          "path": "common/C64_Pro_Mono-STYLE.ttf",
+          "sha256": "b2b6d4efa0fb7170f273dc0e16e9a54fc5021c247dbd9e235b16adf90bfe00d8"
+        },
+        {
+          "path": "common/CBM2_1024.svg",
+          "sha256": "09da7fee74f13667a4a1d869f1c1c4fe5fd0ace8b092c5ae846c3e4c3a09d584"
+        },
+        {
+          "path": "common/CBM2_16.png",
+          "sha256": "c8a1a365e97a06aaf63b92937b8faf61ef1db52d01b3961ca3268ebf9796e617"
+        },
+        {
+          "path": "common/CBM2_24.png",
+          "sha256": "c24893c6b9a0ad4aec4f082918818ee7b09c6cd0f48639437b346280c17129ed"
+        },
+        {
+          "path": "common/CBM2_256.png",
+          "sha256": "f21bc44e7067301b91995d43f4a29d6dbb8b7797f1068b5a26b096f5602a14c5"
+        },
+        {
+          "path": "common/CBM2_32.png",
+          "sha256": "94bdad4f636ff53d169a3c90eade7dfd2c54e6e3e753e3eca655013bebe55a89"
+        },
+        {
+          "path": "common/CBM2_48.png",
+          "sha256": "e4eec9eab9aa5aaa30b5422fbf290ef8158ba9998e8e619d808df4bcb09c11d2"
+        },
+        {
+          "path": "common/CBM2_64.png",
+          "sha256": "233e4a5c0fd394a1b716f0ac09d11486e76c01fc4f9c772b1a7c6c6323e2dec2"
+        },
+        {
+          "path": "common/CBM_Logo.svg",
+          "sha256": "71f0acf2d762869a33b121141e1c3f63b53a474fcb2f3a6a64417ad4d7e7d90d"
+        },
+        {
+          "path": "common/DTV_1024.svg",
+          "sha256": "5e0af7deadbdad829f8efc762236695530805d93d85e8f379b5c5f99de8a5412"
+        },
+        {
+          "path": "common/DTV_16.png",
+          "sha256": "ec2354e49588a5bd6ca763fa6f7d1bebad4719bca1194b328b2fba9cd4da6f1c"
+        },
+        {
+          "path": "common/DTV_24.png",
+          "sha256": "52bb784bbdb50fd65dfd9fdee9e5df323e2739081064f81e01a91cd2789beb21"
+        },
+        {
+          "path": "common/DTV_256.png",
+          "sha256": "1dc76e22e3ebe57cbd22dcf7da8b5b8880fdf53a4ce9d2c2e13150eeb47600ec"
+        },
+        {
+          "path": "common/DTV_32.png",
+          "sha256": "d3fd7876841795053c451a7e0322b48fdf2c5cc39763b3ffb68d0c7d70d4ae1e"
+        },
+        {
+          "path": "common/DTV_48.png",
+          "sha256": "332c6078050415576eba23414d6c54e276f002fc170e4abd6ce367dc399003ad"
+        },
+        {
+          "path": "common/DTV_64.png",
+          "sha256": "626957151eff770e96164cde68d40aeec67122247a02c1501ee7fb8757cdc972"
+        },
+        {
+          "path": "common/Icon-128@2x.png",
+          "sha256": "99f3b4334e9cb54cf470167d66e0287c1c55608422fba50b88561f2a98065bb0"
+        },
+        {
+          "path": "common/Makefile.am",
+          "sha256": "53df816ffec1d79363a92438442bbb9ceabe5c6d27e7e2d901b1639fd67dec57"
+        },
+        {
+          "path": "common/Makefile.in",
+          "sha256": "c33ca0acc7ab8b28db28da22bf9c42a0c7b947ea8c67721cdb09b0258b1f2d73"
+        },
+        {
+          "path": "common/PET_1024.svg",
+          "sha256": "b6fecc7c862c5c7370f9eda716f029255d9bb29c6c507080b53589d3ab896db2"
+        },
+        {
+          "path": "common/PET_16.png",
+          "sha256": "8d2da407738c3b675b6be0d3add7fab3d57baf991307caddfa28d84eaf53470e"
+        },
+        {
+          "path": "common/PET_24.png",
+          "sha256": "b6af8532f213c07db04fbdd64dd1e1763a5f19455e13d757b898036a35728e6f"
+        },
+        {
+          "path": "common/PET_256.png",
+          "sha256": "2195650dabfa73233b27830eff992e113947417d300396307888fcee9ef3888b"
+        },
+        {
+          "path": "common/PET_256.svg",
+          "sha256": "195c1eb1989b16d7f78a0866980ca0919655808f483d3f79c0dfed1ccacefdc5"
+        },
+        {
+          "path": "common/PET_32.png",
+          "sha256": "f49061d043f56950628d7c58a3743a3f3150e75c613cfa243f2abf56485762bb"
+        },
+        {
+          "path": "common/PET_48.png",
+          "sha256": "bc814119ea5fd90bfd7dee3ff12c84a8941651ea54634ef13ce38bc3ed78ef3f"
+        },
+        {
+          "path": "common/PET_64.png",
+          "sha256": "005afcaab78b5a1865ecd3774fd795e97849b9931c97606b49a57069b01c5ca2"
+        },
+        {
+          "path": "common/PetMe-FreeLicense.txt",
+          "sha256": "5b26f7318dddc8d1ace2353992924d5dc0fc6123656de7bdd81ac69f9a8b0878"
+        },
+        {
+          "path": "common/PetMe.ttf",
+          "sha256": "a259b2571cfb5afb45f5ea0f6966015a4cc9eb8934501c5c0d125681b360bba6"
+        },
+        {
+          "path": "common/PetMe128.ttf",
+          "sha256": "810073a6156594e0e471d328ce1817957300c311695ec0ce57d76d886c26e5dc"
+        },
+        {
+          "path": "common/PetMe1282Y.ttf",
+          "sha256": "ffabcd9a85b09cf4117446f4ca627244aa3064a6c8938d8c2d5fb665aa8078cd"
+        },
+        {
+          "path": "common/PetMe2X.ttf",
+          "sha256": "96854e63788c0b8db5308357eb56d9f107ea162e98a9c10737bf85cd29d68e14"
+        },
+        {
+          "path": "common/PetMe2Y.ttf",
+          "sha256": "358b8f9c288dcf42e4c46fbf40e671ba9c451f7b1aea5297708ff171e23170b1"
+        },
+        {
+          "path": "common/PetMe64.ttf",
+          "sha256": "1a5a4bf4af2076345480b1a99490a16503f0f5c167e200c8e7644fd40b72d9fd"
+        },
+        {
+          "path": "common/PetMe642Y.ttf",
+          "sha256": "6b32c148a8315a2f768bc629abb3bc09d941131c0c78b21827d3763caac7889e"
+        },
+        {
+          "path": "common/Plus4_1024.svg",
+          "sha256": "db2a72d6185b7eddc476639a24b81ec9bd193b83ace44d26bfad8111239451a8"
+        },
+        {
+          "path": "common/Plus4_16.png",
+          "sha256": "a4dd9737e43fd0e4bc0e09fc8a1646f58aadffcba9c55b2bf451fdeb6dc9819f"
+        },
+        {
+          "path": "common/Plus4_24.png",
+          "sha256": "925eb901d47261f6be7d55085e7e16fcad42784110e4b009921a3dfa32773f98"
+        },
+        {
+          "path": "common/Plus4_256.png",
+          "sha256": "6e74082d295c81c54a646ccffb098cff47d202cf4640b9e036743c4e2be1de4d"
+        },
+        {
+          "path": "common/Plus4_32.png",
+          "sha256": "eacd789021c584a3a0ca91ca010423f5787c15a93e1dfb159d3fad40ecef9500"
+        },
+        {
+          "path": "common/Plus4_48.png",
+          "sha256": "a12ae22b355a53cc5a884dac7c591d865ff22dae80c20c232747bc6d6081acc5"
+        },
+        {
+          "path": "common/Plus4_64.png",
+          "sha256": "a7736e860224ee3bb98981ce4ee8e65c6508b99d89fd178e2415ca77a5d2d61e"
+        },
+        {
+          "path": "common/SCPU_1024.svg",
+          "sha256": "ce2710836a0622295d033c6b21d8d1b896cc3138d774234336f07bfc292ee317"
+        },
+        {
+          "path": "common/SCPU_16.png",
+          "sha256": "7bc9a483f438288053e38e953965ac36189a179bd3fff16971f0e602bbbacf37"
+        },
+        {
+          "path": "common/SCPU_24.png",
+          "sha256": "5a151a14455c4e38ca5b9ee47b400b66a6000d71f1c01743bc8713cd416f14d7"
+        },
+        {
+          "path": "common/SCPU_256.png",
+          "sha256": "01c5bf6d9b2fb21901934b677efe5bc3efc17c5894cb395a197846a6aacf9408"
+        },
+        {
+          "path": "common/SCPU_32.png",
+          "sha256": "06fa14c20c71ce935bcd81d814076d3cafdd05b3dee5318f4cbd3f59bfd5dfc7"
+        },
+        {
+          "path": "common/SCPU_48.png",
+          "sha256": "34c7e2a3f8507373739dacb7c97d14660c5a9ade0a9694ec82bd641ef292d477"
+        },
+        {
+          "path": "common/SCPU_64.png",
+          "sha256": "adc5a5e207325d41f82b1b6b39aa4454bbb7697f7c116cd1f7e92db5e8754190"
+        },
+        {
+          "path": "common/SID_1024.svg",
+          "sha256": "c443e2f8617b6404cd5a26678a5c018c8b12a0c1024275aebfe2e2addab17368"
+        },
+        {
+          "path": "common/SID_16.png",
+          "sha256": "00aebd3657bbae9093172c46ecc8ccc1296ee0a09d9bdcfa2e80ecc12bc9d6ee"
+        },
+        {
+          "path": "common/SID_24.png",
+          "sha256": "7605c5c1ea63719467e41b149c5eedd38718b366c75e4d1657e7691f1e5f3b43"
+        },
+        {
+          "path": "common/SID_256.png",
+          "sha256": "c9ed87f05d26a5868bc535b0ec678b7eae4bbc614eac4f4f1e099847ce60449f"
+        },
+        {
+          "path": "common/SID_32.png",
+          "sha256": "54f84e2904e27cc20a34ce4cf9bd40b33456c3464dcad62dea51439fa6c855e4"
+        },
+        {
+          "path": "common/SID_48.png",
+          "sha256": "9f997ef5200e90a89c439458485cad4c45ff5ef5cef14f110a31307658cda741"
+        },
+        {
+          "path": "common/SID_64.png",
+          "sha256": "d3ce920c5c8207aa95c8576332fd0276af668fcdd8b9767f5873995f27f9622a"
+        },
+        {
+          "path": "common/VIC20_1024.svg",
+          "sha256": "bee44a1fe16fb92550c5960b9c568982624a6c3d18bdb44f82efd34ea0a0c66c"
+        },
+        {
+          "path": "common/VIC20_16.png",
+          "sha256": "71d2cc75cebd66e4a8c99bb9545ade903026b5fed17af7bc195595dba8c4105f"
+        },
+        {
+          "path": "common/VIC20_24.png",
+          "sha256": "28e85864576397e21af2de28e7eb97f6dce8c5a564cda5c174e4f750f9e268c9"
+        },
+        {
+          "path": "common/VIC20_256.png",
+          "sha256": "8b6b53ce276a7a5d9969fe24a5838b8b0fa695623cf2dcdb601ebf015dedbd32"
+        },
+        {
+          "path": "common/VIC20_32.png",
+          "sha256": "d830fb64be9a867edd0e056b28726adb830159ae11f76bc4963e779f668888a3"
+        },
+        {
+          "path": "common/VIC20_48.png",
+          "sha256": "49b39ae81a83feb7ef619303d344addb9839ad77bad799c44b85d8547509bf36"
+        },
+        {
+          "path": "common/VIC20_64.png",
+          "sha256": "63d434528dda585b6df4bc8b1125816054eee4f78d2011bc223ce746c748e318"
+        },
+        {
+          "path": "common/icon1024x1024.png",
+          "sha256": "c3f6577a9f85f21dd1d04e4d9260b40738af56b5492d08b225b390e24922ccd1"
+        },
+        {
+          "path": "common/vice-logo-black.svg",
+          "sha256": "bf5b25d1dc7f3b8563eec49141933282c60c87908d81dbe5dfbf91cff75ed2d2"
+        },
+        {
+          "path": "common/vice.gresource.xml",
+          "sha256": "73aa684be31a98d577edf4ead225a23159fe82669cd000443514fbdf9ec1cb23"
+        },
+        {
+          "path": "common/vsid.rc",
+          "sha256": "0226c25938286384cc33195bc55e70c1bf7065c234ce1df29806236f88782292"
+        },
+        {
+          "path": "common/x128.rc",
+          "sha256": "6a4c4173a9be64fa235a0eb9b4d43a3a1936b3061e6fafe8487364abac3e18da"
+        },
+        {
+          "path": "common/x64.rc",
+          "sha256": "0d5b98dd686220c3ae3398ffb0e5bfec449cc4f63154948fa3c19a74374b7bfd"
+        },
+        {
+          "path": "common/x64dtv.rc",
+          "sha256": "09d5fa3d3706904d3ae294d9beefea3f348a1c9b3e17bf59d9f812b0bd38ca8e"
+        },
+        {
+          "path": "common/x64sc.rc",
+          "sha256": "16ac5322463c60347fca2ee2ff5aace15b9d1b1e802448ba47e08943af0379bc"
+        },
+        {
+          "path": "common/xcbm2.rc",
+          "sha256": "7430b50656c83b81a18e288e3ed6819fd2fbcdf2cf6eaa7445a7b95227a8b4fa"
+        },
+        {
+          "path": "common/xcbm5x0.rc",
+          "sha256": "d8e2684477d3ed5626d65a60ea771438e00cc4501594760e73e3921c8ce83578"
+        },
+        {
+          "path": "common/xpet.rc",
+          "sha256": "e30e2ae9c5cd169f6ce0c4f600c9486e3f830e6a8251246e87adefba71bfd3db"
+        },
+        {
+          "path": "common/xplus4.rc",
+          "sha256": "877f92d11bd25da24bbe9c1b8a227f0dce00e496198362005941968b9592a716"
+        },
+        {
+          "path": "common/xscpu64.rc",
+          "sha256": "0a79aca6419fd5ad7e04f5be7fbcaf299e0982e86db6ff9cb0350df05a4c7a3b"
+        },
+        {
+          "path": "common/xvic.rc",
+          "sha256": "567a68ccc2c7ff64f9b6074ced8a1eb4d2fea9f580dd98c71be8b3cfce805ca2"
+        },
+        {
+          "path": "hotkeys/Makefile.am",
+          "sha256": "8b662a7da1903958b3eed82e1d14938cd8acbddb44921b18913903d7fc7f31db"
+        },
+        {
+          "path": "hotkeys/Makefile.in",
+          "sha256": "72f41db5a270e8e0d72093495943868bb2f7734afa8b2028796fe470c11315a3"
+        },
+        {
+          "path": "hotkeys/hotkeys-cartridge.vhk",
+          "sha256": "9bf35c6c94b1a7c1085f20938e78b09326b521b1d935cd3e3b44c623a5558fd7"
+        },
+        {
+          "path": "hotkeys/hotkeys-datasette.vhk",
+          "sha256": "f24a53bb31110865a5db08b3b3ed57258312eaa9daeb836bcf16b2a5cca2fcb2"
+        },
+        {
+          "path": "hotkeys/hotkeys-debug.vhk",
+          "sha256": "a95019866b4bbefb9648b66e90ed9d81dbadc1f89d74651e19335aae9e93733b"
+        },
+        {
+          "path": "hotkeys/hotkeys-drive.vhk",
+          "sha256": "a70f283f1cb5a37db411b72fe7f9583d1a943957be1bd3f8e692f9add9a7f585"
+        },
+        {
+          "path": "hotkeys/hotkeys-fliplist.vhk",
+          "sha256": "9bceb66518f5b0d3899615c39dedea3fd9de28fd6fa78ecb3fb4787faaf05e44"
+        },
+        {
+          "path": "hotkeys/hotkeys-help.vhk",
+          "sha256": "bc69e39f2c96743bee48ebfc2c3633a57f11eca523ac3c5329066b26b10f9b37"
+        },
+        {
+          "path": "hotkeys/hotkeys-settings.vhk",
+          "sha256": "8a6f30a02bdf8513e1b2bacf234e910bb9866ae1e2fab90f5f90798113d5db2c"
+        },
+        {
+          "path": "hotkeys/hotkeys-snapshot.vhk",
+          "sha256": "cc4067dc05e4f90000c34de092fbb41e583f635537f3b90891f832c1d2d7678f"
+        },
+        {
+          "path": "hotkeys/hotkeys-vsid.vhk",
+          "sha256": "98b379c6e4c2037cd77010d0fb30ff25f5adaa475c0fd1ddf7139200cf61320a"
+        },
+        {
+          "path": "hotkeys/hotkeys-winvice-legacy.vhk",
+          "sha256": "66854513a112bc8f90905ada8c39f16bebe8b92d8712f89d36fdf79167bc7d99"
+        },
+        {
+          "path": "hotkeys/hotkeys.vhk",
+          "sha256": "311512ce276ff74762ab9c16aefc1225ed40215755aca5da8b77a34ba6b0a901"
+        }
+      ]
+    },
+    {
+      "path": "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+      "type": "file",
+      "sha256": "0c6d618e75fea85cc3d631e164a71766fba9341d19ce1f723300c52e63037c51"
+    }
+  ],
+  "outputs": [
+    {
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "1b9f857f89e1195fbb3355aca53ba10642f7e41f44db4a81c4c3f30bd17aa70c"
+    },
+    {
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "94783a354313af7789a29fc15c501328a053340a66290da2fc4205078cdbc054"
+    },
+    {
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "85f735666051cce24274808f60cf659df62a0e27d325479597860dc482f3586e"
+    },
+    {
+      "relativePath": "vice/process.log",
+      "type": "file",
+      "sha256": "9af9c2157bda9494d037bfa81a9442609fa600550db26b71a27b3135934f244c"
+    },
+    {
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "dc2fe094d77961c54649408dceebe588adb6d8be9fd4ab8f508319d0c79cdba5"
+    },
+    {
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "97f2fe03335168439fac753849d92e612d5f6c1b361eae1d1ac49370a9ad2174"
+    },
+    {
+      "relativePath": "vice/payload.prg",
+      "type": "file",
+      "sha256": "1173719712291b80c5f7fe0a54ebfd3b894308985de825a2dadf6c68bf7655a9"
+    },
+    {
+      "relativePath": "vice/harness.prg",
+      "type": "file",
+      "sha256": "e8ca6098b40bbf4a9f5defc76202afc046dbfe26eadcd4a1547012d762cc718e"
+    }
+  ],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "scripts/trace-sid-vice.py",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/reconstructed.sid",
+    "--oracle",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/writes.json",
+    "--first-call",
+    "0",
+    "--last-call",
+    "719",
+    "--clock",
+    "ntsc",
+    "--profile",
+    "strict",
+    "--subtune",
+    "1",
+    "--vice",
+    ".tools/vice-headless-3.9/build/src/x64sc",
+    "--data",
+    ".tools/vice-headless-3.9/source/data",
+    "--timeout",
+    "300",
+    "--output",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice"
+  ],
+  "completedAt": "2026-10-15T01:00:08.381143+00:00",
+  "executionSeconds": 1.4907464579999998
+}

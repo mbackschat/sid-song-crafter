@@ -159,7 +159,7 @@ The [full-reference intake](../../../config/reference-intake/ghostbusters-comple
 
 Machine-preparation review on 2026-10-15: no OpenRouter or local SongBench inference. The unresolved questions concern executed timing, state ownership and speech decoding, which require machine evidence rather than a musical score or prose critique. The existing model routes remain experimental; assess their usefulness again at the first representative Ghostbusters audition rather than treating this no-call decision as a case-wide exclusion.
 
-No independent reconstruction or transfer is available yet, and no Ghostbusters musical verdict is inferred from earlier cases. At the first representative comparison, after feedback or a substantive revision, and before closure, record the [model-assistance review](../audio-assessment.md#use-and-reassess-model-assistance). Models remain experimental supporting signals; execution and PCM checks must not be presented as musical acceptance.
+The [familiar transfer](instruments/ghostbusters-decoded-programs.md#familiar-material-transfer-and-listening-verdict) is accepted for instruments, balance and ending; its case-specific plain-reference differences are documented in the linked card. The complete independent speech/music reconstruction remains in preparation; no Ghostbusters musical verdict is inferred from earlier cases. At the first representative comparison, after feedback or a substantive revision, and before closure, record the [model-assistance review](../audio-assessment.md#use-and-reassess-model-assistance). Models remain experimental supporting signals; execution and PCM checks must not be presented as musical acceptance.
 
 ### Planned bounded speech-recognition check
 

@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "key": "e93c1262c4eb7abebee5c3ce7d3e71752be7f8602b5007956a92ffeca296bb9d",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "scripts/studies/ghostbusters/prepare-elise.py",
+      "--check",
+      "--output",
+      "songs/studies/ghostbusters-elise"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": "songs/fuer-elise.json",
+        "type": "file",
+        "sha256": "a58bdad5e72a10c12b20913cf242e917b98bb010949ba3ea38f33cfe15b6368e"
+      },
+      {
+        "path": "evidence/ghostbusters-player/composition.json",
+        "type": "file",
+        "sha256": "fd0263e704261ece85375feea44ea882e16483977bfef2333a4d27e31cb0c421"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/prepare-elise.py",
+        "type": "file",
+        "sha256": "1e4099c5639716c09c59d20e41c3c509e9e99062dc95ea0e1cd691274513aed3"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/player.py",
+        "type": "file",
+        "sha256": "79874b08de7e42b0e1dc5cd9a54c6d9f3aafa8a2d16aeb3d501090324659a602"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/score.py",
+        "type": "file",
+        "sha256": "00b523a3d67c01ded44ebd9ccb0adecbd76ebef4107ef146e183a2643edd94d6"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/programs.py",
+        "type": "file",
+        "sha256": "3b642baaf3209a3e92a4ecd9ada25d23ed52529dccd013c9ab89ecea26d2e074"
+      },
+      {
+        "path": "scripts/sid_clock.py",
+        "type": "file",
+        "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+      },
+      {
+        "path": "songs/studies/ghostbusters-elise/reference.json",
+        "type": "file",
+        "sha256": "6bbf7fef9251fcc49cdf8b129c2f1cb3c402bd381f65fb140a956617e80b21e9"
+      },
+      {
+        "path": "songs/studies/ghostbusters-elise/transfer.json",
+        "type": "file",
+        "sha256": "08839f8249553527ebd0cb1bbe98f60b045a7ee95e243c8308b965dd6f7f17bf"
+      },
+      {
+        "path": "songs/studies/ghostbusters-elise/preparation.json",
+        "type": "file",
+        "sha256": "d0b543f3294e0d3e10a42bc4c5a830d6dbc1e26eba78416f2a5ed8d6b68d29e9"
+      }
+    ],
+    "outputs": [],
+    "timeoutSeconds": 120,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": "songs/fuer-elise.json",
+      "type": "file",
+      "sha256": "a58bdad5e72a10c12b20913cf242e917b98bb010949ba3ea38f33cfe15b6368e"
+    },
+    {
+      "path": "evidence/ghostbusters-player/composition.json",
+      "type": "file",
+      "sha256": "fd0263e704261ece85375feea44ea882e16483977bfef2333a4d27e31cb0c421"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/prepare-elise.py",
+      "type": "file",
+      "sha256": "1e4099c5639716c09c59d20e41c3c509e9e99062dc95ea0e1cd691274513aed3"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/player.py",
+      "type": "file",
+      "sha256": "79874b08de7e42b0e1dc5cd9a54c6d9f3aafa8a2d16aeb3d501090324659a602"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/score.py",
+      "type": "file",
+      "sha256": "00b523a3d67c01ded44ebd9ccb0adecbd76ebef4107ef146e183a2643edd94d6"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/programs.py",
+      "type": "file",
+      "sha256": "3b642baaf3209a3e92a4ecd9ada25d23ed52529dccd013c9ab89ecea26d2e074"
+    },
+    {
+      "path": "scripts/sid_clock.py",
+      "type": "file",
+      "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+    },
+    {
+      "path": "songs/studies/ghostbusters-elise/reference.json",
+      "type": "file",
+      "sha256": "6bbf7fef9251fcc49cdf8b129c2f1cb3c402bd381f65fb140a956617e80b21e9"
+    },
+    {
+      "path": "songs/studies/ghostbusters-elise/transfer.json",
+      "type": "file",
+      "sha256": "08839f8249553527ebd0cb1bbe98f60b045a7ee95e243c8308b965dd6f7f17bf"
+    },
+    {
+      "path": "songs/studies/ghostbusters-elise/preparation.json",
+      "type": "file",
+      "sha256": "d0b543f3294e0d3e10a42bc4c5a830d6dbc1e26eba78416f2a5ed8d6b68d29e9"
+    }
+  ],
+  "outputs": [],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "scripts/studies/ghostbusters/prepare-elise.py",
+    "--check",
+    "--output",
+    "songs/studies/ghostbusters-elise"
+  ],
+  "completedAt": "2026-10-15T01:00:05.873999+00:00",
+  "executionSeconds": 0.40798233399999995
+}

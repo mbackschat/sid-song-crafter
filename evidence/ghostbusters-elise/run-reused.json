@@ -1,0 +1,715 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/ghostbusters-elise-transfer.json",
+  "recipeSha256": "af93784cb216ceb2a81dcccf10c26e1f4efd93551cd935599e54099f22527651",
+  "startedAt": "2026-10-15T01:01:44.796383+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "transfer-guards",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [],
+      "cacheKey": "3ba51a6d1864f9219d562d9d7580aeb9300daeac23c69dade71f857a151c9f86",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/transfer-guards/3ba51a6d1864f9219d562d9d7580aeb9300daeac23c69dade71f857a151c9f86/attempt-509e1539f71f48fa9aed07f2360f5d19",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/transfer-guards/3ba51a6d1864f9219d562d9d7580aeb9300daeac23c69dade71f857a151c9f86/attempt-509e1539f71f48fa9aed07f2360f5d19/stage.log",
+      "wallSeconds": 0.004635125000000004
+    },
+    {
+      "id": "prepare-check",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [],
+      "cacheKey": "e93c1262c4eb7abebee5c3ce7d3e71752be7f8602b5007956a92ffeca296bb9d",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/prepare-check/e93c1262c4eb7abebee5c3ce7d3e71752be7f8602b5007956a92ffeca296bb9d/attempt-599dad58289f47ffbf1322fa67f2e260",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/prepare-check/e93c1262c4eb7abebee5c3ce7d3e71752be7f8602b5007956a92ffeca296bb9d/attempt-599dad58289f47ffbf1322fa67f2e260/stage.log",
+      "wallSeconds": 0.0015925000000000106
+    },
+    {
+      "id": "reference-build",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "1f28cb7fe181bbc6cdcc12b254615d62622febebc914d2fcc445572dcd6003be"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/reconstructed.prg",
+          "relativePath": "candidate/reconstructed.prg",
+          "type": "file",
+          "sha256": "e84052f38d202f19be5e9f48ae9fc1bda760b982340913337211668b7ab85e95"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/verification.json",
+          "relativePath": "candidate/verification.json",
+          "type": "file",
+          "sha256": "efbfb8eb967075222df7c0e6cab13a784c347c6a9427346943291ec0e41a9323"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "07b09c986727777feda05bd41724de6580dd83d8d9eafa186e6384bc65b8ae2d"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "7793489054244d1bbe3668b1f29ac151269c07a9e2ee0bb0d0bf257ec07d1618"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "42fc02570c8f9998a6f9aa6e9de4822f2211b62d09627c49462ff787fb7258e6"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "48e48215bb5cde3b37d3303f78d56eb74094a2b6bf919dea2b922f7ab9fee553"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "345dd0aad73b68a0e4fa29c884863927bbede396d5903152150e64c15d8a44bb"
+        },
+        {
+          "stageId": "reference-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "e8e8cf75ceb7579994d8bc1462f3017653a398e217de5a0d20f68818f8f98e55"
+        }
+      ],
+      "cacheKey": "f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/stage.log",
+      "wallSeconds": 0.011452124999999994
+    },
+    {
+      "id": "reference-vice",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "1b9f857f89e1195fbb3355aca53ba10642f7e41f44db4a81c4c3f30bd17aa70c"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "94783a354313af7789a29fc15c501328a053340a66290da2fc4205078cdbc054"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "85f735666051cce24274808f60cf659df62a0e27d325479597860dc482f3586e"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/process.log",
+          "relativePath": "vice/process.log",
+          "type": "file",
+          "sha256": "9af9c2157bda9494d037bfa81a9442609fa600550db26b71a27b3135934f244c"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "dc2fe094d77961c54649408dceebe588adb6d8be9fd4ab8f508319d0c79cdba5"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "97f2fe03335168439fac753849d92e612d5f6c1b361eae1d1ac49370a9ad2174"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/payload.prg",
+          "relativePath": "vice/payload.prg",
+          "type": "file",
+          "sha256": "1173719712291b80c5f7fe0a54ebfd3b894308985de825a2dadf6c68bf7655a9"
+        },
+        {
+          "stageId": "reference-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/harness.prg",
+          "relativePath": "vice/harness.prg",
+          "type": "file",
+          "sha256": "e8ca6098b40bbf4a9f5defc76202afc046dbfe26eadcd4a1547012d762cc718e"
+        }
+      ],
+      "cacheKey": "c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/stage.log",
+      "wallSeconds": 0.106487459
+    },
+    {
+      "id": "reference-render",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-render/0e8087066fc7d0efa124d061bc00be09bd7089b075bb5137d295279ab3920d9f/attempt-ac03db30b72740299401073f24b953a7/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "5da5ec29dfcc97434fd1d98d8aea438b1bf9bd88491b07c77e0d098b4a4c63b3"
+        },
+        {
+          "stageId": "reference-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-render/0e8087066fc7d0efa124d061bc00be09bd7089b075bb5137d295279ab3920d9f/attempt-ac03db30b72740299401073f24b953a7/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "57f891e78e8a96daacb7cac185fa8465735ef72a4b6d84d5841a4e9d382f1482"
+        }
+      ],
+      "cacheKey": "0e8087066fc7d0efa124d061bc00be09bd7089b075bb5137d295279ab3920d9f",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-render/0e8087066fc7d0efa124d061bc00be09bd7089b075bb5137d295279ab3920d9f/attempt-ac03db30b72740299401073f24b953a7",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-render/0e8087066fc7d0efa124d061bc00be09bd7089b075bb5137d295279ab3920d9f/attempt-ac03db30b72740299401073f24b953a7/stage.log",
+      "wallSeconds": 0.004300042000000004
+    },
+    {
+      "id": "candidate-build",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "8051bcc410f3df476ceee83e94588874f5551f4110130289e32bb2d97a1f0673"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/reconstructed.prg",
+          "relativePath": "candidate/reconstructed.prg",
+          "type": "file",
+          "sha256": "6a077fc000d83760e1e7dffec5a4aaa3844e80186f1160248d465dc3c36e29e7"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/verification.json",
+          "relativePath": "candidate/verification.json",
+          "type": "file",
+          "sha256": "8c6f1079eca4ab636eb93d3fb3e08bbc0b53898fb1b06f3c687b0f9596e0c0f2"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "a0efbdd4e5dec2c71b35fcde29041846cf11c99f81726703d6eeeedea7832550"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "c07cd2aa5291153950bce6ff563e42dac098baccd0d20a466a78dc5e53b19d2d"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "3f5a46d17bd3eb76d0f6c4f831cd6f456bdb9fe39242460c9a3aadf89ebca575"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "d2c4a364f771e2131979b98a3eada88399f0781f3d67f2ac25dcb7a69bdafa98"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "621d6c979e1048fba80f277f15e49b13a30b290c075ec027f423cbae55823c9f"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "e8e8cf75ceb7579994d8bc1462f3017653a398e217de5a0d20f68818f8f98e55"
+        }
+      ],
+      "cacheKey": "7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/stage.log",
+      "wallSeconds": 0.006295292000000008
+    },
+    {
+      "id": "candidate-vice",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "078d1cdc2c110a563e4166b2db3c850d3935945fba03be9fe8b97e8a2a4147e8"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "33acd71653519db09179b3502daba7487a98be610a54bad8c9861001ed5b5a98"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "f4c03bfb1b0a0fb8f671c4434794d94d422e1e1f800fb2ae3501ca1df44f64dc"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/process.log",
+          "relativePath": "vice/process.log",
+          "type": "file",
+          "sha256": "09bb5a96629a36e47d537c2f8cf2a0e726fde487df7fb9db016eafeb770a2b18"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "c8e6b34357a1b0b5024a878172110e820cbfa7c783748cdfd839c9f75fb407c2"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "1832a99d399562e52e2dd37ea54bd5bd099c9b80dbf97c97ec0951f5cd444dfe"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/payload.prg",
+          "relativePath": "vice/payload.prg",
+          "type": "file",
+          "sha256": "4102542adbcca8d381028210ca2d62590c347bb03bf8837b8dc0078bd0c43b26"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/harness.prg",
+          "relativePath": "vice/harness.prg",
+          "type": "file",
+          "sha256": "e8ca6098b40bbf4a9f5defc76202afc046dbfe26eadcd4a1547012d762cc718e"
+        }
+      ],
+      "cacheKey": "e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/stage.log",
+      "wallSeconds": 0.047265625000000006
+    },
+    {
+      "id": "candidate-render",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-render/788862efd50ad26d9fb50eaa4e5bb712d868ced8351611340365e6650bd2a69f/attempt-f45ae453ba72470db073c4fe76f6a03c/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "7cf85210a4a52cd95669ee61b6662cf66e32ddcc262cbe1304193bae5e051d6e"
+        },
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-render/788862efd50ad26d9fb50eaa4e5bb712d868ced8351611340365e6650bd2a69f/attempt-f45ae453ba72470db073c4fe76f6a03c/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "e2f4c05b1367688730b00e91d931f3ca7a378a0b3d8017171d17218d22e1a45c"
+        }
+      ],
+      "cacheKey": "788862efd50ad26d9fb50eaa4e5bb712d868ced8351611340365e6650bd2a69f",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-render/788862efd50ad26d9fb50eaa4e5bb712d868ced8351611340365e6650bd2a69f/attempt-f45ae453ba72470db073c4fe76f6a03c",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-render/788862efd50ad26d9fb50eaa4e5bb712d868ced8351611340365e6650bd2a69f/attempt-f45ae453ba72470db073c4fe76f6a03c/stage.log",
+      "wallSeconds": 0.00447666699999999
+    },
+    {
+      "id": "signal-check",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "signal-check",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/signal-check/b4600012dcc49f11489e777dd00be35d90cbf5060526c49e7663400e4fcc258b/attempt-0037dc2fa7ac40d9b4228f84e05dd426/audio.json",
+          "relativePath": "audio.json",
+          "type": "file",
+          "sha256": "9c84677ac57641e45756cf26a45ec9d935d0a21dd94f63ddc24a95858d9d2ec6"
+        }
+      ],
+      "cacheKey": "b4600012dcc49f11489e777dd00be35d90cbf5060526c49e7663400e4fcc258b",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/signal-check/b4600012dcc49f11489e777dd00be35d90cbf5060526c49e7663400e4fcc258b/attempt-0037dc2fa7ac40d9b4228f84e05dd426",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/signal-check/b4600012dcc49f11489e777dd00be35d90cbf5060526c49e7663400e4fcc258b/attempt-0037dc2fa7ac40d9b4228f84e05dd426/stage.log",
+      "wallSeconds": 0.0033317089999999883
+    },
+    {
+      "id": "comparison",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/comparison/c50f04e21e3d2108370b988d28249a6d2d0f07b92eb67646cb928ce9385402e0/attempt-b7cb1473ad224112bc64fdea0dca29ad/plain-then-ghostbusters.ab.wav",
+          "relativePath": "plain-then-ghostbusters.ab.wav",
+          "type": "file",
+          "sha256": "ef45086da9f9e5a8a05dd4f6f487484d730c899fe947a5558bb62d1207ccb818"
+        },
+        {
+          "stageId": "comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/comparison/c50f04e21e3d2108370b988d28249a6d2d0f07b92eb67646cb928ce9385402e0/attempt-b7cb1473ad224112bc64fdea0dca29ad/plain-then-ghostbusters.comparison.json",
+          "relativePath": "plain-then-ghostbusters.comparison.json",
+          "type": "file",
+          "sha256": "9bfb1cec30ffacd7e456ef2b2521c649553c8d8273250bd3bfe370ea003b3e8f"
+        }
+      ],
+      "cacheKey": "c50f04e21e3d2108370b988d28249a6d2d0f07b92eb67646cb928ce9385402e0",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/comparison/c50f04e21e3d2108370b988d28249a6d2d0f07b92eb67646cb928ce9385402e0/attempt-b7cb1473ad224112bc64fdea0dca29ad",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/comparison/c50f04e21e3d2108370b988d28249a6d2d0f07b92eb67646cb928ce9385402e0/attempt-b7cb1473ad224112bc64fdea0dca29ad/stage.log",
+      "wallSeconds": 0.0048074169999999805
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "1f28cb7fe181bbc6cdcc12b254615d62622febebc914d2fcc445572dcd6003be"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/reconstructed.prg",
+      "relativePath": "candidate/reconstructed.prg",
+      "type": "file",
+      "sha256": "e84052f38d202f19be5e9f48ae9fc1bda760b982340913337211668b7ab85e95"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/verification.json",
+      "relativePath": "candidate/verification.json",
+      "type": "file",
+      "sha256": "efbfb8eb967075222df7c0e6cab13a784c347c6a9427346943291ec0e41a9323"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "07b09c986727777feda05bd41724de6580dd83d8d9eafa186e6384bc65b8ae2d"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "7793489054244d1bbe3668b1f29ac151269c07a9e2ee0bb0d0bf257ec07d1618"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "42fc02570c8f9998a6f9aa6e9de4822f2211b62d09627c49462ff787fb7258e6"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "48e48215bb5cde3b37d3303f78d56eb74094a2b6bf919dea2b922f7ab9fee553"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "345dd0aad73b68a0e4fa29c884863927bbede396d5903152150e64c15d8a44bb"
+    },
+    {
+      "stageId": "reference-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "e8e8cf75ceb7579994d8bc1462f3017653a398e217de5a0d20f68818f8f98e55"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "1b9f857f89e1195fbb3355aca53ba10642f7e41f44db4a81c4c3f30bd17aa70c"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "94783a354313af7789a29fc15c501328a053340a66290da2fc4205078cdbc054"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "85f735666051cce24274808f60cf659df62a0e27d325479597860dc482f3586e"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/process.log",
+      "relativePath": "vice/process.log",
+      "type": "file",
+      "sha256": "9af9c2157bda9494d037bfa81a9442609fa600550db26b71a27b3135934f244c"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "dc2fe094d77961c54649408dceebe588adb6d8be9fd4ab8f508319d0c79cdba5"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "97f2fe03335168439fac753849d92e612d5f6c1b361eae1d1ac49370a9ad2174"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/payload.prg",
+      "relativePath": "vice/payload.prg",
+      "type": "file",
+      "sha256": "1173719712291b80c5f7fe0a54ebfd3b894308985de825a2dadf6c68bf7655a9"
+    },
+    {
+      "stageId": "reference-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/harness.prg",
+      "relativePath": "vice/harness.prg",
+      "type": "file",
+      "sha256": "e8ca6098b40bbf4a9f5defc76202afc046dbfe26eadcd4a1547012d762cc718e"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-render/0e8087066fc7d0efa124d061bc00be09bd7089b075bb5137d295279ab3920d9f/attempt-ac03db30b72740299401073f24b953a7/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "5da5ec29dfcc97434fd1d98d8aea438b1bf9bd88491b07c77e0d098b4a4c63b3"
+    },
+    {
+      "stageId": "reference-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-render/0e8087066fc7d0efa124d061bc00be09bd7089b075bb5137d295279ab3920d9f/attempt-ac03db30b72740299401073f24b953a7/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "57f891e78e8a96daacb7cac185fa8465735ef72a4b6d84d5841a4e9d382f1482"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "8051bcc410f3df476ceee83e94588874f5551f4110130289e32bb2d97a1f0673"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/reconstructed.prg",
+      "relativePath": "candidate/reconstructed.prg",
+      "type": "file",
+      "sha256": "6a077fc000d83760e1e7dffec5a4aaa3844e80186f1160248d465dc3c36e29e7"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/verification.json",
+      "relativePath": "candidate/verification.json",
+      "type": "file",
+      "sha256": "8c6f1079eca4ab636eb93d3fb3e08bbc0b53898fb1b06f3c687b0f9596e0c0f2"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "a0efbdd4e5dec2c71b35fcde29041846cf11c99f81726703d6eeeedea7832550"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "c07cd2aa5291153950bce6ff563e42dac098baccd0d20a466a78dc5e53b19d2d"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "3f5a46d17bd3eb76d0f6c4f831cd6f456bdb9fe39242460c9a3aadf89ebca575"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "d2c4a364f771e2131979b98a3eada88399f0781f3d67f2ac25dcb7a69bdafa98"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "621d6c979e1048fba80f277f15e49b13a30b290c075ec027f423cbae55823c9f"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "e8e8cf75ceb7579994d8bc1462f3017653a398e217de5a0d20f68818f8f98e55"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "078d1cdc2c110a563e4166b2db3c850d3935945fba03be9fe8b97e8a2a4147e8"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "33acd71653519db09179b3502daba7487a98be610a54bad8c9861001ed5b5a98"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "f4c03bfb1b0a0fb8f671c4434794d94d422e1e1f800fb2ae3501ca1df44f64dc"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/process.log",
+      "relativePath": "vice/process.log",
+      "type": "file",
+      "sha256": "09bb5a96629a36e47d537c2f8cf2a0e726fde487df7fb9db016eafeb770a2b18"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "c8e6b34357a1b0b5024a878172110e820cbfa7c783748cdfd839c9f75fb407c2"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "1832a99d399562e52e2dd37ea54bd5bd099c9b80dbf97c97ec0951f5cd444dfe"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/payload.prg",
+      "relativePath": "vice/payload.prg",
+      "type": "file",
+      "sha256": "4102542adbcca8d381028210ca2d62590c347bb03bf8837b8dc0078bd0c43b26"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/harness.prg",
+      "relativePath": "vice/harness.prg",
+      "type": "file",
+      "sha256": "e8ca6098b40bbf4a9f5defc76202afc046dbfe26eadcd4a1547012d762cc718e"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-render/788862efd50ad26d9fb50eaa4e5bb712d868ced8351611340365e6650bd2a69f/attempt-f45ae453ba72470db073c4fe76f6a03c/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "7cf85210a4a52cd95669ee61b6662cf66e32ddcc262cbe1304193bae5e051d6e"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-render/788862efd50ad26d9fb50eaa4e5bb712d868ced8351611340365e6650bd2a69f/attempt-f45ae453ba72470db073c4fe76f6a03c/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "e2f4c05b1367688730b00e91d931f3ca7a378a0b3d8017171d17218d22e1a45c"
+    },
+    {
+      "stageId": "signal-check",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/signal-check/b4600012dcc49f11489e777dd00be35d90cbf5060526c49e7663400e4fcc258b/attempt-0037dc2fa7ac40d9b4228f84e05dd426/audio.json",
+      "relativePath": "audio.json",
+      "type": "file",
+      "sha256": "9c84677ac57641e45756cf26a45ec9d935d0a21dd94f63ddc24a95858d9d2ec6"
+    },
+    {
+      "stageId": "comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/comparison/c50f04e21e3d2108370b988d28249a6d2d0f07b92eb67646cb928ce9385402e0/attempt-b7cb1473ad224112bc64fdea0dca29ad/plain-then-ghostbusters.ab.wav",
+      "relativePath": "plain-then-ghostbusters.ab.wav",
+      "type": "file",
+      "sha256": "ef45086da9f9e5a8a05dd4f6f487484d730c899fe947a5558bb62d1207ccb818"
+    },
+    {
+      "stageId": "comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/comparison/c50f04e21e3d2108370b988d28249a6d2d0f07b92eb67646cb928ce9385402e0/attempt-b7cb1473ad224112bc64fdea0dca29ad/plain-then-ghostbusters.comparison.json",
+      "relativePath": "plain-then-ghostbusters.comparison.json",
+      "type": "file",
+      "sha256": "9bfb1cec30ffacd7e456ef2b2521c649553c8d8273250bd3bfe370ea003b3e8f"
+    }
+  ],
+  "deliverables": {
+    "fullReference": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-render/0e8087066fc7d0efa124d061bc00be09bd7089b075bb5137d295279ab3920d9f/attempt-ac03db30b72740299401073f24b953a7/render.wav",
+    "fullCandidate": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-render/788862efd50ad26d9fb50eaa4e5bb712d868ced8351611340365e6650bd2a69f/attempt-f45ae453ba72470db073c4fe76f6a03c/render.wav",
+    "comparison": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/comparison/c50f04e21e3d2108370b988d28249a6d2d0f07b92eb67646cb928ce9385402e0/attempt-b7cb1473ad224112bc64fdea0dca29ad/plain-then-ghostbusters.ab.wav",
+    "referenceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-build/f0b6e9b05153063243a102f88266e7e1104de0612bea8d7f6a9505a303d31b52/attempt-15ff421f78d14ade8c543b1c8f5be48b/candidate/verification.json",
+    "candidateProof": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-build/7b3171d9fbd7e6125cf6380abb0331bef65594452c968d239d2abf3f60ddf3d2/attempt-5f1597ba959d4baa9092aa437fe06f1c/candidate/verification.json",
+    "referenceViceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-vice/c2983da8fffa1dd12d771053f1bec42f9d9584700469f4a24f78d08a067bbd9f/attempt-8702e3eab50944c59ae1bf7cd1af5024/vice/study.json",
+    "candidateViceProof": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-vice/e6b606dfc9bebbbfc0f53249269009e26ea81a45ad31617ab47b0a6f53e67e32/attempt-cb2e57ffb2b1420ea8e4fb26709e0986/vice/study.json",
+    "signalProof": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/signal-check/b4600012dcc49f11489e777dd00be35d90cbf5060526c49e7663400e4fcc258b/attempt-0037dc2fa7ac40d9b4228f84e05dd426/audio.json"
+  },
+  "finishedAt": "2026-10-15T01:01:45.087865+00:00",
+  "wallSeconds": 0.291598208
+}

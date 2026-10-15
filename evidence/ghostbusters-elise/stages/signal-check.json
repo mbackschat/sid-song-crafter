@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "key": "b4600012dcc49f11489e777dd00be35d90cbf5060526c49e7663400e4fcc258b",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "scripts/check-listening.py",
+      "audio",
+      "{stage:reference-render}/render.wav",
+      "{stage:candidate-render}/render.wav",
+      "--seconds",
+      "12",
+      "--output",
+      "{out}/audio.json",
+      "--tail-seconds",
+      "1",
+      "--max-tail-ac-rms",
+      "1"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": "{stage:reference-render}/render.wav",
+        "type": "file",
+        "sha256": "5da5ec29dfcc97434fd1d98d8aea438b1bf9bd88491b07c77e0d098b4a4c63b3"
+      },
+      {
+        "path": "{stage:candidate-render}/render.wav",
+        "type": "file",
+        "sha256": "7cf85210a4a52cd95669ee61b6662cf66e32ddcc262cbe1304193bae5e051d6e"
+      },
+      {
+        "path": "scripts/check-listening.py",
+        "type": "file",
+        "sha256": "562acd7395111823046f96b17d2ee54839ae579f4e54ddf32f5526005c7cfa0a"
+      },
+      {
+        "path": "scripts/listening_checks.py",
+        "type": "file",
+        "sha256": "2d07bf6b4a95df5c114619ed9a57e6122f1ccc86f86e13025e6586f86dd0b243"
+      },
+      {
+        "path": "scripts/audio_comparison.py",
+        "type": "file",
+        "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+      }
+    ],
+    "outputs": [
+      "audio.json"
+    ],
+    "timeoutSeconds": 120,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": "{stage:reference-render}/render.wav",
+      "type": "file",
+      "sha256": "5da5ec29dfcc97434fd1d98d8aea438b1bf9bd88491b07c77e0d098b4a4c63b3"
+    },
+    {
+      "path": "{stage:candidate-render}/render.wav",
+      "type": "file",
+      "sha256": "7cf85210a4a52cd95669ee61b6662cf66e32ddcc262cbe1304193bae5e051d6e"
+    },
+    {
+      "path": "scripts/check-listening.py",
+      "type": "file",
+      "sha256": "562acd7395111823046f96b17d2ee54839ae579f4e54ddf32f5526005c7cfa0a"
+    },
+    {
+      "path": "scripts/listening_checks.py",
+      "type": "file",
+      "sha256": "2d07bf6b4a95df5c114619ed9a57e6122f1ccc86f86e13025e6586f86dd0b243"
+    },
+    {
+      "path": "scripts/audio_comparison.py",
+      "type": "file",
+      "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+    }
+  ],
+  "outputs": [
+    {
+      "relativePath": "audio.json",
+      "type": "file",
+      "sha256": "9c84677ac57641e45756cf26a45ec9d935d0a21dd94f63ddc24a95858d9d2ec6"
+    }
+  ],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "scripts/check-listening.py",
+    "audio",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-render/0e8087066fc7d0efa124d061bc00be09bd7089b075bb5137d295279ab3920d9f/attempt-ac03db30b72740299401073f24b953a7/render.wav",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-render/788862efd50ad26d9fb50eaa4e5bb712d868ced8351611340365e6650bd2a69f/attempt-f45ae453ba72470db073c4fe76f6a03c/render.wav",
+    "--seconds",
+    "12",
+    "--output",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/signal-check/b4600012dcc49f11489e777dd00be35d90cbf5060526c49e7663400e4fcc258b/attempt-0037dc2fa7ac40d9b4228f84e05dd426/audio.json",
+    "--tail-seconds",
+    "1",
+    "--max-tail-ac-rms",
+    "1"
+  ],
+  "completedAt": "2026-10-15T01:00:11.714720+00:00",
+  "executionSeconds": 0.3001478749999995
+}

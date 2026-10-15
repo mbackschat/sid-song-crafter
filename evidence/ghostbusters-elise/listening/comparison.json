@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "method": "same frame window from each input; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "requestedWindowSeconds": [
+    0.0,
+    12.0
+  ],
+  "window": {
+    "startFrame": 0,
+    "endFrame": 529200,
+    "frames": 529200,
+    "startSeconds": 0.0,
+    "endSeconds": 12.0,
+    "durationSeconds": 12.0
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/comparison/c50f04e21e3d2108370b988d28249a6d2d0f07b92eb67646cb928ce9385402e0/attempt-b7cb1473ad224112bc64fdea0dca29ad/plain-then-ghostbusters.ab.wav",
+    "frames": 1080450,
+    "durationSeconds": 24.5,
+    "sha256": "ef45086da9f9e5a8a05dd4f6f487484d730c899fe947a5558bb62d1207ccb818"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 529200
+    },
+    {
+      "label": "silence",
+      "startFrame": 529200,
+      "endFrame": 551250
+    },
+    {
+      "label": "B",
+      "startFrame": 551250,
+      "endFrame": 1080450
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-render/0e8087066fc7d0efa124d061bc00be09bd7089b075bb5137d295279ab3920d9f/attempt-ac03db30b72740299401073f24b953a7/render.wav",
+      "sha256": "5da5ec29dfcc97434fd1d98d8aea438b1bf9bd88491b07c77e0d098b4a4c63b3",
+      "originalFrames": 529200,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 529200,
+        "durationSeconds": 12.0,
+        "peak": 6863,
+        "peakDbfs": -13.57871872138093,
+        "clippedSamples": 0,
+        "rms": 955.8074534016148,
+        "acRms": 942.8156728451858,
+        "acRmsDbfs": -30.820462831533348,
+        "perChannel": [
+          {
+            "dc": 157.0557067271353,
+            "rms": 955.8074534016148,
+            "acRms": 942.8156728451858
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-render/788862efd50ad26d9fb50eaa4e5bb712d868ced8351611340365e6650bd2a69f/attempt-f45ae453ba72470db073c4fe76f6a03c/render.wav",
+      "sha256": "7cf85210a4a52cd95669ee61b6662cf66e32ddcc262cbe1304193bae5e051d6e",
+      "originalFrames": 529200,
+      "window": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 529200,
+        "durationSeconds": 12.0,
+        "peak": 8878,
+        "peakDbfs": -11.342695885407402,
+        "clippedSamples": 0,
+        "rms": 3350.5731229317507,
+        "acRms": 2436.9722782295116,
+        "acRmsDbfs": -22.57198692124816,
+        "perChannel": [
+          {
+            "dc": 2299.4578420256994,
+            "rms": 3350.5731229317507,
+            "acRms": 2436.9722782295116
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

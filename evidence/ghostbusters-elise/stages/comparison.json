@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "key": "c50f04e21e3d2108370b988d28249a6d2d0f07b92eb67646cb928ce9385402e0",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "scripts/compare-audio.py",
+      "window",
+      "{stage:reference-render}/render.wav",
+      "{stage:candidate-render}/render.wav",
+      "{out}/plain-then-ghostbusters",
+      "--start-seconds",
+      "0",
+      "--end-seconds",
+      "12",
+      "--gap-seconds",
+      "0.5"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": "{stage:reference-render}/render.wav",
+        "type": "file",
+        "sha256": "5da5ec29dfcc97434fd1d98d8aea438b1bf9bd88491b07c77e0d098b4a4c63b3"
+      },
+      {
+        "path": "{stage:candidate-render}/render.wav",
+        "type": "file",
+        "sha256": "7cf85210a4a52cd95669ee61b6662cf66e32ddcc262cbe1304193bae5e051d6e"
+      },
+      {
+        "path": "scripts/compare-audio.py",
+        "type": "file",
+        "sha256": "fe8dc975c6bae65a17e85e56f87c3e720dfef7d6654cf8f593b48bb1572b8c96"
+      },
+      {
+        "path": "scripts/audio_comparison.py",
+        "type": "file",
+        "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+      }
+    ],
+    "outputs": [
+      "plain-then-ghostbusters.ab.wav",
+      "plain-then-ghostbusters.comparison.json"
+    ],
+    "timeoutSeconds": 120,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": "{stage:reference-render}/render.wav",
+      "type": "file",
+      "sha256": "5da5ec29dfcc97434fd1d98d8aea438b1bf9bd88491b07c77e0d098b4a4c63b3"
+    },
+    {
+      "path": "{stage:candidate-render}/render.wav",
+      "type": "file",
+      "sha256": "7cf85210a4a52cd95669ee61b6662cf66e32ddcc262cbe1304193bae5e051d6e"
+    },
+    {
+      "path": "scripts/compare-audio.py",
+      "type": "file",
+      "sha256": "fe8dc975c6bae65a17e85e56f87c3e720dfef7d6654cf8f593b48bb1572b8c96"
+    },
+    {
+      "path": "scripts/audio_comparison.py",
+      "type": "file",
+      "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+    }
+  ],
+  "outputs": [
+    {
+      "relativePath": "plain-then-ghostbusters.ab.wav",
+      "type": "file",
+      "sha256": "ef45086da9f9e5a8a05dd4f6f487484d730c899fe947a5558bb62d1207ccb818"
+    },
+    {
+      "relativePath": "plain-then-ghostbusters.comparison.json",
+      "type": "file",
+      "sha256": "9bfb1cec30ffacd7e456ef2b2521c649553c8d8273250bd3bfe370ea003b3e8f"
+    }
+  ],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "scripts/compare-audio.py",
+    "window",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/reference-render/0e8087066fc7d0efa124d061bc00be09bd7089b075bb5137d295279ab3920d9f/attempt-ac03db30b72740299401073f24b953a7/render.wav",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/candidate-render/788862efd50ad26d9fb50eaa4e5bb712d868ced8351611340365e6650bd2a69f/attempt-f45ae453ba72470db073c4fe76f6a03c/render.wav",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-elise-work/cache/comparison/c50f04e21e3d2108370b988d28249a6d2d0f07b92eb67646cb928ce9385402e0/attempt-b7cb1473ad224112bc64fdea0dca29ad/plain-then-ghostbusters",
+    "--start-seconds",
+    "0",
+    "--end-seconds",
+    "12",
+    "--gap-seconds",
+    "0.5"
+  ],
+  "completedAt": "2026-10-15T01:00:12.007430+00:00",
+  "executionSeconds": 0.28429649999999995
+}
