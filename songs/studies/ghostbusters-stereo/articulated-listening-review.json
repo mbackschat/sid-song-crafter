@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "status": "accepted-phrase-full-song-pending",
+  "submission": "evidence/ghostbusters-stereo-articulated/listening-submission.json",
+  "submissionSha256": "67fa89757e20af06b865256512dac0c243331d367d95261540dd37e3f4d79f26",
+  "comparison": "build/ghostbusters-stereo-articulated-listening/initial-then-articulated-phrase.ab.wav",
+  "comparisonSha256": "b91e3170842aa1619c1433cfab9d66e56cf77b54cb3d9310d49bafc966b392a4",
+  "candidate": "build/ghostbusters-stereo-articulated-listening/articulated-phrase.wav",
+  "candidateSha256": "88c29f097982bd37f28caccb24529f0451b8bcaccbcbae5bb7555b2634b881c8",
+  "baseline": "build/ghostbusters-stereo-articulated-listening/initial-held-phrase.wav",
+  "baselineSha256": "f7693792968a9ce84d7157e601ce695fe1a602ae145bb5ed3d148df70be4dbfc",
+  "initializedWindowSeconds": [
+    16,
+    32
+  ],
+  "order": [
+    "Rejected initial continuous held support",
+    "Source-root-prefix articulated support"
+  ],
+  "commonGain": 1.0,
+  "question": "Does the persistent, bug-like sound disappear, and does the revised accompaniment fit the groove?",
+  "humanAnswer": "yes, disappeared. all great now",
+  "scope": "A 16-second phrase from initialized 48-second native renders; not a complete revised performance or a new opening/ending verdict.",
+  "fullSongPending": true,
+  "priorSpeechAndContinuation": "Retain separately accepted initial speech and complete continuation for their unchanged scopes; see listening-review.json.",
+  "modelAssistanceReview": {
+    "checkpoint": "Substantive revision, representative audition and human phrase acceptance",
+    "decision": "No model call: existing calibration does not qualify spatial balance, natural articulation or musical usefulness. Native/control PCM establishes decaying release and silent late gaps only.",
+    "nextCheckpoint": "Complete revised delivery and pre-closure."
+  }
+}

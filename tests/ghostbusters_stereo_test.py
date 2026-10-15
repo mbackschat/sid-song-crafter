@@ -33,10 +33,26 @@ def example():
     return composition, alignment, commands, arrangement
 
 
+def articulated_example():
+    composition, alignment, commands, arrangement = example()
+    composition['range']['auditCalls'] = 300
+    rows = [dict(header=0x83, note=24, parameter=dict(volume=15, instrument=0)),
+        dict(header=5, note=24), dict(header=3, note=31), dict(header=0x51)]
+    composition['score']['patterns']['0'] = dict(rows=rows)
+    percussion = deepcopy(rows)
+    percussion[0]['parameter']['instrument'] = 3
+    composition['score']['patterns']['2'] = dict(rows=percussion)
+    composition['score']['orders'] = [dict(patterns=[0]*4), dict(patterns=[0]*4), dict(patterns=[2]*4)]
+    composition['sound']['frequencies'].update({'31': 0x1800, '32': 0x1900})
+    arrangement['support']['articulation'] = 'source-root-prefix'
+    return composition, alignment, commands, arrangement
+
+
 class GhostbustersStereoTest(unittest.TestCase):
     def test_runtime_duplicates_complete_lead_and_volume_and_independent_hold(self):
         composition, _, _, arrangement = example()
         sid, built = title.compiler.build(composition, arrangement=arrangement)
+        self.assertEqual(hashlib.sha256(sid).hexdigest(), '21253861c96fa97dc6b658b91e6f0396b54d5e57c6a32928f06dc96fc8a7b2b1')
         verified, writes = title.compiler.verify(composition, sid, built)
         self.assertEqual(int.from_bytes(sid[4:6], 'big'), 3)
         self.assertEqual(sid[118:120], b'\x00\x58')
@@ -89,6 +105,33 @@ class GhostbustersStereoTest(unittest.TestCase):
         composition = json.loads((ROOT / 'evidence/ghostbusters-independent-full/native/composition.json').read_text())
         sid, _ = title.compiler.build(composition)
         self.assertEqual(hashlib.sha256(sid[124:]).hexdigest(), '7ebcc77aa57e79ce0ff8ac19c8437a8f0994c918c9cba3be765153dae2727567')
+
+    def test_source_root_prefix_releases_before_nonroot_and_rearticulates_next_pattern(self):
+        composition, _, _, arrangement = articulated_example()
+        sid, built = title.compiler.build(composition, arrangement=arrangement)
+        _, writes = title.compiler.verify(composition, sid, built)
+        control = [(r['tick'], r['value']) for r in writes if r['phase'] == 'play' and r['address'] == 0xd42b]
+        self.assertEqual(control, [(0,65),(40,64),(128,65),(168,64),(256,65),(296,64)])
+        releases = [r for r in writes if r['phase'] == 'play' and r['address'] == 0xd42d]
+        self.assertEqual([(r['tick'],r['value']) for r in releases], [(0,0x48),(128,0x48),(256,0x48)])
+        model = title.compiler.numeric(composition, arrangement)
+        self.assertEqual([(r['startCall'],r['endCall']) for r in model['supportLedger']], [(0,40),(128,168),(256,296)])
+        original = title.compiler.player.compute(composition)
+        self.assertEqual(title.compiler.identity([r for r in writes if r['address'] < 0xd420]), title.compiler.identity(original['writes']))
+
+    def test_source_root_prefix_rejects_long_gate_short_gap_and_later_root_reentry(self):
+        for defect in ('long gate','short gap','later root'):
+            composition, _, _, arrangement = articulated_example()
+            rows = composition['score']['patterns']['0']['rows']
+            if defect == 'long gate':
+                rows[1]['header'] = 31
+            elif defect == 'short gap':
+                rows[3]['header'] = 0x40
+                rows[2]['header'] = 0
+            else:
+                rows.insert(3, dict(header=0, note=24))
+            with self.subTest(defect=defect), self.assertRaisesRegex(ValueError, 'root prefix|following gap'):
+                title.compiler.build(composition, arrangement=arrangement)
 
 
 if __name__ == '__main__':

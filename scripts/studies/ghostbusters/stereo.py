@@ -14,7 +14,8 @@ def validate(arrangement):
     require(arrangement['target'] == dict(clock='ntsc', sidModel='MOS6581', sidBases=[0xd400, 0xd420]), 'Stereo requires NTSC matching MOS6581s at $D400/$D420')
     require(arrangement['mix'] == [[1, 0], [0, 1]], 'Stereo requires native raw A-left/B-right presentation')
     support = arrangement['support']
-    require(set(support) == {'sourceVoice', 'patterns', 'transpose', 'requiredCompanionPatch', 'allowedLeadIntervals', 'patch'}, 'Unknown held-support configuration')
+    require(set(support) - {'articulation'} == {'sourceVoice', 'patterns', 'transpose', 'requiredCompanionPatch', 'allowedLeadIntervals', 'patch'}, 'Unknown held-support configuration')
+    require(support.get('articulation', 'section-hold') in ('section-hold', 'source-root-prefix'), 'Unsupported tonal-support articulation')
     require(support['sourceVoice'] == 1 and support['transpose'] == 12 and support['requiredCompanionPatch'] == 3, 'Support requires octave-up source bass under source noise percussion')
     require(isinstance(support['patterns'], list) and 1 <= len(support['patterns']) <= 8 and len(set(support['patterns'])) == len(support['patterns']) and all(type(x) is int and 0 <= x < 128 for x in support['patterns']), 'Choose 1..8 distinct source bass patterns')
     require(support['allowedLeadIntervals'] == [0, 2, 3, 4, 5, 7, 9, 10], 'Hold screening requires the declared source dominant/blues interval set')
@@ -24,14 +25,33 @@ def validate(arrangement):
     return support
 
 
+def root_prefix(pattern, root):
+    prefix, total, departed = 0, 0, False
+    for row in pattern['rows']:
+        duration = ((row['header'] & 31) + 1) * 4
+        at_root = not row['header'] & 64 and row.get('note') == root
+        if at_root:
+            require(not departed, 'Source root prefix cannot reenter after its following gap')
+            prefix += duration
+        else:
+            departed = True
+        total += duration
+    require(32 <= prefix <= 40, 'Source root prefix requires 32..40 gate calls')
+    require(total - prefix >= 32, 'Source root prefix requires a following gap of at least 32 calls')
+    return prefix, total - prefix
+
+
 def compute(player, composition, arrangement, *, calls=None):
     support = validate(arrangement)
+    phrased = support.get('articulation') == 'source-root-prefix'
     roots = set()
     for pattern in support['patterns']:
         require(str(pattern) in composition['score']['patterns'], 'Support selects an absent source bass pattern')
         first = composition['score']['patterns'][str(pattern)]['rows'][0]
         require(not first['header'] & 64 and 'note' in first, 'Held support requires a pitched first bass row')
         roots.add(first['note'])
+        if phrased:
+            root_prefix(composition['score']['patterns'][str(pattern)], first['note'])
     require(len(roots) == 1, 'Consecutive selected bass patterns must share one held root')
     require(composition['sound']['patches'].get('3', {}).get('control') == 0x81, 'Support companion patch must remain source noise percussion')
     model = player.compute(composition, calls=calls)
@@ -60,7 +80,8 @@ def compute(player, composition, arrangement, *, calls=None):
         if tick in model['resetCalls']:
             state['pattern'] = 255
         voices = model['returns'][tick]['score']['voices']
-        eligible = state['pattern'] in support['patterns'] and voices[2]['instrument'] == support['requiredCompanionPatch']
+        section = state['pattern'] in support['patterns'] and voices[2]['instrument'] == support['requiredCompanionPatch']
+        eligible = section and (not phrased or not voices[1]['header'] & 64 and voices[1]['note'] in roots)
         emitted = []
         if eligible and not state['active']:
             require(voices[1]['note'] in roots, 'Support entered after the source bass root onset')
@@ -74,17 +95,18 @@ def compute(player, composition, arrangement, *, calls=None):
             state['active'] = 1
             current = dict(startCall=tick, rootNote=state['note'], sourceNote=voices[1]['note'], leadIntervals=set())
         elif not eligible and state['active']:
-            emitted = [(0xd42b, 0x40), (0xd42d, 0)]
+            emitted = [(0xd42b, 0x40)] + ([] if phrased and section else [(0xd42d, 0)])
             state['active'] = 0
             current['endCall'] = tick
             ledger.append(current)
             current = None
-        if eligible:
+        if section:
             lead = voices[0]
             if not lead['header'] & 64:
-                interval = (lead['note'] - state['note']) % 12
+                interval = (lead['note'] - next(iter(roots)) - support['transpose']) % 12
                 require(interval in support['allowedLeadIntervals'], f'Held root conflicts with source lead at call {tick}: interval {interval}')
-                current['leadIntervals'].add(interval)
+                if current is not None:
+                    current['leadIntervals'].add(interval)
         result['writes'].extend(dict(phase='play', tick=tick, address=a, value=v) for a, v in emitted)
         result['returns'][tick]['stereoSupport'] = deepcopy(state)
     if current is not None:
@@ -103,6 +125,7 @@ def replace_once(source, anchor, replacement):
 
 def assembly(source, arrangement):
     support = validate(arrangement)
+    phrased = support.get('articulation') == 'source-root-prefix'
     source = replace_once(source, 'gb_init_done:\n', '  JSR gb_stereo_init\ngb_init_done:\n')
     source = replace_once(source, 'gb_selected_pattern:\n', 'gb_selected_pattern:\n  CPX #$01\n  BNE gb_stereo_pattern_saved\n  STA gb_support_pattern\ngb_stereo_pattern_saved:\n')
     source = replace_once(source, '  JMP gb_advance_phase\ngb_selected_pattern:', '  LDA #$ff\n  STA gb_support_pattern\n  JMP gb_advance_phase\ngb_selected_pattern:')
@@ -145,7 +168,21 @@ gb_stereo_support:
         generated += f'  CMP #${pattern:02x}\n  BEQ gb_support_eligible\n'
     generated += '''  JMP gb_support_off
 gb_support_eligible:
-  LDA gb_support_active
+'''
+    if phrased:
+        generated = generated.replace('  BNE gb_support_off\n', '  BEQ gb_support_check_pattern\n  JMP gb_support_off\ngb_support_check_pattern:\n')
+        generated += '''  LDA gb_header+1
+  AND #$40
+  BNE gb_support_phrase_release
+  LDA gb_support_note
+  BEQ gb_support_prefix_ready
+  SEC
+  SBC #$0c
+  CMP gb_note+1
+  BNE gb_support_phrase_release
+gb_support_prefix_ready:
+'''
+    generated += '''  LDA gb_support_active
   BNE gb_support_done
   LDA gb_note+1
   CLC
@@ -164,7 +201,18 @@ gb_support_eligible:
     generated += '''  LDA #$01
   STA gb_support_active
   RTS
-gb_support_off:
+'''
+    if phrased:
+        generated += '''gb_support_phrase_release:
+  LDA gb_support_active
+  BEQ gb_support_done
+  LDA #$40
+  STA $d42b
+  LDA #$00
+  STA gb_support_active
+  RTS
+'''
+    generated += '''gb_support_off:
   LDA gb_support_active
   BEQ gb_support_done
   LDA #$40

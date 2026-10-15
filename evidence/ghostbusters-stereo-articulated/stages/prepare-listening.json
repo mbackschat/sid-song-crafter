@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "key": "e308532c2165a24d9291e35484fec75b16b5a8a6da1924c09cbfaefb68be028d",
+  "fingerprint": {
+    "command": [
+      "{python}",
+      "scripts/studies/ghostbusters/prepare-articulated-listening.py",
+      "--old",
+      "build/ghostbusters-stereo-listening/native-stereo-matched-full.wav",
+      "--native",
+      "{stage:render}/render.wav",
+      "--disabled",
+      "{stage:support-control-render}/render.wav",
+      "--proof",
+      "{stage:native}/candidate/verification.json",
+      "--sid",
+      "{stage:native}/candidate/reconstructed.sid",
+      "--ledger",
+      "{stage:native}/candidate/support-ledger.json",
+      "--output",
+      "{out}/prepared"
+    ],
+    "env": {
+      "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "inputs": [
+      {
+        "path": "scripts/studies/ghostbusters/prepare-articulated-listening.py",
+        "type": "file",
+        "sha256": "2d2c891447c0176edf940c58d18b3f202feb4b729a1dff48605b4d79e58e75fd"
+      },
+      {
+        "path": "scripts/studies/ghostbusters/prepare-stereo-listening.py",
+        "type": "file",
+        "sha256": "6c47d18dcb91703cfad64b9f7f7e05e5f0e181aa60d850cd91d47b8f2bce548a"
+      },
+      {
+        "path": "scripts/audio_comparison.py",
+        "type": "file",
+        "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+      },
+      {
+        "path": "scripts/verify_player.py",
+        "type": "file",
+        "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+      },
+      {
+        "path": "scripts/sid_clock.py",
+        "type": "file",
+        "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+      },
+      {
+        "path": "build/ghostbusters-stereo-listening/native-stereo-matched-full.wav",
+        "type": "file",
+        "sha256": "bda82aabbb0b74c607705c071a6236e34396a8209f617de9697029b003fc3559"
+      },
+      {
+        "path": "{stage:render}/render.wav",
+        "type": "file",
+        "sha256": "259ff4a89d0574cd2b8cceebf3fe80941368d021ff94f61b1892699a4d87b569"
+      },
+      {
+        "path": "{stage:support-control-render}/render.wav",
+        "type": "file",
+        "sha256": "81591631783389ec3a43bc6e35cd95a41b70a129bf79c815479922aa87b6378d"
+      },
+      {
+        "path": "{stage:native}/candidate/verification.json",
+        "type": "file",
+        "sha256": "4b1ea4522b7dcaad87614ccb800def083eef3a6edf2fd36172469c8218ea1e9b"
+      },
+      {
+        "path": "{stage:native}/candidate/reconstructed.sid",
+        "type": "file",
+        "sha256": "48a9a3975e8c220e953978a061aeafd45f2fa6e5f19b0a20b9ba7e7e17a73db1"
+      },
+      {
+        "path": "{stage:native}/candidate/support-ledger.json",
+        "type": "file",
+        "sha256": "eec240e78999f29dd66dc7ae4c5014c311994c51e86af13a96305cf412658fe4"
+      }
+    ],
+    "outputs": [
+      "prepared/initial-held-phrase.wav",
+      "prepared/articulated-phrase.wav",
+      "prepared/initial-then-articulated-phrase.ab.wav",
+      "prepared/initial-then-articulated-phrase.comparison.json",
+      "prepared/native-proof.json",
+      "prepared/audio.json"
+    ],
+    "timeoutSeconds": 120,
+    "runtime": {
+      "runnerVersion": 1,
+      "runnerSources": {
+        "listening_package.py": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130",
+        "listening-package.py": "cc75333ec8036d3b7e3bccf853a678980d6d3eb20b9293dc17b4dbc4b0d19947"
+      },
+      "python": {
+        "version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+        "implementation": "cpython",
+        "platform": "darwin",
+        "executableSha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+      }
+    },
+    "executable": {
+      "type": "file",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19"
+    }
+  },
+  "inputs": [
+    {
+      "path": "scripts/studies/ghostbusters/prepare-articulated-listening.py",
+      "type": "file",
+      "sha256": "2d2c891447c0176edf940c58d18b3f202feb4b729a1dff48605b4d79e58e75fd"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/prepare-stereo-listening.py",
+      "type": "file",
+      "sha256": "6c47d18dcb91703cfad64b9f7f7e05e5f0e181aa60d850cd91d47b8f2bce548a"
+    },
+    {
+      "path": "scripts/audio_comparison.py",
+      "type": "file",
+      "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+    },
+    {
+      "path": "scripts/verify_player.py",
+      "type": "file",
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    },
+    {
+      "path": "scripts/sid_clock.py",
+      "type": "file",
+      "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+    },
+    {
+      "path": "build/ghostbusters-stereo-listening/native-stereo-matched-full.wav",
+      "type": "file",
+      "sha256": "bda82aabbb0b74c607705c071a6236e34396a8209f617de9697029b003fc3559"
+    },
+    {
+      "path": "{stage:render}/render.wav",
+      "type": "file",
+      "sha256": "259ff4a89d0574cd2b8cceebf3fe80941368d021ff94f61b1892699a4d87b569"
+    },
+    {
+      "path": "{stage:support-control-render}/render.wav",
+      "type": "file",
+      "sha256": "81591631783389ec3a43bc6e35cd95a41b70a129bf79c815479922aa87b6378d"
+    },
+    {
+      "path": "{stage:native}/candidate/verification.json",
+      "type": "file",
+      "sha256": "4b1ea4522b7dcaad87614ccb800def083eef3a6edf2fd36172469c8218ea1e9b"
+    },
+    {
+      "path": "{stage:native}/candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "48a9a3975e8c220e953978a061aeafd45f2fa6e5f19b0a20b9ba7e7e17a73db1"
+    },
+    {
+      "path": "{stage:native}/candidate/support-ledger.json",
+      "type": "file",
+      "sha256": "eec240e78999f29dd66dc7ae4c5014c311994c51e86af13a96305cf412658fe4"
+    }
+  ],
+  "outputs": [
+    {
+      "relativePath": "prepared/initial-held-phrase.wav",
+      "type": "file",
+      "sha256": "f7693792968a9ce84d7157e601ce695fe1a602ae145bb5ed3d148df70be4dbfc"
+    },
+    {
+      "relativePath": "prepared/articulated-phrase.wav",
+      "type": "file",
+      "sha256": "88c29f097982bd37f28caccb24529f0451b8bcaccbcbae5bb7555b2634b881c8"
+    },
+    {
+      "relativePath": "prepared/initial-then-articulated-phrase.ab.wav",
+      "type": "file",
+      "sha256": "b91e3170842aa1619c1433cfab9d66e56cf77b54cb3d9310d49bafc966b392a4"
+    },
+    {
+      "relativePath": "prepared/initial-then-articulated-phrase.comparison.json",
+      "type": "file",
+      "sha256": "6d202948e4a931d48690ec27684bdcaf62b6ab85536090b6a5a1c94e43327e9e"
+    },
+    {
+      "relativePath": "prepared/native-proof.json",
+      "type": "file",
+      "sha256": "146dc94441f75511178778072ccf694bbe23abf8a99d010d5b8e6ebf441d519f"
+    },
+    {
+      "relativePath": "prepared/audio.json",
+      "type": "file",
+      "sha256": "02cf8873ccba8208337b98945a880b67681c0f8cd6988e70d5116299039575e6"
+    }
+  ],
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "scripts/studies/ghostbusters/prepare-articulated-listening.py",
+    "--old",
+    "build/ghostbusters-stereo-listening/native-stereo-matched-full.wav",
+    "--native",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-articulated-workflow/cache/render/602f18a7502e0dc5f9d3d75c57d389d7a1cd28c9be538e08d93eedcede9771a3/attempt-855ff6145b714b5fbaffc01f0f4e737c/render.wav",
+    "--disabled",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-articulated-workflow/cache/support-control-render/82954a176064da1c149c2b8e95fe909cf0c859e0d548d1996b8ed68e1b1efc88/attempt-e54f17e02e1e463cb76ba1304e73108d/render.wav",
+    "--proof",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-articulated-workflow/cache/native/fd81ac7677eb19940e08f293de39c529276f350f140b72e51a69fc8fef32ee6b/attempt-2bbcadc0d169440da61170d7a4dc189d/candidate/verification.json",
+    "--sid",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-articulated-workflow/cache/native/fd81ac7677eb19940e08f293de39c529276f350f140b72e51a69fc8fef32ee6b/attempt-2bbcadc0d169440da61170d7a4dc189d/candidate/reconstructed.sid",
+    "--ledger",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-articulated-workflow/cache/native/fd81ac7677eb19940e08f293de39c529276f350f140b72e51a69fc8fef32ee6b/attempt-2bbcadc0d169440da61170d7a4dc189d/candidate/support-ledger.json",
+    "--output",
+    "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-articulated-workflow/cache/prepare-listening/e308532c2165a24d9291e35484fec75b16b5a8a6da1924c09cbfaefb68be028d/attempt-210f222b92ef4da68f21d32ac45ede4c/prepared"
+  ],
+  "completedAt": "2026-10-15T14:18:17.754745+00:00",
+  "executionSeconds": 2.3078854169999996
+}

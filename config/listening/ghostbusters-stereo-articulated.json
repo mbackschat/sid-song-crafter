@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "initial-stereo-pin",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "asset",
+        "build/ghostbusters-stereo-listening/native-stereo-matched-full.wav",
+        "--sha256",
+        "bda82aabbb0b74c607705c071a6236e34396a8209f617de9697029b003fc3559",
+        "--output",
+        "{out}/pin.json"
+      ],
+      "inputs": [
+        "build/ghostbusters-stereo-listening/native-stereo-matched-full.wav",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "pin.json"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "native",
+      "command": [
+        "{python}",
+        "scripts/studies/ghostbusters/compile-title.py",
+        "--arrangement",
+        "songs/studies/ghostbusters-stereo/articulated-arrangement.json",
+        "--seconds",
+        "48",
+        "--probe-calls",
+        "2600",
+        "--output",
+        "{out}/candidate",
+        "--vice",
+        ".tools/vice-headless-3.9/build/src/x64sc"
+      ],
+      "inputs": [
+        "scripts/studies/ghostbusters/compiler.py",
+        "scripts/studies/ghostbusters/player.py",
+        "scripts/studies/ghostbusters/score.py",
+        "scripts/studies/ghostbusters/programs.py",
+        "songs/players/ghostbusters.asm",
+        "scripts/sid_assembler.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        "evidence/ghostbusters-player/composition.json",
+        "scripts/trace-sid-vice.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/studies/ghostbusters/compile-title.py",
+        "songs/players/ghostbusters-title.asm",
+        "scripts/studies/ghostbusters/speech.py",
+        "scripts/studies/ghostbusters/probe-machine.py",
+        "scripts/studies/ghostbusters/probe-form.py",
+        "scripts/sid_intake.py",
+        "scripts/reference_intake.py",
+        "scripts/audio_comparison.py",
+        "scripts/listening_package.py",
+        ".local/research/ghostbusters/Ghostbusters.sid",
+        "evidence/ghostbusters-speech-handoff/summary.json",
+        "evidence/ghostbusters-components/speech/verification.json",
+        "scripts/reference-intake.py",
+        "scripts/listening-package.py",
+        "scripts/studies/ghostbusters/stereo.py",
+        "songs/studies/ghostbusters-stereo/articulated-arrangement.json"
+      ],
+      "outputs": [
+        "candidate/reconstructed.sid",
+        "candidate/reconstructed.prg",
+        "candidate/private-speech.bin",
+        "candidate/composition.json",
+        "candidate/player.asm",
+        "candidate/player.listing",
+        "candidate/build.json",
+        "candidate/verification.json",
+        "candidate/vice.json",
+        "candidate/vice-command.json",
+        "candidate/commands.mon",
+        "candidate/private-host.prg",
+        "candidate/private-monitor.log.gz",
+        "candidate/private-process.log.gz",
+        "candidate/support-ledger.json"
+      ],
+      "timeoutSeconds": 900,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:native}/candidate/reconstructed.sid",
+        "{out}/render.wav",
+        "48",
+        "--subtune",
+        "1",
+        "--clock",
+        "ntsc"
+      ],
+      "inputs": [
+        "{stage:native}/candidate/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "support-control",
+      "command": [
+        "{python}",
+        "scripts/studies/ghostbusters/prepare-support-control.py",
+        "--candidate",
+        "{stage:native}/candidate/reconstructed.sid",
+        "--build",
+        "{stage:native}/candidate/build.json",
+        "--verification",
+        "{stage:native}/candidate/verification.json",
+        "--output",
+        "{out}/prepared"
+      ],
+      "inputs": [
+        "scripts/studies/ghostbusters/prepare-support-control.py",
+        "{stage:native}/candidate/reconstructed.sid",
+        "{stage:native}/candidate/build.json",
+        "{stage:native}/candidate/verification.json"
+      ],
+      "outputs": [
+        "prepared/support-disabled.sid",
+        "prepared/support-disabled.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "support-control-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:support-control}/prepared/support-disabled.sid",
+        "{out}/render.wav",
+        "48",
+        "--subtune",
+        "1",
+        "--clock",
+        "ntsc"
+      ],
+      "inputs": [
+        "{stage:support-control}/prepared/support-disabled.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 180,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "release-guards",
+      "command": [
+        "{python}",
+        "-m",
+        "unittest",
+        "-v",
+        "ghostbusters_articulated_listening_test"
+      ],
+      "inputs": [
+        "scripts/studies/ghostbusters/prepare-articulated-listening.py",
+        "scripts/studies/ghostbusters/prepare-stereo-listening.py",
+        "scripts/audio_comparison.py",
+        "scripts/verify_player.py",
+        "scripts/sid_clock.py",
+        "tests/ghostbusters_articulated_listening_test.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "prepare-listening",
+      "command": [
+        "{python}",
+        "scripts/studies/ghostbusters/prepare-articulated-listening.py",
+        "--old",
+        "build/ghostbusters-stereo-listening/native-stereo-matched-full.wav",
+        "--native",
+        "{stage:render}/render.wav",
+        "--disabled",
+        "{stage:support-control-render}/render.wav",
+        "--proof",
+        "{stage:native}/candidate/verification.json",
+        "--sid",
+        "{stage:native}/candidate/reconstructed.sid",
+        "--ledger",
+        "{stage:native}/candidate/support-ledger.json",
+        "--output",
+        "{out}/prepared"
+      ],
+      "inputs": [
+        "scripts/studies/ghostbusters/prepare-articulated-listening.py",
+        "scripts/studies/ghostbusters/prepare-stereo-listening.py",
+        "scripts/audio_comparison.py",
+        "scripts/verify_player.py",
+        "scripts/sid_clock.py",
+        "build/ghostbusters-stereo-listening/native-stereo-matched-full.wav",
+        "{stage:render}/render.wav",
+        "{stage:support-control-render}/render.wav",
+        "{stage:native}/candidate/verification.json",
+        "{stage:native}/candidate/reconstructed.sid",
+        "{stage:native}/candidate/support-ledger.json"
+      ],
+      "outputs": [
+        "prepared/initial-held-phrase.wav",
+        "prepared/articulated-phrase.wav",
+        "prepared/initial-then-articulated-phrase.ab.wav",
+        "prepared/initial-then-articulated-phrase.comparison.json",
+        "prepared/native-proof.json",
+        "prepared/audio.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/tests:{root}/.tools/test-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "nativeSid": "{stage:native}/candidate/reconstructed.sid",
+    "nativeBuild": "{stage:native}/candidate/build.json",
+    "nativeRender": "{stage:render}/render.wav",
+    "disabledRender": "{stage:support-control-render}/render.wav",
+    "supportControlProof": "{stage:support-control}/prepared/support-disabled.json",
+    "oldPhrase": "{stage:prepare-listening}/prepared/initial-held-phrase.wav",
+    "articulatedPhrase": "{stage:prepare-listening}/prepared/articulated-phrase.wav",
+    "phraseComparison": "{stage:prepare-listening}/prepared/initial-then-articulated-phrase.ab.wav",
+    "audioProof": "{stage:prepare-listening}/prepared/audio.json",
+    "nativeProof": "{stage:prepare-listening}/prepared/native-proof.json"
+  }
+}

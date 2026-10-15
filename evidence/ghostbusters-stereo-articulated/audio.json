@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "scope": "48-second initialized diagnostic; old/new audition is 16\u201332 seconds; no complete revised performance claim",
+  "commonGain": 1,
+  "matching": "One common attenuation scalar for old, articulated and control audio, identical on left/right; no independent RMS matching",
+  "release": {
+    "passed": true,
+    "scope": "First 48 seconds and first source support region only; final truncated release and later harmony exits are outside this render",
+    "leftPcmIdentical": true,
+    "preSupportPcmIdentical": true,
+    "checkedCompleteGaps": 15,
+    "gateCalls": 40,
+    "gateSeconds": 0.6686044443595422,
+    "alignment": {
+      "predictedFirstGateSeconds": 15.227261864733046,
+      "observedFirstContributionSeconds": 15.231156462585034,
+      "rendererAndAttackOffsetSeconds": 0.0038945978519873137,
+      "maximumAbsoluteOffsetSeconds": 0.025
+    },
+    "measurementClock": "Native 17095-cycle call grid aligned to the first detected causal contribution; offset includes renderer startup and first attack latency. Windows exclude dispatch/onset margins.",
+    "windows": {
+      "attackAfterGate": [
+        0.025,
+        0.1
+      ],
+      "bodyAfterGate": 0.15,
+      "bodyBeforeOff": 0.05,
+      "earlyReleaseAfterOff": [
+        0.015,
+        0.06
+      ],
+      "lateGapBeforeNextGate": [
+        0.3,
+        0.05
+      ]
+    },
+    "minimumAttackAcRms": 1527.4066881842648,
+    "minimumBodyAcRms": 1168.5787769674157,
+    "minimumEarlyReleaseAcRms": 685.4621215529392,
+    "maximumEarlyReleaseToBodyRatio": 0.6317461072593858,
+    "maximumLateGapRms": 0.0,
+    "maximumLateGapPeak": 0,
+    "limits": {
+      "lateGapRms": 1,
+      "lateGapPeak": 2
+    },
+    "fullSongVerified": false,
+    "musicalAcceptanceEstablished": false
+  },
+  "privateLedgerSha256": "eec240e78999f29dd66dc7ae4c5014c311994c51e86af13a96305cf412658fe4",
+  "inputs": [
+    {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-listening/native-stereo-matched-full.wav",
+      "sha256": "bda82aabbb0b74c607705c071a6236e34396a8209f617de9697029b003fc3559"
+    },
+    {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-articulated-workflow/cache/render/602f18a7502e0dc5f9d3d75c57d389d7a1cd28c9be538e08d93eedcede9771a3/attempt-855ff6145b714b5fbaffc01f0f4e737c/render.wav",
+      "sha256": "259ff4a89d0574cd2b8cceebf3fe80941368d021ff94f61b1892699a4d87b569"
+    },
+    {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-stereo-articulated-workflow/cache/support-control-render/82954a176064da1c149c2b8e95fe909cf0c859e0d548d1996b8ed68e1b1efc88/attempt-e54f17e02e1e463cb76ba1304e73108d/render.wav",
+      "sha256": "81591631783389ec3a43bc6e35cd95a41b70a129bf79c815479922aa87b6378d"
+    }
+  ],
+  "musicalAcceptance": null,
+  "fullSongPending": true,
+  "comparisonSha256": "b91e3170842aa1619c1433cfab9d66e56cf77b54cb3d9310d49bafc966b392a4"
+}
