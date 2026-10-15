@@ -1,0 +1,1300 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde",
+  "evidence": "Executed NTSC VICE checkpoint order and RAM snapshots, including nested counter initialization.",
+  "focusedCapture": {
+    "completedPostIdleMusicBodies": 2,
+    "initializedSeconds": 4.562840088309481,
+    "nmiEntries": 41050,
+    "speechCommands": [
+      {
+        "command": 1,
+        "nmiEntryCount": 15151,
+        "volumeStoreCount": 12346,
+        "nmiEntryPcCounts": {
+          "f083": 6080,
+          "f0a4": 6072,
+          "f0c3": 193,
+          "f0d9": 2805,
+          "f0e1": 1
+        },
+        "volumeWriterCounts": {
+          "f088": 6080,
+          "f0a9": 6072,
+          "f0c8": 193,
+          "f0e9": 1
+        },
+        "timerBLatch": 101,
+        "timerBControl": 145,
+        "interruptMask": 130,
+        "firstNmiCycle": 2270226,
+        "lastNmiCycle": 3815562,
+        "nmiCheckpointIntervals": {
+          "count": 15150,
+          "minimum": 54,
+          "maximum": 150,
+          "histogram": {
+            "54": 4,
+            "55": 9,
+            "56": 6,
+            "57": 11,
+            "58": 39,
+            "59": 39,
+            "60": 92,
+            "61": 37,
+            "62": 38,
+            "63": 35,
+            "64": 16,
+            "65": 22,
+            "66": 19,
+            "67": 25,
+            "68": 29,
+            "69": 16,
+            "70": 20,
+            "71": 22,
+            "72": 20,
+            "73": 32,
+            "74": 22,
+            "75": 22,
+            "76": 17,
+            "77": 19,
+            "78": 25,
+            "79": 30,
+            "80": 23,
+            "81": 24,
+            "82": 16,
+            "83": 30,
+            "84": 13,
+            "85": 27,
+            "86": 24,
+            "87": 14,
+            "88": 19,
+            "89": 20,
+            "90": 9,
+            "91": 48,
+            "92": 13,
+            "93": 28,
+            "94": 22,
+            "95": 14,
+            "96": 31,
+            "97": 85,
+            "98": 450,
+            "99": 1214,
+            "100": 857,
+            "101": 2308,
+            "102": 2980,
+            "103": 2314,
+            "104": 1667,
+            "105": 704,
+            "106": 245,
+            "107": 248,
+            "108": 19,
+            "109": 28,
+            "110": 22,
+            "111": 36,
+            "112": 18,
+            "113": 16,
+            "114": 13,
+            "115": 24,
+            "116": 31,
+            "117": 13,
+            "118": 22,
+            "119": 16,
+            "120": 18,
+            "121": 21,
+            "122": 30,
+            "123": 26,
+            "124": 23,
+            "125": 19,
+            "126": 32,
+            "127": 17,
+            "128": 19,
+            "129": 28,
+            "130": 21,
+            "131": 19,
+            "132": 24,
+            "133": 10,
+            "134": 47,
+            "135": 15,
+            "136": 25,
+            "137": 19,
+            "138": 11,
+            "139": 17,
+            "140": 32,
+            "141": 33,
+            "142": 71,
+            "143": 31,
+            "144": 43,
+            "145": 42,
+            "146": 40,
+            "147": 21,
+            "148": 16,
+            "149": 6,
+            "150": 3
+          }
+        }
+      },
+      {
+        "command": 3,
+        "nmiEntryCount": 25899,
+        "volumeStoreCount": 17770,
+        "nmiEntryPcCounts": {
+          "f083": 8698,
+          "f0a4": 8696,
+          "f0c3": 375,
+          "f0d9": 8129,
+          "f0e1": 1
+        },
+        "volumeWriterCounts": {
+          "f088": 8698,
+          "f0a9": 8696,
+          "f0c8": 375,
+          "f0e9": 1
+        },
+        "timerBLatch": 101,
+        "timerBControl": 145,
+        "interruptMask": 130,
+        "firstNmiCycle": 3893822,
+        "lastNmiCycle": 6535399,
+        "nmiCheckpointIntervals": {
+          "count": 25898,
+          "minimum": 54,
+          "maximum": 150,
+          "histogram": {
+            "54": 4,
+            "55": 12,
+            "56": 17,
+            "57": 25,
+            "58": 62,
+            "59": 50,
+            "60": 156,
+            "61": 66,
+            "62": 50,
+            "63": 52,
+            "64": 30,
+            "65": 44,
+            "66": 43,
+            "67": 29,
+            "68": 82,
+            "69": 17,
+            "70": 44,
+            "71": 44,
+            "72": 28,
+            "73": 47,
+            "74": 34,
+            "75": 27,
+            "76": 44,
+            "77": 23,
+            "78": 33,
+            "79": 49,
+            "80": 50,
+            "81": 46,
+            "82": 25,
+            "83": 44,
+            "84": 32,
+            "85": 29,
+            "86": 45,
+            "87": 38,
+            "88": 30,
+            "89": 47,
+            "90": 15,
+            "91": 74,
+            "92": 22,
+            "93": 48,
+            "94": 30,
+            "95": 25,
+            "96": 42,
+            "97": 117,
+            "98": 829,
+            "99": 2024,
+            "100": 1510,
+            "101": 4009,
+            "102": 5094,
+            "103": 3877,
+            "104": 2922,
+            "105": 1255,
+            "106": 362,
+            "107": 388,
+            "108": 21,
+            "109": 47,
+            "110": 36,
+            "111": 49,
+            "112": 24,
+            "113": 49,
+            "114": 38,
+            "115": 36,
+            "116": 45,
+            "117": 37,
+            "118": 35,
+            "119": 35,
+            "120": 28,
+            "121": 44,
+            "122": 43,
+            "123": 44,
+            "124": 28,
+            "125": 20,
+            "126": 57,
+            "127": 26,
+            "128": 45,
+            "129": 47,
+            "130": 25,
+            "131": 39,
+            "132": 45,
+            "133": 15,
+            "134": 75,
+            "135": 34,
+            "136": 38,
+            "137": 32,
+            "138": 28,
+            "139": 47,
+            "140": 49,
+            "141": 44,
+            "142": 101,
+            "143": 50,
+            "144": 72,
+            "145": 91,
+            "146": 63,
+            "147": 41,
+            "148": 22,
+            "149": 6,
+            "150": 6
+          }
+        }
+      }
+    ]
+  },
+  "extension": {
+    "baseProbe": "scripts/studies/ghostbusters/probe-machine.py",
+    "extraCheckpoints": [
+      [
+        "trace",
+        "exec",
+        61685,
+        null
+      ],
+      [
+        "trace",
+        "exec",
+        61691,
+        null
+      ],
+      [
+        "trace",
+        "exec",
+        61697,
+        null
+      ],
+      [
+        "trace",
+        "exec",
+        61699,
+        null
+      ],
+      [
+        "trace",
+        "exec",
+        61582,
+        null
+      ],
+      [
+        "trace",
+        "exec",
+        61584,
+        null
+      ],
+      [
+        "trace",
+        "exec",
+        61586,
+        null
+      ],
+      [
+        "trace",
+        "exec",
+        61589,
+        null
+      ],
+      [
+        "trace",
+        "exec",
+        61599,
+        null
+      ],
+      [
+        "trace",
+        "exec",
+        61602,
+        null
+      ],
+      [
+        "trace",
+        "store",
+        253,
+        255
+      ],
+      [
+        "trace",
+        "store",
+        61573,
+        null
+      ],
+      [
+        "trace",
+        "store",
+        61606,
+        null
+      ]
+    ],
+    "snapshotRanges": [
+      [
+        253,
+        3
+      ],
+      [
+        61573,
+        1
+      ],
+      [
+        61606,
+        1
+      ],
+      [
+        62683,
+        2
+      ]
+    ],
+    "snapshotCount": 166881,
+    "sourcePatched": false
+  },
+  "provenLostDecrements": [
+    {
+      "command": 1,
+      "nestedNmiIndex": 321,
+      "length": 16,
+      "forwardCounterValues": [
+        0,
+        255,
+        16
+      ],
+      "forwardPointerValues": [
+        96,
+        97,
+        112
+      ],
+      "reverseStartPointer": 112,
+      "serializedReverseStartPointer": 111,
+      "vectorPublicationCycle": 2302947,
+      "nestedEntryCycle": 2302966,
+      "counterResetExecCycle": 2303006,
+      "counterResetCycle": 2303009,
+      "reverseHandoffCycle": 2304639,
+      "outerStackPointer": 246,
+      "nestedStackPointer": 243,
+      "observationRows": {
+        "publication": 4018,
+        "pointerSetup": 4020,
+        "nestedEntry": 4021,
+        "decrement": 4026,
+        "increment": 4029,
+        "counterResetExec": 4030,
+        "counterReset": 4032,
+        "reverseHandoff": 4183
+      }
+    },
+    {
+      "command": 1,
+      "nestedNmiIndex": 834,
+      "length": 16,
+      "forwardCounterValues": [
+        0,
+        255,
+        16
+      ],
+      "forwardPointerValues": [
+        96,
+        97,
+        112
+      ],
+      "reverseStartPointer": 112,
+      "serializedReverseStartPointer": 111,
+      "vectorPublicationCycle": 2355275,
+      "nestedEntryCycle": 2355294,
+      "counterResetExecCycle": 2355334,
+      "counterResetCycle": 2355337,
+      "reverseHandoffCycle": 2356965,
+      "outerStackPointer": 244,
+      "nestedStackPointer": 241,
+      "observationRows": {
+        "publication": 8084,
+        "pointerSetup": 8086,
+        "nestedEntry": 8087,
+        "decrement": 8092,
+        "increment": 8095,
+        "counterResetExec": 8096,
+        "counterReset": 8098,
+        "reverseHandoff": 8249
+      }
+    },
+    {
+      "command": 1,
+      "nestedNmiIndex": 1027,
+      "length": 16,
+      "forwardCounterValues": [
+        0,
+        255,
+        16
+      ],
+      "forwardPointerValues": [
+        96,
+        97,
+        112
+      ],
+      "reverseStartPointer": 112,
+      "serializedReverseStartPointer": 111,
+      "vectorPublicationCycle": 2374916,
+      "nestedEntryCycle": 2374978,
+      "counterResetExecCycle": 2375018,
+      "counterResetCycle": 2375021,
+      "reverseHandoffCycle": 2376650,
+      "outerStackPointer": 246,
+      "nestedStackPointer": 243,
+      "observationRows": {
+        "publication": 9612,
+        "pointerSetup": 9614,
+        "nestedEntry": 9615,
+        "decrement": 9620,
+        "increment": 9623,
+        "counterResetExec": 9624,
+        "counterReset": 9626,
+        "reverseHandoff": 9780
+      }
+    },
+    {
+      "command": 1,
+      "nestedNmiIndex": 1860,
+      "length": 16,
+      "forwardCounterValues": [
+        0,
+        255,
+        16
+      ],
+      "forwardPointerValues": [
+        96,
+        97,
+        112
+      ],
+      "reverseStartPointer": 112,
+      "serializedReverseStartPointer": 111,
+      "vectorPublicationCycle": 2459925,
+      "nestedEntryCycle": 2459944,
+      "counterResetExecCycle": 2459984,
+      "counterResetCycle": 2459987,
+      "reverseHandoffCycle": 2461615,
+      "outerStackPointer": 244,
+      "nestedStackPointer": 241,
+      "observationRows": {
+        "publication": 16195,
+        "pointerSetup": 16197,
+        "nestedEntry": 16198,
+        "decrement": 16203,
+        "increment": 16206,
+        "counterResetExec": 16207,
+        "counterReset": 16209,
+        "reverseHandoff": 16362
+      }
+    },
+    {
+      "command": 1,
+      "nestedNmiIndex": 5435,
+      "length": 16,
+      "forwardCounterValues": [
+        0,
+        255,
+        16
+      ],
+      "forwardPointerValues": [
+        96,
+        97,
+        112
+      ],
+      "reverseStartPointer": 112,
+      "serializedReverseStartPointer": 111,
+      "vectorPublicationCycle": 2824579,
+      "nestedEntryCycle": 2824594,
+      "counterResetExecCycle": 2824638,
+      "counterResetCycle": 2824641,
+      "reverseHandoffCycle": 2826267,
+      "outerStackPointer": 246,
+      "nestedStackPointer": 243,
+      "observationRows": {
+        "publication": 40758,
+        "pointerSetup": 40761,
+        "nestedEntry": 40760,
+        "decrement": 40766,
+        "increment": 40769,
+        "counterResetExec": 40770,
+        "counterReset": 40772,
+        "reverseHandoff": 40919
+      }
+    },
+    {
+      "command": 1,
+      "nestedNmiIndex": 5852,
+      "length": 16,
+      "forwardCounterValues": [
+        0,
+        255,
+        16
+      ],
+      "forwardPointerValues": [
+        32,
+        33,
+        48
+      ],
+      "reverseStartPointer": 48,
+      "serializedReverseStartPointer": 47,
+      "vectorPublicationCycle": 2867110,
+      "nestedEntryCycle": 2867129,
+      "counterResetExecCycle": 2867169,
+      "counterResetCycle": 2867172,
+      "reverseHandoffCycle": 2868800,
+      "outerStackPointer": 244,
+      "nestedStackPointer": 241,
+      "observationRows": {
+        "publication": 44036,
+        "pointerSetup": 44038,
+        "nestedEntry": 44039,
+        "decrement": 44044,
+        "increment": 44047,
+        "counterResetExec": 44048,
+        "counterReset": 44050,
+        "reverseHandoff": 44201
+      }
+    },
+    {
+      "command": 1,
+      "nestedNmiIndex": 6045,
+      "length": 16,
+      "forwardCounterValues": [
+        0,
+        255,
+        16
+      ],
+      "forwardPointerValues": [
+        32,
+        33,
+        48
+      ],
+      "reverseStartPointer": 48,
+      "serializedReverseStartPointer": 47,
+      "vectorPublicationCycle": 2886795,
+      "nestedEntryCycle": 2886814,
+      "counterResetExecCycle": 2886854,
+      "counterResetCycle": 2886857,
+      "reverseHandoffCycle": 2888486,
+      "outerStackPointer": 244,
+      "nestedStackPointer": 241,
+      "observationRows": {
+        "publication": 45562,
+        "pointerSetup": 45564,
+        "nestedEntry": 45565,
+        "decrement": 45570,
+        "increment": 45573,
+        "counterResetExec": 45574,
+        "counterReset": 45576,
+        "reverseHandoff": 45728
+      }
+    },
+    {
+      "command": 1,
+      "nestedNmiIndex": 8127,
+      "length": 16,
+      "forwardCounterValues": [
+        0,
+        255,
+        16
+      ],
+      "forwardPointerValues": [
+        96,
+        97,
+        112
+      ],
+      "reverseStartPointer": 112,
+      "serializedReverseStartPointer": 111,
+      "vectorPublicationCycle": 3099159,
+      "nestedEntryCycle": 3099178,
+      "counterResetExecCycle": 3099218,
+      "counterResetCycle": 3099221,
+      "reverseHandoffCycle": 3100849,
+      "outerStackPointer": 246,
+      "nestedStackPointer": 243,
+      "observationRows": {
+        "publication": 60387,
+        "pointerSetup": 60389,
+        "nestedEntry": 60390,
+        "decrement": 60395,
+        "increment": 60398,
+        "counterResetExec": 60399,
+        "counterReset": 60401,
+        "reverseHandoff": 60552
+      }
+    },
+    {
+      "command": 3,
+      "nestedNmiIndex": 5140,
+      "length": 64,
+      "forwardCounterValues": [
+        0,
+        255,
+        64
+      ],
+      "forwardPointerValues": [
+        64,
+        65,
+        128
+      ],
+      "reverseStartPointer": 128,
+      "serializedReverseStartPointer": 127,
+      "vectorPublicationCycle": 4418061,
+      "nestedEntryCycle": 4418080,
+      "counterResetExecCycle": 4418120,
+      "counterResetCycle": 4418123,
+      "reverseHandoffCycle": 4424648,
+      "outerStackPointer": 244,
+      "nestedStackPointer": 241,
+      "observationRows": {
+        "publication": 150802,
+        "pointerSetup": 150804,
+        "nestedEntry": 150805,
+        "decrement": 150810,
+        "increment": 150813,
+        "counterResetExec": 150814,
+        "counterReset": 150816,
+        "reverseHandoff": 151426
+      }
+    },
+    {
+      "command": 3,
+      "nestedNmiIndex": 9482,
+      "length": 16,
+      "forwardCounterValues": [
+        0,
+        255,
+        16
+      ],
+      "forwardPointerValues": [
+        64,
+        65,
+        80
+      ],
+      "reverseStartPointer": 80,
+      "serializedReverseStartPointer": 79,
+      "vectorPublicationCycle": 4860902,
+      "nestedEntryCycle": 4860964,
+      "counterResetExecCycle": 4861004,
+      "counterResetCycle": 4861007,
+      "reverseHandoffCycle": 4862638,
+      "outerStackPointer": 244,
+      "nestedStackPointer": 241,
+      "observationRows": {
+        "publication": 183598,
+        "pointerSetup": 183600,
+        "nestedEntry": 183601,
+        "decrement": 183606,
+        "increment": 183609,
+        "counterResetExec": 183610,
+        "counterReset": 183612,
+        "reverseHandoff": 183774
+      }
+    }
+  ],
+  "independentlyCorroboratedOccurrences": 10,
+  "sourceAlignment": {
+    "basis": "Monitor checkpoint cycles relative to executed source init entry; not exact SID bus timestamps.",
+    "clockHz": 1022727.2728571428,
+    "initEntryCycle": 2137661,
+    "commands": [
+      {
+        "command": 1,
+        "commandEntry": 64930,
+        "firstNmi": 132565,
+        "firstSpeechWrite": 132578,
+        "firstWaveSample": 132678,
+        "lastWaveSample": 1677774,
+        "finalSpeechStore": 1677916,
+        "nmiEntries": 15151,
+        "volumeStores": 12346
+      },
+      {
+        "command": 3,
+        "commandEntry": 1754985,
+        "firstNmi": 1756161,
+        "firstSpeechWrite": 1756174,
+        "firstWaveSample": 1756254,
+        "lastWaveSample": 4392753,
+        "finalSpeechStore": 4397753,
+        "nmiEntries": 25899,
+        "volumeStores": 17770
+      }
+    ],
+    "internalMusicInit": 4630235,
+    "firstMusicBody": 4632351
+  },
+  "reverseHandoffsBeyondDecodedBuffer": [
+    {
+      "command": 3,
+      "nestedNmiIndex": 5140,
+      "reversePointer": 128,
+      "address": 61568
+    }
+  ],
+  "boundaryInterpretation": "Reverse-pointer publication is observed. Reading outside the 128-byte decoded buffer follows from the retained reverse-handler semantics, not a registered buffer-load checkpoint; no such original code-byte samples are exported.",
+  "capturePins": {
+    "binding": "Base tools were pinned by the capture receipt; wrapper bytes were preserved immediately after the run, before checker correction.",
+    "wrapper": {
+      "path": "scripts/studies/ghostbusters/probe-speech-handoff.py",
+      "bytes": 13833,
+      "sha256": "7446ae76c1a2ed53d9efadb79ac3c632dca14e2892af30afb65d93f689bb2ea1"
+    },
+    "retainedWrapper": {
+      "path": "build/ghostbusters-speech-handoff/capture-wrapper.py",
+      "bytes": 13833,
+      "sha256": "7446ae76c1a2ed53d9efadb79ac3c632dca14e2892af30afb65d93f689bb2ea1"
+    },
+    "baseTools": {
+      "probeSha256": "f8ae01c6b20b45a1d249e57ea65dbe68aead7dc5bded7ee9386d378751c66e8b",
+      "viceSha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285",
+      "traceGrammarSha256": "1df0cdee65ad8d0d0258e9920d57682b1940311c98e532472b8e0cb621b89e8d",
+      "clockSha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48",
+      "inspectorSha256": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0"
+    },
+    "additionalCaptureDependencies": null,
+    "limitation": "The initial wrapper did not persist its additional imported-module/ROM pins before execution; these are bound as current analysis dependencies only."
+  },
+  "analysisDependencies": [
+    {
+      "path": ".local/research/ghostbusters/Ghostbusters.sid",
+      "bytes": 6310,
+      "sha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/build/src/x64sc",
+      "bytes": 4013992,
+      "sha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/Makefile.am",
+      "bytes": 2272,
+      "sha256": "b178a75071d148ca39dfbf7107b6985356cb123e347fcd6b1bd35e56f313379b"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/Makefile.in",
+      "bytes": 20142,
+      "sha256": "e2905c60cd125411be39525b02dae4169bbdad2ca9c56694fd840b19305f7767"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/basic-901226-01.bin",
+      "bytes": 8192,
+      "sha256": "89878cea0a268734696de11c4bae593eaaa506465d2029d619c0e0cbccdfa62d"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/c64hq.vpl",
+      "bytes": 396,
+      "sha256": "a7e996ed7f8ad92ad92e815fa5ce7202302859a1080c2c986a5daae82490b3e0"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/c64mem.sym",
+      "bytes": 8817,
+      "sha256": "6e8ce78f1a5a1f2f9e04e990b48ae657c2dd127f1a7745e942041b14f287fec3"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/c64s.vpl",
+      "bytes": 395,
+      "sha256": "c31eb83924a792a468fada474834c136c1fd7f3009beacaa7f365b32149788c1"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/ccs64.vpl",
+      "bytes": 396,
+      "sha256": "175e79d22eb380d1a695f9df34442f1a1bd22c7f26d765b5268f4e0d20c998cb"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/chargen-901225-01.bin",
+      "bytes": 4096,
+      "sha256": "fd0d53b8480e86163ac98998976c72cc58d5dd8eb824ed7b829774e74213b420"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/chargen-906143-02.bin",
+      "bytes": 4096,
+      "sha256": "0f4a5b0f9ec0d86639ba316053e330fdd849692623a41f8de4a420fcd47c55ee"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/cjam.vpl",
+      "bytes": 461,
+      "sha256": "88d4bf8af92ffc9b2f3a5cecca5a42fd67aae346bf18b01e68b7c49b6d073144"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/colodore.vpl",
+      "bytes": 443,
+      "sha256": "3ac258746a7efe8ca1e5c863dab8bdcdc297049a99ca127e51423f1fc957273a"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/community-colors.vpl",
+      "bytes": 367,
+      "sha256": "2bab9ac265df10a38b797806c0c56f3391cb13187b7af73072d8f7ccd35fc25d"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/deekay.vpl",
+      "bytes": 403,
+      "sha256": "0ca5a21a703dd1d6973154b6389980fdc5288c2d8fed09dbee05798100f1d1e2"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/default.vrs",
+      "bytes": 331,
+      "sha256": "aa0e8cc1eabea1dfd5ed03e1d6337e5d71d390fc7d7541c487056e131247e897"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/frodo.vpl",
+      "bytes": 396,
+      "sha256": "901f94116866df5d64ae7ebaa801b6a144e422cb157c544d3cea98728bd7f43e"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/godot.vpl",
+      "bytes": 396,
+      "sha256": "14a3e5d7bf20c65fc9b3bfbff4f00b5871f97203e70342aea9424b8b68e3d75b"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_keyrah.vkm",
+      "bytes": 8551,
+      "sha256": "b618475a4dc8e9d134273c9598c40f741c44249def8934f1a4358281e53fd310"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_keyrah_de.vkm",
+      "bytes": 8510,
+      "sha256": "d48c6c09baa7e1517b149781e55059b426cc1c47a956d9b739da36fb0ff88054"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_pos.vkm",
+      "bytes": 8062,
+      "sha256": "df7332c52430ec344c9821ead8f16650ca31dc5676d0c40c5915e5594bd3493d"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_pos_bmc64.vkm",
+      "bytes": 6055,
+      "sha256": "322a5cc04f800d2e485f62c3e12d21091e8d19041506efd0cc10bc068e4881b9"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_pos_de.vkm",
+      "bytes": 9307,
+      "sha256": "251f324393a2fdcc85f84ce8348f916ec8b3cddcc528794a798de5c452c3e1a7"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_pos_es.vkm",
+      "bytes": 6398,
+      "sha256": "b9e3ac042f7291af974e7efc15a641d0d0bb12171f0d32b8803b290c04fae6ec"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_pos_it.vkm",
+      "bytes": 9137,
+      "sha256": "c970ad545b0786e174165dfb931ef99d4f72102ba11ad9fbdb09f8049e856d4e"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_pos_se.vkm",
+      "bytes": 9334,
+      "sha256": "85c21e9145b2ce108fc8cda3c8345c78e586b47dce732df71d0b06b553ed7e3a"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_pos_tr.vkm",
+      "bytes": 7773,
+      "sha256": "a259004fd4b1ad49bc3d836ad3b3bbd1c20a62e6fa1e95f21dee9c13ff734d0d"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_pos_uk.vkm",
+      "bytes": 8070,
+      "sha256": "9f4802186ee61ce4be89aea5fb7d4235b6d692bff980f2f7a06b3bfdb4a013ea"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_sym.vkm",
+      "bytes": 8140,
+      "sha256": "478f7d46bcfa0547d2c3fe1fb410a854501e2833472fa47448f29110dfa09428"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_sym_be.vkm",
+      "bytes": 8202,
+      "sha256": "a0d7d54b468bf5be4ed643c2594c82916e9fa200fac0a8d8c4ddffe09a49033c"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_sym_da.vkm",
+      "bytes": 7889,
+      "sha256": "6ab95868fee51344af693453e9c09b3c790f2d0af535ccafdab4f7ad35d1fe6f"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_sym_de.vkm",
+      "bytes": 9605,
+      "sha256": "e786a29c19c655d020dccc1fcc4323af794e9958033e9e335bd7d8f326a9fe25"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_sym_fr.vkm",
+      "bytes": 8076,
+      "sha256": "5b5df4e79f4592508fd8333c45d884aacc9a0b0c0860fae134b72a8e03be98ae"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_sym_it.vkm",
+      "bytes": 10954,
+      "sha256": "2c998d86a9517a8eec2720a840abae80e11d8ddc0800c55e70df15b3adb62040"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_sym_nl.vkm",
+      "bytes": 8143,
+      "sha256": "ef9a8aaf4cb97c2e42a1f0eaccff4e86f34f98df6c2a2159a24690cd4cea86d2"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_sym_se.vkm",
+      "bytes": 8771,
+      "sha256": "19560e536800ded9d0e5d149c05acaf02e429488b83f8d0b24c66b6c0256f931"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_sym_tr.vkm",
+      "bytes": 7834,
+      "sha256": "d95d441fbfe3ba1b1c0cf6b2e64d7b78159125505ea57ed8f6568f0e1c3c5315"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_sym_uk.vkm",
+      "bytes": 8282,
+      "sha256": "291805b53e65c8c3fce152072608f4402f54408b94661863235d5bae1bc07a9a"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/gtk3_the64_de.vkm",
+      "bytes": 9370,
+      "sha256": "bb323aabcc7f6117aab8dbe6246c55898f9ee9c6b487a110f921e3fbec87d447"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/kernal-251104-04.bin",
+      "bytes": 8192,
+      "sha256": "81ad3a08920f2782ab031bb3ae02789d1f5f216c3d24d262e752a2b13e9faf73"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/kernal-390852-01.bin",
+      "bytes": 8192,
+      "sha256": "0a644f5e7f6ef8cb67b07e7a80f3f9a35584d9b131294c64f6e747a7e5c8a789"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/kernal-901227-01.bin",
+      "bytes": 8192,
+      "sha256": "f585600a2e47d0224459e878184d3f4cce2665bfcce65e61732530c6d89c4269"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/kernal-901227-02.bin",
+      "bytes": 8192,
+      "sha256": "675cf19a3e04bf68e41cc7a9010b353e51845ed9069db65496c52b79f1e1385f"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/kernal-901227-03.bin",
+      "bytes": 8192,
+      "sha256": "83c60d47047d7beab8e5b7bf6f67f80daa088b7a6a27de0d7e016f6484042721"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/kernal-901246-01.bin",
+      "bytes": 8192,
+      "sha256": "b2b430a134514af11f3ed64c0929fc5241d8436ba7b12514ec02d1b2cb2fd533"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/kernal-906145-02.bin",
+      "bytes": 8192,
+      "sha256": "48af48070ec9adda79ae7f65b772c422062eb12e69214a7cf788e6947a3b4117"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/lemon64.vpl",
+      "bytes": 441,
+      "sha256": "ba65a852097b7d581abd07603f586ca5016f0113110cec0127464ca310432c38"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/palette.vpl",
+      "bytes": 442,
+      "sha256": "ffd2484d3b502138a3b6824e46d19e200392dc629f9fa7045c635a5acaa788f8"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/palette_6569R1_v1r.vpl",
+      "bytes": 496,
+      "sha256": "9d0d7e7f230f1bcf9cb0d5bd35a2ec1060b908b0f935a30c80cf2d97afe9c683"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/palette_6569R5_v1r.vpl",
+      "bytes": 496,
+      "sha256": "7ad1d58be53edc28f6abaf2f42ec01dd9e6a9e0a9206c73d03a455d026f2c26a"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/palette_8565R2_v1r.vpl",
+      "bytes": 496,
+      "sha256": "9bea19e5c5c574dda560892dd63189fedff37e20438e299478c54622d7809364"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/palette_C64_amber.vpl",
+      "bytes": 503,
+      "sha256": "26ba9995968da3b9a992a2b6801942d17bdb65c8edf9b23022706f36b67b86d1"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/palette_C64_cyan.vpl",
+      "bytes": 492,
+      "sha256": "dbfd9001890508ed50d109a467658f66041e239b93b3d7b9d78f8038ba7dfc67"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/palette_C64_green.vpl",
+      "bytes": 503,
+      "sha256": "d5d8c21142c0f47fc30b6294ec9d71a76a4d117b6c550312aa5c2810b065ccb0"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/pc64.vpl",
+      "bytes": 396,
+      "sha256": "30072b164fd0137cd38799d95f2b5c7f4041bea4f1413a991747f40644a87463"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/pepto-ntsc-sony.vpl",
+      "bytes": 591,
+      "sha256": "d7487cb9ffe8b14926b2a69e3a4d726db8a9b0cbd13225af1f2b15b2002e610b"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/pepto-ntsc.vpl",
+      "bytes": 582,
+      "sha256": "10763039b2282e24f737c6ffae40c92e68407e13a5eda76acfd67612591d2365"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/pepto-pal.vpl",
+      "bytes": 493,
+      "sha256": "8601a72d62687450e5b015fd78974d6fdf008ec17ee25c8a234b959668ae032a"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/pepto-palold.vpl",
+      "bytes": 522,
+      "sha256": "779b7297e0673e928ce2c0d5f804b519fb525806ddb5bd3d1274d6aa3f677d83"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/pixcen.vpl",
+      "bytes": 438,
+      "sha256": "d9d0cde15a7c47eae67d3ddafe34942537e431d8fb4afeabe4d20691975464ce"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/ptoing.vpl",
+      "bytes": 397,
+      "sha256": "e810cca1244e062c77ebc1281473903c24de4762328ce43d68c84027e8a4252d"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/rgb.vpl",
+      "bytes": 491,
+      "sha256": "2909e259abbfcfff0da34c01d985969f9f70e49a7ab360381eedf1c3860237a8"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_joymap_keyrah_v3.vjm",
+      "bytes": 1190,
+      "sha256": "84d056d488c1682924bbb60086f72b0c889150f058b70bc8cd148006fb0d6fce"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_joymap_ps3.vjm",
+      "bytes": 1738,
+      "sha256": "40bd7d48ae8d8c434948bd6eea775ca7d600082b354f7bd9335b1dd0d835efbb"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_joymap_thec64.vjm",
+      "bytes": 1250,
+      "sha256": "07c866c2517de037fe1a291130aedb917823beeec1d21bce8701a19fed6c4891"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_joymap_xbox360.vjm",
+      "bytes": 757,
+      "sha256": "3b7b87cf6014223cd410052fc2cfe8a0d203b02f86cd61c56d772cd66bee1c47"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_keyrah.vkm",
+      "bytes": 12455,
+      "sha256": "28aa188889fb9eac99c9f81157fe9b4547098e75a41958d115273389eb8ae05d"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_keyrah_combian.vkm",
+      "bytes": 12523,
+      "sha256": "c18be00a53f861084165abf0a8fe55810d962abcdf68f1f3b454d021dc92b383"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_keyrah_de.vkm",
+      "bytes": 11924,
+      "sha256": "5b10e79e6c41f07487be99d4412028de1987f6bc7123d24be484148f5053930e"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_keyrah_retropie.vkm",
+      "bytes": 12469,
+      "sha256": "7ab980ad0d6db5aa7c3785368665823254f18bafb0eee65b36b3ce65411ae66a"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_keyrah_retropie_de.vkm",
+      "bytes": 12443,
+      "sha256": "3d30f7b4ff16e180518991312bbb97ba48734a7e716b1b6ad41571caaed5d8e5"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_pos.vkm",
+      "bytes": 10478,
+      "sha256": "db446496a278d47ba1327ce5b4ab2988596542a57517efced68dd8937c89ab36"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_pos_ch.vkm",
+      "bytes": 12001,
+      "sha256": "809ade0293c09cfb62be9672ee386bf22e1657a556d9c9bf9d457085b1b97102"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_pos_da.vkm",
+      "bytes": 11334,
+      "sha256": "489828c39da90854acfba3278976a1f568a9e7e21ec82188fb25ebf0ea4b168a"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_pos_de.vkm",
+      "bytes": 11493,
+      "sha256": "ab8452f548108f1d9ba747d0c728d9710f8646fbe19e2f6c3eccbe51fda99aca"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_pos_fi.vkm",
+      "bytes": 11340,
+      "sha256": "e701f373a94d9a9394f20d3f98a31c77408167920e5dc97f87dacf0f25ff985e"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_pos_no.vkm",
+      "bytes": 11215,
+      "sha256": "f3f88e4aeabc011a17d2148489150d30435e3146cc516a31f0d54c578ffa50ee"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_pos_tr.vkm",
+      "bytes": 10423,
+      "sha256": "11a5cf5603a2eebb197ffd94e4aa83ddc7983480da365f314b9b5c423c69a06e"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_pos_uk.vkm",
+      "bytes": 10488,
+      "sha256": "ac880b959f5e1517272b50d93618d17b7975d2d5a4e7e62185aa7c200d5d3468"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_sym.vkm",
+      "bytes": 11177,
+      "sha256": "883d122f3cba8c707ad47c8a50b37d158df1fc548a32ed3893386243dd3c4c38"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_sym_da.vkm",
+      "bytes": 11390,
+      "sha256": "6c1d2317ade3cd2ac6380ae223fddc4a6ed1ba298256ecdfa190b48320f86547"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_sym_de.vkm",
+      "bytes": 13704,
+      "sha256": "30ce36a16cb9190355a9f360d50dfe51d76c03ed68647c7d51d7251f0e46d3a3"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_sym_fr.vkm",
+      "bytes": 11481,
+      "sha256": "c247eeebb0953fc7010e67cab0ed49665bef299856712b861021f1692cc4793e"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_sym_it.vkm",
+      "bytes": 11722,
+      "sha256": "48ed248da32e64ecef8d70c3ea94c9ead1a596d9d8c88132cf2850e71c7c06b4"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_sym_nl.vkm",
+      "bytes": 11356,
+      "sha256": "95fcfa154b407a635c9e9864342d386299b42b28566f93b05ee30b7a8d5711d2"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_sym_tr.vkm",
+      "bytes": 11177,
+      "sha256": "7435cd95753ed34cd6011fa418988c59cea9f236e0e302461c732253db9f8cb4"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/sdl_sym_uk.vkm",
+      "bytes": 11261,
+      "sha256": "0d4e9824cae9de15b587b5a7023d8277484290acd1bad3d88eca090e10c65c00"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/the64.vpl",
+      "bytes": 418,
+      "sha256": "bcce3a4620cef2a64b114068ffb59446335f0d616a25bfec3111a09284989f00"
+    },
+    {
+      "path": ".tools/vice-headless-3.9/source/data/C64/vice.vpl",
+      "bytes": 412,
+      "sha256": "c4652015277cbd3eaa57a84327bfddb255571599a7caa97fe2d7c1c6cd4a501d"
+    },
+    {
+      "path": "scripts/audio_comparison.py",
+      "bytes": 16012,
+      "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+    },
+    {
+      "path": "scripts/listening_package.py",
+      "bytes": 20671,
+      "sha256": "6de03bdcbf4264c2c5a54f45eae640ade26992e8e60a9b6b6749a0512d921130"
+    },
+    {
+      "path": "scripts/psid_profile.py",
+      "bytes": 5704,
+      "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+    },
+    {
+      "path": "scripts/reference_intake.py",
+      "bytes": 17246,
+      "sha256": "06b7c594fee404b5487c041ff78275b5de0cb49dfb4640e51dd9adbb1ae14d99"
+    },
+    {
+      "path": "scripts/sid_audit_host.py",
+      "bytes": 3146,
+      "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+    },
+    {
+      "path": "scripts/sid_clock.py",
+      "bytes": 848,
+      "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+    },
+    {
+      "path": "scripts/sid_intake.py",
+      "bytes": 4733,
+      "sha256": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/probe-machine.py",
+      "bytes": 26977,
+      "sha256": "f8ae01c6b20b45a1d249e57ea65dbe68aead7dc5bded7ee9386d378751c66e8b"
+    },
+    {
+      "path": "scripts/studies/ghostbusters/probe-speech-handoff.py",
+      "bytes": 22569,
+      "sha256": "f36ce898bbbaad1644d2c7342a1dff000efe06d08b99d4c8bf8e0f5266110dd1"
+    },
+    {
+      "path": "scripts/trace-sid-vice.py",
+      "bytes": 19557,
+      "sha256": "1df0cdee65ad8d0d0258e9920d57682b1940311c98e532472b8e0cb621b89e8d"
+    },
+    {
+      "path": "scripts/verify_player.py",
+      "bytes": 9535,
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    }
+  ],
+  "privateArtifacts": {
+    "handoff-observations.json.gz": {
+      "path": "build/ghostbusters-speech-handoff/handoff-observations.json.gz",
+      "bytes": 3073354,
+      "sha256": "ce7df8c6ce08b14332226782bc3029c7bffc55c2d9bdd2231d6a230e0265dc34"
+    },
+    "capture/verification.json": {
+      "path": "build/ghostbusters-speech-handoff/capture/verification.json",
+      "bytes": 21160,
+      "sha256": "71df6d469614d568c099b74ac8436e7b8a0e6f66ff48b83a0fe6d9be9b5f224a"
+    },
+    "capture/commands.mon": {
+      "path": "build/ghostbusters-speech-handoff/capture/commands.mon",
+      "bytes": 2586,
+      "sha256": "70ef46406e6aa03657182b94b1be4a9dff64d3e032fd8ef94d294ca24141603e"
+    },
+    "capture/command.json": {
+      "path": "build/ghostbusters-speech-handoff/capture/command.json",
+      "bytes": 659,
+      "sha256": "3b98a52ebed4c9c48647d7ca8cff815ff2f2383168a1f6352d5aa7632fe18085"
+    }
+  },
+  "recommendation": "For the first native audition, generate a private speech payload from the independently verified encoded-descriptor decoder, retain no-write ticks, and play it at a declared fixed 102-cycle nominal cadence with measured command/music offsets. This removes source producer/consumer races deliberately; it does not replay captured/reordered amplitudes or original code-byte samples. Exact source-matching handoff requires interruptible handler publication, counter setup, pointer traversal and buffer work, not decoder parameters alone. Ten proved lost decrements match the eight/two additional store counts, but this does not establish complete waveform or timing equivalence.",
+  "limitations": "One unchanged original-source NTSC KERNAL-READY capture with two completed post-idle music bodies. Trace RAM peeks are read-only. Exec checkpoints precede instructions and store snapshots follow accesses; no exact SID bus timestamps, whole-machine/renderer state, PCM identity or explanation of all later speech mismatches. Full amplitude traces/payload/monitor logs remain private under build; only this aggregate summary is suitable for public retention."
+}

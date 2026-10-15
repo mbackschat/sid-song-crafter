@@ -1,0 +1,959 @@
+{
+  "header": {
+    "schemaVersion": 1,
+    "bytes": 6310,
+    "sha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde",
+    "format": "RSID",
+    "version": 2,
+    "dataOffset": 124,
+    "headerLoadAddress": 0,
+    "loadAddress": 36877,
+    "payloadBytes": 6184,
+    "endAddressExclusive": 43061,
+    "initAddress": 36877,
+    "playAddress": 0,
+    "subtunes": 5,
+    "defaultSubtune": 1,
+    "selectedSubtune": 1,
+    "speedWord": 0,
+    "flags": 24,
+    "clockDeclaration": "NTSC",
+    "sidModelDeclaration": "MOS6581",
+    "selectedTimingDeclaration": "machine-controlled",
+    "title": "Ghostbusters",
+    "author": "Russell Lieblich",
+    "released": "1984 Activision",
+    "callableProfile": {
+      "profile": "pal-banked",
+      "accepted": false,
+      "reason": "Audit requires a complete PSID header"
+    },
+    "limits": "Header declarations and current profile admission only; no driver execution, measured cadence, subtune-role identification or listening verdict."
+  },
+  "initialization": {
+    "entry": {
+      "checkpoint": 1,
+      "kind": "trace",
+      "operation": "exec",
+      "address": 36877,
+      "pc": 36877,
+      "bytes": "78",
+      "assembly": "SEI",
+      "a": 0,
+      "x": 0,
+      "y": 0,
+      "sp": 253,
+      "flags": "..-.....",
+      "rasterLine": 12,
+      "rasterCycle": 6,
+      "monitorCycle": 2137661,
+      "bodyIndex": null,
+      "phase": "init"
+    },
+    "beforeReturn": {
+      "checkpoint": 3,
+      "kind": "trace",
+      "operation": "exec",
+      "address": 37014,
+      "pc": 37014,
+      "bytes": "60",
+      "assembly": "RTS",
+      "a": 55,
+      "x": 255,
+      "y": 132,
+      "sp": 253,
+      "flags": "..-....C",
+      "rasterLine": 249,
+      "rasterCycle": 45,
+      "monitorCycle": 6768755,
+      "bodyIndex": null,
+      "phase": "init"
+    },
+    "internalMusicInit": {
+      "checkpoint": 8,
+      "kind": "trace",
+      "operation": "exec",
+      "address": 37858,
+      "pc": 37858,
+      "bytes": "a202",
+      "assembly": "LDX #$02",
+      "a": 132,
+      "x": 255,
+      "y": 0,
+      "sp": 250,
+      "flags": "N.-..I.C",
+      "rasterLine": 236,
+      "rasterCycle": 31,
+      "monitorCycle": 6767896,
+      "bodyIndex": null,
+      "phase": "init"
+    },
+    "idle": {
+      "checkpoint": 2,
+      "kind": "stop on",
+      "operation": "exec",
+      "address": 1027,
+      "pc": 1027,
+      "bytes": "4c0304",
+      "assembly": "JMP $0403",
+      "a": 55,
+      "x": 255,
+      "y": 132,
+      "sp": 255,
+      "flags": "..-....C",
+      "rasterLine": 255,
+      "rasterCycle": 4,
+      "monitorCycle": 6769104,
+      "bodyIndex": null,
+      "phase": "play"
+    },
+    "speechCommands": [
+      {
+        "command": 1,
+        "monitorCycle": 2202591
+      },
+      {
+        "command": 3,
+        "monitorCycle": 3892646
+      }
+    ],
+    "cyclesToIdle": 4631443
+  },
+  "capture": {
+    "requestedPostIdleBodies": 2,
+    "completedInitBodies": 0,
+    "completedPostIdleBodies": 2,
+    "completedBodies": 2,
+    "terminalBodyExecuted": false,
+    "initializedCycles": 4666541,
+    "initializedSeconds": 4.562840088309481,
+    "bodyIntervals": [
+      17095,
+      17095
+    ],
+    "rasterNormalizedIntervals": [
+      17095,
+      17095
+    ],
+    "frameCycles": 17095,
+    "scheduledRasterLine": 257,
+    "observedRasterLines": [
+      6
+    ],
+    "minimumBodyEntryLatency": 782,
+    "maximumBodyEntryLatency": 782,
+    "minimumBodyCycles": 175,
+    "maximumBodyCycles": 1036
+  },
+  "sid": {
+    "storeCount": 30162,
+    "readCount": 0,
+    "phaseStoreCounts": {
+      "init": 30140,
+      "play": 22
+    },
+    "physicalAddressCounts": {
+      "d400": 2,
+      "d401": 2,
+      "d402": 2,
+      "d403": 2,
+      "d404": 2,
+      "d405": 2,
+      "d406": 2,
+      "d407": 2,
+      "d408": 2,
+      "d409": 2,
+      "d40a": 2,
+      "d40b": 2,
+      "d40c": 2,
+      "d40d": 2,
+      "d40e": 2,
+      "d40f": 2,
+      "d410": 2,
+      "d411": 2,
+      "d412": 2,
+      "d413": 2,
+      "d414": 2,
+      "d415": 1,
+      "d416": 1,
+      "d417": 1,
+      "d418": 30117
+    },
+    "writers": {
+      "f0c8": {
+        "instruction": "STA $D418",
+        "bytes": "8d18d4",
+        "count": 568,
+        "addresses": [
+          "d418"
+        ],
+        "phases": {
+          "init": 568
+        }
+      },
+      "f088": {
+        "instruction": "STA $D418",
+        "bytes": "8d18d4",
+        "count": 14778,
+        "addresses": [
+          "d418"
+        ],
+        "phases": {
+          "init": 14778
+        }
+      },
+      "f0a9": {
+        "instruction": "STA $D418",
+        "bytes": "8d18d4",
+        "count": 14768,
+        "addresses": [
+          "d418"
+        ],
+        "phases": {
+          "init": 14768
+        }
+      },
+      "f0e9": {
+        "instruction": "STA $D418",
+        "bytes": "8d18d4",
+        "count": 2,
+        "addresses": [
+          "d418"
+        ],
+        "phases": {
+          "init": 2
+        }
+      },
+      "906a": {
+        "instruction": "STA $D400,X",
+        "bytes": "9d00d4",
+        "count": 24,
+        "addresses": [
+          "d400",
+          "d401",
+          "d402",
+          "d403",
+          "d404",
+          "d405",
+          "d406",
+          "d407",
+          "d408",
+          "d409",
+          "d40a",
+          "d40b",
+          "d40c",
+          "d40d",
+          "d40e",
+          "d40f",
+          "d410",
+          "d411",
+          "d412",
+          "d413",
+          "d414",
+          "d415",
+          "d416",
+          "d417"
+        ],
+        "phases": {
+          "init": 24
+        }
+      },
+      "94a5": {
+        "instruction": "STA $D401,Y",
+        "bytes": "9901d4",
+        "count": 3,
+        "addresses": [
+          "d401",
+          "d408",
+          "d40f"
+        ],
+        "phases": {
+          "play": 3
+        }
+      },
+      "94aa": {
+        "instruction": "STA $D400,Y",
+        "bytes": "9900d4",
+        "count": 3,
+        "addresses": [
+          "d400",
+          "d407",
+          "d40e"
+        ],
+        "phases": {
+          "play": 3
+        }
+      },
+      "94cb": {
+        "instruction": "STA $D404,Y",
+        "bytes": "9904d4",
+        "count": 3,
+        "addresses": [
+          "d404",
+          "d40b",
+          "d412"
+        ],
+        "phases": {
+          "play": 3
+        }
+      },
+      "94d1": {
+        "instruction": "STA $D402,Y",
+        "bytes": "9902d4",
+        "count": 3,
+        "addresses": [
+          "d402",
+          "d409",
+          "d410"
+        ],
+        "phases": {
+          "play": 3
+        }
+      },
+      "94d7": {
+        "instruction": "STA $D403,Y",
+        "bytes": "9903d4",
+        "count": 3,
+        "addresses": [
+          "d403",
+          "d40a",
+          "d411"
+        ],
+        "phases": {
+          "play": 3
+        }
+      },
+      "94dd": {
+        "instruction": "STA $D405,Y",
+        "bytes": "9905d4",
+        "count": 3,
+        "addresses": [
+          "d405",
+          "d40c",
+          "d413"
+        ],
+        "phases": {
+          "play": 3
+        }
+      },
+      "94e3": {
+        "instruction": "STA $D406,Y",
+        "bytes": "9906d4",
+        "count": 3,
+        "addresses": [
+          "d406",
+          "d40d",
+          "d414"
+        ],
+        "phases": {
+          "play": 3
+        }
+      },
+      "9486": {
+        "instruction": "STA $D418",
+        "bytes": "8d18d4",
+        "count": 1,
+        "addresses": [
+          "d418"
+        ],
+        "phases": {
+          "play": 1
+        }
+      }
+    }
+  },
+  "speech": {
+    "nmiEntryCount": 41050,
+    "nmiEntryPcCounts": {
+      "f0c3": 568,
+      "f083": 14778,
+      "f0a4": 14768,
+      "f0d9": 10934,
+      "f0e1": 2
+    },
+    "verifiedOpeningCommands": [
+      {
+        "command": 1,
+        "nmiEntryCount": 15151,
+        "volumeStoreCount": 12346,
+        "nmiEntryPcCounts": {
+          "f083": 6080,
+          "f0a4": 6072,
+          "f0c3": 193,
+          "f0d9": 2805,
+          "f0e1": 1
+        },
+        "volumeWriterCounts": {
+          "f088": 6080,
+          "f0a9": 6072,
+          "f0c8": 193,
+          "f0e9": 1
+        },
+        "timerBLatch": 101,
+        "timerBControl": 145,
+        "interruptMask": 130,
+        "firstNmiCycle": 2270226,
+        "lastNmiCycle": 3815562,
+        "nmiCheckpointIntervals": {
+          "count": 15150,
+          "minimum": 54,
+          "maximum": 150,
+          "histogram": {
+            "54": 4,
+            "55": 9,
+            "56": 6,
+            "57": 11,
+            "58": 39,
+            "59": 39,
+            "60": 92,
+            "61": 37,
+            "62": 38,
+            "63": 35,
+            "64": 16,
+            "65": 22,
+            "66": 19,
+            "67": 25,
+            "68": 29,
+            "69": 16,
+            "70": 20,
+            "71": 22,
+            "72": 20,
+            "73": 32,
+            "74": 22,
+            "75": 22,
+            "76": 17,
+            "77": 19,
+            "78": 25,
+            "79": 30,
+            "80": 23,
+            "81": 24,
+            "82": 16,
+            "83": 30,
+            "84": 13,
+            "85": 27,
+            "86": 24,
+            "87": 14,
+            "88": 19,
+            "89": 20,
+            "90": 9,
+            "91": 48,
+            "92": 13,
+            "93": 28,
+            "94": 22,
+            "95": 14,
+            "96": 31,
+            "97": 85,
+            "98": 450,
+            "99": 1214,
+            "100": 857,
+            "101": 2308,
+            "102": 2980,
+            "103": 2314,
+            "104": 1667,
+            "105": 704,
+            "106": 245,
+            "107": 248,
+            "108": 19,
+            "109": 28,
+            "110": 22,
+            "111": 36,
+            "112": 18,
+            "113": 16,
+            "114": 13,
+            "115": 24,
+            "116": 31,
+            "117": 13,
+            "118": 22,
+            "119": 16,
+            "120": 18,
+            "121": 21,
+            "122": 30,
+            "123": 26,
+            "124": 23,
+            "125": 19,
+            "126": 32,
+            "127": 17,
+            "128": 19,
+            "129": 28,
+            "130": 21,
+            "131": 19,
+            "132": 24,
+            "133": 10,
+            "134": 47,
+            "135": 15,
+            "136": 25,
+            "137": 19,
+            "138": 11,
+            "139": 17,
+            "140": 32,
+            "141": 33,
+            "142": 71,
+            "143": 31,
+            "144": 43,
+            "145": 42,
+            "146": 40,
+            "147": 21,
+            "148": 16,
+            "149": 6,
+            "150": 3
+          }
+        }
+      },
+      {
+        "command": 3,
+        "nmiEntryCount": 25899,
+        "volumeStoreCount": 17770,
+        "nmiEntryPcCounts": {
+          "f083": 8698,
+          "f0a4": 8696,
+          "f0c3": 375,
+          "f0d9": 8129,
+          "f0e1": 1
+        },
+        "volumeWriterCounts": {
+          "f088": 8698,
+          "f0a9": 8696,
+          "f0c8": 375,
+          "f0e9": 1
+        },
+        "timerBLatch": 101,
+        "timerBControl": 145,
+        "interruptMask": 130,
+        "firstNmiCycle": 3893822,
+        "lastNmiCycle": 6535399,
+        "nmiCheckpointIntervals": {
+          "count": 25898,
+          "minimum": 54,
+          "maximum": 150,
+          "histogram": {
+            "54": 4,
+            "55": 12,
+            "56": 17,
+            "57": 25,
+            "58": 62,
+            "59": 50,
+            "60": 156,
+            "61": 66,
+            "62": 50,
+            "63": 52,
+            "64": 30,
+            "65": 44,
+            "66": 43,
+            "67": 29,
+            "68": 82,
+            "69": 17,
+            "70": 44,
+            "71": 44,
+            "72": 28,
+            "73": 47,
+            "74": 34,
+            "75": 27,
+            "76": 44,
+            "77": 23,
+            "78": 33,
+            "79": 49,
+            "80": 50,
+            "81": 46,
+            "82": 25,
+            "83": 44,
+            "84": 32,
+            "85": 29,
+            "86": 45,
+            "87": 38,
+            "88": 30,
+            "89": 47,
+            "90": 15,
+            "91": 74,
+            "92": 22,
+            "93": 48,
+            "94": 30,
+            "95": 25,
+            "96": 42,
+            "97": 117,
+            "98": 829,
+            "99": 2024,
+            "100": 1510,
+            "101": 4009,
+            "102": 5094,
+            "103": 3877,
+            "104": 2922,
+            "105": 1255,
+            "106": 362,
+            "107": 388,
+            "108": 21,
+            "109": 47,
+            "110": 36,
+            "111": 49,
+            "112": 24,
+            "113": 49,
+            "114": 38,
+            "115": 36,
+            "116": 45,
+            "117": 37,
+            "118": 35,
+            "119": 35,
+            "120": 28,
+            "121": 44,
+            "122": 43,
+            "123": 44,
+            "124": 28,
+            "125": 20,
+            "126": 57,
+            "127": 26,
+            "128": 45,
+            "129": 47,
+            "130": 25,
+            "131": 39,
+            "132": 45,
+            "133": 15,
+            "134": 75,
+            "135": 34,
+            "136": 38,
+            "137": 32,
+            "138": 28,
+            "139": 47,
+            "140": 49,
+            "141": 44,
+            "142": 101,
+            "143": 50,
+            "144": 72,
+            "145": 91,
+            "146": 63,
+            "147": 41,
+            "148": 22,
+            "149": 6,
+            "150": 6
+          }
+        }
+      }
+    ],
+    "phaseNmiCounts": {
+      "init": 41050
+    },
+    "nmiCheckpointIntervals": {
+      "count": 41049,
+      "minimum": 54,
+      "maximum": 78260,
+      "histogram": {
+        "54": 8,
+        "55": 21,
+        "56": 23,
+        "57": 36,
+        "58": 101,
+        "59": 89,
+        "60": 248,
+        "61": 103,
+        "62": 88,
+        "63": 87,
+        "64": 46,
+        "65": 66,
+        "66": 62,
+        "67": 54,
+        "68": 111,
+        "69": 33,
+        "70": 64,
+        "71": 66,
+        "72": 48,
+        "73": 79,
+        "74": 56,
+        "75": 49,
+        "76": 61,
+        "77": 42,
+        "78": 58,
+        "79": 79,
+        "80": 73,
+        "81": 70,
+        "82": 41,
+        "83": 74,
+        "84": 45,
+        "85": 56,
+        "86": 69,
+        "87": 52,
+        "88": 49,
+        "89": 67,
+        "90": 24,
+        "91": 122,
+        "92": 35,
+        "93": 76,
+        "94": 52,
+        "95": 39,
+        "96": 73,
+        "97": 202,
+        "98": 1279,
+        "99": 3238,
+        "100": 2367,
+        "101": 6317,
+        "102": 8074,
+        "103": 6191,
+        "104": 4589,
+        "105": 1959,
+        "106": 607,
+        "107": 636,
+        "108": 40,
+        "109": 75,
+        "110": 58,
+        "111": 85,
+        "112": 42,
+        "113": 65,
+        "114": 51,
+        "115": 60,
+        "116": 76,
+        "117": 50,
+        "118": 57,
+        "119": 51,
+        "120": 46,
+        "121": 65,
+        "122": 73,
+        "123": 70,
+        "124": 51,
+        "125": 39,
+        "126": 89,
+        "127": 43,
+        "128": 64,
+        "129": 75,
+        "130": 46,
+        "131": 58,
+        "132": 69,
+        "133": 25,
+        "134": 122,
+        "135": 49,
+        "136": 63,
+        "137": 51,
+        "138": 39,
+        "139": 64,
+        "140": 81,
+        "141": 77,
+        "142": 172,
+        "143": 81,
+        "144": 115,
+        "145": 133,
+        "146": 103,
+        "147": 62,
+        "148": 38,
+        "149": 12,
+        "150": 9,
+        "78260": 1
+      }
+    },
+    "volumeStoreCount": 30117,
+    "volumeWriterCounts": {
+      "f0c8": 568,
+      "f088": 14778,
+      "f0a9": 14768,
+      "f0e9": 2,
+      "9486": 1
+    },
+    "phaseVolumeCounts": {
+      "init": 30116,
+      "play": 1
+    },
+    "firstVolumeCycle": 2270239,
+    "lastVolumeCycle": 6770519,
+    "cia2TimerBWrites": [
+      {
+        "pc": 62575,
+        "address": 56591,
+        "value": 144,
+        "monitorCycle": 2202738
+      },
+      {
+        "pc": 62592,
+        "address": 56591,
+        "value": 145,
+        "monitorCycle": 2204678
+      },
+      {
+        "pc": 62597,
+        "address": 56582,
+        "value": 101,
+        "monitorCycle": 2204684
+      },
+      {
+        "pc": 62602,
+        "address": 56583,
+        "value": 0,
+        "monitorCycle": 2204690
+      },
+      {
+        "pc": 62607,
+        "address": 56589,
+        "value": 130,
+        "monitorCycle": 2204696
+      },
+      {
+        "pc": 61668,
+        "address": 56591,
+        "value": 144,
+        "monitorCycle": 3815571
+      },
+      {
+        "pc": 62575,
+        "address": 56591,
+        "value": 144,
+        "monitorCycle": 3892836
+      },
+      {
+        "pc": 62592,
+        "address": 56591,
+        "value": 145,
+        "monitorCycle": 3893688
+      },
+      {
+        "pc": 62597,
+        "address": 56582,
+        "value": 101,
+        "monitorCycle": 3893694
+      },
+      {
+        "pc": 62602,
+        "address": 56583,
+        "value": 0,
+        "monitorCycle": 3893700
+      },
+      {
+        "pc": 62607,
+        "address": 56589,
+        "value": 130,
+        "monitorCycle": 3893706
+      },
+      {
+        "pc": 61668,
+        "address": 56591,
+        "value": 144,
+        "monitorCycle": 6535408
+      }
+    ],
+    "nmiVectorWriteCount": 2492,
+    "nmiVectorWriterCounts": {
+      "f44d": 2,
+      "f452": 2,
+      "f0f5": 728,
+      "f099": 689,
+      "f0be": 529,
+      "f0d4": 542
+    },
+    "nmiVectorValuesByAddress": {
+      "fffa": [
+        131,
+        164,
+        195,
+        217,
+        225
+      ],
+      "fffb": [
+        240
+      ]
+    }
+  },
+  "listeningReview": null,
+  "limitations": "Controlled NTSC VICE KERNAL-READY real-JSR host with matching selected init/VIC/CIA entry seeds, not original-game or complete renderer cold-state identity. Physical SID $D400\u2013$D7FF reads/stores cover init and retained music calls; dummy accesses disabled. Exec checkpoints precede instructions, access checkpoints follow instructions; neither is an exact SID bus timestamp. Full amplitude streams and monitor logs remain private. No full score form, independent synthesis, speech decoder, physical hardware, PCM identity or musical acceptance claim.",
+  "monitorContract": {
+    "sidStoreRange": [
+      54272,
+      55295
+    ],
+    "sidReadRange": [
+      54272,
+      55295
+    ],
+    "ciaStoreAndReadRange": [
+      56320,
+      56831
+    ],
+    "vicStoreAndReadRange": [
+      53265,
+      53274
+    ],
+    "ramVectorStoreRange": [
+      65530,
+      65535
+    ],
+    "kernalVectorStoreRange": [
+      788,
+      793
+    ],
+    "cpuPortSnapshots": [
+      [
+        "2f",
+        "37"
+      ],
+      [
+        "2f",
+        "37"
+      ],
+      [
+        "2f",
+        "36"
+      ]
+    ],
+    "sourceCpuPortWrites": 7,
+    "kernalCiaDispatchPortWrites": 3,
+    "kernalVideoSnapshots": [
+      "00",
+      "00",
+      "00"
+    ],
+    "rasterComparatorSnapshots": [
+      311,
+      257,
+      257
+    ],
+    "dummyAccessesIncluded": false,
+    "coverage": "All registered checkpoints enabled throughout init and retained bodies; no quiet/skipped window."
+  },
+  "schemaVersion": 1,
+  "sourceSha256": "f7f05616972d7fd5ad31df91284edbf4e0917d39422f8d004d50b40501a0dcde",
+  "tools": {
+    "probeSha256": "f8ae01c6b20b45a1d249e57ea65dbe68aead7dc5bded7ee9386d378751c66e8b",
+    "viceSha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285",
+    "traceGrammarSha256": "1df0cdee65ad8d0d0258e9920d57682b1940311c98e532472b8e0cb621b89e8d",
+    "clockSha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48",
+    "inspectorSha256": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0"
+  },
+  "host": {
+    "base": 1024,
+    "idle": 1027,
+    "init": 36877,
+    "initA": 0,
+    "initX": 0,
+    "initY": 0,
+    "stackBeforeJsr": 255,
+    "flags": 32,
+    "initialCpuPort": 55,
+    "speechCpuPort": 53,
+    "musicCpuPort": 54,
+    "idleCpuPort": 55,
+    "irqVector": 37074,
+    "vicD011": 155,
+    "vicD012": 55,
+    "cia1TimerA": 17045,
+    "cia1ControlA": 1,
+    "clock": "NTSC",
+    "sidModel": "MOS6581",
+    "cia1Model": 1,
+    "cia2Model": 1,
+    "setupBasis": "libsidplayfp 3.1.1 psiddrv.a65 cold/vicinit/ciainit/setregs/idle and psiddrv.cpp selected-song/flags; actual KERNAL NTSC byte and VIC comparator are checked. KERNAL-READY RAM differs from renderer power-on initialization."
+  },
+  "privateArtifacts": {
+    "payload.prg": {
+      "bytes": 6186,
+      "sha256": "d83858345a4f2893ad9dfd30915f67370cdee2a1c1f09747cc2f1470a99da3e4"
+    },
+    "host.prg": {
+      "bytes": 8,
+      "sha256": "38653fc013088a8782698438b141bfb4f37b9d27894e042c486279a8e350a153"
+    },
+    "trace.json.gz": {
+      "bytes": 3076340,
+      "sha256": "2543d7071d0241be851a10179bd116da92a7c28d64983561c2ec4cb5c1376709"
+    },
+    "monitor.log.gz": {
+      "bytes": 6746297,
+      "sha256": "94e17badf0116f5c9702867d05b024e805093bd873efd2d5fbfd10cdb8b39de7"
+    },
+    "process.log.gz": {
+      "bytes": 7046453,
+      "sha256": "e423a3fba2e4ad95eeae75a49b5458deecf544bef007b1e0241f7e52d0acc64d"
+    }
+  }
+}

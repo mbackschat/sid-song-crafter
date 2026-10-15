@@ -31,6 +31,7 @@ Use the [musical gesture library](gestures/README.md) for groove, chord response
 | [Take On Me tonal programs](instruments/take-on-me-decoded-programs.md) | One-way pulse lead and harmonic replies with delayed vibrato, plus moving-pulse filtered bass; matched A440 familiar transfer accepted for instruments, balance and ending. |
 | [Billie Jean pulse lead and filtered support](instruments/billie-jean-decoded-programs.md) | Native pitch accents, delayed vibrato and shared-filter-compatible support; matched familiar transfer accepted (“plays nice”). An unfiltered patch can still reset shared cutoff at note setup. |
 | [Airwolf static tones](instruments/airwolf-static-tones.md) | Fixed pulse widths and triangle support with note-triggered envelopes; matched familiar transfer accepted as “music is nice”. Preserve init timing and distinguish hold from a gated rest. |
+| [Ghostbusters static patches and shared-phase vibrato](instruments/ghostbusters-decoded-programs.md) | Fixed pulse/saw/noise patches, one-sided shared-phase vibrato and native score-owned release; execution verified, musical transfer verdict pending. |
 
 ## Reference material worth learning from
 

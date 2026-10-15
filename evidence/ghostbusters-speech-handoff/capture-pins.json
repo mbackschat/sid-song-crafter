@@ -1,0 +1,22 @@
+{
+  "binding": "Base tools were pinned by the capture receipt; wrapper bytes were preserved immediately after the run, before checker correction.",
+  "wrapper": {
+    "path": "scripts/studies/ghostbusters/probe-speech-handoff.py",
+    "bytes": 13833,
+    "sha256": "7446ae76c1a2ed53d9efadb79ac3c632dca14e2892af30afb65d93f689bb2ea1"
+  },
+  "retainedWrapper": {
+    "path": "build/ghostbusters-speech-handoff/capture-wrapper.py",
+    "bytes": 13833,
+    "sha256": "7446ae76c1a2ed53d9efadb79ac3c632dca14e2892af30afb65d93f689bb2ea1"
+  },
+  "baseTools": {
+    "probeSha256": "f8ae01c6b20b45a1d249e57ea65dbe68aead7dc5bded7ee9386d378751c66e8b",
+    "viceSha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285",
+    "traceGrammarSha256": "1df0cdee65ad8d0d0258e9920d57682b1940311c98e532472b8e0cb621b89e8d",
+    "clockSha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48",
+    "inspectorSha256": "483f2eb9cc397c8d5ef4285bd84fe9a73c37bbfbf7534c9cb8cd3ca05d9bfcd0"
+  },
+  "additionalCaptureDependencies": null,
+  "limitation": "The initial wrapper did not persist its additional imported-module/ROM pins before execution; these are bound as current analysis dependencies only."
+}

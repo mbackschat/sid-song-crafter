@@ -17396,6 +17396,66 @@
       "originalBytes": 802,
       "sha256": "b9b7e71bd1c6d43e6ccabf82e99e07f65eb5c3755e726b9dd38e050cd10cd929",
       "bytes": 802
+    },
+    {
+      "path": "evidence/ghostbusters-speech-handoff/summary.json",
+      "originalPath": "build/ghostbusters-speech-handoff/summary.json",
+      "group": "ghostbusters-speech-handoff",
+      "reason": "Retain directly observed counter races, source timing offsets and scoped serialized-playback recommendation; no amplitude stream.",
+      "originalSha256": "9e5e77d3f8ffbba5153b9c11bc9c1eea88ba362aff63ec2a2e4ca8f9d33cf569",
+      "originalBytes": 39641,
+      "sha256": "9e5e77d3f8ffbba5153b9c11bc9c1eea88ba362aff63ec2a2e4ca8f9d33cf569",
+      "bytes": 39641
+    },
+    {
+      "path": "evidence/ghostbusters-speech-handoff/capture-verification.json",
+      "originalPath": "build/ghostbusters-speech-handoff/capture/verification.json",
+      "group": "ghostbusters-speech-handoff",
+      "reason": "Retain initialized machine counts and capture-time base tool fingerprints without source audio.",
+      "originalSha256": "71df6d469614d568c099b74ac8436e7b8a0e6f66ff48b83a0fe6d9be9b5f224a",
+      "originalBytes": 21160,
+      "sha256": "71df6d469614d568c099b74ac8436e7b8a0e6f66ff48b83a0fe6d9be9b5f224a",
+      "bytes": 21160
+    },
+    {
+      "path": "evidence/ghostbusters-speech-handoff/commands.mon",
+      "originalPath": "build/ghostbusters-speech-handoff/capture/commands.mon",
+      "group": "ghostbusters-speech-handoff",
+      "reason": "Retain read-only monitor checkpoint and RAM snapshot commands.",
+      "originalSha256": "70ef46406e6aa03657182b94b1be4a9dff64d3e032fd8ef94d294ca24141603e",
+      "originalBytes": 2586,
+      "sha256": "70ef46406e6aa03657182b94b1be4a9dff64d3e032fd8ef94d294ca24141603e",
+      "bytes": 2586
+    },
+    {
+      "path": "evidence/ghostbusters-speech-handoff/command.json",
+      "originalPath": "build/ghostbusters-speech-handoff/capture/command.json",
+      "group": "ghostbusters-speech-handoff",
+      "reason": "Retain exact emulator invocation and target settings.",
+      "originalSha256": "3b98a52ebed4c9c48647d7ca8cff815ff2f2383168a1f6352d5aa7632fe18085",
+      "originalBytes": 659,
+      "sha256": "3b98a52ebed4c9c48647d7ca8cff815ff2f2383168a1f6352d5aa7632fe18085",
+      "bytes": 659
+    },
+    {
+      "path": "evidence/ghostbusters-speech-handoff/capture-pins.json",
+      "originalPath": "build/ghostbusters-speech-handoff/capture-pins.json",
+      "group": "ghostbusters-speech-handoff",
+      "reason": "Distinguish persisted capture pins from current analysis dependencies and retain the missing-pin limitation.",
+      "originalSha256": "19d882327914d16ddd556fc4a8043ae098fa3c64521aca646e0f4f7305ff75b0",
+      "originalBytes": 1210,
+      "sha256": "19d882327914d16ddd556fc4a8043ae098fa3c64521aca646e0f4f7305ff75b0",
+      "bytes": 1210
+    },
+    {
+      "path": "evidence/ghostbusters-speech-handoff/capture-wrapper.py",
+      "originalPath": "build/ghostbusters-speech-handoff/capture-wrapper.py",
+      "group": "ghostbusters-speech-handoff",
+      "reason": "Retain our exact original capture wrapper before later checker corrections; includes no original SID code or data.",
+      "originalSha256": "7446ae76c1a2ed53d9efadb79ac3c632dca14e2892af30afb65d93f689bb2ea1",
+      "originalBytes": 13833,
+      "sha256": "7446ae76c1a2ed53d9efadb79ac3c632dca14e2892af30afb65d93f689bb2ea1",
+      "bytes": 13833
     }
   ],
   "independentShadesSources": {

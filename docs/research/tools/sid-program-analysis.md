@@ -24,6 +24,12 @@ Each retained study needs source identity and source status, the audible target,
 
 Use the [local capability assessment](skills-and-integrations.md) to select the tools for each step. Skills supply hardware and debugger guidance; the VICE monitor supplies executed machine evidence; the bounded Python tracer supplies searchable instruction/data records; the renderer supplies repeatable listening files. Inspect a driver's update schedule and hardware dependencies before choosing a RAM-only or controlled-harness experiment.
 
+## Check interrupt handoffs separately from decoder arithmetic
+
+An independently correct serialized decoder can disagree with its original machine because an interrupt consumes partially initialized shared state. The [Ghostbusters handoff proof](../composition/ghostbusters-preparation.md#serialized-speech-decoding-and-timing-boundary) observes vector publication before counter setup, a nested decrement overwritten on return, and a surviving pointer increment that changes subsequent reverse traversal. Matching a small difference in event counts does not prove that deleting that many samples restores the waveform.
+
+When this class of mismatch blocks delivery, observe handler publication, the relevant state writes, pre-instruction execution points and stack depth in one bounded initialized capture. Confirm a second occurrence and distinguish directly observed accesses from consequences inferred from handler semantics. Preserve a serialized implementation as its own explicit contract; either reproduce interleaving when required or label the scheduling adaptation and test its audible result. Do not silently equate single-handler CPU agreement with complete machine or PCM equivalence.
+
 ## Bounded DRAX bass experiment
 
 This study concerns the bass entrance and release in the preferred 2.02–2.75-second Für Elise fragment. The exact input is the archived DRAX PSID, SHA-256 `ea6b7eba46844d399e415368eae86c3ddf03bd9041ecba93e7bb53b384daa2a1`: one declared MOS6581, PAL VBI, init `$1000`, play `$1003`. The recorded program window is zero-based play calls 99–150, reached by executing init and all preceding calls. Audio time and call number have a startup offset; use the identified attack sequence to align the fragment, rather than treating `call / PAL rate` as an exact WAV timestamp. The listener confirms vibrancy in the diagnostic bass alone and likes bass with chord; neither finding identifies a synthesis parameter by itself.
