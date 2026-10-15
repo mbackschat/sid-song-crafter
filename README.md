@@ -1,8 +1,12 @@
 # SID Song Crafter
 
-A composition and sound-design workbench for the **Commodore 64 SID chip**, supporting **single- and dual-SID music**.
+A workbench for creative interpretations of existing musical scores on the **Commodore 64 SID chip**, supporting **single-SID and dual-SID stereo music**.
 
-The current focus is mapping existing musical scores to inspiring SID interpretations through instruments, arrangements, articulation, effects and stereo—not composing new scores. Songs serve as case studies for learning sound design, preserving useful findings and improving the next arrangement. Sound quality is the priority: learn from the masters, study their editors and drivers, and build a tested instrument repertoire. The working targets are PAL with one MOS6581/MOS8580 or two matching chips at `$D400/$D420`; native recipes default to MOS8580 and can select `sidModel: "MOS6581"`. Original musical sources, common scores, and SID arrangements remain separate so conversion does not erase source information or define the chip's expressive limits.
+SID Song Crafter builds and uses a body of musical and technical knowledge to turn a given score into an inspiring SID performance. Creativity lies in choosing instruments, arranging the voices, shaping phrasing and applying effects or stereo to express the song's character. Making full use of the chip includes subtlety and restraint when the music calls for them. Original score composition is outside the current remit unless explicitly requested; see the [product purpose and scope](PRODUCTS.md).
+
+Studies of SID composers, editors and drivers feed an executable library of instruments, arrangement techniques, examples and reusable tools, with listening evidence and limitations. Each new interpretation should apply and extend that knowledge so the next song benefits from what was learned. Original musical sources, common scores and SID arrangements remain separate so conversion does not erase source information or define the chip's expressive limits.
+
+The working targets are PAL with one MOS6581/MOS8580 or two matching chips at `$D400/$D420`; native recipes default to MOS8580 and can select `sidModel: "MOS6581"`.
 
 ## Start here
 
