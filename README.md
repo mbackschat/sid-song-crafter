@@ -2,11 +2,11 @@
 
 A composition and sound-design workbench for the **Commodore 64 SID chip**, supporting **single- and dual-SID music**.
 
-Songs serve as case studies for learning sound design, preserving useful findings and improving the next arrangement. Sound quality is the priority: learn from the masters, study their editors and drivers, and build a tested instrument repertoire. The working targets are PAL with one MOS6581/MOS8580 or two matching chips at `$D400/$D420`; native recipes default to MOS8580 and can select `sidModel: "MOS6581"`. Original musical sources, common scores, and SID arrangements remain separate so conversion does not erase source information or define the chip's expressive limits.
+The current focus is mapping existing musical scores to inspiring SID interpretations through instruments, arrangements, articulation, effects and stereo—not composing new scores. Songs serve as case studies for learning sound design, preserving useful findings and improving the next arrangement. Sound quality is the priority: learn from the masters, study their editors and drivers, and build a tested instrument repertoire. The working targets are PAL with one MOS6581/MOS8580 or two matching chips at `$D400/$D420`; native recipes default to MOS8580 and can select `sidModel: "MOS6581"`. Original musical sources, common scores, and SID arrangements remain separate so conversion does not erase source information or define the chip's expressive limits.
 
 ## Start here
 
-- [Night Transit original composition trial](songs/night-transit/README.md): reuse accepted sounds without new infrastructure; melody revision awaits listening feedback.
+- [Current interpretation queue](docs/research/study-plan.md#active-score-interpretation-trial): Moon River, then The Pink Panther Theme; Axel F as later training material. [Night Transit](songs/night-transit/README.md) is closed as a rejected original composition.
 - [Documentation](docs/README.md): setup, composition, audio, validation and architecture guides.
 - [Tool boundaries](scripts/README.md): supported workflows and composition backends, source-specific study tools and compatibility exceptions.
 - [Study plan](docs/research/study-plan.md#delivery-order-and-work-in-progress): finish one musical case through listening and reuse on different musical material before deepening the next; retained preparation covers Flashdance, six master-composer studies and four later pop/theme studies.

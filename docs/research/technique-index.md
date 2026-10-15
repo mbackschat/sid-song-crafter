@@ -36,6 +36,7 @@ Start here before selecting instruments, arranging voices, explaining a techniqu
 
 | Task | Existing route |
 | --- | --- |
+| Existing score; creative interpretation; invented melody; bad harmony; source-backed arrangement | [Musical contract](../workflows/song-workflow.md#current-musical-contract): use an attributed score, retain it separately, and express creativity through SID sound/arrangement. [Night Transit](../../songs/night-transit/README.md) was rejected despite liked sounds and successful playback; structural checks did not establish good composition. |
 | Map musical roles to executed SID programs and reconstruct a complete texture | [Bidirectional DRAX trio mapping](composition/instruments/drax-decoded-trio.md), [independent three-voice implementation](../../songs/studies/drax-full-reconstruction/README.md): [complete-theme workflow](../workflows/decoded-song-workflow.md): editable description to our own code; full ordered-write comparison |
 | Understand a master's sound; reverse-engineer an instrument; register timing; 6502/6510; VICE debugger | [Executed SID program experiments](tools/sid-program-analysis.md): connect writes to instructions and instrument data, then audition controlled changes before translating the mechanism |
 | CIA timing; non-video-frame cadence; timer latch; opcode cycle discrepancy | [CIA tracing contract](../validation/cia-tracing.md), [CPU opcode timing lookup](../validation/cpu-timing.md), [Shades form and source lookup](composition/shades-preparation.md) |

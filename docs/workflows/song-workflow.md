@@ -2,6 +2,14 @@
 
 The workflow preserves the original music and separates musical interpretation from SID programming. A common score is an intermediate view, not a lossless replacement for every source format or the limit of SID expression.
 
+## Current musical contract
+
+Start with a given, attributed score. Original score composition is outside the current remit. Verify source melody, harmonic parts, timing, repeats and ending before sound design; preserve them separately from the SID arrangement. A transcription or arrangement must be identified as such, not silently treated as the composer's original edition.
+
+Choose SID instruments, voice allocation, reductions, articulation, groove, modulation and effects to express the score's character. Single- and dual-SID arrangements are both valid; choose stereo when its musical roles justify it. Record departures such as octave shifts, omitted inner voices, arpeggiated chords or altered phrasing so the listener can distinguish source content from interpretation. Technical note/cadence checks do not establish compelling music, as the [rejected Night Transit trial](../../songs/night-transit/README.md) demonstrated.
+
+Present the source recording or a clearly labelled plain rendering of the same retained score alongside each SID audition. Judge source preservation and artistic interpretation separately. Reuse the existing repertoire and recipe tools, measure execution effort honestly, and require listening acceptance before claiming musical productivity.
+
 ## Information boundaries
 
 | Layer | Responsibility | Retained evidence |
@@ -15,7 +23,7 @@ Importing and arranging are different operations. A three-voice chord reduction 
 
 ## SID expression
 
-The chip-specific layer must remain independent of the common score. SID compositions can be authored directly and need not pass through MIDI or a note-only representation. Evolving waveforms, pulse-width modulation, frequency slides, vibrato, fast arpeggios, envelope changes, shared-filter automation, sync, and ring modulation belong at this layer; their timing and voice dependencies are musical data too. See [the hardware research](../research/sid/hardware.md) for chip semantics.
+The chip-specific layer must remain independent of the common score. SID arrangements can be authored directly and need not pass through MIDI or a note-only representation; direct chip authoring does not change the requirement to retain the underlying musical source. Evolving waveforms, pulse-width modulation, frequency slides, vibrato, fast arpeggios, envelope changes, shared-filter automation, sync, and ring modulation belong at this layer; their timing and voice dependencies are musical data too. See [the hardware research](../research/sid/hardware.md) for chip semantics.
 
 The current [three-voice exporter](../architecture/three-voice-player.md) implements a deliberately smaller subset: fixed instruments and frame-scheduled pitched notes on one PAL/8580 SID. Its assembly player consumes register writes, but the public score compiler does not yet expose arbitrary register automation. Neither this format nor its frame scheduler claims support for all SID techniques, cycle-timed sample playback, or two chips. Adding an effect requires an explicit player/compiler capability and verification, not silently flattening it into notes.
 

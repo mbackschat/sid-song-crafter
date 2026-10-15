@@ -8,7 +8,9 @@ Use the [study plan](docs/research/study-plan.md) for the active case and next m
 
 The [Bach Toccata musical trial](docs/research/composition/bach-toccata.md#experiment-closure-and-reusable-outcome) is closed by user instruction on 2026-10-14. Preserve the accepted complete mono version at commit `5b61384` and the preferred subtraction passage. Integrated lead motion was liked at the opening; additional replies, pitched attacks and stronger repeating percussion did not meet the intended role. The final bass-phrasing candidate is parked, unreviewed and not selected; do not resume optional Bach or stereo experiments without a new request.
 
-The active task is the [Night Transit composition trial](songs/night-transit/README.md): reuse existing sounds to make another compelling piece and measure effort. The first palette/balance is liked, but the melody is rejected; musical revision remains required.
+The active task is a score-backed SID interpretation of **Moon River** (the requested Breakfast at Tiffany's theme), followed by **The Pink Panther Theme**. **Axel F** is queued as later training material. Follow the [current interpretation queue](docs/research/study-plan.md#active-score-interpretation-trial). The [Night Transit trial](songs/night-transit/README.md) is closed as musically rejected; do not continue composing or revising its score.
+
+The current task is creative interpretation of a given, attributed musical score, not original score composition. Keep the source melody, harmony and form as the musical foundation; express creativity through SID instruments, voicing and reduction, articulation, groove, modulation, effects and deliberate single- or dual-SID spatial roles. Retain the source separately and document arrangement departures. Use effects for a musical purpose, not merely to demonstrate every capability. Do not invent a replacement melody or harmonic progression unless the user explicitly requests original composition.
 
 Current verified work and continuation:
 
@@ -32,7 +34,7 @@ Use the [reference-intake workflow](docs/workflows/reference-intake.md) for repe
 
 Before additional analysis, name the unresolved question, the deliverable or decision it blocks, and the evidence that will settle it. Once that evidence passes, advance to the next delivery stage. Reopen only for changed inputs, a demonstrated mismatch or an explicit expansion of the supported contract. Follow the [delivery and reuse workflow](docs/workflows/decoded-song-workflow.md#deliver-one-musical-case) without weakening required execution or full-form checks.
 
-Use a familiar, source-backed phrase as the default transfer test, with a same-material reference. This separates instrument usefulness from the quality of a newly invented composition. Original composition remains valuable but is a separate musical judgment, not a prerequisite for every instrument study.
+Use a familiar, source-backed phrase as the default transfer test, with a same-material reference. This separates instrument usefulness from the quality of a newly invented composition. Original score composition is outside the current remit; use supplied or sourced musical scores unless the user explicitly changes that scope.
 
 ## Checkpoints and documentation
 

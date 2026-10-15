@@ -2,13 +2,23 @@
 
 ## Product and outcome
 
-**SID Song Crafter — a composition and sound-design workbench for the Commodore 64 SID chip, supporting single- and dual-SID music.** Turn musical ideas and existing songs into expressive single- and dual-SID arrangements. Its value is making the **next great-sounding song easier to create** through a growing, executable repertoire. The playback engine is one component alongside source preservation, SID-native authoring, program analysis, musical knowledge and listening comparisons.
+**SID Song Crafter — a composition and sound-design workbench for the Commodore 64 SID chip, supporting single- and dual-SID music.** Map given, attributed musical scores into expressive single- and dual-SID arrangements. Original score composition is outside the current remit; creativity belongs in the SID interpretation. Its value is making the **next great-sounding song easier to create** through a growing, executable repertoire. The playback engine is one component alongside source preservation, SID-native authoring, program analysis, musical knowledge and listening comparisons.
 
 Each study must leave reusable instruments, effects or arrangement methods, with evidence connecting **musical intention → editable description → SID programming** and back. Follow the [analysis procedure](tools/sid-program-analysis.md), [composition workflow](../workflows/decoded-song-workflow.md) and [technique index](technique-index.md). This plan owns priorities and completion state; owning studies retain findings and provenance.
 
-## Active composition productivity trial
+## Active score interpretation trial
 
-[Night Transit](../../songs/night-transit/README.md) is the next task: create a compelling original 60–90-second single-SID piece using existing repertoire and measure effort without adding infrastructure. First draft playback is verified on PAL/NTSC; the listener supports its sounds and balance but rejects the melody. Revise the composition before claiming success. Preserve the completed study scopes below.
+The user clarified the goal on 2026-10-15: interpret an existing score creatively through SID instruments, arrangement, effects and optionally stereo; do not compose an original score. Preserve melody, harmony and form in the source, and record deliberate adaptations separately. Assess whether repertoire reuse makes a compelling interpretation easier to produce; build speed alone is not success.
+
+| Order | Material | Intended work and state |
+| --- | --- | --- |
+| 1 | **Moon River**, Henry Mancini, from *Breakfast at Tiffany's* | Active source intake; interpret the user's film-theme request as Moon River. Source-backed melody and harmony, singing lead and warm spacious support. Prepare a reference alongside the first SID audition. |
+| 2 | **The Pink Panther Theme**, Henry Mancini | Requested next interpretation; prepare source provenance only while Moon River is active. Preserve the distinctive melodic/bass relationship and source rhythmic character; explore articulation and playful timbral effects. |
+| 3 | **Axel F**, Harold Faltermeyer | User-proposed later training material. Start from its musical score; an existing successful SID interpretation may later provide a separate comparative study, not substitute for score intake or be presented as our work. No source selected yet. |
+
+Choose single versus dual SID by the source's musical roles and the intended spatial result. Reuse the existing repertoire and build/listening tools before adding infrastructure. Keep third-party score downloads and reference audio local unless redistribution rights are established; retain URLs, attribution, fingerprints and reproducible intake settings. Do not ask the user for routine source/arrangement choices; ask for focused sound-sample feedback.
+
+[Night Transit](../../songs/night-transit/README.md) is closed as rejected: the user liked the sounds and balance but rejected both the initial and revised composition, describing the latter as not harmonic and bad composition. Its invented melody, bass and harmony were our choice, not a supplied score. The retained playback evidence does not establish musical quality or a productivity gain. Preserve it as a failed scope choice; do not iterate on it further.
 
 ## Scope and order
 

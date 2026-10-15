@@ -78,7 +78,8 @@
     "sha256": "dba9dd6230e28604a4514807da616236f092e089dd27db2074510eca07181ca0",
     "verbatim": "yes, feel engaging and melodic, with a warm bass and clear lead .  But melody (composition) is not nice, however this was not your point!",
     "scope": "Palette and balance supported; composition rejected. Complete-piece acceptance remains pending.",
-    "nextAction": "Keep sounds and accompaniment; revise melody into a clearer recurring phrase with breathing space."
+    "nextAction": "Keep sounds and accompaniment; revise melody into a clearer recurring phrase with breathing space.",
+    "status": "Historical first-draft verdict; pending/nextAction fields are superseded by revision.listeningVerdict and closure."
   },
   "firstAuditionObservedUtc": "2026-10-15T01:42:10Z",
   "elapsedSecondsToFirstAuditionFromMarker": 376,
@@ -118,7 +119,11 @@
     "oldMelodyNotes": 115,
     "newMelodyNotes": 91,
     "scoreSha256": "748503ee4aad200cd1e4339d0e024014580cb65578b072f0fbd0b7b4cbaf9ba8",
-    "listeningVerdict": null,
+    "listeningVerdict": {
+      "verbatim": "I don't enjoy. The song is not harmonic, bad composition. Maybe use at least a existing music score, don't try to compose a score. That is a much harder task",
+      "status": "rejected",
+      "scope": "Composition rejected; earlier palette/balance support does not establish musical acceptance."
+    },
     "preflightCorrection": "First build rejected unordered melody events; sorted the score events chronologically before rebuilding. Existing input guard worked; no compiler change.",
     "publishedObservedUtc": "2026-10-15T01:51:04.907128+00:00",
     "builds": [
@@ -147,5 +152,13 @@
       "result": "Only melody events changed; bass/harmony/metadata/arrangement unchanged; chronological, nonoverlapping events; exact theme return at beats 80\u2013112; plausible B dominant to E minor cadence. Does not establish pleasantness.",
       "sectionLabelQualification": "Homeward: theme varied is the retained V1 label; V2 actually returns the melody exactly."
     }
+  },
+  "closure": {
+    "date": "2026-10-15",
+    "status": "closed-rejected",
+    "sourceScore": "None: melody, bass and harmony were invented by the assistant.",
+    "decision": "Stop original score composition; next work maps existing scores to creative SID interpretations.",
+    "productivityClaim": "No musical productivity gain established: neither composition was accepted.",
+    "modelReview": "No inference: human rejection and scope clarification settle this case. Review model usefulness on the next sourced-score audition."
   }
 }
