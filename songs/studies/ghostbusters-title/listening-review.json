@@ -15,15 +15,23 @@
       "sha256": "c13692985b60a1e9f3483eba179749283fc7ef6dc841bc721c0c0f0bc8692360",
       "status": "accepted",
       "scope": "Music preserves sound and phrasing"
+    },
+    {
+      "filename": "build/ghostbusters-listening/ending-reference-then-ours.ab.wav",
+      "sha256": "cd092cddebfb4dde777441d4a08fef996e6991df874e031389929f802e7ed5df",
+      "status": "accepted",
+      "scope": "Complete source continuation without premature cut",
+      "humanAnswer": "seems identical to me"
     }
   ],
   "humanAnswer": "speech remain recognizable, music preserves the sound and phrasing",
-  "endingVerdict": "pending",
-  "limits": "Acceptance covers submitted opening speech and characteristic musical phrase, not PCM identity, original interrupt-race equivalence or uninterrupted whole-title listening. Ending remains separately pending.",
+  "endingVerdict": "accepted",
+  "limits": "Acceptance covers submitted opening speech, characteristic musical phrase and complete ending continuation; no PCM identity, original interrupt-race equivalence or uninterrupted whole-title listening is claimed.",
   "modelAssistanceReview": {
-    "checkpoint": "Opening and phrase listener feedback",
-    "decision": "Continue previously frozen blind speech-recognition protocol without exposing this verdict to the model.",
-    "reason": "Human acceptance supports the delivered adaptation; model transcripts remain experimental and must pass silence and ordinary-speech controls.",
-    "nextReview": "After trial and final ending feedback, before case closure."
+    "checkpoint": "Listener feedback and pre-closure",
+    "decision": "Frozen speech trial completed; retain as experimental supporting evidence, no further model call.",
+    "reason": "Both silence and ordinary-speech controls pass; original and independent opening transcripts agree apart from punctuation. No ground-truth intelligibility or musical-quality claim follows.",
+    "nextReview": "New speech source, changed model/prompt/preprocessing or substantive musical revision.",
+    "assessment": "evidence/ghostbusters-speech-model/assessment.json"
   }
 }

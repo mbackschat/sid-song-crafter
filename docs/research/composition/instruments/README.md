@@ -17,7 +17,7 @@
 - [Billie Jean pulse lead and filtered support](billie-jean-decoded-programs.md): matched A440 familiar transfer accepted (“plays nice”); inspect setup cutoff writes even for unfiltered voices.
 - [Airwolf static pulse and triangle sounds](airwolf-static-tones.md): complete native palette on matched A440 familiar material, explicit gap gates and init-aware timing; familiar transfer accepted.
 
-- [Ghostbusters static patches and shared-phase vibrato](ghostbusters-decoded-programs.md): verified NTSC music programs with score-owned gate/release, one-sided vibrato and retained restart state; familiar transfer is not yet listening-reviewed.
+- [Ghostbusters static patches and shared-phase vibrato](ghostbusters-decoded-programs.md): verified NTSC music programs with score-owned gate/release, one-sided vibrato and retained restart state; familiar transfer accepted for instruments, balance and ending; case-specific plain-reference articulation documented.
 
 ## Original SID-Wizard instruments
 
