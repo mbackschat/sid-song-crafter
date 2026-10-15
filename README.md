@@ -124,10 +124,10 @@ The repository includes the source recipes for these examples. Generated SID fil
 
 | Example | Arrangement | Build and play |
 | --- | --- | --- |
-| [Bach Toccata](songs/studies/bach-toccata-full/README.md) | Complete Toccata section; one SID; about 1:28 | Use the commands above, then open `build/readme-toccata/export/hybrid.sid`. [Audio preview](build/readme-toccata/native-song.wav). |
-| [Moon River](songs/moon-river/README.md) | First statement with the accepted restrained instruments; one SID; about 1:39 | Build below; follow the SID export link in `build/moon-river-restrained/listening.md`. [Audio preview](build/moon-river-restrained-listening/moon-river-sid.wav). |
-| [Pink Panther](songs/pink-panther/README.md) | Complete sourced arrangement with pulse accompaniment; one SID; about 3:20 | Build below; follow the SID export link in `build/pink-panther-full/listening.md`. [Audio preview](build/pink-panther-full-listening/pulse-ensemble-complete.wav). |
-| [Instrument mix](docs/workflows/instrument-trials.md) | Original three-voice test phrase; 10 seconds | Run `python3 scripts/run-instrument-trials.py --pair mix --output build/instrument-trials`, then open `build/instrument-trials/mix-candidate/mix-candidate.sid`. [Audio preview](build/instrument-trials/mix-candidate/mix-candidate.wav). |
+| [Bach Toccata](songs/studies/bach-toccata-full/README.md) | Complete Toccata section; one SID; about 1:28 | Use the commands above, then open `build/readme-toccata/export/hybrid.sid`. |
+| [Moon River](songs/moon-river/README.md) | First statement with the accepted restrained instruments; one SID; about 1:39 | Build below; follow the SID export link in `build/moon-river-restrained/listening.md`. |
+| [Pink Panther](songs/pink-panther/README.md) | Complete sourced arrangement with pulse accompaniment; one SID; about 3:20 | Build below; follow the SID export link in `build/pink-panther-full/listening.md`. |
+| [Instrument mix](docs/workflows/instrument-trials.md) | Original three-voice test phrase; 10 seconds | Run `python3 scripts/run-instrument-trials.py --pair mix --output build/instrument-trials`, then open `build/instrument-trials/mix-candidate/mix-candidate.sid`. |
 
 Moon River and Pink Panther additionally need [MIDI dependencies](docs/songs/fuer-elise-score.md#reproduce-and-verify) and [headless VICE with its data files](docs/setup/local-setup.md), because their recipes also run emulator checks. Their source MIDIs are downloaded separately. Once those prerequisites are ready:
 
@@ -135,15 +135,13 @@ Moon River and Pink Panther additionally need [MIDI dependencies](docs/songs/fue
 # Moon River
 python3 scripts/setup-project.py --only references --include moon-river-score
 python3 scripts/listening-package.py config/listening/moon-river-restrained.json --output build/moon-river-restrained
-python3 scripts/publish-listening.py build/moon-river-restrained/run.json --selection config/listening/moon-river-audition.json --output build/moon-river-restrained-listening
 
 # Pink Panther
 python3 scripts/setup-project.py --only references --include pink-panther-score
 python3 scripts/listening-package.py config/listening/pink-panther-full.json --output build/pink-panther-full
-python3 scripts/publish-listening.py build/pink-panther-full/run.json --selection config/listening/pink-panther-full.audition.json --output build/pink-panther-full-listening
 ```
 
-The recipe runner reuses unchanged successful stages. The listening publisher needs a fresh destination; if the listed listening folder already exists, play it or choose another output folder. Each package's generated `listening.md` links its SID and PRG exports, audio previews and comparison files. [Moon River's notes](songs/moon-river/README.md) and [Pink Panther's notes](songs/pink-panther/README.md) explain their musical briefs and source arrangements.
+The recipe runner reuses unchanged successful stages. After a build, open its generated `listening.md` on your computer to find the SID and PRG exports, rendered audio and comparison files. [Moon River's notes](songs/moon-river/README.md) and [Pink Panther's notes](songs/pink-panther/README.md) explain their musical briefs and source arrangements.
 
 ## Use your own score
 
