@@ -1,0 +1,87 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score.json",
+  "title": "Pink Panther sly theme",
+  "author": "Henry Mancini",
+  "authorinfo": "D W BARNES SCORE: SID INTERPRETATION",
+  "released": "2026",
+  "sidCount": 1,
+  "sidModel": "MOS8580",
+  "clock": "pal",
+  "timingPolicy": "retain-full-pitch",
+  "instruments": {
+    "lead": {
+      "name": "PNTHLEAD",
+      "control": "1a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "2674",
+      "frame1": "09",
+      "vibrato": "14",
+      "vibrato_delay": 16,
+      "wave": [
+        [
+          "21",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [],
+      "filter": [
+        [
+          "91",
+          "68",
+          "00"
+        ],
+        [
+          "0c",
+          "f8",
+          "00"
+        ]
+      ]
+    },
+    "bass": {
+      "name": "PNTHBASS",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0533",
+      "frame1": "09",
+      "wave": [
+        [
+          "11",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [],
+      "filter": []
+    },
+    "harmony": {
+      "name": "PNTHCOMP",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0312",
+      "frame1": "09",
+      "wave": [
+        [
+          "11",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [],
+      "filter": []
+    }
+  },
+  "sections": [
+    {
+      "name": "Chromatic pickup and four theme phrases",
+      "startBeat": 0,
+      "endBeat": 64.33333333333333,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "harmony": "harmony"
+      }
+    }
+  ]
+}

@@ -10,7 +10,7 @@ The working targets are PAL with one MOS6581/MOS8580 or two matching chips at `$
 
 ## Start here
 
-- [Current interpretation queue](docs/research/study-plan.md#active-score-interpretation-trial): Moon River, then The Pink Panther Theme; Axel F as later training material. [Night Transit](songs/night-transit/README.md) is closed as a rejected original composition.
+- [Current interpretation queue](docs/research/study-plan.md#active-score-interpretation-trial): [The Pink Panther Theme audition](songs/pink-panther/README.md) applies researched character and tests reuse; the restrained Moon River first statement is accepted. Axel F remains later training material. [Night Transit](songs/night-transit/README.md) is closed as a rejected original composition.
 - [Documentation](docs/README.md): setup, composition, audio, validation and architecture guides.
 - [Tool boundaries](scripts/README.md): supported workflows and composition backends, source-specific study tools and compatibility exceptions.
 - [Study plan](docs/research/study-plan.md#delivery-order-and-work-in-progress): finish one musical case through listening and reuse on different musical material before deepening the next; retained preparation covers Flashdance, six master-composer studies and four later pop/theme studies.

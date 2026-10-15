@@ -12,6 +12,20 @@ Establish the intended mood from the brief and a relevant performance or documen
 
 Present the source recording or a clearly labelled plain rendering of the same retained score alongside each SID audition. Judge source preservation and artistic interpretation separately. Reuse the existing repertoire and recipe tools, measure execution effort honestly, and require listening acceptance before claiming musical productivity.
 
+## Prepare a multitrack score audition
+
+Use [prepare-score-audition.py](../../scripts/prepare-score-audition.py) when an existing MIDI import recipe has more parts than a three-voice audition needs. The [Pink Panther projection](../../songs/pink-panther/reduction.json) is a worked configuration; its [listening recipe](../../config/listening/pink-panther-theme.json) handles the rest of the pipeline.
+
+```sh
+PYTHONPATH=.tools/arrangement-deps python3 scripts/prepare-score-audition.py SOURCE.mid IMPORT.json --arrangement PROJECTION.json --candidate NATIVE.json --reference PLAIN.json --output build/new-score-audition
+```
+
+The import recipe pins the source hash and maps MIDI tracks. Projection `spans` select ordered exact-beat ranges. Exactly three uniquely named voices select distinct `sourcePart` IDs and either `reject-overlap` or `highest-at-onset`. The latter keeps the uniquely highest simultaneous note unchanged; tied highest pitches and any remaining overlap are rejected rather than silently choosing a duration. Every other source part needs an explicit omission reason. This deliberately narrow contract does not solve arbitrary polyphonic reduction, shorten overlapping notes or map drums to pitched voices automatically. Source notes crossing selected boundaries are rejected. A boundary with no crossing notes still needs musical review before being called an ending.
+
+The command retains the unchanged MIDI and complete imported common score alongside the selected common score and native-compatible `score.json`. `adaptation.json` accounts for every selected source note as retained or omitted, with source part, index, exact pitch/timing and velocity. Output beats use the existing numeric arrangement format; exact rational origins remain in the report. Source velocities are not automatically translated into SID dynamics, and the importer reports its own unsupported metadata. Optional candidate/reference templates must be supplied together and reference the same prepared score. Fresh output directories prevent overwriting retained evidence.
+
+Run the [focused tests](../../tests/score_audition_test.py) with `PYTHONPATH=.tools/arrangement-deps python3 -m unittest discover -s tests -p 'score_audition_test.py'`. Independent synthetic input exercises the reusable contract; human review still selects the musical passage and roles.
+
 ## Information boundaries
 
 | Layer | Responsibility | Retained evidence |

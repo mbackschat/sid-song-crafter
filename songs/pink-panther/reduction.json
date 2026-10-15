@@ -1,0 +1,34 @@
+{
+  "title": "The Pink Panther Theme: first main-theme passage",
+  "composer": "Henry Mancini; D. W. Barnes MIDI arrangement",
+  "spans": [
+    { "startBeat": [107, 3], "endBeat": 100 }
+  ],
+  "voices": [
+    {
+      "name": "melody",
+      "sourcePart": "piano-lead",
+      "monophonicPolicy": "reject-overlap",
+      "instrument": { "waveform": 16, "attackDecay": 2, "sustainRelease": 128 }
+    },
+    {
+      "name": "bass",
+      "sourcePart": "bass",
+      "monophonicPolicy": "reject-overlap",
+      "instrument": { "waveform": 16, "attackDecay": 2, "sustainRelease": 128 }
+    },
+    {
+      "name": "harmony",
+      "sourcePart": "piano-accompaniment",
+      "monophonicPolicy": "highest-at-onset",
+      "instrument": { "waveform": 16, "attackDecay": 2, "sustainRelease": 128 }
+    }
+  ],
+  "omittedParts": {
+    "alto-sax": "Later melody doubling is outside this passage; preserve the complete part in the full common score.",
+    "baritone-sax": "Omit the low doubling to reserve the independent bass line and a sparse upper chord tone.",
+    "drums": "Omit GM percussion for this pitched three-voice audition; the source swing and walking bass retain the rhythmic foundation."
+  },
+  "volume": 15,
+  "tailTicks": 125
+}

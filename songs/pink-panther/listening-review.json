@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-15",
+  "status": "first audition; listening pending",
+  "scope": "Source beats107/3 to100, shifted to zero. Finite excerpt, not full song or authenticated tonic ending; source bass/harmony approach next section at the boundary.",
+  "candidate": {
+    "palette": "songs/pink-panther/native.json",
+    "path": "build/pink-panther-theme-listening/pink-panther-sid.wav",
+    "sha256": "fc4bf56aefd86c2f4cedfa3daa811e8d9f776e716f729fc3aa0bac8327954108",
+    "durationSeconds": 38.28709750566893
+  },
+  "reference": {
+    "path": "build/pink-panther-theme-listening/plain-reference.wav",
+    "kind": "generated plain triangle rendering of the same reduced score; whole-palette comparison, not original recording or isolated filter test"
+  },
+  "artisticReference": "https://www.youtube.com/watch?v=dtnNO5_Ao6U",
+  "source": {
+    "fullNotes": 2113,
+    "selectedNotes": 360,
+    "retainedNotes": 145,
+    "omittedNotes": 215,
+    "sourceSha256": "d1d21050bc639c74093d8b9bacb185ecfedb22174446e1ff5717745a9d9fd8a4"
+  },
+  "technicalChecks": {
+    "cpuCalls": 1921,
+    "noteCounts": [
+      71,
+      44,
+      30
+    ],
+    "stopTicks": [
+      1868,
+      1868,
+      1868
+    ],
+    "viceFinalCheckpoint": 1905,
+    "clippedSamples": 0,
+    "endingAcRms": 0.0
+  },
+  "execution": {
+    "firstStagesSeconds": {
+      "prepare": 0.695391542,
+      "reference": 16.480154083000002,
+      "candidate": 11.488144124999998,
+      "vice": 3.5541665830000007,
+      "comparison": 0.3999320420000032
+    },
+    "repeatAllStagesReused": true,
+    "repeatStageSubprocesses": 0,
+    "limitation": "Recipe timings exclude research, source analysis, new adapter implementation, review and documentation; no total productivity gain established.",
+    "firstRunWallSeconds": 33.049463791,
+    "unchangedRepeatWallSeconds": 0.240476333,
+    "ambiguityGuardRecheck": {
+      "wallSeconds": 0.8662553749999999,
+      "rerunStages": [
+        "prepare"
+      ],
+      "candidateHashUnchanged": true,
+      "preparationScriptSha256": "d2cf777dda1006cbb09a225078a0523a400a86b40690893d70cd518034ee811f"
+    }
+  },
+  "modelAssistanceReview": {
+    "callMade": false,
+    "reason": "Current calibrated model tasks do not establish subtle musical character or preference for this new source. Source-note guards and human audition answer current questions.",
+    "nextCheckpoint": "After listener feedback or revision, and before case closure."
+  }
+}
