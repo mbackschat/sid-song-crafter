@@ -1,0 +1,33 @@
+test_basic_requires_explicit_roms_before_creating_or_truncating_outputs (__main__.HeadlessRenderTest) ... ok
+test_basic_rom_backed_interpreter_produces_the_independent_a4_tone (__main__.HeadlessRenderTest) ... ok
+test_clock_options_reject_invalid_missing_and_duplicate_values_before_output (__main__.HeadlessRenderTest) ... ok
+test_clock_selection_controls_actual_pitch_and_vbi_cadence_and_preserves_default_pal (__main__.HeadlessRenderTest) ... ok
+test_diagnostic_voice_masks_reject_bad_lists_and_two_sid_use_before_output (__main__.HeadlessRenderTest) ... ok
+test_diagnostic_voice_masks_select_actual_audio_keep_trace_and_leave_default_unchanged (__main__.HeadlessRenderTest) ... ok
+test_explicit_subtunes_select_init_accumulator_and_pitch_and_preserve_default_output (__main__.HeadlessRenderTest) ... ok
+test_fuer_elise_has_nine_pitches_and_a_silent_ending (__main__.HeadlessRenderTest) ... ok
+test_independent_a4_fixture_has_expected_duration_and_pitch (__main__.HeadlessRenderTest) ... ok
+test_missing_malformed_and_unrecognized_roms_preserve_outputs (__main__.HeadlessRenderTest) ... ok
+test_model_assumption_options_reject_invalid_missing_and_duplicate_values_before_output (__main__.HeadlessRenderTest) ... ok
+test_model_assumptions_reject_declared_any_and_multiple_chips_without_truncation (__main__.HeadlessRenderTest) ... ok
+test_native_two_sid_rsid_executes_independent_cia_irq_at_the_declared_clock (__main__.HeadlessRenderTest) ... ok
+test_native_two_sid_rsid_keeps_raw_chip_outputs_separate (__main__.HeadlessRenderTest) ... ok
+test_native_two_sid_rsid_rejects_unsupported_header_profiles_before_output (__main__.HeadlessRenderTest) ... ok
+test_render_longer_than_one_minute_keeps_exact_length_and_final_audio (__main__.HeadlessRenderTest) ... ok
+test_render_rejects_duration_above_ten_minutes_without_creating_output (__main__.HeadlessRenderTest) ... ok
+test_renderer_honors_6581_declarations_for_one_and_two_chips (__main__.HeadlessRenderTest) ... ok
+test_renderer_selects_the_declared_default_subtune_before_initialization (__main__.HeadlessRenderTest) ... ok
+test_rom_options_reject_empty_missing_duplicate_and_nonexistent_directories_before_output (__main__.HeadlessRenderTest) ... ok
+test_subtune_and_voice_options_work_in_either_order (__main__.HeadlessRenderTest) ... ok
+test_subtune_options_reject_invalid_duplicate_and_unknown_arguments_without_truncation (__main__.HeadlessRenderTest) ... ok
+test_two_sid_fixture_has_distinct_stereo_pitches_and_exact_duration (__main__.HeadlessRenderTest) ... ok
+test_two_sid_muted_variants_prove_each_chip_contributes_only_to_its_channel (__main__.HeadlessRenderTest) ... ok
+test_two_sid_ntsc_has_correct_pcm_pitches_duration_and_vbi_cadence_for_both_models (__main__.HeadlessRenderTest) ... ok
+test_two_sid_rejects_mismatched_clocks_without_creating_or_truncating_output (__main__.HeadlessRenderTest) ... ok
+test_two_sid_rejects_unsupported_chip_addresses_models_versions_and_timing_before_output (__main__.HeadlessRenderTest) ... ok
+test_unknown_model_assumptions_match_declared_model_audio_and_preserve_source_and_fallback (__main__.HeadlessRenderTest) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 3.046s
+
+OK

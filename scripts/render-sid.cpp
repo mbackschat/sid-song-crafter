@@ -28,35 +28,44 @@ static void write_u32(std::ostream &output, uint32_t value) {
     write_u16(output, value >> 16);
 }
 
-static bool has_dual_sid_header(const char *path, SidConfig::c64_model_t render_clock, bool model_assumption) {
+enum class DualSidProfile { None, PsidVbi, RsidNative };
+
+static DualSidProfile dual_sid_profile(const char *path, SidConfig::c64_model_t render_clock, bool model_assumption) {
     std::ifstream input(path, std::ios::binary);
     if (!input) throw std::runtime_error("Unable to open the SID input");
     std::array<unsigned char, 124> header{};
     input.read(reinterpret_cast<char *>(header.data()), header.size());
-    const bool sid_header = std::string(reinterpret_cast<char *>(header.data()), 4) == "PSID"
-        || std::string(reinterpret_cast<char *>(header.data()), 4) == "RSID";
+    const std::string format(reinterpret_cast<char *>(header.data()), 4);
+    const bool sid_header = format == "PSID" || format == "RSID";
     const unsigned int version = header[4] << 8 | header[5];
-    if (!sid_header || input.gcount() < 124 || version < 2) return false;
+    if (!sid_header || input.gcount() < 124 || version < 2) return DualSidProfile::None;
     if (model_assumption && (header[122] != 0 || header[123] != 0)) {
         throw std::runtime_error("SID model assumption requires one SID chip");
     }
     if (header[123] != 0) throw std::runtime_error("This renderer supports one or two SID chips");
-    if (header[122] == 0) return false;
+    if (header[122] == 0) return DualSidProfile::None;
     // PSID parsers may discard invalid extra-SID addresses; validate the original declaration before loading.
-    if (std::string(reinterpret_cast<char *>(header.data()), 4) != "PSID" || version != 3) {
-        throw std::runtime_error("Two-SID rendering requires PSID v3");
+    if (version != 3) {
+        throw std::runtime_error("Two-SID rendering requires PSID or native RSID v3");
     }
     if (header[122] != 0x42) throw std::runtime_error("Two-SID rendering requires SID bases $D400/$D420");
     const unsigned int flags = header[118] << 8 | header[119];
     if (flags != 0xa4 && flags != 0x54 && flags != 0xa8 && flags != 0x58) {
-        throw std::runtime_error("Two-SID rendering requires explicit PAL or NTSC and two same-model MOS6581 or MOS8580 chips without MUS/PlaySID flags");
+        throw std::runtime_error("Two-SID rendering requires explicit PAL or NTSC and two same-model MOS6581 or MOS8580 chips without MUS/PlaySID/BASIC flags");
     }
     const SidConfig::c64_model_t declared_clock = (flags & 0x0c) == 4 ? SidConfig::PAL : SidConfig::NTSC;
     if (render_clock != declared_clock) throw std::runtime_error("Two-SID rendering clock must match the explicit header clock");
     if (std::any_of(header.begin() + 18, header.begin() + 22, [](unsigned char value) { return value != 0; })) {
-        throw std::runtime_error("Two-SID rendering requires VBI timing for every subtune");
+        throw std::runtime_error("Two-SID PSID requires VBI timing; native RSID requires a zero reserved speed word");
     }
-    return true;
+    if (format == "RSID") {
+        if (header[6] != 0 || header[7] != 124 || header[8] != 0 || header[9] != 0
+            || header[12] != 0 || header[13] != 0 || header[120] != 0 || header[121] != 0) {
+            throw std::runtime_error("Native two-SID RSID requires a 124-byte header, zero header load/play addresses and no relocation");
+        }
+        return DualSidProfile::RsidNative;
+    }
+    return DualSidProfile::PsidVbi;
 }
 
 static std::array<bool, 3> selected_voices(const std::string &list) {
@@ -198,7 +207,7 @@ int main(int argc, char **argv) {
         constexpr unsigned int batch_size = 19656;
         const uint32_t frame_count = std::max(1L, std::lround(seconds * rate));
         SIDLiteBuilder builder("SIDLite");
-        const bool declared_dual = has_dual_sid_header(argv[1], options.clock, options.explicit_sid_model);
+        const DualSidProfile dual_profile = dual_sid_profile(argv[1], options.clock, options.explicit_sid_model);
         SidTune tune(argv[1]);
         if (!tune.getStatus()) throw std::runtime_error(tune.statusString());
         // SidTune starts unselected; psiddrv passes currentSong()-1 to init (libsidplayfp v3.1.1 src/psiddrv.cpp).
@@ -221,18 +230,23 @@ int main(int argc, char **argv) {
         unsigned int channels;
         switch (sid_count) {
             case 1:
-                if (declared_dual) throw std::runtime_error("The declared second SID was not loaded");
+                if (dual_profile != DualSidProfile::None) throw std::runtime_error("The declared second SID was not loaded");
                 channels = 1;
                 break;
-            case 2:
-                if (!declared_dual || tune_info->sidChipBase(0) != 0xd400 || tune_info->sidChipBase(1) != 0xd420
-                    || tune_info->clockSpeed() != selected_clock || tune_info->songSpeed() != SidTuneInfo::SPEED_VBI
+            case 2: {
+                const bool native = dual_profile == DualSidProfile::RsidNative;
+                // libsidplayfp v3.1.1 PSID.cpp maps RSID to native/CIA metadata; its speed field remains reserved zero.
+                const int speed = native ? SidTuneInfo::SPEED_CIA_1A : SidTuneInfo::SPEED_VBI;
+                if (dual_profile == DualSidProfile::None || tune_info->sidChipBase(0) != 0xd400 || tune_info->sidChipBase(1) != 0xd420
+                    || tune_info->clockSpeed() != selected_clock || tune_info->songSpeed() != speed
+                    || (tune_info->compatibility() == SidTuneInfo::COMPATIBILITY_R64) != native
                     || (tune_info->sidModel(0) != SidTuneInfo::SIDMODEL_6581 && tune_info->sidModel(0) != SidTuneInfo::SIDMODEL_8580)
                     || tune_info->sidModel(0) != tune_info->sidModel(1)) {
                     throw std::runtime_error("Unsupported two-SID playback contract");
                 }
                 channels = 2;
                 break;
+            }
             default:
                 throw std::runtime_error("This renderer supports one or two SID chips");
         }

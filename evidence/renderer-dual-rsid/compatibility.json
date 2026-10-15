@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "sourcePath": "scripts/render-sid.cpp",
+  "sourceSha256": "c779f01c187cb913ce49f61d6a94fc1d0a3d0f3ae54214dc201a93df8cf3180f",
+  "previousSourceSha256": "7d4eb7bc14df5dc46bc81c3d2cd8d94a3e1a30b34d96bb7944c09abf662ab73f",
+  "rendererSha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46",
+  "previousRendererSha256": "6fa0a3f03eb190153871e7040c4dc827163e40feda7dd44e982ab34ebb3728d4",
+  "libraryStaticArchiveSha256": "43e67183e5e5052e6d66b8e4388778cd61b935ae9741dc45b3412d4beb34af00",
+  "cases": [
+    {
+      "name": "mono-psid-pal",
+      "source": "/Users/mbackschat/Projects/c64-sid-skill/build/renderer-dual-rsid/mono-psid-pal.sid",
+      "duration": "0.5",
+      "options": [],
+      "receipt": "libsidplayfp 3.1.1 / SIDLite: 22050 mono PCM16 samples at 44100 Hz, clock PAL, subtune 1 of 1, SID model MOS8580 (declared)",
+      "wavSha256": "00baff972e4beca0263063acd06b6db4c55d5df7977eeec1974dab75ba75778a",
+      "snapshotSha256": "74894f2a33ae35faae877be82305ddb341bf33e96b60e35d9217a0ea78f3b71c",
+      "audioByteIdentical": true,
+      "snapshotByteIdentical": true
+    },
+    {
+      "name": "mono-native-rsid-ntsc",
+      "source": "/Users/mbackschat/Projects/c64-sid-skill/build/renderer-dual-rsid/mono-native-rsid-ntsc.sid",
+      "duration": "0.5",
+      "options": [
+        "--clock",
+        "ntsc"
+      ],
+      "receipt": "libsidplayfp 3.1.1 / SIDLite: 22050 mono PCM16 samples at 44100 Hz, clock NTSC, subtune 1 of 1, SID model MOS6581 (declared)",
+      "wavSha256": "4ec9f537dc49712c4870420f60ad9e91c0af28b219bab852d1266b45cd64fd43",
+      "snapshotSha256": "d803c56b8026757007b3384e0c1fd56421c488f6c3d165a369d16fc30000f29e",
+      "audioByteIdentical": true,
+      "snapshotByteIdentical": true
+    },
+    {
+      "name": "dual-psid-pal-6581",
+      "source": "/Users/mbackschat/Projects/c64-sid-skill/build/renderer-dual-rsid/dual-psid-pal-6581.sid",
+      "duration": "0.5",
+      "options": [
+        "--clock",
+        "pal"
+      ],
+      "receipt": "libsidplayfp 3.1.1 / SIDLite: 22050 stereo PCM16 frames at 44100 Hz, clock PAL, subtune 1 of 2, SID model MOS6581 (declared)",
+      "wavSha256": "f94ce8a525467819527cd6cf3f138f3e804a7c042cc5ef879810ac7b4fcfceca",
+      "snapshotSha256": "af0e85f1a24883371021be2effd6141a376a5d2412eb0bdf6081a3fce9578cfb",
+      "audioByteIdentical": true,
+      "snapshotByteIdentical": true
+    },
+    {
+      "name": "dual-psid-pal-8580",
+      "source": "/Users/mbackschat/Projects/c64-sid-skill/build/renderer-dual-rsid/dual-psid-pal-8580.sid",
+      "duration": "0.5",
+      "options": [
+        "--clock",
+        "pal"
+      ],
+      "receipt": "libsidplayfp 3.1.1 / SIDLite: 22050 stereo PCM16 frames at 44100 Hz, clock PAL, subtune 1 of 2, SID model MOS8580 (declared)",
+      "wavSha256": "3e3fa797208575c912ca4a7b3a6e96b9c8c058df0236a9071ef0759b5789f6b9",
+      "snapshotSha256": "af0e85f1a24883371021be2effd6141a376a5d2412eb0bdf6081a3fce9578cfb",
+      "audioByteIdentical": true,
+      "snapshotByteIdentical": true
+    },
+    {
+      "name": "dual-psid-ntsc-6581",
+      "source": "/Users/mbackschat/Projects/c64-sid-skill/build/renderer-dual-rsid/dual-psid-ntsc-6581.sid",
+      "duration": "0.5",
+      "options": [
+        "--clock",
+        "ntsc"
+      ],
+      "receipt": "libsidplayfp 3.1.1 / SIDLite: 22050 stereo PCM16 frames at 44100 Hz, clock NTSC, subtune 1 of 2, SID model MOS6581 (declared)",
+      "wavSha256": "56eee6634acc5a050cfaca82c6e1269af35a2912d29191b61406ead4b0118936",
+      "snapshotSha256": "144d504f080df72537f39ed7f5437848bdf4cf8cd47397df7596ef45244a39f8",
+      "audioByteIdentical": true,
+      "snapshotByteIdentical": true
+    },
+    {
+      "name": "dual-psid-ntsc-8580",
+      "source": "/Users/mbackschat/Projects/c64-sid-skill/build/renderer-dual-rsid/dual-psid-ntsc-8580.sid",
+      "duration": "0.5",
+      "options": [
+        "--clock",
+        "ntsc"
+      ],
+      "receipt": "libsidplayfp 3.1.1 / SIDLite: 22050 stereo PCM16 frames at 44100 Hz, clock NTSC, subtune 1 of 2, SID model MOS8580 (declared)",
+      "wavSha256": "82c3b626ae1d2ec1f7e66e9333cdba2c741b865c85284e03bd2ec48c8386f4c7",
+      "snapshotSha256": "144d504f080df72537f39ed7f5437848bdf4cf8cd47397df7596ef45244a39f8",
+      "audioByteIdentical": true,
+      "snapshotByteIdentical": true
+    },
+    {
+      "name": "mono-basic-rsid-ntsc",
+      "source": "/Users/mbackschat/Projects/c64-sid-skill/build/renderer-dual-rsid/mono-basic-rsid-ntsc.sid",
+      "duration": "2",
+      "options": [
+        "--clock",
+        "ntsc",
+        "--rom-dir",
+        "/Users/mbackschat/Projects/c64-sid-skill/.tools/vice-headless-3.9/source/data/C64"
+      ],
+      "receipt": "libsidplayfp 3.1.1 / SIDLite: 88200 mono PCM16 samples at 44100 Hz, clock NTSC, subtune 1 of 1, SID model MOS6581 (declared), C64 ROMs: C64 KERNAL third revision; C64 BASIC V2; C64 character generator",
+      "wavSha256": "a1cdd1bd3ed2f8ee28152909fa5869e01e88c9c974b9924430e962f0ab5302d7",
+      "snapshotSha256": "ae97db3e246e04c24a825e812bd4f192758189bb4478c7e081a4d9c6aa733989",
+      "audioByteIdentical": true,
+      "snapshotByteIdentical": true
+    }
+  ],
+  "allAudioAndSnapshotBytesIdentical": true,
+  "wallSeconds": 0.470254
+}

@@ -20166,6 +20166,26 @@
       "originalBytes": 7125,
       "sha256": "170e4c15fc50d2da7c7542b0089a7e8445058febfedb90864e14acd7183f44a1",
       "bytes": 7125
+    },
+    {
+      "path": "evidence/renderer-dual-rsid/compatibility.json",
+      "originalPath": "build/renderer-dual-rsid/compatibility.json",
+      "group": "renderer-dual-rsid",
+      "reason": "Retain exact original/new renderer and byte-identical existing-output compatibility fingerprints.",
+      "originalSha256": "7259e698af9b250d233ba6e9b50446e15e26118e24af3506f7a78fc4ee08059f",
+      "originalBytes": 5236,
+      "sha256": "7259e698af9b250d233ba6e9b50446e15e26118e24af3506f7a78fc4ee08059f",
+      "bytes": 5236
+    },
+    {
+      "path": "evidence/renderer-dual-rsid/renderer-tests.txt",
+      "originalPath": "build/renderer-dual-rsid/renderer-tests.log",
+      "group": "renderer-dual-rsid",
+      "reason": "Retain native dual RSID admission, measured CIA cadence, chip isolation and existing renderer regression outcomes.",
+      "originalSha256": "5d66d58317961510136f0441aeaa6a390e515562cb7c92af687bdc829d24292f",
+      "originalBytes": 3223,
+      "sha256": "5d66d58317961510136f0441aeaa6a390e515562cb7c92af687bdc829d24292f",
+      "bytes": 3223
     }
   ],
   "independentShadesSources": {

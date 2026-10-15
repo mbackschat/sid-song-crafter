@@ -94,6 +94,34 @@ def write_two_sid_fixture(path, default_song=1, left=True, right=True, clock="pa
     path.write_bytes(header + init + play)
 
 
+def write_native_cia_sid(path, clock="ntsc", model="6581", dual=True, left=True, right=True):
+    # A RAM-vector CIA IRQ at 8192 cycles distinguishes native execution from a VBI play callback.
+    init = bytearray(bytes.fromhex("78 A9 35 85 01 A9 7F 8D 0D DC 8D 0D DD A9 00 8D 0E DC 8D 0E DD 8D 1A D0 AD 0D DC AD 0D DD"))
+    chips = [(0xd400, 440, left)] + ([(0xd420, 660, right)] if dual else [])
+    cpu_clock = 17734475 / 18 if clock == "pal" else 14318181.82 / 14
+    for base, hz, enabled in chips:
+        word = round(hz * 2**24 / cpu_clock)
+        for offset, value in ((24, 15 if enabled else 0), (0, word & 255), (1, word >> 8), (2, 0), (5, 0), (6, 0xf0), (4, 0x11)):
+            address = base + offset
+            init.extend((0xa9, value, 0x8d, address & 255, address >> 8))
+    init.extend(bytes.fromhex("A9 00 8D 00 11"))
+    vector = len(init)
+    init.extend(bytes.fromhex("A9 00 8D FE FF A9 00 8D FF FF A9 FF 8D 04 DC A9 1F 8D 05 DC A9 81 8D 0D DC A9 11 8D 0E DC 58 60"))
+    irq_address = 0x1000 + len(init)
+    init[vector + 1], init[vector + 6] = irq_address & 255, irq_address >> 8
+    irq = bytearray(bytes.fromhex("48 AD 0D DC EE 00 11 AD 00 11 8D 02 D4"))
+    if dual:
+        irq.extend(bytes.fromhex("8D 22 D4"))
+    irq.extend(bytes.fromhex("68 40"))
+    header = bytearray(0x7c)
+    header[:4] = b"RSID"
+    struct.pack_into(">7HI", header, 4, 3 if dual else 2, 0x7c, 0, 0x1000, 0, 1, 1, 0)
+    flags = (0x50 if model == "6581" else 0xa0) if dual else (0x10 if model == "6581" else 0x20)
+    struct.pack_into(">H", header, 118, flags | (4 if clock == "pal" else 8))
+    header[122] = 0x42 if dual else 0
+    path.write_bytes(header + struct.pack("<H", 0x1000) + init + irq)
+
+
 def read_stereo_samples(path):
     with wave.open(str(path), "rb") as source:
         assert (source.getnchannels(), source.getsampwidth(), source.getframerate()) == (2, 2, RATE)
@@ -137,6 +165,86 @@ def write_two_subtune_sid(path, default_song):
 
 
 class HeadlessRenderTest(unittest.TestCase):
+    def test_native_two_sid_rsid_executes_independent_cia_irq_at_the_declared_clock(self):
+        for clock in ("pal", "ntsc"):
+            for model in ("6581", "8580"):
+                with self.subTest(clock=clock, model=model), tempfile.TemporaryDirectory() as directory:
+                    sid, output = Path(directory) / "native.sid", Path(directory) / "native.wav"
+                    write_native_cia_sid(sid, clock=clock, model=model)
+                    original = sid.read_bytes()
+                    result = subprocess.run([str(RENDERER), str(sid), str(output), "1.2", "--clock", clock],
+                                            capture_output=True, text=True, timeout=20)
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    frames, left, right = read_stereo_samples(output)
+                    self.assertEqual(frames, round(1.2 * RATE))
+                    for samples, expected in ((left, 440), (right, 660)):
+                        self.assertGreater(rms(samples[RATE // 4:RATE]), 100)
+                        self.assertAlmostEqual(frequency(samples[RATE // 4:RATE]), expected, delta=3)
+                    rows = [row.split("\t") for row in Path(str(output) + ".registers.tsv").read_text().splitlines()]
+                    self.assertEqual(rows[0], ["time_ms", "registers_hex", "registers_sid2_hex"])
+                    snapshots = [(int(row[0]), bytes.fromhex(row[1]), bytes.fromhex(row[2])) for row in rows[1:]]
+                    first, last = snapshots[4], snapshots[-1]
+                    cpu_clock = 17734475 / 18 if clock == "pal" else 14318181.82 / 14
+                    expected_updates = (last[0] - first[0]) * cpu_clock / (1000 * 8192)
+                    for chip in (1, 2):
+                        self.assertAlmostEqual(last[chip][2] - first[chip][2], expected_updates, delta=1.1)
+                    self.assertEqual(sid.read_bytes(), original)
+
+    def test_native_two_sid_rsid_keeps_raw_chip_outputs_separate(self):
+        for enabled_left, enabled_right in ((True, False), (False, True)):
+            with self.subTest(left=enabled_left, right=enabled_right), tempfile.TemporaryDirectory() as directory:
+                sid, output = Path(directory) / "native.sid", Path(directory) / "native.wav"
+                write_native_cia_sid(sid, left=enabled_left, right=enabled_right)
+                result = subprocess.run([str(RENDERER), str(sid), str(output), "0.5", "--clock", "ntsc"],
+                                        capture_output=True, text=True, timeout=20)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                _, left, right = read_stereo_samples(output)
+                for samples, enabled in ((left, enabled_left), (right, enabled_right)):
+                    if enabled:
+                        self.assertGreater(rms(samples[RATE // 4:]), 100)
+                    else:
+                        self.assertLess(rms(samples[RATE // 4:]), 1)
+
+    def test_native_two_sid_rsid_rejects_unsupported_header_profiles_before_output(self):
+        mutations = (
+            ("version", lambda data: struct.pack_into(">H", data, 4, 2)),
+            ("third-chip version", lambda data: struct.pack_into(">H", data, 4, 4)),
+            ("data offset", lambda data: struct.pack_into(">H", data, 6, 126)),
+            ("header load", lambda data: struct.pack_into(">H", data, 8, 0x1000)),
+            ("play callback", lambda data: struct.pack_into(">H", data, 12, 0x1000)),
+            ("reserved speed", lambda data: data.__setitem__(21, 1)),
+            ("relocation", lambda data: data.__setitem__(120, 0x20)),
+            ("other address", lambda data: data.__setitem__(122, 0x44)),
+            ("invalid address", lambda data: data.__setitem__(122, 0x41)),
+            ("duplicate address", lambda data: data.__setitem__(122, 0x40)),
+            ("third SID", lambda data: data.__setitem__(123, 0x44)),
+            ("mixed models", lambda data: struct.pack_into(">H", data, 118, 0x98)),
+            ("unknown clock", lambda data: struct.pack_into(">H", data, 118, 0x50)),
+            ("BASIC", lambda data: struct.pack_into(">H", data, 118, 0x5a)),
+            ("MUS", lambda data: struct.pack_into(">H", data, 118, 0x59)),
+        )
+        for name, mutate in mutations:
+            for existing in (False, True):
+                with self.subTest(name=name, existing=existing), tempfile.TemporaryDirectory() as directory:
+                    sid, output = Path(directory) / "native.sid", Path(directory) / "preserved.wav"
+                    write_native_cia_sid(sid)
+                    raw = bytearray(sid.read_bytes())
+                    mutate(raw)
+                    sid.write_bytes(raw)
+                    trace = Path(str(output) + ".registers.tsv")
+                    if existing:
+                        output.write_bytes(b"Existing audio")
+                        trace.write_bytes(b"Existing trace")
+                    result = subprocess.run([str(RENDERER), str(sid), str(output), "0.1", "--clock", "ntsc"],
+                                            capture_output=True, text=True, timeout=20)
+                    self.assertNotEqual(result.returncode, 0)
+                    if existing:
+                        self.assertEqual(output.read_bytes(), b"Existing audio")
+                        self.assertEqual(trace.read_bytes(), b"Existing trace")
+                    else:
+                        self.assertFalse(output.exists())
+                        self.assertFalse(trace.exists())
+
     def test_basic_requires_explicit_roms_before_creating_or_truncating_outputs(self):
         with tempfile.TemporaryDirectory() as directory:
             sid, output = Path(directory) / "basic.sid", Path(directory) / "basic.wav"
