@@ -1,0 +1,84 @@
+{
+  "source": "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-ntsc-v2/cache/native/75c7825da2e303de52a396e6f0689d85fbce076fff1c7280c0711068e8aa9638/attempt-7fc13c8d63d34817ad7e2123e4fb0d87/song/conversion/native.swm",
+  "sourceSha256": "003ecb96ce429b551f97406e734f4056f7f63b48a2e19e5e6ce974eff796b59e",
+  "module": {
+    "sidCount": 1,
+    "patterns": 54,
+    "sequences": 3,
+    "instruments": [
+      {
+        "name": "BCHPWM",
+        "size": 37
+      },
+      {
+        "name": "BCHBASS",
+        "size": 28
+      },
+      {
+        "name": "BCHHARM",
+        "size": 25
+      }
+    ],
+    "chordBytes": 0,
+    "tempoBytes": 0
+  },
+  "sid": "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-ntsc-v2/cache/native/75c7825da2e303de52a396e6f0689d85fbce076fff1c7280c0711068e8aa9638/attempt-7fc13c8d63d34817ad7e2123e4fb0d87/song/export/native.sid",
+  "sidSha256": "0a07f2f6bad2fe54dd88acc53190c0612c0c393d04cf7086fb1bf4b1ceb45741",
+  "prg": "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-ntsc-v2/cache/native/75c7825da2e303de52a396e6f0689d85fbce076fff1c7280c0711068e8aa9638/attempt-7fc13c8d63d34817ad7e2123e4fb0d87/song/export/native.prg",
+  "prgSha256": "f161f709965c16e04e681337e832d3eaf21f04c32a701b21c442b80caf3754d2",
+  "sidWizardVersion": "1.97",
+  "player": "Extra",
+  "driverType": 3,
+  "clock": "NTSC",
+  "clockHz": 1022727.2728571428,
+  "frameCycles": 17095,
+  "ticksPerSecond": 59.826105461078846,
+  "sidModel": "MOS8580",
+  "effectTimingPolicy": "target-vbi",
+  "effectUpdateRateHz": 59.826105461078846,
+  "envelopeTimingPolicy": "retain-sid-adsr-codes",
+  "frequencyTablePolicy": "rounded-equal-temperament-a4-440",
+  "regionalDifferences": "Native row counts and instrument bytes are retained, with one play call per target VBI. Arrange beat-based scores for this clock before export. NTSC modulation and first-frame durations follow its faster VBI; unchanged ADSR codes follow its faster SID clock. Register-unit detune and modulation amplitudes are not rescaled.",
+  "sidCount": 1,
+  "sids": [
+    {
+      "baseAddress": 54272,
+      "model": "MOS8580"
+    }
+  ],
+  "psidVersion": 2,
+  "frameSpeed": 1,
+  "loadAddress": 4096,
+  "initAddress": 4096,
+  "playAddress": 4099,
+  "standaloneLoadAddress": 2049,
+  "standaloneStartAddress": 2061,
+  "standalonePlayerInitAddress": 4096,
+  "standalonePlayerPlayAddress": 4099,
+  "exportEndAddress": 10107,
+  "nativeSourceRetained": true,
+  "exportLosses": [
+    "Instrument names are omitted from playback payload by upstream SID-Maker; retained in SWM/SWI."
+  ],
+  "nativeRoutineCycles": {
+    "setEXEdetails": 101743,
+    "disPtyp": 350,
+    "preparetunedata": 529022,
+    "setplayer": 4917,
+    "SetSIDply": 133,
+    "SetSIDt": 1395,
+    "dispMod": 337,
+    "setsaveparam": 175
+  },
+  "build": {
+    "sidWizardVersion": "1.97",
+    "sidWizardArchiveUrl": "https://csdb.dk/getinternalfile.php/281063/SID-Wizard-1.97-sources-examples.tar.gz",
+    "sidWizardArchiveSha256": "aeb265f4a778b2acb5aad13e8e98af882888292f749f29f4d18cbf49850e57bc",
+    "assemblerVersion": "64tass 1.60.3243",
+    "assemblerArchiveUrl": "https://downloads.sourceforge.net/project/tass64/source/64tass-1.60.3243-src.zip",
+    "assemblerArchiveSha256": "9d83be3d23a2c55e085b7c7a7856c2f96080447ea120a6a8c21a217ed76427f0",
+    "exporterSha256": "02b3ad16fbe59bdd9d3fcbe77f7a9be7535dbe109fdbf0c7d9e2753896b3ad89",
+    "labelsSha256": "ebc2234576a5a98b07d570c93e0838c1da9d9f0aa6d669e5c1ae80ae32f90b2a",
+    "sourceModified": false
+  }
+}

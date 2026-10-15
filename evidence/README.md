@@ -8,6 +8,7 @@ Use [the archive and cache workflow](../docs/workflows/build-cache.md) to instal
 
 | Evidence | Interpretation and reproduction |
 | --- | --- |
+| Night Transit original composition drafts | [Musical verdict, reuse and measured effort](../songs/night-transit/README.md), [revised PAL run](night-transit-drafts/night-transit-v2-ordered/run.json); both drafts retain full numeric CPU/schedule records, PAL/NTSC sampled VICE checks and audition hashes; first melody rejected, revision pending |
 | Deflektor familiar transfer | [Accepted moving-pulse trio](../docs/research/composition/instruments/deflektor-decoded-programs.md), [complete recipe](deflektor-elise-transfer/run.json), both CPU/VICE proofs, audio hashes and pre-stop release measurement |
 | Daglish second reference | [Deflektor/Trap bounded execution and source contrast](../docs/research/composition/daglish-contrast.md); [intake receipt](daglish-contrast/run.json), complete ordered stores, initialized filter/transition traces and scoped [melody/development observations](daglish-contrast/transitions/listening-review.json) |
 | Deflektor compiled title | [Complete ordered-store, CPU, VICE and audio evidence with accepted phrase/ending](../docs/research/composition/deflektor-preparation.md#compiled-export-and-listening-package); [recipe run](deflektor-compiled/run.json) and [cached repeat](deflektor-compiled/repeat-run.json) |

@@ -108,5 +108,44 @@
     "decision": "No inference",
     "reason": "No calibrated model test establishes melody preference; the listener rejects the composition. Revise from this judgment rather than a speculative model score.",
     "nextReview": "Revised audition and closure"
+  },
+  "revision": {
+    "number": 2,
+    "startedUtc": "2026-10-15T01:48:50.570312+00:00",
+    "baselineCommit": "a86b685",
+    "change": "Melody only: recurring four-bar question/answer, exact theme return, simpler sustained bridge and phrase-end breaths. All instruments, bass, harmony, tempo and section lengths unchanged.",
+    "hypothesis": "A recognizable repeated contour and clearer phrase endings may improve the rejected composition; this is a proposed correction, not established listener preference.",
+    "oldMelodyNotes": 115,
+    "newMelodyNotes": 91,
+    "scoreSha256": "748503ee4aad200cd1e4339d0e024014580cb65578b072f0fbd0b7b4cbaf9ba8",
+    "listeningVerdict": null,
+    "preflightCorrection": "First build rejected unordered melody events; sorted the score events chronologically before rebuilding. Existing input guard worked; no compiler change.",
+    "publishedObservedUtc": "2026-10-15T01:51:04.907128+00:00",
+    "builds": [
+      {
+        "run": "build/night-transit-v2-ordered/run.json",
+        "wallSeconds": 25.104895166,
+        "status": "completed"
+      },
+      {
+        "run": "build/night-transit-ntsc-v2/run.json",
+        "wallSeconds": 28.604881625,
+        "status": "completed"
+      }
+    ],
+    "audition": {
+      "comparison": "build/night-transit-v2-listening/previous-then-revised.ab.wav",
+      "order": "previous melody then revised melody",
+      "sha256": "7ab06f974fa924754f54236088abe65042cdbdf52699d744fa5b2d1c17807cf0",
+      "gainDb": [
+        0,
+        0
+      ]
+    },
+    "independentScoreReview": {
+      "tier": "MEDIUM",
+      "result": "Only melody events changed; bass/harmony/metadata/arrangement unchanged; chronological, nonoverlapping events; exact theme return at beats 80\u2013112; plausible B dominant to E minor cadence. Does not establish pleasantness.",
+      "sectionLabelQualification": "Homeward: theme varied is the retained V1 label; V2 actually returns the melody exactly."
+    }
   }
 }

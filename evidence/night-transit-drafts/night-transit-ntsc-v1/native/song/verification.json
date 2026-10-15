@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "evidenceLevel": "rendered experiment",
+  "listeningReview": null,
+  "conversionManifest": "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-ntsc-v1/cache/native/a395376a088dedd2ca1550ecaf0c381e3e0006bd11134d40297c027399418ee9/attempt-8937ff4111924a53a59b01509f33f15a/song/conversion.json",
+  "exportReport": "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-ntsc-v1/cache/native/a395376a088dedd2ca1550ecaf0c381e3e0006bd11134d40297c027399418ee9/attempt-8937ff4111924a53a59b01509f33f15a/song/export.json",
+  "audit": {
+    "schemaVersion": 1,
+    "sourceSha256": "ac55f626111285b8a0574a9e7b40183a8e7c361a3b435efcc62aa81d1945e0ed",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS8580",
+    "sidCount": 1,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS8580"
+      }
+    ],
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4099,
+    "clockHz": 1022727.2728571428,
+    "playCalls": 4313,
+    "callRateHz": 59.826105461078846,
+    "initCycles": 1944,
+    "maximumPlayCycles": 2292,
+    "meanPlayCycles": 1829.7827498261072,
+    "frameCycleBudget": 17095,
+    "initWriteCount": 24,
+    "playWriteCount": 107825,
+    "registers": {
+      "d400": {
+        "writes": 4313,
+        "distinctValues": 19,
+        "minimum": 0,
+        "maximum": 225
+      },
+      "d401": {
+        "writes": 4313,
+        "distinctValues": 10,
+        "minimum": 0,
+        "maximum": 56
+      },
+      "d402": {
+        "writes": 4313,
+        "distinctValues": 32,
+        "minimum": 0,
+        "maximum": 248
+      },
+      "d403": {
+        "writes": 4313,
+        "distinctValues": 6,
+        "minimum": 0,
+        "maximum": 8
+      },
+      "d404": {
+        "writes": 4313,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 65
+      },
+      "d405": {
+        "writes": 4313,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 2
+      },
+      "d406": {
+        "writes": 4313,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 136
+      },
+      "d407": {
+        "writes": 4313,
+        "distinctValues": 24,
+        "minimum": 0,
+        "maximum": 246
+      },
+      "d408": {
+        "writes": 4313,
+        "distinctValues": 10,
+        "minimum": 3,
+        "maximum": 14
+      },
+      "d409": {
+        "writes": 4313,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40a": {
+        "writes": 4313,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 6
+      },
+      "d40b": {
+        "writes": 4313,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 65
+      },
+      "d40c": {
+        "writes": 4313,
+        "distinctValues": 1,
+        "minimum": 2,
+        "maximum": 2
+      },
+      "d40d": {
+        "writes": 4313,
+        "distinctValues": 1,
+        "minimum": 169,
+        "maximum": 169
+      },
+      "d40e": {
+        "writes": 4313,
+        "distinctValues": 14,
+        "minimum": 0,
+        "maximum": 241
+      },
+      "d40f": {
+        "writes": 4313,
+        "distinctValues": 8,
+        "minimum": 0,
+        "maximum": 33
+      },
+      "d410": {
+        "writes": 4313,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d411": {
+        "writes": 4313,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 6
+      },
+      "d412": {
+        "writes": 4313,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 81
+      },
+      "d413": {
+        "writes": 4313,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 2
+      },
+      "d414": {
+        "writes": 4313,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 88
+      },
+      "d415": {
+        "writes": 4313,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d416": {
+        "writes": 4313,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 160
+      },
+      "d417": {
+        "writes": 4313,
+        "distinctValues": 2,
+        "minimum": 2,
+        "maximum": 34
+      },
+      "d418": {
+        "writes": 4313,
+        "distinctValues": 3,
+        "minimum": 15,
+        "maximum": 31
+      }
+    },
+    "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+  },
+  "schedule": {
+    "method": "Pinned Extra driver note-column reads, discrete sound-start state and orderlist reads; exact ticks and instrument selections",
+    "noteCounts": [
+      115,
+      111,
+      56
+    ],
+    "lastNotes": [
+      {
+        "voice": 0,
+        "tick": 3974,
+        "nativeNote": 65,
+        "instrument": 1
+      },
+      {
+        "voice": 1,
+        "tick": 3974,
+        "nativeNote": 29,
+        "instrument": 2
+      },
+      {
+        "voice": 2,
+        "tick": 3974,
+        "nativeNote": 56,
+        "instrument": 3
+      }
+    ],
+    "stopTicks": [
+      4251,
+      4251,
+      4251
+    ],
+    "stopVolumeClearTick": 4251,
+    "postStopOffReads": [
+      61,
+      61,
+      61
+    ],
+    "postStopVolumeReads": [
+      61,
+      61,
+      61
+    ],
+    "postStopGatesAndVolumeClear": true,
+    "criticalNotes": [],
+    "limitations": "Discrete source-note scheduling and selected short-note full-pitch register frames are verified; ADSR reattacks, vibrato, per-voice PCM audibility and musical quality are not established by this check."
+  },
+  "pcm": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-ntsc-v1/cache/native/a395376a088dedd2ca1550ecaf0c381e3e0006bd11134d40297c027399418ee9/attempt-8937ff4111924a53a59b01509f33f15a/song/native-song.wav",
+    "sha256": "37a05dd997ba924b283fe365eb4fd1eb409edf98337384e9d941643c8636e8ce",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 3178404,
+    "durationSeconds": 72.07265306122449,
+    "peak": 12491,
+    "peakDbfs": -8.377054532036478,
+    "clippedSamples": 0,
+    "rms": 3275.451151034906,
+    "acRms": 3205.014172186926,
+    "acRmsDbfs": -20.19239961405414,
+    "perChannel": [
+      {
+        "dc": -675.6214908488663,
+        "rms": 3275.451151034906,
+        "acRms": 3205.014172186926
+      }
+    ]
+  },
+  "endingAcRms": 0.0,
+  "excerpt": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-ntsc-v1/cache/native/a395376a088dedd2ca1550ecaf0c381e3e0006bd11134d40297c027399418ee9/attempt-8937ff4111924a53a59b01509f33f15a/song/native-song.excerpt.wav",
+    "sourceStartFrame": 378000,
+    "frames": 793800,
+    "durationSeconds": 18.0,
+    "sha256": "aa2328759c096a2dbbcb90941f5c1afa1a87b74481905b324ed85214b456c8f3",
+    "gain": 1
+  },
+  "renderer": {
+    "command": [
+      "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+      "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-ntsc-v1/cache/native/a395376a088dedd2ca1550ecaf0c381e3e0006bd11134d40297c027399418ee9/attempt-8937ff4111924a53a59b01509f33f15a/song/export/native.sid",
+      "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-ntsc-v1/cache/native/a395376a088dedd2ca1550ecaf0c381e3e0006bd11134d40297c027399418ee9/attempt-8937ff4111924a53a59b01509f33f15a/song/native-song.wav",
+      "72.07265243541934",
+      "--clock",
+      "ntsc"
+    ],
+    "executableSha256": "fa1c7a8daca10b157159b1163989ad4c898c50d19a142db03be387ab052e2b9a",
+    "deadlineSeconds": 120,
+    "timedOut": false,
+    "returnCode": 0,
+    "stdout": "libsidplayfp 3.1.1 / SIDLite: 3178404 mono PCM16 samples at 44100 Hz, clock NTSC, subtune 1 of 1, SID model MOS8580 (declared)",
+    "stderr": ""
+  },
+  "evidenceFiles": {
+    "writes": "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-ntsc-v1/cache/native/a395376a088dedd2ca1550ecaf0c381e3e0006bd11134d40297c027399418ee9/attempt-8937ff4111924a53a59b01509f33f15a/song/native-song.writes.json",
+    "frames": "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-ntsc-v1/cache/native/a395376a088dedd2ca1550ecaf0c381e3e0006bd11134d40297c027399418ee9/attempt-8937ff4111924a53a59b01509f33f15a/song/native-song.frames.json",
+    "nativeEvents": "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-ntsc-v1/cache/native/a395376a088dedd2ca1550ecaf0c381e3e0006bd11134d40297c027399418ee9/attempt-8937ff4111924a53a59b01509f33f15a/song/native-song.native-events.json"
+  },
+  "limitations": "RAM-only CPU scheduling evidence and emulated PCM health; first-frame audible pitch and ADSR equivalence are limited by the native driver, no hardware or listening approval is claimed."
+}

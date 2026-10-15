@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "method": "complete inputs in sequence; original PCM preserved at unity gain",
+  "matching": "none",
+  "normalization": false,
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-v2-listening/previous-then-revised.ab.wav",
+    "frames": 1609650,
+    "durationSeconds": 36.5,
+    "sha256": "7ab06f974fa924754f54236088abe65042cdbdf52699d744fa5b2d1c17807cf0"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 793800
+    },
+    {
+      "label": "silence",
+      "startFrame": 793800,
+      "endFrame": 815850
+    },
+    {
+      "label": "B",
+      "startFrame": 815850,
+      "endFrame": 1609650
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-listening/main-theme.wav",
+      "sha256": "dba9dd6230e28604a4514807da616236f092e089dd27db2074510eca07181ca0",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 793800,
+        "durationSeconds": 18.0,
+        "peak": 12465,
+        "peakDbfs": -8.395153042398514,
+        "clippedSamples": 0,
+        "rms": 3355.5210999963606,
+        "acRms": 3300.9619276602484,
+        "acRmsDbfs": -19.93618839254826,
+        "perChannel": [
+          {
+            "dc": -602.6377059712775,
+            "rms": 3355.5210999963606,
+            "acRms": 3300.9619276602484
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/night-transit-v2-listening/main-theme.wav",
+      "sha256": "b500c17f5d0d47ed08168026458789836d617f29bb78a385fe07b6da574f3316",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 793800,
+        "durationSeconds": 18.0,
+        "peak": 10914,
+        "peakDbfs": -9.549319710251815,
+        "clippedSamples": 0,
+        "rms": 3357.663670390742,
+        "acRms": 3302.757527545891,
+        "acRmsDbfs": -19.931464877889294,
+        "perChannel": [
+          {
+            "dc": -604.7297228521038,
+            "rms": 3357.663670390742,
+            "acRms": 3302.757527545891
+          }
+        ]
+      },
+      "gain": 1,
+      "gainDb": 0
+    }
+  ],
+  "listeningReview": null
+}

@@ -6,6 +6,7 @@ Songs serve as case studies for learning sound design, preserving useful finding
 
 ## Start here
 
+- [Night Transit original composition trial](songs/night-transit/README.md): reuse accepted sounds without new infrastructure; melody revision awaits listening feedback.
 - [Documentation](docs/README.md): setup, composition, audio, validation and architecture guides.
 - [Tool boundaries](scripts/README.md): supported workflows and composition backends, source-specific study tools and compatibility exceptions.
 - [Study plan](docs/research/study-plan.md#delivery-order-and-work-in-progress): finish one musical case through listening and reuse on different musical material before deepening the next; retained preparation covers Flashdance, six master-composer studies and four later pop/theme studies.
