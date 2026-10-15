@@ -50,18 +50,9 @@ Local audio models, including SongBench/MuQ, are optional research tools. Normal
 
 ## Repository and dependencies
 
-Every sample song follows the [public sample policy](CLAUDE.md#public-repository-boundary):
+`.tools/` contains reproducible third-party checkouts; `.local/` contains local assets and runtime state; `build/` contains generated output. These directories and machine-local `.codex/` configuration are ignored. Installed skill sources also remain local; see [the skill guide](skills/README.md).
 
-| Public contents | When included |
-| --- | --- |
-| Our tools, reusable instruments, recipes without embedded notes, source references and hashes | Always, including samples based on copyrighted songs; shared components may be linked |
-| Complete score and editable SWM/SWS with a pinned export manifest | Additionally, only for original, public-domain or appropriately licensed music whose source arrangement or edition also permits distribution |
-
-When rights are unestablished, complete song data stays local. Other backends retain equivalent editable sources instead of SWM. Sample documentation records the rights basis and musical verdict separately; this policy does not imply that every historical sample already has a packaged native source. See [the native source contract](docs/workflows/native-song-workflow.md#frozen-release-source-and-publication) for reproducibility requirements.
-
-Shareable project sources and research belong in Git, subject to the sample policy above. `.tools/` contains reproducible third-party checkouts; `.local/` contains diagnostics and runtime state; `build/` contains generated output. These directories and the machine-local `.codex/` configuration are ignored. The relative skill symlinks in `.agents/skills/` point to ignored, checksum-pinned local installs in `skills/`; only our own skill guide belongs in Git.
-
-Original reference SID files must stay out of the public repository, including its Git history and LFS. [The asset registry](config/local-assets.json) retains source URLs and SHA-256 fingerprints; [setup](docs/setup/local-setup.md) downloads and verifies them on demand. Keep reference WAVs out of Git under ignored `.local/` or `build/`. Document exact reproduction commands, source hashes, subtune, renderer/version/settings, duration, gain, trim points and output hashes. Canonical analysis records live in [evidence](evidence/README.md), with compressed files in Git LFS and readable manifests in ordinary Git; prose indexes their detail. Follow [the cache workflow](docs/workflows/build-cache.md) for verification and restoration. Downloaded skill bodies continue to use the ignored `skills/<name>/` installation layout.
+[Setup](docs/setup/local-setup.md) downloads and verifies reference assets using [the source registry](config/local-assets.json). Retained analysis is indexed in [evidence](evidence/README.md); [the cache workflow](docs/workflows/build-cache.md) explains verification and restoration. Contributor and publication rules live in [CLAUDE.md](CLAUDE.md).
 
 The checked-in [configuration example](config/codex.toml) records this machine's installation paths. Adapt it before activating it on another computer. Follow [local setup](docs/setup/local-setup.md) for exact upstream revisions and installation commands; use the upstream Bun lockfile for c64bridge.
 
