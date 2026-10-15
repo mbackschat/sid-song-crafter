@@ -2,7 +2,7 @@
 
 The narrow-pulse hook was accepted, but the complete arrangement was not. The listener reported an annoying persistent background sound at 64.60–68.80 seconds, an annoying lead at 120–140 seconds, and an interpretation that is boring compared with Hülsbeck. The [full review](full-huelsbeck-pulse-review.json) retains both the earlier scoped acceptance and these objections. The current musical task is broader than another pulse-width adjustment.
 
-## Two roles incorrectly treated as the same lead
+## Two distinct roles carried by the same lead patch
 
 | Passage | Score and executed behavior | Arrangement decision |
 | --- | --- | --- |
@@ -10,7 +10,7 @@ The narrow-pulse hook was accepted, but the complete arrangement was not. The li
 | High lead at 118.98–139.05 seconds | A distinct source part supplies 97 notes at A♭5–E♭6. Their bodies last only 3–12 updates. Every pulse onset resets to `$200`, reaches at most `$381` while gated, and ends before the developed modulation heard in the hook. | Use the existing `ELSOFT` triangle program for the high lead in beats 236–276, preserving its pitches and rhythm. Keep its sustain/release distinct from the marimba accompaniment. |
 | Hook returns and the high descent | These are different roles from the held chord and later high lead. A separate long F5 in the descent also has correct sustained gating; no listening complaint was reported there. | Retain the preferred moving-pulse lead; avoid a global patch replacement based on two role-specific objections. |
 
-The first row's source event is from `held-chord-and-descent`, source beat 132; trimming the four initial silent beats places it at arranged beat 128. The later high lead comes from its own source track, not the hook track. The initial mapping preserved those origins in the adaptation report but did not use them when assigning timbre. That is the arrangement error: a physical voice carrying several score parts does not make them one musical role.
+The first row's source event is from `held-chord-and-descent`, source beat 132; trimming the four initial silent beats places it at arranged beat 128. The later high lead comes from its own source track, not the hook track. The initial mapping preserved those origins in the adaptation report but did not use them when assigning timbre. That loses a useful arrangement distinction: a physical voice carrying several score parts does not make them one musical role. It motivates separate auditions, but does not establish that both roles need replacement patches.
 
 The high lead's measured frequency variation is just one frequency-word unit during each gated body; delayed vibrato does not develop there. Increasing the same delayed effect would miss the actual short-note behavior. A source-correct pitch can still have the wrong spectrum, prominence and articulation for its register. The proposed triangle programs reuse existing patches, but their prior acceptance does not establish that this new context works musically.
 
@@ -23,6 +23,23 @@ The [bounded arrangement evidence](huelsbeck-arrangement-observations.json) comb
 This suggests useful design choices: independent percussion envelopes, contrasting bass and lead behavior, staged entrances, and space between phrases. These observations identify mechanisms available for arranging; they do not establish which one explains the listener's overall preference. The reference also differs from our score in key, tempo, form and chip model, so it is not a same-score fidelity comparison.
 
 Our tonal reduction omitted all percussion even during sections where a voice was idle. In arranged beats 64–96, the hook and bass occupy two voices and the harmony voice is silent. The source has 48 kick events there. Each coincides with a bass onset, so restoring them adds a separate percussion body and envelope, not a new onset rhythm. By contrast, all three tonal roles are active during the later high lead; an independent drum there needs an explicit allocation tradeoff.
+
+## How Hülsbeck’s version differs from ours
+
+The central learning objective, clarified by the user, is how the master translated this piece into SID: the musical roles he prioritized, the tonal/percussion tradeoff, staged entrances, and the relationship between phrasing and sound programs. A patch extraction is supporting evidence, not the study’s end product. We can observe the choices in the executed arrangement; we cannot infer his private intentions or every omission relative to an unverified source arrangement. Keep these Axel F findings specific until other songs corroborate them.
+
+The useful distinction is a staged, rhythm-led SID arrangement versus our tonal reduction of a multitrack score. This is an interpretation of the bounded source evidence and the listener’s verdicts, not an independent whole-song listening judgment or an explanation proven by one parameter test.
+
+| Aspect | Hülsbeck reference, bounded opening | Our interpretation |
+| --- | --- | --- |
+| Development | Percussion begins first; lead enters around 9.5 seconds, low pulse bass around 28 seconds. | Tonal score sections determine the changes; omitted percussion removes one axis of contrast. |
+| Rhythmic identity | One oscillator supplies several distinct percussion behaviors, separate from the lead and bass. | The initial reduction omits drums. Restoring kicks on bass onsets produced no reported useful difference. |
+| Lead character | Asymmetric drifting pulse motion, lower programmed sustain (`$4`), continuing release motion, and tightly spaced gate retriggers without a per-note TEST frame. | Bounded pulse motion, higher programmed sustain (`$A`), and the native Extra TEST onset. The transferred pulse program is only one component of the source’s sound. |
+| Musical roles | The measured opening assigns percussion, hook and low bass distinct programs and entrances. | Several source parts share one lead voice. The high-line substitution helps; the soft held-note substitution does not. |
+
+The source uses PAL MOS6581 and CIA updates near 54.98 Hz; ours targets PAL MOS8580 with native updates near 50.12 Hz. Those conditions constrain effect transfer, but do not by themselves explain the musical preference or imply that one song’s tempo is faster. Key, form and score source also differ. Copying the patch or changing chip models cannot turn our arrangement into the same musical performance.
+
+The practical recommendation is to borrow the reference’s arrangement discipline: establish distinct jobs for the voices, introduce contrast at phrase boundaries, and test whether percussion contributes movement rather than merely level. Keep the independently sourced melody and harmony, and describe any reductions or duration changes explicitly. Master influence should shape decisions at both phrase and instrument timescales.
 
 ## Bounded next auditions
 
@@ -63,4 +80,42 @@ Adding kick processing shifts the timing of unchanged lead/bass register writes 
 
 This diagnostic is appropriate here because the kick has no ring/sync coupling, bypasses the filter, and does not control bass or lead. Muting still changes synthesis inputs; the renderer's unchanged register-shadow snapshots are not proof of identical internal synthesis state. The solo is not a linear stem, and numerical signal strength does not establish that the kick helps the music. Follow the [voice-selection constraints](../../docs/workflows/audio-workflow.md#diagnostic-voice-selection).
 
-The three listening verdicts remain pending. If the role corrections help, retain them without changing the accepted hook. If the kick helps, assess source-supported percussion and section contrast across the form before extending it; a repeated kick alone does not solve the broader musical criticism. Model assistance remains no-call at this checkpoint for the reasons above; reassess after feedback or a substantive revision.
+## Listening decisions and selected revision
+
+The listener reviewed all three comparisons on 2026-10-15:
+
+| Comparison | Exact feedback | Decision |
+| --- | --- | --- |
+| Held support | “before is much bette” | Reject the soft-triangle substitution and keep the prior pulse for now. This relative preference does not withdraw the earlier complaint about the sustained tone. |
+| High lead | “before seems more authentic, but honestly, after is nicer, not so annoyingly.” | Keep the rounder `ELSOFT` high lead. Preserve the authenticity tradeoff instead of describing it as a more faithful instrument. |
+| Kick | “no difference, may a bit louder” | Leave the added kick out. Its measured contribution did not produce a reported musical benefit; another level increase is not the next step. |
+
+These findings narrow the earlier diagnosis: recognizing distinct source roles helped find a useful high-lead change, but did not justify the specific softer held-support patch. Less brightness is not universally better, and a perceived improvement in comfort can coexist with reduced authenticity. The listener's words take precedence over a technically plausible explanation.
+
+The selected revision combines the previous hook and held support with only the preferred high-lead change. Its score and all accompaniment remain unchanged; the kick is excluded. The original full-song criticism—limited interest compared with Hülsbeck—remains open. The next arrangement question is phrase/section development and contrasting source percussion roles, not another gain-only kick or a wholesale replacement of the preferred lead. Source inspection in beats 68–100 finds 68 maracas (GM 70) attacks, 30 away from bass onsets. This is the next bounded test: a short original noise program in the spare harmony voice, retaining source timings and durations. The source also contains a denser cabasa part and snare backbeats, but most snare hits coincide with bass. Do not label the chosen maracas part a recovered Hülsbeck drum or claim its noise approximation reproduces the GM instrument.
+
+Model assistance remains no-call after this feedback: existing models have no demonstrated authority for these timbral and musical preferences. Reassess on the next substantive arrangement audition; do not use a model to override the mixed human verdict.
+
+## Integrated preferred timbres
+
+The [selected palette](selected-roles.json) and [verified review](selected-roles-review.json) retain the original pulse held support and replace only the 97 upper-lead assignments with the preferred `ELSOFT` program. No kick is added. All 1,025 source/native note schedules pass across 9,006 calls, all register values agree outside the upper-lead/release window, and sampled VICE checks run through call 9,000. The complete 179.635-second render is unclipped and ends quietly. The previous full version remains available alongside it.
+
+```sh
+python3 scripts/listening-package.py config/listening/axel-f-selected-roles.json --output build/axel-f-selected-roles
+python3 scripts/publish-listening.py build/axel-f-selected-roles/run.json --selection config/listening/axel-f-selected-roles.audition.json --output build/axel-f-selected-roles-listening-new
+```
+
+The stable local folder is `build/axel-f-selected-roles-listening/`: `axel-f-selected-roles-full.wav`, `previous-full.wav`, and `high-lead-before-then-after.ab.wav`. The upper-lead program and post-call states match the preferred prior treatment; the full compilation does not produce byte-identical excerpt PCM. This integrates a scoped instrument preference and is not complete-song acceptance.
+
+## Next rhythm audition: source maracas
+
+The [rhythm configuration](rhythm-trial.json) selects the source’s 68 GM-maracas attacks in beats 68–100, including 30 that do not coincide with bass. The original short noise program uses a fixed oscillator frequency, `AD=$14/SR=$00`, and no filter, vibrato or oscillator coupling. The [Ghostbusters noise instrument](../../docs/research/composition/instruments/ghostbusters-decoded-programs.md) supplies prior envelope evidence; Hülsbeck supplies the stronger arrangement lesson of a dedicated, contrasting percussion role. Neither makes this a recovered master patch or a faithful acoustic-maracas emulation.
+
+The candidate retains every selected source onset and duration. Native execution yields 36 one-update, 31 two-update and one three-update gated noise bodies, followed by the declared release. The unchanged lead and bass plus 68 percussion events pass 987 calls and sampled VICE checks. The [review](rhythm-trial-review.json) records the counts, source projection, same-SID muted control, signal checks and pending human verdict. A measured contribution remains separate from musical benefit.
+
+```sh
+python3 scripts/listening-package.py config/listening/axel-f-rhythm-trial.json --output build/axel-f-rhythm-trial
+python3 scripts/publish-listening.py build/axel-f-rhythm-trial/run.json --selection config/listening/axel-f-rhythm-trial.audition.json --output build/axel-f-rhythm-trial-listening-new
+```
+
+The stable folder `build/axel-f-rhythm-trial-listening/` contains `without-then-with-maracas.ab.wav` (32.77 seconds, muted first, full second, common unity gain), `without-maracas.wav`, `with-maracas.wav`, and the optional `maracas-only.wav` diagnostic. The primary question is whether the source-backed off-bass attacks add useful movement while preserving melody and bass clarity. No further gain-only kick trial is queued. The complete selected-timbre render does not include this unreviewed addition. Model review is no-call: the present models are not calibrated to settle this musical preference.

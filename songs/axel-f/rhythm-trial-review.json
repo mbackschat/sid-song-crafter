@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Pending listening: one source-maracas noise trial in the 32-beat hook. No complete-song percussion rollout or master reconstruction.",
+  "listeningVerdict": null,
+  "priorFeedback": {
+    "kickQuote": "no difference, may a bit louder",
+    "decision": "Preserve that rejected kick experiment and change the rhythmic role/spectrum instead of increasing its gain."
+  },
+  "sourceSha256": "8bf2fa73160461e13ace1609393879e12929ada5241e80f397cd3c0e4dfe429d",
+  "sourceWindowBeats": [
+    68,
+    100
+  ],
+  "arrangedWindowBeats": [
+    64,
+    96
+  ],
+  "configuration": "songs/axel-f/rhythm-trial.json",
+  "basePalette": "songs/axel-f/full-huelsbeck-pulse.json",
+  "sourceFeasibility": {
+    "snare38": {
+      "onsets": 16,
+      "offBassOnsets": 2
+    },
+    "cabasa69": {
+      "onsets": 128,
+      "offBassOnsets": 78
+    },
+    "maracas70": {
+      "onsets": 68,
+      "offBassOnsets": 30
+    },
+    "choice": "Use source MIDI70 alone: it supplies30 attacks away from bass onsets with a lighter grid than the dense cabasa. No source GM hi-hat was selected or relabelled.",
+    "sourceLabel": "GM maracas; rendered through an original noise approximation, not faithful General MIDI or recovered H\u00fclsbeck audio."
+  },
+  "program": {
+    "identity": "MARNOISE",
+    "originalNativeDesign": true,
+    "fixedAbsolutePitch": "C6 (noise clock control, not an invented tonal score line)",
+    "adsr": "1400",
+    "waveform": "81 while gated,80 through release",
+    "pulseFilterCouplingVibrato": "none",
+    "basis": "Ghostbusters static-noise patch3 supplies verified prior AD14/SR00 behavior; H\u00fclsbeck bounded opening supplies the independent percussion-role example. Neither prior study establishes this trial\u2019s sound or musical acceptance.",
+    "basisOwner": "docs/research/composition/instruments/ghostbusters-decoded-programs.md",
+    "fingerprint": "5619035acf8011e11488956e7f40bcc2b53d597cc417e8ac526ed4e829555495"
+  },
+  "voiceAllocation": [
+    {
+      "voice": 1,
+      "role": "unchanged narrow-pulse hook",
+      "filter": "bypassed",
+      "coupling": "none"
+    },
+    {
+      "voice": 2,
+      "role": "68 source maracas attacks on otherwise vacant harmony voice",
+      "filter": "bypassed",
+      "coupling": "none"
+    },
+    {
+      "voice": 3,
+      "role": "unchanged main bass",
+      "filter": "sole owner; route4",
+      "coupling": "none"
+    }
+  ],
+  "sourcePreservation": {
+    "onsets": 68,
+    "offBassOnsets": 30,
+    "coincidentBassOnsets": 38,
+    "durationAdaptation": false,
+    "nativeDurationPolicy": "Exact source durations remain in candidate score/origin records; native absolute boundaries are quantized and the existing gate inset plus TEST onset reduce gated noise body. No hidden extension, overlap trimming or invented percussion rhythm.",
+    "coldStart": "The trial slices the same sourced hook from cold native state; this does not promise the complete baseline\u2019s preceding envelope history."
+  },
+  "comparison": {
+    "reference": "Same candidate SID with voice2 muted; voices1,3 retained",
+    "candidate": "Same SID with all3voices",
+    "referenceIsMutedDiagnostic": true,
+    "sameSidRendererSnapshotsIdentical": true,
+    "order": [
+      "maracas muted",
+      "maracas present"
+    ],
+    "gains": [
+      1,
+      1
+    ],
+    "windowSeconds": [
+      0,
+      16.134432
+    ],
+    "gapSeconds": 0.5,
+    "durationSeconds": 32.768843537414966,
+    "secondaryReference": "Separate empty-harmony native score export is retained for technical comparison; its different CPU workload shifts store timing and it is not the primary audio A/B."
+  },
+  "verification": {
+    "cpuCalls": 987,
+    "candidateNoteCounts": [
+      46,
+      68,
+      50
+    ],
+    "viceCalls": [
+      0,
+      1,
+      3,
+      6,
+      150,
+      400,
+      810,
+      930,
+      980
+    ],
+    "viceMaximumAbsoluteCycleError": 2,
+    "changedFrameOffsetsVersusNativeWithoutRhythm": [
+      7,
+      8,
+      11,
+      12
+    ],
+    "unchangedLeadBassAndSharedControls": true,
+    "matchedOrderedNonRhythmStores": 17783,
+    "maximumNonRhythmInstructionStartDifferenceCycles": 396,
+    "fixedNoiseFrequencyWord": 17820,
+    "gatedNoiseBodyCallCounts": {
+      "1": 36,
+      "2": 31,
+      "3": 1
+    },
+    "gatedNoiseBodyDurationMilliseconds": {
+      "1": 19.9502945534,
+      "2": 39.9005891068,
+      "3": 59.8508836602
+    },
+    "bodyAndRelease": "All68attacks have at least1gated noise body call. Executed gate clears agree with the converter at each note; waveform80 persists through release until the next TEST onset. Source durations are not equated to gated body.",
+    "preStopReleaseAcRms": 0.0,
+    "limits": "Complete note scheduling/post-call and ordered store-value checks plus sampled VICE/cadence. Renderer muting is a diagnostic and does not produce additive stems; no continuous bus timing, hardware equivalence or musical acceptance is claimed."
+  },
+  "phrasePcm": {
+    "full": {
+      "durationSeconds": 16.139795918367348,
+      "peak": 10731,
+      "acRms": 2635.346105324258,
+      "acRmsDbfs": -21.89224549788768,
+      "clippedSamples": 0
+    },
+    "noiseOnly": {
+      "durationSeconds": 16.139795918367348,
+      "peak": 4482,
+      "acRms": 700.5157701848033,
+      "acRmsDbfs": -33.40064036565511,
+      "clippedSamples": 0
+    },
+    "noiseMuted": {
+      "durationSeconds": 16.139795918367348,
+      "peak": 9688,
+      "acRms": 2544.057525853023,
+      "acRmsDbfs": -22.19846015339266,
+      "clippedSamples": 0
+    }
+  },
+  "signalContribution": {
+    "sameSidPairDifferenceRms": 634.9015701279396,
+    "sameSidPairDifferentSamples": 255740,
+    "measurementDurationSeconds": 19.653514739229024,
+    "scope": "Nonzero contribution and unclipped signal are established. Useful drive, audibility and balance need the listener\u2019s verdict; no gain increase or candidate revision was made."
+  },
+  "modelAssistanceReview": {
+    "decision": "No model call: current calibration does not qualify rhythmic usefulness, annoyance or preference. Technical checks settle the changed source role and generated signal; the human listening verdict remains decisive.",
+    "nextCheckpoint": "Scoped maracas trial feedback or substantive revision"
+  },
+  "runReceipt": {
+    "path": "build/axel-f-rhythm-trial/completed-run.json",
+    "sha256": "ba9ec93797e81470c97e092610aee82eda14b7826af5f9c680cdbb80554bef0b"
+  },
+  "runStages": 9,
+  "runWallSeconds": 2.123371917,
+  "executionTimingScope": "Final checked invocation reused native/render stages; not a cold benchmark.",
+  "evidence": [
+    {
+      "path": "build/axel-f-rhythm-trial/cache/trial/1f74b19c8e9ac933fa2f471f9d960e154ac6a24c262403d2f5f1cad5c1803755/attempt-f5c3bbb3cb6a42fc8cbcb2ad0906cb36/trial/adaptation.json",
+      "sha256": "369cc2df52abf2451f267cdeab2c71cf24cdf09918a44a84f9275d527f1745f1"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/mechanism/baa46edfeae3ca8d77f797db6fefaffa05cea91e8cdfd31a7ad7e0a23a91aef9/attempt-e11debcc0c1749a2a86ce94ee7553293/mechanism.json",
+      "sha256": "a9f76be1773942bb1c003e0d9c15ba04304093ba5c19ddaa922c57bef5d16961"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/candidate/96972fc43b56d6d0d29a9ea67a0ee127cbf364bb8688b45a8a12c5db8de8f860/attempt-43c4083f50984e2d85a9ed4806e048dc/song/verification.json",
+      "sha256": "abba5d00774f39ae173350028d2e96232443eeec2b56cb741f5fbe59bc9c79cf"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial/cache/vice/14de65ada1b160ed22e8343d422115c3a8d826179f0f6176b45a13cd67b7cc76/attempt-b23579e6c5644a0bb2e926f8b0e7844f/vice/verification.json",
+      "sha256": "2c459169944edb798ef283b40a02e2e81377481a7810e357010b3ee310e31044"
+    }
+  ],
+  "files": [
+    {
+      "path": "build/axel-f-rhythm-trial-listening/without-maracas.wav",
+      "sha256": "01655841ee35c1be38bcd8a30b804c189e7814c6316af02ac3b2d25e1dfca2b9"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial-listening/with-maracas.wav",
+      "sha256": "158387717fed1eef62948b25dfb40dba1b907c09e774dfae66b65815f38bf252"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial-listening/without-then-with-maracas.ab.wav",
+      "sha256": "c4740703c6c594c4804d79b651f2beb8d09367378f5e94becc96eb127a66bde4"
+    },
+    {
+      "path": "build/axel-f-rhythm-trial-listening/maracas-only.wav",
+      "sha256": "8062342a48265609a6d061e0040e5e65ba43cb1d4be8527b2b299f1515eb985a"
+    }
+  ],
+  "acceptanceQuestion": "Does the added maracas noise give the hook useful rhythmic movement while keeping the melody clear, or does it compete with it?"
+}

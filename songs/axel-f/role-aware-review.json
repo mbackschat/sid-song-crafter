@@ -1,13 +1,21 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-15",
-  "status": "ready-for-listening",
+  "status": "reviewed-mixed-outcome",
   "scope": "Bounded palette revision for the held chord top and high-register lead on the unchanged complete tonal score. This is not a claim to resolve the broader boring-interpretation/groove feedback. Source percussion, second bass, noise sweeps and bass bends remain omitted.",
   "baselinePalette": "songs/axel-f/full-huelsbeck-pulse.json",
   "candidatePalette": "songs/axel-f/role-aware.json",
   "listeningVerdict": {
-    "status": "pending",
-    "scope": "Review the two labelled before/after role comparisons before seeking another complete-song judgment. The narrow-pulse hook preference remains scoped to its previously accepted excerpt."
+    "date": "2026-10-15",
+    "status": "select-upper-lead-only",
+    "heldSupport": {
+      "quote": "before is much bette",
+      "decision": "Reject PLUCKSOF substitution; retain previous pulse held support as the preferred comparison choice. The earlier full-song annoyance is not thereby resolved."
+    },
+    "highLead": {
+      "quote": "before seems more authentic, but honestly, after is nicer, not so annoyingly.",
+      "decision": "Select ELSOFT for this high-register role; preserve the perceived authenticity tradeoff. This is a scoped preference, not complete-song acceptance."
+    }
   },
   "changedMelodyAssignments": [
     {
@@ -35,8 +43,8 @@
   "selection": "config/listening/axel-f-role-aware.audition.json",
   "modelAssistanceReview": {
     "status": "no-call",
-    "reason": "Human feedback already identifies the two unwanted roles; available models are not calibrated to decide timbral preference or musical interest. Source and execution guards establish the bounded changes.",
-    "nextCheckpoint": "After human feedback on these two role comparisons or any further musical revision."
+    "reason": "Human comparison distinguishes timbral preference from perceived authenticity and rejects the held-support change. Models are not calibrated to overrule either judgment; no call.",
+    "nextCheckpoint": "After integrated selected-role render or a substantive arrangement revision."
   },
   "referenceMatchesSubmittedNarrowPulseFullWav": true,
   "sourceNotes": 5199,
@@ -286,9 +294,9 @@
     "python3 scripts/publish-listening.py build/axel-f-role-aware/run.json --selection config/listening/axel-f-role-aware.audition.json --output build/axel-f-role-aware-listening-new"
   ],
   "listeningLimits": [
-    "No human listening verdict has been received on these two revised roles.",
-    "No claim that the overall arrangement is engaging or matches H\u00fclsbeck: source percussion, second bass, noise sweeps and bass bends remain omitted.",
+    "Human prefers the original held support and revised high lead; the combined role-aware candidate is not selected.",
+    "No claim that the overall arrangement is engaging or matches Hülsbeck: source percussion, second bass, noise sweeps and bass bends remain omitted.",
     "Post-call CPU snapshots, sampled standalone VICE checks and rendered signal checks establish separate technical claims; no physical hardware equivalence is claimed.",
-    "Preserve the previous narrow-pulse full version and the accepted hook preference while awaiting the two role verdicts."
+    "Preserve historical comparison files; integrate only the preferred high-lead assignment in the selected-roles palette."
   ]
 }

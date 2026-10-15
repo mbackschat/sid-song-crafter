@@ -1,8 +1,13 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-15",
-  "scope": "Unaccepted 32-beat hook percussion-role experiment. Source beats68\u2013100 / arranged beats64\u201396; existing narrow-pulse lead and filtered bass retained. No complete-song groove rollout or full drum reconstruction.",
-  "listeningVerdict": null,
+  "scope": "Not selected after listening: 32-beat hook percussion-role experiment. Source beats68–100 / arranged beats64–96; existing narrow-pulse lead and filtered bass retained. No complete-song groove rollout or full drum reconstruction.",
+  "listeningVerdict": {
+    "date": "2026-10-15",
+    "quote": "no difference, may a bit louder",
+    "status": "no-useful-difference-reported",
+    "decision": "Do not add this kick to the selected full version. Measured signal difference did not establish a distinct or useful rhythmic contribution; do not increase gain as the automatic next step."
+  },
   "purpose": "Test whether a separately voiced falling kick at the source kick onsets adds useful drive without competing with the melody. The selected master original gives percussion its own oscillator in the bounded opening.",
   "sourceSha256": "8bf2fa73160461e13ace1609393879e12929ada5241e80f397cd3c0e4dfe429d",
   "sourceWindowBeats": [
@@ -19,7 +24,7 @@
     "source": "songs/studies/sidwizard-repertoire/repertoire.json",
     "identity": "kick-fall",
     "unchangedFingerprint": "596cb064f01bfb07bd707088fa503a050799a92b368ce2d5a5d414a2796f96e1",
-    "listeningStatus": "Original KICKFALL awaits a verdict here. BASS02 had little/no perceived difference, while modified Bach kicks were inaudible and then annoying; those scoped outcomes do not establish this program\u2019s success or universal failure."
+    "listeningStatus": "No useful difference heard in this Axel F mix, perhaps slightly louder. This verdict is contextual, not a universal failure of KICKFALL."
   },
   "voiceAllocation": [
     {
@@ -146,8 +151,8 @@
     "limits": "Direct submitted-pair signal difference is established, without an audibility or usefulness verdict. Voice muting changes waveform/envelope inputs; these are diagnostics, not linear output stems. Musical-window solo peak is used because later master-volume clear can produce a larger DC transition."
   },
   "modelAssistanceReview": {
-    "decision": "No model call: present calibration cannot determine useful drive, annoyance or musical preference. Source execution, guarded schedule and PCM checks establish the experiment; the listener decides its value.",
-    "nextCheckpoint": "Scoped hook-percussion listening verdict or substantive revision"
+    "decision": "No call after feedback: numerical contribution and human perception are already distinct evidence. A model cannot establish preference or contradict the reported lack of useful difference.",
+    "nextCheckpoint": "A substantively different arrangement audition; no further gain-only kick trial queued."
   },
   "runReceipt": {
     "path": "build/axel-f-kick-trial/completed-run.json",

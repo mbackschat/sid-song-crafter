@@ -1,6 +1,6 @@
 # Axel F: learn from Hülsbeck's lead
 
-The listener selected Chris Hülsbeck's original as the master reference on 2026-10-15 and said “Hülsbeck's version is really great”. The [reference intake](tgi-reference.md) owns its source URL, fingerprint, attribution and local playback files. This study asks how the lead's onset, movement and release can improve our [score-based interpretation](README.md). It does not replace the independently sourced MIDI with Hülsbeck's note data or claim that one instrument explains the whole musical preference.
+The listener selected Chris Hülsbeck's original as the master reference on 2026-10-15 and said “Hülsbeck's version is really great”. The [reference intake](tgi-reference.md) owns its source URL, fingerprint, attribution and local playback files. The initial probe asks how the lead's onset, movement and release can improve our [score-based interpretation](README.md). The [arrangement study](arrangement-review.md#how-hülsbecks-version-differs-from-ours) now owns the wider objective: understand how Hülsbeck translated this piece into three SID voices, including roles, entrances and rhythmic contrasts. It does not replace the independently sourced MIDI with Hülsbeck's note data or claim that one instrument explains the whole musical preference.
 
 ## What the executed lead teaches
 
@@ -46,4 +46,4 @@ Model-assistance review: no audio-model call. The existing calibration does not 
 
 ## Full-arrangement limitation
 
-The subsequent [full listening feedback and arrangement diagnosis](arrangement-review.md) reject applying this hook patch to every role. A long chord-support note becomes too persistent, and short high-register notes restart before the intended motion develops. The hook verdict remains valid within its tested scope; the overall arrangement needs distinct support/high-lead sounds and a deliberate rhythmic allocation.
+The subsequent [full listening feedback and arrangement diagnosis](arrangement-review.md) reject applying this hook patch to every role. A long chord-support note becomes too persistent, and short high-register notes restart before the intended motion develops. The hook verdict remains valid within its tested scope; the overall arrangement needs role-aware choices and a deliberate rhythmic allocation. Subsequent listening prefers the rounder high lead but rejects the softer held-support substitution; retain that mixed result rather than treating every distinct role as requiring a new patch.
