@@ -82,6 +82,14 @@ def prepare(common, score, palette, config):
             "candidate.json": with_rhythm, "adaptation.json": report}
 
 
+def verify_noise_gate(controls, start_tick, gate_off_tick):
+    require(isinstance(gate_off_tick, int) and gate_off_tick > start_tick + 1 and controls,
+            "Every source attack needs a nonempty noise gate schedule")
+    require(all(control == (0x81 if tick < gate_off_tick else 0x80)
+                for tick, control in enumerate(controls, start_tick + 1)), "Native noise gate schedule changed")
+    return sum(control == 0x81 for control in controls)
+
+
 def verify(reference, candidate, noise_only, noise_muted, config):
     reference, candidate = Path(reference), Path(candidate)
     before, after = (read(directory / "native-song.frames.json") for directory in (reference, candidate))
@@ -104,14 +112,13 @@ def verify(reference, candidate, noise_only, noise_muted, config):
         require(after[start][11] == 9 and note["durationTicks"] == note["sourceDurationTicks"],
                 "Native TEST onset or unchanged quantized source duration lost")
         states = after[start + 1:next_start]
-        gated = [state for state in states if state[11] & 1]
-        require(gated and all(state[11] in (0x80, 0x81) for state in states), "Every source attack needs an independent noise body and release")
+        body_calls = verify_noise_gate([state[11] for state in states], start, note["gateOffTick"])
         require(all(abs(state[7] + 256 * state[8] - expected_word) <= 1 and state[12:14] == [0x14, 0]
                     for state in states), "Fixed noise frequency or declared envelope changed")
         first_off = next((start + 1 + i for i, state in enumerate(states) if state[11] == 0x80), None)
         require(first_off == note["gateOffTick"], "Executed gate differs from native duration policy")
         bodies.append(dict(startTick=start, sourceDurationTicks=note["sourceDurationTicks"], sourceGateOffTick=note["sourceGateOffTick"],
-                           firstObservedGateOffTick=first_off, gatedNoiseBodyCalls=len(gated), nextOnsetTick=next_start))
+                           firstObservedGateOffTick=first_off, gatedNoiseBodyCalls=body_calls, nextOnsetTick=next_start))
     require(all(state[23] & 15 == 4 for state in after[:manifest["stopTick"]]), "Bass lost sole filter ownership")
     require(Path(str(noise_muted) + ".registers.tsv").read_bytes() == (candidate / "native-song.wav.registers.tsv").read_bytes(),
             "Same-SID muted and unmuted snapshots differ")

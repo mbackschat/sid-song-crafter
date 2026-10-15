@@ -78,6 +78,13 @@ class AxelRhythmTrialTest(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     TRIAL.prepare(self.common, self.score, self.palette, config)
 
+    def test_noise_gate_preserves_a_contiguous_body_followed_only_by_release(self):
+        self.assertEqual(2, TRIAL.verify_noise_gate([0x81, 0x81, 0x80, 0x80], 10, 13))
+        for controls in ([0x81, 0x81, 0x80, 0x81], [0x81, 0x80, 0x81, 0x80]):
+            with self.subTest(controls=controls):
+                with self.assertRaisesRegex(ValueError, "gate schedule"):
+                    TRIAL.verify_noise_gate(controls, 10, 13)
+
 
 if __name__ == "__main__":
     unittest.main()
