@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "sources": {
+    "reference": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-listening/reference.wav",
+      "sha256": "91360cff28fcb4610edbe5425662ace00aa95b186ef67705f6b81079db784f1b",
+      "bytes": 21609044
+    },
+    "candidate": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-listening/reconstructed.wav",
+      "sha256": "72f818806173aa93909b11739ccd5a297ca357d7c1e357d4d81252bd75032019",
+      "bytes": 21609044
+    }
+  },
+  "completedSourceRun": {
+    "receipt": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/run-executed.json",
+      "sha256": "006e41fee27e4881c1f83f68da40cfea29cea575fdfbf735e8e249881996a093",
+      "bytes": 32129
+    },
+    "artifacts": {
+      "reference": {
+        "stageId": "reference-render",
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/cache/reference-render/603c4e60aba70347489b33ca29002c9fd426b6aa17c203cd62d7cde6fe1ae7d0/attempt-9c1211149af840fb82893c61fbd2779a/render.wav",
+        "relativePath": "render.wav",
+        "type": "file",
+        "sha256": "91360cff28fcb4610edbe5425662ace00aa95b186ef67705f6b81079db784f1b"
+      },
+      "candidate": {
+        "stageId": "candidate-render",
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-independent-full/cache/candidate-render/c2a0bda426b5b9a6f5dc0ec0107f777ea471dc0118c28d89c46aef7674e69036/attempt-87cf036be339405aab86bdfa10f4cacc/render.wav",
+        "relativePath": "render.wav",
+        "type": "file",
+        "sha256": "72f818806173aa93909b11739ccd5a297ca357d7c1e357d4d81252bd75032019"
+      }
+    }
+  },
+  "caseRoles": {
+    "p01": "candidate opening",
+    "p02": "exact retained c01 silence",
+    "p03": "exact retained c06 ordinary speech",
+    "p04": "original reference opening"
+  },
+  "crops": {
+    "p01": {
+      "source": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-listening/reconstructed.wav",
+        "sha256": "72f818806173aa93909b11739ccd5a297ca357d7c1e357d4d81252bd75032019",
+        "bytes": 21609044
+      },
+      "sourceSampleRate": 44100,
+      "sourceChannels": 1,
+      "sourceFrames": 10804500,
+      "startFrameInclusive": 0,
+      "endFrameExclusive": 196245,
+      "requestedSeconds": 4.45,
+      "actualCropSeconds": 4.45,
+      "gain": 1,
+      "gainDb": 0,
+      "normalization": false,
+      "crop": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-speech-model-check/work/p01.crop.wav",
+        "sha256": "5a84cca9b0d3f46970025e52e5bd2c804bc33668794fddbd605b9522ed6f8f7a",
+        "bytes": 392534
+      },
+      "cropPcmSha256": "9b4f8a0c98fc3f18d8d3714e3927cb87bce89f572c734383e28783388f11e612",
+      "conversionCommand": [
+        "/usr/bin/afconvert",
+        "-f",
+        "WAVE",
+        "-d",
+        "LEI16@16000",
+        "-c",
+        "1",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-speech-model-check/work/p01.crop.wav",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-speech-model-check/work/p01.converted.wav"
+      ],
+      "converted": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-speech-model-check/work/p01.converted.wav",
+        "sha256": "98a616d78512cd3598ce4eb8e65c20a844f67f2870ad381775add32fc8499777",
+        "bytes": 146496
+      },
+      "final": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-speech-model-check/clips/p01.wav",
+        "sha256": "77412a2ca10151a3c5527e3353d9577b82841ce7fd137eb782ce9339bcfb09ba",
+        "bytes": 142444
+      },
+      "containerMetadataRemoved": true
+    },
+    "p04": {
+      "source": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-listening/reference.wav",
+        "sha256": "91360cff28fcb4610edbe5425662ace00aa95b186ef67705f6b81079db784f1b",
+        "bytes": 21609044
+      },
+      "sourceSampleRate": 44100,
+      "sourceChannels": 1,
+      "sourceFrames": 10804500,
+      "startFrameInclusive": 0,
+      "endFrameExclusive": 196245,
+      "requestedSeconds": 4.45,
+      "actualCropSeconds": 4.45,
+      "gain": 1,
+      "gainDb": 0,
+      "normalization": false,
+      "crop": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-speech-model-check/work/p04.crop.wav",
+        "sha256": "0d41915e579df88931848b83b2ef5f5a0c38109cdda7402a8cb1d9b7c3d80012",
+        "bytes": 392534
+      },
+      "cropPcmSha256": "901663042a3e20d2463fceea6cf8cff2a2926c90cc9603e4ef7cc488fb9f6cfa",
+      "conversionCommand": [
+        "/usr/bin/afconvert",
+        "-f",
+        "WAVE",
+        "-d",
+        "LEI16@16000",
+        "-c",
+        "1",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-speech-model-check/work/p04.crop.wav",
+        "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-speech-model-check/work/p04.converted.wav"
+      ],
+      "converted": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-speech-model-check/work/p04.converted.wav",
+        "sha256": "81c8cf7b1cbb24567414e3451fa5c199a697a897c4e4f9761a21827b5b9149b0",
+        "bytes": 146496
+      },
+      "final": {
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-speech-model-check/clips/p04.wav",
+        "sha256": "321a7ddbafa6e89f11b1e541aca5980c2719fd1a71f3c12a56b100ef91af70cc",
+        "bytes": 142444
+      },
+      "containerMetadataRemoved": true
+    }
+  },
+  "controls": {
+    "c01": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/audio-perception-controls-20261013/inputs-local/c01.wav",
+      "sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "bytes": 128044,
+      "frames": 64000,
+      "sampleRate": 16000,
+      "channels": 1,
+      "verifiedExpected": {
+        "id": "c01",
+        "category": "silence",
+        "audio_sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809"
+      }
+    },
+    "c06": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/audio-perception-controls-20261013/inputs-local/c06.wav",
+      "sha256": "69c7d7c22d666ad05097b43b0927fa827621fb01322653c0760c8f166d222f5f",
+      "bytes": 96916,
+      "frames": 48436,
+      "sampleRate": 16000,
+      "channels": 1,
+      "verifiedExpected": {
+        "id": "c06",
+        "category": "speech",
+        "required_words": [
+          "blue",
+          "lantern",
+          "seven",
+          "wooden",
+          "boxes"
+        ],
+        "audio_sha256": "69c7d7c22d666ad05097b43b0927fa827621fb01322653c0760c8f166d222f5f"
+      }
+    }
+  },
+  "promptSha256": "4c6c413d822bb9624957fe5a65be82b6f9be6bc2627ca8008cf75cb962d25f30",
+  "protocol": {
+    "manifest": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/evidence/audio-assessment-controls/qwen/cases.json",
+      "sha256": "ddd8ab220c6c0c75e2e450a770400c56f72dc5e289146acc0936ea05261a0676",
+      "bytes": 4806
+    },
+    "verifiedAssessment": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/evidence/audio-assessment-controls/qwen/verified-assessment.json",
+      "sha256": "130f3566f23e5549429549b2707c2e9c5af23e7cd40f7f1e9c3c7045d7d26f3f",
+      "bytes": 9276
+    },
+    "controlProvenance": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/audio-perception-controls-20261013/inputs-local/provenance.json",
+      "sha256": "4f9457fc061fd8ec259316327d36ed6a58b16f677f3c8ec9b4df6f4d21570a81",
+      "bytes": 8213
+    }
+  },
+  "tools": {
+    "/Users/mbackschat/Projects/c64-sid-skill/scripts/studies/ghostbusters/prepare-speech-model-check.py": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/scripts/studies/ghostbusters/prepare-speech-model-check.py",
+      "sha256": "01ed2526f3efb7296fc04b69743c5ca743b5e4321a3745c93cdb10bfc0c96278",
+      "bytes": 12599
+    },
+    "/Users/mbackschat/Projects/c64-sid-skill/scripts/studies/audio-assessment/prepare-controls.py": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/scripts/studies/audio-assessment/prepare-controls.py",
+      "sha256": "499a98f91a9f0ce90da8899651372411fcdb100e808de0c767bd6c9d691648c7",
+      "bytes": 11068
+    },
+    "/Users/mbackschat/Projects/c64-sid-skill/scripts/audio_assessment.py": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/scripts/audio_assessment.py",
+      "sha256": "dc385afe65ef5cecac794bde8c3ae2c428e361441d1281911829ba5bdcb6d0a9",
+      "bytes": 13205
+    },
+    "/Users/mbackschat/Projects/c64-sid-skill/scripts/audio_comparison.py": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/scripts/audio_comparison.py",
+      "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636",
+      "bytes": 16012
+    },
+    "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/wave.py": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/wave.py",
+      "sha256": "2d6ddc0c5e408bb993274ad4f7806252158fec7c569e5a78a50a06ecf02e681d",
+      "bytes": 18004
+    },
+    "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "dff595035109e19c43c4b3e73ee08b5f4651e719f25f8b4713f819d28964dc19",
+      "bytes": 102352
+    },
+    "/usr/bin/afconvert": {
+      "path": "/usr/bin/afconvert",
+      "sha256": "beec8f2d64388e6d707ac8b4fe7477649ab93c0c66610faf0abe3cfbdfda871b",
+      "bytes": 393696
+    }
+  },
+  "platform": {
+    "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+    "macos": "27.0.1"
+  },
+  "modelInputs": {
+    "anonymousSingleClips": true,
+    "originalIdentitySupplied": false,
+    "expectedWordsSupplied": false,
+    "containerMetadataRemovedFromCrops": true
+  },
+  "scope": "Offline preprocessing and existing-runner validation only; no API calls, transcription ground truth or musical acceptance."
+}

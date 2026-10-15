@@ -330,3 +330,31 @@ python3 -m json.tool build/trap-model-perception-20261014/assessment.json
 ```
 
 If rebuilding the inputs after cache loss, first recreate the [Trap transition publication](composition/daglish-contrast.md#transition-selection-and-listening-observations), then prepare into a fresh directory and verify against the retained original hashes. A fresh result directory would permit fresh paid calls; it must not be used to bypass the recorded trial limits or approval boundary. Raw audio stays ignored. The evaluator’s `--assess` mode creates a fresh assessment only after the eight initial responses exist; review the retained result instead of overwriting it. Human musical observations remain authoritative.
+
+
+## Ghostbusters single-clip speech recognition
+
+On 2026-10-15, the [Ghostbusters study](composition/ghostbusters-preparation.md#planned-bounded-speech-recognition-check) reused the exact elementary-category prompt and Qwen configuration from the earlier verified controls: `qwen/qwen3.8-omni-flash`, reasoning disabled, temperature zero and 1,200 output tokens. Four single clips were submitted anonymously through OpenRouter, served by Alibaba: the independent opening, exact retained silence, exact retained ordinary speech, and original opening. The rendered openings were cropped to 4.45 seconds at unity gain and converted to mono 16 kHz PCM16; no title, expected transcription, user verdict or source/candidate identity appeared in the requests. The user explicitly approved this four-clip upload before requests ran.
+
+| Case | Observed result | Permitted interpretation |
+| --- | --- | --- |
+| Exact digital silence | `silence`, empty transcript | Control passes |
+| Known ordinary speech | `speech`, all eight words of “The blue lantern is beside seven wooden boxes.” | Control passes |
+| Independent opening | `speech`, “Ghostbusters! [laughter]” | Descriptive transcription only |
+| Original opening | `speech`, “Ghostbusters. [laughter]” | Descriptive transcription only |
+
+Both controls pass. The two opening transcripts agree apart from punctuation, supporting recognition of the same phrase in this specific pair. They have no independent transcription oracle and do not establish equal intelligibility, naturalness, PCM identity or general musical judgment. The listener separately accepted recognizable speech and preserved musical sound/phrasing, then accepted the ending as “seems identical to me”; that feedback was withheld from the requests. Previous pairwise and pulse-animation failures remain relevant and are not superseded by this narrow result.
+
+Four completed requests cost **$0.00017082** in total, with no retries or prompt changes. The [offline assessment](../../evidence/ghostbusters-speech-model/assessment.json) binds the controls and descriptive observations to [frozen cases](../../evidence/ghostbusters-speech-model/cases.json), [preprocessing provenance](../../evidence/ghostbusters-speech-model/provenance.json), raw responses and actual cost receipts. Audio remains local. The [preparer](../../scripts/studies/ghostbusters/prepare-speech-model-check.py) recreates anonymous crops from the full published WAVs and exact retained controls; use the existing bounded runner with the same result directory to reuse billed responses.
+
+Reproduce the offline preparation and assessment using the retained controls and completed full-title run. Choose fresh preparation/assessment destinations when rebuilding; preserve the existing `results` directory for cached paid responses. Do not rerun requests merely to verify archived evidence.
+
+```sh
+python3 scripts/studies/ghostbusters/prepare-speech-model-check.py --reference build/ghostbusters-listening/reference.wav --candidate build/ghostbusters-listening/reconstructed.wav --run build/ghostbusters-independent-full/run-executed.json --output build/ghostbusters-speech-model-check-new
+python3 scripts/studies/ghostbusters/assess-speech-model-check.py --inputs build/ghostbusters-speech-model-check --results build/ghostbusters-speech-model-check/results --output build/ghostbusters-speech-model-recheck/assessment.json
+python3 scripts/evidence.py verify --group ghostbusters-speech-model
+```
+
+The [offline scorer](../../scripts/studies/ghostbusters/assess-speech-model-check.py) recomputes audio/request bindings, verifies complete unique responses and costs, and grades only the two controls. Three [focused guards](../../tests/ghostbusters_speech_model_check_test.py) cover false silence transcripts, missing speech words, truncated responses and hash/payload tampering. A failed control disables use of the descriptive observations; fluent matching transcripts cannot override it.
+
+**Decision:** retain Qwen as an experimental supporting tool for short recognizable speech, conditional on passing task-specific controls. No arrangement change follows from this trial. SongBench is not used because its quality scores cannot answer the transcription question. Reassess on a new speech source or changed model/prompt/preprocessing before broader use; musical acceptance, instrument balance and subtle articulation remain human judgments. This result satisfies Ghostbusters’ pre-closure model-assistance review without qualifying either model as a musical judge.

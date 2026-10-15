@@ -1,0 +1,45 @@
+{
+  "id": "p04",
+  "wav_path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-speech-model-check/clips/p04.wav",
+  "audio_sha256": "321a7ddbafa6e89f11b1e541aca5980c2719fd1a71f3c12a56b100ef91af70cc",
+  "duration_seconds": 4.45,
+  "model": "qwen/qwen3.8-omni-flash",
+  "max_tokens": 1200,
+  "reasoning": false,
+  "reasoning_effort": null,
+  "payload_sha256": "891e5c04efc9f4885ce3132a756a7355479817dcb081881c6ea46149fcba8980",
+  "status": "complete",
+  "started_at": "2026-10-15T01:25:10.430938+00:00",
+  "cost": 4.52e-05,
+  "key_limits": {
+    "limit": 10.0,
+    "limit_remaining": 9.98237001,
+    "limit_reset": null
+  },
+  "response_path": "response-04.json",
+  "response_sha256": "8fa8f55b00933628cd6a544bca1ca8579953eb1a44de15ff75f5b128b94f1960",
+  "finished_at": "2026-10-15T01:25:12.083325+00:00",
+  "usage": {
+    "prompt_tokens": 129,
+    "completion_tokens": 55,
+    "total_tokens": 184,
+    "cost": 4.52e-05,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 4.52e-05,
+      "upstream_inference_prompt_cost": 1.935e-05,
+      "upstream_inference_completions_cost": 2.585e-05
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

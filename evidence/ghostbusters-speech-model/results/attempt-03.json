@@ -1,0 +1,45 @@
+{
+  "id": "p03",
+  "wav_path": "/Users/mbackschat/Projects/c64-sid-skill/build/ghostbusters-speech-model-check/clips/p03.wav",
+  "audio_sha256": "69c7d7c22d666ad05097b43b0927fa827621fb01322653c0760c8f166d222f5f",
+  "duration_seconds": 3.02725,
+  "model": "qwen/qwen3.8-omni-flash",
+  "max_tokens": 1200,
+  "reasoning": false,
+  "reasoning_effort": null,
+  "payload_sha256": "d940a64d16d968118c90b20bea86be8b0037fa99d982ba8d71fd23f81db49d2e",
+  "status": "complete",
+  "started_at": "2026-10-15T01:25:08.490564+00:00",
+  "cost": 4.227e-05,
+  "key_limits": {
+    "limit": 10.0,
+    "limit_remaining": 9.98237001,
+    "limit_reset": null
+  },
+  "response_path": "response-03.json",
+  "response_sha256": "c2f0d1a6c8173c5ee262bc5fdd647e02f0e7526c082d552f584145ee0cf07823",
+  "finished_at": "2026-10-15T01:25:10.328382+00:00",
+  "usage": {
+    "prompt_tokens": 122,
+    "completion_tokens": 51,
+    "total_tokens": 173,
+    "cost": 4.227e-05,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 4.227e-05,
+      "upstream_inference_prompt_cost": 1.83e-05,
+      "upstream_inference_completions_cost": 2.397e-05
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
