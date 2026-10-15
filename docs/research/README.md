@@ -33,6 +33,7 @@ Start with the [technique lookup](technique-index.md) to connect a musical need 
 | Explain how a master's instrument is programmed | [Executed SID program experiments](tools/sid-program-analysis.md): trace instructions, table data and SID stores, then test the audible consequence |
 | Plan Für Elise or Hummelflug | [Classical arrangements](composition/classical-arrangements.md) |
 | Check publication permissions for game-song samples | [Per-song findings and licensed exceptions](game-music-permissions.md) |
+| Find licensed classics for a future native two-SID interpretation | [Wizball and Arkanoid shortlist, existing stereo audio and search limits](stereo-candidates.md) |
 | Find songs and editable examples | [Study corpus and rights](composers/study-corpus.md) |
 | Verify a result and identify remaining gaps | [Validation](validation/verification.md) |
 | Reduce routine listening work and assess audio models | [Automated musical assessment research](audio-assessment.md): recent specialist critics, reward models, hosted audio models and a proposed SID calibration benchmark |
