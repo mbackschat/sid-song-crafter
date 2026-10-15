@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/branding/sid-song-crafter.webp" alt="SID Song Crafter — a musical note inside a SID chip" width="144" height="144">
+</p>
+
 # SID Song Crafter
 
 A workbench for creative interpretations of existing musical scores on the **Commodore 64 SID chip**, supporting **single-SID and dual-SID stereo music**.
