@@ -1,6 +1,8 @@
 # SID Song Crafter Project Guide
 
-Read with [AGENTS.md](AGENTS.md), which owns contributor conventions, commands and repository layout, and [PRODUCTS.md](PRODUCTS.md), which defines the musical purpose. Prioritize expressive SID music and reusable knowledge. Correct notes and successful playback do not establish musical quality. Establish the intended mood before selecting instruments; follow the [score-interpretation workflow](docs/workflows/song-workflow.md) and treat prior patch acceptance as context-specific.
+This file is the canonical contributor and agent guide; [AGENTS.md](AGENTS.md) is a relative symlink to [CLAUDE.md](CLAUDE.md). Edit this file to update both entry points. [PRODUCTS.md](PRODUCTS.md) defines the musical purpose. Prioritize expressive SID music and reusable knowledge. Correct notes and successful playback do not establish musical quality. Establish the intended mood before selecting instruments; follow the [score-interpretation workflow](docs/workflows/song-workflow.md) and treat prior patch acceptance as context-specific.
+
+Prioritize expressive SID interpretations: capture a song's character through phrasing, groove, improvisation and native chip effects. Preserve source material separately from deliberate arrangement changes. Treat songs as case studies for learning sound design and building reusable tools and methods. Study composers, published accounts, editors and drivers; preserve findings in [research](docs/research/README.md). Extend the [sound repertoire](docs/research/composition/sound-design-repertoire.md) and [musical gesture library](docs/research/composition/gestures/README.md) with editable examples, useful contexts, limitations and listening evidence.
 
 ## Continue the workbench
 
@@ -52,7 +54,7 @@ Follow the [tool boundaries](scripts/README.md): source-specific extractors, exp
 
 The established master-composer studies are the primary repertoire and carry the strongest influence on sound and arrangement choices. Popular-song and BASIC interpretations provide supporting, context-specific evidence; they do not displace the masters merely because a patch is convenient or liked once. Expand master references when a concrete gap calls for contrasting evidence, while retaining each source’s execution and listening limits.
 
-Start with the [technique lookup](docs/research/technique-index.md), then read only the relevant owning study. Search locally before new research. Reuse demonstrated methods after checking their model, timing, voice dependencies and listening verdict. Repair missing index routes.
+Before SID technique explanations, arrangement, sound design or listening-feedback changes, start with the [technique lookup](docs/research/technique-index.md), then read the relevant owning study and reusable example. Search locally before new research. Choose methods by musical purpose and model, timing, voice and filter constraints; check their listening verdict before reuse. Retain useful decisions in the existing study or recipe documentation. Repair missing index routes or aliases.
 
 | Task | References |
 | --- | --- |
@@ -102,7 +104,7 @@ Before delegating listening judgments to a model, consult the [measured audio-as
 
 Apply the [standing model-assistance review rule](docs/research/audio-assessment.md#use-and-reassess-model-assistance) at the first representative audition, after listener feedback or a musical revision and before closing each musical case. Record the review in the owning study even when no model call is useful: state the reason and next checkpoint. Check changed model/prompt/preprocessing configurations before relying on them. Case closure requires these reviews to be accounted for, not successful model adoption. Keep this a small part of making music; no automatic paid calls, new service or optimization framework follows from a checkpoint.
 
-Keep reusable mechanisms, constraints, provenance and reproduction instructions in one owning document; link from indexes. Retain acquired knowhow as searchable lookup tables and tested scripts/modules where those make the next task easier; documentation and reusable code complement each other. Promote repeatable probes into supported tools instead of requiring the next session to rediscover or rebuild them. Preserve full evidence in the format that retains its detail: structured traces, state snapshots, tables, code and audio as appropriate. Prose should explain and index that evidence, not replace it with a lossy summary. Preserve canonical analysis archives through [Git LFS and readable manifests](evidence/README.md); use ignored `build/` for working output. Follow the [public repository boundary](AGENTS.md#public-repository-boundary) for original SIDs and reference WAVs, retaining source URLs and SHA-256 fingerprints in the download registry. No session diaries. Prefer searchable text/source; extract digital PDFs before OCR. Respect source redistribution limits. Promote instruments with editable parameters, purpose, target assumptions, demonstration, limitations and listening status.
+Keep reusable mechanisms, constraints, provenance and reproduction instructions in one owning document; link from indexes. Retain acquired knowhow as searchable lookup tables and tested scripts/modules where those make the next task easier; documentation and reusable code complement each other. Promote repeatable probes into supported tools instead of requiring the next session to rediscover or rebuild them. Preserve full evidence in the format that retains its detail: structured traces, state snapshots, tables, code and audio as appropriate. Prose should explain and index that evidence, not replace it with a lossy summary. Preserve canonical analysis archives through [Git LFS and readable manifests](evidence/README.md); use ignored `build/` for working output. Follow the [public repository boundary](#public-repository-boundary) for original SIDs and reference WAVs, retaining source URLs and SHA-256 fingerprints in the download registry. No session diaries. Prefer searchable text/source; extract digital PDFs before OCR. Respect source redistribution limits. Promote instruments with editable parameters, purpose, target assumptions, demonstration, limitations and listening status.
 
 ## Automate routine execution
 
@@ -135,4 +137,47 @@ This project permits judgment instead of mandatory red/green TDD everywhere. Def
 - **Music:** verify exports/timing and listen in context; software checks cannot establish musical quality.
 - **Documentation/configuration:** check links, parsing or a relevant smoke run; avoid artificial tests.
 
+Verify register writes, timing, endings and binaries as appropriate. Preserve original sources and checksums; report conversion losses. Common scores must not constrain native SID expression. Label excerpts accurately.
+
+Stock SID-Wizard Extra at tempo 1 initializes only the frequency high byte on a new note's first frame. Retain TEST silence there and verify the following full-pitch body; one-frame graces need an explicit timing adjustment. See [the reproduced constraint and policy](docs/songs/fuer-elise-native.md).
+
 Retain reproducible inputs/settings. Distinguish proposed, implemented, rendered and listening-reviewed work. Repeat passed checks only when changes, failures or unresolved risks justify it.
+
+## Project Structure & Module Organization
+
+Navigate operational guides through [docs/README.md](docs/README.md); use task-oriented subfolders. Research and provenance live in [docs/research](docs/research/README.md), scores/native instruments in `songs/`, tools in `scripts/`, tests in `tests/`, and installed skill sources in [skills](skills/README.md). Generated binaries, audio and working traces go in ignored `build/`. Promote canonical analysis records to [evidence](evidence/README.md), with compressed records in Git LFS and readable hash manifests in ordinary Git.
+
+Keep third-party checkouts in ignored `.tools/`, runtime state in `.local/`, and machine configuration in `.codex/`; track portable examples in `config/`.
+
+## Build, Test, and Development Commands
+
+From the repository root, install pinned assets with `python3 scripts/setup-project.py` and check readiness with `python3 scripts/doctor.py`. Read [skill corrections](docs/setup/skill-guidance.md) before using installed upstream instructions. After dependency setup in [README.md](README.md):
+
+- `bun scripts/build-song.ts`: assemble the opening excerpt and export PRG, PSID, and event manifest.
+- `python3 scripts/song.py songs/fuer-elise.json`: build, render, and verify the full arrangement in headless VICE; see [the reusable workflow](docs/workflows/song-workflow.md).
+- `python3 scripts/setup-sidwizard.py`, then `python3 scripts/run-instrument-trials.py --output build/instrument-trials`: prepare native Extra exports and [A/B trials](docs/workflows/instrument-trials.md). Use a fresh output directory.
+- `python3 scripts/native-song.py build songs/fuer-elise-sidwizard.json --output build/fuer-elise-native`: build and audit the [native sound-design candidate](docs/workflows/native-song-workflow.md); [VICE checkpoints](docs/validation/native-vice-checks.md) independently check its standalone PRG.
+- `bun test tests/music.test.ts tests/fuer-elise.test.ts`: check timing, binaries, and deterministic builds.
+- `PYTHONPATH=.tools/test-deps:.tools/arrangement-deps python3 -m unittest discover -s tests -p '*_test.py' -v`: run importer, CPU, audio, and workflow tests.
+
+Use c64bridge's pinned Bun lockfile. Native integration tests require SID-Wizard setup. Renderer setup is in [the audio guide](docs/workflows/audio-workflow.md).
+
+## Coding Style & Naming Conventions
+
+Use two-space TypeScript, four-space Python/C++, descriptive assembly labels, and `test_*` Python methods. No formatter is configured. Comments explain constraints. Keep Markdown paragraphs on single lines, link related documents, and organize research with folder READMEs.
+
+## VICE Findings & Troubleshooting
+
+Record reusable constraints, verified workarounds and reproduction commands in [local setup](docs/setup/local-setup.md), [the VICE investigation](docs/setup/vice-startup-investigation.md), and [the audio guide](docs/workflows/audio-workflow.md). Keep raw diagnostics in ignored output directories.
+
+GTK VICE 3.9 opens in the user's Terminal but fails agent-launched OpenGL initialization; log-colour/minimization changes do not fix it. Its `-headless` is unsupported and `-console` still invokes GTK. Use the genuine headless build and file-based monitor; this session denies socket binding. c64bridge's dummy audio can produce empty recordings; capture directly to WAV without warp.
+
+Select the default SID subtune before libsidplayfp playback; an unselected tune passes `$ff` to init. Keep this [regression finding](docs/workflows/audio-workflow.md) in future renderers.
+
+## Public Repository Boundary
+
+Keep original reference SID binaries out of the public repository, including history and LFS. Record each source URL and SHA-256 fingerprint in [the asset registry](config/local-assets.json); use [the verified downloader](scripts/setup-project.py) on demand. Keep reference WAVs out of Git under ignored `.local/` or `build/`; document exact reproduction commands, source hashes, subtune, renderer/version/settings, duration, gain, trim points and output hashes. Analysis artifacts, traces, lookup tables, editable descriptions and reusable code may be tracked when useful. Preserve complete evidence alongside concise prose, with source hashes, settings and reproduction commands. Downloaded skills retain the ignored `skills/<name>/` installation layout. Never force-add original SID files; check tracked files and history before publishing.
+
+## Commit & Pull Request Guidelines
+
+Use Conventional Commits with an imperative subject; add a short body for non-obvious rationale. PRs describe behavior and verification. Respect `.gitignore`, retain dependency pins, and never create or switch worktrees without explicit instructions.

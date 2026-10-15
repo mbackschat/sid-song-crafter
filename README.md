@@ -35,7 +35,7 @@ The working targets are PAL with one MOS6581/MOS8580 or two matching chips at `$
 - [Ghouls independent player](docs/research/composition/ghouls-preparation.md#compiled-export-and-complete-listening-package): declared reconstruction and bounded Follin corroboration complete. The [familiar transfer](docs/research/composition/instruments/ghouls-decoded-programs.md) has accepted instruments, balance and ending, with a tentative tune reservation; all 53 tonal notes match the source, with common native tuning about 35 cents sharp.
 - [Generate a listening package](docs/workflows/listening-package.md): one command for verified builds, cached rendering, A/B files and stage timings.
 - [Monty independent title](docs/research/composition/monty-preparation.md): editable packed-score scheduling, shared pulse motion and state-dependent pitch; [familiar transfer](docs/research/composition/instruments/monty-decoded-programs.md) retains the same 53-note comparison phrase.
-- [Contributor guide](AGENTS.md) and [agent guide](CLAUDE.md): development and research conventions.
+- [Contributor and agent guide](CLAUDE.md): development and research conventions; [AGENTS.md](AGENTS.md) links to the same file.
 
 ## Prepare local assets and check tools
 

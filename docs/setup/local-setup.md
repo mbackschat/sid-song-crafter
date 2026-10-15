@@ -138,7 +138,7 @@ When a live monitor is available, discover `c64_sound`, read `c64://platform/sta
 
 Run `python3 scripts/setup-project.py --check --include sid-music` when both skills are wanted, followed by `python3 scripts/doctor.py`. The installer tests cover failed downloads, changed files, safe paths and activation; doctor checks are read-only and bounded. Keep raw diagnostics in ignored output directories and retain reusable constraints here or in the linked owning guide.
 
-[AGENTS.md](../../AGENTS.md) provides contributor guidance. Downloaded material must also be absent from published Git history; adding ignore rules does not remove previously tracked files or historical blobs.
+[CLAUDE.md](../../CLAUDE.md) provides contributor guidance; [AGENTS.md](../../AGENTS.md) is its symlink for agent discovery. Downloaded material must also be absent from published Git history; adding ignore rules does not remove previously tracked files or historical blobs.
 
 ## Before publishing
 
