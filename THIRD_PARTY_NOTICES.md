@@ -27,7 +27,7 @@ The local James Kibbie BWV 565 recording is separately attributed and licensed u
 
 ## Build, playback and validation components
 
-These components are acquired into ignored `.tools/` or `.local/` directories, or installed separately. The documented versions and pins identify the inspected sources; a newer version needs its own license check.
+The tools and libraries below are acquired into ignored `.tools/` or `.local/` directories, or installed separately. The reviewed SID/PRG downloads in [samples](samples/README.md) embed SID-Wizard player code; its upstream declaration below applies to that code. The sample manifests identify the source music, our arrangement and the pinned player separately. The documented versions and pins identify the inspected sources; a newer version needs its own license check.
 
 | Component and source | Version / use | Upstream terms and retained notice |
 | --- | --- | --- |

@@ -23,6 +23,23 @@ This project studies how C64 composers such as Rob Hubbard, Martin Galway, Tim F
 
 The workflow uses scripts and editable JSON recipes. Instrument selection and arrangement are configured for each song; listening determines whether the result meets the musical brief.
 
+## Downloads
+
+These samples are included in the repository and can be played without building the project:
+
+| Sample | SID player | Audio player | C64 / VICE | Editable source |
+| --- | --- | --- | --- | --- |
+| Bach Toccata — complete Toccata section, about 1:28 | [SID](samples/bach-toccata/bach-toccata.sid) | [WAV](samples/bach-toccata/bach-toccata.wav) | [PRG](samples/bach-toccata/bach-toccata.prg) | [SWM](samples/bach-toccata/bach-toccata.swm) |
+| Original instrument mix — 10-second three-voice demo | [SID](samples/instrument-mix/instrument-mix.sid) | [WAV](samples/instrument-mix/instrument-mix.wav) | [PRG](samples/instrument-mix/instrument-mix.prg) | [SWM](samples/instrument-mix/instrument-mix.swm) |
+
+On GitHub, open a file and use **Download raw file**. Open a SID in a PSID-compatible player, a WAV in a normal audio player, or autostart a PRG in VICE. Both samples target PAL and MOS8580. [Sample details](samples/README.md) include source attribution, hashes and reproduction commands.
+
+After cloning, macOS users can play the included Bach recording directly:
+
+```sh
+afplay samples/bach-toccata/bach-toccata.wav
+```
+
 ## Build and run
 
 The included Bach example builds an approximately 88-second interpretation of the Toccata from BWV 565, ending before the Fugue. Its score and arrangement are included in the repository.
@@ -120,14 +137,14 @@ Play the SID or PRG from that new directory. [Regional export](docs/workflows/na
 
 ## Examples
 
-The repository includes the source recipes for these examples. Generated SID files and audio previews are kept in `build/`; they are not shipped in a fresh clone.
+Bach and the original instrument mix have [ready-to-play downloads](#downloads). Moon River and Pink Panther provide recipes and local build instructions; their complete song files are not distributed here.
 
 | Example | Arrangement | Build and play |
 | --- | --- | --- |
-| [Bach Toccata](songs/studies/bach-toccata-full/README.md) | Complete Toccata section; one SID; about 1:28 | Use the commands above, then open `build/readme-toccata/export/hybrid.sid`. |
+| [Bach Toccata](songs/studies/bach-toccata-full/README.md) | Complete Toccata section; one SID; about 1:28 | [Download SID](samples/bach-toccata/bach-toccata.sid) or [WAV](samples/bach-toccata/bach-toccata.wav); rebuild with the commands above. |
 | [Moon River](songs/moon-river/README.md) | First statement with the accepted restrained instruments; one SID; about 1:39 | Build below; follow the SID export link in `build/moon-river-restrained/listening.md`. |
 | [Pink Panther](songs/pink-panther/README.md) | Complete sourced arrangement with pulse accompaniment; one SID; about 3:20 | Build below; follow the SID export link in `build/pink-panther-full/listening.md`. |
-| [Instrument mix](docs/workflows/instrument-trials.md) | Original three-voice test phrase; 10 seconds | Run `python3 scripts/run-instrument-trials.py --pair mix --output build/instrument-trials`, then open `build/instrument-trials/mix-candidate/mix-candidate.sid`. |
+| [Instrument mix](docs/workflows/instrument-trials.md) | Original three-voice test phrase; 10 seconds | [Download SID](samples/instrument-mix/instrument-mix.sid) or [WAV](samples/instrument-mix/instrument-mix.wav). Rebuild with `python3 scripts/run-instrument-trials.py --pair mix --output build/instrument-trials`. |
 
 Moon River and Pink Panther additionally need [MIDI dependencies](docs/songs/fuer-elise-score.md#reproduce-and-verify) and [headless VICE with its data files](docs/setup/local-setup.md), because their recipes also run emulator checks. Their source MIDIs are downloaded separately. Once those prerequisites are ready:
 
@@ -166,7 +183,7 @@ The build writes SID and PRG files under `build/my-song/export/`, plus `build/my
 - [Tool guide](scripts/README.md) and [documentation index](docs/README.md): supported workflows and detailed technical contracts.
 - [Contributor guide](CLAUDE.md): development and publication rules. [AGENTS.md](AGENTS.md) links to the same guide.
 
-Audio models are optional experiments; no model download or API account is required to build songs. Generated files live in ignored `build/`, third-party tools in `.tools/`, and local assets in `.local/`.
+Audio models are optional experiments; no model download or API account is required to build songs. Working output lives in ignored `build/`, reviewed song downloads in `samples/`, third-party tools in `.tools/`, and local assets in `.local/`.
 
 ## Prepare the assembler
 

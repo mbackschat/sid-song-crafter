@@ -1,3 +1,9 @@
 evidence/**/*.gz filter=lfs diff=lfs merge=lfs -text
 # Evidence manifests hash exact TSV bytes, including CSV-writer CRLF endings.
 evidence/**/*.tsv -text
+
+# Preserve exact bytes of the reviewed playable samples.
+samples/**/*.sid -text
+samples/**/*.prg -text
+samples/**/*.swm -text
+samples/**/*.wav -text

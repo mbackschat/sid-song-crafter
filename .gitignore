@@ -13,8 +13,12 @@ __pycache__/
 
 .DS_Store
 
-# Reference tunes and generated SID exports remain local.
+# Reference tunes and unreviewed SID exports remain local.
 *.[sS][iI][dD]
+
+# Reviewed public samples with documented source and player rights.
+!/samples/bach-toccata/bach-toccata.sid
+!/samples/instrument-mix/instrument-mix.sid
 
 # Downloaded project-local skills; retain our skills/README.md.
 /skills/c64-sid/

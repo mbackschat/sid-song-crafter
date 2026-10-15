@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "sampleId": "instrument-mix",
+  "title": "Original three-voice SID-Wizard instrument mix",
+  "packagedDate": "2026-10-15",
+  "pathBase": "repository-root",
+  "assets": {
+    "sid": {
+      "path": "samples/instrument-mix/instrument-mix.sid",
+      "bytes": 3365,
+      "sha256": "911ea1f5f780de971ceb28dbbe7fcafaa27dc680d1182bfa367c78ff28454bc1"
+    },
+    "prg": {
+      "path": "samples/instrument-mix/instrument-mix.prg",
+      "bytes": 4237,
+      "sha256": "f0a21a39a24328d32627b14ce6c4464f551b513833fb328b2bffedb8cb4e636e"
+    },
+    "wav": {
+      "path": "samples/instrument-mix/instrument-mix.wav",
+      "bytes": 882044,
+      "sha256": "730940dae1ebdd0d722f0f14b0031390058de2b499e1d848306b1ae161fb8f48"
+    },
+    "swm": {
+      "path": "samples/instrument-mix/instrument-mix.swm",
+      "bytes": 511,
+      "sha256": "c9a1980df9089620195ec2a3ee966db20d1ddc7c0028a49c6e1882fb5809b32c"
+    }
+  },
+  "audio": {
+    "format": "PCM16 little-endian",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 441000,
+    "durationSeconds": 10.0,
+    "gain": 1,
+    "trimStartFrame": 0,
+    "trimEndFrame": 441000
+  },
+  "listeningStatus": {
+    "date": "2026-10-12",
+    "status": "initial mix-level acceptance",
+    "verdict": "mix sounds ok",
+    "scope": "Candidate three-voice mix only; no hardware, editor/export or individual-instrument acceptance is inferred.",
+    "recordPath": "songs/studies/sidwizard-repertoire/README.md"
+  },
+  "rights": {
+    "composition": "Original project short phrase and patches, designed 2026-10-12; no example instrument or tune bytes copied, as recorded in songs/studies/sidwizard-repertoire/README.md.",
+    "projectContribution": "Original composition, patches and generated performance are covered by LICENSE (MIT), to the extent the project holds rights.",
+    "upstreamPlayerNoticePath": "THIRD_PARTY_NOTICES.md",
+    "upstreamPlayerTerms": "SID-Wizard 1.97 native/README.txt declares a WTF-licensed tool; embedded player code retains that separate upstream declaration.",
+    "excludedMaterial": "No historical/reference SID, reference audio, proprietary recording or imported tune is included."
+  },
+  "target": {
+    "clock": "PAL",
+    "clockHz": 985248.6111111111,
+    "frameCycles": 19656,
+    "callsPerSecond": 50.12457321485099,
+    "sidCount": 1,
+    "sidModel": "MOS8580",
+    "sidBaseAddress": 54272,
+    "updateCadence": "one Extra player call per target video frame",
+    "subtune": 1,
+    "powerOnDelay": 0
+  },
+  "build": {
+    "sidWizardVersion": "1.97",
+    "sidWizardArchiveUrl": "https://csdb.dk/getinternalfile.php/281063/SID-Wizard-1.97-sources-examples.tar.gz",
+    "sidWizardArchiveSha256": "aeb265f4a778b2acb5aad13e8e98af882888292f749f29f4d18cbf49850e57bc",
+    "assemblerVersion": "64tass 1.60.3243",
+    "assemblerArchiveUrl": "https://downloads.sourceforge.net/project/tass64/source/64tass-1.60.3243-src.zip",
+    "assemblerArchiveSha256": "9d83be3d23a2c55e085b7c7a7856c2f96080447ea120a6a8c21a217ed76427f0",
+    "exporterSha256": "02b3ad16fbe59bdd9d3fcbe77f7a9be7535dbe109fdbf0c7d9e2753896b3ad89",
+    "labelsSha256": "ebc2234576a5a98b07d570c93e0838c1da9d9f0aa6d669e5c1ae80ae32f90b2a",
+    "sourceModified": false
+  },
+  "exportSettings": {
+    "sourceSha256": "c9a1980df9089620195ec2a3ee966db20d1ddc7c0028a49c6e1882fb5809b32c",
+    "module": {
+      "sidCount": 1,
+      "patterns": 3,
+      "sequences": 3,
+      "instruments": [
+        {
+          "name": "PULSEMOV",
+          "size": 34
+        },
+        {
+          "name": "PLUCKBRI",
+          "size": 25
+        },
+        {
+          "name": "PLUCKBRI",
+          "size": 25
+        },
+        {
+          "name": "BASSKICK",
+          "size": 40
+        },
+        {
+          "name": "KICKFALL",
+          "size": 37
+        }
+      ],
+      "chordBytes": 0,
+      "tempoBytes": 0
+    },
+    "sidSha256": "911ea1f5f780de971ceb28dbbe7fcafaa27dc680d1182bfa367c78ff28454bc1",
+    "prgSha256": "f0a21a39a24328d32627b14ce6c4464f551b513833fb328b2bffedb8cb4e636e",
+    "sidWizardVersion": "1.97",
+    "player": "Extra",
+    "driverType": 3,
+    "clock": "PAL",
+    "clockHz": 985248.6111111111,
+    "frameCycles": 19656,
+    "ticksPerSecond": 50.12457321485099,
+    "sidModel": "MOS8580",
+    "effectTimingPolicy": "target-vbi",
+    "effectUpdateRateHz": 50.12457321485099,
+    "envelopeTimingPolicy": "retain-sid-adsr-codes",
+    "frequencyTablePolicy": "unchanged-stock-pal",
+    "regionalDifferences": "Native row counts and instrument bytes are retained, with one play call per target VBI. Arrange beat-based scores for this clock before export. NTSC modulation and first-frame durations follow its faster VBI; unchanged ADSR codes follow its faster SID clock. Register-unit detune and modulation amplitudes are not rescaled.",
+    "sidCount": 1,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS8580"
+      }
+    ],
+    "psidVersion": 2,
+    "frameSpeed": 1,
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4099,
+    "standaloneLoadAddress": 2049,
+    "standaloneStartAddress": 2061,
+    "standalonePlayerInitAddress": 4096,
+    "standalonePlayerPlayAddress": 4099,
+    "exportEndAddress": 7335,
+    "nativeSourceRetained": true,
+    "exportLosses": [
+      "Instrument names are omitted from playback payload by upstream SID-Maker; retained in SWM/SWI."
+    ],
+    "nativeRoutineCycles": {
+      "setEXEdetails": 99504,
+      "preparetunedata": 41692,
+      "setplayer": 4917,
+      "SetSIDply": 133,
+      "SetSIDt": 1246,
+      "dispMod": 337,
+      "setsaveparam": 175
+    },
+    "source": "samples/instrument-mix/instrument-mix.swm",
+    "title": "mix-candidate",
+    "author": "Original SID study",
+    "released": "2026"
+  },
+  "sourceInputs": [
+    {
+      "path": "songs/studies/sidwizard-repertoire/repertoire.json",
+      "bytes": 8434,
+      "sha256": "ed7229af1443342b704bcbfbc2fce94565b98e2791c59b7068d30b618a13a4a5"
+    },
+    {
+      "path": "songs/studies/sidwizard-repertoire/native/mix-candidate.swm",
+      "bytes": 511,
+      "sha256": "c9a1980df9089620195ec2a3ee966db20d1ddc7c0028a49c6e1882fb5809b32c"
+    },
+    {
+      "path": "scripts/generate-native-instruments.py",
+      "bytes": 6820,
+      "sha256": "48eeb99afd034f1432e39bbdf3ea47ebd793de6f52147cb651766004d00abe3e"
+    },
+    {
+      "path": "scripts/run-instrument-trials.py",
+      "bytes": 8089,
+      "sha256": "49efb60ea04cbb80bf7c5a0e018b14acb019d765e3495e6f36599f119ae78eca"
+    }
+  ],
+  "toolSources": [
+    {
+      "path": "scripts/export-sidwizard.py",
+      "bytes": 14779,
+      "sha256": "26f271749db1de69dce53e95b35e74703b5d0625eae865423ded594a5e331c40"
+    },
+    {
+      "path": "scripts/sid_clock.py",
+      "bytes": 848,
+      "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+    },
+    {
+      "path": "scripts/verify_player.py",
+      "bytes": 9535,
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    },
+    {
+      "path": "scripts/render-sid.cpp",
+      "bytes": 19214,
+      "sha256": "7d4eb7bc14df5dc46bc81c3d2cd8d94a3e1a30b34d96bb7944c09abf662ab73f"
+    }
+  ],
+  "sourceNotes": "The frozen SWM is byte-identical to the tracked native/mix-candidate.swm; the complete original phrase and instrument definitions remain in repertoire.json.",
+  "render": {
+    "version": "libsidplayfp 3.1.1 / SIDLite",
+    "executableSha256": null,
+    "identityBasis": "The historical trial retained render arguments and PCM hash, but no renderer executable hash. Version is recorded in the owning instrument study; no exact historical executable identity is inferred.",
+    "librarySourceUrl": "https://github.com/libsidplayfp/libsidplayfp/tree/v3.1.1",
+    "setupPath": "docs/workflows/audio-workflow.md",
+    "requestedDurationSeconds": 10.0,
+    "clock": "pal",
+    "subtune": 1,
+    "gain": 1,
+    "trim": "none; complete original WAV retained",
+    "voices": [
+      1,
+      2,
+      3
+    ],
+    "batchSize": 19656,
+    "postprocessing": "none"
+  },
+  "reproduction": {
+    "workingDirectory": "repository-root",
+    "prerequisites": [
+      "python3 scripts/setup-sidwizard.py",
+      "Build .local/bin/render-sid using docs/workflows/audio-workflow.md."
+    ],
+    "exportCommand": [
+      "python3",
+      "scripts/export-sidwizard.py",
+      "samples/instrument-mix/instrument-mix.swm",
+      "--output-dir",
+      "build/public-samples-reexport/instrument-mix",
+      "--title",
+      "mix-candidate",
+      "--author",
+      "Original SID study",
+      "--released",
+      "2026",
+      "--clock",
+      "pal",
+      "--sid-model",
+      "MOS8580"
+    ],
+    "renderCommand": [
+      ".local/bin/render-sid",
+      "build/public-samples-reexport/instrument-mix/instrument-mix.sid",
+      "build/public-samples-reexport/instrument-mix/instrument-mix.wav",
+      "10",
+      "--clock",
+      "pal",
+      "--subtune",
+      "1"
+    ],
+    "authoringCommands": [
+      [
+        "python3",
+        "scripts/run-instrument-trials.py",
+        "--pair",
+        "mix",
+        "--output",
+        "build/public-samples-instrument-trials"
+      ]
+    ],
+    "outputPolicy": "Use fresh build directories; these commands do not overwrite the bundled samples.",
+    "expectedHashes": {
+      "sid": "911ea1f5f780de971ceb28dbbe7fcafaa27dc680d1182bfa367c78ff28454bc1",
+      "prg": "f0a21a39a24328d32627b14ce6c4464f551b513833fb328b2bffedb8cb4e636e",
+      "wav": "730940dae1ebdd0d722f0f14b0031390058de2b499e1d848306b1ae161fb8f48",
+      "swm": "c9a1980df9089620195ec2a3ee966db20d1ddc7c0028a49c6e1882fb5809b32c"
+    },
+    "guarantees": "Fresh frozen-source SID and PRG export was byte-verified against the bundled copies. WAV is the retained listening file, not regenerated during packaging; re-rendered PCM identity depends on matching the renderer and library build."
+  },
+  "verification": {
+    "date": "2026-10-15",
+    "allCopiesMatchOriginalBytes": true,
+    "sourceSwmMatchesOriginalExportReceipt": true,
+    "freshFrozenSourceSidAndPrgMatch": true,
+    "wavMatchesRetainedPcmReceipt": true,
+    "wavFormatChecked": true,
+    "audioRegenerated": false,
+    "originalLocalArtifacts": {
+      "sid": {
+        "path": "build/instrument-trials/mix-candidate/mix-candidate.sid",
+        "bytes": 3365,
+        "sha256": "911ea1f5f780de971ceb28dbbe7fcafaa27dc680d1182bfa367c78ff28454bc1"
+      },
+      "prg": {
+        "path": "build/instrument-trials/mix-candidate/mix-candidate.prg",
+        "bytes": 4237,
+        "sha256": "f0a21a39a24328d32627b14ce6c4464f551b513833fb328b2bffedb8cb4e636e"
+      },
+      "wav": {
+        "path": "build/instrument-trials/mix-candidate/mix-candidate.wav",
+        "bytes": 882044,
+        "sha256": "730940dae1ebdd0d722f0f14b0031390058de2b499e1d848306b1ae161fb8f48"
+      },
+      "swm": {
+        "path": "songs/studies/sidwizard-repertoire/native/mix-candidate.swm",
+        "bytes": 511,
+        "sha256": "c9a1980df9089620195ec2a3ee966db20d1ddc7c0028a49c6e1882fb5809b32c"
+      }
+    },
+    "originalLocalExportReceipt": {
+      "path": "build/instrument-trials/mix-candidate/mix-candidate.export.json",
+      "bytes": 2487,
+      "sha256": "d84626bdeedd287a37b343895a77fad745424317d5ec6d084516e46675e64ebb"
+    },
+    "originalLocalArtifactsRequiredForReproduction": false
+  }
+}

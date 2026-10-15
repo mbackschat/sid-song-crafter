@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 1,
+  "sampleId": "bach-toccata",
+  "title": "Toccata from BWV 565: complete single-SID interpretation",
+  "packagedDate": "2026-10-15",
+  "pathBase": "repository-root",
+  "assets": {
+    "sid": {
+      "path": "samples/bach-toccata/bach-toccata.sid",
+      "bytes": 8898,
+      "sha256": "2578a1b96eb0338a50c6b926f60c806f79e9567b8a933274763d46fb0f17e761"
+    },
+    "prg": {
+      "path": "samples/bach-toccata/bach-toccata.prg",
+      "bytes": 9770,
+      "sha256": "e793b00d4f0ff5b0ea1dd5ed676482f2033ccac4c0ee9a174bd45e6eb2d057db"
+    },
+    "wav": {
+      "path": "samples/bach-toccata/bach-toccata.wav",
+      "bytes": 7772486,
+      "sha256": "86e10f2cfe1341eb60d27f03e071dffb34181666bd605353378d5b48e0523b89"
+    },
+    "swm": {
+      "path": "samples/bach-toccata/bach-toccata.swm",
+      "bytes": 5964,
+      "sha256": "c9155ece500dd6fd73f1fa897080e796ddf3b05e51ea09ab5a89a414bcc376a7"
+    }
+  },
+  "audio": {
+    "format": "PCM16 little-endian",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 3886221,
+    "durationSeconds": 88.12292517006803,
+    "gain": 1,
+    "trimStartFrame": 0,
+    "trimEndFrame": 3886221
+  },
+  "listeningStatus": {
+    "date": "2026-10-14",
+    "status": "accepted complete mono interpretation",
+    "acceptedBaselineCommit": "5b61384",
+    "acceptedWavSha256": "86e10f2cfe1341eb60d27f03e071dffb34181666bd605353378d5b48e0523b89",
+    "scope": "Source quarter positions 0-118: measures 1-29 and measure 30 beats 1-2, ending before the Fugue; 84.6025 seconds of arranged music plus release and verification silence.",
+    "recordPath": "docs/research/composition/bach-toccata.md"
+  },
+  "rights": {
+    "composition": "J. S. Bach, BWV 565; public-domain composition.",
+    "sourceEdition": "Anonymous Mutopia 1780 typesetting of Bach-Gesellschaft Ausgabe, 1867; retained LilyPond copyright header and typesetter dedication explicitly state Public Domain.",
+    "sourceUrl": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1780",
+    "sourceDeclarationPath": "songs/studies/bach-toccata-opening/source/ToccataFugue.ly",
+    "projectContribution": "Original project SID arrangement, patches and generated performance are covered by LICENSE (MIT), to the extent the project holds rights; the underlying public-domain material remains public domain.",
+    "upstreamPlayerNoticePath": "THIRD_PARTY_NOTICES.md",
+    "upstreamPlayerTerms": "SID-Wizard 1.97 native/README.txt declares a WTF-licensed tool; embedded player code retains that separate upstream declaration.",
+    "excludedMaterial": "No Gyruss SID/code/audio, organ-performance recording or other third-party reference recording is included."
+  },
+  "target": {
+    "clock": "PAL",
+    "clockHz": 985248.6111111111,
+    "frameCycles": 19656,
+    "callsPerSecond": 50.12457321485099,
+    "sidCount": 1,
+    "sidModel": "MOS8580",
+    "sidBaseAddress": 54272,
+    "updateCadence": "one Extra player call per target video frame",
+    "subtune": 1,
+    "powerOnDelay": 0
+  },
+  "build": {
+    "sidWizardVersion": "1.97",
+    "sidWizardArchiveUrl": "https://csdb.dk/getinternalfile.php/281063/SID-Wizard-1.97-sources-examples.tar.gz",
+    "sidWizardArchiveSha256": "aeb265f4a778b2acb5aad13e8e98af882888292f749f29f4d18cbf49850e57bc",
+    "assemblerVersion": "64tass 1.60.3243",
+    "assemblerArchiveUrl": "https://downloads.sourceforge.net/project/tass64/source/64tass-1.60.3243-src.zip",
+    "assemblerArchiveSha256": "9d83be3d23a2c55e085b7c7a7856c2f96080447ea120a6a8c21a217ed76427f0",
+    "exporterSha256": "02b3ad16fbe59bdd9d3fcbe77f7a9be7535dbe109fdbf0c7d9e2753896b3ad89",
+    "labelsSha256": "ebc2234576a5a98b07d570c93e0838c1da9d9f0aa6d669e5c1ae80ae32f90b2a",
+    "sourceModified": false
+  },
+  "exportSettings": {
+    "sourceSha256": "c9155ece500dd6fd73f1fa897080e796ddf3b05e51ea09ab5a89a414bcc376a7",
+    "module": {
+      "sidCount": 1,
+      "patterns": 52,
+      "sequences": 3,
+      "instruments": [
+        {
+          "name": "BCHPWM",
+          "size": 34
+        },
+        {
+          "name": "BCHBASS",
+          "size": 28
+        },
+        {
+          "name": "BCHHARM",
+          "size": 25
+        },
+        {
+          "name": "BCHDIM",
+          "size": 49
+        },
+        {
+          "name": "BCHDOM",
+          "size": 49
+        },
+        {
+          "name": "BCHMIN",
+          "size": 49
+        },
+        {
+          "name": "BCHSUB",
+          "size": 49
+        },
+        {
+          "name": "BCHINNR",
+          "size": 49
+        }
+      ],
+      "chordBytes": 0,
+      "tempoBytes": 0
+    },
+    "sidSha256": "2578a1b96eb0338a50c6b926f60c806f79e9567b8a933274763d46fb0f17e761",
+    "prgSha256": "e793b00d4f0ff5b0ea1dd5ed676482f2033ccac4c0ee9a174bd45e6eb2d057db",
+    "sidWizardVersion": "1.97",
+    "player": "Extra",
+    "driverType": 3,
+    "clock": "PAL",
+    "clockHz": 985248.6111111111,
+    "frameCycles": 19656,
+    "ticksPerSecond": 50.12457321485099,
+    "sidModel": "MOS8580",
+    "effectTimingPolicy": "target-vbi",
+    "effectUpdateRateHz": 50.12457321485099,
+    "envelopeTimingPolicy": "retain-sid-adsr-codes",
+    "frequencyTablePolicy": "unchanged-stock-pal",
+    "regionalDifferences": "Native row counts and instrument bytes are retained, with one play call per target VBI. Arrange beat-based scores for this clock before export. NTSC modulation and first-frame durations follow its faster VBI; unchanged ADSR codes follow its faster SID clock. Register-unit detune and modulation amplitudes are not rescaled.",
+    "sidCount": 1,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS8580"
+      }
+    ],
+    "psidVersion": 2,
+    "frameSpeed": 1,
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4099,
+    "standaloneLoadAddress": 2049,
+    "standaloneStartAddress": 2061,
+    "standalonePlayerInitAddress": 4096,
+    "standalonePlayerPlayAddress": 4099,
+    "exportEndAddress": 12868,
+    "nativeSourceRetained": true,
+    "exportLosses": [
+      "Instrument names are omitted from playback payload by upstream SID-Maker; retained in SWM/SWI."
+    ],
+    "nativeRoutineCycles": {
+      "setEXEdetails": 99504,
+      "preparetunedata": 782824,
+      "setplayer": 4917,
+      "SetSIDply": 133,
+      "SetSIDt": 1395,
+      "dispMod": 337,
+      "setsaveparam": 175
+    },
+    "source": "samples/bach-toccata/bach-toccata.swm",
+    "title": "Bach Toccata: full SID hybrid",
+    "author": "Original SID arrangement",
+    "released": "2026"
+  },
+  "sourceInputs": [
+    {
+      "path": "songs/studies/bach-toccata-full/score.json",
+      "bytes": 101910,
+      "sha256": "332f035a41a6f47d2da748abc303c47b4f93547a8d897e9270a7a73e2424d70b"
+    },
+    {
+      "path": "songs/studies/bach-toccata-full/hybrid.json",
+      "bytes": 10428,
+      "sha256": "c93f5f4de21c3f14f82b0b4fb93060c6bbf20f72fa7775492ead74d3896b4eba"
+    },
+    {
+      "path": "songs/studies/bach-toccata-full/arrangement.json",
+      "bytes": 8042,
+      "sha256": "613db5c604500c207aa9b7aadcd785d89cceeaac37817623e46a274b08b53460"
+    },
+    {
+      "path": "songs/studies/bach-toccata-full/preparation.json",
+      "bytes": 732637,
+      "sha256": "1752ba4baec7053610030431ea5cc2f00ff732a94ecc7ee19f239e37f24caaa8"
+    },
+    {
+      "path": "songs/studies/bach-toccata-opening/source-notes.json",
+      "bytes": 915323,
+      "sha256": "04fb11fcf3d643ffa152b0050e14297e3df64b4ababbd12209f3d4cee8022329"
+    },
+    {
+      "path": "songs/studies/bach-toccata-opening/source/ToccataFugue.ly",
+      "bytes": 29556,
+      "sha256": "1640bbd2bf11a95e18db03fea285d30718254af0a694e1c36533d8109d71718c"
+    },
+    {
+      "path": "songs/studies/bach-toccata-opening/source/ToccataFugue.mid",
+      "bytes": 30267,
+      "sha256": "1aabd00967aded08d6633482c211af46f679d97f01cfeaca43c83a59dfeeeb6b"
+    },
+    {
+      "path": "scripts/studies/bach/prepare-toccata.py",
+      "bytes": 21986,
+      "sha256": "4d2a636bb0779c04cf57052317df2cfba345ecb66ad2befb8cae77d61a83a391"
+    },
+    {
+      "path": "scripts/arrange-sidwizard.py",
+      "bytes": 19620,
+      "sha256": "65947eb4a338a40ea22d68d49d9f8304bc11f499adc18a710dd243457bf46c5e"
+    },
+    {
+      "path": "scripts/native-song.py",
+      "bytes": 20621,
+      "sha256": "42cf5affa4485416a1ce1b12497be36253d9467d0ca6dd9a7db4ceeb6c3cd7dd"
+    }
+  ],
+  "toolSources": [
+    {
+      "path": "scripts/export-sidwizard.py",
+      "bytes": 14779,
+      "sha256": "26f271749db1de69dce53e95b35e74703b5d0625eae865423ded594a5e331c40"
+    },
+    {
+      "path": "scripts/sid_clock.py",
+      "bytes": 848,
+      "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+    },
+    {
+      "path": "scripts/verify_player.py",
+      "bytes": 9535,
+      "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+    },
+    {
+      "path": "scripts/render-sid.cpp",
+      "bytes": 19214,
+      "sha256": "7d4eb7bc14df5dc46bc81c3d2cd8d94a3e1a30b34d96bb7944c09abf662ab73f"
+    }
+  ],
+  "sourceNotes": "The local README rebuild changed only score.provenance.completeSource to resolve from its build directory; musical score content equals the retained songs/studies/bach-toccata-full/score.json. The frozen SWM is the exact-byte native release source.",
+  "render": {
+    "version": "libsidplayfp 3.1.1 / SIDLite",
+    "executableSha256": "6fa0a3f03eb190153871e7040c4dc827163e40feda7dd44e982ab34ebb3728d4",
+    "identityBasis": "Retained render receipt for this exact WAV.",
+    "librarySourceUrl": "https://github.com/libsidplayfp/libsidplayfp/tree/v3.1.1",
+    "setupPath": "docs/workflows/audio-workflow.md",
+    "requestedDurationSeconds": 88.12293631472035,
+    "clock": "pal",
+    "subtune": 1,
+    "gain": 1,
+    "trim": "none; complete original WAV retained",
+    "voices": [
+      1,
+      2,
+      3
+    ],
+    "batchSize": 19656,
+    "postprocessing": "none"
+  },
+  "reproduction": {
+    "workingDirectory": "repository-root",
+    "prerequisites": [
+      "python3 scripts/setup-sidwizard.py",
+      "Build .local/bin/render-sid using docs/workflows/audio-workflow.md."
+    ],
+    "exportCommand": [
+      "python3",
+      "scripts/export-sidwizard.py",
+      "samples/bach-toccata/bach-toccata.swm",
+      "--output-dir",
+      "build/public-samples-reexport/bach-toccata",
+      "--title",
+      "Bach Toccata: full SID hybrid",
+      "--author",
+      "Original SID arrangement",
+      "--released",
+      "2026",
+      "--clock",
+      "pal",
+      "--sid-model",
+      "MOS8580"
+    ],
+    "renderCommand": [
+      ".local/bin/render-sid",
+      "build/public-samples-reexport/bach-toccata/bach-toccata.sid",
+      "build/public-samples-reexport/bach-toccata/bach-toccata.wav",
+      "88.12293631472035",
+      "--clock",
+      "pal",
+      "--subtune",
+      "1"
+    ],
+    "authoringCommands": [
+      [
+        "python3",
+        "scripts/studies/bach/prepare-toccata.py",
+        "--output",
+        "build/public-samples-bach-inputs"
+      ],
+      [
+        "python3",
+        "scripts/native-song.py",
+        "build",
+        "build/public-samples-bach-inputs/hybrid.json",
+        "--clock",
+        "pal",
+        "--output",
+        "build/public-samples-bach-full"
+      ]
+    ],
+    "outputPolicy": "Use fresh build directories; these commands do not overwrite the bundled samples.",
+    "expectedHashes": {
+      "sid": "2578a1b96eb0338a50c6b926f60c806f79e9567b8a933274763d46fb0f17e761",
+      "prg": "e793b00d4f0ff5b0ea1dd5ed676482f2033ccac4c0ee9a174bd45e6eb2d057db",
+      "wav": "86e10f2cfe1341eb60d27f03e071dffb34181666bd605353378d5b48e0523b89",
+      "swm": "c9155ece500dd6fd73f1fa897080e796ddf3b05e51ea09ab5a89a414bcc376a7"
+    },
+    "guarantees": "Fresh frozen-source SID and PRG export was byte-verified against the bundled copies. WAV is the retained listening file, not regenerated during packaging; re-rendered PCM identity depends on matching the renderer and library build."
+  },
+  "verification": {
+    "date": "2026-10-15",
+    "allCopiesMatchOriginalBytes": true,
+    "sourceSwmMatchesOriginalExportReceipt": true,
+    "freshFrozenSourceSidAndPrgMatch": true,
+    "wavMatchesRetainedPcmReceipt": true,
+    "wavFormatChecked": true,
+    "audioRegenerated": false,
+    "originalLocalArtifacts": {
+      "sid": {
+        "path": "build/readme-toccata/export/hybrid.sid",
+        "bytes": 8898,
+        "sha256": "2578a1b96eb0338a50c6b926f60c806f79e9567b8a933274763d46fb0f17e761"
+      },
+      "prg": {
+        "path": "build/readme-toccata/export/hybrid.prg",
+        "bytes": 9770,
+        "sha256": "e793b00d4f0ff5b0ea1dd5ed676482f2033ccac4c0ee9a174bd45e6eb2d057db"
+      },
+      "wav": {
+        "path": "build/readme-toccata/native-song.wav",
+        "bytes": 7772486,
+        "sha256": "86e10f2cfe1341eb60d27f03e071dffb34181666bd605353378d5b48e0523b89"
+      },
+      "swm": {
+        "path": "build/readme-toccata/conversion/hybrid.swm",
+        "bytes": 5964,
+        "sha256": "c9155ece500dd6fd73f1fa897080e796ddf3b05e51ea09ab5a89a414bcc376a7"
+      }
+    },
+    "originalLocalExportReceipt": {
+      "path": "build/readme-toccata/export/hybrid.export.json",
+      "bytes": 3384,
+      "sha256": "9ebd1be90af103e5e1f453992faa1b07edd4a0af070c76fde2a541626235daf2"
+    },
+    "originalLocalArtifactsRequiredForReproduction": false
+  }
+}
