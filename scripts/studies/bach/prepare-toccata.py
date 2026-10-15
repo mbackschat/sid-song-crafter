@@ -280,7 +280,7 @@ def prepare(plan_path, output):
     hybrid.update(title="Bach Toccata: full SID hybrid", authorinfo="ORIGINAL:BACH TOCCATA SID HYBRID",
                   instruments=patches, sections=sections)
     restrained = copy.deepcopy(accepted_restrained)
-    restrained.update(title="Bach Toccata: reduced sustained SID", authorinfo="ORIGINAL:BACH TOCCATA SUSTAINED",
+    restrained.update(title="Bach Toccata: sustained SID", authorinfo="ORIGINAL:BACH TOCCATA SUSTAINED",
                        sections=[{"name": "Reduced sustained SID reference", "startBeat": 0,
                                   "endBeat": score["totalBeats"], "voices": dict(PATCHES)}])
     encoder_spec = importlib.util.spec_from_file_location("bach_instrument_encoder", ROOT / "scripts/generate-native-instruments.py")

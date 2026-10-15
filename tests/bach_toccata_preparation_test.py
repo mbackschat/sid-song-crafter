@@ -136,6 +136,16 @@ class BachToccataPreparationTests(unittest.TestCase):
             self.assertEqual("MOS8580", manifest["sidModel"])
             self.assertTrue(all(note["durationTicks"] >= 2 for voice in manifest["voices"] for note in voice["notes"]))
 
+    def test_generated_recipe_metadata_fits_native_psid_export_fields(self):
+        export_spec = importlib.util.spec_from_file_location("toccata_export", ROOT / "scripts/export-sidwizard.py")
+        exporter = importlib.util.module_from_spec(export_spec)
+        export_spec.loader.exec_module(exporter)
+        for palette in ("hybrid", "restrained"):
+            recipe = read_json(self.output / (palette + ".json"))
+            for field in ("title", "author", "released"):
+                with self.subTest(palette=palette, field=field):
+                    exporter.write_text_field(bytearray(32), 0, recipe[field])
+
     def test_outputs_are_deterministic_and_existing_workfiles_are_preserved(self):
         second = self.output_root / "second"
         with contextlib.redirect_stdout(io.StringIO()):
