@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "phraseSeconds": [
+    32,
+    48
+  ],
+  "matchingGains": [
+    1.0,
+    0.8152294367439231
+  ],
+  "matchedDifferenceAcRms": 5313.4999896320915,
+  "matchedDifferenceToFaithfulAcRmsRatio": 1.491010019766207,
+  "roles": [
+    {
+      "voice": 0,
+      "role": "lead and source pitch gestures",
+      "omittedVoiceDiagnosticPath": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-lead/71090536edcb30f8ae8b417d2f742cd3f37c1d3e90da32e99fa7dbda16a0d0cf/attempt-837ba5a46365492db10b577c66b6e8e0/render.wav",
+      "residualAcRms": 3380.717646595766,
+      "residualToMixAcRmsRatio": 0.7733723331988384,
+      "modelLastWriteTick": 10660,
+      "estimatedClearSeconds": 212.69009023385243,
+      "preClearWindowSeconds": [
+        212.19009023385243,
+        212.59009023385244
+      ],
+      "preClearResidualAcRms": 0.0,
+      "maximumPreClearResidualAcRms": 16
+    },
+    {
+      "voice": 1,
+      "role": "bass ostinato",
+      "omittedVoiceDiagnosticPath": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-bass/8d5b692658e2c6d359b7a64ccc25a4691971a451ae9ab20fa5d75257231203b8/attempt-62170864d8a4437db5a0a9fdec32007d/render.wav",
+      "residualAcRms": 2572.8950505086023,
+      "residualToMixAcRmsRatio": 0.5885749880032802,
+      "modelLastWriteTick": 10799,
+      "estimatedClearSeconds": 215.46318117677575,
+      "preClearWindowSeconds": [
+        214.96318117677575,
+        215.36318117677575
+      ],
+      "preClearResidualAcRms": 0.0,
+      "maximumPreClearResidualAcRms": 16
+    },
+    {
+      "voice": 2,
+      "role": "lower root and harmonic support",
+      "omittedVoiceDiagnosticPath": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-support/b3cb5a391dc23ba41fe2d633eaad0e68d47b179b449233fad2b02b762d46af34/attempt-02af92fca93e48dba13b23a4b3b3b066/render.wav",
+      "residualAcRms": 1000.7164422944089,
+      "residualToMixAcRmsRatio": 0.22892370518637592,
+      "modelLastWriteTick": 10814,
+      "estimatedClearSeconds": 215.76243559507682,
+      "preClearWindowSeconds": [
+        215.26243559507682,
+        215.66243559507683
+      ],
+      "preClearResidualAcRms": 0.0,
+      "maximumPreClearResidualAcRms": 16
+    }
+  ],
+  "candidatePhrase": {
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 705600,
+    "durationSeconds": 16.0,
+    "peak": 12459,
+    "peakDbfs": -8.399334982603547,
+    "clippedSamples": 0,
+    "rms": 4412.304253933383,
+    "acRms": 4371.3971931378965,
+    "acRmsDbfs": -17.496593317737965,
+    "perChannel": [
+      {
+        "dc": 599.4292361111111,
+        "rms": 4412.304253933383,
+        "acRms": 4371.3971931378965
+      }
+    ]
+  },
+  "endingBeforeLifetimeClears": [
+    {
+      "label": "faithful",
+      "estimatedFinalClearSeconds": 215.76243559507682,
+      "precedingWindows": [
+        {
+          "seconds": [
+            215.26243559507682,
+            215.7124355950768
+          ],
+          "metrics": {
+            "format": "PCM16",
+            "sampleRate": 44100,
+            "channels": 1,
+            "frames": 19845,
+            "durationSeconds": 0.45,
+            "peak": 157,
+            "peakDbfs": -46.391005651009685,
+            "clippedSamples": 0,
+            "rms": 157.0,
+            "acRms": 0.0,
+            "acRmsDbfs": null,
+            "perChannel": [
+              {
+                "dc": 157.0,
+                "rms": 157.0,
+                "acRms": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "seconds": [
+            215.51243559507682,
+            215.7124355950768
+          ],
+          "metrics": {
+            "format": "PCM16",
+            "sampleRate": 44100,
+            "channels": 1,
+            "frames": 8820,
+            "durationSeconds": 0.2,
+            "peak": 157,
+            "peakDbfs": -46.391005651009685,
+            "clippedSamples": 0,
+            "rms": 157.0,
+            "acRms": 0.0,
+            "acRmsDbfs": null,
+            "perChannel": [
+              {
+                "dc": 157.0,
+                "rms": 157.0,
+                "acRms": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "seconds": [
+            215.66243559507683,
+            215.7124355950768
+          ],
+          "metrics": {
+            "format": "PCM16",
+            "sampleRate": 44100,
+            "channels": 1,
+            "frames": 2205,
+            "durationSeconds": 0.05,
+            "peak": 157,
+            "peakDbfs": -46.391005651009685,
+            "clippedSamples": 0,
+            "rms": 157.0,
+            "acRms": 0.0,
+            "acRmsDbfs": null,
+            "perChannel": [
+              {
+                "dc": 157.0,
+                "rms": 157.0,
+                "acRms": 0.0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "candidate",
+      "estimatedFinalClearSeconds": 215.76243559507682,
+      "precedingWindows": [
+        {
+          "seconds": [
+            215.26243559507682,
+            215.7124355950768
+          ],
+          "metrics": {
+            "format": "PCM16",
+            "sampleRate": 44100,
+            "channels": 1,
+            "frames": 19845,
+            "durationSeconds": 0.45,
+            "peak": 157,
+            "peakDbfs": -46.391005651009685,
+            "clippedSamples": 0,
+            "rms": 157.0,
+            "acRms": 0.0,
+            "acRmsDbfs": null,
+            "perChannel": [
+              {
+                "dc": 157.0,
+                "rms": 157.0,
+                "acRms": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "seconds": [
+            215.51243559507682,
+            215.7124355950768
+          ],
+          "metrics": {
+            "format": "PCM16",
+            "sampleRate": 44100,
+            "channels": 1,
+            "frames": 8820,
+            "durationSeconds": 0.2,
+            "peak": 157,
+            "peakDbfs": -46.391005651009685,
+            "clippedSamples": 0,
+            "rms": 157.0,
+            "acRms": 0.0,
+            "acRmsDbfs": null,
+            "perChannel": [
+              {
+                "dc": 157.0,
+                "rms": 157.0,
+                "acRms": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "seconds": [
+            215.66243559507683,
+            215.7124355950768
+          ],
+          "metrics": {
+            "format": "PCM16",
+            "sampleRate": 44100,
+            "channels": 1,
+            "frames": 2205,
+            "durationSeconds": 0.05,
+            "peak": 157,
+            "peakDbfs": -46.391005651009685,
+            "clippedSamples": 0,
+            "rms": 157.0,
+            "acRms": 0.0,
+            "acRmsDbfs": null,
+            "perChannel": [
+              {
+                "dc": 157.0,
+                "rms": 157.0,
+                "acRms": 0.0
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "scope": "Rendered signal change and control-mask omission contributions, not perceptual audibility, exact stems or musical acceptance. Muting changes SID control state. Clear windows use model-call time, not measured SID bus timestamps; the submitted ending A/B remains the listening check.",
+  "closingBody": {
+    "seconds": [
+      205,
+      211
+    ],
+    "metrics": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 264600,
+      "durationSeconds": 6.0,
+      "peak": 4770,
+      "peakDbfs": -16.738631118392078,
+      "clippedSamples": 0,
+      "rms": 1155.6794741603162,
+      "acRms": 1131.1551422027014,
+      "acRmsDbfs": -29.238555216391717,
+      "perChannel": [
+        {
+          "dc": 236.81868858654573,
+          "rms": 1155.6794741603162,
+          "acRms": 1131.1551422027014
+        }
+      ]
+    },
+    "minimumAcRms": 32
+  }
+}

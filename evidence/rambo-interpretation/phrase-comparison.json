@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "method": "full-file AC RMS, pooled channel power after subtracting each channel mean; silence and tails included",
+  "matching": "attenuation only",
+  "requestedAcRmsDbfs": null,
+  "targetAcRms": 3563.6916715457737,
+  "targetAcRmsDbfs": -19.2709962573231,
+  "peakHeadroomDb": 1.0,
+  "peakLimit": 29203,
+  "sampleRate": 44100,
+  "channels": 1,
+  "gapFrames": 22050,
+  "gapSeconds": 0.5,
+  "comparison": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/faithful-then-interpretation-phrase.ab.wav",
+    "frames": 1433250,
+    "durationSeconds": 32.5,
+    "sha256": "c01bb541d222d110926dcc02a7ef4f8f30760e1d669b37a4fc98cd9edc61f718"
+  },
+  "segments": [
+    {
+      "label": "A",
+      "startFrame": 0,
+      "endFrame": 705600
+    },
+    {
+      "label": "silence",
+      "startFrame": 705600,
+      "endFrame": 727650
+    },
+    {
+      "label": "B",
+      "startFrame": 727650,
+      "endFrame": 1433250
+    }
+  ],
+  "inputs": [
+    {
+      "label": "A",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/6d07fe76e44248729e89370cd1969586fa73c543ca3fac615ecf1ab3cf537029/attempt-2a9961eca986493a9894a4ec8f271cf2/windows/faithful-phrase.wav",
+      "sha256": "787fa4e7daee44455c3f0544804cee9a237c9cd35be122d3816649209721e2c2",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 10580,
+        "peakDbfs": -9.81928534521102,
+        "clippedSamples": 0,
+        "rms": 3565.3027735293313,
+        "acRms": 3563.6916715457737,
+        "acRmsDbfs": -19.2709962573231,
+        "perChannel": [
+          {
+            "dc": 107.17059807256236,
+            "rms": 3565.3027735293313,
+            "acRms": 3563.6916715457737
+          }
+        ]
+      },
+      "gain": 1.0,
+      "gainDb": 0.0,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 10580,
+        "peakDbfs": -9.81928534521102,
+        "clippedSamples": 0,
+        "rms": 3565.3027735293313,
+        "acRms": 3563.6916715457737,
+        "acRmsDbfs": -19.2709962573231,
+        "perChannel": [
+          {
+            "dc": 107.17059807256236,
+            "rms": 3565.3027735293313,
+            "acRms": 3563.6916715457737
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/faithful-then-interpretation-phrase.a.matched.wav"
+    },
+    {
+      "label": "B",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/6d07fe76e44248729e89370cd1969586fa73c543ca3fac615ecf1ab3cf537029/attempt-2a9961eca986493a9894a4ec8f271cf2/windows/interpretation-phrase.wav",
+      "sha256": "666c41cf5a08f5aec895b7dbddfc55cd27b9788d04a1e0ca0e142070dd80ae66",
+      "original": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 12459,
+        "peakDbfs": -8.399334982603547,
+        "clippedSamples": 0,
+        "rms": 4412.304253933383,
+        "acRms": 4371.3971931378965,
+        "acRmsDbfs": -17.496593317737965,
+        "perChannel": [
+          {
+            "dc": 599.4292361111111,
+            "rms": 4412.304253933383,
+            "acRms": 4371.3971931378965
+          }
+        ]
+      },
+      "gain": 0.8152294367439231,
+      "gainDb": -1.7744029395851382,
+      "matched": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 705600,
+        "durationSeconds": 16.0,
+        "peak": 10157,
+        "peakDbfs": -10.173689650154504,
+        "clippedSamples": 0,
+        "rms": 3597.0461840188495,
+        "acRms": 3563.6981160062173,
+        "acRmsDbfs": -19.27098055006593,
+        "perChannel": [
+          {
+            "dc": 488.6685870181406,
+            "rms": 3597.0461840188495,
+            "acRms": 3563.6981160062173
+          }
+        ]
+      },
+      "matchedCopy": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/faithful-then-interpretation-phrase.b.matched.wav"
+    }
+  ],
+  "listeningReview": null
+}

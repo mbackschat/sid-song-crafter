@@ -1,0 +1,554 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b",
+  "configSha256": "cb25fc2073c804b0731f37aface9a494588e13750a89036f83c38017de1695d6",
+  "candidateSha256": "fc9738da67bbf89c8ce32eb7f594e6b84de2a2b2092656e9b9b72dd2aa034f8e",
+  "unchanged": {
+    "profile": true,
+    "completeGraphTopology": true,
+    "sourceNotes": true,
+    "noteCalls": true,
+    "rowDurations": true,
+    "frequencyWords": true,
+    "Morse": true,
+    "form": true,
+    "initialSound": true,
+    "globalVolume": true,
+    "dramaticLeadPitchBanksAndSoundPokes": true
+  },
+  "checkedCalls": 11000,
+  "semanticEvents": 43091,
+  "lastVoiceWriteTicks": {
+    "faithful": [
+      10660,
+      10799,
+      10814
+    ],
+    "candidate": [
+      10660,
+      10799,
+      10814
+    ]
+  },
+  "endingEnvelopePreservation": {
+    "actualFinalNotes": [
+      {
+        "nodeId": "voice-2-row-0287",
+        "voice": 1,
+        "call": 10034,
+        "attackDecay": 190,
+        "sustainRelease": 205,
+        "releaseCountdown": 200,
+        "life": 255
+      },
+      {
+        "nodeId": "voice-3-row-0338",
+        "voice": 2,
+        "call": 10034,
+        "attackDecay": 204,
+        "sustainRelease": 157,
+        "releaseCountdown": 150,
+        "life": 200
+      },
+      {
+        "nodeId": "voice-1-row-0449",
+        "voice": 0,
+        "call": 10035,
+        "attackDecay": 204,
+        "sustainRelease": 157,
+        "releaseCountdown": 150,
+        "life": 200
+      }
+    ],
+    "actualCandidateFinalNotes": [
+      {
+        "nodeId": "voice-2-row-0287",
+        "voice": 1,
+        "call": 10034,
+        "attackDecay": 190,
+        "sustainRelease": 205,
+        "releaseCountdown": 200,
+        "life": 255
+      },
+      {
+        "nodeId": "voice-3-row-0338",
+        "voice": 2,
+        "call": 10034,
+        "attackDecay": 204,
+        "sustainRelease": 157,
+        "releaseCountdown": 150,
+        "life": 200
+      },
+      {
+        "nodeId": "voice-1-row-0449",
+        "voice": 0,
+        "call": 10035,
+        "attackDecay": 204,
+        "sustainRelease": 157,
+        "releaseCountdown": 150,
+        "life": 200
+      }
+    ],
+    "individualSourceEnvelopePokes": [
+      {
+        "nodeId": "voice-1-row-0044",
+        "call": 1755,
+        "offset": 25,
+        "sourceEnvelope": [
+          221,
+          204,
+          130
+        ],
+        "longRelease": false
+      },
+      {
+        "nodeId": "voice-1-row-0182",
+        "call": 2099,
+        "offset": 27,
+        "sourceEnvelope": [
+          56,
+          204,
+          130
+        ],
+        "longRelease": false
+      },
+      {
+        "nodeId": "voice-1-row-0210",
+        "call": 2227,
+        "offset": 26,
+        "sourceEnvelope": [
+          56,
+          204,
+          50
+        ],
+        "longRelease": false
+      },
+      {
+        "nodeId": "voice-1-row-0215",
+        "call": 2227,
+        "offset": 27,
+        "sourceEnvelope": [
+          56,
+          169,
+          50
+        ],
+        "longRelease": false
+      },
+      {
+        "nodeId": "voice-1-row-0357",
+        "call": 4147,
+        "offset": 27,
+        "sourceEnvelope": [
+          131,
+          203,
+          90
+        ],
+        "longRelease": false
+      }
+    ],
+    "noLongReleaseIndividualPokes": true
+  },
+  "sameNormalizedScoreEventsSha256": "a639f7c314fba9b950849af4e71ab186cf44323d599bd778fc589020e033f11f",
+  "negativeControls": [
+    {
+      "name": "changed dramatic slide delay",
+      "sourceBank": "data-2bbc-14",
+      "field": "frequencyDelay",
+      "rejectedByPitchBankGuard": true
+    },
+    {
+      "name": "changed source pitch",
+      "nodeId": "voice-1-row-0090",
+      "field": "sourceNote",
+      "rejectedByScoreLedger": true
+    },
+    {
+      "name": "changed literal row duration",
+      "nodeId": "voice-1-row-0000",
+      "field": "duration",
+      "rejectedByScoreLedger": true
+    },
+    {
+      "name": "shortened final release",
+      "sourceBank": "data-2b74-5",
+      "field": "sustainRelease",
+      "rejectedByActualNoteEntryGuard": true
+    }
+  ],
+  "noteCounts": [
+    635,
+    977,
+    865
+  ],
+  "phraseNoteCounts": [
+    25,
+    82,
+    61
+  ],
+  "roles": [
+    {
+      "voice": 0,
+      "role": "lead and source pitch gestures",
+      "waveform": 64,
+      "dataOverrides": {
+        "14": 24,
+        "15": 24,
+        "16": 0,
+        "17": 5,
+        "18": 28,
+        "19": 0,
+        "20": 228,
+        "21": 255,
+        "22": 80,
+        "23": 6,
+        "25": 38,
+        "26": 217
+      },
+      "ordinaryVibrato": {
+        "stepWords": 16,
+        "delayCalls": 10
+      },
+      "purpose": "A coherent sustained pulse body: width $650, two 24-call phases of +/-28, AD $26 and SR $D9. Only balanced 3/6/3 pitch cycles get earlier and wider ordinary vibrato; source sweeps, chord overlays and explicit sound pokes remain.",
+      "preserveLongReleaseEnvelopes": true
+    },
+    {
+      "voice": 1,
+      "role": "bass ostinato",
+      "waveform": 64,
+      "dataOverrides": {
+        "13": 0,
+        "14": 24,
+        "15": 24,
+        "16": 0,
+        "17": 5,
+        "18": 8,
+        "19": 0,
+        "20": 248,
+        "21": 255,
+        "22": 0,
+        "23": 7,
+        "25": 24,
+        "26": 184,
+        "27": 7
+      },
+      "purpose": "Replace the falling saw attack with stable written pitch and a broad $700 pulse, restrained +/-8 PWM, AD $18 and SR $B8. Seven calls of gate hold provide body without inserting percussion or another score note.",
+      "preserveLongReleaseEnvelopes": true
+    },
+    {
+      "voice": 2,
+      "role": "lower root and harmonic support",
+      "waveform": 16,
+      "dataOverrides": {
+        "17": 0,
+        "25": 40,
+        "26": 88,
+        "27": 5
+      },
+      "purpose": "Triangle, AD $28 and SR $58 reduce the competing edge while preserving source notes and chord pitch cycles. This is a Rambo hypothesis; Pink Panther's lost vibrancy with triangle backing prevents a general clarity claim.",
+      "preserveLongReleaseEnvelopes": true
+    }
+  ],
+  "bankAndPokeEdits": [
+    {
+      "nodeId": "voice-2-row-0003",
+      "voice": 1,
+      "sourceBank": "data-2b43-29",
+      "candidateBank": "data-2b43-29-voice-2",
+      "kind": "write-data",
+      "changedOffsets": [
+        13,
+        14,
+        15,
+        17,
+        18,
+        20,
+        21,
+        23,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    {
+      "nodeId": "voice-3-row-0008",
+      "voice": 2,
+      "sourceBank": "data-2b43-29",
+      "candidateBank": "data-2b43-29-voice-3",
+      "kind": "write-data",
+      "changedOffsets": [
+        24,
+        25,
+        26
+      ]
+    },
+    {
+      "nodeId": "voice-2-row-0021",
+      "voice": 1,
+      "sourceBank": "data-2b6a-5",
+      "candidateBank": "data-2b6a-5-voice-2",
+      "kind": "volume",
+      "changedOffsets": [
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    {
+      "nodeId": "voice-2-row-0031",
+      "voice": 1,
+      "sourceBank": "data-2b60-10",
+      "candidateBank": "data-2b60-10-voice-2",
+      "kind": "pulse",
+      "changedOffsets": [
+        14,
+        15,
+        18,
+        20,
+        23
+      ]
+    },
+    {
+      "nodeId": "voice-1-row-0044",
+      "voice": 0,
+      "kind": "poke-data",
+      "changedOffsets": [
+        25
+      ],
+      "sourceValue": 56,
+      "candidateValue": 38
+    },
+    {
+      "nodeId": "voice-1-row-0116",
+      "voice": 0,
+      "sourceBank": "data-2b79-14",
+      "candidateBank": "data-2b79-14-voice-1",
+      "kind": "frequency",
+      "changedOffsets": [
+        0,
+        2,
+        4,
+        12
+      ]
+    },
+    {
+      "nodeId": "voice-1-row-0210",
+      "voice": 0,
+      "kind": "poke-data",
+      "changedOffsets": [
+        26
+      ],
+      "sourceValue": 169,
+      "candidateValue": 217
+    },
+    {
+      "nodeId": "voice-2-row-0246",
+      "voice": 1,
+      "sourceBank": "data-2b6f-5",
+      "candidateBank": "data-2b6f-5-voice-2",
+      "kind": "volume",
+      "changedOffsets": [
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    {
+      "nodeId": "voice-2-row-0249",
+      "voice": 1,
+      "sourceBank": "data-2c1e-14",
+      "candidateBank": "data-2c1e-14-voice-2",
+      "kind": "frequency",
+      "changedOffsets": [
+        13
+      ]
+    },
+    {
+      "nodeId": "voice-2-row-0252",
+      "voice": 1,
+      "kind": "poke-data",
+      "changedOffsets": [
+        17
+      ],
+      "sourceValue": 0,
+      "candidateValue": 5
+    },
+    {
+      "nodeId": "voice-3-row-0261",
+      "voice": 2,
+      "sourceBank": "data-2c2c-29",
+      "candidateBank": "data-2c2c-29-voice-3",
+      "kind": "write-data",
+      "changedOffsets": [
+        17,
+        24
+      ]
+    },
+    {
+      "nodeId": "voice-1-row-0262",
+      "voice": 0,
+      "sourceBank": "data-2b9f-10",
+      "candidateBank": "data-2b9f-10-voice-1",
+      "kind": "pulse",
+      "changedOffsets": [
+        14,
+        15,
+        16,
+        18,
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    {
+      "nodeId": "voice-1-row-0266",
+      "voice": 0,
+      "sourceBank": "data-2ba9-5",
+      "candidateBank": "data-2ba9-5-voice-1",
+      "kind": "volume",
+      "changedOffsets": [
+        25,
+        26
+      ]
+    },
+    {
+      "nodeId": "voice-1-row-0274",
+      "voice": 0,
+      "sourceBank": "data-2b91-14",
+      "candidateBank": "data-2b91-14-voice-1",
+      "kind": "frequency",
+      "changedOffsets": [
+        0,
+        2,
+        4,
+        12
+      ]
+    },
+    {
+      "nodeId": "voice-2-row-0284",
+      "voice": 1,
+      "sourceBank": "data-2b74-5",
+      "candidateBank": "data-2b74-5-voice-2",
+      "kind": "volume",
+      "changedOffsets": [
+        24
+      ]
+    },
+    {
+      "nodeId": "voice-1-row-0303",
+      "voice": 0,
+      "sourceBank": "data-2b91-14",
+      "candidateBank": "data-2b91-14-voice-1",
+      "kind": "frequency",
+      "changedOffsets": [
+        0,
+        2,
+        4,
+        12
+      ]
+    },
+    {
+      "nodeId": "voice-1-row-0319",
+      "voice": 0,
+      "sourceBank": "data-2b91-14",
+      "candidateBank": "data-2b91-14-voice-1",
+      "kind": "frequency",
+      "changedOffsets": [
+        0,
+        2,
+        4,
+        12
+      ]
+    },
+    {
+      "nodeId": "voice-1-row-0364",
+      "voice": 0,
+      "sourceBank": "data-2b8c-5",
+      "candidateBank": "data-2b8c-5-voice-1",
+      "kind": "volume",
+      "changedOffsets": [
+        24
+      ]
+    },
+    {
+      "nodeId": "voice-1-row-0365",
+      "voice": 0,
+      "kind": "poke-data",
+      "changedOffsets": [
+        17
+      ],
+      "sourceValue": 0,
+      "candidateValue": 5
+    },
+    {
+      "nodeId": "voice-1-row-0366",
+      "voice": 0,
+      "kind": "poke-data",
+      "changedOffsets": [
+        23
+      ],
+      "sourceValue": 8,
+      "candidateValue": 6
+    },
+    {
+      "nodeId": "voice-1-row-0372",
+      "voice": 0,
+      "sourceBank": "data-2b87-5",
+      "candidateBank": "data-2b87-5-voice-1",
+      "kind": "volume",
+      "changedOffsets": [
+        25,
+        26
+      ]
+    },
+    {
+      "nodeId": "voice-1-row-0402",
+      "voice": 0,
+      "sourceBank": "data-2b87-5",
+      "candidateBank": "data-2b87-5-voice-1",
+      "kind": "volume",
+      "changedOffsets": [
+        25,
+        26
+      ]
+    },
+    {
+      "nodeId": "voice-1-row-0437",
+      "voice": 0,
+      "kind": "poke-data",
+      "changedOffsets": [
+        24
+      ],
+      "sourceValue": 21,
+      "candidateValue": 65
+    },
+    {
+      "nodeId": "voice-1-row-0441",
+      "voice": 0,
+      "sourceBank": "data-2c3e-10",
+      "candidateBank": "data-2c3e-10-voice-1",
+      "kind": "pulse",
+      "changedOffsets": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    }
+  ],
+  "limitations": "Gate length, envelopes, waveform and native modulation intentionally change. Semantic note/row identity does not establish identical pitch effects, bus timing, audio or musical success.",
+  "modelAssistance": {
+    "decision": "No model call",
+    "reason": "Existing audio-model trials do not qualify musical preference judgments; score/execution guards and the human contextual audition answer this task.",
+    "nextCheckpoint": "After the listener reviews this phrase, ending and complete interpretation."
+  }
+}

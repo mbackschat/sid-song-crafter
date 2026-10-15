@@ -1,0 +1,88 @@
+{
+  "format": "rambo-interpretation-v1",
+  "source": "songs/rambo-loader.json",
+  "sourceSha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b",
+  "intent": "Keep Galway's melody, form, note timing, Morse entrance and dramatic pitch gestures; test a singing foreground, grounded pulse bass and less competing harmonic support.",
+  "license": "GPL-3.0-only",
+  "roles": [
+    {
+      "voice": 0,
+      "role": "lead and source pitch gestures",
+      "waveform": 64,
+      "dataOverrides": {
+        "14": 24,
+        "15": 24,
+        "16": 0,
+        "17": 5,
+        "18": 28,
+        "19": 0,
+        "20": 228,
+        "21": 255,
+        "22": 80,
+        "23": 6,
+        "25": 38,
+        "26": 217
+      },
+      "ordinaryVibrato": {
+        "stepWords": 16,
+        "delayCalls": 10
+      },
+      "purpose": "A coherent sustained pulse body: width $650, two 24-call phases of +/-28, AD $26 and SR $D9. Only balanced 3/6/3 pitch cycles get earlier and wider ordinary vibrato; source sweeps, chord overlays and explicit sound pokes remain.",
+      "preserveLongReleaseEnvelopes": true
+    },
+    {
+      "voice": 1,
+      "role": "bass ostinato",
+      "waveform": 64,
+      "dataOverrides": {
+        "13": 0,
+        "14": 24,
+        "15": 24,
+        "16": 0,
+        "17": 5,
+        "18": 8,
+        "19": 0,
+        "20": 248,
+        "21": 255,
+        "22": 0,
+        "23": 7,
+        "25": 24,
+        "26": 184,
+        "27": 7
+      },
+      "purpose": "Replace the falling saw attack with stable written pitch and a broad $700 pulse, restrained +/-8 PWM, AD $18 and SR $B8. Seven calls of gate hold provide body without inserting percussion or another score note.",
+      "preserveLongReleaseEnvelopes": true
+    },
+    {
+      "voice": 2,
+      "role": "lower root and harmonic support",
+      "waveform": 16,
+      "dataOverrides": {
+        "17": 0,
+        "25": 40,
+        "26": 88,
+        "27": 5
+      },
+      "purpose": "Triangle, AD $28 and SR $58 reduce the competing edge while preserving source notes and chord pitch cycles. This is a Rambo hypothesis; Pink Panther's lost vibrancy with triangle backing prevents a general clarity claim.",
+      "preserveLongReleaseEnvelopes": true
+    }
+  ],
+  "audition": {
+    "phraseStartSeconds": 32,
+    "phraseEndSeconds": 48,
+    "endingStartSeconds": 205,
+    "endingEndSeconds": 225,
+    "renderSeconds": 225
+  },
+  "signalGuards": {
+    "minimumMatchedChangeRatio": 0.1,
+    "minimumRoleContributionRatio": 0.01,
+    "minimumClosingBodyAcRms": 32
+  },
+  "modelAssistance": {
+    "decision": "No model call",
+    "reason": "Existing audio-model trials do not qualify musical preference judgments; score/execution guards and the human contextual audition answer this task.",
+    "nextCheckpoint": "After the listener reviews this phrase, ending and complete interpretation."
+  },
+  "endingContract": "Preserve source AD/SR/release-countdown for complete instrument blocks with source release nibble D..F. These long-release patches carry the authored closing hold/decay; ordinary role envelopes must not silence still-running dramatic pitch programs."
+}

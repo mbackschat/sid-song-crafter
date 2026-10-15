@@ -1,0 +1,866 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/rambo-interpretation.json",
+  "recipeSha256": "11ef50394d7739bd337dce0061de7bf2ec389ecd61c50471199ae75e1388e0f6",
+  "startedAt": "2026-10-15T06:46:57.763869+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "prepare",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "prepare",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/prepare/08a4ec78abff4ce9af1b334836f384f8358d08875c5b73810fac3fa086b4acad/attempt-55f6333f26334fd9b1619af633ac946b/prepared/candidate.json",
+          "relativePath": "prepared/candidate.json",
+          "type": "file",
+          "sha256": "fc9738da67bbf89c8ce32eb7f594e6b84de2a2b2092656e9b9b72dd2aa034f8e"
+        },
+        {
+          "stageId": "prepare",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/prepare/08a4ec78abff4ce9af1b334836f384f8358d08875c5b73810fac3fa086b4acad/attempt-55f6333f26334fd9b1619af633ac946b/prepared/score-invariants.json",
+          "relativePath": "prepared/score-invariants.json",
+          "type": "file",
+          "sha256": "42e87411e7103bff44c408a6fe9d6d2619249c00449ef88c59a249d461734606"
+        },
+        {
+          "stageId": "prepare",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/prepare/08a4ec78abff4ce9af1b334836f384f8358d08875c5b73810fac3fa086b4acad/attempt-55f6333f26334fd9b1619af633ac946b/prepared/score-events.json.gz",
+          "relativePath": "prepared/score-events.json.gz",
+          "type": "file",
+          "sha256": "29a6eeb8dbad1e7f80d119003d49a75e425cfe3aa8e1a799d4b7f799ce6599ee"
+        }
+      ],
+      "cacheKey": "08a4ec78abff4ce9af1b334836f384f8358d08875c5b73810fac3fa086b4acad",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/prepare/08a4ec78abff4ce9af1b334836f384f8358d08875c5b73810fac3fa086b4acad/attempt-55f6333f26334fd9b1619af633ac946b",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/prepare/08a4ec78abff4ce9af1b334836f384f8358d08875c5b73810fac3fa086b4acad/attempt-55f6333f26334fd9b1619af633ac946b/stage.log",
+      "wallSeconds": 0.006181333000000011
+    },
+    {
+      "id": "faithful-pin",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "faithful-pin",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/faithful-pin/1158d12ccae059758958bacef8634f587f25a8073a3e14b76d111a7b0204e10a/attempt-788b513023cb4594bd3a8a13332350ec/faithful.json",
+          "relativePath": "faithful.json",
+          "type": "file",
+          "sha256": "fa70aa96e677ff3cff98cd85057564da651ade6eed0016646374b3ebb5cc73a9"
+        }
+      ],
+      "cacheKey": "1158d12ccae059758958bacef8634f587f25a8073a3e14b76d111a7b0204e10a",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/faithful-pin/1158d12ccae059758958bacef8634f587f25a8073a3e14b76d111a7b0204e10a/attempt-788b513023cb4594bd3a8a13332350ec",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/faithful-pin/1158d12ccae059758958bacef8634f587f25a8073a3e14b76d111a7b0204e10a/attempt-788b513023cb4594bd3a8a13332350ec/stage.log",
+      "wallSeconds": 0.002735041999999993
+    },
+    {
+      "id": "original-pin",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "original-pin",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/original-pin/078e56614f37f009def8d0807696c8b2494d032419c509de088a7780ca50622b/attempt-6c16dda3325b470dbbe33b58738d946d/original.json",
+          "relativePath": "original.json",
+          "type": "file",
+          "sha256": "5e5e5ca2c3ad767527c46061e8331b63f54cc4ce1b914b4b199935913f6d438c"
+        }
+      ],
+      "cacheKey": "078e56614f37f009def8d0807696c8b2494d032419c509de088a7780ca50622b",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/original-pin/078e56614f37f009def8d0807696c8b2494d032419c509de088a7780ca50622b/attempt-6c16dda3325b470dbbe33b58738d946d",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/original-pin/078e56614f37f009def8d0807696c8b2494d032419c509de088a7780ca50622b/attempt-6c16dda3325b470dbbe33b58738d946d/stage.log",
+      "wallSeconds": 0.0020530839999999967
+    },
+    {
+      "id": "original-render",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "original-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/original-render/294fe3d45161eacd80d30b6a43b84ff8bac35153bae874de37b5156ecd5c3917/attempt-c6d6c4bf5c504382a5d19c0dac581164/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "9a195a078bbc8f574f313fb79b48c5ce15ebdb1b94eb012bf7acb67da770257c"
+        },
+        {
+          "stageId": "original-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/original-render/294fe3d45161eacd80d30b6a43b84ff8bac35153bae874de37b5156ecd5c3917/attempt-c6d6c4bf5c504382a5d19c0dac581164/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "aee9c6bbdc124d8b926a3427208e9b216fddc38c5da447b3dab6a0ff7158796d"
+        }
+      ],
+      "cacheKey": "294fe3d45161eacd80d30b6a43b84ff8bac35153bae874de37b5156ecd5c3917",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/original-render/294fe3d45161eacd80d30b6a43b84ff8bac35153bae874de37b5156ecd5c3917/attempt-c6d6c4bf5c504382a5d19c0dac581164",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/original-render/294fe3d45161eacd80d30b6a43b84ff8bac35153bae874de37b5156ecd5c3917/attempt-c6d6c4bf5c504382a5d19c0dac581164/stage.log",
+      "wallSeconds": 0.018723208000000005
+    },
+    {
+      "id": "candidate-build",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/reconstructed.sid",
+          "relativePath": "candidate/reconstructed.sid",
+          "type": "file",
+          "sha256": "0541d46fd6fcfe1dc1e5859392f96c202153daec051f7090b58f9baeff16829a"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/build.json",
+          "relativePath": "candidate/build.json",
+          "type": "file",
+          "sha256": "8e336ea859d883f8ad16bf1bf8cda73820965ebc02c219c6e2d6498375c35aef"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/audit.json",
+          "relativePath": "candidate/audit.json",
+          "type": "file",
+          "sha256": "117c0caf7db8c9701e06eac7f20977727de6b38ea319e6f8a4e9cd5a2f355df6"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/writes.json",
+          "relativePath": "candidate/writes.json",
+          "type": "file",
+          "sha256": "d9225743d5d06852ba4adba3c42babc3d06285f7e42bb867d8dd75a20e70a976"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/state-checkpoints.json",
+          "relativePath": "candidate/state-checkpoints.json",
+          "type": "file",
+          "sha256": "2231ab8c75c9537301e622db2bba2e26dff8c85d42c443cf0e654ca0b9bacb2e"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/player.asm",
+          "relativePath": "candidate/player.asm",
+          "type": "file",
+          "sha256": "4d3c66ef8bf58fd13b5f9d30059f734adad819f9c737a413373a876700bdf0f0"
+        },
+        {
+          "stageId": "candidate-build",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/player.listing",
+          "relativePath": "candidate/player.listing",
+          "type": "file",
+          "sha256": "131091b58d2867112d4397c922e35489697b76562766f6c03663b360fec5e167"
+        }
+      ],
+      "cacheKey": "99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/stage.log",
+      "wallSeconds": 0.023696375000000006
+    },
+    {
+      "id": "candidate-vice",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-vice/842ede4b1064cbb9461e9e34c3ba2c87bbd73be6c6f784525cab15d678d2ffac/attempt-3f9e430942014f7bbd75718c24f526ee/vice/study.json",
+          "relativePath": "vice/study.json",
+          "type": "file",
+          "sha256": "855506fa8dbd04508c74dc58656919cbc6de74d1fdaa240c23c92aed343c5920"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-vice/842ede4b1064cbb9461e9e34c3ba2c87bbd73be6c6f784525cab15d678d2ffac/attempt-3f9e430942014f7bbd75718c24f526ee/vice/trace.json",
+          "relativePath": "vice/trace.json",
+          "type": "file",
+          "sha256": "5fd084b1feba034cefeeaea3a78391feef5b2c4c7e9094b5d8e65741613225a2"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-vice/842ede4b1064cbb9461e9e34c3ba2c87bbd73be6c6f784525cab15d678d2ffac/attempt-3f9e430942014f7bbd75718c24f526ee/vice/monitor.log",
+          "relativePath": "vice/monitor.log",
+          "type": "file",
+          "sha256": "1e9638a33276f06ce29b0a6dc76d628535ba771621c80a44c034b6bd57522534"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-vice/842ede4b1064cbb9461e9e34c3ba2c87bbd73be6c6f784525cab15d678d2ffac/attempt-3f9e430942014f7bbd75718c24f526ee/vice/command.json",
+          "relativePath": "vice/command.json",
+          "type": "file",
+          "sha256": "1f12e76a6031f2103d76132dc318fe7d3ec15058a9e79eb576813ed0b73f9516"
+        },
+        {
+          "stageId": "candidate-vice",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-vice/842ede4b1064cbb9461e9e34c3ba2c87bbd73be6c6f784525cab15d678d2ffac/attempt-3f9e430942014f7bbd75718c24f526ee/vice/commands.mon",
+          "relativePath": "vice/commands.mon",
+          "type": "file",
+          "sha256": "dd04e0c19bf2bf3aeb020870b1d273d47b42c9010f886e0ac025a9dda85798f8"
+        }
+      ],
+      "cacheKey": "842ede4b1064cbb9461e9e34c3ba2c87bbd73be6c6f784525cab15d678d2ffac",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-vice/842ede4b1064cbb9461e9e34c3ba2c87bbd73be6c6f784525cab15d678d2ffac/attempt-3f9e430942014f7bbd75718c24f526ee",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-vice/842ede4b1064cbb9461e9e34c3ba2c87bbd73be6c6f784525cab15d678d2ffac/attempt-3f9e430942014f7bbd75718c24f526ee/stage.log",
+      "wallSeconds": 0.20154504099999998
+    },
+    {
+      "id": "faithful-render",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "faithful-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/faithful-render/b8871556f870af898fc51c205279884632d2e66438ba1616582b59703a64fb32/attempt-298e4c1857074dcc8e23abf20c54174c/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "8d4ff6dcadc1a6c63332b7227ddb96d566a4a5a8a56491a4c97ce7844b956efb"
+        },
+        {
+          "stageId": "faithful-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/faithful-render/b8871556f870af898fc51c205279884632d2e66438ba1616582b59703a64fb32/attempt-298e4c1857074dcc8e23abf20c54174c/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "c4071c7c2b82b4d0aa571cb87a5e4119ae669daa06456d5f476ef8baf0257e55"
+        }
+      ],
+      "cacheKey": "b8871556f870af898fc51c205279884632d2e66438ba1616582b59703a64fb32",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/faithful-render/b8871556f870af898fc51c205279884632d2e66438ba1616582b59703a64fb32/attempt-298e4c1857074dcc8e23abf20c54174c",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/faithful-render/b8871556f870af898fc51c205279884632d2e66438ba1616582b59703a64fb32/attempt-298e4c1857074dcc8e23abf20c54174c/stage.log",
+      "wallSeconds": 0.018069541999999994
+    },
+    {
+      "id": "candidate-render",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-render/b353b330f9c5dc6989ea527761cd7d83558c265f53e9bc873a59711ff36c4129/attempt-dc349da0e95d4f019392356d971b0aeb/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "e515cee07c7fb77120f0433198427f00e4f9e57a9f784d2492d4dc8cb3812704"
+        },
+        {
+          "stageId": "candidate-render",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-render/b353b330f9c5dc6989ea527761cd7d83558c265f53e9bc873a59711ff36c4129/attempt-dc349da0e95d4f019392356d971b0aeb/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "189f2617017381e4416977cb5c748510a40f54b6ebee64741dc13e2989374107"
+        }
+      ],
+      "cacheKey": "b353b330f9c5dc6989ea527761cd7d83558c265f53e9bc873a59711ff36c4129",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-render/b353b330f9c5dc6989ea527761cd7d83558c265f53e9bc873a59711ff36c4129/attempt-dc349da0e95d4f019392356d971b0aeb",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-render/b353b330f9c5dc6989ea527761cd7d83558c265f53e9bc873a59711ff36c4129/attempt-dc349da0e95d4f019392356d971b0aeb/stage.log",
+      "wallSeconds": 0.01695179200000002
+    },
+    {
+      "id": "health",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "health",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/health/6b891e5b544ae304d4c2990b2752d7e113640194c8dcb340f6fffb122f0261e4/attempt-e125b9f9e0bc468f9e33f399fff6fc51/audio.json",
+          "relativePath": "audio.json",
+          "type": "file",
+          "sha256": "c0000466a58fe626b7640d0a3c17dc983343d159be970eaefdb1c6fa726f12a0"
+        }
+      ],
+      "cacheKey": "6b891e5b544ae304d4c2990b2752d7e113640194c8dcb340f6fffb122f0261e4",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/health/6b891e5b544ae304d4c2990b2752d7e113640194c8dcb340f6fffb122f0261e4/attempt-e125b9f9e0bc468f9e33f399fff6fc51",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/health/6b891e5b544ae304d4c2990b2752d7e113640194c8dcb340f6fffb122f0261e4/attempt-e125b9f9e0bc468f9e33f399fff6fc51/stage.log",
+      "wallSeconds": 0.02556208400000004
+    },
+    {
+      "id": "without-lead",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "without-lead",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-lead/71090536edcb30f8ae8b417d2f742cd3f37c1d3e90da32e99fa7dbda16a0d0cf/attempt-837ba5a46365492db10b577c66b6e8e0/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "9e778c83187be3c7cdc70f7aa4d9b6980d9b4983ca46006b0118be6c9e9250e4"
+        },
+        {
+          "stageId": "without-lead",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-lead/71090536edcb30f8ae8b417d2f742cd3f37c1d3e90da32e99fa7dbda16a0d0cf/attempt-837ba5a46365492db10b577c66b6e8e0/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "189f2617017381e4416977cb5c748510a40f54b6ebee64741dc13e2989374107"
+        }
+      ],
+      "cacheKey": "71090536edcb30f8ae8b417d2f742cd3f37c1d3e90da32e99fa7dbda16a0d0cf",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-lead/71090536edcb30f8ae8b417d2f742cd3f37c1d3e90da32e99fa7dbda16a0d0cf/attempt-837ba5a46365492db10b577c66b6e8e0",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-lead/71090536edcb30f8ae8b417d2f742cd3f37c1d3e90da32e99fa7dbda16a0d0cf/attempt-837ba5a46365492db10b577c66b6e8e0/stage.log",
+      "wallSeconds": 0.01825908300000001
+    },
+    {
+      "id": "without-bass",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "without-bass",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-bass/8d5b692658e2c6d359b7a64ccc25a4691971a451ae9ab20fa5d75257231203b8/attempt-62170864d8a4437db5a0a9fdec32007d/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "a9583967068ab2c8f62e8fca349b53a284714a477645903a60c670039b925a6e"
+        },
+        {
+          "stageId": "without-bass",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-bass/8d5b692658e2c6d359b7a64ccc25a4691971a451ae9ab20fa5d75257231203b8/attempt-62170864d8a4437db5a0a9fdec32007d/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "189f2617017381e4416977cb5c748510a40f54b6ebee64741dc13e2989374107"
+        }
+      ],
+      "cacheKey": "8d5b692658e2c6d359b7a64ccc25a4691971a451ae9ab20fa5d75257231203b8",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-bass/8d5b692658e2c6d359b7a64ccc25a4691971a451ae9ab20fa5d75257231203b8/attempt-62170864d8a4437db5a0a9fdec32007d",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-bass/8d5b692658e2c6d359b7a64ccc25a4691971a451ae9ab20fa5d75257231203b8/attempt-62170864d8a4437db5a0a9fdec32007d/stage.log",
+      "wallSeconds": 0.018230250000000003
+    },
+    {
+      "id": "without-support",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "without-support",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-support/b3cb5a391dc23ba41fe2d633eaad0e68d47b179b449233fad2b02b762d46af34/attempt-02af92fca93e48dba13b23a4b3b3b066/render.wav",
+          "relativePath": "render.wav",
+          "type": "file",
+          "sha256": "f3bdb93b154521ef575417ee1e7b92f51151f8ba57ff0b8ca6d055b3cceda5af"
+        },
+        {
+          "stageId": "without-support",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-support/b3cb5a391dc23ba41fe2d633eaad0e68d47b179b449233fad2b02b762d46af34/attempt-02af92fca93e48dba13b23a4b3b3b066/render.wav.registers.tsv",
+          "relativePath": "render.wav.registers.tsv",
+          "type": "file",
+          "sha256": "189f2617017381e4416977cb5c748510a40f54b6ebee64741dc13e2989374107"
+        }
+      ],
+      "cacheKey": "b3cb5a391dc23ba41fe2d633eaad0e68d47b179b449233fad2b02b762d46af34",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-support/b3cb5a391dc23ba41fe2d633eaad0e68d47b179b449233fad2b02b762d46af34/attempt-02af92fca93e48dba13b23a4b3b3b066",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-support/b3cb5a391dc23ba41fe2d633eaad0e68d47b179b449233fad2b02b762d46af34/attempt-02af92fca93e48dba13b23a4b3b3b066/stage.log",
+      "wallSeconds": 0.01807579199999998
+    },
+    {
+      "id": "windows",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "windows",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/faithful-phrase.wav",
+          "relativePath": "windows/faithful-phrase.wav",
+          "type": "file",
+          "sha256": "787fa4e7daee44455c3f0544804cee9a237c9cd35be122d3816649209721e2c2"
+        },
+        {
+          "stageId": "windows",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/interpretation-phrase.wav",
+          "relativePath": "windows/interpretation-phrase.wav",
+          "type": "file",
+          "sha256": "666c41cf5a08f5aec895b7dbddfc55cd27b9788d04a1e0ca0e142070dd80ae66"
+        },
+        {
+          "stageId": "windows",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/original-source-phrase.wav",
+          "relativePath": "windows/original-source-phrase.wav",
+          "type": "file",
+          "sha256": "da2df56bee5591142dc4ab19af3906c9584a54e7fb8f5054a7dbfc457cb09909"
+        },
+        {
+          "stageId": "windows",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/faithful-ending.wav",
+          "relativePath": "windows/faithful-ending.wav",
+          "type": "file",
+          "sha256": "35c9bac2709ff76291e375d5d90179194c6f1e64d96636a3f31d34c1cb9fe33f"
+        },
+        {
+          "stageId": "windows",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/interpretation-ending.wav",
+          "relativePath": "windows/interpretation-ending.wav",
+          "type": "file",
+          "sha256": "573ea905490470aa1ed4a3734d35fae9656fecd2bfb15dd718d3e97093dc8728"
+        },
+        {
+          "stageId": "windows",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/original-source-ending.wav",
+          "relativePath": "windows/original-source-ending.wav",
+          "type": "file",
+          "sha256": "ab68d942cc2740885028b8c32ddb0052a15378fbf806864372ff159b5871c8cc"
+        },
+        {
+          "stageId": "windows",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/windows.json",
+          "relativePath": "windows/windows.json",
+          "type": "file",
+          "sha256": "803be1e9440e6215dd2fbbb1e5a1c83c5a840b7b05a638ab2a4d8a8f447f8496"
+        }
+      ],
+      "cacheKey": "68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/stage.log",
+      "wallSeconds": 0.05339108299999995
+    },
+    {
+      "id": "phrase-comparison",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "phrase-comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/faithful-then-interpretation-phrase.ab.wav",
+          "relativePath": "faithful-then-interpretation-phrase.ab.wav",
+          "type": "file",
+          "sha256": "c01bb541d222d110926dcc02a7ef4f8f30760e1d669b37a4fc98cd9edc61f718"
+        },
+        {
+          "stageId": "phrase-comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/faithful-then-interpretation-phrase.comparison.json",
+          "relativePath": "faithful-then-interpretation-phrase.comparison.json",
+          "type": "file",
+          "sha256": "bb422502d1e483384801745fcf3f1f658f78ef926133e13fe1b066f2d0919b40"
+        },
+        {
+          "stageId": "phrase-comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/faithful-then-interpretation-phrase.a.matched.wav",
+          "relativePath": "faithful-then-interpretation-phrase.a.matched.wav",
+          "type": "file",
+          "sha256": "787fa4e7daee44455c3f0544804cee9a237c9cd35be122d3816649209721e2c2"
+        },
+        {
+          "stageId": "phrase-comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/faithful-then-interpretation-phrase.b.matched.wav",
+          "relativePath": "faithful-then-interpretation-phrase.b.matched.wav",
+          "type": "file",
+          "sha256": "0ec989f345e34ba5ef72c58a563b8c7b468f387e8c8bc2369708c672ea43ce31"
+        }
+      ],
+      "cacheKey": "48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/stage.log",
+      "wallSeconds": 0.009439624999999952
+    },
+    {
+      "id": "ending-comparison",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "ending-comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/ending-comparison/4d9b0f759cf57df7caa2f745360449f140e675fcd16c16f033de3bc578e2a7f4/attempt-2a8ebe2d12614e2bb82243e62bd735b9/faithful-then-interpretation-ending.ab.wav",
+          "relativePath": "faithful-then-interpretation-ending.ab.wav",
+          "type": "file",
+          "sha256": "a2c3e23b5e8d82f13f903f445eac955196ec5cfd791c6546758d5eaf9fd2fb5c"
+        },
+        {
+          "stageId": "ending-comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/ending-comparison/4d9b0f759cf57df7caa2f745360449f140e675fcd16c16f033de3bc578e2a7f4/attempt-2a8ebe2d12614e2bb82243e62bd735b9/faithful-then-interpretation-ending.comparison.json",
+          "relativePath": "faithful-then-interpretation-ending.comparison.json",
+          "type": "file",
+          "sha256": "9b72157efa867586822596e6c1527a76b03d2b71eed565ddac1246c0c0d07050"
+        },
+        {
+          "stageId": "ending-comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/ending-comparison/4d9b0f759cf57df7caa2f745360449f140e675fcd16c16f033de3bc578e2a7f4/attempt-2a8ebe2d12614e2bb82243e62bd735b9/faithful-then-interpretation-ending.a.matched.wav",
+          "relativePath": "faithful-then-interpretation-ending.a.matched.wav",
+          "type": "file",
+          "sha256": "35c9bac2709ff76291e375d5d90179194c6f1e64d96636a3f31d34c1cb9fe33f"
+        },
+        {
+          "stageId": "ending-comparison",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/ending-comparison/4d9b0f759cf57df7caa2f745360449f140e675fcd16c16f033de3bc578e2a7f4/attempt-2a8ebe2d12614e2bb82243e62bd735b9/faithful-then-interpretation-ending.b.matched.wav",
+          "relativePath": "faithful-then-interpretation-ending.b.matched.wav",
+          "type": "file",
+          "sha256": "b5dfb425be50867aded6f3bbaf2325c5ef2ae9e6c5d2cc0afd3ba017468a0957"
+        }
+      ],
+      "cacheKey": "4d9b0f759cf57df7caa2f745360449f140e675fcd16c16f033de3bc578e2a7f4",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/ending-comparison/4d9b0f759cf57df7caa2f745360449f140e675fcd16c16f033de3bc578e2a7f4/attempt-2a8ebe2d12614e2bb82243e62bd735b9",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/ending-comparison/4d9b0f759cf57df7caa2f745360449f140e675fcd16c16f033de3bc578e2a7f4/attempt-2a8ebe2d12614e2bb82243e62bd735b9/stage.log",
+      "wallSeconds": 0.012727916000000006
+    },
+    {
+      "id": "contribution",
+      "status": "reused",
+      "cacheHit": true,
+      "executionSeconds": 0,
+      "artifacts": [
+        {
+          "stageId": "contribution",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/contribution/83a621c2a911bab81fe4ef9d60542279f09db1d2f2317ff80712f2055294c238/attempt-36f0cf29f11e4d6b9cc37a592dbd3dac/contribution.json",
+          "relativePath": "contribution.json",
+          "type": "file",
+          "sha256": "a31c2c4d5b3cd8be9c9d83efe47ff3f9a4efa84d693044a2bef02b1d6b2e7072"
+        }
+      ],
+      "cacheKey": "83a621c2a911bab81fe4ef9d60542279f09db1d2f2317ff80712f2055294c238",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/contribution/83a621c2a911bab81fe4ef9d60542279f09db1d2f2317ff80712f2055294c238/attempt-36f0cf29f11e4d6b9cc37a592dbd3dac",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/contribution/83a621c2a911bab81fe4ef9d60542279f09db1d2f2317ff80712f2055294c238/attempt-36f0cf29f11e4d6b9cc37a592dbd3dac/stage.log",
+      "wallSeconds": 0.06364858299999998
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "prepare",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/prepare/08a4ec78abff4ce9af1b334836f384f8358d08875c5b73810fac3fa086b4acad/attempt-55f6333f26334fd9b1619af633ac946b/prepared/candidate.json",
+      "relativePath": "prepared/candidate.json",
+      "type": "file",
+      "sha256": "fc9738da67bbf89c8ce32eb7f594e6b84de2a2b2092656e9b9b72dd2aa034f8e"
+    },
+    {
+      "stageId": "prepare",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/prepare/08a4ec78abff4ce9af1b334836f384f8358d08875c5b73810fac3fa086b4acad/attempt-55f6333f26334fd9b1619af633ac946b/prepared/score-invariants.json",
+      "relativePath": "prepared/score-invariants.json",
+      "type": "file",
+      "sha256": "42e87411e7103bff44c408a6fe9d6d2619249c00449ef88c59a249d461734606"
+    },
+    {
+      "stageId": "prepare",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/prepare/08a4ec78abff4ce9af1b334836f384f8358d08875c5b73810fac3fa086b4acad/attempt-55f6333f26334fd9b1619af633ac946b/prepared/score-events.json.gz",
+      "relativePath": "prepared/score-events.json.gz",
+      "type": "file",
+      "sha256": "29a6eeb8dbad1e7f80d119003d49a75e425cfe3aa8e1a799d4b7f799ce6599ee"
+    },
+    {
+      "stageId": "faithful-pin",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/faithful-pin/1158d12ccae059758958bacef8634f587f25a8073a3e14b76d111a7b0204e10a/attempt-788b513023cb4594bd3a8a13332350ec/faithful.json",
+      "relativePath": "faithful.json",
+      "type": "file",
+      "sha256": "fa70aa96e677ff3cff98cd85057564da651ade6eed0016646374b3ebb5cc73a9"
+    },
+    {
+      "stageId": "original-pin",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/original-pin/078e56614f37f009def8d0807696c8b2494d032419c509de088a7780ca50622b/attempt-6c16dda3325b470dbbe33b58738d946d/original.json",
+      "relativePath": "original.json",
+      "type": "file",
+      "sha256": "5e5e5ca2c3ad767527c46061e8331b63f54cc4ce1b914b4b199935913f6d438c"
+    },
+    {
+      "stageId": "original-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/original-render/294fe3d45161eacd80d30b6a43b84ff8bac35153bae874de37b5156ecd5c3917/attempt-c6d6c4bf5c504382a5d19c0dac581164/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "9a195a078bbc8f574f313fb79b48c5ce15ebdb1b94eb012bf7acb67da770257c"
+    },
+    {
+      "stageId": "original-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/original-render/294fe3d45161eacd80d30b6a43b84ff8bac35153bae874de37b5156ecd5c3917/attempt-c6d6c4bf5c504382a5d19c0dac581164/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "aee9c6bbdc124d8b926a3427208e9b216fddc38c5da447b3dab6a0ff7158796d"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/reconstructed.sid",
+      "relativePath": "candidate/reconstructed.sid",
+      "type": "file",
+      "sha256": "0541d46fd6fcfe1dc1e5859392f96c202153daec051f7090b58f9baeff16829a"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/build.json",
+      "relativePath": "candidate/build.json",
+      "type": "file",
+      "sha256": "8e336ea859d883f8ad16bf1bf8cda73820965ebc02c219c6e2d6498375c35aef"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/audit.json",
+      "relativePath": "candidate/audit.json",
+      "type": "file",
+      "sha256": "117c0caf7db8c9701e06eac7f20977727de6b38ea319e6f8a4e9cd5a2f355df6"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/writes.json",
+      "relativePath": "candidate/writes.json",
+      "type": "file",
+      "sha256": "d9225743d5d06852ba4adba3c42babc3d06285f7e42bb867d8dd75a20e70a976"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/state-checkpoints.json",
+      "relativePath": "candidate/state-checkpoints.json",
+      "type": "file",
+      "sha256": "2231ab8c75c9537301e622db2bba2e26dff8c85d42c443cf0e654ca0b9bacb2e"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/player.asm",
+      "relativePath": "candidate/player.asm",
+      "type": "file",
+      "sha256": "4d3c66ef8bf58fd13b5f9d30059f734adad819f9c737a413373a876700bdf0f0"
+    },
+    {
+      "stageId": "candidate-build",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/player.listing",
+      "relativePath": "candidate/player.listing",
+      "type": "file",
+      "sha256": "131091b58d2867112d4397c922e35489697b76562766f6c03663b360fec5e167"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-vice/842ede4b1064cbb9461e9e34c3ba2c87bbd73be6c6f784525cab15d678d2ffac/attempt-3f9e430942014f7bbd75718c24f526ee/vice/study.json",
+      "relativePath": "vice/study.json",
+      "type": "file",
+      "sha256": "855506fa8dbd04508c74dc58656919cbc6de74d1fdaa240c23c92aed343c5920"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-vice/842ede4b1064cbb9461e9e34c3ba2c87bbd73be6c6f784525cab15d678d2ffac/attempt-3f9e430942014f7bbd75718c24f526ee/vice/trace.json",
+      "relativePath": "vice/trace.json",
+      "type": "file",
+      "sha256": "5fd084b1feba034cefeeaea3a78391feef5b2c4c7e9094b5d8e65741613225a2"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-vice/842ede4b1064cbb9461e9e34c3ba2c87bbd73be6c6f784525cab15d678d2ffac/attempt-3f9e430942014f7bbd75718c24f526ee/vice/monitor.log",
+      "relativePath": "vice/monitor.log",
+      "type": "file",
+      "sha256": "1e9638a33276f06ce29b0a6dc76d628535ba771621c80a44c034b6bd57522534"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-vice/842ede4b1064cbb9461e9e34c3ba2c87bbd73be6c6f784525cab15d678d2ffac/attempt-3f9e430942014f7bbd75718c24f526ee/vice/command.json",
+      "relativePath": "vice/command.json",
+      "type": "file",
+      "sha256": "1f12e76a6031f2103d76132dc318fe7d3ec15058a9e79eb576813ed0b73f9516"
+    },
+    {
+      "stageId": "candidate-vice",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-vice/842ede4b1064cbb9461e9e34c3ba2c87bbd73be6c6f784525cab15d678d2ffac/attempt-3f9e430942014f7bbd75718c24f526ee/vice/commands.mon",
+      "relativePath": "vice/commands.mon",
+      "type": "file",
+      "sha256": "dd04e0c19bf2bf3aeb020870b1d273d47b42c9010f886e0ac025a9dda85798f8"
+    },
+    {
+      "stageId": "faithful-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/faithful-render/b8871556f870af898fc51c205279884632d2e66438ba1616582b59703a64fb32/attempt-298e4c1857074dcc8e23abf20c54174c/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "8d4ff6dcadc1a6c63332b7227ddb96d566a4a5a8a56491a4c97ce7844b956efb"
+    },
+    {
+      "stageId": "faithful-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/faithful-render/b8871556f870af898fc51c205279884632d2e66438ba1616582b59703a64fb32/attempt-298e4c1857074dcc8e23abf20c54174c/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "c4071c7c2b82b4d0aa571cb87a5e4119ae669daa06456d5f476ef8baf0257e55"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-render/b353b330f9c5dc6989ea527761cd7d83558c265f53e9bc873a59711ff36c4129/attempt-dc349da0e95d4f019392356d971b0aeb/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "e515cee07c7fb77120f0433198427f00e4f9e57a9f784d2492d4dc8cb3812704"
+    },
+    {
+      "stageId": "candidate-render",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-render/b353b330f9c5dc6989ea527761cd7d83558c265f53e9bc873a59711ff36c4129/attempt-dc349da0e95d4f019392356d971b0aeb/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "189f2617017381e4416977cb5c748510a40f54b6ebee64741dc13e2989374107"
+    },
+    {
+      "stageId": "health",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/health/6b891e5b544ae304d4c2990b2752d7e113640194c8dcb340f6fffb122f0261e4/attempt-e125b9f9e0bc468f9e33f399fff6fc51/audio.json",
+      "relativePath": "audio.json",
+      "type": "file",
+      "sha256": "c0000466a58fe626b7640d0a3c17dc983343d159be970eaefdb1c6fa726f12a0"
+    },
+    {
+      "stageId": "without-lead",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-lead/71090536edcb30f8ae8b417d2f742cd3f37c1d3e90da32e99fa7dbda16a0d0cf/attempt-837ba5a46365492db10b577c66b6e8e0/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "9e778c83187be3c7cdc70f7aa4d9b6980d9b4983ca46006b0118be6c9e9250e4"
+    },
+    {
+      "stageId": "without-lead",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-lead/71090536edcb30f8ae8b417d2f742cd3f37c1d3e90da32e99fa7dbda16a0d0cf/attempt-837ba5a46365492db10b577c66b6e8e0/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "189f2617017381e4416977cb5c748510a40f54b6ebee64741dc13e2989374107"
+    },
+    {
+      "stageId": "without-bass",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-bass/8d5b692658e2c6d359b7a64ccc25a4691971a451ae9ab20fa5d75257231203b8/attempt-62170864d8a4437db5a0a9fdec32007d/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "a9583967068ab2c8f62e8fca349b53a284714a477645903a60c670039b925a6e"
+    },
+    {
+      "stageId": "without-bass",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-bass/8d5b692658e2c6d359b7a64ccc25a4691971a451ae9ab20fa5d75257231203b8/attempt-62170864d8a4437db5a0a9fdec32007d/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "189f2617017381e4416977cb5c748510a40f54b6ebee64741dc13e2989374107"
+    },
+    {
+      "stageId": "without-support",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-support/b3cb5a391dc23ba41fe2d633eaad0e68d47b179b449233fad2b02b762d46af34/attempt-02af92fca93e48dba13b23a4b3b3b066/render.wav",
+      "relativePath": "render.wav",
+      "type": "file",
+      "sha256": "f3bdb93b154521ef575417ee1e7b92f51151f8ba57ff0b8ca6d055b3cceda5af"
+    },
+    {
+      "stageId": "without-support",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/without-support/b3cb5a391dc23ba41fe2d633eaad0e68d47b179b449233fad2b02b762d46af34/attempt-02af92fca93e48dba13b23a4b3b3b066/render.wav.registers.tsv",
+      "relativePath": "render.wav.registers.tsv",
+      "type": "file",
+      "sha256": "189f2617017381e4416977cb5c748510a40f54b6ebee64741dc13e2989374107"
+    },
+    {
+      "stageId": "windows",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/faithful-phrase.wav",
+      "relativePath": "windows/faithful-phrase.wav",
+      "type": "file",
+      "sha256": "787fa4e7daee44455c3f0544804cee9a237c9cd35be122d3816649209721e2c2"
+    },
+    {
+      "stageId": "windows",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/interpretation-phrase.wav",
+      "relativePath": "windows/interpretation-phrase.wav",
+      "type": "file",
+      "sha256": "666c41cf5a08f5aec895b7dbddfc55cd27b9788d04a1e0ca0e142070dd80ae66"
+    },
+    {
+      "stageId": "windows",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/original-source-phrase.wav",
+      "relativePath": "windows/original-source-phrase.wav",
+      "type": "file",
+      "sha256": "da2df56bee5591142dc4ab19af3906c9584a54e7fb8f5054a7dbfc457cb09909"
+    },
+    {
+      "stageId": "windows",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/faithful-ending.wav",
+      "relativePath": "windows/faithful-ending.wav",
+      "type": "file",
+      "sha256": "35c9bac2709ff76291e375d5d90179194c6f1e64d96636a3f31d34c1cb9fe33f"
+    },
+    {
+      "stageId": "windows",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/interpretation-ending.wav",
+      "relativePath": "windows/interpretation-ending.wav",
+      "type": "file",
+      "sha256": "573ea905490470aa1ed4a3734d35fae9656fecd2bfb15dd718d3e97093dc8728"
+    },
+    {
+      "stageId": "windows",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/original-source-ending.wav",
+      "relativePath": "windows/original-source-ending.wav",
+      "type": "file",
+      "sha256": "ab68d942cc2740885028b8c32ddb0052a15378fbf806864372ff159b5871c8cc"
+    },
+    {
+      "stageId": "windows",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/windows.json",
+      "relativePath": "windows/windows.json",
+      "type": "file",
+      "sha256": "803be1e9440e6215dd2fbbb1e5a1c83c5a840b7b05a638ab2a4d8a8f447f8496"
+    },
+    {
+      "stageId": "phrase-comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/faithful-then-interpretation-phrase.ab.wav",
+      "relativePath": "faithful-then-interpretation-phrase.ab.wav",
+      "type": "file",
+      "sha256": "c01bb541d222d110926dcc02a7ef4f8f30760e1d669b37a4fc98cd9edc61f718"
+    },
+    {
+      "stageId": "phrase-comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/faithful-then-interpretation-phrase.comparison.json",
+      "relativePath": "faithful-then-interpretation-phrase.comparison.json",
+      "type": "file",
+      "sha256": "bb422502d1e483384801745fcf3f1f658f78ef926133e13fe1b066f2d0919b40"
+    },
+    {
+      "stageId": "phrase-comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/faithful-then-interpretation-phrase.a.matched.wav",
+      "relativePath": "faithful-then-interpretation-phrase.a.matched.wav",
+      "type": "file",
+      "sha256": "787fa4e7daee44455c3f0544804cee9a237c9cd35be122d3816649209721e2c2"
+    },
+    {
+      "stageId": "phrase-comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/faithful-then-interpretation-phrase.b.matched.wav",
+      "relativePath": "faithful-then-interpretation-phrase.b.matched.wav",
+      "type": "file",
+      "sha256": "0ec989f345e34ba5ef72c58a563b8c7b468f387e8c8bc2369708c672ea43ce31"
+    },
+    {
+      "stageId": "ending-comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/ending-comparison/4d9b0f759cf57df7caa2f745360449f140e675fcd16c16f033de3bc578e2a7f4/attempt-2a8ebe2d12614e2bb82243e62bd735b9/faithful-then-interpretation-ending.ab.wav",
+      "relativePath": "faithful-then-interpretation-ending.ab.wav",
+      "type": "file",
+      "sha256": "a2c3e23b5e8d82f13f903f445eac955196ec5cfd791c6546758d5eaf9fd2fb5c"
+    },
+    {
+      "stageId": "ending-comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/ending-comparison/4d9b0f759cf57df7caa2f745360449f140e675fcd16c16f033de3bc578e2a7f4/attempt-2a8ebe2d12614e2bb82243e62bd735b9/faithful-then-interpretation-ending.comparison.json",
+      "relativePath": "faithful-then-interpretation-ending.comparison.json",
+      "type": "file",
+      "sha256": "9b72157efa867586822596e6c1527a76b03d2b71eed565ddac1246c0c0d07050"
+    },
+    {
+      "stageId": "ending-comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/ending-comparison/4d9b0f759cf57df7caa2f745360449f140e675fcd16c16f033de3bc578e2a7f4/attempt-2a8ebe2d12614e2bb82243e62bd735b9/faithful-then-interpretation-ending.a.matched.wav",
+      "relativePath": "faithful-then-interpretation-ending.a.matched.wav",
+      "type": "file",
+      "sha256": "35c9bac2709ff76291e375d5d90179194c6f1e64d96636a3f31d34c1cb9fe33f"
+    },
+    {
+      "stageId": "ending-comparison",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/ending-comparison/4d9b0f759cf57df7caa2f745360449f140e675fcd16c16f033de3bc578e2a7f4/attempt-2a8ebe2d12614e2bb82243e62bd735b9/faithful-then-interpretation-ending.b.matched.wav",
+      "relativePath": "faithful-then-interpretation-ending.b.matched.wav",
+      "type": "file",
+      "sha256": "b5dfb425be50867aded6f3bbaf2325c5ef2ae9e6c5d2cc0afd3ba017468a0957"
+    },
+    {
+      "stageId": "contribution",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/contribution/83a621c2a911bab81fe4ef9d60542279f09db1d2f2317ff80712f2055294c238/attempt-36f0cf29f11e4d6b9cc37a592dbd3dac/contribution.json",
+      "relativePath": "contribution.json",
+      "type": "file",
+      "sha256": "a31c2c4d5b3cd8be9c9d83efe47ff3f9a4efa84d693044a2bef02b1d6b2e7072"
+    }
+  ],
+  "deliverables": {
+    "fullFaithful": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/faithful-render/b8871556f870af898fc51c205279884632d2e66438ba1616582b59703a64fb32/attempt-298e4c1857074dcc8e23abf20c54174c/render.wav",
+    "fullCandidate": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-render/b353b330f9c5dc6989ea527761cd7d83558c265f53e9bc873a59711ff36c4129/attempt-dc349da0e95d4f019392356d971b0aeb/render.wav",
+    "phraseComparison": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/faithful-then-interpretation-phrase.ab.wav",
+    "endingComparison": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/ending-comparison/4d9b0f759cf57df7caa2f745360449f140e675fcd16c16f033de3bc578e2a7f4/attempt-2a8ebe2d12614e2bb82243e62bd735b9/faithful-then-interpretation-ending.ab.wav",
+    "originalSourcePhrase": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/original-source-phrase.wav",
+    "originalSourceEnding": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/windows/68440561dfe4ae1cc1cb821e8342c06fc2bb74de47bbb530da351f54c9dacbbe/attempt-ccfff18504a84a5081d9a12abc931827/windows/original-source-ending.wav",
+    "matchedFaithfulPhrase": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/faithful-then-interpretation-phrase.a.matched.wav",
+    "matchedInterpretationPhrase": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/phrase-comparison/48325e4506e8baf22aeca988c37797b1bc8005c3a361185b998ce97c5d80534f/attempt-8e79b3b7ce9a47eea8e364b0651ec426/faithful-then-interpretation-phrase.b.matched.wav",
+    "scoreInvariants": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/prepare/08a4ec78abff4ce9af1b334836f384f8358d08875c5b73810fac3fa086b4acad/attempt-55f6333f26334fd9b1619af633ac946b/prepared/score-invariants.json",
+    "candidateBuild": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/build.json",
+    "candidateVice": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-vice/842ede4b1064cbb9461e9e34c3ba2c87bbd73be6c6f784525cab15d678d2ffac/attempt-3f9e430942014f7bbd75718c24f526ee/vice/study.json",
+    "audioHealth": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/health/6b891e5b544ae304d4c2990b2752d7e113640194c8dcb340f6fffb122f0261e4/attempt-e125b9f9e0bc468f9e33f399fff6fc51/audio.json",
+    "signalContribution": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/contribution/83a621c2a911bab81fe4ef9d60542279f09db1d2f2317ff80712f2055294c238/attempt-36f0cf29f11e4d6b9cc37a592dbd3dac/contribution.json",
+    "candidateSid": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/candidate-build/99fb941f0a26c15e88bf8b4a575e7af33ea86d708c619e4bb1b4d08fcfcf94a6/attempt-64b3287b305644f093e5ff365535e1e6/candidate/reconstructed.sid",
+    "fullOriginalSource": "/Users/mbackschat/Projects/c64-sid-skill/build/rambo-interpretation-v1/cache/original-render/294fe3d45161eacd80d30b6a43b84ff8bac35153bae874de37b5156ecd5c3917/attempt-c6d6c4bf5c504382a5d19c0dac581164/render.wav"
+  },
+  "finishedAt": "2026-10-15T06:46:58.523482+00:00",
+  "wallSeconds": 0.759691292
+}
