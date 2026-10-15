@@ -1,0 +1,603 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "status": "ready-for-full-combination-listening-with-known-zero-hit",
+  "scope": "Combine the accepted full master palette with exact source maracas only in four entirely vacant harmony sections. All 1,025 tonal notes, source timing/form, preferred ELSOFT high lead, original held-support program and native PAL MOS8580 target are retained. No additional musical changes or transposition.",
+  "recipe": "config/listening/axel-f-full-rhythm.json",
+  "selection": "config/listening/axel-f-full-rhythm.audition.json",
+  "configuration": "songs/axel-f/full-rhythm.json",
+  "helper": "scripts/studies/axel-f/prepare-full-rhythm.py",
+  "priorListening": {
+    "tonal": {
+      "review": "songs/axel-f/full-master-palette-review.json",
+      "quote": "Nice. what next?",
+      "scope": "Positive full tonal feedback, without separate explicit ending approval."
+    },
+    "maracas": {
+      "review": "songs/axel-f/rhythm-middle-review.json",
+      "quote": "yes to: second half keep the nice rhythmic touch without becoming too prominent",
+      "scope": "AD13 balance accepted in the tested source-backed excerpt."
+    },
+    "combinedFull": "Pending human review; the individual preferences do not establish acceptance of this complete combination."
+  },
+  "sourceSha256": "8bf2fa73160461e13ace1609393879e12929ada5241e80f397cd3c0e4dfe429d",
+  "sourceProjection": {
+    "sourceBeatOffset": 4,
+    "sourceMidi": 70,
+    "quarterBpm": 119.00016065021688,
+    "windows": [
+      {
+        "startBeat": 32.0,
+        "endBeat": 64.0,
+        "onsets": 68
+      },
+      {
+        "startBeat": 64.0,
+        "endBeat": 96.0,
+        "onsets": 68
+      },
+      {
+        "startBeat": 128.0,
+        "endBeat": 156.0,
+        "onsets": 16
+      },
+      {
+        "startBeat": 156.0,
+        "endBeat": 172.0,
+        "onsets": 34
+      }
+    ],
+    "sourceDurationAdaptation": false
+  },
+  "target": {
+    "clock": "PAL",
+    "sidModel": "MOS8580",
+    "sidCount": 1,
+    "sidAddress": 54272,
+    "updatesPerSecond": 50.12457321485099,
+    "voiceRoles": [
+      "lead/held support/high lead",
+      "existing accompaniment plus maracas in four vacant sections",
+      "bass"
+    ]
+  },
+  "execution": {
+    "cpuCalls": 9006,
+    "preservedTonalCounts": [
+      288,
+      259,
+      478
+    ],
+    "preservedTonalNotes": 1025,
+    "candidateCounts": [
+      288,
+      445,
+      478
+    ],
+    "totalNotes": 1211,
+    "sourceRhythmOnsets": 186,
+    "allTonalSchedulesEqual": true,
+    "existingInstrumentIdsRetained": true,
+    "maximumPlayCycles": 2318,
+    "frameCycleBudget": 19656,
+    "stopTick": 8953,
+    "postStopGatesAndVolumeClear": true
+  },
+  "registerIsolation": {
+    "leadBassSharedRegisterTrajectoriesEqual": true,
+    "tonalHarmonyAndPredecessorReleaseTrajectoriesEqual": true,
+    "changedFrameOffsets": [
+      7,
+      8,
+      11,
+      12,
+      13
+    ],
+    "allowedHarmonyHistoryIntervals": [
+      [
+        809,
+        2439
+      ],
+      [
+        3235,
+        5156
+      ]
+    ],
+    "matchedOrderedNonRhythmStores": 162125,
+    "matchedOrderedPreservedStores": 200317,
+    "maximumPreservedInstructionStartDifferenceCycles": 406,
+    "sameSidHarmonyDiagnosticSnapshotsIdentical": true
+  },
+  "noiseExecution": {
+    "program": "Exact accepted MARNOISE, AD13/SR00, fixed noise clock and no filter/modulation/coupling.",
+    "nativeSourceAttacks": 186,
+    "exactGateSchedule": true,
+    "gatedNoiseBodyCallCounts": {
+      "1": 101,
+      "2": 83,
+      "3": 2
+    },
+    "renderedNonzeroDiagnosticWindows": 185,
+    "minimumNonzeroWindowAcRms": 238.99249871565354,
+    "knownZeroDiagnosticWindow": {
+      "sourceBeat": 172,
+      "arrangedBeat": 168,
+      "startTick": 4246,
+      "gateOffTick": 4248,
+      "nextOnsetTick": 4252,
+      "acRms": 0.0,
+      "scope": "The complete onset-to-next-onset window is zero, despite the native noise trigger and one gated body call. The exact known zero set is guarded; any added, moved or missing zero window is rejected. The accepted AD13 patch and source grid are deliberately retained. No synthesis root cause or perceived audibility of every other hit is inferred."
+    },
+    "measurementScope": "Scheduled onset to the next onset or ten native calls, whichever comes first. Nonzero/zero PCM-window evidence is distinct from source/native triggers, perceived audibility and a proven synthesis mechanism."
+  },
+  "boundaryRelease": {
+    "thresholdPcm16AcRms": 16,
+    "boundaries": [
+      {
+        "firstNoiseTick": 809,
+        "predecessorGateOffTick": null,
+        "lastNoiseTick": 2414,
+        "lastNoiseGateOffTick": 2416,
+        "incomingTonalTestTick": 2439,
+        "incomingTonalBodyTick": 2440,
+        "incomingTestLowBytes": [
+          0,
+          157
+        ],
+        "incomingTonalBodyRegistersEqual": true,
+        "quietWindows": [
+          {
+            "before": "firstNoiseTick",
+            "label": "immediate-handover",
+            "requestedOffsetsSeconds": [
+              -0.06,
+              -0.005
+            ],
+            "baselineAcRms": 0.0,
+            "candidateAcRms": 0.0
+          },
+          {
+            "before": "firstNoiseTick",
+            "label": "final-handover",
+            "requestedOffsetsSeconds": [
+              -0.025,
+              -0.001
+            ],
+            "baselineAcRms": 0.0,
+            "candidateAcRms": 0.0
+          },
+          {
+            "before": "incomingTonalTestTick",
+            "label": "immediate-handover",
+            "requestedOffsetsSeconds": [
+              -0.06,
+              -0.005
+            ],
+            "baselineAcRms": 0.0,
+            "candidateAcRms": 0.0
+          },
+          {
+            "before": "incomingTonalTestTick",
+            "label": "final-handover",
+            "requestedOffsetsSeconds": [
+              -0.025,
+              -0.001
+            ],
+            "baselineAcRms": 0.0,
+            "candidateAcRms": 0.0
+          }
+        ],
+        "earlierRelease": [
+          {
+            "before": "firstNoiseTick",
+            "requestedOffsetsSeconds": [
+              -0.15,
+              -0.03
+            ],
+            "baselineAcRms": 0.0,
+            "candidateAcRms": 0.0
+          },
+          {
+            "before": "incomingTonalTestTick",
+            "requestedOffsetsSeconds": [
+              -0.15,
+              -0.03
+            ],
+            "baselineAcRms": 0.0,
+            "candidateAcRms": 0.0
+          }
+        ]
+      },
+      {
+        "firstNoiseTick": 3235,
+        "predecessorGateOffTick": 3218,
+        "lastNoiseTick": 4334,
+        "lastNoiseGateOffTick": 4336,
+        "incomingTonalTestTick": 5156,
+        "incomingTonalBodyTick": 5157,
+        "incomingTestLowBytes": [
+          207,
+          157
+        ],
+        "incomingTonalBodyRegistersEqual": true,
+        "quietWindows": [
+          {
+            "before": "firstNoiseTick",
+            "label": "immediate-handover",
+            "requestedOffsetsSeconds": [
+              -0.06,
+              -0.005
+            ],
+            "baselineAcRms": 0.0,
+            "candidateAcRms": 0.0
+          },
+          {
+            "before": "firstNoiseTick",
+            "label": "final-handover",
+            "requestedOffsetsSeconds": [
+              -0.025,
+              -0.001
+            ],
+            "baselineAcRms": 0.0,
+            "candidateAcRms": 0.0
+          },
+          {
+            "before": "incomingTonalTestTick",
+            "label": "immediate-handover",
+            "requestedOffsetsSeconds": [
+              -0.06,
+              -0.005
+            ],
+            "baselineAcRms": 0.0,
+            "candidateAcRms": 0.0
+          },
+          {
+            "before": "incomingTonalTestTick",
+            "label": "final-handover",
+            "requestedOffsetsSeconds": [
+              -0.025,
+              -0.001
+            ],
+            "baselineAcRms": 0.0,
+            "candidateAcRms": 0.0
+          }
+        ],
+        "earlierRelease": [
+          {
+            "before": "firstNoiseTick",
+            "requestedOffsetsSeconds": [
+              -0.15,
+              -0.03
+            ],
+            "baselineAcRms": 54.01687098164867,
+            "candidateAcRms": 54.07545896862791
+          },
+          {
+            "before": "incomingTonalTestTick",
+            "requestedOffsetsSeconds": [
+              -0.15,
+              -0.03
+            ],
+            "baselineAcRms": 0.0,
+            "candidateAcRms": 0.0
+          }
+        ]
+      }
+    ],
+    "scope": "Require quiet immediately before each first noise and incoming tonal TEST. Earlier preserved decay is measured separately; all 44 labelled 20ms diagnostic bins remain in private mechanism evidence. The inactive incoming TEST may retain only D407 from its own prior state, control09/no waveform; all seven harmony registers restore exactly at the next sounding body. Only those two D407 ordered-store differences are allowed outside noise-history intervals."
+  },
+  "vice": {
+    "calls": [
+      0,
+      1,
+      3,
+      808,
+      810,
+      1618,
+      2439,
+      2440,
+      3218,
+      3235,
+      3237,
+      3943,
+      4348,
+      5156,
+      5157,
+      8900,
+      9000
+    ],
+    "maximumAbsoluteCycleError": 6,
+    "scope": "Standalone PRG boot, sampled SID write shadows and single-speed PAL cadence; not continuous write equivalence or listening evidence"
+  },
+  "audio": {
+    "reference": {
+      "durationSeconds": 179.6349433106576,
+      "frames": 7921901,
+      "peak": 12178,
+      "clippedSamples": 0,
+      "acRms": 2763.2585165684027,
+      "endingAcRms": 0.0
+    },
+    "candidate": {
+      "durationSeconds": 179.6349433106576,
+      "frames": 7921901,
+      "peak": 12372,
+      "clippedSamples": 0,
+      "acRms": 2779.951021418076,
+      "endingAcRms": 0.0
+    }
+  },
+  "preStopRelease": [
+    {
+      "label": "reference",
+      "windowSeconds": [
+        178.11498713663642,
+        178.51498713663642
+      ],
+      "acRms": 0.0
+    },
+    {
+      "label": "candidate",
+      "windowSeconds": [
+        178.11498713663642,
+        178.51498713663642
+      ],
+      "acRms": 0.0
+    }
+  ],
+  "gainPolicy": "Both complete native WAVs and every A/B side use unchanged unity gain (0 dB). No per-side normalization changes the tonal bed or internal balance. The A/B is a contextual full-mix comparison, not isolated percussion subtraction.",
+  "comparisonOrder": [
+    "tonal full baseline",
+    "same full arrangement with source AD13 maracas"
+  ],
+  "comparisons": [
+    {
+      "label": "main-hook-without-then-with-maracas",
+      "window": {
+        "startFrame": 1423107,
+        "endFrame": 2134635,
+        "frames": 711528,
+        "startSeconds": 32.27,
+        "endSeconds": 48.404421768707486,
+        "durationSeconds": 16.134421768707483
+      },
+      "sha256": "3badbb8b6023fda690944420d40bc899737c64298e2f85ea96538acf377697b9",
+      "inputGainDb": [
+        0,
+        0
+      ],
+      "scope": "Contextual full-mix comparison at common unity gain; separate-export PCM changes can include tonal phase changes from added player work."
+    },
+    {
+      "label": "tonal-to-maracas-before-then-after",
+      "window": {
+        "startFrame": 2813104,
+        "endFrame": 2923354,
+        "frames": 110250,
+        "startSeconds": 63.789206349206346,
+        "endSeconds": 66.28920634920635,
+        "durationSeconds": 2.5
+      },
+      "sha256": "89ad0b49d5d70ec0b727aa152a11f4237fc8fbfc658f43c6f8edec24ac0e8c1e",
+      "inputGainDb": [
+        0,
+        0
+      ],
+      "scope": "Contextual full-mix comparison at common unity gain; separate-export PCM changes can include tonal phase changes from added player work."
+    },
+    {
+      "label": "maracas-to-tonal-before-then-after",
+      "window": {
+        "startFrame": 2103957,
+        "endFrame": 2192157,
+        "frames": 88200,
+        "startSeconds": 47.708775510204084,
+        "endSeconds": 49.708775510204084,
+        "durationSeconds": 2.0
+      },
+      "sha256": "28bf3f3c7b6e25e947023776353a7cc4bd2a9bfcea1a2c958d12f8091ff176d5",
+      "inputGainDb": [
+        0,
+        0
+      ],
+      "scope": "Contextual full-mix comparison at common unity gain; separate-export PCM changes can include tonal phase changes from added player work."
+    },
+    {
+      "label": "ending-before-then-after",
+      "window": {
+        "startFrame": 7585200,
+        "endFrame": 7921901,
+        "frames": 336701,
+        "startSeconds": 172.0,
+        "endSeconds": 179.6349433106576,
+        "durationSeconds": 7.634943310657596
+      },
+      "sha256": "5839e0268ecdc85988fcc018cea549384589ea407bd17834994c3670750befc8",
+      "inputGainDb": [
+        0,
+        0
+      ],
+      "scope": "Contextual full-mix comparison at common unity gain; separate-export PCM changes can include tonal phase changes from added player work."
+    }
+  ],
+  "submittedAudio": [
+    {
+      "label": "reference",
+      "filename": "tonal-full-reference.wav",
+      "sha256": "e5698fc525b4f884ffe4b8fdab26e929e585a4c199c0baa82dd0d59866b13154",
+      "bytes": 15843846
+    },
+    {
+      "label": "candidate",
+      "filename": "axel-f-full-rhythm.wav",
+      "sha256": "f881634e6ecb53cdf66557bab89c81cceda632925d29a55d10f666ac8e815020",
+      "bytes": 15843846
+    },
+    {
+      "label": "main-hook",
+      "filename": "main-hook-without-then-with-maracas.ab.wav",
+      "sha256": "3badbb8b6023fda690944420d40bc899737c64298e2f85ea96538acf377697b9",
+      "bytes": 2890256
+    },
+    {
+      "label": "transition-entry",
+      "filename": "tonal-to-maracas-before-then-after.ab.wav",
+      "sha256": "89ad0b49d5d70ec0b727aa152a11f4237fc8fbfc658f43c6f8edec24ac0e8c1e",
+      "bytes": 485144
+    },
+    {
+      "label": "transition-exit",
+      "filename": "maracas-to-tonal-before-then-after.ab.wav",
+      "sha256": "28bf3f3c7b6e25e947023776353a7cc4bd2a9bfcea1a2c958d12f8091ff176d5",
+      "bytes": 396944
+    },
+    {
+      "label": "ending",
+      "filename": "ending-before-then-after.ab.wav",
+      "sha256": "5839e0268ecdc85988fcc018cea549384589ea407bd17834994c3670750befc8",
+      "bytes": 1390948
+    }
+  ],
+  "nativeExports": {
+    "candidate-sid": {
+      "path": "build/axel-f-full-rhythm/cache/candidate/d9b1430fcf17782f4c0f093fb4f63fe5e61b1140b9cee0e2330a8c1577bab2fd/attempt-fab11c7d550747eb9e4cfa58c88b9b6e/song/export/candidate.sid",
+      "sha256": "de13dd1aca6daf7725784674abcd5a1e56cc914f0830b885890d634b7f090208"
+    },
+    "candidate-prg": {
+      "path": "build/axel-f-full-rhythm/cache/candidate/d9b1430fcf17782f4c0f093fb4f63fe5e61b1140b9cee0e2330a8c1577bab2fd/attempt-fab11c7d550747eb9e4cfa58c88b9b6e/song/export/candidate.prg",
+      "sha256": "692e3f336d944c1a770f4b6c494c2197b65a911f416a7d8619bd4c4aa66b82df"
+    },
+    "candidate-native": {
+      "path": "build/axel-f-full-rhythm/cache/candidate/d9b1430fcf17782f4c0f093fb4f63fe5e61b1140b9cee0e2330a8c1577bab2fd/attempt-fab11c7d550747eb9e4cfa58c88b9b6e/song/conversion/candidate.swm",
+      "sha256": "4ac371e98f85baaa1145fcea364c6c175d09eea073706b5666ab9e3a0a91d03c"
+    }
+  },
+  "baselineReuse": {
+    "previousFullWavSha256": "e5698fc525b4f884ffe4b8fdab26e929e585a4c199c0baa82dd0d59866b13154",
+    "freshBaselineRender": false,
+    "sourceReceipt": {
+      "path": "build/axel-f-full-master-palette/completed-run.json",
+      "sha256": "57fb9c23eb53b35cb7df79396a845783e3afee894c2b668bab5faada700d2852"
+    },
+    "declaredInputDirectory": "build/axel-f-full-master-palette",
+    "scope": "Prefer the intact frozen completed-run.json; accept an intact regenerated completed run.json as fallback. Derive cache key and attempt name from its candidate stage, then validate unique relative filenames and artifact hashes. The entire baseline directory, including source artifacts, is fingerprinted before cache reuse. The historical full-render snapshot sidecar was absent from that old receipt and is newly pinned at import.",
+    "regenerationCommand": "python3 scripts/listening-package.py config/listening/axel-f-full-master-palette.json --output build/axel-f-full-master-palette",
+    "regenerationPrerequisite": "Restore the baseline recipe declared source/tool inputs first; an absent or corrupted baseline is a failure requiring this explicit regeneration command.",
+    "portabilityProof": {
+      "path": "build/axel-f-full-rhythm-import-check/verification.json",
+      "sha256": "7debc7315c95ac789cc346737572cf146fd316a619482a7146dc9c74764607ae"
+    }
+  },
+  "modelAssistanceReview": {
+    "status": "no-call",
+    "reason": "The listener selected the AD13 balance and tonal palette. Current models are uncalibrated for this full combination and its musical balance; execution and PCM checks support technical claims only.",
+    "nextCheckpoint": "After the full-combination listening verdict or before case closure."
+  },
+  "executionTiming": {
+    "initialStartedAt": "2026-10-15T20:45:38.264918+00:00",
+    "successfulCandidateExecutionSeconds": 126.48730866700001,
+    "successfulCandidateStageWallSeconds": 126.58279025,
+    "viceStageWallSeconds": 21.137254084000006,
+    "finalCachedRunWallSeconds": 11.124867833,
+    "finalFinishedAt": "2026-10-15T21:09:04.809424+00:00",
+    "reusedStages": [
+      "prepare",
+      "reference",
+      "candidate",
+      "vice",
+      "baseline-harmony",
+      "candidate-harmony"
+    ],
+    "scope": "A first native attempt exceeded the original 120-second audit subprocess deadline. The supported override was raised to 300 seconds, without reducing the complete 9,006 calls or oracles. The successful native build and subsequent VICE/diagnostics are reused for verification-only corrections: inactive TEST low-byte residue, immediate handover silence instead of earlier legitimate decay, and explicit reporting of the single zero noise window."
+  },
+  "evidence": {
+    "verification": {
+      "path": "build/axel-f-full-rhythm/cache/candidate/d9b1430fcf17782f4c0f093fb4f63fe5e61b1140b9cee0e2330a8c1577bab2fd/attempt-fab11c7d550747eb9e4cfa58c88b9b6e/song/verification.json",
+      "sha256": "e9ef3e269763d2ebce6ac946814fb796110d69110090f3dea36e4e4f25cabddd"
+    },
+    "vice": {
+      "path": "build/axel-f-full-rhythm/cache/vice/b51dccbf9d3c6407e0b60c1f42ae4fceae77b60fae2952347ac43cffb4ff5bb5/attempt-6bc8e392fdf941029fc75f2d79518331/vice/verification.json",
+      "sha256": "2f6323a4121dae49d5486eb81b7b0a8f4035d88067731bdc8bf6bd979e212e26"
+    },
+    "mechanism": {
+      "path": "build/axel-f-full-rhythm/cache/mechanism/b12da494138b7978041fe56c1599df384911182f99653eead95bef33ef8c58dd/attempt-854283322f3d4188aa136807d2ab4e20/full-rhythm-verification.json",
+      "sha256": "9d89a2853da4043677ed94f10364bf1dfb67d8caca32b18fcd2e1e53fbcfc884"
+    },
+    "adaptation": {
+      "path": "build/axel-f-full-rhythm/cache/trial/92930234bc725775b42b9aab3d93c0cf364f43aa52c391b4a436308b62ced6b8/attempt-1c1050f61dcb43478d5b7b1683902360/trial/adaptation.json",
+      "sha256": "d286ab641fa000fbcd097a5f1362d71985b3d540757c171667087566796a1206"
+    },
+    "pre-stop-release": {
+      "path": "build/axel-f-full-rhythm/cache/pre-stop-release/c0280f0721ff76e0f5ea651006c6c032699909c103d67a0ad6a964d47211002c/attempt-9b49f5daceac43448dd5152d9cbe492f/pre-stop-release.json",
+      "sha256": "feb5159e813e297ee667cf71986dfa93abf5830d2651fc2b5c506786de15a1da"
+    },
+    "comparisons": {
+      "path": "build/axel-f-full-rhythm/cache/comparisons/9a26298e314d7b67cba53badcdd3471589d4cc0444a36c88ad68b7e2f854fbc0/attempt-205a2087ddb94d92aaecdfc512a42f21/comparisons.json",
+      "sha256": "32337bd6a839b4dc663f3dd0712965bcbc7bca1f070d23429ada6de1646d2a13"
+    },
+    "reference-reuse": {
+      "path": "build/axel-f-full-rhythm/cache/reference/2b562289d80a30ddb20aa82c41afda50d1764d8911125db444474a1a87b8dda3/attempt-0d4fd3d995a34ac79991c45bd356e318/song/reference-reuse.json",
+      "sha256": "2ca0d488f8fc207d900ffce8101f32261cec8b5bb82675c6701a5429eddd6781"
+    },
+    "completed-run": {
+      "path": "build/axel-f-full-rhythm/completed-run.json",
+      "sha256": "3534eefebfd770be8ed106b3eaf93aeb01ed91d440f13cd84abadee30a31f64c"
+    },
+    "published-sources": {
+      "path": "build/axel-f-full-rhythm-listening/sources.json",
+      "sha256": "2234230f895e5cf9457f02ce2174476aad9fc7bedff3534cbbf910325af2848e"
+    },
+    "initial-import-attempt": {
+      "path": "build/axel-f-full-rhythm/initial-import-attempt.json",
+      "sha256": "b22d18d422eac2330f979792af5845e107e00cb1acecf25182b384cda664264e"
+    },
+    "native-timeout-attempt": {
+      "path": "build/axel-f-full-rhythm/native-timeout-attempt.json",
+      "sha256": "6f69d46398ead4f156d60c48fd914033d317013c87f00b85a1b7eaf97fb1bbfc"
+    },
+    "native-build-and-diagnostics": {
+      "path": "build/axel-f-full-rhythm/native-build-and-diagnostics.json",
+      "sha256": "6ecf55ea5d5bb3e86e04e372e200104469ed03c24ad9850e8f6a990a5ab697af"
+    },
+    "preserved-decay-guard-attempt": {
+      "path": "build/axel-f-full-rhythm/preserved-decay-guard-attempt.json",
+      "sha256": "b33ef7604155f99c72b29cc7a61137c6fb6388a52b813b40f59ff6dbda6a379c"
+    },
+    "rendered-body-guard-attempt": {
+      "path": "build/axel-f-full-rhythm/rendered-body-guard-attempt.json",
+      "sha256": "7f8163172adcccdcd8b6f2ee202d22331734996f02f32d3498df1d3fa7250465"
+    }
+  },
+  "reproductionCommands": [
+    "python3 scripts/listening-package.py config/listening/axel-f-full-rhythm.json --output build/axel-f-full-rhythm",
+    "python3 scripts/publish-listening.py build/axel-f-full-rhythm/run.json --selection config/listening/axel-f-full-rhythm.audition.json --output build/axel-f-full-rhythm-listening-new"
+  ],
+  "retentionPrefixes": [
+    "build/axel-f-full-rhythm/",
+    "build/axel-f-full-rhythm-listening/",
+    "build/axel-f-full-rhythm-import-check/",
+    "build/axel-f-full-master-palette/",
+    "build/axel-f-full-master-palette-listening/"
+  ],
+  "limits": [
+    "186 source/native noise events produce 185 nonzero diagnostic windows and one explicitly retained zero window; this is not complete source-percussion fidelity. Source drum events outside the four selected vacant sections, including the omitted percussion ending, remain omitted.",
+    "Source/native tonal schedules and post-call registers are preserved, but added player work shifts some store instruction starts by up to 406 cycles. Separate-export PCM differences are not a pure percussion stem or proof of identical tonal phase.",
+    "The prior native adaptation remains: per-note TEST, native cadence/reset behavior, bounded bass PWM, retained bass register and MOS8580 rendering do not reproduce the master source articulation, ongoing drift, register allocation or MOS6581 response.",
+    "Quiet rendered release, correct execution and prior excerpt preferences do not establish combined full-song enjoyment or a separately accepted ending.",
+    "Original copyrighted source scores, detailed per-hit schedules, renderer diagnostics and generated/reference audio stay local. This public aggregate contains no per-note arrays."
+  ],
+  "unpersistedFindings": [],
+  "preparedReducedScoreSha256": "888c0e3f69eae5cc1bf45f78e55dffbd3a3bf40716943e03f9cb6878a20f97bd",
+  "cleanupCheckpoint": {
+    "report": {
+      "path": "build/cleanup-axel-full-rhythm-applied/summary.json",
+      "sha256": "8f9b20ea107d59df289512769328a77449df53f773fab9626ec475c65ac434aa"
+    },
+    "deletedDuplicateWavs": 11,
+    "compressedTextFiles": 24,
+    "logicalBytesReclaimed": 152060558,
+    "remainingInventoriedLogicalBytes": 6173359771,
+    "unselectedFilesUnchanged": true,
+    "retention": "All shared listening files and active candidate/baseline evidence remain. Final selection and retirement of superseded working caches await the combined listening verdict."
+  }
+}

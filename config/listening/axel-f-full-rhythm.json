@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "prepare",
+      "command": [
+        "{python}",
+        "scripts/prepare-score-audition.py",
+        ".local/research/axel-f/winjammer-axelf.mid",
+        "config/scores/axel-f-import.json",
+        "--output",
+        "{out}/score",
+        "--arrangement",
+        "songs/axel-f/full-reduction.json",
+        "--candidate",
+        "songs/axel-f/full-master-palette.json",
+        "--reference",
+        "songs/axel-f/full-master-palette.json"
+      ],
+      "inputs": [
+        ".local/research/axel-f/winjammer-axelf.mid",
+        "config/scores/axel-f-import.json",
+        "scripts/prepare-score-audition.py",
+        "scripts/score_tools.py",
+        "songs/axel-f/full-reduction.json",
+        "songs/axel-f/full-master-palette.json",
+        ".tools/arrangement-deps/mido"
+      ],
+      "outputs": [
+        "score/common-score.json",
+        "score/score.json",
+        "score/candidate.json",
+        "score/reference.json",
+        "score/adaptation.json",
+        "score/source.mid",
+        "score/import-recipe.json",
+        "score/full-common-score.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/arrangement-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "trial",
+      "command": [
+        "{python}",
+        "scripts/studies/axel-f/prepare-full-rhythm.py",
+        "prepare",
+        "{stage:prepare}/score/full-common-score.json",
+        "{stage:prepare}/score/score.json",
+        "songs/axel-f/full-master-palette.json",
+        "songs/axel-f/rhythm-trial.json",
+        "songs/axel-f/rhythm-middle.json",
+        "songs/axel-f/full-rhythm.json",
+        "--output",
+        "{out}/trial"
+      ],
+      "inputs": [
+        "scripts/studies/axel-f/prepare-full-rhythm.py",
+        "scripts/studies/axel-f/prepare-rhythm-trial.py",
+        "scripts/studies/axel-f/prepare-rhythm-balance.py",
+        "scripts/studies/axel-f/prepare-kick-trial.py",
+        "scripts/audio_comparison.py",
+        "{stage:prepare}/score/full-common-score.json",
+        "{stage:prepare}/score/score.json",
+        "songs/axel-f/full-master-palette.json",
+        "songs/axel-f/rhythm-trial.json",
+        "songs/axel-f/rhythm-middle.json",
+        "songs/axel-f/full-rhythm.json"
+      ],
+      "outputs": [
+        "trial/baseline-score.json",
+        "trial/candidate-score.json",
+        "trial/reference.json",
+        "trial/candidate.json",
+        "trial/adaptation.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference",
+      "command": [
+        "{python}",
+        "-c",
+        "import hashlib,json,pathlib,shutil,sys\nbaseline,output=map(pathlib.Path,sys.argv[1:])\nnames=(('native-song.wav','native-song.wav'),('native-song.frames.json','native-song.frames.json'),('native-song.writes.json','native-song.writes.json'),('conversion.json','conversion.json'),('verification.json','verification.json'),('export/candidate.sid','export/reference.sid'))\nerrors=[];selected=None\nfor receipt_name in ('completed-run.json','run.json'):\n    try:\n        receipt_path=baseline/receipt_name\n        receipt=json.loads(receipt_path.read_text())\n        if receipt['status']!='completed':raise ValueError('receipt is not completed')\n        stages=[item for item in receipt['stages'] if item['id']=='candidate' and item['status'] in ('completed','reused')]\n        if len(stages)!=1:raise ValueError('expected one successful candidate stage')\n        stage=stages[0]\n        source=baseline/'cache'/'candidate'/stage['cacheKey']/pathlib.Path(stage['attemptDirectory']).name/'song'\n        if not source.resolve().is_relative_to((baseline/'cache'/'candidate').resolve()):raise ValueError('candidate artifact path leaves the baseline cache')\n        artifacts=[]\n        for name,destination in names:\n            path=source/name\n            matches=[item for item in receipt['artifacts'] if item['stageId']=='candidate' and item['relativePath']=='song/'+name]\n            if len(matches)!=1 or path.is_symlink() or hashlib.sha256(path.read_bytes()).hexdigest()!=matches[0]['sha256']:raise ValueError('artifact differs from receipt: '+name)\n            artifacts.append((path,destination,matches[0]['sha256']))\n        if artifacts[0][2]!='e5698fc525b4f884ffe4b8fdab26e929e585a4c199c0baa82dd0d59866b13154':raise ValueError('receipt does not describe the frozen tonal full WAV')\n        verification=json.loads((source/'verification.json').read_text())\n        if verification['pcm']['sha256']!=artifacts[0][2] or verification['audit']['sourceSha256']!=artifacts[-1][2]:raise ValueError('Baseline full-render verification does not bind this WAV and SID')\n        sidecar=source/'native-song.wav.registers.tsv'\n        if sidecar.is_symlink() or not sidecar.is_file():raise ValueError('Baseline full-render snapshot sidecar is missing')\n        artifacts.append((sidecar,'native-song.wav.registers.tsv',hashlib.sha256(sidecar.read_bytes()).hexdigest()))\n        selected=(receipt_name,receipt_path,receipt,artifacts);break\n    except (OSError,ValueError,KeyError,TypeError) as error:errors.append(receipt_name+': '+str(error))\nif selected is None:raise ValueError('No intact completed baseline receipt: '+str(errors)+'. Restore its declared inputs, then run python3 scripts/listening-package.py config/listening/axel-f-full-master-palette.json --output build/axel-f-full-master-palette')\nreceipt_name,receipt_path,receipt,artifacts=selected\noutput.mkdir();reports=[]\nfor source,destination,digest in artifacts:\n    target=output/destination;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target)\n    if hashlib.sha256(target.read_bytes()).hexdigest()!=digest:raise ValueError('Copied baseline artifact differs: '+destination)\n    reports.append(dict(sourcePath=str(source),destination=destination,sha256=digest))\nshutil.copyfile(receipt_path,output/'reference-input-receipt.json')\n(output/'reference-reuse.json').write_text(json.dumps(dict(schemaVersion=1,sourceReceipt=str(receipt_path),selectedReceiptName=receipt_name,sourceReceiptSha256=hashlib.sha256(receipt_path.read_bytes()).hexdigest(),files=reports,earlierReceiptFailures=errors,freshBaselineRender=False,fullRenderSnapshotSidecarPinnedAtImport=True,fullRenderSnapshotSidecarOriginallyDeclaredInReceipt=False,scope='Receipt-driven reuse. Candidate cache key and attempt directory come from the completed receipt, so a regenerated baseline needs no hardcoded UUID. The whole baseline directory is a declared input, including every source artifact.'),indent=2)+chr(10))\n",
+        "build/axel-f-full-master-palette",
+        "{out}/song"
+      ],
+      "inputs": [
+        "build/axel-f-full-master-palette"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/native-song.frames.json",
+        "song/native-song.writes.json",
+        "song/conversion.json",
+        "song/verification.json",
+        "song/export/reference.sid",
+        "song/reference-input-receipt.json",
+        "song/reference-reuse.json",
+        "song/native-song.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "candidate",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:trial}/trial/candidate.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "16.1",
+        "--excerpt-start",
+        "32.27",
+        "--audit-timeout-seconds",
+        "300"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:trial}/trial/candidate.json",
+        "{stage:trial}/trial/candidate-score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/candidate.sid",
+        "song/export/candidate.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/candidate.swm",
+        "song/native-song.excerpt.wav",
+        "song/native-song.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 360,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:candidate}/song/export/candidate.prg",
+        "{stage:candidate}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:candidate}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "3",
+        "808",
+        "810",
+        "1618",
+        "2439",
+        "2440",
+        "3218",
+        "3235",
+        "3237",
+        "3943",
+        "4348",
+        "5156",
+        "5157",
+        "8900",
+        "9000",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:candidate}/song/export/candidate.prg",
+        "{stage:candidate}/song/native-song.writes.json",
+        "{stage:candidate}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "baseline-harmony",
+      "command": [
+        "{python}",
+        "-c",
+        "import json,pathlib,subprocess,sys\nverification,renderer,sid,output=map(pathlib.Path,sys.argv[1:])\nseconds=json.loads(verification.read_text())['pcm']['durationSeconds']\nsubprocess.run([str(renderer),str(sid),str(output),str(seconds),'--voices','2','--clock','pal'],check=True,timeout=60)\n",
+        "{stage:reference}/song/verification.json",
+        ".local/bin/render-sid",
+        "{stage:reference}/song/export/reference.sid",
+        "{out}/harmony-only.wav"
+      ],
+      "inputs": [
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "{stage:reference}/song/verification.json",
+        "{stage:reference}/song/export/reference.sid"
+      ],
+      "outputs": [
+        "harmony-only.wav",
+        "harmony-only.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 75
+    },
+    {
+      "id": "candidate-harmony",
+      "command": [
+        "{python}",
+        "-c",
+        "import json,pathlib,subprocess,sys\nverification,renderer,sid,output=map(pathlib.Path,sys.argv[1:])\nseconds=json.loads(verification.read_text())['pcm']['durationSeconds']\nsubprocess.run([str(renderer),str(sid),str(output),str(seconds),'--voices','2','--clock','pal'],check=True,timeout=60)\n",
+        "{stage:candidate}/song/verification.json",
+        ".local/bin/render-sid",
+        "{stage:candidate}/song/export/candidate.sid",
+        "{out}/harmony-only.wav"
+      ],
+      "inputs": [
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "{stage:candidate}/song/verification.json",
+        "{stage:candidate}/song/export/candidate.sid"
+      ],
+      "outputs": [
+        "harmony-only.wav",
+        "harmony-only.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 75
+    },
+    {
+      "id": "mechanism",
+      "command": [
+        "{python}",
+        "scripts/studies/axel-f/prepare-full-rhythm.py",
+        "verify",
+        "{stage:reference}/song",
+        "{stage:candidate}/song",
+        "{stage:trial}/trial/adaptation.json",
+        "songs/axel-f/full-rhythm.json",
+        "--baseline-harmony-wav",
+        "{stage:baseline-harmony}/harmony-only.wav",
+        "--candidate-harmony-wav",
+        "{stage:candidate-harmony}/harmony-only.wav",
+        "--output",
+        "{out}/full-rhythm-verification.json"
+      ],
+      "inputs": [
+        "scripts/studies/axel-f/prepare-full-rhythm.py",
+        "scripts/studies/axel-f/prepare-rhythm-trial.py",
+        "scripts/studies/axel-f/prepare-rhythm-balance.py",
+        "scripts/studies/axel-f/prepare-kick-trial.py",
+        "scripts/audio_comparison.py",
+        "songs/axel-f/full-rhythm.json",
+        "{stage:trial}/trial/adaptation.json",
+        "{stage:baseline-harmony}/harmony-only.wav",
+        "{stage:candidate-harmony}/harmony-only.wav",
+        "{stage:reference}/song/conversion.json",
+        "{stage:reference}/song/native-song.frames.json",
+        "{stage:reference}/song/native-song.writes.json",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/conversion.json",
+        "{stage:candidate}/song/native-song.frames.json",
+        "{stage:candidate}/song/native-song.writes.json",
+        "{stage:candidate}/song/native-song.wav",
+        "{stage:reference}/song/native-song.wav.registers.tsv",
+        "{stage:candidate}/song/native-song.wav.registers.tsv",
+        "{stage:baseline-harmony}/harmony-only.wav.registers.tsv",
+        "{stage:candidate-harmony}/harmony-only.wav.registers.tsv"
+      ],
+      "outputs": [
+        "full-rhythm-verification.json"
+      ],
+      "timeoutSeconds": 60,
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "pre-stop-release",
+      "command": [
+        "{python}",
+        "-c",
+        "import hashlib,json,math,pathlib,sys\nfrom audio_comparison import Pcm16,measure_pcm,read_pcm16\ndef require(condition,message):\n    if not condition: raise ValueError(message)\nreports=[]\nfor label,manifest_path,wav_path in zip(('reference','candidate'),sys.argv[1:3],sys.argv[3:5]):\n    manifest_bytes=pathlib.Path(manifest_path).read_bytes()\n    manifest=json.loads(manifest_bytes)\n    stop_tick,rate=manifest['stopTick'],manifest['ticksPerSecond']\n    require(type(stop_tick) is int and stop_tick>0 and type(rate) in (int,float) and math.isfinite(rate) and rate>0 and manifest['stopVolumeClearTick']==stop_tick,'Invalid native stop/volume-clear timing')\n    stop=stop_tick/rate\n    audio=read_pcm16(wav_path)\n    first,last=(round((stop-offset)*audio.sample_rate) for offset in (0.5,0.1))\n    require(audio.channels==manifest['sidCount'] and 0<=first<last<=audio.frames and last/audio.sample_rate<stop,'Pre-stop release window must fit the declared audio before volume clear')\n    samples=audio.samples[first*audio.channels:last*audio.channels]\n    metrics=measure_pcm(Pcm16(audio.sample_rate,audio.channels,last-first,samples,''))\n    require(all(channel['acRms']<=16 for channel in metrics['perChannel']),label+' release exceeds 16 PCM16 AC RMS before volume clear')\n    if sys.byteorder!='little': samples.byteswap()\n    reports.append(dict(label=label,manifestSha256=hashlib.sha256(manifest_bytes).hexdigest(),audioSha256=audio.sha256,stopTick=stop_tick,stopVolumeClearTick=manifest['stopVolumeClearTick'],ticksPerSecond=rate,stopSeconds=stop,requestedWindowSeconds=[stop-0.5,stop-0.1],window=dict(startFrame=first,endFrame=last,startSeconds=first/audio.sample_rate,endSeconds=last/audio.sample_rate,pcm16LeSha256=hashlib.sha256(samples.tobytes()).hexdigest(),metrics=metrics)))\npathlib.Path(sys.argv[5]).write_text(json.dumps(dict(schemaVersion=1,maxPerChannelAcRms=16,scope='Rendered decay must settle in the declared window before native volume clear; musical ending acceptance remains open.',renders=reports),indent=2)+chr(10))\n",
+        "{stage:reference}/song/conversion.json",
+        "{stage:candidate}/song/conversion.json",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "{out}/pre-stop-release.json"
+      ],
+      "inputs": [
+        "scripts/audio_comparison.py",
+        "{stage:reference}/song/conversion.json",
+        "{stage:candidate}/song/conversion.json",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav"
+      ],
+      "outputs": [
+        "pre-stop-release.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "comparisons",
+      "command": [
+        "{python}",
+        "-c",
+        "import json,pathlib,sys\nfrom audio_comparison import prepare_window_comparison\nreference,candidate,verification,mechanism,output=map(pathlib.Path,sys.argv[1:])\nverified=json.loads(verification.read_text());end=verified['pcm']['durationSeconds'];rate=verified['audit']['callRateHz'];reports=[]\nboundaries=json.loads(mechanism.read_text())['boundaries']\nentry_time=boundaries[1]['firstNoiseTick']/rate;exit_time=boundaries[0]['incomingTonalTestTick']/rate\nfor label,start,finish in (('main-hook-without-then-with-maracas',32.27,48.404432),('tonal-to-maracas-before-then-after',entry_time-0.75,entry_time+1.75),('maracas-to-tonal-before-then-after',exit_time-0.95,exit_time+1.05),('ending-before-then-after',172,end)):\n    report=prepare_window_comparison(reference,candidate,output/label,start_seconds=start,end_seconds=finish)\n    reports.append(dict(label=label,window=report['window'],sha256=report['comparison']['sha256'],inputGainDb=[item['gainDb'] for item in report['inputs']],scope='Contextual full-mix comparison at common unity gain; separate-export PCM changes can include tonal phase changes from added player work.'))\n(output/'comparisons.json').write_text(json.dumps(dict(schemaVersion=1,order=['tonal full baseline','same full arrangement with source AD13 maracas'],comparisons=reports),indent=2)+chr(10))\n",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "{stage:candidate}/song/verification.json",
+        "{stage:mechanism}/full-rhythm-verification.json",
+        "{out}"
+      ],
+      "inputs": [
+        "scripts/audio_comparison.py",
+        "{stage:reference}/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "{stage:candidate}/song/verification.json",
+        "{stage:mechanism}/full-rhythm-verification.json"
+      ],
+      "outputs": [
+        "main-hook-without-then-with-maracas.ab.wav",
+        "main-hook-without-then-with-maracas.comparison.json",
+        "tonal-to-maracas-before-then-after.ab.wav",
+        "tonal-to-maracas-before-then-after.comparison.json",
+        "maracas-to-tonal-before-then-after.ab.wav",
+        "maracas-to-tonal-before-then-after.comparison.json",
+        "ending-before-then-after.ab.wav",
+        "ending-before-then-after.comparison.json",
+        "comparisons.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "reference": "{stage:reference}/song/native-song.wav",
+    "candidate": "{stage:candidate}/song/native-song.wav",
+    "main-hook": "{stage:comparisons}/main-hook-without-then-with-maracas.ab.wav",
+    "transition-entry": "{stage:comparisons}/tonal-to-maracas-before-then-after.ab.wav",
+    "transition-exit": "{stage:comparisons}/maracas-to-tonal-before-then-after.ab.wav",
+    "ending": "{stage:comparisons}/ending-before-then-after.ab.wav",
+    "verification": "{stage:candidate}/song/verification.json",
+    "vice": "{stage:vice}/vice/verification.json",
+    "mechanism": "{stage:mechanism}/full-rhythm-verification.json",
+    "adaptation": "{stage:trial}/trial/adaptation.json",
+    "pre-stop-release": "{stage:pre-stop-release}/pre-stop-release.json",
+    "comparisons": "{stage:comparisons}/comparisons.json",
+    "reference-reuse": "{stage:reference}/song/reference-reuse.json",
+    "baseline-harmony-diagnostic": "{stage:baseline-harmony}/harmony-only.wav",
+    "candidate-harmony-diagnostic": "{stage:candidate-harmony}/harmony-only.wav",
+    "candidate-sid": "{stage:candidate}/song/export/candidate.sid",
+    "candidate-prg": "{stage:candidate}/song/export/candidate.prg",
+    "candidate-native": "{stage:candidate}/song/conversion/candidate.swm"
+  }
+}

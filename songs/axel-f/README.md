@@ -112,6 +112,23 @@ The [integrated preferred timbres](arrangement-review.md#integrated-preferred-ti
 
 The separate [source-maracas audition](arrangement-review.md#next-rhythm-audition-source-maracas) tests rhythmic movement between bass notes. Its muted/full pair is `build/axel-f-rhythm-trial-listening/without-then-with-maracas.ab.wav`; the listener likes its rhythmic touch but finds it too loud. It is not in the selected full render.
 
-The [quieter native maracas](arrangement-review.md#quieter-native-maracas) comparison is `build/axel-f-rhythm-balanced-listening/previous-then-quieter.ab.wav`. The [targeted master study](huelsbeck-study.md#targeted-role-study-lead-support-and-the-apparent-switch) follows the three source moments the listener identified and informs the separate [lead/support palette trial](arrangement-review.md#master-informed-ensemble-audition). The first quieter maracas is rejected as barely audible; the [intermediate balance](arrangement-review.md#intermediate-maracas-balance) is accepted as retaining the nice rhythmic touch without excess prominence. The level-matched lead/support pairing is strongly accepted as “just the right choice of instruments”; its full-arrangement extension is next, with the preferred high-lead role retained.
+The [quieter native maracas](arrangement-review.md#quieter-native-maracas) comparison is `build/axel-f-rhythm-balanced-listening/previous-then-quieter.ab.wav`. The [targeted master study](huelsbeck-study.md#targeted-role-study-lead-support-and-the-apparent-switch) follows the three source moments the listener identified and informs the separate [lead/support palette trial](arrangement-review.md#master-informed-ensemble-audition). The first quieter maracas is rejected as barely audible; the [intermediate balance](arrangement-review.md#intermediate-maracas-balance) is accepted as retaining the nice rhythmic touch without excess prominence. The level-matched lead/support pairing is strongly accepted as “just the right choice of instruments”; its full-arrangement extension preserves the preferred high-lead role.
 
-The [complete accepted-pairing extension](arrangement-review.md#accepted-pairing-across-the-complete-tonal-arrangement) is ready as `build/axel-f-full-master-palette-listening/axel-f-full-master-palette.wav` (179.635 seconds), with the previous full version and contextual comparisons in the same folder. It preserves the separate held-support and high-lead programs; maracas are not yet combined with it. Full-form acceptance is pending.
+The [complete accepted-pairing extension](arrangement-review.md#accepted-pairing-across-the-complete-tonal-arrangement) is ready as `build/axel-f-full-master-palette-listening/axel-f-full-master-palette.wav` (179.635 seconds), with the previous full version and contextual comparisons in the same folder. It preserves the separate held-support and high-lead programs; maracas are not yet combined with it. The listener responds “Nice. what next?”; the final source-maracas integration is now available below, with a combined full-version verdict still required.
+
+## Combined full palette and maracas audition
+
+The [full-rhythm recipe and verification contract](arrangement-review.md#full-rhythm-verification-contract) combine the liked full palette with accepted AD13 maracas in four vacant harmony sections. All 1,025 tonal notes remain. The [aggregate review](full-rhythm-review.json) retains export/audio fingerprints and the known limitation: 186 source/native attacks produce 185 nonzero diagnostic windows, with one silent window at arranged beat 168. The full musical result awaits feedback.
+
+Generated local files under `build/axel-f-full-rhythm-listening/`:
+
+| File | Listen for |
+| --- | --- |
+| `main-hook-without-then-with-maracas.ab.wav` | 32.8 seconds: previous palette first, same passage plus maracas second, common unity gain. |
+| `axel-f-full-rhythm.wav` | Complete combined version, 179.635 seconds. |
+| `tonal-full-reference.wav` | Exact prior complete version without maracas. |
+| `tonal-to-maracas-before-then-after.ab.wav` | Preserved tonal release before the second percussion entry. |
+| `maracas-to-tonal-before-then-after.ab.wav` | First actual return to tonal harmony. |
+| `ending-before-then-after.ab.wav` | Previous ending first, combined ending second. |
+
+Start with the hook pair, then assess the complete version’s transitions, balance and ending. Freeze the final selection and retire superseded working caches after that verdict; keep these listening files available.
