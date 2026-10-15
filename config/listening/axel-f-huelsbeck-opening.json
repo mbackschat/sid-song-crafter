@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "render",
+      "command": [
+        ".local/bin/render-sid",
+        ".local/research/axel-f/huelsbeck-original.sid",
+        "{out}/huelsbeck-60s.wav",
+        "60",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        ".local/research/axel-f/huelsbeck-original.sid",
+        "scripts/render-sid.cpp",
+        ".local/bin/render-sid",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "huelsbeck-60s.wav",
+        "huelsbeck-60s.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 30
+    }
+  ],
+  "deliverables": {
+    "reference": "{stage:render}/huelsbeck-60s.wav",
+    "snapshots": "{stage:render}/huelsbeck-60s.wav.registers.tsv"
+  }
+}

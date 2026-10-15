@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "87e0a1e8ad618a497e54fc5d4228dee7be53ef6365a30900debcdafbcd21251b",
+  "sourceClock": "PAL",
+  "sourceModel": "declared MOS6581",
+  "calls": 1600,
+  "renderSeconds": 60,
+  "question": "Which opening arrangement mechanisms add character beyond the studied lead PWM, and is a source-backed percussion role feasible without losing the current bass or hook?",
+  "sourceRoles": [
+    {
+      "physicalVoice": 3,
+      "role": "independent percussion",
+      "firstCallableTick": 7,
+      "firstRendererSeconds": 0.146,
+      "boundedOnsets": 128,
+      "boundedOnsetWriterPc": "C8CF",
+      "programs": [
+        {
+          "adsr": "2050",
+          "onsets": 65,
+          "observedStages": "noise 81 followed by falling-frequency triangle11; no stable tuned bass body established"
+        },
+        {
+          "adsr": "2020",
+          "onsets": 38,
+          "observedStages": "short noise81 followed by waveform-off01"
+        },
+        {
+          "adsr": "2090",
+          "onsets": 25,
+          "observedStages": "longer noise81 with descending frequency"
+        }
+      ]
+    },
+    {
+      "physicalVoice": 2,
+      "role": "hook / tonal lead",
+      "firstCallableTick": 519,
+      "firstRendererSeconds": 9.461,
+      "adsr": "0A49",
+      "boundedOnsets": 49,
+      "control": "41/40",
+      "note": "Gate/release gaps and long phrase rests remain distinct from PWM. Source lead enters after percussion."
+    },
+    {
+      "physicalVoice": 1,
+      "role": "low pulse bass after staged entrance",
+      "firstCallableTick": 1543,
+      "firstRendererSeconds": 28.091,
+      "adsr": "0999",
+      "observedGatedMidiRange60s": [
+        29,
+        45
+      ],
+      "observedPulseWidthRange60s": [
+        1280,
+        2464
+      ],
+      "note": "No chord-support role was established within this bounded 60-second opening."
+    }
+  ],
+  "filterAndVolume": "Renderer snapshots after startup retain D41708 and D4180F throughout 60s: external-input route bit only, no oscillator filter route, constant master volume. Renderer sampling is not an ordered bus-write census.",
+  "currentReduction": {
+    "drums": "all omitted, including fills and final tail",
+    "leadRoleConflation": "hook, held-chord highest tone and later high-lead all select the foreground lead patch",
+    "freeHarmonyWindowsArrangedBeats": [
+      [
+        32,
+        96
+      ],
+      [
+        128,
+        204
+      ],
+      [
+        316,
+        349.3125
+      ]
+    ],
+    "highLeadWindowArrangedBeats": [
+      236,
+      276
+    ],
+    "highLeadConstraint": "All three current tonal roles are active; adding independent percussion requires a declared role tradeoff, time-sharing or another chip."
+  },
+  "recommendedBoundedTest": "Existing unchanged KICKFALL on currently idle harmony voice for arranged beats64–96, triggered only by source MIDI36 onsets, with explicit duration adaptation to0.18s capped at next source kick/window end. Keep immediate bass and lead intact. This tests a percussion accent/body role, not recovered full drums or a new independent onset rhythm.",
+  "kickOpportunity": {
+    "scoreSecondsPerBeat": 0.504201,
+    "windowArrangedBeats": [
+      64,
+      96
+    ],
+    "windowSeconds": [
+      32.268864,
+      48.403296
+    ],
+    "kickSourceMidi": 36,
+    "sourceKickOnsets": 48,
+    "nativeHarmonyOriginalEvents": 0,
+    "sourceNoteDurationSeconds": [
+      0.0315125625
+    ],
+    "interOnsetGapsIncludingWindowEndSeconds": {
+      "0.12605025": 8,
+      "0.2521005": 28,
+      "0.37815075": 4,
+      "0.504201": 4,
+      "1.13445225": 4
+    },
+    "minimumGapSeconds": 0.12605025,
+    "maximumGapSeconds": 1.13445225,
+    "extendedToSeconds": 0.18,
+    "durationCappedByNextOnsetCount": 8,
+    "durationCappedByWindowEndCount": 0,
+    "gapBelowSevenGatedFramesCount": 8,
+    "gapBelowTestPlusSevenGatedFramesCount": 8,
+    "kickOnsetsWithExactBassOnset": 48,
+    "kickOnsetsWithoutExactBassOnset": 0,
+    "scope": "Source rational timing and planned cap arithmetic; native rounding, TEST/body and actual program interruption require the executed candidate schedule and writes."
+  },
+  "musicalInference": "The reference supplies contrasting percussion programs, separate bass/lead envelope identities, staged entrances and phrase space. These explain available arrangement mechanisms, not why the listener prefers the complete reference. No new musical-acceptance judgment is made.",
+  "rejectedShortcut": "BASS02 inserts a transient at each bass onset and delays its pitched body, so it cannot preserve independent drum/bass envelopes or reproduce the reference percussion distribution. Prior little/no perceived difference and rejected Bach percussion remain scoped evidence, not a universal prohibition.",
+  "evidence": [
+    {
+      "path": "build/axel-f-huelsbeck-verification/cache/study/98cd488cbe5142b7f21a006c46c1b6716c90efd2b198bcc5880649404c8a0446/attempt-3c92240ba456466ea099c7cf920c93fe/study/original/writes.json.gz",
+      "sha256": "73f9c18add45a0c982880e2114a1277da29d8c9146afb6a3797c5c478cbc0e02"
+    },
+    {
+      "path": "build/axel-f-huelsbeck-verification/cache/study/98cd488cbe5142b7f21a006c46c1b6716c90efd2b198bcc5880649404c8a0446/attempt-3c92240ba456466ea099c7cf920c93fe/study/original/snapshots.json.gz",
+      "sha256": "ac367ca074a9ebce135bc11f12834d8b0b56b4b4ce08b01ab6381b247921aced"
+    },
+    {
+      "path": "build/axel-f-arrangement-diagnosis/source60-recipe.json",
+      "sha256": "c96ddf1cdd032019d7358ce5128e91d78ea175cdf4e61091580670a43da83776"
+    },
+    {
+      "path": "build/axel-f-arrangement-diagnosis/source60/run.json",
+      "sha256": "ae21a8fc9e821948ee3b008efa66661b4256156c59d2cdbf245d92ff926d01be"
+    },
+    {
+      "path": "build/axel-f-arrangement-diagnosis/source60/cache/render/278c466d50a96d54e9046b6dd1a692678f220c9dfdf05625319911fddde185c8/attempt-fb429ebd85134e1cb3f0d8a8702d484d/huelsbeck-60s.wav",
+      "sha256": "8b178b2cc7264af27703af21fe69af465ae8af9336cd55d0c3935e9b9019110e"
+    },
+    {
+      "path": "build/axel-f-arrangement-diagnosis/source60/cache/render/278c466d50a96d54e9046b6dd1a692678f220c9dfdf05625319911fddde185c8/attempt-fb429ebd85134e1cb3f0d8a8702d484d/huelsbeck-60s.wav.registers.tsv",
+      "sha256": "18137f636803264b88364367b8434e427f1907a6f0c95aa50aa7dbf13090229d"
+    }
+  ],
+  "limits": "Ordered callable evidence remains the original1600-call controlled host. Additional60s data are renderer-iteration snapshots only, not new CPU/VICE execution proof, full song decoding or a complete source score. Source and current score differ in key, tempo, form, model and arrangement; this is design evidence, not a same-score audio comparison.",
+  "reproduction": {
+    "sourceStudy": "python3 scripts/listening-package.py config/listening/axel-f-huelsbeck-study.json --output build/axel-f-huelsbeck-verification",
+    "openingRender": "python3 scripts/listening-package.py config/listening/axel-f-huelsbeck-opening.json --output build/axel-f-huelsbeck-opening",
+    "scope": "The source study pins the SID and captures ordered writes/states; the additional opening render supplies iteration snapshots only."
+  }
+}

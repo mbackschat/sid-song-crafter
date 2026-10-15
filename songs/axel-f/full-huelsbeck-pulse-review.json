@@ -1,8 +1,28 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-15",
-  "scope": "Complete sourced tonal interpretation with the pulse table accepted in the 0–16.1-second hook comparison. First four silent source beats trimmed; source drums, second bass, noise sweeps and pitch bends remain omitted, including the percussion-only ending. Full-version listening remains pending.",
-  "listeningVerdict": null,
+  "scope": "Complete sourced tonal interpretation with the pulse table accepted in the 0–16.1-second hook comparison. First four silent source beats trimmed; source drums, second bass, noise sweeps and pitch bends remain omitted, including the percussion-only ending. Full-version listening requires revision: held support, high-register lead and overall musical development criticized.",
+  "listeningVerdict": {
+    "date": "2026-10-15",
+    "status": "revision-required",
+    "feedback": [
+      {
+        "windowSeconds": [
+          64.6,
+          68.8
+        ],
+        "quote": "there is a annoying persistent background sound, keeping the same pitch (as I hear it)."
+      },
+      {
+        "windowSeconds": [
+          120,
+          140
+        ],
+        "quote": "And the lead instrument in 2:00s to 2:20s is also very annoying. Overall the song interpretation is also boring, compared to Hülsbeck."
+      }
+    ],
+    "scope": "Full arrangement is not accepted; positive narrow-pulse hook verdict remains scoped to that excerpt."
+  },
   "acceptedHookVerdict": {
     "date": "2026-10-15",
     "feedback": "Yes: second lead have a more appealing character while keeping the melody clear",
@@ -156,8 +176,8 @@
   "verificationScope": "Complete projected note schedule and post-call register isolation; sampled standalone VICE registers/cadence; unclipped full PCM and zero AC RMS before volume clear. Not continuous VICE/bus-timing equivalence, source-driver reconstruction, hardware equivalence or full musical acceptance.",
   "modelAssistanceReview": {
     "checkpoint": "Accepted hook pulse carried into the complete tonal arrangement",
-    "decision": "No model call: the accepted same-score hook selects the pulse table, while full-form character, balance and ending still need scoped human listening. Existing calibration does not qualify model preference for this decision.",
-    "nextCheckpoint": "Complete-version and ending listening verdict or substantive revision"
+    "decision": "No model call: human reports specific irritating roles and an unengaging arrangement; models are not calibrated to choose their musical replacement. Inspect source-role mapping and executed gates, then compare a bounded rearrangement.",
+    "nextCheckpoint": "Role-sensitive arrangement audition"
   },
   "runReceipt": {
     "path": "build/axel-f-full-huelsbeck-pulse/first-run.json",

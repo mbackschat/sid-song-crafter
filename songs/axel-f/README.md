@@ -69,7 +69,7 @@ The comparison is 32.7 seconds: previous hook first, longer-release hook second.
 
 A reporting limitation exposed by this diagnosis: the converter field `sourceGateOffTick` already includes its early-release policy; it is not the original MIDI note-off. Likewise, zero `timingChanges` does not establish source-length gated sound, and the 45 articulation entries above do not enumerate all standard gate insets. Read the source endpoint, executed GATE and envelope separately. Clarifying that generic report is a separate workflow improvement; it is not silently folded into this timbre trial.
 
-## Complete tonal interpretation ready for review
+## Complete tonal baseline
 
 The [full reduction](full-reduction.json), [native palette](full-native.json) and [plain reference](full-plain.json) now cover source beats 4–353.3125, trimming only four initial silent beats. The preferred smoother lead is unchanged. Source theme, held/descent and later high-lead parts share voice 1 in their respective sections; chord stabs, marimba-like material and brass share voice 2; main bass retains voice 3 and sole filter ownership. The marimba region uses the existing soft triangle pluck to distinguish its lighter role from the bright foreground stabs.
 
@@ -87,11 +87,11 @@ Generated files are `axel-f-full.wav` and `plain-reference-full.wav` (179.635 se
 
 Both exports use 85 native patterns and pass all 1,025 projected notes across 9,006 CPU calls. Candidate VICE checkpoints extend through call 9,000, after volume clear at 8,953; this is sampled register/cadence agreement, not continuous VICE equivalence. Both rendered decays settle to zero AC RMS before volume clear, in the 178.115–178.515 second window. All full WAVs are unclipped with quiet tails. The [review record](full-listening-review.json) pins the files and separates this verification from pending musical acceptance. The initial seven-stage run took 112.68 seconds; source research, review and the small shared reduction extension are additional effort, not included in that execution figure.
 
-The user's subsequently selected TGI interpretation is a separate lead and drum-balance reference, not the note source. Its [bounded comparison and Hülsbeck original](tgi-reference.md) retain attribution, local paths and the distinction between volume-path samples and oscillator percussion. The user selects Hülsbeck’s original for the [active master study](tgi-reference.md#active-master-study) and calls it “really great”. Complete-song feedback on our tonal version remains pending while the [executed lead study](huelsbeck-study.md) informs a bounded pulse revision. Models remain experimental and were not used to infer musical acceptance.
+The user's subsequently selected TGI interpretation is a separate lead and drum-balance reference, not the note source. Its [bounded comparison and Hülsbeck original](tgi-reference.md) retain attribution, local paths and the distinction between volume-path samples and oscillator percussion. The user selects Hülsbeck’s original for the [active master study](tgi-reference.md#active-master-study) and calls it “really great”. The subsequent [executed lead study](huelsbeck-study.md) informed the pulse revision below; its complete-song feedback now requires further arrangement work. Models remain experimental and were not used to infer musical acceptance.
 
 ## Selected Hülsbeck-informed pulse lead
 
-The [executed master study](huelsbeck-study.md) led to a pulse-only comparison on the same sourced phrase. The listener prefers the narrower lead while retaining melody clarity. The [complete candidate](full-huelsbeck-pulse.json) applies that same pulse program throughout the existing tonal reduction; all other instruments and score choices remain unchanged. The [full review record](full-huelsbeck-pulse-review.json) retains the accepted excerpt verdict separately from pending full-song feedback.
+The [executed master study](huelsbeck-study.md) led to a pulse-only comparison on the same sourced phrase. The listener prefers the narrower lead while retaining melody clarity. The [complete candidate](full-huelsbeck-pulse.json) applies that same pulse program throughout the existing tonal reduction; all other instruments and score choices remain unchanged. The [full review record](full-huelsbeck-pulse-review.json) retains the accepted excerpt verdict separately from the full-song objections below.
 
 ```sh
 python3 scripts/listening-package.py config/listening/axel-f-full-huelsbeck-pulse.json --output build/axel-f-full-huelsbeck-pulse
@@ -101,3 +101,9 @@ python3 scripts/publish-listening.py build/axel-f-full-huelsbeck-pulse/run.json 
 The prepared folder `build/axel-f-full-huelsbeck-pulse-listening/` contains `narrow-pulse-full.wav` and the exact prior baseline `previous-full.wav` (179.635 seconds each). `previous-then-narrow-pulse-phrase.ab.wav` compares seconds 32.27–48.37, and `ending-previous-then-narrow-pulse.ab.wav` compares seconds 162–179; both play the previous version first and use common unity gain. This is still the declared tonal arrangement, including its omitted percussion ending.
 
 Complete checks cover 1,025 notes and 9,006 CPU calls, with standalone VICE checkpoints through call 9,000. All 9,006 post-call register banks match except lead pulse width; both full renders are unclipped and settle before volume clear. The first nine-stage run took 140.03 seconds; this measures execution, not total musical effort. Model review remains no-call because the models are not calibrated for this musical judgment.
+
+## Full-arrangement feedback: role and groove revision
+
+The complete narrow-pulse version is not accepted: the held support around 64.6–68.8 seconds and high lead around 120–140 seconds are annoying, and the interpretation is boring compared with Hülsbeck. The [arrangement review](arrangement-review.md) records the source-role error, executed diagnosis and separate palette/percussion auditions. Preserve the accepted hook while correcting the other roles; do not describe this full version as merely awaiting an initial verdict.
+
+The [current audition table and reproduction commands](arrangement-review.md#verified-listening-packages) cover the two reported passages and a separate source-kick experiment. These revisions are technically verified and awaiting listening feedback; no complete replacement is selected yet.

@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "status": "ready-for-listening",
+  "scope": "Bounded palette revision for the held chord top and high-register lead on the unchanged complete tonal score. This is not a claim to resolve the broader boring-interpretation/groove feedback. Source percussion, second bass, noise sweeps and bass bends remain omitted.",
+  "baselinePalette": "songs/axel-f/full-huelsbeck-pulse.json",
+  "candidatePalette": "songs/axel-f/role-aware.json",
+  "listeningVerdict": {
+    "status": "pending",
+    "scope": "Review the two labelled before/after role comparisons before seeking another complete-song judgment. The narrow-pulse hook preference remains scoped to its previously accepted excerpt."
+  },
+  "changedMelodyAssignments": [
+    {
+      "startBeat": 128,
+      "endBeat": 156,
+      "instrument": "marimba",
+      "program": "Existing PLUCKSOF copied unchanged in baseline; source held chord top retains exact note and duration."
+    },
+    {
+      "startBeat": 236,
+      "endBeat": 252,
+      "instrument": "upper-lead",
+      "program": "Exact ELSOFT from songs/fuer-elise-sidwizard.json; triangle body, ADSR0745, no PWM/vibrato/filter."
+    },
+    {
+      "startBeat": 252,
+      "endBeat": 276,
+      "instrument": "upper-lead",
+      "program": "Same exact ELSOFT; all accompaniment and bass assignments retained."
+    }
+  ],
+  "sourceSha256": "8bf2fa73160461e13ace1609393879e12929ada5241e80f397cd3c0e4dfe429d",
+  "sharedScoreSha256": "888c0e3f69eae5cc1bf45f78e55dffbd3a3bf40716943e03f9cb6878a20f97bd",
+  "recipe": "config/listening/axel-f-role-aware.json",
+  "selection": "config/listening/axel-f-role-aware.audition.json",
+  "modelAssistanceReview": {
+    "status": "no-call",
+    "reason": "Human feedback already identifies the two unwanted roles; available models are not calibrated to decide timbral preference or musical interest. Source and execution guards establish the bounded changes.",
+    "nextCheckpoint": "After human feedback on these two role comparisons or any further musical revision."
+  },
+  "referenceMatchesSubmittedNarrowPulseFullWav": true,
+  "sourceNotes": 5199,
+  "retainedNotes": 1025,
+  "omittedNotes": 4174,
+  "shortenedNotes": 26,
+  "cpuCalls": 9006,
+  "nativePatterns": 85,
+  "noteCounts": [
+    288,
+    259,
+    478
+  ],
+  "viceCalls": [
+    0,
+    1,
+    3,
+    800,
+    3235,
+    3237,
+    3444,
+    3945,
+    5964,
+    5966,
+    6970,
+    7988,
+    8900,
+    9000
+  ],
+  "frameIsolation": {
+    "frames": 9006,
+    "bankBytes": 25,
+    "noteCounts": [
+      288,
+      259,
+      478
+    ],
+    "allSourceAndNativeNoteSchedulesEqual": true,
+    "changedRoleCounts": {
+      "marimba": 1,
+      "upper-lead": 97
+    },
+    "changedFrames": 2732,
+    "changedOffsets": {
+      "5": 2730,
+      "6": 2730,
+      "2": 2576,
+      "3": 1853,
+      "4": 2632,
+      "0": 1293,
+      "1": 386
+    },
+    "affectedNoteAndReleaseWindows": [
+      {
+        "startTick": 3235,
+        "endTickExclusive": 3944,
+        "nextUnaffectedBodyTick": 3944
+      },
+      {
+        "startTick": 5964,
+        "endTickExclusive": 7987,
+        "nextUnaffectedBodyTick": 7987
+      }
+    ],
+    "allOtherVoicesFilterAndVolumeEqual": true,
+    "gateTestAndCouplingScheduleEqual": true,
+    "hookAndOtherActiveLeadStatesEqual": true,
+    "staleUnusedPulseDifferencesOutsideWindows": {},
+    "referenceMatchesPriorFullWav": true,
+    "limitations": "Post-call register isolation; inactive pulse registers can retain different values after triangle sections. Windows include the changed note/release states and the following TEST onset frame, then require restored active lead state. This does not prove PCM identity, hardware behavior or musical improvement."
+  },
+  "pcm": {
+    "reference": {
+      "durationSeconds": 179.6349433106576,
+      "frames": 7921901,
+      "peak": 13166,
+      "clippedSamples": 0,
+      "endingAcRms": 0.0
+    },
+    "candidate": {
+      "durationSeconds": 179.6349433106576,
+      "frames": 7921901,
+      "peak": 12269,
+      "clippedSamples": 0,
+      "endingAcRms": 0.0
+    }
+  },
+  "audioChangeCheck": {
+    "schemaVersion": 1,
+    "referenceSha256": "27cfef0f6487a919881dacd6b697edcab843be866198f7512aeedabc2703ce57",
+    "candidateSha256": "a3b2995ab24c56f5d4cd9ad1df7ecdab6b596cbb6cd0870ef57b8e19cc02932c",
+    "comparisons": [
+      {
+        "label": "held-support",
+        "window": {
+          "startFrame": 2646000,
+          "endFrame": 3175200,
+          "frames": 529200,
+          "startSeconds": 60.0,
+          "endSeconds": 72.0,
+          "durationSeconds": 12.0
+        },
+        "changedSamples": 297932,
+        "totalSamples": 529200,
+        "deltaRms": 1637.2372627032332,
+        "deltaAcRms": 1589.3290655540752,
+        "comparisonSha256": "9c2f7cb3fb791c86bbc3d650ce5b80b07873023ed3fc5d3d948cdbf3f4432843",
+        "inputGains": [
+          1,
+          1
+        ]
+      },
+      {
+        "label": "high-lead",
+        "window": {
+          "startFrame": 5203800,
+          "endFrame": 6262200,
+          "frames": 1058400,
+          "startSeconds": 118.0,
+          "endSeconds": 142.0,
+          "durationSeconds": 24.0
+        },
+        "changedSamples": 976652,
+        "totalSamples": 1058400,
+        "deltaRms": 2461.151993478427,
+        "deltaAcRms": 1950.1701548744434,
+        "comparisonSha256": "5dae8bab30fb1c74a52d6fafe3d619c7e8dff8eb2bcca86f354e47c0805b73a9",
+        "inputGains": [
+          1,
+          1
+        ]
+      }
+    ],
+    "scope": "Confirms nonidentical PCM from the exact submitted unity-gain pair; this does not establish audibility, preference or musical usefulness."
+  },
+  "comparisons": [
+    {
+      "label": "held-support",
+      "windowSeconds": [
+        60.0,
+        72.0
+      ],
+      "order": [
+        "previous narrow-pulse full",
+        "role-aware candidate"
+      ],
+      "inputGains": [
+        1,
+        1
+      ],
+      "gapSeconds": 0.5,
+      "path": "build/axel-f-role-aware-listening/held-support-before-then-after.ab.wav",
+      "sha256": "9c2f7cb3fb791c86bbc3d650ce5b80b07873023ed3fc5d3d948cdbf3f4432843",
+      "judgment": "Does the second half improve the held support role without the persistent foreground tone?"
+    },
+    {
+      "label": "high-lead",
+      "windowSeconds": [
+        118.0,
+        142.0
+      ],
+      "order": [
+        "previous narrow-pulse full",
+        "role-aware candidate"
+      ],
+      "inputGains": [
+        1,
+        1
+      ],
+      "gapSeconds": 0.5,
+      "path": "build/axel-f-role-aware-listening/high-lead-before-then-after.ab.wav",
+      "sha256": "5dae8bab30fb1c74a52d6fafe3d619c7e8dff8eb2bcca86f354e47c0805b73a9",
+      "judgment": "Does the second half keep the high melody clear without the annoying bright tone?"
+    }
+  ],
+  "submittedAudio": [
+    {
+      "label": "reference",
+      "filename": "previous-full.wav",
+      "sha256": "27cfef0f6487a919881dacd6b697edcab843be866198f7512aeedabc2703ce57",
+      "bytes": 15843846
+    },
+    {
+      "label": "candidate",
+      "filename": "role-aware-full.wav",
+      "sha256": "a3b2995ab24c56f5d4cd9ad1df7ecdab6b596cbb6cd0870ef57b8e19cc02932c",
+      "bytes": 15843846
+    },
+    {
+      "label": "held-support",
+      "filename": "held-support-before-then-after.ab.wav",
+      "sha256": "9c2f7cb3fb791c86bbc3d650ce5b80b07873023ed3fc5d3d948cdbf3f4432843",
+      "bytes": 2160944
+    },
+    {
+      "label": "high-lead",
+      "filename": "high-lead-before-then-after.ab.wav",
+      "sha256": "5dae8bab30fb1c74a52d6fafe3d619c7e8dff8eb2bcca86f354e47c0805b73a9",
+      "bytes": 4277744
+    }
+  ],
+  "executionTiming": {
+    "initialNineStageFullBuildWallSeconds": 114.294440375,
+    "finalGuardAndSignalCheckRunWallSeconds": 1.287810125,
+    "scope": "Initial full reference/candidate build and VICE verification, followed by a cached run that checks revised guard code and the additional submitted-pair PCM stage; not a measure of composition effort."
+  },
+  "evidence": {
+    "run": {
+      "path": "build/axel-f-role-aware/run.json",
+      "sha256": "8a22b084c683a2fb53215774670301410c4d2f0c6c4be8ff5d90a3ed1538fd28"
+    },
+    "first-run": {
+      "path": "build/axel-f-role-aware/first-run.json",
+      "sha256": "5a6769a80a448154338af3226ef6321bcdaecc944e0954d474ee32ff55248be2"
+    },
+    "contract": {
+      "path": "build/axel-f-role-aware/cache/contract/a202d421d65462b1c8f9e7696d21bf7fba2ca9cebd8890d45501841a4d873589/attempt-1c2a5dc1f4094208a76f193f2d043b25/role-contract.json",
+      "sha256": "f42126f5366104193eb1779d94d66cbf569e58a72f9167dc5f1650f350784998"
+    },
+    "isolation": {
+      "path": "build/axel-f-role-aware/cache/isolation/8bdf976f71ae7e2a339eddce0e55b9981f604b74b6a349419f4873ca6283fa1a/attempt-8fabe141eaf145bcaafe04d08211eb5d/role-isolation.json",
+      "sha256": "cce950e0d9bb8642433c288e90df68cac0d20fbd344ef45e2e43e09d0de6b8e0"
+    },
+    "verification": {
+      "path": "build/axel-f-role-aware/cache/candidate/706bf4bed59b024565fbca4fcd83ebf7c2ca65065186d70b4d82c621cefeed4f/attempt-749f291a0fef468d92dabe9712dda63b/song/verification.json",
+      "sha256": "d46099d065876fbfa5ee59ef704198fd37d15377dda5c36980b4675ae8c0b388"
+    },
+    "vice": {
+      "path": "build/axel-f-role-aware/cache/vice/f2291be17bc1f7965dbf7bcb7d35f3c59f2f8c2f559221d689070b72c769783b/attempt-cc551461fa734034814789f27aad39c6/vice/verification.json",
+      "sha256": "db9737529fffdc46f9d0e66b1a0019bd2acb2264aea7ec624dc42ae3d4205f58"
+    },
+    "role-audio": {
+      "path": "build/axel-f-role-aware/cache/role-audio/0875d3b6a85082d41bce0613af6482d33c636679a0d05014bdd2675f5ca27bef/attempt-daab17b9e48e4f6e886994394193aa9e/role-audio.json",
+      "sha256": "9db443561e23f73da49cf39fec53acb72cb574a42d61de790d1e075ad300c7be"
+    },
+    "pre-stop-release": {
+      "path": "build/axel-f-role-aware/cache/pre-stop-release/d49c5e41eb089f93395ff2bdb0e35546b2a846fd0da650d690de597e367b4772/attempt-b27730ec3bcd48adbfb91e79c623b1dd/pre-stop-release.json",
+      "sha256": "8f619904945689c1508a94f788ed3de1d14fffd48c7fa5dd321ad5d27cd8b49a"
+    },
+    "published-sources": {
+      "path": "build/axel-f-role-aware-listening/sources.json",
+      "sha256": "68ec589f296ad43f9233f548addc75b3fdbfb04b6498f08a3612a26ff29a88a2"
+    }
+  },
+  "reproduceCommands": [
+    "python3 scripts/listening-package.py config/listening/axel-f-role-aware.json --output build/axel-f-role-aware",
+    "python3 scripts/publish-listening.py build/axel-f-role-aware/run.json --selection config/listening/axel-f-role-aware.audition.json --output build/axel-f-role-aware-listening-new"
+  ],
+  "listeningLimits": [
+    "No human listening verdict has been received on these two revised roles.",
+    "No claim that the overall arrangement is engaging or matches H\u00fclsbeck: source percussion, second bass, noise sweeps and bass bends remain omitted.",
+    "Post-call CPU snapshots, sampled standalone VICE checks and rendered signal checks establish separate technical claims; no physical hardware equivalence is claimed.",
+    "Preserve the previous narrow-pulse full version and the accepted hook preference while awaiting the two role verdicts."
+  ]
+}

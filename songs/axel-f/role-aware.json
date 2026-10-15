@@ -1,0 +1,280 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score.json",
+  "title": "Axel F complete tonal",
+  "author": "Harold Faltermeyer",
+  "authorinfo": "SOURCE SCORE: SID INTERPRETATION",
+  "released": "2026",
+  "sidCount": 1,
+  "sidModel": "MOS8580",
+  "clock": "pal",
+  "timingPolicy": "retain-full-pitch",
+  "instruments": {
+    "lead": {
+      "name": "PULSEMOV",
+      "control": "1a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "08a8",
+      "frame1": "09",
+      "vibrato": "24",
+      "vibrato_delay": 12,
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "82",
+          "00",
+          "00"
+        ],
+        [
+          "1d",
+          "23",
+          "00"
+        ],
+        [
+          "0f",
+          "dd",
+          "00"
+        ],
+        [
+          "0f",
+          "23",
+          "00"
+        ],
+        {
+          "jump": 2
+        }
+      ],
+      "filter": []
+    },
+    "harmony": {
+      "name": "PLUCKBRI",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0734",
+      "frame1": "09",
+      "wave": [
+        [
+          "21",
+          "00",
+          "00"
+        ],
+        [
+          "11",
+          "80",
+          "ff"
+        ]
+      ],
+      "pulse": [],
+      "filter": []
+    },
+    "bass": {
+      "name": "BASSPLN",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "06b3",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ],
+      "filter": [
+        [
+          "94",
+          "80",
+          "00"
+        ],
+        [
+          "18",
+          "f0",
+          "00"
+        ]
+      ]
+    },
+    "marimba": {
+      "name": "PLUCKSOF",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0734",
+      "wave": [
+        [
+          "11",
+          "00",
+          "00"
+        ],
+        [
+          "11",
+          "80",
+          "ff"
+        ]
+      ],
+      "pulse": [],
+      "filter": [],
+      "frame1": "09"
+    },
+    "upper-lead": {
+      "name": "ELSOFT",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0745",
+      "frame1": "09",
+      "wave": [
+        [
+          "11",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [],
+      "filter": []
+    }
+  },
+  "sections": [
+    {
+      "name": "Opening hook",
+      "startBeat": 0,
+      "endBeat": 16,
+      "voices": {
+        "melody": "lead",
+        "harmony": "harmony",
+        "bass": "bass"
+      }
+    },
+    {
+      "name": "Opening hook: source upper-octave doubling reduced",
+      "startBeat": 16,
+      "endBeat": 32,
+      "voices": {
+        "melody": "lead",
+        "harmony": "harmony",
+        "bass": "bass"
+      }
+    },
+    {
+      "name": "Main bass entry: source percussion omitted",
+      "startBeat": 32,
+      "endBeat": 64,
+      "voices": {
+        "melody": "lead",
+        "harmony": "harmony",
+        "bass": "bass"
+      }
+    },
+    {
+      "name": "Theme return",
+      "startBeat": 64,
+      "endBeat": 96,
+      "voices": {
+        "melody": "lead",
+        "harmony": "harmony",
+        "bass": "bass"
+      }
+    },
+    {
+      "name": "Rhythmic upper chord tones",
+      "startBeat": 96,
+      "endBeat": 128,
+      "voices": {
+        "melody": "lead",
+        "harmony": "harmony",
+        "bass": "bass"
+      }
+    },
+    {
+      "name": "Held upper chord tone and bass transition",
+      "startBeat": 128,
+      "endBeat": 156,
+      "voices": {
+        "melody": "marimba",
+        "harmony": "harmony",
+        "bass": "bass"
+      }
+    },
+    {
+      "name": "Source high descent",
+      "startBeat": 156,
+      "endBeat": 172,
+      "voices": {
+        "melody": "lead",
+        "harmony": "harmony",
+        "bass": "bass"
+      }
+    },
+    {
+      "name": "Theme return before marimba contrast",
+      "startBeat": 172,
+      "endBeat": 204,
+      "voices": {
+        "melody": "lead",
+        "harmony": "harmony",
+        "bass": "bass"
+      }
+    },
+    {
+      "name": "Marimba-like figure over main bass",
+      "startBeat": 204,
+      "endBeat": 236,
+      "voices": {
+        "melody": "lead",
+        "harmony": "marimba",
+        "bass": "bass"
+      }
+    },
+    {
+      "name": "High lead with marimba-like figure",
+      "startBeat": 236,
+      "endBeat": 252,
+      "voices": {
+        "melody": "upper-lead",
+        "harmony": "marimba",
+        "bass": "bass"
+      }
+    },
+    {
+      "name": "High lead, marimba and upper brass reduction",
+      "startBeat": 252,
+      "endBeat": 276,
+      "voices": {
+        "melody": "upper-lead",
+        "harmony": "marimba",
+        "bass": "bass"
+      }
+    },
+    {
+      "name": "Rhythmic upper chord tones return",
+      "startBeat": 276,
+      "endBeat": 316,
+      "voices": {
+        "melody": "lead",
+        "harmony": "harmony",
+        "bass": "bass"
+      }
+    },
+    {
+      "name": "Final theme, bass and omitted source percussion tail",
+      "startBeat": 316,
+      "endBeat": 349.3125,
+      "voices": {
+        "melody": "lead",
+        "harmony": "harmony",
+        "bass": "bass"
+      }
+    }
+  ],
+  "patternBeats": 8
+}

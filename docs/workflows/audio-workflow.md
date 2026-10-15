@@ -89,6 +89,8 @@ This uses [libsidplayfp 3.1.1's actual mute implementation](https://github.com/l
 
 Use this as a bounded listening diagnostic after checking oscillator coupling, SID reads, shared-filter routing and volume/sample techniques. Do not assume isolated files add back to the original or use the option as a faithful solo for ring/sync-dependent instruments. The [DRAX fragment study](../research/composition/fuer-elise-reference.md) checks its particular independence assumptions and keeps the full mix as the authority. Independent three-pitch fixtures verify actual voice selection, quiet tone-only `none`, unchanged default output and argument rejection.
 
+Post-call register equality does not establish sample-identical audio between separately compiled arrangements: changed player workload can shift otherwise identical writes within a frame. The [Axel F kick trial](../../songs/axel-f/arrangement-review.md#post-call-equality-does-not-isolate-an-audio-contribution) measured this and used a same-SID muted/unmuted pair after checking the independence constraints above. Keep whole-arrangement comparisons distinct from an isolated contribution test.
+
 ### Playback checks
 
 After [building the opening excerpt](../songs/first-song.md):

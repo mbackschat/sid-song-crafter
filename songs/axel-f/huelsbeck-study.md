@@ -43,3 +43,7 @@ python3 scripts/publish-listening.py build/axel-f-huelsbeck-pulse/run.json --sel
 The already reviewed files are in `build/axel-f-huelsbeck-pulse-listening/`: `previous-then-narrow-pulse.ab.wav` plays 16.1 seconds of the prior smoother lead, 0.5 seconds of silence, then the new pulse version. Both halves use unity gain; this controls playback gain, not perceived loudness. `previous.wav` and `narrow-pulse.wav` retain the full 35.773-second selected excerpt and tail. Hülsbeck's separately rendered `build/axel-f-huelsbeck-listening/huelsbeck-original-32s.wav` is a timbral reference with its own timing and arrangement, not the same-score A/B reference.
 
 Model-assistance review: no audio-model call. The existing calibration does not qualify a model to judge this paired lead timbre or to attribute the listener's overall preference. Executed traces establish the mechanism; the listener judges its musical usefulness. At the positive listening verdict, no additional model call is useful: the human judgment settles this comparison. Reassess at the complete-arrangement audition.
+
+## Full-arrangement limitation
+
+The subsequent [full listening feedback and arrangement diagnosis](arrangement-review.md) reject applying this hook patch to every role. A long chord-support note becomes too persistent, and short high-register notes restart before the intended motion develops. The hook verdict remains valid within its tested scope; the overall arrangement needs distinct support/high-lead sounds and a deliberate rhythmic allocation.
