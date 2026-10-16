@@ -11,6 +11,8 @@ The application should help people understand instruments, arrangements and how 
 The user's requirements, rephrased without changing their scope:
 
 - Write our own application, presentation, interactions and analysis features. Use an existing library for SID playback/emulation rather than implementing a SID player ourselves.
+- Support both MOS6581 and MOS8580, each in single-SID and dual-SID stereo configurations, matching the project's scope. These are mandatory capabilities for catalog and locally opened songs, not optional library features.
+- Treat correct dual-SID stereo as a decisive library-selection requirement. Generic claims of multi-SID or two-channel output are insufficient; preserve the actual arrangement's chip routing.
 - Offer sample selection, playback, song descriptions and analysis from existing project research. Include instrument information, standard voice mute/unmute, spectrum visualization, a playhead, level meters and useful additional ways to see what is happening.
 - Treat Safari on iOS and macOS as a hard requirement. Supporting only recent Safari versions is acceptable. A recording fallback does not satisfy the live SID requirement on these platforms.
 - Prioritize the desktop experience. Mobile Safari should work, but initially avoid substantial iPhone-specific design, optimization or testing effort; support does not require an equally polished mobile workbench.
@@ -30,6 +32,15 @@ The user's requirements, rephrased without changing their scope:
 - An arrangement overview and sound inspection that remain useful for unfamiliar files.
 - Optional analysis packages that add verified instrument identities, musical roles, section boundaries, explanations and links to evidence.
 - Clear separation of measured behavior, recovered source facts, musical interpretation and uncertain automatic detection.
+
+The required hardware coverage is:
+
+| Chip model | Single-SID | Dual-SID stereo |
+| --- | --- | --- |
+| MOS6581 | Required: three voices, one chip output. | Required: six voices, two chip outputs with the declared stereo routing. |
+| MOS8580 | Required: three voices, one chip output. | Required: six voices, two chip outputs with the declared stereo routing. |
+
+This matrix applies to live playback and the associated controls and inspection on supported Safari platforms, with or without an analysis package. The chosen engine must implement both chip models rather than merely relabel one emulation. Honor declared models and addresses, expose the actual configuration, and allow explicit overrides when declarations are absent or a visitor intentionally changes the playback setup.
 
 ### Recommended initial boundary
 
@@ -186,16 +197,47 @@ Recent Safari supports the needed [AnalyserNode](https://github.com/mdn/browser-
 
 ## Playback-library findings and alternatives
 
-Findings were reviewed from upstream documentation during this discussion; no candidate was installed or tested against our samples. These are evaluation leads, not a compatibility certification.
+Findings include upstream documentation and the pinned source review below. No candidate was executed against our samples or tested in Safari during this review. Source inspection establishes specific API/mixing behavior, not runtime compatibility or musical equivalence.
 
 | Candidate | Finding | Recommendation and rationale |
 | --- | --- | --- |
-| [libsidplayfp-wasm](https://github.com/chrisgleissner/libsidplayfp-wasm) | Independent WASM distribution with TypeScript bindings, PCM streaming, SIDLite/reSIDfp, multiple chips, muting, register readout, subtunes and seeking. Reports browser/WebKit and native-parity checks. | Evaluate first because the API fits inspection and our existing native renders use the same library family. Safari device behavior and exact routing remain unverified. |
-| [WebSID](https://www.wothke.ch/websid/) | Browser SID engine; its [GitHub repository](https://github.com/wothke/websid) directs current development to [Bitbucket](https://bitbucket.org/wothke/websid/). | Keep as an alternative if the first candidate lacks suitable routing or inspection access. Verify current API, licensing and Safari behavior before selection. |
+| [libsidplayfp-wasm](https://github.com/chrisgleissner/libsidplayfp-wasm) | Independent WASM distribution with TypeScript bindings, PCM streaming, SIDLite/reSIDfp, multiple chips, muting, register readout and timestamped writes. Current binding uses a crossfeeding mixer and lacks raw chip output; its seek wrapper discards the final block remainder. | Preferred engine family, conditional on a small binding/transport correction and verification. The current package is not an exact-routing drop-in. |
+| [WebSID](https://www.wothke.ch/websid/) | Browser SID engine, now maintained on [Bitbucket](https://bitbucket.org/wothke/websid/), with multi-chip emulation, explicit per-voice panning and visualization access. Its README declares CC BY-NC-SA 4.0. | Retain as an alternative, with a less suitable distribution license and a different sound path to assess. Panning controls alone do not establish our accepted chip-bus sound. |
 | [jsSID](https://github.com/og2t/jsSID) | Small JavaScript implementation with multi-SID support; its README documents omitted digi playback and imperfect interrupt emulation. | Not the preferred foundation: those limitations narrow the range of masters' material we could inspect. Retain it as an evaluated alternative, not a selected fallback. |
 | [DeepSID](https://github.com/Chordian/deepsid) | Complete player application whose documented setup uses PHP and MySQL. | Use as interaction inspiration rather than adopt its application: we want our own UI and static hosting with a library boundary. |
 
-libsidplayfp-wasm declares GPL-2.0-or-later and supplies corresponding source; it is not an MIT dependency. Confirm the combined web distribution's terms before adoption. This does not change the project's existing tool or sample licenses. Its documentation does not by itself settle whether the exposed API provides the separate chip outputs required here; inspect the binding. A small binding extension could remain within the library approach, but maintaining a custom player is outside scope.
+libsidplayfp-wasm declares GPL-2.0-or-later and supplies corresponding source; it is not an MIT dependency. Confirm the combined web distribution's terms before adoption. This does not change the project's existing tool or sample licenses. A small binding extension could remain within the library approach, but maintaining a custom player is outside scope.
+
+### Dual-SID source review, 2026-10-16
+
+The unresolved question was whether a browser library can reproduce our native dual-SID placement for both chip models while providing useful inspection. This blocks final engine selection. Review pinned libsidplayfp-wasm [commit c9622e9](https://github.com/chrisgleissner/libsidplayfp-wasm/tree/c9622e9ce7ffa2ddd3e0568e987b4c6614da8275), package version 1.1.0, whose [upstream manifest](https://github.com/chrisgleissner/libsidplayfp-wasm/blob/c9622e9ce7ffa2ddd3e0568e987b4c6614da8275/upstream.json) pins libsidplayfp 3.1.1 and libresidfp 1.2.3. This is a source-level review only; no playback, audio comparison or Safari validation is claimed.
+
+**Concrete routing mismatch:** `SidPlayerContext::render()` calls `player.mix()`. The exported binding has no raw-chip-buffer or mixing-matrix method. The pinned upstream [SimpleMixer](https://github.com/libsidplayfp/libsidplayfp/blob/732fa8ec8131fc75aafc2eaea583ddcdeea2a3cc/src/simpleMixer.h) mixes two chips approximately as `L = (A + 0.5 B) / sqrt(2)` and `R = (0.5 A + B) / sqrt(2)`, with integer scaling/rounding. This is stereo, but not our required `L = A, R = B`. It places each chip in the opposite channel at roughly −6 dB relative to its contribution in the main channel. Both MOS6581 and MOS8580 use this host mixer. See the [binding source](https://github.com/chrisgleissner/libsidplayfp-wasm/blob/c9622e9ce7ffa2ddd3e0568e987b4c6614da8275/src/bindings/bindings.cpp#L796).
+
+Recommendation: retain libsidplayfp as the leading engine family, but require raw per-chip PCM from one shared emulated C64 instance, or an equivalent verified output-matrix API. This is a binding/output integration requirement, not a new SID emulator. Prefer an upstreamable extension. Do not approximate dual-SID by running independent mono players, reconstruct raw buses by inverting rounded mixed PCM, or add artificial widening: those approaches weaken timing, signal or placement guarantees. Preserving complete chip buses also preserves shared-filter behavior within each chip.
+
+**Inspection is stronger than initially established:** the binding exposes per-chip status and bounded timestamped write traces, including chip index, register address, value and `cyclePhi1`, plus a dropped-record count. The [trace-hook modification](https://github.com/chrisgleissner/libsidplayfp-wasm/blob/c9622e9ce7ffa2ddd3e0568e987b4c6614da8275/MODIFICATIONS.md) places the hook immediately before the emulated chip write. This offers a promising basis for inspecting unfamiliar songs without authored analysis. Drain traces with playback and disclose overflow. Since muting/filter bypass can modify writes before this hook, distinguish observed emulator input from the unmodified program's writes.
+
+**Muting is an intervention:** upstream [sidemu.cpp](https://github.com/libsidplayfp/libsidplayfp/blob/732fa8ec8131fc75aafc2eaea583ddcdeea2a3cc/src/sidemu.cpp) masks waveform/GATE bits on subsequent control-register writes while preserving TEST/ring/sync bits. It is not a post-filter fader and may not act immediately on an already-held sound. Validate coupled passages and restoration before promising clean isolation; keep the application's six controls explicit about their voice and chip.
+
+**Seeking needs a more precise contract than the method name suggests:** [player.ts](https://github.com/chrisgleissner/libsidplayfp-wasm/blob/c9622e9ce7ffa2ddd3e0568e987b4c6614da8275/src/player.ts#L719) reloads and emulates forward, which preserves evolving state in principle. However, `fastForwardContext()` discards whole blocks until the target is passed, then clamps the reported count without retaining the final block's remainder. Source inspection therefore predicts a block-boundary offset for non-aligned targets; the current tests establish advancement, not exact continuation samples. Require a seek comparison against continuous playback and retain the remainder in the transport before calling seeking sample-accurate. Record deterministic startup settings and reapply inspection/control state consistently after reload.
+
+**Safari evidence is narrower than real-device audio:** the pinned [Playwright configuration](https://github.com/chrisgleissner/libsidplayfp-wasm/blob/c9622e9ce7ffa2ddd3e0568e987b4c6614da8275/playwright.config.ts) includes WebKit with an iPhone device profile. Its [browser tests](https://github.com/chrisgleissner/libsidplayfp-wasm/blob/c9622e9ce7ffa2ddd3e0568e987b4c6614da8275/test/browser/loader.spec.ts) check PCM generation from a test tone and worker operation. They do not certify actual Safari speaker playback, our two-SID material or our routing. Preserve the bounded mobile checks above; desktop Safari remains the main validation target.
+
+**WebSID alternative:** inspected [revision 977457f](https://bitbucket.org/wothke/websid/src/977457f172bc52907953850827d110b8c4e9f31b/). Its [SID implementation](https://bitbucket.org/wothke/websid/src/977457f172bc52907953850827d110b8c4e9f31b/src/sid.cpp) handles per-chip model declarations and pans voice contributions into stereo. The [postprocessor](https://bitbucket.org/wothke/websid/src/977457f172bc52907953850827d110b8c4e9f31b/src/Postprocess.cpp) uses level 0 for panning without the enhancement effect; level −1 disables panning. Assigning all three voices of chip A left and chip B right is a plausible tonal routing setup, not yet a verified replacement for raw chip buses. Special digi paths can feed both channels, and the [documented limitations](https://bitbucket.org/wothke/websid/src/977457f172bc52907953850827d110b8c4e9f31b/src/KnownLimitations.txt) include filter/combined-waveform accuracy limitations. Its [CC BY-NC-SA declaration](https://bitbucket.org/wothke/websid/src/977457f172bc52907953850827d110b8c4e9f31b/README.md) adds a noncommercial restriction. These are material reasons to prefer resolving the bounded libsidplayfp binding gap first, without claiming WebSID is incapable of useful stereo.
+
+### Evidence required before adopting the stereo backend
+
+| Required property | Decisive check |
+| --- | --- |
+| Both chip models and counts | Load MOS6581 and MOS8580 single/dual exports; confirm actual installed models, addresses and independent activity on both chips. |
+| Correct stereo separation | A-only/B-only diagnostic input must reach its assigned output without hidden crossfeed; verify gain and clipping separately from stereo width. |
+| Real arrangement behavior | Compare [Bach stereo](../../samples/bach-toccata/README.md) for MOS8580 and [Rambo stereo](../../samples/rambo-stereo/README.md) for MOS6581 against their retained renders, including the duplicated lead, accompaniment separation, shared filtering and coupled Rambo passages. Full playback and endings must work; PCM identity is only a valid expectation under matched engine/build/settings. |
+| Complete session controls | Verify all six voice controls, stop/reload, seek and loop behavior; check resumed audio against continuous playback with the same startup/configuration. |
+| Synchronized analysis | Both chips' observations align with heard output and seek position; trace drops and diagnostic mutations are visible. |
+| Safari usability | Validate the complete desktop audio path and the bounded recent-iPhone smoke check, not just successful WASM rendering. |
+
+Correct dual-SID playback is a selection gate, not optional polish. Final library adoption remains open until these checks pass; neither reviewed candidate is currently certified for this app.
 
 ## Catalog and publication boundary
 
@@ -211,12 +253,12 @@ No further user clarification is required to retain this proposal. These decisio
 
 | Decision | Current recommendation and rationale | Evidence needed |
 | --- | --- | --- |
-| Playback library | Evaluate libsidplayfp-wasm first for its API and connection to existing rendering. | Our files on real Safari; exact chip routing; mute semantics; seek state; licensing fit. |
+| Playback library | Prefer the libsidplayfp family if the raw-output and seek gaps can be resolved with a bounded binding/transport change. | The stereo adoption checks above; licensing fit. Do not adopt the current mixed-output wrapper as an exact-routing solution. |
 | Safari version floor | Current stable Safari on macOS and iOS initially; keep mobile effort bounded and extend coverage only when needed. | Full desktop validation and a recent-iPhone compatibility smoke check, with exact versions recorded. |
-| Supported file profiles | Require mono and two-SID; declare other profiles individually. | Engine handling of PSID/RSID, ROM requirements, timing, digi and three-SID cases. |
+| File compatibility beyond required hardware coverage | Both MOS6581 and MOS8580 in single-SID and dual-SID stereo are fixed requirements; declare additional format/profile support individually. | Engine handling of PSID/RSID, ROM requirements, timing, digi and three-SID cases. |
 | Sound-pattern discovery | Optional provisional grouping, with editable labels. | Useful results on unfamiliar material without false claims of recovered instruments. |
 | Deeper inspection | Prefer exposed live state plus matching retained execution evidence. | Available event resolution, buffering alignment and missing binding capabilities. |
 | Analysis-package format | Preserve the semantic contract above; reuse existing owners. | What the UI and existing manifests can share without duplicate sources of truth. |
 | Technology stack | Leave open, as requested. | Compatibility with Safari, static hosting and the selected playback API. |
 
-The decisive feasibility evidence is playback and inspection of both an annotated project sample and an unannotated local SID on Safari, including a real two-SID arrangement, correct routing, mute dependencies and a seek checked against continuous playback. The analyser must remain useful when annotations are absent. These are acceptance questions for later work, not an implementation schedule or authorization to start it.
+The decisive feasibility evidence is playback and inspection across the required MOS6581/MOS8580 × single-SID/dual-SID stereo matrix on Safari, covering annotated project samples and unannotated local files, correct model selection and routing, mute dependencies and a seek checked against continuous playback. Retain the desktop-focused validation and bounded mobile compatibility checks described above. The analyser must remain useful when annotations are absent. These are acceptance questions for later work, not an implementation schedule or authorization to start it.
