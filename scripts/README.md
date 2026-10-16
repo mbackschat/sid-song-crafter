@@ -14,7 +14,10 @@ Choose tools by their supported contract. A song or composer name does not itsel
 - [Audio comparisons](../docs/workflows/audio-comparisons.md): PCM inspection and original-preserving A/B windows.
 - [Automated audio assessment](../docs/research/audio-assessment.md): bounded OpenRouter requests through [audio_assessment.py](audio_assessment.py), cached responses and cost receipts; find perception controls, presentation checks and local SongBench probes in the [study tools](studies/README.md). The research guide owns commands, calibration results and limits; experimental results remain separate from musical acceptance.
 - [CPU auditing](../docs/validation/psid-audit.md), [CIA tracing](../docs/validation/cia-tracing.md) and [assembler](sid_assembler.py): execution and timing infrastructure.
-- [Setup](../docs/setup/local-setup.md) and [evidence/cache management](../docs/workflows/build-cache.md): pinned assets, local tools, explicit archive promotion and verified restoration by path or group. [Automated build cleanup](cleanup-build.py) previews or applies verified cache-audio deduplication and lossless text compression.
+- [Setup](../docs/setup/local-setup.md): pinned assets, workflow-scoped readiness and the optional portable bridge launcher.
+- [Evidence/cache management](../docs/workflows/build-cache.md): explicit public archive promotion and verified restoration by path or group.
+- [Automated build cleanup](cleanup-build.py): preview or apply verified cache-audio deduplication and lossless text compression.
+- [External local archives](archive-build.py): retain an explicit hash-pinned build selection outside the checkout, optionally evict it after verification, and restore exact bytes without overwriting different content.
 
 - [Sample library](../samples/README.md): [sample_exports.py](sample_exports.py) creates the fixed, note-preserving native stereo presentation, verifies mapped registers/active filters for the complete duration, and renders stereo/fold-down previews. Per-sample recipes retain VICE and source/tool fingerprints.
 

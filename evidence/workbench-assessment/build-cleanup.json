@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "mode": "apply",
+  "passed": true,
+  "selectedDuplicateWavs": 4,
+  "selectedDuplicateBytes": 49981762,
+  "selectedTextFiles": 18,
+  "selectedTextBytes": 139274890,
+  "deletedDuplicateWavs": 4,
+  "compressedTextFiles": 18,
+  "controlledLogicalBytesReclaimed": 182526214,
+  "before": {
+    "logicalBytes": 6899949001,
+    "allocatedFileBytes": 6932033536,
+    "duAllocatedBytes": 6932033536,
+    "volume": {
+      "totalBytes": 994662584320,
+      "usedBytes": 973486264320,
+      "freeBytes": 21176320000
+    }
+  },
+  "after": {
+    "logicalBytes": 6717422787,
+    "allocatedFileBytes": 6749474816,
+    "duAllocatedBytes": 6755467264,
+    "volume": {
+      "totalBytes": 994662584320,
+      "usedBytes": 973363384320,
+      "freeBytes": 21299200000
+    }
+  },
+  "unselectedFilesUnchanged": true,
+  "unexpectedlyChanged": [],
+  "error": null,
+  "consequence": "Removed or compacted cache outputs invalidate their stages. Restore text with build-cache.py restore or regenerate via the owning recipe. No unique audio is retired.",
+  "physicalSizeNote": "du and file blocks report filesystem allocation; volume free space can change independently and APFS snapshots/clones can affect actual reclamation.",
+  "localReport": "build/cleanup-workbench-20261017-apply",
+  "operationJournalSha256": "9298210c4992aa650252c82b1bb4005f15a27cb9baec5fb30ae7408ad99cb145"
+}

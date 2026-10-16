@@ -1,6 +1,6 @@
 # Retain build evidence without keeping bulky intermediates
 
-`build/` is ignored by Git. Keep accepted listening files and working output there. Preserve canonical verification receipts and complete analysis records in [evidence](../../evidence/README.md), with compressed records in Git LFS and readable manifests in ordinary Git. Remove superseded scratch runs only after identifying their retained replacement. Original reference SIDs and reference WAVs stay out of Git and LFS; [the asset registry](../../config/local-assets.json), [download workflow](../setup/local-setup.md), [audio workflow](audio-workflow.md) and study-specific recipes retain their source URLs, fingerprints and exact reproduction settings.
+`build/` is ignored working output, not permanent storage for accepted material. Keep current listening files in place until a verified retention/restoration route is established and their links are preserved or explicitly updated. Preserve canonical verification receipts and complete analysis records in [evidence](../../evidence/README.md), with compressed records in Git LFS and readable manifests in ordinary Git. Remove superseded scratch runs only after identifying their retained replacement. Original reference SIDs and reference WAVs stay out of Git and LFS; [the asset registry](../../config/local-assets.json), [download workflow](../setup/local-setup.md), [audio workflow](audio-workflow.md) and study-specific recipes retain their source URLs, fingerprints and exact reproduction settings.
 
 ## Automated cleanup and when to run it
 
@@ -97,6 +97,37 @@ Stop independent source and manifest writers before promotion. A persistent igno
 An ordinary failure before manifest replacement rolls back unchanged archive files created by that invocation. Concurrent replacements or edits detected by the ownership/content checks are preserved, and empty created directories remain. Interruptions preserve published archives, including an interruption immediately after a successful manifest replacement. An interruption or process/power loss may leave unindexed archives; a hard exit may also leave staging files. Verify the manifest and inspect such files against the reviewed selection before retrying or removing them. The tool does not automatically delete uncertain files or working sources.
 
 Before committing a promoted group, check that every new manifest archive is actually staged/tracked with `git ls-files`; successful promotion and hash verification do not establish Git inclusion. Global ignore rules also apply inside `evidence/`: the Rambo stereo verification log was initially omitted by a global `*.log` rule, corrected in commit `1237aa9` with a narrow repository exception. Inspect unexpected exclusions with `git check-ignore -v`, preserve the public-file boundary, and never force-add a directory to bypass it.
+
+## External local build archives
+
+Use [archive-build.py](../../scripts/archive-build.py) to retain an explicitly reviewed selection outside the checkout and, optionally, remove its working copies. This is local retention, separate from public evidence promotion and Git/LFS distribution. The tool does not decide what is expendable or infer protected musical cases. Select only classified files whose retention/reproduction route is settled; preserve active/deferred work and current listening paths. Stop independent source, archive and restoration-destination writers before running it.
+
+Supply a JSON object with `version: 1` and a nonempty `files` array. Each file entry has this contract:
+
+| Field | Required value |
+| --- | --- |
+| `path` | Canonical relative path below `build/`, identifying one regular file; no traversal or symlink components |
+| `bytes` | Measured nonnegative integer byte count |
+| `sha256` | Measured SHA-256 of the original bytes, as 64 lowercase hexadecimal characters |
+| `reason` | Nonempty explanation of why the file is retained and its working copy may be retired |
+
+Duplicate source paths reject. Different paths with identical bytes share one content-addressed gzip object within that archive. Select actual inventory paths and fingerprints rather than copying examples with invented hashes. The external archive directory must be fresh and outside the checkout, with an existing parent and no symlink components. These commands illustrate a reviewed selection and a separately chosen local archive location:
+
+```sh
+python3 scripts/archive-build.py archive build/reviewed-selection.json --archive /absolute/archive-parent/case-name
+python3 scripts/archive-build.py archive build/another-reviewed-selection.json --archive /absolute/archive-parent/another-case --remove
+python3 scripts/archive-build.py restore /absolute/archive-parent/another-case/manifest.json --path build/my-run/cache/preview.wav
+```
+
+Archive without `--remove` copies and verifies; it leaves every source in place. With `--remove`, it performs the same complete validation and only then evicts the selected source paths. Every invocation needs a fresh archive directory; it does not add entries to an existing archive or turn an earlier copy-only run into a removal run. Restore accepts repeated `--path` arguments for exact indexed file paths; omitting them restores all entries beneath the current checkout's `build/` at their recorded relative paths.
+
+Before writing any archive data, the tool validates the complete selection against regular source files, their byte counts and hashes. It retains each source's file identity, stores deterministic gzip objects under `objects/<original-sha256>.gz`, flushes objects and directories, and writes a durable `manifest.json`. The manifest records every original path, byte count, SHA-256, reason and object path, plus the original checkout location for context. All stored objects are decoded and checked before any source deletion. Each source's identity and hash are rechecked immediately before its removal. Shared build-path/identity/hash checks come from [cleanup-build.py](../../scripts/cleanup-build.py), which also loads [build-cache.py](../../scripts/build-cache.py); retain these tool dependencies together.
+
+Restore validates the manifest, selected objects and existing-file conflicts before publishing any file. It verifies decoded bytes again into a temporary file beside the destination and publishes without overwriting. An identical existing file remains untouched; a changed existing file or any symlink rejects. Corrupt/truncated gzip objects and valid gzip with the wrong original hash both fail. This preserves file bytes, not original timestamps, permissions or WAV-container reinterpretations.
+
+The final `operation.json` records success/failure, whether the manifest and object verification completed, completed source removals and logical byte totals. A partial failure preserves completed operations and all archive recovery material; it does not roll back deletions. If interrupted after removal begins, the already durable manifest still indexes every original, even when the final operation receipt is absent. Restore skips identical files, so retry after inspecting the failure and resolving conflicts. A failure before manifest publication removes no sources and can leave incomplete archive objects; inspect them before choosing a new destination. No uncertain output is automatically deleted or overwritten.
+
+These are optimistic identity/content guards, not locks or an atomic filesystem compare-and-unlink; stop writers rather than relying on the small interval between final checks and mutation. The tool requires local filesystem support for no-follow opens, directory fsync and non-overwriting hardlink publication. A filesystem operation failure is reported with the retained archive location. Keep an additional backup for irreplaceable local retention: an external directory on the same machine is not an off-machine backup. Copying increases total retained storage; evicting originals relocates bytes and is not equivalent to deleting them. Report source removal, compressed archive size and actual free-space changes separately.
 
 ## Local cache compression
 

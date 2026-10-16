@@ -1,0 +1,148 @@
+{
+  "createdAt": "2026-10-16T22:09:41.596559+00:00",
+  "gitHead": "a5ff2953917fe087617abe62e2149e58d2b0da8b",
+  "summary": {
+    "allocatedFileBytes": 6883721216,
+    "cacheWavClassification": {
+      "exact-noncache-copy": {
+        "distinctContentBytes": 34137916,
+        "distinctContentObjects": 3,
+        "files": 4,
+        "logicalBytes": 49981762
+      },
+      "no-verified-noncache-copy": {
+        "distinctContentBytes": 775308516,
+        "distinctContentObjects": 185,
+        "files": 237,
+        "logicalBytes": 929314828
+      },
+      "protected": {
+        "distinctContentBytes": 777229462,
+        "distinctContentObjects": 76,
+        "files": 106,
+        "logicalBytes": 1137651722
+      },
+      "unstable": {
+        "distinctContentBytes": 0,
+        "distinctContentObjects": 0,
+        "files": 0,
+        "logicalBytes": 0
+      }
+    },
+    "canonicalOriginalPathMatches": {
+      "files": 1905,
+      "logicalBytes": 261763553
+    },
+    "categories": {
+      "retain-in-place-protected-input-or-deferred": {
+        "distinctContentBytes": 362815724,
+        "distinctContentObjects": 323,
+        "files": 427,
+        "logicalBytes": 496684998
+      },
+      "retain-in-place-unclassified": {
+        "distinctContentBytes": 1991030981,
+        "distinctContentObjects": 6332,
+        "files": 9032,
+        "logicalBytes": 2409739775
+      },
+      "reuse-canonical-evidence": {
+        "distinctContentBytes": 236116746,
+        "distinctContentObjects": 246,
+        "files": 365,
+        "logicalBytes": 330040390
+      },
+      "reuse-existing-tracked": {
+        "distinctContentBytes": 191026445,
+        "distinctContentObjects": 1803,
+        "files": 2484,
+        "logicalBytes": 297260033
+      },
+      "valuable-local-untracked-archive-pending": {
+        "distinctContentBytes": 1970682916,
+        "distinctContentObjects": 901,
+        "files": 1252,
+        "logicalBytes": 3318359649
+      }
+    },
+    "changedBuildFiles": 0,
+    "distinctContentBytesAllCategories": 4682262632,
+    "distinctContentObjectsAllCategories": 9523,
+    "existingCleanupCacheWavCandidates": {
+      "files": 4,
+      "logicalBytes": 49981762
+    },
+    "files": 13560,
+    "logicalBytes": 6852084845,
+    "newAfterInitialScan": 0,
+    "skippedSymlinks": 0,
+    "sourceChanges": 0,
+    "stableHashedFiles": 13560,
+    "wallSeconds": 27.859385582851246
+  },
+  "exclusions": {
+    "bytes": null,
+    "bytesNote": "Excluded active output is not hashed or included in totals",
+    "pathsAtEnd": [
+      "build/own-score-inputs",
+      "build/own-score-inspect",
+      "build/own-score-native",
+      "build/own-score-native-ntsc",
+      "build/own-score-package",
+      "build/own-score-package-fresh",
+      "build/own-score-vice"
+    ],
+    "pathsAtStart": [
+      "build/own-score-inputs",
+      "build/own-score-inspect",
+      "build/own-score-native",
+      "build/own-score-native-ntsc",
+      "build/own-score-package",
+      "build/own-score-package-fresh",
+      "build/own-score-vice"
+    ],
+    "pattern": "build/own-score*",
+    "reason": "Independent walkthrough agent actively writes these outputs"
+  },
+  "errors": [
+    {
+      "archive": "evidence/daglish-contrast/wrapper-guards.log",
+      "error": "Archive is not tracked",
+      "group": "daglish-contrast",
+      "originalBytes": 547,
+      "originalPath": "build/daglish-contrast-verification/cache/focused-guards/40566543b0a0530d93350da8b63e3452a98f03e8a1c156913409aceafa1366ca/attempt-e54ca0ccfdcf42949476c1f19e8a9b28/stage.log",
+      "originalSha256": "bccf1ec73da74548e7e961eea86cd4cefdb3388f0c85eb9cd4b4ecc7113fefeb",
+      "reason": "Retain the passing focused guards executed by the checked-in verification recipe.",
+      "scope": "canonical-evidence",
+      "verified": false
+    },
+    {
+      "archive": "evidence/daglish-contrast/filter-diagnostic/guards.log",
+      "error": "Archive is not tracked",
+      "group": "daglish-contrast",
+      "originalBytes": 583,
+      "originalPath": "build/trap-filter-diagnostic/cache/focused-guards/b0194a8b8b69f365784c5efc76bc9b131269d16cfe4af1c61395fec46956d67b/attempt-db7ce315677540b58e10b956e07569d8/stage.log",
+      "originalSha256": "a1e5d1d28f739f28eaee8ed31605f875fb3af1f75dc57b06cf1122a8f2898f55",
+      "reason": "Retain passing meaningful guards for one-byte preservation, route-only values, unchanged instruction timing and AC-difference requirements.",
+      "scope": "canonical-evidence",
+      "verified": false
+    }
+  ],
+  "conservativeLimits": [
+    "Category precedence is disjoint; protection flags and exact source matches remain independent and must be honored before removal.",
+    "Exact hash matching establishes byte identity, not musical acceptance, publication permission, durable backup or a deletion authorization.",
+    "Review references are exact SHA-256 strings in tracked song/sample review/delivery/manifest/retention JSON and evidence review/retention JSON; unstructured prose and arbitrary script dependencies are not exhaustively inferred.",
+    "Listening-named paths are a conservative value signal, not proof that every file is indispensable.",
+    "Recipe protection includes literal build inputs from tracked JSON stages; generated/dynamic paths hidden in arbitrary code may remain unclassified.",
+    "All unclassified, changed, unreadable, deferred and protected inputs remain in place. No missing reusable/public promotion is inferred automatically.",
+    "Verified recovery routes were checked against local Git/LFS or decoded canonical archive bytes; remote availability and off-machine backup were not tested.",
+    "Final stat identity checks detect ordinary changes but do not lock independent writers or detect a changed-and-reverted file.",
+    "Distinct-content byte figures overlap across categories; use the global total for cross-category content deduplication.",
+    "Existing cleanup candidates are exact cache/non-cache WAV matches, not approved deletion selections or total reclaimable storage."
+  ],
+  "localInventory": {
+    "path": ".local/workbench-retention/inventory.json",
+    "sha256": "617a64241246ffe37dba9b5468a2baa864cd052624631bb4fec557709a8f78df"
+  },
+  "scope": "Read-only 2026-10-17 pre-cleanup build classification; own-score validation outputs excluded; no category grants publication or deletion permission."
+}
