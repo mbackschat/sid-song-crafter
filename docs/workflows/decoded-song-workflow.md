@@ -6,7 +6,7 @@ The [Cybernoid II compiled title](#cybernoid-ii-compiled-title) builds an indepe
 
 ## Deliver one musical case
 
-Use the [study plan](../research/study-plan.md#delivery-order-and-work-in-progress) to select the case. Name the next musical deliverable and its acceptance question before starting work; an existing verified numeric model should lead to an audible export, rather than another broad decoding exercise.
+Use the [study plan](../../PLAN.md#delivery-order-and-work-in-progress) to select the case. Name the next musical deliverable and its acceptance question before starting work; an existing verified numeric model should lead to an audible export, rather than another broad decoding exercise.
 
 1. Retrieve the relevant instrument cards and existing score/program model. Declare the selected full form, chip/clock/cadence and ending; retain source differences explicitly.
 2. Implement only the missing export or expressive behavior that this deliverable requires. Preserve editable musical inputs and use existing verified components where their contracts fit. Do not force a different driver into an unsuitable shared format.

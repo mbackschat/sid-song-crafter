@@ -20,7 +20,7 @@ My working interpretation is a melody-first, synthesizer-oriented workflow whose
 
 ### Shades reference intake
 
-Use the filter-corrected version as the intended-timbre reference, based on the composer-attributed STIL account above; retain the original for comparison. Both files are PSID v2, one/default subtune 1, explicit PAL/MOS6581, with init `$7000`, play `$742E` and payload end `$7900` exclusive. Pin these exact archive variants before following the [study plan](../study-plan.md).
+Use the filter-corrected version as the intended-timbre reference, based on the composer-attributed STIL account above; retain the original for comparison. Both files are PSID v2, one/default subtune 1, explicit PAL/MOS6581, with init `$7000`, play `$742E` and payload end `$7900` exclusive. Pin these exact archive variants before following the [study plan](../../../PLAN.md).
 
 | Role / archive download | SHA-256 | Embedded load |
 | --- | --- | --- |

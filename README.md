@@ -182,7 +182,7 @@ The build writes SID and PRG files under `build/my-song/export/`, plus `build/my
 ## Explore further
 
 - [Technique lookup](docs/research/technique-index.md), [instruments](docs/research/composition/instruments/README.md) and [gestures](docs/research/composition/gestures/README.md): find a technique by musical purpose, with examples and listening evidence.
-- [Study plan](docs/research/study-plan.md): composer studies, completed interpretations and the next musical task.
+- [Project plan](PLAN.md): sole authority for overall scope, current status, remaining work and next priorities.
 - [Two-SID workflow](docs/workflows/native-song-workflow.md#reusable-two-chip-test): six voices, separate chip roles and stereo output.
 - [Setup guide](docs/setup/local-setup.md): optional reference downloads, dependency checks and platform details. `python3 scripts/doctor.py` reports readiness; it does not install missing tools.
 - [Tool guide](scripts/README.md) and [documentation index](docs/README.md): supported workflows and detailed technical contracts.

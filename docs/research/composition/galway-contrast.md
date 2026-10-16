@@ -1,6 +1,6 @@
 # Galway contrast: Rambo loader and Arkanoid title
 
-This bounded contrast checks three findings from the [Rambo loader study](rambo-preparation.md) against executed **Arkanoid title #1**. The result supports shared authoring ideas while retaining important engine constraints. It does not establish a universal Galway style, complete a second reconstruction or provide musical acceptance. The required [study-plan comparison](../study-plan.md#required-contrasting-references-for-the-six-composers) is complete for these bounded findings and the listening result below; no new instrument or gesture is promoted here.
+This bounded contrast checks three findings from the [Rambo loader study](rambo-preparation.md) against executed **Arkanoid title #1**. The result supports shared authoring ideas while retaining important engine constraints. It does not establish a universal Galway style, complete a second reconstruction or provide musical acceptance. The required [study-plan comparison](../../../PLAN.md#required-contrasting-references-for-the-six-composers) is complete for these bounded findings and the listening result below; no new instrument or gesture is promoted here.
 
 ## Sources and execution boundary
 

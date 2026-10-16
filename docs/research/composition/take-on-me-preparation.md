@@ -1,6 +1,6 @@
 # Take On Me: source, score and sound preparation
 
-This is the completed P1 case in the [study plan](../study-plan.md), closed for its declared scope on 2026-10-14. [Shared pop/theme intake](pop-theme-preparation.md#sources-and-attribution) retains the HVSC download pin and a-ha composition credit separately from Pascal van Loosbroek’s C64 arrangement. Preserve the source and apply the [independent delivery workflow](../../workflows/decoded-song-workflow.md#deliver-one-musical-case).
+This is the completed P1 case in the [study plan](../../../PLAN.md), closed for its declared scope on 2026-10-14. [Shared pop/theme intake](pop-theme-preparation.md#sources-and-attribution) retains the HVSC download pin and a-ha composition credit separately from Pascal van Loosbroek’s C64 arrangement. Preserve the source and apply the [independent delivery workflow](../../workflows/decoded-song-workflow.md#deliver-one-musical-case).
 
 The completed delivery is an editable, independently computed reconstruction of this pinned SID arrangement, with its complete introduction/loop boundary, an explicitly authored ending and a familiar-material instrument transfer. Source score and sound behavior remain separate from deliberate arrangement changes. The model audition, complete independent numeric integration and compiled SID/PRG delivery below are verified. The listener reports no audible difference in the reconstruction phrase and ending comparisons. The matched familiar-material transfer is also accepted for instruments, balance and ending.
 

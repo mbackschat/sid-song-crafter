@@ -32,7 +32,7 @@ Shared volume belongs to the score action order, not an individual instrument. V
 
 ## Reuse and evidence
 
-Use the [numeric player](../../../../scripts/studies/ghostbusters/player.py) for editable experiments and the [compiler](../../../../scripts/studies/ghostbusters/compiler.py) for native music exports. The [numeric receipt](../../../../evidence/ghostbusters-player/receipt.json), [compiled proof](../../../../evidence/ghostbusters-compiler/compiled/verification.json) and [VICE comparison](../../../../evidence/ghostbusters-compiler/vice/study.json) establish the declared execution scope. They do not establish the quality of a new instrument assignment, tuning conversion or ending. The owning [study plan](../../study-plan.md#delivery-order-and-work-in-progress) keeps the complete speech/music audition separate from the accepted familiar-material transfer.
+Use the [numeric player](../../../../scripts/studies/ghostbusters/player.py) for editable experiments and the [compiler](../../../../scripts/studies/ghostbusters/compiler.py) for native music exports. The [numeric receipt](../../../../evidence/ghostbusters-player/receipt.json), [compiled proof](../../../../evidence/ghostbusters-compiler/compiled/verification.json) and [VICE comparison](../../../../evidence/ghostbusters-compiler/vice/study.json) establish the declared execution scope. They do not establish the quality of a new instrument assignment, tuning conversion or ending. The owning [study plan](../../../../PLAN.md#delivery-order-and-work-in-progress) keeps the complete speech/music audition separate from the accepted familiar-material transfer.
 
 ## Familiar-material transfer and listening verdict
 

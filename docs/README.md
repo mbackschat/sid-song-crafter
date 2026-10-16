@@ -46,5 +46,5 @@ Use the [project overview](../README.md) for SID Song Crafter's purpose and curr
 ## Research and choose the next study
 
 - [Technique lookup](research/technique-index.md): find an existing method by musical purpose and its recorded verdict.
-- [Study plan](research/study-plan.md): active work, signature composer candidates and later song priorities.
+- [Project plan](../PLAN.md): sole authority for scope, active/queued/deferred work and completion.
 - [Research library](research/README.md): hardware, composition, composers, tools and source provenance.

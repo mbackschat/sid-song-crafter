@@ -1,6 +1,6 @@
 # Pop songs and TV/film themes: pinned intake
 
-This owns intake and retained preparation for the four later references in the [study plan](../study-plan.md). [Take On Me](take-on-me-preparation.md#familiar-transfer-and-case-closure) and [Billie Jean](billie-jean-preparation.md#listening-verdicts-and-case-closure) are complete for their accepted reconstructions, authored endings and familiar transfers. [Airwolf](airwolf-preparation.md#listening-verdicts-and-case-closure) is complete for its accepted phrase, corrected source continuation and familiar transfer. Ghostbusters is active. Source attribution and historical evidence below retain their original bounded scope.
+This owns intake and retained preparation for the four later references in the [study plan](../../../PLAN.md). [Take On Me](take-on-me-preparation.md#familiar-transfer-and-case-closure) and [Billie Jean](billie-jean-preparation.md#listening-verdicts-and-case-closure) are complete for their accepted reconstructions, authored endings and familiar transfers. [Airwolf](airwolf-preparation.md#listening-verdicts-and-case-closure) is complete for its accepted phrase, corrected source continuation and familiar transfer. Ghostbusters is active. Source attribution and historical evidence below retain their original bounded scope.
 
 ## Sources and attribution
 

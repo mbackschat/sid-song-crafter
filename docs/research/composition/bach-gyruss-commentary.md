@@ -1,6 +1,6 @@
 # Gyruss: reception and post-acceptance Bach comparison
 
-Written research checked: 2026-10-14. The initial review below contains attributed opinions and catalogue information, with no listening or execution claim. The later [authorized audio comparison](#authorized-audio-comparison-after-mono-acceptance) is recorded separately. This bounded review informs the [single-SID Bach Toccata trial](../study-plan.md#bach-toccata-next-workbench-trial); the [technique lookup](../technique-index.md) and [repertoire](sound-design-repertoire.md) remain the routes to our reusable sound programs.
+Written research checked: 2026-10-14. The initial review below contains attributed opinions and catalogue information, with no listening or execution claim. The later [authorized audio comparison](#authorized-audio-comparison-after-mono-acceptance) is recorded separately. This bounded review informs the [single-SID Bach Toccata trial](../../../PLAN.md#bach-toccata-next-workbench-trial); the [technique lookup](../technique-index.md) and [repertoire](sound-design-repertoire.md) remain the routes to our reusable sound programs.
 
 ## Source and influence boundary
 
@@ -49,7 +49,7 @@ The selected C64 file is [HVSC GAMES/G-L/Gyruss.sid](https://www.hvsc.de/downloa
 
 The downloaded [HVSC Songlengths.md5](https://www.hvsc.de/download/C64Music/DOCUMENTS/Songlengths.md5) matches the SID's complete-file MD5 `9073056c5ef8fce5ebfa47937ab622b2`; it lists subtunes 1–8 as **49, 7, 5, 36, 70, 55, 9 and 67 seconds**. STIL identifies Bach's Toccata material in **#1, #2 and #4**, without establishing their in-game roles. Use these three numbered labels rather than inventing title/level/game-over identities. Catalogue durations determine bounded audition windows; they do not prove a natural ending or exact correspondence with our complete source-backed Toccata.
 
-Preserve NTSC timing and the declared 6581 model for Gyruss. Our accepted arrangement remains PAL/8580. This is an interpretation comparison under each artifact's own settings, not an isolated chip-model experiment or equal-time phrase alignment. The original-level A/B places Gyruss #1 first, then a half-second separator, then our complete accepted piece. It is not loudness-normalized; use the separate files when evaluating balance. The user also identified [US/PAL–NTSC portability](../study-plan.md#required-palntsc-portability) as a project requirement; reference rendering alone does not satisfy native export portability.
+Preserve NTSC timing and the declared 6581 model for Gyruss. Our accepted arrangement remains PAL/8580. This is an interpretation comparison under each artifact's own settings, not an isolated chip-model experiment or equal-time phrase alignment. The original-level A/B places Gyruss #1 first, then a half-second separator, then our complete accepted piece. It is not loudness-normalized; use the separate files when evaluating balance. The user also identified [US/PAL–NTSC portability](../../../PLAN.md#required-palntsc-portability) as a project requirement; reference rendering alone does not satisfy native export portability.
 
 
 Reproduce the numbered reference windows and the post-acceptance comparison with the [cached recipe](../../../config/listening/bach-gyruss-comparison.json):

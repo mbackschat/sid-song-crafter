@@ -4,7 +4,7 @@ Research updated: 2026-10-13. The priority is distinctive, expressive SID music:
 
 ## Active work
 
-Follow the [workbench study plan](study-plan.md): Flashdance, six composer studies, then two 1980s pop songs plus Airwolf and Ghostbusters. The plan owns sequence, completion criteria and remaining musical scope.
+Use [PLAN.md](../../PLAN.md) as the sole authority for overall scope, priorities, current status and remaining work. Research documents below own findings and evidence; their historical study sequence is retained in the plan.
 
 ## Browse the library
 

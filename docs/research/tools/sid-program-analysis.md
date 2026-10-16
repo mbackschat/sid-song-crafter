@@ -4,7 +4,7 @@ Learn an instrument by following the player that produces it: locate a liked pas
 
 ## Bound the investigation
 
-Choose work from the [active delivery milestone](../study-plan.md#delivery-order-and-work-in-progress). Before tracing or extending a model, record the unresolved question, which musical deliverable or supported behavior it blocks, the smallest useful experiment and its stopping condition in the owning study. A register mismatch, missing export behavior or listening complaint is a concrete reason; spare agent capacity is not.
+Choose work from the [active delivery milestone](../../../PLAN.md#delivery-order-and-work-in-progress). Before tracing or extending a model, record the unresolved question, which musical deliverable or supported behavior it blocks, the smallest useful experiment and its stopping condition in the owning study. A register mismatch, missing export behavior or listening complaint is a concrete reason; spare agent capacity is not.
 
 Stop expanding the investigation when the required evidence settles that question. Move to export, listening or original transfer through the [delivery workflow](../../workflows/decoded-song-workflow.md#deliver-one-musical-case). Preserve full evidence and declared limitations. Required complete-form, ending and cadence checks still apply; bounding the question does not permit replacing them with a convenient excerpt. Investigate additional variants or edge cases only when a changed contract, failing check or musical need makes them relevant.
 

@@ -1,6 +1,6 @@
 # Reproduce a selected reference intake
 
-Use [reference-intake.py](../../scripts/reference-intake.py) for repeatable source selection, bounded execution and source listening excerpts. A small spec is converted to a [cached runner recipe](listening-package.md); immutable attempts retain source hashes, registry URLs, subtunes, header declarations, settings, diagnostics and outputs. This prepares evidence for the [required composer contrasts](../research/study-plan.md#required-contrasting-references-for-the-six-composers). It does not decode a driver or establish causal corroboration, listening acceptance or a complete song.
+Use [reference-intake.py](../../scripts/reference-intake.py) for repeatable source selection, bounded execution and source listening excerpts. A small spec is converted to a [cached runner recipe](listening-package.md); immutable attempts retain source hashes, registry URLs, subtunes, header declarations, settings, diagnostics and outputs. This prepares evidence for the [required composer contrasts](../../PLAN.md#required-contrasting-references-for-the-six-composers). It does not decode a driver or establish causal corroboration, listening acceptance or a complete song.
 
 ## Run the checked-in examples
 

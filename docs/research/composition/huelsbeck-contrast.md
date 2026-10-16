@@ -1,6 +1,6 @@
 # Hülsbeck contrast: Shades and Giana in-game tune 1
 
-The required [M1 contrast](../study-plan.md#required-contrasting-references-for-the-six-composers) compares the accepted [Shades primary study](shades-preparation.md) with **The Great Giana Sisters, HVSC subtune 3, in-game tune 1**. Initialized execution corroborates pulse motion with GATE clear, narrows the shared-filter scheduling contract and identifies constant volume-register output in the first 10.35 seconds. The listener confirms that the original sounds more animated or different in tone; the bounded M1 contrast is complete. Preserve the accepted Shades reconstruction and familiar transfer; this bounded contrast does not promote another instrument or require a complete Giana reconstruction.
+The required [M1 contrast](../../../PLAN.md#required-contrasting-references-for-the-six-composers) compares the accepted [Shades primary study](shades-preparation.md) with **The Great Giana Sisters, HVSC subtune 3, in-game tune 1**. Initialized execution corroborates pulse motion with GATE clear, narrows the shared-filter scheduling contract and identifies constant volume-register output in the first 10.35 seconds. The listener confirms that the original sounds more animated or different in tone; the bounded M1 contrast is complete. Preserve the accepted Shades reconstruction and familiar transfer; this bounded contrast does not promote another instrument or require a complete Giana reconstruction.
 
 ## Source and musical selection
 

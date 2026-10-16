@@ -6,7 +6,7 @@ An original single-SID space-flight theme: warm bass, a clear moving-pulse lead,
 
 The first theme received: “yes, feel engaging and melodic, with a warm bass and clear lead . But melody (composition) is not nice, however this was not your point!” After the melody-only revision, the user said: “I don't enjoy. The song is not harmonic, bad composition. Maybe use at least a existing music score, don't try to compose a score. That is a much harder task”.
 
-Both compositions are rejected. The sounds and balance of the first audition were liked, which does not validate the notes or harmony. All melody, bass and harmony were invented for this trial; no existing score was used. This added an original-composition problem to the intended test of SID interpretation. Do not revise the piece further. The [next trial](../../docs/research/study-plan.md#active-score-interpretation-trial) uses existing musical scores.
+Both compositions are rejected. The sounds and balance of the first audition were liked, which does not validate the notes or harmony. All melody, bass and harmony were invented for this trial; no existing score was used. This added an original-composition problem to the intended test of SID interpretation. Do not revise the piece further. The [next trial](../../PLAN.md#active-score-interpretation-trial) uses existing musical scores.
 
 The complete PAL and NTSC drafts pass native CPU schedule/ending checks and sampled headless VICE checks. These establish playback, not good harmony or musical quality. The independent structural review was insufficient to judge the composition. Retain these findings and auditions as a rejected experiment, not an accepted repertoire composition or proof of productivity.
 

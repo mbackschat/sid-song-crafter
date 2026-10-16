@@ -1,6 +1,6 @@
 # Bach Toccata workbench trial
 
-The [active trial](../study-plan.md#bach-toccata-next-workbench-trial) aims for a fancy, grand balance of church-organ weight, sustained harmony and dramatic pacing with tasteful SID pulse motion, register contrast and selective arpeggiation. Held chords must retain substance. Organ score and performance supplied the source inputs, with the authorized influence of [written Gyruss commentary](bach-gyruss-commentary.md) recorded separately. The complete mono interpretation now has [listening acceptance](#complete-mono-acceptance-and-gyruss-comparison); the next authorized task is a C64 Gyruss audio comparison against that frozen independent baseline.
+The [active trial](../../../PLAN.md#bach-toccata-next-workbench-trial) aims for a fancy, grand balance of church-organ weight, sustained harmony and dramatic pacing with tasteful SID pulse motion, register contrast and selective arpeggiation. Held chords must retain substance. Organ score and performance supplied the source inputs, with the authorized influence of [written Gyruss commentary](bach-gyruss-commentary.md) recorded separately. The complete mono interpretation now has [listening acceptance](#complete-mono-acceptance-and-gyruss-comparison); the next authorized task is a C64 Gyruss audio comparison against that frozen independent baseline.
 
 ## Selected score and exact scope
 
