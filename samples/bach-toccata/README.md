@@ -2,7 +2,7 @@
 
 [Mono SID](bach-toccata.sid) · [Mono WAV](bach-toccata.wav) · [Stereo SID](bach-toccata-stereo.sid) · [Stereo WAV](bach-toccata-stereo.wav)
 
-The mono sample retains its [recorded listening scope](manifest.json). The new stereo presentation keeps the same notes, instruments and timing: melody centered, bass left, harmony right. It has complete CPU register checks, sampled headless VICE checks and rendered signal checks; stereo listening acceptance remains pending. No original reference recording is included.
+The mono sample retains its [recorded listening scope](manifest.json). The new stereo presentation keeps the same notes, instruments and timing: melody centered, bass left, harmony right. It has complete CPU register checks, sampled headless VICE checks and rendered signal checks; the stereo presentation is accepted on 2026-10-16. No original reference recording is included.
 
 ## Materials
 
@@ -25,4 +25,6 @@ Use the [setup guide](../../docs/setup/local-setup.md) for the renderer, Python 
 
 The rights basis remains the [mono manifest](manifest.json): public-domain Bach composition and Mutopia edition, with the project SID arrangement under MIT. SID-Wizard's embedded player retains its [separate notice](../../THIRD_PARTY_NOTICES.md#build-playback-and-validation-components). The stereo manifest pins outputs, source files and tool fingerprints.
 
-Model-assistance review, 2026-10-16: no call. Existing model trials cannot approve stereo placement or musical preference; reassess after human listening feedback.
+On 2026-10-16, after receiving the trimmed Rambo stereo and Bach stereo WAVs, the listener said: “Wow, these two are great stereo versins”. This accepts both presented stereo versions.
+
+Model-assistance review, 2026-10-16 / feedback and closure: no call. Human acceptance settles this presentation; existing model trials cannot approve stereo placement or musical preference. Reassess only for a new musical revision.

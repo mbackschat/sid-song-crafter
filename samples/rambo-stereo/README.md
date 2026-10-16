@@ -71,4 +71,6 @@ python3 scripts/listening-package.py samples/rambo-stereo/main.recipe.json --out
 
 The [recipe](main.recipe.json) creates the editable rebased chip descriptions, init assembly, SID, WAV and fingerprints. It checks all 9,414 remaining calls against the original ordered play stores, the normal frame-cycle budget, initial and ending execution in headless VICE, unclipped PCM and a quiet final second. The [main manifest](main-manifest.json) pins the corresponding sources, output files and verification. This modification retains the package's GPLv3 terms and attribution.
 
-Model-assistance review: no call. The user explicitly selected omission of the intro; source timing, complete execution and audio checks settle this packaging change. Listening acceptance of the underlying arrangement is unchanged; the newly initialized opening has not received a separate listening verdict.
+On 2026-10-16, after receiving the trimmed Rambo stereo and Bach stereo WAVs, the listener said: “Wow, these two are great stereo versins”. This accepts both presented stereo versions. The main-entry stereo release is now accepted alongside the complete arrangement.
+
+Model-assistance review, 2026-10-16 / feedback and closure: no call. Human acceptance settles this release; current models cannot adjudicate stereo preference. Reassess only for a new musical revision.

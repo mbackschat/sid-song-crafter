@@ -271,3 +271,7 @@ On 2026-10-14 the user instructed: “Let's not expand this experiment too much,
 - **Workflow:** reusable build/render/verification/comparison recipes and cached fingerprints reduced repeated execution. The extended accompaniment search also showed that technical iteration can optimize a weak musical role for too long; close bounded experiments when the user chooses to move on and preserve failed approaches for retrieval.
 
 Closure model-assistance review: skip additional inference. Existing controls do not qualify the models to decide musical usefulness; the human verdicts and explicit closure instruction settle this scope. Reassess at the next musical case's first representative audition. Regional export portability remains a separate required project task and is not claimed complete by closing Bach.
+
+## README stereo presentation acceptance, 2026-10-16
+
+The separately requested [stereo sample package](../../../samples/bach-toccata/README.md) preserves the complete accepted mono score and instruments with centered melody and split accompaniment. The listener accepted this presentation alongside trimmed Rambo stereo; the package owns the exact verdict, output fingerprints and feedback/closure model review. Preserve this stereo release without reopening the closed embellishment experiments.
