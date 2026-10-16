@@ -355,11 +355,27 @@ The [editable pitch-motion patch](lead-motion.patch.json) changes native control
 
 The [review](lead-motion-review.json) and [pitch diagnostic](../../evidence/axel-f-lead-motion/source-motion-diagnosis.json) retain the measured trajectories. Across 987 complete calls, frame differences occur only in lead frequency offsets 0/1, and all 24,699 ordered store identities agree with changed values confined to `$D400/$D401`. Sampled standalone VICE checks pass through the ending. The full hook is unclipped and quiet before the terminal volume clear. The baseline WAV is byte-identical to the preferred restored-release audition. The exact PCM pair uses common unity gain, 8.067216 seconds per half and a half-second gap; measurable differences establish delivery, not musical acceptance.
 
-The submitted [restored lead then trailing vibrato](../../build/axel-f-lead-motion-listening/restored-then-trailing-vibrato.ab.wav) compares only this pitch program. The full [preferred hook](../../build/axel-f-lead-motion-listening/restored-release.wav), [pitch-motion candidate](../../build/axel-f-lead-motion-listening/trailing-vibrato.wav) and [Hülsbeck reference](../../build/axel-f-master-palette-matched-listening/huelsbeck-lead-and-beat-9.5-20s.wav) retain context. The master differs in key, tempo, chip and accompaniment. Feedback is pending; do not integrate this patch across the full arrangement or apply it to the separately preferred high-lead/held-support roles on the strength of numeric checks.
+The submitted [restored lead then trailing vibrato](../../build/axel-f-lead-motion-listening/restored-then-trailing-vibrato.ab.wav) compares only this pitch program. The full [preferred hook](../../build/axel-f-lead-motion-listening/restored-release.wav), [pitch-motion candidate](../../build/axel-f-lead-motion-listening/trailing-vibrato.wav) and [Hülsbeck reference](../../build/axel-f-master-palette-matched-listening/huelsbeck-lead-and-beat-9.5-20s.wav) retain context. The master differs in key, tempo, chip and accompaniment. The listener confirms that the second half moves toward the desired chiptune quality, while finding the drum/snare a little too dominant and distracting from the lead. Select this lead direction for the main-lead role and address percussion balance separately; the separately preferred high-lead and held-support programs remain protected.
 
 Model-assistance review: no new call. The preceding authorized Qwen trial failed silence, and the current question needs human attribution and preference rather than another unqualified description. Reassess at the selected full rendition.
 
 ```sh
 python3 scripts/listening-package.py config/listening/axel-f-lead-motion.json --output build/axel-f-lead-motion
 python3 scripts/publish-listening.py build/axel-f-lead-motion/run.json --selection config/listening/axel-f-lead-motion.audition.json --output build/axel-f-lead-motion-listening
+```
+
+
+## Quieter snare with the preferred trailing lead
+
+The [balance patch](snare-balance.patch.json) changes only the selected snare sustain nibble, `4092→4072`. It retains attack, decay, release, waveform and falling pitch, all 82 percussion attacks, the kick/hat programs and the preferred main lead. This narrows the listener’s “drum/snare” prominence objection to one modest, testable first correction rather than assuming every percussion role needs attenuation. Sustain is an envelope level, not a linear output gain; the change must be checked in the actual shared-voice history.
+
+The [recipe](../../config/listening/axel-f-snare-balance.json) verifies identical note schedules and 24,699 ordered store locations/timestamps, with changed values confined to voice-2 SR `$D40D`. All 987 frames agree outside that register. Drum-muted PCM is identical, establishing that the lead/bass signal is preserved in this renderer. All 82 percussion diagnostic windows remain nonzero; the 16 snare windows’ duration-weighted energy falls by 1.741 dB, within the declared 1–3 dB screening range. Native/VICE, unclipped PCM, quiet pre-stop release and exact common-gain A/B checks pass. These measurements describe the native envelope correction, not a global WAV-volume adjustment or a guarantee of perceived balance.
+
+The listener accepts [previous drums then quieter snare](../../build/axel-f-snare-balance-listening/previous-then-quieter-snare.ab.wav): **“Yes, this balance works.”** The [review record](snare-balance-review.json) pins the pair, [previous full hook](../../build/axel-f-snare-balance-listening/preferred-lead-previous-drums.wav) and [selected full hook](../../build/axel-f-snare-balance-listening/preferred-lead-quieter-snare.wav). Keep the [Hülsbeck reference](../../build/axel-f-master-palette-matched-listening/huelsbeck-lead-and-beat-9.5-20s.wav) as the distinct master context. Select this combination for full integration: restored lead release, delayed downward pitch motion, varied rhythm and quieter snare. The complete performance and ending remain open; this does not approve applying the foreground lead to other roles.
+
+Model-assistance review: no call. The human verdict settles this scoped balance, and the prior Qwen silence failure still excludes its descriptions. Reassess at the full rendition without automatically repeating a paid trial.
+
+```sh
+python3 scripts/listening-package.py config/listening/axel-f-snare-balance.json --output build/axel-f-snare-balance
+python3 scripts/publish-listening.py build/axel-f-snare-balance/run.json --selection config/listening/axel-f-snare-balance.audition.json --output build/axel-f-snare-balance-listening
 ```

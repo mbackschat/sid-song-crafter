@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-16",
-  "status": "trailing-vibrato-awaiting-listening",
+  "status": "lead-motion-direction-preferred-percussion-too-dominant",
   "change": "Lead delayed pitch motion only: control1A to3A, vibrato24 to83, delay12 to14. Preferred ADSR0849 and all other voices retained.",
   "baselineMatchesPreferredRestoredWav": true,
   "submittedPairPcmVerified": true,
@@ -62,5 +62,10 @@
     ]
   },
   "sourceReference": "build/axel-f-master-palette-matched-listening/huelsbeck-lead-and-beat-9.5-20s.wav",
-  "modelAssistance": "No new call; Qwen failed the preceding silence control and is not qualified to attribute the reported quality. Human comparison is the next checkpoint."
+  "modelAssistance": "No new call; Qwen failed the preceding silence control and is not qualified to attribute the reported quality. Human comparison is the next checkpoint.",
+  "listeningVerdict": {
+    "verbatim": "yes to: Does the second half move toward that chiptune quality\nAlthough the drum/snare is a little too dominat, distracting from the lead",
+    "decision": "Retain trailing lead motion for the next comparison; reduce snare prominence without changing the lead or varied rhythm.",
+    "scope": "Positive directional verdict for the short lead-motion comparison with a percussion balance objection; not full-song acceptance."
+  }
 }
