@@ -1,0 +1,22 @@
+{
+  "measuredAt": "2026-10-16T22:21:59.326494+00:00",
+  "measurement": "du -sk allocated directory bytes; external archive and temporary test clones excluded from checkout",
+  "checkoutAllocatedBytes": {
+    ".": 7187451904,
+    "build": 5940101120,
+    ".local": 107450368,
+    ".tools": 519053312,
+    "evidence": 202821632,
+    "samples": 142942208,
+    ".git": 256540672
+  },
+  "externalArchiveAllocatedBytes": 249176064,
+  "optionalLfs": {
+    "files": 539,
+    "checkedOutLogicalBytes": 174280735,
+    "uniqueObjectBytes": 172164752,
+    "scope": "All current LFS paths are under evidence/; README skips them on clone; core recipe does not need them."
+  },
+  "wholeBuildDisposable": false,
+  "retainedExceptions": "Current listening paths, accepted deliveries, pinned inputs, deferred work and unclassified content remain protected; see pre-cleanup inventory and exact operation receipts."
+}

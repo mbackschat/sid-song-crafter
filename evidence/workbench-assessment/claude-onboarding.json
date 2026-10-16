@@ -1,0 +1,382 @@
+{
+  "task": "Bach Toccata BWV 565 source beats 0-10: attributed raw MIDI -> PAL MOS8580 single-SID via docs/workflows/own-score.md",
+  "host": {
+    "os": "macOS 27.0.1 (Darwin 27.0.0) arm64",
+    "agent": "Claude Code (Claude Agent SDK)",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)"
+  },
+  "timestampsUtc": {
+    "start": "2026-10-16T22:12:28Z",
+    "firstPlayableSidPrgSwmWav": "2026-10-16T22:13:56Z",
+    "end": "2026-10-16T22:15:55Z",
+    "note": "UTC; local date on host is 2026-10-17 (UTC+2). First playable = end of native-song.py build (epoch 1792188836); start epoch 1792188748."
+  },
+  "systemPrerequisites": {
+    "python3": "Python 3.9.6 (/usr/bin/python3)",
+    "uv": "uv 0.13.1 (Homebrew 2026-10-14 aarch64-apple-darwin)",
+    "git": "git version 2.54.0 (Apple Git-157)",
+    "c++": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+    "make": "GNU Make 3.81",
+    "curl": "curl 8.7.1 (x86_64-apple-darwin26.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.69.0",
+    "bun": "1.4.3",
+    "node": "v26.10.0",
+    "uvResolvedInterpreterForTargetInstalls": "CPython 3.10.13 (/opt/homebrew/Caskroom/miniconda/base/bin/python), as reported by uv",
+    "vice": {
+      "installed": false,
+      "evidence": "x64sc and x64 not on PATH; .tools/vice-headless-3.9 absent. Not built, per task scope."
+    }
+  },
+  "dependenciesInstalledByRun": {
+    "py65==1.2.0": ".tools/test-deps (uv, project-local cache .local/uv-cache)",
+    "mido==1.3.3, packaging==24.2": ".tools/arrangement-deps",
+    "libsidplayfp 3.1.1 arm64_tahoe bottle": ".local/downloads (sha256 verified 7e288275...), extracted to .local/tools; scripts/render-sid.cpp built to .local/bin/render-sid (sha256 f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46)",
+    "SID-Wizard 1.97 + 64tass 1.60.3243 + 1-SID exporter": "scripts/setup-sidwizard.py (archive sha256 values pinned in the script and recorded in export.json); .tools/sid-wizard-exporter",
+    "notInstalled": [
+      "VICE",
+      "ML/audio-model dependencies",
+      "optional study evidence / Git LFS payloads",
+      "c64bridge / bridge dependencies",
+      "bun packages"
+    ]
+  },
+  "commandsExecuted": {
+    "timedByWrapper": [
+      {
+        "label": "bottle-download",
+        "startedUtc": "2026-10-16T22:12:54Z",
+        "elapsedSeconds": 1,
+        "exitCode": 0,
+        "command": "curl --connect-timeout 4 --max-time 60 -fsSL -H Authorization: Bearer QQ== https://ghcr.io/v2/homebrew/core/libsidplayfp/blobs/sha256:7e28827526f55a6b86db4ab3f6ec73d8444f0d0c70c1b2c1144928b19d8ce0dc -o .local/downloads/libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz"
+      },
+      {
+        "label": "uv-py65",
+        "startedUtc": "2026-10-16T22:12:54Z",
+        "elapsedSeconds": 11,
+        "exitCode": 0,
+        "command": "uv --cache-dir .local/uv-cache pip install --target .tools/test-deps py65==1.2.0"
+      },
+      {
+        "label": "uv-mido",
+        "startedUtc": "2026-10-16T22:12:54Z",
+        "elapsedSeconds": 11,
+        "exitCode": 0,
+        "command": "uv --cache-dir .local/uv-cache pip install --target .tools/arrangement-deps mido==1.3.3 packaging==24.2"
+      },
+      {
+        "label": "build-render-sid",
+        "startedUtc": "2026-10-16T22:13:12Z",
+        "elapsedSeconds": 4,
+        "exitCode": 0,
+        "command": "c++ -std=c++17 -O2 -Wall -Wextra -Werror -I.local/tools/libsidplayfp/3.1.1/include scripts/render-sid.cpp .local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a -o .local/bin/render-sid"
+      },
+      {
+        "label": "setup-sidwizard",
+        "startedUtc": "2026-10-16T22:13:12Z",
+        "elapsedSeconds": 7,
+        "exitCode": 1,
+        "command": "python3 scripts/setup-sidwizard.py"
+      },
+      {
+        "label": "setup-sidwizard-retry",
+        "startedUtc": "2026-10-16T22:13:33Z",
+        "elapsedSeconds": 10,
+        "exitCode": 0,
+        "command": "python3 scripts/setup-sidwizard.py"
+      },
+      {
+        "label": "doctor",
+        "startedUtc": "2026-10-16T22:13:48Z",
+        "elapsedSeconds": 0,
+        "exitCode": 0,
+        "command": "python3 scripts/doctor.py --profile demo --sid-count 1"
+      },
+      {
+        "label": "import-midi",
+        "startedUtc": "2026-10-16T22:13:48Z",
+        "elapsedSeconds": 0,
+        "exitCode": 0,
+        "command": "python3 scripts/import-midi.py songs/studies/bach-toccata-opening/source/ToccataFugue.mid config/own-score/import.json build/own-score-inspect/full-common-score.json"
+      },
+      {
+        "label": "prepare",
+        "startedUtc": "2026-10-16T22:13:48Z",
+        "elapsedSeconds": 0,
+        "exitCode": 0,
+        "command": "python3 scripts/prepare-score-audition.py songs/studies/bach-toccata-opening/source/ToccataFugue.mid config/own-score/import.json --arrangement config/own-score/reduction.json --candidate config/own-score/native.json --reference config/own-score/plain.json --output build/own-score-inputs"
+      },
+      {
+        "label": "native-build",
+        "startedUtc": "2026-10-16T22:13:52Z",
+        "elapsedSeconds": 4,
+        "exitCode": 0,
+        "command": "python3 scripts/native-song.py build build/own-score-inputs/candidate.json --output build/own-score-native --excerpt-seconds 8"
+      },
+      {
+        "label": "listening-recipe",
+        "startedUtc": "2026-10-16T22:14:03Z",
+        "elapsedSeconds": 8,
+        "exitCode": 0,
+        "command": "python3 scripts/listening-package.py config/listening/own-score-midi.json --output build/own-score-package"
+      },
+      {
+        "label": "listening-recipe-rerun",
+        "startedUtc": "2026-10-16T22:14:41Z",
+        "elapsedSeconds": 0,
+        "exitCode": 0,
+        "command": "python3 scripts/listening-package.py config/listening/own-score-midi.json --output build/own-score-package"
+      }
+    ],
+    "untimedOrInstantaneous": [
+      "date/git log/uname/version probes",
+      "grep/ls of docs; Read of docs/workflows/own-score.md and README.md",
+      "python3 -c sha256 assertion of the bottle",
+      "mkdir -p .local/tools .local/bin",
+      "tar -tf / tar -xf of the bottle",
+      "inline Python (python3 -I) summarizing build/own-score-native/verification.json, export.json and build/own-score-inputs/adaptation.json (substituted for the doc's score-inspection snippet, which was not run)",
+      "shasum -a 256 and du -sk collection",
+      "cp .local/logs/setup-sidwizard.log setup-sidwizard.attempt1.log"
+    ],
+    "wrapper": "/private/tmp/sid-onboarding-20261017/timed.sh logs each command to .local/logs/<label>.log and timings.tsv (wrapper kept outside the clone; PYTHONPATH=.tools/arrangement-deps exported for import/prepare/native/recipe steps)",
+    "docSequenceDeviations": [
+      "renderer bottle downloaded to .local/downloads instead of /private/tmp/c64-sid-libsidplayfp-...tar.gz",
+      "scripts/setup-sidwizard.py run twice (first failed)",
+      "recipe run twice (second observes reuse)",
+      "doctor --profile demo --sid-count 1 was run after the renderer and SID-Wizard setup (it checks both), not immediately after the mido install",
+      "VICE verification, doctor --profile score and NTSC build not run (out of scope)"
+    ]
+  },
+  "frictionFailuresInterventions": [
+    {
+      "id": 1,
+      "kind": "transient network failure",
+      "where": "python3 scripts/setup-sidwizard.py (first attempt, 7s, exit 1)",
+      "detail": "curl exit 28: connect to csdb.dk:443 timed out at the script's hard-coded --connect-timeout 5; a manual probe immediately afterwards measured time_connect 6.19s. Intervention: reran the identical unmodified command; it succeeded in 10s and all pinned SHA-256 checks passed.",
+      "suggestedCorrection": "scripts/setup-sidwizard.py acquire(): add a retry or a larger connect timeout. Not applied (no repo files were changed)."
+    },
+    {
+      "id": 2,
+      "kind": "documentation path outside the clone",
+      "where": "docs/workflows/audio-workflow.md#pinned-library-setup",
+      "detail": "The bottle download target is /private/tmp/c64-sid-libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz, a shared location outside the clone that a stale file could satisfy. Intervention: downloaded to .local/downloads/ and ran the documented sha256 assertion and extraction against that path.",
+      "suggestedCorrection": "Use a project-local path such as .local/downloads/ in the guide."
+    },
+    {
+      "id": 3,
+      "kind": "interpreter mismatch (no failure)",
+      "where": "uv --cache-dir .local/uv-cache pip install --target ...",
+      "detail": "uv selected miniconda CPython 3.10.13 rather than system python3 3.9.6 for the --target installs. The packages are pure Python and the 3.9.6 scripts imported them (doctor and builds passed), so no action was needed.",
+      "suggestedCorrection": "Pass --python \"$(command -v python3)\" in the documented install lines to bind target dependencies to the interpreter that runs the scripts."
+    },
+    {
+      "id": 4,
+      "kind": "documentation step not executed",
+      "where": "own-score.md 'Inspect the imported parts' snippet",
+      "detail": "Replaced by an equivalent inspection of adaptation.json (importReport, reduction); full-common-score.json was produced by import-midi.py and by the preparer."
+    },
+    {
+      "id": 5,
+      "kind": "observation",
+      "detail": "Curl on this host is an x86_64 build (Rosetta-era binary) on arm64; it worked. py65/mido installs and the doctor demo profile needed no other intervention. Documented counts (3,651 notes, 31 of 50 retained, 679 calls, stop tick 626, 13.51 s, 0 clipped samples, ending AC RMS 0) all reproduced."
+    }
+  ],
+  "firstPlayableOutputs": {
+    "primaryBuild_build/own-score-native": {
+      "sid": {
+        "path": "build/own-score-native/export/candidate.sid",
+        "sha256": "9c19d43e833545690ce2b0a9711ff7ec25811d574e3429bccb5b1a95bfbc15d9",
+        "bytes": 3455
+      },
+      "prg": {
+        "path": "build/own-score-native/export/candidate.prg",
+        "sha256": "9e9139d963fed9acdf48c2565edf52b8d05c9f197a4475bb85993a29469524c9",
+        "bytes": 4327
+      },
+      "swm": {
+        "path": "build/own-score-native/conversion/candidate.swm",
+        "sha256": "e7457d892e23a2888b13e17c77b38b7ccfda5617b20851b7ec6d51b7b37fafef",
+        "bytes": 577
+      },
+      "wav_full_13.51s": {
+        "path": "build/own-score-native/native-song.wav",
+        "sha256": "12355b43d9b3a816813fb303e974974aa734620024c16a338089931f6099ee63",
+        "bytes": 1191524
+      },
+      "wav_excerpt_8s": {
+        "path": "build/own-score-native/native-song.excerpt.wav",
+        "sha256": "1e279b65dad8cea9fb261d3b6140c60004e2d3629483ce3dca47dc2e7c3e081b",
+        "bytes": 705644
+      }
+    },
+    "listeningRecipeBuild_byteIdenticalToPrimary": {
+      "candidate.sid": {
+        "path": "build/own-score-package/cache/candidate/09baabb4fb29f7289a4543052f304e0562f1905848bcb8c5043015d45065d0a0/attempt-2747422ae0c7469e9f931213489f57ea/song/export/candidate.sid",
+        "sha256": "9c19d43e833545690ce2b0a9711ff7ec25811d574e3429bccb5b1a95bfbc15d9",
+        "bytes": 3455
+      },
+      "candidate.prg": {
+        "path": "build/own-score-package/cache/candidate/09baabb4fb29f7289a4543052f304e0562f1905848bcb8c5043015d45065d0a0/attempt-2747422ae0c7469e9f931213489f57ea/song/export/candidate.prg",
+        "sha256": "9e9139d963fed9acdf48c2565edf52b8d05c9f197a4475bb85993a29469524c9",
+        "bytes": 4327
+      },
+      "candidate.swm": {
+        "path": "build/own-score-package/cache/candidate/09baabb4fb29f7289a4543052f304e0562f1905848bcb8c5043015d45065d0a0/attempt-2747422ae0c7469e9f931213489f57ea/song/conversion/candidate.swm",
+        "sha256": "e7457d892e23a2888b13e17c77b38b7ccfda5617b20851b7ec6d51b7b37fafef",
+        "bytes": 577
+      },
+      "candidate-full.wav": {
+        "path": "build/own-score-package/cache/candidate/09baabb4fb29f7289a4543052f304e0562f1905848bcb8c5043015d45065d0a0/attempt-2747422ae0c7469e9f931213489f57ea/song/native-song.wav",
+        "sha256": "12355b43d9b3a816813fb303e974974aa734620024c16a338089931f6099ee63",
+        "bytes": 1191524
+      },
+      "reference-full-reduced-score.wav": {
+        "path": "build/own-score-package/cache/reference/4b67fe9ffd93546a8f17696966f7f128d2c83e7ee7942052728f2ce452597f96/attempt-789e1b50868b4959973cea2e10ec77c1/song/native-song.wav",
+        "sha256": "b9ce21e1fca7ae0878ea20eda8b92c6f8816f219bf344ad1116f0a2ac5f6976b",
+        "bytes": 1191524
+      },
+      "plain-then-sid-phrase.ab.wav": {
+        "path": "build/own-score-package/cache/phrase/89c44e5bd6058bc7a5bb070047e40aa7501f1ea4ba94590d5e4f0730f94ac395/attempt-a415035ec46547878642644162b3a0a5/plain-then-sid-phrase.ab.wav",
+        "sha256": "5a94d2efe51f6b0c3b54b770088d6bfc8a8a865cd39cecd0a60ea79d58323140",
+        "bytes": 1455344
+      },
+      "plain-then-sid-ending.ab.wav": {
+        "path": "build/own-score-package/cache/ending/5ab1cc6893e5474cd9dce84f81a408f48e7f1111207f67c1d482b1f31b1aca6e/attempt-57469cb189f04f4b8719c2621a4b9d1e/plain-then-sid-ending.ab.wav",
+        "sha256": "9d0eb4417c2b02278987a8b2c43161a3ae960d42461b9499ce2d1b387cfb67f9",
+        "bytes": 926144
+      }
+    },
+    "listeningIndex": "build/own-score-package/listening.md",
+    "primaryVsRecipeIdentical": {
+      "sid": true,
+      "prg": true,
+      "swm": true,
+      "fullWav": true
+    },
+    "target": "PAL, MOS8580 declared, 1 SID at $D400, one player update per frame, PSID v2 header, SID-Wizard 1.97 Extra driver, load/init/play 0x1000/0x1000/0x1003, PRG start 0x080D",
+    "originalPreserved": {
+      "source": "songs/studies/bach-toccata-opening/source/ToccataFugue.mid",
+      "sha256": "1aabd00967aded08d6633482c211af46f679d97f01cfeaca43c83a59dfeeeb6b",
+      "copyUnchangedInBuild": true,
+      "attribution": "Anonymous, Mutopia 1780 typesetting from Bach-Gesellschaft Ausgabe 1867; declared Public Domain (per docs)"
+    }
+  },
+  "reductionsAndOmissions": {
+    "importedBeforeReduction": "all 3,651 source notes: right-manual 1,905, left-manual 1,417, pedal 329; 384 ticks/quarter, quarter=60",
+    "selected": "source beats [0,10): 50 notes; retained 31 (14 melody, 1 pedal bass, 16 harmony); omitted 19; 2 durations shortened",
+    "threeVoiceMapping": {
+      "voice1_melody": "right-manual -> $D400 voice 1, highest-at-onset, instrument 'lead' (pulse + looping pulse-width program)",
+      "voice2_bass": "pedal -> voice 2, sustained D2 beats 6-10 (the only pedal note in the span), reject-overlap, instrument 'bass' (sustained pulse + shared-filter program)",
+      "voice3_harmony": "left-manual -> voice 3, highest-at-onset with shorten-to-next-onset, instrument 'harmony' (triangle/pulse)"
+    },
+    "omittedNotes": "10 right-manual and 9 left-manual lower chord/octave tones dropped by highest-at-onset (right-manual MIDI 69,67,65,64,62,61,62,58,61,57 at beats 0,5/8,11/16,3/4,13/16,7/8,1,7,7,9; left-manual MIDI 45,43,41,40,38,37,38,49,52 at beats 4,37/8,75/16,19/4,77/16,39/8,5,7,7). Each carries an explicit reason in adaptation.json.",
+    "shortened": [
+      "left-manual G3 (MIDI 55) at beat 7: 9/4 -> 2 beats",
+      "left-manual D3 (MIDI 50) at beat 9: 1 -> 1/4 beat"
+    ],
+    "notIntroduced": "no transposition, new notes, or invented accompaniment; MIDI program changes, key signatures, text, velocity (does not choose SID dynamics), fermatas, ornaments and tempo expression are not performed",
+    "consequence": "three physical voices cannot carry full organ polyphony or independent overlapping tails; the span ends at beat 10 and is not the complete work's ending; the 19 omitted notes remain only in the preserved source and adaptation.json",
+    "reportPath": "build/own-score-inputs/adaptation.json"
+  },
+  "editableSidInstruments": {
+    "config": "config/own-score/native.json (reused documented template; compiled into build/own-score-inputs/candidate.json), plain control config/own-score/plain.json",
+    "instrumentsInModule": [
+      "lead",
+      "bass",
+      "harmony"
+    ],
+    "editRoute": "edit a copy of build/own-score-inputs/candidate.json (instrument programs + sections), build into a fresh output directory; candidate.swm opens in SID-Wizard (native edits do not flow back to JSON)",
+    "modifiedThisRun": false
+  },
+  "verification": {
+    "cpuAndSchedule": {
+      "cpu": "py65 NMOS 6502",
+      "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+      "playCalls": 679,
+      "maxPlayCycles": 2122,
+      "frameCycleBudget": 19656,
+      "noteStartsPerVoice": [
+        14,
+        1,
+        16
+      ],
+      "stopTick": 626,
+      "postStopGatesAndVolumeClear": true,
+      "outcome": "passed (native-song.py build exit 0)"
+    },
+    "signal": {
+      "durationSeconds": 13.508843537414966,
+      "peakDbfs": -9.05209643365335,
+      "clippedSamples": 0,
+      "acRmsDbfs": -22.97296712754477,
+      "endingAcRms": 0.0,
+      "renderer": "libsidplayfp 3.1.1 / SIDLite: 595740 mono PCM16 samples at 44100 Hz, clock PAL, subtune 1 of 1, SID model MOS8580 (declared)",
+      "outcome": "passed: nonzero signal, 0 clipped samples, silent ending"
+    },
+    "listeningRecipe": "5 stages (prepare, candidate, reference, phrase, ending) completed; exit 0",
+    "viceOrDoctorScoreProfile": "not run: VICE not installed; out of first-playable scope",
+    "doctorDemoProfile": "ready (renderer, py65, 1-SID native exporter OK)",
+    "sourceHash": "MIDI SHA-256 matched config/own-score/import.json pin (importer and preparer accepted it)",
+    "limits": "emulated, RAM-only CPU scheduling and PCM health only; not speaker playback, physical-SID match, hardware, or musical quality"
+  },
+  "recipeStages": {
+    "firstRecipeRun": {
+      "fresh": [
+        "prepare",
+        "candidate",
+        "reference",
+        "phrase",
+        "ending"
+      ],
+      "reused": []
+    },
+    "secondRecipeRun": {
+      "fresh": [],
+      "reused": [
+        "prepare",
+        "candidate",
+        "reference",
+        "phrase",
+        "ending"
+      ]
+    },
+    "reusedProjectInputs": [
+      "committed config/own-score/{import,reduction,native,plain}.json",
+      "committed config/listening/own-score-midi.json",
+      "committed Bach opening palette programs referenced by native.json",
+      "committed source MIDI"
+    ],
+    "notReused": [
+      "no prior build, cache, prepared score.json or Bach-specific preparer; the manual build under build/own-score-native and the recipe's cache are independent builds that produced byte-identical SID/PRG/SWM/WAV"
+    ]
+  },
+  "allocatedSizesKiB": {
+    "initialClone": null,
+    "initialCloneNote": "not measured before setup; .git was 82680 KiB at start and tracked content was unchanged (git status clean apart from ignored dirs)",
+    ".tools": 22132,
+    ".local": 9792,
+    "build": 17600,
+    ".git": 82628,
+    "wholeCloneDirectoryNow": 317096,
+    "derivedTrackedWorkingTreePlusGit": 267572,
+    "method": "du -sk (allocated 1 KiB blocks)"
+  },
+  "tokensAndCost": {
+    "costUsdSpentAtLastBudgetReading": 0.38,
+    "budgetUsd": 3,
+    "contextTokensConsumedApprox": 67996,
+    "note": "from the session budget/token counters visible at ~22:14:47Z; later usage (this write-up) is not included; provider-billed token breakdown unavailable (null)",
+    "billedTokens": null
+  },
+  "claims": {
+    "humanMusicalAcceptance": "none. No human listening was performed or requested; the reduction and its source-timed performance have no listening verdict.",
+    "comparativeProductivitySavings": "none can be inferred from this single cold run; no baseline was measured.",
+    "excluded": [
+      "no delegation, commit, push, MCP/bridge, audio model, or listening feedback",
+      "no repository file edited; generated output is in ignored .tools/.local/build; onboarding-result.json is the only new untracked file"
+    ]
+  },
+  "documentationCorrectionsNeeded": [
+    "setup-sidwizard.py connect timeout/retry (friction 1)",
+    "own-score/audio-workflow bottle path should be project-local (friction 2)",
+    "pin uv --python to python3 (friction 3)"
+  ]
+}

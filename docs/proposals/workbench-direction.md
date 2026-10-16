@@ -43,9 +43,9 @@ Earlier requirements remain in force: interpret attributed existing scores; supp
 
 The user's earlier approval of a specific four-clip OpenRouter/Qwen trial does not authorize new uploads. The [retained trial](../research/audio-assessment.md#axel-f-descriptive-follow-up-silence-failure) owns its selection, controls and silence failure; model observations remain experimental supporting evidence.
 
-## Current product and required baseline
+## Baseline audit and required repairs
 
-| Verified fact | Required consequence for option A | Evidence |
+| Pre-implementation finding (2026-10-16) | Required consequence for option A | Evidence |
 | --- | --- | --- |
 | The product is a CLI toolkit and reference library for interpreting scores. README states a reuse aim, but makes no measured or quantified productivity claim. | Preserve that factual description; distinguish measured production cost from savings. | [Product purpose](../../PRODUCTS.md), [README](../../README.md) |
 | Bach starts from an existing arrangement. The generic MIDI preparer requires explicit import, part/span and reduction choices and produces exactly three voices. | Provide a complete own-score walkthrough from MIDI, including those configurations, sounds, build commands and outputs. The agent must be able to follow it without the maintainer's chat history. | [Preparer](../../scripts/prepare-score-audition.py), [score workflow](../workflows/song-workflow.md) |
@@ -54,7 +54,7 @@ The user's earlier approval of a specific four-clip OpenRouter/Qwen trial does n
 | Setup pins upstream skills; `c64-sid` is default and `sid-music` optional. `.claude/skills` links to `.agents/skills`; local discovery has been checked in both hosts. | Preserve shared activation and corrections. Fresh-clone verification must check installation/discovery, not merely reuse this working checkout. | [Skills](../../skills/README.md), [setup evidence](../setup/local-setup.md#unified-local-setup), [corrections](../setup/skill-guidance.md) |
 | Native export supports three/six voices, both chip models and explicit PAL/NTSC. A recipe runner already handles commands, fingerprints, caches and receipts. | Use these existing tools; retain their target and verification contracts beneath any later agent interface. | [Native workflow](../workflows/native-song-workflow.md), [recipe runner](../workflows/listening-package.md) |
 
-The three baseline repairs in decision 1 are prerequisites, not optional improvements to be judged against a better-prepared skill. Their exact implementation and test tasks belong in [PLAN.md](../../PLAN.md). Keep the [SID Song Explorer proposal](web-player-and-analyser.md) separate; its playback/analysis application is not a dependency of this assessment.
+The three repairs are now implemented and both-host onboarding results are recorded in the [assessment](../validation/workbench-assessment.md); the table preserves the decision’s original basis. The three baseline repairs in decision 1 are prerequisites, not optional improvements to be judged against a better-prepared skill. Their exact implementation and test tasks belong in [PLAN.md](../../PLAN.md). Keep the [SID Song Explorer proposal](web-player-and-analyser.md) separate; its playback/analysis application is not a dependency of this assessment.
 
 ## Can skills depend on skills?
 

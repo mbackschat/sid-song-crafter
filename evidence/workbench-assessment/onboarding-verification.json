@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-17",
+  "sourceCommit": "a5ff2953917fe087617abe62e2149e58d2b0da8b",
+  "cloneBaseline": {
+    "date": "2026-10-16T22:11:57.536409+00:00",
+    "source": "local committed repository over file transport, shallow no-local clones, LFS smudge skipped; remote acquisition not tested",
+    "clones": [
+      {
+        "host": "codex",
+        "commit": "a5ff2953917fe087617abe62e2149e58d2b0da8b",
+        "cloneAllocatedBytes": 274046976,
+        "gitAllocatedBytes": 84664320,
+        "buildExists": false,
+        "localExists": false,
+        "toolsExists": false
+      },
+      {
+        "host": "claude",
+        "commit": "a5ff2953917fe087617abe62e2149e58d2b0da8b",
+        "cloneAllocatedBytes": 274046976,
+        "gitAllocatedBytes": 84664320,
+        "buildExists": false,
+        "localExists": false,
+        "toolsExists": false
+      }
+    ]
+  },
+  "protocolSha256": "3a3a7c0e15f6e1e22cdcf2f8401bdc105778f7045fe681f7a5e8a5ce1fd496f2",
+  "hostConfiguration": {
+    "codex": {
+      "cliVersion": "0.163.0",
+      "modelSelector": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "usage": [
+        {
+          "input_tokens": 2097069,
+          "cached_input_tokens": 2008960,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 15398,
+          "reasoning_output_tokens": 5032
+        }
+      ],
+      "costUsd": null,
+      "costNote": "CLI token counts are exposed; monetary cost is not."
+    },
+    "claude": {
+      "cliVersion": "2.1.302",
+      "modelSelector": "sonnet",
+      "effort": "xhigh",
+      "resolvedModel": "claude-sonnet-5-5",
+      "usage": {
+        "input_tokens": 36,
+        "cache_creation_input_tokens": 67929,
+        "cache_read_input_tokens": 888578,
+        "output_tokens": 19810,
+        "output_tokens_details": {
+          "thinking_tokens": 5159
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 67929,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "global",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 1478,
+            "cache_read_input_tokens": 77801,
+            "cache_creation_input_tokens": 1356,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 1356
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "reportedCostUsd": 0.5587457999999998,
+      "costBasis": "CLI list-price estimate, not a confirmed invoice; supersedes partial agent-reported counter."
+    }
+  },
+  "verifiedOutputs": {
+    "codex": {
+      "agentReportSha256": "a737a92d9d0476f5c65f9e30a95c0bb6866bac304a64261034768fcfa2397da1",
+      "outputs": [
+        {
+          "path": "build/own-score-native/export/candidate.sid",
+          "bytes": 3455,
+          "sha256": "9c19d43e833545690ce2b0a9711ff7ec25811d574e3429bccb5b1a95bfbc15d9"
+        },
+        {
+          "path": "build/own-score-native/export/candidate.prg",
+          "bytes": 4327,
+          "sha256": "9e9139d963fed9acdf48c2565edf52b8d05c9f197a4475bb85993a29469524c9"
+        },
+        {
+          "path": "build/own-score-native/conversion/candidate.swm",
+          "bytes": 577,
+          "sha256": "e7457d892e23a2888b13e17c77b38b7ccfda5617b20851b7ec6d51b7b37fafef"
+        },
+        {
+          "path": "build/own-score-native/native-song.wav",
+          "bytes": 1191524,
+          "sha256": "12355b43d9b3a816813fb303e974974aa734620024c16a338089931f6099ee63"
+        }
+      ]
+    },
+    "claude": {
+      "agentReportSha256": "b23adc346263849ee3e8a7d2422d7a4ad9a4b23f4187e8c9feaf011d95ca5bb2",
+      "outputs": [
+        {
+          "path": "build/own-score-native/export/candidate.sid",
+          "bytes": 3455,
+          "sha256": "9c19d43e833545690ce2b0a9711ff7ec25811d574e3429bccb5b1a95bfbc15d9"
+        },
+        {
+          "path": "build/own-score-native/export/candidate.prg",
+          "bytes": 4327,
+          "sha256": "9e9139d963fed9acdf48c2565edf52b8d05c9f197a4475bb85993a29469524c9"
+        },
+        {
+          "path": "build/own-score-native/conversion/candidate.swm",
+          "bytes": 577,
+          "sha256": "e7457d892e23a2888b13e17c77b38b7ccfda5617b20851b7ec6d51b7b37fafef"
+        },
+        {
+          "path": "build/own-score-native/native-song.wav",
+          "bytes": 1191524,
+          "sha256": "12355b43d9b3a816813fb303e974974aa734620024c16a338089931f6099ee63"
+        }
+      ]
+    }
+  },
+  "identicalCandidateSidAcrossHosts": true,
+  "limits": [
+    "Shallow clones of the local committed repository over file transport; no GitHub network transfer measured.",
+    "Fresh agent conversations and fresh project dependency/build caches; preinstalled macOS tools and host authentication retained.",
+    "First playable uses template configurations with raw MIDI, not an independently designed arrangement; excludes clone time.",
+    "No fresh VICE installation or human musical acceptance; separate maintainer VICE verification remains recorded.",
+    "No comparative composition-effort or model-speed claim."
+  ],
+  "launchInterventions": [
+    "Codex launcher initially used mutually exclusive --sandbox and --approve-for-me flags; corrected before agent start."
+  ],
+  "localRawEvidenceRetention": [
+    {
+      "host": "codex",
+      "localArchive": ".local/workbench-retention/onboarding/codex-generated-evidence.tar.gz",
+      "bytes": 519589,
+      "sha256": "8a73e54ea7127626ce448560484ac13c99f7da093ed80129ba2a819e884dbc3d",
+      "verifiedFiles": 116,
+      "scope": "Generated technical evidence, recipe receipts and logs; WAV previews omitted as reproducible. Source code retained at committed revision. Temporary clone removed after verification."
+    },
+    {
+      "host": "claude",
+      "localArchive": ".local/workbench-retention/onboarding/claude-generated-evidence.tar.gz",
+      "bytes": 460476,
+      "sha256": "5c62d3e5807ba697f6e7bec1d29ac15606aae1f52b161fa1a0ec2df060083396",
+      "verifiedFiles": 98,
+      "scope": "Generated technical evidence, recipe receipts and logs; WAV previews omitted as reproducible. Source code retained at committed revision. Temporary clone removed after verification."
+    }
+  ]
+}

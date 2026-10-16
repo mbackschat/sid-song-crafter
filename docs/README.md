@@ -25,6 +25,10 @@ Use the [project overview](../README.md) for SID Song Crafter's purpose and curr
 
 ## Verify execution
 
+- [Workbench onboarding and resource assessment](validation/workbench-assessment.md): fresh Codex/Claude Code results, storage reclamation, recovery and remaining evidence gaps.
+
+- [Record composition effort](workflows/effort-ledger.md): prospective human, agent and tool effort on the next authorized musical case.
+
 - [Prepare a reference intake](workflows/reference-intake.md): pin source and subtune, select a supported execution route, render bounded passages and prepare labelled source comparisons.
 - [Audit a callable PSID](validation/psid-audit.md): independent CPU execution and ordered register writes.
 - [Trace CIA-driven playback](validation/cia-tracing.md): real timer IRQs, latch changes, host assumptions and callable source observation.

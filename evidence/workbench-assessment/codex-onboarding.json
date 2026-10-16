@@ -1,0 +1,1586 @@
+{
+  "host": {
+    "application": "Codex",
+    "platform": "Darwin arm64",
+    "model": null,
+    "operatingSystem": "macOS 27.0.1",
+    "osBuild": "26A434",
+    "modelFamily": "GPT-6 (system-provided); exact selector unavailable"
+  },
+  "start": "2026-10-16T22:12:02+00:00",
+  "end": "2026-10-16T22:17:33.517674+00:00",
+  "firstPlayable": "2026-10-16T22:14:50.501129+00:00",
+  "timeLimitSeconds": 720,
+  "systemPrerequisites": {
+    "python": "3.15.0",
+    "uv": "0.13.1",
+    "git": "2.54.0 (Apple Git-157)",
+    "compiler": "Apple clang 21.0.0, arm64-apple-darwin27.0.0",
+    "bun": "installed, unused",
+    "ffmpeg": "installed, unused",
+    "viceOnPath": false,
+    "acmeOnPath": false,
+    "sidplayfpOnPath": false,
+    "curl": "8.7.1",
+    "make": "GNU Make 3.81",
+    "vice": {
+      "desktopInstalled": true,
+      "desktopExecutable": "/Applications/vice-arm64-gtk3-3.9/bin/x64sc",
+      "desktopVersion": "3.9 by installed package name; executable not run",
+      "projectHeadlessInstalled": false,
+      "projectRomsInstalled": false,
+      "used": false,
+      "standaloneVerification": "Skipped: optional for this first-playable scope; no VICE build attempted."
+    }
+  },
+  "commands": [
+    {
+      "command": "pwd && git status --short && rg -n \"own.score|own score|ToccataFugue|core dependencies|recipe\" README.md docs/setup/local-setup.md docs/workflows/song-workflow.md docs/workflows/listening-package.md docs/setup/skill-guidance.md && date -u +%Y-%m-%dT%H:%M:%SZ",
+      "elapsedSeconds": 0.13167675,
+      "exitCode": 0
+    },
+    {
+      "command": "cat docs/workflows/own-score.md README.md docs/setup/skill-guidance.md config/listening/own-score-midi.json config/own-score/import.json config/own-score/reduction.json config/own-score/native.json config/own-score/plain.json",
+      "elapsedSeconds": 1.2667e-05,
+      "exitCode": 0,
+      "outputTruncated": true
+    },
+    {
+      "command": "du -sk . .git .tools .local build; python3 --version; uv --version; git --version; clang --version; command -v acme; command -v sidplayfp; command -v x64sc; command -v x64; command -v bun; command -v ffmpeg; uname -sm",
+      "elapsedSeconds": 0.235772833,
+      "exitCode": 0
+    },
+    {
+      "command": "sed -n '42,86p' README.md; cat docs/setup/local-setup.md; sed -n '1,165p' docs/workflows/audio-workflow.md; sed -n '1,220p' scripts/setup-sidwizard.py; sed -n '1,200p' scripts/setup-project.py",
+      "elapsedSeconds": 5.459e-06,
+      "exitCode": 0,
+      "outputTruncated": true
+    },
+    {
+      "command": "sed -n '1,92p' docs/workflows/audio-workflow.md; sed -n '1,90p' docs/workflows/build-cache.md; sed -n '1,95p' docs/research/technique-index.md; sed -n '1,90p' docs/research/composition/bach-toccata.md",
+      "elapsedSeconds": 2.75e-06,
+      "exitCode": 0,
+      "outputTruncated": true
+    },
+    {
+      "command": "mkdir -p build/onboarding .local/tmp .local/downloads .local/uv-cache",
+      "elapsedSeconds": null,
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/doctor.py",
+        "--profile",
+        "demo",
+        "--sid-count",
+        "1",
+        "--json"
+      ],
+      "start": "2026-10-16T22:12:49.223599+00:00",
+      "elapsedSeconds": 0.26409491593949497,
+      "timeoutSeconds": 30.0,
+      "timedOut": false,
+      "exitCode": 1,
+      "log": "build/onboarding/command-07.log"
+    },
+    {
+      "argv": [
+        "uv",
+        "--cache-dir",
+        ".local/uv-cache",
+        "pip",
+        "install",
+        "--target",
+        ".tools/test-deps",
+        "py65==1.2.0"
+      ],
+      "start": "2026-10-16T22:12:52.788466+00:00",
+      "elapsedSeconds": 12.92760462500155,
+      "timeoutSeconds": 60.0,
+      "timedOut": false,
+      "exitCode": 2,
+      "log": "build/onboarding/command-08.log"
+    },
+    {
+      "argv": [
+        "uv",
+        "--cache-dir",
+        ".local/uv-cache",
+        "pip",
+        "install",
+        "--python",
+        "/opt/homebrew/bin/python3",
+        "--target",
+        ".tools/test-deps",
+        "py65==1.2.0"
+      ],
+      "start": "2026-10-16T22:13:15.333509+00:00",
+      "elapsedSeconds": 0.8772624998819083,
+      "timeoutSeconds": 60.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-09.log"
+    },
+    {
+      "argv": [
+        "uv",
+        "--cache-dir",
+        ".local/uv-cache",
+        "pip",
+        "install",
+        "--python",
+        "/opt/homebrew/bin/python3",
+        "--target",
+        ".tools/arrangement-deps",
+        "mido==1.3.3",
+        "packaging==24.2"
+      ],
+      "start": "2026-10-16T22:13:22.356572+00:00",
+      "elapsedSeconds": 0.3304089589510113,
+      "timeoutSeconds": 60.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-10.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/setup-sidwizard.py",
+        "--sid-count",
+        "1"
+      ],
+      "start": "2026-10-16T22:13:28.160413+00:00",
+      "elapsedSeconds": 15.576138332951814,
+      "timeoutSeconds": 210.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-11.log"
+    },
+    {
+      "argv": [
+        "curl",
+        "--connect-timeout",
+        "4",
+        "--max-time",
+        "20",
+        "-fsSL",
+        "https://ghcr.io/v2/homebrew/core/libsidplayfp/blobs/sha256:7e28827526f55a6b86db4ab3f6ec73d8444f0d0c70c1b2c1144928b19d8ce0dc",
+        "-o",
+        ".local/downloads/libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz"
+      ],
+      "start": "2026-10-16T22:13:59.171591+00:00",
+      "elapsedSeconds": 0.2852500840090215,
+      "timeoutSeconds": 25.0,
+      "timedOut": false,
+      "exitCode": 56,
+      "log": "build/onboarding/command-12.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "-c",
+        "import base64; from pathlib import Path; p=Path(\"docs/workflows/audio-workflow.md\"); print(\"Documented non-secret anonymous header:\"); print(\"\\n\".join(line for line in p.read_text().splitlines() if \"QQ==\" in line)); print(\"Literal header value decoded:\",base64.b64decode(\"QQ==\").decode())"
+      ],
+      "start": "2026-10-16T22:14:04.755189+00:00",
+      "elapsedSeconds": 0.047205124981701374,
+      "timeoutSeconds": 15.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-13.log"
+    },
+    {
+      "argv": [
+        "curl",
+        "--connect-timeout",
+        "4",
+        "--max-time",
+        "20",
+        "-fsSL",
+        "-H",
+        "Authorization: Bearer QQ==",
+        "https://ghcr.io/v2/homebrew/core/libsidplayfp/blobs/sha256:7e28827526f55a6b86db4ab3f6ec73d8444f0d0c70c1b2c1144928b19d8ce0dc",
+        "-o",
+        ".local/downloads/libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz"
+      ],
+      "start": "2026-10-16T22:14:13.079029+00:00",
+      "elapsedSeconds": 0.388578083133325,
+      "timeoutSeconds": 25.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-14.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "-c",
+        "import hashlib,tarfile; from pathlib import Path; p=Path(\".local/downloads/libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz\"); h=hashlib.sha256(p.read_bytes()).hexdigest(); assert h==\"7e28827526f55a6b86db4ab3f6ec73d8444f0d0c70c1b2c1144928b19d8ce0dc\",h; print(h); print(\"\\n\".join(tarfile.open(p).getnames())); Path(\".local/tools\").mkdir(parents=True,exist_ok=True); Path(\".local/bin\").mkdir(exist_ok=True)"
+      ],
+      "start": "2026-10-16T22:14:24.850014+00:00",
+      "elapsedSeconds": 0.05235474999062717,
+      "timeoutSeconds": 15.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-15.log"
+    },
+    {
+      "argv": [
+        "tar",
+        "-xf",
+        ".local/downloads/libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz",
+        "-C",
+        ".local/tools"
+      ],
+      "start": "2026-10-16T22:14:25.015982+00:00",
+      "elapsedSeconds": 0.02367179188877344,
+      "timeoutSeconds": 15.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-16.log"
+    },
+    {
+      "argv": [
+        "c++",
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-I.local/tools/libsidplayfp/3.1.1/include",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a",
+        "-o",
+        ".local/bin/render-sid"
+      ],
+      "start": "2026-10-16T22:14:25.195979+00:00",
+      "elapsedSeconds": 1.4346257920842618,
+      "timeoutSeconds": 60.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-17.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/doctor.py",
+        "--profile",
+        "demo",
+        "--sid-count",
+        "1",
+        "--json"
+      ],
+      "start": "2026-10-16T22:14:33.026958+00:00",
+      "elapsedSeconds": 0.20760000008158386,
+      "timeoutSeconds": 30.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-18.log"
+    },
+    {
+      "argv": [
+        "env",
+        "PYTHONPATH=.tools/arrangement-deps",
+        "python3",
+        "scripts/import-midi.py",
+        "songs/studies/bach-toccata-opening/source/ToccataFugue.mid",
+        "config/own-score/import.json",
+        "build/own-score-inspect/full-common-score.json"
+      ],
+      "start": "2026-10-16T22:14:33.343817+00:00",
+      "elapsedSeconds": 0.42251225002110004,
+      "timeoutSeconds": 30.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-19.log"
+    },
+    {
+      "argv": [
+        "env",
+        "PYTHONPATH=.tools/arrangement-deps",
+        "python3",
+        "scripts/prepare-score-audition.py",
+        "songs/studies/bach-toccata-opening/source/ToccataFugue.mid",
+        "config/own-score/import.json",
+        "--arrangement",
+        "config/own-score/reduction.json",
+        "--candidate",
+        "config/own-score/native.json",
+        "--reference",
+        "config/own-score/plain.json",
+        "--output",
+        "build/own-score-inputs"
+      ],
+      "start": "2026-10-16T22:14:33.995741+00:00",
+      "elapsedSeconds": 0.39999904204159975,
+      "timeoutSeconds": 30.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-20.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "-c",
+        "import json,hashlib; from pathlib import Path; p=Path(\"build/own-score-inputs\"); a=json.loads((p/\"adaptation.json\").read_text()); print(json.dumps(a,indent=2)); s=json.loads((p/\"full-common-score.json\").read_text()); print(\"Complete imported parts:\",[(v[\"id\"],len(v[\"events\"])) for v in s[\"parts\"]]); original=Path(\"songs/studies/bach-toccata-opening/source/ToccataFugue.mid\").read_bytes(); assert (p/\"source.mid\").read_bytes()==original; print(\"Preserved original SHA256:\",hashlib.sha256(original).hexdigest())"
+      ],
+      "start": "2026-10-16T22:14:48.005852+00:00",
+      "elapsedSeconds": 0.056822040816769004,
+      "timeoutSeconds": 15.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-21.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/native-song.py",
+        "build",
+        "build/own-score-inputs/candidate.json",
+        "--output",
+        "build/own-score-native",
+        "--excerpt-seconds",
+        "8"
+      ],
+      "start": "2026-10-16T22:14:48.185535+00:00",
+      "elapsedSeconds": 2.3155940410215408,
+      "timeoutSeconds": 240.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-22.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/listening-package.py",
+        "config/listening/own-score-midi.json",
+        "--output",
+        "build/own-score-package"
+      ],
+      "start": "2026-10-16T22:15:00.570228+00:00",
+      "elapsedSeconds": 6.78187704202719,
+      "timeoutSeconds": 540.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-23.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "-c",
+        "import json; from pathlib import Path; from datetime import datetime,timedelta; p=Path(\"onboarding-result.json\"); r=json.loads(p.read_text()); c=next(x for x in r[\"commands\"] if x.get(\"log\")==\"build/onboarding/command-22.log\"); r[\"firstPlayable\"]=(datetime.fromisoformat(c[\"start\"])+timedelta(seconds=c[\"elapsedSeconds\"])).isoformat(); r[\"firstPlayableElapsedSeconds\"]=(datetime.fromisoformat(r[\"firstPlayable\"])-datetime.fromisoformat(r[\"start\"])).total_seconds(); r[\"firstPlayableBasis\"]=\"Conservative timestamp at successful complete build exit, including CPU audit and WAV verification; earlier SID creation is not timed.\"; first=json.loads(Path(\"build/own-score-package/run.json\").read_text()); r[\"recipeStages\"][\"freshRun\"]=first; Path(\"build/onboarding/recipe-fresh-run.json\").write_text(json.dumps(first,indent=2)+\"\\n\"); p.write_text(json.dumps(r,indent=2)+\"\\n\"); print(\"First playable:\",r[\"firstPlayable\"]); print(Path(\"build/own-score-native/verification.json\").read_text()); print(\"Recipe receipt keys:\",list(first)); print(\"Reduction report keys:\",list(json.loads(Path(\"build/own-score-inputs/adaptation.json\").read_text())))"
+      ],
+      "start": "2026-10-16T22:15:15.691998+00:00",
+      "elapsedSeconds": 0.050191167043522,
+      "timeoutSeconds": 15.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-24.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/listening-package.py",
+        "config/listening/own-score-midi.json",
+        "--output",
+        "build/own-score-package"
+      ],
+      "start": "2026-10-16T22:15:15.987999+00:00",
+      "elapsedSeconds": 0.24874412501230836,
+      "timeoutSeconds": 60.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-25.log"
+    },
+    {
+      "argv": [
+        "rg",
+        "-n",
+        "-A",
+        "50",
+        "^## Automated cleanup|^### Automated cleanup|^## Retained source files",
+        "docs/workflows/build-cache.md",
+        "docs/research/composition/bach-toccata.md"
+      ],
+      "start": "2026-10-16T22:15:28.798375+00:00",
+      "elapsedSeconds": 0.029595041880384088,
+      "timeoutSeconds": 15.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-26.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/doctor.py",
+        "--profile",
+        "score",
+        "--sid-count",
+        "1",
+        "--json"
+      ],
+      "start": "2026-10-16T22:15:29.007219+00:00",
+      "elapsedSeconds": 0.5845452500507236,
+      "timeoutSeconds": 30.0,
+      "timedOut": false,
+      "exitCode": 1,
+      "log": "build/onboarding/command-27.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "-c",
+        "import json,shutil,subprocess; from pathlib import Path; print(subprocess.run([\"sw_vers\"],capture_output=True,text=True,timeout=5).stdout); print(\"Prerequisite paths:\", {n:shutil.which(n) for n in (\"python3\",\"uv\",\"git\",\"clang\",\"curl\",\"make\",\"x64sc\",\"x64\",\"vsid\")}); print(\"Documented installed application exists:\",Path(\"/Applications/vice-arm64-gtk3-3.9\").is_dir()); r=json.loads(Path(\"build/own-score-package/run.json\").read_text()); print(\"Recipe summary:\",json.dumps({k:r[k] for k in (\"status\",\"wallSeconds\",\"startedAt\",\"finishedAt\")},indent=2)); print(\"Stage keys:\",[(s.get(\"id\"),list(s)) for s in r[\"stages\"]]); a=json.loads(Path(\"build/own-score-inputs/adaptation.json\").read_text()); print(\"Reduction keys:\",list(a[\"reduction\"])); print(\"Conversion keys:\",list(json.loads(Path(\"build/own-score-native/conversion.json\").read_text())))"
+      ],
+      "start": "2026-10-16T22:15:29.806519+00:00",
+      "elapsedSeconds": 0.12785333301872015,
+      "timeoutSeconds": 15.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-28.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "-c",
+        "import json,subprocess; from pathlib import Path; c=json.loads(Path(\"build/own-score-native/conversion.json\").read_text()); print(json.dumps({k:c[k] for k in (\"clock\",\"sidModel\",\"sidCount\",\"ticksPerSecond\",\"rowTicks\",\"frameSpeed\",\"effectTimingPolicy\",\"envelopeTimingPolicy\",\"timingChanges\",\"articulationChanges\",\"shortNoteThreshold\")},indent=2)); a=json.loads(Path(\"build/own-score-inputs/adaptation.json\").read_text()); print(\"Reduction:\",json.dumps({k:a[\"reduction\"][k] for k in (\"sourceNotes\",\"retainedNotes\",\"omittedNotes\",\"shortenedNotes\",\"voices\")},indent=2)); print(subprocess.run([\"curl\",\"--version\"],capture_output=True,text=True,timeout=5).stdout.splitlines()[0]); print(subprocess.run([\"make\",\"--version\"],capture_output=True,text=True,timeout=5).stdout.splitlines()[0]); root=Path(\"/Applications/vice-arm64-gtk3-3.9\"); print(\"Installed VICE executable locations:\", [str(p) for p in root.glob(\"**/x64sc\") if p.is_file()])"
+      ],
+      "start": "2026-10-16T22:15:54.496987+00:00",
+      "elapsedSeconds": 0.09535987512208521,
+      "timeoutSeconds": 15.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-29.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/cleanup-build.py",
+        "--apply",
+        "--protect",
+        "build/onboarding",
+        "--protect",
+        "build/own-score-inspect",
+        "--protect",
+        "build/own-score-inputs",
+        "--protect",
+        "build/own-score-native",
+        "--protect",
+        "build/own-score-package",
+        "--output",
+        "build/onboarding-cleanup"
+      ],
+      "start": "2026-10-16T22:16:10.797779+00:00",
+      "elapsedSeconds": 0.2677812499459833,
+      "timeoutSeconds": 60.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": ".local/onboarding-logs/command-30.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "build/onboarding/finalize.py"
+      ],
+      "start": "2026-10-16T22:17:33.056643+00:00",
+      "elapsedSeconds": 0.4672102078329772,
+      "timeoutSeconds": 30.0,
+      "timedOut": false,
+      "exitCode": 0,
+      "log": "build/onboarding/command-31.log"
+    }
+  ],
+  "missingDependencies": [
+    "py65==1.2.0",
+    "mido==1.3.3",
+    "packaging==24.2",
+    "SID-Wizard 1.97 exporter",
+    "64tass 1.60.3243",
+    "libsidplayfp 3.1.1 renderer",
+    "VICE (optional, not installing)"
+  ],
+  "friction": [
+    {
+      "kind": "initial-probe",
+      "detail": "du reported absent .tools, .local and build; expected fresh checkout state."
+    },
+    {
+      "kind": "inspection-output",
+      "detail": "Large batched documentation reads were truncated; own-score guide and renderer setup instructions were visible. Subsequent reads use narrower ranges."
+    },
+    {
+      "kind": "readiness",
+      "commandLog": "build/onboarding/command-07.log",
+      "detail": "Initial demo readiness exited 1 for absent py65, renderer and native exporter; all three repaired using documented core setup."
+    },
+    {
+      "kind": "network",
+      "commandLog": "build/onboarding/command-08.log",
+      "detail": "Initial uv request exited 2 after sandbox DNS failure; authorized network escalation succeeded with fresh project-local cache."
+    },
+    {
+      "kind": "interpreter-selection",
+      "detail": "uv initially selected installed Miniconda Python 3.10.13; subsequent installs explicitly selected the existing /opt/homebrew/bin/python3 (3.15.0). No Miniconda files or packages were inspected or reused."
+    },
+    {
+      "kind": "automatic-approval-rejection",
+      "executed": false,
+      "elapsedSeconds": null,
+      "action": "Pinned libsidplayfp download using Authorization: Bearer QQ==",
+      "detail": "Automatic approval review initially rejected the literal anonymous header as a credential transmission. No request executed on that rejected attempt."
+    },
+    {
+      "kind": "http",
+      "commandLog": "build/onboarding/command-12.log",
+      "detail": "Credential-free renderer download exited 56 with HTTP 401."
+    },
+    {
+      "kind": "approval-recovery",
+      "commandLog": "build/onboarding/command-13.log",
+      "detail": "Verified local guide explicitly identifies QQ== as public anonymous access and decoded the fixed literal to A. Re-review approved the documented non-secret request; pinned checksum passed. No private/user credentials were read or transmitted."
+    },
+    {
+      "kind": "optional-readiness",
+      "commandLog": "build/onboarding/command-27.log",
+      "detail": "score readiness exited 1 only for absent clone-local headless VICE and C64 ROMs; Mido and all core demo checks passed. Desktop GTK VICE was found separately and not run."
+    }
+  ],
+  "interventions": [
+    "Created task-local command runner with process deadlines and retained logs.",
+    "Renderer bottle will use clone-local .local/downloads instead of shared /private/tmp filename in guide; content/hash unchanged.",
+    "Used explicit system Python for both uv target installations.",
+    "Used approved network access after sandbox DNS failure.",
+    "Established anonymous GHCR marker is non-secret before retrying the rejected download.",
+    "Kept the comparison cache and requested evidence protected during automated cleanup; cleanup logging was moved to .local to avoid a concurrent writer in build."
+  ],
+  "outputs": [
+    {
+      "role": "primary playable SID",
+      "path": "build/own-score-native/export/candidate.sid",
+      "sha256": "9c19d43e833545690ce2b0a9711ff7ec25811d574e3429bccb5b1a95bfbc15d9",
+      "bytes": 3455
+    },
+    {
+      "role": "standalone PRG",
+      "path": "build/own-score-native/export/candidate.prg",
+      "sha256": "9e9139d963fed9acdf48c2565edf52b8d05c9f197a4475bb85993a29469524c9",
+      "bytes": 4327
+    },
+    {
+      "role": "editable SID-Wizard song",
+      "path": "build/own-score-native/conversion/candidate.swm",
+      "sha256": "e7457d892e23a2888b13e17c77b38b7ccfda5617b20851b7ec6d51b7b37fafef",
+      "bytes": 577
+    },
+    {
+      "role": "full excerpt with release and verification tail",
+      "path": "build/own-score-native/native-song.wav",
+      "sha256": "12355b43d9b3a816813fb303e974974aa734620024c16a338089931f6099ee63",
+      "bytes": 1191524
+    },
+    {
+      "role": "first eight seconds",
+      "path": "build/own-score-native/native-song.excerpt.wav",
+      "sha256": "1e279b65dad8cea9fb261d3b6140c60004e2d3629483ce3dca47dc2e7c3e081b",
+      "bytes": 705644
+    }
+  ],
+  "verification": {
+    "readinessDemoPassed": true,
+    "readinessDemoLog": "build/onboarding/command-18.log",
+    "readinessScorePassed": false,
+    "readinessScoreFailureScope": "optional VICE executable and ROMs only",
+    "originalPreservedByteIdentically": true,
+    "cpuSchedulePassed": true,
+    "cpu": "py65 NMOS 6502",
+    "cpuEnvironment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "playCalls": 679,
+    "maximumPlayCycles": 2122,
+    "frameCycleBudget": 19656,
+    "schedule": {
+      "method": "Pinned Extra driver note-column reads, discrete sound-start state and orderlist reads; exact ticks and instrument selections",
+      "noteCounts": [
+        14,
+        1,
+        16
+      ],
+      "lastNotes": [
+        {
+          "voice": 0,
+          "tick": 451,
+          "nativeNote": 51,
+          "instrument": 1
+        },
+        {
+          "voice": 1,
+          "tick": 301,
+          "nativeNote": 27,
+          "instrument": 2
+        },
+        {
+          "voice": 2,
+          "tick": 476,
+          "nativeNote": 43,
+          "instrument": 3
+        }
+      ],
+      "stopTicks": [
+        626,
+        626,
+        626
+      ],
+      "stopVolumeClearTick": 626,
+      "postStopOffReads": [
+        52,
+        52,
+        52
+      ],
+      "postStopVolumeReads": [
+        52,
+        52,
+        52
+      ],
+      "postStopGatesAndVolumeClear": true,
+      "criticalNotes": [],
+      "limitations": "Discrete source-note scheduling and selected short-note full-pitch register frames are verified; ADSR reattacks, vibrato, per-voice PCM audibility and musical quality are not established by this check."
+    },
+    "pcm": {
+      "path": "/private/tmp/sid-onboarding-20261017/codex/build/own-score-native/native-song.wav",
+      "sha256": "12355b43d9b3a816813fb303e974974aa734620024c16a338089931f6099ee63",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 595740,
+      "durationSeconds": 13.508843537414966,
+      "peak": 11557,
+      "peakDbfs": -9.05209643365335,
+      "clippedSamples": 0,
+      "rms": 2350.868648140316,
+      "acRms": 2327.027837161244,
+      "acRmsDbfs": -22.97296712754477,
+      "perChannel": [
+        {
+          "dc": -333.9533588478195,
+          "rms": 2350.868648140316,
+          "acRms": 2327.027837161244
+        }
+      ]
+    },
+    "endingAcRms": 0.0,
+    "renderer": {
+      "command": [
+        "/private/tmp/sid-onboarding-20261017/codex/.local/bin/render-sid",
+        "/private/tmp/sid-onboarding-20261017/codex/build/own-score-native/export/candidate.sid",
+        "/private/tmp/sid-onboarding-20261017/codex/build/own-score-native/native-song.wav",
+        "13.508834684985036",
+        "--clock",
+        "pal"
+      ],
+      "executableSha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46",
+      "deadlineSeconds": 120,
+      "timedOut": false,
+      "returnCode": 0,
+      "stdout": "libsidplayfp 3.1.1 / SIDLite: 595740 mono PCM16 samples at 44100 Hz, clock PAL, subtune 1 of 1, SID model MOS8580 (declared)",
+      "stderr": ""
+    },
+    "conversionTimingChanges": [],
+    "nativeArticulationLimits": [
+      {
+        "kind": "native-first-frame-and-envelope",
+        "scope": "Every native note selection",
+        "basis": "SID-Wizard 1.97 player.asm STRTSND/SETWFR1 and tempo-1 FASTSPEEDBIND",
+        "effect": "First frame initializes only frequency high byte and the chosen frame1 waveform; full frequency and table body follow on the next tick. Tempo 1 bypasses hard restart; adjacent notes without a gate-off cell do not retrigger the envelope."
+      }
+    ],
+    "receipt": {
+      "role": "CPU and signal verification",
+      "path": "build/own-score-native/verification.json",
+      "sha256": "aa2bd5a0c5519fa219016886d55a77acf732884a7e365673ae1f8e669972a6c0",
+      "bytes": 7685
+    },
+    "hardwareOrSpeakerPlaybackChecked": false,
+    "humanListeningAcceptance": null,
+    "viceStandaloneChecked": false,
+    "directAndRecipeOutputHashesAgree": true
+  },
+  "recipeStages": {
+    "freshRunReceipt": {
+      "role": "preserved first recipe receipt",
+      "path": "build/onboarding/recipe-fresh-run.json",
+      "sha256": "06cd5cb23df7062438357db709ad4edfdd3a818eaa271264f6a2c889dfcbcd71",
+      "bytes": 41888
+    },
+    "freshWallSeconds": 6.715348708210513,
+    "fresh": [
+      {
+        "id": "prepare",
+        "cacheHit": false,
+        "executionSeconds": 0.2515620000194758,
+        "wallSeconds": 0.2721115839667618
+      },
+      {
+        "id": "candidate",
+        "cacheHit": false,
+        "executionSeconds": 2.5966571669559926,
+        "wallSeconds": 2.6277889581397176
+      },
+      {
+        "id": "reference",
+        "cacheHit": false,
+        "executionSeconds": 3.1756877498701215,
+        "wallSeconds": 3.2852082918398082
+      },
+      {
+        "id": "phrase",
+        "cacheHit": false,
+        "executionSeconds": 0.31651570787653327,
+        "wallSeconds": 0.3301913340110332
+      },
+      {
+        "id": "ending",
+        "cacheHit": false,
+        "executionSeconds": 0.16830479097552598,
+        "wallSeconds": 0.17547295801341534
+      }
+    ],
+    "repeatRunReceipt": {
+      "role": "unchanged repeat receipt",
+      "path": "build/own-score-package/run.json",
+      "sha256": "792eb08d74f1fc84ceb34e37e9fee3ff84d04638bd0def781ac73b82c6923e87",
+      "bytes": 41673
+    },
+    "repeatWallSeconds": 0.11395354196429253,
+    "repeat": [
+      {
+        "id": "prepare",
+        "cacheHit": true,
+        "executionSeconds": 0,
+        "wallSeconds": 0.0215101249050349
+      },
+      {
+        "id": "candidate",
+        "cacheHit": true,
+        "executionSeconds": 0,
+        "wallSeconds": 0.02474712487310171
+      },
+      {
+        "id": "reference",
+        "cacheHit": true,
+        "executionSeconds": 0,
+        "wallSeconds": 0.024436083156615496
+      },
+      {
+        "id": "phrase",
+        "cacheHit": true,
+        "executionSeconds": 0,
+        "wallSeconds": 0.00510237505659461
+      },
+      {
+        "id": "ending",
+        "cacheHit": true,
+        "executionSeconds": 0,
+        "wallSeconds": 0.005573333008214831
+      }
+    ],
+    "scope": "All five stages fresh on first run; all five reused on unchanged repeat within this task. No earlier cache was reused.",
+    "abOrder": "A: plain triangle reduced-score control; 0.5-second gap; B: configured SID palette. Same reduced notes and timing, original amplitudes; control is not a full-polyphonic source performance."
+  },
+  "allocatedBytes": {
+    "initialCloneIncludingGit": 274046976,
+    "initialGit": 84664320,
+    ".tools": 22953984,
+    ".local": 9826304,
+    "build": 18358272,
+    ".git": 79831040,
+    "measurement": "du -sk, KiB multiplied by 1024; initial before task output or dependencies",
+    "finalMeasurementAt": "2026-10-16T22:17:33.217576+00:00"
+  },
+  "tokens": null,
+  "cost": null,
+  "constraints": {
+    "cloneOnly": true,
+    "delegation": false,
+    "commit": false,
+    "push": false,
+    "liveBridge": false,
+    "audioModels": false,
+    "humanListeningRequested": false,
+    "preparedArrangementReused": false,
+    "bachSpecificPreparerUsed": false
+  },
+  "limitations": [
+    "No human musical acceptance follows.",
+    "No comparative productivity savings follows.",
+    "Signal rendering does not establish speaker playback or physical SID equivalence."
+  ],
+  "firstPlayableElapsedSeconds": 168.501129,
+  "firstPlayableBasis": "Conservative timestamp at successful complete build exit, including CPU audit and WAV verification; earlier SID creation is not timed.",
+  "dependencies": {
+    "pythonPackages": {
+      "py65": "1.2.0",
+      "mido": "1.3.3",
+      "packaging": "24.2"
+    },
+    "exporter": {
+      "sidWizardVersion": "1.97",
+      "sidWizardArchiveUrl": "https://csdb.dk/getinternalfile.php/281063/SID-Wizard-1.97-sources-examples.tar.gz",
+      "sidWizardArchiveSha256": "aeb265f4a778b2acb5aad13e8e98af882888292f749f29f4d18cbf49850e57bc",
+      "assemblerVersion": "64tass 1.60.3243",
+      "assemblerArchiveUrl": "https://downloads.sourceforge.net/project/tass64/source/64tass-1.60.3243-src.zip",
+      "assemblerArchiveSha256": "9d83be3d23a2c55e085b7c7a7856c2f96080447ea120a6a8c21a217ed76427f0",
+      "exporterSha256": "02b3ad16fbe59bdd9d3fcbe77f7a9be7535dbe109fdbf0c7d9e2753896b3ad89",
+      "labelsSha256": "ebc2234576a5a98b07d570c93e0838c1da9d9f0aa6d669e5c1ae80ae32f90b2a",
+      "sidCount": 1,
+      "sourceModified": false
+    },
+    "rendererLibrary": {
+      "version": "libsidplayfp 3.1.1 / SIDLite",
+      "archive": {
+        "role": "pinned renderer archive",
+        "path": ".local/downloads/libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz",
+        "sha256": "7e28827526f55a6b86db4ab3f6ec73d8444f0d0c70c1b2c1144928b19d8ce0dc",
+        "bytes": 296276
+      },
+      "url": "https://ghcr.io/v2/homebrew/core/libsidplayfp/blobs/sha256:7e28827526f55a6b86db4ab3f6ec73d8444f0d0c70c1b2c1144928b19d8ce0dc",
+      "executable": {
+        "role": "fresh renderer executable",
+        "path": ".local/bin/render-sid",
+        "sha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46",
+        "bytes": 271704
+      }
+    },
+    "cachePolicy": "Fresh .local/uv-cache and clone-local pinned archives only; no sibling/maintainer checkout, prior build/cache or other agent output used."
+  },
+  "remainingMissingDependencies": [
+    "Project-local headless VICE and C64 ROMs (optional, intentionally not installed)"
+  ],
+  "neededDocumentationCorrections": [
+    {
+      "path": "scripts/doctor.py",
+      "detail": "The top-level remedy still says python3 scripts/setup-project.py for demo/score failures, although that installer acquires reference assets/skills rather than py65, renderer, native exporter or VICE. Per-check remedies and the own-score guide supplied the correct commands; no documentation or project source was rewritten."
+    }
+  ],
+  "source": {
+    "original": {
+      "role": "original raw MIDI, unchanged",
+      "path": "songs/studies/bach-toccata-opening/source/ToccataFugue.mid",
+      "sha256": "1aabd00967aded08d6633482c211af46f679d97f01cfeaca43c83a59dfeeeb6b",
+      "bytes": 30267
+    },
+    "preservedCopy": {
+      "role": "byte-identical preserved MIDI",
+      "path": "build/own-score-inputs/source.mid",
+      "sha256": "1aabd00967aded08d6633482c211af46f679d97f01cfeaca43c83a59dfeeeb6b",
+      "bytes": 30267
+    },
+    "attribution": {
+      "title": "Toccata and Fugue in D minor, BWV 565 (Mutopia 1780)",
+      "composer": "Johann Sebastian Bach",
+      "sourceFile": "songs/studies/bach-toccata-opening/source/ToccataFugue.mid",
+      "sourceSha256": "1aabd00967aded08d6633482c211af46f679d97f01cfeaca43c83a59dfeeeb6b",
+      "parts": [
+        {
+          "track": 1,
+          "id": "right-manual"
+        },
+        {
+          "track": 2,
+          "id": "left-manual"
+        },
+        {
+          "track": 3,
+          "id": "pedal"
+        }
+      ],
+      "provenance": {
+        "sourceUrl": "https://www.mutopiaproject.org/ftp/BachJS/BWV565/ToccataFugue/ToccataFugue.mid",
+        "catalogueUrl": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1780",
+        "sourceEdition": "Anonymous typesetting; Bach-Gesellschaft Ausgabe, 1867; Mutopia-2011/09/11-1780",
+        "usageTerms": "Public Domain, as declared in the retained LilyPond source; see THIRD_PARTY_NOTICES.md",
+        "timingPolicy": "Preserve MIDI quarter = 60 and note-off timing; fermatas, printed ornaments and expressive tempo changes are not performed by this MIDI."
+      }
+    },
+    "completeImportedNoteCount": 3651,
+    "parts": {
+      "right-manual": 1905,
+      "left-manual": 1417,
+      "pedal": 329
+    },
+    "selection": {
+      "startBeat": 0,
+      "endBeat": 10,
+      "interval": "[0,10)",
+      "tempoQuarterPerMinute": 60,
+      "durationSeconds": 10,
+      "endingScope": "Excerpt resolution and release, not whole-work ending."
+    }
+  },
+  "reduction": {
+    "selectedNotes": 50,
+    "retainedNotes": 31,
+    "omittedNotes": 19,
+    "omittedBySourcePart": {
+      "right-manual": 10,
+      "left-manual": 9
+    },
+    "omissions": [
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          0,
+          1
+        ],
+        "source": {
+          "part": "right-manual",
+          "eventIndex": 0,
+          "startBeat": [
+            0,
+            1
+          ],
+          "durationBeats": [
+            1,
+            2
+          ],
+          "midi": 69,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          5,
+          8
+        ],
+        "source": {
+          "part": "right-manual",
+          "eventIndex": 2,
+          "startBeat": [
+            5,
+            8
+          ],
+          "durationBeats": [
+            1,
+            16
+          ],
+          "midi": 67,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          11,
+          16
+        ],
+        "source": {
+          "part": "right-manual",
+          "eventIndex": 4,
+          "startBeat": [
+            11,
+            16
+          ],
+          "durationBeats": [
+            1,
+            16
+          ],
+          "midi": 65,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          3,
+          4
+        ],
+        "source": {
+          "part": "right-manual",
+          "eventIndex": 6,
+          "startBeat": [
+            3,
+            4
+          ],
+          "durationBeats": [
+            1,
+            16
+          ],
+          "midi": 64,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          13,
+          16
+        ],
+        "source": {
+          "part": "right-manual",
+          "eventIndex": 8,
+          "startBeat": [
+            13,
+            16
+          ],
+          "durationBeats": [
+            1,
+            16
+          ],
+          "midi": 62,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          7,
+          8
+        ],
+        "source": {
+          "part": "right-manual",
+          "eventIndex": 10,
+          "startBeat": [
+            7,
+            8
+          ],
+          "durationBeats": [
+            1,
+            8
+          ],
+          "midi": 61,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          1,
+          1
+        ],
+        "source": {
+          "part": "right-manual",
+          "eventIndex": 12,
+          "startBeat": [
+            1,
+            1
+          ],
+          "durationBeats": [
+            1,
+            4
+          ],
+          "midi": 62,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          7,
+          1
+        ],
+        "source": {
+          "part": "right-manual",
+          "eventIndex": 19,
+          "startBeat": [
+            7,
+            1
+          ],
+          "durationBeats": [
+            2,
+            1
+          ],
+          "midi": 58,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          7,
+          1
+        ],
+        "source": {
+          "part": "right-manual",
+          "eventIndex": 20,
+          "startBeat": [
+            7,
+            1
+          ],
+          "durationBeats": [
+            2,
+            1
+          ],
+          "midi": 61,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          9,
+          1
+        ],
+        "source": {
+          "part": "right-manual",
+          "eventIndex": 22,
+          "startBeat": [
+            9,
+            1
+          ],
+          "durationBeats": [
+            1,
+            1
+          ],
+          "midi": 57,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          4,
+          1
+        ],
+        "source": {
+          "part": "left-manual",
+          "eventIndex": 5,
+          "startBeat": [
+            4,
+            1
+          ],
+          "durationBeats": [
+            1,
+            2
+          ],
+          "midi": 45,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          37,
+          8
+        ],
+        "source": {
+          "part": "left-manual",
+          "eventIndex": 7,
+          "startBeat": [
+            37,
+            8
+          ],
+          "durationBeats": [
+            1,
+            16
+          ],
+          "midi": 43,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          75,
+          16
+        ],
+        "source": {
+          "part": "left-manual",
+          "eventIndex": 9,
+          "startBeat": [
+            75,
+            16
+          ],
+          "durationBeats": [
+            1,
+            16
+          ],
+          "midi": 41,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          19,
+          4
+        ],
+        "source": {
+          "part": "left-manual",
+          "eventIndex": 11,
+          "startBeat": [
+            19,
+            4
+          ],
+          "durationBeats": [
+            1,
+            16
+          ],
+          "midi": 40,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          77,
+          16
+        ],
+        "source": {
+          "part": "left-manual",
+          "eventIndex": 13,
+          "startBeat": [
+            77,
+            16
+          ],
+          "durationBeats": [
+            1,
+            16
+          ],
+          "midi": 38,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          39,
+          8
+        ],
+        "source": {
+          "part": "left-manual",
+          "eventIndex": 15,
+          "startBeat": [
+            39,
+            8
+          ],
+          "durationBeats": [
+            1,
+            8
+          ],
+          "midi": 37,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          5,
+          1
+        ],
+        "source": {
+          "part": "left-manual",
+          "eventIndex": 17,
+          "startBeat": [
+            5,
+            1
+          ],
+          "durationBeats": [
+            1,
+            4
+          ],
+          "midi": 38,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          7,
+          1
+        ],
+        "source": {
+          "part": "left-manual",
+          "eventIndex": 19,
+          "startBeat": [
+            7,
+            1
+          ],
+          "durationBeats": [
+            2,
+            1
+          ],
+          "midi": 49,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          7,
+          1
+        ],
+        "source": {
+          "part": "left-manual",
+          "eventIndex": 20,
+          "startBeat": [
+            7,
+            1
+          ],
+          "durationBeats": [
+            2,
+            1
+          ],
+          "midi": 52,
+          "velocity": 90
+        },
+        "reason": "Lower chord note omitted by highest-at-onset"
+      }
+    ],
+    "shortenedNotes": [
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          7,
+          1
+        ],
+        "source": {
+          "part": "left-manual",
+          "eventIndex": 21,
+          "startBeat": [
+            7,
+            1
+          ],
+          "durationBeats": [
+            9,
+            4
+          ],
+          "midi": 55,
+          "velocity": 90
+        },
+        "voice": "harmony",
+        "voiceIndex": 2,
+        "outputEventIndex": 12,
+        "outputDurationBeats": [
+          2,
+          1
+        ]
+      },
+      {
+        "spanIndex": 0,
+        "selectedStartBeat": [
+          9,
+          1
+        ],
+        "source": {
+          "part": "left-manual",
+          "eventIndex": 22,
+          "startBeat": [
+            9,
+            1
+          ],
+          "durationBeats": [
+            1,
+            1
+          ],
+          "midi": 50,
+          "velocity": 90
+        },
+        "voice": "harmony",
+        "voiceIndex": 2,
+        "outputEventIndex": 13,
+        "outputDurationBeats": [
+          1,
+          4
+        ]
+      }
+    ],
+    "voices": [
+      {
+        "role": "upper manual gestures",
+        "sourcePart": "right-manual",
+        "chip": "$D400",
+        "voice": 1,
+        "noteCount": 14,
+        "policy": "highest-at-onset; omit lower simultaneous octave/chord tones",
+        "instrument": "lead: pulse with looping PWM"
+      },
+      {
+        "role": "pedal foundation",
+        "sourcePart": "pedal",
+        "chip": "$D400",
+        "voice": 2,
+        "noteCount": 1,
+        "policy": "retain D2 at beat 6 through beat 10",
+        "instrument": "bass: sustained pulse; owns shared filter"
+      },
+      {
+        "role": "lower manual gestures and resolution",
+        "sourcePart": "left-manual",
+        "chip": "$D400",
+        "voice": 3,
+        "noteCount": 16,
+        "policy": "highest-at-onset; shorten overlaps to preserve next source onsets",
+        "instrument": "harmony: sustained triangle/pulse"
+      }
+    ],
+    "durationChanges": [
+      "Left-manual G3 at beat 7: 9/4 -> 2 beats.",
+      "Left-manual D3 at beat 9: 1 -> 1/4 beat."
+    ],
+    "additionalLosses": [
+      "Independent overlapping manual tails cannot survive a monophonic physical voice.",
+      "Unselected material outside source beats 0\u201310 is excluded.",
+      "The source MIDI does not perform printed fermatas, prall ornaments or expressive tempo changes.",
+      "Velocity remains in the imported common score but native playback uses fixed instrument envelopes.",
+      "Native tempo-1 first-frame frequency and envelope-retrigger limits apply, as explicitly recorded in conversion.json."
+    ],
+    "addedNotesOrTransposition": false,
+    "canonicalReport": {
+      "role": "complete reduction and origin records",
+      "path": "build/own-score-inputs/adaptation.json",
+      "sha256": "8d497d44b286d974c292a35e400ef1bda3b99bc088303e2f831a89250c96025c",
+      "bytes": 26917
+    }
+  },
+  "editableConfiguration": {
+    "reusedTemplates": [
+      "config/own-score/import.json",
+      "config/own-score/reduction.json",
+      "config/own-score/native.json",
+      "config/own-score/plain.json",
+      "config/listening/own-score-midi.json"
+    ],
+    "freshCandidate": {
+      "role": "editable SID instrument and section recipe",
+      "path": "build/own-score-inputs/candidate.json",
+      "sha256": "0cb69f7b029b88acc2921437f5f15d1b63a2d81533cfaf598079861a6b8a9ef5",
+      "bytes": 1893
+    },
+    "freshScore": {
+      "role": "fresh reduction from raw MIDI",
+      "path": "build/own-score-inputs/score.json",
+      "sha256": "4b387f3a79e99ed6a40137dd9dee7dcbf0633908ff8c2ccd8314aab721cf140f",
+      "bytes": 34195
+    },
+    "target": {
+      "clock": "PAL",
+      "chipModel": "MOS8580",
+      "sidCount": 1,
+      "baseAddress": "$D400",
+      "updateCadenceHz": 50.12457321485099,
+      "updatesPerVideoFrame": 1
+    },
+    "sharedResources": "Bass program owns the chip-wide filter; lead and harmony filter tables empty. No ring/sync dependency or stereo routing."
+  },
+  "comparisonOutputs": [
+    {
+      "role": "candidate-sid",
+      "path": "build/own-score-package/cache/candidate/1fc17c98a9114807e3bfc1f00cd3c4c85e79b017857a34d446c0fa2f8c6fddc3/attempt-3eb48ae115cc452dab815f907e898b8a/song/export/candidate.sid",
+      "sha256": "9c19d43e833545690ce2b0a9711ff7ec25811d574e3429bccb5b1a95bfbc15d9",
+      "bytes": 3455
+    },
+    {
+      "role": "candidate-prg",
+      "path": "build/own-score-package/cache/candidate/1fc17c98a9114807e3bfc1f00cd3c4c85e79b017857a34d446c0fa2f8c6fddc3/attempt-3eb48ae115cc452dab815f907e898b8a/song/export/candidate.prg",
+      "sha256": "9e9139d963fed9acdf48c2565edf52b8d05c9f197a4475bb85993a29469524c9",
+      "bytes": 4327
+    },
+    {
+      "role": "editable-swm",
+      "path": "build/own-score-package/cache/candidate/1fc17c98a9114807e3bfc1f00cd3c4c85e79b017857a34d446c0fa2f8c6fddc3/attempt-3eb48ae115cc452dab815f907e898b8a/song/conversion/candidate.swm",
+      "sha256": "e7457d892e23a2888b13e17c77b38b7ccfda5617b20851b7ec6d51b7b37fafef",
+      "bytes": 577
+    },
+    {
+      "role": "reference-full-reduced-score",
+      "path": "build/own-score-package/cache/reference/c529816c84668e23fd35d10dd089cf31f6972dabc2f500af7c6fb1d3d85687ff/attempt-3607409b97364715a1db214ff5c79e30/song/native-song.wav",
+      "sha256": "b9ce21e1fca7ae0878ea20eda8b92c6f8816f219bf344ad1116f0a2ac5f6976b",
+      "bytes": 1191524
+    },
+    {
+      "role": "candidate-full",
+      "path": "build/own-score-package/cache/candidate/1fc17c98a9114807e3bfc1f00cd3c4c85e79b017857a34d446c0fa2f8c6fddc3/attempt-3eb48ae115cc452dab815f907e898b8a/song/native-song.wav",
+      "sha256": "12355b43d9b3a816813fb303e974974aa734620024c16a338089931f6099ee63",
+      "bytes": 1191524
+    },
+    {
+      "role": "phrase-plain-then-sid",
+      "path": "build/own-score-package/cache/phrase/89fbd7b921d18e7e1bd65cd139928a530090abcd2de2a1b9e98f1bc7fcbfb95f/attempt-ecf888fd7c3f48abbc06eda8c9d86c23/plain-then-sid-phrase.ab.wav",
+      "sha256": "5a94d2efe51f6b0c3b54b770088d6bfc8a8a865cd39cecd0a60ea79d58323140",
+      "bytes": 1455344
+    },
+    {
+      "role": "ending-plain-then-sid",
+      "path": "build/own-score-package/cache/ending/3a7a952419850a1691c110d4a52ab051adfa963594f0fec69a54026556aeaa14/attempt-71e9c0b848d642efbd4e619ea2b03fa9/plain-then-sid-ending.ab.wav",
+      "sha256": "9d0eb4417c2b02278987a8b2c43161a3ae960d42461b9499ce2d1b387cfb67f9",
+      "bytes": 926144
+    },
+    {
+      "role": "adaptation",
+      "path": "build/own-score-package/cache/prepare/f78d1f0a3174481ee019c08688ca16352406f3034a94d82483b47be8e74ad11b/attempt-86f0c5a5ece14a63a3c5d7d36bf97251/score/adaptation.json",
+      "sha256": "8d497d44b286d974c292a35e400ef1bda3b99bc088303e2f831a89250c96025c",
+      "bytes": 26917
+    },
+    {
+      "role": "verification",
+      "path": "build/own-score-package/cache/candidate/1fc17c98a9114807e3bfc1f00cd3c4c85e79b017857a34d446c0fa2f8c6fddc3/attempt-3eb48ae115cc452dab815f907e898b8a/song/verification.json",
+      "sha256": "406ddbd583d8dd2b5f6cb41b4065163b434fa9e5af61e74f4d261cfdbb1a7bfd",
+      "bytes": 8837
+    }
+  ],
+  "cleanup": {
+    "summary": {
+      "version": 1,
+      "mode": "apply",
+      "passed": true,
+      "selectedDuplicateWavs": 0,
+      "selectedDuplicateBytes": 0,
+      "selectedTextFiles": 0,
+      "selectedTextBytes": 0,
+      "deletedDuplicateWavs": 0,
+      "compressedTextFiles": 0,
+      "controlledLogicalBytesReclaimed": 0,
+      "before": {
+        "logicalBytes": 17929975,
+        "allocatedFileBytes": 18210816,
+        "duAllocatedBytes": 18210816,
+        "volume": {
+          "totalBytes": 994662584320,
+          "usedBytes": 973527224320,
+          "freeBytes": 21135360000
+        }
+      },
+      "after": {
+        "logicalBytes": 17929975,
+        "allocatedFileBytes": 18210816,
+        "duAllocatedBytes": 18288640,
+        "volume": {
+          "totalBytes": 994662584320,
+          "usedBytes": 973527224320,
+          "freeBytes": 21135360000
+        }
+      },
+      "unselectedFilesUnchanged": true,
+      "unexpectedlyChanged": [],
+      "error": null,
+      "consequence": "Removed or compacted cache outputs invalidate their stages. Restore text with build-cache.py restore or regenerate via the owning recipe. No unique audio is retired.",
+      "physicalSizeNote": "du and file blocks report filesystem allocation; volume free space can change independently and APFS snapshots/clones can affect actual reclamation."
+    },
+    "reportDirectory": "build/onboarding-cleanup",
+    "reclaimedBytes": 0,
+    "retention": "All requested source, reproducibility, CPU, signal and comparison evidence explicitly protected."
+  },
+  "repositoryChanges": {
+    "trackedFilesChanged": false,
+    "status": "?? onboarding-result.json",
+    "newTrackedScope": "Only requested untracked onboarding-result.json; other task output ignored under build/.local/.tools."
+  },
+  "status": "completed",
+  "totalElapsedSeconds": 331.517674
+}

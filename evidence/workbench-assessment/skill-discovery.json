@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-17",
+  "scope": "Optional skill installation performed only after core onboarding measurements; new sessions reported startup catalog, without tool calls or filesystem inference. No bridge node_modules installed and no live MCP handshake claimed.",
+  "hosts": {
+    "codex": {
+      "setupCommand": "python3 scripts/setup-project.py --only skills --include sid-music",
+      "setupLog": "OK c64-sid: skills/c64-sid\nOK sid-music: skills/sid-music\n",
+      "startupCatalogReport": "Both skills are present in the startup catalog:\n\n- **c64-sid** \u2014 Reference for programming the Commodore 64 SID chip, including registers, waveforms, envelopes, filters, and note tables.\n- **sid-music** \u2014 Execute built-in and custom SID playback workflows through c64bridge.",
+      "claudeSkillsLink": "../.agents/skills",
+      "sourceCheckCommand": "python3 scripts/setup-project.py --check --only skills --include sid-music",
+      "sourceCheck": "OK skill:c64-sid: Pinned files verified\nOK skill:sid-music: Pinned files verified\n",
+      "toolsAllocatedBytesAfterSkills": 22900736,
+      "skillsAllocatedBytes": 196608
+    },
+    "claude": {
+      "setupCommand": "python3 scripts/setup-project.py --only skills --include sid-music",
+      "setupLog": "OK c64-sid: skills/c64-sid\nOK sid-music: skills/sid-music\n",
+      "startupCatalogReport": "Both skills are in the startup catalog:\n\n- **c64-sid**: The MOS 6581 SID sound chip and making sound and music on the Commodore 64, covering the register map, voices, waveforms, envelopes, filter, and frequency tables.\n- **sid-music**: Executes built-in and custom SID playback workflows through c64bridge.",
+      "claudeSkillsLink": "../.agents/skills",
+      "sourceCheckCommand": "python3 scripts/setup-project.py --check --only skills --include sid-music",
+      "sourceCheck": "OK skill:c64-sid: Pinned files verified\nOK skill:sid-music: Pinned files verified\n",
+      "toolsAllocatedBytesAfterSkills": 22581248,
+      "skillsAllocatedBytes": 196608
+    }
+  },
+  "probeLimitation": "First Claude probe disabled every tool, which hid its skill catalog. A fresh probe exposing Skill reported both project skills; the first result is inconclusive, not an installation failure.",
+  "claudeDiscoveryReportedCostsUsd": [
+    0.0026924900000000005,
+    0.0033221100000000005
+  ]
+}
