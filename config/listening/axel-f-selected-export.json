@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "export",
+      "command": [
+        "{python}",
+        "scripts/export-sidwizard.py",
+        "build/axel-f-selected-final/axel-f.swm",
+        "--output-dir",
+        "{out}/export",
+        "--title",
+        "Axel F selected full",
+        "--author",
+        "Harold Faltermeyer",
+        "--released",
+        "2026",
+        "--sid-model",
+        "MOS8580",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "build/axel-f-selected-final/axel-f.swm",
+        "scripts/export-sidwizard.py",
+        "scripts/sid_clock.py",
+        "scripts/psid_profile.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels"
+      ],
+      "outputs": [
+        "export/axel-f.sid",
+        "export/axel-f.prg"
+      ],
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps"
+      },
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "verify",
+      "command": [
+        "{python}",
+        "-c",
+        "import json,hashlib,pathlib,sys\nm=json.load(open(sys.argv[1]));out=pathlib.Path(sys.argv[2]);checks=[]\nfor suffix in ('sid','prg'):\n    f='axel-f.'+suffix;r=next(r for r in m['files'] if pathlib.Path(r['path']).name==f);h=hashlib.sha256((out/f).read_bytes()).hexdigest();assert h==r['sha256'],f;checks.append(dict(file=f,sha256=h,identical=True))\npathlib.Path(sys.argv[3]).write_text(json.dumps(dict(schemaVersion=1,exactByteReexport=True,checks=checks),indent=2)+'\\n')\n",
+        "songs/axel-f/selected-delivery.json",
+        "{stage:export}/export",
+        "{out}/verification.json"
+      ],
+      "inputs": [
+        "songs/axel-f/selected-delivery.json",
+        "{stage:export}/export/axel-f.sid",
+        "{stage:export}/export/axel-f.prg"
+      ],
+      "outputs": [
+        "verification.json"
+      ],
+      "timeoutSeconds": 30
+    }
+  ],
+  "deliverables": {
+    "verification": "{stage:verify}/verification.json"
+  }
+}

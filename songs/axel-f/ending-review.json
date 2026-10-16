@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-16",
-  "status": "ending-only-audition-pending",
+  "status": "shorter-ending-selected-case-closed",
   "fullPerformance": "Accepted in full-selected-review.json; exact accepted WAV retained unchanged.",
   "request": "I think the fade is bit too much, also in the former full song. Esp at very end",
-  "hypothesis": "The final bass release and terminal waiting contribute to the excessive ending fade. This is an attribution hypothesis until listening feedback.",
+  "hypothesis": "Final bass release and terminal waiting were the bounded intervention. The listener hears no clear difference, so this does not establish the perceived cause or an audible improvement.",
   "change": "Final bass note only: ADSR 0999 to 0997; tailTicks 125 to 25. Preserve all 1296 tonal/percussion attacks, gate timings and lead programs.",
   "verification": {
     "schemaVersion": 1,
@@ -123,5 +123,10 @@
     ]
   },
   "terminalTransient": "Both old and revised versions retain a brief transient at the existing global volume clear after the envelopes settle. Stop-window peak is 9294 PCM16 in both; cause not isolated by intervention. Disclosed in the listening question.",
-  "modelAssistance": "No call after the ending reservation or revision: the prior Qwen silence failure excludes its descriptions, and only the human can accept the ending. Next checkpoint is the ending verdict and case closure."
+  "modelAssistance": "Closure review: no call. The human explicitly selects the shorter ending despite hearing no clear difference; measurements must not override that report. Prior Qwen silence failure still excludes its descriptions. Reassess only if a new musical request or relevant demonstrated capability change opens a new checkpoint.",
+  "listeningVerdict": {
+    "verbatim": "I hear no difference. But it's hard to tell. I propose to use shorter ending and carry on",
+    "decision": "Select the shorter ending and proceed to closure.",
+    "scope": "Explicit version selection despite uncertain perceptual difference; no claim that the fade is audibly improved. The full-performance acceptance remains separate."
+  }
 }

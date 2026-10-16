@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-16",
-  "status": "complete-performance-accepted-ending-revision-requested",
+  "status": "complete-performance-accepted-shorter-ending-selected",
   "target": "PAL MOS8580 single SID",
   "selectedShortPassage": "songs/axel-f/snare-balance-review.json",
   "tonalNotes": 1025,
@@ -62,7 +62,7 @@
     ]
   },
   "scope": "Complete existing tonal form with the selected main lead and varied rhythm in vacant harmony blocks; original MIDI percussion-only ending remains omitted. One scheduled kick has a pinned almost-silent diagnostic window. The human accepts the complete performance; the listener finds the fade excessive, especially at the very end, in both submitted versions.",
-  "modelAssistance": "No call after full-performance acceptance or the ending reservation: human preference settles the scope, and the prior Qwen silence failure still excludes its descriptions. Reassess after the ending-only audition.",
+  "modelAssistance": "Closure review is recorded in ending-review.json; no additional model call is useful or authorized by this selection.",
   "sourceReference": "build/axel-f-master-palette-matched-listening/huelsbeck-lead-and-beat-9.5-20s.wav",
   "listeningVerdicts": {
     "completePerformance": {
@@ -72,7 +72,8 @@
     "ending": {
       "status": "revision-requested",
       "verbatim": "I think the fade is bit too much, also in the former full song. Esp at very end",
-      "scope": "Both versions linger too much at the ending; preserve the accepted performance and test an ending-only correction."
+      "scope": "Both versions linger too much at the ending; preserve the accepted performance and test an ending-only correction.",
+      "resolution": "The later ending-review.json records no clear perceived difference and explicit selection of the shorter ending. Case closed; retain this original full rendition as the accepted-performance baseline."
     }
   }
 }

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "recipe": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/axel-f-selected-export.json",
+  "recipeSha256": "77eda9a33f42331e3345cc76a070dd04eb215e59070683825257b7eb1d5ccc8e",
+  "startedAt": "2026-10-16T16:55:09.562681+00:00",
+  "status": "completed",
+  "stages": [
+    {
+      "id": "export",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.5823490421753377,
+      "artifacts": [
+        {
+          "stageId": "export",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-selected-export/cache/export/dc52af98ba9a62d882d005ad39e002d330e605dbfdb6ff46d7e87502c9a2ded0/attempt-9c529083c21848d5b6077902ee532b19/export/axel-f.sid",
+          "relativePath": "export/axel-f.sid",
+          "type": "file",
+          "sha256": "6877b5f2c591c9080cf29dc4b70378c1b7a170537a8bb1eb9783a5325d3fff9f"
+        },
+        {
+          "stageId": "export",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-selected-export/cache/export/dc52af98ba9a62d882d005ad39e002d330e605dbfdb6ff46d7e87502c9a2ded0/attempt-9c529083c21848d5b6077902ee532b19/export/axel-f.prg",
+          "relativePath": "export/axel-f.prg",
+          "type": "file",
+          "sha256": "67662d4bfed561116161d3e911afc71e4863b0e01eb03840d57a6f42a9d1edca"
+        }
+      ],
+      "cacheKey": "dc52af98ba9a62d882d005ad39e002d330e605dbfdb6ff46d7e87502c9a2ded0",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-selected-export/cache/export/dc52af98ba9a62d882d005ad39e002d330e605dbfdb6ff46d7e87502c9a2ded0/attempt-9c529083c21848d5b6077902ee532b19",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-selected-export/cache/export/dc52af98ba9a62d882d005ad39e002d330e605dbfdb6ff46d7e87502c9a2ded0/attempt-9c529083c21848d5b6077902ee532b19/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.6071711250115186
+    },
+    {
+      "id": "verify",
+      "status": "completed",
+      "cacheHit": false,
+      "executionSeconds": 0.05275162495672703,
+      "artifacts": [
+        {
+          "stageId": "verify",
+          "path": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-selected-export/cache/verify/2752b329322be8a8536e34f57c9de074664279084d4fc66116e10ceb8f8d7f1d/attempt-389993c5d2e04895bbf900a6be28d41f/verification.json",
+          "relativePath": "verification.json",
+          "type": "file",
+          "sha256": "b50e68233b8c1330760d8c28f03abf5e0acea8aaf9615606d649a44d120fda55"
+        }
+      ],
+      "cacheKey": "2752b329322be8a8536e34f57c9de074664279084d4fc66116e10ceb8f8d7f1d",
+      "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-selected-export/cache/verify/2752b329322be8a8536e34f57c9de074664279084d4fc66116e10ceb8f8d7f1d/attempt-389993c5d2e04895bbf900a6be28d41f",
+      "log": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-selected-export/cache/verify/2752b329322be8a8536e34f57c9de074664279084d4fc66116e10ceb8f8d7f1d/attempt-389993c5d2e04895bbf900a6be28d41f/stage.log",
+      "returnCode": 0,
+      "wallSeconds": 0.05684387497603893
+    }
+  ],
+  "artifacts": [
+    {
+      "stageId": "export",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-selected-export/cache/export/dc52af98ba9a62d882d005ad39e002d330e605dbfdb6ff46d7e87502c9a2ded0/attempt-9c529083c21848d5b6077902ee532b19/export/axel-f.sid",
+      "relativePath": "export/axel-f.sid",
+      "type": "file",
+      "sha256": "6877b5f2c591c9080cf29dc4b70378c1b7a170537a8bb1eb9783a5325d3fff9f"
+    },
+    {
+      "stageId": "export",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-selected-export/cache/export/dc52af98ba9a62d882d005ad39e002d330e605dbfdb6ff46d7e87502c9a2ded0/attempt-9c529083c21848d5b6077902ee532b19/export/axel-f.prg",
+      "relativePath": "export/axel-f.prg",
+      "type": "file",
+      "sha256": "67662d4bfed561116161d3e911afc71e4863b0e01eb03840d57a6f42a9d1edca"
+    },
+    {
+      "stageId": "verify",
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-selected-export/cache/verify/2752b329322be8a8536e34f57c9de074664279084d4fc66116e10ceb8f8d7f1d/attempt-389993c5d2e04895bbf900a6be28d41f/verification.json",
+      "relativePath": "verification.json",
+      "type": "file",
+      "sha256": "b50e68233b8c1330760d8c28f03abf5e0acea8aaf9615606d649a44d120fda55"
+    }
+  ],
+  "deliverables": {
+    "verification": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-selected-export/cache/verify/2752b329322be8a8536e34f57c9de074664279084d4fc66116e10ceb8f8d7f1d/attempt-389993c5d2e04895bbf900a6be28d41f/verification.json"
+  },
+  "finishedAt": "2026-10-16T16:55:10.232530+00:00",
+  "wallSeconds": 0.6700381669215858
+}
