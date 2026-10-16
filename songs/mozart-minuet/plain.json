@@ -1,0 +1,63 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score-mono.json",
+  "title": "Mozart Minuet and Trio plain",
+  "author": "W. A. Mozart / SID Song Crafter",
+  "authorinfo": "K525 III / MUTOPIA 2230",
+  "released": "2026",
+  "sidCount": 1,
+  "sidModel": "MOS8580",
+  "clock": "pal",
+  "timingPolicy": "retain-full-pitch",
+  "patternBeats": 8,
+  "instruments": {
+    "plain": {
+      "name": "PLAIN",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0288",
+      "frame1": "09",
+      "wave": [
+        [
+          "11",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [],
+      "filter": []
+    }
+  },
+  "sections": [
+    {
+      "name": "Menuetto with repeats",
+      "startBeat": 0,
+      "endBeat": 96,
+      "voices": {
+        "melody": "plain",
+        "bass": "plain",
+        "inner": "plain"
+      }
+    },
+    {
+      "name": "Trio with repeats",
+      "startBeat": 96,
+      "endBeat": 216,
+      "voices": {
+        "melody": "plain",
+        "bass": "plain",
+        "inner": "plain"
+      }
+    },
+    {
+      "name": "Menuetto da capo without repeats",
+      "startBeat": 216,
+      "endBeat": 264,
+      "voices": {
+        "melody": "plain",
+        "bass": "plain",
+        "inner": "plain"
+      }
+    }
+  ]
+}

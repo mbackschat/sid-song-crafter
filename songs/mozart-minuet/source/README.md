@@ -1,0 +1,31 @@
+# Preserved source for Mozart K. 525, movement III
+
+Wolfgang Amadeus Mozart, *Eine kleine Nachtmusik*, K. 525, III. Menuetto: Allegretto and Trio. [Mutopia 2230](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=2230) credits Mike Blackstock's typesetting from Breitkopf & Härtel, 1883, reference `Mutopia-2018/08/04-2230`. [The original header](common/mutopia-header.ily) declares Public Domain and includes the typesetter's dedication; the source is not relicensed under the project's MIT grant. Our preparation tool, configuration and the small movement-only entry point retain the project license separately.
+
+| Original download | SHA-256 |
+| --- | --- |
+| [LilyPond archive](https://www.mutopiaproject.org/ftp/MozartWA/KV525/MozartWA-KV525/MozartWA-KV525-lys.zip) | `911a4a0909174b6bae6068d3f4d2cb73e615f24f5d46ca2663336f2049bf4b24` |
+| [MIDI archive](https://www.mutopiaproject.org/ftp/MozartWA/KV525/MozartWA-KV525/MozartWA-KV525-mids.zip) | `aa37111c9f339532f26c29d6648bde8c39d92d785f87d14a33e9e9914fa472a7` |
+| [Original movement III MIDI](MozartWA-KV525-mov-03.mid), 5,622 bytes | `d66d5eaf5d7c75f4da0e38dd87a1d1ea1adbb30e030a84b81acc2847535e9c77` |
+
+The original archives remain local under `.local/research/mozart-k525/`. Only movement III and its required common LilyPond dependencies are retained here. [The source hash manifest](hashes.json) covers each unchanged extracted file. The shared variables include metadata naming other movements, but no other movement's notes or MIDI are included.
+
+[The movement's original print entry](parts/MozartWA-KV525-mov-03.ly) includes the four instrumental parts and their original layout/header dependencies. [The movement-only MIDI entry](movement-iii-midi.ly) is our minimal wrapper around unchanged source includes; it avoids the upstream MIDI entry that also includes the other three movements. Both expect compatible LilyPond 2.18.2. Re-engraving or re-exporting these sources has not been verified here and does not claim exact-byte identity with the retained original MIDI.
+
+The four source roles are first violin, second violin, viola and cello. The supplied MIDI contains those parts once, in that staff order, at quarter = 112 (encoded as 535,714 microseconds/quarter). It has 584 note events over 108 quarter beats, approximately 57.857 seconds. It does not execute the written repeats or the Menuetto return. Key signatures, GM programs, MIDI channel-volume changes and source articulations do not automatically become native SID instrument behavior; the importer reports unsupported metadata while retaining the original bytes.
+
+## Complete form and the return
+
+[The first violin](03_allegretto/violin1.ily) and [other parts](03_allegretto/music.ily) each contain four `repeat volta 2` blocks. [The cello](03_allegretto/cello.ily) places `fine` after the second and `mdc` after the fourth; [the definitions](common/definitions.ily) expand these into “Fine” and “Menuetto da capo.” The zero-based MIDI source spans are A `[0,24)`, B `[24,48)`, C `[48,72)` and D `[72,108)`. A/B are Menuetto in G major; C/D are Trio in D major. The initial one-quarter pickup and each two-quarter closing measure together complete each repeat period.
+
+An independent visual check on 2026-10-17 used the [1883 Breitkopf & Härtel scan, IMSLP #01776](https://ks15.imslp.org/files/imglnks/usimg/5/57/IMSLP01776-Mozart_EineKleineNachtmusik_Score.pdf), PDF pages 9–10: the first Menuetto repeat is at the bottom of page 9; page 10 shows the second repeat and Fine, both Trio repeats, and Menuetto da capo. The [edition catalogue](https://imslp.org/wiki/Eine_kleine_Nachtmusik,_K.525_(Mozart,_Wolfgang_Amadeus)) identifies the publication as *Mozarts Werke*, Serie XIII, No. 9, Leipzig, 1883, plate W.A.M. 525. The scan remains local; it is independent of the Mutopia engraving and MIDI.
+
+[The arrangement](../arrangement.json) declares AABBCCDDAB: observe each repeat on the first traversal, then return through A/B once and stop at Fine. Omitting repeats on the da capo is the selected performance convention; neither inspected source explicitly adds “senza replica.” The resulting 264 beats last 141.428496 seconds at the unchanged encoded MIDI tempo, before the native release/verification tail. The arrangement owns the actual export tempo and any deliberate departure from that source timing; rational beat coordinates remain fixed. The complete final cello quarter is retained; stopping after the upper parts' final note would truncate it.
+
+## Three- and six-voice preparation
+
+[The case preparer](../../../scripts/studies/mozart-minuet/prepare.py) uses the existing importer, preserves every source event's identity through each repeat and records all reductions in `adaptation.json`. Exact rational timings and original velocities remain in `common-score.json` and the adaptation's origin records; the native-compatible arranged scores use numeric floating-point beats, including approximations to the source grace-note fractions. Native conversion then quantizes to target-clock ticks and records any driver-specific timing/articulation changes separately in its conversion report. The source MIDI, prepared score and native execution are distinct evidence. Mono retains first violin and cello, selecting viola for Menuetto/da capo and second violin for the Trio. Stereo restores both inner parts and duplicates melody/bass across chips for their intended centered positions; it adds no musical notes.
+
+The viola has double stops only at source beats 21, 22, 45 and 46: C4/D4 and B3/D4. Both arrangements keep the lower C4/B3 where the viola is used. The upper D4 duplicates a fifth/octave already represented by the bass/harmony, while C4/B3 preserves the changing inner seventh/third. This scoped reduction produces 12 omitted upper-D4 occurrences across the complete unfolding; no bass oscillator is borrowed. The owning [case documentation](../README.md) carries the musical brief, native palettes, mixing plan and future listening verdicts.
+
+The fingerprinted upstream sources retain their original whitespace and line endings, including trailing spaces. Git attributes disable text conversion for these files; whitespace-only cleanup would invalidate provenance. Project-authored documentation and scripts follow normal whitespace checks.

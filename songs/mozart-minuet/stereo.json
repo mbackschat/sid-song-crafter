@@ -1,0 +1,223 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score-stereo.json",
+  "title": "Mozart Minuet and Trio stereo",
+  "author": "W. A. Mozart / SID Song Crafter",
+  "authorinfo": "K525 III / MUTOPIA 2230",
+  "released": "2026",
+  "sidCount": 2,
+  "sidModel": "MOS8580",
+  "clock": "pal",
+  "timingPolicy": "retain-full-pitch",
+  "patternBeats": 8,
+  "instruments": {
+    "lead": {
+      "name": "MOZLEAD",
+      "control": "1a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0a49",
+      "frame1": "09",
+      "vibrato": "24",
+      "vibrato_delay": 12,
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "82",
+          "00",
+          "00"
+        ],
+        [
+          "1d",
+          "23",
+          "00"
+        ],
+        [
+          "0f",
+          "dd",
+          "00"
+        ],
+        [
+          "0f",
+          "23",
+          "00"
+        ],
+        {
+          "jump": 2
+        }
+      ],
+      "filter": []
+    },
+    "trio-lead": {
+      "name": "MOZTRIO",
+      "control": "1a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0848",
+      "frame1": "09",
+      "vibrato": "24",
+      "vibrato_delay": 12,
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "82",
+          "00",
+          "00"
+        ],
+        [
+          "1d",
+          "23",
+          "00"
+        ],
+        [
+          "0f",
+          "dd",
+          "00"
+        ],
+        [
+          "0f",
+          "23",
+          "00"
+        ],
+        {
+          "jump": 2
+        }
+      ],
+      "filter": []
+    },
+    "bass": {
+      "name": "MOZBASS",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0766",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "85",
+          "00",
+          "00"
+        ],
+        [
+          "1d",
+          "29",
+          "00"
+        ],
+        [
+          "0f",
+          "d7",
+          "00"
+        ],
+        [
+          "0f",
+          "29",
+          "00"
+        ],
+        {
+          "jump": 2
+        }
+      ],
+      "filter": []
+    },
+    "viola": {
+      "name": "MOZVIOLA",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0457",
+      "frame1": "09",
+      "wave": [
+        [
+          "41",
+          "00",
+          "00"
+        ]
+      ],
+      "pulse": [
+        [
+          "86",
+          "00",
+          "00"
+        ]
+      ],
+      "filter": []
+    },
+    "second": {
+      "name": "MOZINNER",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0656",
+      "wave": [
+        [
+          "11",
+          "00",
+          "00"
+        ],
+        [
+          "11",
+          "80",
+          "ff"
+        ]
+      ],
+      "pulse": [],
+      "filter": [],
+      "frame1": "09"
+    }
+  },
+  "sections": [
+    {
+      "name": "Menuetto with repeats",
+      "startBeat": 0,
+      "endBeat": 96,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "second": "second",
+        "melody-right": "lead",
+        "bass-right": "bass",
+        "viola": "viola"
+      }
+    },
+    {
+      "name": "Trio with repeats",
+      "startBeat": 96,
+      "endBeat": 216,
+      "voices": {
+        "melody": "trio-lead",
+        "bass": "bass",
+        "second": "second",
+        "melody-right": "trio-lead",
+        "bass-right": "bass",
+        "viola": "viola"
+      }
+    },
+    {
+      "name": "Menuetto da capo without repeats",
+      "startBeat": 216,
+      "endBeat": 264,
+      "voices": {
+        "melody": "lead",
+        "bass": "bass",
+        "second": "second",
+        "melody-right": "lead",
+        "bass-right": "bass",
+        "viola": "viola"
+      }
+    }
+  ]
+}

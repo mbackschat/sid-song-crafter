@@ -1,0 +1,615 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "prepare",
+      "command": [
+        "{python}",
+        "scripts/studies/mozart-minuet/prepare.py",
+        "--output",
+        "{out}/score"
+      ],
+      "inputs": [
+        "scripts/studies/mozart-minuet/prepare.py",
+        "scripts/score_tools.py",
+        "songs/mozart-minuet/import.json",
+        "songs/mozart-minuet/arrangement.json",
+        "songs/mozart-minuet/mono.json",
+        "songs/mozart-minuet/stereo.json",
+        "songs/mozart-minuet/plain.json",
+        ".tools/arrangement-deps/mido",
+        "songs/mozart-minuet/source/hashes.json",
+        "songs/mozart-minuet/source/03_allegretto/cello.ily",
+        "songs/mozart-minuet/source/03_allegretto/midi.ily",
+        "songs/mozart-minuet/source/03_allegretto/music.ily",
+        "songs/mozart-minuet/source/03_allegretto/viola.ily",
+        "songs/mozart-minuet/source/03_allegretto/violin1.ily",
+        "songs/mozart-minuet/source/03_allegretto/violin2.ily",
+        "songs/mozart-minuet/source/MozartWA-KV525-mov-03.mid",
+        "songs/mozart-minuet/source/common/conductor-dimension.ily",
+        "songs/mozart-minuet/source/common/conductor-staff.ily",
+        "songs/mozart-minuet/source/common/definitions.ily",
+        "songs/mozart-minuet/source/common/mutopia-header.ily",
+        "songs/mozart-minuet/source/common/styles.ily",
+        "songs/mozart-minuet/source/common/variables.ily",
+        "songs/mozart-minuet/source/common/version.ily",
+        "songs/mozart-minuet/source/parts/MozartWA-KV525-mov-03.ly"
+      ],
+      "outputs": [
+        "score/score-mono.json",
+        "score/score-stereo.json",
+        "score/common-score.json",
+        "score/adaptation.json",
+        "score/mono.json",
+        "score/stereo.json",
+        "score/plain.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/arrangement-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "mono",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:prepare}/score/mono.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "18",
+        "--audit-timeout-seconds",
+        "300"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:prepare}/score/mono.json",
+        "{stage:prepare}/score/score-mono.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/mono.sid",
+        "song/export/mono.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/mono.swm",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 450,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "plain",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:prepare}/score/plain.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "18",
+        "--audit-timeout-seconds",
+        "300"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:prepare}/score/plain.json",
+        "{stage:prepare}/score/score-mono.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/plain.sid",
+        "song/export/plain.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/plain.swm",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 450,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "stereo",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:prepare}/score/stereo.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "18",
+        "--audit-timeout-seconds",
+        "300"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter-2sid/build.json",
+        ".tools/sid-wizard-exporter-2sid/exporter.prg",
+        ".tools/sid-wizard-exporter-2sid/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:prepare}/score/stereo.json",
+        "{stage:prepare}/score/score-stereo.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/stereo.sid",
+        "song/export/stereo.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/stereo.sws",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 450,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "phrase",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:plain}/song/native-song.wav",
+        "{stage:mono}/song/native-song.wav",
+        "{out}/plain-then-mono-phrase",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "18"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:plain}/song/native-song.wav",
+        "{stage:mono}/song/native-song.wav"
+      ],
+      "outputs": [
+        "plain-then-mono-phrase.ab.wav",
+        "plain-then-mono-phrase.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "ending",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:plain}/song/native-song.wav",
+        "{stage:mono}/song/native-song.wav",
+        "{out}/plain-then-mono-ending",
+        "--start-seconds",
+        "132",
+        "--end-seconds",
+        "146"
+      ],
+      "inputs": [
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py",
+        "{stage:plain}/song/native-song.wav",
+        "{stage:mono}/song/native-song.wav"
+      ],
+      "outputs": [
+        "plain-then-mono-ending.ab.wav",
+        "plain-then-mono-ending.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "stereo-review",
+      "command": [
+        "{python}",
+        "scripts/studies/mozart-minuet/prepare-listening.py",
+        "{stage:mono}/song/native-song.wav",
+        "{stage:stereo}/song/native-song.wav",
+        "{stage:stereo}/song/native-song.frames.json",
+        "{stage:stereo}/song/conversion.json",
+        "--output",
+        "{out}/review"
+      ],
+      "inputs": [
+        "scripts/studies/mozart-minuet/prepare-listening.py",
+        "scripts/audio_comparison.py",
+        "{stage:mono}/song/native-song.wav",
+        "{stage:stereo}/song/native-song.wav",
+        "{stage:stereo}/song/native-song.frames.json",
+        "{stage:stereo}/song/conversion.json"
+      ],
+      "outputs": [
+        "review/single-sid-centered.wav",
+        "review/stereo-fold-down.wav",
+        "review/mono-then-stereo-phrase.ab.wav",
+        "review/mono-then-stereo-phrase.comparison.json",
+        "review/mono-then-stereo-ending.ab.wav",
+        "review/mono-then-stereo-ending.comparison.json",
+        "review/verification.json"
+      ],
+      "timeoutSeconds": 60
+    },
+    {
+      "id": "mono-ntsc",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:prepare}/score/mono.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "18",
+        "--audit-timeout-seconds",
+        "300",
+        "--clock",
+        "ntsc"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:prepare}/score/mono.json",
+        "{stage:prepare}/score/score-mono.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/mono.sid",
+        "song/export/mono.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/mono.swm",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 450,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "mono-vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:mono}/song/export/mono.prg",
+        "{stage:mono}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:mono}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "3",
+        "2605",
+        "5865",
+        "7300",
+        "7335",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:mono}/song/export/mono.prg",
+        "{stage:mono}/song/native-song.writes.json",
+        "{stage:mono}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 90,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "mono-ntsc-vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:mono-ntsc}/song/export/mono.prg",
+        "{stage:mono-ntsc}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:mono-ntsc}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "3",
+        "3110",
+        "7000",
+        "8710",
+        "8755",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:mono-ntsc}/song/export/mono.prg",
+        "{stage:mono-ntsc}/song/native-song.writes.json",
+        "{stage:mono-ntsc}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 90,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "stereo-ntsc",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:prepare}/score/stereo.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "18",
+        "--audit-timeout-seconds",
+        "300",
+        "--clock",
+        "ntsc"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter-2sid/build.json",
+        ".tools/sid-wizard-exporter-2sid/exporter.prg",
+        ".tools/sid-wizard-exporter-2sid/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:prepare}/score/stereo.json",
+        "{stage:prepare}/score/score-stereo.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/stereo.sid",
+        "song/export/stereo.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/stereo.sws",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 450,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "stereo-vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:stereo}/song/export/stereo.prg",
+        "{stage:stereo}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:stereo}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "3",
+        "2605",
+        "5865",
+        "7300",
+        "7335",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:stereo}/song/export/stereo.prg",
+        "{stage:stereo}/song/native-song.writes.json",
+        "{stage:stereo}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 90,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "stereo-ntsc-vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:stereo-ntsc}/song/export/stereo.prg",
+        "{stage:stereo-ntsc}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:stereo-ntsc}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "3",
+        "3110",
+        "7000",
+        "8710",
+        "8755",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:stereo-ntsc}/song/export/stereo.prg",
+        "{stage:stereo-ntsc}/song/native-song.writes.json",
+        "{stage:stereo-ntsc}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 90,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "mono-full": "{stage:mono}/song/native-song.wav",
+    "mono-sid": "{stage:mono}/song/export/mono.sid",
+    "mono-prg": "{stage:mono}/song/export/mono.prg",
+    "mono-verification": "{stage:mono}/song/verification.json",
+    "plain-full": "{stage:plain}/song/native-song.wav",
+    "plain-sid": "{stage:plain}/song/export/plain.sid",
+    "plain-prg": "{stage:plain}/song/export/plain.prg",
+    "plain-verification": "{stage:plain}/song/verification.json",
+    "stereo-full": "{stage:stereo}/song/native-song.wav",
+    "stereo-sid": "{stage:stereo}/song/export/stereo.sid",
+    "stereo-prg": "{stage:stereo}/song/export/stereo.prg",
+    "stereo-verification": "{stage:stereo}/song/verification.json",
+    "phrase": "{stage:phrase}/plain-then-mono-phrase.ab.wav",
+    "ending": "{stage:ending}/plain-then-mono-ending.ab.wav",
+    "stereo-phrase": "{stage:stereo-review}/review/mono-then-stereo-phrase.ab.wav",
+    "stereo-ending": "{stage:stereo-review}/review/mono-then-stereo-ending.ab.wav",
+    "fold-down": "{stage:stereo-review}/review/stereo-fold-down.wav"
+  }
+}

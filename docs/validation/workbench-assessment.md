@@ -1,6 +1,6 @@
-# Workbench onboarding and resource assessment
+# Workbench usability, effort and resource assessment
 
-Measured on 2026-10-17 against onboarding commit `a5ff295`. The documented CLI works for a bounded raw-MIDI task in fresh Codex and Claude Code sessions. This is an onboarding result; total effort to reach an accepted complete musical rendition remains unmeasured. [PLAN.md](../../PLAN.md#workbench-value-and-usability-assessment) owns remaining work and the [proposal](../proposals/workbench-direction.md) owns the interface/distribution decisions.
+Measured on 2026-10-17 against onboarding commit `a5ff295`. The documented CLI works for a bounded raw-MIDI task in fresh Codex and Claude Code sessions. The subsequent real case produced accepted complete single-SID and stereo renditions and records approximately 20 minutes of self-reported human effort. The agreed assessment is complete; comparative effort savings remain unproven. [PLAN.md](../../PLAN.md#workbench-value-and-usability-assessment) owns overall status and the [proposal](../proposals/workbench-direction.md) owns the interface/distribution decisions.
 
 ## Supported path and observed cost
 
@@ -56,7 +56,7 @@ The source review retained 112 build-only code files / 3.14 MB as regular files 
 
 These decimal-GB measurements distinguish relocation from reclamation: the complete migration reduced combined allocated content by about 0.95 GB, including recovery of older missing targets. Raw-object hardlinks are counted once in the archive total. Filesystem snapshots and other activity can make volume free-space changes differ. [Measured footprint](../../evidence/workbench-assessment/footprint.json)
 
-The archive is at `~/Archives/sid-song-crafter/`, with a readable README, `catalog.json`, six data manifests and compressed audit records. The catalog maps 14,106 historical paths to their latest manifest and exact fingerprints, including older cache history. It avoids accidentally restoring an obsolete version of the two regenerated own-score indexes. The [archive tool](../../scripts/archive-build.py) restores selected bytes without overwriting different content; [recovery commands and playback-link precautions](../workflows/build-cache.md#external-local-build-archives) describe its contract. No bulk audio was added to Git.
+At the historical migration checkpoint, the archive at `~/Archives/sid-song-crafter/` had a readable README, `catalog.json`, six data manifests and compressed audit records. That catalog mapped 14,106 historical paths to their latest manifest and exact fingerprints, including older cache history. It avoids accidentally restoring an obsolete version of the two regenerated own-score indexes. The [archive tool](../../scripts/archive-build.py) restores selected bytes without overwriting different content; [recovery commands and playback-link precautions](../workflows/build-cache.md#external-local-build-archives) describe its contract. No bulk audio was added to Git.
 
 The inventoried historical build state is now recoverable. The remaining regular files are convenient working copies of protected inputs, metadata and deferred work; deleting them would require restoration before dependent workflows run. This is not a promise that every file can be regenerated from Git, or that future unarchived work is disposable. The external archive is local retention, not an off-machine backup.
 
@@ -64,6 +64,32 @@ For distribution, the README clone command skips the existing compressed researc
 
 The inventory also found two manifest-listed Daglish test logs hidden from Git by a global `*.log` rule. The repository now exempts canonical evidence logs at every nesting level; both receipts are tracked and match their original hashes. A regression verifies this boundary while keeping generated/private logs ignored.
 
-## Next evidence needed
+## Real-case composition effort
 
-Use the [effort ledger](../workflows/effort-ledger.md) at the next authorized real musical case, including human decisions, failed revisions, troubleshooting and retention through complete acceptance. No case has been opened solely for this measurement. The authorized retention and onboarding work is complete. Keep the archive and apply its retention contract to future outputs. The remaining real-case measurement requires no new skill collection, audio-model trial or controlled human pilot.
+At the user's request, the coordinator selected a complete source-backed piece and opened a prospective ledger. The initial Bach Invention No. 8 intake was set aside when the user required a modest instrumental ensemble: good on one SID, with a useful musical benefit from two. Mozart's Minuet and Trio from K. 525 supplied four source roles. The [owning case and ledger](../../songs/mozart-minuet/README.md) retain the source, decisions, failures, exact feedback and reproduction recipe; the [measurement receipt](../../evidence/mozart-minuet/verification.json) pins the outputs and timings.
+
+| Observation | Measured result |
+| --- | --- |
+| First verified playable SID/PRG observed | 15m38s after the first recorded clock; initial reading before that clock was not timed |
+| Complete technical package | 21m17s elapsed, including the abandoned selection, source intake, manual reduction, sound selection, packing correction and PAL/NTSC mono/stereo execution checks |
+| Human musical result | Complete PAL single-SID and stereo renditions accepted; stereo Trio adds useful richness and space; ending accepted. Full stereo acceptance was recorded 29m13s after the first measured clock. |
+| Human active time | Approximately **20 minutes**, self-reported for guidance, listening and replies. The coordinator selected the piece, guided by user input. No activity-level breakdown is available. |
+| Monetary cost | Coding-agent cost not exposed; no paid audio-model request |
+| New installations | None; existing MIDI/native/renderer/VICE tools reused |
+| New case-specific work | Source/form intake, explicit mono/stereo allocation and note accounting, small preparation/listening scripts, palettes and recipe |
+| Main technical friction | Tick-grid native pattern capacity; a declared 1.005% tempo reduction and eight-beat packing retained every selected note and the full form |
+| Pipeline recovery | Input fingerprint checks caught a concurrent source-document change; exact dependency declarations removed that invalidation, and completed native stages were reused |
+
+The source MIDI omitted all repeats and the da-capo return; following the score increased the performed form from 108 to 264 beats. The mono version retains melody and bass, switching the inner role by section. The stereo version restores the complementary source part and duplicates melody/bass for center placement. This required manual six-voice preparation, consistent with the supported workflow; the generic three-voice importer did not become an automatic orchestrator.
+
+Existing repertoire, source-reading guidance, export backends, full-schedule verification and recipe caching materially supplied the implementation. The human verdict establishes usefulness for this particular interpretation. No comparable unaided or alternative-tool task was measured, so **total composition-effort savings remain unproven**. Keep the README's concrete capability/reuse claims and avoid a productivity percentage or speed claim.
+
+The interface recommendation remains **CLI tools, editable recipes and task-oriented documentation for an agent-assisted musician/developer**, supported in Codex and Claude Code. A new entry skill would not remove the observed source-form and voice-allocation work or native capacity limit. Existing SID skills remain optional background aids with project corrections; the measured work provides no reason to restore unused ML installations or expand model-based musical judging.
+
+## Closure
+
+All four musical verdicts are recorded. The human estimate is separate from overlapping agent/tool elapsed time; 21m17s measures the technical package, not the full case. Retention, documentation and final verification continued after acceptance, with the final observation recorded in the [case receipt](../../evidence/mozart-minuet/verification.json). No agent active-time or monetary total can be inferred from these clocks.
+
+The [case retention receipt](../../evidence/mozart-minuet/retention.json) verifies 56 archived paths: 24 WAV paths remain playable through links, and 32 generated traces are losslessly archived. These replace 439.4 MB of working content with 169.9 MB of external objects, reclaiming 269.5 MB of logical content before metadata. All seven submitted auditions and eight public SID/PRG files match their fingerprints. The external catalog now contains eight manifests and 14,162 recovery routes. Public playable exports total only 68,822 bytes; the new source/recipes and small receipts also belong in Git. No bulk audio is added.
+
+The [overall plan](../../PLAN.md#workbench-value-and-usability-assessment) closes V4 and V5. Keep the repaired CLI/recipe/documentation entry point, existing optional C64 skills and human musical authority. No additional musical experiment, new entry skill, audio-model trial or controlled human pilot is queued. A comparative study remains deferred until a second independent operator exists; this assessment makes no productivity claim.

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "verifiedUtc": "2026-10-16T23:36:46.311885+00:00",
+  "archiveRoot": "/Users/mbackschat/Archives/sid-song-crafter",
+  "manifests": [
+    {
+      "path": "2026-10-17-mozart-audio/manifest.json",
+      "sha256": "446d11365013a4848dc37b7c453c9a70ee978d3d6500f5c5be447a8c00536d98",
+      "files": 24,
+      "compression": "none",
+      "sourceBytes": 228418748,
+      "distinctObjects": 17,
+      "objectBytes": 159577352,
+      "workingDisposition": "read-only playback links"
+    },
+    {
+      "path": "2026-10-17-mozart-traces/manifest.json",
+      "sha256": "9de13c7560f1be04834b3a902c6dad41c7880a25daf087c2a907a538b61b043c",
+      "files": 32,
+      "compression": "gzip",
+      "sourceBytes": 210959660,
+      "distinctObjects": 32,
+      "objectBytes": 10323283,
+      "workingDisposition": "evicted after exact verification"
+    }
+  ],
+  "checks": {
+    "archivePathsVerified": 56,
+    "playbackLinksVerified": 24,
+    "publishedAuditionsVerified": 7,
+    "publicBinariesVerified": 8,
+    "publicBinaryBytes": 68822,
+    "allPassed": true
+  },
+  "workingContentBytesRetired": 439378408,
+  "archiveObjectBytes": 169900635,
+  "logicalBytesReclaimedExcludingMetadata": 269477773,
+  "recovery": "Use scripts/archive-build.py restore with the catalog-selected manifest and exact --path. Audio links stay playable; restore before editing or publishing to an archived destination. Fresh recipe output directories regenerate from checked-in sources independently.",
+  "scope": "Only the closed Mozart case; historical working inputs and unrelated untracked experiments unchanged. External local retention is not an off-machine backup.",
+  "catalog": {
+    "sha256": "b7fbda125f9f4e2da6f1557606866a4cb373f31a46586f4bb4760b05e80eaffa",
+    "manifests": 8,
+    "routes": 14162
+  }
+}

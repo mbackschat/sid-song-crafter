@@ -57,6 +57,8 @@ These tools investigate pinned recordings or prepare fixed demonstrations. They 
 
 Run commands from the repository root using these paths, for example `python3 scripts/studies/monty/prepare-monty-elise.py --check`. Current study documentation links the relocated tools; frozen JSON recipes and archived evidence preserve their historical provenance. The explicitly deferred untracked work remains at its original paths, untouched and unstaged.
 
+- [Mozart Minuet preparation](mozart-minuet/prepare.py) unfolds the source form and accounts for every retained, omitted and duplicated note in the mono/stereo arrangements; [listening preparation](mozart-minuet/prepare-listening.py) checks complete centered-role register programs and creates the fixed-gain spatial comparison. [Case and effort ledger](../../songs/mozart-minuet/README.md).
+
 - [Rambo main-entry preparation](rambo/prepare-main-entry.py): removes the introduction from the README mono/stereo samples while retaining computed continuation and checking all remaining ordered stores; [sample contract](../../samples/rambo-stereo/README.md#main-music-demo-2026-10-16).
 
 - [Axel F master rhythm](axel-f/prepare-master-rhythm.py) adapts verified percussion phrase contrast to the fixed MIDI hook; [recipe and scope](../../songs/axel-f/arrangement-review.md#master-derived-percussion-phrase-contrast).

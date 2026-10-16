@@ -8,3 +8,8 @@ samples/**/*.prg -text
 samples/**/*.swm -text
 samples/**/*.sws -text
 samples/**/*.wav -text
+
+# Mutopia source fingerprints require unchanged upstream line endings.
+songs/mozart-minuet/source/**/*.ily -text
+songs/mozart-minuet/source/**/*.ly -text
+songs/mozart-minuet/source/*.mid -text

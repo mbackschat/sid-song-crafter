@@ -1,0 +1,681 @@
+{
+  "schemaVersion": 1,
+  "status": "closed: complete PAL mono/stereo performances, useful stereo expansion and ending accepted; technical verification, effort accounting and retention complete",
+  "source": {
+    "path": "songs/mozart-minuet/source/MozartWA-KV525-mov-03.mid",
+    "bytes": 5622,
+    "sha256": "d66d5eaf5d7c75f4da0e38dd87a1d1ea1adbb30e030a84b81acc2847535e9c77"
+  },
+  "recipe": {
+    "path": "config/listening/mozart-minuet.json",
+    "bytes": 19416,
+    "sha256": "82ec0408eaefb4c69e662453607a42686a9c07065380a0c3e3f14a4be5d90a31"
+  },
+  "measurementStartedUtc": "2026-10-16T23:04:19Z",
+  "firstPlayableObservedUtc": "2026-10-16T23:19:57Z",
+  "completePackageUtc": "2026-10-16T23:25:36.328196+00:00",
+  "humanActiveMinutes": 20,
+  "agentCost": null,
+  "costStatus": "not exposed",
+  "runReceipt": {
+    "path": "build/mozart-minuet-work/run.json",
+    "bytes": 95270,
+    "sha256": "8eee50144d105638d262a2104bd16b65a3f0a47ec599065f0f17321c73d9b303"
+  },
+  "publicationReceipt": {
+    "path": "build/mozart-minuet-listening/sources.json",
+    "bytes": 3753,
+    "sha256": "4f08c0313e3dce506ed19c094a17f841ead101b8b1f96333a1b436db282c2827"
+  },
+  "exports": {
+    "mono": {
+      "clock": "PAL",
+      "sidCount": 1,
+      "sidModel": "MOS8580",
+      "patterns": 45,
+      "notes": [
+        402,
+        205,
+        356
+      ],
+      "playCalls": 7339,
+      "maximumPlayCycles": 2314,
+      "frameCycleBudget": 19656,
+      "stopTick": 7286,
+      "allGatesAndVolumesStop": true,
+      "durationSeconds": 146.37780045351474,
+      "clippedSamples": 0,
+      "endingAcRms": 0.0,
+      "sid": {
+        "path": "build/mozart-minuet-work/cache/mono/9be68f500944ff8752cafd6e22abd343c9865cc9c468a755794bce7396518840/attempt-11ca7c8f8c794f968cef942e60b29cc1/song/export/mono.sid",
+        "bytes": 6639,
+        "sha256": "d86258302ae42fbed806103892439eea307a7cad30dd47181d065aa3bfc41bb6"
+      },
+      "prg": {
+        "path": "build/mozart-minuet-work/cache/mono/9be68f500944ff8752cafd6e22abd343c9865cc9c468a755794bce7396518840/attempt-11ca7c8f8c794f968cef942e60b29cc1/song/export/mono.prg",
+        "bytes": 7511,
+        "sha256": "3f7bb5fcf167e5d9bba8ef41eb1ea212e7c4238b588fa01c760ea7b7387602a4"
+      },
+      "wav": {
+        "path": "build/mozart-minuet-work/cache/mono/9be68f500944ff8752cafd6e22abd343c9865cc9c468a755794bce7396518840/attempt-11ca7c8f8c794f968cef942e60b29cc1/song/native-song.wav",
+        "bytes": 12910566,
+        "sha256": "2809f404df4361177b62467103f2d1bc6a9c859425792a75a50564788e7359bf"
+      },
+      "verification": {
+        "path": "build/mozart-minuet-work/cache/mono/9be68f500944ff8752cafd6e22abd343c9865cc9c468a755794bce7396518840/attempt-11ca7c8f8c794f968cef942e60b29cc1/song/verification.json",
+        "bytes": 8821,
+        "sha256": "8109e1594dac7f91bb08f75f328a2ef1bce6786e48c3490bd13ead57a3d56a8f"
+      }
+    },
+    "plain": {
+      "clock": "PAL",
+      "sidCount": 1,
+      "sidModel": "MOS8580",
+      "patterns": 45,
+      "notes": [
+        402,
+        205,
+        356
+      ],
+      "playCalls": 7339,
+      "maximumPlayCycles": 2295,
+      "frameCycleBudget": 19656,
+      "stopTick": 7286,
+      "allGatesAndVolumesStop": true,
+      "durationSeconds": 146.37780045351474,
+      "clippedSamples": 0,
+      "endingAcRms": 0.0,
+      "sid": {
+        "path": "build/mozart-minuet-work/cache/plain/c98c5aa5b70cf6b6cc916b828ede928f88f7e2acc6e1930854b6d1d588bafb84/attempt-b9d2cc9f193c4474aceb3247d92ad1bd/song/export/plain.sid",
+        "bytes": 6492,
+        "sha256": "16d6aee7d7d43654f19227b67f30a048704ac58926c2b9651e2f706942588570"
+      },
+      "prg": {
+        "path": "build/mozart-minuet-work/cache/plain/c98c5aa5b70cf6b6cc916b828ede928f88f7e2acc6e1930854b6d1d588bafb84/attempt-b9d2cc9f193c4474aceb3247d92ad1bd/song/export/plain.prg",
+        "bytes": 7364,
+        "sha256": "4faa8f389f083c8c6040f57ec1aea14b8789be1fc6aea895e1eb6883a1974a9e"
+      },
+      "wav": {
+        "path": "build/mozart-minuet-work/cache/plain/c98c5aa5b70cf6b6cc916b828ede928f88f7e2acc6e1930854b6d1d588bafb84/attempt-b9d2cc9f193c4474aceb3247d92ad1bd/song/native-song.wav",
+        "bytes": 12910566,
+        "sha256": "0f2337de7dbee8577590687ad1d75c4ab30fc97188a8247fb5b34e5fc071ad8b"
+      },
+      "verification": {
+        "path": "build/mozart-minuet-work/cache/plain/c98c5aa5b70cf6b6cc916b828ede928f88f7e2acc6e1930854b6d1d588bafb84/attempt-b9d2cc9f193c4474aceb3247d92ad1bd/song/verification.json",
+        "bytes": 8826,
+        "sha256": "c88d462bdd1aeb13903457621033c47e5991ce6319b792e5b616f51a2c18d2fc"
+      }
+    },
+    "stereo": {
+      "clock": "PAL",
+      "sidCount": 2,
+      "sidModel": "MOS8580",
+      "patterns": 59,
+      "notes": [
+        402,
+        205,
+        428,
+        402,
+        205,
+        346
+      ],
+      "playCalls": 7339,
+      "maximumPlayCycles": 4645,
+      "frameCycleBudget": 19656,
+      "stopTick": 7286,
+      "allGatesAndVolumesStop": true,
+      "durationSeconds": 146.37780045351474,
+      "clippedSamples": 0,
+      "endingAcRms": 0.0,
+      "sid": {
+        "path": "build/mozart-minuet-work/cache/stereo/a1603d7f62261f5317f8ef12dd812db834d80315c02a3f8fe4054a45eedf892b/attempt-920cf4fbc50e47ee85b53c73fdeb231e/song/export/stereo.sid",
+        "bytes": 8659,
+        "sha256": "a81428916de8dfa2c055998927b98d3382dc6f1b8112d2a87d8b0aead1b1f6fa"
+      },
+      "prg": {
+        "path": "build/mozart-minuet-work/cache/stereo/a1603d7f62261f5317f8ef12dd812db834d80315c02a3f8fe4054a45eedf892b/attempt-920cf4fbc50e47ee85b53c73fdeb231e/song/export/stereo.prg",
+        "bytes": 9933,
+        "sha256": "7587b796d25f482baca591d7fbf779138363e050073c3a5e73d3dae3dcef701c"
+      },
+      "wav": {
+        "path": "build/mozart-minuet-work/cache/stereo/a1603d7f62261f5317f8ef12dd812db834d80315c02a3f8fe4054a45eedf892b/attempt-920cf4fbc50e47ee85b53c73fdeb231e/song/native-song.wav",
+        "bytes": 25821088,
+        "sha256": "339bf260000597357c37cbd96273ca66e7009cfc371ab3340fea832dfda2dda4"
+      },
+      "verification": {
+        "path": "build/mozart-minuet-work/cache/stereo/a1603d7f62261f5317f8ef12dd812db834d80315c02a3f8fe4054a45eedf892b/attempt-920cf4fbc50e47ee85b53c73fdeb231e/song/verification.json",
+        "bytes": 12553,
+        "sha256": "dc891e052e5573b2097b62b9f5858bf2e1d0dd973fc1cc15898cf1b0cb4a4746"
+      }
+    },
+    "mono-ntsc": {
+      "clock": "NTSC",
+      "sidCount": 1,
+      "sidModel": "MOS8580",
+      "patterns": 76,
+      "notes": [
+        402,
+        205,
+        356
+      ],
+      "playCalls": 8758,
+      "maximumPlayCycles": 2318,
+      "frameCycleBudget": 17095,
+      "stopTick": 8696,
+      "allGatesAndVolumesStop": true,
+      "durationSeconds": 146.37131519274377,
+      "clippedSamples": 0,
+      "endingAcRms": 0.0,
+      "sid": {
+        "path": "build/mozart-minuet-work/cache/mono-ntsc/1cdaf91ee992ab59a9138c78c064eb372774448963119f00cbea578bab2d1d99/attempt-e711ddbc6f00420c920cb38fd6f05972/song/export/mono.sid",
+        "bytes": 7330,
+        "sha256": "cd33606e96b1cfe007064940ec9ed37e274a05663372a32cdc5be2d5454e2b90"
+      },
+      "prg": {
+        "path": "build/mozart-minuet-work/cache/mono-ntsc/1cdaf91ee992ab59a9138c78c064eb372774448963119f00cbea578bab2d1d99/attempt-e711ddbc6f00420c920cb38fd6f05972/song/export/mono.prg",
+        "bytes": 8202,
+        "sha256": "78f14b7954a49e4630dc6e6f6039e1edf780622ecf407613703b8f7647649392"
+      },
+      "wav": {
+        "path": "build/mozart-minuet-work/cache/mono-ntsc/1cdaf91ee992ab59a9138c78c064eb372774448963119f00cbea578bab2d1d99/attempt-e711ddbc6f00420c920cb38fd6f05972/song/native-song.wav",
+        "bytes": 12909994,
+        "sha256": "8cd727bfa487701f8e9455a78dbf7fc062131d1fe9ebab12d0080d8e7b8e7247"
+      },
+      "verification": {
+        "path": "build/mozart-minuet-work/cache/mono-ntsc/1cdaf91ee992ab59a9138c78c064eb372774448963119f00cbea578bab2d1d99/attempt-e711ddbc6f00420c920cb38fd6f05972/song/verification.json",
+        "bytes": 8872,
+        "sha256": "46b72ad4f0c5a866fa2fcbe85dc4d33ce0ad5c71ef977fb9421c6b2166970716"
+      }
+    },
+    "stereo-ntsc": {
+      "clock": "NTSC",
+      "sidCount": 2,
+      "sidModel": "MOS8580",
+      "patterns": 97,
+      "notes": [
+        402,
+        205,
+        428,
+        402,
+        205,
+        346
+      ],
+      "playCalls": 8758,
+      "maximumPlayCycles": 4648,
+      "frameCycleBudget": 17095,
+      "stopTick": 8696,
+      "allGatesAndVolumesStop": true,
+      "durationSeconds": 146.37131519274377,
+      "clippedSamples": 0,
+      "endingAcRms": 0.0,
+      "sid": {
+        "path": "build/mozart-minuet-work/cache/stereo-ntsc/cd5f2391d6520024779c67cc8617776c3c1800f238d4d357a8a102d8c75b1aee/attempt-fb29babd27084765a6f1fcf385fcf8cc/song/export/stereo.sid",
+        "bytes": 9637,
+        "sha256": "8aced11392a1f918a837373ca30388cdb7ee39a41af26c04b8c2ceda1a7053f7"
+      },
+      "prg": {
+        "path": "build/mozart-minuet-work/cache/stereo-ntsc/cd5f2391d6520024779c67cc8617776c3c1800f238d4d357a8a102d8c75b1aee/attempt-fb29babd27084765a6f1fcf385fcf8cc/song/export/stereo.prg",
+        "bytes": 10911,
+        "sha256": "072011003bc0d2503d0470ec3566d7397de0654d54d6d11b94327cda29d83bf0"
+      },
+      "wav": {
+        "path": "build/mozart-minuet-work/cache/stereo-ntsc/cd5f2391d6520024779c67cc8617776c3c1800f238d4d357a8a102d8c75b1aee/attempt-fb29babd27084765a6f1fcf385fcf8cc/song/native-song.wav",
+        "bytes": 25819944,
+        "sha256": "8927382e0a0fd26ea55b411b6ee023e36472c974c2d3aa1f51feba50dd320c6f"
+      },
+      "verification": {
+        "path": "build/mozart-minuet-work/cache/stereo-ntsc/cd5f2391d6520024779c67cc8617776c3c1800f238d4d357a8a102d8c75b1aee/attempt-fb29babd27084765a6f1fcf385fcf8cc/song/verification.json",
+        "bytes": 12600,
+        "sha256": "406d95f81ab7c425698f34d6f68b28fe68f69f430699b1cd560f563f420df8a0"
+      }
+    }
+  },
+  "standaloneChecks": {
+    "mono-vice": {
+      "receipt": {
+        "path": "build/mozart-minuet-work/cache/mono-vice/dcbc10485f67841a4eddb7e766038253decbdf8482faa3578e4b2540588090fe/attempt-31d8f4a2b04e4cca9698fd256f12611c/vice/verification.json",
+        "bytes": 1757,
+        "sha256": "9bd08e9b53782d8a6b9314a6fefea1a511334558caefc0a7a1b7ccf206f4052c"
+      },
+      "scope": "Standalone PRG boot, sampled SID write shadows and single-speed PAL cadence; not continuous write equivalence or listening evidence",
+      "checkpoints": [
+        {
+          "completedPlayCalls": 0,
+          "cycle": 2531984,
+          "cycleError": 0,
+          "sidRegisters": "00000000000000000000000000000000000000000000000000"
+        },
+        {
+          "completedPlayCalls": 1,
+          "cycle": 2551642,
+          "cycleError": 2,
+          "sidRegisters": "00270000090a4900000000000000000000000000000000000f"
+        },
+        {
+          "completedPlayCalls": 3,
+          "cycle": 2590954,
+          "cycleError": 2,
+          "sidRegisters": "12272302410a4900000000000000000000000000000000000f"
+        },
+        {
+          "completedPlayCalls": 2605,
+          "cycle": 53735866,
+          "cycleError": 2,
+          "sidRegisters": "2731bc040908480a0d2a094007666e1000064004570000000f"
+        },
+        {
+          "completedPlayCalls": 5865,
+          "cycle": 117814425,
+          "cycleError": 1,
+          "sidRegisters": "12278c02410a4989137c094007669d1800061006560000000f"
+        },
+        {
+          "completedPlayCalls": 7300,
+          "cycle": 146020787,
+          "cycleError": 3,
+          "sidRegisters": "5234b105400a490a0d53094007666e10000640045700000000"
+        },
+        {
+          "completedPlayCalls": 7335,
+          "cycle": 146708745,
+          "cycleError": 1,
+          "sidRegisters": "d133f705400a490a0d01094007666e10000640045700000000"
+        }
+      ]
+    },
+    "mono-ntsc-vice": {
+      "receipt": {
+        "path": "build/mozart-minuet-work/cache/mono-ntsc-vice/f3fccb218ab7a2d37c5b83969a79f869af7f01b08d398de4beb04d2916d0c952/attempt-62b67bd6f9884f6cb0f888cec167b4ba/vice/verification.json",
+        "bytes": 1764,
+        "sha256": "0368969636bd5cd1f3b58f313c9f0b757614cf66d79a131b76ee9e57bb0dc943"
+      },
+      "scope": "Standalone PRG boot, sampled SID write shadows and single-speed NTSC cadence; not continuous write equivalence or listening evidence",
+      "checkpoints": [
+        {
+          "completedPlayCalls": 0,
+          "cycle": 2546589,
+          "cycleError": 0,
+          "sidRegisters": "00000000000000000000000000000000000000000000000000"
+        },
+        {
+          "completedPlayCalls": 1,
+          "cycle": 2563683,
+          "cycleError": -1,
+          "sidRegisters": "00250000090a4900000000000000000000000000000000000f"
+        },
+        {
+          "completedPlayCalls": 3,
+          "cycle": 2597871,
+          "cycleError": -3,
+          "sidRegisters": "a4252302410a4900000000000000000000000000000000000f"
+        },
+        {
+          "completedPlayCalls": 3110,
+          "cycle": 55712033,
+          "cycleError": -6,
+          "sidRegisters": "6b2f0002410848900c5309400766d40f00064004570000000f"
+        },
+        {
+          "completedPlayCalls": 7000,
+          "cycle": 122211586,
+          "cycleError": -3,
+          "sidRegisters": "a425af02410a49d2128608400766b71700061006560000000f"
+        },
+        {
+          "completedPlayCalls": 8710,
+          "cycle": 151444034,
+          "cycleError": -5,
+          "sidRegisters": "ea31f705400a49900ca509400766d40f000640045700000000"
+        },
+        {
+          "completedPlayCalls": 8755,
+          "cycle": 152213313,
+          "cycleError": -1,
+          "sidRegisters": "68329904400a49900c0b08400766d40f000640045700000000"
+        }
+      ]
+    },
+    "stereo-vice": {
+      "receipt": {
+        "path": "build/mozart-minuet-work/cache/stereo-vice/14362683eec9c443bf947b8c7848c47b8b3cbe5ffe4f76ac4575e0c423b2b4da/attempt-fe600cb735a542378fb7aa06348805c2/vice/verification.json",
+        "bytes": 2313,
+        "sha256": "8d7eed1c7b51f7018f53349b5ab187b1c9c74ce7ddbec53c5abd479a8ec628ec"
+      },
+      "scope": "Standalone PRG boot, sampled SID write shadows and single-speed PAL cadence; not continuous write equivalence or listening evidence",
+      "checkpoints": [
+        {
+          "completedPlayCalls": 0,
+          "cycle": 2649920,
+          "cycleError": 0,
+          "sidRegisters": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "completedPlayCalls": 1,
+          "cycle": 2669576,
+          "cycleError": 0,
+          "sidRegisters": "00270000090a4900000000000000001300000906560000000f00270000090a4900000000000000000000000000000000000f"
+        },
+        {
+          "completedPlayCalls": 3,
+          "cycle": 2708891,
+          "cycleError": 3,
+          "sidRegisters": "12272302410a4900000000000000891300001106560000000f12272302410a4900000000000000000000000000000000000f"
+        },
+        {
+          "completedPlayCalls": 2605,
+          "cycle": 53853800,
+          "cycleError": 0,
+          "sidRegisters": "2731bc040908480a0d2a09400766db2000001006560000000f2731bc040908480a0d2a094007666e1000064004570000000f"
+        },
+        {
+          "completedPlayCalls": 5865,
+          "cycle": 117932361,
+          "cycleError": 1,
+          "sidRegisters": "12278c02410a4989137c09400766891300001106560000000f12278c02410a4989137c09400766891300064004570000000f"
+        },
+        {
+          "completedPlayCalls": 7300,
+          "cycle": 146138721,
+          "cycleError": 1,
+          "sidRegisters": "5234b105400a490a0d5309400766db200000100656000000005234b105400a490a0d53094007666e10000640045700000000"
+        },
+        {
+          "completedPlayCalls": 7335,
+          "cycle": 146826680,
+          "cycleError": 0,
+          "sidRegisters": "d133f705400a490a0d0109400766db20000010065600000000d133f705400a490a0d01094007666e10000640045700000000"
+        }
+      ]
+    },
+    "stereo-ntsc-vice": {
+      "receipt": {
+        "path": "build/mozart-minuet-work/cache/stereo-ntsc-vice/61ae35bf67b768c5a91f21fb1f9efeea23a98937182f7e6febe67284c7a2d093/attempt-d024771447994ad2aaaff3f13e1e2243/vice/verification.json",
+        "bytes": 2314,
+        "sha256": "c26d1b6e14c225513c3f03690fab4b2a87d9898a2ece7f255e29b4e18ad3a800"
+      },
+      "scope": "Standalone PRG boot, sampled SID write shadows and single-speed NTSC cadence; not continuous write equivalence or listening evidence",
+      "checkpoints": [
+        {
+          "completedPlayCalls": 0,
+          "cycle": 2683343,
+          "cycleError": 0,
+          "sidRegisters": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "completedPlayCalls": 1,
+          "cycle": 2700440,
+          "cycleError": 2,
+          "sidRegisters": "00250000090a4900000000000000001200000906560000000f00250000090a4900000000000000000000000000000000000f"
+        },
+        {
+          "completedPlayCalls": 3,
+          "cycle": 2734630,
+          "cycleError": 2,
+          "sidRegisters": "a4252302410a4900000000000000d21200001106560000000fa4252302410a4900000000000000000000000000000000000f"
+        },
+        {
+          "completedPlayCalls": 3110,
+          "cycle": 55848796,
+          "cycleError": 3,
+          "sidRegisters": "6b2f0002410848900c5309400766a71f00001006560000000f6b2f0002410848900c5309400766d40f00064004570000000f"
+        },
+        {
+          "completedPlayCalls": 7000,
+          "cycle": 122348345,
+          "cycleError": 2,
+          "sidRegisters": "a425af02410a49d2128608400766d21200001106560000000fa425af02410a49d2128608400766d21200064004570000000f"
+        },
+        {
+          "completedPlayCalls": 8710,
+          "cycle": 151580799,
+          "cycleError": 6,
+          "sidRegisters": "ea31f705400a49900ca509400766a71f000010065600000000ea31f705400a49900ca509400766d40f000640045700000000"
+        },
+        {
+          "completedPlayCalls": 8755,
+          "cycle": 152350074,
+          "cycleError": 6,
+          "sidRegisters": "68329904400a49900c0b08400766a71f00001006560000000068329904400a49900c0b08400766d40f000640045700000000"
+        }
+      ]
+    }
+  },
+  "stages": [
+    {
+      "id": "prepare",
+      "wallSeconds": 0.589427457889542,
+      "executionSeconds": 0.5240703749004751,
+      "cacheHit": false
+    },
+    {
+      "id": "mono",
+      "wallSeconds": 0.0720023331232369,
+      "executionSeconds": 0,
+      "cacheHit": true
+    },
+    {
+      "id": "plain",
+      "wallSeconds": 0.08597450004890561,
+      "executionSeconds": 0,
+      "cacheHit": true
+    },
+    {
+      "id": "stereo",
+      "wallSeconds": 0.1903248329181224,
+      "executionSeconds": 0,
+      "cacheHit": true
+    },
+    {
+      "id": "phrase",
+      "wallSeconds": 0.03431487502530217,
+      "executionSeconds": 0,
+      "cacheHit": true
+    },
+    {
+      "id": "ending",
+      "wallSeconds": 0.6144787908997387,
+      "executionSeconds": 0.5583385000936687,
+      "cacheHit": false
+    },
+    {
+      "id": "stereo-review",
+      "wallSeconds": 0.12947387504391372,
+      "executionSeconds": 0,
+      "cacheHit": true
+    },
+    {
+      "id": "mono-ntsc",
+      "wallSeconds": 45.27066570916213,
+      "executionSeconds": 45.162530000088736,
+      "cacheHit": false
+    },
+    {
+      "id": "mono-vice",
+      "wallSeconds": 21.38999891700223,
+      "executionSeconds": 20.93909112503752,
+      "cacheHit": false
+    },
+    {
+      "id": "mono-ntsc-vice",
+      "wallSeconds": 23.96421904186718,
+      "executionSeconds": 23.341247458010912,
+      "cacheHit": false
+    },
+    {
+      "id": "stereo-ntsc",
+      "wallSeconds": 96.60563204204664,
+      "executionSeconds": 96.39669104199857,
+      "cacheHit": false
+    },
+    {
+      "id": "stereo-vice",
+      "wallSeconds": 22.17308162502013,
+      "executionSeconds": 21.708019458921626,
+      "cacheHit": false
+    },
+    {
+      "id": "stereo-ntsc-vice",
+      "wallSeconds": 24.670234750024974,
+      "executionSeconds": 24.12874187505804,
+      "cacheHit": false
+    }
+  ],
+  "firstRenderAttempt": {
+    "path": "build/mozart-minuet-work/first-render-attempt.json",
+    "bytes": 58553,
+    "sha256": "802d2ea5e6580f409a991b5362f77bcd0e8844a8e57da01a6e3b448b994fe9e8"
+  },
+  "firstPackingFailure": {
+    "path": "build/mozart-minuet-work/first-attempt.json",
+    "bytes": 7991,
+    "sha256": "4362dc7467ea8c7826c52ceb2ad16e3d2eedc8a561891685c9c9f828b886f75e"
+  },
+  "limitations": [
+    "One case cannot establish comparative composition-effort savings.",
+    "Initial unmeasured reading precedes the first clock observation.",
+    "Agent intervals and tool intervals overlap; do not add them.",
+    "No human musical acceptance, physical hardware equivalence or perceived centering is established."
+  ],
+  "sourceAccounting": {
+    "sourceNotes": 584,
+    "performedSourceNotes": 1393,
+    "sourceBeats": 108,
+    "totalBeats": 264,
+    "sourceQuarterBpm": 112.00005973336519,
+    "quarterBpm": 110.87463199598375,
+    "mono": {
+      "retainedSourceNotes": 963,
+      "omittedSourceNotes": 430,
+      "duplicatedSourceNotes": 0,
+      "outputEvents": 963
+    },
+    "stereo": {
+      "retainedSourceNotes": 1381,
+      "omittedSourceNotes": 12,
+      "duplicatedSourceNotes": 607,
+      "outputEvents": 1988
+    }
+  },
+  "spatialVerification": {
+    "path": "build/mozart-minuet-work/cache/stereo-review/b6f39206fa0430e984ce4a74c79b3534b56fb819eb7464bc16b21c9cb90456cc/attempt-62c04d4d1d2e40b28be1a5bcb6c7279a/review/verification.json",
+    "bytes": 3466,
+    "sha256": "5a0c3ca2e2b435c7b769c2352e5240b4ecb1cf313704f610a20e2e29badb7519"
+  },
+  "auditions": {
+    "schemaVersion": 1,
+    "run": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/mozart-minuet-work/run.json",
+      "sha256": "8eee50144d105638d262a2104bd16b65a3f0a47ec599065f0f17321c73d9b303",
+      "bytes": 95270
+    },
+    "selection": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/mozart-minuet.audition.json",
+      "sha256": "df00ac06b18ef74490b1c88f84972b0b029a9a686d8b65763c25a7c1c1947452",
+      "bytes": 359
+    },
+    "files": [
+      {
+        "label": "mono-full",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/mozart-minuet-work/cache/mono/9be68f500944ff8752cafd6e22abd343c9865cc9c468a755794bce7396518840/attempt-11ca7c8f8c794f968cef942e60b29cc1/song/native-song.wav",
+        "filename": "mozart-minuet-single-sid.wav",
+        "sha256": "2809f404df4361177b62467103f2d1bc6a9c859425792a75a50564788e7359bf",
+        "bytes": 12910566,
+        "stageId": "mono"
+      },
+      {
+        "label": "plain-full",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/mozart-minuet-work/cache/plain/c98c5aa5b70cf6b6cc916b828ede928f88f7e2acc6e1930854b6d1d588bafb84/attempt-b9d2cc9f193c4474aceb3247d92ad1bd/song/native-song.wav",
+        "filename": "mozart-minuet-plain-reference.wav",
+        "sha256": "0f2337de7dbee8577590687ad1d75c4ab30fc97188a8247fb5b34e5fc071ad8b",
+        "bytes": 12910566,
+        "stageId": "plain"
+      },
+      {
+        "label": "stereo-full",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/mozart-minuet-work/cache/stereo/a1603d7f62261f5317f8ef12dd812db834d80315c02a3f8fe4054a45eedf892b/attempt-920cf4fbc50e47ee85b53c73fdeb231e/song/native-song.wav",
+        "filename": "mozart-minuet-stereo.wav",
+        "sha256": "339bf260000597357c37cbd96273ca66e7009cfc371ab3340fea832dfda2dda4",
+        "bytes": 25821088,
+        "stageId": "stereo"
+      },
+      {
+        "label": "phrase",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/mozart-minuet-work/cache/phrase/47267e3733c1e69b9c782a3c7274f9feab6eaf22774f841a991834347014ca98/attempt-536aafe559514acdb8385483928fba06/plain-then-mono-phrase.ab.wav",
+        "filename": "plain-then-single-sid-opening.ab.wav",
+        "sha256": "8291248a183a92b62753ccd19ec8991e643c8fb186bde79f722f9239ffefcf22",
+        "bytes": 3219344,
+        "stageId": "phrase"
+      },
+      {
+        "label": "ending",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/mozart-minuet-work/cache/ending/fbdf83c252de9a26e5bbd2aa629ea816aff8be5b6c722add63dfb8ee6f239fc9/attempt-ca726ed6dc37406f82bed24f313b2288/plain-then-mono-ending.ab.wav",
+        "filename": "plain-then-single-sid-ending.ab.wav",
+        "sha256": "32003c05f044506218499a333f6b603b04621821eeb85edb4a49c1948fae073b",
+        "bytes": 2513744,
+        "stageId": "ending"
+      },
+      {
+        "label": "stereo-phrase",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/mozart-minuet-work/cache/stereo-review/b6f39206fa0430e984ce4a74c79b3534b56fb819eb7464bc16b21c9cb90456cc/attempt-62c04d4d1d2e40b28be1a5bcb6c7279a/review/mono-then-stereo-phrase.ab.wav",
+        "filename": "single-then-stereo-trio.ab.wav",
+        "sha256": "50d42269c20e776d085ac59efef4040a0df51fc5c9922a8ed91742b4420759db",
+        "bytes": 6438644,
+        "stageId": "stereo-review"
+      },
+      {
+        "label": "stereo-ending",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/mozart-minuet-work/cache/stereo-review/b6f39206fa0430e984ce4a74c79b3534b56fb819eb7464bc16b21c9cb90456cc/attempt-62c04d4d1d2e40b28be1a5bcb6c7279a/review/mono-then-stereo-ending.ab.wav",
+        "filename": "single-then-stereo-ending.ab.wav",
+        "sha256": "7fe1b996a5f7cb08813c129afedcca5e689215c728b299195da24f67ba37181a",
+        "bytes": 5027444,
+        "stageId": "stereo-review"
+      }
+    ]
+  },
+  "listening": {
+    "singleSidFull": {
+      "verdict": "Yes, the single-SID rendition works",
+      "scope": "Complete PAL MOS8580 three-voice performance",
+      "wavSha256": "2809f404df4361177b62467103f2d1bc6a9c859425792a75a50564788e7359bf",
+      "recordedUtc": "2026-10-16T23:28:18.125588+00:00"
+    },
+    "stereoBenefit": {
+      "verdict": "Stereo adds useful richness and space",
+      "scope": "Single-SID then stereo Trio passage, 58\u201376 seconds, at unity gain",
+      "comparisonSha256": "50d42269c20e776d085ac59efef4040a0df51fc5c9922a8ed91742b4420759db",
+      "recordedUtc": "2026-10-16T23:29:16.993081+00:00"
+    },
+    "ending": {
+      "verdict": "Yes, the ending works",
+      "scope": "Single-SID then stereo ending comparison, 132\u2013146 seconds",
+      "comparisonSha256": "7fe1b996a5f7cb08813c129afedcca5e689215c728b299195da24f67ba37181a",
+      "recordedUtc": "2026-10-16T23:30:36.134298+00:00"
+    },
+    "stereoFull": {
+      "verdict": "Yes, the complete stereo rendition works",
+      "scope": "Complete PAL MOS8580 dual-SID performance",
+      "wavSha256": "339bf260000597357c37cbd96273ca66e7009cfc371ab3340fea832dfda2dda4",
+      "recordedUtc": "2026-10-16T23:33:32.393137+00:00"
+    }
+  },
+  "cleanup": {
+    "mode": "dry-run",
+    "passed": true,
+    "receipt": "build/cleanup-mozart-first-review/summary.json",
+    "reclaimedBytes": 0,
+    "decision": "Historical working inputs left untouched at preview; closed-case archival subsequently completed and independently verified.",
+    "subsequentRetentionReceipt": "evidence/mozart-minuet/retention.json"
+  },
+  "humanEffortBasis": "Listener self-reported approximate active time for musical guidance, listening and replies; the coordinator selected the piece, guided by user input. Not clock-measured and not additive to overlapping agent elapsed time.",
+  "humanEffortVerbatim": "20 min, but note that you selected the piece (guided by my input).",
+  "closure": {
+    "observedUtc": "2026-10-16T23:38:43.437940+00:00",
+    "elapsedSecondsFromFirstClock": 2064.438,
+    "scope": "Pre-commit closure checkpoint after listening, retention, documentation and focused tests; initial unclocked reading and subsequent Git commit/final handback excluded. Elapsed time includes waits and overlapping work, not active agent time.",
+    "testsPassed": 15,
+    "modelAssistance": "Standing decision unchanged; human musical judgments only, no audio-model calls.",
+    "comparativeEffortSavings": "unproven; no counterfactual measured",
+    "publicSampleManifest": "samples/mozart-minuet/manifest.json",
+    "retentionReceipt": "evidence/mozart-minuet/retention.json"
+  }
+}

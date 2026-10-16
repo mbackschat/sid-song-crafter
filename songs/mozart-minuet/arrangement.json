@@ -1,0 +1,69 @@
+{
+  "format": "mozart-minuet-arrangement-v1",
+  "quarterBpm": 110.87463199598375,
+  "tailTicks": 125,
+  "spans": [
+    {
+      "name": "Menuetto A 1",
+      "startBeat": 0,
+      "endBeat": 24
+    },
+    {
+      "name": "Menuetto A 2",
+      "startBeat": 0,
+      "endBeat": 24
+    },
+    {
+      "name": "Menuetto B 1",
+      "startBeat": 24,
+      "endBeat": 48
+    },
+    {
+      "name": "Menuetto B 2",
+      "startBeat": 24,
+      "endBeat": 48
+    },
+    {
+      "name": "Trio A 1",
+      "startBeat": 48,
+      "endBeat": 72
+    },
+    {
+      "name": "Trio A 2",
+      "startBeat": 48,
+      "endBeat": 72
+    },
+    {
+      "name": "Trio B 1",
+      "startBeat": 72,
+      "endBeat": 108
+    },
+    {
+      "name": "Trio B 2",
+      "startBeat": 72,
+      "endBeat": 108
+    },
+    {
+      "name": "Da capo A",
+      "startBeat": 0,
+      "endBeat": 24
+    },
+    {
+      "name": "Da capo B",
+      "startBeat": 24,
+      "endBeat": 48
+    }
+  ],
+  "violaPolicy": "lowest-at-onset",
+  "monoInner": {
+    "menuetto": "viola",
+    "trio": "violin-2"
+  },
+  "decisions": {
+    "form": "Play all four written repeats on first traversal; Menuetto da capo once without repeats, stopping at Fine.",
+    "mono": "Preserve first violin and cello; use viola in Menuetto/return, second violin in Trio. Omit the complementary inner part explicitly.",
+    "stereo": "Duplicate first violin and cello across chips for a centered lead/bass; second violin on chip A voice 3, viola on chip B voice 3.",
+    "viola": "Keep C4/B3 rather than the shared D4 in the four source double stops to preserve the lower harmonic seventh/third; same reduction in every occurrence.",
+    "tempo": "Perform at quarter = 110.87463199598375, about 1.005% below the MIDI tempo. This corresponds to 27.125 PAL frames per quarter and lets repeated source phrases share native patterns at both PAL and NTSC rates. Preserve every source beat coordinate; this is an explicit performance tempo, not exact MIDI wall-time reproduction."
+  }
+}
