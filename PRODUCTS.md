@@ -4,6 +4,8 @@ The focus is to map a given musical score to SID in an inspiring, creative way t
 
 The project builds and applies a reusable body of knowledge for making these interpretations. It connects musical intentions to SID techniques: which sounds, voicings, phrasing, modulation and spatial roles can express a song's character, under which constraints, and with what listening evidence. The library includes documented knowhow, editable instruments and arrangements, executable examples, reusable code and reproducible studies. It is more than a collection of presets or a rendering pipeline.
 
+“SID” includes both MOS6581 and MOS8580, with single-SID and dual-SID stereo arrangements. Each deliverable declares its target model, clock and chip allocation; instrument choices are judged in that configuration.
+
 ## Musical scope
 
 - Start from a supplied or sourced score, preserving its provenance and musical foundation. Original score composition is outside the current remit unless explicitly requested.

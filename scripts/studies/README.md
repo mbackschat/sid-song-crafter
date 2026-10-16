@@ -61,3 +61,5 @@ Run commands from the repository root using these paths, for example `python3 sc
 
 - [Axel F master rhythm](axel-f/prepare-master-rhythm.py) adapts verified percussion phrase contrast to the fixed MIDI hook; [recipe and scope](../../songs/axel-f/arrangement-review.md#master-derived-percussion-phrase-contrast).
 - [Axel F model perception](axel-f/prepare-model-perception.py) prepares the frozen four-clip descriptive probe; [failed control and retained evidence](../../docs/research/audio-assessment.md#axel-f-descriptive-follow-up-silence-failure).
+
+- [Axel F timbre comparison](axel-f/prepare-timbre.py) isolates chip response from native lead/drum envelopes while holding the preferred rhythm and score fixed; [scoped verdicts and reproduction](../../songs/axel-f/arrangement-review.md#lead-snap-and-drum-impact-chip-response-and-envelope-contour).

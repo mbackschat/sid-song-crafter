@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "evidenceLevel": "rendered experiment",
+  "listeningReview": null,
+  "conversionManifest": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-timbre/cache/chip/b4ea0ad3e79db1044ba00eddbc57117cb968b73dfb3348a78f7944e8dab5c227/attempt-0e735f0b81dd4ea09bf415aba4015a40/song/conversion.json",
+  "exportReport": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-timbre/cache/chip/b4ea0ad3e79db1044ba00eddbc57117cb968b73dfb3348a78f7944e8dab5c227/attempt-0e735f0b81dd4ea09bf415aba4015a40/song/export.json",
+  "audit": {
+    "schemaVersion": 1,
+    "sourceSha256": "2d88ab64cf68731c5d5a728888284a041f5ce3863c65600c65e364234f0ca861",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS6581",
+    "sidCount": 1,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS6581"
+      }
+    ],
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4099,
+    "clockHz": 985248.6111111111,
+    "playCalls": 987,
+    "callRateHz": 50.12457321485099,
+    "initCycles": 1944,
+    "maximumPlayCycles": 2312,
+    "meanPlayCycles": 1923.7791286727456,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 24,
+    "playWriteCount": 24675,
+    "registers": {
+      "d400": {
+        "writes": 987,
+        "distinctValues": 27,
+        "minimum": 0,
+        "maximum": 236
+      },
+      "d401": {
+        "writes": 987,
+        "distinctValues": 10,
+        "minimum": 17,
+        "maximum": 46
+      },
+      "d402": {
+        "writes": 987,
+        "distinctValues": 30,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d403": {
+        "writes": 987,
+        "distinctValues": 5,
+        "minimum": 0,
+        "maximum": 5
+      },
+      "d404": {
+        "writes": 987,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 65
+      },
+      "d405": {
+        "writes": 987,
+        "distinctValues": 1,
+        "minimum": 10,
+        "maximum": 10
+      },
+      "d406": {
+        "writes": 987,
+        "distinctValues": 1,
+        "minimum": 73,
+        "maximum": 73
+      },
+      "d407": {
+        "writes": 987,
+        "distinctValues": 38,
+        "minimum": 0,
+        "maximum": 237
+      },
+      "d408": {
+        "writes": 987,
+        "distinctValues": 37,
+        "minimum": 1,
+        "maximum": 139
+      },
+      "d409": {
+        "writes": 987,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40a": {
+        "writes": 987,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40b": {
+        "writes": 987,
+        "distinctValues": 5,
+        "minimum": 9,
+        "maximum": 129
+      },
+      "d40c": {
+        "writes": 987,
+        "distinctValues": 1,
+        "minimum": 32,
+        "maximum": 32
+      },
+      "d40d": {
+        "writes": 987,
+        "distinctValues": 3,
+        "minimum": 34,
+        "maximum": 146
+      },
+      "d40e": {
+        "writes": 987,
+        "distinctValues": 18,
+        "minimum": 0,
+        "maximum": 233
+      },
+      "d40f": {
+        "writes": 987,
+        "distinctValues": 8,
+        "minimum": 4,
+        "maximum": 11
+      },
+      "d410": {
+        "writes": 987,
+        "distinctValues": 30,
+        "minimum": 0,
+        "maximum": 246
+      },
+      "d411": {
+        "writes": 987,
+        "distinctValues": 6,
+        "minimum": 0,
+        "maximum": 9
+      },
+      "d412": {
+        "writes": 987,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 65
+      },
+      "d413": {
+        "writes": 987,
+        "distinctValues": 1,
+        "minimum": 9,
+        "maximum": 9
+      },
+      "d414": {
+        "writes": 987,
+        "distinctValues": 1,
+        "minimum": 153,
+        "maximum": 153
+      },
+      "d415": {
+        "writes": 987,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d416": {
+        "writes": 987,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d417": {
+        "writes": 987,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d418": {
+        "writes": 987,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 15
+      }
+    },
+    "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+  },
+  "schedule": {
+    "method": "Pinned Extra driver note-column reads, discrete sound-start state and orderlist reads; exact ticks and instrument selections",
+    "noteCounts": [
+      46,
+      82,
+      50
+    ],
+    "lastNotes": [
+      {
+        "voice": 0,
+        "tick": 695,
+        "nativeNote": 54,
+        "instrument": 1
+      },
+      {
+        "voice": 1,
+        "tick": 802,
+        "nativeNote": 25,
+        "instrument": 15
+      },
+      {
+        "voice": 2,
+        "tick": 796,
+        "nativeNote": 33,
+        "instrument": 3
+      }
+    ],
+    "stopTicks": [
+      934,
+      934,
+      934
+    ],
+    "stopVolumeClearTick": 934,
+    "postStopOffReads": [
+      52,
+      52,
+      52
+    ],
+    "postStopVolumeReads": [
+      52,
+      52,
+      52
+    ],
+    "postStopGatesAndVolumeClear": true,
+    "criticalNotes": [],
+    "limitations": "Discrete source-note scheduling and selected short-note full-pitch register frames are verified; ADSR reattacks, vibrato, per-voice PCM audibility and musical quality are not established by this check."
+  },
+  "pcm": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-timbre/cache/chip/b4ea0ad3e79db1044ba00eddbc57117cb968b73dfb3348a78f7944e8dab5c227/attempt-0e735f0b81dd4ea09bf415aba4015a40/song/native-song.wav",
+    "sha256": "8ee48d82d73f0ba833fee384795ce305232a1ad390055cb55c8d38bd3b2bf481",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 866720,
+    "durationSeconds": 19.653514739229024,
+    "peak": 11503,
+    "peakDbfs": -9.092776303367447,
+    "clippedSamples": 0,
+    "rms": 3729.139092909232,
+    "acRms": 3252.5275702512113,
+    "acRmsDbfs": -20.064578967728842,
+    "perChannel": [
+      {
+        "dc": 1824.1553604393575,
+        "rms": 3729.139092909232,
+        "acRms": 3252.5275702512113
+      }
+    ]
+  },
+  "endingAcRms": 0.0,
+  "excerpt": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-timbre/cache/chip/b4ea0ad3e79db1044ba00eddbc57117cb968b73dfb3348a78f7944e8dab5c227/attempt-0e735f0b81dd4ea09bf415aba4015a40/song/native-song.excerpt.wav",
+    "sourceStartFrame": 0,
+    "frames": 711528,
+    "durationSeconds": 16.134421768707483,
+    "sha256": "152ac3367e8491983f55b0b41f893e5c1507cd5364fb35611d55a23e0b52510c",
+    "gain": 1
+  },
+  "renderer": {
+    "command": [
+      "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+      "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-timbre/cache/chip/b4ea0ad3e79db1044ba00eddbc57117cb968b73dfb3348a78f7944e8dab5c227/attempt-0e735f0b81dd4ea09bf415aba4015a40/song/export/chip.sid",
+      "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-timbre/cache/chip/b4ea0ad3e79db1044ba00eddbc57117cb968b73dfb3348a78f7944e8dab5c227/attempt-0e735f0b81dd4ea09bf415aba4015a40/song/native-song.wav",
+      "19.653525407433825",
+      "--clock",
+      "pal"
+    ],
+    "executableSha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46",
+    "deadlineSeconds": 120,
+    "timedOut": false,
+    "returnCode": 0,
+    "stdout": "libsidplayfp 3.1.1 / SIDLite: 866720 mono PCM16 samples at 44100 Hz, clock PAL, subtune 1 of 1, SID model MOS6581 (declared)",
+    "stderr": ""
+  },
+  "evidenceFiles": {
+    "writes": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-timbre/cache/chip/b4ea0ad3e79db1044ba00eddbc57117cb968b73dfb3348a78f7944e8dab5c227/attempt-0e735f0b81dd4ea09bf415aba4015a40/song/native-song.writes.json",
+    "frames": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-timbre/cache/chip/b4ea0ad3e79db1044ba00eddbc57117cb968b73dfb3348a78f7944e8dab5c227/attempt-0e735f0b81dd4ea09bf415aba4015a40/song/native-song.frames.json",
+    "nativeEvents": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-timbre/cache/chip/b4ea0ad3e79db1044ba00eddbc57117cb968b73dfb3348a78f7944e8dab5c227/attempt-0e735f0b81dd4ea09bf415aba4015a40/song/native-song.native-events.json"
+  },
+  "limitations": "RAM-only CPU scheduling evidence and emulated PCM health; first-frame audible pitch and ADSR equivalence are limited by the native driver, no hardware or listening approval is claimed."
+}
