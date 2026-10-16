@@ -1,0 +1,52 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score.json",
+  "title": "BWV 565 MIDI intake",
+  "author": "J. S. Bach / SID Song Crafter",
+  "authorinfo": "MUTOPIA 1780: MIDI INTAKE EXAMPLE",
+  "released": "2026",
+  "sidCount": 1,
+  "sidModel": "MOS8580",
+  "clock": "pal",
+  "timingPolicy": "retain-full-pitch",
+  "instruments": {
+    "lead": {
+      "name": "BCHPWM",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0288",
+      "frame1": "09",
+      "wave": [["41", "00", "00"]],
+      "pulse": [["86", "c0", "00"], ["30", "08", "00"], ["30", "f8", "00"], { "jump": 1 }],
+      "filter": []
+    },
+    "bass": {
+      "name": "BCHBASS",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "02a9",
+      "frame1": "09",
+      "wave": [["41", "00", "00"]],
+      "pulse": [["86", "00", "00"]],
+      "filter": [["92", "a0", "00"]]
+    },
+    "harmony": {
+      "name": "BCHHARM",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0258",
+      "frame1": "09",
+      "wave": [["51", "00", "00"]],
+      "pulse": [["86", "00", "00"]],
+      "filter": []
+    }
+  },
+  "sections": [
+    {
+      "name": "Source-timed opening and first resolution",
+      "startBeat": 0,
+      "endBeat": 10,
+      "voices": { "melody": "lead", "bass": "bass", "harmony": "harmony" }
+    }
+  ]
+}

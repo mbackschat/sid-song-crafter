@@ -29,7 +29,15 @@ The [apply report](../../build/cleanup-20261015-rambo-apply/summary.json) record
 
 ## Persistent evidence
 
-Install [Git LFS](https://git-lfs.com/) (`brew install git-lfs` on macOS), then initialize it for this checkout and fetch the retained objects from its configured remote:
+Compressed research evidence is optional for the normal demo and own-score workflow. The [README clone command](../../README.md#requirements-and-setup) skips LFS payloads; ordinary Git receipts, manifests and included samples are still checked out. Install [Git LFS](https://git-lfs.com/) (`brew install git-lfs` on macOS) when a study needs its compressed evidence, then fetch its indexed directory explicitly:
+
+```sh
+git lfs install --local
+git lfs pull --include="evidence/shades-form-intake/**" --exclude=""
+python3 scripts/evidence.py verify --group shades-form-intake
+```
+
+Use the group and directory recorded in [the evidence index](../../evidence/README.md); group IDs need not equal directory names. Omit filtering only when intentionally acquiring the complete optional collection:
 
 ```sh
 git lfs install --local

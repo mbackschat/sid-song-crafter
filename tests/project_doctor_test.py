@@ -1,10 +1,12 @@
 import importlib.util
+import hashlib
 import io
 import json
 from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+import wave
 from unittest.mock import patch
 
 
@@ -55,6 +57,98 @@ class ProjectDoctorTests(unittest.TestCase):
 
     def check(self, report, name):
         return next(check for check in report['checks'] if check['name'] == name)
+
+    def prepare_exporter(self, sid_count=1):
+        directory = self.root / ('.tools/sid-wizard-exporter' if sid_count == 1 else '.tools/sid-wizard-exporter-2sid')
+        self.write(directory / 'exporter.prg', 'exporter fixture')
+        self.write(directory / 'exporter.labels', 'label fixture')
+        self.write(directory / 'build.json', json.dumps(dict(
+            sidCount=sid_count,
+            exporterSha256=hashlib.sha256((directory / 'exporter.prg').read_bytes()).hexdigest(),
+            labelsSha256=hashlib.sha256((directory / 'exporter.labels').read_bytes()).hexdigest(),
+        )))
+        return directory
+
+    def test_demo_requires_native_exporter_but_not_vice_midi_or_study_assets(self):
+        self.prepare_required()
+        directory = self.prepare_exporter()
+        self.vice.unlink()
+        (self.roms / 'C64/kernal').unlink()
+        report = self.report(profile='demo', asset_checks=[])
+        self.assertTrue(report['ok'])
+        self.assertEqual({check['name'] for check in report['checks']}, {'py65', 'renderer', 'native-exporter'})
+        (directory / 'exporter.labels').write_text('changed')
+        report = self.report(profile='demo', asset_checks=[])
+        self.assertFalse(report['ok'])
+        self.assertIn('checksum', self.check(report, 'native-exporter')['detail'].lower())
+
+    def test_demo_reports_missing_and_wrong_chip_count_exporters(self):
+        self.prepare_required()
+        report = self.report(profile='demo', sid_count=2)
+        self.assertFalse(self.check(report, 'native-exporter')['ok'])
+        self.assertIn('--sid-count 2', self.check(report, 'native-exporter')['remedy'])
+        directory = self.prepare_exporter(sid_count=2)
+        manifest = json.loads((directory / 'build.json').read_text())
+        manifest['sidCount'] = 1
+        self.write(directory / 'build.json', json.dumps(manifest))
+        self.assertFalse(self.check(self.report(profile='demo', sid_count=2), 'native-exporter')['ok'])
+
+    def test_score_requires_midi_vice_and_exporter_without_reference_assets(self):
+        self.prepare_required()
+        self.prepare_exporter()
+        self.write(self.root / '.tools/arrangement-deps/mido/__init__.py', '')
+        report = self.report(profile='score', asset_checks=[dict(name='reference:unrelated', required=True, ok=False)])
+        self.assertTrue(report['ok'])
+        self.assertTrue(self.check(report, 'mido')['required'])
+        self.vice.unlink()
+        self.assertFalse(self.report(profile='score')['ok'])
+
+    def test_samples_need_only_a_readable_shipped_wav_and_do_not_launch_tools(self):
+        path = self.root / 'samples/bach-toccata/bach-toccata.wav'
+        path.parent.mkdir(parents=True)
+        with wave.open(str(path), 'wb') as output:
+            output.setparams((1, 2, 44100, 0, 'NONE', 'not compressed'))
+            output.writeframes(b'\x01\x00' * 20)
+        with patch.object(doctor.subprocess, 'run', side_effect=AssertionError('No tool probes for shipped audio')):
+            report = self.report(profile='samples')
+        self.assertTrue(report['ok'])
+        path.write_text('version https://git-lfs.github.com/spec/v1\n')
+        report = self.report(profile='samples')
+        self.assertFalse(report['ok'])
+        self.assertIn('git lfs', self.check(report, 'sample-audio')['remedy'])
+
+    def test_bridge_profile_is_an_explicit_installation_check_without_launching_server(self):
+        self.prepare_required()
+        self.write(self.root / '.tools/c64bridge/src/index.ts', '')
+        (self.root / '.tools/c64bridge/node_modules').mkdir()
+        bun = self.root / 'bin/bun'
+        self.executable(bun, 'exit 0')
+        with patch.object(doctor.shutil, 'which', return_value=str(bun)):
+            report = self.report(profile='bridge')
+        self.assertTrue(report['ok'])
+        self.assertTrue(self.check(report, 'bridge')['required'])
+        self.assertEqual({row['name'] for row in report['checks']}, {'bridge', 'vice', 'vice-roms'})
+        self.assertIn('not tested', self.check(report, 'bridge')['detail'])
+
+    def test_bridge_rejects_a_missing_or_nonexecutable_bun_override(self):
+        self.prepare_required()
+        self.write(self.root / '.tools/c64bridge/src/index.ts', '')
+        (self.root / '.tools/c64bridge/node_modules').mkdir()
+        bun = self.root / 'bin/bun'
+        for present in (False, True):
+            if present:
+                self.write(bun, 'not executable')
+            with patch.dict(doctor.os.environ, {'C64BRIDGE_BUN': str(bun)}):
+                self.assertFalse(self.check(self.report(profile='bridge'), 'bridge')['ok'])
+
+    def test_profile_and_sid_count_are_validated_and_cli_identifies_selected_workflow(self):
+        for options in ({'profile': 'typo'}, {'profile': 'demo', 'sid_count': 3}):
+            with self.subTest(options=options), self.assertRaises(ValueError):
+                self.report(**options)
+        output = io.StringIO()
+        with patch('sys.stdout', output):
+            self.assertEqual(doctor.main(['--root', str(self.root), '--profile', 'demo', '--json']), 1)
+        self.assertEqual(json.loads(output.getvalue())['profile'], 'demo')
 
     def test_available_core_is_ready_when_optional_bridge_and_mido_are_absent(self):
         self.prepare_required()

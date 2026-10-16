@@ -1,20 +1,9 @@
+# Copy to .codex/config.toml and replace both absolute path placeholders.
+# The launcher derives all checkout paths; VICE data remains machine-local.
 [mcp_servers.c64bridge]
-command = "/opt/homebrew/bin/bun"
-args = ["/Users/mbackschat/Projects/c64-sid-skill/.tools/c64bridge/src/index.ts"]
-cwd = "/Users/mbackschat/Projects/c64-sid-skill/.tools/c64bridge"
+command = "python3"
+args = ["/ABSOLUTE/PATH/TO/sid-song-crafter/scripts/launch-c64bridge.py"]
 startup_timeout_sec = 30
 
 [mcp_servers.c64bridge.env]
-C64_MODE = "vice"
-VICE_BINARY = "/Users/mbackschat/Projects/c64-sid-skill/.tools/vice-headless-3.9/build/src/x64sc"
-VICE_DIRECTORY = "/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice"
-VICE_VISIBLE = "false"
-VICE_HEADLESS = "0"
-VICE_WARP = "false"
-VICE_ARGS = "-pal +logcolorize -logfile /Users/mbackschat/Projects/c64-sid-skill/.local/c64bridge/vice.log"
-VICE_MODE = "pal"
-VICE_PREWARM = "0"
-DISABLE_XVFB = "1"
-RAG_BUILD_ON_START = "0"
-C64BRIDGE_DIAGNOSTICS_DIR = "/Users/mbackschat/Projects/c64-sid-skill/.local/c64bridge/diagnostics"
-C64_TASK_STATE_FILE = "/Users/mbackschat/Projects/c64-sid-skill/.local/c64bridge/tasks.json"
+VICE_DIRECTORY = "/ABSOLUTE/PATH/TO/VICE_DATA"

@@ -12,7 +12,7 @@ The project installs ignored, checksum-pinned upstream skills under [skills](../
 | Desktop VICE | `/Applications/vice-arm64-gtk3-3.9` | VICE 3.9 |
 | Headless VICE | `.tools/vice-headless-3.9/build/src/x64sc` | Official VICE 3.9 release; project-local build |
 
-Both project skills are active, and the c64bridge stdio handshake/tool discovery passes. That establishes server discovery, not emulator connectivity. Offline PRG/SID builds, independent CPU checks, SIDLite rendering and genuine headless VICE/reSID execution work. The restricted runner denies binary-monitor socket binding, so live bridge control remains unverified. See [audio rendering](../workflows/audio-workflow.md), [native checkpoints](../validation/native-vice-checks.md) and [headless build findings](vice-startup-investigation.md).
+The maintainer's 2026-10-16 checks discovered both project skills and completed the c64bridge stdio handshake/tool discovery. That establishes server discovery in that environment, not emulator connectivity or readiness of a fresh checkout. Offline PRG/SID builds, independent CPU checks, SIDLite rendering and genuine headless VICE/reSID execution work. The restricted runner denies binary-monitor socket binding, so live bridge control remains unverified. See [audio rendering](../workflows/audio-workflow.md), [native checkpoints](../validation/native-vice-checks.md) and [headless build findings](vice-startup-investigation.md).
 
 ## Unified local setup
 
@@ -81,9 +81,38 @@ To assess an explicit low-RAM host without changing the reference, add `--host-b
 
 ### Readiness and bridge setup
 
-Doctor supports `--json`, `--vice PATH`, `--vice-data PATH` and `--renderer PATH`, or `VICE_BINARY`, `VICE_DIRECTORY` and `SID_RENDERER`. It checks py65, renderer loading, headless VICE identification, expected ROM sizes and asset hashes; Mido and the bridge are optional. VICE identification from adjacent `config.h` is build evidence, not an emulator startup test. Use [native checkpoints](../validation/native-vice-checks.md) for actual execution. Setup does not install system packages or build VICE: use [the headless build instructions](vice-startup-investigation.md) and [renderer/dependency setup](../workflows/audio-workflow.md).
+Choose the workflow with `python3 scripts/doctor.py --profile NAME`. Each report identifies its profile and gives a repair for every missing prerequisite. Checks do not install dependencies, perform a song build or award a listening verdict.
 
-For optional live bridge use, prepare the pinned checkout described in the [project README](../../README.md#prepare-the-assembler), run `bun install --frozen-lockfile` there, and adapt the host's configuration example before activating it: [Codex](../../config/codex.toml) as `.codex/config.toml`, or [Claude Code](../../config/claude-mcp.json) as `.mcp.json` (or pass it with `claude --mcp-config`). Both declare the same server and environment; the Claude file uses `bun --cwd` in place of Codex's `cwd` key. With Claude Code 2.1.301, `--mcp-config config/claude-mcp.json` completed the stdio handshake and discovered 17 `c64bridge` tools on 2026-10-16; that establishes discovery, not emulator connectivity. Keep the upstream Bun lockfile. A skill installation alone neither installs the server nor establishes emulator connectivity.
+| Profile | Required checks | What passing means |
+| --- | --- | --- |
+| `samples` | Readable included Bach PCM16 WAV | A representative shipped preview is available locally. No tool subprocesses run; player/speaker playback and every other sample are outside this check. |
+| `demo` | py65 imports, renderer loading, native exporter/labels matching their build receipt | The native Bach demo's runtime dependencies are available. MIDI import, VICE, bridge and historical research assets are not required. |
+| `score` | `demo` checks plus Mido, headless VICE identification and complete-sized C64 ROMs | Prerequisites for the MIDI-to-native workflow and independent standalone verification are available. Source compatibility, musical reductions and successful execution of a particular song still need their own checks. |
+| `bridge` | Executable Bun, c64bridge source and `node_modules`, headless VICE identification and C64 ROMs | The optional local VICE bridge installation is present. The server is not started and live connectivity is not tested. |
+| `full` (default) | Original environment check: py65, renderer, VICE/ROMs and default pinned assets; Mido and bridge remain optional | Compatible broad diagnostics for existing users. This legacy profile does not replace the native-exporter check in `demo`/`score`. |
+
+```sh
+python3 scripts/doctor.py --profile samples
+python3 scripts/doctor.py --profile demo
+python3 scripts/doctor.py --profile score --json
+```
+
+For a two-SID native build, use `--sid-count 2` with `demo` or `score`; prepare that exporter with `python3 scripts/setup-sidwizard.py --sid-count 2`. Normal composition does not require a live bridge, audio models, downloaded reference SIDs or installed skill Markdown. The `full` profile still checks its historical default asset selection for compatibility; use the narrower profile for your actual workflow.
+
+Doctor also supports `--json`, `--vice PATH`, `--vice-data PATH`, `--renderer PATH` and bounded `--timeout SECONDS` (up to 60 seconds per probe). Explicit paths override `VICE_BINARY`, `VICE_DIRECTORY` and `SID_RENDERER`. The renderer defaults to `.local/bin/render-sid`, VICE to `.tools/vice-headless-3.9/build/src/x64sc`, and new profiles use `.tools/vice-headless-3.9/source/data` for ROM data. The compatible `full` profile retains the prior `/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice` fallback; other installations should set `--vice-data` or `VICE_DIRECTORY` explicitly. VICE identification from adjacent `config.h` is build evidence, not an emulator startup test. Use [native checkpoints](../validation/native-vice-checks.md) for actual execution. Setup does not install system packages or build VICE: follow [headless setup](vice-startup-investigation.md) and [renderer/dependency setup](../workflows/audio-workflow.md).
+
+For optional live bridge use, prepare the pinned checkout described in the [project README](../../README.md#prepare-the-assembler), run `bun install --frozen-lockfile` there, and copy the host's template: [Codex](../../config/codex.toml) to `.codex/config.toml`, or [Claude Code](../../config/claude-mcp.json) to `.mcp.json` (or pass the edited local file with `claude --mcp-config`). Merge with an existing configuration rather than replacing other servers. Replace the launcher path with the absolute path to this checkout's [launch-c64bridge.py](../../scripts/launch-c64bridge.py), and `VICE_DIRECTORY` with the resource directory containing `C64/`. These are literal placeholders; neither host is expected to expand them. Do not activate the unedited examples.
+
+Both templates invoke the same Python launcher. It finds Bun on `PATH`, derives source, VICE and runtime-state paths from its own checkout, and runs Bun in `.tools/c64bridge` without a shell. The agent's initial working directory does not matter, and paths with spaces remain individual arguments. A desktop agent whose `PATH` lacks Python or Bun needs an absolute Python `command` in its local host configuration and/or `C64BRIDGE_BUN` set to the absolute Bun executable. `VICE_BINARY` can select another executable. Relative launcher path settings resolve against the checkout; use absolute paths in host templates to avoid host-dependent resolution.
+
+Check the installation and resolved launcher settings before activating the server:
+
+```sh
+VICE_DIRECTORY=/absolute/path/to/vice/data python3 scripts/doctor.py --profile bridge
+VICE_DIRECTORY=/absolute/path/to/vice/data python3 scripts/launch-c64bridge.py --check
+```
+
+The launcher check does not start Bun/VICE or write runtime state. Normal launch defaults to PAL, invisible headless VICE, normal-speed audio, disabled Xvfb/prewarm/RAG build, and state beneath `.local/c64bridge`; explicit environment values can override settings. For another clock, set both `VICE_MODE` and the matching `VICE_ARGS`. Readiness and resolved settings do not establish an MCP handshake or monitor connection. The earlier 2026-10-16 Claude Code 2.1.301 handshake used the previous machine-specific configuration; it does not validate these templates on a fresh host. Keep the upstream Bun lockfile. A skill installation alone neither installs the server nor establishes emulator connectivity.
 
 ### Optional local audio models
 
@@ -113,7 +142,7 @@ The import check establishes package availability; it does not load checkpoints 
 
 ## Headless bridge configuration
 
-The example selects the project-built headless executable, PAL and normal speed, with ROM resources from the installed desktop package. It disables Xvfb and keeps bridge state/diagnostics under `.local/c64bridge`.
+The shared launcher selects the project-built headless executable, PAL and normal speed, with explicitly configured ROM resources. It disables Xvfb and keeps bridge state/diagnostics under `.local/c64bridge`.
 
 - Keep `VICE_HEADLESS="0"` for this build: `--enable-headlessui` already selects its UI, whereas the bridge's `1` setting injects a runtime `-headless` flag that is unnecessary and unsupported by the GTK package.
 - `VICE_VISIBLE="false"` and `DISABLE_XVFB="1"` avoid virtual-display startup. `VICE_WARP="false"` is required for normal-speed audio capture.

@@ -1,0 +1,32 @@
+{
+  "format": "sidwizard-arrangement-v1",
+  "score": "score.json",
+  "title": "BWV 565 reduced MIDI control",
+  "author": "J. S. Bach / SID Song Crafter",
+  "authorinfo": "MUTOPIA 1780: REDUCED SCORE CONTROL",
+  "released": "2026",
+  "sidCount": 1,
+  "sidModel": "MOS8580",
+  "clock": "pal",
+  "timingPolicy": "retain-full-pitch",
+  "instruments": {
+    "plain": {
+      "name": "PLAIN",
+      "control": "0a",
+      "hard_restart_adsr": "0f00",
+      "adsr": "0288",
+      "frame1": "09",
+      "wave": [["11", "00", "00"]],
+      "pulse": [],
+      "filter": []
+    }
+  },
+  "sections": [
+    {
+      "name": "Same reduced notes and timing",
+      "startBeat": 0,
+      "endBeat": 10,
+      "voices": { "melody": "plain", "bass": "plain", "harmony": "plain" }
+    }
+  ]
+}

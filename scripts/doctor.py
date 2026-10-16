@@ -1,6 +1,7 @@
 """Check SID Song Crafter's local prerequisites without installing or changing them."""
 
 import argparse
+import hashlib
 import importlib.util
 import json
 import math
@@ -10,18 +11,21 @@ import re
 import shutil
 import subprocess
 import sys
+import wave
 
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_VICE_DATA = Path('/Applications/vice-arm64-gtk3-3.9/VICE.app/Contents/Resources/share/vice')
 REMEDY = 'python3 scripts/setup-project.py'
+PROFILES = ('full', 'samples', 'demo', 'score', 'bridge')
 REPAIRS = {
     'py65': 'Verify/download the pinned wheel as in docs/songs/first-song.md, then run: uv --cache-dir .local/uv-cache pip install --no-deps --target .tools/test-deps .local/downloads/py65-1.2.0-py2.py3-none-any.whl',
     'renderer': 'Build/rebuild render-sid and its pinned library as in docs/workflows/audio-workflow.md',
     'vice': 'Build genuine headless VICE as in docs/setup/vice-startup-investigation.md, or select that build with --vice / VICE_BINARY',
     'vice-roms': 'Select the VICE resource directory containing C64 ROMs with --vice-data / VICE_DIRECTORY; see docs/setup/local-setup.md',
-    'mido': 'Install the optional pinned MIDI dependencies as in docs/songs/fuer-elise-score.md',
+    'mido': 'Install the pinned MIDI dependencies for MIDI score work as in docs/songs/fuer-elise-score.md',
     'bridge': 'Install optional c64bridge/Bun dependencies as in docs/setup/local-setup.md',
+    'sample-audio': 'Restore samples/bach-toccata/bach-toccata.wav from the checkout; if it is an LFS pointer, run git lfs pull --include="samples/bach-toccata/bach-toccata.wav"',
 }
 
 
@@ -141,19 +145,66 @@ def _assets(root):
         sys.dont_write_bytecode = bytecode
 
 
-def check_project(root=ROOT, *, vice=None, vice_data=None, renderer=None, timeout=5.0, asset_checks=None):
+def _native_exporter(root, sid_count):
+    directory = root / ('.tools/sid-wizard-exporter' if sid_count == 1 else '.tools/sid-wizard-exporter-2sid')
+    try:
+        manifest = json.loads((directory / 'build.json').read_text())
+        if manifest.get('sidCount', 1) != sid_count:
+            raise ValueError('Prepared exporter has the wrong SID count')
+        for filename, field in (('exporter.prg', 'exporterSha256'), ('exporter.labels', 'labelsSha256')):
+            if hashlib.sha256((directory / filename).read_bytes()).hexdigest() != manifest[field]:
+                raise ValueError(f'{filename} checksum differs from the exporter receipt')
+        result = _check('native-exporter', True, True, f'{sid_count}-SID exporter binary and labels match their receipt', directory)
+    except (OSError, ValueError, KeyError, TypeError, AttributeError) as error:
+        result = _check('native-exporter', True, False, f'Cannot verify native exporter: {error}', directory)
+    result['remedy'] = f'Run python3 scripts/setup-sidwizard.py --sid-count {sid_count}; see docs/workflows/native-song-workflow.md'
+    return result
+
+
+def _sample_audio(root):
+    path = root / 'samples/bach-toccata/bach-toccata.wav'
+    try:
+        with wave.open(str(path), 'rb') as audio:
+            ok = audio.getnframes() > 0 and audio.getnchannels() > 0 and audio.getsampwidth() == 2 and bool(audio.readframes(1))
+        detail = 'Included Bach PCM16 WAV is readable; audio-player and speaker playback were not tested' if ok else 'Expected at least one readable PCM16 frame'
+    except (OSError, EOFError, wave.Error) as error:
+        ok, detail = False, f'Cannot read the included Bach WAV: {error}'
+    return _check('sample-audio', True, ok, detail, path)
+
+
+def _bridge(root, required):
+    bridge = root / '.tools/c64bridge'
+    bun = os.environ.get('C64BRIDGE_BUN') or shutil.which('bun')
+    bun_path = Path(bun).expanduser() if bun else None
+    if bun_path is not None and not bun_path.is_absolute():
+        bun_path = root / bun_path
+    bun_ok = bun_path is not None and _executable_error(bun_path) is None
+    ok = (bridge / 'src/index.ts').is_file() and (bridge / 'node_modules').is_dir() and bun_ok
+    if ok:
+        detail = 'Bridge and Bun installed; live connectivity was not tested'
+    else:
+        detail = 'Bridge source, node_modules or Bun is missing; offline composition does not require them'
+    return _check('bridge', required, ok, detail, bridge)
+
+
+def check_project(root=ROOT, *, vice=None, vice_data=None, renderer=None, timeout=5.0, asset_checks=None, profile='full', sid_count=1):
     """Return required/optional readiness checks using bounded, read-only probes.
 
     Explicit paths take precedence over VICE_BINARY, VICE_DIRECTORY and
-    SID_RENDERER. Missing optional MIDI/bridge assets do not block readiness.
-    Installed references and skills are checked by the installer's read-only
-    check_assets helper unless the caller supplies those checks explicitly.
+    SID_RENDERER. The default full profile preserves the original required and
+    optional checks. Other profiles check only their named workflow; they do
+    not require historical reference downloads or upstream skill instructions.
     """
     if isinstance(timeout, bool) or not isinstance(timeout, (int, float)) or not math.isfinite(timeout) or not 0 < timeout <= 60:
         raise ValueError('Probe timeout must be greater than zero and at most 60 seconds')
+    if profile not in PROFILES:
+        raise ValueError('Unknown readiness profile: ' + str(profile))
+    if type(sid_count) is not int or sid_count not in (1, 2):
+        raise ValueError('SID count must be 1 or 2')
     root = Path(root).resolve()
     vice = Path(vice or os.environ.get('VICE_BINARY') or root / '.tools/vice-headless-3.9/build/src/x64sc').expanduser().resolve()
-    data = Path(vice_data or os.environ.get('VICE_DIRECTORY') or DEFAULT_VICE_DATA).expanduser().resolve()
+    default_data = DEFAULT_VICE_DATA if profile == 'full' else root / '.tools/vice-headless-3.9/source/data'
+    data = Path(vice_data or os.environ.get('VICE_DIRECTORY') or default_data).expanduser().resolve()
     renderer = Path(renderer or os.environ.get('SID_RENDERER') or root / '.local/bin/render-sid').expanduser().resolve()
     env = os.environ.copy()
     env['PYTHONDONTWRITEBYTECODE'] = '1'
@@ -161,41 +212,50 @@ def check_project(root=ROOT, *, vice=None, vice_data=None, renderer=None, timeou
         env.pop(key, None)
     for key in ('XDG_CONFIG_HOME', 'XDG_STATE_HOME', 'XDG_CACHE_HOME'):
         env[key] = os.devnull
-    checks = [
-        _dependency(root, 'py65', ('py65.devices.mpu6502', 'py65.assembler'), True, env, timeout),
-        _renderer(renderer, env, timeout),
-        _vice(vice, data, env, timeout),
-        _vice_roms(data),
-    ]
-    checks.extend(_assets(root) if asset_checks is None else asset_checks)
-    checks.append(_dependency(root, 'mido', ('mido',), False, env, timeout))
-    bridge = root / '.tools/c64bridge'
-    bridge_ok = (bridge / 'src/index.ts').is_file() and (bridge / 'node_modules').is_dir() and shutil.which('bun') is not None
-    checks.append(_check('bridge', False, bridge_ok, 'Bridge and Bun installed; live connectivity was not tested' if bridge_ok else 'Optional bridge/Bun dependencies are not installed; offline workflows remain available', bridge))
+    checks = []
+    if profile == 'samples':
+        checks.append(_sample_audio(root))
+    if profile in ('full', 'demo', 'score'):
+        checks.extend([
+            _dependency(root, 'py65', ('py65.devices.mpu6502', 'py65.assembler'), True, env, timeout),
+            _renderer(renderer, env, timeout),
+        ])
+    if profile in ('demo', 'score'):
+        checks.append(_native_exporter(root, sid_count))
+    if profile in ('full', 'score', 'bridge'):
+        checks.extend([_vice(vice, data, env, timeout), _vice_roms(data)])
+    if profile == 'full':
+        checks.extend(_assets(root) if asset_checks is None else asset_checks)
+    if profile in ('full', 'score'):
+        checks.append(_dependency(root, 'mido', ('mido',), profile == 'score', env, timeout))
+    if profile in ('full', 'bridge'):
+        checks.append(_bridge(root, profile == 'bridge'))
     checks = [dict(check) for check in checks]
     for check in checks:
         if not check['ok']:
-            check['remedy'] = REPAIRS.get(check['name'], REMEDY + '; preserve and investigate any existing file whose checksum differs')
-    return dict(schemaVersion=1, root=str(root), ok=all(check['ok'] for check in checks if check['required']), checks=checks, remedy=REMEDY)
+            check.setdefault('remedy', REPAIRS.get(check['name'], REMEDY + '; preserve and investigate any existing file whose checksum differs'))
+    return dict(schemaVersion=1, root=str(root), profile=profile, sidCount=sid_count, ok=all(check['ok'] for check in checks if check['required']), checks=checks, remedy=REMEDY)
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=ROOT)
+    parser.add_argument('--profile', choices=PROFILES, default='full', help='Workflow to check (default: full, the compatible legacy environment check)')
+    parser.add_argument('--sid-count', type=int, choices=(1, 2), default=1, help='Native exporter chip count for demo/score profiles (default: 1)')
     parser.add_argument('--vice', type=Path, help='Headless x64sc executable; defaults to VICE_BINARY or the project build')
-    parser.add_argument('--vice-data', type=Path, help='VICE resource directory; defaults to VICE_DIRECTORY or the documented desktop ROM bundle')
+    parser.add_argument('--vice-data', type=Path, help='VICE resources; defaults to VICE_DIRECTORY or project source data (full retains the legacy desktop bundle)')
     parser.add_argument('--renderer', type=Path, help='render-sid executable; defaults to SID_RENDERER or .local/bin/render-sid')
     parser.add_argument('--timeout', type=float, default=5.0, help='Seconds per executable/import probe (default: 5)')
     parser.add_argument('--json', action='store_true', help='Print the complete machine-readable report')
     args = parser.parse_args(argv)
     try:
-        report = check_project(args.root, vice=args.vice, vice_data=args.vice_data, renderer=args.renderer, timeout=args.timeout)
+        report = check_project(args.root, vice=args.vice, vice_data=args.vice_data, renderer=args.renderer, timeout=args.timeout, profile=args.profile, sid_count=args.sid_count)
     except ValueError as error:
         parser.error(str(error))
     if args.json:
         print(json.dumps(report, indent=2))
     else:
-        print('SID Song Crafter: ' + ('ready' if report['ok'] else 'setup incomplete'))
+        print(f'SID Song Crafter [{report["profile"]}]: ' + ('ready' if report['ok'] else 'setup incomplete'))
         for check in report['checks']:
             status = 'OK' if check['ok'] else 'MISSING' if check['required'] else 'OPTIONAL'
             print(f'{status:8} {check["name"]}: {check["detail"]}')

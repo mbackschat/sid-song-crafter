@@ -1,0 +1,31 @@
+{
+  "title": "BWV 565 opening: MIDI intake example",
+  "composer": "Johann Sebastian Bach; SID reduction by SID Song Crafter",
+  "spans": [
+    { "startBeat": 0, "endBeat": 10 }
+  ],
+  "voices": [
+    {
+      "name": "melody",
+      "sourcePart": "right-manual",
+      "monophonicPolicy": "highest-at-onset",
+      "instrument": { "waveform": 16, "attackDecay": 2, "sustainRelease": 128 }
+    },
+    {
+      "name": "bass",
+      "sourcePart": "pedal",
+      "monophonicPolicy": "reject-overlap",
+      "instrument": { "waveform": 16, "attackDecay": 2, "sustainRelease": 128 }
+    },
+    {
+      "name": "harmony",
+      "sourcePart": "left-manual",
+      "monophonicPolicy": "highest-at-onset",
+      "overlapPolicy": "shorten-to-next-onset",
+      "instrument": { "waveform": 16, "attackDecay": 2, "sustainRelease": 128 }
+    }
+  ],
+  "omittedParts": {},
+  "volume": 15,
+  "tailTicks": 125
+}

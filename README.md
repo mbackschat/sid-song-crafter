@@ -52,9 +52,11 @@ The included Bach example builds an approximately 88-second interpretation of th
 ### Requirements and setup
 
 ```sh
-git clone https://github.com/mbackschat/sid-song-crafter.git
+GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/mbackschat/sid-song-crafter.git
 cd sid-song-crafter
 ```
+
+The clone command leaves optional compressed research evidence as Git LFS pointers. Included sample previews, source MIDI, tools and this walkthrough remain available; neither the maintainer’s `build/` history nor ML weights are downloaded. Fetch a study’s payload only when needed through [evidence acquisition](docs/workflows/build-cache.md#persistent-evidence).
 
 You need Python 3.9+, uv, `curl`, `make` and a C/C++ compiler. Run the following commands from the repository directory:
 
@@ -167,17 +169,15 @@ The new stereo presentations retain the source notes and instruments, with the m
 
 ## Use your own score
 
-Start with a MIDI and, where available, the notation and a reference performance. Decide which parts to preserve, the intended character of the arrangement, and whether to target one SID or two.
-
-The work follows the same sequence you explored with Bach: understand the music, choose which parts the chip will carry, select sounds for those roles, then build and listen. The [score workflow](docs/workflows/song-workflow.md#prepare-a-multitrack-score-audition) takes you through importing a multitrack MIDI and defining its reduction. The [repertoire](docs/research/composition/sound-design-repertoire.md) supplies techniques and examples to adapt. Printed/PDF notation needs transcription or a corresponding MIDI first; automatic sheet-music reading is not part of this workflow.
-
-Once your reduced score and [native instrument recipe](docs/workflows/native-song-workflow.md) are ready:
+Follow the [own-score MIDI-to-SID walkthrough](docs/workflows/own-score.md) to import a complete MIDI, declare its three-voice reduction, configure native sounds and export a playable SID. Its short example starts with the retained Bach MIDI and generates its score from scratch. After the [native setup](#requirements-and-setup) and MIDI dependency installation:
 
 ```sh
-python3 scripts/native-song.py build PATH_TO_YOUR_RECIPE.json --output build/my-song
+uv --cache-dir .local/uv-cache pip install --target .tools/arrangement-deps mido==1.3.3 packaging==24.2
+PYTHONPATH=.tools/arrangement-deps python3 scripts/prepare-score-audition.py songs/studies/bach-toccata-opening/source/ToccataFugue.mid config/own-score/import.json --arrangement config/own-score/reduction.json --candidate config/own-score/native.json --reference config/own-score/plain.json --output build/own-score-inputs
+python3 scripts/native-song.py build build/own-score-inputs/candidate.json --output build/own-score-native --excerpt-seconds 8
 ```
 
-The build writes SID and PRG files under `build/my-song/export/`, plus `build/my-song/native-song.wav` for previewing. Compare the phrasing and balance with your musical brief, listen through the ending, and revise the arrangement or instruments where needed. Source selection and musical judgment remain part of the work; the build handles export, rendering and technical checks. For repeated comparisons, [listening recipes](docs/workflows/listening-package.md) automate the sequence and cache unchanged stages.
+The outputs are `build/own-score-native/export/candidate.sid` and `candidate.prg`, editable `build/own-score-native/conversion/candidate.swm`, and an optional WAV preview. The guide explains the preserved source, omission report, instrument assignments, PAL/NTSC targets and [repeatable comparison recipe](config/listening/own-score-midi.json). Copy its configuration for your attributed MIDI; printed/PDF notation needs a MIDI or transcription first. New-score dual SID requires manual six-voice authoring after intake; the generic preparer produces three voices. Listening determines musical success.
 
 ## Explore further
 
