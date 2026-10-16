@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "sample": "moon-river",
+  "variant": "stereo",
+  "rights": {
+    "tier": "materials only",
+    "basis": "See README.md and the owning song source documentation",
+    "generatedMusicTracked": false
+  },
+  "artifacts": {
+    "mono-sid": {
+      "path": "build/sample-moon-river-stereo/cache/candidate/7de904790f4b5fe40c179b1f9bf1e059ec4fb5b4351e1ac4b0c589f4756a8c81/attempt-f72ed9a86e084ae5aff68b894f2bc29a/song/export/candidate.sid",
+      "bytes": 6458,
+      "sha256": "7ad3f19850db2bf40c1830914cfcc2900d4fe6a6b46b40b742cdfdd7de71e091"
+    },
+    "mono-wav": {
+      "path": "build/sample-moon-river-stereo/cache/candidate/7de904790f4b5fe40c179b1f9bf1e059ec4fb5b4351e1ac4b0c589f4756a8c81/attempt-f72ed9a86e084ae5aff68b894f2bc29a/song/native-song.wav",
+      "bytes": 8701564,
+      "sha256": "fa517698dbb9991a25edd295dd7399e7bb43de6d51d2c915662592eaa12cb4cc"
+    },
+    "stereo-sid": {
+      "path": "build/sample-moon-river-stereo/cache/stereo/f29814e403b94ac6133ba8bccfbff7fef1907fc0cc0a500480c999e6f0014449/attempt-ad58546c6ad8446bb0824c4a77fc0198/song/export/stereo.sid",
+      "bytes": 7163,
+      "sha256": "fdfc893aa1889111bae51b89931dcc1857b0a652bdabbcf0d72dfcf7901a7c5b"
+    },
+    "stereo-wav": {
+      "path": "build/sample-moon-river-stereo/cache/stereo/f29814e403b94ac6133ba8bccfbff7fef1907fc0cc0a500480c999e6f0014449/attempt-ad58546c6ad8446bb0824c4a77fc0198/song/stereo.wav",
+      "bytes": 17403084,
+      "sha256": "aab54a2fe86661a7dccade1cc9afaf5af79bbbe3d929f6e84dc7c97232a8b0b8"
+    },
+    "stereo-native": {
+      "path": "build/sample-moon-river-stereo/cache/stereo/f29814e403b94ac6133ba8bccfbff7fef1907fc0cc0a500480c999e6f0014449/attempt-ad58546c6ad8446bb0824c4a77fc0198/song/stereo.sws",
+      "bytes": 3507,
+      "sha256": "2b05e4e7791a1e3aca931b77cc343c422af2dafc0329bc9a6eaf72da20069356"
+    }
+  },
+  "audio": {
+    "format": "PCM16",
+    "channels": 2,
+    "sampleRate": 44100,
+    "frames": 4350760,
+    "durationSeconds": 98.65668934240362,
+    "gain": 1,
+    "postprocessing": "none; rendered directly from the accompanying SID"
+  },
+  "recipe": {
+    "path": "samples/moon-river/stereo.recipe.json",
+    "bytes": 6452,
+    "sha256": "133ac5260b5415bf44e9d1a228b7937b9c6cd77f5c323e894b3a9822e1b84bb0"
+  },
+  "verification": {
+    "path": "samples/moon-river/stereo-verification.json",
+    "bytes": 17849,
+    "sha256": "d9dad7a48e48de3d91883f9cb0f5c26ed14d0691f3d01b8cf1294db179dc7bcc"
+  },
+  "vice": {
+    "vice": {
+      "path": "samples/moon-river/vice-verification.json",
+      "bytes": 1830,
+      "sha256": "2ece2676f9a92c49ff40eea987e42a78ebb2ff0546c25aa4a20be268509b1ae8"
+    }
+  },
+  "stages": [
+    {
+      "id": "prepare",
+      "key": "a0cca2d0339a5bb0150ba6bc797bd2dc7778b95907cecb7c1efaf5df5ff6baf2",
+      "command": [
+        "{python}",
+        "scripts/studies/moon-river/prepare-source.py",
+        ".local/research/moon-river/moon-river-piano.mid",
+        "config/scores/moon-river-import.json",
+        "--output",
+        "{out}/score",
+        "--arrangement",
+        "songs/moon-river/reduction.json",
+        "--candidate",
+        "songs/moon-river/restrained.json",
+        "--reference",
+        "songs/moon-river/plain.json"
+      ],
+      "inputs": [
+        {
+          "path": ".local/research/moon-river/moon-river-piano.mid",
+          "type": "file",
+          "sha256": "6d6fd45feb2c2d81374403225cde28637c9382d39a6b6e6b3ce3f86b46294104"
+        },
+        {
+          "path": "config/scores/moon-river-import.json",
+          "type": "file",
+          "sha256": "c7f3e81eaef4c58c47343e4d11f5488b5203600f4d8d30166c574cbb3747c33d"
+        },
+        {
+          "path": "scripts/studies/moon-river/prepare-source.py",
+          "type": "file",
+          "sha256": "3acd13be969568caca2f139db8e5e1954eba13813954c00c7679e1f62324d6e8"
+        },
+        {
+          "path": "scripts/score_tools.py",
+          "type": "file",
+          "sha256": "929e3ff0cf81ea65084b02660ba787645551851f7006759d45bbd6ab53cb96a1"
+        },
+        {
+          "path": "songs/moon-river/reduction.json",
+          "type": "file",
+          "sha256": "182f0d6bd4d41d395c2e477e4dbc733b187c904643e95c61abac7ff6dc05f1d4"
+        },
+        {
+          "path": "songs/moon-river/restrained.json",
+          "type": "file",
+          "sha256": "8a00dfe4245314fc19740cf44c0cec34972632c60c6f03d2a590e23ebfce6cb7"
+        },
+        {
+          "path": "songs/moon-river/plain.json",
+          "type": "file",
+          "sha256": "91c14b2999c82e54e6722b252602a0d4ece686cf3584567722f89c063657fdc1"
+        },
+        {
+          "path": ".tools/arrangement-deps/mido",
+          "type": "directory",
+          "sha256": "a90f7b910afb31723397a797a61715f826dfceb32ab5e47163b5df66f2f0ba10"
+        }
+      ],
+      "executionSeconds": 0.3491827920079231
+    },
+    {
+      "id": "candidate",
+      "key": "7de904790f4b5fe40c179b1f9bf1e059ec4fb5b4351e1ac4b0c589f4756a8c81",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:prepare}/score/candidate.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "24",
+        "--excerpt-start",
+        "0"
+      ],
+      "inputs": [
+        {
+          "path": "scripts/native-song.py",
+          "type": "file",
+          "sha256": "100e55598731941a67138828e04445e242bd77e576a89566b66a9ffbfe37d2f0"
+        },
+        {
+          "path": "scripts/arrange-sidwizard.py",
+          "type": "file",
+          "sha256": "65947eb4a338a40ea22d68d49d9f8304bc11f499adc18a710dd243457bf46c5e"
+        },
+        {
+          "path": "scripts/generate-native-instruments.py",
+          "type": "file",
+          "sha256": "48eeb99afd034f1432e39bbdf3ea47ebd793de6f52147cb651766004d00abe3e"
+        },
+        {
+          "path": "scripts/export-sidwizard.py",
+          "type": "file",
+          "sha256": "26f271749db1de69dce53e95b35e74703b5d0625eae865423ded594a5e331c40"
+        },
+        {
+          "path": "scripts/audio_comparison.py",
+          "type": "file",
+          "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/build.json",
+          "type": "file",
+          "sha256": "b04ec82ae6c48a48ca1d55875bc30388d6a472cc24e890dac3a6d7051032f4e9"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/exporter.prg",
+          "type": "file",
+          "sha256": "02b3ad16fbe59bdd9d3fcbe77f7a9be7535dbe109fdbf0c7d9e2753896b3ad89"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/exporter.labels",
+          "type": "file",
+          "sha256": "ebc2234576a5a98b07d570c93e0838c1da9d9f0aa6d669e5c1ae80ae32f90b2a"
+        },
+        {
+          "path": ".local/bin/render-sid",
+          "type": "file",
+          "sha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "{stage:prepare}/score/candidate.json",
+          "type": "file",
+          "sha256": "8a00dfe4245314fc19740cf44c0cec34972632c60c6f03d2a590e23ebfce6cb7"
+        },
+        {
+          "path": "{stage:prepare}/score/score.json",
+          "type": "file",
+          "sha256": "74dd5f22b6314214922b4e8334e9ee57a8eff8e291616a0b78759ab94aff489f"
+        }
+      ],
+      "executionSeconds": 13.108375041047111
+    },
+    {
+      "id": "stereo",
+      "key": "f29814e403b94ac6133ba8bccfbff7fef1907fc0cc0a500480c999e6f0014449",
+      "command": [
+        "{python}",
+        "scripts/sample_exports.py",
+        "{stage:candidate}/song/conversion/candidate.swm",
+        "{stage:candidate}/song/export/candidate.sid",
+        "--output",
+        "{out}/song",
+        "--seconds",
+        "98.65669183891826",
+        "--ticks",
+        "4947",
+        "--title",
+        "Moon River stereo"
+      ],
+      "inputs": [
+        {
+          "path": "scripts/sample_exports.py",
+          "type": "file",
+          "sha256": "555227c067691e445e0d32f39da5db0998e27e45717b7813a92c49f75a78cc78"
+        },
+        {
+          "path": "scripts/export-sidwizard.py",
+          "type": "file",
+          "sha256": "26f271749db1de69dce53e95b35e74703b5d0625eae865423ded594a5e331c40"
+        },
+        {
+          "path": "scripts/native-song.py",
+          "type": "file",
+          "sha256": "100e55598731941a67138828e04445e242bd77e576a89566b66a9ffbfe37d2f0"
+        },
+        {
+          "path": "scripts/audio_comparison.py",
+          "type": "file",
+          "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": ".local/bin/render-sid",
+          "type": "file",
+          "sha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/build.json",
+          "type": "file",
+          "sha256": "b04ec82ae6c48a48ca1d55875bc30388d6a472cc24e890dac3a6d7051032f4e9"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/exporter.prg",
+          "type": "file",
+          "sha256": "02b3ad16fbe59bdd9d3fcbe77f7a9be7535dbe109fdbf0c7d9e2753896b3ad89"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/exporter.labels",
+          "type": "file",
+          "sha256": "ebc2234576a5a98b07d570c93e0838c1da9d9f0aa6d669e5c1ae80ae32f90b2a"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter-2sid/build.json",
+          "type": "file",
+          "sha256": "1499f6b0fc75f59f073e55266d9c6845425f944fa6cf35d406cf78bd491e29e6"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter-2sid/exporter.prg",
+          "type": "file",
+          "sha256": "5a8dd460d4b3ce9c0c79ea91e22d2ea435bd5095d93e161b3cf3659688bac39e"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter-2sid/exporter.labels",
+          "type": "file",
+          "sha256": "fccf21dc8a2ed26ce4b438be5661770213a6283e15b182309ea4c2a2695002c8"
+        },
+        {
+          "path": "{stage:candidate}/song/conversion/candidate.swm",
+          "type": "file",
+          "sha256": "a5c2329e81d100b0ed60bd87a0bc63316fb56bb3d72bcf65791adec0bc5dbd0d"
+        },
+        {
+          "path": "{stage:candidate}/song/export/candidate.sid",
+          "type": "file",
+          "sha256": "7ad3f19850db2bf40c1830914cfcc2900d4fe6a6b46b40b742cdfdd7de71e091"
+        }
+      ],
+      "executionSeconds": 30.069852582877502
+    },
+    {
+      "id": "vice",
+      "key": "4a1ccd46aac4e462e3bdac60e42d3db100bb8d22c23b5d84ca50102174321adf",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:stereo}/song/export/stereo.prg",
+        "{stage:stereo}/song/stereo.writes.json",
+        "--export-report",
+        "{stage:stereo}/song/export/stereo.export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "2",
+        "50",
+        "4946",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        {
+          "path": "{stage:stereo}/song/export/stereo.prg",
+          "type": "file",
+          "sha256": "5fd9e5095340d8453d21eb018b93105a04c7fca1c2e606cb85663dce17c2fb5f"
+        },
+        {
+          "path": "{stage:stereo}/song/export/stereo.export.json",
+          "type": "file",
+          "sha256": "126b8a13a6d3f4011e4515034304dd7341e0dc326448165c48ac8b736a0adba4"
+        },
+        {
+          "path": "{stage:stereo}/song/stereo.writes.json",
+          "type": "file",
+          "sha256": "7d44147c7f157c98950fbe22d3e0b0e774e2c985eb917a4ce8b00effa64111c1"
+        },
+        {
+          "path": "scripts/verify-native-vice.py",
+          "type": "file",
+          "sha256": "3dc4be0c54ea859cb900769b6499b6afcd9d6c60ee53854fb027c179a1b66410"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/build/src/x64sc",
+          "type": "file",
+          "sha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/source/data",
+          "type": "directory",
+          "sha256": "87a5a8ee759d6b69dbafb8873137a8001e01855e385280864ec5cc64f4547d11"
+        },
+        {
+          "path": "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+          "type": "file",
+          "sha256": "0c6d618e75fea85cc3d631e164a71766fba9341d19ce1f723300c52e63037c51"
+        }
+      ],
+      "executionSeconds": 8.821979749947786
+    }
+  ],
+  "listeningStatus": "Mono verdict retained; stereo presentation awaiting listening review",
+  "reproduction": {
+    "command": [
+      "python3",
+      "scripts/listening-package.py",
+      "samples/moon-river/stereo.recipe.json",
+      "--output",
+      "build/sample-moon-river-stereo"
+    ],
+    "exactAudio": "Requires the pinned renderer/library build; source and output fingerprints are recorded."
+  }
+}

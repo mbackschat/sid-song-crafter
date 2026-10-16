@@ -1,0 +1,707 @@
+{
+  "checkedCalls": 4947,
+  "voiceMap": [
+    0,
+    1,
+    null,
+    0,
+    null,
+    2
+  ],
+  "monoAudit": {
+    "schemaVersion": 1,
+    "sourceSha256": "7ad3f19850db2bf40c1830914cfcc2900d4fe6a6b46b40b742cdfdd7de71e091",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS8580",
+    "sidCount": 1,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS8580"
+      }
+    ],
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4099,
+    "clockHz": 985248.6111111111,
+    "playCalls": 4947,
+    "callRateHz": 50.12457321485099,
+    "initCycles": 1944,
+    "maximumPlayCycles": 2355,
+    "meanPlayCycles": 1760.0572063877098,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 24,
+    "playWriteCount": 123675,
+    "registers": {
+      "d400": {
+        "writes": 4947,
+        "distinctValues": 70,
+        "minimum": 0,
+        "maximum": 252
+      },
+      "d401": {
+        "writes": 4947,
+        "distinctValues": 23,
+        "minimum": 18,
+        "maximum": 104
+      },
+      "d402": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d403": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d404": {
+        "writes": 4947,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 17
+      },
+      "d405": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 70,
+        "maximum": 70
+      },
+      "d406": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 118,
+        "maximum": 118
+      },
+      "d407": {
+        "writes": 4947,
+        "distinctValues": 27,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d408": {
+        "writes": 4947,
+        "distinctValues": 8,
+        "minimum": 4,
+        "maximum": 11
+      },
+      "d409": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40a": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40b": {
+        "writes": 4947,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 17
+      },
+      "d40c": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 5,
+        "maximum": 5
+      },
+      "d40d": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 53,
+        "maximum": 53
+      },
+      "d40e": {
+        "writes": 4947,
+        "distinctValues": 46,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d40f": {
+        "writes": 4947,
+        "distinctValues": 21,
+        "minimum": 0,
+        "maximum": 87
+      },
+      "d410": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d411": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d412": {
+        "writes": 4947,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 17
+      },
+      "d413": {
+        "writes": 4947,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 4
+      },
+      "d414": {
+        "writes": 4947,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 20
+      },
+      "d415": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d416": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d417": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d418": {
+        "writes": 4947,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 15
+      }
+    },
+    "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+  },
+  "stereoAudit": {
+    "schemaVersion": 1,
+    "sourceSha256": "fdfc893aa1889111bae51b89931dcc1857b0a652bdabbcf0d72dfcf7901a7c5b",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS8580",
+    "sidCount": 2,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS8580"
+      },
+      {
+        "baseAddress": 54304,
+        "model": "MOS8580"
+      }
+    ],
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4099,
+    "clockHz": 985248.6111111111,
+    "playCalls": 4947,
+    "callRateHz": 50.12457321485099,
+    "initCycles": 3741,
+    "maximumPlayCycles": 3811,
+    "meanPlayCycles": 3015.3456640388113,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 48,
+    "playWriteCount": 247350,
+    "registers": {
+      "d400": {
+        "writes": 4947,
+        "distinctValues": 70,
+        "minimum": 0,
+        "maximum": 252
+      },
+      "d401": {
+        "writes": 4947,
+        "distinctValues": 23,
+        "minimum": 18,
+        "maximum": 104
+      },
+      "d402": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d403": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d404": {
+        "writes": 4947,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 17
+      },
+      "d405": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 70,
+        "maximum": 70
+      },
+      "d406": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 118,
+        "maximum": 118
+      },
+      "d407": {
+        "writes": 4947,
+        "distinctValues": 27,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d408": {
+        "writes": 4947,
+        "distinctValues": 8,
+        "minimum": 4,
+        "maximum": 11
+      },
+      "d409": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40a": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40b": {
+        "writes": 4947,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 17
+      },
+      "d40c": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 5,
+        "maximum": 5
+      },
+      "d40d": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 53,
+        "maximum": 53
+      },
+      "d40e": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40f": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d410": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d411": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d412": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d413": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d414": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d415": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d416": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d417": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d418": {
+        "writes": 4947,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 15
+      },
+      "d420": {
+        "writes": 4947,
+        "distinctValues": 70,
+        "minimum": 0,
+        "maximum": 252
+      },
+      "d421": {
+        "writes": 4947,
+        "distinctValues": 23,
+        "minimum": 18,
+        "maximum": 104
+      },
+      "d422": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d423": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d424": {
+        "writes": 4947,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 17
+      },
+      "d425": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 70,
+        "maximum": 70
+      },
+      "d426": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 118,
+        "maximum": 118
+      },
+      "d427": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d428": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d429": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d42a": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d42b": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d42c": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d42d": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d42e": {
+        "writes": 4947,
+        "distinctValues": 46,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d42f": {
+        "writes": 4947,
+        "distinctValues": 21,
+        "minimum": 0,
+        "maximum": 87
+      },
+      "d430": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d431": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d432": {
+        "writes": 4947,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 17
+      },
+      "d433": {
+        "writes": 4947,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 4
+      },
+      "d434": {
+        "writes": 4947,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 20
+      },
+      "d435": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d436": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d437": {
+        "writes": 4947,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d438": {
+        "writes": 4947,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 15
+      }
+    },
+    "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+  },
+  "guarantees": "Mapped voice registers and each active filter agree at every call; no new notes.",
+  "listeningStatus": "Stereo presentation awaiting listening review",
+  "sourceSha256": "a5c2329e81d100b0ed60bd87a0bc63316fb56bb3d72bcf65791adec0bc5dbd0d",
+  "sidSha256": "fdfc893aa1889111bae51b89931dcc1857b0a652bdabbcf0d72dfcf7901a7c5b",
+  "export": {
+    "source": "build/sample-moon-river-stereo/cache/stereo/f29814e403b94ac6133ba8bccfbff7fef1907fc0cc0a500480c999e6f0014449/attempt-ad58546c6ad8446bb0824c4a77fc0198/song/stereo.sws",
+    "sourceSha256": "2b05e4e7791a1e3aca931b77cc343c422af2dafc0329bc9a6eaf72da20069356",
+    "module": {
+      "sidCount": 2,
+      "patterns": 63,
+      "sequences": 6,
+      "instruments": [
+        {
+          "name": "MRVOICE",
+          "size": 22
+        },
+        {
+          "name": "MRBASS",
+          "size": 22
+        },
+        {
+          "name": "MRPLUCK",
+          "size": 22
+        }
+      ],
+      "chordBytes": 0,
+      "tempoBytes": 0
+    },
+    "sid": "build/sample-moon-river-stereo/cache/stereo/f29814e403b94ac6133ba8bccfbff7fef1907fc0cc0a500480c999e6f0014449/attempt-ad58546c6ad8446bb0824c4a77fc0198/song/export/stereo.sid",
+    "sidSha256": "fdfc893aa1889111bae51b89931dcc1857b0a652bdabbcf0d72dfcf7901a7c5b",
+    "prg": "build/sample-moon-river-stereo/cache/stereo/f29814e403b94ac6133ba8bccfbff7fef1907fc0cc0a500480c999e6f0014449/attempt-ad58546c6ad8446bb0824c4a77fc0198/song/export/stereo.prg",
+    "prgSha256": "5fd9e5095340d8453d21eb018b93105a04c7fca1c2e606cb85663dce17c2fb5f",
+    "sidWizardVersion": "1.97",
+    "player": "Extra",
+    "driverType": 3,
+    "clock": "PAL",
+    "clockHz": 985248.6111111111,
+    "frameCycles": 19656,
+    "ticksPerSecond": 50.12457321485099,
+    "sidModel": "MOS8580",
+    "effectTimingPolicy": "target-vbi",
+    "effectUpdateRateHz": 50.12457321485099,
+    "envelopeTimingPolicy": "retain-sid-adsr-codes",
+    "frequencyTablePolicy": "unchanged-stock-pal",
+    "regionalDifferences": "Native row counts and instrument bytes are retained, with one play call per target VBI. Arrange beat-based scores for this clock before export. NTSC modulation and first-frame durations follow its faster VBI; unchanged ADSR codes follow its faster SID clock. Register-unit detune and modulation amplitudes are not rescaled.",
+    "sidCount": 2,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS8580"
+      },
+      {
+        "baseAddress": 54304,
+        "model": "MOS8580"
+      }
+    ],
+    "psidVersion": 3,
+    "frameSpeed": 1,
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4099,
+    "standaloneLoadAddress": 2049,
+    "standaloneStartAddress": 2061,
+    "standalonePlayerInitAddress": 4096,
+    "standalonePlayerPlayAddress": 4099,
+    "exportEndAddress": 11133,
+    "nativeSourceRetained": true,
+    "exportLosses": [
+      "Instrument names are omitted from playback payload by upstream SID-Maker; retained in SWM/SWI."
+    ],
+    "nativeRoutineCycles": {
+      "setEXEdetails": 122220,
+      "preparetunedata": 592088,
+      "SID23set:CalcSID2addID": 49,
+      "setplayer": 6396,
+      "SetSIDply": 133,
+      "SetSIDt": 1383,
+      "dispMod": 337,
+      "setsaveparam": 175
+    },
+    "build": {
+      "sidWizardVersion": "1.97",
+      "sidWizardArchiveUrl": "https://csdb.dk/getinternalfile.php/281063/SID-Wizard-1.97-sources-examples.tar.gz",
+      "sidWizardArchiveSha256": "aeb265f4a778b2acb5aad13e8e98af882888292f749f29f4d18cbf49850e57bc",
+      "assemblerVersion": "64tass 1.60.3243",
+      "assemblerArchiveUrl": "https://downloads.sourceforge.net/project/tass64/source/64tass-1.60.3243-src.zip",
+      "assemblerArchiveSha256": "9d83be3d23a2c55e085b7c7a7856c2f96080447ea120a6a8c21a217ed76427f0",
+      "exporterSha256": "5a8dd460d4b3ce9c0c79ea91e22d2ea435bd5095d93e161b3cf3659688bac39e",
+      "labelsSha256": "fccf21dc8a2ed26ce4b438be5661770213a6283e15b182309ea4c2a2695002c8",
+      "sidCount": 2,
+      "sourceModified": false
+    },
+    "standaloneAddressSelector": {
+      "entryAddress": 2855,
+      "returnAddress": 3024,
+      "baseAddress": 54304,
+      "method": "At selector entry, VICE monitor sets PC to the existing RTS; native address application continues."
+    }
+  },
+  "audio": {
+    "path": "build/sample-moon-river-stereo/cache/stereo/f29814e403b94ac6133ba8bccfbff7fef1907fc0cc0a500480c999e6f0014449/attempt-ad58546c6ad8446bb0824c4a77fc0198/song/stereo.wav",
+    "sha256": "aab54a2fe86661a7dccade1cc9afaf5af79bbbe3d929f6e84dc7c97232a8b0b8",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 4350760,
+    "durationSeconds": 98.65668934240362,
+    "peak": 9294,
+    "peakDbfs": -10.944945336337366,
+    "clippedSamples": 0,
+    "rms": 1193.247865983633,
+    "acRms": 1183.8639277185582,
+    "acRmsDbfs": -28.84296294262237,
+    "perChannel": [
+      {
+        "dc": 149.90042636229072,
+        "rms": 1220.133766173089,
+        "acRms": 1210.8906926441089
+      },
+      {
+        "dc": 148.80592333293492,
+        "rms": 1165.7420520823896,
+        "acRms": 1156.2055739245914
+      }
+    ]
+  },
+  "outputMatrix": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "gain": 1,
+  "tail": {
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 22050,
+    "durationSeconds": 0.5,
+    "peak": 157,
+    "peakDbfs": -46.391005651009685,
+    "clippedSamples": 0,
+    "rms": 157.0,
+    "acRms": 0.0,
+    "acRmsDbfs": null,
+    "perChannel": [
+      {
+        "dc": -157.0,
+        "rms": 157.0,
+        "acRms": 0.0
+      },
+      {
+        "dc": -157.0,
+        "rms": 157.0,
+        "acRms": 0.0
+      }
+    ]
+  },
+  "foldDown": {
+    "path": "build/sample-moon-river-stereo/cache/stereo/f29814e403b94ac6133ba8bccfbff7fef1907fc0cc0a500480c999e6f0014449/attempt-ad58546c6ad8446bb0824c4a77fc0198/song/fold-down.wav",
+    "sha256": "b56adf912648092895274982caa0e338a1f9c550e2ec8ab1e2d341328e621147",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 4350760,
+    "durationSeconds": 98.65668934240362,
+    "peak": 9290,
+    "peakDbfs": -10.948684419321523,
+    "clippedSamples": 0,
+    "rms": 1125.2730448933626,
+    "acRms": 1115.3174971898625,
+    "acRmsDbfs": -29.361028389187112,
+    "perChannel": [
+      {
+        "dc": 149.3529578740266,
+        "rms": 1125.2730448933626,
+        "acRms": 1115.3174971898625
+      }
+    ]
+  }
+}

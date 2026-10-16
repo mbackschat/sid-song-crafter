@@ -1,0 +1,51 @@
+{
+  "checkpoints": [
+    {
+      "completedPlayCalls": 0,
+      "cycle": 2649923,
+      "cycleError": 0,
+      "sidRegisters": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "completedPlayCalls": 1,
+      "cycle": 2669577,
+      "cycleError": -2,
+      "sidRegisters": "0000000000000000000000000000000000000000000000000f0000000000000000000000000000000000000000000000000f"
+    },
+    {
+      "completedPlayCalls": 2,
+      "cycle": 2689235,
+      "cycleError": 0,
+      "sidRegisters": "0000000000000000000000000000000000000000000000000f0000000000000000000000000000000000000000000000000f"
+    },
+    {
+      "completedPlayCalls": 50,
+      "cycle": 3632722,
+      "cycleError": -1,
+      "sidRegisters": "0000000000000000000000000000000000000000000000000f0000000000000000000000000000000000000000000000000f"
+    },
+    {
+      "completedPlayCalls": 10039,
+      "cycle": 199976509,
+      "cycleError": 2,
+      "sidRegisters": "3931370f4009227c05370f400a2900000000000000000000003931370f40092200000000000000141a370f400a2900000000"
+    }
+  ],
+  "frameCycles": 19656,
+  "cycleTolerance": 7,
+  "scope": "Standalone PRG boot, sampled SID write shadows and single-speed PAL cadence; not continuous write equivalence or listening evidence",
+  "sidBases": [
+    54272,
+    54304
+  ],
+  "sidModel": "MOS8580",
+  "standaloneAddressSelector": {
+    "entryAddress": 2855,
+    "returnAddress": 3024,
+    "baseAddress": 54304,
+    "method": "At selector entry, VICE monitor sets PC to the existing RTS; native address application continues."
+  },
+  "prgSha256": "6e13d358e323fc49de5c95ad80bcdf1020dab105a361eda1645bb22bd9a58a71",
+  "writesSha256": "28a69bc25efd55177c5bd45018c6112dc73136937c212bc8645a95895482c932",
+  "vice": ".tools/vice-headless-3.9/build/src/x64sc"
+}

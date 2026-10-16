@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "stereo",
+      "command": [
+        "{python}",
+        "scripts/sample_exports.py",
+        "samples/instrument-mix/instrument-mix.swm",
+        "samples/instrument-mix/instrument-mix.sid",
+        "--output",
+        "{out}/song",
+        "--seconds",
+        "10",
+        "--ticks",
+        "501",
+        "--title",
+        "Instrument mix stereo"
+      ],
+      "inputs": [
+        "scripts/sample_exports.py",
+        "scripts/export-sidwizard.py",
+        "scripts/native-song.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".local/bin/render-sid",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".tools/sid-wizard-exporter-2sid/build.json",
+        ".tools/sid-wizard-exporter-2sid/exporter.prg",
+        ".tools/sid-wizard-exporter-2sid/exporter.labels",
+        "samples/instrument-mix/instrument-mix.swm",
+        "samples/instrument-mix/instrument-mix.sid"
+      ],
+      "outputs": [
+        "song/stereo.sws",
+        "song/export/stereo.sid",
+        "song/export/stereo.prg",
+        "song/export/stereo.export.json",
+        "song/stereo.wav",
+        "song/verification.json",
+        "song/stereo.writes.json",
+        "song/fold-down.wav"
+      ],
+      "timeoutSeconds": 360,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:stereo}/song/export/stereo.prg",
+        "{stage:stereo}/song/stereo.writes.json",
+        "--export-report",
+        "{stage:stereo}/song/export/stereo.export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "2",
+        "50",
+        "500",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:stereo}/song/export/stereo.prg",
+        "{stage:stereo}/song/export/stereo.export.json",
+        "{stage:stereo}/song/stereo.writes.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 120
+    }
+  ],
+  "deliverables": {
+    "stereo-sid": "{stage:stereo}/song/export/stereo.sid",
+    "stereo-wav": "{stage:stereo}/song/stereo.wav",
+    "stereo-native": "{stage:stereo}/song/stereo.sws",
+    "verification": "{stage:stereo}/song/verification.json",
+    "fold-down": "{stage:stereo}/song/fold-down.wav",
+    "vice": "{stage:vice}/vice/verification.json"
+  }
+}

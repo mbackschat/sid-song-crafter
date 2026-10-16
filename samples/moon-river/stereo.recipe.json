@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "prepare",
+      "command": [
+        "{python}",
+        "scripts/studies/moon-river/prepare-source.py",
+        ".local/research/moon-river/moon-river-piano.mid",
+        "config/scores/moon-river-import.json",
+        "--output",
+        "{out}/score",
+        "--arrangement",
+        "songs/moon-river/reduction.json",
+        "--candidate",
+        "songs/moon-river/restrained.json",
+        "--reference",
+        "songs/moon-river/plain.json"
+      ],
+      "inputs": [
+        ".local/research/moon-river/moon-river-piano.mid",
+        "config/scores/moon-river-import.json",
+        "scripts/studies/moon-river/prepare-source.py",
+        "scripts/score_tools.py",
+        "songs/moon-river/reduction.json",
+        "songs/moon-river/restrained.json",
+        "songs/moon-river/plain.json",
+        ".tools/arrangement-deps/mido"
+      ],
+      "outputs": [
+        "score/common-score.json",
+        "score/score.json",
+        "score/candidate.json",
+        "score/reference.json",
+        "score/adaptation.json",
+        "score/source.mid",
+        "score/constant-tempo.mid",
+        "score/import-recipe.json",
+        "score/full-common-score.json"
+      ],
+      "timeoutSeconds": 30,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/arrangement-deps:{root}/scripts",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "candidate",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:prepare}/score/candidate.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "24",
+        "--excerpt-start",
+        "0"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:prepare}/score/candidate.json",
+        "{stage:prepare}/score/score.json"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/candidate.sid",
+        "song/export/candidate.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/candidate.swm",
+        "song/native-song.excerpt.wav"
+      ],
+      "timeoutSeconds": 240,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "stereo",
+      "command": [
+        "{python}",
+        "scripts/sample_exports.py",
+        "{stage:candidate}/song/conversion/candidate.swm",
+        "{stage:candidate}/song/export/candidate.sid",
+        "--output",
+        "{out}/song",
+        "--seconds",
+        "98.65669183891826",
+        "--ticks",
+        "4947",
+        "--title",
+        "Moon River stereo"
+      ],
+      "inputs": [
+        "scripts/sample_exports.py",
+        "scripts/export-sidwizard.py",
+        "scripts/native-song.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".local/bin/render-sid",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".tools/sid-wizard-exporter-2sid/build.json",
+        ".tools/sid-wizard-exporter-2sid/exporter.prg",
+        ".tools/sid-wizard-exporter-2sid/exporter.labels",
+        "{stage:candidate}/song/conversion/candidate.swm",
+        "{stage:candidate}/song/export/candidate.sid"
+      ],
+      "outputs": [
+        "song/stereo.sws",
+        "song/export/stereo.sid",
+        "song/export/stereo.prg",
+        "song/export/stereo.export.json",
+        "song/stereo.wav",
+        "song/verification.json",
+        "song/stereo.writes.json",
+        "song/fold-down.wav"
+      ],
+      "timeoutSeconds": 360,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:stereo}/song/export/stereo.prg",
+        "{stage:stereo}/song/stereo.writes.json",
+        "--export-report",
+        "{stage:stereo}/song/export/stereo.export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "2",
+        "50",
+        "4946",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:stereo}/song/export/stereo.prg",
+        "{stage:stereo}/song/export/stereo.export.json",
+        "{stage:stereo}/song/stereo.writes.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 120
+    }
+  ],
+  "deliverables": {
+    "mono-sid": "{stage:candidate}/song/export/candidate.sid",
+    "mono-wav": "{stage:candidate}/song/native-song.wav",
+    "stereo-sid": "{stage:stereo}/song/export/stereo.sid",
+    "stereo-wav": "{stage:stereo}/song/stereo.wav",
+    "stereo-native": "{stage:stereo}/song/stereo.sws",
+    "verification": "{stage:stereo}/song/verification.json",
+    "fold-down": "{stage:stereo}/song/fold-down.wav",
+    "vice": "{stage:vice}/vice/verification.json"
+  }
+}

@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "sample": "pink-panther",
+  "variant": "stereo",
+  "rights": {
+    "tier": "materials only",
+    "basis": "See README.md and the owning song source documentation",
+    "generatedMusicTracked": false
+  },
+  "artifacts": {
+    "mono-sid": {
+      "path": "build/sample-pink-panther-stereo/cache/candidate/386fbf705068eeae6a9593c7e62ec54550f61a0e91d581c4ab01eee955212de3/attempt-84d06e713d3345a9990b02d13f667260/song/export/candidate.sid",
+      "bytes": 8155,
+      "sha256": "3a7ce4b887733903fba2748de9d5a35ffb19d5b2d44d1dd20ebfb2268b38b83c"
+    },
+    "mono-wav": {
+      "path": "build/sample-pink-panther-stereo/cache/candidate/386fbf705068eeae6a9593c7e62ec54550f61a0e91d581c4ab01eee955212de3/attempt-84d06e713d3345a9990b02d13f667260/song/native-song.wav",
+      "bytes": 17663288,
+      "sha256": "d9f99f1e2523efdb137897f2d70fc48b40dd7f08db5720816836947fcfa723e2"
+    },
+    "stereo-sid": {
+      "path": "build/sample-pink-panther-stereo/cache/stereo/0a767dec38a95a8cc1c30bd4d0d4bfa2c7c7e873e3e3a2e0750dc7717dbd0a9b/attempt-6c1848431b47445cb1474f1580ca8398/song/export/stereo.sid",
+      "bytes": 8886,
+      "sha256": "f5ceabbe622d2b8ee74fa307e75a553f247e8706651165f3a346a3604ad0d6fd"
+    },
+    "stereo-wav": {
+      "path": "build/sample-pink-panther-stereo/cache/stereo/0a767dec38a95a8cc1c30bd4d0d4bfa2c7c7e873e3e3a2e0750dc7717dbd0a9b/attempt-6c1848431b47445cb1474f1580ca8398/song/stereo.wav",
+      "bytes": 35326532,
+      "sha256": "aafddb92a360baea5c3c15cf0a90e25f8d9b0060f7c2843abda5daf4781afee5"
+    },
+    "stereo-native": {
+      "path": "build/sample-pink-panther-stereo/cache/stereo/0a767dec38a95a8cc1c30bd4d0d4bfa2c7c7e873e3e3a2e0750dc7717dbd0a9b/attempt-6c1848431b47445cb1474f1580ca8398/song/stereo.sws",
+      "bytes": 5172,
+      "sha256": "883bf083bf9a11f1adc535a3cd1746bface4cdf5fdabbc7a34bfe10d3a18c37a"
+    }
+  },
+  "audio": {
+    "format": "PCM16",
+    "channels": 2,
+    "sampleRate": 44100,
+    "frames": 8831622,
+    "durationSeconds": 200.26353741496598,
+    "gain": 1,
+    "postprocessing": "none; rendered directly from the accompanying SID"
+  },
+  "recipe": {
+    "path": "samples/pink-panther/stereo.recipe.json",
+    "bytes": 6446,
+    "sha256": "76139c6898720109344e92edf1bbe5798c8cf4d8c62ca5b61c0d14c70b4a8ba4"
+  },
+  "verification": {
+    "path": "samples/pink-panther/stereo-verification.json",
+    "bytes": 17935,
+    "sha256": "708d9163a33aca4630995cdef249831c91b6fc3ba417a724e827d7d33f69054e"
+  },
+  "vice": {
+    "vice": {
+      "path": "samples/pink-panther/vice-verification.json",
+      "bytes": 1830,
+      "sha256": "2876bc960d66f4a74228fe80b08d16e78cbd36381c927e4c846e8e69dabf7611"
+    }
+  },
+  "stages": [
+    {
+      "id": "prepare",
+      "key": "d4ae995af96cee7d6954ce7ffc362db797f13f811cb5031a63566b9952a1d93e",
+      "command": [
+        "{python}",
+        "scripts/prepare-score-audition.py",
+        ".local/research/pink-panther/dw-barnes-ppanther.mid",
+        "config/scores/pink-panther-import.json",
+        "--output",
+        "{out}/score",
+        "--arrangement",
+        "songs/pink-panther/full-reduction.json",
+        "--candidate",
+        "songs/pink-panther/full-native.json",
+        "--reference",
+        "songs/pink-panther/full-plain.json"
+      ],
+      "inputs": [
+        {
+          "path": ".local/research/pink-panther/dw-barnes-ppanther.mid",
+          "type": "file",
+          "sha256": "d1d21050bc639c74093d8b9bacb185ecfedb22174446e1ff5717745a9d9fd8a4"
+        },
+        {
+          "path": "config/scores/pink-panther-import.json",
+          "type": "file",
+          "sha256": "2f4f530c60d751ba82d3b55009979619d2b6644b93da985c33a88454f5e4c01a"
+        },
+        {
+          "path": "scripts/prepare-score-audition.py",
+          "type": "file",
+          "sha256": "451f083e55b7071f3b90f0cef4a244076b9c40e1999e76eb7db12c9bd4689aef"
+        },
+        {
+          "path": "scripts/score_tools.py",
+          "type": "file",
+          "sha256": "929e3ff0cf81ea65084b02660ba787645551851f7006759d45bbd6ab53cb96a1"
+        },
+        {
+          "path": "songs/pink-panther/full-reduction.json",
+          "type": "file",
+          "sha256": "2acbb8e86f01a628cc0bf862347fcd8e617c966a418cfe18bf4a962b382a90d7"
+        },
+        {
+          "path": "songs/pink-panther/full-plain.json",
+          "type": "file",
+          "sha256": "1c4aaa80442d21fce701f339848008fffe46651e1fcacdda35deff3994ae45da"
+        },
+        {
+          "path": ".tools/arrangement-deps/mido",
+          "type": "directory",
+          "sha256": "a90f7b910afb31723397a797a61715f826dfceb32ab5e47163b5df66f2f0ba10"
+        },
+        {
+          "path": "songs/pink-panther/full-native.json",
+          "type": "file",
+          "sha256": "e0381ef0d9be42581d836df95b5c327593083cd3a6f7af65581889a18e601f6a"
+        }
+      ],
+      "executionSeconds": 0.3861721670255065
+    },
+    {
+      "id": "candidate",
+      "key": "386fbf705068eeae6a9593c7e62ec54550f61a0e91d581c4ab01eee955212de3",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:prepare}/score/candidate.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-seconds",
+        "16",
+        "--excerpt-start",
+        "20"
+      ],
+      "inputs": [
+        {
+          "path": "scripts/native-song.py",
+          "type": "file",
+          "sha256": "100e55598731941a67138828e04445e242bd77e576a89566b66a9ffbfe37d2f0"
+        },
+        {
+          "path": "scripts/arrange-sidwizard.py",
+          "type": "file",
+          "sha256": "65947eb4a338a40ea22d68d49d9f8304bc11f499adc18a710dd243457bf46c5e"
+        },
+        {
+          "path": "scripts/generate-native-instruments.py",
+          "type": "file",
+          "sha256": "48eeb99afd034f1432e39bbdf3ea47ebd793de6f52147cb651766004d00abe3e"
+        },
+        {
+          "path": "scripts/export-sidwizard.py",
+          "type": "file",
+          "sha256": "26f271749db1de69dce53e95b35e74703b5d0625eae865423ded594a5e331c40"
+        },
+        {
+          "path": "scripts/audio_comparison.py",
+          "type": "file",
+          "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/build.json",
+          "type": "file",
+          "sha256": "b04ec82ae6c48a48ca1d55875bc30388d6a472cc24e890dac3a6d7051032f4e9"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/exporter.prg",
+          "type": "file",
+          "sha256": "02b3ad16fbe59bdd9d3fcbe77f7a9be7535dbe109fdbf0c7d9e2753896b3ad89"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/exporter.labels",
+          "type": "file",
+          "sha256": "ebc2234576a5a98b07d570c93e0838c1da9d9f0aa6d669e5c1ae80ae32f90b2a"
+        },
+        {
+          "path": ".local/bin/render-sid",
+          "type": "file",
+          "sha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "{stage:prepare}/score/candidate.json",
+          "type": "file",
+          "sha256": "e0381ef0d9be42581d836df95b5c327593083cd3a6f7af65581889a18e601f6a"
+        },
+        {
+          "path": "{stage:prepare}/score/score.json",
+          "type": "file",
+          "sha256": "b62ebbe6a383a942f5dcb81f597f1d58108f3a2b168b3eead3d20f6a3ba0dd92"
+        }
+      ],
+      "executionSeconds": 26.73322470812127
+    },
+    {
+      "id": "stereo",
+      "key": "0a767dec38a95a8cc1c30bd4d0d4bfa2c7c7e873e3e3a2e0750dc7717dbd0a9b",
+      "command": [
+        "{python}",
+        "scripts/sample_exports.py",
+        "{stage:candidate}/song/conversion/candidate.swm",
+        "{stage:candidate}/song/export/candidate.sid",
+        "--output",
+        "{out}/song",
+        "--seconds",
+        "200.26354199941076",
+        "--ticks",
+        "10040",
+        "--title",
+        "Pink Panther stereo"
+      ],
+      "inputs": [
+        {
+          "path": "scripts/sample_exports.py",
+          "type": "file",
+          "sha256": "555227c067691e445e0d32f39da5db0998e27e45717b7813a92c49f75a78cc78"
+        },
+        {
+          "path": "scripts/export-sidwizard.py",
+          "type": "file",
+          "sha256": "26f271749db1de69dce53e95b35e74703b5d0625eae865423ded594a5e331c40"
+        },
+        {
+          "path": "scripts/native-song.py",
+          "type": "file",
+          "sha256": "100e55598731941a67138828e04445e242bd77e576a89566b66a9ffbfe37d2f0"
+        },
+        {
+          "path": "scripts/audio_comparison.py",
+          "type": "file",
+          "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": ".local/bin/render-sid",
+          "type": "file",
+          "sha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/build.json",
+          "type": "file",
+          "sha256": "b04ec82ae6c48a48ca1d55875bc30388d6a472cc24e890dac3a6d7051032f4e9"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/exporter.prg",
+          "type": "file",
+          "sha256": "02b3ad16fbe59bdd9d3fcbe77f7a9be7535dbe109fdbf0c7d9e2753896b3ad89"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/exporter.labels",
+          "type": "file",
+          "sha256": "ebc2234576a5a98b07d570c93e0838c1da9d9f0aa6d669e5c1ae80ae32f90b2a"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter-2sid/build.json",
+          "type": "file",
+          "sha256": "1499f6b0fc75f59f073e55266d9c6845425f944fa6cf35d406cf78bd491e29e6"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter-2sid/exporter.prg",
+          "type": "file",
+          "sha256": "5a8dd460d4b3ce9c0c79ea91e22d2ea435bd5095d93e161b3cf3659688bac39e"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter-2sid/exporter.labels",
+          "type": "file",
+          "sha256": "fccf21dc8a2ed26ce4b438be5661770213a6283e15b182309ea4c2a2695002c8"
+        },
+        {
+          "path": "{stage:candidate}/song/conversion/candidate.swm",
+          "type": "file",
+          "sha256": "ee24e661071d87a4b1fd4fa21e688653dbeefbea153c219bb28c8542796daa8e"
+        },
+        {
+          "path": "{stage:candidate}/song/export/candidate.sid",
+          "type": "file",
+          "sha256": "3a7ce4b887733903fba2748de9d5a35ffb19d5b2d44d1dd20ebfb2268b38b83c"
+        }
+      ],
+      "executionSeconds": 65.6536957079079
+    },
+    {
+      "id": "vice",
+      "key": "1f7e14aa8ee7ed7059e2233c5b9be08a843199d466954fedbc7aa1f7605bf991",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:stereo}/song/export/stereo.prg",
+        "{stage:stereo}/song/stereo.writes.json",
+        "--export-report",
+        "{stage:stereo}/song/export/stereo.export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "2",
+        "50",
+        "10039",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        {
+          "path": "{stage:stereo}/song/export/stereo.prg",
+          "type": "file",
+          "sha256": "6e13d358e323fc49de5c95ad80bcdf1020dab105a361eda1645bb22bd9a58a71"
+        },
+        {
+          "path": "{stage:stereo}/song/export/stereo.export.json",
+          "type": "file",
+          "sha256": "b4acb5403e7287ffbe96420af1f3109b45bddcf6cd44d95d07fa52d3e763aa9b"
+        },
+        {
+          "path": "{stage:stereo}/song/stereo.writes.json",
+          "type": "file",
+          "sha256": "28a69bc25efd55177c5bd45018c6112dc73136937c212bc8645a95895482c932"
+        },
+        {
+          "path": "scripts/verify-native-vice.py",
+          "type": "file",
+          "sha256": "3dc4be0c54ea859cb900769b6499b6afcd9d6c60ee53854fb027c179a1b66410"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/build/src/x64sc",
+          "type": "file",
+          "sha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/source/data",
+          "type": "directory",
+          "sha256": "87a5a8ee759d6b69dbafb8873137a8001e01855e385280864ec5cc64f4547d11"
+        },
+        {
+          "path": "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+          "type": "file",
+          "sha256": "0c6d618e75fea85cc3d631e164a71766fba9341d19ce1f723300c52e63037c51"
+        }
+      ],
+      "executionSeconds": 17.329910584026948
+    }
+  ],
+  "listeningStatus": "Mono verdict retained; stereo presentation awaiting listening review",
+  "reproduction": {
+    "command": [
+      "python3",
+      "scripts/listening-package.py",
+      "samples/pink-panther/stereo.recipe.json",
+      "--output",
+      "build/sample-pink-panther-stereo"
+    ],
+    "exactAudio": "Requires the pinned renderer/library build; source and output fingerprints are recorded."
+  }
+}

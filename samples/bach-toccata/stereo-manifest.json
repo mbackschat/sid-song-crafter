@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "sample": "bach-toccata",
+  "variant": "stereo",
+  "rights": {
+    "tier": "distributable music",
+    "basis": "See README.md and manifest.json",
+    "generatedMusicTracked": true
+  },
+  "artifacts": {
+    "stereo-sid": {
+      "path": "samples/bach-toccata/bach-toccata-stereo.sid",
+      "bytes": 9602,
+      "sha256": "96ba9684c3eea789bab1262bfd233ec87666791d40e8d8ccf8aaeb7a9e151bc4"
+    },
+    "stereo-wav": {
+      "path": "samples/bach-toccata/bach-toccata-stereo.wav",
+      "bytes": 15544928,
+      "sha256": "51796c32439bf93c20d0aa85fcb91e76cdf3e4150bcbe4beb6370ce9953a835c"
+    },
+    "stereo-native": {
+      "path": "samples/bach-toccata/bach-toccata-stereo.sws",
+      "bytes": 5996,
+      "sha256": "f69cc77fa1ada628a71575867c1822a9ea5bb3870baaf04d63988a6764b52e8f"
+    },
+    "stereo-prg": {
+      "path": "samples/bach-toccata/bach-toccata-stereo.prg",
+      "bytes": 10876,
+      "sha256": "ba7ca08ff9b02dbaf6b7c7c0a15393b8425ab6730a5cce5ec5142fe3303c8008"
+    }
+  },
+  "audio": {
+    "format": "PCM16",
+    "channels": 2,
+    "sampleRate": 44100,
+    "frames": 3886221,
+    "durationSeconds": 88.12292517006803,
+    "gain": 1,
+    "postprocessing": "none; rendered directly from the accompanying SID"
+  },
+  "recipe": {
+    "path": "samples/bach-toccata/stereo.recipe.json",
+    "bytes": 3220,
+    "sha256": "7df0a5d70e8520aca0ad8c2bf2c100c0be1645868aa7df5e2a68c05ffcd9482c"
+  },
+  "verification": {
+    "path": "samples/bach-toccata/stereo-verification.json",
+    "bytes": 18220,
+    "sha256": "8da8f3218455084b22a4be342c565f75250dbf61fe753558a16876836909cb0b"
+  },
+  "vice": {
+    "vice": {
+      "path": "samples/bach-toccata/vice-verification.json",
+      "bytes": 1826,
+      "sha256": "797a78816227a4068018760d4f227ec36e4c4822870ee2fb4203e43310df8169"
+    }
+  },
+  "stages": [
+    {
+      "id": "stereo",
+      "key": "4323339ae2730f174fce829174636e34f23be4beede710627d93be3338ea7bc8",
+      "command": [
+        "{python}",
+        "scripts/sample_exports.py",
+        "samples/bach-toccata/bach-toccata.swm",
+        "samples/bach-toccata/bach-toccata.sid",
+        "--output",
+        "{out}/song",
+        "--seconds",
+        "88.12293631472035",
+        "--ticks",
+        "4417",
+        "--title",
+        "Bach Toccata stereo"
+      ],
+      "inputs": [
+        {
+          "path": "scripts/sample_exports.py",
+          "type": "file",
+          "sha256": "555227c067691e445e0d32f39da5db0998e27e45717b7813a92c49f75a78cc78"
+        },
+        {
+          "path": "scripts/export-sidwizard.py",
+          "type": "file",
+          "sha256": "26f271749db1de69dce53e95b35e74703b5d0625eae865423ded594a5e331c40"
+        },
+        {
+          "path": "scripts/native-song.py",
+          "type": "file",
+          "sha256": "100e55598731941a67138828e04445e242bd77e576a89566b66a9ffbfe37d2f0"
+        },
+        {
+          "path": "scripts/audio_comparison.py",
+          "type": "file",
+          "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": ".local/bin/render-sid",
+          "type": "file",
+          "sha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/build.json",
+          "type": "file",
+          "sha256": "b04ec82ae6c48a48ca1d55875bc30388d6a472cc24e890dac3a6d7051032f4e9"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/exporter.prg",
+          "type": "file",
+          "sha256": "02b3ad16fbe59bdd9d3fcbe77f7a9be7535dbe109fdbf0c7d9e2753896b3ad89"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/exporter.labels",
+          "type": "file",
+          "sha256": "ebc2234576a5a98b07d570c93e0838c1da9d9f0aa6d669e5c1ae80ae32f90b2a"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter-2sid/build.json",
+          "type": "file",
+          "sha256": "1499f6b0fc75f59f073e55266d9c6845425f944fa6cf35d406cf78bd491e29e6"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter-2sid/exporter.prg",
+          "type": "file",
+          "sha256": "5a8dd460d4b3ce9c0c79ea91e22d2ea435bd5095d93e161b3cf3659688bac39e"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter-2sid/exporter.labels",
+          "type": "file",
+          "sha256": "fccf21dc8a2ed26ce4b438be5661770213a6283e15b182309ea4c2a2695002c8"
+        },
+        {
+          "path": "samples/bach-toccata/bach-toccata.swm",
+          "type": "file",
+          "sha256": "c9155ece500dd6fd73f1fa897080e796ddf3b05e51ea09ab5a89a414bcc376a7"
+        },
+        {
+          "path": "samples/bach-toccata/bach-toccata.sid",
+          "type": "file",
+          "sha256": "2578a1b96eb0338a50c6b926f60c806f79e9567b8a933274763d46fb0f17e761"
+        }
+      ],
+      "executionSeconds": 28.33434912492521
+    },
+    {
+      "id": "vice",
+      "key": "23edd66bf6c53820d5871fd2b7eb11762196dfc82dbdad8af579252a6130b165",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:stereo}/song/export/stereo.prg",
+        "{stage:stereo}/song/stereo.writes.json",
+        "--export-report",
+        "{stage:stereo}/song/export/stereo.export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "2",
+        "50",
+        "4416",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        {
+          "path": "{stage:stereo}/song/export/stereo.prg",
+          "type": "file",
+          "sha256": "ba7ca08ff9b02dbaf6b7c7c0a15393b8425ab6730a5cce5ec5142fe3303c8008"
+        },
+        {
+          "path": "{stage:stereo}/song/export/stereo.export.json",
+          "type": "file",
+          "sha256": "c43aaef531dc0bcf308cd7da619f1d7c48725909f14d71d5a2370d040ade1fcf"
+        },
+        {
+          "path": "{stage:stereo}/song/stereo.writes.json",
+          "type": "file",
+          "sha256": "e831f6b293089da4ffe6053d9e2b3c67b36c230b0da2c3b03ae632c7e40f53b9"
+        },
+        {
+          "path": "scripts/verify-native-vice.py",
+          "type": "file",
+          "sha256": "3dc4be0c54ea859cb900769b6499b6afcd9d6c60ee53854fb027c179a1b66410"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/build/src/x64sc",
+          "type": "file",
+          "sha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/source/data",
+          "type": "directory",
+          "sha256": "87a5a8ee759d6b69dbafb8873137a8001e01855e385280864ec5cc64f4547d11"
+        },
+        {
+          "path": "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+          "type": "file",
+          "sha256": "0c6d618e75fea85cc3d631e164a71766fba9341d19ce1f723300c52e63037c51"
+        }
+      ],
+      "executionSeconds": 7.891633041901514
+    }
+  ],
+  "listeningStatus": "Mono verdict retained; stereo presentation awaiting listening review",
+  "reproduction": {
+    "command": [
+      "python3",
+      "scripts/listening-package.py",
+      "samples/bach-toccata/stereo.recipe.json",
+      "--output",
+      "build/sample-bach-toccata-stereo"
+    ],
+    "exactAudio": "Requires the pinned renderer/library build; source and output fingerprints are recorded."
+  }
+}

@@ -29,14 +29,15 @@ The workflow uses scripts and editable JSON recipes. Instrument selection and ar
 
 These samples are included in the repository and can be played without building the project:
 
-| Sample | SID player | Audio player | C64 / VICE | Editable source |
-| --- | --- | --- | --- | --- |
-| Bach Toccata — complete Toccata section, about 1:28 | [SID](samples/bach-toccata/bach-toccata.sid) | [WAV](samples/bach-toccata/bach-toccata.wav) | [PRG](samples/bach-toccata/bach-toccata.prg) | [SWM](samples/bach-toccata/bach-toccata.swm) |
-| Original instrument mix — 10-second three-voice demo | [SID](samples/instrument-mix/instrument-mix.sid) | [WAV](samples/instrument-mix/instrument-mix.wav) | [PRG](samples/instrument-mix/instrument-mix.prg) | [SWM](samples/instrument-mix/instrument-mix.swm) |
-| Rambo loader — faithful reconstruction, 3:45 | [SID](samples/rambo-loader/rambo-loader.sid) | [WAV](samples/rambo-loader/rambo-loader.wav) | — | [Score and build source](samples/rambo-loader/README.md) |
-| Rambo stereo — accepted centered-lead arrangement; featured passage 0:32–1:04 | [Full two-SID](samples/rambo-stereo/rambo-stereo.sid) | [Featured WAV](samples/rambo-stereo/rambo-stereo-featured-32-64.wav) · [Full WAV, 3:45](samples/rambo-stereo/rambo-stereo.wav) | — | [Score, arrangement and build source](samples/rambo-stereo/README.md) |
+| Sample | Mono SID / WAV | Stereo SID / WAV | Materials |
+| --- | --- | --- | --- |
+| Bach Toccata — complete Toccata section, about 1:28 | [SID](samples/bach-toccata/bach-toccata.sid) · [WAV](samples/bach-toccata/bach-toccata.wav) | [Two-SID](samples/bach-toccata/bach-toccata-stereo.sid) · [WAV](samples/bach-toccata/bach-toccata-stereo.wav) | [Source, native modules, PRG and recipe](samples/bach-toccata/README.md) |
+| Original instrument mix — 10-second three-part demo | [SID](samples/instrument-mix/instrument-mix.sid) · [WAV](samples/instrument-mix/instrument-mix.wav) | [Two-SID](samples/instrument-mix/instrument-mix-stereo.sid) · [WAV](samples/instrument-mix/instrument-mix-stereo.wav) | [Source, native modules, PRG and recipe](samples/instrument-mix/README.md) |
+| Rambo loader — main music through the ending, about 3:13; intro omitted | [Faithful SID](samples/rambo-loader/rambo-loader-main.sid) · [WAV](samples/rambo-loader/rambo-loader-main.wav) | [Centered-lead arrangement](samples/rambo-stereo/rambo-stereo-main.sid) · [WAV](samples/rambo-stereo/rambo-stereo-main.wav) | [Mono materials](samples/rambo-loader/README.md) · [Stereo materials](samples/rambo-stereo/README.md) |
 
-On GitHub, open a file and use **Download raw file**. Open a SID in a PSID-compatible player, a WAV in a normal audio player, or autostart a PRG in VICE. All samples target PAL; Bach and the instrument mix use MOS8580, Rambo uses MOS6581. [Sample details](samples/README.md) include source attribution, hashes and reproduction commands.
+The Rambo demos start at the musical entrance at 31.64 seconds in the complete versions; both the SID and WAV omit the intro and retain the ending. Its stereo version is the accepted expanded arrangement. Bach and the instrument mix add stereo placement to the same three parts; their new stereo presentations have technical verification and await listening review.
+
+On GitHub, open a file and use **Download raw file**. Open a SID in a PSID-compatible player, a WAV in a normal audio player, or autostart a PRG in VICE. All samples target PAL; Bach and the instrument mix use MOS8580, Rambo uses MOS6581. Stereo SIDs require a two-SID player with `$D400` routed left and `$D420` right. [Sample details](samples/README.md) include source attribution, hashes and reproduction commands.
 
 After cloning, macOS users can play the included Bach recording directly:
 
@@ -141,28 +142,28 @@ Play the SID or PRG from that new directory. [Regional export](docs/workflows/na
 
 ## Examples
 
-Bach, the original instrument mix and both the faithful and stereo Rambo arrangements have [ready-to-play downloads](#downloads). Moon River and Pink Panther provide recipes and local build instructions; their complete song files are not distributed here.
+Bach, the original instrument mix and both the faithful and stereo Rambo arrangements have [ready-to-play downloads](#downloads). Moon River and Pink Panther have sample packages that build both mono and stereo SID/WAV files locally; their song files are not distributed here because composition and source-arrangement permissions remain unresolved.
 
 | Example | Arrangement | Build and play |
 | --- | --- | --- |
-| [Bach Toccata](songs/studies/bach-toccata-full/README.md) | Complete Toccata section; one SID; about 1:28 | [Download SID](samples/bach-toccata/bach-toccata.sid) or [WAV](samples/bach-toccata/bach-toccata.wav); rebuild with the commands above. |
-| [Moon River](songs/moon-river/README.md) | First statement with the accepted restrained instruments; one SID; about 1:39 | Build below; follow the SID export link in `build/moon-river-restrained/listening.md`. |
-| [Pink Panther](songs/pink-panther/README.md) | Complete sourced arrangement with pulse accompaniment; one SID; about 3:20 | Build below; follow the SID export link in `build/pink-panther-full/listening.md`. |
-| [Instrument mix](docs/workflows/instrument-trials.md) | Original three-voice test phrase; 10 seconds | [Download SID](samples/instrument-mix/instrument-mix.sid) or [WAV](samples/instrument-mix/instrument-mix.wav). Rebuild with `python3 scripts/run-instrument-trials.py --pair mix --output build/instrument-trials`. |
+| [Bach Toccata](samples/bach-toccata/README.md) | Complete Toccata section; mono and stereo; about 1:28 | [Downloads](#downloads) and reproducible package above. |
+| [Moon River](samples/moon-river/README.md) | Restrained first statement; mono and stereo; about 1:39 | Build below; both SID/WAV versions appear in `build/sample-moon-river-stereo/listening.md`. |
+| [Pink Panther](samples/pink-panther/README.md) | Complete sourced arrangement with pulse accompaniment; mono and stereo; about 3:20 | Build below; both SID/WAV versions appear in `build/sample-pink-panther-stereo/listening.md`. |
+| [Instrument mix](samples/instrument-mix/README.md) | Original three-part test phrase; mono and stereo; 10 seconds | [Downloads](#downloads) and package build recipe above. |
 
-Moon River and Pink Panther additionally need [MIDI dependencies](docs/songs/fuer-elise-score.md#reproduce-and-verify) and [headless VICE with its data files](docs/setup/local-setup.md), because their recipes also run emulator checks. Their source MIDIs are downloaded separately. Once those prerequisites are ready:
+Moon River and Pink Panther additionally need [MIDI dependencies](docs/songs/fuer-elise-score.md#reproduce-and-verify) and [headless VICE with its data files](docs/setup/local-setup.md), because their recipes also run emulator checks. Prepare the stereo exporter with `python3 scripts/setup-sidwizard.py --sid-count 2`. Their source MIDIs are downloaded separately. Once those prerequisites are ready:
 
 ```sh
 # Moon River
 python3 scripts/setup-project.py --only references --include moon-river-score
-python3 scripts/listening-package.py config/listening/moon-river-restrained.json --output build/moon-river-restrained
+python3 scripts/listening-package.py samples/moon-river/stereo.recipe.json --output build/sample-moon-river-stereo
 
 # Pink Panther
 python3 scripts/setup-project.py --only references --include pink-panther-score
-python3 scripts/listening-package.py config/listening/pink-panther-full.json --output build/pink-panther-full
+python3 scripts/listening-package.py samples/pink-panther/stereo.recipe.json --output build/sample-pink-panther-stereo
 ```
 
-The recipe runner reuses unchanged successful stages. After a build, open its generated `listening.md` on your computer to find the SID and PRG exports, rendered audio and comparison files. [Moon River's notes](songs/moon-river/README.md) and [Pink Panther's notes](songs/pink-panther/README.md) explain their musical briefs and source arrangements.
+The new stereo presentations retain the source notes and instruments, with the melody centered and accompaniment split between the chips; their listening review is pending. The recipe runner reuses unchanged successful stages. After a build, open its generated `listening.md` on your computer to find the SID and PRG exports, rendered audio and comparison files. [Moon River's notes](songs/moon-river/README.md) and [Pink Panther's notes](songs/pink-panther/README.md) explain their musical briefs and source arrangements.
 
 ## Use your own score
 

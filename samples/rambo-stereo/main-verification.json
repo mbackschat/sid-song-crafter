@@ -1,0 +1,360 @@
+{
+  "sourceStartCall": 1586,
+  "sourceStartSeconds": 31.641167161700587,
+  "originalSidSha256": "33dfda271536ea1c97de204bc415a8ff619f5c326a536ec0be4f9dc3a0f1c889",
+  "sidSha256": "0998646302f2f89090976b0d2cfee6b141885f378c10242c3a009ce5741d3727",
+  "checkedRemainingCalls": 9414,
+  "matchedOrderedPlayStores": 116222,
+  "audit": {
+    "schemaVersion": 1,
+    "sourceSha256": "0998646302f2f89090976b0d2cfee6b141885f378c10242c3a009ce5741d3727",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS6581",
+    "sidCount": 2,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS6581"
+      },
+      {
+        "baseAddress": 54304,
+        "model": "MOS6581"
+      }
+    ],
+    "loadAddress": 1024,
+    "initAddress": 18583,
+    "playAddress": 1031,
+    "clockHz": 985248.6111111111,
+    "playCalls": 9414,
+    "callRateHz": 50.12457321485099,
+    "initCycles": 12342,
+    "maximumPlayCycles": 16169,
+    "meanPlayCycles": 1903.9422137242404,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 100,
+    "playWriteCount": 116222,
+    "registers": {
+      "d400": {
+        "writes": 4199,
+        "distinctValues": 256,
+        "minimum": 0,
+        "maximum": 255
+      },
+      "d401": {
+        "writes": 4199,
+        "distinctValues": 71,
+        "minimum": 0,
+        "maximum": 172
+      },
+      "d402": {
+        "writes": 4661,
+        "distinctValues": 216,
+        "minimum": 0,
+        "maximum": 254
+      },
+      "d403": {
+        "writes": 4661,
+        "distinctValues": 51,
+        "minimum": 0,
+        "maximum": 230
+      },
+      "d404": {
+        "writes": 1898,
+        "distinctValues": 7,
+        "minimum": 0,
+        "maximum": 67
+      },
+      "d405": {
+        "writes": 1305,
+        "distinctValues": 7,
+        "minimum": 0,
+        "maximum": 238
+      },
+      "d406": {
+        "writes": 1305,
+        "distinctValues": 7,
+        "minimum": 0,
+        "maximum": 231
+      },
+      "d407": {
+        "writes": 2427,
+        "distinctValues": 66,
+        "minimum": 0,
+        "maximum": 255
+      },
+      "d408": {
+        "writes": 2427,
+        "distinctValues": 15,
+        "minimum": 0,
+        "maximum": 20
+      },
+      "d409": {
+        "writes": 8477,
+        "distinctValues": 23,
+        "minimum": 0,
+        "maximum": 244
+      },
+      "d40a": {
+        "writes": 8477,
+        "distinctValues": 9,
+        "minimum": 0,
+        "maximum": 11
+      },
+      "d40b": {
+        "writes": 2377,
+        "distinctValues": 5,
+        "minimum": 0,
+        "maximum": 65
+      },
+      "d40c": {
+        "writes": 1693,
+        "distinctValues": 3,
+        "minimum": 0,
+        "maximum": 190
+      },
+      "d40d": {
+        "writes": 1693,
+        "distinctValues": 5,
+        "minimum": 0,
+        "maximum": 205
+      },
+      "d40e": {
+        "writes": 8657,
+        "distinctValues": 256,
+        "minimum": 0,
+        "maximum": 255
+      },
+      "d40f": {
+        "writes": 8657,
+        "distinctValues": 31,
+        "minimum": 0,
+        "maximum": 51
+      },
+      "d410": {
+        "writes": 4263,
+        "distinctValues": 26,
+        "minimum": 0,
+        "maximum": 250
+      },
+      "d411": {
+        "writes": 4263,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 8
+      },
+      "d412": {
+        "writes": 2036,
+        "distinctValues": 5,
+        "minimum": 0,
+        "maximum": 65
+      },
+      "d413": {
+        "writes": 1586,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 204
+      },
+      "d414": {
+        "writes": 1586,
+        "distinctValues": 3,
+        "minimum": 0,
+        "maximum": 157
+      },
+      "d420": {
+        "writes": 4199,
+        "distinctValues": 256,
+        "minimum": 0,
+        "maximum": 255
+      },
+      "d421": {
+        "writes": 4199,
+        "distinctValues": 71,
+        "minimum": 0,
+        "maximum": 172
+      },
+      "d422": {
+        "writes": 4661,
+        "distinctValues": 216,
+        "minimum": 0,
+        "maximum": 254
+      },
+      "d423": {
+        "writes": 4661,
+        "distinctValues": 51,
+        "minimum": 0,
+        "maximum": 230
+      },
+      "d424": {
+        "writes": 1898,
+        "distinctValues": 7,
+        "minimum": 0,
+        "maximum": 67
+      },
+      "d425": {
+        "writes": 1305,
+        "distinctValues": 7,
+        "minimum": 0,
+        "maximum": 238
+      },
+      "d426": {
+        "writes": 1305,
+        "distinctValues": 7,
+        "minimum": 0,
+        "maximum": 231
+      },
+      "d427": {
+        "writes": 43,
+        "distinctValues": 8,
+        "minimum": 0,
+        "maximum": 216
+      },
+      "d428": {
+        "writes": 43,
+        "distinctValues": 7,
+        "minimum": 0,
+        "maximum": 15
+      },
+      "d429": {
+        "writes": 85,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d42a": {
+        "writes": 85,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 8
+      },
+      "d42b": {
+        "writes": 127,
+        "distinctValues": 3,
+        "minimum": 0,
+        "maximum": 17
+      },
+      "d42c": {
+        "writes": 85,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 104
+      },
+      "d42d": {
+        "writes": 85,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 103
+      },
+      "d42e": {
+        "writes": 1514,
+        "distinctValues": 256,
+        "minimum": 0,
+        "maximum": 255
+      },
+      "d42f": {
+        "writes": 1514,
+        "distinctValues": 30,
+        "minimum": 0,
+        "maximum": 51
+      },
+      "d430": {
+        "writes": 4387,
+        "distinctValues": 26,
+        "minimum": 0,
+        "maximum": 250
+      },
+      "d431": {
+        "writes": 4387,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 8
+      },
+      "d432": {
+        "writes": 316,
+        "distinctValues": 5,
+        "minimum": 0,
+        "maximum": 65
+      },
+      "d433": {
+        "writes": 238,
+        "distinctValues": 3,
+        "minimum": 0,
+        "maximum": 204
+      },
+      "d434": {
+        "writes": 238,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 157
+      }
+    },
+    "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+  },
+  "initializationRegisters": [
+    [
+      177,
+      25,
+      0,
+      0,
+      32,
+      0,
+      160,
+      163,
+      7,
+      0,
+      8,
+      32,
+      0,
+      153,
+      37,
+      17,
+      0,
+      8,
+      32,
+      0,
+      153,
+      0,
+      0,
+      0,
+      15
+    ],
+    [
+      177,
+      25,
+      0,
+      0,
+      32,
+      0,
+      160,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      15
+    ]
+  ],
+  "limitation": "Fresh SID envelopes and oscillator phase; preserved computed score/sound state and remaining ordered play writes.",
+  "inputs": [
+    {
+      "path": "build/sample-rambo-stereo-main/cache/prepare/a9d6f9273e4b651688e4a22783c174cf5c3c6f496467eab7c010ddfb1edd05d7/attempt-eb1cb17350ea470789ab59dd1d9e9c72/scores/primary.json",
+      "sha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b"
+    },
+    {
+      "path": "build/sample-rambo-stereo-main/cache/prepare/a9d6f9273e4b651688e4a22783c174cf5c3c6f496467eab7c010ddfb1edd05d7/attempt-eb1cb17350ea470789ab59dd1d9e9c72/scores/secondary.json",
+      "sha256": "967027cb95f7287c33f70f833bada141c63f8cbda2bd0378fb536add5358ab67"
+    }
+  ]
+}

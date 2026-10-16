@@ -181,3 +181,7 @@ python3 scripts/publish-listening.py build/pink-panther-ensemble-transfer/run.js
 ```
 
 Model assistance was reviewed after this revision and after the positive feedback: register/score/audio checks establish the implementation, and the listener settles vibrancy/balance. No unresolved model-eligible question justifies another call. Reassess at the first full-form audition, after a subsequent revision, or at closure.
+
+## README stereo sample, 2026-10-16
+
+The user requested stereo SID/WAV versions of every README sample. The [sample package](../../samples/pink-panther/README.md) owns the fixed placement, build recipe, source/output fingerprints and complete CPU/sampled VICE/signal verification. The existing mono version and its listening verdict remain unchanged. This stereo presentation preserves the notes and instruments, duplicates the lead across chips and separates the existing accompaniment; it adds no musical parts and awaits listening review. Model-assistance review: no call, because current models cannot approve placement or musical preference; reassess after human feedback.

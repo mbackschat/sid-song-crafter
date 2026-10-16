@@ -16,6 +16,8 @@ Choose tools by their supported contract. A song or composer name does not itsel
 - [CPU auditing](../docs/validation/psid-audit.md), [CIA tracing](../docs/validation/cia-tracing.md) and [assembler](sid_assembler.py): execution and timing infrastructure.
 - [Setup](../docs/setup/local-setup.md) and [evidence/cache management](../docs/workflows/build-cache.md): pinned assets, local tools, explicit archive promotion and verified restoration by path or group. [Automated build cleanup](cleanup-build.py) previews or applies verified cache-audio deduplication and lossless text compression.
 
+- [Sample library](../samples/README.md): [sample_exports.py](sample_exports.py) creates the fixed, note-preserving native stereo presentation, verifies mapped registers/active filters for the complete duration, and renders stereo/fold-down previews. Per-sample recipes retain VICE and source/tool fingerprints.
+
 ## Specialized composition backends
 
 These remain in the shared scripts directory because supported workflows and tests use them. They are implementation families with explicit targets and conversion limits; they are not an unrestricted cross-composer music API.

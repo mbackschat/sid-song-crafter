@@ -1,8 +1,8 @@
 # Rambo: centered-lead stereo arrangement
 
-[Featured WAV: 0:32–1:04](rambo-stereo-featured-32-64.wav) (32 seconds) · [Full SID](rambo-stereo.sid) (17,683 bytes) · [Full WAV](rambo-stereo.wav) (3:45) · [Manifest](manifest.json) · [GNU GPL v3](LICENSE)
+[Main-music SID](rambo-stereo-main.sid) · [Main-music WAV](rambo-stereo-main.wav) (about 3:13) · [Main-entry manifest](main-manifest.json) · [GNU GPL v3](LICENSE)
 
-The complete revised two-SID arrangement is accepted: “Complete revised version : sounds great.” The featured WAV starts at 0:32, where the listener finds the music becomes more engaging; the introduction was considered weak in the original too. It copies exactly seconds 32–64 from the accepted full render, at the original level, without fades or normalization. The full SID and full WAV retain the original introduction and complete ending. There is no separate excerpt SID.
+The complete revised two-SID arrangement is accepted: “Complete revised version : sounds great.” The README demos now omit the original introduction in both SID and WAV. The listener dislikes the introduction in the original tune itself; this is not a criticism of the reconstruction. The [complete SID](rambo-stereo.sid), [complete WAV](rambo-stereo.wav), [historical 32–64-second preview](rambo-stereo-featured-32-64.wav) and [historical manifest](manifest.json) remain unchanged.
 
 The loading music from *Rambo: First Blood Part II* was composed, arranged and programmed by **Martin Galway** in 1985; its historical source credits “(C) Ocean Software 1985”. Galway's [upstream README](https://github.com/MartinGalway/C64_music/blob/a458a3687e27a63647bbe41968094f0e6d0965a0/README.md), dated 14 April 2026, states that he acquired the music and programming rights from Infogrames, permits reassembly and modification, and requests credit. His repository supplies the [loader source](https://github.com/MartinGalway/C64_music/blob/a458a3687e27a63647bbe41968094f0e6d0965a0/rambload.asm) and [GPL v3 license](https://github.com/MartinGalway/C64_music/blob/a458a3687e27a63647bbe41968094f0e6d0965a0/LICENSE). The three pinned upstream files were retrieved and their recorded SHA-256 fingerprints rechecked on 2026-10-15.
 
@@ -15,10 +15,10 @@ Use **PAL, two MOS6581 chips at `$D400` and `$D420`, subtune 1**, with one call 
 The full WAV is 225 seconds of stereo PCM16 at 44.1 kHz, original gain, including the natural release and ending silence. The featured WAV is 32 seconds in the same format. On macOS:
 
 ```sh
-afplay samples/rambo-stereo/rambo-stereo-featured-32-64.wav
+afplay samples/rambo-stereo/rambo-stereo-main.wav
 ```
 
-## Reproduce from corresponding source
+## Reproduce the complete version from corresponding source
 
 The [manifest](manifest.json) pins complete source and transitive local imports at commit `b22d5e13699da9e76e651b06033ca36d21e0a087`, including the [centered arrangement](../../songs/studies/rambo-centered-native/arrangement.json), its [held-chord baseline](../../songs/studies/rambo-chord-expansion/arrangement.json), [preparer](../../scripts/studies/rambo/prepare-centered-native.py), [dual compiler](../../scripts/compose-rambo-dual.py), assembly templates and renderer. Use that revision's source for an exact SID rebuild. From the repository root, after installing the [documented dependencies](../../README.md#requirements-and-setup), including py65 1.2.0, choose fresh output directories:
 
@@ -57,4 +57,18 @@ with wave.open(str(directory / 'rambo-stereo-featured-32-64.wav'), 'wb') as outp
 PY
 ```
 
-Its expected SHA-256 is `485ca71c8255c5a38481c5c7deeef7bb75163aa6eab7dd3ae269f780951a0c40` when the full-render bytes match. The excerpt preserves the running song's envelopes and oscillator history because it copies rendered frames. Starting a SID directly at 0:32 would require a separate score/player entry-state and sound-history contract, which the current full-song exporter does not provide.
+Its expected SHA-256 is `485ca71c8255c5a38481c5c7deeef7bb75163aa6eab7dd3ae269f780951a0c40` when the full-render bytes match. The excerpt preserves the running song's envelopes and oscillator history because it copies rendered frames. The main-entry package below supplies a separate computed score/player entry state. It has fresh SID sound history and is not claimed to match this historical PCM crop.
+
+## Main-music demo, 2026-10-16
+
+The [main SID](rambo-stereo-main.sid) and [matching WAV](rambo-stereo-main.wav) start at source play call **1,586**, or **31.641167 seconds**. The lead starts on the next frame. Playback runs through the original ending; the WAV includes the retained release/quiet tail and lasts 193.358821 seconds. This is the default README demonstration. The complete versions above remain the fidelity baseline.
+
+The [entry preparer](../../scripts/studies/rambo/prepare-main-entry.py) executes the editable score to that boundary and retains the data, sound-program state, score cursors, transposition and call/loop stacks. A small init wrapper restores the SID register values with controls last. Subsequent notes remain computed by the existing player; this is not captured-event replay or a silent 32-second pre-roll. The SID's internal envelopes, oscillators and filter history start fresh, so its opening is not promised to be PCM-identical to a crop of the complete render. The rendered WAV comes from this new SID.
+
+```sh
+python3 scripts/listening-package.py samples/rambo-stereo/main.recipe.json --output build/sample-rambo-stereo-main
+```
+
+The [recipe](main.recipe.json) creates the editable rebased chip descriptions, init assembly, SID, WAV and fingerprints. It checks all 9,414 remaining calls against the original ordered play stores, the normal frame-cycle budget, initial and ending execution in headless VICE, unclipped PCM and a quiet final second. The [main manifest](main-manifest.json) pins the corresponding sources, output files and verification. This modification retains the package's GPLv3 terms and attribution.
+
+Model-assistance review: no call. The user explicitly selected omission of the intro; source timing, complete execution and audio checks settle this packaging change. Listening acceptance of the underlying arrangement is unchanged; the newly initialized opening has not received a separate listening verdict.

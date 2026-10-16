@@ -54,3 +54,5 @@ These tools investigate pinned recordings or prepare fixed demonstrations. They 
 | Deflektor / Daglish contrast | [Familiar phrase preparation](deflektor/prepare-elise-transfer.py), [ordered-control and active-filter census](deflektor/probe-contrast.py), [route-only Trap filter diagnostic](deflektor/trap-filter-diagnostic.py) | [Deflektor/Trap findings and bounded source evidence](../../docs/research/composition/daglish-contrast.md) |
 
 Run commands from the repository root using these paths, for example `python3 scripts/studies/monty/prepare-monty-elise.py --check`. Current study documentation links the relocated tools; frozen JSON recipes and archived evidence preserve their historical provenance. The explicitly deferred untracked work remains at its original paths, untouched and unstaged.
+
+- [Rambo main-entry preparation](rambo/prepare-main-entry.py): removes the introduction from the README mono/stereo samples while retaining computed continuation and checking all remaining ordered stores; [sample contract](../../samples/rambo-stereo/README.md#main-music-demo-2026-10-16).

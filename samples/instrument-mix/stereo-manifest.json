@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "sample": "instrument-mix",
+  "variant": "stereo",
+  "rights": {
+    "tier": "distributable music",
+    "basis": "See README.md and manifest.json",
+    "generatedMusicTracked": true
+  },
+  "artifacts": {
+    "stereo-sid": {
+      "path": "samples/instrument-mix/instrument-mix-stereo.sid",
+      "bytes": 4049,
+      "sha256": "6de38d8bbf5bf8e7fcdc1ec01b2b6c0c9d30e4f37721a66ec4fc64d175afb65b"
+    },
+    "stereo-wav": {
+      "path": "samples/instrument-mix/instrument-mix-stereo.wav",
+      "bytes": 1764044,
+      "sha256": "0d392beeae19da609097bd9ec93fd91043fa588b6525cf8d42968ec7ea786f3c"
+    },
+    "stereo-native": {
+      "path": "samples/instrument-mix/instrument-mix-stereo.sws",
+      "bytes": 523,
+      "sha256": "145a097d46f789397d8daf078546e4092ee4b56efb0c7775143a1b50f808bf38"
+    },
+    "stereo-prg": {
+      "path": "samples/instrument-mix/instrument-mix-stereo.prg",
+      "bytes": 5323,
+      "sha256": "02c92e5fab3611364a28fb71bb29c6424a5c4042a42ce263c613e8df36bc6987"
+    }
+  },
+  "audio": {
+    "format": "PCM16",
+    "channels": 2,
+    "sampleRate": 44100,
+    "frames": 441000,
+    "durationSeconds": 10.0,
+    "gain": 1,
+    "postprocessing": "none; rendered directly from the accompanying SID"
+  },
+  "recipe": {
+    "path": "samples/instrument-mix/stereo.recipe.json",
+    "bytes": 3221,
+    "sha256": "18d0bdbb6933d456912232fb4e02f09e43e3d0fa7d62b5f123baefb9497181c3"
+  },
+  "verification": {
+    "path": "samples/instrument-mix/stereo-verification.json",
+    "bytes": 17926,
+    "sha256": "46d38237b5d9096bc2391a8406f88656172c84cdf6d3de262fb0144d20f4eab5"
+  },
+  "vice": {
+    "vice": {
+      "path": "samples/instrument-mix/vice-verification.json",
+      "bytes": 1825,
+      "sha256": "2523183f267a028628f4ae2bb51ee332548be84844baa9586350366c38085850"
+    }
+  },
+  "stages": [
+    {
+      "id": "stereo",
+      "key": "94e20fe61ee75df6b455c84fb433c43467d5b640a071d8f2e7400b8b2ecda155",
+      "command": [
+        "{python}",
+        "scripts/sample_exports.py",
+        "samples/instrument-mix/instrument-mix.swm",
+        "samples/instrument-mix/instrument-mix.sid",
+        "--output",
+        "{out}/song",
+        "--seconds",
+        "10",
+        "--ticks",
+        "501",
+        "--title",
+        "Instrument mix stereo"
+      ],
+      "inputs": [
+        {
+          "path": "scripts/sample_exports.py",
+          "type": "file",
+          "sha256": "555227c067691e445e0d32f39da5db0998e27e45717b7813a92c49f75a78cc78"
+        },
+        {
+          "path": "scripts/export-sidwizard.py",
+          "type": "file",
+          "sha256": "26f271749db1de69dce53e95b35e74703b5d0625eae865423ded594a5e331c40"
+        },
+        {
+          "path": "scripts/native-song.py",
+          "type": "file",
+          "sha256": "100e55598731941a67138828e04445e242bd77e576a89566b66a9ffbfe37d2f0"
+        },
+        {
+          "path": "scripts/audio_comparison.py",
+          "type": "file",
+          "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": ".local/bin/render-sid",
+          "type": "file",
+          "sha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/build.json",
+          "type": "file",
+          "sha256": "b04ec82ae6c48a48ca1d55875bc30388d6a472cc24e890dac3a6d7051032f4e9"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/exporter.prg",
+          "type": "file",
+          "sha256": "02b3ad16fbe59bdd9d3fcbe77f7a9be7535dbe109fdbf0c7d9e2753896b3ad89"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter/exporter.labels",
+          "type": "file",
+          "sha256": "ebc2234576a5a98b07d570c93e0838c1da9d9f0aa6d669e5c1ae80ae32f90b2a"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter-2sid/build.json",
+          "type": "file",
+          "sha256": "1499f6b0fc75f59f073e55266d9c6845425f944fa6cf35d406cf78bd491e29e6"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter-2sid/exporter.prg",
+          "type": "file",
+          "sha256": "5a8dd460d4b3ce9c0c79ea91e22d2ea435bd5095d93e161b3cf3659688bac39e"
+        },
+        {
+          "path": ".tools/sid-wizard-exporter-2sid/exporter.labels",
+          "type": "file",
+          "sha256": "fccf21dc8a2ed26ce4b438be5661770213a6283e15b182309ea4c2a2695002c8"
+        },
+        {
+          "path": "samples/instrument-mix/instrument-mix.swm",
+          "type": "file",
+          "sha256": "c9a1980df9089620195ec2a3ee966db20d1ddc7c0028a49c6e1882fb5809b32c"
+        },
+        {
+          "path": "samples/instrument-mix/instrument-mix.sid",
+          "type": "file",
+          "sha256": "911ea1f5f780de971ceb28dbbe7fcafaa27dc680d1182bfa367c78ff28454bc1"
+        }
+      ],
+      "executionSeconds": 2.5969544160179794
+    },
+    {
+      "id": "vice",
+      "key": "2453d0f5a3ea1646547800c2802b5856b951d9bbb0039fe0f418e64b8ce6e61d",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:stereo}/song/export/stereo.prg",
+        "{stage:stereo}/song/stereo.writes.json",
+        "--export-report",
+        "{stage:stereo}/song/export/stereo.export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "2",
+        "50",
+        "500",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        {
+          "path": "{stage:stereo}/song/export/stereo.prg",
+          "type": "file",
+          "sha256": "02c92e5fab3611364a28fb71bb29c6424a5c4042a42ce263c613e8df36bc6987"
+        },
+        {
+          "path": "{stage:stereo}/song/export/stereo.export.json",
+          "type": "file",
+          "sha256": "09474db923772ee91ccb013170915f96fdfbc5d637453036f86f403c35a4ea26"
+        },
+        {
+          "path": "{stage:stereo}/song/stereo.writes.json",
+          "type": "file",
+          "sha256": "c6ecf01b79c3542ada3941a6035aeb89ca20de4e9cf02d4d499fb27eb6a5d53a"
+        },
+        {
+          "path": "scripts/verify-native-vice.py",
+          "type": "file",
+          "sha256": "3dc4be0c54ea859cb900769b6499b6afcd9d6c60ee53854fb027c179a1b66410"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/build/src/x64sc",
+          "type": "file",
+          "sha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/source/data",
+          "type": "directory",
+          "sha256": "87a5a8ee759d6b69dbafb8873137a8001e01855e385280864ec5cc64f4547d11"
+        },
+        {
+          "path": "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+          "type": "file",
+          "sha256": "0c6d618e75fea85cc3d631e164a71766fba9341d19ce1f723300c52e63037c51"
+        }
+      ],
+      "executionSeconds": 1.2403695830143988
+    }
+  ],
+  "listeningStatus": "Mono verdict retained; stereo presentation awaiting listening review",
+  "reproduction": {
+    "command": [
+      "python3",
+      "scripts/listening-package.py",
+      "samples/instrument-mix/stereo.recipe.json",
+      "--output",
+      "build/sample-instrument-mix-stereo"
+    ],
+    "exactAudio": "Requires the pinned renderer/library build; source and output fingerprints are recorded."
+  }
+}

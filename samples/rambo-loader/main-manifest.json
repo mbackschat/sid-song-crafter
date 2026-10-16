@@ -1,0 +1,418 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "sample": "rambo-loader",
+  "variant": "main",
+  "rights": {
+    "tier": "distributable music",
+    "license": "GPL-3.0",
+    "basis": "Martin Galway loader-specific upstream grant; see README.md and LICENSE",
+    "originalManifest": "manifest.json"
+  },
+  "artifacts": {
+    "main-sid": {
+      "path": "samples/rambo-loader/rambo-loader-main.sid",
+      "bytes": 6580,
+      "sha256": "99c61d30de4a27e800d185709192de0af92e6d1f2b2350ff8b80f47d8dc4a8cc"
+    },
+    "main-wav": {
+      "path": "samples/rambo-loader/rambo-loader-main.wav",
+      "bytes": 17054294,
+      "sha256": "4d3f3c78a89a384a14244f4ca6a36efe0022ea2f636327619ebc00be93909544"
+    }
+  },
+  "audio": {
+    "format": "PCM16",
+    "channels": 1,
+    "sampleRate": 44100,
+    "frames": 8527125,
+    "durationSeconds": 193.35884353741497,
+    "gain": 1,
+    "postprocessing": "none; rendered directly from the accompanying SID"
+  },
+  "recipe": {
+    "path": "samples/rambo-loader/main.recipe.json",
+    "bytes": 4680,
+    "sha256": "105941ae374659e9abbc46ccc4026acaf70a5f47322cbdba9dac4cfe594b852a"
+  },
+  "verification": {
+    "path": "samples/rambo-loader/main-verification.json",
+    "bytes": 4545,
+    "sha256": "e89d589523d994761201436cee25ae30576c5608af609703a62c349b8908cf39"
+  },
+  "vice": {
+    "entry-vice": {
+      "path": "samples/rambo-loader/entry-vice-verification.json",
+      "bytes": 2893,
+      "sha256": "dd8327455c29bb5bd33b55705fef40f31670b973b198a2e45a36d6c4d564363e"
+    },
+    "ending-vice": {
+      "path": "samples/rambo-loader/ending-vice-verification.json",
+      "bytes": 2484,
+      "sha256": "ee9a5606a4befc3442bb803934789e5349100262f00e5fe3b1ce7bb0427d9f56"
+    }
+  },
+  "stages": [
+    {
+      "id": "entry",
+      "key": "4aee2e984fdcb50483bd7027f44cdd9a48632d9361b2d6e29015e2561b7dcc82",
+      "command": [
+        "{python}",
+        "scripts/studies/rambo/prepare-main-entry.py",
+        "songs/rambo-loader.json",
+        "--start-call",
+        "1586",
+        "--output",
+        "{out}/song"
+      ],
+      "inputs": [
+        {
+          "path": "scripts/studies/rambo/prepare-main-entry.py",
+          "type": "file",
+          "sha256": "1a1198e660afb0960ae2e0e41de003bd678fc2fc0bc9e93ab53f923a8456da26"
+        },
+        {
+          "path": "scripts/compose-rambo.py",
+          "type": "file",
+          "sha256": "97a97f182c48c472390dec8bf6a4cf095169b3c74c62f7be918f4ea8d29b1ac5"
+        },
+        {
+          "path": "scripts/compose-rambo-dual.py",
+          "type": "file",
+          "sha256": "9dc81a1b7d8a18378b6e1fc7dcb323fa7a286b3a992efd86a889efa31e134822"
+        },
+        {
+          "path": "scripts/rambo_player.py",
+          "type": "file",
+          "sha256": "c65ab14faaa21781258b1604862c3f47647c958f1489150683b6c9d9c0d53961"
+        },
+        {
+          "path": "scripts/rambo_score.py",
+          "type": "file",
+          "sha256": "dcb443bd596ba3241642d2c49120174b75e1b17fcfb6e6013841265028f3ecbb"
+        },
+        {
+          "path": "scripts/rambo_programs.py",
+          "type": "file",
+          "sha256": "1545db906a34416b34eca426cb67f5783454c1f0427f4233f4da0a502c68b96c"
+        },
+        {
+          "path": "scripts/sid_assembler.py",
+          "type": "file",
+          "sha256": "2a1fecc8cb350c9cfdef292677a0cc54bcf2c0c069009b1222782708d42c287e"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": "songs/players/rambo.asm",
+          "type": "file",
+          "sha256": "34f2964bbbea71172daa3156f44e77a1cbe79db1f6646b2e4042bfe74cd12b56"
+        },
+        {
+          "path": "songs/players/rambo-sound.asm",
+          "type": "file",
+          "sha256": "8b1cc3e7332eb1c392cc19bbba70bd0fb5c172502b9140aa014fbf0e76af24d2"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": "songs/rambo-loader.json",
+          "type": "file",
+          "sha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b"
+        }
+      ],
+      "executionSeconds": 25.47264004102908
+    },
+    {
+      "id": "render",
+      "key": "f750d2e4c25208fe5868eb516131c38e306813a2cf1c67f406381128d2cb6717",
+      "command": [
+        ".local/bin/render-sid",
+        "{stage:entry}/song/main.sid",
+        "{out}/main.wav",
+        "193.3588328382994",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        {
+          "path": ".local/bin/render-sid",
+          "type": "file",
+          "sha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46"
+        },
+        {
+          "path": "{stage:entry}/song/main.sid",
+          "type": "file",
+          "sha256": "99c61d30de4a27e800d185709192de0af92e6d1f2b2350ff8b80f47d8dc4a8cc"
+        },
+        {
+          "path": "scripts/render-sid.cpp",
+          "type": "file",
+          "sha256": "c779f01c187cb913ce49f61d6a94fc1d0a3d0f3ae54214dc201a93df8cf3180f"
+        }
+      ],
+      "executionSeconds": 2.5745501248165965
+    },
+    {
+      "id": "audio",
+      "key": "6386c91708cbab846ba9b73bcf8cd27e40c84276b63fa732d192faaf7720cbb2",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:render}/main.wav",
+        "{stage:render}/main.wav",
+        "--seconds",
+        "193.3588328382994",
+        "--channels",
+        "1",
+        "--tail-seconds",
+        "1",
+        "--max-tail-ac-rms",
+        "2",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        {
+          "path": "scripts/check-listening.py",
+          "type": "file",
+          "sha256": "562acd7395111823046f96b17d2ee54839ae579f4e54ddf32f5526005c7cfa0a"
+        },
+        {
+          "path": "scripts/listening_checks.py",
+          "type": "file",
+          "sha256": "2d07bf6b4a95df5c114619ed9a57e6122f1ccc86f86e13025e6586f86dd0b243"
+        },
+        {
+          "path": "scripts/audio_comparison.py",
+          "type": "file",
+          "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+        },
+        {
+          "path": "{stage:render}/main.wav",
+          "type": "file",
+          "sha256": "4d3f3c78a89a384a14244f4ca6a36efe0022ea2f636327619ebc00be93909544"
+        }
+      ],
+      "executionSeconds": 2.4319730000570416
+    },
+    {
+      "id": "entry-vice",
+      "key": "3793c390656c40674b338a5997c307d2a71d84919a83a45dfba6cca60743ebfe",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:entry}/song/main.sid",
+        "--oracle",
+        "{stage:entry}/song/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "3",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        {
+          "path": "{stage:entry}/song/main.sid",
+          "type": "file",
+          "sha256": "99c61d30de4a27e800d185709192de0af92e6d1f2b2350ff8b80f47d8dc4a8cc"
+        },
+        {
+          "path": "{stage:entry}/song/writes.json",
+          "type": "file",
+          "sha256": "884427b89594e2f533be74eee00bd2329b67c6c1aa1dbfd9be16d5c81c644686"
+        },
+        {
+          "path": "scripts/trace-sid-vice.py",
+          "type": "file",
+          "sha256": "1df0cdee65ad8d0d0258e9920d57682b1940311c98e532472b8e0cb621b89e8d"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/build/src/x64sc",
+          "type": "file",
+          "sha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/source/data",
+          "type": "directory",
+          "sha256": "87a5a8ee759d6b69dbafb8873137a8001e01855e385280864ec5cc64f4547d11"
+        },
+        {
+          "path": "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+          "type": "file",
+          "sha256": "0c6d618e75fea85cc3d631e164a71766fba9341d19ce1f723300c52e63037c51"
+        }
+      ],
+      "executionSeconds": 0.5924370000138879
+    },
+    {
+      "id": "ending-vice",
+      "key": "e63c8e295267bb3d50e729f02221e521f316e04d9a3714389457ab4f8cd66ef4",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:entry}/song/main.sid",
+        "--oracle",
+        "{stage:entry}/song/writes.json",
+        "--first-call",
+        "9210",
+        "--last-call",
+        "9413",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        {
+          "path": "{stage:entry}/song/main.sid",
+          "type": "file",
+          "sha256": "99c61d30de4a27e800d185709192de0af92e6d1f2b2350ff8b80f47d8dc4a8cc"
+        },
+        {
+          "path": "{stage:entry}/song/writes.json",
+          "type": "file",
+          "sha256": "884427b89594e2f533be74eee00bd2329b67c6c1aa1dbfd9be16d5c81c644686"
+        },
+        {
+          "path": "scripts/trace-sid-vice.py",
+          "type": "file",
+          "sha256": "1df0cdee65ad8d0d0258e9920d57682b1940311c98e532472b8e0cb621b89e8d"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/build/src/x64sc",
+          "type": "file",
+          "sha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/source/data",
+          "type": "directory",
+          "sha256": "87a5a8ee759d6b69dbafb8873137a8001e01855e385280864ec5cc64f4547d11"
+        },
+        {
+          "path": "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+          "type": "file",
+          "sha256": "0c6d618e75fea85cc3d631e164a71766fba9341d19ce1f723300c52e63037c51"
+        }
+      ],
+      "executionSeconds": 16.895673624938354
+    }
+  ],
+  "listeningStatus": "Original arrangement verdict retained; new cold-start entry not separately listening-reviewed",
+  "reproduction": {
+    "command": [
+      "python3",
+      "scripts/listening-package.py",
+      "samples/rambo-loader/main.recipe.json",
+      "--output",
+      "build/sample-rambo-loader-main"
+    ],
+    "exactAudio": "Requires the pinned renderer/library build; source and output fingerprints are recorded."
+  },
+  "sourceStartCall": 1586,
+  "sourceStartSeconds": 31.641167161700587,
+  "preservedCompleteFiles": [
+    {
+      "path": "samples/rambo-loader/rambo-loader.sid",
+      "bytes": 6451,
+      "sha256": "9a6901e656f4de1888f9acc71c80abaf3608b9758b559b306b0b8b6eaa64aecd"
+    },
+    {
+      "path": "samples/rambo-loader/rambo-loader.wav",
+      "bytes": 19845044,
+      "sha256": "8d4ff6dcadc1a6c63332b7227ddb96d566a4a5a8a56491a4c97ce7844b956efb"
+    }
+  ]
+}

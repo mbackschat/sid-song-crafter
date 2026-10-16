@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "prepare",
+      "command": [
+        "{python}",
+        "scripts/studies/rambo/prepare-centered-native.py",
+        "songs/studies/rambo-centered-native/arrangement.json",
+        "--output",
+        "{out}/scores"
+      ],
+      "inputs": [
+        "songs/rambo-loader.json",
+        "songs/studies/rambo-centered-native/arrangement.json",
+        "songs/studies/rambo-chord-expansion/arrangement.json",
+        "scripts/studies/rambo/prepare-centered-native.py",
+        "scripts/studies/rambo/prepare-ensemble.py",
+        "scripts/rambo_player.py",
+        "scripts/rambo_score.py",
+        "scripts/rambo_programs.py",
+        "scripts/verify_player.py"
+      ],
+      "outputs": [
+        "scores/primary.json",
+        "scores/secondary.json",
+        "scores/arrangement-proof.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "entry",
+      "command": [
+        "{python}",
+        "scripts/studies/rambo/prepare-main-entry.py",
+        "{stage:prepare}/scores/primary.json",
+        "{stage:prepare}/scores/secondary.json",
+        "--start-call",
+        "1586",
+        "--output",
+        "{out}/song"
+      ],
+      "inputs": [
+        "scripts/studies/rambo/prepare-main-entry.py",
+        "scripts/compose-rambo.py",
+        "scripts/compose-rambo-dual.py",
+        "scripts/rambo_player.py",
+        "scripts/rambo_score.py",
+        "scripts/rambo_programs.py",
+        "scripts/sid_assembler.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        "songs/players/rambo.asm",
+        "songs/players/rambo-sound.asm",
+        ".tools/test-deps/py65",
+        "{stage:prepare}/scores/primary.json",
+        "{stage:prepare}/scores/secondary.json"
+      ],
+      "outputs": [
+        "song/main.sid",
+        "song/verification.json",
+        "song/writes.json",
+        "song/entry.asm",
+        "song/chip-1.json",
+        "song/chip-2.json"
+      ],
+      "timeoutSeconds": 360,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "render",
+      "command": [
+        ".local/bin/render-sid",
+        "{stage:entry}/song/main.sid",
+        "{out}/main.wav",
+        "193.3588328382994",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        ".local/bin/render-sid",
+        "{stage:entry}/song/main.sid",
+        "scripts/render-sid.cpp"
+      ],
+      "outputs": [
+        "main.wav"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "audio",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:render}/main.wav",
+        "{stage:render}/main.wav",
+        "--seconds",
+        "193.3588328382994",
+        "--channels",
+        "2",
+        "--tail-seconds",
+        "1",
+        "--max-tail-ac-rms",
+        "2",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py",
+        "{stage:render}/main.wav"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 90
+    },
+    {
+      "id": "entry-vice",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:entry}/song/main.sid",
+        "--oracle",
+        "{stage:entry}/song/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "3",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:entry}/song/main.sid",
+        "{stage:entry}/song/writes.json",
+        "scripts/trace-sid-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib"
+      ],
+      "outputs": [
+        "vice/study.json"
+      ],
+      "timeoutSeconds": 90
+    },
+    {
+      "id": "ending-vice",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:entry}/song/main.sid",
+        "--oracle",
+        "{stage:entry}/song/writes.json",
+        "--first-call",
+        "9210",
+        "--last-call",
+        "9413",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:entry}/song/main.sid",
+        "{stage:entry}/song/writes.json",
+        "scripts/trace-sid-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib"
+      ],
+      "outputs": [
+        "vice/study.json"
+      ],
+      "timeoutSeconds": 90
+    }
+  ],
+  "deliverables": {
+    "main-sid": "{stage:entry}/song/main.sid",
+    "main-wav": "{stage:render}/main.wav",
+    "verification": "{stage:entry}/song/verification.json",
+    "audio": "{stage:audio}/audio.json",
+    "entry-vice": "{stage:entry-vice}/vice/study.json",
+    "ending-vice": "{stage:ending-vice}/vice/study.json"
+  }
+}

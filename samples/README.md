@@ -1,38 +1,42 @@
-# Playable samples
+# Sample library
 
-Download the SID for a SID player, the PRG for a C64 or emulator, or the WAV for an ordinary audio player. All samples target PAL with one player call per video frame. Bach and the instrument mix use one MOS8580 at `$D400` and editable SID-Wizard SWM files. Rambo uses MOS6581 and an editable JSON score with a custom player: the faithful loader uses one chip, while the centered-lead stereo arrangement uses two at `$D400` and `$D420`. WAVs retain the original renderer level at 44.1 kHz PCM16, with no normalization. Full renders include their release and ending silence; the separately labelled stereo excerpt copies seconds 32–64. The stereo package has two audio channels; the other packages are mono.
+Each sample has a package directory containing its README, reproducible build recipe, output/source fingerprints and applicable notices. Editable material already owned by a song or study stays there and is linked from its package, avoiding duplicate score and instrument definitions. Downloadable releases are kept beside their package materials; uncleared music is generated under ignored `build/`.
 
-| Sample | Playable downloads | Editable source and provenance |
-| --- | --- | --- |
-| **Toccata from BWV 565** — accepted complete mono interpretation; 88.123 seconds including release | [SID](bach-toccata/bach-toccata.sid) (8,898 bytes) · [PRG](bach-toccata/bach-toccata.prg) (9,770 bytes) · [WAV](bach-toccata/bach-toccata.wav) (7,772,486 bytes) | [SWM](bach-toccata/bach-toccata.swm) (5,964 bytes) · [Manifest](bach-toccata/manifest.json) · [Score, arrangement and instruments](../songs/studies/bach-toccata-full/README.md) |
-| **Original instrument mix** — three-voice phrase; initial mix-level acceptance; 10 seconds including release | [SID](instrument-mix/instrument-mix.sid) (3,365 bytes) · [PRG](instrument-mix/instrument-mix.prg) (4,237 bytes) · [WAV](instrument-mix/instrument-mix.wav) (882,044 bytes) | [SWM](instrument-mix/instrument-mix.swm) (511 bytes) · [Manifest](instrument-mix/manifest.json) · [Complete original phrase and patches](../songs/studies/sidwizard-repertoire/repertoire.json) |
-| **Rambo loader** — faithful reconstruction; accepted phrase and ending; 225 seconds | [SID](rambo-loader/rambo-loader.sid) (6,451 bytes) · [WAV](rambo-loader/rambo-loader.wav) (19,845,044 bytes) | [Editable score and build instructions](rambo-loader/README.md) · [Manifest](rambo-loader/manifest.json) · [GPLv3](rambo-loader/LICENSE) |
-| **Rambo stereo** — accepted complete centered-lead arrangement; featured music from 0:32 | [Featured WAV, 0:32–1:04](rambo-stereo/rambo-stereo-featured-32-64.wav) (5,644,844 bytes) · [Full two-SID](rambo-stereo/rambo-stereo.sid) (17,683 bytes) · [Full WAV, 225 seconds](rambo-stereo/rambo-stereo.wav) (39,690,044 bytes) | [Editable arrangement and build instructions](rambo-stereo/README.md) · [Manifest](rambo-stereo/manifest.json) · [GPLv3](rambo-stereo/LICENSE) |
+| Sample | Mono SID / WAV | Stereo SID / WAV | Materials and scope |
+| --- | --- | --- | --- |
+| Bach Toccata, about 1:28 | [SID](bach-toccata/bach-toccata.sid) · [WAV](bach-toccata/bach-toccata.wav) | [SID](bach-toccata/bach-toccata-stereo.sid) · [WAV](bach-toccata/bach-toccata-stereo.wav) | [Package](bach-toccata/README.md): accepted complete mono Toccata; new stereo placement awaiting listening review |
+| Original instrument mix, 10 seconds | [SID](instrument-mix/instrument-mix.sid) · [WAV](instrument-mix/instrument-mix.wav) | [SID](instrument-mix/instrument-mix-stereo.sid) · [WAV](instrument-mix/instrument-mix-stereo.wav) | [Package](instrument-mix/README.md): initial mono mix-level acceptance; new stereo placement awaiting review |
+| Rambo loader, main music through ending, about 3:13 | [Faithful SID](rambo-loader/rambo-loader-main.sid) · [WAV](rambo-loader/rambo-loader-main.wav) | [Centered-lead SID](rambo-stereo/rambo-stereo-main.sid) · [WAV](rambo-stereo/rambo-stereo-main.wav) | [Mono package](rambo-loader/README.md) · [Accepted stereo arrangement](rambo-stereo/README.md); both demos omit the intro |
+| Moon River, first statement, about 1:39 | Local SID/WAV build | Local two-SID/WAV build | [Package and recipe](moon-river/README.md): accepted restrained mono first statement; stereo awaiting review |
+| Pink Panther, complete arrangement, about 3:20 | Local SID/WAV build | Local two-SID/WAV build | [Package and recipe](pink-panther/README.md): accepted complete mono arrangement; stereo awaiting review |
 
-The Bach arrangement covers the Toccata through measure 30 beats 1–2 and ends before the Fugue. Its source is Anonymous's public-domain [Mutopia 1780](https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1780) typesetting of the Bach-Gesellschaft Ausgabe, 1867; the unchanged [LilyPond declaration](../songs/studies/bach-toccata-opening/source/ToccataFugue.ly) and [MIDI](../songs/studies/bach-toccata-opening/source/ToccataFugue.mid) remain in the source bundle. The original instrument mix uses project-authored notes and patches. Project contributions use [MIT](../LICENSE); the underlying public-domain music retains that status.
+## Playback and stereo placement
 
-The Bach and instrument-mix SID and PRG files embed Hermit Software / Mihaly Horvath's SID-Wizard player, whose separate declaration is retained in [third-party notices](../THIRD_PARTY_NOTICES.md#build-playback-and-validation-components):
+All samples use PAL timing, one player call per frame. Bach, instrument mix, Moon River and Pink Panther use MOS8580; Rambo uses MOS6581. Mono uses `$D400`. Stereo uses two chips at `$D400` and `$D420`, routed left and right respectively. Use a PSID v3/two-SID-compatible player for stereo SID files. WAVs are rendered directly from their corresponding SID at 44.1 kHz PCM16, unity gain, without normalization. The stereo channels contain different accompaniment; they are not copies of mono audio.
 
-```text
-;License: You know I'm not into licensing and legal stuff but for the sake of completeness
-;let's declare SID-Wizard as a WTF-licensed tool, so you can do WTF you want with it.
+The four new SID-Wizard stereo presentations duplicate the first voice for a centered lead and place the second and third original voices on opposite sides, preserving physical oscillator indices, original notes and instruments. They do not add musical parts. Their package notes record filter ownership, CPU/VICE checks, fold-down and pending listening status. Rambo retains its already accepted centered lead and source-derived chord expansion. Register agreement does not establish oscillator phase coherence on physical chips or musical acceptance.
 
-; 2026 Hermit Software Hungary  - contact:   by Personal Message at CSDb
-```
+## Rambo entrance
 
-These packages contain no third-party reference SID or performance recording. Their manifests record the exact copied files, SHA-256 hashes, pinned exporter/player/toolchain, source inputs, rendering settings, rights basis and scoped listening verdicts. The Bach WAV matches the accepted complete mono file; the mix WAV matches its retained trial receipt. Fresh exports of both SWMs reproduced the bundled SID and PRG bytes. Packaging reused the existing WAVs.
+Both featured Rambo SID/WAV files begin at original play call 1,586 (31.641167 seconds); the lead enters on the next frame. The omitted introduction is disliked in the original tune itself. The new entry preserves the computed score and sound state, all subsequent ordered play writes and the original ending. SID envelopes and oscillators start fresh; the WAV is rendered from the new SID, not cropped from an earlier recording. Full mono/stereo versions and their historical manifests remain unchanged in their packages, clearly labelled as complete versions with the intro. The old 32–64-second stereo preview is retained as historical material.
 
-The [Rambo loader package](rambo-loader/README.md) and [accepted stereo arrangement](rambo-stereo/README.md) are separately GPLv3-licensed, with Galway’s attribution and complete corresponding source. The stereo demo features the requested music after 0:32; its full SID and WAV retain the original introduction.
+## Reproduce and review
 
-## Play and reproduce
-
-Open a SID in a PAL player using the chip model listed above, or load an available PRG in a PAL C64 emulator and run it. The Rambo stereo SID requires PSID v3/two-SID support: route `$D400` left and `$D420` right for the accepted image. On macOS, `afplay samples/rambo-stereo/rambo-stereo-featured-32-64.wav` plays the featured stereo preview. See the [playback guide](../docs/workflows/native-song-workflow.md) for the native workflow.
-
-From the repository root, [set up the pinned exporter](../docs/research/tools/sid-wizard-trial.md) with `python3 scripts/setup-sidwizard.py`. Export either frozen SWM into a fresh directory:
+Follow [local setup](../docs/setup/local-setup.md), including the renderer and headless VICE. The native stereo packages need `python3 scripts/setup-sidwizard.py --sid-count 2`. Run the owning recipe from the repository root:
 
 ```sh
-python3 scripts/export-sidwizard.py samples/bach-toccata/bach-toccata.swm --output-dir build/public-samples-reexport/bach-toccata --title 'Bach Toccata: full SID hybrid' --author 'Original SID arrangement' --released 2026 --clock pal --sid-model MOS8580
-python3 scripts/export-sidwizard.py samples/instrument-mix/instrument-mix.swm --output-dir build/public-samples-reexport/instrument-mix --title mix-candidate --author 'Original SID study' --released 2026 --clock pal --sid-model MOS8580
+python3 scripts/listening-package.py samples/bach-toccata/stereo.recipe.json --output build/sample-bach-toccata-stereo
+python3 scripts/listening-package.py samples/instrument-mix/stereo.recipe.json --output build/sample-instrument-mix-stereo
+python3 scripts/listening-package.py samples/rambo-loader/main.recipe.json --output build/sample-rambo-loader-main
+python3 scripts/listening-package.py samples/rambo-stereo/main.recipe.json --output build/sample-rambo-stereo-main
 ```
 
-The output stems match the bundled SWM names. The manifests supply exact render commands and authoring commands for rebuilding from the retained score or original phrase; [renderer setup](../docs/workflows/audio-workflow.md) is separate. Expected SID/PRG hashes are exact; reproducing WAV bytes also depends on the recorded renderer/library build. Original scores and recipes stay in their owning song directories rather than being duplicated here.
+[Moon River](moon-river/README.md) and [Pink Panther](pink-panther/README.md) include their source-download and dual-format build commands. Each generated `listening.md` points to the playable files and verification. Existing successful stages are reused only when input/output fingerprints match. Original mono references remain linked alongside new stereo candidates; musical preference is a separate listening decision.
+
+## Rights and source preservation
+
+Bach uses the public-domain composition and Anonymous's public-domain Mutopia 1780 typesetting of the Bach-Gesellschaft edition; the [unchanged source declaration](../songs/studies/bach-toccata-opening/source/ToccataFugue.ly), [MIDI](../songs/studies/bach-toccata-opening/source/ToccataFugue.mid) and [manifest](bach-toccata/manifest.json) retain provenance. The instrument mix has project-authored notes and patches. Project contributions use [MIT](../LICENSE); embedded SID-Wizard player code retains its [separate upstream declaration](../THIRD_PARTY_NOTICES.md#build-playback-and-validation-components).
+
+The Rambo loader and derived stereo arrangement are separately [GPLv3 licensed](rambo-loader/LICENSE), with Martin Galway attribution and corresponding source linked in each package. That grant is specific to the loader. No original reference SID or third-party performance recording is bundled.
+
+Moon River and Pink Panther use the always-included materials tier under the [publication policy](../CLAUDE.md#public-repository-boundary). Their recipes, source references, tool links and verification hashes are public; source MIDI, generated notes/modules and SID/WAV files remain local while redistribution permissions are unresolved.

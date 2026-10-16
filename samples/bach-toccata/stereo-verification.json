@@ -1,0 +1,727 @@
+{
+  "checkedCalls": 4417,
+  "voiceMap": [
+    0,
+    1,
+    null,
+    0,
+    null,
+    2
+  ],
+  "monoAudit": {
+    "schemaVersion": 1,
+    "sourceSha256": "2578a1b96eb0338a50c6b926f60c806f79e9567b8a933274763d46fb0f17e761",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS8580",
+    "sidCount": 1,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS8580"
+      }
+    ],
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4099,
+    "clockHz": 985248.6111111111,
+    "playCalls": 4417,
+    "callRateHz": 50.12457321485099,
+    "initCycles": 1944,
+    "maximumPlayCycles": 2336,
+    "meanPlayCycles": 1896.0233189947928,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 24,
+    "playWriteCount": 110425,
+    "registers": {
+      "d400": {
+        "writes": 4417,
+        "distinctValues": 48,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d401": {
+        "writes": 4417,
+        "distinctValues": 24,
+        "minimum": 9,
+        "maximum": 62
+      },
+      "d402": {
+        "writes": 4417,
+        "distinctValues": 32,
+        "minimum": 0,
+        "maximum": 248
+      },
+      "d403": {
+        "writes": 4417,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 8
+      },
+      "d404": {
+        "writes": 4417,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 65
+      },
+      "d405": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 2,
+        "maximum": 2
+      },
+      "d406": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 136,
+        "maximum": 136
+      },
+      "d407": {
+        "writes": 4417,
+        "distinctValues": 50,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d408": {
+        "writes": 4417,
+        "distinctValues": 19,
+        "minimum": 4,
+        "maximum": 31
+      },
+      "d409": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40a": {
+        "writes": 4417,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 6
+      },
+      "d40b": {
+        "writes": 4417,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 65
+      },
+      "d40c": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 2,
+        "maximum": 2
+      },
+      "d40d": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 169,
+        "maximum": 169
+      },
+      "d40e": {
+        "writes": 4417,
+        "distinctValues": 34,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d40f": {
+        "writes": 4417,
+        "distinctValues": 20,
+        "minimum": 0,
+        "maximum": 46
+      },
+      "d410": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d411": {
+        "writes": 4417,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 6
+      },
+      "d412": {
+        "writes": 4417,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 81
+      },
+      "d413": {
+        "writes": 4417,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 2
+      },
+      "d414": {
+        "writes": 4417,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 88
+      },
+      "d415": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d416": {
+        "writes": 4417,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 160
+      },
+      "d417": {
+        "writes": 4417,
+        "distinctValues": 2,
+        "minimum": 2,
+        "maximum": 34
+      },
+      "d418": {
+        "writes": 4417,
+        "distinctValues": 3,
+        "minimum": 15,
+        "maximum": 31
+      }
+    },
+    "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+  },
+  "stereoAudit": {
+    "schemaVersion": 1,
+    "sourceSha256": "96ba9684c3eea789bab1262bfd233ec87666791d40e8d8ccf8aaeb7a9e151bc4",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS8580",
+    "sidCount": 2,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS8580"
+      },
+      {
+        "baseAddress": 54304,
+        "model": "MOS8580"
+      }
+    ],
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4099,
+    "clockHz": 985248.6111111111,
+    "playCalls": 4417,
+    "callRateHz": 50.12457321485099,
+    "initCycles": 3741,
+    "maximumPlayCycles": 3769,
+    "meanPlayCycles": 3235.6771564410233,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 48,
+    "playWriteCount": 220850,
+    "registers": {
+      "d400": {
+        "writes": 4417,
+        "distinctValues": 48,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d401": {
+        "writes": 4417,
+        "distinctValues": 24,
+        "minimum": 9,
+        "maximum": 62
+      },
+      "d402": {
+        "writes": 4417,
+        "distinctValues": 32,
+        "minimum": 0,
+        "maximum": 248
+      },
+      "d403": {
+        "writes": 4417,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 8
+      },
+      "d404": {
+        "writes": 4417,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 65
+      },
+      "d405": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 2,
+        "maximum": 2
+      },
+      "d406": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 136,
+        "maximum": 136
+      },
+      "d407": {
+        "writes": 4417,
+        "distinctValues": 50,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d408": {
+        "writes": 4417,
+        "distinctValues": 19,
+        "minimum": 4,
+        "maximum": 31
+      },
+      "d409": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40a": {
+        "writes": 4417,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 6
+      },
+      "d40b": {
+        "writes": 4417,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 65
+      },
+      "d40c": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 2,
+        "maximum": 2
+      },
+      "d40d": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 169,
+        "maximum": 169
+      },
+      "d40e": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40f": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d410": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d411": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d412": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d413": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d414": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d415": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d416": {
+        "writes": 4417,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 160
+      },
+      "d417": {
+        "writes": 4417,
+        "distinctValues": 2,
+        "minimum": 2,
+        "maximum": 34
+      },
+      "d418": {
+        "writes": 4417,
+        "distinctValues": 3,
+        "minimum": 15,
+        "maximum": 31
+      },
+      "d420": {
+        "writes": 4417,
+        "distinctValues": 48,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d421": {
+        "writes": 4417,
+        "distinctValues": 24,
+        "minimum": 9,
+        "maximum": 62
+      },
+      "d422": {
+        "writes": 4417,
+        "distinctValues": 32,
+        "minimum": 0,
+        "maximum": 248
+      },
+      "d423": {
+        "writes": 4417,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 8
+      },
+      "d424": {
+        "writes": 4417,
+        "distinctValues": 3,
+        "minimum": 9,
+        "maximum": 65
+      },
+      "d425": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 2,
+        "maximum": 2
+      },
+      "d426": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 136,
+        "maximum": 136
+      },
+      "d427": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d428": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d429": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d42a": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d42b": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d42c": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d42d": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d42e": {
+        "writes": 4417,
+        "distinctValues": 34,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d42f": {
+        "writes": 4417,
+        "distinctValues": 20,
+        "minimum": 0,
+        "maximum": 46
+      },
+      "d430": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d431": {
+        "writes": 4417,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 6
+      },
+      "d432": {
+        "writes": 4417,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 81
+      },
+      "d433": {
+        "writes": 4417,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 2
+      },
+      "d434": {
+        "writes": 4417,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 88
+      },
+      "d435": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d436": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d437": {
+        "writes": 4417,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d438": {
+        "writes": 4417,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 15
+      }
+    },
+    "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+  },
+  "guarantees": "Mapped voice registers and each active filter agree at every call; no new notes.",
+  "listeningStatus": "Stereo presentation awaiting listening review",
+  "sourceSha256": "c9155ece500dd6fd73f1fa897080e796ddf3b05e51ea09ab5a89a414bcc376a7",
+  "sidSha256": "96ba9684c3eea789bab1262bfd233ec87666791d40e8d8ccf8aaeb7a9e151bc4",
+  "export": {
+    "source": "build/sample-bach-toccata-stereo/cache/stereo/4323339ae2730f174fce829174636e34f23be4beede710627d93be3338ea7bc8/attempt-e1896dbb11ad4f06b2b6a57756d596c3/song/stereo.sws",
+    "sourceSha256": "f69cc77fa1ada628a71575867c1822a9ea5bb3870baaf04d63988a6764b52e8f",
+    "module": {
+      "sidCount": 2,
+      "patterns": 53,
+      "sequences": 6,
+      "instruments": [
+        {
+          "name": "BCHPWM",
+          "size": 34
+        },
+        {
+          "name": "BCHBASS",
+          "size": 28
+        },
+        {
+          "name": "BCHHARM",
+          "size": 25
+        },
+        {
+          "name": "BCHDIM",
+          "size": 49
+        },
+        {
+          "name": "BCHDOM",
+          "size": 49
+        },
+        {
+          "name": "BCHMIN",
+          "size": 49
+        },
+        {
+          "name": "BCHSUB",
+          "size": 49
+        },
+        {
+          "name": "BCHINNR",
+          "size": 49
+        }
+      ],
+      "chordBytes": 0,
+      "tempoBytes": 0
+    },
+    "sid": "build/sample-bach-toccata-stereo/cache/stereo/4323339ae2730f174fce829174636e34f23be4beede710627d93be3338ea7bc8/attempt-e1896dbb11ad4f06b2b6a57756d596c3/song/export/stereo.sid",
+    "sidSha256": "96ba9684c3eea789bab1262bfd233ec87666791d40e8d8ccf8aaeb7a9e151bc4",
+    "prg": "build/sample-bach-toccata-stereo/cache/stereo/4323339ae2730f174fce829174636e34f23be4beede710627d93be3338ea7bc8/attempt-e1896dbb11ad4f06b2b6a57756d596c3/song/export/stereo.prg",
+    "prgSha256": "ba7ca08ff9b02dbaf6b7c7c0a15393b8425ab6730a5cce5ec5142fe3303c8008",
+    "sidWizardVersion": "1.97",
+    "player": "Extra",
+    "driverType": 3,
+    "clock": "PAL",
+    "clockHz": 985248.6111111111,
+    "frameCycles": 19656,
+    "ticksPerSecond": 50.12457321485099,
+    "sidModel": "MOS8580",
+    "effectTimingPolicy": "target-vbi",
+    "effectUpdateRateHz": 50.12457321485099,
+    "envelopeTimingPolicy": "retain-sid-adsr-codes",
+    "frequencyTablePolicy": "unchanged-stock-pal",
+    "regionalDifferences": "Native row counts and instrument bytes are retained, with one play call per target VBI. Arrange beat-based scores for this clock before export. NTSC modulation and first-frame durations follow its faster VBI; unchanged ADSR codes follow its faster SID clock. Register-unit detune and modulation amplitudes are not rescaled.",
+    "sidCount": 2,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS8580"
+      },
+      {
+        "baseAddress": 54304,
+        "model": "MOS8580"
+      }
+    ],
+    "psidVersion": 3,
+    "frameSpeed": 1,
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4099,
+    "standaloneLoadAddress": 2049,
+    "standaloneStartAddress": 2061,
+    "standalonePlayerInitAddress": 4096,
+    "standalonePlayerPlayAddress": 4099,
+    "exportEndAddress": 13572,
+    "nativeSourceRetained": true,
+    "exportLosses": [
+      "Instrument names are omitted from playback payload by upstream SID-Maker; retained in SWM/SWI."
+    ],
+    "nativeRoutineCycles": {
+      "setEXEdetails": 122220,
+      "preparetunedata": 785395,
+      "SID23set:CalcSID2addID": 49,
+      "setplayer": 6396,
+      "SetSIDply": 133,
+      "SetSIDt": 1388,
+      "dispMod": 337,
+      "setsaveparam": 175
+    },
+    "build": {
+      "sidWizardVersion": "1.97",
+      "sidWizardArchiveUrl": "https://csdb.dk/getinternalfile.php/281063/SID-Wizard-1.97-sources-examples.tar.gz",
+      "sidWizardArchiveSha256": "aeb265f4a778b2acb5aad13e8e98af882888292f749f29f4d18cbf49850e57bc",
+      "assemblerVersion": "64tass 1.60.3243",
+      "assemblerArchiveUrl": "https://downloads.sourceforge.net/project/tass64/source/64tass-1.60.3243-src.zip",
+      "assemblerArchiveSha256": "9d83be3d23a2c55e085b7c7a7856c2f96080447ea120a6a8c21a217ed76427f0",
+      "exporterSha256": "5a8dd460d4b3ce9c0c79ea91e22d2ea435bd5095d93e161b3cf3659688bac39e",
+      "labelsSha256": "fccf21dc8a2ed26ce4b438be5661770213a6283e15b182309ea4c2a2695002c8",
+      "sidCount": 2,
+      "sourceModified": false
+    },
+    "standaloneAddressSelector": {
+      "entryAddress": 2855,
+      "returnAddress": 3024,
+      "baseAddress": 54304,
+      "method": "At selector entry, VICE monitor sets PC to the existing RTS; native address application continues."
+    }
+  },
+  "audio": {
+    "path": "build/sample-bach-toccata-stereo/cache/stereo/4323339ae2730f174fce829174636e34f23be4beede710627d93be3338ea7bc8/attempt-e1896dbb11ad4f06b2b6a57756d596c3/song/stereo.wav",
+    "sha256": "51796c32439bf93c20d0aa85fcb91e76cdf3e4150bcbe4beb6370ce9953a835c",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 3886221,
+    "durationSeconds": 88.12292517006803,
+    "peak": 9296,
+    "peakDbfs": -10.943076398269248,
+    "clippedSamples": 0,
+    "rms": 2626.6339417294594,
+    "acRms": 2625.249628002328,
+    "acRmsDbfs": -21.92558658694937,
+    "perChannel": [
+      {
+        "dc": -89.98269475668008,
+        "rms": 2996.6077201892563,
+        "acRms": 2995.256406944517
+      },
+      {
+        "dc": 80.27218498381848,
+        "rms": 2195.1660299377404,
+        "acRms": 2193.6978541518756
+      }
+    ]
+  },
+  "outputMatrix": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "gain": 1,
+  "tail": {
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 22050,
+    "durationSeconds": 0.5,
+    "peak": 157,
+    "peakDbfs": -46.391005651009685,
+    "clippedSamples": 0,
+    "rms": 157.0,
+    "acRms": 0.0,
+    "acRmsDbfs": null,
+    "perChannel": [
+      {
+        "dc": -157.0,
+        "rms": 157.0,
+        "acRms": 0.0
+      },
+      {
+        "dc": -157.0,
+        "rms": 157.0,
+        "acRms": 0.0
+      }
+    ]
+  },
+  "foldDown": {
+    "path": "build/sample-bach-toccata-stereo/cache/stereo/4323339ae2730f174fce829174636e34f23be4beede710627d93be3338ea7bc8/attempt-e1896dbb11ad4f06b2b6a57756d596c3/song/fold-down.wav",
+    "sha256": "e493770d23af787361ba020601bbae762e311d4a8beaba110d0d00f3eeda2f4f",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 3886221,
+    "durationSeconds": 88.12292517006803,
+    "peak": 9290,
+    "peakDbfs": -10.948684419321523,
+    "clippedSamples": 0,
+    "rms": 2274.3698580178407,
+    "acRms": 2274.364563892588,
+    "acRmsDbfs": -23.171797096410167,
+    "perChannel": [
+      {
+        "dc": -4.9072976035073665,
+        "rms": 2274.3698580178407,
+        "acRms": 2274.364563892588
+      }
+    ]
+  }
+}

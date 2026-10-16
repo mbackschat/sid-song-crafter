@@ -1,0 +1,483 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "sample": "rambo-stereo",
+  "variant": "main",
+  "rights": {
+    "tier": "distributable music",
+    "license": "GPL-3.0",
+    "basis": "Martin Galway loader-specific upstream grant; see README.md and LICENSE",
+    "originalManifest": "manifest.json"
+  },
+  "artifacts": {
+    "main-sid": {
+      "path": "samples/rambo-stereo/rambo-stereo-main.sid",
+      "bytes": 17937,
+      "sha256": "0998646302f2f89090976b0d2cfee6b141885f378c10242c3a009ce5741d3727"
+    },
+    "main-wav": {
+      "path": "samples/rambo-stereo/rambo-stereo-main.wav",
+      "bytes": 34108544,
+      "sha256": "496aee23cca4b8aaaac9cf0f92ec333ac8509f5dd97469accbfd707feda46950"
+    }
+  },
+  "audio": {
+    "format": "PCM16",
+    "channels": 2,
+    "sampleRate": 44100,
+    "frames": 8527125,
+    "durationSeconds": 193.35884353741497,
+    "gain": 1,
+    "postprocessing": "none; rendered directly from the accompanying SID"
+  },
+  "recipe": {
+    "path": "samples/rambo-stereo/main.recipe.json",
+    "bytes": 5685,
+    "sha256": "de96f82745b40277cb0e10ac9c9ffdf3bad2b09485d2c4bfc43698ba0bc5c152"
+  },
+  "verification": {
+    "path": "samples/rambo-stereo/main-verification.json",
+    "bytes": 7867,
+    "sha256": "b7cfd323864b4d4f72a404f329d0c16dd4978e784e3e359240e5401de15405be"
+  },
+  "vice": {
+    "entry-vice": {
+      "path": "samples/rambo-stereo/entry-vice-verification.json",
+      "bytes": 3928,
+      "sha256": "66a28718c70266f84cf52b4eafb96fd3de1ce3d926db3e4331b7b092f3c457d7"
+    },
+    "ending-vice": {
+      "path": "samples/rambo-stereo/ending-vice-verification.json",
+      "bytes": 3343,
+      "sha256": "4949f3f8de1d90b4d71d31f3dc24ad3366d3ebb9e0bf243c3d83a810fd088f8a"
+    }
+  },
+  "stages": [
+    {
+      "id": "prepare",
+      "key": "a9d6f9273e4b651688e4a22783c174cf5c3c6f496467eab7c010ddfb1edd05d7",
+      "command": [
+        "{python}",
+        "scripts/studies/rambo/prepare-centered-native.py",
+        "songs/studies/rambo-centered-native/arrangement.json",
+        "--output",
+        "{out}/scores"
+      ],
+      "inputs": [
+        {
+          "path": "songs/rambo-loader.json",
+          "type": "file",
+          "sha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b"
+        },
+        {
+          "path": "songs/studies/rambo-centered-native/arrangement.json",
+          "type": "file",
+          "sha256": "5226fead55bb675bf7083c7697939b156238ed3c353df755977ef4cc81d8ba2a"
+        },
+        {
+          "path": "songs/studies/rambo-chord-expansion/arrangement.json",
+          "type": "file",
+          "sha256": "42bdea267f34ca2ed6a551380d400e6e8a2f46c63ff90f2c93ba2f206fde8edf"
+        },
+        {
+          "path": "scripts/studies/rambo/prepare-centered-native.py",
+          "type": "file",
+          "sha256": "68edb8ee1cad57925407deb5e576979b99e9ecf646a5904c2daaf084f9a99b3d"
+        },
+        {
+          "path": "scripts/studies/rambo/prepare-ensemble.py",
+          "type": "file",
+          "sha256": "68c1b839f6419d0e30a190a53d270f2d5e1cb6ee9e2a655646a846833842ba76"
+        },
+        {
+          "path": "scripts/rambo_player.py",
+          "type": "file",
+          "sha256": "c65ab14faaa21781258b1604862c3f47647c958f1489150683b6c9d9c0d53961"
+        },
+        {
+          "path": "scripts/rambo_score.py",
+          "type": "file",
+          "sha256": "dcb443bd596ba3241642d2c49120174b75e1b17fcfb6e6013841265028f3ecbb"
+        },
+        {
+          "path": "scripts/rambo_programs.py",
+          "type": "file",
+          "sha256": "1545db906a34416b34eca426cb67f5783454c1f0427f4233f4da0a502c68b96c"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        }
+      ],
+      "executionSeconds": 9.355774709023535
+    },
+    {
+      "id": "entry",
+      "key": "b591efd721ffc7c9d3cc6edbb72bff4a2c3bb3ae88205ce11971088ccccb1029",
+      "command": [
+        "{python}",
+        "scripts/studies/rambo/prepare-main-entry.py",
+        "{stage:prepare}/scores/primary.json",
+        "{stage:prepare}/scores/secondary.json",
+        "--start-call",
+        "1586",
+        "--output",
+        "{out}/song"
+      ],
+      "inputs": [
+        {
+          "path": "scripts/studies/rambo/prepare-main-entry.py",
+          "type": "file",
+          "sha256": "1a1198e660afb0960ae2e0e41de003bd678fc2fc0bc9e93ab53f923a8456da26"
+        },
+        {
+          "path": "scripts/compose-rambo.py",
+          "type": "file",
+          "sha256": "97a97f182c48c472390dec8bf6a4cf095169b3c74c62f7be918f4ea8d29b1ac5"
+        },
+        {
+          "path": "scripts/compose-rambo-dual.py",
+          "type": "file",
+          "sha256": "9dc81a1b7d8a18378b6e1fc7dcb323fa7a286b3a992efd86a889efa31e134822"
+        },
+        {
+          "path": "scripts/rambo_player.py",
+          "type": "file",
+          "sha256": "c65ab14faaa21781258b1604862c3f47647c958f1489150683b6c9d9c0d53961"
+        },
+        {
+          "path": "scripts/rambo_score.py",
+          "type": "file",
+          "sha256": "dcb443bd596ba3241642d2c49120174b75e1b17fcfb6e6013841265028f3ecbb"
+        },
+        {
+          "path": "scripts/rambo_programs.py",
+          "type": "file",
+          "sha256": "1545db906a34416b34eca426cb67f5783454c1f0427f4233f4da0a502c68b96c"
+        },
+        {
+          "path": "scripts/sid_assembler.py",
+          "type": "file",
+          "sha256": "2a1fecc8cb350c9cfdef292677a0cc54bcf2c0c069009b1222782708d42c287e"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": "songs/players/rambo.asm",
+          "type": "file",
+          "sha256": "34f2964bbbea71172daa3156f44e77a1cbe79db1f6646b2e4042bfe74cd12b56"
+        },
+        {
+          "path": "songs/players/rambo-sound.asm",
+          "type": "file",
+          "sha256": "8b1cc3e7332eb1c392cc19bbba70bd0fb5c172502b9140aa014fbf0e76af24d2"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": "{stage:prepare}/scores/primary.json",
+          "type": "file",
+          "sha256": "3a59937b1e3c1c9b95872bc262330dfaa97649ef78f5a8ad3fa01cc47e3b809b"
+        },
+        {
+          "path": "{stage:prepare}/scores/secondary.json",
+          "type": "file",
+          "sha256": "967027cb95f7287c33f70f833bada141c63f8cbda2bd0378fb536add5358ab67"
+        }
+      ],
+      "executionSeconds": 50.467206666013226
+    },
+    {
+      "id": "render",
+      "key": "80964e07c024a456b39c30a4572c96a9f231e11bf186c3e1da3fb42475409a3b",
+      "command": [
+        ".local/bin/render-sid",
+        "{stage:entry}/song/main.sid",
+        "{out}/main.wav",
+        "193.3588328382994",
+        "--clock",
+        "pal",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        {
+          "path": ".local/bin/render-sid",
+          "type": "file",
+          "sha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46"
+        },
+        {
+          "path": "{stage:entry}/song/main.sid",
+          "type": "file",
+          "sha256": "0998646302f2f89090976b0d2cfee6b141885f378c10242c3a009ce5741d3727"
+        },
+        {
+          "path": "scripts/render-sid.cpp",
+          "type": "file",
+          "sha256": "c779f01c187cb913ce49f61d6a94fc1d0a3d0f3ae54214dc201a93df8cf3180f"
+        }
+      ],
+      "executionSeconds": 2.8561200408730656
+    },
+    {
+      "id": "audio",
+      "key": "3ab926ad72b0cbb61950ca0eb3a7d0f5d57dc8af95ad073d8cf677dd057416ea",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:render}/main.wav",
+        "{stage:render}/main.wav",
+        "--seconds",
+        "193.3588328382994",
+        "--channels",
+        "2",
+        "--tail-seconds",
+        "1",
+        "--max-tail-ac-rms",
+        "2",
+        "--output",
+        "{out}/audio.json"
+      ],
+      "inputs": [
+        {
+          "path": "scripts/check-listening.py",
+          "type": "file",
+          "sha256": "562acd7395111823046f96b17d2ee54839ae579f4e54ddf32f5526005c7cfa0a"
+        },
+        {
+          "path": "scripts/listening_checks.py",
+          "type": "file",
+          "sha256": "2d07bf6b4a95df5c114619ed9a57e6122f1ccc86f86e13025e6586f86dd0b243"
+        },
+        {
+          "path": "scripts/audio_comparison.py",
+          "type": "file",
+          "sha256": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+        },
+        {
+          "path": "{stage:render}/main.wav",
+          "type": "file",
+          "sha256": "496aee23cca4b8aaaac9cf0f92ec333ac8509f5dd97469accbfd707feda46950"
+        }
+      ],
+      "executionSeconds": 4.860946415923536
+    },
+    {
+      "id": "entry-vice",
+      "key": "b147ed8521b7bcee0c0acc6b37c1e77abc60bfd806642e045c60e992640d3b6d",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:entry}/song/main.sid",
+        "--oracle",
+        "{stage:entry}/song/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "3",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        {
+          "path": "{stage:entry}/song/main.sid",
+          "type": "file",
+          "sha256": "0998646302f2f89090976b0d2cfee6b141885f378c10242c3a009ce5741d3727"
+        },
+        {
+          "path": "{stage:entry}/song/writes.json",
+          "type": "file",
+          "sha256": "bad7905de372ea4d965d9bc3b94072623d65ebb2a6f6c7e7aa4d36b8f43b1cc3"
+        },
+        {
+          "path": "scripts/trace-sid-vice.py",
+          "type": "file",
+          "sha256": "1df0cdee65ad8d0d0258e9920d57682b1940311c98e532472b8e0cb621b89e8d"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/build/src/x64sc",
+          "type": "file",
+          "sha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/source/data",
+          "type": "directory",
+          "sha256": "87a5a8ee759d6b69dbafb8873137a8001e01855e385280864ec5cc64f4547d11"
+        },
+        {
+          "path": "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+          "type": "file",
+          "sha256": "0c6d618e75fea85cc3d631e164a71766fba9341d19ce1f723300c52e63037c51"
+        }
+      ],
+      "executionSeconds": 0.8402401248458773
+    },
+    {
+      "id": "ending-vice",
+      "key": "b5f1ee09b953b4d30bfa9697d2a024bb3497a3c0135d60949298963318baf15d",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:entry}/song/main.sid",
+        "--oracle",
+        "{stage:entry}/song/writes.json",
+        "--first-call",
+        "9210",
+        "--last-call",
+        "9413",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        {
+          "path": "{stage:entry}/song/main.sid",
+          "type": "file",
+          "sha256": "0998646302f2f89090976b0d2cfee6b141885f378c10242c3a009ce5741d3727"
+        },
+        {
+          "path": "{stage:entry}/song/writes.json",
+          "type": "file",
+          "sha256": "bad7905de372ea4d965d9bc3b94072623d65ebb2a6f6c7e7aa4d36b8f43b1cc3"
+        },
+        {
+          "path": "scripts/trace-sid-vice.py",
+          "type": "file",
+          "sha256": "1df0cdee65ad8d0d0258e9920d57682b1940311c98e532472b8e0cb621b89e8d"
+        },
+        {
+          "path": "scripts/psid_audit.py",
+          "type": "file",
+          "sha256": "d22798ff3b7ecd8348c3cb96677670289531227dc0ee69e2d9f87b0700596dc0"
+        },
+        {
+          "path": "scripts/psid_profile.py",
+          "type": "file",
+          "sha256": "7b269b2b919767c15d6c3882e5ac3706ae39c0bc998137c4f57d0afef944c107"
+        },
+        {
+          "path": "scripts/sid_audit_host.py",
+          "type": "file",
+          "sha256": "ea1949d711126b5150225f0d68a3462dbbfe9fffe094e448f9b758889808b0ed"
+        },
+        {
+          "path": "scripts/sid_clock.py",
+          "type": "file",
+          "sha256": "ba4e30e6cceb07f1794ebec39b42100d0030204caee6847c527c3d8989188f48"
+        },
+        {
+          "path": "scripts/verify_player.py",
+          "type": "file",
+          "sha256": "c69317c5d781c175ef0cef39a6e2713187b17e1de5b3f144ad69d49e6a271aab"
+        },
+        {
+          "path": ".tools/test-deps/py65",
+          "type": "directory",
+          "sha256": "74383837cd6ca080de0e22163b36d23012c2e214ae1d6d3655745917d8f48067"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/build/src/x64sc",
+          "type": "file",
+          "sha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285"
+        },
+        {
+          "path": ".tools/vice-headless-3.9/source/data",
+          "type": "directory",
+          "sha256": "87a5a8ee759d6b69dbafb8873137a8001e01855e385280864ec5cc64f4547d11"
+        },
+        {
+          "path": "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+          "type": "file",
+          "sha256": "0c6d618e75fea85cc3d631e164a71766fba9341d19ce1f723300c52e63037c51"
+        }
+      ],
+      "executionSeconds": 17.126760374987498
+    }
+  ],
+  "listeningStatus": "Original arrangement verdict retained; new cold-start entry not separately listening-reviewed",
+  "reproduction": {
+    "command": [
+      "python3",
+      "scripts/listening-package.py",
+      "samples/rambo-stereo/main.recipe.json",
+      "--output",
+      "build/sample-rambo-stereo-main"
+    ],
+    "exactAudio": "Requires the pinned renderer/library build; source and output fingerprints are recorded."
+  },
+  "sourceStartCall": 1586,
+  "sourceStartSeconds": 31.641167161700587,
+  "preservedCompleteFiles": [
+    {
+      "path": "samples/rambo-stereo/rambo-stereo.sid",
+      "bytes": 17683,
+      "sha256": "33dfda271536ea1c97de204bc415a8ff619f5c326a536ec0be4f9dc3a0f1c889"
+    },
+    {
+      "path": "samples/rambo-stereo/rambo-stereo.wav",
+      "bytes": 39690044,
+      "sha256": "c72cfab792214947717e02f3ef3b931af27af6fcd9dfa789a5189d196fd80e6c"
+    }
+  ]
+}

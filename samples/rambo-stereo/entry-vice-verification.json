@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "clock": "pal",
+  "evidenceLevel": "Executed 6510 program in headless VICE",
+  "sourceSha256": "0998646302f2f89090976b0d2cfee6b141885f378c10242c3a009ce5741d3727",
+  "oracleSha256": "bad7905de372ea4d965d9bc3b94072623d65ebb2a6f6c7e7aa4d36b8f43b1cc3",
+  "harnessSha256": "f6f8f5de0117158083b4e344a6b4aa144a7ef9250015a3e9109524957b9adb0d",
+  "viceSha256": "29b23137c08194c53a81789d618c75fa0c0bda5cf8331c75b501b0f1d3e77285",
+  "profile": {
+    "loadAddress": 1024,
+    "endAddress": 18837,
+    "initAddress": 18583,
+    "playAddress": 1031,
+    "sidModel": "MOS6581",
+    "sidBases": [
+      54272,
+      54304
+    ]
+  },
+  "harnessLabels": {
+    "init_return": 49205,
+    "wait": 49205,
+    "call": 49212,
+    "play_return": 49215,
+    "check_count": 49223,
+    "leave": 49237,
+    "done": 49247
+  },
+  "verification": {
+    "matchedWrites": 60,
+    "playCalls": 4,
+    "firstCall": 0,
+    "lastCall": 3,
+    "frameCycles": 19656,
+    "maximumCadenceError": 5,
+    "cadenceTolerance": 9
+  },
+  "writers": {
+    "122e": {
+      "instruction": "STA $D400,Y",
+      "opcodeHex": "9900d4",
+      "addresses": [
+        "d402",
+        "d403",
+        "d404",
+        "d405",
+        "d406",
+        "d409",
+        "d40a",
+        "d40b",
+        "d40c",
+        "d40d",
+        "d410",
+        "d411",
+        "d412",
+        "d413",
+        "d414"
+      ],
+      "writes": 15
+    },
+    "123b": {
+      "instruction": "STA $D400,Y",
+      "opcodeHex": "9900d4",
+      "addresses": [
+        "d402",
+        "d403",
+        "d404",
+        "d405",
+        "d406",
+        "d409",
+        "d40a",
+        "d40b",
+        "d40c",
+        "d40d",
+        "d410",
+        "d411",
+        "d412",
+        "d413",
+        "d414"
+      ],
+      "writes": 15
+    },
+    "1268": {
+      "instruction": "STA $D400,Y",
+      "opcodeHex": "9900d4",
+      "addresses": [
+        "d400",
+        "d407",
+        "d40e"
+      ],
+      "writes": 3
+    },
+    "126d": {
+      "instruction": "STA $D401,Y",
+      "opcodeHex": "9901d4",
+      "addresses": [
+        "d401",
+        "d408",
+        "d40f"
+      ],
+      "writes": 3
+    },
+    "1486": {
+      "instruction": "STA $D402,Y",
+      "opcodeHex": "9902d4",
+      "addresses": [
+        "d402"
+      ],
+      "writes": 3
+    },
+    "148f": {
+      "instruction": "STA $D403,Y",
+      "opcodeHex": "9903d4",
+      "addresses": [
+        "d403"
+      ],
+      "writes": 3
+    },
+    "2b2e": {
+      "instruction": "STA $D420,Y",
+      "opcodeHex": "9920d4",
+      "addresses": [
+        "d422",
+        "d423",
+        "d424",
+        "d425",
+        "d426"
+      ],
+      "writes": 5
+    },
+    "2b3b": {
+      "instruction": "STA $D420,Y",
+      "opcodeHex": "9920d4",
+      "addresses": [
+        "d422",
+        "d423",
+        "d424",
+        "d425",
+        "d426"
+      ],
+      "writes": 5
+    },
+    "2b68": {
+      "instruction": "STA $D420,Y",
+      "opcodeHex": "9920d4",
+      "addresses": [
+        "d420"
+      ],
+      "writes": 1
+    },
+    "2b6d": {
+      "instruction": "STA $D421,Y",
+      "opcodeHex": "9921d4",
+      "addresses": [
+        "d421"
+      ],
+      "writes": 1
+    },
+    "2d86": {
+      "instruction": "STA $D422,Y",
+      "opcodeHex": "9922d4",
+      "addresses": [
+        "d422"
+      ],
+      "writes": 3
+    },
+    "2d8f": {
+      "instruction": "STA $D423,Y",
+      "opcodeHex": "9923d4",
+      "addresses": [
+        "d423"
+      ],
+      "writes": 3
+    }
+  },
+  "limitations": "A controlled RAM harness calls the supplied init/play once per PAL frame with IRQs, sprites and display DMA disabled. This is not the original player boot environment. Tracepoint stopwatch/raster values describe monitor checkpoints, not exact SID bus-write cycles. Store values are decoded from unchanged store-source CPU registers and checked against an independent ordered-write oracle. No audio or listening verdict follows from this trace."
+}

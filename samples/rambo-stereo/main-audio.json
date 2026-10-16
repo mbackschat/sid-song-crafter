@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "check": "audio",
+  "passed": true,
+  "requestedSeconds": 193.3588328382994,
+  "expectedFrames": 8527125,
+  "expectedSampleRate": 44100,
+  "expectedChannels": 2,
+  "durationRule": "round(seconds * sampleRate) sample frames",
+  "inputs": [
+    {
+      "label": "reference",
+      "path": "build/sample-rambo-stereo-main/cache/render/80964e07c024a456b39c30a4572c96a9f231e11bf186c3e1da3fb42475409a3b/attempt-75e86896147049cea3a77f06e270ccdd/main.wav",
+      "sha256": "496aee23cca4b8aaaac9cf0f92ec333ac8509f5dd97469accbfd707feda46950",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 8527125,
+      "durationSeconds": 193.35884353741497,
+      "peak": 12715,
+      "peakDbfs": -8.222671408959805,
+      "clippedSamples": 0,
+      "rms": 3262.3332134778125,
+      "acRms": 3259.8432208974527,
+      "acRmsDbfs": -20.0450644275068,
+      "perChannel": [
+        {
+          "dc": 144.57156157556034,
+          "rms": 3737.1591440585853,
+          "acRms": 3734.361730149384
+        },
+        {
+          "dc": 107.60764583608191,
+          "rms": 2705.4163308999673,
+          "acRms": 2703.2754425063417
+        }
+      ]
+    },
+    {
+      "label": "candidate",
+      "path": "build/sample-rambo-stereo-main/cache/render/80964e07c024a456b39c30a4572c96a9f231e11bf186c3e1da3fb42475409a3b/attempt-75e86896147049cea3a77f06e270ccdd/main.wav",
+      "sha256": "496aee23cca4b8aaaac9cf0f92ec333ac8509f5dd97469accbfd707feda46950",
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 2,
+      "frames": 8527125,
+      "durationSeconds": 193.35884353741497,
+      "peak": 12715,
+      "peakDbfs": -8.222671408959805,
+      "clippedSamples": 0,
+      "rms": 3262.3332134778125,
+      "acRms": 3259.8432208974527,
+      "acRmsDbfs": -20.0450644275068,
+      "perChannel": [
+        {
+          "dc": 144.57156157556034,
+          "rms": 3737.1591440585853,
+          "acRms": 3734.361730149384
+        },
+        {
+          "dc": 107.60764583608191,
+          "rms": 2705.4163308999673,
+          "acRms": 2703.2754425063417
+        }
+      ]
+    }
+  ],
+  "claims": {
+    "pcmIdentity": false,
+    "perceptualAgreement": false
+  },
+  "ending": {
+    "target": "both",
+    "requestedSeconds": 1.0,
+    "frames": 44100,
+    "maximumChannelAcRms": 2.0,
+    "measurements": [
+      {
+        "label": "reference",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 44100,
+        "durationSeconds": 1.0,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          },
+          {
+            "dc": 157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ]
+      },
+      {
+        "label": "candidate",
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 2,
+        "frames": 44100,
+        "durationSeconds": 1.0,
+        "peak": 157,
+        "peakDbfs": -46.391005651009685,
+        "clippedSamples": 0,
+        "rms": 157.0,
+        "acRms": 0.0,
+        "acRmsDbfs": null,
+        "perChannel": [
+          {
+            "dc": 157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          },
+          {
+            "dc": 157.0,
+            "rms": 157.0,
+            "acRms": 0.0
+          }
+        ]
+      }
+    ],
+    "scope": "Final PCM window only; DC reported separately. A settled tail does not establish a musically complete ending."
+  }
+}
