@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "prepare",
+      "command": [
+        "{python}",
+        "scripts/studies/axel-f/prepare-ending.py",
+        "prepare",
+        "build/axel-f-full-selected/run.json",
+        "songs/axel-f/ending.json",
+        "--output",
+        "{out}/trial"
+      ],
+      "inputs": [
+        "scripts/studies/axel-f/prepare-ending.py",
+        "scripts/audio_comparison.py",
+        "songs/axel-f/ending.json",
+        "build/axel-f-full-selected"
+      ],
+      "outputs": [
+        "trial/candidate.json",
+        "trial/candidate-score.json",
+        "trial/previous/native.json",
+        "trial/previous/score.json",
+        "trial/previous/retention.json",
+        "trial/previous/song/native-song.wav",
+        "trial/previous/song/native-song.frames.json",
+        "trial/previous/song/native-song.writes.json",
+        "trial/previous/song/conversion.json",
+        "trial/previous/song/verification.json",
+        "trial/previous/song/export/candidate.sid",
+        "trial/previous/song/native-song.wav.registers.tsv",
+        "trial/control.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "candidate",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:prepare}/trial/candidate.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-start",
+        "164",
+        "--excerpt-seconds",
+        "12"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:prepare}/trial/candidate.json",
+        "{stage:prepare}/trial/candidate-score.json",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/candidate.sid",
+        "song/export/candidate.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/candidate.swm",
+        "song/native-song.excerpt.wav",
+        "song/native-song.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 360,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "control",
+      "command": [
+        "{python}",
+        "scripts/native-song.py",
+        "build",
+        "{stage:prepare}/trial/control.json",
+        "--output",
+        "{out}/song",
+        "--excerpt-start",
+        "164",
+        "--excerpt-seconds",
+        "12"
+      ],
+      "inputs": [
+        "scripts/native-song.py",
+        "scripts/arrange-sidwizard.py",
+        "scripts/generate-native-instruments.py",
+        "scripts/export-sidwizard.py",
+        "scripts/audio_comparison.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/sid-wizard-exporter/build.json",
+        ".tools/sid-wizard-exporter/exporter.prg",
+        ".tools/sid-wizard-exporter/exporter.labels",
+        ".local/bin/render-sid",
+        "scripts/sid_clock.py",
+        "{stage:prepare}/trial/control.json",
+        "{stage:prepare}/trial/candidate-score.json",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "song/native-song.wav",
+        "song/verification.json",
+        "song/conversion.json",
+        "song/export.json",
+        "song/export/control.sid",
+        "song/export/control.prg",
+        "song/native-song.writes.json",
+        "song/native-song.frames.json",
+        "song/native-song.schedule.json",
+        "song/native-song.render.json",
+        "song/native-song.audit.json",
+        "song/native-song.native-events.json",
+        "song/conversion/control.swm",
+        "song/native-song.excerpt.wav",
+        "song/native-song.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 360,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "vice",
+      "command": [
+        "{python}",
+        "scripts/verify-native-vice.py",
+        "{stage:candidate}/song/export/candidate.prg",
+        "{stage:candidate}/song/native-song.writes.json",
+        "--export-report",
+        "{stage:candidate}/song/export.json",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--calls",
+        "1",
+        "3",
+        "8782",
+        "8783",
+        "8788",
+        "8800",
+        "8853",
+        "8890",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:candidate}/song/export/candidate.prg",
+        "{stage:candidate}/song/native-song.writes.json",
+        "{stage:candidate}/song/export.json",
+        "scripts/verify-native-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/verification.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "verify",
+      "command": [
+        "{python}",
+        "scripts/studies/axel-f/prepare-ending.py",
+        "verify",
+        "{stage:prepare}/trial/previous/song",
+        "songs/axel-f/ending.json",
+        "--candidate",
+        "{stage:candidate}/song",
+        "--output",
+        "{out}/verification.json",
+        "--control",
+        "{stage:control}/song"
+      ],
+      "inputs": [
+        "scripts/studies/axel-f/prepare-ending.py",
+        "scripts/audio_comparison.py",
+        "songs/axel-f/ending.json",
+        "{stage:prepare}/trial/previous/song",
+        "{stage:candidate}/song",
+        "{stage:control}/song"
+      ],
+      "outputs": [
+        "verification.json"
+      ],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "ending",
+      "command": [
+        "{python}",
+        "-c",
+        "import sys,wave;from pathlib import Path\nsys.path.insert(0,'scripts')\nfrom audio_comparison import prepare_sequence_comparison\nout=Path(sys.argv[3]);paths=[]\nfor name,source in zip(('previous','candidate'),sys.argv[1:3]):\n    p=out/(name+'.wav');paths.append(p)\n    with wave.open(source,'rb') as w:\n        params=w.getparams();w.setpos(round(164*w.getframerate()));data=w.readframes(w.getnframes()-w.tell())\n    with wave.open(str(p),'wb') as w:w.setparams(params);w.writeframes(data)\nprepare_sequence_comparison(*paths,out/'ending',gap_seconds=.5)\n",
+        "{stage:prepare}/trial/previous/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav",
+        "{out}"
+      ],
+      "inputs": [
+        "scripts/audio_comparison.py",
+        "{stage:prepare}/trial/previous/song/native-song.wav",
+        "{stage:candidate}/song/native-song.wav"
+      ],
+      "outputs": [
+        "previous.wav",
+        "candidate.wav",
+        "ending.ab.wav",
+        "ending.comparison.json"
+      ],
+      "timeoutSeconds": 30
+    }
+  ],
+  "deliverables": {
+    "previous": "{stage:prepare}/trial/previous/song/native-song.wav",
+    "candidate": "{stage:candidate}/song/native-song.wav",
+    "ending": "{stage:ending}/ending.ab.wav",
+    "verification": "{stage:verify}/verification.json",
+    "candidate-sid": "{stage:candidate}/song/export/candidate.sid",
+    "candidate-prg": "{stage:candidate}/song/export/candidate.prg"
+  }
+}

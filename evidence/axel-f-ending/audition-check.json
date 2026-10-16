@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "exactFullFileEndingWindows": true,
+  "startSeconds": 164,
+  "commonGain": 1,
+  "gapSeconds": 0.5,
+  "durationSeconds": 29.77485260770975,
+  "terminalTransient": [
+    {
+      "name": "previous",
+      "stopSeconds": 178.61498713663642,
+      "stopWindow": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 19845,
+        "durationSeconds": 0.45,
+        "peak": 9294,
+        "peakDbfs": -10.944945336337366,
+        "clippedSamples": 0,
+        "rms": 1512.2068877648244,
+        "acRms": 1465.9023119045166,
+        "acRmsDbfs": -26.986898103657037,
+        "perChannel": [
+          {
+            "dc": -371.3490047871,
+            "rms": 1512.2068877648244,
+            "acRms": 1465.9023119045166
+          }
+        ]
+      }
+    },
+    {
+      "name": "candidate",
+      "stopSeconds": 176.61995768129592,
+      "stopWindow": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 19845,
+        "durationSeconds": 0.45,
+        "peak": 9294,
+        "peakDbfs": -10.944945336337366,
+        "clippedSamples": 0,
+        "rms": 1512.2068877648244,
+        "acRms": 1465.4482179191139,
+        "acRmsDbfs": -26.989589156967746,
+        "perChannel": [
+          {
+            "dc": -373.13696145124715,
+            "rms": 1512.2068877648244,
+            "acRms": 1465.4482179191139
+          }
+        ]
+      }
+    }
+  ],
+  "limitation": "A brief transient occurs at the existing master-volume clear in both versions after the musical release has settled. No causal renderer intervention has been performed; it is retained and disclosed, not attributed to the bass release or removed by WAV processing."
+}

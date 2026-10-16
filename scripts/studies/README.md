@@ -65,3 +65,4 @@ Run commands from the repository root using these paths, for example `python3 sc
 - [Axel F timbre comparison](axel-f/prepare-timbre.py) isolates chip response from native lead/drum envelopes while holding the preferred rhythm and score fixed; [scoped verdicts and reproduction](../../songs/axel-f/arrangement-review.md#lead-snap-and-drum-impact-chip-response-and-envelope-contour).
 
 - [Axel F selected full arrangement](axel-f/prepare-full-selected.py) extends the reviewed lead and varied percussion with protected tonal roles and explicit release reserves; [scope and reproduction](../../songs/axel-f/arrangement-review.md#selected-lead-and-varied-rhythm-across-the-full-form).
+- [Axel F ending-only correction](axel-f/prepare-ending.py) preserves the accepted form and isolates the final bass release with a matched compiled control; [scope and listening](../../songs/axel-f/arrangement-review.md#shorter-final-release-after-full-performance-acceptance).

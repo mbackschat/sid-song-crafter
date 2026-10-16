@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-16",
-  "status": "complete-performance-and-ending-review-pending",
+  "status": "complete-performance-accepted-ending-revision-requested",
   "target": "PAL MOS8580 single SID",
   "selectedShortPassage": "songs/axel-f/snare-balance-review.json",
   "tonalNotes": 1025,
@@ -61,7 +61,18 @@
       }
     ]
   },
-  "scope": "Complete existing tonal form with the selected main lead and varied rhythm in vacant harmony blocks; original MIDI percussion-only ending remains omitted. One scheduled kick has a pinned almost-silent diagnostic window. Human complete-performance and ending acceptance remain open.",
-  "modelAssistance": "No call: Qwen failed the preceding silence control; the human full-performance and ending verdicts are the next decision evidence.",
-  "sourceReference": "build/axel-f-master-palette-matched-listening/huelsbeck-lead-and-beat-9.5-20s.wav"
+  "scope": "Complete existing tonal form with the selected main lead and varied rhythm in vacant harmony blocks; original MIDI percussion-only ending remains omitted. One scheduled kick has a pinned almost-silent diagnostic window. The human accepts the complete performance; the listener finds the fade excessive, especially at the very end, in both submitted versions.",
+  "modelAssistance": "No call after full-performance acceptance or the ending reservation: human preference settles the scope, and the prior Qwen silence failure still excludes its descriptions. Reassess after the ending-only audition.",
+  "sourceReference": "build/axel-f-master-palette-matched-listening/huelsbeck-lead-and-beat-9.5-20s.wav",
+  "listeningVerdicts": {
+    "completePerformance": {
+      "verbatim": "Yes, the full rendition works",
+      "scope": "Accepts the submitted complete PAL MOS8580 mono performance in response to the full-form question, including the earlier held-support/high-lead context. The subsequent ending reservation remains separate from full-performance acceptance."
+    },
+    "ending": {
+      "status": "revision-requested",
+      "verbatim": "I think the fade is bit too much, also in the former full song. Esp at very end",
+      "scope": "Both versions linger too much at the ending; preserve the accepted performance and test an ending-only correction."
+    }
+  }
 }

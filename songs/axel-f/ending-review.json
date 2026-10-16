@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "status": "ending-only-audition-pending",
+  "fullPerformance": "Accepted in full-selected-review.json; exact accepted WAV retained unchanged.",
+  "request": "I think the fade is bit too much, also in the former full song. Esp at very end",
+  "hypothesis": "The final bass release and terminal waiting contribute to the excessive ending fade. This is an attribution hypothesis until listening feedback.",
+  "change": "Final bass note only: ADSR 0999 to 0997; tailTicks 125 to 25. Preserve all 1296 tonal/percussion attacks, gate timings and lead programs.",
+  "verification": {
+    "schemaVersion": 1,
+    "preservedNotes": 1296,
+    "registerBoundary": {
+      "firstChangedTick": 8782,
+      "lastChangedTick": 8852,
+      "registerOffset": 20
+    },
+    "finalBassGateOffSeconds": 175.32318853532456,
+    "releaseWindows": [
+      {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 22050,
+        "durationSeconds": 0.5,
+        "peak": 1052,
+        "peakDbfs": -29.86868390283995,
+        "clippedSamples": 0,
+        "rms": 392.34724716541166,
+        "acRms": 359.487881637314,
+        "acRmsDbfs": -39.1953136018539,
+        "perChannel": [
+          {
+            "dc": 157.17768707482992,
+            "rms": 392.34724716541166,
+            "acRms": 359.487881637314
+          }
+        ]
+      },
+      {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 22050,
+        "durationSeconds": 0.5,
+        "peak": 345,
+        "peakDbfs": -39.552616797728874,
+        "clippedSamples": 0,
+        "rms": 164.20732111690398,
+        "acRms": 41.670372151483534,
+        "acRmsDbfs": -57.91245111739989,
+        "perChannel": [
+          {
+            "dc": 158.8320634920635,
+            "rms": 164.20732111690398,
+            "acRms": 41.670372151483534
+          }
+        ]
+      }
+    ],
+    "preStopRelease": {
+      "format": "PCM16",
+      "sampleRate": 44100,
+      "channels": 1,
+      "frames": 17640,
+      "durationSeconds": 0.4,
+      "peak": 157,
+      "peakDbfs": -46.391005651009685,
+      "clippedSamples": 0,
+      "rms": 157.0,
+      "acRms": 0.0,
+      "acRmsDbfs": null,
+      "perChannel": [
+        {
+          "dc": 157.0,
+          "rms": 157.0,
+          "acRms": 0.0
+        }
+      ]
+    },
+    "matchedControlPrefixPcmIdentical": true,
+    "prefixSeconds": 175.20349206349206,
+    "oldDuration": 179.6349433106576,
+    "newDuration": 177.63990929705216,
+    "scope": "Final bass release and terminal wait only; ending preference remains for human listening."
+  },
+  "publication": {
+    "schemaVersion": 1,
+    "run": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-ending/run.json",
+      "sha256": "6feb67839a01d10203098b210ebd647d5b65f57d0399304cf6615e75ebc89ba4",
+      "bytes": 49130
+    },
+    "selection": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/axel-f-ending.audition.json",
+      "sha256": "c944ccd269183091c24535f5f47303286cb67a5e841fcacefaefaa43ab116599",
+      "bytes": 156
+    },
+    "files": [
+      {
+        "label": "previous",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-ending/cache/prepare/1f5af696aeceb1f94c4be87f6bde2bc47ded3fc08bcdc2d531bfc4144bf3c82b/attempt-c62875e8bcf6405380b1100bdbb85f23/trial/previous/song/native-song.wav",
+        "filename": "accepted-performance-original-ending.wav",
+        "sha256": "422607be667d8cb1b6578b4ac42c0bb945be347ec9cfafdac96e853a48f6acaf",
+        "bytes": 15843846,
+        "stageId": "prepare"
+      },
+      {
+        "label": "candidate",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-ending/cache/candidate/942258877af0198a2d123d5e5144899a12296b6744c074238a703a0ae922f177/attempt-69087722e73d4e6ca4fdeecb0c1cc976/song/native-song.wav",
+        "filename": "axel-f-shorter-ending.wav",
+        "sha256": "0b4586432a2521c7eda0c8960044b366911ccb9cab9eb0e2f4c5ad882607e056",
+        "bytes": 15667884,
+        "stageId": "candidate"
+      },
+      {
+        "label": "ending",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-ending/cache/ending/3365269710b747b31bb36f5d5e720f35563eebec4d87d41b1bf071a755e8a6c1/attempt-1a5f206e5ebd44c5957ca746d7084990/ending.ab.wav",
+        "filename": "original-then-shorter-ending.ab.wav",
+        "sha256": "e36020bed2fe2aa8aa9f628ea25479304a5e0dc4c7c4729e3d98e63852e998e8",
+        "bytes": 2626186,
+        "stageId": "ending"
+      }
+    ]
+  },
+  "terminalTransient": "Both old and revised versions retain a brief transient at the existing global volume clear after the envelopes settle. Stop-window peak is 9294 PCM16 in both; cause not isolated by intervention. Disclosed in the listening question.",
+  "modelAssistance": "No call after the ending reservation or revision: the prior Qwen silence failure excludes its descriptions, and only the human can accept the ending. Next checkpoint is the ending verdict and case closure."
+}
