@@ -13,6 +13,7 @@ The user's requirements, rephrased without changing their scope:
 - Write our own application, presentation, interactions and analysis features. Use an existing library for SID playback/emulation rather than implementing a SID player ourselves.
 - Offer sample selection, playback, song descriptions and analysis from existing project research. Include instrument information, standard voice mute/unmute, spectrum visualization, a playhead, level meters and useful additional ways to see what is happening.
 - Treat Safari on iOS and macOS as a hard requirement. Supporting only recent Safari versions is acceptable. A recording fallback does not satisfy the live SID requirement on these platforms.
+- Prioritize the desktop experience. Mobile Safari should work, but initially avoid substantial iPhone-specific design, optimization or testing effort; support does not require an equally polished mobile workbench.
 - Make instruments and arrangements central. Fill the gap between a regular SID player and an analyser that helps explain masters' songs; suggest useful views and interactions beyond the requested controls.
 - Include useful seeking that preserves running state.
 - Support optional analysis packages for studied songs, but make most features useful without one.
@@ -74,7 +75,7 @@ Rambo                  [Play] [Restart] [Loop A–B]  0:42 / 3:45
 
 Labels, time and section names above are illustrative. Actual duration, variants and verified form come from the selected file/package; do not assign the complete Rambo duration to its separately exported main-music version.
 
-On iPhone, retain transport and selection, then show one detail panel at a time. Timeline selection, zoom and loop boundaries must work by touch; essential information must not depend on hover. Use the same musical concepts on both layouts rather than reducing mobile to playback only.
+Use a basic responsive layout on smaller screens, retaining usable file/sample selection, transport and access to inspection panels. Essential controls must work by touch and not depend on hover. Stacking or collapsing the existing desktop panels is sufficient initially; a dedicated iPhone layout, custom gesture system and equivalent mobile workflow polish are outside the initial scope. Rationale: mobile compatibility is required, while design and development effort should concentrate on desktop exploration.
 
 ### Main interactions
 
@@ -177,9 +178,9 @@ Rationale: the accepted WAV remains a useful reference and fallback, while engin
 
 ## Safari and hosting requirements
 
-Safari on iOS and macOS is mandatory. Recommendation: target the current and previous major Safari releases, with exact versions recorded when implementation begins. Rationale: the user accepts recent Safari, allowing a bounded compatibility contract without treating iPhone support as incidental.
+Safari on iOS and macOS is mandatory, with desktop as the primary design and validation target. Recommendation: initially target current stable Safari on each platform, with exact versions recorded when implementation begins; broader version coverage can follow if needed. Rationale: the user accepts recent Safari and explicitly wants limited iPhone-specific effort.
 
-Recent Safari supports the needed [AnalyserNode](https://github.com/mdn/browser-compat-data/blob/main/api/AnalyserNode.json) and [AudioWorklet](https://github.com/mdn/browser-compat-data/blob/main/api/AudioWorklet.json) APIs. That establishes API availability, not the performance or reliability of the assembled app. Real Mac and iPhone checks must cover live mono/stereo, seek/loop behavior, mute dependencies, concurrent visualization, user-initiated audio start and recovery after interruptions. Background/locked-screen playback is not yet a promised capability; foreground recovery must be reliable.
+Recent Safari supports the needed [AnalyserNode](https://github.com/mdn/browser-compat-data/blob/main/api/AnalyserNode.json) and [AudioWorklet](https://github.com/mdn/browser-compat-data/blob/main/api/AudioWorklet.json) APIs. That establishes API availability, not the performance or reliability of the assembled app. Validate the full exploration workflow on Mac Safari. Use a bounded smoke check on a recent iPhone for local file opening, live mono/stereo playback, basic seek/mute controls, visible analysis and recovery after an interruption. Fix blocking compatibility defects, but defer a broad iPhone/device matrix, mobile performance tuning beyond usable operation and bespoke interaction polish. Background/locked-screen playback is not yet a promised capability.
 
 [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) supports a static application with browser-side playback and local file access. Select a browser execution approach compatible with the hosting environment; do not assume particular response headers or shared-memory facilities are available. No framework, language, bundler, UI toolkit, plotting library, worker arrangement or server architecture is selected here.
 
@@ -211,7 +212,7 @@ No further user clarification is required to retain this proposal. These decisio
 | Decision | Current recommendation and rationale | Evidence needed |
 | --- | --- | --- |
 | Playback library | Evaluate libsidplayfp-wasm first for its API and connection to existing rendering. | Our files on real Safari; exact chip routing; mute semantics; seek state; licensing fit. |
-| Safari version floor | Current and previous major releases, explicitly pinned at implementation time. | Device/browser matrix and measured behavior. |
+| Safari version floor | Current stable Safari on macOS and iOS initially; keep mobile effort bounded and extend coverage only when needed. | Full desktop validation and a recent-iPhone compatibility smoke check, with exact versions recorded. |
 | Supported file profiles | Require mono and two-SID; declare other profiles individually. | Engine handling of PSID/RSID, ROM requirements, timing, digi and three-SID cases. |
 | Sound-pattern discovery | Optional provisional grouping, with editable labels. | Useful results on unfamiliar material without false claims of recovered instruments. |
 | Deeper inspection | Prefer exposed live state plus matching retained execution evidence. | Available event resolution, buffering alignment and missing binding capabilities. |
