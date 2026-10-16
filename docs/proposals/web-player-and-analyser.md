@@ -20,6 +20,8 @@ The user's requirements, rephrased without changing their scope:
 - Include useful seeking that preserves running state.
 - Support optional analysis packages for studied songs, but make most features useful without one.
 - Provide a file-opening/upload control so visitors can at least play their own mono and stereo SID files.
+- Use a C64-inspired visual character, taking inspiration from Chip Player JS's retro presentation, while retaining modern mouse, touch and keyboard interaction. Styling must not reduce readability or usability.
+- Consider the user's existing [Williams Sound Explorer](https://github.com/mbackschat/williams-sound-explorer) as a related project and source of reusable analysis interactions; this does not select its stack or expand this proposal into a sound editor.
 - Preserve findings, alternatives and recommendations with their rationale in this proposal. Leave technology-stack discussion open.
 
 ## Scope and priorities
@@ -44,7 +46,7 @@ This matrix applies to live playback and the associated controls and inspection 
 
 ### Recommended initial boundary
 
-Include the catalog, local file opening, live mono/two-SID playback, voice mute/solo, state-preserving seeking, loops, playhead, output meters, spectrum, voice activity timeline and selected-sound inspector. Include instrument cards and named arrangement sections where annotations exist, while keeping raw inspection available without them.
+Include the catalog, local file opening, live mono/two-SID playback, voice mute/solo, state-preserving seeking, contextual phrase loops, playhead, output meters, spectrum, retained voice activity and selected-sound inspection. The linked-selection, chip-ownership and explanation interactions below are part of this initial boundary. Include instrument cards and named arrangement sections where annotations exist, while keeping raw inspection available without them.
 
 Rationale: the first useful version must already explain sound and arrangement. Deferring every analyser feature would produce an ordinary player and postpone the project's defining purpose.
 
@@ -58,7 +60,7 @@ An original SID emulator, automatic recovery of every instrument/score, automati
 
 ## Application sketch
 
-On desktop, use a persistent transport, a sample/file area, a central timeline and an inspector for the selected passage, voice or instrument. The following is a conceptual layout, not a framework or visual-style decision:
+On desktop, use a persistent transport, a sample/file area, a central timeline and an inspector for the selected passage, voice or instrument. The following is a conceptual layout; visual direction is specified separately below and no framework is selected:
 
 ```text
 SID Song Crafter                            [Open SID…]
@@ -72,13 +74,16 @@ Rambo                  [Play] [Restart] [Loop A–B]  0:42 / 3:45
                        Intro | Main theme | … | Ending
 
                        Arrangement / voice timeline
-                       Lead       ━━━━━━━  ━━━━━━━━━━━━━━━
-                       Bass          ━━━━━━━━━━  ━━━━━━━━━
-                       Support          ━━━━━━━━  ━━━━━━━━
+                       [Follow playback] [Return to playing]
+                       Chip A: V1 / V2 / V3   [Mute] [Solo]
+                       Chip B: V1 / V2 / V3   [Restore full mix]
+                       Role labels and occurrences where known
+                       Shared filters · Coupling · A/B → L/R
 
-                       Selected sound / phrase
+                       Selected sound / phrase  [Hear with context]
                        Instrument · Pitch · Pulse · Gate
                        Waveform changes · Filter · Dependencies
+                       [Occurrences] [Recipe] [Evidence]
 
                        Output: [L meter] [R meter] [Spectrum]
                        “Listen here…” · Sources · Downloads
@@ -88,6 +93,12 @@ Labels, time and section names above are illustrative. Actual duration, variants
 
 Use a basic responsive layout on smaller screens, retaining usable file/sample selection, transport and access to inspection panels. Essential controls must work by touch and not depend on hover. Stacking or collapsing the existing desktop panels is sufficient initially; a dedicated iPhone layout, custom gesture system and equivalent mobile workflow polish are outside the initial scope. Rationale: mobile compatibility is required, while design and development effort should concentrate on desktop exploration.
 
+### Visual direction
+
+Use a restrained C64-inspired presentation: a blue/violet foundation, crisp panel borders and selective pixel or monospace accents in headings and transport. Chip Player JS's retro player/visualizer is a reference for character, not an exact template; the user's settings screenshot labels its theme “MS-DOS.” Keep consistent chip/voice colours across timeline, controls and inspector, with text labels and selection outlines so colour is never the only identifier.
+
+Modern usability takes priority: scalable, readable prose and measurements; clear selected/disabled/focus states; adequate contrast and control targets; ordinary mouse selection, keyboard navigation and touch controls. Do not impose a 40-column layout, all-uppercase text or tiny bitmap body type. CRT distortion, flicker and scanlines are not part of the initial design. Detailed plots may use a quieter background than the surrounding panels so the retro palette does not obscure data. This direction does not require a theme system, change the desktop priority or decide the application base.
+
 ### Main interactions
 
 | Visitor action | Application response |
@@ -95,14 +106,20 @@ Use a basic responsive layout on smaller screens, retaining usable file/sample s
 | Select a project sample | Show its available variants, configuration, description and listening scope; make playback immediately accessible. |
 | Choose mono or stereo | Load the corresponding export with its own identity and timeline. Do not imply every variant differs only in panning or can switch seamlessly. |
 | Open a local SID | Read it locally, expose header metadata and subtunes, and offer playback and generic inspection immediately. Missing annotations do not block it. |
-| Select a voice or sound occurrence | Highlight it on the timeline and show its parameter trajectories, instrument identity if known, and applicable mute/solo controls. |
-| Select a phrase | Offer playback with context, a repeatable loop and inspection of its pitch, articulation and sound behavior. |
+| Select a voice or sound occurrence | Retain the selection across aligned parameter views while playback can continue. Show verified instrument identity and recipe links when available; otherwise show observed behavior without inventing an instrument name. |
+| Select a phrase | Recall its A–B boundaries, hear visible lead-in/tail context and retain the span while switching between full mix and a mute/solo intervention. |
 | Select an instrument card | Highlight its known occurrences and musical roles; jump to an example and open its recipe or owning study. |
-| Select a guided listening marker | Seek to the passage, show a short explanation and link the supporting evidence. |
+| Select a guided listening marker | Hear the passage and reveal one audible decision, its selected event/voice and supporting evidence; offer a return to full context. |
 | Compare two passages | Inspect differences in instrument selection, register, articulation and accompaniment; preserve their separate timing and context. |
 | Change mute/model/clock settings | Update live sound and measurements together; indicate when authored analysis no longer matches the reference configuration. |
 
 Recommended file control: **Open SID…**, with desktop drag-and-drop and the iOS file picker. Although requested as an upload button, the proposed behavior is local file loading: no file leaves the device. Rationale: server storage is unnecessary for playback and would expand scope. Reload/session persistence is not yet specified.
+
+### Selection and retained history
+
+Maintain one selected time span across the voice timeline, pitch/frequency, gate, waveform, pulse/filter trajectories and available write records. The heard playhead and inspection cursor are separate: selecting an earlier event or disabling **Follow playback** stops the view from following without pausing the music or seeking it. **Return to playing position** restores following. Explicit playback/seek actions move the heard position.
+
+Retain timestamped observations within a bounded history, show the available interval, and identify missing or dropped records. Keep the selected span inspectable while it is held, including its observation coverage; do not silently replace it as live history advances. Retention capacity and observation cadence remain engine-dependent and must be visible rather than implying unlimited or cycle-complete recording. Unknown future regions require emulation before inspection. This makes a fleeting attack useful evidence without requiring an analysis package.
 
 ## Views that explain the music
 
@@ -110,14 +127,18 @@ Recommended file control: **Open SID…**, with desktop drag-and-drop and the iO
 | --- | --- | --- |
 | Arrangement timeline | Voice activity, entrances, gaps and register changes for any supported file; named roles and sections when available. Select and loop a span. | Shows density, contrast, recurring material and allocation of musical space. |
 | Instrument palette | Verified programs and characteristic behavior when annotated; provisional recurring sound patterns when discovery is available. Select occurrences. | Connects sound identity to its use throughout an arrangement. |
-| Sound microscope | Selected event's frequency/pitch, waveform controls, pulse-width motion, gate/retrigger events and filter settings over time. | Explains attack, body, movement, release and the next onset. |
-| Voice allocation | Three or six physical voice lanes with time-dependent role labels where known. | Exposes voice borrowing, alternating bass/percussion and interrupted support. |
+| Sound microscope | Aligned histories for the selected event's frequency/pitch, waveform controls, pulse-width motion, gate/retrigger events and filter settings; deeper available writes. | Explains attack, body, movement, release and the next onset. |
+| Voice allocation | Three stable voice lanes within each chip, explicit mute/solo and restore-full-mix controls, with time-dependent role labels where known. | Exposes voice borrowing, alternating bass/percussion and interrupted support. |
 | Dependency map | Ring/sync relationships, shared filter routing and chip-output placement. | Explains why sounds cannot always be isolated or moved independently. |
 | Phrase comparison | Two selected passages, with available note/program evidence and sound trajectories. | Distinguishes patch changes from changes in register, phrasing and context. |
 | Audio monitor | Waveform scope, spectrum, optional spectrogram, L/R peak and RMS meters in dBFS and clipping indication. | Shows transients, brightness, balance and silence without claiming instrument identification. |
-| Guided listening | Brief passage-specific observations linked to the owning study and its evidence scope. | Makes accumulated research usable while the relevant music is heard. |
+| Guided listening | One audible decision per passage card: hear → select → observe → return to context, with the owning study and evidence scope one step away. | Makes accumulated research usable while the relevant music is heard. |
 
 The preferred exploration sequence is: **hear a phrase → select it → inspect the sound and allocation → compare another occurrence → read the explanation or reusable recipe**.
+
+Structure explanation cards as **what to hear → what to watch → why it happens → evidence/recipe**, borrowing from Williams Sound Explorer. When a matching package contains source/program attribution, the selected event can reveal that reference directly. Keep observed timing distinct from proven cause: a register change near a spectral feature is not sufficient evidence of its mechanism. Missing source attribution leaves generic inspection intact.
+
+Choose visualization by available evidence. Audio spectrum works without recovered note data; SID frequency trajectories are derived observations, and a score-like piano roll needs appropriately labelled note evidence. A keyboard-labelled spectrum locates frequency bands rather than identifying played notes. Keep the main view focused, with exact writes and detailed configuration revealed through selection rather than displaying every panel at once.
 
 For example, the [Hülsbeck study](../../songs/axel-f/huelsbeck-study.md#targeted-role-study-lead-support-and-the-apparent-switch) records a perceived change near one minute while the executed lead program remains the same. Shorter articulation, higher register and surrounding development change the result. A useful UI highlights those changes and shows that short notes restart before the pulse trajectory develops fully. This is a bounded finding about that source passage, not a composer-wide rule or permission to publish its audio.
 
@@ -163,9 +184,9 @@ Programmed ADSR settings are not measured envelope amplitude, GATE clear is not 
 
 ## Comparable tools and the case for adaptation
 
-**Recommendation: evaluate adaptation first, concentrating new work on linked musical explanation.** Existing applications already cover much of the requested player, scope, spectrum and mute baseline. Those features do not distinguish this proposal. Its strongest contribution to this project would connect retained observations to verified programs, their occurrences and roles, dependency-aware two-chip allocation, provenance and editable reuse examples. This is a useful gap in the reviewed workflows, not a claim of worldwide uniqueness. The following comparison used primary documentation and source on 2026-10-16; no hands-on usability, implementation-effort or Safari results were measured.
+**Recommendation: evaluate adaptation first, concentrating new work on linked musical explanation.** Existing applications already cover much of the requested player, scope, spectrum and mute baseline. Those features do not distinguish this proposal. Its strongest contribution to this project would connect retained observations to verified programs, their occurrences and roles, dependency-aware two-chip allocation, provenance and editable reuse examples. This is a useful gap in the reviewed workflows, not a claim of worldwide uniqueness. The [overall research record](../research/tools/web-music-explorers.md) preserves detailed findings, sources, alternatives and limitations. The following comparison used primary documentation and source on 2026-10-16, supplemented by the user's Chip Player JS screenshots; no hands-on usability, implementation-effort or Safari results were measured.
 
-### What the seven references contribute
+### What the references contribute
 
 | Tool | Established features | Adaptation and limits for this proposal |
 | --- | --- | --- |
@@ -176,18 +197,23 @@ Programmed ADSR settings are not measured envelope amplitude, GATE clear is not 
 | Sonic Visualiser | Time-aligned panes/layers share navigation; overview movement can leave playback unchanged. Selected spans can loop and be recalled through labelled boundaries. [Reference manual](https://www.sonicvisualiser.org/doc/reference/5.2.1/en/), [selection tutorial](https://www.sonicvisualiser.org/doc/tutorial/en/selections-inspection.html). | Borrow linked time selection, explicit follow modes and repeatable passage study. Independent SID-state restoration and a bounded live trace history are our additional requirements; neither follows from a desktop audio-analysis selection. |
 | Chip Player JS | Browser transport, local files, subtunes, grouped voice controls and spectral displays already meet ordinary player needs. [Pinned application](https://github.com/mmontag/chip-player-js/blob/e90f505ccea598fb91cf08b02c4dbb41f0785632/src/components/App.js), [voice controls](https://github.com/mmontag/chip-player-js/blob/e90f505ccea598fb91cf08b02c4dbb41f0785632/src/components/PlayerParams.js). | Strongest reviewed app-base candidate. Its scrolling spectrogram is visual history; its [piano/chord analysis](https://github.com/mmontag/chip-player-js/blob/e90f505ccea598fb91cf08b02c4dbb41f0785632/src/components/Visualizer.js) is MIDI-only, not SID note extraction. Timestamped, selectable SID history and our evidence layer remain additions. |
 | Ableton Learning Synths | “Matching envelopes” pairs familiar instruments with synth examples and one audible parameter lesson, including a case where decay has no effect at full sustain. [Lesson](https://learningsynths.ableton.com/envelopes/matching-envelopes). | Use focused listening cards: hear a passage, select a voice, observe one behavior, return to context. This is an explanatory pattern, not SID evidence or a reason to add a complete synthesis course/editor. |
+| Williams Sound Explorer | The user's related project connects sound/state/code, captured history, routine views and explanation cards. [Project](https://github.com/mbackschat/williams-sound-explorer), [detailed review](../research/tools/web-music-explorers.md#williams-sound-explorer-the-closest-project-specific-precedent). | Closest conceptual reference and first source for reusable analysis interactions. Its captured-DAC scrubber does not establish live SID state restoration; source links depend on known mappings. Reuse selected components/patterns, without importing the 6802 engine, full designer or assuming Safari support. |
 
-### Five interactions worth prioritizing
+### Refinements adopted into this proposal
 
-These are ranked design recommendations synthesized from the references, rather than features verified in one existing product:
+The most valuable research lessons are now part of the initial design, rather than additional optional panels. They are our synthesis, not features verified together in one existing product:
 
-1. **Select a heard event and retain it.** Link the same time range across pitch, gate, waveform, pulse/filter behavior and available writes. Let inspection stop following while audio continues; show retention bounds and “Return to playing position.” This turns a fleeting animation into inspectable evidence.
-2. **Move between occurrence and program.** Selecting a known instrument highlights its occurrences and opens its owning recipe; selecting an unknown event opens observations without inventing an instrument identity. This connects reusable knowledge to the arrangement while preserving usefulness for local files.
-3. **Study a phrase without losing its context.** Recall A–B spans, hear lead-in/tail context and retain boundaries while comparing full mix and a listening intervention. Emulator-state and mute semantics still follow the contracts below; a loop button alone does not settle them.
-4. **Expose chip ownership beside listening controls.** Group three stable voice lanes under each chip, with shared filter, ring/sync relationships and output routing visible. Explicit touch-accessible solo and restore-full-mix controls help listeners test attribution without implying independent stems or per-voice pan.
-5. **Explain one audible decision at a time.** Passage cards connect an entrance, register change or interrupted support to the corresponding observation and scoped evidence. Avoid overwhelming the first view with every meter or tracker control; preserve deeper inspection behind the selection.
+| Selected refinement | Rationale and owning contract |
+| --- | --- |
+| Retained, linked event selection | Makes fleeting behavior inspectable: [selection and retained history](#selection-and-retained-history). |
+| Occurrence ↔ program navigation | Connects the arrangement to reusable knowledge while preserving unknowns: [main interactions](#main-interactions). |
+| Recallable phrases with context | Makes full-mix/intervention listening comparable: [seeking and loops](#seeking-and-loops). |
+| Chip ownership beside controls | Makes shared resources and stereo allocation intelligible: [voice controls and stereo](#voice-controls-and-stereo). |
+| Focused explanation cards | Makes research approachable through an audible example: [music views](#views-that-explain-the-music). |
 
 ### Choose reuse by the remaining gaps
+
+**First analysis reference: our Williams Sound Explorer.** Review its linked inspection, bounded history, explanation cards and local-file experience before designing equivalents anew. Its MIT application offers concrete component candidates, though extraction effort and SID portability are unmeasured. It already demonstrates the general explanatory concept; the value here is specialization for musical instruments, whole-song arrangement, verified study material and two-chip dependencies. Preserve actual song timing rather than adopting its optional gap-compacted sound-effect timeline. This complements the player-shell choices below and does not imply merging two applications. [Retained findings and limits](../research/tools/web-music-explorers.md#williams-sound-explorer-the-closest-project-specific-precedent).
 
 **First candidate: a pruned Chip Player JS adaptation.** Its own `src/` code has MIT terms, while upstream describes the combined application as generally GPLv3; these are different reuse boundaries, not a blanket MIT application. It documents GitHub Pages deployment but also uses separate catalog/account services. Reusing integrated transport, local-file and visualization UI is credible; savings have not been measured. [Pinned README and license explanation](https://github.com/mmontag/chip-player-js/blob/e90f505ccea598fb91cf08b02c4dbb41f0785632/README.md).
 
@@ -203,6 +229,8 @@ Its [SID wrapper](https://github.com/mmontag/chip-player-js/blob/e90f505ccea598f
 
 Standard voice mute/solo is required. Musical “mute lead” controls are optional and need verified time-dependent role mappings: a lead can occupy voices on both chips, and a voice can change roles. Muting must preserve oscillator execution and required dependencies where the engine permits; verify semantics before describing it as harmless isolation. Retain the full mix as context.
 
+Keep three stable voice identities under each chip, with explicit mouse/touch-accessible solo and **Restore full mix** controls rather than modifier shortcuts alone. Show the chip's shared filter, ring/sync relationships and output routing beside the selected voice; richer dependency diagrams remain optional. Label any diagnostic audio tap point and listening intervention, without implying independent post-filter stems.
+
 Each chip has one mono output and a shared filter; there is no native per-voice pan register. Preserve the declared chip-to-output matrix. Our accepted Rambo stereo rendering deliberately uses separate chip buffers because the native library's default mixer crossfeeds them. Multi-SID playback alone therefore does not establish the correct image. See the [hardware/mixing contract](../research/sid/dual-sid.md#plan-the-sound-hardware-and-the-mix-together) and [renderer](../../scripts/render-sid.cpp).
 
 For unannotated files, identify the player-selected output routing as a playback setting, not recovered composer intent. Recommend a visible, deterministic chip-bus routing default; finalize its exact behavior with the engine's capabilities.
@@ -213,9 +241,11 @@ Seeking must reach the state that continuous playback from initialization would 
 
 Offer click/touch seeking, named section jumps when known, previous/next annotated phrase, and A/B loops. Recommend study loops that re-enter the same passage state each time, so repeated listening is comparable. Account for any audio-boundary discontinuity separately; restoring state does not promise a seamless loop splice.
 
+Recall selected A–B spans within the session, including their inspection view. **Hear with context** plays visible lead-in/tail extents around the selection without changing its boundaries; entering the audible lead-in still requires the correct prior emulator state. Keep boundaries and context fixed while switching between full mix and mute/solo for comparison, with the intervention labelled. Cross-session bookmark storage and automatic alignment of different performances are outside the initial contract.
+
 SID metadata generally lacks duration. Unknown-length playback should have elapsed time and a growing explored timeline, without invented completion percentages or endings. Reaching an unexplored destination can require additional emulation. Known project durations should come from the matching package rather than an unrelated database entry.
 
-The playhead and inspection cursor must track audio heard, including buffering, rather than the furthest point already emulated. Seeking, muting and configuration changes must not leave stale inspection data presented as current.
+The playhead and the inspection cursor while following must track audio heard, including buffering, rather than the furthest point already emulated. A held selection keeps its own timestamp and captured configuration. Seeking, muting and configuration changes must not leave historical or stale observations presented as current; label retained evidence and start a distinct observation interval where needed.
 
 ### Live SID and accepted recording
 
@@ -289,7 +319,7 @@ No further user clarification is required to retain this proposal. These decisio
 
 | Decision | Current recommendation and rationale | Evidence needed |
 | --- | --- | --- |
-| Application base | Evaluate adaptation first: Chip Player JS is the strongest reviewed candidate, with a small project layer over a suitable API as the alternative. Reuse ordinary player functionality and concentrate new work on linked musical explanation. | Compare inherited service/UI coupling and the routing, trace, seek, privacy and Safari gaps; no measured effort comparison or final selection exists. |
+| Application base | Inspect Williams Sound Explorer first for reusable analysis components; compare a Chip Player JS player-shell adaptation with a small project layer over a suitable API. Reuse ordinary functionality and concentrate new work on SID musical explanation. | Compare inherited service/UI coupling and the routing, trace, seek, privacy and Safari gaps; no measured extraction/effort comparison or final selection exists. |
 | Playback library | Prefer the libsidplayfp family if the raw-output and seek gaps can be resolved with a bounded binding/transport change. | The stereo adoption checks above; licensing fit. Do not adopt the current mixed-output wrapper as an exact-routing solution. |
 | Safari version floor | Current stable Safari on macOS and iOS initially; keep mobile effort bounded and extend coverage only when needed. | Full desktop validation and a recent-iPhone compatibility smoke check, with exact versions recorded. |
 | File compatibility beyond required hardware coverage | Both MOS6581 and MOS8580 in single-SID and dual-SID stereo are fixed requirements; declare additional format/profile support individually. | Engine handling of PSID/RSID, ROM requirements, timing, digi and three-SID cases. |
