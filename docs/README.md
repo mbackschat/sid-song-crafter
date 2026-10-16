@@ -35,7 +35,7 @@ Use the [project overview](../README.md) for SID Song Crafter's purpose and curr
 
 ## Review proposed work
 
-- [Web player and arrangement analyser](proposals/web-player-and-analyser.md): desktop-focused exploration with Safari/mobile compatibility, required MOS6581/MOS8580 single/dual-SID playback, optional analysis packages, comparable-tool interactions and an adopt-versus-build assessment; stereo-library limits are documented and technology stack remains open.
+- [SID Song Explorer proposal](proposals/web-player-and-analyser.md): proposed separate application repository for desktop-focused playback and arrangement analysis, with Safari/mobile support, MOS6581/MOS8580 single/dual-SID coverage and optional analysis packages. Records the Crafter/Explorer ownership boundary, reuse assessment and stereo-library limits; technology stack remains open.
 
 ## Read the song studies
 

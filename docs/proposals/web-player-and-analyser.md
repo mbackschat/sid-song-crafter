@@ -24,6 +24,26 @@ The user's requirements, rephrased without changing their scope:
 - Consider the user's existing [Williams Sound Explorer](https://github.com/mbackschat/williams-sound-explorer) as a reference for individual sound/instrument inspection. It covers only part of this application's scope; whole-song and arrangement analysis remain central. This does not select its stack or expand this proposal into a sound editor.
 - Preserve findings, alternatives and recommendations with their rationale in this proposal. Leave technology-stack discussion open.
 
+## Project identity and repository boundary
+
+Record the separate-repository direction discussed and accepted for this proposal on 2026-10-16. Recommended working name: **SID Song Explorer**, with `sid-song-explorer` as the corresponding repository name. It conveys the whole-song scope, accommodates playback and deeper analysis, and pairs with SID Song Crafter and Williams Sound Explorer. Name availability has not been checked; no repository has been created or material moved by this proposal.
+
+The browser application warrants its own repository because playback integration, Safari compatibility, visualization, interaction design and deployment form a substantial product with its own dependencies and release cycle. It should also serve visitors exploring arbitrary local SID files independently of the composing workflow. SID Song Crafter remains focused on composition and the musical knowledge that supports it.
+
+| SID Song Crafter owns | SID Song Explorer owns |
+| --- | --- |
+| Composition and export tools. | Browser playback and engine integration. |
+| Editable instrument programs and arrangements. | Interactive instrument and arrangement inspection. |
+| Master studies, source evidence and scoped listening verdicts. | Presentation of matching evidence alongside playback. |
+| Sample generation, attribution and publication decisions. | Sample browsing, local SID opening and application deployment. |
+| Production of optional analysis packages. | Consumption of those packages, with useful generic inspection when absent. |
+
+Keep one authoritative copy of musical knowledge. Explorer should consume published sample metadata and analysis packages and link back to owning studies and recipes; it should not maintain a second copy of the research. Preserve exact asset identity and publication scope across the boundary. Static files and explicit data contracts are sufficient for the initial integration; separating repositories does not require a backend service, published packages or a framework decision.
+
+Recommendation for later pickup: establish the application repository when starting the bounded feasibility prototype, carrying over this proposal and application-specific research with provenance and leaving navigation links here. Composition studies and source evidence remain in Crafter. Define only the sample/analysis exchange needed by the first complete example. Keep browser-engine adaptations with Explorer initially; extract a shared library only when demonstrated reuse warrants it. This is a recommended handoff boundary, not authorization to create the repository or begin implementation now.
+
+Explorer can subsequently become the browser-facing composition workbench while Crafter supplies composition/export capabilities. The repository separation permits that relationship without requiring synchronized releases; editing, build services and export integration remain outside this proposal's initial scope.
+
 ## Scope and priorities
 
 ### Required product capabilities
