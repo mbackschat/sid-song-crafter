@@ -56,7 +56,18 @@ def _json_file(path):
         return json.load(source)
 
 
-def _entry(item, root):
+def _build_target(value, root, allow_leaf_link=False):
+    path = root / value
+    build = root / 'build'
+    if path == build or not path.is_relative_to(build):
+        raise ValueError(f'Choose a path below build/: {value}')
+    _no_symlinks(path.parent)
+    if not allow_leaf_link and path.is_symlink():
+        raise ValueError(f'Symlink paths are not allowed: {path}')
+    return path
+
+
+def _entry(item, root, allow_leaf_links=False):
     if not isinstance(item, dict):
         raise ValueError('Each selection entry must be an object')
     value = item.get('path')
@@ -65,7 +76,7 @@ def _entry(item, root):
     path = PurePosixPath(value)
     if path.is_absolute() or '..' in path.parts or path.as_posix() != value:
         raise ValueError(f'Choose a canonical relative build path without traversal: {value}')
-    cleanup._build_path(value, root)
+    _build_target(value, root, allow_leaf_links)
     if type(item.get('bytes')) is not int or item['bytes'] < 0:
         raise ValueError(f'Invalid byte count: {value}')
     if not isinstance(item.get('sha256'), str) or not re.fullmatch('[0-9a-f]{64}', item['sha256']):
@@ -75,7 +86,7 @@ def _entry(item, root):
     return {key: item[key] for key in ('path', 'bytes', 'sha256', 'reason')}
 
 
-def _entries(value, root):
+def _entries(value, root, allow_leaf_links=False):
     if not isinstance(value, dict) or type(value.get('version')) is not int or value['version'] != 1:
         raise ValueError('Expected a version 1 selection or manifest')
     files = value.get('files')
@@ -83,7 +94,7 @@ def _entries(value, root):
         raise ValueError('files must be a nonempty list')
     result, seen, sizes = [], set(), {}
     for item in files:
-        entry = _entry(item, root)
+        entry = _entry(item, root, allow_leaf_links)
         if entry['path'] in seen:
             raise ValueError(f'Duplicate build path: {entry["path"]}')
         seen.add(entry['path'])
@@ -118,12 +129,23 @@ def _stream(source, target=None, limit=None):
     return digest.hexdigest(), size
 
 
-def _write_object(record, directory, root):
+def _object_name(digest, compression):
+    suffixes = {'gzip': '.gz', 'none': '.raw'}
+    if compression not in suffixes:
+        raise ValueError('Unsupported archive compression')
+    return 'objects/' + digest + suffixes[compression]
+
+
+def _write_object(record, directory, root, compression='gzip'):
     path = cleanup._build_path(record['path'], root)
-    target = directory / 'objects' / (record['sha256'] + '.gz')
+    target = directory / _object_name(record['sha256'], compression)
     with _regular_file(path) as source, target.open('xb') as output:
-        with gzip.GzipFile(filename='', fileobj=output, mode='wb', mtime=0) as compressed:
-            actual = _stream(source, compressed, record['bytes'])
+        if compression == 'none':
+            actual = _stream(source, output, record['bytes'])
+            os.fchmod(output.fileno(), 0o444)
+        else:
+            with gzip.GzipFile(filename='', fileobj=output, mode='wb', mtime=0) as compressed:
+                actual = _stream(source, compressed, record['bytes'])
         output.flush()
         os.fsync(output.fileno())
     if actual != (record['sha256'], record['bytes']):
@@ -132,10 +154,19 @@ def _write_object(record, directory, root):
 
 
 def _read_object(entry, directory, target=None):
+    compression = entry.get('compression', 'gzip')
+    if entry['object'] != _object_name(entry['sha256'], compression):
+        raise ValueError('Object path must match its content address and compression')
     path = directory / entry['object']
     try:
-        with _regular_file(path) as raw, gzip.GzipFile(fileobj=raw, mode='rb') as decoded:
-            actual = _stream(decoded, target, entry['bytes'])
+        with _regular_file(path) as raw:
+            if compression == 'none':
+                if stat.S_IMODE(os.fstat(raw.fileno()).st_mode) != 0o444:
+                    raise ValueError(f'Raw archive object must remain read-only (0444): {path}')
+                actual = _stream(raw, target, entry['bytes'])
+            else:
+                with gzip.GzipFile(fileobj=raw, mode='rb') as decoded:
+                    actual = _stream(decoded, target, entry['bytes'])
     except (OSError, EOFError, zlib.error) as error:
         raise ValueError(f'Cannot verify archive object {path}: {error}') from error
     if actual != (entry['sha256'], entry['bytes']):
@@ -150,13 +181,33 @@ def _remove_source(record, root):
     path.unlink()
 
 
-def archive(selection, destination, *, remove=False, root=ROOT):
+def _link_source(record, entry, directory, root):
+    target = cleanup._build_path(record['path'], root)
+    object_path = directory / entry['object']
+    temporary = target.with_name('.' + target.name + '.archive-link-' + uuid.uuid4().hex)
+    try:
+        temporary.symlink_to(object_path)
+        cleanup._recheck(record, root)
+        cleanup._build_path(record['path'], root)
+        if cleanup._identity(target.lstat()) != record['identity']:
+            raise ValueError(f'Source changed immediately before link replacement: {record["path"]}')
+        os.replace(temporary, target)
+        _fsync_directory(target.parent)
+    finally:
+        if temporary.is_symlink() and os.readlink(temporary) == str(object_path):
+            temporary.unlink()
+
+
+def archive(selection, destination, *, remove=False, link=False, root=ROOT):
     """Verify the entire selection, durably retain its objects/manifest, then optionally evict sources.
 
     Stop independent writers first. Identity and content checks detect changes;
-    they do not lock producers or provide atomic filesystem compare-and-unlink.
+    they do not lock producers or provide atomic filesystem compare-and-unlink
+    or compare-and-replace. Link mode retains raw 0444 objects for playback.
     """
     root = Path(root).resolve()
+    if remove and link:
+        raise ValueError('Link and remove modes are mutually exclusive')
     entries = _entries(selection, root)
     records = []
     for entry in entries:
@@ -170,11 +221,13 @@ def archive(selection, destination, *, remove=False, root=ROOT):
         raise ValueError('Choose a fresh archive directory outside the checkout')
     if not directory.parent.is_dir():
         raise ValueError('The external archive parent directory must already exist')
+    compression = 'none' if link else 'gzip'
     manifest = dict(version=1, createdAt=datetime.now(timezone.utc).isoformat(), sourceRoot=str(root),
-                    compression='gzip', files=[dict(entry, object='objects/' + entry['sha256'] + '.gz') for entry in entries])
+                    compression=compression, files=[dict(entry, object=_object_name(entry['sha256'], compression)) for entry in entries])
     report = dict(version=1, manifest=str(directory / 'manifest.json'), passed=False,
                   removeRequested=remove, selectedFiles=len(entries), selectedBytes=sum(entry['bytes'] for entry in entries),
-                  manifestReady=False, objectsVerified=False, removedPaths=[], removedSourceBytes=0)
+                  manifestReady=False, objectsVerified=False, removedPaths=[], removedSourceBytes=0,
+                  linkRequested=link, linkedPaths=[], linkedSourceBytes=0)
     directory.mkdir()
     failure = None
     try:
@@ -183,19 +236,24 @@ def archive(selection, destination, *, remove=False, root=ROOT):
         stored = set()
         for record in records:
             if record['sha256'] not in stored:
-                _write_object(record, directory, root)
+                _write_object(record, directory, root, compression)
                 stored.add(record['sha256'])
         _fsync_directory(directory / 'objects')
         _write_manifest(directory, manifest)
         report['manifestReady'] = True
         for entry in {entry['object']: entry for entry in manifest['files']}.values():
-            _read_object(entry, directory)
+            _read_object(dict(entry, compression=compression), directory)
         report['objectsVerified'] = True
         if remove:
             for record in records:
                 _remove_source(record, root)
                 report['removedPaths'].append(record['path'])
                 report['removedSourceBytes'] += record['bytes']
+        if link:
+            for record, entry in zip(records, manifest['files']):
+                _link_source(record, entry, directory, root)
+                report['linkedPaths'].append(record['path'])
+                report['linkedSourceBytes'] += record['bytes']
         report.update(passed=True, storedObjects=len(stored), storedBytes=sum(path.stat().st_size for path in (directory / 'objects').iterdir()))
     except (OSError, ValueError) as error:
         failure = error
@@ -206,7 +264,7 @@ def archive(selection, destination, *, remove=False, root=ROOT):
     except OSError as error:
         failure = failure or error
     if failure is not None:
-        raise ValueError(f'Build archive failed: {failure}. Retained {directory}; inspect manifest.json and operation.json before recovery. No completed deletions were rolled back.') from failure
+        raise ValueError(f'Build archive failed: {failure}. Retained {directory}; inspect manifest.json and operation.json before recovery. No completed source changes were rolled back.') from failure
     return report
 
 
@@ -216,19 +274,41 @@ def _manifest(path, root):
     if path.is_relative_to(root):
         raise ValueError('Restore from an archive outside the checkout')
     value = _json_file(path)
-    entries = _entries(value, root)
-    if value.get('compression') != 'gzip':
+    compression = value.get('compression')
+    if compression not in ('gzip', 'none'):
         raise ValueError('Unsupported archive compression')
+    entries = _entries(value, root, allow_leaf_links=compression == 'none')
     for original, entry in zip(value['files'], entries):
-        expected = 'objects/' + entry['sha256'] + '.gz'
+        expected = _object_name(entry['sha256'], compression)
         if original.get('object') != expected:
             raise ValueError('Object path must match its content address')
         entry['object'] = expected
+        entry['compression'] = compression
     return path.parent, entries
 
 
-def _existing(entry, root):
-    path = cleanup._build_path(entry['path'], root)
+def _owned_link(entry, directory, root):
+    path = _build_target(entry['path'], root, allow_leaf_link=entry.get('compression') == 'none')
+    if not path.is_symlink():
+        return None
+    identity = cleanup._identity(path.lstat())
+    expected = str(directory / entry['object'])
+    if entry.get('compression') != 'none' or os.readlink(path) != expected:
+        raise ValueError(f'Unrelated symlink is not an owned archive link: {path}')
+    _read_object(entry, directory)
+    _no_symlinks(path.parent)
+    if cleanup._identity(path.lstat()) != identity or os.readlink(path) != expected:
+        raise ValueError(f'Archive link changed while verifying: {path}')
+    return identity
+
+
+def _existing(entry, root, directory=None):
+    path = _build_target(entry['path'], root, allow_leaf_link=entry.get('compression') == 'none')
+    if path.is_symlink():
+        if directory is None:
+            raise ValueError(f'Symlink paths are not allowed: {path}')
+        _owned_link(entry, directory, root)
+        return False
     if not os.path.lexists(path):
         return False
     actual = cleanup._record(path, root)
@@ -238,21 +318,27 @@ def _existing(entry, root):
 
 
 def _restore_entry(entry, directory, root):
-    if _existing(entry, root):
+    if _existing(entry, root, directory):
         return False
-    target = cleanup._build_path(entry['path'], root)
+    target = _build_target(entry['path'], root, allow_leaf_link=entry.get('compression') == 'none')
+    link_identity = _owned_link(entry, directory, root)
     target.parent.mkdir(parents=True, exist_ok=True)
-    cleanup._build_path(entry['path'], root)
+    _build_target(entry['path'], root, allow_leaf_link=entry.get('compression') == 'none')
     temporary = target.with_name('.' + target.name + '.archive-restore-' + uuid.uuid4().hex)
     try:
         with temporary.open('xb') as output:
             _read_object(entry, directory, output)
             output.flush()
             os.fsync(output.fileno())
-        cleanup._build_path(entry['path'], root)
-        if _existing(entry, root):
+        _build_target(entry['path'], root, allow_leaf_link=entry.get('compression') == 'none')
+        if _existing(entry, root, directory):
             return False
-        os.link(temporary, target)
+        if link_identity is not None:
+            if _owned_link(entry, directory, root) != link_identity:
+                raise ValueError(f'Archive link changed before materialization: {target}')
+            os.replace(temporary, target)
+        else:
+            os.link(temporary, target)
         _fsync_directory(target.parent)
         return True
     finally:
@@ -270,7 +356,7 @@ def restore(manifest, paths=(), *, root=ROOT):
     selected = [entry for entry in entries if not requested or entry['path'] in requested]
     for entry in selected:
         _read_object(entry, directory)
-        _existing(entry, root)
+        _existing(entry, root, directory)
     result = dict(version=1, restoredPaths=[], unchangedPaths=[])
     try:
         for entry in selected:
@@ -287,13 +373,15 @@ def main(argv=None, *, root=ROOT):
     save = commands.add_parser('archive', help='Retain a reviewed selection outside the checkout')
     save.add_argument('selection', type=Path)
     save.add_argument('--archive', required=True, type=Path)
-    save.add_argument('--remove', action='store_true', help='Remove selected originals only after durable archive verification')
+    modes = save.add_mutually_exclusive_group()
+    modes.add_argument('--remove', action='store_true', help='Remove selected originals only after durable archive verification')
+    modes.add_argument('--link', action='store_true', help='Replace selected originals with playback links to read-only raw archive objects')
     recover = commands.add_parser('restore', help='Restore selected original build paths')
     recover.add_argument('manifest', type=Path)
     recover.add_argument('--path', action='append', default=[], help='Restore one exact indexed build path; repeatable; omitted restores all')
     args = parser.parse_args(argv)
     try:
-        report = archive(_json_file(args.selection), args.archive, remove=args.remove, root=root) if args.command == 'archive' else restore(args.manifest, paths=args.path, root=root)
+        report = archive(_json_file(args.selection), args.archive, remove=args.remove, link=args.link, root=root) if args.command == 'archive' else restore(args.manifest, paths=args.path, root=root)
     except (OSError, ValueError) as error:
         print(str(error), file=sys.stderr)
         return 1

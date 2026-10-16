@@ -17,7 +17,7 @@ Choose tools by their supported contract. A song or composer name does not itsel
 - [Setup](../docs/setup/local-setup.md): pinned assets, workflow-scoped readiness and the optional portable bridge launcher.
 - [Evidence/cache management](../docs/workflows/build-cache.md): explicit public archive promotion and verified restoration by path or group.
 - [Automated build cleanup](cleanup-build.py): preview or apply verified cache-audio deduplication and lossless text compression.
-- [External local archives](archive-build.py): retain an explicit hash-pinned build selection outside the checkout, optionally evict it after verification, and restore exact bytes without overwriting different content.
+- [External local archives](archive-build.py): retain an explicit hash-pinned build selection outside the checkout, optionally evict it or retain read-only WAV playback links after verification, and restore exact bytes without overwriting different content.
 
 - [Sample library](../samples/README.md): [sample_exports.py](sample_exports.py) creates the fixed, note-preserving native stereo presentation, verifies mapped registers/active filters for the complete duration, and renders stereo/fold-down previews. Per-sample recipes retain VICE and source/tool fingerprints.
 
