@@ -33,11 +33,32 @@ The trials exposed three repairable setup problems: `uv` could select a differen
 | Retain and evict intermediate cache audio | 229 paths / 826.2 MB retained as 181 distinct gzip objects / 248.6 MB outside the checkout. [Archive receipt](../../evidence/workbench-assessment/cache-audio-archive.json) |
 | Verify preservation | 1,864 protected/listening contents verified, following eight explicit cleanup recovery routes. Exact mono and stereo restoration passed; an affected sample recipe regenerated its stereo export and VICE proof. [Retention check](../../evidence/workbench-assessment/retained-file-verification.json), [round trip](../../evidence/workbench-assessment/archive-roundtrip.json), [regeneration](../../evidence/workbench-assessment/affected-regeneration.json) |
 
-The three operations reclaim about **3.74 GB of logical content after allowing for archived gzip objects**, before small manifests, restored test files and new verification outputs. Relocation alone is not reclamation or backup. Actual volume free space can differ because of filesystem allocation, snapshots and other activity.
+The first pass above reclaimed about 3.74 GB of logical content after its gzip archive. The subsequent complete migration retains all 13,541 then-current build files through three disjoint routes:
 
-The private archive is at `~/Archives/sid-song-crafter/2026-10-17-cache-audio/manifest.json`. The [archive tool](../../scripts/archive-build.py) restores an exact indexed path without overwriting different content; [commands and interruption recovery](../workflows/build-cache.md#external-local-build-archives) describe the contract. No audio from this archive was added to Git. The file-level classification remains in `.local/workbench-retention/inventory.json`, fingerprinted by the [compact inventory receipt](../../evidence/workbench-assessment/retention-inventory.json).
+| Route | Original files / logical size | Result |
+| --- | ---: | --- |
+| Protected inputs, deferred work and linked metadata | 3,014 / 1,175.5 MB | Verified gzip snapshot; working files remain regular. |
+| Historical WAVs | 822 / 3,333.5 MB | Verified read-only raw archive objects, with old playback paths preserved as links. |
+| Other historical intermediates | 9,705 / 1,399.5 MB | Verified gzip archive; working copies evicted. Unknown reuse value is preserved locally. |
 
-The post-pass maintainer checkout still occupies **7.19 GB allocated**, including **5.94 GB in build/**. Current listening paths, accepted deliveries, pinned inputs, deferred experiments and unclassified content remain in place. The pre-pass inventory included 2.41 GB of unclassified files; the cache selection removes some of that category, but does not establish that the remainder is disposable. **Deleting all of build/ is still unsafe.** Further reduction needs explicit recovery and current-link handling for these retained exceptions. [Measured footprint](../../evidence/workbench-assessment/footprint.json)
+The migration also recovered **all 411 pre-existing broken listening-index targets** by their pinned bytes: 402 WAVs and nine metadata files. No historical output was guessed or regenerated. One restored WAV lies inside a recursively fingerprinted recipe input and remains regular; the others use playback links. Identical raw objects share read-only filesystem hardlinks across the listening archives, avoiding another 1,306.6 MB of duplicate objects.
+
+Final verification covered all six data manifests, 10,030 distinct stored object inodes, every current build file, all 335 tracked-document targets and 1,042 unique historical listening-index targets. No links are missing; all 23 literal recipe inputs and their directory descendants remain usable without symlinks. SID, JSON, register-log and WAV restoration passed. The same-root own-score recipe then rebuilt all five stages in 3.95 seconds and reused all five in 0.053 seconds; all seven playback deliverables matched their prior hashes. Its 60 new files / 11.9 MB are classified as regenerable output. [Completion and verification receipt](../../evidence/workbench-assessment/build-retention-completion.json)
+
+The source review retained 112 build-only code files / 3.14 MB as regular files plus external snapshots. They are generated case players, probes, frozen compatibility/debug implementations or third-party research captures; no additional public source promotion is required for the supported workflow. Some prototypes still depend on explicitly deferred untracked helpers. This does not claim that every prototype was independently promoted or superseded.
+
+| Allocated storage | Before complete migration | After complete migration |
+| --- | ---: | ---: |
+| Maintainer checkout | 7.19 GB | **2.55 GB** |
+| Included build directory | 5.94 GB | **1.25 GB** |
+| Separate local archive | 0.25 GB | **3.93 GB** |
+| Checkout plus archive | 7.44 GB | **6.48 GB** |
+
+These decimal-GB measurements distinguish relocation from reclamation: the complete migration reduced combined allocated content by about 0.95 GB, including recovery of older missing targets. Raw-object hardlinks are counted once in the archive total. Filesystem snapshots and other activity can make volume free-space changes differ. [Measured footprint](../../evidence/workbench-assessment/footprint.json)
+
+The archive is at `~/Archives/sid-song-crafter/`, with a readable README, `catalog.json`, six data manifests and compressed audit records. The catalog maps 14,106 historical paths to their latest manifest and exact fingerprints, including older cache history. It avoids accidentally restoring an obsolete version of the two regenerated own-score indexes. The [archive tool](../../scripts/archive-build.py) restores selected bytes without overwriting different content; [recovery commands and playback-link precautions](../workflows/build-cache.md#external-local-build-archives) describe its contract. No bulk audio was added to Git.
+
+The inventoried historical build state is now recoverable. The remaining regular files are convenient working copies of protected inputs, metadata and deferred work; deleting them would require restoration before dependent workflows run. This is not a promise that every file can be regenerated from Git, or that future unarchived work is disposable. The external archive is local retention, not an off-machine backup.
 
 For distribution, the README clone command skips the existing compressed research evidence: 539 LFS paths, 174.3 MB checked-out content / 172.2 MB distinct objects. They remain available through [explicit study acquisition](../workflows/build-cache.md#persistent-evidence). Included sample files and small evidence receipts stay in ordinary Git. No new research package, submodule, history rewrite or upload was performed.
 
@@ -45,4 +66,4 @@ The inventory also found two manifest-listed Daglish test logs hidden from Git b
 
 ## Next evidence needed
 
-Use the [effort ledger](../workflows/effort-ledger.md) at the next authorized real musical case, including human decisions, failed revisions, troubleshooting and retention through complete acceptance. No case has been opened solely for this measurement. Continue retention work from the recorded exceptions instead of treating the successful cache pass as permission to wipe the build directory. Neither activity requires a new skill collection, audio-model trial or controlled human pilot.
+Use the [effort ledger](../workflows/effort-ledger.md) at the next authorized real musical case, including human decisions, failed revisions, troubleshooting and retention through complete acceptance. No case has been opened solely for this measurement. The authorized retention and onboarding work is complete. Keep the archive and apply its retention contract to future outputs. The remaining real-case measurement requires no new skill collection, audio-model trial or controlled human pilot.

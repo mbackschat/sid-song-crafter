@@ -117,7 +117,7 @@ Only consider B if these walkthroughs leave a specific guidance problem that a s
 
 ### Distribution contract
 
-No files under `build/`, `.local/` or `.tools/` are currently tracked. Cloning does not download this working history, and ordinary setup does not reproduce it. New builds create output only for the selected task. The three build categories are destinations to establish, not an already completed classification:
+No files under `build/`, `.local/` or `.tools/` are currently tracked. Cloning does not download this working history, and ordinary setup does not reproduce it. New builds create output only for the selected task. The three categories define destination policy; the [completed migration and its measured footprint](../validation/workbench-assessment.md#storage-outcome-and-recovery) record the implemented classification:
 
 | Category | Content and audience | Destination and default download |
 | --- | --- | --- |

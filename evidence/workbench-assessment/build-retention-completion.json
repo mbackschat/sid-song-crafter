@@ -1,0 +1,376 @@
+{
+  "version": 1,
+  "completedAt": "2026-10-16T22:56:14.050460+00:00",
+  "passed": true,
+  "scope": "Complete retention of then-current build history and exact recovery of historical listening index gaps; future outputs require their own retention/reproduction route.",
+  "archiveRoot": "~/Archives/sid-song-crafter",
+  "catalogSha256": "1df2bbd5f914e26528ef6bf45b81827208619d48a1a8ba2311fcb389d0f6c8d5",
+  "snapshot": {
+    "allocatedFileBytes": 5940101120,
+    "changedFiles": 0,
+    "distinctContentBytes": 4022490991,
+    "distinctContents": 9484,
+    "exactCanonicalOriginalDuplicates": {
+      "files": 2332,
+      "logicalBytes": 245070626
+    },
+    "exactTrackedDuplicates": {
+      "files": 2502,
+      "logicalBytes": 304937906
+    },
+    "files": 13541,
+    "logicalBytes": 5908526188,
+    "newFiles": 0,
+    "routes": {
+      "archive-and-evict": {
+        "distinctContentBytes": 1125827128,
+        "distinctContents": 7530,
+        "files": 9705,
+        "logicalBytes": 1399468574
+      },
+      "linked-historical-view": {
+        "distinctContentBytes": 2342914338,
+        "distinctContents": 575,
+        "files": 822,
+        "logicalBytes": 3333514444
+      },
+      "retain-in-place-copy-protected": {
+        "distinctContentBytes": 851313506,
+        "distinctContents": 1660,
+        "files": 3014,
+        "logicalBytes": 1175543170
+      }
+    },
+    "skippedSymlinks": 0,
+    "sourceCandidates": {
+      "files": 112,
+      "logicalBytes": 3136710
+    },
+    "stableHashedFiles": 13541,
+    "wallSeconds": 27.6664332090877
+  },
+  "verification": {
+    "passed": true,
+    "checkedAt": "2026-10-16T22:53:02.688870+00:00",
+    "archiveManifests": [
+      {
+        "path": "2026-10-17-build-history/manifest.json",
+        "sha256": "5cc51d566f08be7662b8fcde4076d5d7d6994438d7c4dba6020fda5b353bf97a",
+        "files": 9705,
+        "compression": "gzip"
+      },
+      {
+        "path": "2026-10-17-cache-audio/manifest.json",
+        "sha256": "fec98aafbb00798253eb8d622067b0a09a34a829684e14f9ed6dd0723e95a4e2",
+        "files": 229,
+        "compression": "gzip"
+      },
+      {
+        "path": "2026-10-17-listening-history/manifest.json",
+        "sha256": "33fce5a957f278211c94817818faa7db24cea657e8ca05929a02a07b257713a3",
+        "files": 822,
+        "compression": "none"
+      },
+      {
+        "path": "2026-10-17-protected-snapshot/manifest.json",
+        "sha256": "63ef3f090fc3a93c2d91958038ae2c56cdd4870f550efd24dbf5979d97c9a9ca",
+        "files": 3014,
+        "compression": "gzip"
+      },
+      {
+        "path": "2026-10-17-repaired-index-audio/manifest.json",
+        "sha256": "4ac91c3ff5a6942f7edeebfeedcec9c164a08778753c8429be57f5b42f066f19",
+        "files": 402,
+        "compression": "none"
+      },
+      {
+        "path": "2026-10-17-repaired-index-metadata/manifest.json",
+        "sha256": "40252fb54bdfb37c803d1a3e0d0c78f5a31f57408d13da0ee04b37946368368b",
+        "files": 11,
+        "compression": "gzip"
+      }
+    ],
+    "verifiedUniqueObjectInodes": 10030,
+    "historicalRecoveryPaths": 14106,
+    "trackedMarkdownTargets": 335,
+    "listeningMarkdownTargets": 1042,
+    "missingLinks": [],
+    "protectedRegularPaths": 3014,
+    "currentBuildFiles": {
+      "regular": 3088,
+      "linked": 1222,
+      "archivedPaths": 4250,
+      "regenerablePaths": 60
+    },
+    "errors": []
+  },
+  "literalInputVerification": {
+    "passed": true,
+    "literalInputs": 23,
+    "symlinkOrMissingInputs": []
+  },
+  "roundtrip": {
+    "passed": true,
+    "operations": [
+      {
+        "version": 1,
+        "restoredPaths": [
+          "build/dual-ntsc-render-verification/mono-pal.sid",
+          "build/native-debug.wav.registers.tsv",
+          "build/songbench-trial-20261014/inputs/q01-cpu.json"
+        ],
+        "unchangedPaths": []
+      },
+      {
+        "version": 1,
+        "restoredPaths": [
+          "build/native-clock-verification-v1/cache/bach-pal/19438f7df2c6a2820a1bbecc39b5098b906898f27aed1d49cbcf849b0853cd87/attempt-2b4c8f60bfe540fb92c7ba6f5eaab4d7/song/native-song.excerpt.wav"
+        ],
+        "unchangedPaths": []
+      }
+    ],
+    "restoredWav": {
+      "path": "build/native-clock-verification-v1/cache/bach-pal/19438f7df2c6a2820a1bbecc39b5098b906898f27aed1d49cbcf849b0853cd87/attempt-2b4c8f60bfe540fb92c7ba6f5eaab4d7/song/native-song.excerpt.wav",
+      "bytes": 88244,
+      "sha256": "d7e88541e7f4384cbaeca2880d185e21cff6197913999f65061d0ce28c2538d2",
+      "reason": "Preserve every remaining WAV at its historical path through a read-only view after verified lossless external retention",
+      "object": "objects/d7e88541e7f4384cbaeca2880d185e21cff6197913999f65061d0ce28c2538d2.raw"
+    },
+    "pcm": {
+      "channels": 1,
+      "sampleRate": 44100,
+      "frames": 44100
+    },
+    "archiveObjectUnchanged": true,
+    "restoredFilesKept": true
+  },
+  "repairedHistoricalIndexTargets": {
+    "passed": true,
+    "files": 411,
+    "bytes": 2327163746,
+    "wavFiles": 402,
+    "metadataFiles": 9,
+    "mapSha256": "b364a584243ac1a518a2edde1b0edd659fb7e63c10249fe60356ccf5e99c347e"
+  },
+  "protectedRestoredWav": {
+    "version": 1,
+    "restoredPaths": [
+      "build/reference-intake/trap-contrast/cache/window-later/defc71bcd58e50587e5ab5567d3c2613476cbe026f51522090e5d3350f165610/attempt-ca02e37fa0ee48feb160822d9bd2c798/sources.ab.wav"
+    ],
+    "unchangedPaths": []
+  },
+  "rawDeduplication": {
+    "passed": true,
+    "sharedReadOnlyObjects": 262,
+    "deduplicatedLogicalBytes": 1306607936,
+    "previousDuplicateAllocatedBytes": 1307193344
+  },
+  "sourceCandidateDecision": {
+    "files": 112,
+    "bytes": 3136710,
+    "disposition": "Keep regular with verified external snapshot; no mandatory public promotion. Generated/case-specific/frozen/third-party/deferred sources remain local."
+  },
+  "regeneration": {
+    "schemaVersion": 1,
+    "checkedAt": "2026-10-16T22:49:32.480119+00:00",
+    "purpose": "Post-migration archived WAV readability and supported same-output-root recipe regeneration/cache reuse; no publication or human listening claim.",
+    "command": [
+      "python3",
+      "scripts/listening-package.py",
+      "config/listening/own-score-midi.json",
+      "--output",
+      "build/own-score-package"
+    ],
+    "archiveReadChecks": [
+      {
+        "label": "candidate-full",
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/own-score-package/cache/candidate/2c7a27d86748e2defb9f0283507193cf5854668194be4e7672df6cd2d89a57db/attempt-ea092829bdf14c92bdbf9d3fe3ff77d7/song/native-song.wav",
+        "isSymlink": true,
+        "resolvedPath": "/Users/mbackschat/Archives/sid-song-crafter/2026-10-17-listening-history/objects/12355b43d9b3a816813fb303e974974aa734620024c16a338089931f6099ee63.raw",
+        "sha256": "12355b43d9b3a816813fb303e974974aa734620024c16a338089931f6099ee63",
+        "expectedSha256": "12355b43d9b3a816813fb303e974974aa734620024c16a338089931f6099ee63",
+        "pcm": {
+          "path": "/Users/mbackschat/Archives/sid-song-crafter/2026-10-17-listening-history/objects/12355b43d9b3a816813fb303e974974aa734620024c16a338089931f6099ee63.raw",
+          "sha256": "12355b43d9b3a816813fb303e974974aa734620024c16a338089931f6099ee63",
+          "format": "PCM16",
+          "sampleRate": 44100,
+          "channels": 1,
+          "frames": 595740,
+          "durationSeconds": 13.508843537414966,
+          "peak": 11557,
+          "peakDbfs": -9.05209643365335,
+          "clippedSamples": 0,
+          "rms": 2350.868648140316,
+          "acRms": 2327.027837161244,
+          "acRmsDbfs": -22.97296712754477,
+          "perChannel": [
+            {
+              "dc": -333.9533588478195,
+              "rms": 2350.868648140316,
+              "acRms": 2327.027837161244
+            }
+          ]
+        }
+      },
+      {
+        "label": "reference-full-reduced-score",
+        "path": "/Users/mbackschat/Projects/c64-sid-skill/build/own-score-package/cache/reference/ca1e64060a0bcfa61b31f3f029ac175583cbf37064aa3b3d2141e6b612179cdd/attempt-5cd04045ba9348a1b2644d0b0744414a/song/native-song.wav",
+        "isSymlink": true,
+        "resolvedPath": "/Users/mbackschat/Archives/sid-song-crafter/2026-10-17-listening-history/objects/b9ce21e1fca7ae0878ea20eda8b92c6f8816f219bf344ad1116f0a2ac5f6976b.raw",
+        "sha256": "b9ce21e1fca7ae0878ea20eda8b92c6f8816f219bf344ad1116f0a2ac5f6976b",
+        "expectedSha256": "b9ce21e1fca7ae0878ea20eda8b92c6f8816f219bf344ad1116f0a2ac5f6976b",
+        "pcm": {
+          "path": "/Users/mbackschat/Archives/sid-song-crafter/2026-10-17-listening-history/objects/b9ce21e1fca7ae0878ea20eda8b92c6f8816f219bf344ad1116f0a2ac5f6976b.raw",
+          "sha256": "b9ce21e1fca7ae0878ea20eda8b92c6f8816f219bf344ad1116f0a2ac5f6976b",
+          "format": "PCM16",
+          "sampleRate": 44100,
+          "channels": 1,
+          "frames": 595740,
+          "durationSeconds": 13.508843537414966,
+          "peak": 9294,
+          "peakDbfs": -10.944945336337366,
+          "clippedSamples": 0,
+          "rms": 1410.740869282951,
+          "acRms": 1405.8154330396098,
+          "acRmsDbfs": -27.350432565376064,
+          "perChannel": [
+            {
+              "dc": 117.78271729277873,
+              "rms": 1410.740869282951,
+              "acRms": 1405.8154330396098
+            }
+          ]
+        }
+      }
+    ],
+    "oldArchivedWavsUnchangedAfterBothRuns": true,
+    "indexFiles": {
+      "run.json": {
+        "path": "build/own-score-package/run.json",
+        "beforeSha256": "27c4853375c726ea43c4a1e5a74771ebcea93be85ffaac1d4c5d0026355cfb03",
+        "firstSha256": "298531a2541402983d835e28cc0ae262405df527f703e0d5d205646303c8f212",
+        "repeatSha256": "c3b4d2db6eed0be2fb1b63d1cc734bc24d13a0aa6adf647050bf0bb13b4302b8",
+        "preservedBefore": ".local/workbench-retention/post-migration-own-score-before/run.json",
+        "isRegularAfter": true,
+        "expectedChange": "latest invocation metadata and timing"
+      },
+      "listening.md": {
+        "path": "build/own-score-package/listening.md",
+        "beforeSha256": "117b87dfab61921fbc91c97eb1fabb8aea106ceef0055b0bdcd42571ed427782",
+        "firstSha256": "cc10e397c2bed922b68dcef3575ea793318a85a2da8a5247ee9cde69696c5541",
+        "repeatSha256": "cc10e397c2bed922b68dcef3575ea793318a85a2da8a5247ee9cde69696c5541",
+        "preservedBefore": ".local/workbench-retention/post-migration-own-score-before/listening.md",
+        "isRegularAfter": true,
+        "expectedChange": "deliverable links advance to regenerated attempts; repeat links remain identical"
+      }
+    },
+    "firstRun": {
+      "savedRun": ".local/workbench-retention/post-migration-own-score-before/first-run.json",
+      "wallSeconds": 3.9454467920586467,
+      "stages": [
+        {
+          "id": "prepare",
+          "status": "completed",
+          "cacheHit": false,
+          "executionSeconds": 0.26719087501987815,
+          "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/own-score-package/cache/prepare/094b7615c89eb1295c4fd5ca29806e9d27c537b19cc96fc3ac2d7f2127f60712/attempt-b929276cde674d8ba15690b7f378bc48"
+        },
+        {
+          "id": "candidate",
+          "status": "completed",
+          "cacheHit": false,
+          "executionSeconds": 1.6871417500078678,
+          "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/own-score-package/cache/candidate/be02e7b4e705cebcfe857a30f17471cb31b9f5c6d1f080bb26d11567ce70a1b8/attempt-0e77b2018e1a4c1dac9ff173e89da26b"
+        },
+        {
+          "id": "reference",
+          "status": "completed",
+          "cacheHit": false,
+          "executionSeconds": 1.6250817920081317,
+          "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/own-score-package/cache/reference/32a02aea85826f03360b59d934809b0ad1b967c5b5b3d834e256aa35a45c3c19/attempt-be435fbd9e8d4201843dc20b4a948d61"
+        },
+        {
+          "id": "phrase",
+          "status": "completed",
+          "cacheHit": false,
+          "executionSeconds": 0.15309195802547038,
+          "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/own-score-package/cache/phrase/89fbd7b921d18e7e1bd65cd139928a530090abcd2de2a1b9e98f1bc7fcbfb95f/attempt-48a9afe0746549b0ab5bd0b528175932"
+        },
+        {
+          "id": "ending",
+          "status": "completed",
+          "cacheHit": false,
+          "executionSeconds": 0.12379029206931591,
+          "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/own-score-package/cache/ending/3a7a952419850a1691c110d4a52ab051adfa963594f0fec69a54026556aeaa14/attempt-d65b90dd8a6a47d29a9830e3d0972134"
+        }
+      ]
+    },
+    "repeatRun": {
+      "savedRun": ".local/workbench-retention/post-migration-own-score-before/repeat-run.json",
+      "wallSeconds": 0.05336895794607699,
+      "stages": [
+        {
+          "id": "prepare",
+          "status": "reused",
+          "cacheHit": true,
+          "executionSeconds": 0,
+          "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/own-score-package/cache/prepare/094b7615c89eb1295c4fd5ca29806e9d27c537b19cc96fc3ac2d7f2127f60712/attempt-b929276cde674d8ba15690b7f378bc48"
+        },
+        {
+          "id": "candidate",
+          "status": "reused",
+          "cacheHit": true,
+          "executionSeconds": 0,
+          "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/own-score-package/cache/candidate/be02e7b4e705cebcfe857a30f17471cb31b9f5c6d1f080bb26d11567ce70a1b8/attempt-0e77b2018e1a4c1dac9ff173e89da26b"
+        },
+        {
+          "id": "reference",
+          "status": "reused",
+          "cacheHit": true,
+          "executionSeconds": 0,
+          "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/own-score-package/cache/reference/32a02aea85826f03360b59d934809b0ad1b967c5b5b3d834e256aa35a45c3c19/attempt-be435fbd9e8d4201843dc20b4a948d61"
+        },
+        {
+          "id": "phrase",
+          "status": "reused",
+          "cacheHit": true,
+          "executionSeconds": 0,
+          "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/own-score-package/cache/phrase/89fbd7b921d18e7e1bd65cd139928a530090abcd2de2a1b9e98f1bc7fcbfb95f/attempt-48a9afe0746549b0ab5bd0b528175932"
+        },
+        {
+          "id": "ending",
+          "status": "reused",
+          "cacheHit": true,
+          "executionSeconds": 0,
+          "attemptDirectory": "/Users/mbackschat/Projects/c64-sid-skill/build/own-score-package/cache/ending/3a7a952419850a1691c110d4a52ab051adfa963594f0fec69a54026556aeaa14/attempt-d65b90dd8a6a47d29a9830e3d0972134"
+        }
+      ]
+    },
+    "newGeneratedFileCount": 60,
+    "newGeneratedBytes": 11872925,
+    "classification": "All new build files are disposable cache/diagnostic outputs regenerable by the checked-in own-score recipe. Updated root indexes represent the latest invocation; exact pre-rerun indexes are preserved beside this receipt.",
+    "writersStopped": true
+  },
+  "guards": {
+    "archiveTests": 28,
+    "rendererTests": 29,
+    "rendererRedGreenCases": 12,
+    "canonicalEvidenceVerification": {
+      "command": "python3 scripts/evidence.py verify",
+      "exitCode": 0,
+      "indexedRecords": 2193,
+      "manifestSha256": "ff68a0281a13d273daa0c0188a39d8cf92d6534c5bf563015bb1179440039624"
+    },
+    "changedDocumentationLocalLinks": {
+      "checked": 289,
+      "errors": 0
+    }
+  },
+  "audit": {
+    "directory": "2026-10-17-retention-audit",
+    "files": 37,
+    "storedBytes": 6164915,
+    "inventorySha256": "697ddac944e2d7c8522353da215dbc6bebc5ae253213c7d26e7702d583d61036",
+    "recoveryMapSha256": "b364a584243ac1a518a2edde1b0edd659fb7e63c10249fe60356ccf5e99c347e"
+  }
+}

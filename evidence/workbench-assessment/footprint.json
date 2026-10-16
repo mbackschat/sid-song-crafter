@@ -1,7 +1,26 @@
 {
-  "measuredAt": "2026-10-16T22:21:59.326494+00:00",
-  "measurement": "du -sk allocated directory bytes; external archive and temporary test clones excluded from checkout",
+  "measuredAt": "2026-10-16T22:56:16.406688+00:00",
+  "measurement": "du -sk allocated directory bytes, without following build playback symlinks; external archive counts shared object inodes once",
   "checkoutAllocatedBytes": {
+    ".": 2549112832,
+    "build": 1250758656,
+    ".local": 158121984,
+    ".tools": 518754304,
+    "evidence": 202846208,
+    "samples": 142942208,
+    ".git": 256974848
+  },
+  "externalArchiveAllocatedBytes": 3933323264,
+  "optionalLfs": {
+    "files": 539,
+    "checkedOutLogicalBytes": 174280735,
+    "uniqueObjectBytes": 172164752,
+    "scope": "All current LFS paths are under evidence/; README skips them on clone; core recipe does not need them."
+  },
+  "historicalBuildSnapshotRecoverable": true,
+  "futureBuildOutputsNeedRetention": true,
+  "regularBuildReason": "Verified snapshots of protected recipe inputs, current metadata and deferred work remain as working copies; WAV history is linked outside checkout.",
+  "beforeMigration": {
     ".": 7187451904,
     "build": 5940101120,
     ".local": 107450368,
@@ -10,13 +29,5 @@
     "samples": 142942208,
     ".git": 256540672
   },
-  "externalArchiveAllocatedBytes": 249176064,
-  "optionalLfs": {
-    "files": 539,
-    "checkedOutLogicalBytes": 174280735,
-    "uniqueObjectBytes": 172164752,
-    "scope": "All current LFS paths are under evidence/; README skips them on clone; core recipe does not need them."
-  },
-  "wholeBuildDisposable": false,
-  "retainedExceptions": "Current listening paths, accepted deliveries, pinned inputs, deferred work and unclassified content remain protected; see pre-cleanup inventory and exact operation receipts."
+  "beforeMigrationExternalArchiveAllocatedBytes": 249176064
 }

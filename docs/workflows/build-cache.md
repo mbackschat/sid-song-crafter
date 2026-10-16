@@ -139,6 +139,12 @@ Ordinary WAV readers follow the archived link, retaining old listening URLs with
 
 The absolute links depend on the external archive location. Keep its manifest and objects together; when moving to another machine, copy the archive and restore regular files from its new manifest location. Do not delete the archive merely because files still appear under `build/`. An archived historical snapshot makes its recorded bytes recoverable; future generated or edited files require a new retention pass.
 
+### Maintainer archive and current recovery routes
+
+The completed 2026-10-17 migration is recorded in the [workbench assessment](../validation/workbench-assessment.md#storage-outcome-and-recovery). Its local archive is `~/Archives/sid-song-crafter/`; the README there explains recovery and `catalog.json` maps historical paths to their latest manifest and exact fingerprint. Data manifests and compressed inventories/receipts stay outside Git. Use that catalog to choose a manifest and restore only the required paths. Do not restore every manifest indiscriminately: newer snapshots can contain changed package indexes, and different existing bytes correctly fail as conflicts.
+
+The protected snapshot retains regular recipe inputs and deferred work; raw listening objects retain old WAV URLs; compressed history retains other generated/unknown-value material. A final snapshot also preserves recovered metadata and the current own-score indexes. Historical debug binaries `build/render-native-debug` and `build/renderer-dual-rsid/render-sid-before` need `chmod 0755` after byte restoration if execution is required. New builds and edits need fresh retention or verified regeneration routes; the dated snapshot does not cover future work.
+
 ## Local cache compression
 
 The [listening-package runner](listening-package.md) separately caches successful computations. Its active stage outputs are hash-verified on reuse: compressing or removing them invalidates that stage and triggers regeneration. Keep accepted standalone audio and historical evidence archives separate from that working computation cache.
