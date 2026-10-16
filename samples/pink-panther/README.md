@@ -13,9 +13,10 @@ python3 scripts/setup-project.py --only references --include pink-panther-score
 python3 scripts/setup-sidwizard.py --sid-count 1
 python3 scripts/setup-sidwizard.py --sid-count 2
 python3 scripts/listening-package.py samples/pink-panther/stereo.recipe.json --output build/sample-pink-panther-stereo
+python3 scripts/publish-listening.py build/sample-pink-panther-stereo/run.json --selection samples/pink-panther/audition.json --output build/sample-pink-panther-listening
 ```
 
-Open `build/sample-pink-panther-stereo/listening.md` for the mono SID/WAV, stereo SID/WAV, stereo SWS, fold-down and verification receipts. The runner retains exact source/tool/output fingerprints and reuses unchanged stages.
+Open `build/sample-pink-panther-stereo/listening.md` for the mono SID/WAV, stereo SID/WAV, stereo SWS, fold-down and verification receipts. The runner retains exact source/tool/output fingerprints and reuses unchanged stages. The [audition selection](audition.json) copies hash-verified mono/stereo WAVs to stable filenames in `build/sample-pink-panther-listening/`; choose a fresh publication directory for another submission.
 
 ## Materials and sound contract
 

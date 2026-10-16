@@ -13,9 +13,10 @@ python3 scripts/setup-project.py --only references --include moon-river-score
 python3 scripts/setup-sidwizard.py --sid-count 1
 python3 scripts/setup-sidwizard.py --sid-count 2
 python3 scripts/listening-package.py samples/moon-river/stereo.recipe.json --output build/sample-moon-river-stereo
+python3 scripts/publish-listening.py build/sample-moon-river-stereo/run.json --selection samples/moon-river/audition.json --output build/sample-moon-river-listening
 ```
 
-Open `build/sample-moon-river-stereo/listening.md` for the mono SID/WAV, stereo SID/WAV, stereo SWS, fold-down and verification receipts. The runner retains exact source/tool/output fingerprints and reuses unchanged stages.
+Open `build/sample-moon-river-stereo/listening.md` for the mono SID/WAV, stereo SID/WAV, stereo SWS, fold-down and verification receipts. The runner retains exact source/tool/output fingerprints and reuses unchanged stages. The [audition selection](audition.json) copies hash-verified mono/stereo WAVs to stable filenames in `build/sample-moon-river-listening/`; choose a fresh publication directory for another submission.
 
 ## Materials and sound contract
 
