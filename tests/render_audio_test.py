@@ -165,6 +165,37 @@ def write_two_subtune_sid(path, default_song):
 
 
 class HeadlessRenderTest(unittest.TestCase):
+    def test_output_symlinks_preserve_both_destinations_and_shared_archive_objects(self):
+        for linked_output in ("wav", "trace"):
+            for target_state in ("readonly", "writable", "missing"):
+                for paired_exists in (False, True):
+                    with self.subTest(linked_output=linked_output, target_state=target_state, paired_exists=paired_exists), tempfile.TemporaryDirectory() as directory:
+                        sid, output = Path(directory) / "a4.sid", Path(directory) / "retained.wav"
+                        write_a4_sid(sid)
+                        trace = Path(str(output) + ".registers.tsv")
+                        linked, paired = (output, trace) if linked_output == "wav" else (trace, output)
+                        archived = Path(directory) / "archive-object"
+                        if target_state != "missing":
+                            archived.write_bytes(b"Shared archived evidence")
+                            if target_state == "readonly":
+                                archived.chmod(0o444)
+                        linked.symlink_to(archived)
+                        if paired_exists:
+                            paired.write_bytes(b"Paired retained evidence")
+                        result = subprocess.run([str(RENDERER), str(sid), str(output), "0.1"],
+                                                capture_output=True, text=True, timeout=20)
+                        if paired_exists:
+                            self.assertEqual(paired.read_bytes(), b"Paired retained evidence")
+                        else:
+                            self.assertFalse(paired.exists())
+                        self.assertTrue(linked.is_symlink())
+                        if target_state == "missing":
+                            self.assertFalse(archived.exists())
+                        else:
+                            self.assertEqual(archived.read_bytes(), b"Shared archived evidence")
+                        self.assertNotEqual(result.returncode, 0)
+                        self.assertIn("symlink", result.stderr.lower())
+
     def test_native_two_sid_rsid_executes_independent_cia_irq_at_the_declared_clock(self):
         for clock in ("pal", "ntsc"):
             for model in ("6581", "8580"):

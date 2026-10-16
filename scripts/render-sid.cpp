@@ -286,8 +286,14 @@ int main(int argc, char **argv) {
         const int buffer_size = player.getBufSize(batch_size);
         if (buffer_size <= 0) throw std::runtime_error("Invalid mixer buffer size");
         std::vector<short> buffer(buffer_size);
-        std::ofstream output(argv[2], std::ios::binary);
-        std::ofstream trace(std::string(argv[2]) + ".registers.tsv");
+        const std::filesystem::path output_path(argv[2]);
+        const std::filesystem::path trace_path(std::string(argv[2]) + ".registers.tsv");
+        // archive-build.py --link shares read-only audio; check both destinations before either truncating open can alter retained evidence.
+        for (const auto &path : {output_path, trace_path}) {
+            if (std::filesystem::is_symlink(path)) throw std::runtime_error("Output symlink paths are unsupported: " + path.string());
+        }
+        std::ofstream output(output_path, std::ios::binary);
+        std::ofstream trace(trace_path);
         if (!output || !trace) throw std::runtime_error("Unable to open output files");
         output.write("RIFF", 4);
         write_u32(output, 36 + frame_count * channels * 2);
