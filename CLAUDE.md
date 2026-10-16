@@ -84,7 +84,7 @@ For short or repeated sounds, assess attack, audible body, release and next retr
 
 Record each listener verdict with its exact scope, as both a case verdict and any supported reusable lesson; perceptual agreement on one passage does not establish PCM identity, hardware equivalence or approval of another arrangement. Do not promote an unaccepted parameter choice as a general solution.
 
-Model observations and scores are experimental supporting signals: they must not determine musical acceptance or trigger arrangement changes on their own. Before delegating any listening judgment to a model, and at each [model-assistance checkpoint](docs/research/audio-assessment.md#use-and-reassess-model-assistance), follow the [measured trials and bounded runners](docs/research/audio-assessment.md), including their required controls, frozen criteria and recorded reviews.
+Model observations and scores are experimental supporting signals: they must not determine musical acceptance or trigger arrangement changes on their own. Record one [standing model-assistance decision](docs/research/audio-assessment.md#use-and-reassess-model-assistance) when a musical case opens; reassess for a concrete useful question, relevant model/prompt/preprocessing change or explicit user request, and check the decision at closure without repeating unchanged skip prose. Before any model listening trial, follow the [measured trials and bounded runners](docs/research/audio-assessment.md), including required controls, frozen criteria, task-specific eligibility and existing upload/spending authorization.
 
 ## Reconcile knowledge before handoff
 

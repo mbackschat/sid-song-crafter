@@ -1,0 +1,49 @@
+{
+  "createdAt": "2026-10-16T22:06:24.694156+00:00",
+  "mode": "applied",
+  "restorationReceipt": "evidence/audio-assessment-songbench/setup.json",
+  "verifiedWeights": [
+    {
+      "path": ".tools/songbench/ckpt/songbench.safetensors",
+      "bytes": 100808636,
+      "sha256": "ca27966a6d2b3312587b9e1d53ee3adf6bde8ac68a7d339e6f962206cbfde312"
+    },
+    {
+      "path": ".local/audio-models/muq/model.safetensors",
+      "bytes": 1333825096,
+      "sha256": "273febab2be02872c37d2c37e48a9d6c52c1c9392f3eeeabd498efa281ccb7a6"
+    }
+  ],
+  "selection": [
+    {
+      "path": ".tools/songbench/ckpt/songbench.safetensors",
+      "regularFileBytes": 100808636,
+      "allocatedBytes": 100810752,
+      "files": 1
+    },
+    {
+      "path": ".local/audio-models/muq/model.safetensors",
+      "regularFileBytes": 1333825096,
+      "allocatedBytes": 1333825536,
+      "files": 1
+    },
+    {
+      "path": ".tools/songbench-venv",
+      "regularFileBytes": 807765980,
+      "allocatedBytes": 872124416,
+      "files": 26502
+    },
+    {
+      "path": ".local/uv-cache",
+      "regularFileBytes": 741007990,
+      "allocatedBytes": 798085120,
+      "files": 23220
+    }
+  ],
+  "reason": "Unused local audio models failed musical qualification; retain bounded runner, evidence, source, configuration and restoration pins.",
+  "completedAt": "2026-10-16T22:06:45.993664+00:00",
+  "removedLogicalBytes": 2983407702,
+  "removedAllocatedBytes": 3104845824,
+  "restorationPinsRetained": true,
+  "configurationRetained": true
+}

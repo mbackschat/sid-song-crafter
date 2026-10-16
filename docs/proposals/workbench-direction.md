@@ -1,6 +1,6 @@
 # SID Song Crafter: product interface, value and resource discipline
 
-Status: agreed direction, ready for implementation, 2026-10-17, incorporating external review and the user's storage/distribution clarifications. The evidence supports design choices, not a measured productivity advantage. [PLAN.md](../../PLAN.md) owns execution order and completion; finalizing this document does not claim implementation is complete.
+Status: agreed direction, implementation started 2026-10-17, incorporating external review and the user's storage/distribution clarifications. The evidence supports design choices, not a measured productivity advantage. [PLAN.md](../../PLAN.md) owns execution order and completion; finalizing this document does not claim implementation is complete.
 
 Repository: [mbackschat/sid-song-crafter](https://github.com/mbackschat/sid-song-crafter). Relative links resolve from this document in the repository. Storage measurements describe the maintainer's local checkout.
 
@@ -12,11 +12,11 @@ Repository: [mbackschat/sid-song-crafter](https://github.com/mbackschat/sid-song
 4. **Separate disposable builds, local retention and material distributed to users.** Make `build/` disposable only after verified retention and recovery. Keep core tools, recipes, concise findings and a small curated sample set in the main repository; provide substantial shareable research material as optional versioned downloads with checksums; retain private references and listening history outside the checkout. **Rationale:** research value does not imply every cloner needs the bytes. The roughly 2 GB retention candidate is not a Git addition or a required installation. Prefer optional downloads over a new submodule; use LFS where appropriate for versioned binaries, with explicit download behavior.
 5. **Replace repeated model-review skip records with one standing decision per case and event-driven reassessment.** Keep human acceptance, controls and request authorization unchanged. **Rationale:** documenting the same decision after every revision consumes effort without new evidence. Alternative: retain the current checkpoint policy if reviewers identify a concrete missed-risk benefit worth that cost.
 
-Decision 5 changes an explicit rule. [CLAUDE.md](../../CLAUDE.md#listening-and-retained-findings) currently requires following the measured trials and recorded reviews “at each [model-assistance checkpoint](../research/audio-assessment.md#use-and-reassess-model-assistance).” The owning rule says:
+Decision 5 replaces an explicit rule. [CLAUDE.md](../../CLAUDE.md#listening-and-retained-findings) previously required following the measured trials and recorded reviews “at each [model-assistance checkpoint](../research/audio-assessment.md#use-and-reassess-model-assistance).” The former owning rule said:
 
 > Review usefulness **at the first representative audition, after listener feedback or a musical revision, and before closing each musical case**.
 
-It also requires a dated run or explicit skip at every checkpoint. The selected replacement records eligibility and rationale once when a case opens, reassesses when a concrete useful question, relevant model/prompt/preprocessing change or explicit user request occurs, and checks the standing decision at closure without repeating unchanged skip prose. Implementation must reconcile the owning policy, contributor guide and workflow references as one change. Until then, their existing instructions remain in force.
+It also required a dated run or explicit skip at every checkpoint. The selected replacement records eligibility and rationale once when a case opens, reassesses when a concrete useful question, relevant model/prompt/preprocessing change or explicit user request occurs, and checks the standing decision at closure without repeating unchanged skip prose. The owning policy, contributor guide and workflow references now implement this replacement; historical trial records remain intact. Execution status belongs in [PLAN.md](../../PLAN.md).
 
 ## User input and constraints
 
