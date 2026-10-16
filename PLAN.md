@@ -4,16 +4,58 @@ This is the sole source of truth for the overall project plan: scope, priorities
 
 ## Current status
 
-As of 2026-10-16:
+As of 2026-10-16, the user has activated evaluation of the workbench's value, usability and resource cost. The primary audience is an **agent-assisted musician/developer**, with **Codex and Claude Code** selected as the initial agent environments. SID Song Crafter remains the product; a skill set is an undecided interface option, not an assumed product architecture.
 
 | Category | State | Where to inspect |
 | --- | --- | --- |
-| Agreed required work | Complete for the recorded scopes | [Overall closure checkpoint](#overall-closure-checkpoint-2026-10-16) and [completion audit](#completion-audit) |
-| Active implementation | None | [Score interpretation cases](#active-score-interpretation-trial) |
-| Queued next task | None selected | Select and record new work here before starting it |
-| Deferred or optional work | Unfinished and not queued | [Deferred work and unproven outcomes](#deferred-work-and-unproven-outcomes) |
+| Active work | Assess total composition effort, newcomer workflow, relevant tools/skills/models and storage waste | [Workbench value and usability assessment](#workbench-value-and-usability-assessment) |
+| Review checkpoint | External-review proposal ready; obtain and reconcile review before settling interface and component decisions | [Workbench direction proposal](docs/proposals/workbench-direction.md); no implementation selected by drafting it |
+| Previous delivery programme | Complete for recorded scopes | [Overall closure checkpoint](#overall-closure-checkpoint-2026-10-16) and [completion audit](#completion-audit) |
+| Musical implementation | None active | [Score interpretation cases](#active-score-interpretation-trial) |
+| Other deferred work | Unfinished and not queued | [Deferred work and unproven outcomes](#deferred-work-and-unproven-outcomes) |
 
-This status describes the agreed work, including the completed historical studies, native export contract, README sample packages and Axel F delivery. It does not mark deferred ideas as completed.
+## Workbench value and usability assessment
+
+**Purpose.** Test the claim that the project makes expressive SID interpretation easier for others, including total effort and maintenance/storage cost. The intended user provides attributed source material, musical intent and listening judgments; an agent may research, configure and operate the tools. Evaluate the product's public workflow before deciding whether its entry point should be documentation, a thin skill, a collection of skills or another interface. A new skill collection, GUI, MCP server, backend or paid model trial is not a prerequisite for this assessment.
+
+**Review checkpoint, 2026-10-16.** The user requested a Markdown proposal for external review before settling the direction. The [proposal](docs/proposals/workbench-direction.md) preserves the user input, checked local facts and official dependency documentation, alternatives and recommendations with rationale. Both Codex and Claude Code are confirmed targets; the skill/plugin structure remains undecided. This drafting checkpoint performs no cleanup, new skill installation or model request. The component dispositions and protocol below are proposals until reconciled with the review outcome; the existing contributor/workflow policies remain in force.
+
+**Current evidence.** Accepted songs and familiar transfers establish useful musical outputs and reusable mechanisms. Recipe timings establish automated execution/cache savings. Neither establishes a reduction in total composition effort. The public interface today is Python/Bun scripts, editable JSON and documentation. Installed upstream skills cover SID hardware reference and optional c64bridge playback; no project-owned end-to-end composition skill is shipped. The generic MIDI audition preparer reduces to exactly three voices; six-voice native export needs separate explicit authoring. `doctor.py` checks full workbench readiness including VICE, whereas the minimal README demo has a smaller prerequisite set. These are actual onboarding boundaries to test, not reasons to promise automatic arrangement.
+
+| Milestone | Exit evidence | State |
+| --- | --- | --- |
+| V1 — Audit the current product and costs | Executable entry-point map, component decisions and measured disk breakdown | Bounded audit recorded in the proposal; decisions awaiting review |
+| V2 — Remove proven waste | Exact cleanup selection, recoverability records, preserved evidence/music, post-cleanup build checks and before/after sizes | Candidates measured; no removal in this assessment yet |
+| V3 — Test a newcomer workflow and choose its interface | Independent task walkthrough from supplied score to reviewable output; blockers recorded; compare documentation/CLI with a thin skill only if it addresses observed friction | Pending; skill packaging is undecided |
+| V4 — Measure production effort prospectively | Complete activity ledger and quality-gated, counterbalanced comparison under the protocol below | Protocol being specified; no measured productivity result yet |
+| V5 — State the supported claim and retain only useful components | Publish measured result/limitations, supported user path and retained/optional/research-only decisions in existing product docs | Pending |
+
+### Proposed component decisions for review
+
+| Component | Decision and basis |
+| --- | --- |
+| Native Python score/arrangement/export, PCM comparison, CPU/VICE verification and recipe runner | Keep as the workbench's core. Existing complete songs demonstrate executable utility; test their onboarding and total cost rather than replace them. |
+| Repertoire, technique lookup, source provenance and accepted/rejected musical examples | Keep and retrieve selectively. These carry the project's musical knowledge; their incremental effort benefit is the subject of V4. |
+| Source-specific study programs and decoded backends | Retain as specialist/research capabilities with declared contracts, outside the newcomer default path. Do not delete by filename alone or break frozen imports/evidence. |
+| Project-owned agent skill or skill set | Undecided. Test a small interface against direct documented tool use before choosing packaging. An agent-assisted audience does not imply a skill-set product. |
+| Upstream `c64-sid` | Currently installed by default. Keep pinned and available initially, with project corrections; evaluate default necessity rather than assume it is required by native execution. Not an end-to-end composition workflow. |
+| Upstream `sid-music` and live c64bridge | Optional connected-playback integration. No live connection is established here. The pinned assembler source is also used by alternative Bun builds and must be distinguished from server dependencies. |
+| General coding/reasoning agent | Relevant for reading sources, editing arrangements and running verified tools; keep model/configuration fixed in effort comparisons. Current model-tier assignments are starting assumptions, not measured musical productivity rankings. |
+| Hosted audio models | Research-only, off the normal composition path. Existing Qwen task-specific successes do not overcome its latest verified-silence failure; no model supplies musical acceptance. No new provider/request is needed for this audit. |
+| SongBench/MuQ | Research-only and not a normal installation dependency. Remove reproducible local weights/environment/cache while retaining source, pinned restoration information and measured trial evidence. Its quality ranking has not earned a composition role. |
+| Repeated mandatory “no model call” paragraphs | Replace prospective per-feedback paperwork with one standing case decision and event-based reconsideration when a useful question or relevant configuration/capability change appears. Preserve historical trial records. |
+
+### Prospective effort protocol
+
+Start with a complete case ledger; this measures cost, not savings. Log human active minutes for briefing, source preparation, arrangement decisions, listening, revisions and recovery; agent active/wall time, model/configuration, token/API cost where exposed, and summed parallel-agent work; tool runtime and waiting separately; setup, new reusable engineering, failed attempts and documentation/retention effort. Record time to first playable output and to accepted declared form, with source/output fingerprints. Do not reconstruct missing historical time from chat length, commit timestamps or renderer duration.
+
+For a bounded comparative pilot, use two independent operators and two unfamiliar, comparable complete short forms, producing four jobs. Each operator uses each condition once on different scores, each score appears in both conditions, and workflow order is counterbalanced. Fix the musical briefs, source/rights boundaries, target, agent model/settings, time budget and technical gates before starting. Both conditions use the same executable backend. Test one contrast at a time: format/tool reference versus curated repertoire/guidance tests the knowledge contribution; the same curated content with versus without an entry skill tests packaging. These contrasts do not compare the whole project against a tracker or unaided musician. Keep each operator's permitted material explicit and record carryover. Four jobs cannot separate learning or operator-by-score differences from condition effects; use this pilot for protocol viability, friction and descriptive costs, not a causal savings estimate.
+
+Freeze a listener rubric for source preservation, intended character, phrasing/balance and ending. Blind the listener to condition, preserve level treatment and require comparable technical coverage. Report time to accepted output, failures at the time limit, revision count, human/agent/setup/tool effort and costs separately. A faster rejected result is not a win. Report paired outcomes and limitations; four jobs are a feasibility pilot, not a general productivity percentage or proof about full-length songs. A true newcomer study requires independent users; agent-only walkthroughs are labelled usability proxies. Select and fingerprint the scores and arrange participants before declaring the pilot started.
+
+### Storage boundary
+
+Measure the full checkout, tracked distribution and optional local installations separately. Accepted listening files, source provenance, native editable releases, canonical evidence and deferred user work are retention targets. Package/download caches and reproducible unused model installations are reclaimable after their restoration records and dependencies are checked. Existing build cleanup protects published listening files and configured reproduction inputs; indiscriminate deletion of `build/` is outside this assessment. Further reduction needs an explicit retained-release versus regenerable-intermediate inventory, not another blanket cache pass.
 
 ## Deferred work and unproven outcomes
 
@@ -24,7 +66,7 @@ This status describes the agreed work, including the completed historical studie
 | Airwolf finite ending | Optional and unaccepted; the accepted source-loop continuation remains selected. See [Airwolf](docs/research/composition/airwolf-preparation.md#listening-verdicts-and-case-closure). |
 | Further composer research and supplementary Åkesson work | Deferred; the six required bounded contrasts are complete. See [scope and order](#scope-and-order). |
 | Deferred untracked experiments | Preserved, not queued or implicitly accepted. See [working rules](#working-rules-and-retained-gap). |
-| Reduction in total composition effort | Unproven; execution/cache timings and successful musical reuse do not establish this broader outcome. See the [completion audit](#completion-audit). |
+| Reduction in total composition effort | Promoted to the active [workbench assessment](#workbench-value-and-usability-assessment); still unproven. |
 
 Starting deferred work requires a new scope decision recorded in this plan. Existing musical reservations and technical limitations remain in their owning studies; they do not silently create new tasks.
 
@@ -36,7 +78,7 @@ Each study must leave reusable instruments, effects or arrangement methods, with
 
 ## Overall closure checkpoint, 2026-10-16
 
-The agreed overall plan is complete: historical studies and transfers, the supported native export contract, README sample packages, and the selected complete Axel F interpretation. The listener accepts the full Axel F performance and explicitly selects its shorter ending despite hearing no clear difference. Final artifact retention, exact-byte native re-export and closure reconciliation are complete. No musical implementation is active; deferred work remains outside this scope.
+The previous delivery programme was completed before the workbench assessment above was activated: historical studies and transfers, the supported native export contract, README sample packages, and the selected complete Axel F interpretation. The listener accepts the full Axel F performance and explicitly selects its shorter ending despite hearing no clear difference. Final artifact retention, exact-byte native re-export and closure reconciliation are complete. No musical implementation is active; the newly activated workbench assessment is separate from this completed delivery scope.
 
 | Required outcome | Current evidence | Remaining action |
 | --- | --- | --- |
