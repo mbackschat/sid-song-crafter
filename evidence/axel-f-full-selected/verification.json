@@ -1,0 +1,1178 @@
+{
+  "schemaVersion": 1,
+  "evidenceLevel": "rendered experiment",
+  "listeningReview": null,
+  "conversionManifest": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-full-selected/cache/candidate/45e8edb63532df03dcd0c7729600d2ed4dd152cd6b38871bfd9771570467b491/attempt-70adaa2632b64dfdb4cd9272ff1994a6/song/conversion.json",
+  "exportReport": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-full-selected/cache/candidate/45e8edb63532df03dcd0c7729600d2ed4dd152cd6b38871bfd9771570467b491/attempt-70adaa2632b64dfdb4cd9272ff1994a6/song/export.json",
+  "audit": {
+    "schemaVersion": 1,
+    "sourceSha256": "c5841b8e6fcb3bc2223986aaffa8d25c5e711011f26955885856adfcbf5b6e32",
+    "cpu": "py65 NMOS 6502",
+    "environment": "RAM-only calls; no CIA, VIC, ROM or SID reads",
+    "sidModel": "MOS8580",
+    "sidCount": 1,
+    "sids": [
+      {
+        "baseAddress": 54272,
+        "model": "MOS8580"
+      }
+    ],
+    "loadAddress": 4096,
+    "initAddress": 4096,
+    "playAddress": 4099,
+    "clockHz": 985248.6111111111,
+    "playCalls": 9006,
+    "callRateHz": 50.12457321485099,
+    "initCycles": 1944,
+    "maximumPlayCycles": 2314,
+    "meanPlayCycles": 1835.6910948256718,
+    "frameCycleBudget": 19656,
+    "initWriteCount": 24,
+    "playWriteCount": 225150,
+    "registers": {
+      "d400": {
+        "writes": 9006,
+        "distinctValues": 58,
+        "minimum": 0,
+        "maximum": 237
+      },
+      "d401": {
+        "writes": 9006,
+        "distinctValues": 36,
+        "minimum": 17,
+        "maximum": 92
+      },
+      "d402": {
+        "writes": 9006,
+        "distinctValues": 30,
+        "minimum": 0,
+        "maximum": 247
+      },
+      "d403": {
+        "writes": 9006,
+        "distinctValues": 5,
+        "minimum": 0,
+        "maximum": 5
+      },
+      "d404": {
+        "writes": 9006,
+        "distinctValues": 5,
+        "minimum": 9,
+        "maximum": 65
+      },
+      "d405": {
+        "writes": 9006,
+        "distinctValues": 2,
+        "minimum": 7,
+        "maximum": 8
+      },
+      "d406": {
+        "writes": 9006,
+        "distinctValues": 3,
+        "minimum": 69,
+        "maximum": 168
+      },
+      "d407": {
+        "writes": 9006,
+        "distinctValues": 43,
+        "minimum": 0,
+        "maximum": 237
+      },
+      "d408": {
+        "writes": 9006,
+        "distinctValues": 37,
+        "minimum": 0,
+        "maximum": 139
+      },
+      "d409": {
+        "writes": 9006,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40a": {
+        "writes": 9006,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d40b": {
+        "writes": 9006,
+        "distinctValues": 7,
+        "minimum": 0,
+        "maximum": 129
+      },
+      "d40c": {
+        "writes": 9006,
+        "distinctValues": 3,
+        "minimum": 0,
+        "maximum": 64
+      },
+      "d40d": {
+        "writes": 9006,
+        "distinctValues": 5,
+        "minimum": 0,
+        "maximum": 114
+      },
+      "d40e": {
+        "writes": 9006,
+        "distinctValues": 26,
+        "minimum": 0,
+        "maximum": 233
+      },
+      "d40f": {
+        "writes": 9006,
+        "distinctValues": 11,
+        "minimum": 0,
+        "maximum": 13
+      },
+      "d410": {
+        "writes": 9006,
+        "distinctValues": 30,
+        "minimum": 0,
+        "maximum": 246
+      },
+      "d411": {
+        "writes": 9006,
+        "distinctValues": 6,
+        "minimum": 0,
+        "maximum": 9
+      },
+      "d412": {
+        "writes": 9006,
+        "distinctValues": 4,
+        "minimum": 0,
+        "maximum": 65
+      },
+      "d413": {
+        "writes": 9006,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 9
+      },
+      "d414": {
+        "writes": 9006,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 153
+      },
+      "d415": {
+        "writes": 9006,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d416": {
+        "writes": 9006,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d417": {
+        "writes": 9006,
+        "distinctValues": 1,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "d418": {
+        "writes": 9006,
+        "distinctValues": 2,
+        "minimum": 0,
+        "maximum": 15
+      }
+    },
+    "limitations": "Standard audits capture read-only/unused ports in each declared 32-byte window; explicit diagnostic projections may narrow this coverage. No SID reads, internal bus behavior, sound synthesis, interrupt/badline timing, bus-write timestamps, end detection, score equivalence or listening judgment."
+  },
+  "schedule": {
+    "method": "Pinned Extra driver note-column reads, discrete sound-start state and orderlist reads; exact ticks and instrument selections",
+    "noteCounts": [
+      288,
+      530,
+      478
+    ],
+    "lastNotes": [
+      {
+        "voice": 0,
+        "tick": 8681,
+        "nativeNote": 54,
+        "instrument": 1
+      },
+      {
+        "voice": 1,
+        "tick": 7955,
+        "nativeNote": 61,
+        "instrument": 2
+      },
+      {
+        "voice": 2,
+        "tick": 8782,
+        "nativeNote": 33,
+        "instrument": 3
+      }
+    ],
+    "stopTicks": [
+      8953,
+      8953,
+      8953
+    ],
+    "stopVolumeClearTick": 8953,
+    "postStopOffReads": [
+      52,
+      52,
+      52
+    ],
+    "postStopVolumeReads": [
+      52,
+      52,
+      52
+    ],
+    "postStopGatesAndVolumeClear": true,
+    "criticalNotes": [
+      {
+        "voice": 1,
+        "tick": 2440,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2465,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2484,
+        "midi": 75,
+        "frequencyWord": 10596,
+        "expectedFrequencyWord": 10596,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2503,
+        "midi": 74,
+        "frequencyWord": 10001,
+        "expectedFrequencyWord": 10001,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2516,
+        "midi": 74,
+        "frequencyWord": 10001,
+        "expectedFrequencyWord": 10001,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2541,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2554,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2573,
+        "midi": 75,
+        "frequencyWord": 10596,
+        "expectedFrequencyWord": 10596,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2604,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2617,
+        "midi": 69,
+        "frequencyWord": 7492,
+        "expectedFrequencyWord": 7492,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2642,
+        "midi": 68,
+        "frequencyWord": 7072,
+        "expectedFrequencyWord": 7072,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2655,
+        "midi": 68,
+        "frequencyWord": 7072,
+        "expectedFrequencyWord": 7072,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2680,
+        "midi": 68,
+        "frequencyWord": 7072,
+        "expectedFrequencyWord": 7072,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2699,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2712,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2743,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2756,
+        "midi": 84,
+        "frequencyWord": 17820,
+        "expectedFrequencyWord": 17820,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2781,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2800,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2813,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2857,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2876,
+        "midi": 75,
+        "frequencyWord": 10596,
+        "expectedFrequencyWord": 10596,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2895,
+        "midi": 75,
+        "frequencyWord": 10596,
+        "expectedFrequencyWord": 10596,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2920,
+        "midi": 74,
+        "frequencyWord": 10001,
+        "expectedFrequencyWord": 10001,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2933,
+        "midi": 74,
+        "frequencyWord": 10001,
+        "expectedFrequencyWord": 10001,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2958,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2971,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2977,
+        "midi": 75,
+        "frequencyWord": 10596,
+        "expectedFrequencyWord": 10596,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2990,
+        "midi": 75,
+        "frequencyWord": 10596,
+        "expectedFrequencyWord": 10596,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 2996,
+        "midi": 74,
+        "frequencyWord": 10001,
+        "expectedFrequencyWord": 10001,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 3021,
+        "midi": 69,
+        "frequencyWord": 7492,
+        "expectedFrequencyWord": 7492,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 3059,
+        "midi": 68,
+        "frequencyWord": 7072,
+        "expectedFrequencyWord": 7072,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 3072,
+        "midi": 68,
+        "frequencyWord": 7072,
+        "expectedFrequencyWord": 7072,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 3091,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 3116,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 3129,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 3135,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 3160,
+        "midi": 84,
+        "frequencyWord": 17820,
+        "expectedFrequencyWord": 17820,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 3173,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 3192,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 3217,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 6863,
+        "midi": 80,
+        "frequencyWord": 14144,
+        "expectedFrequencyWord": 14144,
+        "wordTolerance": 1,
+        "control": 17
+      },
+      {
+        "voice": 1,
+        "tick": 6989,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7002,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7021,
+        "midi": 75,
+        "frequencyWord": 10596,
+        "expectedFrequencyWord": 10596,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7052,
+        "midi": 74,
+        "frequencyWord": 10001,
+        "expectedFrequencyWord": 10001,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7065,
+        "midi": 74,
+        "frequencyWord": 10001,
+        "expectedFrequencyWord": 10001,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7090,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7103,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7122,
+        "midi": 75,
+        "frequencyWord": 10596,
+        "expectedFrequencyWord": 10596,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7141,
+        "midi": 74,
+        "frequencyWord": 10001,
+        "expectedFrequencyWord": 10001,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7166,
+        "midi": 69,
+        "frequencyWord": 7492,
+        "expectedFrequencyWord": 7492,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7191,
+        "midi": 68,
+        "frequencyWord": 7072,
+        "expectedFrequencyWord": 7072,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7204,
+        "midi": 68,
+        "frequencyWord": 7072,
+        "expectedFrequencyWord": 7072,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7229,
+        "midi": 68,
+        "frequencyWord": 7072,
+        "expectedFrequencyWord": 7072,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7248,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7261,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7280,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7305,
+        "midi": 84,
+        "frequencyWord": 17820,
+        "expectedFrequencyWord": 17820,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7330,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7349,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7362,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7406,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7419,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7425,
+        "midi": 75,
+        "frequencyWord": 10596,
+        "expectedFrequencyWord": 10596,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7438,
+        "midi": 75,
+        "frequencyWord": 10596,
+        "expectedFrequencyWord": 10596,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7444,
+        "midi": 75,
+        "frequencyWord": 10596,
+        "expectedFrequencyWord": 10596,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7469,
+        "midi": 74,
+        "frequencyWord": 10001,
+        "expectedFrequencyWord": 10001,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7482,
+        "midi": 74,
+        "frequencyWord": 10001,
+        "expectedFrequencyWord": 10001,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7507,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7520,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7526,
+        "midi": 75,
+        "frequencyWord": 10596,
+        "expectedFrequencyWord": 10596,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7539,
+        "midi": 75,
+        "frequencyWord": 10596,
+        "expectedFrequencyWord": 10596,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7545,
+        "midi": 74,
+        "frequencyWord": 10001,
+        "expectedFrequencyWord": 10001,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7558,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7621,
+        "midi": 68,
+        "frequencyWord": 7072,
+        "expectedFrequencyWord": 7072,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7640,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7665,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7678,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7684,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7697,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7722,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7741,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7766,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7798,
+        "midi": 68,
+        "frequencyWord": 7072,
+        "expectedFrequencyWord": 7072,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7823,
+        "midi": 68,
+        "frequencyWord": 7072,
+        "expectedFrequencyWord": 7072,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7836,
+        "midi": 68,
+        "frequencyWord": 7072,
+        "expectedFrequencyWord": 7072,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7842,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7855,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7880,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7899,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7924,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7937,
+        "midi": 70,
+        "frequencyWord": 7938,
+        "expectedFrequencyWord": 7938,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7943,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 1,
+        "tick": 7956,
+        "midi": 72,
+        "frequencyWord": 8910,
+        "expectedFrequencyWord": 8910,
+        "wordTolerance": 1,
+        "control": 33
+      },
+      {
+        "voice": 2,
+        "tick": 5214,
+        "midi": 54,
+        "frequencyWord": 3150,
+        "expectedFrequencyWord": 3150,
+        "wordTolerance": 1,
+        "control": 65
+      },
+      {
+        "voice": 2,
+        "tick": 5517,
+        "midi": 49,
+        "frequencyWord": 2360,
+        "expectedFrequencyWord": 2360,
+        "wordTolerance": 1,
+        "control": 65
+      },
+      {
+        "voice": 2,
+        "tick": 6326,
+        "midi": 49,
+        "frequencyWord": 2360,
+        "expectedFrequencyWord": 2360,
+        "wordTolerance": 1,
+        "control": 65
+      },
+      {
+        "voice": 2,
+        "tick": 6629,
+        "midi": 54,
+        "frequencyWord": 3150,
+        "expectedFrequencyWord": 3150,
+        "wordTolerance": 1,
+        "control": 65
+      }
+    ],
+    "limitations": "Discrete source-note scheduling and selected short-note full-pitch register frames are verified; ADSR reattacks, vibrato, per-voice PCM audibility and musical quality are not established by this check."
+  },
+  "pcm": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-full-selected/cache/candidate/45e8edb63532df03dcd0c7729600d2ed4dd152cd6b38871bfd9771570467b491/attempt-70adaa2632b64dfdb4cd9272ff1994a6/song/native-song.wav",
+    "sha256": "422607be667d8cb1b6578b4ac42c0bb945be347ec9cfafdac96e853a48f6acaf",
+    "format": "PCM16",
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 7921901,
+    "durationSeconds": 179.6349433106576,
+    "peak": 13113,
+    "peakDbfs": -7.954957475008059,
+    "clippedSamples": 0,
+    "rms": 2681.507564364258,
+    "acRms": 2514.631329135768,
+    "acRmsDbfs": -22.299512258937266,
+    "perChannel": [
+      {
+        "dc": 931.1885395942211,
+        "rms": 2681.507564364258,
+        "acRms": 2514.631329135768
+      }
+    ]
+  },
+  "endingAcRms": 0.0,
+  "excerpt": {
+    "path": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-full-selected/cache/candidate/45e8edb63532df03dcd0c7729600d2ed4dd152cd6b38871bfd9771570467b491/attempt-70adaa2632b64dfdb4cd9272ff1994a6/song/native-song.excerpt.wav",
+    "sourceStartFrame": 1423057,
+    "frames": 711528,
+    "durationSeconds": 16.134421768707483,
+    "sha256": "616e51740eb82a7d7028f8e4744346af0731e674b0c6a4b6c1296ff255c19949",
+    "gain": 1
+  },
+  "renderer": {
+    "command": [
+      "/Users/mbackschat/Projects/c64-sid-skill/.local/bin/render-sid",
+      "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-full-selected/cache/candidate/45e8edb63532df03dcd0c7729600d2ed4dd152cd6b38871bfd9771570467b491/attempt-70adaa2632b64dfdb4cd9272ff1994a6/song/export/candidate.sid",
+      "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-full-selected/cache/candidate/45e8edb63532df03dcd0c7729600d2ed4dd152cd6b38871bfd9771570467b491/attempt-70adaa2632b64dfdb4cd9272ff1994a6/song/native-song.wav",
+      "179.63493743118983",
+      "--clock",
+      "pal"
+    ],
+    "executableSha256": "f5f921f3d5f8570a564126573305845a85730b8a6c61788498f0c84901c6fd46",
+    "deadlineSeconds": 120,
+    "timedOut": false,
+    "returnCode": 0,
+    "stdout": "libsidplayfp 3.1.1 / SIDLite: 7921901 mono PCM16 samples at 44100 Hz, clock PAL, subtune 1 of 1, SID model MOS8580 (declared)",
+    "stderr": ""
+  },
+  "evidenceFiles": {
+    "writes": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-full-selected/cache/candidate/45e8edb63532df03dcd0c7729600d2ed4dd152cd6b38871bfd9771570467b491/attempt-70adaa2632b64dfdb4cd9272ff1994a6/song/native-song.writes.json",
+    "frames": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-full-selected/cache/candidate/45e8edb63532df03dcd0c7729600d2ed4dd152cd6b38871bfd9771570467b491/attempt-70adaa2632b64dfdb4cd9272ff1994a6/song/native-song.frames.json",
+    "nativeEvents": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-full-selected/cache/candidate/45e8edb63532df03dcd0c7729600d2ed4dd152cd6b38871bfd9771570467b491/attempt-70adaa2632b64dfdb4cd9272ff1994a6/song/native-song.native-events.json"
+  },
+  "limitations": "RAM-only CPU scheduling evidence and emulated PCM health; first-frame audible pitch and ADSR equivalence are limited by the native driver, no hardware or listening approval is claimed."
+}
