@@ -33,6 +33,10 @@ Use the [project overview](../README.md) for SID Song Crafter's purpose and curr
 
 - [Three-voice baseline architecture](architecture/three-voice-player.md): arrangement contract, supported capabilities, timing and binary exports.
 
+## Review proposed work
+
+- [Web player and arrangement analyser](proposals/web-player-and-analyser.md): Safari requirements, public and local SID playback, instrument/arrangement exploration, optional analysis packages and playback-library alternatives; technology stack remains open.
+
 ## Read the song studies
 
 - [First-song opening](songs/first-song.md): editable score, assembler and independent CPU verification.
