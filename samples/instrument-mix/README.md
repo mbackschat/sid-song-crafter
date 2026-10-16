@@ -2,7 +2,7 @@
 
 [Mono SID](instrument-mix.sid) · [Mono WAV](instrument-mix.wav) · [Stereo SID](instrument-mix-stereo.sid) · [Stereo WAV](instrument-mix-stereo.wav)
 
-The mono sample retains its [recorded listening scope](manifest.json). The new stereo presentation keeps the same notes, instruments and timing: pulse lead centered, pluck left, bass right. It has complete CPU register checks, sampled headless VICE checks and rendered signal checks; stereo listening acceptance remains pending. No original reference recording is included.
+The mono sample retains its [recorded listening scope](manifest.json). The new stereo presentation keeps the same notes, instruments and timing: pulse lead centered, pluck left, bass right. It has complete CPU register checks, sampled headless VICE checks and rendered signal checks; stereo placement and balance are accepted on 2026-10-16. No original reference recording is included.
 
 ## Materials
 
@@ -25,4 +25,6 @@ Use the [setup guide](../../docs/setup/local-setup.md) for the renderer, Python 
 
 The rights basis remains the [mono manifest](manifest.json): project-authored notes and instruments under MIT. SID-Wizard's embedded player retains its [separate notice](../../THIRD_PARTY_NOTICES.md#build-playback-and-validation-components). The stereo manifest pins outputs, source files and tool fingerprints.
 
-Model-assistance review, 2026-10-16: no call. Existing model trials cannot approve stereo placement or musical preference; reassess after human listening feedback.
+Listening verdict, 2026-10-16: “All three accepted” in response to the Pink Panther, Moon River and instrument-mix stereo placement/balance review. This closes this sample presentation without extending its musical or hardware scope.
+
+Model-assistance feedback/closure review: no call; the human verdict settles this presentation and existing models cannot adjudicate stereo preference. Reassess only for a new musical revision.

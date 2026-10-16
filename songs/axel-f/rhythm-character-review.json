@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-16",
-  "status": "awaiting-listening",
+  "status": "not-selected-triangle-too-faint-maracas-distracting",
   "scope": "16.134432-second source hook on the positively received full tonal palette; compare no percussion, retained AD13 maracas character and new falling triangle. No full-song integration or musical acceptance inferred.",
   "configuration": "songs/axel-f/rhythm-character.json",
   "recipe": "config/listening/axel-f-rhythm-character.json",
@@ -193,10 +193,14 @@
       "sha256": "e786bfd9a2431832b7fba70539ff561a10fc24e17323aaf681bf9b1969066309"
     }
   },
-  "listeningVerdict": null,
+  "listeningVerdict": {
+    "date": "2026-10-16",
+    "quote": "I head triangle, but's it's very faint. And with Maracas, I fear it's more of a distraction.  H\u00fclsbeck did it better",
+    "scope": "Triangle heard but very faint; retained maracas described as distracting; neither selected for full integration. Master comparison preference retained."
+  },
   "modelAssistance": {
     "decision": "no-call",
-    "reason": "Existing model trials cannot establish percussion suitability or override the human maracas rejection. Numeric execution and signal checks prepare this audition only.",
-    "nextCheckpoint": "Listener feedback or case closure"
+    "reason": "Human feedback finds triangle too faint and maracas distracting. Model inference cannot select a replacement; inspect the executed master arrangement and actual gated body first.",
+    "nextCheckpoint": "Materially different percussion-role audition or case closure"
   }
 }

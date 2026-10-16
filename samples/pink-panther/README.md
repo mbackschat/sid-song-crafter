@@ -1,6 +1,6 @@
 # Pink Panther sample materials
 
-This package produces **mono and stereo SID/WAV files locally**, with editable SWM/SWS modules. The [owning song study](../../songs/pink-panther/README.md) retains the source attribution, original score reduction and scoped mono acceptance. The new stereo presentation preserves those notes and instruments: melody centered, bass left, pulse accompaniment right. Stereo listening acceptance is pending.
+This package produces **mono and stereo SID/WAV files locally**, with editable SWM/SWS modules. The [owning song study](../../songs/pink-panther/README.md) retains the source attribution, original score reduction and scoped mono acceptance. The new stereo presentation preserves those notes and instruments: melody centered, bass left, pulse accompaniment right. Stereo placement and balance are accepted on 2026-10-16.
 
 Composition and source-arrangement redistribution permissions remain unresolved. This is the always-included materials tier: recipes, shared tools and source references are public; downloaded MIDI, generated score/modules and SID/WAV outputs remain in ignored local storage. The recipe contains no embedded notes.
 
@@ -26,4 +26,6 @@ Open `build/sample-pink-panther-stereo/listening.md` for the mono SID/WAV, stere
 
 Target PAL MOS8580, one call per video frame, chips at `$D400` and `$D420`. Route A left and B right. A1/B1 duplicate the melody; A2 keeps the original bass; B3 keeps the original harmony. A3/B2 are silent. Original physical oscillator indices and active filter settings are verified; sounding sync/ring programs are excluded. This expands stereo placement without composing additional parts. Rendered WAVs use 44.1 kHz stereo PCM16 at unity gain. Other players must reproduce the output routing; matching registers does not imply physical phase coherence.
 
-Model-assistance review, 2026-10-16: no call. These exports need human placement feedback; current models have no demonstrated authority to settle it. Reassess after that feedback.
+Listening verdict, 2026-10-16: “All three accepted” in response to the Pink Panther, Moon River and instrument-mix stereo placement/balance review. This closes this sample presentation without extending its musical or hardware scope.
+
+Model-assistance feedback/closure review: no call; the human verdict settles this presentation and existing models cannot adjudicate stereo preference. Reassess only for a new musical revision.
