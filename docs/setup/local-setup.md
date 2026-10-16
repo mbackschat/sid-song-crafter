@@ -2,7 +2,7 @@
 
 ## Components and current capabilities
 
-The project installs ignored, checksum-pinned upstream skills under [skills](../../skills/README.md), third-party checkouts/builds under `.tools/`, runtime state under `.local/`, and a machine-specific MCP configuration under `.codex/`. Keep upstream revisions and notices intact.
+The project installs ignored, checksum-pinned upstream skills under [skills](../../skills/README.md), third-party checkouts/builds under `.tools/`, runtime state under `.local/`, and machine-specific MCP configurations in ignored `.codex/config.toml` (Codex) and `.mcp.json` (Claude Code). Keep upstream revisions and notices intact.
 
 | Component | Local source | Revision |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ python3 scripts/doctor.py
 
 The [manifest](../../config/local-assets.json) owns URLs, credits, commit pins and hashes. Default setup installs two DRAX reference tunes and the hardware skill. `--include flashdance-historical` adds the historical alternative; `--include sid-music` adds bridge instructions. `--only references` or `--only skills` limits installation. `--offline` uses existing verified files and pinned objects from local Git checkouts; `--check` performs read-only verification. Modified files are preserved and rejected, not silently overwritten. Downloads are verified before publishing their destination.
 
-Reference binaries live under ignored `.local/`; installed skill directories are ignored targets of the portable `.agents/skills/` links. Read [skill corrections](skill-guidance.md) before using them. A new agent session may be needed for discovery.
+Reference binaries live under ignored `.local/`; installed skill directories are ignored targets of the portable `.agents/skills/` links. Codex discovers skills there; Claude Code reads `.claude/skills/`, which is a tracked relative link to `../.agents/skills`, so both hosts share every activation and setup needs no host-specific step. A headless Claude Code 2.1.301 session discovered `c64-sid` and `sid-music` through this chained link on 2026-10-16; `tests/project_setup_test.py` guards the link. Claude-local settings stay in ignored `.claude/settings.local.json`. Read [skill corrections](skill-guidance.md) before using them. A new agent session may be needed for discovery.
 
 ### Original SID downloads on demand
 
@@ -83,7 +83,7 @@ To assess an explicit low-RAM host without changing the reference, add `--host-b
 
 Doctor supports `--json`, `--vice PATH`, `--vice-data PATH` and `--renderer PATH`, or `VICE_BINARY`, `VICE_DIRECTORY` and `SID_RENDERER`. It checks py65, renderer loading, headless VICE identification, expected ROM sizes and asset hashes; Mido and the bridge are optional. VICE identification from adjacent `config.h` is build evidence, not an emulator startup test. Use [native checkpoints](../validation/native-vice-checks.md) for actual execution. Setup does not install system packages or build VICE: use [the headless build instructions](vice-startup-investigation.md) and [renderer/dependency setup](../workflows/audio-workflow.md).
 
-For optional live bridge use, prepare the pinned checkout described in the [project README](../../README.md#prepare-the-assembler), run `bun install --frozen-lockfile` there, and adapt [the configuration example](../../config/codex.toml) before activating it. Keep the upstream Bun lockfile. A skill installation alone neither installs the server nor establishes emulator connectivity.
+For optional live bridge use, prepare the pinned checkout described in the [project README](../../README.md#prepare-the-assembler), run `bun install --frozen-lockfile` there, and adapt the host's configuration example before activating it: [Codex](../../config/codex.toml) as `.codex/config.toml`, or [Claude Code](../../config/claude-mcp.json) as `.mcp.json` (or pass it with `claude --mcp-config`). Both declare the same server and environment; the Claude file uses `bun --cwd` in place of Codex's `cwd` key. With Claude Code 2.1.301, `--mcp-config config/claude-mcp.json` completed the stdio handshake and discovered 17 `c64bridge` tools on 2026-10-16; that establishes discovery, not emulator connectivity. Keep the upstream Bun lockfile. A skill installation alone neither installs the server nor establishes emulator connectivity.
 
 ### Optional local audio models
 

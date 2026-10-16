@@ -67,7 +67,7 @@ The headless VICE build additionally uses locally installed pkgconf 3.0.8, dos2u
 | [sunsided/c64-skills](https://github.com/sunsided/c64-skills/tree/480b253b147655fa6ff6eb74577d1a2523d512d4) | Commit `480b253b147655fa6ff6eb74577d1a2523d512d4`; selected SID instructions and references installed into ignored `skills/c64-sid/` | No top-level license was established at this revision. Bundled historical manual extracts can carry separate rights. Local installation and public availability do not establish permission to redistribute them; they are outside the MIT grant. |
 | [c64bridge `sid-music`](https://github.com/chrisgleissner/c64bridge/tree/0781a7b6cfe7b92bbb6d68e048ad396bd3edfb18/.github/skills/sid-music) | Optional installation into ignored `skills/sid-music/`; same pinned revision as c64bridge above | Retains the upstream GPL v2 `LICENSE`. See the c64bridge declarations above. |
 
-The tracked `.agents/skills/` entries are activation symlinks; downloaded bodies remain local. [Skill provenance and corrections](skills/README.md) describe the installation contract and its rights limits.
+The tracked `.agents/skills/` entries, and the `.claude/skills` link to that directory, are activation symlinks; downloaded bodies remain local. [Skill provenance and corrections](skills/README.md) describe the installation contract and its rights limits.
 
 ## Optional audio-model research
 

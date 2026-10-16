@@ -1,7 +1,8 @@
 import hashlib
 import importlib.util
 import json
-from pathlib import Path
+import os
+from pathlib import Path, PurePosixPath
 import sys
 import tempfile
 import unittest
@@ -95,6 +96,17 @@ class ProjectSetupTests(unittest.TestCase):
         self.skill['revision'] = 'main'
         with self.assertRaisesRegex(ValueError, 'revision'):
             setup.validate_manifest(self.manifest)
+
+    def test_claude_code_discovers_the_shared_skill_activation_directory(self):
+        # Codex reads .agents/skills and Claude Code reads .claude/skills; one relative
+        # directory link keeps every manifest activation visible to both hosts.
+        link = ROOT / '.claude/skills'
+        self.assertTrue(link.is_symlink())
+        self.assertEqual(os.readlink(link), '../.agents/skills')
+        manifest = json.loads((ROOT / 'config/local-assets.json').read_text())
+        for skill in manifest['skills']:
+            with self.subTest(skill=skill['id']):
+                self.assertEqual(link.resolve(), (ROOT / PurePosixPath(skill['activation']).parent).resolve())
 
 
 if __name__ == '__main__':
