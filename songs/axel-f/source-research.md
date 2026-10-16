@@ -54,7 +54,7 @@ The existing importer succeeds without source modification and retains exact not
 
 The source's constant tempo also omits the small cue-dependent changes described by Faltermeyer. Slurs, engraved articulation, enharmonic spelling, printed repeat directions and pedal notation cannot be recovered from this MIDI. A score-based audition can assess the retained musical material, while the official original recording remains the expressive reference.
 
-No permission to redistribute the composition or this MIDI arrangement has been established. Apply the [always-included public package tier](../../CLAUDE.md#public-repository-boundary): source references, hash, notes-free recipes, our tools and reusable instruments may be public; downloaded MIDI, imported scores, native musical sources, SID/PRG files and rendered song audio remain private under ignored directories. The converter repository's availability does not clear the embedded musical arrangement.
+No permission to redistribute the composition or this MIDI arrangement has been established. Apply the [always-included public package tier](../../docs/workflows/publication-boundary.md): source references, hash, notes-free recipes, our tools and reusable instruments may be public; downloaded MIDI, imported scores, native musical sources, SID/PRG files and rendered song audio remain private under ignored directories. The converter repository's availability does not clear the embedded musical arrangement.
 
 Reproduce the complete private import with the existing tool:
 

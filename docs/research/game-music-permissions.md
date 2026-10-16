@@ -1,6 +1,6 @@
 # Game-music publication permissions
 
-Checked 2026-10-15 for the studied repertoire. This records the evidence for distributing our song packages, separately from musical acceptance. The [asset registry](../../config/local-assets.json) owns source URLs, hashes and exact archive identities; the [publication policy](../../CLAUDE.md#public-repository-boundary) owns the packaging rules.
+Checked 2026-10-15 for the studied repertoire. This records the evidence for distributing our song packages, separately from musical acceptance. The [asset registry](../../config/local-assets.json) owns source URLs, hashes and exact archive identities; the [publication policy](../workflows/publication-boundary.md) owns the packaging rules.
 
 ## Result
 

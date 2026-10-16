@@ -80,6 +80,8 @@ The `-version` shortcut calls `archdep_program_name()` in `src/main.c` before `a
 
 Localhost monitor binding is independently denied in the restricted runner (`bind() failed: Operation not permitted`). A genuine headless executable therefore supports offline file-based verification here but does not establish a live c64bridge monitor connection. Use [the PRG/audio workflow](../workflows/audio-workflow.md#full-prg-execution-in-headless-vice) and [native checkpoints](../validation/native-vice-checks.md); a live monitor requires a runner that permits localhost sockets.
 
+Both GTK OpenGL failure and denied socket binding are properties of the restricted Codex runner, not of every agent launch. On 2026-10-16 a c64bridge server started by the Codex app-server (outside that runner) had kept GTK VICE 3.9 running minimized since 13:36, with `x64sc` listening on `127.0.0.1:6502` (`lsof`). That observation establishes process startup and monitor binding only; live bridge control and audio were not exercised. Check the actual launch context before applying either restriction, and keep headless VICE as the reproducible default.
+
 ## External monitor attachment
 
 The pinned bridge's `ViceBackend.ensureProcessInternal()` probes the configured monitor with `info()` and `exitMonitor()` before launching. A successful probe attaches without resetting or taking ownership of an externally started process; bridge shutdown terminates only supervised processes. A failed probe falls through to managed launch, so this is not an unconditional attach-only mode.

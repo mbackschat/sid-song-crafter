@@ -329,7 +329,7 @@ Correct dual-SID playback is a selection gate, not optional polish. Final librar
 
 Use the [sample library](../../samples/README.md), its owning package READMEs and manifests as the current source of truth. The catalog expanded during this discussion: it now includes additional stereo exports and local-build-only material. Do not freeze the earlier four-entry inventory into application requirements.
 
-Represent every sample package with its actual availability and scope. Offer online playback/downloads only for publication-cleared files. Materials-only entries can explain the work and point to reproducible local recipes; they must not expose uncleared music. A user may open a locally obtained file without it becoming part of the public catalog. Preserve the [publication boundary](../../CLAUDE.md#public-repository-boundary) and song-specific attribution/licenses.
+Represent every sample package with its actual availability and scope. Offer online playback/downloads only for publication-cleared files. Materials-only entries can explain the work and point to reproducible local recipes; they must not expose uncleared music. A user may open a locally obtained file without it becoming part of the public catalog. Preserve the [publication boundary](../workflows/publication-boundary.md) and song-specific attribution/licenses.
 
 Keep full versions, excerpts and separately exported entrances distinct. The [current Rambo packages](../../samples/README.md#rambo-entrance) include native main-music exports with fresh SID oscillator/envelope history; those are not equivalent to seeking through the complete original-introduction version. Both can be useful, but their timelines and explanations must match their exact files.
 

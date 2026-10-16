@@ -39,4 +39,4 @@ Bach uses the public-domain composition and Anonymous's public-domain Mutopia 17
 
 The Rambo loader and derived stereo arrangement are separately [GPLv3 licensed](rambo-loader/LICENSE), with Martin Galway attribution and corresponding source linked in each package. That grant is specific to the loader. No original reference SID or third-party performance recording is bundled.
 
-Moon River and Pink Panther use the always-included materials tier under the [publication policy](../CLAUDE.md#public-repository-boundary). Their recipes, source references, tool links and verification hashes are public; source MIDI, generated notes/modules and SID/WAV files remain local while redistribution permissions are unresolved.
+Moon River and Pink Panther use the always-included materials tier under the [publication policy](../docs/workflows/publication-boundary.md). Their recipes, source references, tool links and verification hashes are public; source MIDI, generated notes/modules and SID/WAV files remain local while redistribution permissions are unresolved.

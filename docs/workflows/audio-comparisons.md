@@ -31,6 +31,8 @@ Before publishing a source-fidelity ending comparison, verify source behavior th
 
 Ask separately whether sound/phrasing is preserved, the ending works, and the transfer is musically useful. Name the familiar source phrase and reused sounds before asking for transfer feedback, and supply its same-material reference. For an optional original-composition exercise, explicitly label the music as newly composed; it has no original recording of the same phrase, so a standalone original is acceptable when that distinction is clear. When supplying the source tune to compare instrument character, label it as a timbral reference rather than a same-melody A/B. Always supply the reference alongside a generated reconstruction. Give the full reference and candidate links in the first request so an ending judgment never requires another request for the original. Full-form review remains required for completion, but routine revisions can target the affected passage. Record answered questions with their exact scope and do not ask them again without a relevant change.
 
+Label each clip's provenance: original, muted diagnostic, independent recreation or hybrid. Retain original levels and record any gain; for a contextual substitution, apply one common gain to both versions so the change is not normalized away.
+
 Keep reference renders and every comparison containing reference audio outside Git and LFS. Retain reproducible commands, hashes, settings, gains and segment boundaries in the owning recipe; record listening judgments separately from immutable generated receipts.
 
 ## Verify a two-chip presentation

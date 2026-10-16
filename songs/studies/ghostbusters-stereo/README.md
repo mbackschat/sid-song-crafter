@@ -110,7 +110,7 @@ python3 scripts/evidence.py verify --group ghostbusters-stereo-articulated-full
 
 The first-audition, post-feedback and closure model-assistance reviews select no model call: existing calibration does not qualify a model to approve spatial placement, support benefit, balance or this timbral preference. The human verdicts remain authoritative: the persistent hold and moving-pulse trial are rejected, while the complete static articulated version is selected with its plain-tone qualification. Reassess only for a new request or materially changed assessment configuration; no further model trial is queued.
 
-Publication uses the [always-included tier](../../../CLAUDE.md#public-repository-boundary): tools, note-free recipe, attribution, source hashes and reproducible safe summaries. Underlying composition, C64 arrangement and speech rights remain [unresolved](../../../docs/research/game-music-permissions.md); source-derived score ledgers, exports and audio stay private. No original SID, decoded speech stream or lossless source-audio trace is added to Git.
+Publication uses the [always-included tier](../../../docs/workflows/publication-boundary.md): tools, note-free recipe, attribution, source hashes and reproducible safe summaries. Underlying composition, C64 arrangement and speech rights remain [unresolved](../../../docs/research/game-music-permissions.md); source-derived score ledgers, exports and audio stay private. No original SID, decoded speech stream or lossless source-audio trace is added to Git.
 
 ### Full listening: articulation works, timbre remains too plain
 
