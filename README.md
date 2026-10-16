@@ -61,7 +61,7 @@ The clone command leaves optional compressed research evidence as Git LFS pointe
 You need Python 3.9+, uv, `curl`, `make` and a C/C++ compiler. Run the following commands from the repository directory:
 
 ```sh
-uv --cache-dir .local/uv-cache pip install --target .tools/test-deps py65==1.2.0
+uv --cache-dir .local/uv-cache pip install --python "$(command -v python3)" --target .tools/test-deps py65==1.2.0
 python3 scripts/setup-sidwizard.py
 ```
 
@@ -172,7 +172,7 @@ The new stereo presentations retain the source notes and instruments, with the m
 Follow the [own-score MIDI-to-SID walkthrough](docs/workflows/own-score.md) to import a complete MIDI, declare its three-voice reduction, configure native sounds and export a playable SID. Its short example starts with the retained Bach MIDI and generates its score from scratch. After the [native setup](#requirements-and-setup) and MIDI dependency installation:
 
 ```sh
-uv --cache-dir .local/uv-cache pip install --target .tools/arrangement-deps mido==1.3.3 packaging==24.2
+uv --cache-dir .local/uv-cache pip install --python "$(command -v python3)" --target .tools/arrangement-deps mido==1.3.3 packaging==24.2
 PYTHONPATH=.tools/arrangement-deps python3 scripts/prepare-score-audition.py songs/studies/bach-toccata-opening/source/ToccataFugue.mid config/own-score/import.json --arrangement config/own-score/reduction.json --candidate config/own-score/native.json --reference config/own-score/plain.json --output build/own-score-inputs
 python3 scripts/native-song.py build build/own-score-inputs/candidate.json --output build/own-score-native --excerpt-seconds 8
 ```

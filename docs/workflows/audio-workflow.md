@@ -9,11 +9,12 @@ The [audio integration tests](../../tests/render_audio_test.py) verify independe
 The [Homebrew libsidplayfp package](https://formulae.brew.sh/formula/libsidplayfp) provides the pinned Apple Silicon bottle below. This `arm64_tahoe` package was verified for the local ARM64 macOS 27.0.1 host; other platforms need the matching package. Retain its GPL-2.0-or-later notice, authors and formula.
 
 ```sh
-curl --connect-timeout 4 --max-time 20 -fsSL -H 'Authorization: Bearer QQ==' 'https://ghcr.io/v2/homebrew/core/libsidplayfp/blobs/sha256:7e28827526f55a6b86db4ab3f6ec73d8444f0d0c70c1b2c1144928b19d8ce0dc' -o /private/tmp/c64-sid-libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz
-python3 -c 'import hashlib; from pathlib import Path; assert hashlib.sha256(Path("/private/tmp/c64-sid-libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz").read_bytes()).hexdigest() == "7e28827526f55a6b86db4ab3f6ec73d8444f0d0c70c1b2c1144928b19d8ce0dc"'
-tar -tf /private/tmp/c64-sid-libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz
+mkdir -p .local/downloads
+curl --connect-timeout 10 --max-time 60 -fsSL -H 'Authorization: Bearer QQ==' 'https://ghcr.io/v2/homebrew/core/libsidplayfp/blobs/sha256:7e28827526f55a6b86db4ab3f6ec73d8444f0d0c70c1b2c1144928b19d8ce0dc' -o .local/downloads/libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz
+python3 -c 'import hashlib; from pathlib import Path; assert hashlib.sha256(Path(".local/downloads/libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz").read_bytes()).hexdigest() == "7e28827526f55a6b86db4ab3f6ec73d8444f0d0c70c1b2c1144928b19d8ce0dc"'
+tar -tf .local/downloads/libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz
 mkdir -p .local/tools
-tar -xf /private/tmp/c64-sid-libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz -C .local/tools
+tar -xf .local/downloads/libsidplayfp-3.1.1.arm64_tahoe.bottle.tar.gz -C .local/tools
 mkdir -p .local/bin
 c++ -std=c++17 -O2 -Wall -Wextra -Werror -I.local/tools/libsidplayfp/3.1.1/include scripts/render-sid.cpp .local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a -o .local/bin/render-sid
 ```

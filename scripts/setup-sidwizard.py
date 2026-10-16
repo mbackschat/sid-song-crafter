@@ -3,9 +3,11 @@
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import tarfile
+import tempfile
 import zipfile
 
 
@@ -25,12 +27,30 @@ def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def acquire(path, url, digest):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    if not path.exists():
-        subprocess.run(["curl", "--fail", "--location", "--connect-timeout", "5", "--max-time", "60", url, "-o", str(path)], check=True, timeout=75)
+def _verify_archive(path, digest):
     if sha256(path) != digest:
         raise ValueError(f"Pinned archive checksum mismatch: {path}")
+
+
+def acquire(path, url, digest):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists():
+        _verify_archive(path, digest)
+        return
+    for attempt in range(2):
+        with tempfile.NamedTemporaryFile(dir=path.parent, prefix=f".{path.name}.", suffix=".download") as temporary:
+            try:
+                subprocess.run(["curl", "--fail", "--location", "--connect-timeout", "15", "--max-time", "60", url, "-o", temporary.name], check=True, timeout=75)
+            except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+                if attempt == 1:
+                    raise
+                continue
+            _verify_archive(Path(temporary.name), digest)
+            try:
+                os.link(temporary.name, path)
+            except FileExistsError:
+                _verify_archive(path, digest)
+            return
 
 
 def setup(sid_count=1):

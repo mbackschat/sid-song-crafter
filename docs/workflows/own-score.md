@@ -9,7 +9,7 @@ The example covers source beats 0–10 of J. S. Bach's *Toccata and Fugue in D m
 Run commands from the repository root. Follow [requirements and native setup](../../README.md#requirements-and-setup), including the [SID renderer](audio-workflow.md#pinned-library-setup), then install the pinned MIDI dependencies:
 
 ```sh
-uv --cache-dir .local/uv-cache pip install --target .tools/arrangement-deps mido==1.3.3 packaging==24.2
+uv --cache-dir .local/uv-cache pip install --python "$(command -v python3)" --target .tools/arrangement-deps mido==1.3.3 packaging==24.2
 python3 scripts/doctor.py --profile demo --sid-count 1
 ```
 
