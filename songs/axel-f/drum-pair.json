@@ -1,0 +1,129 @@
+{
+  "format": "axel-f-drum-pair-v1",
+  "projectionFingerprint": "aae3229c2029f442d8a882f555a343509134d6dac722aa35a7a7865f1bb7ac42",
+  "paletteFingerprint": "3afb7796130c1d0fd76862f2d3f3c34a139d76020270e7458ff892b6d00ce658",
+  "expectedSourceCounts": {
+    "kick": 48,
+    "snare": 16
+  },
+  "expectedOutputCounts": {
+    "kick": 36,
+    "snare": 16
+  },
+  "expectedSharedOnsets": 12,
+  "collisionPriority": "snare",
+  "roles": {
+    "kick": {
+      "sourceMidi": 36,
+      "durationSeconds": 0.24,
+      "instrument": {
+        "name": "BODYKICK",
+        "control": "0a",
+        "hard_restart_adsr": "0f00",
+        "adsr": "2052",
+        "frame1": "09",
+        "wave": [
+          [
+            "81",
+            "ba",
+            "00"
+          ],
+          [
+            "11",
+            "b5",
+            "00"
+          ],
+          [
+            "11",
+            "b1",
+            "00"
+          ],
+          [
+            "11",
+            "ac",
+            "00"
+          ],
+          [
+            "11",
+            "a5",
+            "00"
+          ],
+          [
+            "11",
+            "99",
+            "00"
+          ],
+          [
+            "11",
+            "8d",
+            "00"
+          ],
+          [
+            "11",
+            "81",
+            "00"
+          ]
+        ],
+        "pulse": [],
+        "filter": []
+      }
+    },
+    "snare": {
+      "sourceMidi": 38,
+      "durationSeconds": 0.18,
+      "instrument": {
+        "name": "FALLSNAR",
+        "control": "0a",
+        "hard_restart_adsr": "0f00",
+        "adsr": "2092",
+        "frame1": "09",
+        "wave": [
+          [
+            "81",
+            "d5",
+            "00"
+          ],
+          [
+            "81",
+            "d3",
+            "00"
+          ],
+          [
+            "81",
+            "cf",
+            "00"
+          ],
+          [
+            "81",
+            "c9",
+            "00"
+          ],
+          [
+            "81",
+            "bd",
+            "00"
+          ],
+          [
+            "81",
+            "a5",
+            "00"
+          ],
+          [
+            "81",
+            "81",
+            "00"
+          ]
+        ],
+        "pulse": [],
+        "filter": []
+      }
+    }
+  },
+  "rationale": "The triangle-on-maracas rhythm was faint and maracas distracting. Test source kick/snare roles with distinct noise-to-tone and falling-noise programs inspired by the executed master; omit the maracas and continuous shaker. Native drum durations are deliberately extended and capped at the next source onset to preserve body on this player.",
+  "sourceBasis": {
+    "study": "songs/axel-f/huelsbeck-arrangement-observations.json",
+    "sidSha256": "87e0a1e8ad618a497e54fc5d4228dee7be53ef6365a30900debcdafbcd21251b",
+    "programs": "AD20/SR50 noise-to-triangle and AD20/SR90 falling noise; native adaptation compresses the attack and quantizes pitch, with release2. Not exact source emulation."
+  },
+  "scope": "One short source-score drum-role adaptation; lead/bass and shared controls unchanged. Snare owns shared source onsets because one free voice cannot sustain both drums independently."
+}

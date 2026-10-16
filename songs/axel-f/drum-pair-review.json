@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "status": "relative-improvement-still-boring-not-selected",
+  "configuration": "songs/axel-f/drum-pair.json",
+  "recipe": "config/listening/axel-f-drum-pair.json",
+  "selection": "config/listening/axel-f-drum-pair.audition.json",
+  "scope": "Short source-score drum-role audition; no full-song integration. Master-inspired timbres with deliberately adapted durations and snare priority on shared onsets.",
+  "sourceCounts": {
+    "kick": 48,
+    "snare": 16
+  },
+  "outputCounts": {
+    "kick": 36,
+    "snare": 16
+  },
+  "sharedOnsets": 12,
+  "sourceDurationAdaptation": true,
+  "execution": {
+    "calls": 987,
+    "maximumPlayCycles": 2309,
+    "frameCycleBudget": 19656,
+    "tonalBoundary": {
+      "changedOffsets": [
+        7,
+        8,
+        11,
+        12,
+        13
+      ],
+      "matchedOrderedNonPercussionStores": 17783,
+      "maximumInstructionStartDifferenceCycles": 397
+    },
+    "viceCheckpoints": [
+      0,
+      1,
+      3,
+      6,
+      150,
+      400,
+      810,
+      930,
+      980
+    ],
+    "viceMaximumAbsoluteCycleError": 3
+  },
+  "diagnostics": {
+    "phrasePcm": {
+      "full": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 11557,
+        "peakDbfs": -9.05209643365335,
+        "clippedSamples": 0,
+        "rms": 4075.9872096429804,
+        "acRms": 3434.2740735267907,
+        "acRmsDbfs": -19.59229967436424,
+        "perChannel": [
+          {
+            "dc": 2195.3207786277776,
+            "rms": 4075.9872096429804,
+            "acRms": 3434.2740735267907
+          }
+        ]
+      },
+      "drumsOnly": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 4524,
+        "peakDbfs": -17.198546774126005,
+        "clippedSamples": 0,
+        "rms": 880.9649301979474,
+        "acRms": 862.5458904397203,
+        "acRmsDbfs": -31.5933544924722,
+        "perChannel": [
+          {
+            "dc": 179.2032229738748,
+            "rms": 880.9649301979474,
+            "acRms": 862.5458904397203
+          }
+        ]
+      },
+      "muted": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 8942,
+        "peakDbfs": -11.2803053885541,
+        "clippedSamples": 0,
+        "rms": 3969.6475962395034,
+        "acRms": 3321.8801642942303,
+        "acRmsDbfs": -19.8813194717723,
+        "perChannel": [
+          {
+            "dc": 2173.29570293566,
+            "rms": 3969.6475962395034,
+            "acRms": 3321.8801642942303
+          }
+        ]
+      }
+    },
+    "contributionRms": 782.0936794012158,
+    "preStopReleaseAcRms": 0.0,
+    "maximumBeforeNextOnsetAcRms": 865.7137549178731,
+    "snapshotsMatch": true,
+    "roles": {
+      "kick": {
+        "nonzeroAttackWindows": 36,
+        "minimumAttackWindowAcRms": 543.6586936194914,
+        "gatedBodyCalls": {
+          "10": 28,
+          "4": 5,
+          "5": 3
+        }
+      },
+      "snare": {
+        "nonzeroAttackWindows": 16,
+        "minimumAttackWindowAcRms": 736.4490131070031,
+        "gatedBodyCalls": {
+          "7": 16
+        }
+      }
+    }
+  },
+  "artifacts": {
+    "reference": {
+      "path": "build/axel-f-drum-pair/cache/drums-muted/1f6de3ed1e73d9bae3db3b02522c10e21bb919d0b54c7f2442359a218d569ec6/attempt-de462ded67c84a2f9a08b06f68ee07f7/drums-muted.wav",
+      "sha256": "9b5eb2dea7282b62ea4945ac26fc0776ede583a4315bd40278d6c22b5e031c1d"
+    },
+    "candidate": {
+      "path": "build/axel-f-drum-pair/cache/candidate/921e415645bcaceab86317175c153f64c3b1d343a560b50b62dfcedd40576c23/attempt-934f1b4eff4541a687db66e0682d8da4/song/native-song.wav",
+      "sha256": "0119c2536f5db68eadbe06076575ed0c90ea276414058568dc16c214f97418e7"
+    },
+    "comparison": {
+      "path": "build/axel-f-drum-pair/cache/comparison/ba3bb99cb65941fb3b0c02a23ea066d6dba6d2c9b8ef4ec897862bcb6414b8d8/attempt-339780cec472439dbee1a4dc247ae87a/without-then-drums.ab.wav",
+      "sha256": "881e495549a70c70eb0be897ec1cc93c97f8065fe9f357c25676f6b61b58ebf4"
+    },
+    "verification": {
+      "path": "build/axel-f-drum-pair/cache/candidate/921e415645bcaceab86317175c153f64c3b1d343a560b50b62dfcedd40576c23/attempt-934f1b4eff4541a687db66e0682d8da4/song/verification.json",
+      "sha256": "22e3f6221d4cbfc30eb1a1816dc129c3f9bb0e438c13d6960899dc2aeafe903b"
+    },
+    "vice": {
+      "path": "build/axel-f-drum-pair/cache/vice/1e243d6c93607669c99815a01b074f90f572c43d0c86c2a6a98067738e1af14a/attempt-426a1e116ac743169bb06ffa8f96c196/vice/verification.json",
+      "sha256": "afae965aa36596a7fa08958b95478e063eeda2389432366cc2f973df3e366be1"
+    },
+    "mechanism": {
+      "path": "build/axel-f-drum-pair/cache/mechanism/59d99994b158517f4912cbc2f287946bcaa723f9e3585f3d2de4f67be87ba547/attempt-e030f246e9924127b29c17b2fde20ca8/mechanism.json",
+      "sha256": "85ed18c6578d6c63635ac8524841c88ce58bfb799431ee37de6489c9e85dc9eb"
+    },
+    "adaptation": {
+      "path": "build/axel-f-drum-pair/cache/trial/4d95f9bf1295df61c8ae1deb6991078f854a5efc9182af78a5c50801fa8de4c9/attempt-bddf1b28d07f4e32b54a865681ac10aa/trial/adaptation.json",
+      "sha256": "69b2efd46762aaba051a72c7c053418199b447427b66d2bb794c7f1e06e42303"
+    },
+    "candidate-sid": {
+      "path": "build/axel-f-drum-pair/cache/candidate/921e415645bcaceab86317175c153f64c3b1d343a560b50b62dfcedd40576c23/attempt-934f1b4eff4541a687db66e0682d8da4/song/export/candidate.sid",
+      "sha256": "f18b43908f817a70120bf60cf7ea18ed2dffc16609c86ed22b145def38134c5e"
+    },
+    "drums-only": {
+      "path": "build/axel-f-drum-pair/cache/drums-only/de0074fbfe40bf5c6ea0ba00aa3c41a55a6e784670e09a17c9d26f9daaf8d511/attempt-f31b25b590ac4545bd06f8be063d1aa2/drums-only.wav",
+      "sha256": "a89ad8058bb90e459672d387d9d587a4d5a822ffe021d3e722451c4daedb019e"
+    }
+  },
+  "listeningVerdict": {
+    "date": "2026-10-16",
+    "quote": "kick and snare is better, although not too convincing since boring.",
+    "masterComparison": "a) a better lead instrument (ok, not the actual question here), and b) more sophistication in the kick and snare, it even changes rythm a bit",
+    "scope": "Relative improvement, insufficient musical conviction; no full integration accepted. Lead preference is separate from the immediate percussion question."
+  },
+  "modelAssistance": {
+    "decision": "no-call",
+    "reason": "No call was made for this audition. After the user explicitly asks about model consultation, reconsider Qwen for a bounded descriptive rhythm/development comparison with controls; do not ask it to decide musical quality.",
+    "nextCheckpoint": "Prepared controlled descriptive comparison, then listener feedback"
+  },
+  "diagnosis": {
+    "masterSnapshots": {
+      "path": "build/axel-f-huelsbeck-roles/cache/roles/304ef9ba24efccf0b96a5eaa566c197b7fc452be1ef6046ad8f9c0b33f1439e2/attempt-fe9a7be1ffd040ad995ff13bae26bb53/study/original/snapshots.json.gz",
+      "sha256": "0229ed4f7cd106f439cb011bc1d1ab00fb34a89ad1166ec337bd584bdfa23d9d"
+    },
+    "sourceBodyExamples": [
+      {
+        "startCall": 7,
+        "gatedCalls": 16,
+        "noiseCalls": 4,
+        "triangleCalls": 12
+      },
+      {
+        "startCall": 63,
+        "gatedCalls": 16,
+        "noiseCalls": 4,
+        "triangleCalls": 12
+      },
+      {
+        "startCall": 575,
+        "gatedCalls": 16,
+        "noiseCalls": 4,
+        "triangleCalls": 12
+      }
+    ],
+    "sourceCallsPerSecond": 54.977323314051176,
+    "priorTriangleMechanism": {
+      "path": "build/axel-f-rhythm-character/cache/mechanism/aa0be6c3f145a5ed3b5c623bc37d0438b233fcd69981263a6b2818b1fa5a3c10/attempt-0bc647dea680400daf4ea17aac2c3195/mechanism.json",
+      "sha256": "c67db48dc954be25bc0c84178b6b6bb4f03b31339dda185b777365c25b560214"
+    },
+    "priorTriangleGatedBodyCalls": {
+      "2": 31,
+      "1": 36,
+      "3": 1
+    },
+    "inference": "The faint trial differs in percussion role and body timing from the master. The next comparison changes these together; it is not an isolated causal test proving either factor alone explains the listener preference."
+  }
+}
