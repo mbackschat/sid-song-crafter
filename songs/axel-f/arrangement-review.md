@@ -239,3 +239,26 @@ Park the combined maracas version and retain the positively received [complete t
 The reusable lesson is to assess rhythmic function, mix balance and instrument character separately. Once the listener likes the drive but dislikes the sound, another loudness adjustment does not address the stated objection. A later replacement should compare one different, source-informed percussion character on the same short phrase with unchanged attacks and tonal palette before extending it through the full song. Do not claim a replacement is already chosen or validated.
 
 Model-assistance checkpoint after this verdict: no call. Human feedback settles this preference distinction; current models cannot choose a suitable replacement or override the dislike. Reassess at a materially different sound audition or case closure.
+
+## Falling-triangle percussion character audition
+
+On 2026-10-16 the user authorizes closing the overall plan. The unresolved rhythm question is whether a different percussion character preserves the useful drive without the disliked maracas texture. The [editable configuration](rhythm-character.json), [verification summary](rhythm-character-review.json) and [recipe](../../config/listening/axel-f-rhythm-character.json) provide a short comparison before any full-song integration. The percussion-free [full tonal palette](full-master-palette-review.json) remains the selected baseline while feedback is pending.
+
+The [executed master observations](huelsbeck-arrangement-observations.json) identify Hülsbeck's voice-3 `AD20/SR50` noise-to-falling-triangle percussion. This adaptation omits the noise prelude, uses absolute D♯4/C4/G3/C3 steps and `AD20/SR53`, and retains native TEST onset. It is a new compact electronic drum inspired by that tonal body, not a recovered source patch: the source is PAL MOS6581 with CIA timing, while this native candidate is PAL MOS8580 at VBI rate. The waveform table continues through release. No filter or oscillator coupling is added.
+
+The projector reuses the pinned MIDI70 rhythm at source beats 68–100 (arranged 64–96), preserving all 68 attacks and exact source durations. Lead and bass use the positively received full palette. Both no-percussion and AD13-maracas references are prepared on this same palette; the maracas reference retains its instrument character, rather than copying an older render with different tonal instruments. The primary no-percussion comparison mutes only voice 2 in the candidate SID, retaining its scheduling and shared state; a separately built no-percussion native export verifies ordered tonal-store preservation. These are diagnostic mixes, not additive stems.
+
+All 987 native calls pass, with maximum play cost 2,311 of 19,656 PAL cycles. Sampled VICE checks reach call 980 after the stop. Each comparison preserves 17,783 ordered non-percussion stores; the largest instruction-start shift is 393 cycles against the no-percussion export, and 88 against maracas. All 68 triangle diagnostic attack windows contain signal; minimum AC RMS is 194.27. Triangle-only phrase RMS is 0.6512 of the retained maracas, about 3.73 dB lower; no PCM gain adjustment is applied. The last 20 ms before a retrigger can contain release (maximum measured AC RMS 267.34), so this is not a claim of silence between every hit. The complete hook tail settles before volume clear, and full/muted/solo renders are unclipped and bound to the corresponding SID by identical renderer snapshots. These measurements do not establish audibility, natural articulation or musical suitability.
+
+```sh
+python3 scripts/listening-package.py config/listening/axel-f-rhythm-character.json --output build/axel-f-rhythm-character
+python3 scripts/publish-listening.py build/axel-f-rhythm-character/run.json --selection config/listening/axel-f-rhythm-character.audition.json --output build/axel-f-rhythm-character-listening
+```
+
+Use a fresh publication directory for a subsequent run. Both comparisons contain the same 16.134432-second phrase per side, separated by half a second, at common unity gain:
+
+- [No percussion → falling triangle](../../build/axel-f-rhythm-character-listening/without-then-triangle.ab.wav): does the second half add useful drive with a sound that fits?
+- [Retained maracas → falling triangle](../../build/axel-f-rhythm-character-listening/maracas-then-triangle.ab.wav): same tonal palette and rhythm; inspect the change of percussion character.
+- Full hook renders with release tails: [no percussion](../../build/axel-f-rhythm-character-listening/without-percussion.wav), [maracas](../../build/axel-f-rhythm-character-listening/retained-maracas.wav), [triangle](../../build/axel-f-rhythm-character-listening/falling-triangle.wav); [triangle-only diagnostic](../../build/axel-f-rhythm-character-listening/triangle-only.wav).
+
+Listening verdict is pending. Model-assistance review at this new audition: no call; existing trials do not qualify models to select a percussion character or override the human rejection. Reassess after feedback and at case closure.

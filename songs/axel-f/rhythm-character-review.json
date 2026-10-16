@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "status": "awaiting-listening",
+  "scope": "16.134432-second source hook on the positively received full tonal palette; compare no percussion, retained AD13 maracas character and new falling triangle. No full-song integration or musical acceptance inferred.",
+  "configuration": "songs/axel-f/rhythm-character.json",
+  "recipe": "config/listening/axel-f-rhythm-character.json",
+  "selection": "config/listening/axel-f-rhythm-character.audition.json",
+  "sourceOnsets": 68,
+  "sourceDurationAdaptation": false,
+  "execution": {
+    "playCalls": 987,
+    "maximumPlayCycles": 2311,
+    "frameCycleBudget": 19656,
+    "boundaries": [
+      {
+        "changedOffsets": [
+          7,
+          8,
+          11,
+          12,
+          13
+        ],
+        "matchedOrderedNonPercussionStores": 17783,
+        "maximumInstructionStartDifferenceCycles": 393
+      },
+      {
+        "changedOffsets": [
+          7,
+          8,
+          11,
+          12,
+          13
+        ],
+        "matchedOrderedNonPercussionStores": 17783,
+        "maximumInstructionStartDifferenceCycles": 88
+      }
+    ],
+    "pitchWords": [
+      5298,
+      4455,
+      3338,
+      2228
+    ],
+    "viceCheckpoints": [
+      0,
+      1,
+      3,
+      6,
+      150,
+      400,
+      810,
+      930,
+      980
+    ],
+    "viceMaximumAbsoluteCycleError": 4
+  },
+  "signal": {
+    "phrasePcm": {
+      "full": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 12521,
+        "peakDbfs": -8.356218388257583,
+        "clippedSamples": 0,
+        "rms": 3982.7564872525536,
+        "acRms": 3349.1493191957006,
+        "acRmsDbfs": -19.810308486186788,
+        "perChannel": [
+          {
+            "dc": 2155.353352581259,
+            "rms": 3982.7564872525536,
+            "acRms": 3349.1493191957006
+          }
+        ]
+      },
+      "triangleOnly": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 4314,
+        "peakDbfs": -17.611395883863835,
+        "clippedSamples": 0,
+        "rms": 405.13245995869784,
+        "acRms": 381.88793727468124,
+        "acRmsDbfs": -38.67027988929703,
+        "perChannel": [
+          {
+            "dc": 135.25499427479576,
+            "rms": 405.13245995869784,
+            "acRms": 381.88793727468124
+          }
+        ]
+      },
+      "muted": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 8942,
+        "peakDbfs": -11.2803053885541,
+        "clippedSamples": 0,
+        "rms": 3968.8043453325804,
+        "acRms": 3318.338130296318,
+        "acRmsDbfs": -19.890585950057574,
+        "perChannel": [
+          {
+            "dc": 2177.1632884449223,
+            "rms": 3968.8043453325804,
+            "acRms": 3318.338130296318
+          }
+        ]
+      },
+      "maracasOnly": {
+        "format": "PCM16",
+        "sampleRate": 44100,
+        "channels": 1,
+        "frames": 711765,
+        "durationSeconds": 16.139795918367348,
+        "peak": 4310,
+        "peakDbfs": -17.619453295979724,
+        "clippedSamples": 0,
+        "rms": 600.2405532059,
+        "acRms": 586.4151214304029,
+        "acRmsDbfs": -34.94489548736817,
+        "perChannel": [
+          {
+            "dc": 128.08601434462219,
+            "rms": 600.2405532059,
+            "acRms": 586.4151214304029
+          }
+        ]
+      }
+    },
+    "triangleToMaracasSoloRmsRatio": 0.6512245733758838,
+    "triangleRelativeSoloDb": -3.72538440192886,
+    "nonzeroAttackWindows": 68,
+    "minimumAttackWindowAcRms": 194.26835131564812,
+    "maximumBeforeNextOnsetAcRms": 267.3385095216138,
+    "preStopReleaseAcRms": 0.0,
+    "sameSidContributionRms": 346.7456179309549,
+    "diagnosticSnapshotsMatchFull": true
+  },
+  "artifacts": {
+    "reference": {
+      "path": "build/axel-f-rhythm-character/cache/triangle-muted/6a1008288c698b362f9b831584b0150ac1c4c35ba5a51e803386242b556068db/attempt-7ece9cb6880f4fc4b58882b8a6d87572/triangle-muted.wav",
+      "sha256": "e4f26efeae53170ddedcb130194733c006da8a208f5c1558613137838d61be85"
+    },
+    "maracas": {
+      "path": "build/axel-f-rhythm-character/cache/maracas/0cb30845fb1a7519316ced9103b493284fa5b89b3e6c9dfc2c86da08c355adc5/attempt-5cdd1a05f6a545af97b4e7c8a8e64528/song/native-song.wav",
+      "sha256": "47bcd5e6d40a5b408021bb528d7c8c231f2638d2b47569f9bcf4c8a8cc59d02c"
+    },
+    "candidate": {
+      "path": "build/axel-f-rhythm-character/cache/candidate/f0f09f49161a8522d8a7727c59709f0ef6c4e871a02bd5d65735dd26061e5aeb/attempt-33216d2dac724f989a90b2d97d566be5/song/native-song.wav",
+      "sha256": "edbd264b9f45f4054d527f29eba879c0d793bf1701ad4feaff38df898903b2b8"
+    },
+    "comparison": {
+      "path": "build/axel-f-rhythm-character/cache/comparison/efb394c47ee4b2c4a39cf94f7e20b3ef7f342d882e788642ebbdcf3c7fb366ab/attempt-740a637e0c3d447295bad4e817af48c2/without-then-triangle.ab.wav",
+      "sha256": "49359dd7e839758edf030e684592221ea3be4c6379035910d7fbbde828a1586f"
+    },
+    "character-comparison": {
+      "path": "build/axel-f-rhythm-character/cache/character-comparison/776e8738c104d4027e6b9a4e5d694621e302dc8db4356dc1b9f1864fe112ab0e/attempt-9eacf4a157c744f6848d7d41fba27874/maracas-then-triangle.ab.wav",
+      "sha256": "83d3f1576be75173ec2e5feb83fa762e1d8a7230cea93d928efe8721166c0faf"
+    },
+    "triangle-only": {
+      "path": "build/axel-f-rhythm-character/cache/triangle-only/8923d96c09e6702a5d73dfc6e1258475136c45f89320da76c672abc842f51b6a/attempt-e8da2bdc7a13401cb8db2d4502a7d4ef/triangle-only.wav",
+      "sha256": "e85b806ce20d678fcd63d23bd997e3d9cb4c39b8640bbb27f58b390e763d5827"
+    },
+    "verification": {
+      "path": "build/axel-f-rhythm-character/cache/candidate/f0f09f49161a8522d8a7727c59709f0ef6c4e871a02bd5d65735dd26061e5aeb/attempt-33216d2dac724f989a90b2d97d566be5/song/verification.json",
+      "sha256": "8fe983f0f8bf6d7fba822f76366102645e0699407ad0daf8f47b0d14885653fa"
+    },
+    "vice": {
+      "path": "build/axel-f-rhythm-character/cache/vice/b09149e9776273e65c427ab357e2d1bfa8e77f9b13a7ab9d9079f8313605731b/attempt-382166fc293a4af18da6641536db25f3/vice/verification.json",
+      "sha256": "9c78dcd9680fbfa3248f4c50be9f7bf0ade87dd4773fa7621928043e73e2851c"
+    },
+    "mechanism": {
+      "path": "build/axel-f-rhythm-character/cache/mechanism/aa0be6c3f145a5ed3b5c623bc37d0438b233fcd69981263a6b2818b1fa5a3c10/attempt-0bc647dea680400daf4ea17aac2c3195/mechanism.json",
+      "sha256": "c67db48dc954be25bc0c84178b6b6bb4f03b31339dda185b777365c25b560214"
+    },
+    "adaptation": {
+      "path": "build/axel-f-rhythm-character/cache/trial/7dbc6b3f71e7bf646efe9ab11c54fe64fb01bd65b30f6917805e502f70fff416/attempt-2d5aa3e45a8f4625b8f17f89c8b622bd/trial/adaptation.json",
+      "sha256": "67b2f9bdf8fdec6247fa992b492c65670c091b8b0a387e580a29c4221c7aa6b0"
+    },
+    "candidate-sid": {
+      "path": "build/axel-f-rhythm-character/cache/candidate/f0f09f49161a8522d8a7727c59709f0ef6c4e871a02bd5d65735dd26061e5aeb/attempt-33216d2dac724f989a90b2d97d566be5/song/export/candidate.sid",
+      "sha256": "e786bfd9a2431832b7fba70539ff561a10fc24e17323aaf681bf9b1969066309"
+    }
+  },
+  "listeningVerdict": null,
+  "modelAssistance": {
+    "decision": "no-call",
+    "reason": "Existing model trials cannot establish percussion suitability or override the human maracas rejection. Numeric execution and signal checks prepare this audition only.",
+    "nextCheckpoint": "Listener feedback or case closure"
+  }
+}
