@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "status": "trailing-vibrato-awaiting-listening",
+  "change": "Lead delayed pitch motion only: control1A to3A, vibrato24 to83, delay12 to14. Preferred ADSR0849 and all other voices retained.",
+  "baselineMatchesPreferredRestoredWav": true,
+  "submittedPairPcmVerified": true,
+  "commonGain": 1,
+  "pairSeconds": 16.634421768707483,
+  "pairDifferenceRms": 1444.5200776216163,
+  "preStopReleaseAcRms": 0.0,
+  "boundary": {
+    "changedAddresses": [
+      "d400",
+      "d401"
+    ],
+    "orderedStores": 24699
+  },
+  "pcm": {
+    "acRms": 2744.0970515805975,
+    "peak": 13148,
+    "clippedSamples": 0
+  },
+  "sourceMotionEvidence": "evidence/axel-f-lead-motion/source-motion-diagnosis.json",
+  "publication": {
+    "schemaVersion": 1,
+    "run": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-lead-motion/run.json",
+      "sha256": "b0bbf3d396e46edc5e8cde52d322042d3bcf4cc3e6000da2edb49c83de405bd6",
+      "bytes": 87057
+    },
+    "selection": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/axel-f-lead-motion.audition.json",
+      "sha256": "669842ff4d059335b287078e32a88dedcac21dc0041797d9386bda8300b80e8b",
+      "bytes": 137
+    },
+    "files": [
+      {
+        "label": "previous",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-lead-motion/cache/restored/3abcae7be74d88e487f16fceeb278231b7c35e93655edea2350605626b093407/attempt-e4d7d2c7f992489e95dfa8c933c58d0f/song/native-song.wav",
+        "filename": "restored-release.wav",
+        "sha256": "a94581cb728d42feac1d3ecea3f091fa54adfc7fc94d5ae13ceea71807b09577",
+        "bytes": 1733484,
+        "stageId": "restored"
+      },
+      {
+        "label": "candidate",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-lead-motion/cache/motion/6be334f0342cf283a62da1315c461afb0913570177ad1cddd23cb122cf5f846f/attempt-31fa26a2324746c18869081b258a1a17/song/native-song.wav",
+        "filename": "trailing-vibrato.wav",
+        "sha256": "0e5145f8230ef2493df45b98caf0be46442d16b76dc37ae5c753a822a96d3c54",
+        "bytes": 1733484,
+        "stageId": "motion"
+      },
+      {
+        "label": "comparison",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-lead-motion/cache/comparison/b92234a6306aa871f9b0b6626ddc025ed8e06ad0aa439f3afcf544b700f9ff78/attempt-0a3d4c50d85a4604906aab89b3fd4d74/comparison.ab.wav",
+        "filename": "restored-then-trailing-vibrato.ab.wav",
+        "sha256": "6c2bf6402499883993558e06f5a9cf0af4950868de686765e137b885a7e53e3f",
+        "bytes": 1467200,
+        "stageId": "comparison"
+      }
+    ]
+  },
+  "sourceReference": "build/axel-f-master-palette-matched-listening/huelsbeck-lead-and-beat-9.5-20s.wav",
+  "modelAssistance": "No new call; Qwen failed the preceding silence control and is not qualified to attribute the reported quality. Human comparison is the next checkpoint."
+}

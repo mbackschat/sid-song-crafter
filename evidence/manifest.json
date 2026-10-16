@@ -21506,6 +21506,96 @@
       "originalBytes": 1826,
       "sha256": "7940b13ddb96a82b7bde0369641a13aed8ae0dd2fa12116fab05b557309c1a17",
       "bytes": 1826
+    },
+    {
+      "path": "evidence/axel-f-lead-motion/run.json",
+      "originalPath": "build/axel-f-lead-motion/run.json",
+      "group": "axel-f-lead-motion",
+      "reason": "Reproduce the controlled trailing-lead pitch-motion audition.",
+      "originalSha256": "b0bbf3d396e46edc5e8cde52d322042d3bcf4cc3e6000da2edb49c83de405bd6",
+      "originalBytes": 87057,
+      "sha256": "b0bbf3d396e46edc5e8cde52d322042d3bcf4cc3e6000da2edb49c83de405bd6",
+      "bytes": 87057
+    },
+    {
+      "path": "evidence/axel-f-lead-motion/verification.json",
+      "originalPath": "build/axel-f-lead-motion/cache/motion/6be334f0342cf283a62da1315c461afb0913570177ad1cddd23cb122cf5f846f/attempt-31fa26a2324746c18869081b258a1a17/song/verification.json",
+      "group": "axel-f-lead-motion",
+      "reason": "Verify the pitch-only intervention through complete CPU execution and sampled standalone playback.",
+      "originalSha256": "5841b28b8988583059956f3f0c9f4341d1b18ab023b7d1c4afdab5fe8ca75e11",
+      "originalBytes": 8823,
+      "sha256": "5841b28b8988583059956f3f0c9f4341d1b18ab023b7d1c4afdab5fe8ca75e11",
+      "bytes": 8823
+    },
+    {
+      "path": "evidence/axel-f-lead-motion/vice.json",
+      "originalPath": "build/axel-f-lead-motion/cache/motion-vice/fd30b7ae089acefd8ef34f56c1913aabe392f8247a81126a4ce8df445fd7506d/attempt-e9b21311151c49738380105297c23870/vice/verification.json",
+      "group": "axel-f-lead-motion",
+      "reason": "Verify the pitch-only intervention through complete CPU execution and sampled standalone playback.",
+      "originalSha256": "8dea2baea7673fe8d2a9556f1ae0dfed6f89b840c2e657c344ae6659c5e38688",
+      "originalBytes": 2085,
+      "sha256": "8dea2baea7673fe8d2a9556f1ae0dfed6f89b840c2e657c344ae6659c5e38688",
+      "bytes": 2085
+    },
+    {
+      "path": "evidence/axel-f-lead-motion/frames.json",
+      "originalPath": "build/axel-f-lead-motion/cache/frames/2c15a2e94c552276465e1e1f34f0628b15796daccf34c165864ef13a296a9c9e/attempt-881faa0c4e484132897ebfa543cb2430/frames.json",
+      "group": "axel-f-lead-motion",
+      "reason": "Verify the pitch-only intervention through complete CPU execution and sampled standalone playback.",
+      "originalSha256": "3d0eac1c7ac0062a7acd1f04432cd7f420fc27bc0c9d5020b0b1375df121fd4b",
+      "originalBytes": 600,
+      "sha256": "3d0eac1c7ac0062a7acd1f04432cd7f420fc27bc0c9d5020b0b1375df121fd4b",
+      "bytes": 600
+    },
+    {
+      "path": "evidence/axel-f-lead-motion/boundary.json",
+      "originalPath": "build/axel-f-lead-motion/cache/boundary/0cfc2b9b30568d8429ad09b932414377ceb7e69fb1aa28d9122c6e5d3aeb2430/attempt-28694b3fcf8847be9fa236c776a9e764/boundary.json",
+      "group": "axel-f-lead-motion",
+      "reason": "Verify the pitch-only intervention through complete CPU execution and sampled standalone playback.",
+      "originalSha256": "71950b89a16569be1d4c45327d29de95d692d0110a89db043aaf1b622f15350f",
+      "originalBytes": 81,
+      "sha256": "71950b89a16569be1d4c45327d29de95d692d0110a89db043aaf1b622f15350f",
+      "bytes": 81
+    },
+    {
+      "path": "evidence/axel-f-lead-motion/candidate-writes.json.gz",
+      "originalPath": "build/axel-f-lead-motion/cache/motion/6be334f0342cf283a62da1315c461afb0913570177ad1cddd23cb122cf5f846f/attempt-31fa26a2324746c18869081b258a1a17/song/native-song.writes.json",
+      "group": "axel-f-lead-motion",
+      "reason": "Retain complete native register evidence for the delayed downward pitch motion.",
+      "originalSha256": "a72b7d46178c41d3ef871f4b3af1c552a7e0fa2318eb13e953246369eae6cfb2",
+      "originalBytes": 2955284,
+      "sha256": "a221a05a2e934d02803385f93222fffd56f2865a0f0036b7c5c58c9b3d664156",
+      "bytes": 157590
+    },
+    {
+      "path": "evidence/axel-f-lead-motion/candidate-frames.json.gz",
+      "originalPath": "build/axel-f-lead-motion/cache/motion/6be334f0342cf283a62da1315c461afb0913570177ad1cddd23cb122cf5f846f/attempt-31fa26a2324746c18869081b258a1a17/song/native-song.frames.json",
+      "group": "axel-f-lead-motion",
+      "reason": "Retain complete native register evidence for the delayed downward pitch motion.",
+      "originalSha256": "aee02e006256668970dd405f1ab0ee4b8ce6e591894e52d40b17406d914d0839",
+      "originalBytes": 199450,
+      "sha256": "94350f24398d7415bd4713e0dd4d4cfe50ab00ae9f314cdb8c51665432a88c1f",
+      "bytes": 8351
+    },
+    {
+      "path": "evidence/axel-f-lead-motion/audition.json",
+      "originalPath": "build/axel-f-lead-motion-listening/sources.json",
+      "group": "axel-f-lead-motion",
+      "reason": "Pin the exact submitted pitch-motion comparison without redistributing audio.",
+      "originalSha256": "01275b5aac6691214c4686a607b3a86c8a479acffd30870bc16700bd074f0c30",
+      "originalBytes": 1840,
+      "sha256": "01275b5aac6691214c4686a607b3a86c8a479acffd30870bc16700bd074f0c30",
+      "bytes": 1840
+    },
+    {
+      "path": "evidence/axel-f-lead-motion/source-motion-diagnosis.json",
+      "originalPath": "build/axel-f-lead-motion/source-motion-diagnosis.json",
+      "group": "axel-f-lead-motion",
+      "reason": "Preserve measured source and native first-note trajectories separately from listening attribution.",
+      "originalSha256": "33a5f93607689138d350ac225807defdc4a1736452d6018105bf41b4ceffdf20",
+      "originalBytes": 2965,
+      "sha256": "33a5f93607689138d350ac225807defdc4a1736452d6018105bf41b4ceffdf20",
+      "bytes": 2965
     }
   ],
   "independentShadesSources": {

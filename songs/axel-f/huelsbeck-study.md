@@ -69,3 +69,8 @@ python3 scripts/listening-package.py config/listening/axel-f-huelsbeck-roles.jso
 ```
 
 The [pinned source-specific probe](../../scripts/studies/axel-f/study-huelsbeck-roles.py) retains detailed source execution and causal-intervention evidence privately; the aggregate owns hashes, bounded counts and reproduction scope. Models were not called: execution can settle program selection, while musical preference still belongs to the listener.
+
+
+## Late-note pitch motion and the perceived trailing lead
+
+The listener’s later trailing/fading description motivates the [controlled native pitch-motion audition](arrangement-review.md#trailing-lead-character-delayed-downward-pitch-motion). The first source lead onset at call 519 remains at frequency word 7,493 through age 17, then starts a downward 160-word step at age 18. Its subsequent range is 7,173–7,653, and pitch updates continue after GATE clears at age 24 until the next onset at age 32. This is approximately −75.6/+36.6 cents at this note, not a constant-depth vibrato specification for every register. The [retained diagnostic](../../evidence/axel-f-lead-motion/source-motion-diagnosis.json) keeps the exact trajectory and the native comparison. This late-note motion is a candidate explanation of the reported character; no causal source subtraction or listening attribution has yet established it as the explanation.
