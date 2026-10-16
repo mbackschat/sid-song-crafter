@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "models": {
+    "qwen": {
+      "settings": {
+        "model": "qwen/qwen3.8-omni-flash",
+        "reasoning": true,
+        "max_tokens": 1200
+      },
+      "cases": [
+        {
+          "id": "c01",
+          "audio_sha256": "79c8e2b6a52413e63b99c68f8bd724d030ea794a88aada3998073ebfc4be8325",
+          "payload_sha256": "a797bb54f56d8482dd0eebdaf5cbf16c6dc5bc97c80aec0307315e14574c794f",
+          "duration_seconds": 10.5
+        },
+        {
+          "id": "c02",
+          "audio_sha256": "94cf1fb54e5a78ba097acbcef42498642c121b48b6eb8c02a80e41ff75dc105e",
+          "payload_sha256": "13730d687340dc853b43a37b3db62752cff176077de777a5e4dfa0c9fd16e89f",
+          "duration_seconds": 10.5
+        },
+        {
+          "id": "c03",
+          "audio_sha256": "f04c8bea5f7f095a35496e219a1f1b6b181982df6415a189ece15628ad988586",
+          "payload_sha256": "ea3aac9e61efff73c6f7d6f884dc59ba0485a403a822aea0d99c33024d099f09",
+          "duration_seconds": 10.5
+        },
+        {
+          "id": "c04",
+          "audio_sha256": "63eb958353624341ff6e33bbeec5a9a869029125c61aa5dd1b56d14602c750ca",
+          "payload_sha256": "29e7c9e422ae5ba628ffbf2cb5f69cb8934b03b5c903464c81e4479ecf87581e",
+          "duration_seconds": 10.5
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "c01",
+      "expected": {},
+      "basis": "Unscored descriptive master observation"
+    },
+    {
+      "id": "c02",
+      "expected": {},
+      "basis": "Unscored descriptive candidate observation"
+    },
+    {
+      "id": "c03",
+      "expected": {
+        "music_present": "no",
+        "rhythmic_motion": "no music",
+        "development": "no music"
+      },
+      "basis": "Digital silence"
+    },
+    {
+      "id": "c04",
+      "expected": {
+        "development": "repeats"
+      },
+      "basis": "Exact 2.1-second source window tiled five times"
+    }
+  ],
+  "criterion": "Require four completed responses with valid bounded evidence, and both controls passing before considering descriptions. Review descriptions against source execution separately. No preference score or automatic musical changes.",
+  "scope": "New passage with unchanged Trap prompt/settings; known human feedback remains local. Not a blind held-out human preference test. Previous failed A/A and reversed-pair controls remain unresolved; this is a single-clip task.",
+  "budget": {
+    "post_attempts_total_max": 4,
+    "local_admission_cap_usd": "0.10",
+    "no_retries": true
+  },
+  "authorization": "User: OK, go ahead with your recommendations. 2026-10-16; four described Qwen requests through existing provider."
+}

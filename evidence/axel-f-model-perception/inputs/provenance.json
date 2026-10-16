@@ -1,0 +1,32 @@
+{
+  "sources": [
+    {
+      "path": "build/axel-f-master-palette-matched-listening/huelsbeck-lead-and-beat-9.5-20s.wav",
+      "sha256": "79c8e2b6a52413e63b99c68f8bd724d030ea794a88aada3998073ebfc4be8325",
+      "localCropSeconds": [
+        0,
+        10.5
+      ]
+    },
+    {
+      "path": "build/axel-f-drum-pair-listening/source-kick-and-snare.wav",
+      "sha256": "0119c2536f5db68eadbe06076575ed0c90ea276414058568dc16c214f97418e7",
+      "localCropSeconds": [
+        0,
+        10.5
+      ]
+    }
+  ],
+  "gain": 1,
+  "normalization": false,
+  "resampling": false,
+  "prompt": "Listen to this single audio clip. Is music present? What is the main perceived source of rhythmic motion: moving melody, repeated percussive attacks, both, unclear, or no music? Does the clip develop or predominantly repeat: develops, repeats, unclear, or no music? Report what you hear, without identifying a source or ranking quality. Return only JSON with music_present (yes/no/unclear), rhythmic_motion (moving melody/repeated percussive attacks/both/unclear/no music), development (develops/repeats/unclear/no music), and evidence (one or two short objects containing start_seconds, end_seconds, and observation). Times are relative to the clip and must lie within it. Use unclear when you cannot tell.",
+  "comparisonLimit": "Different key, tempo, chip model and accompaniment: master PAL MOS6581 lead/drums; native PAL MOS8580 lead/bass/drums. Descriptions cannot isolate causes of preference.",
+  "dependencies": {
+    "scripts/studies/axel-f/prepare-model-perception.py": "ac127553f3893c073efba0b4ffadfda0c570e33616e2bf53a59a89454226d347",
+    "scripts/studies/audio-assessment/prepare-trap-perception.py": "26fc3139992a17e0747da0fbb1d3b15505b4d8a41e16141d46d0c19e9d71c9b3",
+    "scripts/audio_assessment.py": "dc385afe65ef5cecac794bde8c3ae2c428e361441d1281911829ba5bdcb6d0a9",
+    "scripts/audio_comparison.py": "71265e59164f0917bf9e612d84807f362408c664cd137789b734dd1e43667636"
+  },
+  "submitted": "Only anonymous clip, neutral prompt and fixed settings; no titles, user verdicts, oracle or provenance."
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "status": "awaiting-listening",
+  "baseline": "Percussion-free full master palette remains selected; prior kick/snare was better but boring.",
+  "sourcePattern": "Executed calls 519..1542 mapped at 32 calls/beat; first MIDI lead phrase verifies the beat map. Two 8-beat phrase patterns repeat once; second ends with four descending pitched drum attacks.",
+  "sourceCounts": {
+    "kick": 42,
+    "hat": 24,
+    "snare": 16
+  },
+  "phraseAttackCounts": [
+    19,
+    22,
+    19,
+    22
+  ],
+  "boundary": {
+    "changedOffsets": [
+      7,
+      8,
+      11,
+      12,
+      13
+    ],
+    "matchedOrderedNonPercussionStores": 17783,
+    "maximumInstructionStartDifferenceCycles": 399
+  },
+  "cpu": {
+    "calls": 987,
+    "maxPlayCycles": 2312,
+    "budget": 19656
+  },
+  "minimumDrumBodyDiagnosticAcRms": 302.67317006685664,
+  "sameSidContributionRms": 936.5133010573172,
+  "preStopReleaseAcRms": 0.0,
+  "clippedSamples": 0,
+  "submittedPairPcmVerified": true,
+  "commonGain": 1,
+  "modelAssistance": "Four authorized Qwen descriptions failed silence; no result used in this musical revision.",
+  "scope": "Joint rhythmic-role and native-program adaptation on a short fixed tonal phrase; not full integration, exact master emulation, matched-model reference comparison, or listening acceptance.",
+  "artifacts": [
+    {
+      "role": "reference",
+      "path": "build/axel-f-master-rhythm/cache/drums-muted/6097a1f5f9769f5c639cc98df17bd6bd16d79c10d6e89fd11bd5679f4ce874a9/attempt-9bbc41d85299472586c0b5fe9550a6ad/drums-muted.wav",
+      "sha256": "faff66806a4b6578edb298067ca85139f54b74acd594529b1a56bd65d506facc"
+    },
+    {
+      "role": "candidate",
+      "path": "build/axel-f-master-rhythm/cache/candidate/7013a2262b373dadf0164406885479e050146c92c6a70c3174dc3e6bc48bc2b7/attempt-7a7080cbd1564e518e8e57a8e0bcb8d2/song/native-song.wav",
+      "sha256": "aa42b4869b6329b1eed6a1caa1ef0926698fdbe56829290e92cec79e376cd1b4"
+    },
+    {
+      "role": "comparison",
+      "path": "build/axel-f-master-rhythm/cache/comparison/342dbd08fdd218bcea9a794e3cd681795e336a71495c672d96d347effb4703b6/attempt-4d77ae08b75b4cb69f37fd2300f1f25c/without-then-drums.ab.wav",
+      "sha256": "50c97eeb1103a82f38f23bad82aea0277c8715ac7104b3883430dfd34edd9a1e"
+    },
+    {
+      "role": "verification",
+      "path": "build/axel-f-master-rhythm/cache/candidate/7013a2262b373dadf0164406885479e050146c92c6a70c3174dc3e6bc48bc2b7/attempt-7a7080cbd1564e518e8e57a8e0bcb8d2/song/verification.json",
+      "sha256": "878c377be565ff771012740f7c0c83c65d74215828e979fa9667c086b01334a7"
+    },
+    {
+      "role": "vice",
+      "path": "build/axel-f-master-rhythm/cache/vice/a7ce587cd20a0eca000f66094c249cb7f7ac7d53b87febc183e3a51a85cfc441/attempt-a133aa031a0549d79517afe3338d3582/vice/verification.json",
+      "sha256": "5e3be63917842a8691a866d01922ec1943331e885f10c773650fc9b0a4c33943"
+    },
+    {
+      "role": "mechanism",
+      "path": "build/axel-f-master-rhythm/cache/mechanism/ffd72eee33ef30ec1c28d6635ec2b3d5e7e5003c4a3a2f5aa3d3303b3746b26c/attempt-6e135281709144f6801f01760f579c95/mechanism.json",
+      "sha256": "00900134cbac5e05f8750665fcd31791eabc28819e41d958de5bf10f1ac65d69"
+    },
+    {
+      "role": "adaptation",
+      "path": "build/axel-f-master-rhythm/cache/trial/73b1463028061be6905570ddf75c7ef2e454565650484c36f69d45d2b421fe8e/attempt-c516f14bde0546ebafb2278f65f05e22/trial/adaptation.json",
+      "sha256": "e027e33cadf7bf632a6f4fced3c37e8dd2420b7f0592622a8bcaf9d99c1a98ff"
+    },
+    {
+      "role": "candidate-sid",
+      "path": "build/axel-f-master-rhythm/cache/candidate/7013a2262b373dadf0164406885479e050146c92c6a70c3174dc3e6bc48bc2b7/attempt-7a7080cbd1564e518e8e57a8e0bcb8d2/song/export/candidate.sid",
+      "sha256": "5d5fbbd6327d58367769d752f879dcfcd6f8a04a7e2fef85da80fb350b7ed9b7"
+    },
+    {
+      "role": "drums-only",
+      "path": "build/axel-f-master-rhythm/cache/drums-only/7a876d9b178415b3cf564611c10092ecb52e99554cacc9ef9138c89d1f8329f5/attempt-4bc54e49f797495a90f5ba0d17c19cc4/drums-only.wav",
+      "sha256": "44e74f24a4a3433e89d22c0a5835d32a17ef86232f4c89a5412312482b857165"
+    },
+    {
+      "role": "previous",
+      "path": "build/axel-f-master-rhythm/cache/previous/63f60f8c23148a664118fd0990b49b1ee50ba3de981b00b7e80ded25afe4e9aa/attempt-933058b3255048c18f648fb5a7520683/previous.wav",
+      "sha256": "0119c2536f5db68eadbe06076575ed0c90ea276414058568dc16c214f97418e7"
+    }
+  ],
+  "publication": {
+    "schemaVersion": 1,
+    "run": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-master-rhythm/run.json",
+      "sha256": "87fdef7388ef71e36fedd3a55bd453ffa064b97060b112b30628043a141eac58",
+      "bytes": 72519
+    },
+    "selection": {
+      "path": "/Users/mbackschat/Projects/c64-sid-skill/config/listening/axel-f-master-rhythm.audition.json",
+      "sha256": "3329ed15228d76745ed0b90642d3f6fd9cf44b0fec1881a821cb6334745a1b91",
+      "bytes": 212
+    },
+    "files": [
+      {
+        "label": "reference",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-master-rhythm/cache/drums-muted/6097a1f5f9769f5c639cc98df17bd6bd16d79c10d6e89fd11bd5679f4ce874a9/attempt-9bbc41d85299472586c0b5fe9550a6ad/drums-muted.wav",
+        "filename": "without-percussion.wav",
+        "sha256": "faff66806a4b6578edb298067ca85139f54b74acd594529b1a56bd65d506facc",
+        "bytes": 1733484,
+        "stageId": "drums-muted"
+      },
+      {
+        "label": "previous",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-master-rhythm/cache/previous/63f60f8c23148a664118fd0990b49b1ee50ba3de981b00b7e80ded25afe4e9aa/attempt-933058b3255048c18f648fb5a7520683/previous.wav",
+        "filename": "previous-kick-and-snare.wav",
+        "sha256": "0119c2536f5db68eadbe06076575ed0c90ea276414058568dc16c214f97418e7",
+        "bytes": 1733484,
+        "stageId": "previous"
+      },
+      {
+        "label": "candidate",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-master-rhythm/cache/candidate/7013a2262b373dadf0164406885479e050146c92c6a70c3174dc3e6bc48bc2b7/attempt-7a7080cbd1564e518e8e57a8e0bcb8d2/song/native-song.wav",
+        "filename": "varied-master-drums.wav",
+        "sha256": "aa42b4869b6329b1eed6a1caa1ef0926698fdbe56829290e92cec79e376cd1b4",
+        "bytes": 1733484,
+        "stageId": "candidate"
+      },
+      {
+        "label": "comparison",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-master-rhythm/cache/comparison/342dbd08fdd218bcea9a794e3cd681795e336a71495c672d96d347effb4703b6/attempt-4d77ae08b75b4cb69f37fd2300f1f25c/without-then-drums.ab.wav",
+        "filename": "previous-then-varied.ab.wav",
+        "sha256": "50c97eeb1103a82f38f23bad82aea0277c8715ac7104b3883430dfd34edd9a1e",
+        "bytes": 2890256,
+        "stageId": "comparison"
+      },
+      {
+        "label": "drums-only",
+        "sourcePath": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-master-rhythm/cache/drums-only/7a876d9b178415b3cf564611c10092ecb52e99554cacc9ef9138c89d1f8329f5/attempt-4bc54e49f797495a90f5ba0d17c19cc4/drums-only.wav",
+        "filename": "drums-only.wav",
+        "sha256": "44e74f24a4a3433e89d22c0a5835d32a17ef86232f4c89a5412312482b857165",
+        "bytes": 1733484,
+        "stageId": "drums-only"
+      }
+    ]
+  }
+}

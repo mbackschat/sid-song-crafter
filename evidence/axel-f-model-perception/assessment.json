@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-16",
+  "status": "failed-silence-control",
+  "cases": [
+    {
+      "id": "c01",
+      "answer": {
+        "music_present": "yes",
+        "rhythmic_motion": "both",
+        "development": "repeats",
+        "evidence": [
+          {
+            "start_seconds": 0.0,
+            "end_seconds": 7.0,
+            "observation": "A fast-paced, 8-bit style melody plays over a driving, percussive beat."
+          },
+          {
+            "start_seconds": 7.0,
+            "end_seconds": 10.0,
+            "observation": "A scratching sound effect interrupts briefly before the musical phrase repeats."
+          }
+        ]
+      },
+      "errors": [],
+      "finish_reason": "stop",
+      "control_matches": {},
+      "control_pass": null,
+      "cost_usd": "0.00028486",
+      "provider": "Alibaba",
+      "receipt_sha256": "3ceb3f403a136ab30073a5c5defa4646ef8de7e0a88f7a48e572a006d4223c39",
+      "response_sha256": "e3385e8245813e8b83099d8e8cf174a73d8f2c6986be4e3e2e67da888d1ebb9c",
+      "payload_sha256": "a797bb54f56d8482dd0eebdaf5cbf16c6dc5bc97c80aec0307315e14574c794f"
+    },
+    {
+      "id": "c02",
+      "answer": {
+        "music_present": "yes",
+        "rhythmic_motion": "both",
+        "development": "repeats",
+        "evidence": [
+          {
+            "start_seconds": 0,
+            "end_seconds": 6,
+            "observation": "A chiptune-style melody moves over a steady, percussive beat."
+          },
+          {
+            "start_seconds": 6,
+            "end_seconds": 10,
+            "observation": "The musical phrase loops and repeats with the same rhythmic and melodic structure."
+          }
+        ]
+      },
+      "errors": [],
+      "finish_reason": "stop",
+      "control_matches": {},
+      "control_pass": null,
+      "cost_usd": "0.00032857",
+      "provider": "Alibaba",
+      "receipt_sha256": "8d0e52a4e53e37df3e5be77a8cdf1e8340f5d695a7cfe9d193e66ef27e9b5f17",
+      "response_sha256": "52c577b11171a7ee80d61edc26d95ac4a566467c2d877fb0b512f2967fe0a2e5",
+      "payload_sha256": "13730d687340dc853b43a37b3db62752cff176077de777a5e4dfa0c9fd16e89f"
+    },
+    {
+      "id": "c03",
+      "answer": {
+        "music_present": "yes",
+        "rhythmic_motion": "unclear",
+        "development": "repeats",
+        "evidence": [
+          {
+            "start_seconds": 0.0,
+            "end_seconds": 9.0,
+            "observation": "A high-pitched, sustained tone is present throughout the clip without distinct rhythmic pulses or melodic movement."
+          }
+        ]
+      },
+      "errors": [],
+      "finish_reason": "stop",
+      "control_matches": {
+        "music_present": false,
+        "rhythmic_motion": false,
+        "development": false
+      },
+      "control_pass": false,
+      "cost_usd": "0.00050153",
+      "provider": "Alibaba",
+      "receipt_sha256": "66860f32f8c70fc5e49ceb574a294382153402f6bb778bc5be56d8a6aaf0e620",
+      "response_sha256": "f6b673569cbe1aa0b31cd3644aa32341b5ec0fc569923ae8579274af96b22f3f",
+      "payload_sha256": "ea3aac9e61efff73c6f7d6f884dc59ba0485a403a822aea0d99c33024d099f09"
+    },
+    {
+      "id": "c04",
+      "answer": {
+        "music_present": "yes",
+        "rhythmic_motion": "repeated percussive attacks",
+        "development": "repeats",
+        "evidence": [
+          {
+            "start_seconds": 0.0,
+            "end_seconds": 10.0,
+            "observation": "A fast-paced, 8-bit style loop featuring a driving, repetitive percussive beat underneath a simple melodic phrase."
+          },
+          {
+            "start_seconds": 0.0,
+            "end_seconds": 10.0,
+            "observation": "The musical phrase and rhythm cycle identically without variation for the duration of the clip."
+          }
+        ]
+      },
+      "errors": [],
+      "finish_reason": "stop",
+      "control_matches": {
+        "development": true
+      },
+      "control_pass": true,
+      "cost_usd": "0.00067684",
+      "provider": "Alibaba",
+      "receipt_sha256": "dcdd772ab94bce21c5f2917e29ede2953f34bb3191447c54c1c50ff81d8c3e2a",
+      "response_sha256": "9d731ec205ae406141f826f7ae9f2a0afa0e5c1b569de31f4c32f4bbe6f8714c",
+      "payload_sha256": "29e7c9e422ae5ba628ffbf2cb5f69cb8934b03b5c903464c81e4479ecf87581e"
+    }
+  ],
+  "total_cost_usd": "0.00179180",
+  "controls_passed": 1,
+  "controls_total": 2,
+  "silence_payload_verified": true,
+  "silence_pcm_bytes": 926100,
+  "descriptions_eligible": false,
+  "decision": "Do not use these descriptions to select or change the arrangement. Unchanged prompt/settings failed silence on this new passage set; earlier Trap success does not transfer reliably. No further calls authorized by this trial.",
+  "model": "qwen/qwen3.8-omni-flash",
+  "reasoning": true,
+  "scope": "Short single-clip descriptive probe, not musical preference validation; source and candidate use different key, tempo, chip model and accompaniment.",
+  "authorization": "Explicit four-clip upload to OpenRouter/Qwen approved by user after auto-review rejection; no upload before approval."
+}

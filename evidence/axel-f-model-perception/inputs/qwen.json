@@ -1,0 +1,31 @@
+{
+  "model": "qwen/qwen3.8-omni-flash",
+  "reasoning": true,
+  "max_tokens": 1200,
+  "cases": [
+    {
+      "id": "c01",
+      "wav": "c01.wav",
+      "audio_sha256": "79c8e2b6a52413e63b99c68f8bd724d030ea794a88aada3998073ebfc4be8325",
+      "prompt": "Listen to this single audio clip. Is music present? What is the main perceived source of rhythmic motion: moving melody, repeated percussive attacks, both, unclear, or no music? Does the clip develop or predominantly repeat: develops, repeats, unclear, or no music? Report what you hear, without identifying a source or ranking quality. Return only JSON with music_present (yes/no/unclear), rhythmic_motion (moving melody/repeated percussive attacks/both/unclear/no music), development (develops/repeats/unclear/no music), and evidence (one or two short objects containing start_seconds, end_seconds, and observation). Times are relative to the clip and must lie within it. Use unclear when you cannot tell."
+    },
+    {
+      "id": "c02",
+      "wav": "c02.wav",
+      "audio_sha256": "94cf1fb54e5a78ba097acbcef42498642c121b48b6eb8c02a80e41ff75dc105e",
+      "prompt": "Listen to this single audio clip. Is music present? What is the main perceived source of rhythmic motion: moving melody, repeated percussive attacks, both, unclear, or no music? Does the clip develop or predominantly repeat: develops, repeats, unclear, or no music? Report what you hear, without identifying a source or ranking quality. Return only JSON with music_present (yes/no/unclear), rhythmic_motion (moving melody/repeated percussive attacks/both/unclear/no music), development (develops/repeats/unclear/no music), and evidence (one or two short objects containing start_seconds, end_seconds, and observation). Times are relative to the clip and must lie within it. Use unclear when you cannot tell."
+    },
+    {
+      "id": "c03",
+      "wav": "c03.wav",
+      "audio_sha256": "f04c8bea5f7f095a35496e219a1f1b6b181982df6415a189ece15628ad988586",
+      "prompt": "Listen to this single audio clip. Is music present? What is the main perceived source of rhythmic motion: moving melody, repeated percussive attacks, both, unclear, or no music? Does the clip develop or predominantly repeat: develops, repeats, unclear, or no music? Report what you hear, without identifying a source or ranking quality. Return only JSON with music_present (yes/no/unclear), rhythmic_motion (moving melody/repeated percussive attacks/both/unclear/no music), development (develops/repeats/unclear/no music), and evidence (one or two short objects containing start_seconds, end_seconds, and observation). Times are relative to the clip and must lie within it. Use unclear when you cannot tell."
+    },
+    {
+      "id": "c04",
+      "wav": "c04.wav",
+      "audio_sha256": "63eb958353624341ff6e33bbeec5a9a869029125c61aa5dd1b56d14602c750ca",
+      "prompt": "Listen to this single audio clip. Is music present? What is the main perceived source of rhythmic motion: moving melody, repeated percussive attacks, both, unclear, or no music? Does the clip develop or predominantly repeat: develops, repeats, unclear, or no music? Report what you hear, without identifying a source or ranking quality. Return only JSON with music_present (yes/no/unclear), rhythmic_motion (moving melody/repeated percussive attacks/both/unclear/no music), development (develops/repeats/unclear/no music), and evidence (one or two short objects containing start_seconds, end_seconds, and observation). Times are relative to the clip and must lie within it. Use unclear when you cannot tell."
+    }
+  ]
+}

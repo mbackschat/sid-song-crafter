@@ -1,0 +1,45 @@
+{
+  "id": "c03",
+  "wav_path": "/Users/mbackschat/Projects/c64-sid-skill/build/axel-f-model-perception-20261016/inputs/c03.wav",
+  "audio_sha256": "f04c8bea5f7f095a35496e219a1f1b6b181982df6415a189ece15628ad988586",
+  "duration_seconds": 10.5,
+  "model": "qwen/qwen3.8-omni-flash",
+  "max_tokens": 1200,
+  "reasoning": true,
+  "reasoning_effort": null,
+  "payload_sha256": "ea3aac9e61efff73c6f7d6f884dc59ba0485a403a822aea0d99c33024d099f09",
+  "status": "complete",
+  "started_at": "2026-10-16T13:13:56.642916+00:00",
+  "cost": 0.00050153,
+  "key_limits": {
+    "limit": 10.0,
+    "limit_remaining": 9.98219919,
+    "limit_reset": null
+  },
+  "response_path": "response-03.json",
+  "response_sha256": "f6b673569cbe1aa0b31cd3644aa32341b5ec0fc569923ae8579274af96b22f3f",
+  "finished_at": "2026-10-16T13:14:10.214447+00:00",
+  "usage": {
+    "prompt_tokens": 276,
+    "completion_tokens": 979,
+    "total_tokens": 1255,
+    "cost": 0.00050153,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00050153,
+      "upstream_inference_prompt_cost": 4.14e-05,
+      "upstream_inference_completions_cost": 0.00046013
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 872,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
