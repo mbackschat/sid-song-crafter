@@ -1,26 +1,26 @@
 # SID Song Crafter: product interface, value and resource discipline
 
-Status: revised proposal for external review, 2026-10-16. The evidence below supports design choices, not a measured productivity advantage. Proposed decisions remain subject to maintainer acceptance; this revision changes documentation only. [PLAN.md](../../PLAN.md) owns task status and sequencing.
+Status: agreed direction, ready for implementation, 2026-10-17, incorporating external review and the user's storage/distribution clarifications. The evidence supports design choices, not a measured productivity advantage. [PLAN.md](../../PLAN.md) owns execution order and completion; finalizing this document does not claim implementation is complete.
 
 Repository: [mbackschat/sid-song-crafter](https://github.com/mbackschat/sid-song-crafter). Relative links resolve from this document in the repository. Storage measurements describe the maintainer's local checkout.
 
-## Decisions requested
+## Implementation decisions
 
 1. **Improve option A now; defer building an entry skill.** Make the existing CLI/documented workflow usable without maintainer context: portable configuration templates for both hosts, readiness checks scoped to the selected workflow, and one own-score MIDI-to-SID walkthrough. These are required before comparing A with a skill. **Rationale:** a skill should solve remaining workflow friction, not compensate for avoidable documentation and setup defects. Alternative: build B immediately; reject this because it would make the comparison unfair and may add unnecessary maintenance.
 2. **Measure the next real musical case and run a fresh-agent walkthrough on each host.** Use a prospective effort ledger and cold-clone own-score tasks in Codex and Claude Code. Defer a controlled human comparison until a second independent operator is available; exclude a tracker/editor comparison from this assessment. **Rationale:** this fits the currently available person and produces useful cost and usability evidence without four extra listening cycles. It leaves comparative savings unproven. Alternative: staff the original pilot now; no second operator or independent listener has been arranged.
 3. **Remove the unused SongBench/MuQ installation and its disposable package cache.** Retain pinned restoration metadata, source/license material and trial evidence; check shared cache use before removing it. **Rationale:** these installations occupy about 2.89 GiB and have no demonstrated normal-workflow role. Alternative: keep them ready for speculative trials; that conflicts with reducing waste. Normal song builds must still pass after removal.
-4. **Adopt per-case audio retention and a post-cleanup budget of at most 6.0 GB decimal (5.59 GiB) for this checkout, including at most 4.4 GiB in `build/`.** Keep references, accepted renders and every submitted A/B clip; remove recipe-regenerable intermediates after checking their inputs and reproduction route. **Rationale:** WAVs occupy 4.66 GiB, so ML removal alone is insufficient. The budget requires roughly another 2.0 GiB of generated-data reduction after decision 3. If protected material prevents that budget, report the measured minimum and seek a revised budget rather than delete it. Alternative: archive or losslessly compress retained audio, with the constraints below.
+4. **Separate disposable builds, local retention and material distributed to users.** Make `build/` disposable only after verified retention and recovery. Keep core tools, recipes, concise findings and a small curated sample set in the main repository; provide substantial shareable research material as optional versioned downloads with checksums; retain private references and listening history outside the checkout. **Rationale:** research value does not imply every cloner needs the bytes. The roughly 2 GB retention candidate is not a Git addition or a required installation. Prefer optional downloads over a new submodule; use LFS where appropriate for versioned binaries, with explicit download behavior.
 5. **Replace repeated model-review skip records with one standing decision per case and event-driven reassessment.** Keep human acceptance, controls and request authorization unchanged. **Rationale:** documenting the same decision after every revision consumes effort without new evidence. Alternative: retain the current checkpoint policy if reviewers identify a concrete missed-risk benefit worth that cost.
 
 Decision 5 changes an explicit rule. [CLAUDE.md](../../CLAUDE.md#listening-and-retained-findings) currently requires following the measured trials and recorded reviews “at each [model-assistance checkpoint](../research/audio-assessment.md#use-and-reassess-model-assistance).” The owning rule says:
 
 > Review usefulness **at the first representative audition, after listener feedback or a musical revision, and before closing each musical case**.
 
-It also requires a dated run or explicit skip at every checkpoint. The proposed replacement records eligibility and rationale once when a case opens, reassesses when a concrete useful question, relevant model/prompt/preprocessing change or explicit user request occurs, and checks the standing decision at closure without repeating unchanged skip prose. Adoption must reconcile the owning policy, contributor guide and workflow references; this proposal does not silently override them.
+It also requires a dated run or explicit skip at every checkpoint. The selected replacement records eligibility and rationale once when a case opens, reassesses when a concrete useful question, relevant model/prompt/preprocessing change or explicit user request occurs, and checks the standing decision at closure without repeating unchanged skip prose. Implementation must reconcile the owning policy, contributor guide and workflow references as one change. Until then, their existing instructions remain in force.
 
 ## User input and constraints
 
-The following restates the user's input relevant to this decision. Recommendations elsewhere must not be mistaken for user decisions.
+The following restates the user's input and accepted direction. Detailed historical musical verdicts remain in their owning studies.
 
 | Input | Requirement retained in this proposal |
 | --- | --- |
@@ -34,6 +34,10 @@ The following restates the user's input relevant to this decision. Recommendatio
 | The project already uses C64 skills, so a single skill would require dependencies. | Account for existing upstream skills, their installation, discovery, corrections and availability. Distinguish one new entry skill from one self-contained deliverable and from a multi-skill installation. |
 | Double-check the facts, ask about ambiguity and provide a Markdown proposal for external review. | Present current evidence, alternatives, recommendations and rationale; preserve unresolved choices rather than silently settling them. No external reviewer is contacted by this work. |
 | The overall study plan must become root PLAN.md, the only source for “what remains?”. | Keep task status in [PLAN.md](../../PLAN.md). This proposal records a decision basis, not a competing backlog or completion claim. |
+| Several GB of historical audio must not burden GitHub cloners. | Keep local retention separate from the default download. A local archive is not an instruction to add its contents to Git. |
+| Split existing build material into disposable, valuable untracked and valuable tracked destinations. | Verify regeneration before deleting; retain private/local material outside the checkout; promote only missing reusable public material to appropriate repository directories, never track `build/` itself. |
+| Does every user need retained research, and would submodules or LFS help? | Distinguish core users from researchers. Prefer optional versioned study downloads; a submodule is conditional on independent maintenance, and LFS alone does not make a download optional. |
+| Wrap up the proposal so implementation can begin. | Close the design discussion with this agreed direction and executable completion criteria in PLAN.md. |
 
 Earlier requirements remain in force: interpret attributed existing scores; support MOS6581/MOS8580 and stereo; retain organized mono/stereo SID/WAV samples with their materials. The [sample library](../../samples/README.md) owns the user's intro-trimming requirements, accepted versions and publication limits. Musical acceptance depends on role, phrasing and context, as the [Axel F verdicts](../../songs/axel-f/arrangement-review.md) demonstrate. Their detailed listening history stays with those owners.
 
@@ -111,6 +115,30 @@ Only consider B if these walkthroughs leave a specific guidance problem that a s
 
 ## Storage and retention
 
+### Distribution contract
+
+No files under `build/`, `.local/` or `.tools/` are currently tracked. Cloning does not download this working history, and ordinary setup does not reproduce it. New builds create output only for the selected task. The three build categories are destinations to establish, not an already completed classification:
+
+| Category | Content and audience | Destination and default download |
+| --- | --- | --- |
+| Disposable | Verified regenerable intermediates, caches and redundant copies | `build/`; excluded from Git and removable after verification. |
+| Valuable, untracked | Selected private references, accepted audio and useful listening history for follow-up work | A local archive outside the checkout, with an index and restoration paths; excluded from public downloads. |
+| Valuable, distributed | Missing reusable tools, editable recipes, findings, provenance and appropriate evidence for other users | Core material goes into existing repository directories; substantial research-only material becomes an optional package where redistribution permits. Existing tracked copies are reused. |
+
+Core distribution includes documented tools, reusable instruments/recipes, concise knowledge/provenance, compact necessary evidence and a small curated sample set. Optional study packages are versioned and checksum-verified, identified by study and size, and downloaded only when selected. Normal setup and the own-score walkthrough must work without the research archive. Unavailable optional material must affect only the task that needs it, with a clear acquisition or regeneration route. Preserve current published sample promises; changing their distribution requires updating their working download/reproduction links.
+
+| Storage mechanism | Decision and rationale |
+| --- | --- |
+| Ordinary Git | Keep small, broadly reusable source and knowledge here. Do not add the bulk listening archive. |
+| Optional downloadable study packages | Preferred for substantial shareable research evidence/audio: explicit choice without adding another repository workflow. Keep manifests, attribution, checksums and owning documentation discoverable from the main project. |
+| Git submodule | Defer unless the collection needs independent development/version history. It pins another repository, which users can leave uninitialized, but adds management complexity. [Git submodules](https://git-scm.com/docs/gitsubmodules). |
+| Git LFS | Already used for compressed evidence. It separates binary objects from ordinary Git history, but configured checkouts normally fetch their contents unless filtered or skipped. It is not, by itself, an optional-download boundary. [LFS download behavior](https://raw.githubusercontent.com/git-lfs/git-lfs/main/docs/man/git-lfs-smudge.adoc). |
+| Local external archive | Use for private or maintainer-specific material with no general distribution need. Moving bytes here reduces checkout size but does not reclaim disk space or create a backup. |
+
+Review existing evidence/LFS and sample dependencies as well as possible new promotions: a default workflow must not silently fetch the optional study collection. Preserve published evidence identity and access while changing acquisition routes. No history rewrite, repository split, submodule creation, release upload or push is authorized merely by selecting this contract.
+
+### Measured footprint and classification limits
+
 A fresh 2026-10-16 `du -sk` check confirms approximately **10.44 GiB** for the checkout, including **6.41 GiB in `build/`**, **2.06 GiB in `.local/`**, **1.39 GiB in `.tools/`**, **0.19 GiB in evidence**, **0.13 GiB in samples** and **0.24 GiB in `.git/`**. These are allocated directory sizes, not download sizes. The earlier tracked working-file inventory was 338.84 MiB logical; measure fresh installation separately in the walkthroughs.
 
 The build scan found **1,100 WAV files, 4.66 GiB allocated**. Of 514 immediate build directories, 501 contain less than 100 decimal MB of allocated file data each and total 4.30 GiB. This confirms the reviewer's long-tail diagnosis, although its 607/596 directory counts were not reproduced. Total WAV size alone does not establish which files are disposable.
@@ -125,24 +153,34 @@ The build scan found **1,100 WAV files, 4.66 GiB allocated**. Of 514 immediate b
 
 The review's approximate 0.85/0.78 figures for the environment/cache are not GiB under this measurement; the table uses one consistent unit. [Restoration instructions and pins](../setup/local-setup.md#optional-local-audio-models) already exist. The separate 0.29 GiB bridge `node_modules` remains optional later cleanup, conditional on preserving the alternative assembler path and documenting live-server reinstallation.
 
-**Per-case retention:** keep the reference, all accepted/selected full renders, every A/B clip submitted to the user, and any unique diagnostic/audio tied to a retained verdict or canonical evidence. Preserve editable sources, recipes, native releases and deferred work. Remove unsubmitted intermediates only when their recipe, source/tool inputs and restoration route are available and no retained consumer needs the path. A recipe filename alone is insufficient proof of recoverability. Record the selection and retained hashes, and verify regeneration on representative affected stages before bulk removal.
+A bounded content-hash scan on 2026-10-16 found the following candidates. Figures below use decimal MB and count exact file-content duplicates once in the distinct-content column; they are not a complete value classification.
 
-Use the [existing cleanup contract](../workflows/build-cache.md) for exact duplicate WAVs and lossless text compression. Extend its explicit retention selection for regenerable intermediate WAVs; do not apply an age-only or whole-directory deletion rule. The proposed budget in decision 4 makes the reduction measurable while giving protected evidence priority. Report before/after allocated size and the remaining protected footprint; do not count moving files elsewhere as eliminated storage.
+| Selection | Distinct content | Current copies in build | Interpretation |
+| --- | ---: | ---: | --- |
+| Files matching hashes from 56 review/delivery records | 1,114 MB | 2,241 MB | Directly evidenced review/delivery content; about 60 MB already has an identical tracked copy elsewhere. |
+| Broader listening/delivery collection, including the first row | 2,020 MB | 3,362 MB | Conservative retention candidate, not an indispensable archive; about 69 MB already matches tracked content elsewhere. |
+| Files outside the broader selection | Not deduplicated for this row | 3,490 MB | Still unclassified; not automatically disposable. |
 
-**Alternative: lossless FLAC.** It may shrink retained WAVs without losing PCM, but needs verified decode-to-PCM equality, metadata handling and a compatible restoration/link contract. Whole-file WAV hashes will differ. Prefer deletion of verified regenerable intermediates first; consider FLAC if protected audio prevents the budget. Keep published WAV downloads and submitted listening links usable. Compression ratio is unmeasured and is not included in the proposed savings.
+The scan matched build-file hashes against tracked song/sample review and selected-delivery records, then included files in listening-named paths and the selected Axel F delivery. This explains the selection's limits: it captures recorded evidence and listening locations, not every reusable source or every unsubmitted experiment. **No additional build artifacts have been selected for Git promotion, and their eventual size is unknown.** The 69 MB of existing tracked matches requires no new Git storage. Private audio remains private regardless of its usefulness.
 
-## Scope and review questions
+**Retention contract:** preserve accepted final/native deliveries, essential references, editable source/recipes, provenance, canonical evidence and comparisons needed to substantiate reusable findings. Other listening history can be archived locally; every submitted clip need not become permanent core content. During classification, existing reviewed files and deferred work remain protected. Retiring a redundant or regenerable audition requires a recorded reason, recoverable inputs and a working retrieval/restoration route for affected listening links. Frozen provenance and unique evidence must remain intact.
 
-**Required:** the three A repairs, both-host cold-clone walkthroughs, a ledger on the next real musical case, explicit component/dependency roles, ML removal and per-case audio retention with the proposed budget. These are recommendations for acceptance, not completed work.
+For every retained item, record its case, role, hash, destination, publication status and reproduction/restoration route. Confirm a retained copy before removing an original. Verify representative regeneration with the pinned inputs and tools; a recipe filename alone is insufficient. Promote only missing useful source/knowledge or appropriate evidence, reuse existing tracked copies, and keep bulk audio out of Git. After migration, historical build paths must be reproducible or explicitly mapped to retained material; missing inputs remain a reported exception, not a deletion candidate.
 
-**Optional:** an entry skill or plugin justified by remaining friction, FLAC/archive retention with restoration guarantees, and future explicitly authorized model experiments. A controlled human comparison remains deferred until staffing exists.
+Use the [existing cleanup contract](../workflows/build-cache.md) for exact duplicate WAVs and lossless text compression. Extend it only for verified regenerable intermediates and reviewed retention selections. The desired result is a disposable working directory with any remaining exceptions identified. Case closure must retain selected results/evidence and clean replaceable working output so growth does not repeat.
 
-**Excluded:** a new backend/emulator/GUI/MCP service, tracker benchmarking, original composition by default, autonomous aesthetic acceptance, blanket cleanup, rewriting Git history and automatic uploads/spending. Existing samples and accepted musical cases remain intact.
+**Separate the budgets:** measure (1) default clone/download and supported setup, (2) optional study downloads, (3) active/generated build output, and (4) the external local archive. The former 6.0 GB checkout ceiling and 4.4 GiB build allowance were rough maintainer-cleanup estimates, not user installation requirements or a justification for permanently retaining that much build output. They are superseded by this separation. Set practical budgets from the classified inventory and cold-clone measurements; report deleted bytes, relocated bytes and total retained storage separately. Moving files must not be presented as disk-space reclamation.
 
-1. **Is there a simpler design meeting the same contract?** Recommendation: repaired A is the minimum; add B only for a demonstrated remaining gap.
-2. **Are the five decisions concrete and acceptable, especially the storage budget and model-review replacement?** Recommendation: accept them together with their retention and human-acceptance boundaries; challenge any requirement whose maintenance cost exceeds its benefit.
-3. **Are the proposed walkthroughs and ledger sufficient for the immediate question?** Recommendation: use them for onboarding and cost evidence, and leave comparative savings unclaimed until a staffed study is warranted.
+**Alternative: lossless FLAC.** Consider it for local/optional retained audio only if worthwhile after deduplication and selection. Require decoded-PCM equality, metadata handling and usable restoration/links; original WAV container hashes will differ. Preserve current WAV sample downloads. Compression savings are unmeasured and not included in the footprint figures.
+
+## Required, optional and excluded scope
+
+**Required:** the three A repairs, both-host cold-clone walkthroughs, a ledger on the next real musical case, explicit component/dependency roles, unused ML removal, build classification/retention and the default-versus-optional distribution boundary. Reconcile the selected model-review policy with its owning instructions. [PLAN.md](../../PLAN.md) defines implementation stages and their completion evidence.
+
+**Optional:** an entry skill or plugin justified by remaining friction, independently maintained research packaging if warranted, FLAC retention, and future explicitly authorized model experiments. A controlled human comparison remains deferred until staffing exists.
+
+**Excluded:** a new backend/emulator/GUI/MCP service, tracker benchmarking, original composition by default, autonomous aesthetic acceptance, blanket cleanup, bulk listening-history additions to Git, rewriting Git history and automatic uploads/spending. Existing musical verdicts and publication restrictions remain intact.
 
 ## Review disposition
 
-The first external review is incorporated: concrete decisions replace the open-ended request; repaired A is mandatory; the unstaffed pilot is deferred; the model-policy change is explicit; WAV retention and a size budget address the main build footprint; MIDI and manual six-voice authoring are explicit. Detailed musical verdicts remain in their owning documents. The dependency analysis and interface alternatives are retained. The directory-count discrepancy and consistent GiB measurements above are the only material factual qualifications to the review.
+The external review led to explicit decisions, mandatory repair of A, affordable evaluation and a visible model-policy change. The subsequent user discussion establishes that local retention is separate from public distribution: useful research need not burden ordinary cloners, and `build/` becomes disposable through verified classification and migration. Optional versioned downloads are preferred over a new submodule; existing LFS use must have explicit acquisition behavior. The former aggregate storage target is replaced by separate measured footprints. Design is ready for implementation; cleanup, redistribution and effort results are not claimed complete.
