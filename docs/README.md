@@ -43,7 +43,7 @@ Use the [project overview](../README.md) for SID Song Crafter's purpose and curr
 ## Review proposed work
 
 - [Crafter workbench direction](proposals/workbench-direction.md): agreed implementation direction for the agent-assisted workflow, Codex/Claude Code support, interface alternatives, effort evaluation and separate core, optional and local storage.
-- [SID Song Explorer proposal](proposals/web-player-and-analyser.md): proposed separate application repository for desktop-focused playback and arrangement analysis, with Safari/mobile support, MOS6581/MOS8580 single/dual-SID coverage and optional analysis packages. Records the Crafter/Explorer ownership boundary, reuse assessment and stereo-library limits; technology stack remains open.
+- [SID Song Explorer proposal](proposals/web-player-and-analyser.md): proposed separate application repository for desktop-focused playback and arrangement analysis, with Safari/mobile support, MOS6581/MOS8580 single/dual-SID coverage and optional analysis packages. Records the Crafter/Explorer ownership boundary, reuse assessment, stereo-library limits and the recommended repository handoff and first milestones; technology stack remains open.
 
 ## Read the song studies
 

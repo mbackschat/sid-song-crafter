@@ -42,13 +42,7 @@ The browser application warrants its own repository because playback integration
 
 Keep one authoritative copy of musical knowledge. Explorer should consume the catalog index and analysis packages and link back to owning studies and recipes; it should not maintain a second copy of the research. The current sample manifests do not yet share one schema (for example, Bach's [manifest](../../samples/bach-toccata/manifest.json) records `rights`, Mozart's [manifest](../../samples/mozart-minuet/manifest.json) does not), so the index is new Crafter work rather than an existing contract. Explorer pins a Crafter revision or catalog version, fetches the listed cleared files at build time, verifies their hashes and places them only in its deployment output, never in its source tree; a publication withdrawn in Crafter therefore leaves the site at Explorer's next pin update. The index carries a schema version, bumped on breaking changes, so the repositories can release independently. Explorer's live derivations and Crafter's package measurements may come from different implementations; do not present them as equivalent unless a shared algorithm is extracted. Static files and explicit data contracts are sufficient for the initial integration; separating repositories does not require a backend service, published packages or a framework decision.
 
-Recommendation for later pickup: establish the application repository when [PLAN.md](../../PLAN.md) queues the bounded feasibility prototype. Explorer is a separate track from the plan's single active musical case. Before the first adapted code lands, settle three prerequisites:
-
-- Choose Explorer's license to fit the selected app base and playback library.
-- Define the catalog index for the first complete example, and only the sample/analysis exchange that example needs.
-- Split this proposal's material. Move the application decisions and the application-specific [research record](../research/tools/web-music-explorers.md), converting outbound links to pinned-commit repository URLs, and leave stubs with navigation links at the old paths. Keep the chip, mixing and engine-behavior findings in Crafter's owning documents, such as the [dual-SID contract](../research/sid/dual-sid.md) and [audio workflow](../workflows/audio-workflow.md), and link them from Explorer.
-
-Composition studies and source evidence remain in Crafter. Keep browser-engine adaptations with Explorer initially; extract a shared library only when demonstrated reuse warrants it. This is a recommended handoff boundary, not authorization to create the repository or begin implementation now.
+Recommendation for later pickup: establish the application repository when [PLAN.md](../../PLAN.md) queues Explorer work, as a separate track from the plan's single active musical case. [First step and milestones](#first-step-and-milestones) orders the handoff and the first prototype. Composition studies and source evidence remain in Crafter. Keep browser-engine adaptations with Explorer initially; extract a shared library only when demonstrated reuse warrants it. This is a recommended handoff boundary, not authorization to create the repository or begin implementation now.
 
 Any later editing UI in Explorer would remain a client of Crafter-owned formats and toolchain, and needs its own proposal.
 
@@ -354,7 +348,42 @@ No further user clarification is required to retain this proposal. These decisio
 | Sound-pattern discovery | Optional provisional grouping, with editable labels. | Useful results on unfamiliar material without false claims of recovered instruments. |
 | Deeper inspection | Prefer exposed live state plus matching retained execution evidence. | Available event resolution, buffering alignment and missing binding capabilities. |
 | Analysis-package format | Preserve the semantic contract above; reuse existing owners. | What the UI and existing manifests can share without duplicate sources of truth. |
-| Explorer license | Decide at repository creation, before adapted code lands; both leading candidates impose copyleft terms on the combined application. | Selected app base and playback library, and their exact license declarations. |
-| Technology stack | Leave open, as requested. | Compatibility with Safari, static hosting and the selected playback API. |
+| Explorer license | GPL-3.0-or-later, chosen at repository creation. It can combine libsidplayfp-wasm's GPL-2.0-or-later and the generally GPLv3 Chip Player JS application, so both leading routes stay open. WebSID's noncommercial CC BY-NC-SA terms are not GPL-compatible; selecting it would reopen this decision. | Exact license declarations of the adopted app base, playback library and reused components. |
+| Technology stack | Leave open in this proposal; milestone 1 records only the choices its prototype needs, in Explorer. | Compatibility with Safari, static hosting and the selected playback API. |
 
-The decisive feasibility evidence is playback and inspection across the required MOS6581/MOS8580 × single-SID/dual-SID stereo matrix on Safari, covering annotated project samples and unannotated local files, correct model selection and routing, mute dependencies and a seek checked against continuous playback. Retain the desktop-focused validation and bounded mobile compatibility checks described above. The analyser must remain useful when annotations are absent. These are acceptance questions for later work, not an implementation schedule or authorization to start it.
+The decisive feasibility evidence is playback and inspection across the required MOS6581/MOS8580 × single-SID/dual-SID stereo matrix on Safari, covering annotated project samples and unannotated local files, correct model selection and routing, mute dependencies and a seek checked against continuous playback. Retain the desktop-focused validation and bounded mobile compatibility checks described above. The analyser must remain useful when annotations are absent. The milestones below order these checks; they do not authorize starting.
+
+## First step and milestones
+
+Recommended order once PLAN.md queues Explorer work. Each stage ends at a checkable result. Publishing the Explorer repository to a remote needs separate authorization.
+
+### Step 1: establish the repository (documentation only)
+
+Move the design before writing application code, so Explorer's first commits already follow the boundary above.
+
+- Create a local `sid-song-explorer` repository with a README stating its purpose and relationship to Crafter, a short agent guide, its own plan and the recommended GPL-3.0-or-later license.
+- Move this proposal, which becomes Explorer's founding design document, and the [application research record](../research/tools/web-music-explorers.md), including the libsidplayfp-wasm and WebSID source reviews. Convert their relative links into Crafter URLs pinned to the commit at move time, and preserve their dates and source citations.
+- Do not move engine facts Crafter already owns: the [audio workflow](../workflows/audio-workflow.md) records the pinned libsidplayfp stereo crossfeed and its control-write muting. Explorer links them instead of restating them.
+- Leave short stubs at both old paths linking to the new location, and update the [docs navigation](../README.md) and [tools research index](../research/tools/README.md). Crafter's PLAN.md records the handoff and the catalog-index work Crafter owns; Explorer's plan owns its milestones.
+
+Done when every moved and stub link resolves, Explorer's documents link Crafter-owned facts rather than copying them, and the old paths are stubs.
+
+### Milestone 1: first playable inspection with one mono sample
+
+Test whether live playback with linked inspection explains a documented master's finding, before investing in exact stereo.
+
+- Sample: the [Rambo loader main music](../../samples/rambo-loader/README.md). It is published, uses MOS6581, belongs to a Galway study with [decoded programs](../research/composition/instruments/rambo-decoded-programs.md), and its GPLv3 terms travel with its catalog entry. Mono avoids the binding's stereo crossfeed, so the current libsidplayfp-wasm binding can be used unchanged.
+- Crafter: catalog index version 1 containing that one entry, with a schema check.
+- Explorer, in current stable desktop Safari: live playback to the ending, local mono SID opening, three-voice mute/solo with the intervention labelled, playhead, output meter, and A–B loops re-entered by forward emulation. Register lanes for the three voices and the filter come from the binding's timestamped writes, with retained, selectable history and visible trace drops. Add two or three annotations from the owning Rambo studies, labelled verified, derived or interpretation and linked to their owners.
+- Select only the technology this prototype needs, and record that decision in Explorer.
+- Accepted limit: the binding's seek can stop at a block boundary instead of the exact target. Label the offset rather than claim sample-accurate seeking.
+
+Done when playback reaches the ending without an unexplained audible difference from the retained render, loop re-entry matches continuous playback apart from the labelled offset, and the lanes follow the audio heard rather than the emulation lead. The decisive check is the user's judgment that the prototype makes a documented Rambo finding clearer than the study and its clips. If it does not, record why before deciding on milestone 2.
+
+### Milestone 2: the dual-SID gate
+
+- Extend the binding to deliver raw per-chip PCM from one shared emulated C64, preferably as an upstreamable change, and retain the final block's remainder when seeking.
+- Add catalog entries and six chip-owned voice lanes for [Bach stereo](../../samples/bach-toccata/README.md) on MOS8580 and [Rambo stereo](../../samples/rambo-stereo/README.md) on MOS6581.
+- Run the bounded recent-iPhone smoke check.
+
+Done when every row of the [stereo-backend evidence table](#evidence-required-before-adopting-the-stereo-backend) passes; that result settles the playback-library decision. Later work, such as catalog breadth, unannotated-file inspection and sound-inspection components, is planned in Explorer.
