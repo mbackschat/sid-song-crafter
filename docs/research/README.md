@@ -16,6 +16,7 @@ Use [PLAN.md](../../PLAN.md) as the sole authority for overall scope, priorities
 | [Tools and source code](tools/README.md) | Composition-tool assessment, player implementations, and automation |
 | [Validation](validation/README.md) | Musical, execution, audio, and hardware evidence |
 | [Source register](sources.md) | Shared provenance, evidence types, versions, and rights notes |
+| [C64 visual identity](visual-identity/README.md) | Historical badge colors, screen palette, typography and project-icon concepts |
 
 ## Read by task
 

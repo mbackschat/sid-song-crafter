@@ -16,13 +16,13 @@ python3 scripts/listening-package.py config/listening/mozart-minuet.json --outpu
 python3 scripts/publish-listening.py build/mozart-minuet-work/run.json --selection config/listening/mozart-minuet.audition.json --output build/mozart-minuet-listening
 ```
 
-The generated listening index identifies the SID/PRG outputs and complete WAVs. Friendly audition files include `mozart-minuet-single-sid.wav`, `mozart-minuet-stereo.wav` and `single-then-stereo-trio.ab.wav`. WAV previews are generated locally; this package adds no WAV payload to the Git clone. Eight SID/PRG files totaling 68,822 bytes are included, with [fingerprints](manifest.json). The publication directory must be fresh.
+The generated listening index identifies the SID/PRG outputs and complete WAVs. Friendly audition files include `mozart-minuet-single-sid.wav`, `mozart-minuet-stereo.wav` and `single-then-stereo-trio.ab.wav`. Eight SID/PRG files totaling 68,822 bytes and two accepted complete PAL WAVs totaling 38,731,654 bytes are included, with [fingerprints](manifest.json). The WAVs were added at the user’s request on 2026-10-17; they are exact copies of the accepted renders. NTSC WAVs and comparison clips are generated locally. The publication directory must be fresh.
 
 ## Playable exports
 
 | Target | Single SID | Dual SID |
 | --- | --- | --- |
-| PAL MOS8580, listening accepted | [SID](mozart-minuet-mono.sid) · [PRG](mozart-minuet-mono.prg) | [SID](mozart-minuet-stereo.sid) · [PRG](mozart-minuet-stereo.prg) |
+| PAL MOS8580, listening accepted | [SID](mozart-minuet-mono.sid) · [WAV](mozart-minuet-mono.wav) · [PRG](mozart-minuet-mono.prg) | [SID](mozart-minuet-stereo.sid) · [WAV](mozart-minuet-stereo.wav) · [PRG](mozart-minuet-stereo.prg) |
 | NTSC MOS8580, technically verified | [SID](mozart-minuet-mono-ntsc.sid) · [PRG](mozart-minuet-mono-ntsc.prg) | [SID](mozart-minuet-stereo-ntsc.sid) · [PRG](mozart-minuet-stereo-ntsc.prg) |
 
 Mono uses `$D400`; stereo uses `$D400/$D420`, chip A left and B right. Use a two-SID-compatible player for stereo. Melody and bass are duplicated centrally; the independent second-violin and viola roles occupy opposite sides. The extra chip restores one source part beyond the mono reduction. For the maintainer’s archived auditions, use fresh output directories when rerunning; the [case retention notes](../../songs/mozart-minuet/README.md#retention-and-follow-up) describe exact recovery.

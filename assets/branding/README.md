@@ -2,7 +2,9 @@
 
 [Editable SVG](sid-song-crafter.svg) · [512 × 512 WebP](sid-song-crafter.webp)
 
-The icon combines a microchip, a musical note with a pulse-wave beam, and three colored accents for the SID's three voices. It uses vector paths without external fonts or linked images. The dark tile keeps its contrast on light and dark README backgrounds; the rounded corners are transparent.
+The selected C64 rainbow-chip design combines outlined C64/SID lettering, a continuous musical note and pulse wave, five badge-inspired color bands and a transparent surround. The SVG uses solid vector shapes without embedded bitmaps, fonts or external resources. README displays the compact SVG at 144 pixels; the lossless WebP provides a raster alternative.
+
+The lettering is custom geometry inspired by the C64 hardware badge. Colors are deliberate badge-inspired web approximations, not a claimed exact VIC-II palette. See the [visual-identity research](../../docs/research/visual-identity/README.md) for sources, concepts and the selection. The design was visually checked at 512 and 144 pixels.
 
 Rebuild the lossless WebP with `rsvg-convert` and `cwebp` (Homebrew packages `librsvg` and `webp`), from the repository root:
 

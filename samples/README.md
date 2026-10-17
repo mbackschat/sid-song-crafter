@@ -5,12 +5,15 @@ Each sample has a package directory containing its README, reproducible build re
 | Sample | Mono SID / WAV | Stereo SID / WAV | Materials and scope |
 | --- | --- | --- | --- |
 | Bach Toccata, about 1:28 | [SID](bach-toccata/bach-toccata.sid) · [WAV](bach-toccata/bach-toccata.wav) | [SID](bach-toccata/bach-toccata-stereo.sid) · [WAV](bach-toccata/bach-toccata-stereo.wav) | [Package](bach-toccata/README.md): accepted complete mono and stereo Toccata |
+| Mozart Minuet and Trio, complete movement, about 2:26 | [SID](mozart-minuet/mozart-minuet-mono.sid) · [WAV](mozart-minuet/mozart-minuet-mono.wav) | [SID](mozart-minuet/mozart-minuet-stereo.sid) · [WAV](mozart-minuet/mozart-minuet-stereo.wav) | [Package](mozart-minuet/README.md): accepted complete PAL renditions; extra source part in stereo; NTSC SID/PRG also included |
 | Original instrument mix, 10 seconds | [SID](instrument-mix/instrument-mix.sid) · [WAV](instrument-mix/instrument-mix.wav) | [SID](instrument-mix/instrument-mix-stereo.sid) · [WAV](instrument-mix/instrument-mix-stereo.wav) | [Package](instrument-mix/README.md): initial mono mix-level acceptance; stereo placement and balance accepted |
 | Rambo loader, main music through ending, about 3:13 | [Faithful SID](rambo-loader/rambo-loader-main.sid) · [WAV](rambo-loader/rambo-loader-main.wav) | [Centered-lead SID](rambo-stereo/rambo-stereo-main.sid) · [WAV](rambo-stereo/rambo-stereo-main.wav) | [Mono package](rambo-loader/README.md) · [Accepted stereo arrangement](rambo-stereo/README.md); both demos omit the intro |
 | Moon River, first statement, about 1:39 | Local SID/WAV build | Local two-SID/WAV build | [Package and recipe](moon-river/README.md): accepted restrained mono first statement; stereo placement and balance accepted |
 | Pink Panther, complete arrangement, about 3:20 | Local SID/WAV build | Local two-SID/WAV build | [Package and recipe](pink-panther/README.md): accepted complete mono arrangement; stereo placement and balance accepted |
 
-The [accepted Mozart Minuet and Trio package](mozart-minuet/README.md) adds complete mono/stereo PAL and technically verified NTSC SID/PRG exports, preserved score materials and a local WAV-generation recipe. Its eight playable files total 68.8 kB; no new WAV payload is included.
+Mozart’s eight SID/PRG exports total 68.8 kB; its two complete accepted PAL WAV previews add 38.7 MB. The user requested these WAVs alongside the existing downloads on 2026-10-17. NTSC WAVs and review comparisons remain local.
+
+Additional completed interpretations are [Axel F](../songs/axel-f/arrangement-review.md#selected-delivery-and-case-closure), with selected mono SID/WAV only, and [Ghostbusters](../songs/studies/ghostbusters-title/README.md), with a separate [selected stereo case](../songs/studies/ghostbusters-stereo/README.md). Their song binaries/audio remain local under the recorded publication boundary; Axel F has no completed stereo version. The [README availability table](../README.md#additional-arrangements-local-builds) links their reproduction materials.
 
 ## Playback and stereo placement
 

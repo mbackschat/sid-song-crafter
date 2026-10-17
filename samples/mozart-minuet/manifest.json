@@ -4,7 +4,7 @@
   "source": "../../songs/mozart-minuet/source/README.md",
   "recipe": "../../config/listening/mozart-minuet.json",
   "listeningScope": "Complete PAL MOS8580 mono/stereo renditions, stereo Trio benefit and ending accepted. NTSC has technical validation only.",
-  "wavPolicy": "Generate WAV previews locally through the recipe; no WAV payload in Git.",
+  "wavPolicy": "Include the two accepted complete PAL WAVs at the user\u2019s request; NTSC previews and intermediate/comparison audio remain generated locally.",
   "files": [
     {
       "filename": "mozart-minuet-mono.sid",
@@ -69,6 +69,38 @@
       "clock": "NTSC",
       "sidCount": 2,
       "sidModel": "MOS8580"
+    },
+    {
+      "filename": "mozart-minuet-mono.wav",
+      "bytes": 12910566,
+      "sha256": "2809f404df4361177b62467103f2d1bc6a9c859425792a75a50564788e7359bf",
+      "clock": "PAL",
+      "sidCount": 1,
+      "sidModel": "MOS8580",
+      "audio": {
+        "channels": 1,
+        "sampleRate": 44100,
+        "frames": 6455261,
+        "durationSeconds": 146.37780045351474,
+        "format": "PCM16"
+      }
+    },
+    {
+      "filename": "mozart-minuet-stereo.wav",
+      "bytes": 25821088,
+      "sha256": "339bf260000597357c37cbd96273ca66e7009cfc371ab3340fea832dfda2dda4",
+      "clock": "PAL",
+      "sidCount": 2,
+      "sidModel": "MOS8580",
+      "audio": {
+        "channels": 2,
+        "sampleRate": 44100,
+        "frames": 6455261,
+        "durationSeconds": 146.37780045351474,
+        "format": "PCM16"
+      }
     }
-  ]
+  ],
+  "wavPackagingDate": "2026-10-17",
+  "wavSourceReceipt": "../../evidence/mozart-minuet/verification.json"
 }

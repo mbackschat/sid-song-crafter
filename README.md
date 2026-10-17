@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/branding/sid-song-crafter.webp" alt="SID Song Crafter — a musical note inside a SID chip" width="144" height="144">
+  <img src="assets/branding/sid-song-crafter.svg" alt="SID Song Crafter — C64 rainbow sound chip with a musical pulse-wave note" width="144" height="144">
 </p>
 
 # SID Song Crafter
@@ -23,7 +23,7 @@ A SID instrument can be a small program that shapes a note's attack, moving tone
 - **Build and comparison tools:** scripted rendering, cached listening packages, and A/B comparisons with recorded levels.
 - **Verification:** checks for note scheduling, chip-register writes, clipping and endings, with separate VICE execution checks where configured.
 
-The workflow uses scripts and editable JSON recipes. Instrument selection and arrangement are configured for each song; listening determines whether the result meets the musical brief.
+The supported workflow is for an agent-assisted musician/developer using **Codex or Claude Code**, CLI tools and editable JSON recipes. The person supplies musical intent and listening judgments; the agent can prepare sources, configure arrangements and run verification. Existing [C64 skills](skills/README.md) are optional aids; no new project-specific skill or live bridge is required. Instrument selection and arrangement are configured for each song. The [workbench assessment](docs/validation/workbench-assessment.md) records the tested onboarding and musical case; comparative total-effort savings remain unproven.
 
 ## Downloads
 
@@ -32,12 +32,26 @@ These samples are included in the repository and can be played without building 
 | Sample | Mono SID / WAV | Stereo SID / WAV | Materials |
 | --- | --- | --- | --- |
 | Bach Toccata — complete Toccata section, about 1:28 | [SID](samples/bach-toccata/bach-toccata.sid) · [WAV](samples/bach-toccata/bach-toccata.wav) | [Two-SID](samples/bach-toccata/bach-toccata-stereo.sid) · [WAV](samples/bach-toccata/bach-toccata-stereo.wav) | [Source, native modules, PRG and recipe](samples/bach-toccata/README.md) |
+| Mozart Minuet and Trio — complete K. 525 movement III, about 2:26 | [SID](samples/mozart-minuet/mozart-minuet-mono.sid) · [WAV](samples/mozart-minuet/mozart-minuet-mono.wav) | [Two-SID](samples/mozart-minuet/mozart-minuet-stereo.sid) · [WAV](samples/mozart-minuet/mozart-minuet-stereo.wav) | [Source, instruments, PRG, NTSC exports and recipe](samples/mozart-minuet/README.md) |
 | Original instrument mix — 10-second three-part demo | [SID](samples/instrument-mix/instrument-mix.sid) · [WAV](samples/instrument-mix/instrument-mix.wav) | [Two-SID](samples/instrument-mix/instrument-mix-stereo.sid) · [WAV](samples/instrument-mix/instrument-mix-stereo.wav) | [Source, native modules, PRG and recipe](samples/instrument-mix/README.md) |
 | Rambo loader — main music through the ending, about 3:13; intro omitted | [Faithful SID](samples/rambo-loader/rambo-loader-main.sid) · [WAV](samples/rambo-loader/rambo-loader-main.wav) | [Centered-lead arrangement](samples/rambo-stereo/rambo-stereo-main.sid) · [WAV](samples/rambo-stereo/rambo-stereo-main.wav) | [Mono materials](samples/rambo-loader/README.md) · [Stereo materials](samples/rambo-stereo/README.md) |
 
-The Rambo demos start at the musical entrance at 31.64 seconds in the complete versions; both the SID and WAV omit the intro and retain the ending. Its stereo version is the accepted expanded arrangement. Bach and the instrument mix add stereo placement to the same three parts. The Bach stereo presentation and trimmed Rambo stereo release are listening-accepted; the instrument mix stereo presentation is also listening-accepted.
+The Rambo demos start at the musical entrance at 31.64 seconds in the complete versions; both the SID and WAV omit the intro and retain the ending. Its stereo version is the accepted expanded arrangement. Bach and the instrument mix add stereo placement to the same three parts. The Bach stereo presentation and trimmed Rambo stereo release are listening-accepted; the instrument mix stereo presentation is also listening-accepted. Mozart’s complete mono and stereo performances and ending are accepted; its second SID restores an additional inner part, with the listener accepting the added richness and space.
 
-On GitHub, open a file and use **Download raw file**. Open a SID in a PSID-compatible player, a WAV in a normal audio player, or autostart a PRG in VICE. All samples target PAL; Bach and the instrument mix use MOS8580, Rambo uses MOS6581. Stereo SIDs require a two-SID player with `$D400` routed left and `$D420` right. [Sample details](samples/README.md) include source attribution, hashes and reproduction commands.
+On GitHub, open a file and use **Download raw file**. Open a SID in a PSID-compatible player, a WAV in a normal audio player, or autostart a PRG in VICE. The downloads above target PAL; Bach, Mozart and the instrument mix use MOS8580, Rambo uses MOS6581. Mozart’s package also includes technically verified NTSC SID/PRG exports. Stereo SIDs require a two-SID player with `$D400` routed left and `$D420` right. [Sample details](samples/README.md) include source attribution, hashes and reproduction commands.
+
+### Additional arrangements: local builds
+
+These studies have public materials and reproduction instructions, but their SID/WAV files are **not included in Git** because their recorded composition/source-arrangement redistribution status remains unresolved. A build link is not a downloadable audio file.
+
+| Song | Single SID: SID / WAV | Stereo: SID / WAV | Materials and scope |
+| --- | --- | --- | --- |
+| Moon River | [Build both formats](samples/moon-river/README.md#build-both-versions) | [Build both formats](samples/moon-river/README.md#build-both-versions) | [Sample package](samples/moon-river/README.md); accepted first statement and stereo placement/balance |
+| Pink Panther | [Build both formats](samples/pink-panther/README.md#build-both-versions) | [Build both formats](samples/pink-panther/README.md#build-both-versions) | [Sample package](samples/pink-panther/README.md); accepted complete arrangement and stereo placement/balance |
+| Axel F | [Selected delivery and reproduction](songs/axel-f/arrangement-review.md#selected-delivery-and-case-closure) | No completed stereo rendition | [Song study](songs/axel-f/README.md); accepted complete mono performance with selected shorter ending |
+| Ghostbusters | [Native title and reproduction](songs/studies/ghostbusters-title/README.md) | [Selected stereo and reproduction](songs/studies/ghostbusters-stereo/README.md) | Complete title with speech; stereo selection retains the listener’s accompaniment reservation |
+
+The [sample library](samples/README.md) indexes all curated packages, including complete Rambo versions with the intro and the historical stereo excerpt. Earlier reconstructions and transfer phrases are indexed by the [composer studies](docs/research/composers/README.md) and [instrument library](docs/research/composition/instruments/README.md); these are research materials, not a promise of complete mono/stereo downloads for every studied tune.
 
 After cloning, macOS users can play the included Bach recording directly:
 
@@ -67,7 +81,7 @@ python3 scripts/setup-sidwizard.py
 
 Next, follow the [renderer setup](docs/workflows/audio-workflow.md#pinned-library-setup) to build `.local/bin/render-sid`, which turns the SID program into a WAV. That guide provides the verified Apple Silicon macOS setup; other platforms need a matching libsidplayfp build. A [checksum-verified Python dependency download](docs/songs/first-song.md#build-and-verify) is also available.
 
-The Bach build runs from the command line. The other examples identify any additional MIDI or VICE dependencies they need.
+Check this demo’s prerequisites with `python3 scripts/doctor.py --profile demo`. The other examples identify any additional MIDI or VICE dependencies they need; the [setup guide](docs/setup/local-setup.md#readiness-and-bridge-setup) explains the separate readiness profiles.
 
 ### Build the demo
 
@@ -111,7 +125,7 @@ These choices draw on the project's [sound repertoire](docs/research/composition
 Build the alternative sustained instrument palette using the same arranged notes and timing:
 
 ```sh
-python3 scripts/native-song.py build songs/studies/bach-toccata-full/restrained.json --output build/bach-sustained
+python3 scripts/native-song.py build build/readme-toccata-inputs/restrained.json --output build/bach-sustained
 python3 scripts/compare-audio.py prepare build/bach-sustained/native-song.excerpt.wav build/readme-toccata/native-song.excerpt.wav build/bach-palettes
 ```
 
@@ -144,11 +158,12 @@ Play the SID or PRG from that new directory. [Regional export](docs/workflows/na
 
 ## Examples
 
-Bach, the original instrument mix and both the faithful and stereo Rambo arrangements have [ready-to-play downloads](#downloads). Moon River and Pink Panther have sample packages that build both mono and stereo SID/WAV files locally; their song files are not distributed here because composition and source-arrangement permissions remain unresolved.
+Bach, Mozart, the original instrument mix and both the faithful and stereo Rambo arrangements have [ready-to-play downloads](#downloads). Moon River and Pink Panther have sample packages that build both mono and stereo SID/WAV files locally; their song files are not distributed here because composition and source-arrangement permissions remain unresolved.
 
 | Example | Arrangement | Build and play |
 | --- | --- | --- |
 | [Bach Toccata](samples/bach-toccata/README.md) | Complete Toccata section; mono and stereo; about 1:28 | [Downloads](#downloads) and reproducible package above. |
+| [Mozart Minuet and Trio](samples/mozart-minuet/README.md) | Complete movement; mono and resource-expanded stereo; about 2:26 | [SID/WAV downloads](#downloads), PAL/NTSC exports and reproducible recipe. |
 | [Moon River](samples/moon-river/README.md) | Restrained first statement; mono and stereo; about 1:39 | Build below; both SID/WAV versions appear in `build/sample-moon-river-stereo/listening.md`. |
 | [Pink Panther](samples/pink-panther/README.md) | Complete sourced arrangement with pulse accompaniment; mono and stereo; about 3:20 | Build below; both SID/WAV versions appear in `build/sample-pink-panther-stereo/listening.md`. |
 | [Instrument mix](samples/instrument-mix/README.md) | Original three-part test phrase; mono and stereo; 10 seconds | [Downloads](#downloads) and package build recipe above. |
@@ -165,7 +180,7 @@ python3 scripts/setup-project.py --only references --include pink-panther-score
 python3 scripts/listening-package.py samples/pink-panther/stereo.recipe.json --output build/sample-pink-panther-stereo
 ```
 
-The new stereo presentations retain the source notes and instruments, with the melody centered and accompaniment split between the chips; their stereo placement and balance are listening-accepted. The recipe runner reuses unchanged successful stages. After a build, open its generated `listening.md` on your computer to find the SID and PRG exports, rendered audio and comparison files. [Moon River's notes](songs/moon-river/README.md) and [Pink Panther's notes](songs/pink-panther/README.md) explain their musical briefs and source arrangements.
+The Moon River and Pink Panther stereo presentations retain the source notes and instruments, with the melody centered and accompaniment split between the chips; their stereo placement and balance are listening-accepted. The recipe runner reuses unchanged successful stages. After a build, open its generated `listening.md` on your computer to find the SID and PRG exports, rendered audio and comparison files. [Moon River's notes](songs/moon-river/README.md) and [Pink Panther's notes](songs/pink-panther/README.md) explain their musical briefs and source arrangements.
 
 ## Use your own score
 
@@ -184,7 +199,7 @@ The outputs are `build/own-score-native/export/candidate.sid` and `candidate.prg
 - [Technique lookup](docs/research/technique-index.md), [instruments](docs/research/composition/instruments/README.md) and [gestures](docs/research/composition/gestures/README.md): find a technique by musical purpose, with examples and listening evidence.
 - [Project plan](PLAN.md): sole authority for overall scope, current status, remaining work and next priorities.
 - [Two-SID workflow](docs/workflows/native-song-workflow.md#reusable-two-chip-test): six voices, separate chip roles and stereo output.
-- [Setup guide](docs/setup/local-setup.md): optional reference downloads, dependency checks and platform details. `python3 scripts/doctor.py` reports readiness; it does not install missing tools.
+- [Setup guide](docs/setup/local-setup.md): optional reference downloads, dependency checks and platform details. Use `python3 scripts/doctor.py --profile demo` for the native example or `--profile score` for MIDI plus standalone VICE verification; checks do not install tools.
 - [Tool guide](scripts/README.md) and [documentation index](docs/README.md): supported workflows and detailed technical contracts.
 - [Contributor guide](CLAUDE.md): development and publication rules. [AGENTS.md](AGENTS.md) links to the same guide.
 
