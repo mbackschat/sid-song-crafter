@@ -66,6 +66,42 @@ class BuildArchiveTests(unittest.TestCase):
         manifest = json.loads(self.manifest().read_text())
         self.assertEqual({key: manifest['files'][0][key] for key in row}, row)
 
+    def test_local_archives_preserve_evicted_bytes_and_raw_playback_links(self):
+        archives = self.root / '.local/archives/build-history'
+        archives.mkdir(parents=True)
+        for link in (False, True):
+            with self.subTest(link=link):
+                self.destination = archives / ('raw' if link else 'gzip')
+                row = self.source()
+                report = self.archive(row, remove=not link, link=link)
+                target = self.root / row['path']
+                self.assertTrue(report['passed'])
+                if link:
+                    self.assertTrue(target.is_symlink())
+                    self.assertEqual(target.read_bytes(), self.original)
+                else:
+                    self.assertFalse(target.exists())
+                result = archive_tool.restore(self.manifest(), root=self.root)
+                self.assertEqual(result['restoredPaths'], [row['path']])
+                self.assertFalse(target.is_symlink())
+                self.assertEqual(target.read_bytes(), self.original)
+
+    def test_restore_local_archive_preserves_conflicting_build_file(self):
+        row = self.source()
+        self.archive(row, remove=True)
+        local = self.root / '.local/archives/restored-history'
+        local.parent.mkdir(parents=True)
+        self.destination.rename(local)
+        self.destination = local
+        target = self.root / row['path']
+        target.write_bytes(b'changed existing file')
+        with self.assertRaisesRegex(ValueError, 'conflict|different'):
+            archive_tool.restore(self.manifest(), root=self.root)
+        self.assertEqual(target.read_bytes(), b'changed existing file')
+        target.unlink()
+        archive_tool.restore(self.manifest(), root=self.root)
+        self.assertEqual(target.read_bytes(), self.original)
+
     def test_link_mode_deduplicates_raw_readonly_objects_and_preserves_playback_paths(self):
         a, b = self.source(), self.source('build/listening/two.wav')
         report = self.archive(a, b, link=True)
@@ -101,6 +137,53 @@ class BuildArchiveTests(unittest.TestCase):
                          (before.st_ino, before.st_mode, before.st_size, before.st_mtime_ns, before.st_ctime_ns))
         target.write_bytes(b'editable restored copy')
         self.assertEqual((self.root / b['path']).read_bytes(), self.original)
+
+    def test_relative_local_archive_links_restore_after_checkout_relocation(self):
+        self.destination = self.root / '.local/archives/raw'
+        self.destination.parent.mkdir(parents=True)
+        row = self.source()
+        self.archive(row, link=True)
+        entry = json.loads(self.manifest().read_text())['files'][0]
+        target = self.root / row['path']
+        target.unlink()
+        target.symlink_to(os.path.relpath(self.destination / entry['object'], target.parent))
+        relocated = self.directory / 'relocated checkout'
+        self.root.rename(relocated)
+        self.root = relocated
+        self.destination = self.root / '.local/archives/raw'
+        target = self.root / row['path']
+        self.assertEqual(target.read_bytes(), self.original)
+        result = archive_tool.restore(self.manifest(), root=self.root)
+        self.assertEqual(result['restoredPaths'], [row['path']])
+        self.assertFalse(target.is_symlink())
+        self.assertEqual(target.read_bytes(), self.original)
+
+    def test_raw_restore_rejects_unrelated_relative_symlink(self):
+        row = self.source()
+        self.archive(row, link=True)
+        target = self.root / row['path']
+        unrelated = self.root / 'same-byte-unrelated.wav'
+        unrelated.write_bytes(self.original)
+        relative = os.path.relpath(unrelated, target.parent)
+        target.unlink()
+        target.symlink_to(relative)
+        with self.assertRaisesRegex(ValueError, 'Unrelated symlink'):
+            archive_tool.restore(self.manifest(), root=self.root)
+        self.assertEqual(os.readlink(target), relative)
+
+    def test_raw_restore_rejects_relative_link_redirected_before_parent_traversal(self):
+        row = self.source()
+        self.archive(row, link=True)
+        entry = json.loads(self.manifest().read_text())['files'][0]
+        target = self.root / row['path']
+        (target.parent / 'redirect').symlink_to(target.parent, target_is_directory=True)
+        relative = 'redirect/../' + os.path.relpath(self.destination / entry['object'], target.parent)
+        self.assertEqual(Path(os.path.abspath(target.parent / relative)), self.destination / entry['object'])
+        target.unlink()
+        target.symlink_to(relative)
+        with self.assertRaisesRegex(ValueError, 'Symlink|symlink'):
+            archive_tool.restore(self.manifest(), root=self.root)
+        self.assertEqual(os.readlink(target), relative)
 
     def test_raw_restore_rejects_unrelated_same_byte_symlink_and_corrupt_object(self):
         row = self.source()
@@ -265,11 +348,42 @@ class BuildArchiveTests(unittest.TestCase):
             self.archive(dict(row, path='build/linked/one.wav'))
         self.assertFalse(self.destination.exists())
 
-    def test_archive_directory_must_be_fresh_and_outside_checkout(self):
+    def test_archive_directory_must_be_fresh_and_use_an_allowed_location(self):
         row = self.source()
-        for destination in (self.root / 'build/archive', self.root / 'archive', self.directory):
+        archives = self.root / '.local/archives'
+        archives.mkdir(parents=True)
+        existing = archives / 'existing'
+        existing.mkdir()
+        for destination in (self.root / 'build/archive', self.root / 'archive', self.directory,
+                            self.root / '.local/other', self.root / '.local/archives-other',
+                            archives, existing, archives / 'missing-parent/archive'):
             with self.subTest(destination=destination), self.assertRaises(ValueError):
                 archive_tool.archive(self.selection(row), destination, root=self.root)
+        self.assertEqual((self.root / row['path']).read_bytes(), self.original)
+
+    def test_restore_rejects_archives_in_other_checkout_locations(self):
+        row = self.source()
+        self.archive(row, remove=True)
+        for relative in ('build/archive', 'archive', '.local/other', '.local/archives-other', '.local/archives'):
+            directory = self.root / relative
+            directory.mkdir(parents=True, exist_ok=True)
+            manifest = directory / 'manifest.json'
+            manifest.write_bytes(self.manifest().read_bytes())
+            with self.subTest(relative=relative), self.assertRaisesRegex(ValueError, 'outside the checkout'):
+                archive_tool.restore(manifest, root=self.root)
+        self.assertFalse((self.root / row['path']).exists())
+
+    def test_local_archive_and_restore_reject_symlinked_archive_container(self):
+        row = self.source()
+        self.archive(row)
+        local = self.root / '.local'
+        local.mkdir()
+        (local / 'archives').symlink_to(self.directory, target_is_directory=True)
+        with self.assertRaisesRegex(ValueError, 'Symlink|symlink'):
+            archive_tool.archive(self.selection(row), local / 'archives/new', root=self.root)
+        with self.assertRaisesRegex(ValueError, 'Symlink|symlink'):
+            archive_tool.restore(local / 'archives' / self.destination.name / 'manifest.json', root=self.root)
+        self.assertFalse((self.directory / 'new').exists())
         self.assertEqual((self.root / row['path']).read_bytes(), self.original)
 
     def test_nonregular_source_is_rejected_without_reading_it(self):

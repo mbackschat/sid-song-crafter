@@ -98,9 +98,11 @@ An ordinary failure before manifest replacement rolls back unchanged archive fil
 
 Before committing a promoted group, check that every new manifest archive is actually staged/tracked with `git ls-files`; successful promotion and hash verification do not establish Git inclusion. Global ignore rules also apply inside `evidence/`: the Rambo stereo verification log was initially omitted by a global `*.log` rule, corrected in commit `1237aa9` with a narrow repository exception. Inspect unexpected exclusions with `git check-ignore -v`, preserve the public-file boundary, and never force-add a directory to bypass it.
 
-## External local build archives
+<a id="external-local-build-archives"></a>
 
-Use [archive-build.py](../../scripts/archive-build.py) to retain an explicitly reviewed selection outside the checkout and, optionally, remove its working copies or retain WAV playback links. This is local retention, separate from public evidence promotion and Git/LFS distribution. The tool does not decide what is expendable or infer protected musical cases. Select only classified files whose retention/reproduction route is settled; preserve active/deferred work and current listening paths. Stop independent source, archive and restoration-destination writers before running it.
+## Local build archives
+
+Use [archive-build.py](../../scripts/archive-build.py) to retain an explicitly reviewed selection under ignored `.local/archives/` and, optionally, remove its working copies or retain WAV playback links. External destinations require an explicit user instruction; they remain supported for compatibility. This is local retention, separate from public evidence promotion and Git/LFS distribution. The tool does not decide what is expendable or infer protected musical cases. Select only classified files whose retention/reproduction route is settled; preserve active/deferred work and current listening paths. Stop independent source, archive and restoration-destination writers before running it.
 
 Supply a JSON object with `version: 1` and a nonempty `files` array. Each file entry has this contract:
 
@@ -111,14 +113,15 @@ Supply a JSON object with `version: 1` and a nonempty `files` array. Each file e
 | `sha256` | Measured SHA-256 of the original bytes, as 64 lowercase hexadecimal characters |
 | `reason` | Nonempty explanation of why the file is retained and its working copy may be retired |
 
-Duplicate source paths reject. Different paths with identical bytes share one content-addressed object within that archive. Select actual inventory paths and fingerprints rather than copying examples with invented hashes. The external archive directory must be fresh and outside the checkout, with an existing parent and no symlink components. These commands illustrate a reviewed selection and a separately chosen local archive location:
+Duplicate source paths reject. Different paths with identical bytes share one content-addressed object within that archive. Select actual inventory paths and fingerprints rather than copying examples with invented hashes. The archive directory must be fresh, with an existing parent and no symlink components. Inside the checkout, only descendants of `.local/archives/` are permitted; the container itself, `build/` and other checkout locations are rejected. These commands illustrate project-local retention:
 
 ```sh
-python3 scripts/archive-build.py archive build/reviewed-selection.json --archive /absolute/archive-parent/case-name
-python3 scripts/archive-build.py archive build/another-reviewed-selection.json --archive /absolute/archive-parent/another-case --remove
-python3 scripts/archive-build.py archive build/reviewed-wavs.json --archive /absolute/archive-parent/listening-history --link
-python3 scripts/archive-build.py restore /absolute/archive-parent/another-case/manifest.json --path build/my-run/cache/preview.wav
-python3 scripts/archive-build.py restore /absolute/archive-parent/listening-history/manifest.json --path build/my-run/accepted.wav
+mkdir -p .local/archives
+python3 scripts/archive-build.py archive build/reviewed-selection.json --archive .local/archives/case-name
+python3 scripts/archive-build.py archive build/another-reviewed-selection.json --archive .local/archives/another-case --remove
+python3 scripts/archive-build.py archive build/reviewed-wavs.json --archive .local/archives/listening-history --link
+python3 scripts/archive-build.py restore .local/archives/another-case/manifest.json --path build/my-run/cache/preview.wav
+python3 scripts/archive-build.py restore .local/archives/listening-history/manifest.json --path build/my-run/accepted.wav
 ```
 
 Archive without `--remove` or `--link` copies and verifies; it leaves every source in place. With `--remove`, it performs the same complete validation and only then evicts the selected source paths. With `--link`, it instead retains raw read-only objects (`objects/<sha256>.raw`, mode `0444`) and atomically replaces each selected source with an absolute playback symlink after verification. `--link` and `--remove` are mutually exclusive. Every invocation needs a fresh archive directory; it does not add entries to an existing archive or turn an earlier copy-only run into a removal run. Restore accepts repeated `--path` arguments for exact indexed file paths; omitting them restores all entries beneath the current checkout's `build/` at their recorded relative paths.
@@ -137,17 +140,19 @@ Use playback links only for inactive WAV history. Keep native recipe JSON and it
 
 Ordinary WAV readers follow the archived link, retaining old listening URLs without keeping another audio copy in the checkout. Before rerendering, editing or publishing that path, use `restore --path` to materialize it, or choose a fresh output directory. The renderer rejects symlinked WAV or register-log destinations before opening either output; publication deliberately rejects symlink sources. Do not make archive objects writable to bypass those guards. Read-only mode is an accidental-write guard, not filesystem immutability.
 
-The absolute links depend on the external archive location. Keep its manifest and objects together; when moving to another machine, copy the archive and restore regular files from its new manifest location. Do not delete the archive merely because files still appear under `build/`. An archived historical snapshot makes its recorded bytes recoverable; future generated or edited files require a new retention pass.
+Playback links depend on the archive location. The relocated historical links are relative and remain usable when the project folder moves intact; older absolute links need retargeting or restoration. Keep each manifest and its objects together; when moving to another machine, copy the ignored archive as well and restore regular files from its new manifest location when needed. Do not delete the archive merely because files still appear under `build/`. An archived historical snapshot makes its recorded bytes recoverable; future generated or edited files require a new retention pass.
 
 ### Maintainer archive and current recovery routes
 
-The completed 2026-10-17 migration is recorded in the [workbench assessment](../validation/workbench-assessment.md#storage-outcome-and-recovery). Its local archive is `~/Archives/sid-song-crafter/`; the README there explains recovery and `catalog.json` maps historical paths to their latest manifest and exact fingerprint. Data manifests and compressed inventories/receipts stay outside Git. Use that catalog to choose a manifest and restore only the required paths. Do not restore every manifest indiscriminately: newer snapshots can contain changed package indexes, and different existing bytes correctly fail as conflicts.
+The completed 2026-10-17 migration is recorded in the [workbench assessment](../validation/workbench-assessment.md#storage-outcome-and-recovery). Its local archive is now `.local/archives/sid-song-crafter-history/`; the README there explains recovery and `catalog.json` maps historical paths to their latest manifest and exact fingerprint. Data manifests and compressed inventories/receipts stay outside Git. Use that catalog to choose a manifest and restore only the required paths. Do not restore every manifest indiscriminately: newer snapshots can contain changed package indexes, and different existing bytes correctly fail as conflicts.
+
+On 2026-10-17, at the user’s request, the complete archive was moved from `~/Archives/sid-song-crafter/` into the project. All 10,404 pre-existing archive files matched their SHA-256 hashes after relocation, hardlinks were preserved, and all 1,246 playback links were changed to relative project-local targets. The [relocation receipt](../../evidence/workbench-assessment/archive-relocation.json) records verification and restoration checks. Historical receipts retain their original paths as provenance; current recovery uses the location above. This is relocation, not disk-space reclamation, and these private files remain ignored by Git.
 
 The protected snapshot retains regular recipe inputs and deferred work; raw listening objects retain old WAV URLs; compressed history retains other generated/unknown-value material. A final snapshot also preserves recovered metadata and the current own-score indexes. Historical debug binaries `build/render-native-debug` and `build/renderer-dual-rsid/render-sid-before` need `chmod 0755` after byte restoration if execution is required. New builds and edits need fresh retention or verified regeneration routes; the dated snapshot does not cover future work.
 
 ### Archived deferred source experiments
 
-On 2026-10-17, the user authorized retiring 12 untracked Flashdance, Monty and Elise experiment files from the working tree. Their 74,082 original bytes are retained in `~/Archives/sid-song-crafter/2026-10-17-deferred-source/`: `sources.tar.gz` (18,998 bytes), `manifest.json` (original paths, sizes, SHA-256 hashes and modes), and a recovery README. Every file was extracted to a fresh temporary directory and matched byte-for-byte before the originals were removed. The archive SHA-256 is `e4e262c637c9c3c14cb695ca3e81e96247482cd93bfe8e14f1aa4e9c5c015288`. This separate source archive is not indexed by the build-only catalog or restored by `archive-build.py`; it remains local and needs a separate backup.
+On 2026-10-17, the user authorized retiring 12 untracked Flashdance, Monty and Elise experiment files from the working tree. Their 74,082 original bytes are retained in `.local/archives/2026-10-17-deferred-source/`: `sources.tar.gz` (18,998 bytes), `manifest.json` (original paths, sizes, SHA-256 hashes and modes), and a recovery README. Every file was extracted to a fresh temporary directory and matched byte-for-byte before the originals were removed. The archive SHA-256 is `e4e262c637c9c3c14cb695ca3e81e96247482cd93bfe8e14f1aa4e9c5c015288`. The archive was relocated into the ignored project directory at the user’s request; use project-local storage for new artifacts unless an external destination is explicitly authorized. This separate source archive is not indexed by the build-only catalog or restored by `archive-build.py`; it remains local and needs a separate backup.
 
 | Retained material | Scope and recovery purpose |
 | --- | --- |
@@ -158,9 +163,9 @@ On 2026-10-17, the user authorized retiring 12 untracked Flashdance, Monty and E
 For recovery, verify the archive hash, extract into a fresh empty directory, then verify each extracted file's size and SHA-256 against `manifest.json`. The archive preserves repository-relative paths. Copy only the needed files into the checkout after checking for conflicts; do not overwrite current implementations. For example:
 
 ```sh
-shasum -a 256 ~/Archives/sid-song-crafter/2026-10-17-deferred-source/sources.tar.gz
-recovery_dir=$(mktemp -d /tmp/sid-deferred-recovery.XXXXXX)
-tar -xzf ~/Archives/sid-song-crafter/2026-10-17-deferred-source/sources.tar.gz -C "$recovery_dir"
+shasum -a 256 .local/archives/2026-10-17-deferred-source/sources.tar.gz
+recovery_dir=$(mktemp -d .local/archives/sid-deferred-recovery.XXXXXX)
+tar -xzf .local/archives/2026-10-17-deferred-source/sources.tar.gz -C "$recovery_dir"
 ```
 
 ## Local cache compression

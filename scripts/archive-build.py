@@ -1,4 +1,4 @@
-"""Archive an explicit reviewed build selection outside the checkout, and restore exact bytes."""
+"""Archive a reviewed build selection below .local/archives/ or externally, and restore exact bytes."""
 
 import argparse
 from contextlib import contextmanager
@@ -33,6 +33,15 @@ def _absolute(value):
     if '..' in path.parts:
         raise ValueError(f'Path traversal is not allowed: {value}')
     return Path(os.path.abspath(path))
+
+
+def _archive_directory(value, root):
+    directory = _absolute(value)
+    _no_symlinks(directory)
+    local = root / '.local/archives'
+    if directory.is_relative_to(root) and (directory == local or not directory.is_relative_to(local)):
+        raise ValueError('Choose an archive directory below .local/archives/ or outside the checkout')
+    return directory
 
 
 @contextmanager
@@ -215,12 +224,11 @@ def archive(selection, destination, *, remove=False, link=False, root=ROOT):
         if (record['bytes'], record['sha256']) != (entry['bytes'], entry['sha256']):
             raise ValueError(f'Selection does not match source: {entry["path"]}')
         records.append(record)
-    directory = _absolute(destination)
-    _no_symlinks(directory)
-    if directory.is_relative_to(root) or os.path.lexists(directory):
-        raise ValueError('Choose a fresh archive directory outside the checkout')
+    directory = _archive_directory(destination, root)
+    if os.path.lexists(directory):
+        raise ValueError('Choose a fresh archive directory')
     if not directory.parent.is_dir():
-        raise ValueError('The external archive parent directory must already exist')
+        raise ValueError('The archive parent directory must already exist')
     compression = 'none' if link else 'gzip'
     manifest = dict(version=1, createdAt=datetime.now(timezone.utc).isoformat(), sourceRoot=str(root),
                     compression=compression, files=[dict(entry, object=_object_name(entry['sha256'], compression)) for entry in entries])
@@ -271,8 +279,7 @@ def archive(selection, destination, *, remove=False, link=False, root=ROOT):
 def _manifest(path, root):
     path = _absolute(path)
     _no_symlinks(path)
-    if path.is_relative_to(root):
-        raise ValueError('Restore from an archive outside the checkout')
+    directory = _archive_directory(path.parent, root)
     value = _json_file(path)
     compression = value.get('compression')
     if compression not in ('gzip', 'none'):
@@ -284,7 +291,7 @@ def _manifest(path, root):
             raise ValueError('Object path must match its content address')
         entry['object'] = expected
         entry['compression'] = compression
-    return path.parent, entries
+    return directory, entries
 
 
 def _owned_link(entry, directory, root):
@@ -292,12 +299,15 @@ def _owned_link(entry, directory, root):
     if not path.is_symlink():
         return None
     identity = cleanup._identity(path.lstat())
-    expected = str(directory / entry['object'])
-    if entry.get('compression') != 'none' or os.readlink(path) != expected:
+    link = os.readlink(path)
+    target = path.parent / link
+    if entry.get('compression') != 'none' or Path(os.path.abspath(target)) != directory / entry['object']:
         raise ValueError(f'Unrelated symlink is not an owned archive link: {path}')
+    _no_symlinks(target)
     _read_object(entry, directory)
+    _no_symlinks(target)
     _no_symlinks(path.parent)
-    if cleanup._identity(path.lstat()) != identity or os.readlink(path) != expected:
+    if cleanup._identity(path.lstat()) != identity or os.readlink(path) != link:
         raise ValueError(f'Archive link changed while verifying: {path}')
     return identity
 
@@ -363,14 +373,14 @@ def restore(manifest, paths=(), *, root=ROOT):
             changed = _restore_entry(entry, directory, root)
             result['restoredPaths' if changed else 'unchangedPaths'].append(entry['path'])
     except (OSError, ValueError) as error:
-        raise ValueError(f'Restore failed after {len(result["restoredPaths"])} published files: {error}. Already restored files and the external archive are retained; retry after resolving the conflict.') from error
+        raise ValueError(f'Restore failed after {len(result["restoredPaths"])} published files: {error}. Already restored files and the archive are retained; retry after resolving the conflict.') from error
     return result
 
 
 def main(argv=None, *, root=ROOT):
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command', required=True)
-    save = commands.add_parser('archive', help='Retain a reviewed selection outside the checkout')
+    save = commands.add_parser('archive', help='Retain a reviewed selection below .local/archives/ or externally')
     save.add_argument('selection', type=Path)
     save.add_argument('--archive', required=True, type=Path)
     modes = save.add_mutually_exclusive_group()

@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "date": "2026-10-17",
+  "reason": "User requires project files and archives to remain inside the project unless explicitly instructed otherwise.",
+  "historicalSource": "~/Archives/sid-song-crafter",
+  "archiveRoot": ".local/archives/sid-song-crafter-history",
+  "archiveFilesVerified": 10404,
+  "logicalArchiveBytes": 5379602940,
+  "uniqueFileInodes": 10142,
+  "playbackLinksRetargeted": 1246,
+  "verification": "All original archive files matched SHA-256 after a same-filesystem rename; inode identities and modes were preserved. All 1246 playback paths resolved inside the project. All eight catalog manifest hashes were unchanged.",
+  "localInventory": ".local/archives/history-relocation-2026-10-17.json",
+  "localInventorySha256": "dce41f40cbd4e1fab638fbbca338d1cce534b9e57df3ca07b0712eae7d9c22f3",
+  "metadataUpdate": "Current archive README uses the new recovery path; its original bytes are retained in README.before-relocation.md. Historical manifests and receipts are unchanged.",
+  "restoreChecks": [
+    {
+      "manifest": ".local/archives/sid-song-crafter-history/2026-10-17-mozart-traces/manifest.json",
+      "path": "build/mozart-minuet-work/cache/mono/9be68f500944ff8752cafd6e22abd343c9865cc9c468a755794bce7396518840/attempt-11ca7c8f8c794f968cef942e60b29cc1/song/native-song.native-events.json",
+      "bytes": 406936,
+      "sha256": "02099e9cb5b6f1b48f61e8c363632018394cf2dbed396d92bdcadb21ac9d665e",
+      "passed": true
+    },
+    {
+      "manifest": ".local/archives/sid-song-crafter-history/2026-10-17-listening-history/manifest.json",
+      "path": "build/listening-publish-smoke/audition/fixture-reference.wav",
+      "bytes": 204,
+      "sha256": "60c0b6c740c791f5d9c1b7d688aa4e6719b93c8f4e7c4b7919ab86ad78b74068",
+      "passed": true
+    }
+  ],
+  "softwareValidation": "35 archive tests passed, including local archive and restore, relocated relative playback links, conflicts and symlink redirection rejection.",
+  "remainingExternalArchiveDependencies": 0,
+  "storageEffect": "Relocation only; no archive payload added to Git and no disk-space reclamation claimed."
+}

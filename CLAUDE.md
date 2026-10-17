@@ -130,6 +130,8 @@ Distinguish proposed, implemented, rendered and listening-reviewed work, and lab
 
 ## Project Structure & Module Organization
 
+Keep all project files and archives inside the project folder unless the user explicitly instructs otherwise. Use ignored `.local/archives/` for local retention. Do not create, move or use project material at an external location without that instruction; historical external locations do not establish permission.
+
 Navigate operational guides through [docs/README.md](docs/README.md). Research and provenance live in [docs/research](docs/research/README.md), scores/native instruments in `songs/`, tools in `scripts/`, tests in `tests/`, and installed skill sources in [skills](skills/README.md). Working binaries, audio and traces go in ignored `build/`; sample packages, their recipes and material indexes live in [samples](samples/README.md); uncleared generated music stays local. Promote canonical analysis records to [evidence](evidence/README.md), with compressed records in Git LFS and readable hash manifests in ordinary Git.
 
 Keep third-party checkouts in ignored `.tools/`, runtime state in `.local/`, and machine-local agent configuration in ignored `.codex/config.toml` and `.mcp.json`; track portable examples in `config/`. Skills activate through `.agents/skills/` (Codex) and the `.claude/skills` link to it (Claude Code); see [local setup](docs/setup/local-setup.md#unified-local-setup).
