@@ -145,6 +145,24 @@ The completed 2026-10-17 migration is recorded in the [workbench assessment](../
 
 The protected snapshot retains regular recipe inputs and deferred work; raw listening objects retain old WAV URLs; compressed history retains other generated/unknown-value material. A final snapshot also preserves recovered metadata and the current own-score indexes. Historical debug binaries `build/render-native-debug` and `build/renderer-dual-rsid/render-sid-before` need `chmod 0755` after byte restoration if execution is required. New builds and edits need fresh retention or verified regeneration routes; the dated snapshot does not cover future work.
 
+### Archived deferred source experiments
+
+On 2026-10-17, the user authorized retiring 12 untracked Flashdance, Monty and Elise experiment files from the working tree. Their 74,082 original bytes are retained in `~/Archives/sid-song-crafter/2026-10-17-deferred-source/`: `sources.tar.gz` (18,998 bytes), `manifest.json` (original paths, sizes, SHA-256 hashes and modes), and a recovery README. Every file was extracted to a fresh temporary directory and matched byte-for-byte before the originals were removed. The archive SHA-256 is `e4e262c637c9c3c14cb695ca3e81e96247482cd93bfe8e14f1aa4e9c5c015288`. This separate source archive is not indexed by the build-only catalog or restored by `archive-build.py`; it remains local and needs a separate backup.
+
+| Retained material | Scope and recovery purpose |
+| --- | --- |
+| `scripts/analyze-flashdance.py`, `tests/flashdance_analysis_test.py`, `songs/studies/flashdance-reconstruction/README.md` | Exact historical form-analysis tool and supporting material; see the [Flashdance reproduction boundary](../research/composition/flashdance-preparation.md#selected-form-and-ending-contract). The archived README's pending milestones are historical. |
+| `scripts/monty_player.py`, `scripts/monty_programs.py`, `tests/monty_player_test.py`, `tests/monty_score_test.py` | Superseded partial implementations. Their imported `monty_score.py` was already absent; supported integration uses tracked `monty_title_*` files. Do not restore these tests into routine discovery without resolving that missing dependency. |
+| `songs/studies/elise-bass-multiplex/` containing `README.md`, `provenance.json`, `recipe-a.json`, `recipe-b.json`, `score.json` | Unaccepted experiment, with source recipes and provenance preserved; no new musical work is queued. |
+
+For recovery, verify the archive hash, extract into a fresh empty directory, then verify each extracted file's size and SHA-256 against `manifest.json`. The archive preserves repository-relative paths. Copy only the needed files into the checkout after checking for conflicts; do not overwrite current implementations. For example:
+
+```sh
+shasum -a 256 ~/Archives/sid-song-crafter/2026-10-17-deferred-source/sources.tar.gz
+recovery_dir=$(mktemp -d /tmp/sid-deferred-recovery.XXXXXX)
+tar -xzf ~/Archives/sid-song-crafter/2026-10-17-deferred-source/sources.tar.gz -C "$recovery_dir"
+```
+
 ## Local cache compression
 
 The [listening-package runner](listening-package.md) separately caches successful computations. Its active stage outputs are hash-verified on reuse: compressing or removing them invalidates that stage and triggers regeneration. Keep accepted standalone audio and historical evidence archives separate from that working computation cache.
