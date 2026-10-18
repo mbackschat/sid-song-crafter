@@ -105,6 +105,8 @@ For optional live bridge use, prepare the pinned checkout described in the [proj
 
 Both templates invoke the same Python launcher. It finds Bun on `PATH`, derives source, VICE and runtime-state paths from its own checkout, and runs Bun in `.tools/c64bridge` without a shell. The agent's initial working directory does not matter, and paths with spaces remain individual arguments. A desktop agent whose `PATH` lacks Python or Bun needs an absolute Python `command` in its local host configuration and/or `C64BRIDGE_BUN` set to the absolute Bun executable. `VICE_BINARY` can select another executable. Relative launcher path settings resolve against the checkout; use absolute paths in host templates to avoid host-dependent resolution.
 
+After moving or renaming a checkout, update its ignored host configuration too: old absolute `args`, `cwd` and runtime-state paths are not repaired by a Git pull. A missing working directory prevents the MCP process from starting, before any handshake or VICE connection. Migrate a direct Bun entry to the launcher template, retaining unrelated servers and valid machine-specific overrides. Restart the host session to load the corrected configuration.
+
 Check the installation and resolved launcher settings before activating the server:
 
 ```sh
@@ -112,7 +114,7 @@ VICE_DIRECTORY=/absolute/path/to/vice/data python3 scripts/doctor.py --profile b
 VICE_DIRECTORY=/absolute/path/to/vice/data python3 scripts/launch-c64bridge.py --check
 ```
 
-The launcher check does not start Bun/VICE or write runtime state. Normal launch defaults to PAL, invisible headless VICE, normal-speed audio, disabled Xvfb/prewarm/RAG build, and state beneath `.local/c64bridge`; explicit environment values can override settings. For another clock, set both `VICE_MODE` and the matching `VICE_ARGS`. Readiness and resolved settings do not establish an MCP handshake or monitor connection. The earlier 2026-10-16 Claude Code 2.1.301 handshake used the previous machine-specific configuration; it does not validate these templates on a fresh host. Keep the upstream Bun lockfile. A skill installation alone neither installs the server nor establishes emulator connectivity.
+The launcher check does not start Bun/VICE or write runtime state. Normal launch defaults to PAL, invisible headless VICE, normal-speed audio, disabled Xvfb/prewarm/RAG build, and state beneath `.local/c64bridge`; explicit environment values can override settings. For another clock, set both `VICE_MODE` and the matching `VICE_ARGS`. Readiness and resolved settings do not establish an MCP handshake or monitor connection. On 2026-10-18, the launcher configuration passed a bounded stdio `initialize` and `tools/list` check (c64bridge 1.0.4, 17 tools), with prewarming disabled and no tool invocation; this establishes server startup, not VICE connectivity. The earlier 2026-10-16 Claude Code 2.1.301 handshake used the previous machine-specific configuration; it does not validate these templates on a fresh host. Keep the upstream Bun lockfile. A skill installation alone neither installs the server nor establishes emulator connectivity.
 
 ### Optional local audio models
 
