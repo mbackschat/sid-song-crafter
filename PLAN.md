@@ -9,7 +9,7 @@ As of 2026-10-17, the authorized workbench assessment is complete: onboarding, r
 | Category | State | Where to inspect |
 | --- | --- | --- |
 | Active work | None; all five assessment milestones complete | [Workbench value and usability assessment](#workbench-value-and-usability-assessment) |
-| Next action | None queued; starting deferred work requires a new scope decision | [Agreed workbench direction](docs/proposals/workbench-direction.md); implementation order below |
+| Next integration task | Produce the normalized catalog for Explorer milestone 1 when that prototype begins; not implemented by the handoff | [Explorer repository handoff](#sid-song-explorer-repository-handoff) |
 | Previous delivery programme | Complete for recorded scopes | [Overall closure checkpoint](#overall-closure-checkpoint-2026-10-16) and [completion audit](#completion-audit) |
 | Musical implementation | Mozart K. 525, movement III: complete PAL single-SID and stereo renditions, stereo benefit and ending accepted; case closed | [Score interpretation cases](#active-score-interpretation-trial) |
 | Other deferred work | Unfinished and not queued | [Deferred work and unproven outcomes](#deferred-work-and-unproven-outcomes) |
@@ -51,7 +51,19 @@ The [proposal](docs/proposals/workbench-direction.md#distribution-contract) owns
 
 The former 6.0 GB aggregate target and 4.4 GiB build allowance are superseded by separate measurements for default clone/setup, optional studies, disposable working output and external retention. They were never user installation requirements. Establish practical budgets from classification and cold-clone evidence; relocation is not disk-space reclamation. The objective is a disposable build directory with explicit recoverable exceptions during migration, not a permanent multi-GB listening archive inside it.
 
-Retain `c64-sid` with corrections, optional `sid-music`/live bridge, specialist backends and canonical musical knowledge; distinguish the assembler source from live-server packages. No paid audio-model request follows from this work. Coding-agent trial usage is recorded separately in the assessment. The controlled human pilot remains deferred until a second independent operator is available, and tracker/editor benchmarking is excluded. The authorized Mozart case is closed; no musical implementation or Explorer work is queued.
+Retain `c64-sid` with corrections, optional `sid-music`/live bridge, specialist backends and canonical musical knowledge; distinguish the assembler source from live-server packages. No paid audio-model request follows from this work. Coding-agent trial usage is recorded separately in the assessment. The controlled human pilot remains deferred until a second independent operator is available, and tracker/editor benchmarking is excluded. The authorized Mozart case is closed; no musical implementation is queued. The later, separately authorized Explorer repository handoff is recorded below; it does not reopen the assessment.
+
+## SID Song Explorer repository handoff
+
+**2026-10-18:** the user authorized setting up a standalone sibling project and publishing it on GitHub, and confirmed the name **SID Song Explorer**. The documentation-only repository step is complete at [mbackschat/sid-song-explorer](https://github.com/mbackschat/sid-song-explorer); its [plan](https://github.com/mbackschat/sid-song-explorer/blob/main/PLAN.md) now owns application milestones. The project has its own contributor guide, GPL-3.0-or-later license, documentation checks and CI, with no application stack or engine selected yet.
+
+The [browser design](docs/proposals/web-player-and-analyser.md) and [application research](docs/research/tools/web-music-explorers.md) moved there; these old paths are forwarding stubs. The source revision is `3db086b6963676ef75f34d7f77c3b67232a777fb` and transferred documents retain their MIT notice. All Crafter-owned study/tool links in the moved documents are pinned to that public revision. No score, audio, SID binary, archive, private configuration or Git history was transferred. Composition studies and accepted musical cases remain here.
+
+**Verification, 2026-10-18:** a fresh shallow clone from the public Explorer repository passed its local-link/fragment and whitespace checks without a Crafter checkout dependency; the relative agent-guide symlink survived cloning. All transferred-source checksums and pinned Crafter paths/fragments were verified against the source commit. [Initial GitHub documentation CI](https://github.com/mbackschat/sid-song-explorer/actions/runs/39159939408) passed. This validates the repository bootstrap, not application playback.
+
+**Crafter-owned next integration task:** a versioned normalized catalog index and schema check, initially containing the rights-cleared Rambo loader main-music entry for Explorer milestone 1. Include variant/file identities and SHA-256 hashes, clock/chip/model/address/routing, rights/license, publication and listening scope, and owning-package links. This is a prerequisite for the future prototype, not an implemented contract or additional work completed by this repository setup.
+
+**Shared knowledge:** retain canonical musical studies and chip/renderer findings here; Explorer consumes pinned catalog/analysis packages and links the owners. Defer a shared package or third repository until two concrete consumers require the same validator or analysis algorithm. The [handoff guide](https://github.com/mbackschat/sid-song-explorer/blob/main/docs/integration/crafter-handoff.md) owns the cross-repository recommendation. Browser source publication is authorized; this checkpoint does not deploy a Pages application or publish additional musical material.
 
 ## Deferred work and unproven outcomes
 

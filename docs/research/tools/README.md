@@ -3,7 +3,7 @@
 Study both the editor and the exported driver: their relationship determines what can actually sound on a C64. Return to the [research index](../README.md).
 
 - [Composition-tool assessment](composition-tools.md): GoatTracker, SID-Wizard, SID Factory II, custom engines, and the fit for this project.
-- [Web music players and analysis interfaces](web-music-explorers.md): seven external references plus Williams Sound Explorer, reuse alternatives and selected lessons for the web player/analyser proposal.
+- [Web music players and analysis interfaces](https://github.com/mbackschat/sid-song-explorer/blob/main/docs/research/web-music-explorers.md): moved to Explorer; dated comparisons, reuse alternatives and application design lessons. [Transfer stub](web-music-explorers.md).
 - [SID-Wizard headless export trial](sid-wizard-trial.md): pinned native SID-Maker execution, Extra exports, provenance and tested limits.
 - [Tool overview](overview.md): editors, converters, players, and inspection utilities.
 - [Source-code studies](source-studies.md): player, converter, and emulator implementation findings.

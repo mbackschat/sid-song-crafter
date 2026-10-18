@@ -40,6 +40,8 @@ Keep [README.md](README.md) focused on the project: identify the software, expla
 
 Keep guides in task-oriented subfolders under [docs](docs/README.md), with navigation from its README, and research in its existing indexed folders. Use [local setup](docs/setup/local-setup.md) and `python3 scripts/doctor.py` for readiness; read [skill corrections](docs/setup/skill-guidance.md) before applying downloaded instructions. Follow the [tool boundaries](scripts/README.md): source-specific extractors, experiments and fixed examples belong under [scripts/studies](scripts/studies/README.md), separate from supported backends and shared validation APIs. Preserve documented compatibility exceptions and frozen evidence paths; relocation must not rewrite historical provenance.
 
+Browser playback, interactive analysis and application research belong in [SID Song Explorer](https://github.com/mbackschat/sid-song-explorer). Crafter retains musical knowledge, sample generation and the future catalog producer; use the [handoff boundary](PLAN.md#sid-song-explorer-repository-handoff) before cross-repository work.
+
 ## Retrieve before researching
 
 Before SID technique explanations, arrangement, sound design or listening-feedback changes, start with the [technique lookup](docs/research/technique-index.md), then read the relevant owning study and reusable example. Search locally before new research. Choose methods by musical purpose and model, timing, voice and filter constraints; check their listening verdict before reuse. Retain useful decisions in the existing study or recipe documentation, and repair missing index routes or aliases.
