@@ -1,15 +1,16 @@
-<p align="center">
-  <img src="assets/branding/sid-song-crafter.svg" alt="SID Song Crafter — C64 rainbow sound chip with a musical pulse-wave note" width="144" height="144">
+<p>
+  <img src="assets/branding/sid-song-crafter.svg" alt="SID Song Crafter — C64 rainbow sound chip with a musical pulse-wave note" width="96" height="96">
 </p>
 
 # SID Song Crafter
 
-<p align="center">
-  <a href="https://github.com/mbackschat/sid-song-explorer"><img src="https://raw.githubusercontent.com/mbackschat/sid-song-explorer/main/assets/branding/sid-song-explorer.svg" alt="SID Song Explorer" width="64" height="64"><br><strong>SID Song Explorer</strong></a> — listen to these samples and inspect their SID voices.<br>
-  <a href="https://mbackschat.github.io/sid-song-explorer/"><strong>▶ Run Explorer in your browser →</strong></a>
-</p>
-
 SID Song Crafter is a command-line toolkit and reference library for arranging existing musical scores for the Commodore 64 SID chip. It provides reusable instruments, documented arrangement techniques, and tools for producing playable SID files and standalone C64 programs.
+
+[![Listen in Explorer](https://img.shields.io/badge/Listen%20in%20Explorer-8055c9?style=for-the-badge)](https://mbackschat.github.io/sid-song-explorer/)
+
+## Related projects
+
+- [<img src="https://raw.githubusercontent.com/mbackschat/sid-song-explorer/main/assets/branding/sid-song-explorer.svg" alt="" width="24" height="24"> **SID Song Explorer**](https://github.com/mbackschat/sid-song-explorer) — listen to the published samples and inspect their SID voices in your browser.
 
 ## Rationale
 
