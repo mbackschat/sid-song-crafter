@@ -4,6 +4,11 @@
 
 # SID Song Crafter
 
+<p align="center">
+  <a href="https://github.com/mbackschat/sid-song-explorer"><img src="https://raw.githubusercontent.com/mbackschat/sid-song-explorer/main/assets/branding/sid-song-explorer.svg" alt="SID Song Explorer" width="64" height="64"><br><strong>SID Song Explorer</strong></a> — listen to these samples and inspect their SID voices.<br>
+  <a href="https://mbackschat.github.io/sid-song-explorer/"><strong>▶ Run Explorer in your browser →</strong></a>
+</p>
+
 SID Song Crafter is a command-line toolkit and reference library for arranging existing musical scores for the Commodore 64 SID chip. It provides reusable instruments, documented arrangement techniques, and tools for producing playable SID files and standalone C64 programs.
 
 ## Rationale
@@ -27,7 +32,7 @@ The supported workflow is for an agent-assisted musician/developer using **Codex
 
 ## Downloads
 
-These samples are included in the repository and can be played without building the project:
+These samples are included in the repository and can be played without building the project. [Open SID Song Explorer](https://mbackschat.github.io/sid-song-explorer/) for live mono playback and inspection; stereo downloads remain available below:
 
 | Sample | Mono SID / WAV | Stereo SID / WAV | Materials |
 | --- | --- | --- | --- |
