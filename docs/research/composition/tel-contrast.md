@@ -1,6 +1,6 @@
 # Tel contrast: Cybernoid II and Turbo Outrun intro
 
-The required [M2 contrast](../../../PLAN.md#required-contrasting-references-for-the-six-composers) checks the accepted [Cybernoid II primary](cybernoid-ii-preparation.md) against **Turbo Outrun intro, subtune 1**. The bounded contrast is complete: initialized execution establishes packed sample playback alongside oscillator programs and a tonal pulse-to-saw onset. The listener heard no difference in the onset-removal comparison. Preserve the accepted Cybernoid title and [familiar transfer](instruments/cybernoid-decoded-programs.md); no new Turbo instrument or perceptual editing benefit is promoted.
+The required [M2 contrast](../../PLAN.md#required-contrasting-references-for-the-six-composers) checks the accepted [Cybernoid II primary](cybernoid-ii-preparation.md) against **Turbo Outrun intro, subtune 1**. The bounded contrast is complete: initialized execution establishes packed sample playback alongside oscillator programs and a tonal pulse-to-saw onset. The listener heard no difference in the onset-removal comparison. Preserve the accepted Cybernoid title and [familiar transfer](instruments/cybernoid-decoded-programs.md); no new Turbo instrument or perceptual editing benefit is promoted.
 
 ## Source, credits and execution route
 

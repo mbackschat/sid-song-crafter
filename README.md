@@ -203,11 +203,11 @@ The outputs are `build/own-score-native/export/candidate.sid` and `candidate.prg
 ## Explore further
 
 - [Technique lookup](docs/research/technique-index.md), [instruments](docs/research/composition/instruments/README.md) and [gestures](docs/research/composition/gestures/README.md): find a technique by musical purpose, with examples and listening evidence.
-- [Project plan](PLAN.md): sole authority for overall scope, current status, remaining work and next priorities.
+- [Project plan](docs/PLAN.md): sole authority for overall scope, current status, remaining work and next priorities.
 - [Two-SID workflow](docs/workflows/native-song-workflow.md#reusable-two-chip-test): six voices, separate chip roles and stereo output.
 - [Setup guide](docs/setup/local-setup.md): optional reference downloads, dependency checks and platform details. Use `python3 scripts/doctor.py --profile demo` for the native example or `--profile score` for MIDI plus standalone VICE verification; checks do not install tools.
 - [Tool guide](scripts/README.md) and [documentation index](docs/README.md): supported workflows and detailed technical contracts.
-- [SID Song Explorer](https://github.com/mbackschat/sid-song-explorer): separate browser player and arrangement analyser, currently prepared for development. [Repository boundary](PLAN.md#sid-song-explorer-repository-handoff).
+- [SID Song Explorer](https://github.com/mbackschat/sid-song-explorer): separate browser player and arrangement analyser, currently prepared for development. [Repository boundary](docs/PLAN.md#sid-song-explorer-repository-handoff).
 - [Contributor guide](CLAUDE.md): development and publication rules. [AGENTS.md](AGENTS.md) links to the same guide.
 
 Audio models are optional experiments; no model download or API account is required to build songs. Working output lives in ignored `build/`, reviewed song downloads in `samples/`, third-party tools in `.tools/`, and local assets in `.local/`.

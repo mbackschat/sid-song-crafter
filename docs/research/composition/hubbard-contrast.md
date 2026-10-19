@@ -1,6 +1,6 @@
 # Hubbard contrast: Monty on the Run and Commando
 
-The required [M3 contrast](../../../PLAN.md#required-contrasting-references-for-the-six-composers) checks the accepted [Monty primary](monty-preparation.md) against **Commando music, subtune 1**. The bounded contrast is complete: source intake and causal execution are verified, and the listener heard no difference in the percussion diagnostic. Preserve Monty's accepted first-cycle reconstruction, source-continuation comparison and [familiar transfer](instruments/monty-decoded-programs.md).
+The required [M3 contrast](../../PLAN.md#required-contrasting-references-for-the-six-composers) checks the accepted [Monty primary](monty-preparation.md) against **Commando music, subtune 1**. The bounded contrast is complete: source intake and causal execution are verified, and the listener heard no difference in the percussion diagnostic. Preserve Monty's accepted first-cycle reconstruction, source-continuation comparison and [familiar transfer](instruments/monty-decoded-programs.md).
 
 ## Source, credits and intake
 

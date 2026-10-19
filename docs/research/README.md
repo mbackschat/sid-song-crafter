@@ -4,7 +4,7 @@ Research updated: 2026-10-13. The priority is distinctive, expressive SID music:
 
 ## Active work
 
-Use [PLAN.md](../../PLAN.md) as the sole authority for overall scope, priorities, current status and remaining work. Research documents below own findings and evidence; their historical study sequence is retained in the plan.
+Use [PLAN.md](../PLAN.md) as the sole authority for overall scope, priorities, current status and remaining work. Research documents below own findings and evidence; their historical study sequence is retained in the plan.
 
 ## Browse the library
 

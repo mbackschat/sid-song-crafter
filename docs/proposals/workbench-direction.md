@@ -1,6 +1,6 @@
 # SID Song Crafter: product interface, value and resource discipline
 
-Status: agreed direction, implementation started 2026-10-17, incorporating external review and the user's storage/distribution clarifications. The evidence supports design choices, not a measured productivity advantage. [PLAN.md](../../PLAN.md) owns execution order and completion; finalizing this document does not claim implementation is complete.
+Status: agreed direction, implementation started 2026-10-17, incorporating external review and the user's storage/distribution clarifications. The evidence supports design choices, not a measured productivity advantage. [PLAN.md](../PLAN.md) owns execution order and completion; finalizing this document does not claim implementation is complete.
 
 Repository: [mbackschat/sid-song-crafter](https://github.com/mbackschat/sid-song-crafter). Relative links resolve from this document in the repository. Storage measurements describe the maintainer's local checkout.
 
@@ -16,7 +16,7 @@ Decision 5 replaces an explicit rule. [CLAUDE.md](../../CLAUDE.md#listening-and-
 
 > Review usefulness **at the first representative audition, after listener feedback or a musical revision, and before closing each musical case**.
 
-It also required a dated run or explicit skip at every checkpoint. The selected replacement records eligibility and rationale once when a case opens, reassesses when a concrete useful question, relevant model/prompt/preprocessing change or explicit user request occurs, and checks the standing decision at closure without repeating unchanged skip prose. The owning policy, contributor guide and workflow references now implement this replacement; historical trial records remain intact. Execution status belongs in [PLAN.md](../../PLAN.md).
+It also required a dated run or explicit skip at every checkpoint. The selected replacement records eligibility and rationale once when a case opens, reassesses when a concrete useful question, relevant model/prompt/preprocessing change or explicit user request occurs, and checks the standing decision at closure without repeating unchanged skip prose. The owning policy, contributor guide and workflow references now implement this replacement; historical trial records remain intact. Execution status belongs in [PLAN.md](../PLAN.md).
 
 ## User input and constraints
 
@@ -33,7 +33,7 @@ The following restates the user's input and accepted direction. Detailed histori
 | The original idea was an agent skill set, but that is now uncertain; consider the current project name. | Treat SID Song Crafter as the product identity. Skill packaging remains a design choice, not a foregone conclusion or a reason to rename the product. |
 | The project already uses C64 skills, so a single skill would require dependencies. | Account for existing upstream skills, their installation, discovery, corrections and availability. Distinguish one new entry skill from one self-contained deliverable and from a multi-skill installation. |
 | Double-check the facts, ask about ambiguity and provide a Markdown proposal for external review. | Present current evidence, alternatives, recommendations and rationale; preserve unresolved choices rather than silently settling them. No external reviewer is contacted by this work. |
-| The overall study plan must become root PLAN.md, the only source for “what remains?”. | Keep task status in [PLAN.md](../../PLAN.md). This proposal records a decision basis, not a competing backlog or completion claim. |
+| Keep one overall study plan as the only source for “what remains?”. | Keep task status in [PLAN.md](../PLAN.md). This proposal records a decision basis, not a competing backlog or completion claim. |
 | Several GB of historical audio must not burden GitHub cloners. | Keep local retention separate from the default download. A local archive is not an instruction to add its contents to Git. |
 | Split existing build material into disposable, valuable untracked and valuable tracked destinations. | Verify regeneration before deleting; retain private/local material outside the checkout; promote only missing reusable public material to appropriate repository directories, never track `build/` itself. |
 | Does every user need retained research, and would submodules or LFS help? | Distinguish core users from researchers. Prefer optional versioned study downloads; a submodule is conditional on independent maintenance, and LFS alone does not make a download optional. |
@@ -54,7 +54,7 @@ The user's earlier approval of a specific four-clip OpenRouter/Qwen trial does n
 | Setup pins upstream skills; `c64-sid` is default and `sid-music` optional. `.claude/skills` links to `.agents/skills`; local discovery has been checked in both hosts. | Preserve shared activation and corrections. Fresh-clone verification must check installation/discovery, not merely reuse this working checkout. | [Skills](../../skills/README.md), [setup evidence](../setup/local-setup.md#unified-local-setup), [corrections](../setup/skill-guidance.md) |
 | Native export supports three/six voices, both chip models and explicit PAL/NTSC. A recipe runner already handles commands, fingerprints, caches and receipts. | Use these existing tools; retain their target and verification contracts beneath any later agent interface. | [Native workflow](../workflows/native-song-workflow.md), [recipe runner](../workflows/listening-package.md) |
 
-The three repairs are now implemented and both-host onboarding results are recorded in the [assessment](../validation/workbench-assessment.md); the table preserves the decision’s original basis. The three baseline repairs in decision 1 are prerequisites, not optional improvements to be judged against a better-prepared skill. Their exact implementation and test tasks belong in [PLAN.md](../../PLAN.md). Keep the [SID Song Explorer proposal](web-player-and-analyser.md) separate; its playback/analysis application is not a dependency of this assessment.
+The three repairs are now implemented and both-host onboarding results are recorded in the [assessment](../validation/workbench-assessment.md); the table preserves the decision’s original basis. The three baseline repairs in decision 1 are prerequisites, not optional improvements to be judged against a better-prepared skill. Their exact implementation and test tasks belong in [PLAN.md](../PLAN.md). Keep the [SID Song Explorer proposal](web-player-and-analyser.md) separate; its playback/analysis application is not a dependency of this assessment.
 
 ## Can skills depend on skills?
 
@@ -175,7 +175,7 @@ Use the [existing cleanup contract](../workflows/build-cache.md) for exact dupli
 
 ## Required, optional and excluded scope
 
-**Required:** the three A repairs, both-host cold-clone walkthroughs, a ledger on the next real musical case, explicit component/dependency roles, unused ML removal, build classification/retention and the default-versus-optional distribution boundary. Reconcile the selected model-review policy with its owning instructions. [PLAN.md](../../PLAN.md) defines implementation stages and their completion evidence.
+**Required:** the three A repairs, both-host cold-clone walkthroughs, a ledger on the next real musical case, explicit component/dependency roles, unused ML removal, build classification/retention and the default-versus-optional distribution boundary. Reconcile the selected model-review policy with its owning instructions. [PLAN.md](../PLAN.md) defines implementation stages and their completion evidence.
 
 **Optional:** an entry skill or plugin justified by remaining friction, independently maintained research packaging if warranted, FLAC retention, and future explicitly authorized model experiments. A controlled human comparison remains deferred until staffing exists.
 

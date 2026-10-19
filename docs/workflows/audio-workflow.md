@@ -58,7 +58,7 @@ For a supported single- or dual-SID NTSC reference, use:
 .local/bin/render-sid SOURCE.sid build/reference-ntsc.wav 6 --clock ntsc --subtune 1
 ```
 
-The clock option changes emulation speed and oscillator pitch according to that model. It does not retime or retune a PAL composition for NTSC. Composition targets require their own timing, tuning and export validation; see the [PAL/NTSC portability requirement](../../PLAN.md#required-palntsc-portability). The renderer supports both clocks for one SID and the bounded two-SID profile above.
+The clock option changes emulation speed and oscillator pitch according to that model. It does not retime or retune a PAL composition for NTSC. Composition targets require their own timing, tuning and export validation; see the [PAL/NTSC portability requirement](../PLAN.md#required-palntsc-portability). The renderer supports both clocks for one SID and the bounded two-SID profile above.
 
 ### Render BASIC RSID with C64 ROMs
 

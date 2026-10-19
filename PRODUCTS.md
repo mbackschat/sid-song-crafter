@@ -17,4 +17,4 @@ The project builds and applies a reusable body of knowledge for making these int
 
 Study existing SID music and its mechanisms, retain findings and listening verdicts, then apply and adapt them to another score. Each case should make later interpretations better informed and less laborious. Tools and automation serve this musical outcome; accumulating infrastructure or reproducing reference songs is not the final purpose.
 
-Use the [technique lookup](docs/research/technique-index.md), [sound-design repertoire](docs/research/composition/sound-design-repertoire.md) and [gesture library](docs/research/composition/gestures/README.md) to retrieve that knowledge. The [project plan](PLAN.md) tracks its application to current songs; the [README](README.md) provides setup and workflow entry points.
+Use the [technique lookup](docs/research/technique-index.md), [sound-design repertoire](docs/research/composition/sound-design-repertoire.md) and [gesture library](docs/research/composition/gestures/README.md) to retrieve that knowledge. The [project plan](docs/PLAN.md) tracks its application to current songs; the [README](README.md) provides setup and workflow entry points.

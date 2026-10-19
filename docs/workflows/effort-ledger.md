@@ -1,6 +1,6 @@
 # Record effort on the next musical case
 
-Start this ledger in the owning study when the next real musical case is authorized. Record the entire route from source intake to accepted complete output, including setup, musical decisions, rejected trials, troubleshooting and retention. A technical onboarding example does not substitute for that case. [PLAN.md](../../PLAN.md#workbench-value-and-usability-assessment) owns whether a case is active.
+Start this ledger in the owning study when the next real musical case is authorized. Record the entire route from source intake to accepted complete output, including setup, musical decisions, rejected trials, troubleshooting and retention. A technical onboarding example does not substitute for that case. [PLAN.md](../PLAN.md#workbench-value-and-usability-assessment) owns whether a case is active.
 
 Copy this small record; use `not recorded` for unavailable observations. Link recipe receipts rather than transcribing their per-stage timings. Record a row at a meaningful checkpoint, not every tool call.
 

@@ -60,7 +60,7 @@ A bounded execution study of the pinned binary identifies requirements beyond th
 | Moving chord variants | Initializers at calls 2/130/258/386 select four chord programs. The opening has offsets `[0,0,4,4,7,7,12,12]`, AD/SR `$03/$34`, width `$040` and step `$0D`. Describe the four-tone cycle independently from the score note. |
 | Per-voice fine tuning | PC `$14FB` adds the table `$1762,X` value: 0/1/2 for bass/lead/chord. The opening lead `$2710` becomes `$2711`; chord `$0F82` becomes `$0F84`. Preserve the exact programmed words alongside their musical interpretation. |
 
-The first four-chord turn, calls 0–513, is the [plan's first reconstruction milestone](../../../PLAN.md#flashdance-completed-milestones). The contracts below refine the score and PWM requirements. The complete selected score, waveform/pitch, PWM and filter programs now have an editable description; the pinned diagnostic adapter preserves the historical control projection and its exact two init-store exclusions.
+The first four-chord turn, calls 0–513, is the [plan's first reconstruction milestone](../../PLAN.md#flashdance-completed-milestones). The contracts below refine the score and PWM requirements. The complete selected score, waveform/pitch, PWM and filter programs now have an editable description; the pinned diagnostic adapter preserves the historical control projection and its exact two init-store exclusions.
 
 ### Editable full-span model
 

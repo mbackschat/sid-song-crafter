@@ -1,6 +1,6 @@
 # Deflektor preparation
 
-This pins Ben Daglish's *Deflektor*, a completed primary reconstruction in the [study plan](../../../PLAN.md). The [composer account](../composers/follin-daglish.md#ben-daglish-a-memorable-instrument-can-organise-a-whole-piece) connects the piece's composition to a satisfying cowbell sound; the binary's precise cowbell mechanism remains unestablished. Apparent realism alone does not identify samples, ring modulation or oscillator allocation.
+This pins Ben Daglish's *Deflektor*, a completed primary reconstruction in the [study plan](../../PLAN.md). The [composer account](../composers/follin-daglish.md#ben-daglish-a-memorable-instrument-can-organise-a-whole-piece) connects the piece's composition to a satisfying cowbell sound; the binary's precise cowbell mechanism remains unestablished. Apparent realism alone does not identify samples, ring modulation or oscillator allocation.
 
 ## Reference and execution boundary
 

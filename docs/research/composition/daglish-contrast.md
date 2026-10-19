@@ -1,6 +1,6 @@
 # Daglish contrast: Deflektor and Trap
 
-The [required Daglish check](../../../PLAN.md#required-contrasting-references-for-the-six-composers) now has a pinned second reference, bounded source audio and executed register evidence. The first 6,000 calls distinguish the two works' waveform and filter choices and show separately timed articulation. The route-only diagnostic now has a listening observation: bypass sounds clearer/crisper and possibly louder. The listener hears the 24–34 second Trap excerpt as driven mostly by a moving melody and hears development in the 40–52 second excerpt. No cowbell identification, full Trap form or composer-wide synthesis signature is claimed.
+The [required Daglish check](../../PLAN.md#required-contrasting-references-for-the-six-composers) now has a pinned second reference, bounded source audio and executed register evidence. The first 6,000 calls distinguish the two works' waveform and filter choices and show separately timed articulation. The route-only diagnostic now has a listening observation: bypass sounds clearer/crisper and possibly louder. The listener hears the 24–34 second Trap excerpt as driven mostly by a moving melody and hears development in the 40–52 second excerpt. No cowbell identification, full Trap form or composer-wide synthesis signature is claimed.
 
 ## Source, subtune and credit boundary
 

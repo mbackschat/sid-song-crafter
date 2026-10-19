@@ -1,6 +1,6 @@
 # Workbench usability, effort and resource assessment
 
-Measured on 2026-10-17 against onboarding commit `a5ff295`. The documented CLI works for a bounded raw-MIDI task in fresh Codex and Claude Code sessions. The subsequent real case produced accepted complete single-SID and stereo renditions and records approximately 20 minutes of self-reported human effort. The agreed assessment is complete; comparative effort savings remain unproven. [PLAN.md](../../PLAN.md#workbench-value-and-usability-assessment) owns overall status and the [proposal](../proposals/workbench-direction.md) owns the interface/distribution decisions.
+Measured on 2026-10-17 against onboarding commit `a5ff295`. The documented CLI works for a bounded raw-MIDI task in fresh Codex and Claude Code sessions. The subsequent real case produced accepted complete single-SID and stereo renditions and records approximately 20 minutes of self-reported human effort. The agreed assessment is complete; comparative effort savings remain unproven. [PLAN.md](../PLAN.md#workbench-value-and-usability-assessment) owns overall status and the [proposal](../proposals/workbench-direction.md) owns the interface/distribution decisions.
 
 ## Supported path and observed cost
 
@@ -94,7 +94,7 @@ All four musical verdicts are recorded. The human estimate is separate from over
 
 The [case retention receipt](../../evidence/mozart-minuet/retention.json) verifies 56 archived paths: 24 WAV paths remain playable through links, and 32 generated traces are losslessly archived. These replace 439.4 MB of working content with 169.9 MB of external objects, reclaiming 269.5 MB of logical content before metadata. All seven submitted auditions and eight public SID/PRG files match their fingerprints. The external catalog now contains eight manifests and 14,162 recovery routes. Public playable exports total only 68,822 bytes; the new source/recipes and small receipts also belong in Git. No bulk audio is added.
 
-The [overall plan](../../PLAN.md#workbench-value-and-usability-assessment) closes V4 and V5. Keep the repaired CLI/recipe/documentation entry point, existing optional C64 skills and human musical authority. No additional musical experiment, new entry skill, audio-model trial or controlled human pilot is queued. A comparative study remains deferred until a second independent operator exists; this assessment makes no productivity claim.
+The [overall plan](../PLAN.md#workbench-value-and-usability-assessment) closes V4 and V5. Keep the repaired CLI/recipe/documentation entry point, existing optional C64 skills and human musical authority. No additional musical experiment, new entry skill, audio-model trial or controlled human pilot is queued. A comparative study remains deferred until a second independent operator exists; this assessment makes no productivity claim.
 
 ### Subsequent sample-distribution change, 2026-10-17
 
