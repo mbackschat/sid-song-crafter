@@ -132,6 +132,8 @@ Delegation does not expand authorization or relax publication, privacy, provenan
 
 This project permits judgment instead of mandatory red/green TDD everywhere. Define success and its oracle before implementation.
 
+Keep POC CI quick and proportionate: run shared software checks once on Linux, add another platform only for a demonstrated platform-specific risk, and avoid duplicating setup, builds or suites across jobs. Keep broader research, rendering and integration checks focused or explicitly requested instead of making them routine CI gates.
+
 - **Reusable software/bugs:** prefer red/green guards covering meaningful behavior and the defect's mechanism.
 - **Research:** use bounded experiments, instruction/register traces and independent execution; add focused tests when probes become tools.
 - **Music:** verify exports/timing and listen in context; software checks cannot establish musical quality.
