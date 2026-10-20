@@ -14,7 +14,7 @@ python3 -m unittest discover -s tests -p composition_package_test.py -v
 
 Both commands accept `--output PATH`. Generation writes deterministic UTF-8 JSON with a trailing newline; checking regenerates in memory and fails on different bytes. The producer reads ordinary source blobs from the existing catalog asset/evidence revision `3db086b6963676ef75f34d7f77c3b67232a777fb`. Retained compressed evidence uses Git LFS: local materializations must exactly match that revision's pointer SHA-256 and byte count, or generation fails. Missing materializations require the existing [evidence restoration workflow](build-cache.md); generation never fetches or silently consumes unverified working-tree input. Git reads have ten-second deadlines.
 
-The generated package is small enough to vendor directly into Explorer. Its producer/package publication commit and digest are independent of the prior source/evidence revision. This Crafter checkpoint remains local until separately authorized publication; Explorer can import the local package explicitly while retaining immutable source links and recording that publication is pending. A sibling checkout is an editing convenience, never a runtime dependency.
+The generated package is small enough to vendor directly into Explorer. Its producer/package commit and digest are independent of the source/evidence revision and must be pinned by the consumer. A sibling checkout is an editing convenience, never a runtime dependency.
 
 ## Musical scope and evidence
 
@@ -36,6 +36,6 @@ The producer joins [retained independent-player note/patch entries](../../eviden
 
 ## Verification scope
 
-The focused tests independently enumerate every original CPU note row intersecting each passage, check its next transition and pitch, and execute the existing numeric player to verify selected note-entry data/sound states. They guard exact catalog/main-entry binding, both recurrence and bass change, native frequency lookup, zero-based timing, deterministic bytes, source mismatches and altered/malformed LFS materializations. The initial rounded 985248 Hz clock failed the independent main-entry timing-receipt guard; the producer now uses the canonical exact PAL clock and checks it against that immutable receipt. The focused red failure is retained locally in `build/composition-package-clock-red.log`.
+The focused tests independently enumerate every original CPU note row intersecting each passage, check its next transition and pitch, and execute the existing numeric player to verify selected note-entry data/sound states. They guard exact catalog/main-entry binding, both recurrence and bass change, native frequency lookup, zero-based timing, deterministic bytes, source mismatches and altered/malformed LFS materializations. The canonical exact PAL clock is checked against the immutable main-entry timing receipt; a rounded 985248 Hz substitute does not satisfy that guard.
 
 These are source-data and software checks; they establish no new musical acceptance, browser behavior, rendered audio or hardware equivalence. Existing scoped listening verdicts remain in the owning sample package.

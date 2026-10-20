@@ -29,7 +29,7 @@ The [executed intake](../../../evidence/ghostbusters-intake/run.json) completed 
 
 The [local listening index](../../../build/reference-intake/ghostbusters-title/listening.md) links the full original capture and the two labelled source-only excerpts. [Renderer snapshots](../../../evidence/ghostbusters-intake/registers.tsv.gz) are numeric observations after rendering batches. They cannot recover intervening speech writes, identify writers, prove update cadence or establish a complete score cycle. This renderer stage uses its own machine emulation; the separate initialized VICE capture below supplies ordered checkpoint evidence.
 
-The reusable [intake workflow](../../workflows/reference-intake.md#specification-contract) now admits explicitly declared NTSC only on `full-machine-render`; callable `pal-banked` remains PAL-only. Fifteen focused tests pass, including NTSC subtune/clock propagation, source preservation, absence of callable audit claims and rejection of unknown/mixed declarations. This is source-preparation support, not a new NTSC composition backend.
+The reusable [intake workflow](../../workflows/reference-intake.md#specification-contract) admits explicitly declared NTSC only on `full-machine-render`; callable `pal-banked` remains PAL-only. Focused guards cover NTSC subtune/clock propagation, source preservation, absence of callable audit claims and rejection of unknown/mixed declarations. This is source-preparation support, not a new NTSC composition backend.
 
 ## Initialized machine entry contract
 
@@ -54,7 +54,7 @@ python3 scripts/listening-package.py config/listening/ghostbusters-machine.json 
 python3 scripts/evidence.py verify --group ghostbusters-machine
 ```
 
-The [recipe](../../../config/listening/ghostbusters-machine.json) runs 14 focused guards and the real initialized capture. The [fresh run](../../../evidence/ghostbusters-machine/run-executed.json) took **8.932 seconds** on 2026-10-15; the [unchanged recheck](../../../evidence/ghostbusters-machine/run-reused.json) took **0.237 seconds**, reusing both stages without subprocesses. These measure workflow execution, not playback duration. A fresh output directory requests fresh execution. The receipt hashes the private compressed trace/logs and source payload; only the safe summary, commands and run receipts are public.
+The [recipe](../../../config/listening/ghostbusters-machine.json) runs focused guards and the real initialized capture. A fresh output directory requests fresh execution. The [run receipt](../../../evidence/ghostbusters-machine/run-executed.json) hashes the private compressed trace/logs and source payload; only the safe summary, commands and run receipts are public.
 
 ## Independent score and sound components
 
@@ -121,7 +121,7 @@ python3 scripts/listening-package.py config/listening/ghostbusters-components.js
 python3 scripts/evidence.py verify --group ghostbusters-components
 ```
 
-The [combined recipe](../../../config/listening/ghostbusters-components.json) runs component guards, initialized machine capture, complete isolated score/sound proofs and serialized speech controls. It binds the original source, imported helpers, py65 and machine dependencies. The [fresh run](../../../evidence/ghostbusters-components/run-executed.json) took **178.087 seconds** on 2026-10-15 and passed all 42 guards; the [unchanged recheck](../../../evidence/ghostbusters-components/run-reused.json) took **0.256 seconds**, reusing all five stages without subprocesses. Retained stage receipts bind their exact dependency fingerprints, including the CPU oracle. Public evidence includes complete music records and aggregate speech verification; speech-bearing machine traces and decoder output streams stay under ignored `build/`. The output is preparation for an independent player, not a compiled reconstruction, transfer or musical acceptance.
+The [combined recipe](../../../config/listening/ghostbusters-components.json) runs component guards, initialized machine capture, complete isolated score/sound proofs and serialized speech controls. It binds the original source, imported helpers, py65 and machine dependencies. Retained stage receipts bind their exact dependency fingerprints, including the CPU oracle. Public evidence includes complete music records and aggregate speech verification; speech-bearing machine traces and decoder output streams stay under ignored `build/`. These component proofs have a separate scope from the independent player, reconstruction, transfer and musical acceptance below.
 
 ## Independent numeric player
 
@@ -136,7 +136,7 @@ python3 scripts/listening-package.py config/listening/ghostbusters-player.json -
 python3 scripts/evidence.py verify --group ghostbusters-player
 ```
 
-The [recipe](../../../config/listening/ghostbusters-player.json) runs 13 focused guards and the retained integration check. The [fresh run](../../../evidence/ghostbusters-player/run-executed.json) took 5.480 seconds on 2026-10-15; the [unchanged recheck](../../../evidence/ghostbusters-player/run-reused.json) took 0.053 seconds with no stage subprocesses. Changes to the evidence manifest invalidate the retained-check cache even when the component records remain unchanged. Full numeric outputs are retained losslessly; original speech amplitudes are excluded.
+The [recipe](../../../config/listening/ghostbusters-player.json) runs focused guards and the retained integration check. Changes to the evidence manifest invalidate the retained-check cache even when the component records remain unchanged. Full numeric outputs are retained losslessly; original speech amplitudes are excluded.
 
 ### Compiled music and explicit NTSC verification
 
@@ -149,7 +149,7 @@ python3 scripts/listening-package.py config/listening/ghostbusters-compiler.json
 python3 scripts/evidence.py verify --group ghostbusters-compiler
 ```
 
-The [recipe](../../../config/listening/ghostbusters-compiler.json) binds the editable composition, compiler and imported helpers, py65, shared NTSC VICE tracer, emulator and ROM/data assets. It runs ten compiler guards, full CPU execution and full music VICE comparison. On 2026-10-15 the [fresh run](../../../evidence/ghostbusters-compiler/run-executed.json) took 45.374 seconds; the [unchanged recheck](../../../evidence/ghostbusters-compiler/run-reused.json) took 0.133 seconds without stage subprocesses. Generated binaries remain local; numeric proofs and generated assembly are retained losslessly.
+The [recipe](../../../config/listening/ghostbusters-compiler.json) binds the editable composition, compiler and imported helpers, py65, shared NTSC VICE tracer, emulator and ROM/data assets. It runs compiler guards, full CPU execution and full music VICE comparison. Generated binaries remain local; numeric proofs and generated assembly are retained losslessly.
 
 ### Full source render for the eventual comparison
 
@@ -191,7 +191,7 @@ python3 scripts/publish-listening.py build/ghostbusters-independent-full/run.jso
 python3 scripts/evidence.py verify --group ghostbusters-independent-full
 ```
 
-The [fresh run](../../../evidence/ghostbusters-independent-full/run-executed.json) took 159.513 seconds on 2026-10-15; the [cached repeat](../../../evidence/ghostbusters-independent-full/run-reused.json) took 0.602 seconds with all eight stages reused and no stage subprocesses. Publication requires a fresh destination. The [submission](../../../evidence/ghostbusters-independent-full/listening/submission.json) binds the supplied files to the immutable fresh run and exact output hashes.
+Publication requires a fresh destination. The [submission](../../../evidence/ghostbusters-independent-full/listening/submission.json) binds the supplied files to the [immutable executed run](../../../evidence/ghostbusters-independent-full/run-executed.json) and exact output hashes.
 
 | Listening purpose | Reference first, then independent version | Full source window |
 | --- | --- | --- |

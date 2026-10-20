@@ -30,8 +30,6 @@ python3 scripts/reference-intake.py run config/reference-intake/turbo-outrun-con
 
 The [working listening index](../../../build/reference-intake/turbo-outrun-contrast/listening.md) links a 32-second initialized original and source-only windows at **0–12** and **16–28 seconds**. Settings are explicit subtune 1, PAL/MOS6581, libsidplayfp 3.1.1/SIDLite, power-on delay zero, 44.1 kHz mono PCM16, unity gain and no normalization. The [measurement receipt](../../../evidence/tel-contrast/intake/summary.json) records 1,411,200 frames, peak 9,300, AC RMS 1,839.12 and no rail samples; WAV SHA-256 is `c6edc179b19ff53e20830d0ba80fabcec283aeb103ae1b1baf31534392a87e77`. This establishes captured duration and signal health, not musical quality, complete form or an ending.
 
-On 2026-10-14 the five-stage [first run](../../../evidence/tel-contrast/intake/run-cold.json) completed in 7.93 seconds. An [unchanged recheck](../../../evidence/tel-contrast/intake/run-reused.json) took 0.19 seconds, reusing all five stages after artifact verification. This measures cached workflow execution, not a faster renderer or fresh machine capture.
-
 Renderer register snapshots are observations after rendering iterations. They cannot retain intervening rapid volume writes, identify executed instructions or establish sample absence. The separate machine probe below settles those questions within its captured windows. Do not alter the RSID header to obtain callable admission.
 
 ## Initialized machine and sample path

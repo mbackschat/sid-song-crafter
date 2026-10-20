@@ -24,7 +24,7 @@ python3 scripts/reference-intake.py run config/reference-intake/commando-contras
 
 The [intake summary](../../../evidence/hubbard-contrast/intake/summary.json) records 128 callable play calls, 1,289 ordered play stores and a maximum 1,248 cycles against the 19,656-cycle PAL frame budget. A separate initialized 32-second source render uses explicit #1, PAL/MOS6581, libsidplayfp 3.1.1/SIDLite, power-on delay zero, 44.1 kHz mono PCM16 and unity gain. It has nonzero AC signal and no rail samples. The [working listening index](../../../build/reference-intake/commando-contrast/listening.md) contains the bounded source and windows at 0–12 and 16–28 seconds; these are not a reconstruction or complete-form comparison.
 
-On 2026-10-14, the [first run](../../../evidence/hubbard-contrast/intake/run-cold.json) took 2.09 seconds; an [unchanged recheck](../../../evidence/hubbard-contrast/intake/run-reused.json) took 0.07 seconds and reused all six stages. Reuse verifies retained inputs and outputs; it is not fresh capture. Original/modified SID files and all source audio remain ignored and local.
+Original/modified SID files and all source audio remain ignored and local. Cached intake reuse verifies retained inputs and outputs; it is not fresh capture.
 
 ## Questions that settle the bounded contrast
 

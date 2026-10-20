@@ -31,7 +31,7 @@ python3 scripts/listening-package.py config/listening/take-on-me-models.json --o
 python3 scripts/publish-listening.py build/take-on-me-model-listening-work/run.json --selection scripts/studies/take-on-me/audition.json --output build/take-on-me-model-listening-new
 ```
 
-Use a fresh audition directory to preserve reviewed files. The [unchanged recheck](../../../evidence/take-on-me-model/listening/run-reused.json) reuses all five stages in 0.05 seconds with no stage subprocesses; the [preparation run](../../../evidence/take-on-me-model/listening/run-prepared.json) reused existing renders before assembling the chosen window and is not a cold benchmark. First-audition and post-feedback model-assistance reviews decline a hosted call because current calibration does not qualify subtle paired timbre preference. Reassess at the first independent reconstruction audition.
+Use a fresh audition directory to preserve reviewed files. First-audition and post-feedback model-assistance reviews decline a hosted call because current calibration does not qualify subtle paired timbre preference. Reassess at the first independent reconstruction audition.
 
 ## Complete score form and editable scheduler
 
@@ -58,7 +58,7 @@ python3 scripts/listening-package.py config/listening/take-on-me-form.json --out
 python3 scripts/evidence.py verify --group take-on-me-form
 ```
 
-The [three-stage recipe](../../../config/listening/take-on-me-form.json) runs grammar guards, complete source/score proof and the VICE wrap check. On 2026-10-14 the [fresh run](../../../evidence/take-on-me-form/run-fresh.json) took 89.13 seconds; the [unchanged recheck](../../../evidence/take-on-me-form/run-reused.json) took 0.19 seconds with all stages reused and no stage subprocesses. Retained evidence verification checks fingerprints without claiming a fresh source capture. The numeric score proof does not yet establish an independent sound player, compiled export or musical acceptance.
+The [recipe](../../../config/listening/take-on-me-form.json) runs grammar guards, complete source/score proof and the VICE wrap check. Retained evidence verification checks fingerprints without claiming a fresh source capture. The numeric score proof does not establish an independent sound player, compiled export or musical acceptance; those have separate evidence below.
 
 ## Editable sound programs and isolated controls
 
@@ -93,7 +93,7 @@ python3 scripts/listening-package.py config/listening/take-on-me-sound.json --ou
 python3 scripts/evidence.py verify --group take-on-me-sound
 ```
 
-The [sound recipe](../../../config/listening/take-on-me-sound.json) runs eight pure guards and the separate executed source/control proof, avoiding a duplicate source capture inside the unit-test stage. On 2026-10-14 its [fresh run](../../../evidence/take-on-me-sound/run-fresh.json) took 62.26 seconds and its [unchanged recheck](../../../evidence/take-on-me-sound/run-reused.json) took 0.02 seconds with no stage subprocesses. Full-score integration, compiled execution, acoustic quality and familiar-material reuse remain separate gates.
+The [sound recipe](../../../config/listening/take-on-me-sound.json) runs pure guards and the separate executed source/control proof, avoiding a duplicate source capture inside the unit-test stage. Full-score integration, compiled execution, acoustic quality and familiar-material reuse have separate evidence below.
 
 ## Complete independent numeric player
 
@@ -108,7 +108,7 @@ python3 scripts/listening-package.py config/listening/take-on-me-player.json --o
 python3 scripts/evidence.py verify --group take-on-me-player
 ```
 
-The [integration recipe](../../../config/listening/take-on-me-player.json) includes [ten guards](../../../evidence/take-on-me-player/guards.txt.gz), including two stop-state cases that independently exposed and now prevent the stale projection. On 2026-10-14 the [executed integration recheck](../../../evidence/take-on-me-player/run-executed.json) took 32.76 seconds; the [unchanged cache recheck](../../../evidence/take-on-me-player/run-reused.json) took 0.03 seconds. The former computes the player anew but uses retained whole-source execution; it is not a fresh full source capture. That numeric-only checkpoint is followed by the compiled export, finite ending and accepted listening comparisons below.
+The [integration recipe](../../../config/listening/take-on-me-player.json) includes [stop-state guards](../../../evidence/take-on-me-player/guards.txt.gz) that independently expose and prevent stale projection. The [executed integration proof](../../../evidence/take-on-me-player/run-executed.json) computes the player anew against retained whole-source execution; it is not a fresh full source capture. Compiled export, finite ending and listening comparisons have separate evidence below.
 
 ## Compiled export and complete listening package
 

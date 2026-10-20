@@ -88,9 +88,16 @@ Record each listener verdict with its exact scope, as both a case verdict and an
 
 Model observations and scores are experimental supporting signals: they must not determine musical acceptance or trigger arrangement changes on their own. Record one [standing model-assistance decision](docs/research/audio-assessment.md#use-and-reassess-model-assistance) when a musical case opens; reassess for a concrete useful question, relevant model/prompt/preprocessing change or explicit user request, and check the decision at closure without repeating unchanged skip prose. Before any model listening trial, follow the [measured trials and bounded runners](docs/research/audio-assessment.md), including required controls, frozen criteria, task-specific eligibility and existing upload/spending authorization.
 
+## Keep documentation durable
+
+- Document current contracts, decisions and their rationale, reproducible validation methods, material limitations and scoped acceptance. Keep each fact in its existing owner.
+- Do not accumulate session journals, release chronology, implementation play-by-play, routine test counts/timings, retry histories, or commit/push/deployment status in project documentation. Use command logs, CI, Git history and the final response for execution reporting.
+- Reduce a resolved failure to the reusable constraint and regression guard when those help future work; retain reproduction inputs in tests or evidence, not a narrative of the debugging session. Keep dated measurements only when they support a performance/resource decision or another substantive claim, and preserve human listening verdicts with their scope.
+- Update or replace superseded text instead of appending another checkpoint or follow-up. Remove obsolete operational prose; do not move it into a new archive document. Before adding a paragraph, identify the future decision or task it supports; omit it if it only proves work happened.
+
 ## Reconcile knowledge before handoff
 
-Persist findings as they are established. Before a meaningful checkpoint, commit, handoff, context compaction or session completion, reconcile the conversation, delegated findings, code changes, failed approaches and verification results against the repository's owning documents and reusable tools:
+Persist reusable findings in their existing owners. Before a meaningful checkpoint, reconcile durable decisions, relevant rejected alternatives and verification contracts against the repository's owning documents and reusable tools; keep execution chronology in logs and the final response:
 
 - Record each reusable constraint, supported decision and rejected approach in its existing owner, with evidence, applicable scope and reproduction route. Keep hypotheses, execution results and human listening verdicts distinct; unresolved questions belong in the plan.
 - Preserve detail in structured evidence, lookup tables or reusable code when prose would lose it, and add a guard for an executable invariant where meaningful. Promote repeatable probes into supported tools; prose explains and indexes evidence rather than replacing it.
