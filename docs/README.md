@@ -21,6 +21,7 @@ Use the [project overview](../README.md) for SID Song Crafter's purpose and curr
 - [Render and inspect audio](workflows/audio-workflow.md): SID-to-WAV setup, timing, pitch and ending checks.
 - [Run a repeatable listening package](workflows/listening-package.md): execute a recipe, reuse verified stages, collect timings and publish selected WAVs to stable local audition paths.
 - [Produce the normalized Explorer catalog](workflows/catalog.md): deterministic publication-scoped index, pinned file/evidence identities, strict schema and standalone checks.
+- [Export Rambo composition relationships](workflows/composition-package.md): bounded source passages, recurrence, note-entry programs and source-to-player timing, independently of catalog version 1.
 - [Publish within the repository boundary](workflows/publication-boundary.md): two-tier sample packages, rights checks before staging, and keeping reference SIDs/WAVs out of Git.
 - [Prepare listening comparisons](workflows/audio-comparisons.md): phrase and ending comparisons, immediate full-reference access, original-preserving excerpts and gain receipts.
 

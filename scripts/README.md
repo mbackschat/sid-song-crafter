@@ -20,6 +20,7 @@ Choose tools by their supported contract. A song or composer name does not itsel
 - [External local archives](archive-build.py): retain an explicit hash-pinned build selection outside the checkout, optionally evict it or retain read-only WAV playback links after verification, and restore exact bytes without overwriting different content.
 
 - [Normalized catalog](../docs/workflows/catalog.md): [catalog.py](catalog.py) generates and checks the pinned, rights-scoped Explorer index from curated source paths and Git blobs.
+- [Rambo composition package](../docs/workflows/composition-package.md): [composition-package.py](composition-package.py) exports selected source passages, repeated musical material and note-entry program states from pinned original/reconstruction records.
 - [Sample library](../samples/README.md): [sample_exports.py](sample_exports.py) creates the fixed, note-preserving native stereo presentation, verifies mapped registers/active filters for the complete duration, and renders stereo/fold-down previews. Per-sample recipes retain VICE and source/tool fingerprints.
 
 ## Specialized composition backends

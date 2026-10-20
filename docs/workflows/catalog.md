@@ -34,6 +34,8 @@ Generation reads regular ordinary Git blobs and rejects symlinks and unresolved 
 
 Each materials item contains only `id`, `title`, `description`, `sourcePath` and `publication: "materials-only"`. It exposes the owning package without playable file fields. The initial catalog preserves Explorer's six playable entries, four materials items, 21 prepared files and three annotations; it imports no additional musical material.
 
+The separate [Rambo composition package](composition-package.md) exports selected score/program relationships without adding fields to this version 1 index.
+
 ## Verification scope
 
 The focused suite checks deterministic output, the migration identities/order, independent SHA-256 and byte counts from pinned Git reads, duplicate/unknown fields, unsafe paths, publication/delivery, aliases, target/analysis identity and PSID metadata, annotation spans/voices, owner fragments, manifest mismatches and rejected LFS/symlink sources. These are publication-data and software guards, separate from source rights decisions, rendered audio, browser playback and human listening.
