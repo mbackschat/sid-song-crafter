@@ -19,6 +19,7 @@ Choose tools by their supported contract. A song or composer name does not itsel
 - [Automated build cleanup](cleanup-build.py): preview or apply verified cache-audio deduplication and lossless text compression.
 - [External local archives](archive-build.py): retain an explicit hash-pinned build selection outside the checkout, optionally evict it or retain read-only WAV playback links after verification, and restore exact bytes without overwriting different content.
 
+- [Normalized catalog](../docs/workflows/catalog.md): [catalog.py](catalog.py) generates and checks the pinned, rights-scoped Explorer index from curated source paths and Git blobs.
 - [Sample library](../samples/README.md): [sample_exports.py](sample_exports.py) creates the fixed, note-preserving native stereo presentation, verifies mapped registers/active filters for the complete duration, and renders stereo/fold-down previews. Per-sample recipes retain VICE and source/tool fingerprints.
 
 ## Specialized composition backends

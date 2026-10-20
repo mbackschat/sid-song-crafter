@@ -1,5 +1,7 @@
 # Sample library
 
+The [normalized Explorer catalog](catalog/index.json) is generated from [curated package selections](catalog/curator.json); use the [producer contract and commands](../docs/workflows/catalog.md) to refresh or check its pinned asset/evidence identities.
+
 Each sample has a package directory containing its README, reproducible build recipe, output/source fingerprints and applicable notices. Editable material already owned by a song or study stays there and is linked from its package, avoiding duplicate score and instrument definitions. Downloadable releases are kept beside their package materials; uncleared music is generated under ignored `build/`.
 
 | Sample | Mono SID / WAV | Stereo SID / WAV | Materials and scope |
