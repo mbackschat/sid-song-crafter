@@ -1,0 +1,840 @@
+{
+  "format": "engine-audibility-shades-rescaling-v1",
+  "purpose": "Isolate the update-rate limit: the CIA-timed exact transfer versus one driver call per PAL video frame.",
+  "clocks": {
+    "cpuHz": 985248,
+    "exactCallCycles": 12326,
+    "exactCallHz": 79.9325004056466,
+    "exactFirstIntervalCycles": 16422,
+    "frameCallCycles": 19656,
+    "frameCallHz": 50.124542124542124,
+    "framesPerExactCall": 0.627085877085877
+  },
+  "rules": [
+    {
+      "id": "R-COUNT",
+      "applies": "Vibrato delay; release row length",
+      "rule": "frames = round-half-up(calls x 12326 / 19656); a nonzero count never becomes zero."
+    },
+    {
+      "id": "R-ROW",
+      "applies": "Row lengths of the 48 one-row orders",
+      "rule": "Each row boundary is the frame nearest the exact transfer's own boundary time (call 1 = 16,422 cycles, then 12,326 per call). Rounding is absolute, so errors never accumulate; a row lasts 10 or 11 frames."
+    },
+    {
+      "id": "R-RELEASE",
+      "applies": "Final 32-row release and fade",
+      "rule": "Row length 5 calls -> 3 frames (R-COUNT); rowCount 32 and the two-row fade interval are unchanged, so the master volume still reaches zero before the authored stop and each volume step lasts 6 frames."
+    },
+    {
+      "id": "R-PULSE",
+      "applies": "Pulse sweep counts and step per voice",
+      "rule": "Ramp lengths L = count - 1 (the last ascent and first descent share a call) are scaled by R-COUNT and the counts restored as L + 1. The shared step is rescaled so the longer ramp keeps its steps x step excursion, rounded half up."
+    },
+    {
+      "id": "R-VIBRATO",
+      "applies": "Voice 3 vibrato extent and step",
+      "rule": "A cycle lasts 2 x extent + 1 calls. The extent whose cycle is nearest 17 x 12326 cycles is chosen, then the step is the nearest integer keeping extent x step."
+    },
+    {
+      "id": "R-FILTER",
+      "applies": "Shared filter contour (voice-3 triggered)",
+      "rule": "Search call counts within 3 of the nearest-integer scale and every fine (0..7) / coarse (1..8) pair on the simulated 11-bit cutoff; pick the pair minimising the larger of relative duration error and relative total-drop error, then the smaller duration error, then the smaller coarse step."
+    },
+    {
+      "id": "UNCHANGED",
+      "applies": "Notes, pitch words, ADSR codes, waveforms, initial pulse widths, fine tuning, filter routing/mode/trigger/start cutoff, portamento (disabled), fade interval and row count, inert percussion contour",
+      "rule": "Copied verbatim. Only the cadence-dependent counts and per-call steps listed above change."
+    }
+  ],
+  "parameters": [
+    {
+      "scope": "voice 1",
+      "parameter": "pulse ascent length",
+      "rule": "R-PULSE",
+      "unit": "calls",
+      "exact": 16,
+      "frame": 10,
+      "exactMs": 200.169,
+      "frameMs": 199.503,
+      "errorMs": -0.666,
+      "errorPercent": -0.333,
+      "note": "Counts include the ascent call that also starts the descent."
+    },
+    {
+      "scope": "voice 1",
+      "parameter": "pulse descent length",
+      "rule": "R-PULSE",
+      "unit": "calls",
+      "exact": 16,
+      "frame": 10,
+      "exactMs": 200.169,
+      "frameMs": 199.503,
+      "errorMs": -0.666,
+      "errorPercent": -0.333
+    },
+    {
+      "scope": "voice 1",
+      "parameter": "pulse sweep end after note-on",
+      "rule": "R-PULSE",
+      "unit": "calls",
+      "exact": 31,
+      "frame": 19,
+      "exactMs": 387.827,
+      "frameMs": 379.056,
+      "errorMs": -8.771,
+      "errorPercent": -2.262,
+      "note": "Sweep ends in call n_u + n_d - 1; each ramp keeps its own rounding."
+    },
+    {
+      "scope": "voice 1",
+      "parameter": "pulse step",
+      "rule": "R-PULSE",
+      "unit": "units per call",
+      "exact": 16,
+      "frame": 27,
+      "extentExact": 240,
+      "extentFrame": 243,
+      "extentErrorUnits": 3,
+      "extentErrorPercent": 1.25,
+      "note": "Longer ramp excursion: 15 steps x 16 -> 9 steps x 27."
+    },
+    {
+      "scope": "voice 2",
+      "parameter": "pulse ascent length",
+      "rule": "R-PULSE",
+      "unit": "calls",
+      "exact": 1,
+      "frame": 1,
+      "exactMs": 12.511,
+      "frameMs": 19.95,
+      "errorMs": 7.44,
+      "errorPercent": 59.468,
+      "note": "Counts include the ascent call that also starts the descent."
+    },
+    {
+      "scope": "voice 2",
+      "parameter": "pulse descent length",
+      "rule": "R-PULSE",
+      "unit": "calls",
+      "exact": 16,
+      "frame": 10,
+      "exactMs": 200.169,
+      "frameMs": 199.503,
+      "errorMs": -0.666,
+      "errorPercent": -0.333
+    },
+    {
+      "scope": "voice 2",
+      "parameter": "pulse sweep end after note-on",
+      "rule": "R-PULSE",
+      "unit": "calls",
+      "exact": 16,
+      "frame": 10,
+      "exactMs": 200.169,
+      "frameMs": 199.503,
+      "errorMs": -0.666,
+      "errorPercent": -0.333,
+      "note": "Sweep ends in call n_u + n_d - 1; each ramp keeps its own rounding."
+    },
+    {
+      "scope": "voice 2",
+      "parameter": "pulse step",
+      "rule": "R-PULSE",
+      "unit": "units per call",
+      "exact": 32,
+      "frame": 53,
+      "extentExact": 480,
+      "extentFrame": 477,
+      "extentErrorUnits": -3,
+      "extentErrorPercent": -0.625,
+      "note": "Longer ramp excursion: 15 steps x 32 -> 9 steps x 53."
+    },
+    {
+      "scope": "voice 3",
+      "parameter": "pulse ascent length",
+      "rule": "R-PULSE",
+      "unit": "calls",
+      "exact": 16,
+      "frame": 10,
+      "exactMs": 200.169,
+      "frameMs": 199.503,
+      "errorMs": -0.666,
+      "errorPercent": -0.333,
+      "note": "Counts include the ascent call that also starts the descent."
+    },
+    {
+      "scope": "voice 3",
+      "parameter": "pulse descent length",
+      "rule": "R-PULSE",
+      "unit": "calls",
+      "exact": 16,
+      "frame": 10,
+      "exactMs": 200.169,
+      "frameMs": 199.503,
+      "errorMs": -0.666,
+      "errorPercent": -0.333
+    },
+    {
+      "scope": "voice 3",
+      "parameter": "pulse sweep end after note-on",
+      "rule": "R-PULSE",
+      "unit": "calls",
+      "exact": 31,
+      "frame": 19,
+      "exactMs": 387.827,
+      "frameMs": 379.056,
+      "errorMs": -8.771,
+      "errorPercent": -2.262,
+      "note": "Sweep ends in call n_u + n_d - 1; each ramp keeps its own rounding."
+    },
+    {
+      "scope": "voice 3",
+      "parameter": "pulse step",
+      "rule": "R-PULSE",
+      "unit": "units per call",
+      "exact": 32,
+      "frame": 53,
+      "extentExact": 480,
+      "extentFrame": 477,
+      "extentErrorUnits": -3,
+      "extentErrorPercent": -0.625,
+      "note": "Longer ramp excursion: 15 steps x 32 -> 9 steps x 53."
+    },
+    {
+      "scope": "voice 3",
+      "parameter": "vibrato delay",
+      "rule": "R-COUNT",
+      "unit": "calls",
+      "exact": 16,
+      "frame": 10,
+      "exactMs": 200.169,
+      "frameMs": 199.503,
+      "errorMs": -0.666,
+      "errorPercent": -0.333
+    },
+    {
+      "scope": "voice 3",
+      "parameter": "vibrato extent",
+      "rule": "R-VIBRATO",
+      "unit": "steps per half cycle",
+      "exact": 8,
+      "frame": 5,
+      "note": "Cycle = 2 x extent + 1 driver calls: 17 -> 11."
+    },
+    {
+      "scope": "voice 3",
+      "parameter": "vibrato cycle",
+      "rule": "R-VIBRATO",
+      "unit": "calls",
+      "exact": 17,
+      "frame": 11,
+      "exactMs": 212.679,
+      "frameMs": 219.453,
+      "errorMs": 6.774,
+      "errorPercent": 3.185
+    },
+    {
+      "scope": "voice 3",
+      "parameter": "vibrato step",
+      "rule": "R-VIBRATO",
+      "unit": "frequency units per call",
+      "exact": 16,
+      "frame": 26,
+      "extentExact": 128,
+      "extentFrame": 130,
+      "extentErrorUnits": 2,
+      "extentErrorPercent": 1.562,
+      "note": "Peak-to-peak excursion: 8 x 16 -> 5 x 26. The two subtractions at delay expiry become 2 x 26."
+    },
+    {
+      "scope": "filter",
+      "parameter": "cutoff sweep length after voice-3 note-on",
+      "rule": "R-FILTER",
+      "unit": "calls",
+      "exact": 48,
+      "frame": 29,
+      "exactMs": 600.507,
+      "frameMs": 578.559,
+      "errorMs": -21.948,
+      "errorPercent": -3.655
+    },
+    {
+      "scope": "filter",
+      "parameter": "cutoff fine step",
+      "rule": "R-FILTER",
+      "unit": "11-bit cutoff units",
+      "exact": 7,
+      "frame": 6
+    },
+    {
+      "scope": "filter",
+      "parameter": "cutoff coarse step",
+      "rule": "R-FILTER",
+      "unit": "high-byte units",
+      "exact": 1,
+      "frame": 2,
+      "extentExact": 336,
+      "extentFrame": 350,
+      "extentErrorUnits": 14,
+      "extentErrorPercent": 4.167,
+      "note": "Total simulated cutoff drop in 11-bit units; the fine/coarse pair cannot express every per-call step uniformly."
+    }
+  ],
+  "rowBoundaries": [
+    {
+      "orderIndex": 0,
+      "rows": 1,
+      "exactStartCall": 1,
+      "frameStartCall": 1,
+      "exactStartMs": 16.668,
+      "frameStartMs": 19.95,
+      "startErrorMs": 3.282,
+      "exactRowCalls": 17,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 1,
+      "rows": 1,
+      "exactStartCall": 18,
+      "frameStartCall": 11,
+      "exactStartMs": 229.347,
+      "frameStartMs": 219.453,
+      "startErrorMs": -9.894,
+      "exactRowCalls": 16,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 2,
+      "rows": 1,
+      "exactStartCall": 34,
+      "frameStartCall": 22,
+      "exactStartMs": 429.516,
+      "frameStartMs": 438.907,
+      "startErrorMs": 9.391,
+      "exactRowCalls": 17,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 3,
+      "rows": 1,
+      "exactStartCall": 51,
+      "frameStartCall": 32,
+      "exactStartMs": 642.196,
+      "frameStartMs": 638.41,
+      "startErrorMs": -3.786,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 4,
+      "rows": 1,
+      "exactStartCall": 68,
+      "frameStartCall": 43,
+      "exactStartMs": 854.875,
+      "frameStartMs": 857.863,
+      "startErrorMs": 2.988,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 5,
+      "rows": 1,
+      "exactStartCall": 84,
+      "frameStartCall": 53,
+      "exactStartMs": 1055.044,
+      "frameStartMs": 1057.366,
+      "startErrorMs": 2.322,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 6,
+      "rows": 1,
+      "exactStartCall": 101,
+      "frameStartCall": 64,
+      "exactStartMs": 1267.723,
+      "frameStartMs": 1276.82,
+      "startErrorMs": 9.096,
+      "exactRowCalls": 17,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 7,
+      "rows": 1,
+      "exactStartCall": 118,
+      "frameStartCall": 74,
+      "exactStartMs": 1480.403,
+      "frameStartMs": 1476.323,
+      "startErrorMs": -4.08,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 8,
+      "rows": 1,
+      "exactStartCall": 134,
+      "frameStartCall": 84,
+      "exactStartMs": 1680.572,
+      "frameStartMs": 1675.826,
+      "startErrorMs": -4.746,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 9,
+      "rows": 1,
+      "exactStartCall": 151,
+      "frameStartCall": 95,
+      "exactStartMs": 1893.251,
+      "frameStartMs": 1895.279,
+      "startErrorMs": 2.028,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 10,
+      "rows": 1,
+      "exactStartCall": 168,
+      "frameStartCall": 106,
+      "exactStartMs": 2105.931,
+      "frameStartMs": 2114.733,
+      "startErrorMs": 8.802,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 11,
+      "rows": 1,
+      "exactStartCall": 184,
+      "frameStartCall": 116,
+      "exactStartMs": 2306.1,
+      "frameStartMs": 2314.236,
+      "startErrorMs": 8.136,
+      "exactRowCalls": 17,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 12,
+      "rows": 1,
+      "exactStartCall": 201,
+      "frameStartCall": 126,
+      "exactStartMs": 2518.779,
+      "frameStartMs": 2513.739,
+      "startErrorMs": -5.04,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 13,
+      "rows": 1,
+      "exactStartCall": 217,
+      "frameStartCall": 136,
+      "exactStartMs": 2718.948,
+      "frameStartMs": 2713.242,
+      "startErrorMs": -5.706,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 14,
+      "rows": 1,
+      "exactStartCall": 234,
+      "frameStartCall": 147,
+      "exactStartMs": 2931.627,
+      "frameStartMs": 2932.695,
+      "startErrorMs": 1.068,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 15,
+      "rows": 1,
+      "exactStartCall": 251,
+      "frameStartCall": 158,
+      "exactStartMs": 3144.307,
+      "frameStartMs": 3152.148,
+      "startErrorMs": 7.842,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 16,
+      "rows": 1,
+      "exactStartCall": 267,
+      "frameStartCall": 168,
+      "exactStartMs": 3344.476,
+      "frameStartMs": 3351.652,
+      "startErrorMs": 7.176,
+      "exactRowCalls": 17,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 17,
+      "rows": 1,
+      "exactStartCall": 284,
+      "frameStartCall": 178,
+      "exactStartMs": 3557.155,
+      "frameStartMs": 3551.155,
+      "startErrorMs": -6.001,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 18,
+      "rows": 1,
+      "exactStartCall": 301,
+      "frameStartCall": 189,
+      "exactStartMs": 3769.835,
+      "frameStartMs": 3770.608,
+      "startErrorMs": 0.773,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 19,
+      "rows": 1,
+      "exactStartCall": 317,
+      "frameStartCall": 199,
+      "exactStartMs": 3970.003,
+      "frameStartMs": 3970.111,
+      "startErrorMs": 0.108,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 20,
+      "rows": 1,
+      "exactStartCall": 334,
+      "frameStartCall": 210,
+      "exactStartMs": 4182.683,
+      "frameStartMs": 4189.564,
+      "startErrorMs": 6.882,
+      "exactRowCalls": 17,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 21,
+      "rows": 1,
+      "exactStartCall": 351,
+      "frameStartCall": 220,
+      "exactStartMs": 4395.362,
+      "frameStartMs": 4389.068,
+      "startErrorMs": -6.295,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 22,
+      "rows": 1,
+      "exactStartCall": 367,
+      "frameStartCall": 230,
+      "exactStartMs": 4595.531,
+      "frameStartMs": 4588.571,
+      "startErrorMs": -6.961,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 23,
+      "rows": 1,
+      "exactStartCall": 384,
+      "frameStartCall": 241,
+      "exactStartMs": 4808.211,
+      "frameStartMs": 4808.024,
+      "startErrorMs": -0.187,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 24,
+      "rows": 1,
+      "exactStartCall": 401,
+      "frameStartCall": 252,
+      "exactStartMs": 5020.89,
+      "frameStartMs": 5027.477,
+      "startErrorMs": 6.587,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 25,
+      "rows": 1,
+      "exactStartCall": 417,
+      "frameStartCall": 262,
+      "exactStartMs": 5221.059,
+      "frameStartMs": 5226.98,
+      "startErrorMs": 5.921,
+      "exactRowCalls": 17,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 26,
+      "rows": 1,
+      "exactStartCall": 434,
+      "frameStartCall": 272,
+      "exactStartMs": 5433.739,
+      "frameStartMs": 5426.483,
+      "startErrorMs": -7.255,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 27,
+      "rows": 1,
+      "exactStartCall": 451,
+      "frameStartCall": 283,
+      "exactStartMs": 5646.418,
+      "frameStartMs": 5645.937,
+      "startErrorMs": -0.481,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 28,
+      "rows": 1,
+      "exactStartCall": 467,
+      "frameStartCall": 293,
+      "exactStartMs": 5846.587,
+      "frameStartMs": 5845.44,
+      "startErrorMs": -1.147,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 29,
+      "rows": 1,
+      "exactStartCall": 484,
+      "frameStartCall": 304,
+      "exactStartMs": 6059.266,
+      "frameStartMs": 6064.893,
+      "startErrorMs": 5.627,
+      "exactRowCalls": 17,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 30,
+      "rows": 1,
+      "exactStartCall": 501,
+      "frameStartCall": 314,
+      "exactStartMs": 6271.946,
+      "frameStartMs": 6264.396,
+      "startErrorMs": -7.549,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 31,
+      "rows": 1,
+      "exactStartCall": 517,
+      "frameStartCall": 324,
+      "exactStartMs": 6472.115,
+      "frameStartMs": 6463.899,
+      "startErrorMs": -8.215,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 32,
+      "rows": 1,
+      "exactStartCall": 534,
+      "frameStartCall": 335,
+      "exactStartMs": 6684.794,
+      "frameStartMs": 6683.353,
+      "startErrorMs": -1.441,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 33,
+      "rows": 1,
+      "exactStartCall": 551,
+      "frameStartCall": 346,
+      "exactStartMs": 6897.474,
+      "frameStartMs": 6902.806,
+      "startErrorMs": 5.333,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 34,
+      "rows": 1,
+      "exactStartCall": 567,
+      "frameStartCall": 356,
+      "exactStartMs": 7097.642,
+      "frameStartMs": 7102.309,
+      "startErrorMs": 4.667,
+      "exactRowCalls": 17,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 35,
+      "rows": 1,
+      "exactStartCall": 584,
+      "frameStartCall": 366,
+      "exactStartMs": 7310.322,
+      "frameStartMs": 7301.812,
+      "startErrorMs": -8.51,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 36,
+      "rows": 1,
+      "exactStartCall": 600,
+      "frameStartCall": 376,
+      "exactStartMs": 7510.491,
+      "frameStartMs": 7501.315,
+      "startErrorMs": -9.175,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 37,
+      "rows": 1,
+      "exactStartCall": 617,
+      "frameStartCall": 387,
+      "exactStartMs": 7723.17,
+      "frameStartMs": 7720.769,
+      "startErrorMs": -2.401,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 38,
+      "rows": 1,
+      "exactStartCall": 634,
+      "frameStartCall": 398,
+      "exactStartMs": 7935.85,
+      "frameStartMs": 7940.222,
+      "startErrorMs": 4.373,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 39,
+      "rows": 1,
+      "exactStartCall": 650,
+      "frameStartCall": 408,
+      "exactStartMs": 8136.019,
+      "frameStartMs": 8139.725,
+      "startErrorMs": 3.707,
+      "exactRowCalls": 17,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 40,
+      "rows": 1,
+      "exactStartCall": 667,
+      "frameStartCall": 418,
+      "exactStartMs": 8348.698,
+      "frameStartMs": 8339.228,
+      "startErrorMs": -9.47,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 41,
+      "rows": 1,
+      "exactStartCall": 684,
+      "frameStartCall": 429,
+      "exactStartMs": 8561.377,
+      "frameStartMs": 8558.682,
+      "startErrorMs": -2.696,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 42,
+      "rows": 1,
+      "exactStartCall": 700,
+      "frameStartCall": 439,
+      "exactStartMs": 8761.546,
+      "frameStartMs": 8758.185,
+      "startErrorMs": -3.362,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 43,
+      "rows": 1,
+      "exactStartCall": 717,
+      "frameStartCall": 450,
+      "exactStartMs": 8974.226,
+      "frameStartMs": 8977.638,
+      "startErrorMs": 3.412,
+      "exactRowCalls": 17,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 44,
+      "rows": 1,
+      "exactStartCall": 734,
+      "frameStartCall": 460,
+      "exactStartMs": 9186.905,
+      "frameStartMs": 9177.141,
+      "startErrorMs": -9.764,
+      "exactRowCalls": 16,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 45,
+      "rows": 1,
+      "exactStartCall": 750,
+      "frameStartCall": 471,
+      "exactStartMs": 9387.074,
+      "frameStartMs": 9396.595,
+      "startErrorMs": 9.52,
+      "exactRowCalls": 17,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 46,
+      "rows": 1,
+      "exactStartCall": 767,
+      "frameStartCall": 481,
+      "exactStartMs": 9599.754,
+      "frameStartMs": 9596.098,
+      "startErrorMs": -3.656,
+      "exactRowCalls": 17,
+      "frameRowCalls": 11
+    },
+    {
+      "orderIndex": 47,
+      "rows": 1,
+      "exactStartCall": 784,
+      "frameStartCall": 492,
+      "exactStartMs": 9812.433,
+      "frameStartMs": 9815.551,
+      "startErrorMs": 3.118,
+      "exactRowCalls": 16,
+      "frameRowCalls": 10
+    },
+    {
+      "orderIndex": 48,
+      "rows": 32,
+      "exactStartCall": 800,
+      "frameStartCall": 502,
+      "exactStartMs": 10012.602,
+      "frameStartMs": 10015.054,
+      "startErrorMs": 2.452,
+      "exactRowCalls": 5,
+      "frameRowCalls": 3
+    }
+  ],
+  "summary": {
+    "maximumRowStartErrorMs": 9.894,
+    "orders": 49,
+    "exactStopCall": 960,
+    "frameStopCall": 598,
+    "blockRenamed": {
+      "pulse-trio": "pulse-trio-frame"
+    }
+  },
+  "inputs": {
+    "score": "songs/shades-elise-transfer.json",
+    "scoreSha256": "45c8382e7a7c0a91a2916245ddbaab024f91a4a6c97bf193cac5a5564267b9e4",
+    "programs": "songs/shades-transfer-programs.json",
+    "programsSha256": "af316f792ec1c166c870dd1941ebc2de672bad0d9feab1a7da00bbf4d9c1f346"
+  }
+}

@@ -1,0 +1,531 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "prepare-check",
+      "command": [
+        "{python}",
+        "scripts/studies/shades/prepare-shades-elise.py",
+        "--check"
+      ],
+      "inputs": [
+        "scripts/studies/shades/prepare-shades-elise.py",
+        "songs/fuer-elise.json",
+        "songs/shades-transfer-programs.json",
+        "songs/shades-elise-transfer.json",
+        "songs/shades-elise-reference-programs.json",
+        "scripts/shades_player.py",
+        "scripts/shades_programs.py",
+        "scripts/describe-shades-score.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "variant-check",
+      "command": [
+        "{python}",
+        "scripts/studies/engine-audibility/shades/prepare-frame-variant.py",
+        "--check"
+      ],
+      "inputs": [
+        "scripts/studies/engine-audibility/shades/prepare-frame-variant.py",
+        "scripts/studies/engine-audibility/shades/rescale.py",
+        "songs/shades-elise-transfer.json",
+        "songs/shades-transfer-programs.json",
+        "songs/studies/engine-audibility/shades/score.json",
+        "songs/studies/engine-audibility/shades/programs.json",
+        "songs/studies/engine-audibility/shades/rescaling.json",
+        "scripts/shades_player.py",
+        "scripts/shades_programs.py",
+        "scripts/describe-shades-score.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference-build",
+      "command": [
+        "{python}",
+        "scripts/compose-shades.py",
+        "songs/shades-elise-transfer.json",
+        "--programs",
+        "songs/shades-elise-reference-programs.json",
+        "--output",
+        "{out}/reference"
+      ],
+      "inputs": [
+        "scripts/compose-shades.py",
+        "scripts/shades_player.py",
+        "scripts/shades_programs.py",
+        "scripts/shades_audit.py",
+        "scripts/trace-shades-vice.py",
+        "scripts/trace-sid-vice.py",
+        "scripts/describe-shades-score.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_assembler.py",
+        "scripts/verify_player.py",
+        "songs/players/shades.asm",
+        "songs/players/shades-effects.asm",
+        ".tools/test-deps/py65",
+        "songs/shades-elise-transfer.json",
+        "songs/shades-elise-reference-programs.json"
+      ],
+      "outputs": [
+        "reference/reconstructed.sid",
+        "reference/build.json",
+        "reference/audit.json",
+        "reference/writes.json",
+        "reference/player.asm",
+        "reference/player.listing"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "exact-build",
+      "command": [
+        "{python}",
+        "scripts/compose-shades.py",
+        "songs/shades-elise-transfer.json",
+        "--programs",
+        "songs/shades-transfer-programs.json",
+        "--output",
+        "{out}/exact"
+      ],
+      "inputs": [
+        "scripts/compose-shades.py",
+        "scripts/shades_player.py",
+        "scripts/shades_programs.py",
+        "scripts/shades_audit.py",
+        "scripts/trace-shades-vice.py",
+        "scripts/trace-sid-vice.py",
+        "scripts/describe-shades-score.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_assembler.py",
+        "scripts/verify_player.py",
+        "songs/players/shades.asm",
+        "songs/players/shades-effects.asm",
+        ".tools/test-deps/py65",
+        "songs/shades-elise-transfer.json",
+        "songs/shades-transfer-programs.json"
+      ],
+      "outputs": [
+        "exact/reconstructed.sid",
+        "exact/build.json",
+        "exact/audit.json",
+        "exact/writes.json",
+        "exact/player.asm",
+        "exact/player.listing"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "frame-build",
+      "command": [
+        "{python}",
+        "scripts/studies/engine-audibility/shades/build-frame-variant.py",
+        "songs/studies/engine-audibility/shades/score.json",
+        "--programs",
+        "songs/studies/engine-audibility/shades/programs.json",
+        "--output",
+        "{out}/frame"
+      ],
+      "inputs": [
+        "scripts/compose-shades.py",
+        "scripts/shades_player.py",
+        "scripts/shades_programs.py",
+        "scripts/shades_audit.py",
+        "scripts/trace-shades-vice.py",
+        "scripts/trace-sid-vice.py",
+        "scripts/describe-shades-score.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/sid_clock.py",
+        "scripts/sid_assembler.py",
+        "scripts/verify_player.py",
+        "songs/players/shades.asm",
+        "songs/players/shades-effects.asm",
+        ".tools/test-deps/py65",
+        "scripts/studies/engine-audibility/shades/build-frame-variant.py",
+        "songs/studies/engine-audibility/shades/score.json",
+        "songs/studies/engine-audibility/shades/programs.json"
+      ],
+      "outputs": [
+        "frame/reconstructed.sid",
+        "frame/build.json",
+        "frame/audit.json",
+        "frame/writes.json",
+        "frame/player.asm",
+        "frame/player.listing"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "exact-vice",
+      "command": [
+        "{python}",
+        "scripts/trace-shades-vice.py",
+        "{stage:exact-build}/exact/reconstructed.sid",
+        "--candidate",
+        "--calls",
+        "961",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice"
+      ],
+      "inputs": [
+        "{stage:exact-build}/exact/reconstructed.sid",
+        "scripts/trace-shades-vice.py",
+        "scripts/trace-sid-vice.py",
+        "scripts/shades_audit.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/sid_clock.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "vice/study.json",
+        "vice/trace.json",
+        "vice/monitor.log",
+        "vice/command.json",
+        "vice/commands.mon"
+      ],
+      "timeoutSeconds": 330,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "frame-vice",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:frame-build}/frame/reconstructed.sid",
+        "--oracle",
+        "{stage:frame-build}/frame/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "598",
+        "--timeout",
+        "300",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:frame-build}/frame/reconstructed.sid",
+        "{stage:frame-build}/frame/writes.json",
+        "scripts/trace-sid-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        "scripts/sid_clock.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        ".tools/test-deps/py65"
+      ],
+      "outputs": [
+        "vice/study.json",
+        "vice/trace.json",
+        "vice/monitor.log",
+        "vice/command.json",
+        "vice/commands.mon"
+      ],
+      "timeoutSeconds": 330,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:reference-build}/reference/reconstructed.sid",
+        "{out}/render.wav",
+        "13",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:reference-build}/reference/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "exact-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:exact-build}/exact/reconstructed.sid",
+        "{out}/render.wav",
+        "13",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:exact-build}/exact/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "frame-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:frame-build}/frame/reconstructed.sid",
+        "{out}/render.wav",
+        "13",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:frame-build}/frame/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "guard",
+      "command": [
+        "{python}",
+        "scripts/studies/engine-audibility/shades/guard-frame-variant.py",
+        "--exact",
+        "{stage:exact-build}/exact",
+        "--frame",
+        "{stage:frame-build}/frame",
+        "--exact-programs",
+        "songs/shades-transfer-programs.json",
+        "--frame-programs",
+        "songs/studies/engine-audibility/shades/programs.json",
+        "--exact-wav",
+        "{stage:exact-render}/render.wav",
+        "--frame-wav",
+        "{stage:frame-render}/render.wav",
+        "--output",
+        "{out}/guard.json"
+      ],
+      "inputs": [
+        "{stage:exact-build}/exact/reconstructed.sid",
+        "{stage:exact-build}/exact/writes.json",
+        "{stage:frame-build}/frame/reconstructed.sid",
+        "{stage:frame-build}/frame/writes.json",
+        "{stage:exact-render}/render.wav",
+        "{stage:frame-render}/render.wav",
+        "songs/shades-transfer-programs.json",
+        "songs/studies/engine-audibility/shades/programs.json",
+        "scripts/studies/engine-audibility/shades/guard-frame-variant.py",
+        "scripts/studies/engine-audibility/shades/rescale.py",
+        "docs/research/composition/shades-elise-audio.json",
+        "scripts/verify_player.py"
+      ],
+      "outputs": [
+        "guard.json"
+      ],
+      "timeoutSeconds": 300,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check-exact",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:reference-render}/render.wav",
+        "{stage:exact-render}/render.wav",
+        "--seconds",
+        "13",
+        "--output",
+        "{out}/audio.json",
+        "--tail-seconds",
+        "1",
+        "--max-tail-ac-rms",
+        "1"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:exact-render}/render.wav",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check-frame",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:reference-render}/render.wav",
+        "{stage:frame-render}/render.wav",
+        "--seconds",
+        "13",
+        "--output",
+        "{out}/audio.json",
+        "--tail-seconds",
+        "1",
+        "--max-tail-ac-rms",
+        "1"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:frame-render}/render.wav",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "listening",
+      "command": [
+        "{python}",
+        "scripts/studies/engine-audibility/shades/assemble-listening.py",
+        "--reference",
+        "{stage:reference-render}/render.wav",
+        "--exact",
+        "{stage:exact-render}/render.wav",
+        "--frame",
+        "{stage:frame-render}/render.wav",
+        "--output",
+        "{out}/files"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:exact-render}/render.wav",
+        "{stage:frame-render}/render.wav",
+        "scripts/studies/engine-audibility/shades/assemble-listening.py",
+        "scripts/audio_comparison.py",
+        "scripts/verify_player.py",
+        "docs/research/composition/shades-elise-audio.json",
+        "{stage:guard}/guard.json"
+      ],
+      "outputs": [
+        "files/phrase-exact-then-frame.ab.wav",
+        "files/phrase-exact-then-frame.comparison.json",
+        "files/ending-exact-then-frame.ab.wav",
+        "files/ending-exact-then-frame.comparison.json",
+        "files/phrase-reference-exact-frame.abc.wav",
+        "files/phrase-reference-exact-frame.comparison.json",
+        "files/listening-summary.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "fullReference": "{stage:reference-render}/render.wav",
+    "fullExact": "{stage:exact-render}/render.wav",
+    "fullFrame": "{stage:frame-render}/render.wav",
+    "phraseExactThenFrame": "{stage:listening}/files/phrase-exact-then-frame.ab.wav",
+    "endingExactThenFrame": "{stage:listening}/files/ending-exact-then-frame.ab.wav",
+    "phraseReferenceExactFrame": "{stage:listening}/files/phrase-reference-exact-frame.abc.wav",
+    "guardReceipt": "{stage:guard}/guard.json",
+    "frameBuildProof": "{stage:frame-build}/frame/build.json",
+    "frameViceProof": "{stage:frame-vice}/vice/study.json",
+    "exactViceProof": "{stage:exact-vice}/vice/study.json"
+  }
+}
