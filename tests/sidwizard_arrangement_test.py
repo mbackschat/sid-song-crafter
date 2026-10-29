@@ -15,6 +15,8 @@ ARRANGER = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(ARRANGER)
 
 
+UPSTREAM_MODULES = ROOT / ".tools/sid-wizard-1.97/resources/examples"
+
 INSTRUMENT = {
     "name": "TESTPLK", "control": "0a", "hard_restart_adsr": "0f00", "adsr": "0734", "frame1": "09",
     "wave": [["11", "00", "00"]], "pulse": [], "filter": [],
@@ -541,6 +543,95 @@ class SIDWizardArrangementTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "instrumentCells"):
                 self.cells_recipe(directory, [], policy="sometimes")
             self.assertFalse((Path(directory) / "out").exists())
+
+    CHORD_INSTRUMENT = dict(INSTRUMENT, name="CHORDPLK", wave=[["41", "7f", "00"]])
+    CHORDS = [
+        {"name": "major", "intervals": [0, 4, 7], "end": "loop"},
+        {"name": "minor seventh", "intervals": [0, 3, 7, -2], "end": "return"},
+    ]
+
+    def chord_recipe(self, directory, *, chords=None, instrument=None):
+        overrides = {"instruments": {"pluck": instrument or self.CHORD_INSTRUMENT}}
+        if chords is not None:
+            overrides["chordTable"] = chords
+        return self.create(directory, synthetic_score([{"startBeat": 0, "durationBeats": 10, "midi": 60}], beats=40), **overrides)
+
+    def test_without_a_chord_table_the_module_keeps_a_zero_chord_length_and_its_tail(self):
+        with tempfile.TemporaryDirectory() as directory:
+            _, manifest = self.chord_recipe(directory, instrument=dict(INSTRUMENT))
+            data = Path(manifest["nativePath"]).read_bytes()
+            self.assertEqual((data[2 + 15], data[-2:]), (0, b"\x81\x81"))
+            self.assertNotIn("chordTable", manifest)
+
+    def test_chord_table_sits_between_the_instruments_and_the_tempo_pointers_with_its_length_in_the_header(self):
+        expected = bytes((0, 4, 7, 0x7F, 0, 3, 7, 0xFE, 0x7E))
+        with tempfile.TemporaryDirectory() as plain_directory, tempfile.TemporaryDirectory() as chord_directory:
+            _, plain = self.chord_recipe(plain_directory, instrument=dict(INSTRUMENT))
+            _, chorded = self.chord_recipe(chord_directory, chords=self.CHORDS, instrument=dict(INSTRUMENT))
+            without, with_table = Path(plain["nativePath"]).read_bytes(), Path(chorded["nativePath"]).read_bytes()
+            adjusted = bytearray(without)
+            adjusted[2 + 15] = len(expected)
+            self.assertEqual(bytes(adjusted[:-2]) + expected + without[-2:], with_table)
+            self.assertEqual([(chord["number"], chord["name"]) for chord in chorded["chordTable"]], [(1, "major"), (2, "minor seventh")])
+
+    @unittest.skipUnless(UPSTREAM_MODULES.is_dir(), "Pinned SID-Wizard 1.97 examples required")
+    def test_encoding_reproduces_the_chord_tables_of_upstream_modules(self):
+        checked = 0
+        for path in sorted(UPSTREAM_MODULES.rglob("*.sw[ms]")):
+            data = path.read_bytes()
+            header = data[2:66]
+            length, tempo = header[15], header[16]
+            table = data[len(data) - 2 - tempo - length:len(data) - 2 - tempo]
+            chords, current = [], []
+            for value in table:
+                if value in (0x7E, 0x7F):
+                    chords.append({"intervals": [item - 256 if item >= 128 else item for item in current], "end": "loop" if value == 0x7F else "return"})
+                    current = []
+                else:
+                    current.append(value)
+            # Skip tables the editor would not have written: no chords, a cut-off last chord, empty chords or beyond the 30-chord limit.
+            if not length or current or not chords or any(not chord["intervals"] for chord in chords) or len(chords) > 30:
+                continue
+            self.assertEqual(ARRANGER.chord_table_bytes(chords), table, path.name)
+            checked += 1
+        self.assertGreaterEqual(checked, 25)
+
+    def test_instrument_calling_the_chord_table_needs_its_default_chord_defined(self):
+        for chords, instrument, pattern in (
+            (None, self.CHORD_INSTRUMENT, r"chordTable"),
+            (self.CHORDS, dict(self.CHORD_INSTRUMENT, default_chord=3), r"default chord 3.*1\.\.2"),
+            (self.CHORDS, dict(self.CHORD_INSTRUMENT, default_chord=0), r"default chord 0"),
+        ):
+            with self.subTest(default=instrument.get("default_chord", 1)), tempfile.TemporaryDirectory() as directory:
+                with self.assertRaisesRegex(ValueError, pattern):
+                    self.chord_recipe(directory, chords=chords, instrument=instrument)
+                self.assertFalse((Path(directory) / "out").exists())
+
+    def test_default_chord_of_an_instrument_that_never_calls_the_table_is_not_a_reference(self):
+        with tempfile.TemporaryDirectory() as directory:
+            self.chord_recipe(directory, instrument=dict(INSTRUMENT, default_chord=9))
+
+    def test_malformed_chord_tables_are_rejected_before_output(self):
+        long_chord = {"intervals": list(range(31)), "end": "loop"}
+        cases = {
+            "not a list": {"intervals": [0], "end": "loop"},
+            "no intervals": [{"intervals": [], "end": "loop"}],
+            "reserved interval": [{"intervals": [0, 126], "end": "loop"}],
+            "interval below a byte": [{"intervals": [-129], "end": "loop"}],
+            "boolean interval": [{"intervals": [True], "end": "loop"}],
+            "unknown end": [{"intervals": [0], "end": "stop"}],
+            "missing end": [{"intervals": [0]}],
+            "blank name": [{"name": "", "intervals": [0], "end": "loop"}],
+            "too many intervals": [{"intervals": list(range(32)), "end": "loop"}],
+            "too many chords": [{"intervals": [0], "end": "loop"}] * 31,
+            "table too long": [long_chord] * 8,
+        }
+        self.assertEqual(len(ARRANGER.chord_table_bytes([long_chord] * 7)), 7 * 32)
+        for label, chords in cases.items():
+            with self.subTest(label), tempfile.TemporaryDirectory() as directory:
+                with self.assertRaisesRegex(ValueError, "chordTable"):
+                    self.chord_recipe(directory, chords=chords, instrument=dict(INSTRUMENT))
+                self.assertFalse((Path(directory) / "out").exists())
 
     def test_instrument_ids_cannot_leave_the_native_output_directory(self):
         score = synthetic_score([], beats=4)

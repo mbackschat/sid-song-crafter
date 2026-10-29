@@ -203,6 +203,16 @@ def instrument_from_bytes(identity, data):
     return instrument
 
 
+# A waveform-table row whose arpeggio column holds this value calls the song chord table (SID-Wizard manual, waveform table
+# values; player.asm PLYCHRD). Repeat rows ($00..$0F) take the same path, so the test is on the column alone.
+CHORD_CALL = 0x7F
+
+
+def calls_chord_table(instrument):
+    """True when a waveform row of the JSON instrument form calls the song chord table."""
+    return any(not isinstance(row, dict) and octet(row[1]) == CHORD_CALL for row in instrument["wave"])
+
+
 def note_value(note):
     if note == "off":
         return 0x7E

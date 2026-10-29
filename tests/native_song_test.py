@@ -2,6 +2,7 @@ import copy
 import hashlib
 import importlib.util
 import json
+import math
 from pathlib import Path
 from types import SimpleNamespace
 import subprocess
@@ -127,6 +128,43 @@ class NativeSongTest(unittest.TestCase):
         self.assertEqual(len(set(every_note)), 1, every_note)
         self.assertTrue(on_change[0] < on_change[1] < on_change[2], on_change)
         self.assertEqual(on_change[0], every_note[0])
+
+    @unittest.skipUnless((ROOT / ".tools/sid-wizard-exporter/exporter.labels").is_file() and (ROOT / ".local/bin/render-sid").is_file(), "Pinned one-SID exporter and renderer required")
+    def test_declared_chord_table_drives_the_oscillator_through_its_intervals(self):
+        # One waveform row calls the song chord table; with arp speed 1 each chord step lasts two frames.
+        arpeggio = {
+            "name": "CHORDARP", "control": "1a", "hard_restart_adsr": "0f00", "adsr": "a0fa", "frame1": "09", "arp_speed": 1,
+            "wave": [["41", "7f", "00"]], "pulse": [], "filter": [],
+        }
+        root, start = 60, 0
+        score = {
+            "title": "Chord table", "composer": "Test", "quarterBpm": 60 * (17734475 / 18) / (312 * 63), "totalBeats": 40, "tailTicks": 3, "volume": 15,
+            "voices": [{"name": name, "events": [{"startBeat": start, "durationBeats": 32, "midi": root}] if name == "lead" else []} for name in ("lead", "bass", "pad")],
+        }
+
+        def offsets(intervals):
+            with tempfile.TemporaryDirectory() as directory, patch("builtins.print"):
+                (Path(directory) / "score.json").write_text(json.dumps(score))
+                recipe = {
+                    "format": "sidwizard-arrangement-v1", "score": "score.json", "title": "Chord table", "author": "Test", "released": "2026", "timingPolicy": "retain-full-pitch",
+                    "instruments": {"arp": arpeggio}, "chordTable": [{"intervals": intervals, "end": "loop"}],
+                    "sections": [{"name": "Whole", "startBeat": 0, "endBeat": 40, "voices": {"lead": "arp", "bass": "arp", "pad": "arp"}}],
+                }
+                (Path(directory) / "recipe.json").write_text(json.dumps(recipe))
+                report = native_song.run_song(Path(directory) / "recipe.json", Path(directory) / "song", excerpt_seconds=1)
+                self.assertEqual(report["schedule"]["noteCounts"], [1, 0, 0])
+                writes = json.loads((Path(directory) / "song/native-song.writes.json").read_text())
+            register, by_tick = {0xd400: 0, 0xd401: 0}, {}
+            for write in writes:
+                if write["address"] in register:
+                    register[write["address"]] = write["value"]
+                if write["phase"] == "play":
+                    by_tick[write["tick"]] = register[0xd400] | register[0xd401] << 8
+            clock = 17734475 / 18
+            return [round(69 + 12 * math.log2(by_tick[tick] * clock / 2**24 / 440)) - root for tick in range(start + 2, start + 14)]
+
+        self.assertEqual(offsets([0, 4, 7]), [0, 4, 4, 7, 7, 0, 0, 4, 4, 7, 7, 0])
+        self.assertEqual(offsets([0, 3, 7, 12]), [0, 3, 3, 7, 7, 12, 12, 0, 0, 3, 3, 7])
 
     def test_layout_rejects_invalid_model_and_disagreement_with_chip_metadata(self):
         self.assertEqual(native_song.sid_layout({"sidModel": "MOS6581"}), [{"baseAddress": 0xd400, "model": "MOS6581"}])

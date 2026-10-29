@@ -14,6 +14,13 @@ from sid_clock import PAL_CLOCK, clock_spec
 ROOT = Path(__file__).resolve().parents[1]
 TICKS_PER_SECOND = PAL_CLOCK / (312 * 63)
 PATTERN_ROWS = 248
+# SWM-spec.src maxchordlength and MAXCHORDAMOUNT (which counts a dummy chord 0 and an end dummy); packdepack.inc packs at most
+# 30 chords, and the header stores the packed table length in one byte.
+MAX_CHORDS = 30
+MAX_CHORD_BYTES = 32
+MAX_CHORD_TABLE_BYTES = 255
+CHORD_DELIMITERS = {"return": 0x7E, "loop": 0x7F}
+DEFAULT_CHORD_POSITION = 8
 INSTRUMENT_CELL_POLICIES = ("every-note", "on-change")
 # SWM-spec.src SWI_OCTAVE_POS: the instrument header byte the driver adds, as signed semitones, to every written note it starts.
 OCTAVE_SHIFT_POSITION = 9
@@ -32,11 +39,32 @@ def digest(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def instrument_encoder():
+def instrument_codec():
     specification = importlib.util.spec_from_file_location("native_instrument_encoder", ROOT / "scripts/generate-native-instruments.py")
     module = importlib.util.module_from_spec(specification)
     specification.loader.exec_module(module)
-    return module.instrument_bytes
+    return module
+
+
+def chord_table_bytes(chords):
+    """Encode the recipe's `chordTable` as the SWM chord table: chords 1..n back to back, each closed by its delimiter.
+
+    Chord 0 is the editor's empty NOP chord and is not stored, so the chord number of an instrument's `default_chord`
+    is the 1-based position here. An interval is a signed semitone offset from the played note (two's complement byte);
+    `$7E` ("return") continues with the next waveform-table row and `$7F` ("loop") restarts the chord.
+    """
+    require(isinstance(chords, list) and 1 <= len(chords) <= MAX_CHORDS, f"chordTable must list 1..{MAX_CHORDS} chords")
+    encoded = bytearray()
+    for number, chord in enumerate(chords, 1):
+        require(isinstance(chord, dict) and chord.get("end") in CHORD_DELIMITERS, f"chordTable chord {number} needs end 'loop' or 'return'")
+        require(isinstance(chord.get("name", "chord"), str) and chord.get("name", "chord"), f"chordTable chord {number} name must be a nonempty string")
+        intervals = chord.get("intervals")
+        require(isinstance(intervals, list) and 1 <= len(intervals) < MAX_CHORD_BYTES and all(type(interval) is int and -128 <= interval <= 125 for interval in intervals),
+                f"chordTable chord {number} needs 1..{MAX_CHORD_BYTES - 1} integer intervals from -128 to 125 ($7E and $7F are the chord delimiters)")
+        encoded.extend(interval & 0xFF for interval in intervals)
+        encoded.append(CHORD_DELIMITERS[chord["end"]])
+    require(len(encoded) <= MAX_CHORD_TABLE_BYTES, f"chordTable encodes to {len(encoded)} bytes, above the native {MAX_CHORD_TABLE_BYTES}")
+    return bytes(encoded)
 
 
 def octave_shift_semitones(instrument):
@@ -170,12 +198,19 @@ def arrange(recipe_path, output_dir, *, clock=None):
     total_ticks = score_ticks + tail
     row_count = total_ticks + 1
     sections = select_sections(recipe, score)
-    encode_instrument = instrument_encoder()
+    codec = instrument_codec()
+    encode_instrument = codec.instrument_bytes
     require(1 <= len(recipe["instruments"]) <= instrument_limit, f"Native recipe requires 1..{instrument_limit} instruments")
     identities = list(recipe["instruments"])
     instrument_numbers = {identity: index + 1 for index, identity in enumerate(identities)}
     instruments = {identity: encode_instrument(identity, recipe["instruments"][identity]) for identity in identities}
     shifts = {identity: octave_shift_semitones(data) for identity, data in instruments.items()}
+    chords = recipe.get("chordTable")
+    chord_bytes = b"" if chords is None else chord_table_bytes(chords)
+    for identity, data in instruments.items():
+        if codec.calls_chord_table(recipe["instruments"][identity]):
+            require(chords is not None, f"Instrument {identity!r} calls the song chord table, but the recipe declares no chordTable")
+            require(1 <= data[DEFAULT_CHORD_POSITION] <= len(chords), f"Instrument {identity!r} calls the song chord table with default chord {data[DEFAULT_CHORD_POSITION]}, but the recipe's chordTable defines chords 1..{len(chords)}")
     instrument_cells = recipe.get("instrumentCells", "every-note")
     require(instrument_cells in INSTRUMENT_CELL_POLICIES, f"instrumentCells must be one of {', '.join(INSTRUMENT_CELL_POLICIES)}")
     short_limit = recipe.get("shortNoteMaxTicks", 0)
@@ -281,12 +316,13 @@ def arrange(recipe_path, output_dir, *, clock=None):
     header[5 if sid_count == 1 else 21] = 4
     header[8 if sid_count == 1 else 5:11] = b"\xff" * voice_count
     header[11:15] = bytes((64, voice_count, len(patterns), len(instruments)))
+    header[15] = len(chord_bytes)
     header[19] = 3
     authorinfo = recipe.get("authorinfo", f"{recipe['author']}:{recipe['title']}").upper().encode("ascii")
     require(len(authorinfo) <= 40, "Native author/title header must fit 40 ASCII characters")
     header[24:64] = authorinfo.ljust(40, b" ")
     sequences = b"".join(bytes(voice["sequence"] + [0xa0, 0xfe, len(voice["sequence"]) + 2]) for voice in voices)
-    data = b"\x33\x33" + header + sequences + b"".join(pattern["bytes"] for pattern in patterns) + b"".join(instruments.values()) + b"\x81\x81"
+    data = b"\x33\x33" + header + sequences + b"".join(pattern["bytes"] for pattern in patterns) + b"".join(instruments.values()) + chord_bytes + b"\x81\x81"
     output.mkdir(parents=True)
     native = output / f"{recipe_path.stem}.{'swm' if sid_count == 1 else 'sws'}"
     native.write_bytes(data)
@@ -316,6 +352,8 @@ def arrange(recipe_path, output_dir, *, clock=None):
     }
     if instrument_cells != "every-note":
         manifest["instrumentCells"] = instrument_cells
+    if chords is not None:
+        manifest["chordTable"] = [dict(chord, number=number) for number, chord in enumerate(chords, 1)]
     (output / f"{recipe_path.stem}.native.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return manifest
 

@@ -10,9 +10,6 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 # The editor's saveins routine writes this KERNAL load address before the packed instrument.
 LOAD_ADDRESS = b"\xa1\x04"
-# A waveform-table row whose arpeggio column holds this value calls the song chord table (SWM-spec.src / manual).
-CHORD_CALL = 0x7F
-
 
 def instrument_module():
     spec = importlib.util.spec_from_file_location("native_instrument_codec", ROOT / "scripts/generate-native-instruments.py")
@@ -33,12 +30,8 @@ def read_swi(path):
 
 
 def uses_song_chord_table(instrument):
-    """True when a waveform row calls the song chord table.
-
-    The recipe converter writes no chord table, so such an instrument imports but does not play as designed.
-    """
-    octet = instrument_module().octet
-    return any(not isinstance(row, dict) and octet(row[1]) == CHORD_CALL for row in instrument["wave"])
+    """True when a waveform row calls the song chord table, so the instrument plays only with a recipe `chordTable`."""
+    return instrument_module().calls_chord_table(instrument)
 
 
 def main():
@@ -47,7 +40,7 @@ def main():
     args = parser.parse_args()
     instrument = read_swi(args.swi)
     if uses_song_chord_table(instrument):
-        print(f"{args.swi.name} calls the song chord table, which the recipe converter does not write: its chord rows will not play as designed.", file=sys.stderr)
+        print(f"{args.swi.name} calls the song chord table: the recipe needs a chordTable that defines its default chord.", file=sys.stderr)
     print(json.dumps(instrument, indent=2))
 
 
