@@ -60,6 +60,20 @@ python3 scripts/native_frame_comparison.py build/reference/native-song.frames.js
 
 Offsets 2 and 3 select the first voice's pulse width. Native captures concatenate 25 sound-control bytes per SID, so second-chip offsets begin at 25, not the physical address gap. The checker rejects empty/malformed captures, unequal lengths, any unexpected register change, and an entirely unchanged candidate. It records input hashes and change counts. Use fresh output paths and declare both captures plus the checker as recipe inputs. Schedule, pitch-program and PCM checks remain separate.
 
+## Converter limits on the SID-Wizard instrument model
+
+The recipe converter uses a reduced subset of SID-Wizard Extra. An import of 12 upstream example instruments on 2026-10-29 measured these constraints; treat them as current contracts until the converter changes, and expect an imported instrument to behave differently from its editor or trial-path rendition.
+
+| Constraint | Locus | Consequence |
+| --- | --- | --- |
+| Songs run at tempo 1 | [arrange-sidwizard.py](../../scripts/arrange-sidwizard.py) writes tempo bytes `$81 $81`; `player.asm` skips hard restart at tempo ≤ 2 | No hard-restart ADSR; each new note writes a TEST+gate frame on its row. The [instrument-trial path](instrument-trials.md) requires tempo 3–127 and shows a 2-update hard restart instead, so trial observations do not transfer to songs. Same-pitch repeats without a gate-off cell keep the envelope but restart the program. |
+| Every note cell carries an instrument number | `arrange-sidwizard.py` note encoding; `player.asm` instrument selection clears control bits 6–7 | Pulse-width and filter tables reset on every note; an instrument's "keep pulse/filter phase" setting is never used. Retained phase needs plain note cells. |
+| Header bytes 7–9 and 12–14 are fixed | `instrument_bytes` in [generate-native-instruments.py](../../scripts/generate-native-instruments.py) | Octave shift, arpeggio speed, default chord and gate-off table pointers cannot be expressed; 138 of the 324 upstream examples do not round-trip, including every bass. |
+| Octave shift is ignored when checking range | `arrange-sidwizard.py` computes `midi − 11` without the instrument's shift; the note-start check in [native-song.py](../../scripts/native-song.py) includes it | An octave-shifted instrument fails the note-start check, and notes pushed out of range wrap silently to wrong pitches. |
+| No chord table is written | `arrange-sidwizard.py` leaves the song chord-table pointer empty | Instruments that call the song chord table (29 upstream examples) cannot be imported. |
+| No tie or plain-note output | gate-off scheduling in `arrange-sidwizard.py` | The engine's tie (`$3F`) and repeat-without-gate-off behaviours are unreachable except for notes of 2 updates or less. |
+| Critical short-note guard | `native-song.py` requires notes ≤ 2 updates to be gated, pitched and in tune | Percussion and absolute-pitch instruments fail the guard by design, and `run_song` stops before rendering. |
+
 ## Evidence limits
 
 Decoded source notes and their scheduling do not by themselves prove exact audible onset pitch or ADSR reattack. SID-Wizard's first-frame and fast-row behaviour can differ from the baseline player's articulation, especially for adjacent short notes. Retain the conversion's explicit timing/articulation changes and the native instrument definitions alongside the evidence; see [the native Für Elise candidate](../songs/fuer-elise-native.md) for its concrete arrangement decisions and limitations.
