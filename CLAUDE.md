@@ -126,6 +126,8 @@ Choose the least expensive tier that can meet the task's evidence requirements. 
 
 Keep small or tightly dependent tasks local. Do not duplicate work just to use another tier, prescribe a fixed team size or parallelize dependent edits. Give every delegate the active objective, minimal sufficient context, owned files or boundaries, acceptance criteria and a stopping condition. Reuse informed agents while their tier remains suitable; reassign when the work's uncertainty or consequences exceed that tier. Stop obsolete assignments.
 
+To test whether an artifact works for its agent consumer—an index, record format, format guide or prompt—give a fresh agent only the inputs that consumer would have and withhold the evidence under test, such as a held-out listening verdict. Choose the tier of the weakest intended consumer; a stronger tier may run alongside as a control. Its result is evidence about the artifact, not musical acceptance.
+
 Delegation does not expand authorization or relax publication, privacy, provenance or human-acceptance requirements. Keep source evidence, executable results and human judgments distinct. Delegates report unresolved assumptions and unpersisted findings; the coordinator checks their evidence and reconciles the owning documents before handoff.
 
 ## Choose validation that answers the question
