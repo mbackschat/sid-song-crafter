@@ -14,6 +14,8 @@ from sid_clock import PAL_CLOCK, clock_spec
 ROOT = Path(__file__).resolve().parents[1]
 TICKS_PER_SECOND = PAL_CLOCK / (312 * 63)
 PATTERN_ROWS = 248
+# SWM-spec.src SWI_OCTAVE_POS: the instrument header byte the driver adds, as signed semitones, to every note it starts.
+OCTAVE_SHIFT_POSITION = 9
 
 
 def require(condition, message):
@@ -34,6 +36,11 @@ def instrument_encoder():
     module = importlib.util.module_from_spec(specification)
     specification.loader.exec_module(module)
     return module.instrument_bytes
+
+
+def octave_shift_semitones(instrument):
+    value = instrument[OCTAVE_SHIFT_POSITION]
+    return value - 256 if value >= 128 else value
 
 
 def pack_pattern(cells):
@@ -167,6 +174,7 @@ def arrange(recipe_path, output_dir, *, clock=None):
     identities = list(recipe["instruments"])
     instrument_numbers = {identity: index + 1 for index, identity in enumerate(identities)}
     instruments = {identity: encode_instrument(identity, recipe["instruments"][identity]) for identity in identities}
+    shifts = {identity: octave_shift_semitones(data) for identity, data in instruments.items()}
     short_limit = recipe.get("shortNoteMaxTicks", 0)
     require(type(short_limit) is int and short_limit >= 0, "shortNoteMaxTicks must be a nonnegative integer")
     short_instruments = recipe.get("shortNoteInstruments", {})
@@ -213,6 +221,12 @@ def arrange(recipe_path, output_dir, *, clock=None):
             if short_duration <= short_limit:
                 note["instrumentId"] = short_instruments.get(voice["name"], note["instrumentId"])
                 note["instrument"] = instrument_numbers[note["instrumentId"]]
+            # The driver adds the instrument's shift in 8-bit arithmetic, so an out-of-range result would index past the frequency table.
+            # The check follows the final instrument choice because short-note substitution can change it.
+            shift = shifts[note["instrumentId"]]
+            require(12 <= note["midi"] + shift <= 106, f"Voice {voice['name']} note at beat {note['startBeat']} (MIDI {note['midi']}) would sound as MIDI {note['midi'] + shift} after instrument {note['instrumentId']!r} octave shift {shift:+d} semitones, outside SID-Wizard's native range 12..106")
+            if shift:
+                note["octaveShiftSemitones"] = shift
             require(cells[start] == b"\x00", "Source note collision on the native tick grid")
             cells[start] = bytes((note["nativeNote"] | 0x80, note["instrument"]))
             off = start + duration if duration <= 2 else gate_off_tick(start, duration)

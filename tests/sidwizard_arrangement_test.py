@@ -408,6 +408,54 @@ class SIDWizardArrangementTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "existing|fresh"):
                 ARRANGER.arrange(configuration, Path(directory) / "out")
 
+    def shifted_recipe(self, directory, melody, bass=(), *, shift=-1, short_melody="pluck"):
+        score = synthetic_score(melody)
+        score["voices"][1]["events"] = list(bass)
+        overrides = {
+            "instruments": {"pluck": INSTRUMENT, "low": dict(INSTRUMENT, name="LOWBASS", octave_shift=shift)},
+            "sections": [{"name": "Whole score", "startBeat": 0, "endBeat": score["totalBeats"], "voices": {"melody": "low", "bass": "pluck", "harmony": "pluck"}}],
+            "shortNoteInstruments": {"melody": short_melody, "bass": "pluck", "harmony": "pluck"},
+        }
+        return self.create(directory, score, **overrides)
+
+    def test_shifted_instrument_records_its_shift_on_its_notes_only(self):
+        melody = [{"startBeat": 0, "durationBeats": 10, "midi": 60}, {"startBeat": 20, "durationBeats": 10, "midi": 72}]
+        bass = [{"startBeat": 0, "durationBeats": 10, "midi": 40}]
+        with tempfile.TemporaryDirectory() as directory:
+            _, manifest = self.shifted_recipe(directory, melody, bass)
+            notes = manifest["voices"][0]["notes"]
+            # The cell keeps the written pitch; the driver adds the instrument's shift when the note starts.
+            self.assertEqual([(note["nativeNote"], note["octaveShiftSemitones"]) for note in notes], [(49, -12), (61, -12)])
+            self.assertNotIn("octaveShiftSemitones", manifest["voices"][1]["notes"][0])
+            self.assertEqual((Path(directory) / "out/instruments/low.swi").read_bytes()[2:][9], 244)
+
+    def test_notes_pushed_out_of_range_by_the_shift_are_rejected_at_the_range_edges(self):
+        for shift, midi, accepted in ((-1, 24, True), (-1, 23, False), (1, 94, True), (1, 95, False), (-3, 48, True), (-3, 47, False)):
+            with self.subTest(shift=shift, midi=midi), tempfile.TemporaryDirectory() as directory:
+                melody = [{"startBeat": 0, "durationBeats": 10, "midi": midi}]
+                if accepted:
+                    _, manifest = self.shifted_recipe(directory, melody, shift=shift)
+                    self.assertEqual(manifest["voices"][0]["notes"][0]["octaveShiftSemitones"], 12 * shift)
+                else:
+                    with self.assertRaisesRegex(ValueError, r"melody.*low.*octave shift"):
+                        self.shifted_recipe(directory, melody, shift=shift)
+                    self.assertFalse((Path(directory) / "out").exists())
+
+    def test_range_is_checked_against_the_instrument_that_finally_plays_the_note(self):
+        short = [{"startBeat": 10, "durationBeats": 2, "midi": 20}]
+        with tempfile.TemporaryDirectory() as directory:
+            # A two-tick note moves to the unshifted short-note instrument, so the shifted section instrument never plays it.
+            _, manifest = self.shifted_recipe(directory, short, short_melody="pluck")
+            note = manifest["voices"][0]["notes"][0]
+            self.assertEqual((note["instrumentId"], "octaveShiftSemitones" in note), ("pluck", False))
+        with tempfile.TemporaryDirectory() as directory, self.assertRaisesRegex(ValueError, r"melody.*low.*octave shift"):
+            self.shifted_recipe(directory, short, short_melody="low")
+
+    def test_critical_short_notes_carry_the_shift_of_their_instrument(self):
+        with tempfile.TemporaryDirectory() as directory:
+            _, manifest = self.shifted_recipe(directory, [{"startBeat": 10, "durationBeats": 2, "midi": 60}], short_melody="low")
+            self.assertEqual([note["octaveShiftSemitones"] for note in manifest["criticalNotes"]], [-12])
+
     def test_instrument_ids_cannot_leave_the_native_output_directory(self):
         score = synthetic_score([], beats=4)
         with tempfile.TemporaryDirectory() as directory:
