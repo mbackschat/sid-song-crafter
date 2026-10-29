@@ -12,21 +12,22 @@
     "scoreSupplies": [
       "pitch",
       "onset",
-      "gateOff"
+      "gateOff",
+      "tie"
     ],
     "pitchResponse": "absolute",
     "parameters": [],
     "scoreOwned": [
       "gate-off timing: without a gate-off cell before the next note the next note connects with no new envelope attack (songs/pink-panther/README.md native tempo-1 policy; in recipes the converter writes the cell, scripts/arrange-sidwizard.py gate_off_tick)"
     ],
-    "onNewNote": "not-established",
+    "onNewNote": "test-frame",
     "onTie": "keep-envelope-and-program",
-    "afterGateOff": "not-established",
-    "lifetime": "not-established",
+    "afterGateOff": "program-continues",
+    "lifetime": "until-release-ends",
     "pitchSettlesAfterUpdates": {
       "value": 2,
       "basis": "measured",
-      "detail": "stock Extra at tempo 1 sets only the frequency high byte on a new note's first frame (reproduced: E4 first sounded about 75 cents flat), docs/songs/fuer-elise-native.md"
+      "detail": "probe-interface-v1: the first update at full pitch is 1 after the row for every probe pitch and after a rest (update 0 is the start frame), so a note of 2 updates sounds at its pitch"
     },
     "state": []
   },
@@ -50,7 +51,7 @@
         "triangle"
       ],
       "basis": "measured",
-      "detail": "program data songs/moon-river/restrained.json instruments.lead: wave table control bytes $11 = triangle + gate; frame1 $09 is the TEST frame and sounds no waveform"
+      "detail": "probe-interface-v1: waveform bits of the gated, non-TEST updates of the long note MIDI 60, 138 gated updates: triangle x137"
     },
     "envelope": {
       "attack": 4,
@@ -68,7 +69,7 @@
     "body": {
       "value": "static",
       "basis": "measured",
-      "detail": "program data songs/moon-river/restrained.json instruments.lead: wave [11 00 00], empty pulse and filter tables"
+      "detail": "probe-interface-v1: classified from the 137 gated body updates of the long note MIDI 60, 138 gated updates: distinct pulse widths 1, distinct cutoffs 1, noise share 0.0"
     },
     "release": {
       "value": "medium",
@@ -95,7 +96,7 @@
       {
         "value": "delayed-vibrato",
         "basis": "measured",
-        "detail": "program data songs/moon-river/restrained.json instruments.lead: vibrato $12, vibrato_delay 20; delay semantics from the bank trace, this value not traced; starts after delay 20 + 2 updates (offset traced on another record)",
+        "detail": "probe-interface-v1: frequency deviates up to 0.27 % from the settled pitch over the long note MIDI 60, 138 gated updates, 57 sign flips, first visible 22 updates after the row",
         "startsAfterUpdates": 22
       }
     ]

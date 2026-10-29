@@ -12,21 +12,22 @@
     "scoreSupplies": [
       "pitch",
       "onset",
-      "gateOff"
+      "gateOff",
+      "tie"
     ],
     "pitchResponse": "absolute",
     "parameters": [],
     "scoreOwned": [
       "gate-off timing: without a gate-off cell before the next note the next note connects with no new envelope attack (songs/pink-panther/README.md native tempo-1 policy; in recipes the converter writes the cell, scripts/arrange-sidwizard.py gate_off_tick)"
     ],
-    "onNewNote": "not-established",
+    "onNewNote": "test-frame",
     "onTie": "keep-envelope-and-program",
     "afterGateOff": "program-continues",
-    "lifetime": "not-established",
+    "lifetime": "until-release-ends",
     "pitchSettlesAfterUpdates": {
       "value": 2,
       "basis": "measured",
-      "detail": "stock Extra at tempo 1 sets only the frequency high byte on a new note's first frame (reproduced: E4 first sounded about 75 cents flat), docs/songs/fuer-elise-native.md"
+      "detail": "probe-interface-v1: the first update at full pitch is 1 after the row for every probe pitch and after a rest (update 0 is the start frame), so a note of 2 updates sounds at its pitch"
     },
     "state": [
       {
@@ -55,7 +56,7 @@
         "pulse"
       ],
       "basis": "measured",
-      "detail": "program data songs/axel-f/full-master-palette.json instruments.bass: wave table control bytes $41 = pulse + gate; frame1 $09 is the TEST frame and sounds no waveform"
+      "detail": "probe-interface-v1: waveform bits of the gated, non-TEST updates of the long note MIDI 60, 138 gated updates: pulse x137"
     },
     "envelope": {
       "attack": 0,
@@ -73,8 +74,7 @@
     "body": {
       "value": "moving-pulse",
       "basis": "measured",
-      "detail": "gated bass bodies span $500-$6EC; the steady loop $73E-$9A5 includes release",
-      "record": "songs/axel-f/full-master-palette-review.json"
+      "detail": "probe-interface-v1: classified from the 137 gated body updates of the long note MIDI 60, 138 gated updates: distinct pulse widths 30, distinct cutoffs 1, noise share 0.0"
     },
     "release": {
       "value": "long",
@@ -101,8 +101,7 @@
       {
         "value": "pwm",
         "basis": "measured",
-        "detail": "pulse table [85 00 00][1d 29 00][0f d7 00][0f 29 00] jump 2: width starts $500, 29 steps of +41, then alternating 15 down and 15 up; executed independent bass pulse program",
-        "record": "songs/axel-f/arrangement-review.md"
+        "detail": "probe-interface-v1: 30 distinct pulse widths in [1280, 2469] over the long note MIDI 60, 138 gated updates, first visible 2 updates after the row"
       }
     ]
   },

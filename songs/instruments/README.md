@@ -14,6 +14,7 @@ Records do not store evidence. Change a verdict or record, then regenerate the i
 python3 scripts/instrument_library.py check   # validate everything; fail when index.json is stale
 python3 scripts/instrument_library.py index   # validate and rewrite index.json
 python3 scripts/instrument_probe.py songs/instruments/<id>@<version>.json --output build/instrument-probe-<name>
+python3 scripts/instrument_trace.py songs/instruments/<id>@<version>.json --output build/instrument-trace-<name>
 ```
 
-The probe prints a program's probe-level-v1 level and brightness; `--write` stores them. A version's program never changes; its measured claims may be filled in or re-measured, and each names its probe version. Existing arrangement files keep their embedded instruments as frozen evidence; the index lists where each library program occurs.
+The level probe prints a program's probe-level-v1 level and brightness. The interface probe executes probe-interface-v1 and derives the interface, waveforms, staged attack, body, motion and filter, coupling and volume use; its output directory keeps the raw facts behind each classification. `--write` stores either probe's fields. A version's program never changes; its measured claims may be filled in or re-measured, and each names its probe version. Existing arrangement files keep their embedded instruments as frozen evidence; the index lists where each library program occurs.
