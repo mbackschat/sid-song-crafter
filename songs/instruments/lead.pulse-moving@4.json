@@ -1,0 +1,134 @@
+{
+  "id": "lead.pulse-moving",
+  "version": 4,
+  "name": "Narrow moving-pulse lead, long-release envelope",
+  "nativeName": "PULSEMOV",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/axel-f/full-master-palette.json",
+    "record": "instruments.lead"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff"
+    ],
+    "pitchResponse": "absolute",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing: without a gate-off cell before the next note the next note connects with no new envelope attack (songs/pink-panther/README.md native tempo-1 policy; in recipes the converter writes the cell, scripts/arrange-sidwizard.py gate_off_tick)"
+    ],
+    "onNewNote": "not-established",
+    "onTie": "keep-envelope-and-program",
+    "afterGateOff": "program-continues",
+    "lifetime": "not-established",
+    "pitchSettlesAfterUpdates": {
+      "value": 2,
+      "basis": "measured",
+      "detail": "stock Extra at tempo 1 sets only the frequency high byte on a new note's first frame (reproduced: E4 first sounded about 75 cents flat), docs/songs/fuer-elise-native.md"
+    },
+    "state": [
+      {
+        "field": "pulse width (program position)",
+        "scope": "voice"
+      }
+    ]
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "none",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "NTSC",
+      "PAL"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "Narrow moving-pulse program of version 3 with a different envelope (decay 10, sustain 4, release 9) and delayed vibrato; modulation continues after gate-off.",
+    "waveforms": {
+      "value": [
+        "pulse"
+      ],
+      "basis": "measured",
+      "detail": "program data songs/axel-f/full-master-palette.json instruments.lead: wave table control bytes $41 = pulse + gate; frame1 $09 is the TEST frame and sounds no waveform"
+    },
+    "envelope": {
+      "attack": 0,
+      "decay": 10,
+      "sustain": 4,
+      "release": 9,
+      "attackMs": 2,
+      "releaseMs": 750
+    },
+    "attack": {
+      "value": "hard",
+      "basis": "measured",
+      "detail": "envelope attack nibble 0 = 2 ms (datasheet rate); spec thresholds hard <= 8 ms, medium <= 24 ms, soft >= 38 ms"
+    },
+    "body": {
+      "value": "moving-pulse",
+      "basis": "measured",
+      "detail": "same narrow pulse program as version 3 (executed native snapshots)",
+      "record": "songs/axel-f/huelsbeck-study.md"
+    },
+    "release": {
+      "value": "long",
+      "basis": "measured",
+      "detail": "envelope release nibble 9 = 750 ms full-scale (datasheet rate); spec thresholds cut <= 24 ms, short <= 114 ms, medium <= 300 ms, long >= 750 ms"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -22.2,
+        "sustainDb": -29.7
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 3.7,
+        "body": 2.7
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": [
+      {
+        "value": "pwm",
+        "basis": "measured",
+        "detail": "same snapshots; the width loop continues after the gate clears",
+        "record": "songs/axel-f/huelsbeck-study.md"
+      },
+      {
+        "value": "delayed-vibrato",
+        "basis": "measured",
+        "detail": "vibrato $24 delay 12 as in the bank trace",
+        "record": "docs/research/composition/instruments/lead-02-moving-pulse.md",
+        "startsAfterUpdates": 14
+      }
+    ]
+  },
+  "fit": {
+    "roles": [
+      "lead"
+    ],
+    "avoid": [
+      {
+        "condition": "release shortened to R7 with decay 8 and sustain 4 (ADSR $0847, a patched variant, not this definition): listener heard the lead as 'ticked off'",
+        "verdict": "v-axel-contour"
+      }
+    ]
+  },
+  "provenance": {
+    "origin": "original",
+    "sourceWork": "Axel F",
+    "card": "songs/axel-f/arrangement-review.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}

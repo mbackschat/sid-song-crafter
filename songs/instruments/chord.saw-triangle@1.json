@@ -1,0 +1,125 @@
+{
+  "id": "chord.saw-triangle",
+  "version": 1,
+  "name": "Saw-transient pluck with triangle body",
+  "nativeName": "PLUCKBRI",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/axel-f/full-huelsbeck-pulse.json",
+    "record": "instruments.harmony"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff"
+    ],
+    "pitchResponse": "absolute",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing: without a gate-off cell before the next note the next note connects with no new envelope attack (songs/pink-panther/README.md native tempo-1 policy; in recipes the converter writes the cell, scripts/arrange-sidwizard.py gate_off_tick)"
+    ],
+    "onNewNote": "not-established",
+    "onTie": "keep-envelope-and-program",
+    "afterGateOff": "not-established",
+    "lifetime": "not-established",
+    "pitchSettlesAfterUpdates": {
+      "value": 2,
+      "basis": "measured",
+      "detail": "stock Extra at tempo 1 sets only the frequency high byte on a new note's first frame (reproduced: E4 first sounded about 75 cents flat), docs/songs/fuer-elise-native.md"
+    },
+    "state": []
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "none",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "PAL"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "One update of gated sawtooth after the TEST frame, then a gated triangle body; decay 7, sustain 3, release 4; no pulse, vibrato or filter program.",
+    "waveforms": {
+      "value": [
+        "saw",
+        "triangle"
+      ],
+      "basis": "measured",
+      "detail": "program data songs/axel-f/full-huelsbeck-pulse.json instruments.harmony: wave table control bytes $21 = saw + gate; $11 = triangle + gate; frame1 $09 is the TEST frame and sounds no waveform"
+    },
+    "envelope": {
+      "attack": 0,
+      "decay": 7,
+      "sustain": 3,
+      "release": 4,
+      "attackMs": 2,
+      "releaseMs": 114
+    },
+    "attack": {
+      "value": "staged",
+      "basis": "measured",
+      "detail": "write log: restart waveform $09 at tick 2, saw $21 at tick 3, triangle $11 at tick 4; transient lasts one PAL update (about 19.95 ms)",
+      "record": "docs/research/composition/instruments/pluck-01-bright-attack.md"
+    },
+    "body": {
+      "value": "static",
+      "basis": "measured",
+      "detail": "triangle $11 with pitch NOP $80 and detune NOP $FF, then the table ends",
+      "record": "docs/research/composition/instruments/pluck-01-bright-attack.md"
+    },
+    "release": {
+      "value": "short",
+      "basis": "measured",
+      "detail": "envelope release nibble 4 = 114 ms full-scale (datasheet rate); spec thresholds cut <= 24 ms, short <= 114 ms, medium <= 300 ms, long >= 750 ms"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -30.9,
+        "sustainDb": -36.2
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 57 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 3.0,
+        "body": 1.0
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 57 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": []
+  },
+  "fit": {
+    "roles": [
+      "chord"
+    ],
+    "range": {
+      "value": {
+        "low": "A3",
+        "high": "C5"
+      },
+      "basis": "intent",
+      "detail": "PLUCK-01 card: intended test register",
+      "record": "docs/research/composition/instruments/pluck-01-bright-attack.md"
+    },
+    "avoid": [
+      {
+        "condition": "high-register melodic onsets: the derived ELPLUCK (same saw-then-triangle structure, ADSR $0754) in the opening of a complete arrangement was heard as 'noise-like' and the triangle-only onset was preferred; not tested on this exact definition",
+        "record": "docs/songs/fuer-elise-native.md"
+      }
+    ]
+  },
+  "provenance": {
+    "origin": "original",
+    "sourceWork": "SID-Wizard native instrument trials",
+    "card": "docs/research/composition/instruments/pluck-01-bright-attack.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}

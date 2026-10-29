@@ -1,0 +1,108 @@
+{
+  "id": "harmony.triangle-plain",
+  "version": 2,
+  "name": "Plain triangle accompaniment with short release",
+  "nativeName": "MRPLUCK",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/moon-river/restrained.json",
+    "record": "instruments.harmony"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff"
+    ],
+    "pitchResponse": "absolute",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing: without a gate-off cell before the next note the next note connects with no new envelope attack (songs/pink-panther/README.md native tempo-1 policy; in recipes the converter writes the cell, scripts/arrange-sidwizard.py gate_off_tick)"
+    ],
+    "onNewNote": "not-established",
+    "onTie": "keep-envelope-and-program",
+    "afterGateOff": "not-established",
+    "lifetime": "not-established",
+    "pitchSettlesAfterUpdates": {
+      "value": 2,
+      "basis": "measured",
+      "detail": "stock Extra at tempo 1 sets only the frequency high byte on a new note's first frame (reproduced: E4 first sounded about 75 cents flat), docs/songs/fuer-elise-native.md"
+    },
+    "state": []
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "none",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "PAL"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "Single gated triangle waveform with no modulation or filter program; decay 4, sustain 1, release 4.",
+    "waveforms": {
+      "value": [
+        "triangle"
+      ],
+      "basis": "measured",
+      "detail": "program data songs/moon-river/restrained.json instruments.harmony: wave table control bytes $11 = triangle + gate; frame1 $09 is the TEST frame and sounds no waveform"
+    },
+    "envelope": {
+      "attack": 0,
+      "decay": 4,
+      "sustain": 1,
+      "release": 4,
+      "attackMs": 2,
+      "releaseMs": 114
+    },
+    "attack": {
+      "value": "hard",
+      "basis": "measured",
+      "detail": "envelope attack nibble 0 = 2 ms (datasheet rate); spec thresholds hard <= 8 ms, medium <= 24 ms, soft >= 38 ms"
+    },
+    "body": {
+      "value": "static",
+      "basis": "measured",
+      "detail": "program data songs/moon-river/restrained.json instruments.harmony: wave [11 00 00], empty pulse and filter tables"
+    },
+    "release": {
+      "value": "short",
+      "basis": "measured",
+      "detail": "envelope release nibble 4 = 114 ms full-scale (datasheet rate); spec thresholds cut <= 24 ms, short <= 114 ms, medium <= 300 ms, long >= 750 ms"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -34.3,
+        "sustainDb": -45.8
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 57 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 1.1,
+        "body": 1.0
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 57 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": []
+  },
+  "fit": {
+    "roles": [
+      "harmony"
+    ],
+    "avoid": []
+  },
+  "provenance": {
+    "origin": "original",
+    "sourceWork": "Moon River",
+    "card": "songs/moon-river/README.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}

@@ -61,6 +61,12 @@ def bass():
     return value
 
 
+class CheckedInLibraryTest(unittest.TestCase):
+    def test_checked_in_library_validates_and_its_index_is_current(self):
+        records, verdicts = library.load(ROOT)
+        self.assertEqual(library.encode(library.index(records, verdicts, ROOT)), (ROOT / library.INDEX).read_text())
+
+
 class InstrumentLibraryTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()

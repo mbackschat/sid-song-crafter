@@ -1,0 +1,137 @@
+{
+  "id": "lead.pulse-moving",
+  "version": 3,
+  "name": "Narrow moving-pulse lead with delayed vibrato",
+  "nativeName": "PULSEMOV",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/axel-f/full-huelsbeck-pulse.json",
+    "record": "instruments.lead"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff"
+    ],
+    "pitchResponse": "absolute",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing: without a gate-off cell before the next note the next note connects with no new envelope attack (songs/pink-panther/README.md native tempo-1 policy; in recipes the converter writes the cell, scripts/arrange-sidwizard.py gate_off_tick)"
+    ],
+    "onNewNote": "not-established",
+    "onTie": "keep-envelope-and-program",
+    "afterGateOff": "program-continues",
+    "lifetime": "not-established",
+    "pitchSettlesAfterUpdates": {
+      "value": 2,
+      "basis": "measured",
+      "detail": "stock Extra at tempo 1 sets only the frequency high byte on a new note's first frame (reproduced: E4 first sounded about 75 cents flat), docs/songs/fuer-elise-native.md"
+    },
+    "state": [
+      {
+        "field": "pulse width (program position)",
+        "scope": "voice"
+      }
+    ]
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "none",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "PAL"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "Gated pulse voice whose width starts near $200, rises, then oscillates inside a narrower band ($3EA to $5F7) than versions 1 and 2, with delayed vibrato and the longer release.",
+    "waveforms": {
+      "value": [
+        "pulse"
+      ],
+      "basis": "measured",
+      "detail": "program data songs/axel-f/full-huelsbeck-pulse.json instruments.lead: wave table control bytes $41 = pulse + gate; frame1 $09 is the TEST frame and sounds no waveform"
+    },
+    "envelope": {
+      "attack": 0,
+      "decay": 8,
+      "sustain": 10,
+      "release": 8,
+      "attackMs": 2,
+      "releaseMs": 300
+    },
+    "attack": {
+      "value": "hard",
+      "basis": "measured",
+      "detail": "envelope attack nibble 0 = 2 ms (datasheet rate); spec thresholds hard <= 8 ms, medium <= 24 ms, soft >= 38 ms"
+    },
+    "body": {
+      "value": "moving-pulse",
+      "basis": "measured",
+      "detail": "executed native snapshots: width starts $200, rises 29 steps of 35, then a 33-frame loop; nominal bounds $3EA-$5F7",
+      "record": "songs/axel-f/huelsbeck-study.md"
+    },
+    "release": {
+      "value": "medium",
+      "basis": "measured",
+      "detail": "envelope release nibble 8 = 300 ms full-scale (datasheet rate); spec thresholds cut <= 24 ms, short <= 114 ms, medium <= 300 ms, long >= 750 ms"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -23.4,
+        "sustainDb": -21.7
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 3.7,
+        "body": 2.6
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": [
+      {
+        "value": "pwm",
+        "basis": "measured",
+        "detail": "same snapshots; the width loop continues after the gate clears",
+        "record": "songs/axel-f/huelsbeck-study.md"
+      },
+      {
+        "value": "delayed-vibrato",
+        "basis": "measured",
+        "detail": "vibrato $24 delay 12 as in the bank trace",
+        "record": "docs/research/composition/instruments/lead-02-moving-pulse.md",
+        "startsAfterUpdates": 14
+      }
+    ]
+  },
+  "fit": {
+    "roles": [
+      "lead"
+    ],
+    "avoid": [
+      {
+        "condition": "sustained held chord-top note (207 consecutive gated updates at 64.54-68.73 s): listener called it an annoying persistent sound, though the soft triangle substitute was preferred less",
+        "verdict": "v-axel-held-annoying"
+      },
+      {
+        "condition": "short high-register notes (97 notes A-flat5 to E-flat6, bodies 3-12 updates): every onset resets width to $200 and reaches at most $381, so the developed modulation never appears; triangle version was nicer",
+        "verdict": "v-axel-highlead-ab"
+      }
+    ]
+  },
+  "provenance": {
+    "origin": "original",
+    "sourceWork": "Axel F",
+    "card": "songs/axel-f/huelsbeck-study.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}

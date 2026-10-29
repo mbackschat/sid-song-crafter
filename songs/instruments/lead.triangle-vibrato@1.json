@@ -1,0 +1,115 @@
+{
+  "id": "lead.triangle-vibrato",
+  "version": 1,
+  "name": "Triangle lead with slow attack and late vibrato",
+  "nativeName": "MRVOICE",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/moon-river/restrained.json",
+    "record": "instruments.lead"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff"
+    ],
+    "pitchResponse": "absolute",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing: without a gate-off cell before the next note the next note connects with no new envelope attack (songs/pink-panther/README.md native tempo-1 policy; in recipes the converter writes the cell, scripts/arrange-sidwizard.py gate_off_tick)"
+    ],
+    "onNewNote": "not-established",
+    "onTie": "keep-envelope-and-program",
+    "afterGateOff": "not-established",
+    "lifetime": "not-established",
+    "pitchSettlesAfterUpdates": {
+      "value": 2,
+      "basis": "measured",
+      "detail": "stock Extra at tempo 1 sets only the frequency high byte on a new note's first frame (reproduced: E4 first sounded about 75 cents flat), docs/songs/fuer-elise-native.md"
+    },
+    "state": []
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "none",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "PAL"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "Single gated triangle waveform with vibrato byte $12 entering after a 20-update delay, slow attack (A4), decay 6, sustain 7, release 6; no pulse or filter program.",
+    "waveforms": {
+      "value": [
+        "triangle"
+      ],
+      "basis": "measured",
+      "detail": "program data songs/moon-river/restrained.json instruments.lead: wave table control bytes $11 = triangle + gate; frame1 $09 is the TEST frame and sounds no waveform"
+    },
+    "envelope": {
+      "attack": 4,
+      "decay": 6,
+      "sustain": 7,
+      "release": 6,
+      "attackMs": 38,
+      "releaseMs": 204
+    },
+    "attack": {
+      "value": "soft",
+      "basis": "measured",
+      "detail": "envelope attack nibble 4 = 38 ms (datasheet rate); spec thresholds hard <= 8 ms, medium <= 24 ms, soft >= 38 ms"
+    },
+    "body": {
+      "value": "static",
+      "basis": "measured",
+      "detail": "program data songs/moon-river/restrained.json instruments.lead: wave [11 00 00], empty pulse and filter tables"
+    },
+    "release": {
+      "value": "medium",
+      "basis": "measured",
+      "detail": "envelope release nibble 6 = 204 ms full-scale (datasheet rate); spec thresholds cut <= 24 ms, short <= 114 ms, medium <= 300 ms, long >= 750 ms"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -27.6,
+        "sustainDb": -28.8
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 1.0,
+        "body": 1.0
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": [
+      {
+        "value": "delayed-vibrato",
+        "basis": "measured",
+        "detail": "program data songs/moon-river/restrained.json instruments.lead: vibrato $12, vibrato_delay 20; delay semantics from the bank trace, this value not traced; starts after delay 20 + 2 updates (offset traced on another record)",
+        "startsAfterUpdates": 22
+      }
+    ]
+  },
+  "fit": {
+    "roles": [
+      "lead"
+    ],
+    "avoid": []
+  },
+  "provenance": {
+    "origin": "original",
+    "sourceWork": "Moon River",
+    "card": "songs/moon-river/README.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}

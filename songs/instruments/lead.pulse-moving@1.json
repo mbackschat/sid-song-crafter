@@ -1,0 +1,137 @@
+{
+  "id": "lead.pulse-moving",
+  "version": 1,
+  "name": "Moving-pulse lead with delayed vibrato (bank envelope)",
+  "nativeName": "PULSEMOV",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/axel-f/native.json",
+    "record": "instruments.lead"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff"
+    ],
+    "pitchResponse": "absolute",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing: without a gate-off cell before the next note the next note connects with no new envelope attack (songs/pink-panther/README.md native tempo-1 policy; in recipes the converter writes the cell, scripts/arrange-sidwizard.py gate_off_tick)"
+    ],
+    "onNewNote": "not-established",
+    "onTie": "keep-envelope-and-program",
+    "afterGateOff": "program-continues",
+    "lifetime": "not-established",
+    "pitchSettlesAfterUpdates": {
+      "value": 2,
+      "basis": "measured",
+      "detail": "stock Extra at tempo 1 sets only the frequency high byte on a new note's first frame (reproduced: E4 first sounded about 75 cents flat), docs/songs/fuer-elise-native.md"
+    },
+    "state": [
+      {
+        "field": "pulse width (program position)",
+        "scope": "voice"
+      }
+    ]
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "none",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "PAL"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "Gated pulse voice whose width sweeps between about $400 and $800 while a note is held, with vibrato entering after a delay; pulse and vibrato keep running after gate-off.",
+    "waveforms": {
+      "value": [
+        "pulse"
+      ],
+      "basis": "measured",
+      "detail": "program data songs/axel-f/native.json instruments.lead: wave table control bytes $41 = pulse + gate; frame1 $09 is the TEST frame and sounds no waveform"
+    },
+    "envelope": {
+      "attack": 0,
+      "decay": 8,
+      "sustain": 10,
+      "release": 5,
+      "attackMs": 2,
+      "releaseMs": 168
+    },
+    "attack": {
+      "value": "hard",
+      "basis": "measured",
+      "detail": "envelope attack nibble 0 = 2 ms (datasheet rate); spec thresholds hard <= 8 ms, medium <= 24 ms, soft >= 38 ms"
+    },
+    "body": {
+      "value": "moving-pulse",
+      "basis": "measured",
+      "detail": "width 1024-2048 while gated, write log of the identical bank program; pulse reset at each explicit instrument selection",
+      "record": "docs/research/composition/instruments/lead-02-moving-pulse.md"
+    },
+    "release": {
+      "value": "medium",
+      "basis": "measured",
+      "detail": "envelope release nibble 5 = 168 ms full-scale (datasheet rate); spec thresholds cut <= 24 ms, short <= 114 ms, medium <= 300 ms, long >= 750 ms"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -22.2,
+        "sustainDb": -21.5
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 2.5,
+        "body": 2.2
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": [
+      {
+        "value": "pwm",
+        "basis": "measured",
+        "detail": "bank write log: pulse width 1024-2048 while gated",
+        "record": "docs/research/composition/instruments/lead-02-moving-pulse.md"
+      },
+      {
+        "value": "delayed-vibrato",
+        "basis": "measured",
+        "detail": "bank trace: pitch stable through tick 111, first vibrato change at tick 112, then cycles 5578-5650 around 5614",
+        "record": "docs/research/composition/instruments/lead-02-moving-pulse.md",
+        "startsAfterUpdates": 14
+      }
+    ]
+  },
+  "fit": {
+    "roles": [
+      "lead"
+    ],
+    "range": {
+      "value": {
+        "low": "A3",
+        "high": "C5"
+      },
+      "basis": "intent",
+      "detail": "LEAD-02 card: intended test register",
+      "record": "docs/research/composition/instruments/lead-02-moving-pulse.md"
+    },
+    "avoid": []
+  },
+  "provenance": {
+    "origin": "original",
+    "sourceWork": "SID-Wizard native instrument trials",
+    "card": "docs/research/composition/instruments/lead-02-moving-pulse.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}

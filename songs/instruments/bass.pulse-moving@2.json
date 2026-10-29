@@ -1,0 +1,123 @@
+{
+  "id": "bass.pulse-moving",
+  "version": 2,
+  "name": "Moving-pulse bass without filter (lower sustain)",
+  "nativeName": "MOZBASS",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/mozart-minuet/mono.json",
+    "record": "instruments.bass"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff"
+    ],
+    "pitchResponse": "absolute",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing: without a gate-off cell before the next note the next note connects with no new envelope attack (songs/pink-panther/README.md native tempo-1 policy; in recipes the converter writes the cell, scripts/arrange-sidwizard.py gate_off_tick)"
+    ],
+    "onNewNote": "not-established",
+    "onTie": "keep-envelope-and-program",
+    "afterGateOff": "not-established",
+    "lifetime": "not-established",
+    "pitchSettlesAfterUpdates": {
+      "value": 2,
+      "basis": "measured",
+      "detail": "stock Extra at tempo 1 sets only the frequency high byte on a new note's first frame (reproduced: E4 first sounded about 75 cents flat), docs/songs/fuer-elise-native.md"
+    },
+    "state": [
+      {
+        "field": "pulse width (program position)",
+        "scope": "voice"
+      }
+    ]
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "none",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "PAL",
+      "NTSC"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "Pulse program of bass.pulse-moving@1 with decay 7, sustain 6 and release 6; unfiltered.",
+    "waveforms": {
+      "value": [
+        "pulse"
+      ],
+      "basis": "measured",
+      "detail": "program data songs/mozart-minuet/mono.json instruments.bass: wave table control bytes $41 = pulse + gate; frame1 $09 is the TEST frame and sounds no waveform"
+    },
+    "envelope": {
+      "attack": 0,
+      "decay": 7,
+      "sustain": 6,
+      "release": 6,
+      "attackMs": 2,
+      "releaseMs": 204
+    },
+    "attack": {
+      "value": "hard",
+      "basis": "measured",
+      "detail": "envelope attack nibble 0 = 2 ms (datasheet rate); spec thresholds hard <= 8 ms, medium <= 24 ms, soft >= 38 ms"
+    },
+    "body": {
+      "value": "moving-pulse",
+      "basis": "measured",
+      "detail": "same pulse table as version 1: pulse table [85 00 00][1d 29 00][0f d7 00][0f 29 00] jump 2: width starts $500, 29 steps of +41, then alternating 15 down and 15 up",
+      "record": "songs/axel-f/arrangement-review.md"
+    },
+    "release": {
+      "value": "medium",
+      "basis": "measured",
+      "detail": "envelope release nibble 6 = 204 ms full-scale (datasheet rate); spec thresholds cut <= 24 ms, short <= 114 ms, medium <= 300 ms, long >= 750 ms"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -24.7,
+        "sustainDb": -25.4
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 45 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 2.5,
+        "body": 2.6
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 45 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": [
+      {
+        "value": "pwm",
+        "basis": "measured",
+        "detail": "pulse table [85 00 00][1d 29 00][0f d7 00][0f 29 00] jump 2: width starts $500, 29 steps of +41, then alternating 15 down and 15 up",
+        "record": "songs/axel-f/arrangement-review.md"
+      }
+    ]
+  },
+  "fit": {
+    "roles": [
+      "bass"
+    ],
+    "avoid": []
+  },
+  "provenance": {
+    "origin": "derived",
+    "sourceWork": "Minuet and Trio, K. 525",
+    "derivedFrom": "bass.pulse-moving@1",
+    "card": "songs/mozart-minuet/README.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}

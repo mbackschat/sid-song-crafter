@@ -1,0 +1,1158 @@
+{
+  "contract": "docs/proposals/instrument-library.md",
+  "instruments": {
+    "bass.pulse-filter-static@1": {
+      "name": "Fixed-width pulse bass with static low-pass",
+      "summary": "Gated pulse at fixed width $600 routed through the shared low-pass filter at resonance 2 with a constant cutoff high byte $A0; long release.",
+      "roles": [
+        "bass"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "owner",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL",
+          "NTSC"
+        ]
+      },
+      "level": {
+        "onsetDb": -22.1,
+        "sustainDb": -21.3
+      },
+      "brightness": {
+        "onset": 1.9,
+        "body": 2.3
+      },
+      "verdicts": [
+        {
+          "id": "v-bach-full-mono",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Toccata from BWV 565"
+        },
+        {
+          "id": "v-moon-first-palette",
+          "side": "member",
+          "result": "rejected",
+          "attribution": "group",
+          "work": "Moon River"
+        },
+        {
+          "id": "v-nt-first-audition",
+          "side": "member",
+          "result": "qualified",
+          "attribution": "group",
+          "work": "Night Transit"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/moon-river/native.json#instruments.bass",
+        "songs/night-transit/native.json#instruments.bass",
+        "songs/studies/bach-toccata-bass-phrasing/hybrid.json#instruments.bass",
+        "songs/studies/bach-toccata-expressive-attack/hybrid.json#instruments.bass",
+        "songs/studies/bach-toccata-full/hybrid.json#instruments.bass",
+        "songs/studies/bach-toccata-full/restrained.json#instruments.bass",
+        "songs/studies/bach-toccata-groove-blend/hybrid.json#instruments.bass",
+        "songs/studies/bach-toccata-groove-kick/hybrid.json#instruments.bass",
+        "songs/studies/bach-toccata-groove-punch/hybrid.json#instruments.bass",
+        "songs/studies/bach-toccata-groove-release/hybrid.json#instruments.bass",
+        "songs/studies/bach-toccata-groove-subtraction/hybrid.json#instruments.bass",
+        "songs/studies/bach-toccata-integrated-full/hybrid.json#instruments.bass",
+        "songs/studies/bach-toccata-integrated-motion/hybrid.json#instruments.bass",
+        "songs/studies/bach-toccata-intention-blend/hybrid.json#instruments.bass",
+        "songs/studies/bach-toccata-opening/hybrid.json#instruments.bass",
+        "songs/studies/bach-toccata-opening/restrained.json#instruments.bass",
+        "songs/studies/bach-toccata-opening-driven/hybrid.json#instruments.bass",
+        "songs/studies/bach-toccata-opening-driven/restrained.json#instruments.bass"
+      ]
+    },
+    "bass.pulse-filter-sweep@1": {
+      "name": "Fixed-width pulse bass with falling low-pass contour",
+      "summary": "Gated pulse at fixed width $600 routed through the shared low-pass filter at resonance 4; cutoff starts at 1024 and falls to 640 over 24 updates after each selection.",
+      "roles": [
+        "bass"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "owner",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -21.1,
+        "sustainDb": -20.4
+      },
+      "brightness": {
+        "onset": 2.0,
+        "body": 2.3
+      },
+      "verdicts": [
+        {
+          "id": "v-axel-pairing-ab",
+          "side": "rejected-alternative",
+          "result": "preferred",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-selected-roles",
+          "side": "member",
+          "result": "rejected",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-trials-bass-ab",
+          "side": "member",
+          "result": "no-preference",
+          "attribution": "isolated",
+          "work": "SID-Wizard native instrument trials"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/axel-f/full-huelsbeck-pulse.json#instruments.bass",
+        "songs/axel-f/full-native.json#instruments.bass",
+        "songs/axel-f/huelsbeck-pulse.json#instruments.bass",
+        "songs/axel-f/native.json#instruments.bass",
+        "songs/axel-f/role-aware.json#instruments.bass",
+        "songs/axel-f/selected-roles.json#instruments.bass",
+        "songs/axel-f/smoother.json#instruments.bass"
+      ]
+    },
+    "bass.pulse-moving@1": {
+      "name": "Moving-pulse bass without filter",
+      "summary": "Gated pulse whose width starts near $500 and cycles up and down, bypassing the shared filter; decay 9, sustain 9, release 9.",
+      "roles": [
+        "bass"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -21.6,
+        "sustainDb": -21.9
+      },
+      "brightness": {
+        "onset": 2.6,
+        "body": 2.6
+      },
+      "verdicts": [
+        {
+          "id": "v-axel-full-extension",
+          "side": "member",
+          "result": "qualified",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-full-rendition",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-pairing-ab",
+          "side": "member",
+          "result": "preferred",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-pairing-right",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Axel F"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [
+        "chord.saw-triangle@1",
+        "harmony.triangle-soft@1",
+        "lead.pulse-moving@3",
+        "lead.pulse-moving@4",
+        "lead.triangle-soft@1"
+      ],
+      "reusable": false,
+      "occurrences": [
+        "songs/axel-f/full-master-palette.json#instruments.bass",
+        "songs/axel-f/master-palette.json#instruments.bass"
+      ]
+    },
+    "bass.pulse-moving@2": {
+      "name": "Moving-pulse bass without filter (lower sustain)",
+      "summary": "Pulse program of bass.pulse-moving@1 with decay 7, sustain 6 and release 6; unfiltered.",
+      "roles": [
+        "bass"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL",
+          "NTSC"
+        ]
+      },
+      "level": {
+        "onsetDb": -24.7,
+        "sustainDb": -25.4
+      },
+      "brightness": {
+        "onset": 2.5,
+        "body": 2.6
+      },
+      "verdicts": [
+        {
+          "id": "v-mozart-ending",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Minuet and Trio, K. 525"
+        },
+        {
+          "id": "v-mozart-mono",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Minuet and Trio, K. 525"
+        },
+        {
+          "id": "v-mozart-stereo-trio",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Minuet and Trio, K. 525"
+        },
+        {
+          "id": "v-mozart-stereo",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Minuet and Trio, K. 525"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [
+        "harmony.triangle-soft@2",
+        "lead.pulse-moving@4"
+      ],
+      "reusable": false,
+      "occurrences": [
+        "songs/mozart-minuet/mono.json#instruments.bass",
+        "songs/mozart-minuet/stereo.json#instruments.bass"
+      ]
+    },
+    "bass.triangle-plain@1": {
+      "name": "Plain triangle bass",
+      "summary": "Single gated triangle waveform with no pulse, vibrato or filter program; decay 5, sustain 3, release 5.",
+      "roles": [
+        "bass"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -32.1,
+        "sustainDb": -36.2
+      },
+      "brightness": {
+        "onset": 1.2,
+        "body": 1.0
+      },
+      "verdicts": [
+        {
+          "id": "v-moon-restrained",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Moon River"
+        },
+        {
+          "id": "v-moon-stereo",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Moon River"
+        },
+        {
+          "id": "v-moon-vs-basic",
+          "side": "member",
+          "result": "preferred",
+          "attribution": "group",
+          "work": "Moon River"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [
+        "harmony.triangle-plain@2",
+        "lead.triangle-vibrato@1"
+      ],
+      "reusable": false,
+      "occurrences": [
+        "songs/moon-river/restrained.json#instruments.bass"
+      ]
+    },
+    "chord.saw-triangle@1": {
+      "name": "Saw-transient pluck with triangle body",
+      "summary": "One update of gated sawtooth after the TEST frame, then a gated triangle body; decay 7, sustain 3, release 4; no pulse, vibrato or filter program.",
+      "roles": [
+        "chord"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -30.9,
+        "sustainDb": -36.2
+      },
+      "brightness": {
+        "onset": 3.0,
+        "body": 1.0
+      },
+      "verdicts": [
+        {
+          "id": "v-axel-full-extension",
+          "side": "member",
+          "result": "qualified",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-full-rendition",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-selected-roles",
+          "side": "member",
+          "result": "rejected",
+          "attribution": "group",
+          "work": "Axel F"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [
+        "bass.pulse-moving@1",
+        "harmony.triangle-soft@1",
+        "lead.pulse-moving@3",
+        "lead.triangle-soft@1"
+      ],
+      "reusable": false,
+      "occurrences": [
+        "songs/axel-f/full-huelsbeck-pulse.json#instruments.harmony",
+        "songs/axel-f/full-master-palette.json#instruments.harmony",
+        "songs/axel-f/full-native.json#instruments.harmony",
+        "songs/axel-f/huelsbeck-pulse.json#instruments.harmony",
+        "songs/axel-f/master-palette.json#instruments.harmony",
+        "songs/axel-f/native.json#instruments.harmony",
+        "songs/axel-f/role-aware.json#instruments.harmony",
+        "songs/axel-f/selected-roles.json#instruments.harmony",
+        "songs/axel-f/smoother.json#instruments.harmony"
+      ]
+    },
+    "harmony.triangle-plain@1": {
+      "name": "Plain triangle accompaniment with very short release",
+      "summary": "Single gated triangle waveform after the TEST frame with no modulation or filter program; decay 4, sustain 2, release 2.",
+      "roles": [
+        "harmony"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -33.8,
+        "sustainDb": -39.7
+      },
+      "brightness": {
+        "onset": 1.1,
+        "body": 1.0
+      },
+      "verdicts": [
+        {
+          "id": "v-moon-first-palette",
+          "side": "member",
+          "result": "rejected",
+          "attribution": "group",
+          "work": "Moon River"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/fuer-elise-sidwizard.json#instruments.harmony-soft",
+        "songs/moon-river/native.json#instruments.harmony"
+      ]
+    },
+    "harmony.triangle-plain@2": {
+      "name": "Plain triangle accompaniment with short release",
+      "summary": "Single gated triangle waveform with no modulation or filter program; decay 4, sustain 1, release 4.",
+      "roles": [
+        "harmony"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -34.3,
+        "sustainDb": -45.8
+      },
+      "brightness": {
+        "onset": 1.1,
+        "body": 1.0
+      },
+      "verdicts": [
+        {
+          "id": "v-moon-restrained",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Moon River"
+        },
+        {
+          "id": "v-moon-stereo",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Moon River"
+        },
+        {
+          "id": "v-moon-vs-basic",
+          "side": "member",
+          "result": "preferred",
+          "attribution": "group",
+          "work": "Moon River"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [
+        "bass.triangle-plain@1",
+        "lead.triangle-vibrato@1"
+      ],
+      "reusable": false,
+      "occurrences": [
+        "songs/moon-river/restrained.json#instruments.harmony"
+      ]
+    },
+    "harmony.triangle-soft@1": {
+      "name": "Plain triangle pluck",
+      "summary": "Gated triangle after the TEST frame with no transient stage; decay 7, sustain 3, release 4; no pulse, vibrato or filter program.",
+      "roles": [
+        "harmony"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -30.9,
+        "sustainDb": -36.2
+      },
+      "brightness": {
+        "onset": 1.1,
+        "body": 1.0
+      },
+      "verdicts": [
+        {
+          "id": "v-axel-full-extension",
+          "side": "member",
+          "result": "qualified",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-full-rendition",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-held-ab",
+          "side": "member",
+          "result": "not-preferred",
+          "attribution": "isolated",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-selected-roles",
+          "side": "member",
+          "result": "rejected",
+          "attribution": "group",
+          "work": "Axel F"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [
+        "bass.pulse-moving@1",
+        "chord.saw-triangle@1",
+        "lead.pulse-moving@3",
+        "lead.triangle-soft@1"
+      ],
+      "reusable": false,
+      "occurrences": [
+        "songs/axel-f/full-huelsbeck-pulse.json#instruments.marimba",
+        "songs/axel-f/full-master-palette.json#instruments.marimba",
+        "songs/axel-f/full-native.json#instruments.marimba",
+        "songs/axel-f/master-palette.json#instruments.marimba",
+        "songs/axel-f/role-aware.json#instruments.marimba",
+        "songs/axel-f/selected-roles.json#instruments.marimba"
+      ]
+    },
+    "harmony.triangle-soft@2": {
+      "name": "Plain triangle pluck with slower decay (inner voice)",
+      "summary": "Wave program of pluck.triangle-soft@1 with decay 6, sustain 5 and release 6; no pulse, vibrato or filter program.",
+      "roles": [
+        "harmony"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL",
+          "NTSC"
+        ]
+      },
+      "level": {
+        "onsetDb": -30.1,
+        "sustainDb": -31.8
+      },
+      "brightness": {
+        "onset": 1.1,
+        "body": 1.0
+      },
+      "verdicts": [
+        {
+          "id": "v-mozart-mono",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Minuet and Trio, K. 525"
+        },
+        {
+          "id": "v-mozart-stereo-trio",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Minuet and Trio, K. 525"
+        },
+        {
+          "id": "v-mozart-stereo",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Minuet and Trio, K. 525"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [
+        "bass.pulse-moving@2",
+        "lead.pulse-moving@4"
+      ],
+      "reusable": false,
+      "occurrences": [
+        "songs/mozart-minuet/mono.json#instruments.second",
+        "songs/mozart-minuet/stereo.json#instruments.second"
+      ]
+    },
+    "lead.pulse-moving@1": {
+      "name": "Moving-pulse lead with delayed vibrato (bank envelope)",
+      "summary": "Gated pulse voice whose width sweeps between about $400 and $800 while a note is held, with vibrato entering after a delay; pulse and vibrato keep running after gate-off.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -22.2,
+        "sustainDb": -21.5
+      },
+      "brightness": {
+        "onset": 2.5,
+        "body": 2.2
+      },
+      "verdicts": [
+        {
+          "id": "v-axel-initial-lead",
+          "side": "member",
+          "result": "rejected",
+          "attribution": "isolated",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-smoother-ab",
+          "side": "rejected-alternative",
+          "result": "preferred",
+          "attribution": "isolated",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-trials-pulse-ab",
+          "side": "member",
+          "result": "no-preference",
+          "attribution": "isolated",
+          "work": "SID-Wizard native instrument trials"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/axel-f/native.json#instruments.lead"
+      ]
+    },
+    "lead.pulse-moving@2": {
+      "name": "Moving-pulse lead with delayed vibrato (longer release)",
+      "summary": "Same wide moving-pulse program with delayed vibrato as version 1 with the release nibble raised from 5 to 8; pulse and vibrato keep running after gate-off.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -22.2,
+        "sustainDb": -21.5
+      },
+      "brightness": {
+        "onset": 2.5,
+        "body": 2.2
+      },
+      "verdicts": [
+        {
+          "id": "v-axel-narrow-ab",
+          "side": "rejected-alternative",
+          "result": "preferred",
+          "attribution": "isolated",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-smoother-ab",
+          "side": "member",
+          "result": "preferred",
+          "attribution": "isolated",
+          "work": "Axel F"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/axel-f/full-native.json#instruments.lead",
+        "songs/axel-f/smoother.json#instruments.lead"
+      ]
+    },
+    "lead.pulse-moving@3": {
+      "name": "Narrow moving-pulse lead with delayed vibrato",
+      "summary": "Gated pulse voice whose width starts near $200, rises, then oscillates inside a narrower band ($3EA to $5F7) than versions 1 and 2, with delayed vibrato and the longer release.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -23.4,
+        "sustainDb": -21.7
+      },
+      "brightness": {
+        "onset": 3.7,
+        "body": 2.6
+      },
+      "verdicts": [
+        {
+          "id": "v-axel-full-extension",
+          "side": "member",
+          "result": "qualified",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-full-rendition",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-held-ab",
+          "side": "preferred-alternative",
+          "result": "not-preferred",
+          "attribution": "isolated",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-held-annoying",
+          "side": "member",
+          "result": "rejected",
+          "attribution": "isolated",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-highlead-ab",
+          "side": "rejected-alternative",
+          "result": "preferred",
+          "attribution": "isolated",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-highlead-annoying",
+          "side": "member",
+          "result": "rejected",
+          "attribution": "isolated",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-narrow-ab",
+          "side": "member",
+          "result": "preferred",
+          "attribution": "isolated",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-pairing-ab",
+          "side": "rejected-alternative",
+          "result": "preferred",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-selected-roles",
+          "side": "member",
+          "result": "rejected",
+          "attribution": "group",
+          "work": "Axel F"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [
+        "bass.pulse-moving@1",
+        "chord.saw-triangle@1",
+        "harmony.triangle-soft@1",
+        "lead.triangle-soft@1"
+      ],
+      "reusable": false,
+      "occurrences": [
+        "songs/axel-f/full-huelsbeck-pulse.json#instruments.lead",
+        "songs/axel-f/full-master-palette.json#instruments.held-support",
+        "songs/axel-f/huelsbeck-pulse.json#instruments.lead",
+        "songs/axel-f/role-aware.json#instruments.lead",
+        "songs/axel-f/selected-roles.json#instruments.lead"
+      ]
+    },
+    "lead.pulse-moving@4": {
+      "name": "Narrow moving-pulse lead, long-release envelope",
+      "summary": "Narrow moving-pulse program of version 3 with a different envelope (decay 10, sustain 4, release 9) and delayed vibrato; modulation continues after gate-off.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "NTSC",
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -22.2,
+        "sustainDb": -29.7
+      },
+      "brightness": {
+        "onset": 3.7,
+        "body": 2.7
+      },
+      "verdicts": [
+        {
+          "id": "v-axel-contour",
+          "side": "alternative",
+          "result": "qualified",
+          "attribution": "isolated",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-full-extension",
+          "side": "member",
+          "result": "qualified",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-pairing-ab",
+          "side": "member",
+          "result": "preferred",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-pairing-right",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-mozart-ending",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Minuet and Trio, K. 525"
+        },
+        {
+          "id": "v-mozart-mono",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Minuet and Trio, K. 525"
+        },
+        {
+          "id": "v-mozart-stereo",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Minuet and Trio, K. 525"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [
+        "bass.pulse-moving@1",
+        "bass.pulse-moving@2",
+        "harmony.triangle-soft@2"
+      ],
+      "reusable": false,
+      "occurrences": [
+        "songs/axel-f/full-master-palette.json#instruments.lead",
+        "songs/axel-f/master-palette.json#instruments.lead",
+        "songs/mozart-minuet/mono.json#instruments.lead",
+        "songs/mozart-minuet/stereo.json#instruments.lead"
+      ]
+    },
+    "lead.pulse-moving@5": {
+      "name": "Moving-pulse lead with delayed vibrato (mid sustain)",
+      "summary": "Wide moving-pulse program with delayed vibrato as in version 1, with sustain lowered to 6 and release 4; the waveform table ends after setting the body pitch so vibrato can develop on held notes.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -25.1,
+        "sustainDb": -26.0
+      },
+      "brightness": {
+        "onset": 2.5,
+        "body": 2.2
+      },
+      "verdicts": [
+        {
+          "id": "v-moon-first-palette",
+          "side": "member",
+          "result": "rejected",
+          "attribution": "group",
+          "work": "Moon River"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/fuer-elise-sidwizard.json#instruments.melody-pulse",
+        "songs/moon-river/native.json#instruments.lead"
+      ]
+    },
+    "lead.static-pulse@1": {
+      "name": "Steady fixed-width pulse lead",
+      "summary": "Gated pulse voice at one fixed width (about $780) with no modulation, vibrato, filter or noise; decay 2, sustain 8, release 8.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -23.6,
+        "sustainDb": -23.0
+      },
+      "brightness": {
+        "onset": 2.0,
+        "body": 2.0
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-full/restrained.json#instruments.lead",
+        "songs/studies/bach-toccata-opening/restrained.json#instruments.lead",
+        "songs/studies/bach-toccata-opening-driven/restrained.json#instruments.lead"
+      ]
+    },
+    "lead.triangle-soft@1": {
+      "name": "Plain triangle lead with medium release",
+      "summary": "Single gated triangle waveform after the TEST frame with no pulse, vibrato or filter program; decay 7, sustain 4, release 5.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -30.4,
+        "sustainDb": -33.7
+      },
+      "brightness": {
+        "onset": 1.0,
+        "body": 1.0
+      },
+      "verdicts": [
+        {
+          "id": "v-axel-full-extension",
+          "side": "member",
+          "result": "qualified",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-full-rendition",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-highlead-ab",
+          "side": "member",
+          "result": "preferred",
+          "attribution": "isolated",
+          "work": "Axel F"
+        },
+        {
+          "id": "v-axel-selected-roles",
+          "side": "member",
+          "result": "rejected",
+          "attribution": "group",
+          "work": "Axel F"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [
+        "bass.pulse-moving@1",
+        "chord.saw-triangle@1",
+        "harmony.triangle-soft@1",
+        "lead.pulse-moving@3"
+      ],
+      "reusable": false,
+      "occurrences": [
+        "songs/axel-f/full-master-palette.json#instruments.upper-lead",
+        "songs/axel-f/master-palette.json#instruments.upper-lead",
+        "songs/axel-f/role-aware.json#instruments.upper-lead",
+        "songs/axel-f/selected-roles.json#instruments.upper-lead",
+        "songs/fuer-elise-sidwizard.json#instruments.melody-soft"
+      ]
+    },
+    "lead.triangle-vibrato@1": {
+      "name": "Triangle lead with slow attack and late vibrato",
+      "summary": "Single gated triangle waveform with vibrato byte $12 entering after a 20-update delay, slow attack (A4), decay 6, sustain 7, release 6; no pulse or filter program.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -27.6,
+        "sustainDb": -28.8
+      },
+      "brightness": {
+        "onset": 1.0,
+        "body": 1.0
+      },
+      "verdicts": [
+        {
+          "id": "v-moon-restrained",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Moon River"
+        },
+        {
+          "id": "v-moon-stereo",
+          "side": "member",
+          "result": "accepted",
+          "attribution": "group",
+          "work": "Moon River"
+        },
+        {
+          "id": "v-moon-vs-basic",
+          "side": "member",
+          "result": "preferred",
+          "attribution": "group",
+          "work": "Moon River"
+        }
+      ],
+      "evidenceLevel": "listening-reviewed",
+      "acceptedWith": [
+        "bass.triangle-plain@1",
+        "harmony.triangle-plain@2"
+      ],
+      "reusable": false,
+      "occurrences": [
+        "songs/moon-river/restrained.json#instruments.lead"
+      ]
+    }
+  }
+}

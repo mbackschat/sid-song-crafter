@@ -1,0 +1,134 @@
+{
+  "id": "lead.pulse-moving",
+  "version": 5,
+  "name": "Moving-pulse lead with delayed vibrato (mid sustain)",
+  "nativeName": "ELPULSE",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/fuer-elise-sidwizard.json",
+    "record": "instruments.melody-pulse"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff"
+    ],
+    "pitchResponse": "absolute",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing: without a gate-off cell before the next note the next note connects with no new envelope attack (songs/pink-panther/README.md native tempo-1 policy; in recipes the converter writes the cell, scripts/arrange-sidwizard.py gate_off_tick)"
+    ],
+    "onNewNote": "not-established",
+    "onTie": "keep-envelope-and-program",
+    "afterGateOff": "program-continues",
+    "lifetime": "not-established",
+    "pitchSettlesAfterUpdates": {
+      "value": 2,
+      "basis": "measured",
+      "detail": "stock Extra at tempo 1 sets only the frequency high byte on a new note's first frame (reproduced: E4 first sounded about 75 cents flat), docs/songs/fuer-elise-native.md"
+    },
+    "state": [
+      {
+        "field": "pulse width (program position)",
+        "scope": "voice"
+      }
+    ]
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "none",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "PAL"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "Wide moving-pulse program with delayed vibrato as in version 1, with sustain lowered to 6 and release 4; the waveform table ends after setting the body pitch so vibrato can develop on held notes.",
+    "waveforms": {
+      "value": [
+        "pulse"
+      ],
+      "basis": "measured",
+      "detail": "program data songs/fuer-elise-sidwizard.json instruments.melody-pulse: wave table control bytes $41 = pulse + gate; frame1 $09 is the TEST frame and sounds no waveform"
+    },
+    "envelope": {
+      "attack": 0,
+      "decay": 7,
+      "sustain": 6,
+      "release": 4,
+      "attackMs": 2,
+      "releaseMs": 114
+    },
+    "attack": {
+      "value": "hard",
+      "basis": "measured",
+      "detail": "envelope attack nibble 0 = 2 ms (datasheet rate); spec thresholds hard <= 8 ms, medium <= 24 ms, soft >= 38 ms"
+    },
+    "body": {
+      "value": "moving-pulse",
+      "basis": "measured",
+      "detail": "pulse table [84 00 00][20 20 00][20 e0 00] jump 1: set width $400, 32 executions of +$20, 32 of -$20, loop; documented as the bank sweep $400-$800",
+      "record": "docs/songs/fuer-elise-native.md"
+    },
+    "release": {
+      "value": "short",
+      "basis": "measured",
+      "detail": "envelope release nibble 4 = 114 ms full-scale (datasheet rate); spec thresholds cut <= 24 ms, short <= 114 ms, medium <= 300 ms, long >= 750 ms"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -25.1,
+        "sustainDb": -26.0
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 2.5,
+        "body": 2.2
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": [
+      {
+        "value": "pwm",
+        "basis": "measured",
+        "detail": "bank write log: pulse width 1024-2048 while gated",
+        "record": "docs/research/composition/instruments/lead-02-moving-pulse.md"
+      },
+      {
+        "value": "delayed-vibrato",
+        "basis": "measured",
+        "detail": "bank trace: pitch stable through tick 111, first vibrato change at tick 112, then cycles 5578-5650 around 5614",
+        "record": "docs/research/composition/instruments/lead-02-moving-pulse.md",
+        "startsAfterUpdates": 14
+      }
+    ]
+  },
+  "fit": {
+    "roles": [
+      "lead"
+    ],
+    "avoid": [
+      {
+        "condition": "quiet ballad whose brief asks for a tender, intimate, wistful character: the pulse lead with width motion and delayed vibrato was rejected as too loud and offensive in the joint first palette; fit is brief-dependent, instrument not isolated",
+        "verdict": "v-moon-first-palette"
+      }
+    ]
+  },
+  "provenance": {
+    "origin": "derived",
+    "sourceWork": "Für Elise",
+    "derivedFrom": "lead.pulse-moving@1",
+    "card": "docs/songs/fuer-elise-native.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}

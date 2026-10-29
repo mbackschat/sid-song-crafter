@@ -1,0 +1,118 @@
+{
+  "id": "lead.triangle-soft",
+  "version": 1,
+  "name": "Plain triangle lead with medium release",
+  "nativeName": "ELSOFT",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/axel-f/full-master-palette.json",
+    "record": "instruments.upper-lead"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff"
+    ],
+    "pitchResponse": "absolute",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing: without a gate-off cell before the next note the next note connects with no new envelope attack (songs/pink-panther/README.md native tempo-1 policy; in recipes the converter writes the cell, scripts/arrange-sidwizard.py gate_off_tick)"
+    ],
+    "onNewNote": "not-established",
+    "onTie": "keep-envelope-and-program",
+    "afterGateOff": "not-established",
+    "lifetime": "not-established",
+    "pitchSettlesAfterUpdates": {
+      "value": 2,
+      "basis": "measured",
+      "detail": "stock Extra at tempo 1 sets only the frequency high byte on a new note's first frame (reproduced: E4 first sounded about 75 cents flat), docs/songs/fuer-elise-native.md"
+    },
+    "state": []
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "none",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "PAL"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "Single gated triangle waveform after the TEST frame with no pulse, vibrato or filter program; decay 7, sustain 4, release 5.",
+    "waveforms": {
+      "value": [
+        "triangle"
+      ],
+      "basis": "measured",
+      "detail": "program data songs/axel-f/full-master-palette.json instruments.upper-lead: wave table control bytes $11 = triangle + gate; frame1 $09 is the TEST frame and sounds no waveform"
+    },
+    "envelope": {
+      "attack": 0,
+      "decay": 7,
+      "sustain": 4,
+      "release": 5,
+      "attackMs": 2,
+      "releaseMs": 168
+    },
+    "attack": {
+      "value": "hard",
+      "basis": "measured",
+      "detail": "envelope attack nibble 0 = 2 ms (datasheet rate); spec thresholds hard <= 8 ms, medium <= 24 ms, soft >= 38 ms"
+    },
+    "body": {
+      "value": "static",
+      "basis": "measured",
+      "detail": "triangle body, ADSR $0745, no PWM, vibrato or filter (program data and review description)",
+      "record": "songs/axel-f/role-aware-review.json"
+    },
+    "release": {
+      "value": "medium",
+      "basis": "measured",
+      "detail": "envelope release nibble 5 = 168 ms full-scale (datasheet rate); spec thresholds cut <= 24 ms, short <= 114 ms, medium <= 300 ms, long >= 750 ms"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -30.4,
+        "sustainDb": -33.7
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 1.0,
+        "body": 1.0
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": []
+  },
+  "fit": {
+    "roles": [
+      "lead"
+    ],
+    "range": {
+      "value": {
+        "low": "Ab5",
+        "high": "Eb6"
+      },
+      "basis": "tested",
+      "detail": "the 97 high-lead notes (A-flat5 to E-flat6) of the arrangement where it was selected",
+      "record": "songs/axel-f/arrangement-review.md"
+    },
+    "avoid": []
+  },
+  "provenance": {
+    "origin": "original",
+    "sourceWork": "Für Elise",
+    "card": "docs/songs/fuer-elise-native.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}
