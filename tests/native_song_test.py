@@ -166,6 +166,74 @@ class NativeSongTest(unittest.TestCase):
         self.assertEqual(offsets([0, 4, 7]), [0, 4, 4, 7, 7, 0, 0, 4, 4, 7, 7, 0])
         self.assertEqual(offsets([0, 3, 7, 12]), [0, 3, 3, 7, 7, 12, 12, 0, 0, 3, 3, 7])
 
+    @unittest.skipUnless((ROOT / ".tools/sid-wizard-exporter/exporter.labels").is_file() and (ROOT / ".local/bin/render-sid").is_file(), "Pinned one-SID exporter and renderer required")
+    def test_tied_note_keeps_the_gate_open_and_changes_only_the_pitch(self):
+        pluck = {"name": "TIEPLUCK", "control": "0a", "hard_restart_adsr": "0f00", "adsr": "0734", "frame1": "09", "wave": [["41", "00", "00"]], "pulse": [["88", "00", "00"]], "filter": []}
+        score = {
+            "title": "Tie", "composer": "Test", "quarterBpm": 60 * (17734475 / 18) / (312 * 63), "totalBeats": 60, "tailTicks": 3, "volume": 15,
+            "voices": [{"name": name, "events": [{"startBeat": 0, "durationBeats": 24, "midi": 60}, {"startBeat": 24, "durationBeats": 24, "midi": 64}] if name == "lead" else []} for name in ("lead", "bass", "pad")],
+        }
+
+        def run(ties):
+            with tempfile.TemporaryDirectory() as directory, patch("builtins.print"):
+                (Path(directory) / "score.json").write_text(json.dumps(score))
+                recipe = {
+                    "format": "sidwizard-arrangement-v1", "score": "score.json", "title": "Tie", "author": "Test", "released": "2026", "timingPolicy": "retain-full-pitch",
+                    "instruments": {"pluck": pluck}, "ties": ties,
+                    "sections": [{"name": "Whole", "startBeat": 0, "endBeat": 60, "voices": {"lead": "pluck", "bass": "pluck", "pad": "pluck"}}],
+                }
+                (Path(directory) / "recipe.json").write_text(json.dumps(recipe))
+                report = native_song.run_song(Path(directory) / "recipe.json", Path(directory) / "song", excerpt_seconds=1)
+                frames = json.loads((Path(directory) / "song/native-song.frames.json").read_text())
+            return report, [frames[tick][4] for tick in range(21, 27)], [frames[tick][0] | frames[tick][1] << 8 for tick in (24, 25)]
+
+        tied, tied_control, tied_words = run([{"voice": "lead", "startBeat": 24}])
+        untied, untied_control, untied_words = run([])
+        self.assertEqual((tied["schedule"]["noteCounts"], untied["schedule"]["noteCounts"]), ([1, 0, 0], [2, 0, 0]))
+        # Tied: the control register keeps its gated waveform through the boundary. Untied: release, then the TEST+gate frame of a new sound.
+        self.assertEqual(tied_control, [0x41] * 6)
+        self.assertEqual(untied_control, [0x41, 0x40, 0x40, 0x09, 0x41, 0x41])
+        # The pitch follows one call after the tied cell: still the first note's at the tie, the second note's after it.
+        word = lambda midi: round(440 * 2 ** ((midi - 69) / 12) * 2**24 / (17734475 / 18))
+        self.assertLessEqual(abs(tied_words[0] - word(60)), 1)
+        self.assertLessEqual(abs(tied_words[1] - word(64)), 1)
+        self.assertEqual([entry["tick"] for entry in tied["schedule"]["tiedNotes"]], [24])
+
+    @unittest.skipUnless((ROOT / ".tools/sid-wizard-exporter/exporter.labels").is_file() and (ROOT / ".local/bin/render-sid").is_file() and (ROOT / ".tools/sid-wizard-1.97/resources/examples/instruments").is_dir(), "Pinned exporter, renderer and upstream examples required")
+    def test_declared_upstream_drums_pass_the_audit_with_two_update_hits_and_undeclared_ones_do_not(self):
+        specification = importlib.util.spec_from_file_location("swi_importer", ROOT / "scripts/import-swi.py")
+        importer = importlib.util.module_from_spec(specification)
+        specification.loader.exec_module(importer)
+        examples = ROOT / ".tools/sid-wizard-1.97/resources/examples/instruments"
+        drums = {"kick": "kick-poppy", "snare": "snare-tight", "hat": "hihat-short"}
+        hits = {"kick": (0, 24), "snare": (12, 36), "hat": (6, 18, 30)}
+        score = {
+            "title": "Beat", "composer": "Test", "quarterBpm": 60 * (17734475 / 18) / (312 * 63), "totalBeats": 48, "tailTicks": 3, "volume": 15,
+            "voices": [{"name": name, "events": [{"startBeat": start, "durationBeats": 2, "midi": 40} for start in starts]} for name, starts in hits.items()],
+        }
+        recipe = {
+            "format": "sidwizard-arrangement-v1", "score": "score.json", "title": "Beat", "author": "Test", "released": "2026", "timingPolicy": "retain-full-pitch",
+            "instruments": {name: importer.read_swi(examples / f"{stem}.swi") for name, stem in drums.items()},
+            "sections": [{"name": "Whole", "startBeat": 0, "endBeat": 48, "voices": {name: name for name in drums}}],
+        }
+
+        def build(directory, extra):
+            (Path(directory) / "score.json").write_text(json.dumps(score))
+            (Path(directory) / "recipe.json").write_text(json.dumps(dict(recipe, **extra)))
+            return native_song.run_song(Path(directory) / "recipe.json", Path(directory) / "song", excerpt_seconds=1)
+
+        with tempfile.TemporaryDirectory() as directory, patch("builtins.print"), patch("sys.stderr"):
+            with self.assertRaises(subprocess.CalledProcessError):
+                build(directory, {})
+            # The audit stops the workflow before it renders.
+            self.assertFalse((Path(directory) / "song/native-song.wav").exists())
+        with tempfile.TemporaryDirectory() as directory, patch("builtins.print"):
+            report = build(directory, {"pitchResponse": {"kick": "absolute", "snare": "percussion", "hat": "percussion"}})
+            self.assertEqual(report["schedule"]["noteCounts"], [2, 2, 3])
+            self.assertEqual({entry["pitchResponse"] for entry in report["schedule"]["criticalNotes"]}, {"absolute", "percussion"})
+            self.assertEqual(len(report["schedule"]["criticalNotes"]), 7)
+            self.assertEqual(report["pcm"]["clippedSamples"], 0)
+
     def test_layout_rejects_invalid_model_and_disagreement_with_chip_metadata(self):
         self.assertEqual(native_song.sid_layout({"sidModel": "MOS6581"}), [{"baseAddress": 0xd400, "model": "MOS6581"}])
         for report in (
@@ -392,6 +460,75 @@ class NativeSongTest(unittest.TestCase):
         # `midi` is the sounding score pitch; the shift only changes which cell is written, never the target.
         self.assertEqual(native_song.verify_driver_events(manifest, observer, frames)["criticalNotes"][0]["midi"], 72)
         word = round(440 * 2 ** ((60 - 69) / 12) * 2**24 / manifest["clockHz"])
+        frames[1][0:2] = [word & 255, word >> 8]
+        with self.assertRaisesRegex(ValueError, "critical short note"):
+            native_song.verify_driver_events(manifest, observer, frames)
+
+    def tied_fixture(self):
+        manifest, observer, frames = fixture()
+        # The second note of voice 0 (tick 2) is tied: its cell carries $3F and the driver starts no new sound.
+        manifest["voices"][0]["notes"][1].update(tied=True, midi=73)
+        manifest["criticalNotes"] = []
+        manifest["cellMap"][1]["instrument"] = 0x3F
+        observer.cells[1]["instrument"] = 0x3F
+        observer.starts.pop(1)
+        word = round(440 * 2 ** ((73 - 69) / 12) * 2**24 / manifest["clockHz"])
+        for tick in (1, 2, 3):
+            frames[tick][4] = 0x11
+        frames[3][0:2] = [word & 255, word >> 8]
+        return manifest, observer, frames
+
+    def test_tied_note_is_checked_for_an_unbroken_gate_and_the_new_pitch_instead_of_a_sound_start(self):
+        report = native_song.verify_driver_events(*self.tied_fixture())
+        self.assertEqual(report["noteCounts"], [1, 1, 0])
+        self.assertEqual([(note["voice"], note["tick"], note["midi"]) for note in report["tiedNotes"]], [(0, 2, 73)])
+        self.assertNotIn("tiedNotes", native_song.verify_driver_events(*fixture()))
+
+    def test_tied_note_rejects_a_broken_gate_a_wrong_pitch_and_a_restarted_sound(self):
+        for label, change, pattern in (
+            ("gate dropped before the tie", lambda manifest, observer, frames: frames[1].__setitem__(4, 0x10), "tied note"),
+            ("gate dropped at the tie", lambda manifest, observer, frames: frames[2].__setitem__(4, 0x10), "tied note"),
+            ("wrong pitch", lambda manifest, observer, frames: frames[3].__setitem__(0, frames[3][0] + 9), "tied note"),
+            ("new sound started", lambda manifest, observer, frames: observer.starts.insert(1, {"voice": 0, "tick": 2, "nativeNote": 62, "instrument": 1}), "discrete note start"),
+        ):
+            manifest, observer, frames = self.tied_fixture()
+            change(manifest, observer, frames)
+            with self.subTest(label), self.assertRaisesRegex(ValueError, pattern):
+                native_song.verify_driver_events(manifest, observer, frames)
+
+    def declared_fixture(self, response, wave_byte, word_midi=95):
+        manifest, observer, frames = fixture()
+        manifest["criticalNotes"][0].update(pitchResponse=response, programWaveform=wave_byte)
+        word = round(440 * 2 ** ((word_midi - 69) / 12) * 2**24 / manifest["clockHz"])
+        frames[1][0:2] = [word & 255, word >> 8]
+        frames[1][4] = wave_byte
+        return manifest, observer, frames
+
+    def test_declared_instruments_replace_only_the_in_tune_requirement(self):
+        # Neither frequency word is the score pitch (MIDI 72); both are frequency-table entries.
+        for response, wave_byte in (("percussion", 0x81), ("percussion", 0x41), ("absolute", 0x41)):
+            with self.subTest(response=response, wave=wave_byte):
+                report = native_song.verify_driver_events(*self.declared_fixture(response, wave_byte))
+                entry = report["criticalNotes"][0]
+                self.assertEqual((entry["pitchResponse"], entry["programWaveform"], entry["control"]), (response, wave_byte, wave_byte))
+                self.assertNotIn("expectedFrequencyWord", entry)
+
+    def test_declared_instruments_still_need_a_gate_their_first_program_row_and_a_table_frequency(self):
+        for label, response, wave_byte, change in (
+            ("gate open but program row not reached", "percussion", 0x81, lambda frames: frames[1].__setitem__(4, 0x09)),
+            ("other waveform than the program's", "percussion", 0x81, lambda frames: frames[1].__setitem__(4, 0x41)),
+            ("gate closed", "percussion", 0x80, lambda frames: None),
+            ("noise is not an absolute pitch", "absolute", 0x81, lambda frames: None),
+            ("frequency off the table", "percussion", 0x81, lambda frames: frames[1].__setitem__(0, (frames[1][0] + 100) & 255)),
+        ):
+            manifest, observer, frames = self.declared_fixture(response, wave_byte)
+            change(frames)
+            with self.subTest(label), self.assertRaisesRegex(ValueError, "critical short note"):
+                native_song.verify_driver_events(manifest, observer, frames)
+
+    def test_undeclared_instruments_keep_the_in_tune_guard_even_with_a_drum_like_note(self):
+        manifest, observer, frames = fixture()
+        word = round(440 * 2 ** ((95 - 69) / 12) * 2**24 / manifest["clockHz"])
         frames[1][0:2] = [word & 255, word >> 8]
         with self.assertRaisesRegex(ValueError, "critical short note"):
             native_song.verify_driver_events(manifest, observer, frames)

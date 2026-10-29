@@ -633,6 +633,123 @@ class SIDWizardArrangementTest(unittest.TestCase):
                     self.chord_recipe(directory, chords=chords, instrument=dict(INSTRUMENT))
                 self.assertFalse((Path(directory) / "out").exists())
 
+    def tie_recipe(self, directory, events, ties, *, policy=None, sections=None, **overrides):
+        score = synthetic_score(events, beats=60)
+        settings = {"instruments": {"pluck": INSTRUMENT, "alt": dict(INSTRUMENT, name="ALTPLUCK")}, "ties": ties}
+        if sections is not None:
+            settings["sections"] = sections
+        if policy is not None:
+            settings["instrumentCells"] = policy
+        settings.update(overrides)
+        return self.create(directory, score, **settings)
+
+    TIED_EVENTS = [
+        {"startBeat": 0, "durationBeats": 10, "midi": 60}, {"startBeat": 10, "durationBeats": 10, "midi": 62},
+        {"startBeat": 24, "durationBeats": 8, "midi": 64},
+    ]
+    TIE_ON_SECOND = [{"voice": "melody", "startBeat": 10}]
+
+    def test_empty_tie_list_and_no_tie_list_write_the_same_bytes_and_no_tie_markers(self):
+        with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:
+            _, plain = self.cells_recipe(first, self.TIED_EVENTS, beats=60)
+            _, empty = self.tie_recipe(second, self.TIED_EVENTS, [])
+            self.assertEqual(Path(plain["nativePath"]).read_bytes(), Path(empty["nativePath"]).read_bytes())
+            self.assertFalse(any("tied" in note for note in empty["voices"][0]["notes"]))
+
+    def test_tied_note_writes_the_legato_cell_and_the_predecessor_keeps_its_gate(self):
+        with tempfile.TemporaryDirectory() as directory:
+            _, manifest = self.tie_recipe(directory, self.TIED_EVENTS, self.TIE_ON_SECOND)
+            notes = manifest["voices"][0]["notes"]
+            self.assertEqual([note.get("tied", False) for note in notes], [False, True, False])
+            # $3F in the instrument column selects nothing and makes the driver set the pitch only.
+            cells = [(cell["tick"], cell["noteCode"], cell["instrument"]) for cell in manifest["cellMap"] if cell["voice"] == 0 and cell["tick"] < 40]
+            # No gate-off cell at tick 9: the first note's release is withheld, the tied note's own release stays.
+            self.assertEqual(cells, [(0, 49, 1), (10, 51, 0x3F), (19, 126, None), (24, 53, 1), (31, 126, None)])
+            self.assertIsNone(notes[0]["nativeGateOffTick"])
+            self.assertIsNotNone(notes[1]["nativeGateOffTick"])
+            self.assertIn("tie-keeps-gate", [change["kind"] for change in manifest["articulationChanges"]])
+            self.assertEqual(expanded_native_cells(manifest)[0][10], bytes((51 | 0x80, 0x3F)))
+
+    def test_tie_cell_stays_a_tie_cell_under_plain_note_cells(self):
+        with tempfile.TemporaryDirectory() as directory:
+            events = self.TIED_EVENTS + [{"startBeat": 32, "durationBeats": 4, "midi": 65}]
+            _, manifest = self.tie_recipe(directory, events, self.TIE_ON_SECOND, policy="on-change")
+            self.assertEqual([(cell["tick"], cell["instrument"]) for cell in manifest["cellMap"] if cell["voice"] == 0 and cell["noteCode"] != 0x7E], [(0, 1), (10, 0x3F), (24, None), (32, None)])
+
+    def test_ties_that_cannot_be_honoured_are_rejected_with_their_reason(self):
+        sections = [
+            {"name": "A", "startBeat": 0, "endBeat": 10, "voices": {"melody": "pluck", "bass": "pluck", "harmony": "pluck"}},
+            {"name": "B", "startBeat": 10, "endBeat": 60, "voices": {"melody": "alt", "bass": "pluck", "harmony": "pluck"}},
+        ]
+        gap = [{"startBeat": 0, "durationBeats": 10, "midi": 60}, {"startBeat": 12, "durationBeats": 6, "midi": 62}]
+        rest = [{"startBeat": 0, "durationBeats": 10, "midi": 60}, {"startBeat": 10, "durationBeats": 2, "midi": None}, {"startBeat": 12, "durationBeats": 6, "midi": 62}]
+        cases = (
+            ("first note", self.TIED_EVENTS, [{"voice": "melody", "startBeat": 0}], {}, "no previous note"),
+            ("after a gap", gap, [{"voice": "melody", "startBeat": 12}], {}, "previous note ends"),
+            ("after a rest", rest, [{"voice": "melody", "startBeat": 12}], {}, "previous note ends"),
+            ("instrument change", self.TIED_EVENTS, self.TIE_ON_SECOND, {"sections": sections}, "instrument"),
+            ("no such note", self.TIED_EVENTS, [{"voice": "melody", "startBeat": 11}], {}, "no note starts"),
+            ("unknown voice", self.TIED_EVENTS, [{"voice": "tuba", "startBeat": 10}], {}, "unknown voice"),
+            ("duplicate", self.TIED_EVENTS, self.TIE_ON_SECOND * 2, {}, "duplicate"),
+            ("not a list", self.TIED_EVENTS, {"voice": "melody", "startBeat": 10}, {}, "ties"),
+            ("extra key", self.TIED_EVENTS, [{"voice": "melody", "startBeat": 10, "legato": True}], {}, "ties"),
+            ("boolean beat", self.TIED_EVENTS, [{"voice": "melody", "startBeat": True}], {}, "ties"),
+        )
+        for label, events, ties, overrides, pattern in cases:
+            with self.subTest(label), tempfile.TemporaryDirectory() as directory:
+                with self.assertRaisesRegex(ValueError, pattern):
+                    self.tie_recipe(directory, events, ties, **overrides)
+                self.assertFalse((Path(directory) / "out").exists())
+
+    def test_tie_across_a_short_note_instrument_substitution_is_rejected(self):
+        events = [{"startBeat": 0, "durationBeats": 10, "midi": 60}, {"startBeat": 10, "durationBeats": 2, "midi": 62}]
+        with tempfile.TemporaryDirectory() as directory, self.assertRaisesRegex(ValueError, "instrument"):
+            self.tie_recipe(directory, events, self.TIE_ON_SECOND, shortNoteInstruments={"melody": "alt", "bass": "pluck", "harmony": "pluck"})
+
+    DRUM = dict(INSTRUMENT, name="DRUMHIT", wave=[["81", "df", "00"], ["41", "a8", "00"], ["80", "d0", "00"]])
+
+    def drum_recipe(self, directory, events, *, response=None, drum=None, **overrides):
+        score = synthetic_score(events, beats=60)
+        settings = {
+            "instruments": {"pluck": INSTRUMENT, "drum": drum or self.DRUM},
+            "sections": [{"name": "Whole", "startBeat": 0, "endBeat": 60, "voices": {"melody": "pluck", "bass": "pluck", "harmony": "pluck"}}],
+            "shortNoteInstruments": {"melody": "drum", "bass": "pluck", "harmony": "pluck"},
+        }
+        if response is not None:
+            settings["pitchResponse"] = response
+        settings.update(overrides)
+        return self.create(directory, score, **settings)
+
+    DRUM_EVENTS = [{"startBeat": 0, "durationBeats": 10, "midi": 60}, {"startBeat": 12, "durationBeats": 2, "midi": 40}]
+
+    def test_pitch_response_is_off_by_default_and_marks_only_notes_the_declared_instrument_plays(self):
+        with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:
+            _, plain = self.drum_recipe(first, self.DRUM_EVENTS)
+            _, declared = self.drum_recipe(second, self.DRUM_EVENTS, response={"drum": "percussion"})
+            self.assertEqual(Path(plain["nativePath"]).read_bytes(), Path(declared["nativePath"]).read_bytes())
+            self.assertFalse(any("pitchResponse" in note for note in plain["voices"][0]["notes"]))
+            long_note, hit = declared["voices"][0]["notes"]
+            # The two-update note takes the short-note instrument, which is the declared one, with its first program waveform.
+            self.assertNotIn("pitchResponse", long_note)
+            self.assertEqual((hit["instrumentId"], hit["pitchResponse"], hit["programWaveform"]), ("drum", "percussion", 0x81))
+            self.assertEqual([(note["pitchResponse"], note["programWaveform"]) for note in declared["criticalNotes"]], [("percussion", 0x81)])
+
+    def test_malformed_pitch_response_declarations_are_rejected_before_output(self):
+        repeat_first = dict(self.DRUM, wave=[["03", "00", "00"], ["81", "df", "00"]])
+        jump_first = dict(self.DRUM, wave=[{"jump": 0}])
+        cases = (
+            ("unknown instrument", {"snare": "percussion"}, None),
+            ("unknown response", {"drum": "tuned"}, None),
+            ("not a map", ["drum"], None),
+            ("repeat row first", {"drum": "percussion"}, repeat_first),
+            ("jump first", {"drum": "absolute"}, jump_first),
+        )
+        for label, response, drum in cases:
+            with self.subTest(label), tempfile.TemporaryDirectory() as directory:
+                with self.assertRaisesRegex(ValueError, "pitchResponse"):
+                    self.drum_recipe(directory, self.DRUM_EVENTS, response=response, drum=drum)
+                self.assertFalse((Path(directory) / "out").exists())
+
     def test_instrument_ids_cannot_leave_the_native_output_directory(self):
         score = synthetic_score([], beats=4)
         with tempfile.TemporaryDirectory() as directory:

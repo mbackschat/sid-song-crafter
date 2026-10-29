@@ -113,6 +113,11 @@ class NativeObserver:
                 self.stopped.add(voice)
 
 
+def frequency_table_words(clock_hz):
+    """Equal-tempered frequency words for the driver's 96 table entries (MIDI 11..106) at the target clock."""
+    return [round(440 * 2 ** ((midi - 69) / 12) * 2**24 / clock_hz) for midi in range(11, 107)]
+
+
 def verify_driver_events(manifest, observer, frames):
     sid_count = len(sid_layout(manifest))
     voice_count = sid_count * 3
@@ -138,7 +143,8 @@ def verify_driver_events(manifest, observer, frames):
         require(all(cell[0] > manifest["stopTick"] and cell[1:] == terminal[1:] for cell in repeats), f"Voice {voice + 1} post-stop cell consumption differs from its terminal gate-off")
         off_reads.append(len(repeats))
         # The driver's DPITCH is the written note plus the instrument's octave shift; absent means an unshifted instrument.
-        expected_starts = [(note["startTick"], note["nativeNote"] + note.get("octaveShiftSemitones", 0), note["instrument"]) for note in part["notes"]]
+        # A tied note starts no sound (player.asm CHILEGA skips STRTSND); its gate and pitch are checked below instead.
+        expected_starts = [(note["startTick"], note["nativeNote"] + note.get("octaveShiftSemitones", 0), note["instrument"]) for note in part["notes"] if not note.get("tied")]
         starts = [note for note in observer.starts if note["voice"] == voice]
         require([(note["tick"], note["nativeNote"], note["instrument"]) for note in starts] == expected_starts, f"Voice {voice + 1} discrete note start differs from its converted source notes")
         counts.append(len(starts))
@@ -155,10 +161,35 @@ def verify_driver_events(manifest, observer, frames):
         state, base = frames[tick], voice_offset(voice)
         control = state[base + 4]
         word = state[base] | state[base + 1] << 8
+        response = note.get("pitchResponse")
+        if response:
+            # A declared instrument takes its pitch from its own program, so the score pitch is no target. It must still be gated,
+            # have reached its first program row (not frame 1's TEST waveform) and sound a frequency-table entry rather than a wrapped index.
+            pitched = control & 0x70 and not control & 0x88 if response == "absolute" else control & 0xF0 and not control & 0x08
+            require(control & 1 and pitched and control == note["programWaveform"] and any(abs(word - table_word) <= 1 for table_word in frequency_table_words(manifest["clockHz"])),
+                    f"Voice {voice + 1} critical short note at tick {tick} fails its declared {response} checks: control ${control:02x} (program starts with ${note['programWaveform']:02x}), frequency {word}")
+            critical.append({"voice": voice, "tick": tick, "midi": note["midi"], "frequencyWord": word, "control": control, "pitchResponse": response, "programWaveform": note["programWaveform"]})
+            continue
         expected_word = round(440 * 2 ** ((note["midi"] - 69) / 12) * 2**24 / manifest["clockHz"])
         require(control & 1 and control & 0x70 and not control & 0x88 and abs(word - expected_word) <= 1, f"Voice {voice + 1} critical short note at tick {tick} lacks a gated full-pitch waveform: frequency {word}, expected {expected_word}, control ${control:02x}")
         critical.append({"voice": voice, "tick": tick, "midi": note["midi"], "frequencyWord": word, "expectedFrequencyWord": expected_word, "wordTolerance": 1, "control": control})
-    return {"method": "Pinned Extra driver note-column reads, discrete sound-start state and orderlist reads; exact ticks and instrument selections", "noteCounts": counts, "lastNotes": last_notes, "stopTicks": stop_ticks, "stopVolumeClearTick": volume_clear_tick, "postStopOffReads": off_reads, "postStopVolumeReads": volume_reads, "postStopGatesAndVolumeClear": True, "criticalNotes": critical, "limitations": "Discrete source-note scheduling and selected short-note full-pitch register frames are verified; ADSR reattacks, vibrato, per-voice PCM audibility and musical quality are not established by this check."}
+    tied = []
+    for voice, part in enumerate(manifest["voices"]):
+        for note in part["notes"]:
+            if not note.get("tied"):
+                continue
+            tick, base = note["startTick"], voice_offset(voice)
+            require(1 <= tick and tick + 1 < manifest["stopTick"], f"Voice {voice + 1} tied note at tick {tick} lies outside the audited calls")
+            # One call before, at and after the tie: the gate must stay open, so the envelope continues instead of restarting.
+            require(all(frames[call][base + 4] & 1 for call in (tick - 1, tick, tick + 1)), f"Voice {voice + 1} tied note at tick {tick} closes the gate around the tie")
+            word = frames[tick + 1][base] | frames[tick + 1][base + 1] << 8
+            expected_word = round(440 * 2 ** ((note["midi"] - 69) / 12) * 2**24 / manifest["clockHz"])
+            require(abs(word - expected_word) <= 1, f"Voice {voice + 1} tied note at tick {tick} did not reach its pitch: frequency {word}, expected {expected_word}")
+            tied.append({"voice": voice, "tick": tick, "midi": note["midi"], "frequencyWord": word, "expectedFrequencyWord": expected_word, "wordTolerance": 1})
+    report = {"method": "Pinned Extra driver note-column reads, discrete sound-start state and orderlist reads; exact ticks and instrument selections", "noteCounts": counts, "lastNotes": last_notes, "stopTicks": stop_ticks, "stopVolumeClearTick": volume_clear_tick, "postStopOffReads": off_reads, "postStopVolumeReads": volume_reads, "postStopGatesAndVolumeClear": True, "criticalNotes": critical, "limitations": "Discrete source-note scheduling and selected short-note full-pitch register frames are verified; ADSR reattacks, vibrato, per-voice PCM audibility and musical quality are not established by this check."}
+    if tied:
+        report["tiedNotes"] = tied
+    return report
 
 
 def audit_native(manifest_path, export_path, prefix, ticks):

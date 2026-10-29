@@ -116,6 +116,13 @@ class NativePatchComparisonTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "note starts"):
             comparison.verify_excerpt(manifest, observer, 4)
 
+    def test_excerpt_oracle_expects_no_sound_start_for_a_tied_note(self):
+        manifest, observer = prefix_fixture()
+        manifest["voices"][0]["notes"][1]["tied"] = True
+        manifest["cellMap"][1]["instrument"] = 0x3F
+        observer.cells.append(dict(manifest["cellMap"][1]))
+        self.assertEqual(comparison.verify_excerpt(manifest, observer, 5)["noteCounts"], [1, 0, 0])
+
     def test_excerpt_oracle_rejects_missing_extra_mistimed_and_wrong_voice_events(self):
         for mutate in (
             lambda value: value.cells.clear(),

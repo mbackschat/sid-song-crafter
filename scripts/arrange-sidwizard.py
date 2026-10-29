@@ -21,6 +21,9 @@ MAX_CHORD_BYTES = 32
 MAX_CHORD_TABLE_BYTES = 255
 CHORD_DELIMITERS = {"return": 0x7E, "loop": 0x7F}
 DEFAULT_CHORD_POSITION = 8
+# SWM-spec.src SWM_LEGATO_INSFX: the instrument-column value that makes the driver set the pitch only (player.asm CHILEGA/SETLEGA).
+TIE_CELL = 0x3F
+PITCH_RESPONSES = ("absolute", "percussion")
 INSTRUMENT_CELL_POLICIES = ("every-note", "on-change")
 # SWM-spec.src SWI_OCTAVE_POS: the instrument header byte the driver adds, as signed semitones, to every written note it starts.
 OCTAVE_SHIFT_POSITION = 9
@@ -70,6 +73,20 @@ def chord_table_bytes(chords):
 def octave_shift_semitones(instrument):
     value = instrument[OCTAVE_SHIFT_POSITION]
     return value - 256 if value >= 128 else value
+
+
+def parse_ties(ties, voice_names):
+    """Group the recipe's `ties` by voice; each entry marks the note starting at `startBeat` as tied to its predecessor."""
+    require(isinstance(ties, list), "ties must be a list of {voice, startBeat} entries")
+    grouped = {}
+    for tie in ties:
+        require(isinstance(tie, dict) and set(tie) == {"voice", "startBeat"} and isinstance(tie["voice"], str)
+                and type(tie["startBeat"]) in (int, float) and math.isfinite(tie["startBeat"]), "ties entries must be {voice, startBeat} with a finite beat")
+        require(tie["voice"] in voice_names, f"ties names unknown voice {tie['voice']!r}")
+        beats = grouped.setdefault(tie["voice"], [])
+        require(not any(math.isclose(beat, tie["startBeat"], abs_tol=1e-9) for beat in beats), f"ties lists beat {tie['startBeat']} on voice {tie['voice']!r} twice (duplicate)")
+        beats.append(tie["startBeat"])
+    return grouped
 
 
 def pack_pattern(cells):
@@ -182,6 +199,7 @@ def arrange(recipe_path, output_dir, *, clock=None):
     source_bytes = source.read_bytes()
     score = json.loads(source_bytes)
     require(len(score["voices"]) == voice_count and len({voice["name"] for voice in score["voices"]}) == voice_count, f"Native arrangement requires {voice_count} distinctly named source voices")
+    tie_beats = parse_ties(recipe.get("ties", []), {voice["name"] for voice in score["voices"]})
     bpm, total_beats = score["quarterBpm"], score["totalBeats"]
     require(isinstance(bpm, (int, float)) and math.isfinite(bpm) and bpm > 0 and isinstance(total_beats, (int, float)) and math.isfinite(total_beats) and total_beats > 0, "Source tempo and duration must be positive and finite")
     require(score.get("volume", 15) == 15, "Native trial currently retains the full-volume source contract only")
@@ -205,6 +223,15 @@ def arrange(recipe_path, output_dir, *, clock=None):
     instrument_numbers = {identity: index + 1 for index, identity in enumerate(identities)}
     instruments = {identity: encode_instrument(identity, recipe["instruments"][identity]) for identity in identities}
     shifts = {identity: octave_shift_semitones(data) for identity, data in instruments.items()}
+    responses = recipe.get("pitchResponse", {})
+    require(isinstance(responses, dict) and all(identity in recipe["instruments"] and response in PITCH_RESPONSES for identity, response in responses.items()),
+            f"pitchResponse must map instrument ids of this recipe to {' or '.join(repr(name) for name in PITCH_RESPONSES)}")
+    program_waveforms = {}
+    for identity in responses:
+        wave = recipe["instruments"][identity]["wave"]
+        # The audit compares the body frame with the program's first waveform, so that row must be a plain waveform row.
+        require(wave and not isinstance(wave[0], dict) and codec.octet(wave[0][0]) >= 0x10, f"pitchResponse instrument {identity!r} must start its wave table with a waveform row")
+        program_waveforms[identity] = codec.octet(wave[0][0])
     chords = recipe.get("chordTable")
     chord_bytes = b"" if chords is None else chord_table_bytes(chords)
     for identity, data in instruments.items():
@@ -252,8 +279,13 @@ def arrange(recipe_path, output_dir, *, clock=None):
                 "midi": midi, "nativeNote": None, "instrument": number, "instrumentId": identity, "section": section["name"],
             })
         timing_changes.extend(retain_short_pitch(notes, voice_index, score_ticks))
+        tied_notes = set()
+        for beat in tie_beats.get(voice["name"], []):
+            matches = [index for index, note in enumerate(notes) if math.isclose(note["startBeat"], beat, abs_tol=1e-9)]
+            require(matches, f"ties: no note starts at beat {beat} on voice {voice['name']!r}")
+            tied_notes.add(matches[0])
         selected = None
-        for note in notes:
+        for index, note in enumerate(notes):
             start, duration = note["startTick"], note["durationTicks"]
             short_duration = duration if target.name == "pal" else note["sourcePalDurationTicks"]
             if short_duration <= short_limit:
@@ -271,18 +303,35 @@ def arrange(recipe_path, output_dir, *, clock=None):
             # player.asm READROW clears CURIFX on every row and CURINS is written only by an instrument cell, so a plain note keeps
             # the voice's selection across patterns and orderlist steps. Only an instrument cell sets TABLRST to $3F, which resets the
             # pulse and filter tables and masks the instrument's no-reset control bits 6 and 7.
-            if instrument_cells == "on-change" and note["instrument"] == selected:
-                cells[start] = bytes((note["nativeNote"],))
+            if note["instrumentId"] in responses:
+                note["pitchResponse"] = responses[note["instrumentId"]]
+                note["programWaveform"] = program_waveforms[note["instrumentId"]]
+            if index in tied_notes:
+                # A tie selects no instrument and starts no sound, so it can only continue the previous note: the same instrument,
+                # sounding up to this tick (a gate-off or rest in between would leave the gate closed for a pitch-only change).
+                where = f"Tie at beat {note['startBeat']} on voice {voice['name']!r}"
+                require(index > 0, f"{where} has no previous note")
+                previous = notes[index - 1]
+                require(previous["startTick"] + previous["durationTicks"] == start, f"{where} does not start where the previous note ends (tick {previous['startTick'] + previous['durationTicks']} vs {start}): a rest or gap separates them")
+                require(previous["instrument"] == note["instrument"], f"{where} would change the instrument from {previous['instrumentId']!r} to {note['instrumentId']!r}, which a tie cannot select")
+                cells[start] = bytes((note["nativeNote"] | 0x80, TIE_CELL))
+                note["tied"] = True
             else:
-                cells[start] = bytes((note["nativeNote"] | 0x80, note["instrument"]))
-            selected = note["instrument"]
+                if instrument_cells == "on-change" and note["instrument"] == selected:
+                    cells[start] = bytes((note["nativeNote"],))
+                else:
+                    cells[start] = bytes((note["nativeNote"] | 0x80, note["instrument"]))
+                selected = note["instrument"]
             off = start + duration if duration <= 2 else gate_off_tick(start, duration)
             note["gateOffTick"] = note["nativeGateOffTick"] = off
             if off != note["sourceGateOffTick"]:
                 changes.append({"kind": "short-note-release-after-body", "voice": voice_index, "eventIndex": note["eventIndex"], "sourceTick": note["sourceGateOffTick"], "tick": off, "reason": "The second frame must remain gated to sound the native full-frequency body."})
-        for note in notes:
+        for index, note in enumerate(notes):
             off = note["gateOffTick"]
-            if cells[off] != b"\x00":
+            if index + 1 < len(notes) and notes[index + 1].get("tied"):
+                note["nativeGateOffTick"] = None
+                changes.append({"kind": "tie-keeps-gate", "voice": voice_index, "eventIndex": note["eventIndex"], "tick": off, "reason": "The next note is tied, so the gate stays open and only the pitch changes."})
+            elif cells[off] != b"\x00":
                 note["nativeGateOffTick"] = None
                 changes.append({"kind": "same-tick-release-replaced-by-note", "voice": voice_index, "eventIndex": note["eventIndex"], "tick": off})
             else:
