@@ -25,6 +25,11 @@ python3 scripts/publish-listening.py build/engine-audibility-shades/run.json --s
 
 Output directories must be fresh.
 
+## Listening verdicts
+
+- **Shades update rate (2026-10-29):** “I cannot head a difference” — no audible loss from frame-rate updates in the phrase or the ending. Scope and file hashes: [listening record](shades/listening-review.json). The verdict covers this transfer and its pulse-trio programs only.
+- **Deflektor pulse arithmetic:** pending.
+
 ## Decision rule
 
 If neither variant loses anything the listener cares about, keep SID-Wizard Extra as the composition engine and extend only the converter. If one or both do, the superset engine is justified for the mechanisms heard, each verified against its decoded player. A verdict covers this phrase and these programs; it does not settle the other two inexpressible mechanisms (Monty's shared pulse record and Ghostbusters' continuing vibrato phase), which have no isolated exact transfer to subtract from.
