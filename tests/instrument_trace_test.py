@@ -404,7 +404,7 @@ class TieTest(unittest.TestCase):
 
 def static_instrument():
     record = json.loads((ROOT / "songs/instruments/lead.static-pulse@1.json").read_text())
-    return tool.program_instrument(record)
+    return tool.library.program_instrument(record["program"], "lead.static-pulse@1")
 
 
 def converted_notes(directory):

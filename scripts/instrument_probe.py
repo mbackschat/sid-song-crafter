@@ -20,6 +20,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from audio_comparison import read_pcm16  # noqa: E402
+import instrument_library as library  # noqa: E402
 from sid_clock import clock_spec  # noqa: E402
 
 PROBE_ID = 'probe-level-v1'
@@ -158,10 +159,7 @@ def claims(measured, midi):
 
 def probe_record(path, output):
     record = json.loads(Path(path).read_text())
-    program = record['program']
-    value = json.loads((ROOT / program['file']).read_text())
-    for key in program['record'].split('.'):
-        value = value[key]
+    value = library.program_instrument(record['program'], f'{record["id"]}@{record["version"]}')
     role = record['fit']['roles'][0]
     wav = render(value, role, Path(output) / f'{record["id"]}@{record["version"]}')
     samples, rate = read_mono(wav)

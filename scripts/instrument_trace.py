@@ -637,21 +637,11 @@ def execute(instrument, output):
     return Trace(frames), notes_from_manifest(manifest), manifest['stopTick']
 
 
-def program_instrument(record):
-    program = record['program']
-    if 'record' not in program:
-        raise ValueError(f'{record["id"]}@{record["version"]}: the probe needs a program that names an instrument record in a JSON file')
-    value = json.loads((ROOT / program['file']).read_text())
-    for key in program['record'].split('.'):
-        value = value[key]
-    return value
-
-
 def probe_record(path, output):
     """Execute one library record's program on the probe phrase. Returns (record, derived fields, facts)."""
     record = json.loads(Path(path).read_text())
     directory = Path(output) / f'{record["id"]}@{record["version"]}'
-    trace, notes, stop = execute(program_instrument(record), directory)
+    trace, notes, stop = execute(library.program_instrument(record['program'], f'{record["id"]}@{record["version"]}'), directory)
     fields, facts = derive(trace, notes, stop)
     sidecar = {'probe': PROBE_ID, 'record': f'{record["id"]}@{record["version"]}', 'thresholds': asdict(T), 'phrase': [list(note) for note in PHRASE], 'notes': {label: note._asdict() for label, note in notes.items()}, 'stopUpdate': stop, 'derived': fields, 'facts': facts}
     (directory / 'derivation.json').write_text(json.dumps(sidecar, indent=1, ensure_ascii=False) + '\n')

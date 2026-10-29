@@ -207,12 +207,18 @@ def program_identity(program, label, root):
         data = target.read_bytes()
         require('sha256' not in program or hashlib.sha256(data).hexdigest() == program['sha256'], f'{label}.sha256: does not match the file')
         return hashlib.sha256(data).hexdigest()
-    value = json.loads(target.read_text())
+    return instrument_identity(program_instrument(program, label, root))
+
+
+def program_instrument(program, label, root=ROOT):
+    """The SID-Wizard instrument dict that a program's file and record pointer name."""
+    require('record' in program, f'{label}: the program names no instrument record in a JSON file')
+    value = json.loads((root / program['file']).read_text())
     for key in program['record'].split('.'):
         require(type(value) is dict and key in value, f'{label}: program record {program["record"]} not found in {program["file"]}')
         value = value[key]
     require(type(value) is dict, f'{label}: program record is not an instrument')
-    return instrument_identity(value)
+    return value
 
 
 def instrument_identity(instrument):
