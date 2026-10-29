@@ -23,7 +23,8 @@ A SID instrument can be a small program that shapes a note's attack, moving tone
 ## Features
 
 - **Score preparation:** MIDI import with explicit track mappings, repeat handling and documented reductions into SID voices.
-- **Instrument and arrangement library:** waveform, pulse-width, envelope, filter and pitch programs, with examples and listening findings.
+- **Instrument library:** every SID-Wizard instrument the project has built, as a selectable record with its score interface, voice and filter costs, probe-measured character (envelope, motion, level, brightness) and the listener verdicts that name it, each with the context it was heard in. Recipes reference an instrument as `id@version`; see [choose and use library instruments](docs/workflows/instrument-library.md).
+- **Arrangement techniques:** waveform, pulse-width, envelope, filter and pitch programs, with examples and listening findings.
 - **Native export:** editable SID-Wizard songs (`.swm`/`.sws`), playable `.sid` files and standalone `.prg` programs.
 - **Chip targets:** single-SID and dual-SID stereo, MOS6581/MOS8580, and explicit PAL or NTSC builds.
 - **Build and comparison tools:** scripted rendering, cached listening packages, and A/B comparisons with recorded levels.
@@ -202,6 +203,7 @@ The outputs are `build/own-score-native/export/candidate.sid` and `candidate.prg
 
 ## Explore further
 
+- [Choose and use library instruments](docs/workflows/instrument-library.md): select instruments for a brief from measured traits and context-weighted verdicts, reference them in a recipe and record what you hear; worked through the Bach Toccata palette.
 - [Technique lookup](docs/research/technique-index.md), [instruments](docs/research/composition/instruments/README.md) and [gestures](docs/research/composition/gestures/README.md): find a technique by musical purpose, with examples and listening evidence.
 - [Project plan](docs/PLAN.md): sole authority for overall scope, current status, remaining work and next priorities.
 - [Two-SID workflow](docs/workflows/native-song-workflow.md#reusable-two-chip-test): six voices, separate chip roles and stereo output.

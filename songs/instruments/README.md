@@ -1,6 +1,6 @@
 # Instrument library
 
-Selectable SID-Wizard Extra instruments with measured characterisation, and the listener verdicts that name them. The [instrument library contract](../../docs/proposals/instrument-library.md) owns the record and verdict formats, the probes and the selection procedure; selectors are at least the MEDIUM tier.
+Selectable SID-Wizard Extra instruments with measured characterisation, and the listener verdicts that name them. Start with the [guide](../../docs/workflows/instrument-library.md), which works through choosing the Bach Toccata palette; the [contract](../../docs/proposals/instrument-library.md) owns the record and verdict formats, the probes and the selection procedure.
 
 | Path | Content |
 | --- | --- |

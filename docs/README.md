@@ -16,6 +16,7 @@ Use the [project overview](../README.md) for SID Song Crafter's purpose and curr
 
 - [Compose from decoded instruments](workflows/decoded-song-workflow.md): deliver one musical case through export, listening and familiar-material transfer; record reuse and effort alongside evidence.
 - [Arrange preserved source music](workflows/song-workflow.md): source provenance, conversion boundaries and baseline builds.
+- [Choose and use library instruments](workflows/instrument-library.md): select instruments for a brief, reference them by `id@version`, record verdicts and add new instruments; Bach Toccata case study.
 - [Build a native SID-Wizard song](workflows/native-song-workflow.md): editable three- or six-voice arrangements, export, audit and rendering.
 - [Try native instruments](workflows/instrument-trials.md): reproducible sound-design phrases and A/B trials.
 - [Render and inspect audio](workflows/audio-workflow.md): SID-to-WAV setup, timing, pitch and ending checks.
@@ -45,7 +46,7 @@ Use the [project overview](../README.md) for SID Song Crafter's purpose and curr
 ## Review proposed work
 
 - [Crafter workbench direction](proposals/workbench-direction.md): agreed implementation direction for the agent-assisted workflow, Codex/Claude Code support, interface alternatives, effort evaluation and separate core, optional and local storage.
-- [Instrument library and characterisation spec](proposals/instrument-library.md): instruments as named SID programs with a score interface, resource costs and basis-tagged characterisation for LLM selection.
+- [Instrument library contract](proposals/instrument-library.md): settled and implemented record, verdict, probe and selection rules, with the blind-selection evidence behind them.
 - [SID Song Explorer](https://github.com/mbackschat/sid-song-explorer): standalone browser playback and arrangement-analysis project; its [founding design](https://github.com/mbackschat/sid-song-explorer/blob/main/docs/design/web-player-and-analyser.md) and [application research](https://github.com/mbackschat/sid-song-explorer/blob/main/docs/research/web-music-explorers.md) moved there. [Crafter handoff and catalog responsibility](PLAN.md#sid-song-explorer-repository-handoff).
 
 ## Read the song studies
