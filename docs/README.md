@@ -45,6 +45,7 @@ Use the [project overview](../README.md) for SID Song Crafter's purpose and curr
 ## Review proposed work
 
 - [Crafter workbench direction](proposals/workbench-direction.md): agreed implementation direction for the agent-assisted workflow, Codex/Claude Code support, interface alternatives, effort evaluation and separate core, optional and local storage.
+- [Instrument library and characterisation spec](proposals/instrument-library.md): instruments as named SID programs with a score interface, resource costs and basis-tagged characterisation for LLM selection.
 - [SID Song Explorer](https://github.com/mbackschat/sid-song-explorer): standalone browser playback and arrangement-analysis project; its [founding design](https://github.com/mbackschat/sid-song-explorer/blob/main/docs/design/web-player-and-analyser.md) and [application research](https://github.com/mbackschat/sid-song-explorer/blob/main/docs/research/web-music-explorers.md) moved there. [Crafter handoff and catalog responsibility](PLAN.md#sid-song-explorer-repository-handoff).
 
 ## Read the song studies

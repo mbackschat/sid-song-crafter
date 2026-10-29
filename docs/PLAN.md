@@ -75,6 +75,7 @@ Explorer's Pages catalog can serve cleared samples and link materials-only arran
 | Further composer research and supplementary Åkesson work | Deferred; the six required bounded contrasts are complete. See [scope and order](#scope-and-order). |
 | Archived local experiments | Flashdance, Monty and Elise source experiments were archived and removed from the working tree on 2026-10-17 with user authorization. [Recovery route](workflows/build-cache.md#archived-deferred-source-experiments); not queued or implicitly accepted. |
 | Reduction in total composition effort | The agreed [workbench assessment](#workbench-value-and-usability-assessment) is complete, with observed effort and useful outputs recorded; comparative savings remain unproven. A controlled comparison is deferred until a second independent operator is available. |
+| Instrument library and characterisation spec | Contract settled as a [proposal](proposals/instrument-library.md); validator, record storage, SID-Wizard bank migration and generated index are not queued. A song-level score format for LLM composition is a separate, unstarted contract. |
 
 Starting deferred work requires a new scope decision recorded in this plan. Existing musical reservations and technical limitations remain in their owning studies; they do not silently create new tasks.
 
