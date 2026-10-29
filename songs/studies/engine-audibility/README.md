@@ -28,12 +28,16 @@ Output directories must be fresh.
 ## Listening verdicts
 
 - **Shades update rate (2026-10-29):** “I cannot head a difference” — no audible loss from frame-rate updates in the phrase or the ending. Scope and file hashes: [listening record](shades/listening-review.json). The verdict covers this transfer and its pulse-trio programs only.
-- **Deflektor pulse arithmetic:** pending.
+- **Deflektor pulse arithmetic (2026-10-29):** the listener extended the same verdict to this package — no audible loss from SID-Wizard's carrying sweep in the phrase or the ending. Scope and file hashes: [listening record](deflektor/listening-review.json).
 
 ## Decision rule
 
 If neither variant loses anything the listener cares about, keep SID-Wizard Extra as the composition engine and extend only the converter. If one or both do, the superset engine is justified for the mechanisms heard, each verified against its decoded player. A verdict covers this phrase and these programs; it does not settle the other two inexpressible mechanisms (Monty's shared pulse record and Ghostbusters' continuing vibrato phase), which have no isolated exact transfer to subtract from.
 
+## Outcome
+
+Neither replacement lost anything the listener could hear, so by the decision rule SID-Wizard Extra remains the composition engine and the next step is converter support for its full instrument model; a superset engine is not justified by these two mechanisms. Monty's shared pulse record and Ghostbusters' continuing vibrato phase remain untested and reopen the engine question only if a concrete arrangement needs them. The study is closed.
+
 ## Model assistance
 
-Standing decision at opening: no model call. The [existing calibrations](../../../docs/research/audio-assessment.md#use-and-reassess-model-assistance) do not validate a model for detecting subtle pulse or timing differences that matter to this listener; human listening decides.
+Standing decision at opening, unchanged at closure: no model call. The [existing calibrations](../../../docs/research/audio-assessment.md#use-and-reassess-model-assistance) do not validate a model for detecting subtle pulse or timing differences that matter to this listener; human listening decides.

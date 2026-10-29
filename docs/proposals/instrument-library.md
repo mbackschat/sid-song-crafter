@@ -1,6 +1,6 @@
 # Instrument library and characterisation spec
 
-Status: proposed contract, settled on 2026-10-29 and now under revision after the spikes below; no validator, storage or migration exists in the repository. The [plan](../PLAN.md#deferred-work-and-unproven-outcomes) owns the agreed order: the [engine-limit audibility comparison](../../songs/studies/engine-audibility/README.md), then converter support for the full SID-Wizard instrument model, then a superset engine only if the comparison needs it.
+Status: proposed contract, settled on 2026-10-29 and now under revision after the spikes below; no validator, storage or migration exists in the repository. The [plan](../PLAN.md#deferred-work-and-unproven-outcomes) owns the agreed order: the [engine-limit audibility comparison](../../songs/studies/engine-audibility/README.md#outcome) is closed with SID-Wizard Extra as the engine; converter support for its full instrument model is next.
 
 ## Spike findings that the next revision must answer
 
@@ -14,7 +14,7 @@ Five bounded spikes on 2026-10-29 tested the contract in practice: writing recor
 | Interface fields are measurable, not authorable | Hand-written records left `onNewNote`/`lifetime` unknown; execution filled 39 of 48 headline interface fields for imported instruments | Generate interface fields from a standard probe phrase **through the song pipeline** (tempo matters: trial-path observations do not transfer); give interface claims a basis and evidence link |
 | Vocabulary misses observed behaviour | No TEST-frame `onNewNote`, no onset latency, no pitch response (drums ignore score pitch), no written-versus-sounding transposition, no waveform field, per-component tie behaviour, `moving-pulse` covering four different behaviours | Extend from these concrete cases; define thresholds for attack, release and weight |
 | Decoded master programs are not drivable through the interface alone | Every accepted transfer needed an engine-specific adapter and covered the whole trio | Keep decoded programs engine-scoped; "reusable" must name the adapter and ensemble it was proven with |
-| SID-Wizard Extra combines instruments but expresses 4 of 15 decoded mechanisms exactly | Source review of `player.asm` and the exporter | Default engine pending the [audibility comparison](../../songs/studies/engine-audibility/README.md) |
+| SID-Wizard Extra combines instruments but expresses 4 of 15 decoded mechanisms exactly | Source review of `player.asm` and the exporter; replacing Deflektor's low-byte PWM and Shades' CIA rate with SID-Wizard behaviour was [inaudible to the listener](../../songs/studies/engine-audibility/README.md#outcome) | SID-Wizard Extra is the default engine; decoded programs stay engine-scoped references |
 | Upstream instruments can enter largely automatically | 76% of record leaves filled by parsing and execution for 12 upstream examples; converter limits block bass, chord-table and percussion instruments | Reference upstream files by path and SHA-256 (redistribution needs a separate rights check); see the [converter limits](../workflows/native-song-workflow.md#converter-limits-on-the-sid-wizard-instrument-model) |
 
 ## Purpose
