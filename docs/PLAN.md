@@ -8,7 +8,7 @@ As of 2026-10-17, the authorized workbench assessment is complete: onboarding, r
 
 | Category | State | Where to inspect |
 | --- | --- | --- |
-| Active work | None; all five assessment milestones complete | [Workbench value and usability assessment](#workbench-value-and-usability-assessment) |
+| Active work | [Engine-limit audibility comparison](../songs/studies/engine-audibility/README.md): decides whether SID-Wizard Extra suffices for master mechanisms or a superset engine is needed; awaits two listening verdicts | [Instrument library proposal](proposals/instrument-library.md) |
 | Catalog integration | Normalized version 1 producer and six-entry/four-material index implemented; Explorer owns consumer integration and publication | [Catalog contract](workflows/catalog.md) and [Explorer repository handoff](#sid-song-explorer-repository-handoff) |
 | Previous delivery programme | Complete for recorded scopes | [Overall closure checkpoint](#overall-closure-checkpoint-2026-10-16) and [completion audit](#completion-audit) |
 | Musical implementation | Mozart K. 525, movement III: complete PAL single-SID and stereo renditions, stereo benefit and ending accepted; case closed | [Score interpretation cases](#active-score-interpretation-trial) |
@@ -75,7 +75,7 @@ Explorer's Pages catalog can serve cleared samples and link materials-only arran
 | Further composer research and supplementary Åkesson work | Deferred; the six required bounded contrasts are complete. See [scope and order](#scope-and-order). |
 | Archived local experiments | Flashdance, Monty and Elise source experiments were archived and removed from the working tree on 2026-10-17 with user authorization. [Recovery route](workflows/build-cache.md#archived-deferred-source-experiments); not queued or implicitly accepted. |
 | Reduction in total composition effort | The agreed [workbench assessment](#workbench-value-and-usability-assessment) is complete, with observed effort and useful outputs recorded; comparative savings remain unproven. A controlled comparison is deferred until a second independent operator is available. |
-| Instrument library and characterisation spec | Contract settled as a [proposal](proposals/instrument-library.md); validator, record storage, SID-Wizard bank migration and generated index are not queued. A song-level score format for LLM composition is a separate, unstarted contract. |
+| Instrument library and characterisation spec | [Proposal](proposals/instrument-library.md) under revision from spike findings. Order agreed 2026-10-29: the [engine-limit audibility comparison](../songs/studies/engine-audibility/README.md) first, then converter support for the full SID-Wizard instrument model, then a superset engine only if the comparison shows it is needed. A song-level score format for LLM composition is a separate, unstarted contract. |
 
 Starting deferred work requires a new scope decision recorded in this plan. Existing musical reservations and technical limitations remain in their owning studies; they do not silently create new tasks.
 
