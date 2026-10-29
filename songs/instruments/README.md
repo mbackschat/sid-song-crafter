@@ -8,7 +8,7 @@ Selectable SID-Wizard Extra instruments with measured characterisation, and the 
 | [verdicts/](verdicts/) | One immutable file per listener verdict, with structured context and a verbatim quote from the owning study's listening record. |
 | [index.json](index.json) | Generated: each version's verdicts from its own side, computed evidence level, accepted partners, reusability and every arrangement file that embeds the program. |
 
-Records do not store evidence. Change a verdict or record, then regenerate the index:
+A `sidwizard-arrangement-v1` recipe uses a library version with `"instruments": {"lead": {"library": "lead.triangle-vibrato@1"}}`; the converter resolves the program and names the version in its manifest. Records do not store evidence. Change a verdict or record, then regenerate the index:
 
 ```sh
 python3 scripts/instrument_library.py check   # validate everything; fail when index.json is stale

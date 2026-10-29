@@ -49,6 +49,29 @@ def instrument_codec():
     return module
 
 
+def resolve_library_instruments(instruments):
+    """Replace each `{"library": "<id>@<version>"}` entry with that library version's program.
+
+    New arrangements reference the instrument library (docs/proposals/instrument-library.md) instead of copying a
+    program; embedded program dicts in existing recipes stay as they are. Returns the resolved instruments and the
+    library version per referencing instrument id.
+    """
+    references = {identity: value for identity, value in instruments.items() if isinstance(value, dict) and "library" in value}
+    if not references:
+        return instruments, {}
+    import instrument_library as library
+    records, _ = library.load(ROOT)
+    resolved = dict(instruments)
+    for identity, value in references.items():
+        key = value["library"]
+        require(set(value) == {"library"}, f"Instrument {identity}: a library reference names only the library version")
+        require(key in records, f"Instrument {identity}: unknown library version {key}")
+        program = records[key]["program"]
+        require(program["engine"] == "sidwizard-extra-1.97", f"Instrument {identity}: library version {key} is not a SID-Wizard Extra program")
+        resolved[identity] = library.program_instrument(program, key)
+    return resolved, {identity: value["library"] for identity, value in references.items()}
+
+
 def chord_table_bytes(chords):
     """Encode the recipe's `chordTable` as the SWM chord table: chords 1..n back to back, each closed by its delimiter.
 
@@ -195,6 +218,7 @@ def arrange(recipe_path, output_dir, *, clock=None):
     pattern_limit, instrument_limit = (100, 36) if sid_count == 1 else (105, 29)
     require(recipe.get("timingPolicy") == "retain-full-pitch", "Recipe must explicitly select the supported retain-full-pitch timing policy")
     require(all(re.fullmatch(r"[a-z][a-z0-9-]*", identity) for identity in recipe["instruments"]), "Native instrument id must be a simple lowercase alphanumeric/hyphen name")
+    recipe["instruments"], library_versions = resolve_library_instruments(recipe["instruments"])
     source = (recipe_path.parent / recipe["score"]).resolve()
     source_bytes = source.read_bytes()
     score = json.loads(source_bytes)
@@ -395,7 +419,8 @@ def arrange(recipe_path, output_dir, *, clock=None):
         "sourceTailPalTicks": source_tail,
         "scoreTicks": score_ticks, "tailTicks": tail, "totalTicks": total_ticks, "rowCount": row_count, "stopTick": total_ticks, "stopVolumeClearTick": total_ticks,
         "renderSeconds": (total_ticks + 1) / target.ticks_per_second + 1, "patterns": [{key: value for key, value in pattern.items() if key != "bytes"} for pattern in patterns],
-        "instruments": [{"id": identity, "number": instrument_numbers[identity], "name": recipe["instruments"][identity]["name"]} for identity in identities],
+        "instruments": [{"id": identity, "number": instrument_numbers[identity], "name": recipe["instruments"][identity]["name"],
+                         **({"library": library_versions[identity]} if identity in library_versions else {})} for identity in identities],
         "voices": voices, "cellMap": cell_map, "timingChanges": timing_changes, "articulationChanges": changes, "endPolicy": "stop with gates closed and main volume zero",
         "criticalNotes": [dict(note, voice=index, audibleCheckTick=note["startTick"] + 1) for index, voice in enumerate(voices) for note in voice["notes"] if note["sourceDurationTicks"] <= 2 or note["durationTicks"] <= 2],
     }

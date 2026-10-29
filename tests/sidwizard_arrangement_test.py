@@ -633,6 +633,34 @@ class SIDWizardArrangementTest(unittest.TestCase):
                     self.chord_recipe(directory, chords=chords, instrument=dict(INSTRUMENT))
                 self.assertFalse((Path(directory) / "out").exists())
 
+    LIBRARY_KEY = "lead.triangle-vibrato@1"
+
+    def library_program(self):
+        record = json.loads((ROOT / f"songs/instruments/{self.LIBRARY_KEY}.json").read_text())
+        value = json.loads((ROOT / record["program"]["file"]).read_text())
+        for key in record["program"]["record"].split("."):
+            value = value[key]
+        return value
+
+    def test_library_reference_converts_exactly_like_the_embedded_program(self):
+        events = [{"startBeat": 0, "durationBeats": 10, "midi": 69}]
+        with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:
+            score = synthetic_score(events, beats=20)
+            _, embedded = self.create(first, score, instruments={"pluck": self.library_program()})
+            _, referenced = self.create(second, score, instruments={"pluck": {"library": self.LIBRARY_KEY}})
+            self.assertEqual(Path(embedded["nativePath"]).read_bytes(), Path(referenced["nativePath"]).read_bytes())
+            self.assertEqual(referenced["instruments"][0]["library"], self.LIBRARY_KEY)
+            self.assertNotIn("library", embedded["instruments"][0])
+
+    def test_library_reference_must_name_one_existing_version(self):
+        score = synthetic_score([{"startBeat": 0, "durationBeats": 10, "midi": 69}], beats=20)
+        for label, reference in {"unknown version": {"library": "lead.triangle-vibrato@99"},
+                                 "extra field": {"library": self.LIBRARY_KEY, "name": "OTHER"}}.items():
+            with self.subTest(label), tempfile.TemporaryDirectory() as directory:
+                with self.assertRaisesRegex(ValueError, "library"):
+                    self.create(directory, score, instruments={"pluck": reference})
+                self.assertFalse((Path(directory) / "out").exists())
+
     def tie_recipe(self, directory, events, ties, *, policy=None, sections=None, **overrides):
         score = synthetic_score(events, beats=60)
         settings = {"instruments": {"pluck": INSTRUMENT, "alt": dict(INSTRUMENT, name="ALTPLUCK")}, "ties": ties}

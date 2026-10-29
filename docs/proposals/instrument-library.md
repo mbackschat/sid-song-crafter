@@ -1,6 +1,6 @@
 # Instrument library and characterisation spec
 
-Status: contract settled on 2026-10-29 for MEDIUM-tier selectors after one revision from the spikes below; the [library](../../songs/instruments/README.md), its validator, both probes and the migration of every embedded SID-Wizard program are implemented. The [plan](../PLAN.md#deferred-work-and-unproven-outcomes) owns the agreed order. SID-Wizard Extra is the composition engine ([engine-limit audibility comparison](../../songs/studies/engine-audibility/README.md#outcome)), and the converter supports its full instrument model ([converter limits](../workflows/native-song-workflow.md#converter-limits-on-the-sid-wizard-instrument-model)).
+Status: contract settled on 2026-10-29 for MEDIUM-tier selectors after one revision from the spikes below; the [library](../../songs/instruments/README.md), its validator, both probes, the migration of every embedded SID-Wizard program and recipe references by `id@version` are implemented. The [plan](../PLAN.md#deferred-work-and-unproven-outcomes) owns the agreed order. SID-Wizard Extra is the composition engine ([engine-limit audibility comparison](../../songs/studies/engine-audibility/README.md#outcome)), and the converter supports its full instrument model ([converter limits](../workflows/native-song-workflow.md#converter-limits-on-the-sid-wizard-instrument-model)).
 
 ## Purpose
 
