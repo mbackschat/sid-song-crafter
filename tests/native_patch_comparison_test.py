@@ -107,6 +107,15 @@ class NativePatchComparisonTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "before"):
             comparison.verify_excerpt(manifest, observer, 11)
 
+    def test_excerpt_oracle_adds_the_instrument_octave_shift_to_the_written_note(self):
+        manifest, observer = prefix_fixture()
+        manifest["voices"][0]["notes"][0]["octaveShiftSemitones"] = -12
+        observer.starts[0]["nativeNote"] = 61 - 12
+        self.assertEqual(comparison.verify_excerpt(manifest, observer, 4)["noteCounts"], [1, 0, 0])
+        observer.starts[0]["nativeNote"] = 61
+        with self.assertRaisesRegex(ValueError, "note starts"):
+            comparison.verify_excerpt(manifest, observer, 4)
+
     def test_excerpt_oracle_rejects_missing_extra_mistimed_and_wrong_voice_events(self):
         for mutate in (
             lambda value: value.cells.clear(),

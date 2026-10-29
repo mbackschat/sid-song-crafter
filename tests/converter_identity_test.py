@@ -23,7 +23,7 @@ def baseline_with_changed_pitch(ref, destination):
     for source in (ROOT / "scripts").glob("*.py"):
         shutil.copy(source, scripts / source.name)
     arranger = scripts / "arrange-sidwizard.py"
-    changed = arranger.read_text().replace("native_note = midi - 11", "native_note = midi - 10")
+    changed = arranger.read_text().replace('note["nativeNote"] = written - 11', 'note["nativeNote"] = written - 10')
     assert changed != arranger.read_text()
     arranger.write_text(changed)
     return arranger

@@ -79,7 +79,8 @@ def verify_excerpt(manifest, observer, ticks):
         fields = ("tick", "pattern", "byteOffset", "noteCode", "instrument")
         cells = [tuple(cell.get(field) for field in fields) for cell in manifest["cellMap"] if cell["voice"] == voice and cell["tick"] < ticks]
         require([tuple(cell.get(field) for field in fields) for cell in observer.cells if cell["voice"] == voice] == cells, f"Voice {voice + 1} excerpt cell consumption differs from conversion")
-        starts = [(note["startTick"], note["nativeNote"], note["instrument"]) for note in part["notes"] if note["startTick"] < ticks]
+        # DPITCH is the written note plus the instrument's octave shift; absent means an unshifted instrument.
+        starts = [(note["startTick"], note["nativeNote"] + note.get("octaveShiftSemitones", 0), note["instrument"]) for note in part["notes"] if note["startTick"] < ticks]
         require([(note["tick"], note["nativeNote"], note["instrument"]) for note in observer.starts if note["voice"] == voice] == starts, f"Voice {voice + 1} excerpt note starts differ from conversion")
         sequence = [(entry["tick"], entry["pattern"]) for entry in part["expectedPatternEntries"] if entry["tick"] is None or entry["tick"] < ticks]
         require([(entry["tick"], entry["entry"]) for entry in observer.sequence_reads if entry["voice"] == voice] == sequence, f"Voice {voice + 1} excerpt sequence reads differ from conversion")

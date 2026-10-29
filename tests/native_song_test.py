@@ -308,15 +308,15 @@ class NativeSongTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "discrete note start"):
             native_song.verify_driver_events(manifest, observer, frames)
 
-    def test_critical_note_pitch_target_follows_the_shifted_sounding_pitch(self):
+    def test_critical_note_pitch_target_is_the_score_pitch_whatever_the_instrument_shift(self):
         manifest, observer, frames = fixture()
         manifest["criticalNotes"][0]["octaveShiftSemitones"] = -12
-        with self.assertRaisesRegex(ValueError, "critical short note"):
-            native_song.verify_driver_events(manifest, observer, frames)
+        # `midi` is the sounding score pitch; the shift only changes which cell is written, never the target.
+        self.assertEqual(native_song.verify_driver_events(manifest, observer, frames)["criticalNotes"][0]["midi"], 72)
         word = round(440 * 2 ** ((60 - 69) / 12) * 2**24 / manifest["clockHz"])
         frames[1][0:2] = [word & 255, word >> 8]
-        report = native_song.verify_driver_events(manifest, observer, frames)
-        self.assertEqual(report["criticalNotes"][0]["expectedFrequencyWord"], word)
+        with self.assertRaisesRegex(ValueError, "critical short note"):
+            native_song.verify_driver_events(manifest, observer, frames)
 
     def test_frame_reconstruction_applies_init_and_retains_exact_last_writes(self):
         writes = [{"phase": "init", "tick": None, "address": 0xd418, "value": 15}, {"phase": "play", "tick": 1, "address": 0xd400, "value": 10}, {"phase": "play", "tick": 1, "address": 0xd400, "value": 11}]

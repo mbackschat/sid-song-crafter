@@ -137,7 +137,7 @@ def verify_driver_events(manifest, observer, frames):
         repeats = actual[len(expected):]
         require(all(cell[0] > manifest["stopTick"] and cell[1:] == terminal[1:] for cell in repeats), f"Voice {voice + 1} post-stop cell consumption differs from its terminal gate-off")
         off_reads.append(len(repeats))
-        # The driver reports the written note plus the instrument's octave shift; absent means an unshifted instrument.
+        # The driver's DPITCH is the written note plus the instrument's octave shift; absent means an unshifted instrument.
         expected_starts = [(note["startTick"], note["nativeNote"] + note.get("octaveShiftSemitones", 0), note["instrument"]) for note in part["notes"]]
         starts = [note for note in observer.starts if note["voice"] == voice]
         require([(note["tick"], note["nativeNote"], note["instrument"]) for note in starts] == expected_starts, f"Voice {voice + 1} discrete note start differs from its converted source notes")
@@ -155,10 +155,9 @@ def verify_driver_events(manifest, observer, frames):
         state, base = frames[tick], voice_offset(voice)
         control = state[base + 4]
         word = state[base] | state[base + 1] << 8
-        shift = note.get("octaveShiftSemitones", 0)
-        expected_word = round(440 * 2 ** ((note["midi"] + shift - 69) / 12) * 2**24 / manifest["clockHz"])
+        expected_word = round(440 * 2 ** ((note["midi"] - 69) / 12) * 2**24 / manifest["clockHz"])
         require(control & 1 and control & 0x70 and not control & 0x88 and abs(word - expected_word) <= 1, f"Voice {voice + 1} critical short note at tick {tick} lacks a gated full-pitch waveform: frequency {word}, expected {expected_word}, control ${control:02x}")
-        critical.append({"voice": voice, "tick": tick, "midi": note["midi"], "frequencyWord": word, "expectedFrequencyWord": expected_word, "wordTolerance": 1, "control": control, **({"octaveShiftSemitones": shift} if shift else {})})
+        critical.append({"voice": voice, "tick": tick, "midi": note["midi"], "frequencyWord": word, "expectedFrequencyWord": expected_word, "wordTolerance": 1, "control": control})
     return {"method": "Pinned Extra driver note-column reads, discrete sound-start state and orderlist reads; exact ticks and instrument selections", "noteCounts": counts, "lastNotes": last_notes, "stopTicks": stop_ticks, "stopVolumeClearTick": volume_clear_tick, "postStopOffReads": off_reads, "postStopVolumeReads": volume_reads, "postStopGatesAndVolumeClear": True, "criticalNotes": critical, "limitations": "Discrete source-note scheduling and selected short-note full-pitch register frames are verified; ADSR reattacks, vibrato, per-voice PCM audibility and musical quality are not established by this check."}
 
 

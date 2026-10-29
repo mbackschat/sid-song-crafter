@@ -14,7 +14,7 @@ from sid_clock import PAL_CLOCK, clock_spec
 ROOT = Path(__file__).resolve().parents[1]
 TICKS_PER_SECOND = PAL_CLOCK / (312 * 63)
 PATTERN_ROWS = 248
-# SWM-spec.src SWI_OCTAVE_POS: the instrument header byte the driver adds, as signed semitones, to every note it starts.
+# SWM-spec.src SWI_OCTAVE_POS: the instrument header byte the driver adds, as signed semitones, to every written note it starts.
 OCTAVE_SHIFT_POSITION = 9
 
 
@@ -205,14 +205,13 @@ def arrange(recipe_path, output_dir, *, clock=None):
             identity = section["voices"][voice["name"]]
             duration = end - start
             number = instrument_numbers[identity]
-            native_note = midi - 11
             off = gate_off_tick(start, duration)
             notes.append({
                 "eventIndex": event_index, "startBeat": start_beat, "durationBeats": duration_beats,
                 "sourceStartTick": start, "sourceDurationTicks": duration, "sourceGateOffTick": off,
                 "sourcePalDurationTicks": rounded((start_beat + duration_beats) * pal_rate) - rounded(start_beat * pal_rate),
                 "startTick": start, "durationTicks": duration, "gateOffTick": off, "nativeGateOffTick": off,
-                "midi": midi, "nativeNote": native_note, "instrument": number, "instrumentId": identity, "section": section["name"],
+                "midi": midi, "nativeNote": None, "instrument": number, "instrumentId": identity, "section": section["name"],
             })
         timing_changes.extend(retain_short_pitch(notes, voice_index, score_ticks))
         for note in notes:
@@ -221,10 +220,12 @@ def arrange(recipe_path, output_dir, *, clock=None):
             if short_duration <= short_limit:
                 note["instrumentId"] = short_instruments.get(voice["name"], note["instrumentId"])
                 note["instrument"] = instrument_numbers[note["instrumentId"]]
-            # The driver adds the instrument's shift in 8-bit arithmetic, so an out-of-range result would index past the frequency table.
-            # The check follows the final instrument choice because short-note substitution can change it.
+            # The driver adds the instrument's shift to the written note, so the cell holds the score pitch minus that shift
+            # and the pitch that sounds stays the score pitch. The instrument is final only after short-note substitution.
             shift = shifts[note["instrumentId"]]
-            require(12 <= note["midi"] + shift <= 106, f"Voice {voice['name']} note at beat {note['startBeat']} (MIDI {note['midi']}) would sound as MIDI {note['midi'] + shift} after instrument {note['instrumentId']!r} octave shift {shift:+d} semitones, outside SID-Wizard's native range 12..106")
+            written = note["midi"] - shift
+            require(12 <= written <= 106, f"Voice {voice['name']} note at beat {note['startBeat']} (MIDI {note['midi']}) cannot sound on instrument {note['instrumentId']!r} with octave shift {shift:+d} semitones: the cell would need MIDI {written}, outside SID-Wizard's native range 12..106")
+            note["nativeNote"] = written - 11
             if shift:
                 note["octaveShiftSemitones"] = shift
             require(cells[start] == b"\x00", "Source note collision on the native tick grid")
