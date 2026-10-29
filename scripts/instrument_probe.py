@@ -172,7 +172,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument('records', nargs='+', type=Path, help='library records whose SID-Wizard program to probe')
     parser.add_argument('--output', type=Path, required=True, help='fresh directory for probe renders')
-    parser.add_argument('--write', action='store_true', help='store the measured claims in each record (migration only; a probed version is immutable)')
+    parser.add_argument('--write', action='store_true', help='store the measured claims in each record; the program itself never changes')
     args = parser.parse_args()
     if args.output.exists():
         sys.exit('Probe output already exists; choose a fresh directory to preserve evidence')

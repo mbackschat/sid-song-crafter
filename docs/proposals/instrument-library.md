@@ -27,7 +27,7 @@ The interface is where entanglement becomes visible: score-owned behaviour, stat
 
 ## Record contract
 
-One immutable JSON file per instrument version at `songs/instruments/<id>@<version>.json`, and one immutable JSON file per listener verdict at `songs/instruments/verdicts/<verdict-id>.json`. Unknown fields fail validation, as in the [catalog contract](../workflows/catalog.md#version-1-contract).
+One JSON file per instrument version at `songs/instruments/<id>@<version>.json`, whose program never changes (measured claims may be added or re-measured under a newer probe version), and one immutable JSON file per listener verdict at `songs/instruments/verdicts/<verdict-id>.json`. Unknown fields fail validation, as in the [catalog contract](../workflows/catalog.md#version-1-contract).
 
 ```ts
 type Known<T> = { value: T; basis: "intent" | "measured" | "tested"; detail: string; record?: string };
