@@ -1,0 +1,114 @@
+{
+  "id": "chord.triangle-pulse-arpeggio",
+  "version": 4,
+  "name": "BCHSUB program from Toccata from BWV 565",
+  "nativeName": "BCHSUB",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/studies/bach-toccata-bass-phrasing/hybrid.json",
+    "record": "instruments.subdominant-cycle"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff",
+      "tie"
+    ],
+    "pitchResponse": "absolute",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing"
+    ],
+    "onNewNote": "test-frame",
+    "onTie": "keep-envelope-and-program",
+    "afterGateOff": "program-continues",
+    "lifetime": "until-release-ends",
+    "pitchSettlesAfterUpdates": {
+      "basis": "unknown"
+    },
+    "state": []
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "none",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "PAL"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "Embedded as BCHSUB for the subdominant-cycle part; envelope A0 D2 S5 R8.",
+    "waveforms": {
+      "value": [
+        "triangle",
+        "pulse"
+      ],
+      "basis": "measured",
+      "detail": "probe-interface-v1: waveform bits of the gated, non-TEST updates of the long note MIDI 60, 138 gated updates: triangle+pulse x137"
+    },
+    "envelope": {
+      "attack": 0,
+      "decay": 2,
+      "sustain": 5,
+      "release": 8,
+      "attackMs": 2,
+      "releaseMs": 300
+    },
+    "attack": {
+      "value": "hard",
+      "basis": "measured",
+      "detail": "envelope attack nibble 0 = 2 ms (datasheet rate)"
+    },
+    "body": {
+      "value": "arpeggio",
+      "basis": "measured",
+      "detail": "probe-interface-v1: classified from the 137 gated body updates of the long note MIDI 60, 138 gated updates: distinct pulse widths 1, distinct cutoffs 1, noise share 0.0"
+    },
+    "release": {
+      "value": "medium",
+      "basis": "measured",
+      "detail": "envelope release nibble 8 = 300 ms full-scale (datasheet rate)"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -29.8,
+        "sustainDb": -30.3
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 57 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 2.3,
+        "body": 2.7
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 57 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": [
+      {
+        "value": "arpeggio",
+        "basis": "measured",
+        "detail": "probe-interface-v1: frequency deviates up to 33.48 % from the settled pitch over the long note MIDI 60, 138 gated updates, 34 sign flips, first visible 1 updates after the row"
+      }
+    ]
+  },
+  "fit": {
+    "roles": [
+      "chord"
+    ],
+    "avoid": []
+  },
+  "provenance": {
+    "origin": "original",
+    "sourceWork": "Toccata from BWV 565",
+    "card": "songs/studies/bach-toccata-bass-phrasing/README.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}

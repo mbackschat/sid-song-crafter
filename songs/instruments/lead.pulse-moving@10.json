@@ -1,0 +1,121 @@
+{
+  "id": "lead.pulse-moving",
+  "version": 10,
+  "name": "ELALTPL2 program from Für Elise",
+  "nativeName": "ELALTPL2",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/studies/elise-layered-entrance/layered.json",
+    "record": "instruments.melody-pulse-wide"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff",
+      "tie"
+    ],
+    "pitchResponse": "absolute",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing"
+    ],
+    "onNewNote": "test-frame",
+    "onTie": "keep-envelope-and-program",
+    "afterGateOff": "program-continues",
+    "lifetime": "until-release-ends",
+    "pitchSettlesAfterUpdates": {
+      "value": 2,
+      "basis": "measured",
+      "detail": "probe-interface-v1: the first update at full pitch is 1 after the row for every probe pitch and after a rest (update 0 is the start frame), so a note of 2 updates sounds at its pitch"
+    },
+    "state": []
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "none",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "PAL"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "Embedded as ELALTPL2 for the melody-pulse-wide part; envelope A0 D3 S5 R4.",
+    "waveforms": {
+      "value": [
+        "pulse"
+      ],
+      "basis": "measured",
+      "detail": "probe-interface-v1: waveform bits of the gated, non-TEST updates of the long note MIDI 60, 138 gated updates: pulse x137"
+    },
+    "envelope": {
+      "attack": 0,
+      "decay": 3,
+      "sustain": 5,
+      "release": 4,
+      "attackMs": 2,
+      "releaseMs": 114
+    },
+    "attack": {
+      "value": "hard",
+      "basis": "measured",
+      "detail": "envelope attack nibble 0 = 2 ms (datasheet rate)"
+    },
+    "body": {
+      "value": "moving-pulse",
+      "basis": "measured",
+      "detail": "probe-interface-v1: classified from the 137 gated body updates of the long note MIDI 60, 138 gated updates: distinct pulse widths 13, distinct cutoffs 1, noise share 0.0"
+    },
+    "release": {
+      "value": "short",
+      "basis": "measured",
+      "detail": "envelope release nibble 4 = 114 ms full-scale (datasheet rate)"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -26.8,
+        "sustainDb": -27.1
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 2.0,
+        "body": 2.0
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": [
+      {
+        "value": "pwm",
+        "basis": "measured",
+        "detail": "probe-interface-v1: 13 distinct pulse widths in [1664, 2240] over the long note MIDI 60, 138 gated updates, first visible 2 updates after the row"
+      },
+      {
+        "value": "delayed-vibrato",
+        "basis": "measured",
+        "detail": "probe-interface-v1: frequency deviates up to 0.65 % from the settled pitch over the long note MIDI 60, 138 gated updates, 30 sign flips, first visible 14 updates after the row",
+        "startsAfterUpdates": 14
+      }
+    ]
+  },
+  "fit": {
+    "roles": [
+      "lead"
+    ],
+    "avoid": []
+  },
+  "provenance": {
+    "origin": "original",
+    "sourceWork": "Für Elise",
+    "card": "songs/studies/elise-layered-entrance/README.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "lead.saw-filter-sweep",
+  "version": 1,
+  "name": "PNTHLEAD program from The Pink Panther Theme",
+  "nativeName": "PNTHLEAD",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/pink-panther/native.json",
+    "record": "instruments.lead"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff"
+    ],
+    "pitchResponse": "absolute",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing"
+    ],
+    "onNewNote": "test-frame",
+    "onTie": "not-established",
+    "afterGateOff": "program-continues",
+    "lifetime": "until-release-ends",
+    "pitchSettlesAfterUpdates": {
+      "value": 2,
+      "basis": "measured",
+      "detail": "probe-interface-v1: the first update at full pitch is 1 after the row for every probe pitch and after a rest (update 0 is the start frame), so a note of 2 updates sounds at its pitch"
+    },
+    "state": []
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "owner",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "PAL"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "Embedded as PNTHLEAD for the lead part; envelope A2 D6 S7 R4.",
+    "waveforms": {
+      "value": [
+        "saw"
+      ],
+      "basis": "measured",
+      "detail": "probe-interface-v1: waveform bits of the gated, non-TEST updates of the long note MIDI 60, 138 gated updates: saw x137"
+    },
+    "envelope": {
+      "attack": 2,
+      "decay": 6,
+      "sustain": 7,
+      "release": 4,
+      "attackMs": 16,
+      "releaseMs": 114
+    },
+    "attack": {
+      "value": "medium",
+      "basis": "measured",
+      "detail": "envelope attack nibble 2 = 16 ms (datasheet rate)"
+    },
+    "body": {
+      "value": "moving-filter",
+      "basis": "measured",
+      "detail": "probe-interface-v1: classified from the 137 gated body updates of the long note MIDI 60, 138 gated updates: distinct pulse widths 1, distinct cutoffs 13, noise share 0.0"
+    },
+    "release": {
+      "value": "short",
+      "basis": "measured",
+      "detail": "envelope release nibble 4 = 114 ms full-scale (datasheet rate)"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -28.9,
+        "sustainDb": -29.2
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 1.8,
+        "body": 1.8
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": [
+      {
+        "value": "delayed-vibrato",
+        "basis": "measured",
+        "detail": "probe-interface-v1: frequency deviates up to 0.52 % from the settled pitch over the long note MIDI 60, 138 gated updates, 29 sign flips, first visible 18 updates after the row",
+        "startsAfterUpdates": 18
+      },
+      {
+        "value": "filter-sweep",
+        "basis": "measured",
+        "detail": "probe-interface-v1: 13 distinct filter cutoffs in [736, 832] over the long note MIDI 60, 138 gated updates, first visible 2 updates after the row"
+      }
+    ]
+  },
+  "fit": {
+    "roles": [
+      "lead"
+    ],
+    "avoid": []
+  },
+  "provenance": {
+    "origin": "original",
+    "sourceWork": "The Pink Panther Theme",
+    "card": "songs/pink-panther/README.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}

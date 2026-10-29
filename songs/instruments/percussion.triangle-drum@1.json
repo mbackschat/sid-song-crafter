@@ -1,0 +1,104 @@
+{
+  "id": "percussion.triangle-drum",
+  "version": 1,
+  "name": "BCHA1KCK program from Toccata from BWV 565",
+  "nativeName": "BCHA1KCK",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/studies/bach-toccata-groove-kick/hybrid.json",
+    "record": "instruments.quarter-kick"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff"
+    ],
+    "pitchResponse": "percussion",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing"
+    ],
+    "onNewNote": "test-frame",
+    "onTie": "not-established",
+    "afterGateOff": "release-only",
+    "lifetime": "not-established",
+    "pitchSettlesAfterUpdates": {
+      "basis": "unknown"
+    },
+    "state": []
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "none",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "PAL"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "Embedded as BCHA1KCK for the quarter-kick part; envelope A0 D4 S6 R4.",
+    "waveforms": {
+      "value": [
+        "triangle"
+      ],
+      "basis": "measured",
+      "detail": "probe-interface-v1: waveform bits of the gated, non-TEST updates of the long note MIDI 60, 138 gated updates: triangle x8"
+    },
+    "envelope": {
+      "attack": 0,
+      "decay": 4,
+      "sustain": 6,
+      "release": 4,
+      "attackMs": 2,
+      "releaseMs": 114
+    },
+    "attack": {
+      "value": "hard",
+      "basis": "measured",
+      "detail": "envelope attack nibble 0 = 2 ms (datasheet rate)"
+    },
+    "body": {
+      "basis": "unknown"
+    },
+    "release": {
+      "value": "short",
+      "basis": "measured",
+      "detail": "envelope release nibble 4 = 114 ms full-scale (datasheet rate)"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -31.0,
+        "sustainDb": null
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 57 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 0.7,
+        "body": 0.9
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 57 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": []
+  },
+  "fit": {
+    "roles": [
+      "percussion"
+    ],
+    "avoid": []
+  },
+  "provenance": {
+    "origin": "original",
+    "sourceWork": "Toccata from BWV 565",
+    "card": "songs/studies/bach-toccata-groove-kick/README.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}

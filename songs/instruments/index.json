@@ -1,6 +1,76 @@
 {
   "contract": "docs/proposals/instrument-library.md",
   "instruments": {
+    "bass.noise-pulse-filter-sweep@1": {
+      "name": "ELGROOVE program from Für Elise",
+      "summary": "Embedded as ELGROOVE for the bass-groove part; envelope A0 D3 S11 R9.",
+      "roles": [
+        "bass"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "owner",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -21.1,
+        "sustainDb": -20.2
+      },
+      "brightness": {
+        "onset": 24.5,
+        "body": 2.7
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/elise-layered-entrance/layered.json#instruments.bass-groove",
+        "songs/studies/elise-layered-entrance/reply.json#instruments.bass-groove"
+      ]
+    },
+    "bass.noise-pulse-filter-sweep@2": {
+      "name": "ELGROOVE program from Für Elise",
+      "summary": "Embedded as ELGROOVE for the bass-groove part; envelope A0 D3 S8 R5.",
+      "roles": [
+        "bass"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "owner",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -23.7,
+        "sustainDb": -22.9
+      },
+      "brightness": {
+        "onset": 21.7,
+        "body": 2.4
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/fuer-elise-interpretation/recipe-b.json#instruments.bass-groove",
+        "songs/studies/fuer-elise-interpretation/recipe.json#instruments.bass-groove"
+      ]
+    },
     "bass.pulse-filter-static@1": {
       "name": "Fixed-width pulse bass with static low-pass",
       "summary": "Gated pulse at fixed width $600 routed through the shared low-pass filter at resonance 2 with a constant cutoff high byte $A0; long release.",
@@ -75,6 +145,45 @@
         "songs/studies/bach-toccata-opening-driven/restrained.json#instruments.bass"
       ]
     },
+    "bass.pulse-filter-static@2": {
+      "name": "BCHGRBS program from Toccata from BWV 565",
+      "summary": "Embedded as BCHGRBS for the groove-bass part; envelope A0 D3 S9 R2.",
+      "roles": [
+        "bass"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "owner",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -23.2,
+        "sustainDb": -22.6
+      },
+      "brightness": {
+        "onset": 2.0,
+        "body": 2.4
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-bass-phrasing/hybrid.json#instruments.groove-bass",
+        "songs/studies/bach-toccata-groove-blend/hybrid.json#instruments.groove-bass",
+        "songs/studies/bach-toccata-groove-kick/hybrid.json#instruments.groove-bass",
+        "songs/studies/bach-toccata-groove-punch/hybrid.json#instruments.groove-bass",
+        "songs/studies/bach-toccata-groove-release/hybrid.json#instruments.groove-bass",
+        "songs/studies/bach-toccata-groove-subtraction/hybrid.json#instruments.groove-bass"
+      ]
+    },
     "bass.pulse-filter-sweep@1": {
       "name": "Fixed-width pulse bass with falling low-pass contour",
       "summary": "Gated pulse at fixed width $600 routed through the shared low-pass filter at resonance 4; cutoff starts at 1024 and falls to 640 over 24 updates after each selection.",
@@ -135,6 +244,74 @@
         "songs/axel-f/role-aware.json#instruments.bass",
         "songs/axel-f/selected-roles.json#instruments.bass",
         "songs/axel-f/smoother.json#instruments.bass"
+      ]
+    },
+    "bass.pulse-filter-sweep@2": {
+      "name": "ELBASS program from Für Elise",
+      "summary": "Embedded as ELBASS for the bass-soft part; envelope A0 D4 S2 R3.",
+      "roles": [
+        "bass"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "owner",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -29.2,
+        "sustainDb": -35.3
+      },
+      "brightness": {
+        "onset": 2.0,
+        "body": 2.3
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/fuer-elise-sidwizard.json#instruments.bass-soft"
+      ]
+    },
+    "bass.pulse-filter-sweep@3": {
+      "name": "ELPEDAL program from Für Elise",
+      "summary": "Embedded as ELPEDAL for the bass-pedal part; envelope A0 D3 S1 R2.",
+      "roles": [
+        "bass"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "owner",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -31.4,
+        "sustainDb": -41.4
+      },
+      "brightness": {
+        "onset": 1.8,
+        "body": 2.1
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/fuer-elise-sidwizard.json#instruments.bass-pedal"
       ]
     },
     "bass.pulse-moving@1": {
@@ -275,6 +452,77 @@
         "songs/mozart-minuet/stereo.json#instruments.bass"
       ]
     },
+    "bass.pulse-moving@3": {
+      "name": "BCHRISE program from Toccata from BWV 565",
+      "summary": "Embedded as BCHRISE for the pedal-connector part; envelope A0 D1 S3 R2.",
+      "roles": [
+        "bass"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -32.0,
+        "sustainDb": -32.6
+      },
+      "brightness": {
+        "onset": 2.5,
+        "body": 5.7
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-intention-blend/hybrid.json#instruments.pedal-connector"
+      ]
+    },
+    "bass.pulse-static@1": {
+      "name": "PNTHBASS program from The Pink Panther Theme",
+      "summary": "Embedded as PNTHBASS for the bass part; envelope A0 D10 S2 R9.",
+      "roles": [
+        "bass"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -24.8,
+        "sustainDb": -42.3
+      },
+      "brightness": {
+        "onset": 6.2,
+        "body": 9.8
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/pink-panther/ensemble-pulse.json#instruments.bass",
+        "songs/pink-panther/ensemble-pulse.json#instruments.harmony",
+        "songs/pink-panther/full-native.json#instruments.bass",
+        "songs/pink-panther/full-native.json#instruments.harmony"
+      ]
+    },
     "bass.triangle-plain@1": {
       "name": "Plain triangle bass",
       "summary": "Single gated triangle waveform with no pulse, vibrato or filter program; decay 5, sustain 3, release 5.",
@@ -332,6 +580,143 @@
       "reusable": false,
       "occurrences": [
         "songs/moon-river/restrained.json#instruments.bass"
+      ]
+    },
+    "bass.triangle-plain@2": {
+      "name": "ELBSHORT program from Für Elise",
+      "summary": "Embedded as ELBSHORT for the bass-short part; envelope A0 D3 S2 R2.",
+      "roles": [
+        "bass"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -35.4,
+        "sustainDb": -39.8
+      },
+      "brightness": {
+        "onset": 1.2,
+        "body": 1.0
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/fuer-elise-sidwizard.json#instruments.bass-short"
+      ]
+    },
+    "bass.triangle-plain@3": {
+      "name": "PNTHBASS program from The Pink Panther Theme",
+      "summary": "Embedded as PNTHBASS for the bass part; envelope A0 D5 S3 R3.",
+      "roles": [
+        "bass"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -32.1,
+        "sustainDb": -36.2
+      },
+      "brightness": {
+        "onset": 1.2,
+        "body": 1.0
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/pink-panther/basic-inspired.json#instruments.bass",
+        "songs/pink-panther/native.json#instruments.bass"
+      ]
+    },
+    "chord.pulse-arpeggio@1": {
+      "name": "ELAMINOR program from Für Elise",
+      "summary": "Embedded as ELAMINOR for the chord-minor part; envelope A0 D3 S4 R3.",
+      "roles": [
+        "chord"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -29.1,
+        "sustainDb": -61.0
+      },
+      "brightness": {
+        "onset": 2.3,
+        "body": 2.7
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/fuer-elise-interpretation/recipe.json#instruments.chord-minor"
+      ]
+    },
+    "chord.pulse-arpeggio@2": {
+      "name": "ELEMAJOR program from Für Elise",
+      "summary": "Embedded as ELEMAJOR for the chord-major part; envelope A0 D3 S4 R3.",
+      "roles": [
+        "chord"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -29.1,
+        "sustainDb": -58.8
+      },
+      "brightness": {
+        "onset": 2.3,
+        "body": 2.6
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/fuer-elise-interpretation/recipe.json#instruments.chord-major"
       ]
     },
     "chord.saw-triangle@1": {
@@ -401,6 +786,595 @@
         "songs/axel-f/role-aware.json#instruments.harmony",
         "songs/axel-f/selected-roles.json#instruments.harmony",
         "songs/axel-f/smoother.json#instruments.harmony"
+      ]
+    },
+    "chord.triangle-pulse-arpeggio@1": {
+      "name": "BCHDIM program from Toccata from BWV 565",
+      "summary": "Embedded as BCHDIM for the diminished-cycle part; envelope A0 D2 S5 R8.",
+      "roles": [
+        "chord"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -29.8,
+        "sustainDb": -30.3
+      },
+      "brightness": {
+        "onset": 2.3,
+        "body": 2.5
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-bass-phrasing/hybrid.json#instruments.diminished-cycle",
+        "songs/studies/bach-toccata-expressive-attack/hybrid.json#instruments.diminished-cycle",
+        "songs/studies/bach-toccata-full/hybrid.json#instruments.diminished-cycle",
+        "songs/studies/bach-toccata-groove-blend/hybrid.json#instruments.diminished-cycle",
+        "songs/studies/bach-toccata-groove-kick/hybrid.json#instruments.diminished-cycle",
+        "songs/studies/bach-toccata-groove-punch/hybrid.json#instruments.diminished-cycle",
+        "songs/studies/bach-toccata-groove-release/hybrid.json#instruments.diminished-cycle",
+        "songs/studies/bach-toccata-groove-subtraction/hybrid.json#instruments.diminished-cycle",
+        "songs/studies/bach-toccata-integrated-full/hybrid.json#instruments.diminished-cycle",
+        "songs/studies/bach-toccata-integrated-motion/hybrid.json#instruments.diminished-cycle",
+        "songs/studies/bach-toccata-intention-blend/hybrid.json#instruments.diminished-cycle",
+        "songs/studies/bach-toccata-opening/hybrid.json#instruments.diminished-cycle",
+        "songs/studies/bach-toccata-opening-driven/hybrid.json#instruments.diminished-cycle"
+      ]
+    },
+    "chord.triangle-pulse-arpeggio@10": {
+      "name": "ELACMIN program from Für Elise",
+      "summary": "Embedded as ELACMIN for the chord-minor part; envelope A0 D3 S4 R3.",
+      "roles": [
+        "chord"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -31.4,
+        "sustainDb": -61.0
+      },
+      "brightness": {
+        "onset": 2.4,
+        "body": 2.2
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/fuer-elise-interpretation/recipe-b.json#instruments.chord-minor"
+      ]
+    },
+    "chord.triangle-pulse-arpeggio@11": {
+      "name": "ELACMAJ program from Für Elise",
+      "summary": "Embedded as ELACMAJ for the chord-major part; envelope A0 D3 S4 R3.",
+      "roles": [
+        "chord"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -31.4,
+        "sustainDb": -58.8
+      },
+      "brightness": {
+        "onset": 2.4,
+        "body": 2.4
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/fuer-elise-interpretation/recipe-b.json#instruments.chord-major"
+      ]
+    },
+    "chord.triangle-pulse-arpeggio@2": {
+      "name": "BCHDOM program from Toccata from BWV 565",
+      "summary": "Embedded as BCHDOM for the dominant-cycle part; envelope A0 D2 S5 R8.",
+      "roles": [
+        "chord"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -29.8,
+        "sustainDb": -30.3
+      },
+      "brightness": {
+        "onset": 2.3,
+        "body": 2.7
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-bass-phrasing/hybrid.json#instruments.dominant-cycle",
+        "songs/studies/bach-toccata-full/hybrid.json#instruments.dominant-cycle",
+        "songs/studies/bach-toccata-groove-blend/hybrid.json#instruments.dominant-cycle",
+        "songs/studies/bach-toccata-groove-kick/hybrid.json#instruments.dominant-cycle",
+        "songs/studies/bach-toccata-groove-punch/hybrid.json#instruments.dominant-cycle",
+        "songs/studies/bach-toccata-groove-release/hybrid.json#instruments.dominant-cycle",
+        "songs/studies/bach-toccata-groove-subtraction/hybrid.json#instruments.dominant-cycle",
+        "songs/studies/bach-toccata-integrated-full/hybrid.json#instruments.dominant-cycle"
+      ]
+    },
+    "chord.triangle-pulse-arpeggio@3": {
+      "name": "BCHMIN program from Toccata from BWV 565",
+      "summary": "Embedded as BCHMIN for the minor-cycle part; envelope A0 D2 S5 R8.",
+      "roles": [
+        "chord"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -29.8,
+        "sustainDb": -30.3
+      },
+      "brightness": {
+        "onset": 2.3,
+        "body": 2.6
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-bass-phrasing/hybrid.json#instruments.minor-cycle",
+        "songs/studies/bach-toccata-full/hybrid.json#instruments.minor-cycle",
+        "songs/studies/bach-toccata-groove-blend/hybrid.json#instruments.minor-cycle",
+        "songs/studies/bach-toccata-groove-kick/hybrid.json#instruments.minor-cycle",
+        "songs/studies/bach-toccata-groove-punch/hybrid.json#instruments.minor-cycle",
+        "songs/studies/bach-toccata-groove-release/hybrid.json#instruments.minor-cycle",
+        "songs/studies/bach-toccata-groove-subtraction/hybrid.json#instruments.minor-cycle",
+        "songs/studies/bach-toccata-integrated-full/hybrid.json#instruments.minor-cycle"
+      ]
+    },
+    "chord.triangle-pulse-arpeggio@4": {
+      "name": "BCHSUB program from Toccata from BWV 565",
+      "summary": "Embedded as BCHSUB for the subdominant-cycle part; envelope A0 D2 S5 R8.",
+      "roles": [
+        "chord"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -29.8,
+        "sustainDb": -30.3
+      },
+      "brightness": {
+        "onset": 2.3,
+        "body": 2.7
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-bass-phrasing/hybrid.json#instruments.subdominant-cycle",
+        "songs/studies/bach-toccata-full/hybrid.json#instruments.subdominant-cycle",
+        "songs/studies/bach-toccata-groove-blend/hybrid.json#instruments.subdominant-cycle",
+        "songs/studies/bach-toccata-groove-kick/hybrid.json#instruments.subdominant-cycle",
+        "songs/studies/bach-toccata-groove-punch/hybrid.json#instruments.subdominant-cycle",
+        "songs/studies/bach-toccata-groove-release/hybrid.json#instruments.subdominant-cycle",
+        "songs/studies/bach-toccata-groove-subtraction/hybrid.json#instruments.subdominant-cycle",
+        "songs/studies/bach-toccata-integrated-full/hybrid.json#instruments.subdominant-cycle"
+      ]
+    },
+    "chord.triangle-pulse-arpeggio@5": {
+      "name": "BCHINNR program from Toccata from BWV 565",
+      "summary": "Embedded as BCHINNR for the dominant-inner-cycle part; envelope A0 D2 S5 R8.",
+      "roles": [
+        "chord"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -29.8,
+        "sustainDb": -30.3
+      },
+      "brightness": {
+        "onset": 2.3,
+        "body": 2.7
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-bass-phrasing/hybrid.json#instruments.dominant-inner-cycle",
+        "songs/studies/bach-toccata-full/hybrid.json#instruments.dominant-inner-cycle",
+        "songs/studies/bach-toccata-groove-blend/hybrid.json#instruments.dominant-inner-cycle",
+        "songs/studies/bach-toccata-groove-kick/hybrid.json#instruments.dominant-inner-cycle",
+        "songs/studies/bach-toccata-groove-punch/hybrid.json#instruments.dominant-inner-cycle",
+        "songs/studies/bach-toccata-groove-release/hybrid.json#instruments.dominant-inner-cycle",
+        "songs/studies/bach-toccata-groove-subtraction/hybrid.json#instruments.dominant-inner-cycle",
+        "songs/studies/bach-toccata-integrated-full/hybrid.json#instruments.dominant-inner-cycle"
+      ]
+    },
+    "chord.triangle-pulse-arpeggio@6": {
+      "name": "ELACMIN program from Für Elise",
+      "summary": "Embedded as ELACMIN for the chord-minor part; envelope A0 D3 S4 R10.",
+      "roles": [
+        "chord"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -30.6,
+        "sustainDb": -32.2
+      },
+      "brightness": {
+        "onset": 2.3,
+        "body": 2.4
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/elise-layered-entrance/layered.json#instruments.chord-minor"
+      ]
+    },
+    "chord.triangle-pulse-arpeggio@7": {
+      "name": "ELACMAJ program from Für Elise",
+      "summary": "Embedded as ELACMAJ for the chord-major part; envelope A0 D3 S4 R10.",
+      "roles": [
+        "chord"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -30.6,
+        "sustainDb": -32.2
+      },
+      "brightness": {
+        "onset": 2.3,
+        "body": 2.4
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/elise-layered-entrance/layered.json#instruments.chord-major"
+      ]
+    },
+    "chord.triangle-pulse-arpeggio@8": {
+      "name": "ELACMIN program from Für Elise",
+      "summary": "Embedded as ELACMIN for the chord-minor part; envelope A0 D3 S4 R8.",
+      "roles": [
+        "chord"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -30.6,
+        "sustainDb": -32.2
+      },
+      "brightness": {
+        "onset": 2.3,
+        "body": 2.4
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/elise-layered-entrance/reply.json#instruments.chord-minor"
+      ]
+    },
+    "chord.triangle-pulse-arpeggio@9": {
+      "name": "ELACMAJ program from Für Elise",
+      "summary": "Embedded as ELACMAJ for the chord-major part; envelope A0 D3 S4 R8.",
+      "roles": [
+        "chord"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -30.6,
+        "sustainDb": -32.2
+      },
+      "brightness": {
+        "onset": 2.3,
+        "body": 2.4
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/elise-layered-entrance/reply.json#instruments.chord-major"
+      ]
+    },
+    "countermelody.pulse-moving@1": {
+      "name": "BCHANSWR program from Toccata from BWV 565",
+      "summary": "Embedded as BCHANSWR for the pulse-answer part; envelope A0 D1 S3 R2.",
+      "roles": [
+        "countermelody"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -32.0,
+        "sustainDb": -32.6
+      },
+      "brightness": {
+        "onset": 2.6,
+        "body": 2.9
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-intention-blend/hybrid.json#instruments.pulse-answer"
+      ]
+    },
+    "effect.pulse-arpeggio@1": {
+      "name": "BCHSPARK program from Toccata from BWV 565",
+      "summary": "Embedded as BCHSPARK for the entrance-spark part; envelope A0 D1 S3 R2.",
+      "roles": [
+        "effect"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -32.0,
+        "sustainDb": -32.6
+      },
+      "brightness": {
+        "onset": 2.6,
+        "body": 2.9
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-intention-blend/hybrid.json#instruments.entrance-spark"
+      ]
+    },
+    "harmony.pulse-static@1": {
+      "name": "MOZVIOLA program from Minuet and Trio, K. 525",
+      "summary": "Embedded as MOZVIOLA for the viola part; envelope A0 D4 S5 R7.",
+      "roles": [
+        "harmony"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -26.5,
+        "sustainDb": -27.3
+      },
+      "brightness": {
+        "onset": 2.4,
+        "body": 2.4
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/mozart-minuet/mono.json#instruments.viola",
+        "songs/mozart-minuet/stereo.json#instruments.viola"
+      ]
+    },
+    "harmony.pulse-static@2": {
+      "name": "BCHGRHM program from Toccata from BWV 565",
+      "summary": "Embedded as BCHGRHM for the groove-harmony part; envelope A0 D3 S5 R4.",
+      "roles": [
+        "harmony"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -27.7,
+        "sustainDb": -28.3
+      },
+      "brightness": {
+        "onset": 2.6,
+        "body": 2.9
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-bass-phrasing/hybrid.json#instruments.groove-harmony",
+        "songs/studies/bach-toccata-groove-kick/hybrid.json#instruments.groove-harmony",
+        "songs/studies/bach-toccata-groove-punch/hybrid.json#instruments.groove-harmony",
+        "songs/studies/bach-toccata-groove-release/hybrid.json#instruments.groove-harmony",
+        "songs/studies/bach-toccata-groove-subtraction/hybrid.json#instruments.groove-harmony"
+      ]
+    },
+    "harmony.pulse-static@3": {
+      "name": "BCHGRHM program from Toccata from BWV 565",
+      "summary": "Embedded as BCHGRHM for the groove-harmony part; envelope A0 D3 S5 R1.",
+      "roles": [
+        "harmony"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -27.7,
+        "sustainDb": -28.3
+      },
+      "brightness": {
+        "onset": 2.6,
+        "body": 2.9
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-groove-blend/hybrid.json#instruments.groove-harmony"
       ]
     },
     "harmony.triangle-plain@1": {
@@ -503,6 +1477,91 @@
       "reusable": false,
       "occurrences": [
         "songs/moon-river/restrained.json#instruments.harmony"
+      ]
+    },
+    "harmony.triangle-plain@3": {
+      "name": "PNTHCOMP program from The Pink Panther Theme",
+      "summary": "Embedded as PNTHCOMP for the harmony part; envelope A0 D3 S1 R2.",
+      "roles": [
+        "harmony"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -36.0,
+        "sustainDb": -45.8
+      },
+      "brightness": {
+        "onset": 1.1,
+        "body": 1.0
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/pink-panther/basic-inspired.json#instruments.harmony",
+        "songs/pink-panther/native.json#instruments.harmony"
+      ]
+    },
+    "harmony.triangle-pulse-static@1": {
+      "name": "BCHHARM program from Toccata from BWV 565",
+      "summary": "Embedded as BCHHARM for the harmony part; envelope A0 D2 S5 R8.",
+      "roles": [
+        "harmony"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -29.8,
+        "sustainDb": -30.2
+      },
+      "brightness": {
+        "onset": 2.3,
+        "body": 2.1
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/night-transit/native.json#instruments.harmony",
+        "songs/studies/bach-toccata-bass-phrasing/hybrid.json#instruments.harmony",
+        "songs/studies/bach-toccata-expressive-attack/hybrid.json#instruments.harmony",
+        "songs/studies/bach-toccata-full/hybrid.json#instruments.harmony",
+        "songs/studies/bach-toccata-full/restrained.json#instruments.harmony",
+        "songs/studies/bach-toccata-groove-blend/hybrid.json#instruments.harmony",
+        "songs/studies/bach-toccata-groove-kick/hybrid.json#instruments.harmony",
+        "songs/studies/bach-toccata-groove-punch/hybrid.json#instruments.harmony",
+        "songs/studies/bach-toccata-groove-release/hybrid.json#instruments.harmony",
+        "songs/studies/bach-toccata-groove-subtraction/hybrid.json#instruments.harmony",
+        "songs/studies/bach-toccata-integrated-full/hybrid.json#instruments.harmony",
+        "songs/studies/bach-toccata-integrated-motion/hybrid.json#instruments.harmony",
+        "songs/studies/bach-toccata-intention-blend/hybrid.json#instruments.harmony",
+        "songs/studies/bach-toccata-opening/hybrid.json#instruments.harmony",
+        "songs/studies/bach-toccata-opening/restrained.json#instruments.harmony",
+        "songs/studies/bach-toccata-opening-driven/hybrid.json#instruments.harmony",
+        "songs/studies/bach-toccata-opening-driven/restrained.json#instruments.harmony"
       ]
     },
     "harmony.triangle-soft@1": {
@@ -693,6 +1752,110 @@
       "reusable": false,
       "occurrences": [
         "songs/axel-f/native.json#instruments.lead"
+      ]
+    },
+    "lead.pulse-moving@10": {
+      "name": "ELALTPL2 program from Für Elise",
+      "summary": "Embedded as ELALTPL2 for the melody-pulse-wide part; envelope A0 D3 S5 R4.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -26.8,
+        "sustainDb": -27.1
+      },
+      "brightness": {
+        "onset": 2.0,
+        "body": 2.0
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/elise-layered-entrance/layered.json#instruments.melody-pulse-wide",
+        "songs/studies/elise-layered-entrance/reply.json#instruments.melody-pulse-wide",
+        "songs/studies/fuer-elise-interpretation/recipe-b.json#instruments.melody-pulse-wide"
+      ]
+    },
+    "lead.pulse-moving@11": {
+      "name": "ELPULSE1 program from Für Elise",
+      "summary": "Embedded as ELPULSE1 for the melody-pulse part; envelope A0 D3 S5 R4.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -26.9,
+        "sustainDb": -27.2
+      },
+      "brightness": {
+        "onset": 2.0,
+        "body": 2.2
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/fuer-elise-interpretation/recipe.json#instruments.melody-pulse"
+      ]
+    },
+    "lead.pulse-moving@12": {
+      "name": "ELPULSE2 program from Für Elise",
+      "summary": "Embedded as ELPULSE2 for the melody-pulse-wide part; envelope A0 D3 S5 R4.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -26.8,
+        "sustainDb": -27.1
+      },
+      "brightness": {
+        "onset": 2.1,
+        "body": 2.0
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/fuer-elise-interpretation/recipe.json#instruments.melody-pulse-wide"
       ]
     },
     "lead.pulse-moving@2": {
@@ -987,6 +2150,295 @@
         "songs/moon-river/native.json#instruments.lead"
       ]
     },
+    "lead.pulse-moving@6": {
+      "name": "MOZTRIO program from Minuet and Trio, K. 525",
+      "summary": "Embedded as MOZTRIO for the trio-lead part; envelope A0 D8 S4 R8.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -26.6,
+        "sustainDb": -29.7
+      },
+      "brightness": {
+        "onset": 3.7,
+        "body": 2.6
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/mozart-minuet/mono.json#instruments.trio-lead",
+        "songs/mozart-minuet/stereo.json#instruments.trio-lead"
+      ]
+    },
+    "lead.pulse-moving@7": {
+      "name": "BCHPWM program from Toccata from BWV 565",
+      "summary": "Embedded as BCHPWM for the lead part; envelope A0 D2 S8 R8.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -24.1,
+        "sustainDb": -23.1
+      },
+      "brightness": {
+        "onset": 2.4,
+        "body": 2.0
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/night-transit/native.json#instruments.lead",
+        "songs/studies/bach-toccata-expressive-attack/hybrid.json#instruments.lead",
+        "songs/studies/bach-toccata-integrated-full/hybrid.json#instruments.lead",
+        "songs/studies/bach-toccata-integrated-motion/hybrid.json#instruments.lead"
+      ]
+    },
+    "lead.pulse-moving@8": {
+      "name": "BCHPWM program from Toccata from BWV 565",
+      "summary": "Embedded as BCHPWM for the lead part; envelope A0 D2 S8 R8.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -23.7,
+        "sustainDb": -23.0
+      },
+      "brightness": {
+        "onset": 2.0,
+        "body": 2.0
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-bass-phrasing/hybrid.json#instruments.lead",
+        "songs/studies/bach-toccata-full/hybrid.json#instruments.lead",
+        "songs/studies/bach-toccata-groove-blend/hybrid.json#instruments.lead",
+        "songs/studies/bach-toccata-groove-kick/hybrid.json#instruments.lead",
+        "songs/studies/bach-toccata-groove-punch/hybrid.json#instruments.lead",
+        "songs/studies/bach-toccata-groove-release/hybrid.json#instruments.lead",
+        "songs/studies/bach-toccata-groove-subtraction/hybrid.json#instruments.lead",
+        "songs/studies/bach-toccata-intention-blend/hybrid.json#instruments.lead",
+        "songs/studies/bach-toccata-opening/hybrid.json#instruments.lead",
+        "songs/studies/bach-toccata-opening-driven/hybrid.json#instruments.lead"
+      ]
+    },
+    "lead.pulse-moving@9": {
+      "name": "ELALTPL1 program from Für Elise",
+      "summary": "Embedded as ELALTPL1 for the melody-pulse part; envelope A0 D3 S5 R4.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -26.9,
+        "sustainDb": -27.2
+      },
+      "brightness": {
+        "onset": 2.2,
+        "body": 2.0
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/elise-layered-entrance/layered.json#instruments.melody-pulse",
+        "songs/studies/elise-layered-entrance/reply.json#instruments.melody-pulse",
+        "songs/studies/fuer-elise-interpretation/recipe-b.json#instruments.melody-pulse"
+      ]
+    },
+    "lead.pulse-static@1": {
+      "name": "PNTHPULS program from The Pink Panther Theme",
+      "summary": "Embedded as PNTHPULS for the lead part; envelope A0 D9 S2 R2.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -26.1,
+        "sustainDb": -42.6
+      },
+      "brightness": {
+        "onset": 6.9,
+        "body": 7.1
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/pink-panther/basic-inspired.json#instruments.lead",
+        "songs/pink-panther/ensemble-pulse.json#instruments.lead",
+        "songs/pink-panther/full-native.json#instruments.lead"
+      ]
+    },
+    "lead.saw-filter-sweep@1": {
+      "name": "PNTHLEAD program from The Pink Panther Theme",
+      "summary": "Embedded as PNTHLEAD for the lead part; envelope A2 D6 S7 R4.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "owner",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -28.9,
+        "sustainDb": -29.2
+      },
+      "brightness": {
+        "onset": 1.8,
+        "body": 1.8
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/pink-panther/native.json#instruments.lead"
+      ]
+    },
+    "lead.saw-pulse-moving@1": {
+      "name": "BCHATT program from Toccata from BWV 565",
+      "summary": "Embedded as BCHATT for the lead-attack part; envelope A0 D2 S8 R8.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -25.0,
+        "sustainDb": -23.1
+      },
+      "brightness": {
+        "onset": 4.4,
+        "body": 2.0
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-expressive-attack/hybrid.json#instruments.lead-attack"
+      ]
+    },
+    "lead.saw-triangle@1": {
+      "name": "ELPLUCK program from Für Elise",
+      "summary": "Embedded as ELPLUCK for the melody-pluck part; envelope A0 D7 S5 R4.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -29.8,
+        "sustainDb": -31.8
+      },
+      "brightness": {
+        "onset": 2.5,
+        "body": 1.0
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/fuer-elise-sidwizard.json#instruments.melody-pluck"
+      ]
+    },
     "lead.static-pulse@1": {
       "name": "Steady fixed-width pulse lead",
       "summary": "Gated pulse voice at one fixed width (about $780) with no modulation, vibrato, filter or noise; decay 2, sustain 8, release 8.",
@@ -1021,6 +2473,89 @@
         "songs/studies/bach-toccata-full/restrained.json#instruments.lead",
         "songs/studies/bach-toccata-opening/restrained.json#instruments.lead",
         "songs/studies/bach-toccata-opening-driven/restrained.json#instruments.lead"
+      ]
+    },
+    "lead.triangle-plain@1": {
+      "name": "PLAIN0 program from Axel F",
+      "summary": "Embedded as PLAIN0 for the lead part; envelope A0 D2 S8 R8.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -28.3,
+        "sustainDb": -27.7
+      },
+      "brightness": {
+        "onset": 1.0,
+        "body": 1.0
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/axel-f/full-plain.json#instruments.bass",
+        "songs/axel-f/full-plain.json#instruments.harmony",
+        "songs/axel-f/full-plain.json#instruments.lead",
+        "songs/axel-f/plain.json#instruments.bass",
+        "songs/axel-f/plain.json#instruments.harmony",
+        "songs/axel-f/plain.json#instruments.lead",
+        "songs/moon-river/plain.json#instruments.bass",
+        "songs/moon-river/plain.json#instruments.harmony",
+        "songs/moon-river/plain.json#instruments.lead",
+        "songs/mozart-minuet/plain.json#instruments.plain",
+        "songs/pink-panther/full-plain.json#instruments.bass",
+        "songs/pink-panther/full-plain.json#instruments.harmony",
+        "songs/pink-panther/full-plain.json#instruments.lead",
+        "songs/pink-panther/plain.json#instruments.bass",
+        "songs/pink-panther/plain.json#instruments.harmony",
+        "songs/pink-panther/plain.json#instruments.lead"
+      ]
+    },
+    "lead.triangle-plain@2": {
+      "name": "ELGRACE program from Für Elise",
+      "summary": "Embedded as ELGRACE for the melody-grace part; envelope A0 D3 S5 R2.",
+      "roles": [
+        "lead"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -31.5,
+        "sustainDb": -31.8
+      },
+      "brightness": {
+        "onset": 1.0,
+        "body": 1.0
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/fuer-elise-sidwizard.json#instruments.melody-grace"
       ]
     },
     "lead.triangle-soft@1": {
@@ -1152,6 +2687,74 @@
       "reusable": false,
       "occurrences": [
         "songs/moon-river/restrained.json#instruments.lead"
+      ]
+    },
+    "percussion.triangle-drum@1": {
+      "name": "BCHA1KCK program from Toccata from BWV 565",
+      "summary": "Embedded as BCHA1KCK for the quarter-kick part; envelope A0 D4 S6 R4.",
+      "roles": [
+        "percussion"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -31.0,
+        "sustainDb": null
+      },
+      "brightness": {
+        "onset": 0.7,
+        "body": 0.9
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-groove-kick/hybrid.json#instruments.quarter-kick"
+      ]
+    },
+    "percussion.triangle-pulse-drum@1": {
+      "name": "BCHA1PNC program from Toccata from BWV 565",
+      "summary": "Embedded as BCHA1PNC for the quarter-kick part; envelope A0 D8 S6 R4.",
+      "roles": [
+        "percussion"
+      ],
+      "engine": "sidwizard-extra-1.97",
+      "resources": {
+        "voices": 1,
+        "coupling": "none",
+        "filter": "none",
+        "chipModels": [
+          "MOS8580"
+        ],
+        "clocks": [
+          "PAL"
+        ]
+      },
+      "level": {
+        "onsetDb": -25.4,
+        "sustainDb": null
+      },
+      "brightness": {
+        "onset": 1.0,
+        "body": 2.7
+      },
+      "verdicts": [],
+      "evidenceLevel": "rendered-experiment",
+      "acceptedWith": [],
+      "reusable": false,
+      "occurrences": [
+        "songs/studies/bach-toccata-groove-punch/hybrid.json#instruments.quarter-kick"
       ]
     }
   }

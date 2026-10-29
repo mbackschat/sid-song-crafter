@@ -155,11 +155,13 @@ def release_category(milliseconds):
     return 'cut' if milliseconds <= 24 else 'short' if milliseconds <= 114 else 'medium' if milliseconds <= 300 else 'long'
 
 
-def probe_values(keys):
+def probe_values(keys, silent_allowed=False):
     def check(value, label):
         fields(value, keys, label)
         for key in keys:
-            number(value[key], f'{label}.{key}')
+            # null is a measured silent window (a drum that has decayed before the sustain window), not a missing value.
+            if not (silent_allowed and value[key] is None):
+                number(value[key], f'{label}.{key}')
     return check
 
 
@@ -170,8 +172,8 @@ def validate_character(value, label, root):
     attack = claim(value['attack'], f'{label}.attack', root, lambda v, l: one_of(v, ('soft', 'medium', 'hard', 'staged'), l))
     claim(value['body'], f'{label}.body', root, lambda v, l: one_of(v, ('static', 'moving-pulse', 'moving-filter', 'arpeggio', 'pitch-animated', 'waveform-sequence', 'noise'), l))
     release = claim(value['release'], f'{label}.release', root, lambda v, l: one_of(v, ('cut', 'short', 'medium', 'long'), l))
-    for key, keys in (('level', ('onsetDb', 'sustainDb')), ('brightness', ('onset', 'body'))):
-        measured = claim(value[key], f'{label}.{key}', root, probe_values(keys))
+    for key, check in (('level', probe_values(('onsetDb', 'sustainDb'), silent_allowed=True)), ('brightness', probe_values(('onset', 'body')))):
+        measured = claim(value[key], f'{label}.{key}', root, check)
         # Probe values compare only within one probe version, so the version must be readable from the claim.
         require(measured is None or (measured['basis'] == 'measured' and PROBE.match(measured['detail'])), f'{label}.{key}: measured detail must start with the probe version')
     if 'envelope' in value:

@@ -78,7 +78,7 @@ interface Character {
   attack: Claim<"soft" | "medium" | "hard" | "staged">;
   body: Claim<"static" | "moving-pulse" | "moving-filter" | "arpeggio" | "pitch-animated" | "waveform-sequence" | "noise">;
   release: Claim<"cut" | "short" | "medium" | "long">;
-  level: Claim<{ onsetDb: number; sustainDb: number }>;
+  level: Claim<{ onsetDb: number | null; sustainDb: number | null }>;   // null: the window is silent
   brightness: Claim<{ onset: number; body: number }>;
   motion: Array<Known<"pwm" | "vibrato" | "delayed-vibrato" | "glide" | "pitch-bend" | "arpeggio" | "filter-sweep" | "waveform-change"> & { startsAfterUpdates?: number }>;
 }

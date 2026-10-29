@@ -1,0 +1,109 @@
+{
+  "id": "bass.pulse-static",
+  "version": 1,
+  "name": "PNTHBASS program from The Pink Panther Theme",
+  "nativeName": "PNTHBASS",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/pink-panther/ensemble-pulse.json",
+    "record": "instruments.bass"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff",
+      "tie"
+    ],
+    "pitchResponse": "absolute",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing"
+    ],
+    "onNewNote": "test-frame",
+    "onTie": "keep-envelope-and-program",
+    "afterGateOff": "release-only",
+    "lifetime": "until-release-ends",
+    "pitchSettlesAfterUpdates": {
+      "value": 2,
+      "basis": "measured",
+      "detail": "probe-interface-v1: the first update at full pitch is 1 after the row for every probe pitch and after a rest (update 0 is the start frame), so a note of 2 updates sounds at its pitch"
+    },
+    "state": []
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "none",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "PAL"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "Embedded as PNTHBASS for the bass part; envelope A0 D10 S2 R9.",
+    "waveforms": {
+      "value": [
+        "pulse"
+      ],
+      "basis": "measured",
+      "detail": "probe-interface-v1: waveform bits of the gated, non-TEST updates of the long note MIDI 60, 138 gated updates: pulse x137"
+    },
+    "envelope": {
+      "attack": 0,
+      "decay": 10,
+      "sustain": 2,
+      "release": 9,
+      "attackMs": 2,
+      "releaseMs": 750
+    },
+    "attack": {
+      "value": "hard",
+      "basis": "measured",
+      "detail": "envelope attack nibble 0 = 2 ms (datasheet rate)"
+    },
+    "body": {
+      "value": "static",
+      "basis": "measured",
+      "detail": "probe-interface-v1: classified from the 137 gated body updates of the long note MIDI 60, 138 gated updates: distinct pulse widths 1, distinct cutoffs 1, noise share 0.0"
+    },
+    "release": {
+      "value": "long",
+      "basis": "measured",
+      "detail": "envelope release nibble 9 = 750 ms full-scale (datasheet rate)"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -24.8,
+        "sustainDb": -42.3
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 45 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 6.2,
+        "body": 9.8
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 45 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": []
+  },
+  "fit": {
+    "roles": [
+      "bass"
+    ],
+    "avoid": []
+  },
+  "provenance": {
+    "origin": "original",
+    "sourceWork": "The Pink Panther Theme",
+    "card": "songs/pink-panther/README.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}

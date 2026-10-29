@@ -147,6 +147,11 @@ class InstrumentLibraryTest(unittest.TestCase):
     def test_rejects_intent_on_a_trait_the_envelope_measures(self):
         self.rejects(lambda r, v: r[0]["character"]["attack"].update(basis="intent"), "measured")
 
+    def test_accepts_a_silent_probe_window_as_null(self):
+        # A drum has decayed to silence before the sustain window; null records that, a number cannot.
+        self.records[0]["character"]["level"]["value"]["sustainDb"] = None
+        self.store()
+
     def test_rejects_probe_values_without_probe_version(self):
         self.rejects(lambda r, v: r[0]["character"]["level"].update(detail="render"), "probe")
 

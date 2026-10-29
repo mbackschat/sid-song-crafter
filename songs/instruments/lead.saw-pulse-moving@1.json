@@ -1,0 +1,116 @@
+{
+  "id": "lead.saw-pulse-moving",
+  "version": 1,
+  "name": "BCHATT program from Toccata from BWV 565",
+  "nativeName": "BCHATT",
+  "program": {
+    "engine": "sidwizard-extra-1.97",
+    "file": "songs/studies/bach-toccata-expressive-attack/hybrid.json",
+    "record": "instruments.lead-attack"
+  },
+  "interface": {
+    "scoreSupplies": [
+      "pitch",
+      "onset",
+      "gateOff",
+      "tie"
+    ],
+    "pitchResponse": "absolute",
+    "parameters": [],
+    "scoreOwned": [
+      "gate-off timing"
+    ],
+    "onNewNote": "test-frame",
+    "onTie": "keep-envelope-and-program",
+    "afterGateOff": "program-continues",
+    "lifetime": "until-release-ends",
+    "pitchSettlesAfterUpdates": {
+      "value": 8,
+      "basis": "measured",
+      "detail": "probe-interface-v1: the first update at full pitch is 7 after the row for every probe pitch and after a rest (update 0 is the start frame), so a note of 8 updates sounds at its pitch"
+    },
+    "state": []
+  },
+  "resources": {
+    "voices": 1,
+    "coupling": "none",
+    "filter": "none",
+    "masterVolume": "none",
+    "chipModels": [
+      "MOS8580"
+    ],
+    "clocks": [
+      "PAL"
+    ],
+    "updateRate": "frame"
+  },
+  "character": {
+    "summary": "Embedded as BCHATT for the lead-attack part; envelope A0 D2 S8 R8.",
+    "waveforms": {
+      "value": [
+        "saw",
+        "pulse"
+      ],
+      "basis": "measured",
+      "detail": "probe-interface-v1: waveform bits of the gated, non-TEST updates of the long note MIDI 60, 138 gated updates: saw x4, pulse x133"
+    },
+    "envelope": {
+      "attack": 0,
+      "decay": 2,
+      "sustain": 8,
+      "release": 8,
+      "attackMs": 2,
+      "releaseMs": 300
+    },
+    "attack": {
+      "value": "staged",
+      "basis": "measured",
+      "detail": "probe-interface-v1: the long note MIDI 60, 138 gated updates sounds saw for 4 update(s) before it settles on pulse"
+    },
+    "body": {
+      "value": "moving-pulse",
+      "basis": "measured",
+      "detail": "probe-interface-v1: classified from the 137 gated body updates of the long note MIDI 60, 138 gated updates: distinct pulse widths 45, distinct cutoffs 1, noise share 0.0"
+    },
+    "release": {
+      "value": "medium",
+      "basis": "measured",
+      "detail": "envelope release nibble 8 = 300 ms full-scale (datasheet rate)"
+    },
+    "level": {
+      "value": {
+        "onsetDb": -25.0,
+        "sustainDb": -23.1
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; AC RMS dBFS over the first 250 ms and over 1.0-1.9 s of the note"
+    },
+    "brightness": {
+      "value": {
+        "onset": 4.4,
+        "body": 2.0
+      },
+      "basis": "measured",
+      "detail": "probe-level-v1: one note at MIDI 69 gated 100 PAL updates, MOS8580, master volume 15, song pipeline render; spectral centroid divided by the fundamental over 0-60 ms and 50-550 ms (pure triangle about 1.0)"
+    },
+    "motion": [
+      {
+        "value": "pwm",
+        "basis": "measured",
+        "detail": "probe-interface-v1: 45 distinct pulse widths in [1024, 2048] over the long note MIDI 60, 138 gated updates, first visible 2 updates after the row"
+      }
+    ]
+  },
+  "fit": {
+    "roles": [
+      "lead"
+    ],
+    "avoid": []
+  },
+  "provenance": {
+    "origin": "original",
+    "sourceWork": "Toccata from BWV 565",
+    "card": "songs/studies/bach-toccata-expressive-attack/README.md",
+    "rights": "MIT (original project instrument definition, no upstream preset bytes copied; the arrangement it is embedded in carries separate terms)"
+  }
+}
