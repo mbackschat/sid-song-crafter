@@ -121,7 +121,7 @@ class InstrumentLibraryTest(unittest.TestCase):
         self.verdicts = [{**verdict(result="preferred"), "members": ["bass.triangle-plain@1"], "comparedWith": ["lead.triangle-soft@1"],
                           "context": {**verdict()["context"], "roles": {"bass.triangle-plain@1": "bass"}}}]
         entry = library.index(*self.store(), self.root)["instruments"]["lead.triangle-soft@1"]
-        self.assertEqual(entry["verdicts"][0]["side"], "rejected-alternative")
+        self.assertEqual(entry["verdicts"][0]["side"], "not-preferred-alternative")
 
     def test_rejects_unknown_fields(self):
         self.rejects(lambda r, v: r[0].update(heardAs=[]), "unknown fields")

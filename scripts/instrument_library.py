@@ -360,7 +360,7 @@ def occurrences(records, root):
 def side(key, verdict):
     if key in verdict['members']:
         return 'member'
-    return 'rejected-alternative' if verdict['result'] == 'preferred' else 'preferred-alternative' if verdict['result'] == 'not-preferred' else 'alternative'
+    return 'not-preferred-alternative' if verdict['result'] == 'preferred' else 'preferred-alternative' if verdict['result'] == 'not-preferred' else 'alternative'
 
 
 def index(records, verdicts, root=ROOT):
