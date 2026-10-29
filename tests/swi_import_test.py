@@ -69,6 +69,12 @@ class UpstreamInstrumentImportTest(unittest.TestCase):
         self.assertEqual(IMPORTER.read_swi(swi("solo-winterb"))["default_chord"], 17)
         self.assertEqual(IMPORTER.read_swi(swi("agogo"))["octave_shift"], 1)
 
+    def test_no_reset_control_bits_are_kept_in_the_control_byte(self):
+        # Bit 6 keeps the pulse table running and bit 7 the filter table when a note carries no instrument cell.
+        self.assertEqual(int(IMPORTER.read_swi(swi("solo-41norst"))["control"], 16) & 0xC0, 0x40)
+        controls = [int(IMPORTER.read_swi(path)["control"], 16) & 0xC0 for path in sorted(CORPUS.glob("*.swi"))]
+        self.assertEqual((controls.count(0x40), controls.count(0x80), controls.count(0xC0)), (12, 6, 0))
+
     def test_every_upstream_example_re_encodes_byte_for_byte_including_its_name(self):
         files = sorted(CORPUS.glob("*.swi"))
         self.assertEqual(len(files), 324)

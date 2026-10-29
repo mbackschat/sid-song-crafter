@@ -14,6 +14,7 @@ from sid_clock import PAL_CLOCK, clock_spec
 ROOT = Path(__file__).resolve().parents[1]
 TICKS_PER_SECOND = PAL_CLOCK / (312 * 63)
 PATTERN_ROWS = 248
+INSTRUMENT_CELL_POLICIES = ("every-note", "on-change")
 # SWM-spec.src SWI_OCTAVE_POS: the instrument header byte the driver adds, as signed semitones, to every written note it starts.
 OCTAVE_SHIFT_POSITION = 9
 
@@ -175,6 +176,8 @@ def arrange(recipe_path, output_dir, *, clock=None):
     instrument_numbers = {identity: index + 1 for index, identity in enumerate(identities)}
     instruments = {identity: encode_instrument(identity, recipe["instruments"][identity]) for identity in identities}
     shifts = {identity: octave_shift_semitones(data) for identity, data in instruments.items()}
+    instrument_cells = recipe.get("instrumentCells", "every-note")
+    require(instrument_cells in INSTRUMENT_CELL_POLICIES, f"instrumentCells must be one of {', '.join(INSTRUMENT_CELL_POLICIES)}")
     short_limit = recipe.get("shortNoteMaxTicks", 0)
     require(type(short_limit) is int and short_limit >= 0, "shortNoteMaxTicks must be a nonnegative integer")
     short_instruments = recipe.get("shortNoteInstruments", {})
@@ -214,6 +217,7 @@ def arrange(recipe_path, output_dir, *, clock=None):
                 "midi": midi, "nativeNote": None, "instrument": number, "instrumentId": identity, "section": section["name"],
             })
         timing_changes.extend(retain_short_pitch(notes, voice_index, score_ticks))
+        selected = None
         for note in notes:
             start, duration = note["startTick"], note["durationTicks"]
             short_duration = duration if target.name == "pal" else note["sourcePalDurationTicks"]
@@ -229,7 +233,14 @@ def arrange(recipe_path, output_dir, *, clock=None):
             if shift:
                 note["octaveShiftSemitones"] = shift
             require(cells[start] == b"\x00", "Source note collision on the native tick grid")
-            cells[start] = bytes((note["nativeNote"] | 0x80, note["instrument"]))
+            # player.asm READROW clears CURIFX on every row and CURINS is written only by an instrument cell, so a plain note keeps
+            # the voice's selection across patterns and orderlist steps. Only an instrument cell sets TABLRST to $3F, which resets the
+            # pulse and filter tables and masks the instrument's no-reset control bits 6 and 7.
+            if instrument_cells == "on-change" and note["instrument"] == selected:
+                cells[start] = bytes((note["nativeNote"],))
+            else:
+                cells[start] = bytes((note["nativeNote"] | 0x80, note["instrument"]))
+            selected = note["instrument"]
             off = start + duration if duration <= 2 else gate_off_tick(start, duration)
             note["gateOffTick"] = note["nativeGateOffTick"] = off
             if off != note["sourceGateOffTick"]:
@@ -284,6 +295,8 @@ def arrange(recipe_path, output_dir, *, clock=None):
         path.parent.mkdir(exist_ok=True)
         path.write_bytes(b"\xa1\x04" + instrument)
     changes.append({"kind": "native-first-frame-and-envelope", "scope": "Every native note selection", "basis": "SID-Wizard 1.97 player.asm STRTSND/SETWFR1 and tempo-1 FASTSPEEDBIND", "effect": "First frame initializes only frequency high byte and the chosen frame1 waveform; full frequency and table body follow on the next tick. Tempo 1 bypasses hard restart; adjacent notes without a gate-off cell do not retrigger the envelope."})
+    if instrument_cells == "on-change":
+        changes.append({"kind": "plain-note-cells", "scope": "Notes that repeat the voice's selected instrument", "basis": "SID-Wizard 1.97 player.asm TICK_2 and TABLRST", "effect": "Such notes carry no instrument number, so the instrument's control bits 6 and 7 keep its pulse-width and filter tables running instead of resetting them; the first note of each voice and every instrument change still carry an instrument cell."})
     manifest = {
         "format": "sidwizard-arrangement-manifest-v1", "sourcePath": str(source), "sourceSha256": digest(source_bytes), "recipePath": str(recipe_path), "recipeSha256": digest(recipe_bytes),
         "nativePath": str(native), "nativeSha256": digest(data), "title": recipe["title"], "author": recipe["author"], "released": recipe.get("released", "2026"),
@@ -301,6 +314,8 @@ def arrange(recipe_path, output_dir, *, clock=None):
         "voices": voices, "cellMap": cell_map, "timingChanges": timing_changes, "articulationChanges": changes, "endPolicy": "stop with gates closed and main volume zero",
         "criticalNotes": [dict(note, voice=index, audibleCheckTick=note["startTick"] + 1) for index, voice in enumerate(voices) for note in voice["notes"] if note["sourceDurationTicks"] <= 2 or note["durationTicks"] <= 2],
     }
+    if instrument_cells != "every-note":
+        manifest["instrumentCells"] = instrument_cells
     (output / f"{recipe_path.stem}.native.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return manifest
 

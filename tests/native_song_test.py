@@ -88,6 +88,46 @@ class NativeSongTest(unittest.TestCase):
             for name in ("conversion.json", "export.json"):
                 self.assertEqual(json.loads((output / name).read_text())["sidModel"], "MOS6581")
 
+    @unittest.skipUnless((ROOT / ".tools/sid-wizard-exporter/exporter.labels").is_file() and (ROOT / ".local/bin/render-sid").is_file(), "Pinned one-SID exporter and renderer required")
+    def test_plain_note_cells_let_a_no_reset_instrument_keep_its_pulse_width_across_notes(self):
+        # Control byte 4e sets bit 6 (pulse table is not reset); only a note without an instrument cell lets that bit act.
+        solo = {
+            "name": "PULSSOLO", "control": "4e", "hard_restart_adsr": "0f00", "adsr": "00fd", "frame1": "09",
+            "wave": [["41", "00", "00"]], "pulse": [["87", "00", "01"], ["20", "20", "01"], ["20", "10", "01"], {"jump": 1}], "filter": [],
+        }
+        starts = (0, 20, 40)
+        score = {
+            "title": "Plain cells", "composer": "Test", "quarterBpm": 60 * (17734475 / 18) / (312 * 63), "totalBeats": 60, "tailTicks": 3, "volume": 15,
+            "voices": [{"name": name, "events": [{"startBeat": start, "durationBeats": 16, "midi": 60} for start in starts] if name == "lead" else []} for name in ("lead", "bass", "pad")],
+        }
+
+        def pulse_widths(policy):
+            with tempfile.TemporaryDirectory() as directory, patch("builtins.print"):
+                (Path(directory) / "score.json").write_text(json.dumps(score))
+                recipe = {
+                    "format": "sidwizard-arrangement-v1", "score": "score.json", "title": "Plain cells", "author": "Test", "released": "2026", "timingPolicy": "retain-full-pitch",
+                    "instruments": {"solo": solo}, "instrumentCells": policy,
+                    "sections": [{"name": "Whole", "startBeat": 0, "endBeat": 60, "voices": {"lead": "solo", "bass": "solo", "pad": "solo"}}],
+                }
+                (Path(directory) / "recipe.json").write_text(json.dumps(recipe))
+                report = native_song.run_song(Path(directory) / "recipe.json", Path(directory) / "song", excerpt_seconds=1)
+                self.assertEqual(report["schedule"]["noteCounts"], [3, 0, 0])
+                writes = json.loads((Path(directory) / "song/native-song.writes.json").read_text())
+            widths = []
+            for start in starts:
+                register = {0xd402: 0, 0xd403: 0}
+                for write in writes:
+                    if write["phase"] == "init" or write["tick"] <= start + 6:
+                        if write["address"] in register:
+                            register[write["address"]] = write["value"]
+                widths.append(register[0xd402] | (register[0xd403] & 15) << 8)
+            return widths
+
+        every_note, on_change = pulse_widths("every-note"), pulse_widths("on-change")
+        self.assertEqual(len(set(every_note)), 1, every_note)
+        self.assertTrue(on_change[0] < on_change[1] < on_change[2], on_change)
+        self.assertEqual(on_change[0], every_note[0])
+
     def test_layout_rejects_invalid_model_and_disagreement_with_chip_metadata(self):
         self.assertEqual(native_song.sid_layout({"sidModel": "MOS6581"}), [{"baseAddress": 0xd400, "model": "MOS6581"}])
         for report in (

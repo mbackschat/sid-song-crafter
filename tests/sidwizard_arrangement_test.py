@@ -467,6 +467,81 @@ class SIDWizardArrangementTest(unittest.TestCase):
             _, manifest = self.shifted_recipe(directory, [{"startBeat": 10, "durationBeats": 2, "midi": 60}], short_melody="low")
             self.assertEqual([(note["midi"], note["nativeNote"], note["octaveShiftSemitones"]) for note in manifest["criticalNotes"]], [(60, 61, -12)])
 
+    def cells_recipe(self, directory, events, *, policy=None, beats=80, sections=None, short=None, **overrides):
+        score = synthetic_score(events, beats=beats)
+        settings = {"instruments": {"pluck": INSTRUMENT, "alt": dict(INSTRUMENT, name="ALTPLUCK")}}
+        sections = sections or [{"name": "Whole", "startBeat": 0, "endBeat": beats, "voices": {voice["name"]: "pluck" for voice in score["voices"]}}]
+        settings["sections"] = sections
+        settings["shortNoteInstruments"] = {voice["name"]: short or "pluck" for voice in score["voices"]}
+        if policy is not None:
+            settings["instrumentCells"] = policy
+        settings.update(overrides)
+        return self.create(directory, score, **settings)
+
+    @staticmethod
+    def melody_cells(manifest):
+        return [(cell["tick"], cell["instrument"]) for cell in manifest["cellMap"] if cell["voice"] == 0 and cell["noteCode"] != 0x7e]
+
+    def test_default_instrument_cells_write_the_instrument_in_every_note_and_match_the_explicit_policy(self):
+        events = [{"startBeat": 4 * index, "durationBeats": 3, "midi": 60} for index in range(4)]
+        with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:
+            _, default = self.cells_recipe(first, events)
+            _, explicit = self.cells_recipe(second, events, policy="every-note")
+            self.assertEqual(self.melody_cells(default), [(0, 1), (4, 1), (8, 1), (12, 1)])
+            self.assertEqual(Path(default["nativePath"]).read_bytes(), Path(explicit["nativePath"]).read_bytes())
+            self.assertNotIn("instrumentCells", default)
+
+    def test_on_change_writes_the_instrument_only_when_the_voice_selection_changes(self):
+        events = [{"startBeat": 4 * index, "durationBeats": 3, "midi": 60} for index in range(8)]
+        sections = [
+            {"name": "A", "startBeat": 0, "endBeat": 16, "voices": {"melody": "pluck", "bass": "pluck", "harmony": "pluck"}},
+            {"name": "B", "startBeat": 16, "endBeat": 80, "voices": {"melody": "alt", "bass": "pluck", "harmony": "pluck"}},
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            _, manifest = self.cells_recipe(directory, events, policy="on-change", sections=sections)
+            # Every native note still starts with its own instrument; only the cell is plain.
+            self.assertEqual(self.melody_cells(manifest), [(0, 1), (4, None), (8, None), (12, None), (16, 2), (20, None), (24, None), (28, None)])
+            self.assertEqual([note["instrument"] for note in manifest["voices"][0]["notes"]], [1, 1, 1, 1, 2, 2, 2, 2])
+            self.assertEqual(manifest["instrumentCells"], "on-change")
+            cells = expanded_native_cells(manifest)[0]
+            self.assertEqual([len(cell) for cell in cells if cell[0] & 0x7f in range(1, 0x60)], [2, 1, 1, 1, 2, 1, 1, 1])
+
+    def test_on_change_reselects_after_short_note_substitution_and_not_between_equal_short_notes(self):
+        # Ticks per beat is one: durations 2 take the short-note instrument, which differs from the section's.
+        events = [
+            {"startBeat": 0, "durationBeats": 10, "midi": 60}, {"startBeat": 12, "durationBeats": 2, "midi": 62},
+            {"startBeat": 16, "durationBeats": 2, "midi": 64}, {"startBeat": 20, "durationBeats": 10, "midi": 65},
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            _, manifest = self.cells_recipe(directory, events, policy="on-change", short="alt")
+            self.assertEqual([note["instrument"] for note in manifest["voices"][0]["notes"]], [1, 2, 2, 1])
+            self.assertEqual(self.melody_cells(manifest), [(0, 1), (12, 2), (16, None), (20, 1)])
+
+    def test_on_change_keeps_the_selection_across_pattern_boundaries_and_reuses_identical_chunks_safely(self):
+        events = [{"startBeat": 4 * index, "durationBeats": 3, "midi": 60} for index in range(16)]
+        sections = [
+            {"name": "A", "startBeat": 0, "endBeat": 32, "voices": {"melody": "pluck", "bass": "pluck", "harmony": "pluck"}},
+            {"name": "B", "startBeat": 32, "endBeat": 80, "voices": {"melody": "alt", "bass": "pluck", "harmony": "pluck"}},
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            _, manifest = self.cells_recipe(directory, events, policy="on-change", sections=sections, patternBeats=8)
+            entries = manifest["voices"][0]["expectedPatternEntries"]
+            # Chunks starting at ticks 8 and 24 hold plain cells played under 'pluck'; the one at 40 holds the same bytes under 'alt'.
+            self.assertGreater(len(entries), 5)
+            by_tick = {entry["tick"]: entry["pattern"] for entry in entries}
+            self.assertEqual(by_tick[23], by_tick[39])
+            notes = {note["startTick"]: note["instrument"] for note in manifest["voices"][0]["notes"]}
+            self.assertEqual((notes[24], notes[40]), (1, 2))
+            # The first cell of a later pattern relies on the instrument selected in the previous pattern.
+            self.assertEqual(dict(self.melody_cells(manifest))[8], None)
+            self.assertEqual(dict(self.melody_cells(manifest))[32], 2)
+
+    def test_unknown_instrument_cell_policy_is_rejected_before_output(self):
+        with tempfile.TemporaryDirectory() as directory:
+            with self.assertRaisesRegex(ValueError, "instrumentCells"):
+                self.cells_recipe(directory, [], policy="sometimes")
+            self.assertFalse((Path(directory) / "out").exists())
+
     def test_instrument_ids_cannot_leave_the_native_output_directory(self):
         score = synthetic_score([], beats=4)
         with tempfile.TemporaryDirectory() as directory:
