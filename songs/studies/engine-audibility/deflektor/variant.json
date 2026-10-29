@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "engine-audibility-deflektor-variant-v1",
+  "base": "songs/studies/deflektor-elise-transfer/transfer.json",
+  "pulseArithmetic": "sid-wizard-1.97-pwsweep",
+  "mechanism": {
+    "exact": "Low-byte-only addition/subtraction toward the next target's high nibble; the high byte stays at the loaded target between targets, so a downward segment wraps the low byte upward.",
+    "variant": "Signed low-byte movement carries or borrows into the pulse high byte, as SID-Wizard 1.97 Extra's PWSWEEP does (player.asm lines 2341 and 2346: dec PWHIGHO before a negative add, inc PWHIGHO on carry).",
+    "directionRule": "Direction is still chosen against the next target, compared on the 16-bit word: a target-equal high byte with a nonzero low byte keeps falling. This equals one fixed-amount PWSWEEP row per segment while interval * step < 256, which the build enforces.",
+    "unchanged": "Notes, scheduling, envelopes, delayed pitch, resonance, ending, interval reloads that set the target high nibble and clear the low byte, and the unity-gain presentation."
+  },
+  "source": {
+    "path": ".tools/sid-wizard-1.97/native/sources/include/player.asm",
+    "labels": "SETPWID..ENDPWTB (lines 2332-2376 in the pinned 1.97 checkout); the sweep arithmetic is PWSWEEP..bcs ENDPWTB, lines 2335-2347; the raw high byte reaches the SID at line 2389"
+  }
+}

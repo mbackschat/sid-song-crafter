@@ -1,0 +1,606 @@
+{
+  "schemaVersion": 1,
+  "stages": [
+    {
+      "id": "prepare-check",
+      "command": [
+        "{python}",
+        "scripts/studies/deflektor/prepare-elise-transfer.py",
+        "--check"
+      ],
+      "inputs": [
+        "scripts/studies/deflektor/prepare-elise-transfer.py",
+        "songs/fuer-elise.json",
+        "songs/studies/deflektor-reconstruction/title.json",
+        "songs/studies/deflektor-elise-transfer/reference.json",
+        "songs/studies/deflektor-elise-transfer/transfer.json",
+        "scripts/deflektor_player.py",
+        "scripts/deflektor_score.py",
+        "scripts/deflektor_programs.py",
+        "songs/studies/deflektor-elise-transfer/mapping.json",
+        "songs/studies/deflektor-elise-transfer/preparation.json",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference-build",
+      "command": [
+        "{python}",
+        "scripts/compose-deflektor.py",
+        "songs/studies/deflektor-elise-transfer/reference.json",
+        "--output",
+        "{out}/candidate"
+      ],
+      "inputs": [
+        "songs/studies/deflektor-elise-transfer/reference.json",
+        "scripts/compose-deflektor.py",
+        "scripts/deflektor_player.py",
+        "scripts/deflektor_score.py",
+        "scripts/deflektor_programs.py",
+        "scripts/sid_assembler.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        "scripts/sid_clock.py",
+        "scripts/deflektor_compiler.py",
+        "scripts/deflektor_asm.py"
+      ],
+      "outputs": [
+        "candidate/reconstructed.sid",
+        "candidate/reconstructed.prg",
+        "candidate/verification.json",
+        "candidate/audit.json",
+        "candidate/writes.json",
+        "candidate/state-checkpoints.json",
+        "candidate/player.asm",
+        "candidate/player.listing"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference-vice",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:reference-build}/candidate/reconstructed.sid",
+        "--oracle",
+        "{stage:reference-build}/candidate/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "716",
+        "--timeout",
+        "300",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:reference-build}/candidate/reconstructed.sid",
+        "{stage:reference-build}/candidate/writes.json",
+        "scripts/trace-sid-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/study.json",
+        "vice/trace.json",
+        "vice/monitor.log",
+        "vice/command.json",
+        "vice/commands.mon"
+      ],
+      "timeoutSeconds": 330,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "reference-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:reference-build}/candidate/reconstructed.sid",
+        "{out}/render.wav",
+        "14.3043611947915",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:reference-build}/candidate/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "exact-build",
+      "command": [
+        "{python}",
+        "scripts/compose-deflektor.py",
+        "songs/studies/deflektor-elise-transfer/transfer.json",
+        "--output",
+        "{out}/candidate"
+      ],
+      "inputs": [
+        "songs/studies/deflektor-elise-transfer/transfer.json",
+        "scripts/compose-deflektor.py",
+        "scripts/deflektor_player.py",
+        "scripts/deflektor_score.py",
+        "scripts/deflektor_programs.py",
+        "scripts/sid_assembler.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        "scripts/sid_clock.py",
+        "scripts/deflektor_compiler.py",
+        "scripts/deflektor_asm.py"
+      ],
+      "outputs": [
+        "candidate/reconstructed.sid",
+        "candidate/reconstructed.prg",
+        "candidate/verification.json",
+        "candidate/audit.json",
+        "candidate/writes.json",
+        "candidate/state-checkpoints.json",
+        "candidate/player.asm",
+        "candidate/player.listing"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "exact-vice",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:exact-build}/candidate/reconstructed.sid",
+        "--oracle",
+        "{stage:exact-build}/candidate/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "716",
+        "--timeout",
+        "300",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:exact-build}/candidate/reconstructed.sid",
+        "{stage:exact-build}/candidate/writes.json",
+        "scripts/trace-sid-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/study.json",
+        "vice/trace.json",
+        "vice/monitor.log",
+        "vice/command.json",
+        "vice/commands.mon"
+      ],
+      "timeoutSeconds": 330,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "exact-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:exact-build}/candidate/reconstructed.sid",
+        "{out}/render.wav",
+        "14.3043611947915",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:exact-build}/candidate/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "variant-build",
+      "command": [
+        "{python}",
+        "scripts/studies/engine-audibility/deflektor/compose-pwsweep-variant.py",
+        "songs/studies/engine-audibility/deflektor/variant.json",
+        "--output",
+        "{out}/candidate"
+      ],
+      "inputs": [
+        "songs/studies/engine-audibility/deflektor/variant.json",
+        "scripts/studies/engine-audibility/deflektor/compose-pwsweep-variant.py",
+        "scripts/studies/engine-audibility/deflektor/pwsweep_variant.py",
+        "songs/studies/deflektor-elise-transfer/transfer.json",
+        ".tools/sid-wizard-1.97/native/sources/include/player.asm",
+        "scripts/deflektor_player.py",
+        "scripts/deflektor_score.py",
+        "scripts/deflektor_programs.py",
+        "scripts/sid_assembler.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/test-deps/py65",
+        "scripts/sid_clock.py",
+        "scripts/deflektor_compiler.py",
+        "scripts/deflektor_asm.py"
+      ],
+      "outputs": [
+        "candidate/reconstructed.sid",
+        "candidate/reconstructed.prg",
+        "candidate/verification.json",
+        "candidate/audit.json",
+        "candidate/writes.json",
+        "candidate/state-checkpoints.json",
+        "candidate/player.asm",
+        "candidate/player.listing"
+      ],
+      "timeoutSeconds": 600,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "variant-vice",
+      "command": [
+        "{python}",
+        "scripts/trace-sid-vice.py",
+        "{stage:variant-build}/candidate/reconstructed.sid",
+        "--oracle",
+        "{stage:variant-build}/candidate/writes.json",
+        "--first-call",
+        "0",
+        "--last-call",
+        "716",
+        "--timeout",
+        "300",
+        "--data",
+        ".tools/vice-headless-3.9/source/data",
+        "--output",
+        "{out}/vice",
+        "--profile",
+        "pal-banked",
+        "--subtune",
+        "1"
+      ],
+      "inputs": [
+        "{stage:variant-build}/candidate/reconstructed.sid",
+        "{stage:variant-build}/candidate/writes.json",
+        "scripts/trace-sid-vice.py",
+        "scripts/psid_audit.py",
+        "scripts/psid_profile.py",
+        "scripts/sid_audit_host.py",
+        "scripts/verify_player.py",
+        ".tools/vice-headless-3.9/build/src/x64sc",
+        ".tools/vice-headless-3.9/source/data",
+        "/opt/homebrew/opt/gettext/lib/libintl.8.dylib",
+        "scripts/sid_clock.py"
+      ],
+      "outputs": [
+        "vice/study.json",
+        "vice/trace.json",
+        "vice/monitor.log",
+        "vice/command.json",
+        "vice/commands.mon"
+      ],
+      "timeoutSeconds": 330,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "variant-render",
+      "command": [
+        "{root}/.local/bin/render-sid",
+        "{stage:variant-build}/candidate/reconstructed.sid",
+        "{out}/render.wav",
+        "14.3043611947915",
+        "--subtune",
+        "1",
+        "--clock",
+        "pal"
+      ],
+      "inputs": [
+        "{stage:variant-build}/candidate/reconstructed.sid",
+        ".local/bin/render-sid",
+        "scripts/render-sid.cpp",
+        ".local/tools/libsidplayfp/3.1.1/lib/libsidplayfp.a"
+      ],
+      "outputs": [
+        "render.wav",
+        "render.wav.registers.tsv"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check-exact",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:reference-render}/render.wav",
+        "{stage:exact-render}/render.wav",
+        "--seconds",
+        "14.3043611947915",
+        "--output",
+        "{out}/audio.json",
+        "--tail-seconds",
+        "1",
+        "--max-tail-ac-rms",
+        "1"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:exact-render}/render.wav",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "signal-check-variant",
+      "command": [
+        "{python}",
+        "scripts/check-listening.py",
+        "audio",
+        "{stage:reference-render}/render.wav",
+        "{stage:variant-render}/render.wav",
+        "--seconds",
+        "14.3043611947915",
+        "--output",
+        "{out}/audio.json",
+        "--tail-seconds",
+        "1",
+        "--max-tail-ac-rms",
+        "1"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:variant-render}/render.wav",
+        "scripts/check-listening.py",
+        "scripts/listening_checks.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "audio.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "pulse-guard",
+      "command": [
+        "{python}",
+        "scripts/studies/engine-audibility/deflektor/check-pwsweep-variant.py",
+        "--exact",
+        "{stage:exact-build}/candidate",
+        "--variant",
+        "{stage:variant-build}/candidate",
+        "--accepted-run",
+        "evidence/deflektor-elise-transfer/run.json",
+        "--exact-render",
+        "{stage:exact-render}/render.wav",
+        "--exact-registers",
+        "{stage:exact-render}/render.wav.registers.tsv",
+        "--variant-registers",
+        "{stage:variant-render}/render.wav.registers.tsv",
+        "--pwsweep-source",
+        ".tools/sid-wizard-1.97/native/sources/include/player.asm",
+        "--output",
+        "{out}/guard.json"
+      ],
+      "inputs": [
+        "scripts/studies/engine-audibility/deflektor/check-pwsweep-variant.py",
+        "{stage:exact-build}/candidate/reconstructed.sid",
+        "{stage:exact-build}/candidate/writes.json",
+        "{stage:exact-build}/candidate/verification.json",
+        "{stage:variant-build}/candidate/writes.json",
+        "{stage:variant-build}/candidate/verification.json",
+        "{stage:exact-render}/render.wav",
+        "{stage:exact-render}/render.wav.registers.tsv",
+        "{stage:variant-render}/render.wav.registers.tsv",
+        "evidence/deflektor-elise-transfer/run.json",
+        ".tools/sid-wizard-1.97/native/sources/include/player.asm"
+      ],
+      "outputs": [
+        "guard.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "phrase-reference-then-exact",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:reference-render}/render.wav",
+        "{stage:exact-render}/render.wav",
+        "{out}/phrase-reference-then-exact",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "9.995098",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:reference-render}/render.wav",
+        "{stage:exact-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "phrase-reference-then-exact.ab.wav",
+        "phrase-reference-then-exact.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "phrase-exact-then-variant",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:exact-render}/render.wav",
+        "{stage:variant-render}/render.wav",
+        "{out}/phrase-exact-then-variant",
+        "--start-seconds",
+        "0",
+        "--end-seconds",
+        "9.995098",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:exact-render}/render.wav",
+        "{stage:variant-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "phrase-exact-then-variant.ab.wav",
+        "phrase-exact-then-variant.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    },
+    {
+      "id": "ending-exact-then-variant",
+      "command": [
+        "{python}",
+        "scripts/compare-audio.py",
+        "window",
+        "{stage:exact-render}/render.wav",
+        "{stage:variant-render}/render.wav",
+        "{out}/ending-exact-then-variant",
+        "--start-seconds",
+        "9.995098",
+        "--end-seconds",
+        "14.3043611947915",
+        "--gap-seconds",
+        "0.5"
+      ],
+      "inputs": [
+        "{stage:exact-render}/render.wav",
+        "{stage:variant-render}/render.wav",
+        "scripts/compare-audio.py",
+        "scripts/audio_comparison.py"
+      ],
+      "outputs": [
+        "ending-exact-then-variant.ab.wav",
+        "ending-exact-then-variant.comparison.json"
+      ],
+      "timeoutSeconds": 120,
+      "env": {
+        "PYTHONPATH": "{root}/.tools/test-deps",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  ],
+  "deliverables": {
+    "fullReference": "{stage:reference-render}/render.wav",
+    "fullExact": "{stage:exact-render}/render.wav",
+    "fullVariant": "{stage:variant-render}/render.wav",
+    "phraseReferenceThenExact": "{stage:phrase-reference-then-exact}/phrase-reference-then-exact.ab.wav",
+    "phraseExactThenVariant": "{stage:phrase-exact-then-variant}/phrase-exact-then-variant.ab.wav",
+    "endingExactThenVariant": "{stage:ending-exact-then-variant}/ending-exact-then-variant.ab.wav",
+    "pulseGuard": "{stage:pulse-guard}/guard.json",
+    "exactProof": "{stage:exact-build}/candidate/verification.json",
+    "variantProof": "{stage:variant-build}/candidate/verification.json"
+  }
+}
