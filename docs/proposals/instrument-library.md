@@ -1,6 +1,6 @@
 # Instrument library and characterisation spec
 
-Status: proposed contract, revised once from the spikes below and confirmed for MEDIUM selectors; no validator, storage or migration exists in the repository. The [plan](../PLAN.md#deferred-work-and-unproven-outcomes) owns the agreed order. SID-Wizard Extra is the composition engine ([engine-limit audibility comparison](../../songs/studies/engine-audibility/README.md#outcome)), and the converter supports its full instrument model ([converter limits](../workflows/native-song-workflow.md#converter-limits-on-the-sid-wizard-instrument-model)).
+Status: contract settled on 2026-10-29 for MEDIUM-tier selectors after one revision from the spikes below; no validator, storage or migration exists in the repository yet. The [plan](../PLAN.md#deferred-work-and-unproven-outcomes) owns the agreed order. SID-Wizard Extra is the composition engine ([engine-limit audibility comparison](../../songs/studies/engine-audibility/README.md#outcome)), and the converter supports its full instrument model ([converter limits](../workflows/native-song-workflow.md#converter-limits-on-the-sid-wizard-instrument-model)).
 
 ## Purpose
 
@@ -189,7 +189,7 @@ From the accepted [Moon River](../../songs/moon-river/README.md) lead; the verdi
 
 ## Selection procedure
 
-Follow the steps in order and name the step that decided each choice.
+The selector is at least the MEDIUM tier of the [project's tier rules](../../CLAUDE.md#choose-sub-agent-tiers-by-task); LOW selectors failed the blind confirmation below. Follow the steps in order and name the step that decided each choice.
 
 1. **Hard filters.** Keep candidates whose engine, voices, coupling, filter ownership, chip model, clock and roles fit the song.
 2. **Fit to the brief.** Translate the brief's character into sound traits and rank candidates by how well their measured or tested traits match: attack, envelope, waveforms, body, brightness, level, release, and the phrase's note lengths against `pitchSettlesAfterUpdates` and `startsAfterUpdates`. `level` and `brightness` compare directly between candidates for one role. `unknown` counts neither way; `intent` counts less than measured.
@@ -219,7 +219,7 @@ A confirmation run repeated the same four blind selections on the revised record
 | Moon River | Fails: accepted lead and accompaniment, but the louder filtered pulse bass again, read as the long legato release a tender brief needs; the accepted bass was runner-up | Passes all three roles; measured level decided the bass |
 | Mozart control | Fails: a high-register A/B decided a lead whose register the brief does not state, and a chord-role instrument was taken for the inner part against the role filter; bass passes | Passes: accepted bass and inner part, another moving-pulse lead |
 
-The contract and procedure therefore work for MEDIUM selectors. The LOW failures came from translating the brief and applying the procedure, not from missing record fields; whether LOW selectors can be supported, for example by briefs that state each role's register and level relative to the melody, is open.
+The contract and procedure therefore work for MEDIUM selectors, and MEDIUM is the required minimum. The LOW failures came from translating the brief and applying the procedure, not from missing record fields; briefs stating each role's register and level relative to the melody are the untested route to LOW support.
 
 ## Scope
 
