@@ -153,6 +153,8 @@ Keep third-party checkouts in ignored `.tools/`, runtime state in `.local/`, and
 
 ## Build, Test, and Development Commands
 
+Use `linux/arm64` for Docker images, builds and runs, and ARM64 runners for Docker CI. Select explicit matching ARM64 image tags when needed; never silently fall back to AMD64 emulation.
+
 From the repository root, install pinned assets with `python3 scripts/setup-project.py` and check readiness with `python3 scripts/doctor.py`. After dependency setup in [README.md](README.md):
 
 - `bun scripts/build-song.ts`: assemble the opening excerpt and export PRG, PSID, and event manifest.
